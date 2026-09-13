@@ -2,7 +2,7 @@
 
 ## The LLM mirrors your stance
 
-The wizard typing in neat Perl syntax is dead. Auto-complete was a thing. Auto-complete is no longer a thing. A part of high-end engineering skill has been taken on by the LLM.
+The wizard typing in neat Perl syntax is dead. Auto-complete was a thing. Auto-complete is no longer a thing. The LLM has taken on a part of high-end engineering skill.
 
 The LLM can do good work and bad work. It will be what fits the session. The LLM mirrors your stance.
 
@@ -13,7 +13,7 @@ It was trained to match you. Your stance is the ceiling.
 ## You prime, the LLM scales
 <!--tier:3-->
 
-Stance and approach matter more now, not less. The session bends to what sits in the context window. You prime it. The LLM scales it.
+Stance and approach matter more now, not less. The session bends to what sits in the context window. You prime the context. The LLM scales it.
 
 Whatever you put in front of the LLM is what the LLM scales. The rules file. The prompt. What sits on disk for the agent to read.
 
@@ -21,9 +21,9 @@ If you want a shotgun, you have a shotgun. If you want a cannon, you have that t
 
 ## Two frontiers: how fast, and the right things
 
-How fast can your setup learn? The rules and context you put in front of the LLM: can that stack learn faster than a human practitioner can write things down?
+Your setup is the rules and context you put in front of the LLM. The first frontier: can that setup learn faster than you can write things down?
 
-Can it learn the right things? Once the setup can learn fast, how does it learn the right things, and not just any things?
+The second frontier: once your setup learns fast, does it learn the right things, and not just any things?
 
 Let's go.
 
@@ -53,14 +53,14 @@ Let's go.
 Format → `curriculum/backing-format.md`.
 
 **Claims**
-- `wizard-is-dead` · vision · "The wizard typing in neat Perl syntax is dead … A part of high-end engineering skill has been taken on by the LLM." ← none-owed
+- `wizard-is-dead` · vision · "The wizard typing in neat Perl syntax is dead … The LLM has taken on a part of high-end engineering skill." ← none-owed
 - `llm-mirrors-stance` · detail · "The LLM mirrors your stance." ← sharma-sycophancy-2023, anthropic-personal-guidance-2026
 - `tool-vs-taste` · borrowed · "The tool is not the thing; the taste behind the tool is the thing. Seth Godin has been making that argument about tools for decades." ← cultural-vocab
 - `trained-to-match` · detail · "It was trained to match you." ← sharma-sycophancy-2023
 - `stance-is-ceiling` · vision · "Your stance is the ceiling." ← none-owed
-- `you-prime-llm-scales` · vision · "You prime it. The LLM scales it." ← none-owed
+- `you-prime-llm-scales` · vision · "You prime the context. The LLM scales it." ← none-owed
 - `sharp-stay-sharp` · detail · "The sharp engineers stay sharp." ← amplification-org-level, brynjolfsson-task-level, cui-et-al-developer-rcts, metr-experienced-devs
-- `two-frontiers` · vision · "How fast can your setup learn? … Can it learn the right things?" ← none-owed
+- `two-frontiers` · vision · "can that setup learn faster than you can write things down? … does it learn the right things, and not just any things?" ← none-owed
 
 **Sources**
 - sharma-sycophancy-2023 `[checked:2026-07-29 result:OK due:none]` https://arxiv.org/abs/2310.13548 — [academic/research] Sharma et al., Anthropic 2023. Five frontier assistants exhibit sycophancy across four text-generation tasks; "driven in part by human preference judgments." The hedge is load-bearing — this lecture's "It was trained to match you" is a five-word whisper, not a mechanism claim, and must not be strengthened. Full stamp + the do-not-strengthen note lives in `the-machine-you-just-met.md`, which owns the payoff; keep the two in step. fallback: teach the mirror as observation, no URL owed.

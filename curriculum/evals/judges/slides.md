@@ -36,6 +36,7 @@ Judgment calls that need a careful read, not grep:
 - **Backward-pointing openers (rule 2):** first sentence/bullet of a chunk pointing at prior slides or prior files by position ("that story", "the opening lecture").
 - **Dead beat references (rule 3):** "the X you did/saw" — check the referenced beat exists in the module's current exercises/lectures. When the target file is a shared lecture/exercise, resolve its host module via the TRAININGS registry in `site/layouts/curriculum.js` and scan the sibling files the module includes.
 - **Broken demo beats (rule 4):** a guess/predict instruction that appears AFTER the outcome it asks the reader to guess, in reading order.
+- **Muted read (rule 4, second failure; `check_writing.md §28`):** read each chunk with the trainer silent. A verbless noun stack setting a scene ("The same question, two answers."), a guess-cue aimed at the terminal ("take a guess before it runs"), or a pronoun whose only referent is the live screen ("Context is whatever you tell it") is a REVISE unless the maintainer block attests the phrase. Enumerations that follow a verbed sentence naming the set are not cues.
 - **Orphan slides (rule 5):** a chunk with no self-carrying claim.
 - **Header literal truth at slide scope (rule 6).**
 - **LLM-cadence caps (rule 7):** each sub-item is its own check per chunk.

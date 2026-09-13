@@ -26,7 +26,7 @@ You can make rules now. The ceiling comes sooner than you'd guess: every always-
 
 The cure is not better rules; it is where the rules live. Keep `./CLAUDE.md` and `./CLAUDE.local.md` lean: principles, with the why attached. Move the rest into skills, loaded only when the work calls for them. A file that is only ever added to never shrinks; when a later session disproves a rule, take it out.
 
-This training stops short of the full system: rules that prune themselves, evidence that routes itself to the right file, a team deciding what loads for everyone. Exact details of the context information lifecycle are for your team to automate right, in a way that fits your team workflow.
+This training stops short of the full system: rules that prune themselves, evidence that routes itself to the right file, a team deciding what loads for everyone. How those parts run is for your team to automate, in a way that fits how your team works.
 
 ## Prohibitions stop; taste steers
 <!--tier:2-->

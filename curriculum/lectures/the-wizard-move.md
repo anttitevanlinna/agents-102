@@ -2,15 +2,15 @@
 
 ## Context is King
 
-The same question, two answers. Two Claude Code sessions. In one, the first prompt is *"What is the capital of Italy?"* Claude answers *Rome.* Then the second prompt: *"What should we have for dinner?"* Claude suggests something Italian: pasta, osso buco, risotto.
+Two fresh Claude Code sessions get the same dinner question and answer it differently. The first session opens with *"What is the capital of Italy?"* Claude answers *Rome.* The second prompt is *"What should we have for dinner?"* Claude suggests something Italian: pasta, osso buco, risotto.
 
-Same words, different session. In the other session, the first prompt is *"What is the largest lake in Finland?"* Claude answers *Saimaa.* Then the same second prompt: dinner. Take a guess before it runs. What does Claude suggest now?
+The other session opens with *"What is the largest lake in Finland?"* Claude answers *Saimaa.* Then the same dinner prompt. Guess what Claude suggests before reading on.
 
 Something Finnish: salmon, rye bread, meatballs. But not as reliably. The first exchange became part of context, and the context colored everything after.
 
 ## You steer the answer by loading context
 
-Context is whatever you tell it. A fact. A role. A preference. A constraint. All of it colors what comes next. You, in a way, compel the right output by having the right stuff in the context.
+Context is whatever you have told the session so far. A fact. A role. A preference. A constraint. All of it colors what comes next. You, in a way, compel the right output by having the right stuff in the context.
 
 The move is loading the right context before the question, not a clever prompt or a slash command you didn't know.
 
@@ -48,7 +48,7 @@ Format → `curriculum/backing-format.md`.
 **Claims**
 - `context-conditions-next-answer` · detail · "The first exchange became part of context, and the context colored everything after" ← in-context-conditioning, demo-fires-live
 - `conditioning-is-unreliable` · detail · "But not as reliably." ← antti-dinner-demo-deliveries, dinner-demo-haiku-sample
-- `context-is-whatever-you-tell-it` · vision · "Context is whatever you tell it. A fact. A role. A preference. A constraint." ← none-owed
+- `context-is-whatever-you-tell-it` · vision · "Context is whatever you have told the session so far. A fact. A role. A preference. A constraint." ← none-owed
 - `the-move-is-loading-context` · vision · "The move is loading the right context before the question, not a clever prompt or a slash command you didn't know" ← none-owed
 
 **Sources**

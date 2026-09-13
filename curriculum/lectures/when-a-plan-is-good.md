@@ -28,19 +28,26 @@ Enter plan mode, then put the question to your own session:
 
 ## Plan review is a high-leverage gate
 
-- A plan is a check before implementation. One correction can redirect every step that follows before the agent turns the plan into code.
-- What the plan doesn't decide, the agent decides mid-run, inside work in flight, and you will not notice. A wrong call propagates across files, and the wrongness tangles with everything built after it: what would have been a line edit in the plan becomes an untangling job in the code.
-- Aim the read at the unknown that teaches you the most. The branches worth walking are the ones that change what done means. The rest you'd settle in verification anyway.
+A plan is a check before implementation. One correction can redirect every step that follows before the agent turns the plan into code.
+
+What the plan doesn't decide, the agent decides mid-run, inside work in flight, and you will not notice. A wrong call propagates across files, and the wrongness tangles with everything built after it: what would have been a line edit in the plan becomes an untangling job in the code.
+
+Aim the read at the unknown that teaches you the most. The branches worth walking are the ones that change what done means. The rest you'd settle in verification anyway.
+
 
 ## What you can test and check sets your complexity ceiling
 
 {{figure:delegation-frontier}}
 
-- Every task you hand off sits on two axes. Reach is how much you delegated: the size of the task, the distance between checks. Calibration is whether your trust in what came back was earned by a check you have verified.
-- The plan read is a calibration move. It is cheap, it runs before anything is built, and its cost does not grow with the size of what you approved.
-- Reach without calibration is what the three pressures produce: a plan that reads well, approved at a scope your read never actually covered.
-- Push reach past what you can check and you have not delegated more. You are checking less.
-- The ceiling is not fixed. Every check you make cheap and repeatable raises it, so building a better check buys you more than approving a bigger plan.
+Every task you hand off sits on two axes. Reach is how much you delegated: the size of the task, the distance between checks. Calibration is whether your trust in what came back was earned by a check you have verified.
+
+The plan read is a calibration move. It is cheap, it runs before anything is built, and its cost does not grow with the size of what you are approving.
+
+Reach without calibration is what the three pressures produce: a plan that reads well, approved at a scope your read never actually covered.
+
+Push reach past what you can check and you have not delegated more. You are checking less.
+
+The ceiling is not fixed. Every check you make cheap and repeatable raises it, so building a better check buys you more than approving a bigger plan.
 
 <!-- maintainer -->
 

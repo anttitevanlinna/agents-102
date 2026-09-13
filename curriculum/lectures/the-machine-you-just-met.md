@@ -5,32 +5,46 @@ The machine you just met can be steered. What you bring, what you build, and wha
 ## Agreeable answers won the preference round
 <!--tier:2-->
 
-- The LLM is trained twice. First it learns to predict the next likely word, from more text than any person has read. Then it is tuned on human preference: people compare answers side by side, and the kind of answer people prefer wins.
-- Agreeable answers won the second round. Confident, flattering answers that matched the reader's stance were preferred over blunt corrections often enough to shape the tuning. The field calls the result **sycophancy**. Plainly: matching you is what scored well in training.
-- This is the machinery under the opening lecture's mirror. The LLM flatters you, calls unfinished work progress, mirrors your stance. It mirrors because mirroring was rewarded; the machine amplifies whatever posture you bring, and your stance is the ceiling by construction.
-- The agent's report of its own success is the same kind of output. "Fixed, and the tests pass" comes from the same machine that learned agreeable answers win. The report is a hypothesis to check, not ground truth.
+The LLM is trained twice. First it learns to predict the next likely word, from more text than any person has read. Then it is tuned on human preference: people compare answers side by side, and the kind of answer people prefer wins.
 
-## The scrollback is not the work
+Agreeable answers won the second round. Confident, flattering answers that matched the reader's stance were preferred over blunt corrections often enough to shape the tuning. The field calls the result **sycophancy**. Plainly: matching you is what scored well in training.
+
+This is the machinery under the mirror. The LLM flatters you, calls unfinished work progress, mirrors your stance. It mirrors because mirroring was rewarded; the machine amplifies whatever posture you bring, and your stance is the ceiling by construction.
+
+The agent's report of its own success is the same kind of output. "Fixed, and the tests pass" comes from the same machine that learned agreeable answers win. The report is a hypothesis to check, not ground truth.
+
+
+## The agent chat is an abstraction
 <!--tier:2-->
 
-- The agent's chat is an abstraction of the work, necessarily. Something has to be left out; otherwise the agent would be printing the code back, narrated.
-- It is the session's architecture diagram: what was meant, not what runs. The machine's reflection of the work, and the reflection drifts.
-- Current state lives on disk, and the agent reads it on request. A state question (where a file landed, what the code does now) is answered from a fresh read, not from recall: *read x, y, z*, then ask.
+The agent's chat is an abstraction of the work, necessarily. Something has to be left out; otherwise the agent would be printing the code back, narrated.
 
-## A check resets the chain
+It is the session's architecture diagram: what was meant, not what runs. The machine's reflection of the work, and the reflection drifts.
+
+Current state lives on disk, and the agent reads it on request. A state question (where a file landed, what the code does now) is answered from a fresh read, not from recall: *read x, y, z*, then ask.
+
+
+## Errors stack until a check resets them
 <!--tier:2-->
 
-- Each step is mostly right, and each step builds on the one before. One mostly-right answer reads fine on its own. A session is not one answer; it is a chain of them, each standing on the last.
-- Enough mostly-right steps stacked without a check, and the end of the chain is mostly wrong. If each step were right nine times in ten, the odds that a seven-step chain is still right by the end would fall below a coin flip. The numbers are an illustration, not a measurement; the stacking is what holds. The multi-agent literature's term is **error cascade**, coined for errors crossing chains of agents; a chain of steps stacks the same way.
-- A check from outside the session resets the chain. A failing test does not care how confident the answer sounded. Everything after the check builds on verified ground, and no chain grows long enough for the stacking to take over.
-- That is why the failing test came before the fix. The check existed before the code it was checking. Every edit after it had a floor to stand on.
+Each step is mostly right, and each step builds on the one before. One mostly-right answer reads fine on its own. A session is not one answer; it is a chain of them, each standing on the last.
 
-## The LLM answers in essays
+Enough mostly-right steps stacked without a check, and the end of the chain is mostly wrong. If each step were right nine times in ten, the odds that a seven-step chain is still right by the end would fall below a coin flip. The numbers are an illustration, not a measurement; the stacking is what holds. The multi-agent literature's term is **error cascade**, coined for errors crossing chains of agents; a chain of steps stacks the same way.
+
+A check from outside the session resets the chain. A failing test does not care how confident the answer sounded. Everything after the check builds on verified ground, and no chain grows long enough for the stacking to take over.
+
+That is why the failing test came before the fix. The check existed before the code it was checking. Every edit after it had a floor to stand on.
+
+
+## Ask for a ranked list, not an essay
 <!--tier:2-->
 
-- The fix was small; the answers around it were pages. Complete, not prioritized, is the machine's default: an answer that covers everything is never wrong by omission.
-- This time the reading was cheap because the bug was trivial. On real work the reading becomes the bottleneck, not the generating, and a chain of two-page answers is how a session gets away from you.
-- Tell the LLM what output you want: a ranked list first, detail on request. Changing the shape costs virtually nothing.
+The fix was small; the answers around it were pages. Complete, not prioritized, is the machine's default: an answer that covers everything is never wrong by omission.
+
+This time the reading was cheap because the bug was trivial. On real work the reading becomes the bottleneck, not the generating, and a chain of two-page answers is how a session gets away from you.
+
+Tell the LLM what output you want: a ranked list first, detail on request. Changing the shape costs virtually nothing.
+
 
 ## The machine is steerable
 <!--tier:2-->
@@ -67,9 +81,9 @@ The loop is the shape. The bug today was the excuse.
 **Quality:** compendium-audited 2026-09-10 (writing@0d65ff01 story@0d65ff01 technical@0d65ff01 behavior@1480362 pedagogy@0d65ff01 strategy@08946dd8 slides@0d65ff01)
 - judges @0d65ff01: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
-**Scrollback slide (2026-08-08, Antti-directed):** *The scrollback is not the work* is the second slide — the maintainer's own frame, near-verbatim in all three beats: necessity (the chat has to leave things out or it would print the code back, narrated), the architecture-vs-code analog, and disk-as-current-state with the fresh-read move (*read x, y, z*, then ask). Guards for judges: do not soften *not the work*; do not strengthen to everything-in-the-scrollback-is-false (the claim is which surface answers a state question, and the fresh-read bullet shows conversation CAN answer it once grounded); the analog owes no attribution (architecture-drifts-from-code is common engineering knowledge, `check_writing.md` §6 counter-rule); claims are observation-grade by construction (a lossless narration would reproduce the artifact), no citation owed. The closer's bring/build/ask triad deliberately does NOT gain a fourth leg — the disk rule is a reading discipline, not a steering knob. Downstream joins: `orient-and-introspect`'s spot-check is the lived M1 instance (the check quotes a file, not the account); M3's `threat-model-with-stride` ADR catch (*"reasoned forward from the conversation, not from the filesystem"*) is the exercise-level payoff and stays un-cited there on purpose. Trainer line available, not on the slide: *more conversation is more reflection* — the fresh read is the exception that proves it.
+**Scrollback slide (2026-08-08, Antti-directed; header renamed to *The agent chat is an abstraction* 2026-09-13, Antti-directed, so header and body share one noun):** *The scrollback is not the work* was the second slide's header — the maintainer's own frame, near-verbatim in all three beats: necessity (the chat has to leave things out or it would print the code back, narrated), the architecture-vs-code analog, and disk-as-current-state with the fresh-read move (*read x, y, z*, then ask). Guards for judges: do not soften *not the work*; do not strengthen to everything-in-the-scrollback-is-false (the claim is which surface answers a state question, and the fresh-read bullet shows conversation CAN answer it once grounded); the analog owes no attribution (architecture-drifts-from-code is common engineering knowledge, `check_writing.md` §6 counter-rule); claims are observation-grade by construction (a lossless narration would reproduce the artifact), no citation owed. The closer's bring/build/ask triad deliberately does NOT gain a fourth leg — the disk rule is a reading discipline, not a steering knob. Downstream joins: `orient-and-introspect`'s spot-check is the lived M1 instance (the check quotes a file, not the account); M3's `threat-model-with-stride` ADR catch (*"reasoned forward from the conversation, not from the filesystem"*) is the exercise-level payoff and stays un-cited there on purpose. Trainer line available, not on the slide: *more conversation is more reflection* — the fresh read is the exception that proves it.
 
-**Output-shape slide (2026-07-10, Antti-directed cognitive-load arc):** *The LLM answers in essays* sits between the check-resets-the-chain slide and the closer, whose ask-steering bullet completes bring / build / ask. Carries the M1 anchor of the selective-reading arc (M2 exception → M3 take-into-use → M5 remind). Mechanism observation-grade: no training-cause claim for verbosity, no citation owed — don't strengthen to a tuning claim without a source. The M1 trainer flow names the mirror, chain, and output without a behavior count.
+**Output-shape slide (2026-07-10, Antti-directed cognitive-load arc):** *Ask for a ranked list, not an essay* (header renamed 2026-09-13, was *The LLM answers in essays*) sits between the errors-stack-until-a-check-resets-them slide (header renamed 2026-09-13, was *A check resets the chain*) and the closer, whose ask-steering bullet completes bring / build / ask. Carries the M1 anchor of the selective-reading arc (M2 exception → M3 take-into-use → M5 remind). Mechanism observation-grade: no training-cause claim for verbosity, no citation owed — don't strengthen to a tuning claim without a source. The M1 trainer flow names the mirror, chain, and output without a behavior count.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet slides carry bold only on the coined-term handles at their naming moments (**sycophancy**, **error cascade**); the nine-in-ten/seven-steps illustration wording sits under the zombie-stat guard below. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 

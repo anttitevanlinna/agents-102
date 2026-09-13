@@ -38,6 +38,14 @@ The test is the muted read. Read the slide with the trainer's audio off. Every s
 - **Short sentences. No em dashes.** Break the thought in two.
 - **Bullets for parallel items, paragraphs for a line of thought.** Six phases, five things a plan has, three pressures: bullets. A slide that argues one point in sequence reads as paragraphs, same words. Bulleted narrative is a deck printout; the wizard move is the model.
 
+## Editing a shipped slide
+
+- **Shorter, or nothing.** A fluency fix on a shipped slide is shorter or the same length and clearly better. A fix that adds words has to earn them twice; "longer and not enough value" is a refusal, not a negotiation.
+- **Two flat sentences beat one that explains the join.** The reader makes the join.
+- **Keep the verb the author chose.** A header that reads oddly is often protecting one word. Find it first, then give it an object.
+- **Headers pass the squint test.** Hide the body. A header that still parses states subject, verb and mechanism, or the move the slide ends on. A coined noun the body has not earned yet fails.
+- **A hedge can be the voice.** "In a way," "stuff," a doubled verb: when the sentence's job is to reassure or to sound like the trainer thinking aloud, leave it. Cut hedges from instructions, not from asides.
+
 ## Where this binds
 
 Lectures, exercises, modules, and every page the theory handbook or the slides layout builds from them. Rules with exceptions and carve-outs live in `check_writing.md` (§4 register, §28 muted read) and `check_slides.md` (§1 referents, §4 demo beats).

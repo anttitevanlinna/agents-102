@@ -23,6 +23,28 @@ Append-only stream of editorial calls made on real curriculum text. **Newest at 
 
 ---
 
+## 2026-09-13 — the handbook read cold, and the cuts that were refused for being longer
+
+The theory handbook is a marketing handout: it goes to old business friends who never sat in the room. Reading it cold surfaced cue-card prose across every module, and the pass produced a dozen line edits, three header renames and thirty-seven bullet slides turned into paragraphs. The calls that teach something are the refusals.
+
+**Shorter, or nothing.** Four rewrites were declined with the same sentence: *"longer and not enough value."* Two of them fixed a real fault (a verbless opener, a garden-path sentence) and were still refused, because the cure was longer than the disease. The bar for a fluency edit on a shipped slide is not "is it better" but "is it shorter or the same length, and clearly better." A fix that adds words has to earn them twice.
+
+**"You, in a way, compel the right output by having the right stuff in the context," kept.** The card wanted *"You get the right output by putting the right context in front of the question."* Antti: *"Second is how I wanted it."* The hedge and the word *stuff* are the voice, not a lapse: a speaker thinking out loud, the Godin register, on a slide whose job is to reassure rather than to define. Counterweight to the muted-read rule: a sentence can be fully verbed, fully resolved, and still be the trainer's, and that is allowed when the trainer is the point.
+
+**"The LLM can do good work and bad work. It will be what fits the session," kept.** The rewrite bridged it to the mirror claim in one longer sentence. Refused as *"longer and not clear."* Two short flat sentences beat one that explains the join; the reader makes the join.
+
+**Headers that name the mechanism, not the metaphor.** *A check resets the chain* → *Errors stack until a check resets them*. *The LLM answers in essays* → *Ask for a ranked list, not an essay*. *The scrollback is not the work* → *The agent chat is an abstraction*. The pattern: the old header coined a noun the body had not yet earned; the new one states subject, verb and mechanism, or the move the slide ends on. Squint test: does the header still parse with the body hidden?
+
+**Keep the verb the author chose.** *Loop instead of you starting* was carded as *Run a kit skill on a schedule*. Antti: *"the original deliberately says loop as verb. Try keep that."* Landed as *Loop it, instead of you starting it*: same verb, given an object. When a header reads oddly, first ask which word the author was protecting.
+
+**Both words wanted.** *The right information grounds and makes quality* looked like two verbs for one idea. Antti wanted both *ground* and *quality* in the title. Kept as is. A doubled verb can be a deliberate pair, not padding; the tell is that neither word is a synonym of the other.
+
+**Bullets to paragraphs, same words.** Antti: *"wizard move is much more enjoyable."* Every slide that argued one point in sequence became paragraphs; every slide whose items were parallel (six phases, five things, three pressures, four ways a session stops) stayed bullets. Nothing was reworded in the conversion. The enjoyable slide was the one written as prose from the start.
+
+Firing rule: `check_writing.md` §28 (muted read), and the writer's page at `curriculum/writing-style.md`.
+
+---
+
 ## 2026-09-10 — two repetitions an arc read wanted cut, and neither answer was cut
 
 A sequential arc read is good at spotting a line twice and bad at pricing the second one. Both of its M1 duplicate findings survived, and neither survived intact.

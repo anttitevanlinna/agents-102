@@ -62,7 +62,7 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 - A strong candidate for a team PR, after you talk to the team. A test-strategy skill encodes conventions teammates share: framework, mocking policy, integration boundary, flakiness patterns. Accurate for you, accurate for them.
 - The team PR starts with a conversation, not a commit. Ask two teammates who'd use it whether it matches how they actually write tests on this codebase. Say yes, and you PR it. Push back, and you got the real review for free.
 - Agents don't unilaterally change shared team infrastructure. You do.
-- Personal stays a fine final home. The test: would teammates use it as-written, and does the skill carry enough codebase truth to survive their review.
+- Personal stays a fine final home. The test: would teammates use it as-written, and does the skill carry enough codebase truth to survive their review?
 
 **What happened:** One SKILL.md tuned to your codebase's actual testing conventions (framework, mocking policy, integration boundary, flakiness patterns, regression scope), living in your personal skills folder. Shipped.
 

@@ -56,6 +56,7 @@ Ask Claude to walk each diagnosed failure backwards into the validation that wou
 
 
 Claude gives the full three-way mapping. Your decision is narrower: which failure cost most, and why the other two pieces belong. Once two or three quoted moments make that clear, leave the rest at summary depth.
+
 ## Phase 3: Build the verifier for your worst failure
 
 *20 min*

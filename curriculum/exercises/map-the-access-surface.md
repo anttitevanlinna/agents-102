@@ -15,7 +15,7 @@
 ## Take the ranked ten, leave the rest on disk
 
 - From here on, outputs get big. The access map runs pages, the STRIDE walk after it runs longer, and soon two windows produce at once.
-- The countermove from M1 goes to work: tell the agent what output you want. The prompts here route the heavy output to disk and keep the chat read short, the saved map first, then a walk-through of what stood out.
+- The countermove from M1 goes to work: tell the agent what output you want. The prompts here route the heavy output to disk and keep the chat read short: the saved map first, then a walk-through of what stood out.
 - Your read is the short list, plus the two or three entries your own knowledge of the codebase flags. The file holds the rest until a decision needs it.
 - When an answer balloons into an essay anyway, say so: ranked list first, ten lines.
 
@@ -91,7 +91,7 @@ Then ask Claude to add the miss.
 
 ## What this sets up
 
-The STRIDE exercise invokes the curated STRIDE skill on the map you just built. The surface map IS the input. If you rushed Phase 2, STRIDE threat-models a thin map; if you worked the delta, STRIDE has something real to chew on.
+The STRIDE exercise invokes the curated STRIDE skill on the map you just built. The surface map IS the input. If you rushed Phase 3, STRIDE threat-models a thin map; if you worked the delta, STRIDE has something real to chew on.
 
 <!-- maintainer -->
 

@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 214 — 2026-09-13
+
+Product release notes (newreleases.io for GitHub releases, vendor changelogs) surfaced the Claude Code v2.1.257 Containment Escape Rule — a systematic security response Anthropic shipped 12 days before this cycle that no prior cycle had logged, despite its direct relevance to the containment-escape L4 meta-pattern. Lesson: when tracking a major security finding (containment-escape), the product changelog is a mandatory same-cycle check — not a one-time lookup at announcement but an ongoing watch for the vendor's code-level response. Vendor responses to security incidents arrive first in the product (patches, rules, flags) and only later in advisory blogs or external guidance; the product changelog is the highest-fidelity signal for "what has Anthropic actually changed."
+
+Confirming a practitioner as "deployer-direct" vs "commentator-synthesis" requires checking their stated background and how they frame incidents — a 398K-subscriber newsletter author who cites "practitioners" and uses anonymized examples is editorial synthesis, not deployer testimony, regardless of how specific the incidents sound. The anonymous-incident framing ($47K loop, $4.2K retry storm) is a rhetorical device common in synthesis writing; without named company + named person + verifiable context, it cannot upgrade the evidence level.
+
 ### Cycle 213 — 2026-09-12
 
 Government body direct-page fetches surfaced the CISA/Five Eyes "Careful Adoption of Agentic AI Services" guidance (May 1, 2026) — a 28-page authoritative document that had not appeared in any prior cycle despite being published 3.5 months ago. Secondary press coverage of government guidance is patchy; for any "what does the government say about X?" question, go directly to cisa.gov, nist.gov, ncsc.gov.uk, and aisi.gov.uk resource pages rather than searching for press coverage of those pages.

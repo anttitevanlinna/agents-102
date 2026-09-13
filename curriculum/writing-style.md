@@ -14,6 +14,8 @@ Five voices. Not all five in every sentence. Lead with the one the sentence's jo
 
 Wrong registers: the L&D coach, the cold spec sheet, the motivational poster.
 
+**The mood underneath (Antti, 2026-09-13).** Warm and approachable, written for someone already at home with LLMs and agents. The lectures show the way forward, then the next step, and invite the reader to wonder where all this is going without saying it plainly. The future is ours to build: dare to assume, then verify. Never the preaching mode. When a future beat needs a lead, it is Seth, Roger L. Martin or Risto, in that order of warmth.
+
 ## Who is reading
 
 One lecture file feeds three readers.

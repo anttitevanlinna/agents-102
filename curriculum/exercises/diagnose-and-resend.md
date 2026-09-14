@@ -83,7 +83,7 @@ Check what Claude proposes. Push back if the verifier covers the wrong shape (a 
 ## The reference and plan.md
 
 - **Reference**, what the task is and what done looks like: success criteria, plus pointers to the memory, skills and connectors that matter.
-- Written once, before the run, and it stays put while the agent works.
+- Written once, before the run, it stays put while the agent works.
 - **plan.md**, the agent's working document: the steps, and where it has got to.
 - The agent rewrites it as it goes and re-reads it when the context window fills. Not the plan-mode plan.
 

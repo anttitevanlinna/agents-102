@@ -113,7 +113,42 @@ teaching mechanism fails) · **SHARP** (jarring or misleading but recoverable) �
   Net: clean reproduction; the runner did its job (caught intended variability the
   green assertions can't see — and the maintainer call confirmed it's a feature).
 
+- **2026-09-10/11 — Finnish solo-psychologist / EU AI Act readiness case, real
+  Codex CLI in tmux.** The new case used the shared prompt-key chain and runtime-
+  neutral artifacts; no canonical prompt body changed. Prework, M1, M2, M3, M4a,
+  M4b and M5 completed substantively. M2 correctly rejected the fictional
+  profession-based high-risk / label-everything counter-case; M3 integrated fresh
+  Commission-attributed distinctions without certifying compliance; M4 caught
+  marketing PII, an indirect prompt injection and over-broad publishing reach;
+  M5 caught all three planted unsupported claims. Three runner assertions were
+  corrected after artifact inspection (H7–H9). M6 turns 1–4 then passed, including
+  a real three-round fixed-judge loop, stable judge SHA, trajectory readout and an
+  in-place tactic debrief. **M6 turn 5 did not complete.** Attempt 1 reached the
+  third judge before the 1800s cutoff; a clean retry with a 3600s budget spent
+  about 53 minutes on the first generator and ended before its first judge. See
+  C19. Runs: `out/a101-*-20260910-*`, especially
+  `a101-m6-20260910-205315-45991` and `a101-m6-20260910-220028-84210`.
+
 ## Curriculum findings (the deliverable)
+
+### BLOCKER
+
+- **C19 · `eval-loop-6` reusable fixed-judge loop · Codex execution cost and
+  completion variance.** The take-home turn requires at least three sequential
+  generator→judge rounds, a main-session tactic rewrite between rounds, a
+  per-claim ledger and final integrity notes. With Codex agents this means at
+  least six serial worker completions. On the psychologist corpus, one live run
+  nearly reached the third judgment in 30 minutes; the clean retry took roughly
+  53 minutes for the first generator alone and still had no first judgment when
+  the 60-minute turn budget expired. The retry left only `round-1/briefing.md` and
+  its handoff, not `notes.md`, so this is not an assertion false negative. The
+  earlier M6 calibration loop proves Codex can execute the mechanism correctly;
+  the portable repeat is not predictably finishable in a standard session. Stop
+  here before changing training material. Options for maintainer review: make the
+  take-home loop two rounds after the in-class three-round loop; reuse a compact
+  claim roster so judges do not rebuild a full ledger; or state an explicit
+  long-running expectation and make resumability part of the exercise. Any prompt
+  edit needs the normal prompt-card process.
 
 ### SHARP
 
@@ -412,6 +447,30 @@ PROPOSE-not-applied, pending Antti.
   bug. Runner-mechanic fix; the curriculum half is C10. **Re-run `bjv0zsf08`
   (exit 0) confirms M6 4/4 PASS with the fix — m6:2 emits the C10 WARN and passes,
   m6:4 the C11 WARN and passes, judge byte-identical end-to-end.**
+
+- **H7 · FIXED · case seams asserted source markers after semantic curation.**
+  The first psychologist M2 and M3 passes correctly integrated the held-back
+  positions while dropping fixture-only sentinel strings. Assertions now split
+  source-open evidence from semantic integration evidence, both supplied by the
+  case contract. Resumed turns passed without changing prompt bodies.
+
+- **H8 · FIXED · authored-skill assertion inspected only `SKILL.md`.** Codex
+  produced the requested tight entry file plus `references/agent-security.md`;
+  all four named threat patterns were present and loaded by the entry file. The
+  assertion now checks the skill package, matching the prompt's allowed artifact
+  shape. M4a resumed green and M4b proved the installed package worked.
+
+- **H9 · FIXED · M6-only case eagerly required M7 answers.** Case loading once
+  read M7 fixtures even when the selected case ended at M6. Optional tokens now
+  load only when the case's module cap includes M7. The cap is enforced by the
+  single-module and chain runners and covered by tests.
+
+- **H10 · OPEN · ordinary turn timeout is too short for `eval-loop-6`, but a
+  larger number is not the whole fix.** A tested 3600s default now applies only to
+  M6 turn 5, while explicit `CLAUDE_RUNNER_TIMEOUT` still wins. The clean retry
+  nevertheless failed before round 1 judgment, so do not call the longer timeout
+  a resolution; it merely prevents the known 1800s premature cutoff. Curriculum-
+  level execution shape is C19.
 
 ---
 

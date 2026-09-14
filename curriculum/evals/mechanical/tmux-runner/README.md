@@ -1,6 +1,6 @@
-# runner/ — tmux-driven Claude Code session runner
+# runner/ — tmux-driven agent session runner
 
-Drives a real Claude Code session in a tmux pane through a sequence of prompts and captures the transcript. The thing headless `claude -p` can't do: walk a multi-turn arc with the TTY surface intact (hooks, statusline, permission prompts).
+Drives a real Claude Code or Codex CLI session in a tmux pane through a sequence of prompts and captures the transcript. This preserves the interactive, multi-turn TTY surface while testing the real prompt chain and its compounding artifacts.
 
 ## Shape
 
@@ -9,7 +9,7 @@ runner/
   run.sh                 # entry: walks a scenario, drives the pane
   install-sut.sh         # one-time: registers Stop hook in a SUT cwd
   hooks/
-    stop-sentinel.sh     # writes turn-N.done after each Claude response
+    stop-sentinel.sh     # Claude: writes turn-N.done after each response
   lib/
     resolve-prompt.sh    # key -> body from agents-102/curriculum/prompts/
     tmux.sh              # send-keys / capture-pane / kill
@@ -22,8 +22,42 @@ runner/
 ## Design notes
 
 - **Scenarios reference prompt keys, never copy prompt bodies.** Source of truth for prompts is `~/Projects/agents-102/curriculum/prompts/<key>.md`. Override the registry path with `PROMPT_REGISTRY`.
-- **Sync via Stop-hook sentinel, not pane scraping.** Pane-output grepping is brittle (ANSI, statusline redraws, streaming). A Stop hook fires deterministically when Claude finishes a turn — we wait on a file, not a string.
-- **One tmux session per run.** Pane 0 holds Claude. Detached, so the runner can drive multiple sessions in parallel later.
+- **Runtime-neutral artifact identities.** Shared controls refer to identities such as `root-instructions` and `project-skills`. The runtime profile resolves those to real paths (`CLAUDE.md`/`.claude/skills` or `AGENTS.md`/`.agents/skills`). Scenarios and downstream prompts do not fork by runtime.
+- **Runtime-specific completion detection behind one transport.** Claude uses its Stop-hook sentinel. Codex uses its stable interactive prompt state. The scenario driver does not duplicate prompt bodies or assertions.
+- **One tmux session per run.** Pane 0 holds the selected CLI. Detached, so the runner can drive multiple sessions in parallel later.
+
+## Agents 101 cases and runtimes
+
+`run-a101.sh`, `arrange-agents-101.sh`, and `chain-agents-101.sh` share one case loader. `nordveil` remains the default eight-module regression case. `finnish-psychologist` is an M1–M6 stress case: a fictional Finnish solo practitioner uses Claude for books, website, newsletter, marketing, and social content, with client and clinical material explicitly out of scope. It exercises AI Act readiness without asserting that the profession alone makes those content workflows high-risk.
+
+Case kits own only facts, source fixtures, canned student answers, semantic assertion patterns, and their maximum module. The canonical prompt-key scenarios remain shared. Four scenario tails that require domain-specific answers resolve case-owned tokens; the prompt registry is unchanged.
+
+```bash
+# Full Finnish psychologist simulation with real Codex CLI in tmux
+./arrange-agents-101.sh \
+  --case finnish-psychologist \
+  --cwd /tmp/a101-psych/work \
+  --material /tmp/a101-psych/material
+
+./chain-agents-101.sh \
+  --case finnish-psychologist \
+  --runtime codex-cli \
+  --to m6 \
+  --no-arrange \
+  --cwd /tmp/a101-psych/work \
+  --material /tmp/a101-psych/material
+```
+
+Useful inspection and recovery controls:
+
+```bash
+./run-a101.sh --case finnish-psychologist --print-case
+./run-a101.sh --case finnish-psychologist --print-case-dir
+./run-a101.sh --case finnish-psychologist --module m6 --runtime codex-cli \
+  --from-turn 3 --cwd /tmp/a101-psych/work --material /tmp/a101-psych/material
+```
+
+`--from-turn` is for resuming the same module after diagnosing a harness failure; it does not seed or reconstruct missing earlier state. A case module cap is enforced by both the single-module runner and the chain.
 
 ## First run
 
@@ -46,7 +80,7 @@ ls runner/out/<run-id>/
 
 - `PROMPT_REGISTRY` — path to prompts/ (default: `~/Projects/agents-102/curriculum/prompts`)
 - `CLAUDE_CMD` — launch command (default: `claude`). Use `CLAUDE_CMD="claude --permission-mode auto"` for headless runs (the auto-mode classifier allows tool calls without prompts). **Do NOT use `--permission-mode bypassPermissions`** — it shows a "Yes/No, exit" confirmation dialog at startup that hangs the runner forever (no Stop hook fires for the dialog).
-- `CLAUDE_RUNNER_TIMEOUT` — per-turn sentinel timeout in seconds (default: 3600s = 1h). M1 + M2 default to this because `CLAUDE_EFFORT=high` (M1's prework default) plus API retries can push a single TDD turn past 60min. For faster medium-effort runs, set `CLAUDE_EFFORT=medium` AND override to ~1500s.
+- `CLAUDE_RUNNER_TIMEOUT` — explicit per-turn timeout in seconds. General Agents 101 turns default to 1800s; its reusable M6 fixed-judge loop defaults to 3600s because it performs three generator/judge rounds. An explicit value always wins. Other runners retain their own defaults.
 - `CLAUDE_RUNNER_SLASH_SLEEP` — render-wait for slash-only turns (default: 3s).
 
 ## Per-turn artifact assertions

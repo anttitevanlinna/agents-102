@@ -31,3 +31,12 @@ render_controls() {
   fi
   printf '%s' "$text"
 }
+
+a101_turn_timeout() {
+  local module="$1" turn="$2" standard="$3" explicit_override="$4"
+  if [[ "$module:$turn" == m6:5 && "$explicit_override" -eq 0 && "$standard" -lt 3600 ]]; then
+    printf '%s\n' 3600
+  else
+    printf '%s\n' "$standard"
+  fi
+}

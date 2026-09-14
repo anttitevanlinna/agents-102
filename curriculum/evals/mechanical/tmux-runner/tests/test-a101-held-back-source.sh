@@ -28,8 +28,10 @@ set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 root="$HERE/.."
 curate="$root/fixtures/agents-101-synthetic/answers/m2-curation-where.txt"
+ingest="$root/fixtures/agents-101-synthetic/answers/m2-ingest.txt"
 scenario="$root/scenarios/a101-m2.txt"
 runner="$root/run-a101.sh"
+config="$root/fixtures/agents-101-synthetic/case.env"
 fail=0
 
 # 1. curate answer must name the real provenances and must NOT expose the
@@ -46,17 +48,18 @@ fi
 
 # 2. ingest scenario must scope to wiki/ + docs/ + the live a16z crawl, and must
 #    NOT ingest the held-back web/ counter-case folder.
-/usr/bin/grep -qiE 'wiki/' "$scenario" && /usr/bin/grep -qiE 'docs/' "$scenario" && /usr/bin/grep -qiE 'a16z' "$scenario" || {
-  echo "FAIL: ingest scenario does not scope to wiki/ + docs/ + live a16z crawl"; fail=1; }
+/usr/bin/grep -qiE 'wiki/' "$ingest" && /usr/bin/grep -qiE 'docs/' "$ingest" && /usr/bin/grep -qiE 'a16z' "$ingest" || {
+  echo "FAIL: Nordveil ingest answer does not scope to wiki/ + docs/ + live a16z crawl"; fail=1; }
 # Held-back folders may appear in comments (documenting the design) but must NOT
 # be named in an instruction (non-comment) line — that would sweep them in.
-if /usr/bin/grep -vE '^[[:space:]]*#' "$scenario" | /usr/bin/grep -qE 'new/|new-m3'; then
-  echo "FAIL: ingest scenario names a held-back folder (new/ or new-m3/) in an instruction line"; fail=1
+if /usr/bin/grep -qE 'new/|new-m3' "$ingest"; then
+  echo "FAIL: Nordveil ingest answer names a held-back folder (new/ or new-m3/)"; fail=1
 fi
+/usr/bin/grep -q '<M2_INGEST>' "$scenario" || { echo 'FAIL: shared M2 scenario does not load the case-owned ingest answer'; fail=1; }
 
 # 3. runner must carry the held-back guards (sentinel from churn-warning.md).
-/usr/bin/grep -q 'survivorship' "$runner" || {
-  echo "FAIL: run-a101.sh missing held-back-source guard (sentinel 'survivorship')"; fail=1; }
+/usr/bin/grep -q 'A101_M2_HELD_RE' "$runner" && /usr/bin/grep -q 'survivorship' "$config" || {
+  echo "FAIL: held-back-source guard is not split between generic runner and Nordveil case sentinel"; fail=1; }
 
 [[ $fail -eq 0 ]] && echo "PASS: held-back counter-case is scoped out of curate/ingest and guarded in the runner"
 exit $fail

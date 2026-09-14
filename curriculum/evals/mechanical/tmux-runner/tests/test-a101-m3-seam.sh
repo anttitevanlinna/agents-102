@@ -24,6 +24,7 @@ netans="$kit/answers/m3-net-answer.txt"
 scenario="$root/scenarios/a101-m3.txt"
 runner="$root/run-a101.sh"
 arrange="$root/arrange-agents-101.sh"
+config="$kit/case.env"
 fail=0
 
 # Source exists and carries the sentinel.
@@ -56,8 +57,8 @@ grep -q 'sources/usage-pricing-churn-warning' "$netans" || {
 # Wiring: arrange stages the seam into new-m3/; runner + scenario reference it.
 grep -q 'new-m3' "$arrange" || { echo "FAIL: arrange does not stage new-m3/"; fail=1; }
 grep -q 'NEW_SOURCE_M3' "$runner" || { echo "FAIL: runner missing NEW_SOURCE_M3 token"; fail=1; }
-grep -q 'halvorsen' "$runner" || {
-  echo "FAIL: run-a101.sh missing M3 seam guard (sentinel 'halvorsen')"; fail=1; }
+grep -q 'A101_M3_SEAM_RE' "$runner" && grep -qi 'halvorsen' "$config" || {
+  echo "FAIL: M3 seam guard is not split between generic runner and Nordveil case sentinel"; fail=1; }
 
 [[ $fail -eq 0 ]] && echo "PASS: M3 seam sentinel unique to new-m3, not named in the prompt, staged + guarded"
 exit $fail

@@ -60,7 +60,7 @@ Ask Claude to draft the ADR in your repo's convention, save it, and show you the
 
 ## Read the ADR, check the voice and the lens
 
-- The Decision section should read like one engineer explaining a call to another. Read it. If it reads like it was written for a compliance reviewer rather than a future engineer, push back, then save it.
+- The Decision section should read like one engineer explaining a call to another. If it reads like it was written for a compliance reviewer rather than a future engineer, push back, then save it.
 - STRIDE is a tool, not the only lens. If its six categories feel wrong for your feature (some features are really abuse-case or insider-threat shaped, where Elevation of privilege and Repudiation carry everything and Spoofing and Tampering don't fit), say so in the Alternatives considered section. *"STRIDE surfaced X; the more accurate lens here was Y; decision reasoned in Y's terms"* is a legitimate ADR move. You decide.
 
 ## Check where the ADR landed

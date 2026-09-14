@@ -490,6 +490,37 @@ test('theory handbook build', async (t) => {
     dom.window.close();
   });
 
+  await t.test('groups consecutive exercise summaries with compact screen and print gaps', () => {
+    const dom = new JSDOM(handbookRaw, { pretendToBeVisual: true });
+    const document = dom.window.document;
+    const cards = [...document.querySelectorAll('.exercise-summary')];
+    const group = cards.find(card =>
+      card.nextElementSibling?.classList.contains('exercise-summary')
+      && card.nextElementSibling.nextElementSibling?.classList.contains('exercise-summary'));
+    assert.ok(group, 'theory handbook needs three consecutive exercise summaries to inspect');
+
+    const middle = group.nextElementSibling;
+    const last = middle.nextElementSibling;
+    assert.equal(dom.window.getComputedStyle(group).marginBottom, '1.25rem');
+    assert.equal(dom.window.getComputedStyle(middle).marginTop, '0px');
+    assert.equal(dom.window.getComputedStyle(middle).marginBottom, '1.25rem');
+    assert.equal(dom.window.getComputedStyle(last).marginTop, '0px');
+    assert.equal(dom.window.getComputedStyle(last).marginBottom, '5rem');
+
+    const style = document.querySelector('style[data-theory-handbook]');
+    const printMedia = [...style.sheet.cssRules].find(rule =>
+      rule.constructor.name === 'CSSMediaRule' && rule.conditionText === 'print');
+    const compactPrintGap = [...printMedia.cssRules].find(rule =>
+      rule.selectorText === 'body.theory-handbook .exercise-summary:has(+ .exercise-summary)');
+    const compactPrintFollower = [...printMedia.cssRules].find(rule =>
+      rule.selectorText === 'body.theory-handbook .exercise-summary + .exercise-summary');
+    assert.ok(compactPrintGap, 'theory handbook compact print gap rule missing');
+    assert.ok(compactPrintFollower, 'theory handbook compact print follower rule missing');
+    assert.equal(compactPrintGap.style.marginBottom, '3mm');
+    assert.equal(compactPrintFollower.style.marginTop, '0px');
+    dom.window.close();
+  });
+
   await t.test('places exercise summaries at their lived points in the theory arc', () => {
     const markers = [
       'id="lectures-the-wizard-move"',

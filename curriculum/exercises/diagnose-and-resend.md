@@ -107,7 +107,7 @@ Say *lock it in.* The agent writes both files.
 
 *3 min*
 
-Now the re-send. Same task, packaged this time, and notice the prompt: it shrank while the task stayed the same. The packaging does the explaining; the prompt invokes it.
+The task is the same, packaged this time, and the prompt shrank. The packaging does the explaining; the prompt invokes it.
 
 **Session** *(new, "M5 long-run")*
 

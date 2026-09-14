@@ -10,7 +10,7 @@ Same session as the gap map. The ranked gaps and the rule you cut are in scrollb
 
 **What you build:** a diagram of the work that recurs across your stack.
 
-**The point:** recurring work has a shape, and drawn, the shape is easier to recognise than described.
+**The point:** draw the recurring work so you see the forest before the trees.
 
 ---
 

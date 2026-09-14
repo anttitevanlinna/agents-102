@@ -56,3 +56,56 @@ test('Strata print cover uses the compiled sea-passage figure and the new cover 
   assert.match(strataCss, /@page\s*\{[^}]*size:\s*A4;[^}]*\}/);
   assert.match(strataCss, /\.print-cover\s*\{[^}]*background:\s*#ffffff\s*!important;/s);
 });
+
+test('Strata print assigns neutral and phase-tinted A4 page stocks', () => {
+  assert.match(strataCss, /@page\s*\{[^}]*size:\s*A4;[^}]*\}/);
+  assert.match(strataCss, /\.print-cover\s*\{[^}]*page:\s*strata-cover;/s);
+  assert.match(strataCss, /\.print-toc\s*\{[^}]*page:\s*strata-contents;/s);
+
+  const pageStocks = [
+    ['strata-phase-1', '#f2f4f6'],
+    ['strata-phase-2', '#f7f4ee'],
+    ['strata-phase-3', '#f6f2f2'],
+    ['strata-phase-4', '#f7f4ef'],
+  ];
+
+  pageStocks.forEach(([pageName, color]) => {
+    assert.match(
+      strataCss,
+      new RegExp(`@page\\s+${pageName}\\s*\\{[^}]*background:\\s*${color}`, 's'),
+    );
+  });
+
+  assert.match(strataCss, /\.phase-section\.strata-1\s*\{[^}]*page:\s*strata-phase-1;/s);
+  assert.match(strataCss, /\.phase-section\.strata-2\s*\{[^}]*page:\s*strata-phase-2;/s);
+  assert.match(strataCss, /\.phase-section\.strata-3\s*\{[^}]*page:\s*strata-phase-3;/s);
+  assert.match(strataCss, /\.phase-section\.strata-4\s*\{[^}]*page:\s*strata-phase-4;/s);
+  assert.doesNotMatch(
+    strataCss,
+    /\.phase-section\.strata-1,[\s\S]*\.phase-section\.strata-4\s*\{\s*background:\s*#ffffff\s*!important;/,
+  );
+  assert.match(
+    strataCss,
+    /\.phase-section\.strata-4::after\s*\{[^}]*content:\s*"bosser\.consulting";/s,
+  );
+  assert.match(strataCss, /\.article-body::after\s*\{[^}]*content:\s*none;/s);
+  assert.match(
+    strataCss,
+    /body\.light-article,[\s\S]*body\.light-article \.article-body\s*\{[^}]*background:\s*transparent\s*!important;/s,
+  );
+});
+
+test('Strata print gives the essay layer a Baskerville reading voice without changing screen type', () => {
+  assert.match(
+    strataCss,
+    /body\.light-article \.article-body\s*\{[^}]*font-family:\s*Charter,\s*'Bitstream Charter',\s*Georgia,\s*serif;/s,
+  );
+  assert.match(
+    strataCss,
+    /@media print\s*\{[\s\S]*body\.light-article \.article-body\s*\{[^}]*font-family:\s*Baskerville,\s*'Times New Roman',\s*Times,\s*serif;/,
+  );
+  assert.match(
+    strataCss,
+    /@media print\s*\{[\s\S]*\.print-toc-entry\s*\{[^}]*font-family:\s*Baskerville,\s*'Times New Roman',\s*Times,\s*serif;/,
+  );
+});

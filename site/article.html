@@ -6,10 +6,10 @@
     <title>Loading... — Agents 102</title>
     <link rel="stylesheet" href="style.css">
     <script>
-        // Layout switcher: ?layout=logbook|folio|spine|deck|kide|tuoli|strata|selka|kompassi
+        // Layout switcher: ?layout=logbook|folio|spine|deck|kide|tuoli|strata|strata2|strata3|selka|kompassi
         (function() {
             var layout = new URLSearchParams(window.location.search).get('layout');
-            if (layout && /^(logbook|folio|spine|deck|kide|tuoli|strata|strata2|selka|kompassi)$/.test(layout)) {
+            if (layout && /^(logbook|folio|spine|deck|kide|tuoli|strata|strata2|strata3|selka|kompassi)$/.test(layout)) {
                 document.write('<link rel="stylesheet" href="layouts/' + layout + '.css">');
                 window.__wpLayout = layout;
             }
@@ -335,7 +335,8 @@
         // Load layout-specific JS if a layout variant is active
         if (window.__wpLayout) {
             var s = document.createElement('script');
-            s.src = 'layouts/' + window.__wpLayout + '.js';
+            var layoutScript = window.__wpLayout === 'strata3' ? 'strata2' : window.__wpLayout;
+            s.src = 'layouts/' + layoutScript + '.js';
             document.body.appendChild(s);
         }
     </script>

@@ -1,0 +1,121 @@
+/*
+ * STRATA 3 — threshold-and-echo print study
+ *
+ * Screen presentation stays identical to Strata 2. In print, phase colour is
+ * concentrated into full-page openers and small essay-level echoes so an A4
+ * laser printer can leave the sustained reading pages white.
+ */
+
+@import url('./strata2.css');
+
+@page strata3-reading {
+    size: A4;
+    margin: 25mm 20mm 28mm 22mm;
+    background: #fff;
+}
+
+@media print {
+    body.light-article,
+    body.light-article .article-with-toc,
+    body.light-article .article-body-wrap,
+    body.light-article .article-body,
+    .phase-section {
+        background: #fff !important;
+    }
+
+    .phase-section {
+        page: strata3-reading;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .phase-section.strata-1,
+    .phase-section.strata-2,
+    .phase-section.strata-3,
+    .phase-section.strata-4 {
+        page: strata3-reading;
+        background: #fff !important;
+    }
+
+    /* A phase is felt once, as a threshold, instead of paid for on every page. */
+    .article-body h1.phase-1,
+    .article-body h1.phase-2,
+    .article-body h1.phase-3,
+    .article-body h1.phase-4 {
+        box-sizing: border-box;
+        display: flex;
+        align-items: flex-end;
+        min-height: 236mm;
+        width: calc(100% + 42mm);
+        margin: 0 -20mm 0 -22mm;
+        padding: 24mm 20mm 25mm 22mm;
+        border: 0;
+        break-before: page;
+        page-break-before: always;
+        break-after: page;
+        page-break-after: always;
+        font-family: Baskerville, 'Times New Roman', Times, serif;
+        font-size: 32pt;
+        font-weight: 400;
+        line-height: 1.05;
+        letter-spacing: -0.025em;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .article-body h1.phase-1 { color: #315a7d; background: var(--strata-1) !important; }
+    .article-body h1.phase-2 { color: #80541f; background: var(--strata-2) !important; }
+    .article-body h1.phase-3 { color: #7f2b2b; background: var(--strata-3) !important; }
+    .article-body h1.phase-4 { color: #a94314; background: var(--strata-4) !important; }
+
+    .article-body h1.phase-1 + p,
+    .article-body h1.phase-2 + p,
+    .article-body h1.phase-3 + p,
+    .article-body h1.phase-4 + p {
+        display: none;
+    }
+
+    .phase-section.strata-1 .essay-card { --phase-echo: #f2f4f6; --phase-ink: #3d6e99; }
+    .phase-section.strata-2 .essay-card { --phase-echo: #f7f4ee; --phase-ink: #a06928; }
+    .phase-section.strata-3 .essay-card { --phase-echo: #f6f2f2; --phase-ink: #9e3535; }
+    .phase-section.strata-4 .essay-card { --phase-echo: #f7f4ef; --phase-ink: #d4571a; }
+
+    .essay-card {
+        padding-top: 4mm;
+        border-top: 1.2mm solid var(--phase-ink);
+    }
+
+    .essay-card:first-of-type {
+        padding-top: 4mm;
+        border-top: 1.2mm solid var(--phase-ink);
+    }
+
+    .essay-card .essay-date,
+    .essay-card h2 {
+        color: var(--phase-ink);
+    }
+
+    .essay-card blockquote.thesis {
+        border-left-color: var(--phase-ink);
+        background: var(--phase-echo) !important;
+    }
+
+    .phase-section.strata-4::after {
+        border-top: 1px solid #d8d8d2;
+        padding-top: 5mm;
+    }
+
+    /* Cover-letter mode remains the compact Strata 2 treatment. */
+    .cover-strata2 .article-body h1 {
+        min-height: 0;
+        width: auto;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 1rem 0 0.4rem;
+        break-before: auto;
+        break-after: auto;
+        page-break-before: avoid;
+        page-break-after: auto;
+        background: #fff !important;
+    }
+}

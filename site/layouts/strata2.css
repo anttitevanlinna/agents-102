@@ -572,6 +572,12 @@ body.light-article .article-body {
    ══════════════════════════════════════════════════════════════════════════ */
 
 @page { size: A4; margin: 25mm 20mm 28mm 22mm; }
+@page strata-cover { background: #ffffff; }
+@page strata-contents { background: #ffffff; }
+@page strata-phase-1 { background: #f2f4f6; }
+@page strata-phase-2 { background: #f7f4ee; }
+@page strata-phase-3 { background: #f6f2f2; }
+@page strata-phase-4 { background: #f7f4ef; }
 
 /* ── Print cover page (hidden on screen) ── */
 
@@ -586,6 +592,22 @@ body.light-article .article-body {
         line-height: 1.65;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+    }
+
+    body.light-article,
+    body.light-article .article-with-toc,
+    body.light-article .article-body-wrap,
+    body.light-article .article-body {
+        background: transparent !important;
+    }
+
+    /* Baskerville keeps the printed essays light, human, and provisional. */
+    body.light-article .article-body {
+        font-family: Baskerville, 'Times New Roman', Times, serif;
+    }
+
+    body.light-article .article-body blockquote.thesis {
+        font-family: inherit;
     }
 
     /* Kill all interactive wayfinding + particles */
@@ -605,6 +627,7 @@ body.light-article .article-body {
 
     /* ── COVER PAGE ── */
     .print-cover {
+        page: strata-cover;
         display: flex !important;
         flex-direction: column;
         align-items: flex-start;
@@ -734,6 +757,7 @@ body.light-article .article-body {
 
     /* ── TABLE OF CONTENTS ── */
     .print-toc {
+        page: strata-contents;
         display: block !important;
         page-break-after: always;
         padding-top: 2rem;
@@ -768,7 +792,7 @@ body.light-article .article-body {
     .print-toc-phase-name.toc-phase-4 { color: #d4571a; }
 
     .print-toc-entry {
-        font-family: Charter, 'Bitstream Charter', Georgia, serif;
+        font-family: Baskerville, 'Times New Roman', Times, serif;
         font-size: 10.5pt;
         line-height: 1.8;
         margin: 0;
@@ -783,15 +807,15 @@ body.light-article .article-body {
         margin-right: 0.5em;
     }
 
-    /* ── Phase sections — subtle tint in print ── */
+    /* ── Phase sections — named A4 paper stocks ── */
     .phase-section {
         margin-left: 0; margin-right: 0;
         padding-left: 0; padding-right: 0;
     }
-    .phase-section.strata-1,
-    .phase-section.strata-2,
-    .phase-section.strata-3,
-    .phase-section.strata-4 { background: #ffffff !important; }
+    .phase-section.strata-1 { page: strata-phase-1; background: var(--strata-1) !important; }
+    .phase-section.strata-2 { page: strata-phase-2; background: var(--strata-2) !important; }
+    .phase-section.strata-3 { page: strata-phase-3; background: var(--strata-3) !important; }
+    .phase-section.strata-4 { page: strata-phase-4; background: var(--strata-4) !important; }
 
     /* ── Constrain measure ── */
     .article-with-toc, .article-container { max-width: none; padding: 0; }
@@ -891,6 +915,10 @@ body.light-article .article-body {
 
     /* ── Footer attribution ── */
     .article-body::after {
+        content: none;
+    }
+
+    .phase-section.strata-4::after {
         content: "bosser.consulting";
         display: block;
         text-align: center;

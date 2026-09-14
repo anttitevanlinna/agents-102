@@ -36,7 +36,7 @@ This file is a starter. Everyone sees how this will bloat almost immediately.
 
 ## Sweep the session into your rules file one more time
 
-- One more pass before close. Anything earned since the first compound pass (the push-backs, the rules you rewrote) that didn't land yet?
+- Anything earned since the first compound pass (the push-backs, the rules you rewrote) that didn't land yet?
 - A heads-up that you are about to compact or end the session flushes out work in progress. Claude writes down what it was still holding.
 
 Ask Claude to sweep the session for anything earned since the first compound and integrate.

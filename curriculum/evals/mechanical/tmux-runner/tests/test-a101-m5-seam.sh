@@ -26,6 +26,7 @@ kit="$root/fixtures/agents-101-synthetic"
 seed="$kit/answers/m5-briefing-seed.txt"
 q2="$kit/sources/docs/q2-revenue-review.md"
 runner="$root/run-a101.sh"
+config="$kit/case.env"
 fail=0
 
 # Seed exists and carries all three planted claims.
@@ -46,7 +47,8 @@ fi
 
 # Wiring: runner carries the M5 seam token + the plant guards.
 grep -q 'M5_BRIEFING_SEED' "$runner" || { echo "FAIL: runner missing M5_BRIEFING_SEED token"; fail=1; }
-grep -q '30%' "$runner" || { echo "FAIL: run-a101.sh missing the m5 30%-plant assertion guard"; fail=1; }
+grep -q 'A101_M5_PLANT_1_RE' "$runner" && grep -q '30%' "$config" || {
+  echo "FAIL: M5 plant guard is not split between generic runner and Nordveil case sentinel"; fail=1; }
 
 [[ $fail -eq 0 ]] && echo "PASS: M5 seam plants 3 deterministic ungrounded claims (1/detector), citation target clean, wired"
 exit $fail

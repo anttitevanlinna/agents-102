@@ -43,7 +43,7 @@ Ask Claude to propose the most plausible incident story and walk you through the
 
 ## Push back on the incident story, land the mitigation
 
-- The incident story is what makes STRIDE useful rather than performative. Read what Claude proposes. Push back if the story doesn't fit your codebase's reality.
+- The incident story is what makes STRIDE useful rather than performative. Push back if the story doesn't fit your codebase's reality.
 - Work with Claude to land on the right mitigation.
 
 ## Phase 3: Write the decision as an ADR

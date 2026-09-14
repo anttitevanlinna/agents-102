@@ -65,6 +65,14 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 215 — 2026-09-14
+
+GitSpawn (Manifold Security Sep 1) was discovered via a security sweep query rather than a platform-specific watch query — "AI coding agent security incident containment September 2026" surfaced it in the same search pass as the containment-escape follow-up. Lesson: when a security watch item is active (containment-escape), run a broad open-ended security sweep alongside the specific targeted queries, because new attack classes arrive on adjacent publication channels (security research firms) rather than practitioner blogs. GitSpawn's disclosure on the same day as the Claude Code v2.1.257 Containment Escape Rule (Sep 1) would have been missed if the cycle had queried only for the Rehberger/Irregular follow-up.
+
+The Beliūnas "near-miss" reinforced the deployer-direct admission gate's importance: analyst/advisor writing with deployment-specific dollar figures ($47K loop, $4.2K retry loop) reads like deployer testimony but doesn't qualify — the dollars are client-sourced or anonymized examples, not first-person deployment reports. The gate is "who ran the system, not who wrote about the problem." Bypassing it for a compelling narrative would inflate Loop Engineering Stage 3 to L3 prematurely. Near-miss documentation is itself useful: it shows the concept is reaching the analyst layer (Stage 2 maturity) even without Stage 3 deployer convergence.
+
+FlowVerify aggregate telemetry (22K devs, 4,800 teams: +441.5% review time, +861% code churn) provides the strongest quantitative support to date for the Loop Engineering Stage 3 review-bottleneck sub-claim — stronger than any practitioner blog — but does not count toward the deployer-direct voice threshold because it is editorial aggregation, not a practitioner's own deployment account. For future quantitative data found via third-party telemetry aggregators: add it as supporting evidence for existing claims rather than treating it as a new deployer-direct voice.
+
 ### Cycle 214 — 2026-09-13
 
 Product release notes (newreleases.io for GitHub releases, vendor changelogs) surfaced the Claude Code v2.1.257 Containment Escape Rule — a systematic security response Anthropic shipped 12 days before this cycle that no prior cycle had logged, despite its direct relevance to the containment-escape L4 meta-pattern. Lesson: when tracking a major security finding (containment-escape), the product changelog is a mandatory same-cycle check — not a one-time lookup at announcement but an ongoing watch for the vendor's code-level response. Vendor responses to security incidents arrive first in the product (patches, rules, flags) and only later in advisory blogs or external guidance; the product changelog is the highest-fidelity signal for "what has Anthropic actually changed."

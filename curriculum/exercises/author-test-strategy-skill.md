@@ -55,7 +55,7 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 
 *2 min*
 
-- The skill is already shipped. The agent wrote it in Phase 1 and your push-back sharpened it during Phase 2's invoke-and-critique. There is no separate install step.
+- The skill is already shipped. The agent wrote it and your push-back sharpened it. There is no separate install step.
 
 ## Decide if it graduates to the team
 

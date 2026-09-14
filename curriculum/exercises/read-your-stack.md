@@ -56,7 +56,7 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 
 ## Decide what crosses back to your main repo
 
-**Note** The M5 worktree holds this module's work: `./CLAUDE.local.md` with the rule you cut, `observations/`, and M5's packaging. Your main repo's copies stopped at the fork, stale rule and all. What crosses back is yours: copy the worktree's versions over, take the parts you want, or leave them where they are.
+**Note** The M5 worktree holds your work: `./CLAUDE.local.md` with the rule you cut, `observations/`, and M5's packaging. Your main repo's copies stopped at the fork, stale rule and all. What crosses back is yours: copy the worktree's versions over, take the parts you want, or leave them where they are.
 
 <!-- maintainer -->
 

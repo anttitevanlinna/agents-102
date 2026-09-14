@@ -40,7 +40,7 @@ Ask Claude to update the ticket with a close-out note and report what it wrote.
 
 ## Double-check the voice
 
-- Does it sound like the comments already on the ticket? If the wording feels off or wrong, tell Claude which line and how you'd write it.
+- Does the note sound like the ticket's other comments? If the wording feels off or wrong, tell Claude which line and how you'd write it.
 
 ## Anything can be reverse-engineered
 

@@ -101,7 +101,7 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 
 Optional. One read.
 
-**Read:** Lucas F. da Costa, [Backpressure Is All You Need](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need) (May 2026). Da Costa carries a word out of flow systems and into agent work: when generation outruns judgment, the human becomes the stage everything else waits on. Module 4 sends off a session that runs without you watching, which is where you meet that limit yourself.
+**Read:** Lucas F. da Costa, [Backpressure Is All You Need](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need) (May 2026). Da Costa carries a word out of flow systems and into agent work: when generation outruns judgment, the human becomes the stage everything else waits on..
 
 ## Next
 <!--tier:3-->

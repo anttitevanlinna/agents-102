@@ -63,7 +63,7 @@ Pick one when plan mode feels too comfortable.
 ## Pre-reads before Module 3
 <!--tier:1-->
 
-Optional. The security frame Module 3 works in.
+Optional.
 
 **Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (June 2025). Names the threat class that combines private data, untrusted content, and external communication into a compromise surface.
 
@@ -75,7 +75,7 @@ Optional. The security frame Module 3 works in.
 ## Pre-reads before Module 4
 <!--tier:1-->
 
-Optional. The thinking Module 4 asks you to do before you step away from a session.
+Optional.
 
 **Read:** Lucas F. da Costa, [Backpressure Is All You Need](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need) (May 2026). Da Costa carries a word out of flow systems and into agent work: when generation outruns judgment, the human becomes the stage everything else waits on.<!--/flag:no-module:earn-the-trust-->
 

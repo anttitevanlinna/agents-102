@@ -74,7 +74,7 @@ Pick one when you want a side quest before Module 2.
 ## Pre-reads before Module 2
 <!--tier:1-->
 
-Optional. Do them and Module 2's moves land as things you've already seen.
+Optional.
 
 **Read:** [The agentic engineering progression](trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md). The progression from using AI for assistance to improving the system behind every session, followed by a model of reach and calibrated trust.
 

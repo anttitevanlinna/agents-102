@@ -77,13 +77,13 @@ Optional. Start with the first.
 
 The rest point at the same surprise: the effort in agent work sits in the framing and the checking.
 
-**Read,** [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md). Uncle Bob's public learning journey with AI coding: early speed, mercury-like unpredictability, then tests, architecture visibility, and formal constraints as steering. It moves the question from "the agent ran" to "what would have constrained the drift?", the question you'll put to your own session next.
+**Read,** [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md). Uncle Bob's public learning journey with AI coding: early speed, mercury-like unpredictability, then tests, architecture visibility, and formal constraints as steering. It moves the question from "the agent ran" to "what would have constrained the drift?".
 
-**Watch,** Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich). Interview video and write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. You'll find the same split in your own session.
+**Watch,** Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich). Interview video and write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling..
 
-**Read,** [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md). Some tasks are far cheaper to check than to do, and delegation pays exactly there. The verifier built next is often worth more than the task it checks.
+**Read,** [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md). Some tasks are far cheaper to check than to do, and delegation pays exactly there..
 
-**Read (longer),** Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide). The term and the philosophy, and the 80/20 that follows from it: the weight sits on planning and review, and that is where the next hour goes.
+**Read (longer),** Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide). The term and the philosophy, and the 80/20 that follows from it: the weight sits on planning and review.
 
 ## Next
 <!--tier:3-->

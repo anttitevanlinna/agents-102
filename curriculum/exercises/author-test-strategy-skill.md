@@ -36,7 +36,7 @@ Ask Claude to author the skill, asking one question at a time.
 *6 min*
 
 - Authoring without invocation is theatre.
-- The skill is auto-discovered right here, and this worktree holds the full codebase. Invoke it on the code as it stands in front of you.
+- The skill is auto-discovered in this worktree, which holds the full codebase. Invoke it on the code as it stands.
 - The agent reads the codebase; you read the strategy it produced and the grade it gave itself, and whether either one reads generic.
 
 Ask Claude to invoke the skill on this codebase and grade what it produced in the same turn.

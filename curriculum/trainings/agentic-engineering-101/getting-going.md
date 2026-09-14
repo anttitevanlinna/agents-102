@@ -35,7 +35,7 @@ After this module, you will be able to:
 
 ## Start here
 
-**The question (to you):** what's your favourite Claude Code trick that not many people know? Doesn't have to be big. The weird prompt shape that works. The slash command you use more than the others. The thing you tell Claude at the start of every session.
+**The question, to you:** what's your favourite Claude Code trick that not many people know? Doesn't have to be big. The weird prompt shape that works. The slash command you use more than the others. The thing you tell Claude at the start of every session.
 
 [Painting the picture with the LLM](lectures/painting-the-picture-with-the-llm.md)
 

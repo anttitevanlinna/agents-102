@@ -28,7 +28,7 @@ After this module, you will be able to:
 
 ## Start here
 
-The question, to you: what's the feature, and what's the surface you're most nervous about a teammate missing in review? The room's features will differ wildly; that's the point.
+**The question, to you:** what's the feature, and what's the surface you're most nervous about a teammate missing in review? The room's features will differ wildly; that's the point.
 
 [Exercise: Open the side quest](exercises/open-the-side-quest.md)
 

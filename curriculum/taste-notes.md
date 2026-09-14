@@ -23,6 +23,26 @@ Append-only stream of editorial calls made on real curriculum text. **Newest at 
 
 ---
 
+## 2026-09-14 — the exercises and module pages read cold, and the duplication that was kept
+
+Thirty-six cards over two days on exercise and module bodies, every one a cut or a same-length swap. Thirty applied. The calls that teach something are the refusals and one reframe.
+
+**"This is your side-quest lane." kept.** The card cut it as a pronoun pointing at a window not yet open and a restatement of the header. Antti: *"keep. A little duplication makes sure student is oriented."* Counterweight to §27(b) and §28: at a window or session switch the student is changing terminals, and the line that repeats the header is the handrail. Two sibling cards dropped under it unshown. Same-page orientation one section on (*"Your shapes are drawn and the gaps are ranked."*) was cut without argument; the switch is what earns the duplication.
+
+**"A strong candidate for a team PR, after you talk to the team." kept.** Verbless, subjectless, and both halves said again in the next two sentences. Antti: *"keep."* A verdict-shaped fragment that opens a bullet and then gets its mechanism in the same bullet is the voice, not a cue for the speaker. The muted-read rule now says so; a second instance (*"The same move you ran at M1 on a bug ticket, pointed at a story."*) dropped under it.
+
+**"Read what Claude proposes." became "Check what Claude proposes."** Two STRIDE read-it lines were cut as dead weight and stood. On the M5 verifier line Antti stopped the cut: *"in this passage, I think checking is called for. Not read but check."* The difference is the verb's job: *read* named what the student was already doing, *check* names the act the push-back rests on. Before cutting a read-it, ask whether the beat wants a check verb.
+
+**The two save-location bullets stay as two.** An option list with no verb, the verb in the bullet below. Antti: *"keep as is."* Enumeration is enumeration whichever bullet carries the verb.
+
+**"recurring work has a shape, and drawn, the shape is easier to recognise than described" reframed, not repaired.** The card offered a same-length fix for the garden path. Antti: *"needs rewording altogether: point is why... so... see the forest from the trees first."* Landed as *"draw the recurring work so you see the forest before the trees."* A fluency card can be the occasion for a sentence that says its point; the fault it filed was not the fault that mattered.
+
+**Pre-reads say what the reading argues and stop.** The 2026-08-23 Willison ruling, applied to the other half of the corpus in one family: three ledes and four annotation tails that named the module cashing the reading. The surviving lede shape remarks on the list (*"One read."*, *"Start with the first."*), never on a later module.
+
+Firing rules: `check_writing.md` §27 (orientation carve-out), §28 (verdict fragment, enumeration either order), `check_student_facing.md` §27 (check verb), §33 (pre-reads).
+
+---
+
 ## 2026-09-13 — the handbook read cold, and the cuts that were refused for being longer
 
 The theory handbook is a marketing handout: it goes to old business friends who never sat in the room. Reading it cold surfaced cue-card prose across every module, and the pass produced a dozen line edits, three header renames and thirty-seven bullet slides turned into paragraphs. The calls that teach something are the refusals.

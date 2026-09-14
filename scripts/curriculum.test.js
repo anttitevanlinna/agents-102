@@ -473,6 +473,23 @@ test('theory handbook build', async (t) => {
     assert.match(workbook, /id="exercises-push-back-on-the-plan"/);
   });
 
+  await t.test('exercise summaries start at the top rule on screen and in print', () => {
+    const dom = new JSDOM(handbookRaw, { pretendToBeVisual: true });
+    const document = dom.window.document;
+    const card = document.querySelector('.exercise-summary');
+    assert.ok(card, 'theory handbook needs an exercise summary to inspect');
+    assert.equal(dom.window.getComputedStyle(card).paddingTop, '0px');
+
+    const style = document.querySelector('style[data-theory-handbook]');
+    const printMedia = [...style.sheet.cssRules].find(rule =>
+      rule.constructor.name === 'CSSMediaRule' && rule.conditionText === 'print');
+    const printCard = [...printMedia.cssRules].find(rule =>
+      rule.selectorText === 'body.theory-handbook .exercise-summary');
+    assert.ok(printCard, 'theory handbook print exercise rule missing');
+    assert.equal(printCard.style.paddingTop, '0px');
+    dom.window.close();
+  });
+
   await t.test('places exercise summaries at their lived points in the theory arc', () => {
     const markers = [
       'id="lectures-the-wizard-move"',

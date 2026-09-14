@@ -72,7 +72,7 @@ Drop the shape name after the colon, one of: judge, shell-hook, Ralph re-feed.
 {{prompt:diagnose-and-resend-4}}
 
 
-Read what Claude proposes. Push back if the verifier covers the wrong shape (a generic test suite when you needed a judge, or the reverse). The fit between failure shape and verifier shape is what you are after. When the shape fits the failure, say *save it.*
+Check what Claude proposes. Push back if the verifier covers the wrong shape (a generic test suite when you needed a judge, or the reverse). The fit between failure shape and verifier shape is what you are after. When the shape fits the failure, say *save it.*
 
 ## Prove the verifier actually fires
 

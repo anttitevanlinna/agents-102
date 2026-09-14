@@ -42,7 +42,7 @@ Ask Claude to draw your top few work-shapes as simple diagrams.
 
 ## Sidestep: check your menu against the field's
 
-Optional. Your shapes are drawn and the gaps are ranked. This one widens the menu you pick checks from.
+Optional. This sidestep widens the menu you pick checks from.
 
 - Where a primitive lines up with a shape you repeat, that pairing is a skill candidate for the kit you grow later.
 

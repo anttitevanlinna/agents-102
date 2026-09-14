@@ -10,12 +10,10 @@
 
             var summary = document.createElement('summary');
             summary.className = 'theory-prompt__summary';
+            summary.textContent = 'Prompt';
             var header = block.querySelector(':scope > .prompt-block__header');
             if (header) {
-                while (header.firstChild) summary.appendChild(header.firstChild);
                 header.remove();
-            } else {
-                summary.textContent = 'Prompt';
             }
 
             block.replaceWith(details);

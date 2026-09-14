@@ -793,6 +793,40 @@ ${content}
 // transform sequence (link rewrite → inlineImages → escapeTildes → marked →
 // wrapImageFigures). Module-number section headers are assembly chrome — they
 // live here, never in the lecture bodies.
+function stripTheorySessionWidgets(md) {
+  const lines = md.split('\n');
+  const kept = [];
+
+  for (let i = 0; i < lines.length;) {
+    if (!/^\*\*Session\*\*\s+\*\(.+\)\*\s*$/.test(lines[i])) {
+      kept.push(lines[i]);
+      i += 1;
+      continue;
+    }
+
+    i += 1;
+    while (i < lines.length && lines[i].trim() === '') i += 1;
+
+    // The runtime treats one plain paragraph after the label as session setup.
+    // Mirror that source contract here so the handout drops the whole widget,
+    // not only its chrome.
+    if (i < lines.length && !/^(?:#{1,6}\s|---\s*$|\*\*|```|<!--)/.test(lines[i])) {
+      while (i < lines.length && lines[i].trim() !== '') i += 1;
+      while (i < lines.length && lines[i].trim() === '') i += 1;
+    }
+
+    // A session's optional rename command belongs to the widget as well.
+    if (i < lines.length && /^```/.test(lines[i])) {
+      i += 1;
+      while (i < lines.length && !/^```/.test(lines[i])) i += 1;
+      if (i < lines.length) i += 1;
+      while (i < lines.length && lines[i].trim() === '') i += 1;
+    }
+  }
+
+  return kept.join('\n');
+}
+
 function readExerciseViewMeta(slug) {
   const srcPath = path.join(ROOT, 'curriculum/exercises', slug + '.md');
   if (!fs.existsSync(srcPath)) {
@@ -849,6 +883,7 @@ function renderTheoryEntry(trainingKey, entry) {
     if (md.indexOf('<!--INC:') === -1) {
       throw new Error(`Theory manifest entry did not expand as an include: ${entry}`);
     }
+    md = stripTheorySessionWidgets(md);
     md = rewriteCrossDocLinksToAnchors(md);
     md = escapeTildes(md);
     let html = marked.parse(md);
@@ -866,6 +901,7 @@ function renderTheoryEntry(trainingKey, entry) {
     // flag blocks against the complete module list (no customer flags apply).
     const allModuleSlugs = (CR.TRAININGS[trainingKey].modules || []).map(m => m.slug);
     md = CR.applyContentFlags(md, null, allModuleSlugs);
+    md = stripTheorySessionWidgets(md);
     md = rewriteCrossDocLinksToAnchors(md);
     md = inlineImages(md, path.dirname(docPath));
     md = escapeTildes(md);

@@ -520,6 +520,13 @@ test('theory handbook build', async (t) => {
     assert.doesNotMatch(handbook, /Artifact contract \(Family B\)/);
   });
 
+  await t.test('omits classroom session widgets while the normal workbook keeps them', () => {
+    assert.doesNotMatch(handbook, /<strong>Session<\/strong>/);
+    assert.doesNotMatch(handbook, /\/rename m2-plan-mode/);
+    assert.match(workbook, /<strong>Session<\/strong>/);
+    assert.match(workbook, /\/rename m2-plan-mode/);
+  });
+
   await t.test('does not leak unresolved conditional branches', () => {
     assert.doesNotMatch(
       handbook,
@@ -617,7 +624,15 @@ test('theory handbook build', async (t) => {
     assert.equal(disclosures.length, 7, 'expected every theory-handbook prompt to collapse');
     for (const disclosure of disclosures) {
       assert.equal(disclosure.open, false, 'prompt disclosure must start closed');
-      assert.ok(disclosure.querySelector(':scope > summary'), 'collapsed prompt needs a visible summary');
+      const summary = disclosure.querySelector(':scope > summary');
+      assert.ok(summary, 'collapsed prompt needs a visible summary');
+      assert.equal(summary.textContent.trim(), 'Prompt',
+        'handbook prompt summary must omit classroom mode and destination chrome');
+      assert.equal(disclosure.querySelector('.prompt-block__mode'), null);
+      assert.equal(disclosure.querySelector('.prompt-block__arrow'), null);
+      assert.equal(disclosure.querySelector('.prompt-block__dest'), null);
+      assert.equal(disclosure.querySelector('.prompt-block__context'), null);
+      assert.equal(disclosure.querySelector('.copy-btn'), null);
       assert.ok(disclosure.querySelector('.prompt-block__pre'), 'prompt body must remain expandable on screen');
     }
 

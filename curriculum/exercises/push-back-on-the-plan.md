@@ -56,7 +56,7 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. Use th
 
 {{prompt:push-back-on-the-plan-2}}
 
-> **If it feels slow, ask why.** Stop the turn, ask Claude what's making it crawl, then relax that requirement. The prompt is a starting recipe, not a contract.
+> **If it feels slow, ask why.** Stop the turn, ask Claude which requirement makes it crawl, then relax it. The prompt is a starting recipe, not a contract.
 
 ## Answer the branches that change what "done" means
 

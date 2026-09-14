@@ -54,7 +54,7 @@ Ask Claude to sharpen the skill's weakest section from invocation evidence. Then
 
 The agent is reading the skill file fresh and your m3-security scrollback. Useful (file content survived the side-quest /clear and carries the encoded conventions) but charitable (same-context-window self-audit under-flags). Other tells to watch for: Claude may open with a plan before showing the diff, and sycophancy can dress up a cosmetic edit as a meaningful one. You can make the grill hotter: ask Claude to over-flag (*"be harsher than necessary, find at least two sections that underdelivered, assume it's worse than it looks"*), tell it to skip preamble and lead with the before/after diff, or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.
 
-Before you clear the session, the near half of the map, seen whole with its parts named.
+Before you clear the session, see the near half of the map whole, its parts named.
 
 [Lecture: The near half of the map](lectures/the-loop-half-filled.md)
 

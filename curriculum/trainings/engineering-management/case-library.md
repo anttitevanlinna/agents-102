@@ -1,10 +1,10 @@
-# Case library, Engineering Management
+# Case library, Leading agentic engineering
 
-Case-to-module mappings for the Engineering Management training. **Proprietary.** Relocated here 2026-08-02 from `continuous-research/observations/`, which ships public under its own licence; a curriculum reference inside that directory is a licence-boundary breach, not a style preference (root `CLAUDE.md` § Copyright, `/lecture-ooda` Step 4).
+Case-to-module mappings for Leading agentic engineering. **Proprietary.** This curriculum reference belongs here because `continuous-research/observations/` ships public under its own licence.
 
 The direction of the pointer matters. This file cites the public observation files; those files must not cite this one. Each case there stands as research on its own terms, and the teaching read lives here.
 
-Module numbering is the Engineering Management arc (M1 diagnose → M6 signals + plan), not AE101's.
+Module numbering is the Leading agentic engineering arc (M1 diagnose → M6 signals + plan), not AE101's.
 
 ---
 

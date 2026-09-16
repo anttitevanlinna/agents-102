@@ -53,7 +53,7 @@ After this module, you will be able to:
 | 7. From Personal to Team | Analyze → Evaluate | Redesign for shared use, judge what breaks |
 | 8. Agents Building Agents | Create | Build the meta-tool, design the flywheel |
 
-Other trainings (AE101, Engineering Management) have their own Bloom progressions — see their content-strategy files.
+Other trainings (AE101, Leading agentic engineering) have their own Bloom progressions — see their content-strategy files.
 
 ---
 
@@ -116,7 +116,7 @@ The final act of every module is articulating what was learned. The first act of
 
 ## Audience: The Chat-to-Systems Leap (Agents 101)
 
-This section describes the **Agents 101** audience. Other portfolio trainings target different audiences (AE101: software engineer ICs; Engineering Management: engineering managers) — see their content-strategy files. The "chat-to-systems leap" framing below is Agents 101-specific.
+This section describes the **Agents 101** audience. Other portfolio trainings target different audiences (AE101: software engineer ICs; Leading agentic engineering: engineering managers) — see their content-strategy files. The "chat-to-systems leap" framing below is Agents 101-specific.
 
 **Entry requirement:** **you can have a lengthy conversation with an LLM.** That's it. No coding experience, no prompt engineering course, no AI background.
 

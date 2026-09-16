@@ -231,4 +231,4 @@ OODA
 - **Klaassen own-byline freshness.** If he ships fresh own-byline content within the freshness window, swap any "third-party write-up" framing for his own words.
 - **Cherny long-form.** If Cherny / Anthropic publish a definitive successor to the X thread that names a unified framework, swap the "moves catalogue" section for the framework section.
 - **Frameworks the walk doesn't cover.** Track new named frameworks as they surface in research. Candidates to investigate: any Anthropic-published official pattern catalogue; Hugging Face / LangChain framework releases (if any cross the agent-not-chatbot threshold); other practitioner-published kits. Add a section if they pass the three gates and carry a named framework.
-- **Intercom and Ramp lineages not named:** enterprise-org-shaped; belong in the Engineering Management variant.
+- **Intercom and Ramp lineages not named:** enterprise-org-shaped; belong in the Leading agentic engineering variant.

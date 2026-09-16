@@ -36,7 +36,7 @@ Format + key rules → `curriculum/quality-format.md`.
 ## Scope
 
 - **Agents 101** — builder leaders.
-- **Engineering Management** — managers leading agentic change (`bosser-strategy:content-strategy-engineering-management.md`).
+- **Leading agentic engineering** — managers leading agentic change (`bosser-strategy:content-strategy-engineering-management.md`).
 - **Agentic Engineering 101** — software-engineer ICs L0 → L3 (`bosser-strategy:content-strategy-agentic-engineering-101.md`).
 - **Future:** executive briefing + domain variants.
 

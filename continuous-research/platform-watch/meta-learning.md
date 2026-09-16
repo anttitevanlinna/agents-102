@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 217 — 2026-09-16
+
+A broad fresh-scan pass on "coding agent news September 16 2026" surfaced two findings (Coder Agent Relay + OpenAI Agents API) that were 1–15 days old and completely absent from the KB despite being directly on-topic. Both were found in a single news-digest search, not in platform-specific changelog or practitioner-name searches. Lesson: a brief 30-second "fresh scan" query at the start of each cycle, querying for the current date + platform category, catches recent-enough-to-be-fresh announcements that per-platform changelog fetches miss (because those target known platforms' own pages, not third-party integrations or adjacent platforms). Coder Agent Relay addresses Claude Code enterprise governance — not discoverable via `code.claude.com/docs` alone because Coder is an independent company.
+
+The Black Matter VC deployer-direct assessment confirmed the gate distinction between "runs agents operationally" (necessary) and "reports quantified production data from named deployment" (sufficient). Rouveure runs loops daily; his article cites external $1,500 caps and "Oracle four times" claims rather than Black Matter VC's own telemetry. The gate fails at the second criterion regardless of the first. Implication for future 5th-voice searches: any article whose evidence section cites other companies' incidents rather than the author's own deployment data is practitioner analysis, not deployer-direct — even when written in first person.
+
 ### Cycle 215 — 2026-09-14
 
 GitSpawn (Manifold Security Sep 1) was discovered via a security sweep query rather than a platform-specific watch query — "AI coding agent security incident containment September 2026" surfaced it in the same search pass as the containment-escape follow-up. Lesson: when a security watch item is active (containment-escape), run a broad open-ended security sweep alongside the specific targeted queries, because new attack classes arrive on adjacent publication channels (security research firms) rather than practitioner blogs. GitSpawn's disclosure on the same day as the Claude Code v2.1.257 Containment Escape Rule (Sep 1) would have been missed if the cycle had queried only for the Rehberger/Irregular follow-up.

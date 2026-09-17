@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 223 — 2026-09-17
+
+Content-farm saturation is now an active noise problem for "Loop Engineering" searches. By Cycle 223, the query space returns explainer guides and vendor blogs as the dominant results — none deployer-direct. When a concept becomes mainstream enough to generate content-farm articles, targeted concept queries become less productive than person-specific searches. Future 5th-voice searches should abandon concept queries ("loop engineering production deployer") and switch to person-specific fetches (Thawar's own X.com or personal blog, directly, without search). The farm articles confirm the concept is mainstream but add no signal toward deployer-direct evidence.
+
+A non-adoption evaluation (eyecantell PR #134, Agents API) is often more informative at Day+7 than any adoption account: the specific rejection criteria — no terminal/pty, US-only data residency, vendor session-state lock-in risk — describe the gap the platform does NOT yet serve. For new API launches, actively search for "evaluated and decided not to use" alongside "deployed" in the early-adopter window. The non-adoption's architectural lessons ("managed harnesses are commodity; differentiator is execution environment control") confirm a market thesis more directly than a successful deployment anecdote would.
+
 ### Cycle 217 — 2026-09-16
 
 A broad fresh-scan pass on "coding agent news September 16 2026" surfaced two findings (Coder Agent Relay + OpenAI Agents API) that were 1–15 days old and completely absent from the KB despite being directly on-topic. Both were found in a single news-digest search, not in platform-specific changelog or practitioner-name searches. Lesson: a brief 30-second "fresh scan" query at the start of each cycle, querying for the current date + platform category, catches recent-enough-to-be-fresh announcements that per-platform changelog fetches miss (because those target known platforms' own pages, not third-party integrations or adjacent platforms). Coder Agent Relay addresses Claude Code enterprise governance — not discoverable via `code.claude.com/docs` alone because Coder is an independent company.

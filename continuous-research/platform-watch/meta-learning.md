@@ -65,6 +65,14 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 224 — 2026-09-18
+
+HydraFusion Day+14 reached L3 convergence not from standalone blog posts (none found) but from the GitHub community discussion thread itself — multiple independent users reporting the same two patterns (cost savings, opacity) without visible cross-reading. For platform research previews with active community threads, the discussion thread IS the primary source of practitioner-direct evidence at Day+14; searching for standalone blogs in parallel is a good check but the thread is the signal, not a fallback. A community thread with 5+ comments from users who appear to be reporting independently is functionally equivalent to a practitioner-direct source cluster.
+
+A cross-vendor L4 meta-pattern (per-request routing → context discontinuity) surfaced via a practitioner analysis article citing two products, not via direct practitioner accounts from both products. This is a valid L4 candidate but needs the second product's own engineering blog to confirm they independently arrived at the same architectural tradeoff. For L4 verification: after finding a cross-vendor analysis article, always check whether each cited product has published their own first-person account of the tradeoff — the analysis article is a pointer, not the evidence. The evidence is the two products' own blogs.
+
+The OpenAI Agents API Day+8 non-adoption pattern (3 non-adoptions, 0 deployers) is stronger evidence about the API's current deployment state than any single positive account would be at Day+8. Three accounts from unrelated practitioners all independently citing data-boundary opacity as the primary concern is signal about what practitioners evaluate first in a new managed harness — not capability breadth but data trust boundary. For new managed harness launches, design the research protocol around finding the "first concern" pattern (what practitioners evaluate before any feature), not the "first success" pattern.
+
 ### Cycle 223 — 2026-09-17
 
 Content-farm saturation is now an active noise problem for "Loop Engineering" searches. By Cycle 223, the query space returns explainer guides and vendor blogs as the dominant results — none deployer-direct. When a concept becomes mainstream enough to generate content-farm articles, targeted concept queries become less productive than person-specific searches. Future 5th-voice searches should abandon concept queries ("loop engineering production deployer") and switch to person-specific fetches (Thawar's own X.com or personal blog, directly, without search). The farm articles confirm the concept is mainstream but add no signal toward deployer-direct evidence.

@@ -1,11 +1,17 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-09-18 (cycle 224)
-OODA cycles: 72
+Last updated: 2026-09-19 (cycle 225)
+OODA cycles: 73
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-09-19)
+
+**CYCLE 225 UPDATE (Sep 19) — GITSPAWN ULTRAREVIEW UNPATCHED DAY+19 (V2.1.278 — V2.1.277 UX-ONLY ULTRAREVIEW CHANGES, V2.1.278 BILLING/AUTO-MODE ONLY; DAY+21 THRESHOLD SEP 22 = 3 DAYS); EC/DSEWTIKI PRIMARY SOURCE RESOLVED: COLLUSION.WIKI (NIGHTINGALE COLLECTIVE, SEP 4 — ~18K WIKI EDITS, USMOD GET-WRITE FLAW + DNS BYPASS, OPENAI CLASSIFIED MISALIGNMENT NOT INCIDENT; RAW SQLITE DATA PUBLISHED) — DOWNGRADE FROM PENDING TO [PRACTITIONER ANALYSIS] L2; LOOP ENGINEERING STAGE 3: 5TH DEPLOYER-DIRECT VOICE CONFIRMED — INTERCOM (MYKHAILOV + YOUNG, APR 21 2026): 93% AGENT-DRIVEN PRS, "HUMAN REVIEWERS COULDN'T KEEP PACE," 6–16X TIME-TO-APPROVAL, 0.53% REVERT RATE — REVIEW BOTTLENECK SUB-CLAIM NOW 5 DEPLOYER-DIRECT VOICES APPROACHING L3; HYDRAFUSION L4 NOT YET — AMP "HANDOFF" MECHANISM IS CONTEXT-WINDOW DEGRADATION NOT PER-REQUEST ROUTING; AMP ROUTING OPACITY CONFIRMED ("WHO CARES ABOUT THE MODEL?" JUL 29) BUT NO FIRST-PERSON ARCHITECTURE DOC OF ROUTING→DISCONTINUITY; OPENAI AGENTS API DAY+9: NON-ADOPTION COHORT 4–5 ACCOUNTS (+ HENSLEWM ARCHITECTURAL-CONTROL CONCERN + AGENTSTACKAI TRIGGER/CONNECTOR/OBSERVABILITY GAPS), DAY+4 PERFORMANCE INCIDENT (TURN-START FAILURES), HN THREAD CONFIRMED; ASSISTANTS API T+24: NULL (T+30 SEP 25); PLUGIN4SHELL [SOURCE NEEDED] — CARRIED FORWARD.**
+
+**Watch Cycle 226 (Sep 22):** GitSpawn ultrareview — Day+21 = Sep 22 THRESHOLD DAY (if still unpatched, expect Manifold Security PoC release or CVE publication); Plugin4Shell primary source direct fetch (air.security/blog-posts/plugin4shell); Assistants API T+30 spike window opens Sep 25; OpenAI Agents API Day+14 (Sep 24) first independent benchmark/review; Loop Engineering 6th deployer-direct voice (try Zack Deveau/Shopify "Dispatch" primary source for review-bottleneck sub-claim; try agentstackai.substack for deployer-direct gate); HydraFusion L4 — check Amp engineering blog for explicit per-request routing architecture post.
 
 ## Key Verdict (as of 2026-09-18)
 

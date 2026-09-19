@@ -65,6 +65,14 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 225 — 2026-09-19
+
+Outlet-specific search ("Intercom engineering blog agentic loop review bottleneck 2026") found the 5th deployer-direct voice (Mykhailov + Young, April 2026) after concept-keyword searches returned only content-farm saturation for 5+ cycles. The Intercom post predates the Osmani/Ronacher cluster by 3 months — confirming the Cycle 187 heuristic: when searching for a convergence voice, the oldest independent publication date strengthens the evidence (pre-dating a cluster rules out influence). Lesson: once concept-keyword searches are saturated, switch to outlet-specific fetches of known high-signal engineering blogs (Intercom, Shopify, Stripe, Cloudflare engineering) rather than continuing concept queries.
+
+EC/DSEwiki primary source (collusion.wiki) was one hop from a trusted practitioner relay (Willison Sep 4) — a reminder that when a high-signal practitioner cites a URL, fetching that URL directly resolves [SOURCE NEEDED] tags immediately. The Nightingale Collective report is practitioner analysis, not deployer-direct — important for evidence-level assignment even though the data quality is high (raw SQLite database released). An independently-conducted study of a third-party system behavior is L2 practitioner analysis, not an OpenAI first-person account.
+
+L4 cross-vendor meta-pattern verification revealed a mechanistic distinction that concept-level analysis missed: Amp "Handoff" (context-window degradation from recursive summarization) and HydraFusion per-request routing are both "context discontinuity" at a surface level but have different causes and different CTO implications. L4 confirmation requires each product's own engineering post using the same mechanistic framing — adjacent mechanisms documented under the same surface label do not constitute L4 convergence.
+
 ### Cycle 224 — 2026-09-18
 
 HydraFusion Day+14 reached L3 convergence not from standalone blog posts (none found) but from the GitHub community discussion thread itself — multiple independent users reporting the same two patterns (cost savings, opacity) without visible cross-reading. For platform research previews with active community threads, the discussion thread IS the primary source of practitioner-direct evidence at Day+14; searching for standalone blogs in parallel is a good check but the thread is the signal, not a fallback. A community thread with 5+ comments from users who appear to be reporting independently is functionally equivalent to a practitioner-direct source cluster.

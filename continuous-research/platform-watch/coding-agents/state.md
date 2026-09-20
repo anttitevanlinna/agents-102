@@ -1,11 +1,17 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-09-19 (cycle 225)
-OODA cycles: 73
+Last updated: 2026-09-20 (cycle 226)
+OODA cycles: 74
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-09-20)
+
+**CYCLE 226 UPDATE (Sep 20) — GITSPAWN ULTRAREVIEW UNPATCHED DAY+20 (V2.1.278 STILL LATEST — NO V2.1.279/280 AS OF SEP 20; DAY+21 THRESHOLD SEP 22 = 48 HOURS — MANIFOLD SECURITY EXPECTED TO RELEASE FULL POC IF UNPATCHED; SHATTERED.IO CONFIRMS NO PUBLIC POC OR IN-WILD EXPLOITATION YET); OPENAI AGENTS API DAY+10: NON-ADOPTION COHORT HOLDS AT 4–5 ACCOUNTS, ZERO NEW DEPLOYER-DIRECT VOICES, BLOCKER TAXONOMY UNCHANGED (ARCHITECTURAL CONTROL + TRIGGER HANDLING + CONNECTOR ECOSYSTEM + OBSERVABILITY OPACITY); ASSISTANTS API T+25: SILENT FAILURE TAXONOMY DOCUMENTED AT L2 (FOUR CATEGORIES: DATA STRUCTURE SHIFTS + STATE LOSS + TOOL ORCHESTRATION DROP + COST/BEHAVIOR DRIFT — "200 OK MASKING SILENT TOOL DROP" AS HIGHEST-RISK FAILURE MODE FOR AUTONOMOUS PIPELINES) — ZERO NAMED-COMPANY POSTMORTEMS; ZAPIER ONLY NAMED ENTITY (RETIRED ALL CHATGPT ASSISTANTS STEPS); T+30 SPIKE WINDOW SEP 25 = 5 DAYS; LOOP ENGINEERING 6TH VOICE: NOT FOUND — SECONDARY/ANALYTICAL DISCOURSE PROLIFERATING (IBM, AUGMENT CODE, MULTIPLE SEO BLOGS) BUT NO DEPLOYER-DIRECT 6TH VOICE; STAGE 3 STILL AT 5 VOICES; PLUGIN4SHELL [SOURCE NEEDED] — CARRIED FORWARD.**
+
+**Watch Cycle 227 (Sep 22):** GitSpawn — SEP 22 IS DAY+21 THRESHOLD (patch or PoC release); Assistants API T+27 rolling (T+30 spike window Sep 25 = key date for first named-company postmortems); OpenAI Agents API Day+12; Loop Engineering 6th voice (Shopify Deveau primary source; try agentstackai.substack for deployer-direct gate); Plugin4Shell primary source direct fetch (air.security/blog-posts/plugin4shell).
 
 ## Key Verdict (as of 2026-09-19)
 

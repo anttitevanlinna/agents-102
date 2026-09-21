@@ -1,11 +1,19 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-09-20 (cycle 226)
-OODA cycles: 74
+Last updated: 2026-09-21 (cycle 227)
+OODA cycles: 75
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-09-21)
+
+**CYCLE 227 UPDATE (Sep 21) — GITSPAWN ULTRAREVIEW UNPATCHED DAY+21 (V2.1.278 STILL LATEST; POC THRESHOLD SEP 22 = 24H — MANIFOLD SECURITY EXPECTED TO RELEASE FULL POC IF NO PATCH; NO POC IN-WILD AS OF SHATTERED.IO SEP 17); HYDRAFUSION DAY+17: ZERO INDEPENDENT PRACTITIONER BENCHMARKS — CHECKPOINTBENCH IS GITHUB-INTERNAL; L0 VENDOR CLAIMS ONLY; ASSISTANTS API T+26: ZERO NAMED-COMPANY POSTMORTEMS — ZAPIER ONLY NAMED ENTITY; SILENT FAILURE TAXONOMY L2 HOLDS; T+30 SPIKE WINDOW SEP 25 = 4 DAYS; OPENAI AGENTS API DAY+11: NON-ADOPTION COHORT HOLDS; ANALYTICAL COVERAGE PROLIFERATING (SUBSTACK/DEV COMMUNITY) BUT ZERO DEPLOYER-DIRECT PRODUCTION DEPLOYMENTS; LOOP ENGINEERING 6TH VOICE: THREAD DEFERRED TO CYCLE 228.**
+
+**Watch Cycle 228 (Sep 22):** GitSpawn — SEP 22 IS THE POC THRESHOLD DAY (patch or PoC release — CRITICAL: check releasebot.io for v2.1.279+ first); Assistants API T+27 rolling (T+30 Sep 25 = spike window for first named-company postmortems); OpenAI Agents API Day+12; Loop Engineering 6th deployer-direct voice; HydraFusion Day+18 community thread check.
+
+([releasebot.io Claude Code](https://releasebot.io/updates/anthropic/claude-code), Sep 21 check — [vendor documentation]; [shattered.io GitSpawn](https://shattered.io/gitspawn-ai-coding-agent-vulnerability-2026/), Sep 17 — [domain trade publication]; [InfoQ HydraFusion](https://www.infoq.com/news/2026/09/github-hydrafusion/), Sep 2026 — [domain trade publication]; [DEV Community/driftsignal Assistants API](https://dev.to/driftsignal/the-openai-assistants-api-dies-today-and-the-loud-shutdown-isnt-the-one-that-gets-you-1j7i) — [practitioner analysis])
 
 ## Key Verdict (as of 2026-09-20)
 

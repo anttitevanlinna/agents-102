@@ -65,6 +65,10 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 227 — 2026-09-21
+
+At Day+21 on a responsible-disclosure clock (GitSpawn ultrareview), the highest-value check is a direct releasebot.io fetch — not a keyword search — because patch releases land there before any blog post or trade publication. For time-bounded security watches, the direct-source check costs one fetch and settles the question immediately; keyword searches add noise without speeding up detection. When a vendor-internal benchmark (HydraFusion's CheckpointBench) is the only available evidence at Day+17, the evidence level is correctly L0 regardless of the benchmark quality — the independence criterion requires an external party running the same test. Don't confuse a well-described benchmark with an independently-run one.
+
 ### Cycle 225 — 2026-09-19
 
 Outlet-specific search ("Intercom engineering blog agentic loop review bottleneck 2026") found the 5th deployer-direct voice (Mykhailov + Young, April 2026) after concept-keyword searches returned only content-farm saturation for 5+ cycles. The Intercom post predates the Osmani/Ronacher cluster by 3 months — confirming the Cycle 187 heuristic: when searching for a convergence voice, the oldest independent publication date strengthens the evidence (pre-dating a cluster rules out influence). Lesson: once concept-keyword searches are saturated, switch to outlet-specific fetches of known high-signal engineering blogs (Intercom, Shopify, Stripe, Cloudflare engineering) rather than continuing concept queries.

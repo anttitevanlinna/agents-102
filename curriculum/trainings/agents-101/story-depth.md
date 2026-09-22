@@ -21,61 +21,82 @@ AE101 does, and a judge can verify it. Two deliverables:
    pick from. The stories themselves are NOT decided in this file. Anything below that reads like
    a story idea is grounding observation, not a decision.
 
-## Grounding — what AE101 actually does (observations, 2026-09-22)
+## Grounding — the big learnings AE101 develops (read 2026-09-22)
 
-Read these as *the kind of thing* the creative pass must invent for A101, never as content to port.
+The unit of storytelling is a **big learning that develops across the arc**, felt from the
+student's seat. AE101 carries five, braided. Read them as *the kind of thing* the creative pass
+must invent for A101's leader, never as content to port.
 
-- **A recurring picture that accrues.** One map figure, single-sourced, re-derived per module,
-  progressively lit: near half M1, far half opens M4 (`the-far-half.md`), checking loop drawn
-  solid M6 (`composing-the-workflow.md`). The student watches their own territory expand.
-- **A horizon question, seeded and echoed, deliberately unanswered.** `the-2-frontiers.md`: the
-  model's frontier moves without you; yours moves when you write. Opens M1, returns verbatim-shaped
-  at the M6 capstone. Its backing block *guards against a future editor answering it* — the open
-  future is a designed beat, not an omission.
-- **A credo strip repeated at every recurrence.** Three axioms (act under uncertainty · competence
-  sets the ceiling · cross personal → team) ride on every map copy. Standing orders, not observations.
-- **The future held as genuinely contested, with named witnesses.** Whether a human stays in
-  Absorption is taught as live: Osmani for, Ronacher worried, stance recorded with
-  `would-move-it` conditions. Depth = the training knows what would change its mind.
-- **Machinery carrying it:** backing blocks (claims typed vision/detail, sources stamped, stance
-  levels), per-lecture mood targets and voices, recurrence-as-pedagogy ("the recurrence is the
-  point"), seeded beats that pay off modules later, a reading-contract arc with per-module beats.
+1. **"How do I trust work I didn't watch?"** — the spine. M1: the agent's success report is a
+   hypothesis, not ground truth (agreeable answers won the preference round). M3: control is
+   interrogation, not reading; the branch is the permission, the merge is where control lives.
+   M4 asks it plainly as the far half opens. M5 turns the scrutiny on the checks themselves
+   (`the-gate-is-a-claim.md`: green is a claim; gates decay under Goodhart). M6 pays off as the
+   delegation frontier: calibrated agency and reckless autonomy look identical from outside; the
+   frontier moves outward only as fast as the gates behind it. Bainbridge's ironies run as the
+   counter-voice: the trust is deserved AND it erodes your vigilance.
+2. **"Your frontier is what you have expressed."** M1: the machine amplifies the posture you
+   bring, your stance is the ceiling. Develops into: every push-back becomes a rule, every "not
+   like that" becomes a check. Final lecture: the agent stops where your judgement begins, and the
+   line never goes away.
+3. **"The kit compounds; the model rotates."** M1: the correction went to disk, not scrollback.
+   M3: the compound ladder fix → memory → skill → system, double-loop learning. M5: packaging.
+   M6: skills compose, evals prove the kit improves, and the bitter lesson says your procedures
+   get superseded — which is why you compound the durable half.
+4. **"Nobody has this figured out — that is your opening."** The model has read the whole field
+   and gives you a forecast, not a measurement; every playbook is a candidate until tested here;
+   the missing evidence is local. Closes as the two frontiers, deliberately unanswered
+   (`the-2-frontiers.md`; its backing block guards against anyone answering it).
+5. **The credo, planted and harvested.** *Act under uncertainty · competence sets the ceiling ·
+   cross personal → team* rides silently on every map copy, then is spoken once as the final
+   teaching beat.
 
-A101 today: strong per-module Big Ideas and good *local* narrative (M1 rehearsal → M2 real work),
-one forward tease in M2 ("the move that bends the curve"). No recurring picture, no horizon
-question, no capstone echo, no backing blocks (`ae101-parity.md` gates table), no sourced
-future-of-the-field thread.
+The braid is the craft: 1 and 3 fuse at the delegation frontier (the gates you compound buy the
+trust); 4 explains why 3 matters; the two frontiers collapse 2 and 4 into one open question. The
+map figure that fills in module by module is the stage these play on, not a story itself.
 
-## Measurement — comparative arc judge
+A101 today: per-module Big Ideas, good *local* narrative (M1 rehearsal → M2 real work), one
+forward tease in M2 ("the move that bends the curve"). Whether any learning develops across
+modules is what step 0 measures — do not assert the answer here.
 
-Absolute scores from an LLM judge are noise; paired comparisons are signal. The measure is a
-**comparative arc read**: one judge reads BOTH trainings end-to-end in student order (A101's seven
-modules, AE101's six), then renders per-dimension verdicts of the form *"X does this better,
-because <quoted evidence from both>"*. Evidence quotes mandatory — a verdict without lines from
-both corpora is invalid.
+## Measurement — the rubric
 
-Dimensions (v0, expect to revise after calibration):
+**Unit = a big learning, never a module or a file.** The judge reads one training end-to-end in
+student order and first **names its big learnings** from a cold read: which ideas the student
+leaves carrying, and where each one was planted, complicated, and paid off. A training whose
+judge can only recite per-module headline ideas has its gap measured right there.
 
-1. **Backbone** — is there a picture/model that accrues across modules, and does each recurrence
-   add rather than repeat?
-2. **Horizon** — is the future genuinely open on the page: questions seeded early, echoed late,
-   not answered by assertion?
-3. **Payoff density** — setups that pay off modules later; count the seeded-and-paid beats each
-   arc actually lands, with locations.
-4. **Depth honesty** — are claims about the field backed, stances contested where the field
-   contests them, and does the training know what would change its mind?
-5. **Audience fit** — do the stories belong to THIS training's buyer (builder leader vs engineer
-   IC)? A ported story scores negative here, not neutral.
+Each named learning is then held against five factors (Antti's four, 2026-09-22, plus the fifth):
 
-**Definition of done:** parity = the judge, on dimensions 1–4, finds no dimension where AE101 is
-clearly ahead. Betterness = A101 ahead on at least one, behind on none. Dimension 5 is a per-arc
-gate, not a comparison.
+- **Depth** — the learning *develops*; it is not stated. Trace planted → complicated → paid off.
+  Count only beats that change the idea's meaning; restatements score zero. A headline idea that
+  never returns has depth one.
+- **Forward-looking** — the training says where this is going and keeps it honestly open. The
+  student leaves carrying a *question* about the future, not a *prediction*; vendor futurism
+  ("agents will X by 2027") scores negative. Tell: does it prepare the student for the model
+  changing underneath them?
+- **Applicable in practice** — the learning has a governor: a one-sentence pre-action move that
+  fires on a Tuesday ("name the uncertainty before you move", "when did you last do this by
+  hand?"). A learning with no move is theory theatre.
+- **Self-challenging** — the training doubts its own tools on the student surface: each learning
+  carries its own failure mode or counter-voice, and somewhere the training says *this might be
+  wrong, here is how you would know*.
+- **Earned, not announced** — the name arrives *after* the student did the move (recognition
+  before naming). Without this the other four can hold for a lecture nobody felt.
+
+**How it is scored.** Paired, not absolute: for each factor the judge rules `A101 | AE101 | even`
+across the two trainings' learning-sets, with quoted evidence from both corpora; a verdict without
+lines from both is invalid. Majority of three independent judges. Plus one per-arc gate, not a
+comparison: **audience fit** — the learnings belong to this training's buyer (builder leader vs
+engineer IC); a ported AE101 learning scores negative, not neutral.
+
+**Definition of done:** parity = no factor where AE101 leads. Betterness = A101 leads on at least
+one, trails on none. Audience fit passes throughout.
 
 **Step 0 — calibrate before any content moves.** Run the judge now, against today's corpora. It
-must report AE101 clearly ahead on dimensions 1–4 with correct evidence (the gap this file's
-grounding section describes is the planted defect). A judge that reports parity today is broken;
-fix the rubric, not the content. This is the `judge-hillclimb` recall principle applied to a
-content measure.
+must report AE101 clearly ahead with correct evidence (the gap is the planted defect). A judge
+that reports parity today is broken; fix the rubric, not the content. This is the
+`judge-hillclimb` recall principle applied to a content measure.
 
 Rubric lives at `curriculum/evals/judges/` once step 0 stabilises it; runs record like the other
 standing reports (one file per scope, overwritten on rerun). Wiring into the quality ladder /
@@ -88,29 +109,30 @@ The iteration the goal-loop runs, in order; each pass through 4–5 is one itera
 1. **Step 0** calibration run (above), once. Its evidence output doubles as the gap statement the
    creative pass works against. Judge fails to see the gap → iterate the RUBRIC, not the content.
 2. **Diverge**, once per brief. Parallel creative agents (3-ish), each proposing one complete
-   story-set for A101: the backbone picture, the horizon question, the echo structure, where each
-   beat lands across the seven modules, and what depth-machinery it needs. Written to disk, one
-   file per proposal, per the orchestrator pattern. Constraints below travel with the dispatch.
+   set of big learnings for A101 (a handful, braided): for each, the one-line question the
+   student carries, where it is planted, complicated and paid off across the seven modules, its
+   governor, its counter-voice, and what it says about the future. Written to disk, one file per
+   proposal, per the orchestrator pattern. Constraints below travel with the dispatch.
 3. **STOP: Antti picks** (or blends, or rejects the lot; rejection = sharpen the brief and
    redispatch). Nothing student-facing moves before this call.
 4. **Implement** the chosen set module by module, on a branch (`main` is the shared KB; Antti
    merges). Approval gate per root CLAUDE.md §Approval gate: student-facing body text carrying a
    decision Antti has not made = card; the picked story-set counts as his called direction, so
    edits that execute it apply directly.
-5. **Re-run the judge** after each implemented tranche. Verdict worsens on any dimension → revert
+5. **Re-run the judge** after each implemented tranche. Verdict worsens on any factor → revert
    that tranche before proceeding; the judge's evidence quotes are the next iteration's punch list.
 
 **Stop conditions:** definition of done holds (§ Measurement) → wind down and report. Blocked on
 step 3 or an Open decision → card it and idle, do not route around the gate. Two consecutive
-iterations with no dimension movement → stop and report the stall rather than thrashing prose.
+iterations with no factor movement → stop and report the stall rather than thrashing prose.
 
 ## Constraints for the creative pass (travel with the dispatch)
 
 - Audience is the builder leader (CEO/CTO/SVP), psychographic per root CLAUDE.md. Their future
   story is organisational — learning rate, owning the transformation — not the engineer's inner
-  loop. AE101's map answers "where am I in the work"; A101's backbone must answer that leader's
-  question, whatever the creative pass decides that question is.
-- Do not port AE101's stories, figures, or axioms. Dimension 5 punishes it.
+  loop. AE101's spine question is "how do I trust work I didn't watch"; A101's learnings must
+  carry that leader's questions, whatever the creative pass decides they are.
+- Do not port AE101's learnings, figures, or axioms. The audience-fit gate punishes it.
 - Vocabulary per `curriculum/vocabulary.md`; content rules load at generation time as usual;
   `check_strategy_tie_in.md` surface applies (Big Idea / mood contract per module).
 - Runtime contract differs (Cowork + training directory, per A101's `training-architecture.md`) —
@@ -122,7 +144,7 @@ iterations with no dimension movement → stop and report the stall rather than 
 
 - Does the future-thread need sourced witnesses like AE101's (backing blocks land in A101 as part
   of this effort), or is the leader-facing future told house-voice only? This decides whether
-  dimension 4 gates A101 at AE101's bar or a deliberately lighter one.
+  *self-challenging* gates A101 at AE101's bar or a deliberately lighter one.
 - Whether the judge, once stable, wires into the board/gates or stays an on-demand instrument.
 
 <!-- /maintainer -->

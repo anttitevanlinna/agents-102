@@ -128,9 +128,10 @@ Both halves of the loop run on subagents; the main thread orchestrates and synth
 - **Creative diverge** — three to four per brief, one message, background, on the strongest
   model available (this is the one place breadth is not the job; taste is). Each agent gets the
   step-0 report, the five AE101 learnings from § Grounding as the *shape* to match, the
-  constraints below, and a distinct opening bias so the spread is real — e.g. one starts from
-  the leader's fears, one from the organisation's learning rate, one from what the leader will
-  be asked to decide in 2027, one from A101's existing Big Ideas and weaves outward. Each writes
+  constraints below, and a distinct opening bias so the spread is real — one starts from the
+  working headline (control + creativity as one act), one from the organisation's learning rate
+  as the ceiling while the model rotates, one from the leader's fears, one from A101's existing
+  beats and braids outward, naming what is already enacted rather than inventing. Each writes
   `curriculum/module-design/a101-story-proposals/<bias-slug>.md`: the learning-set in the
   rubric's own shape (question carried · planted / complicated / paid off across the seven
   modules · governor · counter-voice · what it says about the future), plus which existing A101
@@ -161,6 +162,27 @@ The iteration the goal-loop runs, in order; each pass through 4–5 is one itera
 **Stop conditions:** definition of done holds (§ Measurement) → wind down and report. Blocked on
 step 3 or an Open decision → card it and idle, do not route around the gate. Two consecutive
 iterations with no factor movement → stop and report the stall rather than thrashing prose.
+
+## Working headline (Antti, 2026-09-22)
+
+AE101's headline is *agentic engineering is engineering*: the discipline is one the student
+already owns; the model is a new component that fails in new ways. A101's equivalent, as
+called: **controlling your agent and making your agents creative is one act of leadership.**
+Floor and ceiling, set by different instruments, both built by the leader — the closer already
+says it in the training's own words (`new-human-role-in-the-loop`: *"Groundedness protects the
+floor. Steering raises the ceiling"*), unnamed as the spine.
+
+What step 0 says about it: every learning the cold reads named is a control learning. The
+creativity beats exist — three stances and the Rory seat at M3, *"the synthesizer averages
+everything into beige"*, frameworks that make it pick, the steering eval at M6, the proposal
+forum at M8 — and no judge named them as a learning, because nothing braids them. The control
+arc is developed; the creativity arc is orphaned beats. The two failure modes the headline
+implies (beige without control's opposite; Avianca without creativity's) are both already in
+the corpus and never set beside each other.
+
+Register: the headline is strategy-doc wording. On the student surface it must arrive as
+mechanism (what sets the floor, what raises the ceiling, why they are different instruments),
+never as flattery about leadership — `check_sales_copy` / `check_writing §13` bind.
 
 ## Constraints for the creative pass (travel with the dispatch)
 

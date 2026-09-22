@@ -100,6 +100,49 @@ developed` · `## Factors` · `## Audience fit` · `## Weakest factor` (the fact
 evidence and the smallest concrete change that would strengthen it). Used for step 0 calibration
 on AE101 and for A101 until it has a learning-set worth pairing.
 
+## Storytelling — frame, narrative, point of view, stance (Antti, 2026-09-22)
+
+The five factors sit downstream of four things they do not measure. Frame generates the
+learnings, narrative orders them, point of view makes them believable, stance makes them worth
+repeating. A training can score well on all five factors and have none of these; that is a
+well-organised handbook. Judged per training, evidence quoted, on the same 0–100 anchors
+discipline:
+
+- **Frame** — one lens that makes every module a case of the same thing. AE101: *agentic
+  engineering is engineering* (feedback control, verification, compounding; Bainbridge and
+  Goodhart are what the lens shows, not decoration). Test: can the judge state the frame in one
+  sentence and show three modules that only make sense through it? 0 none stated or implied ·
+  40 a frame stated once, not load-bearing · 80 every module reads through it · 100 the frame
+  also names where it breaks.
+- **Narrative** — movement with stakes: a protagonist who wants something, an obstacle, a turn.
+  AE101: the un-packaged send-off that fails and comes back packaged; the sea passage. A101:
+  the mood arc (joy → unease → deeper unease → rescue → leverage) is a designed plot and its
+  strongest storytelling asset. Test: tell the training as a story in five sentences with a
+  turn — what went wrong, what changed. 0 a sequence of topics · 40 a shape asserted in
+  headings · 80 a turn the student lives through · 100 the turn is the training's own failure.
+- **Point of view** — who is speaking and what they have been through. AE101:
+  `story-of-module-6` in first person, a narrator with scars (*"I drifted in every one of the
+  ways this story just walked"*), named voices. A101: second-person instruction throughout;
+  the narrator surfaces in lines (*"the first thing you build is for you, because you're the only
+  evaluator you can't fool"*) and never in a passage. Test: can the judge say who is telling this
+  and cite three places the narrator shows. 0 no one · 40 a voice in asides · 80 a narrator
+  with a stated experience · 100 the narrator's own failure is on the page.
+- **Stance** — opinionated, edgy, standing its ground. Positions held against the field and
+  defended, not hedged into vendor-neutral mush. AE101: *the model has read the field and gives
+  you a forecast, not a measurement*; *a rule in context is not a rule in the output*. A101:
+  *"share the whole agent" is a vendor pitch*; *certainty is a fantasy you inherited*; *nobody
+  knows where agents are going, not Anthropic, not your board*. Test: list the positions the
+  training would lose a customer over, and where each is defended rather than asserted. 0 none ·
+  40 opinions stated, unargued · 80 positions defended with a mechanism or a scar · 100 a
+  position the training holds against its own commercial interest, on the page.
+
+Stance and self-challenging pull against each other and both are wanted: a training that
+doubts its tools AND holds its ground reads as someone who has been there; one that only
+doubts reads as hedging, one that only holds ground reads as a pitch. Report the pair.
+
+These four are what the creative diverge proposes first — a frame, a plot, a narrator, the
+positions — with the learning-set as their consequence, not the other way round.
+
 ## Scoring — 0–100 per factor, anchored (Antti, 2026-09-22: "measure the balance and progression")
 
 Step 0 showed absolute four-word verdicts saturate: both trainings came back *strong* on four

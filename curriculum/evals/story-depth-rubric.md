@@ -144,9 +144,23 @@ judges. A number without a quoted line beside it is not a score.
 depth anchors), as a row of numbers in module order. A flat stretch is where the arc stalls; a
 jump at the last module with nothing before it is a recap, not a development.
 
-**Balance.** Two numbers per training: factor spread (max minus min across the five factor
-scores) and carry share (the top learning's depth as a share of all learnings' depth summed).
-High spread = a training that does one thing; high carry = a training resting on one story.
+**Balance = the tradeoff profile, not a spread to minimise (Antti, 2026-09-22: "can't get all
+to 100").** The five factors pull against each other, so the five scores are read as a shape,
+and the question is whether the shape is the one the training chose:
+
+- forward-looking ↔ applicable — a governor is an answer; an open question refuses one. A
+  training that hands over moves for Tuesday has spent some of its open future, and vice versa.
+- self-challenging ↔ earned/mood — doubting your own tools on the page costs the mood the
+  exercise just built; every counter-voice is paid for in confidence.
+- depth ↔ breadth — meaning-changing beats take module-minutes; five learnings developed to 80
+  crowd out a sixth. Carry share (the top learning's depth ÷ all learnings' depth summed) shows
+  where that trade was made.
+
+Report per training: the five factor scores as the profile, carry share, and one line naming
+which trade the training appears to have made. A profile is judged against the training's
+*intended* profile (a maintainer decision recorded in the goal spec), never against 100s. The
+loop's job is to move A101 toward its intended shape; a factor rising past its target at
+another's expense is a regression, and the report says so.
 
 ## Maintenance notes
 

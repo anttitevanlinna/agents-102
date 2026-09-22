@@ -90,8 +90,17 @@ lines from both is invalid. Majority of three independent judges. Plus one per-a
 comparison: **audience fit** — the learnings belong to this training's buyer (builder leader vs
 engineer IC); a ported AE101 learning scores negative, not neutral.
 
-**Definition of done:** parity = no factor where AE101 leads. Betterness = A101 leads on at least
-one, trails on none. Audience fit passes throughout.
+**Scores are a profile, not a scoreboard (Antti, 2026-09-22).** The five factors trade off —
+forward-looking against applicable, self-challenging against earned mood, depth against
+breadth — so nobody gets five hundreds and the target is a chosen shape. The rubric scores each
+factor 0–100 on written anchors (`curriculum/evals/story-depth-rubric.md` § Scoring) and reports
+the profile, the carry share, and which trade the training made.
+
+**Definition of done:** A101's profile sits within ten points of its *intended* profile on every
+factor, and its shape is as deliberate as AE101's — no factor high by accident of a single
+lecture, none low because nobody chose. Audience fit passes throughout. The intended profile
+is an Open decision below, set after the step-0 numbers land; until it is set, the loop reports
+movement and does not claim done.
 
 **Step 0 — calibrate on AE101 alone, before any content moves (Antti, 2026-09-22: A101's
 modules are not developed enough for a comparison to say anything new).** Run three judges on
@@ -168,6 +177,12 @@ iterations with no factor movement → stop and report the stall rather than thr
   not debris to clear (`feedback_curriculum_default_move_is_cut.md` still binds at implementation).
 
 ## Open decisions (Antti)
+
+- **A101's intended profile** — five target numbers, set against the step-0 scores. The
+  leader-audience prior: forward-looking and applicable both matter (the leader leaves with a
+  question about the organisation AND a Monday move), so the trade sits between them; depth is
+  carried by fewer, longer learnings than AE101's; self-challenging is spent where the
+  audience can afford the mood cost, not everywhere. A prior, not the decision.
 
 - Does the future-thread need sourced witnesses like AE101's (backing blocks land in A101 as part
   of this effort), or is the leader-facing future told house-voice only? This decides whether

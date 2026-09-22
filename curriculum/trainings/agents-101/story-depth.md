@@ -125,6 +125,35 @@ the other standing reports (`curriculum/evals/story-depth.md`, one `## Run` sect
 Wiring into the quality ladder / board is a later call — first make the instrument, then decide
 what it gates.
 
+## How we would know it made the training better
+
+The rubric above cannot see the change the theory plan makes. Its judges read every line
+with a consensus list in hand, so they credited A101's arcs before any naming (depth 77 at
+step 0). It measures whether a learning *exists and develops*; the naming layer changes
+whether the student can *retrieve* it. Three instruments that take the text away, each run
+before and after, plus one guard:
+
+1. **Squint test.** Judge sees only the skeleton (`node scripts/print-outline.js agents-101`:
+   module, lecture and `##` titles) and names the learnings, their governors, and the question
+   about the future. Scored as matches against the theory plan's intended set, with the title
+   that carried each. Cheapest and most direct: today twelve of sixteen lectures have no
+   slides, so the before-number is the floor.
+2. **Closed-book recall.** Judge reads the training once in student order, then answers with
+   the corpus withdrawn: what you carry out, the move for each, the question you are left
+   with, where the training doubted itself. Felt-but-unnamed fails; named lands.
+3. **Transfer.** Three leader decisions the training never covers (an agent auto-approving
+   expenses under a threshold; a vendor pitching "share the whole agent"; a board asking for
+   the AI strategy in a quarter). A judge answering as a graduate is scored on whether the
+   governors fire, with quotes. Theory pays rent by generating the next move in a situation
+   it never showed.
+
+**Guard:** the story judge's per-beat mood scores (`/eval-fire story`) on every touched
+module. Naming beats are how M3's unease gets resolved by accident; the mood arc must not
+move. A rise on any instrument with a mood regression is a loss.
+
+Definition of done gains a second clause: instruments 1–3 improve against their before-run,
+and the guard holds. The profile rubric stays for the shape (forward-looking, earned).
+
 ## Dispatch shapes
 
 Both halves of the loop run on subagents; the main thread orchestrates and synthesises only.

@@ -3,6 +3,29 @@
 Rubric: `story-depth-rubric.md`. Goal spec: `trainings/agents-101/story-depth.md`. One `## Run`
 section per run, newest first; per-judge reports under `story-depth/`.
 
+## Squint after — 2026-09-22 — the skeleton to be, titles only
+
+Same three-judge test on `story-depth/a101-skeleton-to-be.md` with the change markers hidden.
+Raw counts 21–30 learnings, 5–8 governors (counts remain meaningless; the judges still list
+one line per title). Against the key: learnings 9–10 of 10 — every intended learning has a
+title carrying it, with the trust arc read as a chain (*the report is a hypothesis* → *"are you
+sure?" is another fluent answer* → *the gate is a claim too*) and the future thread read as a
+seeded-and-echoed question (*the model will change under this* M2 → *the model rotates* M6 →
+*will your organisation learn faster than the model changes underneath it?* M8) by all three.
+Governors 4–5 of 9 (*I can't tell*, *would you let it send the mail*, *when did you last read
+one of these yourself*, *what would change our mind*, *start with don't*); the shortfall was
+the skeleton's, not the titles' — *which rung has this action earned*, *what's the worst thing
+it could do with that access* and *what would have to be true* were in the theory plan and
+absent from the first cut, and are now slides. Own-tool doubt found by all three; two of
+three also read *the doubt stays, hold it* as the training doubting itself, which is the mood
+contract working from a title alone.
+
+Before → after on the key, with no prose written: learnings ~5 → 9–10 · governors 1 → 4–5
+(7–8 after the three added slides, unmeasured) · future 0 → 1 · own-tool doubt 0 → 1. This
+is the naming layer measured in isolation. What it cannot show: whether the prose under each
+title earns it, or whether the mood arc survives — the closed-book, transfer and mood-guard
+instruments in the goal spec own those, and they run after placement.
+
 ## Squint before — 2026-09-22 — A101 skeleton as it stands
 
 Three judges, skeleton only (`story-depth/a101-skeleton.md`), told to be stingy. Raw counts:

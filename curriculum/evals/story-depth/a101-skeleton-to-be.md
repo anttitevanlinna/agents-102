@@ -46,6 +46,7 @@ M3 · Multi-Agent Systems                             mood: unease, unresolved
       ## Sources, processing, boundary              (new)
   Debrief
       ## The doubt stays. Hold it.                  (new: existing line as a title)
+      ## What's the worst thing it could do with that access?   (new: existing bridge line; the M4 hand-off)
 
 M4 · Security                                        mood: deepened unease
   LECTURE · The discipline of risk                   (keep title, gets slides)
@@ -66,6 +67,7 @@ M5 · Grounded Output                                 mood: rescue, bounded
   LECTURE · Self-consistency after the scoreboard
       ## A drift signal, never proof                (new)
   Agent Actions
+      ## Which rung has this action earned?         (new: existing line; the governor)
       ## Propose, double-check, apply               (rename: Agent Actions)
 
 M6 · Evaluations                                     mood: leverage; the spine reveal
@@ -92,6 +94,7 @@ M7 · From Personal to Team                           mood: generosity
       ## You cannot share an agent                  (new)
       ## Access is easy; absorption is scarce       (new)
       ## People absorb what they already half know  (new: absorptive capacity, plain)
+      ## What would have to be true for them to switch?   (new: Martin's question, already attributed in the exercise)
       ## The people plan stalls on names. That is the finding.   (new)
 
 M8 · Agents Building Agents                          mood: awe, forward hunger
@@ -102,6 +105,13 @@ M8 · Agents Building Agents                          mood: awe, forward hunger
       ## What would change our mind?                (new)
       ## A flywheel, not a graduation               (new: existing line)
 ```
+
+Squint after-run (2026-09-22, three judges, titles only, scored against the key): learnings
+9–10 of 10 (up from ~5), governors 4–5 of 9 (up from 1), future question yes with the M6 echo
+found by all three, own-tool doubt yes (*the gate is a claim too*, *the judge names its own
+limit*). The three governor slides above were added after that run: *which rung*, *worst thing
+with that access* and *what would have to be true* are in the theory plan and were missing
+from the first cut. Reports: `squint-after.judge-*.md`.
 
 Open question on dosage: M6's closer carries the spine reveal, the counter-voice and the
 future echo in seven slides. If that is too dense, *the gate is a claim too* and the two

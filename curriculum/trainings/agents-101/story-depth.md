@@ -17,9 +17,10 @@ A101 tells its own interwoven stories — including stories about the future —
 AE101 does, and a judge can verify it. Two deliverables:
 
 1. **A measurement** that detects the current gap and can re-run after every content change.
-2. **A creative pass, delegated to an LLM**, that proposes A101-native story-sets for Antti to
-   pick from. The stories themselves are NOT decided in this file. Anything below that reads like
-   a story idea is grounding observation, not a decision.
+2. **A creative pass, delegated to an LLM**, that proposes how A101's learnings get named and
+   braided — step 0 found the arcs enacted on the page and unnamed, so the job is naming and
+   braiding what is there plus one missing arc, not inventing stories. Antti picks. Nothing
+   below decides the content; § Working headline is the brief's direction, not its answer.
 
 ## Grounding — the big learnings AE101 develops (read 2026-09-22)
 
@@ -36,9 +37,10 @@ must invent for A101's leader, never as content to port.
    frontier moves outward only as fast as the gates behind it. Bainbridge's ironies run as the
    counter-voice: the trust is deserved AND it erodes your vigilance.
 2. **"Your frontier is what you have expressed."** M1: the machine amplifies the posture you
-   bring, your stance is the ceiling. Develops into: every push-back becomes a rule, every "not
-   like that" becomes a check. Final lecture: the agent stops where your judgement begins, and the
-   line never goes away.
+   bring, your stance is the ceiling. The design intends it to develop into every push-back
+   becoming a rule and the final lecture's *the agent stops where your judgement begins*; on
+   the page, three scoring judges found the M1 statement never returns with new meaning
+   (depth 40) and none saw the M6 link. A headline as read, an arc as designed.
 3. **"The kit compounds; the model rotates."** M1: the correction went to disk, not scrollback.
    M3: the compound ladder fix → memory → skill → system, double-loop learning. M5: packaging.
    M6: skills compose, evals prove the kit improves, and the bitter lesson says your procedures
@@ -49,15 +51,23 @@ must invent for A101's leader, never as content to port.
    (`the-2-frontiers.md`; its backing block guards against anyone answering it).
 5. **The credo, planted and harvested.** *Act under uncertainty · competence sets the ceiling ·
    cross personal → team* rides silently on every map copy, then is spoken once as the final
-   teaching beat.
+   teaching beat. Judges score 4 and 5 together as a bookend: forward-looking 80, everything
+   else at the floor — it holds the future open and does nothing else, and carries AE101's
+   forward-looking score almost alone.
 
 The braid is the craft: 1 and 3 fuse at the delegation frontier (the gates you compound buy the
 trust); 4 explains why 3 matters; the two frontiers collapse 2 and 4 into one open question. The
 map figure that fills in module by module is the stage these play on, not a story itself.
 
-A101 today: per-module Big Ideas, good *local* narrative (M1 rehearsal → M2 real work), one
-forward tease in M2 ("the move that bends the curve"). Whether any learning develops across
-modules is what step 0 measures — do not assert the answer here.
+A101 as measured (step 0, `curriculum/evals/story-depth.md`): six learnings named by cold
+reads, all of them control learnings — context makes it yours · confident is not verified ·
+certainty unavailable, hold the doubt · the human moves one level up · access is not absorption
+· systems compound. Developed by enactment (exercises, the Debrief ritual, the mood contract)
+and named late or not at all: *the human moves up* is legible only from M6's recap; *access is
+not absorption* is one module; the creativity beats (M3 three stances, beige synthesizer, M6
+steering eval, M8 proposal forum) are on the page and no judge named them as a learning.
+Borrowed theory sits on the leadership side (JTBD, Martin, Rumelt, Mollick, Avianca) and is
+nearly absent on the agent side.
 
 ## Measurement — the rubric
 
@@ -102,15 +112,13 @@ lecture, none low because nobody chose. Audience fit passes throughout. The inte
 is an Open decision below, set after the step-0 numbers land; until it is set, the loop reports
 movement and does not claim done.
 
-**Step 0 — calibrate on AE101 alone, before any content moves (Antti, 2026-09-22: A101's
-modules are not developed enough for a comparison to say anything new).** Run three judges on
-AE101 only. They must recover the learning-set in § Grounding — the trust arc, expression as
-the frontier, kit-compounds-model-rotates, the open future, the credo — with correct locations,
-and rate the five factors strong or present. A judge that returns per-module headlines, or
-misses the trust arc, is broken; fix the rubric, not the content. This is the `judge-hillclimb`
-recall principle applied to a content measure. The comparative run (both trainings, paired
-rulings) starts only once A101 has a learning-set to compare; until then A101 is judged in the
-same single-training mode and its report IS the gap statement.
+**Step 0 ran 2026-09-22** — nine judges, both trainings; results and rubric notes in
+`curriculum/evals/story-depth.md` § Run step-0. The recall test passed (six of six cold reads
+named the trust arc and compounding unprompted). The premise that AE101 leads did not: the
+two trainings made opposite trades — A101 depth 77 / forward-looking 44 / applicable 83 /
+self-challenging 60 / earned 56; AE101 65 / 63 / 60 / 58 / 44. Rubric lessons banked there:
+single-training verdicts saturate, so single mode names and paired mode scores; medians of
+three, never one judge; candidate learnings in their own row.
 
 Rubric = `curriculum/evals/story-depth-rubric.md` (the judge prompt, verbatim); runs record like
 the other standing reports (`curriculum/evals/story-depth.md`, one `## Run` section per run).

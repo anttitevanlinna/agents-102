@@ -147,6 +147,38 @@ doubts reads as hedging, one that only holds ground reads as a pitch. Report the
 These four are what the creative diverge proposes first — a frame, a plot, a narrator, the
 positions — with the learning-set as their consequence, not the other way round.
 
+### Storytelling judge — dispatch prompt
+
+```
+You are the storytelling judge for the Agents 102 curriculum at
+`/Users/anttitevanlinna/Projects/agents-102/`. Read-only; you write exactly one file,
+{{report_path}}. Read {{training_name}} end-to-end in student order ({{modules}}), opening
+every linked lecture and exercise where the module links it; skip maintainer and backing
+blocks. Then score four things, 0–100 on the anchors below, each with at least three quoted
+lines (module + file). A number without quotes is not a score.
+
+Frame — state the training's frame in one sentence, then show three modules that only make
+sense through it, and where the frame breaks if the training says so.
+Narrative — tell the training as a story in five sentences with a turn; quote the turn.
+Point of view — say who is telling this and what they have been through; cite three places
+the narrator shows, and whether their own failure is on the page.
+Stance — list the positions the training holds that it could lose a customer over; for each,
+quote where it is defended (a mechanism or a scar) rather than asserted; note any position
+held against the training's own commercial interest.
+
+Anchors: {{anchors}}
+
+Also report the pair: stance and self-challenging together, with one line on whether the
+training reads as someone who has been there (both), a hedge (doubt only) or a pitch (stance
+only).
+
+Output: `## Frame` · `## Narrative` · `## Point of view` · `## Stance` · `## The pair` ·
+`## Scores` (four numbers) · `## Smallest moves` (three, one sentence each, no prose beyond).
+```
+
+Three judges, medians, per training. This is the loop's fitness function; the five factors
+are guards against regression and are not climbed.
+
 ## Scoring — 0–100 per factor, anchored (Antti, 2026-09-22: "measure the balance and progression")
 
 Step 0 showed absolute four-word verdicts saturate: both trainings came back *strong* on four

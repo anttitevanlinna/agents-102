@@ -106,10 +106,13 @@ breadth — so nobody gets five hundreds and the target is a chosen shape. The r
 factor 0–100 on written anchors (`curriculum/evals/story-depth-rubric.md` § Scoring) and reports
 the profile, the carry share, and which trade the training made.
 
-**Floor and differentiation (Antti, 2026-09-22).** The five factors are the floor — they must
-hold and are not what makes the training worth buying. The storytelling quartet in the rubric
-(frame · narrative · point of view · stance) is the differentiation, and it is what the
-creative diverge proposes first and what the loop climbs once the floor holds.
+**What the judges measure, and what the room measures (Antti, 2026-09-22, twice).** The
+storytelling quartet — narrative, frame, point of view, and a stance that is opinionated,
+edgy and stands its ground — is the real deal and the thing the loop climbs. It is authoring
+craft: a cold reader can see it on the page, so LLM judges score it. The five factors are a
+floor guard: they must not regress, and nobody climbs them. Whether the learning landed —
+objectives, evaluations, what a student can do afterwards — is heard from students, not
+simulated; see § How we would know.
 
 **Definition of done:** A101's profile sits within ten points of its *intended* profile on every
 factor, and its shape is as deliberate as AE101's — no factor high by accident of a single
@@ -132,11 +135,10 @@ what it gates.
 
 ## How we would know it made the training better
 
-The rubric above cannot see the change the theory plan makes. Its judges read every line
-with a consensus list in hand, so they credited A101's arcs before any naming (depth 77 at
-step 0). It measures whether a learning *exists and develops*; the naming layer changes
-whether the student can *retrieve* it. Three instruments that take the text away, each run
-before and after, plus one guard:
+Two kinds of evidence, and they are not interchangeable. **Craft** is judged on the page:
+the quartet, scored per iteration by the storytelling judge in the rubric, plus the squint
+test for what titles carry. **Learning** is heard from students: nothing below that asks
+"did it land" is answered by an LLM playing a student. Instruments:
 
 1. **Squint test.** Judge sees only the skeleton (`node scripts/print-outline.js agents-101`:
    module, lecture and `##` titles) and names the learnings, their governors, and the question
@@ -146,21 +148,22 @@ before and after, plus one guard:
    depth 20. Against the key: about five of ten learnings, one of nine governors, no future
    question, no doubt of the training's own tools. Key = `theory-plan.md` § 6 governors + the
    learning-set in `curriculum/evals/story-depth.md`.
-2. **Closed-book recall.** Judge reads the training once in student order, then answers with
-   the corpus withdrawn: what you carry out, the move for each, the question you are left
-   with, where the training doubted itself. Felt-but-unnamed fails; named lands.
-3. **Transfer.** Three leader decisions the training never covers (an agent auto-approving
-   expenses under a threshold; a vendor pitching "share the whole agent"; a board asking for
-   the AI strategy in a quarter). A judge answering as a graduate is scored on whether the
-   governors fire, with quotes. Theory pays rent by generating the next move in a situation
-   it never showed.
+2. **Storytelling judge** (rubric § Storytelling): frame, narrative, point of view, stance,
+   0–100 on the anchors with quotes, three judges, medians. The loop's fitness function.
+3. **From the room, not a judge.** At the close of a cohort, students answer four questions
+   in their own words, no prompt: what do you carry out of this; the move you will make on
+   Tuesday; the question you are left with about where this is going; where the training
+   doubted itself. Scored against the key the same way the squint test is. Plus the
+   before/after confidence instrument already used for AE101 (same words both times,
+   administered by the trainer, outside the workbook). These are the only evidence that a
+   learning landed; the goal loop reports craft and waits for the room on learning.
 
-**Guard:** the story judge's per-beat mood scores (`/eval-fire story`) on every touched
-module. Naming beats are how M3's unease gets resolved by accident; the mood arc must not
-move. A rise on any instrument with a mood regression is a loss.
+**Guards:** the five factors must not regress against step 0, and the story judge's per-beat
+mood scores (`/eval-fire story`) on every touched module must hold — naming beats are how
+M3's unease gets resolved by accident.
 
-Definition of done gains a second clause: instruments 1–3 improve against their before-run,
-and the guard holds. The profile rubric stays for the shape (forward-looking, earned).
+Definition of done, restated: the quartet climbs against its before-run and the guards hold.
+Learning outcomes are reported when a cohort reports them, never claimed by the loop.
 
 ## Dispatch shapes
 

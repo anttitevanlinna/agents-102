@@ -93,14 +93,41 @@ engineer IC); a ported AE101 learning scores negative, not neutral.
 **Definition of done:** parity = no factor where AE101 leads. Betterness = A101 leads on at least
 one, trails on none. Audience fit passes throughout.
 
-**Step 0 — calibrate before any content moves.** Run the judge now, against today's corpora. It
-must report AE101 clearly ahead with correct evidence (the gap is the planted defect). A judge
-that reports parity today is broken; fix the rubric, not the content. This is the
-`judge-hillclimb` recall principle applied to a content measure.
+**Step 0 — calibrate on AE101 alone, before any content moves (Antti, 2026-09-22: A101's
+modules are not developed enough for a comparison to say anything new).** Run three judges on
+AE101 only. They must recover the learning-set in § Grounding — the trust arc, expression as
+the frontier, kit-compounds-model-rotates, the open future, the credo — with correct locations,
+and rate the five factors strong or present. A judge that returns per-module headlines, or
+misses the trust arc, is broken; fix the rubric, not the content. This is the `judge-hillclimb`
+recall principle applied to a content measure. The comparative run (both trainings, paired
+rulings) starts only once A101 has a learning-set to compare; until then A101 is judged in the
+same single-training mode and its report IS the gap statement.
 
-Rubric lives at `curriculum/evals/judges/` once step 0 stabilises it; runs record like the other
-standing reports (one file per scope, overwritten on rerun). Wiring into the quality ladder /
-board is a later call — first make the instrument, then decide what it gates.
+Rubric = `curriculum/evals/story-depth-rubric.md` (the judge prompt, verbatim); runs record like
+the other standing reports (`curriculum/evals/story-depth.md`, one `## Run` section per run).
+Wiring into the quality ladder / board is a later call — first make the instrument, then decide
+what it gates.
+
+## Dispatch shapes
+
+Both halves of the loop run on subagents; the main thread orchestrates and synthesises only.
+
+- **Judges** — three per run, one message, `run_in_background: true`, Sonnet. Prompt =
+  `curriculum/evals/story-depth-rubric.md` with the module lists pasted in registry order.
+  Each writes `curriculum/evals/story-depth/<run-label>.judge-<n>.md`; the orchestrator takes
+  the majority per factor into the standing report `curriculum/evals/story-depth.md`.
+- **Creative diverge** — three to four per brief, one message, background, on the strongest
+  model available (this is the one place breadth is not the job; taste is). Each agent gets the
+  step-0 report, the five AE101 learnings from § Grounding as the *shape* to match, the
+  constraints below, and a distinct opening bias so the spread is real — e.g. one starts from
+  the leader's fears, one from the organisation's learning rate, one from what the leader will
+  be asked to decide in 2027, one from A101's existing Big Ideas and weaves outward. Each writes
+  `curriculum/module-design/a101-story-proposals/<bias-slug>.md`: the learning-set in the
+  rubric's own shape (question carried · planted / complicated / paid off across the seven
+  modules · governor · counter-voice · what it says about the future), plus which existing A101
+  beats it keeps and which it would cut. Proposals do not edit curriculum.
+- **Implementation** — per module, one agent per module file group after Antti's pick, on a
+  branch; the judge re-runs after each tranche.
 
 ## Loop contract
 
@@ -110,7 +137,7 @@ The iteration the goal-loop runs, in order; each pass through 4–5 is one itera
    creative pass works against. Judge fails to see the gap → iterate the RUBRIC, not the content.
 2. **Diverge**, once per brief. Parallel creative agents (3-ish), each proposing one complete
    set of big learnings for A101 (a handful, braided): for each, the one-line question the
-   student carries, where it is planted, complicated and paid off across the seven modules, its
+   student carries, where it is planted, complicated and paid off across the eight modules, its
    governor, its counter-voice, and what it says about the future. Written to disk, one file per
    proposal, per the orchestrator pattern. Constraints below travel with the dispatch.
 3. **STOP: Antti picks** (or blends, or rejects the lot; rejection = sharpen the brief and

@@ -169,10 +169,14 @@ Both halves of the loop run on subagents; the main thread orchestrates and synth
   working headline (control + creativity as one act), one from the organisation's learning rate
   as the ceiling while the model rotates, one from the leader's fears, one from A101's existing
   beats and braids outward, naming what is already enacted rather than inventing. Each writes
-  `curriculum/module-design/a101-story-proposals/<bias-slug>.md`: the learning-set in the
-  rubric's own shape (question carried · planted / complicated / paid off across the seven
-  modules · governor · counter-voice · what it says about the future), plus which existing A101
-  beats it keeps and which it would cut. Proposals do not edit curriculum.
+  `curriculum/module-design/a101-story-proposals/<bias-slug>.md`: first the storytelling
+  quartet (`story-depth-rubric.md` § Storytelling) — the frame in one sentence and where it
+  breaks · the plot in five sentences with its turn · who is telling it and what they have been
+  through · the positions the training holds and would lose a customer over — then the
+  learning-set as their consequence, in the rubric's shape (question carried · planted /
+  complicated / paid off across the eight modules · governor · counter-voice · what it says
+  about the future), plus which existing A101 beats it keeps and which it would cut. Proposals
+  do not edit curriculum.
 - **Implementation** — per module, one agent per module file group after Antti's pick, on a
   branch; the judge re-runs after each tranche.
 

@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 228 — 2026-09-22
+
+When a responsible-disclosure PoC threshold passes (Day+21) without a patch or a PoC release, the finding is not "nothing happened" — it is "the researcher exercised deliberate extended embargo." Reading the primary disclosure document directly (not a search result) revealed that Manifold Security had pre-committed to withholding the specific config key until Anthropic patches, making the Day+21 standard threshold inapplicable. For any security watch with an active disclosure embargo, fetch the original disclosure text at the threshold date to confirm whether the author pre-stated a vendor-benefit hold condition; standard deadline reasoning breaks when the researcher made a non-standard commitment in their original post.
+
+A simultaneous multi-vendor outage (ChatGPT + Claude + Grok, Sep 3) was discoverable via the "AI platforms simultaneous outage september 3 2026" query — which surfaced in the Assistants API T+27 search thread, not as a targeted outage search. Lesson: when multiple AI services fail at the same time, the co-failure IS the finding (shared infrastructure), not each service's individual explanation. Enterprise teams selecting from {OpenAI + Anthropic + xAI} as "multi-vendor" may have no redundancy if all three share Azure East US. Google Gemini's independent GCP infrastructure is empirically validated as redundancy, not theoretical. Capture simultaneous outages as enterprise-reality findings, not platform-specific events.
+
 ### Cycle 227 — 2026-09-21
 
 At Day+21 on a responsible-disclosure clock (GitSpawn ultrareview), the highest-value check is a direct releasebot.io fetch — not a keyword search — because patch releases land there before any blog post or trade publication. For time-bounded security watches, the direct-source check costs one fetch and settles the question immediately; keyword searches add noise without speeding up detection. When a vendor-internal benchmark (HydraFusion's CheckpointBench) is the only available evidence at Day+17, the evidence level is correctly L0 regardless of the benchmark quality — the independence criterion requires an external party running the same test. Don't confuse a well-described benchmark with an independently-run one.

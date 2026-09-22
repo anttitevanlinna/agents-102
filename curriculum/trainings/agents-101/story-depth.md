@@ -106,6 +106,11 @@ breadth — so nobody gets five hundreds and the target is a chosen shape. The r
 factor 0–100 on written anchors (`curriculum/evals/story-depth-rubric.md` § Scoring) and reports
 the profile, the carry share, and which trade the training made.
 
+**Floor and differentiation (Antti, 2026-09-22).** The five factors are the floor — they must
+hold and are not what makes the training worth buying. The storytelling quartet in the rubric
+(frame · narrative · point of view · stance) is the differentiation, and it is what the
+creative diverge proposes first and what the loop climbs once the floor holds.
+
 **Definition of done:** A101's profile sits within ten points of its *intended* profile on every
 factor, and its shape is as deliberate as AE101's — no factor high by accident of a single
 lecture, none low because nobody chose. Audience fit passes throughout. The intended profile
@@ -135,9 +140,12 @@ before and after, plus one guard:
 
 1. **Squint test.** Judge sees only the skeleton (`node scripts/print-outline.js agents-101`:
    module, lecture and `##` titles) and names the learnings, their governors, and the question
-   about the future. Scored as matches against the theory plan's intended set, with the title
-   that carried each. Cheapest and most direct: today twelve of sixteen lectures have no
-   slides, so the before-number is the floor.
+   about the future. **Scored as matches against the theory plan's intended set, never by
+   count** — the 2026-09-22 baseline judges each "found" 11–13 learnings, one topic per module
+   (*security is a discipline you practise*), which is the headline shape the rubric scores at
+   depth 20. Against the key: about five of ten learnings, one of nine governors, no future
+   question, no doubt of the training's own tools. Key = `theory-plan.md` § 6 governors + the
+   learning-set in `curriculum/evals/story-depth.md`.
 2. **Closed-book recall.** Judge reads the training once in student order, then answers with
    the corpus withdrawn: what you carry out, the move for each, the question you are left
    with, where the training doubted itself. Felt-but-unnamed fails; named lands.

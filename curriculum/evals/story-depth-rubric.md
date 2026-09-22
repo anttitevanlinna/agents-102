@@ -102,6 +102,10 @@ on AE101 and for A101 until it has a learning-set worth pairing.
 
 ## Storytelling — frame, narrative, point of view, stance (Antti, 2026-09-22)
 
+**The five factors are the floor; these four are the differentiation** (Antti, same day). A
+training that clears the factors is sound. A training that scores on the quartet is *this*
+training, the one a buyer cannot get elsewhere. The loop holds the floor and climbs the quartet.
+
 The five factors sit downstream of four things they do not measure. Frame generates the
 learnings, narrative orders them, point of view makes them believable, stance makes them worth
 repeating. A training can score well on all five factors and have none of these; that is a

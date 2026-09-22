@@ -3,6 +3,24 @@
 Rubric: `story-depth-rubric.md`. Goal spec: `trainings/agents-101/story-depth.md`. One `## Run`
 section per run, newest first; per-judge reports under `story-depth/`.
 
+## Squint before — 2026-09-22 — A101 skeleton as it stands
+
+Three judges, skeleton only (`story-depth/a101-skeleton.md`), told to be stingy. Raw counts:
+11–13 learnings, 5–7 governors, future "yes", self-doubt "yes" — every one of which is a
+calibration finding, not a result. The learnings named are one topic per module (*security is
+a discipline you practise*, *agents get stuck*), the governors are recipe headers (*keep the
+heavy reads under control*), the future is a heading called *The question to hold* with no
+question under it, and the self-doubt is inferred from topics (*why the LLM fabricates*) rather
+than found in a title that doubts the training's own tool. Scored against the key
+(`trainings/agents-101/theory-plan.md` § 6 and the A101 learning-set below): learnings ~5/10
+(context, compounding, human moves up, absorption, flywheel present; self-report as
+hypothesis, certainty unavailable, variety/beige, floor/ceiling, the model rotates absent),
+governors 1/9 (*would you let it send the mail?*), future 0, own-tool doubt 0. Per-judge
+reports: `story-depth/squint-before.judge-*.md`. Blank stretches agree across judges: twelve
+lectures with no `##`, M3 entirely so.
+
+Rule banked in the rubric: the squint test scores matches against the key, never counts.
+
 ## Run step-0 — 2026-09-22 — baseline, both trainings
 
 Nine judges on Sonnet. Six cold reads (three per training, single-training mode) named the

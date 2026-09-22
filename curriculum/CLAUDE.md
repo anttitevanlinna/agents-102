@@ -23,6 +23,14 @@ Docs with authority over generation. Anything not listed is session material: re
 - **Open work**: `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
 - **Standing reports**, one per scope, overwritten on rerun: `curriculum/evals/arc-read.ae101.md` (sequential arc), `voice-hunt.ae101.md` (per-file voice), `eval-coverage.ae101.md` (rule coverage).
 
+**Agents 101**
+
+- **Delivery + runtime**: `curriculum/trainings/agents-101/training-architecture.md`.
+- **Arc / storyline / mood contract**: `bosser-strategy:content-strategy.md`.
+- **Theory** (pieces inventory, spine candidate, placement candidates): `curriculum/trainings/agents-101/theory-plan.md`; the on-page inventory it tags from is `curriculum/evals/story-depth/a101-theory-inventory.md`.
+- **Story and depth** (goal spec, rubric, standing report): `curriculum/trainings/agents-101/story-depth.md` · `curriculum/evals/story-depth-rubric.md` · `curriculum/evals/story-depth.md`.
+- **Open work**: `curriculum/trainings/agents-101/pre-cohort-todos.md`; machinery parity log `ae101-parity.md`.
+
 State of play → `bosser-strategy:content-strategy.md` § *State of play*.
 
 ## Quality

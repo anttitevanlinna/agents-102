@@ -178,10 +178,13 @@ iterations with no factor movement → stop and report the stall rather than thr
 
 ## Open decisions (Antti)
 
-- **A101's intended profile** — five target numbers, set against the step-0 scores. The
-  leader-audience prior: forward-looking and applicable both matter (the leader leaves with a
-  question about the organisation AND a Monday move), so the trade sits between them; depth is
-  carried by fewer, longer learnings than AE101's; self-challenging is spent where the
+- **A101's intended profile** — five target numbers, set against the step-0 scores
+  (`curriculum/evals/story-depth.md` § Run step-0: A101 today = depth 77 · forward-looking 44
+  · applicable 83 · self-challenging 60 · earned 56; AE101 = 65 · 63 · 60 · 58 · 44). The
+  numbers say A101 has already traded the open future for Monday moves. The leader-audience
+  prior: that trade is half right — the leader needs the Monday move AND a question about the
+  organisation to carry out, so forward-looking is the factor to buy, and the price is paid in
+  applicable or in breadth (a sixth learning), not in depth. Self-challenging is spent where the
   audience can afford the mood cost, not everywhere. A prior, not the decision.
 
 - Does the future-thread need sourced witnesses like AE101's (backing blocks land in A101 as part

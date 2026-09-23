@@ -97,4 +97,4 @@ Depth-rung after each module, cumulative, in module order.
 - Add one sentence to `security.md` or `output-quality.md` naming what would change the training's mind about "certainty is unavailable" (mirroring the-gate-is-a-claim.md's bitter-lesson bullet in AE101) — A101's forward-looking mean (47) is dragged down specifically by Learning E (0) and Learning A (20), which have no such clause anywhere.
 - Add one callback line in `agents-building-agents.md` (M8) that explicitly reuses "access is not absorption" against the shared-deliberation-folder mechanic, turning Learning E from a single-module headline (depth 40) into a returning, meaning-changing beat.
 
-**Path:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/story-depth/step0-scored.judge-3.md`
+**Path:** `curriculum/evals/story-depth/step0-scored.judge-3.md`

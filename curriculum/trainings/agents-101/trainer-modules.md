@@ -191,7 +191,7 @@ The one trainer document for Agents 101. Read **Start here** before your first c
 
 **Big idea.** Grounding is a discipline. The student measures candidate detectors against their own benchmark and keeps a narrow judge whose limits are explicit.
 
-**Flow.** Fresh session at the training root → [Grounded](./#lectures-grounded) → [hallucination benchmark](./#exercises-hallucination-bakeoff) → [self-consistency after the scoreboard](./#lectures-self-consistency-after-scoreboard) → Debrief compounds groundedness triggers → action-proposal boundary → Key Concepts → M6 handoff.
+**Flow.** Fresh session at the training root → [Grounded](./#lectures-grounded) → [hallucination benchmark](./#exercises-hallucination-bakeoff) → Debrief compounds groundedness triggers → action-proposal boundary → Key Concepts → M6 handoff.
 
 **Mood.** Mechanical rescue: *"This is actually fixable, and I can see which method worked."* Check: the student picks a detector by authority or treats the winner as universal. Fix: return to the scoreboard and the judge's Known limit line.
 

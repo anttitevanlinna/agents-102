@@ -18,7 +18,7 @@ Feeds `trainings/agents-101/theory-plan.md` § The pieces (the `[curr:…]` tags
 | Taleb / via negativa | exercises/personal-site-with-guardrails.md | M1 | "Taleb calls it *via negativa*." | named |
 | Willison, Harker, Ronacher, Shihipar, Bilsborough | exercises/module-3-prework.md | M3 prework | "1. Simon Willison... 2. Edward Harker... 3. Armin Ronacher..." | each dated + linked |
 | Rumelt, the crux | exercises/name-your-crux.md | M3 | "Richard Rumelt calls it the **crux**: the one thing that, if solved, releases pressure on everything else." | named |
-| Rumelt, strategy kernel | exercises/three-minds-one-synthesis.md | M3 | "apply Rumelt's kernel to synthesize their notes back into `./crux.md`" | named |
+| Rumelt, strategy kernel | exercises/three-minds-one-synthesis.md | M3 | "apply Rumelt's kernel to synthesize their notes back into `crux.md` (a student artifact)" | named |
 | The Rory seat | trainings/agents-101/multi-agent-systems.md | M3 | "a counterintuitive reframer, the Rory seat" | informal name |
 | Mata v. Avianca (S.D.N.Y. 2023) | lectures/module-5-prework.md | M5 prework | "A passenger sued Avianca... Six of them did not exist." | court order + press linked |
 | Deloitte Australia / DEWR | lectures/module-5-prework.md | M5 prework | "...commissioned Deloitte for A$439,000 to review the department's welfare-compliance automation system..." | DEWR, Guardian, Register, FOI linked |

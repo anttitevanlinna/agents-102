@@ -32,9 +32,28 @@ person who can write that is Antti; the slot is specified in `practice-of-risk.m
 maintainer block (M4, an access scar) with the fallback in `access-is-not-absorption.md`
 (M7, an absorption scar). Nine to fourteen points sit in that one paragraph.
 
+**Factor guard holds.** Three Sonnet scoring judges on the branch, same six learnings as
+step 0, reports in `curriculum/evals/story-depth/guard-factors.judge-{1,2,3}.md`.
+
+| factor | step-0 A101 | branch (median of three) |
+|---|---|---|
+| Depth | 77 | 93 |
+| Forward-looking | 44 | 73 |
+| Applicable in practice | 83 | 97 |
+| Self-challenging | 60 | 87 |
+| Earned, not announced | 56 | 63 |
+
+Per judge: 97/77/100/80/60 · 93/73/80/87/70 · 93/60/97/90/63. No factor below baseline on
+the median; the one dip is judge 2's applicable at 80, on the reading that M8 still names
+the reused shapes inline rather than letting them re-fire silently. All three credit the
+M6 to M8 closing lectures (*When the score stops moving*, *Access is not absorption*, *Where
+is this all going*) for depth and self-challenging, and all three cap earned at the same
+place: every module still opens with a Big Idea that states its thesis before the exercise
+runs it. That cap is by design and was at baseline too.
+
 Loop state: stopped at the verification, three of four met, one blocked on the maintainer's
-own story. Not done by the spec's definition; not a stall either. Merging `a101-story` is
-Antti's call; the branch holds every gate green.
+own story, no regression on the five factors. Not done by the spec's definition; not a stall
+either. Merging `a101-story` is Antti's call; the branch holds every gate green.
 
 ## Quartet, iteration 2 — 2026-09-23 — branch `a101-story`
 

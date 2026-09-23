@@ -208,8 +208,8 @@ Both halves of the loop run on subagents; the main thread orchestrates and synth
 - Opus verification (`curriculum/evals/story-depth.md` § Verification): frame 94 · narrative
   93 · point of view 86 · stance 96 against the bar 95 · 92 · 95 · 92. Three of four within
   five. Point of view is blocked on the narrator's incident; the loop may not write it.
-- Five-factor regression guard: three Sonnet scoring judges dispatched on the branch
-  (`guard-factors.judge-*.md`); baseline to hold is 77 · 44 · 83 · 60 · 56.
+- Five-factor regression guard holds: branch medians 93 · 73 · 97 · 87 · 63 against the
+  baseline 77 · 44 · 83 · 60 · 56 (`curriculum/evals/story-depth.md` § Verification).
 - Merging `a101-story` to `main` is Antti's call.
 
 **One card for Antti (point of view, the only lever left):**

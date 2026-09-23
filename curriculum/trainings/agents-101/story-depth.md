@@ -169,7 +169,10 @@ Learning outcomes are reported when a cohort reports them, never claimed by the 
 
 Both halves of the loop run on subagents; the main thread orchestrates and synthesises only.
 
-- **Judges** — three per run, one message, `run_in_background: true`, Sonnet. Prompt =
+- **Judge models (Antti, 2026-09-23):** Sonnet for baselines and every iteration inside the
+  loop; Opus only for the final verification run before a result is claimed. The Opus run is
+  the one whose numbers go in the report's done line; Sonnet numbers steer.
+- **Judges** — three per run, one message, `run_in_background: true`. Prompt =
   `curriculum/evals/story-depth-rubric.md` with the module lists pasted in registry order.
   Each writes `curriculum/evals/story-depth/<run-label>.judge-<n>.md`; the orchestrator takes
   the majority per factor into the standing report `curriculum/evals/story-depth.md`.

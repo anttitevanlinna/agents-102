@@ -3,6 +3,67 @@
 Rubric: `story-depth-rubric.md`. Goal spec: `trainings/agents-101/story-depth.md`. One `## Run`
 section per run, newest first; per-judge reports under `story-depth/`.
 
+## Quartet — 2026-09-23 — frame · narrative · point of view · stance
+
+Nine judges. Six full reads (three per training, the storytelling judge prompt in the rubric)
+and three titles-only estimates of the skeleton-to-be. Medians:
+
+| | A101 today (full read) | AE101 (full read) | A101 skeleton-to-be (titles only, estimate) |
+|---|---|---|---|
+| Frame | 85 | 95 | 55 |
+| Narrative | 84 | 92 | 55 |
+| Point of view | 80 | 95 | 50 |
+| Stance | 88 | 92 | 65 |
+
+Per judge — A101: 78/85/80/88 · 88/84/92/92 · 85/80/78/82. AE101: 95/95/88/92 · 92/90/95/90 ·
+100/92/100/100. Skeleton-to-be: 35/45/45/55 · 55/55/50/65 · 78/74/82/70.
+
+**The third column is not an after-number.** It is what titles carry of a thing that lives
+in prose: A101's real score is thirty points above what its own skeleton would predict.
+The quartet moves by sentences — a scar in first person, a position defended with a
+mechanism, the frame naming its own reversal — not by headings. The skeleton work moves
+learning retrieval (the squint runs above); it does not move this table. Read the estimate
+column as a floor on what a cold skimmer gets, nothing more.
+
+**A101 is closer than either of us thought, and the gap has a shape.** Narrowest on stance
+(88 vs 92): every judge found the same defended positions — *don't split*, *don't buy
+tooling*, *"share the whole agent" is a vendor pitch*, *certainty is a fantasy you inherited*
+— and two of three say the pair (stance with self-doubt) reads as someone who has been
+there. Widest on point of view (80 vs 95): AE101 has `story-of-module-6`, a narrator whose own
+failure is on the page; A101's narrator shows in asides and admissions (*"Hold the doubt"*,
+the M8 *"convenient, not neutral"*) and never in an incident. Frame at 85 vs 95 is the
+finding worth the most:
+
+**A101 has a frame and nobody had named it.** Two of three judges independently found the
+same structural refrain across six lectures — *"In the full agent picture, this is the first
+piece: context. Later you add tools, goals, checks, boundaries, and loops"* (M1) · *"Module 2
+adds shelf life"* · *"other agents are part of the tool surface"* (M3) · the boundary piece
+(M4) · the checks piece (M5–M6) — an anatomy assembled one piece per module until the student
+can name every part. The third judge states it as *a training about context: what you feed
+the system, what you withhold, and who stays responsible for the gap*. Neither is the working
+headline (control and creativity as one act); both are already load-bearing on the page. The
+theory plan's spine candidate must reckon with this: the lens A101 already runs is the
+anatomy, and the floor/ceiling pair is a claim about what the anatomy is *for*. The two are
+compatible and the training says neither out loud.
+
+**Smallest moves the six full reads converge on, A101:**
+1. Name the frame's own reversal once: M1–M3 teach giving the agent context, M4 teaches
+   withholding it — say so (two judges).
+2. One first-person scar — an agent that leaked, over-split or fabricated in the trainer's
+   own hands — so the narrator's failure lands as an incident, not an admitted uncertainty
+   (two judges). This is the whole point-of-view gap.
+3. Give *"share the whole agent" is a vendor pitch* the mechanism-defence the other stance
+   lines get; it is asserted, the rest are argued (two judges).
+4. Let M8's *"a flywheel, not a graduation"* hold the refusal instead of pivoting into the
+   five-step upsell; and name what the training gives up commercially by refusing to ship
+   agents (two judges) — the against-interest rung.
+5. Name the *full agent picture* refrain once at training level so a skimmer sees the
+   assembly a linear reader feels.
+
+AE101's own smallest moves are in `quartet-ae101.judge-*.md`; the recurring one is to pull
+`story-of-module-6`'s receipts one module earlier so the pair has an anchor before the
+capstone spends it.
+
 ## Squint after — 2026-09-22 — the skeleton to be, titles only
 
 Same three-judge test on `story-depth/a101-skeleton-to-be.md` with the change markers hidden.

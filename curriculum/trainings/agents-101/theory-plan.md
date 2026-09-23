@@ -284,6 +284,15 @@ have moved since; re-verify before any stamp.
 
 ## The spine — candidate, not decided
 
+**Found after this section was drafted (2026-09-23, quartet run):** A101 already runs a frame,
+unnamed by author or plan — the *full agent picture* refrain, one anatomical piece per module
+(context → shelf life → tools/other agents → boundary → checks → loop → interface), stated in
+the same construction in at least six lectures. Two of three storytelling judges found it
+independently; the third read the frame as *context: what you feed, what you withhold, who
+owns the gap*. The floor/ceiling candidate below is a claim about what that anatomy is *for*;
+the two are compatible, and the training currently says neither out loud. Any spine decision
+starts from the refrain that is on the page.
+
 AE101's spine is a map of phases. A101's audience does not run phases; they set floors and
 ceilings on work other people and agents do. Candidate spine: **two instruments on one
 loop** — the floor (what must be true before output becomes action) and the ceiling (what

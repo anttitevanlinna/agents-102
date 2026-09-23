@@ -3,6 +3,36 @@
 Rubric: `story-depth-rubric.md`. Goal spec: `trainings/agents-101/story-depth.md`. One `## Run`
 section per run, newest first; per-judge reports under `story-depth/`.
 
+## Quartet, iteration 1 — 2026-09-23 — branch `a101-story`
+
+Three Sonnet reads of the branch after the first tranche (slides on every A101 lecture, the M3
+turn sentence, the M4 break, the M6 braid and counter-voices, two new closers, the cuts).
+
+| | A101 baseline | A101 iteration 1 | AE101 bar |
+|---|---|---|---|
+| Frame | 85 | 92 | 95 |
+| Narrative | 84 | 82 | 92 |
+| Point of view | 80 | 76 | 95 |
+| Stance | 88 | 85 | 92 |
+
+Per judge: 95/82/78/96 · 88/82/76/84 · 92/76/58/85.
+
+**Frame moved, the rest did not.** The spine named at M6 and the breaks at M4/M7/M8 read
+through: every judge states the frame in one sentence and shows modules through it. Narrative
+and stance sit inside judge noise of the baseline (the three-judge spread is 20 points on
+narrative, 12 on stance); no tranche move landed as a narrative or stance gain. Point of view
+fell, and all three reads give the same reason in the same words: the narrator's own failure is
+not on the page, and the two maintainer-block scar slots now say so in so many words. Two
+judges quoted those maintainer notes despite the instruction to skip them; the slot's absence
+is now more visible to a reader than it was when nobody had named it. Only the incident moves
+this factor.
+
+**Smallest moves the three reads converge on:** (1) the scar, M4 or M7, per the maintainer
+spec (three of three; not the loop's to write); (2) let the M3 turn (*nothing here checks any
+of it*) echo once at the M8 close, so the last word admits the synthesis loop cannot verify
+itself either (two of three, narrative); (3) name once in M4 body that the less-access stance
+costs the training's own sponsor something (judge 2, stance's against-interest rung at M4).
+
 ## Quartet — 2026-09-23 — frame · narrative · point of view · stance
 
 Nine judges. Six full reads (three per training, the storytelling judge prompt in the rubric)

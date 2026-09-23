@@ -198,6 +198,48 @@ Both halves of the loop run on subagents; the main thread orchestrates and synth
 - **Implementation** — per module, one agent per module file group after Antti's pick, on a
   branch; the judge re-runs after each tranche.
 
+## Loop state — 2026-09-23 (read this first after a compaction)
+
+- Pick made: braid-the-anatomy as spine, control-and-creativity woven in. Blend brief:
+  `curriculum/module-design/a101-story-proposals/blend.md`.
+- Implemented on branch `a101-story` (pushed): iteration 1 (four tranches, 30 files, two new
+  lectures) and iteration 2 (two sentences). Every gate green: slide size, deixis, numbering,
+  doc paths, timing. Mood guard on iteration 1: HOLDS. Reports: `impl-M*.md` beside the blend.
+- Opus verification (`curriculum/evals/story-depth.md` § Verification): frame 94 · narrative
+  93 · point of view 86 · stance 96 against the bar 95 · 92 · 95 · 92. Three of four within
+  five. Point of view is blocked on the narrator's incident; the loop may not write it.
+- Five-factor regression guard: three Sonnet scoring judges dispatched on the branch
+  (`guard-factors.judge-*.md`); baseline to hold is 77 · 44 · 83 · 60 · 56.
+- Merging `a101-story` to `main` is Antti's call.
+
+**One card for Antti (point of view, the only lever left):**
+
+`curriculum/lectures/grounded.md`, the slide *You have done this before*, carries a documented
+incident told in the passive. The maintainer block dates two detector passes against the
+training's own M5 pre-read (2026-04-30, 2026-08-03) that found an unsourced descriptor, an
+unsupported estimate and a direct quote not in the sanctions order. All three Opus verifiers
+independently name re-voicing it as the narrator's own failure as the smallest move.
+
+BEFORE: *Against the Mata v. Avianca pre-read, source triangulation caught an unsourced "small
+firm" descriptor and an unsupported "ten minutes" estimate. Entailment caught the story making
+Schwartz's timeline too clean. Citation integrity caught a direct quote that did not appear in
+the linked sanctions order. Counter-evidence found a source conflict where CNBC blurred the
+$5,000 sanction and the court order was more precise. Even a careful teaching case benefits
+from the check.*
+
+AFTER (candidate; Antti's voice, his call): ***We wrote that pre-read, and we ran the four
+detectors on our own page before you did.** Source triangulation caught an unsourced "small
+firm" descriptor and an unsupported "ten minutes" estimate. Entailment caught our story making
+Schwartz's timeline too clean. Citation integrity caught a direct quote **we had put in the
+judge's mouth** that does not appear in the sanctions order. Counter-evidence found CNBC
+blurring the $5,000 sanction where the court order was precise. **The page about fabrication
+had fabricated. That is why the check runs on your work too.***
+
+WHY: the rubric's point-of-view 100 rung is the narrator's own failure on the page as an
+incident; this one is real, dated, and already half-told. RISK: "we" claims authorship for
+Antti; the last sentence is a kicker the emphasis budget and `check_writing §21` should
+re-read; the scar slots at M4/M7 remain the fuller version if he has one.
+
 ## Loop contract
 
 The iteration the goal-loop runs, in order; each pass through 4–5 is one iteration.

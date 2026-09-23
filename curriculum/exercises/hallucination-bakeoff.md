@@ -200,3 +200,5 @@ You just ran **Recipe 5** end-to-end: a 30-claim benchmark you wrote yourself, f
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
+**View summary:** You run four fabrication detectors against a thirty-claim pool drawn from your own output, with a scorer adjudicating each claim, and read the scoreboard. The artifact is a judge file you can defend because it won a benchmark, not because you read about it.

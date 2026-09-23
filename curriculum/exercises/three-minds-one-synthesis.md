@@ -87,3 +87,5 @@ Hold the doubt. Name it to yourself. Don't fix it here.
 **Deferred facilitator notes:**
 - Watch-fors: (a) the synthesis (main-session inline, no separate subagent since 2026-04-29 consolidation) left under-prompted will average three stances into beige — the prompt forces conflict-naming before writing the `## Answer`, but coach any room that slips past it; (b) Rory seat produces dad jokes if the student writes "be witty" — coach toward Sutherland's actual move (reframe the problem, steal an analogy, question the anchor); (c) subagent invocation is new for most participants — demo once, then let them drive.
 - Time budget: ~15 min synthesis + ~7 min Close = ~22 min total. Over 30 = the synthesis sprawled or got rewritten too many times; under 15 = the doubt-naming beat got skipped.
+
+**View summary:** You spawn three subagents inside one session, each holding a different stance against your memory, then have the main session read them back, apply a strategy kernel and write the answer. The artifact is a synthesis you cannot yet vouch for.

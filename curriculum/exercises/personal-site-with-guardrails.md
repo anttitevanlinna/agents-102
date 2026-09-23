@@ -165,3 +165,5 @@ You just ran **Recipe 1** end-to-end: baseline without context, colleague-as-buy
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
+**View summary:** You paint a personal site by agent across six rounds, changing only the context each time and watching the output shift from generic to yours, then package the lesson. The artifact is a site that looks like you, and the rule that got it there.

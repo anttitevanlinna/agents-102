@@ -159,10 +159,19 @@ function splitMissing(missingIds, naSet) {
 // (it once was: both this side and the drift-guard test shared a single-quote
 // regex, so a double-quoted entry slipped past BOTH with no mismatch to catch).
 // Dedupes, preserving first-seen order.
-function extractManifestLectureSlugs(manifestBlockSrc) {
+// With a trainingKey, only that training's sub-array is read: the manifest holds
+// one array per training, and AE101's lecture surface must not absorb another
+// training's lectures (agents-101 grew its own entry 2026-09-23).
+function extractManifestLectureSlugs(manifestBlockSrc, trainingKey) {
+  let src = manifestBlockSrc;
+  if (trainingKey) {
+    const m = manifestBlockSrc.match(new RegExp(`['"]${trainingKey}['"]:\\s*\\[([\\s\\S]*?)\\n  \\],`));
+    if (!m) throw new Error(`THEORY_HANDBOOK_MANIFEST has no entry for ${trainingKey}`);
+    src = m[1];
+  }
   const slugs = [];
   const seen = new Set();
-  for (const m of manifestBlockSrc.matchAll(/['"]lectures\/([a-z0-9-]+)['"]/g)) {
+  for (const m of src.matchAll(/['"]lectures\/([a-z0-9-]+)['"]/g)) {
     if (!seen.has(m[1])) { seen.add(m[1]); slugs.push(m[1]); }
   }
   return slugs;
@@ -172,7 +181,7 @@ function theoryManifestLectures() {
   const src = fs.readFileSync(path.join(REPO, 'scripts/build-workbook.js'), 'utf8');
   const block = src.match(/const THEORY_HANDBOOK_MANIFEST = \{[\s\S]*?\n\};/);
   if (!block) throw new Error('THEORY_HANDBOOK_MANIFEST not found in scripts/build-workbook.js');
-  const slugs = extractManifestLectureSlugs(block[0]);
+  const slugs = extractManifestLectureSlugs(block[0], 'agentic-engineering-101');
   if (slugs.length === 0) throw new Error('THEORY_HANDBOOK_MANIFEST parse yielded no lectures');
   return slugs;
 }

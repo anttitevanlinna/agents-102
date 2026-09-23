@@ -177,6 +177,59 @@ const THEORY_HANDBOOK_MANIFEST = {
       'lectures/agents-that-build-agents',
     ]],
   ],
+  // Agents 101: theory = the lectures and the pre-reads, in the module that wires
+  // them; the three live demos (first-scheduled-agent, agent-that-takes-action,
+  // agent-loop-raw) are room beats, not theory, and stay out. module-3-prework is
+  // a setup exercise with nothing to summarise.
+  'agents-101': [
+    ['M1', [
+      'lectures/context-is-king',
+      'exercises/personal-site-with-guardrails',
+      'lectures/what-just-happened',
+      'lectures/module-2-prework',
+    ]],
+    ['M2', [
+      'exercises/name-your-challenge',
+      'exercises/build-your-challenge-memory',
+      'lectures/compounding',
+      'exercises/personal-agent-homework',
+    ]],
+    ['M3', [
+      'exercises/name-your-crux',
+      'exercises/three-retrievers-one-curator',
+      'exercises/three-minds-one-synthesis',
+      'lectures/when-to-split-an-agent',
+      'lectures/debugging-stuck-agents',
+      'lectures/module-4-prework',
+    ]],
+    ['M4', [
+      'lectures/practice-of-risk',
+      'exercises/author-security-skill',
+      'exercises/audit-your-agent',
+      'lectures/module-5-prework',
+    ]],
+    ['M5', [
+      'lectures/grounded',
+      'exercises/hallucination-bakeoff',
+    ]],
+    ['M6', [
+      'lectures/evals-as-steering',
+      'exercises/eval-loop',
+      'lectures/when-the-score-stops-moving',
+      'lectures/new-human-role-in-the-loop',
+    ]],
+    ['M7', [
+      'exercises/share-your-work',
+      'exercises/design-the-sharing-plan',
+      'exercises/test-the-sharing-plan',
+      'lectures/access-is-not-absorption',
+    ]],
+    ['M8', [
+      'exercises/extend-your-system',
+      'exercises/joint-double-diamond',
+      'lectures/where-is-this-all-going',
+    ]],
+  ],
 };
 
 function readMd(absPath) {

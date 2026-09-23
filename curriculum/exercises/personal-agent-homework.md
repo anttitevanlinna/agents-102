@@ -114,3 +114,5 @@ A memory that sits there is a document. A memory that gets read by an agent on a
 
 **Quality:** compendium-audited 2026-08-25 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
+**View summary:** You put a scheduled agent in front of the memory you built, so it reads it every morning and reports something useful before coffee. One glance a day for a week. The artifact is a running loop, plus a style file every later agent inherits.

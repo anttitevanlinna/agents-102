@@ -90,3 +90,5 @@ The hardest part of a memory isn't the tool. It's the scope. A memory about "our
 
 **Deferred per student-facing-first rule:**
 - Facilitator notes: how to coach participants mid-class when the brief is too broad or too narrow; the "one-sentence test" — if they can't state the challenge in one sentence, the brief isn't ready; fallback when a participant genuinely doesn't have a live challenge (rare but happens — assign them a teammate's challenge they're close to, or a live org-wide decision the whole cohort can discuss).
+
+**View summary:** You pin one live problem you are wrestling with this month before anything gets built, scoped tight enough that a memory about it is a weapon, not a landfill. The artifact is a one-page challenge statement the rest of the day builds on.

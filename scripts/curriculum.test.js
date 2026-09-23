@@ -260,8 +260,10 @@ test('eval-coverage lecture surface includes every THEORY_HANDBOOK_MANIFEST lect
   const src = fs.readFileSync(path.resolve(__dirname, 'build-workbook.js'), 'utf8');
   const block = src.match(/const THEORY_HANDBOOK_MANIFEST = \{[\s\S]*?\n\};/);
   assert.ok(block, 'THEORY_HANDBOOK_MANIFEST not found in scripts/build-workbook.js');
+  const aeBlock = block[0].match(/['"]agentic-engineering-101['"]:\s*\[([\s\S]*?)\n  \],/);
+  assert.ok(aeBlock, 'no agentic-engineering-101 entry in THEORY_HANDBOOK_MANIFEST');
   const manifestLectures = [...new Set(
-    [...block[0].matchAll(/['"]lectures\/([a-z0-9-]+)['"]/g)].map(m => m[1])
+    [...aeBlock[1].matchAll(/['"]lectures\/([a-z0-9-]+)['"]/g)].map(m => m[1])
   )];
   // Parse sanity: newest lecture present + plausible count, so an empty match
   // can never green-light the assertion below.
@@ -280,6 +282,22 @@ test('eval-coverage lecture surface includes every THEORY_HANDBOOK_MANIFEST lect
   const surface = new Set(((audit.SURFACES || {}).lectures || []).map(l => l.slug));
   const missing = manifestLectures.filter(s => !surface.has(s));
   assert.deepEqual(missing, [], `manifest lectures absent from eval-coverage surface: ${missing.join(', ')}`);
+});
+
+test('eval-coverage lecture surface (agents-101) includes every agents-101 THEORY_HANDBOOK_MANIFEST lecture', () => {
+  const src = fs.readFileSync(path.resolve(__dirname, 'build-workbook.js'), 'utf8');
+  const block = src.match(/const THEORY_HANDBOOK_MANIFEST = \{[\s\S]*?\n\};/);
+  const a101 = block[0].match(/['"]agents-101['"]:\s*\[([\s\S]*?)\n  \],/);
+  assert.ok(a101, 'no agents-101 entry in THEORY_HANDBOOK_MANIFEST');
+  const manifestLectures = [...new Set(
+    [...a101[1].matchAll(/['"]lectures\/([a-z0-9-]+)['"]/g)].map(m => m[1])
+  )];
+  assert.ok(manifestLectures.includes('grounded'), 'manifest parse sanity failed: grounded not extracted');
+  assert.ok(manifestLectures.length >= 10, `manifest parse sanity failed: only ${manifestLectures.length} lectures extracted`);
+  const audit = require('../scripts/audit-eval-coverage.js');
+  const surface = new Set((audit.surfacesFor('agents-101').lectures || []).map(l => l.slug));
+  const missing = manifestLectures.filter(s => !surface.has(s));
+  assert.deepEqual(missing, [], `agents-101 manifest lectures absent from eval-coverage surface: ${missing.join(', ')}`);
 });
 
 /*
@@ -331,10 +349,12 @@ test('THEORY_HANDBOOK_MANIFEST lecture order is a subsequence of each module fil
   const src = fs.readFileSync(path.resolve(__dirname, 'build-workbook.js'), 'utf8');
   const block = src.match(/const THEORY_HANDBOOK_MANIFEST = \{[\s\S]*?\n\};/);
   assert.ok(block, 'THEORY_HANDBOOK_MANIFEST not found in scripts/build-workbook.js');
+  const aeOnly = block[0].match(/['"]agentic-engineering-101['"]:\s*\[([\s\S]*?)\n  \],/);
+  assert.ok(aeOnly, 'no agentic-engineering-101 entry in THEORY_HANDBOOK_MANIFEST');
   const groupRe = /\[\s*'(M\d)'\s*,\s*\[([\s\S]*?)\]\s*\]/g;
   const manifestByModule = {};
   let g;
-  while ((g = groupRe.exec(block[0]))) {
+  while ((g = groupRe.exec(aeOnly[1]))) {
     manifestByModule[g[1]] =
       [...g[2].matchAll(/['"]lectures\/([a-z0-9-]+)['"]/g)].map(x => x[1]);
   }

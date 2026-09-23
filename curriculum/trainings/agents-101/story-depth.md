@@ -162,8 +162,12 @@ test for what titles carry. **Learning** is heard from students: nothing below t
 mood scores (`/eval-fire story`) on every touched module must hold — naming beats are how
 M3's unease gets resolved by accident.
 
-Definition of done, restated: the quartet climbs against its before-run and the guards hold.
-Learning outcomes are reported when a cohort reports them, never claimed by the loop.
+Definition of done, restated: **the quartet reaches AE101's bar** — AE101's medians on the
+same judge (2026-09-23: frame 95 · narrative 92 · point of view 95 · stance 92), verified on
+Opus, each within five points — and the guards hold. A101 stands today at 85 · 84 · 80 · 88;
+point of view is the gap that needs a new artefact (a first-person scar), the other three
+need sentences. Learning outcomes are reported when a cohort reports them, never claimed by
+the loop.
 
 ## Dispatch shapes
 

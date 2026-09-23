@@ -3,6 +3,39 @@
 Rubric: `story-depth-rubric.md`. Goal spec: `trainings/agents-101/story-depth.md`. One `## Run`
 section per run, newest first; per-judge reports under `story-depth/`.
 
+## Verification on Opus — 2026-09-23 — branch `a101-story`
+
+Three Opus reads, strict: maintainer blocks out of view, and the point-of-view anchor restated
+(the 100 rung needs an incident; admitted uncertainty without one caps at 80).
+
+| | baseline (Sonnet) | verified (Opus) | bar | within 5? |
+|---|---|---|---|---|
+| Frame | 85 | 94 | 95 | yes |
+| Narrative | 84 | 93 | 92 | yes, above |
+| Point of view | 80 | 86 | 95 | **no** |
+| Stance | 88 | 96 | 92 | yes, above |
+
+Per judge: 94/95/80/96 · 94/92/88/96 · 94/93/86/95. The Opus reads agree within two points on
+frame and stance, three on narrative, eight on point of view; the point-of-view spread is the
+judges deciding how much a narrator with a stated experience and no incident is worth, which
+is exactly the anchor's own gap between 80 and 100.
+
+**Three of four factors reach the bar.** Frame from a headline nobody had named to the
+anatomy said out loud at M6 with its breaks at M4, M7 and M8. Narrative from a designed mood
+arc to a turn the student lives through and the training owns (*everything you just did is the
+move this training teaches, run properly; it still handed you something you cannot vouch
+for*), echoed at the close. Stance past AE101's bar: the vendor-pitch line argued rather than
+asserted, the M8 refusal of the demo-agent sale, the M4 sentence naming what less access costs
+the seller. **Point of view stops at 86 and cannot move by any edit the loop is allowed to
+make.** The 100 rung is the narrator's own failure on the page as an incident, and the only
+person who can write that is Antti; the slot is specified in `practice-of-risk.md`'s
+maintainer block (M4, an access scar) with the fallback in `access-is-not-absorption.md`
+(M7, an absorption scar). Nine to fourteen points sit in that one paragraph.
+
+Loop state: stopped at the verification, three of four met, one blocked on the maintainer's
+own story. Not done by the spec's definition; not a stall either. Merging `a101-story` is
+Antti's call; the branch holds every gate green.
+
 ## Quartet, iteration 2 — 2026-09-23 — branch `a101-story`
 
 Two sentences changed (the M8 close echoes the M3 turn; the M4 door slide names what less

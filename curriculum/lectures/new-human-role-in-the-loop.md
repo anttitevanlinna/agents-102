@@ -12,8 +12,6 @@ Files are the handles. Connectors bring material in. Agents read and write. Judg
 
 Small pieces. Big shift.
 
-At this point the full picture is visible: model, context, tools, goal, loop, checks, boundary, interface. None of those pieces is mysterious on its own. The power comes from arranging them so the system can do real work without losing contact with your intent.
-
 At the start, you were inside every loop. You read the output. You noticed what was wrong. You fixed the prompt. You tried again.
 
 That was necessary. It is not the destination.
@@ -56,7 +54,15 @@ Those are different jobs. Do not collapse them.
 
 If the agent sends an internal mail that is ungrounded, you have a trust problem. If it sends one that is grounded but vague, forgettable, or politically tone-deaf, you have a usefulness problem. Both matter. One protects truth. One pushes excellence.
 
-## The human does not disappear
+## Variety in, selection out, memory keeps
+
+You have run this twice now without calling it anything. Something makes more than one candidate. Something else picks. What wins gets written down.
+
+The three stances and the four detectors were the generating half. The floor eval and the ceiling eval are the picking half. The loop runs all three stages while you are out of the room: the generator makes more than you need, the judge throws most of it away, the tactic file keeps what survived.
+
+So the two evals are not two instruments on a shelf. They are one mechanism seen at two zoom levels, and the floor is a stage inside it rather than a tool beside it.
+
+## The human moves one level up
 
 The old role is easy to picture. You sit between the agent and the world. Everything passes through you. The agent drafts; you inspect. The agent revises; you inspect again. The agent proposes; you decide whether it is safe.
 
@@ -90,6 +96,24 @@ One keeps the work attached to the ground.
 
 One nudges it toward the standard you actually want.
 
+## The better it gets, the less you watch
+
+Here is the part that does not resolve.
+
+Every clean week is real evidence the loop is working, and real erosion of your ability to tell when it stops working. Those are the same weeks. Design the loop and never run one yourself, and you lose the eye that made you worth putting in charge of it, slowly enough that nothing announces it.
+
+## When did you last read one yourself?
+
+There is no instrument for this one. There is a question, and it has a date on it: when did you last read one of these yourself, start to finish, without the agent summarising it first?
+
+If the answer is a month, put one in your calendar. Not a review of the loop. One piece of the work the loop produced, read the way the person receiving it will read it.
+
+## The full picture, and what it is made of
+
+At this point the full picture is visible: model, context, tools, goal, loop, checks, boundary, interface. None of those pieces is mysterious on its own. The power comes from arranging them so the system can do real work without losing contact with your intent.
+
+You added those parts one at a time, and each one was a single decision: what you give it, and what you keep back.
+
 That is the new human role in the loop.
 
 Not doing every pass.
@@ -103,7 +127,9 @@ Designing the conditions under which the system earns more autonomy, one loop at
 **§6 carve-out, the answer must be theirs (checked 2026-08-20).** Logged in `pre-cohort-todos.md` as a lecture prompt owing the trainer-demo sweep. It is not: the prompt interviews the student one question at a time about the mail *they* would let an agent send, and the beat closes on *"two kinds of judgment on disk"* — the student's disk. A trainer demo returns the wrong machine's answer. The body now names the student's own run beside the prompt, which is §6's tell. Leave it student-run.
 
 
-**Time:** 10 minutes.
+**Story blend, M6 close (2026-09-23).** The slide set is the one in `module-design/a101-story-proposals/blend.md` § Titles, M6, plus `## Make the goal-nudger`, which keeps the prompt. Four points bind. `## Variety in, selection out, memory keeps` names a mechanism the training has already run twice, and closes on one mechanism rather than two instruments. `## The better it gets, the less you watch` and `## When did you last read one yourself?` are a counter-voice inside a leverage mood, so each hands over a move: the second one asks for a date and a single piece of work read end to end. `## The full picture, and what it is made of` is the only place the assembly is named, after the last piece lands, and the refrain line sits there rather than in the opener. The future question belongs to M8; this lecture carries none of it.
+
+**Time:** 12 minutes.
 
 **Placement:** Closing lecture for Agents 101 Module 6, after `eval-loop.md` and before Debrief / Next. Immediately preceded by the recognition beat `when-the-score-stops-moving.md` (added 2026-06-06, C10), which names the judge's blind spot; this closer then defines the human role around it (naming what the judge can't see). Designed to close the six-module arc when M7/M8 are not held.
 

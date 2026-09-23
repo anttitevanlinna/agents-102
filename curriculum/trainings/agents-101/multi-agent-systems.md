@@ -44,11 +44,17 @@ Five minutes. Claude reviews the session and sharpens the rules that govern how 
 {{prompt:a101-m3-debrief-handoff-rules}}
 
 
-Notice what this prompt insists on: harsh audit, two seams minimum, specific evidence (file, pass, what was lost). That last clause is the work. Without it, Claude's review settles into the diplomatic shape it likes: three things went well, one mild wobble, here's the cleaner version. Diplomatic is the failure mode at a handoff seam. The place where things actually go wrong is exactly where the model rounds the corner. The harder ask forces a real audit. You'll get fewer comfortable summaries and more uncomfortable specifics, which is what you want when the rules file has to govern next session's agents.
+## Nothing here checks any of it
+
+Notice what this prompt insists on: harsh audit, two seams minimum, specific evidence (file, pass, what was lost). That last clause is the work. Without it, Claude's review settles into the diplomatic shape it likes: three things went well, one mild wobble, here's the cleaner version. Diplomatic is the failure mode at a handoff seam. The place where things actually go wrong is exactly where the model rounds the corner. The harder ask forces a real audit. You'll get fewer comfortable summaries and more uncomfortable specifics, which is what you want when the rules file has to govern next session's agents. The audit reads how your agents handed work to each other. Nothing in it reads the briefing and tells you whether it is true.
 
 ## Push back on the summary
 
-Read Claude's summary. Push back where it's wrong. *"No, the planner and the reframer really did need to be separate."* *"You missed where the Confluence retriever kept normalising before writing."* The unease you feel about the synthesized briefing is not something to close today. It stays. Hold it as a question, not a fix.
+Read Claude's summary. Push back where it's wrong. *"No, the planner and the reframer really did need to be separate."* *"You missed where the Confluence retriever kept normalising before writing."*
+
+## The doubt stays. Hold it.
+
+The unease you feel about the synthesized briefing is not something to close today. It stays. Hold it as a question, not a fix.
 
 ## Optional memory check before Module 4
 
@@ -73,9 +79,11 @@ Memory is a working artefact, sharpened by what it bumps into.
 
 Once the optional check and pre-reads are handled, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 4 starts fresh at `~/Documents/agents-101/`.
 
-## Next
-You just built something that works across the systems you connected. Which means it gained access to those systems. What's the worst thing it could do with that?
+## What's the worst thing it could do with that access?
 
+You just built something that works across the systems you connected. Which means it gained access to those systems.
+
+## Next
 Between now and Module 4, keep working on your real problem. You're close to an agent system that can actually crack your crux. Add an agent to solve a critical dependency? Add a visualisation of the plan? Prompt for what you need. Build.
 
 <!-- maintainer -->
@@ -83,6 +91,8 @@ Between now and Module 4, keep working on your real problem. You're close to an 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@4d9c4af2 technical@725101ec behavior@725101ec pedagogy@4d9c4af2 strategy@4d9c4af2 slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @12bf0d81: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+
+**Debrief slides (2026-09-23, blend § Titles M3):** Three headers over the prose that already carried them. `## Nothing here checks any of it` sits over the audit-prompt commentary, which names what the audit reads and what it does not. `## The doubt stays. Hold it.` holds the unease beat on its own slide, after the push-back sentences. `## What's the worst thing it could do with that access?` heads the access hand-off, so `## Next` carries the build-between-modules ask alone. Nothing here resolves the unease; the mood target below is the constraint.
 
 **Mood target:** Unsettled competence — the synthesis is useful, but the student leaves asking whether it is right.
 

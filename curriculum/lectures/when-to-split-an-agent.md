@@ -2,17 +2,17 @@
 
 You just split an agent two ways. Three retrievers in separate windows. Three stances inside one session. Both worked; both felt different. The next question (the one your team will ask you the first Monday you try this on real work) is *when do I split, and how?*
 
-**The unit is the recurring workflow.**
+## The unit is the recurring workflow
 
 Build one agent per recurring workflow, a single `.md` file, guardrailed for the job that workflow does. Don't try to make a mega-agent that does everything (*the company brain*); it ages badly, drifts in scope, nobody can tell what it's responsible for. Don't go the other way and proliferate a hundred tiny agents either; coordination cost eats the win. The right number is *one per piece of work that recurs in your week.*
 
 That's the across-workflow answer. The question this lecture answers is the within-workflow one: when, inside a single workflow, does splitting into multiple agents pay?
 
-**Inside a workflow, start with don't.**
+## Start with don't
 
-Default to one agent with a good prompt. Splitting adds coordination cost: handoffs to manage, mis-framing to watch for, prompts to tune per agent, a synthesis step that lies if you let it. If a single well-shaped agent with a single well-shaped prompt can produce what you need, do that. Most of the time, it can.
+Inside a workflow, start with don't. Default to one agent with a good prompt. Splitting adds coordination cost: handoffs to manage, mis-framing to watch for, prompts to tune per agent, a synthesis step that lies if you let it. If a single well-shaped agent with a single well-shaped prompt can produce what you need, do that. Most of the time, it can.
 
-**When splitting earns its keep.**
+## Split when they can't be one
 
 Three tests. If any hold, splitting pays. If none do, a single prompt probably beats you.
 
@@ -20,27 +20,33 @@ Three tests. If any hold, splitting pays. If none do, a single prompt probably b
 - **Different dialect.** The material in each source speaks a different language: internal jargon vs. public tone vs. email shorthand. One agent bending between them loses nuance. Three agents each native to their source keep the signal.
 - **Different stance.** The agents should actively disagree with each other. A backward planner and a reframer (an agent that reframes the material from a different stance) thinking *in the same voice* is one agent pretending to be three. If your three are paraphrases, collapse them.
 
-Note what's not on the list: *"because three is more thorough."* More agents is not more rigour. More agents is more prompts to tune, more noise in the synthesis, more coordination tax. Split for a reason.
+## More agents is not more rigour
 
-**The test that catches the bluff.**
+Note what's not on the list: *"because three is more thorough."* More agents is more prompts to tune, more noise in the synthesis, more coordination tax. Split for a reason.
+
+And more input is not the fix either. The beige answer was not short of context. It had three stances in front of it and could not choose between them.
+
+## The test that catches the bluff
 
 Ask yourself: *can I write one prompt that produces the same quality of output?* If yes, you didn't need to split. Write the one prompt. Keep your life small.
 
 The test is unkind on purpose. Business people who have just seen multi-agent work want to split everything. Resist it. Single-agent is the plain default.
 
-**And once you've decided to split: which shape?**
+## Two shapes, each with its own territory
 
-Two shapes today, each with its own territory.
+Once you've decided to split, pick the shape.
 
 **Separate sessions (the Phase 1 move).** Pick this when each agent needs its own persistent context, its own tools, its own clock. The three retrievers had their own connectors, their own search history, their own conversation threads. Long-running, independent, visible. Separate windows let you *see* each one working; you can intervene in one without confusing the others. Good for retrieval across systems, parallel deep dives, anything where you want to watch each agent as it runs.
 
 **Subagents in one session (the Phase 2 move).** Pick this when the main session wants quick parallel thinking and a bounded return. The three stances had a single job each, a clean instruction, no long-lived state, and they reported back as files and disappeared. Good for parallel framing of the same material, multi-perspective analysis, bursts of bounded work. The main session stays in charge; the subagents are temps.
 
+## Other agents are part of the tool surface
+
 In the full agent picture, other agents are part of the tool surface. They let one agent call a different stance, a different source zone, or a different working style without stuffing every job into one prompt.
 
 **The shape test.** Sessions when you want each agent to stay alive for a while. Subagents when you want them in and out. Sessions when you want concurrency visible; subagents when you want it invisible. Sessions when they have different tools; subagents when they share.
 
-**One warning before you leave the room.**
+## Three agents is not three times as good
 
 You cannot hire three agents and expect the output to be three times as good. You hire three agents to get *three different views of the same thing,* and you pay for the privilege with coordination cost. If you don't need three different views (if one well-prompted agent can give you what you need), please, for the sake of your sanity, write the one prompt.
 
@@ -52,6 +58,8 @@ A whole module just showed you multi-agent works. Next Monday, you will be tempt
 - judges @4d9c4af2: writing PASS, story PASS, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
 
 **Time:** 10 minutes.
+
+**Slides (2026-09-23, blend § Titles M3):** Eight `##` slides carry the lecture, including the blend's two named additions, `## More agents is not more rigour` and `## Other agents are part of the tool surface`. Learning A's beige counter-voice sits under the first of those. The merged skeleton's three other M3 headers (`## Three stances beat one summarizer`, `## Left alone, it averages to beige`, `## A framework makes it pick`) belong to `multi-agent-systems.md` § Key Concepts, which is where those lines are; a header for them here would sit over nothing (`check_lectures.md §4` truth clause).
 
 **Placement in module:** After the exercise, before the Debrief. The exercise proves both shapes work; the lecture names them and draws the boundary. Per the no-telling-precedes-doing rule, the "start with don't" default is safer delivered after the exercise — pre-exercise it sounds like a disclaimer, post-exercise it lands.
 

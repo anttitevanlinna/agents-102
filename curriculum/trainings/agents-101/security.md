@@ -74,13 +74,13 @@ Once the two sentences are saved, end this module's <span class="rt-code">sessio
 ## Next
 The agent is scoped, the residual risk is named. But the output *inside* the scope. Can you trust what it actually says?
 
-Remember also: agent actions start as text. A tool call, an email draft, a CRM update, a database change, a ticket comment, before any of those touch another system, they are words the agent produced and another system obeys. If the output is wrong, the action built from it will be wrong too. Module 5 starts there.
-
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@194c81b0 strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @12bf0d81: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+
+**§ Next (2026-09-23, blend § Titles M4):** The section hands over one question, whether the output inside the scope can be trusted. The *agent actions start as text* paragraph belongs to M3, where the idea first arrives as the boundary shift that earns the demo (`multi-agent-systems.md` § Start here). Do not restate it here; three statements of one idea is the corpus's largest duplication and none of the three changes its meaning.
 
 **Mood target:** Deepened unease without blame — the student has a practice for risk, not a promise of certainty.
 

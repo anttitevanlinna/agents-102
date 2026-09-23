@@ -34,13 +34,15 @@ That judge was not magic. It was measured judgment, made runnable.
 
 That is the first kind of eval.
 
+## Groundedness protects the floor
+
 A groundedness eval protects the floor. Every named person or company must appear in the source material. Every number must trace to a file. Every claim must point to evidence or admit the gap.
 
 It answers: is this attached to the ground?
 
 Useful. Necessary. Not enough.
 
-## The second kind
+## Steering raises the ceiling
 
 Imagine two internal mails.
 
@@ -66,7 +68,7 @@ Groundedness protects the floor. Steering raises the ceiling.
 
 Do not collapse them. A grounded mail can still be useless. A useful mail can still be ungrounded. You need both kinds of judgment if the system is going to earn more autonomy.
 
-## What you build now
+## A yardstick you rewrite is not a yardstick
 
 One exercise.
 
@@ -88,7 +90,7 @@ And the garbage can is still there. Your sources may be thin. Your memory may be
 
 Good. That is not a reason to avoid the loop. That is what the loop is for.
 
-## The question to hold
+## The answer is never "the eval passed"
 
 As the loop runs, hold one question:
 
@@ -113,6 +115,8 @@ You become the person who decides which details the system must never miss.
 **Placement:** Opening lecture for Agents 101 Module 6, after the Bitter Lesson / Garbage Can Connections question and before `eval-loop.md`.
 
 **Strategic role:** Leads with the exact M6 frame: humans will not cope with all the detail very soon, so evals become the way human judgment stays in the loop without the human inspecting every output.
+
+**Story blend, M6 headers (2026-09-23).** The slide headers are the ones in `module-design/a101-story-proposals/blend.md` § Titles, M6, with two points that bind. The floor and ceiling beats are one slide each, which is what the pair costs when both halves are named. The closing slide is `## The answer is never "the eval passed"` and not the blend's *Will the bitter lesson apply here?*: the bitter-lesson question is the lecture's opening, the closer holds a different question, and a header asserts what its own body supports (`check_lectures.md` §4). Shared file: `trainings/agentic-engineering-101/run-the-first-experiment.md` names this lecture only inside a source stamp that delegates the Mollick check, so nothing on the AE101 side reads these headers.
 
 **Mood target:** Module 6's lift. The student should feel the loop as relief plus expanded responsibility: the machine can crunch, but the human must choose the yardstick.
 

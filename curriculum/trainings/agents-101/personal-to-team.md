@@ -29,23 +29,13 @@ Hold that feeling. It's not a governance question yet. It's a generous one. At M
 
 Two questions to warm up: who's the one person who came to mind just now? And what makes you hesitate about actually handing this to them?
 
-## Interview for the job
-
-Start with the move that matters most: **interview for the job.** Your teammate doesn't want your agent. They want a job done. Your agent, your skill, your output, your interface: any of those is a candidate for hire against whatever they're using now. That reframe moves the starting question from *"what should I share?"* (yours) to *"what job is my teammate trying to get done, and which sharing shape does it?"* (theirs). The first exercise runs that interview, and the agent does the heavy lifting. It reads your memory, drafts the hypothesis, asks you the five to eight questions that plug real holes.
-
-## Pick the sharing shape
-
-Then the candidates: **Sharing shapes.** (1) **Share the context** — teammates get your `memory/`, `sources/`, `CLAUDE.md` and build their own agents on top. (2) **Share a skill** — one scoped capability extracted. (3) **Share the output (push)** — scheduled deploy; the output lands where the team already looks. (4) **Share an interface (pull)** — Slack bot / Teams @mention / web form / endpoint; teammates invoke on demand. "Share the whole agent" is a vendor pitch and is not on the list.
-
-Then test the absorption bottleneck, what must be true for a switch, and why the teammate might return to the incumbent.
-
-One observation to keep in your back pocket while you run the exercise: **access is not absorption.** Many companies have rolled out access far ahead of trust. People can reach the agent. That does not mean they know when to use it, trust it with real work, or have a way to encounter it in the flow of the day. You'll feel that gap yourself when your technical plan fills quickly and your people plan stalls on names.
-
 [Exercise: Interview for the job and pick a candidate](exercises/share-your-work.md)
 
 [Exercise: Design the sharing plan](exercises/design-the-sharing-plan.md)
 
 [Exercise: Test the sharing plan](exercises/test-the-sharing-plan.md)
+
+[Lecture: Access is not absorption](lectures/access-is-not-absorption.md)
 
 ## Debrief
 
@@ -67,7 +57,7 @@ Push back where Claude's summary is wrong. *"The teammate's job wasn't vague, yo
 - **Design contract.** The outcome statement is *"Minimize/increase [metric] when [doing the job]."* A candidate that doesn't move the metric isn't a candidate.
 - **Third outcome.** This is where the interview earns its keep: dependency removed, anxiety reduced, scope expanded, workload shifted. Speed and quality alone means it went shallow.
 - **Absorption.** Access is easy; absorption is scarce. The technical plan fills quickly; the people plan stalls on names.
-- **Sharing shapes.** Use the four sharing shapes as a design language, not a menu. "Share the whole agent" is not on the list. Pick one to three, stack where useful.
+- **Sharing shapes.** Use the four sharing shapes as a design language, not a menu.
 - **Replacement test.** Roger Martin's question is the test: *"what would have to be true for them to replace it?"* The people plan weighs equal to the technical plan. Every job already has a current solution: Excel, a colleague, gut feel.
 
 ## Bring to Module 8
@@ -90,13 +80,15 @@ The sharing plan leaves the room and meets the organisation. What comes back fro
 
 **Mood target:** Generous impulse — the student starts from one teammate's job, not an abstract rollout obligation.
 
+**Decision note 2026-09-23.** Executes `curriculum/module-design/a101-story-proposals/blend.md` § M7. § Interview for the job and § Pick the sharing shape are cut: both narrated the three exercises before the student ran them (`check_student_facing.md` §33 and §26), and the exercise `share-your-work.md` carries the four sharing strategies verbatim per §34 together with the vendor-pitch close. The Key Concepts *Sharing shapes* bullet is trimmed to its design-language clause so the vendor-pitch mechanism lands once, in the new closing lecture `access-is-not-absorption.md`, which is linked after the three exercises and before Debrief. That lecture also carries the absorption beat and the *access is not absorption* line. The point-of-view scar slot is unfilled: its fallback home is recorded in the lecture's maintainer block, nothing ships in either body.
+
 **Push-back moves / Watch-fors / Decision points:** [M7 run sheet](trainer-modules.md#m7-glance) owns the live cues, recovery paths, protected beats, and cut order.
 
 **Meta (trainer):**
-- **Transitions:** framing 12 @start "Framing: interview for the job, four sharing shapes" · debrief 5 @end "Debrief" · bridge 3 @end "Bridge"
-- **Where these numbers come from:** framing from this block's own **Framing time:** line, taken at its ceiling; debrief from the body ("Five minutes."). Every beat here has no file of its own, so nothing else prices it.
+- **Transitions:** framing 6 @start "Framing: start here, the one person who came to mind" · debrief 5 @end "Debrief" · bridge 3 @end "Bridge"
+- **Where these numbers come from:** framing from this block's own **Framing time:** line, taken at its ceiling; debrief from the body ("Five minutes."). The closing lecture prices itself in `access-is-not-absorption.md`. Every other beat here has no file of its own, so nothing else prices it.
 - **Primary Bloom's level:** Analyze → Evaluate
-- **Framing time:** 10–12 minutes. No separate lecture file; the framing runs straight into the exercise.
+- **Framing time:** 4–6 minutes. § Start here runs straight into the first exercise; the job-to-be-done reframe and the four shapes are the exercise's own opening, and the law they demonstrate lands in the closing lecture. Whether the minutes this frees stay with the lecture or go back to the exercises is Antti's call in the room.
 - **Materials (trainer):** Pattern catalog ships in the Agents 101 starter at `patterns/personal-to-team-patterns.md` — student's Builder Claude reads it directly from the training directory. Branch-selection framing ready. The student's one access-without-use example is the complete prework load; there is no three-walls or strategy reading packet. **No pre-shipped strategy skills** (M4 is the canonical personal-skill authoring module). The exercise's crux, assumption-test, and pre-mortem moves remain facilitator background, not required student reading.
 - **Plug points:** Participant's organization (who would own this?); buyer infrastructure reality (cloud agent platform vs. personal Claudes only).
 

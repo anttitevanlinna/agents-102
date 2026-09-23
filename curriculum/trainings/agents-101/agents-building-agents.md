@@ -36,6 +36,8 @@ Hold that. Module 8 doesn't answer it. It shows you the shape of an answer you'l
 
 The three thinking disciplines you applied in Module 7 on your own sharing problem run again here at room scale on the sponsor challenge. Finding the *crux* shapes each initial stance. Cross-checks force agents to notice rival evidence before they publish proposals. *What would have to be true?* and *pre-mortem* appear when agents criticize the synthesizer's choices and propose better ideas. Same disciplines, named inline in the prompts. Bigger instrument.
 
+[Lecture: Where is this all going?](lectures/where-is-this-all-going.md)
+
 ## Debrief
 
 Five minutes. Claude reviews the session and sharpens whichever file carried the load: the central synthesizer's rules, the strategy kernel, the agent set, the plan, or the rules that governed how the agents argued. The evidence is what you produced: the context manifests, stances, cross-checks, proposals, selection board, synthesizer-injected midpoint instructions, critiques, pushbacks, kernel, agent set, and plan. Claude reviews, rewrites the most load-bearing file in place, reports what changed. You push back on anything that's off.
@@ -62,7 +64,11 @@ Read Claude's summary. Push back where it's wrong. Some of what didn't resolve s
 
 ## Next
 
-The plan you just produced is a set of assumptions dressed as work: label them, start the concurrent pieces, and design experiments for the uncertain ones. Agents 101 is the first of five steps, with Make Your Own next; you leave with a flywheel, not a graduation.
+The plan you just produced is a set of assumptions dressed as work: label them, start the concurrent pieces, and design experiments for the uncertain ones.
+
+We could have spent today building you one impressive agent to show on Friday. It would have demoed well and it would have been the wrong thing to sell you, because the agent that matters in six months is one nobody in this room has thought of yet, built by somebody who is not you. What you take out of here is the ability to build the one you have not thought of. That is slower, it is harder to put on a slide, and it is the only part that is still worth anything after the model changes.
+
+You leave with a flywheel, not a graduation.
 
 <!-- maintainer -->
 
@@ -71,6 +77,8 @@ The plan you just produced is a set of assumptions dressed as work: label them, 
 - cross_module @12bf0d81: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
 
 **Mood target:** Awe and curiosity — the student leaves wanting the next move, not feeling tidily graduated.
+
+**Decision note 2026-09-23.** Executes `curriculum/module-design/a101-story-proposals/blend.md` § M8. § Next drops the product-ladder clause (*"Agents 101 is the first of five steps, with Make Your Own next"*) and carries `braid-the-anatomy.md` § 4.7's against-interest paragraph in its place; *a flywheel, not a graduation* stays and now closes the module on its own line. This is the arc's single against-interest instance; `control-and-creativity.md` § 4's M7 "cheap half" paragraph is deliberately not also placed. The new closing lecture `where-is-this-all-going.md` is linked after the proposal forum and before Debrief, and carries the refrain's last turn, the absorption callback against the kernel's citations, and the two questions the module declines to answer.
 
 **Push-back moves / Watch-fors / Decision points:** [M8 run sheet](trainer-modules.md#m8-glance) owns the live cues, recovery paths, protected beats, and cut order.
 

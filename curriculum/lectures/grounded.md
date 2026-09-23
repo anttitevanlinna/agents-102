@@ -1,20 +1,16 @@
 # Lecture: Grounded, and four candidates to measure
 
+## There is truth out there
+
 There is truth out there. Your sources carry shards of it. Your agent, left to itself, has no model of truth, only a model of what usually comes next in language that looks like yours.
 
 When you ask it for something your sources support, it produces grounded output. When you ask it for something your sources don't support, it still produces something. The difference between those two states is invisible in the tone of the output. That's the whole problem.
 
-The four detection techniques reveal different failure shapes. Against the Mata v. Avianca pre-read, source triangulation caught an unsourced "small firm" descriptor and an unsupported "ten minutes" estimate. Entailment caught the story making Schwartz's timeline too clean. Citation integrity caught a direct quote that did not appear in the linked sanctions order. Counter-evidence found a source conflict where CNBC blurred the $5,000 sanction and the court order was more precise. Even a careful teaching case benefits from the check.
+Every output your agent produces is either connected to truth (to specific files, specific numbers, specific quotes in specific sources) or it isn't. Connected to truth is grounded. Approximating truth without being tied to it is ungrounded.
 
-After revision, source triangulation, entailment, and citation integrity came back clean. Counter-evidence still found the CNBC-vs-court-record conflict on the $5,000 sanction, and the revised story followed the primary court record. A later rerun caught one more smoothing the earlier passes had walked past. That is the loop: check, tighten, rerun, keep the remaining uncertainty visible.
+Grounded isn't "accurate." A grounded claim can still be wrong, if the source it's tied to is wrong. Grounded means *traceable to a real piece of evidence*. Accuracy is a harder question, and an agent alone can't answer it. Traceability is a mechanical discipline, and an agent CAN be forced into it. Start with grounded.
 
-**Why this happens, in one sentence.**
-
-Large language models generate the next likely word. Not the next true word; the next likely one. They're trained on text where people spoke confidently, cited specifically, wrote fluently, and the models learned to produce language that looks like all of that, whether the underlying material supports it or not. Fluency is not evidence. Confidence is not correctness. The model has no way to tell you which parts of its output are grounded and which are plausible-sounding fill.
-
-This isn't a bug that gets patched in the next release. It's the shape of the technology. Later models will fabricate less; they won't stop.
-
-**The compound reliability math.**
+## Mostly right, ten times over, is mostly wrong
 
 If an agent were 85% correct on a single step (an illustrative number, picked because it sounds forgivable), that would not sound bad. Eighty-five out of a hundred. You'd forgive that in an intern.
 
@@ -24,7 +20,7 @@ A short customer-service loop shows the difference: look up the order, check the
 
 The number doesn't tell you *what* will go wrong. It tells you that something will. Your job is to design for that, not against it.
 
-**Now flip the math.**
+## A test-and-fix loop collapses the error rate
 
 Say your briefing has a 10% fabrication rate: ten ungrounded claims in every hundred. A first pass often lands close to that; treat it as a working prior, not a measurement. You test. Say the detector catches 90% of them, the same prior run in reverse. You fix what the detector flagged. Test again. The detector catches 90% of what's left. Fix again.
 
@@ -36,23 +32,23 @@ The same compounding that destroys single-pass reliability *builds* loop-based r
 
 Now you'll run the test side: a benchmark to find the detector that works on *your* output. The compounding-error math is the problem; the compounding-check math is the answer.
 
-**The word is grounded.**
+## "Are you sure?" is another fluent answer
 
-Every output your agent produces is either connected to truth (to specific files, specific numbers, specific quotes in specific sources) or it isn't. Connected to truth is grounded. Approximating truth without being tied to it is ungrounded.
+When something comes back and you can't tell whether it is grounded, the cheap move is to ask the agent. Are you sure? Check that again. What comes back is another answer from the same place the first one came from, in the same confident voice.
 
-The positive discipline is grounding. The failure mode is fabrication. The failure mode is what makes headlines: the lawyer citing invented case law, the medical chatbot inventing medications, the finance memo with confident numbers nobody can source. But the discipline is what keeps you out of those headlines, and the discipline is grounded.
+Large language models generate the next likely word. Not the next true word; the next likely one. They're trained on text where people spoke confidently, cited specifically, wrote fluently, and the models learned to produce language that looks like all of that, whether the underlying material supports it or not. Fluency is not evidence. Confidence is not correctness. The model has no way to tell you which parts of its output are grounded and which are plausible-sounding fill.
 
-Grounded isn't "accurate." A grounded claim can still be wrong, if the source it's tied to is wrong. Grounded means *traceable to a real piece of evidence*. Accuracy is a harder question, and an agent alone can't answer it. Traceability is a mechanical discipline, and an agent CAN be forced into it. Start with grounded.
+This isn't a bug that gets patched in the next release. It's the shape of the technology. Later models will fabricate less; they won't stop.
 
-In the full agent picture, this is the check. The agent can have context, tools, goals, and boundaries, and still produce something fluent but unsupported. A check is what makes the standard repeatable.
-
-**Don't pick a method. Run the candidates.**
+## Don't pick a method. Run the candidates.
 
 Somebody tells you *"just have the agent read your files before it answers,"* or *"do a consistency check,"* or *"prompt it to cite sources."* A single method, presented as the answer. You try it, catch some things, miss others, never know what you missed, and move on feeling vaguely better.
 
 That's intuition. The move is empirical.
 
 You have a briefing. You don't know which detection method will catch what matters on *your* output, with *your* sources, on *your* strategic question. Nobody does. Not the framework authors, not the blog posts, not the deck on someone's slide. The only plain answer is to run several candidate methods in parallel and measure which one catches what your benchmark says should have been caught.
+
+## Four candidates that fail differently
 
 Four candidates, chosen because they fail in different directions, so the scoreboard gives you real spread:
 
@@ -64,15 +60,35 @@ Four candidates, chosen because they fail in different directions, so the scoreb
 
 **4. Counter-evidence search.** Instead of looking for sources that support each claim, look for sources that contradict it. One contradiction kills the claim; a hundred supporting files don't prove it. Catches claims that *look* grounded under confirmation but crumble under disconfirmation.
 
+## You have done this before
+
+Three stances, one framework. Four detectors, one scoreboard. You make more candidates than you need, and then something picks between them on evidence rather than on whichever one sounded best.
+
 Four candidates, four different failure modes. In the exercise, they run as four parallel agents on the same 30-claim pool, each writing findings to its own file. A scorer adjudicates the claims against the evidence and measures the detectors: precision, recall, coverage. The scoreboard is the mechanism. You don't argue with it; you read it.
 
-The winner (or an ensemble of the top two) becomes a judge file you carry forward.
+The four detection techniques reveal different failure shapes. Against the Mata v. Avianca pre-read, source triangulation caught an unsourced "small firm" descriptor and an unsupported "ten minutes" estimate. Entailment caught the story making Schwartz's timeline too clean. Citation integrity caught a direct quote that did not appear in the linked sanctions order. Counter-evidence found a source conflict where CNBC blurred the $5,000 sanction and the court order was more precise. Even a careful teaching case benefits from the check.
 
-**What this buys you.**
+## The judge names its own limit
+
+The winner (or an ensemble of the top two) becomes a judge file you carry forward.
 
 Not certainty. Certainty isn't available. What you buy is a *grounded choice about grounding*: you know which detector won on your material, you know why, you know what it misses, and the judge file you save plainly names its own blind spot.
 
 That last clause is the one that matters. Grounded output names what it doesn't know. A grounded judge names what it can't catch. Ungrounded output pretends to know everything; a cargo-cult judge pretends to catch everything. The difference looks small on the page. In a decision room, it's the difference between a memo that holds up and a memo that detonates.
+
+## In the full agent picture, this is the check
+
+The agent can have context, tools, goals, and boundaries, and still produce something fluent but unsupported. A check is what makes the standard repeatable.
+
+The positive discipline is grounding. The failure mode is fabrication. The failure mode is what makes headlines: the lawyer citing invented case law, the medical chatbot inventing medications, the finance memo with confident numbers nobody can source. But the discipline is what keeps you out of those headlines, and the discipline is grounded.
+
+## A drift signal, never proof
+
+Run the same briefing twice from the same sources and you can ask a different question: what stays stable, and what drifts?
+
+That is worth knowing, and it is not the check you are about to build. A claim can be stable and still unsupported, if both runs repeat the same assumption. A claim can be grounded and still come out phrased differently each time. Drift is a warning signal, never proof of fabrication.
+
+Two runs is a demo, not a measurement. With two, a claim that appears in both could be the model's pull toward a popular framing, and a claim that drifts could be an edge case in the next sample. The signal firms up somewhere around five to ten runs. A production check wants twenty or thirty.
 
 Now you run the benchmark. Well, not by hand. You set up four detectors, a claim pool, and a scorer. The agents do the work. You watch the scoreboard fill in. The winner becomes a judge file you keep.
 
@@ -86,6 +102,8 @@ Next, you create a fresh briefing and extract a 30-claim pool from it. That pool
 
 **Family-A alignment (2026-07-02):** the compound-reliability passage is a worded subjunctive illustration labeled "an illustration, not a measurement" in body; the `0.85^10` notation and the derived customer-service percentages (95% each = 86%) were dropped, and the closing shorthand no longer names the constants (`theory-audit.md` § Family A). Zombie-stat guard: do not re-promote the constant to a measured figure or re-add notation. The flip-the-math passage keeps its "Say your briefing has..." illustrative framing.
 
+**Story blend, M5 slides (2026-09-23).** The lecture projects as `##` slides per `module-design/a101-story-proposals/blend.md` § Titles, M5. Four points bind. `## You have done this before` is a backward callback to the three stances and the framework, never a forward pointer. `## A drift signal, never proof` carries the whole surviving beat of `self-consistency-after-scoreboard.md`, which `output-quality.md` does not link; its two-runs framing sits before the exercise, so it primes what the benchmark is not. `## A test-and-fix loop collapses the error rate` holds the second half of the compound-reliability pair on its own slide, which is what keeps both halves inside the 210-word cap (`check_lectures.md` §5); the blend's list names eight headers and the size gate is why the deck carries more. `## Don't pick a method. Run the candidates.` is the existing lead-in of the same words, and the backing block binds a claim to that string.
+
 <!-- backing -->
 
 Claims
@@ -93,9 +111,8 @@ Claims
 - `first-pass-prior` · detail · "A first pass often lands close to that; treat it as a working prior, not a measurement." ← antti-first-pass-prior
 - `loop-collapses-the-error-rate` · detail · "Round 1: 10% fabricated → 1% after fix." ← compound-reliability-math, antti-first-pass-prior
 - `mata-detector-first-pass` · detail · "Against the Mata v. Avianca pre-read, source triangulation caught an unsourced 'small firm' descriptor and an unsupported 'ten minutes' estimate" ← mata-detector-passes, mata-court-order, mata-press-account
-- `mata-detector-rerun` · detail · "A later rerun caught one more smoothing the earlier passes had walked past." ← mata-detector-passes, mata-court-order, mata-press-account
 - `short-chain-example` · vision · "A short customer-service loop shows the difference: look up the order, check the policy, draft the reply" ← none-owed
-- `the-word-is-grounded` · vision · "The word is grounded." ← none-owed
+- `the-word-is-grounded` · vision · "Connected to truth is grounded. Approximating truth without being tied to it is ungrounded." ← none-owed
 - `dont-pick-a-method-run-the-candidates` · vision · "Don't pick a method. Run the candidates." ← none-owed
 - `source-triangulation` · vision · "For every specific claim, does it appear in at least one file on disk?" ← none-owed
 - `entailment` · vision · "Does the briefing say more than the sources actually support?" ← none-owed
@@ -107,7 +124,7 @@ Sources
 - antti-first-pass-prior `[checked:2026-08-02 result:ATTESTED due:none]` attested:Antti 2026-08-02 first-pass error heuristic — [practitioner direct, maintainer-attested] "A first pass gets about one in ten wrong" — standing working prior from the maintainer's own loop practice and trainings (same family as the attested ~10% prior in `orient-and-introspect.md`); the 90% detector figure is the same prior applied to the fix pass. A prior, not a measurement, and the body says so in as many words. fallback: drop to pure stipulation ("say the detector catches 90%") if the attestation needs to soften.
 - mata-court-order `[checked:2026-08-23 result:OK due:none]` https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/ — [primary court record, historical] The sanctions opinion supports the six fabricated opinions and the joint $5,000 sanction. fallback: CourtListener carries docket 54.
 - mata-press-account `[checked:2026-08-23 result:OK due:none]` https://www.cnbc.com/2023/06/22/judge-sanctions-lawyers-whose-ai-written-filing-contained-fake-citations.html — [general press, historical] The contemporaneous account is retained specifically as counter-evidence where its sanction wording differs from the primary order. fallback: keep the court-order comparison and drop the press reference.
-- mata-detector-passes `[checked:2026-08-03 result:OK due:none]` delegate: `curriculum/lectures/module-5-prework.md` § Factual precision owed — [house canonical] The PS/PPS narrate this file's completed passes against the two sources above, dated in the delegate's notes. First pass + fix 2026-04-30 removed "small firm," "ten minutes," and an unsupported Castel quote; Schwartz's timeline was softened. Re-run 2026-08-03 caught one residual triangulation finding; otherwise clean. fallback: the PPS's loop sentence stands on the recorded passes alone; drop the clean-pass clause if the delegate's notes move.
+- mata-detector-passes `[checked:2026-08-03 result:OK due:none]` delegate: `curriculum/lectures/module-5-prework.md` § Factual precision owed — [house canonical] The Mata paragraph under `## You have done this before` narrates a completed detector pass against the two sources above, dated in the delegate's notes: "small firm," "ten minutes" and an unsupported Castel quote are the findings it names, and the delegate carries the per-detector record. fallback: keep "even a careful teaching case benefits from the check" and drop the per-detector detail if the delegate's notes move.
 
 Frameworks
 - Compound-reliability floor · [borrow:none] · law:compound-reliability-floor-0-85 · ← compound-reliability-math — naming both halves is what turns the math from despair into design
@@ -148,7 +165,7 @@ OODA
 - **"Can't I just pick the best one and skip the benchmark?"** Impatient student. Coach: *"On what basis? You don't know what your briefing's failure modes are until you measure. The benchmark IS the method selection — skipping it means picking by vibe."*
 - **Compound reliability math resistance.** Some students will want to argue the 85% number. Coach: *"The number is illustrative. Whatever YOUR number is, run the math. The compounding is the real point."*
 
-**Length:** ~950 words. Prework-reading band (800-1200) — above demo-script band (350-600). Delivered in-room (10-12 min). Four candidates need paragraph-each treatment but each paragraph stays tight because the exercise carries the depth.
+**Length:** one deck, every slide inside the cap (`node scripts/check-slide-size.js --file curriculum/lectures/grounded.md --report`). Above the prework-reading band, because it is projected and talked through rather than read cold. Delivered in-room (10-12 min). Four candidates need paragraph-each treatment but each paragraph stays tight because the exercise carries the depth.
 
 **Lecture meta:** *Closer beat is the lead-in to Phase 0 of the Hallucination benchmark exercise. Trainer pivots straight from the "Phase 0 is next" line into the exercise — no separate transition.*
 

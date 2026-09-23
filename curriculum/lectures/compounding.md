@@ -21,9 +21,11 @@ When you added the second batch, Claude didn't start over. It read the existing 
 
 This is the same mechanism from Module 1: context shapes output, run at system scale. The context for this work is what the previous work produced. The context for the next session will be what this work produced. The loop is the product.
 
+## It gets better by being edited
+
 Keep the rules small, keep them boring, and let the compounding do the work. Not "clever prompts." Plain rules, applied consistently across thousands of small updates. The discipline is in refusing to get fancy.
 
-## The detail that's easy to miss
+## A folder of text, and that is the point
 
 The memory is a folder of markdown files. That's it. No database. No special tool. No paid tier. No setup. And the agent you just built, the one sitting in `agents/`, is also a markdown file. Instructions the model reads at the start of every session. Same plain-text form for the knowledge, same plain-text form for the capability, same plain-text form as the guardrail you wrote in Module 1. One kind of object, three jobs. Which means it also travels, paste the agent file into any LLM tool and it still works.
 
@@ -37,7 +39,7 @@ Your memory is specific to your challenge. The question you just ran through it 
 
 Every module after this leans on the memory you just built. Multi-agent systems reads from it. Security reviews it. Quality evals run against it. The flywheel in Module 8 feeds it. You didn't build a training exercise. You built the material the rest of the training runs on.
 
-## One more compounding turn
+## Could a competitor claim this?
 
 Back in Phase 1 you asked Claude to flag pages a competitor could write about themselves. Phase 3 sharpened them. That's the discipline: if the answer to *"could a competitor claim this?"* is ever yes, the memory is growing but not compounding.
 
@@ -47,7 +49,19 @@ Spot what's still generic and sharpen it.
 
 Claude comes back with three pointed requests. Answer one. Let it update the page. The memory just got a fourth round of compounding. You steer; the system maintains; the loop runs.
 
+## It can only use what someone wrote down
+
+One limit worth seeing while the memory is fresh in front of you.
+
+The agent can only work from what somebody wrote down. Most of what you know about your own company, nobody has. It sits in heads, in corridors, in the judgement of the person who has been there long enough to stop noticing they have it.
+
+That is not a fault in the memory you built. It is why the memory you built is worth something. Every round of this moves one more piece of what you know out of your head and into something the system can read next time.
+
 <!-- maintainer -->
+
+**Story blend, M2 slides (2026-09-23).** Headers per `module-design/a101-story-proposals/blend.md` § Titles, M2. Seven slides: `Two words, held together`, `Why the sharpening happens`, `It gets better by being edited`, `A folder of text, and that is the point`, `What this unlocks`, `Could a competitor claim this?`, `It can only use what someone wrote down`. The split between the third and the second is mechanism (why pages sharpen) against discipline (what keeps them sharpening); no prose moved to make it. The last slide carries the blend's plant for the access-is-not-absorption learning, verbatim: *the agent can only work from what somebody wrote down; most of what you know about your own company, nobody has*. The slide closes on what the memory is worth, because M2's mood is satisfied compounding; the word for the gap is not planted here.
+
+The blend lists `It gets better by being edited` after `A folder of text, and that is the point`. It sits before it instead, so the paragraph stays where it was written and the two refuse-to-get-fancy beats do not both move.
 
 **Pre-prompt lead-in trimmed to the action (2026-08-29, Antti-directed).** *"Ask Claude to spot the still-generic pages in the memory you built and propose what would sharpen each"* previewed `compounding-1` clause for clause (*pick the three topic pages that are still the most generic* / *what specific source would sharpen it most*). Now `Spot what's still generic and sharpen it.` **The test a lead-in has to pass: does it tell you to run the prompt, or tell you what the prompt says?** The first is a speech act aimed at the human and the prompt cannot perform it; the second is the prompt's own text, addressed to the only reader who acts on it. Keep the verb, drop the preview. Do not restore the detail — the prompt carries it, and the paragraph below carries what to do with the answer.
 
@@ -61,7 +75,7 @@ Claude comes back with three pointed requests. Answer one. Let it update the pag
 
 **Philosophy callouts used (per the sparing rule):**
 - **#3 Mental models only come from doing** — named implicitly in the opening ("you can't picture it from a description — you had to see it"). The whole Phase 3 debrief is this belief landed.
-- **Fundamentals outlast tools** — named in "The detail that's easy to miss." Frameworks churn; text-that-Claude-reads-and-writes is the durable material.
+- **Fundamentals outlast tools** — named in "A folder of text, and that is the point." Frameworks churn; text-that-Claude-reads-and-writes is the durable material.
 
 Not used (deliberate): #2 (act on the future), #10 (competence precedes vision), #18 (flywheel) — the first two are Module 8's weight, #18 belongs to the closing module. Keeping the budget to two.
 

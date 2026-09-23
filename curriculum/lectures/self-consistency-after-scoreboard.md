@@ -30,7 +30,7 @@ Claude builds a multi-method judge against any other output you want to quality-
 
 **Time:** 10 minutes if demoed live; 3 minutes if taught as contrast only.
 
-**Placement in module:** Immediately after the Hallucination benchmark exercise. The judge is already saved. This lecture/demo contrasts groundedness scoring with reproducibility drift without reopening the detector panel.
+**Unlinked (2026-09-23).** No module file links this lecture, per `module-design/a101-story-proposals/blend.md` § Titles, M5. The surviving beat is the `## A drift signal, never proof` slide in `lectures/grounded.md`, which carries the drift-is-a-signal-not-proof argument before the hallucination benchmark runs. The file stays in place: `curriculum/prompts/self-consistency-after-scoreboard-{1,2,3}.md` are registered against it, and a cohort with time runs it on screen after the benchmark, where the judge is already saved.
 
 **Teacher move:** Show, then name the boundary. Self-consistency is useful because it surfaces unstable claims. It is insufficient because stability is not truth. Do not let the room demote the scoreboard in favor of a more mysterious check.
 

@@ -4,9 +4,11 @@ You built something. It works. Would you bet your job on it being safe? Probably
 
 Here's the hard part. The feeling doesn't go away. Not with more testing, not with a better policy, not with a certification. Agent systems don't hand you certainty. You can wait for it, or you can get to work.
 
-**Certainty is a fantasy you inherited.**
+## Certainty is a fantasy you inherited
 
 Software security, done well, sells you a clean story. Perimeter. Access control. Patch the bug, sign off the build, the system is secure. You've probably worked with people who live inside that story and mostly do a good job of it. The story works because classical software is deterministic (same input, same output). You can find the bug, prove you fixed it, and sleep.
+
+## Three ways agents break the old story
 
 Agent systems break the story in three places.
 
@@ -20,13 +22,15 @@ Put the three together. You don't get *secure / not secure.* You get *safe enoug
 
 In the full agent picture, this is the boundary piece. What may the agent read? What may it change? What must come back to a human? More capability without boundaries is not progress. It is just more blast radius.
 
-**The work is the loop.**
+## Assess, then mitigate
 
-You don't get certainty. You get a loop. Four steps, plain, repeatable.
+The work is the loop. You don't get certainty, you get four steps, plain and repeatable.
 
 **Assess.** Point a lens at the system and see what it reveals. Today starts with your company's actual rules, raw, against your actual agent. Then you package that policy check so it can run again. The agent-risk lens asks what the agent can reach, what it might leak, and how ordinary text could mislead it. Neither lens makes you an expert. The reusable check is the expert. The job is reading the reports with judgment.
 
 **Mitigate.** Pick one risk. Apply the smallest change that reduces it. Agent mitigations are shaped differently than firewalls. Scope (give the agent less). Split (break it into two agents with different trust levels). Filter (post-process the output before it leaves). Gate (a human approves before a sensitive action). Review (a second agent judges the first's output). None of these are perimeter. All of them are loop design.
+
+## Reassess the residual, then decide
 
 **Reassess residual.** After the mitigation, the risk isn't gone. Something remains. Name it. Write it down. *The residual risk here is X. If Y happens, we haven't prevented it, we've made it less likely.* Residual risk as an artifact, not a shame.
 
@@ -34,7 +38,15 @@ You don't get certainty. You get a loop. Four steps, plain, repeatable.
 
 Run the loop. You never finish. You iterate. The discipline isn't arriving at certainty. It's running the loop again.
 
-**The best mitigation is the one you don't need.**
+## Now the move is to give it less
+
+Everything you have built so far gave the agent more. More context. A memory that survives the session. More stances at the table. Now the move is to give it less.
+
+Both moves are right, and the difference is what happens when the agent is wrong. More context makes a good answer likelier. Less access makes a bad answer smaller.
+
+Every door you close is a source you won't read. The tool you take away was a capability. The split you make leaves two agents each knowing half of what one agent knew. Scope it down far enough and the system is safe and useless. Nobody hands you the number. You pick it, you write down what is left, and you sign for it.
+
+## The best mitigation is the door you don't open
 
 Here's the oldest move in the security book, the one that sounds too much like common sense to charge for. The cheapest, most reliable way to reduce risk on an agent is to not open the door in the first place.
 
@@ -44,7 +56,7 @@ The policy lens exists partly to tell you which doors not to open. Your company 
 
 Avoidance beats reduction. Scope beats patch. Don't-open beats mitigate. This isn't timid design. It's plain design. Every door you don't open is a residual risk you don't have to name, mitigate, monitor, re-test, or apologise for.
 
-**The uncomfortable part, said plainly.**
+## The discipline is what carries
 
 Some of your agents are going to be wrong, in ways you won't catch, and ship output you won't love. That's true for every agent in production anywhere in the world right now. The organisations that handle this well aren't the ones with the best technology. They're the ones that run the loop openly, name residual risks plainly, and close doors they don't need to open.
 
@@ -57,6 +69,10 @@ That's the work.
 <!-- maintainer -->
 
 **Lecture meta:** *8 min in-room lecture. Placement: after Connections, before the two exercises. Primes the loop the exercises run. Mood contract: deepened unease — names the unease as the permanent condition, does not resolve it; Module 5 is the rescue.*
+
+**Slides (2026-09-23, blend § Titles M4):** Seven `##` slides carry the lecture. `## Now the move is to give it less` is the frame's break, with control's *every door you close is a source you won't read* merged into it as the blend's one-slide preference. The loop runs as two slides, `## Assess, then mitigate` and `## Reassess the residual, then decide`, because one slide over all four steps reads 241 words against the 210 cap (`check_slides.md §14`, split at the conceptual seam per §5). `## "I can't tell" is a real answer` is not on this file: that line lives in `security.md` § Key Concepts and has no body here to head (`check_lectures.md §4` truth clause). The analogy break (*no employee reads every document as an instruction*) has no slide and no body sentence; it is a title candidate in `a101-skeleton-to-be.md`, not text this lecture carries.
+
+**Scar slot, open for Antti (2026-09-23, blend § Point of view):** The lecture holds a slot for one first-person incident, unfilled, and no placeholder ships in student text. Placement: after *The work is the loop* and before *The best mitigation is the door you don't open*. Shape per `braid-the-anatomy.md` § 3 — a door Antti opened himself, used exactly as opened, found out afterwards from an artifact rather than from watching, no resolution past the door he closed, eight to fourteen lines, first person, signed. It must show the decision as his own, the gap between *it did what I told it* and *I did not want that*, one door nameable in a sentence, and how he learned. Fallback slot per `control-and-creativity.md` § 3: M7's absorption beat, a thing he built that nobody used. One scar, not two. Nobody drafts a stand-in.
 
 **Time:** 8 minutes. The 1h45 module budget (lecture + two exercises + Connections + Debrief + transitions) only fits when the lecture stays at 8 and the author exercise's Phase 2 lands in two turns. If a tougher cohort takes Phase 2 to three turns, the budget eats this lecture's slack first. Hold to 8.
 
@@ -73,7 +89,9 @@ Claims
 - `agent-mitigations-are-shaped-differently` · vision · "Agent mitigations are shaped differently than firewalls." ← none-owed
 - `name-the-residual-and-write-it-down` · vision · "*The residual risk here is X. If Y happens, we haven't prevented it, we've made it less likely.*" ← none-owed
 - `two-options-not-three` · vision · "Accept the residual on record, or close the door. Those are the two options. *\"Hope it doesn't happen\"* is not one." ← none-owed
-- `best-mitigation-is-the-one-you-dont-need` · borrowed · "The best mitigation is the one you don't need." ← cultural-vocab
+- `best-mitigation-is-the-one-you-dont-need` · borrowed · "The best mitigation is the door you don't open." ← cultural-vocab
+- `now-the-move-is-to-give-it-less` · vision · "More context makes a good answer likelier. Less access makes a bad answer smaller." ← none-owed
+- `every-door-you-close-is-a-source` · vision · "Every door you close is a source you won't read." ← none-owed
 
 Sources
 - iso-31000 `[checked:2026-05-15 result:OK due:none]` https://www.iso.org/standard/65694.html — [academic/research] ISO's primary standards record for ISO 31000: the assess → treat → evaluate-residual → accept-or-avoid cycle, and *residual risk* as the term for what remains after treatment. NIST's risk-management framework carries the same vocabulary. **Foundational, `due:none`** — a standard's definitions do not expire on a six-month clock, and the lecture takes the vocabulary while explicitly dropping the bureaucracy around it. fallback: teach the four steps without the standard's name; the loop is recognisable to anyone with regulated-industry exposure.

@@ -31,8 +31,6 @@ The question shifts at Module 6. What if the work kept getting sharper, not beca
 [Lecture: Evals as steering](lectures/evals-as-steering.md)
 
 > Text is easy to inspect, so this module uses it again. The same pattern applies to actions. An agent action starts as text: a proposed mail, a ticket update, a CRM change, a query, a command. Check the proposal before it becomes the action.
->
-> Keep adding connectors to your key systems. Combining insight across systems can surface relationships no single system shows. Progress from you taking actions the agent proposes, to letting the agent take safe actions itself. Stay safe. Start small. Then scale.
 
 [Exercise: The eval loop runs itself](exercises/eval-loop.md)
 
@@ -82,6 +80,8 @@ You just built an eval that improves itself. The system can now keep pressure on
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@4d9c4af2 slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @12bf0d81: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+
+**Story blend, M6 (2026-09-23).** The callout beside `lectures/evals-as-steering.md` carries one paragraph, the agent-action-starts-as-text point, per `module-design/a101-story-proposals/blend.md` § Titles, M6. The connector encouragement is not part of the module: it is a different module's advice arriving mid-loop, and *start small then scale* is sales register in a student body (`check_writing.md` §13).
 
 **Mood target:** Unleashed leverage — the student sees the loop improve work while the human owns the yardstick and boundary.
 

@@ -3,6 +3,31 @@
 Rubric: `story-depth-rubric.md`. Goal spec: `trainings/agents-101/story-depth.md`. One `## Run`
 section per run, newest first; per-judge reports under `story-depth/`.
 
+## Quartet, iteration 2 — 2026-09-23 — branch `a101-story`
+
+Two sentences changed (the M8 close echoes the M3 turn; the M4 door slide names what less
+access costs the seller, this training included) and the judges were told to stop reading at
+`<!-- maintainer -->`, which iteration 1's judges had not done.
+
+| | baseline | iter 1 | iter 2 | bar |
+|---|---|---|---|---|
+| Frame | 85 | 92 | 94 | 95 |
+| Narrative | 84 | 82 | 88 | 92 |
+| Point of view | 80 | 76 | 92 | 95 |
+| Stance | 88 | 85 | 90 | 92 |
+
+Per judge: 94/88/92/90 · 92/88/85/88 · 96/90/93/96. Mood guard on iteration 1: HOLDS (three
+beats at 6, all deliberate counter-voices or the M2 close; none punitive, none resolving early).
+
+**Read the point-of-view jump with care.** Two of three judges reached the nineties by crediting
+the training's admissions about its own instruments (*nothing in the room checked it*, *you have
+not checked the judge against yourself*, the M8 refusal of the demo-agent sale) as "the
+narrator's own failure on the page". That is the lenient reading of the anchor. The rubric's
+own text says the failure must land as an incident, not an admitted uncertainty, and no incident
+exists: the scar slot is still empty. Iteration 1's judges, who could see the empty slot named in
+the maintainer notes, scored the same prose 58–78. The gap between 76 and 92 is the reading, not
+the page. Sonnet steers; the Opus verification below decides, with the anchor restated.
+
 ## Quartet, iteration 1 — 2026-09-23 — branch `a101-story`
 
 Three Sonnet reads of the branch after the first tranche (slides on every A101 lecture, the M3

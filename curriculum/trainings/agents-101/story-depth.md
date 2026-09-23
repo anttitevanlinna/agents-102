@@ -210,35 +210,10 @@ Both halves of the loop run on subagents; the main thread orchestrates and synth
   five. Point of view is blocked on the narrator's incident; the loop may not write it.
 - Five-factor regression guard holds: branch medians 93 · 73 · 97 · 87 · 63 against the
   baseline 77 · 44 · 83 · 60 · 56 (`curriculum/evals/story-depth.md` § Verification).
-- Merging `a101-story` to `main` is Antti's call.
 
-**One card for Antti (point of view, the only lever left):**
-
-`curriculum/lectures/grounded.md`, the slide *You have done this before*, carries a documented
-incident told in the passive. The maintainer block dates two detector passes against the
-training's own M5 pre-read (2026-04-30, 2026-08-03) that found an unsourced descriptor, an
-unsupported estimate and a direct quote not in the sanctions order. All three Opus verifiers
-independently name re-voicing it as the narrator's own failure as the smallest move.
-
-BEFORE: *Against the Mata v. Avianca pre-read, source triangulation caught an unsourced "small
-firm" descriptor and an unsupported "ten minutes" estimate. Entailment caught the story making
-Schwartz's timeline too clean. Citation integrity caught a direct quote that did not appear in
-the linked sanctions order. Counter-evidence found a source conflict where CNBC blurred the
-$5,000 sanction and the court order was more precise. Even a careful teaching case benefits
-from the check.*
-
-AFTER (candidate; Antti's voice, his call): ***We wrote that pre-read, and we ran the four
-detectors on our own page before you did.** Source triangulation caught an unsourced "small
-firm" descriptor and an unsupported "ten minutes" estimate. Entailment caught our story making
-Schwartz's timeline too clean. Citation integrity caught a direct quote **we had put in the
-judge's mouth** that does not appear in the sanctions order. Counter-evidence found CNBC
-blurring the $5,000 sanction where the court order was precise. **The page about fabrication
-had fabricated. That is why the check runs on your work too.***
-
-WHY: the rubric's point-of-view 100 rung is the narrator's own failure on the page as an
-incident; this one is real, dated, and already half-told. RISK: "we" claims authorship for
-Antti; the last sentence is a kicker the emphasis budget and `check_writing §21` should
-re-read; the scar slots at M4/M7 remain the fuller version if he has one.
+**Closed by Antti, 2026-09-23: done enough.** Point of view stays at 86; the incident that
+would move it is his own story of how his thinking evolved, and he writes it. Parked in
+`pre-cohort-todos.md` § 9. Merge of `a101-story` still his call.
 
 ## Loop contract
 

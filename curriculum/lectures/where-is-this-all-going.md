@@ -52,13 +52,16 @@ If nobody can answer, what you have is a belief with a schedule attached. You wi
 
 ## A flywheel, not a graduation
 
-Nothing here closed. The memory is still short. The judge is still yours, and still unchecked in the places you have not looked. The agent set your room produced has a first item, not a last one.
+Nothing here closed. The memory is still short. The judge is still yours, and still unchecked in the places you have not looked. The kernel came out of the same move as your first briefing: agents read, agents argued, something chose, and nothing in the room checked it. Hold that doubt the way you held it then. The agent set your room produced has a first item, not a last one.
 
 What you leave with is the turning: a system that got sharper because you used it, and gets sharper again on the next problem, and on the one you do not yet know you have.
 
 That is not a graduation. It is the first turn.
 
 <!-- maintainer -->
+
+**2026-09-23, iteration 2:** the closing slide echoes the M3 turn once (the kernel came out of the same move as the first briefing, unchecked) so the last word admits the room's own synthesis loop cannot verify itself; two of three iteration-1 storytelling judges asked for it.
+
 
 **Meta:**
 - **Time:** 6 minutes.

@@ -56,6 +56,8 @@ The policy lens exists partly to tell you which doors not to open. Your company 
 
 Avoidance beats reduction. Scope beats patch. Don't-open beats mitigate. This isn't timid design. It's plain design. Every door you don't open is a residual risk you don't have to name, mitigate, monitor, re-test, or apologise for.
 
+Expect it to cost you a feature somebody in your company wanted. It costs whoever sells you agents too, this training included: an agent that reaches less is a smaller thing to sell, and it is still the right call.
+
 ## The discipline is what carries
 
 Some of your agents are going to be wrong, in ways you won't catch, and ship output you won't love. That's true for every agent in production anywhere in the world right now. The organisations that handle this well aren't the ones with the best technology. They're the ones that run the loop openly, name residual risks plainly, and close doors they don't need to open.
@@ -67,6 +69,9 @@ Read the reports. Pick a risk. Apply a mitigation. Name what's left. Decide.
 That's the work.
 
 <!-- maintainer -->
+
+**2026-09-23, iteration 2:** one sentence under *The best mitigation is the door you don't open* names what the less-access stance costs the seller, this training included; the stance rubric's against-interest rung at M4, asked for by one iteration-1 judge. Register check: a claim about the buyer's decision, `check_writing §13`.
+
 
 **Lecture meta:** *8 min in-room lecture. Placement: after Connections, before the two exercises. Primes the loop the exercises run. Mood contract: deepened unease — names the unease as the permanent condition, does not resolve it; Module 5 is the rescue.*
 

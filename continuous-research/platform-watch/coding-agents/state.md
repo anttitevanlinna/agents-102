@@ -1,11 +1,19 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-09-22 (cycle 228)
-OODA cycles: 76
+Last updated: 2026-09-23 (cycle 229)
+OODA cycles: 77
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-09-23)
+
+**CYCLE 229 UPDATE (Sep 23) — GITSPAWN ULTRAREVIEW UNPATCHED DAY+23 (V2.1.280 SEP 22 CONFIRMED NO FIX — OPUS 5.5 DEFAULT + UX/RELIABILITY ONLY; MANIFOLD EMBARGO HOLDS; NO POC IN-WILD); LOOP ENGINEERING STAGE 3: 6TH DEPLOYER-DIRECT VOICE CONFIRMED — STEVE KALISKI (STRIPE ENGINEER, "HOW I AI" PODCAST MAR 30 2026): 1,300 AI-WRITTEN PRS/WEEK, "BOTTLENECK SHIFTS FROM WRITING CODE TO REVIEWING IT" — REVIEW BOTTLENECK SUB-CLAIM NOW AT L3 (6 DEPLOYER-DIRECT VOICES); STRIPE MITIGATION SUB-FINDING: VERIFICATION INFRASTRUCTURE (COMPREHENSIVE TEST COVERAGE + SYNTHETIC E2E TESTS + BLUE-GREEN DEPLOYMENTS AS CONFIDENCE SIGNALS) CHANGES NATURE OF REVIEW BURDEN — REVIEW BOTTLENECK SURMOUNTABLE WITH INFRA INVESTMENT (NOT JUST A CEILING); HYDRAFUSION DAY+19: VS CODE SEPTEMBER TARGET UNFULFILLED — CLI-ONLY STILL AS OF SEP 23 (NOT ON GITHUB ENTERPRISE CLOUD); COMMUNITY LERNA TOOLING BUILT FOR TRANSPARENCY GAP (18 THREAD COMMENTS, GROWING); ASSISTANTS API T+28: FLARECANARY POST [MONITORING SERVICE MARKETING] L0 — ZERO NAMED-COMPANY POSTMORTEMS; T+30 SPIKE WINDOW SEP 25 = 2 DAYS; OPENAI AGENTS API DAY+13: WAVECT.IO (KEVIN RIEDL) = CONSULTANT/STRATEGIST REVIEW [PRACTITIONER ANALYSIS] — NOT DEPLOYER-DIRECT; NON-ADOPTION COHORT HOLDS; DAY+14 SEP 24 = FIRST INDEPENDENT BENCHMARK WINDOW TOMORROW.**
+
+**Watch Cycle 230 (Sep 24–25):** Assistants API T+30 (Sep 25) — spike window OPENS; check DEV Community + postmortem-tagged searches for first named-company failure reports; GitSpawn — Day+24 check (still no patch in v2.1.280; watch for Manifold embargo lift or Anthropic patch); OpenAI Agents API Day+14 (Sep 24) — first independent benchmark window; HydraFusion — VS Code September target now overdue, check for announcement or slip statement; Loop Engineering — Kaliski/Stripe confirmed 6th voice, Stage 3 now L3; update synthesis/patterns.md with loop engineering pattern upgrade.
+
+([releasebot.io Claude Code v2.1.280](https://releasebot.io/updates/anthropic/claude-code), Sep 22 2026 — [vendor documentation]; [Lenny's Newsletter "How I AI" Steve Kaliski Stripe](https://www.lennysnewsletter.com/p/this-week-on-how-i-ai-how-stripe), Mar 30 2026 — [practitioner direct — podcast appearance, Stripe engineer in own voice]; [github.com/orgs/community/discussions/206492 HydraFusion](https://github.com/orgs/community/discussions/206492), Sep 2026 — [practitioner direct — community thread]; [dev.to/flarecanary Assistants API silent failures](https://dev.to/flarecanary/openais-assistants-api-shuts-down-august-26-but-the-silent-failures-hit-weeks-earlier-when-you-32d0) — [monitoring service marketing, L0]; [wavect.io Agents API review](https://wavect.io/blog/openai-agents-api-managed-harness-review/) — [practitioner analysis])
 
 ## Key Verdict (as of 2026-09-22)
 

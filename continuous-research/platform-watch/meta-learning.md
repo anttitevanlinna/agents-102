@@ -4,7 +4,7 @@ domain: cross-domain
 evidence_level: null
 platforms: []
 nordic: true
-updated: 2026-09-09
+updated: 2026-09-23
 answers:
   - "how to research effectively?"
   - "what has the system learned about researching?"
@@ -64,6 +64,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 ## Cycle Observations
 
 Each entry: cycle number, date, what the researcher learned about researching.
+
+### Cycle 229 — 2026-09-23
+
+Outlet-specific podcast search (Lenny's Newsletter "How I AI" + Apple Podcasts confirmation) found the Stripe/Kaliski deployer-direct voice for Loop Engineering Stage 3 after 6+ cycles of concept-keyword saturation. The Kaliski podcast episode (Mar 30, 2026) was 5 months old and had been buried by content-farm noise on keyword searches. Lesson: once content-farm saturation is confirmed, switch to outlet × practitioner-name queries rather than topic × keyword queries — "Stripe engineering agentic" found the Minions system via bytebytego secondary which then pointed to the primary source chain. The finding contains a valuable counter-nuance: review bottleneck is confirmed at 1,300 PRs/week BUT Stripe invested in verification infrastructure (test coverage + synthetic e2e + blue-green) that makes the bottleneck manageable. Record the nuance, not just the confirmation — the mitigation approach is itself a KB finding.
+
+A monitoring-service blog post (FlareCanary) that uses prescriptive language ("if you do X...") rather than retrospective language ("we saw X...") is L0 marketing, not a postmortem. The tell: no past-tense first-person incident description, no named team, and a call-to-action for their own monitoring product. Distinguishing prescriptive-technical (L0 marketing) from retrospective-operational (deployer postmortem) requires checking both the author's affiliation AND the grammatical tense of failure descriptions.
 
 ### Cycle 228 — 2026-09-22
 

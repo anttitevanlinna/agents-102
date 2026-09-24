@@ -20,6 +20,8 @@ You have not checked it against yourself. Take a handful of outputs, score them 
 
 That is an afternoon, not a project, and you do it once per judge you intend to trust.
 
+The judge was a separate agent from the generator all along, and that separation is the only reason the score meant anything. A generator that grades itself passes itself. It is still nobody's job to grade the judge.
+
 ## If the model stops fabricating, what is your judge for?
 
 Your judge catches claims that float free of the evidence. That job is real today, and it is also the job most likely to get cheaper. Every model release makes the floor cheaper to hold. No release so far has told anyone what good means in your company.
@@ -31,6 +33,8 @@ The judge told you what it could. The rest is yours to name.
 That is the question the next lecture opens.
 
 <!-- maintainer -->
+**Law moved in from Key Concepts (2026-09-24, Antti-directed).** The role-separation paragraph on `## You haven't checked the judge yet` carries what `evaluations.md` § Key Concepts used to state; `evals-as-steering.md` is shared with AE101 and stays untouched.
+
 
 **Story blend, M6 counter-voice (2026-09-23).** Three slides per `module-design/a101-story-proposals/blend.md` § Titles, M6, and § Stance. `## You haven't checked the judge yet` is the plain wording, never AE101's *the gate is a claim*, and it hands over a move (score a handful by hand and compare) because a counter-voice inside M6's leverage mood has to leave the student with something to do. `## If the model stops fabricating, what is your judge for?` stays a question; an answer here would be a prediction, and the floor-gets-cheaper line is the reason the question is worth carrying.
 

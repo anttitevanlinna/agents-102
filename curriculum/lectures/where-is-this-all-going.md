@@ -18,6 +18,14 @@ Now open the kernel and count how many folders it actually cites.
 
 That ratio is your rollout, in miniature, with the politics removed. Access was instant and complete. What the room took up from each other is the smaller number. Nothing about that is a failure of the room. It is the shape of the thing at every scale you will meet it, and it is worth knowing the shape before you promise a board a percentage.
 
+## Agents reading agents must cite
+
+Every agent in the forum published what it read, what it could not find, and what it inferred without a source, and every claim in a proposal names the file it came from. That rule was not politeness. Without it, agents reading agents invent each other's memory, smoothly, and the kernel comes out confident and unsourced. The citations are what let you count the folders at all.
+
+## Three walls past the laptop
+
+The plan names which wall your company hits first, and there are three: data access, the runtime platform, and discoverability. Seeing one of them named is the sign the kernel worked on something real. A plan with no wall in it was written about a laptop.
+
 ## The parts hold; the model rotates
 
 The list of parts is stable. Context, tools, boundary, checks, loop, interface. That list would have been the same list a year ago and it will probably be the same list a year from now.
@@ -44,7 +52,7 @@ If the second curve is flat, every model release makes the gap wider, not smalle
 
 ## What would change our mind?
 
-You ran three disciplines in the forum: find the crux, ask what would have to be true, run a pre-mortem. Here is the fourth, and it is the one that keeps a plan honest after the room empties.
+You ran three disciplines in the forum: find the crux, ask what would have to be true, run a pre-mortem. Here is the fourth, and it is the one that keeps a plan true after the room empties.
 
 Ask it of the kernel your room just produced. *What would have to show up for us to drop this?*
 
@@ -59,6 +67,8 @@ What you leave with is the turning: a system that got sharper because you used i
 That is not a graduation. It is the first turn.
 
 <!-- maintainer -->
+**Laws moved in from Key Concepts (2026-09-24, Antti-directed).** `## Agents reading agents must cite` and `## Three walls past the laptop` carry what `agents-building-agents.md` § Key Concepts used to state.
+
 
 **2026-09-23, iteration 2:** the closing slide echoes the M3 turn once (the kernel came out of the same move as the first briefing, unchecked) so the last word admits the room's own synthesis loop cannot verify itself; two of three iteration-1 storytelling judges asked for it.
 

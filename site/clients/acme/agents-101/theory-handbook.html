@@ -3320,6 +3320,9 @@ body.theory-handbook .curriculum-footer a {
 <p>The memory is a folder of markdown files. That&#39;s it. No database. No special tool. No paid tier. No setup. And the agent you just built, the one sitting in <code>agents/</code>, is also a markdown file. Instructions the model reads at the start of every session. Same plain-text form for the knowledge, same plain-text form for the capability, same plain-text form as the guardrail you wrote in Module 1. One kind of object, three jobs. Which means it also travels, paste the agent file into any LLM tool and it still works.</p>
 <p>That might look like a limitation. It isn&#39;t. Language models are strongest at reading and writing text, that is what they do. When you store knowledge as text, reading it is reading, and updating it is writing. Nothing sits between the model and what it&#39;s best at. Every fancier setup that promised to &quot;fix&quot; this added a layer that the model had to work <em>around</em>.</p>
 <p>The point is simple: the simplest possible setup beats the fancy ones, because it respects what the model actually does well. Fundamentals outlast tools. Platforms will churn. But <em>text that an agent can read and write</em> isn&#39;t going anywhere.</p>
+<h2 id="three-layers-one-folder">Three layers, one folder</h2>
+<p>The folder has three layers, and they stay separate on purpose. The raw sources sit untouched, the originals you dropped in. The memory sits above them: the topic pages the agent maintains and sharpens. The rules file sits on top and keeps the shape of every update the same.</p>
+<p>Sharpen the memory, never the sources, or you lose the evidence. Change the rules, and every later update changes with them.</p>
 <h2 id="what-this-unlocks">What this unlocks</h2>
 <p>Your memory is specific to your challenge. The question you just ran through it came back with claims cited to your files, reasoning shaped by your context, a voice that isn&#39;t a generic industry take. The answer belongs to the memory you built, not to the LLM behind it. That&#39;s the point the whole training turns on: <em>generic AI becomes your AI when you shape the context that surrounds it.</em> Guardrails did this at the prompt level in Module 1. A memory does it at the knowledge level now. The mechanism is the same; only the shelf life changed.</p>
 <p>Every module after this leans on the memory you just built. Multi-agent systems reads from it. Security reviews it. Quality evals run against it. The flywheel in Module 8 feeds it. You didn&#39;t build a training exercise. You built the material the rest of the training runs on.</p>
@@ -3381,6 +3384,9 @@ body.theory-handbook .curriculum-footer a {
 <h2 id="more-agents-is-not-more-rigour">More agents is not more rigour</h2>
 <p>Note what&#39;s not on the list: <em>&quot;because three is more thorough.&quot;</em> More agents is more prompts to tune, more noise in the synthesis, more coordination tax. Split for a reason.</p>
 <p>And more input is not the fix either. The beige answer was not short of context. It had three stances in front of it and could not choose between them.</p>
+<h2 id="a-framework-makes-it-pick">A framework makes it pick</h2>
+<p>Three stances beat one summarizer because one head in one pass gives you one flat take. Three voices give you a spread. A spread is still not an answer.</p>
+<p>Without a spine the synthesizer summarises: three views, evenly weighted, nobody chose. With the strategy kernel you just handed it, diagnosis, guiding policy, coherent actions, it has to commit to one diagnosis and drop what does not serve it. The variety comes from the stances. The choice comes from the frame you hand it.</p>
 <h2 id="the-test-that-catches-the-bluff">The test that catches the bluff</h2>
 <p>Ask yourself: <em>can I write one prompt that produces the same quality of output?</em> If yes, you didn&#39;t need to split. Write the one prompt. Keep your life small.</p>
 <p>The test is unkind on purpose. Business people who have just seen multi-agent work want to split everything. Resist it. Single-agent is the plain default.</p>
@@ -3391,6 +3397,9 @@ body.theory-handbook .curriculum-footer a {
 <h2 id="other-agents-are-part-of-the-tool-surface">Other agents are part of the tool surface</h2>
 <p>In the full agent picture, other agents are part of the tool surface. They let one agent call a different stance, a different source zone, or a different working style without stuffing every job into one prompt.</p>
 <p><strong>The shape test.</strong> Sessions when you want each agent to stay alive for a while. Subagents when you want them in and out. Sessions when you want concurrency visible; subagents when you want it invisible. Sessions when they have different tools; subagents when they share.</p>
+<h2 id="seams-are-where-it-fails">Seams are where it fails</h2>
+<p>Once you have split, the work has handoffs, and the handoff is where it goes wrong. A retriever finds two numbers and the curator writes down one. A source&#39;s internal shorthand gets rewritten in public tone and the meaning goes with it. Three stances land on the synthesizer&#39;s desk and come out as one beige paragraph.</p>
+<p>None of that shows up inside an agent. It shows up between them. Where the pieces meet is the place to look.</p>
 <h2 id="three-agents-is-not-three-times-as-good">Three agents is not three times as good</h2>
 <p>You cannot hire three agents and expect the output to be three times as good. You hire three agents to get <em>three different views of the same thing,</em> and you pay for the privilege with coordination cost. If you don&#39;t need three different views (if one well-prompted agent can give you what you need), please, for the sake of your sanity, write the one prompt.</p>
 <p>A whole module just showed you multi-agent works. Next Monday, you will be tempted to apply it to everything. Don&#39;t.</p>
@@ -3501,6 +3510,7 @@ Do not fix anything yet. Show me the failure chain in 5 bullets: what happened, 
 <h2 id="reassess-the-residual-then-decide">Reassess the residual, then decide</h2>
 <p><strong>Reassess residual.</strong> After the mitigation, the risk isn&#39;t gone. Something remains. Name it. Write it down. <em>The residual risk here is X. If Y happens, we haven&#39;t prevented it, we&#39;ve made it less likely.</em> Residual risk as an artifact, not a shame.</p>
 <p><strong>Decide.</strong> Accept the residual on record, or close the door. Those are the two options. <em>&quot;Hope it doesn&#39;t happen&quot;</em> is not one.</p>
+<p><strong>&quot;I can&#39;t tell.&quot;</strong> Most rows land there. That is not a failure; it is the plain state of a system that does not run the same way twice. Closing one takes evidence, not a better guess.</p>
 <p>Run the loop. You never finish. You iterate. The discipline isn&#39;t arriving at certainty. It&#39;s running the loop again.</p>
 <h2 id="now-the-move-is-to-give-it-less">Now the move is to give it less</h2>
 <p>Everything you have built so far gave the agent more. More context. A memory that survives the session. More stances at the table. Now the move is to give it less.</p>
@@ -3731,6 +3741,7 @@ Round 3: 0.1% → 0.01%.</p>
 <p>The judge has been scoring your work all the way through the loop. Nothing has been scoring the judge.</p>
 <p>You have not checked it against yourself. Take a handful of outputs, score them by hand, and put your verdicts beside the judge&#39;s. Where it passed something you would have sent back, you have found what a flat line cannot show you: the judge and you do not agree as often as the number suggests.</p>
 <p>That is an afternoon, not a project, and you do it once per judge you intend to trust.</p>
+<p>The judge was a separate agent from the generator all along, and that separation is the only reason the score meant anything. A generator that grades itself passes itself. It is still nobody&#39;s job to grade the judge.</p>
 <h2 id="if-the-model-stops-fabricating-what-is-your-judge-for">If the model stops fabricating, what is your judge for?</h2>
 <p>Your judge catches claims that float free of the evidence. That job is real today, and it is also the job most likely to get cheaper. Every model release makes the floor cheaper to hold. No release so far has told anyone what good means in your company.</p>
 <p>So carry the question rather than an answer. If the fabrication your judge was built for mostly stops arriving, what is left for it to check?</p>
@@ -3827,6 +3838,113 @@ Then save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask fo
 <p>If the answer is a month, put one in your calendar. Not a review of the loop. One piece of the work the loop produced, read the way the person receiving it will read it.</p>
 <h2 id="the-full-picture-and-what-it-is-made-of">The full picture, and what it is made of</h2>
 <p>At this point the full picture is visible: model, context, tools, goal, loop, checks, boundary, interface. None of those pieces is mysterious on its own. The power comes from arranging them so the system can do real work without losing contact with your intent.</p>
+<figure class="diagram">
+<svg viewBox="0 0 1200 560" role="img" aria-label="The full agent picture drawn as the loop a runtime actually runs. A model sits in a shaded zone above marked in the cloud. Inside a box labelled your runtime, on your machine, a large circle carries the turn: one, everything so far goes up, the instructions, the tool list and the conversation; two, the model answers with one message; three, the message comes back holding some text and some tool calls; four, each tool call passes a gate marked allowed, runs on your machine, and its result is appended to the conversation; five, if the message held any tool call it goes round again without you, and if it held none the turn ends and the runtime waits for you. The text in the message is shown to you through the interface, a gap in the top-left of a dashed wall labelled boundary, where a person stands one level up; the goal is the message the person sends in. Below the loop a row labelled context holds the conversation so far: instructions and rules, your messages, tool results. Tools on the right, read files, search, run code, tickets, sit inside the wall; send mail, payments, salary sheet and private notes sit outside it, marked kept back. Caption: inside the wall is what you give it, outside is what you keep back." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
+<defs><marker id="a101-hp-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f6b6b"/></marker><marker id="a101-hp-ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f6b6b"/></marker></defs>
+<rect x="0.5" y="0.5" width="1199" height="559" rx="7" fill="#efe6d2"/>
+<rect x="12" y="12" width="1176" height="536" fill="none" stroke="#d6c8a3" stroke-width="1"/>
+<rect x="400" y="26" width="700" height="92" rx="6" fill="#e4dbc4" stroke="#d6c8a3" stroke-width="1" stroke-dasharray="3 5"/>
+<text x="1084" y="46" text-anchor="end" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" letter-spacing="2" fill="#786c56">IN THE CLOUD</text>
+<text x="1084" y="62" text-anchor="end" font-family="Inter,-apple-system,sans-serif" font-size="10" font-style="italic" fill="#786c56">outside the wall by nature</text>
+<rect x="500" y="42" width="300" height="60" rx="5" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2.2"/>
+<circle cx="518" cy="60" r="10" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.8"/>
+<text x="518" y="64" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10" font-weight="700" fill="#2f6b6b">2</text>
+<text x="660" y="66" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="13" letter-spacing="2.5" fill="#1f1a13">MODEL</text>
+<text x="660" y="86" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#4a4234">reads everything so far, answers with one message</text>
+<path d="M 96 150 L 96 530 L 1030 530 L 1030 150 L 250 150" fill="none" stroke="#1f1a13" stroke-width="1.6" stroke-dasharray="7 6"/>
+<path d="M 96 150 L 160 150" fill="none" stroke="#1f1a13" stroke-width="1.6" stroke-dasharray="7 6"/>
+<text x="1018" y="518" text-anchor="end" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" letter-spacing="2.5" fill="#1f1a13">BOUNDARY</text>
+<text x="1018" y="503" text-anchor="end" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">which tools it has, and which calls are allowed</text>
+<rect x="300" y="176" width="580" height="278" rx="7" fill="#e9e0ca" stroke="#786c56" stroke-width="1.4"/>
+<text x="864" y="438" text-anchor="end" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10" letter-spacing="1.5" fill="#786c56">your runtime, on your machine</text>
+<g fill="none" stroke="#2f6b6b" stroke-width="2.6" marker-end="url(#a101-hp-ah)">
+<path d="M 511.0 238.4 A 108 108 0 0 1 669.0 238.4"/>
+<path d="M 686.2 263.0 A 108 108 0 0 1 695.6 334.5"/>
+<path d="M 685.4 362.7 A 108 108 0 0 1 586.2 419.9"/>
+<path d="M 556.6 414.7 A 108 108 0 0 1 493.8 263.0"/>
+</g>
+<text x="590" y="308" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="15" letter-spacing="4" fill="#2f6b6b">LOOP</text>
+<text x="590" y="326" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#4a4234">one turn, then round again</text>
+<circle cx="502" cy="250" r="13" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2"/>
+<text x="502" y="254.5" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" font-weight="700" fill="#2f6b6b">1</text>
+<circle cx="678" cy="250" r="13" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2"/>
+<text x="678" y="254.5" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" font-weight="700" fill="#2f6b6b">3</text>
+<circle cx="692" cy="349" r="13" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2"/>
+<text x="692" y="353.5" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" font-weight="700" fill="#2f6b6b">4</text>
+<circle cx="571" cy="418" r="13" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2"/>
+<text x="571" y="422.5" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" font-weight="700" fill="#2f6b6b">5</text>
+<text x="470" y="258" text-anchor="end" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">everything so far goes up:</text>
+<text x="470" y="272" text-anchor="end" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">instructions, tools, the conversation</text>
+<text x="698" y="243" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">one message comes back:</text>
+<text x="698" y="257" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">some text, some tool calls</text>
+<text x="712" y="345" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">each tool call:</text>
+<text x="712" y="359" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">allowed? then run, here</text>
+<text x="316" y="416" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">any tool call in that message?</text>
+<text x="316" y="430" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">round again, without you.</text>
+<text x="316" y="444" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">none? the turn ends; it waits for you.</text>
+<g stroke="#2f6b6b" stroke-width="1.3" fill="#efe6d2">
+<rect x="628" y="268" width="34" height="12" rx="1.5"/><path d="M 634 272 h 22 M 634 276 h 12" stroke="#786c56" stroke-width="1"/>
+<rect x="623" y="278" width="34" height="12" rx="1.5"/><path d="M 629 282 h 22 M 629 286 h 12" stroke="#a05a2c" stroke-width="1"/>
+<rect x="618" y="288" width="34" height="12" rx="1.5"/><path d="M 624 292 h 22 M 624 296 h 12" stroke="#a05a2c" stroke-width="1"/>
+</g>
+<path d="M 508 238 C 520 190 540 140 556 104" fill="none" stroke="#2f6b6b" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a101-hp-ah2)"/>
+<path d="M 710 104 C 706 150 694 190 684 236" fill="none" stroke="#2f6b6b" stroke-width="2" marker-end="url(#a101-hp-ah2)"/>
+<path d="M 672 238 L 672 192 L 300 192 L 262 176" fill="none" stroke="#2f6b6b" stroke-width="1.6" stroke-dasharray="4 4" marker-end="url(#a101-hp-ah2)"/>
+<text x="480" y="187" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#2f6b6b" paint-order="stroke" stroke="#e9e0ca" stroke-width="5">the text: shown to you</text>
+<path d="M 706 349 L 900 349" fill="none" stroke="#2f6b6b" stroke-width="2" marker-end="url(#a101-hp-ah2)"/>
+<path d="M 866 340 L 866 358 M 874 340 L 874 358" fill="none" stroke="#1f1a13" stroke-width="2"/>
+<text x="870" y="333" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="9" letter-spacing="1" fill="#1f1a13">ALLOWED?</text>
+<path d="M 964 396 L 964 478 L 296 478" fill="none" stroke="#2f6b6b" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a101-hp-ah2)"/>
+<text x="630" y="473" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="9.5" fill="#786c56" paint-order="stroke" stroke="#efe6d2" stroke-width="4">the result, appended to the conversation</text>
+<path d="M 288 400 C 350 380 430 310 492 262" fill="none" stroke="#2f6b6b" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a101-hp-ah2)"/>
+<text x="922" y="212" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12" letter-spacing="2.5" fill="#1f1a13">TOOLS</text>
+<text x="922" y="228" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">what it can call</text>
+<rect x="912" y="244" width="104" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="964" y="263" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">read files</text>
+<rect x="912" y="282" width="104" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="964" y="301" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">search</text>
+<rect x="912" y="320" width="104" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="964" y="339" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">run code</text>
+<rect x="912" y="358" width="104" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="964" y="377" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">tickets</text>
+<text x="1104" y="228" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="9.5" letter-spacing="2" fill="#a05a2c">KEPT BACK</text>
+<rect x="1052" y="244" width="104" height="30" rx="4" fill="none" stroke="#a05a2c" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1104" y="263" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#a05a2c">send mail</text>
+<rect x="1052" y="282" width="104" height="30" rx="4" fill="none" stroke="#a05a2c" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1104" y="301" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#a05a2c">payments</text>
+<rect x="1052" y="440" width="104" height="26" rx="4" fill="none" stroke="#a05a2c" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1104" y="457" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#a05a2c">salary sheet</text>
+<rect x="1052" y="474" width="104" height="26" rx="4" fill="none" stroke="#a05a2c" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1104" y="491" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#a05a2c">private notes</text>
+<text x="120" y="300" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12" letter-spacing="2.5" fill="#1f1a13">CONTEXT</text>
+<text x="120" y="316" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">the conversation so far</text>
+<rect x="120" y="330" width="166" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="203" y="349" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">instructions, rules</text>
+<rect x="120" y="368" width="166" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="203" y="387" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">your messages</text>
+<rect x="120" y="406" width="166" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="203" y="425" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">tool results</text>
+<g stroke="#2f6b6b" stroke-width="1.3" fill="#efe6d2">
+<rect x="196" y="448" width="34" height="12" rx="1.5"/><path d="M 202 452 h 22 M 202 456 h 12" stroke="#786c56" stroke-width="1"/>
+<rect x="191" y="458" width="34" height="12" rx="1.5"/><path d="M 197 462 h 22 M 197 466 h 12" stroke="#786c56" stroke-width="1"/>
+<rect x="186" y="468" width="34" height="12" rx="1.5"/><path d="M 192 472 h 22 M 192 476 h 12" stroke="#786c56" stroke-width="1"/>
+</g>
+<text x="140" y="60" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12.5" letter-spacing="3" fill="#a05a2c">YOU, ONE LEVEL UP</text>
+<text x="140" y="78" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#4a4234">you draw the wall: what you give it, what you keep back</text>
+<circle cx="205" cy="104" r="8" fill="none" stroke="#a05a2c" stroke-width="1.8"/>
+<path d="M 191 132 C 191 118 219 118 219 132" fill="none" stroke="#a05a2c" stroke-width="1.8"/>
+<path d="M 205 134 L 205 150" fill="none" stroke="#a05a2c" stroke-width="1.6" stroke-dasharray="3 3"/>
+<text x="205" y="172" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" letter-spacing="2.5" fill="#1f1a13">INTERFACE</text>
+<text x="205" y="187" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">where you meet it: your message in, its text out</text>
+<circle cx="150" cy="232" r="14" fill="none" stroke="#1f1a13" stroke-width="1.6"/>
+<circle cx="150" cy="232" r="7" fill="none" stroke="#1f1a13" stroke-width="1.6"/>
+<circle cx="150" cy="232" r="2.2" fill="#1f1a13"/>
+<text x="172" y="229" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" letter-spacing="2.5" fill="#1f1a13">GOAL</text>
+<text x="172" y="243" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">your message: what it works toward</text>
+<text x="600" y="547" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="11" font-style="italic" fill="#2f6b6b">Inside the wall is what you give it. Outside is what you keep back.</text>
+</svg>
+</figure>
+
 <p>You added those parts one at a time, and each one was a single decision: what you give it, and what you keep back.</p>
 <p>That is the new human role in the loop.</p>
 <p>Not doing every pass.</p>
@@ -3859,6 +3977,9 @@ Then save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask fo
 
 <h1 id="lecture-access-is-not-absorption">Lecture: Access is not absorption</h1>
 <p>You have a plan now. A shape picked, an owner named or marked unassigned, an assumption you would test first. The rest of this is about the person on the other end of it.</p>
+<h2 id="the-job-comes-first-the-candidate-second">The job comes first, the candidate second</h2>
+<p>You started from the teammate&#39;s job, not from your agent, and the agent did most of that reading: what the person is trying to get done, what they use for it today, what a better week would look like. The outcome sentence you wrote is the contract: minimize or increase something, while doing that job. A candidate that does not move it is not a candidate.</p>
+<p>The interview earned its keep when it found a third outcome past speed and quality: a dependency removed, an anxiety gone, a scope widened. Speed and quality alone means it went shallow.</p>
 <h2 id="you-cannot-share-an-agent">You cannot share an agent</h2>
 <p>Four shapes are on the list. Share the context. Share a skill. Share the output (push). Share an interface (pull). <em>Share the whole agent</em> is not on the list, and it is worth being plain about why.</p>
 <p>The agent file is a page of instructions. It is not where the work lives. The work lives in the memory you curated, in the corrections you made every time a summary rounded a corner, in the judgement you brought to output that looked fine and was not. Hand someone the agent file and you have handed them the shell of a thing whose contents are still on your disk and in your head. They run it, get a generic answer, and quietly stop.</p>
@@ -3914,6 +4035,10 @@ Then save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask fo
 <p>Everyone in the room had access to every other folder. Nobody was blocked from anything, and it took about a minute to set up.</p>
 <p>Now open the kernel and count how many folders it actually cites.</p>
 <p>That ratio is your rollout, in miniature, with the politics removed. Access was instant and complete. What the room took up from each other is the smaller number. Nothing about that is a failure of the room. It is the shape of the thing at every scale you will meet it, and it is worth knowing the shape before you promise a board a percentage.</p>
+<h2 id="agents-reading-agents-must-cite">Agents reading agents must cite</h2>
+<p>Every agent in the forum published what it read, what it could not find, and what it inferred without a source, and every claim in a proposal names the file it came from. That rule was not politeness. Without it, agents reading agents invent each other&#39;s memory, smoothly, and the kernel comes out confident and unsourced. The citations are what let you count the folders at all.</p>
+<h2 id="three-walls-past-the-laptop">Three walls past the laptop</h2>
+<p>The plan names which wall your company hits first, and there are three: data access, the runtime platform, and discoverability. Seeing one of them named is the sign the kernel worked on something real. A plan with no wall in it was written about a laptop.</p>
 <h2 id="the-parts-hold-the-model-rotates">The parts hold; the model rotates</h2>
 <p>The list of parts is stable. Context, tools, boundary, checks, loop, interface. That list would have been the same list a year ago and it will probably be the same list a year from now.</p>
 <p>What the model can do with each part is not stable. It moves without asking you, on somebody else&#39;s release schedule.</p>
@@ -3927,7 +4052,7 @@ Then save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask fo
 <p>The model gets better on its own, for free, whether or not you do anything at all. What your company knows about its own work gets better only when somebody writes it down and somebody else picks it up. Those two curves are running at once, and only one of them responds to anything you do.</p>
 <p>If the second curve is flat, every model release makes the gap wider, not smaller.</p>
 <h2 id="what-would-change-our-mind">What would change our mind?</h2>
-<p>You ran three disciplines in the forum: find the crux, ask what would have to be true, run a pre-mortem. Here is the fourth, and it is the one that keeps a plan honest after the room empties.</p>
+<p>You ran three disciplines in the forum: find the crux, ask what would have to be true, run a pre-mortem. Here is the fourth, and it is the one that keeps a plan true after the room empties.</p>
 <p>Ask it of the kernel your room just produced. <em>What would have to show up for us to drop this?</em></p>
 <p>If nobody can answer, what you have is a belief with a schedule attached. You will find that out eventually. Finding it out now costs a sentence.</p>
 <h2 id="a-flywheel-not-a-graduation">A flywheel, not a graduation</h2>

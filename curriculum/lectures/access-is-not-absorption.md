@@ -2,6 +2,12 @@
 
 You have a plan now. A shape picked, an owner named or marked unassigned, an assumption you would test first. The rest of this is about the person on the other end of it.
 
+## The job comes first, the candidate second
+
+You started from the teammate's job, not from your agent, and the agent did most of that reading: what the person is trying to get done, what they use for it today, what a better week would look like. The outcome sentence you wrote is the contract: minimize or increase something, while doing that job. A candidate that does not move it is not a candidate.
+
+The interview earned its keep when it found a third outcome past speed and quality: a dependency removed, an anxiety gone, a scope widened. Speed and quality alone means it went shallow.
+
 ## You cannot share an agent
 
 Four shapes are on the list. Share the context. Share a skill. Share the output (push). Share an interface (pull). *Share the whole agent* is not on the list, and it is worth being plain about why.
@@ -53,6 +59,8 @@ That was not the exercise being hard. That was the exercise being accurate. A mi
 So the move stays small. One name. One person whose week this would change, who would tell you plainly if it did not.
 
 <!-- maintainer -->
+**Laws moved in from Key Concepts (2026-09-24, Antti-directed).** `## The job comes first, the candidate second` carries the outcome-first, design-contract and third-outcome bullets `personal-to-team.md` § Key Concepts used to state; the replacement test already lived on `## What would have to be true for them to switch?`.
+
 
 **Meta:**
 - **Time:** 8 minutes.

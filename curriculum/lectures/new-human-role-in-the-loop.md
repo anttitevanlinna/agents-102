@@ -112,6 +112,8 @@ If the answer is a month, put one in your calendar. Not a review of the loop. On
 
 At this point the full picture is visible: model, context, tools, goal, loop, checks, boundary, interface. None of those pieces is mysterious on its own. The power comes from arranging them so the system can do real work without losing contact with your intent.
 
+{{figure:agent-picture}}
+
 You added those parts one at a time, and each one was a single decision: what you give it, and what you keep back.
 
 That is the new human role in the loop.
@@ -123,6 +125,8 @@ Not trusting the machine blindly.
 Designing the conditions under which the system earns more autonomy, one loop at a time.
 
 <!-- maintainer -->
+**The full agent picture, drawn (2026-09-24, Antti-directed).** `{{figure:agent-picture}}` on `## The full picture, and what it is made of`: the loop as the runtime runs it, model in the cloud, the turn in five steps, checks deliberately absent from the figure (Antti: no such gate inside the loop). Shown once, here; the refrain across the modules points at it. Source `curriculum/figures/agent-picture.md`; protos and the rejected shapes in `protos/a101-agent-picture-*.html`.
+
 
 **§6 carve-out, the answer must be theirs (checked 2026-08-20).** Logged in `pre-cohort-todos.md` as a lecture prompt owing the trainer-demo sweep. It is not: the prompt interviews the student one question at a time about the mail *they* would let an agent send, and the beat closes on *"two kinds of judgment on disk"* — the student's disk. A trainer demo returns the wrong machine's answer. The body now names the student's own run beside the prompt, which is §6's tell. Leave it student-run.
 

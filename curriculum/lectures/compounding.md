@@ -33,6 +33,12 @@ That might look like a limitation. It isn't. Language models are strongest at re
 
 The point is simple: the simplest possible setup beats the fancy ones, because it respects what the model actually does well. Fundamentals outlast tools. Platforms will churn. But *text that an agent can read and write* isn't going anywhere.
 
+## Three layers, one folder
+
+The folder has three layers, and they stay separate on purpose. The raw sources sit untouched, the originals you dropped in. The memory sits above them: the topic pages the agent maintains and sharpens. The rules file sits on top and keeps the shape of every update the same.
+
+Sharpen the memory, never the sources, or you lose the evidence. Change the rules, and every later update changes with them.
+
 ## What this unlocks
 
 Your memory is specific to your challenge. The question you just ran through it came back with claims cited to your files, reasoning shaped by your context, a voice that isn't a generic industry take. The answer belongs to the memory you built, not to the LLM behind it. That's the point the whole training turns on: *generic AI becomes your AI when you shape the context that surrounds it.* Guardrails did this at the prompt level in Module 1. A memory does it at the knowledge level now. The mechanism is the same; only the shelf life changed.
@@ -58,6 +64,8 @@ The agent can only work from what somebody wrote down. Most of what you know abo
 That is not a fault in the memory you built. It is why the memory you built is worth something. Every round of this moves one more piece of what you know out of your head and into something the system can read next time.
 
 <!-- maintainer -->
+**Law moved in from Key Concepts (2026-09-24, Antti-directed).** `## Three layers, one folder` carries the three-layer bullet `building-agent-systems.md` § Key Concepts used to state.
+
 
 **Story blend, M2 slides (2026-09-23).** Headers per `module-design/a101-story-proposals/blend.md` § Titles, M2. Seven slides: `Two words, held together`, `Why the sharpening happens`, `It gets better by being edited`, `A folder of text, and that is the point`, `What this unlocks`, `Could a competitor claim this?`, `It can only use what someone wrote down`. The split between the third and the second is mechanism (why pages sharpen) against discipline (what keeps them sharpening); no prose moved to make it. The last slide carries the blend's plant for the access-is-not-absorption learning, verbatim: *the agent can only work from what somebody wrote down; most of what you know about your own company, nobody has*. The slide closes on what the memory is worth, because M2's mood is satisfied compounding; the word for the gap is not planted here.
 

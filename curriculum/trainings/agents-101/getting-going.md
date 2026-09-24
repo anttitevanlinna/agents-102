@@ -59,9 +59,9 @@ One pattern to watch. Asked the most-uniquely-you line first, the LLM warms into
 Compare Claude's picks to what you expected. Where cold-Claude sees generic, your context is still thin; add one more sharp detail there. Then ask Claude to regenerate the site. Where Claude's pick of *"uniquely you"* matches your own gut: solid ground.
 
 ## Key Concepts
-- Guardrails are structured context, not a checklist
-- You are the world's best evaluator of your own profile. Your domain expertise is the test
-- The guardrail IS the control: average output becomes great not because you prompted better, but because the context became specific enough to steer it
+- Guardrails are structured context, not a checklist.
+- Your domain expertise is the test; nothing else in the room checks the page.
+- Output got specific because the context did, not because the prompt got cleverer.
 
 ## Bring to Module 2
 
@@ -83,6 +83,8 @@ Once the prework is saved, end this module's <span class="rt-code">session</span
 The output now travels with a file the agent can re-read next time. Module 2 systematises that compounding move through memory, agents, and room rules so every future module builds on the work before it.
 
 <!-- maintainer -->
+**Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `context-is-king.md` and `what-just-happened.md`.
+
 
 **Quality:** compendium-audited 2026-08-25 (writing@19381896 story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@194c81b0 slides@19381896)
 - judges @19381896: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

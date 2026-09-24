@@ -65,11 +65,10 @@ The unease you feel about the synthesized briefing is not something to close tod
 Memory is a working artefact, sharpened by what it bumps into.
 
 ## Key Concepts
-- **Two multi-agent shapes.** Independent tasks on shared files (long-running, separate, visible). Forked <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> returning to one lead task (quick parallel thinking, bounded return). Different shapes, different territories.
-- **Splitting earns its keep when the agents genuinely can't be one.** Different source access, different dialect, different stance. Faking multi-agent with one prompt is the tell that you didn't need to split.
-- **Seams are where it fails.** Conflicts get dropped, dialects clash, the synthesizer averages everything into beige. Where the pieces meet is what to watch.
-- **Three stances beat one summarizer.** Three <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> (a backward-from-end planner, a *what-would-have-to-be-true* experimenter, and a counterintuitive reframer, the Rory seat) each interrogate the retrieved material from a different angle, harder to do well in one head, in one pass. A fourth <span class="rt-code">subagent</span><span class="rt-cowork">agent</span>, the synthesizer, combines them.
-- **Frameworks are the synthesizer's spine.** Without one, it tends to summarise. With a framework (a strategy kernel by default), it picks.
+- Two shapes: separate sessions on shared files, or subagents returning to one lead task.
+- Split only where the agents can't be one: access, dialect, stance.
+- Three stances beat one summarizer; a framework makes it pick.
+- Seams are where it fails.
 
 ## Pre-reads before Module 4
 
@@ -87,6 +86,8 @@ You just built something that works across the systems you connected. Which mean
 Between now and Module 4, keep working on your real problem. You're close to an agent system that can actually crack your crux. Add an agent to solve a critical dependency? Add a visualisation of the plan? Prompt for what you need. Build.
 
 <!-- maintainer -->
+**Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `when-to-split-an-agent.md`; the stance roll-call lives in the synthesis exercise.
+
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@4d9c4af2 technical@725101ec behavior@725101ec pedagogy@4d9c4af2 strategy@4d9c4af2 slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

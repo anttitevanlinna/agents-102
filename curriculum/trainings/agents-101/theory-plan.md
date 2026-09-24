@@ -1,7 +1,6 @@
 # Theory Plan — the right amount of theory for Agents 101
 
-**Status:** v0.1 — 2026-09-22. Enumeration only. Pieces inventoried and tagged; spine and
-placement are candidates for Antti's call; nothing student-facing has moved. Sibling of the
+**Status:** v0.2 — 2026-09-24. Placement shipped on branch `a101-story` (story blend, 2026-09-23: sycophancy and the self-report at the M1 close, beige and the frame at M3, the braid law and Bainbridge at M6, Polanyi at M7, the future question at M8) and the laws that lived only in module Key Concepts moved into their lectures (2026-09-24); Key Concepts are now glance lists. The full agent picture is drawn (`curriculum/figures/agent-picture.md`, shown once at the M6 close). Open: the narrator's scar (`pre-cohort-todos.md` § 9); earned-not-announced, still capped by the Big Idea openers. v0.1 (2026-09-22) was enumeration only; the placement table below is kept as the record of what was proposed. Sibling of the
 AE101 plan at repo-root `theory-plan.md`, same frame, different audience.
 
 **Why this exists.** The step-0 story-depth run (`curriculum/evals/story-depth.md`) found A101's

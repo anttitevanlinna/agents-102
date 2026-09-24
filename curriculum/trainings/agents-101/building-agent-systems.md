@@ -68,9 +68,9 @@ One thing to hold as you close the session. The model will change under this. Th
 What you built is a folder of your own text: your challenge, your sources, the rules you just wrote. A better model reads it better. It doesn't write it for you, and it doesn't leave with it.
 
 ## Key Concepts
-- **Three layers**: raw sources (the originals, untouched) → the memory (maintained by the agent, sharpens over time) → the rules file (`CLAUDE.md`) that keeps the shape consistent
-- **Plain text beats databases here** because language models are strongest at reading and writing text. No setup, no extra tools.
-- **Persistence + automation = system.** Neither alone is enough.
+- Persistence plus automation makes a system; either alone is a toy.
+- Three layers: raw sources untouched, a memory the agent sharpens, a rules file that keeps the shape.
+- Plain text, because reading and writing text is what the model does best.
 
 ## Bring to Module 3
 
@@ -94,6 +94,8 @@ You have an agent doing real work on your challenge. But the job is getting too 
 Before the next module, try making a few more agents you actually need. Pick by pain, not ambition: the task you keep doing manually that would feel lighter if someone else did it. Meeting prep, calendar triage, competitive watching, and draft-reply triage are all fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system. You only learn by doing. Go build.
 
 <!-- maintainer -->
+**Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `compounding.md`.
+
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@194c81b0 strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

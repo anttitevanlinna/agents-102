@@ -60,12 +60,10 @@ Read [What is an Agent, The autonomy ladder](trainings/agents-101/supplementary/
 Having added the checking step before acting, this is also the suitable place to introduce a human-in-the-loop check. You have both the agent-created action proposal at hand and the report on output quality. That means the expert is not reviewing a blank page or a vague concern; they are reviewing the proposed action, the evidence behind it, and the known limit of the check that passed it.
 
 ## Key Concepts
-- **Benchmarking as a pattern.** N candidates on the same input, scorer measures, winner (or ensemble) is kept. Portable to any quality judgment you'll automate: tone, brand, compliance, steering.
-- **The real move is building the thing that benchmarks the detectors.** Run one benchmark and you have seen what evaluating evaluators looks like. It transfers to every future quality question.
-- **Empirical method selection over authority.** You don't pick a detector because the docs or a paper said so. You run several against your own output and your own benchmark, and the data names the winner.
-- **The scoreboard is the artifact.** Precision, recall, coverage, measured per detector on the same claim pool. Read it row by row and you can name why one won and where another lost.
-- **A judge is narrow on purpose.** The winning judge file says what it catches and names its known limit. Narrow tools that work beat broad tools that pretend.
-- **Grounded is the discipline; the benchmark builds the check.** A measured judge keeps output connected to the ground when you're absent. A small benchmark proves the method; production evaluation wants hundreds of claims and adds new cases as versioned evidence. In Module 6, the yardstick stays fixed while the generator improves.
+- Grounded means traceable to a source; accurate is a harder question.
+- Don't pick a method; run the candidates and read the scoreboard.
+- The winner is a judge that names its own limit.
+- The pattern is portable: candidates, benchmark, scorer, winner.
 
 ## Pre-reads before Module 6
 
@@ -77,6 +75,8 @@ Once the judge and pre-read are ready, end this module's <span class="rt-code">s
 The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine the benchmark has three hundred claims, the judge runs on every build, and the generation tactic absorbs the judge's feedback between rounds. That's evals.
 
 <!-- maintainer -->
+**Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `grounded.md`.
+
 
 **Mood target:** Mechanical rescue — the student can see which measured method worked without pretending quality is solved.
 

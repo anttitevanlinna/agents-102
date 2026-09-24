@@ -54,11 +54,10 @@ Read Claude's summary. Push back where it's wrong. *"That rule is too vague, mak
 This is Claude auditing a tactic it helped sharpen. That is acceptable here because the round files and judge notes are the evidence. If the summary sounds too kind, ask the sharper follow-up: *"Which rule did you claim to remove but actually kept under another name? Quote both lines."*
 
 ## Key Concepts
-- **Eval as infrastructure.** The judge moves from object to live machinery. It's not inspected, it's watched.
-- **Role separation.** Generation and judging happen in separate agents. The generator does not grade itself.
-- **Walk-away autonomy.** The system runs; you come back to the notes.
-- **Fixed judge.** The work gets sharper because the judge stays still. The main session reads what the judge flagged each round and rewrites `./generation-tactic.md`. The judge doesn't move. That's why round 3's score has anything to say about round 1's. A yardstick you rewrite is not a yardstick.
-- **Loop ownership.** One session owns the loop: dispatch generator, dispatch judge, update tactic, repeat. The fan-out shape, now running a quality discipline instead of a content discipline.
+- Groundedness protects the floor; steering raises the ceiling.
+- The judge stays fixed and separate from the generator; that is why the score means anything.
+- A flat score is information about the judge, not the work.
+- You design the loop; you no longer sit inside it.
 
 ## Bring to Module 7
 
@@ -76,6 +75,8 @@ Once the trigger is written, end this module's <span class="rt-code">session</sp
 You just built an eval that improves itself. The system can now keep pressure on its own output when you are not watching every step. The close is not "trust the agent." The close is "trust the loop you can inspect."
 
 <!-- maintainer -->
+**Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `evals-as-steering.md`, `when-the-score-stops-moving.md` and `new-human-role-in-the-loop.md`.
+
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@4d9c4af2 slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

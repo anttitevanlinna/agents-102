@@ -36,6 +36,8 @@ The work is the loop. You don't get certainty, you get four steps, plain and rep
 
 **Decide.** Accept the residual on record, or close the door. Those are the two options. *"Hope it doesn't happen"* is not one.
 
+**"I can't tell."** Most rows land there. That is not a failure; it is the plain state of a system that does not run the same way twice. Closing one takes evidence, not a better guess.
+
 Run the loop. You never finish. You iterate. The discipline isn't arriving at certainty. It's running the loop again.
 
 ## Now the move is to give it less
@@ -69,6 +71,8 @@ Read the reports. Pick a risk. Apply a mitigation. Name what's left. Decide.
 That's the work.
 
 <!-- maintainer -->
+**Law moved in from Key Concepts (2026-09-24, Antti-directed).** The *"I can't tell"* paragraph on `## Reassess the residual, then decide` carries what `security.md` § Key Concepts used to state.
+
 
 **2026-09-23, iteration 2:** one sentence under *The best mitigation is the door you don't open* names what the less-access stance costs the seller, this training included; the stance rubric's against-interest rung at M4, asked for by one iteration-1 judge. Register check: a claim about the buyer's decision, `check_writing §13`.
 

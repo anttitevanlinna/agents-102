@@ -26,6 +26,12 @@ Note what's not on the list: *"because three is more thorough."* More agents is 
 
 And more input is not the fix either. The beige answer was not short of context. It had three stances in front of it and could not choose between them.
 
+## A framework makes it pick
+
+Three stances beat one summarizer because one head in one pass gives you one flat take. Three voices give you a spread. A spread is still not an answer.
+
+Without a spine the synthesizer summarises: three views, evenly weighted, nobody chose. With the strategy kernel you just handed it, diagnosis, guiding policy, coherent actions, it has to commit to one diagnosis and drop what does not serve it. The variety comes from the stances. The choice comes from the frame you hand it.
+
 ## The test that catches the bluff
 
 Ask yourself: *can I write one prompt that produces the same quality of output?* If yes, you didn't need to split. Write the one prompt. Keep your life small.
@@ -46,6 +52,12 @@ In the full agent picture, other agents are part of the tool surface. They let o
 
 **The shape test.** Sessions when you want each agent to stay alive for a while. Subagents when you want them in and out. Sessions when you want concurrency visible; subagents when you want it invisible. Sessions when they have different tools; subagents when they share.
 
+## Seams are where it fails
+
+Once you have split, the work has handoffs, and the handoff is where it goes wrong. A retriever finds two numbers and the curator writes down one. A source's internal shorthand gets rewritten in public tone and the meaning goes with it. Three stances land on the synthesizer's desk and come out as one beige paragraph.
+
+None of that shows up inside an agent. It shows up between them. Where the pieces meet is the place to look.
+
 ## Three agents is not three times as good
 
 You cannot hire three agents and expect the output to be three times as good. You hire three agents to get *three different views of the same thing,* and you pay for the privilege with coordination cost. If you don't need three different views (if one well-prompted agent can give you what you need), please, for the sake of your sanity, write the one prompt.
@@ -53,6 +65,8 @@ You cannot hire three agents and expect the output to be three times as good. Yo
 A whole module just showed you multi-agent works. Next Monday, you will be tempted to apply it to everything. Don't.
 
 <!-- maintainer -->
+**Laws moved in from Key Concepts (2026-09-24, Antti-directed).** `## A framework makes it pick` and `## Seams are where it fails` carry what `multi-agent-systems.md` § Key Concepts used to state; the module list is now four handles that point here.
+
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS

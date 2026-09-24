@@ -1,0 +1,107 @@
+<figure class="diagram">
+<svg viewBox="0 0 1200 560" role="img" aria-label="The full agent picture drawn around one loop. In the middle of a box labelled your runtime, on your machine, a large circle carries five steps in order: read the context, send it up with the goal, text comes back as a small stack of steps to take, each step becomes a tool call, the result comes back, and round again. The send-up step reaches out of the box to a model sitting in a shaded zone above marked in the cloud. The tool-call step reaches out to a column of tools on the right: read files, search, run code, tickets. Below the runtime a row of context tiles, prompt, files, rules, sources, memory, feeds the read step. A goal target sits inside the runtime to the left of the loop, what every turn works toward. A dashed wall labelled boundary surrounds the runtime, tools and context; tiles outside the wall, send mail, payments, salary sheet, private notes, are marked kept back. A gap in the top-left of the wall is the interface, where a person meets it, with a figure standing above, one level up. Caption: inside the wall is what you give it, outside is what you keep back." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
+<rect x="0.5" y="0.5" width="1199" height="559" rx="7" fill="#efe6d2"/>
+<rect x="12" y="12" width="1176" height="536" fill="none" stroke="#d6c8a3" stroke-width="1"/>
+<rect x="400" y="26" width="700" height="96" rx="6" fill="#e4dbc4" stroke="#d6c8a3" stroke-width="1" stroke-dasharray="3 5"/>
+<text x="1084" y="46" text-anchor="end" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" letter-spacing="2" fill="#786c56">IN THE CLOUD</text>
+<text x="1084" y="62" text-anchor="end" font-family="Inter,-apple-system,sans-serif" font-size="10" font-style="italic" fill="#786c56">outside the wall by nature</text>
+<rect x="520" y="44" width="300" height="60" rx="5" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2.2"/>
+<text x="670" y="69" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="13" letter-spacing="2.5" fill="#1f1a13">MODEL</text>
+<text x="670" y="88" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#4a4234">reads what comes up, sends text back</text>
+<path d="M 96 150 L 96 530 L 1030 530 L 1030 150 L 250 150" fill="none" stroke="#1f1a13" stroke-width="1.6" stroke-dasharray="7 6"/>
+<path d="M 96 150 L 160 150" fill="none" stroke="#1f1a13" stroke-width="1.6" stroke-dasharray="7 6"/>
+<text x="1018" y="518" text-anchor="end" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" letter-spacing="2.5" fill="#1f1a13">BOUNDARY</text>
+<text x="1018" y="503" text-anchor="end" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">what your runtime may reach, and where it stops</text>
+<rect x="340" y="176" width="540" height="270" rx="7" fill="#e9e0ca" stroke="#786c56" stroke-width="1.4"/>
+<text x="356" y="436" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10" letter-spacing="1.5" fill="#786c56">your runtime, on your machine</text>
+<defs><marker id="a101-ap-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f6b6b"/></marker></defs>
+<g fill="none" stroke="#2f6b6b" stroke-width="2.6" marker-end="url(#a101-ap-ah)">
+<path d="M 509.5 330.1 A 112 112 0 0 1 566.6 213.6"/>
+<path d="M 595.8 202.7 A 112 112 0 0 1 694.9 228.8"/>
+<path d="M 715.0 252.6 A 112 112 0 0 1 731.8 319.2"/>
+<path d="M 725.4 349.8 A 112 112 0 0 1 655.2 418.3"/>
+<path d="M 624.5 423.9 A 112 112 0 0 1 518.7 359.9"/>
+</g>
+<g stroke="#a05a2c" stroke-width="1.3" fill="#efe6d2">
+<rect x="658" y="340" width="34" height="12" rx="1.5"/><path d="M 664 344 h 22 M 664 348 h 14" stroke="#a05a2c" stroke-width="1"/>
+<rect x="653" y="350" width="34" height="12" rx="1.5"/><path d="M 659 354 h 22 M 659 358 h 14" stroke="#a05a2c" stroke-width="1"/>
+<rect x="648" y="360" width="34" height="12" rx="1.5"/><path d="M 654 364 h 22 M 654 368 h 14" stroke="#a05a2c" stroke-width="1"/>
+<rect x="643" y="370" width="34" height="12" rx="1.5"/><path d="M 649 374 h 22 M 649 378 h 14" stroke="#a05a2c" stroke-width="1"/>
+</g>
+<text x="636" y="366" text-anchor="end" font-family="Inter,-apple-system,sans-serif" font-size="9.5" fill="#a05a2c">the steps it asked for</text>
+<text x="620" y="306" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="15" letter-spacing="4" fill="#2f6b6b">LOOP</text>
+<text x="620" y="326" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#4a4234">one turn, then round again</text>
+<circle cx="580" cy="205" r="13" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2"/>
+<text x="580" y="209.5" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" font-weight="700" fill="#2f6b6b">2</text>
+<circle cx="706" cy="240" r="13" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2"/>
+<text x="706" y="244.5" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" font-weight="700" fill="#2f6b6b">3</text>
+<circle cx="731" cy="335" r="13" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2"/>
+<text x="731" y="339.5" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" font-weight="700" fill="#2f6b6b">4</text>
+<circle cx="640" cy="422" r="13" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2"/>
+<text x="640" y="426.5" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" font-weight="700" fill="#2f6b6b">5</text>
+<circle cx="514" cy="345" r="13" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2"/>
+<text x="514" y="349.5" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" font-weight="700" fill="#2f6b6b">1</text>
+<text x="460" y="340" text-anchor="end" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">read the context</text>
+<text x="560" y="200" text-anchor="end" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">send it up, with the goal</text>
+<text x="724" y="222" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">text comes back: steps to take</text>
+<text x="752" y="330" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">each step becomes</text>
+<text x="752" y="344" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">a tool call, here</text>
+<text x="640" y="460" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13" paint-order="stroke" stroke="#e9e0ca" stroke-width="5">the result comes back, and round again</text>
+<path d="M 582 192 C 590 150 606 130 610 104" fill="none" stroke="#2f6b6b" stroke-width="2" stroke-dasharray="5 4"/>
+<path d="M 604 112 L 610 102 L 616 112" fill="none" stroke="#2f6b6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 730 104 C 730 150 716 190 708 226" fill="none" stroke="#2f6b6b" stroke-width="2"/>
+<path d="M 702 214 L 708 226 L 714 214" fill="none" stroke="#2f6b6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 744 336 L 900 336" fill="none" stroke="#2f6b6b" stroke-width="2"/>
+<path d="M 890 330 L 900 336 L 890 342" fill="none" stroke="#2f6b6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 900 356 L 746 356" fill="none" stroke="#2f6b6b" stroke-width="2" stroke-dasharray="5 4"/>
+<path d="M 756 350 L 746 356 L 756 362" fill="none" stroke="#2f6b6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="820" y="371" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="9.5" fill="#786c56">result</text>
+<text x="922" y="212" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12" letter-spacing="2.5" fill="#1f1a13">TOOLS</text>
+<text x="922" y="228" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">what it can use</text>
+<rect x="912" y="244" width="104" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="964" y="263" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">read files</text>
+<rect x="912" y="282" width="104" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="964" y="301" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">search</text>
+<rect x="912" y="320" width="104" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="964" y="339" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">run code</text>
+<rect x="912" y="358" width="104" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="964" y="377" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">tickets</text>
+<text x="1104" y="228" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="9.5" letter-spacing="2" fill="#a05a2c">KEPT BACK</text>
+<rect x="1052" y="244" width="104" height="30" rx="4" fill="none" stroke="#a05a2c" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1104" y="263" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#a05a2c">send mail</text>
+<rect x="1052" y="282" width="104" height="30" rx="4" fill="none" stroke="#a05a2c" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1104" y="301" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#a05a2c">payments</text>
+<text x="128" y="474" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12" letter-spacing="2.5" fill="#1f1a13">CONTEXT</text>
+<text x="128" y="490" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">what it reads, where it writes</text>
+<rect x="340" y="466" width="90" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="385" y="485" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">prompt</text>
+<rect x="442" y="466" width="90" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="487" y="485" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">files</text>
+<rect x="544" y="466" width="90" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="589" y="485" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">rules</text>
+<rect x="646" y="466" width="90" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="691" y="485" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">sources</text>
+<rect x="748" y="466" width="90" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="793" y="485" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">memory</text>
+<path d="M 514 466 L 514 360" fill="none" stroke="#2f6b6b" stroke-width="2" stroke-dasharray="5 4"/>
+<path d="M 508 370 L 514 360 L 520 370" fill="none" stroke="#2f6b6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1052" y="440" width="104" height="26" rx="4" fill="none" stroke="#a05a2c" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1104" y="457" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#a05a2c">salary sheet</text>
+<rect x="1052" y="474" width="104" height="26" rx="4" fill="none" stroke="#a05a2c" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1104" y="491" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#a05a2c">private notes</text>
+<circle cx="412" cy="250" r="20" fill="none" stroke="#1f1a13" stroke-width="1.8"/>
+<circle cx="412" cy="250" r="10" fill="none" stroke="#1f1a13" stroke-width="1.8"/>
+<circle cx="412" cy="250" r="3" fill="#1f1a13"/>
+<text x="412" y="288" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12" letter-spacing="2.5" fill="#1f1a13">GOAL</text>
+<text x="412" y="303" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">what every turn works toward</text>
+<path d="M 436 250 L 522 250" fill="none" stroke="#1f1a13" stroke-width="1.2" stroke-dasharray="2 4"/>
+<text x="140" y="60" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12.5" letter-spacing="3" fill="#a05a2c">YOU, ONE LEVEL UP</text>
+<text x="140" y="78" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#4a4234">you draw the wall: what you give it, what you keep back</text>
+<circle cx="205" cy="104" r="8" fill="none" stroke="#a05a2c" stroke-width="1.8"/>
+<path d="M 191 132 C 191 118 219 118 219 132" fill="none" stroke="#a05a2c" stroke-width="1.8"/>
+<path d="M 205 134 L 205 150" fill="none" stroke="#a05a2c" stroke-width="1.6" stroke-dasharray="3 3"/>
+<text x="205" y="172" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" letter-spacing="2.5" fill="#1f1a13">INTERFACE</text>
+<text x="205" y="187" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">the one opening: where a person meets it</text>
+<text x="600" y="547" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="11" font-style="italic" fill="#2f6b6b">Inside the wall is what you give it. Outside is what you keep back.</text>
+</svg>
+</figure>

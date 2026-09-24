@@ -52,13 +52,10 @@ Notice what this prompt insists on: name the path, overwrite in place, quote the
 Push back where Claude's summary is wrong. *"The teammate's job wasn't vague, you just didn't see it"* / *"you pulled too much out of the skill, put the edge cases back."* The artifact: the sharpened sharing file itself, plus one line in your Module 7 next-step file naming the first move. Save the conversation. It's the bridge to when work resumes.
 
 ## Key Concepts
-
-- **Outcome first.** The teammate's job comes first, your candidate second. The agent does the heavy lifting: your memory already carries most of that job, so it reads what's on disk, drafts a Jobs-to-be-Done hypothesis, then asks a bounded set of questions. Not freeform chat.
-- **Design contract.** The outcome statement is *"Minimize/increase [metric] when [doing the job]."* A candidate that doesn't move the metric isn't a candidate.
-- **Third outcome.** This is where the interview earns its keep: dependency removed, anxiety reduced, scope expanded, workload shifted. Speed and quality alone means it went shallow.
-- **Absorption.** Access is easy; absorption is scarce. The technical plan fills quickly; the people plan stalls on names.
-- **Sharing shapes.** Use the four sharing shapes as a design language, not a menu.
-- **Replacement test.** Roger Martin's question is the test: *"what would have to be true for them to replace it?"* The people plan weighs equal to the technical plan. Every job already has a current solution: Excel, a colleague, gut feel.
+- The job comes first, the candidate second; the outcome sentence is the contract.
+- Access is easy; absorption is scarce.
+- Four ways to share: the context, a skill, the output (push), an interface (pull). Never the whole agent.
+- What would have to be true for them to switch?
 
 ## Bring to Module 8
 
@@ -73,6 +70,8 @@ Once the evidence is written down, end this module's <span class="rt-code">sessi
 The sharing plan leaves the room and meets the organisation. What comes back from that contact is Module 8's raw material.
 
 <!-- maintainer -->
+**Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `access-is-not-absorption.md`.
+
 
 **Quality:** compendium-audited 2026-08-25 (writing@19381896 story@19381896 technical@725101ec behavior@725101ec pedagogy@19381896 strategy@19381896 slides@19381896)
 - judges @19381896: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

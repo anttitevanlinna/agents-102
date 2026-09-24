@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [openai, chatgpt, codex, frontier]
 nordic: true
-updated: 2026-09-01
-cycle: 202
+updated: 2026-09-24
+cycle: 230
 answers:
   - "what can business users do with ChatGPT today?"
   - "is OpenAI's enterprise platform real or vapor?"
@@ -16,6 +16,16 @@ answers:
 
 Last updated: 2026-08-30 (cycle 200)
 OODA cycles: 48
+
+**Cycle 230 updates (September 24, 2026) — ASSISTANTS API T+29: ZERO NAMED-COMPANY POSTMORTEMS; T+30 SPIKE WINDOW OPENS SEP 25; NEW STRUCTURAL FINDING: CLEARCONTEXT.DEV DOUBLE-MIGRATION TRAP; OPENAI AGENTKIT LAUNCHED SEP 10; AGENTS API DAY+14 NON-ADOPTION COHORT HOLDS:**
+
+**Assistants API T+29 — zero named-company postmortems; T+30 spike window opens Sep 25 tomorrow; new structural finding: double-migration trap (L2).** T+29 search (Sep 24) confirms zero named-company production postmortems publicly attributed to the August 26 shutdown. **NEW KB FINDING — clearcontext.dev (Rafael Moraes, Aug 20, 2026, [practitioner analysis]):** OpenAI's official Assistants API migration guide directed developers to adopt **Prompt Objects** — but Prompt Objects were already deprecated by OpenAI on **June 3, 2026**, with full disable on **November 30, 2026**. Teams that followed the official migration path face a **second migration by November 30** (96-day double-migration window). Additional finding from same source: Responses API attempts strict mode by default — unlike Chat Completions — creating a silent failure vector on real data. CTO implication: some teams that believe they completed the migration are actually on a deprecated intermediate. November 30, 2026 is the next Assistants-related watch deadline. T+30 spike window (Sep 25) remains the next predicted inflection for named-company postmortem reports. ([clearcontext.dev Aug 20 2026](https://clearcontext.dev/posts/assistants-migration-prompt-gap/) — [practitioner analysis — double-migration trap])
+
+**Watch Cycle 231 (Sep 25):** T+30 spike window — priority check for first named-company postmortems; Prompt Objects second migration watch begins (Nov 30 deadline, 67 days away).
+
+**OpenAI AgentKit launched Sep 10 — enterprise agent development ecosystem expanding (L0).** OpenAI launched AgentKit on September 10 as an umbrella development platform: **ChatKit** (GA for all developers), **Agent Builder** (beta), **Connector Registry** (beta rollout — API + ChatGPT Enterprise/Edu customers). Same date: **Data Agent in ChatGPT Work** — natural language connection to Amazon Redshift, Google BigQuery, Databricks, Snowflake. **Workspace Agents** (successor to Custom GPTs, launched April 23, 2026, research preview) available on Business/Enterprise/Edu/Teachers plans: integrates Slack, Google Drive, Microsoft apps, Salesforce, Notion, Atlassian Rovo; can be scheduled or deployed in Slack. **Evidence gap: all vendor-announced; zero independent practitioner production reports found in Cycle 230.** The Connector Registry rollout (one integration per month pace) mirrors the connector-velocity bottleneck pattern documented in user signals — the model owner vs. context owner seam applies here too. ([openai.com/index/introducing-agentkit/ Sep 10 2026](https://openai.com/index/introducing-agentkit/) — [vendor documentation]; [reworked.co Workspace Agents Apr 23 2026](https://www.reworked.co/digital-workplace/openai-launches-workspace-agents-for-enterprise-workflow-automation/) — [general press])
+
+**OpenAI Agents API Day+14 (Sep 24) — non-adoption cohort holds; no deployer-direct production accounts (L1).** Day+14 search sweep found zero deployer-direct production deployments. wavect.io (Kevin Riedl) review remains most substantive independent assessment ([practitioner analysis]). Non-adoption cohort at 4–5 accounts (eyecantell, wavect, agentstackai) with documented blockers: no terminal/PTY, US-only data residency, vendor session-state lock-in risk. Day+30 (October 10) is next predicted inflection. "Commodity harness" framing holds — API adds managed orchestration layer but doesn't resolve enterprise blockers.
 
 **Cycle 202 updates (September 1, 2026) — ASSISTANTS API T+6: FIRST MONDAY POST-SHUTDOWN; NAMED-COMPANY INCIDENT COUNT STILL ZERO; SILENT FAILURE PATTERN DOMINANT; T+7–T+14 WINDOW NOW PRIMARY WATCH:**
 

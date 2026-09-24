@@ -1,11 +1,19 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-09-23 (cycle 229)
-OODA cycles: 77
+Last updated: 2026-09-24 (cycle 230)
+OODA cycles: 78
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-09-24)
+
+**CYCLE 230 UPDATE (Sep 24) — GITSPAWN ULTRAREVIEW UNPATCHED DAY+24 (V2.1.280 STILL LATEST — NO V2.1.281/V2.1.282 AS OF SEP 24; MANIFOLD EMBARGO HOLDS; NO POC IN-WILD); HYDRAFUSION DAY+20: VS CODE STILL CLI-ONLY — SEPTEMBER TARGET OVERDUE; THREAD 19 COMMENTS (UP FROM 18); NEW ENTERPRISE CONCERN: MODEL-ROUTING DPA AMBIGUITY (SEP 23) — WHICH VENDOR DPA GOVERNS MULTI-VENDOR ORCHESTRATION?; SEPTEMBER 28 UNIFIED COPILOT EXPERIENCE TARGET [SOURCE NEEDED — NOT CONFIRMED FROM PRIMARY GITHUB PAGE]; ASSISTANTS API T+29: ZERO NAMED-COMPANY POSTMORTEMS — PATTERN HOLDS; T+30 SPIKE WINDOW OPENS SEP 25 TOMORROW; NEW KB FINDING: CLEARCONTEXT.DEV (RAFAEL MORAES, AUG 20) — DOUBLE-MIGRATION TRAP: OFFICIAL MIGRATION GUIDE POINTED AT PROMPT OBJECTS (DEPRECATED JUN 3, DISABLED NOV 30) — TEAMS FOLLOWING OFFICIAL PATH FACE SECOND MIGRATION BY NOV 30; OPENAI AGENTS API DAY+14: NON-ADOPTION COHORT HOLDS; ZERO DEPLOYER-DIRECT PRODUCTION ACCOUNTS; NO INDEPENDENT BENCHMARK ON DAY+14 WINDOW; DAY+30 (OCT 10) = NEXT INFLECTION; OPENAI AGENTKIT SEP 10: CHATKIT (GA) + AGENT BUILDER (BETA) + CONNECTOR REGISTRY (BETA) — L0 VENDOR DOCUMENTATION ONLY; WORKSPACE AGENTS INTEGRATIONS INCLUDE SLACK + SALESFORCE + GOOGLE DRIVE + NOTION — NO INDEPENDENT DEPLOYMENT EVIDENCE.**
+
+**Watch Cycle 231 (Sep 25):** Assistants API T+30 — SPIKE WINDOW OPENS TODAY; priority check: DEV Community + community.openai.com + HN + X.com for first named-company postmortem reports; GitSpawn Day+25 — any patch or Manifold PoC release; HydraFusion — verify September 28 "unified Copilot experience" target from GitHub changelog (primary source); Loop Engineering patterns.md — Stage 3 L3 upgrade (carry-forward from Cycle 229 watch list); Prompt Objects second migration watch begins (Nov 30 deadline, 67 days away).
+
+([releasebot.io Claude Code](https://releasebot.io/updates/anthropic/claude-code), Sep 24 check — [vendor documentation]; [github.com/orgs/community/discussions/206492](https://github.com/orgs/community/discussions/206492), Sep 24 check — [practitioner direct — community thread]; [clearcontext.dev/posts/assistants-migration-prompt-gap/](https://clearcontext.dev/posts/assistants-migration-prompt-gap/), Aug 20 2026 — [practitioner analysis — double-migration trap, NEW KB entry]; [wavect.io Agents API review](https://wavect.io/blog/openai-agents-api-managed-harness-review/) — [practitioner analysis])
 
 ## Key Verdict (as of 2026-09-23)
 

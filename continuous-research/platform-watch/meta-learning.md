@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 230 — 2026-09-24
+
+Following an official vendor migration guide is not the same as following a safe migration path. The clearcontext.dev finding (Aug 20, Rafael Moraes) revealed that OpenAI's own Assistants API migration guide directed developers to Prompt Objects — which OpenAI had already deprecated before the guide was written. This is a new category of source-quality failure: not a vendor claim overstating capability, but a vendor guide creating a compliance trap. When a migration watch extends beyond T+30 with zero postmortems, consider searching for "what does the official guide say?" rather than just "what went wrong?" — the guide itself can be the failure mode.
+
+Search for secondary mentions of a pending date ("September 28 unified Copilot experience rollout") returned a specific claim that the primary source (the GitHub community discussion) could not confirm. The secondary claim may have originated from a GitHub changelog post not yet indexed in the community thread. Lesson: when a secondary source references a specific future date not present in the primary page, mark it [SOURCE NEEDED] and queue a primary-source fetch of the changelog — do not carry the specific date as a finding.
+
 ### Cycle 229 — 2026-09-23
 
 Outlet-specific podcast search (Lenny's Newsletter "How I AI" + Apple Podcasts confirmation) found the Stripe/Kaliski deployer-direct voice for Loop Engineering Stage 3 after 6+ cycles of concept-keyword saturation. The Kaliski podcast episode (Mar 30, 2026) was 5 months old and had been buried by content-farm noise on keyword searches. Lesson: once content-farm saturation is confirmed, switch to outlet × practitioner-name queries rather than topic × keyword queries — "Stripe engineering agentic" found the Minions system via bytebytego secondary which then pointed to the primary source chain. The finding contains a valuable counter-nuance: review bottleneck is confirmed at 1,300 PRs/week BUT Stripe invested in verification infrastructure (test coverage + synthetic e2e + blue-green) that makes the bottleneck manageable. Record the nuance, not just the confirmation — the mitigation approach is itself a KB finding.

@@ -34,6 +34,8 @@
 #   chain-northwind.sh --from m4                  # RESUME at M4 (reads newest
 #                                                 #   out/*/m2-state.json for the SHA)
 #   chain-northwind.sh --effort high              # cohort-faithful (slower)
+#   chain-northwind.sh --model opus               # default sonnet
+#   chain-northwind.sh --from prework             # lemmings: arrange, prework, m1, m2, m4, m5
 #   chain-northwind.sh --sut /path/to/repo        # override the kit's repo path
 #
 # Run it backgrounded — multi-hour even with M3/M6 skipped. Each module logs
@@ -44,8 +46,9 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SUT_KIT="lemmings"
 SUT=""
 EFFORT="medium"
+MODEL="sonnet"                          # harness sessions run Sonnet unless --model says otherwise
 FROM="m1"; TO="m5"
-DO_ARRANGE="auto"                       # auto = arrange iff FROM==m1
+DO_ARRANGE="auto"                       # auto = arrange iff FROM==prework|m1
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -53,6 +56,7 @@ while [[ $# -gt 0 ]]; do
     --from) FROM="$2"; shift 2 ;;
     --to) TO="$2"; shift 2 ;;
     --effort) EFFORT="$2"; shift 2 ;;
+    --model) MODEL="$2"; shift 2 ;;
     --no-arrange) DO_ARRANGE="no"; shift ;;
     --arrange) DO_ARRANGE="yes"; shift ;;
     --sut) SUT="$2"; shift 2 ;;
@@ -113,10 +117,10 @@ if [[ -z "$ARRANGE" ]] && { [[ "$FROM" == "m1" ]] || [[ "$FROM" == "m2" ]]; }; t
   exit 2
 fi
 
-export CLAUDE_CMD="claude --effort $EFFORT --permission-mode auto"
+export CLAUDE_CMD="claude --model $MODEL --effort $EFFORT --permission-mode auto"
 export CLAUDE_RUNNER_TIMEOUT="${CLAUDE_RUNNER_TIMEOUT:-1800}"
 
-mod_num() { echo "${1#m}"; }
+mod_num() { case "$1" in prework) echo 0 ;; *) echo "${1#m}" ;; esac; }
 in_range() { local n; n="$(mod_num "$1")"; [[ "$(mod_num "$FROM")" -le "$n" && "$n" -le "$(mod_num "$TO")" ]]; }
 
 # State lookup is SUT-scoped: out/ holds runs from every kit, so match the
@@ -164,11 +168,17 @@ wipe_run_artifacts() {                  # $1=path under $SUT
   fi
 }
 
-echo "[chain] northwind cut on kit=$SUT_KIT: range $FROM..$TO (M3, M6 not part of this topology)  effort=$EFFORT  sut=$SUT  timeout=${CLAUDE_RUNNER_TIMEOUT}s"
+echo "[chain] northwind cut on kit=$SUT_KIT: range $FROM..$TO (M3, M6 not part of this topology)  model=$MODEL  effort=$EFFORT  sut=$SUT  timeout=${CLAUDE_RUNNER_TIMEOUT}s"
 
 # ---- arrange (M1 baseline) ----------------------------------------------
-if [[ -n "$ARRANGE" ]] && { [[ "$DO_ARRANGE" == "auto" && "$FROM" == "m1" ]] || [[ "$DO_ARRANGE" == "yes" ]]; }; then
+if [[ -n "$ARRANGE" ]] && { [[ "$DO_ARRANGE" == "auto" && ( "$FROM" == "m1" || "$FROM" == "prework" ) ]] || [[ "$DO_ARRANGE" == "yes" ]]; }; then
   run_module arrange "$ARRANGE" --sut "$SUT" --slug "$M1_SLUG"
+fi
+
+# ---- prework: after arrange (arrange removes the skills prework's T2
+#      re-installs). Writes nothing to the repo; safe to replay.
+if in_range prework; then
+  run_module prework "$HERE/run-prework.sh" --cwd "$SUT"
 fi
 
 # ---- M1: getting going + context. SUT already on m1/<slug> from arrange. --

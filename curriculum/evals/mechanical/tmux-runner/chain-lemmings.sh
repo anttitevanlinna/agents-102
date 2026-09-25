@@ -24,6 +24,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 SUT="${HOME}/Projects/lemmings"
 EFFORT="medium"
+MODEL="sonnet"                          # harness sessions run Sonnet unless --model says otherwise
 FROM="m1"; TO="m6"
 DO_ARRANGE="auto"                       # auto = arrange iff FROM==prework|m1
 M1_SLUG="fix-hud-tally"
@@ -38,6 +39,7 @@ while [[ $# -gt 0 ]]; do
     --from) FROM="$2"; shift 2 ;;
     --to) TO="$2"; shift 2 ;;
     --effort) EFFORT="$2"; shift 2 ;;
+    --model) MODEL="$2"; shift 2 ;;
     --no-arrange) DO_ARRANGE="no"; shift ;;
     --arrange) DO_ARRANGE="yes"; shift ;;
     --sut) SUT="$2"; shift 2 ;;
@@ -48,7 +50,7 @@ done
 # Medium effort finishes turns well under an hour; 1800s caps a hung turn
 # without clipping a real one. M5's packaged send-off is the long pole — the
 # runbook notes raising this for the m5 leg if a send-off turn gets clipped.
-export CLAUDE_CMD="claude --effort $EFFORT --permission-mode auto"
+export CLAUDE_CMD="claude --model $MODEL --effort $EFFORT --permission-mode auto"
 export CLAUDE_RUNNER_TIMEOUT="${CLAUDE_RUNNER_TIMEOUT:-1800}"
 
 mod_num() {                             # prework sorts before m1 (2026-09-01)
@@ -125,7 +127,7 @@ wipe_run_artifacts() {                  # $1=path under $SUT
   fi
 }
 
-echo "[chain] range $FROM..$TO  effort=$EFFORT  sut=$SUT  timeout=${CLAUDE_RUNNER_TIMEOUT}s"
+echo "[chain] range $FROM..$TO  model=$MODEL  effort=$EFFORT  sut=$SUT  timeout=${CLAUDE_RUNNER_TIMEOUT}s"
 
 # ---- arrange (M1 baseline) ----------------------------------------------
 if { [[ "$DO_ARRANGE" == "auto" && ( "$FROM" == "m1" || "$FROM" == "prework" ) ]] || [[ "$DO_ARRANGE" == "yes" ]]; }; then

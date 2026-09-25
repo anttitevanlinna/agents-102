@@ -285,6 +285,26 @@ running dated stamps against a cohort date makes the argument twice).
 
 **Discriminating observation for future design:** after a bounded run, can the engineer explain what they would delegate again, why the returned evidence supports acceptance, and what still needs their judgement? Increased autonomy paired with lost understanding or unexamined green checks would not support this hypothesis. Unknown: which factor matters most for a given engineer, and whether the experience transfers beyond the demonstrated task. These accounts generate the hypothesis; they do not establish causality.
 
+## The experimenter shift — the belief that takes people past basic agentic coding (2026-09-25, session synthesis "personality-idea"; candidate — house-thesis, validate adversarially)
+
+**Status:** future theory notes; training frozen (2026-09-10). No student-facing placement commissioned.
+
+**The candidate belief:** the practitioner stops being the worker and becomes the experimenter on their own system. Basic agentic coding treats the agent as a fast junior — the task is the unit, the prompt is the lever, review is where quality lives, every session starts from zero. Past basic, the unit of work flips: the finished feature is the by-product; the real output is whatever changed so the next run needs less of you — a rule, a verifier, a deleted instruction, a fixed misleading filename. M1's opening idea ("the first session must leave something the next can use") is this belief in one sentence; the rest of AE101 operationalises it.
+
+**Three habits that fall out of the one belief:**
+
+1. **Traces are data, not noise** — read the transcript like an instrument, not a status email (M4's stopping-is-reading).
+2. **Own judgement is a cost to amortise** — every correction made by hand twice is a standing tax; the reflex is "where does this belong so I never say it again?", including "nowhere — delete the thing that caused it" (M6's three homes, one of which is subtraction).
+3. **Green is a claim** — tests, gates, the agent's "done" are hypotheses until watched failing once; trust = verification you can run without being there (M3, M5's the-gate-is-a-claim-too).
+
+**Why the mindset is rare (economics frame, candidate):** basic agentic coding is piecework — paid per task, faster hands. The experimenter frame is capital investment — lower return this session, compounding later. Engineers measured on piecework are structurally punished for it in month one. And it costs the craftsman's pleasure of writing the code oneself, which the agent-as-junior frame lets you keep — a felt loss no productivity argument compensates directly.
+
+**Provenance / evidence level:** session synthesis (Claude + Antti dialogue), cross-checked against a same-session sequential read of the six AE101 modules — the modules teach all three habits; the single-belief compression and the piecework/capital frame are house synthesis, not sourced. No practitioner citations yet.
+
+**Discriminating observation for future design:** after a cohort, does a student's next unprompted session end with a change to their loop (rule/verifier/deletion) rather than only a merged diff? That, not task throughput, would evidence the shift.
+
+**Relation to neighbours:** complements *Trust, control and earned predictability* (that section = how autonomy is granted safely; this = why the practitioner invests in the machinery at all) and the general/local frame (the experimenter's lab is the local).
+
 ## The social layer — why 1000 agents cannot be told "fix everything" (2026-08-15, Antti musing + session synthesis; candidate — house-thesis, validate adversarially)
 
 **Origin frame (verbatim, Antti):** look at the "local" as *"the company, which is a social network.

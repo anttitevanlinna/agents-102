@@ -111,11 +111,12 @@ Student is in Claude Code, opened at the cloned repo root, just invoked `/self-s
 
 3. **Check the directory doesn't already have content.** If it does, ask before overwriting.
 
-4. **Copy the scaffold.** Source of truth: `<repo-root>/curriculum/scaffolds/agents-101-starter/` (cohorts zip it; self-study copies it). Run:
+4. **Unpack the starter.** The same starter cohorts get, built from `<repo-root>/curriculum/scaffolds/agents-101-starter/` plus the handbook. Run:
    ```bash
-   rsync -a --exclude='.claude' <repo-root>/curriculum/scaffolds/agents-101-starter/ <training-dir>/
+   cd <repo-root> && npm install --silent && scripts/build-agents-101-starter-tarball.sh
+   tar xzf <repo-root>/agents-101-starter.tar.gz -C <training-dir> --exclude='./.claude'
    ```
-   (Or `cp -r` + `rm -rf <training-dir>/.claude` if rsync isn't available.) Skip the scaffold's `.claude/` — Teacher lives at the repo root where the skill is already loaded.
+   Skip the starter's `.claude/` — Teacher lives at the repo root where the skill is already loaded.
 
    The tree this lands matches the *Material Distribution* table in `curriculum/trainings/agents-101/training-architecture.md`: `prework/`, empty `sources/` / `memory/` / `agents/`, Module 4 policy reference files, personal-to-team patterns, and no prewritten root `CLAUDE.md`.
 
@@ -130,11 +131,7 @@ Student is in Claude Code, opened at the cloned repo root, just invoked `/self-s
 
 6. **Seed `progress.md`** at the training dir (shape below in § *Progress file shape*).
 
-7. **Build the recap handbook.** One self-contained page with every lecture plus a summary of each exercise, opened straight from disk. No server. After each lecture or exercise you open it at the matching section; the student doesn't read it during teaching, you teach inline.
-   ```
-   cd <repo_dir> && npm install --silent && node scripts/build-workbook.js self-study agents-101 --theory
-   ```
-   Output: `<repo_dir>/site/clients/self-study/agents-101/theory-handbook.html` (gitignored). If the build fails, skip the recap links and carry on; teaching is inline anyway. Tell the student: *"I've built your handbook. After each lecture or exercise I'll open it at that section — read it now or come back later."*
+7. **Point at the handbook.** The starter ships `<training_dir>/agents-101-handbook.html`: every lecture plus a summary of each exercise, one page opened straight from disk. It is the recap surface. After each lecture or exercise you open it at the matching section; the student doesn't read it during teaching, you teach inline. Tell the student: *"Your folder has a handbook of every lecture. After each lecture or exercise I'll open it at that section — read it now or come back later."*
 
 8. **Explain the two-Claude model and open the Builder.** Say "session," not "window" (works across desktop app / terminal / web).
    - *"From here on you'll run two Claude Code sessions side by side."*
@@ -153,8 +150,7 @@ On `/self-study continue` (or `/self-study` with config present):
 3. Read `progress.md`.
 4. **Greet with state.** *"Welcome back. You're at the start of Module 2."* / *"Mid-Module 1, Phase 4."*
 5. **Ask about time.** *"How long do you have — 30 min, an hour, more? I'll pace accordingly."*
-6. **Rebuild the recap handbook** (setup step 7's command) so it matches the repo after any `git pull`.
-7. **Confirm the Builder folder.** Ask: *"Is your Builder session running at the training-directory root?"* If not, walk them through (see § *Builder working directory*).
+6. **Confirm the Builder folder.** Ask: *"Is your Builder session running at the training-directory root?"* If not, walk them through (see § *Builder working directory*).
 8. Pick up where progress left off.
 
 ## The cadence per module
@@ -185,7 +181,7 @@ Each module references one or more lectures and exercises via include-links. **Y
 After lecture or exercise wraps, **open the handbook at that section yourself**, then tell them you did:
 
 ```bash
-open "file://<repo_dir>/site/clients/self-study/agents-101/theory-handbook.html#lectures-<slug>"
+open "<training_dir>/agents-101-handbook.html#lectures-<slug>"
 ```
 
 Exercise → `#exercise-summary-<slug>`.

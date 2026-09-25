@@ -14,6 +14,8 @@
 #   sources/.keep
 #   agents/.keep
 #   .claude/skills/self-study/SKILL.md
+#   agents-101-handbook.html  # theory handbook: every lecture + exercise summaries,
+#                             # one self-contained page, opened from disk
 #   prompts/<key>.md          # only the Agents 101 marker closure, not the
 #                             # whole registry — see the prompts block below
 #
@@ -140,6 +142,11 @@ if [ -d "$PROMPTS_SRC" ]; then
   echo "Shipped $shipped of $total registry prompts (Agents 101 closure)."
 fi
 
+# The theory handbook — the learner's read-back of every lecture, no server.
+# Customer-independent; built into a gitignored scratch customer dir.
+node scripts/build-workbook.js _starter agents-101 --theory >/dev/null
+cp site/clients/_starter/agents-101/theory-handbook.html "$ROOT/agents-101-handbook.html"
+
 # Build tarball from inside ROOT so the archive has prework/, module-4/policies/,
 # memory/, sources/, agents/, .claude/ at the top level (no wrapper).
 rm -f "$OUT"
@@ -150,7 +157,7 @@ echo "Built $OUT"
 echo "Top-level entries:"
 tar tzf "$OUT" | awk -F/ 'NF>1 && $2 != "" {print $2}' | sort -u | sed 's|^|  |'
 echo
-for path in prework module-4/policies/gdpr-essentials.md module-4/policies/data-classification.md module-4/policies/ai-use-baseline.md module-4/policies/sector-rules-placeholder.md patterns/personal-to-team-patterns.md memory sources agents .claude/skills/self-study/SKILL.md; do
+for path in prework module-4/policies/gdpr-essentials.md module-4/policies/data-classification.md module-4/policies/ai-use-baseline.md module-4/policies/sector-rules-placeholder.md patterns/personal-to-team-patterns.md memory sources agents .claude/skills/self-study/SKILL.md agents-101-handbook.html; do
   if ! tar tzf "$OUT" | grep -qE "^\./?${path}(/|\$)"; then
     echo "WARNING — expected path missing: $path" >&2
     exit 1

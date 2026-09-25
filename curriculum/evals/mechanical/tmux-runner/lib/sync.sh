@@ -185,6 +185,62 @@ wait_for_turn() {
         ;;
     esac
   done
+  [[ -z "$session" ]] && return 0
+  local left=$(( timeout - ($(date +%s) - started_at) ))
+  (( left < 300 )) && left=300
+  settle_background_agents "$dir" "$seq" "$session" "$left"
+}
+
+bg_agents_pending() {
+  # $1=pane snap. Pending iff the LAST ✻ status line is "Waiting for N
+  # background agent(s) to finish" — a later "✻ Cooked/Worked … · done"
+  # means the re-invoked main agent has since finished its own turn.
+  local last
+  last="$(printf '%s\n' "$1" | grep -E '^✻ ' | tail -1)"
+  [[ "$last" =~ Waiting\ for\ [0-9]+\ background\ agents?\ to\ finish ]]
+}
+
+settle_background_agents() {
+  # The Stop hook fires when the MAIN agent yields, not when its backgrounded
+  # subagents finish — so a sentinel can land mid-work (M4 T2 lemmings
+  # 2026-09-25: audit backgrounded, next prompt fired 4s later against no
+  # audit). Hold while the pane says agents are pending; when one finishes
+  # on an idle pane, the re-invoked main agent fires a SECOND Stop, which the
+  # count-based hook would hand to the next turn — trim it back to $seq.
+  # $1=sentinel dir, $2=seq, $3=tmux session, $4=budget seconds.
+  # Exit: 0 settled — or budget spent, WARNed, walk continues (a 1 would read
+  # as a soft-cap hit to wait_for_turn_guarded and ESC a working pane);
+  # 2 pane died.
+  local dir="$1" seq="$2" session="$3" budget="$4"
+  local started; started="$(date +%s)"
+  local held=0 stable=0 last_count=-1 cur
+  while :; do
+    pane_alive "$session" || return 2
+    if bg_agents_pending "$(_tmux capture-pane -t "$session" -p 2>/dev/null || true)"; then
+      if (( held == 0 )); then
+        held=1
+        echo "wait_for_turn: turn $seq sentinel landed with background agent(s) pending — holding until they finish" >&2
+      fi
+      stable=0
+    else
+      (( held == 0 )) && return 0
+      # cleared: let the follow-up Stop land and the count settle
+      cur="$(count_sentinels "$dir")"
+      if [[ "$cur" == "$last_count" ]]; then stable=$((stable + 1)); else stable=0; fi
+      last_count="$cur"
+      if (( stable >= 3 )); then
+        reconcile_sentinels "$dir" "$seq"
+        echo "wait_for_turn: turn $seq background agent(s) finished after $(( $(date +%s) - started ))s" >&2
+        return 0
+      fi
+    fi
+    if (( $(date +%s) - started >= budget )); then
+      echo "wait_for_turn: WARN turn $seq still has background agent(s) pending after ${budget}s — continuing" >&2
+      reconcile_sentinels "$dir" "$seq"
+      return 0
+    fi
+    sleep 1
+  done
 }
 
 is_slash_only() {

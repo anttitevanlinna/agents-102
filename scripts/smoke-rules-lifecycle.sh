@@ -26,6 +26,8 @@ step "T2 rule.js returns a rule body" 'node "$S/rule.js" writing 1 | grep -q "Ba
 step "rule index fresh" 'node "$S/build-rule-index.js" --check'
 
 echo "B. compound lifecycle (scratch core)"
+snap(){ { git -C "$LIVE_CORE" status --porcelain -- memory; git -C "$LIVE_CORE" diff -- memory; git -C "$REPO" diff -- curriculum/evals/compendium-pins.json; } | shasum; }
+BEFORE=$(snap)
 export AGENTS_CORE_DIR="$T/core"; mkdir -p "$T/core"; cp -R "$LIVE_CORE/memory" "$T/core/memory"
 M="$T/core/memory"; cp "$REPO/curriculum/evals/compendium-pins.json" "$T/pins.json"
 N=$(grep -oE '^[0-9]+\. \*\*' "$M/check_writing.md" | cut -d. -f1 | sort -n | tail -1); NEW=$((N+1))
@@ -51,7 +53,7 @@ step "T1 writing leads carry the new rule" 'grep -q "Smoke-test rule" "$M/_index
 step "drift detected against scratch ledger" '! node "$S/compendium-drift.js" --check --ledger "$T/pins.json"'
 step "repin scratch ledger → drift clears" 'node "$S/compendium-drift.js" --repin --ledger "$T/pins.json" && node "$S/compendium-drift.js" --check --ledger "$T/pins.json"'
 unset AGENTS_CORE_DIR
-step "live core untouched" '! grep -q zyzzyva "$LIVE_CORE/memory/check_writing.md" && [ -z "$(git -C "$LIVE_CORE" status --porcelain -- memory)" ] && [ -z "$(git -C "$REPO" status --porcelain -- curriculum/evals/compendium-pins.json)" ]'
+step "live core + pins unchanged by the run" '[ "$(snap)" = "$BEFORE" ]'
 step "core autocommit hook tests" 'bash "$LIVE_CORE/project-claude/hooks/test-core-autocommit.sh"'
 
 echo "C. eval machinery (deterministic)"

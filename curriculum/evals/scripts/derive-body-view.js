@@ -252,11 +252,16 @@ function derive(fileArg, { write = true } = {}) {
   const sourceSha = sha256(raw)
   const slug = slugFor(rel)
 
+  // The view carries the rule inventory, so the compendia are inputs too: key the
+  // cache on both, or a new rule never reaches a judge's completeness count.
+  const inventory = ruleInventory([...new Set(Object.values(COMPENDIA).flat())])
+  const rulesSha = sha256(JSON.stringify(inventory))
+
   const viewPath = path.join(OUT_DIR, `${slug}.view.json`)
   if (write && fs.existsSync(viewPath)) {
     try {
       const prior = JSON.parse(fs.readFileSync(viewPath, 'utf8'))
-      if (prior.source_sha === sourceSha) return { ...prior, cached: true }
+      if (prior.source_sha === sourceSha && prior.rules_sha === rulesSha) return { ...prior, cached: true }
     } catch { /* regenerate on any unreadable cache — fail closed, never warn-and-use */ }
   }
 
@@ -270,6 +275,7 @@ function derive(fileArg, { write = true } = {}) {
     file: rel,
     slug,
     source_sha: sourceSha,
+    rules_sha: rulesSha,
     maintainer_cut: g.maintainerCut,
     backing_block_at: g.backing,
     fence_ranges: g.fences,
@@ -277,7 +283,7 @@ function derive(fileArg, { write = true } = {}) {
     accept_notes: acceptNotes(g),
     signals: signals(raw, g, bodyText),
     greps: greps(bodyText),
-    rule_inventory: ruleInventory([...new Set(Object.values(COMPENDIA).flat())]),
+    rule_inventory: inventory,
     projections: {
       body_numbered: path.relative(REPO, path.join(OUT_DIR, `${slug}.body.txt`)),
       expanded: path.relative(REPO, path.join(OUT_DIR, `${slug}.expanded.md`)),

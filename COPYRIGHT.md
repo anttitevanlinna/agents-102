@@ -26,11 +26,11 @@ This project was initiated in **February 2026**, as evidenced by the git history
 The following are proprietary to **Bosser Oy** and may not be reproduced, redistributed, or reused without express written permission:
 
 - `curriculum/` — all modules, exercises, lectures, evals, scaffolds, reference material, supplementary files, and training variants
-- `content/` — articles, essays, whitepapers, case material, and any drafts or outlines
+- `content/` — skills the trainings ship to students
 - `site/` — website copy, layout, design, curriculum renderer, and all site assets (including covers, images, stylesheets, JS)
 - `memory/` — self-review protocol, feedback logs, and any operator memory
 - `.claude/` — skills, settings, and any Claude Code configuration shipped with this project
-- `content-style-guide.md` and the root `README.md` / `CLAUDE.md` / `AGENTS.md`
+- the root `README.md` / `CLAUDE.md` / `AGENTS.md`
 - `docs/` and `scripts/` shipped with this project
 
 Any new file created under these paths — including but not limited to new modules, exercises, lectures, articles, strategy documents, site copy, and content-creation assets — is automatically covered by this notice as part of the Agents 102 body of work owned by Bosser Oy.

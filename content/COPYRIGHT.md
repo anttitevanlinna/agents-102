@@ -2,7 +2,7 @@
 
 Copyright (c) 2026 **Bosser Oy** (sole proprietor: Antti Tevanlinna). All rights reserved.
 
-All content in this directory — articles, essays, whitepapers, case material, outlines, drafts, and any other content-creation assets — is proprietary to Bosser Oy. Any new file added under `content/` is automatically covered by this notice.
+All content in this directory — the skills the trainings ship to students — is proprietary to Bosser Oy. Any new file added under `content/` is automatically covered by this notice.
 
 No part of this directory may be reproduced, redistributed, or reused without express written permission from Bosser Oy.
 

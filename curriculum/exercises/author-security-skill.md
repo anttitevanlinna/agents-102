@@ -22,7 +22,7 @@ A **skill** packages an expertise (rules, checklists, the moves an agent runs) i
 
 *10 min*
 
-Reference material lives in `module-4/policies/` (your company's distilled policies, or the Nordic-baseline reference for self-study). Start by proving those files are runnable. No skill yet. Just the policy files, pointed at the system.
+Reference material lives in `module-4/policies/` (your company's distilled policies, or the Nordic-baseline reference). Start by proving those files are runnable. No skill yet. Just the policy files, pointed at the system.
 
 {{prompt:author-security-skill-1}}
 

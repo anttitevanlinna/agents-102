@@ -41,23 +41,23 @@ mkdir -p "$ROOT/home-claude" "$ROOT/project-claude"
 # 1) agents-102 auto-memory (compendiums, compounded entries, MEMORY.md, schema)
 MEMORY_SRC="$HOME/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory"
 if [ -d "$MEMORY_SRC" ]; then
-  cp -R "$MEMORY_SRC" "$ROOT/memory"
+  cp -RL "$MEMORY_SRC" "$ROOT/memory"
 fi
 
 # 2) Personal ~/.claude/ surface
-[ -f "$HOME/.claude/CLAUDE.md" ] && cp "$HOME/.claude/CLAUDE.md" "$ROOT/home-claude/"
+[ -f "$HOME/.claude/CLAUDE.md" ] && cp -L "$HOME/.claude/CLAUDE.md" "$ROOT/home-claude/"
 [ -f "$HOME/.claude/settings.json" ] && cp "$HOME/.claude/settings.json" "$ROOT/home-claude/"
-[ -d "$HOME/.claude/skills" ] && cp -R "$HOME/.claude/skills" "$ROOT/home-claude/"
-[ -d "$HOME/.claude/agents" ] && cp -R "$HOME/.claude/agents" "$ROOT/home-claude/"
-[ -d "$HOME/.claude/hooks" ] && cp -R "$HOME/.claude/hooks" "$ROOT/home-claude/"
+[ -d "$HOME/.claude/skills" ] && cp -RL "$HOME/.claude/skills" "$ROOT/home-claude/"
+[ -d "$HOME/.claude/agents" ] && cp -RL "$HOME/.claude/agents" "$ROOT/home-claude/"
+[ -d "$HOME/.claude/hooks" ] && cp -RL "$HOME/.claude/hooks" "$ROOT/home-claude/"
 
 # 3) Project-level gitignored .claude/ surface (hooks + rules + agents + lints + agent-memory)
 PROJ=/Users/anttitevanlinna/Projects/agents-102/.claude
-[ -d "$PROJ/hooks" ] && cp -R "$PROJ/hooks" "$ROOT/project-claude/"
-[ -d "$PROJ/rules" ] && cp -R "$PROJ/rules" "$ROOT/project-claude/"
-[ -d "$PROJ/agents" ] && cp -R "$PROJ/agents" "$ROOT/project-claude/"
-[ -d "$PROJ/lints" ] && cp -R "$PROJ/lints" "$ROOT/project-claude/"
-[ -d "$PROJ/agent-memory" ] && cp -R "$PROJ/agent-memory" "$ROOT/project-claude/"
+[ -d "$PROJ/hooks" ] && cp -RL "$PROJ/hooks" "$ROOT/project-claude/"
+[ -d "$PROJ/rules" ] && cp -RL "$PROJ/rules" "$ROOT/project-claude/"
+[ -d "$PROJ/agents" ] && cp -RL "$PROJ/agents" "$ROOT/project-claude/"
+[ -d "$PROJ/lints" ] && cp -RL "$PROJ/lints" "$ROOT/project-claude/"
+[ -d "$PROJ/agent-memory" ] && cp -RL "$PROJ/agent-memory" "$ROOT/project-claude/"
 
 # 4) Manifest
 cat > "$ROOT/MANIFEST.md" <<MANIFEST_EOF

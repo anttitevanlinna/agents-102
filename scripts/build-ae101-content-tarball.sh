@@ -10,7 +10,6 @@
 #        trainer-only artifacts; 2-hop walk catches lectures/exercises that
 #        reference each other.)
 #   - content/skills/ whitelisted per AE101 training-architecture: access-control-analysis + stride + security-tools
-#       (agentic-nerd is the optional self-study host, ships only from a self-study target)
 #   - prompts/ (full registry; consuming files resolve {{prompt:<key>}} markers against this)
 #
 # Maintainer blocks stripped from .md content; SKILL.md files ship verbatim.
@@ -244,14 +243,13 @@ FORBIDDEN=(
   "supplementary/what-is-an-agent.md"     # moved to Agents-101 supplementary/
   "supplementary/agent-trigger-list.md"   # Agents-101
   "reference/claude-quick-reference.md"   # Agents-101
-  "content/skills/agentic-nerd/SKILL.md"  # self-study only
 )
 LEAKS=()
 for path in "${FORBIDDEN[@]}"; do
   tar tzf "$OUT" | grep -q "^\./${path}\$" && LEAKS+=("$path")
 done
 if [ "${#LEAKS[@]}" -gt 0 ]; then
-  echo "ERROR — foreign Agents-101 / self-study material leaked into AE101 tarball:" >&2
+  echo "ERROR — foreign Agents-101 material leaked into AE101 tarball:" >&2
   for p in "${LEAKS[@]}"; do echo "  $p" >&2; done
   exit 1
 fi

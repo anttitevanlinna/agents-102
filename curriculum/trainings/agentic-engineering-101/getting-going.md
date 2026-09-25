@@ -119,7 +119,7 @@ Module 2 is where plan mode earns its keep: multi-file work, and a second pass t
 
 **M1 runs four in-class exercises and issues no homework.** The loop's order is orient → fix → close → compound, and the close sits third on purpose: the tracker conventions the agent surfaces at `close-the-ticket` are session evidence the compound sweep then integrates, so the field rules reach `./CLAUDE.local.md` without a separate fold step. Do not re-order compound ahead of the close. Connector install is out of scope for the room — see the exercise's own maintainer block.
 
-**Room agreement.** Cohort delivery projects `How we work in this room` and `Freedom to choose` before the opening trick-share. The first slide establishes that each engineer finds their own optimal way of working, the trainer keeps the room moving rather than serving as its debugger or deepest Claude Code expert, and everybody helps answer questions. The second gives the group responsibility for a workable pace and makes selective cutting explicit when an individual's working memory is full. Both stay inside the existing 10-minute opening allocation. Self-study skips the room-only slides silently.
+**Room agreement.** Cohort delivery projects `How we work in this room` and `Freedom to choose` before the opening trick-share. The first slide establishes that each engineer finds their own optimal way of working, the trainer keeps the room moving rather than serving as its debugger or deepest Claude Code expert, and everybody helps answer questions. The second gives the group responsibility for a workable pace and makes selective cutting explicit when an individual's working memory is full. Both stay inside the existing 10-minute opening allocation.
 
 
 **Meta (trainer):**

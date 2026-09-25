@@ -134,7 +134,7 @@ This module points at four sources in body and owned a stamp for none of them; t
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat is the Evaluate beat)
-- **Pacing:** Runtime is computed — `node scripts/calculate-time.js plan-mode-done-right`. Trainer demos slowly, room copy-pastes concurrently. Self-study follow-along runs comparably; simple-prompting beats are quick.
+- **Pacing:** Runtime is computed — `node scripts/calculate-time.js plan-mode-done-right`. Trainer demos slowly, room copy-pastes concurrently. Simple-prompting beats are quick.
 - **Transitions:** connections 10 @start "Connections: the approved-unread plan" · debrief 7 @after:how-instructions-grow "Debrief" · bridge 5 @end "Bridge"
 - **No charge on `push-back-on-the-plan`** — rationale in that exercise's block.
 - **Prep timing:** backlog-task surfacing 10 min; optional progression page 5 min; optional Cherny video 30 min; optional multi-session reference 10 min; Module 3 pre-reads 10–15 min (trifecta) + 10 min (agentic loops); optional OWASP scan 20 min. In cuts without M3 the three are replaced by the Module 4 pre-read, da Costa's *Backpressure Is All You Need*, 15 min.

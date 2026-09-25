@@ -200,7 +200,22 @@ bg_agents_pending() {
   [[ "$last" =~ Waiting\ for\ [0-9]+\ background\ agents?\ to\ finish ]]
 }
 
+pane_busy() {
+  # $1=pane snap. Busy iff the LAST status line (glyph-led) is a live spinner
+  # ("✳ Noodling… (running Stop hooks…)", "· Transmuting…") or says background
+  # agents are pending. A finished turn ends "✻ <Verb> for Ns · done".
+  local last
+  last="$(printf '%s\n' "$1" | grep -E '^[·✢✳✶✻✽*] ' | tail -1)"
+  [[ -z "$last" ]] && return 1
+  [[ "$last" =~ ^[^[:space:]]+\ [^[:space:]]+… ]] && return 0
+  [[ "$last" =~ Waiting\ for\ [0-9]+\ background\ agents?\ to\ finish ]]
+}
+
 settle_background_agents() {
+  # Also holds through a blocked Stop: another Stop hook (e.g. a verifier the
+  # exercise built) blocks, Claude resumes, and our sentinel already landed
+  # (M5 PB lemmings 2026-09-25: canned answer + "lock it in" typed into a
+  # working pane). Busy = pane_busy.
   # The Stop hook fires when the MAIN agent yields, not when its backgrounded
   # subagents finish — so a sentinel can land mid-work (M4 T2 lemmings
   # 2026-09-25: audit backgrounded, next prompt fired 4s later against no
@@ -216,10 +231,10 @@ settle_background_agents() {
   local held=0 stable=0 last_count=-1 cur
   while :; do
     pane_alive "$session" || return 2
-    if bg_agents_pending "$(_tmux capture-pane -t "$session" -p 2>/dev/null || true)"; then
+    if pane_busy "$(_tmux capture-pane -t "$session" -p 2>/dev/null || true)"; then
       if (( held == 0 )); then
         held=1
-        echo "wait_for_turn: turn $seq sentinel landed with background agent(s) pending — holding until they finish" >&2
+        echo "wait_for_turn: turn $seq sentinel landed while the pane is still busy (spinner / background agents) — holding" >&2
       fi
       stable=0
     else
@@ -230,12 +245,12 @@ settle_background_agents() {
       last_count="$cur"
       if (( stable >= 3 )); then
         reconcile_sentinels "$dir" "$seq"
-        echo "wait_for_turn: turn $seq background agent(s) finished after $(( $(date +%s) - started ))s" >&2
+        echo "wait_for_turn: turn $seq settled after $(( $(date +%s) - started ))s" >&2
         return 0
       fi
     fi
     if (( $(date +%s) - started >= budget )); then
-      echo "wait_for_turn: WARN turn $seq still has background agent(s) pending after ${budget}s — continuing" >&2
+      echo "wait_for_turn: WARN turn $seq pane still busy after ${budget}s — continuing" >&2
       reconcile_sentinels "$dir" "$seq"
       return 0
     fi

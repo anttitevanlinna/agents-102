@@ -45,6 +45,15 @@ check "plural form counts" "$(yes_no bg_agents_pending '✻ Waiting for 3 backgr
 check "no status line at all is not pending" "$(yes_no bg_agents_pending '❯ hello')" "no"
 check "empty snap is not pending" "$(yes_no bg_agents_pending '')" "no"
 
+echo "[test] pane_busy: spinner or pending agents = busy; a done-status = idle"
+check "spinner mid-turn" "$(yes_no pane_busy '✳ Marinating… (1m 2s · ↓ 3.1k tokens)')" "yes"
+check "bare spinner" "$(yes_no pane_busy '· Transmuting…')" "yes"
+check "blocked Stop: hooks running" "$(yes_no pane_busy '✳ Noodling… (running Stop hooks… 1/3 · 4s · ↓ 1.2k tokens)')" "yes"
+check "background agents pending" "$(yes_no pane_busy "$pending_snap")" "yes"
+check "done-status after a spinner" "$(yes_no pane_busy "$(printf '✳ Noodling…\n✻ Cogitated for 39s · done 11:40 AM\n❯ ')")" "no"
+check "agent output with an ellipsis is not a spinner" "$(yes_no pane_busy "$(printf '✻ Brewed for 5s · done\n  ⎿  … +12 lines (ctrl+o to expand)')")" "no"
+check "no status line" "$(yes_no pane_busy '❯ ')" "no"
+
 if ! command -v tmux >/dev/null 2>&1; then
   echo "[test] (skipping tmux integration — tmux not on PATH)"
 else
@@ -71,6 +80,28 @@ EOF
   check "returns 0" "$rc" "0"
   check "held until the agent finished (>=4s)" "$(( el >= 4 ))" "1"
   check "surplus follow-up Stop trimmed to seq=1" "$(count_sentinels "$d/s1")" "1"
+  pane_kill "$sess"
+
+  echo "[test] integration: a blocking Stop hook re-opens the turn -> wait holds, surplus trimmed"
+  sess="bg3-$$"
+  cat > "$script" <<'EOF2'
+printf '✳ Noodling… (running Stop hooks… 1/3 · 4s)\n'
+sleep 2
+printf '⏺ The verifier blocked my stop.\n✶ Leavening… (3s · ↓ 1.1k tokens)\n'
+sleep 2
+printf '✻ Cogitated for 39s · done\n'
+sleep 600
+EOF2
+  mkdir "$d/s3"; touch "$d/s3/turn-1.done"          # the blocked Stop still wrote a sentinel
+  pane_start "$sess" "/tmp" "bash $script"
+  ( sleep 4.3; touch "$d/s3/turn-2.done" ) & toucher=$!   # the real end-of-turn Stop
+  t0=$(date +%s)
+  rc=0; wait_for_turn "$d/s3" 1 60 "$sess" || rc=$?
+  el=$(( $(date +%s) - t0 ))
+  wait "$toucher" 2>/dev/null || true
+  check "returns 0" "$rc" "0"
+  check "held through the re-opened turn (>=4s)" "$(( el >= 4 ))" "1"
+  check "surplus Stop trimmed to seq=1" "$(count_sentinels "$d/s3")" "1"
   pane_kill "$sess"
 
   echo "[test] integration: no background agent -> returns at once, nothing trimmed"

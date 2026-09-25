@@ -31,7 +31,8 @@ const path = require('node:path')
 const crypto = require('node:crypto')
 
 const REPO = path.resolve(__dirname, '../../..')
-const MEM = '/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory'
+// Rules layer lives in the private agents-102-core repo: $AGENTS_CORE_DIR, else a sibling clone.
+const MEM = path.join(process.env.AGENTS_CORE_DIR || path.resolve(REPO, '..', 'agents-102-core'), 'memory')
 const LEDGER = path.join(REPO, 'curriculum/evals/compendium-pins.json')
 const CLASS_ALIASES = { storytelling: 'story' }
 

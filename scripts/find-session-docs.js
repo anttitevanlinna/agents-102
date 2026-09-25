@@ -96,7 +96,7 @@ if (JSON_OUT) { console.log(JSON.stringify(rows, null, 2)); process.exit(0); }
 
 const orphans = rows.filter((r) => !r.anchored);
 console.log(`\n  ${rows.length} plan-shaped internal docs — ${orphans.length} reachable from nothing\n`);
-console.log('  SESSION (named by no loaded surface) — archive candidates');
+console.log('  SESSION (named by no loaded surface) — delete candidates');
 for (const r of orphans) console.log(`    ${r.last}  ${String(Math.round(r.size / 1024) + 'K').padStart(5)}  ${r.file}`);
 console.log('\n  CANONICAL (reachable) — leave alone');
 for (const r of rows.filter((r) => r.anchored)) {

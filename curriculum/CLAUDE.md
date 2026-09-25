@@ -2,7 +2,7 @@
 
 ## Canon
 
-Docs with authority over generation. Anything not listed is session material: read it, never cite it as a rule. Spent session docs move to `docs/archive/`; `node scripts/find-session-docs.js` lists candidates.
+Docs with authority over generation. Anything not listed is session material: read it, never cite it as a rule. Spent session docs are deleted (git history keeps them); `node scripts/find-session-docs.js` lists candidates.
 
 **All trainings**
 

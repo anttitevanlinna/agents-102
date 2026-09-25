@@ -100,6 +100,8 @@ cd ~/Projects/agents-102 && git status --short
 git push
 ```
 
+Untracked `site/clients/**` dirs/files = customer-site build output from a local/gated build → never commit (public repo), delete the ones this session built (`build-workbook.js` / `deploy-customer.sh` regenerate). Tracked siblings in the same variant → commit instead.
+
 Report:
 ```
 Cleared: edit counter, legacy sentinels.

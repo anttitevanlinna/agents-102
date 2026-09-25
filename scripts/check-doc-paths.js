@@ -18,10 +18,7 @@ const path = require('path');
 const { execSync } = require('child_process');
 
 const ROOT = path.join(__dirname, '..');
-const MEMORY = path.join(
-  process.env.HOME || '',
-  '.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory',
-);
+const MEMORY = require('../curriculum/evals/scripts/compendium-drift.js').MEM;
 
 // Docs we read. Archived text is a record of what was true, so its pointers are
 // allowed to rot; fixtures and playgrounds name files inside student sandboxes.

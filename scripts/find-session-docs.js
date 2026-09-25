@@ -36,7 +36,7 @@ const ANCHOR_SEEDS = [
 ].filter((f) => fs.existsSync(path.join(ROOT, f)));
 
 // The memory store lives outside the repo but is loaded every session.
-const MEM = path.join(process.env.HOME, '.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory');
+const MEM = require('../curriculum/evals/scripts/compendium-drift.js').MEM;
 
 // Candidate pool: internal docs. Not research, not student-facing curriculum, not fixtures.
 const EXCLUDE = /^(continuous-research|node_modules|docs\/archive)\/|^curriculum\/(lectures|exercises|modules|prompts|reference|supplementary|trainings|scaffolds|skills|figures)\/|playgrounds\/|fixtures\/|\/legacy\/|COPYRIGHT\.md$/;

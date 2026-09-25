@@ -26,6 +26,8 @@
 set -eu
 
 FILE="$1"
+REPO_ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
+CORE_MEM="${AGENTS_CORE_DIR:-$(cd "$REPO_ROOT/.." && pwd)/agents-102-core}/memory"
 [[ -f "$FILE" ]] || { echo "error: $FILE not found" >&2; exit 1; }
 
 RAW=0
@@ -96,7 +98,7 @@ esac
 
 # ---- Hard-rule preamble -------------------------------------------------
 HARD_RULES=$(cat <<'EOF'
-1. Read `/Users/anttitevanlinna/Projects/agents-102/.claude/rules/content-rules.md` FIRST. It routes you to the right compendiums for this surface.
+1. Read `.claude/rules/content-rules.md` (repo root) FIRST. It routes you to the right compendiums for this surface.
 2. Read each compendium named below on demand (do not bulk-load).
 3. Body region only. Do NOT edit content inside fenced code-block prompts unless the brief explicitly authorizes it. The mechanical battery extracts those prompts; touching them rots transcripts.
 4. Do NOT touch the maintainer-block Quality line. The orchestrator stamps it via update-quality.sh after eval re-fire.
@@ -123,7 +125,7 @@ MOOD CONTRACT:
 $MOOD
 
 SURFACE COMPENDIUMS: $COMPENDIUMS
-(at /Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/)
+(at $CORE_MEM/)
 
 HARD RULES (read these BEFORE editing):
 $HARD_RULES

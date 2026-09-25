@@ -19,8 +19,11 @@ export const meta = {
 // agent-written prose does, and the fix is the same: one artefact, edited.
 // ---------------------------------------------------------------------------
 
-const MEM = '/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory'
-const REPO = '/Users/anttitevanlinna/Projects/agents-102'
+// Paths come from args (the sandbox has no process/require): args.repo, else the
+// working directory; args.core, else agents-102-core cloned beside the repo.
+const _A = (typeof args === 'object' && args) || {}
+const REPO = _A.repo || '.'
+const MEM = `${_A.core || `${REPO}/../agents-102-core`}/memory`
 
 const COMPENDIA = {
   writing: ['check_writing', 'check_student_facing', 'check_prompts', 'check_sales_copy', 'check_strategy_tie_in'],

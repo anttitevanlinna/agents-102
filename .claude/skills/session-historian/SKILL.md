@@ -39,7 +39,7 @@ Parallel searches (single message, multiple Grep calls):
 3. **`memory/self-review-protocol.md`** — correction log.
 4. **`memory/feedback_*.md`** and legacy feedback files.
 5. **`continuous-research/user-signals/`** — user questions and comments on the topic.
-6. **Session transcripts** at `~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/`. Greppable via Bash/rg on the `.jsonl` files. Skim skeletons only (head:200, tail:100 per match) — never load whole transcript files into context.
+6. **Session transcripts** at `~/.claude/projects/<this repo's absolute path with / → ->/` (e.g. `/home/me/agents-102` → `-home-me-agents-102`). Greppable via Bash/rg on the `.jsonl` files. Skim skeletons only (head:200, tail:100 per match) — never load whole transcript files into context.
 
 ### Step 3 — Consolidate matches
 

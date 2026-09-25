@@ -8,7 +8,7 @@ argument-hint: [session | correction | pattern | decision | taste]
 
 This skill closes the compounding loop. Self-review captures corrections in free-form memory files; `/compound` promotes them into structured, schema-validated entries at `memory/compounded/` AND (when applicable) amends the `check_*.md` compendium that fires at generation time. **One edit, every future agent learns.**
 
-Memory location: `/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/`
+Memory location: `../agents-102-core/memory/` (the agents-102-core clone beside this repo; `$AGENTS_CORE_DIR` overrides)
 
 ## When to invoke
 

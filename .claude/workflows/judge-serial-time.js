@@ -19,8 +19,11 @@ export const meta = {
 // both. That makes the measurement the agent's own observation rather than an
 // inference from when the orchestrator happened to notice it finished.
 
-const REPO = '/Users/anttitevanlinna/Projects/agents-102'
-const MEM = '/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory'
+// Paths come from args (the sandbox has no process/require): args.repo, else the
+// working directory; args.core, else agents-102-core cloned beside the repo.
+const _A = (typeof args === 'object' && args) || {}
+const REPO = _A.repo || '.'
+const MEM = `${_A.core || `${REPO}/../agents-102-core`}/memory`
 const COMPS = ['check_writing', 'check_student_facing', 'check_prompts', 'check_sales_copy', 'check_strategy_tie_in']
 const FIXTURE = 'curriculum/evals/bench/fixtures/writing-5judge.md'
 

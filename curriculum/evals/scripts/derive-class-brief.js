@@ -37,7 +37,7 @@ const { COMPENDIA } = require('./derive-body-view.js')
 const { prefill } = require('./prefill-instance.js')
 
 const REPO = path.resolve(__dirname, '..', '..', '..')
-const MEM = '/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory'
+const MEM = require('./compendium-drift.js').MEM
 const OUT_DIR = path.join(REPO, 'curriculum', 'evals', 'body-views')
 
 // Split a compendium into (preamble, [rule chunks]). A rule chunk runs from its

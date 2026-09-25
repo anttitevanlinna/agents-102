@@ -40,7 +40,7 @@ const path = require('node:path')
 
 const REPO = path.resolve(__dirname, '..', '..', '..')
 const OUT_DIR = path.join(REPO, 'curriculum', 'evals', 'body-views')
-const MEM = '/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory'
+const MEM = require('./compendium-drift.js').MEM
 
 const sha256 = t => crypto.createHash('sha256').update(t, 'utf8').digest('hex')
 

@@ -51,11 +51,10 @@ That is why skills travel. A good skill is not tied to one chat, one project, or
 It is also the simplest sharing move you have built so far. Give a teammate the skill, install it in their runtime, and they can call the same method without reconstructing your prompt history. That does not make it a deployed service or solve ownership. Module 7 compares this skill-shaped handoff with three other sharing shapes: shared context, shared output, and an interface.
 
 ## Key Concepts
-- **Certainty is a fantasy; the discipline is the answer.** Agents add non-determinism, unbounded inputs, and emergent tool use on top of security work. You never get a proof, you get a loop, and what remains after it you name and accept on record.
-- **Policy files first, reusable expertise second, two lenses in one check you authored.** The files in `module-4/policies/` are source material: run them raw once, then package the useful check as a personal skill, which is how an agent borrows expertise. One lens carries what your company decided is off-limits, the other named risk patterns and an access review. You did not have to become a security specialist; you had to know what mattered and dictate it.
-- **Prompt injection is a class, not a footnote.** Direct injection arrives in the user's input, indirect in a source the agent retrieves. Both turn well-formed English into the attack surface, which classical perimeter misses.
-- **"I can't tell" is a real answer.** Most rows land here: not failures, the plain state of a non-deterministic system. Closing one takes evidence.
-- **Mitigations are layered, not replacements.** Scope, split, filter, gate, review sit on top of network controls, access management, logging. Concluding that the agent check replaces security ships a breach.
+- Certainty is not on offer; the loop is: assess, mitigate, reassess the residual, decide.
+- Well-formed English is the attack surface, direct or through a source the agent reads.
+- "I can't tell" is a real answer; closing it takes evidence.
+- Agent mitigations sit on top of normal security controls, never in place of them.
 
 ## Bring to Module 5
 
@@ -74,13 +73,15 @@ Once the two sentences are saved, end this module's <span class="rt-code">sessio
 ## Next
 The agent is scoped, the residual risk is named. But the output *inside* the scope. Can you trust what it actually says?
 
-Remember also: agent actions start as text. A tool call, an email draft, a CRM update, a database change, a ticket comment, before any of those touch another system, they are words the agent produced and another system obeys. If the output is wrong, the action built from it will be wrong too. Module 5 starts there.
-
 <!-- maintainer -->
+**Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `practice-of-risk.md` and the pre-read.
+
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@194c81b0 strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @12bf0d81: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+
+**§ Next (2026-09-23, blend § Titles M4):** The section hands over one question, whether the output inside the scope can be trusted. The *agent actions start as text* paragraph belongs to M3, where the idea first arrives as the boundary shift that earns the demo (`multi-agent-systems.md` § Start here). Do not restate it here; three statements of one idea is the corpus's largest duplication and none of the three changes its meaning.
 
 **Mood target:** Deepened unease without blame — the student has a practice for risk, not a promise of certainty.
 

@@ -614,3 +614,21 @@ test('instances: every stored `file` field resolves to a real file', () => {
   }
   assert.deepEqual(broken, [], `eval instances pointing at nothing:\n  ${broken.join('\n  ')}`);
 });
+
+test('extractManifestLectureSlugs: a trainingKey reads only that training\'s sub-array', () => {
+  const block = [
+    'const THEORY_HANDBOOK_MANIFEST = {',
+    "  'agentic-engineering-101': [",
+    "    ['M1', ['lectures/ae-only']],",
+    '  ],',
+    "  'agents-101': [",
+    "    ['M1', ['lectures/a101-only']],",
+    '  ],',
+    '};',
+  ].join('\n');
+  const audit = require('./audit-eval-coverage.js');
+  assert.deepEqual(audit.extractManifestLectureSlugs(block, 'agentic-engineering-101'), ['ae-only']);
+  assert.deepEqual(audit.extractManifestLectureSlugs(block, 'agents-101'), ['a101-only']);
+  assert.deepEqual(audit.extractManifestLectureSlugs(block), ['ae-only', 'a101-only'], 'no key = whole block, as before');
+  assert.throws(() => audit.extractManifestLectureSlugs(block, 'nope'), /no entry for nope/);
+});

@@ -156,3 +156,5 @@ This exercise is one of the three Agents 101 magic beats (M3, M6, M8). M5 picks 
 
 **Quality:** compendium-audited 2026-08-25 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
+**View summary:** You fix the judge you picked as infrastructure, start a loop in which the generator learns to pass it, and walk away for half an hour. The artifact is a generation tactic that improved without you, and the question of who checked the judge.

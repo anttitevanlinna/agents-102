@@ -24,15 +24,11 @@ In Module 3 the synthesized answer sat at an uneasy distance: you'd stake your r
 
 This module is the rescue. Not full closure: your Module 3 doubt and your Module 4 residuals stay where they are. One shape of output, measured, with the limits the judge can't reach named on its face. Module 6 turns the benchmark you build here into a check that runs on every build.
 
-Remember also that agent actions start as text. A tool call, an email draft, a CRM update, a database change, a ticket comment, before any of those touch another system, they are words the agent produced and another system obeys. If the words are wrong, the action will be wrong too.
-
-This module measures what the system actually says inside its scope. Four detectors run on the same claim pool, a scorer adjudicates 30 claims against the sources, and you walk out with the first judge you can defend.
+Module 3 named text as the place where action starts. This module measures what the system actually says inside its scope. Four detectors run on the same claim pool, a scorer adjudicates 30 claims against the sources, and you walk out with the first judge you can defend.
 
 [Lecture: Grounded, and four candidates to measure](lectures/grounded.md)
 
 [Exercise: Hallucination benchmark](exercises/hallucination-bakeoff.md)
-
-[Lecture: Self-consistency after the scoreboard](lectures/self-consistency-after-scoreboard.md)
 
 ## Debrief
 
@@ -53,21 +49,21 @@ Read Claude's summary. Push back where it's wrong: *"run the check only for exte
 
 > Consider automating some of these checks. Not everything. Start with the repeatable, high-cost misses: numbers in external notes, customer names in account summaries, policy claims in internal advice, source citations in briefings. If a future session should never trust that shape of output without a check, write the trigger into `./CLAUDE.md` now. Module 6 turns that trigger into a loop.
 
-## Agent Actions
+## Propose, double-check, apply
 
 Same for agent actions. When the action matters, do not let the agent jump straight from thought to tool. Have it propose the action first, quality-check the proposal against the judge or the relevant source, and only then apply it. Propose, double-check, apply. That is output quality becoming operational safety.
+
+## Which rung has this action earned?
 
 Read [What is an Agent, The autonomy ladder](trainings/agents-101/supplementary/what-is-an-agent.md#the-autonomy-ladder-what-may-the-agent-do) before you decide what the agent may do next. The question is not "do I trust the agent?" The question is which rung this action has earned.
 
 Having added the checking step before acting, this is also the suitable place to introduce a human-in-the-loop check. You have both the agent-created action proposal at hand and the report on output quality. That means the expert is not reviewing a blank page or a vague concern; they are reviewing the proposed action, the evidence behind it, and the known limit of the check that passed it.
 
 ## Key Concepts
-- **Benchmarking as a pattern.** N candidates on the same input, scorer measures, winner (or ensemble) is kept. Portable to any quality judgment you'll automate: tone, brand, compliance, steering.
-- **The real move is building the thing that benchmarks the detectors.** Run one benchmark and you have seen what evaluating evaluators looks like. It transfers to every future quality question.
-- **Empirical method selection over authority.** You don't pick a detector because the docs or a paper said so. You run several against your own output and your own benchmark, and the data names the winner.
-- **The scoreboard is the artifact.** Precision, recall, coverage, measured per detector on the same claim pool. Read it row by row and you can name why one won and where another lost.
-- **A judge is narrow on purpose.** The winning judge file says what it catches and names its known limit. Narrow tools that work beat broad tools that pretend.
-- **Grounded is the discipline; the benchmark builds the check.** A measured judge keeps output connected to the ground when you're absent. A small benchmark proves the method; production evaluation wants hundreds of claims and adds new cases as versioned evidence. In Module 6, the yardstick stays fixed while the generator improves.
+- Grounded means traceable to a source; accurate is a harder question.
+- Don't pick a method; run the candidates and read the scoreboard.
+- The winner is a judge that names its own limit.
+- The pattern is portable: candidates, benchmark, scorer, winner.
 
 ## Pre-reads before Module 6
 
@@ -79,13 +75,15 @@ Once the judge and pre-read are ready, end this module's <span class="rt-code">s
 The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine the benchmark has three hundred claims, the judge runs on every build, and the generation tactic absorbs the judge's feedback between rounds. That's evals.
 
 <!-- maintainer -->
+**Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `grounded.md`.
+
 
 **Mood target:** Mechanical rescue — the student can see which measured method worked without pretending quality is solved.
 
 **Push-back moves / Watch-fors / Decision points:** [M5 run sheet](trainer-modules.md#m5-glance) owns the live cues, recovery paths, protected beats, and cut order.
 
 **Meta (trainer):**
-- **Transitions:** connections 5 @start "Connections" · debrief 5 @end "Debrief" · agent actions 3 @end "Agent actions" · bridge 3 @end "Bridge"
+- **Transitions:** connections 5 @start "Connections" · debrief 5 @end "Debrief" · agent actions 3 @end "Propose, double-check, apply" · bridge 3 @end "Bridge"
 - **Where these numbers come from:** debrief from the body ("Five minutes."); connections and agent-actions are estimates. Every beat here has no file of its own, so nothing else prices it.
 - **Primary Bloom's level:** Evaluate (method selection) → Synthesize (winning judge saved as reusable file)
 - **Materials (trainer):** the student's Module 3 synthesized answer and retrievals — no pre-built failing agent. The briefing that comes out of Module 3's synthesis IS the test corpus.
@@ -101,6 +99,8 @@ The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine th
 
 > PLUG POINT: The benchmark size.
 > Default: 30 claims. Lower only if the briefing is genuinely short; raise only if the cohort has time and the claim pool stays readable.
+
+**Story blend, M5 (2026-09-23).** Three changes per `module-design/a101-story-proposals/blend.md` § Titles, M5. § Start here states the text-is-where-action-starts idea as one backward clause; the paragraph itself lives at the M3 opener, which is where the student first meets it (blend § Keep and cut, item 1). The module links two pieces, the lecture and the exercise: `lectures/self-consistency-after-scoreboard.md` is unlinked and its surviving beat is the `## A drift signal, never proof` slide inside `lectures/grounded.md`. § Agent Actions runs as two slides, `## Propose, double-check, apply` and `## Which rung has this action earned?`, the student's verb first because the section is about doing (`check_student_facing.md` §17).
 
 **Canonical shape:** M5 is the **hallucination benchmark** — the core arc's measured-quality beat. The student operates as benchmark-setup + scoreboard-watcher + winner-saver, not as the classifier. Scorer picks the winner; student watches. Supersedes `ground-your-output.md`; the grounded/ungrounded/misrepresents/overreaches/ungrounded-shape vocabulary is no longer required material.
 

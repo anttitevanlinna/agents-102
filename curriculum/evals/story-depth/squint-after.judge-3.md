@@ -50,4 +50,4 @@ Yes, repeatedly: "The report is a hypothesis, not a result" (M1); "The doubt sta
 
 ---
 
-`/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/story-depth/squint-after.judge-3.md` — learnings: 21 / governors: 8 / future: yes / self-doubt: yes
+`curriculum/evals/story-depth/squint-after.judge-3.md` — learnings: 21 / governors: 8 / future: yes / self-doubt: yes

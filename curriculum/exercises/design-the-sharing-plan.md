@@ -49,3 +49,5 @@ Read the two files side by side. `module-7/technical-plan.md` should name what m
 
 **Quality:** compendium-audited 2026-08-25 (writing@a4be944f story@a4be944f technical@a4be944f behavior@a4be944f pedagogy@a4be944f strategy@a4be944f slides@a4be944f)
 - judges @a4be944f: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
+**View summary:** The agent compares the technical, social, political, habitual, governance and trust obstacles to sharing your agent with the candidate you picked, and writes down the load-bearing one. The artifact is a technical plan and a people plan, each a hypothesis.

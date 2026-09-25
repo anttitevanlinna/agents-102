@@ -145,3 +145,5 @@ You just ran **Recipe 4** end-to-end on your real system: the two-lens audit, th
 - Two lenses running sequentially, each takes real time. Students need to *read* both reports, not skim. Phase 4's diff-and-apply is the heart of the loop and can't be compressed.
 - Banter is designed in — students will look at their neighbour's policy report and compare. Variance across the room IS the teaching moment; conversation is the vehicle.
 - Under 35 = skipped reading, ran the mitigation on autopilot. Over 55 = stuck on a specific risk; facilitator should intervene with "pick another, run the loop."
+
+**View summary:** You load the security check you authored and run it against the system you built: two lens reports, one mitigation, one residual-risk decision written down. Not a clean bill of health, but the loop. The artifact is a report that carries the evidence.

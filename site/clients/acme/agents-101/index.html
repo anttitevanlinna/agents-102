@@ -597,6 +597,19 @@ main::before {
     border-color: var(--fg);
 }
 
+/* Prompt bodies wrap; code and shell blocks do not. A prompt block is prose
+   that happens to live in <pre> — read before it is run — and at `white-space:
+   pre` a 654-character line meant a horizontal scrollbar inside a 678px column
+   (51 of 79 blocks overflowed, worst 8.75x the column width). A shell or code
+   block keeps its scrollbar: a wrapped command line can read as two commands.
+   overflow-wrap because an unbroken 654-character run has no break opportunity
+   for pre-wrap to take. Deliberately unscoped — Slides reuses these blocks and
+   this stylesheet, and the same lines overflow there. */
+.prompt-block__pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
 .module .prompt-block .prompt-block__pre {
     margin: 0;
     border: 0;
@@ -2341,6 +2354,19 @@ body.workbook { padding-top: 3rem; }
     .workbook-topnav__modules a { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
 }
 </style>
+<style data-student-handbook-print>/* Student handbook print only. Screen long-read and slide layouts deliberately
+   receive no rules from this file. */
+@media print {
+    body.student-handbook .phase {
+        border-top: 0 !important;
+        border-bottom: 0 !important;
+    }
+
+    body.student-handbook .module-hero {
+        border-bottom: 2pt solid #111111 !important;
+    }
+}
+</style>
 <style>/* slides.css — the curriculum slide viewer (the "Slides" layout).
  *
  * A progressive-enhancement overlay: given a rendered curriculum container
@@ -2409,6 +2435,28 @@ body.workbook { padding-top: 3rem; }
 
 /* rail: tier-3 rows dim so the skippable tail is scannable at a glance */
 .deck__rail-item--tier3 .deck__rail-label { opacity: .6; }
+
+/* ── "Not included" watermark ───────────────────────────────────────────────
+   The barebones EDITION keeps the slides its tier cap excludes and stamps them
+   instead of dropping them, so a reader of a shortened deck can see the shape
+   of what the full one carries without being able to mistake it for material
+   they were taught. Loud enough that a photograph of the slide carries the
+   caveat too; not so loud the slide stops being readable, because being
+   readable is the whole point of leaving it in. */
+.deck .slide--excluded { position: relative; }
+.deck .slide--excluded .slide__body { opacity: .5; }
+.deck .slide__excluded {
+  position: absolute; inset: 0; z-index: 7; pointer-events: none;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display, inherit); font-size: clamp(2rem, 7vw, 5.5rem);
+  letter-spacing: .12em; text-transform: uppercase; white-space: nowrap;
+  color: rgba(124, 111, 90, .36); text-shadow: 0 1px 0 rgba(255, 255, 255, .3);
+  transform: rotate(-14deg);
+}
+.deck .slide.theme-dark .slide__excluded { color: rgba(232, 224, 208, .22); text-shadow: none; }
+/* rail: an excluded row reads as excluded in the contents too, or the trainer
+   scanning the list plans a slide the deck has already disowned */
+.deck__rail-item--excluded .deck__rail-label { opacity: .45; text-decoration: line-through; }
 
 /* ── deck shell ─────────────────────────────────────────────────────────── */
 body.slides-active { overflow: hidden; }
@@ -2643,7 +2691,7 @@ body.slides-active { overflow: hidden; }
 .layout-toggle__btn:not(.is-on):hover { color: var(--ink-text); }
 </style>
 </head>
-<body class="runtime-cli workbook" data-training="agents-101">
+<body class="runtime-cli workbook student-handbook" data-training="agents-101">
 <nav class="workbook-topnav" aria-label="Workbook navigation">
   <a class="workbook-topnav__home" href="#top">Agents 101 — acme</a>
   <ol class="workbook-topnav__modules">
@@ -2766,28 +2814,28 @@ If tar is not available, tell me what error you got.
 <p>Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at <code>~/Documents/agents-101/</code>.</p>
 <p>This module&#39;s outputs land in <code>module-1/</code>.</p>
 <p><strong>The question, to you:</strong> when you&#39;ve used ChatGPT or Claude for your own work (a bio, a pitch, a post), where did the output come out generic? Was there ever a moment where it actually felt like yours, and if so, what made the difference?</p>
-<p><strong>Context is king.</strong> You steer your agent by the context you give it. You paint by choosing the brush.</p>
 <section class="phase phase--lecture" id="lectures-context-is-king">
 <div class="phase-kicker">Lecture</div>
 
 <h1 id="context-is-king">Context is King</h1>
 <p>The same question. Two answers. What makes the difference?</p>
-<h2 id="the-demo-youre-about-to-see">The demo you&#39;re about to see</h2>
+<h2 id="same-question-two-answers">Same question, two answers</h2>
 <p>Two Claude chat windows.</p>
 <p>In one, the first prompt is <em>&quot;What is the capital of Italy?&quot;</em> Claude answers <em>Rome.</em> Then the second prompt: <em>&quot;What should we have for dinner?&quot;</em> Claude suggests something Italian: pasta, osso buco, risotto.</p>
 <p>In the other window, the first prompt is <em>&quot;What is the largest lake in Finland?&quot;</em> Claude answers <em>Saimaa.</em> Then the same second prompt as before. Claude suggests something Finnish: salmon, rye bread, meatballs.</p>
 <p>Same words. Different answer. The first exchange became part of context, and the context colored everything after.</p>
 <p>Before you watch the second session run, take a guess. What will it suggest? Your guess reveals what you already know about how this works, and what you&#39;re about to learn.</p>
-<h2 id="what-just-happened">What just happened</h2>
+<h2 id="it-reads-the-whole-conversation-every-time">It reads the whole conversation every time</h2>
 <p>Claude isn&#39;t looking your question up in a database. It reads the whole conversation every time and generates the next response from all of it. Your first prompt and its answer are now <em>part of the input</em> to the second prompt. Change the front, change the back.</p>
 <p>That&#39;s context. Unglamorous, isn&#39;t it? And yet every useful thing in this training is built on this one idea.</p>
-<p>In the full agent picture, this is the first piece: context. Later you add tools, goals, checks, boundaries, and loops. None of them work unless the agent reads the right world first.</p>
-<h2 id="context-isnt-only-about-countries">Context isn&#39;t only about countries</h2>
+<h2 id="context-is-whatever-you-tell-it">Context is whatever you tell it</h2>
 <p>One more window. The first prompt: <em>&quot;I&#39;m a cardiologist preparing dinner for my patients.&quot;</em></p>
 <p>Then the same second prompt about dinner.</p>
 <p>The suggestion shifts again. Heart-healthy. Low-sodium. Vegetable-forward. Not because Claude knows medicine better than Italian cooking. You told it who you are, and every answer after took that into account.</p>
 <p>Context is whatever you tell it. A fact. A role. A preference. A constraint. All of it colors what comes next.</p>
-<h2 id="the-move-youre-about-to-make">The move you&#39;re about to make</h2>
+<h2 id="the-first-piece-of-the-picture">The first piece of the picture</h2>
+<p>In the full agent picture, this is the first piece: context. Later you add tools, goals, checks, boundaries, and loops. None of them work unless the agent reads the right world first.</p>
+<h2 id="a-file-it-reads-every-time">A file it reads every time</h2>
 <p>So far the context has been one message you typed. Ephemeral. Gone when you close the chat window.</p>
 <p>What if the context was a file the agent reads at the start of every conversation? A file you wrote once, tuned carefully, that shaped every answer without you ever retyping it? Same mechanism. Different shelf life.</p>
 <p>That&#39;s a guardrail. That&#39;s your turn.</p>
@@ -2922,14 +2970,24 @@ When you&#39;re done, summarize in 4–6 lines what&#39;s in the file: the struc
 <div class="phase-kicker">Lecture</div>
 
 <h1 id="iterate-and-learn">Iterate and Learn</h1>
+<h2 id="you-felt-context-move">You felt context move</h2>
 <p>Think back an hour. <em>Context</em> was a word someone might put on a slide. You had a vague sense it mattered. Now it&#39;s something you can point at, the bit you added that turned a generic About page into a site your neighbour recognised as yours. You felt it move.</p>
 <p>That&#39;s a small thing. It&#39;s also the whole thing.</p>
 <p>The rest of the training is seven more instances of the same move. Iterate, learn, encode. Change something, notice what shifted, adjust, build again. You just did a round of it; you&#39;ll do a lot more.</p>
 <p>The site was the visible surface. The durable thing is the behavior you can now package: what context the agent needs, what generic looks like, what a stronger pass does differently, and which rule should survive into the next session.</p>
+<h2 id="why-the-look-back-was-kind-to-you">Why the look-back was kind to you</h2>
+<p>One moment from the exercise is worth a second of suspicion. In the look-back phase you asked Claude to find three generic claims in a site it had written itself, and the picks came back gentle.</p>
+<p>Agreeable answers won the round the model was tuned on. Being helpful and warm is what it learned to do well, and grading its own paragraph is one more chance to be helpful and warm. The self-report is the same kind of output as the thing it is reporting on.</p>
+<h2 id="the-report-is-a-hypothesis-not-a-result">The report is a hypothesis, not a result</h2>
+<p>So read what comes back as a claim about the work, not a verdict on it. It is a decent claim. It was made by something that read every word, and it will still round the corners.</p>
+<p>You have the thing it hasn&#39;t got: you were in the room while the work happened. Where its account matches what you remember doing, you have two reads agreeing. Where it doesn&#39;t, yours is the one that counts, and the gap is the interesting part.</p>
+<h2 id="you-were-the-only-check-in-the-room">You were the only check in the room</h2>
+<p>Nothing in the last hour verified anything. Claude generated, you looked, you decided. The site reads as yours because your own knowledge of the subject stood between the generic draft and the page, and nothing else did.</p>
+<p>That is the right way round for this work. Nobody in the room could have caught a wrong line about you except you, which is exactly why your own profile is the thing worth starting on.</p>
+<h2 id="you-act-on-the-future-to-know-whats-real">You act on the future to know what&#39;s real</h2>
 <p>Two beats worth naming, because the mechanism you just used is older than AI.</p>
 <p><strong>You act on the future to know what&#39;s real.</strong> Nobody knows where agents are going. Not Anthropic, not your board, not the people running this training. What&#39;s known: the people who&#39;ll figure it out first are the ones running the experiment. Reading a McKinsey report on the agentic enterprise is not the same category of activity as what you just did. One produces opinions about a future. The other produces muscle memory for it. Guess which one transfers.</p>
-<p><strong>Mental models only come from doing.</strong> Before today, you had a vocabulary. Now you have a little piece of felt experience. Those are different goods. A vocabulary is cheap; a felt model is the thing a leader uses to make a decision at 4pm on a Tuesday when the next reorganisation is being argued about. Nobody can give you a felt model. You can only catch one by reaching for it.</p>
-<p>Everything in the next seven modules is more of this. More reaching, more watching, more adjusting, more rules that make the next session start smarter. Don&#39;t expect a lecture to replace the doing. There isn&#39;t one.</p>
+<p><strong>Mental models only come from doing.</strong> Before today, you had a vocabulary. Now you have a little piece of felt experience.</p>
 <p>Now: five minutes with Claude. The debrief.</p>
 </section>
 
@@ -2971,9 +3029,9 @@ Have the subagent answer:
 <p>Compare Claude&#39;s picks to what you expected. Where cold-Claude sees generic, your context is still thin; add one more sharp detail there. Then ask Claude to regenerate the site. Where Claude&#39;s pick of <em>&quot;uniquely you&quot;</em> matches your own gut: solid ground.</p>
 <h2 id="key-concepts">Key Concepts</h2>
 <ul>
-<li>Guardrails are structured context, not a checklist</li>
-<li>You are the world&#39;s best evaluator of your own profile. Your domain expertise is the test</li>
-<li>The guardrail IS the control: average output becomes great not because you prompted better, but because the context became specific enough to steer it</li>
+<li>Guardrails are structured context, not a checklist.</li>
+<li>Your domain expertise is the test; nothing else in the room checks the page.</li>
+<li>Output got specific because the context did, not because the prompt got cleverer.</li>
 </ul>
 <h2 id="bring-to-module-2">Bring to Module 2</h2>
 <p><strong>A live challenge on your mind</strong>, and working access to Confluence and OneDrive. Module 2 systematises the work around a real problem; an invented one costs you the session&#39;s whole point.</p>
@@ -3314,21 +3372,29 @@ Don&#39;t apply anything yet. Ask me to approve or reject each one.
 <h2 id="why-the-sharpening-happens">Why the sharpening happens</h2>
 <p>When you added the second batch, Claude didn&#39;t start over. It read the existing topic pages first, as <em>context</em>, then read the new sources, then integrated. The existing memory was part of the prompt for updating the memory. That&#39;s why pages got sharper: the old claims and the new claims met each other, and the ones that couldn&#39;t survive the meeting got cut.</p>
 <p>This is the same mechanism from Module 1: context shapes output, run at system scale. The context for this work is what the previous work produced. The context for the next session will be what this work produced. The loop is the product.</p>
+<h2 id="it-gets-better-by-being-edited">It gets better by being edited</h2>
 <p>Keep the rules small, keep them boring, and let the compounding do the work. Not &quot;clever prompts.&quot; Plain rules, applied consistently across thousands of small updates. The discipline is in refusing to get fancy.</p>
-<h2 id="the-detail-thats-easy-to-miss">The detail that&#39;s easy to miss</h2>
+<h2 id="a-folder-of-text-and-that-is-the-point">A folder of text, and that is the point</h2>
 <p>The memory is a folder of markdown files. That&#39;s it. No database. No special tool. No paid tier. No setup. And the agent you just built, the one sitting in <code>agents/</code>, is also a markdown file. Instructions the model reads at the start of every session. Same plain-text form for the knowledge, same plain-text form for the capability, same plain-text form as the guardrail you wrote in Module 1. One kind of object, three jobs. Which means it also travels, paste the agent file into any LLM tool and it still works.</p>
 <p>That might look like a limitation. It isn&#39;t. Language models are strongest at reading and writing text, that is what they do. When you store knowledge as text, reading it is reading, and updating it is writing. Nothing sits between the model and what it&#39;s best at. Every fancier setup that promised to &quot;fix&quot; this added a layer that the model had to work <em>around</em>.</p>
 <p>The point is simple: the simplest possible setup beats the fancy ones, because it respects what the model actually does well. Fundamentals outlast tools. Platforms will churn. But <em>text that an agent can read and write</em> isn&#39;t going anywhere.</p>
+<h2 id="three-layers-one-folder">Three layers, one folder</h2>
+<p>The folder has three layers, and they stay separate on purpose. The raw sources sit untouched, the originals you dropped in. The memory sits above them: the topic pages the agent maintains and sharpens. The rules file sits on top and keeps the shape of every update the same.</p>
+<p>Sharpen the memory, never the sources, or you lose the evidence. Change the rules, and every later update changes with them.</p>
 <h2 id="what-this-unlocks">What this unlocks</h2>
 <p>Your memory is specific to your challenge. The question you just ran through it came back with claims cited to your files, reasoning shaped by your context, a voice that isn&#39;t a generic industry take. The answer belongs to the memory you built, not to the LLM behind it. That&#39;s the point the whole training turns on: <em>generic AI becomes your AI when you shape the context that surrounds it.</em> Guardrails did this at the prompt level in Module 1. A memory does it at the knowledge level now. The mechanism is the same; only the shelf life changed.</p>
 <p>Every module after this leans on the memory you just built. Multi-agent systems reads from it. Security reviews it. Quality evals run against it. The flywheel in Module 8 feeds it. You didn&#39;t build a training exercise. You built the material the rest of the training runs on.</p>
-<h2 id="one-more-compounding-turn">One more compounding turn</h2>
+<h2 id="could-a-competitor-claim-this">Could a competitor claim this?</h2>
 <p>Back in Phase 1 you asked Claude to flag pages a competitor could write about themselves. Phase 3 sharpened them. That&#39;s the discipline: if the answer to <em>&quot;could a competitor claim this?&quot;</em> is ever yes, the memory is growing but not compounding.</p>
 <p>Spot what&#39;s still generic and sharpen it.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Look at the memory I just built. Pick the three topic pages that are still the most generic — any competitor in this industry could write them. For each, tell me: what specific source would sharpen it most, and what&#39;s the one question you&#39;d ask me right now to pull the missing insight out of my head?
 </code></pre>
 <p>Claude comes back with three pointed requests. Answer one. Let it update the page. The memory just got a fourth round of compounding. You steer; the system maintains; the loop runs.</p>
+<h2 id="it-can-only-use-what-someone-wrote-down">It can only use what someone wrote down</h2>
+<p>One limit worth seeing while the memory is fresh in front of you.</p>
+<p>The agent can only work from what somebody wrote down. Most of what you know about your own company, nobody has. It sits in heads, in corridors, in the judgement of the person who has been there long enough to stop noticing they have it.</p>
+<p>That is not a fault in the memory you built. It is why the memory you built is worth something. Every round of this moves one more piece of what you know out of your head and into something the system can read next time.</p>
 </section>
 
 
@@ -3347,16 +3413,19 @@ When you&#39;re done, tell me in 3–5 lines: the rules you wrote, which session
 <h2 id="push-back-on-the-summary">Push back on the summary</h2>
 <p>Read Claude&#39;s summary. Push back on anything that doesn&#39;t match your sense of the work. <em>&quot;No, that rule&#39;s too strict.&quot;</em> <em>&quot;You missed the bit where we had to regenerate three times because of X.&quot;</em> Same move Module 1 landed on your guardrails file: do the work, let the agent capture the rules, push back where the agent got it wrong. Module 2 lands your first wider rules file at the training-dir root (<code>./CLAUDE.md</code>), the one every subsequent module extends.</p>
 <p>What Claude leaves out is often the signal. A clean summary that names three rules and skips the messy fourth, the one where the work bent and you re-prompted twice, is the tell. Compounding rules files are not tidy.</p>
-<h2 id="sharpen-where-it-bends">Sharpen where it bends</h2>
+<h2 id="fix-the-output-then-fix-the-rule">Fix the output, then fix the rule</h2>
 <blockquote>
 <p>Your agent is &quot;right&quot; when it works. Every miss is context you haven&#39;t written yet. Sharpen the memory, tighten a rule, rewrite the prompt. You won&#39;t spot the next mistakes by re-reading the files you already have. You spot them by running the system and watching where it bends.</p>
 </blockquote>
 <p>Watching where it bends is continuous improvement, done by hand. Every miss turns into a line of context that stops the next miss. Later in the training you&#39;ll learn the move that bends the curve: the agent spots its own misses and proposes its own fixes. You stop being the only pair of eyes.</p>
+<h2 id="the-model-will-change-under-this">The model will change under this</h2>
+<p>One thing to hold as you close the session. The model will change under this. The memory will not.</p>
+<p>What you built is a folder of your own text: your challenge, your sources, the rules you just wrote. A better model reads it better. It doesn&#39;t write it for you, and it doesn&#39;t leave with it.</p>
 <h2 id="key-concepts">Key Concepts</h2>
 <ul>
-<li><strong>Three layers</strong>: raw sources (the originals, untouched) → the memory (maintained by the agent, sharpens over time) → the rules file (<code>CLAUDE.md</code>) that keeps the shape consistent</li>
-<li><strong>Plain text beats databases here</strong> because language models are strongest at reading and writing text. No setup, no extra tools.</li>
-<li><strong>Persistence + automation = system.</strong> Neither alone is enough.</li>
+<li>Persistence plus automation makes a system; either alone is a toy.</li>
+<li>Three layers: raw sources untouched, a memory the agent sharpens, a rules file that keeps the shape.</li>
+<li>Plain text, because reading and writing text is what the model does best.</li>
 </ul>
 <h2 id="bring-to-module-3">Bring to Module 3</h2>
 <p><strong>A daily agent, scheduled, with a week of observation behind it.</strong> It reads your challenge memory. A week of watching it run is the evidence Module 3 splits work against; without it the split is guesswork.</p>
@@ -3735,6 +3804,7 @@ Then synthesize. Apply Rumelt&#39;s strategy kernel — diagnosis (what&#39;s re
 <p><strong>Close. Does this feel right?</strong></p>
 <p>Optional: ask Claude to recap the three retrievals&#39; core claims next to your <code>## Answer</code>. Then ask yourself a question you won&#39;t be able to avoid asking anyway: <em>is this actually right?</em></p>
 <p>You can&#39;t tell yet. Three retrievers read plainly, three stances pushed, a framework held the synthesis together, and still, the answer sits at that uneasy distance where you&#39;d stake your reputation on some of it and not all of it, and you can&#39;t yet say which is which. That feeling is correct.</p>
+<p>Everything you just did is the move this training teaches, run properly. It still handed you something you cannot vouch for.</p>
 <p>Hold the doubt. Name it to yourself. Don&#39;t fix it here.</p>
 <p><strong>Module 5 builds the tools to name what&#39;s off systematically.</strong> For now, let it stew.</p>
 </section>
@@ -3748,29 +3818,38 @@ Then synthesize. Apply Rumelt&#39;s strategy kernel — diagnosis (what&#39;s re
 
 <h1 id="lecture-when-to-split-an-agent-and-how">Lecture: When to split an agent (and how)</h1>
 <p>You just split an agent two ways. Three retrievers in separate windows. Three stances inside one session. Both worked; both felt different. The next question (the one your team will ask you the first Monday you try this on real work) is <em>when do I split, and how?</em></p>
-<p><strong>The unit is the recurring workflow.</strong></p>
+<h2 id="the-unit-is-the-recurring-workflow">The unit is the recurring workflow</h2>
 <p>Build one agent per recurring workflow, a single <code>.md</code> file, guardrailed for the job that workflow does. Don&#39;t try to make a mega-agent that does everything (<em>the company brain</em>); it ages badly, drifts in scope, nobody can tell what it&#39;s responsible for. Don&#39;t go the other way and proliferate a hundred tiny agents either; coordination cost eats the win. The right number is <em>one per piece of work that recurs in your week.</em></p>
 <p>That&#39;s the across-workflow answer. The question this lecture answers is the within-workflow one: when, inside a single workflow, does splitting into multiple agents pay?</p>
-<p><strong>Inside a workflow, start with don&#39;t.</strong></p>
-<p>Default to one agent with a good prompt. Splitting adds coordination cost: handoffs to manage, mis-framing to watch for, prompts to tune per agent, a synthesis step that lies if you let it. If a single well-shaped agent with a single well-shaped prompt can produce what you need, do that. Most of the time, it can.</p>
-<p><strong>When splitting earns its keep.</strong></p>
+<h2 id="start-with-dont">Start with don&#39;t</h2>
+<p>Inside a workflow, start with don&#39;t. Default to one agent with a good prompt. Splitting adds coordination cost: handoffs to manage, mis-framing to watch for, prompts to tune per agent, a synthesis step that lies if you let it. If a single well-shaped agent with a single well-shaped prompt can produce what you need, do that. Most of the time, it can.</p>
+<h2 id="split-when-they-cant-be-one">Split when they can&#39;t be one</h2>
 <p>Three tests. If any hold, splitting pays. If none do, a single prompt probably beats you.</p>
 <ul>
 <li><strong>Different access.</strong> Each agent needs different data, different tools, different credentials. A Confluence retriever (an agent that searches and returns matches from Confluence) can&#39;t pretend to be a web search. A legal-policy agent shouldn&#39;t also have customer-data access. Access boundaries force separation.</li>
 <li><strong>Different dialect.</strong> The material in each source speaks a different language: internal jargon vs. public tone vs. email shorthand. One agent bending between them loses nuance. Three agents each native to their source keep the signal.</li>
 <li><strong>Different stance.</strong> The agents should actively disagree with each other. A backward planner and a reframer (an agent that reframes the material from a different stance) thinking <em>in the same voice</em> is one agent pretending to be three. If your three are paraphrases, collapse them.</li>
 </ul>
-<p>Note what&#39;s not on the list: <em>&quot;because three is more thorough.&quot;</em> More agents is not more rigour. More agents is more prompts to tune, more noise in the synthesis, more coordination tax. Split for a reason.</p>
-<p><strong>The test that catches the bluff.</strong></p>
+<h2 id="more-agents-is-not-more-rigour">More agents is not more rigour</h2>
+<p>Note what&#39;s not on the list: <em>&quot;because three is more thorough.&quot;</em> More agents is more prompts to tune, more noise in the synthesis, more coordination tax. Split for a reason.</p>
+<p>And more input is not the fix either. The beige answer was not short of context. It had three stances in front of it and could not choose between them.</p>
+<h2 id="a-framework-makes-it-pick">A framework makes it pick</h2>
+<p>Three stances beat one summarizer because one head in one pass gives you one flat take. Three voices give you a spread. A spread is still not an answer.</p>
+<p>Without a spine the synthesizer summarises: three views, evenly weighted, nobody chose. With the strategy kernel you just handed it, diagnosis, guiding policy, coherent actions, it has to commit to one diagnosis and drop what does not serve it. The variety comes from the stances. The choice comes from the frame you hand it.</p>
+<h2 id="the-test-that-catches-the-bluff">The test that catches the bluff</h2>
 <p>Ask yourself: <em>can I write one prompt that produces the same quality of output?</em> If yes, you didn&#39;t need to split. Write the one prompt. Keep your life small.</p>
 <p>The test is unkind on purpose. Business people who have just seen multi-agent work want to split everything. Resist it. Single-agent is the plain default.</p>
-<p><strong>And once you&#39;ve decided to split: which shape?</strong></p>
-<p>Two shapes today, each with its own territory.</p>
+<h2 id="two-shapes-each-with-its-own-territory">Two shapes, each with its own territory</h2>
+<p>Once you&#39;ve decided to split, pick the shape.</p>
 <p><strong>Separate sessions (the Phase 1 move).</strong> Pick this when each agent needs its own persistent context, its own tools, its own clock. The three retrievers had their own connectors, their own search history, their own conversation threads. Long-running, independent, visible. Separate windows let you <em>see</em> each one working; you can intervene in one without confusing the others. Good for retrieval across systems, parallel deep dives, anything where you want to watch each agent as it runs.</p>
 <p><strong>Subagents in one session (the Phase 2 move).</strong> Pick this when the main session wants quick parallel thinking and a bounded return. The three stances had a single job each, a clean instruction, no long-lived state, and they reported back as files and disappeared. Good for parallel framing of the same material, multi-perspective analysis, bursts of bounded work. The main session stays in charge; the subagents are temps.</p>
+<h2 id="other-agents-are-part-of-the-tool-surface">Other agents are part of the tool surface</h2>
 <p>In the full agent picture, other agents are part of the tool surface. They let one agent call a different stance, a different source zone, or a different working style without stuffing every job into one prompt.</p>
 <p><strong>The shape test.</strong> Sessions when you want each agent to stay alive for a while. Subagents when you want them in and out. Sessions when you want concurrency visible; subagents when you want it invisible. Sessions when they have different tools; subagents when they share.</p>
-<p><strong>One warning before you leave the room.</strong></p>
+<h2 id="seams-are-where-it-fails">Seams are where it fails</h2>
+<p>Once you have split, the work has handoffs, and the handoff is where it goes wrong. A retriever finds two numbers and the curator writes down one. A source&#39;s internal shorthand gets rewritten in public tone and the meaning goes with it. Three stances land on the synthesizer&#39;s desk and come out as one beige paragraph.</p>
+<p>None of that shows up inside an agent. It shows up between them. Where the pieces meet is the place to look.</p>
+<h2 id="three-agents-is-not-three-times-as-good">Three agents is not three times as good</h2>
 <p>You cannot hire three agents and expect the output to be three times as good. You hire three agents to get <em>three different views of the same thing,</em> and you pay for the privilege with coordination cost. If you don&#39;t need three different views (if one well-prompted agent can give you what you need), please, for the sake of your sanity, write the one prompt.</p>
 <p>A whole module just showed you multi-agent works. Next Monday, you will be tempted to apply it to everything. Don&#39;t.</p>
 </section>
@@ -3784,6 +3863,7 @@ Then synthesize. Apply Rumelt&#39;s strategy kernel — diagnosis (what&#39;s re
 
 <h1 id="debugging-stuck-agents">Debugging Stuck Agents</h1>
 <p>Agents get stuck. They use the wrong source. They average three views into mush. They write the file you asked for, but not the one the next agent needed. They sound confident right before the handoff fails.</p>
+<h2 id="diagnose-before-repair">Diagnose before repair</h2>
 <p>Do not start by tracing everything by hand.</p>
 <p>Start by prompting your own stuck system to find the root cause.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -3797,6 +3877,7 @@ Read the relevant files and the recent session context. Tell me whether the fail
 Do not fix anything yet. Show me the failure chain in 5 bullets: what happened, where it started, where it became visible, what file or prompt caused it, and the smallest fix that would prevent the next run.
 </code></pre>
 <p>This is rather long. Make your own variant. The important move is not the wording; it is asking Claude to diagnose whether the bug lives in the sources, the processing, or the boundary before you start fixing things.</p>
+<h2 id="sources-processing-boundary">Sources, processing, boundary</h2>
 <p>Then use the answer.</p>
 <ol>
 <li><p><strong>If it is the sources, fix the sources.</strong> Add the missing file. Remove the stale one. Split contradictory material so the agent can see the conflict instead of smoothing it. Do not write a cleverer prompt to compensate for bad ground.</p>
@@ -3827,9 +3908,12 @@ Then rewrite CLAUDE.md. Integrate, don&#39;t append. Sharpen the rules that gove
 
 When you&#39;re done, tell me in 3-5 lines: what you added, what you sharpened, what you removed, and why. Name at least TWO handoff seams where the rules wobbled, with specific evidence: name the file, the pass, and what was lost. Name one thing you would have missed without the &quot;audit harshly&quot; instruction. A seam without evidence doesn&#39;t count.
 </code></pre>
-<p>Notice what this prompt insists on: harsh audit, two seams minimum, specific evidence (file, pass, what was lost). That last clause is the work. Without it, Claude&#39;s review settles into the diplomatic shape it likes: three things went well, one mild wobble, here&#39;s the cleaner version. Diplomatic is the failure mode at a handoff seam. The place where things actually go wrong is exactly where the model rounds the corner. The harder ask forces a real audit. You&#39;ll get fewer comfortable summaries and more uncomfortable specifics, which is what you want when the rules file has to govern next session&#39;s agents.</p>
+<h2 id="nothing-here-checks-any-of-it">Nothing here checks any of it</h2>
+<p>Notice what this prompt insists on: harsh audit, two seams minimum, specific evidence (file, pass, what was lost). That last clause is the work. Without it, Claude&#39;s review settles into the diplomatic shape it likes: three things went well, one mild wobble, here&#39;s the cleaner version. Diplomatic is the failure mode at a handoff seam. The place where things actually go wrong is exactly where the model rounds the corner. The harder ask forces a real audit. You&#39;ll get fewer comfortable summaries and more uncomfortable specifics, which is what you want when the rules file has to govern next session&#39;s agents. The audit reads how your agents handed work to each other. Nothing in it reads the briefing and tells you whether it is true.</p>
 <h2 id="push-back-on-the-summary">Push back on the summary</h2>
-<p>Read Claude&#39;s summary. Push back where it&#39;s wrong. <em>&quot;No, the planner and the reframer really did need to be separate.&quot;</em> <em>&quot;You missed where the Confluence retriever kept normalising before writing.&quot;</em> The unease you feel about the synthesized briefing is not something to close today. It stays. Hold it as a question, not a fix.</p>
+<p>Read Claude&#39;s summary. Push back where it&#39;s wrong. <em>&quot;No, the planner and the reframer really did need to be separate.&quot;</em> <em>&quot;You missed where the Confluence retriever kept normalising before writing.&quot;</em></p>
+<h2 id="the-doubt-stays-hold-it">The doubt stays. Hold it.</h2>
+<p>The unease you feel about the synthesized briefing is not something to close today. It stays. Hold it as a question, not a fix.</p>
 <h2 id="optional-memory-check-before-module-4">Optional memory check before Module 4</h2>
 <p><strong>Optional move: pressure-test the memory.</strong> If you&#39;ve added much to <code>sources/</code> this module, run this between modules to let the new evidence pressure-test the memory&#39;s shape. Skip if memory&#39;s still serving you.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -3847,11 +3931,10 @@ If restructuring is needed, propose the renames, merges, splits, or drops. Show 
 <p>Memory is a working artefact, sharpened by what it bumps into.</p>
 <h2 id="key-concepts">Key Concepts</h2>
 <ul>
-<li><strong>Two multi-agent shapes.</strong> Independent tasks on shared files (long-running, separate, visible). Forked <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> returning to one lead task (quick parallel thinking, bounded return). Different shapes, different territories.</li>
-<li><strong>Splitting earns its keep when the agents genuinely can&#39;t be one.</strong> Different source access, different dialect, different stance. Faking multi-agent with one prompt is the tell that you didn&#39;t need to split.</li>
-<li><strong>Seams are where it fails.</strong> Conflicts get dropped, dialects clash, the synthesizer averages everything into beige. Where the pieces meet is what to watch.</li>
-<li><strong>Three stances beat one summarizer.</strong> Three <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> (a backward-from-end planner, a <em>what-would-have-to-be-true</em> experimenter, and a counterintuitive reframer, the Rory seat) each interrogate the retrieved material from a different angle, harder to do well in one head, in one pass. A fourth <span class="rt-code">subagent</span><span class="rt-cowork">agent</span>, the synthesizer, combines them.</li>
-<li><strong>Frameworks are the synthesizer&#39;s spine.</strong> Without one, it tends to summarise. With a framework (a strategy kernel by default), it picks.</li>
+<li>Two shapes: separate sessions on shared files, or subagents returning to one lead task.</li>
+<li>Split only where the agents can&#39;t be one: access, dialect, stance.</li>
+<li>Three stances beat one summarizer; a framework makes it pick.</li>
+<li>Seams are where it fails.</li>
 </ul>
 <h2 id="pre-reads-before-module-4">Pre-reads before Module 4</h2>
 <p><a href="#after-module-3-notice-when-one-agent-is-not-enough">Agent Trigger List, After Module 3</a>, then selected sections from <a href="#supplementary-what-is-an-agent" target="_blank" rel="noopener">What is an Agent</a> on multi-agent coordination.</p>
@@ -3895,8 +3978,9 @@ If restructuring is needed, propose the renames, merges, splits, or drops. Show 
 
 
 <p>Once the optional check and pre-reads are handled, end this module&#39;s <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 4 starts fresh at <code>~/Documents/agents-101/</code>.</p>
+<h2 id="bring-to-module-4-whats-the-worst-thing-it-could-do-with-that-access">Bring to Module 4: what&#39;s the worst thing it could do with that access?</h2>
+<p>You just built something that works across the systems you connected. Which means it gained access to those systems.</p>
 <h2 id="next">Next</h2>
-<p>You just built something that works across the systems you connected. Which means it gained access to those systems. What&#39;s the worst thing it could do with that?</p>
 <p>Between now and Module 4, keep working on your real problem. You&#39;re close to an agent system that can actually crack your crux. Add an agent to solve a critical dependency? Add a visualisation of the plan? Prompt for what you need. Build.</p>
 
 </section>
@@ -3954,27 +4038,35 @@ If restructuring is needed, propose the renames, merges, splits, or drops. Show 
 <h1 id="lecture-the-discipline-of-risk">Lecture: The discipline of risk</h1>
 <p>You built something. It works. Would you bet your job on it being safe? Probably not. And that feeling, that specific, uncomfortable, <em>I&#39;d like to know and I don&#39;t</em> feeling, is the most plain thing in the room today.</p>
 <p>Here&#39;s the hard part. The feeling doesn&#39;t go away. Not with more testing, not with a better policy, not with a certification. Agent systems don&#39;t hand you certainty. You can wait for it, or you can get to work.</p>
-<p><strong>Certainty is a fantasy you inherited.</strong></p>
+<h2 id="certainty-is-a-fantasy-you-inherited">Certainty is a fantasy you inherited</h2>
 <p>Software security, done well, sells you a clean story. Perimeter. Access control. Patch the bug, sign off the build, the system is secure. You&#39;ve probably worked with people who live inside that story and mostly do a good job of it. The story works because classical software is deterministic (same input, same output). You can find the bug, prove you fixed it, and sleep.</p>
+<h2 id="three-ways-agents-break-the-old-story">Three ways agents break the old story</h2>
 <p>Agent systems break the story in three places.</p>
 <p>The behaviour is non-deterministic. Same prompt, same files, same tools, different session, different answer. A test that passed before doesn&#39;t prove the system passes today.</p>
 <p>The attack surface is the instruction set. The dangerous move isn&#39;t breaking into your server. It&#39;s getting your agent to <em>decide</em> to do something harmful with access it legitimately has. Well-formed English, arriving through a document the agent reads. Your firewall doesn&#39;t see it because your firewall has never had to worry about persuasion. The prework gave this its field name: prompt injection.</p>
 <p>Capability is emergent. The agent does what its instructions, its context, and the user&#39;s ask imply it should do, combined. You can&#39;t fully predict the combination. You can only bound it.</p>
 <p>Put the three together. You don&#39;t get <em>secure / not secure.</em> You get <em>safe enough, under these conditions, within these limits, for now.</em> If that sounds less like engineering and more like medicine, it is.</p>
 <p>In the full agent picture, this is the boundary piece. What may the agent read? What may it change? What must come back to a human? More capability without boundaries is not progress. It is just more blast radius.</p>
-<p><strong>The work is the loop.</strong></p>
-<p>You don&#39;t get certainty. You get a loop. Four steps, plain, repeatable.</p>
+<h2 id="assess-then-mitigate">Assess, then mitigate</h2>
+<p>The work is the loop. You don&#39;t get certainty, you get four steps, plain and repeatable.</p>
 <p><strong>Assess.</strong> Point a lens at the system and see what it reveals. Today starts with your company&#39;s actual rules, raw, against your actual agent. Then you package that policy check so it can run again. The agent-risk lens asks what the agent can reach, what it might leak, and how ordinary text could mislead it. Neither lens makes you an expert. The reusable check is the expert. The job is reading the reports with judgment.</p>
 <p><strong>Mitigate.</strong> Pick one risk. Apply the smallest change that reduces it. Agent mitigations are shaped differently than firewalls. Scope (give the agent less). Split (break it into two agents with different trust levels). Filter (post-process the output before it leaves). Gate (a human approves before a sensitive action). Review (a second agent judges the first&#39;s output). None of these are perimeter. All of them are loop design.</p>
+<h2 id="reassess-the-residual-then-decide">Reassess the residual, then decide</h2>
 <p><strong>Reassess residual.</strong> After the mitigation, the risk isn&#39;t gone. Something remains. Name it. Write it down. <em>The residual risk here is X. If Y happens, we haven&#39;t prevented it, we&#39;ve made it less likely.</em> Residual risk as an artifact, not a shame.</p>
 <p><strong>Decide.</strong> Accept the residual on record, or close the door. Those are the two options. <em>&quot;Hope it doesn&#39;t happen&quot;</em> is not one.</p>
+<p><strong>&quot;I can&#39;t tell.&quot;</strong> Most rows land there. That is not a failure; it is the plain state of a system that does not run the same way twice. Closing one takes evidence, not a better guess.</p>
 <p>Run the loop. You never finish. You iterate. The discipline isn&#39;t arriving at certainty. It&#39;s running the loop again.</p>
-<p><strong>The best mitigation is the one you don&#39;t need.</strong></p>
+<h2 id="now-the-move-is-to-give-it-less">Now the move is to give it less</h2>
+<p>Everything you have built so far gave the agent more. More context. A memory that survives the session. More stances at the table. Now the move is to give it less.</p>
+<p>Both moves are right, and the difference is what happens when the agent is wrong. More context makes a good answer likelier. Less access makes a bad answer smaller.</p>
+<p>Every door you close is a source you won&#39;t read. The tool you take away was a capability. The split you make leaves two agents each knowing half of what one agent knew. Scope it down far enough and the system is safe and useless. Nobody hands you the number. You pick it, you write down what is left, and you sign for it.</p>
+<h2 id="the-best-mitigation-is-the-door-you-dont-open">The best mitigation is the door you don&#39;t open</h2>
 <p>Here&#39;s the oldest move in the security book, the one that sounds too much like common sense to charge for. The cheapest, most reliable way to reduce risk on an agent is to not open the door in the first place.</p>
 <p>Should the agent have write access to that system? If not, scope down before you scope up. Should the agent read from that mailbox? If not, don&#39;t connect it. Should the agent be the one that drafts customer-facing language? If that&#39;s where the biggest risk lives, maybe a human drafts and the agent reviews, not the other way around.</p>
 <p>The policy lens exists partly to tell you which doors not to open. Your company has already decided. The job is to notice.</p>
 <p>Avoidance beats reduction. Scope beats patch. Don&#39;t-open beats mitigate. This isn&#39;t timid design. It&#39;s plain design. Every door you don&#39;t open is a residual risk you don&#39;t have to name, mitigate, monitor, re-test, or apologise for.</p>
-<p><strong>The uncomfortable part, said plainly.</strong></p>
+<p>Expect it to cost you a feature somebody in your company wanted. It costs whoever sells you agents too, this training included: an agent that reaches less is a smaller thing to sell, and it is still the right call.</p>
+<h2 id="the-discipline-is-what-carries">The discipline is what carries</h2>
 <p>Some of your agents are going to be wrong, in ways you won&#39;t catch, and ship output you won&#39;t love. That&#39;s true for every agent in production anywhere in the world right now. The organisations that handle this well aren&#39;t the ones with the best technology. They&#39;re the ones that run the loop openly, name residual risks plainly, and close doors they don&#39;t need to open.</p>
 <p>You can&#39;t buy certainty. You can run a loop. Today the loop runs once, on your own system, first with the policy files raw and then with two reusable lenses doing the expert work. Damn, this is complex stuff. It will still be complex when the next agent gets built. The discipline is what carries.</p>
 <p>Read the reports. Pick a risk. Apply a mitigation. Name what&#39;s left. Decide.</p>
@@ -4217,11 +4309,10 @@ When you&#39;re done, read back the Security operating rules section and copy th
 <p>It is also the simplest sharing move you have built so far. Give a teammate the skill, install it in their runtime, and they can call the same method without reconstructing your prompt history. That does not make it a deployed service or solve ownership. Module 7 compares this skill-shaped handoff with three other sharing shapes: shared context, shared output, and an interface.</p>
 <h2 id="key-concepts">Key Concepts</h2>
 <ul>
-<li><strong>Certainty is a fantasy; the discipline is the answer.</strong> Agents add non-determinism, unbounded inputs, and emergent tool use on top of security work. You never get a proof, you get a loop, and what remains after it you name and accept on record.</li>
-<li><strong>Policy files first, reusable expertise second, two lenses in one check you authored.</strong> The files in <code>module-4/policies/</code> are source material: run them raw once, then package the useful check as a personal skill, which is how an agent borrows expertise. One lens carries what your company decided is off-limits, the other named risk patterns and an access review. You did not have to become a security specialist; you had to know what mattered and dictate it.</li>
-<li><strong>Prompt injection is a class, not a footnote.</strong> Direct injection arrives in the user&#39;s input, indirect in a source the agent retrieves. Both turn well-formed English into the attack surface, which classical perimeter misses.</li>
-<li><strong>&quot;I can&#39;t tell&quot; is a real answer.</strong> Most rows land here: not failures, the plain state of a non-deterministic system. Closing one takes evidence.</li>
-<li><strong>Mitigations are layered, not replacements.</strong> Scope, split, filter, gate, review sit on top of network controls, access management, logging. Concluding that the agent check replaces security ships a breach.</li>
+<li>Certainty is not on offer; the loop is: assess, mitigate, reassess the residual, decide.</li>
+<li>Well-formed English is the attack surface, direct or through a source the agent reads.</li>
+<li>&quot;I can&#39;t tell&quot; is a real answer; closing it takes evidence.</li>
+<li>Agent mitigations sit on top of normal security controls, never in place of them.</li>
 </ul>
 <h2 id="bring-to-module-5">Bring to Module 5</h2>
 <p><strong>One sentence per case: &quot;the missing organisational check was X.&quot;</strong> Both cases are named in the pre-reads that follow. Module 5 opens on what a check would have caught, and the sentence is what you check it against.</p>
@@ -4283,7 +4374,6 @@ When you&#39;re done, read back the Security operating rules section and copy th
 <p>Once the two sentences are saved, end this module&#39;s <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 5 starts fresh at <code>~/Documents/agents-101/</code>.</p>
 <h2 id="next">Next</h2>
 <p>The agent is scoped, the residual risk is named. But the output <em>inside</em> the scope. Can you trust what it actually says?</p>
-<p>Remember also: agent actions start as text. A tool call, an email draft, a CRM update, a database change, a ticket comment, before any of those touch another system, they are words the agent produced and another system obeys. If the output is wrong, the action built from it will be wrong too. Module 5 starts there.</p>
 
 </section>
 
@@ -4305,50 +4395,57 @@ When you&#39;re done, read back the Security operating rules section and copy th
 <p>Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at <code>~/Documents/agents-101/</code>.</p>
 <p>In Module 3 the synthesized answer sat at an uneasy distance: you&#39;d stake your reputation on some of it without knowing which. Your Module 4 residuals stay named, not solved; that is a different axis.</p>
 <p>This module is the rescue. Not full closure: your Module 3 doubt and your Module 4 residuals stay where they are. One shape of output, measured, with the limits the judge can&#39;t reach named on its face. Module 6 turns the benchmark you build here into a check that runs on every build.</p>
-<p>Remember also that agent actions start as text. A tool call, an email draft, a CRM update, a database change, a ticket comment, before any of those touch another system, they are words the agent produced and another system obeys. If the words are wrong, the action will be wrong too.</p>
-<p>This module measures what the system actually says inside its scope. Four detectors run on the same claim pool, a scorer adjudicates 30 claims against the sources, and you walk out with the first judge you can defend.</p>
+<p>Module 3 named text as the place where action starts. This module measures what the system actually says inside its scope. Four detectors run on the same claim pool, a scorer adjudicates 30 claims against the sources, and you walk out with the first judge you can defend.</p>
 <section class="phase phase--lecture" id="lectures-grounded">
 <div class="phase-kicker">Lecture</div>
 
 <h1 id="lecture-grounded-and-four-candidates-to-measure">Lecture: Grounded, and four candidates to measure</h1>
+<h2 id="there-is-truth-out-there">There is truth out there</h2>
 <p>There is truth out there. Your sources carry shards of it. Your agent, left to itself, has no model of truth, only a model of what usually comes next in language that looks like yours.</p>
 <p>When you ask it for something your sources support, it produces grounded output. When you ask it for something your sources don&#39;t support, it still produces something. The difference between those two states is invisible in the tone of the output. That&#39;s the whole problem.</p>
-<p>The four detection techniques reveal different failure shapes. Against the Mata v. Avianca pre-read, source triangulation caught an unsourced &quot;small firm&quot; descriptor and an unsupported &quot;ten minutes&quot; estimate. Entailment caught the story making Schwartz&#39;s timeline too clean. Citation integrity caught a direct quote that did not appear in the linked sanctions order. Counter-evidence found a source conflict where CNBC blurred the $5,000 sanction and the court order was more precise. Even a careful teaching case benefits from the check.</p>
-<p>After revision, source triangulation, entailment, and citation integrity came back clean. Counter-evidence still found the CNBC-vs-court-record conflict on the $5,000 sanction, and the revised story followed the primary court record. A later rerun caught one more smoothing the earlier passes had walked past. That is the loop: check, tighten, rerun, keep the remaining uncertainty visible.</p>
-<p><strong>Why this happens, in one sentence.</strong></p>
-<p>Large language models generate the next likely word. Not the next true word; the next likely one. They&#39;re trained on text where people spoke confidently, cited specifically, wrote fluently, and the models learned to produce language that looks like all of that, whether the underlying material supports it or not. Fluency is not evidence. Confidence is not correctness. The model has no way to tell you which parts of its output are grounded and which are plausible-sounding fill.</p>
-<p>This isn&#39;t a bug that gets patched in the next release. It&#39;s the shape of the technology. Later models will fabricate less; they won&#39;t stop.</p>
-<p><strong>The compound reliability math.</strong></p>
+<p>Every output your agent produces is either connected to truth (to specific files, specific numbers, specific quotes in specific sources) or it isn&#39;t. Connected to truth is grounded. Approximating truth without being tied to it is ungrounded.</p>
+<p>Grounded isn&#39;t &quot;accurate.&quot; A grounded claim can still be wrong, if the source it&#39;s tied to is wrong. Grounded means <em>traceable to a real piece of evidence</em>. Accuracy is a harder question, and an agent alone can&#39;t answer it. Traceability is a mechanical discipline, and an agent CAN be forced into it. Start with grounded.</p>
+<h2 id="mostly-right-ten-times-over-is-mostly-wrong">Mostly right, ten times over, is mostly wrong</h2>
 <p>If an agent were 85% correct on a single step (an illustrative number, picked because it sounds forgivable), that would not sound bad. Eighty-five out of a hundred. You&#39;d forgive that in an intern.</p>
 <p>Now run ten steps. Retrieval, synthesis, formatting, writing, checking, rewriting, summarising, publishing. Ten is not a lot. Ten unverified steps in a row at 85% each would land near 20% end-to-end: one task in five correct, four in five with a defect somewhere, usually somewhere you won&#39;t see. The arithmetic is an illustration, not a measurement; the compounding is what holds.</p>
 <p>A short customer-service loop shows the difference: look up the order, check the policy, draft the reply. Nothing stacks unverified for long. A full workflow with no check anywhere in it compounds every miss. That is the difference between a demo that delights and a production system that leaks.</p>
 <p>The number doesn&#39;t tell you <em>what</em> will go wrong. It tells you that something will. Your job is to design for that, not against it.</p>
-<p><strong>Now flip the math.</strong></p>
+<h2 id="a-test-and-fix-loop-collapses-the-error-rate">A test-and-fix loop collapses the error rate</h2>
 <p>Say your briefing has a 10% fabrication rate: ten ungrounded claims in every hundred. A first pass often lands close to that; treat it as a working prior, not a measurement. You test. Say the detector catches 90% of them, the same prior run in reverse. You fix what the detector flagged. Test again. The detector catches 90% of what&#39;s left. Fix again.</p>
 <p>Round 1: 10% fabricated → 1% after fix.
 Round 2: 1% → 0.1% after fix.
 Round 3: 0.1% → 0.01%.</p>
 <p>The same compounding that destroys single-pass reliability <em>builds</em> loop-based reliability. One generation pass is a trap; a test-and-fix loop is the escape. Three rounds of the illustration land at parts-per-ten-thousand, a place you don&#39;t reach by making one pass better. You reach it by looping.</p>
 <p>Now you&#39;ll run the test side: a benchmark to find the detector that works on <em>your</em> output. The compounding-error math is the problem; the compounding-check math is the answer.</p>
-<p><strong>The word is grounded.</strong></p>
-<p>Every output your agent produces is either connected to truth (to specific files, specific numbers, specific quotes in specific sources) or it isn&#39;t. Connected to truth is grounded. Approximating truth without being tied to it is ungrounded.</p>
-<p>The positive discipline is grounding. The failure mode is fabrication. The failure mode is what makes headlines: the lawyer citing invented case law, the medical chatbot inventing medications, the finance memo with confident numbers nobody can source. But the discipline is what keeps you out of those headlines, and the discipline is grounded.</p>
-<p>Grounded isn&#39;t &quot;accurate.&quot; A grounded claim can still be wrong, if the source it&#39;s tied to is wrong. Grounded means <em>traceable to a real piece of evidence</em>. Accuracy is a harder question, and an agent alone can&#39;t answer it. Traceability is a mechanical discipline, and an agent CAN be forced into it. Start with grounded.</p>
-<p>In the full agent picture, this is the check. The agent can have context, tools, goals, and boundaries, and still produce something fluent but unsupported. A check is what makes the standard repeatable.</p>
-<p><strong>Don&#39;t pick a method. Run the candidates.</strong></p>
+<h2 id="are-you-sure-is-another-fluent-answer">&quot;Are you sure?&quot; is another fluent answer</h2>
+<p>When something comes back and you can&#39;t tell whether it is grounded, the cheap move is to ask the agent. Are you sure? Check that again. What comes back is another answer from the same place the first one came from, in the same confident voice.</p>
+<p>Large language models generate the next likely word. Not the next true word; the next likely one. They&#39;re trained on text where people spoke confidently, cited specifically, wrote fluently, and the models learned to produce language that looks like all of that, whether the underlying material supports it or not. Fluency is not evidence. Confidence is not correctness. The model has no way to tell you which parts of its output are grounded and which are plausible-sounding fill.</p>
+<p>This isn&#39;t a bug that gets patched in the next release. It&#39;s the shape of the technology. Later models will fabricate less; they won&#39;t stop.</p>
+<h2 id="dont-pick-a-method-run-the-candidates">Don&#39;t pick a method. Run the candidates.</h2>
 <p>Somebody tells you <em>&quot;just have the agent read your files before it answers,&quot;</em> or <em>&quot;do a consistency check,&quot;</em> or <em>&quot;prompt it to cite sources.&quot;</em> A single method, presented as the answer. You try it, catch some things, miss others, never know what you missed, and move on feeling vaguely better.</p>
 <p>That&#39;s intuition. The move is empirical.</p>
 <p>You have a briefing. You don&#39;t know which detection method will catch what matters on <em>your</em> output, with <em>your</em> sources, on <em>your</em> strategic question. Nobody does. Not the framework authors, not the blog posts, not the deck on someone&#39;s slide. The only plain answer is to run several candidate methods in parallel and measure which one catches what your benchmark says should have been caught.</p>
+<h2 id="four-candidates-that-fail-differently">Four candidates that fail differently</h2>
 <p>Four candidates, chosen because they fail in different directions, so the scoreboard gives you real spread:</p>
 <p><strong>1. Source triangulation.</strong> For every specific claim, does it appear in at least one file on disk? Catches <em>invention</em>: claims with no source behind them at all.</p>
 <p><strong>2. Entailment.</strong> Does the briefing say more than the sources actually support? A source that says &quot;one customer complained&quot; doesn&#39;t support &quot;the market is unhappy.&quot; Catches <em>overreach</em>: where the claim stretches past what the evidence carries.</p>
 <p><strong>3. Citation integrity.</strong> When the briefing cites a source, does the source actually contain the claim? A citation that doesn&#39;t hold is worse than no citation; it manufactures false authority. Catches <em>citation cargo-cult</em>: citations that look load-bearing but aren&#39;t.</p>
 <p><strong>4. Counter-evidence search.</strong> Instead of looking for sources that support each claim, look for sources that contradict it. One contradiction kills the claim; a hundred supporting files don&#39;t prove it. Catches claims that <em>look</em> grounded under confirmation but crumble under disconfirmation.</p>
+<h2 id="you-have-done-this-before">You have done this before</h2>
+<p>Three stances, one framework. Four detectors, one scoreboard. You make more candidates than you need, and then something picks between them on evidence rather than on whichever one sounded best.</p>
 <p>Four candidates, four different failure modes. In the exercise, they run as four parallel agents on the same 30-claim pool, each writing findings to its own file. A scorer adjudicates the claims against the evidence and measures the detectors: precision, recall, coverage. The scoreboard is the mechanism. You don&#39;t argue with it; you read it.</p>
+<p>The four detection techniques reveal different failure shapes. Against the Mata v. Avianca pre-read, source triangulation caught an unsourced &quot;small firm&quot; descriptor and an unsupported &quot;ten minutes&quot; estimate. Entailment caught the story making Schwartz&#39;s timeline too clean. Citation integrity caught a direct quote that did not appear in the linked sanctions order. Counter-evidence found a source conflict where CNBC blurred the $5,000 sanction and the court order was more precise. Even a careful teaching case benefits from the check.</p>
+<h2 id="the-judge-names-its-own-limit">The judge names its own limit</h2>
 <p>The winner (or an ensemble of the top two) becomes a judge file you carry forward.</p>
-<p><strong>What this buys you.</strong></p>
 <p>Not certainty. Certainty isn&#39;t available. What you buy is a <em>grounded choice about grounding</em>: you know which detector won on your material, you know why, you know what it misses, and the judge file you save plainly names its own blind spot.</p>
 <p>That last clause is the one that matters. Grounded output names what it doesn&#39;t know. A grounded judge names what it can&#39;t catch. Ungrounded output pretends to know everything; a cargo-cult judge pretends to catch everything. The difference looks small on the page. In a decision room, it&#39;s the difference between a memo that holds up and a memo that detonates.</p>
+<h2 id="in-the-full-agent-picture-this-is-the-check">In the full agent picture, this is the check</h2>
+<p>The agent can have context, tools, goals, and boundaries, and still produce something fluent but unsupported. A check is what makes the standard repeatable.</p>
+<p>The positive discipline is grounding. The failure mode is fabrication. The failure mode is what makes headlines: the lawyer citing invented case law, the medical chatbot inventing medications, the finance memo with confident numbers nobody can source. But the discipline is what keeps you out of those headlines, and the discipline is grounded.</p>
+<h2 id="a-drift-signal-never-proof">A drift signal, never proof</h2>
+<p>Run the same briefing twice from the same sources and you can ask a different question: what stays stable, and what drifts?</p>
+<p>That is worth knowing, and it is not the check you are about to build. A claim can be stable and still unsupported, if both runs repeat the same assumption. A claim can be grounded and still come out phrased differently each time. Drift is a warning signal, never proof of fabrication.</p>
+<p>Two runs is a demo, not a measurement. With two, a claim that appears in both could be the model&#39;s pull toward a popular framing, and a claim that drifts could be an edge case in the next sample. The signal firms up somewhere around five to ten runs. A production check wants twenty or thirty.</p>
 <p>Now you run the benchmark. Well, not by hand. You set up four detectors, a claim pool, and a scorer. The agents do the work. You watch the scoreboard fill in. The winner becomes a judge file you keep.</p>
 <p>Next, you create a fresh briefing and extract a 30-claim pool from it. That pool is the benchmark input the rest of the exercise turns on. Keep the main session blind until the claims exist.</p>
 </section>
@@ -4554,81 +4651,6 @@ At the end of the file, add a one-line &quot;Known limit:&quot; — the failure 
 
 
 
-
-
-<section class="phase phase--lecture" id="lectures-self-consistency-after-scoreboard">
-<div class="phase-kicker">Lecture</div>
-
-<h1 id="lecture-self-consistency-after-the-scoreboard">Lecture: Self-consistency after the scoreboard</h1>
-<p>The benchmark you just ran asked one question: <em>is this claim grounded in the evidence?</em></p>
-<p>Self-consistency asks a different question: <em>if the agent writes the briefing again from the same evidence, what stays stable and what drifts?</em></p>
-<p>That is useful, but it is not the yardstick. A claim can be stable and still unsupported if both runs repeat the same bad assumption. A claim can be grounded and still be phrased differently. Drift is a warning signal, not proof of fabrication.</p>
-<p>This is why self-consistency sits after the scoring, not inside the scoring panel. The scoreboard tells you which groundedness detector earned the judge file. Self-consistency shows another shape of uncertainty: the model&#39;s answer may not be reproducible even when the evidence set stays fixed.</p>
-<p>This is optional, and it runs on the screen by default: watch the two briefings come back rather than typing along. Working alone, run it yourself. Either way, you don&#39;t need the output to complete Module 5.</p>
-<p>Two runs is a demo, not a measurement. With N=2, a claim that appears in both could still be the model&#39;s bias toward a popular framing. A claim that drifts could be an edge case in the next sample. The signal starts to firm up around N=5 to 10. Patterns emerge from the noise. For a production check (the kind Module 6&#39;s eval loop wires up), you&#39;d want N=20 to 30, where stability across runs starts to mean something. Today&#39;s two-run is an illustration of a different kind of uncertainty, not yet the full technique you&#39;d ship.</p>
-<p>Claude spawns a subagent that generates a second briefing from the same evidence set, blind to the first run.</p>
-<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Spawn one subagent to generate a second briefing from the same evidence surface.
-
-The subagent reads:
-- `./crux.md`
-- `module-5/evidence-roster.md`
-- the rostered evidence files named in `module-5/evidence-roster.md`
-
-The subagent must NOT read:
-- `module-5/briefing.md`
-- `module-5/claim-pool.md`
-- `module-5/adjudicated-claims.md`
-- `module-5/scoreboard.md`
-- anything in `module-5/detectors/`
-
-Write a one-page briefing on the same challenge to `module-5/briefing-second-run.md`.
-
-When the subagent finishes, do not summarize the briefing in chat. Only confirm that `module-5/briefing-second-run.md` exists.
-</code></pre>
-<p>Claude compares the first and second briefing in chat, naming what stayed, what drifted, and what the groundedness detectors didn&#39;t catch.</p>
-<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Compare the first and second briefing.
-
-Read:
-- `module-5/briefing.md`
-- `module-5/briefing-second-run.md`
-- `module-5/claim-pool.md`
-- `module-5/adjudicated-claims.md`
-
-Show me the comparison in chat with these sections:
-
-1. Stable claims: claims or recommendations that appear in both briefings and are supported by the adjudicated claims.
-2. Drifted claims: same topic, but different number, named entity, recommendation, causal explanation, or framing.
-3. First-run-only claims: claims from the first briefing that disappeared in the second.
-4. Second-run-only claims: claims from the second briefing that did not appear in the first.
-5. Self-consistency issues: claims that are both unsupported or partly grounded AND unstable across runs.
-
-End with three lines:
-- What self-consistency caught that the groundedness detectors did not.
-- What self-consistency cannot prove.
-- Whether the winning groundedness judge should change. Two runs is too few to chase noise; only call for a change if you can name a specific failure class the current judge missed.
-</code></pre>
-<p>The take-home move is not &quot;always run self-consistency.&quot; The take-home move is: have a multi-method judge ready for outputs you ship. Point the same shape at a customer email, a pricing memo, a positioning draft, anything you&#39;d want a check on before it goes out.</p>
-<p>Claude builds a multi-method judge against any other output you want to quality-control.</p>
-<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>I have output I want to quality-control against fabrication. Build me a judge prompt that checks for these failure modes:
-
-- Source triangulation: does every specific claim appear in at least one evidence file?
-- Entailment: does the output say more than the evidence supports?
-- Citation integrity: when a citation is made, does the evidence file actually contain the claim?
-- Counter-evidence search: actively look for sources that contradict each claim, not just ones that support.
-
-Pick at least one of the four to drop or rewrite for the failure modes specific to my output — don&#39;t keep the list as-is.
-
-Ask me what output I&#39;m checking, where my evidence lives, and what short filename to use under `judges/`. Ask one question at a time, wait for my answer, then ask the next; do not show me the question list. Once I&#39;ve answered all three, write the judge as a markdown file at that path. Short heading, one paragraph naming what it checks and why, then the prompt itself (the thing I&#39;d paste at Claude to run the judge). Keep it under 20 lines. End with a one-line &quot;Known limit:&quot; naming what the judge can&#39;t catch.
-
-No preamble. First message is your first question.
-</code></pre>
-</section>
-
-
-
 <h2 id="debrief">Debrief</h2>
 <p>Five minutes. Claude reviews the benchmark and compounds the useful part into the training-root <code>CLAUDE.md</code>: when future sessions should run a groundedness check before trusting or using an output. The evidence is what the scoreboard produced: the evidence roster, claim pool, adjudicated claims, detector outputs, scoreboard, and the judge you saved. Claude updates the operating rules, reports what changed, and you push back on anything that&#39;s off.</p>
 <p>Ask Claude to review the session and update <code>./CLAUDE.md</code> with groundedness operating rules.</p>
@@ -4650,18 +4672,17 @@ When you&#39;re done, read back the Groundedness checks section you just wrote a
 <blockquote>
 <p>Consider automating some of these checks. Not everything. Start with the repeatable, high-cost misses: numbers in external notes, customer names in account summaries, policy claims in internal advice, source citations in briefings. If a future session should never trust that shape of output without a check, write the trigger into <code>./CLAUDE.md</code> now. Module 6 turns that trigger into a loop.</p>
 </blockquote>
-<h2 id="agent-actions">Agent Actions</h2>
+<h2 id="propose-double-check-apply">Propose, double-check, apply</h2>
 <p>Same for agent actions. When the action matters, do not let the agent jump straight from thought to tool. Have it propose the action first, quality-check the proposal against the judge or the relevant source, and only then apply it. Propose, double-check, apply. That is output quality becoming operational safety.</p>
+<h2 id="which-rung-has-this-action-earned">Which rung has this action earned?</h2>
 <p>Read <a href="#the-autonomy-ladder-what-may-the-agent-do">What is an Agent, The autonomy ladder</a> before you decide what the agent may do next. The question is not &quot;do I trust the agent?&quot; The question is which rung this action has earned.</p>
 <p>Having added the checking step before acting, this is also the suitable place to introduce a human-in-the-loop check. You have both the agent-created action proposal at hand and the report on output quality. That means the expert is not reviewing a blank page or a vague concern; they are reviewing the proposed action, the evidence behind it, and the known limit of the check that passed it.</p>
 <h2 id="key-concepts">Key Concepts</h2>
 <ul>
-<li><strong>Benchmarking as a pattern.</strong> N candidates on the same input, scorer measures, winner (or ensemble) is kept. Portable to any quality judgment you&#39;ll automate: tone, brand, compliance, steering.</li>
-<li><strong>The real move is building the thing that benchmarks the detectors.</strong> Run one benchmark and you have seen what evaluating evaluators looks like. It transfers to every future quality question.</li>
-<li><strong>Empirical method selection over authority.</strong> You don&#39;t pick a detector because the docs or a paper said so. You run several against your own output and your own benchmark, and the data names the winner.</li>
-<li><strong>The scoreboard is the artifact.</strong> Precision, recall, coverage, measured per detector on the same claim pool. Read it row by row and you can name why one won and where another lost.</li>
-<li><strong>A judge is narrow on purpose.</strong> The winning judge file says what it catches and names its known limit. Narrow tools that work beat broad tools that pretend.</li>
-<li><strong>Grounded is the discipline; the benchmark builds the check.</strong> A measured judge keeps output connected to the ground when you&#39;re absent. A small benchmark proves the method; production evaluation wants hundreds of claims and adds new cases as versioned evidence. In Module 6, the yardstick stays fixed while the generator improves.</li>
+<li>Grounded means traceable to a source; accurate is a harder question.</li>
+<li>Don&#39;t pick a method; run the candidates and read the scoreboard.</li>
+<li>The winner is a judge that names its own limit.</li>
+<li>The pattern is portable: candidates, benchmark, scorer, winner.</li>
 </ul>
 <h2 id="pre-reads-before-module-6">Pre-reads before Module 6</h2>
 <p>Ethan Mollick, &quot;Garbage Can and Bitter Lesson.&quot;</p>
@@ -4713,10 +4734,11 @@ When you&#39;re done, read back the Groundedness checks section you just wrote a
 <p>Then you saved the winner as <code>judges/groundedness-judge.md</code>.</p>
 <p>That judge was not magic. It was measured judgment, made runnable.</p>
 <p>That is the first kind of eval.</p>
+<h2 id="groundedness-protects-the-floor">Groundedness protects the floor</h2>
 <p>A groundedness eval protects the floor. Every named person or company must appear in the source material. Every number must trace to a file. Every claim must point to evidence or admit the gap.</p>
 <p>It answers: is this attached to the ground?</p>
 <p>Useful. Necessary. Not enough.</p>
-<h2 id="the-second-kind">The second kind</h2>
+<h2 id="steering-raises-the-ceiling">Steering raises the ceiling</h2>
 <p>Imagine two internal mails.</p>
 <p>Both are true. Both cite the right sources. Both avoid overclaiming.</p>
 <p>One is forgettable. The other makes the reader act.</p>
@@ -4729,7 +4751,7 @@ When you&#39;re done, read back the Groundedness checks section you just wrote a
 <p>It does not ask only whether the output avoided failure. It asks whether the output overperformed on the dimension that matters.</p>
 <p>Groundedness protects the floor. Steering raises the ceiling.</p>
 <p>Do not collapse them. A grounded mail can still be useless. A useful mail can still be ungrounded. You need both kinds of judgment if the system is going to earn more autonomy.</p>
-<h2 id="what-you-build-now">What you build now</h2>
+<h2 id="a-yardstick-you-rewrite-is-not-a-yardstick">A yardstick you rewrite is not a yardstick</h2>
 <p>One exercise.</p>
 <p>You take the judge from Module 5 and put it into a loop. The judge stays fixed. The generator changes.</p>
 <p>Round 1 produces a briefing. The judge scores it and writes per-claim feedback. The main session reads the feedback and rewrites <code>./generation-tactic.md</code>. Round 2 runs under the same judge, with the sharper tactic. Then Round 3.</p>
@@ -4740,7 +4762,7 @@ When you&#39;re done, read back the Groundedness checks section you just wrote a
 <p>That is the bitter lesson made practical for one small slice of work: define the outcome, hold the yardstick still, let the system search for a better path.</p>
 <p>And the garbage can is still there. Your sources may be thin. Your memory may be wrong. Your policy may block a file. Your organisation may care about dimensions your judge does not see yet.</p>
 <p>Good. That is not a reason to avoid the loop. That is what the loop is for.</p>
-<h2 id="the-question-to-hold">The question to hold</h2>
+<h2 id="the-answer-is-never-the-eval-passed">The answer is never &quot;the eval passed&quot;</h2>
 <p>As the loop runs, hold one question:</p>
 <p><strong>What would have to be true for this eval to be the right one?</strong></p>
 <p>The answer is never &quot;the eval passed.&quot;</p>
@@ -4755,7 +4777,6 @@ When you&#39;re done, read back the Groundedness checks section you just wrote a
 
 <blockquote>
 <p>Text is easy to inspect, so this module uses it again. The same pattern applies to actions. An agent action starts as text: a proposed mail, a ticket update, a CRM change, a query, a command. Check the proposal before it becomes the action.</p>
-<p>Keep adding connectors to your key systems. Combining insight across systems can surface relationships no single system shows. Progress from you taking actions the agent proposes, to letting the agent take safe actions itself. Stay safe. Start small. Then scale.</p>
 </blockquote>
 <section class="phase phase--exercise" id="exercises-eval-loop">
 <div class="phase-kicker">Exercise</div>
@@ -4896,9 +4917,18 @@ Use these inputs; no preamble, start by writing the first generation tactic file
 <h1 id="when-the-score-stops-moving">When the score stops moving</h1>
 <p>By the last round, the count probably went quiet. Flagged claims dropped toward zero and stayed there. Round four looked like round three. The judge had stopped finding things.</p>
 <p>It is tempting to read that as &quot;the work is done.&quot; That is not what happened.</p>
+<h2 id="a-flat-score-is-information-about-the-judge">A flat score is information about the judge</h2>
 <p>The judge measures one thing. You built it in Module 5 to catch claims that float free of the evidence. It is very good at that one job and blind to everything else. Once the generator stopped floating claims, the judge ran out of things to say. The score went flat because the judge had nothing left to flag, not because the work had nothing left to improve.</p>
 <p>The work kept getting better in a direction the judge was never built to see. Sharper framing. A recommendation that actually commits. A briefing someone would read to the end. None of that is groundedness, so none of it moves the score. A grounded claim can still be vague, obvious, or useless, and this judge will pass it every time.</p>
 <p>This is the thing to carry out of the module. A flat score is real information, but only about the frame the judge can see. The moment the number stops moving is not the moment to walk away. It is the moment the easy signal runs out and your judgment comes back in.</p>
+<h2 id="you-havent-checked-the-judge-yet">You haven&#39;t checked the judge yet</h2>
+<p>The judge has been scoring your work all the way through the loop. Nothing has been scoring the judge.</p>
+<p>You have not checked it against yourself. Take a handful of outputs, score them by hand, and put your verdicts beside the judge&#39;s. Where it passed something you would have sent back, you have found what a flat line cannot show you: the judge and you do not agree as often as the number suggests.</p>
+<p>That is an afternoon, not a project, and you do it once per judge you intend to trust.</p>
+<p>The judge was a separate agent from the generator all along, and that separation is the only reason the score meant anything. A generator that grades itself passes itself. It is still nobody&#39;s job to grade the judge.</p>
+<h2 id="if-the-model-stops-fabricating-what-is-your-judge-for">If the model stops fabricating, what is your judge for?</h2>
+<p>Your judge catches claims that float free of the evidence. That job is real today, and it is also the job most likely to get cheaper. Every model release makes the floor cheaper to hold. No release so far has told anyone what good means in your company.</p>
+<p>So carry the question rather than an answer. If the fabrication your judge was built for mostly stops arriving, what is left for it to check?</p>
 <p>The judge told you what it could. The rest is yours to name.</p>
 <p>That is the question the next lecture opens.</p>
 </section>
@@ -4917,7 +4947,6 @@ Use these inputs; no preamble, start by writing the first generation tactic file
 <p>That was the point.</p>
 <p>Files are the handles. Connectors bring material in. Agents read and write. Judges hold a line. Loops make the next session sharper.</p>
 <p>Small pieces. Big shift.</p>
-<p>At this point the full picture is visible: model, context, tools, goal, loop, checks, boundary, interface. None of those pieces is mysterious on its own. The power comes from arranging them so the system can do real work without losing contact with your intent.</p>
 <p>At the start, you were inside every loop. You read the output. You noticed what was wrong. You fixed the prompt. You tried again.</p>
 <p>That was necessary. It is not the destination.</p>
 <p>The destination is not &quot;the human disappears.&quot; That is the lazy story.</p>
@@ -4939,7 +4968,11 @@ Use these inputs; no preamble, start by writing the first generation tactic file
 <p>A steering eval says: overperform on this dimension. Be more executive-readable. More commercially sharp. More specific. More useful to the person who has to make a decision. More like the standard this team wants to be known for.</p>
 <p>Those are different jobs. Do not collapse them.</p>
 <p>If the agent sends an internal mail that is ungrounded, you have a trust problem. If it sends one that is grounded but vague, forgettable, or politically tone-deaf, you have a usefulness problem. Both matter. One protects truth. One pushes excellence.</p>
-<h2 id="the-human-does-not-disappear">The human does not disappear</h2>
+<h2 id="variety-in-selection-out-memory-keeps">Variety in, selection out, memory keeps</h2>
+<p>You have run this twice now without calling it anything. Something makes more than one candidate. Something else picks. What wins gets written down.</p>
+<p>The three stances and the four detectors were the generating half. The floor eval and the ceiling eval are the picking half. The loop runs all three stages while you are out of the room: the generator makes more than you need, the judge throws most of it away, the tactic file keeps what survived.</p>
+<p>So the two evals are not two instruments on a shelf. They are one mechanism seen at two zoom levels, and the floor is a stage inside it rather than a tool beside it.</p>
+<h2 id="the-human-moves-one-level-up">The human moves one level up</h2>
 <p>The old role is easy to picture. You sit between the agent and the world. Everything passes through you. The agent drafts; you inspect. The agent revises; you inspect again. The agent proposes; you decide whether it is safe.</p>
 <p>That works for one mail.</p>
 <p>It does not work for a system.</p>
@@ -4983,6 +5016,122 @@ Then save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask fo
 <p>You now have two kinds of judgment on disk.</p>
 <p>One keeps the work attached to the ground.</p>
 <p>One nudges it toward the standard you actually want.</p>
+<h2 id="the-better-it-gets-the-less-you-watch">The better it gets, the less you watch</h2>
+<p>Here is the part that does not resolve.</p>
+<p>Every clean week is real evidence the loop is working, and real erosion of your ability to tell when it stops working. Those are the same weeks. Design the loop and never run one yourself, and you lose the eye that made you worth putting in charge of it, slowly enough that nothing announces it.</p>
+<h2 id="when-did-you-last-read-one-yourself">When did you last read one yourself?</h2>
+<p>There is no instrument for this one. There is a question, and it has a date on it: when did you last read one of these yourself, start to finish, without the agent summarising it first?</p>
+<p>If the answer is a month, put one in your calendar. Not a review of the loop. One piece of the work the loop produced, read the way the person receiving it will read it.</p>
+<h2 id="the-full-picture-and-what-it-is-made-of">The full picture, and what it is made of</h2>
+<p>At this point the full picture is visible: model, context, tools, goal, loop, checks, boundary, interface. None of those pieces is mysterious on its own. The power comes from arranging them so the system can do real work without losing contact with your intent.</p>
+<figure class="diagram">
+<svg viewBox="0 0 1200 560" role="img" aria-label="The full agent picture drawn as the loop a runtime actually runs. A model sits in a shaded zone above marked in the cloud. Inside a box labelled your runtime, on your machine, a large circle carries the turn: one, everything so far goes up, the instructions, the tool list and the conversation; two, the model answers with one message; three, the message comes back holding some text and some tool calls; four, each tool call passes a gate marked allowed, runs on your machine, and its result is appended to the conversation; five, if the message held any tool call it goes round again without you, and if it held none the turn ends and the runtime waits for you. The text in the message is shown to you through the interface, a gap in the top-left of a dashed wall labelled boundary, where a person stands one level up; the goal is the message the person sends in. Below the loop a row labelled context holds the conversation so far: instructions and rules, your messages, tool results. Tools on the right, read files, search, run code, tickets, sit inside the wall; send mail, payments, salary sheet and private notes sit outside it, marked kept back. Caption: inside the wall is what you give it, outside is what you keep back." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
+<defs><marker id="a101-hp-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f6b6b"/></marker><marker id="a101-hp-ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f6b6b"/></marker></defs>
+<rect x="0.5" y="0.5" width="1199" height="559" rx="7" fill="#efe6d2"/>
+<rect x="12" y="12" width="1176" height="536" fill="none" stroke="#d6c8a3" stroke-width="1"/>
+<rect x="400" y="26" width="700" height="92" rx="6" fill="#e4dbc4" stroke="#d6c8a3" stroke-width="1" stroke-dasharray="3 5"/>
+<text x="1084" y="46" text-anchor="end" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" letter-spacing="2" fill="#786c56">IN THE CLOUD</text>
+<text x="1084" y="62" text-anchor="end" font-family="Inter,-apple-system,sans-serif" font-size="10" font-style="italic" fill="#786c56">outside the wall by nature</text>
+<rect x="500" y="42" width="300" height="60" rx="5" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2.2"/>
+<circle cx="518" cy="60" r="10" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.8"/>
+<text x="518" y="64" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10" font-weight="700" fill="#2f6b6b">2</text>
+<text x="660" y="66" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="13" letter-spacing="2.5" fill="#1f1a13">MODEL</text>
+<text x="660" y="86" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#4a4234">reads everything so far, answers with one message</text>
+<path d="M 96 150 L 96 530 L 1030 530 L 1030 150 L 250 150" fill="none" stroke="#1f1a13" stroke-width="1.6" stroke-dasharray="7 6"/>
+<path d="M 96 150 L 160 150" fill="none" stroke="#1f1a13" stroke-width="1.6" stroke-dasharray="7 6"/>
+<text x="1018" y="518" text-anchor="end" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" letter-spacing="2.5" fill="#1f1a13">BOUNDARY</text>
+<text x="1018" y="503" text-anchor="end" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">which tools it has, and which calls are allowed</text>
+<rect x="300" y="176" width="580" height="278" rx="7" fill="#e9e0ca" stroke="#786c56" stroke-width="1.4"/>
+<text x="864" y="438" text-anchor="end" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10" letter-spacing="1.5" fill="#786c56">your runtime, on your machine</text>
+<g fill="none" stroke="#2f6b6b" stroke-width="2.6" marker-end="url(#a101-hp-ah)">
+<path d="M 511.0 238.4 A 108 108 0 0 1 669.0 238.4"/>
+<path d="M 686.2 263.0 A 108 108 0 0 1 695.6 334.5"/>
+<path d="M 685.4 362.7 A 108 108 0 0 1 586.2 419.9"/>
+<path d="M 556.6 414.7 A 108 108 0 0 1 493.8 263.0"/>
+</g>
+<text x="590" y="308" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="15" letter-spacing="4" fill="#2f6b6b">LOOP</text>
+<text x="590" y="326" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#4a4234">one turn, then round again</text>
+<circle cx="502" cy="250" r="13" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2"/>
+<text x="502" y="254.5" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" font-weight="700" fill="#2f6b6b">1</text>
+<circle cx="678" cy="250" r="13" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2"/>
+<text x="678" y="254.5" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" font-weight="700" fill="#2f6b6b">3</text>
+<circle cx="692" cy="349" r="13" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2"/>
+<text x="692" y="353.5" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" font-weight="700" fill="#2f6b6b">4</text>
+<circle cx="571" cy="418" r="13" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2"/>
+<text x="571" y="422.5" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" font-weight="700" fill="#2f6b6b">5</text>
+<text x="470" y="258" text-anchor="end" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">everything so far goes up:</text>
+<text x="470" y="272" text-anchor="end" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">instructions, tools, the conversation</text>
+<text x="698" y="243" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">one message comes back:</text>
+<text x="698" y="257" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">some text, some tool calls</text>
+<text x="712" y="345" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">each tool call:</text>
+<text x="712" y="359" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">allowed? then run, here</text>
+<text x="316" y="416" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">any tool call in that message?</text>
+<text x="316" y="430" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">round again, without you.</text>
+<text x="316" y="444" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#1f1a13">none? the turn ends; it waits for you.</text>
+<g stroke="#2f6b6b" stroke-width="1.3" fill="#efe6d2">
+<rect x="628" y="268" width="34" height="12" rx="1.5"/><path d="M 634 272 h 22 M 634 276 h 12" stroke="#786c56" stroke-width="1"/>
+<rect x="623" y="278" width="34" height="12" rx="1.5"/><path d="M 629 282 h 22 M 629 286 h 12" stroke="#a05a2c" stroke-width="1"/>
+<rect x="618" y="288" width="34" height="12" rx="1.5"/><path d="M 624 292 h 22 M 624 296 h 12" stroke="#a05a2c" stroke-width="1"/>
+</g>
+<path d="M 508 238 C 520 190 540 140 556 104" fill="none" stroke="#2f6b6b" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a101-hp-ah2)"/>
+<path d="M 710 104 C 706 150 694 190 684 236" fill="none" stroke="#2f6b6b" stroke-width="2" marker-end="url(#a101-hp-ah2)"/>
+<path d="M 672 238 L 672 192 L 300 192 L 262 176" fill="none" stroke="#2f6b6b" stroke-width="1.6" stroke-dasharray="4 4" marker-end="url(#a101-hp-ah2)"/>
+<text x="480" y="187" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#2f6b6b" paint-order="stroke" stroke="#e9e0ca" stroke-width="5">the text: shown to you</text>
+<path d="M 706 349 L 900 349" fill="none" stroke="#2f6b6b" stroke-width="2" marker-end="url(#a101-hp-ah2)"/>
+<path d="M 866 340 L 866 358 M 874 340 L 874 358" fill="none" stroke="#1f1a13" stroke-width="2"/>
+<text x="870" y="333" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="9" letter-spacing="1" fill="#1f1a13">ALLOWED?</text>
+<path d="M 964 396 L 964 478 L 296 478" fill="none" stroke="#2f6b6b" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a101-hp-ah2)"/>
+<text x="630" y="473" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="9.5" fill="#786c56" paint-order="stroke" stroke="#efe6d2" stroke-width="4">the result, appended to the conversation</text>
+<path d="M 288 400 C 350 380 430 310 492 262" fill="none" stroke="#2f6b6b" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a101-hp-ah2)"/>
+<text x="922" y="212" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12" letter-spacing="2.5" fill="#1f1a13">TOOLS</text>
+<text x="922" y="228" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">what it can call</text>
+<rect x="912" y="244" width="104" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="964" y="263" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">read files</text>
+<rect x="912" y="282" width="104" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="964" y="301" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">search</text>
+<rect x="912" y="320" width="104" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="964" y="339" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">run code</text>
+<rect x="912" y="358" width="104" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="964" y="377" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">tickets</text>
+<text x="1104" y="228" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="9.5" letter-spacing="2" fill="#a05a2c">KEPT BACK</text>
+<rect x="1052" y="244" width="104" height="30" rx="4" fill="none" stroke="#a05a2c" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1104" y="263" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#a05a2c">send mail</text>
+<rect x="1052" y="282" width="104" height="30" rx="4" fill="none" stroke="#a05a2c" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1104" y="301" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#a05a2c">payments</text>
+<rect x="1052" y="440" width="104" height="26" rx="4" fill="none" stroke="#a05a2c" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1104" y="457" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#a05a2c">salary sheet</text>
+<rect x="1052" y="474" width="104" height="26" rx="4" fill="none" stroke="#a05a2c" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1104" y="491" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#a05a2c">private notes</text>
+<text x="120" y="300" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12" letter-spacing="2.5" fill="#1f1a13">CONTEXT</text>
+<text x="120" y="316" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">the conversation so far</text>
+<rect x="120" y="330" width="166" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="203" y="349" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">instructions, rules</text>
+<rect x="120" y="368" width="166" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="203" y="387" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">your messages</text>
+<rect x="120" y="406" width="166" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="203" y="425" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">tool results</text>
+<g stroke="#2f6b6b" stroke-width="1.3" fill="#efe6d2">
+<rect x="196" y="448" width="34" height="12" rx="1.5"/><path d="M 202 452 h 22 M 202 456 h 12" stroke="#786c56" stroke-width="1"/>
+<rect x="191" y="458" width="34" height="12" rx="1.5"/><path d="M 197 462 h 22 M 197 466 h 12" stroke="#786c56" stroke-width="1"/>
+<rect x="186" y="468" width="34" height="12" rx="1.5"/><path d="M 192 472 h 22 M 192 476 h 12" stroke="#786c56" stroke-width="1"/>
+</g>
+<text x="140" y="60" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12.5" letter-spacing="3" fill="#a05a2c">YOU, ONE LEVEL UP</text>
+<text x="140" y="78" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#4a4234">you draw the wall: what you give it, what you keep back</text>
+<circle cx="205" cy="104" r="8" fill="none" stroke="#a05a2c" stroke-width="1.8"/>
+<path d="M 191 132 C 191 118 219 118 219 132" fill="none" stroke="#a05a2c" stroke-width="1.8"/>
+<path d="M 205 134 L 205 150" fill="none" stroke="#a05a2c" stroke-width="1.6" stroke-dasharray="3 3"/>
+<text x="205" y="172" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" letter-spacing="2.5" fill="#1f1a13">INTERFACE</text>
+<text x="205" y="187" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">where you meet it: your message in, its text out</text>
+<circle cx="150" cy="232" r="14" fill="none" stroke="#1f1a13" stroke-width="1.6"/>
+<circle cx="150" cy="232" r="7" fill="none" stroke="#1f1a13" stroke-width="1.6"/>
+<circle cx="150" cy="232" r="2.2" fill="#1f1a13"/>
+<text x="172" y="229" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" letter-spacing="2.5" fill="#1f1a13">GOAL</text>
+<text x="172" y="243" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">your message: what it works toward</text>
+<text x="600" y="547" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="11" font-style="italic" fill="#2f6b6b">Inside the wall is what you give it. Outside is what you keep back.</text>
+</svg>
+</figure>
+
+<p>You added those parts one at a time, and each one was a single decision: what you give it, and what you keep back.</p>
 <p>That is the new human role in the loop.</p>
 <p>Not doing every pass.</p>
 <p>Not trusting the machine blindly.</p>
@@ -5010,11 +5159,10 @@ When you&#39;re done, tell me in 3-5 lines: what you added, what you sharpened, 
 <p>This is Claude auditing a tactic it helped sharpen. That is acceptable here because the round files and judge notes are the evidence. If the summary sounds too kind, ask the sharper follow-up: <em>&quot;Which rule did you claim to remove but actually kept under another name? Quote both lines.&quot;</em></p>
 <h2 id="key-concepts">Key Concepts</h2>
 <ul>
-<li><strong>Eval as infrastructure.</strong> The judge moves from object to live machinery. It&#39;s not inspected, it&#39;s watched.</li>
-<li><strong>Role separation.</strong> Generation and judging happen in separate agents. The generator does not grade itself.</li>
-<li><strong>Walk-away autonomy.</strong> The system runs; you come back to the notes.</li>
-<li><strong>Fixed judge.</strong> The work gets sharper because the judge stays still. The main session reads what the judge flagged each round and rewrites <code>./generation-tactic.md</code>. The judge doesn&#39;t move. That&#39;s why round 3&#39;s score has anything to say about round 1&#39;s. A yardstick you rewrite is not a yardstick.</li>
-<li><strong>Loop ownership.</strong> One session owns the loop: dispatch generator, dispatch judge, update tactic, repeat. The fan-out shape, now running a quality discipline instead of a content discipline.</li>
+<li>Groundedness protects the floor; steering raises the ceiling.</li>
+<li>The judge stays fixed and separate from the generator; that is why the score means anything.</li>
+<li>A flat score is information about the judge, not the work.</li>
+<li>You design the loop; you no longer sit inside it.</li>
 </ul>
 <h2 id="bring-to-module-7">Bring to Module 7</h2>
 <p><strong>Monday&#39;s first five agent calls, written down</strong>, using <a href="#supplementary-agent-trigger-list" target="_blank" rel="noopener">Agent Trigger List</a>. Pick one call that should run through the eval loop before anyone relies on it, and write the trigger into your working notes. Module 7 is about handing work to other people, and it needs real calls to hand over.</p>
@@ -5049,12 +5197,6 @@ When you&#39;re done, tell me in 3-5 lines: what you added, what you sharpened, 
 <p>The question that shows up on its own: <em>could this help someone else?</em></p>
 <p>Hold that feeling. It&#39;s not a governance question yet. It&#39;s a generous one. At Module 7 it becomes a plan, plainly and against real friction.</p>
 <p>Two questions to warm up: who&#39;s the one person who came to mind just now? And what makes you hesitate about actually handing this to them?</p>
-<h2 id="interview-for-the-job">Interview for the job</h2>
-<p>Start with the move that matters most: <strong>interview for the job.</strong> Your teammate doesn&#39;t want your agent. They want a job done. Your agent, your skill, your output, your interface: any of those is a candidate for hire against whatever they&#39;re using now. That reframe moves the starting question from <em>&quot;what should I share?&quot;</em> (yours) to <em>&quot;what job is my teammate trying to get done, and which sharing shape does it?&quot;</em> (theirs). The first exercise runs that interview, and the agent does the heavy lifting. It reads your memory, drafts the hypothesis, asks you the five to eight questions that plug real holes.</p>
-<h2 id="pick-the-sharing-shape">Pick the sharing shape</h2>
-<p>Then the candidates: <strong>Sharing shapes.</strong> (1) <strong>Share the context</strong> — teammates get your <code>memory/</code>, <code>sources/</code>, <code>CLAUDE.md</code> and build their own agents on top. (2) <strong>Share a skill</strong> — one scoped capability extracted. (3) <strong>Share the output (push)</strong> — scheduled deploy; the output lands where the team already looks. (4) <strong>Share an interface (pull)</strong> — Slack bot / Teams @mention / web form / endpoint; teammates invoke on demand. &quot;Share the whole agent&quot; is a vendor pitch and is not on the list.</p>
-<p>Then test the absorption bottleneck, what must be true for a switch, and why the teammate might return to the incumbent.</p>
-<p>One observation to keep in your back pocket while you run the exercise: <strong>access is not absorption.</strong> Many companies have rolled out access far ahead of trust. People can reach the agent. That does not mean they know when to use it, trust it with real work, or have a way to encounter it in the flow of the day. You&#39;ll feel that gap yourself when your technical plan fills quickly and your people plan stalls on names.</p>
 <section class="phase phase--exercise" id="exercises-share-your-work">
 <div class="phase-kicker">Exercise</div>
 
@@ -5329,6 +5471,45 @@ any dependent Monday entry. Show me both files before saving.
 
 
 
+
+
+<section class="phase phase--lecture" id="lectures-access-is-not-absorption">
+<div class="phase-kicker">Lecture</div>
+
+<h1 id="lecture-access-is-not-absorption">Lecture: Access is not absorption</h1>
+<p>You have a plan now. A shape picked, an owner named or marked unassigned, an assumption you would test first. The rest of this is about the person on the other end of it.</p>
+<h2 id="the-job-comes-first-the-candidate-second">The job comes first, the candidate second</h2>
+<p>You started from the teammate&#39;s job, not from your agent, and the agent did most of that reading: what the person is trying to get done, what they use for it today, what a better week would look like. The outcome sentence you wrote is the contract: minimize or increase something, while doing that job. A candidate that does not move it is not a candidate.</p>
+<p>The interview earned its keep when it found a third outcome past speed and quality: a dependency removed, an anxiety gone, a scope widened. Speed and quality alone means it went shallow.</p>
+<h2 id="you-cannot-share-an-agent">You cannot share an agent</h2>
+<p>Four shapes are on the list. Share the context. Share a skill. Share the output (push). Share an interface (pull). <em>Share the whole agent</em> is not on the list, and it is worth being plain about why.</p>
+<p>The agent file is a page of instructions. It is not where the work lives. The work lives in the memory you curated, in the corrections you made every time a summary rounded a corner, in the judgement you brought to output that looked fine and was not. Hand someone the agent file and you have handed them the shell of a thing whose contents are still on your disk and in your head. They run it, get a generic answer, and quietly stop.</p>
+<h2 id="three-parts-copy-one-does-not">Three parts copy, one does not</h2>
+<p>An agent is context, a boundary, a set of checks and somebody who answers for what it does. The first three copy in an afternoon. The fourth does not copy at all, which is why the product being sold as a shared agent is always three of the four parts, with the fourth still sitting with whoever built it.</p>
+<p>Accountability is the part with a name on it, and a name does not travel inside a folder.</p>
+<h2 id="access-is-easy-absorption-is-scarce">Access is easy; absorption is scarce</h2>
+<p>Many companies have rolled out access far ahead of trust. People can reach the agent. That does not mean they know when to use it, trust it with real work, or have a way to encounter it in the flow of the day.</p>
+<p>Access is a switch somebody flips, and it completes in a minute. Absorption happens in other people&#39;s weeks, at their pace, for their reasons. The two get reported as one number and they are not one thing.</p>
+<h2 id="people-absorb-what-they-already-half-know">People absorb what they already half know</h2>
+<p>People take up what they already half know. That is not a statement about willingness. It is the plain shape of how anyone absorbs anything: you recognise the new thing by what it resembles in the work you already do, and if it resembles nothing, you have nowhere to put it.</p>
+<p>Michael Polanyi, a philosopher of science, had the line for it: <em>we know more than we can tell.</em> Your agent runs on the part of your work you could never have written down. The teammate you are handing it to has their own version of that, about their own work, and it is the only place your thing can land.</p>
+<h2 id="this-is-the-interface-piece">This is the interface piece</h2>
+<p>In the full agent picture, this is the interface piece. It is the first one that has another person on the other side of it.</p>
+<p>Context you chose. Boundaries you set. Checks you wrote. Each of those was a decision you could make and remake on your own. The interface is the first piece whose shape depends on somebody whose calendar you do not control.</p>
+<h2 id="what-would-have-to-be-true-for-them-to-switch">What would have to be true for them to switch?</h2>
+<p>Every job your teammate has already has a current solution: a spreadsheet, a colleague, a gut call that has worked well enough for years. Your candidate is not competing with nothing. It is competing with that.</p>
+<p>So ask the question the other way round. Not <em>how do I get them to adopt this?</em> but <em>what would have to be true for them to switch?</em> The answers come back small and specific. It has to land where they already look. It has to be right the first time they try it. Somebody they trust has to have used it first and said so.</p>
+<h2 id="the-one-piece-you-dont-decide">The one piece you don&#39;t decide</h2>
+<p>Every piece so far was yours to decide. This one is not. You can hand someone the context, the skill, the output, the interface. Whether they pick it up is their decision, made for their own reasons, on a Tuesday you will not be in the room for.</p>
+<p>The thing you would most like to hand over is the one thing that will not go. You cannot hand over what you learned getting here. You can hand over four things, and none of them is what you learned.</p>
+<h2 id="the-people-plan-stalls-on-names">The people plan stalls on names</h2>
+<p>You felt this an hour ago. The technical plan filled quickly. The people plan stalled on names.</p>
+<p>That was not the exercise being hard. That was the exercise being accurate. A missing name is a finding: it marks the part of this that is not built yet, and it is the part that decides whether any of the rest gets used.</p>
+<p>So the move stays small. One name. One person whose week this would change, who would tell you plainly if it did not.</p>
+</section>
+
+
+
 <h2 id="debrief">Debrief</h2>
 <p>Five minutes. Claude reviews the sharing deliverable and sharpens whichever sharing-artifact file you produced (a skill file, an interface description, an output schedule, a context export). The evidence is what&#39;s in your Module 7 folder: your JTBD outcome statement, the patterns you picked, the technical plan, the people plan, assumptions, and failure stories. Claude reviews, rewrites the sharing artifact in place, reports what changed. You push back on anything that&#39;s off.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -5350,12 +5531,10 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
 <p>Push back where Claude&#39;s summary is wrong. <em>&quot;The teammate&#39;s job wasn&#39;t vague, you just didn&#39;t see it&quot;</em> / <em>&quot;you pulled too much out of the skill, put the edge cases back.&quot;</em> The artifact: the sharpened sharing file itself, plus one line in your Module 7 next-step file naming the first move. Save the conversation. It&#39;s the bridge to when work resumes.</p>
 <h2 id="key-concepts">Key Concepts</h2>
 <ul>
-<li><strong>Outcome first.</strong> The teammate&#39;s job comes first, your candidate second. The agent does the heavy lifting: your memory already carries most of that job, so it reads what&#39;s on disk, drafts a Jobs-to-be-Done hypothesis, then asks a bounded set of questions. Not freeform chat.</li>
-<li><strong>Design contract.</strong> The outcome statement is <em>&quot;Minimize/increase [metric] when [doing the job].&quot;</em> A candidate that doesn&#39;t move the metric isn&#39;t a candidate.</li>
-<li><strong>Third outcome.</strong> This is where the interview earns its keep: dependency removed, anxiety reduced, scope expanded, workload shifted. Speed and quality alone means it went shallow.</li>
-<li><strong>Absorption.</strong> Access is easy; absorption is scarce. The technical plan fills quickly; the people plan stalls on names.</li>
-<li><strong>Sharing shapes.</strong> Use the four sharing shapes as a design language, not a menu. &quot;Share the whole agent&quot; is not on the list. Pick one to three, stack where useful.</li>
-<li><strong>Replacement test.</strong> Roger Martin&#39;s question is the test: <em>&quot;what would have to be true for them to replace it?&quot;</em> The people plan weighs equal to the technical plan. Every job already has a current solution: Excel, a colleague, gut feel.</li>
+<li>The job comes first, the candidate second; the outcome sentence is the contract.</li>
+<li>Access is easy; absorption is scarce.</li>
+<li>Four ways to share: the context, a skill, the output (push), an interface (pull). Never the whole agent.</li>
+<li>What would have to be true for them to switch?</li>
 </ul>
 <h2 id="bring-to-module-8">Bring to Module 8</h2>
 <p><strong>Run <code>module-7/monday.md</code>.</strong> Test one assumption. Ask for one name. Talk to one person. Module 8 works from what happened when the sharing plan touched the real organisation, so it needs a plan that has touched one.</p>
@@ -5653,6 +5832,47 @@ Write the plan for the next two weeks. Include sequence, owners, agent dependenc
 
 
 <p>The three thinking disciplines you applied in Module 7 on your own sharing problem run again here at room scale on the sponsor challenge. Finding the <em>crux</em> shapes each initial stance. Cross-checks force agents to notice rival evidence before they publish proposals. <em>What would have to be true?</em> and <em>pre-mortem</em> appear when agents criticize the synthesizer&#39;s choices and propose better ideas. Same disciplines, named inline in the prompts. Bigger instrument.</p>
+<section class="phase phase--lecture" id="lectures-where-is-this-all-going">
+<div class="phase-kicker">Lecture</div>
+
+<h1 id="lecture-where-is-this-all-going">Lecture: Where is this all going?</h1>
+<p>The room just ran on its own for an hour. Agents read each other&#39;s files, argued, published, and something at the centre chose. Before the folder closes, four things about what you saw, and two questions you take with you.</p>
+<h2 id="you-described-it-something-else-built-it">You described it; something else built it</h2>
+<p>You wrote down what an agent should do and you did not build it. Something else read your files and handed it back running.</p>
+<p>The parts did not change. Context, a goal, tools, checks, a boundary, a loop. Every one of them is still a piece you can name and still a piece you decide. What changed is who assembles them.</p>
+<p>That is the whole shift, and it is smaller than it feels. You did not lose a job. You moved from writing the assembly to specifying it, and specifying it well is the harder half.</p>
+<h2 id="count-the-folders-the-kernel-cites">Count the folders the kernel cites</h2>
+<p>Everyone in the room had access to every other folder. Nobody was blocked from anything, and it took about a minute to set up.</p>
+<p>Now open the kernel and count how many folders it actually cites.</p>
+<p>That ratio is your rollout, in miniature, with the politics removed. Access was instant and complete. What the room took up from each other is the smaller number. Nothing about that is a failure of the room. It is the shape of the thing at every scale you will meet it, and it is worth knowing the shape before you promise a board a percentage.</p>
+<h2 id="agents-reading-agents-must-cite">Agents reading agents must cite</h2>
+<p>Every agent in the forum published what it read, what it could not find, and what it inferred without a source, and every claim in a proposal names the file it came from. That rule was not politeness. Without it, agents reading agents invent each other&#39;s memory, smoothly, and the kernel comes out confident and unsourced. The citations are what let you count the folders at all.</p>
+<h2 id="three-walls-past-the-laptop">Three walls past the laptop</h2>
+<p>The plan names which wall your company hits first, and there are three: data access, the runtime platform, and discoverability. Seeing one of them named is the sign the kernel worked on something real. A plan with no wall in it was written about a laptop.</p>
+<h2 id="the-parts-hold-the-model-rotates">The parts hold; the model rotates</h2>
+<p>The list of parts is stable. Context, tools, boundary, checks, loop, interface. That list would have been the same list a year ago and it will probably be the same list a year from now.</p>
+<p>What the model can do with each part is not stable. It moves without asking you, on somebody else&#39;s release schedule.</p>
+<p>So the assembly is the durable half, and the assembly is what you spent your time on. Not a tool, not a vendor&#39;s console, not a prompt that worked once.</p>
+<h2 id="which-half-of-this-is-obsolete-next-year">Which half of this is obsolete next year?</h2>
+<p>Some of what you built here will be obsolete within a year. That is not a warning, it is arithmetic: every piece sits on a model that gets replaced.</p>
+<p>The interesting question is which half. The judge you wrote, or the thing it judges? The memory, or the work of curating it? Nobody in this room knows yet, and the people running this training do not know either.</p>
+<p>Hold the question rather than the answer. A plan that survives a model release is one that was written knowing a model release was coming.</p>
+<h2 id="will-your-organisation-learn-faster-than-the-model-changes-underneath-it">Will your organisation learn faster than the model changes underneath it?</h2>
+<p>That is the question to carry out of here, and nothing today answers it.</p>
+<p>The model gets better on its own, for free, whether or not you do anything at all. What your company knows about its own work gets better only when somebody writes it down and somebody else picks it up. Those two curves are running at once, and only one of them responds to anything you do.</p>
+<p>If the second curve is flat, every model release makes the gap wider, not smaller.</p>
+<h2 id="what-would-change-our-mind">What would change our mind?</h2>
+<p>You ran three disciplines in the forum: find the crux, ask what would have to be true, run a pre-mortem. Here is the fourth, and it is the one that keeps a plan true after the room empties.</p>
+<p>Ask it of the kernel your room just produced. <em>What would have to show up for us to drop this?</em></p>
+<p>If nobody can answer, what you have is a belief with a schedule attached. You will find that out eventually. Finding it out now costs a sentence.</p>
+<h2 id="a-flywheel-not-a-graduation">A flywheel, not a graduation</h2>
+<p>Nothing here closed. The memory is still short. The judge is still yours, and still unchecked in the places you have not looked. The kernel came out of the same move as your first briefing: agents read, agents argued, something chose, and nothing in the room checked it. Hold that doubt the way you held it then. The agent set your room produced has a first item, not a last one.</p>
+<p>What you leave with is the turning: a system that got sharper because you used it, and gets sharper again on the next problem, and on the one you do not yet know you have.</p>
+<p>That is not a graduation. It is the first turn.</p>
+</section>
+
+
+
 <h2 id="debrief">Debrief</h2>
 <p>Five minutes. Claude reviews the session and sharpens whichever file carried the load: the central synthesizer&#39;s rules, the strategy kernel, the agent set, the plan, or the rules that governed how the agents argued. The evidence is what you produced: the context manifests, stances, cross-checks, proposals, selection board, synthesizer-injected midpoint instructions, critiques, pushbacks, kernel, agent set, and plan. Claude reviews, rewrites the most load-bearing file in place, reports what changed. You push back on anything that&#39;s off.</p>
 <p><strong>Prompt</strong> <em>(Builder Claude)</em></p>
@@ -5677,14 +5897,15 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
 <p>Read Claude&#39;s summary. Push back where it&#39;s wrong. Some of what didn&#39;t resolve shouldn&#39;t resolve. It&#39;s the live edge of the work. The flywheel that sharpened the file just now is the one that will sharpen it again after Agents 101, on the next problem, on the one after that, on the one you don&#39;t yet know you have. You just watched it compound.</p>
 <h2 id="key-concepts">Key Concepts</h2>
 <ul>
-<li><strong>Self-improvement</strong>: each cycle sharpens the next. Proposals read sharper than initial stances because the agents cross-check before publishing, then critiques sharpen the synthesizer&#39;s selection.</li>
-<li><strong>Org capability</strong>: many agents reading and proposing in parallel produce a kernel, agent set, and plan with every recommendation traceable to the file it came from.</li>
-<li><strong>The three predictable walls past the laptop loop</strong>: data access, runtime platform, discoverability. The plan already names which wall bites first for your company. Seeing them is the sign the kernel works.</li>
-<li><strong>Thinking disciplines you take home as named moves.</strong> Crux, <em>what would have to be true?</em>, pre-mortem aren&#39;t props and they aren&#39;t installed skills. They&#39;re portable disciplines you ask Claude to run on any decision too big to eyeball.</li>
-<li><strong>Grounding when agents read agents.</strong> Every agent publishes what it read, what it couldn&#39;t find, and what it inferred without a source. Every claim cites the file it came from. Without that rule, agents reading agents smoothly hallucinate each other&#39;s memory.</li>
+<li>Each cycle sharpens the next: cross-check before publishing, critique before selection.</li>
+<li>Agents reading agents must cite, or they invent each other&#39;s memory.</li>
+<li>Three walls past the laptop: data access, runtime platform, discoverability.</li>
+<li>The parts hold; the model rotates. Will your organisation learn faster?</li>
 </ul>
 <h2 id="next">Next</h2>
-<p>The plan you just produced is a set of assumptions dressed as work: label them, start the concurrent pieces, and design experiments for the uncertain ones. Agents 101 is the first of five steps, with Make Your Own next; you leave with a flywheel, not a graduation.</p>
+<p>The plan you just produced is a set of assumptions dressed as work: label them, start the concurrent pieces, and design experiments for the uncertain ones.</p>
+<p>We could have spent today building you one impressive agent to show on Friday. It would have demoed well and it would have been the wrong thing to sell you, because the agent that matters in six months is one nobody in this room has thought of yet, built by somebody who is not you. What you take out of here is the ability to build the one you have not thought of. That is slower, it is harder to put on a slide, and it is the only part that is still worth anything after the model changes.</p>
+<p>You leave with a flywheel, not a graduation.</p>
 
 </section>
 
@@ -6370,6 +6591,32 @@ Keep it practical enough that I can use it on Monday.
                 { slug: 'getting-going',             title: 'Getting going + context' },
                 { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
                 { slug: 'earn-the-trust',            title: 'Earn the trust' }
+            ]
+        },
+        // Barebones edition of Agentic Engineering 101: the whole training, same
+        // six modules, same files — the difference is the deck. `deck:
+        // 'barebones'` opens Slides capped at tier 1 (core only) and keeps every
+        // Recognition (T2) and Story (T3) slide in place under a "Not included"
+        // watermark instead of dropping it. A plain barebones toggle answers
+        // "what do we cover?"; this edition also answers "what are we not
+        // covering?", which is the question a room handed a shortened day asks
+        // first. The long-read is untouched: nothing is cut, so nothing is lost.
+        // `B` at the lectern still swaps to the unmarked full deck.
+        //
+        // Build student-facing:
+        // node scripts/build-workbook.js acme agentic-engineering-101-barebones --no-trainer-docs
+        'agentic-engineering-101-barebones': {
+            contentKey: 'agentic-engineering-101',
+            deck: 'barebones',
+            label: 'Agentic Engineering 101 — Barebones',
+            lede: 'Six modules for software engineers. The core spine of the training; the theory around it is marked, not taught.',
+            modules: [
+                { slug: 'getting-going',             title: 'Getting going + context' },
+                { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
+                { slug: 'earn-the-trust',            title: 'Earn the trust' },
+                { slug: 'run-the-first-experiment',  title: 'Run the first experiment' },
+                { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' },
+                { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
             ]
         },
         // Team-track variant of Agentic Engineering 101: four sittings, running
@@ -7083,7 +7330,15 @@ Keep it practical enough that I can use it on Monday.
             // textContent (not innerText) — innerText respects CSS rendering
             // and can collapse newlines inside <pre><code>; textContent is the
             // DOM text and preserves whitespace deterministically.
-            var text = code.textContent;
+            // Trailing whitespace trimmed: markdown leaves one newline before
+            // </code>, so an untrimmed copy hands a shell block to the terminal
+            // already-entered (it runs on paste instead of waiting to be read)
+            // and puts the reader's cursor past a prompt that ends on "Shape:".
+            // End only — interior blank lines and leading indentation are the
+            // prompt's own shape and must survive verbatim. The text/html
+            // flavour below is built from this same string, so both flavours
+            // trim together and the two pastes stay identical.
+            var text = code.textContent.replace(/\s+$/, '');
             var done = function () {
                 btn.textContent = 'Copied';
                 btn.classList.add('copy-btn--copied');
@@ -7859,6 +8114,9 @@ Keep it practical enough that I can use it on Monday.
   // `<!--tier:N-->` markers in the markdown arrive as hidden `.slide-tier`
   // blocks (curriculum.js expandTiers). Deck-only chrome: a small corner token
   // telling the trainer how skippable the slide is. Untagged slides = core.
+  // The watermark a barebones edition puts on the slides it does not cover.
+  // One string, used by the slide itself and by the rail row beside it.
+  var EXCLUDED_LABEL = 'Not included';
   var TIER_INFO = {
     '1': 'Core — the work ahead depends on this slide',
     '2': 'Recognition — names what the room already did; skippable under time pressure',
@@ -7903,8 +8161,16 @@ Keep it practical enough that I can use it on Monday.
 
   // Split one doc container (a whole doc, or one `.phase` section) into slides.
   // Runs decoratePatterns first. Returns an array of slide descriptors.
+  // Every call is one source doc — a lecture, an exercise, a run of module
+  // prose. `docId` stamps that provenance onto the slides so a later pass can
+  // ask "which slides does this cover own?" and get the doc's answer rather
+  // than a guess from deck position. Position lies: an inlined lecture is
+  // followed by the MODULE's Key Concepts with no divider in between.
+  var DOC_SEQ = 0;
+
   function buildSingleDoc(container, o) {
     o = o || {};
+    var docId = ++DOC_SEQ;
     decoratePatterns(container);
     var kids = Array.prototype.slice.call(container.childNodes).filter(function (n) {
       return !(n.nodeType === 1 && n.classList && n.classList.contains('phase-kicker'));
@@ -7945,6 +8211,7 @@ Keep it practical enough that I can use it on Monday.
         if (m) {
           var pd = makeDivider('Phase ' + m[1], m[2].trim(), null, o.dark);
           pd.phaseNum = +m[1];
+          pd.docId = docId;
           out.push(pd);
           h2.textContent = m[2].trim();
         }
@@ -7970,7 +8237,7 @@ Keep it practical enough that I can use it on Monday.
       var title;
       if (g.isCover) title = docTitle || o.title || 'Cover';
       else { var hh = body.querySelector('h2'); title = hh ? textOf(hh) : 'Slide'; }
-      out.push({ el: sec, title: title, navLabel: title, isCover: g.isCover, isDivider: false, tier: tier, tierTagged: tagged });
+      out.push({ el: sec, title: title, navLabel: title, isCover: g.isCover, isDivider: false, tier: tier, tierTagged: tagged, docId: docId });
     });
     return { slides: out, title: docTitle };
   }
@@ -8129,27 +8396,66 @@ Keep it practical enough that I can use it on Monday.
       Array.prototype.forEach.call(s.el.querySelectorAll('[id]'), function (n) { claimAnchor(anchors, n.id, k); });
     });
     var maxTier = opts.maxTier == null ? 3 : +opts.maxTier;
+    // `markExcluded` is the barebones edition's other half: the same tier cap,
+    // but the over-tier slides STAY in the deck wearing a "Not included"
+    // watermark. A cut deck answers "what do we cover?"; a marked deck answers
+    // "what are we not covering?" — the question a reader of a shortened
+    // edition actually has. Nothing is filtered here, so numbering, anchors
+    // and srcIndex are the full deck's and need no remap.
+    var markExcluded = !!opts.markExcluded, excluded = 0;
+    var cut = slides.map(function (s) {
+      return !s.isDivider && !s.isCover && +(s.tier || 1) > maxTier;
+    });
+    // A doc whose every content slide is out of scope goes with them, cover and
+    // all. Real case: M5's two closers are 4xT2/3xT3 and 4xT2/2xT3, so barebones
+    // empties both. A SECTION divider is different — a module always keeps
+    // something — and the training cover (no secCode) is the deck's own front
+    // door, never dropped. `coverCut` remembers which covers the sweep took, so
+    // the marked edition can DROP them while it marks everything else: a title
+    // slide for a lecture the edition does not give is the one thing worth
+    // hiding outright, since it announces a section and then delivers a stack of
+    // watermarks (Antti 2026-09-01, on `ironies-of-automation`).
+    var coverCut = [];
     if (maxTier < 3) {
-      var cut = slides.map(function (s) {
-        return !s.isDivider && !s.isCover && +(s.tier || 1) > maxTier;
-      });
-      // A doc whose every content slide went takes its own cover with it, or the
-      // deck announces a lecture that is no longer there. Real case: M5's two
-      // closers are 4xT2/3xT3 and 4xT2/2xT3, so barebones empties both. A
-      // SECTION divider is different — a module always keeps something — and the
-      // training cover (no secCode) is the deck's own front door, never dropped.
       slides.forEach(function (s, k) {
         if (!s.isCover || !s.secCode) return;
-        for (var j = k + 1; j < slides.length; j++) {
-          if (slides[j].isCover || slides[j].isDivider) break;
+        // Scoped by `docId`, so the question is "is every slide of THIS doc
+        // filtered?" — the module's own Key Concepts and Next, which follow an
+        // inlined lecture with no divider between, are somebody else's slides
+        // and cannot vouch for it. In-doc phase dividers are skipped, not
+        // stopped on: an exercise opening "Phase 1: …" owns the steps under
+        // that divider, and treating the divider as the end of the doc is what
+        // once cut every exercise title in AE101 while its steps stayed.
+        var owned = 0;
+        for (var j = k + 1; j < slides.length && slides[j].docId === s.docId; j++) {
+          if (slides[j].isCover || slides[j].isDivider) continue;
+          owned++;
           if (!cut[j]) return;
         }
-        cut[k] = true;
+        if (owned) { cut[k] = true; coverCut[k] = true; }
       });
+    }
+    if (maxTier < 3 && markExcluded) {
+      slides.forEach(function (s, k) {
+        if (!cut[k] || coverCut[k]) return;
+        s.excluded = true;
+        excluded++;
+        s.el.classList.add('slide--excluded');
+        s.el.setAttribute('data-excluded', '1');
+        var wm = el('div', 'slide__excluded');
+        wm.textContent = EXCLUDED_LABEL;
+        s.el.appendChild(wm);
+      });
+    }
+    // What actually leaves the deck: everything filtered (cut edition), or only
+    // the covers of docs the edition does not give (marked edition). One filter
+    // for both, so the anchor remap and the renumber cannot drift apart.
+    var drop = maxTier < 3 ? (markExcluded ? coverCut : cut) : null;
+    if (drop) {
       var keep = [], remap = new Array(slides.length);
       slides.forEach(function (s, k) {
-        remap[k] = cut[k] ? -1 : keep.length;
-        if (!cut[k]) keep.push(s);
+        remap[k] = drop[k] ? -1 : keep.length;
+        if (!drop[k]) keep.push(s);
       });
       // An anchor pointing at a dropped slide resolves FORWARD to the next
       // survivor (backwards to the last one at the tail), so no in-deck link
@@ -8187,7 +8493,8 @@ Keep it practical enough that I can use it on Monday.
         claimAnchor(anchors, n.id, k);
       });
     });
-    return { slides: slides, title: title, anchors: anchors, maxTier: maxTier, total: total };
+    return { slides: slides, title: title, anchors: anchors, maxTier: maxTier, total: total,
+             markExcluded: markExcluded, excluded: excluded };
   }
 
   // Re-attach copy handlers on the cloned deck (listeners don't survive cloneNode).
@@ -8251,9 +8558,11 @@ Keep it practical enough that I can use it on Monday.
     var railHead = el('div', 'deck__rail-head');
     var railTitle = el('div', 'deck__rail-title'); railTitle.textContent = model.title || 'Contents';
     var railMeta = el('div', 'deck__rail-meta');
-    railMeta.textContent = model.maxTier < 3
-      ? slides.length + ' of ' + model.total + ' slides'
-      : slides.length + ' slides';
+    railMeta.textContent = model.markExcluded && model.excluded
+      ? (model.total - model.excluded) + ' of ' + model.total + ' slides included'
+      : model.maxTier < 3
+        ? slides.length + ' of ' + model.total + ' slides'
+        : slides.length + ' slides';
     railHead.append(railTitle, railMeta);
     var railList = el('ul', 'deck__rail-list');
     var railItems = slides.map(function (s, k) {
@@ -8262,7 +8571,8 @@ Keep it practical enough that I can use it on Monday.
         + (s.isDivider ? ' deck__rail-item--divider' : '')
         + (s.el.classList.contains('slide--module') ? ' deck__rail-item--module' : '')
         + (s.isCover ? ' deck__rail-item--cover' : '')
-        + (s.tierTagged ? ' deck__rail-item--tier' + s.tier : '');
+        + (s.tierTagged ? ' deck__rail-item--tier' + s.tier : '')
+        + (s.excluded ? ' deck__rail-item--excluded' : '');
       var btn = el('button', cls, { 'data-index': k });
       var num = el('span', 'deck__rail-num');
       num.textContent = s.isCover ? '•'
@@ -8312,10 +8622,13 @@ Keep it practical enough that I can use it on Monday.
     var modeBtn = null;
     if (opts.onMaxTier) {
       var bare = model.maxTier < 3;
+      var markMode = !!opts.markExcluded;
       modeBtn = el('button', 'deck__mode' + (bare ? ' is-on' : ''), {
         type: 'button',
         title: bare
-          ? 'Barebones: core slides only. Click for the full deck. (B)'
+          ? (markMode
+              ? 'Barebones: recognition and story slides marked "' + EXCLUDED_LABEL + '". Click for the full deck. (B)'
+              : 'Barebones: core slides only. Click for the full deck. (B)')
           : 'Full deck. Click for barebones \u2014 core only, no recognition or story slides. (B)'
       });
       modeBtn.textContent = bare ? 'Barebones' : 'Full deck';
@@ -8396,6 +8709,15 @@ Keep it practical enough that I can use it on Monday.
         startAt = si;
       }
     }
+    // `startAnchor` is an arrival fragment: a second tab opened on an exercise
+    // link lands on the cover otherwise, because the deck has no scroll and the
+    // browser's own fragment jump moves nothing. Resolve it through the same
+    // index the in-deck click handler uses; an unknown fragment changes nothing.
+    if (typeof opts.startAnchor === 'string' && opts.startAnchor) {
+      var arrival = opts.startAnchor;
+      try { arrival = decodeURIComponent(arrival); } catch (err) { /* keep raw */ }
+      if (Object.prototype.hasOwnProperty.call(model.anchors, arrival)) startAt = model.anchors[arrival];
+    }
     go(startAt);
 
     function edge(dir) {
@@ -8463,16 +8785,34 @@ Keep it practical enough that I can use it on Monday.
     var KEY = 'curriculumLayout';
     // Barebones edition: the same deck capped at tier 1 (no T2 recognition, no
     // T3 story). Remembered per reader alongside the layout choice.
-    var TKEY = 'curriculumMaxTier';
+    //
+    // A barebones EDITION (`data-deck="barebones"`, set from the registry) flips
+    // both defaults: the deck opens capped at tier 1, and the capped-out slides
+    // stay in it wearing a "Not included" watermark rather than vanishing — the
+    // reader of a shortened edition can see what the full one covers. Its
+    // remembered choice gets its own storage key, or a full-deck workbook read
+    // earlier on the same origin would quietly un-barebones the edition.
+    var edition = document.body.getAttribute('data-deck') === 'barebones';
+    var TKEY = 'curriculumMaxTier' + (edition ? ':barebones' : '');
     var mode = (function () { try { return localStorage.getItem(KEY) === 'slides' ? 'slides' : 'read'; } catch (e) { return 'read'; } })();
-    var maxTier = (function () { try { return localStorage.getItem(TKEY) === '1' ? 1 : 3; } catch (e) { return 3; } })();
+    var maxTier = (function () {
+      var v; try { v = localStorage.getItem(TKEY); } catch (e) { v = null; }
+      return edition ? (v === '3' ? 3 : 1) : (v === '1' ? 1 : 3);
+    })();
     var ctl = null, toggle = null;
+    // The arrival fragment, consumed by the first mount only. A second tab
+    // opened on an exercise link (#exercises-<slug>) lands on the cover
+    // otherwise. A later toggle from long-read must not carry it, or the reader
+    // is thrown back to where they came in.
+    var arrival = (location.hash || '').slice(1);
     function apply(startSrc) {
       if (mode === 'slides') {
         if (!ctl) ctl = CurriculumSlides.open(main, {
           title: (document.title || '').replace(/\s+—\s+.*$/, ''),
           maxTier: maxTier,
+          markExcluded: edition,
           startSrc: startSrc,
+          startAnchor: arrival,
           onExit: function () { set('read'); },
           onMaxTier: setTier
         });
@@ -8494,6 +8834,7 @@ Keep it practical enough that I can use it on Monday.
     toggle.classList.add('workbook-layout-toggle');
     host.appendChild(toggle);
     apply();
+    arrival = '';
   })();
 
   var chips = document.querySelectorAll('.workbook-topnav__modules a[data-target]');

@@ -44,11 +44,17 @@ Five minutes. Claude reviews the session and sharpens the rules that govern how 
 {{prompt:a101-m3-debrief-handoff-rules}}
 
 
-Notice what this prompt insists on: harsh audit, two seams minimum, specific evidence (file, pass, what was lost). That last clause is the work. Without it, Claude's review settles into the diplomatic shape it likes: three things went well, one mild wobble, here's the cleaner version. Diplomatic is the failure mode at a handoff seam. The place where things actually go wrong is exactly where the model rounds the corner. The harder ask forces a real audit. You'll get fewer comfortable summaries and more uncomfortable specifics, which is what you want when the rules file has to govern next session's agents.
+## Nothing here checks any of it
+
+Notice what this prompt insists on: harsh audit, two seams minimum, specific evidence (file, pass, what was lost). That last clause is the work. Without it, Claude's review settles into the diplomatic shape it likes: three things went well, one mild wobble, here's the cleaner version. Diplomatic is the failure mode at a handoff seam. The place where things actually go wrong is exactly where the model rounds the corner. The harder ask forces a real audit. You'll get fewer comfortable summaries and more uncomfortable specifics, which is what you want when the rules file has to govern next session's agents. The audit reads how your agents handed work to each other. Nothing in it reads the briefing and tells you whether it is true.
 
 ## Push back on the summary
 
-Read Claude's summary. Push back where it's wrong. *"No, the planner and the reframer really did need to be separate."* *"You missed where the Confluence retriever kept normalising before writing."* The unease you feel about the synthesized briefing is not something to close today. It stays. Hold it as a question, not a fix.
+Read Claude's summary. Push back where it's wrong. *"No, the planner and the reframer really did need to be separate."* *"You missed where the Confluence retriever kept normalising before writing."*
+
+## The doubt stays. Hold it.
+
+The unease you feel about the synthesized briefing is not something to close today. It stays. Hold it as a question, not a fix.
 
 ## Optional memory check before Module 4
 
@@ -59,11 +65,10 @@ Read Claude's summary. Push back where it's wrong. *"No, the planner and the ref
 Memory is a working artefact, sharpened by what it bumps into.
 
 ## Key Concepts
-- **Two multi-agent shapes.** Independent tasks on shared files (long-running, separate, visible). Forked <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> returning to one lead task (quick parallel thinking, bounded return). Different shapes, different territories.
-- **Splitting earns its keep when the agents genuinely can't be one.** Different source access, different dialect, different stance. Faking multi-agent with one prompt is the tell that you didn't need to split.
-- **Seams are where it fails.** Conflicts get dropped, dialects clash, the synthesizer averages everything into beige. Where the pieces meet is what to watch.
-- **Three stances beat one summarizer.** Three <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> (a backward-from-end planner, a *what-would-have-to-be-true* experimenter, and a counterintuitive reframer, the Rory seat) each interrogate the retrieved material from a different angle, harder to do well in one head, in one pass. A fourth <span class="rt-code">subagent</span><span class="rt-cowork">agent</span>, the synthesizer, combines them.
-- **Frameworks are the synthesizer's spine.** Without one, it tends to summarise. With a framework (a strategy kernel by default), it picks.
+- Two shapes: separate sessions on shared files, or subagents returning to one lead task.
+- Split only where the agents can't be one: access, dialect, stance.
+- Three stances beat one summarizer; a framework makes it pick.
+- Seams are where it fails.
 
 ## Pre-reads before Module 4
 
@@ -73,16 +78,22 @@ Memory is a working artefact, sharpened by what it bumps into.
 
 Once the optional check and pre-reads are handled, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 4 starts fresh at `~/Documents/agents-101/`.
 
-## Next
-You just built something that works across the systems you connected. Which means it gained access to those systems. What's the worst thing it could do with that?
+## Bring to Module 4: what's the worst thing it could do with that access?
 
+You just built something that works across the systems you connected. Which means it gained access to those systems.
+
+## Next
 Between now and Module 4, keep working on your real problem. You're close to an agent system that can actually crack your crux. Add an agent to solve a critical dependency? Add a visualisation of the plan? Prompt for what you need. Build.
 
 <!-- maintainer -->
+**Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `when-to-split-an-agent.md`; the stance roll-call lives in the synthesis exercise.
+
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@4d9c4af2 technical@725101ec behavior@725101ec pedagogy@4d9c4af2 strategy@4d9c4af2 slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @12bf0d81: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+
+**Debrief slides (2026-09-23, blend § Titles M3):** Three headers over the prose that already carried them. `## Nothing here checks any of it` sits over the audit-prompt commentary, which names what the audit reads and what it does not. `## The doubt stays. Hold it.` holds the unease beat on its own slide, after the push-back sentences. `## Bring to Module 4: what's the worst thing it could do with that access?` heads the access hand-off, so `## Next` carries the build-between-modules ask alone; the `Bring to Module` prefix is what `scripts/curriculum.test.js` allows between Key Concepts and Next. Nothing here resolves the unease; the mood target below is the constraint.
 
 **Mood target:** Unsettled competence — the synthesis is useful, but the student leaves asking whether it is right.
 

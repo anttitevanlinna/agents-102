@@ -43,3 +43,5 @@ Same move: iterate if it's a topic restatement instead of a real call; save when
 
 **Frameworks:**
 - Rumelt's *Good Strategy / Bad Strategy* — the crux concept. The strategy kernel (diagnosis → guiding policy → coherent actions) shows up later in M3's synthesizer prompt and uses the crux as the diagnosis spine.
+
+**View summary:** You turn a memory full of gathered material into the one question worth answering, Rumelt's crux: the thing that, if solved, releases pressure on everything else. The artifact is a crux file that the retrievers and the synthesis read next.

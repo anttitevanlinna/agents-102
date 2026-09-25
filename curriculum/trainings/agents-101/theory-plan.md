@@ -1,7 +1,6 @@
 # Theory Plan — the right amount of theory for Agents 101
 
-**Status:** v0.1 — 2026-09-22. Enumeration only. Pieces inventoried and tagged; spine and
-placement are candidates for Antti's call; nothing student-facing has moved. Sibling of the
+**Status:** v0.2 — 2026-09-24. Placement shipped on branch `a101-story` (story blend, 2026-09-23: sycophancy and the self-report at the M1 close, beige and the frame at M3, the braid law and Bainbridge at M6, Polanyi at M7, the future question at M8) and the laws that lived only in module Key Concepts moved into their lectures (2026-09-24); Key Concepts are now glance lists. The full agent picture is drawn (`curriculum/figures/agent-picture.md`, shown once at the M6 close). Open: the narrator's scar (`pre-cohort-todos.md` § 9); earned-not-announced, still capped by the Big Idea openers. v0.1 (2026-09-22) was enumeration only; the placement table below is kept as the record of what was proposed. Sibling of the
 AE101 plan at repo-root `theory-plan.md`, same frame, different audience.
 
 **Why this exists.** The step-0 story-depth run (`curriculum/evals/story-depth.md`) found A101's
@@ -41,8 +40,7 @@ named.
 
 Tags: `[borrow:X]` imported parent field · `[rsch:Ln]` continuous-research, evidence level n ·
 `[curr:file]` A101 already enacts or names it · `[grnd]` groundwork / strategy · `[hdl]` on
-the page as a headline, never developed · `[owed]` source stamp owed at placement. **★ =
-backbone candidate.** Named sources are canonical works, cited as origin; live stamps land in
+the page as a headline, never developed · `[owed]` source stamp owed at placement. **★ = backbone candidate.** Named sources are canonical works, cited as origin; live stamps land in
 backing blocks when a piece reaches a student surface, per `check_research_claims §1`.
 
 ### 0 · Axioms `[grnd]`
@@ -135,8 +133,7 @@ backing blocks when a piece reaches a student surface, per `check_research_claim
 
 The half the step-0 cold reads could not name. Every beat exists; no law does.
 
-- ★ **Requisite variety: three stances beat one summarizer; the synthesizer averages to
-  beige.** A controller's repertoire must match the variety of what it steers; one head, one
+- ★ **Requisite variety: three stances beat one summarizer; the synthesizer averages to beige.** A controller's repertoire must match the variety of what it steers; one head, one
   pass, one flat take. `[borrow:Ashby 1956]` `[curr:multi-agent-systems KC, three-minds-one-
   synthesis, when-to-split-an-agent]` The clearest creativity law in the corpus, enacted at M3
   with a named failure mode (*beige*) and no name for the mechanism. Also the split rule:
@@ -294,8 +291,7 @@ the two are compatible, and the training currently says neither out loud. Any sp
 starts from the refrain that is on the page.
 
 AE101's spine is a map of phases. A101's audience does not run phases; they set floors and
-ceilings on work other people and agents do. Candidate spine: **two instruments on one
-loop** — the floor (what must be true before output becomes action) and the ceiling (what
+ceilings on work other people and agents do. Candidate spine: **two instruments on one loop** — the floor (what must be true before output becomes action) and the ceiling (what
 makes the output worth acting on) — with the loop between them the thing the leader designs.
 
 | | Floor — control | Ceiling — creativity | Loop — what compounds |
@@ -310,8 +306,7 @@ are a *tension* (March); in the VSR cycle they are *stages*. Both readings are t
 different zooms, and the student surface should carry the felt tension (beige vs Avianca) and
 let the mechanism arrive at M6 where the training already runs the full cycle.
 
-Two findings fall out of the assembly, as they did for AE101. **The ceiling column is A101's
-uncredited strength** — M3, M5 and M6 all run variety-then-selection, and no reader named it
+Two findings fall out of the assembly, as they did for AE101. **The ceiling column is A101's uncredited strength** — M3, M5 and M6 all run variety-then-selection, and no reader named it
 because it is never called anything. **The future thread is the loop column's missing echo** —
 *the model rotates* is the question the whole training is an answer to, and it is asked once.
 

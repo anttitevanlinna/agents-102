@@ -49,3 +49,5 @@ Before designing a solution, interview for the outcome. Pick the candidate again
 
 **Quality:** compendium-audited 2026-08-25 (writing@a4be944f story@a4be944f technical@a4be944f behavior@a4be944f pedagogy@a4be944f strategy@a4be944f slides@a4be944f)
 - judges @a4be944f: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
+**View summary:** You test the switch the plans assume, name the failure that could hide behind a clean technical build, and turn one assumption into a conversation with the person on the other end. The artifact is a pre-mortem and one question you owe someone real.

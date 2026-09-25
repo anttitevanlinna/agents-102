@@ -156,3 +156,5 @@ The policy files are source material. The reusable check is the expert in the ro
 - Phase 1 is a real raw run, not a preface. The student needs to see the policy files work before packaging makes sense.
 - Phase 3 is the substantive forcing function; the named-attack-class enumeration takes Claude two or three turns to get right (the first draft usually omits indirect prompt injection or blurs supply-chain into "skill trust"). Rushing it ships a reusable check that runs but misses a class.
 - Cowork personal-skill creation is part of packaging, not the later audit. Loading moved to the audit exercise so first-time authoring can end cleanly at the skill and the first loaded use is substantive.
+
+**View summary:** You run the policy files raw against the system you built, then package the useful move as one personal skill with two lenses and four named risk patterns as mandatory checks. The artifact is a reusable security check, ready for its first real audit.

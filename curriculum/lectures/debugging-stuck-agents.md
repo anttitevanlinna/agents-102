@@ -2,6 +2,8 @@
 
 Agents get stuck. They use the wrong source. They average three views into mush. They write the file you asked for, but not the one the next agent needed. They sound confident right before the handoff fails.
 
+## Diagnose before repair
+
 Do not start by tracing everything by hand.
 
 Start by prompting your own stuck system to find the root cause.
@@ -9,6 +11,8 @@ Start by prompting your own stuck system to find the root cause.
 {{prompt:debugging-stuck-agents-1}}
 
 This is rather long. Make your own variant. The important move is not the wording; it is asking Claude to diagnose whether the bug lives in the sources, the processing, or the boundary before you start fixing things.
+
+## Sources, processing, boundary
 
 Then use the answer.
 
@@ -30,6 +34,8 @@ The agent is part of the debugging loop too.
 
 **§6 carve-out, the answer must be theirs (checked 2026-08-20).** Logged in `pre-cohort-todos.md` as a lecture prompt owing the trainer-demo sweep. It is not: it is the recovery move for the multi-agent system the student just watched fail, and the beat ends by having them write the lesson into their own `./CLAUDE.md`. A trainer demo returns the wrong machine's answer. The body now names the student's own stuck system beside the prompt, which is §6's tell. Leave it student-run.
 
+
+**Slides (2026-09-23, blend § Titles M3):** Two `##` slides, `## Diagnose before repair` over the prompt beat and `## Sources, processing, boundary` over the five moves. The second header names the three places the diagnosis can land; moves 4 and 5 apply to all three.
 
 **Time:** 5 minutes.
 

@@ -52,6 +52,8 @@ Optional: ask Claude to recap the three retrievals' core claims next to your `##
 
 You can't tell yet. Three retrievers read plainly, three stances pushed, a framework held the synthesis together, and still, the answer sits at that uneasy distance where you'd stake your reputation on some of it and not all of it, and you can't yet say which is which. That feeling is correct.
 
+Everything you just did is the move this training teaches, run properly. It still handed you something you cannot vouch for.
+
 Hold the doubt. Name it to yourself. Don't fix it here.
 
 **Module 5 builds the tools to name what's off systematically.** For now, let it stew.
@@ -85,3 +87,5 @@ Hold the doubt. Name it to yourself. Don't fix it here.
 **Deferred facilitator notes:**
 - Watch-fors: (a) the synthesis (main-session inline, no separate subagent since 2026-04-29 consolidation) left under-prompted will average three stances into beige — the prompt forces conflict-naming before writing the `## Answer`, but coach any room that slips past it; (b) Rory seat produces dad jokes if the student writes "be witty" — coach toward Sutherland's actual move (reframe the problem, steal an analogy, question the anchor); (c) subagent invocation is new for most participants — demo once, then let them drive.
 - Time budget: ~15 min synthesis + ~7 min Close = ~22 min total. Over 30 = the synthesis sprawled or got rewritten too many times; under 15 = the doubt-naming beat got skipped.
+
+**View summary:** You spawn three subagents inside one session, each holding a different stance against your memory, then have the main session read them back, apply a strategy kernel and write the answer. The artifact is a synthesis you cannot yet vouch for.

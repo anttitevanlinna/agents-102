@@ -74,3 +74,7 @@ Pattern promoted to `check_prompts.md § 35` after AE101 M2 push-back-on-the-pla
 **Canonical home:** this file. New pre-cohort open items go here, not into module files, unless the item is a local maintainer note needed by the trainer while delivering that specific module.
 
 **When an item closes:** delete the bullet. Git log carries the history. Do not annotate "done".
+
+## 9. The narrator's scar (Antti)
+
+- **Point of view is the one storytelling factor A101 does not reach** (Opus 86 against AE101's 95; `curriculum/evals/story-depth.md` § Verification). The rubric's top rung is the narrator's own failure told as an incident. Antti's call 2026-09-23: this will be the story of how his own thinking evolved, written by him. Slots specified in the maintainer blocks of `curriculum/lectures/practice-of-risk.md` (M4, access) and `curriculum/lectures/access-is-not-absorption.md` (M7, absorption); the Mata pre-read paragraph in `curriculum/lectures/grounded.md` is the smaller fallback. When it lands, one Opus point-of-view read closes the loop.

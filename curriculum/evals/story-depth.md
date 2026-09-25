@@ -3,6 +3,113 @@
 Rubric: `story-depth-rubric.md`. Goal spec: `trainings/agents-101/story-depth.md`. One `## Run`
 section per run, newest first; per-judge reports under `story-depth/`.
 
+## Verification on Opus — 2026-09-23 — branch `a101-story`
+
+Three Opus reads, strict: maintainer blocks out of view, and the point-of-view anchor restated
+(the 100 rung needs an incident; admitted uncertainty without one caps at 80).
+
+| | baseline (Sonnet) | verified (Opus) | bar | within 5? |
+|---|---|---|---|---|
+| Frame | 85 | 94 | 95 | yes |
+| Narrative | 84 | 93 | 92 | yes, above |
+| Point of view | 80 | 86 | 95 | **no** |
+| Stance | 88 | 96 | 92 | yes, above |
+
+Per judge: 94/95/80/96 · 94/92/88/96 · 94/93/86/95. The Opus reads agree within two points on
+frame and stance, three on narrative, eight on point of view; the point-of-view spread is the
+judges deciding how much a narrator with a stated experience and no incident is worth, which
+is exactly the anchor's own gap between 80 and 100.
+
+**Three of four factors reach the bar.** Frame from a headline nobody had named to the
+anatomy said out loud at M6 with its breaks at M4, M7 and M8. Narrative from a designed mood
+arc to a turn the student lives through and the training owns (*everything you just did is the
+move this training teaches, run properly; it still handed you something you cannot vouch
+for*), echoed at the close. Stance past AE101's bar: the vendor-pitch line argued rather than
+asserted, the M8 refusal of the demo-agent sale, the M4 sentence naming what less access costs
+the seller. **Point of view stops at 86 and cannot move by any edit the loop is allowed to
+make.** The 100 rung is the narrator's own failure on the page as an incident, and the only
+person who can write that is Antti; the slot is specified in `practice-of-risk.md`'s
+maintainer block (M4, an access scar) with the fallback in `access-is-not-absorption.md`
+(M7, an absorption scar). Nine to fourteen points sit in that one paragraph.
+
+**Factor guard holds.** Three Sonnet scoring judges on the branch, same six learnings as
+step 0, reports in `curriculum/evals/story-depth/guard-factors.judge-{1,2,3}.md`.
+
+| factor | step-0 A101 | branch (median of three) |
+|---|---|---|
+| Depth | 77 | 93 |
+| Forward-looking | 44 | 73 |
+| Applicable in practice | 83 | 97 |
+| Self-challenging | 60 | 87 |
+| Earned, not announced | 56 | 63 |
+
+Per judge: 97/77/100/80/60 · 93/73/80/87/70 · 93/60/97/90/63. No factor below baseline on
+the median; the one dip is judge 2's applicable at 80, on the reading that M8 still names
+the reused shapes inline rather than letting them re-fire silently. All three credit the
+M6 to M8 closing lectures (*When the score stops moving*, *Access is not absorption*, *Where
+is this all going*) for depth and self-challenging, and all three cap earned at the same
+place: every module still opens with a Big Idea that states its thesis before the exercise
+runs it. That cap is by design and was at baseline too.
+
+Loop state: stopped at the verification, three of four met, one blocked on the maintainer's
+own story, no regression on the five factors. Not done by the spec's definition; not a stall
+either. Merging `a101-story` is Antti's call; the branch holds every gate green.
+
+## Quartet, iteration 2 — 2026-09-23 — branch `a101-story`
+
+Two sentences changed (the M8 close echoes the M3 turn; the M4 door slide names what less
+access costs the seller, this training included) and the judges were told to stop reading at
+`<!-- maintainer -->`, which iteration 1's judges had not done.
+
+| | baseline | iter 1 | iter 2 | bar |
+|---|---|---|---|---|
+| Frame | 85 | 92 | 94 | 95 |
+| Narrative | 84 | 82 | 88 | 92 |
+| Point of view | 80 | 76 | 92 | 95 |
+| Stance | 88 | 85 | 90 | 92 |
+
+Per judge: 94/88/92/90 · 92/88/85/88 · 96/90/93/96. Mood guard on iteration 1: HOLDS (three
+beats at 6, all deliberate counter-voices or the M2 close; none punitive, none resolving early).
+
+**Read the point-of-view jump with care.** Two of three judges reached the nineties by crediting
+the training's admissions about its own instruments (*nothing in the room checked it*, *you have
+not checked the judge against yourself*, the M8 refusal of the demo-agent sale) as "the
+narrator's own failure on the page". That is the lenient reading of the anchor. The rubric's
+own text says the failure must land as an incident, not an admitted uncertainty, and no incident
+exists: the scar slot is still empty. Iteration 1's judges, who could see the empty slot named in
+the maintainer notes, scored the same prose 58–78. The gap between 76 and 92 is the reading, not
+the page. Sonnet steers; the Opus verification below decides, with the anchor restated.
+
+## Quartet, iteration 1 — 2026-09-23 — branch `a101-story`
+
+Three Sonnet reads of the branch after the first tranche (slides on every A101 lecture, the M3
+turn sentence, the M4 break, the M6 braid and counter-voices, two new closers, the cuts).
+
+| | A101 baseline | A101 iteration 1 | AE101 bar |
+|---|---|---|---|
+| Frame | 85 | 92 | 95 |
+| Narrative | 84 | 82 | 92 |
+| Point of view | 80 | 76 | 95 |
+| Stance | 88 | 85 | 92 |
+
+Per judge: 95/82/78/96 · 88/82/76/84 · 92/76/58/85.
+
+**Frame moved, the rest did not.** The spine named at M6 and the breaks at M4/M7/M8 read
+through: every judge states the frame in one sentence and shows modules through it. Narrative
+and stance sit inside judge noise of the baseline (the three-judge spread is 20 points on
+narrative, 12 on stance); no tranche move landed as a narrative or stance gain. Point of view
+fell, and all three reads give the same reason in the same words: the narrator's own failure is
+not on the page, and the two maintainer-block scar slots now say so in so many words. Two
+judges quoted those maintainer notes despite the instruction to skip them; the slot's absence
+is now more visible to a reader than it was when nobody had named it. Only the incident moves
+this factor.
+
+**Smallest moves the three reads converge on:** (1) the scar, M4 or M7, per the maintainer
+spec (three of three; not the loop's to write); (2) let the M3 turn (*nothing here checks any
+of it*) echo once at the M8 close, so the last word admits the synthesis loop cannot verify
+itself either (two of three, narrative); (3) name once in M4 body that the less-access stance
+costs the training's own sponsor something (judge 2, stance's against-interest rung at M4).
+
 ## Quartet — 2026-09-23 — frame · narrative · point of view · stance
 
 Nine judges. Six full reads (three per training, the storytelling judge prompt in the rubric)

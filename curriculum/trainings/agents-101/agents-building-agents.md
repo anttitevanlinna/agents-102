@@ -36,6 +36,8 @@ Hold that. Module 8 doesn't answer it. It shows you the shape of an answer you'l
 
 The three thinking disciplines you applied in Module 7 on your own sharing problem run again here at room scale on the sponsor challenge. Finding the *crux* shapes each initial stance. Cross-checks force agents to notice rival evidence before they publish proposals. *What would have to be true?* and *pre-mortem* appear when agents criticize the synthesizer's choices and propose better ideas. Same disciplines, named inline in the prompts. Bigger instrument.
 
+[Lecture: Where is this all going?](lectures/where-is-this-all-going.md)
+
 ## Debrief
 
 Five minutes. Claude reviews the session and sharpens whichever file carried the load: the central synthesizer's rules, the strategy kernel, the agent set, the plan, or the rules that governed how the agents argued. The evidence is what you produced: the context manifests, stances, cross-checks, proposals, selection board, synthesizer-injected midpoint instructions, critiques, pushbacks, kernel, agent set, and plan. Claude reviews, rewrites the most load-bearing file in place, reports what changed. You push back on anything that's off.
@@ -53,24 +55,30 @@ This is a self-audit of a live agent round. Convenient, not neutral. If the summ
 Read Claude's summary. Push back where it's wrong. Some of what didn't resolve shouldn't resolve. It's the live edge of the work. The flywheel that sharpened the file just now is the one that will sharpen it again after Agents 101, on the next problem, on the one after that, on the one you don't yet know you have. You just watched it compound.
 
 ## Key Concepts
-
-- **Self-improvement**: each cycle sharpens the next. Proposals read sharper than initial stances because the agents cross-check before publishing, then critiques sharpen the synthesizer's selection.
-- **Org capability**: many agents reading and proposing in parallel produce a kernel, agent set, and plan with every recommendation traceable to the file it came from.
-- **The three predictable walls past the laptop loop**: data access, runtime platform, discoverability. The plan already names which wall bites first for your company. Seeing them is the sign the kernel works.
-- **Thinking disciplines you take home as named moves.** Crux, *what would have to be true?*, pre-mortem aren't props and they aren't installed skills. They're portable disciplines you ask Claude to run on any decision too big to eyeball.
-- **Grounding when agents read agents.** Every agent publishes what it read, what it couldn't find, and what it inferred without a source. Every claim cites the file it came from. Without that rule, agents reading agents smoothly hallucinate each other's memory.
+- Each cycle sharpens the next: cross-check before publishing, critique before selection.
+- Agents reading agents must cite, or they invent each other's memory.
+- Three walls past the laptop: data access, runtime platform, discoverability.
+- The parts hold; the model rotates. Will your organisation learn faster?
 
 ## Next
 
-The plan you just produced is a set of assumptions dressed as work: label them, start the concurrent pieces, and design experiments for the uncertain ones. Agents 101 is the first of five steps, with Make Your Own next; you leave with a flywheel, not a graduation.
+The plan you just produced is a set of assumptions dressed as work: label them, start the concurrent pieces, and design experiments for the uncertain ones.
+
+We could have spent today building you one impressive agent to show on Friday. It would have demoed well and it would have been the wrong thing to sell you, because the agent that matters in six months is one nobody in this room has thought of yet, built by somebody who is not you. What you take out of here is the ability to build the one you have not thought of. That is slower, it is harder to put on a slide, and it is the only part that is still worth anything after the model changes.
+
+You leave with a flywheel, not a graduation.
 
 <!-- maintainer -->
+**Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `where-is-this-all-going.md`.
+
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@194c81b0 strategy@4d9c4af2 slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @12bf0d81: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
 
 **Mood target:** Awe and curiosity — the student leaves wanting the next move, not feeling tidily graduated.
+
+**Decision note 2026-09-23.** Executes `curriculum/module-design/a101-story-proposals/blend.md` § M8. § Next drops the product-ladder clause (*"Agents 101 is the first of five steps, with Make Your Own next"*) and carries `braid-the-anatomy.md` § 4.7's against-interest paragraph in its place; *a flywheel, not a graduation* stays and now closes the module on its own line. This is the arc's single against-interest instance; `control-and-creativity.md` § 4's M7 "cheap half" paragraph is deliberately not also placed. The new closing lecture `where-is-this-all-going.md` is linked after the proposal forum and before Debrief, and carries the refrain's last turn, the absorption callback against the kernel's citations, and the two questions the module declines to answer.
 
 **Push-back moves / Watch-fors / Decision points:** [M8 run sheet](trainer-modules.md#m8-glance) owns the live cues, recovery paths, protected beats, and cut order.
 

@@ -57,4 +57,4 @@ Yes — "The doubt stays. Hold it."
 
 ---
 
-`/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/story-depth/squint-after.judge-1.md` — learnings: 30 / governors: 5 / future: yes / self-doubt: yes
+`curriculum/evals/story-depth/squint-after.judge-1.md` — learnings: 30 / governors: 5 / future: yes / self-doubt: yes

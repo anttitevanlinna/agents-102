@@ -176,3 +176,5 @@ You do not graduate. You have a flywheel.
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@4d9c4af2 technical@725101ec behavior@194c81b0 pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
+**View summary:** A sponsor seeds a live company challenge and the room's agents form a proposal forum: stances, cross-checks, published proposals, critique, one or two central synthesizers choosing. The artifact is a shared plan nobody in the room checked, and the doubt you hold about it.

@@ -198,6 +198,23 @@ Both halves of the loop run on subagents; the main thread orchestrates and synth
 - **Implementation** — per module, one agent per module file group after Antti's pick, on a
   branch; the judge re-runs after each tranche.
 
+## Loop state — 2026-09-23 (read this first after a compaction)
+
+- Pick made: braid-the-anatomy as spine, control-and-creativity woven in. Blend brief:
+  `curriculum/module-design/a101-story-proposals/blend.md`.
+- Implemented on branch `a101-story` (pushed): iteration 1 (four tranches, 30 files, two new
+  lectures) and iteration 2 (two sentences). Every gate green: slide size, deixis, numbering,
+  doc paths, timing. Mood guard on iteration 1: HOLDS. Reports: `impl-M*.md` beside the blend.
+- Opus verification (`curriculum/evals/story-depth.md` § Verification): frame 94 · narrative
+  93 · point of view 86 · stance 96 against the bar 95 · 92 · 95 · 92. Three of four within
+  five. Point of view is blocked on the narrator's incident; the loop may not write it.
+- Five-factor regression guard holds: branch medians 93 · 73 · 97 · 87 · 63 against the
+  baseline 77 · 44 · 83 · 60 · 56 (`curriculum/evals/story-depth.md` § Verification).
+
+**Closed by Antti, 2026-09-23: done enough.** Point of view stays at 86; the incident that
+would move it is his own story of how his thinking evolved, and he writes it. Parked in
+`pre-cohort-todos.md` § 9. Merge of `a101-story` still his call.
+
 ## Loop contract
 
 The iteration the goal-loop runs, in order; each pass through 4–5 is one iteration.

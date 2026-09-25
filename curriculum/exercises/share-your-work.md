@@ -77,3 +77,5 @@ You now have the teammate's job and a candidate selected against it. [Design the
 
 **Quality:** compendium-audited 2026-08-25 (writing@a4be944f story@a4be944f technical@a4be944f behavior@a4be944f pedagogy@a4be944f strategy@a4be944f slides@a4be944f)
 - judges @a4be944f: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
+**View summary:** Your memory has worked for you for days, and the question arrives on its own: could this help someone else? You interview candidates for the job the agent would do and pick one. The artifact is a named recipient with a real job.

@@ -89,3 +89,5 @@ You just ran the meta-tool move at the heart of **Recipe 8**: agent generates ag
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
+**View summary:** Until now you built agents by hand. Now you describe one and the coding agent builds it, in twenty-five minutes, against a gap you named on Monday. The artifact is a new working agent in your system, built while the builder role left your desk.

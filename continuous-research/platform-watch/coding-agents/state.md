@@ -1,11 +1,19 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-09-24 (cycle 230)
-OODA cycles: 78
+Last updated: 2026-09-25 (cycle 231)
+OODA cycles: 79
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-09-25)
+
+**CYCLE 231 UPDATE (Sep 25) — V2.1.282 RELEASED SEP 25: GITSPAWN ULTRAREVIEW STILL UNPATCHED DAY+25 — V2.1.282 ULTRAREVIEW CHANGE IS TIMEOUT IMPROVEMENT (45 MIN), NOT SECURITY FIX; MANIFOLD EMBARGO HOLDS; NO POC IN-WILD; ASSISTANTS API T+30 SPIKE WINDOW OPENED TODAY: ZERO NAMED-COMPANY POSTMORTEMS CONFIRMED ACROSS DEV COMMUNITY + COMMUNITY.OPENAI.COM + HN + GENERAL WEB (PATTERN HOLDS); MEDIUM/@JMATHERKERNAI "THE API THAT DIDN'T GET A GRACE PERIOD" (AUG 2026) SURFACED BUT 403-BLOCKED [SOURCE NEEDED]; HYDRAFUSION SEPTEMBER 28 UNIFIED COPILOT EXPERIENCE NOT IN GITHUB CHANGELOG PRIMARY SOURCE — CARRY-FORWARD [SOURCE NEEDED] CONFIRMED UNVERIFIABLE; SEP 24 "DEFAULT ENABLEMENT OF COPILOT FEATURES" MAY BE ACTUAL ROLLOUT EVENT (NOT NAMED HYDRAFUSION); THREAD 19 COMMENTS + 13 REPLIES; ENTERPRISE DPA CONCERN CONFIRMED SEP 23 (JANIVARM: "DOES HYDRAFUSION HONOR ENTERPRISE-DISABLED-MODEL POLICIES?"); GITHUB COPILOT NEW MODELS SEP 22: OPUS 5.5 + GPT-6 SOL/LUNA + GROK 4.7 ADDED (L0 VENDOR CHANGELOG); LOOP ENGINEERING ACADEMIC CORROBORATION: LULLA ET AL. (SMU + HEIDELBERG, AUG 2026) — ARXIV 2608.21884 — 36,710 REPOS SCANNED, 217 LOOPS (0.59%), REVIEW BOTTLENECK CONFIRMED, GOVERNANCE GAP CONFIRMED ("ALMOST NONE COMMITS STATE FILES") — L3 ACADEMIC TRACK CORROBORATES PRACTITIONER CONVERGENCE; LOOP ENGINEERING STAGE 3 L3 CARRY-FORWARD RESOLVED: PATTERNS.MD ALREADY UPDATED WITH 6 DEPLOYER-DIRECT VOICES (CYCLE 229 PATTERN 52); OPENAI AGENTS API DAY+15: NON-ADOPTION COHORT HOLDS; PROMPT OBJECTS SECOND MIGRATION WATCH ACTIVE (NOV 30 DEADLINE — 66 DAYS).**
+
+**Watch Cycle 232 (Sep 26+):** GitSpawn Day+26 — any patch (v2.1.283+); Assistants API T+31 — continue named-company postmortem check (Medium/@jmatherkernai [SOURCE NEEDED] — retry fetch); HydraFusion Sep 28 — check GitHub changelog on/after Sep 28 for named rollout event; OpenAI Agents API Day+18 (rolling); Loop Engineering arxiv paper — add to patterns.md Pattern 52 source list; Prompt Objects second migration watch (Nov 30 — 66 days remaining).
+
+([releasebot.io Claude Code v2.1.282](https://releasebot.io/updates/anthropic/claude-code), Sep 25 2026 — [vendor documentation]; [github.blog/changelog/](https://github.blog/changelog/), Sep 25 check — [vendor documentation]; [github.com/orgs/community/discussions/206492](https://github.com/orgs/community/discussions/206492), Sep 25 check — [practitioner direct — community thread]; [arxiv.org/html/2608.21884](https://arxiv.org/html/2608.21884), Aug 2026 — [academic/research — Lulla et al., SMU + Heidelberg, first academic loop engineering analysis])
 
 ## Key Verdict (as of 2026-09-24)
 

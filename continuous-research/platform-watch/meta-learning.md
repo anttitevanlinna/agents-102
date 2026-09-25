@@ -65,6 +65,14 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 231 — 2026-09-25
+
+v2.1.282 (released same day as this cycle) required a direct releasebot.io fetch to confirm "no security patch" — the timeout improvement to /ultrareview reads ambiguously in a brief summary ("ultrareview improved") and could be mistaken for a security response without reading the specific changelog text. For any release whose description includes the vulnerable component name (ultrareview, fsmonitor, git), fetch the exact changelog entry rather than trusting a search-result summary. A functional improvement to a vulnerable component is not a patch.
+
+The T+30 spike window hypothesis (named-company postmortems appear at T+30 following API sunset) opened today with zero postmortems surfaced. The Medium/@jmatherkernai article ("The API That Didn't Get a Grace Period") is a promising candidate but 403-blocked — title language suggests deployer-direct. Lesson: for deadline-watch items where a potential postmortem is identified but blocked, the specific URL should be queued as a priority fetch in the next cycle rather than marked absent. A 403 on a plausible title is different from zero results: it's an identified source with an access problem, not an absence.
+
+The arxiv.org/html/2608.21884 paper surfaced via a targeted query combining "loop engineering" + "production deployer" + "review bottleneck" — confirming that academic papers on practitioner-defined concepts start appearing in search 3–6 months after the concept names crystallize in practitioner discourse (Osmani/Ronacher named "loop engineering" in June/July 2026; academic paper appeared August 2026, 6–8 weeks later). For any practitioner concept that achieved naming consensus 2–3 months ago, an arXiv search for the concept term is now worth adding to the research protocol — academic corroboration often arrives before practitioners discover it exists.
+
 ### Cycle 230 — 2026-09-24
 
 Following an official vendor migration guide is not the same as following a safe migration path. The clearcontext.dev finding (Aug 20, Rafael Moraes) revealed that OpenAI's own Assistants API migration guide directed developers to Prompt Objects — which OpenAI had already deprecated before the guide was written. This is a new category of source-quality failure: not a vendor claim overstating capability, but a vendor guide creating a compliance trap. When a migration watch extends beyond T+30 with zero postmortems, consider searching for "what does the official guide say?" rather than just "what went wrong?" — the guide itself can be the failure mode.

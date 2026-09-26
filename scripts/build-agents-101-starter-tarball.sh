@@ -143,9 +143,9 @@ if [ -d "$PROMPTS_SRC" ]; then
 fi
 
 # The theory handbook — the learner's read-back of every lecture, no server.
-# Customer-independent; built into a gitignored scratch customer dir.
-node scripts/build-workbook.js _starter agents-101 --theory >/dev/null
-cp site/clients/_starter/agents-101/theory-handbook.html "$ROOT/agents-101-handbook.html"
+# Customer-independent; built into the stage, whatever output root the caller set.
+AGENTS_OUTPUT_DIR="$STAGE/handbook" node scripts/build-workbook.js _starter agents-101 --theory >/dev/null
+cp "$STAGE/handbook/_starter/agents-101/theory-handbook.html" "$ROOT/agents-101-handbook.html"
 
 # Build tarball from inside ROOT so the archive has prework/, module-4/policies/,
 # memory/, sources/, agents/, .claude/ at the top level (no wrapper).

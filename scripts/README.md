@@ -23,6 +23,15 @@ site/clients/<customer>/<training>/agents-101-starter.tar.gz   # Agents 101 only
 
 The `all` selector uses the `TRAININGS` registry in `site/layouts/curriculum.js`.
 
+A customer-owned repository can hold its own output: set `AGENTS_OUTPUT_DIR` and the build writes `<dir>/<customer>/…` in place of `site/clients/<customer>/…`, leaving this repository's tree untouched. Branding comes from `AGENTS_BRAND_DIR` the same way.
+
+```sh
+AGENTS_BRAND_DIR=../acme-delivery/brand AGENTS_OUTPUT_DIR=../acme-delivery/site \
+  node scripts/build-workbook.js acme agents-101
+```
+
+A personalised `--for` build asks whichever repository holds the output whether that path is gitignored, and refuses when it is not. Outside any Git repository there is nothing to commit, so it proceeds.
+
 ## Curriculum Audits
 
 Training artifact handoffs and session breaks can be checked with:

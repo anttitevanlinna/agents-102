@@ -55,10 +55,7 @@ function readMarkers() {
   } catch { return new Set(); }
 }
 
-// Both {{prompt:key}} and its cut-candidate sibling {{cut:key|reason}} count as
-// a reference to `key` — a cut candidate is still "used", so it must not trip the
-// orphan warning. Group 1 is the key; the optional cut `|reason` slug is ignored.
-const REFERENCE_RE = /\{\{(?:prompt|cut):([a-z0-9-]+)(?:\|[a-z0-9-]+)?\}\}/g;
+const REFERENCE_RE = /\{\{prompt:([a-z0-9-]+)\}\}/g;
 
 function walkMarkdown(dir, files) {
   files = files || [];

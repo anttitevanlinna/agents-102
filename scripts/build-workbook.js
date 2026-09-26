@@ -858,7 +858,7 @@ ${content}
 // workbook; exercise entries render only their reusable summary metadata.
 // Lectures ride the module include path (synthetic
 // standalone include-link → inlineIncludes → readMd/expandPrompts → marked →
-// postProcessIncludes), so {{prompt:}}/{{cut:}}/{{covered:}} markers, heading
+// postProcessIncludes), so {{prompt:}} markers, heading
 // ids, and the phase--lecture section wrapper come out byte-equivalent to the
 // workbook's. Supplementary docs follow the workbook's renderStandalone
 // transform sequence (link rewrite → inlineImages → escapeTildes → marked →
@@ -1561,10 +1561,8 @@ if (theoryMode) {
         const body = raw
           .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
           .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '');
-        // Catch leftover {{prompt:key}}, its cut-candidate sibling
-        // {{cut:key|reason}}, AND the covered-region pair {{covered:slug#anchor}}
-        // … {{/covered}} — all should have been resolved by the expander.
-        const matches = body.match(/\{\{(?:prompt|cut):[a-z0-9-]+(?:\|[a-z0-9-]+)?\}\}|\{\{covered:[a-z0-9-]+(?:#[a-z0-9-]+)?\}\}|\{\{\/covered\}\}/g);
+        // Catch any {{prompt:key}} the expander left unresolved.
+        const matches = body.match(/\{\{prompt:[a-z0-9-]+\}\}/g);
         if (matches) offenders.push({ file: path.relative(ROOT, abs), markers: matches });
       }
     }

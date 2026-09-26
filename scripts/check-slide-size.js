@@ -11,7 +11,7 @@
 //
 // Metric per slide (the `##` section body, maintainer tail stripped):
 //   words   — readable text a viewer parses. EXCLUDES fenced code, inline SVG/HTML
-//             diagrams, and `{{prompt/cut/demo/covered}}` include lines (a prompt is
+//             diagrams, and `{{prompt/demo}}` include lines (a prompt is
 //             a paste block + a diagram is one visual, neither is slide prose).
 //   bullets — top-level list items (`- ` / `* ` / `1. `).
 // A slide is OVERSIZED when words > --max-words OR bullets > --max-bullets.
@@ -206,7 +206,7 @@ function measureOneRuntime(body) {
     if (inSvg) { if (/<\/svg>/i.test(trimmed)) inSvg = false; continue; }
     if (/^<\/?(div|figure|span|g|path|rect|text|line|circle|polyline|polygon|defs|marker|tspan|img|br|hr)\b/i.test(trimmed)) continue;
 
-    // include machinery — paste blocks / cut ribbons / covered regions, not read
+    // include machinery — paste blocks and demos, not read
     if (/^\{\{[^}]*\}\}$/.test(trimmed) || /^\{\{\/[^}]*\}\}$/.test(trimmed)) continue;
 
     // standalone HTML comments (`<!--tier:N-->` and kin) — markers, not prose

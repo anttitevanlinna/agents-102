@@ -46,10 +46,6 @@ test('bare marker next to a code-span mention still resolves', () => {
   assert.deepEqual(keysIn(text), ['alpha-1']);
 });
 
-test('cut-candidate markers count as references', () => {
-  assert.deepEqual(keysIn('{{cut:beta-2|too-slow}}'), ['beta-2']);
-});
-
 test('walk skips the registry and evals dirs', () => {
   const files = walkMarkdown(path.resolve(__dirname, '..', 'curriculum'));
   assert.ok(files.length > 0);

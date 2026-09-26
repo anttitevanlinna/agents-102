@@ -279,17 +279,6 @@
     // markdown (label paragraph + fenced code), not inline text.
     var PROMPT_INCLUDE_RE = /^\{\{prompt:([a-z0-9-]+)\}\}[ \t]*$/gm;
 
-    // Cut-candidate marker: `{{cut:<key>}}` or `{{cut:<key>|<reason-slug>}}` on
-    // its own line. Sibling of `{{prompt:}}` — same registry lookup, same block
-    // shape — but flagged for review: decoratePrompts() dims the rendered block
-    // and prepends a "cut candidate" ribbon so the maintainer can eyeball removal
-    // candidates before committing a real cut. Fully reversible: swap
-    // `{{prompt:key}}` ↔ `{{cut:key|reason}}` on one line; the material is
-    // retained. `{{prompt:}}` and `{{cut:}}` are disjoint prefixes; expansion is
-    // order-independent. Every tool that scans `{{prompt:` as a reference treats
-    // `{{cut:}}` as an equivalent reference (a cut candidate is still "used").
-    var PROMPT_CUT_RE = /^\{\{cut:([a-z0-9-]+)(?:\|([a-z0-9-]+))?\}\}[ \t]*$/gm;
-
     // Figure-include marker: `{{figure:<key>}}` on its own line, expanded by
     // expandFigures() at the start of the markdown pipeline (before marked).
     // Source of truth lives in curriculum/figures/<key>.md — a blank-line-free
@@ -319,19 +308,6 @@
     // no timings registry shipping alongside the way curriculum/prompts/ does),
     // so keep runtime-map markers out of shipped files until that path exists.
     var RUNTIME_MAP_RE = /^\{\{runtime-map:([a-z0-9-]+)\}\}[ \t]*$/gm;
-
-    // Covered-region markers: `{{covered:<slug>#<anchor>}}` … `{{/covered}}`,
-    // each alone on its own line with blank lines around them. Sibling of
-    // `{{cut:}}` but for PROSE spans, not prompt refs: wraps a passage whose
-    // content a new slide-format section now carries. Neutral semantic — the
-    // passage is dimmed + ribboned ("covered by …") so the maintainer can
-    // eyeball redundancy; the endgame per passage is either deletion (once the
-    // covering slides are perfected) or staying as the depth layer beneath the
-    // slides. Fully reversible: remove the two marker lines. Expansion emits a
-    // raw-HTML div; CommonMark parses the markdown between the tags normally
-    // as long as blank lines separate the tags from the content.
-    var COVERED_OPEN_RE  = /^\{\{covered:([a-z0-9-]+)(?:#([a-z0-9-]+))?\}\}[ \t]*$/gm;
-    var COVERED_CLOSE_RE = /^\{\{\/covered\}\}[ \t]*$/gm;
 
     // Inline cross-doc link patterns. Renderer rewrites to `?file=...` URLs.
     //   - Exercises and lectures live in shared dirs:
@@ -629,7 +605,7 @@
         return out;
     }
 
-    function renderPromptBlock(entry, cut) {
+    function renderPromptBlock(entry) {
         var dest = (entry && entry.dest) || 'Claude Code';
         var ctx = entry && entry.context ? ', ' + entry.context : '';
         var label = '**Prompt** *(' + dest + ctx + ')*';
@@ -643,11 +619,6 @@
         if (mode && /^[A-Za-z]+$/.test(mode)) {
             label += ' ⟦M:' + mode + '⟧';
         }
-        // Cut-candidate sentinel ⟦CUT[:reason]⟧, mirrors the ⟦M:mode⟧ pattern.
-        // decoratePrompts() parses it off the label paragraph, strips it, and
-        // renders the block dimmed with a ribbon. Sits after the mode sentinel
-        // so both survive the marked() render cycle as inline paragraph text.
-        if (cut) { label += ' ⟦CUT' + (cut.reason ? ':' + cut.reason : '') + '⟧'; }
         var text = String((entry && entry.text) || '').replace(/\s+$/, '');
         if (entry && entry.anchors && entry.anchors.length) {
             text = injectAnchorSentinels(text, entry.anchors);
@@ -708,42 +679,10 @@
             }
             return renderPromptBlock(entry);
         });
-        // Second pass: cut-candidate markers. Same registry lookup + unresolved
-        // tracking as the prompt pass (so strict build throws on a bad key), but
-        // the block is flagged cut. Disjoint prefix from {{prompt:}}; order of
-        // the two passes doesn't matter.
-        out = out.replace(PROMPT_CUT_RE, function (match, key, reason) {
-            var entry = registry[key];
-            if (!entry) {
-                unresolved.push(key);
-                return match;
-            }
-            return renderPromptBlock(entry, { reason: reason || '' });
-        });
         if (opts && opts.strict && unresolved.length) {
             throw new Error(
                 'expandPrompts: unresolved {{prompt:<key>}} marker(s): ' +
                 unresolved.map(function (k) { return '{{prompt:' + k + '}}'; }).join(', ')
-            );
-        }
-        // Third pass: covered-region markers. No registry lookup — the pair
-        // expands to a wrapping div the runtime decorates. Balance is checked
-        // in strict mode so an unclosed region fails the build instead of
-        // silently swallowing the rest of the page.
-        var opens = 0, closes = 0;
-        out = out.replace(COVERED_OPEN_RE, function (match, slug, anchor) {
-            opens += 1;
-            var ref = slug + (anchor ? '#' + anchor : '');
-            return '<div class="covered-region" data-covered-by="' + esc(ref) + '">';
-        });
-        out = out.replace(COVERED_CLOSE_RE, function () {
-            closes += 1;
-            return '</div>';
-        });
-        if (opts && opts.strict && opens !== closes) {
-            throw new Error(
-                'expandPrompts: unbalanced {{covered:}} region(s): ' +
-                opens + ' open vs ' + closes + ' close'
             );
         }
         return out;
@@ -1166,27 +1105,15 @@
             // prompt's frontmatter declares `permission-mode:`. Parse it off
             // here, strip from the paragraph so the literal sentinel never
             // renders, surface as a separate header chip.
-            // Cut-candidate sentinel ⟦CUT[:reason]⟧ (planted by renderPromptBlock
-            // when a {{cut:}} marker expanded) rides alongside the ⟦M:mode⟧ chip
-            // in the label paragraph. Parse both off, strip both in a single
-            // innerHTML write, and surface them as chrome — mode as a header chip,
-            // cut as a dimming class + ribbon.
             var mode = '';
-            var cut = false;
-            var cutReason = '';
-            var pHtml = p.innerHTML;
-            var modeMatch = pHtml.match(/⟦M:([A-Za-z]+)⟧/);
-            var cutMatch = pHtml.match(/⟦CUT(?::([a-z0-9-]+))?⟧/);
-            if (modeMatch) mode = modeMatch[1];
-            if (cutMatch) { cut = true; cutReason = cutMatch[1] || ''; }
-            if (modeMatch || cutMatch) {
-                p.innerHTML = pHtml
-                    .replace(/\s*⟦M:[A-Za-z]+⟧\s*/g, '')
-                    .replace(/\s*⟦CUT(?::[a-z0-9-]+)?⟧\s*/g, '');
+            var modeMatch = p.innerHTML.match(/⟦M:([A-Za-z]+)⟧/);
+            if (modeMatch) {
+                mode = modeMatch[1];
+                p.innerHTML = p.innerHTML.replace(/\s*⟦M:[A-Za-z]+⟧\s*/g, '');
             }
 
             var wrap = document.createElement('div');
-            wrap.className = 'prompt-block' + (cut ? ' cut-candidate' : '');
+            wrap.className = 'prompt-block';
             var header = document.createElement('div');
             header.className = 'prompt-block__header';
             header.innerHTML =
@@ -1197,14 +1124,6 @@
                 (context ? '<span class="prompt-block__context">' + esc(context) + '</span>' : '');
 
             p.parentNode.insertBefore(wrap, p);
-            // Cut-candidate ribbon sits above the header. textContent (not
-            // innerHTML) so the reason slug can never inject markup.
-            if (cut) {
-                var ribbon = document.createElement('div');
-                ribbon.className = 'cut-candidate__ribbon';
-                ribbon.textContent = '✂ cut candidate' + (cutReason ? ' · ' + cutReason : '');
-                wrap.appendChild(ribbon);
-            }
             wrap.appendChild(header);
             wrap.appendChild(pre);
             pre.classList.add('prompt-block__pre');
@@ -1212,18 +1131,6 @@
 
             addCopyButton(pre, header);
             convertAnchorSentinels(pre);
-        });
-
-        // Covered-region ribbons: planted by the {{covered:…}} expansion pass.
-        // Same decorate call site as the prompt chrome so the workbook's single
-        // decoratePrompts(document.body) invocation covers both.
-        root.querySelectorAll('.covered-region').forEach(function (region) {
-            if (region.querySelector('.covered-region__ribbon')) return;
-            var ribbon = document.createElement('div');
-            ribbon.className = 'covered-region__ribbon';
-            var ref = region.getAttribute('data-covered-by') || '';
-            ribbon.textContent = 'covered by · ' + ref.replace('#', ' § ');
-            region.insertBefore(ribbon, region.firstChild);
         });
 
         // Universal copy buttons on every standalone <pre>.

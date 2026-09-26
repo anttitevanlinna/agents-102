@@ -674,7 +674,7 @@ Default move is cut, per `feedback_curriculum_default_move_is_cut.md`.
   above it; the second is a forward promise with no content (*"More reaching, more watching, more
   adjusting"*). The minutes go to the three new closer slides. Keep the McKinsey line verbatim
   (S5) and keep *You act on the future to know what's real*.
-- **`lectures/self-consistency-after-scoreboard.md`, as a lecture.** The lecture states its own
+- **`self-consistency-after-scoreboard.md`, as a lecture.** The lecture states its own
   case against itself: two runs is a demo not a measurement, it is optional, it runs on the screen,
   and the student does not need the output to finish M5. One slide inside `grounded.md`
   (*A drift signal, never proof*) carries everything L2 wants from it. The recovered minutes fund

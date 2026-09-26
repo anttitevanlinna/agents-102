@@ -45,7 +45,7 @@ Counter-voice inside this module itself: `audit-your-agent.md` Watch-for "Reusab
 
 Continuing to Module 5 (output-quality).
 
-### Module 5 — Grounded Output (`output-quality.md` + `lectures/grounded.md` + `exercises/hallucination-bakeoff.md` + `lectures/self-consistency-after-scoreboard.md` + `what-is-an-agent.md#the-autonomy-ladder`)
+### Module 5 — Grounded Output (`output-quality.md` + `lectures/grounded.md` + `exercises/hallucination-bakeoff.md` + `self-consistency-after-scoreboard.md` + `what-is-an-agent.md#the-autonomy-ladder`)
 Big Idea: "You don't pick a quality check because someone said so. You run several on your own output, score them against a 30-claim benchmark, and keep the winner." PAYS OFF the M3 doubt thread explicitly and by design (see maintainer mood contract: "This module is the rescue... M3's rescue is the scoreboard moment"). Quote of payoff: `grounded.md` — "The word is grounded... Grounded means traceable to a real piece of evidence. Accuracy is a harder question, and an agent alone can't answer it." This distinguishes grounded from accurate — a genuine, non-trivial complication of "is this true," planted back in M3's Close.
 Explicit non-resolution, named on the student surface (rare, strong self-challenge instance): "Do NOT resolve M3's strategic uncertainty or M4's security residual. Only groundedness-for-this-shape-of-output gets rescued" is a maintainer instruction, but the STUDENT-FACING text enacts it too: `output-quality.md` body — "In Module 3 the synthesized answer sat at an uneasy distance... Your Module 4 residuals stay named, not solved; that is a different axis. This module is the rescue. Not full closure." This is the training doubting the completeness of its own rescue, on the page, not just in maintainer notes. Strong candidate — training names scope of what it just fixed rather than overclaiming.
 Governor: benchmarking pattern — "candidates → benchmark → scorer → winner" — explicit, portable, Tuesday-fireable, and the judge file's "Known limit" line is a second, sharper governor: name what the check cannot catch.
@@ -132,7 +132,7 @@ All nine files/sections read in student order. Now synthesizing the full learnin
 - **Karpathy's "LLM as living wiki" frame** (M2 prework) — cited once to motivate building a memory, never returned to or complicated afterward.
 - **STRIDE / named-attack-classes taxonomy** (M4) — introduced as historical grounding for the security lens, explicitly kept out of the audit prompt itself so it "cannot collapse into closed-loop self-grading"; a mechanism, not a developed idea.
 - **Compound-reliability math (85%^10 ≈ 20%)** (M5, `lectures/grounded.md`) — a vivid illustration used once to motivate the loop, explicitly and repeatedly labeled "illustrative, not measured" in both body and maintainer text; it does the job of the moment and is not picked up again.
-- **Self-consistency (drift across regenerations)** (M5, `lectures/self-consistency-after-scoreboard.md`) — introduced, immediately bounded ("Drift is a warning signal, not proof of fabrication"), optional, and not returned to in M6-M8.
+- **Self-consistency (drift across regenerations)** (M5, `self-consistency-after-scoreboard.md`) — introduced, immediately bounded ("Drift is a warning signal, not proof of fabrication"), optional, and not returned to in M6-M8.
 
 ## Factors
 

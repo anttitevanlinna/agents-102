@@ -40,12 +40,10 @@ Bring Agents 101 module maintainer blocks closer to the AE101 shape:
 
 ## 4. Eval instances to fill
 
-- Agents 101 module eval instances for Modules 3, 4, 6, 7, 8 are still missing or stale after the recent reshapes. Fill after the module spines settle and before three-persona sim. (M5 cluster filled 2026-05-04 via curriculum-pre-ship-audit, `agents-101--{exercise--hallucination-bakeoff,lecture--self-consistency-after-scoreboard,module--output-quality}.{writing,story,technical,behavior}.json`.)
+- Agents 101 module eval instances for Modules 3, 4, 6, 7, 8 are still missing or stale after the recent reshapes. Fill after the module spines settle and before three-persona sim. (M5 cluster filled 2026-05-04 via curriculum-pre-ship-audit, `agents-101--{exercise--hallucination-bakeoff,module--output-quality}.{writing,story,technical,behavior}.json`.)
 - **The 2026-08-19 parity pass moved almost every A101 surface, and all of it owes a re-judge.** All 8 modules, all 15 exercises, 13 lectures. Scope it with `node curriculum/evals/scripts/scan-stale-classes.js --files <f...>` — per-class diff-region routing, NOT all seven classes per body edit. Parked deliberately by Antti that day ("machinery first, judges later"); this bullet is the bill, not a request to pay it now.
 - **A101 stamps still carry the retired 4-class set.** Re-stamp on the current seven (`writing / story / technical / behavior / pedagogy / strategy / slides`) plus the `cross_module` row. Correct a claim that was circulating: A101 is not unjudged on the new classes — prefixed instances exist including `.slides`, `.pedagogy` and `.strategy` files, and `claude-basics` has its own set. What is missing is coverage, not a first run.
 - **Wire `audit-eval-coverage --training agents-101` into the gate — but only once judging unparks.** The auditor learned `--training` on 2026-08-19 and runs clean mechanically; it reports 3207 holes, which is the honest measurement of an untried training, and a gate that cannot go green until a parked decision unparks is a permanently-red check nobody reads. AE101 stays wired at 429. (Both numbers dropped on 2026-08-19 when the instance-name migration made 843 already-judged rule×file pairs visible to the auditor again — 827 of them A101's.)
-- **One instance still names no set:** `claude-basics--cross_module.json` carries no slug, so `check-instance-names.js` cannot derive a name for it. Name the set it judged, or retire it.
-
 ## 5. Site / renderer bugs, verification pending
 
 - **Newlines on copy from prompt blocks.** Fix shipped 2026-05-04: `code.innerText` → `code.textContent` in `addCopyButton` (`site/layouts/curriculum.js`). Verify newlines preserve across CLI / Cowork / Desktop / terminal paste targets before first cohort.

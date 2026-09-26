@@ -101,7 +101,7 @@ has this action earned?** · Key Concepts · Pre-reads before Module 6 · Next.
   database change, a ticket comment, before any of those touch another system, they are words the
   agent produced and another system obeys. If the words are wrong, the action will be wrong too."*
   (blend § Keep and cut item 1; the M3 opener keeps the paragraph).
-- The link line `[Lecture: Self-consistency after the scoreboard](lectures/self-consistency-after-scoreboard.md)`.
+- The link line `[Lecture: Self-consistency after the scoreboard](self-consistency-after-scoreboard.md)`.
 
 **Renamed** — `## Agent Actions` → `## Propose, double-check, apply` (`check_student_facing.md` §17,
 student's verb where the section is about doing; not a canonical module-shape section name, so the
@@ -112,7 +112,7 @@ this pass), Start here 154, Which rung has this action earned? 102, Propose, dou
 
 ---
 
-## `curriculum/lectures/self-consistency-after-scoreboard.md`
+## `self-consistency-after-scoreboard.md`
 
 Maintainer note only, no body edit. The stale `**Placement in module:**` line is replaced by
 `**Unlinked (2026-09-23).**`, naming the `## A drift signal, never proof` slide in `grounded.md` as

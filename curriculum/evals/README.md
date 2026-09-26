@@ -30,7 +30,7 @@ What can break because of the student's laptop, OS, network, or default apps —
 
 Cheapest catches. **Run before every cohort.** New incidents always land here same day.
 
-### Unit (per-artifact) — four-class architecture (2026-05-02 refactor; behavior class added second pass)
+### Unit (per-artifact) — per-file classes
 
 Per-artifact checks partition by **evidence source**, not by criterion count. Seven per-file classes plus two scope axes, dispatched by `/eval-fire <class> <file>` (single class) or `/curriculum-pre-ship-audit <file>` (the per-file set + Quality-state + neighbour-alignment). Every class runs on Sonnet: a cheap model clears the JSON schema and fails on judgement, which no validation catches (`check_platform_and_boundaries.md` §21a).
 

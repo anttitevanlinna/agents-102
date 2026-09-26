@@ -1,38 +1,9 @@
 # Exercise eval — manifest
 
-This file is a manifest, not a megajudge template. The four class judges (writing / story / technical / behavior) each evaluate exercises against their compendium-class rules; this manifest names which judges run and at what scope.
+This file routes; it does not judge. An exercise gets every per-file class whose compendiums reach it, the way every file does: the class table (judge template, trace cache, inputs) is in `/eval-fire`, and routing is each compendium's `eval_classes:` frontmatter. Dispatch one class with `/eval-fire <class> <file>`, all of them with `/curriculum-pre-ship-audit <file>`, a queue with the `eval-sweep` workflow. The dispatch contract, verdict vocabulary and output record are `curriculum/evals/judges/_dispatch-preamble.md` and `node curriculum/evals/scripts/instance-contract.js <class>`; pass thresholds are in each judge template.
 
-For the per-judge prompt templates, see `curriculum/evals/judges/{writing,story,technical,prompt-behavior}.md`. To dispatch a single class, use `/eval-fire <class> <file>`. For the full ship-time audit (all four classes in parallel + Quality-state + neighbour-alignment), use `/curriculum-pre-ship-audit <file>`.
+## What an exercise adds
 
-## What runs for an exercise
-
-| Class | Scope | Default model | Compendiums (filtered by `eval_classes:` frontmatter) |
-|---|---|---|---|
-| **writing** | piece | Sonnet 4.6 | `check_writing.md`, `check_sales_copy.md`, `check_prompts.md`, `check_student_facing.md` |
-| **story** | piece | Sonnet 4.6 | `check_pedagogy.md`, `check_strategy_tie_in.md`, `check_lectures.md` (Class A persona-reader sim trace) |
-| **story** | seam | Sonnet 4.6 | (when this exercise sits at a module seam) — runs `curriculum/evals/seams/seam-judge.md` |
-| **story** | arc | Sonnet 4.6 | (when this exercise is part of a Agents 101 or AE101 module sequence) — runs `curriculum/evals/arc-pass.md` |
-| **technical** | piece | Sonnet 4.6 | `check_platform_and_boundaries.md`, `check_research_claims.md` + technical sub-rules in `check_pedagogy.md` and `check_prompts.md` |
-| **behavior** | piece | Sonnet 4.6 | `check_prompts.md` + `check_pedagogy.md` + 15-pattern catalog at `curriculum/evals/simulation-behavior.md` (Class B prompt-behavior sim trace, per-prompt SHA-keyed) |
-
-## Pass thresholds
-
-- **Mood lands** (story class): 8+/10 at every phase-end + close. 7 = facilitator-premium signature; flag what would take it from 7 to 8. Below 7 = REVISE. Scale anchors: `curriculum/evals/simulation.md` §Mood scale (canonical).
-- **Teaching moment lands** (story class): the named teaching moment must reliably trigger across reasonable persona-skill variation. Skippable = REVISE.
-- **No high-confidence behavioral risk on a load-bearing prompt** (behavior class): a high-confidence risk fired against a teaching-moment or hand-off prompt = REVISE.
-- **All blocking rules PASS** per each class judge's JSON output. Any blocking REVISE → file BLOCK.
-
-## Verdict ladder
-
-- All four class judges PASS + Quality check PASS → **APPROVE**.
-- A PASS may still contain owed rule rows with `verdict: REVISE` and `blocking: false`; those enter the card queue.
-- Optional concrete swaps live in `suggestions[]`. They do not enter the queue or change the verdict.
-- Any class judge REVISE → **REVISE** (BLOCK).
-
-## Output location
-
-Per-class JSON output is written to `curriculum/evals/instances/<training>--<surface-type>--<slug>.<class>.json` — overwrite-on-rerun per the no-dated-reports rule. Surface type comes from the judged file's parent directory, never its basename; `check-instance-names.js` gates it.
-
-## Maintenance
-
-This file should stay short — it routes, it doesn't judge. When a new class or scope is added to the eval system, update the table here and link the judge prompt template. Per-rule details live in compendiums; per-class output schema lives in the judge prompt templates. Don't duplicate.
+- **Seam** (story): when the exercise sits at a module seam, also run `curriculum/evals/seams/seam-judge.md`.
+- **Arc** (story): when it is part of an Agents 101 or AE101 module sequence, it is read in the sequential arc pass, `curriculum/evals/arc-pass.md`.
+- **Behavior** always applies: an exercise carries prompts a student copies.

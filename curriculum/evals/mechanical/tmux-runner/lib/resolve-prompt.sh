@@ -3,7 +3,8 @@
 # Single source of truth: scenarios reference keys, never copy bodies.
 set -euo pipefail
 
-REGISTRY="${PROMPT_REGISTRY:-$HOME/Projects/agents-102/curriculum/prompts}"
+# Default = this clone's own registry (lib/ → tmux-runner → mechanical → evals → curriculum).
+REGISTRY="${PROMPT_REGISTRY:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../../../.." && pwd)/prompts}"
 
 resolve_prompt() {
   local key="$1"

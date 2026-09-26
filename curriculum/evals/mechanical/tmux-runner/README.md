@@ -29,7 +29,7 @@ tmux-runner/
 
 ## Design notes
 
-- **Scenarios reference prompt keys, never copy prompt bodies.** Source of truth for prompts is `~/Projects/agents-102/curriculum/prompts/<key>.md`. Override the registry path with `PROMPT_REGISTRY`.
+- **Scenarios reference prompt keys, never copy prompt bodies.** Source of truth for prompts is this repo's `curriculum/prompts/<key>.md`. Override the registry path with `PROMPT_REGISTRY`.
 - **A turn ends on the Stop-hook sentinel AND an idle pane.** The sentinel is deterministic but fires when the main agent yields — not when its backgrounded subagents finish, and also when another Stop hook blocks and re-opens the turn. `lib/sync.sh` holds while the pane's last status line is a spinner or "Waiting for N background agent(s)", then trims the surplus Stop the re-invocation writes. Only `lib/sync.sh` reads sentinels (`tests/sentinel-reads-go-through-sync.test.sh`).
 - **One tmux session per run**, on its own socket (`RUNNER_TMUX_SOCKET`), so concurrent runners can't kill each other's server.
 
@@ -53,7 +53,7 @@ ls out/<run-id>/
 
 ## Env knobs
 
-- `PROMPT_REGISTRY` — path to prompts/ (default: `~/Projects/agents-102/curriculum/prompts`)
+- `PROMPT_REGISTRY` — path to prompts/ (default: this clone's `curriculum/prompts`)
 - `CLAUDE_CMD` — launch command (default: `claude`). Every `claude` launch is preflighted (`claude_cli_preflight`, `lib/tmux.sh`): the binary it resolves must be Claude Code ≥ `CLAUDE_CLI_FLOOR` (2.1.281, the lowest verified) and offer the requested `--permission-mode`, or the run stops before tmux starts and names the binary path. A stale Homebrew copy ahead of `~/.local/bin` on PATH is the usual cause. Use `CLAUDE_CMD="claude --permission-mode auto"` for headless runs (the auto-mode classifier allows tool calls without prompts). **Do NOT use `--permission-mode bypassPermissions`** — it shows a "Yes/No, exit" confirmation dialog at startup that hangs the runner forever (no Stop hook fires for the dialog).
 - `CLAUDE_RUNNER_TIMEOUT` — per-turn sentinel timeout in seconds (default: 3600s = 1h). M1 + M2 default to this because `CLAUDE_EFFORT=high` (M1's prework default) plus API retries can push a single TDD turn past 60min. For faster medium-effort runs, set `CLAUDE_EFFORT=medium` AND override to ~1500s.
 - `CLAUDE_RUNNER_SLASH_SLEEP` — render-wait for slash-only turns (default: 3s).

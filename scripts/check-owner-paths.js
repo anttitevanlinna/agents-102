@@ -15,7 +15,7 @@ const { execFileSync } = require('node:child_process')
 
 // Teaching text shows the shape with a placeholder user; that names nobody's machine.
 const PLACEHOLDER_USER = '(?!(?:me|you|yourname|username|user|name)\\b)'
-const OWNER = new RegExp(`/Users/${PLACEHOLDER_USER}[a-z]+/|-Users-${PLACEHOLDER_USER}[a-z]+-Projects|CloudStorage/GoogleDrive|GoogleDrive-[^/\\s]+@`)
+const OWNER = new RegExp(`/Users/${PLACEHOLDER_USER}[a-z]+/|-Users-${PLACEHOLDER_USER}[a-z]+-Projects|(?:~|\\$HOME)/Projects/agents-102(?![\\w-])|CloudStorage/GoogleDrive|GoogleDrive-[^/\\s]+@`)
 const SCOPE = [
   /^scripts\/[^/]+\.(js|sh)$/,
   /^curriculum\/evals\/scripts\/[^/]+\.(js|sh|py)$/,

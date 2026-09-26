@@ -44,6 +44,20 @@ test('instruction surfaces are in scope: eval docs, judge templates, CLAUDE.md, 
   assert.deepEqual(offenders(d, Object.keys(files)).sort(), Object.keys(files).map(f => `${f}:1`).sort())
 })
 
+// The tmux runner defaulted its prompt registry to ~/Projects/agents-102: a
+// clone anywhere else resolved no keys. Where the maintainer clones is an owner
+// path too; the sibling core clone is named by its own rule, not this one.
+test('a repo location under the maintainer\'s ~/Projects is an owner path', () => {
+  const files = {
+    'curriculum/evals/mechanical/tmux-runner/lib/r.sh': 'R="${P:-$HOME/Projects/agents-102/curriculum/prompts}"\n',
+    'curriculum/evals/mechanical/tmux-runner/README.md': 'prompts live in `~/Projects/agents-102/curriculum/prompts`\n',
+    'scripts/ok.js': "const core = '~/Projects/agents-102-core'\n",
+  }
+  const d = fixture(files)
+  assert.deepEqual(offenders(d, Object.keys(files)).sort(),
+    ['curriculum/evals/mechanical/tmux-runner/README.md:1', 'curriculum/evals/mechanical/tmux-runner/lib/r.sh:1'])
+})
+
 test('a placeholder home in teaching text is not an owner path', () => {
   const d = fixture({ 'curriculum/r.md': 'A repo at `/Users/me/Projects/x` maps to `-Users-me-Projects-x`; `/Users/yourname/Documents/` on macOS.\n' })
   assert.deepEqual(offenders(d, ['curriculum/r.md']), [])

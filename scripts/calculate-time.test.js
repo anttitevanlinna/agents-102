@@ -422,3 +422,13 @@ test('a prep artefact listed by two modules carries the same figure in both', ()
     bad.map(b => `${b.name}: ${b.seen.join(' vs ')}`), [],
     'same pre-read, two modules, two durations');
 });
+
+// --check is the ship gate, so a module that runs past its cap fails it. A green
+// check that let a 123-minute module into a 120-minute sitting said "fits".
+test('--check problems include a module that runs OVER a cap', () => {
+  const m = { slug: 'm2', problems: [], mismatches: [], verdicts: { 'sitting-2h': { state: 'OVER', by: 3 }, 'cohort-2day': { state: 'FITS', float: 4 } } };
+  const got = CT.checkProblems([m]);
+  assert.equal(got.length, 1);
+  assert.match(got[0], /m2: runs 3 min over the `sitting-2h` cap/);
+  assert.deepEqual(CT.checkProblems([{ slug: 'ok', problems: [], verdicts: { s: { state: 'FITS', float: 0 } } }]), []);
+});

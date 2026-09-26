@@ -38,7 +38,7 @@
 //   node scripts/calculate-time.js                        # every module, every shape
 //   node scripts/calculate-time.js getting-going          # one module
 //   node scripts/calculate-time.js --shape sitting-2h
-//   node scripts/calculate-time.js --check                # exit 1 on a leaf-level defect
+//   node scripts/calculate-time.js --check                # exit 1 on a leaf defect or a module over its cap
 //   node scripts/calculate-time.js --json
 //   node scripts/calculate-time.js --training agentic-engineering-101
 
@@ -749,6 +749,17 @@ function fixLeafTotals(trainingKey, { dry } = {}) {
   return changes;
 }
 
+// The ship gate. A broken leaf, an unresolved disagreement and a module past
+// its cap are each a reason the number a trainer plans against is not true.
+function checkProblems(modules) {
+  return modules.flatMap(m => [
+    ...m.problems.map(p => `${m.slug}: ${p}`),
+    ...((m.mismatches || []).map(p => `${m.slug}: ${p}`)),
+    ...Object.entries(m.verdicts || {}).filter(([, v]) => v.state === 'OVER')
+      .map(([sh, v]) => `${m.slug}: runs ${v.by} min over the \`${sh}\` cap`),
+  ]);
+}
+
 // ── main ─────────────────────────────────────────────────────────────────────
 function main() {
   if (argv.includes('--aggregates')) {
@@ -804,12 +815,7 @@ function main() {
   }
 
   if (CHECK) {
-    // The gate fails on BOTH: a broken leaf and an unresolved disagreement are
-    // equally reasons not to trust the number a trainer would plan against.
-    const problems = modules.flatMap(m => [
-      ...m.problems.map(p => `${m.slug}: ${p}`),
-      ...((m.mismatches || []).map(p => `${m.slug}: ${p}`)),
-    ]);
+    const problems = checkProblems(modules);
     if (problems.length) {
       console.error(`\ncalculate-time --check: ${problems.length} problem(s)`);
       problems.forEach(p => console.error(`  ${p}`));
@@ -819,6 +825,6 @@ function main() {
   }
 }
 
-module.exports = { parseBand, fmtBand, computeModule, computeTraining, readLeaf, readShapes, verdict, parseTransitions, parseCharges, renderRuntimeMap, addClock, readPhases, fixLeafTotals, findAggregates, findPrepDisagreements, findRestatements };
+module.exports = { checkProblems, parseBand, fmtBand, computeModule, computeTraining, readLeaf, readShapes, verdict, parseTransitions, parseCharges, renderRuntimeMap, addClock, readPhases, fixLeafTotals, findAggregates, findPrepDisagreements, findRestatements };
 
 if (require.main === module) main();

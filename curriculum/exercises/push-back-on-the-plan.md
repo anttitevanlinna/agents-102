@@ -1,6 +1,6 @@
 # Sharpen the plan with *two reads*
 
-**Time:** 57 minutes.
+**Time:** 54 minutes.
 
 **What you do:** push back twice on your plan, run a second-pass grilling, then approve and **stop**.
 
@@ -92,7 +92,7 @@ Then just hit stop.
 
 ## Phase 5: Stop, then surface the patterns
 
-*10 min*
+*7 min*
 
 - Don't execute the plan. The work of making it good is the exercise.
 - Approving took you out of plan mode, so this last step runs in default mode.

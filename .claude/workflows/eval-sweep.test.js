@@ -422,3 +422,21 @@ test('the verdict schema requires only fields it declares, and never todos', asy
   assert.ok(!schema.required.includes('todos'), 'todos is retired');
   for (const k of schema.required) assert.ok(k in schema.properties, `required ${k} is declared`);
 });
+
+// Review of the Codex fix branch: the queue door got the behavior schema, the
+// confirm door kept the rule-ledger one — a behavior confirm had to invent two
+// prefill integers and got no instance contract. And a prompt-less file writes
+// verdict N/A to its instance, so the schema must let it return N/A too, or
+// the verdict-agreement gate reports a disagreement the judge could not avoid.
+test('a behavior confirmation gets the behavior schema and the instance contract', async () => {
+  const seen = [];
+  const args = { confirm: [{ file: 'curriculum/exercises/e.md', slug: 'ae101--exercise--e', cls: 'behavior', finding: 'f', applied: 'a', checks: [] }] };
+  await run(args, async (prompt, opts) => { seen.push({ prompt, opts }); return cleanJudge(prompt, opts); });
+  const c = seen.find((x) => (x.opts.label || '').startsWith('confirm:behavior:'));
+  assert.ok(c, 'behavior confirm dispatched');
+  assert.ok(!c.opts.schema.required.includes('rows_written_by_you'));
+  assert.ok(!c.opts.schema.required.includes('rows_spliced_by_merge'));
+  assert.match(c.prompt, /instance-contract\.js behavior/);
+  assert.match(c.prompt, /`class` is exactly "behavior"/);
+  assert.ok(c.opts.schema.properties.verdict.enum.includes('N/A'), 'a prompt-less file can return N/A');
+});

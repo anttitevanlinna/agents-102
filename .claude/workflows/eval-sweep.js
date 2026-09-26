@@ -219,6 +219,8 @@ BEHAVIOR_VERDICT_SCHEMA.required = BEHAVIOR_VERDICT_SCHEMA.required
   .filter(k => k !== 'rows_written_by_you' && k !== 'rows_spliced_by_merge')
 delete BEHAVIOR_VERDICT_SCHEMA.properties.rows_written_by_you
 delete BEHAVIOR_VERDICT_SCHEMA.properties.rows_spliced_by_merge
+// A file with no prompt blocks writes verdict N/A to its instance (instance-contract.js).
+BEHAVIOR_VERDICT_SCHEMA.properties.verdict = { enum: ['PASS', 'REVISE', 'N/A'] }
 const verdictSchemaFor = j => (j.cls === 'behavior' ? BEHAVIOR_VERDICT_SCHEMA : VERDICT_SCHEMA)
 
 const REFUTE_SCHEMA = {
@@ -417,7 +419,7 @@ This is a full class judgement, not a check of the one line. The previous pass a
 
 ${READ_ONLY}
 
-Overwrite \`curriculum/evals/instances/${c.slug}.${c.cls}.json\`, \`body_sha\` at top level, and report \`ungrounded_count\` from \`node curriculum/evals/scripts/check-instance-evidence.js\` on it. If the fix swapped one violation for another, or removed the defect and broke the sentence, say so — that is not resolved.
+Overwrite \`curriculum/evals/instances/${c.slug}.${c.cls}.json\` with the record \`node curriculum/evals/scripts/instance-contract.js ${c.cls}\` prints (your brief's **Output contract** section is the same text); \`class\` is exactly "${c.cls}". \`body_sha\` at top level, and report \`ungrounded_count\` from \`node curriculum/evals/scripts/check-instance-evidence.js\` on it. If the fix swapped one violation for another, or removed the defect and broke the sentence, say so — that is not resolved.
 
 ${EVIDENCE}
 
@@ -506,7 +508,7 @@ const [fromQueue, fromConfirm, fromSets] = await parallel([
   ),
   () => pipeline(
     CONFIRM,
-    c => agent(confirmPrompt(c), { label: `confirm:${c.cls}:${String(c.file).split('/').pop().replace(/\.md$/, '')}`, phase: 'Judge', schema: VERDICT_SCHEMA, model: MODELS.judge }),
+    c => agent(confirmPrompt(c), { label: `confirm:${c.cls}:${String(c.file).split('/').pop().replace(/\.md$/, '')}`, phase: 'Judge', schema: verdictSchemaFor(c), model: MODELS.judge }),
     (v, c) => (v ? verify(v, 'Verify').then(r => tag(r, c)) : v),
   ),
   () => pipeline(

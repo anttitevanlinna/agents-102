@@ -66,7 +66,9 @@ check "skill kept on opt-out" "$(cat "$skills/stride/SKILL.md" 2>/dev/null)" "st
 
 echo "[test] every runner is wired"
 miss=""
-for r in "$ROOT"/run-prework.sh "$ROOT"/run-m[1-6].sh "$ROOT"/run-a101.sh; do
+# Every run*.sh, not a list: a hand-kept list is how the generic run.sh sat
+# unguarded and unnoticed until 2026-09-26.
+for r in "$ROOT"/run*.sh; do
   grep -q '^runner_guard_skills ' "$r" || miss="$miss $(basename "$r"):guard"
   awk '/^cleanup\(\) \{/{on=1} on&&/runner_restore_skills/{f=1} on&&/^\}/{on=0} END{exit !f}' "$r" || miss="$miss $(basename "$r"):restore"
 done

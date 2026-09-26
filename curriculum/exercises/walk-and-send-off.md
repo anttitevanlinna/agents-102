@@ -82,8 +82,8 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-06 (writing@08946dd8 story@43e6cae1 technical@08946dd8 behavior@64d17eea pedagogy@324b81d7 strategy@61da15ad slides@43e6cae1)
-- judges @64d17eea: writing PASS (1 finding see instances/ae101--exercise--walk-and-send-off.writing.json), story PASS, technical PASS (3 findings see instances/ae101--exercise--walk-and-send-off.technical.json), behavior PASS (2 findings see instances/ae101--exercise--walk-and-send-off.behavior.json), pedagogy PASS (1 finding see instances/ae101--exercise--walk-and-send-off.pedagogy.json), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-26 (writing@08946dd8 story@43e6cae1 technical@08946dd8 behavior@f307fa46 pedagogy@324b81d7 strategy@61da15ad slides@43e6cae1)
+- judges @f307fa46: writing PASS (1 finding see instances/ae101--exercise--walk-and-send-off.writing.json), story PASS, technical PASS (3 findings see instances/ae101--exercise--walk-and-send-off.technical.json), behavior PASS (2 findings see instances/ae101--exercise--walk-and-send-off.behavior.json), pedagogy PASS (1 finding see instances/ae101--exercise--walk-and-send-off.pedagogy.json), strategy PASS, slides PASS
 
 **Phase 1 carries the §34 ceiling in one bullet, not two (2026-08-14, Antti-directed).** `check_pedagogy.md` §34 mandates the ceiling at both placements (*"prework + Phase 1 commit"*); here it sits as a bolded tail on the single sizing bullet, where the student actually picks. The module prework and the previous module's `## Next` already carry the sizing line, so it is not printed a third time. Do not re-merge the ceiling away, and do not split it back into two bullets.
 

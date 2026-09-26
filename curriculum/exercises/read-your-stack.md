@@ -60,8 +60,8 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-05 (writing@fb797e3b story@fb797e3b technical@289b45a3 behavior@fb797e3b pedagogy@289b45a3 strategy@289b45a3 slides@fb797e3b)
-- judges @fb797e3b: writing PASS, story PASS, technical PASS, behavior PASS (2 findings see instances/ae101--exercise--read-your-stack.behavior.json), pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-26 (writing@fb797e3b story@fb797e3b technical@289b45a3 behavior@f307fa46 pedagogy@289b45a3 strategy@289b45a3 slides@fb797e3b)
+- judges @f307fa46: writing PASS, story PASS, technical PASS, behavior PASS (verify-refuted), pedagogy PASS, strategy PASS, slides PASS
 
 **Atomic — no phase markers.** One widening scan, drawn, then an optional sidestep.
 

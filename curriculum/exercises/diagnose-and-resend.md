@@ -117,7 +117,7 @@ In the worktree at `../<repo-name>-m5`. The packaging files live on disk; the wo
 /rename m5-long-run
 ```
 
-Fresh context matters here. The exercise session built heavy scrollback (verifier scaffolding, hooks, plan.md drafts); every re-send turn would otherwise pay cache-read on that prefix. The field has a name for this move (Ralph's fresh-sessions camp, Amp's manual-handoff camp; see [What packaging is](lectures/what-packaging-is.md)).
+Fresh context matters here. The exercise session built heavy scrollback (verifier scaffolding, hooks, plan.md drafts); every re-send turn would otherwise pay cache-read on that prefix. The field has a name for this move (Ralph's fresh-sessions camp; see [What packaging is](lectures/what-packaging-is.md)).
 
 Prefer to stay in the exercise session? Drop the scrollback in place instead:
 
@@ -143,8 +143,8 @@ Your `CLAUDE.local.md` and `observations/` have been building in the worktree si
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-06 (writing@874f921c story@54577f39 behavior@64d17eea pedagogy@874f921c strategy@874f921c slides@54577f39)
-- judges @64d17eea: writing PASS (1 finding see instances/ae101--exercise--diagnose-and-resend.writing.json), story PASS, technical REVISE (1/2 see instances/ae101--exercise--diagnose-and-resend.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-26 (writing@874f921c story@54577f39 technical@25075e46 behavior@64d17eea pedagogy@874f921c strategy@874f921c slides@54577f39)
+- judges @25075e46: writing PASS (1 finding see instances/ae101--exercise--diagnose-and-resend.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **View summary:** You read the un-packaged run through three failure lenses, build the checks and durable task artifacts that would have caught its misses, then re-send the same work. The contrast makes packaging visible on your own code rather than as advice.
 

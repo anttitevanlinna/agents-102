@@ -9,14 +9,15 @@
 // Personalised theory handbook for one VIP prospect (name on the cover + title):
 //   node scripts/build-workbook.js vip-<pseudonym> <training-key> --theory --for "<Name>"
 //   The name is a CLI argument, never a repo file. The output directory must be
-//   gitignored (site/clients/vip-*/ is) or the build refuses to run.
+//   gitignored by whichever repository holds it (site/clients/vip-*/ is here)
+//   or the build refuses to run.
 //
 //   node scripts/build-workbook.js <customer-slug> <training-key> --no-trainer-docs
 //   skips trainer-guide.html + trainer-modules.html. A short/preview cut is its
 //   own TRAININGS entry with a `contentKey` alias (e.g. agentic-engineering-101-preview
 //   → agentic-engineering-101), not a build flag.
 //
-// Output:
+// Output (under AGENTS_OUTPUT_DIR when set, else this repo's site/clients/):
 //   site/clients/<customer-slug>/index.html                    customer index
 //   site/clients/<customer-slug>/<training-key>/index.html     workbook
 //   site/clients/<customer-slug>/<training-key>/trainer-guide.html (when that training has trainer-guide.md)
@@ -38,6 +39,14 @@ const ROOT = path.resolve(__dirname, '..');
 const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
 const CT = require(path.join(ROOT, 'scripts/calculate-time.js'));
 const { loadRegistry, writeRegistry, OUT_FILE: PROMPTS_JSON } = require('./compile-prompts.js');
+
+// Output root (AGENTS_OUTPUT_DIR): builds write <root>/<customer>/…, so a
+// customer Git repository can own its generated delivery beside its branding.
+// Unset → this repo's site/clients/.
+const CLIENTS_ROOT = process.env.AGENTS_OUTPUT_DIR
+  ? path.resolve(process.env.AGENTS_OUTPUT_DIR)
+  : path.join(ROOT, 'site/clients');
+const shown = p => { const r = path.relative(process.cwd(), p); return r.startsWith('..') ? p : r || '.' };
 const { loadFigures, writeFigures, OUT_FILE: FIGURES_JSON } = require('./compile-figures.js');
 
 // Wire heading-id generation into marked so cross-doc anchor links
@@ -85,6 +94,7 @@ console.log(`Loaded ${Object.keys(FIGURE_REGISTRY).length} figures from curricul
 const KNOWN_DESTS = new Set([
   'Claude Code',
   'Cowork',
+  'Claude Desktop',     // pasted into the desktop app's Schedule task (personal-agent-homework-3)
   'Builder Claude',
   'central synthesizer',
   'buyer/sponsor agent'
@@ -858,7 +868,7 @@ ${content}
 // workbook; exercise entries render only their reusable summary metadata.
 // Lectures ride the module include path (synthetic
 // standalone include-link → inlineIncludes → readMd/expandPrompts → marked →
-// postProcessIncludes), so {{prompt:}}/{{cut:}}/{{covered:}} markers, heading
+// postProcessIncludes), so {{prompt:}} markers, heading
 // ids, and the phase--lecture section wrapper come out byte-equivalent to the
 // workbook's. Supplementary docs follow the workbook's renderStandalone
 // transform sequence (link rewrite → inlineImages → escapeTildes → marked →
@@ -1068,14 +1078,14 @@ ${content}
 }
 
 function buildTheoryHandbook(customer, trainingKey, recipient) {
-  const outDir = path.join(ROOT, 'site/clients', customer, trainingKey);
+  const outDir = path.join(CLIENTS_ROOT, customer, trainingKey);
   fs.mkdirSync(outDir, { recursive: true });
   const html = theoryHandbookTemplate(
     trainingKey, buildTheoryBody(trainingKey, recipient), recipient);
   const outFile = path.join(outDir, 'theory-handbook.html');
   fs.writeFileSync(outFile, html);
   const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);
-  console.log(`Built ${path.relative(ROOT, outFile)} (${sizeKB} KB)`);
+  console.log(`Built ${shown(outFile)} (${sizeKB} KB)`);
 }
 
 // ── Exercises workbook ──────────────────────────────────────────────────────
@@ -1158,13 +1168,13 @@ ${content}
 }
 
 function buildExercisesWorkbook(customer, trainingKey) {
-  const outDir = path.join(ROOT, 'site/clients', customer, trainingKey);
+  const outDir = path.join(CLIENTS_ROOT, customer, trainingKey);
   fs.mkdirSync(outDir, { recursive: true });
   const html = exercisesWorkbookTemplate(trainingKey, buildExercisesBody(trainingKey));
   const outFile = path.join(outDir, 'exercises-workbook.html');
   fs.writeFileSync(outFile, html);
   const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);
-  console.log(`Built ${path.relative(ROOT, outFile)} (${sizeKB} KB)`);
+  console.log(`Built ${shown(outFile)} (${sizeKB} KB)`);
 }
 
 function template(title, content, trainingKey) {
@@ -1231,15 +1241,6 @@ function parseCli(argv) {
   return { customer: customer, trainings: trainings };
 }
 
-// Tarball filenames per training. AE101's name is owned by
-// curriculum/trainings/agentic-engineering-101/training-architecture.md
-// § Material distribution. Rename there first; this map and downstream
-// consumers follow.
-const TARBALLS = {
-  'agentic-engineering-101': 'ae101-content.tar.gz',
-  'agents-101': 'agents-101-starter.tar.gz',
-};
-
 // Where the payload is served from. A customer publishing on their own estate
 // serves the workbook internally, and a payload host they cannot change means
 // every student's prework reaches out to a vendor endpoint from a managed
@@ -1259,51 +1260,29 @@ function payloadUrl(urlKey, customer, tarName) {
 }
 
 function buildPayload(contentKey, customer, urlKey, outDir) {
-  // AE101 + Agents 101 each ship a tarball alongside that training's workbook.
-  // The payload URL is training-scoped so one customer can host multiple
-  // trainings without the two tarballs overwriting each other. contentKey
+  // A training ships a tarball alongside its workbook when its registry entry
+  // declares one. The payload URL is training-scoped so one customer can host
+  // multiple trainings without the tarballs overwriting each other. contentKey
   // selects which tarball to build (a variant reuses its parent's content);
   // urlKey is the output-path segment (the variant's own dir under the customer).
   //
-  // AE101      — content tarball (lectures/exercises/reference/supplementary/skills;
-  //                               extracted at ~/Documents/ae101-content/)
-  // Agents 101 — starter tarball  (empty working-folder skeleton; extracts in-place
-  //                                into the student's connected/working folder at
-  //                                ~/Documents/agents-101/)
-  if (contentKey === 'agentic-engineering-101') {
-    const tarName = TARBALLS[contentKey];
-    console.log('Building content tarball...');
-    // Straight into this build's own output dir: a shared repo-root file raced
-    // between parallel builds.
-    const tarDst = path.join(outDir, tarName);
-    execFileSync('scripts/build-ae101-content-tarball.sh', [tarDst], { cwd: ROOT, stdio: 'inherit' });
-    const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
-    console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
-    return payloadUrl(urlKey, customer, tarName);
-  }
-
-  if (contentKey === 'agents-101') {
-    const tarName = TARBALLS[contentKey];
-    console.log('Building Agents 101 starter tarball...');
-    const tarDst = path.join(outDir, tarName);
-    execFileSync('scripts/build-agents-101-starter-tarball.sh', [tarDst], { cwd: ROOT, stdio: 'inherit' });
-    // Agents 101 is dual-runtime; Cowork's outbound network allowlist blocks
-    // both bosser.consulting and raw.githubusercontent.com (only objects.gh +
-    // S3 + a few others reachable). The fallback for Cowork is browser-download
-    // into the working folder — the student's browser is unconstrained by
-    // Cowork's proxy, so any HTTPS URL the workbook itself loads from works.
-    // Step 1 is forked: Code uses `curl + tar`; Cowork uses browser-download +
-    // extract-only prompt. Same URL, different transport.
-    const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
-    console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
-    return payloadUrl(urlKey, customer, tarName);
-  }
-
-  return null;
+  // Agents 101 is dual-runtime; Cowork's outbound network allowlist blocks
+  // both bosser.consulting and raw.githubusercontent.com, so Cowork students
+  // download the same URL in the browser and extract it with a prompt.
+  const tarball = (CR.TRAININGS[contentKey] || {}).tarball;
+  if (!tarball) return null;
+  console.log(`Building ${tarball.name}...`);
+  // Straight into this build's own output dir: a shared repo-root file raced
+  // between parallel builds.
+  const tarDst = path.join(outDir, tarball.name);
+  execFileSync(tarball.script, [tarDst], { cwd: ROOT, stdio: 'inherit' });
+  const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
+  console.log(`Copied ${shown(tarDst)} (${tarKB} KB)`);
+  return payloadUrl(urlKey, customer, tarball.name);
 }
 
 function buildTraining(customer, trainingKey, opts = {}) {
-  const outDir = path.join(ROOT, 'site/clients', customer, trainingKey);
+  const outDir = path.join(CLIENTS_ROOT, customer, trainingKey);
   fs.mkdirSync(outDir, { recursive: true });
 
   // A variant training builds its parent's tarball but hosts it under its own
@@ -1337,7 +1316,7 @@ function buildTraining(customer, trainingKey, opts = {}) {
   fs.writeFileSync(outFile, html);
 
   const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);
-  console.log(`Built ${path.relative(ROOT, outFile)} (${sizeKB} KB)`);
+  console.log(`Built ${shown(outFile)} (${sizeKB} KB)`);
 
   // --no-trainer-docs: a student-facing build (e.g. a self-serve beta). The
   // trainer guide + trainer modules carry delivery mechanics and the M3
@@ -1358,7 +1337,7 @@ function buildTraining(customer, trainingKey, opts = {}) {
     const guideFile = path.join(outDir, 'trainer-guide.html');
     fs.writeFileSync(guideFile, guideHtml);
     const guideKB = (fs.statSync(guideFile).size / 1024).toFixed(0);
-    console.log(`Built ${path.relative(ROOT, guideFile)} (${guideKB} KB)`);
+    console.log(`Built ${shown(guideFile)} (${guideKB} KB)`);
   }
 
   // Trainer modules one-pager: same gate, separate file. Cross-doc links
@@ -1369,12 +1348,12 @@ function buildTraining(customer, trainingKey, opts = {}) {
     const modulesFile = path.join(outDir, 'trainer-modules.html');
     fs.writeFileSync(modulesFile, modulesHtml);
     const modulesKB = (fs.statSync(modulesFile).size / 1024).toFixed(0);
-    console.log(`Built ${path.relative(ROOT, modulesFile)} (${modulesKB} KB)`);
+    console.log(`Built ${shown(modulesFile)} (${modulesKB} KB)`);
   }
 }
 
 function deployedTrainingKeys(customer) {
-  const customerDir = path.join(ROOT, 'site/clients', customer);
+  const customerDir = path.join(CLIENTS_ROOT, customer);
   if (!fs.existsSync(customerDir)) return [];
   return Object.keys(CR.TRAININGS)
     .filter(k => fs.existsSync(path.join(customerDir, k, 'index.html')));
@@ -1433,13 +1412,13 @@ ${cards}
 }
 
 function buildCustomerIndex(customer) {
-  const customerDir = path.join(ROOT, 'site/clients', customer);
+  const customerDir = path.join(CLIENTS_ROOT, customer);
   fs.mkdirSync(customerDir, { recursive: true });
   const keys = deployedTrainingKeys(customer);
   const indexFile = path.join(customerDir, 'index.html');
   fs.writeFileSync(indexFile, customerIndexTemplate(customer, keys));
   const sizeKB = (fs.statSync(indexFile).size / 1024).toFixed(0);
-  console.log(`Built ${path.relative(ROOT, indexFile)} (${sizeKB} KB)`);
+  console.log(`Built ${shown(indexFile)} (${sizeKB} KB)`);
 }
 
 // ── Personalised builds (`--for "<Name>"`) ──────────────────────────────────
@@ -1490,20 +1469,32 @@ function stripFlags(argv) {
 // rather than pattern-matched here, so the answer stays true when .gitignore
 // changes. Convention: site/clients/vip-<pseudonym>/ (ignored wholesale).
 function guardPersonalisedOutput(customer) {
+  const target = path.join(CLIENTS_ROOT, customer);
+  // Ask the repository that would hold the output (the customer's, when
+  // AGENTS_OUTPUT_DIR points there). Outside any Git worktree there is no
+  // commit path, so the build may proceed.
+  let probe = target;
+  while (!fs.existsSync(probe)) probe = path.dirname(probe);
+  let top = null;
+  try {
+    top = execFileSync('git', ['rev-parse', '--show-toplevel'], { cwd: probe, stdio: 'pipe', encoding: 'utf8' }).trim();
+  } catch (e) {
+    return;
+  }
   // Trailing slash on purpose: the target dir usually does not exist yet on a
   // first build, and without it git can't know the path is a directory — so a
   // directory-only pattern (`site/clients/vip-*/`) would report "not ignored"
   // and the guard would refuse every genuinely-safe first run.
-  const rel = 'site/clients/' + customer + '/';
+  const rel = path.relative(fs.realpathSync(top), path.join(fs.realpathSync(probe), path.relative(probe, target))) + '/';
   let ignored = false;
   try {
-    execSync(`git check-ignore -q ${JSON.stringify(rel)}`, { cwd: ROOT, stdio: 'ignore' });
+    execFileSync('git', ['check-ignore', '-q', rel], { cwd: top, stdio: 'ignore' });
     ignored = true;
   } catch (e) {
-    ignored = false;  // exit 1 = not ignored; exit 128 = not a repo / git missing
+    ignored = false;  // exit 1 = not ignored
   }
   if (!ignored) {
-    console.error(`Build aborted: --for would write a named copy into ${rel}/, which git does NOT ignore.`);
+    console.error(`Build aborted: --for would write a named copy into ${rel}, which git does NOT ignore.`);
     console.error('  A personalised handbook carries the recipient\'s name in the HTML; committing it leaks that name.');
     console.error('  Use a gitignored customer slug (convention: vip-<pseudonym>), e.g.:');
     console.error('    node scripts/build-workbook.js vip-northwind agentic-engineering-101 --theory --for "<Name>"');
@@ -1546,7 +1537,7 @@ if (theoryMode) {
 // inline post-processing). Fail loud so the regression surfaces in the build,
 // not in front of a student.
 (function auditRenderedHtml() {
-  const customerDir = path.join(ROOT, 'site/clients', customer);
+  const customerDir = path.join(CLIENTS_ROOT, customer);
   const offenders = [];
   function walk(dir) {
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -1561,11 +1552,9 @@ if (theoryMode) {
         const body = raw
           .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
           .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '');
-        // Catch leftover {{prompt:key}}, its cut-candidate sibling
-        // {{cut:key|reason}}, AND the covered-region pair {{covered:slug#anchor}}
-        // … {{/covered}} — all should have been resolved by the expander.
-        const matches = body.match(/\{\{(?:prompt|cut):[a-z0-9-]+(?:\|[a-z0-9-]+)?\}\}|\{\{covered:[a-z0-9-]+(?:#[a-z0-9-]+)?\}\}|\{\{\/covered\}\}/g);
-        if (matches) offenders.push({ file: path.relative(ROOT, abs), markers: matches });
+        // Catch any {{prompt:key}} the expander left unresolved.
+        const matches = body.match(/\{\{prompt:[a-z0-9-]+\}\}/g);
+        if (matches) offenders.push({ file: shown(abs), markers: matches });
       }
     }
   }
@@ -1583,7 +1572,7 @@ if (theoryMode) {
 // Build emits to site/clients/<cust>/. Customer deploy lives in the sibling
 // ai-training-internal repo (private, materials.arcticrex.com); run
 // `scripts/deploy-customer.sh <cust>` there to ship.
-console.log(`Built to site/clients/${customer}/.`);
+console.log(`Built to ${shown(path.join(CLIENTS_ROOT, customer))}/.`);
 console.log('Deploy via: ai-training-internal/scripts/deploy-customer.sh ' + customer);
 console.log('Live URLs after Pages publishes:');
 console.log(`  https://materials.arcticrex.com/content/${customer}/`);

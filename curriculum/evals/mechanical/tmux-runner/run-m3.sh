@@ -303,5 +303,17 @@ else
 fi
 (( m3_fail == 0 )) || { echo "[m3] FAIL: artefact gates — see above" >&2; exit 1; }
 
+# M4 (full cut) positions from here: the main side ends on the ADR commit.
+state_file="$run_dir/m3-state.json"
+cat > "$state_file" <<JSON
+{
+  "run_id": "$run_id",
+  "m3_cwd": "$main_cwd",
+  "m3_ending_sha": "$(git -C "$main_cwd" rev-parse --short HEAD)",
+  "m3_branch": "$(git -C "$main_cwd" rev-parse --abbrev-ref HEAD)"
+}
+JSON
+
 echo "[m3] PASS: all phases complete"
 echo "[m3] out: $run_dir"
+echo "[m3] state.json: $state_file"

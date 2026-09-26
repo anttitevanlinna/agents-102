@@ -275,3 +275,15 @@ test('--file reaches a page the training scan does not cover', () => {
   const one = run(['--file', page]);
   assert.match(one.out, /files:\s*1\b/, '--file must measure exactly the one page it is handed');
 });
+
+// A --file run measures that file, not a training; the header said
+// "Slide-size check — agentic-engineering-101" for a customer lecture.
+test('a --file run is labelled by the file, not by the default training', () => {
+  const rel = 'curriculum/lectures/diagnose-and-resend.md';
+  const lecture = fs.existsSync(path.join(ROOT, rel)) ? rel : 'curriculum/exercises/diagnose-and-resend.md';
+  const { out } = run(['--file', lecture]);
+  const header = out.split('\n').find(l => l.startsWith('Slide-size check'));
+  assert.equal(header, `Slide-size check — ${lecture}`);
+  const named = run(['--file', lecture, '--training', 'agents-101']).out.split('\n').find(l => l.startsWith('Slide-size check'));
+  assert.equal(named, `Slide-size check — ${lecture} (module flags: agents-101)`);
+});

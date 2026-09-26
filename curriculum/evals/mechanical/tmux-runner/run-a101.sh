@@ -588,7 +588,7 @@ done
 pane_capture "$session" "$run_dir/transcript.txt"
 
 # ---- Light state hand-off (artifacts, not SHAs) --------------------------
-state="$run_dir/$module-state.json"
+state="$run_dir/a101-$module-state.json"      # = the registered name, so chain_state finds it
 {
   printf '{\n'
   printf '  "run_id": "%s",\n' "$run_id"

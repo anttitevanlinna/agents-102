@@ -1,3 +1,4 @@
+# 2026-09-26: full-cut M4 positions from M3's recorded ending SHA (m3-state.json), not the SUT's current HEAD.
 RUN arrange-lemmings --sut <SB>/sut --slug fix-hud-tally
 RUN run-m1 --cwd <SB>/sut --task-slug fix-hud-tally scenario=m1.txt
 GIT checkout -B m2/add-levels-2-3 m1endsha
@@ -7,7 +8,7 @@ GIT worktree remove --force <SB>/home/Projects/lemmings-m3-quality
 GIT branch -D m3/quality
 GIT worktree prune
 RUN run-m3 --main-cwd <SB>/sut --quality-cwd <SB>/home/Projects/lemmings-m3-quality main=m3-main.txt quality=m3-quality.txt
-GIT checkout -B m4/blocker-deadlock-terminal headsha
+GIT checkout -B m4/blocker-deadlock-terminal m3endsha
 RUN run-m4 --cwd <SB>/sut --task-slug blocker-deadlock-terminal scenario=m4.txt
 GIT branch -f m4/agent-slug spsha
 GIT worktree remove --force <SB>/home/Projects/lemmings-m5

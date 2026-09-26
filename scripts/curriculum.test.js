@@ -1,16 +1,9 @@
 #!/usr/bin/env node
 /*
- * Tests for the shared curriculum runtime (site/layouts/curriculum.js) —
- * specifically the {{cut:key|reason}} cut-candidate marker, a reversible
- * gray-out sibling of {{prompt:key}}.
+ * Tests for the shared curriculum runtime (site/layouts/curriculum.js) and the
+ * builds that use it.
  *
  * Run: node --test scripts/curriculum.test.js
- *
- * Contract under test:
- *   - {{cut:foo|bar}} expands to the SAME prompt block as {{prompt:foo}}, plus a
- *     ⟦CUT:bar⟧ sentinel on the label paragraph (decoratePrompts turns that into
- *     the dim + ribbon at DOM time).
- *   - {{prompt:foo}} behaviour is byte-identical to before (strict superset).
  */
 
 const { test } = require('node:test');
@@ -110,24 +103,10 @@ test('shared footer external links open in a new tab', () => {
   });
 });
 
-test('expandPrompts: {{cut:foo|bar}} emits the prompt block with a ⟦CUT:bar⟧ sentinel', () => {
-  const out = expandPrompts('{{cut:foo|bar}}', { foo: { text: 'x' } });
-  assert.match(out, /⟦CUT:bar⟧/);
-  assert.match(out, /\*\*Prompt\*\*/);   // still the canonical prompt block
-  assert.match(out, /```\nx\n```/);       // registry body is retained verbatim
-});
-
-test('expandPrompts: {{cut:foo}} without a reason emits a bare ⟦CUT⟧ (no colon)', () => {
-  const out = expandPrompts('{{cut:foo}}', { foo: { text: 'x' } });
-  assert.match(out, /⟦CUT⟧/);
-  assert.doesNotMatch(out, /⟦CUT:/);
-});
-
-test('expandPrompts: {{prompt:foo}} is unchanged — no CUT sentinel', () => {
+test('expandPrompts: {{prompt:foo}} expands to the canonical prompt block', () => {
   const out = expandPrompts('{{prompt:foo}}', { foo: { text: 'x' } });
   assert.match(out, /\*\*Prompt\*\* \*\(Claude Code\)\*/);
   assert.match(out, /```\nx\n```/);
-  assert.doesNotMatch(out, /⟦CUT/);
 });
 
 test('expandFigures: {{figure:foo}} expands to the registry block', () => {
@@ -158,30 +137,11 @@ test('expandFigures: unknown key passes through permissively, throws in strict m
   );
 });
 
-test('expandPrompts: strict mode throws on an unknown {{cut:}} key', () => {
+test('expandPrompts: unknown key passes through permissively, throws in strict mode', () => {
+  assert.equal(expandPrompts('{{prompt:missing}}', { foo: { text: 'x' } }), '{{prompt:missing}}');
   assert.throws(
-    () => expandPrompts('{{cut:missing|why}}', { foo: { text: 'x' } }, { strict: true }),
+    () => expandPrompts('{{prompt:missing}}', { foo: { text: 'x' } }, { strict: true }),
     /unresolved .*missing/
-  );
-});
-
-test('expandPrompts: {{covered:slug#anchor}} pair wraps the span in a covered-region div', () => {
-  const md = 'before\n\n{{covered:when-a-plan-is-good#two-reads-paired}}\n\nsome *prose* here\n\n{{/covered}}\n\nafter';
-  const out = expandPrompts(md, {});
-  assert.match(out, /<div class="covered-region" data-covered-by="when-a-plan-is-good#two-reads-paired">/);
-  assert.match(out, /<\/div>/);
-  assert.match(out, /some \*prose\* here/);   // content between markers untouched
-});
-
-test('expandPrompts: {{covered:slug}} without an anchor keeps the bare slug', () => {
-  const out = expandPrompts('{{covered:some-lecture}}\n\nx\n\n{{/covered}}', {});
-  assert.match(out, /data-covered-by="some-lecture"/);
-});
-
-test('expandPrompts: strict mode throws on an unbalanced covered region', () => {
-  assert.throws(
-    () => expandPrompts('{{covered:a#b}}\n\nx', {}, { strict: true }),
-    /unbalanced .*covered/
   );
 });
 
@@ -786,6 +746,19 @@ test('a non-variant training still numbers by position', () => {
     assert.equal(moduleOrdinal('agentic-engineering-101', m.slug), i + 1);
   });
   assert.equal(moduleNumber('agentic-engineering-101', 'prework'), '00');
+});
+
+// A training's payload is declared on its registry entry, so registering a new
+// training with a tarball needs no branch in the build.
+test('payload tarballs come from the registry, not a per-training branch', () => {
+  for (const [key, t] of Object.entries(TRAININGS)) {
+    if (!t.tarball) continue;
+    assert.match(t.tarball.name, /\.tar\.gz$/, key);
+    assert.ok(fs.existsSync(path.join(__dirname, '..', t.tarball.script)), `${key}: ${t.tarball.script}`);
+  }
+  assert.ok(TRAININGS['agentic-engineering-101'].tarball, 'AE101 ships a tarball');
+  const src = fs.readFileSync(path.join(__dirname, 'build-workbook.js'), 'utf8');
+  assert.doesNotMatch(src, /contentKey === '/, 'no per-training branch in the build');
 });
 
 // The nav chip is the surface where the collision was visible. It must read the

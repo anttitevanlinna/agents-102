@@ -106,6 +106,13 @@ function writeRegistry(registry, outFile) {
   return out;
 }
 
+// Every registry training that owns content (a cut reuses its parent's graph).
+function graphTrainings(trainings) {
+  return Object.entries(trainings)
+    .filter(([, t]) => !t.contentKey)
+    .map(([key, t]) => ({ key, blocking: t.status !== 'draft' }));
+}
+
 if (require.main === module) {
   const registry = loadRegistry();
   const out = writeRegistry(registry);
@@ -116,20 +123,23 @@ if (require.main === module) {
   // says nothing about artefact ordering; run the validator as a sibling so a
   // premature-read / dangling-require can't pass the build. A child process
   // keeps the two modules decoupled (no require cycle) and propagates the exit
-  // code. Every training with a normalized graph is validated here: a graph
-  // that is only checked on demand goes stale, which is how Agents 101 came to
-  // carry fifteen errors nobody saw.
+  // code. A draft training's graph is checked and reported, not blocking.
   const { execFileSync } = require('child_process');
-  const VALIDATED_TRAININGS = ['agentic-engineering-101', 'agents-101'];
-  try {
-    for (const training of VALIDATED_TRAININGS) {
+  const { TRAININGS } = require('../site/layouts/curriculum.js');
+  let failed = false;
+  for (const { key, blocking } of graphTrainings(TRAININGS)) {
+    try {
       execFileSync(
         process.execPath,
-        [path.join(__dirname, 'validate-prompt-graph.js'), '--training', training],
+        [path.join(__dirname, 'validate-prompt-graph.js'), '--training', key],
         { stdio: 'inherit' }
       );
+    } catch (e) {
+      if (blocking) failed = true;
+      else console.error(`(${key} is a draft: reported, not blocking)`);
     }
-  } catch (e) {
+  }
+  if (failed) {
     console.error('\nPrompt dependency-graph validation failed — see errors above. Build aborted.');
     process.exit(1);
   }
@@ -150,4 +160,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { loadRegistry, writeRegistry, PROMPTS_DIR, OUT_FILE };
+module.exports = { loadRegistry, writeRegistry, graphTrainings, PROMPTS_DIR, OUT_FILE };

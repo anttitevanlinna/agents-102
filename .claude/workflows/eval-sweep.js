@@ -230,7 +230,7 @@ const READ_ONLY = `## You are READ-ONLY on the target file
 
 Do not edit it at all — not the body, not the maintainer block, not a backing block, not a source stamp. Other judges are reading this same file right now. On an earlier run judges were allowed to fix maintainer notes; five verdicts were then thrown away because a sibling wrote the file mid-read and the recorded \`body_sha\` matched no commit. Scope-of-content is not scope-of-concurrency: the sha covers the whole file.
 
-Anything you would have fixed goes in \`findings\` (blocking) or \`suggestions\` (not owed — and only if you can write the replacement). The orchestrator applies them after every class on this file has returned. The only file you write is your own instance JSON.`
+Anything you would have fixed goes in \`findings\` (blocking) or \`suggestions\` (not owed — and only if you can write the replacement). The orchestrator applies them after every class on this file has returned. The only file you write is your own instance JSON. Never run \`git commit\`, \`git push\`, \`git add\` or any other git write: the orchestrator stamps and commits after every judge returns.`
 
 const EVIDENCE_FULL = `## Verdict discipline
 

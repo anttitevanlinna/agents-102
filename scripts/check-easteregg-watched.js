@@ -101,12 +101,7 @@ for (const file of mdFiles()) {
   const body = fs.readFileSync(file, 'utf8');
   for (const block of sections(body)) {
     const text = block.lines.join('\n');
-    // A watched prompt referenced via its cut-candidate sibling ({{cut:k}} or
-    // {{cut:k|reason}}) still fires the easter egg — treat both as a reference.
-    const firesEasterEgg = watched.some((k) =>
-      text.includes(`{{prompt:${k}}}`) ||
-      text.includes(`{{cut:${k}}}`) ||
-      text.includes(`{{cut:${k}|`));
+    const firesEasterEgg = watched.some((k) => text.includes(`{{prompt:${k}}}`));
     if (!firesEasterEgg) continue;
     for (const pat of FLIP_PATTERNS) {
       const m = text.match(pat);

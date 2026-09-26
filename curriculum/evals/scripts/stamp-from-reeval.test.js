@@ -8,7 +8,7 @@ const assert = require('node:assert')
 const fs = require('node:fs')
 const os = require('node:os')
 const path = require('node:path')
-const { readResults, adaptSweepRow, stateFor, makeSlugOf, makeTodosOf, flagName, groupByFile } = require('./stamp-from-reeval.js')
+const { readResults, adaptSweepRow, stateFor, makeSlugOf, makeTodosOf, flagName, groupByFile, bindTraces, recordRefutations } = require('./stamp-from-reeval.js')
 
 let n = 0
 function test(name, fn) { fn(); n++; console.log(`ok ${n} - ${name}`) }
@@ -264,4 +264,55 @@ test('an unreadable instance falls back to the returned array rather than report
   }] } }
   const [r] = readResults(out, makeSlugOf(dir), makeTodosOf(dir))
   assert.equal(r.todos, 1)
+})
+
+// A sim trace is evidence about the body its judge read. The judge template
+// used to set content_sha itself: a story judge wrote a hash that was not the
+// file's, and a behavior judge that reused every cached entry never rewrote it,
+// so both traces read stale the moment they were made. The stamper knows the
+// body each judge read (`body_sha`), so it binds the trace to that before
+// update-quality.sh advances both past its own Quality-line write.
+test('bindTraces sets a story/behavior trace to the body its judge read', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bind-'))
+  const read = 'a'.repeat(64)
+  const write = (name, sha) => fs.writeFileSync(path.join(dir, name), JSON.stringify({ content_sha: sha, phases: [] }, null, 2) + '\n')
+  write('ae101--exercise--x.persona.json', 'f'.repeat(64))
+  write('ae101--exercise--y.behavior.json', 'e'.repeat(64))
+  write('ae101--exercise--z.persona.json', 'd'.repeat(64))
+  const bound = bindTraces([
+    { cls: 'story', instanceSlug: 'ae101--exercise--x', bodySha: read },
+    { cls: 'behavior', instanceSlug: 'ae101--exercise--y', bodySha: read },
+    { cls: 'technical', instanceSlug: 'ae101--exercise--z', bodySha: read },
+    { cls: 'story', instanceSlug: 'ae101--exercise--missing', bodySha: read },
+    { cls: 'story', instanceSlug: 'ae101--exercise--z', bodySha: 'not-a-sha' },
+  ], dir)
+  const sha = name => JSON.parse(fs.readFileSync(path.join(dir, name), 'utf8')).content_sha
+  assert.strictEqual(sha('ae101--exercise--x.persona.json'), read)
+  assert.strictEqual(sha('ae101--exercise--y.behavior.json'), read)
+  assert.strictEqual(sha('ae101--exercise--z.persona.json'), 'd'.repeat(64), 'technical owns no trace; a malformed sha binds nothing')
+  assert.strictEqual(bound, 2)
+  assert.strictEqual(adaptSweepRow({ file: 'f.md', class: 'story', verdict: 'PASS', body_sha: read }).bodySha, read)
+  fs.rmSync(dir, { recursive: true, force: true })
+})
+
+// A REVISE whose every finding the refuters killed stamps PASS:verify-refuted,
+// and check-verdict-agreement then reads the instance's REVISE against that row
+// as a contradiction until someone records a resolution. The refuters' reasons
+// are in the sweep output, so the stamper records them; the verdict stays.
+test('recordRefutations settles a fully refuted REVISE from the refuters\' reasons', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'refute-'))
+  const inst = path.join(dir, 'ae101--exercise--x.behavior.json')
+  fs.writeFileSync(inst, JSON.stringify({ verdict: 'REVISE' }, null, 2) + '\n')
+  const row = adaptSweepRow({ file: 'f.md', class: 'behavior', verdict: 'REVISE', instanceSlug: 'ae101--exercise--x',
+    refuted: [{ rule: 'check_pedagogy.md §52c', line: 11, why: ['scope: already swept and left standing', 'harm: no student acts differently'] }] })
+  const partial = adaptSweepRow({ file: 'g.md', class: 'behavior', verdict: 'REVISE', instanceSlug: 'ae101--exercise--x',
+    confirmed: [{ rule: 'r', line: 1 }], refuted: [{ rule: 's', line: 2, why: ['scope: no'] }] })
+  assert.strictEqual(recordRefutations([row, partial], dir, '2026-09-26'), 1, 'only a fully refuted REVISE settles')
+  const j = JSON.parse(fs.readFileSync(inst, 'utf8'))
+  assert.strictEqual(j.verdict, 'REVISE', 'the verdict is the record and is never edited')
+  assert.strictEqual(j.resolution.settled, 'refuted')
+  assert.strictEqual(j.resolution.at, '2026-09-26')
+  assert.match(j.resolution.note, /§52c line 11.*already swept.*no student acts/)
+  assert.strictEqual(recordRefutations([row], dir, '2026-09-27'), 0, 'an existing resolution is left alone')
+  fs.rmSync(dir, { recursive: true, force: true })
 })

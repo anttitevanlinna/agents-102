@@ -38,4 +38,19 @@ console.log('content-creation-brief: strategy doc per training')
   assert.ok(out.includes(path.join(CORE, 'strategy', 'content-strategy-engineering-management.md')), 'EM strategy doc')
   assert.ok(!/unrecognized training/.test(out), 'EM voice line is not "unrecognized"')
 }
+// A new training directory needs no edit here: its key is the directory name and
+// its strategy doc is content-strategy-<key>.md in core.
+{
+  const os = require('node:os')
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'brief-'))
+  const f = path.join(dir, 'curriculum', 'trainings', 'zz-new-training', 'module.md')
+  fs.mkdirSync(path.dirname(f), { recursive: true })
+  fs.writeFileSync(f, '# A module\n')
+  try {
+    const out = brief(f)
+    assert.ok(out.includes('TRAINING: zz-new-training'), 'key is the directory name')
+    assert.ok(out.includes(path.join(CORE, 'strategy', 'content-strategy-zz-new-training.md')), 'conventional strategy doc path')
+    assert.ok(!/unrecognized training/.test(out), 'a new training is recognised')
+  } finally { fs.rmSync(dir, { recursive: true, force: true }) }
+}
 console.log('content-creation-brief: T1 indexes; every training recognised')

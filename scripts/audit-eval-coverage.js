@@ -195,9 +195,8 @@ function theoryManifestLectures() {
 // `ae101--<slug>` basename collided; the old workaround was a one-off
 // `-module` suffix on just this entry. Regression test:
 // audit-eval-coverage.test.js "SURFACES: every instanceSlug …".
-// Instance filenames carry a per-training prefix, and it is NOT the registry key:
-// AE101's instances are `ae101--…` while agents-101 and claude-basics use their
-// own key verbatim. There is no rule to derive here, only a fact to record.
+// Instance filenames carry the registry entry's `evalKey` (AE101 = `ae101`),
+// else the registry key itself.
 const { instanceKey, evalTrainings } = require('../curriculum/evals/scripts/scan-stale-classes.js');
 
 // AE101's surface set is hand-curated and stays that way: its twelve exercises

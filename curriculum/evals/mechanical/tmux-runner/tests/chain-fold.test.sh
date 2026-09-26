@@ -29,6 +29,12 @@ CASES=(
   "picoshare-northwind|chain-northwind.sh --sut-kit picoshare|chain-ae101.sh --sut-kit picoshare --cut northwind"
   "codesearch-full|chain-codesearch.sh --m2-sha m2override|chain-ae101.sh --sut-kit codesearch --m2-sha m2override"
   "codesearch-northwind-from-m4|chain-northwind.sh --sut-kit codesearch --from m4|chain-ae101.sh --sut-kit codesearch --cut northwind --from m4"
+  # Resume points (no old driver): a --from either resolves declared prior
+  # state or fails before touching the SUT.
+  "lemmings-full-from-m4-no-state|-|chain-ae101.sh --sut-kit lemmings --from m4"
+  "lemmings-full-from-m4-m3-sha|-|chain-ae101.sh --sut-kit lemmings --from m4 --m3-sha m3override"
+  "lemmings-full-from-m5-no-state|-|chain-ae101.sh --sut-kit lemmings --from m5"
+  "lemmings-full-from-m6-no-state|-|chain-ae101.sh --sut-kit lemmings --from m6"
 )
 
 stub_runner() {   # $1=path
@@ -43,12 +49,12 @@ esac
 echo "RUN $name $*$sc" | sed -e "s#$SB#<SB>#g" >> "$TRACE"
 cwd=""; while [[ $# -gt 0 ]]; do [[ "$1" == --cwd ]] && cwd="$2"; shift; done
 case "$name" in
-  run-m1|run-m2)
+  run-m1|run-m2|run-m3|run-m4|run-m5)
     d="$(dirname "$0")/out/stub-$m-$RANDOM"; mkdir -p "$d"
     printf '{\n  "%s_ending_sha": "%sendsha"\n}\n' "$m" "$m" > "$d/$m-state.json"
     source "$(dirname "$0")/lib/chain.sh"; run_register "$m" "$d" ;;
-  run-m4) printf -- '- Branch: m4/agent-slug\n' > "$cwd/task.md" ;;
 esac
+[[ "$name" == run-m4 ]] && printf -- '- Branch: m4/agent-slug\n' > "$cwd/task.md"
 exit 0
 EOF
   chmod +x "$1"

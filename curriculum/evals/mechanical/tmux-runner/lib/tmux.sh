@@ -13,9 +13,39 @@ _tmux() {
   tmux -L "${RUNNER_TMUX_SOCKET:-default}" "$@"
 }
 
+# Lowest Claude Code the runners are verified on (2.1.281, Acme run 2026-09-26;
+# 1.0.67 rejected `--permission-mode auto` and died before turn 1).
+CLAUDE_CLI_FLOOR="${CLAUDE_CLI_FLOOR:-2.1.281}"
+
+# claude_cli_preflight <launch command>: refuse a claude launch whose binary is
+# missing, below the floor, or lacks the requested --permission-mode. Any other
+# command passes untouched. Leading `env` and VAR=value words are skipped.
+claude_cli_preflight() {
+  local -a w; read -ra w <<< "$1"
+  local i=0 bin mode="" path ver
+  while [[ $i -lt ${#w[@]} ]] && [[ "${w[$i]}" == env || "${w[$i]}" =~ ^[A-Za-z_][A-Za-z0-9_]*= ]]; do i=$((i+1)); done
+  bin="${w[$i]:-}"
+  [[ "$(basename "$bin")" == claude ]] || return 0
+  for ((j=i+1; j<${#w[@]}; j++)); do [[ "${w[$j]}" == --permission-mode ]] && mode="${w[$((j+1))]:-}"; done
+  local fix="Put a current Claude Code first on PATH (\`claude update\`; remove or shadow a stale Homebrew copy) or set CLAUDE_CMD to its full path."
+  if [[ "$bin" == */* ]]; then path="$bin"; else path="$(command -v "$bin" || true)"; fi
+  if [[ -z "$path" || ! -x "$path" ]]; then
+    echo "[preflight] Claude Code not found: $bin. $fix" >&2; return 1
+  fi
+  ver="$("$path" --version 2>/dev/null | awk '{print $1; exit}')"
+  if ! awk -v a="$ver" -v b="$CLAUDE_CLI_FLOOR" 'BEGIN { n=split(a,x,"."); split(b,y,".")
+      for (k=1;k<=3;k++) { if (x[k]+0 > y[k]+0) exit 0; if (x[k]+0 < y[k]+0) exit 1 } exit (n ? 0 : 1) }'; then
+    echo "[preflight] Claude Code ${ver:-unknown} at $path is below the runner floor $CLAUDE_CLI_FLOOR. $fix" >&2; return 1
+  fi
+  if [[ -n "$mode" ]] && ! "$path" --help 2>/dev/null | grep -q "\"$mode\""; then
+    echo "[preflight] Claude Code $ver at $path does not offer --permission-mode $mode. $fix" >&2; return 1
+  fi
+}
+
 pane_start() {
   # $1=session name, $2=cwd, $3=command to launch
   local name="$1" cwd="$2" cmd="$3"
+  claude_cli_preflight "$cmd" || return 1
   _tmux new-session -d -s "$name" -x 220 -y 50 -c "$cwd" "$cmd"
 }
 

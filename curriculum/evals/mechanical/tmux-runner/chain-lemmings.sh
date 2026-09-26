@@ -25,6 +25,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SUT="${HOME}/Projects/lemmings"
 EFFORT="medium"
 MODEL="sonnet"                          # harness sessions run Sonnet unless --model says otherwise
+CHAIN_DIR_ARG=""
 FROM="m1"; TO="m6"
 DO_ARRANGE="auto"                       # auto = arrange iff FROM==prework|m1
 M1_SLUG="fix-hud-tally"
@@ -37,6 +38,7 @@ M5_WORKTREE="${HOME}/Projects/lemmings-m5"
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --from) FROM="$2"; shift 2 ;;
+    --chain-dir) CHAIN_DIR_ARG="$2"; shift 2 ;;
     --to) TO="$2"; shift 2 ;;
     --effort) EFFORT="$2"; shift 2 ;;
     --model) MODEL="$2"; shift 2 ;;
@@ -50,6 +52,12 @@ done
 # Medium effort finishes turns well under an hour; 1800s caps a hung turn
 # without clipping a real one. M5's packaged send-off is the long pole — the
 # runbook notes raising this for the m5 leg if a send-off turn gets clipped.
+# Explicit chain state (lib/chain.sh): one chain dir per chain; each module's
+# runner registers there; the next module reads it. Never the newest out/ run.
+source "$HERE/lib/chain.sh"
+chain_init "$HERE/out" "$CHAIN_DIR_ARG" >/dev/null || exit 2
+echo "[chain] chain dir: $CLAUDE_RUNNER_CHAIN_DIR  (resume with --chain-dir this)"
+
 export CLAUDE_CMD="claude --model $MODEL --effort $EFFORT --permission-mode auto"
 export CLAUDE_RUNNER_TIMEOUT="${CLAUDE_RUNNER_TIMEOUT:-1800}"
 
@@ -61,7 +69,15 @@ mod_num() {                             # prework sorts before m1 (2026-09-01)
 }
 in_range() { local n; n="$(mod_num "$1")"; [[ "$(mod_num "$FROM")" -le "$n" && "$n" -le "$(mod_num "$TO")" ]]; }
 
-latest_state() { ls -t "$HERE"/out/*/"$1-state.json" 2>/dev/null | head -1; }
+latest_state() {                        # $1=module — THIS chain's state, never a guess
+  local s; s="$(chain_state "$1")"
+  if [[ -z "$s" ]]; then
+    echo "[chain] no $1 state in $CLAUDE_RUNNER_CHAIN_DIR — resume with --chain-dir <the chain that ran $1>. Recent chains:" >&2
+    chain_list_recent "$HERE/out" 5 >&2
+    return 0
+  fi
+  echo "$s"
+}
 state_val() { sed -n "s/.*\"$2\": *\"\([^\"]*\)\".*/\1/p" "$1" | head -1; }
 
 run_module() {                          # $1=label, rest=command

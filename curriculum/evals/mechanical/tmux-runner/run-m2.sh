@@ -18,6 +18,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$HERE/lib/resolve-prompt.sh"
 source "$HERE/lib/tmux.sh"
 source "$HERE/lib/sync.sh"
+source "$HERE/lib/chain.sh"
 source "$HERE/lib/assertions.sh"
 
 sut_cwd=""
@@ -43,6 +44,7 @@ export RUNNER_TMUX_SOCKET="runner-$run_id"
 run_dir="$HERE/out/$run_id"
 sentinel_dir="$run_dir/sentinels"
 mkdir -p "$sentinel_dir"
+run_register "m2" "$run_dir"           # .module for prune; chain pointer if chained
 
 session="runner-$run_id"
 launch_cmd="env CLAUDE_RUNNER_SENTINEL_DIR=$sentinel_dir ${CLAUDE_CMD:-claude}"

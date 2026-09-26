@@ -31,8 +31,9 @@
 #   chain-northwind.sh                            # lemmings: arrange, m1, m2, m4, m5
 #   chain-northwind.sh --sut-kit picoshare        # same walk on picoshare
 #   chain-northwind.sh --to m2                    # arrange + M1 + M2 only
-#   chain-northwind.sh --from m4                  # RESUME at M4 (reads newest
-#                                                 #   out/*/m2-state.json for the SHA)
+#   chain-northwind.sh --from m4 --chain-dir out/_chains/<id>
+#                                                 # RESUME at M4 (reads that chain's
+#                                                 #   M2 state for the SHA)
 #   chain-northwind.sh --effort high              # cohort-faithful (slower)
 #   chain-northwind.sh --model opus               # default sonnet
 #   chain-northwind.sh --from prework             # lemmings: arrange, prework, m1, m2, m4, m5
@@ -47,6 +48,7 @@ SUT_KIT="lemmings"
 SUT=""
 EFFORT="medium"
 MODEL="sonnet"                          # harness sessions run Sonnet unless --model says otherwise
+CHAIN_DIR_ARG=""
 FROM="m1"; TO="m5"
 DO_ARRANGE="auto"                       # auto = arrange iff FROM==prework|m1
 
@@ -54,6 +56,7 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --sut-kit) SUT_KIT="$2"; shift 2 ;;
     --from) FROM="$2"; shift 2 ;;
+    --chain-dir) CHAIN_DIR_ARG="$2"; shift 2 ;;
     --to) TO="$2"; shift 2 ;;
     --effort) EFFORT="$2"; shift 2 ;;
     --model) MODEL="$2"; shift 2 ;;
@@ -117,19 +120,26 @@ if [[ -z "$ARRANGE" ]] && { [[ "$FROM" == "m1" ]] || [[ "$FROM" == "m2" ]]; }; t
   exit 2
 fi
 
+# Explicit chain state (lib/chain.sh): one chain dir per chain; each module's
+# runner registers there; the next module reads it. Never the newest out/ run.
+source "$HERE/lib/chain.sh"
+chain_init "$HERE/out" "$CHAIN_DIR_ARG" >/dev/null || exit 2
+echo "[chain] chain dir: $CLAUDE_RUNNER_CHAIN_DIR  (resume with --chain-dir this)"
+
 export CLAUDE_CMD="claude --model $MODEL --effort $EFFORT --permission-mode auto"
 export CLAUDE_RUNNER_TIMEOUT="${CLAUDE_RUNNER_TIMEOUT:-1800}"
 
 mod_num() { case "$1" in prework) echo 0 ;; *) echo "${1#m}" ;; esac; }
 in_range() { local n; n="$(mod_num "$1")"; [[ "$(mod_num "$FROM")" -le "$n" && "$n" -le "$(mod_num "$TO")" ]]; }
 
-# State lookup is SUT-scoped: out/ holds runs from every kit, so match the
-# state file's own recorded cwd rather than taking the newest of any SUT.
-latest_state() {                        # $1=module (m1, m2)
-  local f
-  for f in $(ls -t "$HERE"/out/*/"$1-state.json" 2>/dev/null); do
-    grep -q "\"${1}_cwd\": \"$SUT\"" "$f" && { echo "$f"; return; }
-  done
+latest_state() {                        # $1=module — THIS chain's state, never a guess
+  local s; s="$(chain_state "$1")"
+  if [[ -z "$s" ]]; then
+    echo "[chain] no $1 state in $CLAUDE_RUNNER_CHAIN_DIR — resume with --chain-dir <the chain that ran $1>. Recent chains:" >&2
+    chain_list_recent "$HERE/out" 5 >&2
+    return 0
+  fi
+  echo "$s"
 }
 state_val() { sed -n "s/.*\"$2\": *\"\([^\"]*\)\".*/\1/p" "$1" | head -1; }
 

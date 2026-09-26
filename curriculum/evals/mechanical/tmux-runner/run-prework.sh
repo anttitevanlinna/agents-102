@@ -31,6 +31,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$HERE/lib/resolve-prompt.sh"
 source "$HERE/lib/tmux.sh"
 source "$HERE/lib/sync.sh"
+source "$HERE/lib/chain.sh"
 source "$HERE/lib/assertions.sh"
 
 REPO_ROOT="$(cd "$HERE" && git rev-parse --show-toplevel)"
@@ -63,6 +64,7 @@ export RUNNER_TMUX_SOCKET="runner-$run_id"
 run_dir="$HERE/out/$run_id"
 sentinel_dir="$run_dir/sentinels"
 mkdir -p "$sentinel_dir"
+run_register "prework" "$run_dir"           # .module for prune; chain pointer if chained
 
 session="runner-$run_id"
 warmup="${CLAUDE_RUNNER_WARMUP:-10}"

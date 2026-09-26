@@ -70,6 +70,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$HERE/lib/resolve-prompt.sh"
 source "$HERE/lib/tmux.sh"
 source "$HERE/lib/sync.sh"
+source "$HERE/lib/chain.sh"
 source "$HERE/lib/assertions.sh"
 
 main_cwd=""
@@ -118,6 +119,7 @@ pa_dir="$run_dir/pa"
 pb_dir="$run_dir/pb"
 pc_dir="$run_dir/pc"
 mkdir -p "$pa_dir/sentinels" "$pb_dir/sentinels" "$pc_dir/sentinels"
+run_register "m5" "$run_dir"           # .module for prune; chain pointer if chained
 
 pa_session="runner-$run_id-pa"
 pb_session="runner-$run_id-pb"

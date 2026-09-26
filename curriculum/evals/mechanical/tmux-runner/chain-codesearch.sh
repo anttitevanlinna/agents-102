@@ -14,9 +14,9 @@
 #   chain-codesearch.sh --from m3 --to m4
 #   chain-codesearch.sh --from m5             # resumes at m5 (reads task.md)
 #   chain-codesearch.sh --effort high
-#   chain-codesearch.sh --m2-sha e45ebef      # override M2-ending SHA
-#                                             # (default: latest out/*/m2-state.json
-#                                             #  whose m2_cwd is codesearch)
+#   chain-codesearch.sh --m2-sha e45ebef      # M2-ending SHA, OR
+#   chain-codesearch.sh --chain-dir out/_chains/<id>   # a chain that ran M2 here
+#                                             # (one is required at M3 — no newest guess)
 #
 # Run it backgrounded — multi-hour. Per-module log → out/_chain-<m>-codesearch.log;
 # per-run artefacts → out/<run-id>/ as usual.
@@ -29,6 +29,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 SUT="${HOME}/Projects/codesearch"
 EFFORT="medium"
+CHAIN_DIR_ARG=""
 FROM="m3"; TO="m6"
 M3_SLUG="threat-model-csweb-bind"
 CHAIN_SLUG="clamp-show-to-roots"          # M4/M5/M6 share this slug
@@ -39,6 +40,7 @@ M2_SHA_OVERRIDE=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --from) FROM="$2"; shift 2 ;;
+    --chain-dir) CHAIN_DIR_ARG="$2"; shift 2 ;;
     --to) TO="$2"; shift 2 ;;
     --effort) EFFORT="$2"; shift 2 ;;
     --sut) SUT="$2"; shift 2 ;;
@@ -51,18 +53,26 @@ case "$FROM" in
   m1|m2) echo "[chain-cs] --from $FROM not supported yet. M1/M2 need a codesearch arrange helper (lemmings has arrange-lemmings.sh; the codesearch equivalent doesn't exist). Start at m3 with --m2-sha if needed." >&2; exit 2 ;;
 esac
 
+# Explicit chain state (lib/chain.sh): one chain dir per chain; each module's
+# runner registers there; the next module reads it. Never the newest out/ run.
+source "$HERE/lib/chain.sh"
+chain_init "$HERE/out" "$CHAIN_DIR_ARG" >/dev/null || exit 2
+echo "[chain] chain dir: $CLAUDE_RUNNER_CHAIN_DIR  (resume with --chain-dir this)"
+
 export CLAUDE_CMD="claude --effort $EFFORT --permission-mode auto"
 export CLAUDE_RUNNER_TIMEOUT="${CLAUDE_RUNNER_TIMEOUT:-1800}"
 
 mod_num() { echo "${1#m}"; }
 in_range() { local n; n="$(mod_num "$1")"; [[ "$(mod_num "$FROM")" -le "$n" && "$n" -le "$(mod_num "$TO")" ]]; }
 
-# Find the latest m2-state.json whose m2_cwd points at the codesearch SUT.
-latest_codesearch_m2_state() {
-  local f
-  for f in $(ls -t "$HERE"/out/*/m2-state.json 2>/dev/null); do
-    grep -q "\"m2_cwd\": \"$SUT\"" "$f" && { echo "$f"; return; }
-  done
+latest_codesearch_m2_state() {          # THIS chain's m2 state, never a guess
+  local s; s="$(chain_state m2)"
+  if [[ -z "$s" ]]; then
+    echo "[chain] no m2 state in $CLAUDE_RUNNER_CHAIN_DIR — resume with --chain-dir <the chain that ran m2>. Recent chains:" >&2
+    chain_list_recent "$HERE/out" 5 >&2
+    return 0
+  fi
+  echo "$s"
 }
 state_val() { sed -n "s/.*\"$2\": *\"\([^\"]*\)\".*/\1/p" "$1" | head -1; }
 
@@ -153,7 +163,7 @@ if in_range m3; then
     m2_sha="$M2_SHA_OVERRIDE"
   else
     s="$(latest_codesearch_m2_state)"
-    [[ -n "$s" ]] || { echo "[chain-cs] no codesearch m2-state.json — pass --m2-sha <sha>" >&2; exit 1; }
+    [[ -n "$s" ]] || { echo "[chain-cs] no m2 state in this chain — pass --m2-sha <sha> or --chain-dir <a chain that ran m2 here>" >&2; exit 1; }
     m2_sha="$(state_val "$s" m2_ending_sha)"
   fi
   position "m3/$M3_SLUG" "$m2_sha"

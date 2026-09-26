@@ -18,6 +18,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$HERE/lib/resolve-prompt.sh"
 source "$HERE/lib/tmux.sh"
 source "$HERE/lib/sync.sh"
+source "$HERE/lib/chain.sh"
 source "$HERE/lib/assertions.sh"
 
 main_cwd=""
@@ -47,6 +48,7 @@ run_dir="$HERE/out/$run_id"
 main_dir="$run_dir/main"
 quality_dir="$run_dir/quality"
 mkdir -p "$main_dir/sentinels" "$quality_dir/sentinels"
+run_register "m3" "$run_dir"           # .module for prune; chain pointer if chained
 touch "$run_dir/.started"             # artefact gates: "new this run" = -newer this
 
 main_session="runner-$run_id-main"

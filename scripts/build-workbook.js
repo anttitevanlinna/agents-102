@@ -94,6 +94,7 @@ console.log(`Loaded ${Object.keys(FIGURE_REGISTRY).length} figures from curricul
 const KNOWN_DESTS = new Set([
   'Claude Code',
   'Cowork',
+  'Claude Desktop',     // pasted into the desktop app's Schedule task (personal-agent-homework-3)
   'Builder Claude',
   'central synthesizer',
   'buyer/sponsor agent'

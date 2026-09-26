@@ -304,7 +304,8 @@ if (REPORT) {
 }
 
 console.log(`\n${'='.repeat(70)}`);
-console.log(`Slide-size check — ${TRAINING}`);
+const TRAINING_GIVEN = argv.includes('--training');
+console.log(`Slide-size check — ${!ONE_FILE ? TRAINING : TRAINING_GIVEN ? `${ONE_FILE} (module flags: ${TRAINING})` : ONE_FILE}`);
 console.log(`  files: ${new Set(rows.map(r => r.file)).size}   slides: ${rows.length}   limits: ${MAX_WORDS} words / ${MAX_BULLETS} bullets`);
 console.log(`  oversized: ${oversized.length}`);
 console.log('='.repeat(70));

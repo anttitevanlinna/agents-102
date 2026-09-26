@@ -222,7 +222,7 @@ mkfix t12.md '# Lesson
 - judges @old1234: writing PASS
 
 body'
-sha12=$(shasum -a 256 "$TMP/t12.md" | awk '{print $1}')
+sha12=$(LC_ALL=C shasum -a 256 "$TMP/t12.md" | awk '{print $1}')
 printf '{"class":"writing","body_sha":"%s","verdict":"PASS"}\n' "$sha12" > "$INST/ae101--lecture--t12.writing.json"
 rc=$(run "$TMP/t12.md" --writing PASS --sha new5678 --date 2026-06-01)
 assert_rc   "$rc" "0" 'T12 matching body_sha stamps'
@@ -271,7 +271,7 @@ mkfix curriculum/exercises/t15.md '# Lesson
 - judges @old1234: writing PASS
 
 exercise body'
-sha15=$(shasum -a 256 "$TMP/curriculum/exercises/t15.md" | awk '{print $1}')
+sha15=$(LC_ALL=C shasum -a 256 "$TMP/curriculum/exercises/t15.md" | awk '{print $1}')
 printf '{"class":"writing","body_sha":"%s","verdict":"PASS"}\n' "$sha15" \
   > "$INST/ae101--module--t15.writing.json"          # matches — but it is the MODULE's
 printf '{"class":"writing","body_sha":"%s","verdict":"PASS"}\n' \
@@ -290,7 +290,7 @@ mkfix curriculum/exercises/t16.md '# Lesson
 - judges @old1234: writing PASS
 
 exercise body'
-sha16=$(shasum -a 256 "$TMP/curriculum/exercises/t16.md" | awk '{print $1}')
+sha16=$(LC_ALL=C shasum -a 256 "$TMP/curriculum/exercises/t16.md" | awk '{print $1}')
 printf '{"class":"writing","body_sha":"%s","verdict":"PASS"}\n' \
   "2222222222222222222222222222222222222222222222222222222222222222" \
   > "$INST/ae101--module--t16.writing.json"          # the module's, stale, irrelevant here
@@ -315,7 +315,7 @@ body text the judges read
 <!-- maintainer -->
 **Quality:** compendium-audited 2026-05-15 (writing@old1234 slides@old1234)
 - judges @old1234: writing PASS, slides PASS'
-sha17=$(shasum -a 256 "$TMP/curriculum/lectures/t17.md" | awk '{print $1}')
+sha17=$(LC_ALL=C shasum -a 256 "$TMP/curriculum/lectures/t17.md" | awk '{print $1}')
 printf '{"class":"writing","body_sha":"%s","verdict":"PASS"}\n' "$sha17" \
   > "$INST/ae101--lecture--t17.writing.json"
 printf '{"class":"slides","body_sha":"%s","verdict":"PASS"}\n' "$sha17" \
@@ -333,7 +333,7 @@ body text the judges read
 <!-- maintainer -->
 **Quality:** compendium-audited 2026-05-15 (writing@old1234 slides@old1234)
 - judges @old1234: writing PASS, slides PASS'
-sha18=$(shasum -a 256 "$TMP/curriculum/lectures/t18.md" | awk '{print $1}')
+sha18=$(LC_ALL=C shasum -a 256 "$TMP/curriculum/lectures/t18.md" | awk '{print $1}')
 printf '{"class":"writing","body_sha":"%s","verdict":"PASS"}\n' "$sha18" \
   > "$INST/ae101--lecture--t18.writing.json"
 printf '{"class":"slides","body_sha":"%s","verdict":"PASS"}\n' "$sha18" \
@@ -480,11 +480,11 @@ assert_grep "$TMP/t28.md" 'A note.'                   'T28 the note survives the
 # a trace recording some other version stays stale
 SIMD="$TMP/sim"; mkdir -p "$SIMD"; export QUALITY_SIM_DIR="$SIMD"
 printf '# Ex\n\nBody.\n\n<!-- maintainer -->\n' > "$TMP/t29.md"
-sha29=$(shasum -a 256 "$TMP/t29.md" | awk '{print $1}')
+sha29=$(LC_ALL=C shasum -a 256 "$TMP/t29.md" | awk '{print $1}')
 printf '{"content_sha":"%s","phases":[]}\n' "$sha29" > "$SIMD/ae101--t29.persona.json"
-printf '{"content_sha":"%s","phases":[]}\n' "$(printf x | shasum -a 256 | awk '{print $1}')" > "$SIMD/ae101--t29.behavior.json"
+printf '{"content_sha":"%s","phases":[]}\n' "$(printf x | LC_ALL=C shasum -a 256 | awk '{print $1}')" > "$SIMD/ae101--t29.behavior.json"
 rc=$(run "$TMP/t29.md" --writing PASS)
-new29=$(shasum -a 256 "$TMP/t29.md" | awk '{print $1}')
+new29=$(LC_ALL=C shasum -a 256 "$TMP/t29.md" | awk '{print $1}')
 assert_grep "$SIMD/ae101--t29.persona.json" "$new29"   'T29 matching trace advances to the stamped file'
 if grep -q "$new29" "$SIMD/ae101--t29.behavior.json"; then fail=$((fail+1)); echo "  FAIL T29 a stale trace was advanced"; else pass=$((pass+1)); echo "  ok   T29 a stale trace stays stale"; fi
 unset QUALITY_SIM_DIR

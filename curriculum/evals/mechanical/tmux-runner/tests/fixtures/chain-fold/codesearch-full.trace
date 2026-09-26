@@ -1,3 +1,4 @@
+# 2026-09-26: full-cut M4 positions from M3's recorded ending SHA (m3-state.json), not the SUT's current HEAD.
 # Recorded from chain-codesearch.sh --m2-sha m2override (2026-09-26). The folded
 # driver also runs codesearch on --model sonnet (default), which the old one
 # didn't set; the model isn't in the trace.
@@ -6,7 +7,7 @@ GIT worktree remove --force <SB>/home/Projects/codesearch-m3-quality
 GIT branch -D m3/quality
 GIT worktree prune
 RUN run-m3 --main-cwd <SB>/sut --quality-cwd <SB>/home/Projects/codesearch-m3-quality main=m3-main-codesearch.txt quality=m3-quality-codesearch.txt
-GIT checkout -B m4/clamp-show-to-roots headsha
+GIT checkout -B m4/clamp-show-to-roots m3endsha
 RUN run-m4 --cwd <SB>/sut --task-slug clamp-show-to-roots scenario=m4-codesearch.txt
 # DELIBERATE: chain-codesearch.sh renamed the checked-out branch onto task.md's
 # (branch -m); lemmings/picoshare/northwind point the recorded branch at the

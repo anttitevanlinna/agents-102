@@ -16,8 +16,12 @@
 #   chain-ae101.sh --sut-kit picoshare --cut northwind
 #   chain-ae101.sh --from m4 --chain-dir out/_chains/<id>   # resume: reads that chain's state
 #   chain-ae101.sh --sut-kit codesearch --m2-sha <sha>      # codesearch has no arrange: starts at m3
+#   chain-ae101.sh --from m4 --m3-sha <sha>          # full cut: M4 positions from M3's ending SHA
 #   chain-ae101.sh --model opus --effort high        # defaults: sonnet, medium
 #   chain-ae101.sh --sut /path/to/repo               # override the kit's repo path
+#
+# Every resume point reads declared prior state (this chain's <m>-state.json
+# or an explicit --m2-sha / --m3-sha) or stops before touching the SUT.
 #
 # Run it backgrounded — multi-hour. Module logs → out/_chain-<kit>-<cut>-<m>.log;
 # per-run artefacts → out/<run-id>/. Chain state → out/_chains/<id>/
@@ -30,7 +34,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SUT_KIT="lemmings"; CUT="full"; SUT=""
 EFFORT="medium"
 MODEL="sonnet"                          # harness sessions run Sonnet unless --model says otherwise
-CHAIN_DIR_ARG=""; M2_SHA_OVERRIDE=""
+CHAIN_DIR_ARG=""; M2_SHA_OVERRIDE=""; M3_SHA_OVERRIDE=""
 FROM=""; TO=""
 DO_ARRANGE="auto"                       # auto = arrange iff FROM==prework|m1
 
@@ -44,6 +48,7 @@ while [[ $# -gt 0 ]]; do
     --model) MODEL="$2"; shift 2 ;;
     --chain-dir) CHAIN_DIR_ARG="$2"; shift 2 ;;
     --m2-sha) M2_SHA_OVERRIDE="$2"; shift 2 ;;
+    --m3-sha) M3_SHA_OVERRIDE="$2"; shift 2 ;;
     --no-arrange) DO_ARRANGE="no"; shift ;;
     --arrange) DO_ARRANGE="yes"; shift ;;
     --sut) SUT="$2"; shift 2 ;;
@@ -162,6 +167,19 @@ m2_ending_sha() {                       # --m2-sha wins; else this chain's M2 st
   state_val "$s" m2_ending_sha
 }
 
+m3_ending_sha() {                       # --m3-sha wins; else this chain's M3 state
+  if [[ -n "$M3_SHA_OVERRIDE" ]]; then echo "$M3_SHA_OVERRIDE"; return; fi
+  local s; s="$(latest_state m3)"
+  [[ -n "$s" ]] || { echo "[chain] no m3 state — pass --m3-sha <M3's ending commit, the ADR> or --chain-dir <a chain that ran m3 here>" >&2; return 1; }
+  state_val "$s" m3_ending_sha
+}
+
+require_state() {                       # $1=module this one builds on, $2=this module
+  [[ -n "$(latest_state "$1")" ]] && return 0
+  echo "[chain] $2 builds on $1 and this chain has no $1 state — resume with --chain-dir <the chain that ran $1>, or start at $1" >&2
+  exit 1
+}
+
 run_module() {                          # $1=label, rest=command
   local label="$1"; shift
   local log="$HERE/out/_chain-$SUT_KIT-$CUT-$label.log"
@@ -251,7 +269,8 @@ fi
 
 # ---- M3: worktree fork + security/quality races. Branch from M2 ending. --
 if in_range m3; then
-  position "m3/$M3_SLUG" "$(m2_ending_sha)"
+  m3_base="$(m2_ending_sha)" || exit 1
+  position "m3/$M3_SLUG" "$m3_base"
   git -C "$SUT" worktree remove --force "$QUALITY_CWD" 2>/dev/null || true
   [[ -e "$QUALITY_CWD" ]] && rm -rf "$QUALITY_CWD"
   for b in $QUALITY_BRANCHES; do git -C "$SUT" branch -D "$b" 2>/dev/null || true; done
@@ -263,12 +282,13 @@ if in_range m3; then
     run_module m3 "$HERE/run-m3.sh" --main-cwd "$SUT" --quality-cwd "$QUALITY_CWD"
 fi
 
-# ---- M4: send-off. full: M3 writes no state.json and its main side ends on
-#       the ADR commit, so branch from current HEAD. northwind: no M3 —
-#       branch from M2's ending SHA, the way M2 branches from M1.
+# ---- M4: send-off. full: branch from M3's ending SHA (its main side ends on
+#       the ADR commit). northwind: no M3 — branch from M2's ending SHA, the
+#       way M2 branches from M1. Never the SUT's current HEAD: on a resume that
+#       is whatever the last run left behind.
 if in_range m4; then
-  if [[ "$CUT" == full ]]; then m4_base="$(git -C "$SUT" rev-parse --short HEAD)"
-  else m4_base="$(m2_ending_sha)"; fi
+  if [[ "$CUT" == full ]]; then m4_base="$(m3_ending_sha)" || exit 1
+  else m4_base="$(m2_ending_sha)" || exit 1; fi
   position "m4/$CHAIN_SLUG" "$m4_base"
   wipe_leg_branches m4
   wipe_run_artifacts task.md
@@ -285,6 +305,7 @@ fi
 #       out. tail -1 = the latest Run coordinates block, if a prompt ever
 #       appends instead of replacing.
 if in_range m5; then
+  require_state m4 m5
   m4_rec="$(grep 'Branch:' "$SUT/task.md" 2>/dev/null | grep -oE 'm4/[a-z0-9-]+' | tail -1 || true)"
   m4_sp="$(git -C "$SUT" log --format='%h' --grep='^M4 starting point$' -1 2>/dev/null || true)"
   cur="$(git -C "$SUT" rev-parse --abbrev-ref HEAD)"
@@ -303,6 +324,7 @@ fi
 
 # ---- M6: spot gaps + build the loop, in the M5 worktree (no new branch). --
 if in_range m6; then
+  require_state m5 m6
   wipe_skill "session-shaper-$SUT_KIT"       # M6 authors it
   SCENARIO="$(scen m6)" \
     run_module m6 "$HERE/run-m6.sh" --cwd "$M5_WORKTREE" --task-slug "$CHAIN_SLUG"

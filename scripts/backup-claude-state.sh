@@ -2,10 +2,10 @@
 # backup-claude-state.sh — zip what git does not hold to Google Drive.
 #
 # Rules, memory, hooks, skills, agents, lints and strategy live in the
-# agents-102-core git repo; ~/.claude/CLAUDE.md, ~/.claude/projects/.../memory
-# and agents-102/.claude/{hooks,agent-memory} are links into it. Git is their
+# agents-102-core git repo; ~/.claude/projects/.../memory and
+# agents-102/.claude/{hooks,agent-memory} are links into it. Git is their
 # backup. What is left on one disk:
-#   - ~/.claude/settings.json          machine config (global env, permissions)
+#   - ~/.claude/{CLAUDE.md,settings.json}  personal instructions, machine config
 #   - ~/.claude/skills, ~/.claude/agents   personal skills/agents not in core
 #   - Bosser Drive strategy/ + agents-102/  business notes, Drive-only, no git
 #
@@ -29,6 +29,7 @@ STAGE=$(mktemp -d)
 ROOT="$STAGE/agents-102-claude-$DATE"
 mkdir -p "$ROOT/home-claude"
 
+[ -f "$HOME/.claude/CLAUDE.md" ] && cp -L "$HOME/.claude/CLAUDE.md" "$ROOT/home-claude/"
 [ -f "$HOME/.claude/settings.json" ] && cp "$HOME/.claude/settings.json" "$ROOT/home-claude/"
 [ -d "$HOME/.claude/skills" ] && cp -RL "$HOME/.claude/skills" "$ROOT/home-claude/"
 [ -d "$HOME/.claude/agents" ] && cp -RL "$HOME/.claude/agents" "$ROOT/home-claude/"
@@ -43,7 +44,7 @@ cat > "$ROOT/MANIFEST.md" <<MANIFEST_EOF
 
 What git does not hold. Rules, memory, hooks, skills and strategy are in the agents-102-core repo; restore those with \`git clone\`.
 
-- \`home-claude/\`: \`~/.claude/settings.json\`, personal \`skills/\` and \`agents/\`. Restore into \`~/.claude/\`.
+- \`home-claude/\`: \`~/.claude/CLAUDE.md\`, \`settings.json\`, personal \`skills/\` and \`agents/\`. Restore into \`~/.claude/\`.
 - \`bosser/\`: Bosser Drive \`strategy/\` and \`agents-102/\` (pricing, licensing). Drive-only; these zips are their history.
 
 Not included: \`settings.local.json\` files (may hold secrets), other projects' memory, \`~/.claude\` caches and sessions.

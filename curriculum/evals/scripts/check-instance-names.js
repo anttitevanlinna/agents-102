@@ -36,6 +36,7 @@ const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('node:child_process');
 const { typeOf, trainingOf, linkFinder } = require('./scan-stale-classes.js');
+const { repoRel } = require('./instance-file.js');
 
 const REL_DIR = 'curriculum/evals/instances';
 const NAME_RE = /^(.+)\.([a-z_]+)\.json$/;
@@ -81,7 +82,7 @@ function expectedName(repo, base, find) {
   catch { return { skip: 'unparseable JSON' }; }
   if (!j.file) return { skip: 'no `file` field to derive from' };
 
-  const rel = path.relative(repo, j.file).split(path.sep).join('/');
+  const rel = repoRel(repo, j.file);
   if (!fs.existsSync(path.join(repo, rel))) return { skip: `judged file is gone: ${rel}` };
 
   const training = trainingOf(rel, find);

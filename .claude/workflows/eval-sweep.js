@@ -165,16 +165,10 @@ const VERDICT_SCHEMA = {
     // The TARGET file, not the instance you wrote. A story judge returned its
     // own instance path here and the summary then named the wrong file as the
     // thing judged — harmless in a one-item run, unreadable in a sweep of 70.
-    // ABSOLUTE, because that is what the corpus and the readers already are:
-    // 760 of 803 instances carry an absolute path, and `check-instance-names.js`
-    // derives the training with `path.relative(repo, j.file)` — the absolute→
-    // relative conversion, which only works on a relative input by cwd accident.
-    // Judges split roughly two-to-one on this and the mixture is the real cost:
-    // any reader joining an instance back to its file has to handle both, and
-    // the ones that do not silently find nothing. (Absolute embeds one person's
-    // home directory in a shared repo and breaks for a second checkout — a real
-    // problem, but a corpus-wide one to settle deliberately, not per sweep.)
-    file: { type: 'string', description: 'the curriculum file you judged, as an ABSOLUTE path (the corpus convention — `/Users/…/agents-102/curriculum/…`), exactly as the header names it — NOT the instance JSON you wrote' },
+    // REPO-RELATIVE (`curriculum/…`): instances are shared history and must
+    // read the same in every checkout. Readers go through instance-file.js
+    // `repoRel`, which also accepts the older absolute forms.
+    file: { type: 'string', description: 'the curriculum file you judged, repo-relative (`curriculum/…`) — NOT the instance JSON you wrote' },
     class: { type: 'string' },
     // Two verdicts, and suggestions are not a third (2026-09-08). `verdict`
     // answers whether anything is OWED, which is yes or no; a non-blocking
@@ -372,7 +366,7 @@ Overwrite \`curriculum/evals/instances/${j.slug}.${j.cls}.json\`. Do NOT copy th
 \`\`\`
 class            "${j.cls}"                     exactly this — it is what every tool globs on
 training         "${j.training || ''}"
-file             absolute path of the file you judged
+file             repo-relative path of the file you judged (curriculum/…)
 verdict          PASS | REVISE | N/A                       — no other word
 body_sha         sha256 of the FULL file
 shape_hash       as supplied in your brief

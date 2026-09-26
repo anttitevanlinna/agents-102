@@ -111,10 +111,7 @@ function readFile(repo, rel) {
   try { return fs.readFileSync(path.join(repo, rel), 'utf8'); } catch { return null; }
 }
 
-function relOf(repo, abs) {
-  if (!abs) return null;
-  return path.isAbsolute(abs) ? path.relative(repo, abs).split(path.sep).join('/') : abs;
-}
+const relOf = (repo, f) => require('./instance-file.js').repoRel(repo, f);
 
 // cross_module names a SET, not a file, and stamps every member. A module
 // belongs to several sets at once, so a row only speaks for THIS instance when

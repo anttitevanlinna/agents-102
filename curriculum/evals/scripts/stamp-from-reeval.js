@@ -63,6 +63,7 @@ function adaptSweepRow(s, slugOf = () => null, todosOf = () => null) {
     instanceSlug: slug,
     verdict: s.verdict,
     bodySha: s.body_sha || null,
+    refuted: s.refuted || [],
     blocking,
     todos: recorded === null || recorded === undefined ? (s.todos || []).length : recorded,
     verify: refuted && !blocking ? { verdict: 'REFUTED', confirmed: 0 }
@@ -230,6 +231,26 @@ function bindTraces(rows, simDir) {
   return bound
 }
 
+// A REVISE whose findings the refuters all killed stamps PASS:verify-refuted,
+// which check-verdict-agreement reads as a contradiction with the instance's
+// REVISE until a resolution is recorded. The refuters' reasons are that
+// resolution, so record them here. The verdict itself is never edited.
+function recordRefutations(rows, instDir, at) {
+  let settled = 0
+  for (const r of rows) {
+    if (r.verdict !== 'REVISE' || !r.verify || r.verify.verdict !== 'REFUTED' || !r.instanceSlug) continue
+    const file = path.join(instDir, `${r.instanceSlug}.${r.cls}.json`)
+    if (!fs.existsSync(file)) continue
+    const j = JSON.parse(fs.readFileSync(file, 'utf8'))
+    if (j.resolution) continue
+    const why = r.refuted.map(f => `${String(f.rule).replace(/^check_|\.md/g, '')} line ${f.line}: ${(f.why || []).join(' / ')}`).join('; ')
+    j.resolution = { settled: 'refuted', at, note: `Both refuters killed every blocking finding, so the row stamps PASS:verify-refuted and this REVISE stays as the record. ${why}` }
+    fs.writeFileSync(file, JSON.stringify(j, null, 2) + '\n')
+    settled++
+  }
+  return settled
+}
+
 function main() {
   const argv = process.argv.slice(2)
   const outPath = argv[0]
@@ -289,6 +310,7 @@ function main() {
     if (!flags.length) continue
     if (dry) { process.stderr.write(`DRY ${file}: ${flags.join(' ')}\n`); continue }
     bindTraces(pairs.filter(r => !drift.has(r.cls)), path.join(repo, 'curriculum/evals/sim-cache'))
+    recordRefutations(pairs.filter(r => !drift.has(r.cls)), path.join(repo, INSTANCES), new Date().toISOString().slice(0, 10))
     execFileSync('bash', ['curriculum/evals/scripts/update-quality.sh', file, ...flags], { cwd: repo, stdio: ['ignore', 'ignore', 'inherit'] })
   }
   process.stderr.write(`\nstamped ${stamped} verdicts across ${byFile.size} files; drift-skipped ${skippedDrift}; wip-skipped ${skippedWip}; agent-lost ${skippedLost}\n`)
@@ -296,4 +318,4 @@ function main() {
 
 if (require.main === module) main()
 
-module.exports = { readResults, adaptSweepRow, stateFor, makeSlugOf, makeTodosOf, flagName, groupByFile, bindTraces }
+module.exports = { readResults, adaptSweepRow, stateFor, makeSlugOf, makeTodosOf, flagName, groupByFile, bindTraces, recordRefutations }

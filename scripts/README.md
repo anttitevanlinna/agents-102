@@ -21,13 +21,7 @@ site/clients/<customer>/<training>/ae101-content.tar.gz   # AE101 only
 site/clients/<customer>/<training>/agents-101-starter.tar.gz   # Agents 101 only
 ```
 
-The legacy order still works for a single training:
-
-```sh
-node scripts/build-workbook.js claude-basics acme
-```
-
-Prefer the customer-first form for new automation. The `all` selector uses the `TRAININGS` registry in `site/layouts/curriculum.js`.
+The `all` selector uses the `TRAININGS` registry in `site/layouts/curriculum.js`.
 
 ## Curriculum Audits
 
@@ -40,12 +34,6 @@ node scripts/audit-training-artifact-contracts.js --training agents-101 --out cu
 ```
 
 The audit is a static smoke test: it reads maintainer `Artefact contracts` tables, expands module exercise/lecture includes, includes prework stages, surfaces session starts/returns/clears, and flags likely broken handoffs. Treat findings as review prompts, not judge verdicts.
-
-The older AE101-specific entrypoint still works:
-
-```sh
-node scripts/audit-ae101-artifact-contracts.js
-```
 
 ## Deployment Shape
 

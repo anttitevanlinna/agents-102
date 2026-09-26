@@ -5,9 +5,6 @@
 //   node scripts/build-workbook.js <customer-slug> <training-key|training-key,...|all>
 //   node scripts/build-workbook.js <customer-slug> <training-key> <training-key> ...
 //
-// Legacy usage still works for a single training:
-//   node scripts/build-workbook.js <training-key> <customer-slug>
-//
 // Student-facing build (no trainer docs):
 // Personalised theory handbook for one VIP prospect (name on the cover + title):
 //   node scripts/build-workbook.js vip-<pseudonym> <training-key> --theory --for "<Name>"
@@ -1195,7 +1192,6 @@ ${content}
 function usage() {
   console.error('Usage: node scripts/build-workbook.js <customer-slug> <training-key|training-key,...|all>');
   console.error('   or: node scripts/build-workbook.js <customer-slug> <training-key> <training-key> ...');
-  console.error('Legacy single-training form still works: node scripts/build-workbook.js <training-key> <customer-slug>');
   console.error('Theory handbook (theory + slim exercise summaries): append --theory');
   console.error('Exercises workbook (exercises only, prompts inlined): append --exercises');
   console.error('Personalised theory handbook: append --theory --for "<Name>"');
@@ -1214,16 +1210,7 @@ function parseCli(argv) {
   }
 
   var keys = Object.keys(CR.TRAININGS);
-  var first = argv[0];
-  var second = argv[1];
-
-  // Backwards compatibility for existing muscle memory:
-  //   node scripts/build-workbook.js claude-basics acme
-  if (argv.length === 2 && CR.TRAININGS[first] && !CR.TRAININGS[second] && second !== 'all') {
-    return { customer: second, trainings: [first], legacy: true };
-  }
-
-  var customer = first;
+  var customer = argv[0];
   var selector = argv.slice(1).join(',');
   var trainings = selector === 'all'
     ? keys
@@ -1236,7 +1223,7 @@ function parseCli(argv) {
     process.exit(1);
   }
 
-  return { customer: customer, trainings: trainings, legacy: false };
+  return { customer: customer, trainings: trainings };
 }
 
 // Tarball filenames per training. AE101's name is owned by
@@ -1530,10 +1517,7 @@ const theoryMode = rawArgs.includes('--theory');
 const exercisesMode = rawArgs.includes('--exercises');
 const noTrainerDocs = rawArgs.includes('--no-trainer-docs');
 const recipient = parseRecipient(rawArgs);
-const { customer, trainings, legacy } = parseCli(stripFlags(rawArgs));
-if (legacy) {
-  console.log('Legacy argument order detected; prefer: node scripts/build-workbook.js ' + customer + ' ' + trainings[0]);
-}
+const { customer, trainings } = parseCli(stripFlags(rawArgs));
 
 if (recipient) {
   if (!theoryMode) {

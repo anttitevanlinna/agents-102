@@ -63,6 +63,7 @@ done
 source "$HERE/lib/chain.sh"
 chain_init "$HERE/out" "$CHAIN_DIR_ARG" >/dev/null || exit 2
 echo "[chain] chain dir: $CLAUDE_RUNNER_CHAIN_DIR  (resume with --chain-dir this)"
+chain_guard_skills          # ~/.claude/skills restored to this snapshot on any exit (lib/chain.sh)
 
 export CLAUDE_CMD="claude --model sonnet --effort $EFFORT --permission-mode auto"
 export CLAUDE_RUNNER_TIMEOUT="${CLAUDE_RUNNER_TIMEOUT:-1800}"

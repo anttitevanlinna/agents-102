@@ -57,3 +57,34 @@ chain_list_recent() {
   done
   return 0
 }
+
+# ---- user-scope skills guard ------------------------------------------------
+# A chain leaves ~/.claude/skills exactly as it found it — success, failure or
+# Ctrl-C. Prework installs the student security skills, M3/M6 author
+# <skill>-<sut>, arrange removes -<sut> skills; left behind, they load into
+# every later session of the maintainer and seed the next run's name clash.
+# On exit the chain's end state is kept in <chain>/skills-after/ so a resume
+# (--chain-dir) gets back the skills its earlier modules wrote (M4+ read M3's
+# test-strategy-<sut>), then is cleaned up the same way.
+chain_guard_skills() {
+  _CHAIN_SKILLS_SRC="${CLAUDE_RUNNER_SKILLS_DIR:-$HOME/.claude/skills}"
+  _CHAIN_SKILLS_SNAP="$CLAUDE_RUNNER_CHAIN_DIR/skills-before"
+  mkdir -p "$_CHAIN_SKILLS_SRC"
+  rm -rf "$_CHAIN_SKILLS_SNAP"; mkdir -p "$_CHAIN_SKILLS_SNAP"
+  rsync -a "$_CHAIN_SKILLS_SRC/" "$_CHAIN_SKILLS_SNAP/"
+  if [[ -d "$CLAUDE_RUNNER_CHAIN_DIR/skills-after" ]]; then
+    rsync -a "$CLAUDE_RUNNER_CHAIN_DIR/skills-after/" "$_CHAIN_SKILLS_SRC/"
+    echo "[chain] resume: re-applied this chain's skills from skills-after/" >&2
+  fi
+  trap '_chain_restore_skills' EXIT
+  trap 'exit 130' INT
+  trap 'exit 143' TERM
+}
+
+_chain_restore_skills() {
+  [[ -d "${_CHAIN_SKILLS_SNAP:-}" ]] || return 0
+  mkdir -p "$CLAUDE_RUNNER_CHAIN_DIR/skills-after"
+  rsync -a --delete "$_CHAIN_SKILLS_SRC/" "$CLAUDE_RUNNER_CHAIN_DIR/skills-after/"
+  rsync -a --delete "$_CHAIN_SKILLS_SNAP/" "$_CHAIN_SKILLS_SRC/" \
+    && echo "[chain] $_CHAIN_SKILLS_SRC restored to its pre-run snapshot" >&2
+}

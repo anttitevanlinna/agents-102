@@ -24,9 +24,11 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 sut_cwd="$HOME/Documents/agents-101-runner"
 material_dir="$HOME/Documents/agents-101-runner-material"
 from="prework"; to="m2"; do_arrange=1
+chain_dir_arg=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --from) from="$2"; shift 2 ;;
+    --chain-dir) chain_dir_arg="$2"; shift 2 ;;
     --to) to="$2"; shift 2 ;;
     --no-arrange) do_arrange=0; shift ;;
     --cwd) sut_cwd="$2"; shift 2 ;;
@@ -45,29 +47,15 @@ for m in "${modules[@]}"; do
 done
 [[ ${#selected[@]} -gt 0 ]] || { echo "empty module range ($from..$to)" >&2; exit 2; }
 
-# H2-harness: m4a installs a skill into the operator's REAL ~/.claude/skills/.
-# Auth can't be isolated to a scratch $HOME on this setup — a fresh HOME comes up
-# "Not logged in" (keychain login isn't inherited; see FIX-PLAN H2-harness).
-# Maintainer's call: don't isolate, clean up post-run. Snapshot pre-existence now
-# so the trap removes ONLY a skill THIS run created, never an operator skill that
-# happens to share the name. The trap fires on any exit, incl. a failed module.
-H2_SKILL_DIR="$HOME/.claude/skills/security-audit"
-h2_runs_m4a=0
-for m in "${selected[@]}"; do [[ "$m" == "m4a" ]] && h2_runs_m4a=1; done
-h2_skill_preexisted=0
-[[ -e "$H2_SKILL_DIR" ]] && h2_skill_preexisted=1
-h2_cleanup() {
-  [[ $h2_runs_m4a -eq 1 ]] || return 0
-  if [[ $h2_skill_preexisted -eq 1 ]]; then
-    echo "[chain] H2: left $H2_SKILL_DIR in place — it pre-existed this run, not ours to remove." >&2
-    return 0
-  fi
-  if [[ -e "$H2_SKILL_DIR" ]]; then
-    rm -rf "$H2_SKILL_DIR"
-    echo "[chain] H2: removed runner-installed $H2_SKILL_DIR — operator skills dir left clean." >&2
-  fi
-}
-trap h2_cleanup EXIT
+# User-scope skills: m4a installs security-audit into the operator's REAL
+# ~/.claude/skills/ (a scratch $HOME comes up "Not logged in" — keychain login
+# isn't inherited; FIX-PLAN H2-harness), so the run can't be isolated. The
+# chain guard snapshots the dir and restores it on any exit: a skill this run
+# created is removed, one that pre-existed is left as it was.
+source "$HERE/lib/chain.sh"
+chain_init "$HERE/out" "$chain_dir_arg" >/dev/null || exit 2
+echo "[chain] chain dir: $CLAUDE_RUNNER_CHAIN_DIR  (resume with --chain-dir this)"
+chain_guard_skills          # ~/.claude/skills restored to this snapshot on any exit (lib/chain.sh)
 
 if [[ $do_arrange -eq 1 ]]; then
   echo "[chain] arranging…"

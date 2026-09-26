@@ -72,27 +72,7 @@ After writing and merging: for each of `check_writing` and `check_student_facing
 
 ## Output format
 
-Return ONE JSON object, exactly this shape:
-
-{
-  "class": "writing",
-  "file": "<repo-relative path>",
-  "verdict": "PASS" | "REVISE",
-  "training": "agents-101" | "ae101" | "claude-basics" | "shared" | "unknown",
-  "rules_evaluated": [
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 1,
-      "rule_lead": "Banned words — grep zero-tolerance.",
-      "verdict": "PASS" | "REVISE" | "N/A",
-      "evidence": "<line-number:quoted-substring> if REVISE; null otherwise",
-      "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in an authoring turn, not here. null if PASS.>",
-      "blocking": true | false
-    }
-  ],
-  "blocking_findings_count": <int>,
-  "nonblocking_findings_count": <int>
-}
+Write the record in your class brief's **Output contract** section; with no brief, `node curriculum/evals/scripts/instance-contract.js writing` prints it. That is the only copy of the fields every class shares (`class`, `file`, `training`, `verdict`, `body_sha`, the ledger rows, `suggestions`, both counts). This class adds no fields. Row `evidence` for a REVISE is `<line-number:quoted-substring>`.
 
 `blocking: true` for: rule 1 banned words, rule 2 hard-banned, rule 6 creator-name + author-we, rule 7 always-you, rule 13 value-prop leak, rule 8 maintainer-vocabulary-leak, all hard-grep items the hook would auto-fix. `blocking: false` for register-match nuance, atmospheric phrasing, over-hedge detector — register failures are TODOs unless severe.
 

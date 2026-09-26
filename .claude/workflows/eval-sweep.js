@@ -376,39 +376,9 @@ ${READ_ONLY}
 
 ## Write the instance
 ${j.slug ? `
-Overwrite \`curriculum/evals/instances/${j.slug}.${j.cls}.json\`. Do NOT copy the shape of whatever is there now — the instances were written to no schema for a long time and carry 60+ different top-level keys between them, so imitating the nearest example is how the next one drifts further. ${j.cls === 'behavior' ? `Behavior is the exception to the numbered-rule schema: its template owns a fires-only prompt ledger. Write these fields:
+Overwrite \`curriculum/evals/instances/${j.slug}.${j.cls}.json\`. Do NOT copy the shape of whatever is there now — the instances were written to no schema for a long time and carry 60+ different top-level keys between them, so imitating the nearest example is how the next one drifts further. Write the record your class brief's **Output contract** section defines — it is generated from \`curriculum/evals/scripts/instance-contract.js\`, the only copy of the shared fields (${j.cls === 'behavior' ? 'behavior skips the brief, so print it: ' : 'no brief? print it: '}\`node curriculum/evals/scripts/instance-contract.js ${j.cls}\`). Your \`training\` is "${j.training || ''}"; \`class\` is exactly "${j.cls}", which is what every tool globs on.
 
-\`\`\`
-class            "behavior"
-training         "${j.training || ''}"
-file             repo-relative path of the file you judged (curriculum/…)
-verdict          PASS | REVISE | N/A
-body_sha         sha256 of the FULL file
-trace_status     cached | partial_regen | full_regen | generated_first_time | no_prompts
-prompts_evaluated      integer count of prompt blocks read
-prompts_findings       the per-prompt ledger from prompt-behavior.md
-blocking_findings_count     count of prompts with verdict REVISE
-nonblocking_findings_count  0 — optional suggestions are not owed findings
-suggestions_count           suggestions.length
-suggestions                 optional concrete swaps
-\`\`\`
-
-Do not write \`rules_evaluated\`, \`shape_hash\`, or prefill accounting into a behavior instance. There is no numbered-rule ledger in this class.` : `Write these, and add a field only when you have something to put in it:
-
-\`\`\`
-class            "${j.cls}"                     exactly this — it is what every tool globs on
-training         "${j.training || ''}"
-file             repo-relative path of the file you judged (curriculum/…)
-verdict          PASS | REVISE | N/A                       — no other word
-body_sha         sha256 of the FULL file
-shape_hash       as supplied in your brief
-rules_evaluated  one row per rule you touched: {compendium, rule_index, rule_lead,
-                 verdict, evidence, fix_hint, blocking}
-nonblocking_findings_count   how many rules_evaluated rows are verdict REVISE + blocking false
-blocking_findings_count   how many are verdict REVISE + blocking true
-\`\`\`
-
-**A finding you counted but did not write down is a finding that does not exist.** The Quality row copies \`nonblocking_findings_count\` and appends "see instances/${j.slug}.${j.cls}.json", so a count with no row behind it makes the row cite evidence that is not in the file. 134 AE101 todos were lost exactly this way. Both counts are derived from \`rules_evaluated\`, never authored beside it — write the rows first and count them second.
+${j.cls === 'behavior' ? '' : `**A finding you counted but did not write down is a finding that does not exist.** The Quality row copies \`nonblocking_findings_count\` and appends "see instances/${j.slug}.${j.cls}.json", so a count with no row behind it makes the row cite evidence that is not in the file. 134 AE101 todos were lost exactly this way. Both counts are derived from \`rules_evaluated\`, never authored beside it — write the rows first and count them second.
 
 Do not write a \`todos\` array — the field is retired (2026-09-08). It was a second ledger for the same thing, and where both existed they disagreed in 61 of 79 instances. \`suggestions\` is not its replacement: it is a different channel, for swaps nothing is owed on, and it carries \`now\` and \`proposed\` or it is not written.`}
 

@@ -36,6 +36,7 @@ const path = require('node:path')
 const { COMPENDIA } = require('./derive-body-view.js')
 const { prefill } = require('./prefill-instance.js')
 const { extraRules } = require('./extra-rules.js')
+const contract = require('./instance-contract.js')
 
 const REPO = path.resolve(__dirname, '..', '..', '..')
 const MEM = require('./compendium-drift.js').MEM
@@ -144,6 +145,9 @@ function build(fileArg, cls) {
     'Run that AFTER you write your instance. Skip it and the ledger loses exactly the',
     'rules this brief dropped, which is a coverage hole that looks like a clean run.',
   ].join('\n')
+
+  // The record the judge writes, from its one definition (instance-contract.js).
+  if (contract.CLASSES.includes(cls)) parts.push(`\n\n${contract.render(cls)}`)
 
   const out = header + parts.join('')
   return { text: out, kept, dropped, allBytes, keptBytes: out.length, failures }

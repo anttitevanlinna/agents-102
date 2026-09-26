@@ -181,8 +181,7 @@ test('behavior skips rule-ledger machinery it does not own', async () => {
   assert.doesNotMatch(p, /prefill-instance\.js/);
   assert.doesNotMatch(p, /rules_evaluated {2}one row per rule/);
   assert.match(p, /Behavior has no numbered-rule ledger/);
-  assert.match(p, /prompts_evaluated/);
-  assert.match(p, /prompts_findings/);
+  assert.match(p, /instance-contract\.js behavior/, 'its record comes from the one contract');
 });
 
 // The bug this guards is the one that produced every other instance bug. The
@@ -190,12 +189,14 @@ test('behavior skips rule-ledger machinery it does not own', async () => {
 // example — which is replication with mutation and no selection: 810 instances,
 // 60+ top-level keys, three spellings of the drift note, and 134 AE101 findings
 // counted onto Quality rows and written down nowhere. A schema the judge cannot
-// read is not a schema, so it has to travel in the prompt.
+// read is not a schema, so the prompt names where it is generated
+// (instance-contract.js, appended to the brief); the field list itself is
+// tested there, and a copy here would be the fourth one to drift.
 test('the judge is given the instance schema, not an example to imitate', async () => {
   const p = await promptForClass('writing', {});
   assert.doesNotMatch(p, /shape already there/, 'imitating the neighbour is what bred the dialects');
-  assert.match(p, /rules_evaluated {2}one row per rule/, 'the ledger is named field by field');
-  assert.match(p, /PASS \| REVISE \| N\/A/, 'the verdict enum is stated, not assumed');
+  assert.match(p, /instance-contract\.js writing/, 'the record comes from the one contract');
+  assert.match(p, /class` is exactly "writing"/, 'the globbed field is pinned in the prompt');
   assert(!/PASS_WITH_TODOS/.test(p), 'the retired rung must not be offered back to judges');
   assert.match(p, /derived from `rules_evaluated`, never authored/, 'a count beside a list drifts from it');
   assert.match(p, /did not write down is a finding that does not exist/, 'the failure is named, not implied');

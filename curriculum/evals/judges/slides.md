@@ -50,29 +50,12 @@ This class is PRIMARY owner of `check_slides.md`: exactly one entry per numbered
 
 ## Output format
 
-Return ONE JSON object, exactly the writing judge's schema with `"class": "slides"` and one addition — each `rules_evaluated[]` entry carries `"chunks_flagged": [<chunk index>, ...]` (empty array if PASS/N/A):
+Write the record in your class brief's **Output contract** section; with no brief, `node curriculum/evals/scripts/instance-contract.js slides` prints it. That is the only copy of the fields every class shares (`class`, `file`, `training`, `verdict`, `body_sha`, the ledger rows, `suggestions`, both counts). This class adds a top-level `chunk_map` and one field on each `rules_evaluated[]` row:
 
-{
-  "class": "slides",
-  "file": "<repo-relative path>",
-  "verdict": "PASS" | "REVISE",
-  "training": "agents-101" | "ae101" | "claude-basics" | "shared" | "unknown",
-  "chunk_map": [{"index": 0, "heading": "<H1/lede>", "lines": "1-9"}, ...],
-  "rules_evaluated": [
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 1,
-      "rule_lead": "Per-slide referent resolution.",
-      "verdict": "PASS" | "REVISE" | "N/A",
-      "chunks_flagged": [3],
-      "evidence": "<chunk N \"heading\": line-number: quoted-substring> if REVISE; null otherwise",
-      "fix_hint": "<one-line, narrow-lens suggestion; NOT a recipe. null if PASS.>",
-      "blocking": true | false
-    }
-  ],
-  "blocking_findings_count": <int>,
-  "nonblocking_findings_count": <int>
-}
+    "chunk_map": [{"index": 0, "heading": "<H1/lede>", "lines": "1-9"}, ...]
+    "chunks_flagged": [<chunk index>, ...]        (on each row; empty array if PASS/N/A)
+
+Row `evidence` for a REVISE is `<chunk N "heading": line-number: quoted-substring>`.
 
 `blocking: true` for rules 1, 2, 3, 4, 8, 10, and 12, plus rule 7's self-grading-superlative sub-item (value-prop leak). `blocking: false` for rules 5, 6, 9, 11, 13, 14, and the remaining rule-7 sub-items — those are TODOs.
 

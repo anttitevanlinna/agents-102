@@ -59,27 +59,7 @@ After writing and merging: count `check_pedagogy`'s numbered rules minus moved-s
 
 ## Output format
 
-Return ONE JSON object, exactly this shape:
-
-{
-  "class": "pedagogy",
-  "file": "<repo-relative path>",
-  "verdict": "PASS" | "REVISE",
-  "training": "agents-101" | "ae101" | "claude-basics" | "shared",
-  "rules_evaluated": [
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": <int>,
-      "rule_lead": "<short lead from the rule>",
-      "verdict": "PASS" | "REVISE" | "N/A",
-      "evidence": "<line:quote if REVISE; null otherwise>",
-      "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in an authoring turn. null if PASS.>",
-      "blocking": true | false
-    }
-  ],
-  "blocking_findings_count": <int>,
-  "nonblocking_findings_count": <int>
-}
+Write the record in your class brief's **Output contract** section; with no brief, `node curriculum/evals/scripts/instance-contract.js pedagogy` prints it. That is the only copy of the fields every class shares (`class`, `file`, `training`, `verdict`, `body_sha`, the ledger rows, `suggestions`, both counts). This class adds no fields.
 
 `blocking: true` for architecture violations (PDCA shape, one-bounded-activity, forcing-function-in-prompt, primitive budget overflow, delegation-boundary violation). Other rules are TODO unless severe.
 

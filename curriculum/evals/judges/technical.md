@@ -71,39 +71,12 @@ After writing and merging: for each of `check_platform_and_boundaries` and `chec
 
 ## Output format
 
-Return ONE JSON object, exactly this shape:
+Write the record in your class brief's **Output contract** section; with no brief, `node curriculum/evals/scripts/instance-contract.js technical` prints it. That is the only copy of the fields every class shares (`class`, `file`, `training`, `verdict`, `body_sha`, the ledger rows, `suggestions`, both counts). This class adds four top-level ledgers:
 
-{
-  "class": "technical",
-  "file": "<repo-relative path>",
-  "verdict": "PASS" | "REVISE",
-  "training": "agents-101" | "ae101" | "claude-basics" | "shared",
-  "rules_evaluated": [
-    {
-      "compendium": "check_platform_and_boundaries.md",
-      "rule_index": 3,
-      "rule_lead": "Verify before assert.",
-      "verdict": "PASS" | "REVISE" | "N/A",
-      "evidence": "<line:quote if REVISE; null otherwise>",
-      "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in an authoring turn, not here.>",
-      "blocking": true | false
-    }
-  ],
-  "platform_claims_checked": [
-    {"claim": "<quote>", "line": <int>, "verdict": "PASS|REVISE", "source": "compendium|claude-code-guide|inferred"}
-  ],
-  "citations_checked": [
-    {"line": <int>, "claim": "<short>", "label_present": true|false, "url_present": true|false, "url_alive": true|false|null, "evidence_level_honest": true|false}
-  ],
-  "skills_referenced": [
-    {"name": "<skill>", "line": <int>, "exists": true|false}
-  ],
-  "urls_sampled": [
-    {"url": "<url>", "alive": true|false, "status_code": <int|null>}
-  ],
-  "blocking_findings_count": <int>,
-  "nonblocking_findings_count": <int>
-}
+    "platform_claims_checked": [{"claim": "<quote>", "line": <int>, "verdict": "PASS|REVISE", "source": "compendium|claude-code-guide|inferred"}]
+    "citations_checked": [{"line": <int>, "claim": "<short>", "label_present": true|false, "url_present": true|false, "url_alive": true|false|null, "evidence_level_honest": true|false}]
+    "skills_referenced": [{"name": "<skill>", "line": <int>, "exists": true|false}]
+    "urls_sampled": [{"url": "<url>", "alive": true|false, "status_code": <int|null>}]
 
 `blocking: true` for: dead URL on load-bearing claim, missing source-type label on a fact claim, zombie stat used as evidence, skill referenced but not installed, capability claim that contradicts shipped reality. Non-blocking: stylistic prompt-mechanic nits.
 

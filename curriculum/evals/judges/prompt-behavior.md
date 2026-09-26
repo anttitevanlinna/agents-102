@@ -138,32 +138,24 @@ Top-level verdict:
 
 ## Output format
 
-Return ONE JSON object, exactly this shape:
+Write the record in your class brief's **Output contract** section; with no brief, `node curriculum/evals/scripts/instance-contract.js behavior` prints it. That is the only copy of the fields every class shares (`class`, `file`, `training`, `verdict`, `body_sha`, the ledger rows, `suggestions`, both counts). This class adds its own ledger in place of `rules_evaluated`:
 
-{
-  "class": "behavior",
-  "file": "<repo-relative path>",
-  "verdict": "PASS" | "REVISE",
-  "training": "agents-101" | "ae101" | "claude-basics" | "shared" | "unknown",
-  "trace_status": "cached" | "partial_regen" | "full_regen" | "generated_first_time",
-  "prompts_evaluated": <int>,
-  "prompts_findings": [
-    {
-      "prompt_index": <int>,
-      "prompt_lead": "<first 80 chars>",
-      "verdict": "PASS" | "REVISE",
-      "load_bearing": true | false,
-      "risks_fired": [
-        {"pattern_id": "<id>", "confidence": "high|med|low", "evidence": "<line>", "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in an authoring turn, not here.>"}
-      ]
-    }
-  ],
-  "blocking_findings_count": <int>,
-  "suggestions_count": <int>
-}
+    "trace_status": "cached" | "partial_regen" | "full_regen" | "generated_first_time" | "no_prompts"
+    "prompts_evaluated": <int>
+    "prompts_findings": [
+      {
+        "prompt_index": <int>,
+        "prompt_lead": "<first 80 chars>",
+        "verdict": "PASS" | "REVISE",
+        "load_bearing": true | false,
+        "risks_fired": [
+          {"pattern_id": "<id>", "confidence": "high|med|low", "evidence": "<line>", "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in an authoring turn, not here.>"}
+        ]
+      }
+    ]
 
 `blocking_findings_count` = number of prompts with `verdict: REVISE`.
-`suggestions_count` = total rows in `suggestions[]` across all prompts. A file may pass with a non-zero count; that is the normal case, not a defect.
+A file may pass with suggestions; that is the normal case, not a defect.
 
 OUTPUT ONLY THE JSON. No prose preamble, no markdown fence.
 ```

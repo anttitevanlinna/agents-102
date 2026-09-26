@@ -55,28 +55,9 @@ After writing and merging: count `check_strategy_tie_in`'s numbered rules; the f
 
 ## Output format
 
-Return ONE JSON object, exactly this shape:
+Write the record in your class brief's **Output contract** section; with no brief, `node curriculum/evals/scripts/instance-contract.js strategy` prints it. That is the only copy of the fields every class shares (`class`, `file`, `training`, `verdict`, `body_sha`, the ledger rows, `suggestions`, both counts). This class adds one top-level field:
 
-{
-  "class": "strategy",
-  "file": "<repo-relative path>",
-  "verdict": "PASS" | "REVISE",
-  "training": "agents-101" | "ae101" | "claude-basics" | "shared",
-  "strategy_doc_section_loaded": "<which per-module section was consulted>",
-  "rules_evaluated": [
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": <int>,
-      "rule_lead": "<short lead>",
-      "verdict": "PASS" | "REVISE" | "N/A",
-      "evidence": "<line:quote if REVISE; null otherwise>",
-      "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. null if PASS.>",
-      "blocking": true | false
-    }
-  ],
-  "blocking_findings_count": <int>,
-  "nonblocking_findings_count": <int>
-}
+    "strategy_doc_section_loaded": "<which per-module section was consulted>"
 
 `blocking: true` for: Big Idea drift, Key Concepts shape violations (§§3/4/5 gates), What-You'll-Learn shape violations (§§3/4 gates + lead-with-strategic-verb), strategy-fidelity (cross-module sequencing front-run), lead-with-discipline.
 

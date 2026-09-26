@@ -113,35 +113,13 @@ Before emitting: (a) count `check_lectures`'s numbered rules; your entries for i
 
 ## Output format
 
-Return ONE JSON object, exactly this shape:
+Write the record in your class brief's **Output contract** section; with no brief, `node curriculum/evals/scripts/instance-contract.js story` prints it. That is the only copy of the fields every class shares (`class`, `file`, `training`, `verdict`, `body_sha`, the ledger rows, `suggestions`, both counts). This class adds three top-level fields:
 
-{
-  "class": "storytelling",
-  "file": "<repo-relative path>",
-  "verdict": "PASS" | "REVISE",
-  "training": "agents-101" | "ae101" | "claude-basics" | "shared",
-  "module_mood_contract": "<from trace>",
-  "trace_status": "cached" | "regenerated" | "generated_first_time",
-  "rules_evaluated": [
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 16,
-      "rule_lead": "Forcing functions live in prompts, not body.",
-      "verdict": "PASS" | "REVISE" | "N/A",
-      "evidence": "<line:quote or trace.phases[N].field if REVISE; null otherwise>",
-      "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in an authoring turn, not here. null if PASS.>",
-      "blocking": true | false
-    }
-  ],
-  "mood_summary": {
-    "phase_scores": [<int>, ...],
-    "close_score": <int>,
-    "any_below_8": true | false,
-    "stealing_the_mood": ["<one-line per beat below 8>"]
-  },
-  "blocking_findings_count": <int>,
-  "nonblocking_findings_count": <int>
-}
+    "module_mood_contract": "<from trace>"
+    "trace_status": "cached" | "regenerated" | "generated_first_time"
+    "mood_summary": {"phase_scores": [<int>, ...], "close_score": <int>, "any_below_8": true | false, "stealing_the_mood": ["<one-line per beat below 8>"]}
+
+Row `evidence` for a REVISE may cite the trace as `trace.phases[N].field`.
 
 `blocking: true` for: mood lands (any beat <7), teaching moment lands, mood-doesn't-resolve-early, Big Idea fidelity, forcing-function-in-prompt. Other rules are TODO unless severe.
 

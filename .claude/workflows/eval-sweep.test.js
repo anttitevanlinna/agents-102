@@ -233,6 +233,15 @@ test('every judge prompt is read-only on the target, in every mode', async () =>
   }
 });
 
+// A confirmation judge committed and pushed its own instance (25075e46): the
+// clause forbade editing the target and said nothing about git. The
+// orchestrator commits after stamping; a judge that commits races it.
+test('every judge prompt forbids git writes', async () => {
+  for (const mode of [{}, { brief: false }, { evidence: 'full' }]) {
+    assert.match(await promptFor(mode), /Never run `git commit`, `git push`/, JSON.stringify(mode));
+  }
+});
+
 test('both dispatch doors name the same mechanics, or one of them is a rumour', async () => {
   // The skill and this workflow are the two ways a judge gets fired. They share
   // one contract file, but each writes its own parameter header — and a header

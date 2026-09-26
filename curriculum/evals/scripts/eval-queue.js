@@ -277,9 +277,9 @@ function main(argv) {
 
   // A key that names no training scans nothing and would read as a clean board.
   if (want !== 'all') {
-    const { TRAINING_PREFIX } = require('./scan-stale-classes.js')
+    const { instanceKey } = require('./scan-stale-classes.js')
     const dir = path.join(repo, 'curriculum', 'trainings')
-    const known = fs.readdirSync(dir).filter(d => fs.statSync(path.join(dir, d)).isDirectory()).map(d => TRAINING_PREFIX[d] || d)
+    const known = fs.readdirSync(dir).filter(d => fs.statSync(path.join(dir, d)).isDirectory()).map(instanceKey)
     if (!known.includes(want)) {
       process.stderr.write(`eval-queue: unknown training "${want}". Known: ${known.join(', ')}\n`)
       process.exitCode = 2

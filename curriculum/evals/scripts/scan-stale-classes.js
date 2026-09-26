@@ -521,17 +521,14 @@ function typeOf(relpath) {
 // Ambiguous (two trainings link it) or orphaned (none do) returns null unless
 // the caller supplied an explicit preferred training and that training is one
 // of the linkers. An explicit target is resolution, not a guess.
-const TRAINING_PREFIX = {
-  'agentic-engineering-101': 'ae101',
-  'agents-101': 'agents-101',
-  'claude-basics': 'claude-basics',
-}
+// The prefix is the registry's `evalKey`, else the registry key itself.
+const { TRAININGS } = require('../../../site/layouts/curriculum.js')
+const TRAINING_PREFIX = Object.fromEntries(Object.entries(TRAININGS).map(([k, t]) => [k, t.evalKey || k]))
 const instanceKey = trainingKey => TRAINING_PREFIX[trainingKey] || trainingKey
 
 // Registry key → instance key for every training that owns content. A cut
 // (`contentKey`) reuses its parent's files and so its instances.
 function evalTrainings() {
-  const { TRAININGS } = require('../../../site/layouts/curriculum.js')
   return Object.fromEntries(Object.entries(TRAININGS)
     .filter(([, t]) => !t.contentKey).map(([k]) => [k, instanceKey(k)]))
 }

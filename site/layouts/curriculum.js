@@ -45,6 +45,7 @@
         },
         'agentic-engineering-101': {
             label: 'Agentic Engineering 101',
+            evalKey: 'ae101',         // instance/trace filename prefix
             lede: 'Six modules for software engineers. Become the Claude wizard by learning the new loop and finding your habit.',
             prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
             modules: [
@@ -174,6 +175,7 @@
         },
         'claude-basics': {
             label: 'Claude Basics',
+            status: 'draft',          // gates report, not block (scripts/gates.js)
             lede: 'A 3-hour live workshop for people helping their organisation roll out Claude. See the system, find the crux, then build and verify in your own folder.',
             runtime: 'cowork',
             modules: [

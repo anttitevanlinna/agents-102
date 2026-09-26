@@ -12,20 +12,22 @@ const path = require('node:path')
 const REPO = path.resolve(__dirname, '..')
 const EVALS = 'curriculum/evals/scripts'
 
+// Run once per registered training that owns content (a cut reuses its
+// parent's). A training marked `status: 'draft'` in the registry is checked and
+// reported, but its failures do not fail the suite.
+const PER_TRAINING = [
+  'scripts/check-slide-size.js',
+  'scripts/check-slide-deixis.js',
+  'scripts/check-slide-numbering.js',
+  'scripts/check-slide-tiers.js',
+  'scripts/calculate-time.js --check',
+]
+
 const GATES = [
   'scripts/check-emphasis-balance.js',
   'scripts/check-cross-doc-anchors.js',
   'scripts/check-include-anchors.js',
-  'scripts/check-slide-size.js',
-  'scripts/check-slide-size.js --training agents-101',
-  'scripts/check-slide-deixis.js',
-  'scripts/check-slide-deixis.js --training agents-101',
-  'scripts/check-slide-numbering.js',
-  'scripts/check-slide-numbering.js --training agents-101',
-  'scripts/check-slide-tiers.js',
   'scripts/check-easteregg-watched.js',
-  'scripts/calculate-time.js --check',
-  'scripts/calculate-time.js --check --training agents-101',
   'scripts/check-doc-paths.js',
   'scripts/check-workflow-scripts.js',
   'scripts/check-hook-paths.js',
@@ -45,19 +47,30 @@ const REPORTS = [
   `${EVALS}/check-instance-evidence.js`,
 ]
 
+function gateList(trainings) {
+  const own = Object.entries(trainings).filter(([, t]) => !t.contentKey)
+  return [
+    ...GATES.map(cmd => ({ cmd, blocking: true })),
+    ...own.flatMap(([k, t]) => PER_TRAINING.map(g => ({ cmd: `${g} --training ${k}`, blocking: t.status !== 'draft' }))),
+  ]
+}
+
 function run() {
+  const { TRAININGS } = require('../site/layouts/curriculum.js')
+  const list = gateList(TRAININGS)
   const failed = []
-  for (const g of GATES) {
-    const [script, ...args] = g.split(' ')
+  for (const g of list) {
+    const [script, ...args] = g.cmd.split(' ')
     const r = spawnSync('node', [script, ...args], { cwd: REPO, encoding: 'utf8' })
     const ok = r.status === 0
-    console.log(`${ok ? '✓' : '✗'} ${g}`)
-    if (!ok) failed.push({ g, out: `${r.stdout}${r.stderr}` })
+    console.log(`${ok ? '✓' : g.blocking ? '✗' : '⚠'} ${g.cmd}${!ok && !g.blocking ? '  (draft: reported, not blocking)' : ''}`)
+    if (!ok && g.blocking) failed.push({ g: g.cmd, out: `${r.stdout}${r.stderr}` })
   }
   for (const f of failed) console.log(`\n── ✗ ${f.g}\n${f.out.trimEnd()}`)
-  console.log(`\n${GATES.length - failed.length}/${GATES.length} gates pass`)
+  const blocking = list.filter(g => g.blocking).length
+  console.log(`\n${blocking - failed.length}/${blocking} blocking gates pass`)
   return failed.length ? 1 : 0
 }
 
-module.exports = { GATES, REPORTS }
+module.exports = { GATES, PER_TRAINING, REPORTS, gateList }
 if (require.main === module) process.exit(run())

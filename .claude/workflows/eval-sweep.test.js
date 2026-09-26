@@ -354,3 +354,16 @@ test('the documented confirm and sets shapes still run', async () => {
   const out = await run(ARGS, cleanJudge);
   assert.ok(out, 'documented arg shape should produce a result');
 });
+
+// The prompt retires `todos`; the schema used to still require it (undeclared),
+// so a judge obeying the schema had to write the field the prompt forbids.
+test('the verdict schema requires only fields it declares, and never todos', async () => {
+  let schema = null;
+  await run(ARGS, async (prompt, opts) => {
+    if ((opts.label || '').startsWith('behavior:')) schema = opts.schema;
+    return cleanJudge(prompt, opts);
+  });
+  assert.ok(schema, 'the class judge was dispatched with a schema');
+  assert.ok(!schema.required.includes('todos'), 'todos is retired');
+  for (const k of schema.required) assert.ok(k in schema.properties, `required ${k} is declared`);
+});

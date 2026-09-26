@@ -160,7 +160,7 @@ for (const it of ITEMS) {
 
 const VERDICT_SCHEMA = {
   type: 'object',
-  required: ['file', 'class', 'verdict', 'body_sha', 'ungrounded_count', 'rows_written_by_you', 'rows_spliced_by_merge', 'diff_summary', 'findings', 'todos'],
+  required: ['file', 'class', 'verdict', 'body_sha', 'ungrounded_count', 'rows_written_by_you', 'rows_spliced_by_merge', 'diff_summary', 'findings'],
   properties: {
     // The TARGET file, not the instance you wrote. A story judge returned its
     // own instance path here and the summary then named the wrong file as the
@@ -522,7 +522,7 @@ const UNITS = [...JOBS, ...CONFIRM, ...SETS].map(u => Object.assign(u, { _key: k
 const done = [...(fromQueue || []), ...(fromConfirm || []), ...(fromSets || [])].filter(Boolean)
 const expected = UNITS.length
 const surviving = done.filter(v => (v.confirmed || []).length)
-log(`eval-sweep: ${done.length}/${expected} returned · ${done.filter(v => v.verdict === 'PASS').length} PASS · ${done.filter(v => v.verdict === 'PASS_WITH_TODOS').length} PASS+todos · ${surviving.length} with a finding surviving both refuters`)
+log(`eval-sweep: ${done.length}/${expected} returned · ${done.filter(v => v.verdict === 'PASS').length} PASS · ${surviving.length} with a finding surviving both refuters`)
 
 return {
   returned: done.length,

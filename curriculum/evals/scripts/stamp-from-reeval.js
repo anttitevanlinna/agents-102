@@ -181,8 +181,8 @@ function stateFor(r, meta = null) {
   return `REVISE:${nb}/${r.todos}${pointer(r)}`
 }
 
-// Judges write `file` absolute — 760 of 803 instances do, and the instance
-// checker converts on read rather than fighting it. Everything downstream here
+// Judges write `file` repo-relative now (eval-sweep's schema says so); an older
+// result may still carry an absolute path. Everything downstream here
 // (git pathspecs, fs reads, update-quality.sh) wants one dialect, so convert
 // once, at the door. A path outside the repo passes through untouched: git
 // refusing it loudly beats rewriting it into some other file that exists.

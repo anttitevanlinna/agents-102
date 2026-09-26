@@ -17,7 +17,7 @@ const known = new Set(ELSEWHERE)
 const files = []
 for (const d of DIRS) for (const s of fs.readdirSync(d)) {
   const f = path.join(d, s, 'SKILL.md')
-  if (fs.existsSync(f)) { known.add(s); files.push(f) }
+  if (fs.existsSync(f) && !files.some(g => fs.realpathSync(g) === fs.realpathSync(f))) { known.add(s); files.push(f) }
 }
 assert.ok(files.length > 5, `found ${files.length} skills; wrong layout?`)
 

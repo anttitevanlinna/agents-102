@@ -27,7 +27,8 @@ set -eu
 
 FILE="$1"
 REPO_ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
-CORE_MEM="${AGENTS_CORE_DIR:-$(cd "$REPO_ROOT/.." && pwd)/agents-102-core}/memory"
+CORE_DIR="${AGENTS_CORE_DIR:-$(cd "$REPO_ROOT/.." && pwd)/agents-102-core}"
+CORE_MEM="$CORE_DIR/memory"
 [[ -f "$FILE" ]] || { echo "error: $FILE not found" >&2; exit 1; }
 
 RAW=0
@@ -37,9 +38,20 @@ RAW=0
 case "$FILE" in
   *curriculum/trainings/agents-101/*)              TRAINING="agents-101" ;;
   *curriculum/trainings/agentic-engineering-101/*) TRAINING="ae101" ;;
+  *curriculum/trainings/claude-basics/*)           TRAINING="claude-basics" ;;
+  *curriculum/trainings/engineering-management/*)  TRAINING="engineering-management" ;;
   *curriculum/trainings/*)                         TRAINING="other-training" ;;
   *curriculum/exercises/*|*curriculum/lectures/*)  TRAINING="shared" ;;
   *) TRAINING="unknown" ;;
+esac
+
+# ---- Strategy doc per training (agents-102-core/strategy/) ---------------
+case "$TRAINING" in
+  agents-101)             STRATEGY="$CORE_DIR/strategy/content-strategy.md" ;;
+  ae101)                  STRATEGY="$CORE_DIR/strategy/content-strategy-agentic-engineering-101.md" ;;
+  claude-basics)          STRATEGY="$CORE_DIR/strategy/content-strategy-claude-basics.md" ;;
+  engineering-management) STRATEGY="$CORE_DIR/strategy/content-strategy-engineering-management.md" ;;
+  *)                      STRATEGY="(shared file: the consuming training's doc in $CORE_DIR/strategy/)" ;;
 esac
 
 # ---- Voice contract per training ----------------------------------------
@@ -82,7 +94,7 @@ MOOD=$(awk '
     exit
   }
 ' "$FILE")
-[[ -z "$MOOD" ]] && MOOD="(mood contract not stated in maintainer block — load bosser-strategy:content-strategy.md per-module section in the orchestrator and inject separately)"
+[[ -z "$MOOD" ]] && MOOD="(mood contract not stated in maintainer block — read this module's section of the STRATEGY DOC)"
 
 # ---- Surface compendiums (which check_*.md fire for this file) ----------
 # Heuristic: every student-facing file loads writing + student_facing + strategy_tie_in.
@@ -118,6 +130,8 @@ TARGET FILE: $FILE
 TRAINING: $TRAINING
 
 VOICE CONTRACT: $VOICE
+
+STRATEGY DOC: $STRATEGY
 
 BIG IDEA: $BIG_IDEA
 

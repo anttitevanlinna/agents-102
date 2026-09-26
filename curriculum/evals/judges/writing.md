@@ -61,12 +61,14 @@ These need a careful read; not just keyword grep.
 
 ## Completeness contract — one verdict per rule on the compendium you own
 
+The finished merged instance must cover every owned numbered rule. Author rows only for rules present in your class brief; `prefill-instance.js --merge` supplies the rules the brief omitted. Validate completeness after the merge, never by re-deriving omitted rules.
+
 `rules_evaluated` is the coverage ledger, not a highlights reel. This class is PRIMARY owner of `check_writing` + `check_student_facing`; for BOTH it MUST carry exactly one entry for EVERY numbered rule (`^\d+[a-z]?\. \*\*…\*\*`), no omission:
 - rule doesn't apply to this surface (e.g. an articles-only or reference-only rule on an exercise) → `verdict: "N/A"` + one-line reason;
 - a REVISE you withdrew on the line-number check → the rule still gets `PASS` or `N/A`; only the false flag is dropped, never the rule;
 - italic "Moved to <compendium>" stub redirects (single-asterisk, not bold) are the ONLY legitimate absences.
 
-Before emitting: for each of `check_writing` and `check_student_facing`, count its numbered rules minus moved-stubs; your entries for that compendium MUST equal that count. Fewer = a silent skip — add the missing rule_index entries before returning. The mechanical auditor (`scripts/audit-eval-coverage.js`) treats any missing rule_index as an unproven coverage hole.
+After writing and merging: for each of `check_writing` and `check_student_facing`, count its numbered rules minus moved-stubs; the finished instance's entries for that compendium MUST equal that count. Fewer = a silent skip — repair the merge or add a genuinely unjudged rule before returning. The mechanical auditor (`scripts/audit-eval-coverage.js`) treats any missing rule_index as an unproven coverage hole.
 
 ## Output format
 

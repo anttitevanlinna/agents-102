@@ -95,6 +95,8 @@ Specific judgments that storytelling owns (the Completeness contract below maps 
 
 ## Completeness contract — one verdict per rule on the compendium you own
 
+The finished merged instance must cover every owned numbered rule. Author rows only for rules present in your class brief; `prefill-instance.js --merge` supplies the rules the brief omitted. Validate completeness after the merge, never by re-deriving omitted rules.
+
 `rules_evaluated` is the coverage ledger, not a highlights reel. This class is PRIMARY owner of `check_lectures`; it MUST carry exactly one entry for EACH of its numbered rules (`^\d+[a-z]?\. \*\*…\*\*`), no omission — `N/A` (with reason) for a rule that doesn't apply to this surface (e.g. a lecture-placement rule on an exercise), never a silent drop. For `check_pedagogy` and `check_strategy_tie_in`, evaluate only the storytelling rules listed under "Specific judgments storytelling owns" above; the pedagogy and strategy judges are primary owners of the rest and carry their verdicts.
 
 **One entry per owned rule_index — never cram.** Each storytelling judgment maps to exactly ONE `check_strategy_tie_in` rule_index, and you emit at most one `rules_evaluated` row per index:

@@ -283,6 +283,20 @@ test('the contract file actually carries the mechanics both headers point at', (
   assert.doesNotMatch(contract, /run `grep -c '"evidence": \*null'` over the instances/);
 });
 
+test('class completeness means the merged ledger, not retyping parked rows', () => {
+  // The templates used to say "your entries MUST equal" the full compendium
+  // count while the shared contract said to omit prefilled rules. In a live
+  // seven-class run every judge chose the former and re-authored 387 parked
+  // rows. Keep the class-specific ownership rules, but bind their count to the
+  // finished instance after --merge.
+  for (const name of ['writing', 'story', 'technical', 'pedagogy', 'strategy', 'slides']) {
+    const template = fs.readFileSync(
+      path.join(__dirname, '..', '..', 'curriculum', 'evals', 'judges', `${name}.md`), 'utf8');
+    assert.match(template, /The finished merged instance must cover/, `${name} has no merged-ledger contract`);
+    assert.match(template, /Author rows only for rules present in your class brief/, `${name} still invites retyping`);
+  }
+});
+
 test('template placeholders are bound, because this door does not substitute them', async () => {
   // The class templates were written for the skill door, which substitutes
   // {{file_path}} / {{trace_path}} / {{catalog_path}} before dispatch. This one

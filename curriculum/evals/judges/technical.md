@@ -63,9 +63,11 @@ When evaluating a Claude Code / Anthropic API capability claim:
 
 ## Completeness contract — one verdict per rule on the compendium you own
 
+The finished merged instance must cover every owned numbered rule. Author rows only for rules present in your class brief; `prefill-instance.js --merge` supplies the rules the brief omitted. Validate completeness after the merge, never by re-deriving omitted rules.
+
 `rules_evaluated` is the coverage ledger, not a highlights reel. This class is PRIMARY owner of `check_platform_and_boundaries` + `check_research_claims`; for BOTH it MUST carry exactly one entry for EVERY numbered rule (`^\d+[a-z]?\. \*\*…\*\*`), no omission — `N/A` (with one-line reason) for a rule that doesn't apply to this surface (e.g. a citation rule on a file with no citations), never a silent drop. For `check_pedagogy`, evaluate only the technical sub-rules listed above (items 16, 22, 23, 36, 37); the pedagogy judge is primary owner of the rest.
 
-Before emitting: for each of `check_platform_and_boundaries` and `check_research_claims`, count its numbered rules; your entries for that compendium MUST equal that count. Fewer = a silent skip. The mechanical auditor (`scripts/audit-eval-coverage.js`) treats any missing rule_index as an unproven coverage hole.
+After writing and merging: for each of `check_platform_and_boundaries` and `check_research_claims`, count its numbered rules; the finished instance's entries for that compendium MUST equal that count. Fewer = a silent skip. The mechanical auditor (`scripts/audit-eval-coverage.js`) treats any missing rule_index as an unproven coverage hole.
 
 ## Output format
 

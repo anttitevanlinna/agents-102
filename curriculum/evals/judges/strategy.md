@@ -47,9 +47,11 @@ Specific judgments that strategy owns:
 
 ## Completeness contract — one verdict per rule on the compendium you own
 
+The finished merged instance must cover every owned numbered rule. Author rows only for rules present in your class brief; `prefill-instance.js --merge` supplies the rules the brief omitted. Validate completeness after the merge, never by re-deriving omitted rules.
+
 `rules_evaluated` is the coverage ledger, not a highlights reel. This class is PRIMARY owner of `check_strategy_tie_in`; it MUST carry exactly one entry for EVERY numbered rule (`^\d+[a-z]?\. \*\*…\*\*`) in it, no omission — `N/A` (with one-line reason) for a rule that doesn't apply to this surface (e.g. Key-Concepts shape on a file with no `## Key Concepts`), never a silent drop.
 
-Before emitting: count `check_strategy_tie_in`'s numbered rules; your entries MUST equal that count. Fewer = a silent skip — add the missing rule_index entries before returning. The mechanical auditor (`scripts/audit-eval-coverage.js`) treats any missing rule_index as an unproven coverage hole.
+After writing and merging: count `check_strategy_tie_in`'s numbered rules; the finished instance's entries MUST equal that count. Fewer = a silent skip — repair the merge or add a genuinely unjudged rule before returning. The mechanical auditor (`scripts/audit-eval-coverage.js`) treats any missing rule_index as an unproven coverage hole.
 
 ## Output format
 

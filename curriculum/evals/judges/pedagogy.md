@@ -47,13 +47,15 @@ Specific judgments that pedagogy owns:
 
 ## Completeness contract — one verdict per rule on the compendium you own
 
+The finished merged instance must cover every owned numbered rule. Author rows only for rules present in your class brief; `prefill-instance.js --merge` supplies the rules the brief omitted. Validate completeness after the merge, never by re-deriving omitted rules.
+
 `rules_evaluated` is the coverage ledger, not a highlights reel. This class is PRIMARY owner of `check_pedagogy`; it MUST carry exactly one entry for EVERY numbered rule (`^\d+[a-z]?\. \*\*…\*\*`) in it, no omission:
 - architecture rule violated → REVISE; honored → PASS;
 - rule owned by another class per the Scope-boundaries above (mood-arc → story, Big-Idea/Key-Concepts → strategy, prose-lint → writing, per-prompt → behavior) → `verdict: "N/A"`, reason `"owned by <class>"` — it STILL appears, the other judge carries the real verdict;
 - rule doesn't apply to this surface → `verdict: "N/A"` + one-line reason;
 - italic "Moved to check_cross_module.md" stub redirects (single-asterisk, not bold) are the ONLY legitimate absences — they live under the cross_module judge.
 
-Before emitting: count `check_pedagogy`'s numbered rules minus moved-stubs; your entries MUST equal that count. Fewer = a silent skip — add the missing rule_index entries before returning. The mechanical auditor (`scripts/audit-eval-coverage.js`) treats any missing rule_index as an unproven coverage hole.
+After writing and merging: count `check_pedagogy`'s numbered rules minus moved-stubs; the finished instance's entries MUST equal that count. Fewer = a silent skip — repair the merge or add a genuinely unjudged rule before returning. The mechanical auditor (`scripts/audit-eval-coverage.js`) treats any missing rule_index as an unproven coverage hole.
 
 ## Output format
 

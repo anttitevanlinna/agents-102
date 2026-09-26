@@ -44,7 +44,9 @@ Judgment calls that need a careful read, not grep:
 
 ## Completeness contract — one verdict per rule
 
-This class is PRIMARY owner of `check_slides.md`: exactly one entry per numbered rule, no omission. Rule 7's sub-items aggregate into one rule-7 entry; list each sub-item hit in evidence. Count rules before emitting; entries must equal that count.
+The finished merged instance must cover every owned numbered rule. Author rows only for rules present in your class brief; `prefill-instance.js --merge` supplies the rules the brief omitted. Validate completeness after the merge, never by re-deriving omitted rules.
+
+This class is PRIMARY owner of `check_slides.md`: exactly one entry per numbered rule in the finished instance, no omission. Rule 7's sub-items aggregate into one rule-7 entry; list each sub-item hit in evidence. Count rules after merging; the finished instance's entries must equal that count.
 
 ## Output format
 

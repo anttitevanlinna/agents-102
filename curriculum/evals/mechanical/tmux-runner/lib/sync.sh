@@ -10,6 +10,19 @@
 #     matching .done file with a timeout.
 set -euo pipefail
 
+# Pin a UTF-8 locale for the runner and everything it launches. Pane scrapes
+# match multibyte status glyphs (✻ ✳ …); under a C/POSIX caller (Codex's
+# default shell) byte-wise matching made pane_busy blind and turns advanced
+# early. The caller's shell must not decide what the runner can see.
+if [[ "$(locale charmap 2>/dev/null)" != "UTF-8" ]]; then
+  for _l in en_US.UTF-8 C.UTF-8; do
+    if [[ "$(LC_ALL=$_l locale charmap 2>/dev/null)" == "UTF-8" ]]; then
+      export LC_ALL=$_l LANG=$_l; break
+    fi
+  done
+  unset _l
+fi
+
 # wait_for_turn's deadline needs both clocks; turn-budget.sh owns the rule.
 # Sourced here rather than left to each runner: sync.sh is what actually calls
 # wait_expired, and a runner that forgot the source would fail at the deadline
@@ -205,7 +218,9 @@ pane_busy() {
   # ("✳ Noodling… (running Stop hooks…)", "· Transmuting…") or says background
   # agents are pending. A finished turn ends "✻ <Verb> for Ns · done".
   local last
-  last="$(printf '%s\n' "$1" | grep -E '^[·✢✳✶✻✽*] ' | tail -1)"
+  # alternation, not a bracket: a bracket of multibyte glyphs matches one
+  # BYTE where the locale isn't UTF-8
+  last="$(printf '%s\n' "$1" | grep -E '^(·|✢|✳|✶|✻|✽|\*) ' | tail -1)"
   [[ -z "$last" ]] && return 1
   [[ "$last" =~ ^[^[:space:]]+\ [^[:space:]]+… ]] && return 0
   [[ "$last" =~ Waiting\ for\ [0-9]+\ background\ agents?\ to\ finish ]]

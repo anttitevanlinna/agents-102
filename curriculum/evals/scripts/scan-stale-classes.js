@@ -628,6 +628,6 @@ function main(argv) {
   process.exit(2)
 }
 
-module.exports = { gitIo, requireIo, findingIndex, resetFindingIndex, parseHunks, buildLineMeta, changeTags, extractPins, judgesRow, blockRow, promptKeys, filterItems, scanFile, typeOf, trainingOf, linkFinder, CLASSES, EXTRA_CLASSES, crossRow, panelRow, crossState, panelState }
+module.exports = { TRAINING_PREFIX, gitIo, requireIo, findingIndex, resetFindingIndex, parseHunks, buildLineMeta, changeTags, extractPins, judgesRow, blockRow, promptKeys, filterItems, scanFile, typeOf, trainingOf, linkFinder, CLASSES, EXTRA_CLASSES, crossRow, panelRow, crossState, panelState }
 
 if (require.main === module) main(process.argv.slice(2))

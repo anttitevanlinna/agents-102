@@ -275,7 +275,23 @@ function main(argv) {
   const types = (arg('--type', null) || '').split(',').filter(Boolean)
   const io = makeIo(repo)
 
+  // A key that names no training scans nothing and would read as a clean board.
+  if (want !== 'all') {
+    const { TRAINING_PREFIX } = require('./scan-stale-classes.js')
+    const dir = path.join(repo, 'curriculum', 'trainings')
+    const known = fs.readdirSync(dir).filter(d => fs.statSync(path.join(dir, d)).isDirectory()).map(d => TRAINING_PREFIX[d] || d)
+    if (!known.includes(want)) {
+      process.stderr.write(`eval-queue: unknown training "${want}". Known: ${known.join(', ')}\n`)
+      process.exitCode = 2
+      return
+    }
+  }
+
   let { items, scope, unowned, unreadable, scanned } = collect(repo, io, want)
+  if (!scanned) {
+    process.stderr.write(`eval-queue: 0 surfaces scanned for "${want}" — nothing to judge is not a clean board\n`)
+    process.exitCode = 1
+  }
   if (types.length) items = items.filter(it => types.includes(it.type))
   if (reason) {
     items = items

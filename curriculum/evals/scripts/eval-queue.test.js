@@ -280,4 +280,25 @@ test('collect: `scanned` counts the wanted training, not the whole universe', ()
     'a surface owned by another training must not be counted')
 })
 
+// An unknown training, or a known one with nothing to judge, is not a clean board.
+{
+  const { spawnSync } = require('node:child_process')
+  const repo = path.resolve(__dirname, '../../..')
+  const q = t => spawnSync('node', [path.join(__dirname, 'eval-queue.js'), '--training', t], { cwd: repo, encoding: 'utf8' })
+  test('unknown training exits non-zero and names the known ones', () => {
+    const r = q('does-not-exist')
+    assert.notStrictEqual(r.status, 0)
+    assert.match(r.stderr, /unknown training/)
+    assert.match(r.stderr, /ae101/)
+  })
+  test('a training with zero surfaces exits non-zero', () => {
+    const r = q('engineering-management')
+    assert.notStrictEqual(r.status, 0)
+    assert.match(r.stderr, /0 surfaces/)
+  })
+  test('a real training still exits 0', () => {
+    assert.strictEqual(q('ae101').status, 0)
+  })
+}
+
 console.log(`\n1..${n}`)

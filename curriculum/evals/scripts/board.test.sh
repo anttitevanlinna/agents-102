@@ -86,5 +86,12 @@ bare="$(grep -n 'SCOPE\[@\]' board.sh | grep -v 'SCOPE\[@\]+' || true)"
 $bare"
 ok "every SCOPE expansion carries the empty-array guard"
 
+# A training key that scans nothing must not print "gates clean".
+out="$(bash ./board.sh --training does-not-exist --gate 2>&1)"; rc=$?
+[ "$rc" -ne 0 ] || die "board --gate on an unknown training exited 0:
+$(printf '%s\n' "$out" | tail -5)"
+case "$out" in *"gates clean"*) die "board printed gates clean for an unknown training" ;; esac
+ok "unknown training fails the board"
+
 echo
 echo "1..$n"

@@ -84,6 +84,13 @@ gate() {
 # training — the three have independent histories and one must not hold another
 # hostage — so with no --training there is nothing to check rather than
 # everything.
+# The queue above is a report and never gates, so a key naming no training (or
+# one with nothing to judge) scanned nothing and still read "gates clean".
+if [ -n "$TRAINING" ]; then
+  gate "TRAINING SCOPE — the key names a training with surfaces" 2 \
+    node curriculum/evals/scripts/eval-queue.js --training "$TRAINING" --json
+fi
+
 if [ -n "$TRAINING" ]; then
   gate "INSTANCE SCHEMA — counts against the ledgers beneath them" all \
     node curriculum/evals/scripts/check-instance-schema.js --training "$TRAINING"

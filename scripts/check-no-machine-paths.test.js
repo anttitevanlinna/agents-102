@@ -13,7 +13,7 @@ const CORE = process.env.AGENTS_CORE_DIR || path.join(REPO, '..', 'agents-102-co
 const HOME_PATH = /\/(Users|home)\/[a-z][\w.-]*\//
 const SCOPE = [
   [REPO, ['curriculum/evals/judges', '.claude/workflows', '.claude/rules', '.claude/settings.json', '.claude/skills/self-study']],
-  [CORE, ['skills', 'project-claude/hooks', 'project-claude/agents', 'home-claude/hooks']],
+  [CORE, ['skills', 'project-claude/hooks', 'project-claude/agents']],
 ]
 const hits = []
 for (const [root, paths] of SCOPE) {

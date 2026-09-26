@@ -4,7 +4,7 @@ const assert = require('node:assert/strict')
 const { resolve } = require('./check-hook-paths.js')
 
 test('resolve: project dir expands', () => {
-  assert.equal(resolve('$CLAUDE_PROJECT_DIR/scripts/fire-log.sh', '/r'), '/r/scripts/fire-log.sh')
+  assert.equal(resolve('$CLAUDE_PROJECT_DIR/scripts/some-hook.sh', '/r'), '/r/scripts/some-hook.sh')
 })
 
 test('resolve: AGENTS_CORE_DIR default is what a fresh clone gets', () => {

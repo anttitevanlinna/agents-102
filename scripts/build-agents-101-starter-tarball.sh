@@ -151,8 +151,12 @@ cp site/clients/_starter/agents-101/theory-handbook.html "$ROOT/agents-101-handb
 
 # Build tarball from inside ROOT so the archive has prework/, module-4/policies/,
 # memory/, sources/, agents/, .claude/ at the top level (no wrapper).
+# The stage lives under mktemp, so every copy and generated handbook otherwise
+# gives the archive a new set of mtimes. Normalize those and suppress gzip's own
+# timestamp so unchanged inputs produce byte-identical customer artifacts.
+find "$ROOT" -exec touch -t 200001010000 {} +
 rm -f "$OUT"
-(cd "$ROOT" && tar czf "$OUT" .)
+(cd "$ROOT" && COPYFILE_DISABLE=1 tar cf - .) | gzip -n > "$OUT"
 
 # Sanity-check expected paths.
 echo "Built $OUT"

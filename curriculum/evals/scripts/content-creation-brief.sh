@@ -151,6 +151,7 @@ else
   echo
   echo "**Training:** $TRAINING"
   echo "**Voice:** $VOICE"
+  echo "**Strategy doc:** $STRATEGY"
   echo "**Big Idea:** $BIG_IDEA"
   echo
   echo "**Mood contract:**"

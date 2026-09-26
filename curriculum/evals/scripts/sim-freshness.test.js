@@ -317,3 +317,76 @@ test('moodExemptions reads the persona-array shape too', () => {
   })
   assert.deepStrictEqual(exempt.map(e => e.at), ['phase 1: Fork'])
 })
+
+// Target scope (migration ledger: inherited sim-cache debt vs target gates).
+// The Acme persona trace was fresh, yet the global freshness exit code stayed
+// red on dozens of unrelated stale traces, so a customer-scoped run had no
+// release signal. --file gates only the named targets, and fails closed on the
+// target itself: a trace its verdict relies on that is missing counts, and a
+// target the repo does not have stops the run rather than passing empty.
+function targetRepo() {
+  const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'simtarget-'))
+  const put = (rel, text) => { fs.mkdirSync(path.join(repo, path.dirname(rel)), { recursive: true }); fs.writeFileSync(path.join(repo, rel), text) }
+  const A = 'curriculum/trainings/agentic-engineering-101/a.md'
+  const B = 'curriculum/trainings/agentic-engineering-101/b.md'
+  put(A, '# A\n'); put(B, '# B\n')
+  put('curriculum/evals/instances/ae101--module--a.story.json', '{"class":"story"}')
+  put('curriculum/evals/instances/ae101--module--a.behavior.json', '{"class":"behavior","verdict":"N/A","trace_status":"no_prompts"}')
+  put('curriculum/evals/instances/ae101--module--b.story.json', '{"class":"story"}')
+  put('curriculum/evals/sim-cache/ae101--module--a.persona.json', JSON.stringify({ content_sha: sha256('# A\n') }))
+  put('curriculum/evals/sim-cache/ae101--module--b.persona.json', JSON.stringify({ content_sha: sha256('old') }))
+  return { repo, A, B, put }
+}
+const SCRIPT = path.join(__dirname, 'sim-freshness.js')
+const gate = (repo, ...files) => {
+  try { execFileSync('node', [SCRIPT, '--repo', repo, '--gate', ...files.flatMap(f => ['--file', f])], { stdio: 'pipe' }); return 0 }
+  catch (e) { return e.status }
+}
+
+test('--file gates only its targets: a fresh target passes beside unrelated stale debt', () => {
+  const { repo, A } = targetRepo()
+  assert.strictEqual(gate(repo, A), 0)
+  try { execFileSync('node', [SCRIPT, '--repo', repo, '--gate'], { stdio: 'pipe' }); assert.fail('global gate should see the debt') } catch (e) { assert.strictEqual(e.status, 1) }
+})
+
+test('--file fails on a stale target trace', () => {
+  const { repo, A, B } = targetRepo()
+  assert.strictEqual(gate(repo, A, B), 1)
+})
+
+test('--file fails when a verdict relies on a trace that does not exist', () => {
+  const { repo, A } = targetRepo()
+  fs.rmSync(path.join(repo, 'curriculum/evals/sim-cache/ae101--module--a.persona.json'))
+  assert.strictEqual(gate(repo, A), 1)
+  const { targetRows } = require('./sim-freshness.js')
+  const row = targetRows(repo, [A]).find(r => r.cls === 'persona')
+  assert.strictEqual(row.verdict, 'missing')
+})
+
+test('--file fails on a target nobody has judged for story', () => {
+  const { repo, put } = targetRepo()
+  const C = 'curriculum/trainings/agentic-engineering-101/c.md'
+  put(C, '# C\n')
+  assert.strictEqual(gate(repo, C), 1)
+})
+
+test('--file owes no behavior trace for a prompt-less N/A verdict', () => {
+  const { repo, A } = targetRepo()
+  const { targetRows } = require('./sim-freshness.js')
+  assert.deepStrictEqual(targetRows(repo, [A]).map(r => [r.cls, r.verdict]), [['persona', 'fresh']])
+})
+
+test('--file on a path the repo does not have stops the run', () => {
+  const { repo } = targetRepo()
+  assert.strictEqual(gate(repo, 'curriculum/lectures/nope.md'), 2)
+})
+
+test('--file on a training module owes only that training\'s traces, not a same-slug module elsewhere', () => {
+  const { repo, A, put } = targetRepo()
+  put('curriculum/trainings/agents-101/a.md', '# other A\n')
+  put('curriculum/evals/instances/agents-101--module--a.story.json', '{"class":"story"}')
+  put('curriculum/evals/sim-cache/agents-101--module--a.persona.json', JSON.stringify({ content_sha: sha256('stale') }))
+  const { targetRows } = require('./sim-freshness.js')
+  assert.deepStrictEqual(targetRows(repo, [A]).map(r => r.name), ['ae101--module--a.persona.json'])
+  assert.strictEqual(gate(repo, A), 0)
+})

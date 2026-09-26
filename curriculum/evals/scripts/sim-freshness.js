@@ -35,14 +35,16 @@
  *                                                  [--class behavior|persona]
  *                                                  [--verdict stale,unanchored]
  *                                                  [--json] [--gate] [--repo <path>]
+ *                                                  [--file <path> ...]   target scope
  * Exit 0 always, unless --gate, which exits 1 when anything is stale or
- * unanchored. Report tool by default; gate only when a caller asks to be gated.
+ * unanchored. With --file, --gate exits 1 unless every trace the targets'
+ * verdicts rely on is fresh (missing counts), and 2 on a target that does not exist. Report tool by default; gate only when a caller asks to be gated.
  */
 const fs = require('node:fs')
 const path = require('node:path')
 const crypto = require('node:crypto')
 const { buildUniverse } = require('./eval-queue.js')
-const { trainingOf, typeOf, linkFinder } = require('./scan-stale-classes.js')
+const { trainingOf, typeOf, linkFinder, instanceKey } = require('./scan-stale-classes.js')
 
 const SIM_DIR = 'curriculum/evals/sim-cache'
 const NAME_RE = /^(.+)\.(behavior|persona)\.json$/
@@ -178,6 +180,54 @@ function collect(repo, want) {
   return rows
 }
 
+// Target scope. The global report carries every trace in the cache, and most
+// of them are cache state — a stale trace is still reusable per phase/prompt,
+// and a judge regenerates it when it next fires. That makes the global exit
+// code no release signal for a run that touched three files. `--file` asks
+// the release question for its targets only, and fails closed on them: each
+// story verdict relies on a persona trace and each behavior verdict (unless
+// N/A on a prompt-less file) on a behavior trace, so a missing one is a row,
+// and a target with no story verdict at all has not been judged. A shared
+// file judged under several trainings owes a trace for each instance.
+function targetRows(repo, files) {
+  const instDir = path.join(repo, 'curriculum/evals/instances')
+  let instances = []
+  try { instances = fs.readdirSync(instDir) } catch {}
+  const rows = []
+  for (const rel of files) {
+    if (!fs.existsSync(path.join(repo, rel))) {
+      const e = new Error(`no such target: ${rel}`); e.code = 'NO_TARGET'; throw e
+    }
+    const body = fs.readFileSync(path.join(repo, rel), 'utf8')
+    const surface = typeOf(rel) || 'file'
+    const base = path.basename(rel, '.md')
+    // A training's own file is judged only under that training; a same-slug
+    // module in another training is a different file. Shared files keep every owner.
+    const owner = (rel.match(/curriculum\/trainings\/([^/]+)\//) || [])[1]
+    const prefix = owner ? `${instanceKey(owner)}--` : ''
+    const judged = cls => instances.filter(f => f.startsWith(prefix) && f.endsWith(`--${surface}--${base}.${cls}.json`))
+    const stories = judged('story')
+    if (!stories.length) rows.push({ name: `${base} (story)`, cls: 'persona', file: rel, verdict: 'missing', note: 'no story verdict for this target — it has not been judged' })
+    for (const [cls, suffix, list] of [['story', 'persona', stories], ['behavior', 'behavior', judged('behavior')]]) {
+      for (const inst of list) {
+        if (cls === 'behavior') {
+          let rec = {}
+          try { rec = JSON.parse(fs.readFileSync(path.join(instDir, inst), 'utf8')) } catch {}
+          if (rec.verdict === 'N/A' || rec.trace_status === 'no_prompts') continue
+        }
+        const name = inst.replace(new RegExp(`\\.${cls}\\.json$`), `.${suffix}.json`)
+        const tracePath = path.join(repo, SIM_DIR, name)
+        if (!fs.existsSync(tracePath)) { rows.push({ name, cls: suffix, file: rel, verdict: 'missing', note: `the ${cls} verdict relies on a trace that does not exist` }); continue }
+        let trace
+        try { trace = JSON.parse(fs.readFileSync(tracePath, 'utf8')) }
+        catch (e) { rows.push({ name, cls: suffix, file: rel, verdict: 'unresolved', note: `unparseable: ${e.message.slice(0, 60)}` }); continue }
+        rows.push({ name, cls: suffix, file: rel, generated_at: (trace.generated_at || '').slice(0, 10) || null, ...classify(trace, body) })
+      }
+    }
+  }
+  return rows
+}
+
 // Persona traces only: a behavior trace reasons about Claude's response
 // distribution and scores no mood.
 // `personas` ships in two shapes and the difference is not cosmetic: an array
@@ -307,7 +357,16 @@ function main(argv) {
   const verdicts = (arg('--verdict', null) || '').split(',').filter(Boolean)
   const bar = Number(arg('--bar', 8))
 
-  let rows = collect(repo, want)
+  const targets = argv.flatMap((a, i) => (a === '--file' && argv[i + 1] ? [argv[i + 1]] : []))
+  let rows
+  if (targets.length) {
+    try { rows = targetRows(repo, targets) }
+    catch (e) { if (e.code !== 'NO_TARGET') throw e; process.stderr.write(`sim-freshness: ${e.message}\n`); process.exit(2) }
+    if (argv.includes('--gate') && rows.some(r => r.verdict !== 'fresh')) {
+      if (!argv.includes('--json')) process.stdout.write(render(rows, `${targets.length} target(s)`) + '\n')
+      process.exit(1)
+    }
+  } else rows = collect(repo, want)
   if (cls) rows = rows.filter(r => r.cls === cls)
   if (verdicts.length) rows = rows.filter(r => verdicts.includes(r.verdict))
 
@@ -320,6 +379,6 @@ function main(argv) {
   if (argv.includes('--gate') && rows.some(r => r.verdict === 'stale' || r.verdict === 'unanchored')) process.exit(1)
 }
 
-module.exports = { collect, classify, slugIndex, resolveSlug, moodBeats, moodExemptions }
+module.exports = { collect, targetRows, classify, slugIndex, resolveSlug, moodBeats, moodExemptions }
 
 if (require.main === module) main(process.argv.slice(2))

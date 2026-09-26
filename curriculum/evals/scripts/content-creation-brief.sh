@@ -62,6 +62,9 @@ case "$TRAINING" in
   ae101)
     VOICE="AE101 voice quintet: Boris (platform truth) × Roger Martin (frame-and-alternative) × Godin (peer warmth) × Sutherland (counterintuitive reframe) × Siilasmaa (optimistic action). Audience: software engineer IC."
     ;;
+  claude-basics|engineering-management)
+    VOICE="Per the training's strategy doc (STRATEGY DOC below): its voice and audience sections."
+    ;;
   shared)
     VOICE="Shared library — voice depends on consuming training. Default to Agents 101 voice trio unless training context indicates otherwise."
     ;;
@@ -100,18 +103,21 @@ MOOD=$(awk '
 # Heuristic: every student-facing file loads writing + student_facing + strategy_tie_in.
 # Files with **Prompt** blocks (inline) OR {{prompt:<key>}} markers (post-
 # migration registry references) also load prompts. Lectures also load lectures.
-COMPENDIUMS="check_writing.md, check_student_facing.md, check_strategy_tie_in.md"
+SURFACES="writing student_facing strategy_tie_in"
 if grep -qE '^\*\*Prompt\*\*|\{\{prompt:[a-z0-9-]+\}\}' "$FILE" 2>/dev/null; then
-  COMPENDIUMS+=", check_prompts.md"
+  SURFACES+=" prompts"
 fi
 case "$FILE" in
-  *curriculum/lectures/*) COMPENDIUMS+=", check_lectures.md" ;;
+  *curriculum/lectures/*) SURFACES+=" lectures" ;;
 esac
+# Writers read the T1 rule index per surface; the full check_*.md (T3) is the judges' tier.
+INDEXES=""
+for sf in $SURFACES; do INDEXES+="${INDEXES:+, }$CORE_MEM/_index/$sf.leads.md"; done
 
 # ---- Hard-rule preamble -------------------------------------------------
 HARD_RULES=$(cat <<'EOF'
 1. Read `.claude/rules/content-rules.md` (repo root) FIRST. It routes you to the right compendiums for this surface.
-2. Read each compendium named below on demand (do not bulk-load).
+2. Read each T1 rule index named below before writing. For any ⚠ rule you are about to act on, load its full text: `node curriculum/evals/scripts/rule.js <surface> <N>`. Never load a full `check_*.md` to write prose; that tier is for judges.
 3. Body region only. Do NOT edit content inside fenced code-block prompts unless the brief explicitly authorizes it. The mechanical battery extracts those prompts; touching them rots transcripts.
 4. Do NOT touch the maintainer-block Quality line. The orchestrator stamps it via update-quality.sh after eval re-fire.
 5. Do NOT touch any Debrief prompt or its body callout — behavior-class blockers there are intentional residual per memory/compounded/2026-05-02-pedagogy-debrief-prompts-residual-med-risk-by-design.md.
@@ -138,8 +144,7 @@ BIG IDEA: $BIG_IDEA
 MOOD CONTRACT:
 $MOOD
 
-SURFACE COMPENDIUMS: $COMPENDIUMS
-(at $CORE_MEM/)
+RULE INDEXES (T1): $INDEXES
 
 HARD RULES (read these BEFORE editing):
 $HARD_RULES
@@ -157,7 +162,7 @@ else
   echo "**Mood contract:**"
   echo "$MOOD"
   echo
-  echo "**Compendiums in scope:** $COMPENDIUMS"
+  echo "**Rule indexes (T1):** $INDEXES"
   echo
   echo "**Hard rules:**"
   echo "$HARD_RULES"

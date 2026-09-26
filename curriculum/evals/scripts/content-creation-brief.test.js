@@ -24,3 +24,17 @@ for (const [file, doc] of [
   assert.ok(fs.existsSync(path.join(CORE, 'strategy', doc)), `${doc} missing in core`)
 }
 console.log('content-creation-brief: strategy doc per training')
+
+// Writers read T1 rule indexes, never the full compendiums (T3 = judges only).
+{
+  const out = brief('curriculum/trainings/agentic-engineering-101/getting-going.md')
+  assert.ok(out.includes(path.join(CORE, 'memory', '_index', 'writing.leads.md')), 'brief names the T1 writing index')
+  assert.ok(!/Read each compendium/.test(out), 'brief must not send a writer to the full compendiums')
+}
+// Every training directory is recognised: strategy doc and a voice line, never "unrecognized".
+{
+  const out = brief('curriculum/trainings/engineering-management/case-library.md')
+  assert.ok(out.includes(path.join(CORE, 'strategy', 'content-strategy-engineering-management.md')), 'EM strategy doc')
+  assert.ok(!/unrecognized training/.test(out), 'EM voice line is not "unrecognized"')
+}
+console.log('content-creation-brief: T1 indexes; every training recognised')

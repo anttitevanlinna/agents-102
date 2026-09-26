@@ -748,6 +748,19 @@ test('a non-variant training still numbers by position', () => {
   assert.equal(moduleNumber('agentic-engineering-101', 'prework'), '00');
 });
 
+// A training's payload is declared on its registry entry, so registering a new
+// training with a tarball needs no branch in the build.
+test('payload tarballs come from the registry, not a per-training branch', () => {
+  for (const [key, t] of Object.entries(TRAININGS)) {
+    if (!t.tarball) continue;
+    assert.match(t.tarball.name, /\.tar\.gz$/, key);
+    assert.ok(fs.existsSync(path.join(__dirname, '..', t.tarball.script)), `${key}: ${t.tarball.script}`);
+  }
+  assert.ok(TRAININGS['agentic-engineering-101'].tarball, 'AE101 ships a tarball');
+  const src = fs.readFileSync(path.join(__dirname, 'build-workbook.js'), 'utf8');
+  assert.doesNotMatch(src, /contentKey === '/, 'no per-training branch in the build');
+});
+
 // The nav chip is the surface where the collision was visible. It must read the
 // ordinal, not the loop index.
 test('workbook top nav chips are built from the inherited ordinal', () => {

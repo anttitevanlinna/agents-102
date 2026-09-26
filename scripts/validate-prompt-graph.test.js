@@ -96,3 +96,13 @@ test('live Agents 101 graph declares the load-bearing prompt handoffs', () => {
     );
   }
 });
+
+// The build validates every training that owns content, read off the registry,
+// so a newly registered training is checked without editing a list.
+test('compile-prompts validates the graph of every content-owning training', () => {
+  const { graphTrainings } = require('./compile-prompts.js');
+  assert.deepEqual(
+    graphTrainings({ a: {}, b: { status: 'draft' }, c: { contentKey: 'a' } }),
+    [{ key: 'a', blocking: true }, { key: 'b', blocking: false }]
+  );
+});

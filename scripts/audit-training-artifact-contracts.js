@@ -30,21 +30,6 @@ const PRODUCER_RE = /\b(author|build|commit|copy|create|cut|end with|fork|instal
 const CONSUMER_RE = /\b(against|bring|consume|consumed by|find|invoke|load|loads|open|opens|read|reads|re-read|re-reads|use|uses|walk|walks)\b/i;
 const SESSION_DECL_RE = /^\*\*Session\*\*\s*\*\(([^,]+),\s*"([^"]*)"\)\*/;
 
-const TRAINING_CONFIGS = {
-  'agentic-engineering-101': {
-    title: 'AE101',
-    stages: [
-      { slug: 'prework', title: 'Prework', index: 0 },
-    ],
-  },
-  'agents-101': {
-    title: 'Agents 101',
-    stages: [
-      { slug: 'prework', title: 'Prework', index: 0 },
-    ],
-  },
-};
-
 const DETECTORS = [
   {
     id: 'claude-local',
@@ -636,13 +621,12 @@ function stageLabel(stage) {
 }
 
 function buildAudit(trainingSlug) {
-  const config = TRAINING_CONFIGS[trainingSlug];
-  if (!config) throw new Error(`No audit config for training: ${trainingSlug}`);
   const training = TRAININGS[trainingSlug];
   if (!training) throw new Error(`Unknown training: ${trainingSlug}`);
+  const stages = training.prework ? [{ slug: training.prework.slug, title: 'Prework', index: 0 }] : [];
 
   const modules = [
-    ...config.stages.map((stage) => ({
+    ...stages.map((stage) => ({
       ...stage,
       file: stageFile(trainingSlug, stage.slug),
     })),
@@ -723,7 +707,7 @@ function buildAudit(trainingSlug) {
 
   return {
     training: trainingSlug,
-    trainingTitle: config.title,
+    trainingTitle: training.label,
     modules,
     contracts,
     mentions,

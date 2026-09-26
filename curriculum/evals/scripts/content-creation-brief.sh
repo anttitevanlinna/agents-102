@@ -23,23 +23,20 @@ RAW=0
 [[ "${2:-}" == "--raw" ]] && RAW=1
 
 # ---- Detect training -----------------------------------------------------
+# The key is the directory under curriculum/trainings/, so a new training needs
+# no edit here. Its strategy doc is content-strategy-<key>.md in core; Agents 101
+# predates the convention and keeps the unsuffixed name.
 case "$FILE" in
-  *curriculum/trainings/agents-101/*)              TRAINING="agents-101" ;;
-  *curriculum/trainings/agentic-engineering-101/*) TRAINING="ae101" ;;
-  *curriculum/trainings/claude-basics/*)           TRAINING="claude-basics" ;;
-  *curriculum/trainings/engineering-management/*)  TRAINING="engineering-management" ;;
-  *curriculum/trainings/*)                         TRAINING="other-training" ;;
+  *curriculum/trainings/*/*)
+    TRAINING="${FILE##*curriculum/trainings/}"; TRAINING="${TRAINING%%/*}" ;;
   *curriculum/exercises/*|*curriculum/lectures/*)  TRAINING="shared" ;;
   *) TRAINING="unknown" ;;
 esac
 
-# ---- Strategy doc per training (agents-102-core/strategy/) ---------------
 case "$TRAINING" in
-  agents-101)             STRATEGY="$CORE_DIR/strategy/content-strategy.md" ;;
-  ae101)                  STRATEGY="$CORE_DIR/strategy/content-strategy-agentic-engineering-101.md" ;;
-  claude-basics)          STRATEGY="$CORE_DIR/strategy/content-strategy-claude-basics.md" ;;
-  engineering-management) STRATEGY="$CORE_DIR/strategy/content-strategy-engineering-management.md" ;;
-  *)                      STRATEGY="(shared file: the consuming training's doc in $CORE_DIR/strategy/)" ;;
+  agents-101)     STRATEGY="$CORE_DIR/strategy/content-strategy.md" ;;
+  shared|unknown) STRATEGY="(shared file: the consuming training's doc in $CORE_DIR/strategy/)" ;;
+  *)              STRATEGY="$CORE_DIR/strategy/content-strategy-$TRAINING.md" ;;
 esac
 
 # ---- Voice contract per training ----------------------------------------
@@ -47,17 +44,17 @@ case "$TRAINING" in
   agents-101)
     VOICE="Agents 101 voice trio: Godin (peer warmth) × Sutherland (counterintuitive reframe) × Siilasmaa (optimistic action). Audience: builder leader (CTO/CEO/SVP), not engineers. NOT Boris-flat, NOT Martin-deck."
     ;;
-  ae101)
+  agentic-engineering-101)
     VOICE="AE101 voice quintet: Boris (platform truth) × Roger Martin (frame-and-alternative) × Godin (peer warmth) × Sutherland (counterintuitive reframe) × Siilasmaa (optimistic action). Audience: software engineer IC."
-    ;;
-  claude-basics|engineering-management)
-    VOICE="Per the training's strategy doc (STRATEGY DOC below): its voice and audience sections."
     ;;
   shared)
     VOICE="Shared library — voice depends on consuming training. Default to Agents 101 voice trio unless training context indicates otherwise."
     ;;
-  *)
+  unknown)
     VOICE="(unrecognized training path; check $FILE location)"
+    ;;
+  *)
+    VOICE="Per the training's strategy doc (STRATEGY DOC below): its voice and audience sections."
     ;;
 esac
 

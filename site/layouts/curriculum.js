@@ -20,6 +20,8 @@
     var TRAININGS = {
         'agents-101': {
             label: 'Agents 101',
+            // Starter skeleton, extracted in place into the student's working folder.
+            tarball: { name: 'agents-101-starter.tar.gz', script: 'scripts/build-agents-101-starter-tarball.sh' },
             lede: 'Eight modules. The chat-to-systems leap. Build real *agents* on your own company content.',
             prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
             modules: [
@@ -46,6 +48,9 @@
         'agentic-engineering-101': {
             label: 'Agentic Engineering 101',
             evalKey: 'ae101',         // instance/trace filename prefix
+            // Content tarball; its name is owned by training-architecture.md
+            // § Material distribution.
+            tarball: { name: 'ae101-content.tar.gz', script: 'scripts/build-ae101-content-tarball.sh' },
             lede: 'Six modules for software engineers. Become the Claude wizard by learning the new loop and finding your habit.',
             prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
             modules: [

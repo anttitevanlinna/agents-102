@@ -1231,15 +1231,6 @@ function parseCli(argv) {
   return { customer: customer, trainings: trainings };
 }
 
-// Tarball filenames per training. AE101's name is owned by
-// curriculum/trainings/agentic-engineering-101/training-architecture.md
-// § Material distribution. Rename there first; this map and downstream
-// consumers follow.
-const TARBALLS = {
-  'agentic-engineering-101': 'ae101-content.tar.gz',
-  'agents-101': 'agents-101-starter.tar.gz',
-};
-
 // Where the payload is served from. A customer publishing on their own estate
 // serves the workbook internally, and a payload host they cannot change means
 // every student's prework reaches out to a vendor endpoint from a managed
@@ -1259,47 +1250,25 @@ function payloadUrl(urlKey, customer, tarName) {
 }
 
 function buildPayload(contentKey, customer, urlKey, outDir) {
-  // AE101 + Agents 101 each ship a tarball alongside that training's workbook.
-  // The payload URL is training-scoped so one customer can host multiple
-  // trainings without the two tarballs overwriting each other. contentKey
+  // A training ships a tarball alongside its workbook when its registry entry
+  // declares one. The payload URL is training-scoped so one customer can host
+  // multiple trainings without the tarballs overwriting each other. contentKey
   // selects which tarball to build (a variant reuses its parent's content);
   // urlKey is the output-path segment (the variant's own dir under the customer).
   //
-  // AE101      — content tarball (lectures/exercises/reference/supplementary/skills;
-  //                               extracted at ~/Documents/ae101-content/)
-  // Agents 101 — starter tarball  (empty working-folder skeleton; extracts in-place
-  //                                into the student's connected/working folder at
-  //                                ~/Documents/agents-101/)
-  if (contentKey === 'agentic-engineering-101') {
-    const tarName = TARBALLS[contentKey];
-    console.log('Building content tarball...');
-    // Straight into this build's own output dir: a shared repo-root file raced
-    // between parallel builds.
-    const tarDst = path.join(outDir, tarName);
-    execFileSync('scripts/build-ae101-content-tarball.sh', [tarDst], { cwd: ROOT, stdio: 'inherit' });
-    const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
-    console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
-    return payloadUrl(urlKey, customer, tarName);
-  }
-
-  if (contentKey === 'agents-101') {
-    const tarName = TARBALLS[contentKey];
-    console.log('Building Agents 101 starter tarball...');
-    const tarDst = path.join(outDir, tarName);
-    execFileSync('scripts/build-agents-101-starter-tarball.sh', [tarDst], { cwd: ROOT, stdio: 'inherit' });
-    // Agents 101 is dual-runtime; Cowork's outbound network allowlist blocks
-    // both bosser.consulting and raw.githubusercontent.com (only objects.gh +
-    // S3 + a few others reachable). The fallback for Cowork is browser-download
-    // into the working folder — the student's browser is unconstrained by
-    // Cowork's proxy, so any HTTPS URL the workbook itself loads from works.
-    // Step 1 is forked: Code uses `curl + tar`; Cowork uses browser-download +
-    // extract-only prompt. Same URL, different transport.
-    const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
-    console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
-    return payloadUrl(urlKey, customer, tarName);
-  }
-
-  return null;
+  // Agents 101 is dual-runtime; Cowork's outbound network allowlist blocks
+  // both bosser.consulting and raw.githubusercontent.com, so Cowork students
+  // download the same URL in the browser and extract it with a prompt.
+  const tarball = (CR.TRAININGS[contentKey] || {}).tarball;
+  if (!tarball) return null;
+  console.log(`Building ${tarball.name}...`);
+  // Straight into this build's own output dir: a shared repo-root file raced
+  // between parallel builds.
+  const tarDst = path.join(outDir, tarball.name);
+  execFileSync(tarball.script, [tarDst], { cwd: ROOT, stdio: 'inherit' });
+  const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
+  console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
+  return payloadUrl(urlKey, customer, tarball.name);
 }
 
 function buildTraining(customer, trainingKey, opts = {}) {

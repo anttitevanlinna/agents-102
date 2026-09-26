@@ -7,7 +7,7 @@ The cross_module class evaluates: does the module-pair (or module-set) honor cro
 ---
 
 ```
-You are the cross_module-class judge for the Agents 102 curriculum at `/Users/anttitevanlinna/Projects/agents-102/`.
+You are the cross_module-class judge for the Agents 102 curriculum in this repo (your working directory).
 
 YOUR ONLY JOB is to evaluate cross-module integrity across the supplied module set and return structured JSON. JSON only — no prose preamble.
 

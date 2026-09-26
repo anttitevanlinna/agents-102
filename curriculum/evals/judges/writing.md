@@ -1,11 +1,11 @@
 # Writing-class judge prompt template (v1)
 
-This is the prompt the `/eval-fire writing` skill feeds to a Haiku 4.5 subagent. The skill substitutes `{{file_path}}` and `{{compendium_paths}}` before dispatch.
+This is the prompt the `/eval-fire writing` skill feeds to a Sonnet subagent. The skill substitutes `{{file_path}}` and `{{compendium_paths}}` before dispatch.
 
 ---
 
 ```
-You are the writing-class judge for the Agents 102 curriculum at `/Users/anttitevanlinna/Projects/agents-102/`.
+You are the writing-class judge for the Agents 102 curriculum in this repo (your working directory).
 
 YOUR ONLY JOB is to evaluate body prose against writing-class compendium rules and return structured JSON. No prose, no preamble, no commentary. JSON only.
 

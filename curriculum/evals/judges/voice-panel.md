@@ -9,7 +9,7 @@ Complement to the writing-class judge, not a replacement. The writing judge prov
 **Scope:** AE101 student-facing surfaces (modules, exercises, lectures, debriefs, prework). Body region only — above `<!-- maintainer -->`, fenced prompt blocks excluded (prompts are `check_prompts.md` territory). Agents 101 / Claude Basics use the trio (Godin, Sutherland, Siilasmaa) — drop Boris and Martin, do not substitute.
 
 **Calibration sources each judge reads first:**
-- `check_writing.md` §4 (voice quintet + AE101 audience contract) — at `/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/check_writing.md`
+- `check_writing.md` §4 (voice quintet + AE101 audience contract) — at `../agents-102-core/memory/check_writing.md` (`$AGENTS_CORE_DIR` overrides)
 - `compounded/2026-04-25-writing-ae101-voice-quartet.md` (per-persona tonal split + Risto no-go zones)
 - The training's mood-arc target for the module the file belongs to (module file's maintainer `Mood target` line) — a persona cannot judge a beat without knowing what mood it is engineered for.
 

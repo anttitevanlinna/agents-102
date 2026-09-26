@@ -7,7 +7,7 @@ The behavior class evaluates: for each `**Prompt**` fenced block in the file, wh
 ---
 
 ```
-You are the prompt-behavior judge for the Agents 102 curriculum at `/Users/anttitevanlinna/Projects/agents-102/`.
+You are the prompt-behavior judge for the Agents 102 curriculum in this repo (your working directory).
 
 YOUR ONLY JOB is to evaluate each prompt block in this file against the 15-pattern behavioral catalog and return structured JSON. JSON only — no prose preamble.
 
@@ -28,7 +28,7 @@ TRACE CACHE: {{trace_path}}
 Source `.md` files use `{{prompt:<key>}}` markers in place of inline `**Prompt**` fenced blocks (the curriculum-prompts registry refactor). Before scanning, run:
 
 ```
-node /Users/anttitevanlinna/Projects/agents-102/scripts/expand-md.js {{file_path}}
+node scripts/expand-md.js {{file_path}}
 ```
 
 and use the EXPANDED output as the file under audit. The expander resolves each marker into the canonical `**Prompt** *(<dest>[, <context>])*` paragraph + fenced block — exactly what students and the build pipeline see post-render. Files that still author inline blocks pass through unchanged. SHA-256 of the fenced content is computed against the EXPANDED form, which keeps the cache stable across migrations of inline → marker (and matches what the build emits).

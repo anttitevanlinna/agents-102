@@ -2,12 +2,16 @@
 
 This repository is primarily a Claude Code project. For Codex sessions, treat this file as the auto-loaded shim that points you to the canonical Claude instructions.
 
+## Private Core Resolution
+
+Resolve the private core repository once at session start: use `$AGENTS_CORE_DIR` when it is set; otherwise use the sibling checkout `../agents-102-core`. References to `<core>` below mean that resolved directory. Do not fall back to maintainer-specific paths under `~/.claude`.
+
 ## Load Order
 
 At session start, read:
 
 1. `CLAUDE.md` at the repository root.
-2. `memory/self-review-protocol.md` section `Core heuristics`, if present. If the repo-local file is absent, look for the same file in the private per-project Claude memory directory named by `.claude/rules/content-rules.md` (for this repo: `~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/self-review-protocol.md`). If neither exists, note the missing file and continue with the other loaded rules.
+2. `<core>/memory/self-review-protocol.md` section `Core heuristics`, if present. If the core repository or file is unavailable, note it and continue with the other loaded rules.
 3. The nearest work-area `CLAUDE.md` for the files you will touch:
    - `continuous-research/CLAUDE.md` for research, OODA cycles, findings, synthesis, observations, source rosters, and user-signal capture.
    - `curriculum/CLAUDE.md` for curriculum, exercises, lectures, training modules, scaffolds, evals, and site curriculum rendering.
@@ -17,20 +21,21 @@ If an instruction here conflicts with a `CLAUDE.md`, the `CLAUDE.md` is the proj
 
 ## Content Creation Rules
 
-Most curriculum/content editing in this repo is governed by the `memory/check_*.md` compendiums. Claude autoloads them from a hook; Codex does not, so load them by hand.
+Claude loads content rules through hooks; Codex does not, so reproduce the current tiered loading protocol manually. Before writing, revising, reviewing, or advising on curriculum or other prose:
 
-Before writing, revising, or reviewing curriculum content, read `.claude/rules/content-rules.md` and load every compendium it maps to today's surface. Then, by firing moment:
+1. Read `.claude/rules/content-rules.md` and follow its current surface mapping.
+2. Read `<core>/memory/_index/diamond.md` (T0) at session start.
+3. Read each applicable `<core>/memory/_index/<surface>.leads.md` file (T1) before acting on that surface. Multiple surfaces can apply to one file.
+4. For every applicable lead marked `⚠`, read that rule's full body (T2) with `node curriculum/evals/scripts/rule.js <surface> <N>` before acting.
+5. Read a full `<core>/memory/check_<surface>.md` compendium (T3) only when acting as an eval judge or editing rules. Do not bulk-load T3 to generate prose.
 
-- Prompt blocks students copy: also read `check_prompts.md`.
-- Student-facing prose, structure, voice, or body copy: also read `check_student_facing.md` + `check_writing.md`.
-- Simulation, testing, or PDCA Test/Check work: also read `curriculum/evals/simulation.md`.
-- Any student-, buyer-, or external-facing prose: read `.claude/rules/content-rules.md` and the matching `check_*.md` compendiums before drafting. Use the exact compendium directory named inside `.claude/rules/content-rules.md`; in current Codex checkouts this may be a private per-project Claude memory path rather than repo-local `memory/`.
+Prompt blocks, student-facing prose, lectures, strategy tie-ins, research claims, slides, buyer-facing copy, pedagogy, workshops, and platform/IP claims each activate the surfaces mapped in `.claude/rules/content-rules.md`. Simulation, testing, or PDCA Test/Check work also requires `curriculum/evals/simulation.md`.
 
 When editing any fenced prompt block that students copy, run a final prompt-shape pass before answering. Check at minimum: no placeholders inside the fence; any student-supplied input uses the open-hook pattern with the colon line last; file paths match the student's working folder; save/read artifacts are coherent for downstream phases; the prompt starts from the normal LLM work request before adding orchestration. Do this even if the relevant rule was just loaded into context.
 
 When asked for a session retro, do not leave it as chat-only reflection. Select the one improvement that should change future behavior, persist it in the appropriate rule or memory surface, and report the path where it was saved.
 
-Generation work requires the private `bosser-strategy` skill. If `~/.claude/skills/bosser-strategy/SKILL.md` is absent, do not generate curriculum; explain that the strategic context is missing. If present, use it to resolve `bosser-strategy:<filename>` references on demand.
+Generation work requires the private `bosser-strategy` skill. Read its instructions from the tracked project link `.claude/skills/bosser-strategy/SKILL.md`; if that link is unavailable because core is in a custom location, read `<core>/skills/bosser-strategy/SKILL.md` directly. If neither is readable, do not generate curriculum; explain that the private core or strategic context is missing. Never require or fall back to `~/.claude/skills`. Use the skill to resolve `bosser-strategy:<filename>` references on demand.
 
 For Claude Basics specifically, resolve and read `bosser-strategy:content-strategy-claude-basics.md` before generating or reshaping module, exercise, lecture, prompt, or cohort-facing prose. Do not fall back to the Agents 101 strategy doc for Claude Basics work.
 

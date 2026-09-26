@@ -1,12 +1,15 @@
-# Lemmings M1–M6 chain — runbook
+# AE101 chain — runbook (lemmings, the reference kit)
 
-How to run the **full AE101 M1→M6 tmux-runner chain** on the lemmings SUT,
-repeatably, from a clean baseline. This is the procedure that used to live only
+How to run the **AE101 tmux-runner chain** — full M1→M6 or the Northwind cut,
+on the lemmings SUT (or the picoshare / codesearch kits) — repeatably, from a
+clean baseline. This is the procedure that used to live only
 as tribal knowledge between the `run-mN.sh` calls. Two scripts encode it:
 
 - **`arrange-lemmings.sh`** — resets `~/Projects/lemmings` to the M1 baseline.
-- **`chain-lemmings.sh`** — arranges, then drives M1→M6, positioning each
-  module's branch/worktree from the prior module's `state.json` hand-off.
+- **`chain-ae101.sh`** — arranges, then drives the modules of one cut on one
+  SUT kit (`--sut-kit lemmings|picoshare|codesearch`, `--cut full|northwind`),
+  positioning each module's branch/worktree from the prior module's
+  `state.json`, read through this chain's own chain dir (`out/_chains/<id>/`).
 
 This is the **tmux runner** (`run-mN.sh` → real Claude Code session in a tmux
 pane, synced on the Stop-hook sentinel). Not the actor/judge `runners/*.md`
@@ -18,19 +21,21 @@ harness.
 cd curriculum/evals/mechanical/tmux-runner
 
 # full chain, medium effort (multi-hour — background it):
-./chain-lemmings.sh                       # arrange + m1..m6
+./chain-ae101.sh                          # lemmings, full cut: arrange + m1..m6
+./chain-ae101.sh --from prework           # arrange + prework + m1..m6
 
 # one module / a sub-range (validate transitions, or resume):
-./chain-lemmings.sh --to m1               # arrange + M1 only
-./chain-lemmings.sh --from m2             # resume at M2 (reads newest m1-state.json)
-./chain-lemmings.sh --from m3 --to m4
+./chain-ae101.sh --to m1                  # arrange + M1 only
+./chain-ae101.sh --from m2 --chain-dir out/_chains/<id>   # resume at M2 on that chain's M1
+./chain-ae101.sh --from m3 --to m4 --chain-dir out/_chains/<id>
 
-# cohort-faithful (slower, ~1h/turn cap):
-./chain-lemmings.sh --effort high
+# cohort-faithful (slower, ~1h/turn cap); model defaults to sonnet:
+./chain-ae101.sh --effort high --model opus
 ```
 
-Background it and watch `out/_chain-<m>.log`; per-run artefacts land in
-`out/<run-id>/` as usual.
+Background it and watch `out/_chain-<kit>-<cut>-<m>.log`; per-run artefacts land
+in `out/<run-id>/` as usual. The chain prints its chain dir first — that is the
+`--chain-dir` a resume needs.
 
 ## The M1 baseline (decided 2026-05-25)
 
@@ -68,7 +73,8 @@ starting SHA.
 
 ## Env knobs
 
-- `CLAUDE_CMD` — chain sets `claude --effort <effort> --permission-mode auto`.
+- `CLAUDE_CMD` — chain sets `claude --model <model> --effort <effort> --permission-mode auto`
+  (`--model` default `sonnet`).
   Auto-perm is required: install-heavy, no human to approve tool calls.
   **Never** `--permission-mode bypassPermissions` (startup confirm dialog hangs
   the runner forever).
@@ -76,7 +82,7 @@ starting SHA.
   (cohort-faithful, ~1h/turn).
 - `CLAUDE_RUNNER_TIMEOUT` — per-turn sentinel timeout; chain default `1800`s.
   **M5 is the long pole** — its packaged send-off turn can run long; if it gets
-  clipped, raise this (`CLAUDE_RUNNER_TIMEOUT=3600 ./chain-lemmings.sh --from m5`).
+  clipped, raise this (`CLAUDE_RUNNER_TIMEOUT=3600 ./chain-ae101.sh --from m5 --chain-dir out/_chains/<id>`).
 - `CLAUDE_RUNNER_SOFT_CAP` — **M6 `-study` turn only (run-m6.sh):** soft cap,
   default `300`s. `-study` scans the whole `~/.claude/projects/` tree; if it runs
   past this it gets ESC-interrupted and nudged (`CLAUDE_RUNNER_NUDGE_TEXT`,
@@ -132,20 +138,28 @@ Runner-side context (owned by the runner maintainer, not this wrapper):
 
 ## Resuming
 
-`run-mN.sh` and `chain-lemmings.sh` are stateless across invocations except via
-`out/*/mN-state.json`. To resume after a pause/failure: `--from mN` reads the
-newest `out/*/m{N-1}-state.json` for the starting SHA and skips arrange. M1 run
-standalone (not via the wrapper) still leaves a usable `m1-state.json`, so
-`--from m2` works regardless of how M1 was launched.
+Each chain gets one chain dir, `out/_chains/<id>/`; every runner registers its
+run dir there (`<module>.run`) and the next module reads the prior module's
+`state.json` through that pointer — never the newest run in `out/`, which an
+overlapping or stale run could be. To resume after a pause/failure: `--from mN
+--chain-dir <the chain that ran m{N-1}>` (skips arrange). Without `--chain-dir`
+the chain refuses and lists recent chains. `--m2-sha <sha>` stands in for M2's
+state (codesearch starts at M3 that way).
 
-## Northwind variant — `chain-northwind.sh`
+`~/.claude/skills` is restored to its pre-run snapshot when the chain exits —
+pass, fail or Ctrl-C. The chain's own end state is kept in
+`<chain dir>/skills-after/`, so a `--chain-dir` resume gets back the skills its
+earlier modules wrote (M4+ read M3's `test-strategy-<sut>`). A standalone
+`run-mN.sh` restores the same way; `CLAUDE_RUNNER_KEEP_SKILLS=1` opts out.
+
+## Northwind variant — `--cut northwind`
 
 The `agentic-engineering-101-northwind` registry entry (`site/layouts/curriculum.js`)
 is a `contentKey`-aliased cut running the same four module files as stock AE101
 (getting-going, plan-mode-done-right, run-the-first-experiment, learn-from-the-test
 — stock M1/M2/M4/M5) and dropping M3 (`earn-the-trust`) and M6
 (`spot-gaps-build-the-loop`). With the room-scale workshops gone from this cut,
-the tmux battery can drive every sitting — this script is that. (First recorded
+the tmux battery can drive every sitting — `--cut northwind` is that. (First recorded
 in the retired autumn-gaps inventory; cut-level facts now live in
 `training-architecture.md` § *Variant: Northwind Team Track*.)
 
@@ -158,22 +172,19 @@ uses to position from M1's. Confirmed live: M2 makes no repo commit
 the SUT's actual git state either way.
 
 ```bash
-./chain-northwind.sh                          # lemmings: arrange, then m1, m2, m4, m5
-./chain-northwind.sh --to m2                  # arrange + M1 + M2 only
-./chain-northwind.sh --from m4                # resume at M4 (reads m2-state.json)
-./chain-northwind.sh --sut-kit picoshare      # same cut on picoshare
-./chain-northwind.sh --sut-kit codesearch --from m4   # codesearch has no arrange helper
+./chain-ae101.sh --cut northwind                        # lemmings: arrange, then m1, m2, m4, m5
+./chain-ae101.sh --cut northwind --to m2                # arrange + M1 + M2 only
+./chain-ae101.sh --cut northwind --from m4 --chain-dir out/_chains/<id>   # resume at M4
+./chain-ae101.sh --cut northwind --sut-kit picoshare    # same cut on picoshare
+./chain-ae101.sh --cut northwind --sut-kit codesearch --m2-sha <sha>   # no arrange helper: starts at m4
 ```
 
-**SUT kits (added 2026-08-13).** The cut is content, not SUT — so the wrapper
-takes `--sut-kit lemmings | picoshare | codesearch`, which fixes the repo path,
-the slugs, the M5 worktree, the scenario suffix, and whether an arrange helper
-exists. `chain-lemmings-northwind.sh` survives as the lemmings preset (a
-one-line `exec`), so the historically cited name still works. codesearch has
-no arrange script, so `--from m1|m2` is refused there rather than half-run.
-State lookup is SUT-scoped (matches `mN_cwd` in the state file) — `out/` holds
-runs from every kit, and taking "newest of any SUT" would position one kit's
-branch at another's SHA.
+**SUT kits.** The cut is content, not SUT — `--sut-kit lemmings | picoshare |
+codesearch` fixes the repo path, the slugs, the M5 worktree, the scenario
+suffix, the quality-branch names, and whether an arrange helper exists (the kit
+table in `chain-ae101.sh`). A new SUT is a kit-table entry. codesearch has no
+arrange script, so `--from prework|m1|m2` is refused there rather than half-run.
+The module sequence per kit × cut is pinned by `tests/chain-fold.test.sh`.
 
 **Validated live, medium effort, lemmings kit, 2026-08-13 — full PASS, M1
 through M5. Zero WARN, zero FAIL.** M4 positions from M2's ending SHA and

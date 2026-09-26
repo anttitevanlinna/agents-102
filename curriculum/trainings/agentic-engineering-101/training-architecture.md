@@ -146,7 +146,7 @@ does instead. Standing facts:
   had run against this cut — every cost in it was derived from the text.
 
 **Mechanically validated, not just read off source.**
-`curriculum/evals/mechanical/tmux-runner/chain-lemmings-northwind.sh` drives M1→M2→M4→M5 on the
+`curriculum/evals/mechanical/tmux-runner/chain-ae101.sh --cut northwind` drives M1→M2→M4→M5 on the
 lemmings SUT with M3/M6 absent from the topology (M4 positions from M2's ending SHA instead of
 M3's now-nonexistent ADR commit). Full PASS, 2026-07-28: M4's audit turn carries no hard dependency
 on M3's ADR or the `test-strategy-lemmings` skill; M5's `verify-by-hand-judge` correctly stands down

@@ -1,0 +1,22 @@
+RUN arrange-picoshare --sut <SB>/sut --slug picoshare-01
+RUN run-m1 --cwd <SB>/sut --task-slug picoshare-01 scenario=m1-picoshare.txt
+RUN run-m2 --cwd <SB>/sut --task-slug picoshare-01 scenario=m2-picoshare.txt
+GIT checkout -B m3/rate-limit-public-guest-status m2endsha
+GIT worktree remove --force <SB>/home/Projects/picoshare-m3-quality
+GIT branch -D m3/picoshare-quality
+GIT branch -D m3/quality
+GIT worktree prune
+RUN run-m3 --main-cwd <SB>/sut --quality-cwd <SB>/home/Projects/picoshare-m3-quality main=m3-main-picoshare.txt quality=m3-quality-picoshare.txt
+GIT checkout -B m4/implement-public-status headsha
+RUN run-m4 --cwd <SB>/sut --task-slug implement-public-status scenario=m4-picoshare.txt
+GIT branch -f m4/agent-slug spsha
+GIT worktree remove --force <SB>/home/Projects/picoshare-m5
+GIT branch -D m5/agent-slug
+GIT worktree prune
+RUN run-m5 --main-cwd <SB>/sut --worktree-cwd <SB>/home/Projects/picoshare-m5 scenario=m5-picoshare.txt
+RUN run-m6 --cwd <SB>/home/Projects/picoshare-m5 --task-slug implement-public-status scenario=m6-picoshare.txt
+WIPE pre-wipe ~/.claude/skills/test-strategy-picoshare
+WIPE pre-wipe task.md
+WIPE pre-wipe plan.md
+WIPE pre-wipe ~/.claude/skills/session-shaper-picoshare
+EXIT 0

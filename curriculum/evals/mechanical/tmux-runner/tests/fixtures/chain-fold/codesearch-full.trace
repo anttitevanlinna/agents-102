@@ -1,0 +1,26 @@
+# Recorded from chain-codesearch.sh --m2-sha m2override (2026-09-26). The folded
+# driver also runs codesearch on --model sonnet (default), which the old one
+# didn't set; the model isn't in the trace.
+GIT checkout -B m3/threat-model-csweb-bind m2override
+GIT worktree remove --force <SB>/home/Projects/codesearch-m3-quality
+GIT branch -D m3/quality
+GIT worktree prune
+RUN run-m3 --main-cwd <SB>/sut --quality-cwd <SB>/home/Projects/codesearch-m3-quality main=m3-main-codesearch.txt quality=m3-quality-codesearch.txt
+GIT checkout -B m4/clamp-show-to-roots headsha
+RUN run-m4 --cwd <SB>/sut --task-slug clamp-show-to-roots scenario=m4-codesearch.txt
+# DELIBERATE: chain-codesearch.sh renamed the checked-out branch onto task.md's
+# (branch -m); lemmings/picoshare/northwind point the recorded branch at the
+# 'M4 starting point' commit instead (branch -f) — name-agnostic, never
+# collides with a stale sibling. The folded driver uses branch -f for every kit.
+# old: GIT branch -m m4/clamp-show-to-roots m4/agent-slug
+GIT branch -f m4/agent-slug spsha
+GIT worktree remove --force <SB>/home/Projects/codesearch-m5
+GIT branch -D m5/agent-slug
+GIT worktree prune
+RUN run-m5 --main-cwd <SB>/sut --worktree-cwd <SB>/home/Projects/codesearch-m5 scenario=m5-codesearch.txt
+RUN run-m6 --cwd <SB>/home/Projects/codesearch-m5 --task-slug clamp-show-to-roots scenario=m6-codesearch.txt
+WIPE pre-wipe ~/.claude/skills/test-strategy-codesearch
+WIPE pre-wipe task.md
+WIPE pre-wipe plan.md
+WIPE pre-wipe ~/.claude/skills/session-shaper-codesearch
+EXIT 0

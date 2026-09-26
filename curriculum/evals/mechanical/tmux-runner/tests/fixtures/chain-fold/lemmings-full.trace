@@ -1,0 +1,22 @@
+RUN arrange-lemmings --sut <SB>/sut --slug fix-hud-tally
+RUN run-m1 --cwd <SB>/sut --task-slug fix-hud-tally scenario=m1.txt
+GIT checkout -B m2/add-levels-2-3 m1endsha
+RUN run-m2 --cwd <SB>/sut --task-slug add-levels-2-3 scenario=m2.txt
+GIT checkout -B m3/threat-model-share m2endsha
+GIT worktree remove --force <SB>/home/Projects/lemmings-m3-quality
+GIT branch -D m3/quality
+GIT worktree prune
+RUN run-m3 --main-cwd <SB>/sut --quality-cwd <SB>/home/Projects/lemmings-m3-quality main=m3-main.txt quality=m3-quality.txt
+GIT checkout -B m4/blocker-deadlock-terminal headsha
+RUN run-m4 --cwd <SB>/sut --task-slug blocker-deadlock-terminal scenario=m4.txt
+GIT branch -f m4/agent-slug spsha
+GIT worktree remove --force <SB>/home/Projects/lemmings-m5
+GIT branch -D m5/agent-slug
+GIT worktree prune
+RUN run-m5 --main-cwd <SB>/sut --worktree-cwd <SB>/home/Projects/lemmings-m5 scenario=m5.txt
+RUN run-m6 --cwd <SB>/home/Projects/lemmings-m5 --task-slug blocker-deadlock-terminal scenario=m6.txt
+WIPE pre-wipe ~/.claude/skills/test-strategy-lemmings
+WIPE pre-wipe task.md
+WIPE pre-wipe plan.md
+WIPE pre-wipe ~/.claude/skills/session-shaper-lemmings
+EXIT 0

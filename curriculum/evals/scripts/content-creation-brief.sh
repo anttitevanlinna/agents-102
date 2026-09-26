@@ -104,7 +104,7 @@ HARD_RULES=$(cat <<'EOF'
 4. Do NOT touch the maintainer-block Quality line. The orchestrator stamps it via update-quality.sh after eval re-fire.
 5. Do NOT touch any Debrief prompt or its body callout — behavior-class blockers there are intentional residual per memory/compounded/2026-05-02-pedagogy-debrief-prompts-residual-med-risk-by-design.md.
 6. No em-dashes (the deterministic auto-fix hook will swap to comma; write clean).
-7. Honor the mood contract above. Do NOT resolve a mood the strategy keeps open. M3 unsettled-competence stays unsettled. M4 deepened-unease stays uneasy. M5 is the rescue, not earlier.
+7. Honor the mood contract above. Do NOT resolve a mood the strategy keeps open. The training's strategy doc (bosser-strategy) is the source; when the contract above is empty, read this module's mood there.
 EOF
 )
 

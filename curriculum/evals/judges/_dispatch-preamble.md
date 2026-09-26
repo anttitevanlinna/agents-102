@@ -56,6 +56,8 @@ Evaluate ONLY the compendiums your template puts in scope. Reaching into a sibli
 
 These are not a relaxation of anything above. They change how a judge FETCHES; they never change what it is accountable for. Measured serially on a planted-defect fixture: 398s / 66 rows before, 196s / 21 rows after, both scoring full recall on mechanical AND judgement defects.
 
+**Behavior-class exception.** `prompt-behavior.md` owns a fires-only prompt ledger (`prompts_evaluated` + `prompts_findings`), not a numbered-rule ledger. A behavior judge runs the body view and its trace/cache steps, but skips `derive-class-brief.js` and both `prefill-instance.js` commands below. It writes no `rules_evaluated` and no `shape_hash`. The adjacent compendiums are context for the template's carve-outs, not a second ledger to reproduce. All other per-file classes use steps 2–4 normally.
+
 **Issue the template read, the rulebook and the body view in ONE turn.** They have no dependency on each other. Three sequential round-trips for three independent reads is the single largest avoidable cost in a judge run.
 
 **1. Your geometry is already computed. Do not re-derive it.**

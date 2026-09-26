@@ -143,20 +143,26 @@ test('a surviving finding is reported; a refuted one is not', async () => {
 // it is commented — so these assert the prompt TEXT each flag produces.
 // ---------------------------------------------------------------------------
 
-async function promptFor(extra) {
+async function promptForClass(cls, extra) {
   const seen = [];
   const capture = async (prompt, opts) => {
     seen.push({ prompt, label: opts.label || '' });
     return cleanJudge(prompt, opts);
   };
-  await run({ ...ARGS, ...extra }, capture);
-  const j = seen.find((x) => x.label.startsWith('behavior:'));
+  const args = {
+    ...ARGS,
+    ...extra,
+    items: [{ file: 'curriculum/exercises/e.md', instanceSlug: 'ae101--exercise--e', classes: [cls], detail: { [cls]: 'diff-region' }, pins: { [cls]: 'abc1234' }, driftRules: {} }],
+  };
+  await run(args, capture);
+  const j = seen.find((x) => x.label.startsWith(`${cls}:`));
   assert.ok(j, 'the class judge was never dispatched');
   return j.prompt;
 }
+const promptFor = extra => promptForClass('behavior', extra);
 
 test('the default dispatch carries every mechanic the hillclimb validated', async () => {
-  const p = await promptFor({});
+  const p = await promptForClass('writing', {});
   assert.match(p, /derive-class-brief\.js/, 'BRIEF: the assembled rulebook');
   assert.match(p, /derive-body-view\.js/, 'the precomputed geometry');
   assert.match(p, /prefill-instance\.js .* --write/, 'PREFILL: park the resolved rows');
@@ -167,6 +173,16 @@ test('the default dispatch carries every mechanic the hillclimb validated', asyn
   assert.doesNotMatch(p, /grep -c '"evidence": \*null'/, 'the raw grep counts healthy N/A rows and means nothing now');
 });
 
+test('behavior skips rule-ledger machinery it does not own', async () => {
+  const p = await promptFor({});
+  assert.doesNotMatch(p, /derive-class-brief\.js/);
+  assert.doesNotMatch(p, /prefill-instance\.js/);
+  assert.doesNotMatch(p, /rules_evaluated {2}one row per rule/);
+  assert.match(p, /Behavior has no numbered-rule ledger/);
+  assert.match(p, /prompts_evaluated/);
+  assert.match(p, /prompts_findings/);
+});
+
 // The bug this guards is the one that produced every other instance bug. The
 // dispatch used to say "in the shape already there" — imitate the nearest
 // example — which is replication with mutation and no selection: 810 instances,
@@ -174,7 +190,7 @@ test('the default dispatch carries every mechanic the hillclimb validated', asyn
 // counted onto Quality rows and written down nowhere. A schema the judge cannot
 // read is not a schema, so it has to travel in the prompt.
 test('the judge is given the instance schema, not an example to imitate', async () => {
-  const p = await promptFor({});
+  const p = await promptForClass('writing', {});
   assert.doesNotMatch(p, /shape already there/, 'imitating the neighbour is what bred the dialects');
   assert.match(p, /rules_evaluated {2}one row per rule/, 'the ledger is named field by field');
   assert.match(p, /PASS \| REVISE \| N\/A/, 'the verdict enum is stated, not assumed');
@@ -192,7 +208,7 @@ test('out-of-class observations use notes, never the retired todos channel', asy
 });
 
 test('brief:false falls back to reading the compendiums in full', async () => {
-  const p = await promptFor({ brief: false });
+  const p = await promptForClass('writing', { brief: false });
   assert.doesNotMatch(p, /derive-class-brief\.js/);
   assert.match(p, /Read IN FULL, no index files/);
   assert.match(p, /check_prompts\.md/);
@@ -201,7 +217,7 @@ test('brief:false falls back to reading the compendiums in full', async () => {
 test('the fallback compendium list survives even when the brief is on', async () => {
   // If the brief cannot build, the judge needs somewhere to go. A flag that
   // removes the fallback trades a slow judge for a blind one.
-  const p = await promptFor({});
+  const p = await promptForClass('writing', {});
   assert.match(p, /check_prompts\.md/);
   assert.match(p, /If it cannot build, read these in full/);
 });
@@ -245,7 +261,7 @@ test('both dispatch doors name the same mechanics, or one of them is a rumour', 
   // that forgets a step is how the same file judged by the same class got two
   // different protocols depending on which door it came through.
   const skill = fs.readFileSync(path.join(__dirname, '..', 'skills', 'eval-fire', 'SKILL.md'), 'utf8');
-  const prompt = await promptFor({});
+  const prompt = await promptForClass('writing', {});
   for (const mechanic of [
     '_dispatch-preamble.md',
     'derive-class-brief.js',
@@ -264,6 +280,8 @@ test('both dispatch doors name the same mechanics, or one of them is a rumour', 
     assert.match(prompt, new RegExp(mechanic.replace(/[.]/g, '\\.')), `workflow header dropped ${mechanic}`);
     assert.match(skill, new RegExp(mechanic.replace(/[.]/g, '\\.')), `eval-fire SKILL.md dropped ${mechanic}`);
   }
+  assert.match(skill, /Behavior has no numbered-rule ledger/,
+    'eval-fire must not send behavior through the rule-ledger machinery');
 });
 
 test('the contract file actually carries the mechanics both headers point at', () => {

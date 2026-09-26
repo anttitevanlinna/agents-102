@@ -209,6 +209,18 @@ const VERDICT_SCHEMA = {
   },
 }
 
+// Behavior is a prompt-distribution class, not a numbered-rule class. Its
+// durable ledger is prompts_findings[] and it has nothing to prefill or merge.
+// Requiring the two rule-row accounting fields made the dispatcher teach a
+// second, incompatible instance schema after prompt-behavior.md taught the
+// right one.
+const BEHAVIOR_VERDICT_SCHEMA = JSON.parse(JSON.stringify(VERDICT_SCHEMA))
+BEHAVIOR_VERDICT_SCHEMA.required = BEHAVIOR_VERDICT_SCHEMA.required
+  .filter(k => k !== 'rows_written_by_you' && k !== 'rows_spliced_by_merge')
+delete BEHAVIOR_VERDICT_SCHEMA.properties.rows_written_by_you
+delete BEHAVIOR_VERDICT_SCHEMA.properties.rows_spliced_by_merge
+const verdictSchemaFor = j => (j.cls === 'behavior' ? BEHAVIOR_VERDICT_SCHEMA : VERDICT_SCHEMA)
+
 const REFUTE_SCHEMA = {
   type: 'object', required: ['refuted', 'reasoning'],
   properties: { refuted: { type: 'boolean' }, reasoning: { type: 'string' }, counter_evidence: { type: 'string' } },
@@ -304,7 +316,10 @@ function readSection(j) {
   const preamble = NO_PREAMBLE
     ? `1. **Dispatch contract:** \`curriculum/evals/judges/_dispatch-preamble.md\` — skim for boundary cases only (this run was dispatched with \`noPreamble\`, which the bench measured as free because it cannot stage a stale cache or an out-of-lane verdict; it is not free, it is unmeasured).`
     : `1. \`curriculum/evals/judges/_dispatch-preamble.md\` IN FULL — the dispatch contract, including §Mechanics, which tells you what not to re-derive.`
-  const rulebook = BRIEF
+  const rulebook = j.cls === 'behavior'
+    ? `3. **Behavior has no numbered-rule ledger.** Read \`curriculum/evals/simulation-behavior.md\` as the catalog. Use the compendiums below only as adjacent context when the behavior template points to a carve-out; do not derive a class brief and do not emit compendium rows:
+  - ${comps}`
+    : BRIEF
     ? `3. Your rulebook:
 \`\`\`
 node curriculum/evals/scripts/derive-class-brief.js ${j.file} ${j.cls}
@@ -349,7 +364,7 @@ function judgePrompt(j) {
   return `You are the **${j.cls}** eval judge for \`${j.file}\`. Repo root \`${REPO}\` — cd there first.
 
 ${readSection(j)}
-${PREFILL ? prefillNote(j) : ''}
+${PREFILL && j.cls !== 'behavior' ? prefillNote(j) : ''}
 ${diff}${drift}
 ## Before filing anything
 
@@ -361,7 +376,24 @@ ${READ_ONLY}
 
 ## Write the instance
 ${j.slug ? `
-Overwrite \`curriculum/evals/instances/${j.slug}.${j.cls}.json\`. Do NOT copy the shape of whatever is there now — the instances were written to no schema for a long time and carry 60+ different top-level keys between them, so imitating the nearest example is how the next one drifts further. Write these, and add a field only when you have something to put in it:
+Overwrite \`curriculum/evals/instances/${j.slug}.${j.cls}.json\`. Do NOT copy the shape of whatever is there now — the instances were written to no schema for a long time and carry 60+ different top-level keys between them, so imitating the nearest example is how the next one drifts further. ${j.cls === 'behavior' ? `Behavior is the exception to the numbered-rule schema: its template owns a fires-only prompt ledger. Write these fields:
+
+\`\`\`
+class            "behavior"
+training         "${j.training || ''}"
+file             repo-relative path of the file you judged (curriculum/…)
+verdict          PASS | REVISE | N/A
+body_sha         sha256 of the FULL file
+trace_status     cached | partial_regen | full_regen | generated_first_time | no_prompts
+prompts_evaluated      integer count of prompt blocks read
+prompts_findings       the per-prompt ledger from prompt-behavior.md
+blocking_findings_count     count of prompts with verdict REVISE
+nonblocking_findings_count  0 — optional suggestions are not owed findings
+suggestions_count           suggestions.length
+suggestions                 optional concrete swaps
+\`\`\`
+
+Do not write \`rules_evaluated\`, \`shape_hash\`, or prefill accounting into a behavior instance. There is no numbered-rule ledger in this class.` : `Write these, and add a field only when you have something to put in it:
 
 \`\`\`
 class            "${j.cls}"                     exactly this — it is what every tool globs on
@@ -378,7 +410,7 @@ blocking_findings_count   how many are verdict REVISE + blocking true
 
 **A finding you counted but did not write down is a finding that does not exist.** The Quality row copies \`nonblocking_findings_count\` and appends "see instances/${j.slug}.${j.cls}.json", so a count with no row behind it makes the row cite evidence that is not in the file. 134 AE101 todos were lost exactly this way. Both counts are derived from \`rules_evaluated\`, never authored beside it — write the rows first and count them second.
 
-Do not write a \`todos\` array — the field is retired (2026-09-08). It was a second ledger for the same thing, and where both existed they disagreed in 61 of 79 instances. \`suggestions\` is not its replacement: it is a different channel, for swaps nothing is owed on, and it carries \`now\` and \`proposed\` or it is not written.
+Do not write a \`todos\` array — the field is retired (2026-09-08). It was a second ledger for the same thing, and where both existed they disagreed in 61 of 79 instances. \`suggestions\` is not its replacement: it is a different channel, for swaps nothing is owed on, and it carries \`now\` and \`proposed\` or it is not written.`}
 
 Then run BOTH and report the real integers:
 \`\`\`
@@ -499,7 +531,7 @@ phase('Judge')
 const [fromQueue, fromConfirm, fromSets] = await parallel([
   () => pipeline(
     JOBS,
-    j => agent(judgePrompt(j), { label: `${j.cls}:${String(j.file).split('/').pop().replace(/\.md$/, '')}`, phase: 'Judge', schema: VERDICT_SCHEMA, model: MODELS.judge }),
+    j => agent(judgePrompt(j), { label: `${j.cls}:${String(j.file).split('/').pop().replace(/\.md$/, '')}`, phase: 'Judge', schema: verdictSchemaFor(j), model: MODELS.judge }),
     (v, j) => (v ? verify(v, 'Verify').then(r => tag(r, j)) : v),
   ),
   () => pipeline(

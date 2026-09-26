@@ -2,8 +2,8 @@
   "class": "technical",
   "training": "ae101",
   "file": "curriculum/exercises/map-the-access-surface.md",
-  "verdict": "REVISE",
-  "body_sha": "4f4da2a607f83c15b0d0a6457aa532531c25311134c1692ac27df61b59b1797a",
+  "verdict": "PASS",
+  "body_sha": "39032506ba9730ba2151792d51cec074aabb64ca156aa657574df129947e4d12",
   "shape_hash": "1b7965156c82fee5",
   "accept_notes_found": [
     "L98: **Quality:** compendium-audited 2026-09-06 (writing@08946dd8 story@324b81d7 behavior@64d17eea pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)",
@@ -11,7 +11,7 @@
     "L103: Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands) -- named cuts, do not restore; kept the 'What this sets up' slide.",
     "L105: Section 48's premature-stop half deliberately absent from the opener callout (declined 2026-08-15, pedagogy judge TODO).",
     "L107: check_prompts.md section 43 progress-streaming deliberately absent from map-the-access-surface-2 (adjudicated 2026-08-30, non-blocking judge TODO).",
-    "L109: This exercise invokes its skill in-thread, and that is the design (Antti 2026-09-04) -- see rule check_platform_and_boundaries.md#4 finding below: this note's factual premise does not match the skills' shipped frontmatter.",
+    "L109: This exercise adds no dispatch clause, and that is the design (Antti 2026-09-04) -- both curated skills (access-control-analysis, stride) carry `context: fork`, so each pass runs in its own forked subagent whatever the prompt says; matches shipped frontmatter.",
     "L163: Stance [stance:2026-08-01 level:L0]",
     "L171: last-run: 2026-08-01"
   ],
@@ -29,10 +29,10 @@
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 4,
       "rule_lead": "Verify capabilities BEFORE asserting, not after.",
-      "verdict": "REVISE",
-      "evidence": "Maintainer note L109 ('This exercise invokes its skill in-thread, and that is the design (Antti 2026-09-04)... The access-surface pass runs in-thread') asserts a platform-mechanics fact I checked directly and found false. I read content/skills/access-control-analysis/SKILL.md L4 and content/skills/stride/SKILL.md L4 in this session: both frontmatters carry `context: fork`, identically. curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md L269 confirms the field's meaning: 'context: fork | runs the skill in its own subagent context instead of inline' -- no exception path for personal-installed skills or in-thread invocation phrasing is documented. So access-control-analysis forks into its own subagent context exactly like stride does; the exercise's pass does not run in-thread, and M3 dispatches two subagents this way, not one as L109 claims. The file's own body already gets this right elsewhere and now contradicts the note: Push-back move P1 (L125, 'let the skill run as a subagent') and Leap Test #1 (L141, 'Invokes the access-control-analysis skill as a subagent') both say subagent. Harm: a maintainer note stating a false in-thread/subagent-count fact is exactly the kind of assertion a later editor reasons from (context-budget planning at the STRIDE pass, or 'fixing' the leap-test/push-back lines to match L109's wrong claim instead of the reverse) -- the harm is live, not hypothetical, because the file already contains two lines this note now contradicts.",
-      "fix_hint": "Correct L109 to acknowledge both curated skills fork into a subagent (frontmatter fact, unconditional); if the intended point is that this exercise doesn't NAME/teach the subagent concept to the student (reserving that framing for the STRIDE exercise), say that instead of 'runs in-thread.'",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": "CONFIRMATION PASS. Prior REVISE (blocking) targeted maintainer note L109, which claimed 'the access-surface pass runs in-thread' and 'M3 dispatches exactly one subagent, at the STRIDE pass.' Commit d60144b6 rewrote L109 to: \"This exercise adds no dispatch clause, and that is the design (Antti 2026-09-04). Both curated skills it and the STRIDE pass invoke carry `context: fork` (`content/skills/access-control-analysis/SKILL.md`, `content/skills/stride/SKILL.md`), so each pass runs in its own forked subagent whatever the prompt says. The module names the subagent only at the STRIDE pass, where six categories against every surface would flood the thread; the authoring exercise stays conversational.\" I re-read both SKILL.md files in this session: content/skills/access-control-analysis/SKILL.md L4 = `context: fork`; content/skills/stride/SKILL.md L4 = `context: fork`. `grep -c \"context: fork\" curriculum/exercises/map-the-access-surface.md` -> 1 (the note now states the fact once, correctly). `grep -c \"invokes its skill in-thread\" curriculum/exercises/map-the-access-surface.md` -> 0 (the false in-thread claim is gone). The note's revised framing (both skills fork; only the STRIDE pass names 'subagent' to the student, to avoid flooding the authoring beat with the concept) no longer contradicts the body's own Push-back move P1 (L125, 'let the skill run as a subagent') or Leap Test #1 (L141, 'Invokes the access-control-analysis skill as a subagent') -- both already said subagent, and the note now agrees. Harm from the original finding (a false in-thread/subagent-count platform claim sitting in the maintainer block, positioned to mislead a later editor) is resolved: the claim is now the verified fact.",
+      "fix_hint": "",
+      "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -254,7 +254,7 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 35,
-      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "rule_lead": "Repeated Q&A \u2192 premature re-edits. Separate iteration from persistence.",
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "No prompt in this chain opens a multi-turn dialog that can affect an artifact file mid-conversation -- each of -2/-4/-5 is a single-shot propose-then-execute write; the counter-clause (one-shot dialogs, capped propose-then-execute) applies outright.",
@@ -596,7 +596,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 2,
-      "rule_lead": "Cloud/remote features carry Git dependency — out of scope for our training dir.",
+      "rule_lead": "Cloud/remote features carry Git dependency \u2014 out of scope for our training dir.",
       "verdict": "N/A",
       "evidence": "File discusses no cloud/remote/async features.",
       "fix_hint": "",
@@ -684,7 +684,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "6b",
-      "rule_lead": "When tool feature behaves differently than expected, update curriculum — not student's workaround.",
+      "rule_lead": "When tool feature behaves differently than expected, update curriculum \u2014 not student's workaround.",
       "verdict": "N/A",
       "evidence": "No caveat-vs-actual-behavior scenario present.",
       "fix_hint": "",
@@ -706,7 +706,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "6d",
-      "rule_lead": "Auto-load surface = SIX things — four filenames + project `.claude/rules/` + user `~/.claude/rules/`.",
+      "rule_lead": "Auto-load surface = SIX things \u2014 four filenames + project `.claude/rules/` + user `~/.claude/rules/`.",
       "verdict": "N/A",
       "evidence": "File makes no CLAUDE.md/auto-load-surface claims.",
       "fix_hint": "",
@@ -739,7 +739,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "6g",
-      "rule_lead": "Edit-time prompt-edit gate's approval detector MUST parse the transcript deterministically (partial-line-tolerant) — never jq/grep under pipefail.",
+      "rule_lead": "Edit-time prompt-edit gate's approval detector MUST parse the transcript deterministically (partial-line-tolerant) \u2014 never jq/grep under pipefail.",
       "verdict": "N/A",
       "evidence": "No prompt-edit-gate claims in this file.",
       "fix_hint": "",
@@ -796,7 +796,7 @@
       "rule_index": 11,
       "rule_lead": "Destructive operations need confirmation.",
       "verdict": "N/A",
-      "evidence": "Prompt-4's in-place map update (L72-74, 'Update the surface-map file... to integrate the delta') overwrites a scratch temp file the same exercise created moments earlier as part of its own workflow — not uncommitted student work or a destructive op this rule targets.",
+      "evidence": "Prompt-4's in-place map update (L72-74, 'Update the surface-map file... to integrate the delta') overwrites a scratch temp file the same exercise created moments earlier as part of its own workflow \u2014 not uncommitted student work or a destructive op this rule targets.",
       "fix_hint": "",
       "blocking": false,
       "carried_from": "190b2f62f3a332bff22038c41d49af67f63c019a96ee4769ca0649fe30306df7",
@@ -849,7 +849,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "14a",
-      "rule_lead": "Canon is declared, not inferred — and an orphan is not automatically spent.",
+      "rule_lead": "Canon is declared, not inferred \u2014 and an orphan is not automatically spent.",
       "verdict": "N/A",
       "evidence": "Not a canon/session-doc classification scenario.",
       "fix_hint": "",
@@ -882,7 +882,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 17,
-      "rule_lead": "Script ratchet — every LLM-orchestration tooling surface ratchets toward script-replaceable assertions.",
+      "rule_lead": "Script ratchet \u2014 every LLM-orchestration tooling surface ratchets toward script-replaceable assertions.",
       "verdict": "N/A",
       "evidence": "Internal tooling-design rule, not applicable to file content.",
       "fix_hint": "",
@@ -893,7 +893,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 18,
-      "rule_lead": "Hook lints partition into auto-fix vs warn — main thread sees only judgment.",
+      "rule_lead": "Hook lints partition into auto-fix vs warn \u2014 main thread sees only judgment.",
       "verdict": "N/A",
       "evidence": "Internal hook-design rule, not applicable.",
       "fix_hint": "",
@@ -904,7 +904,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 19,
-      "rule_lead": "Runner ↔ source pre-flight.",
+      "rule_lead": "Runner \u2194 source pre-flight.",
       "verdict": "N/A",
       "evidence": "Mechanical-harness rule, not applicable to this file's content.",
       "fix_hint": "",
@@ -970,7 +970,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 25,
-      "rule_lead": "Cowork capability surface — UI surfaces subagent reads; no session rename in Cowork or Desktop.",
+      "rule_lead": "Cowork capability surface \u2014 UI surfaces subagent reads; no session rename in Cowork or Desktop.",
       "verdict": "N/A",
       "evidence": "File does not involve Cowork.",
       "fix_hint": "",
@@ -1003,7 +1003,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 28,
-      "rule_lead": "Strategy-doc drift surfaces via judge citation — citation = canary, not verdict.",
+      "rule_lead": "Strategy-doc drift surfaces via judge citation \u2014 citation = canary, not verdict.",
       "verdict": "N/A",
       "evidence": "No strategy-doc citation involved in this judge's findings.",
       "fix_hint": "",
@@ -1014,7 +1014,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 31,
-      "rule_lead": "state.json files written by `run-mN.sh` are convenience caches, not authoritative — read hand-off from in-SUT artefacts.",
+      "rule_lead": "state.json files written by `run-mN.sh` are convenience caches, not authoritative \u2014 read hand-off from in-SUT artefacts.",
       "verdict": "N/A",
       "evidence": "No state.json hand-off referenced in this file.",
       "fix_hint": "",
@@ -1047,7 +1047,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 34,
-      "rule_lead": "Spend on deleting the duplicate, not on guarding it — and a gate that finds nothing is speculation.",
+      "rule_lead": "Spend on deleting the duplicate, not on guarding it \u2014 and a gate that finds nothing is speculation.",
       "verdict": "N/A",
       "evidence": "Internal tooling-design rule, not applicable to file content.",
       "fix_hint": "",
@@ -1124,7 +1124,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 42,
-      "rule_lead": "Before deleting anything, ask what its FIRING would look like — reference-grep can't tell live from abandoned.",
+      "rule_lead": "Before deleting anything, ask what its FIRING would look like \u2014 reference-grep can't tell live from abandoned.",
       "verdict": "N/A",
       "evidence": "Governs deletion-diagnosis of internal tooling; not applicable to file content.",
       "fix_hint": "",
@@ -1157,9 +1157,9 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 45,
-      "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary — or it reports compliance as rot.",
+      "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary \u2014 or it reports compliance as rot.",
       "verdict": "N/A",
-      "evidence": "Rule concerns detector/instance-shape hygiene (audit-eval-coverage.js, check-instance-evidence.js parsing rules_evaluated shapes); no compliance-shape or ledger-shape claim appears in this file's body. Re-read at current wording per this dispatch's drift instruction — see drift_rules_reread; this judge's own instance uses the standard array-of-objects rules_evaluated shape the detector expects, so it does not itself trip the rule's fail-open corollary.",
+      "evidence": "Rule concerns detector/instance-shape hygiene (audit-eval-coverage.js, check-instance-evidence.js parsing rules_evaluated shapes); no compliance-shape or ledger-shape claim appears in this file's body. Re-read at current wording per this dispatch's drift instruction \u2014 see drift_rules_reread; this judge's own instance uses the standard array-of-objects rules_evaluated shape the detector expects, so it does not itself trip the rule's fail-open corollary.",
       "fix_hint": "",
       "blocking": false,
       "carried_from": "190b2f62f3a332bff22038c41d49af67f63c019a96ee4769ca0649fe30306df7",
@@ -1179,7 +1179,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 47,
-      "rule_lead": "\"It used to be fast\" is a regression report — diagnose it by trajectory, not by architecture.",
+      "rule_lead": "\"It used to be fast\" is a regression report \u2014 diagnose it by trajectory, not by architecture.",
       "verdict": "N/A",
       "evidence": "Governs eval-judge performance-regression diagnosis; not applicable to file content.",
       "fix_hint": "",
@@ -1201,7 +1201,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 49,
-      "rule_lead": "An instruction whose violation leaves the output identical is not enforced by wording — it needs a measurement or a test.",
+      "rule_lead": "An instruction whose violation leaves the output identical is not enforced by wording \u2014 it needs a measurement or a test.",
       "verdict": "N/A",
       "evidence": "Governs protocol-clause enforcement measurement; not applicable to file content.",
       "fix_hint": "",
@@ -1212,7 +1212,7 @@
     {
       "compendium": "check_research_claims.md",
       "rule_index": 1,
-      "rule_lead": "Source URL + type label — mandatory.",
+      "rule_lead": "Source URL + type label \u2014 mandatory.",
       "verdict": "N/A",
       "evidence": "File carries zero external citations, statistics, or practitioner claims (backing block explicitly: 'Sources (none...)').",
       "fix_hint": "",
@@ -1223,7 +1223,7 @@
     {
       "compendium": "check_research_claims.md",
       "rule_index": "1a",
-      "rule_lead": "OODA paraphrase ≠ primary source.",
+      "rule_lead": "OODA paraphrase \u2260 primary source.",
       "verdict": "N/A",
       "evidence": "No OODA-sourced claim transcribed in this file.",
       "fix_hint": "",
@@ -1234,7 +1234,7 @@
     {
       "compendium": "check_research_claims.md",
       "rule_index": 2,
-      "rule_lead": "Freshness rule — 6 months.",
+      "rule_lead": "Freshness rule \u2014 6 months.",
       "verdict": "N/A",
       "evidence": "No evidence/benchmark citations present.",
       "fix_hint": "",
@@ -1289,7 +1289,7 @@
     {
       "compendium": "check_research_claims.md",
       "rule_index": 7,
-      "rule_lead": "Vision × Detail split.",
+      "rule_lead": "Vision \u00d7 Detail split.",
       "verdict": "N/A",
       "evidence": "File carries no practitioner-claim Detail-layer content requiring KB backing; the backing block's Vision claims are framing/opinion (the pub-quiz line), consistent with Vision needing no KB backing.",
       "fix_hint": "",
@@ -1366,7 +1366,7 @@
     {
       "compendium": "check_research_claims.md",
       "rule_index": 13,
-      "rule_lead": "Inference beyond source — absence licenses only absence.",
+      "rule_lead": "Inference beyond source \u2014 absence licenses only absence.",
       "verdict": "N/A",
       "evidence": "No research conclusion drawn from absence-of-finding in this file.",
       "fix_hint": "",
@@ -1454,7 +1454,7 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 13,
-      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "rule_lead": "Citation discipline \u2014 extend cite-or-flag scope + quote supporting sentence.",
       "verdict": "N/A",
       "evidence": "None of the prompts ask Claude to cite factual/research claims.",
       "fix_hint": "",
@@ -1487,7 +1487,7 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 41,
-      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "rule_lead": "Artifact-vs-STOP tail ordering \u2014 last imperative wins.",
       "verdict": "N/A",
       "evidence": "No prompt in this file pairs an artifact-write instruction with a trailing ask-and-STOP tail; prompts 4 and 5 end on open-hook colons awaiting student input, not a STOP directive.",
       "fix_hint": "",
@@ -1498,7 +1498,7 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 42,
-      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "rule_lead": "Headless-runner discipline \u2014 tail every prompt with no-AUQ guard.",
       "verdict": "N/A",
       "evidence": "Interactive human-in-the-room exercise, not a headless/tmux-runner context (out of this judge's scope per template).",
       "fix_hint": "",
@@ -1509,7 +1509,7 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 43,
-      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "rule_lead": "Long-running prompts stream progress \u2014 never go silent.",
       "verdict": "N/A",
       "evidence": "Prompt-2's skill run is deliberately backgrounded per the platform's actual forked-subagent completion-on-return model (rule 5a above); the body's own design (L49-52, kick off / work the other window / come back when it lands) is a walk-away-and-return pattern, not a stay-and-watch one, so in-fence progress-streaming is moot rather than missing.",
       "fix_hint": "",
@@ -1530,5 +1530,5 @@
     }
   ],
   "nonblocking_findings_count": 2,
-  "blocking_findings_count": 1
+  "blocking_findings_count": 0
 }

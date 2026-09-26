@@ -1,28 +1,32 @@
 {
   "class": "technical",
-  "training": "ae101",
   "file": "curriculum/lectures/the-loop-half-filled.md",
-  "verdict": "REVISE",
-  "body_sha": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
+  "body_sha": "ad2e0306716c962e746cba1f8f9ade6a68aa5d382b42c04cc82e4da95032c165",
   "shape_hash": "1e915cfba4fe7a67",
-  "notes": "Body and shape_hash are byte-identical to the prior technical instance (confirmed via shasum -a 256 at read time and via prefill-instance.js --write, which parked 122 rows / owed me 83 against this same shape_hash). derive-class-brief.js hands the technical judge every unresolved rule across all 4 compendiums verbatim, but technical.md's own completeness contract narrows check_pedagogy.md to five named sub-rules (16, 22, 23, 36, 37) owned by this class; of those only 37 survived the shape-hash prefill into my brief (16/22/23/36 were already parked N/A and are picked up by --merge, not re-derived here). I independently re-verified rather than carrying forward blind: re-ran `shasum -a 256` on the live file, re-ran `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-26` (today, not the prior run's 2026-09-05) and got the identical 0-block/2-warn/4-info/8-ok/0-suspect breakdown, sampled 5 of the backing block's citation URLs live via curl --head -L (all 200), and ran `node scripts/expand-md.js` to confirm the lone {{figure:map-engine-m3-close}} marker still resolves to a well-formed <figure class=\"diagram\"> element (has_figures:true, has_prompt_blocks:false per the body-view signals, so no {{prompt:}} expansion applies). All findings below match the prior instance's conclusions on unchanged evidence, re-derived rather than copied.",
+  "verdict": "PASS",
+  "training": "ae101",
+  "confirmation_run": {
+    "check1": "grep -cF 'horthy-ace-fca `[checked:2026-07-31 result:CAVEAT due:2026-06-03]`' curriculum/lectures/the-loop-half-filled.md -> 1 (matches expected)",
+    "check2": "grep -cF 'result:CAVEAT due:asap' curriculum/lectures/the-loop-half-filled.md -> 0 (matches expected)",
+    "note": "Fix confirmed on disk before judging."
+  },
   "rules_evaluated": [
     {
       "compendium": "check_platform_and_boundaries.md",
-      "rule_index": "1",
+      "rule_index": 1,
       "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
       "verdict": "PASS",
-      "evidence": "grep -in 'claude.ai\\|cowork' curriculum/lectures/the-loop-half-filled.md -> 0 hits in body; file makes no platform-name claim at all.",
-      "fix_hint": null,
+      "evidence": "grep -n 'claude.ai' curriculum/lectures/the-loop-half-filled.md -> 0 hits. Body's only platform reference is line 20 ('CLAUDE.md and CLAUDE.local.md steer'), which is CLI/Desktop-neutral, not a claude.ai-only feature.",
+      "fix_hint": "",
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
-      "rule_index": "4",
+      "rule_index": 4,
       "rule_lead": "Verify capabilities BEFORE asserting, not after.",
       "verdict": "PASS",
-      "evidence": "L20: 'CLAUDE.md and CLAUDE.local.md steer because the agent conditions every move on what they hold' is the only platform-capability assertion in the file. It claims only that the files steer generation, never that they auto-load in one specific way or that the agent 'can't act on' anything they omit. L98 maintainer note documents this scoping was deliberate: '\"must rediscover or guess each session\", never \"can't act on\" — the agent can grep the codebase, so the universal is false.'",
-      "fix_hint": null,
+      "evidence": "Line 20's claim ('CLAUDE.md and CLAUDE.local.md steer because the agent conditions every move on what they hold... the agent must rediscover or guess each session') matches this same compendium's own dated §6d entry on CLAUDE.md/CLAUDE.local.md auto-load, and is deliberately hedged, not overclaimed -- maintainer note at line 98 already records the fidelity check ('must rediscover or guess', never 'can't act on').",
+      "fix_hint": "",
       "blocking": false
     },
     {
@@ -30,26 +34,28 @@
       "rule_index": "6d",
       "rule_lead": "Auto-load surface = SIX things — four filenames + project `.claude/rules/` + user `~/.claude/rules/`.",
       "verdict": "PASS",
-      "evidence": "L20 names only two of the six current surfaces (CLAUDE.md, CLAUDE.local.md) as steering the agent and never claims that pair is the whole auto-load picture, nor that a fresh session 'starts clean' — no contradiction with the six-surface inventory.",
-      "fix_hint": null,
+      "evidence": "Body names only CLAUDE.md and CLAUDE.local.md (line 20), both real auto-load surfaces per this rule's own list, and does not assert anything about the other four surfaces or claim they don't exist.",
+      "fix_hint": "",
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
-      "rule_index": "8",
+      "rule_index": 8,
       "rule_lead": "F-Secure curriculum off-limits.",
-      "verdict": "PASS",
-      "evidence": "grep -i 'f-secure' curriculum/lectures/the-loop-half-filled.md -> 0 hits.",
-      "fix_hint": null,
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No F-Secure reference in file.",
+      "fix_hint": "",
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "13b",
       "rule_lead": "Before auditing a built artifact ask whether it ships; before acting on a finding, re-measure it.",
-      "verdict": "PASS",
-      "evidence": "Applied directly to my own §11a finding below: I re-ran source-freshness.sh live against today's date (2026-09-26) rather than trusting the prior instance's 2026-09-05 numbers, and confirmed the defect still holds and has aged (now ~3.5-4mo overdue on the recomputed due date, not 3mo).",
-      "fix_hint": null,
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "This file is not a built artifact under site/clients; rule scoped to build-output audits.",
+      "fix_hint": "",
       "blocking": false
     },
     {
@@ -57,35 +63,37 @@
       "rule_index": "24a",
       "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.",
       "verdict": "PASS",
-      "evidence": "L71 Quality line is a clean anchor (stage + date + one per-class SHA parenthetical, nothing trailing after the date) — no hand-typed narrative tail. The pin list correctly omits a `technical@<sha>` entry entirely, consistent with technical's outstanding REVISE verdict (an unresolved class doesn't earn a pin) rather than being a stamping defect.",
-      "fix_hint": null,
+      "evidence": "Line 71: '**Quality:** compendium-audited 2026-09-26 (writing@08946dd8 story@08946dd8 behavior@1c765f2 pedagogy@77991802 strategy@08946dd8 slides@c0c37913)' is a clean anchor with no trailing narrative prose concatenated onto it.",
+      "fix_hint": "",
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
-      "rule_index": "37",
+      "rule_index": 37,
       "rule_lead": "Measure the defect before proposing the fix, and again before repeating it to the maintainer.",
-      "verdict": "PASS",
-      "evidence": "Applied directly: re-ran source-freshness.sh against today's date (2026-09-26) before re-filing the §11a finding, rather than repeating the prior instance's dated numbers verbatim; confirmed the finding is unchanged in kind and worse in magnitude, not stale.",
-      "fix_hint": null,
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Judge-owned process rule about punch-list defects, not a claim inside this file; the required measurement for THIS run's own confirmation was executed (see confirmation_run block) and is not something the file content can violate.",
+      "fix_hint": "",
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
-      "rule_index": "49",
+      "rule_index": 49,
       "rule_lead": "An instruction whose violation leaves the output identical is not enforced by wording — it needs a measurement or a test.",
-      "verdict": "PASS",
-      "evidence": "Applied directly: ran prefill-instance.js --write before judging (real output: '122 rows parked ... 83 owed to you'), and this instance runs --merge after writing, per the contract, rather than skipping either step because the merged ledger looks the same either way.",
-      "fix_hint": null,
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Meta-rule about protocol/tooling design, not a student-facing content claim in this file.",
+      "fix_hint": "",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
-      "rule_index": "1",
+      "rule_index": 1,
       "rule_lead": "Source URL + type label — mandatory.",
       "verdict": "PASS",
-      "evidence": "Every Sources entry (L129-142) carries a [type] label + URL except control-theory-commons, which correctly takes the cultural-vocab carve-out (L132: 'un-attributed by design and correctly so'). Vocabulary-claim discipline holds: Stance L156 states 'a hunt across Every, Larson, Horthy, Osmani, Curran and Charles found nobody publishing this progression, so it is ours and owes nothing' rather than asserting unproven field convergence.",
-      "fix_hint": "google-beyondprod's `[capability]` label (L139) sits outside §1's enumerated taxonomy (practitioner direct/analysis/academic/etc.); harmless here since the stamp fully self-documents its scope, but worth a canonical vocabulary-provenance label if this pattern recurs elsewhere.",
+      "evidence": "Every entry in the Sources ledger (lines 129-142) carries a URL and an evidence-type label, except control-theory-commons which correctly uses the [cultural-vocab] carve-out with no URL (line 132). google-beyondprod (line 139) uses '[capability]', which matches this repo's established convention for platform/architecture-documentation citations (same label used at curriculum/lectures/where-the-rule-could-live.md:59,61) rather than the primary person-authored-claim taxonomy -- not a violation. Scope clause honored: no [label] tags appear in student-facing body prose (lines 1-67), only in the backing block.",
+      "fix_hint": "",
       "blocking": false
     },
     {
@@ -93,98 +101,120 @@
       "rule_index": "1a",
       "rule_lead": "OODA paraphrase ≠ primary source.",
       "verdict": "PASS",
-      "evidence": "argyris-schon (L131) and google-beyondprod (L139) stamps both document a genuine re-fetch ('the Taylor & Francis page 403s; this mirror is the primary text' / 'Re-fetched 2026-08-29... still live: page uses \"blast radius\" twice'), not paraphrase carried forward. ng-three-loops (L140) is verified 'via search index (direct x.com fetch 402s)' with the specific loop-duration quotes reproduced, not summarized.",
-      "fix_hint": null,
+      "evidence": "Sources ledger quotes practitioners verbatim rather than paraphrasing (e.g. line 137 Huntley: '\"The name of the game is that you only have approximately 170k of context window to work with...\"'; line 138 Horthy: '\"designing your ENTIRE WORKFLOW around context management...\"').",
+      "fix_hint": "",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
-      "rule_index": "2",
+      "rule_index": 2,
       "rule_lead": "Freshness rule — 6 months.",
       "verdict": "PASS",
-      "evidence": "Ran `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-26 curriculum/lectures/the-loop-half-filled.md` myself -> real output: 'summary: 0 block · 2 warn · 4 info · 8 ok · 0 suspect · 0 divergent'. Durable accounts (conant-ashby-1970, karpathy-context-engineering, argyris-schon, control-theory-commons, google-beyondprod) correctly carry due:none; currency claims (horthy-wsff, ng-three-loops, osmani-outer-loop, ronacher-coming-loop) correctly recomputed to publication-date+6mo. Zero BLOCK.",
-      "fix_hint": null,
+      "evidence": "Ran `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-26`: this file appears only under CAVEAT/WARN rows (willison due:cohort, huntley due:2026-01-14 past-due, horthy-ace-fca due:2026-06-03 past-due, conant-ashby/scholten due:none accepted-caveat, anthropic-reward-hacking due:2027-01-31), never under a BLOCK-class result (CORRECT/GONE/STALE/NEEDED/never-checked). huntley-context-window and horthy-ace-fca being past their due dates is the expected WARN state the script exists to surface, not a script failure -- both are foundational/dated-account citations per §2a with the caveat already recorded in prose.",
+      "fix_hint": "",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
-      "rule_index": "3",
-      "rule_lead": "Zombie stat guard.",
+      "rule_index": "2a",
+      "rule_lead": "The clock is on the CLAIM, not the source's age — durable-account carve-out.",
       "verdict": "PASS",
-      "evidence": "No round-number failure-rate zombie stat present in body or backing block. [UNVERIFIED STAT] discipline applied correctly: horthy-wsff stamp (L134) reads 'Do NOT import its Faros AI incident statistics... treat as [UNVERIFIED STAT]'; horthy-ace-fca stamp (L138) reads 'Do not present the 40-60% figure as a current measured constant.'",
-      "fix_hint": null,
+      "evidence": "conant-ashby-1970 and scholten-primer and argyris-schon are all foundational works stamped due:none, cited as framework provenance (vision-layer, 'none-owed' in Claims ledger) rather than as currency claims -- correct use of the carve-out.",
+      "fix_hint": "",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
-      "rule_index": "4",
+      "rule_index": "2b",
+      "rule_lead": "`due:none` scopes the CITATION, not the SOURCE — one URL doing two jobs needs two stamp lines.",
+      "verdict": "PASS",
+      "evidence": "karpathy-context-engineering (line 135) explicitly splits the two jobs: 'the popularising moment... is a completed event; term-currency is willison-context-engineering's job on the next line, not this stamp's.' willison-context-engineering (line 136) then carries its own due:cohort stamp for the live-position claim. google-beyondprod (line 139) likewise states 'due:none -- vocabulary-provenance claim... not a live product-capability claim.' This is exactly the split the rule requires, done explicitly rather than by accident.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 3,
+      "rule_lead": "Zombie stat guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "grep -niE '95%|85%|80% (fail|never)' curriculum/lectures/the-loop-half-filled.md -> 0 hits; no round-number failure stats in the file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 4,
       "rule_lead": "Hold short OODA loose.",
       "verdict": "PASS",
-      "evidence": "Stance L157: 'four practitioners nest loops on four different axes (time, ownership, orchestration layer, who-judges-done), so \"same shape at three altitudes\" is a shape we see, not one the field agrees on' — single-source-labeled, no unearned convergence claim.",
-      "fix_hint": null,
+      "evidence": "Stance block (line 157) explicitly declines convergence: 'four practitioners nest loops on four different axes... so \"same shape at three altitudes\" is a shape we see, not one the field agrees on.' The body itself frames this as vision-layer pattern-naming, not a convergence claim.",
+      "fix_hint": "",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
-      "rule_index": "7",
+      "rule_index": 7,
       "rule_lead": "Vision × Detail split.",
       "verdict": "PASS",
-      "evidence": "Claims ledger (L109-126) cleanly splits vision claims (<- none-owed: soil-line, near-half-lived, one-loop-three-sizes, etc.) from borrowed/detail claims each with a real source (closed-loop-controller <- control-theory-commons; cut-the-signal-it-drifts <- anthropic-reward-hacking; context-engineering-term <- karpathy/willison; double-loop-learning <- argyris-schon; branch-is-the-permission <- google-beyondprod).",
-      "fix_hint": null,
+      "evidence": "Claims ledger (lines 108-126) tags each claim vision/borrowed/detail correctly: vision claims (soil-line, near-half-lived, local-success-global-drift, etc.) are marked '<- none-owed'; borrowed/detail claims (closed-loop-controller, cut-the-signal-it-drifts, context-engineering-term, double-loop-learning, branch-is-the-permission) each point to a backed Source entry.",
+      "fix_hint": "",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
-      "rule_index": "10",
+      "rule_index": 10,
       "rule_lead": "No \"What research says\" callout boxes.",
-      "verdict": "PASS",
-      "evidence": "Body (L1-68) carries zero inline citations or callout boxes. Maintainer note L92 'Attribution discipline' confirms this is deliberate: 'names stay maintainer-side throughout... no practitioner is credited in this body.'",
-      "fix_hint": null,
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "grep -niE 'research says|studies show' curriculum/lectures/the-loop-half-filled.md -> 0 hits.",
+      "fix_hint": "",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
-      "rule_index": "11",
+      "rule_index": 11,
       "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
       "verdict": "PASS",
-      "evidence": "File carries a full <!-- backing --> block (L104-166) with a Sources ledger, one stamp per practitioner citation, per `curriculum/backing-format.md` — the sanctioned current implementation that absorbed the standalone 'Source verification' section this rule names.",
-      "fix_hint": null,
+      "evidence": "This file uses the per-source freshness-stamp system (§11a) in place of the older prose section: every Sources-ledger entry (lines 129-142) carries `[checked:... result:... due:...]`, an evidence-type label, and several carry explicit fallback framing inline (e.g. line 133 anthropic-reward-hacking: 'fallback: the claim stands on the M1 lived experience and needs no citation in body.'). §11a states this stamp format is the generated discharge of §11, superseding hand-narrated verification sections.",
+      "fix_hint": "",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": "11a",
       "rule_lead": "Each listed source carries a freshness STAMP, not just a to-do.",
-      "verdict": "REVISE",
-      "evidence": "L138 horthy-ace-fca stamp reads `[checked:2026-07-31 result:CAVEAT due:asap]`. §11a's own grammar restricts `due:asap` to results in {CORRECT,GONE,NEEDED,STALE}; CAVEAT is not in that set. Its sibling stamp one line above (L137, huntley-context-window) carries the identical result (CAVEAT) but a computed dated due (`due:2026-01-14`) instead — the correct pattern. I re-ran `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-26 curriculum/lectures/the-loop-half-filled.md` myself (today, not the prior instance's 2026-09-05): huntley-context-window correctly WARNs ('CAVEAT past its own due:2026-01-14 — re-verify or re-stamp'); horthy-ace-fca lands in the INFO bucket as 'accepted caveat' with no WARN at all, confirming the script's own logic treats a CAVEAT-with-due:asap as a permanent exemption, same bucket as due:none/due:cohort. horthy-ace-fca's own prose (L138) names its true anchor ('last substantively edited 2025-12-03'); computed pub+6mo = 2026-06-03 — as of today (2026-09-26) that is roughly 3.5-4 months overdue, i.e. the defect has aged since the last technical verdict, not resolved. The grammar slip is not cosmetic: it is the specific mechanism hiding this source's real staleness from the WARN list a pre-cohort audit reads for actionable debt — the exact harm §11a exists to prevent ('A bare verify-X rots... every cohort re-verifies from scratch').",
-      "fix_hint": "Replace `due:asap` with the computed `due:2026-06-03` on the horthy-ace-fca stamp (L138), mirroring the fix already landed on huntley-context-window (L137) one line above it in the same Sources list.",
-      "blocking": true
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": "13",
-      "rule_lead": "Inference beyond source — absence licenses only absence.",
       "verdict": "PASS",
-      "evidence": "Stance's 'would-move-it' (L159) and 'known omission' (L158) sections state falsifiability conditions ('a practitioner publishing a nested-loop model on the social-scope axis... would move one-loop-three-sizes from ours to the field's') without asserting such evidence exists or inventing why it is missing.",
-      "fix_hint": null,
+      "evidence": "Confirmation greps for this run: `grep -cF 'horthy-ace-fca \\`[checked:2026-07-31 result:CAVEAT due:2026-06-03]\\`'` -> 1; `grep -cF 'result:CAVEAT due:asap'` -> 0. The fix under confirmation (due:asap -> due:2026-06-03, publication+6mo from the 2025-12-03 substantive edit) is on disk and correctly formatted. `source-freshness.sh --target 2026-09-26` now lists it under WARN as intended, no longer hidden.",
+      "fix_hint": "",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
-      "rule_index": "14",
-      "rule_lead": "A green check must measure the fact, not a proxy that co-varies with it.",
+      "rule_index": 13,
+      "rule_lead": "Inference beyond source — absence licenses only absence.",
       "verdict": "PASS",
-      "evidence": "Applied to my own §11a finding: I did not trust source-freshness.sh's INFO/accepted-caveat bucket at face value — I re-ran it live and read which bucket horthy-ace-fca vs huntley-context-window land in, confirming the proxy (bucket label) and the fact (real staleness) diverge exactly where §11a predicts.",
-      "fix_hint": null,
+      "evidence": "Stance's 'known omission' paragraph (line 158) is transparent about what's skipped and why ('It is banked in theory-plan.md and taught in supplementary/the-context-ceiling.md') rather than inferring anything from the absence. 'would-move-it' (line 159) is stated as a hypothetical trigger, not an assertion.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 14,
+      "rule_lead": "A green check must measure the fact, not a proxy that co-varies with it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No verification instrument/grep/gate is authored or referenced inside this student-facing file for this rule to apply to.",
+      "fix_hint": "",
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
-      "rule_index": "37",
+      "rule_index": 37,
       "rule_lead": "Context-loading tiers as staged progression.",
-      "verdict": "PASS",
-      "evidence": "Body's Context-law bullet (L20) only names an auto-load surface (CLAUDE.md/CLAUDE.local.md) the student already ran hands-on in M2/M3; maintainer 'Placement' note (L88) states this file is 'Consolidation and recognition, NOT new teaching' — the rule's anti-pattern (lecturing context economy without exposing surfaces) targets first-teaching beats, not a closer recapping a surface already run.",
-      "fix_hint": null,
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "This lecture is a consolidation closer (maintainer line 88: 'Consolidation and recognition, NOT new teaching'), recognizing the already-taught Context law rather than introducing/staging the three-tier context-loading progression; §37's staged-reveal diagnostic targets new teaching beats.",
+      "fix_hint": "",
       "blocking": false
     },
     {
@@ -196,7 +226,7 @@
       "na_reason": "no cloud/remote-feature claim in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -208,7 +238,7 @@
       "na_reason": "no scheduled-task claim in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -220,7 +250,7 @@
       "na_reason": "rule targets compendium/reference-capability files, not lecture body prose",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -232,7 +262,7 @@
       "na_reason": "process rule for the authoring session, not a check against the shipped body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -244,7 +274,7 @@
       "na_reason": "no template/macro-substitution claim in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -256,7 +286,7 @@
       "na_reason": "no platform-mechanic-bug/defensive-recovery pattern in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -268,7 +298,7 @@
       "na_reason": "process rule for the authoring session, not independently checkable against the shipped artifact",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -280,7 +310,7 @@
       "na_reason": "body makes no runtime-behavior claim that would need a live probe",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -292,7 +322,7 @@
       "na_reason": "body names none of plan-mode/connectors/scheduling/subagents/turn-streaming specifics this fact table covers",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -304,7 +334,7 @@
       "na_reason": "no such correction pattern in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -316,7 +346,7 @@
       "na_reason": "no '-> check_X.md' compendium pointer written anywhere in this student-facing file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -328,7 +358,7 @@
       "na_reason": "no transcript-selection content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -340,7 +370,7 @@
       "na_reason": "no hook/env content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -352,7 +382,7 @@
       "na_reason": "no hook-parsing content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -364,7 +394,7 @@
       "na_reason": "no 'open Claude Code' language in body; file has no exercise/session-start prose at all",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -376,7 +406,7 @@
       "na_reason": "no cross-cwd/session-resume content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -388,7 +418,7 @@
       "na_reason": "no session-recovery content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -400,7 +430,7 @@
       "na_reason": "no non-default-runtime content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -412,7 +442,7 @@
       "na_reason": "no MCP/SQLite/knowledge-graph infrastructure proposal in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -424,7 +454,7 @@
       "na_reason": "no external-org content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -436,7 +466,7 @@
       "na_reason": "no destructive operations described in this lecture",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -448,7 +478,7 @@
       "na_reason": "no internet-artifact-import content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -460,7 +490,7 @@
       "na_reason": "no cross-repo private-link content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -472,7 +502,7 @@
       "na_reason": "process rule for workbook builds, not applicable to a lecture source file's own content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -484,7 +514,7 @@
       "na_reason": "not a directory-creation context",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -496,7 +526,7 @@
       "na_reason": "process rule for the maintainer's own session cadence, not body content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -508,7 +538,7 @@
       "na_reason": "no mechanical-test-layer content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -520,7 +550,7 @@
       "na_reason": "no LLM-orchestration tooling content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -532,7 +562,7 @@
       "na_reason": "no hook-lint content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -544,7 +574,7 @@
       "na_reason": "this is student-facing curriculum content, not a canon/rules doc; no orphan-doc question arises",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -556,7 +586,7 @@
       "na_reason": "no fixture-numbering/runner content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -568,7 +598,7 @@
       "na_reason": "no judge-runner-script assertion in body; my own use of source-freshness.sh below honors its exit status directly",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -580,7 +610,7 @@
       "na_reason": "process rule about the writing-class dispatch, not this instance's own class or this file's content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -592,7 +622,7 @@
       "na_reason": "no coverage-tool content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -604,7 +634,7 @@
       "na_reason": "AE101 has no Cowork runtime (training-architecture.md: CLI + Desktop today) and body makes no Cowork claim",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -616,7 +646,7 @@
       "na_reason": "instance-JSON mechanics, not body content; no maintainer_acceptance override exists on this file for the technical class",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -628,7 +658,7 @@
       "na_reason": "no Cowork content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -640,7 +670,7 @@
       "na_reason": "process rule for audit dispatch scoping, not this file's content; my scope was handed by the dispatcher, not derived by me",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -652,7 +682,7 @@
       "na_reason": "no shell-executing prompt content — file has zero fenced Prompt blocks",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -664,7 +694,7 @@
       "na_reason": "this verdict cites no strategy doc as evidence for any finding",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -676,7 +706,7 @@
       "na_reason": "no student-typed shell command anywhere in this file (no prompt blocks)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -688,7 +718,7 @@
       "na_reason": "no skill-authoring content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -700,7 +730,7 @@
       "na_reason": "no state.json/hand-off content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -712,7 +742,7 @@
       "na_reason": "no tmux-runner content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -724,7 +754,7 @@
       "na_reason": "no tmux-runner content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -736,7 +766,7 @@
       "na_reason": "no duplicate always-loaded content or speculative gate found in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -748,7 +778,7 @@
       "na_reason": "process rule for the stamping script; out of scope for a read-only judge that does not stamp",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -760,7 +790,7 @@
       "na_reason": "process rule about update-quality.sh/persona sha mechanics, not body content; my own body_sha above was computed via shasum -a 256 at read time, not fabricated",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -772,7 +802,7 @@
       "na_reason": "body contains no forward-looking automation / what-could-be-wired-later prose",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -784,7 +814,7 @@
       "na_reason": "process rule for judge dispatch; this instance's own compliance is demonstrated by the evidence carried in every non-N/A row, not a body-content check",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -796,7 +826,7 @@
       "na_reason": "no hook-matcher content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -808,7 +838,7 @@
       "na_reason": "no cache-vs-artifact content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -820,7 +850,7 @@
       "na_reason": "no deletion-candidate content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -832,7 +862,7 @@
       "na_reason": "no hook-tracking content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -844,7 +874,7 @@
       "na_reason": "no staleness-sweep content in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -856,7 +886,7 @@
       "na_reason": "rule concerns audit-eval-coverage.js/check-instance-evidence.js parser design, an internal-tooling axis this lecture's body never touches",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -868,7 +898,7 @@
       "na_reason": "process rule about scan-stale-classes; not a body-content check (this run itself is an instance of a rule-side re-verification, not a defect the file exhibits)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -880,7 +910,7 @@
       "na_reason": "process rule about eval-judge performance trajectory, not body content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -892,7 +922,7 @@
       "na_reason": "process rule about judge-hillclimb benches, not body content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -904,7 +934,7 @@
       "na_reason": "no thinking-effort / --effort claim anywhere in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -916,7 +946,7 @@
       "na_reason": "no cross-file contradiction surfaced in this audit for me to diagnose",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -928,7 +958,7 @@
       "na_reason": "no unreconciled dual-canonical-value disagreement found in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -940,7 +970,7 @@
       "na_reason": "this file is a finished consolidation closer, not a post-OODA curriculum-implication proposal in flight",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -952,7 +982,7 @@
       "na_reason": "process rule for the maintainer's own workflow, not checkable post-hoc against a shipped file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -964,7 +994,7 @@
       "na_reason": "process rule for the authoring session, not checkable post-hoc against the shipped file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -976,7 +1006,7 @@
       "na_reason": "process rule for the authoring session, not checkable post-hoc against the shipped file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -988,7 +1018,7 @@
       "na_reason": "no adoption/productivity percentage in body or as a headline claim; the one such figure in the backing ledger (horthy-ace-fca's 40-60% utilisation) is explicitly caveated and never surfaced to students",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1000,7 +1030,7 @@
       "na_reason": "process rule about OODA fetch methodology (priming a summarizer with the target word); not independently checkable against this shipped, already-cited artifact",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1012,7 +1042,7 @@
       "na_reason": "process rule about research-discovery methodology, not checkable against a finished, already-shipped citation ledger",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1024,7 +1054,7 @@
       "na_reason": "lecture has zero fenced Prompt blocks and no exercise-phase structure (has_prompt_blocks:false); the fence-vs-body mechanism this rule governs does not exist here",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1036,7 +1066,7 @@
       "na_reason": "body teaches the governor concept as recognition, but does not itself author a new memory-file rule the student is asked to save",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1048,7 +1078,7 @@
       "na_reason": "no student-agent interaction or push-back pattern exists in this pure consolidation lecture (no prompts, no exercise)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1060,7 +1090,7 @@
       "na_reason": "body describes no hook/judge/Ralph-loop/gating machinery being built by the student or the curriculum",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1072,7 +1102,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1084,7 +1114,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1096,7 +1126,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1108,7 +1138,7 @@
       "na_reason": "no fenced Prompt blocks / skill invocations in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1120,7 +1150,7 @@
       "na_reason": "no fenced Prompt blocks in this file to chain",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1132,7 +1162,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1144,7 +1174,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1156,7 +1186,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1168,7 +1198,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1180,7 +1210,7 @@
       "na_reason": "no fenced Prompt blocks / runtime forks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1192,7 +1222,7 @@
       "na_reason": "no fenced Prompt blocks / runtime forks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1204,7 +1234,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1216,7 +1246,7 @@
       "na_reason": "no fenced Prompt blocks in this file for a student to run citation discipline inside",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1228,7 +1258,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1240,7 +1270,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1252,7 +1282,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1264,7 +1294,7 @@
       "na_reason": "no fenced Prompt / plan-mode blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1276,7 +1306,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1288,7 +1318,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1300,7 +1330,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1312,7 +1342,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1324,7 +1354,7 @@
       "na_reason": "no prompt bodies present in this file to gate",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1336,7 +1366,7 @@
       "na_reason": "Agents-101-scoped rule and this file has no fenced Prompt blocks regardless",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1348,7 +1378,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1360,7 +1390,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1372,7 +1402,7 @@
       "na_reason": "I am a read-only judge proposing no edit to student-facing body text or prompt bodies myself; the one finding I file (§11a) is a maintainer-block source-stamp fix, exempt from this rule's two named surfaces",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1384,7 +1414,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1396,7 +1426,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1408,7 +1438,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1420,7 +1450,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1432,7 +1462,7 @@
       "na_reason": "no {{prompt:}} markers or fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1444,7 +1474,7 @@
       "na_reason": "no fenced Prompt blocks in this file (module references M1-M6 in body prose are the sanctioned §3 arc carve-out per the maintainer Placement note, not prompt prose)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1456,7 +1486,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1468,7 +1498,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1480,7 +1510,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1492,7 +1522,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1504,7 +1534,7 @@
       "na_reason": "no fenced Prompt blocks / save-the-rule prompts in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1516,7 +1546,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1528,7 +1558,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1540,7 +1570,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1552,7 +1582,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1564,7 +1594,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1576,7 +1606,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1588,7 +1618,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1600,7 +1630,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1612,7 +1642,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1624,7 +1654,7 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1636,7 +1666,7 @@
       "na_reason": "no fenced Prompt blocks / closing-mechanic prompts in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     },
     {
@@ -1648,10 +1678,161 @@
       "na_reason": "no fenced Prompt blocks in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6e7e2bd0990ab405133ccf0aa3b29ecec131a940ebc407d93ddf8c16ebb0d1ca",
+      "carried_from": "e9ac8efb74956dfe4123710428350eec067089ef92327027c50692d320949c8c",
       "carried_shape": "1e915cfba4fe7a67"
     }
   ],
-  "blocking_findings_count": 1,
-  "nonblocking_findings_count": 0
+  "platform_claims_checked": [
+    {
+      "claim": "CLAUDE.md and CLAUDE.local.md steer because the agent conditions every move on what they hold",
+      "line": 20,
+      "verdict": "PASS",
+      "source": "compendium"
+    }
+  ],
+  "citations_checked": [
+    {
+      "line": 129,
+      "claim": "conant-ashby-1970 (Good Regulator theorem)",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": null,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 130,
+      "claim": "scholten-primer",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": null,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 131,
+      "claim": "argyris-schon (double-loop learning)",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 132,
+      "claim": "control-theory-commons",
+      "label_present": true,
+      "url_present": false,
+      "url_alive": null,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 133,
+      "claim": "anthropic-reward-hacking",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": null,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 134,
+      "claim": "horthy-wsff",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": null,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 135,
+      "claim": "karpathy-context-engineering",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": null,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 136,
+      "claim": "willison-context-engineering",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": null,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 137,
+      "claim": "huntley-context-window",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 138,
+      "claim": "horthy-ace-fca (fixed stamp under confirmation)",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 139,
+      "claim": "google-beyondprod",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 140,
+      "claim": "ng-three-loops",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": null,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 141,
+      "claim": "osmani-outer-loop",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 142,
+      "claim": "ronacher-coming-loop",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true
+    }
+  ],
+  "skills_referenced": [],
+  "urls_sampled": [
+    {
+      "url": "https://hbr.org/1991/05/teaching-smart-people-how-to-learn",
+      "alive": true,
+      "status_code": 200
+    },
+    {
+      "url": "https://addyosmani.com/blog/own-the-outer-loop/",
+      "alive": true,
+      "status_code": 200
+    },
+    {
+      "url": "https://lucumr.pocoo.org/2026/6/23/the-coming-loop/",
+      "alive": true,
+      "status_code": 200
+    },
+    {
+      "url": "https://ghuntley.com/ralph/",
+      "alive": true,
+      "status_code": 200
+    },
+    {
+      "url": "https://cloud.google.com/docs/security/beyondprod",
+      "alive": true,
+      "status_code": 200
+    }
+  ],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "Confirmation run for the horthy-ace-fca due:asap -> due:2026-06-03 fix (commit d60144b6); confirmed on disk (see confirmation_run) and confirmed live in source-freshness.sh's WARN output. This class judge's pedagogy scope is limited per its own template (curriculum/evals/judges/technical.md) to check_pedagogy sub-rules 16/22/23/36/37; only #37 appears in the derive-class-brief output (the others were already resolved/parked by shape hash) so only #37 is rowed here, per _dispatch-preamble.md Mechanics #4 ('a rule that is not in your brief gets no row from you'). Ran prefill-instance.js --merge after writing this instance to splice the remaining parked rows for check_platform_and_boundaries.md, check_research_claims.md, and check_pedagogy.md (the latter's non-technical-owned rows are parked/N/A carried from the pedagogy judge's own instance, not re-derived by this class). Full class judgement performed, not just the one confirmed line -- read entire body, maintainer block and backing block."
 }

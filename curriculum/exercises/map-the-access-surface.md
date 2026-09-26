@@ -95,8 +95,8 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-26 (writing@08946dd8 story@324b81d7 behavior@64d17eea pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
-- judges @f307fa46: writing PASS (verify-refuted), story PASS, technical REVISE (1/2 see instances/ae101--exercise--map-the-access-surface.technical.json), behavior PASS (1 finding see instances/ae101--exercise--map-the-access-surface.behavior.json), pedagogy PASS (drift-recheck), strategy PASS, slides PASS (1 finding see instances/ae101--exercise--map-the-access-surface.slides.json)
+**Quality:** compendium-audited 2026-09-26 (writing@08946dd8 story@324b81d7 technical@25075e46 behavior@64d17eea pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
+- judges @25075e46: writing PASS (verify-refuted), story PASS, technical PASS (2 findings see instances/ae101--exercise--map-the-access-surface.technical.json), behavior PASS (1 finding see instances/ae101--exercise--map-the-access-surface.behavior.json), pedagogy PASS (drift-recheck), strategy PASS, slides PASS (1 finding see instances/ae101--exercise--map-the-access-surface.slides.json)
 
 **L51's "the two-window move Module 3 installs" stays (Antti 2026-08-30, family ruling with `open-the-side-quest.md` L53):** theory-spine recall at the moment of use, not self-narration — `check_student_facing.md` §33 judges should not re-flag either twin.
 

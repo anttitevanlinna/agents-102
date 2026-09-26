@@ -475,6 +475,20 @@ first=$(awk '/<!-- maintainer -->/{m=1;next} m && NF{print;exit}' "$TMP/t28.md")
 if [[ "$first" == \*\*Quality:* ]]; then pass=$((pass+1)); echo "  ok   T28 Quality block opens the maintainer block after a stamp"; else fail=$((fail+1)); echo "  FAIL T28 first maintainer line: $first"; fi
 assert_grep "$TMP/t28.md" 'A note.'                   'T28 the note survives the hoist'
 
+
+# T29 — a sim trace bound to the pre-stamp file follows the stamp, like body_sha;
+# a trace recording some other version stays stale
+SIMD="$TMP/sim"; mkdir -p "$SIMD"; export QUALITY_SIM_DIR="$SIMD"
+printf '# Ex\n\nBody.\n\n<!-- maintainer -->\n' > "$TMP/t29.md"
+sha29=$(shasum -a 256 "$TMP/t29.md" | awk '{print $1}')
+printf '{"content_sha":"%s","phases":[]}\n' "$sha29" > "$SIMD/ae101--t29.persona.json"
+printf '{"content_sha":"%s","phases":[]}\n' "$(printf x | shasum -a 256 | awk '{print $1}')" > "$SIMD/ae101--t29.behavior.json"
+rc=$(run "$TMP/t29.md" --writing PASS)
+new29=$(shasum -a 256 "$TMP/t29.md" | awk '{print $1}')
+assert_grep "$SIMD/ae101--t29.persona.json" "$new29"   'T29 matching trace advances to the stamped file'
+if grep -q "$new29" "$SIMD/ae101--t29.behavior.json"; then fail=$((fail+1)); echo "  FAIL T29 a stale trace was advanced"; else pass=$((pass+1)); echo "  ok   T29 a stale trace stays stale"; fi
+unset QUALITY_SIM_DIR
+
 echo "──────────────────────────────"
 echo "update-quality.test.sh: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]

@@ -99,13 +99,14 @@ function scan(repo) {
   const dir = path.join(repo, REL_DIR);
   const drift = [];
   const skipped = [];
-  for (const base of fs.readdirSync(dir).filter(f => f.endsWith('.json')).sort()) {
+  const names = fs.readdirSync(dir).filter(f => f.endsWith('.json')).sort();
+  for (const base of names) {
     const r = expectedName(repo, base, find);
     if (r.ok) continue;
     if (r.skip) { skipped.push({ base, reason: r.skip }); continue; }
     drift.push({ base, want: r.want, training: r.training, declared: r.declared });
   }
-  return { drift, skipped };
+  return { drift, skipped, scanned: names.length };
 }
 
 function applyFix(repo, drift) {
@@ -142,8 +143,8 @@ function applyFix(repo, drift) {
 
 function main(argv) {
   const i = argv.indexOf('--repo');
-  const repo = i === -1 ? process.cwd() : path.resolve(argv[i + 1]);
-  const { drift, skipped } = scan(repo);
+  const repo = i === -1 ? path.resolve(__dirname, '../../..') : path.resolve(argv[i + 1]);
+  const { drift, skipped, scanned } = scan(repo);
 
   if (argv.includes('--fix')) {
     const { renamed, dropped } = applyFix(repo, drift);
@@ -164,7 +165,12 @@ function main(argv) {
     console.log('Run with --fix to rename them.');
     return 1;
   }
-  console.log(`instance names OK (${skipped.length} not derivable)`);
+  // A skip is an instance nothing can place; rename it or retire it.
+  if (skipped.length || !scanned) {
+    console.log(`\n${scanned} instances scanned · ${skipped.length} not derivable — FAIL`);
+    return 1;
+  }
+  console.log(`instance names OK (${scanned} instances)`);
   return 0;
 }
 

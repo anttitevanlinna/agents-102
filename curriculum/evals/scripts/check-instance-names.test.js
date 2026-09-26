@@ -147,3 +147,27 @@ test('undecidable instances are skipped with a reason, never guessed at', () => 
   assert.match(expectedName(repo, 'broken.writing.json', find).skip, /unparseable/);
   assert.match(expectedName(repo, 'nofile.writing.json', find).skip, /`file` field/);
 });
+
+// The CLI verdict fails closed: a skip is an unresolved record, and an empty
+// scan looked at nothing. Either one reading "OK" is a green that means nothing.
+const cli = (args, cwd) => { try { return { code: 0, out: execFileSync('node', [path.join(__dirname, 'check-instance-names.js'), ...args], { cwd, encoding: 'utf8' }) } } catch (e) { return { code: e.status, out: String(e.stdout) + String(e.stderr) } } }
+
+test('CLI: a skipped instance fails the gate', () => {
+  const repo = fixture();
+  write(repo, 'ae101--reference--mcp-and-connectors.writing.json', { file: 'curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md' });
+  assert.equal(cli(['--repo', repo]).code, 0);
+  write(repo, 'claude-basics--cross_module.json', {});
+  const r = cli(['--repo', repo]);
+  assert.equal(r.code, 1, r.out);
+  assert.match(r.out, /claude-basics--cross_module\.json/);
+});
+
+test('CLI: an empty instances dir fails the gate', () => {
+  const r = cli(['--repo', fixture()]);
+  assert.equal(r.code, 1, r.out);
+  assert.match(r.out, /0 instances/);
+});
+
+test('CLI: without --repo it reads its own repo, whatever the cwd', () => {
+  assert.match(cli([], os.tmpdir()).out, /[1-9]\d* instances/);
+});

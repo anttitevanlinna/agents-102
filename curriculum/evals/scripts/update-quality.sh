@@ -623,6 +623,14 @@ if [[ -n "$file_sha" && -n "$new_file_sha" && "$file_sha" != "$new_file_sha" && 
     sed -i.bak -E "s/(\"body_sha\"[[:space:]]*:[[:space:]]*\")$file_sha(\")/\1$new_file_sha\2/" "${inst[0]}"
     rm -f "${inst[0]}.bak"
   done
+  # Sim traces bind to the file the same way: one that read the pre-write file
+  # still describes it. The sha match is the guard, so any number may match.
+  SIM_DIR="${QUALITY_SIM_DIR:-$SCRIPT_DIR/../sim-cache}"
+  for tr in "$SIM_DIR"/*--"${surface:+$surface--}$slug".{behavior,persona}.json; do
+    [[ -e "$tr" ]] || continue
+    sed -i.bak -E "s/(\"content_sha\"[[:space:]]*:[[:space:]]*\")$file_sha(\")/\1$new_file_sha\2/" "$tr"
+    rm -f "$tr.bak"
+  done
 fi
 
 echo "Updated Quality block in $FILE"

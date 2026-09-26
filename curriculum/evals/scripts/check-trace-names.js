@@ -84,7 +84,7 @@ function scan(repo) {
   const variants = [];
   const skipped = [];
   let names = [];
-  try { names = fs.readdirSync(dir).filter(f => f.endsWith('.json')).sort(); } catch { return { drift, variants, skipped }; }
+  try { names = fs.readdirSync(dir).filter(f => f.endsWith('.json')).sort(); } catch { return { drift, variants, skipped, scanned: 0 }; }
 
   for (const base of names) {
     const r = expectedName(repo, base, idx, find);
@@ -93,7 +93,7 @@ function scan(repo) {
     if (r.skip) { skipped.push({ base, reason: r.skip }); continue; }
     drift.push({ base, want: r.want, file: r.rel });
   }
-  return { drift, variants, skipped };
+  return { drift, variants, skipped, scanned: names.length };
 }
 
 function applyFix(repo, drift) {
@@ -131,9 +131,9 @@ function applyFix(repo, drift) {
 
 function main(argv) {
   const i = argv.indexOf('--repo');
-  const repo = i === -1 ? process.cwd() : path.resolve(argv[i + 1]);
+  const repo = i === -1 ? path.resolve(__dirname, '../../..') : path.resolve(argv[i + 1]);
   const quiet = argv.includes('--quiet');
-  const { drift, variants, skipped } = scan(repo);
+  const { drift, variants, skipped, scanned } = scan(repo);
 
   if (argv.includes('--fix')) {
     const { renamed, dropped } = applyFix(repo, drift);
@@ -144,16 +144,19 @@ function main(argv) {
   }
 
   for (const d of drift) console.log(`${d.base}\n  -> ${d.want}`);
-  if (!quiet) {
-    for (const v of variants) console.log(`variant  ${v.base} — a persona walking ${v.of}, left alone`);
-    for (const s of skipped) console.log(`skip     ${s.base} — ${s.reason}`);
-  }
+  if (!quiet) for (const v of variants) console.log(`variant  ${v.base} — a persona walking ${v.of}, left alone`);
+  // A skip is a trace nothing can check; delete it or fix its name.
+  for (const s of skipped) console.log(`skip     ${s.base} — ${s.reason}`);
   if (drift.length) {
     console.log(`\n${drift.length} trace(s) off the convention <training>--<surface-type>--<slug>.<behavior|persona>.json`);
     console.log('Run with --fix to rename them; duplicates collapse newest-wins.');
     return 1;
   }
-  console.log(`trace names OK (${variants.length} variants, ${skipped.length} not derivable)`);
+  if (skipped.length || !scanned) {
+    console.log(`\n${scanned} traces scanned · ${skipped.length} not derivable — FAIL`);
+    return 1;
+  }
+  console.log(`trace names OK (${scanned} traces, ${variants.length} variants)`);
   return 0;
 }
 

@@ -29,9 +29,9 @@ const TRAININGS = fs.mkdtempSync(path.join(os.tmpdir(), 'include-anchors-'));
 const FIXTURE = 'zz-include-anchor-fixture';
 const DIR = path.join(TRAININGS, FIXTURE);
 
-function run(args) {
+function run(args, env = { TRAININGS_DIR: TRAININGS }) {
   try {
-    return { code: 0, out: execFileSync('node', [SCRIPT, ...args], { encoding: 'utf8', env: { ...process.env, TRAININGS_DIR: TRAININGS } }) };
+    return { code: 0, out: execFileSync('node', [SCRIPT, ...args], { encoding: 'utf8', env: { ...process.env, ...env } }) };
   } catch (e) {
     return { code: e.status, out: (e.stdout || '') + (e.stderr || '') };
   }
@@ -78,8 +78,16 @@ test('maintainer-tail references are exempt — they are read in source', () => 
     });
 });
 
-test('every exercise/lecture link in the shipped trainings resolves', () => {
+test('a scan that finds no training fails', () => {
   const { code, out } = run([]);
+  assert.equal(code, 1, out);
+  assert.match(out, /0 trainings/);
+});
+
+// No TRAININGS_DIR: the real curriculum/trainings/, and it must have looked at some.
+test('every exercise/lecture link in the shipped trainings resolves', () => {
+  const env = { ...process.env }; delete env.TRAININGS_DIR;
+  const { code, out } = run([], env);
   assert.equal(code, 0, `check-include-anchors.js failed:\n${out}`);
-  assert.match(out, /every exercise\/lecture link resolves/);
+  assert.match(out, /OK — [1-9]\d* trainings, [1-9]\d* files, every exercise\/lecture link resolves/);
 });

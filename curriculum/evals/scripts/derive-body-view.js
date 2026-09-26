@@ -41,6 +41,7 @@ const path = require('node:path')
 const REPO = path.resolve(__dirname, '..', '..', '..')
 const OUT_DIR = path.join(REPO, 'curriculum', 'evals', 'body-views')
 const MEM = require('./compendium-drift.js').MEM
+const { instanceKey } = require('./scan-stale-classes.js')
 
 const sha256 = t => crypto.createHash('sha256').update(t, 'utf8').digest('hex')
 
@@ -58,7 +59,7 @@ function slugFor(rel) {
   else if (/curriculum\/lectures$/.test(dir)) surface = 'lecture'
   else if (/curriculum\/trainings\//.test(dir)) surface = 'module'
   const m = dir.match(/curriculum\/trainings\/([^/]+)/)
-  if (m) return `${m[1] === 'agentic-engineering-101' ? 'ae101' : m[1]}--${surface}--${base}`
+  if (m) return `${instanceKey(m[1])}--${surface}--${base}`
 
   // Shared `curriculum/exercises/` and `curriculum/lectures/` carry no training
   // in their path — the instance convention resolves it from the per-training

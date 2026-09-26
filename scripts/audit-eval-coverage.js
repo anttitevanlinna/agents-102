@@ -25,7 +25,7 @@
  *
  * Usage:
  *   node scripts/audit-eval-coverage.js [--surface exercises|lectures|modules|all]
- *   node scripts/audit-eval-coverage.js --training agents-101
+ *   node scripts/audit-eval-coverage.js [--training <key>]   default: every registry training
  *                                       [--json] [--out <path>]
  * Exit 0 always (report tool, not a gate) unless --strict (exit 1 on any hole).
  */
@@ -198,11 +198,7 @@ function theoryManifestLectures() {
 // Instance filenames carry a per-training prefix, and it is NOT the registry key:
 // AE101's instances are `ae101--…` while agents-101 and claude-basics use their
 // own key verbatim. There is no rule to derive here, only a fact to record.
-const INSTANCE_PREFIX = {
-  'agentic-engineering-101': 'ae101',
-  'agents-101': 'agents-101',
-  'claude-basics': 'claude-basics',
-};
+const { instanceKey, evalTrainings } = require('../curriculum/evals/scripts/scan-stale-classes.js');
 
 // AE101's surface set is hand-curated and stays that way: its twelve exercises
 // are a deliberate subset, and its lecture list comes from the theory handbook
@@ -220,7 +216,7 @@ function surfacesFor(trainingKey) {
   if (trainingKey === 'agentic-engineering-101') return SURFACES;
   const t = CR.TRAININGS[trainingKey];
   if (!t) throw new Error(`Unknown training: ${trainingKey}. Known: ${Object.keys(CR.TRAININGS).join(', ')}`);
-  const prefix = INSTANCE_PREFIX[trainingKey] || trainingKey;
+  const prefix = instanceKey(trainingKey);
 
   const modules = [];
   const seen = new Set();
@@ -490,25 +486,77 @@ function scanInstanceIntegrity(fname, suffix, inst, comp) {
   return { bugs, warnings };
 }
 
+// One training's coverage: which mandatory instances are missing, and which
+// applicable rules no instance of the file ever gave a verdict on.
+function auditTraining(training, wantSurface, comp) {
+  const surfaces = surfacesFor(training);
+  const surfaceKeys = wantSurface === 'all' ? Object.keys(surfaces) : [wantSurface];
+  const t = { surfaces: {}, gate_failures: [], total_holes: 0, total_na_by_surface: 0 };
+  for (const sk of surfaceKeys) {
+    const surfaceFiles = surfaces[sk] || [];
+    const comps = SURFACE_COMPENDIA[sk] || [];
+    const surfaceReport = { files: [] };
+    for (const sf of surfaceFiles) {
+      const fileReport = { slug: sf.slug, instanceSlug: sf.instanceSlug, classesPresent: [], compendia: {}, missingClasses: [] };
+      // Which canonical-class instances exist for this surface file.
+      for (const cls of CANONICAL_CLASSES) {
+        const suffix = Object.keys(SUFFIX_TO_CLASS).find(s => SUFFIX_TO_CLASS[s] === cls);
+        if (loadInstance(sf.instanceSlug, suffix)) fileReport.classesPresent.push(cls);
+      }
+      for (const mc of (sf.mandatory || MANDATORY_CLASSES[sk] || [])) {
+        if (!fileReport.classesPresent.includes(mc)) {
+          t.gate_failures.push({ surface: sk, file: sf.slug, missingClass: mc });
+        }
+      }
+      for (const cname of comps) {
+        const C = comp[cname];
+        const mappedClasses = C.evalClasses;
+        const naSet = naRuleSet(sk, sf.slug, cname);
+        const instances = mappedClasses
+          .map(cls => Object.keys(SUFFIX_TO_CLASS).find(s => SUFFIX_TO_CLASS[s] === cls))
+          .map(suffix => suffix && loadInstance(sf.instanceSlug, suffix))
+          .filter(Boolean);
+        if (instances.length === 0) {
+          const { real, na } = splitMissing(C.rules.map(r => r.id), naSet);
+          fileReport.compendia[cname] = { total: C.rules.length, covered: 0, missing: real, na, missingClass: real.length > 0 };
+          if (real.length > 0) fileReport.missingClasses.push({ compendium: cname, needsOneOf: mappedClasses });
+          t.total_holes += real.length;
+          t.total_na_by_surface += na.length;
+          continue;
+        }
+        const keys = verdictedKeys(instances, comp);
+        const allMissing = C.rules.filter(r => !keys.has(`${cname}.md::${r.id}`)).map(r => r.id);
+        const { real, na } = splitMissing(allMissing, naSet);
+        fileReport.compendia[cname] = { total: C.rules.length, covered: C.rules.length - allMissing.length, missing: real, na };
+        t.total_holes += real.length;
+        t.total_na_by_surface += na.length;
+      }
+      surfaceReport.files.push(fileReport);
+    }
+    t.surfaces[sk] = surfaceReport;
+  }
+  return t;
+}
+
 function main() {
   const args = process.argv.slice(2);
   const wantSurface = (args.includes('--surface') ? args[args.indexOf('--surface') + 1] : 'all');
-  const training = (args.includes('--training') ? args[args.indexOf('--training') + 1] : 'agentic-engineering-101');
+  const training = (args.includes('--training') ? args[args.indexOf('--training') + 1] : 'all');
   const asJson = args.includes('--json');
   const strict = args.includes('--strict');
   const gate = args.includes('--gate');
   const outIdx = args.indexOf('--out');
   const outPath = outIdx >= 0 ? args[outIdx + 1] : null;
 
-  const comp = loadCompendia();
-  let surfaces;
-  try { surfaces = surfacesFor(training); }
-  catch (e) { console.error(e.message); process.exit(2); }
-  const surfaceKeys = wantSurface === 'all' ? Object.keys(surfaces) : [wantSurface];
+  // Every training the registry says owns content, so a new training is
+  // audited the day it is registered, not the day someone remembers it.
+  const known = Object.keys(evalTrainings());
+  const keys = training === 'all' ? known : [training];
+  const unknown = keys.filter(k => !known.includes(k));
+  if (unknown.length) { console.error(`Unknown training: ${unknown.join(', ')}. Known: all, ${known.join(', ')}`); process.exit(2); }
 
-  const report = { generated_for: training, surfaces: {}, bugs: [], warnings: [], gate_failures: [] };
-  let totalHoles = 0;
-  let totalNaBySurface = 0;
+  const comp = loadCompendia();
+  const report = { generated_for: training, bugs: [], warnings: [], trainings: {} };
 
   // Structural bug scan: class-field drift + parse errors. Training-agnostic —
   // scans ALL instances (a drifted class field breaks consumers regardless of training).
@@ -524,66 +572,22 @@ function main() {
     report.bugs.push(...integrity.bugs);
     report.warnings.push(...integrity.warnings);
   }
+  for (const k of keys) report.trainings[k] = auditTraining(k, wantSurface, comp);
 
-  for (const sk of surfaceKeys) {
-    const surfaceFiles = surfaces[sk] || [];
-    const comps = SURFACE_COMPENDIA[sk] || [];
-    const surfaceReport = { files: [] };
-    for (const sf of surfaceFiles) {
-      const fileReport = { slug: sf.slug, instanceSlug: sf.instanceSlug, classesPresent: [], compendia: {}, missingClasses: [] };
-      // Which canonical-class instances exist for this surface file.
-      for (const cls of CANONICAL_CLASSES) {
-        const suffix = Object.keys(SUFFIX_TO_CLASS).find(s => SUFFIX_TO_CLASS[s] === cls);
-        if (loadInstance(sf.instanceSlug, suffix)) fileReport.classesPresent.push(cls);
-      }
-      for (const mc of (sf.mandatory || MANDATORY_CLASSES[sk] || [])) {
-        if (!fileReport.classesPresent.includes(mc)) {
-          report.gate_failures.push({ surface: sk, file: sf.slug, missingClass: mc });
-        }
-      }
-      for (const cname of comps) {
-        const C = comp[cname];
-        const mappedClasses = C.evalClasses;
-        const naSet = naRuleSet(sk, sf.slug, cname);
-        const instances = mappedClasses
-          .map(cls => Object.keys(SUFFIX_TO_CLASS).find(s => SUFFIX_TO_CLASS[s] === cls))
-          .map(suffix => suffix && loadInstance(sf.instanceSlug, suffix))
-          .filter(Boolean);
-        if (instances.length === 0) {
-          const { real, na } = splitMissing(C.rules.map(r => r.id), naSet);
-          fileReport.compendia[cname] = { total: C.rules.length, covered: 0, missing: real, na, missingClass: real.length > 0 };
-          if (real.length > 0) fileReport.missingClasses.push({ compendium: cname, needsOneOf: mappedClasses });
-          totalHoles += real.length;
-          totalNaBySurface += na.length;
-          continue;
-        }
-        const keys = verdictedKeys(instances, comp);
-        const allMissing = C.rules.filter(r => !keys.has(`${cname}.md::${r.id}`)).map(r => r.id);
-        const { real, na } = splitMissing(allMissing, naSet);
-        fileReport.compendia[cname] = { total: C.rules.length, covered: C.rules.length - allMissing.length, missing: real, na };
-        totalHoles += real.length;
-        totalNaBySurface += na.length;
-      }
-      surfaceReport.files.push(fileReport);
-    }
-    report.surfaces[sk] = surfaceReport;
-  }
-
-  report.total_holes = totalHoles;
-  report.total_na_by_surface = totalNaBySurface;
+  const gateFailures = Object.entries(report.trainings).flatMap(([k, t]) => t.gate_failures.map(g => ({ training: k, ...g })));
+  const totalHoles = Object.values(report.trainings).reduce((n, t) => n + t.total_holes, 0);
 
   if (outPath) { fs.writeFileSync(outPath, JSON.stringify(report, null, 2)); }
   if (asJson) { process.stdout.write(JSON.stringify(report, null, 2) + '\n'); }
-  else { printHuman(report, comp); }
+  else { printHuman(report); }
 
   if (gate) {
-    if (report.warnings && report.warnings.length) {
+    if (report.warnings.length) {
       process.stderr.write(`\n⚠ ${report.warnings.length} non-gating data-hygiene warning(s) — see report (does not fail the gate).\n`);
     }
-    const fails = report.bugs.length + report.gate_failures.length;
-    if (fails > 0) {
-      process.stderr.write(`\n✗ eval-coverage gate FAILED: ${report.bugs.length} structural bug(s), ${report.gate_failures.length} missing mandatory instance(s).\n`);
-      for (const g of report.gate_failures) process.stderr.write(`  • ${g.surface}/${g.file}: missing ${g.missingClass} instance\n`);
+    if (report.bugs.length + gateFailures.length > 0) {
+      process.stderr.write(`\n✗ eval-coverage gate FAILED: ${report.bugs.length} structural bug(s), ${gateFailures.length} missing mandatory instance(s).\n`);
+      for (const g of gateFailures) process.stderr.write(`  • ${g.training} ${g.surface}/${g.file}: missing ${g.missingClass} instance\n`);
       process.exit(1);
     }
     process.stderr.write('\n✓ eval-coverage gate PASSED (no structural bugs, all mandatory instances present).\n');
@@ -593,20 +597,15 @@ function main() {
 
 function pct(c, t) { return t === 0 ? '—' : `${Math.round((100 * c) / t)}%`; }
 
-function printHuman(report, comp) {
+function printHuman(report) {
   const out = [];
-  out.push('═══ AE101 eval-coverage audit ═══\n');
+  out.push(`═══ eval-coverage audit: ${Object.keys(report.trainings).join(', ')} ═══\n`);
   if (report.bugs.length) {
     out.push(`⚠ structural bugs (${report.bugs.length}):`);
     for (const b of report.bugs) {
       if (b.kind === 'class-field-drift') out.push(`  • class-field-drift  ${b.file}  field="${b.got}" expected="${b.expected}"`);
       else out.push(`  • ${b.kind}  ${b.file}  ${b.detail || ''}`);
     }
-    out.push('');
-  }
-  if (report.gate_failures && report.gate_failures.length) {
-    out.push(`⛔ gate failures — missing mandatory instances (${report.gate_failures.length}):`);
-    for (const g of report.gate_failures) out.push(`  • ${g.surface}/${g.file}: missing ${g.missingClass}`);
     out.push('');
   }
   if (report.warnings && report.warnings.length) {
@@ -628,7 +627,14 @@ function printHuman(report, comp) {
     if (W.length > SHOWN) out.push(`  … and ${W.length - SHOWN} more (use --json for the full list)`);
     out.push('');
   }
-  for (const [sk, sr] of Object.entries(report.surfaces)) {
+  for (const [key, t] of Object.entries(report.trainings)) {
+  out.push(`═══ ${key} ═══`);
+  if (t.gate_failures && t.gate_failures.length) {
+    out.push(`⛔ gate failures — missing mandatory instances (${t.gate_failures.length}):`);
+    for (const g of t.gate_failures) out.push(`  • ${g.surface}/${g.file}: missing ${g.missingClass}`);
+    out.push('');
+  }
+  for (const [sk, sr] of Object.entries(t.surfaces)) {
     out.push(`── ${sk} (${sr.files.length} files) ──`);
     for (const f of sr.files) {
       const compStrs = Object.entries(f.compendia).map(([c, v]) => {
@@ -648,8 +654,9 @@ function printHuman(report, comp) {
     }
     out.push('');
   }
-  out.push(`TOTAL real holes (uncovered, applicable rule×file pairs): ${report.total_holes}`);
-  out.push(`N/A-by-design (structurally inapplicable — not holes): ${report.total_na_by_surface}`);
+  out.push(`${key} real holes (uncovered, applicable rule×file pairs): ${t.total_holes}`);
+  out.push(`${key} N/A-by-design (structurally inapplicable — not holes): ${t.total_na_by_surface}\n`);
+  }
   process.stdout.write(out.join('\n') + '\n');
 }
 
@@ -658,7 +665,6 @@ if (require.main === module) main();
 module.exports = {
   SURFACES,
   surfacesFor,
-  INSTANCE_PREFIX,
   COMPENDIA_NAMESPACE: [...COMPENDIA, ...UNREPORTED_COMPENDIA],
   parseRules,
   parseMovedRules,

@@ -526,12 +526,21 @@ const TRAINING_PREFIX = {
   'agents-101': 'agents-101',
   'claude-basics': 'claude-basics',
 }
+const instanceKey = trainingKey => TRAINING_PREFIX[trainingKey] || trainingKey
+
+// Registry key → instance key for every training that owns content. A cut
+// (`contentKey`) reuses its parent's files and so its instances.
+function evalTrainings() {
+  const { TRAININGS } = require('../../../site/layouts/curriculum.js')
+  return Object.fromEntries(Object.entries(TRAININGS)
+    .filter(([, t]) => !t.contentKey).map(([k]) => [k, instanceKey(k)]))
+}
 
 function trainingOf(relpath, findLinkers, preferredTraining = null) {
   const m = relpath.match(/curriculum\/trainings\/([^/]+)\//)
-  if (m) return TRAINING_PREFIX[m[1]] || m[1]
+  if (m) return instanceKey(m[1])
   const owners = [...new Set(findLinkers ? findLinkers(relpath) : [])]
-    .map(owner => TRAINING_PREFIX[owner] || owner)
+    .map(instanceKey)
   if (preferredTraining && owners.includes(preferredTraining)) return preferredTraining
   if (owners.length === 1) return owners[0]
   return null
@@ -628,6 +637,6 @@ function main(argv) {
   process.exit(2)
 }
 
-module.exports = { TRAINING_PREFIX, gitIo, requireIo, findingIndex, resetFindingIndex, parseHunks, buildLineMeta, changeTags, extractPins, judgesRow, blockRow, promptKeys, filterItems, scanFile, typeOf, trainingOf, linkFinder, CLASSES, EXTRA_CLASSES, crossRow, panelRow, crossState, panelState }
+module.exports = { TRAINING_PREFIX, instanceKey, evalTrainings, gitIo, requireIo, findingIndex, resetFindingIndex, parseHunks, buildLineMeta, changeTags, extractPins, judgesRow, blockRow, promptKeys, filterItems, scanFile, typeOf, trainingOf, linkFinder, CLASSES, EXTRA_CLASSES, crossRow, panelRow, crossState, panelState }
 
 if (require.main === module) main(process.argv.slice(2))

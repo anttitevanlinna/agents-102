@@ -69,12 +69,11 @@ records.
 **The script owns the counts; this section owns the shapes.** Numbers written down here go stale
 the next time anyone edits a body, and a stale number in a punch list reads as a measurement.
 
-- **Unanchored.** The trace's `content_sha` matches no committed version of its file, raw or
-  `expand-md`-expanded. Either it hashed a working-tree state that was never committed on its own,
-  or the hash was not computed at all — a large minority carry 16-hex strings where sha256 is 64.
-  These cannot be aged, only regenerated.
-- **Body-moved.** Student-facing prose changed under the trace. Worst two: `the-far-half` and
-  `the-loop-half-filled`.
+- **Unanchored.** The trace carries no usable `content_sha`: a large minority carry 16-hex
+  strings where sha256 is 64. Regenerate.
+- **Stale.** The file changed since the trace was made. A trace binds to the whole raw file, as
+  an instance's `body_sha` does; `update-quality.sh` advances both on its own writes, so only an
+  edit outside the stamper makes one stale. Worst two: `the-far-half` and `the-loop-half-filled`.
 - **Persona traces carrying no mood score at all.** The exercises among them matter, because
   `simulation.md` §When makes the persona run required there; on lectures, modules and reference
   pages it is optional. Triage, not a failure list. The `--mood` half's no-score list does **not**
@@ -82,10 +81,6 @@ the next time anyone edits a body, and a stale number in a punch list reads as a
   candidate: `reading-the-return`'s persona trace, whose `artifact_state` phrase overstates the
   flow into `diagnose-and-resend.md` Phase 1 (a lecture and an exercise sit between) — carry until
   the next persona regeneration; hand-editing recorded sim output would fabricate evidence.
-
-Sequencing note: a trace regenerated before a stamp goes stale again the moment
-`update-quality.sh` writes the Quality line, so regenerate as part of a judged pass, not as a
-standalone sweep.
 
 ## A second tab that lands on the right slide
 

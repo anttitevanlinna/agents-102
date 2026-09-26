@@ -70,6 +70,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('node:child_process');
+const { instanceKey, evalTrainings } = require('./scan-stale-classes.js');
 
 const REL_DIR = 'curriculum/evals/instances';
 const NAME_RE = /^(.+)\.([a-z_]+)\.json$/;
@@ -273,6 +274,7 @@ function checkInstance(name, inst) {
 function scan(repo, training) {
   const dir = path.join(repo, REL_DIR);
   const out = [];
+  out.scanned = 0;
   for (const name of fs.readdirSync(dir).sort()) {
     if (!name.endsWith('.json')) continue;
     let inst;
@@ -283,7 +285,7 @@ function scan(repo, training) {
       // belongs to nobody, so every scan reports it — an unparseable instance
       // that no training owns is exactly the file that would sit unnoticed.
       const owner = name.includes('--') ? name.split('--')[0] : null;
-      if (owner === null || owner === training) {
+      if (owner === null || owner === training || training === 'all') {
         out.push({ name, problems: [{ code: 'UNREADABLE', detail: e.message }] });
       }
       continue;
@@ -293,7 +295,8 @@ function scan(repo, training) {
     // with the wrong training is itself a finding, and reading the filename here
     // would route it out of the very scan that would have caught it.
     const t = inst.training || String(name).split('--')[0];
-    if (t !== training) continue;
+    if (training !== 'all' && t !== training) continue;
+    out.scanned++;
     const problems = checkInstance(name, inst);
     if (problems.length) out.push({ name, problems });
   }
@@ -323,7 +326,7 @@ function repairs(name, inst) {
   // and a consistent mis-stamp is one nothing will ever report.
   const owner = /\/trainings\/([^/]+)\//.exec(String(inst.file || ''));
   const derivedTraining = owner
-    ? (owner[1] === 'agentic-engineering-101' ? 'ae101' : owner[1])
+    ? instanceKey(owner[1])
     : (name.includes('--') ? name.split('--')[0] : null);
   if (derivedTraining && inst.training !== derivedTraining) patch.training = derivedTraining;
 
@@ -343,13 +346,18 @@ function repairs(name, inst) {
 function main() {
   const argv = process.argv.slice(2);
   const flag = n => (argv.includes(n) ? argv[argv.indexOf(n) + 1] : null);
-  const repo = flag('--repo') || process.cwd();
+  const repo = flag('--repo') || path.resolve(__dirname, '../../..');
   const training = flag('--training');
   const quiet = argv.includes('--quiet');
   const asJson = argv.includes('--json');
 
   if (!training || training.startsWith('--')) {
-    process.stderr.write('usage: check-instance-schema.js --training <training> [--quiet] [--json] [--repo <path>]\n');
+    process.stderr.write('usage: check-instance-schema.js --training <training|all> [--quiet] [--json] [--repo <path>]\n');
+    process.exit(2);
+  }
+  const known = Object.values(evalTrainings());
+  if (training !== 'all' && !known.includes(training)) {
+    process.stderr.write(`Unknown training: ${training}. Known: all, ${known.join(', ')}\n`);
     process.exit(2);
   }
 
@@ -400,8 +408,10 @@ function main() {
 
   section('gate', 'Instance schema — CONTRADICTIONS');
   section('debt', 'Instance schema — legacy debt (clears on re-judge, does not fail the build)');
-  if (!found.length) process.stdout.write(`Instance schema — ${training}: clean.\n`);
-  else if (!gated.length) process.stdout.write(`\nNo contradictions in ${training}.\n`);
+  // Zero scanned is a training nothing has judged, or a wrong key: not clean.
+  if (!found.scanned) { process.stdout.write(`Instance schema — ${training}: 0 instances scanned — FAIL\n`); process.exit(1); }
+  if (!found.length) process.stdout.write(`Instance schema — ${training}: ${found.scanned} instances, clean.\n`);
+  else if (!gated.length) process.stdout.write(`\nNo contradictions in ${training} (${found.scanned} instances).\n`);
   process.exit(gated.length ? 1 : 0);
 }
 

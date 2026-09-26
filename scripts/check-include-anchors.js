@@ -113,6 +113,11 @@ for (const key of trainings) {
   }
 }
 
+if (!trainings.length) {
+  console.error(`FAIL — 0 trainings found under ${TRAININGS_DIR}: nothing was checked.`);
+  process.exit(1);
+}
+
 if (dead.length) {
   console.error(`\n${dead.length} link(s) point at a section no file in the training inlines:\n`);
   for (const d of dead) {

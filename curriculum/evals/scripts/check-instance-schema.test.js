@@ -359,4 +359,32 @@ test('scan reads the record for the training, not the filename', () => {
     'corruption a neighbouring training owns stays theirs')
 })
 
+const { execFileSync } = require('node:child_process')
+
+// The CLI verdict fails closed: a skip is an unresolved record, and an empty
+// scan looked at nothing. Either one reading "OK" is a green that means nothing.
+const cli = (args, cwd) => { try { return { code: 0, out: execFileSync('node', [path.join(__dirname, 'check-instance-schema.js'), ...args], { cwd, encoding: 'utf8' }) } } catch (e) { return { code: e.status, out: String(e.stdout) + String(e.stderr) } } }
+
+test('CLI: an unknown training is refused, not reported clean', () => {
+  const r = cli(['--training', 'no-such-training'], os.tmpdir())
+  assert.strictEqual(r.code, 2, r.out)
+  assert.match(r.out, /Unknown training/)
+})
+
+test('CLI: a known training with no instances fails, naming the zero', () => {
+  const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'schema-cli-'))
+  fs.mkdirSync(path.join(repo, 'curriculum/evals/instances'), { recursive: true })
+  const r = cli(['--training', 'ae101', '--repo', repo])
+  assert.strictEqual(r.code, 1, r.out)
+  assert.match(r.out, /0 instances/)
+})
+
+test('CLI: --training all scans every instance, from any cwd', () => {
+  const r = cli(['--training', 'all', '--quiet'], os.tmpdir())
+  const m = /(\d+) instances/.exec(r.out)
+  assert.ok(m && Number(m[1]) > 0, r.out)
+  const ae = /(\d+) instances/.exec(cli(['--training', 'ae101', '--quiet'], os.tmpdir()).out)
+  assert.ok(Number(m[1]) > Number(ae[1]), 'all is wider than one training')
+})
+
 console.log(`1..${n}`)

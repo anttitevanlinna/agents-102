@@ -1,8 +1,7 @@
 'use strict'
-// sim-freshness classifies a cache against the file it claims to describe. The
-// classification is the whole product, so every test here fixes one verdict
-// boundary against a real git repo — a mocked history would not exercise the
-// cat-file batch parse, which is where the byte-walking lives.
+// A trace binds to the file the way an eval instance does: its content_sha is
+// the sha256 of the whole raw file, and update-quality.sh advances it on the
+// stamper's own writes. Any other change makes it stale. No history walk.
 const { test } = require('node:test')
 const assert = require('node:assert')
 const fs = require('node:fs')
@@ -10,100 +9,38 @@ const os = require('node:os')
 const path = require('node:path')
 const crypto = require('node:crypto')
 const { execFileSync } = require('node:child_process')
-const { classify, historyShas } = require('./sim-freshness.js')
+const { classify } = require('./sim-freshness.js')
 
 const sha256 = s => crypto.createHash('sha256').update(s).digest('hex')
-
-// A throwaway repo with one surface committed twice: once with a body edit,
-// once with a maintainer-region-only edit. Those two commits are the only
-// anchors any test below needs.
-function fixture() {
-  const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'simfresh-'))
-  const rel = 'curriculum/lectures/a-lecture.md'
-  fs.mkdirSync(path.join(repo, path.dirname(rel)), { recursive: true })
-  const git = (...args) => execFileSync('git', args, { cwd: repo, encoding: 'utf8', stdio: 'pipe' })
-  git('init', '-q')
-  git('config', 'user.email', 't@t')
-  git('config', 'user.name', 't')
-
-  const v1 = '# A lecture\n\nThe original body sentence.\n\n<!-- maintainer -->\n**Quality:** writing PASS\n'
-  fs.writeFileSync(path.join(repo, rel), v1)
-  git('add', rel); git('commit', '-qm', 'v1')
-
-  const v2 = v1.replace('The original body sentence.', 'The body sentence, rewritten.')
-  fs.writeFileSync(path.join(repo, rel), v2)
-  git('add', rel); git('commit', '-qm', 'v2')
-
-  const v3 = v2.replace('writing PASS', 'writing PASS, story PASS')
-  fs.writeFileSync(path.join(repo, rel), v3)
-  git('add', rel); git('commit', '-qm', 'v3 stamp')
-
-  return { repo, rel, v1, v2, v3 }
-}
+const BODY = '# A lecture\n\nThe body.\n\n<!-- maintainer -->\n**Quality:** writing PASS\n'
 
 test('a trace matching the file right now is fresh', () => {
-  const { repo, rel, v3 } = fixture()
-  const v = classify(repo, rel, { content_sha: sha256(v3) }, v3)
-  assert.strictEqual(v.verdict, 'fresh')
+  assert.strictEqual(classify({ content_sha: sha256(BODY) }, BODY).verdict, 'fresh')
 })
 
-test('a trace anchored before a stamp-only edit is stamp-only, not body-moved', () => {
-  // This is the common case by construction: update-quality.sh writes the
-  // Quality line AFTER the judge runs, so the trace that earned a stamp never
-  // matches the stamped file. Misfiling it as body-moved would make the whole
-  // report cry wolf.
-  const { repo, rel, v2, v3 } = fixture()
-  const v = classify(repo, rel, { content_sha: sha256(v2) }, v3)
-  assert.strictEqual(v.verdict, 'stamp-only', v.note)
-})
-
-test('a trace anchored before a body edit is body-moved', () => {
-  const { repo, rel, v1, v3 } = fixture()
-  const v = classify(repo, rel, { content_sha: sha256(v1) }, v3)
-  assert.strictEqual(v.verdict, 'body-moved', v.note)
-  assert.match(v.note, /body line/)
-})
-
-test('a sha matching no committed version is unanchored, never silently aged', () => {
-  const { repo, rel, v3 } = fixture()
-  const v = classify(repo, rel, { content_sha: sha256('a body this repo never held') }, v3)
-  assert.strictEqual(v.verdict, 'unanchored')
+test('any other version is stale, a maintainer-only edit included', () => {
+  const stamped = BODY.replace('writing PASS', 'writing PASS, story PASS')
+  assert.strictEqual(classify({ content_sha: sha256(BODY) }, stamped).verdict, 'stale')
 })
 
 test('a missing or malformed content_sha is unanchored, not fresh', () => {
-  // The dangerous default. A trace with no hash cannot be checked, so the only
-  // safe reading is the pessimistic one — treating it as fresh would let the
-  // exact artefact the cache rule was written about pass as clean.
-  const { repo, rel, v3 } = fixture()
-  assert.strictEqual(classify(repo, rel, {}, v3).verdict, 'unanchored')
-  assert.strictEqual(classify(repo, rel, { content_sha: 'dfbe468d3de2d423' }, v3).verdict, 'unanchored')
-  assert.strictEqual(classify(repo, rel, { content_sha: 42 }, v3).verdict, 'unanchored')
+  assert.strictEqual(classify({}, BODY).verdict, 'unanchored')
+  assert.strictEqual(classify({ content_sha: 'dfbe468d3de2d423' }, BODY).verdict, 'unanchored')
+  assert.strictEqual(classify({ content_sha: 42 }, BODY).verdict, 'unanchored')
 })
 
-test('historyShas reads every distinct version through one cat-file batch', () => {
-  const { repo, rel, v1, v2, v3 } = fixture()
-  const got = historyShas(repo, rel).map(h => h.sha)
-  for (const [label, body] of [['v1', v1], ['v2', v2], ['v3', v3]]) {
-    assert.ok(got.includes(sha256(body)), `${label} missing — the batch parse dropped a record`)
-  }
-})
-
-test('the history memo is keyed by repo, not by path alone', () => {
-  // Two repos can hold the same relative path with different histories. A memo
-  // keyed on the path alone answers the second repo out of the first one's
-  // cache — and because the answer is well-formed, the wrong verdict is
-  // indistinguishable from the right one. Same shape as the cache rule this
-  // whole script exists to enforce, one layer down.
-  const a = fixture()
-  const b = fixture()
-  fs.writeFileSync(path.join(b.repo, b.rel), '# Different\n\nA body only repo B ever held.\n')
-  execFileSync('git', ['add', b.rel], { cwd: b.repo })
-  execFileSync('git', ['commit', '-qm', 'b-only'], { cwd: b.repo, env: { ...process.env, GIT_AUTHOR_NAME: 't', GIT_AUTHOR_EMAIL: 't@t', GIT_COMMITTER_NAME: 't', GIT_COMMITTER_EMAIL: 't@t' } })
-
-  historyShas(a.repo, a.rel) // prime the memo under repo A
-  const onlyInB = sha256('# Different\n\nA body only repo B ever held.\n')
-  assert.ok(historyShas(b.repo, b.rel).some(h => h.sha === onlyInB),
-    'repo B was answered from repo A\'s cache')
+test('a behavior trace binds to the raw file too, prompt markers and all', () => {
+  const { collect } = require('./sim-freshness.js')
+  const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'simfresh-'))
+  const rel = 'curriculum/trainings/agentic-engineering-101/m.md'
+  const raw = '# M\n\n{{prompt:some-key}}\n'
+  fs.mkdirSync(path.join(repo, path.dirname(rel)), { recursive: true })
+  fs.writeFileSync(path.join(repo, rel), raw)
+  fs.mkdirSync(path.join(repo, 'curriculum/evals/sim-cache'), { recursive: true })
+  fs.writeFileSync(path.join(repo, 'curriculum/evals/sim-cache/ae101--module--m.behavior.json'), JSON.stringify({ content_sha: sha256(raw) }))
+  const rows = collect(repo, 'all')
+  assert.strictEqual(rows.length, 1)
+  assert.strictEqual(rows[0].verdict, 'fresh', rows[0].note)
 })
 
 test('a customer-variant trace resolves to the surface it walked', () => {
@@ -379,80 +316,4 @@ test('moodExemptions reads the persona-array shape too', () => {
     }],
   })
   assert.deepStrictEqual(exempt.map(e => e.at), ['phase 1: Fork'])
-})
-
-test('behavior freshness reads the expanded prompt-registry view', () => {
-  const { contentView } = require('./sim-freshness.js')
-  const repo = path.resolve(__dirname, '../../..')
-  const rel = 'curriculum/trainings/agents-101/personal-to-team.md'
-  const raw = fs.readFileSync(path.join(repo, rel), 'utf8')
-  const expanded = execFileSync(process.execPath, ['scripts/expand-md.js', rel], {
-    cwd: repo,
-    encoding: 'utf8',
-  })
-  assert.notStrictEqual(expanded, raw, 'fixture must contain a prompt registry marker')
-  assert.strictEqual(contentView(repo, rel, 'behavior'), expanded)
-  assert.strictEqual(contentView(repo, rel, 'persona'), raw)
-})
-
-// --- the view mismatch -------------------------------------------------------
-// classify() hashes the EXPANDED view for a behavior trace (contentView runs
-// expand-md, which inlines `{{prompt:<key>}}`), while historyShas() hashes the
-// RAW blob at each commit. The two can never agree, so every behavior trace
-// whose file carries a prompt marker read `unanchored` — "cannot be aged, only
-// regenerated" — no matter how cleanly it was anchored. Measured 2026-09-10:
-// 5 of M1's behavior traces, 2 of which were really stamp-only and needed no
-// regeneration at all. An unanchored verdict costs a regeneration; a wrong one
-// costs a regeneration nobody owed, and hides the stamp-only reuse.
-function promptFixture() {
-  const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'simfresh-x-'))
-  const rel = 'curriculum/exercises/an-exercise.md'
-  fs.mkdirSync(path.join(repo, path.dirname(rel)), { recursive: true })
-  const git = (...a) => execFileSync('git', a, { cwd: repo, encoding: 'utf8', stdio: 'pipe' })
-  git('init', '-q'); git('config', 'user.email', 't@t'); git('config', 'user.name', 't')
-
-  const v1 = '# An exercise\n\nThe original body.\n\n{{prompt:do-the-thing}}\n\n<!-- maintainer -->\n**Quality:** writing PASS\n'
-  fs.writeFileSync(path.join(repo, rel), v1)
-  git('add', rel); git('commit', '-qm', 'v1')
-  const v2 = v1.replace('writing PASS', 'writing PASS, story PASS')
-  fs.writeFileSync(path.join(repo, rel), v2)
-  git('add', rel); git('commit', '-qm', 'v2 stamp only')
-  return { repo, rel, v1, v2 }
-}
-
-// Stand-in for expand-md: inline the marker the way the real expander does.
-const fakeExpand = s => s.replace(/\{\{prompt:([a-z0-9-]+)\}\}/g, '**Prompt** *(agent)*\n\n```\nrun $1\n```')
-
-test('a behavior trace anchored to an expanded view is aged, not called unanchored', () => {
-  const { repo, rel, v1, v2 } = promptFixture()
-  const currentExpanded = fakeExpand(v2)
-  const v = classify(repo, rel, { content_sha: sha256(fakeExpand(v1)) }, currentExpanded,
-    { cls: 'behavior', expand: fakeExpand })
-  assert.strictEqual(v.verdict, 'stamp-only',
-    'only the Quality line moved between v1 and v2, so the trace is reusable')
-})
-
-test('a behavior trace anchored to an expanded body-moved view reports body-moved', () => {
-  const { repo, rel, v2 } = promptFixture()
-  const git = (...a) => execFileSync('git', a, { cwd: repo, encoding: 'utf8', stdio: 'pipe' })
-  const v3 = v2.replace('The original body.', 'The body, rewritten.')
-  fs.writeFileSync(path.join(repo, rel), v3)
-  git('add', rel); git('commit', '-qm', 'v3 body')
-  const v = classify(repo, rel, { content_sha: sha256(fakeExpand(v2)) }, fakeExpand(v3),
-    { cls: 'behavior', expand: fakeExpand })
-  assert.strictEqual(v.verdict, 'body-moved')
-})
-
-test('a genuinely unknown sha stays unanchored even with the expanded pass', () => {
-  const { repo, rel, v2 } = promptFixture()
-  const v = classify(repo, rel, { content_sha: sha256('a view this repo never held') }, fakeExpand(v2),
-    { cls: 'behavior', expand: fakeExpand })
-  assert.strictEqual(v.verdict, 'unanchored',
-    'the expanded pass widens what can be matched, it must not make unanchored unreachable')
-})
-
-test('a persona trace is unaffected — raw is its view', () => {
-  const { repo, rel, v1, v2 } = promptFixture()
-  const v = classify(repo, rel, { content_sha: sha256(v1) }, v2, { cls: 'persona' })
-  assert.strictEqual(v.verdict, 'stamp-only')
 })

@@ -127,4 +127,30 @@ test('--fix collapses duplicates newest-wins and leaves one canonical file', () 
   assert.ok(applyFix === undefined || typeof applyFix === 'function')
 })
 
+
+// The CLI verdict fails closed: a skip is an unresolved record, and an empty
+// scan looked at nothing. Either one reading "OK" is a green that means nothing.
+const cli = (args, cwd) => { try { return { code: 0, out: execFileSync('node', [path.join(__dirname, 'check-trace-names.js'), ...args], { cwd, encoding: 'utf8' }) } } catch (e) { return { code: e.status, out: String(e.stdout) + String(e.stderr) } } }
+
+test('CLI: an orphaned trace fails the gate', () => {
+  const root = repo()
+  trace(root, 'ae101--module--getting-going.persona.json')
+  assert.strictEqual(cli(['--repo', root]).code, 0)
+  trace(root, 'no-such-surface.persona.json')
+  const r = cli(['--repo', root])
+  assert.strictEqual(r.code, 1, r.out)
+  assert.match(r.out, /no-such-surface/)
+})
+
+test('CLI: an empty sim-cache fails the gate', () => {
+  const r = cli(['--repo', repo()])
+  assert.strictEqual(r.code, 1, r.out)
+  assert.match(r.out, /0 traces/)
+})
+
+test('CLI: without --repo it reads its own repo, whatever the cwd', () => {
+  const r = cli([], os.tmpdir())
+  assert.match(r.out, /[1-9]\d* traces/, r.out)
+})
+
 console.log(`\n1..${n}`)

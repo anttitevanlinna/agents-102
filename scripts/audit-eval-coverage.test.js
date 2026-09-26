@@ -632,3 +632,20 @@ test('extractManifestLectureSlugs: a trainingKey reads only that training\'s sub
   assert.deepEqual(audit.extractManifestLectureSlugs(block), ['ae-only', 'a101-only'], 'no key = whole block, as before');
   assert.throws(() => audit.extractManifestLectureSlugs(block, 'nope'), /no entry for nope/);
 });
+
+// One readiness check for the whole registry: every training that owns content
+// is audited by default, and a training the registry does not know is refused.
+test('CLI: the default audit covers every registry training that owns content', () => {
+  const { execFileSync } = require('node:child_process');
+  const { evalTrainings } = require('../curriculum/evals/scripts/scan-stale-classes.js');
+  const out = execFileSync('node', [path.join(__dirname, 'audit-eval-coverage.js'), '--json'], { encoding: 'utf8', maxBuffer: 1 << 28 });
+  const report = JSON.parse(out);
+  assert.deepEqual(Object.keys(report.trainings).sort(), Object.keys(evalTrainings()).sort());
+});
+
+test('CLI: an unregistered training is refused', () => {
+  const { spawnSync } = require('node:child_process');
+  const r = spawnSync('node', [path.join(__dirname, 'audit-eval-coverage.js'), '--training', 'no-such-training']);
+  assert.equal(r.status, 2);
+  assert.match(String(r.stderr), /Unknown training/);
+});

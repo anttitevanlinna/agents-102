@@ -11,22 +11,13 @@
  * does not go quiet, it interpolates. So a green queue and a rotten cache look
  * identical from the outside, and the next re-fire reuses the rot.
  *
- * Each trace records `content_sha` — sha256 of the whole file at generation.
- * That is a real hash (the judge shells out for it), so it can be checked:
+ * Each trace records `content_sha`, the sha256 of the whole raw file it read,
+ * the same binding an eval instance's `body_sha` carries. update-quality.sh
+ * advances both on the stamper's own writes, so a stamp never strands a trace.
  *
  *   fresh       sha == the file right now. The trace describes what is there.
- *   stamp-only  sha matches an older commit, and every line changed since sits
- *               in the maintainer/frontmatter region. Expected by construction:
- *               update-quality.sh writes the Quality line AFTER the judge runs,
- *               so a just-stamped file always differs from the trace that
- *               earned the stamp. Routed through the same changeTags the queue
- *               uses, so this file and the queue can never disagree.
- *   body-moved  student-facing lines changed since the trace. A re-fire that
- *               reuses it reasons about prose that is gone.
- *   unanchored  the sha matches NO version of the file in this repo's history.
- *               The trace was written against something never committed, or the
- *               hash was not computed at all. Worst class: it cannot be aged,
- *               only regenerated.
+ *   stale       the file changed since. Regenerate before a judge reuses it.
+ *   unanchored  no sha, or not a sha256. Cannot be checked, so never fresh.
  *
  * --mood reads the other half. A persona trace scores 1-10 per phase-end and
  * at close against the module's mood contract (`curriculum/evals/simulation.md`
@@ -36,41 +27,26 @@
  * clean PASS on every pin — the pin records that a judge ran, not what the
  * persona felt. Every low beat prints WITH its freshness verdict, because the
  * two answers are only meaningful together: a 6 on a fresh trace is a finding,
- * a 6 on a body-moved trace is a question about prose that no longer exists.
+ * a 6 on a stale trace is a question about text that may no longer exist.
  *
  * Usage:
  *   node curriculum/evals/scripts/sim-freshness.js [--training ae101|all]
  *                                                  [--mood] [--bar 8]
  *                                                  [--class behavior|persona]
- *                                                  [--verdict body-moved,unanchored]
+ *                                                  [--verdict stale,unanchored]
  *                                                  [--json] [--gate] [--repo <path>]
- * Exit 0 always, unless --gate, which exits 1 when anything is body-moved or
+ * Exit 0 always, unless --gate, which exits 1 when anything is stale or
  * unanchored. Report tool by default; gate only when a caller asks to be gated.
  */
 const fs = require('node:fs')
 const path = require('node:path')
 const crypto = require('node:crypto')
-const { execFileSync } = require('node:child_process')
 const { buildUniverse } = require('./eval-queue.js')
-const { parseHunks, buildLineMeta, changeTags, trainingOf, typeOf, linkFinder } = require('./scan-stale-classes.js')
+const { trainingOf, typeOf, linkFinder } = require('./scan-stale-classes.js')
 
 const SIM_DIR = 'curriculum/evals/sim-cache'
 const NAME_RE = /^(.+)\.(behavior|persona)\.json$/
 const sha256 = s => crypto.createHash('sha256').update(s).digest('hex')
-
-function git(repo, args) {
-  try { return execFileSync('git', args, { cwd: repo, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 }) }
-  catch { return '' }
-}
-
-function contentView(repo, rel, cls) {
-  if (cls !== 'behavior') return fs.readFileSync(path.join(repo, rel), 'utf8')
-  return execFileSync(process.execPath, [path.join(repo, 'scripts/expand-md.js'), rel], {
-    cwd: repo,
-    encoding: 'utf8',
-    maxBuffer: 64 * 1024 * 1024,
-  })
-}
 
 // A trace names its file by slug only. The universe is the authority on where
 // that slug lives; a slug it does not carry is reported, never guessed at — the
@@ -144,105 +120,15 @@ function slugIndex(repo) {
   return idx
 }
 
-// Every historical blob of one file, hashed once each. Two costs dominate and
-// both are process spawns, not hashing: one `git rev-parse` per commit, and one
-// `git cat-file` per blob. `cat-file --batch` collapses both into a single
-// child process fed every `<commit>:<path>` ref at once — the difference
-// between this script taking minutes and taking a second. Memoized per file
-// because a behavior trace and a persona trace ask about the same body. Keyed
-// by repo AND path: two checkouts hold the same relative path with different
-// histories, and a path-keyed memo would answer one out of the other's cache —
-// well-formed, wrong, and indistinguishable from right.
-const HIST = new Map()
-function historyShas(repo, rel) {
-  const key = `${repo}\u0000${rel}`
-  if (HIST.has(key)) return HIST.get(key)
-  const commits = git(repo, ['log', '--format=%H', '--follow', '--', rel]).trim().split('\n').filter(Boolean)
-  const out = []
-  if (commits.length) {
-    let batch
-    try {
-      batch = execFileSync('git', ['cat-file', '--batch'], {
-        cwd: repo, input: commits.map(c => `${c}:${rel}`).join('\n') + '\n',
-        maxBuffer: 256 * 1024 * 1024,
-      })
-    } catch { batch = Buffer.alloc(0) }
-    // Each record is `<oid> <type> <size>\n<size bytes>\n`; a ref git cannot
-    // resolve answers `<ref> missing\n` instead. Walk by the declared size
-    // rather than by newline — a markdown body is full of newlines.
-    let i = 0, n = 0
-    while (i < batch.length && n < commits.length) {
-      const nl = batch.indexOf(10, i)
-      if (nl === -1) break
-      const header = batch.toString('utf8', i, nl)
-      if (header.endsWith(' missing')) { i = nl + 1; n++; continue }
-      const size = Number(header.split(' ')[2])
-      if (!Number.isFinite(size)) break
-      out.push({ commit: commits[n], sha: sha256(batch.toString('utf8', nl + 1, nl + 1 + size)) })
-      i = nl + 1 + size + 1
-      n++
-    }
+function classify(trace, current) {
+  const sha = trace.content_sha
+  if (!sha) return { verdict: 'unanchored', note: 'trace records no content_sha' }
+  if (typeof sha !== 'string' || !/^[0-9a-f]{64}$/.test(sha)) {
+    return { verdict: 'unanchored', note: `content_sha is not a sha256: ${String(sha).slice(0, 24)}` }
   }
-  HIST.set(key, out)
-  return out
-}
-
-// Expand one historical blob the way contentView expands the working file.
-// Spawns the real expander unless the caller injects one (the tests do, so a
-// fixture repo need not carry site/layouts + the prompt registry).
-const EXPANDED = new Map()
-function expandHistorical(repo, text, expand) {
-  if (expand) return expand(text)
-  const key = `${repo}\u0000${sha256(text)}`
-  if (EXPANDED.has(key)) return EXPANDED.get(key)
-  let out = null
-  try {
-    out = execFileSync(process.execPath, [path.join(repo, 'scripts/expand-md.js'), '-'], {
-      cwd: repo, input: text, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
-    })
-  } catch { out = null }
-  EXPANDED.set(key, out)
-  return out
-}
-
-function classify(repo, rel, trace, current, opts = {}) {
-  const { cls, expand } = opts
-  if (!trace.content_sha) return { verdict: 'unanchored', note: 'trace records no content_sha' }
-  if (typeof trace.content_sha !== 'string' || !/^[0-9a-f]{64}$/.test(trace.content_sha)) {
-    return { verdict: 'unanchored', note: `content_sha is not a sha256: ${String(trace.content_sha).slice(0, 24)}` }
-  }
-  if (sha256(current) === trace.content_sha) return { verdict: 'fresh', note: '' }
-
-  const history = historyShas(repo, rel)
-  let hit = history.find(h => h.sha === trace.content_sha)
-
-  // A behavior trace is anchored to the EXPANDED view — contentView runs
-  // expand-md for that class — while historyShas hashes raw blobs. Comparing
-  // the two can only miss, so before 2026-09-10 every behavior trace on a file
-  // carrying a `{{prompt:…}}` marker reported unanchored however cleanly it was
-  // anchored, and each one cost a regeneration nobody owed. Walk the history a
-  // second time through the expander, stopping at the first match. Registry
-  // drift is the residual gap: the expander is today's, so a trace taken
-  // against a since-edited prompt body still reads unanchored — which is the
-  // safe direction, since that trace really does describe absent text.
-  if (!hit && cls === 'behavior') {
-    for (const h of history) {
-      const raw = git(repo, ['show', `${h.commit}:${rel}`])
-      // No marker means expansion is the identity, and the raw pass above
-      // already tried that sha. Spawning the expander to learn nothing is the
-      // whole cost of this pass, so skip it here rather than in the loop body.
-      if (!raw || !raw.includes('{{prompt:')) continue
-      const view = expandHistorical(repo, raw, expand)
-      if (view != null && sha256(view) === trace.content_sha) { hit = h; break }
-    }
-  }
-  if (!hit) return { verdict: 'unanchored', note: 'sha matches no committed version of this file' }
-
-  const tagged = changeTags(buildLineMeta(current), parseHunks(git(repo, ['diff', hit.commit, '--', rel])))
-  const classes = [...(tagged.tags || [])].sort().join('/')
-  return tagged.changedBody > 0
-    ? { verdict: 'body-moved', note: `${tagged.changedBody} body line(s) since ${hit.commit.slice(0, 8)}${classes ? ` → ${classes}` : ''}` }
-    : { verdict: 'stamp-only', note: `maintainer region only since ${hit.commit.slice(0, 8)}` }
+  return sha256(current) === sha
+    ? { verdict: 'fresh', note: '' }
+    : { verdict: 'stale', note: 'the file changed since this trace was made' }
 }
 
 function collect(repo, want) {
@@ -284,8 +170,7 @@ function collect(repo, want) {
     try { trace = JSON.parse(fs.readFileSync(path.join(repo, SIM_DIR, name), 'utf8')) }
     catch (e) { rows.push({ name, cls, file: rel, training, verdict: 'unresolved', note: `unparseable: ${e.message.slice(0, 60)}` }); continue }
 
-    const current = contentView(repo, rel, cls)
-    const { verdict, note } = classify(repo, rel, trace, current, { cls })
+    const { verdict, note } = classify(trace, fs.readFileSync(path.join(repo, rel), 'utf8'))
     const row = { name, cls, file: rel, training, generated_at: (trace.generated_at || '').slice(0, 10) || null, verdict, note }
     if (cls === 'persona') row.mood = { contract: trace.module_mood_contract || null, beats: moodBeats(trace), exempt: moodExemptions(trace) }
     rows.push(row)
@@ -346,7 +231,7 @@ function moodExemptions(trace, label = '') {
 
 // Freshness verdicts, worst first, so a low beat that cannot be trusted is read
 // before one that can be acted on.
-const TRUST = { unanchored: 0, 'body-moved': 1, unresolved: 2, 'stamp-only': 3, fresh: 4 }
+const TRUST = { unanchored: 0, stale: 1, unresolved: 2, fresh: 3 }
 
 function renderMood(rows, want, bar) {
   const scored = rows.filter(r => r.mood)
@@ -390,7 +275,7 @@ function renderMood(rows, want, bar) {
   return out.join('\n')
 }
 
-const ORDER = ['unanchored', 'body-moved', 'unresolved', 'stamp-only', 'fresh']
+const ORDER = ['unanchored', 'stale', 'unresolved', 'fresh']
 
 function render(rows, want) {
   const out = [`=== SIM FRESHNESS — training: ${want} ===`, '']
@@ -400,26 +285,23 @@ function render(rows, want) {
     const group = rows.filter(r => r.verdict === verdict)
     if (!group.length) continue
     out.push(`${verdict.toUpperCase()} (${group.length})`)
-    // fresh and stamp-only need no per-row detail: both mean the trace still
-    // describes the body a judge would read. Printing 100 clean rows buries
-    // the handful that do not.
-    if (verdict === 'fresh' || verdict === 'stamp-only') { out.push(''); continue }
+    // Printing 100 fresh rows buries the handful that are not.
+    if (verdict === 'fresh') { out.push(''); continue }
     for (const r of group) out.push(`  ${r.name}${r.generated_at ? `  gen=${r.generated_at}` : ''}\n      ${r.note}`)
     out.push('')
   }
 
   const tally = ORDER.map(v => `${v} ${rows.filter(r => r.verdict === v).length}`).join(' · ')
   out.push(`${rows.length} traces · ${tally}`)
-  out.push('  fresh = trace matches the file now · stamp-only = only the Quality line moved (expected: the stamp lands after the judge)')
-  out.push('  body-moved = student-facing prose changed under the trace · unanchored = sha matches no committed version, regenerate not reuse')
-  const bad = rows.filter(r => r.verdict === 'body-moved' || r.verdict === 'unanchored').length
+  out.push('  fresh = trace matches the file now · stale = the file changed since · unanchored = no usable sha')
+  const bad = rows.filter(r => r.verdict === 'stale' || r.verdict === 'unanchored').length
   if (bad) out.push(`\n  ${bad} trace(s) must be REGENERATED before the next behavior/story re-fire reuses them.`)
   return out.join('\n')
 }
 
 function main(argv) {
   const arg = (flag, dflt) => { const i = argv.indexOf(flag); return i === -1 ? dflt : argv[i + 1] }
-  const repo = path.resolve(arg('--repo', process.cwd()))
+  const repo = path.resolve(arg('--repo', path.resolve(__dirname, '../../..')))
   const want = arg('--training', 'all')
   const cls = arg('--class', null)
   const verdicts = (arg('--verdict', null) || '').split(',').filter(Boolean)
@@ -435,9 +317,9 @@ function main(argv) {
 
   if (argv.includes('--gate') && mood && rows.some(r => r.mood && r.mood.beats.some(b => b.score < bar))) process.exit(1)
 
-  if (argv.includes('--gate') && rows.some(r => r.verdict === 'body-moved' || r.verdict === 'unanchored')) process.exit(1)
+  if (argv.includes('--gate') && rows.some(r => r.verdict === 'stale' || r.verdict === 'unanchored')) process.exit(1)
 }
 
-module.exports = { collect, classify, slugIndex, resolveSlug, historyShas, moodBeats, moodExemptions, contentView }
+module.exports = { collect, classify, slugIndex, resolveSlug, moodBeats, moodExemptions }
 
 if (require.main === module) main(process.argv.slice(2))

@@ -4,8 +4,9 @@ Before generating prose / curriculum / buyer-facing copy: READ the matching rule
 
 **Four tiers.** T0 `_index/diamond.md` (always-on, read at session start) → T1 `_index/<surface>.leads.md` (on surface detection) → T2 `rule.js <surface> <N>` (**owed, not optional, on any `⚠` rule you are about to act on** — a lead cannot tell you where a rule stops applying) → T3 `memory/check_<surface>.md` (**eval judges + rule edits only**, never to write prose). Tier mechanics + the rebuild contract live in `_index/diamond.md`'s header — one home, not four.
 
-Rule indices at: `/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/_index/`
-Compendiums (T3) at: `/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/`
+Rules layer = private `agents-102-core` repo, cloned beside this one (`$AGENTS_CORE_DIR` overrides). `memory/` below = its `memory/`.
+Rule indices at: `../agents-102-core/memory/_index/`
+Compendiums (T3) at: `../agents-102-core/memory/`
 
 Surface → index (T1 file is `_index/<surface>.leads.md`; the compendium named is its T3 source):
 

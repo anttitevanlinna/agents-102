@@ -41,23 +41,30 @@ mkdir -p "$ROOT/home-claude" "$ROOT/project-claude"
 # 1) agents-102 auto-memory (compendiums, compounded entries, MEMORY.md, schema)
 MEMORY_SRC="$HOME/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory"
 if [ -d "$MEMORY_SRC" ]; then
-  cp -R "$MEMORY_SRC" "$ROOT/memory"
+  cp -RL "$MEMORY_SRC" "$ROOT/memory"
 fi
 
 # 2) Personal ~/.claude/ surface
-[ -f "$HOME/.claude/CLAUDE.md" ] && cp "$HOME/.claude/CLAUDE.md" "$ROOT/home-claude/"
+[ -f "$HOME/.claude/CLAUDE.md" ] && cp -L "$HOME/.claude/CLAUDE.md" "$ROOT/home-claude/"
 [ -f "$HOME/.claude/settings.json" ] && cp "$HOME/.claude/settings.json" "$ROOT/home-claude/"
-[ -d "$HOME/.claude/skills" ] && cp -R "$HOME/.claude/skills" "$ROOT/home-claude/"
-[ -d "$HOME/.claude/agents" ] && cp -R "$HOME/.claude/agents" "$ROOT/home-claude/"
-[ -d "$HOME/.claude/hooks" ] && cp -R "$HOME/.claude/hooks" "$ROOT/home-claude/"
+[ -d "$HOME/.claude/skills" ] && cp -RL "$HOME/.claude/skills" "$ROOT/home-claude/"
+[ -d "$HOME/.claude/agents" ] && cp -RL "$HOME/.claude/agents" "$ROOT/home-claude/"
+[ -d "$HOME/.claude/hooks" ] && cp -RL "$HOME/.claude/hooks" "$ROOT/home-claude/"
 
 # 3) Project-level gitignored .claude/ surface (hooks + rules + agents + lints + agent-memory)
 PROJ=/Users/anttitevanlinna/Projects/agents-102/.claude
-[ -d "$PROJ/hooks" ] && cp -R "$PROJ/hooks" "$ROOT/project-claude/"
-[ -d "$PROJ/rules" ] && cp -R "$PROJ/rules" "$ROOT/project-claude/"
-[ -d "$PROJ/agents" ] && cp -R "$PROJ/agents" "$ROOT/project-claude/"
-[ -d "$PROJ/lints" ] && cp -R "$PROJ/lints" "$ROOT/project-claude/"
-[ -d "$PROJ/agent-memory" ] && cp -R "$PROJ/agent-memory" "$ROOT/project-claude/"
+[ -d "$PROJ/hooks" ] && cp -RL "$PROJ/hooks" "$ROOT/project-claude/"
+[ -d "$PROJ/rules" ] && cp -RL "$PROJ/rules" "$ROOT/project-claude/"
+[ -d "$PROJ/agents" ] && cp -RL "$PROJ/agents" "$ROOT/project-claude/"
+[ -d "$PROJ/lints" ] && cp -RL "$PROJ/lints" "$ROOT/project-claude/"
+[ -d "$PROJ/agent-memory" ] && cp -RL "$PROJ/agent-memory" "$ROOT/project-claude/"
+
+# 3b) Bosser Drive strategy + agents-102 business notes (pricing, licensing).
+# Drive-only, no git: the dated zip is their version history.
+BOSSER="$(dirname "$BACKUP_DIR")"
+mkdir -p "$ROOT/bosser"
+[ -d "$BOSSER/strategy" ] && cp -R "$BOSSER/strategy" "$ROOT/bosser/"
+[ -d "$BOSSER/agents-102" ] && cp -R "$BOSSER/agents-102" "$ROOT/bosser/"
 
 # 4) Manifest
 cat > "$ROOT/MANIFEST.md" <<MANIFEST_EOF
@@ -80,6 +87,7 @@ Captures generation + eval infrastructure that lives outside the agents-102 git 
   - agents/ (project-specific agent definitions)
   - lints/ (additional lint scripts)
   - agent-memory/ (agent-managed memory)
+- \`bosser/\` — Bosser Drive \`strategy/\` + \`agents-102/\` (pricing, licensing notes); Drive-only, this zip is their history.
 
 ## NOT included
 
@@ -95,7 +103,10 @@ Unzip into corresponding locations. \`~/.claude/CLAUDE.md\` and \`settings.json\
 MANIFEST_EOF
 
 # 5) Zip + drop in Drive
-( cd "$STAGE" && zip -rq "$BACKUP_DIR/$ZIP_NAME" "agents-102-claude-$DATE" -x "*.DS_Store" )
+# Build beside the target, then replace: zip -r into an existing zip only adds,
+# so a same-day re-run would otherwise keep files deleted since the last run.
+( cd "$STAGE" && zip -rq "$STAGE/$ZIP_NAME" "agents-102-claude-$DATE" -x "*.DS_Store" )
+mv -f "$STAGE/$ZIP_NAME" "$BACKUP_DIR/$ZIP_NAME"
 
 # 6) Cleanup + report
 rm -rf "$STAGE"

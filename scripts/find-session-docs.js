@@ -36,7 +36,7 @@ const ANCHOR_SEEDS = [
 ].filter((f) => fs.existsSync(path.join(ROOT, f)));
 
 // The memory store lives outside the repo but is loaded every session.
-const MEM = path.join(process.env.HOME, '.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory');
+const MEM = require('../curriculum/evals/scripts/compendium-drift.js').MEM;
 
 // Candidate pool: internal docs. Not research, not student-facing curriculum, not fixtures.
 const EXCLUDE = /^(continuous-research|node_modules|docs\/archive)\/|^curriculum\/(lectures|exercises|modules|prompts|reference|supplementary|trainings|scaffolds|skills|figures)\/|playgrounds\/|fixtures\/|\/legacy\/|COPYRIGHT\.md$/;
@@ -96,7 +96,7 @@ if (JSON_OUT) { console.log(JSON.stringify(rows, null, 2)); process.exit(0); }
 
 const orphans = rows.filter((r) => !r.anchored);
 console.log(`\n  ${rows.length} plan-shaped internal docs — ${orphans.length} reachable from nothing\n`);
-console.log('  SESSION (named by no loaded surface) — archive candidates');
+console.log('  SESSION (named by no loaded surface) — delete candidates');
 for (const r of orphans) console.log(`    ${r.last}  ${String(Math.round(r.size / 1024) + 'K').padStart(5)}  ${r.file}`);
 console.log('\n  CANONICAL (reachable) — leave alone');
 for (const r of rows.filter((r) => r.anchored)) {

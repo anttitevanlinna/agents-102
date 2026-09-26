@@ -185,6 +185,77 @@ wait_for_turn() {
         ;;
     esac
   done
+  [[ -z "$session" ]] && return 0
+  local left=$(( timeout - ($(date +%s) - started_at) ))
+  (( left < 300 )) && left=300
+  settle_background_agents "$dir" "$seq" "$session" "$left"
+}
+
+bg_agents_pending() {
+  # $1=pane snap. Pending iff the LAST ✻ status line is "Waiting for N
+  # background agent(s) to finish" — a later "✻ Cooked/Worked … · done"
+  # means the re-invoked main agent has since finished its own turn.
+  local last
+  last="$(printf '%s\n' "$1" | grep -E '^✻ ' | tail -1)"
+  [[ "$last" =~ Waiting\ for\ [0-9]+\ background\ agents?\ to\ finish ]]
+}
+
+pane_busy() {
+  # $1=pane snap. Busy iff the LAST status line (glyph-led) is a live spinner
+  # ("✳ Noodling… (running Stop hooks…)", "· Transmuting…") or says background
+  # agents are pending. A finished turn ends "✻ <Verb> for Ns · done".
+  local last
+  last="$(printf '%s\n' "$1" | grep -E '^[·✢✳✶✻✽*] ' | tail -1)"
+  [[ -z "$last" ]] && return 1
+  [[ "$last" =~ ^[^[:space:]]+\ [^[:space:]]+… ]] && return 0
+  [[ "$last" =~ Waiting\ for\ [0-9]+\ background\ agents?\ to\ finish ]]
+}
+
+settle_background_agents() {
+  # Also holds through a blocked Stop: another Stop hook (e.g. a verifier the
+  # exercise built) blocks, Claude resumes, and our sentinel already landed
+  # (M5 PB lemmings 2026-09-25: canned answer + "lock it in" typed into a
+  # working pane). Busy = pane_busy.
+  # The Stop hook fires when the MAIN agent yields, not when its backgrounded
+  # subagents finish — so a sentinel can land mid-work (M4 T2 lemmings
+  # 2026-09-25: audit backgrounded, next prompt fired 4s later against no
+  # audit). Hold while the pane says agents are pending; when one finishes
+  # on an idle pane, the re-invoked main agent fires a SECOND Stop, which the
+  # count-based hook would hand to the next turn — trim it back to $seq.
+  # $1=sentinel dir, $2=seq, $3=tmux session, $4=budget seconds.
+  # Exit: 0 settled — or budget spent, WARNed, walk continues (a 1 would read
+  # as a soft-cap hit to wait_for_turn_guarded and ESC a working pane);
+  # 2 pane died.
+  local dir="$1" seq="$2" session="$3" budget="$4"
+  local started; started="$(date +%s)"
+  local held=0 stable=0 last_count=-1 cur
+  while :; do
+    pane_alive "$session" || return 2
+    if pane_busy "$(_tmux capture-pane -t "$session" -p 2>/dev/null || true)"; then
+      if (( held == 0 )); then
+        held=1
+        echo "wait_for_turn: turn $seq sentinel landed while the pane is still busy (spinner / background agents) — holding" >&2
+      fi
+      stable=0
+    else
+      (( held == 0 )) && return 0
+      # cleared: let the follow-up Stop land and the count settle
+      cur="$(count_sentinels "$dir")"
+      if [[ "$cur" == "$last_count" ]]; then stable=$((stable + 1)); else stable=0; fi
+      last_count="$cur"
+      if (( stable >= 3 )); then
+        reconcile_sentinels "$dir" "$seq"
+        echo "wait_for_turn: turn $seq settled after $(( $(date +%s) - started ))s" >&2
+        return 0
+      fi
+    fi
+    if (( $(date +%s) - started >= budget )); then
+      echo "wait_for_turn: WARN turn $seq pane still busy after ${budget}s — continuing" >&2
+      reconcile_sentinels "$dir" "$seq"
+      return 0
+    fi
+    sleep 1
+  done
 }
 
 is_slash_only() {

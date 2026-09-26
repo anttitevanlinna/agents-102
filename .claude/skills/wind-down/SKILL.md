@@ -100,6 +100,10 @@ cd ~/Projects/agents-102 && git status --short
 git push
 ```
 
+Rules layer (memory/, compendia, skills, hooks) = symlinks into `~/Projects/agents-102-core` (private, source of truth) → commit + push there too, same `--only -- <paths>` discipline (other sessions write memory): `git -C ~/Projects/agents-102-core status --short`.
+
+Untracked `site/clients/**` dirs/files = customer-site build output from a local/gated build → never commit (public repo), delete the ones this session built (`build-workbook.js` / `deploy-customer.sh` regenerate). Tracked siblings in the same variant → commit instead.
+
 Report:
 ```
 Cleared: edit counter, legacy sentinels.

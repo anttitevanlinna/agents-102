@@ -221,3 +221,11 @@ test('repin --procedural: an unnamed rule that moved is still dated', () => {
   assert.equal(next.compendia.check_x.rules[1].changed_at, null)
   assert.equal(next.compendia.check_x.rules[2].changed_at, '2026-09-05')
 })
+
+test('MEM: AGENTS_CORE_DIR wins, else sibling agents-102-core clone', () => {
+  const { execFileSync } = require('node:child_process')
+  const mod = path.join(__dirname, 'compendium-drift.js')
+  const mem = (env) => execFileSync(process.execPath, ['-e', `process.stdout.write(require(${JSON.stringify(mod)}).MEM)`], { env: { PATH: process.env.PATH, ...env } }).toString()
+  assert.equal(mem({ AGENTS_CORE_DIR: '/x/core' }), '/x/core/memory')
+  assert.equal(mem({}), path.resolve(__dirname, '../../..', '..', 'agents-102-core', 'memory'))
+})

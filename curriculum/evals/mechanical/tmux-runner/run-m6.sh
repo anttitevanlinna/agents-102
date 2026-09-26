@@ -185,6 +185,20 @@ assert_turn() {
         # was produced (loose grep with several alternations).
         assert_scrollback_grep "T5 primitives menu" "$transcript" "test|lint|format|typecheck|compile|build|browser|smoke|review|diff|judge|verifier|gate|schema|contract|eval"
         ;;
+    agents-that-build-agents-handoff)  # — standalone handoff prompt:
+        # scan the repeated work, pick + build ONE skill, put runnable
+        # checks on that skill's output. The transcript is cumulative
+        # scrollback and the echoed prompt names all three moves, so grep
+        # only the agent's reply (first ⏺ line after the echo onward);
+        # each move checked separately — one combined regex passes a
+        # prompt that dropped one.
+        local own="$run_dir/handoff-reply.txt"
+        awk '/Write me a handoff prompt/{buf=""; armed=1; on=0; next} armed && /^⏺/{on=1} on{buf=buf $0 "\n"} END{printf "%s", buf}' "$transcript" > "$own"
+        [[ -s "$own" ]] || { echo "[assert] FAIL T6 handoff: no agent reply after the prompt echo in $transcript" >&2; return 1; }
+        assert_scrollback_grep "T6 handoff: scan" "$own" "scan|repeat|recurring|shapes?" || return 1
+        assert_scrollback_grep "T6 handoff: build a skill" "$own" "skill" || return 1
+        assert_scrollback_grep "T6 handoff: checks on output" "$own" "check|verif|eval|judge"
+        ;;
     *)
         echo "[m6] no assertion configured for prompt key '$key'" >&2
         return 1

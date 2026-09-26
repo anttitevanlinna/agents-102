@@ -20,12 +20,12 @@ The retrievers go live, connectors and the open web. The synthesizer is the one 
 
 <div class="rt-code">
 
-*Keep your existing crux session open, that becomes Session 4 (synthesizer; also your main session through the next exercise). Open three more Claude Code sessions in the training directory: Session 1 (wiki retriever), Session 2 (docs retriever), Session 3 (internet retriever). Desktop users: open three app sessions alongside the existing one. CLI users: three more terminal sessions, each running `claude` from the training directory. Self-study: Teacher Claude walks you through this if you stall.*
+*Keep your existing crux session open, that becomes Session 4 (synthesizer; also your main session through the next exercise). Open three more Claude Code sessions in the training directory: Session 1 (wiki retriever), Session 2 (docs retriever), Session 3 (internet retriever). Desktop users: open three app sessions alongside the existing one. CLI users: three more terminal sessions, each running `claude` from the training directory.*
 
 </div>
 <div class="rt-cowork">
 
-*Keep your existing crux task open, that becomes Task 4 (synthesizer; also your main task through the next exercise). In Claude Desktop's *Cowork* tab, start three more tasks pointed at your training directory: Task 1 (wiki retriever), Task 2 (docs retriever), Task 3 (internet retriever). You'll have four tabs (or four windows, whichever your desktop layout prefers) running side by side. They share the filesystem; they don't share scrollback, so each one is its own conversation. Self-study: Teacher Claude walks you through this if you stall.*
+*Keep your existing crux task open, that becomes Task 4 (synthesizer; also your main task through the next exercise). In Claude Desktop's *Cowork* tab, start three more tasks pointed at your training directory: Task 1 (wiki retriever), Task 2 (docs retriever), Task 3 (internet retriever). You'll have four tabs (or four windows, whichever your desktop layout prefers) running side by side. They share the filesystem; they don't share scrollback, so each one is its own conversation.*
 
 </div>
 

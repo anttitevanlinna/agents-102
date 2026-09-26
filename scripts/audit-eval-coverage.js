@@ -34,7 +34,7 @@ const path = require('path');
 
 const REPO = path.resolve(__dirname, '..');
 const CR = require(path.join(REPO, 'site/layouts/curriculum.js'));
-const MEM = '/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory';
+const MEM = require('../curriculum/evals/scripts/compendium-drift.js').MEM;
 const INSTANCES = path.join(REPO, 'curriculum/evals/instances');
 
 const COMPENDIA = [

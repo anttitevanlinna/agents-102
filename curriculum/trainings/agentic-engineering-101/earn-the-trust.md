@@ -138,7 +138,7 @@ Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate + Create
-- **Pacing:** Runtime is computed — `node scripts/calculate-time.js earn-the-trust`. When the module has to come in tighter, the slack is two floors: the closer *The near half of the map*, and the *Author your test-strategy skill* exercise. Trainer demos slowly, room copy-pastes concurrently. Self-study follow-along runs comparably.
+- **Pacing:** Runtime is computed — `node scripts/calculate-time.js earn-the-trust`. When the module has to come in tighter, the slack is two floors: the closer *The near half of the map*, and the *Author your test-strategy skill* exercise. Trainer demos slowly, room copy-pastes concurrently.
 - **Transitions:** connections 10 @start · debrief 12 @after:author-test-strategy-skill · bridge 3 @end
 - **Prep timing:** Willison lethal-trifecta pre-read 10–15 min; Willison agentic-loops pre-read 10 min; optional OWASP deeper scan 20 min; optional backpressure pre-read (this file's `## Pre-read before Module 4`) 15 min.
 - **Mood target:** earned trust — *"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big."* Watch for: mood drift toward compliance-feeling. Diagnostic: student at Ex2 frames STRIDE as checkbox. Fix: trainer surfaces the ADR — *"you just made a real architectural call under named pressure; that's not compliance, that's design."*

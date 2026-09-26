@@ -235,6 +235,10 @@ if [[ -z "$m4_sha" && -f "$commit_turn_transcript" ]]; then
   m4_sha="$(grep -oE '[0-9a-f]{7,12}' "$commit_turn_transcript" | head -1)"
 fi
 
+# Send-off artefact: "commits + changed files" since the starting point. A
+# commit is not required (ask-before-commit stands; done-done says don't).
+assert_work_since "M4 send-off work" "$sut_cwd" "$m4_sha" || exit 1
+
 # Branch is m4/<task-slug>. Default to whatever the SHA-bearing commit's branch is.
 m4_branch=""
 if [[ -n "$m4_sha" ]]; then

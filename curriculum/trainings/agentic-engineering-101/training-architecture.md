@@ -92,8 +92,6 @@ AE101 ships three curated skills in the content tarball (build whitelist `SKILLS
 
 All three install to `~/.claude/skills/<name>/SKILL.md` during prework. M3 invokes them by name. M3's third exercise authors a new skill from session evidence; M6's take-home is a handoff prompt that authors skills later. The M3 authoring beat belongs to its module: a cut without M3 ships no authored skill from that beat, and downstream prompts that look for one are written to stand down rather than error.
 
-The `agentic-nerd` skill at `content/skills/agentic-nerd/` is an optional self-study facilitator the engaged self-study student can install. Cohort delivery does not install or depend on it; it is not part of the curated three above.
-
 ## Reading contract
 
 First-cohort overload response (root diagnosis: big outputs + unfamiliar ground + pressure to proceed; root feeling = lost control → `theory-plan.md` § Why this exists; strategic rule + test-on-draft → `bosser-strategy:content-strategy-agentic-engineering-101.md` § Woven design rules #3). Doctrine: the student never reads agent output whole. Control = interrogation (ranked read, probe the known, forced self-critique) + the merge gate, not coverage.

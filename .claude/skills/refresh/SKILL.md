@@ -10,7 +10,7 @@ Memory drifts. Compendium rules drift. Skills embed instructions that may contra
 
 This skill audits the learning store and surfaces stale candidates. It does NOT edit anything without Antti's approval — every proposed change is shown as a diff first.
 
-Memory root: `/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/`
+Memory root: `../agents-102-core/memory/` (the agents-102-core clone beside this repo; `$AGENTS_CORE_DIR` overrides)
 
 ## Step 0 — Backup before audit
 

@@ -123,6 +123,27 @@ assert_new_commit() {
   return 1
 }
 
+assert_work_since() {
+  # $1=label, $2=cwd, $3=starting-point sha. PASS if the tree differs from
+  # the sha by commits, an uncommitted diff, or new untracked (non-ignored)
+  # files. For contracts that produce "commits + changed files" without
+  # requiring a commit (M4 send-off: ask-before-commit rule stands).
+  local label="$1" cwd="$2" sp="$3"
+  if [[ -z "$sp" ]]; then
+    echo "[assert] FAIL $label: no starting-point sha to diff against" >&2
+    return 1
+  fi
+  local diff untracked
+  diff="$(git -C "$cwd" diff --shortstat "$sp" 2>/dev/null)"
+  untracked="$(git -C "$cwd" ls-files --others --exclude-standard 2>/dev/null | wc -l | tr -d ' ')"
+  if [[ -n "$diff" || "$untracked" -gt 0 ]]; then
+    echo "[assert] PASS $label: work since $sp —${diff:+ $diff;} $untracked untracked"
+    return 0
+  fi
+  echo "[assert] FAIL $label: tree identical to $sp in $cwd — send-off shipped nothing" >&2
+  return 1
+}
+
 assert_scrollback_grep() {
   # $1=label, $2=transcript path, $3=ERE pattern.
   # Passes if grep -E -i matches. Useful for prompts whose only artifact

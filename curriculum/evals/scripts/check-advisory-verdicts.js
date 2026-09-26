@@ -29,9 +29,7 @@ const ADVISORY_MARKERS = [
   'advisory, not a gate',
 ]
 
-const DEFAULT_MEMORY = path.join(
-  process.env.HOME, '.claude', 'projects',
-  '-Users-anttitevanlinna-Projects-agents-102', 'memory')
+const DEFAULT_MEMORY = require('./compendium-drift.js').MEM
 
 // A rule chunk starts at a line like `27. **Say it once...` and runs to the
 // next such line. Sub-lettered clauses (`52c.`) belong to their parent number,

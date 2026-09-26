@@ -111,11 +111,12 @@ Student is in Claude Code, opened at the cloned repo root, just invoked `/self-s
 
 3. **Check the directory doesn't already have content.** If it does, ask before overwriting.
 
-4. **Copy the scaffold.** Source of truth: `<repo-root>/curriculum/scaffolds/agents-101-starter/` (cohorts zip it; self-study copies it). Run:
+4. **Unpack the starter.** The same starter cohorts get, built from `<repo-root>/curriculum/scaffolds/agents-101-starter/` plus the handbook. Run:
    ```bash
-   rsync -a --exclude='.claude' <repo-root>/curriculum/scaffolds/agents-101-starter/ <training-dir>/
+   cd <repo-root> && npm install --silent && scripts/build-agents-101-starter-tarball.sh
+   tar xzf <repo-root>/agents-101-starter.tar.gz -C <training-dir> --exclude='./.claude'
    ```
-   (Or `cp -r` + `rm -rf <training-dir>/.claude` if rsync isn't available.) Skip the scaffold's `.claude/` — Teacher lives at the repo root where the skill is already loaded.
+   Skip the starter's `.claude/` — Teacher lives at the repo root where the skill is already loaded.
 
    The tree this lands matches the *Material Distribution* table in `curriculum/trainings/agents-101/training-architecture.md`: `prework/`, empty `sources/` / `memory/` / `agents/`, Module 4 policy reference files, personal-to-team patterns, and no prewritten root `CLAUDE.md`.
 
@@ -130,11 +131,7 @@ Student is in Claude Code, opened at the cloned repo root, just invoked `/self-s
 
 6. **Seed `progress.md`** at the training dir (shape below in § *Progress file shape*).
 
-7. **Start the recap server in the background.** The site at `http://localhost:8000/site/curriculum.html` is the **recap surface** — after each lecture or exercise you give the student a link to see what they just lived through. They don't read it during teaching; you teach inline. Run Bash with `run_in_background: true`:
-   ```
-   cd <repo_dir> && python3 -m http.server 8000
-   ```
-   If port 8000 is taken, try 8001 and save the port to config. Tell the student: *"I've started a local recap server. After each lecture or exercise I'll give you a link — read it now or come back later."*
+7. **Point at the handbook.** The starter ships `<training_dir>/agents-101-handbook.html`: every lecture plus a summary of each exercise, one page opened straight from disk. It is the recap surface. After each lecture or exercise you open it at the matching section; the student doesn't read it during teaching, you teach inline. Tell the student: *"Your folder has a handbook of every lecture. After each lecture or exercise I'll open it at that section — read it now or come back later."*
 
 8. **Explain the two-Claude model and open the Builder.** Say "session," not "window" (works across desktop app / terminal / web).
    - *"From here on you'll run two Claude Code sessions side by side."*
@@ -153,8 +150,7 @@ On `/self-study continue` (or `/self-study` with config present):
 3. Read `progress.md`.
 4. **Greet with state.** *"Welcome back. You're at the start of Module 2."* / *"Mid-Module 1, Phase 4."*
 5. **Ask about time.** *"How long do you have — 30 min, an hour, more? I'll pace accordingly."*
-6. **Restart the recap server** in the background if not running (use `repo_dir` and `port` from config). If port is taken, skip.
-7. **Confirm the Builder folder.** Ask: *"Is your Builder session running at the training-directory root?"* If not, walk them through (see § *Builder working directory*).
+6. **Confirm the Builder folder.** Ask: *"Is your Builder session running at the training-directory root?"* If not, walk them through (see § *Builder working directory*).
 8. Pick up where progress left off.
 
 ## The cadence per module
@@ -169,7 +165,7 @@ Read the module file at `<repo>/curriculum/trainings/agents-101/<slug>.md`. Find
 
 ### Lecture + Exercise
 
-Each module references one or more lectures and exercises via include-links. **You teach inline; the site is the recap surface, not the live teaching surface.**
+Each module references one or more lectures and exercises via include-links. **You teach inline; the handbook is the recap surface, not the live teaching surface.**
 
 **For lectures — read, don't paraphrase.** Open the file from disk and surface it section by section in chat. Paste each section's body verbatim in a fenced block, then add at most one live sentence between sections — a check-in (*"land for you?"*), a mood note, a callback to what just happened in Builder. The canonical voice is in the file.
 
@@ -182,15 +178,17 @@ Each module references one or more lectures and exercises via include-links. **Y
 - Listen for surprises and stuck points.
 - Don't solve for them. If stuck: ask what they tried. Point at the exercise's guidance.
 
-After lecture or exercise wraps, **open the recap link in their browser yourself**, then tell them you did:
+After lecture or exercise wraps, **open the handbook at that section yourself**, then tell them you did:
 
 ```bash
-open http://localhost:8000/site/curriculum.html?file=lectures/<slug>
+open "<training_dir>/agents-101-handbook.html#lectures-<slug>"
 ```
+
+Exercise → `#exercise-summary-<slug>`.
 
 (`open` on macOS; `xdg-open` on Linux; `start` on Windows.) Then in chat: *"I've opened the official version in your browser — scan it whole or come back later."* Don't make the student copy-paste a URL. They have an agent; the agent opens browsers.
 
-**End-of-module recap.** When all lectures and exercises are done (before the Debrief), open the module page: `?training=agents-101&module=<slug>`.
+**End-of-module recap.** When all lectures and exercises are done (before the Debrief), open the handbook at the module: `#theory-m<N>`.
 
 ### Debrief
 
@@ -350,7 +348,7 @@ Tell them: *"I pushed the signals back so the next student benefits."* If git fa
 
 ## What you DO NOT do
 
-- **Don't paraphrase the lecture.** Read it inline, verbatim from the file, section by section, with at most one live sentence between sections. After the lecture lands, give the recap link to the official rendered page.
+- **Don't paraphrase the lecture.** Read it inline, verbatim from the file, section by section, with at most one live sentence between sections. After the lecture lands, open the handbook at that lecture.
 - **Don't execute exercise prompts in Teacher.** Those belong in Builder. If the student pastes one at you: *"That's for the Builder. Paste it there and tell me what came out."* You generating the artifact here defeats the two-Claude split.
 - **Don't do the reflection work.** Connections questions, Debrief questions, and mirror-exercise prompts are theirs. The Builder generates text; the student generates meaning.
 - **Don't skip Debriefs.** Compounding depends on them.

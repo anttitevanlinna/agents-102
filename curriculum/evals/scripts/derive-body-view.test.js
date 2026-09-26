@@ -129,3 +129,22 @@ test('prompt signal reads the body, not a maintainer note quoting a prompt marke
   bodyText = g.bodyLines.map(n => g.lines[n - 1]).join('\n')
   assert.equal(signals(withInline, g, bodyText).has_prompt_blocks, true)
 })
+
+test('a compendium change invalidates the cached view (rule inventory never goes stale)', () => {
+  const fs = require('node:fs'), os = require('node:os'), path = require('node:path')
+  const { execFileSync } = require('node:child_process')
+  const core = fs.mkdtempSync(path.join(os.tmpdir(), 'bv-core-'))
+  fs.mkdirSync(path.join(core, 'memory'))
+  const comp = path.join(core, 'memory', 'check_writing.md')
+  fs.writeFileSync(comp, '1. **One.** a\n\n2. **Two.** b\n')
+  const file = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'bv-file-')), 'x.md')
+  fs.writeFileSync(file, '# X\n\nbody\n')
+  const run = () => JSON.parse(execFileSync(process.execPath, ['-e',
+    `const r=require(${JSON.stringify(path.join(__dirname, 'derive-body-view.js'))}).derive(${JSON.stringify(file)});` +
+    `process.stdout.write(JSON.stringify({cached:r.cached,owed:r.rule_inventory['check_writing.md'].owed}))`],
+    { env: { ...process.env, AGENTS_CORE_DIR: core } }).toString())
+  assert.deepEqual(run(), { cached: false, owed: 2 })
+  assert.deepEqual(run(), { cached: true, owed: 2 })
+  fs.appendFileSync(comp, '\n3. **Three.** c\n')
+  assert.deepEqual(run(), { cached: false, owed: 3 })
+})

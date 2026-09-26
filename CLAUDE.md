@@ -55,12 +55,12 @@ Subagents inherit the full CLAUDE.md hierarchy + `.claude/rules/`; built-in Expl
 
 ## Approval gate
 
-Card ONLY **student-facing body text + prompt bodies students copy** (`check_prompts.md §26`) **still carrying a decision Antti has not made.** Format: BEFORE/AFTER/WHY/RISK, changed spans **bolded** in both BEFORE and AFTER — **always, every card, no exceptions** (insertion = bold only in AFTER; deletion = bold the cut span in BEFORE **and** the text that now closes over it in AFTER, so the join is visible). One at a time, wait for the call.
+Card ONLY **student-facing body text + prompt bodies students copy** (`check_prompts.md §26`) **still carrying a decision the maintainer has not made.** Maintainer = whoever owns `main` in this checkout (Antti upstream; your curator in a customer copy). Format: BEFORE/AFTER/WHY/RISK, changed spans **bolded** in both BEFORE and AFTER — **always, every card, no exceptions** (insertion = bold only in AFTER; deletion = bold the cut span in BEFORE **and** the text that now closes over it in AFTER, so the join is visible). One at a time, wait for the call.
 
 **Not card-shaped though a student reads it** (§26 standing exemptions):
 
 - mechanical swap leaving claim/voice/ask untouched — page geometry → reading order, dead anchor, stale locator;
-- any edit whose wording Antti just supplied or whose direction he just called — carding it asks him to approve his own sentence;
+- any edit whose wording the maintainer just supplied or whose direction they just called — carding it asks them to approve their own sentence;
 - any body edit to a supplementary OR reference page (Antti widened 2026-08-29, mid-card on `reference/multi-session-git.md`; prompt fences on those pages included, Antti 2026-08-30) — the training index's quieter rows, optional reading, never projected in a room. Modules, exercises, lectures stay gated.
 
 → apply, report as landed work; genuine open question = note beside it, not a gate. Test: *could you write BEFORE/AFTER and be certain of the call yourself?* → not a card.

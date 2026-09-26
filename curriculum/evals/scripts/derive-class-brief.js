@@ -35,9 +35,10 @@ const fs = require('node:fs')
 const path = require('node:path')
 const { COMPENDIA } = require('./derive-body-view.js')
 const { prefill } = require('./prefill-instance.js')
+const { extraRules } = require('./extra-rules.js')
 
 const REPO = path.resolve(__dirname, '..', '..', '..')
-const MEM = '/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory'
+const MEM = require('./compendium-drift.js').MEM
 const OUT_DIR = path.join(REPO, 'curriculum', 'evals', 'body-views')
 
 // Split a compendium into (preamble, [rule chunks]). A rule chunk runs from its
@@ -108,6 +109,13 @@ function build(fileArg, cls) {
     parts.push(`\n\n## ${c}.md — ${body.length} rules\n\n${body.join('\n\n')}`)
   }
 
+  // Rules injected from outside the repos (AGENTS_EXTRA_RULES). Unnumbered, so
+  // no ledger row: a violation is a finding that quotes the rule.
+  const org = comps.flatMap(c => extraRules(c))
+  if (org.length) {
+    parts.push(`\n\n## Org rules — added to the above, unnumbered\n\nJudge the body against these too. They have no ledger row: report a violation as a finding that quotes the rule.\n\n${org.map(r => r.text.trim()).join('\n\n')}`)
+  }
+
   const header = [
     `# Class brief — ${cls} — ${path.relative(REPO, path.isAbsolute(fileArg) ? fileArg : path.join(REPO, fileArg))}`,
     '',
@@ -149,7 +157,8 @@ if (require.main === module) {
   }
   let r
   try { r = build(file, cls) } catch (e) { console.error(`FAIL: ${e.message}`); process.exit(1) }
-  if (rest.includes('--stdout')) { process.stdout.write(r.text); process.exit(0) }
+  // No process.exit after a pipe write: exit drops the unflushed tail of a large brief.
+  if (rest.includes('--stdout')) { process.stdout.write(r.text); return }
   fs.mkdirSync(OUT_DIR, { recursive: true })
   // Slug, not basename. `spot-gaps-build-the-loop` is both a module and an
   // exercise; two concurrent judges on the two files would write and read one

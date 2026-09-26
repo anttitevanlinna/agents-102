@@ -64,7 +64,7 @@ Optional `--personas N` (only valid for `story`): N is 1, 2, or 3. Default 1. If
 
 ### Step 2 — Identify in-scope compendiums
 
-Glob `~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/check_*.md`. For each, read the frontmatter and check whether `eval_classes:` contains the requested class. Collect the matching paths.
+Glob `../agents-102-core/memory/check_*.md` (`$AGENTS_CORE_DIR` overrides). For each, read the frontmatter and check whether `eval_classes:` contains the requested class. Collect the matching paths.
 
 **Full compendiums (T3), never `memory/_index/`.** The index is the generator's tier — leads without carve-outs. Judges cite rule numbers and adjudicate boundary cases, so they need the file. `metadata.tiers.diamond` in the frontmatter is index bookkeeping and has no bearing on which rules a judge evaluates: every rule is in scope, diamond or not.
 
@@ -87,7 +87,7 @@ For the **voice_panel** class, there is no `eval_classes:` glob — the calibrat
 So the prompt you dispatch is a short parameter header over that contract. Substitute and send verbatim:
 
 ```
-You are the **<class>** eval judge for `<file_path>`. Repo root `/Users/anttitevanlinna/Projects/agents-102` — cd there first.
+You are the **<class>** eval judge for `<file_path>`. Repo root `<absolute path of this repo>` — cd there first.
 
 ## Read
 

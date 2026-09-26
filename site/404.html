@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Moved</title>
+<script>
+// The marketing pages moved 1:1 to bosser.consulting/training/. Customer
+// workbooks under /clients/ stay here and never redirect.
+function target(p, q) {
+  var MOVED = /^\/(index\.html|article\.html|privacy\.html|wardley-saas\.html|(check|readiness|curriculum|covers)\/.*)?$/;
+  if (/^\/clients(\/|$)/.test(p)) return null;
+  return 'https://bosser.consulting/training' + (MOVED.test(p) ? (p === '/' ? '/' : p) + q : '/');
+}
+var t = target(location.pathname, location.search + location.hash);
+if (t) location.replace(t);
+</script>
+</head>
+<body>
+<p>Page not found. <a href="https://bosser.consulting/training/">Bosser training</a></p>
+</body>
+</html>

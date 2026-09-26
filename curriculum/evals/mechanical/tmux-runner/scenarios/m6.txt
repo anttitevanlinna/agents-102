@@ -9,17 +9,10 @@
 # across M1-M5. First authored skill at ~/.claude/skills/test-strategy-lemmings/.
 #
 # AUQ suppression discipline (per M3 run-1 post-mortem + §27 sentinel-
-# completion lesson): every M6 prompt that could plausibly trigger AUQ
-# on the agent's own ambiguity-driven reasoning carries an explicit
-# suppression tail. The reading turns (T1, T3, T9) are large enough to
-# tempt AUQ-style clarification; the authoring turns (T6, T7, T8) are
-# decision-heavy. T6 (interview) is the highest structural AUQ risk —
-# the prompt body says "Interview me one question at a time" which is
-# exactly the AUQ shape. Lemmings variant dumps answers preemptively
-# (suppression). Codesearch variant (m6-codesearch.txt) uses the
-# ask-and-wait pattern. The save-gate literal after T6 is the explicit
-# SKILL.md write approval.
-
+# completion lesson): every turn carries an explicit no-AUQ tail. The
+# reading turns (T1, T3) are large enough to tempt clarification; T6's
+# body says the handoff "picks with me", which is the student's LATER
+# fresh session, not this one — the tail keeps this turn to writing it.
 # T1: diff two runs. Large reading task across both transcripts +
 # both branches. Suppress AUQ; the agent has enough to read.
 spot-gaps-build-the-loop-1 Don't call AskUserQuestion — read what's on disk (transcripts + branches) and produce the four-dimension diff inline. If something's genuinely unreadable (transcript path doesn't resolve), name the gap in your report rather than asking. Quote moments from both runs.
@@ -43,3 +36,7 @@ spot-gaps-build-the-loop-shapes Don't call AskUserQuestion — draw the top few 
 
 # T5: atomic primitives menu + ranked picks against dominant gap.
 spot-gaps-build-the-loop-primitives Don't call AskUserQuestion — produce the list inline. The 5-10 primitives + 2-3 ranked picks all land in one chat reply.
+# T6: the handoff prompt (lectures/the-handoff-prompt). Consumes T4's
+# shapes; produces a standalone prompt in scrollback — scan → pick + build
+# one skill → checks on its output. Nothing downstream in the chain runs it.
+agents-that-build-agents-handoff Don't call AskUserQuestion — write the handoff prompt now, in one reply, as a fenced block I can save. Don't run it; the "pick with me" step belongs to the fresh session that runs it later.

@@ -35,7 +35,9 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-OUT="agents-101-starter.tar.gz"
+# Optional arg: where to write it (a build passes its own output dir).
+OUT="${1:-agents-101-starter.tar.gz}"
+case "$OUT" in /*) ;; *) OUT="$PWD/$OUT" ;; esac
 SRC="curriculum/scaffolds/agents-101-starter"
 SELF_STUDY_SKILL=".claude/skills/self-study/SKILL.md"
 STAGE="$(mktemp -d)"
@@ -150,7 +152,7 @@ cp site/clients/_starter/agents-101/theory-handbook.html "$ROOT/agents-101-handb
 # Build tarball from inside ROOT so the archive has prework/, module-4/policies/,
 # memory/, sources/, agents/, .claude/ at the top level (no wrapper).
 rm -f "$OUT"
-(cd "$ROOT" && tar czf "$OLDPWD/$OUT" .)
+(cd "$ROOT" && tar czf "$OUT" .)
 
 # Sanity-check expected paths.
 echo "Built $OUT"

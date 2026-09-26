@@ -47,7 +47,7 @@ function loadFigures(figuresDir) {
 }
 
 function writeFigures(registry, outFile) {
-  fs.writeFileSync(outFile || OUT_FILE, JSON.stringify(registry));
+  require('./write-if-changed.js').writeIfChanged(outFile || OUT_FILE, JSON.stringify(registry));
 }
 
 if (require.main === module) {

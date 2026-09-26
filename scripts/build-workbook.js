@@ -31,7 +31,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execSync, execFileSync } = require('child_process');
 const { marked } = require('marked');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -495,7 +495,7 @@ const STUDENT_HANDBOOK_PRINT_CSS = fs.readFileSync(
 // only when a prompt carries `anchors:` — otherwise no anchor exists to click.
 const ANATOMY = Object.values(PROMPT_REGISTRY).some(e => e && e.anchors && e.anchors.length)
   ? require('./compile-anatomy.js').entries() : null;
-if (ANATOMY) fs.writeFileSync(path.join(ROOT, 'site/anatomy.json'), JSON.stringify(ANATOMY, null, 2) + '\n');
+if (ANATOMY) require('./write-if-changed.js').writeIfChanged(path.join(ROOT, 'site/anatomy.json'), JSON.stringify(ANATOMY, null, 2) + '\n');
 const SPA_JS = (ANATOMY ? `window.__ANATOMY = ${JSON.stringify(ANATOMY).replace(/<\//g, '<\\/')};\n` : '') + fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.js'), 'utf8');
 // The slide viewer (Long-read ⇄ Slides). Inlined so the handbook keeps working
 // offline; inert until the reader toggles Slides.
@@ -1273,10 +1273,10 @@ function buildPayload(contentKey, customer, urlKey, outDir) {
   if (contentKey === 'agentic-engineering-101') {
     const tarName = TARBALLS[contentKey];
     console.log('Building content tarball...');
-    execSync('scripts/build-ae101-content-tarball.sh', { cwd: ROOT, stdio: 'inherit' });
-    const tarSrc = path.join(ROOT, tarName);
+    // Straight into this build's own output dir: a shared repo-root file raced
+    // between parallel builds.
     const tarDst = path.join(outDir, tarName);
-    fs.copyFileSync(tarSrc, tarDst);
+    execFileSync('scripts/build-ae101-content-tarball.sh', [tarDst], { cwd: ROOT, stdio: 'inherit' });
     const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
     console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
     return payloadUrl(urlKey, customer, tarName);
@@ -1285,10 +1285,8 @@ function buildPayload(contentKey, customer, urlKey, outDir) {
   if (contentKey === 'agents-101') {
     const tarName = TARBALLS[contentKey];
     console.log('Building Agents 101 starter tarball...');
-    execSync('scripts/build-agents-101-starter-tarball.sh', { cwd: ROOT, stdio: 'inherit' });
-    const tarSrc = path.join(ROOT, tarName);
     const tarDst = path.join(outDir, tarName);
-    fs.copyFileSync(tarSrc, tarDst);
+    execFileSync('scripts/build-agents-101-starter-tarball.sh', [tarDst], { cwd: ROOT, stdio: 'inherit' });
     // Agents 101 is dual-runtime; Cowork's outbound network allowlist blocks
     // both bosser.consulting and raw.githubusercontent.com (only objects.gh +
     // S3 + a few others reachable). The fallback for Cowork is browser-download

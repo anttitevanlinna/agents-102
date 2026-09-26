@@ -98,10 +98,11 @@ function loadRegistry(promptsDir) {
   return registry;
 }
 
+const { writeIfChanged } = require('./write-if-changed.js');
+
 function writeRegistry(registry, outFile) {
   const out = outFile || OUT_FILE;
-  fs.mkdirSync(path.dirname(out), { recursive: true });
-  fs.writeFileSync(out, JSON.stringify(registry, null, 2) + '\n');
+  writeIfChanged(out, JSON.stringify(registry, null, 2) + '\n');
   return out;
 }
 

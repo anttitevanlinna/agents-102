@@ -45,7 +45,9 @@ TRAINER_ONLY=(
 
 # Tarball filename owned by curriculum/trainings/agentic-engineering-101/training-architecture.md
 # § Material distribution. Rename there first; this line and downstream consumers follow.
-OUT="ae101-content.tar.gz"
+# Optional arg: where to write it (a build passes its own output dir).
+OUT="${1:-ae101-content.tar.gz}"
+case "$OUT" in /*) ;; *) OUT="$PWD/$OUT" ;; esac
 STAGE="$(mktemp -d)"
 trap 'rm -rf "$STAGE"' EXIT
 
@@ -201,7 +203,7 @@ fi
 # supplementary/, content/, prompts/, figures/ at the top level.
 # Extraction: `tar xzf ae101-content.tar.gz -C ~/Documents/ae101-content`
 rm -f "$OUT"
-(cd "$ROOT" && tar czf "$OLDPWD/$OUT" .)
+(cd "$ROOT" && tar czf "$OUT" .)
 
 # ---- Sanity checks -------------------------------------------------------
 echo "Built $OUT"

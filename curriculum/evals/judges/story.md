@@ -117,7 +117,7 @@ Return ONE JSON object, exactly this shape:
 
 {
   "class": "storytelling",
-  "file": "<absolute path>",
+  "file": "<repo-relative path>",
   "verdict": "PASS" | "REVISE",
   "training": "agents-101" | "ae101" | "claude-basics" | "shared",
   "module_mood_contract": "<from trace>",

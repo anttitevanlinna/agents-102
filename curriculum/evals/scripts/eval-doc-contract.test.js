@@ -27,3 +27,17 @@ test('eval docs use inherited project rules and two live verdicts', () => {
   assert.doesNotMatch(docs, /Subagents do NOT read CLAUDE\.md|prepend `\.claude\/rules\/content-rules\.md`/)
   assert.doesNotMatch(docs, /APPROVE WITH TODOs|non-blocking REVISE rules/)
 })
+
+test('judge templates write portable repo-relative instance paths', () => {
+  const dir = path.join(repo, 'curriculum/evals/judges')
+  const templates = fs.readdirSync(dir)
+    .filter(name => name.endsWith('.md'))
+    .map(name => fs.readFileSync(path.join(dir, name), 'utf8'))
+    .filter(text => /"file":\s*"</.test(text))
+
+  assert.ok(templates.length > 0)
+  for (const template of templates) {
+    assert.doesNotMatch(template, /"file":\s*"<absolute path>"/)
+    assert.match(template, /"file":\s*"<repo-relative path>"/)
+  }
+})

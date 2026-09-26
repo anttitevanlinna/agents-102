@@ -142,7 +142,7 @@ Return ONE JSON object, exactly this shape:
 
 {
   "class": "behavior",
-  "file": "<absolute path>",
+  "file": "<repo-relative path>",
   "verdict": "PASS" | "REVISE",
   "training": "agents-101" | "ae101" | "claude-basics" | "shared" | "unknown",
   "trace_status": "cached" | "partial_regen" | "full_regen" | "generated_first_time",

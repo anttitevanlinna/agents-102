@@ -54,7 +54,7 @@ Return ONE JSON object, exactly the writing judge's schema with `"class": "slide
 
 {
   "class": "slides",
-  "file": "<absolute path>",
+  "file": "<repo-relative path>",
   "verdict": "PASS" | "REVISE",
   "training": "agents-101" | "ae101" | "claude-basics" | "shared" | "unknown",
   "chunk_map": [{"index": 0, "heading": "<H1/lede>", "lines": "1-9"}, ...],

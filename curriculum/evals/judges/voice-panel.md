@@ -53,7 +53,7 @@ Sami's signature means: *I would run this on my own repo Monday, and I could def
 
 {
   "persona": "boris" | "martin" | "godin" | "rory" | "risto" | "sami",
-  "file": "<absolute path>",
+  "file": "<repo-relative path>",
   "pleased": true | false,
   "delight": {"line": <int>, "quote": "<substring>", "why": "<one sentence>"},
   "misses": [{"rank": 1, "line": <int>, "quote": "<substring or ABSENCE:<what's missing and where it belongs>>", "why": "<one sentence>"}],

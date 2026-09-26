@@ -59,7 +59,7 @@ Return ONE JSON object, exactly this shape:
 
 {
   "class": "strategy",
-  "file": "<absolute path>",
+  "file": "<repo-relative path>",
   "verdict": "PASS" | "REVISE",
   "training": "agents-101" | "ae101" | "claude-basics" | "shared",
   "strategy_doc_section_loaded": "<which per-module section was consulted>",

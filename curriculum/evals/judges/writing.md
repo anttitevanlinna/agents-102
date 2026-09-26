@@ -76,7 +76,7 @@ Return ONE JSON object, exactly this shape:
 
 {
   "class": "writing",
-  "file": "<absolute path>",
+  "file": "<repo-relative path>",
   "verdict": "PASS" | "REVISE",
   "training": "agents-101" | "ae101" | "claude-basics" | "shared" | "unknown",
   "rules_evaluated": [

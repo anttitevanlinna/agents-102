@@ -49,6 +49,7 @@ main_dir="$run_dir/main"
 quality_dir="$run_dir/quality"
 mkdir -p "$main_dir/sentinels" "$quality_dir/sentinels"
 run_register "m3" "$run_dir"           # .module for prune; chain pointer if chained
+runner_guard_skills "$run_dir"          # standalone: ~/.claude/skills restored in cleanup()
 touch "$run_dir/.started"             # artefact gates: "new this run" = -newer this
 
 main_session="runner-$run_id-main"
@@ -126,6 +127,7 @@ cleanup() {
   pane_capture_safe "$quality_session" "$quality_dir/transcript.txt" 10
   pane_kill "$main_session"
   pane_kill "$quality_session"
+  runner_restore_skills
 }
 trap cleanup EXIT
 

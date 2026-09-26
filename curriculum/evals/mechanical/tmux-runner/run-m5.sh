@@ -120,6 +120,7 @@ pb_dir="$run_dir/pb"
 pc_dir="$run_dir/pc"
 mkdir -p "$pa_dir/sentinels" "$pb_dir/sentinels" "$pc_dir/sentinels"
 run_register "m5" "$run_dir"           # .module for prune; chain pointer if chained
+runner_guard_skills "$run_dir"          # standalone: ~/.claude/skills restored in cleanup()
 
 pa_session="runner-$run_id-pa"
 pb_session="runner-$run_id-pb"
@@ -188,6 +189,7 @@ cleanup() {
   pane_kill "$pa_session"
   pane_kill "$pb_session"
   pane_kill "$pc_session"
+  runner_restore_skills
 }
 trap cleanup EXIT
 

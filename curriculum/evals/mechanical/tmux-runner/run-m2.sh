@@ -45,6 +45,7 @@ run_dir="$HERE/out/$run_id"
 sentinel_dir="$run_dir/sentinels"
 mkdir -p "$sentinel_dir"
 run_register "m2" "$run_dir"           # .module for prune; chain pointer if chained
+runner_guard_skills "$run_dir"          # standalone: ~/.claude/skills restored in cleanup()
 
 session="runner-$run_id"
 launch_cmd="env CLAUDE_RUNNER_SENTINEL_DIR=$sentinel_dir ${CLAUDE_CMD:-claude}"
@@ -90,6 +91,7 @@ cleanup() {
   # actively-rendering pane (see run-m1.sh for the high-effort case).
   pane_capture_safe "$session" "$run_dir/transcript.txt" 10
   pane_kill "$session"
+  runner_restore_skills
 }
 trap cleanup EXIT
 

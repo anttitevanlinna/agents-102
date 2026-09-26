@@ -65,6 +65,7 @@ run_dir="$HERE/out/$run_id"
 sentinel_dir="$run_dir/sentinels"
 mkdir -p "$sentinel_dir"
 run_register "prework" "$run_dir"           # .module for prune; chain pointer if chained
+runner_guard_skills "$run_dir"          # standalone: ~/.claude/skills restored in cleanup()
 
 session="runner-$run_id"
 warmup="${CLAUDE_RUNNER_WARMUP:-10}"
@@ -127,6 +128,7 @@ cleanup() {
   pane_capture "$session" "$run_dir/transcript.txt" 2>/dev/null || true
   pane_kill "$session"
   [[ -n "$http_pid" ]] && kill "$http_pid" 2>/dev/null || true
+  runner_restore_skills
 }
 trap cleanup EXIT
 

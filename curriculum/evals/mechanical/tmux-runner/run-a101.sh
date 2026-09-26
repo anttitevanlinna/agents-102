@@ -65,6 +65,7 @@ run_dir="$HERE/out/a101-$module-$run_id"
 sentinel_dir="$run_dir/sentinels"
 mkdir -p "$sentinel_dir"
 run_register "a101-$module" "$run_dir"           # .module for prune; chain pointer if chained
+runner_guard_skills "$run_dir"          # standalone: ~/.claude/skills restored in cleanup()
 
 session="runner-$run_id"
 warmup="${CLAUDE_RUNNER_WARMUP:-10}"
@@ -134,6 +135,7 @@ sleep "$warmup"
 cleanup() {
   pane_capture_safe "$session" "$run_dir/transcript.txt" 10 || true
   pane_kill "$session"
+  runner_restore_skills
 }
 trap cleanup EXIT
 
@@ -349,11 +351,12 @@ assert_turn() {
     m4a:4)
       # Install lands in the OPERATOR's ~/.claude/skills — required so m4b
       # autoloads the packaged lens. $HOME can't be isolated on this setup (a
-      # scratch HOME isn't logged in), so the chain removes this skill post-run
-      # via a pre-existence-guarded trap (H2). Standalone m4a runs leak it until
-      # the next chain run — clean up by hand if you ran m4a alone.
+      # scratch HOME isn't logged in), so ~/.claude/skills is restored to its
+      # pre-run snapshot on exit — by the chain's guard, or by this runner's
+      # cleanup() when run alone. Hand-chaining m4a → m4b as separate runs needs
+      # CLAUDE_RUNNER_KEEP_SKILLS=1 on m4a, or m4b finds the skill gone.
       assert_file_exists "m4a T4 installed skill" "$HOME/.claude/skills/security-audit/SKILL.md" || return 1
-      echo "[assert] WARN m4a T4: wrote to operator \$HOME/.claude/skills/security-audit — chain auto-removes post-run; standalone runs must clean up by hand (findings H2)" >&2
+      echo "[assert] WARN m4a T4: wrote to operator \$HOME/.claude/skills/security-audit — restored away on exit (chain or runner guard); hand-chaining m4a → m4b needs CLAUDE_RUNNER_KEEP_SKILLS=1 (findings H2)" >&2
       echo "[assert] PASS m4a T4: skill installed at ~/.claude/skills/security-audit/SKILL.md" ;;
 
     # ----- m4b (load the skill, audit, mitigate, debrief) -----

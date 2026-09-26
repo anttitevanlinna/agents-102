@@ -86,5 +86,36 @@ _chain_restore_skills() {
   mkdir -p "$CLAUDE_RUNNER_CHAIN_DIR/skills-after"
   rsync -a --delete "$_CHAIN_SKILLS_SRC/" "$CLAUDE_RUNNER_CHAIN_DIR/skills-after/"
   rsync -a --delete "$_CHAIN_SKILLS_SNAP/" "$_CHAIN_SKILLS_SRC/" \
+    && rm -rf "$_CHAIN_SKILLS_SNAP" \
     && echo "[chain] $_CHAIN_SKILLS_SRC restored to its pre-run snapshot" >&2
+}
+
+# Standalone runners (run-mN.sh / run-prework.sh / run-a101.sh without a
+# chain) get the same guard. Runners already own `trap cleanup EXIT`, so the
+# restore is a call at the end of their cleanup(), not a second trap. Inside a
+# chain the runner stands aside — the chain's guard owns the restore.
+# CLAUDE_RUNNER_KEEP_SKILLS=1 opts out (hand-chaining m4a → m4b).
+runner_guard_skills() {                 # $1=run dir (snapshot lives there)
+  [[ -n "${CLAUDE_RUNNER_CHAIN_DIR:-}" ]] && return 0
+  if [[ "${CLAUDE_RUNNER_KEEP_SKILLS:-}" == 1 ]]; then
+    echo "[runner] CLAUDE_RUNNER_KEEP_SKILLS=1 — skills this run writes stay in user scope" >&2
+    return 0
+  fi
+  _RUNNER_SKILLS_SRC="${CLAUDE_RUNNER_SKILLS_DIR:-$HOME/.claude/skills}"
+  _RUNNER_SKILLS_SNAP="$1/.skills-before"
+  mkdir -p "$_RUNNER_SKILLS_SRC" "$_RUNNER_SKILLS_SNAP"
+  rsync -a "$_RUNNER_SKILLS_SRC/" "$_RUNNER_SKILLS_SNAP/"
+  # Interim EXIT trap until the runner installs `trap cleanup EXIT` (which
+  # replaces this one and calls runner_restore_skills itself). Covers exits in
+  # between — run-prework.sh deletes the student skills ~60 lines earlier.
+  trap 'runner_restore_skills' EXIT
+  trap 'exit 130' INT                   # route signals through the EXIT trap
+  trap 'exit 143' TERM
+}
+
+runner_restore_skills() {
+  [[ -d "${_RUNNER_SKILLS_SNAP:-}" ]] || return 0
+  rsync -a --delete "$_RUNNER_SKILLS_SNAP/" "$_RUNNER_SKILLS_SRC/" \
+    && rm -rf "$_RUNNER_SKILLS_SNAP" \
+    && echo "[runner] $_RUNNER_SKILLS_SRC restored to its pre-run snapshot" >&2
 }

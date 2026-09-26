@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 232 — 2026-09-26
+
+A [SOURCE NEEDED] label from Cycle 231 (HydraFusion Sep 28 date not in primary changelog) resolved in Cycle 232 by searching secondary coverage rather than re-fetching the primary source. When a specific date claim lives in secondary coverage but not the primary page, the resolution path is cross-referencing multiple secondary sources for convergence — not repeated primary fetches. Three independent outlets citing the same date converts [SOURCE NEEDED] to Level 1 secondary, sufficient to confirm the watch target exists and prime the primary-source check at/after the date. The lesson: primary-source absence of a date ≠ absence of the date; secondary convergence is the bridge until the primary source catches up.
+
+v2.1.283's governance feature package (deniedModels, availableModelsMatch, /doctor prompt-audit, OTel MCP) represents a new pattern: Anthropic shipping enterprise IT controls independently of security patches. This decouples two previously linked signals — "new release" and "patch candidate" are no longer synonymous. For GitSpawn tracking, this means each new release must be read for content rather than treated as a potential patch by virtue of being new.
+
 ### Cycle 231 — 2026-09-25
 
 v2.1.282 (released same day as this cycle) required a direct releasebot.io fetch to confirm "no security patch" — the timeout improvement to /ultrareview reads ambiguously in a brief summary ("ultrareview improved") and could be mistaken for a security response without reading the specific changelog text. For any release whose description includes the vulnerable component name (ultrareview, fsmonitor, git), fetch the exact changelog entry rather than trusting a search-result summary. A functional improvement to a vulnerable component is not a patch.

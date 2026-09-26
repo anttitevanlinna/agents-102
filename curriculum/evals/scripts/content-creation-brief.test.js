@@ -30,6 +30,7 @@ console.log('content-creation-brief: strategy doc per training')
   const out = brief('curriculum/trainings/agentic-engineering-101/getting-going.md')
   assert.ok(out.includes(path.join(CORE, 'memory', '_index', 'writing.leads.md')), 'brief names the T1 writing index')
   assert.ok(!/Read each compendium/.test(out), 'brief must not send a writer to the full compendiums')
+  assert.ok(!/content-rules\.md/.test(out), 'content-rules.md autoloads (subagents too); the brief must not re-route to it')
 }
 // Every training directory is recognised: strategy doc and a voice line, never "unrecognized".
 {

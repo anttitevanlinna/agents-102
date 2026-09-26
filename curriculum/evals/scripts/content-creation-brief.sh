@@ -1,23 +1,11 @@
 #!/usr/bin/env bash
 # content-creation-brief.sh — emit the strategic context for a curriculum file.
 #
-# Subagents don't get the autoloaded compendiums (hooks don't fire in
-# subagents). When the orchestrator dispatches fan-out edits, this script
-# extracts what an authoring turn's preflight would have loaded:
-#   - training (agents-101 | ae101 | shared) → voice contract
-#   - Big Idea (from ## Big Idea section)
-#   - Mood contract (from maintainer block, when present)
-#   - Surface compendiums (writing / student_facing / strategy_tie_in / prompts / ...)
-#   - Hard rules: read content-rules.md, body-only, etc.
-#
-# The orchestrator pipes this into each subagent's brief verbatim, alongside
-# the per-finding fix-hint. Subagents now edit with strategy in context, same
-# shape as an authoring turn does in the main thread.
-#
-# Strategic source (bosser-strategy:content-strategy.md) is a private skill —
-# orchestrator loads it once per session and pastes the relevant module slice
-# into the subagent brief as a complementary block. This script extracts what
-# is observable in the file itself.
+# What a writer cannot get from the autoloaded rules: this file's training,
+# Big Idea, mood contract and strategy doc, plus which T1 rule indexes its
+# surfaces need (indexes do not autoload; `.claude/rules/content-rules.md`
+# does, in subagents too). The orchestrator pipes it into each writer's brief
+# alongside the per-finding fix-hint.
 #
 # Usage:
 #   content-creation-brief.sh <file>           # human-readable
@@ -116,13 +104,12 @@ for sf in $SURFACES; do INDEXES+="${INDEXES:+, }$CORE_MEM/_index/$sf.leads.md"; 
 
 # ---- Hard-rule preamble -------------------------------------------------
 HARD_RULES=$(cat <<'EOF'
-1. Read `.claude/rules/content-rules.md` (repo root) FIRST. It routes you to the right compendiums for this surface.
-2. Read each T1 rule index named below before writing. For any ⚠ rule you are about to act on, load its full text: `node curriculum/evals/scripts/rule.js <surface> <N>`. Never load a full `check_*.md` to write prose; that tier is for judges.
-3. Body region only. Do NOT edit content inside fenced code-block prompts unless the brief explicitly authorizes it. The mechanical battery extracts those prompts; touching them rots transcripts.
-4. Do NOT touch the maintainer-block Quality line. The orchestrator stamps it via update-quality.sh after eval re-fire.
-5. Do NOT touch any Debrief prompt or its body callout — behavior-class blockers there are intentional residual per memory/compounded/2026-05-02-pedagogy-debrief-prompts-residual-med-risk-by-design.md.
-6. No em-dashes (the deterministic auto-fix hook will swap to comma; write clean).
-7. Honor the mood contract above. Do NOT resolve a mood the strategy keeps open. The training's strategy doc (bosser-strategy) is the source; when the contract above is empty, read this module's mood there.
+1. Read each T1 rule index named below before writing. For any ⚠ rule you are about to act on, load its full text: `node curriculum/evals/scripts/rule.js <surface> <N>`. Never load a full `check_*.md` to write prose; that tier is for judges.
+2. Body region only. Do NOT edit content inside fenced code-block prompts unless the brief explicitly authorizes it. The mechanical battery extracts those prompts; touching them rots transcripts.
+3. Do NOT touch the maintainer-block Quality line. The orchestrator stamps it via update-quality.sh after eval re-fire.
+4. Do NOT touch any Debrief prompt or its body callout — behavior-class blockers there are intentional residual per memory/compounded/2026-05-02-pedagogy-debrief-prompts-residual-med-risk-by-design.md.
+5. No em-dashes (the deterministic auto-fix hook will swap to comma; write clean).
+6. Honor the mood contract above. Do NOT resolve a mood the strategy keeps open. The training's strategy doc (bosser-strategy) is the source; when the contract above is empty, read this module's mood there.
 EOF
 )
 

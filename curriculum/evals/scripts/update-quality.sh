@@ -535,7 +535,8 @@ awk -v top="$NEW_TOP" \
     -v rmr="$maintainer_row" \
     -v rc="$cohorts_row" '
   function printrows(s,  n, i, arr) { n = split(s, arr, "\037"); for (i = 1; i <= n; i++) print arr[i] }
-  BEGIN { in_block = 0; written = 0 }
+  BEGIN { in_block = 0; written = 0; has_maint = 0 }
+  /^<!-- maintainer -->$/ { has_maint = 1 }
   /^\*\*Quality:\*\*/ {
     print top
     if (rj  != "") printrows(rj)
@@ -570,10 +571,14 @@ awk -v top="$NEW_TOP" \
   { print }
   END {
     if (written == 0) {
+      # No Quality line yet. It belongs in the maintainer block, never the body
+      # a student reads; a new file may have no block, so open one.
+      if (!has_maint) { print ""; print "<!-- maintainer -->" }
       print ""
       print top
       if (rj  != "") printrows(rj)
       if (rxm != "") printrows(rxm)
+      if (rvp != "") print rvp
       if (rmr != "") print rmr
       if (rc  != "") print rc
     }

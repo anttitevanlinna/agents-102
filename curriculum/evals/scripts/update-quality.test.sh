@@ -450,6 +450,24 @@ assert_grep "$TMP/t24.md" 'story PASS'               'T24 first judges row survi
 assert_grep "$TMP/t24.md" 'writing PASS'             'T24 second judges row survives'
 assert_grep "$TMP/t24.md" '2026-09-15 pilot'         'T24 the axis row landed'
 
+# T25 — a file with no maintainer block: the stamp must not land in the body
+printf '# New exercise\n\nBody text.\n' > "$TMP/t25.md"
+rc=$(run "$TMP/t25.md" --writing "REVISE:1/4-see-x")
+assert_rc   "$rc" 0                                   'T25 stamp on a file with no maintainer block exits 0'
+assert_grep "$TMP/t25.md" '<!-- maintainer -->'       'T25 maintainer marker created'
+if awk '/<!-- maintainer -->/{m=NR} /^\*\*Quality:\*\*/{q=NR} END{exit !(m && q && m<q)}' "$TMP/t25.md"; then pass=$((pass+1)); else fail=$((fail+1)); echo "FAIL: T25 Quality sits below the maintainer marker"; sed 's/^/      /' "$TMP/t25.md"; fi
+
+# T26 — maintainer block present, no Quality line yet: no second marker
+printf '# Ex\n\nBody.\n\n<!-- maintainer -->\n\nNotes.\n' > "$TMP/t26.md"
+rc=$(run "$TMP/t26.md" --writing PASS)
+assert_rc   "$rc" 0                                   'T26 exits 0'
+if [ "$(grep -c '<!-- maintainer -->' "$TMP/t26.md")" = 1 ]; then pass=$((pass+1)); else fail=$((fail+1)); echo "FAIL: T26 exactly one maintainer marker"; fi
+
+# T27 — a first stamp carrying only the voice_panel axis keeps that row
+printf '# Ex\n\nBody.\n\n<!-- maintainer -->\n' > "$TMP/t27.md"
+rc=$(run "$TMP/t27.md" --writing PASS --voice-panel "PASS:6/6-signatures")
+assert_grep "$TMP/t27.md" 'voice_panel'               'T27 voice_panel row written on a first stamp'
+
 echo "──────────────────────────────"
 echo "update-quality.test.sh: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]

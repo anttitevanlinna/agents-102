@@ -489,6 +489,22 @@ assert_grep "$SIMD/ae101--t29.persona.json" "$new29"   'T29 matching trace advan
 if grep -q "$new29" "$SIMD/ae101--t29.behavior.json"; then fail=$((fail+1)); echo "  FAIL T29 a stale trace was advanced"; else pass=$((pass+1)); echo "  ok   T29 a stale trace stays stale"; fi
 unset QUALITY_SIM_DIR
 
+# T30 — a prefill sidecar bound to the pre-stamp file follows the stamp too.
+# Judges park resolved rows before writing their instances, then the orchestrator
+# stamps Quality. If the stamper advances instances and traces but leaves the
+# sidecar behind, the mandatory --merge refuses the exact run that created it.
+VIEWD="$TMP/views"; mkdir -p "$VIEWD"; export QUALITY_BODY_VIEWS_DIR="$VIEWD"
+printf '# Ex\n\nBody.\n\n<!-- maintainer -->\n' > "$TMP/t30.md"
+sha30=$(shasum -a 256 "$TMP/t30.md" | awk '{print $1}')
+printf '{"source_sha":"%s","rows":[]}\n' "$sha30" > "$VIEWD/ae101--t30.writing.prefill.json"
+stale30=$(printf x | shasum -a 256 | awk '{print $1}')
+printf '{"source_sha":"%s","rows":[]}\n' "$stale30" > "$VIEWD/ae101--t30.story.prefill.json"
+rc=$(run "$TMP/t30.md" --writing PASS)
+new30=$(shasum -a 256 "$TMP/t30.md" | awk '{print $1}')
+assert_grep "$VIEWD/ae101--t30.writing.prefill.json" "$new30" 'T30 matching sidecar advances to the stamped file'
+assert_grep "$VIEWD/ae101--t30.story.prefill.json" "$stale30" 'T30 a stale sidecar stays stale'
+unset QUALITY_BODY_VIEWS_DIR
+
 echo "──────────────────────────────"
 echo "update-quality.test.sh: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]

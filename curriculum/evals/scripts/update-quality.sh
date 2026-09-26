@@ -631,6 +631,18 @@ if [[ -n "$file_sha" && -n "$new_file_sha" && "$file_sha" != "$new_file_sha" && 
     sed -i.bak -E "s/(\"content_sha\"[[:space:]]*:[[:space:]]*\")$file_sha(\")/\1$new_file_sha\2/" "$tr"
     rm -f "$tr.bak"
   done
+  # Prefill sidecars are created before the judge writes its instance and are
+  # merged afterwards. They bind to the same whole-file hash. Leaving them on
+  # the pre-stamp hash makes the mandatory merge reject the audit that just
+  # produced them, even though this script changed only its own Quality block.
+  # As above, advance only an exact pre-write match; an already-stale sidecar
+  # must stay stale and fail closed.
+  VIEWS_DIR="${QUALITY_BODY_VIEWS_DIR:-$SCRIPT_DIR/../body-views}"
+  for sc in "$VIEWS_DIR"/*--"${surface:+$surface--}$slug".*.prefill.json; do
+    [[ -e "$sc" ]] || continue
+    sed -i.bak -E "s/(\"source_sha\"[[:space:]]*:[[:space:]]*\")$file_sha(\")/\1$new_file_sha\2/" "$sc"
+    rm -f "$sc.bak"
+  done
 fi
 
 echo "Updated Quality block in $FILE"

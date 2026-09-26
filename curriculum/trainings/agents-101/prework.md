@@ -22,7 +22,7 @@ Other connectors are optional. If your company uses a wiki, Confluence, Jira, Li
 
 <span class="rt-code">In Claude Code, click the **+** button next to the prompt, then **Settings → Connectors**.</span><span class="rt-cowork">In Claude Desktop, open **Customize → Connectors**. The connector list is shared across Claude Desktop and Cowork.</span> Sign in with your work account and enable Microsoft 365 or Google Workspace if it appears.
 
-If your IT admin has not approved the connector yet, keep going. The calendar screenshot path in Task 4 gives you the same teaching moment with less automation. For click-paths and troubleshooting, see [Claude quick reference](../../trainings/agents-101/reference/claude-quick-reference.md).
+If your IT admin has not approved the connector yet, keep going. The calendar screenshot path in section 5, Path B gives you the same teaching moment with less automation. For click-paths and troubleshooting, see [Claude quick reference](../../trainings/agents-101/reference/claude-quick-reference.md).
 
 ## 3. Install the training folder (3 min)
 
@@ -110,7 +110,7 @@ Once those five things are ready, end the prework <span class="rt-code">session<
 | Agents 101 starter file set | `agents-101-starter.tar.gz` | Prework install task | Prework extraction; M2-M8 folder homes and M4 policy references |
 | Cross-module folder homes | `memory/`, `sources/`, `agents/` | Prework starter extraction | M2-M8 compounding system work |
 | Module 4 policy references | `module-4/policies/*.md` | Prework starter extraction | M4 raw policy run and reusable security check |
-| Prework proof files | `prework/snake.html`, `prework/meetings.md` | Prework tasks 3-4 | M1 readiness check and trainer support if setup failed |
+| Prework proof files | `prework/snake.html`, `prework/meetings.md` | Prework tasks 4-5 | M1 readiness check and trainer support if setup failed |
 
 **TODO (Claude Code Desktop edition review 2026-04-29):**
 - Prompt 1 includes Cowork-specific wording: "Leave `agents-101-starter.tar.gz` behind; Cowork's sandbox can't always delete host-dropped files." Harmless, but odd in the Desktop edition. Prompt-block change is gated: propose before/after before editing. Likely fix is a runtime fork or neutral sentence.

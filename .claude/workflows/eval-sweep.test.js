@@ -273,6 +273,11 @@ test('the contract file actually carries the mechanics both headers point at', (
   for (const s of ['derive-body-view.js', 'derive-class-brief.js', 'prefill-instance.js', '--merge', 'check-instance-evidence.js']) {
     assert.match(contract, new RegExp(s.replace(/[.]/g, '\\.')), `contract missing ${s}`);
   }
+  // Seven background judges share TMPDIR. A live customer audit redirected
+  // every brief command to $TMPDIR/brief.md; the technical judge won the race,
+  // so the strategy judge opened the technical rulebook. The command already
+  // writes a class-namespaced path — the contract must preserve that isolation.
+  assert.match(contract, /Never redirect this command into a shared temp filename/);
   // Pointing at a contract that still prescribes the meaningless grep would
   // reinstate the guard this work replaced.
   assert.doesNotMatch(contract, /run `grep -c '"evidence": \*null'` over the instances/);

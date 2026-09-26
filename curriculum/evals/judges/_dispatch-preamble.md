@@ -81,6 +81,13 @@ Do not write your own body projection and do not plant your own test string. Bot
 node curriculum/evals/scripts/derive-class-brief.js <file> <class>
 ```
 
+Run it normally, then read the exact class-namespaced brief path it prints under
+`curriculum/evals/body-views/`. **Never redirect this command into a shared temp filename**
+such as `$TMPDIR/brief.md`: parallel judges share that directory, so
+the last writer can hand a strategy judge the technical rulebook. The generated
+path already includes both slug and class; keep that isolation instead of
+inventing a scratch path.
+
 Every in-scope rule at its full T3 wording, every carve-out, every boundary clause — minus the rules the prefill already resolved. Nothing is condensed: rule text is 92.8% of a compendium's bytes, so a "digest" that keeps the wording IS the compendium, and one that does not is the T1-vs-T3 failure this preamble opens by forbidding. If the brief cannot build, read the compendiums in full and say so in `notes`.
 
 Paths inside rule text are repo-root relative. `scripts/check-slide-size.js` is `<repo>/scripts/check-slide-size.js`, not a file under `curriculum/evals/scripts/`; two story judges in a row reported it missing after looking only there and hand-counted instead.

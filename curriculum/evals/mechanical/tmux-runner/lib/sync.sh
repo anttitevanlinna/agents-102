@@ -226,6 +226,19 @@ pane_busy() {
   [[ "$last" =~ Waiting\ for\ [0-9]+\ background\ agents?\ to\ finish ]]
 }
 
+turn_landed() {
+  # Non-blocking form of wait_for_turn's end test, for runners that poll
+  # sentinels themselves (run-m3.sh's two-session race loop can't block on
+  # one side). $1=sentinel dir, $2=seq, $3=tmux session.
+  # 0 = sentinel present AND pane idle (surplus Stops trimmed to $seq);
+  # 1 = not yet.
+  local dir="$1" seq="$2" session="$3"
+  [[ -f "$dir/turn-$seq.done" ]] || return 1
+  pane_busy "$(_tmux capture-pane -t "$session" -p 2>/dev/null || true)" && return 1
+  reconcile_sentinels "$dir" "$seq"
+  return 0
+}
+
 settle_background_agents() {
   # Also holds through a blocked Stop: another Stop hook (e.g. a verifier the
   # exercise built) blocks, Claude resumes, and our sentinel already landed

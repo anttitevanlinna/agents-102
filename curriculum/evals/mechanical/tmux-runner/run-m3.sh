@@ -18,6 +18,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$HERE/lib/resolve-prompt.sh"
 source "$HERE/lib/tmux.sh"
 source "$HERE/lib/sync.sh"
+source "$HERE/lib/assertions.sh"
 
 main_cwd=""
 quality_cwd=""
@@ -46,6 +47,7 @@ run_dir="$HERE/out/$run_id"
 main_dir="$run_dir/main"
 quality_dir="$run_dir/quality"
 mkdir -p "$main_dir/sentinels" "$quality_dir/sentinels"
+touch "$run_dir/.started"             # artefact gates: "new this run" = -newer this
 
 main_session="runner-$run_id-main"
 quality_session="runner-$run_id-quality"
@@ -186,8 +188,11 @@ send_quality_turn() {
 [[ "$main_seq" -lt "$main_total" ]] && send_main_turn
 send_quality_turn
 
-# Race loop: poll both sentinel dirs; whichever's next sentinel lands first,
-# send that side's next turn. Continue until both queues empty.
+# Race loop: poll both sentinel dirs; whichever side's next turn lands first,
+# send that side's next turn. Continue until both queues empty. "Landed" =
+# turn_landed: sentinel present AND pane idle — a bare sentinel file ends a
+# turn early when the agent backgrounded a subagent (stride-1 asks for one)
+# or another Stop hook blocked.
 main_acked=1     # turn-1 already acked in phase A
 quality_acked=0
 poll_interval=2
@@ -211,7 +216,7 @@ while true; do
   # Check if next sentinel for either side has landed.
   if [[ "$main_pending" -gt 0 ]]; then
     next=$((main_acked + 1))
-    if [[ -f "$main_dir/sentinels/turn-$next.done" ]]; then
+    if turn_landed "$main_dir/sentinels" "$next" "$main_session"; then
       main_acked=$next
       pane_capture "$main_session" "$main_dir/turn-$next.transcript.txt"
       [[ "$main_seq" -lt "$main_total" ]] && send_main_turn
@@ -221,7 +226,7 @@ while true; do
 
   if [[ "$quality_pending" -gt 0 ]]; then
     next=$((quality_acked + 1))
-    if [[ -f "$quality_dir/sentinels/turn-$next.done" ]]; then
+    if turn_landed "$quality_dir/sentinels" "$next" "$quality_session"; then
       quality_acked=$next
       pane_capture "$quality_session" "$quality_dir/turn-$next.transcript.txt"
       [[ "$quality_seq" -lt "$quality_total" ]] && send_quality_turn
@@ -253,6 +258,8 @@ done
 # ============================================================
 # Phase C: sharpen-skill closer in main session.
 # ============================================================
+_sk="$(find "$HOME/.claude/skills" -path '*/test-strategy*/SKILL.md' -newer "$run_dir/.started" 2>/dev/null | head -1 || true)"
+skill_mtime_before_closer="$([[ -n "$_sk" ]] && mtime_of "$_sk" || true)"
 echo "[m3] phase C: sending closer ($closer_key) to main session"
 main_seq=$((main_seq + 1))
 closer_body="$(resolve_prompt "$closer_key")"
@@ -266,6 +273,31 @@ if ! wait_for_turn "$main_dir/sentinels" "$main_seq" "$closer_timeout" "$main_se
   exit 1
 fi
 pane_capture "$main_session" "$main_dir/turn-$main_seq.transcript.txt"
+
+# Artefact gates. Sentinels prove turns ended, not that M3's contracts held:
+# the ADR (threat-model-with-stride-3 → docs/adr/, pinned by the scenario)
+# and the authored test-strategy skill (author-test-strategy-skill-1; the
+# scenario namespaces it per SUT, hence the glob) must both be new this run.
+# The closer's in-place sharpen is WARN-level: it may judge the skill fine.
+m3_fail=0
+new_adr="$(find "$main_cwd/docs/adr" -type f -name '*.md' -newer "$run_dir/.started" 2>/dev/null | head -1 || true)"
+if [[ -n "$new_adr" ]]; then
+  echo "[assert] PASS M3 ADR: $new_adr"
+else
+  echo "[assert] FAIL M3 ADR: no new docs/adr/*.md in $main_cwd this run" >&2; m3_fail=1
+fi
+new_skill="$(find "$HOME/.claude/skills" -path '*/test-strategy*/SKILL.md' -newer "$run_dir/.started" 2>/dev/null | head -1 || true)"
+if [[ -n "$new_skill" ]]; then
+  echo "[assert] PASS M3 test-strategy skill: $new_skill"
+  if [[ -n "${skill_mtime_before_closer:-}" && "$(mtime_of "$new_skill")" != "$skill_mtime_before_closer" ]]; then
+    echo "[assert] PASS M3 closer sharpened the skill in place"
+  else
+    echo "[assert] WARN M3 closer left the skill unchanged (sharpen judged nothing worth changing, or skipped)"
+  fi
+else
+  echo "[assert] FAIL M3 test-strategy skill: no ~/.claude/skills/test-strategy*/SKILL.md written this run" >&2; m3_fail=1
+fi
+(( m3_fail == 0 )) || { echo "[m3] FAIL: artefact gates — see above" >&2; exit 1; }
 
 echo "[m3] PASS: all phases complete"
 echo "[m3] out: $run_dir"

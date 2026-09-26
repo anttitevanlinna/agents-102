@@ -1,41 +1,50 @@
-# runner/ — tmux-driven Claude Code session runner
+# tmux-runner — drives real Claude Code sessions through the curriculum
 
 Drives a real Claude Code session in a tmux pane through a sequence of prompts and captures the transcript. The thing headless `claude -p` can't do: walk a multi-turn arc with the TTY surface intact (hooks, statusline, permission prompts).
 
 ## Shape
 
 ```
-runner/
-  run.sh                 # entry: walks a scenario, drives the pane
-  install-sut.sh         # one-time: registers Stop hook in a SUT cwd
+tmux-runner/
+  chain-ae101.sh         # entry: AE101, one --sut-kit × --cut (lemmings-chain-runbook.md)
+  chain-agents-101.sh    # entry: Agents 101
+  run-prework.sh, run-m1.sh … run-m6.sh, run-a101.sh
+                         # one module each: walk its scenario, assert each turn's contract
+  arrange-*.sh           # reset a SUT to its M1 baseline
+  install-sut.sh         # one-time: registers the Stop hook in a SUT cwd
+  prune-out.sh           # retention for out/ (dry run by default)
   hooks/
     stop-sentinel.sh     # writes turn-N.done after each Claude response
   lib/
     resolve-prompt.sh    # key -> body from agents-102/curriculum/prompts/
-    tmux.sh              # send-keys / capture-pane / kill
-    sync.sh              # wait_for_turn — block until sentinel appears
-  scenarios/
-    smoke.txt            # one prompt key per line
+    tmux.sh              # send-keys / capture-pane / kill, per-runner socket
+    sync.sh              # wait_for_turn / turn_landed — sentinel AND idle pane; UTF-8 pinned
+    chain.sh             # chain state (out/_chains/<id>/) + ~/.claude/skills guard
+    assertions.sh        # per-turn artifact assertions
+    turn-budget.sh       # per-turn timeout, wall-clock deadline
+  scenarios/             # one prompt key (+ optional headless tail) per line
+  tests/                 # bash tests/<name>.test.sh
   out/<run-id>/          # transcript, per-turn captures, sentinels
 ```
 
 ## Design notes
 
 - **Scenarios reference prompt keys, never copy prompt bodies.** Source of truth for prompts is `~/Projects/agents-102/curriculum/prompts/<key>.md`. Override the registry path with `PROMPT_REGISTRY`.
-- **Sync via Stop-hook sentinel, not pane scraping.** Pane-output grepping is brittle (ANSI, statusline redraws, streaming). A Stop hook fires deterministically when Claude finishes a turn — we wait on a file, not a string.
-- **One tmux session per run.** Pane 0 holds Claude. Detached, so the runner can drive multiple sessions in parallel later.
+- **A turn ends on the Stop-hook sentinel AND an idle pane.** The sentinel is deterministic but fires when the main agent yields — not when its backgrounded subagents finish, and also when another Stop hook blocks and re-opens the turn. `lib/sync.sh` holds while the pane's last status line is a spinner or "Waiting for N background agent(s)", then trims the surplus Stop the re-invocation writes. Only `lib/sync.sh` reads sentinels (`tests/sentinel-reads-go-through-sync.test.sh`).
+- **One tmux session per run**, on its own socket (`RUNNER_TMUX_SOCKET`), so concurrent runners can't kill each other's server.
 
 ## First run
 
 ```bash
 # 1. one-time: register the Stop hook in the SUT cwd
-runner/install-sut.sh ~/Projects/lemmings
+./install-sut.sh ~/Projects/lemmings
 
-# 2. drive the smoke scenario
-runner/run.sh runner/scenarios/smoke.txt --cwd ~/Projects/lemmings
+# 2. drive a chain (multi-hour — background it) or one module
+./chain-ae101.sh --to m1
+./run-m1.sh --cwd ~/Projects/lemmings --task-slug fix-hud-tally
 
 # 3. inspect output
-ls runner/out/<run-id>/
+ls out/<run-id>/
 #   transcript.txt           full scrollback
 #   turn-1.prompt.txt        what we sent
 #   turn-1.transcript.txt    scrollback at turn end
@@ -106,5 +115,5 @@ Examples of structurally interactive prompts (need ask-and-wait): M2 `push-back-
 
 ## v0 limits — known and deliberate
 
-- One pane, one SUT for single-session runners (`run.sh`, `run-prework.sh`, `run-m1.sh`, `run-m2.sh`, `run-m4.sh`). `run-m3.sh` orchestrates two parallel sessions for the worktree fork.
+- One pane, one SUT for single-session runners (`run-prework.sh`, `run-m1.sh`, `run-m2.sh`, `run-m4.sh`, `run-m6.sh`). `run-m3.sh` orchestrates two parallel sessions for the worktree fork.
 - Hook is per-cwd. `install-sut.sh` writes to `.claude/settings.local.json` (gitignored by default in Claude Code projects).

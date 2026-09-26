@@ -185,6 +185,12 @@ test('the judge is given the instance schema, not an example to imitate', async 
   assert.match(p, /check-instance-schema\.js --training \S+ --quiet/, 'and the judge must run the gate on itself');
 });
 
+test('out-of-class observations use notes, never the retired todos channel', async () => {
+  const p = await promptFor({ evidence: 'full' });
+  assert.match(p, /Put it in `notes`/);
+  assert.doesNotMatch(p, /Put it in `todos`/);
+});
+
 test('brief:false falls back to reading the compendiums in full', async () => {
   const p = await promptFor({ brief: false });
   assert.doesNotMatch(p, /derive-class-brief\.js/);

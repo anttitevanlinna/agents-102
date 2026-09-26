@@ -226,7 +226,7 @@ const EVIDENCE_FULL = `## Verdict discipline
 - **A non-blocking rule finding is still a REVISE row with \`blocking: false\`, and it is still owed** — it enters the card queue. What is NOT owed goes in \`suggestions\`, alongside a \`verdict: PASS\`. Do not report a blocking REVISE to make an observation visible; and do not demote a real finding to a suggestion to avoid the queue.
 - **A PASS owes evidence too.** A mechanically-checkable rule marked PASS carries the command result; a judgement rule marked PASS quotes the line closest to violating it, with line number, and says why it stays inside; a rule that does not apply is N/A with a one-clause reason. Nothing is PASS by default. Validate your own greps against a planted test string before trusting a zero.
 - **No citing a tool you did not run.** If your evidence names a script, command or exit code, you must have RUN it in this session; paste the exact command and its real output. Never report that a checker "confirms" something from inference about what it probably does.
-- **Stay in your class.** Evaluate only the compendiums your template puts in scope. A verdict outside your lane is not extra coverage, it is an unowned claim that outranks nothing and can contradict something. Put it in \`todos\`.`
+- **Stay in your class.** Evaluate only the compendiums your template puts in scope. A verdict outside your lane is not extra coverage, it is an unowned claim that outranks nothing and can contradict something. Put it in \`notes\`.`
 
 // Lean is not a block of prose any more — it is `_dispatch-preamble.md`
 // §Mechanics, which every judge reads in full anyway. `full` is the escape

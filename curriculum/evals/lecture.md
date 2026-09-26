@@ -8,7 +8,7 @@ For the per-judge prompt templates, see `curriculum/evals/judges/{writing,story,
 
 | Class | Scope | Default model | Compendiums (filtered by `eval_classes:` frontmatter) |
 |---|---|---|---|
-| **writing** | piece | Haiku 4.5 | `check_writing.md`, `check_sales_copy.md`, `check_student_facing.md` |
+| **writing** | piece | Sonnet 4.6 | `check_writing.md`, `check_sales_copy.md`, `check_student_facing.md` |
 | **story** | piece | Sonnet 4.6 | `check_pedagogy.md`, `check_strategy_tie_in.md`, `check_lectures.md` (Class A persona-reader sim trace) |
 | **story** | seam | Sonnet 4.6 | (when this lecture sits at a module seam) — `curriculum/evals/seams/seam-judge.md` |
 | **story** | arc | Sonnet 4.6 | (when this lecture is part of a Agents 101 or AE101 module sequence) — `curriculum/evals/arc-pass.md` |
@@ -25,8 +25,9 @@ For the per-judge prompt templates, see `curriculum/evals/judges/{writing,story,
 ## Verdict ladder
 
 - All applicable class judges PASS + Quality check PASS → **APPROVE**. (Behavior class is N/A for prompt-less lectures.)
-- All applicable PASS but some non-blocking REVISE rules → **APPROVE WITH TODOs**.
-- Any class judge blocking REVISE → **REVISE** (BLOCK).
+- A PASS may still contain owed rule rows with `verdict: REVISE` and `blocking: false`; those enter the card queue.
+- Optional concrete swaps live in `suggestions[]`. They do not enter the queue or change the verdict.
+- Any class judge REVISE → **REVISE** (BLOCK).
 
 ## Output location
 

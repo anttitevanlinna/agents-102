@@ -117,6 +117,19 @@ function stripFences(text) {
   return text.replace(/^```[\s\S]*?^```/gm, '');
 }
 
+// Gitignored symlinks are a maintainer's local wiring (`.claude/hooks` →
+// agents-102-core/project-claude/hooks). A path that exists only through one
+// resolves here and nowhere else, so it does not count as the repo's.
+const LOCAL_LINKS = (() => {
+  try {
+    return execSync('git ls-files --others --ignored --exclude-standard --directory', { cwd: ROOT, encoding: 'utf8' })
+      .split('\n').map((l) => l.replace(/\/$/, '')).filter(Boolean)
+      .filter((l) => { try { return fs.lstatSync(path.join(ROOT, l)).isSymbolicLink(); } catch { return false; } })
+      .map((l) => path.join(ROOT, l));
+  } catch { return []; }
+})();
+const viaLocalLink = (p) => LOCAL_LINKS.some((l) => p === l || p.startsWith(l + path.sep));
+
 function resolves(ref, fromDir, fromFile) {
   const ownTraining = fromFile && fromFile.match(/^curriculum\/trainings\/[^/]+\//);
   const candidates = [
@@ -140,7 +153,7 @@ function resolves(ref, fromDir, fromFile) {
     MEMORY && path.join(MEMORY, ref),
     MEMORY && path.join(MEMORY, path.basename(ref)),
   ].filter(Boolean);
-  return candidates.some((c) => fs.existsSync(c));
+  return candidates.some((c) => !viaLocalLink(path.normalize(c)) && fs.existsSync(c));
 }
 
 function collect(files) {

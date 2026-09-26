@@ -48,7 +48,7 @@ Per-artifact checks partition by **evidence source**, not by criterion count. Se
 
 **Why two sim classes?** Class A (persona-reader) walks the file as a human in the seat — measures mood, confusion, "this is me", arc landing. Class B (prompt-behavior) reasons per-prompt over the distribution of Claude responses against the 15 known behavioral patterns (niceness tax, question dump, etc.). They don't overlap. Mechanical (`mechanical/`) samples one path through real Claude on a real scratch repo; Class B reasons over distributions on files mechanical doesn't have runners for. Together they cover the gap between "well-formed prompt" (technical) and "succeeds once on Haiku" (mechanical).
 
-Hook-side auto-fix runs synchronously on every Edit/Write to curriculum body prose: em-dash → comma, ritual/ceremony → exercise, importantly/crucially drop, synergize → combine, paradigm shift → real shift, honest(ly) → candid(ly), delve forms → look-at forms, crucial-on-noun drop. Implementation: `.claude/hooks/eval-class-router.sh`.
+Hook-side auto-fix runs synchronously on every Edit/Write to curriculum body prose: em-dash → comma, ritual/ceremony → exercise, importantly/crucially drop, synergize → combine, paradigm shift → real shift, honest(ly) → candid(ly), delve forms → look-at forms, crucial-on-noun drop. Implementation: `../agents-102-core/project-claude/hooks/eval-class-router.sh` (the private core; `settings.json` wires it through `$AGENTS_CORE_DIR` or the sibling clone).
 
 Lints (deterministic, read-only):
 - `lints/path-consistency.md` — every file path an exercise names must exist in the scaffold

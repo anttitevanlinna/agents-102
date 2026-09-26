@@ -118,3 +118,13 @@ test('a dead module include is admitted by the filter and rejected by the resolv
   assert.equal(resolves(dead, 'curriculum/trainings/agents-101', 'curriculum/trainings/agents-101/security.md'), false,
     'must not resolve');
 });
+
+// `.claude/hooks` is a gitignored symlink that exists only where a maintainer
+// linked it (it points into agents-102-core/project-claude/hooks). A doc that
+// named `.claude/hooks/eval-class-router.sh` passed here and failed in every
+// fresh clone. A path reached through an ignored symlink is this machine's,
+// not the repo's.
+test('resolves: a path through a gitignored local symlink does not count', () => {
+  assert.equal(resolves('.claude/hooks/eval-class-router.sh', '.'), false);
+  assert.equal(resolves('.claude/skills/eval-fire/SKILL.md', '.'), true, 'tracked links still resolve');
+});

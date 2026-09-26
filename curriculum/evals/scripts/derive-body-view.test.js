@@ -8,7 +8,7 @@
 'use strict'
 const { test } = require('node:test')
 const assert = require('node:assert/strict')
-const { geometry, greps, ruleInventory, signals } = require('./derive-body-view.js')
+const { geometry, greps, ruleInventory, signals, slugFor } = require('./derive-body-view.js')
 const { shapeHash } = require('./prefill-instance.js')
 
 const BODY = [
@@ -26,6 +26,24 @@ const BODY = [
   '',                              // 12
   '2026-08-01 accept: ritual is fine here.', // 13
 ].join('\n')
+
+test('a new shared lecture gets its canonical slug from its unique module link', t => {
+  const fs = require('node:fs'), os = require('node:os'), path = require('node:path')
+  const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'body-view-owner-'))
+  t.after(() => fs.rmSync(repo, { recursive: true, force: true }))
+  fs.mkdirSync(path.join(repo, 'curriculum', 'lectures'), { recursive: true })
+  fs.mkdirSync(path.join(repo, 'curriculum', 'trainings', 'agents-101'), { recursive: true })
+  fs.writeFileSync(path.join(repo, 'curriculum', 'lectures', 'new-lecture.md'), '# New lecture\n')
+  fs.writeFileSync(
+    path.join(repo, 'curriculum', 'trainings', 'agents-101', 'module-7.md'),
+    '[Lecture: New](lectures/new-lecture.md)\n'
+  )
+
+  assert.equal(
+    slugFor('curriculum/lectures/new-lecture.md', repo),
+    'agents-101--lecture--new-lecture'
+  )
+})
 
 test('geometry locates cut, fences and body region against RAW line numbers', () => {
   const g = geometry(BODY)

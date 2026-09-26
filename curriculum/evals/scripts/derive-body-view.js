@@ -41,7 +41,7 @@ const path = require('node:path')
 const REPO = path.resolve(__dirname, '..', '..', '..')
 const OUT_DIR = path.join(REPO, 'curriculum', 'evals', 'body-views')
 const MEM = require('./compendium-drift.js').MEM
-const { instanceKey } = require('./scan-stale-classes.js')
+const { instanceKey, trainingOf, linkFinder } = require('./scan-stale-classes.js')
 
 const sha256 = t => crypto.createHash('sha256').update(t, 'utf8').digest('hex')
 
@@ -49,7 +49,7 @@ const sha256 = t => crypto.createHash('sha256').update(t, 'utf8').digest('hex')
 // Slug — mirrors the instance-name convention so a view and its instances sort
 // together and never collide across a module/exercise sharing a basename.
 // ---------------------------------------------------------------------------
-function slugFor(rel) {
+function slugFor(rel, repo = REPO) {
   const base = path.basename(rel).replace(/\.md$/, '')
   const dir = path.dirname(rel)
   let surface = 'file'
@@ -62,27 +62,27 @@ function slugFor(rel) {
   if (m) return `${instanceKey(m[1])}--${surface}--${base}`
 
   // Shared `curriculum/exercises/` and `curriculum/lectures/` carry no training
-  // in their path — the instance convention resolves it from the per-training
-  // module lists. Deriving `shared--` here instead would produce a slug that
-  // matches no instance on disk, and a prefill that silently finds no prior is
-  // indistinguishable from one that correctly found nothing to carry. So ask
-  // the instances themselves which training claimed this file.
-  const owner = trainingFromInstances(surface, base)
+  // in their path. Resolve a unique owner from the same module include links as
+  // the eval queue. Existing instances remain a fallback for explicitly scoped
+  // multi-owner surfaces, but they cannot be the primary source: a new surface
+  // has no instance yet and would otherwise bootstrap under `shared--`.
+  const owner = trainingOf(rel, linkFinder(repo)) || trainingFromInstances(surface, base, repo)
   return `${owner || 'shared'}--${surface}--${base}`
 }
 
-let INSTANCE_INDEX = null
-function trainingFromInstances(surface, base) {
-  if (INSTANCE_INDEX === null) {
-    INSTANCE_INDEX = new Map()
+const INSTANCE_INDEXES = new Map()
+function trainingFromInstances(surface, base, repo = REPO) {
+  if (!INSTANCE_INDEXES.has(repo)) {
+    const index = new Map()
     try {
-      for (const f of fs.readdirSync(path.join(REPO, 'curriculum', 'evals', 'instances'))) {
+      for (const f of fs.readdirSync(path.join(repo, 'curriculum', 'evals', 'instances'))) {
         const m = f.match(/^([^-]+(?:-[^-]+)*?)--([a-z-]+)--(.+?)\.[a-z_]+\.json$/)
-        if (m) INSTANCE_INDEX.set(`${m[2]}|${m[3]}`, m[1])
+        if (m) index.set(`${m[2]}|${m[3]}`, m[1])
       }
     } catch { /* no instances yet — 'shared' is then the honest answer */ }
+    INSTANCE_INDEXES.set(repo, index)
   }
-  return INSTANCE_INDEX.get(`${surface}|${base}`) || null
+  return INSTANCE_INDEXES.get(repo).get(`${surface}|${base}`) || null
 }
 
 // ---------------------------------------------------------------------------

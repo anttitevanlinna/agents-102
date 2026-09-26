@@ -119,7 +119,6 @@ End-to-end PASS on the second M1 attempt (the first collapsed on the no-bug orig
 
 - [ ] **Chain wrapper's positioned slug ≠ agent's chosen slug; orphan branch left.** Today's M4: wrapper positioned `m4/clamp-show-to-roots @ 1ce6ffe`; agent created `m4/implement-show-clamp` and committed the M4 starting-point commit there. The wrapper's M5-leg reconcile compares `m4_rec` (read from task.md Run-coordinates) to current HEAD; it correctly skipped reconcile when they matched. The originally-positioned `m4/clamp-show-to-roots` branch is now an orphan at the pre-M4 SHA. Cosmetic; fix is a post-leg `git branch -D` of the originally-positioned slug if it's still at the M2 SHA (i.e. never used). Sibling of the 2026-05-26 finding — same shape, different agent-chosen slug each run.
 
-- [ ] **M3 doesn't write a top-level `m3-state.json` — uses `main/` and `quality/` subdirs.** `out/20260601-093431-91126/` contains `main/` and `quality/` rather than a single `m3-state.json`. Chain wrapper reads from each subdir as appropriate; latent if any downstream consumer expects the same shape M1/M2/M4/M5/M6 produce. Document the M3 exception OR unify the shape.
 
 - [ ] **`task_slug: ""` empty in M1 + M2 state.json; populated only from M4 onward.** Latent — chain wrapper doesn't seem to read it before M4. Confirm no downstream consumer depends on it for M1/M2.
 

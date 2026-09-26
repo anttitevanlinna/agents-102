@@ -17,13 +17,18 @@
 # exactly what this runner exists to catch. Default --to stays m2 (the validated
 # floor); pass --to m3, m4a, m4b, m5, or m6 to extend the live run.
 #
-# Usage: chain-agents-101.sh [--from prework|m1|m2|m3|m4a|m4b|m5|m6] [--to ...] [--no-arrange]
+# Resume: a --from past prework reads the prior module's state from the chain
+# that ran it (--chain-dir) and checks it was THIS training dir; it never
+# arranges, because arranging moves the dir's prior modules to a backup.
+#
+# Usage: chain-agents-101.sh [--from prework|m1|m2|m3|m4a|m4b|m5|m6] [--to ...]
+#          [--chain-dir DIR] [--no-arrange | --arrange] [--cwd DIR] [--material DIR]
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 sut_cwd="$HOME/Documents/agents-101-runner"
 material_dir="$HOME/Documents/agents-101-runner-material"
-from="prework"; to="m2"; do_arrange=1
+from="prework"; to="m2"; do_arrange=""
 chain_dir_arg=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -31,6 +36,7 @@ while [[ $# -gt 0 ]]; do
     --chain-dir) chain_dir_arg="$2"; shift 2 ;;
     --to) to="$2"; shift 2 ;;
     --no-arrange) do_arrange=0; shift ;;
+    --arrange) do_arrange=1; shift ;;
     --cwd) sut_cwd="$2"; shift 2 ;;
     --material) material_dir="$2"; shift 2 ;;
     *) echo "unknown arg: $1" >&2; exit 2 ;;
@@ -47,6 +53,13 @@ for m in "${modules[@]}"; do
 done
 [[ ${#selected[@]} -gt 0 ]] || { echo "empty module range ($from..$to)" >&2; exit 2; }
 
+prior=""                                # the module $from builds on
+for m in "${modules[@]}"; do [[ "$m" == "$from" ]] && break; prior="$m"; done
+if [[ -z "$do_arrange" ]]; then [[ -z "$prior" ]] && do_arrange=1 || do_arrange=0; fi
+if [[ -n "$prior" && $do_arrange -eq 1 ]]; then
+  echo "[chain] --arrange with --from $from would move $prior's work out of $sut_cwd — start at prework to arrange" >&2; exit 2
+fi
+
 # User-scope skills: m4a installs security-audit into the operator's REAL
 # ~/.claude/skills/ (a scratch $HOME comes up "Not logged in" — keychain login
 # isn't inherited; FIX-PLAN H2-harness), so the run can't be isolated. The
@@ -55,6 +68,22 @@ done
 source "$HERE/lib/chain.sh"
 chain_init "$HERE/out" "$chain_dir_arg" >/dev/null || exit 2
 echo "[chain] chain dir: $CLAUDE_RUNNER_CHAIN_DIR  (resume with --chain-dir this)"
+
+if [[ -n "$prior" ]]; then               # declared prior state, or stop
+  st="$(chain_state "a101-$prior")"
+  if [[ -z "$st" ]]; then
+    echo "[chain] $from builds on $prior and this chain has no $prior state — resume with --chain-dir <the chain that ran $prior>, or start at $prior. Recent chains:" >&2
+    chain_list_recent "$HERE/out" 5 >&2; exit 1
+  fi
+  st_cwd="$(sed -n 's/.*"cwd": *"\([^"]*\)".*/\1/p' "$st" | head -1)"
+  if [[ "$st_cwd" != "$sut_cwd" || ! -d "$sut_cwd" ]]; then
+    echo "[chain] $prior ran in ${st_cwd:-an unrecorded dir}, not $sut_cwd — pass --cwd $st_cwd or start at $prior" >&2; exit 1
+  fi
+  echo "[chain] resuming on $prior state: $st"
+fi
+source "$HERE/lib/tmux.sh"
+claude_cli_preflight "${CLAUDE_CMD:-claude --permission-mode auto}" || exit 2   # before arrange moves anything
+
 chain_guard_skills          # ~/.claude/skills restored to this snapshot on any exit (lib/chain.sh)
 
 if [[ $do_arrange -eq 1 ]]; then

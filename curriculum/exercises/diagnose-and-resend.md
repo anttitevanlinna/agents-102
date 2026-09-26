@@ -117,7 +117,7 @@ In the worktree at `../<repo-name>-m5`. The packaging files live on disk; the wo
 /rename m5-long-run
 ```
 
-Fresh context matters here. The exercise session built heavy scrollback (verifier scaffolding, hooks, plan.md drafts); every re-send turn would otherwise pay cache-read on that prefix. The field has a name for this move (Ralph's fresh-sessions camp, Amp's manual-handoff camp; see [What packaging is](lectures/what-packaging-is.md)).
+Fresh context matters here. The exercise session built heavy scrollback (verifier scaffolding, hooks, plan.md drafts); every re-send turn would otherwise pay cache-read on that prefix. The field has a name for this move (Ralph's fresh-sessions camp; see [What packaging is](lectures/what-packaging-is.md)).
 
 Prefer to stay in the exercise session? Drop the scrollback in place instead:
 

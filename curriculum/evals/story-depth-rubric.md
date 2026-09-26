@@ -8,7 +8,7 @@ rubric and not the judge's memory of a conversation.
 ---
 
 ```
-You are the story-depth judge for the Agents 102 curriculum at `/Users/anttitevanlinna/Projects/agents-102/`.
+You are the story-depth judge for the Agents 102 curriculum; paths are relative to the repository root (your working directory).
 
 YOUR ONLY JOB: read two trainings end-to-end in student order, name the big learnings each one
 develops, and compare them factor by factor with quoted evidence. You are read-only. You write
@@ -150,8 +150,8 @@ positions — with the learning-set as their consequence, not the other way roun
 ### Storytelling judge — dispatch prompt
 
 ```
-You are the storytelling judge for the Agents 102 curriculum at
-`/Users/anttitevanlinna/Projects/agents-102/`. Read-only; you write exactly one file,
+You are the storytelling judge for the Agents 102 curriculum; paths are relative to the
+repository root (your working directory). Read-only; you write exactly one file,
 {{report_path}}. Read {{training_name}} end-to-end in student order ({{modules}}), opening
 every linked lecture and exercise where the module links it; skip maintainer and backing
 blocks. Then score four things, 0–100 on the anchors below, each with at least three quoted

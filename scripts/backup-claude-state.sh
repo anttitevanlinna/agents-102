@@ -7,21 +7,22 @@
 # backup. What is left on one disk:
 #   - ~/.claude/{CLAUDE.md,settings.json}  personal instructions, machine config
 #   - ~/.claude/skills, ~/.claude/agents   personal skills/agents not in core
-#   - Bosser Drive strategy/ + agents-102/  business notes, Drive-only, no git
+#   - $BOSSER_BUSINESS_DIR strategy/ + agents-102/  business notes, no git
 #
-# Maintainer-only (paths are this machine's). Same-day re-run overwrites the
-# day's zip; the dated names are the history.
+# Maintainer-only. The destination is yours to name (a synced Drive folder,
+# say); nothing here knows where it is. Same-day re-run overwrites the day's
+# zip; the dated names are the history.
 #
-#   ./scripts/backup-claude-state.sh
+#   CLAUDE_BACKUP_DIR=<dir> ./scripts/backup-claude-state.sh
 
 set -euo pipefail
 
-BACKUP_DIR="/Users/anttitevanlinna/Library/CloudStorage/GoogleDrive-tevanlin@gmail.com/My Drive/bosser/claude-memory-backups"
+BACKUP_DIR="${CLAUDE_BACKUP_DIR:?set CLAUDE_BACKUP_DIR to the folder the zip goes to}"
 DATE=$(date +%Y-%m-%d)
 ZIP_NAME="agents-102-claude-${DATE}.zip"
 
 if [ ! -d "$BACKUP_DIR" ]; then
-  echo "BACKUP_DIR not present (Drive not mounted?): $BACKUP_DIR" >&2
+  echo "CLAUDE_BACKUP_DIR not present (not mounted?): $BACKUP_DIR" >&2
   exit 1
 fi
 
@@ -34,7 +35,9 @@ mkdir -p "$ROOT/home-claude"
 [ -d "$HOME/.claude/skills" ] && cp -RL "$HOME/.claude/skills" "$ROOT/home-claude/"
 [ -d "$HOME/.claude/agents" ] && cp -RL "$HOME/.claude/agents" "$ROOT/home-claude/"
 
-BOSSER="$(dirname "$BACKUP_DIR")"
+# Business notes are optional: BOSSER_BUSINESS_DIR is the folder the
+# bosser-strategy skill reads pricing and business strategy from.
+BOSSER="${BOSSER_BUSINESS_DIR:-/nonexistent}"
 mkdir -p "$ROOT/bosser"
 [ -d "$BOSSER/strategy" ] && cp -R "$BOSSER/strategy" "$ROOT/bosser/"
 [ -d "$BOSSER/agents-102" ] && cp -R "$BOSSER/agents-102" "$ROOT/bosser/"
@@ -45,7 +48,7 @@ cat > "$ROOT/MANIFEST.md" <<MANIFEST_EOF
 What git does not hold. Rules, memory, hooks, skills and strategy are in the agents-102-core repo; restore those with \`git clone\`.
 
 - \`home-claude/\`: \`~/.claude/CLAUDE.md\`, \`settings.json\`, personal \`skills/\` and \`agents/\`. Restore into \`~/.claude/\`.
-- \`bosser/\`: Bosser Drive \`strategy/\` and \`agents-102/\` (pricing, licensing). Drive-only; these zips are their history.
+- \`bosser/\`: \`$BOSSER_BUSINESS_DIR\` \`strategy/\` and \`agents-102/\` (pricing, licensing), when set. Not in git; these zips are their history.
 
 Not included: \`settings.local.json\` files (may hold secrets), other projects' memory, \`~/.claude\` caches and sessions.
 MANIFEST_EOF

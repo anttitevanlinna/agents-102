@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Every `bosser-strategy:<file>` the repos cite resolves in agents-102-core/strategy/,
 // so a Git-only machine (no Drive) has the strategy the writers and judges read.
-// Business files that stay on Drive on purpose are listed in DRIVE_ONLY.
+// Business files that live outside Git on purpose ($BOSSER_BUSINESS_DIR) are
+// listed in DRIVE_ONLY; generation never needs them.
 'use strict'
 const assert = require('node:assert')
 const fs = require('node:fs')
@@ -10,7 +11,7 @@ const { execFileSync } = require('node:child_process')
 
 const REPO = path.resolve(__dirname, '..')
 const CORE = process.env.AGENTS_CORE_DIR || path.join(REPO, '..', 'agents-102-core')
-const DRIVE_ONLY = new Set(['marketing-plan.md'])
+const DRIVE_ONLY = new Set(['marketing-plan.md', 'assumption-map.md', 'business-model-canvas.md'])
 
 const refs = new Set()
 for (const root of [REPO, CORE]) {

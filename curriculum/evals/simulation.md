@@ -32,7 +32,7 @@ You are simulating a student running a curriculum exercise for Agents 102. Role-
 
 TARGET EXERCISE: [file path]
 
-HOW TO READ THE TARGET FILE: source `.md` files use `{{prompt:<key>}}` markers in place of inline `**Prompt**` fenced blocks (the curriculum-prompts registry refactor). Run `node /Users/anttitevanlinna/Projects/agents-102/scripts/expand-md.js [file path]` and use the EXPANDED output as the exercise under simulation — that's what students and the workbook see post-render. Files with inline blocks pass through unchanged.
+HOW TO READ THE TARGET FILE: source `.md` files use `{{prompt:<key>}}` markers in place of inline `**Prompt**` fenced blocks (the curriculum-prompts registry refactor). Run `node scripts/expand-md.js [file path]` and use the EXPANDED output as the exercise under simulation — that's what students and the workbook see post-render. Files with inline blocks pass through unchanged.
 
 PERSONA: [describe — role, seniority, LLM fluency, business context. Example: "SVP of HR at a 500-person Nordic software company. Has used ChatGPT weekly for drafting emails and performance reviews. Never built an agent, never used Claude Code before today. Arrived at this exercise having watched the Context is King lecture 15 minutes ago."]
 

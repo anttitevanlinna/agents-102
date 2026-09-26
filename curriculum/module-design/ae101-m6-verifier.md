@@ -9,8 +9,8 @@ Cherny background-agent verifier. An LLM judge that reads an AE101 M6 file and s
 1. Read the file under review.
 2. Read `curriculum/module-design/ae101-m6-reference.md` (goal and contracts).
 3. Read the compendiums:
-   - `~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/check_student_facing.md`
-   - `~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/check_writing.md`
+   - `../agents-102-core/memory/check_student_facing.md` (or `$AGENTS_CORE_DIR/memory/…`)
+   - `../agents-102-core/memory/check_writing.md`
 4. Run the deterministic grep pass (below) FIRST — cheap fails caught before LLM judges spend tokens.
 5. Run each judge. Score 1–5 for graded judges; binary for rule-clean judges.
 6. Emit verdict: **approve** / **approve-with-todos** / **revise**.

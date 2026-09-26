@@ -61,4 +61,4 @@ One more thing the practice did that the writing hasn't caught up to: **the sess
 
 ---
 
-Path: `/Users/anttitevanlinna/Projects/agents-102/curriculum/module-design/ae101-m6-gen-arc-note.md`
+Path: `curriculum/module-design/ae101-m6-gen-arc-note.md`

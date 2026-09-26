@@ -468,6 +468,13 @@ printf '# Ex\n\nBody.\n\n<!-- maintainer -->\n' > "$TMP/t27.md"
 rc=$(run "$TMP/t27.md" --writing PASS --voice-panel "PASS:6/6-signatures")
 assert_grep "$TMP/t27.md" 'voice_panel'               'T27 voice_panel row written on a first stamp'
 
+# T28 — a Quality block sitting below a note is hoisted to open the maintainer block
+printf '# Ex\n\nBody.\n\n<!-- maintainer -->\n\n**A note.** Stays.\n\n**Quality:** compendium-audited\n- writing@abc1234 PASS\n' > "$TMP/t28.md"
+rc=$(run "$TMP/t28.md" --writing PASS)
+first=$(awk '/<!-- maintainer -->/{m=1;next} m && NF{print;exit}' "$TMP/t28.md")
+if [[ "$first" == \*\*Quality:* ]]; then pass=$((pass+1)); echo "  ok   T28 Quality block opens the maintainer block after a stamp"; else fail=$((fail+1)); echo "  FAIL T28 first maintainer line: $first"; fi
+assert_grep "$TMP/t28.md" 'A note.'                   'T28 the note survives the hoist'
+
 echo "──────────────────────────────"
 echo "update-quality.test.sh: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]

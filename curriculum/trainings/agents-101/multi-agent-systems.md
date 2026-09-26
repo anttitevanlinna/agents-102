@@ -86,12 +86,12 @@ You just built something that works across the systems you connected. Which mean
 Between now and Module 4, keep working on your real problem. You're close to an agent system that can actually crack your crux. Add an agent to solve a critical dependency? Add a visualisation of the plan? Prompt for what you need. Build.
 
 <!-- maintainer -->
-**Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `when-to-split-an-agent.md`; the stance roll-call lives in the synthesis exercise.
-
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@4d9c4af2 technical@725101ec behavior@725101ec pedagogy@4d9c4af2 strategy@4d9c4af2 slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @12bf0d81: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+
+**Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `when-to-split-an-agent.md`; the stance roll-call lives in the synthesis exercise.
 
 **Debrief slides (2026-09-23, blend § Titles M3):** Three headers over the prose that already carried them. `## Nothing here checks any of it` sits over the audit-prompt commentary, which names what the audit reads and what it does not. `## The doubt stays. Hold it.` holds the unease beat on its own slide, after the push-back sentences. `## Bring to Module 4: what's the worst thing it could do with that access?` heads the access hand-off, so `## Next` carries the build-between-modules ask alone; the `Bring to Module` prefix is what `scripts/curriculum.test.js` allows between Key Concepts and Next. Nothing here resolves the unease; the mood target below is the constraint.
 

@@ -33,6 +33,10 @@ The judge told you what it could. The rest is yours to name.
 That is the question the next lecture opens.
 
 <!-- maintainer -->
+
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@ab36a5e6 strategy@ade2ec9 slides@4d9c4af2)
+- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior N/A (no-prompt-blocks), pedagogy N/A (lecture-not-a-module), strategy PASS, slides PASS
+
 **Law moved in from Key Concepts (2026-09-24, Antti-directed).** The role-separation paragraph on `## You haven't checked the judge yet` carries what `evaluations.md` § Key Concepts used to state; `evals-as-steering.md` is shared with AE101 and stays untouched.
 
 
@@ -47,6 +51,3 @@ That is the question the next lecture opens.
 **Strategic role (finding C10):** promotes the "one thing the judge still cannot see" insight from a single clause in `eval-loop-2`'s `eval-notes.md` into a named beat with its own home, and hands directly to the closer, whose job is to define the residual human role. Addresses the M5→M6 judge-mode coupling: M5 crowns a fabrication-aware judge; M6 runs it on the grounded corpus where the real residual is overreach, the judge's blind spot, so the flagged-count trajectory can flatten while the work keeps improving. This beat is the curriculum making that visible on purpose instead of letting a trainer misread the flatline as "nothing improved."
 
 **Source verification:** none owed. No external sources cited; the content is internal to the loop the student just ran.
-
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@ab36a5e6 strategy@ade2ec9 slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior N/A (no-prompt-blocks), pedagogy N/A (lecture-not-a-module), strategy PASS, slides PASS

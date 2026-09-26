@@ -130,11 +130,11 @@ Use the agent at the moment where context, judgment, repetition, or safe action 
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **Placement:** Post-M6 supplementary. Designed as the Monday operating bridge if Modules 7 and 8 are not held.
 
 **Strategic role:** Converts the six-module capability arc into daily invocation habits. The student leaves with a trigger list, not just a sense of possibility.
 
 **Voice target:** practical, low-ceremony, action-forward. No productivity-hack energy.
-
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -96,6 +96,9 @@ Next, you create a fresh briefing and extract a 30-claim pool from it. That pool
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@4d9c4af2 technical@ab36a5e6 behavior@5fc7188 pedagogy@ab36a5e6 strategy@5fc7188 slides@4d9c4af2)
+- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **Time:** 12 minutes.
 
 **Placement in module:** After Connections, before the exercise. Primes the empirical-method-selection frame; the exercise runs the benchmark on the student's own M3 material. All four detectors are practised in the exercise. Lecture and exercise are tightly coupled now.
@@ -168,6 +171,3 @@ OODA
 **Length:** one deck, every slide inside the cap (`node scripts/check-slide-size.js --file curriculum/lectures/grounded.md --report`). Above the prework-reading band, because it is projected and talked through rather than read cold. Delivered in-room (10-12 min). Four candidates need paragraph-each treatment but each paragraph stays tight because the exercise carries the depth.
 
 **Lecture meta:** *Closer beat is the lead-in to Phase 0 of the Hallucination benchmark exercise. Trainer pivots straight from the "Phase 0 is next" line into the exercise — no separate transition.*
-
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@4d9c4af2 technical@ab36a5e6 behavior@5fc7188 pedagogy@ab36a5e6 strategy@5fc7188 slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

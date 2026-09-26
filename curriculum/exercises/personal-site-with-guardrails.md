@@ -146,6 +146,9 @@ You just ran **Recipe 1** end-to-end: baseline without context, colleague-as-buy
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **Leap test — three observable outcomes a participant should be able to point at by Monday:**
 1. A `module-1/site.html` they would happily forward to a colleague without flinching.
 2. A `module-1/personal-brand-generation.md` they can invoke on the next personal-shaped writing task without retyping the framework.
@@ -162,8 +165,5 @@ You just ran **Recipe 1** end-to-end: baseline without context, colleague-as-buy
 | 5 Look-back | Warm-session self-audit | Charitable picks; under-flagging | Use the body callout: over-flag with no charity, or run the audit cold in a fresh task. |
 | 6 Free iteration | Iterate until *"yes, this is me"* | Perfectionism consumes the close | Time-box one last contrast, choose the version that lands, and stop. |
 | 7 Close | Write the rules file | Chat summary rounds corners | Open `module-1/personal-brand-generation.md` and inspect the first two or three rules at the artifact. |
-
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **View summary:** You paint a personal site by agent across six rounds, changing only the context each time and watching the output shift from generic to yours, then package the lesson. The artifact is a site that looks like you, and the rule that got it there.

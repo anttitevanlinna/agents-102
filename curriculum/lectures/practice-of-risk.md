@@ -71,6 +71,10 @@ Read the reports. Pick a risk. Apply a mitigation. Name what's left. Decide.
 That's the work.
 
 <!-- maintainer -->
+
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@ab36a5e6 behavior@5fc7188 pedagogy@ab36a5e6 strategy@5fc7188 slides@4d9c4af2)
+- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **Law moved in from Key Concepts (2026-09-24, Antti-directed).** The *"I can't tell"* paragraph on `## Reassess the residual, then decide` carries what `security.md` § Key Concepts used to state.
 
 
@@ -143,6 +147,3 @@ OODA
 - Mood-contract honoured: closing now folds the *"damn, this is complex stuff"* line directly from `bosser-strategy:content-strategy.md` § Module 4 mood. The unease is named as the permanent condition; nothing in the body resolves it. Module 5 owns the rescue.
 - Voice trio (Godin × Sutherland × Siilasmaa): Sutherland reframe leads (the "don't open the door" beat is the Rory move). Godin peer-warmth carries the body. Siilasmaa lead is held back (forbidden in unease modules per `check_writing.md` #4 mood-arc constraint).
 - "**Time:** 8 minutes." moved below the maintainer divider per `check_writing.md` lecture-meta rule.
-
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@ab36a5e6 behavior@5fc7188 pedagogy@ab36a5e6 strategy@5fc7188 slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

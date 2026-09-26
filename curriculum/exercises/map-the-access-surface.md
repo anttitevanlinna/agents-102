@@ -95,6 +95,9 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-06 (writing@08946dd8 story@324b81d7 behavior@64d17eea pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
+- judges @64d17eea: writing PASS (verify-refuted), story PASS, technical REVISE (1/2 see instances/ae101--exercise--map-the-access-surface.technical.json), behavior PASS (1 finding see instances/ae101--exercise--map-the-access-surface.behavior.json), pedagogy PASS (drift-recheck), strategy PASS, slides PASS (1 finding see instances/ae101--exercise--map-the-access-surface.slides.json)
+
 **L51's "the two-window move Module 3 installs" stays (Antti 2026-08-30, family ruling with `open-the-side-quest.md` L53):** theory-spine recall at the moment of use, not self-narration — `check_student_facing.md` §33 judges should not re-flag either twin.
 
 **Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "One sentence buys the time back." (aphorism kicker, §16c); "Skills you author later in Module 3 land in User too." (forward plant; author exercise owns the destination); "The skill walks the surfaces and produces the map." (restatement); "Both windows are already open… focus switch, not a new session."; Phase-2 "You want the structured read in front of you…" (restated its own lead); the bare "Your call." bullet under Phase 4. Do not restore. Carded and kept (Antti 2026-08-25): the *What this sets up* slide — the sow-here-reap-at-STRIDE motivation stays; do not re-card.
@@ -112,9 +115,6 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 **Emphasis:** handles only — the delta menu pair **The over-call.** / **The miss.** (one handle per item on the Phase 3 menu slide) and the on-screen **User** skills-list label. Widget chrome (`**Time:**`, `**Window:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) is not emphasis. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 
 **Skill-introspection (`map-the-access-surface-1`) and map-walkthrough (`map-the-access-surface-3`) prompts kept, not cut.** `-1` was flagged `low-yield`, `-3` `redundant-slot`. Both are light read/introspect beats, not concurrent-heavy execution, so cutting them reclaims none of the load the cull targeted. `-1` goes one level past `/skills` — storage location on disk plus whether skill bodies are loaded into context (the lazy-load lesson the line after it leans on). `-3` is the read-back-and-prime step before the Phase 3 delta, distinct from the map generation in `-2`. Not cut candidates.
-
-**Quality:** compendium-audited 2026-09-06 (writing@08946dd8 story@324b81d7 behavior@64d17eea pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
-- judges @64d17eea: writing PASS (verify-refuted), story PASS, technical REVISE (1/2 see instances/ae101--exercise--map-the-access-surface.technical.json), behavior PASS (1 finding see instances/ae101--exercise--map-the-access-surface.behavior.json), pedagogy PASS (drift-recheck), strategy PASS, slides PASS (1 finding see instances/ae101--exercise--map-the-access-surface.slides.json)
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate

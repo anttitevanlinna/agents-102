@@ -82,6 +82,9 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-06 (writing@08946dd8 story@43e6cae1 technical@08946dd8 behavior@64d17eea pedagogy@324b81d7 strategy@61da15ad slides@43e6cae1)
+- judges @64d17eea: writing PASS (1 finding see instances/ae101--exercise--walk-and-send-off.writing.json), story PASS, technical PASS (3 findings see instances/ae101--exercise--walk-and-send-off.technical.json), behavior PASS (2 findings see instances/ae101--exercise--walk-and-send-off.behavior.json), pedagogy PASS (1 finding see instances/ae101--exercise--walk-and-send-off.pedagogy.json), strategy PASS, slides PASS
+
 **Phase 1 carries the §34 ceiling in one bullet, not two (2026-08-14, Antti-directed).** `check_pedagogy.md` §34 mandates the ceiling at both placements (*"prework + Phase 1 commit"*); here it sits as a bolded tail on the single sizing bullet, where the student actually picks. The module prework and the previous module's `## Next` already carry the sizing line, so it is not printed a third time. Do not re-merge the ceiling away, and do not split it back into two bullets.
 
 **View summary:** You choose a task large enough to expose drift, ask the agent to find the thinnest parts of your existing context, fill only the worst gaps, and send the task off un-packaged. That first run becomes evidence for the next module.
@@ -101,9 +104,6 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 **§33's extraction-depth check fires on the `Bring the material in` route and is declined (Antti 2026-09-08: *"logical but not enough value add"*).** The mechanism is real: a saved PDF extracts spottily, nothing on screen says so, and `observations/` is read as far downstream as M6. What does not clear the bar is the dose. §33's antecedent is a heterogeneous folder feeding an audit; here the format is one branch of four in a single bullet, on a fill most of the room resolves by pasting or linking, and the harm is recoverable. The cure was an added sentence in `walk-and-send-off-3`, and an addition earns its words on how many students meet the failure. §33 now carries the dosage test. Do not re-file on L69 or on the fill prompt, and do not restore the check.
 
 **§40's cold-list finding on `walk-and-send-off-2` L26 fires and is declined (Antti 2026-09-07: *"this text is OK. It is actually more for student than LLM."*).** The mechanics are right: an `Agent` sub-task is cold on §40's own list, the audit's object one sentence up is *the task we just scoped*, and a parent reading *without this conversation colouring it* literally could withhold the task and return a competent generic audit. The cure on offer swapped that rationale for a carry instruction — *"Give it the task and nothing else from this conversation"* — at identical word count, and it is still the wrong trade: the clause is written for the student pasting it, not for the agent receiving it, and it is where they learn why the audit runs cold. `check_prompts §40b` now carves this out — inert means inert to both readers. Do not re-propose the swap; a judge meeting the clause again files nothing.
-
-**Quality:** compendium-audited 2026-09-06 (writing@08946dd8 story@43e6cae1 technical@08946dd8 behavior@64d17eea pedagogy@324b81d7 strategy@61da15ad slides@43e6cae1)
-- judges @64d17eea: writing PASS (1 finding see instances/ae101--exercise--walk-and-send-off.writing.json), story PASS, technical PASS (3 findings see instances/ae101--exercise--walk-and-send-off.technical.json), behavior PASS (2 findings see instances/ae101--exercise--walk-and-send-off.behavior.json), pedagogy PASS (1 finding see instances/ae101--exercise--walk-and-send-off.pedagogy.json), strategy PASS, slides PASS
 
 **Word count:** ~790 words body.
 

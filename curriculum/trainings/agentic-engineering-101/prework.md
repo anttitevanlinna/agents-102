@@ -83,6 +83,10 @@ The opening question at Module 1: *what's your favourite Claude Code trick that 
 
 <!-- maintainer -->
 
+**Quality:** sim-passed 2026-09-10 (writing@0d65ff01 story@96b5ca1e technical@96b5ca1e behavior@96b5ca1e pedagogy@96b5ca1e strategy@324b81d7 slides@0d65ff01)
+- judges @0d65ff01: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @01592193: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
+
 **Prework owes no licence check and no network/proxy check.** (Antti 2026-08-13, closing a maintainer-call.) When `cohort-onboarding-email.md` was collapsed into a welcome plus a link here, two of its sections had no other home: confirming a paid Claude licence is active, and confirming a corp proxy or VPN is not in the way. The call is that neither is owed. Licensing is settled in the sponsor conversation before anyone reads this page, and a blocked network cannot hide — the student opens a real session at the step below, which fails loudly and immediately if the connection is not there. A check that only ever confirms what the next step proves anyway adds nothing. Do not add a setup beat for either, and do not resolve it by restoring the email, which would re-open the drift the collapse closed.
 
 **The two `{{prompt:}}` fences in `## 5. Pick a trivial bug and confirm Module 1 readiness` are accepted, not an unextracted exercise.** `check_pedagogy.md` §52a treats a fence in module prose as a greppable tell for an exercise nobody extracted, and this section matches the tell. It is not the thing the rule was built from: §52a's precedent is a four-prompt section carrying a Session widget, big enough that the deck hands it one unbreakable slide. This is one screening prompt plus its fallback for when the screen arrives all-at-once — the second only fires if the first misbehaves. Extracting it would give prework an exercise file before the training starts. Accepted-by-design 2026-08-13 (Antti-directed): do not extract, do not re-raise. The same acceptance covers the single fences under `## 3. Get the content folder onto your laptop` and `## 4. Extract the bundle and install the curated skills` — one setup prompt each, under its own command-verb header, no `**Session**` widget, no beats for a split to land on.
@@ -98,10 +102,6 @@ The opening question at Module 1: *what's your favourite Claude Code trick that 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 
 - `[checked:2026-07-30 result:OK due:none]` https://simonwillison.net/2025/Oct/7/vibe-engineering/ — [practitioner direct] (Willison, 2025-10-07). Outside the 6-month window by decision: named framing piece, dated in body, same treatment as the Cherny video exception in `getting-going.md` — `due:none` on the same variant those parallel stamps use. fallback: drop the pre-read; Module 1 stands alone.
-
-**Quality:** sim-passed 2026-09-10 (writing@0d65ff01 story@96b5ca1e technical@96b5ca1e behavior@96b5ca1e pedagogy@96b5ca1e strategy@324b81d7 slides@0d65ff01)
-- judges @0d65ff01: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @01592193: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
 
 **Meta:**
 - **Runtime:** 30 min target. Step breakdown: pick repo 10 / open session 3 / content folder 3 / extract + install 5 / pick bug + readiness 8. The early steps are crisp; the bug screen is where time can expand if the student's repo is messy.

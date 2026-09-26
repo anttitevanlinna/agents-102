@@ -125,6 +125,10 @@ Not trusting the machine blindly.
 Designing the conditions under which the system earns more autonomy, one loop at a time.
 
 <!-- maintainer -->
+
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **The full agent picture, drawn (2026-09-24, Antti-directed).** `{{figure:agent-picture}}` on `## The full picture, and what it is made of`: the loop as the runtime runs it, model in the cloud, the turn in five steps, checks deliberately absent from the figure (Antti: no such gate inside the loop). Shown once, here; the refrain across the modules points at it. Source `curriculum/figures/agent-picture.md`; protos and the rejected shapes in `protos/a101-agent-picture-*.html`.
 
 
@@ -142,6 +146,3 @@ Designing the conditions under which the system earns more autonomy, one loop at
 **Strategic role:** Turns the grounded eval loop into an operational decision: would you let the agent send an internal mail? Introduces steering eval as a closing artifact (`./goal-nudger-eval.md`) without turning it into a second full exercise.
 
 **Arc recap:** M1 human as evaluator of self; M2 system owner; M3 division architect; M4 boundary-setter; M5 judge-builder; M6 loop designer.
-
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

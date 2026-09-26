@@ -123,6 +123,10 @@ Module 6 reads the packaged session: subtler misses, subtler drift.
 
 <!-- maintainer -->
 
+**Quality:** sim-passed 2026-09-06 (writing@5a52c2b9 story@5a52c2b9 technical@4589f1d5 behavior@b55cd28b pedagogy@5a52c2b9 strategy@fb797e3b slides@671e22ec)
+- judges @671e22ec: writing PASS (1 finding see instances/ae101--module--learn-from-the-test.writing.json), story PASS (1 finding see instances/ae101--module--learn-from-the-test.story.json), technical PASS (1 finding see instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @fb797e3b: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
+
 **No rescue callout at `## Start here` — the asymmetry with M6's is deliberate (Antti 2026-08-30; overrides `check_pedagogy.md` §65's M4→M5 example, `check_cross_module.md` §6 is permissive).** M6 load-bears on a two-run contrast, so a missing packaged run guts it and earns body rescue. M5 load-bears on a trace, and the bar sits on the producing side: M4's `## Bring to Module 5` says a stopped session counts and the trace is the artefact, so a thin return is inside the contract and the diagnosis is built to read it. The truly-absent case is room-scale triage — the Connections-blocker push, per §65(b): compressed re-run, late, never a loaner artefact. Do not re-file §6 on the missing callout, and do not add rescue blockquotes to the body.
 
 **The done-done beat carries a resume clause, and that note does not reach it (Antti 2026-09-07).** L31 reads *"Resume it if it's not still open."* The no-rescue call above is scoped to `## Start here`, where the artefact is what M5 needs and a stopped session already supplies it. This beat is the one place in the module that needs the session rather than its trace: the note below records the trick as the transcript inspecting itself *with the original context still live*, and the Connections-blocker recovery opens a fresh session, which recovers the artefact and cannot recover that. Without the clause, a student arriving on M4's blessed stopped-session path pastes the prompt into a new window and the beat no-ops silently. One sentence, no blockquote, and it is not a rescue callout in the §65 sense. A judge meeting it files nothing.
@@ -174,9 +178,6 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 
 **`## Next` is one sentence (Antti 2026-09-05).** The student-carries half the slides addendum asks for is the first line of M6's own opener, so it is not repeated here. Judges should not re-file `check_slides.md`'s Next addendum on it.
 
-**Quality:** sim-passed 2026-09-06 (writing@5a52c2b9 story@5a52c2b9 technical@4589f1d5 behavior@b55cd28b pedagogy@5a52c2b9 strategy@fb797e3b slides@671e22ec)
-- judges @671e22ec: writing PASS (1 finding see instances/ae101--module--learn-from-the-test.writing.json), story PASS (1 finding see instances/ae101--module--learn-from-the-test.story.json), technical PASS (1 finding see instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @fb797e3b: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Pacing:** Runtime is computed — `node scripts/calculate-time.js learn-from-the-test`. Trainer demos slowly, room copy-pastes concurrently. The closing lecture sits after Debrief + Re-send, where M4 has no closer of its own — it names Ronacher's three-pattern from felt evidence, so it cannot come earlier.

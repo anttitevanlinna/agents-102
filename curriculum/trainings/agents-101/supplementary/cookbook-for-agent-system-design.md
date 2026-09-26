@@ -421,6 +421,9 @@ Add a recipe when the move is reliable enough that a working practitioner would 
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-08-25 (technical@ab36a5e6 pedagogy@ab36a5e6 strategy@ab36a5e6 slides@4d9c4af2)
+- judges @4d9c4af2: writing grandfathered, story grandfathered, technical PASS, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
+
 **Status:** Pass 3.6 — provenance correction. Dishes 1 and 2 are explicitly labelled illustrative composites; Dish 3 is the house-built continuous-research system. Eight short recipes each carry a Why, with three full worked dishes, 11 named components, 18 data sources, and 20 indexed dishes. Recipe coverage in worked dishes: R2 (Dish 1), R3 + R6 (Dish 3), R4 (Dish 2). R5 / R7 / R8 still owe worked dishes.
 
 **Drift prevention:** when a module's Big Idea or named artefacts change, the matching recipe updates in the same edit. The cookbook is the take-home catalogue; if it lags the module, the buyer-side reading goes stale. Sweep cookbook against module Big Ideas at every cycle close. **Same rule for components and data sources** — when a module renames a component or adds a data source, the relevant Components / Data sources entry updates in the same edit. The Index entries are downstream of both: a renamed component ripples to every Index dish that composes it.
@@ -461,6 +464,3 @@ Add a recipe when the move is reliable enough that a working practitioner would 
 > "The first thing you build is for you, because you're the only evaluator you can't fool. Then we turn to work — because that's where the system has to stand up."
 
 *(Quote drafted for Antti's voice; edit freely or swap.)*
-
-**Quality:** compendium-audited 2026-08-25 (technical@ab36a5e6 pedagogy@ab36a5e6 strategy@ab36a5e6 slides@4d9c4af2)
-- judges @4d9c4af2: writing grandfathered, story grandfathered, technical PASS, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS

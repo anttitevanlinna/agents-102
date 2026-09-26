@@ -65,11 +65,11 @@ You cannot hire three agents and expect the output to be three times as good. Yo
 A whole module just showed you multi-agent works. Next Monday, you will be tempted to apply it to everything. Don't.
 
 <!-- maintainer -->
-**Laws moved in from Key Concepts (2026-09-24, Antti-directed).** `## A framework makes it pick` and `## Seams are where it fails` carry what `multi-agent-systems.md` § Key Concepts used to state; the module list is now four handles that point here.
-
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
+
+**Laws moved in from Key Concepts (2026-09-24, Antti-directed).** `## A framework makes it pick` and `## Seams are where it fails` carry what `multi-agent-systems.md` § Key Concepts used to state; the module list is now four handles that point here.
 
 **Time:** 10 minutes.
 

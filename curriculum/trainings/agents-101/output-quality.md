@@ -75,6 +75,11 @@ Once the judge and pre-read are ready, end this module's <span class="rt-code">s
 The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine the benchmark has three hundred claims, the judge runs on every build, and the generation tactic absorbs the judge's feedback between rounds. That's evals.
 
 <!-- maintainer -->
+
+**Quality:** compendium-audited 2026-08-25 (writing@19381896 story@19381896 technical@725101ec behavior@725101ec pedagogy@19381896 strategy@19381896 slides@19381896)
+- judges @19381896: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @12bf0d81: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+
 **Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `grounded.md`.
 
 
@@ -130,10 +135,6 @@ The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine th
 - Don't cross-teach. M5's benchmark earns M6's automation.
 
 **Why one exercise, not two:** the benchmark is a single bounded activity with a four-phase internal arc (target + benchmark → detectors → scorer → judge). Adding a second exercise here would steal M6's Steering-eval beat. M5 stays focused on the benchmarking pattern; evals are M6's instrument.
-
-**Quality:** compendium-audited 2026-08-25 (writing@19381896 story@19381896 technical@725101ec behavior@725101ec pedagogy@19381896 strategy@19381896 slides@19381896)
-- judges @19381896: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @12bf0d81: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
 
 **Artefact contracts**
 | Artefact | Stable identifier | Produced by | Consumed by |

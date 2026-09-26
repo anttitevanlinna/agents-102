@@ -49,6 +49,9 @@ You can check the recurring cost by asking Claude how many tokens your rules fil
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-10 (writing@c8bb1a71 story@0d65ff01 technical@0d65ff01 behavior@c8bb1a71 pedagogy@c8bb1a71 strategy@0d65ff01 slides@0d65ff01)
+- judges @c8bb1a71: writing PASS (1 finding see instances/ae101--exercise--compound-and-close.writing.json), story PASS, technical PASS, behavior PASS (2 findings see instances/ae101--exercise--compound-and-close.behavior.json), pedagogy PASS, strategy PASS, slides PASS
+
 **View summary:** The agent reads the finished session as evidence and drafts `./CLAUDE.local.md` from how the work actually went. You push back where it misreads. The result is a personal rules file that improves the next session on this repository.
 
 **Slide deixis accepted:** "the line back" — idiom ("have Claude take the line back out of the file" = retract it), not page geometry.
@@ -57,8 +60,6 @@ You can check the recurring cost by asking Claude how many tokens your rules fil
 
 **The five phase labels in `compound-and-close-1` stay, under `§40b`'s two-readers carve-out (2026-09-08).** *the orientation and introspection* and *the TDD bug fix* are curriculum-coined and were never typed at Claude verbatim, so §40b's warm-but-referent-absent shape does fire. Its cure order then asks what deleting them changes, and the answer differs by reader. For the agent: little. The fence opens *"Review this session end-to-end"*, which carries the scope on its own, and the glosses describe work an agent reading the scrollback can see happened — a repo read, a self-report on what was skipped, a tests-first fix. For the student: the list is the module's receipt, five phases of their morning enumerated at the beat that closes it. One nothing and one something is a keep. Do not delete the list, and do not paraphrase the labels either — §40b forbids the like-for-like swap, which would spend a fresh term to preserve the same defect.
 
-**Quality:** compendium-audited 2026-09-10 (writing@c8bb1a71 story@0d65ff01 technical@0d65ff01 behavior@c8bb1a71 pedagogy@c8bb1a71 strategy@0d65ff01 slides@0d65ff01)
-- judges @c8bb1a71: writing PASS (1 finding see instances/ae101--exercise--compound-and-close.writing.json), story PASS, technical PASS, behavior PASS (2 findings see instances/ae101--exercise--compound-and-close.behavior.json), pedagogy PASS, strategy PASS, slides PASS
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read the retro summary against session moments) + Apply (integrate the rules file from evidence).
 - **Atomic — no phase markers.** One retro pass into one rules file; the push-back and the second sweep are moves inside it, not beats beside it. Line 3 is authored, not generated.

@@ -40,6 +40,9 @@ Now: five minutes with Claude. The debrief.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **Story blend, M1 closer (2026-09-23).** Five slides per `module-design/a101-story-proposals/blend.md` § Titles, M1: `You felt context move`, `Why the look-back was kind to you`, `The report is a hypothesis, not a result`, `You were the only check in the room`, `You act on the future to know what's real`. The mental-models beat ends on the felt-experience sentence; anything after it restates the beat above. The closer carries no forward promise about the remaining modules, which is the module file's job. The McKinsey beat stays verbatim.
 
 **Header reads `look-back`, not `retro`.** This lecture sits before `## Debrief` in `getting-going.md`, so the retro has not run when the slide is projected; the exercise's Phase 5 look-back has. The blend's string was `Why the retro was kind to you`. The mechanism under the header is the blend's: agreeable answers won the round the model was tuned on, so the self-report is the same kind of output. Moving this lecture after the Debrief would make `retro` the right word.
@@ -47,6 +50,3 @@ Now: five minutes with Claude. The debrief.
 **Slide 4 plants the absence, it does not name it.** `You were the only check in the room` states that the student was the sole check and that this is the right arrangement for their own profile. It does not reach for what happens when the subject is not one they know cold; M1's mood is joyful creation.
 
 **Time:** 8 minutes.
-
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -102,6 +102,9 @@ Convergence was the floor in Module 5. Eval-as-yardstick is the ceiling here. Th
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-08-25 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **Central concept — eval as fixed yardstick. The thing being measured learns to pass it.**
 
 This exercise is one of the three Agents 101 magic beats (M3, M6, M8). M5 picks the judge; M6 makes the judge infrastructure (untouchable, trusted) and the generator the student's object of improvement; M8 goes meta one more turn. If this exercise doesn't land, the curriculum's "50% magic" rule fails at M6.
@@ -153,8 +156,5 @@ This exercise is one of the three Agents 101 magic beats (M3, M6, M8). M5 picks 
 **Why this is the only M6 exercise:**
 - The older manual groundedness loop fed judge output back to the generator by hand. This exercise automates that loop while keeping the judge fixed.
 - The older steering exercise was a useful second dimension, but a second full exercise steals focus from the magic beat. Steering now appears in the closing lecture as a compact goal-nudger eval.
-
-**Quality:** compendium-audited 2026-08-25 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **View summary:** You fix the judge you picked as infrastructure, start a loop in which the generator learns to pass it, and walk away for half an hour. The artifact is a generation tactic that improved without you, and the question of who checked the judge.

@@ -136,6 +136,9 @@ You just ran **Recipe 5** end-to-end: a 30-claim benchmark you wrote yourself, f
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **TODO (Cowork edition review 2026-04-29):**
 - Phase 1 prompt still says "Spawn one subagent" / "Instructions for the subagent" / "When the subagent finishes" in the Cowork edition. Later detector prompt is already runtime-forked correctly. Prompt-block change is gated: propose before/after before editing.
 
@@ -197,8 +200,5 @@ You just ran **Recipe 5** end-to-end: a 30-claim benchmark you wrote yourself, f
 - M5 ships a hand-run benchmark producing one judge file against a 30-claim reference set.
 - M6 picks the judge up and turns it into infrastructure — scaled benchmark, scheduled runs, corrections feeding back, the steering counterpart (encoding preference, not groundedness).
 - Don't cross-teach. M5's benchmark earns M6's automation.
-
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **View summary:** You run four fabrication detectors against a thirty-claim pool drawn from your own output, with a scorer adjudicating each claim, and read the scoreboard. The artifact is a judge file you can defend because it won a benchmark, not because you read about it.

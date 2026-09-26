@@ -120,6 +120,9 @@ Token efficiency is one lever with two payoffs: a cleaner window thinks better a
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@b3143a4 pedagogy@b55cd28b strategy@aa1f7826 slides@324b81d7)
+- judges @324b81d7: writing PASS, story PASS, technical PASS (3 findings see instances/ae101--supplementary--the-context-ceiling.technical.json), behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--supplementary--the-context-ceiling.strategy.json), slides PASS
+
 **Folklore handles are quotes, and quotes do not get trimmed to a word budget.** `check_slides.md` §9 caps a bold handle at roughly five words. The two handles in `## The folklore` are quoted claims being debunked, not labels: shortening *"Compaction is always lossy, so always hand off."* either misquotes the folklore or deletes the very advice the paragraph goes on to show reversing. §9's harm is an emphasis budget spent on decoration; a claim under examination is not decoration. Future judges should score §9 N/A on that section rather than propose a trim.
 
 **Meta:** *Supplementary for AE101. Audience: software-engineer ICs (L0 to L3); Claude Code is floor, so primitives (`/context`, `/clear`, subagents) are used without re-teaching. Answers a customer request for a practitioner treatment of token efficiency: (1) what it is, (2) how to define and measure it, (3) basic moves and shortcuts, (4) the other drivers beyond carried context. ~7 minutes. Reference register: declarative section headers, verb-led move lead-ins.*
@@ -134,9 +137,6 @@ Token efficiency is one lever with two payoffs: a cleaner window thinks better a
 - In the AE101 SPA supplementaries registry (`CR.TRAININGS[agentic-engineering-101].supplementaries` in `site/layouts/curriculum.js`), between "The agent loop" and "How the best do CI/CD." It renders on the index and is in audit scope.
 - Entry points: M2 close (final slide of `how-instructions-grow.md`), M3 module close (`earn-the-trust.md`), M4 prework (`run-the-first-experiment.md`).
 - Carries additive calc/exploration prompts (the "price the bloat" cost calc), not primitive demonstrations. `/context` is treated as already-known (it lands in M1 and recurs through the exercises); the page reads it as the instrument the engineer holds, not a move to teach. Do not reintroduce "run `/context`" demonstrations here. Prompts are inline `**Prompt**` blocks (draft form); migrate to registry prompts (`curriculum/prompts/<key>.md`) on wiring, the way `the-agent-loop.md` uses `{{prompt:...}}` includes. Approved-prompt key so far: `ae101-token-efficiency-bloat-cost`.
-
-**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@b3143a4 pedagogy@b55cd28b strategy@aa1f7826 slides@324b81d7)
-- judges @324b81d7: writing PASS, story PASS, technical PASS (3 findings see instances/ae101--supplementary--the-context-ceiling.technical.json), behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--supplementary--the-context-ceiling.strategy.json), slides PASS
 
 **Visible "Sources" list is deliberate.** Linked titles + venue + year (no source-type labels, no ladder vocabulary) = student-facing end-matter, not a "What research says" callout; the no-callout rule bans audit framing inside the prose, not a reading list. Curated to verified URLs only — every entry opened against its byline. Keep the list and the maintainer stamps in sync.
 

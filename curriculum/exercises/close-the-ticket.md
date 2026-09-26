@@ -55,6 +55,9 @@ The field rules stay in the scrollback. The next exercise sweeps this whole sess
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-10 (writing@0d65ff01 story@0d65ff01 technical@0d65ff01 behavior@0d65ff01 pedagogy@0d65ff01 strategy@324b81d7 slides@0d65ff01)
+- judges @0d65ff01: writing PASS (1 finding see instances/ae101--exercise--close-the-ticket.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **The closer's *"The next exercise sweeps this whole session"* stays, under §33's motivating-forward-reference carve-out (Antti 2026-09-06, ruled on the sibling case in `set-the-markers-send-it-off.md`).** It is the reason the preceding sentence is acceptable: the field rules stay in the scrollback *because* the next exercise sweeps them, so a student who would otherwise stop to save them has their answer. Cartography tells the student where they are; this tells them why they can leave something undone. A judge meeting the clause again reads this note and files nothing.
 
 **§9's actor clause fires on L48's middle sentence and is declined (Antti 2026-09-06: *"no. Longer. Direct 'you do it' format also fully acceptable"*).** *Extract a `.md` file* is the student's own step, stated the way this corpus states student steps, and naming an actor on it only lengthens a line whose staccato is the maintainer frame at `maintainer-frame`. §9 now carries the carve-out; a judge meeting the bare imperative again reads this note and files nothing.
@@ -134,6 +137,3 @@ OODA
 - last-run: 2026-08-03
 
 <!-- /backing -->
-
-**Quality:** compendium-audited 2026-09-10 (writing@0d65ff01 story@0d65ff01 technical@0d65ff01 behavior@0d65ff01 pedagogy@0d65ff01 strategy@324b81d7 slides@0d65ff01)
-- judges @0d65ff01: writing PASS (1 finding see instances/ae101--exercise--close-the-ticket.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

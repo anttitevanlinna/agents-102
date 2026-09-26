@@ -91,6 +91,10 @@ Module 2 is where plan mode earns its keep: multi-file work, and a second pass t
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-10 (writing@0d65ff01 story@0d65ff01 technical@0d65ff01 behavior@1480362 pedagogy@0d65ff01 strategy@0d65ff01 slides@0d65ff01)
+- judges @0d65ff01: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (verify-refuted, 2 findings see instances/ae101--module--getting-going.pedagogy.json), strategy PASS (verify-refuted), slides PASS
+- cross_module @01592193: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
+
 **Carded and kept (Antti 2026-08-29): the "All modules are designed to cope with missing details from prior modules" bullet stays.** It is the rescue guarantee — a trainer improvising cuts mid-session, or a student who missed a beat, needs the stated design promise, not only the cutting permission the list grants above it. `check_student_facing.md` §33 does not take it; do not re-card.
 
 **Carded and kept (Antti 2026-08-29): the `CLAUDE.local.md` KC bullet keeps both trailing sentences** ("It is the simplest personal store, and a starter. Everyone sees how it will bloat almost immediately."). The bloat warning is essential: without it students assume every rule earns its keep, and the subtraction work lands on an expectation this bullet is there to break. That subtraction is `spot-gaps-build-the-loop`'s stale-rule cut, in M6 — M4 carries no rule-removal beat. Do not trim as NVA; do not re-card.
@@ -190,7 +194,3 @@ The shipped PR and the closed ticket are both produced this module and both live
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
 
 **`## Next` is templated, so `check_lectures §4` does not reach it (2026-09-08).** §4's bare-arc-label clause governs headers an author chose. This one is fixed by `curriculum/module-shape.md`, which names the section and pins it as the last thing in the body; five AE101 modules carry it verbatim. Charging this file for it would be charging it for obeying the template, the seam `check_slides §9` already settled on the bold budget. §4 now carries the same carve-out. A rename here is a change to `module-shape.md` and to all five modules at once, never a per-file card. Do not re-file.
-
-**Quality:** compendium-audited 2026-09-10 (writing@0d65ff01 story@0d65ff01 technical@0d65ff01 behavior@1480362 pedagogy@0d65ff01 strategy@0d65ff01 slides@0d65ff01)
-- judges @0d65ff01: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (verify-refuted, 2 findings see instances/ae101--module--getting-going.pedagogy.json), strategy PASS (verify-refuted), slides PASS
-- cross_module @01592193: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json

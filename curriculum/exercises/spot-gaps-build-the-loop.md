@@ -45,6 +45,9 @@ Ask Claude to read your rules file against the diagnosis and cut the one rule it
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-05 (writing@fb797e3b story@fb797e3b technical@4589f1d5 behavior@9696da99 pedagogy@fb797e3b strategy@fb797e3b slides@fb797e3b)
+- judges @9696da99: writing PASS, story PASS, technical PASS, behavior PASS (2 findings see instances/ae101--exercise--spot-gaps-build-the-loop.behavior.json), pedagogy PASS, strategy PASS, slides PASS
+
 **Atomic — no phase markers.** One read of two sessions, then one cut; the second move is a consequence of the first, not a phase.
 
 **Session verb is *new* in the same cwd, on purpose (`check_platform_and_boundaries.md` §7c):** the module reads M5's session from outside, so resuming would put the diagnosis inside the self-report it diagnoses. Contamination is the reason, not convention.
@@ -58,9 +61,6 @@ Ask Claude to read your rules file against the diagnosis and cut the one rule it
 **Declined at the 2026-09-03 polish pass (list shown to Antti, no veto):** *The point* line stays as written; it is scoped to the exercise's own two sessions, a corpus we control, so `check_writing.md` §21's world-claim test does not fire. The Plug-points entry follows the training-wide convention of naming the in-training artefacts an exercise consumes; whether that convention should be renamed is a corpus question (`check_pedagogy.md` §44), not this file's. The first lead-in (*Ask Claude to read both sessions…*) was carded and approved the same pass; `check_prompts.md` §38 does not re-file on it. Judges should not re-file any of these.
 
 **No push-back bullet for the no-cut branch (Antti 2026-09-05).** The second prompt's *if every rule still holds, say so and stop* is taken at its word; the exercise does not account for self-audit charity there. Judges should not re-file `check_pedagogy.md` §31 or §50 on it.
-
-**Quality:** compendium-audited 2026-09-05 (writing@fb797e3b story@fb797e3b technical@4589f1d5 behavior@9696da99 pedagogy@fb797e3b strategy@fb797e3b slides@fb797e3b)
-- judges @9696da99: writing PASS, story PASS, technical PASS, behavior PASS (2 findings see instances/ae101--exercise--spot-gaps-build-the-loop.behavior.json), pedagogy PASS, strategy PASS, slides PASS
 
 **Word count:** ~420 words body.
 

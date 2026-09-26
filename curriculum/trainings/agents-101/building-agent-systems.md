@@ -94,12 +94,12 @@ You have an agent doing real work on your challenge. But the job is getting too 
 Before the next module, try making a few more agents you actually need. Pick by pain, not ambition: the task you keep doing manually that would feel lighter if someone else did it. Meeting prep, calendar triage, competitive watching, and draft-reply triage are all fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system. You only learn by doing. Go build.
 
 <!-- maintainer -->
-**Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `compounding.md`.
-
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@194c81b0 strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @12bf0d81: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+
+**Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `compounding.md`.
 
 **Story blend, M2 Debrief (2026-09-23).** Two subsection headers after the Debrief prompt, per `module-design/a101-story-proposals/blend.md` § Titles, M2. `Fix the output, then fix the rule` sits over the watching-where-it-bends prose: the body already runs that order (push back on the output, then turn the miss into a line of context) and the verb header states it. `The model will change under this` carries the blend's seed for the model-rotates learning: *the model will change under this; the memory will not*. It stays a statement about what the student now owns and asks no question; the question it seeds belongs to the last module.
 

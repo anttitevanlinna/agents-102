@@ -44,9 +44,9 @@ That's a guardrail. That's your turn.
 
 <!-- maintainer -->
 
-**Story blend, M1 slides (2026-09-23).** Headers per `module-design/a101-story-proposals/blend.md` § Titles, M1: `Same question, two answers`, `It reads the whole conversation every time`, `Context is whatever you tell it`, `The first piece of the picture`, `A file it reads every time`. The refrain paragraph (*In the full agent picture, this is the first piece: context*) is its own slide and sits after the role example, which is the widest statement of context in the lecture. No body prose is rewritten for the re-chunk. `context-is-king-cb.md` names this file as its Source and belongs to another training; it is outside the A101 story blend and its headers are not part of this change.
-
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
+**Story blend, M1 slides (2026-09-23).** Headers per `module-design/a101-story-proposals/blend.md` § Titles, M1: `Same question, two answers`, `It reads the whole conversation every time`, `Context is whatever you tell it`, `The first piece of the picture`, `A file it reads every time`. The refrain paragraph (*In the full agent picture, this is the first piece: context*) is its own slide and sits after the role example, which is the widest statement of context in the lecture. No body prose is rewritten for the re-chunk. `context-is-king-cb.md` names this file as its Source and belongs to another training; it is outside the A101 story blend and its headers are not part of this change.
 
 **Time:** 10 minutes.

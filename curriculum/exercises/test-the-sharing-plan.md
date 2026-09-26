@@ -30,6 +30,9 @@ Before designing a solution, interview for the outcome. Pick the candidate again
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-08-25 (writing@a4be944f story@a4be944f technical@a4be944f behavior@a4be944f pedagogy@a4be944f strategy@a4be944f slides@a4be944f)
+- judges @a4be944f: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **Atomic — no phase markers.** The assumption test and failure story feed the same Monday action.
 
 **Leap test — next working day:**
@@ -46,8 +49,5 @@ Before designing a solution, interview for the outcome. Pick the candidate again
 **Why this is one bounded exercise:** the assumption test, premortem, and Monday file are one Check-to-Act chain. The failure story pressures the selected assumption; the close turns that pressure into the next observable move.
 
 **Framework sources:** [primary practitioner article] Roger Martin, ["The Risk of the Status Quo"](https://rogerlmartin.com/docs/default-source/Articles/strategy/rotman_spring07_riskofstatusquo.pdf?sfvrsn=d2dd3b82_0) — reverse-engineering what would have to be true; [practitioner article] Gary Klein, ["Performing a Project Premortem"](https://hbr.org/2007/09/performing-a-project-premortem) — the premortem. These techniques live inline because Module 7 applies them rather than teaching separate strategy packets.
-
-**Quality:** compendium-audited 2026-08-25 (writing@a4be944f story@a4be944f technical@a4be944f behavior@a4be944f pedagogy@a4be944f strategy@a4be944f slides@a4be944f)
-- judges @a4be944f: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **View summary:** You test the switch the plans assume, name the failure that could hide behind a clean technical build, and turn one assumption into a conversation with the person on the other end. The artifact is a pre-mortem and one question you owe someone real.

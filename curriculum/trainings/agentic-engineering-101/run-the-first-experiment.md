@@ -92,6 +92,11 @@ The next module opens with what came back, or what you caught before it went fur
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@17446703 pedagogy@191ea58f strategy@324b81d7 slides@191ea58f)
+- judges @324b81d7: writing PASS, story PASS, technical PASS (1 finding see instances/ae101--module--run-the-first-experiment.technical.json), behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--module--run-the-first-experiment.strategy.json), slides PASS
+- cross_module @08946dd8: PASS — set=[earn-the-trust,run-the-first-experiment]; 1 pair, 0 blocking; see instances/ae101--module-set--m3-m4.cross_module.json
+- cross_module @fb797e3b: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
+
 **`## Prework`'s pre-read callback names da Costa unconditionally, no flag.** Willison's *Designing agentic loops* is the M3 access-surface read only (`plan-mode-done-right.md`); it does not belong at M4 in any cut. `plan-mode-done-right.md` assigns da Costa directly in its own `no-module:earn-the-trust` `## Pre-reads before Module 4` block, so the pre-M4 read is the same essay across every cut. Do not reintroduce a Willison branch here.
 
 **The Big Idea leads on prep by design; the mood is carried by its second sentence.** *"Prep your first long session. The session is how you find out what's missing."* A `strategy` judge scoring `check_strategy_tie_in.md` §1 reads the first clause as prep-register against this module's curious-readiness mood and files a blocking finding; the `story` judge scores the same file PASS on persona traces. The experiment framing lives in the second sentence, and the compliance drift the judge fears already has its trainer reframe in § Meta (*"enough is a question for M5. The experiment is the point"*). Accepted for the first cohort and tracked as a watch in `pre-cohort-todos.md`, with the firing condition named there: a room whose Phase 2 mood reads below 7 and whose *"is this enough?"* pattern traces to this slide rather than to task selection. Do not rewrite the Big Idea to resolve the judge; if the watch fires, lead on the experiment and demote the prep clause.
@@ -105,11 +110,6 @@ The next module opens with what came back, or what you caught before it went fur
 **The factory pre-read now ends on the provocation, unanswered (2026-08-14, Antti: "gives too much away").** It used to continue *"It isn't. The task leaves from a pinned commit on a throwaway branch, sized as an experiment, and the planning and checks the essay says are missing are what Module 5 builds. You are not running the factory; you are collecting your own copy of its evidence, on purpose."* That answered the module's own tension in prework: it named the pinned-commit / throwaway-branch design before the student meets it, and it pre-announced M5's job. The line now stops at *may look like exactly what that essay warns against* and the module resolves it by being run. Do not restore the reassurance; if a judge reads the pre-read as leaving the student uneasy, that is the intended state.
 
 **The nudge-count accept-note lives with the line, in `exercises/set-the-markers-send-it-off.md`** (2026-08-12, send-off extraction): the §16 boundary argument defending *"Past ten or so, you've become the agent"* is stated there once. Do not re-add a copy here (`check_pedagogy.md` §64: maintainer blocks point, they do not restate); a judge auditing this file never reads the exercise body, so it cannot flag the line from here.
-
-**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@17446703 pedagogy@191ea58f strategy@324b81d7 slides@191ea58f)
-- judges @324b81d7: writing PASS, story PASS, technical PASS (1 finding see instances/ae101--module--run-the-first-experiment.technical.json), behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--module--run-the-first-experiment.strategy.json), slides PASS
-- cross_module @08946dd8: PASS — set=[earn-the-trust,run-the-first-experiment]; 1 pair, 0 blocking; see instances/ae101--module-set--m3-m4.cross_module.json
-- cross_module @fb797e3b: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create

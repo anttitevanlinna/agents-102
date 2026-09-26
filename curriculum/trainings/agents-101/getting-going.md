@@ -83,12 +83,12 @@ Once the prework is saved, end this module's <span class="rt-code">session</span
 The output now travels with a file the agent can re-read next time. Module 2 systematises that compounding move through memory, agents, and room rules so every future module builds on the work before it.
 
 <!-- maintainer -->
-**Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `context-is-king.md` and `what-just-happened.md`.
-
 
 **Quality:** compendium-audited 2026-08-25 (writing@19381896 story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@194c81b0 slides@19381896)
 - judges @19381896: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @12bf0d81: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+
+**Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `context-is-king.md` and `what-just-happened.md`.
 
 **Story blend, M1 (2026-09-23).** § Start here carries no thesis line for the module: the demo runs, the exercise lands it, and `what-just-happened.md` names it at the close. Per `module-design/a101-story-proposals/blend.md` § Titles, M1. The Big Idea is the canonical section and holds the claim; do not restore a second statement of it above the lecture link.
 

@@ -50,6 +50,9 @@ Drop your bug after the colon.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-10 (writing@c8bb1a71 story@0d65ff01 technical@0d65ff01 behavior@64d17eea pedagogy@0d65ff01 strategy@324b81d7 slides@0d65ff01)
+- judges @c8bb1a71: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **Carded and kept, then trimmed (Antti 2026-08-29): the compound-step mention in the push-back bullet stays.** The forward mechanism ("the compound step reads this scrollback, so your push-back is what becomes a rule") is the wanted motivation for authentic wording, not a leak — do not cut it as a pre-announcement; the shortening to its current form is the settled dose.
 
 **View summary:** You bring a real bug through a tests-first repair: prove it with a failing test, fix the root cause, interrogate the diff, and ship the PR. The artifact is working code whose evidence you have read and challenged.
@@ -64,8 +67,6 @@ Drop your bug after the colon.
 
 **The `What you build:` list stays as three objects (Antti 2026-09-08: *"original was better - more tangible before the exercise"*).** The slot is read before the work, where its job is telling a student what they will be holding afterwards. A failing test, the smallest fix, a shipped PR: three things they can picture. §52c carries the boundary — the enablement test never buys abstraction, and a concrete list that already tells the student what they get is the slot doing its job. Do not re-file the colon-list tell here.
 
-**Quality:** compendium-audited 2026-09-10 (writing@c8bb1a71 story@0d65ff01 technical@0d65ff01 behavior@64d17eea pedagogy@0d65ff01 strategy@324b81d7 slides@0d65ff01)
-- judges @c8bb1a71: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (tests-first fix) + Analyze (read the diff against what you'd write).
 - **Atomic — no phase markers.** One TDD loop, start to PR; splitting it would name beats the student does not experience as separate. Line 3 is authored, not generated.

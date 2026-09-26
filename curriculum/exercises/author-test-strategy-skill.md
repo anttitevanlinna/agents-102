@@ -72,6 +72,9 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-06 (writing@324b81d7 story@9edae2ef technical@324b81d7 behavior@64d17eea pedagogy@0e4f7c9e strategy@324b81d7 slides@9edae2ef)
+- judges @64d17eea: writing PASS (2 findings see instances/ae101--exercise--author-test-strategy-skill.writing.json), story PASS, technical PASS (2 findings see instances/ae101--exercise--author-test-strategy-skill.technical.json), behavior PASS (1 finding see instances/ae101--exercise--author-test-strategy-skill.behavior.json), pedagogy PASS, strategy PASS, slides PASS
+
 **Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "You are not typing markdown into an editor." (widget header carries it); "The reasons for personal-first land in Phase 3…" (forward narration); "The skill proves itself only when it runs on real code." (restates theatre line); "One paste, one wait, one read, convenient over rigorous."; "Sharpen the SKILL.md, then re-invoke." (decide-bullet owns re-invoke); decide-bullet trimmed, "The authoring muscle is what Module 3 installs." out (§16b); "That's the ship."; team-PR bullet lost coffee/channel color + "sharpen the skill, ship it sharper"; "Not every skill graduates to a shared kit."; the worktree-leftovers section's bullet 2 (personal-first + coffee dup). Do not restore.
 
 **Install mechanic is stated once.** The ship-destination bullet is the canonical statement of the skill's home and auto-discovery; the backing block cites it as `personal-skills-folder-auto-discovered`, so it must stay verbatim. Do not restate the install path anywhere else in body. Install paths and the team-kit route are canonical in `training-architecture.md` § Skills, which is a planning artefact and not a student page, so the pointer lives here and not in body.
@@ -79,9 +82,6 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 **View summary:** You author a test-strategy skill through conversation, challenge its weakest assumption, and invoke it against the real codebase before keeping it. The artifact is a reusable skill shaped by the way this repository actually tests, not by a generic pyramid.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain across all slides; kept bold: none (no named-move or menu handles in body); widget/label chrome (**Time:**/**Window:**/**What you do:**/**What you build:**/**The point:**/**What happened:**/**Note**) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
-
-**Quality:** compendium-audited 2026-09-06 (writing@324b81d7 story@9edae2ef technical@324b81d7 behavior@64d17eea pedagogy@0e4f7c9e strategy@324b81d7 slides@9edae2ef)
-- judges @64d17eea: writing PASS (2 findings see instances/ae101--exercise--author-test-strategy-skill.writing.json), story PASS, technical PASS (2 findings see instances/ae101--exercise--author-test-strategy-skill.technical.json), behavior PASS (1 finding see instances/ae101--exercise--author-test-strategy-skill.behavior.json), pedagogy PASS, strategy PASS, slides PASS
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Create + Evaluate

@@ -59,6 +59,9 @@ Run `/context` to see how much of the window is used and what fills it.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-10 (writing@0d65ff01 story@0d65ff01 technical@0d65ff01 behavior@64d17eea pedagogy@0d65ff01 strategy@324b81d7 slides@0d65ff01)
+- judges @0d65ff01: writing PASS (1 finding see instances/ae101--exercise--orient-and-introspect.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **View summary:** You direct the agent's first read of your real repository, ask what it skipped and why, spot-check that self-report against the files themselves, and close on the `/context` number naming how much of your codebase never entered the window at all.
 
 **Closing beat is `## The slice the agent didn't load`.** The beat correctly carries **no prompt**: the `/context` run is the move, and this slide is the closing claim about context economy — a header that commands a read of a number `/context` already printed is dead weight (`check_student_facing.md` §27, `check_slides.md` §6). `getting-going.md`'s leap test names the target as the *unread-slice number*, not a set of files, so do not add a file-opening instruction — that invents a beat the design does not have and contradicts the leap test. Built workbooks under `site/clients/**` carry the older `id="read-the-unread-slice"` anchor until regenerated. The result is a practical map of what the agent loaded, what it skipped, and where your steering begins.
@@ -67,8 +70,6 @@ Run `/context` to see how much of the window is used and what fills it.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** All bullet leads de-bolded to plain bullets; no named laws or coined terms in this body, so no handles kept. Widget chrome (`**Time:**`, `**Session**`, `**What you do:**`, `**What you build:**`, `**The point:**`) and the blockquote callout untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
-**Quality:** compendium-audited 2026-09-10 (writing@0d65ff01 story@0d65ff01 technical@0d65ff01 behavior@64d17eea pedagogy@0d65ff01 strategy@324b81d7 slides@0d65ff01)
-- judges @0d65ff01: writing PASS (1 finding see instances/ae101--exercise--orient-and-introspect.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read Claude's self-report against `/context`).
 - **Atomic — no phase markers.** One conversation with the agent; the interrogation has no seam to cut on. Line 3 is authored, not generated.

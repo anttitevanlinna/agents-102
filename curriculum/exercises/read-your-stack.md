@@ -60,6 +60,9 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-05 (writing@fb797e3b story@fb797e3b technical@289b45a3 behavior@fb797e3b pedagogy@289b45a3 strategy@289b45a3 slides@fb797e3b)
+- judges @fb797e3b: writing PASS, story PASS, technical PASS, behavior PASS (2 findings see instances/ae101--exercise--read-your-stack.behavior.json), pedagogy PASS, strategy PASS, slides PASS
+
 **Atomic — no phase markers.** One widening scan, drawn, then an optional sidestep.
 
 **View summary:** You read your own session history across every project, group the kinds of work that recur, draw the top few as diagrams, and optionally check your menu of checks against the field's. The stack-map feeds the closing handoff move.
@@ -121,6 +124,3 @@ OODA
 - **Study + shapes run long (>15 min)** — the wider look is a light pass, not a full inventory. Study reads the ranked head; shapes draws two or three. If it eats the clock the student is cataloguing; use the body stop gate and skip the sidestep.
 
 **Declined at the 2026-09-03 polish pass:** the *say "tell me what you've found so far"* and *say "give me this in HTML"* callouts stay as written (Antti: *say* and *tell* with a quoted utterance are the training's established prompt triggers; `check_student_facing.md` §31 widened the same day). The four *no preamble* rows on the study, shapes and primitives fences fall under `check_prompts.md` §17 as narrowed to plan mode on 2026-09-03; none of these fences is plan mode. Also declined: *Read your own history first.* stays an imperative (`check_student_facing.md` §9: the mechanism is the bullet below it and the next header); the study, shapes and primitives lead-ins keep their own verbs (`check_prompts.md` §38: the noun-phrases echo); the *Expect the list to look familiar* paragraph keeps its examples (`check_pedagogy.md` §53: it sits after the fence and teaches how to read the answer, and the backing block's holds row carries the convergence claim). Judges should not re-file any of these.
-
-**Quality:** compendium-audited 2026-09-05 (writing@fb797e3b story@fb797e3b technical@289b45a3 behavior@fb797e3b pedagogy@289b45a3 strategy@289b45a3 slides@fb797e3b)
-- judges @fb797e3b: writing PASS, story PASS, technical PASS, behavior PASS (2 findings see instances/ae101--exercise--read-your-stack.behavior.json), pedagogy PASS, strategy PASS, slides PASS

@@ -605,6 +605,9 @@ mv "$TMP" "$FILE"
 # instance recording something else was already stale for a real reason and stays
 # refused. This narrows the guard to its actual purpose (the body moved under a
 # judge) instead of also catching the stamper's own footprint.
+# The Quality block opens the maintainer block (quality-format.md § Position).
+# Hoisting here, inside the same maintainer-only write, is what converges files.
+node "$(dirname "$0")/hoist-quality.js" --write "$FILE" >/dev/null
 new_file_sha="$(shasum -a 256 "$FILE" 2>/dev/null | awk '{print $1}')"
 if [[ -n "$file_sha" && -n "$new_file_sha" && "$file_sha" != "$new_file_sha" && -d "$INSTANCES_DIR" ]]; then
   for cls in writing story technical behavior pedagogy strategy slides; do

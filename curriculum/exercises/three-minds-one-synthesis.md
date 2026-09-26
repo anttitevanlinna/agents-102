@@ -60,10 +60,10 @@ Hold the doubt. Name it to yourself. Don't fix it here.
 
 <!-- maintainer -->
 
-- **Atomic — no phase markers.** One synthesis run; the Close is a move inside it, not a beat beside it. Line 3 already states the 15 + 7 split. Line 3 is authored, not generated.
-
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
+
+- **Atomic — no phase markers.** One synthesis run; the Close is a move inside it, not a beat beside it. Line 3 already states the 15 + 7 split. Line 3 is authored, not generated.
 
 **Role in Module 3:** Third exercise (after `name-your-crux` + `three-retrievers-one-curator`). Reads the curated `memory/` from the previous exercise; produces the `## Answer` section in `./crux.md`. Closes Module 3 with the doubt-naming beat that hands off to Module 5.
 

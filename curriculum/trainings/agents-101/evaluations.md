@@ -75,12 +75,12 @@ Once the trigger is written, end this module's <span class="rt-code">session</sp
 You just built an eval that improves itself. The system can now keep pressure on its own output when you are not watching every step. The close is not "trust the agent." The close is "trust the loop you can inspect."
 
 <!-- maintainer -->
-**Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `evals-as-steering.md`, `when-the-score-stops-moving.md` and `new-human-role-in-the-loop.md`.
-
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@4d9c4af2 slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @12bf0d81: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+
+**Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `evals-as-steering.md`, `when-the-score-stops-moving.md` and `new-human-role-in-the-loop.md`.
 
 **Story blend, M6 (2026-09-23).** The callout beside `lectures/evals-as-steering.md` carries one paragraph, the agent-action-starts-as-text point, per `module-design/a101-story-proposals/blend.md` § Titles, M6. The connector encouragement is not part of the module: it is a different module's advice arriving mid-loop, and *start small then scale* is sales register in a student body (`check_writing.md` §13).
 

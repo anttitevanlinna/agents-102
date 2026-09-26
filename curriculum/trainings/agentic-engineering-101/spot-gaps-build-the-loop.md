@@ -54,6 +54,10 @@ This slot is a human round: talk, compare, no prompts.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-06 (writing@5a52c2b9 story@94fcca2d technical@94fcca2d behavior@1c765f2 pedagogy@4e0370bc strategy@54577f39 slides@5a52c2b9)
+- judges @5a52c2b9: writing PASS (1 finding see instances/ae101--module--spot-gaps-build-the-loop.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @fb797e3b: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
+
 **`## Next` cut whole (Antti 2026-09-02).** The send-off paragraph, the *going deeper* link to `supplementary/how-the-best-do-ci-cd.md`, the *Keep on learning and sharing* line and the author sign-off: in git at `fe8fde13`. Terminal-module exception to `module-shape.md`; the CI/CD supplementary has no in-module link. Do not restore.
 
 **`## Key Concepts` cut whole (Antti 2026-09-02: *"nobody wants to come back to that at end of full training"*).** Terminal-module exception to `module-shape.md` § Key Concepts and `check_strategy_tie_in.md` §§5–6; judges should not re-flag. The six bullets are in git at `fedd3bdc`. The subtraction doctrine (*add, sharpen, delete*) is carried by the rule cut and the second-loop figure's *add a rule · cut a rule*; the independence kernel (*a check proves something only where it could say no*) has no M6 home by decision (no loop-diagnosis exercise; Antti 2026-09-02). Do not re-home either.
@@ -72,10 +76,6 @@ This slot is a human round: talk, compare, no prompts.
 **Human close's "talk, compare, no prompts" stays in body — `check_pedagogy.md` §27 mode-defining-cue carve-out (maintainer call).** The cue defines the slot's mode against a training that is otherwise prompts; the round's form (pairs, whole-room, write-then-share) stays the trainer's per the strategy doc's M6 Debrief spec. Future judges should not re-flag.
 
 **`## Human close` is a pre-close beat, not the module's ending (2026-08-19, Antti-directed: *"human close can be a beat before actual full closing. It is deliberately there to have the time for closing conversations."*).** The slot buys room time for the closing conversation while the closing lecture and `## Optional challenges` still follow. A story judge scoring close mood may read that trailing material as an ending that will not end and file `check_strategy_tie_in.md` §1 against the beat's own framing (*"talk, compare, no prompts"*). Do not move the beat later, and do not soften its framing to acknowledge what follows — the conversation needs a named slot, and the name is what makes a trainer stop for it. Future judges should not re-flag.
-
-**Quality:** compendium-audited 2026-09-06 (writing@5a52c2b9 story@94fcca2d technical@94fcca2d behavior@1c765f2 pedagogy@4e0370bc strategy@54577f39 slides@5a52c2b9)
-- judges @5a52c2b9: writing PASS (1 finding see instances/ae101--module--spot-gaps-build-the-loop.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @fb797e3b: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 
 **Leap test** (per `check_pedagogy.md` rule 45; M6 is an arc-mood exercise so the test names artefact + use, not activity):
 - The student has read their own Claude Code history back across the stack and holds a set of mermaid diagrams of the work they repeat. The dominant gap now sits inside a recognised work-shape, not floating alone.

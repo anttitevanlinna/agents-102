@@ -86,6 +86,9 @@ A memory that sits there is a document. A memory that gets read by an agent on a
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-08-25 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **Frameworks riffed on:**
 - Toyota Kata — the morning agent is a daily PDSA beat on the challenge. Running it, observing, adjusting — kata made file-based.
 - Drucker-adjacent knowledge-work routines — attaches a file-based system to the morning routine participants already have.
@@ -111,8 +114,5 @@ A memory that sits there is a document. A memory that gets read by an agent on a
 
 **Capability check owed:**
 - Verify via `claude-code-guide` that a scheduled local task can reliably write HTML files to an arbitrary path inside the working directory (nothing sandboxed about `module-2/morning-agent/latest.html`). Also verify that `Run now` opens a session with full working-directory context including the root `CLAUDE.md`. Both assumed throughout Phase 4; neither should be left to training-day discovery.
-
-**Quality:** compendium-audited 2026-08-25 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **View summary:** You put a scheduled agent in front of the memory you built, so it reads it every morning and reports something useful before coffee. One glance a day for a week. The artifact is a running loop, plus a style file every later agent inherits.

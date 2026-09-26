@@ -90,6 +90,9 @@ Ask Claude whether this ADR rides into future sessions automatically.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-06 (writing@08946dd8 story@324b81d7 technical@324b81d7 behavior@64d17eea pedagogy@43e6cae1 strategy@324b81d7 slides@9edae2ef)
+- judges @64d17eea: writing PASS (2 findings see instances/ae101--exercise--threat-model-with-stride.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "It will have more entries than you want to deal with." + "You are picking a single threat worth hardening against." (restatements); "You save it as the ADR next." (Phase-3 header carries it); Phase-3's "It reads like one engineer explaining a call to another, not a compliance checkbox." (verbatim-adjacent dup of the read-the-ADR slide, which keeps the line); worktree-inference bullet condensed 6→4 sentences (the M3=side-quest inference stated once, `pwd` + reasoned-from-conversation kept); "Not everything survived to disk."; closer's "The ADR is in the repo. Your CISO has something to read." (CISO landed in Phase 3). Do not restore.
 
 **View summary:** You run STRIDE across the mapped surface, reject most threats with reasons, and choose one hardening decision worth recording. The resulting architecture decision record turns a broad threat scan into one defensible engineering choice your team can inspect.
@@ -105,9 +108,6 @@ Ask Claude whether this ADR rides into future sessions automatically.
 - **Source:** design refined 2026-05-21. Skill files at `content/skills/security-tools/`. Stunt mechanics, the don't-spoil-it framing and the if-it-doesn't-fire rescue are canonical in the trainer handbook (trainer-modules.md, M3 tab, *The `security-tools` surprise*); this block is the curriculum-side record.
 
 **Save-then-diff (2026-08-26):** the ADR beat reports after the write — `threat-model-with-stride-3` saves to the path, then shows the diff (`check_prompts.md §21` post-action reporting). The body bullet and lead-in describe that order; do not add a pre-save gate to the prompt.
-
-**Quality:** compendium-audited 2026-09-06 (writing@08946dd8 story@324b81d7 technical@324b81d7 behavior@64d17eea pedagogy@43e6cae1 strategy@324b81d7 slides@9edae2ef)
-- judges @64d17eea: writing PASS (2 findings see instances/ae101--exercise--threat-model-with-stride.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate

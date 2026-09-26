@@ -51,6 +51,9 @@ Three to five lines, plain language, the things you would not want a generic pol
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **Time:** 40 minutes total. 10 on personal skills, 20 on the security shift, 5 on the five-lines prep, 5 on the "borrowed expertise" note.
 
 **Frameworks riffed on:**
@@ -84,6 +87,3 @@ Three to five lines, plain language, the things you would not want a generic pol
 **Deferred per student-facing-first rule:**
 - Facilitator notes: Module 4 opening Connections can start with *"What is one expertise you would want your agent to borrow?"* as a warm entry into the personal-skills frame.
 - Variant note: for the Mid-Management training, Reading 2 leans harder on the layered framing and lighter on the named attack classes — the mental-model shift is what matters, not the class-by-class enumeration.
-
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

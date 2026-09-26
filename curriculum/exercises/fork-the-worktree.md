@@ -42,6 +42,9 @@ Ask Claude to fork the worktree and copy your gitignored files across.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-06 (writing@874f921c story@874f921c technical@874f921c behavior@64d17eea pedagogy@1abb84c6 strategy@874f921c slides@874f921c)
+- judges @64d17eea: writing PASS (4 findings see instances/ae101--exercise--fork-the-worktree.writing.json), story PASS (verify-refuted), technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS (verify-refuted), slides PASS
+
 **View summary:** You fork a sibling git worktree from the commit your un-packaged run started at, copy the gitignored rules and observations across by prompt, and check both landed, so the packaged re-send changes one variable rather than two.
 
 **The lead-in mirrors the fence's artifact clause, not its opening one (`check_prompts.md` §38).** *Ask Claude to fork the worktree and copy your gitignored files across* shares verb and noun-phrase with *"Spin up a git worktree at that commit"* and *"Then copy the gitignored personal files into the worktree"* — so body and fence do not read as two drafts, which is the harm the rule guards. The fence opens on instrumental setup (*Read `./task.md`*, branch verification, SHA recovery); a lead-in pointed there would headline the means over the end in the one line the student reads before pasting. Judges should not re-file §38 here.
@@ -59,6 +62,3 @@ Ask Claude to fork the worktree and copy your gitignored files across.
 **Placement:** immediately before `[Exercise: Diagnose and re-send]`. It must stay there — the diagnosis session opens *inside* the worktree this exercise creates.
 
 **Phase 1 opens with the moved-in rationale (2026-08-25, Antti-directed).** The module file's `## Set up the worktree` section folded in as the phase's first two bullets: why the work runs in the worktree, and why the gitignored files need the copy (runtime-fork flags intact: `module:spot-gaps-build-the-loop` gates both the "and Module 4" clause and the Module 6 merge-back sentence). The module body's "Before the exercise session, fork the un-packaged session's starting SHA" setup line was dropped as duplicating this file's intro. Do not restore the section to the module body.
-
-**Quality:** compendium-audited 2026-09-06 (writing@874f921c story@874f921c technical@874f921c behavior@64d17eea pedagogy@1abb84c6 strategy@874f921c slides@874f921c)
-- judges @64d17eea: writing PASS (4 findings see instances/ae101--exercise--fork-the-worktree.writing.json), story PASS (verify-refuted), technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS (verify-refuted), slides PASS

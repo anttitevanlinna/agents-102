@@ -176,6 +176,9 @@ Rule of thumb: if the current conversation is producing confused output, start a
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing PASS, story N/A (no-mood-or-sim-surface), technical grandfathered, behavior N/A (no-student-prompt-blocks), pedagogy PASS, strategy PASS, slides PASS
+
 ## Maintainer audit — Cowork architecture (verified 2026-04-25)
 
 End-to-end practitioner test. Cut for students by the renderer; here for trainer / future-author reference.
@@ -227,6 +230,3 @@ AE101 and Agents 101 are separate trainings with separate audiences and separate
 ### Capability-check trust note
 
 A capability-check agent told us early in the audit that Cowork was a separate codebase from Claude Code. The agent was wrong; the official docs say same architecture. Practitioner observation + direct WebFetch sided against the agent. Pattern matches platform compendium § 4: *"Trust-but-verify the capability-check agent too — WebFetch the URL yourself when the assertion is load-bearing; agents can hallucinate credible-sounding official answers."*
-
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story N/A (no-mood-or-sim-surface), technical grandfathered, behavior N/A (no-student-prompt-blocks), pedagogy PASS, strategy PASS, slides PASS

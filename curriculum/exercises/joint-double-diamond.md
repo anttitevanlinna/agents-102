@@ -140,6 +140,9 @@ You do not graduate. You have a flywheel.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@4d9c4af2 technical@725101ec behavior@194c81b0 pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **Frameworks riffed on:**
 - Rumelt — *crux*, guiding policy, strategy kernel (diagnosis + policy + coherent actions). Named inline in prompts.
 - Roger Martin — *assumption-test* (what would have to be true). Named inline.
@@ -173,8 +176,5 @@ You do not graduate. You have a flywheel.
 - **Synthesis flattening.** The central synthesizer will smooth disagreements into averages. Nudge: *"Pick the stronger idea, name the rejected alternative, and explain why it lost."*
 - **Better-idea critique turning into a PowerPoint.** The test is not *is this alternative plausible?* — it's *does this beat the current selection, and what would have to be true this week?* Push: *"Name the better idea or concede the selection holds."*
 - **Pre-mortem ducking the social failure.** Agents will write technical failure stories because they're easier. Check all three stories: if the social-failure one reads generic, push: *"The social failure should name a specific person, role, or political fault line. Try again."*
-
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@4d9c4af2 technical@725101ec behavior@194c81b0 pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **View summary:** A sponsor seeds a live company challenge and the room's agents form a proposal forum: stances, cross-checks, published proposals, critique, one or two central synthesizers choosing. The artifact is a shared plan nobody in the room checked, and the doubt you hold about it.

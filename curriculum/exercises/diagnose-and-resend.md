@@ -143,6 +143,9 @@ Your `CLAUDE.local.md` and `observations/` have been building in the worktree si
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-06 (writing@874f921c story@54577f39 behavior@64d17eea pedagogy@874f921c strategy@874f921c slides@54577f39)
+- judges @64d17eea: writing PASS (1 finding see instances/ae101--exercise--diagnose-and-resend.writing.json), story PASS, technical REVISE (1/2 see instances/ae101--exercise--diagnose-and-resend.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **View summary:** You read the un-packaged run through three failure lenses, build the checks and durable task artifacts that would have caught its misses, then re-send the same work. The contrast makes packaging visible on your own code rather than as advice.
 
 **`ae101-m5-rerun-packaged` takes no progress-streaming clause — maintainer call 2026-09-05 (Antti).** `check_prompts.md §43` names walk-away send-offs as a trigger and this fence says *"I'm walking away"*, so the mechanical read fires. It is wrong here: the run is unattended by design. Nobody is at the machine to be told, and the not-knowing is the teaching beat — the student reads the return afterward, which is the whole move M5 exists to build. Narration would pre-empt the read and buy nothing. §43 now carries the carve-out (*unattended by design*); it scores N/A on this prompt. Do not add an as-you-go clause, and do not route progress into `RUN-NOTES.md`, whose frontmatter is `conditional: agent-got-stuck` for a separate recorded reason.
@@ -154,9 +157,6 @@ Your `CLAUDE.local.md` and `observations/` have been building in the worktree si
 **The M4 return is never framed as a failed run (Antti 2026-08-27, training run).** M4 has no failed run: the un-packaged send-off is designed to underdeliver, and students arrive with a return that partly worked. The Phase 1 header and the `What you do` line say "the un-packaged run", matching the bullet under the header and the module's own vocabulary. "Failure" names the failure *modes* inside the run, not the run.
 
 **Emphasis:** Bold is limited to title-page labels, widget chrome, the Phase 3 verifier-shape menu handles (**LLM judge** / **Deterministic shell-hook** / **Ralph re-feed**), the two Phase 4 callout handles (stop-gate + timebox), and the two definitional handles on *The reference and plan.md* (**Reference** / **plan.md**). All other body prose stays unbolded.
-
-**Quality:** compendium-audited 2026-09-06 (writing@874f921c story@54577f39 behavior@64d17eea pedagogy@874f921c strategy@874f921c slides@54577f39)
-- judges @64d17eea: writing PASS (1 finding see instances/ae101--exercise--diagnose-and-resend.writing.json), story PASS, technical REVISE (1/2 see instances/ae101--exercise--diagnose-and-resend.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Word count:** ~760 words body.
 

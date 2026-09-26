@@ -61,6 +61,9 @@ If the agent stalls, ask it to continue. The nudge reads as encouragement and la
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-06 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@64d17eea pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
+- judges @64d17eea: writing PASS (3 findings see instances/ae101--exercise--set-the-markers-send-it-off.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+
 **View summary:** You pin the two markers the next module returns to, the session transcript path and a starting-point commit on a throwaway branch, then paste the send-off prompt and step away while the agent works the task alone.
 
 **Extracted from `run-the-first-experiment.md` § *Send the task off*, 2026-08-12, Antti-directed** (*"this passage actually should be a separate exercise. And split to few slides"*). The section ran as unbroken module prose carrying four prompts, which meant the Slides layout gave the whole send-off one enormous chunk and the beats had no headings to land on. Body wording is near-verbatim and the four `{{prompt:ae101-m4-*}}` refs are byte-intact. The transcript mechanism stays at one bullet — the fuller description belongs to the reference page, not here. No async-permission line in this file, and none belongs here: the send-off runs in the same session the student has been in all module, and `training-architecture.md:13` puts async cloud agents out of scope. **The strategy doc's row #11 is about a different promise** — permission to run two sessions at once, not permission to walk away from one — and M4 declines it, per the strategy doc's own row. Do not add a line on the row's authority.
@@ -95,6 +98,3 @@ If the agent stalls, ask it to continue. The nudge reads as encouragement and la
 **Lean-intro trim (2026-08-25, Antti-approved):** Phase 1's stance bullet (*"Your rules files, memory, ADRs and skills are what they are… shows up when you read what comes back."*) cut — `test-and-learn` installed that stance a lecture earlier; this slide's job is the two markers. Do not restore.
 
 **The `What you build:` list stays as three objects (2026-09-08, under the `fix-tests-first` ruling).** The §52c sweep proposed *"markers a later session uses to recover this experiment from disk."* Withdrawn without being presented: it collapses a branch, a starting commit and a transcript path into one collective noun, which is the move Antti declined on the sibling file the same day. The line already does what §52c's enablement clause asks — *"the next session can find"* is what the three markers are FOR, stated inside the slot. Do not re-file, and do not collapse the list.
-
-**Quality:** compendium-audited 2026-09-06 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@64d17eea pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
-- judges @64d17eea: writing PASS (3 findings see instances/ae101--exercise--set-the-markers-send-it-off.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS

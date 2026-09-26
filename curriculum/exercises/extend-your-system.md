@@ -69,6 +69,9 @@ You just ran the meta-tool move at the heart of **Recipe 8**: agent generates ag
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **Frameworks riffed on:**
 - Agents building agents — the meta-tool thesis. The coding agent is the first platform that compounds: each agent it builds raises the capability for the next.
 - Claude Code as curriculum-shaped-building — the same tool students have used for seven modules now writes the next agent without leaving the surface.
@@ -86,8 +89,5 @@ You just ran the meta-tool move at the heart of **Recipe 8**: agent generates ag
 - **Watch for 'demo agent' trap.** Students will reach for the impressive extension (multi-step, multi-tool, spectacular). Nudge them toward the mundane one they'd actually use Tuesday.
 - **The compound beat.** End-of-exercise, ask aloud (in-room) or surface via Teacher Claude (self-study): *"How long did it take to describe vs. build? What would the second agent take?"* The answer makes the thesis land.
 - **Agent-file rules inheritance.** Students sometimes start the new agent from scratch. Nudge: *"You already have agents whose rules work. Inherit them. Add what's new. Don't rediscover."*
-
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **View summary:** Until now you built agents by hand. Now you describe one and the coding agent builds it, in twenty-five minutes, against a gap you named on Monday. The artifact is a new working agent in your system, built while the builder role left your desk.

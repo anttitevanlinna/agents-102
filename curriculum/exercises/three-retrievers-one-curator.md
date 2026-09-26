@@ -78,10 +78,10 @@ You just ran **Recipe 3**'s parallel-retrieval shape: three retrievers fanning o
 
 <!-- maintainer -->
 
-- **Atomic — no phase markers.** Four sessions run concurrently on one retrieval-and-curate window; the seams here are between agents, not across time. Line 3 is authored, not generated.
-
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@4d9c4af2 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
+- **Atomic — no phase markers.** Four sessions run concurrently on one retrieval-and-curate window; the seams here are between agents, not across time. Line 3 is authored, not generated.
 
 **Role in Module 3:** Second exercise (after `name-your-crux`). Produces curated `memory/` updates + raw `sources/` retrievals; sets up the artifact stack the next exercise (`three-minds-one-synthesis`) reasons against.
 

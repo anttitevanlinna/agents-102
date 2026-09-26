@@ -63,6 +63,9 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@5fc7188 pedagogy@ab36a5e6 strategy@5fc7188 slides@4d9c4af2)
+- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **Time:** 40 minutes. 10 per case, 15 for the mechanisms, 5 for the two sentences.
 
 **No answer reveals in body:** the missing check stays unnamed in both case sections by design — naming it is the take-home, and the question at the top of the file arms the read. Both cases converge on *verification before submission*; that answer lives here for the trainer, never in body. Do not restore the bold "The missing check:" reveals.
@@ -122,6 +125,3 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 **Deferred per student-facing-first rule:**
 - Variant note: Mid-Management variant can add a closing paragraph — "if your organisation has AI policy but no verification discipline, which one actually catches the failure?" — pushing the ownership question. Skipped for Agents 101.
 - Facilitator briefing deferred.
-
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@5fc7188 pedagogy@ab36a5e6 strategy@5fc7188 slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

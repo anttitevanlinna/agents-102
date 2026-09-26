@@ -32,6 +32,9 @@ The agent is part of the debugging loop too.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **§6 carve-out, the answer must be theirs (checked 2026-08-20).** Logged in `pre-cohort-todos.md` as a lecture prompt owing the trainer-demo sweep. It is not: it is the recovery move for the multi-agent system the student just watched fail, and the beat ends by having them write the lesson into their own `./CLAUDE.md`. A trainer demo returns the wrong machine's answer. The body now names the student's own stuck system beside the prompt, which is §6's tell. Leave it student-run.
 
 
@@ -44,6 +47,3 @@ The agent is part of the debugging loop too.
 **Strategic role:** Gives students a recovery move after first multi-agent coordination. The module's lesson is not "multi-agent works"; it is "multi-agent systems fail at seams you can inspect and improve."
 
 **Voice target:** numbered practical tips. No grand theory.
-
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

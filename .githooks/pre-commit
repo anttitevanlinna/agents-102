@@ -31,6 +31,16 @@ fi
 # matches the README carve-out in .claude/hooks/prompt-edit-gate.sh so the
 # two hook layers stay symmetric.
 staged=$(git diff --cached --name-only -- 'curriculum/prompts/**' ':(exclude)curriculum/prompts/README.md' 2>/dev/null || true)
+
+# Archiving: a word-for-word move into curriculum/prompts/archive/ changes no
+# text a student pastes. The registry stops loading the key, and a page still
+# using it fails the build, so the move itself needs no y/N. Anything else
+# about the file (a delete, an edit on the way) stays gated.
+archived=$(git diff --cached -M100% --name-status -- 'curriculum/prompts/**' 2>/dev/null \
+  | awk -F'\t' '$1 == "R100" && $3 ~ /^curriculum\/prompts\/archive\// { print $2; print $3 }')
+if [ -n "$archived" ]; then
+    staged=$(printf '%s\n' "$staged" | grep -vxF -f <(printf '%s\n' "$archived") || true)
+fi
 if [ -z "$staged" ]; then
     exit 0
 fi

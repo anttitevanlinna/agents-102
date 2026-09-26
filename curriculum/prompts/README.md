@@ -156,3 +156,16 @@ SKIP_PROMPT_GATE=1 claude
 ```
 
 Use sparingly — the gate exists because prompt edits ship to every student.
+
+## Retiring a prompt: archive, never delete
+
+A prompt no page uses anymore is archived, word for word:
+
+```
+git mv curriculum/prompts/<key>.md curriculum/prompts/archive/<key>.md
+node scripts/compile-prompts.js      # site/prompts.json drops the key
+node scripts/lint-prompts.js         # fails if a page still says {{prompt:<key>}}
+git commit -m "..." --only -- curriculum/prompts/<key>.md curriculum/prompts/archive/<key>.md site/prompts.json
+```
+
+Every registry reader loads only `curriculum/prompts/*.md`, so an archived key is gone from builds, tarballs and lints. The pre-commit hook passes a move that keeps the text identical (`R100`) without a `y/N`: no text a student pastes changes, and a page still using the key fails the build. A move that also edits the text, or a plain delete, is gated like any other prompt change. To bring one back, `git mv` it out of `archive/`; that is an addition, so the `y/N` applies. Tested by `.githooks/pre-commit.test.sh`.

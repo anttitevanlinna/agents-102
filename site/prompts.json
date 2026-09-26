@@ -3050,30 +3050,6 @@
     "requires": [],
     "produces": []
   },
-  "self-consistency-after-scoreboard-1": {
-    "key": "self-consistency-after-scoreboard-1",
-    "dest": "Claude Code",
-    "context": "",
-    "runtime": "any",
-    "origin": "lectures/self-consistency-after-scoreboard",
-    "text": "Spawn one subagent to generate a second briefing from the same evidence surface.\n\nThe subagent reads:\n- `./crux.md`\n- `module-5/evidence-roster.md`\n- the rostered evidence files named in `module-5/evidence-roster.md`\n\nThe subagent must NOT read:\n- `module-5/briefing.md`\n- `module-5/claim-pool.md`\n- `module-5/adjudicated-claims.md`\n- `module-5/scoreboard.md`\n- anything in `module-5/detectors/`\n\nWrite a one-page briefing on the same challenge to `module-5/briefing-second-run.md`.\n\nWhen the subagent finishes, do not summarize the briefing in chat. Only confirm that `module-5/briefing-second-run.md` exists."
-  },
-  "self-consistency-after-scoreboard-2": {
-    "key": "self-consistency-after-scoreboard-2",
-    "dest": "Claude Code",
-    "context": "",
-    "runtime": "any",
-    "origin": "lectures/self-consistency-after-scoreboard",
-    "text": "Compare the first and second briefing.\n\nRead:\n- `module-5/briefing.md`\n- `module-5/briefing-second-run.md`\n- `module-5/claim-pool.md`\n- `module-5/adjudicated-claims.md`\n\nShow me the comparison in chat with these sections:\n\n1. Stable claims: claims or recommendations that appear in both briefings and are supported by the adjudicated claims.\n2. Drifted claims: same topic, but different number, named entity, recommendation, causal explanation, or framing.\n3. First-run-only claims: claims from the first briefing that disappeared in the second.\n4. Second-run-only claims: claims from the second briefing that did not appear in the first.\n5. Self-consistency issues: claims that are both unsupported or partly grounded AND unstable across runs.\n\nEnd with three lines:\n- What self-consistency caught that the groundedness detectors did not.\n- What self-consistency cannot prove.\n- Whether the winning groundedness judge should change. Two runs is too few to chase noise; only call for a change if you can name a specific failure class the current judge missed."
-  },
-  "self-consistency-after-scoreboard-3": {
-    "key": "self-consistency-after-scoreboard-3",
-    "dest": "Claude Code",
-    "context": "",
-    "runtime": "any",
-    "origin": "lectures/self-consistency-after-scoreboard",
-    "text": "I have output I want to quality-control against fabrication. Build me a judge prompt that checks for these failure modes:\n\n- Source triangulation: does every specific claim appear in at least one evidence file?\n- Entailment: does the output say more than the evidence supports?\n- Citation integrity: when a citation is made, does the evidence file actually contain the claim?\n- Counter-evidence search: actively look for sources that contradict each claim, not just ones that support.\n\nPick at least one of the four to drop or rewrite for the failure modes specific to my output — don't keep the list as-is.\n\nAsk me what output I'm checking, where my evidence lives, and what short filename to use under `judges/`. Ask one question at a time, wait for my answer, then ask the next; do not show me the question list. Once I've answered all three, write the judge as a markdown file at that path. Short heading, one paragraph naming what it checks and why, then the prompt itself (the thing I'd paste at Claude to run the judge). Keep it under 20 lines. End with a one-line \"Known limit:\" naming what the judge can't catch.\n\nNo preamble. First message is your first question."
-  },
   "share-your-work-1": {
     "key": "share-your-work-1",
     "dest": "Builder Claude",

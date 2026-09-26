@@ -491,7 +491,12 @@ const THEORY_HANDBOOK_JS = fs.readFileSync(
   path.join(ROOT, 'site/layouts/theory-handbook.js'), 'utf8');
 const STUDENT_HANDBOOK_PRINT_CSS = fs.readFileSync(
   path.join(ROOT, 'site/layouts/student-handbook-print.css'), 'utf8');
-const SPA_JS = fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.js'), 'utf8');
+// Prompt-anatomy popup data rides in front of the runtime that reads it, and
+// only when a prompt carries `anchors:` — otherwise no anchor exists to click.
+const ANATOMY = Object.values(PROMPT_REGISTRY).some(e => e && e.anchors && e.anchors.length)
+  ? require('./compile-anatomy.js').entries() : null;
+if (ANATOMY) fs.writeFileSync(path.join(ROOT, 'site/anatomy.json'), JSON.stringify(ANATOMY, null, 2) + '\n');
+const SPA_JS = (ANATOMY ? `window.__ANATOMY = ${JSON.stringify(ANATOMY).replace(/<\//g, '<\\/')};\n` : '') + fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.js'), 'utf8');
 // The slide viewer (Long-read ⇄ Slides). Inlined so the handbook keeps working
 // offline; inert until the reader toggles Slides.
 const SLIDES_CSS = fs.readFileSync(path.join(ROOT, 'site/layouts/slides.css'), 'utf8');

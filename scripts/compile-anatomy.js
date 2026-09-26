@@ -1,10 +1,8 @@
-#!/usr/bin/env node
-// Compile curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md
-// → site/anatomy.json. The SPA fetches the JSON on boot to populate the
-// click-popup that surfaces each entry when a student clicks an underlined
-// .prompt-anchor in a rendered prompt body. Built workbook reads the same
-// JSON at build time and inlines it as a <script>window.__ANATOMY = …</script>
-// block so offline HTMLs work without a fetch.
+// Prompt-anatomy entries from
+// curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md,
+// for the click-popup on a .prompt-anchor. build-workbook.js calls entries()
+// when any prompt carries `anchors:`, inlines `window.__ANATOMY = …` and
+// writes site/anatomy.json for the SPA.
 //
 // Source file shape:
 //   ### Move name
@@ -23,7 +21,6 @@ const { marked } = require('marked');
 
 const ROOT = path.resolve(__dirname, '..');
 const SRC = path.join(ROOT, 'curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md');
-const OUT = path.join(ROOT, 'site/anatomy.json');
 
 function slugify(heading) {
     return heading
@@ -34,11 +31,7 @@ function slugify(heading) {
         .replace(/^-|-$/g, '');
 }
 
-function compile() {
-    if (!fs.existsSync(SRC)) {
-        console.error('Source not found: ' + SRC);
-        process.exit(1);
-    }
+function entries() {
     const raw = fs.readFileSync(SRC, 'utf8');
 
     // Strip maintainer tail if present so author-only notes don't ship.
@@ -60,13 +53,7 @@ function compile() {
             html: marked.parse(entryBody)
         };
     }
-
-    fs.mkdirSync(path.dirname(OUT), { recursive: true });
-    fs.writeFileSync(OUT, JSON.stringify(out, null, 2) + '\n');
-    const count = Object.keys(out).length;
-    console.log(`Compiled ${count} anatomy entries to ${path.relative(ROOT, OUT)}`);
+    return out;
 }
 
-if (require.main === module) compile();
-
-module.exports = { compile };
+module.exports = { entries };

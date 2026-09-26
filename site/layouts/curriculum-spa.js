@@ -36,10 +36,9 @@
         .then(function (json) { FIGURE_REGISTRY = json; })
         .catch(function () { FIGURE_REGISTRY = {}; });
 
-    // Anatomy data — prompt-anatomy.md entries compiled to JSON by
-    // scripts/compile-anatomy.js. Populates window.__ANATOMY so the runtime's
-    // click-popup on .prompt-anchor can surface entries by slug. Built workbook
-    // inlines this at build time; SPA fetches on boot. Failure mode is silent:
+    // Anatomy data — written to anatomy.json by build-workbook.js only when a
+    // prompt carries `anchors:`. Populates window.__ANATOMY so the runtime's
+    // click-popup on .prompt-anchor can surface entries by slug. Failure mode is silent:
     // no anatomy data → anchors still render with their dotted underline, click
     // shows nothing. Acceptable degradation for a reference-page-driven feature.
     if (!window.__ANATOMY) {

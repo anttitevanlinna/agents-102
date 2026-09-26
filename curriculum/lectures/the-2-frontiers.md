@@ -10,8 +10,8 @@ Two questions sit on your frontier. Can your system learn fast, and can it learn
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-05 (writing@fb797e3b story@289b45a3 technical@94fcca2d behavior@1c765f2 pedagogy@4e0370bc strategy@38fd462f slides@4e0370bc)
-- judges @fb797e3b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-26 (writing@fb797e3b story@289b45a3 technical@94fcca2d behavior@1c765f2 pedagogy@d4bb3e0b strategy@38fd462f slides@4e0370bc)
+- judges @d4bb3e0b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** no bold, no coined handle, no kicker (the watch-for: the frontiers stay unanswered), per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 

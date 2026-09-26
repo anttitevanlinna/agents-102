@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 
-const { isPlaceholder, stripFences, resolves, isCurriculumInclude } = require('./check-doc-paths.js');
+const { isPlaceholder, stripFences, resolves, isCurriculumInclude, isSkippedTree } = require('./check-doc-paths.js');
 const { namesIt } = require('./find-session-docs.js');
 
 test('isPlaceholder: illustrative shapes are not pointers', () => {
@@ -40,6 +40,12 @@ test('the allowlist is well-formed and every entry carries a reason', () => {
     assert.match(key, / -> /, `allow key must be "<file> -> <ref>": ${key}`);
     assert.ok(reason.trim().length > 20, `allow entry needs a real reason: ${key}`);
   }
+});
+
+test('implementation plans and specs may name future and sibling-repository paths', () => {
+  assert.equal(isSkippedTree('docs/superpowers/plans/future-build.md'), true);
+  assert.equal(isSkippedTree('docs/superpowers/specs/customer-workflow.md'), true);
+  assert.equal(isSkippedTree('docs/architecture/current-system.md'), false);
 });
 
 // Regression: a reference to `the-loop-has-a-name.md` must not register as a hit

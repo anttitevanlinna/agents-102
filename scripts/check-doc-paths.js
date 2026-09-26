@@ -26,7 +26,8 @@ const MEMORY = require('../curriculum/evals/scripts/compendium-drift.js').MEM;
 // own root, has its own review skill, and is the one public tree here. Bringing
 // it in wants a second resolution convention, not a wider glob.
 const SKIP_TREE =
-  /^docs\/archive\/|playgrounds\/|fixtures\/|^node_modules\/|^continuous-research\//;
+  /^docs\/archive\/|^docs\/superpowers\/(?:plans|specs)\/|playgrounds\/|fixtures\/|^node_modules\/|^continuous-research\//;
+const isSkippedTree = file => SKIP_TREE.test(file);
 
 const EXT = String.raw`md|js|sh|json|html|css|yaml|yml`;
 // Backticked path, or a markdown link target. Both must contain a slash to
@@ -176,7 +177,7 @@ function collect(files) {
 function trackedDocs() {
   return execSync('git ls-files "*.md"', { cwd: ROOT })
     .toString().trim().split('\n')
-    .filter((f) => f && !SKIP_TREE.test(f));
+    .filter((f) => f && !isSkippedTree(f));
 }
 
 if (require.main === module) {
@@ -192,4 +193,4 @@ if (require.main === module) {
   process.exit(1);
 }
 
-module.exports = { collect, isPlaceholder, stripFences, resolves, isCurriculumInclude };
+module.exports = { collect, isPlaceholder, stripFences, resolves, isCurriculumInclude, isSkippedTree };

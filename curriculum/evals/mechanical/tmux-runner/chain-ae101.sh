@@ -125,6 +125,8 @@ echo "[chain] chain dir: $CLAUDE_RUNNER_CHAIN_DIR  (resume with --chain-dir this
 chain_guard_skills          # ~/.claude/skills restored to this snapshot on any exit (lib/chain.sh)
 
 export CLAUDE_CMD="claude --model $MODEL --effort $EFFORT --permission-mode auto"
+source "$HERE/lib/tmux.sh"
+claude_cli_preflight "$CLAUDE_CMD" || exit 2   # before any arrange/install minutes are spent
 # Medium effort finishes turns well under an hour; 1800s caps a hung turn
 # without clipping a real one. M5's packaged send-off is the long pole.
 export CLAUDE_RUNNER_TIMEOUT="${CLAUDE_RUNNER_TIMEOUT:-1800}"

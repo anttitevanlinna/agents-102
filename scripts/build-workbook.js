@@ -408,7 +408,7 @@ function buildBody(trainingKey, customer, contentUrl) {
 
   const cover = `
 <header class="workbook-cover" id="top">
-  <p class="eyebrow">${CR.esc(customer)} workbook</p>
+  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(customer)} workbook</p>
   <h1 class="cover-title">${CR.esc(t.label)}</h1>
   <p class="lede">${CR.esc(plainDisplayText(t.lede))}</p>
 </header>
@@ -499,6 +499,22 @@ const SPA_JS = fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.js'), 'u
 // offline; inert until the reader toggles Slides.
 const SLIDES_CSS = fs.readFileSync(path.join(ROOT, 'site/layouts/slides.css'), 'utf8');
 const SLIDES_JS = fs.readFileSync(path.join(ROOT, 'site/layouts/slides.js'), 'utf8');
+
+// Customer branding (AGENTS_BRAND_DIR): a folder the customer owns, holding
+// brand.css (appended after every stylesheet, so it wins the cascade) and/or
+// logo.svg | logo.png (inlined on the covers). Unset → no trace in the output.
+const BRAND = (() => {
+  const dir = process.env.AGENTS_BRAND_DIR
+  if (!dir) return { style: '', logo: () => '' }
+  const read = f => { try { return fs.readFileSync(path.join(dir, f)) } catch { return null } }
+  const css = read('brand.css')
+  const svg = read('logo.svg'), png = svg ? null : read('logo.png')
+  const src = svg ? `data:image/svg+xml;base64,${svg.toString('base64')}` : png ? `data:image/png;base64,${png.toString('base64')}` : ''
+  return {
+    style: css ? `\n<style data-brand>${css.toString('utf8')}</style>` : '',
+    logo: alt => src ? `<img class="brand-logo" src="${src}" alt="${CR.esc(alt)}">\n  ` : '',
+  }
+})()
 
 // Workbook-only init — runs the shared CurriculumRuntime against document.body
 // and adds the active-section IntersectionObserver. The SPA runs the runtime
@@ -632,7 +648,7 @@ function buildTrainerGuide(customer, trainingKey) {
 
   const cover = `
 <header class="workbook-cover" id="top">
-  <p class="eyebrow">${CR.esc(customer)} workbook</p>
+  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(customer)} workbook</p>
   <h1 class="cover-title">Trainer delivery guide</h1>
 </header>
 `;
@@ -666,7 +682,7 @@ function trainerGuideTemplate(customer, content) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trainer delivery guide — ${CR.esc(customer)}</title>
 <style>${SPA_CSS}
-${TRAINER_WIDTH_CSS}</style>
+${TRAINER_WIDTH_CSS}</style>${BRAND.style}
 </head>
 <body class="runtime-cli workbook">
 ${content}
@@ -805,7 +821,7 @@ function buildTrainerModules(customer, trainingKey) {
 
   const cover = `
 <header class="workbook-cover" id="top">
-  <p class="eyebrow">${CR.esc(customer)} workbook</p>
+  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(customer)} workbook</p>
   <h1 class="cover-title">Per-module glance</h1>
 </header>
 `;
@@ -822,7 +838,7 @@ function trainerModulesTemplate(customer, content) {
 <title>Per-module glance — ${CR.esc(customer)}</title>
 <style>${SPA_CSS}
 ${TRAINER_WIDTH_CSS}
-${TRAINER_MODULES_TABS_CSS}</style>
+${TRAINER_MODULES_TABS_CSS}</style>${BRAND.style}
 </head>
 <body class="runtime-cli workbook">
 ${content}
@@ -1164,7 +1180,7 @@ function template(title, content, trainingKey) {
 <title>${CR.esc(title)}</title>
 <style>${SPA_CSS}</style>
 <style data-student-handbook-print>${STUDENT_HANDBOOK_PRINT_CSS}</style>
-<style>${SLIDES_CSS}</style>
+<style>${SLIDES_CSS}</style>${BRAND.style}
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook student-handbook" data-training="${trainingKey}"${deck}>
 ${content}
@@ -1409,11 +1425,12 @@ function customerIndexTemplate(customer, trainingKeys) {
     h1 { font-size: 44px; }
     .lede { font-size: 18px; }
   }
-</style>
+  .brand-logo { display: block; max-height: 56px; max-width: 240px; margin: 0 0 24px; }
+</style>${BRAND.style}
 </head>
 <body>
 <main>
-  <p class="eyebrow">${CR.esc(customer)} training hub</p>
+  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(customer)} training hub</p>
   <h1>Agents 102</h1>
   <p class="lede">Training workbooks deployed for this customer. Each program has its own workbook, plus trainer guides and downloadable payloads where needed.</p>
   <ul class="training-list">

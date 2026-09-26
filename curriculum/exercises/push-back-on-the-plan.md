@@ -108,8 +108,8 @@ Then just hit stop.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-06 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@64d17eea pedagogy@d065f8bc strategy@324b81d7 slides@324b81d7)
-- judges @64d17eea: writing PASS (1 finding see instances/ae101--exercise--push-back-on-the-plan.writing.json), story PASS, technical PASS (3 findings see instances/ae101--exercise--push-back-on-the-plan.technical.json), behavior PASS (3 findings see instances/ae101--exercise--push-back-on-the-plan.behavior.json), pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-26 (writing@324b81d7 story@f307fa46 technical@324b81d7 behavior@64d17eea pedagogy@d065f8bc strategy@324b81d7 slides@324b81d7)
+- judges @f307fa46: writing PASS (1 finding see instances/ae101--exercise--push-back-on-the-plan.writing.json), story PASS, technical PASS (3 findings see instances/ae101--exercise--push-back-on-the-plan.technical.json), behavior PASS (3 findings see instances/ae101--exercise--push-back-on-the-plan.behavior.json), pedagogy PASS, strategy PASS, slides PASS
 
 **View summary:** You take a real multi-file task into plan mode, challenge the draft twice, then start a second-pass grilling and stop it when the valuable branches have landed. The result is an approved plan shaped by two different reads, with execution deliberately left for later.
 

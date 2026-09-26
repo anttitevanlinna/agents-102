@@ -95,8 +95,8 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-06 (writing@08946dd8 story@324b81d7 behavior@64d17eea pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
-- judges @64d17eea: writing PASS (verify-refuted), story PASS, technical REVISE (1/2 see instances/ae101--exercise--map-the-access-surface.technical.json), behavior PASS (1 finding see instances/ae101--exercise--map-the-access-surface.behavior.json), pedagogy PASS (drift-recheck), strategy PASS, slides PASS (1 finding see instances/ae101--exercise--map-the-access-surface.slides.json)
+**Quality:** compendium-audited 2026-09-26 (writing@08946dd8 story@324b81d7 behavior@64d17eea pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
+- judges @f307fa46: writing PASS (verify-refuted), story PASS, technical REVISE (1/2 see instances/ae101--exercise--map-the-access-surface.technical.json), behavior PASS (1 finding see instances/ae101--exercise--map-the-access-surface.behavior.json), pedagogy PASS (drift-recheck), strategy PASS, slides PASS (1 finding see instances/ae101--exercise--map-the-access-surface.slides.json)
 
 **L51's "the two-window move Module 3 installs" stays (Antti 2026-08-30, family ruling with `open-the-side-quest.md` L53):** theory-spine recall at the moment of use, not self-narration — `check_student_facing.md` §33 judges should not re-flag either twin.
 
@@ -106,7 +106,7 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 
 **`check_prompts.md` §43 progress-streaming is deliberately absent from `map-the-access-surface-2` (adjudicated 2026-08-30, non-blocking judge TODO).** The skill run takes a few minutes and the design spends exactly that wait in the m3-quality window; an as-you-go streaming instruction would report to a window nobody is watching, and the return read is already primed in body (skip the narration, look for the saved path). Do not add a streaming line unless the design changes to keep the student in-window.
 
-**This exercise invokes its skill in-thread, and that is the design (Antti 2026-09-04).** M3 dispatches exactly one subagent, at the STRIDE pass, where six categories against every surface would flood the thread. The access-surface pass runs in-thread and the authoring exercise stays conversational, so the module teaches which jobs belong in which thread rather than merely that subagents exist. Do not add a dispatch clause here to match the module's subagent theme.
+**This exercise adds no dispatch clause, and that is the design (Antti 2026-09-04).** Both curated skills it and the STRIDE pass invoke carry `context: fork` (`content/skills/access-control-analysis/SKILL.md`, `content/skills/stride/SKILL.md`), so each pass runs in its own forked subagent whatever the prompt says. The module names the subagent only at the STRIDE pass, where six categories against every surface would flood the thread; the authoring exercise stays conversational. Do not add a dispatch clause here to match the module's subagent theme.
 
 **View summary:** You invoke a curated security skill on a real feature, then compare its access-surface map with what you know about the codebase. The saved artifact combines broad automated coverage with the codebase-specific delta only you can supply.
 

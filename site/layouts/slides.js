@@ -34,7 +34,7 @@
     { re: /^the point\b/i, label: 'Why' }
   ];
 
-  // ── exercise grammar (see the slide-demos prototype notes) ────────────────
+  // ── exercise grammar ─────────────────────────────────────────────────────
   function leadStrong(p) {
     return (p.tagName === 'P' && p.firstElementChild && p.firstElementChild.tagName === 'STRONG') ? p.firstElementChild : null;
   }

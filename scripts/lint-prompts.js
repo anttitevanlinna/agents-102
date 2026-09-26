@@ -3,8 +3,6 @@
 //   1. every {{prompt:key}} reference in curriculum/ resolves to a prompt file
 //   2. every prompt file is referenced at least once (no orphans)
 //   3. frontmatter is valid (loadRegistry already enforces shape)
-//   4. no unresolved markers leak into the rendered HTML output
-//      (checked separately by render-parity-check.sh)
 //
 // Exits 0 on success, 1 on any violation.
 

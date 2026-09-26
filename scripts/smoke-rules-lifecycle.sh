@@ -62,6 +62,6 @@ step "eval queue builds (ae101)" 'node "$S/eval-queue.js" --training ae101 --jso
 step "open cards read" 'node "$S/open-cards.js" --training ae101'
 step "class brief builds from core rules (gitignored cache)" 'b=$(node "$S/derive-class-brief.js" curriculum/evals/bench/fixtures/writing-5plant.md writing | grep -o "^curriculum/evals/body-views/[^ ]*") && grep -q "rules kept=[1-9]" <(node "$S/derive-class-brief.js" curriculum/evals/bench/fixtures/writing-5plant.md writing) && grep -q check_writing "$b"'
 step "body view derives" 'node "$S/derive-body-view.js" curriculum/evals/bench/fixtures/writing-5plant.md | grep -q body'
-step "bench scorer scores a stored run" 'node "$S/judge-bench.js" --score curriculum/evals/bench/runs/v3-both.instance.json --fixture writing-5judge'
+step "bench scorer scores a stored run" 'node "$S/judge-bench.js" --score curriculum/evals/bench/fixtures/writing-5judge.golden.instance.json --fixture writing-5judge'
 
 echo "smoke-rules-lifecycle: $pass passed"

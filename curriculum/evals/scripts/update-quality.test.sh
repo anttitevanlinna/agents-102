@@ -505,6 +505,52 @@ assert_grep "$VIEWD/ae101--t30.writing.prefill.json" "$new30" 'T30 matching side
 assert_grep "$VIEWD/ae101--t30.story.prefill.json" "$stale30" 'T30 a stale sidecar stays stale'
 unset QUALITY_BODY_VIEWS_DIR
 
+# T31–T35 — a story/behavior verdict stamps only when its trace is bound to the
+# body the judge read. The Acme rerun stamped PASS while the story judge had
+# regenerated its persona trace only in memory (tracked file left stale), and
+# /eval-fire stamps here directly, so nothing bound the behavior trace either.
+# The judge persists its trace, then bind-trace.js writes the file's hash into
+# it; a trace still on another body means it was never persisted for this read.
+INST31="$TMP/inst31"; SIM31="$TMP/sim31"; mkdir -p "$INST31" "$SIM31"
+export QUALITY_INSTANCES_DIR="$INST31" QUALITY_SIM_DIR="$SIM31"
+mkdir -p "$TMP/curriculum/lectures"
+F31="$TMP/curriculum/lectures/t31.md"
+printf '# L\n\nBody.\n\n<!-- maintainer -->\n' > "$F31"
+sha31=$(LC_ALL=C shasum -a 256 "$F31" | awk '{print $1}')
+old31=$(printf old | LC_ALL=C shasum -a 256 | awk '{print $1}')
+printf '{"class":"story","body_sha":"%s","trace_status":"regenerated"}\n' "$sha31" > "$INST31/ae101--lecture--t31.story.json"
+printf '{"content_sha":"%s","personas":[]}\n' "$old31" > "$SIM31/ae101--lecture--t31.persona.json"
+rc=$(run "$F31" --story PASS)
+assert_rc "$rc" 1 'T31 a story PASS whose trace is still on another body is refused'
+assert_no_grep "$F31" '**Quality:**' 'T31 refused stamp wrote nothing'
+
+node "$HERE/bind-trace.js" "$SIM31/ae101--lecture--t31.persona.json" "$F31" >/dev/null 2>&1
+rc=$(run "$F31" --story PASS)
+assert_rc "$rc" 0 'T32 after bind-trace the story stamp goes through'
+new31=$(LC_ALL=C shasum -a 256 "$F31" | awk '{print $1}')
+assert_grep "$SIM31/ae101--lecture--t31.persona.json" "$new31" 'T32 the bound trace follows the stamp (fresh after it)'
+
+F33="$TMP/curriculum/lectures/t33.md"
+printf '# L\n\nNo trace.\n\n<!-- maintainer -->\n' > "$F33"
+sha33=$(LC_ALL=C shasum -a 256 "$F33" | awk '{print $1}')
+printf '{"class":"story","body_sha":"%s"}\n' "$sha33" > "$INST31/ae101--lecture--t33.story.json"
+rc=$(run "$F33" --story PASS)
+assert_rc "$rc" 1 'T33 a story verdict with no trace at all is refused'
+
+F34="$TMP/curriculum/lectures/t34.md"
+printf '# L\n\nNo prompts here.\n\n<!-- maintainer -->\n' > "$F34"
+sha34=$(LC_ALL=C shasum -a 256 "$F34" | awk '{print $1}')
+printf '{"class":"behavior","verdict":"N/A","body_sha":"%s","trace_status":"no_prompts"}\n' "$sha34" > "$INST31/ae101--lecture--t34.behavior.json"
+rc=$(run "$F34" --behavior 'na:no prompt blocks')
+assert_rc "$rc" 0 'T34 a behavior N/A on a prompt-less file needs no trace'
+
+F35="$TMP/curriculum/lectures/t35.md"
+printf '# L\n\nLegacy.\n\n<!-- maintainer -->\n' > "$F35"
+printf '{"class":"story"}\n' > "$INST31/ae101--lecture--t35.story.json"
+rc=$(run "$F35" --story PASS)
+assert_rc "$rc" 0 'T35 a pre-guard instance (no body_sha) stamps as before'
+unset QUALITY_INSTANCES_DIR QUALITY_SIM_DIR
+
 echo "──────────────────────────────"
 echo "update-quality.test.sh: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]

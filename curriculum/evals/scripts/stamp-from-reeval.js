@@ -211,24 +211,21 @@ function groupByFile(results, repo) {
 }
 
 // A sim trace (story → persona, behavior → behavior) is evidence about the body
-// its judge read, so it carries that body's hash. The judge does not set it:
-// left to the model, one wrote a hash that was not the file's and another,
-// reusing every cached entry, never rewrote it. Binding here, before
-// update-quality.sh runs, lets that script advance the trace past its own
-// Quality-line write the same way it advances the instance.
+// its judge read, so it carries that body's hash. The judge binds it after
+// persisting (bind-trace.js computes the hash; models writing it by hand wrote
+// hashes that were not the file's). This used to bind here instead, which marked
+// a trace fresh even when the judge regenerated it only in memory and left the
+// tracked file stale. So the stamper only checks, and never writes a trace: an
+// unbound story/behavior verdict is skipped, like drift. update-quality.sh
+// refuses the same case for callers that stamp without this script.
 const TRACE_SUFFIX = { story: 'persona', behavior: 'behavior' }
-function bindTraces(rows, simDir) {
-  let bound = 0
-  for (const r of rows) {
-    const suffix = TRACE_SUFFIX[r.cls]
-    if (!suffix || !r.instanceSlug || !/^[0-9a-f]{64}$/.test(r.bodySha || '')) continue
-    const trace = path.join(simDir, `${r.instanceSlug}.${suffix}.json`)
-    if (!fs.existsSync(trace)) continue
-    const text = fs.readFileSync(trace, 'utf8')
-    const next = text.replace(/("content_sha"\s*:\s*")[^"]*(")/, `$1${r.bodySha}$2`)
-    if (next !== text) { fs.writeFileSync(trace, next); bound++ }
-  }
-  return bound
+function traceBound(r, simDir) {
+  const suffix = TRACE_SUFFIX[r.cls]
+  if (!suffix || !/^[0-9a-f]{64}$/.test(r.bodySha || '')) return true
+  const trace = path.join(simDir, `${r.instanceSlug}.${suffix}.json`)
+  if (!fs.existsSync(trace)) return r.cls === 'behavior' && r.verdict === 'N/A'
+  const m = fs.readFileSync(trace, 'utf8').match(/"content_sha"\s*:\s*"([^"]*)"/)
+  return !!m && m[1] === r.bodySha
 }
 
 // A REVISE whose findings the refuters all killed stamps PASS:verify-refuted,
@@ -289,7 +286,8 @@ function main() {
 
   const gitDiff = f => execFileSync('git', ['diff', base, '--', f], { cwd: repo, encoding: 'utf8', maxBuffer: 33554432 })
 
-  let stamped = 0, skippedDrift = 0, skippedLost = 0, skippedWip = 0
+  let stamped = 0, skippedDrift = 0, skippedLost = 0, skippedWip = 0, skippedTrace = 0
+  const simDir = path.join(repo, 'curriculum/evals/sim-cache')
   for (const [file, pairs] of byFile) {
     // live multi-session repo: an uncommitted .md means another session's WIP — hands off
     const wip = execFileSync('git', ['status', '--porcelain', '--', file], { cwd: repo, encoding: 'utf8' }).trim()
@@ -298,24 +296,26 @@ function main() {
     const drift = changeTags(buildLineMeta(text), parseHunks(gitDiff(file))).tags
     const flags = []
     const skipped = []
+    const unbound = []
     for (const r of pairs) {
       if (r.verdict === 'AGENT-LOST') { skippedLost++; continue }
       if (drift.has(r.cls)) { skipped.push(r.cls); skippedDrift++; continue }
+      if (!traceBound(r, simDir)) { unbound.push(r.cls); skippedTrace++; continue }
       const state = stateFor(r, setMeta(r))
       if (state === null) { skippedLost++; continue }
       flags.push(flagName(r.cls), state)
       stamped++
     }
     if (skipped.length) process.stderr.write(`DRIFT-SKIP ${file}: ${skipped.join(' ')}\n`)
+    if (unbound.length) process.stderr.write(`TRACE-SKIP ${file}: ${unbound.join(' ')} (trace not bound to the body the judge read — persist it, run bind-trace.js, or re-fire)\n`)
     if (!flags.length) continue
     if (dry) { process.stderr.write(`DRY ${file}: ${flags.join(' ')}\n`); continue }
-    bindTraces(pairs.filter(r => !drift.has(r.cls)), path.join(repo, 'curriculum/evals/sim-cache'))
     recordRefutations(pairs.filter(r => !drift.has(r.cls)), path.join(repo, INSTANCES), new Date().toISOString().slice(0, 10))
     execFileSync('bash', ['curriculum/evals/scripts/update-quality.sh', file, ...flags], { cwd: repo, stdio: ['ignore', 'ignore', 'inherit'] })
   }
-  process.stderr.write(`\nstamped ${stamped} verdicts across ${byFile.size} files; drift-skipped ${skippedDrift}; wip-skipped ${skippedWip}; agent-lost ${skippedLost}\n`)
+  process.stderr.write(`\nstamped ${stamped} verdicts across ${byFile.size} files; drift-skipped ${skippedDrift}; trace-skipped ${skippedTrace}; wip-skipped ${skippedWip}; agent-lost ${skippedLost}\n`)
 }
 
 if (require.main === module) main()
 
-module.exports = { readResults, adaptSweepRow, stateFor, makeSlugOf, makeTodosOf, flagName, groupByFile, bindTraces, recordRefutations }
+module.exports = { readResults, adaptSweepRow, stateFor, makeSlugOf, makeTodosOf, flagName, groupByFile, traceBound, recordRefutations }

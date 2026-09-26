@@ -8,7 +8,7 @@ const assert = require('node:assert')
 const fs = require('node:fs')
 const os = require('node:os')
 const path = require('node:path')
-const { readResults, adaptSweepRow, stateFor, makeSlugOf, makeTodosOf, flagName, groupByFile, bindTraces, recordRefutations } = require('./stamp-from-reeval.js')
+const { readResults, adaptSweepRow, stateFor, makeSlugOf, makeTodosOf, flagName, groupByFile, traceBound, recordRefutations } = require('./stamp-from-reeval.js')
 
 let n = 0
 function test(name, fn) { fn(); n++; console.log(`ok ${n} - ${name}`) }
@@ -266,31 +266,26 @@ test('an unreadable instance falls back to the returned array rather than report
   assert.equal(r.todos, 1)
 })
 
-// A sim trace is evidence about the body its judge read. The judge template
-// used to set content_sha itself: a story judge wrote a hash that was not the
-// file's, and a behavior judge that reused every cached entry never rewrote it,
-// so both traces read stale the moment they were made. The stamper knows the
-// body each judge read (`body_sha`), so it binds the trace to that before
-// update-quality.sh advances both past its own Quality-line write.
-test('bindTraces sets a story/behavior trace to the body its judge read', () => {
+// A sim trace is evidence about the body its judge read. The stamper used to
+// write the judge's body_sha into the trace itself — which marked a trace fresh
+// even when the judge had regenerated it only in memory and left the tracked
+// file stale (Acme rerun, 2026-09-26). Now the judge binds its persisted trace
+// (bind-trace.js) and the stamper only checks: an unbound story/behavior
+// verdict is skipped, and the trace file is never written here.
+test('traceBound accepts only a trace the judge bound to the body it read', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bind-'))
   const read = 'a'.repeat(64)
   const write = (name, sha) => fs.writeFileSync(path.join(dir, name), JSON.stringify({ content_sha: sha, phases: [] }, null, 2) + '\n')
-  write('ae101--exercise--x.persona.json', 'f'.repeat(64))
+  write('ae101--exercise--x.persona.json', read)
   write('ae101--exercise--y.behavior.json', 'e'.repeat(64))
-  write('ae101--exercise--z.persona.json', 'd'.repeat(64))
-  const bound = bindTraces([
-    { cls: 'story', instanceSlug: 'ae101--exercise--x', bodySha: read },
-    { cls: 'behavior', instanceSlug: 'ae101--exercise--y', bodySha: read },
-    { cls: 'technical', instanceSlug: 'ae101--exercise--z', bodySha: read },
-    { cls: 'story', instanceSlug: 'ae101--exercise--missing', bodySha: read },
-    { cls: 'story', instanceSlug: 'ae101--exercise--z', bodySha: 'not-a-sha' },
-  ], dir)
-  const sha = name => JSON.parse(fs.readFileSync(path.join(dir, name), 'utf8')).content_sha
-  assert.strictEqual(sha('ae101--exercise--x.persona.json'), read)
-  assert.strictEqual(sha('ae101--exercise--y.behavior.json'), read)
-  assert.strictEqual(sha('ae101--exercise--z.persona.json'), 'd'.repeat(64), 'technical owns no trace; a malformed sha binds nothing')
-  assert.strictEqual(bound, 2)
+  const before = fs.readFileSync(path.join(dir, 'ae101--exercise--y.behavior.json'), 'utf8')
+  assert.strictEqual(traceBound({ cls: 'story', instanceSlug: 'ae101--exercise--x', bodySha: read }, dir), true)
+  assert.strictEqual(traceBound({ cls: 'behavior', instanceSlug: 'ae101--exercise--y', bodySha: read }, dir), false, 'stale trace')
+  assert.strictEqual(traceBound({ cls: 'story', instanceSlug: 'ae101--exercise--missing', bodySha: read }, dir), false, 'no trace')
+  assert.strictEqual(traceBound({ cls: 'behavior', instanceSlug: 'ae101--exercise--missing', bodySha: read, verdict: 'N/A' }, dir), true, 'prompt-less N/A owns no trace')
+  assert.strictEqual(traceBound({ cls: 'technical', instanceSlug: 'ae101--exercise--x', bodySha: read }, dir), true, 'technical owns no trace')
+  assert.strictEqual(traceBound({ cls: 'story', instanceSlug: 'ae101--exercise--x', bodySha: null }, dir), true, 'pre-guard row: update-quality decides')
+  assert.strictEqual(fs.readFileSync(path.join(dir, 'ae101--exercise--y.behavior.json'), 'utf8'), before, 'the stamper never writes a trace')
   assert.strictEqual(adaptSweepRow({ file: 'f.md', class: 'story', verdict: 'PASS', body_sha: read }).bodySha, read)
   fs.rmSync(dir, { recursive: true, force: true })
 })

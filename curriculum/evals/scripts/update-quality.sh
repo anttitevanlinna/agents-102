@@ -190,6 +190,45 @@ check_instance_sha pedagogy  "$state_pedagogy"
 check_instance_sha strategy  "$state_strategy"
 check_instance_sha slides    "$state_slides"
 
+# ---- Trace-binding guard -----------------------------------------------------
+# A story or behavior verdict rests on its sim trace, and the trace is evidence
+# only if the tracked file is the one the judge used for THIS read. A judge that
+# regenerates in memory and never persists leaves the old trace behind, and a
+# stamp over it looks fresh to everyone downstream. The judge persists, then
+# runs bind-trace.js, which writes the file's own hash into the trace. A trace
+# bound to anything but the body the instance names was not persisted for this
+# read: refuse. Pre-guard instances (no body_sha) and N/A stamps pass.
+SIM_DIR="${QUALITY_SIM_DIR:-$SCRIPT_DIR/../sim-cache}"
+check_trace_bound() { # class state trace-suffix
+  local cls="$1" st="$2" suffix="$3" matches recorded trace bound
+  [[ "$st" == keep || "$st" == na* ]] && return 0
+  [[ -n "$file_sha" && -d "$INSTANCES_DIR" ]] || return 0
+  if [[ -n "$surface" ]]; then
+    matches=( "$INSTANCES_DIR"/*--"$surface"--"$slug"."$cls".json )
+  else
+    matches=( "$INSTANCES_DIR"/*--"$slug"."$cls".json )
+  fi
+  [[ -e "${matches[0]}" && ${#matches[@]} -eq 1 ]] || return 0
+  recorded="$(sed -nE 's/.*"body_sha"[[:space:]]*:[[:space:]]*"([a-f0-9]{64})".*/\1/p' "${matches[0]}" | head -1)"
+  [[ -n "$recorded" ]] || return 0
+  grep -qE '"trace_status"[[:space:]]*:[[:space:]]*"no_prompts"' "${matches[0]}" && return 0
+  trace="$SIM_DIR/$(basename "${matches[0]}" ".$cls.json").$suffix.json"
+  if [[ ! -e "$trace" ]]; then
+    echo "error: the $cls verdict has no trace: $(basename "$trace") does not exist" >&2
+    echo "       the judge must persist its trace, then bind it — re-fire $cls" >&2
+    exit 1
+  fi
+  bound="$(sed -nE 's/.*"content_sha"[[:space:]]*:[[:space:]]*"([^"]*)".*/\1/p' "$trace" | head -1)"
+  if [[ "$bound" != "$recorded" ]]; then
+    echo "error: the $cls trace $(basename "$trace") is not bound to the body the verdict read" >&2
+    echo "       trace: ${bound:0:12}…   verdict: ${recorded:0:12}…" >&2
+    echo "       persist the regenerated trace, then: node curriculum/evals/scripts/bind-trace.js <trace> <file> — or re-fire $cls" >&2
+    exit 1
+  fi
+}
+check_trace_bound story    "$state_story"    persona
+check_trace_bound behavior "$state_behavior" behavior
+
 # ---- Read existing Quality block to support --keep ---------------------------
 keep_judges=""
 # A judges block can hold MORE than one row: the stamper itself writes one row
@@ -625,7 +664,7 @@ if [[ -n "$file_sha" && -n "$new_file_sha" && "$file_sha" != "$new_file_sha" && 
   done
   # Sim traces bind to the file the same way: one that read the pre-write file
   # still describes it. The sha match is the guard, so any number may match.
-  SIM_DIR="${QUALITY_SIM_DIR:-$SCRIPT_DIR/../sim-cache}"
+  # SIM_DIR is set with the trace-binding guard above.
   for tr in "$SIM_DIR"/*--"${surface:+$surface--}$slug".{behavior,persona}.json; do
     [[ -e "$tr" ]] || continue
     sed -i.bak -E "s/(\"content_sha\"[[:space:]]*:[[:space:]]*\")$file_sha(\")/\1$new_file_sha\2/" "$tr"

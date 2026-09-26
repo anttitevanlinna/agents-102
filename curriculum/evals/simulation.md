@@ -80,7 +80,7 @@ Claude-behaviour risks → Class B's 15-pattern catalog.
 
 Cache at `curriculum/evals/sim-cache/<instance-slug>.persona.json`. `personas` ships in two shapes and both are read: an array of persona objects, or a map keyed by persona name.
 
-`content_sha` = **sha256 of the FULL file**, maintainer block included, at the moment the trace was generated — same definition as `simulation-behavior.md`, and what `sim-freshness.js` compares against.
+`content_sha` = **sha256 of the FULL file**, maintainer block included, at the moment the trace was generated — same definition as `simulation-behavior.md`, and what `sim-freshness.js` compares against. The judge writes the trace file, then `bind-trace.js <trace> <file>` sets this field; `update-quality.sh` refuses a story/behavior stamp whose trace is not bound to the body the verdict read, then advances the bound trace past its own Quality write.
 
 Hashing the body above the `<!-- maintainer -->` fence instead is the tempting error: it is what the persona actually reads, and a whole-file hash cannot tell a body rewrite from a maintainer-block typo. It still reports as **unanchored** — *"sha matches no committed version"* — which reads as *regenerate, do not reuse* and throws away the run that just happened. Fresher evidence, discarded for being labelled in the wrong dialect. Two AE101 traces were relabelled out of that state 2026-09-02 (`the-whole-map`, `the-wizard-move` — both went straight to fresh, no regeneration needed). A third, prework's, was regenerated mid-judge and matches neither convention: it stays unanchored, because a sha nobody can reproduce is not evidence.
 

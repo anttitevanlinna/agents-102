@@ -14,7 +14,7 @@ Loaded by `curriculum/evals/judges/prompt-behavior.md`. Agent's lens. Class A (`
 
 ```json
 {
-  "content_sha": "<sha of full file at last full regen>",
+  "content_sha": "<written by bind-trace.js after the trace is persisted>",
   "generated_at": "<ISO>",
   "prompts": [
     {

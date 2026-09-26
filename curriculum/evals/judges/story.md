@@ -35,7 +35,7 @@ The sim trace is structured JSON describing how a typical persona walked through
 2. Parse the file's phase boundaries (`## Phase` headers, or for non-phased files, treat the whole body as a single phase).
 3. For each phase, compute its content SHA.
 4. Reuse cached entries whose `phase_sha` matches. Regenerate only the entries whose SHA mismatches (or whose `phase_index` is new).
-5. Write the merged trace back to `{{trace_path}}`.
+5. Write the merged trace back to `{{trace_path}}` — the file on disk, even when every entry was reused; a trace regenerated only in your context is not evidence. Then bind it to the body you read: `node curriculum/evals/scripts/bind-trace.js {{trace_path}} {{file_path}}`. That writes `content_sha`; do not compute it yourself. The stamper refuses a story or behavior verdict whose trace is not bound to the body the instance names.
 
 If the file has no `## Phase` headers (lecture, supplementary, prework), the whole body is phase 1 and SHA-keyed at file level — equivalent to per-file caching with one phase.
 
@@ -48,7 +48,7 @@ If the orchestrator passes `personas: N` (N > 1) via `/eval-fire story --persona
 Output the trace as JSON to `{{trace_path}}`:
 
 {
-  "content_sha": "<sha256 of full file>",
+  "content_sha": "<written by bind-trace.js>",
   "generated_at": "<ISO timestamp>",
   "training": "agents-101" | "ae101" | "claude-basics" | "shared",
   "persona": "<one-line persona descriptor>",

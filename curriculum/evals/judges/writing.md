@@ -61,7 +61,7 @@ These need a careful read; not just keyword grep.
 
 ## Completeness contract — one verdict per rule on the compendium you own
 
-The finished merged instance must cover every owned numbered rule. Author rows only for rules present in your class brief; `prefill-instance.js --merge` supplies the rules the brief omitted. Validate completeness after the merge, never by re-deriving omitted rules.
+The finished merged instance must cover every owned numbered rule. Author rows only for numbered rules present in your class brief, plus every explicit judge-owned criterion in your template; `prefill-instance.js --merge` supplies the numbered rules the brief omitted. Validate completeness after the merge, never by re-deriving omitted rules.
 
 `rules_evaluated` is the coverage ledger, not a highlights reel. This class is PRIMARY owner of `check_writing` + `check_student_facing`; for BOTH it MUST carry exactly one entry for EVERY numbered rule (`^\d+[a-z]?\. \*\*…\*\*`), no omission:
 - rule doesn't apply to this surface (e.g. an articles-only or reference-only rule on an exercise) → `verdict: "N/A"` + one-line reason;

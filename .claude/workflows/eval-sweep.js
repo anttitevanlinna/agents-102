@@ -270,7 +270,7 @@ node curriculum/evals/scripts/prefill-instance.js ${j.file} ${j.cls} --write
 
 Parks the shape-resolved rows in a sidecar and tells you how many are yours.
 
-**Emit rows ONLY for the rules your brief contains.** A rule the brief omitted is parked and answered; writing your own row for it is the whole cost this mechanism removes, and it is invisible afterwards because the finished ledger looks identical either way. Measured on the run that caught it: a judge re-derived 75 of 77 parked N/A rows and the merge had nothing left to splice.
+**Emit numbered-rule rows ONLY for the rules your brief contains, plus every explicit judge-owned criterion in your template.** A numbered rule the brief omitted is parked and answered; writing your own row for it is the whole cost this mechanism removes, and it is invisible afterwards because the finished ledger looks identical either way. Judge-owned criteria are not compendium rows and therefore never appear in the brief or sidecar; omitting them loses real class evidence. Measured on the run that caught the first half: a judge re-derived 75 of 77 parked N/A rows and the merge had nothing left to splice.
 
 After you write your instance, and before you reply:
 

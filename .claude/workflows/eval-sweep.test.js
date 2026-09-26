@@ -167,6 +167,8 @@ test('the default dispatch carries every mechanic the hillclimb validated', asyn
   assert.match(p, /derive-body-view\.js/, 'the precomputed geometry');
   assert.match(p, /prefill-instance\.js .* --write/, 'PREFILL: park the resolved rows');
   assert.match(p, /prefill-instance\.js .* --merge/, 'PREFILL: and splice them back, or the ledger loses them');
+  assert.match(p, /plus every explicit judge-owned criterion in your template/,
+    'template-owned checks survive brief filtering');
   assert.match(p, /in ONE turn/, 'BATCH_READ: independent reads issued together');
   assert.match(p, /only if `has_prompt_blocks` or `has_figures`/, 'LAZY_EXPAND');
   assert.match(p, /check-instance-evidence\.js/, 'the guard that replaced the raw null-grep');
@@ -311,7 +313,7 @@ test('class completeness means the merged ledger, not retyping parked rows', () 
     const template = fs.readFileSync(
       path.join(__dirname, '..', '..', 'curriculum', 'evals', 'judges', `${name}.md`), 'utf8');
     assert.match(template, /The finished merged instance must cover/, `${name} has no merged-ledger contract`);
-    assert.match(template, /Author rows only for rules present in your class brief/, `${name} still invites retyping`);
+    assert.match(template, /Author rows only for numbered rules present in your class brief, plus every explicit judge-owned criterion in your template/, `${name} drops template-owned checks or still invites retyping`);
   }
 });
 

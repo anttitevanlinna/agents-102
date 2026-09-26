@@ -47,7 +47,7 @@ Specific judgments that pedagogy owns:
 
 ## Completeness contract — one verdict per rule on the compendium you own
 
-The finished merged instance must cover every owned numbered rule. Author rows only for rules present in your class brief; `prefill-instance.js --merge` supplies the rules the brief omitted. Validate completeness after the merge, never by re-deriving omitted rules.
+The finished merged instance must cover every owned numbered rule. Author rows only for numbered rules present in your class brief, plus every explicit judge-owned criterion in your template; `prefill-instance.js --merge` supplies the numbered rules the brief omitted. Validate completeness after the merge, never by re-deriving omitted rules.
 
 `rules_evaluated` is the coverage ledger, not a highlights reel. This class is PRIMARY owner of `check_pedagogy`; it MUST carry exactly one entry for EVERY numbered rule (`^\d+[a-z]?\. \*\*…\*\*`) in it, no omission:
 - architecture rule violated → REVISE; honored → PASS;

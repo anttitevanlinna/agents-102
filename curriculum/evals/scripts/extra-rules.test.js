@@ -70,6 +70,12 @@ t('class brief without the env → no org section', () => {
     { cwd: path.resolve(__dirname, '../../..'), env, encoding: 'utf8' })
   assert.doesNotMatch(out, /Org rules/)
 })
+t('class brief keeps explicit judge-owned template criteria in scope', () => {
+  const out = execFileSync('node', [path.join(__dirname, 'derive-class-brief.js'),
+    'curriculum/evals/bench/fixtures/writing-5plant.md', 'writing', '--stdout'],
+    { cwd: path.resolve(__dirname, '../../..'), encoding: 'utf8', maxBuffer: 1 << 26 })
+  assert.match(out, /plus every explicit judge-owned criterion in your class template/)
+})
 
 fs.rmSync(T, { recursive: true, force: true })
 console.log(`extra-rules: ${n} passed`)

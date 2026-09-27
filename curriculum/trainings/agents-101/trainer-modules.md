@@ -75,7 +75,7 @@ The one trainer document for Agents 101. Read **Start here** before your first c
 
 **Big idea.** Context and guardrails turn generic generation into something the student can recognize as their own. Module 1 stays deliberately scoped inside `module-1/`.
 
-**Flow.** Opening room agreement → [Context is King](./#lectures-context-is-king) → [Paint by agent with guardrails](./#exercises-personal-site-with-guardrails) → [Iterate and learn](./#lectures-what-just-happened) → Debrief and rules retro → cold critic → Key Concepts → Module 2 handoff.
+**Room cues.** Open with the room agreement. Close on the Module 2 handoff.
 
 **Mood.** Joyful creation: *"I made this. It is me."* Check: the student talks only about making a website or about tool mechanics. Fix: compare the generic first pass with the line that became unmistakably theirs, then point at the context that caused the difference.
 
@@ -104,7 +104,7 @@ The one trainer document for Agents 101. Read **Start here** before your first c
 
 **Big idea.** A one-shot becomes a system when it has durable sources, maintained memory, operating rules, and a recurring job on the student's real challenge.
 
-**Flow.** Fresh session at the training root → connector demo → [first scheduled agent](./#lectures-first-scheduled-agent) → [name the challenge](./#exercises-name-your-challenge) → [build the challenge memory](./#exercises-build-your-challenge-memory) → [Compounding](./#lectures-compounding) → Debrief creates root `CLAUDE.md` → Key Concepts → scheduled-agent homework and M3 prework.
+**Room cues.** Fresh session at the training root, then the connector demo. Close on the scheduled-agent homework and the M3 prework.
 
 **Mood.** Satisfied compounding: *"This persists and keeps working on my real challenge."* Check: the student describes a setup exercise or a folder of notes. Fix: run the hardest open question against the memory and trace the cited answer back to the sources that now remain on disk.
 
@@ -133,7 +133,7 @@ The one trainer document for Agents 101. Read **Start here** before your first c
 
 **Big idea.** Separate agents search from different source positions and think from different stances; files make the handoffs inspectable.
 
-**Flow.** Fresh session at the training root → action boundary demo → [name the crux](./#exercises-name-your-crux) → [three retrievers](./#exercises-three-retrievers-one-curator) → [three minds](./#exercises-three-minds-one-synthesis) → [when to split](./#lectures-when-to-split-an-agent) → [debugging stuck agents](./#lectures-debugging-stuck-agents) → Debrief sharpens handoff rules → Key Concepts → M4 handoff.
+**Room cues.** Fresh session at the training root, then the action boundary demo. Close on the M4 handoff.
 
 **Mood.** Unsettled competence: *"This is useful, and I wonder whether it is right."* Check: the synthesis is presented as finished truth. Fix: ask which conflict disappeared at a seam and write the doubt into `module-3/wonder.md`; do not resolve it here.
 
@@ -162,7 +162,7 @@ The one trainer document for Agents 101. Read **Start here** before your first c
 
 **Big idea.** Safety is not visible in a polished output. The durable practice is assess, mitigate, reassess, and name the residual risk.
 
-**Flow.** Fresh session at the training root → [agent loop, raw](./#lectures-agent-loop-raw) → [discipline of risk](./#lectures-practice-of-risk) → [author the security skill](./#exercises-author-security-skill) → [audit the agent](./#exercises-audit-your-agent) → Debrief compounds operating rules → recurring-skills generalization → Key Concepts → M5 handoff.
+**Room cues.** Fresh session at the training root. The debrief generalizes the operating rules into recurring skills. Close on the M5 handoff.
 
 **Mood.** Deepened unease without blame: *"This is complex, and I now have a practice for working with the uncertainty."* Check: the room treats the audit as a compliance checklist or celebrates a clean bill of health. Fix: read one `I can't tell` row and one residual decision; the loop is the competence, not certainty.
 
@@ -191,7 +191,7 @@ The one trainer document for Agents 101. Read **Start here** before your first c
 
 **Big idea.** Grounding is a discipline. The student measures candidate detectors against their own benchmark and keeps a narrow judge whose limits are explicit.
 
-**Flow.** Fresh session at the training root → [Grounded](./#lectures-grounded) → [hallucination benchmark](./#exercises-hallucination-bakeoff) → Debrief compounds groundedness triggers → action-proposal boundary → Key Concepts → M6 handoff.
+**Room cues.** Fresh session at the training root. The debrief ends on the action-proposal boundary. Close on the M6 handoff.
 
 **Mood.** Mechanical rescue: *"This is actually fixable, and I can see which method worked."* Check: the student picks a detector by authority or treats the winner as universal. Fix: return to the scoreboard and the judge's Known limit line.
 
@@ -220,7 +220,7 @@ The one trainer document for Agents 101. Read **Start here** before your first c
 
 **Big idea.** A fixed judge turns human judgment into repeatable steering while the generation tactic learns across rounds.
 
-**Flow.** Fresh session at the training root → [evals as steering](./#lectures-evals-as-steering) → [eval loop](./#exercises-eval-loop) → [when the score stops moving](./#lectures-when-the-score-stops-moving) → [new human role in the loop](./#lectures-new-human-role-in-the-loop) → Debrief sharpens the tactic without touching the judge → Key Concepts → core close or M7 handoff.
+**Room cues.** Fresh session at the training root. The debrief sharpens the tactic without touching the judge. Close on the core close, or the M7 handoff.
 
 **Mood.** Unleashed leverage: *"The loop can keep pressure on the work while I design the yardstick and boundaries."* Check: the student celebrates score improvement without showing what changed, or the judge moved with the generator. Fix: compare the judge hash and quote one tactic rule added from one piece of judge feedback.
 
@@ -249,7 +249,7 @@ The one trainer document for Agents 101. Read **Start here** before your first c
 
 **Big idea.** The teammate's job comes first. Context, skill, output, and interface are different sharing designs with different absorption costs.
 
-**Flow.** Fresh session at the training root → interview-for-the-job framing → four sharing shapes → [interview and pick](./#exercises-share-your-work) → [design both plans](./#exercises-design-the-sharing-plan) → [test and write Monday](./#exercises-test-the-sharing-plan) → Debrief sharpens the sharing artifact → Key Concepts → real-world test before M8.
+**Room cues.** Fresh session at the training root. Close on the real-world test each student runs before M8.
 
 **Mood.** Generous impulse: *"This is working for me; could it help someone else?"* Check: the room starts with governance, deployment, or an abstract enterprise rollout. Fix: name one teammate, the job they are already hiring something to do, and the outcome that would make them switch.
 
@@ -278,7 +278,7 @@ The one trainer document for Agents 101. Read **Start here** before your first c
 
 **Big idea.** The system extends itself, then many agents use shared context to propose, cross-check, criticize, and synthesize a grounded strategy kernel.
 
-**Flow.** Separate room-scale working folder ready → agent-builds-agent demo → [extend your system](./#exercises-extend-your-system) → [Agent Proposal Forum](./#exercises-joint-double-diamond) → Debrief sharpens the load-bearing file → Key Concepts → sponsor identity line and forward close.
+**Room cues.** Have the separate room-scale working folder ready, then the agent-builds-agent demo. Close on the sponsor identity line and the forward close.
 
 **Mood.** Awe and curiosity: *"Where is this going, and what can this system build next?"* Check: the ending becomes a graduation ceremony or a tidy strategy presentation. Fix: point at the unresolved assumptions, the next experiments, and the fact that the flywheel can run again on the next problem.
 

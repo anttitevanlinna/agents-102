@@ -988,3 +988,19 @@ test('no student-facing file links a training page without its trainings/ prefix
   assert.deepEqual(bad, [],
     `links the renderer cannot rewrite (add the trainings/<training>/ prefix):\n${bad.join('\n')}`);
 });
+
+// A hand-typed content sequence on the trainer page drifts from the modules it
+// restates (M7's kept two framing beats cut on 2026-09-23). The module's own
+// links and its generated runtime map carry the sequence; the trainer page
+// keeps only room cues the modules do not hold.
+test('trainer pages carry no hand-typed Flow inventory', () => {
+  const dir = path.join(__dirname, '..', 'curriculum', 'trainings');
+  const pages = fs.readdirSync(dir)
+    .map(t => path.join(dir, t, 'trainer-modules.md'))
+    .filter(p => fs.existsSync(p));
+  assert.ok(pages.length > 0);
+  const flows = pages.flatMap(p => fs.readFileSync(p, 'utf8').split('\n')
+    .map((l, i) => /^\*\*Flow\.\*\*/.test(l) ? `${path.relative(dir, p)}:${i + 1}` : null)
+    .filter(Boolean));
+  assert.deepEqual(flows, []);
+});

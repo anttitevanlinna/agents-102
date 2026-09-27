@@ -214,45 +214,6 @@ function prefill(fileArg, cls, { instancesDir = INSTANCES } = {}) {
 
 module.exports = { prefill, shapeHash, headersOf, SHAPE_KEYS }
 
-// One-time backfill. Every instance on disk predates `shape_hash`, so a cold
-// first sweep would carry nothing and the whole saving would arrive one sweep
-// late. An instance whose recorded `body_sha` still matches the file was judged
-// against THIS byte sequence — its shape is not merely probably unchanged, it is
-// provably identical, so stamping the hash asserts nothing new. An instance
-// whose sha has moved is left cold: the shape may have changed and proving it
-// did not costs more than re-judging.
-function backfill({ apply = false, quietMinutes = 10 } = {}) {
-  const crypto2 = require('node:crypto')
-  const sha256 = t => crypto2.createHash('sha256').update(t, 'utf8').digest('hex')
-  const rows = { stamped: 0, sha_moved: 0, no_sha: 0, unreadable: 0, no_rules: 0, live: 0 }
-  const cutoff = Date.now() - quietMinutes * 60_000
-  for (const f of fs.readdirSync(INSTANCES)) {
-    if (!f.endsWith('.json')) continue
-    const p = path.join(INSTANCES, f)
-    // A shared tree with live peers: an instance touched in the last few minutes
-    // may have a judge mid-write behind it. Stamping it would win a race whose
-    // prize is someone else's verdict. Skipping costs one cold class.
-    try { if (fs.statSync(p).mtimeMs > cutoff) { rows.live++; continue } } catch { rows.unreadable++; continue }
-    let d
-    try { d = JSON.parse(fs.readFileSync(p, 'utf8')) } catch { rows.unreadable++; continue }
-    if (!Array.isArray(d.rules_evaluated) || !d.rules_evaluated.length) { rows.no_rules++; continue }
-    if (!d.body_sha || !d.file) { rows.no_sha++; continue }
-    let raw
-    try { raw = fs.readFileSync(path.isAbsolute(d.file) ? d.file : path.join(REPO, d.file), 'utf8') }
-    catch { rows.unreadable++; continue }
-    if (sha256(raw) !== d.body_sha) { rows.sha_moved++; continue }
-    const { derive: d2 } = require('./derive-body-view.js')
-    const v = d2(d.file, { write: false })
-    if (apply) {
-      d.shape_hash = shapeHash(v.signals, headersOf(v))
-      writeJsonPreservingIndent(p, d)
-    }
-    rows.stamped++
-  }
-  return rows
-}
-
-
 // ---------------------------------------------------------------------------
 // The sidecar. `prefill()` decides; these two move the rows.
 // ---------------------------------------------------------------------------
@@ -334,15 +295,7 @@ module.exports.writeSidecar = writeSidecar
 module.exports.mergeIntoInstance = mergeIntoInstance
 module.exports.sidecarPath = sidecarPath
 
-module.exports.backfill = backfill
-
 if (require.main === module) {
-  if (process.argv.includes('--backfill')) {
-    const apply = process.argv.includes('--apply')
-    const r = backfill({ apply })
-    console.log(`${apply ? "stamped" : "would stamp"}: ${r.stamped} · skipped live: ${r.live} · sha moved (left cold): ${r.sha_moved} · no body_sha: ${r.no_sha} · no rules: ${r.no_rules} · unreadable: ${r.unreadable}`)
-    process.exit(0)
-  }
   const [file, cls, ...rest] = process.argv.slice(2)
   if (!file || !cls) {
     console.error('usage: prefill-instance.js <file.md> <class> [--json|--write|--merge]')

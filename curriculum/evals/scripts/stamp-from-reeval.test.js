@@ -8,43 +8,49 @@ const assert = require('node:assert')
 const fs = require('node:fs')
 const os = require('node:os')
 const path = require('node:path')
+const { spawnSync } = require('node:child_process')
 const { readResults, adaptSweepRow, stateFor, makeSlugOf, makeTodosOf, flagName, groupByFile, traceBound, recordRefutations } = require('./stamp-from-reeval.js')
 
 let n = 0
 function test(name, fn) { fn(); n++; console.log(`ok ${n} - ${name}`) }
 
-// The bug this guards: eval-sweep.js is the ONE dispatch door a queue-clearing
-// session is told to use, and its output could not be stamped at all — it
-// returns `.result.summary`, the reader asked for `.result.results`, and the
-// run died on "no .result.results in output file". The two halves of the
-// documented pipeline did not join. Hand-stamping around the gap is the real
-// cost: the join is where WIP-skip, drift-skip and the verify-refuted rung
-// live, so working around it silently drops the guards.
-test('readResults accepts the eval-sweep summary shape, not only the fleet shape', () => {
+// eval-sweep.js is the one producer; its `.result.summary` is the shape read.
+test('readResults reads the eval-sweep summary shape', () => {
   const sweep = {
     result: {
       summary: [{
         file: 'curriculum/lectures/a.md', class: 'slides', verdict: 'REVISE',
-        todos: [{ rule: 'x' }], confirmed: [{ rule: 'check_slides.md §1' }], refuted: [], unadjudicated: [],
+        confirmed: [{ rule: 'check_slides.md §1' }], refuted: [], unadjudicated: [],
       }],
     },
   }
-  const rows = readResults(sweep, () => 'cb--lecture--a')
+  const rows = readResults(sweep, () => 'cb--lecture--a', () => 1)
   assert.strictEqual(rows.length, 1)
   assert.strictEqual(rows[0].cls, 'slides', 'the sweep says `class`, the stamper says `cls`')
   assert.strictEqual(rows[0].blocking, 1)
-  assert.strictEqual(rows[0].todos, 1, 'todos arrive as a list and must be counted, never truthy-tested')
+  assert.strictEqual(rows[0].todos, 1, 'the non-blocking count comes from the instance')
+  assert.strictEqual(readResults({ result: {} }, () => null), null, 'no summary is null, never an empty stamp run')
+})
 
+// Pins the removal of the 2026-06 fleet reader: an output carrying only
+// `.result.results` is refused, and the CLI exits non-zero on it.
+test('a .result.results-only output is refused, not stamped', () => {
   const fleet = { result: { results: [{ file: 'a.md', cls: 'writing', verdict: 'PASS' }] } }
-  assert.strictEqual(readResults(fleet, () => null)[0].cls, 'writing', 'the older shape still passes through untouched')
-  assert.strictEqual(readResults({ result: {} }, () => null), null, 'neither shape is null, never an empty stamp run')
+  assert.strictEqual(readResults(fleet, () => null), null)
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'stamp-fleet-'))
+  const f = path.join(dir, 'out.json')
+  fs.writeFileSync(f, JSON.stringify(fleet))
+  const r = spawnSync(process.execPath, [path.join(__dirname, 'stamp-from-reeval.js'), f, '--drift-base', 'HEAD', '--dry-run', '--repo', dir], { encoding: 'utf8' })
+  assert.notStrictEqual(r.status, 0, 'a fleet-shaped output must fail loudly')
+  assert.match(r.stderr, /no \.result\.summary/)
+  fs.rmSync(dir, { recursive: true, force: true })
 })
 
 // The one direction a verification failure must not resolve.
 test('adaptSweepRow: a finding the refuters never reached stays blocking', () => {
   const dead = adaptSweepRow({
     file: 'a.md', class: 'slides', verdict: 'REVISE',
-    confirmed: [], refuted: [], unadjudicated: [{ rule: 'r', votes: 0 }], todos: [],
+    confirmed: [], refuted: [], unadjudicated: [{ rule: 'r', votes: 0 }],
   })
   assert.strictEqual(dead.blocking, 1, 'unadjudicated is not refuted — a dead refuter must never read as a pass')
   assert.strictEqual(dead.verify, null)
@@ -52,32 +58,15 @@ test('adaptSweepRow: a finding the refuters never reached stays blocking', () =>
 
   const refuted = adaptSweepRow({
     file: 'a.md', class: 'slides', verdict: 'REVISE',
-    confirmed: [], refuted: [{ rule: 'r' }], unadjudicated: [], todos: [],
+    confirmed: [], refuted: [{ rule: 'r' }], unadjudicated: [],
   })
   assert.deepStrictEqual(refuted.verify, { verdict: 'REFUTED', confirmed: 0 })
 
   const partial = adaptSweepRow({
     file: 'a.md', class: 'slides', verdict: 'REVISE',
-    confirmed: [{ rule: 'r1' }], refuted: [{ rule: 'r2' }], unadjudicated: [], todos: [],
+    confirmed: [{ rule: 'r1' }], refuted: [{ rule: 'r2' }], unadjudicated: [],
   })
   assert.deepStrictEqual(partial.verify, { verdict: 'PARTIAL', confirmed: 1 })
-})
-
-// The bug this guards: PASS_WITH_TODOS had no rung. It is not PASS (the note
-// would be lost) and it is not REVISE (the file is not red), so it fell through
-// to the REVISE branch and stamped a clean file as flagged. The sweep's own
-// header records the same failure from the other end: a judge holding one
-// non-blocking todo had to report REVISE, and the orchestrator read it as a gate.
-test('stateFor: PASS_WITH_TODOS pins as a PASS that still carries its count', () => {
-  const s = stateFor({ cls: 'slides', verdict: 'PASS_WITH_TODOS', todos: 3, blocking: 0, instanceSlug: 'cb--lecture--a' })
-  assert.strictEqual(s, 'PASS:3 findings see instances/cb--lecture--a.slides.json')
-  assert.ok(s.startsWith('PASS'), 'a non-blocking note must not stamp the class red')
-  assert.strictEqual(
-    stateFor({ cls: 'slides', verdict: 'PASS_WITH_TODOS', todos: 0, blocking: 0, instanceSlug: 'x' }), 'PASS',
-    'no todos means no note to carry')
-  assert.strictEqual(
-    stateFor({ cls: 'slides', verdict: 'PASS_WITH_TODOS', todos: 1, blocking: 0, instanceSlug: 'x' }),
-    'PASS:1 finding see instances/x.slides.json', 'one finding is not "1 findings"')
 })
 
 // The bug this guards: judges file todos under BOTH pass verdicts, and a bare
@@ -120,7 +109,7 @@ test('cross_module: one verdict, one flag name, every member', () => {
         file: 'curriculum/trainings/t/prework.md', class: 'cross_module', verdict: 'PASS',
         set_name: 'prework-m3',
         module_set: ['curriculum/trainings/t/prework.md', 'curriculum/trainings/t/m1.md'],
-        confirmed: [], refuted: [], unadjudicated: [], todos: [{ rule: 'x' }, { rule: 'y' }],
+        confirmed: [], refuted: [], unadjudicated: [],
       }],
     },
   }, () => 'ae101--module-set--prework-m3')
@@ -139,7 +128,7 @@ test('cross_module with no member list stamps nothing rather than guessing one',
     result: {
       summary: [{
         file: 'curriculum/trainings/t/prework.md', class: 'cross_module', verdict: 'PASS',
-        set_name: null, module_set: null, confirmed: [], refuted: [], unadjudicated: [], todos: [],
+        set_name: null, module_set: null, confirmed: [], refuted: [], unadjudicated: [],
       }],
     },
   }, () => null)
@@ -216,7 +205,7 @@ test('makeSlugOf resolves the slug from the instance the judge just wrote', () =
   // A slug it could not resolve drops the pointer rather than writing a path
   // that resolves nowhere — a note pointing at a missing file reads as evidence.
   assert.strictEqual(
-    stateFor({ cls: 'slides', verdict: 'PASS_WITH_TODOS', todos: 2, blocking: 0, instanceSlug: null }), 'PASS:2 findings')
+    stateFor({ cls: 'slides', verdict: 'PASS', todos: 2, blocking: 0, instanceSlug: null }), 'PASS:2 findings')
 })
 
 console.log(`1..${n}`)
@@ -234,7 +223,7 @@ test('the todo count comes from the instance the row points at, not the returned
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'stamp-todos-'))
   fs.mkdirSync(path.join(dir, 'curriculum/evals/instances'), { recursive: true })
   fs.writeFileSync(path.join(dir, 'curriculum/evals/instances/ae101--module--m.writing.json'), JSON.stringify({
-    class: 'writing', file: 'curriculum/trainings/x/m.md', verdict: 'PASS_WITH_TODOS',
+    class: 'writing', file: 'curriculum/trainings/x/m.md', verdict: 'PASS',
     rules_evaluated: [
       { compendium: 'check_writing.md', rule_index: 3, verdict: 'REVISE', blocking: false },
       { compendium: 'check_writing.md', rule_index: 20, verdict: 'REVISE', blocking: false },
@@ -242,9 +231,7 @@ test('the todo count comes from the instance the row points at, not the returned
     ],
   }))
   const out = { result: { summary: [{
-    file: 'curriculum/trainings/x/m.md', class: 'writing', verdict: 'PASS_WITH_TODOS',
-    // three returned, but only two were written down as rule rows
-    todos: [{ rule: 'a' }, { rule: 'b' }, { rule: 'not-a-compendium-rule' }],
+    file: 'curriculum/trainings/x/m.md', class: 'writing', verdict: 'PASS',
     confirmed: [], refuted: [], unadjudicated: [],
   }] } }
   const [r] = readResults(out, makeSlugOf(dir), makeTodosOf(dir))
@@ -252,18 +239,18 @@ test('the todo count comes from the instance the row points at, not the returned
   assert.equal(stateFor(r), 'PASS:2 findings see instances/ae101--module--m.writing.json')
 })
 
-// Fail-open, deliberately: an unreadable or absent instance leaves the returned
-// array as the only number there is, and a row with a count and no pointer is
-// worse read as zero than as approximate.
-test('an unreadable instance falls back to the returned array rather than reporting zero', () => {
+// The instance is the only record: with none readable there is no count and
+// no pointer, so the row is a bare PASS.
+test('an unreadable instance yields no count', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'stamp-todos-none-'))
   fs.mkdirSync(path.join(dir, 'curriculum/evals/instances'), { recursive: true })
   const out = { result: { summary: [{
-    file: 'curriculum/trainings/x/gone.md', class: 'writing', verdict: 'PASS_WITH_TODOS',
-    todos: [{ rule: 'a' }], confirmed: [], refuted: [], unadjudicated: [],
+    file: 'curriculum/trainings/x/gone.md', class: 'writing', verdict: 'PASS',
+    confirmed: [], refuted: [], unadjudicated: [],
   }] } }
   const [r] = readResults(out, makeSlugOf(dir), makeTodosOf(dir))
-  assert.equal(r.todos, 1)
+  assert.equal(r.todos, 0)
+  assert.equal(stateFor(r), 'PASS')
 })
 
 // A sim trace is evidence about the body its judge read. The stamper used to

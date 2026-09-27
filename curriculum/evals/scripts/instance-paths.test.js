@@ -20,5 +20,5 @@ for (const f of fs.readdirSync(DIR).filter(f => f.endsWith('.json'))) {
   const t = fs.readFileSync(path.join(DIR, f), 'utf8')
   if (/"\/(?:Users|home)\/[^"]*?\/agents-102\/[^"]*"/.test(t)) abs.push(f)
 }
-assert.deepStrictEqual(abs.slice(0, 5), [], `${abs.length} instances carry absolute paths; run: node curriculum/evals/scripts/instance-file.js --normalize`)
+assert.deepStrictEqual(abs.slice(0, 5), [], `${abs.length} instances carry absolute paths; fix the judge's \`file\` value to repo-relative: ${abs.slice(0, 5).join(", ")}`)
 console.log('instance-paths: repo-relative, readers accept every older form')

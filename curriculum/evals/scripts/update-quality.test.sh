@@ -551,6 +551,29 @@ rc=$(run "$F35" --story PASS)
 assert_rc "$rc" 0 'T35 a pre-guard instance (no body_sha) stamps as before'
 unset QUALITY_INSTANCES_DIR QUALITY_SIM_DIR
 
+# T36 — two trainings own a module slug (getting-going, prework). The
+# surface-only glob `*--module--<slug>` matched both trainings' instances, fell
+# into "still ambiguous: don't guess", and the post-stamp advance skipped the
+# stamped training's instances: AE101 getting-going read stale-finding right
+# after its re-eval was stamped. The training prefix comes from the path.
+INST36="$TMP/inst36"; mkdir -p "$INST36" "$TMP/curriculum/trainings/agentic-engineering-101"
+export QUALITY_INSTANCES_DIR="$INST36"
+F36="$TMP/curriculum/trainings/agentic-engineering-101/t36.md"
+printf '# M\n\nBody.\n\n<!-- maintainer -->\n' > "$F36"
+sha36=$(LC_ALL=C shasum -a 256 "$F36" | awk '{print $1}')
+other36=$(printf other | LC_ALL=C shasum -a 256 | awk '{print $1}')
+printf '{"class":"writing","body_sha":"%s"}\n' "$sha36" > "$INST36/ae101--module--t36.writing.json"
+printf '{"class":"writing","body_sha":"%s"}\n' "$other36" > "$INST36/agents-101--module--t36.writing.json"
+rc=$(run "$F36" --writing PASS)
+assert_rc "$rc" 0 'T36 a shared module slug stamps'
+new36=$(LC_ALL=C shasum -a 256 "$F36" | awk '{print $1}')
+assert_grep "$INST36/ae101--module--t36.writing.json" "$new36" 'T36 the stamped training instance follows the stamp'
+assert_grep "$INST36/agents-101--module--t36.writing.json" "$other36" 'T36 the other training instance is untouched'
+printf '{"class":"writing","body_sha":"%s"}\n' "$other36" > "$INST36/ae101--module--t36.writing.json"
+rc=$(run "$F36" --writing PASS)
+assert_rc "$rc" 1 'T37 the stale-verdict guard is armed on a shared module slug'
+unset QUALITY_INSTANCES_DIR
+
 echo "──────────────────────────────"
 echo "update-quality.test.sh: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]

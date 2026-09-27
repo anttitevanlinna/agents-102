@@ -63,8 +63,8 @@ The progression and the leverage model describe the same thing. Every **Moves yo
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@670460b pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
-- judges @324b81d7: writing PASS (1 finding see instances/ae101--supplementary--agentic-engineering-progression.writing.json), story PASS, technical PASS (2 findings see instances/ae101--supplementary--agentic-engineering-progression.technical.json), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-27 (writing@8b5de788 story@8b5de788 technical@8b5de788 behavior@670460b pedagogy@8b5de788 strategy@8b5de788 slides@8b5de788)
+- judges @8b5de788: writing PASS, story PASS, technical PASS (1 finding see instances/ae101--supplementary--agentic-engineering-progression.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Time:** ~5 min.
 

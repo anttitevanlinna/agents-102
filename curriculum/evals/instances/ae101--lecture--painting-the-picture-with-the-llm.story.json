@@ -1,20 +1,27 @@
 {
   "class": "story",
-  "training": "ae101",
   "file": "curriculum/lectures/painting-the-picture-with-the-llm.md",
+  "training": "ae101",
   "verdict": "PASS",
-  "body_sha": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
+  "body_sha": "f44b22412df87ddbee44d5a896087c562bb922551b45e3f40ec8567e53679bfd",
   "shape_hash": "27cecae259e925ec",
-  "module_mood_contract": "M1 mood (content-strategy-agentic-engineering-101.md, M1 arc-table row, re-read fresh this session): Joyful creation — \"it works, on my repo\". This lecture's own local target (maintainer Meta block, L48) is narrower: recognition — stance is now the load-bearing part, no doom, no hype. Confirmed against strategy doc's Recurring Theme 3 (\"The LLM is a mirror... The mirror is diagnostic, not motivational\") that this register is deliberate, not a mood miss.",
+  "module_mood_contract": "M1 mood (content-strategy-agentic-engineering-101.md M1 row): joyful creation — \"it works, on my repo.\" This lecture's own local target (maintainer Meta block, L48) is narrower: recognition — stance is now the load-bearing part, no doom, no hype. The lecture primes toward joyful creation without claiming it; the exercises earn the full mood.",
   "trace_status": "regenerated",
-  "trace_note": "Cached trace's content_sha did not match the current file (a bare <!--tier:3--> marker was inserted into the body after the trace was generated; no prose changed). Re-verified every quoted string in the trace's phase 1 (persona_action, confusion_flags, mood_note, close) against the raw current body line-for-line — all match verbatim. Recomputed content_sha/phase_sha and wrote the trace back to curriculum/evals/sim-cache/ae101--lecture--painting-the-picture-with-the-llm.persona.json; phase assessment carried forward unchanged since nothing the persona reads moved.",
+  "mood_summary": {
+    "phase_scores": [
+      8
+    ],
+    "close_score": 8,
+    "any_below_8": false,
+    "stealing_the_mood": []
+  },
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Not meta-frame (doesn't narrate a pattern the student already lived) — it poses a ceiling claim ('Your stance is the ceiling,' L11) and leaves two open questions unanswered (L23-26), matching the rule's own opener diagnostic verbatim ('showing a ceiling' = opener). Maintainer Meta block (L47) states 'Role: opener. First lecture of M1.' Cross-checked fresh against curriculum/trainings/agentic-engineering-101/getting-going.md '## Start here' (L40-52): this file is the first item listed, ahead of lectures/the-wizard-move.md (L42) and every exercise, closing only with lectures/the-machine-you-just-met.md (L52) — independent confirmation of opener placement, not just the file's own self-report.",
+      "evidence": "Not a meta-frame lecture (doesn't narrate a pattern the student already lived) — it poses a ceiling claim ('Your stance is the ceiling,' L11) and leaves two open questions unanswered (L24, L26), matching the rule's own opener diagnostic ('showing a ceiling' = opener). Maintainer Meta block (L47) states 'Role: opener. First lecture of M1.'",
       "fix_hint": null,
       "blocking": false
     },
@@ -23,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Fresh mechanical check: `grep -nE 'M[0-9]|Module [0-9]' curriculum/evals/body-views/ae101--lecture--painting-the-picture-with-the-llm.body.txt` -> exit 1, zero hits. Body (L1-29) carries no module reference; every M1/M6 mention lives in the maintainer/backing/watch-for blocks (L30-97), below the fence and outside the rule's body-only scope.",
+      "evidence": "grep -nE 'M[0-9]|module [0-9]' curriculum/evals/body-views/ae101--lecture--painting-the-picture-with-the-llm.body.txt -> no hits (exit 1). Body (L1-29) carries no module reference; every M1/M6 mention lives in the maintainer/backing/watch-for blocks below the maintainer fence at L30, outside the rule's body-only scope.",
       "fix_hint": null,
       "blocking": false
     },
@@ -32,7 +39,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Fetched current wording this session (incl. the 2026-09-03 bare-arc-label clause and the 2026-09-08 templated-header carve-out; neither reaches this file — no '## Next' section here). Three headers: 'The LLM mirrors your stance' (L3), 'You prime, the LLM scales' (L13), 'Two frontiers: how fast, and the right things' (L22) — each names a claim or a concept under a squint, none is an empty container or bare arc label. Truth clause: L3's header is supported by L9 ('The LLM mirrors your stance'); L13's by L16 ('You prime it. The LLM scales it.'); L22's by L24/26, which pose the two frontiers as open questions and answer neither, matching the header's own 'how fast, and the right things' framing exactly. No dropped qualifiers, no unsupported universals.",
+      "evidence": "Three headers: 'The LLM mirrors your stance' (L3), 'You prime, the LLM scales' (L13), 'Two frontiers: how fast, and the right things' (L22) — each names a claim or a concept under a squint, none is an empty container or bare-arc label; no '## Next' in this file so the 2026-09-08 templated-header carve-out doesn't apply and isn't needed. Truth clause: L3 is supported by L7 ('The LLM mirrors your stance'); L13 is supported by L16 ('You prime the context. The LLM scales it.'); L22 is supported by L24/L26, which pose exactly the two frontiers and answer neither, matching the header's own framing. No dropped qualifiers, no unsupported universals. No two slides share a header.",
       "fix_hint": null,
       "blocking": false
     },
@@ -41,7 +48,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header.",
       "verdict": "PASS",
-      "evidence": "Ran fresh: `node scripts/check-slide-size.js --file curriculum/lectures/painting-the-picture-with-the-llm.md` -> 'files: 1  slides: 3  limits: 210 words / 6 bullets... oversized: 0... every slide is within limits'.",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/lectures/painting-the-picture-with-the-llm.md --report -> 'The LLM mirrors your stance' 107w/0 bullets, 'You prime, the LLM scales' 76w/0 bullets, 'Two frontiers: how fast, and the right things' 49w/0 bullets; 'files: 1  slides: 3  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -50,7 +57,7 @@
       "rule_index": "9b",
       "rule_lead": "Progression-with-variations is the spine.",
       "verdict": "PASS",
-      "evidence": "The mirror theme (strategy doc Recurring Theme 3) has its originating instantiation here — nothing earlier to compare dosage against, so the rule's redesign-trigger ('same as M1 -> redesign') has no prior instance to collide with. The later echo lives in this same module's closer, lectures/the-machine-you-just-met.md, and this file's own backing block (L66) explicitly coordinates the two: 'Full stamp + the do-not-strengthen note lives in the-machine-you-just-met.md, which owns the payoff; keep the two in step' — the deliberate-repeat obligation (self-sufficient at each placement, earning-point notes kept in sync) is being actively tracked, not left to rot.",
+      "evidence": "The mirror/stance framing is this lecture's own originating instantiation (M1 opener) — nothing earlier in the training to collide with. The backing block (L66) explicitly coordinates the later echo in this module's closer, lectures/the-machine-you-just-met.md ('the hedge is load-bearing ... must not be strengthened ... Full stamp ... lives in the-machine-you-just-met.md, which owns the payoff; keep the two in step'), so the deliberate-repeat obligation (self-sufficient at each placement, earning-point notes kept in sync) is being tracked, not left to drift.",
       "fix_hint": null,
       "blocking": false
     },
@@ -59,7 +66,81 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Fresh mechanical check: `grep -nE 'compare with|discuss with|share what|tell the room|take [0-9]+ (seconds|minutes)|turn to your neighbor|the person next to you' curriculum/evals/body-views/....body.txt` -> exit 1, zero hits. Every sentence in the body is about the WORK (the mirror claim, priming, the two frontiers) or the WATCH-FOR delivery notes sit below the fence, not authored as body prose. No pair/group/room-share cue, no trainer-cue beat, no Connections-opener or human-round carve-out language either (none needed — this file isn't that beat).",
+      "evidence": "grep -niE 'discuss|share with|pair up|neighbor|turn to|talk to (the|your)' curriculum/evals/body-views/ae101--lecture--painting-the-picture-with-the-llm.body.txt -> no hits. Every body sentence is about the WORK (the mirror claim, priming, the two frontiers), not cohort management. Delivery notes ('Don't expand the wizard beat into Perl history', 'let it sit') sit in the Watch-fors below the maintainer fence, not authored as body prose. No pair/group/room-share cue, no Connections-opener or human-round carve-out language (none needed — this isn't that beat).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61b",
+      "rule_lead": "An audit's card-shaped findings are discharged by CARDS, not by notes about them.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "meta-rule about how an audit discharges its own card-shaped findings; not a body-content criterion, and this dispatch produced no card-shaped cut requiring a note instead of a card",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 64,
+      "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
+      "verdict": "PASS",
+      "evidence": "Scanned the maintainer block (L32-49) and backing block (L51-91): every line is unique to this file (quality stamp, trainer-feedback history, emphasis-pass rationale, per-claim source stamps, Stance/OODA) — none of it touches delivery/working-dir/session/skills-install mechanics that would owe a training-architecture.md pointer. The one cross-cutting reference present already points rather than restates: 'Format -> curriculum/backing-format.md' (L53).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 67,
+      "rule_lead": "Story and depth are judged per big learning that develops, never per feature that recurs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "single-lecture per-file scope; the rule binds a training-level or arc-level judgment (naming the big learnings across modules), not a 3-minute opener read in isolation",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
+      "verdict": "PASS",
+      "evidence": "This is a TEACHING beat (engagement IS the pedagogical move — it lands the mirror/stance frame the rest of M1 depends on), not setup/launch plumbing, so the 8+/10 floor applies. Trace (regenerated 2026-09-27, bound content_sha=7ff22ff0...) phase 1 mood_score=8, close mood_score=8. Mood-doesn't-resolve-early holds: trace close notes 'Not joyful creation yet ... the opener correctly stays in recognition and doesn't pre-empt it,' matching the maintainer Meta block's own stated target (recognition, not the module's full joyful-creation mood).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood != punitive mood.",
+      "verdict": "PASS",
+      "evidence": "'Your stance is the ceiling' (L11) reads as recognition-of-mechanism, not shame — trace mood_note frames it as mapping onto felt experience ('lazy prompts producing lazy output, sharp framing producing sharp output'), an insight about what's possible, never a verdict on past conduct. No 'I messed up' framing anywhere in body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "PASS",
+      "evidence": "Title 'Painting the picture with the LLM' and both content-heading titles ('The LLM mirrors your stance', 'You prime, the LLM scales') name a positive discipline (deliberate priming/stance-setting), not a failure word. 'The LLM can do good work and bad work' (L7) names the failure case as what the discipline addresses, not as the frame's title.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "PASS",
+      "evidence": "Front-run check: the body poses two frontier questions (L24, L26) and answers neither; Watch-fors (L96) confirm by design ('Frontiers section names two open questions — do NOT answer them. The training answers by accretion through M1-M6') — nothing here pre-empts a downstream module's teaching moment. Big-Idea/mood-contract branch: this opener honors its own stated local mood contract (recognition) rather than claiming the module's full joyful-creation payoff, satisfying the rule's 'or honors its mood contract' clause. Module-to-module arc: maintainer Meta (L47) places this as first lecture of M1, ahead of the wizard-move demo and the exercises, consistent with an opener's role.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure — this file must not restate what only the doc should assert, and the doc must not restate what this file already asserts.",
+      "verdict": "PASS",
+      "evidence": "This file's maintainer/backing blocks (L32-91) carry only content unique to this lecture (quality stamp, trainer-feedback history, per-claim source stamps, Stance/OODA) — none of it duplicates strategy-doc-owned structural inventory (section names, wiring order, file lists). No restated doc structure found in the body or maintainer/backing blocks.",
       "fix_hint": null,
       "blocking": false
     },
@@ -70,71 +151,10 @@
       "verdict": "N/A",
       "evidence": "The rule targets a Watch-for/Mood-drift/Risk line whose own hedge admits the section's premise might not hold. This file's Watch-fors (L93-97) are plain delivery reminders ('Don't expand the wizard beat into Perl history', 'let it sit', 'do NOT answer them') with no self-undermining hedge to premise-test. The genuinely hedged prose lives in the backing Stance block (L77-84, 'contested', 'CAVEAT') which is deliberately graded-uncertainty by design (evidence-ladder discipline, check_research_claims' territory) rather than an accidental admission that a section shouldn't be there.",
       "na_reason": "no Watch-for/Mood/Risk hedge present; the file's only hedged prose is the by-design Stance block, a different class's rule",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "61b",
-      "rule_lead": "An audit's card-shaped findings are discharged by CARDS, not by notes about them.",
-      "verdict": "PASS",
-      "evidence": "Ran `git diff 08946dd8..HEAD -- curriculum/lectures/painting-the-picture-with-the-llm.md` fresh this session: the maintainer-block diff is a cut/consolidation pass, not a notes-instead-of-fix pass. It DROPS a whole stale 'Minor-fix (2026-07-02...)' paragraph, drops a redundant 'Lecture meta' line (duplicate of the Meta block), collapses the long 'Slides-only pass' paragraph down to one line ('Map references: none (M1 protected ground)'), and shortens the decided/would-move-it/roster lines to pointers ('(contested, above)', '(decided, above)') instead of restating the reasoning. Net is cut-heavy across every touched span, the opposite shape of the rule's own worked counter-example (+891/-493). Only genuine addition is the refreshed Quality stamp line, which states a fact (judge pins), not a note about a finding.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 64,
-      "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
-      "verdict": "PASS",
-      "evidence": "Scanned the maintainer block (L32-49) and backing block (L51-91): every line is unique to this file (quality stamp, trainer-feedback history, emphasis-pass rationale, per-claim source stamps, Stance/OODA). The one cross-cutting reference present already points rather than restates: 'Format -> curriculum/backing-format.md' (L53). No delivery-architecture, working-dir, session, or skills-install content is duplicated here.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
-      "rule_lead": "Mood contract named.",
-      "verdict": "PASS",
-      "evidence": "This is a TEACHING beat (engagement IS the pedagogical move — it lands the mirror/stance frame the rest of M1 depends on), not setup/launch plumbing, so the 8+/10 floor applies. Trace phase 1 mood_score=8, close mood_score=8 (both re-verified against the current body this session, see trace_note). Mood-doesn't-resolve-early holds too: trace close explicitly notes 'Not joyful creation yet... the opener correctly stays in recognition and doesn't pre-empt it,' matching the maintainer Meta block's own stated target (recognition, not the module's full joyful-creation mood).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 2,
-      "rule_lead": "Epistemic mood != punitive mood.",
-      "verdict": "PASS",
-      "evidence": "'Your stance is the ceiling' (L11) reads as recognition-of-mechanism, not shame: trace mood_note frames it as 'maps directly onto two weeks of felt experience... sharp framing producing sharp output,' an insight, not a verdict on past conduct. Strategy doc's own Recurring Theme 3 states the intended register directly: 'The mirror is diagnostic, not motivational: it shows parts of your practice you hadn't noticed yet. Uncomfortable, useful' -- not-knowing/noticing, never having-done-wrong.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 3,
-      "rule_lead": "Lead with discipline, not failure mode.",
-      "verdict": "PASS",
-      "evidence": "Title 'Painting the picture with the LLM' and both slide headers ('The LLM mirrors your stance', 'You prime, the LLM scales') name a positive discipline (deliberate priming/stance-setting), not a failure word. 'The LLM can do good work and bad work' (L7) names the failure case as the thing the discipline addresses, not as the frame's title -- matches the rule's own structure exactly.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check.",
-      "verdict": "PASS",
-      "evidence": "Front-run check: the file poses two frontier questions (L24, L26) and answers neither; backing Watch-fors (L96) confirm by design ('do NOT answer them. The training answers by accretion through M1-M6') -- re-read fresh against getting-going.md and the strategy doc's M1-detail section, nothing here pre-empts M2's plan-mode teaching or M3-M5's unease/rescue arc. Big Idea / mood-contract branch: module Big Idea (getting-going.md L6, 'leave something behind the next session can use') is the exercises' payoff, not this opener's job; this file instead honors its own stated local mood contract (recognition) per the check's own 'or honors its mood contract' clause, confirmed by strategy Theme 3 and the trace. Module-to-module arc: N/A-leaning for an opener (the arc-handoff facet binds a closer) but no contradiction found -- getting-going.md's own 'Start here' ordering (re-read fresh) places this file first, consistent with the maintainer's opener claim.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 8,
-      "rule_lead": "Strategy doc carries strategy, not structure.",
-      "verdict": "PASS",
-      "evidence": "Read the M1-detail section of content-strategy-agentic-engineering-101.md (L268-300) fresh this session: it names the module's exercises, themes and mood at module scope but asserts nothing structural that is unique to THIS lecture file specifically -- no restated header text, no quoted body sentence, no ordering claim beyond the generic 'stance + two-frontiers framing before the wizard-move demo' framing that this file's own maintainer Meta block (L47) already states first. No duplicate-that-could-rot found between the doc and this file's maintainer block.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
+      "carried_shape": "27cecae259e925ec"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -144,7 +164,7 @@
       "evidence": "Rule scoped to M2+ walk-away trust-ramp; this is M1's opener lecture with no agent-execution beat at all.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -155,7 +175,7 @@
       "evidence": "Cohort-aggregate metric across M3–M8 modules, not a per-file criterion; this file is M1.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -166,7 +186,7 @@
       "evidence": "No agent flow, backstop, or human-observes-manually language anywhere in this listen-only narrative lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -177,7 +197,7 @@
       "evidence": "Grading rubric for scoring an exercise/module artifact; this lecture produces no artifact to grade against 7/8/9.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -188,7 +208,7 @@
       "evidence": "No exercise structure in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -199,7 +219,7 @@
       "evidence": "Targets module files' ~80/20 shared/variant-fork discipline; this is an already-shared-library lecture file with no VARIANT markers.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -210,7 +230,7 @@
       "evidence": "Targets an exercise producing a runtime artifact and a sendable customer asset; this lecture is listen-only and produces no artifact.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -221,7 +241,7 @@
       "evidence": "LO verb design lives in the module file, not this lecture; no pattern-recognition LO is stated or claimed in this file's own body.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -232,7 +252,7 @@
       "evidence": "No student-directed instruction or pacing directive exists anywhere in this pure listen-and-read lecture for an opportunity-vs-compulsion framing to attach to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -243,7 +263,7 @@
       "evidence": "No prompt asking Claude to DO anything; the rule's unit (a delegation ask) doesn't exist here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -254,7 +274,7 @@
       "evidence": "No exercise/phase structure in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -265,7 +285,7 @@
       "evidence": "No prompt names a tool/skill/connector/file/path; nothing to realism-check.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -276,7 +296,7 @@
       "evidence": "No black-box invocation is asked of the student — this is expository narrative naming no tool/skill for the student to USE.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -287,7 +307,7 @@
       "evidence": "Process-trigger rule for when to launch sim+eval infra, not a body-content criterion; this dispatch is itself that firing.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -298,7 +318,7 @@
       "evidence": "No external-tooling dependency (MCP, shared repo, SSO, connector) named anywhere in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -309,7 +329,7 @@
       "evidence": "No session-rule-saving or codebase-shared-artifact prompt in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -320,7 +340,7 @@
       "evidence": "Cohort pass-rate measurement methodology, not a single-file content criterion.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -331,7 +351,7 @@
       "evidence": "Eval-authoring methodology rule, not a curriculum-body criterion.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -342,7 +362,7 @@
       "evidence": "Meta rule governing eval-infrastructure discipline, not a body-content criterion for a single lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -353,7 +373,7 @@
       "evidence": "Verification-tier budgeting methodology, not a body-content criterion.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -364,7 +384,7 @@
       "evidence": "Governs compendium/rule design discipline, not curriculum body content.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -375,7 +395,7 @@
       "evidence": "Process discipline for maintainer/agent interaction, not a body-content criterion.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -386,7 +406,7 @@
       "evidence": "No concurrent agent-execution beat in this ~3-minute listen-only lecture; the trainer-paced/concurrent runtime model targets exercises with agent waits.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -397,7 +417,7 @@
       "evidence": "No host-skill (agentic-nerd/Teacher Claude) or push-back-move mechanism referenced anywhere in this file's maintainer block.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -408,7 +428,7 @@
       "evidence": "No reflective file-write beat in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -419,7 +439,7 @@
       "evidence": "Eval-methodology rule about scorer stability across rounds, not a body-content criterion.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -430,7 +450,7 @@
       "evidence": "No exercise asking the student to manually verify Claude's output for correctness.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -441,7 +461,7 @@
       "evidence": "No exercise with Claude self-reporting or self-critiquing its own generated artifact.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -452,7 +472,7 @@
       "evidence": "No exercise offering a structured output for the student to customize.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -463,7 +483,7 @@
       "evidence": "No exercise ingesting a heterogeneous source folder.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -474,7 +494,7 @@
       "evidence": "No task-selection prompt or scope criteria in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -485,7 +505,7 @@
       "evidence": "No skill/tool install-affordance content in this narrative lecture for the tier-substrate diagnostic to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -496,7 +516,7 @@
       "evidence": "No hook/judge/loop/gating-skill authored in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -507,7 +527,7 @@
       "evidence": "No auto-load/lazy-load/explicit-load surface demonstrated or taught in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -518,7 +538,7 @@
       "evidence": "Governs generation-time removal decisions during authoring; not a criterion evaluable against a finished, read-only body by a read-only judge.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -529,7 +549,7 @@
       "evidence": "AE101 is single-runtime (Claude Code only, per curriculum/CLAUDE.md content boundaries); the dual-runtime fork rule targets Agents 101's Cowork/Code split.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -540,7 +560,7 @@
       "evidence": "No exercise depending on a platform feature (concurrent sessions, plan mode, plugin install) in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -551,7 +571,7 @@
       "evidence": "Eval-infrastructure design rule (judge partitioning), not a content criterion for this file's body.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -562,7 +582,7 @@
       "evidence": "No '## Plug Points' section (grep-verified this session, exit 1) and no exercise UX flow in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -573,7 +593,7 @@
       "evidence": "Leap tests are an exercise maintainer-block requirement; this is a lecture with no exercise structure to leap-test.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -584,7 +604,7 @@
       "evidence": "No exercise phase with a forcing function in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -595,7 +615,7 @@
       "evidence": "No prompt fence in this file (has_prompt_blocks: false).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -606,7 +626,7 @@
       "evidence": "No create/use exercise pair in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -617,7 +637,7 @@
       "evidence": "No prompt fence in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -628,7 +648,7 @@
       "evidence": "No prompt fence in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -639,7 +659,7 @@
       "evidence": "No `**Session**` widget in this file (grep-verified this session, exit 1).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -650,7 +670,7 @@
       "evidence": "No widget markup of any kind present (Session/HOX/Note all absent, grep-verified this session).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -661,7 +681,7 @@
       "evidence": "This is a lecture file, not module prose, and it carries neither a Session widget nor a {{prompt:}} fence — the tell's unit doesn't exist here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -672,7 +692,7 @@
       "evidence": "Exercise-only rule (What you do/build/point trio); this is a lecture with no exercise lead-in.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -683,7 +703,7 @@
       "evidence": "Exercise-point-writing guidance; this lecture has no exercise 'point' slot.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -694,7 +714,7 @@
       "evidence": "No fenced prompt in this file for body prose to pre-answer.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -705,7 +725,7 @@
       "evidence": "No audit finding under remediation in this file; rule governs fix-shape for exercise findings.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -716,7 +736,7 @@
       "evidence": "No new multi-session mechanic (worktrees, parallel sessions) introduced in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -727,7 +747,7 @@
       "evidence": "No session-close protocol or `/clear` mechanic in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -738,7 +758,7 @@
       "evidence": "No reference-page restructuring event under review; this file is a lecture, not a reference page, and wasn't renamed/merged/split.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -749,7 +769,7 @@
       "evidence": "Meta-methodology for rule-application granularity, not itself a content criterion to score against this body.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -760,7 +780,7 @@
       "evidence": "No SKILL.md/framework/tool change is being proposed against this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -771,7 +791,7 @@
       "evidence": "Process discipline for consuming audit findings/punchlist items, not a body-content criterion for this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -782,7 +802,7 @@
       "evidence": "No prompt-adjacent callout in this file (no prompt fence at all).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -793,7 +813,7 @@
       "evidence": "No punchlist bullet under review in this dispatch; rule governs treating long-lived TODO lists as actionable.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -804,7 +824,7 @@
       "evidence": "This is M1's opening lecture with no upstream module's send-off artifact to load-bear on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -815,7 +835,7 @@
       "evidence": "Describes the AUTHORING PROCESS across the whole curriculum build, not a criterion evaluable against one finished file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -826,7 +846,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -837,7 +857,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -848,7 +868,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -859,7 +879,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -870,7 +890,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -881,7 +901,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -892,7 +912,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -903,7 +923,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -914,7 +934,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -925,7 +945,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -936,7 +956,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -947,7 +967,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -958,7 +978,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -969,7 +989,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -980,7 +1000,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -991,7 +1011,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1002,7 +1022,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1013,7 +1033,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1024,7 +1044,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1035,7 +1055,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1046,7 +1066,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1057,7 +1077,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1068,7 +1088,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1079,7 +1099,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1090,7 +1110,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1101,7 +1121,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1112,7 +1132,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1123,7 +1143,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1134,7 +1154,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1145,7 +1165,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1156,7 +1176,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1167,7 +1187,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1178,7 +1198,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1189,7 +1209,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1200,7 +1220,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1211,7 +1231,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1222,7 +1242,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1233,7 +1253,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1244,7 +1264,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1255,7 +1275,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1266,7 +1286,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1277,7 +1297,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1288,7 +1308,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1299,7 +1319,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1310,7 +1330,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1321,7 +1341,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1332,7 +1352,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1343,7 +1363,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1354,7 +1374,7 @@
       "evidence": "No fenced prompt / `{{prompt:}}` marker anywhere in this file — grep-verified fresh this session (`grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → exit 1, zero matches); this rule's unit (a student-copied prompt fence) does not exist in a pure listen-and-read lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1365,7 +1385,7 @@
       "evidence": "No group-scale beat exists in this file (signals.group_beat_markers: false) — this is a solo-reader, listen-and-read lecture with no room-shared artefact or adjudication moment for check_workshop's trigger (a beat whose output belongs to the group) to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1376,7 +1396,7 @@
       "evidence": "No group-scale beat exists in this file (signals.group_beat_markers: false) — this is a solo-reader, listen-and-read lecture with no room-shared artefact or adjudication moment for check_workshop's trigger (a beat whose output belongs to the group) to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1387,7 +1407,7 @@
       "evidence": "No group-scale beat exists in this file (signals.group_beat_markers: false) — this is a solo-reader, listen-and-read lecture with no room-shared artefact or adjudication moment for check_workshop's trigger (a beat whose output belongs to the group) to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1398,7 +1418,7 @@
       "evidence": "No group-scale beat exists in this file (signals.group_beat_markers: false) — this is a solo-reader, listen-and-read lecture with no room-shared artefact or adjudication moment for check_workshop's trigger (a beat whose output belongs to the group) to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1409,7 +1429,7 @@
       "evidence": "No group-scale beat exists in this file (signals.group_beat_markers: false) — this is a solo-reader, listen-and-read lecture with no room-shared artefact or adjudication moment for check_workshop's trigger (a beat whose output belongs to the group) to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1420,7 +1440,7 @@
       "evidence": "No group-scale beat exists in this file (signals.group_beat_markers: false) — this is a solo-reader, listen-and-read lecture with no room-shared artefact or adjudication moment for check_workshop's trigger (a beat whose output belongs to the group) to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1431,7 +1451,7 @@
       "evidence": "No group-scale beat exists in this file (signals.group_beat_markers: false) — this is a solo-reader, listen-and-read lecture with no room-shared artefact or adjudication moment for check_workshop's trigger (a beat whose output belongs to the group) to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1442,7 +1462,7 @@
       "evidence": "No group-scale beat exists in this file (signals.group_beat_markers: false) — this is a solo-reader, listen-and-read lecture with no room-shared artefact or adjudication moment for check_workshop's trigger (a beat whose output belongs to the group) to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1453,7 +1473,7 @@
       "evidence": "No group-scale beat exists in this file (signals.group_beat_markers: false) — this is a solo-reader, listen-and-read lecture with no room-shared artefact or adjudication moment for check_workshop's trigger (a beat whose output belongs to the group) to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1464,7 +1484,7 @@
       "evidence": "No group-scale beat exists in this file (signals.group_beat_markers: false) — this is a solo-reader, listen-and-read lecture with no room-shared artefact or adjudication moment for check_workshop's trigger (a beat whose output belongs to the group) to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1475,7 +1495,7 @@
       "evidence": "No group-scale beat exists in this file (signals.group_beat_markers: false) — this is a solo-reader, listen-and-read lecture with no room-shared artefact or adjudication moment for check_workshop's trigger (a beat whose output belongs to the group) to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1486,7 +1506,7 @@
       "evidence": "No group-scale beat exists in this file (signals.group_beat_markers: false) — this is a solo-reader, listen-and-read lecture with no room-shared artefact or adjudication moment for check_workshop's trigger (a beat whose output belongs to the group) to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1497,7 +1517,7 @@
       "evidence": "No group-scale beat exists in this file (signals.group_beat_markers: false) — this is a solo-reader, listen-and-read lecture with no room-shared artefact or adjudication moment for check_workshop's trigger (a beat whose output belongs to the group) to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1508,7 +1528,7 @@
       "evidence": "No group-scale beat exists in this file (signals.group_beat_markers: false) — this is a solo-reader, listen-and-read lecture with no room-shared artefact or adjudication moment for check_workshop's trigger (a beat whose output belongs to the group) to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1519,7 +1539,7 @@
       "evidence": "No group-scale beat exists in this file (signals.group_beat_markers: false) — this is a solo-reader, listen-and-read lecture with no room-shared artefact or adjudication moment for check_workshop's trigger (a beat whose output belongs to the group) to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1530,7 +1550,7 @@
       "evidence": "No group-scale beat exists in this file (signals.group_beat_markers: false) — this is a solo-reader, listen-and-read lecture with no room-shared artefact or adjudication moment for check_workshop's trigger (a beat whose output belongs to the group) to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1541,7 +1561,7 @@
       "evidence": "Rule scopes to contrast-mood modules (M5-style: learn-through-doing, name-after). M1's mood is joyful creation per content-strategy-agentic-engineering-101.md line 243 ('Mood | Joyful creation — \"it works, on my repo\"'), not contrast. The rule's target harm (over-lecturing collapsing felt-evidence a contrast closer depends on) has no M5-shaped closer downstream of this file to collapse.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1552,7 +1572,7 @@
       "evidence": "DRIFT re-check retained from prior audit (rule gained the 2026-08-20 'answer must be theirs' carve-out): re-confirmed fresh this session via `grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/painting-the-picture-with-the-llm.md` → zero matches (exit 1). This lecture is pure listen-and-read (three narrative slides + kicker), no prompt fence at all, so neither the base rule nor the carve-out has a unit to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1563,7 +1583,7 @@
       "evidence": "This is a listen-and-read lecture with no student-copied prompt fence anywhere in the file — the rule's unit (a prompt fence carrying or lacking a forcing function) does not exist here to score.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1574,7 +1594,7 @@
       "evidence": "This is a lecture file with no student-facing '## Key Concepts' heading — the rule's unit does not exist in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1585,7 +1605,7 @@
       "evidence": "No Key Concepts section in this lecture file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     },
     {
@@ -1596,26 +1616,12 @@
       "evidence": "No 'What You'll Learn' section in this lecture file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+      "carried_from": "dc14de7a8e1ae8ea0a9a1fc929ce846938cf31c85cd9e053c80898bc03782d00",
       "carried_shape": "27cecae259e925ec"
     }
   ],
-  "drift_rules_reread": [
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 61,
-      "verdict": "N/A",
-      "note": "Fetched current wording fresh (node scripts/rule.js pedagogy 61). Governs verifying a mechanism before proposing a SKILL.md/framework/tool change -- process discipline for whoever is fixing a flagged item, not a rule about curriculum body content. Not in this class's brief (story owns 9b/27/34b/61b/64 on check_pedagogy, not bare 61) and has no unit to bind to on a lecture body. Re-reading its current text changes nothing about this file -- the staleness reason was that the rule number now resolves to a longer family (61/61a/61b) after 61b was added, not that #61 itself newly implicates this file."
-    }
-  ],
-  "accept_notes_found": [
-    "L32-33: Quality stamp (compendium-audited 2026-09-05, all seven classes PASS at prior pins) -- routine record, not an accept-note requiring a finding carve-out.",
-    "L35: Shotgun/cannon pair is a deliberate provocation beat (maintainer's own words, keep) -- do not cut, literalize, or replace; reframe-texture carve-out under check_writing.md SS4 named explicitly. Honored: no finding filed against L20's koan.",
-    "L37: Trainer-feedback pass (2026-08-04) -- documents two prior cuts (infinite-chameleon, design-not-a-flaw lines) and confirms everything else stays as-is. No finding filed against the current shorter form.",
-    "L39: Emphasis pass (2026-07-09, Antti-directed 'go very lightly on the bold') -- zero-bold prose paragraphs is the deliberate house style for this file; no finding filed for absence of bold emphasis.",
-    "L41: Map references: none (M1 protected ground) -- explains why no map/position references appear; consistent with check_lectures SS3's carve-out language, no finding needed.",
-    "L43: The amplification koan carries no verbal hedge, and does not need one (Antti 2026-08-14) -- 'The sharp engineers stay sharp' (L20) is authorised to stand unhedged; register + slide 3's open questions carry the demotion instead of a hedge word. No finding filed against the unhedged koan (this is check_research_claims/writing territory, not story's, but the accept-note is noted here per the dispatch instruction to surface every dated note found)."
-  ],
+  "suggestions": [],
+  "blocking_findings_count": 0,
   "nonblocking_findings_count": 0,
-  "blocking_findings_count": 0
+  "notes": "Judge-owned criterion (no check_strategy_tie_in rule_index per the template): teaching-moment-lands — the named teaching moment ('your stance is the ceiling' / the mirror framing) reliably triggers across reasonable persona-skill variation. Trace persona (mid-level engineer, 2 weeks of daily Claude Code use) reports clean recognition (mood 8/8) with no confusion flag rising to blocking; the metaphor requires only that the student has used an LLM at all, so it does not appear fragile to skill variance within the AE101 audience. PASS, judge_owned. Separately: the cached persona trace's content_sha (34d07577...) did not match the current file — body prose was reworded for active voice between the 0d65ff01 pin and HEAD (e.g. 'A part of high-end engineering skill has been taken on by the LLM' -> 'The LLM has taken on a part of high-end engineering skill'; 'You prime it' -> 'You prime the context'; the frontiers paragraphs were restructured statement-then-question instead of question-first), and the backing-block claim quotes (wizard-is-dead, you-prime-llm-scales, two-frontiers) were updated in step with the body. Substance/sequencing/mood are unchanged, so the trace was regenerated with updated quotes and re-bound to the current body_sha via bind-trace.js rather than re-simulated from scratch. This wording-polish edit is check_writing.md territory (active-voice tightening), outside story's lane, and not filed here."
 }

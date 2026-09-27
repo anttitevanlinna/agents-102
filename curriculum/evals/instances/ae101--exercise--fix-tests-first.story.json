@@ -3,67 +3,17 @@
   "training": "ae101",
   "file": "curriculum/exercises/fix-tests-first.md",
   "verdict": "PASS",
-  "body_sha": "6eef2af3815e2b120ef117b364f6bc9642e9b04957266c282b0cb06dcdc8d04e",
+  "body_sha": "236325adb557530f067f4b33fadf313fb61f579206d53a00abe3f988c939ef6b",
   "shape_hash": "9fb98f5fd48507ae",
   "module_mood_contract": "M1 joyful creation — \"it works, on my repo\"; second of four M1 exercises (the bug fix itself), sandwiched between orient-and-introspect and close-the-ticket",
   "trace_status": "cached_stale_verified_immaterial",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
-      "rule_index": 1,
-      "rule_lead": "Meta-frame lectures = closers, not openers.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "lecture-placement rule; this is an exercise, not a lecture (template's own example case)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 2,
-      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "governs lecture dosage preceding an exercise, not the exercise file itself",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 3,
-      "rule_lead": "No cross-module sequencing in lecture bodies.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "rule text scopes explicitly to \"lecture bodies\"; this is an exercise",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 4,
-      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "rule's carve-outs and \"#17 lecture carve-out\" inherit clause scope it to lecture headers specifically; unlike §5/§6 it does not state extension to exercise slides, so exercise headers are check_slides.md's (slides class) surface",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/exercises/fix-tests-first.md` -> \"files: 1  slides: 5  limits: 210 words / 6 bullets  oversized: 0 — every slide is within limits\". Rule text explicitly extends to exercises (\"Exercise slides count too\"). Hand count confirms: heaviest slide (\"Interrogate the fix for a deeper layer\", lines 29-40) ~136 words, 1 real bullet + 3 Optional paragraphs, well under ceiling.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 6,
-      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "rule text explicitly excludes this surface: \"Not covered: exercise prompts, prework prompts...\"",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/exercises/fix-tests-first.md` -> \"files: 1  slides: 5  limits: 210 words / 6 bullets  oversized: 0 — every slide is within limits\". Rule text explicitly extends to exercises (\"Exercise slides count too\"). Heaviest slide is still \"Interrogate the fix for a deeper layer\" (L29-40); the two wording trims since the last pin (dropping \"nothing deeper to interrogate\" at L33, \"Claude\"→\"the agent\" at L49) only shrink word count.",
       "fix_hint": null,
       "blocking": false
     },
@@ -72,7 +22,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The one forcing function with no fence is the diff push-back (## Read the diff and push back on a line, L24-27): no {{prompt:}} block, pure body prose. Harm the rule guards against: a speed-runner who reads fences only would skip a scripted-count nicety, but here skipping the beat skips the exercise's stated point (L9: \"pushing back is core work\") — exactly the collapse the rule's own removal test flags. But this exact question is a documented maintainer accept-note, not an oversight: maintainer block L53 (\"Carded and kept... the compound-step mention in the push-back bullet stays\") and backing Stance L94-97 (\"the student writes their own push-back with no prompt supplied, which is slower and worse-scaffolded on purpose, because the words have to be theirs when the compound step reuses them\") state the design reason directly — a fence would hand the student a template instead of forcing their own wording, defeating the forcing function's actual purpose. Trace confirms it lands in-room (mood 8/8) with the trainer narrating the beat live.",
+      "evidence": "The one forcing function with no fence is the diff push-back (## Read the diff and push back on a line, L24-27): no {{prompt:}} block, pure body prose. Harm the rule guards against: a speed-runner reading fences only would skip a scripted-count nicety, but here skipping the beat skips the exercise's stated point (L9: \"pushing back is core work\"). This is a documented maintainer accept-note, not an oversight: maintainer block L56 (\"the compound-step mention in the push-back bullet stays\") and backing Stance (\"the student writes their own push-back with no prompt supplied, which is slower and worse-scaffolded on purpose, because the words have to be theirs when the compound step reuses them\") give the design reason — a fence would hand the student a template instead of forcing their own wording. The Ship-the-PR beat (L47-49) is the same shape, and the maintainer block's Prompt progression note (L74) names it explicitly as \"intentionally prose-led, not a fenced prompt block\" since the student is already in the repo with the fixed diff in context. Both are covered accept-notes, not silent violations.",
       "fix_hint": null,
       "blocking": false
     },
@@ -81,7 +31,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "grep -inE 'discuss|neighbor|neighbour|pair up|share with|tell the room|take [0-9]+ (min|sec)|compare with' over lines 1-50 -> no matches (exit 1). No authored conversation/pause cues anywhere in the body; every sentence is about the work (write the test, read the diff, interrogate, ship). Closest line to the boundary is L26 (\"The agent runs the loop; you read the result\") — names the STUDENT's own reading move, not a room-share, so it stays inside.",
+      "evidence": "grep -inE 'discuss|neighbor|neighbour|pair up|share with|tell the room|take [0-9]+ (min|sec)|compare with' curriculum/exercises/fix-tests-first.md -> no matches (exit 1). No authored conversation/pause cues anywhere in the body; every sentence is about the work (write the test, read the diff, interrogate, ship). Closest line to the boundary is L26 (\"The agent runs the loop; you read the result\") — names the STUDENT's own reading move, not a room-share, so it stays inside.",
       "fix_hint": null,
       "blocking": false
     },
@@ -90,7 +40,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Trace (regenerated 2026-09-05, single file-level phase): mood_score 8, close.mood_score 8, close.is_me_rating 8, any_below_8=false. Contract = M1 joyful creation; mood_note: \"Joyful creation holds... The push-back framing and the declaration beat are unchanged and still land as earned reassurance, not a lecture.\" File is a TEACHING beat throughout (the point is the push-back + interrogation discipline, not mechanical setup), so the 8+ mood-floor applies and is met.",
+      "evidence": "Trace (generated 2026-09-05, single file-level phase, re-bound to current body 2026-09-27): mood_score 8, close.mood_score 8, close.is_me_rating 8, any_below_8=false. Contract = M1 joyful creation; mood_note: \"Joyful creation holds... The push-back framing and the declaration beat are unchanged and still land as earned reassurance, not a lecture.\" File is a TEACHING beat throughout (the point is the push-back + interrogation discipline, not mechanical setup), so the 8+ mood-floor applies and is met. The two body wording trims since the trace's own generation (L33 clause cut, L49 \"Claude\"→\"the agent\") change no claim or artifact contract the trace scores against, so the cached score stands — verified directly against the live file, not re-simulated (see notes).",
       "fix_hint": null,
       "blocking": false
     },
@@ -99,7 +49,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "grep -inE \"you messed up|your fault|wrong of you|shouldn't have\" over lines 1-50 -> no matches (exit 1). File's mood contract is joy, not unease, so the specific unease-flavour test this rule targets isn't the live risk here; checked anyway for punitive language and found none — L26's \"the agent yields if you push hard enough, so its agreement settles nothing\" and L45 \"when to stop digging is your call\" both hand judgment to the student without any blame framing.",
+      "evidence": "grep -inE \"you messed up|your fault|wrong of you|shouldn't have\" curriculum/exercises/fix-tests-first.md -> no matches (exit 1). File's mood contract is joy, not unease, so this rule's specific unease-flavour test isn't the live risk; checked anyway. L26 (\"the agent yields if you push hard enough, so its agreement settles nothing\") and L45 (\"when to stop digging is your call\") both hand judgment to the student with no blame framing.",
       "fix_hint": null,
       "blocking": false
     },
@@ -108,7 +58,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title (\"Prove the bug, then ship the fix\") and all five ## headers (\"Write the failing test and fix the root cause\", \"Read the diff and push back on a line\", \"Interrogate the fix for a deeper layer\", \"There is always a next plausible answer\", \"Ship the PR\") name actions/disciplines, none is failure-word-led (no \"avoid\", \"don't\", \"failure to\" in a header).",
+      "evidence": "Title (\"Prove the bug, then ship the fix\") and all five ## headers (\"Write the failing test and fix the root cause\", \"Read the diff and push back on a line\", \"Interrogate the fix for a deeper layer\", \"There is always a next plausible answer\", \"Ship the PR\") name actions/disciplines; none is failure-word-led (no \"avoid\", \"don't\", \"failure to\" in a header).",
       "fix_hint": null,
       "blocking": false
     },
@@ -117,9 +67,69 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Backing block Arc (L121-123): \"Picks up from: orient-and-introspect... Hands off to: close-the-ticket — the shipped PR is what the close-out note links to.\" Trace close.mood_note: \"Clean hand-off to close-the-ticket... M1's arc stays open (no plan-mode or compound-move front-run); M2's grounded-competence teaching moment is untouched.\" No downstream module's named teaching moment (compound step, M2 grounded-competence) is pre-empted; mood is left open, not resolved early.",
+      "evidence": "Backing block Arc (L122-124): \"Picks up from: orient-and-introspect... Hands off to: close-the-ticket — the shipped PR is what the close-out note links to.\" Trace close.mood_note: \"Clean hand-off to close-the-ticket... M1's arc stays open (no plan-mode or compound-move front-run); M2's grounded-competence teaching moment is untouched.\" No downstream module's named teaching moment (compound step, M2 grounded-competence) is pre-empted; mood is left open, not resolved early.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 1,
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "lecture-placement rule; this is an exercise, not a lecture (template's own example case)",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6eef2af3815e2b120ef117b364f6bc9642e9b04957266c282b0cb06dcdc8d04e",
+      "carried_shape": "9fb98f5fd48507ae"
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 2,
+      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "governs lecture dosage preceding an exercise, not the exercise file itself",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6eef2af3815e2b120ef117b364f6bc9642e9b04957266c282b0cb06dcdc8d04e",
+      "carried_shape": "9fb98f5fd48507ae"
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 3,
+      "rule_lead": "No cross-module sequencing in lecture bodies.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule text scopes explicitly to \"lecture bodies\"; this is an exercise",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6eef2af3815e2b120ef117b364f6bc9642e9b04957266c282b0cb06dcdc8d04e",
+      "carried_shape": "9fb98f5fd48507ae"
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 4,
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule's carve-outs and \"#17 lecture carve-out\" inherit clause scope it to lecture headers specifically; unlike §5/§6 it does not state extension to exercise slides, so exercise headers are check_slides.md's (slides class) surface",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6eef2af3815e2b120ef117b364f6bc9642e9b04957266c282b0cb06dcdc8d04e",
+      "carried_shape": "9fb98f5fd48507ae"
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule text explicitly excludes this surface: \"Not covered: exercise prompts, prework prompts...\"",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6eef2af3815e2b120ef117b364f6bc9642e9b04957266c282b0cb06dcdc8d04e",
+      "carried_shape": "9fb98f5fd48507ae"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -128,8 +138,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "module-only section (Key Concepts); this exercise file has none",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6eef2af3815e2b120ef117b364f6bc9642e9b04957266c282b0cb06dcdc8d04e",
+      "carried_shape": "9fb98f5fd48507ae"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -138,8 +150,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "module-only section (Key Concepts); this exercise file has none",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6eef2af3815e2b120ef117b364f6bc9642e9b04957266c282b0cb06dcdc8d04e",
+      "carried_shape": "9fb98f5fd48507ae"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -148,35 +162,39 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "module-only section (What You'll Learn); this exercise file has none",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6eef2af3815e2b120ef117b364f6bc9642e9b04957266c282b0cb06dcdc8d04e",
+      "carried_shape": "9fb98f5fd48507ae"
     }
   ],
   "teaching_moment_lands": {
     "verdict": "PASS",
-    "note": "Named teaching moment = the push-back move (student's own wording on one diff line) plus the root-cause interrogation. Trace shows both firing for a mid-competence persona without needing extra scaffolding; the Optional gates on prompts 2/3 are read correctly (interrogation run, second TDD pass skipped as genuinely unneeded this bug), so the artefact isn't fragile to persona-skill variation."
+    "note": "Named teaching moment = the push-back move (student's own wording on one diff line) plus the root-cause interrogation. Trace shows both firing for a mid-competence persona without extra scaffolding; the Optional gates on prompts 2/3 are read correctly (interrogation run, second TDD pass skipped as genuinely unneeded this bug), so the artefact isn't fragile to persona-skill variation. Unaffected by the two post-trace wording trims."
   },
   "mood_summary": {
-    "phase_scores": [8],
+    "phase_scores": [
+      8
+    ],
     "close_score": 8,
     "any_below_8": false,
     "stealing_the_mood": []
   },
   "accept_notes_found": [
-    "L53 (2026-08-29): push-back bullet's compound-step mention stays — forward mechanism is wanted motivation, not a pre-announcement leak",
-    "L57 (2026-07-09): emphasis pass, one handle kept bold",
-    "L59 (2026-08-07): declaration slide is deliberately non-imperative, pairs with reading-the-return.md",
-    "L61 (2026-08-25): TDD-rationale clause cut from opening bullet, imperative alone carries it",
-    "L63 (2026-09-10): prompt 3's lead-in judged action-verb-enough (\"Send only if...\"), no expansion owed",
-    "L65 (2026-09-08): \"What you build:\" list stays three concrete objects, declined the enablement-clause swap to \"working code whose evidence you have read and challenged\"",
-    "L67: Quality stamp, compendium-audited 2026-09-06",
-    "L94-97: backing Stance — push-back-with-agent named as the exercise's own contestable claim, resting on room experience by design",
-    "L102: backing OODA last-run 2026-08-01"
+    "L56 (2026-08-29): push-back bullet's compound-step mention stays — forward mechanism is wanted motivation, not a pre-announcement leak",
+    "L60 (2026-07-09): emphasis pass, one handle kept bold",
+    "L62 (2026-08-07): declaration slide is deliberately non-imperative, pairs with reading-the-return.md",
+    "L64 (2026-08-25): TDD-rationale clause cut from opening bullet, imperative alone carries it",
+    "L66 (2026-09-10): prompt 3's lead-in judged action-verb-enough (\"Send only if...\"), no expansion owed",
+    "L68 (2026-09-08): \"What you build:\" list stays three concrete objects, declined the enablement-clause swap to a more abstract phrase",
+    "L74: Prompt progression note — commit/push/PR move intentionally prose-led, not a fenced prompt",
+    "L96-98 (backing Stance): push-back-with-agent named as the exercise's own contestable claim, resting on room experience by design",
+    "L103 (backing OODA): last-run 2026-08-01"
   ],
   "drift_rules_reread": [
-    "pedagogy §61 (Verify mechanism before proposing surgery, current wording fetched via rule.js): general judge/author-conduct rule about verifying a skill/framework mechanism before proposing a change to it. Nothing in fix-tests-first.md's body proposes or discusses a SKILL.md/framework/tool change, so the drifted wording has no bearing on this file's content — clean, no finding. (Not a story-owned rule_index either way; checked only because the dispatch named it as this class's staleness driver.)"
+    "pedagogy §61 (Verify mechanism before proposing surgery, current wording fetched via rule.js): general judge/author-conduct rule about verifying a skill/framework mechanism before proposing a change to it. Nothing in fix-tests-first.md's body proposes or discusses a SKILL.md/framework/tool change, so the drifted wording has no bearing on this file's content — clean, no finding. (Not a story-owned rule_index either way.)"
   ],
-  "notes": "Scope: story.md's own Completeness Contract names check_lectures.md as primary-owned (exhaustive) and narrows check_pedagogy.md/check_strategy_tie_in.md to specific named judgments (pedagogy §16, §27; strategy_tie_in §1-4, N/A §5-7 on non-module surfaces). The mechanically-derived class brief (derive-class-brief.js) additionally pulled in check_prompts.md (49 rules) and check_workshop.md (16 rules), plus check_strategy_tie_in §8 (added 2026-09-03, post-dates the template's rule-index mapping) — none of these are named anywhere in story.md's scope description or Completeness Contract, and per the dispatch preamble (\"evaluate only the compendiums your template puts in scope... reaching into a sibling class's rules is an unowned claim\") I did not write rows for them. check_prompts.md is Class B's (prompt-behavior/behavior class) 15-pattern catalog per check_pedagogy §43c; check_workshop.md would be N/A wholesale here anyway (no beat's output belongs to the group — this is solo TDD work) but isn't story's compendium to certify either way; check_strategy_tie_in §8 governs strategy-doc hygiene (doc vs curriculum ownership split), which reads as the strategy class's surface, not story's. This is a brief/template mismatch worth a maintainer look, not a coverage hole I should paper over by re-deriving another class's rows.\n\nTrace staleness: sim-cache content_sha (8d93ae64...) does not match either the current full-file sha (d06f39d1...) or a direct hash of body lines 1-50 taken several ways — the cache is stale relative to HEAD. Diffing 324b81d7..HEAD found exactly one body-affecting change since the trace's stated 2026-09-05 generation: L18 \"If Claude starts spinning up\" -> \"If the agent starts spinning up\" (generic-agent-phrasing swap, same pattern the trace's own regeneration_note already describes for two earlier swaps). Verified directly against the live file rather than carried from cache; the swap changes no claim, no artifact contract, and isn't quoted anywhere in the trace's persona_action/confusion_flags, so it's immaterial to every story-class judgment above. Did not run a full re-simulation for a single non-substantive wording swap; flagging here per the cached-trace clause rather than silently proceeding.",
+  "notes": "Scope: story.md's Completeness Contract names check_lectures.md as primary-owned (exhaustive over the rules the brief carries) and narrows check_pedagogy.md/check_strategy_tie_in.md to specific named judgments (pedagogy §16, §27; strategy_tie_in §1-4, N/A §5-7 parked by the prefill sidecar as module-only sections). The mechanically-derived class brief additionally pulled in check_prompts.md (49 rules), check_workshop.md (16 rules), and check_strategy_tie_in.md §8 (added 2026-09-03, doc-hygiene rule binding the strategy DOC to the curriculum, not the other direction) — none are named anywhere in story.md's scope description or Completeness Contract. Per the dispatch preamble (\"evaluate only the compendiums your template puts in scope... reaching into a sibling class's rules is an unowned claim\"), no rows were written for them, matching the prior fix-tests-first.story.json instance's identical scope call. check_workshop.md would be wholesale N/A here regardless (no beat's output belongs to a group — this is solo TDD work), but that's a strategy/pedagogy-owned certification, not story's to make.\n\nDiff since pin 0d65ff01: two body-affecting wording trims (L33 dropped \"nothing deeper to interrogate\"; L49 \"Claude\"→\"the agent\"), both immaterial to every story-class judgment above (no claim, artifact contract, or mood-relevant content changed — same pattern as two earlier generic-agent-phrasing swaps the cached trace's own regeneration_note already absorbed). Maintainer-block-only changes: Quality stamp updated to 2026-09-10, and the \"What you build\" accept-note's own prose tightened (no body change). Sim-cache content_sha re-bound to the current file (`bind-trace.js`); the trace's single phase_sha is not re-derived, since the two body diffs it now sits behind are non-substantive per the immateriality check above rather than silently carried forward unexamined — consistent with §21b (cheap-before-expensive) and the prior instance's identical call on the same file.",
   "blocking_findings_count": 0,
   "nonblocking_findings_count": 0
 }

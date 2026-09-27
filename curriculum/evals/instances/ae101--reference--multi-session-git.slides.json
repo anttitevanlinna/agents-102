@@ -1,53 +1,19 @@
 {
   "class": "slides",
-  "training": "ae101",
   "file": "curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md",
+  "training": "ae101",
   "verdict": "PASS",
-  "body_sha": "6c116b35b9367337b8742fc2b924fbb386e5db864568ca1857af38872f51838e",
-  "shape_hash": "8820c127e8f3ecfe",
-  "pin": "43e6cae1",
-  "diff_summary": "Since 43e6cae1: added §When-NOT item 4 'Coupled writes, shared decisions' (new numbered situation, bolded lead) plus its attribution line in the maintainer block; refreshed the two source-verification stamps (dates/due, re-confirmed via search-index) and the Quality line's per-class SHAs/pins. No header renamed, no chunk removed or reordered.",
+  "body_sha": "0a56f21b6d94e8e96fff86b23477399acaf9466a2365038cabf16f22ab9e82fe",
+  "shape_hash": "2ad6221632325caa",
   "chunk_map": [
-    {
-      "index": 0,
-      "heading": "Multi-session and Git: survival guide (H1 + lede)",
-      "lines": "1-6"
-    },
-    {
-      "index": 1,
-      "heading": "Why multi-session, why Git",
-      "lines": "7-14"
-    },
-    {
-      "index": 2,
-      "heading": "Worktrees vs. branches vs. clones",
-      "lines": "15-32"
-    },
-    {
-      "index": 3,
-      "heading": "Opening N Claude Code sessions on the same codebase",
-      "lines": "33-53"
-    },
-    {
-      "index": 4,
-      "heading": "Stashing, switching, and small recoveries between sessions",
-      "lines": "54-69"
-    },
-    {
-      "index": 5,
-      "heading": "Conflict recovery when two sessions edited the same file",
-      "lines": "70-77"
-    },
-    {
-      "index": 6,
-      "heading": "When NOT to run multi-session",
-      "lines": "78-89"
-    },
-    {
-      "index": 7,
-      "heading": "Close",
-      "lines": "90-93"
-    }
+    {"index": 0, "heading": "Multi-session and Git: survival guide (H1/lede)", "lines": "1-6"},
+    {"index": 1, "heading": "Why multi-session, why Git", "lines": "7-14"},
+    {"index": 2, "heading": "Worktrees vs. branches vs. clones", "lines": "15-32"},
+    {"index": 3, "heading": "Opening N Claude Code sessions on the same codebase", "lines": "33-53"},
+    {"index": 4, "heading": "Stashing, switching, and small recoveries between sessions", "lines": "54-69"},
+    {"index": 5, "heading": "Conflict recovery when two sessions edited the same file", "lines": "70-77"},
+    {"index": 6, "heading": "When NOT to run multi-session", "lines": "78-89"},
+    {"index": 7, "heading": "Close", "lines": "90-93"}
   ],
   "rules_evaluated": [
     {
@@ -55,132 +21,20 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Closest candidate: chunk 4 line 56 'A helper function you wrote in the bug-fix session is exactly what the feature session needs.' 'the bug-fix session' / 'the feature session' read as fresh labels but resolve against chunk 3's own worktree examples two slides back ('bug/issue-412 ../repo-bug-fix', 'feature/export-csv ../repo-feature', lines 39/41) — same-file reuse, not a dangling reference. Harm (reader can't follow) is absent: the descriptive names are self-explanatory even without the chunk-3 tie. Every other pronoun/demonstrative in the file (chunk1 'this', chunk2 'that directory'/'That creates', chunk5 'This is the one place') resolves to the immediately preceding noun inside the same chunk.",
+      "evidence": "chunk 4 \"Stashing, switching...\": line 56: \"A helper function you wrote in the bug-fix session is exactly what the feature session needs.\" — resolves against the bug/issue-412 and feature/export-csv worktree names introduced in chunk 3 (lines 39, 41); walked all 8 chunks sequentially, no never-named, vague, or re-chunk-stranded referent found.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": "true"
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "No chunk names another lecture/exercise/module by position. The only cross-doc reference ('Referenced from AE101 M1 homework') sits in the maintainer block below the cut, out of the judged surface. Every callback in the body (worktrees, conflict/merge, 'the loop' in chunk 6 item 3) points at earlier content in THIS file, which rule 1 governs, not rule 2.",
+      "evidence": "no cross-file or positional callback in body; closest candidate is chunk 7 \"Close\" (line 92) summarizing the whole file's own arc, which the rule names as \"a closer doing its job,\" not a violation. No body sentence points at another file by position.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 5,
-      "rule_lead": "No orphan slides.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Closest candidate: chunk 0 (title + 2-sentence lede) and chunk 7 'Close' (3 short sentences) are the shortest chunks. Chunk 0 sets the file's scope and tone ('Optional homework... no rush') — a self-carrying framing claim, not a wait-state. Chunk 7 carries its own claim (sessions-in-parallel is a skill you grow into, stated as a 3-step progression) rather than depending on the prior chunk to mean anything. Neither is context-dependent.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 6,
-      "rule_lead": "Header self-carries at projection distance.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Closest candidate: chunk 4 header 'Stashing, switching, and small recoveries between sessions' — 'switching' is only lightly covered (one clause, 'switch branches, re-commit on the right one' at line 68) versus stash/pop and reset --soft carrying most of the chunk. Still true, not contradicted: the chunk is a stash workflow plus a small recovery, and 'switching' names the recovery's last step. All other headers (chunk1 'Why multi-session, why Git', chunk2 'Worktrees vs. branches vs. clones', chunk3, chunk5, chunk6) are summarized exactly by their bodies.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 7,
-      "rule_lead": "LLM-cadence caps.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Checked all 6 sub-tics against every chunk. 'Not X. Not Y. Z.' — zero hits (grep). Self-grading superlative — zero hits (grep for 'one of the most/best', 'most useful' etc). Number-with-retraction — none; every number in the file (line 82-88's minute counts, chunk 7's 'Two/Five/Ten') is stated once, not hedged then walked back. Abstraction-noun stacks / verb-triplet-with-empty-leg — none, prose stays concrete throughout (worktrees, branches, stash, merge). Closest to the anaphora/epistrophe ban: chunk 7 line 92 'Two sessions is a milestone. Five is a habit. Ten is something you grow into.' Stays inside: the three legs are not repeated phrasing (no shared opening or closing words), and the third leg carries new concrete content — a shift from 'crossing a threshold' (milestone) and 'repetition' (habit) to an open-ended, longer-horizon claim ('something you grow into') rather than a third numeric restatement.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 8,
-      "rule_lead": "Internal dialect never lands on a slide.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "grep -niE '\\b(surface|firing|compendium|forcing function|beat|mood|Connections)\\b' over the body region: 0 hits (the two hits the pattern matched, lines 102 and 113, sit in the maintainer block below the line-94 cut). Chunk 6 item 3 uses 'the loop' (line 86) but that is arc-earned spine vocabulary per the rule's own carve-out (this file is AE101 M1 homework, and 'the loop' is the training's central named artifact, not repo-internal dialect like 'compendium' or 'surface'-as-noun).",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "All body bold spans (grep '\\*\\*'): chunk 2 lines 19/21/23 — **Branches**, **Clones**, **Worktrees** (1-word handles, one per approach on a 3-way comparison slide); chunk 6 lines 82/84/86/88 — **Ordering dependencies.**, **Greedy parallelism on a small task.** (5 words, at the ≲5 cap), **New to the loop.**, **Coupled writes, shared decisions.** (one handle per numbered situation, 4 laws on one consolidation slide). Both chunks fall under 'a law/consolidation slide may carry one handle per law' — each bold names one of several parallel, distinct concepts on an enumeration slide, not a whole lead sentence repeated bullet-to-bullet. No bold appears in narrative/demo-narration prose elsewhere in the body. Maintainer-block bold (Canonical home, Read time, Attribution, Quality — lines 96-113) is below the cut, out of scope.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md` -> 'files: 1 slides: 7 ... oversized: 0' — the checker slide-ified the file, proving it reaches a deck. Read `site/layouts/slides.js` buildDeckModel: this file has no `.phase--lecture/.phase--exercise`, so as a standalone page it takes the `buildSingleDoc` single-doc path (line 265-268), and inside the composed whole-handbook deck it is slide-ified in place under an 'R' (reference) kind-labelled divider per the 2026-07-09 fix (lines 273-276, 281-289) rather than being dropped. Both layouts reach this content.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 12,
-      "rule_lead": "Page geometry dies at the cut; reading order survives.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "grep -niE '\\b(below|above|further down|at the top|see below|a few paragraphs|this page)\\b' over the body region: 0 hits (both matches, lines 102 and 113, are maintainer-block, below the cut). Confirmed mechanically: `node scripts/check-slide-deixis.js --report` lists 5 accepted matches repo-wide and this file is not among them — no positional-deixis phrase in this file at all, accepted or otherwise.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 14,
-      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md` -> 'files: 1 slides: 7 limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits'.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 15,
-      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": null,
-      "na_reason": "rule's binary (exercise=imperative/phase-label, lecture=claim) addresses exercise and lecture files; this is a quick-reference page and its 7 body headers are topical/catalogue labels naming their subject ('Worktrees vs. branches vs. clones', 'Conflict recovery when two sessions edited the same file'), matching the carve-out's 'catalogue entries naming their subject' shape, not an imperative-vs-claim choice",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 16,
-      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Scanned all 4 numbered items in chunk 6 (only bulleted/enumerated content in the body) against the 3 classes: (a) doctrine restatement — none, each of the 4 situations (ordering deps, greedy parallelism, new-to-the-loop, coupled writes) is a distinct case, not a re-announcement of a split already stated; item 4's merge-collision point is new (implicit design-call collision, distinct from chunk 5's explicit line-conflict case). (b) self-referential design commentary — none, no line narrates the curriculum's own pedagogy. (c) aphorism kicker restating its own header or a '**The point:**' line — chunk 7's closer introduces new content (the milestone/habit/grow-into progression) rather than restating 'Close' or any stated point line; file has no '**The point:**' line anywhere.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 17,
-      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": null,
-      "na_reason": "diff since pin 43e6cae1 shows no header line changed (only a new item 4 added under the existing 'When NOT to run multi-session' header, plus source-stamp/Quality-line edits below the cut); no maintainer provenance note of the shape '(from <old-file>, header his)' anywhere in the file",
-      "fix_hint": null,
-      "blocking": false
+      "blocking": "true"
     },
     {
       "compendium": "check_slides.md",
@@ -188,11 +42,9 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "file contains no \"the X you did/saw\" backward references to a module exercise/lecture beat",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "a5c9e952f4030d1cc3e7d065d87ff9d2adcd1a2c1e4479c0320373e47036d1c9",
-      "carried_shape": "8820c127e8f3ecfe"
+      "na_reason": "reference page, not tied to a module's exercise/lecture beats — no \"the X you did/saw/caught\" language present",
+      "fix_hint": null,
+      "blocking": "true"
     },
     {
       "compendium": "check_slides.md",
@@ -200,11 +52,69 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "no guess/predict-then-reveal beat in this reference page",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "a5c9e952f4030d1cc3e7d065d87ff9d2adcd1a2c1e4479c0320373e47036d1c9",
-      "carried_shape": "8820c127e8f3ecfe"
+      "na_reason": "no guess-before-reveal or scripted-demo beat in this file",
+      "fix_hint": null,
+      "blocking": "true"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "evidence": "thinnest chunk is 7 \"Close\" (lines 90-93, 3 sentences), but each sentence carries a distinct self-standing claim (2/5/10 sessions as milestones); every other chunk carries substantially more. No chunk with only a wait-state or one context-dependent bullet.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": "false"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "evidence": "all 7 \"##\" headers match their chunk content, e.g. chunk 2 \"Worktrees vs. branches vs. clones\" (line 15) is followed by exactly three definitional paragraphs comparing those three; no header contradicted by its own chunk's content.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": "false"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "evidence": "closest candidate: line 13 \"Open N folders, open N sessions, run N tasks.\" — a near-anaphora triple, but the third leg (\"run N tasks\") carries new concrete content per the rule's own exception. No \"Not X. Not Y. Z.\" construction, no self-grading superlative, no number-with-retraction, no abstraction-noun stack, no hollow-leg verb triplet found anywhere in the body.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": "false"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no maintainer/repo dialect terms (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections) present in body prose",
+      "fix_hint": null,
+      "blocking": "true"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "evidence": "chunk 2 (lines 19, 21, 23) carries three single-word bolded handles (\"**Branches**\", \"**Clones**\", \"**Worktrees**\") on one slide, which exceeds the default ≤1-per-slide budget on its face — but this file is a reference page and the section is a prose-paragraph lookup entry set (one term defined per paragraph), matching §9's explicit lookup-surface carve-out for reference/supplementary pages; each bold stays a single word, well within the ≲ 5-word handle cap.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": "false"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "evidence": "git diff 08946dd8..HEAD -- <file> touches only the maintainer block, two lede/list wording edits (lines 3, 42) and an attribution date — no change to \"##\" structure, wrapper classes, or nesting since the prior slides PASS recorded at 08946dd8; deck-inclusion shape is unchanged from that audited state. Not independently re-rendered against the built deck in this pass (no headless-Chrome tooling run this turn) — flagged in notes.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": "true"
     },
     {
       "compendium": "check_slides.md",
@@ -212,11 +122,19 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "no \"Phase N:\"/\"N.\" step headers; the numbered lists (chunk3's flow, chunk6's three situations) are ordinary bullets, not header-level ordinals",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "a5c9e952f4030d1cc3e7d065d87ff9d2adcd1a2c1e4479c0320373e47036d1c9",
-      "carried_shape": "8820c127e8f3ecfe"
+      "na_reason": "no hand-numbered headers or Phase/Step ordinals; ordered lists present are content lists, not headers, and `check-slide-numbering.js` reported no findings for this file",
+      "fix_hint": null,
+      "blocking": "false"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-deixis.js --report → no findings for this file (report output greps empty for \"multi-session-git\"); no page-geometry pointer (\"below\", \"above\", \"at the top\", \"further down\") present in body.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": "true"
     },
     {
       "compendium": "check_slides.md",
@@ -224,19 +142,53 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "body has zero in-page or cross-doc links (signals.has_urls: false); the only links live in the maintainer block, below the cut",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "a5c9e952f4030d1cc3e7d065d87ff9d2adcd1a2c1e4479c0320373e47036d1c9",
-      "carried_shape": "8820c127e8f3ecfe"
+      "na_reason": "no in-body links present; the only links in the file live in the exempt maintainer block",
+      "fix_hint": null,
+      "blocking": "false"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md → \"files: 1  slides: 7  limits: 210 words / 6 bullets  oversized: 0\" / \"every slide is within limits\"",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": "false"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "reference page; the imperative-vs-claim split is scoped to exercise/lecture headings — this file's headers are catalogue/topic labels, the rule's own named NOT-violation shape",
+      "fix_hint": null,
+      "blocking": "false"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "no doctrine-restatement, self-referential design commentary, or aphorism-kicker bullet found. Closest candidate: line 92 \"Two sessions is a milestone. Five is a habit. Ten is something you grow into.\" — this is the file's own closer stating new content (a numeric progression), not a restatement of a header or a **The point:** line.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": "false"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "git diff 08946dd8..HEAD shows no \"##\" header line changes in this file",
+      "fix_hint": null,
+      "blocking": "false"
     }
   ],
+  "suggestions": [],
   "blocking_findings_count": 0,
-  "accept_notes_found": [
-    "L104-108: Source verification MUST-DO block (re-open both URLs before first cohort; re-confirm X-thread quote verbatim; re-confirm Pragmatic Engineer piece still lacks 'worktree'; two named fallbacks) — maintainer-block content, out of judged scope, no body claim rests unguarded by it",
-    "L109: [checked:2026-08-31 result:OK due:2026-07-31] Cherny X-thread stamp, re-confirmed via search-index title (oEmbed/TwStalker workaround noted) — due date already past pub+6mo per the stamp's own note, flagged as maintainer's own freshness bookkeeping, not a slides-class concern",
-    "L110: [checked:2026-07-12 result:OK due:2026-09-04] Pragmatic Engineer stamp, corroborates parallel-checkouts framing only",
-    "L111: [checked:2026-08-30 result:OK due:none] delegated stamp to supplementary/workflow-composition-lineages.md for item 4's single-writer shape lineage"
-  ],
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "Rule 10 evidence is diff-based (no structural change since the prior audited-PASS at 08946dd8), not re-verified against the live rendered deck in headless Chrome this pass — no browser tooling was run. If a future pass has that tooling available, re-render and diff per the rule's own preferred method. All 17 in-scope check_slides.md rules were judged directly (brief reported shape changed, 0 rows parked, nothing to merge)."
 }

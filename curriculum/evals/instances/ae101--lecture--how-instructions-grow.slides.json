@@ -1,215 +1,209 @@
 {
   "class": "slides",
   "file": "curriculum/lectures/how-instructions-grow.md",
-  "body_sha": "e3b4ff1bb3db31391ff76440b5eb5788e179146115ee6c52f81afe1e884fa689",
-  "shape_hash": "fb2d52597dcd19b3",
-  "verdict": "PASS",
   "training": "ae101",
+  "verdict": "PASS",
+  "body_sha": "e8d385b503a6513e24e9de4626e42931506fe432bba5a3df5faf034bb57f789a",
+  "shape_hash": "4ff4e9a3cb04ad89",
   "chunk_map": [
-    {
-      "index": 0,
-      "heading": "# How instructions grow (title, no lede)",
-      "lines": "1-2"
-    },
-    {
-      "index": 1,
-      "heading": "## Some rules grow into skills",
-      "lines": "3-11"
-    },
-    {
-      "index": 2,
-      "heading": "## The second loop",
-      "lines": "13-21"
-    },
-    {
-      "index": 3,
-      "heading": "## Rules have a ceiling",
-      "lines": "22-30"
-    },
-    {
-      "index": 4,
-      "heading": "## Prohibitions stop; taste steers",
-      "lines": "31-37"
-    },
-    {
-      "index": 5,
-      "heading": "## Keep your context where it loads optimally",
-      "lines": "38-47"
-    }
+    {"index": 0, "heading": "How instructions grow (H1)", "lines": "1-2"},
+    {"index": 1, "heading": "Some rules grow into skills", "lines": "3-11"},
+    {"index": 2, "heading": "The second loop", "lines": "13-20"},
+    {"index": 3, "heading": "Rules have a ceiling", "lines": "22-29"},
+    {"index": 4, "heading": "Prohibitions stop; taste steers", "lines": "31-36"},
+    {"index": 5, "heading": "Keep your context where it loads optimally", "lines": "38-47"}
   ],
   "rules_evaluated": [
     {
       "compendium": "check_slides.md",
-      "rule_index": 1,
+      "rule_index": "1",
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm checked: an unresolved referent leaves a projected slide unfollowable on its own; not present here. Sequential read of chunks 1-5 against current raw line numbers. Closest call: chunk 4 L36 'The positive form is also shorter.' has no verbatim antecedent phrase, but the immediately preceding paragraph (L34, header 'Prohibitions stop; taste steers') establishes the negative/positive contrast ('list of don'ts' / 'weak instructions' vs 'what good looks like') in the same chunk, so the noun phrase resolves against that contrast rather than floating free -- reads as a topic sentence elaborated by its own next clause ('Saying what you want...'), not a stranded referent. Chunk 5 L40 'the rule and context management prompts you have run' resolves under the module-arc-beats carve-out: `grep -n how-instructions-grow curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md` run this session -> line 40, the LAST include, directly preceded by `exercises/extract-the-task-shaping-rule.md` (line 36); `grep -n '{{prompt:' curriculum/exercises/extract-the-task-shaping-rule.md` run this session shows Phase 4 firing `{{prompt:ae101-m2-integrate-branch}}` (rule integration, L90) and Phase 5 firing `{{prompt:ae101-m2-tidier}}` (context tidy-up, L110) -- real prompts the student ran earlier in this same module's include order, matching the maintainer block's own gloss ('after the save-if-earned rule integration'). Chunk 5 L42 'This one runs on the screen' precedes the actual `{{prompt:ae101-m2-name-what-moves}}` block at L44 in the SAME chunk -- same-slide flow into content immediately below, not a cross-slide forward reference (the rule's banned forward-reference examples are all cross-slide, e.g. 'before the three things get named'). No never-named or vague-with-full-history referent found elsewhere in the file.",
+      "evidence": "chunk 3 \"Rules have a ceiling\": line 29: \"How those parts run is for your team to automate\" — \"those parts\" resolves to the immediately preceding list (\"rules that prune themselves, evidence that routes itself to the right file, a team deciding what loads for everyone\"), same chunk. chunk 4 \"Prohibitions stop; taste steers\": line 36: \"The positive form is also shorter\" — \"the positive form\" is set up by the prior sentence's contrast with prohibitions in the same chunk. No never-named or vague-with-history referent found across the deck.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 2,
+      "rule_index": "2",
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm checked: a callback that locates content by page position dies once the ## cut removes that geometry; not present. `grep -inE \"opening lecture|earlier lecture|prior lecture|previous lecture|that lecture|that module|earlier module\" curriculum/evals/body-views/ae101--lecture--how-instructions-grow.body.txt` run this session -> 0 hits. The Argyris citation (chunk 2, L16) is named directly with an inline external link, not located by curriculum position. The only in-body curriculum link (chunk 5, L46) is `[The context ceiling and token efficiency](trainings/agentic-engineering-101/supplementary/the-context-ceiling.md)` -- named by title and unpacked in the same sentence ('on what an overloaded rules file does to quality, and where the rules go instead'), exactly the shape the section 2 navigational-pointer carve-out passes (named, not located).",
+      "evidence": "chunk 5 \"Keep your context where it loads optimally\": line 46: \"Optional, before your rules files grow: [The context ceiling and token efficiency](trainings/agentic-engineering-101/supplementary/the-context-ceiling.md)\" — named by title, not located by page position. Carve-out (navigational pointer, named not located) applies. No other cross-file callback in the body.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 3,
+      "rule_index": "3",
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm checked: a re-chunk/rewrite stranding a backward reference against a beat no longer in the module. Only backward reference in the body is chunk 5 L40's 'the rule and context management prompts you have run.' Verified live this session: `grep -n '^## \\|{{prompt:' curriculum/exercises/extract-the-task-shaping-rule.md` shows Phase 4 'Save the rule if it earned itself' (L80) firing `{{prompt:ae101-m2-integrate-branch}}` (L90) and Phase 5 'Leave the repo tidier than you found it' (L98) firing `{{prompt:ae101-m2-tidier}}` (L110); `grep -n how-instructions-grow curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md` -> line 40, confirming this lecture is the module's final include, directly after `lectures/where-the-rule-could-live.md` (L38) which itself follows `extract-the-task-shaping-rule.md` (L36). The referenced beat exists in the module's current include order and precedes this file.",
+      "evidence": "chunk 5 \"Keep your context where it loads optimally\": line 40: \"Variations of the rule and context management prompts you have run work on every type of context engineering file\" — references prior module-arc prompts generically (not a single named missing beat); maintainer block confirms placement \"after the save-if-earned rule integration,\" consistent with the module's include order in curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 5,
+      "rule_index": "4",
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "PASS",
+      "evidence": "chunk 5 \"Keep your context where it loads optimally\": line 42: \"This one runs on the screen; you can run this too on your files.\" — no guess-before-reveal structure (nothing asks the reader to predict an outcome), so the primary guess/reveal-ordering failure does not apply. Muted-read check on the second failure: \"This one\" resolves forward within the SAME chunk to the prompt block that follows two lines later (line 44), which is the chunk-0/module-arc-style immediate continuation the rule permits; the sentence has a verb (\"runs\") and the referent is the prompt artifact, not solely the live screen.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": "5",
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm checked: a chunk with nothing standalone to say. Chunk 0 (bare H1, L1, no lede) is prior context only, not a projected slide -- maintainer meta (L50) states 'Five projected slides,' matching the file's five `##` sections exactly. Each of chunks 1-5 carries at least two developed sentences plus either a figure ({{figure:instructions-route}} L9, {{figure:double-loop}} L18) or a live prompt ({{prompt:ae101-m2-name-what-moves}} L44) and its own closing line: none is a bare wait-state or single context-dependent bullet.",
+      "evidence": "grep of projections.body_numbered: all 5 numbered chunks (excluding the H1-only chunk 0) carry a self-carrying claim of their own — e.g. chunk 3 line 25 \"You can make rules now. The ceiling comes sooner than you'd guess\" stands alone; chunk 4 line 34 \"A rules file that grows only from corrections turns into a list of don'ts\" stands alone. No chunk consists only of a wait-state or single context-dependent bullet.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 6,
+      "rule_index": "6",
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm checked: a header the chunk's own content contradicts. Closest call: chunk 1 header 'Some rules grow into skills' (L3) -- the hedge word 'Some' plus the chunk's own closing line (L11, 'This is one common route, not a promotion ladder') keeps the header from overclaiming a universal pipeline; content matches header exactly. Chunk 3 'Rules have a ceiling' (L22) opens 'You can make rules now. The ceiling comes sooner than you'd guess' (L25) -- direct match. Chunk 5 'Keep your context where it loads optimally' (L38) is answered by its own content: a live prompt (L44) that asks Claude to name which parts of CLAUDE.local.md/CLAUDE.md would be better moved into a skill -- the operational form of the header's claim.",
+      "evidence": "Each header is a true summary of its chunk under a sequential read: line 3 \"Some rules grow into skills\" ↔ chunk teaches capture→CLAUDE.local.md→CLAUDE.md→skill extraction; line 22 \"Rules have a ceiling\" ↔ chunk states the ceiling and its cure; line 31 \"Prohibitions stop; taste steers\" ↔ chunk contrasts prohibitions with positive/taste framing; line 38 \"Keep your context where it loads optimally\" ↔ chunk runs a prompt that names what should move between context files. No header contradicted by its own chunk's content.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 7,
+      "rule_index": "7",
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Per sub-item, run this session against `curriculum/evals/body-views/ae101--lecture--how-instructions-grow.body.txt` (confirmed source_sha-matched, current). 'Not X. Not Y. Z.': `grep -noE '\\bNot [A-Za-z]+\\.'` -> 0 hits. Anaphora/epistrophe triples: manual read of every paragraph and both figure captions -- no repeated lead/tail phrase across three legs. Self-grading superlatives (BLOCKING sub-item): `grep -niE 'one of the (most|best)|incredibl|amazing|game.?chang|remarkabl'` on body -> 0 hits. Number + own retraction: `grep -noE '[0-9]+%?'` -> only '1977' (Argyris citation year, L16) and 'ae101'/figure-key digits inside `{{prompt:}}`/`{{figure:}}` markers (L9, L18, L44) -- no numeric claim with a hedge/retraction anywhere in the prose. Abstraction-noun stacks: closest candidate 'the context information lifecycle' (chunk 3, L29) sits directly after a concrete three-item list in the same sentence ('rules that prune themselves, evidence that routes itself to the right file, a team deciding what loads for everyone') and the maintainer block (L50) frames this exact sentence as a deliberate scope boundary, not filler -- not a violation. Verb triplets: `grep -noE '\\. It [A-Za-z]+'` -> 0 hits.",
+      "evidence": "Per sub-item, checked against projections.body_numbered: no \"Not X. Not Y. Z.\" construction; no anaphora/epistrophe triple; no self-grading superlative (grep for 'one of the most' / 'most useful' etc.: 0 hits); no number-with-retraction pattern (no numbers stated in the body at all); no abstraction-noun stack swapped in for a concrete thing; no verb triplet with an empty leg. Closest candidate examined: line 25 \"every always-loaded rule rides into every session, billed against the same attention that does the work\" — single vivid clause, not a triplet or tic.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 8,
+      "rule_index": "8",
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm checked: repo/maintainer vocabulary a room can't parse. `grep -inE '\\bcompendium\\b|\\bforcing function\\b|\\bsurface\\b|\\bbeat[s]?\\b|\\bmood\\b|\\bfiring\\b|Connections' curriculum/evals/body-views/ae101--lecture--how-instructions-grow.body.txt` run this session -> 0 hits (exit 1). Both figures' all-caps diagram labels (REAL WORK, AGENT WORK, QUESTION THE RULE, DURABLE INSTRUCTIONS, SKILL.md) were also read against the same list -- none match. 'context engineering file' (chunk 5, L40) and 'the context information lifecycle' (chunk 3, L29) are ordinary/industry engineering vocabulary for an AE101 IC audience, not repo-internal shorthand -- no dialect flag.",
+      "evidence": "grep of projections.body_numbered for repo/authorial vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections-as-proper-noun): 0 hits in body. \"skill\" (line 7) is the trained term being defined, not repo-internal dialect.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 9,
+      "rule_index": "9",
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "`grep -n '\\*\\*' curriculum/evals/body-views/ae101--lecture--how-instructions-grow.body.txt` run this session -> exactly one hit, L7: 'extract it into a **skill**' (chunk 1) -- a one-word coined-term handle, well inside the <=5-word cap and the <=1-per-slide budget. Zero bold in chunks 0, 2, 3, 4, 5 of the raw body. The expanded view's '**Prompt** *(Claude Code)*' label ahead of the L44 fence is the standard Prompt-widget wrapper (`curriculum/widgets.md`), machinery chrome injected uniformly at expansion time across the whole corpus, not an authored per-file bold choice -- chunk 5 carries zero authored bold either way.",
+      "evidence": "Exactly one authored bold span in the body: line 7 \"extract it into a **skill**\" — a ≲5-word coined-term handle, one per its chunk, within the ≤1-per-slide budget. No lead sentences bolded anywhere.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 10,
+      "rule_index": "10",
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm checked: a phase-less section silently absent from the composed Slides deck. This file is included via the standard `[Lecture: How instructions grow](lectures/how-instructions-grow.md)` link in `curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md` line 40 -- the ordinary shared-library lecture-include pattern, wrapped in `.phase--lecture` like every other inlined lecture, not a prework/supplementary/reference page (the shape this rule's history concerns). `grep -n 'flag:module\\|flag:no-module'` on this file -> 0 hits: no runtime fork gates any part of this lecture out of any module variant. `node scripts/check-slide-size.js --file curriculum/lectures/how-instructions-grow.md` run this session -> 'files: 1 slides: 5' -- all five `##` sections reach the composed deck model, nothing dropped.",
+      "evidence": "`grep -n \"how-instructions-grow\" curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md` → line 40: \"[Lecture: How instructions grow](lectures/how-instructions-grow.md)\", a standalone-paragraph include-link identical in shape to every other lecture/exercise entry in that module's ordered list (all of which render inside the module's `.phase--lecture` wrapper per the shared include convention). No phase-less prose wrapper isolates this file.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 12,
+      "rule_index": "11",
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "evidence": "`node scripts/check-slide-numbering.js curriculum/lectures/how-instructions-grow.md` → \"OK — 59 files, Phase/Step numbering consistent.\" File has no `## Phase N:` / `## N.` headers to number.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": "12",
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/how-instructions-grow.md` run this session -> 'OK — 1 files, no page-geometry pointers across the slide cut.' Manual grep corroboration: `grep -niE '\\b(below|above|further down|at the top of this|see below)\\b' curriculum/evals/body-views/ae101--lecture--how-instructions-grow.body.txt` -> 0 hits. Chunk 5's 'This one runs on the screen' (L42) points at the prompt block in the SAME chunk (L44), the same-chunk shape the rule explicitly passes.",
+      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/how-instructions-grow.md` → \"OK — 1 files, no page-geometry pointers across the slide cut.\" Manual scan of body confirms no \"below/above/further down/at the top of this page\" phrasing.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 14,
+      "rule_index": "13",
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "PASS",
+      "evidence": "One in-body link (line 46, the-context-ceiling.md), already evaluated under §2 as navigation named by title, not located by page geometry. No structural crackdown applies per this section's own text (\"There is no rule here\"); nothing to cut or add on its strength.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": "14",
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/how-instructions-grow.md` run this session -> 'files: 1  slides: 5  limits: 210 words / 6 bullets; oversized: 0; every slide is within limits.'",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/how-instructions-grow.md` → \"files: 1  slides: 5  limits: 210 words / 6 bullets  oversized: 0 — every slide is within limits.\"",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 15,
+      "rule_index": "15",
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
-      "chunks_flagged": [
-        2,
-        5
-      ],
-      "evidence": "Harm checked: an imperative or unclaimed heading inside a LECTURE blurs the grammar split that lets a declarative EXERCISE heading register as a law. Chunk 2 header 'The second loop' (L13) carries no verb and reads as subject-naming, the same shape as the rule's explicit catalogue-entry carve-out ('Ralph', 'The numbers') rather than a claim -- scored PASS under that carve-out. Chunk 5 header 'Keep your context where it loads optimally' (L38) is imperative-mood, structurally identical to the rule's own exercise example ('Read the ticket for your bug'), unlike this file's other declarative headers ('Rules have a ceiling', 'Prohibitions stop; taste steers'). It does not literally fit any of the three named NOT-violation shapes. Checked the maintainer block before scoring: raw L50 names this exact heading and its placement as a direct maintainer call ('The lecture closes on *Keep your context where it loads optimally* (Antti-directed 2026-08-23; reordered to last the same day so the live return is the final thing seen...)'), so the wording is authored intent, and the closer functions as the lecture's stated governing principle (a maxim in imperative clothing, akin to 'keep it simple') rather than a procedural instruction to perform an immediate task -- the actual task-shaped ask is the separate prompt fence two lines below (L44), not the header itself. Scored PASS rather than REVISE per the preamble's harm test and this class's own severity principle (a heading-grammar tell is not an 'I cannot follow this' failure). Filed as a TODO for the maintainer: the rule's NOT-violation list does not yet name 'closing principle phrased as a general practice' as a fourth shape alongside orientation/catalogue/phase-label, and this exact heading is a clean instance of it -- worth a carve-out if the pattern recurs on other module closers, so a future judge does not have to re-derive this reasoning per file.",
-      "fix_hint": "Consider adding a fourth NOT-violation shape to rule 15 for maintainer-directed closer headings that function as a stated practice/maxim rather than a procedural instruction -- would remove the need for a per-file maintainer accept-note each time this pattern recurs.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "no guess-before-reveal construction (grep -niE 'guess|predict' body -> only idiomatic 'sooner than you'd guess', L26, not an instructional beat)",
-      "fix_hint": "",
+      "evidence": "Four headers are declarative claims (line 3 \"Some rules grow into skills\"; line 22 \"Rules have a ceiling\"; line 31 \"Prohibitions stop; taste steers\"; line 13 \"The second loop\" reads as a catalogue entry naming its subject, same shape as the rule's own non-violation examples \"Ralph\"/\"The numbers\"). Closest candidate: line 38 \"Keep your context where it loads optimally\" is imperative in surface grammar, but functions as a general maxim/law rather than a step instruction, matching the corpus's own precedent for imperative-grammar lecture headers used as aphorisms (e.g. `debugging-stuck-agents.md` \"Diagnose before repair\", `grounded.md` \"Don't pick a method. Run the candidates.\") — it stays inside on the same reading those siblings do.",
+      "na_reason": null,
+      "fix_hint": null,
       "blocking": false,
-      "carried_from": "076eb813ed4bb976ed7f6ea67476d6bb8f9d36f4049d7591bf9306dadfeff838",
-      "carried_shape": "fb2d52597dcd19b3"
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "no hand-numbered or Phase/Step headers (grep -n '^## Phase\\|^## [0-9]\\|^## Step' on file -> 0 hits); all five headings are thematic claims",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "076eb813ed4bb976ed7f6ea67476d6bb8f9d36f4049d7591bf9306dadfeff838",
-      "carried_shape": "fb2d52597dcd19b3"
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "explicitly non-gating review surface per the compendium's own text ('There is no rule here'); both in-body links already scored named-not-located under §2",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "076eb813ed4bb976ed7f6ea67476d6bb8f9d36f4049d7591bf9306dadfeff838",
-      "carried_shape": "fb2d52597dcd19b3"
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 16,
+      "rule_index": "16",
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "no bullets anywhere in the body (grep -c '^- \\|^\\* ' on body-scoped text -> 0)",
-      "fix_hint": "",
+      "na_reason": "body has no bulleted lists (prose paragraphs only)",
+      "fix_hint": null,
       "blocking": false,
-      "carried_from": "076eb813ed4bb976ed7f6ea67476d6bb8f9d36f4049d7591bf9306dadfeff838",
-      "carried_shape": "fb2d52597dcd19b3"
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": "17",
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "pinned diff renamed no `##` header in this file",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
     }
   ],
+  "suggestions": [],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "check_slides.md §9's reading-list/lookup-surface and §34-callout carve-outs, and §14's flag-fork resolution, are not triggered here (no reading-list slide, no task-sizing callout, no runtime-fork flags in this file). The pinned diff (c0c37913..HEAD) changed one body sentence in 'Rules have a ceiling' (line 29) and fully reordered/reformatted the maintainer block (Quality line moved after Lecture meta, Lecture meta condensed, Time line shortened) — no student-facing slide content beyond the one line-29 sentence changed; the maintainer-block reshuffle was evaluated for §3/§8 dialect but carries no numbered slides-class rule of its own beyond what's rowed above."
 }

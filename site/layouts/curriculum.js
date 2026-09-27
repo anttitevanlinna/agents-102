@@ -195,6 +195,16 @@
                 { slug: 'personal-site-with-guardrails', title: 'Paint by agent with guardrails' },
                 { slug: 'organisers-run-the-workshop', title: 'Organisers: run the workshop' }
             ]
+        },
+        'engineering-management-mock': {
+            label: 'Leading agentic engineering (mock)',
+            status: 'draft',          // tmux-runner proving mock; gates report, not block
+            lede: 'A one-hour mock of Leading agentic engineering: see your team, then ask before you move. Proves a new training runs on the tmux engine.',
+            runtime: 'cli',
+            modules: [
+                { slug: 'see-your-team',       title: 'See your team' },
+                { slug: 'ask-before-you-move', title: 'Ask before you move' }
+            ]
         }
     };
 

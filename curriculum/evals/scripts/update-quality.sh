@@ -134,6 +134,16 @@ surface_of() {
   esac
 }
 surface="$(surface_of "$FILE")"
+# Two trainings can own the same module slug (getting-going, prework), so a
+# training page's instances are globbed under its own prefix; shared exercises
+# and lectures keep the wildcard. Unquoted on purpose: `*` must still glob.
+owner='*'
+case "$(cd "$(dirname "$FILE")" && pwd)" in
+  */curriculum/trainings/*)
+    tdir="$(cd "$(dirname "$FILE")" && pwd)"; tdir="${tdir##*/curriculum/trainings/}"; tdir="${tdir%%/*}"
+    owner="$(node -e 'process.stdout.write(require(process.argv[1]).instanceKey(process.argv[2]))' "$SCRIPT_DIR/scan-stale-classes.js" "$tdir" 2>/dev/null)" || owner='*'
+    [[ -n "$owner" ]] || owner='*' ;;
+esac
 
 check_instance_sha() { # class state
   local cls="$1" st="$2" recorded
@@ -141,7 +151,7 @@ check_instance_sha() { # class state
   [[ -n "$file_sha" && -d "$INSTANCES_DIR" ]] || return 0
   local matches
   if [[ -n "$surface" ]]; then
-    matches=( "$INSTANCES_DIR"/*--"$surface"--"$slug"."$cls".json )
+    matches=( "$INSTANCES_DIR"/$owner--"$surface"--"$slug"."$cls".json )
   else
     matches=( "$INSTANCES_DIR"/*--"$slug"."$cls".json )
   fi
@@ -204,7 +214,7 @@ check_trace_bound() { # class state trace-suffix
   [[ "$st" == keep || "$st" == na* ]] && return 0
   [[ -n "$file_sha" && -d "$INSTANCES_DIR" ]] || return 0
   if [[ -n "$surface" ]]; then
-    matches=( "$INSTANCES_DIR"/*--"$surface"--"$slug"."$cls".json )
+    matches=( "$INSTANCES_DIR"/$owner--"$surface"--"$slug"."$cls".json )
   else
     matches=( "$INSTANCES_DIR"/*--"$slug"."$cls".json )
   fi
@@ -651,7 +661,7 @@ new_file_sha="$(shasum -a 256 "$FILE" 2>/dev/null | awk '{print $1}')"
 if [[ -n "$file_sha" && -n "$new_file_sha" && "$file_sha" != "$new_file_sha" && -d "$INSTANCES_DIR" ]]; then
   for cls in writing story technical behavior pedagogy strategy slides; do
     if [[ -n "$surface" ]]; then
-      inst=( "$INSTANCES_DIR"/*--"$surface"--"$slug"."$cls".json )
+      inst=( "$INSTANCES_DIR"/$owner--"$surface"--"$slug"."$cls".json )
     else
       inst=( "$INSTANCES_DIR"/*--"$slug"."$cls".json )
     fi
@@ -665,7 +675,7 @@ if [[ -n "$file_sha" && -n "$new_file_sha" && "$file_sha" != "$new_file_sha" && 
   # Sim traces bind to the file the same way: one that read the pre-write file
   # still describes it. The sha match is the guard, so any number may match.
   # SIM_DIR is set with the trace-binding guard above.
-  for tr in "$SIM_DIR"/*--"${surface:+$surface--}$slug".{behavior,persona}.json; do
+  for tr in "$SIM_DIR"/$owner--"${surface:+$surface--}$slug".{behavior,persona}.json; do
     [[ -e "$tr" ]] || continue
     sed -i.bak -E "s/(\"content_sha\"[[:space:]]*:[[:space:]]*\")$file_sha(\")/\1$new_file_sha\2/" "$tr"
     rm -f "$tr.bak"
@@ -677,7 +687,7 @@ if [[ -n "$file_sha" && -n "$new_file_sha" && "$file_sha" != "$new_file_sha" && 
   # As above, advance only an exact pre-write match; an already-stale sidecar
   # must stay stale and fail closed.
   VIEWS_DIR="${QUALITY_BODY_VIEWS_DIR:-$SCRIPT_DIR/../body-views}"
-  for sc in "$VIEWS_DIR"/*--"${surface:+$surface--}$slug".*.prefill.json; do
+  for sc in "$VIEWS_DIR"/$owner--"${surface:+$surface--}$slug".*.prefill.json; do
     [[ -e "$sc" ]] || continue
     sed -i.bak -E "s/(\"source_sha\"[[:space:]]*:[[:space:]]*\")$file_sha(\")/\1$new_file_sha\2/" "$sc"
     rm -f "$sc.bak"

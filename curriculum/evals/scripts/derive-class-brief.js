@@ -27,9 +27,18 @@
 // nothing, and it emits the full set and says so in the header. A judge reading
 // a brief that silently lost a rule is worse than a judge reading five files.
 //
+// `--rules <id,...>` builds the drift brief instead: only the named rules, each
+// whole (the same `ruleBody` chunking `rule.js` prints), plus the output
+// contract. It is the rulebook for a re-fire whose class is stale only because
+// those rules moved; `drift-scope.js` carries every other row. An id that does
+// not resolve, or names a compendium outside the class, is an error — a drift
+// brief missing a moved rule would re-judge nothing and read as a clean pass.
+// Ids: `<compendium>:<N>`, compendium with or without `check_` / `.md`.
+//
 // Usage:
 //   node curriculum/evals/scripts/derive-class-brief.js <file.md> <class>
 //   node curriculum/evals/scripts/derive-class-brief.js <file.md> <class> --stdout
+//   node curriculum/evals/scripts/derive-class-brief.js <file.md> <class> --rules check_pedagogy:66,writing:3 [--stdout]
 'use strict'
 const fs = require('node:fs')
 const path = require('node:path')
@@ -37,6 +46,7 @@ const { COMPENDIA } = require('./derive-body-view.js')
 const { prefill } = require('./prefill-instance.js')
 const { extraRules } = require('./extra-rules.js')
 const contract = require('./instance-contract.js')
+const { ruleBody } = require('./build-rule-index.js')
 
 const REPO = path.resolve(__dirname, '..', '..', '..')
 const MEM = require('./compendium-drift.js').MEM
@@ -70,7 +80,68 @@ function chunk(txt) {
   return { pre, rules }
 }
 
-function build(fileArg, cls) {
+// `check_pedagogy:66`, `pedagogy:66`, `check_pedagogy.md:66`, `pedagogy §66`, or
+// a queue driftRules entry `{compendium, rule}` → `{compendium: 'check_x.md', rule: '66'}`.
+function parseRuleIds(list) {
+  return (list || []).map(r => {
+    let comp, rule
+    if (r && typeof r === 'object') { comp = r.compendium; rule = r.rule ?? r.rule_index }
+    else {
+      const m = /^\s*([a-z_]+?)(?:\.md)?\s*(?::|\s§)\s*(\d+[a-z]?)\s*$/.exec(String(r))
+      if (m) { comp = m[1]; rule = m[2] }
+    }
+    if (!comp || rule === undefined || rule === null || !/^\d+[a-z]?$/.test(String(rule))) {
+      throw new Error(`cannot parse rule id ${JSON.stringify(r)} — want <compendium>:<N>`)
+    }
+    const base = String(comp).replace(/\.md$/, '').replace(/^check_/, '')
+    return { compendium: `check_${base}.md`, rule: String(rule) }
+  })
+}
+
+// The full text of each named rule, in the order given. Throws on anything it
+// cannot resolve rather than dropping it.
+function ruleBodies(cls, ids) {
+  const comps = COMPENDIA[cls]
+  if (!comps) throw new Error(`unknown class: ${cls}`)
+  const rules = parseRuleIds(ids)
+  if (!rules.length) throw new Error('--rules named no rules')
+  const cache = {}
+  return rules.map(r => {
+    const name = r.compendium.replace(/\.md$/, '')
+    if (!comps.includes(name)) throw new Error(`${r.compendium} is not in the ${cls} class (${comps.join(', ')})`)
+    if (!(name in cache)) cache[name] = fs.readFileSync(path.join(MEM, r.compendium), 'utf8')
+    const body = ruleBody(cache[name], r.rule)
+    if (!body) throw new Error(`${r.compendium} has no §${r.rule}`)
+    return { ...r, text: body.trimEnd() }
+  })
+}
+
+function buildRules(fileArg, cls, ids) {
+  const bodies = ruleBodies(cls, ids)
+  const header = [
+    `# Drift brief — ${cls} — ${path.relative(REPO, path.isAbsolute(fileArg) ? fileArg : path.join(REPO, fileArg))}`,
+    '',
+    'Only the rules below moved since this class was last judged. Each is VERBATIM',
+    'from its compendium: full lead, full body, every carve-out.',
+    '',
+    `- rules included: ${bodies.length} — ${bodies.map(b => `${b.compendium} §${b.rule}`).join(', ')}`,
+    '',
+    '**Write one row per rule below and no other rows.** Every other row of the',
+    'instance is carried by `drift-scope.js --merge`, which refuses the carry (and',
+    'sends the class to a full judge) if any carried quote has left the body.',
+  ].join('\n')
+  const parts = []
+  for (const comp of [...new Set(bodies.map(b => b.compendium))]) {
+    const own = bodies.filter(b => b.compendium === comp)
+    parts.push(`\n\n## ${comp} — ${own.length} rules\n\n${own.map(b => b.text).join('\n\n')}`)
+  }
+  if (contract.CLASSES.includes(cls)) parts.push(`\n\n${contract.render(cls)}`)
+  const out = header + parts.join('')
+  return { text: out, kept: bodies.length, dropped: 0, allBytes: out.length, keptBytes: out.length, failures: [] }
+}
+
+function build(fileArg, cls, { rules = null } = {}) {
+  if (rules !== null) return buildRules(fileArg, cls, rules)
   const comps = COMPENDIA[cls]
   if (!comps) throw new Error(`unknown class: ${cls}`)
 
@@ -153,16 +224,19 @@ function build(fileArg, cls) {
   return { text: out, kept, dropped, allBytes, keptBytes: out.length, failures }
 }
 
-module.exports = { build, chunk }
+module.exports = { build, chunk, parseRuleIds, ruleBodies }
 
 if (require.main === module) {
   const [file, cls, ...rest] = process.argv.slice(2)
   if (!file || !cls) {
-    console.error('usage: derive-class-brief.js <file.md> <class> [--stdout]')
+    console.error('usage: derive-class-brief.js <file.md> <class> [--rules <id,...>] [--stdout]')
     process.exit(1)
   }
+  const ri = rest.indexOf('--rules')
+  if (ri !== -1 && !rest[ri + 1]) { console.error('FAIL: --rules needs a comma-separated list'); process.exit(1) }
+  const rules = ri === -1 ? null : rest[ri + 1].split(',').filter(Boolean)
   let r
-  try { r = build(file, cls) } catch (e) { console.error(`FAIL: ${e.message}`); process.exit(1) }
+  try { r = build(file, cls, { rules }) } catch (e) { console.error(`FAIL: ${e.message}`); process.exit(1) }
   // No process.exit after a pipe write: exit drops the unflushed tail of a large brief.
   if (rest.includes('--stdout')) { process.stdout.write(r.text); return }
   fs.mkdirSync(OUT_DIR, { recursive: true })
@@ -173,7 +247,7 @@ if (require.main === module) {
   // renamed to fix on 2026-08-25 — one artefact got the fix, its sibling did not.
   const { derive } = require('./derive-body-view.js')
   const slug = derive(file, { write: false }).slug
-  const p = path.join(OUT_DIR, `${slug}.${cls}.brief.md`)
+  const p = path.join(OUT_DIR, `${slug}.${cls}${rules ? '.drift' : ''}.brief.md`)
   fs.writeFileSync(p, r.text)
   const pct = r.allBytes ? (100 * (r.allBytes - r.keptBytes) / r.allBytes).toFixed(1) : '0.0'
   console.log(`${path.relative(REPO, p)}  rules kept=${r.kept} dropped=${r.dropped}  ${r.allBytes}B -> ${r.keptBytes}B (${pct}% less)`)

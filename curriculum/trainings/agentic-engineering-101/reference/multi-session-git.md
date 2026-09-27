@@ -93,8 +93,8 @@ Two sessions is a milestone. Five is a habit. Ten is something you grow into.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 technical@08946dd8 behavior@b3143a4 pedagogy@43e6cae1 strategy@08946dd8 slides@08946dd8)
-- judges @08946dd8: writing PASS (2 findings see instances/ae101--reference--multi-session-git.writing.json), story PASS, technical PASS (verify-refuted, 1 finding see instances/ae101--reference--multi-session-git.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-27 (writing@8b5de788 story@8b5de788 technical@8b5de788 behavior@b3143a4 pedagogy@d45aaed2 strategy@8b5de788 slides@8b5de788)
+- judges @d45aaed2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Canonical home:** `curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md`. Referenced from AE101 M1 homework.
 

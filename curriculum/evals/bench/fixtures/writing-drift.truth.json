@@ -1,0 +1,38 @@
+{
+ "name": "writing-drift",
+ "base": "curriculum/exercises/compound-and-close.md",
+ "fixture": "curriculum/evals/bench/fixtures/writing-drift.md",
+ "source_sha": "b4c003ffd922aec52e501c7d1068eaecbf4a701b4b74001457e72d798bae7abf",
+ "planted": [
+  {
+   "id": "session-biography",
+   "rule": "check_writing.md §3",
+   "line": 5,
+   "text": "This section previously said something different; it was fixed on 2026-01-14.",
+   "detect": "previously said|2026-01-14",
+   "flags": "i"
+  },
+  {
+   "id": "banned-word",
+   "rule": "check_writing.md §1",
+   "line": 19,
+   "text": "This is crucially the step that changes how the run behaves.",
+   "detect": "crucially",
+   "flags": "i"
+  }
+ ],
+ "drift": {
+  "cls": "writing",
+  "moved": "check_writing:3",
+  "moved_plant": "session-biography",
+  "kept_plant": "banned-word",
+  "slug": "shared--file--writing-drift",
+  "seed": "curriculum/evals/bench/fixtures/writing-drift.seed.json",
+  "instance": "curriculum/evals/instances/shared--file--writing-drift.writing.json",
+  "quoted_guard": {
+   "quoted": "Now compound the session",
+   "route": "full",
+   "reason": "quote no longer in the body: \"Now compound the session\""
+  }
+ }
+}

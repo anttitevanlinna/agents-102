@@ -279,7 +279,7 @@ Scoped, named capabilities. Markdown file with frontmatter + instructions, in a 
 - **Skill:** task-specific, loads on demand, reusable move (*"review this against our security policy"*). Its body stays in context once loaded, so keep it short
 - **Rule:** always-on (or path-scoped), constraints Claude should honour whenever active
 <!--flag:module:earn-the-trust-->
-**AE101 cross-refs:** M3 ships two curated skills (`access-control-analysis`, `stride`) and you author one (`test-strategy`).<!--/flag:module:earn-the-trust--><!--flag:module:spot-gaps-build-the-loop--> M6 hands you a handoff prompt that authors more, one per recurring shape in your stack.<!--/flag:module:spot-gaps-build-the-loop-->
+**AE101 cross-refs:** M3 ships two curated skills (`access-control-analysis`, `stride`) and you author one (`test-strategy`).<!--/flag:module:earn-the-trust--><!--flag:module:spot-gaps-build-the-loop--> M6 hands you a handoff prompt that picks the one skill most worth building in your stack and builds it with you.<!--/flag:module:spot-gaps-build-the-loop-->
 
 Docs: [skills](https://code.claude.com/docs/en/skills).
 
@@ -344,7 +344,7 @@ The scheduler or condition invokes the skill. The skill is the thing that catche
 
 **Continuous polish loop.** `/loop 3m` while editing → prompt reads *"Invoke the `tighten-draft` skill on the current file. Propose changes."* The skill is the move; the loop is the rhythm.
 
-**Rule-drift monitor.** Desktop local task weekly → prompt reads *"Invoke the `rule-drift` skill on the project root. Flag rules in `CLAUDE.md` that the last week of commits contradicted."*<!--flag:module:spot-gaps-build-the-loop--> The skills your M6 handoff prompt authors are strong candidates to wire into a schedule like this one.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop--> A skill you author yourself is a strong candidate to wire into a schedule like this one.<!--/flag:no-module:spot-gaps-build-the-loop-->
+**Rule-drift monitor.** Desktop local task weekly → prompt reads *"Invoke the `rule-drift` skill on the project root. Flag rules in `CLAUDE.md` that the last week of commits contradicted."*<!--flag:module:spot-gaps-build-the-loop--> The skill your M6 handoff prompt builds is a strong candidate to wire into a schedule like this one.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop--> A skill you author yourself is a strong candidate to wire into a schedule like this one.<!--/flag:no-module:spot-gaps-build-the-loop-->
 
 ## 23. Long-running shapes: session lifecycle gotchas
 
@@ -502,7 +502,7 @@ A hook is a small script the runtime invokes on a named event. The script fires 
 | `PreCompact` | Before auto-compaction summarises history | Capture mid-context state to disk before it folds into the summary |
 | `InstructionsLoaded` | When a `CLAUDE.md` or `.claude/rules/*.md` file loads into context, at session start and on lazy load | Log exactly which instruction files loaded and when, the tool for debugging a path-scoped rule that isn't firing |
 
-AE101's own curriculum repository wires five of these in its `.claude/settings.json` (SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, Stop) — the events table is read off a working config, not a spec.
+AE101's own curriculum repository wires five of these in its `.claude/settings.json` (SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, Stop). The events table is read off a working config, not a spec.
 
 ## 36. Hooks: config shape and two examples
 

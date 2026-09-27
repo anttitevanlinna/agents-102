@@ -1,30 +1,30 @@
 {
   "class": "slides",
   "file": "curriculum/exercises/open-the-side-quest.md",
-  "body_sha": "46f30174d6375ac13acb940c208a7eb798220bbff3858508a66ba73dab00e2a5",
-  "shape_hash": "3cf5ace7aa38ed0f",
-  "verdict": "PASS",
   "training": "ae101",
+  "verdict": "PASS",
+  "body_sha": "062b0f03bda02dee5fc8fba6fbdd1c19134e54ca6cfb1fca87e48dc18bf1ed62",
+  "shape_hash": "3cf5ace7aa38ed0f",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "H1/lede — Two windows on one codebase",
-      "lines": "1-11"
+      "heading": "Two windows on one codebase (H1/lede)",
+      "lines": "1-12"
     },
     {
       "index": 1,
       "heading": "Fork the side worktree from your security lane",
-      "lines": "13-29"
+      "lines": "13-30"
     },
     {
       "index": 2,
       "heading": "Read back the worktree path",
-      "lines": "31-33"
+      "lines": "31-34"
     },
     {
       "index": 3,
       "heading": "Open the quality lane in the new worktree",
-      "lines": "35-48"
+      "lines": "35-49"
     },
     {
       "index": 4,
@@ -38,130 +38,154 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Chunk 1 line 15 'Access mapping, STRIDE, and the ADR all live here' resolves against the enclosing module's `## What You'll Learn` (earn-the-trust.md line 23: 'Invoke curated access-control-analysis and STRIDE skills... write the decision as an ADR') via §1's module-include-order carve-out — verified this exercise is the module's FIRST `## Start here` link (earn-the-trust.md line 33, before 'Map the access surface' at line 37 and 'Threat-model with STRIDE' at line 39), so this draws only on module signposting, never a later sibling exercise. Chunk 3 line 45 'the test-strategy skill' resolves the same way against earn-the-trust.md line 25 ('Author a test-strategy skill through conversation with Claude'). Chunk 4 line 53's 'the test-strategy skill' resolves in-file to chunk 3's own naming. Chunk 4 line 52 'them' (the two windows) resolves against the chunk's own header, 'Set the two windows side by side' (header counts as in-chunk) — checked specifically because the 2026-08-30 lean pass (`git log -p -1`) cut the prior redundant 'Two windows, side by side.' bullet that used to also name it. 'The sibling worktree' (chunk 2 line 33, chunk 3 line 37) resolves back to chunk 1 line 23's definition. No unresolved referent in the current body.",
+      "evidence": "line 45: \"Authoring and invoking the test-strategy skill both happen in this window\" — first mention of 'the test-strategy skill' in this file's body, but the compendium's own worked example for the arc-earned/module-include-order carve-out names exactly this phrase ('*\"the test-strategy skill\"* named in What You'll Learn'). Rest of file resolves cleanly: line 15 'it' = 'the main quest' (chunk 0 line 5); line 25 'It branches off' = 'the side worktree' (same sentence); line 33 'That path' = 'the sibling worktree path' (same chunk); line 53 'the test-strategy skill' reuses the now-established term.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Only cross-file pointer in the body is chunk 1 line 23: 'The [Multi-session and Git survival guide](../trainings/agentic-engineering-101/reference/multi-session-git.md) carries the longer read.' Named by title, not located by page position — matches the §2 navigational-pointer carve-out. No other file named anywhere in the body.",
+      "evidence": "line 23: only cross-file reference in the body — '[Multi-session and Git survival guide](../trainings/agentic-engineering-101/reference/multi-session-git.md)' — named by title in the same sentence, not located by page position. Navigational-pointer carve-out applies; no other file is referenced anywhere in the body.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Closest candidate is chunk 2 ('Read back the worktree path', lines 31-33), the file's shortest chunk: 'Claude reports the sibling worktree path. That path is where the second session opens.' Carries one self-standing claim (destination of the next session), not a bare wait-state fragment. The maintainer block also carries a direct dated accept-note on exactly this slide (line 57): 'Carded and kept (Antti 2026-08-25): the Read back the worktree path slide — the explicit read-back beat stays; do not re-card.'",
+      "evidence": "chunk 2 'Read back the worktree path' (lines 31-34) is the thinnest chunk — one bullet, 'Claude reports the sibling worktree path. That path is where the second session opens.' It states a self-carrying claim (what gets reported, what it's for), not a bare wait-state. Maintainer block (L60) already carries a dated accept-note on exactly this slide: 'Carded and kept (Antti 2026-08-25): the *Read back the worktree path* slide — the explicit read-back beat stays; do not re-card.'",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "All four `##` headers are literally true of their chunk content: 'Fork the side worktree from your security lane' (chunk 1) opens the m3-security session and forks via the prompt block; 'Read back the worktree path' (chunk 2) is exactly that beat; 'Open the quality lane in the new worktree' (chunk 3) opens the m3-quality session there; 'Set the two windows side by side' (chunk 4) is the arrangement instruction. None contradicted by chunk body.",
+      "evidence": "All 4 `##` headers are literally true of their chunk content: 'Fork the side worktree...' (chunk 1 forks the worktree), 'Read back the worktree path' (chunk 2 reads it back), 'Open the quality lane in the new worktree' (chunk 3 opens the second session there), 'Set the two windows side by side' (chunk 4 arranges them). No header is contradicted by its own chunk.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Checked all five sub-items against every chunk including the lede. `grep -nE 'Not [A-Z][a-z]+\\. Not' body.txt` → 0. No anaphora/epistrophe triples anywhere. No self-grading superlative — closest is chunk 0 line 9, 'two Claude Code sessions running side by side on one git history', a plain factual description, not a value claim. No number-with-retraction (only number in body is '~5 minutes' at line 3, never retracted). No abstraction-noun stacks — vocabulary stays concrete throughout (worktree, branch, window, session, skill, path). No verb-triplet construction present to test.",
+      "evidence": "`grep -c '—'` -> 0 in body (view greps, planted_proof CLEAN). No 'Not X. Not Y. Z.' construction, no anaphora/epistrophe triple, no self-grading superlative, no number-with-retraction, no abstraction-noun stack, no verb triplet anywhere in the body. Closest candidate checked: line 53 'The move this module installs...' is a single declarative clause, not a triplet or superlative.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "`grep -nE '\\bsurface\\b|\\bcompendium\\b|\\bforcing function\\b|\\bbeat\\b|\\bmood\\b|\\bConnections\\b|\\bfiring\\b' body.txt` → 0 hits. 'Lane' (main lane / side-quest lane / quality lane) is this exercise's own self-defined game vocabulary (introduced in-file at lines 5/15/37), an ordinary engineering metaphor (cf. 'swimlane'), not repo-internal maintainer dialect like 'surface'-as-noun or 'compendium'.",
+      "evidence": "`grep -inE 'surface|firing|compendium|forcing function|\\bbeat\\b|\\bmood\\b|connections' curriculum/exercises/open-the-side-quest.md` (lines 1-54) -> 0 hits.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "`grep -n '\\*\\*' body.txt` returns exactly six bolded spans: lines 3/7/9/11 ('Time:', 'What you do:', 'What you build:', 'The point:') and lines 17/39 ('Session' widget labels) — every one a ≤3-word structural chrome label, zero narrative bold anywhere in the body, zero handle-bolds to weigh against the ≤1-per-slide budget. Maintainer block line 63 carries a direct dated accept-note naming this rule: 'no bold in the body — this file has no named moves or menu handles to mark... Per check_slides.md §9.'",
+      "evidence": "`grep -n '\\*\\*'` over the body (lines 1-54) -> only lines 3, 7, 9, 11, 17, 39: all are the Time:/What you do:/What you build:/The point:/Session chrome labels, none are handle-bolding inside prose. Maintainer block (L66) attests: 'no bold in the body — this file has no named moves or menu handles to mark.'",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Checked earn-the-trust.md (the enclosing module): the exercise is included via a plain standalone-paragraph link '[Exercise: Open the side quest](exercises/open-the-side-quest.md)' under `## Start here` (module line 33) — the ordinary include shape that reaches `.phase--exercise` wrapping and the composed deck, not a phase-less prose section or a dropped supplementary/reference page. Cross-checked with `node scripts/check-slide-size.js --file curriculum/exercises/open-the-side-quest.md` (uses `site/layouts/curriculum.js`, the module registry) → 'files: 1 slides: 4', confirming the renderer's own module-registry path recognizes this file as in-deck.",
+      "evidence": "Whole file is a single exercise body under the standard curriculum/exercises/ include pattern (wrapped in `.phase--exercise` by the build), same shape as every other AE101 exercise in this set — no phase-less prose section sits outside that wrapper here, so nothing in this body is at risk of the long-read/deck presence split.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/exercises/open-the-side-quest.md` → 'OK — 1 files, no page-geometry pointers across the slide cut.' Manual grep for below/above/further down/at the top/see below across the body confirms 0 hits.",
+      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/exercises/open-the-side-quest.md` -> \"OK — 1 files, no page-geometry pointers across the slide cut.\"",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 13,
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Single in-body link (chunk 1 line 23, multi-session-git reference) is named by title ('Multi-session and Git survival guide'), not located by page position — satisfies the surviving naming requirement independent of the settled mechanism question. Confirmed present in `node scripts/check-slide-deixis.js --links` inventory output. This rule is a review surface, never a gate.",
+      "evidence": "`node scripts/check-slide-deixis.js --links --file curriculum/exercises/open-the-side-quest.md` -> one in-body link, line 23, 'Multi-session and Git survival guide', named by title in the sentence, not located by page geometry. Review surface only, not a gate.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/open-the-side-quest.md` → 'files: 1  slides: 4  limits: 210 words / 6 bullets' / 'oversized: 0' / '✓ every slide is within limits'. No accept-note needed.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/exercises/open-the-side-quest.md` -> \"slides: 4  limits: 210 words / 6 bullets  oversized: 0 -- every slide is within limits\".",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "All four body headers are imperative ('Fork the side worktree from your security lane', 'Read back the worktree path', 'Open the quality lane in the new worktree', 'Set the two windows side by side') — correct mood for an exercise file; no declarative-claim heading present.",
+      "evidence": "This is an exercise file: all 4 `##` headings are imperative/phase-label ('Fork the side worktree...', 'Read back the worktree path', 'Open the quality lane...', 'Set the two windows side by side') — none are declarative claims, matching the exercise-heading grammar this rule requires.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 16,
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Checked all bullets against the three sub-classes. Chunk 4 line 53's 'The move this module installs: when one window kicks off a long-running prompt, the other is where you work' echoes chunk 0 line 11's '**The point:**' — the shape a prior instance of this class (body_sha 4697e007…) flagged as sub-class (c), aphorism kicker. That prior finding is now superseded: `git log -p -1` on this file shows a 2026-08-30 maintainer edit added a dated accept-note directly addressing this exact line (line 59): '\"The move this module installs:\" lead-in stays (Antti 2026-08-30, family ruling with map-the-access-surface.md L51): theory-spine recall at the moment of use, not self-narration — check_student_facing.md §33 judges should not re-flag either twin.' Rule 16(b)'s own text names itself 'the slides-class face of check_student_facing.md §33', so this accept-note binds here directly, not by analogy. Remaining bullets all earn their slot: worktree definition (line 23), CLAUDE.local.md non-sync (line 24), base-branch choice (line 25), path destination (line 33), skill-crossing mechanism (line 45) each state a fact, decision point, or instruction not said elsewhere.",
+      "evidence": "Closest candidate checked: line 53 'The move this module installs: when one window kicks off a long-running prompt, the other is where you work' restates line 11's 'The point' but applies it (names who does what, in which window) rather than re-announcing it inertly. Maintainer block (L62) carries a dated accept-note on this exact lead-in: 'family ruling with map-the-access-surface.md L51: theory-spine recall at the moment of use, not self-narration.' No self-referential pedagogy commentary or aphorism-kicker bullet found elsewhere in the body.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "`git diff 9edae2ef..HEAD -- curriculum/exercises/open-the-side-quest.md` touches only the maintainer 'Quality:' compendium-audited stamp line (dates/hashes 2026-08-29 -> 2026-09-06); no `##` heading line changed. No maintainer provenance note of the '(from <old-file>, header X)' shape exists for this file.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
@@ -171,8 +195,8 @@
       "evidence": "No 'the X you did/saw/caught' construction anywhere in the body. Verified against earn-the-trust.md line 33: this exercise is the module's first `## Start here` link, so it has no prior in-module beat available to reference.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "4697e007779e1627866c1a2a2013d31545bdac84926a7ef89a15279039ddd780",
-      "carried_shape": "c4f5abf7d453d963"
+      "carried_from": "46f30174d6375ac13acb940c208a7eb798220bbff3858508a66ba73dab00e2a5",
+      "carried_shape": "3cf5ace7aa38ed0f"
     },
     {
       "compendium": "check_slides.md",
@@ -182,8 +206,8 @@
       "evidence": "No guess-before-reveal construction anywhere in the file — this exercise is procedural setup (fork worktree, open second session, arrange windows), no 'take a guess' beat present.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "4697e007779e1627866c1a2a2013d31545bdac84926a7ef89a15279039ddd780",
-      "carried_shape": "c4f5abf7d453d963"
+      "carried_from": "46f30174d6375ac13acb940c208a7eb798220bbff3858508a66ba73dab00e2a5",
+      "carried_shape": "3cf5ace7aa38ed0f"
     },
     {
       "compendium": "check_slides.md",
@@ -193,10 +217,12 @@
       "evidence": "Ran `node scripts/check-slide-numbering.js` and grepped output for this file's slug — no lines returned. Headers are imperative labels ('Fork...', 'Read back...', 'Open...', 'Set...'), not `## Phase N:` / `## N.` step headers, so this rule's numbered-step scheme doesn't apply.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "4697e007779e1627866c1a2a2013d31545bdac84926a7ef89a15279039ddd780",
-      "carried_shape": "c4f5abf7d453d963"
+      "carried_from": "46f30174d6375ac13acb940c208a7eb798220bbff3858508a66ba73dab00e2a5",
+      "carried_shape": "3cf5ace7aa38ed0f"
     }
   ],
+  "suggestions": [],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "Rules 3, 4, 11 are excluded from this brief and answered by the prefill sidecar (shape_hash 3cf5ace7aa38ed0f) as N/A — no backward-reference-to-a-beat construction, no live-demo guess/reveal beat, no numbered-step header scheme in this file. Independently re-read at current wording per the rule-drift pin and confirmed N/A both ways (see drift_rules_reread); merged in via --merge below, not re-authored here."
 }

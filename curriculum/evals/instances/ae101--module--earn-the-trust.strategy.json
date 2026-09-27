@@ -2,10 +2,10 @@
   "class": "strategy",
   "training": "ae101",
   "file": "curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
-  "verdict": "REVISE",
-  "body_sha": "2c33ac0466765100786ca688ce34de52758972c8734b4e2551bb7bad7b84842e",
-  "shape_hash": "ad713f75cd98040d",
-  "strategy_doc_section_loaded": "content-strategy-agentic-engineering-101.md — Mood arc; M3 in detail — earn the trust (Quality + Security), before you need it; the four-read practitioner arc note under M1 in detail",
+  "verdict": "PASS",
+  "body_sha": "b838de7a9f3f35c58bc3e2c8e81ab8b4dd7c5ccc9249e70602ed4ca3e6efa80f",
+  "shape_hash": "dc385dd14447f7f6",
+  "strategy_doc_section_loaded": "content-strategy-agentic-engineering-101.md — M3 in detail (L322-350), the four-read practitioner arc note (L298), recurring-themes/subagent-primitive line (L929)",
   "rules_evaluated": [
     {
       "compendium": "strategy.md",
@@ -13,7 +13,7 @@
       "judge_owned": true,
       "rule_lead": "Big Idea match",
       "verdict": "PASS",
-      "evidence": "L5-6: 'Trust isn't watching harder. It's verification you can run without being there.' Doc Mood arc places M3 at 'earned trust'; M3-in-detail: 'The discipline is installed before M4's first unwatched send-off, so nobody feels exposed when the long run finally happens' and 'What M3 refuses: frame Q+S as compliance (they're infrastructure).' The Big Idea's reframe away from surveillance toward runnable verification is the same move the doc describes — trust as infrastructure you built, not vigilance you perform. No drift.",
+      "evidence": "L5-6: 'Trust isn't watching harder. It's verification you can run without being there.' Doc M3-in-detail: 'The discipline is installed before M4's first unwatched send-off, so nobody feels exposed when the long run finally happens.' Doc mood-arc places M3 at earned trust and the doc's own M3 section frames Q+S as infrastructure, never compliance. The Big Idea's reframe from watching to runnable verification is the same move; no drift.",
       "fix_hint": null,
       "blocking": false
     },
@@ -22,62 +22,8 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "One-sentence state: the student leaves having earned two sign-offs (staff engineer on the test-strategy skill, CISO on the STRIDE/ADR decision) rather than having survived a compliance check, and that earned-not-watched trust is what lets M4 send a session off unwatched without anyone feeling exposed. L106-109 'Next': 'Two signatures, earned... Module 4 turns the discipline inward' matches doc's 'earned trust' and its own M4-bridge line verbatim in spirit. Mood is honoured, not resolved early — M4 still owns the actual send-off experience; this file only installs the discipline.",
+      "evidence": "One-sentence state: the student leaves this module having earned two sign-offs (staff engineer on the test-strategy skill, CISO on the STRIDE/ADR decision), not having survived a compliance check, and that earned-not-watched trust is what lets M4 send a session off unwatched without anyone feeling exposed. L106-109 '## Next': 'Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward' matches doc's earned-trust mood and its own M3→M4 bridge language. Mood is installed, not resolved early — M4 still owns the send-off experience itself.",
       "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 3,
-      "rule_lead": "Lead with discipline, not failure mode.",
-      "verdict": "PASS",
-      "evidence": "Big Idea leads with 'verification,' not a failure word. All section headers (Earn the trust / Sharpen the skill from evidence / Read the sharpen with a skeptical eye / Clear the session / Key Concepts / Optional challenges / Bring to Module 4 / Next) are discipline- or action-named. 'STRIDE' (L39) and 'the lethal trifecta' (L16) read failure-shaped but are named canonical results (Kohnfelder & Garg 1999 memo; Willison's trifecta) — exactly the carve-out's own worked example.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check.",
-      "verdict": "REVISE",
-      "evidence": "Two claims in this file contradict a cross-exercise design bet the strategy doc states explicitly, and both are independently confirmed against the sibling exercise files themselves (not just the doc). (1) L23 WYL bullet: 'Invoke curated access-control-analysis and STRIDE skills on a feature you're shipping (each as a subagent, fresh context)'. Doc M3-in-detail: 'Subagents introduced, deliberately — and only once. The STRIDE pass is the dispatch... The access-surface pass invokes its skill in-thread... That three-way contrast is half the pedagogy: the student leaves M3 knowing which jobs belong in which thread, not merely that subagents exist.' Confirmed current in the actual exercise: curriculum/exercises/map-the-access-surface.md maintainer block, dated 2026-09-04: 'This exercise invokes its skill in-thread, and that is the design... Do not add a dispatch clause here to match the module's subagent theme.' 'Each as a subagent' misstates the design the doc calls half the pedagogy. (2) L26 WYL bullet ('invoke it on the security-tested feature') plus maintainer Push-back-moves L152 and Per-phase-failure-mode table L196 (both: 'run the skill on the feature you just security-tested'). Doc M3-in-detail: 'Invocation closes the loop, and it runs on the whole codebase in the quality-side worktree rather than on the security-tested feature: the skill is a claim about how testing works here, so the honest test of it is the repo, not one feature.' Confirmed in the actual exercise: curriculum/exercises/author-test-strategy-skill.md L34 header 'Phase 2: Invoke the skill on this codebase', L39 'this worktree holds the full codebase. Invoke it on the code as it stands in front of you.' Harm present, not hypothetical: `pre-cohort-todos.md` already logs the identical 'security-tested feature' phrase as inaccurate in the `ae101-m3-sharpen-skill` prompt fence and left it unchanged only because a fresh session recovers by grounding on the ADR — that accept-note covers the PROMPT fence, not this file's own WYL bullet or its two trainer-script tables (Push-back-moves, Decision-points), which a trainer reads directly and would use to coach students toward the wrong invocation target on both counts (wrong thread for access-control-analysis, wrong scope for the test-strategy invocation).",
-      "fix_hint": "L23: scope 'each as a subagent' to STRIDE only — access-control-analysis runs in-thread per map-the-access-surface.md's own maintainer note. L26, L152, L196: replace 'invoke...on the security-tested feature' with 'invoke...on this codebase' (the quality-side worktree), matching author-test-strategy-skill.md Phase 2 and the doc's stated reasoning.",
-      "blocking": true
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 5,
-      "rule_lead": "Strategic themes recur in Key Concepts.",
-      "verdict": "PASS",
-      "evidence": "Key Concepts (L74-81) surfaces at least three theme-instances in module-specific language: capture-your-world — 'A test-strategy skill authored on your codebase is worth more than a perfect generic one. Your codebase teaches the skill, not the manual.' (L78); self-aware + grain-of-salt — 'Ask the agent what's weakest about its own output; it surfaces what your read skips. Same-window self-audits under-flag, so push past the first answer.' (L79); mirror — 'an untested skill in the team kit is slop-sharing' (L80, quality of practice reflected in what gets shared). Clears the 2-3 floor.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 6,
-      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
-      "verdict": "PASS",
-      "evidence": "§§3/4/5 gates clear on the KC bullets themselves (no failure-mode leads, no downstream front-run inside Key Concepts, themes present per row 5). Two compact closing clauses read as breadcrumbs, within the 1-3 ceiling: 'Your codebase teaches the skill, not the manual.' (L78, capture-your-world essence, portable) and 'push past the first answer' (L79, self-aware/grain-of-salt essence). No 'Remember:' label, no bold wrapper, plain engineer register throughout. Checked the two adjacent modules directly (grep on their own Key Concepts sections): plan-mode-done-right.md's breadcrumbs ('Assume about 10% of it is wrong and go find which part'; Argyris double-loop) and run-the-first-experiment.md's ('Traces are data. Stopping a session that has gone off the rails is reading, not failing.') land different themes in different phrasing — no verbatim or near-verbatim repeat with this file's two breadcrumbs.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 7,
-      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
-      "verdict": "PASS",
-      "evidence": "Rule re-read at current wording via `node curriculum/evals/scripts/rule.js strategy_tie_in 7` — text is identical to the class brief; no drift in the rule itself since pin 85515fa0. All six WYL bullets (L22-27) lead with a concrete verb + named artifact (Fork/Invoke/Split/Author/Test/Ship a worktree/skills/jobs/a skill/the skill/one skill). No Bloom-tag parentheticals, no 'by mapping/by walking' mechanism tails, no author-defence asides, no didactic taxonomy-stamp colons. Parenthetical operational detail ('each as a subagent, fresh context' L23; 'one question at a time' L25) stays one line per carve-out (c). No theme-verb (Compound/Earn/Mirror/Ground/Introspect/Sharpen/Capture) leads any bullet, including the module's own title-verb 'Earn' — correct per the rule's grammar-fit check (these are concrete artifact lists, not abstract nouns of acquisition) and per the rule's own instruction not to file absence as a finding. Note: L23's and L26's factual accuracy against actual invocation mechanics is filed under rule 4 above as a strategy-fidelity defect, not a §7 register problem — the register/apparatus shape of both bullets is clean; §7 governs shape, not truth of the claim.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 8,
-      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum.",
-      "verdict": "REVISE",
-      "evidence": "Doc's 'four-read practitioner arc' note (content-strategy-agentic-engineering-101.md, under M1-in-detail, 'wired 2026-07-30') states: 'da Costa's backpressure essay before M6 (flag-gated to sequences that run M6).' This is now a stale wiring-order claim, contradicted by this file's own maintainer block: '`## Pre-read before Module 4` carries da Costa's Backpressure Is All You Need (2026-08-21, Antti-directed)... This is the module that owns the check' (L119, L125 source stamp). Corroborated corpus-wide: run-the-first-experiment.md (M4) echoes the same URL in its Prework and fences out any alternative; plan-mode-done-right.md assigns it for cuts that drop M3. The doc's inventory line predates and was superseded by the later, dated, Antti-directed placement decision recorded in this file's own maintainer block — the doc restates a wiring-order structural claim (§8's own restricted category) rather than the strategic bet, and that copy rotted. This is a doc-side fix, not a defect in earn-the-trust.md's body, so it does not block this file's verdict.",
-      "fix_hint": "Update content-strategy-agentic-engineering-101.md's four-read-practitioner-arc line: da Costa's backpressure essay lands before M4 (not M6), owned by earn-the-trust.md's `## Pre-read before Module 4` and echoed at run-the-first-experiment.md's Prework. Grep the doc for any second copy of the same claim before fixing (§8's own warning about a stale twin recurring elsewhere).",
       "blocking": false
     },
     {
@@ -86,13 +32,67 @@
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "Rule fires only when a module's mood is 'unease'; M3's doc mood is 'earned trust,' not 'unease' — condition doesn't apply. (Scanned anyway for punitive tone: 'Read the sharpen with a skeptical eye' L53-55 and maintainer Watch-fors L155-160 frame skepticism toward Claude's self-audit and curated-skill reverence, never toward the student having done something wrong — consistent with the doc's own 'What M3 refuses: frame Q+S as compliance' L154 of the strategy doc.)",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "4b0f10fe20c2626287a7044930c5e70d71d56b0c104b182c13b38e7560cd4d12",
-      "carried_shape": "ad713f75cd98040d"
+      "na_reason": "Rule fires only when a module's mood is 'unease'; M3's doc mood is 'earned trust,' not 'unease.' Scanned anyway: '## Read the sharpen with a skeptical eye' (L53-56) and maintainer Watch-fors (L157-162) direct skepticism at Claude's self-audit and curated-skill reverence, never at the student having erred — consistent with the doc's own 'What M3 refuses: frame Q+S as compliance (they're infrastructure)' framing.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "PASS",
+      "evidence": "Big Idea leads with 'verification,' not a failure word. Section headers (Earn the trust / Sharpen the skill from evidence / Read the sharpen with a skeptical eye / Clear the session / Key Concepts / Optional challenges / Bring to Module 4 / Next) are all discipline- or action-named. 'STRIDE' (L39) and 'the lethal trifecta' (L16) read failure-shaped but are the carve-out's own named canonical results (Kohnfelder & Garg 1999 memo; Willison's trifecta).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "PASS",
+      "evidence": "Prior instance (body_sha 2c33ac04…, now superseded) filed REVISE here for two claims; both are now correct against the current, corrected cross-file design. (1) L23 WYL bullet: 'Invoke curated access-control-analysis and STRIDE skills on a feature you're shipping (each as a subagent, fresh context)'. curriculum/exercises/map-the-access-surface.md's own maintainer block (dated 2026-09-04) now reads: 'This exercise adds no dispatch clause, and that is the design... Both curated skills it and the STRIDE pass invoke carry `context: fork`... so each pass runs in its own forked subagent whatever the prompt says.' reference/claude-code-for-engineers.md L234 corroborates: 'M3 Ex1/Ex2 invoke the curated access-control + STRIDE skills as subagents; Ex3 (test-strategy authoring) stays main-thread.' L23's 'each as a subagent' is accurate to the current design, not a front-run of it. (2) L26 WYL bullet now reads 'invoke it on this codebase' (not 'the security-tested feature'), matching curriculum/exercises/author-test-strategy-skill.md Phase 2 header 'Invoke the skill on this codebase' and body 'this worktree holds the full codebase. Invoke it on the code as it stands.' Maintainer Push-back-moves (L154) and the Per-phase-failure-mode table (L198) both also now read 'run the skill on this codebase' — grepped the whole file for 'security-tested': zero hits. Both defects from the prior REVISE are resolved; no new front-run found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "PASS",
+      "evidence": "Key Concepts (L76-81) surfaces at least three theme-instances in module-specific language: capture-your-world — 'A test-strategy skill authored on your codebase is worth more than a perfect generic one. Your codebase teaches the skill, not the manual.' (L78); mirror/self-aware — 'Ask the agent what's weakest about its own output; it surfaces what your read skips. Same-window self-audits under-flag, so push past the first answer.' (L79); mirror again — 'an untested skill in the team kit is slop-sharing' (L80). Clears the 2-3 floor.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "PASS",
+      "evidence": "§§3/4/5 gates clear on the Key Concepts bullets (no failure-mode leads, no downstream front-run, themes present per rule 5). Two compact closing clauses read as breadcrumbs, within the 1-3 ceiling: 'Your codebase teaches the skill, not the manual.' (L78) and 'push past the first answer' (L79). No 'Remember:' label, no bold wrapper, plain engineer register. Adjacent-module check (grepped their own Key Concepts sections): plan-mode-done-right.md and run-the-first-experiment.md's breadcrumbs land different themes in different phrasing — no verbatim or near-verbatim repeat.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "PASS",
+      "evidence": "All six WYL bullets (L22-27) lead with a concrete verb + named artifact (Fork/Invoke/Split/Author/Test/Ship a worktree/skills/jobs/a skill/the skill/one skill). No Bloom-tag parentheticals, no 'by mapping/by walking' mechanism tails, no author-defence asides, no didactic taxonomy-stamp colons. Parenthetical operational detail ('each as a subagent, fresh context' L23; 'one question at a time' L25) stays one line per carve-out (c). No theme-verb (Compound/Earn/Mirror/Ground/Introspect/Sharpen/Capture) leads any bullet, including the module's own title-verb 'Earn' — correct per the grammar-fit check (concrete artifact lists, not abstract nouns of acquisition) and the rule's own instruction not to file the absence as a finding.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum.",
+      "verdict": "REVISE",
+      "evidence": "Two stale structural spans in content-strategy-agentic-engineering-101.md, both doc-side, neither a defect in this file's body. (a) L332: 'The access-surface pass invokes its skill in-thread... That three-way contrast is half the pedagogy: the student leaves M3 knowing which jobs belong in which thread, not merely that subagents exist.' This is now contradicted by the doc's own L929 ('Ex1 + Ex2 invoke curated skills as subagents; Ex3 stays main-thread') and by the corrected exercise design (map-the-access-surface.md maintainer note, 2026-09-04: both skills carry `context: fork`). Classic stale-twin pattern §8 itself warns about — the claim recurs ~600 lines apart and only one copy was updated. This file's own L23 ('each as a subagent, fresh context') matches the correct, current L929 claim, not the stale L332 one. (b) L298: 'da Costa's backpressure essay before M6 (flag-gated to sequences that run M6).' Contradicted by this file's own maintainer block (L124-125, dated 2026-08-21, Antti-directed): '`## Pre-read before Module 4` carries da Costa's Backpressure Is All You Need... This is the module that owns the check' — a dated, later, more specific decision superseding the doc's stale M6 wiring claim. (This second span was already flagged in the prior superseded instance and remains unfixed.)",
+      "fix_hint": "Doc fix, not owed on this file. (a) Cut or correct L332's in-thread/three-way-contrast sentence to match L929's Ex1+Ex2-both-subagent statement — check for any further copies before editing. (b) Correct L298's 'before M6' to 'before M4', attributed to earn-the-trust.md's `## Pre-read before Module 4` and echoed at run-the-first-experiment.md's Prework.",
+      "blocking": false
     }
   ],
-  "blocking_findings_count": 1,
-  "nonblocking_findings_count": 1
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 1,
+  "notes": "check-instance-evidence.js and check-instance-schema.js run below; see structured output. The two prior REVISE items (rule 4) were re-verified against the current state of curriculum/exercises/map-the-access-surface.md, curriculum/exercises/author-test-strategy-skill.md, and curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md, not assumed fixed from the maintainer block alone."
 }

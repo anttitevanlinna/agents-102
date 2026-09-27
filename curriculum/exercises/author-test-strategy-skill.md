@@ -72,8 +72,8 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-06 (writing@324b81d7 story@9edae2ef technical@324b81d7 behavior@64d17eea pedagogy@0e4f7c9e strategy@324b81d7 slides@9edae2ef)
-- judges @64d17eea: writing PASS (2 findings see instances/ae101--exercise--author-test-strategy-skill.writing.json), story PASS, technical PASS (2 findings see instances/ae101--exercise--author-test-strategy-skill.technical.json), behavior PASS (1 finding see instances/ae101--exercise--author-test-strategy-skill.behavior.json), pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-27 (writing@16a15ae5 story@16a15ae5 technical@16a15ae5 behavior@16a15ae5 pedagogy@16a15ae5 strategy@16a15ae5 slides@16a15ae5)
+- judges @16a15ae5: writing PASS, story PASS, technical PASS (2 findings see instances/ae101--exercise--author-test-strategy-skill.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "You are not typing markdown into an editor." (widget header carries it); "The reasons for personal-first land in Phase 3…" (forward narration); "The skill proves itself only when it runs on real code." (restates theatre line); "One paste, one wait, one read, convenient over rigorous."; "Sharpen the SKILL.md, then re-invoke." (decide-bullet owns re-invoke); decide-bullet trimmed, "The authoring muscle is what Module 3 installs." out (§16b); "That's the ship."; team-PR bullet lost coffee/channel color + "sharpen the skill, ship it sharper"; "Not every skill graduates to a shared kit."; the worktree-leftovers section's bullet 2 (personal-first + coffee dup). Do not restore.
 

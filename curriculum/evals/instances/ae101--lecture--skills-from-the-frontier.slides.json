@@ -1,46 +1,18 @@
 {
   "class": "slides",
-  "training": "ae101",
   "file": "curriculum/lectures/skills-from-the-frontier.md",
+  "training": "ae101",
   "verdict": "PASS",
-  "body_sha": "4dd180800a0479e6e687424c135cf0991f856436fa68c5f11d91680870161fe8",
-  "shape_hash": "334690d1473a541c",
+  "body_sha": "ca76305c146385f346acf284ab6ec0a95f829fac8146214c25ba111cf4b4f391",
+  "shape_hash": "6e63abee53514870",
   "chunk_map": [
-    {
-      "index": 0,
-      "heading": "Skills from the frontier, skills of your own (H1)",
-      "lines": "1"
-    },
-    {
-      "index": 1,
-      "heading": "A skill outlives the thread it came from",
-      "lines": "3-6"
-    },
-    {
-      "index": 2,
-      "heading": "Borrowed judgement, or your own",
-      "lines": "8-11"
-    },
-    {
-      "index": 3,
-      "heading": "Your authored skill starts personal, then compounds",
-      "lines": "13-17"
-    },
-    {
-      "index": 4,
-      "heading": "Two curated, one authored",
-      "lines": "19-24"
-    },
-    {
-      "index": 5,
-      "heading": "Three trust artifacts the next engineer checks",
-      "lines": "26-30"
-    },
-    {
-      "index": 6,
-      "heading": "The tool flags; you make the call",
-      "lines": "32-38"
-    }
+    {"index": 0, "heading": "Skills from the frontier, skills of your own (H1)", "lines": "1-2"},
+    {"index": 1, "heading": "A skill outlives the thread it came from", "lines": "3-9"},
+    {"index": 2, "heading": "Borrowed judgement, or your own", "lines": "10-14"},
+    {"index": 3, "heading": "Your authored skill starts personal, then compounds", "lines": "15-22"},
+    {"index": 4, "heading": "Two curated, one authored", "lines": "23-33"},
+    {"index": 5, "heading": "Three trust artifacts the next engineer checks", "lines": "34-42"},
+    {"index": 6, "heading": "The tool flags; you make the call", "lines": "43-50"}
   ],
   "rules_evaluated": [
     {
@@ -49,7 +21,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Only cataphora candidate in the body: chunk 2 line 10 opens \"Security practitioners. The two curated skills compress decades of judgement\" before naming which two — resolved two sentences later in the SAME bullet (STRIDE / Kohnfelder-Garg-Shostack, then access-control / Saltzer-Schroeder). Same shape as the compendium's own passing example, not a forward reference. Module-level prior context strengthens this further: `earn-the-trust.md` lines 23 and 25 (\"## What You'll Learn\", read before this lecture in the module's own include order — verified via `grep -n \"##\\|access-control\\|STRIDE\\|test-strategy\" curriculum/trainings/agentic-engineering-101/earn-the-trust.md`) already name \"curated access-control-analysis and STRIDE skills\" and \"a test-strategy skill\", so chunk 5/6's later uses of 'the access-control skill', 'STRIDE pressure', and 'the test-strategy skill' are prior context by module signposting even before chunk 2 introduces them in-file. No pronoun/demonstrative anywhere in the body (1-39) lacks a resolvable antecedent.",
+      "evidence": "Sequential read of all 7 chunks against the current (post-bullets-to-paragraphs) body. Chunk 4 line 25 'The proportion is a claim...' resolves against its own header 'Two curated, one authored' (chunk header counts as in-chunk). Chunk 5 lines 38-40 'None of them...Each is...' resolve against the three artifacts named one sentence earlier in the same chunk (line 36). Chunk 6 line 45 'the access-control skill' resolves against chunk 2 line 12's 'Access-control analysis' plus the module's own `## What You'll Learn` (earn-the-trust.md L23, read via `grep -n \"##\\|access-control\\|STRIDE\" curriculum/trainings/agentic-engineering-101/earn-the-trust.md`), which precedes this lecture in the module's include order — prior context by module signposting. No pronoun or demonstrative in the body (lines 1-50) lacks a resolvable antecedent; the bullet-to-paragraph reflow did not strand anything, since no antecedent crossed a chunk boundary to begin with.",
       "fix_hint": null,
       "blocking": true
     },
@@ -59,7 +31,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Command run this session: `grep -nE \"opening lecture|earlier (lecture|exercise|module)|previous (lecture|exercise|module)|the prework\" curriculum/lectures/skills-from-the-frontier.md` limited to lines 1-39 -> no matches. The body carries zero cross-file or positional callbacks of any kind (the prior audited version of this file had one, a Module-2 grill-me/plan-walk-down reference in chunk 1; the 2026-09-0x header-rename edit cut that bullet along with the retitle, confirmed via `git diff c0c37913..HEAD -- curriculum/lectures/skills-from-the-frontier.md`). Nothing remains to test against this rule; no violation is present.",
+      "evidence": "Command run this session: `grep -nE \"opening lecture|earlier (lecture|exercise|module)|previous (lecture|exercise|module)|the prework\" curriculum/lectures/skills-from-the-frontier.md` -> no matches anywhere in the file, body or maintainer. Zero cross-file or positional callbacks present.",
       "fix_hint": null,
       "blocking": true
     },
@@ -69,7 +41,18 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Command run this session: `grep -nE \"you (did|saw|caught|ran|sent|wrote|built|made)\\b\" curriculum/lectures/skills-from-the-frontier.md` limited to lines 1-39 -> no matches. This lecture sits second in its module's include order (Exercise 'Open the side quest' -> THIS lecture -> Exercises 'Map the access surface' / 'Threat-model with STRIDE' / 'Author your test-strategy skill', per `earn-the-trust.md` lines 33-41) and primes those three exercises rather than recapping a completed one, so it has no finished beat to reference back to. Consistent with placement; no dead or live backward reference exists either way.",
+      "evidence": "Command run this session: `grep -nE \"you (did|saw|caught|ran|sent|wrote|built|made)\\b\" curriculum/lectures/skills-from-the-frontier.md` -> no matches. This lecture primes the module's three security exercises (per `earn-the-trust.md` `## Start here`, lines 29-41) rather than recapping a completed one, so it carries no backward-pointing beat reference to strand.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "no guess-before-reveal or demo beat anywhere in the file (has_prompt_blocks/has_figures both false; definitional/framing prose throughout)",
       "fix_hint": null,
       "blocking": true
     },
@@ -79,7 +62,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 0 is the H1-only title slide (exempt by convention). Chunks 1-6 each carry 2-4 bullets landing a self-carrying claim: chunk1 skill definition + why it outlives the thread; chunk2 the borrowed/own split; chunk3 personal-first path + team-kit growth; chunk4 the proportion + the bolded principle; chunk5 the three trust artifacts + the next-engineer test; chunk6 the three tool-flags-you-decide judgment calls + the 'Go.' kicker. None is a bare wait-state or single context-dependent fragment.",
+      "evidence": "All 6 content chunks (1-6) carry a self-carrying claim after the bullets-to-paragraphs reflow: ch1 skill definition + durability; ch2 the borrowed/own split; ch3 personal-first path + team-kit growth; ch4 the proportion + two counterfactuals + the bolded principle; ch5 the three trust artifacts + the next-engineer test; ch6 three tool-flags-you-decide judgment calls + 'Go.' kicker. None is a bare wait-state or single context-dependent fragment; chunk 0 (H1) is the exempt title slide.",
       "fix_hint": null,
       "blocking": false
     },
@@ -89,7 +72,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all 6 headers against current content. Ch1 'A skill outlives the thread it came from' -> bullet 2 delivers exactly this (Slack thread dies in 48h vs. a skill lives as long as the repo). Ch2 'Borrowed judgement, or your own' -> the two bullets are literally the security-practitioner (borrowed) and you-right-now (own) cases. Ch3 'Your authored skill starts personal, then compounds' -> personal path bullet, then Fin/Intercom team-kit-growth bullet. Ch4 'Two curated, one authored' -> the proportion, both counterfactuals, and the principle. Ch5 'Three trust artifacts the next engineer checks' -> names the three artifacts and closes on the next-engineer test. Ch6 'The tool flags; you make the call' -> access-control/STRIDE/test-pyramid, each ending on a you-decide beat. No header is contradicted by its own chunk.",
+      "evidence": "Checked all 6 headers against current (post-reflow) content, closest candidate: chunk 3 header 'Your authored skill starts personal, then compounds' vs. body — first paragraph (line 18) delivers 'starts personal', second paragraph (line 20, Fin/267-skill example) delivers 'then compounds' via the team-kit-growth illustration; stays inside because 'compounds' is satisfied by the accretion example, not merely asserted. No header is contradicted by its own chunk.",
       "fix_hint": null,
       "blocking": false
     },
@@ -99,7 +82,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Command run this session: `grep -nE \"Not [A-Z][a-z]+\\. Not \" curriculum/lectures/skills-from-the-frontier.md` -> no matches anywhere in the file (banned construction absent). Manual per-sub-item scan of lines 1-39: no anaphora/epistrophe triple (closest is chunk3 line17's doublet 'skill by skill, engineer by engineer' — two legs, not three, so the third-leg-must-earn-it test doesn't apply); no self-grading superlative (`grep -niE \"most useful|one of the most|best in class|the ultimate\"` on lines 1-39 -> no matches); no number-with-retraction (chunk3 line17's '153 contributors, 31% of R&D headcount active, by the company's own count' is a number with its attribution label, not a hedge-then-retract — matches the documented vendor-self-report hedge pattern per the maintainer's pre-cohort note at line 121, not the retraction shape this sub-item bans); no abstraction-noun stack; no verb triplet with an empty leg (chunk6 line34's 'got right / underweighted / missed' are three distinct, concrete judgment axes, not filler).",
+      "evidence": "Command run this session: `grep -nE \"Not [A-Z][a-z]+\\. Not \" curriculum/lectures/skills-from-the-frontier.md` -> no matches (body 1-50). Manual per-chunk scan: no anaphora/epistrophe triple (chunk 3 line 20 'skill by skill, engineer by engineer' is a two-leg doublet, not a triple); `grep -niE \"most useful|one of the most|best in class|the ultimate\"` on the body -> no matches, no self-grading superlative; chunk 3's '153 contributors, 31% of R&D headcount active, by the company's own count' (line 20) is a number with its attribution label, not a hedge-then-retract; no abstraction-noun stack; chunk 6 line 45's 'got right / underweighted / missed' are three distinct concrete judgment axes, not an empty-leg verb triplet. The bullets-to-paragraphs reflow did not introduce any new tic.",
       "fix_hint": null,
       "blocking": true
     },
@@ -109,7 +92,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Command run this session: `grep -nE \"\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|forcing function|\\bbeat\\b|\\bmood\\b|Connections\" curriculum/lectures/skills-from-the-frontier.md` limited to lines 1-39 -> exactly one hit, line 28 'a mapped access surface for the feature you're shipping'. Judged as ordinary security-engineering vocabulary (attack surface / access surface), the exact term the module's own exercise is titled after ('Map the access surface'), not the repo's internal writing-surface-as-noun dialect. No hits for firing, compendium, forcing function, beat, mood, or Connections-as-proper-noun anywhere in the body. 'Team kit' (chunks 3-4) is ordinary AE101 IC shop vocabulary, used the same way across the corpus.",
+      "evidence": "Command run this session: `grep -nE \"\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|forcing function|\\bbeat\\b|\\bmood\\b|Connections\" curriculum/lectures/skills-from-the-frontier.md` limited to lines 1-50 -> exactly one hit, line 36 'a mapped access surface for the feature you're shipping'. This is the ordinary security-engineering term (attack/access surface), the exact title of the module's own exercise ('Map the access surface') per `earn-the-trust.md` line 23 — not the repo's internal writing-surface-as-noun dialect. No hits for compendium, forcing function, beat, mood, or Connections-as-proper-noun anywhere in the body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -119,7 +102,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Command run this session: `grep -n '\\*\\*' curriculum/lectures/skills-from-the-frontier.md` limited to lines 1-39 -> exactly two bolded spans in the whole body: line 5 **skill** (1-word handle at its slide-1 definition) and line 24 **Don't make general what you don't practice yourself.** (8 words, over the stated <=5-word cap read literally, and a full clause rather than a sub-span). Maintainer accept-note at line 46 ('Emphasis pass, 2026-07-09, Antti-directed \"go very lightly on the bold\"') names this exact pair as the two handles the file was deliberately reduced to, citing this rule by number — a dated accept-note on precisely this passage per the dispatch preamble's check-before-flagging instruction. No other bullet in the file carries any bold; the <=1-bolded-element-per-slide budget holds on both slides that carry any. Re-flagging a maintainer-attested, previously-settled emphasis choice would degrade a deliberate artefact rather than address a present harm.",
+      "evidence": "Command run this session: `grep -n '\\*\\*' curriculum/lectures/skills-from-the-frontier.md` limited to body lines 1-50 -> exactly two bolded spans: line 5 **skill** (1-word handle at its first-encounter definition) and line 31 **Don't make general what you don't practice yourself.** (8 words, a full clause over the ≲5-word cap read literally). Maintainer accept-note at line 60 ('Emphasis pass, 2026-07-09, Antti-directed \"go very lightly on the bold\"... bold = two handles — **skill**... and **Don't make general what you don't practice yourself**... every other slide carries zero bold') names this exact pair as the deliberate, dated reduction, citing `check_slides.md §9` by number. Dated accept-note on precisely this passage per the dispatch preamble's check-before-flagging instruction; re-flagging would degrade a deliberate, maintainer-attested artefact rather than address present harm. No other chunk carries any bold; the ≤1-per-slide budget holds on both slides that carry any.",
       "fix_hint": null,
       "blocking": false
     },
@@ -129,9 +112,20 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Standard shared lecture file (curriculum/lectures/), included from `earn-the-trust.md` line 35 as `[Lecture: Skills from the frontier, skills of your own](lectures/skills-from-the-frontier.md)` (only host reference in the training, confirmed via `grep -rn \"skills-from-the-frontier\" curriculum/trainings/`). Command run this session: `node scripts/check-slide-size.js --file curriculum/lectures/skills-from-the-frontier.md` -> 'slides: 6', matching the manual chunk count (chunks 1-6) exactly, so the composed deck is not silently dropping or adding a section. The whole file renders under the standard `.phase--lecture` include wrapper with no phase-less prework/supplementary/reference subsection embedded in it (the historically-dropped surface types rule 10 names) — nothing here is at risk of the long-read/deck divergence this rule guards against.",
+      "evidence": "Command run this session: `node scripts/check-slide-size.js --file curriculum/lectures/skills-from-the-frontier.md` -> 'files: 1  slides: 6  limits: 210 words / 6 bullets  oversized: 0'. Manual chunk count of content headers (excluding H1) = 6, matching the composed deck's slide count exactly — the bullets-to-paragraphs reflow did not drop or add a section. File is included from `earn-the-trust.md` line 35 as a standard `.phase--lecture` include; no phase-less prework/supplementary/reference subsection embedded.",
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "no `## Phase N:` or `## N.` step headers in this file (verified: `node scripts/check-slide-numbering.js curriculum/lectures/skills-from-the-frontier.md` -> OK, 59 files consistent)",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -139,9 +133,20 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Command run this session: `node scripts/check-slide-deixis.js --file curriculum/lectures/skills-from-the-frontier.md` -> \"OK — 1 files, no page-geometry pointers across the slide cut.\" Corroborating manual grep: `grep -niE \"\\b(above|below|further down|at the top of this page|see below)\\b\" curriculum/lectures/skills-from-the-frontier.md` limited to lines 1-39 -> no matches. Chunk 5's 'by the module's end' (line 28) is a temporal/scope claim about the module's arc, not a page-position pointer, so it does not trip this rule.",
+      "evidence": "Command run this session: `node scripts/check-slide-deixis.js --file curriculum/lectures/skills-from-the-frontier.md` -> 'OK — 1 files, no page-geometry pointers across the slide cut.' Corroborating: `grep -niE \"\\b(above|below|further down|at the top of this page|see below)\\b\" curriculum/lectures/skills-from-the-frontier.md` limited to body lines 1-50 -> no matches. Chunk 5 line 36 'By the module's end' is a temporal/scope claim, not a page-position pointer.",
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "no markdown links `[...](...)` anywhere in the body (`grep -nE '\\[.*\\]\\(' ` on lines 1-50 -> no matches)",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -149,7 +154,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Command run this session: `node scripts/check-slide-size.js --file curriculum/lectures/skills-from-the-frontier.md` -> \"files: 1  slides: 6  limits: 210 words / 6 bullets  oversized: 0\" / \"every slide is within limits\". No accept-note needed; no slide is near either axis (max bullet count observed is 4, on chunk 4).",
+      "evidence": "Command run this session: `node scripts/check-slide-size.js --file curriculum/lectures/skills-from-the-frontier.md` -> 'files: 1  slides: 6  limits: 210 words / 6 bullets  oversized: 0' / 'every slide is within limits'. No accept-note needed. The bullets-to-paragraphs reflow reduced bullet counts per chunk (chunks 1,3,4,5 now have 0-1 top-level bullets, only chunk 6 keeps 3), well under the cap.",
       "fix_hint": null,
       "blocking": false
     },
@@ -157,13 +162,10 @@
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-      "verdict": "REVISE",
-      "chunks_flagged": [
-        2,
-        4
-      ],
-      "evidence": "Lecture headings should be claims (subject+verb assertions). Ch1 'A skill outlives the thread it came from' (verb: outlives — a genuine claim, and the 2026-09-0x rename from the label 'What a skill is' fixed exactly this for chunk 1). Ch3 'Your authored skill starts personal, then compounds' (verbs: starts, compounds), Ch5 '...the next engineer checks' (verb: checks), Ch6 'The tool flags; you make the call' (verbs: flags, make) are all genuine claims. Ch2 'Borrowed judgement, or your own' and Ch4 'Two curated, one authored' remain bare noun-phrase/ratio labels with no verb. Neither matches a NOT-violation example verbatim, though both read close to 'catalogue entries naming their subject' (cf. 'The numbers', 'Verification, named'), and the rule's own text documents being walked back on 2026-08-19 after over-firing non-blocking on ten lectures ('a rule that only ever produces notes is a rule mis-scoped'). Harm check: neither header leaves a reader unable to follow the slide — the failure mode is register/mood flatness, not comprehension, which is this rule's own stated test for non-blocking. Filed as a TODO for the maintainer's own read, not a mechanical failure.",
-      "fix_hint": "If tightened: 'Someone else's judgement, or yours' (ch2) / 'Two proportions, and only one of them you can author' (ch4) restate the same content as verb-bearing claims — or leave as-is under the catalogue-entry reading, which this rule's own history treats as acceptable for enumerating/labeling slides.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "4 of 6 content headers are genuine subject+verb claims: ch1 'A skill outlives the thread it came from' (outlives), ch3 'Your authored skill starts personal, then compounds' (starts, compounds), ch5 '...the next engineer checks' (checks), ch6 'The tool flags; you make the call' (flags, make). Closest-to-violating: ch2 'Borrowed judgement, or your own' and ch4 'Two curated, one authored' are bare noun-phrase/ratio labels with no verb, not a literal match to the rule's catalogue-entry NOT-violation examples ('Ralph', 'The numbers') either. Harm check per the dispatch preamble: neither header leaves the reader unable to follow the chunk — ch2's own two bullets are the borrowed/own split the header names, ch4's body is the proportion argument the header names; the failure mode, if any, is register flatness, not comprehension, which the rule's own §-15 stated test (generalised 2026-08-19 after firing non-blocking on ten lectures) marks as the harm this rule does NOT own. Not carried this diff — no `##` line changed since the 08946dd8 pin (`git diff 08946dd8..HEAD` touched only bullet-to-paragraph formatting and the maintainer/backing blocks). Stays PASS; concrete verb-bearing alternatives offered as suggestions rather than filed as REVISE, since no reader-facing harm is present to require a maintainer decision.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -172,7 +174,7 @@
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked every bullet against the three named classes. (a) Doctrine restatement: none found — chunk4 line24's closing sentence ('The curated skills come from people who did the work; the one you author covers what only you do.') is the first and only statement of the newly-bolded principle's content, not a later re-announcement of something already fully stated. (b) Self-referential design commentary: none present — the maintainer block's Lean pass note (line 44, 2026-08-25) already names and confirms the cut of exactly this class from this file ('It arrived unpackaged because skills hadn't yet been introduced as a primitive.', 'Nobody outside your team can write that skill well. Curating it would be theatre.'), verified absent from the current body by direct read. (c) Aphorism kicker: chunk6's closing 'Go.' (line 38) asserts nothing to restate — a bare transition cue, not a koan; chunk5's closer (line 30, '...can see the reasoning and check it against the code') specifies a mechanism rather than echoing the header. No bullet in the file reads as rigour-shaped but content-empty.",
+      "evidence": "Checked every bullet/paragraph against the three named classes post-reflow. (a) Doctrine restatement: none — chunk 4's closing sentence (line 31, 'The curated skills come from people who did the work; the one you author covers what only you do.') is the first and only statement of the newly-bolded principle, not a later re-announcement; closest candidate is chunk 4 line 29 'Three curated skills, and the team kit is never born here.' which stays inside because it is the second (necessary) half of a two-branch counterfactual, not a restatement of the first. (b) Self-referential design commentary: none present — the maintainer's Lean pass note (line 58, 2026-08-25) already confirms this class was cut from this file, verified absent by direct read. (c) Aphorism kicker: chunk 6's closing 'Go.' (line 49) is a bare transition cue, not a koan restating a header or point-line.",
       "fix_hint": null,
       "blocking": false
     },
@@ -182,51 +184,26 @@
       "rule_lead": "A retitled slide re-earns its bullets against the new header.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "This file's chunk 1 is the rule's own named calibration case: header was renamed from 'What a skill is' to 'A skill outlives the thread it came from' (confirmed via `git diff c0c37913..HEAD -- curriculum/lectures/skills-from-the-frontier.md`), and one bullet (the Module-2 grill-me callback) was cut in the same edit. Independently re-verified the header/body pairing per the rule's own judge move (read header, cover body, predict, uncover): line 5's skill-definition bullet answers the OLD header's job (what a skill is) but is retained deliberately because this slide is the term's first encounter in the deck and a definition has to land somewhere; line 6 ('Skills are one of the ways agentic knowledge compounds... A Slack thread... dies in 48 hours. A STRIDE skill... lives as long as the repo.') is what actually delivers the NEW header's claim (durability past the originating thread). No other `##` header changed in this diff, so no other chunk is in scope for this rule.",
+      "evidence": "No `##` header text changed in the diff under review (`git diff 08946dd8..HEAD -- curriculum/lectures/skills-from-the-frontier.md` shows only bullet-to-paragraph reflow and maintainer/backing edits, zero `^## ` lines touched). This file is the rule's own named calibration case at line 112: 'skills-from-the-frontier.md A skill outlives the thread it came from keeps the skill definition as its first bullet because that slide is the term's first encounter' — still true of the current body (line 5).",
       "fix_hint": null,
       "blocking": false
+    }
+  ],
+  "suggestions": [
+    {
+      "rule": "check_slides.md §15",
+      "line": 10,
+      "now": "## Borrowed judgement, or your own",
+      "proposed": "## Someone else's judgement, or yours"
     },
     {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "evidence": "No guess-before-reveal instruction anywhere in the file; this lecture is definitional/framing prose (what a skill is, borrowed vs. authored judgement, the proportion, trust artifacts, the tool-flags-you-decide close) with no live-demo beat to break.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "26cd964a49d7a2168cb42fa0cbbe66d2a434cc02b9435c9c644e6b35de99f86a",
-      "carried_shape": "334690d1473a541c"
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "evidence": "No `## Phase N:` or `## N.` step headers in this file. Command run this session: `node scripts/check-slide-numbering.js curriculum/lectures/skills-from-the-frontier.md` → \"OK — 60 files, Phase/Step numbering consistent.\" No numbering scheme for this rule to bind to.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "26cd964a49d7a2168cb42fa0cbbe66d2a434cc02b9435c9c644e6b35de99f86a",
-      "carried_shape": "334690d1473a541c"
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "evidence": "No markdown links `[...](...)` anywhere in the body. Command run this session: `grep -nE '\\[.*\\]\\(' curriculum/lectures/skills-from-the-frontier.md` limited to the body lines (1-39) → no matches. Nothing to inventory.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "26cd964a49d7a2168cb42fa0cbbe66d2a434cc02b9435c9c644e6b35de99f86a",
-      "carried_shape": "334690d1473a541c"
+      "rule": "check_slides.md §15",
+      "line": 23,
+      "now": "## Two curated, one authored",
+      "proposed": "## Two proportions, and only one of them you can author"
     }
   ],
   "blocking_findings_count": 0,
-  "accept_notes_found": [
-    "L42: STRIDE at L7 assumed-known (Antti 2026-08-30) — not a slides-class concern (student_facing §2)",
-    "L44: Lean pass (2026-08-25, Antti-directed M3/M6 shorten) — grounds the rule-16 PASS (design-commentary/kicker/padding bullets already cut)",
-    "L46: Emphasis pass (2026-07-09, Antti-directed 'go very lightly on the bold') — grounds the rule-9 PASS on the two retained bold spans",
-    "L48: Slides-only pass (2026-07-02, unaudited) — background on the file's slide-conversion history, no live rule-9/16 content left uncovered by the two notes above"
-  ],
-  "notes": "Judged fresh against the CURRENT committed body (body_sha 6ee92096...). The instance previously on disk (body_sha 26cd9649..., predating a header rename and a bullet cut visible in `git diff c0c37913..HEAD`) was for an earlier version of this same shape_hash and was fully re-derived rather than carried forward — none of its evidence quoted current text. All mechanical scripts (check-slide-deixis.js, check-slide-size.js, check-slide-numbering.js) and all greps (bold spans, dialect terms, cadence-tic sub-items, backward-reference patterns, page-geometry words, markdown links) were run this session against the live file. Rules 4, 11, 13 are excluded per the class brief (prefill sidecar, shape_hash 334690d1473a541c) and are not rowed here; `prefill-instance.js --merge` splices them in after this instance is written. Only open item is rule 15 on chunks 2 and 4 (label-shaped headers), filed as the file's single non-blocking TODO — consistent with the Quality line's own pre-registered expectation of one slides TODO.",
-  "nonblocking_findings_count": 1
+  "nonblocking_findings_count": 0,
+  "notes": "Diff under review (08946dd8..HEAD) reflows four chunks' bullet lists into prose paragraphs and adds 'Note' to chunk 6's first bullet; no `##` header, no bold span, and no content claim changed. All 17 check_slides.md rules PASS or N/A against the current body; no numbered rule was dropped by the prefill (shape changed 334690d1473a541c -> 6e63abee53514870, so 0 rows parked, all 17 judged directly by me). check-slide-size.js, check-slide-deixis.js and check-slide-numbering.js all ran clean against this file this session."
 }

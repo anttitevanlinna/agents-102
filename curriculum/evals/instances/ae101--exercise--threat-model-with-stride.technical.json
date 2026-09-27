@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/exercises/threat-model-with-stride.md",
   "verdict": "PASS",
-  "body_sha": "7c63b5ec747194e601dae7e113a1626c18023e57b85653ab8bf77b8a8432d04f",
+  "body_sha": "9984be783d8119b14e9440c27eb5a664ea50ee50682e051581ea3919dcd6cb6e",
   "shape_hash": "04c8bbd89721df08",
   "rules_evaluated": [
     {
@@ -349,10 +349,10 @@
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": 36,
+      "rule_index": "36",
       "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
       "verdict": "PASS",
-      "evidence": "Prompt-1 (5 paragraphs) splits cleanly: pre-flight / invoke+isolate / save+flag / defer-pick+report / verify-path+report. Prompt-3 (3 paragraphs) splits: convention-check / section-grounding / save+diff. Prompts 2 and 4 are short enough to legitimately stay single-paragraph.",
+      "evidence": "curriculum/prompts/threat-model-with-stride-2.md L15: 'Walk me through picking the load-bearing STRIDE category for this feature. Start by proposing the most plausible incident story..., then map that story to the STRIDE class..., name what the threat actually is..., and propose the hardening shape... I'll steer if the story or mapping misses.' Four tightly-sequential sub-moves in one paragraph, each step depending on the prior one, read aloud as a single continuous ask — exactly the rule's own 2026-09-10 carve-out ('a tight conditional pair... already full-stopped moves that read the same aloud... splitting them buys whitespace in text pasted once'), which names this file's report-prompt pair by example. Prompt-1 (5 paragraphs) and prompt-3 (3 paragraphs) already split cleanly by move; prompts 2 and 4 stay short single-paragraph asks, which the rule explicitly permits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -1414,14 +1414,13 @@
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": 35,
+      "rule_index": "35",
       "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "9ec90b29769f91a17c1a20226d7311ae0bad26998ed292a793e56e9813292027",
-      "carried_shape": "04c8bbd89721df08"
+      "na_reason": "no prompt sets up multi-turn dialog that can affect an artifact file mid-conversation — Phase 2's dialog (prompt-2) precedes any file write, and Phase 3's ADR write (prompt-3) is a single save-then-diff, not iterative re-editing under dialog",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
@@ -1458,14 +1457,12 @@
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": 43,
+      "rule_index": "43",
       "rule_lead": "Long-running prompts stream progress — never go silent.",
-      "verdict": "N/A",
-      "evidence": null,
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "9ec90b29769f91a17c1a20226d7311ae0bad26998ed292a793e56e9813292027",
-      "carried_shape": "04c8bbd89721df08"
+      "verdict": "PASS",
+      "evidence": "L30 (exercise body): 'A scan that returns in seconds went shallow. The pass should take minutes. If it comes back instant, push back and re-run. Stay in this window while it works, and read what lands.' The student stays present (not the UNATTENDED-BY-DESIGN carve-out), but the body callout already sets the multi-minute default duration and tells the student to stay and watch — the 'never go silent' harm (student confused by an apparently-stalled run) is pre-empted body-side, matching the rule's own separable-tail logic for the sibling interrupt clause. Dose is light: one subagent dispatch, isolated STRIDE pass, not a cross-project scan or memory build.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
@@ -1510,6 +1507,26 @@
       "blocking": false,
       "carried_from": "9ec90b29769f91a17c1a20226d7311ae0bad26998ed292a793e56e9813292027",
       "carried_shape": "04c8bbd89721df08"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61",
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no SKILL.md/framework/tool change is proposed anywhere in this exercise file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "66",
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "authoring-sequence rule for building modules in passes; not a check on a shipped, already-Pass-3 exercise body",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,
@@ -1532,5 +1549,13 @@
     "check_pedagogy.md scope: technical owns only items 16, 22, 23, 36, 37 per the class template; of those, 22/23/36 were already resolved (parked in the prefill sidecar) and are not re-derived here — only 16 and 37 appear as rows above.",
     "research_claims §1 rule-question (harm absent, not filed as a finding per dispatch-preamble instruction): the bracket label '[vendor docs]' on the STRIDE source (L166) isn't one of §1's exact enumerated evidence-type tags. The adjacent 'Foundational-literature variant' prose already explains why (Microsoft as the framework's coiner, not a marketing venue), so no deceptive evidence-level inflation is present. Worth a maintainer decision on whether to add a sanctioned 'vendor docs, foundational' tag to §1's taxonomy, or normalize the bracket to an existing one."
   ],
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "scope": "drift",
+  "drift_rules": [
+    "check_pedagogy.md §61",
+    "check_pedagogy.md §66",
+    "check_prompts.md §35",
+    "check_prompts.md §36",
+    "check_prompts.md §43"
+  ]
 }

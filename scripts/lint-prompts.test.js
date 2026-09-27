@@ -137,3 +137,35 @@ test('approvalGapsScoped: one marker is enough to make the store authoritative',
   const reg = { 'a-key': { note: 'approved prompt-ok' } };
   assert.deepEqual(approvalGapsScoped(reg, new Set(['unrelated-key'])), ['a-key']);
 });
+
+/*
+ * Markers are per machine, but the store was read per checkout. A linked
+ * worktree (scripts/pair-worktree.sh) that approved one prompt of its own has a
+ * non-empty store, so the scoping above treated it as authoritative and every
+ * claim approved in the main checkout read as a gap: fresh pair worktrees failed
+ * test:gates on ae101-m2-name-what-moves, ae101-m2-tidier, ae101-m5-done-done.
+ * The store a worktree reads includes the main checkout's.
+ */
+const { approvalStores, readMarkers } = require('./lint-prompts.js');
+const fs = require('fs');
+const os = require('os');
+const { execFileSync } = require('child_process');
+
+test('approvalStores: a linked worktree also reads the main checkout\'s markers', () => {
+  const base = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), 'approvals-')));
+  const main = path.join(base, 'main'), wt = path.join(base, 'wt');
+  const git = (dir, ...a) => execFileSync('git', ['-C', dir, ...a], { stdio: 'ignore' });
+  fs.mkdirSync(main);
+  git(main, 'init', '-q', '-b', 'main');
+  git(main, '-c', 'user.email=t@example.com', '-c', 'user.name=t', 'commit', '-q', '--allow-empty', '-m', 'x');
+  git(main, 'worktree', 'add', '-q', wt, '-b', 'wt');
+  fs.mkdirSync(path.join(main, '.claude', 'prompt-approvals'), { recursive: true });
+  fs.writeFileSync(path.join(main, '.claude', 'prompt-approvals', 'a-key.confirmed'), '');
+  fs.mkdirSync(path.join(wt, '.claude', 'prompt-approvals'), { recursive: true });
+  fs.writeFileSync(path.join(wt, '.claude', 'prompt-approvals', 'own-key.confirmed'), '');
+  const markers = readMarkers(approvalStores(wt));
+  assert.deepEqual([...markers].sort(), ['a-key', 'own-key']);
+  const reg = { 'a-key': { note: 'approved prompt-ok' }, 'own-key': { note: 'prompt-ok' } };
+  assert.deepEqual(approvalGapsScoped(reg, markers), []);
+  assert.deepEqual([...readMarkers(approvalStores(main))], ['a-key']);
+});

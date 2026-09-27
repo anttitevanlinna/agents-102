@@ -8,6 +8,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execFileSync } = require('child_process');
 const { loadRegistry } = require('./compile-prompts.js');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -47,12 +48,28 @@ function approvalGapsScoped(registry, markers) {
   return approvalGaps(registry, markers);
 }
 
-function readMarkers() {
+// Markers are per machine, the store per checkout: a linked worktree reads its
+// own store plus the main checkout's, or one local approval makes its store
+// "authoritative" and every claim approved in main reads as a gap.
+function approvalStores(root = ROOT) {
+  const stores = [path.join(root, '.claude', 'prompt-approvals')];
   try {
-    return new Set(fs.readdirSync(APPROVALS_DIR)
-      .filter(f => f.endsWith('.confirmed'))
-      .map(f => f.slice(0, -'.confirmed'.length)));
-  } catch { return new Set(); }
+    const common = execFileSync('git', ['-C', root, 'rev-parse', '--path-format=absolute', '--git-common-dir'],
+      { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+    const main = path.join(path.dirname(common), '.claude', 'prompt-approvals');
+    if (path.basename(common) === '.git' && !stores.includes(main)) stores.push(main);
+  } catch {}
+  return stores;
+}
+
+function readMarkers(stores = approvalStores()) {
+  const keys = new Set();
+  for (const dir of stores) {
+    try {
+      for (const f of fs.readdirSync(dir)) if (f.endsWith('.confirmed')) keys.add(f.slice(0, -'.confirmed'.length));
+    } catch {}
+  }
+  return keys;
 }
 
 const REFERENCE_RE = /\{\{prompt:([a-z0-9-]+)\}\}/g;
@@ -157,4 +174,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { stripCodeMentions, findReferences, walkMarkdown, claimsApproval, approvalGaps, approvalGapsScoped, readMarkers, REFERENCE_RE };
+module.exports = { stripCodeMentions, findReferences, walkMarkdown, claimsApproval, approvalGaps, approvalGapsScoped, readMarkers, approvalStores, REFERENCE_RE };

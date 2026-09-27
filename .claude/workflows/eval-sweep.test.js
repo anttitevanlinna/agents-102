@@ -450,3 +450,101 @@ test('the result names the stamp command with its drift base', async () => {
   const without = await run(ARGS, cleanJudge);
   assert.match(without.stamp_with, /--drift-base <HEAD when dispatched>$/);
 });
+
+// ---------------------------------------------------------------------------
+// Drift scope: a class stale only because a rule moved re-reads that rule, not
+// its whole rulebook. The routing decision is `drift-scope.js --annotate`'s
+// (`driftScope[cls].route`); the workflow only honours it, behind a knob.
+// ---------------------------------------------------------------------------
+const DRIFT_ITEM = {
+  file: 'curriculum/trainings/t/m.md', instanceSlug: 'ae101--module--m', classes: ['story', 'pedagogy', 'slides'],
+  detail: { story: 'rule-drift', pedagogy: 'rule-drift', slides: 'diff-region' },
+  driftRules: {
+    story: [{ compendium: 'check_pedagogy', rule: '66', changed_at: '2026-09-25' }, { compendium: 'check_strategy_tie_in', rule: '8', changed_at: '2026-09-14' }],
+    pedagogy: [{ compendium: 'check_pedagogy', rule: '66', changed_at: '2026-09-25' }],
+  },
+  driftScope: {
+    story: { route: 'drift', rules: ['check_pedagogy:66', 'check_strategy_tie_in:8'] },
+    pedagogy: { route: 'drift', rules: ['check_pedagogy:66'] },
+  },
+  pins: { story: 'abc1234', pedagogy: 'abc1234', slides: 'abc1234' },
+};
+
+// A drift judge that merges every class it was handed, unless told otherwise.
+const driftJudge = (fallback = []) => async (prompt, opts) => {
+  const label = opts.label || '';
+  if (label.startsWith('drift:')) {
+    const classes = [...prompt.matchAll(/derive-class-brief\.js \S+ (\w+) --rules/g)].map((m) => m[1]);
+    return {
+      file: DRIFT_ITEM.file, body_sha: 'f'.repeat(64),
+      classes: classes.map((c) => (fallback.includes(c)
+        ? { class: c, merged: false, fallback_reason: 'quote no longer in the body' }
+        : { class: c, merged: true, verdict: 'PASS', ungrounded_count: 0, rows_written_by_you: 1, drift_rules_reread: [], findings: [], suggestions: [] })),
+    };
+  }
+  return cleanJudge(prompt, opts);
+};
+
+async function driftRun(extra, impl) {
+  const seen = [];
+  const out = await run({ items: [DRIFT_ITEM], ...extra }, async (p, o) => { seen.push({ prompt: p, label: o.label || '' }); return impl(p, o); });
+  return { out, seen };
+}
+
+test('driftScope on: one drift judge per file, carrying only the moved rules per class', async () => {
+  const { out, seen } = await driftRun({ driftScope: true }, driftJudge());
+  const drift = seen.filter((s) => s.label.startsWith('drift:'));
+  assert.equal(drift.length, 1, 'one judge for all the drift classes on the file');
+  const p = drift[0].prompt;
+  assert.match(p, /derive-class-brief\.js curriculum\/trainings\/t\/m\.md story --rules check_pedagogy:66,check_strategy_tie_in:8/);
+  assert.match(p, /derive-class-brief\.js curriculum\/trainings\/t\/m\.md pedagogy --rules check_pedagogy:66\b/);
+  assert.match(p, /drift-scope\.js --merge curriculum\/trainings\/t\/m\.md story --rules check_pedagogy:66,check_strategy_tie_in:8/);
+  assert.doesNotMatch(p, /derive-class-brief\.js \S+ \w+\n/, 'no whole-class rulebook');
+  assert.doesNotMatch(p, /prefill-instance\.js/, 'no prefill: nothing outside the moved rules is re-judged');
+  assert.match(p, /READ-ONLY on the target file/);
+  assert.match(p, /never run `git commit`/i);
+  const full = seen.filter((s) => !s.label.startsWith('drift:') && !s.label.startsWith('refute-')).map((s) => s.label);
+  assert.deepEqual(full, ['slides:m'], 'the diff-region class of a mixed item still gets its full judge');
+  assert.equal(out.expected, 3);
+  assert.equal(out.returned, 3);
+  assert.deepEqual(out.missing, []);
+  assert.deepEqual(out.summary.filter((s) => s.scope === 'drift').map((s) => s.class).sort(), ['pedagogy', 'story']);
+  assert.equal(out.summary.find((s) => s.class === 'slides').scope, 'full');
+});
+
+test('driftScope off (the default): every class gets its full judge', async () => {
+  for (const extra of [{}, { driftScope: false }]) {
+    const { seen } = await driftRun(extra, driftJudge());
+    assert.equal(seen.filter((s) => s.label.startsWith('drift:')).length, 0);
+    assert.deepEqual(seen.map((s) => s.label).filter((l) => !l.startsWith('refute-')).sort(), ['pedagogy:m', 'slides:m', 'story:m']);
+  }
+});
+
+test('a class the merge refused falls back to a full-class judge, and is accounted once', async () => {
+  const { out, seen } = await driftRun({ driftScope: true }, driftJudge(['story']));
+  const labels = seen.map((s) => s.label).filter((l) => !l.startsWith('refute-'));
+  assert.deepEqual(labels.filter((l) => !l.startsWith('drift:')).sort(), ['slides:m', 'story:m']);
+  const storyFull = seen.find((s) => s.label === 'story:m').prompt;
+  assert.match(storyFull, /derive-class-brief\.js curriculum\/trainings\/t\/m\.md story\n/, 'the fallback reads the whole class');
+  assert.equal(out.expected, 3);
+  assert.equal(out.returned, 3);
+  assert.equal(out.summary.find((s) => s.class === 'story').scope, 'full');
+});
+
+test('no drift plan, a full-route plan, or behavior → full judge even with the knob on', async () => {
+  const noPlan = { ...DRIFT_ITEM, driftScope: undefined };
+  const fullRoute = { ...DRIFT_ITEM, driftScope: { story: { route: 'full', reason: 'no prior instance' }, pedagogy: { route: 'full' } } };
+  const behavior = { ...DRIFT_ITEM, classes: ['behavior'], detail: { behavior: 'rule-drift' }, driftRules: { behavior: [{ compendium: 'check_prompts', rule: '1' }] }, driftScope: { behavior: { route: 'drift', rules: ['check_prompts:1'] } } };
+  for (const it of [noPlan, fullRoute, behavior]) {
+    const seen = [];
+    await run({ items: [it], driftScope: true }, async (p, o) => { seen.push(o.label || ''); return cleanJudge(p, o); });
+    assert.equal(seen.filter((l) => l.startsWith('drift:')).length, 0);
+  }
+});
+
+test('a drift judge that dies names its classes as missing, never re-fires them silently', async () => {
+  const dies = async (p, o) => ((o.label || '').startsWith('drift:') ? null : cleanJudge(p, o));
+  const { out } = await driftRun({ driftScope: true }, dies);
+  assert.deepEqual(out.missing.sort(), ['pedagogy:curriculum/trainings/t/m.md', 'story:curriculum/trainings/t/m.md']);
+  assert.equal(out.returned + out.missing.length, out.expected);
+});

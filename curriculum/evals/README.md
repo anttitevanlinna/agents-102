@@ -136,6 +136,26 @@ For targeted edits, run one lint / one seam / one eval rather than the full batt
 - **One seam judge:** copy `seams/seam-judge.md`, fill the LEFT/RIGHT slots for the seam, run it. Save the instance to `seams/instances/<seam>.md` (overwrite the previous one).
 - **Arc-pass:** always full-arc by design; don't subset.
 
+## Drift-scoped re-fires (eval-sweep `driftScope`, off by default)
+
+A class the queue lists for `rule-drift` alone re-reads only the moved rules. `node curriculum/evals/scripts/drift-scope.js --annotate q.json > q.drift.json` adds `driftScope[cls]` to each rule-drift class: `drift` when the prior instance has rule rows, none of its carried rows is a blocking REVISE, and every body quote a carried row cites is still in the file; `full` otherwise. `eval-sweep` with `{items: q.drift.json, driftScope: true}` sends a file's drift classes to one judge with `derive-class-brief.js --rules` briefs; the judge writes replacement rows and `drift-scope.js --merge` splices them (instance `scope: "drift"`, `drift_rules`) or refuses, and a refused class gets its full judge. Behavior never drift-scopes. The carried rows trust the queue's diff-region routing, the same trust that keeps an unlisted class off the queue.
+
+**Bench before default-on** (no judge runs in `npm test`; this is the live half):
+
+```
+node curriculum/evals/scripts/judge-bench.js --build-drift && mkdir -p curriculum/evals/bench/runs
+cp curriculum/evals/bench/fixtures/writing-drift.seed.json curriculum/evals/instances/shared--file--writing-drift.writing.json
+Workflow({scriptPath: '.claude/workflows/eval-sweep.js', args: {items: <writing-drift.items.json>, driftScope: true}})
+node curriculum/evals/scripts/judge-bench.js --score-drift curriculum/evals/instances/shared--file--writing-drift.writing.json
+mv curriculum/evals/instances/shared--file--writing-drift.writing.json curriculum/evals/bench/runs/drift-on-<n>.instance.json
+cp curriculum/evals/bench/fixtures/writing-drift.seed.json curriculum/evals/instances/shared--file--writing-drift.writing.json
+Workflow({scriptPath: '.claude/workflows/eval-sweep.js', args: {items: <writing-drift.items.json>, driftScope: false}})
+node curriculum/evals/scripts/judge-bench.js --score curriculum/evals/instances/shared--file--writing-drift.writing.json --fixture writing-drift
+mv curriculum/evals/instances/shared--file--writing-drift.writing.json curriculum/evals/bench/runs/drift-off-<n>.instance.json
+```
+
+Pass: every drift-on run exits 0 on `--score-drift` (moved-rule plant caught, `scope: "drift"`, carried rows byte-identical to the seed) with one `drift:` judge dispatched and no `writing:` fallback, and the drift-off control scores full recall. The kept-rule plant is reported, not gated: drift scope is expected to miss it. `--build-drift` itself fails unless the guard carries the clean fixture and refuses once a quoted line is reworded. Compare the two runs' judge tokens from the task outputs.
+
 ## What lives where (map)
 
 ```

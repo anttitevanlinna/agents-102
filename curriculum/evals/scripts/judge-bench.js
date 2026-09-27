@@ -26,6 +26,8 @@
 //   node curriculum/evals/scripts/judge-bench.js --build          # write fixtures
 //   node curriculum/evals/scripts/judge-bench.js --score <instance.json> --fixture <name>
 //   node curriculum/evals/scripts/judge-bench.js --report          # summarise runs/
+//   node curriculum/evals/scripts/judge-bench.js --build-drift     # drift-scope fixture + queue item
+//   node curriculum/evals/scripts/judge-bench.js --score-drift <instance.json>
 'use strict'
 const crypto = require('node:crypto')
 const fs = require('node:fs')
@@ -124,8 +126,8 @@ const JUDGEMENT_PLANTS = [
 // prose rather than a synthetic body whose defects stand out against nothing.
 const BASE = 'curriculum/exercises/close-the-ticket.md'
 
-function buildFixture(name, plantIds) {
-  const raw = fs.readFileSync(path.join(REPO, BASE), 'utf8')
+function buildFixture(name, plantIds, base = BASE) {
+  const raw = fs.readFileSync(path.join(REPO, base), 'utf8')
   const lines = raw.split('\n')
 
   // Insert into the body region only — a plant below the maintainer cut or
@@ -173,7 +175,7 @@ function buildFixture(name, plantIds) {
   fs.writeFileSync(fixPath, out)
   const truth = {
     name,
-    base: BASE,
+    base,
     fixture: path.relative(REPO, fixPath),
     source_sha: crypto.createHash('sha256').update(out, 'utf8').digest('hex'),
     planted: planted.sort((a, b) => a.line - b.line),
@@ -237,7 +239,118 @@ function report() {
   return runs
 }
 
-module.exports = { PLANTS, JUDGEMENT_PLANTS, BASE, buildFixture, scoreInstance, report, BENCH, RUNS }
+// ---------------------------------------------------------------------------
+// DRIFT fixture — the recall guard for drift-scoped re-fires (drift-scope.js).
+//
+// A drift judge reads only the moved rules; every other row is carried. Two
+// plants on the base file, one per side of that line:
+//   moved plant  violates the rule marked moved. The drift judge must catch it.
+//   kept plant   violates a rule that did NOT move, on a new line no carried
+//                row quotes. The carry keeps that rule's old PASS row, so a
+//                drift run is expected to miss it. That is the trust boundary:
+//                live, a body edit like this routes the class as diff-region,
+//                so it never reaches drift scope — the queue's routing is what
+//                vouches for the carried rows, exactly as it vouches for a
+//                class it does not list at all. The full-scope control run
+//                must catch both, or the fixture proves nothing.
+// A third, deterministic check needs no judge: edit a line a carried row
+// quotes, and the carry guard must refuse (route: full). `--build-drift`
+// fails if it does not, or if the guard refuses the clean fixture.
+//
+// The seed is the base file's real PASS instance re-pointed at the fixture.
+// `--build-drift` writes it beside the fixture, never into instances/ — the
+// live run copies it there itself (see curriculum/evals/README.md).
+// ---------------------------------------------------------------------------
+const DRIFT = {
+  name: 'writing-drift',
+  cls: 'writing',
+  // A PASS instance whose carried quotes all pass the guard against its own file.
+  base: 'curriculum/exercises/compound-and-close.md',
+  seed: 'curriculum/evals/instances/ae101--exercise--compound-and-close.writing.json',
+  moved: 'check_writing:3',
+  movedPlant: 'session-biography',
+  keptPlant: 'banned-word',
+}
+
+function buildDrift() {
+  const os = require('node:os')
+  const { slugFor } = require('./derive-body-view.js')
+  const ds = require('./drift-scope.js')
+  const truth = buildFixture(DRIFT.name, [DRIFT.movedPlant, DRIFT.keptPlant], DRIFT.base)
+  const slug = slugFor(truth.fixture)
+  const seed = JSON.parse(fs.readFileSync(path.join(REPO, DRIFT.seed), 'utf8'))
+  const [moved] = ds.parseRuleIds([DRIFT.moved])
+  const isMoved = r => r && `${r.compendium}|${r.rule_index}` === `${moved.compendium}|${moved.rule}`
+  if (seed.verdict !== 'PASS') throw new Error(`seed ${DRIFT.seed} is ${seed.verdict}, need a PASS instance`)
+  if (!(seed.rules_evaluated || []).some(isMoved)) throw new Error(`seed has no row for ${DRIFT.moved}`)
+  seed.file = truth.fixture
+  seed.training = slug.split('--')[0]
+  const seedPath = path.join(BENCH, 'fixtures', `${DRIFT.name}.seed.json`)
+  fs.writeFileSync(seedPath, JSON.stringify(seed, null, 2) + '\n')
+
+  // The guard, against a scratch copy of the seed: clean fixture → drift.
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'bench-drift-'))
+  fs.writeFileSync(path.join(tmp, `${slug}.${DRIFT.cls}.json`), JSON.stringify(seed))
+  const item = {
+    file: truth.fixture, instanceSlug: slug, training: seed.training, classes: [DRIFT.cls],
+    detail: { [DRIFT.cls]: 'rule-drift' },
+    driftRules: { [DRIFT.cls]: [{ compendium: moved.compendium.replace(/\.md$/, ''), rule: moved.rule }] },
+    pins: {},
+  }
+  const [annotated] = ds.annotate([item], { instancesDir: tmp })
+  const plan = annotated.driftScope[DRIFT.cls]
+  if (plan.route !== 'drift') throw new Error(`the carry guard refused the clean fixture: ${plan.reason}`)
+
+  // Quoted variant: reword one line a carried row quotes → the guard must refuse.
+  const fixText = fs.readFileSync(path.join(REPO, truth.fixture), 'utf8')
+  let quoted = null
+  for (const r of seed.rules_evaluated.filter(r => !isMoved(r))) {
+    quoted = ds.quotesOf(r).map(q => q.split(/\.\.\.|…/)[0].trim()).find(q => q.length >= 12 && fixText.includes(q))
+    if (quoted) break
+  }
+  if (!quoted) throw new Error('no carried row quotes a line of the fixture — nothing to test the guard against')
+  const qFile = path.join(tmp, `${DRIFT.name}-quoted.md`)
+  fs.writeFileSync(qFile, fixText.replace(quoted, quoted.replace(/\b(\w{4,})\b/, 'REWORDED')))
+  fs.writeFileSync(path.join(tmp, `${slugFor(path.relative(REPO, qFile))}.${DRIFT.cls}.json`), JSON.stringify(seed))
+  const qPlan = ds.planClass({ file: qFile, cls: DRIFT.cls, rules: [DRIFT.moved], instancesDir: tmp })
+  if (qPlan.route !== 'full') throw new Error(`the carry guard kept rows after a quoted line changed ("${quoted}")`)
+
+  fs.writeFileSync(path.join(BENCH, 'fixtures', `${DRIFT.name}.items.json`), JSON.stringify([annotated], null, 1) + '\n')
+  truth.drift = {
+    cls: DRIFT.cls, moved: DRIFT.moved, moved_plant: DRIFT.movedPlant, kept_plant: DRIFT.keptPlant,
+    slug, seed: path.relative(REPO, seedPath), instance: `curriculum/evals/instances/${slug}.${DRIFT.cls}.json`,
+    quoted_guard: { quoted, route: qPlan.route, reason: qPlan.reason },
+  }
+  fs.writeFileSync(path.join(BENCH, 'fixtures', `${DRIFT.name}.truth.json`), JSON.stringify(truth, null, 1) + '\n')
+  return truth
+}
+
+// Pass = the moved plant caught, the instance merged as drift scope, and every
+// carried row byte-identical to the seed. The kept plant is reported, never
+// gated: missing it is the documented trust boundary, not a regression.
+function scoreDrift(instancePath, truth) {
+  const s = scoreInstance(instancePath, truth)
+  const d = JSON.parse(fs.readFileSync(instancePath, 'utf8'))
+  const seed = JSON.parse(fs.readFileSync(path.join(REPO, truth.drift.seed), 'utf8'))
+  const [moved] = require('./drift-scope.js').parseRuleIds([truth.drift.moved])
+  const key = r => `${r.compendium}|${r.rule_index}`
+  const movedKey = `${moved.compendium}|${moved.rule}`
+  const carriedSeed = seed.rules_evaluated.filter(r => key(r) !== movedKey).map(r => JSON.stringify(r))
+  const carriedNow = (d.rules_evaluated || []).filter(r => key(r) !== movedKey).map(r => JSON.stringify(r))
+  const carriedIntact = carriedSeed.length === carriedNow.length && carriedSeed.every((r, i) => r === carriedNow[i])
+  const movedHit = s.hits.some(h => h.id === truth.drift.moved_plant)
+  const keptHit = s.hits.some(h => h.id === truth.drift.kept_plant)
+  return {
+    ...s,
+    scope: d.scope || null,
+    moved_plant: movedHit ? 'caught' : 'MISSED',
+    kept_plant: keptHit ? 'caught' : 'missed (trust boundary — a live edit like this routes as diff-region)',
+    carried_intact: carriedIntact,
+    pass: movedHit && d.scope === 'drift' && carriedIntact,
+  }
+}
+
+module.exports = { PLANTS, JUDGEMENT_PLANTS, BASE, DRIFT, buildFixture, buildDrift, scoreInstance, scoreDrift, report, BENCH, RUNS }
 
 if (require.main === module) {
   const argv = process.argv.slice(2)
@@ -249,6 +362,23 @@ if (require.main === module) {
       console.log(`built ${t.fixture} — ${t.planted.length} defects at lines ${t.planted.map(p => p.line).join(', ')}`)
     }
     process.exit(0)
+  }
+
+  if (argv.includes('--build-drift')) {
+    const t = buildDrift()
+    console.log(`built ${t.fixture} — plants at lines ${t.planted.map(p => `${p.id}@${p.line}`).join(', ')}`)
+    console.log(`seed ${t.drift.seed} → copy to ${t.drift.instance} before each run`)
+    console.log(`queue item ${path.relative(REPO, path.join(BENCH, 'fixtures', `${DRIFT.name}.items.json`))} (route: drift)`)
+    console.log(`carry guard refuses a reworded quoted line: ${t.drift.quoted_guard.reason}`)
+    process.exit(0)
+  }
+
+  if (argv.includes('--score-drift')) {
+    const inst = arg('--score-drift')
+    const truth = JSON.parse(fs.readFileSync(path.join(BENCH, 'fixtures', `${DRIFT.name}.truth.json`), 'utf8'))
+    const s = scoreDrift(path.isAbsolute(inst) ? inst : path.join(REPO, inst), truth)
+    console.log(JSON.stringify(s, null, 1))
+    process.exit(s.pass ? 0 : 2)
   }
 
   if (argv.includes('--score')) {
@@ -279,6 +409,6 @@ if (require.main === module) {
     process.exit(0)
   }
 
-  console.error('usage: judge-bench.js --build | --score <instance> [--fixture <name>] | --report')
+  console.error('usage: judge-bench.js --build | --build-drift | --score <instance> [--fixture <name>] | --score-drift <instance> | --report')
   process.exit(1)
 }

@@ -50,8 +50,8 @@ Go.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-27 (writing@16a15ae5 story@08946dd8 technical@16a15ae5 behavior@1c765f2 pedagogy@16a15ae5 strategy@16a15ae5 slides@16a15ae5)
-- judges @16a15ae5: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--lecture--skills-from-the-frontier.strategy.json), slides PASS
+**Quality:** compendium-audited 2026-09-27 (writing@16a15ae5 story@7e1f20f4 technical@16a15ae5 behavior@1c765f2 pedagogy@16a15ae5 strategy@16a15ae5 slides@16a15ae5)
+- judges @7e1f20f4: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--lecture--skills-from-the-frontier.strategy.json), slides PASS
 
 **STRIDE at L7 is assumed-known (Antti 2026-08-30):** the cold first use one slide before its Kohnfelder/Shostack earning stands under the 2026-08-18 assumed-known carve-out for this audience. `check_student_facing.md` §2 judges should not re-flag it.
 

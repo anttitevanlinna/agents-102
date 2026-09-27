@@ -659,8 +659,8 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-05 (behavior@bb9c1d5 slides@324b81d7)
-- judges @08946dd8: writing REVISE (2/0 see instances/ae101--reference--claude-code-for-engineers.writing.json), story REVISE (1/0 see instances/ae101--reference--claude-code-for-engineers.story.json), technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered, slides PASS
+**Quality:** compendium-audited 2026-09-27 (writing@7e1f20f4 behavior@bb9c1d5 slides@7e1f20f4)
+- judges @7e1f20f4: writing PASS (2 findings see instances/ae101--reference--claude-code-for-engineers.writing.json), story REVISE (1/0 see instances/ae101--reference--claude-code-for-engineers.story.json), technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered, slides PASS
 
 **Two 2026-08-19 sweep findings.** (1) `check_student_facing.md` §22: the laptop-sleep item reads *a session you walk away from*; `/schedule tomorrow at 9am` is quoted product syntax, a false positive of the same species as the rule's power-settings carve-out. Do not re-flag it. (2) The Claude:agent noun ratio is not vocabulary drift: a reference page about a named product uses *Claude Code* / *Claude* for the thing documented, §21 assigns *agent* to acting behaviour and the acting sentences here already use it. Do not sweep it.
 

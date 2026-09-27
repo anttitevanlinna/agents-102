@@ -3,15 +3,15 @@
   "file": "curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md",
   "training": "ae101",
   "verdict": "PASS",
-  "body_sha": "8a5547c1444bdae7edfea3e32ef844ef196df65e81531439151ae69c4b238d0e",
+  "body_sha": "16497f78e74bff26b178609d3e3ac9514d21f9985d952e4d8ea9da17078bf881",
   "shape_hash": "9d9a7738a4fb80da",
   "pin": "324b81d7",
   "staleness_reason": "diff-region",
   "accept_notes_found": [
     "L662: Quality: compendium-audited 2026-09-05 (behavior@bb9c1d5 slides@324b81d7).",
-    "L663: judges @08946dd8 line: writing REVISE, story REVISE, technical/pedagogy/strategy grandfathered, behavior PASS, slides PASS.",
-    "L665: Two 2026-08-19 sweep findings — laptop-sleep item's remaining time-of-day hit is quoted product syntax (`/schedule tomorrow at 9am`), a false positive of the power-settings carve-out species; Claude:agent noun ratio is correct for a named-product reference page, not vocabulary drift.",
-    "L667: Doc verification state — the header stamp carries the date, page contract is 'docs win'; two standing watch-items (undocumented CLAUDE_CODE_SESSION_ID env var, skills-precedence shadowing) recorded, not action items against this pass.",
+    "L663: judges @08946dd8 — writing REVISE, story REVISE, technical/pedagogy/strategy grandfathered, behavior PASS, slides PASS.",
+    "L665: Two 2026-08-19 sweep findings — laptop-sleep item's remaining time-of-day hit is quoted product syntax (`/schedule tomorrow at 9am`), a false positive of the power-settings carve-out species; Claude:agent noun ratio is correct for a named-product reference page, not vocabulary drift. Do not re-flag or re-sweep either.",
+    "L667: Doc verification state — header stamp carries the date, page contract is 'docs win'; two standing watch-items (undocumented CLAUDE_CODE_SESSION_ID env var, skills-precedence shadowing) recorded, not action items against this pass.",
     "L669: Freshness lesson — push-back-on-the-plan.md stamped this doc result:OK 2026-08-02 with a four-option menu that shrank to three within 13 days; cite option counts by shape, not number, unless the check is fresh."
   ],
   "chunk_map": [
@@ -238,7 +238,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Full 43-chunk sequential re-read against the diff since pin 324b81d7. Diff spot 1 (chunk 22, L341): 'judges the output' -> 'checks the output' — a synonym swap, no referent change, and incidentally removes a term that would have brushed against §8 (see rule 8). Diff spot 2 (chunk 42, L653): the quoted M6 slide title updated 'Loop instead of you starting' -> 'Loop it, instead of you starting it', which now matches the live header verbatim (grep confirms `## Loop it, instead of you starting it` at curriculum/lectures/composing-the-workflow.md:33, renamed 2026-09-13 per that file's own backing note) — a correction, not a new referent problem. Elsewhere: chunk 1 (L15) opens 'More specific overrides broader' before any noun is named, but the chunk's own header plus the same-chunk scope table (L17-23) supply the referent immediately — same-chunk carve-out. 'un-packaged' (chunk 23, L351) and 'send-off' are arc-earned in M4's run-the-first-experiment.md ahead of this page's own M4 cross-ref (chunk 42) — arc-earned-vocabulary carve-out. 'Cherny' (chunk 37, L570) is earned by full name 'Boris Cherny' in M1's getting-going.md, well upstream in the training arc — same carve-out; surname-only callback on a lookup page a student reaches after M1 is not a violation.",
+      "evidence": "Sequential 43-chunk re-read, focused on the diff since pin 324b81d7 (`git diff 324b81d7..HEAD`). Diff line 1 (chunk 15, L282) and diff line 2 (chunk 22, L347): both swap what the M6 handoff prompt does ('authors more' -> 'picks the one skill most worth building ... and builds it with you'); 'M6' is named explicitly both times, not a pronoun, so the referent is unchanged and resolves via the module name alone. Diff line 3 (chunk 22, L341): 'judges the output' -> 'checks the output', synonym swap, no referent involved. Diff line 4 (chunk 35, L505): sentence-split, no referent change. Diff line 5 (chunk 42, L653): quoted M6 slide title corrected to 'Loop it, instead of you starting it' — verified against the live header (`grep -n '^## .*Loop it, instead of you starting it'` on `curriculum/lectures/composing-the-workflow.md` returns the exact header), so the quote now matches its target rather than drifting from it. Beyond the diff: pronouns throughout the file ('this', 'that', 'it') resolve within their own chunk (e.g. L28 'below the working directory'; L385 'In a worktree, this matters' refers to the folder-naming mechanism stated two sentences earlier in the same chunk 26). No forward-pointing or never-named referent found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -248,7 +248,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every cross-file callback names the source: chunk 10 (L209) 'M2 exercise `push-back-on-the-plan.md`'; chunk 34 (L484) 'The M5 lecture *Hooks always fire*'; chunk 37 (L570) 'M5's pre-exercise lecture (`hooks-always-fire.md`)... the closer (`what-packaging-is.md`)'. Grepped for positional phrasing ('previous module', 'prior lecture', 'the opening lecture', etc.) — zero hits. Neither diff line touches a cross-file callback.",
+      "evidence": "Every cross-file callback names its source: chunk 10 (L209) 'M2 exercise `push-back-on-the-plan.md`'; chunk 15 (L282) 'M3 ships two curated skills...M6 hands you a handoff prompt'; chunk 22 (L347) 'your M6 handoff prompt'; chunk 37 (L570) 'M5's pre-exercise lecture (`hooks-always-fire.md`)...the closer (`what-packaging-is.md`)'; chunk 42 quotes the M6 slide title by name rather than locating it. Grepped for positional phrasing ('the previous module', 'the opening lecture', 'earlier training') across the body: zero hits. None of the five diff lines introduce a positional pointer.",
       "fix_hint": null,
       "blocking": true
     },
@@ -258,7 +258,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest-to-violating: chunk 19 (L322-325, Routines) and chunk 20 (L326-329, /goal) are the thinnest slides at 4 lines each, but each states a complete standalone definition (what the primitive is, what it requires, what it's for) rather than a wait-state — not orphans. Every other chunk carries a table, worked example, or fenced block.",
+      "evidence": "Closest-to-violating: chunk 19 (Routines, L322-325) and chunk 20 (`/goal`, L326-329) are the thinnest slides at 4 lines each, but each states a complete, standalone definition (what the primitive is, its requirement, its scope) rather than a wait-state or context-dependent fragment — not orphans. Every other chunk carries a table, worked prompt, or multi-sentence definition of its own.",
       "fix_hint": null,
       "blocking": false
     },
@@ -268,7 +268,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Spot-checked: chunk 4 'Auto memory: index, version, and settings' <-> body covers MEMORY.md-is-an-index + version requirement + disable/relocate settings, all three promised nouns delivered. Chunk 21 'when each primitive fits' <-> the fit table. Chunk 22 'composing with an authored skill' <-> body (scheduler/skill split, three worked examples) holds after the diff's word swap. Closest-to-violating: chunk 33 header names one flag (`--append-system-prompt`) but the body's 'full family' table also covers `--system-prompt` and `--append-subagent-system-prompt`; stays inside because every listed flag IS a system-prompt-level instruction, so the header's general clause still covers the extended table.",
+      "evidence": "Spot-checked against the diff and neighbours: chunk 15 header '15. Skills: discovery, portability, and choosing a skill vs. a rule' still covers its body after the L282 wording change (the AE101-cross-refs line is a footnote, not the chunk's claim). Chunk 22 header 'composing with an authored skill' <-> body (scheduler/skill split + rule-drift example) holds after the L341/L347 diffs. Chunk 33 header names one flag (`--append-system-prompt`) but the body's family table also lists `--system-prompt` / `--append-subagent-system-prompt` — stays inside because every listed flag is a system-prompt-level instruction, the class the header names.",
       "fix_hint": null,
       "blocking": false
     },
@@ -278,7 +278,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Grepped whole body for each sub-item: 'Not X. Not Y. Z.' construction (0 hits, `grep -noE 'Not [A-Za-z][^.]*\\. Not [A-Za-z][^.]*\\.'`); self-grading superlatives ('one of the most/best', 'game-changing', etc. — 0 hits); abstraction-noun-stack and verb-triplet patterns — spot-read, none found; dry enumerated technical register throughout (tables, flag lists, code fences). Chunk 22's diff ('checks the output' for 'judges the output') doesn't introduce or remove a cadence tic.",
+      "evidence": "Grepped whole body for each sub-item: `grep -noE 'Not [A-Za-z][^.]*\\. Not [A-Za-z][^.]*\\.'` -> 0 hits; self-grading superlatives (`most useful|most important|one of the most|best way|the most powerful`, case-insensitive) -> 0 hits; anaphora/epistrophe triple patterns and abstraction-noun stacks -> spot-read on every chunk, none found (register throughout is tables, flag lists, and code fences, not narrative prose). Diff line at chunk 22 (L341, 'judges the output' -> 'checks the output') does not introduce or remove a cadence tic.",
       "fix_hint": null,
       "blocking": true
     },
@@ -288,7 +288,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Grepped body (above maintainer cut) for compendium/forcing function/beat/mood/Connections-as-noun/'writing surface' — 0 hits (the one 'compendium' hit in the file is L662, inside the maintainer block, out of slide scope). 'Firing' appears at L484/L503/L568 describing the hooks RUNTIME's own fire-on-event behaviour — the product's own accurate vocabulary for the feature being documented, not our internal eval/rule-firing dialect. Diff spot 1 (chunk 22, L341) actively improves this axis: 'judges the output' -> 'checks the output' removes a word that could read as our own eval-judge dialect leaking into student-facing prose.",
+      "evidence": "Grepped the body (above the maintainer cut, L1-660) for compendium / forcing function / \\bbeat\\b / \\bmood\\b / Connections-as-proper-noun / 'writing surface': the only hit is 'compendium' at L662, which is inside the maintainer block and out of slide scope. 'Firing'/'Fires' at L484/L503/L568 describe the hooks RUNTIME's own fire-on-event behaviour (the product feature being documented), not our internal rule/eval-firing dialect. 'Surface' at L324 ('either surface', meaning CLI vs. web) and L492/L500 ('Surface preflight', an imperative verb) are ordinary engineering usage (cf. 'API surface', 'surface the issue'), not the maintainer-dialect noun sense ('writing surface'). Diff line at chunk 22 (L341) trades 'judges' for 'checks', which if anything moves away from eval-judge dialect leaking into student-facing prose.",
       "fix_hint": null,
       "blocking": true
     },
@@ -298,7 +298,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Grepped for bold spans >=25 chars; every real match is a short handle-style lead (e.g. L118 '**A rule with no `paths:` is not a lesser CLAUDE.md.**', L568 '**Debugging hooks that don't fire:**') — no span crosses a sentence boundary once apparent multi-line matches (L433, L437, L444) are checked against raw source and confirmed to be two adjacent bold spans, not one. This file is the compendium's own named worked example of the lookup-surface carve-out ('claude-code-for-engineers.md's events/hooks entries'): entries are paragraphs, so the bolded lead sentence IS the handle and the per-slide count budget is off by rule; the handle cap (no bold crossing the first-sentence boundary) still binds and holds throughout.",
+      "evidence": "This file is the compendium's own named worked example of the prose-paragraph lookup-page carve-out ('claude-code-for-engineers.md's events/hooks entries'): each numbered section is a paragraph led by a bolded lead sentence (e.g. L230 '**What a subagent starts with:**', L456 '**CLAUDE.md is loaded as a user message, not the system prompt.**', L629 '**\"CLAUDE.md is too large (>200 lines) and adherence is dropping.\"**'), and none of those leads crosses a sentence boundary — checked every bold span >=25 chars against raw source. Closest-to-a-count-issue: chunk 30 (L433-437) carries a second bolded sentence mid-paragraph in two of its three entries ('**First stop when Claude seems to be ignoring a rule:**' after the `/memory` lead; '**Use when the conversation feels heavy:**' after the `/context` lead) — a secondary emphasis beyond the one-lead-per-entry pattern, but each is itself a short handle-shaped clause (not a run-on, not crossing its own sentence boundary) functioning as a practical-use pointer rather than narrative decoration; filed as a suggestion, not a REVISE, since the harm (a slide fighting for attention) is marginal on a two-command-per-slide lookup entry and the fix is a taste call, not a clear violation.",
       "fix_hint": null,
       "blocking": false
     },
@@ -308,7 +308,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Built workbook `site/clients/acme/agentic-engineering-101/index.html` line 7040 carries `<section class=\"module\" id=\"reference-claude-code-for-engineers\">` (the qualifying top-level `section.module` wrapper), and `grep -c \"M6 Spot gaps, build the loop\"` on that built file returns 1, confirming the file's last chunk survives to the build. Caveat: that build's mtime (2026-09-08) predates the current source (2026-09-13), so it doesn't prove today's two diff lines specifically made it into a rebuild — only that the wrapper mechanism this rule guards against (the 2026-07-09 phase-less-section-drop incident) is correctly applied to this file's structure, which is what changed the shape-hash-carried N/A rows would not catch.",
+      "evidence": "`site/layouts/slides.js` L273-274: files 'with no phases — prework, supplementary, reference — [are] slide-ified in place under a kind-labelled divider', i.e. this file's entire body reaches the composed deck without requiring a `.phase--*` or `section.module` wrapper around each chunk (that wrapper requirement in the same function targets composed MODULE decks, where the 2026-07-09 phase-less-section-drop incident happened). Confirmed the file itself as a whole is wrapped for the renderer: `grep -n 'class=\"module\"' site/layouts/curriculum.js site/build-workbook.js` shows reference pages render inside a `section.module` at the page level. Neither diff line (chunk 15/22 wording, chunk 35 sentence-split, chunk 42 title fix) touches structure that would move content out of scope.",
       "fix_hint": null,
       "blocking": true
     },
@@ -318,7 +318,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`## N.` headers run consecutive 1->40 with no gaps or duplicates (`grep -n '^## '`). In-file `§ N` prose pointers (§1 at L52/53/601, §20 at L565, §35 at L635, §38 at L633) all resolve to sections that exist in this same file. `node scripts/check-slide-numbering.js curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md` -> 'OK — 59 files, Phase/Step numbering consistent.'",
+      "evidence": "`## N.` headers run consecutive 1->40 with no gaps or duplicates (`grep -n '^## ' <file>`). `node curriculum/evals/scripts/check-slide-numbering.js curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md` -> 'OK — 59 files, Phase/Step numbering consistent.' In-file `§ N` / `§§ N-M` prose pointers in chunk 36 and chunk 42 (e.g. '§ 20', '§§ 34-37') all resolve to sections that exist in this file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -328,7 +328,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md` -> 'OK — 1 files, no page-geometry pointers across the slide cut.' The two prose hits for the word 'below' are not page-geometry: L28 'below the working directory' is filesystem-hierarchy language, not document position; L486 'the curated events below' points at the table 2 lines later inside the SAME chunk (34) — same-chunk-use passes per the rule's own carve-out.",
+      "evidence": "`node scripts/check-slide-deixis.js curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md --report` returns no rows for this file (the 5 rows returned all belong to other files). Manual check of the two 'below' hits in the body: L28 'below the working directory' is filesystem-hierarchy language, not document position; L486 'the curated events below' points at the table two lines later inside the SAME chunk (34) — same-chunk-use passes per the rule's own carve-out. No 'above / further down / at the top of this page' phrasing found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -338,7 +338,7 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md --links` finds exactly two in-body cross-doc links (chunk 41, L643-644): 'MCP and connectors' -> mcp-and-connectors.md (exists) and 'Claude quick reference' -> trainings/agents-101/reference/claude-quick-reference.md (exists). Both name the document in the link text; neither is located by page position. Non-blocking review surface per template, never a gate.",
+      "evidence": "Chunk 41 (L643-644) carries the file's two in-body cross-doc links: 'MCP and connectors' -> `mcp-and-connectors.md` (exists) and 'Claude quick reference' -> `trainings/agents-101/reference/claude-quick-reference.md` (exists, confirmed via `ls`). Both name the document in the link text and neither is located by page position. Non-blocking review surface per the rule's own text ('never a gate'); nothing to file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -348,7 +348,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md` -> '42 slides, oversized: 0 — ✓ every slide is within limits'. No accept-note needed; nothing near the ceiling after the diff (chunk 22 and chunk 42 both shrank or held flat on word count from the diff's substitutions).",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md --report` -> 42 slides measured, largest at 138 words / 0 bullets (chunk 22), oversized: 0, '✓ every slide is within limits'. No accept-note needed. Diff lines (chunk 15, 22, 35, 42) are all word-neutral-to-shrinking substitutions, so none moved a slide toward the ceiling.",
       "fix_hint": null,
       "blocking": false
     },
@@ -361,7 +361,7 @@
       "na_reason": "no 'the X you did/saw/caught' beat-callback phrasing anywhere in file (grepped you did|saw|caught|found|built|wrote|ran|sent|made — only generic hypotheticals, e.g. 'you wrote those' about imports, no specific training beat named).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "dbe16b7f8a7567837eabe0e23a7fef922f384710bd557fd01ed6132b4f73ac88",
+      "carried_from": "8a5547c1444bdae7edfea3e32ef844ef196df65e81531439151ae69c4b238d0e",
       "carried_shape": "9d9a7738a4fb80da"
     },
     {
@@ -373,7 +373,7 @@
       "na_reason": "flat technical reference, no narrative pedagogy — grepped for doctrine-restatement / self-referential-design-commentary / aphorism-kicker phrasing ('by design', 'the point is', 'is the skill.', etc.) — 0 hits; every bullet states a mechanical fact (a flag, a path, a table row).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "dbe16b7f8a7567837eabe0e23a7fef922f384710bd557fd01ed6132b4f73ac88",
+      "carried_from": "8a5547c1444bdae7edfea3e32ef844ef196df65e81531439151ae69c4b238d0e",
       "carried_shape": "9d9a7738a4fb80da"
     },
     {
@@ -385,7 +385,7 @@
       "na_reason": "no `##` header changed wording since pin 4a722813 — `git diff 4a722813..HEAD -- <file> | grep -E '^[-+]## '` returns empty; no retitle to re-earn against.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "dbe16b7f8a7567837eabe0e23a7fef922f384710bd557fd01ed6132b4f73ac88",
+      "carried_from": "8a5547c1444bdae7edfea3e32ef844ef196df65e81531439151ae69c4b238d0e",
       "carried_shape": "9d9a7738a4fb80da"
     },
     {
@@ -396,7 +396,7 @@
       "evidence": "Grepped for guess/predict framing: zero hits. This is a flat lookup reference with no guess-before-reveal beat anywhere in the body.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "dbe16b7f8a7567837eabe0e23a7fef922f384710bd557fd01ed6132b4f73ac88",
+      "carried_from": "8a5547c1444bdae7edfea3e32ef844ef196df65e81531439151ae69c4b238d0e",
       "carried_shape": "9d9a7738a4fb80da"
     },
     {
@@ -407,12 +407,19 @@
       "evidence": "Rule 15's imperative-vs-claim split is scoped by its own text to exercise and lecture headings. This is a reference/lookup page; its \"## N. Topic: subtopic\" headings (all 40 numbered sections, e.g. chunk 6 \"6. `.claude/rules/`: precedence, compaction, and choosing where rules live\") are topic labels for an addressable lookup entry, a third shape the rule doesn't speak to — consistent across every header in the file, no accidental imperative or claim-style header found.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "dbe16b7f8a7567837eabe0e23a7fef922f384710bd557fd01ed6132b4f73ac88",
+      "carried_from": "8a5547c1444bdae7edfea3e32ef844ef196df65e81531439151ae69c4b238d0e",
       "carried_shape": "9d9a7738a4fb80da"
     }
   ],
-  "suggestions": [],
+  "suggestions": [
+    {
+      "rule": "check_slides.md §9",
+      "line": 433,
+      "now": "**`/memory`:** lists every `CLAUDE.md`, `CLAUDE.local.md`, and rules file loaded in the current session. Toggle auto memory on/off. Link to open the auto memory folder in your editor. **First stop when Claude seems to be ignoring a rule:** check it actually loaded.",
+      "proposed": "**`/memory`:** lists every `CLAUDE.md`, `CLAUDE.local.md`, and rules file loaded in the current session. Toggle auto memory on/off. Link to open the auto memory folder in your editor. First stop when Claude seems to be ignoring a rule: check it actually loaded."
+    }
+  ],
   "blocking_findings_count": 0,
   "nonblocking_findings_count": 0,
-  "notes": "5 rules (3, 4, 15, 16, 17) resolved N/A by shape hash 9d9a7738a4fb80da and parked in the prefill sidecar per _dispatch-preamble.md Mechanics — not re-derived here, spliced in by prefill-instance.js --merge after this file is written. Both diff lines since pin 324b81d7 (chunk 22 word swap L341; chunk 42 quoted-title correction L653) were independently verified against source and found to be fixes, not new defects. writing/story classes on this same file carry open REVISE findings per the maintainer Quality line (L663) — out of slides scope, noted for cross-class awareness only."
+  "notes": "5 rules (3, 4, 15, 16, 17) resolved N/A by shape hash 9d9a7738a4fb80da, parked in the prefill sidecar per _dispatch-preamble.md Mechanics — not re-derived here, to be spliced in by prefill-instance.js --merge run after this file is written. All five diff lines since pin 324b81d7 (chunk 15 L282, chunk 22 L341/L347, chunk 35 L505, chunk 42 L653) were checked individually and are wording fixes / a quote correction, not new slide defects. writing/story classes on this same file carry open REVISE findings per the maintainer Quality line (L663) — out of slides scope, noted for cross-class awareness only."
 }

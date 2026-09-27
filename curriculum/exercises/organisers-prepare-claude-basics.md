@@ -179,6 +179,9 @@ If those checks pass, you are ready to run the customer-side workspace.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-02 (behavior@eb1168f pedagogy@eb1168f strategy@eb1168f slides@3552e8c2)
+- judges @3552e8c2: writing REVISE (see-instances/claude-basics--organisers-prepare-claude-basics.writing.json), story REVISE (see-instances/claude-basics--organisers-prepare-claude-basics.story.json), technical REVISE (see-instances/claude-basics--organisers-prepare-claude-basics.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS (verify-refuted, 2 findings see instances/claude-basics--exercise--organisers-prepare-claude-basics.slides.json)
+
 **Meta (organisers):**
 - **Audience:** organisers only
 - **Timing:** reserve a 2-hour organiser prework block, ideally completed one or two days before the workshop
@@ -186,8 +189,5 @@ If those checks pass, you are ready to run the customer-side workspace.
 - **Privacy:** customer materials stay in the customer SharePoint/Cowork environment. Bosser tooling and the trainer's computer must not ingest or connect to customer workshop files
 - **Folder topology assumption:** one SharePoint workshop folder root is synced by OneDrive for everyone before the workshop. It contains one first-name folder per participant and one `shared/` directory. Participants write `rollout-notes.md` into their own first-name folder. Group drivers read first-name folders and write group syntheses to `shared/`; they do not add folders live
 - **Core readiness test:** OneDrive sync is complete before the workshop; one organiser has rehearsed the participant prompt with fake first-name folders, the group-driver prompt into one `shared/rollout-synthesis-...md` file, and the organiser synthesis exercise into `shared/organisers-rollout-readout.md`; test files are deleted afterwards
-
-**Quality:** compendium-audited 2026-09-02 (behavior@eb1168f pedagogy@eb1168f strategy@eb1168f slides@3552e8c2)
-- judges @3552e8c2: writing REVISE (see-instances/claude-basics--organisers-prepare-claude-basics.writing.json), story REVISE (see-instances/claude-basics--organisers-prepare-claude-basics.story.json), technical REVISE (see-instances/claude-basics--organisers-prepare-claude-basics.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS (verify-refuted, 2 findings see instances/claude-basics--exercise--organisers-prepare-claude-basics.slides.json)
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md`

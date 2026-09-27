@@ -30,6 +30,9 @@ When the demo closes, the room doesn't have a new piece of software. It has a ma
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-02 (story@eb1168f technical@eb1168f behavior@eb1168f pedagogy@eb1168f strategy@eb1168f slides@3552e8c2)
+- judges @3552e8c2: writing REVISE (see-instances/claude-basics--agentic-systems-demo-script.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (2 findings see instances/claude-basics--lecture--agentic-systems-demo-script.slides.json)
+
 **Lecture meta:** *30-minute live demo for Claude Basics Module 1. Trainer drives; participants watch. Five core beats, plus five optional beats for rooms with time or specific signals. Each beat translates back to the participant's Cowork world (rules file, prompt, saved output, check, repeatable folder). Do not expand into a file-by-file repo tour.*
 
 **Prompt spine, core (5 beats, ~20 min execution):**
@@ -106,9 +109,6 @@ While they run, narrate: *"six audits, six angles, running at the same time. Non
 - Repo cloned, customer build for `it-bits` runnable, deployed workbook page open in a browser tab.
 - Two Claude Code sessions ready (main + walk-away). If demoing in Cowork, two browser tabs.
 - A real gap in mind for beat 4. Pre-verify it's still unfixed. Canonical example: a lecture missing per-section timing in its maintainer block. Alternatives: an exercise with stale phrasing the rules should have flagged, a module whose Big Idea drifted from the strategy doc.
-
-**Quality:** compendium-audited 2026-09-02 (story@eb1168f technical@eb1168f behavior@eb1168f pedagogy@eb1168f strategy@eb1168f slides@3552e8c2)
-- judges @3552e8c2: writing REVISE (see-instances/claude-basics--agentic-systems-demo-script.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (2 findings see instances/claude-basics--lecture--agentic-systems-demo-script.slides.json)
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Agentic systems, shown in the repo*
 

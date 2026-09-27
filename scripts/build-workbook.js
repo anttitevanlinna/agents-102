@@ -817,7 +817,8 @@ function buildTrainerModules(customer, trainingKey) {
   const srcPath = path.join(ROOT, 'curriculum/trainings', contentKey, 'trainer-modules.md');
   let md = readMd(srcPath);
   if (md === null) return null;
-  md = CR.applyContentFlags(md, raw.flags, (t.modules || []).map(m => m.slug));
+  const moduleSlugs = [...(t.modules || []), ...(t.optionalModules || [])].map(m => m.slug);
+  md = CR.applyContentFlags(md, raw.flags, moduleSlugs);
   // Runtime maps are computed, never stored. Expanded BEFORE escapeTildes so the
   // emitted `~5` figures get the same tilde treatment as authored prose.
   md = CR.expandTimings(md, runtimeMaps(contentKey), { strict: true });
@@ -1020,7 +1021,8 @@ function buildTheoryBody(trainingKey, recipient) {
 
   const sections = manifest.map(([beat, entries]) => {
     const m = beat.match(/^M(\d+)$/);
-    const modTitle = m && t.modules[Number(m[1]) - 1] ? t.modules[Number(m[1]) - 1].title : '';
+    const moduleEntries = [...(t.modules || []), ...(t.optionalModules || [])];
+    const modTitle = m && moduleEntries[Number(m[1]) - 1] ? moduleEntries[Number(m[1]) - 1].title : '';
     const label = modTitle ? `${beat} — ${modTitle}` : beat;
     const inner = entries.map(e => renderTheoryEntry(trainingKey, e)).join('\n\n');
     return `<section class="module" id="theory-${beat.toLowerCase()}">\n<h1>${CR.esc(label)}</h1>\n${inner}\n</section>`;
@@ -1126,7 +1128,8 @@ function buildExercisesBody(trainingKey) {
   const t = CR.TRAININGS[trainingKey];
   if (!t) throw new Error(`Unknown training: ${trainingKey}`);
   const seen = new Set();
-  const sections = t.modules.map((mod, i) => {
+  const moduleEntries = [...(t.modules || []), ...(t.optionalModules || [])];
+  const sections = moduleEntries.map((mod, i) => {
     const slugs = exerciseSlugsForModule(trainingKey, mod.slug).filter(s => {
       if (seen.has(s)) return false;
       seen.add(s);

@@ -192,6 +192,9 @@ Whenever the group says stop, stop. The artifact is the synthesis file plus what
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-02 (writing@eb1168f story@eb1168f technical@eb1168f pedagogy@eb1168f strategy@eb1168f slides@3552e8c2)
+- judges @3552e8c2: writing PASS, story PASS, technical PASS, behavior REVISE (see-instances/claude-basics--find-the-crux.behavior.json), pedagogy PASS, strategy PASS, slides PASS (verify-refuted, 1 finding see instances/claude-basics--exercise--find-the-crux.slides.json)
+
 **Meta:**
 - **Length:** 60 minutes. 15 + 25 + 20 = 60 phase budget. Phase 2's saved file is the core artifact; Phase 3 enriches it with cross-group comments and is the live system surface
 - **Core artifact:** one file per group in `shared/`, named with the pattern `rollout-synthesis-atlas.md` or an invented crux-based label like `rollout-synthesis-escalation-fog.md`. The file accumulates: crux + evidence (Phase 2 prompt 1), Ideas (Phase 2 prompt 2), Comments from other groups (Phase 3)
@@ -201,9 +204,6 @@ Whenever the group says stop, stop. The artifact is the synthesis file plus what
 - **The reveal at Phase 3 close:** *"You just watched agents coordinate on shared files: individuals diverged, groups synthesized, then comments and ideas cross-pollinated live across files in the room. That ordering matters, and so does the structure that produced it."* Land it once
 - **Maintainer-acceptance — Cowork loop capability (technical class):** the Phase 3 prompt asks Claude to run cycles continuously without re-prompt, and to detect "new sections since last check" across cycles. Pre-ship audit on 2026-05-05 flagged both as UNVERIFIED platform-capability claims. Maintainer accepts — Cowork supports this loop shape per Antti's direct knowledge. Reference: `memory/compounded/2026-05-04-platform-cowork-capabilities-ui-and-rename.md` (Cowork capability surface). A pre-ship system-test run is still queued against the new Phase 3 prompt
 - **Pre-cohort TODO:** run the reshaped Phase 3 cross-pollination prompt as a pre-ship system test before the first Claude Basics cohort. (The actor/judge mechanical harness was removed 2026-06-01 and the tmux-runner doesn't yet cover Claude Basics, so this is a watched manual run for now — mechanical is no longer a recorded Quality rung.) Capability is maintainer-accepted; the run confirms the prompt mechanics (detection, narration cap, stop behavior) actually fire as designed
-
-**Quality:** compendium-audited 2026-09-02 (writing@eb1168f story@eb1168f technical@eb1168f pedagogy@eb1168f strategy@eb1168f slides@3552e8c2)
-- judges @3552e8c2: writing PASS, story PASS, technical PASS, behavior REVISE (see-instances/claude-basics--find-the-crux.behavior.json), pedagogy PASS, strategy PASS, slides PASS (verify-refuted, 1 finding see instances/claude-basics--exercise--find-the-crux.slides.json)
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Where is this all going?*
 

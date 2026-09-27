@@ -186,27 +186,22 @@ test('a todo that names no fix is a record of deliberation, not work', () => {
   })), [])
 })
 
-// 61 of the 79 AE101 instances carrying both ledgers disagreed with each other.
-// Two records of the same thing do not average out; they rot apart and the
-// reader picks whichever one it happened to be written against.
-test('two ledgers that disagree are a defect, not a redundancy', () => {
+// Non-blocking findings have one home per class; a `todos` list or a
+// `todos_count` beside it is a second ledger nothing reads, so it is refused
+// rather than silently ignored.
+test('a retired todos / todos_count key fails the gate', () => {
   const p = checkInstance(NAME, base({
-    verdict: 'PASS', nonblocking_findings_count: 2,
-    todos: [{ rule: 'x' }, { rule: 'y' }],
-    rules_evaluated: [todoRow(), passRow()],
+    verdict: 'PASS', nonblocking_findings_count: 1,
+    todos: [{ rule: 'x' }, { rule: 'y' }], rules_evaluated: [todoRow()],
   }))
-  assert.ok(codes(p).includes('RIVAL_LEDGERS'), 'the contradiction is reported')
-  assert.match(p.find(x => x.code === 'RIVAL_LEDGERS').detail, /todos\[\] holds 2, rules_evaluated holds 1/)
-  assert.strictEqual(sev(p, 'RIVAL_LEDGERS'), 'debt', 'which ledger is right is a judgement, not arithmetic')
-  // With the two ledgers disagreeing there is no count to be right about, so the
-  // mismatch rides along as debt instead of failing a build nothing can green.
-  assert.strictEqual(sev(p, 'COUNT_MISMATCH'), 'debt')
+  assert.ok(codes(p).includes('RETIRED_FIELD'))
+  assert.strictEqual(sev(p, 'RETIRED_FIELD'), 'gate')
+  assert.ok(!codes(p).includes('RIVAL_LEDGERS'), 'todos[] is not a ledger any more')
 
-  // Agreeing duplicates are legal for now — the migration collapses them, and a
-  // gate that failed on them would go red on history it is meant to survive.
-  assert.deepStrictEqual(checkInstance(NAME, base({
-    verdict: 'PASS', nonblocking_findings_count: 1, todos: [{ rule: 'x' }], rules_evaluated: [todoRow()],
-  })), [])
+  // todos_count is not a fallback for the count: alone it declares nothing.
+  const q = checkInstance(NAME, base({ verdict: 'PASS', nonblocking_findings_count: undefined, todos_count: 0 }))
+  assert.ok(codes(q).includes('RETIRED_FIELD'))
+  assert.ok(codes(q).includes('COUNT_MISMATCH'), 'no nonblocking_findings_count is not an integer count')
 })
 
 // The coverage audit looks instances up BY NAME, so a record whose own fields
@@ -260,7 +255,7 @@ test('repairs settle the mechanical defects and refuse the rest', () => {
   // Two ledgers disagreeing is not arithmetic, and a missing verdict is not
   // inferable from a count. Both refuse, so the report keeps them.
   assert.strictEqual(
-    repairs(NAME, base({ nonblocking_findings_count: 2, todos: [{ rule: 'x' }, { rule: 'y' }], rules_evaluated: [todoRow()] })),
+    repairs(NAME, base({ nonblocking_findings_count: 2, prompts_findings: [{ verdict: 'TODO' }, { verdict: 'TODO' }], rules_evaluated: [todoRow()] })),
     null, 'picking a ledger is a judgement — leave it for one')
   assert.strictEqual(
     repairs(NAME, base({ verdict: null, nonblocking_findings_count: 0 })), null,

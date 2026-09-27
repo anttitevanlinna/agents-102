@@ -10,15 +10,12 @@
  * Nothing has ever checked that record. The judge dispatch prompt asks for the
  * instance "in the shape already there", which is an instruction to imitate the
  * nearest example — replication with mutation and no selection. 810 instances
- * carry 60+ top-level keys, three spellings of the drift note, five of the free
- * comment, and two rival todo ledgers that contradict each other in 61 of the 79
- * instances holding both.
+ * carry 60+ top-level keys, three spellings of the drift note and five of the
+ * free comment.
  *
- * The damage is not cosmetic. In AE101, 97 of 407 instances declare a
- * `todos_count` no reader can resolve: 49 carry no list at all and 48 disagree
- * with the list they carry. That is 134 todos which exist as a number on a
- * Quality row and as text nowhere. A pointer to absent evidence reads exactly
- * like evidence.
+ * The damage is not cosmetic. A count with no list behind it exists as a number
+ * on a Quality row and as text nowhere, and a pointer to absent evidence reads
+ * exactly like evidence.
  *
  * What this gate enforces:
  *
@@ -28,8 +25,12 @@
  *                         nothing notices.
  *   COUNT_WITHOUT_LIST    a positive count with no ledger at all. The todos the
  *                         row promises were never written down.
- *   RIVAL_LEDGERS         `todos[]` and `rules_evaluated[]` both present and
- *                         disagreeing. One record, or the two rot apart.
+ *   RIVAL_LEDGERS         `prompts_findings[]` and `rules_evaluated[]` both
+ *                         present and disagreeing. One record, or the two rot apart.
+ *   RETIRED_FIELD         a `todos` or `todos_count` key. Non-blocking findings
+ *                         live in `rules_evaluated` (or `prompts_findings`) and
+ *                         are counted in `nonblocking_findings_count`; a second
+ *                         ledger is not read, so it is refused.
  *   TODO_WITHOUT_FIX      a behavior finding filed TODO none of whose fired
  *                         risks names a fix. The judge's own output contract
  *                         puts `fix_hint` on the risk, and a todo nobody can
@@ -77,44 +78,32 @@ const NAME_RE = /^(.+)\.([a-z_]+)\.json$/;
 const VERDICTS = new Set(['PASS', 'REVISE', 'N/A']);
 
 // A non-blocking finding is one the judge chose not to gate on. It is still
-// OWED — it enters the card queue — which is why the count kept the word
-// `findings` when `todos` was retired from judge output on 2026-09-08 and did
-// NOT become `suggestions`: relabelling the backlog optional would have made
-// the whole queue disappear by vocabulary.
+// OWED — it enters the card queue — so its count is `nonblocking_findings_count`,
+// not a suggestions count: suggestions are optional, findings are not.
 const isTodoRow = r => !!r && typeof r === 'object' && r.verdict === 'REVISE' && r.blocking === false;
 const isBlockingRow = r => !!r && typeof r === 'object' && r.verdict === 'REVISE' && r.blocking === true;
 
 // Class B (simulation-behavior) never writes rule rows. It scores prompts, and
-// each finding lands in `prompts_findings` carrying its own verdict — TODO for
-// a non-blocking one, REVISE for a blocking one. The mapping is not a guess:
-// across the 106 instances holding the field, count(REVISE) equals the declared
-// blocking_findings_count on every single one, and count(TODO) equals the
-// declared todos_count on 103. The three that disagree all declare zero over
-// recorded TODOs, which is the direction this gate exists to catch.
-// Pre-2026-09-08 behavior instances carried `verdict: 'TODO'` per prompt. The
-// migration rewrote those to PASS + suggestions[], so nothing should match any
-// more; the predicate stays so a stale instance is counted rather than silently
-// read as a pass.
+// each finding lands in `prompts_findings` carrying its own verdict: REVISE for
+// a blocking one, PASS (with suggestions[]) otherwise. The judge no longer
+// writes `verdict: 'TODO'`; the predicate stays so a finding carrying it is
+// counted and held to FINDING_WITHOUT_FIX rather than silently read as a pass.
 const isPromptTodo = f => !!f && typeof f === 'object' && f.verdict === 'TODO';
 const isPromptBlocking = f => !!f && typeof f === 'object' && f.verdict === 'REVISE';
 
 function ledgers(inst) {
-  const list = Array.isArray(inst.todos) ? inst.todos.length : null; // legacy; migrated to notes[]
   const rows = Array.isArray(inst.rules_evaluated) ? inst.rules_evaluated.filter(isTodoRow).length : null;
   const prompts = Array.isArray(inst.prompts_findings) ? inst.prompts_findings.filter(isPromptTodo).length : null;
-  return { list, rows, prompts };
+  return { rows, prompts };
 }
 
-// `todos[]` is the older, thinner record and `rules_evaluated` the one five
-// tools already read, so the ledger wins a tie. `prompts_findings` sits between
-// them: it is a whole class's only record, so it counts wherever no rule rows
-// exist. Where only the list exists it is still the evidence, and counting it
-// is not the same as blessing the shape.
+// `rules_evaluated` is the ledger five tools already read, so it wins a tie.
+// `prompts_findings` is the behavior class's only record, so it counts wherever
+// no rule rows exist. Neither present = null (no ledger).
 function derivedTodos(inst) {
-  const { list, rows, prompts } = ledgers(inst);
+  const { rows, prompts } = ledgers(inst);
   if (rows !== null) return rows;
-  if (prompts !== null) return prompts;
-  return list;
+  return prompts;
 }
 
 function derivedBlocking(inst) {
@@ -220,9 +209,9 @@ function checkInstance(name, inst) {
   // Any two ledgers present at once are compared. Three names for one number is
   // not redundancy; they rot apart and each reader picks whichever it was
   // written against.
-  const { list, rows, prompts } = ledgers(inst);
+  const { rows, prompts } = ledgers(inst);
   const present = [
-    ['todos[]', list], ['prompts_findings', prompts], ['rules_evaluated', rows],
+    ['prompts_findings', prompts], ['rules_evaluated', rows],
   ].filter(([, n]) => n !== null);
   let rivals = false;
   for (let i = 0; i < present.length; i++) {
@@ -235,10 +224,16 @@ function checkInstance(name, inst) {
     }
   }
 
-  const declared = asInt(inst.nonblocking_findings_count ?? inst.todos_count);
+  for (const k of ['todos', 'todos_count']) {
+    if (Object.prototype.hasOwnProperty.call(inst, k)) {
+      add('RETIRED_FIELD', `\`${k}\` is not read — record findings in rules_evaluated / prompts_findings and count them in nonblocking_findings_count`);
+    }
+  }
+
+  const declared = asInt(inst.nonblocking_findings_count);
   const derived = derivedTodos(inst);
   if (declared === null) {
-    add('COUNT_MISMATCH', `nonblocking_findings_count is ${JSON.stringify(inst.nonblocking_findings_count ?? inst.todos_count)}, not an integer`);
+    add('COUNT_MISMATCH', `nonblocking_findings_count is ${JSON.stringify(inst.nonblocking_findings_count)}, not an integer`);
   } else if (derived === null) {
     if (declared > 0) add('COUNT_WITHOUT_LIST', `declares ${declared} non-blocking finding(s) and records none`);
   } else if (declared !== derived) {
@@ -330,8 +325,8 @@ function repairs(name, inst) {
     : (name.includes('--') ? name.split('--')[0] : null);
   if (derivedTraining && inst.training !== derivedTraining) patch.training = derivedTraining;
 
-  // Arithmetic is only settled while every ledger present agrees. One dissenter
-  // among three makes the count a judgement, same as it does among two.
+  // Arithmetic is only settled while every ledger present agrees; two that
+  // disagree make the count a judgement.
   const counts = Object.values(ledgers(inst)).filter(n => n !== null);
   const single = new Set(counts).size < 2;
   if (single) {

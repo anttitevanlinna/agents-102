@@ -436,10 +436,14 @@ function scanFile(relpath, io) {
 function gitIo(repo) {
   const ledger = loadLedger(path.join(repo, 'curriculum/evals/compendium-pins.json'))
   const driftMemo = {}
+  // One process per question was the queue's whole cost: a pin sha is asked
+  // about once per class it pins (hundreds of calls for a few dozen shas).
+  const shaMemo = new Map(), diffMemo = new Map()
+  const once = (memo, key, fn) => { if (!memo.has(key)) memo.set(key, fn()); return memo.get(key) }
   return {
     readFile: p => { try { return fs.readFileSync(path.join(repo, p), 'utf8') } catch { return null } },
-    gitDiff: (sha, p) => { try { return execFileSync('git', ['diff', sha, '--', p], { cwd: repo, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 }) } catch { return '' } },
-    validSha: sha => { try { execFileSync('git', ['rev-parse', '--verify', '-q', `${sha}^{commit}`], { cwd: repo, stdio: 'ignore' }); return true } catch { return false } },
+    gitDiff: (sha, p) => once(diffMemo, `${sha}\0${p}`, () => { try { return execFileSync('git', ['diff', sha, '--', p], { cwd: repo, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 }) } catch { return '' } }),
+    validSha: sha => once(shaMemo, sha, () => { try { execFileSync('git', ['rev-parse', '--verify', '-q', `${sha}^{commit}`], { cwd: repo, stdio: 'ignore' }); return true } catch { return false } }),
     ruleDrift: sha => {
       if (sha in driftMemo) return driftMemo[sha]
       let when = null

@@ -75,14 +75,14 @@ Let's focus on:
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-02 (writing@eb1168f story@eb1168f technical@eb1168f behavior@eb1168f pedagogy@eb1168f strategy@eb1168f slides@3552e8c2)
+- judges @3552e8c2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **Meta (organisers):**
 - **Length:** 6 minutes
 - **Audience:** organisers only. This file is a runbook for synthesis while group outputs are landing
 - **Inputs:** rollout synthesis files in `shared/`
 - **Output:** `shared/organisers-rollout-readout.md`
 - **Dependency:** optional for participant success. The group synthesis files are the core artifact
-
-**Quality:** compendium-audited 2026-09-02 (writing@eb1168f story@eb1168f technical@eb1168f behavior@eb1168f pedagogy@eb1168f strategy@eb1168f slides@3552e8c2)
-- judges @3552e8c2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Where is this all going?*

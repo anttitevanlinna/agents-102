@@ -65,11 +65,16 @@ TRAINING_KEY="agentic-engineering-101"
 # shipped .md files keep `{{prompt:<key>}}` markers verbatim — the prompt
 # registry ships alongside (see prompts/ block below) and consuming skills /
 # agents resolve markers against it.
+# What a student of this training reads: the maintainer block cut, content
+# flags resolved. Links are collected from this too, never from the raw file, so
+# a maintainer-only mention cannot pull a page into the tarball.
+student_text() {
+  awk '/<!-- maintainer -->/{exit} {print}' "$1" \
+    | node scripts/resolve-content-flags.js "$TRAINING_KEY"
+}
+
 strip_maintainer() {
-  local src="$1"
-  local dst="$2"
-  awk '/<!-- maintainer -->/{exit} {print}' "$src" \
-    | node scripts/resolve-content-flags.js "$TRAINING_KEY" > "$dst"
+  student_text "$1" > "$2"
 }
 
 copy_md_dir() {
@@ -107,7 +112,9 @@ extract_slugs() {
   # empty result, not an error. Under `set -euo pipefail` an unguarded no-match
   # aborts the whole build (exposed 2026-07-05 when the M6 arc-retrospective cut
   # left the second hop with zero exercise links). Tolerate empty.
-  grep -hoE "${kind}/[a-z0-9-]+\.md" "$@" 2>/dev/null \
+  local f
+  for f in "$@"; do student_text "$f"; done \
+    | grep -oE "${kind}/[a-z0-9-]+\.md" 2>/dev/null \
     | sed -E "s|${kind}/||;s|\.md$||" | sort -u || true
 }
 

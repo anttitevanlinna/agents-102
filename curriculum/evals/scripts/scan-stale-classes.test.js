@@ -774,7 +774,7 @@ test('linkFinder: a relative-path card reference is NOT ownership', () => {
 
 test('linkFinder: a trainer-modules anchor link is NOT ownership', () => {
   const root = fixture({
-    // real shape, agents-101/trainer-modules.md:223 — anchors into the built page,
+    // shape of a trainer-page anchor link — anchors into the built page,
     // not a file include; the build never inlines from these.
     'curriculum/trainings/agents-101/trainer-modules.md':
       '**Flow.** Fresh session → [evals as steering](./#lectures-evals-as-steering) → Debrief.\n',

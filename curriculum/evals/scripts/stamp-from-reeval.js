@@ -5,22 +5,17 @@
 // through scan-stale-classes routing, and stamps every non-drifted verdict via
 // update-quality.sh (one invocation per file, all class flags).
 //
-// TWO producer shapes, because there are two producers and they drifted apart:
-//   .result.results  — the 2026-06 re-eval fleet: {file, instanceSlug, cls, verdict,
-//                      blocking, todos, verify:{verdict, confirmed}}
-//   .result.summary  — .claude/workflows/eval-sweep.js: {file, class, verdict,
-//                      todos:[], confirmed:[], refuted:[], unadjudicated:[]}
-// The sweep is the named workflow every queue-clearing session is told to dispatch,
-// and for a while its output could not be stamped by the stamper at all — the reader
-// asked for `.results`, got `.summary`, and exited on "no .result.results". A pipeline
-// whose two halves cannot be joined is two scripts, and the join is where the guards
-// live (WIP-skip, drift-skip, the verify-refuted rung), so hand-stamping around it
-// drops exactly the protections that cost the most to learn.
+// Producer: .claude/workflows/eval-sweep.js, whose output carries
+//   .result.summary  — [{file, class, verdict, module_set?, body_sha?,
+//                       confirmed:[], refuted:[], unadjudicated:[]}]
+// An output without a `.summary` array is refused with a non-zero exit, never
+// stamped as an empty run. The non-blocking count on each row is read from the
+// instance the row points at (check-instance-schema.js `derivedTodos`).
 //
 // Stamp rules:
 //   PASS                                → --<cls> PASS
-//   PASS (with suggestions)             → --<cls> PASS:<N> suggestions see instances/<slug>.<cls>.json
-//   REVISE + verify REFUTED            → --<cls> PASS:verify-refuted[, <N> suggestions …]
+//   PASS (with non-blocking findings)   → --<cls> PASS:<N> findings see instances/<slug>.<cls>.json
+//   REVISE + verify REFUTED            → --<cls> PASS:verify-refuted[, <N> findings …]
 //   REVISE + verify PARTIAL            → --<cls> REVISE:<confirmed>/<NT> see instances/<slug>.<cls>.json
 //   REVISE + verify CONFIRMED/missing  → --<cls> REVISE:<NB>/<NT> see instances/<slug>.<cls>.json
 //   AGENT-LOST                         → no stamp (class stays stale)
@@ -51,8 +46,8 @@ function adaptSweepRow(s, slugOf = () => null, todosOf = () => null) {
   const isSet = s.class === 'cross_module'
   const targets = isSet ? (s.module_set || []) : [s.file]
   const slug = s.instanceSlug || slugOf(s.file, s.class, s.module_set)
-  // Fail-open: with no readable instance the returned array is the only number
-  // there is, and an approximate count beats silently reporting none.
+  // The instance is the only record of non-blocking findings; with no readable
+  // instance there is no count and no pointer.
   const recorded = todosOf(slug, s.class)
   return {
     file: s.file,
@@ -65,7 +60,7 @@ function adaptSweepRow(s, slugOf = () => null, todosOf = () => null) {
     bodySha: s.body_sha || null,
     refuted: s.refuted || [],
     blocking,
-    todos: recorded === null || recorded === undefined ? (s.todos || []).length : recorded,
+    todos: recorded ?? 0,
     verify: refuted && !blocking ? { verdict: 'REFUTED', confirmed: 0 }
       : blocking && refuted ? { verdict: 'PARTIAL', confirmed: blocking }
         : null,
@@ -74,7 +69,6 @@ function adaptSweepRow(s, slugOf = () => null, todosOf = () => null) {
 
 function readResults(out, slugOf, todosOf) {
   const r = out.result || out
-  if (Array.isArray(r.results)) return r.results
   if (Array.isArray(r.summary)) return r.summary.map(s => adaptSweepRow(s, slugOf, todosOf))
   return null
 }
@@ -97,7 +91,7 @@ function makeTodosOf(repo) {
     try {
       const inst = JSON.parse(fs.readFileSync(path.join(repo, INSTANCES, `${slug}.${cls}.json`), 'utf8'))
       return derivedTodos(inst)
-    } catch { return null }   // absent or unreadable: the caller falls back
+    } catch { return null }   // absent or unreadable: no count
   }
 }
 
@@ -163,16 +157,10 @@ function stateFor(r, meta = null) {
     const ptr = pointer(r) ? `;${pointer(r)}` : ''
     return `${word}:set=[${names}]${counts}${ptr}`
   }
-  // A non-blocking todo is not a gate. Before the rung existed a judge holding
-  // one had to report REVISE, and the orchestrator read that as red — which is
-  // how a clean file with a note on it stopped a ship.
-  //
-  // PASS_WITH_TODOS is retired (2026-09-08) but still accepted here: a workflow
-  // returning an old verdict word must stamp, not crash. A row reading a
-  // bare `PASS` over an instance holding four notes points nobody at them, and a
-  // note nobody can find is a note nobody wrote. The verdict is not rewritten;
-  // only the pointer is added.
-  if (r.verdict === 'PASS' || r.verdict === 'PASS_WITH_TODOS') {
+  // A non-blocking finding is not a gate: PASS stays PASS, and carries the
+  // count plus a pointer to the instance holding the findings, so a row reading
+  // a bare `PASS` never hides notes. The verdict is not rewritten.
+  if (r.verdict === 'PASS') {
     return r.todos ? `PASS:${plural(r.todos)}${pointer(r)}` : 'PASS'
   }
   const v = r.verify
@@ -183,8 +171,8 @@ function stateFor(r, meta = null) {
   return `REVISE:${nb}/${r.todos}${pointer(r)}`
 }
 
-// Judges write `file` repo-relative now (eval-sweep's schema says so); an older
-// result may still carry an absolute path. Everything downstream here
+// Judges are told to write `file` repo-relative (eval-sweep's schema); a judge
+// can still write an absolute path. Everything downstream here
 // (git pathspecs, fs reads, update-quality.sh) wants one dialect, so convert
 // once, at the door. A path outside the repo passes through untouched: git
 // refusing it loudly beats rewriting it into some other file that exists.
@@ -262,7 +250,7 @@ function main() {
   const out = JSON.parse(fs.readFileSync(outPath, 'utf8'))
   const results = readResults(out, makeSlugOf(repo), makeTodosOf(repo))
   if (!Array.isArray(results)) {
-    process.stderr.write('no .result.results and no .result.summary in output file — not a re-eval or eval-sweep output\n')
+    process.stderr.write('no .result.summary in output file — not an eval-sweep output\n')
     process.exit(1)
   }
 

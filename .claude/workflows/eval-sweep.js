@@ -129,6 +129,15 @@ const NO_PREAMBLE = input.noPreamble === true
 // coverage report nobody can believe.
 const FIRES_ONLY = input.evidence === 'fires'
 
+// Drift scope: a class stale ONLY for rule-drift re-reads the moved rules, one
+// judge per file for all such classes, and `drift-scope.js --merge` carries the
+// class's other rows — or refuses, and the class gets its full judge here. The
+// route per class is `drift-scope.js --annotate`'s (`item.driftScope[cls]`),
+// because the carry guard reads files and this sandbox cannot; an item with no
+// plan gets its full judge. On by default (judge-bench's writing-drift fixture:
+// moved-rule plant caught, carried rows intact); `driftScope: false` turns it off.
+const DRIFT_SCOPE = input.driftScope !== false
+
 // A dispatched unit is identified by its own key, never by matching a returned
 // verdict's file string back against the request. That match used to compare
 // `v.class === j.cls` and a basename suffix, which for a cross_module set means
@@ -139,9 +148,11 @@ const keyOf = u => (u.cls ? `${u.cls}:${u.file}` : `cross_module:${u.name}`)
 const tag = (verdict, unit) => (verdict ? Object.assign(verdict, { _key: keyOf(unit) }) : verdict)
 
 const JOBS = []
+const DRIFT_JOBS = []   // [{file, slug, training, classes: [job + driftIds]}]
 for (const it of ITEMS) {
+  const drifting = []
   for (const cls of it.classes || []) {
-    JOBS.push({
+    const job = ({
       file: it.file,
       slug: it.instanceSlug || null,
       // The judge writes `training` into its instance and runs the schema gate
@@ -155,7 +166,15 @@ for (const it of ITEMS) {
       rules: ((it.driftRules && it.driftRules[cls]) || []).map(r =>
         typeof r === 'string' ? r : `${String(r.compendium).replace(/^check_/, '')} §${r.rule}`),
     })
+    const plan = it.driftScope && it.driftScope[cls]
+    if (DRIFT_SCOPE && job.slug && cls !== 'behavior' && job.reason === 'rule-drift' && job.rules.length &&
+        plan && plan.route === 'drift' && Array.isArray(plan.rules) && plan.rules.length) {
+      drifting.push(Object.assign(job, { driftIds: plan.rules }))
+    } else {
+      JOBS.push(job)
+    }
   }
+  if (drifting.length) DRIFT_JOBS.push({ file: it.file, slug: drifting[0].slug, training: drifting[0].training, classes: drifting })
 }
 
 const VERDICT_SCHEMA = {
@@ -222,6 +241,36 @@ delete BEHAVIOR_VERDICT_SCHEMA.properties.rows_spliced_by_merge
 // A file with no prompt blocks writes verdict N/A to its instance (instance-contract.js).
 BEHAVIOR_VERDICT_SCHEMA.properties.verdict = { enum: ['PASS', 'REVISE', 'N/A'] }
 const verdictSchemaFor = j => (j.cls === 'behavior' ? BEHAVIOR_VERDICT_SCHEMA : VERDICT_SCHEMA)
+
+// A drift judge reports per class. `merged` is what `drift-scope.js --merge`
+// printed: false means the carry was refused and the class owes a full judge.
+const DRIFT_SCHEMA = {
+  type: 'object',
+  required: ['file', 'body_sha', 'classes'],
+  properties: {
+    file: VERDICT_SCHEMA.properties.file,
+    body_sha: VERDICT_SCHEMA.properties.body_sha,
+    classes: {
+      type: 'array',
+      items: {
+        type: 'object',
+        required: ['class', 'merged'],
+        properties: {
+          class: { type: 'string' },
+          merged: { type: 'boolean', description: 'true only if `drift-scope.js --merge` printed MERGED' },
+          fallback_reason: { type: 'string', description: 'the FALLBACK line `--merge` printed, when merged is false' },
+          verdict: { enum: ['PASS', 'REVISE'], description: 'the verdict `--merge` printed' },
+          ungrounded_count: VERDICT_SCHEMA.properties.ungrounded_count,
+          rows_written_by_you: { type: 'integer', description: 'rows in your drift rows file — one per moved rule' },
+          drift_rules_reread: VERDICT_SCHEMA.properties.drift_rules_reread,
+          accept_notes_found: VERDICT_SCHEMA.properties.accept_notes_found,
+          findings: VERDICT_SCHEMA.properties.findings,
+          suggestions: VERDICT_SCHEMA.properties.suggestions,
+        },
+      },
+    },
+  },
+}
 
 const REFUTE_SCHEMA = {
   type: 'object', required: ['refuted', 'reasoning'],
@@ -395,6 +444,55 @@ The first counts ungrounded verdicts only — a terse N/A is healthy and is not 
 Return the structured verdict.`
 }
 
+function driftPrompt(d) {
+  const perClass = d.classes.map(j => {
+    const ids = j.driftIds.join(',')
+    return `### ${j.cls} — moved: ${j.driftIds.join(', ')}
+
+1. Judge the body against each moved rule at its current wording. Evidence as the preamble requires: a REVISE or judgement PASS quotes \`L<n> '<verbatim text>'\`; an N/A carries \`na_reason\`.
+2. Write \`curriculum/evals/body-views/${j.slug}.${j.cls}.drift.json\` as \`{"rules_evaluated": [...], "suggestions": [...]}\` — exactly one row per moved rule, row shape per your brief's **Output contract**, nothing else.
+3. Run:
+\`\`\`
+node curriculum/evals/scripts/drift-scope.js --merge ${j.file} ${j.cls} --rules ${ids}
+\`\`\`
+   - \`MERGED …\` → it wrote the instance. Report \`merged: true\` and the verdict it printed, then run \`node curriculum/evals/scripts/check-instance-evidence.js curriculum/evals/instances/${j.slug}.${j.cls}.json\` and report \`ungrounded_count\`.
+   - \`FALLBACK …\` (exit 3) → report \`merged: false\` with that line as \`fallback_reason\`. Do NOT write the instance yourself; this class gets a full judge after you.`
+  }).join('\n\n')
+  const briefs = d.classes.map(j =>
+    `node curriculum/evals/scripts/derive-class-brief.js ${j.file} ${j.cls} --rules ${j.driftIds.join(',')} --stdout`).join('\n')
+  return `You are the **drift-scoped** eval judge for \`${d.file}\`, classes ${d.classes.map(j => `**${j.cls}**`).join(', ')}. Repo root \`${REPO}\` — cd there first.
+
+## Why the scope is narrow
+
+Each class below is stale ONLY because compendium rules moved after its pin; diff-region routing found none of its body regions changed. Re-judge ONLY the moved rules. Every other row of each instance is carried by \`drift-scope.js --merge\`, which refuses the carry — and sends the class to a full judge — if any carried quote has left the body. A row for a rule that did not move is refused by the merge.
+
+## Read — all in ONE turn, they do not depend on each other
+
+1. \`curriculum/evals/judges/_dispatch-preamble.md\` IN FULL — the dispatch contract.
+2. The moved rules, VERBATIM, one brief per class:
+\`\`\`
+${briefs}
+\`\`\`
+3. \`node curriculum/evals/scripts/derive-body-view.js ${d.file}\` — grep \`projections.body_numbered\`, not the source. Run \`node scripts/expand-md.js ${d.file}\` only if \`has_prompt_blocks\` or \`has_figures\` is true. Cite line numbers against the RAW source.
+
+Take \`body_sha\` (shasum -a 256 of the file, first 64 hex) when you start reading.
+
+## Before filing anything
+
+Read the \`<!-- maintainer -->\` block for **dated accept-notes**; list each in \`accept_notes_found\`. A finding against one is a false positive.
+
+## Per class
+
+${perClass}
+
+List each moved rule in \`drift_rules_reread\` with the verdict you reached. Blocking findings go in that class's \`findings\`; swaps nothing is owed on go in \`suggestions\` only if you can write the replacement.
+
+${READ_ONLY}
+${EVIDENCE}
+
+Return the structured result, one entry per class above.`
+}
+
 function confirmPrompt(c) {
   const checks = (c.checks || []).map(([cmd, exp]) => `    ${cmd}\n      -> must print exactly ${exp}`).join('\n')
   return `You are the **${c.cls}** eval judge for \`${c.file}\`. Repo root \`${REPO}\` — cd there first.
@@ -494,17 +592,46 @@ async function verify(v, phase) {
   return { ...v, adjudicated: adj, confirmed: adj.filter(a => a.survives), refuter_deaths: deaths }
 }
 
+// A merged class becomes an ordinary verdict and goes through the refuters; a
+// refused or unreported class gets its full judge. A drift judge that died
+// returns nothing, so its classes are reported missing, not re-fired unasked.
+async function settleDrift(v, d) {
+  if (!v) return []
+  const byCls = new Map((v.classes || []).filter(Boolean).map(c => [c.class, c]))
+  return parallel(d.classes.map(j => async () => {
+    const c = byCls.get(j.cls)
+    if (c && c.merged === true && c.verdict) {
+      const verdict = {
+        file: j.file, class: j.cls, verdict: c.verdict, body_sha: v.body_sha,
+        ungrounded_count: c.ungrounded_count, rows_written_by_you: c.rows_written_by_you, rows_spliced_by_merge: 0,
+        diff_summary: `drift-scoped: re-read ${j.driftIds.join(', ')}; every other row carried`,
+        drift_rules_reread: c.drift_rules_reread || [], accept_notes_found: c.accept_notes_found || [],
+        findings: c.findings || [], suggestions: c.suggestions || [],
+        scope: 'drift', drift_rules: j.driftIds,
+      }
+      return verify(verdict, 'Verify').then(r => tag(r, j))
+    }
+    const full = await agent(judgePrompt(j), { label: `${j.cls}:${String(j.file).split('/').pop().replace(/\.md$/, '')}`, phase: 'Judge', schema: verdictSchemaFor(j), model: MODELS.judge })
+    return full ? verify(full, 'Verify').then(r => tag(r, j)) : full
+  }))
+}
+
 phase('Judge')
 
 // The three lanes are independent — a cross_module set does not wait on a class
 // judge, and a confirmation does not wait on either. Awaiting them in turn made
 // a 1-item + 2-confirm + 2-set run take three sequential rounds instead of one,
 // for no ordering the work actually needs.
-const [fromQueue, fromConfirm, fromSets] = await parallel([
+const [fromQueue, fromDrift, fromConfirm, fromSets] = await parallel([
   () => pipeline(
     JOBS,
     j => agent(judgePrompt(j), { label: `${j.cls}:${String(j.file).split('/').pop().replace(/\.md$/, '')}`, phase: 'Judge', schema: verdictSchemaFor(j), model: MODELS.judge }),
     (v, j) => (v ? verify(v, 'Verify').then(r => tag(r, j)) : v),
+  ),
+  () => pipeline(
+    DRIFT_JOBS,
+    d => agent(driftPrompt(d), { label: `drift:${String(d.file).split('/').pop().replace(/\.md$/, '')}`, phase: 'Judge', schema: DRIFT_SCHEMA, model: MODELS.judge }),
+    (v, d) => settleDrift(v, d),
   ),
   () => pipeline(
     CONFIRM,
@@ -522,19 +649,28 @@ const [fromQueue, fromConfirm, fromSets] = await parallel([
   ),
 ])
 
-const UNITS = [...JOBS, ...CONFIRM, ...SETS].map(u => Object.assign(u, { _key: keyOf(u) }))
-const done = [...(fromQueue || []), ...(fromConfirm || []), ...(fromSets || [])].filter(Boolean)
+const UNITS = [...JOBS, ...DRIFT_JOBS.flatMap(d => d.classes), ...CONFIRM, ...SETS].map(u => Object.assign(u, { _key: keyOf(u) }))
+const done = [...(fromQueue || []), ...(fromDrift || []).flat(), ...(fromConfirm || []), ...(fromSets || [])].filter(Boolean)
 const expected = UNITS.length
 const surviving = done.filter(v => (v.confirmed || []).length)
 log(`eval-sweep: ${done.length}/${expected} returned · ${done.filter(v => v.verdict === 'PASS').length} PASS · ${surviving.length} with a finding surviving both refuters`)
 
+// Judges are read-only; a verdict counts only once stamped, and the stamp is the
+// step that slips. Hand the orchestrator the command. args.driftBase = the HEAD
+// the queue was read at, so the stamper skips any class whose bytes moved since.
+const stampWith = `node curriculum/evals/scripts/stamp-from-reeval.js <task-output.json> --drift-base ${args.driftBase || '<HEAD when dispatched>'}`
+log(`eval-sweep: stamp with: ${stampWith}`)
+
 return {
   returned: done.length,
   expected,
+  stamp_with: stampWith,
   // Named so the orchestrator can re-fire exactly what died rather than the set.
   missing: UNITS.filter(u => !done.some(v => v._key === u._key)).map(u => u._key),
   summary: done.map(v => ({
     file: v.file, class: v.class, verdict: v.verdict, body_sha: v.body_sha,
+    // `drift`: only drift_rules were re-judged, the rest carried by drift-scope.js.
+    scope: v.scope || 'full', drift_rules: v.drift_rules || [],
     set_name: v.set_name || null, module_set: v.module_set || null,
     ungrounded_count: v.ungrounded_count,
     rows: { judged: v.rows_written_by_you, spliced: v.rows_spliced_by_merge },

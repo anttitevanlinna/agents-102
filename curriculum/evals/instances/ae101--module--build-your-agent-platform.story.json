@@ -3,7 +3,7 @@
   "file": "curriculum/trainings/agentic-engineering-101/build-your-agent-platform.md",
   "training": "ae101",
   "verdict": "PASS",
-  "body_sha": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+  "body_sha": "0c57ff3c106ed5de4fd8fd2b7cc2557c7e80279038774fbafb5fdc4953375584",
   "shape_hash": "62d7dfde88f5b156",
   "rules_evaluated": [
     {
@@ -11,7 +11,135 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "build-your-agent-platform.md linked opener lecture carries the opener role and linked closer sits after the exercise (module lines 20–24; linked lecture maintainer role lines 35–39).",
+      "evidence": "Raw lines 21-25 link the vocabulary opener, the exercise, then the trace closer; the opener defines the controlled responsibility and the closer names what the exercise made visible, so no meta-frame is front-loaded.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 3,
+      "rule_lead": "No cross-module sequencing in lecture bodies.",
+      "verdict": "PASS",
+      "evidence": "Command `for f in curriculum/lectures/the-platform-is-the-agent.md curriculum/lectures/a-trace-is-an-argument.md; do sed -n '1,/<!-- maintainer -->/p' \"$f\" | rg -n 'M[0-9]|Module [0-9]' || true; done` produced no matches (exit 0); the linked lecture bodies remain re-placeable.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 4,
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "verdict": "PASS",
+      "evidence": "Raw lines 3, 6, 9, 17, 27, and 36 use the module-template headers; each section's first content names the boundary, prework, outcomes, opening move, concepts, or M8 handoff it actually delivers, and `Next` is the mandated closing header.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 5,
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
+      "verdict": "PASS",
+      "evidence": "Command `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/build-your-agent-platform.md` output: `files: 1   slides: 6   limits: 210 words / 6 bullets`, `oversized: 0`, and `✓ every slide is within limits`.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in linked lectures",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "Linked exercise line 23 invokes the failure-tour prompt, whose line 17 requires prediction and waits before each fault; the four prompt phases carry the decision, search-rule, and incident forcing functions, while raw module lines 19-34 only frame the work and artifact chain.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "Raw line 7 names the shared CI-triage responsibility and line 23 links the student work; neither authors a pause, pair/share, comparison, room report, or prescribed conversation. The room reference stays a delivery context, while the prompts own the work.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 45,
+      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
+      "verdict": "PASS",
+      "evidence": "Linked exercise maintainer lines 69-72 gives three observable outcomes: identify owning invariants, separate demonstrated from owed evidence, and walk incidents through one AWS design with a production gate; the module maintainer adds the same observable handoff at raw lines 50-54.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 47,
+      "rule_lead": "Per-phase failure mode + escape hatch.",
+      "verdict": "PASS",
+      "evidence": "Raw lines 64-70 name a failure mode and recovery move for tour, responsibility, research, design, incident, and evidence; linked exercise maintainer lines 74-82 repeats the per-phase diagnostics for the four teaching phases.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61b",
+      "rule_lead": "An audit's card-shaped findings are discharged by CARDS, not by notes about them.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no audit card-shaped findings in this module journey",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 67,
+      "rule_lead": "Story and depth are judged per big learning that develops, never per feature that recurs.",
+      "verdict": "PASS",
+      "evidence": "The big learning is bounded responsibility with evidence-backed restraint: raw line 4 plants it, lines 19-34 complicate it through the worker/platform, proposal/authorization, state-transition, and failed-check distinctions, and line 38 hands the changed boundary to M8; the trace records the same shift from local failure to incident-tested architecture.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
+      "verdict": "PASS",
+      "evidence": "Module maintainer raw line 46 names `architectural ownership`; strategy M7 lines 481-500 defines the same target and sequence. The refreshed trace retains 8+ scores for every teaching beat and closes at 8+ after the operational path clarification.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "PASS",
+      "evidence": "Raw lines 33-34 distinguish evidence levels and require a known violation to make a boundary check fail; the trace's incident beats leave personas uncertain about what remains unproved, not ashamed of their work.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "PASS",
+      "evidence": "Raw line 4 leads with `bounded responsibility` and lines 29-34 name platform ownership, inspectable research, state-transition control, and evidence calibration; the four failures are treated as cases that discipline must handle, not as the module's title or identity.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "PASS",
+      "evidence": "Strategy M7 lines 481-500 requires architectural ownership, one CI-triage responsibility, local breakage before AWS design, exactly three search rules, worker-adapter boundaries, three incidents, honest evidence, and an M8 handoff. Raw lines 19-38 and the six-phase trace carry each facet in that order; the refreshed session and close actions both use ../<repo-name>-m5, and the next open is data copying/retention, not a premature resolution.",
       "fix_hint": null,
       "blocking": true
     },
@@ -22,62 +150,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; primary judge owns this rule",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 4,
-      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
-      "verdict": "PASS",
-      "evidence": "All module headers are unique fixed module-template labels or direct content labels; template-mandated labels are outside the authored-header failure mode.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
-      "verdict": "PASS",
-      "evidence": "Ran node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/build-your-agent-platform.md --report; exit 0; oversized: 0; limits 210 words / 6 bullets.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 16,
-      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-      "verdict": "PASS",
-      "evidence": "Ran prompt-marker grep over module body: no fences; load-bearing forcing functions remain in linked exercise prompts.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 27,
-      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
-      "verdict": "PASS",
-      "evidence": "Ran room-cue grep over module body: no authored discuss/share/neighbor/pair/tell-the-room/compare-with/take-N-minutes cues.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 45,
-      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
-      "verdict": "PASS",
-      "evidence": "build-your-agent-platform.md maintainer Leap test lines 48–51 contain three observable engineer outcomes with named artifacts/decisions.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 47,
-      "rule_lead": "Per-phase failure mode + escape hatch.",
-      "verdict": "PASS",
-      "evidence": "build-your-agent-platform.md maintainer Failure modes + escape hatches lines 62–70 name a failure and recovery move for every phase.",
-      "fix_hint": null,
-      "blocking": true
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -86,44 +162,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
-      "rule_lead": "Mood contract named.",
-      "verdict": "PASS",
-      "evidence": "Strategy mood contract is architectural ownership — “the model is one component; the boundary is ours”; all three persona traces score 8 for the whole teaching beat and 8 at close.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 2,
-      "rule_lead": "Epistemic mood ≠ punitive mood.",
-      "verdict": "PASS",
-      "evidence": "build-your-agent-platform.md frames uncertainty as an evidence/owner question, not personal wrongdoing; no punitive mood language in the body.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 3,
-      "rule_lead": "Lead with discipline, not failure mode.",
-      "verdict": "PASS",
-      "evidence": "build-your-agent-platform.md title and Big Idea lead with a positive discipline; failure/compliance limits are secondary constraints, not the identity.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check.",
-      "verdict": "PASS",
-      "evidence": "build-your-agent-platform.md matches the strategy sequence: linked opener, bounded exercise, linked closer, and handoff; no downstream teaching moment is pre-solved.",
-      "fix_hint": null,
-      "blocking": true
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -132,8 +174,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "strategy-document structure is outside story lane",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -142,8 +186,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "module-only Key Concepts / What You’ll Learn is strategy judge lane",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -152,8 +198,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "module-only Key Concepts / What You’ll Learn is strategy judge lane",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -162,8 +210,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "module-only Key Concepts / What You’ll Learn is strategy judge lane",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -172,8 +222,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -182,8 +234,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -192,8 +246,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -202,8 +258,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -212,8 +270,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -222,8 +282,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -232,8 +294,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -242,8 +306,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -252,8 +318,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -262,8 +330,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -272,8 +342,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -282,8 +354,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -292,8 +366,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -302,8 +378,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -312,8 +390,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -322,8 +402,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -332,8 +414,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -342,8 +426,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -352,8 +438,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -362,8 +450,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -372,8 +462,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -382,8 +474,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -392,8 +486,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -402,8 +498,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -412,8 +510,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -422,8 +522,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -432,8 +534,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -442,8 +546,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -452,8 +558,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -462,8 +570,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -472,8 +582,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -482,8 +594,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -492,8 +606,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -502,8 +618,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -512,8 +630,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -522,8 +642,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -532,8 +654,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -542,8 +666,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -552,8 +678,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -562,8 +690,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -572,8 +702,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -582,8 +714,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -592,8 +726,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -602,8 +738,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -612,8 +750,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -622,8 +762,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -632,8 +774,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -642,8 +786,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -652,8 +798,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -662,8 +810,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -672,8 +822,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -682,8 +834,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -692,8 +846,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -702,8 +858,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -712,8 +870,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -722,8 +882,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -732,8 +894,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -742,8 +906,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -752,8 +918,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -762,8 +930,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -772,8 +942,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -782,8 +954,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -792,8 +966,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "out of story lane; pedagogy judge is primary owner",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -802,8 +978,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -812,8 +990,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -822,8 +1002,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -832,8 +1014,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -842,8 +1026,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -852,8 +1038,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -862,8 +1050,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -872,8 +1062,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -882,8 +1074,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -892,8 +1086,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -902,8 +1098,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -912,8 +1110,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -922,8 +1122,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -932,8 +1134,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -942,8 +1146,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -952,8 +1158,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -962,8 +1170,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -972,8 +1182,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -982,8 +1194,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -992,8 +1206,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1002,8 +1218,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1012,8 +1230,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1022,8 +1242,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1032,8 +1254,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1042,8 +1266,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1052,8 +1278,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1062,8 +1290,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1072,8 +1302,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1082,8 +1314,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1092,8 +1326,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1102,8 +1338,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1112,8 +1350,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1122,8 +1362,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1132,8 +1374,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1142,8 +1386,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1152,8 +1398,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1162,8 +1410,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1172,8 +1422,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1182,8 +1434,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1192,8 +1446,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1202,8 +1458,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1212,8 +1470,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1222,8 +1482,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1232,8 +1494,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1242,8 +1506,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1252,8 +1518,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1262,8 +1530,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_prompts.md",
@@ -1272,8 +1542,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks in module body; linked exercise prompts are not scored by this module story ledger",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_workshop.md",
@@ -1282,8 +1554,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "room-scale mechanics live in linked exercise; module spine has no workshop beat of its own",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_workshop.md",
@@ -1292,8 +1566,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "room-scale mechanics live in linked exercise; module spine has no workshop beat of its own",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_workshop.md",
@@ -1302,8 +1578,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "room-scale mechanics live in linked exercise; module spine has no workshop beat of its own",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_workshop.md",
@@ -1312,8 +1590,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "room-scale mechanics live in linked exercise; module spine has no workshop beat of its own",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_workshop.md",
@@ -1322,8 +1602,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "room-scale mechanics live in linked exercise; module spine has no workshop beat of its own",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_workshop.md",
@@ -1332,8 +1614,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "room-scale mechanics live in linked exercise; module spine has no workshop beat of its own",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_workshop.md",
@@ -1342,8 +1626,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "room-scale mechanics live in linked exercise; module spine has no workshop beat of its own",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_workshop.md",
@@ -1352,8 +1638,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "room-scale mechanics live in linked exercise; module spine has no workshop beat of its own",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_workshop.md",
@@ -1362,8 +1650,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "room-scale mechanics live in linked exercise; module spine has no workshop beat of its own",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_workshop.md",
@@ -1372,8 +1662,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "room-scale mechanics live in linked exercise; module spine has no workshop beat of its own",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_workshop.md",
@@ -1382,8 +1674,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "room-scale mechanics live in linked exercise; module spine has no workshop beat of its own",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_workshop.md",
@@ -1392,8 +1686,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "room-scale mechanics live in linked exercise; module spine has no workshop beat of its own",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_workshop.md",
@@ -1402,8 +1698,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "room-scale mechanics live in linked exercise; module spine has no workshop beat of its own",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_workshop.md",
@@ -1412,8 +1710,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "room-scale mechanics live in linked exercise; module spine has no workshop beat of its own",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_workshop.md",
@@ -1422,8 +1722,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "room-scale mechanics live in linked exercise; module spine has no workshop beat of its own",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     },
     {
       "compendium": "check_workshop.md",
@@ -1432,35 +1734,22 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "room-scale mechanics live in linked exercise; module spine has no workshop beat of its own",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 3,
-      "rule_lead": "No cross-module sequencing in lecture bodies.",
-      "verdict": "PASS",
-      "evidence": "Ran grep -nE M[0-9]+|Module [0-9]+ over linked lecture bodies: no body hits.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 6,
-      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
-      "verdict": "PASS",
-      "evidence": "Ran grep -nE prompt markers over module and linked lecture bodies: no prompt blocks.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "6e68dcb23c59df9350bd34e5fe2a7bf3991c87c72f682bdf0e1c239aecb17842",
+      "carried_shape": "62d7dfde88f5b156"
     }
   ],
   "suggestions": [],
   "blocking_findings_count": 0,
   "nonblocking_findings_count": 0,
-  "module_mood_contract": "architectural ownership — “the model is one component; the boundary is ours”",
-  "trace_status": "generated_first_time",
+  "module_mood_contract": "architectural ownership — the model is one component; the boundary is ours",
+  "trace_status": "regenerated",
   "mood_summary": {
     "phase_scores": [
+      8,
+      8,
+      8,
       8,
       8,
       8
@@ -1469,5 +1758,5 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "notes": "Fresh three-persona re-fire against the current body_sha. Audience triangle read the whole module spine, linked lecture placement, exercise handoff, explicit close, and same-checkout M8 continuation; no curriculum edits."
+  "notes": "Authored 15 in-brief rule rows; merged 133 parked rows for 148 total. Independently re-read the full current module and linked student-facing path; refreshed only the operational session/close trace actions for 3 personas, reusing the five unchanged teaching slices and their scores. The worktree path ../<repo-name>-m5 appears in each refreshed session and close action. Teaching moment remains grounded in prediction before each fault/incident, bounded three-decision research, invariant-first design, and evidence-level downgrades. Commands run: node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/build-your-agent-platform.md --report (oversized: 0); npm test (5 passed); four npm run tour faults prevented with unchanged state/effect/trace counts; check-instance-evidence and sim-freshness --gate --file run after write."
 }

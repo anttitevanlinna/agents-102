@@ -4,7 +4,7 @@
 An agent's data boundary is every copy, inference, tool call, trace, reviewer view, backup, and deletion path, not only the model request.
 
 ## Prework
-Start a new session in the same cohort exchange branch or worktree that contains the selected Module 7 `docs/agent-platform/architecture.md`. Do not switch to a candidate or reviewer checkout. If your group did not run Module 7, the trainer will provide the example architecture in the cohort exchange repository.
+Start a new session in the Module 5 worktree at `../<repo-name>-m5`, which now contains Module 7's `docs/agent-platform/architecture.md` and `proof.md`. If you did not run Module 7, open the checkout path the trainer provides with the example evidence set.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -15,7 +15,7 @@ After this module, you will be able to:
 
 ## Start here
 
-The platform design looks controlled from the task boundary. Now follow the data instead. The first case receives messy support tickets; the second learns what to rank from behavior.
+The boundary model exposed what it catches and the design exposed what it still only claims. Now follow the data each component would copy. The first case receives messy support tickets; the second learns what to rank from behavior.
 
 [The model call is not the data flow](lectures/the-model-call-is-not-the-data-flow.md)
 
@@ -37,17 +37,17 @@ The architecture is no longer an abstract agent platform. It now carries explici
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-27 (story@b00c409c)
-- judges @b00c409c: writing grandfathered, story PASS, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered
-- cross_module @b00c409c: PASS — set=[build-your-agent-platform,data-handling-you-can-defend]
+**Quality:** compendium-audited 2026-09-27
+- judges: not yet judge-audited
+- cross_module @fcc4dfe6: PASS — set=[build-your-agent-platform,data-handling-you-can-defend]
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Pacing:** Runtime is computed with `node scripts/calculate-time.js data-handling-you-can-defend`. Do not let legal debate consume the mapping phases; unresolved calls are valid outputs when they have an owner and the missing facts are named.
 - **Transitions:** opening 5 @start · debrief 10 @after:decide-agent-data-boundary · bridge 5 @end
 - **Mood target:** sober agency. The room can narrow a system responsibly without pretending engineers can self-issue a legal verdict.
-- **Delivery:** Optional two-hour production extension. No customer data, cloud account, or legal advice is required. Both cases are fixed simulations against the selected Module 7 architecture.
-- **Trainer prep:** Have one Module 7 architecture available. Name the roles participants should use for privacy/legal, product, operations, security, and engineering decisions in the mock organization.
+- **Delivery:** Optional two-hour production extension. No customer data, cloud account, or legal advice is required. Both cases are fixed simulations against the student's tested Module 7 design.
+- **Trainer prep:** Have one complete Module 7 example evidence set available. Name the roles participants should use for privacy/legal, product, operations, security, and engineering decisions in the mock organization.
 
 **Leap test:**
 - The engineer can point to a copy of personal data that was absent from the original architecture and add a control or remove the copy.

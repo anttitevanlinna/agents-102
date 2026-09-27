@@ -10,6 +10,7 @@
 #        trainer-only artifacts; 2-hop walk catches lectures/exercises that
 #        reference each other.)
 #   - content/skills/ whitelisted per AE101 training-architecture: access-control-analysis + stride + security-tools
+#   - labs/unattended-agent/ executable local scaffold for optional M7
 #   - prompts/ (full registry; consuming files resolve {{prompt:<key>}} markers against this)
 #
 # Maintainer blocks stripped from .md content; SKILL.md files ship verbatim.
@@ -52,7 +53,7 @@ STAGE="$(mktemp -d)"
 trap 'rm -rf "$STAGE"' EXIT
 
 ROOT="$STAGE/content"
-mkdir -p "$ROOT/lectures" "$ROOT/exercises" "$ROOT/reference" "$ROOT/supplementary" "$ROOT/content/skills"
+mkdir -p "$ROOT/lectures" "$ROOT/exercises" "$ROOT/reference" "$ROOT/supplementary" "$ROOT/content/skills" "$ROOT/labs"
 
 # Training key whose cut this tarball is for. Content flags resolve against its
 # modules list, so the student's local copy carries one branch of each flagged
@@ -181,6 +182,18 @@ for name in "${SKILLS[@]}"; do
   fi
 done
 
+# ---- Executable labs -----------------------------------------------------
+# M7 teaches boundary decisions by adapting and testing a known local control
+# plane. Starting from a working scaffold keeps the coding agent from spending
+# the whole slot inventing queue, broker, trace, and idempotency plumbing.
+LAB_SRC="curriculum/scaffolds/ae101-unattended-agent-lab"
+if [ -d "$LAB_SRC" ]; then
+  cp -R "$LAB_SRC" "$ROOT/labs/unattended-agent"
+else
+  echo "ERROR: M7 lab scaffold not found at $LAB_SRC" >&2
+  exit 1
+fi
+
 # ---- Prompt registry -----------------------------------------------------
 # Consuming exercise / lecture / reference / supplementary files keep
 # `{{prompt:<key>}}` markers; resolve against this directory at runtime.
@@ -234,6 +247,9 @@ EXPECTED=(
   "content/skills/stride/SKILL.md"
   "content/skills/security-tools/SKILL.md"
   "content/skills/security-tools/check.sh"
+  "labs/unattended-agent/package.json"
+  "labs/unattended-agent/src/fault-tour.mjs"
+  "labs/unattended-agent/test/platform.test.mjs"
 )
 MISSING=()
 for path in "${EXPECTED[@]}"; do

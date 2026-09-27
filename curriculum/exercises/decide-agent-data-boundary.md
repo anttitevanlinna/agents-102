@@ -2,9 +2,9 @@
 
 **Time:** 85 minutes.
 
-**Session** *(new, in the cohort exchange repository)*
+**Session** *(new, in your current repository)*
 
-Open Claude Code in the same cohort exchange branch or worktree that contains `docs/agent-platform/architecture.md` from Module 7. Do not use a candidate or reviewer checkout. Use only the fictional case data in the prompts.
+Start a new session in the Module 5 worktree at `../<repo-name>-m5`. Confirm that it contains `docs/agent-platform/architecture.md` and `proof.md` from Module 7 before continuing. If you are using the trainer's example evidence set, use the checkout path the trainer names. Use only the fictional case data in the prompts.
 
 **What you do:** trace two data flows, compare their decisions, and narrow the shared platform boundary.
 
@@ -22,7 +22,7 @@ The support ticket looks like one input. Follow it until it becomes several copi
 
 {{prompt:ae101-m8-map-ticket-data}}
 
-Find the three copies the original platform design hid. Check that customer-visible sending has a stronger authority boundary than drafting.
+Find the highest-risk copies the tested design omitted or underspecified. Check that customer-visible sending has a stronger authority boundary than drafting.
 
 ## Phase 2: Map the recommendation bot
 
@@ -48,16 +48,13 @@ Read the provisional launch states as engineering recommendations within stated 
 
 *25 minutes*
 
-Now make the architecture answer the maps. The agent will offer one consequential change at a time. Accept, reject, or revise it before seeing the next.
+Now make the architecture answer the maps. The agent will offer no more than three consequential changes, one at a time. Accept, reject, or revise each before seeing the next.
 
 {{prompt:ae101-m8-revise-platform-boundary}}
 
 Finish by reading only the changed sections of `architecture.md`. For each change, ask which data-flow row forced it, which case it protects, and which decision still belongs to a human owner.
 
 <!-- maintainer -->
-
-**Quality:** compendium-audited 2026-09-27 (behavior@b00c409c)
-- judges @b00c409c: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered
 
 **Primary Bloom's level:** Analyze + Evaluate + Create.
 

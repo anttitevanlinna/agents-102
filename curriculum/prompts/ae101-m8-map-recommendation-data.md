@@ -5,13 +5,15 @@ context: M8 in-product recommendation case
 runtime: any
 origin: exercises/decide-agent-data-boundary
 requires:
-  - id: m7-synthesized-architecture
-    source: prompt:ae101-m7-synthesize-platform-plans
+  - id: m7-proven-architecture
+    source: prompt:ae101-m7-prove-control-plane
+  - id: m7-data-boundary-inventory
+    source: prompt:ae101-m7-prove-control-plane
 produces:
   - id: m8-recommendation-data-map
     location: docs/agent-platform/data-cases/recommendation-bot.md
 ---
-Read `docs/agent-platform/architecture.md`.
+Read `docs/agent-platform/architecture.md` and `docs/agent-platform/proof.md`. The architecture contains the responsibility, tool and worker contracts, research decision, and control evidence. The proof contains the evidence ledger, initial data boundary, and production gates.
 
 Analyze this case: an EU consumer marketplace wants an in-product recommendation agent. It ranks products and offers using account data, click and session history, purchases, coarse location, product availability, and preferences inferred from behavior. The ranking changes what appears first and what remains hard to discover. Product wants continuous learning from clicks and purchases. The proposed design has not decided whether users can disable personalization, how long histories or inferred preferences live, whether the same data supports marketing, or whether some recommendations could materially affect a user.
 

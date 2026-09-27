@@ -200,11 +200,12 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 {{runtime-map:build-your-agent-platform}}
 
-**Prep.** Copy `reference/agent-platform-challenge.md` into the exchange repository as `docs/agent-platform/challenge.md`. Give every participant an isolated branch or worktree, prepare a review-assignment file with two reviewers per candidate, and name the approved Slack or Teams channel if one exists. Git remains source of truth.
+**Prep.** Build the content tarball. Extract it once and run `npm test` plus `npm run tour` inside `labs/unattended-agent/`. Verify `claude --help` works on the classroom runtime. Every student uses `reference/agent-platform-challenge.md`; do not widen the case in the room.
 
 - **A student asks which three search rules to use** → don't answer. Ask what evidence failure they most want to prevent. The criteria are the independent variable.
-- **Research runs long** → stop at a coherent evidence-linked plan. Preserve publication, review, synthesis, and tabletop; they are where disagreement becomes learning.
-- **The channel connection is absent** → use the prompt's human publication manifest. No connector setup during the slot.
+- **Research runs long** → stop after one evidence-linked decision, one rejected alternative, and the evidence that would reverse it. Protect the incident review.
+- **The lab is missing** → recopy `labs/unattended-agent/` from the extracted content folder. Do not have the agent recreate it from memory.
+- **A student calls the local lab a proof of exactly-once or cancellation** → point to its README limits, then ask which production-like test would earn the stronger claim.
 - **Synthesis produces a service catalogue** → return to one execution: one failed CI event to useful pull request, correct no-action, or escalation.
 
 </section>

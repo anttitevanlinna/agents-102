@@ -7,12 +7,19 @@
 
 A useful trace joins the decision chain: trigger, identity, policy, context references, tool proposal, authorization, side effect, verifier evidence, and outcome.
 
-## Spans need meaning
+## Every event must move the state
 <!--tier:1-->
 
 Agent-observability systems represent work as traces containing observations or spans. Use that structure to preserve causality, not merely timing.
 
-An event should answer: what changed, who caused it, under which policy, from which prior state, and what evidence justified the next state?
+An event should answer: what changed, who caused it, under which policy, from which prior state, and what evidence justified the next state. An event with no state consequence is telemetry, not proof.
+
+## Make the check reject a lie
+<!--tier:1-->
+
+A passing trace proves little until the same check rejects a known violation. Remove the authorization decision, duplicate the side effect, or claim success without verifier evidence.
+
+If the corrupted trace still passes, the check is the defect.
 
 ## Record references, not everything
 <!--tier:1-->
@@ -32,7 +39,7 @@ If the system did nothing, the trace should distinguish denied authority, insuff
 
 **Time:** 7 minutes.
 
-**Role:** M7 closer. Gives the room a lens for reading the two tabletop traces and bridges into M8's data-flow audit.
+**Role:** M7 closer. Names what the action, restraint, and mutation traces proved, then hands their stored fields to M8.
 
 **Mood:** earned skepticism.
 
@@ -41,6 +48,7 @@ If the system did nothing, the trace should distinguish denied authority, insuff
 Claims
 - `tool-success-not-task-success` · vision · "`Tool returned 200` proves an API call completed. It does not prove the task was authorized" ← none-owed
 - `trace-observations` · detail · "Agent-observability systems represent work as traces containing observations or spans." ← langfuse-data-model, aws-observability
+- `mutation-calibrates-check` · vision · "A passing trace proves little until the same check rejects a known violation." ← none-owed
 - `trace-is-data-store` · detail · "A trace becomes another data store with its own access, masking, retention, and deletion obligations." ← langfuse-masking
 - `no-output-not-incident-model` · vision · "“No output” is not an incident model." ← none-owed
 

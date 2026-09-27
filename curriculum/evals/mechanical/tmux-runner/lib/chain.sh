@@ -26,6 +26,7 @@ chain_register() {
   # $1=module, $2=run dir. No-op outside a chain (standalone run-mN.sh).
   [[ -n "${CLAUDE_RUNNER_CHAIN_DIR:-}" ]] || return 0
   printf '%s\n' "$2" > "$CLAUDE_RUNNER_CHAIN_DIR/$1.run"
+  printf '%s\n' "$1" >> "$CLAUDE_RUNNER_CHAIN_DIR/.order"    # run order, for resume checks
 }
 
 run_register() {
@@ -43,6 +44,37 @@ chain_state() {
   rd="$(cat "$ptr")"
   [[ -f "$rd/$1-state.json" ]] && echo "$rd/$1-state.json"
   return 0
+}
+
+chain_require_prior() {
+  # $1=prior state label (a101-m2), $2=this module, $3=training dir this resume
+  # runs in, $4=out root. For single-dir trainings (Agents 101, EM mock): the
+  # resume needs the prior module's state in THIS chain, recorded in THIS dir.
+  # Echoes the state path, or explains and returns 1 — never a guess.
+  local st st_cwd
+  st="$(chain_state "$1")"
+  if [[ -z "$st" ]]; then
+    echo "[chain] $2 builds on $1 and this chain has no $1 state — resume with --chain-dir <the chain that ran $1>, or start at $1. Recent chains:" >&2
+    chain_list_recent "$4" 5 >&2
+    return 1
+  fi
+  st_cwd="$(sed -n 's/.*"cwd": *"\([^"]*\)".*/\1/p' "$st" | head -1)"
+  if [[ "$st_cwd" != "$3" || ! -d "$3" ]]; then
+    echo "[chain] $1 ran in ${st_cwd:-an unrecorded dir}, not $3 — pass --cwd $st_cwd or start at $1" >&2
+    return 1
+  fi
+  # A module that completed in this dir AFTER $1 means the dir holds its
+  # output, not $1's end state. (A later run that failed wrote no state.)
+  local later s
+  for later in $(awk -v p="$1" '$0 == p {n = NR} {l[NR] = $0} END {for (i = n + 1; i <= NR; i++) print l[i]}' \
+                   "$CLAUDE_RUNNER_CHAIN_DIR/.order" 2>/dev/null | sort -u); do
+    [[ "$later" == "$1" ]] && continue
+    s="$(chain_state "$later")"
+    [[ -n "$s" ]] && grep -q "\"cwd\": *\"$3\"" "$s" || continue
+    echo "[chain] this chain already ran $later in $3 after $1 — the dir holds $later's output, not $1's end state. Start at the first module, or resume from a chain that stopped after $1" >&2
+    return 1
+  done
+  echo "$st"
 }
 
 chain_list_recent() {

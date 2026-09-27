@@ -73,6 +73,10 @@ echo "[test] resume from the chain that ran m2: no re-arrange"
 drive bin --from m3 --to m3 --chain-dir "$full_chain"
 [[ $rc -eq 0 && "$(got)" == "RUN m3" ]] && ok "m3 resumes on m2 state without arranging" || bad "rc=$rc trace='$(got)' out=$out"
 
+echo "[test] re-resuming m3 after m3 completed in the dir is refused"
+drive bin --from m3 --to m3 --chain-dir "$full_chain"
+[[ $rc -ne 0 && -z "$(got)" ]] && grep -q 'already ran a101-m3' <<< "$out" && ok "m3 over its own output: refused" || bad "rc=$rc trace='$(got)' $out"
+
 echo "[test] explicit arrange on a resume is a contradiction"
 drive bin --from m4a --to m4a --chain-dir "$full_chain" --arrange
 [[ $rc -ne 0 && -z "$(got)" ]] && ok "--arrange with --from m4a refused" || bad "rc=$rc trace='$(got)'"

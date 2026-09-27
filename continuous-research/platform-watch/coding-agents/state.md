@@ -1,11 +1,19 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-09-26 (cycle 232)
-OODA cycles: 80
+Last updated: 2026-09-27 (cycle 233)
+OODA cycles: 81
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-09-27)
+
+**CYCLE 233 UPDATE (Sep 27) — GITSPAWN ULTRAREVIEW UNPATCHED DAY+27: V2.1.283 STILL LATEST (SEP 25); V2.1.281/282 HAD GIT SSL/LFS HOOK FIXES BUT NOT FSMONITOR/ULTRAREVIEW ATTACK VECTOR; NO V2.1.284 OR V2.1.285 AS OF SEP 27; MANIFOLD EMBARGO EXTENDS 6 DAYS PAST OWN SEP 22 POC THRESHOLD — ACTIVE COORDINATION SIGNAL (NOT OVERSIGHT); HYDRAFUSION SEP 28 TARGET EVE: GITHUB PRIMARY CHANGELOG (SEP 25–26) CONTAINS NO NAMED HYDRAFUSION ROLLOUT EVENT — SECONDARY-SOURCE-CONFIRMED DATE UNVERIFIED IN PRIMARY SOURCE; COMMUNITY THREAD SILENT SINCE SEP 23 (19 COMMENTS — NO NEW ACTIVITY IN 4 DAYS); VS CODE STILL CLI-ONLY; ASSISTANTS API T+32 — T+30 SPIKE WINDOW (SEP 25–26) PASSED SILENTLY, ZERO NAMED-COMPANY POSTMORTEMS — THIS CLOSES THE T+30 PREDICTION ARC; DOUBLE-MIGRATION TRAP (PROMPT OBJECTS NOV 30 — 64 DAYS) NOW PRIMARY FORWARD WATCH; OPENAI AGENTS API DAY+17: NON-ADOPTION COHORT HOLDS — JULIANGOLDIE.COM REVIEW NOT DEPLOYER-DIRECT (SELF-DECLARED "FRESH-RELEASE CAVEAT"); VENDOR QUOTES (SAFETYKIT 60%, HYPHA 86%) CIRCULATE IN SECONDARY PRESS — LEVEL 0, ALREADY KB'D; DAY+30 (OCT 10) NEXT INFLECTION.**
+
+**Watch Cycle 234 (Sep 28+):** HydraFusion Sep 28 PRIMARY VERIFICATION PRIORITY — check github.blog/changelog on/after Sep 28 for named rollout event (secondary sources confirmed date; primary naming still absent); GitSpawn Day+28 — any patch (v2.1.284+?) or Manifold PoC release; Assistants API T+33 — Prompt Objects Nov 30 double-migration watch begins (64 days); OpenAI Agents API Day+18 rolling toward Oct 10 Day+30 inflection.
+
+([releasebot.io Claude Code](https://releasebot.io/updates/anthropic/claude-code), Sep 25–27 2026 — [vendor documentation]; [code.claude.com/docs/en/changelog](https://code.claude.com/docs/en/changelog), Sep 27 2026 — [vendor documentation]; [github.blog/changelog/](https://github.blog/changelog/), Sep 25–26 2026 — [vendor documentation]; [github.com/orgs/community/discussions/206492](https://github.com/orgs/community/discussions/206492), Sep 23 2026 — [practitioner direct — community thread, 19 comments, last Sep 23]; [juliangoldie.com/openai-agents-api-review/](https://juliangoldie.com/openai-agents-api-review/), Sep 2026 — [practitioner analysis — self-declared NOT deployer-direct])
 
 ## Key Verdict (as of 2026-09-26)
 

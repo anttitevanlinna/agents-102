@@ -110,8 +110,8 @@ Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-27 (writing@324b81d7 story@7e1f20f4 technical@324b81d7 behavior@7e1f20f4 pedagogy@7e1f20f4 strategy@7e1f20f4 slides@324b81d7)
-- judges @7e1f20f4: writing PASS (7 findings see instances/ae101--module--earn-the-trust.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--module--earn-the-trust.strategy.json), slides PASS (2 findings see instances/ae101--module--earn-the-trust.slides.json)
+**Quality:** compendium-audited 2026-09-27 (writing@c471865a story@7e1f20f4 technical@c471865a behavior@7e1f20f4 pedagogy@7e1f20f4 strategy@c471865a slides@c471865a)
+- judges @c471865a: writing PASS (1 finding see instances/ae101--module--earn-the-trust.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @01592193: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
 - cross_module @08946dd8: PASS — set=[earn-the-trust,run-the-first-experiment]; 1 pair, 0 blocking; see instances/ae101--module-set--m3-m4.cross_module.json
 

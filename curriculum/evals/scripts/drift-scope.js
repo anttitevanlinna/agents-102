@@ -52,6 +52,7 @@ const { ROW_VERDICTS } = require('./instance-contract.js')
 const REPO = path.resolve(__dirname, '..', '..', '..')
 const INSTANCES = path.join(REPO, 'curriculum', 'evals', 'instances')
 const VIEWS = path.join(REPO, 'curriculum', 'evals', 'body-views')
+const SIM = path.join(REPO, 'curriculum', 'evals', 'sim-cache')
 
 const keyOf = (comp, rule) => `${String(comp).replace(/\.md$/, '')}.md|${String(rule)}`
 const idStr = r => `${r.compendium.replace(/\.md$/, '')}:${r.rule}`
@@ -115,9 +116,13 @@ function haystack(src) {
   }
 }
 
-function planClass({ file, cls, rules, instancesDir = INSTANCES }) {
+function planClass({ file, cls, rules, instancesDir = INSTANCES, simDir = SIM }) {
   const full = reason => ({ route: 'full', reason })
   if (cls === 'behavior') return full('behavior ledger is prompts_findings, not rule rows')
+  // A drift judge re-reads rules, never the persona trace, so story drifts only
+  // on a trace already bound to this body (bind-trace.js's hash); else the
+  // verdict cannot stamp and the class owes a full judge regardless.
+  if (cls === 'story' && !personaBound(file, simDir)) return full('persona trace not bound to the current body')
   let moved
   try { moved = ruleBodies(cls, rules) } catch (e) { return full(`moved rules unusable: ${e.message}`) }
   let src
@@ -141,6 +146,18 @@ function planClass({ file, cls, rules, instancesDir = INSTANCES }) {
     }
   }
   return { route: 'drift', reason: 'ok', rules: moved.map(idStr), carried: carried.length, src, inst, instPath, movedKeys, moved }
+}
+
+function personaBound(file, simDir) {
+  let slug, sha
+  try {
+    slug = readSource(file).slug
+    sha = require('node:crypto').createHash('sha256').update(fs.readFileSync(path.resolve(REPO, file))).digest('hex')
+  } catch { return false }
+  try {
+    const m = fs.readFileSync(path.join(simDir, `${slug}.persona.json`), 'utf8').match(/"content_sha"\s*:\s*"([^"]*)"/)
+    return !!m && m[1] === sha
+  } catch { return false }
 }
 
 // Only the fields a dispatcher reads; the rest of a plan is merge-time state.

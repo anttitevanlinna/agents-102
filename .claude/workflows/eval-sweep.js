@@ -145,7 +145,10 @@ const DRIFT_SCOPE = input.driftScope !== false
 // every set reported as missing while `returned` said it came back. A run that
 // contradicts itself in two adjacent fields is worse than one that just fails.
 const keyOf = u => (u.cls ? `${u.cls}:${u.file}` : `cross_module:${u.name}`)
-const tag = (verdict, unit) => (verdict ? Object.assign(verdict, { _key: keyOf(unit) }) : verdict)
+// file + class are dispatch input: a judge once returned its instance JSON as
+// `file`, and the stamper skipped the verdict. A set unit has neither.
+const tag = (verdict, unit) => (verdict ? Object.assign(verdict, { _key: keyOf(unit) },
+  unit.file ? { file: unit.file } : {}, unit.cls ? { class: unit.cls } : {}) : verdict)
 
 const JOBS = []
 const DRIFT_JOBS = []   // [{file, slug, training, classes: [job + driftIds]}]

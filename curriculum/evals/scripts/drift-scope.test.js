@@ -224,3 +224,30 @@ test('the drift bench scores the real merge: moved plant caught → pass, missed
     assert.equal(s.carried_intact, true)
   }
 })
+
+// AE101 M1 sweep: getting-going story drift-scoped, but its persona trace had
+// been made from an older body. A drift judge re-reads rules, not the trace, so
+// the verdict could not stamp (trace unbound) and the class owed a full judge
+// anyway. Story drifts only on a trace bound to the body as it is now.
+test('story drifts only when its persona trace is bound to the current body', () => {
+  const crypto = require('node:crypto')
+  const dirs = sandbox()
+  dirs.simDir = path.join(path.dirname(dirs.viewsDir), 'sim')
+  fs.mkdirSync(dirs.simDir)
+  writeInstance(dirs, 'story', [row('check_pedagogy.md', 1), row('check_pedagogy.md', 66)])
+  const trace = path.join(dirs.simDir, `${slug}.persona.json`)
+  const plan = () => ds.planClass({ file: FILE, cls: 'story', rules: ['check_pedagogy:66'], ...dirs })
+
+  let r = plan()
+  assert.equal(r.route, 'full')
+  assert.match(r.reason, /persona trace/)
+
+  fs.writeFileSync(trace, JSON.stringify({ content_sha: 'f'.repeat(64) }))
+  r = plan()
+  assert.equal(r.route, 'full')
+  assert.match(r.reason, /persona trace/)
+
+  const sha = crypto.createHash('sha256').update(fs.readFileSync(FILE)).digest('hex')
+  fs.writeFileSync(trace, JSON.stringify({ content_sha: sha }))
+  assert.equal(plan().route, 'drift', plan().reason)
+})

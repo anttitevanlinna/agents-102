@@ -548,3 +548,22 @@ test('a drift judge that dies names its classes as missing, never re-fires them 
   assert.deepEqual(out.missing.sort(), ['pedagogy:curriculum/trainings/t/m.md', 'story:curriculum/trainings/t/m.md']);
   assert.equal(out.returned + out.missing.length, out.expected);
 });
+
+// AE101 M1 sweep (wf_8c699ede-3a8): two judges returned the instance JSON they
+// wrote as `file`, the schema's own warning notwithstanding. The stamper keyed
+// on it, found no Quality line in a .json, and skipped two good verdicts. The
+// file and class a verdict belongs to are dispatch input, not judge output.
+test('a verdict carries the dispatched file and class, whatever the judge reports', async () => {
+  const liar = async (prompt, opts) => {
+    const v = await cleanJudge(prompt, opts);
+    if (!(opts.label || '').startsWith('refute-') && !(opts.label || '').startsWith('cross_module:')) {
+      v.file = 'curriculum/evals/instances/ae101--exercise--e.behavior.json';
+      v.class = 'wrong';
+    }
+    return v;
+  };
+  const out = await run({ items: ARGS.items }, liar);
+  assert.equal(out.summary.length, 1);
+  assert.equal(out.summary[0].file, 'curriculum/exercises/e.md');
+  assert.equal(out.summary[0].class, 'behavior');
+});

@@ -111,6 +111,16 @@ m1 && bad "m1: untiered entries passed" || ok "m1: no hypothesis tier fails"
 good_m1 | awk '/^- \*\*Jonas/ {next} /^## Decision Journal/ {print; print "- **Jonas** (Desire low)"; next} 1' > "$W/team-leadership.md"
 m1 && bad "m1: person placed only outside Team Knowledge passed" || ok "m1: a person placed outside Team Knowledge fails"
 
+# Mimi's notes are one line: the memory must say so, and a model may put her
+# name and the "too thin" on separate lines (live run 2026-09-27 did).
+thin() { ( cd "$W" && RUN_EM_SOURCE_ONLY=1 source "$ROOT/run-em.sh" --module m1 --cwd "$W" && thin_notes_named Mimi ) >/dev/null 2>&1; }
+good_m1 > "$W/team-leadership.md"
+thin && ok "thin notes: same-line flag found" || bad "thin notes: same-line flag missed"
+good_m1 | awk '/^- \*\*Mimi/ {print "**Mimi Kallio** (new transfer)"; print "- [Observation] Notes are too thin to place her on ADKAR at all."; next} 1' > "$W/team-leadership.md"
+thin && ok "thin notes: flag on the line after her name found" || bad "thin notes: next-line flag missed"
+good_m1 | sed 's/^- \*\*Mimi.*/- **Mimi** (Desire high, Ability high)./' > "$W/team-leadership.md"
+thin && bad "thin notes: a confident placement passed" || ok "thin notes: a confident placement fails"
+
 journal='## Decision Journal
 - Ask first: Q1, Q3, Q5. On the table: all seven. Why: they let people show agency. Give up: the budget question.'
 gate='## Quality Gate

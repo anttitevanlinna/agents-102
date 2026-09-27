@@ -54,6 +54,13 @@ section() {
                  on' "$memory"
 }
 
+# $1=person. Her entry (the line naming her and the two after it) says the
+# notes are too thin rather than placing her.
+thin_notes_named() {
+  section "team knowledge" | grep -A2 "$1" \
+    | grep -qiE "thin|not enough|too little|can.t place|unknown|no evidence|insufficient"
+}
+
 assert_turn() {
   local mod="$1" seq="$2" t="$3" base="$4" fail=0
   case "$mod:$seq" in
@@ -71,7 +78,8 @@ assert_turn() {
       section "team knowledge" | grep -qiE 'hypothes' \
         || { echo "[assert] FAIL m1 T1: no entry tagged as a hypothesis (tiering missing)" >&2; fail=1; }
       # Mimi has one line of notes: placing her on ADKAR is a guess.
-      assert_or_warn assert_scrollback_grep "m1 T1 thin notes named (Mimi)" "$memory" 'Mimi[^.]*(thin|not enough|too little|can.t place|unknown|no evidence|insufficient)'
+      if thin_notes_named Mimi; then echo "[assert] PASS m1 T1: thin notes on Mimi named, not guessed"
+      else echo "[assert] WARN m1 T1: Mimi placed without saying her notes are too thin to place" >&2; fi
       [[ $fail -eq 0 ]] && echo "[assert] PASS m1 T1: memory has three sections; Team Knowledge places all ${#PEOPLE[@]} people on ADKAR with tiers"
       return $fail ;;
     m2:1)

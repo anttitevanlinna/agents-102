@@ -27,6 +27,14 @@ The current worker mechanics are deliberately narrow:
 
 **Neither module returns a compliance verdict.** Engineering owns the concrete data-flow facts and technical controls. Product and operations own purpose and human process. The organisation's privacy or legal owner decides context-specific legal questions. The student artefacts preserve unresolved decisions and named owners instead of asking the model to declare them lawful.
 
+### M7 cohort exchange
+
+M7 uses one common platform challenge and a shared proposal exchange. Each participant first authors exactly three internet-search criteria, researches independently, and publishes one immutable plan packet. Two peers evaluate each packet before a central synthesizer selects one coherent cohort architecture.
+
+Slack or Teams may carry the exchange when the customer already has an approved agent connection. The channel is transport and notification, not automatically the system of record. Post the plan files themselves only when the connector preserves stable file identity and access controls; otherwise post immutable links to a customer-controlled Git repository or shared folder. The exchange manifest records packet ID, author, revision or checksum, location, and publication time so the synthesizer can prove which version it read.
+
+Participant agents may write only their own plan packet and assigned reviews. The synthesizer alone writes `selection-board.md` and `docs/agent-platform/architecture.md`. Publication and synthesis therefore exercise the same platform concepts the module teaches: narrow tool contracts, identity, scoped writes, shared state, traceability, and a human decision boundary.
+
 ## Material distribution
 
 Two artefacts per student:

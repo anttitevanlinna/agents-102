@@ -133,10 +133,10 @@ const FIRES_ONLY = input.evidence === 'fires'
 // judge per file for all such classes, and `drift-scope.js --merge` carries the
 // class's other rows — or refuses, and the class gets its full judge here. The
 // route per class is `drift-scope.js --annotate`'s (`item.driftScope[cls]`),
-// because the carry guard reads files and this sandbox cannot. Off unless
-// `driftScope: true`: it turns on by default only after judge-bench's drift
-// fixture passes live.
-const DRIFT_SCOPE = input.driftScope === true
+// because the carry guard reads files and this sandbox cannot; an item with no
+// plan gets its full judge. On by default (judge-bench's writing-drift fixture:
+// moved-rule plant caught, carried rows intact); `driftScope: false` turns it off.
+const DRIFT_SCOPE = input.driftScope !== false
 
 // A dispatched unit is identified by its own key, never by matching a returned
 // verdict's file string back against the request. That match used to compare

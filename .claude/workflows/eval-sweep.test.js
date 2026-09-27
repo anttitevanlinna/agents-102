@@ -512,12 +512,12 @@ test('driftScope on: one drift judge per file, carrying only the moved rules per
   assert.equal(out.summary.find((s) => s.class === 'slides').scope, 'full');
 });
 
-test('driftScope off (the default): every class gets its full judge', async () => {
-  for (const extra of [{}, { driftScope: false }]) {
-    const { seen } = await driftRun(extra, driftJudge());
-    assert.equal(seen.filter((s) => s.label.startsWith('drift:')).length, 0);
-    assert.deepEqual(seen.map((s) => s.label).filter((l) => !l.startsWith('refute-')).sort(), ['pedagogy:m', 'slides:m', 'story:m']);
-  }
+test('driftScope is on by default; driftScope: false gives every class its full judge', async () => {
+  const on = await driftRun({}, driftJudge());
+  assert.equal(on.seen.filter((s) => s.label.startsWith('drift:')).length, 1);
+  const { seen } = await driftRun({ driftScope: false }, driftJudge());
+  assert.equal(seen.filter((s) => s.label.startsWith('drift:')).length, 0);
+  assert.deepEqual(seen.map((s) => s.label).filter((l) => !l.startsWith('refute-')).sort(), ['pedagogy:m', 'slides:m', 'story:m']);
 });
 
 test('a class the merge refused falls back to a full-class judge, and is accounted once', async () => {

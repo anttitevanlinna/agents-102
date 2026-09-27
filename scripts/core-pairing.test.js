@@ -111,3 +111,13 @@ test('the helper is what the core README tells people to run', () => {
   const readme = fs.readFileSync(process.env.AGENTS_CORE_DIR ? path.join(process.env.AGENTS_CORE_DIR, 'README.md') : core, 'utf8')
   assert.match(readme, /scripts\/pair-worktree\.sh/)
 })
+
+// A session started in the public checkout writes traces through the sim-cache
+// link; the permission check sees the resolved core path, outside the project,
+// and denied the write in the Acme run. The project settings grant the sibling.
+test('project settings grant the sibling core, the path the links resolve', () => {
+  const settings = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '.claude', 'settings.json'), 'utf8'))
+  assert.deepEqual(settings.permissions?.additionalDirectories, ['../agents-102-core'])
+  const link = fs.readlinkSync(path.join(__dirname, '..', 'curriculum', 'evals', 'sim-cache'))
+  assert.equal(path.normalize(path.join('curriculum/evals', link)).split(path.sep).slice(0, 2).join('/'), '../agents-102-core')
+})

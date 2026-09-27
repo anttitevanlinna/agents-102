@@ -45,7 +45,7 @@ fails=0
 
 # Reports first: what still owes work. Never gates.
 rule "QUEUE — what owes a judge"
-node curriculum/evals/scripts/eval-queue.js ${SCOPE[@]+"${SCOPE[@]}"}
+node curriculum/evals/scripts/eval-queue.js ${SCOPE[@]+"${SCOPE[@]}"}; queue_rc=$?
 
 # The other half of "what's open". Until 2026-09-09 only the judge half had a
 # reader, and the human half was answered by copy-pasting a `node -e` one-liner
@@ -86,9 +86,11 @@ gate() {
 # everything.
 # The queue above is a report and never gates, so a key naming no training (or
 # one with nothing to judge) scanned nothing and still read "gates clean".
+# The report run above already answered it (exit 2 unknown key, 1 nothing
+# scanned); running the queue a second time for its exit code doubled the board.
 if [ -n "$TRAINING" ]; then
-  gate "TRAINING SCOPE — the key names a training with surfaces" 2 \
-    node curriculum/evals/scripts/eval-queue.js --training "$TRAINING" --json
+  gate "TRAINING SCOPE — the key names a training with surfaces" all \
+    bash -c 'if [ "$1" -eq 0 ]; then echo "ok — the queue scanned $2"; else echo "FAIL — the queue above scanned nothing for $2 (exit $1)"; exit 1; fi' _ "$queue_rc" "$TRAINING"
 fi
 
 if [ -n "$TRAINING" ]; then

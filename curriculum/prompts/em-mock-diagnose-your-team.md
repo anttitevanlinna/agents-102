@@ -3,7 +3,7 @@ key: em-mock-diagnose-your-team
 dest: Claude Code
 runtime: cli
 origin: engineering-management-mock/see-your-team
-note: EM mock M1 (tmux-runner proving training): install the three-block memory, first ADKAR diagnostic; thin notes flagged, not guessed. Approved prompt-ok 2026-09-27.
+note: EM mock M1, a tmux-runner proving training. Install the three-block memory, first ADKAR diagnostic; thin notes flagged, not guessed. Approved prompt-ok 2026-09-27.
 requires:
   - id: em-team-notes
     source: external

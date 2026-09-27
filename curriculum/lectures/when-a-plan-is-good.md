@@ -51,8 +51,8 @@ The ceiling is not fixed. Every check you make cheap and repeatable raises it, s
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-27 (writing@45f28404 story@45f28404 technical@45f28404 behavior@64d17eea pedagogy@45f28404 strategy@45f28404 slides@45f28404)
-- judges @45f28404: writing PASS (1 finding see instances/ae101--lecture--when-a-plan-is-good.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-27 (writing@dd52c026 story@45f28404 technical@dd52c026 behavior@64d17eea pedagogy@dd52c026 strategy@dd52c026 slides@dd52c026)
+- judges @dd52c026: writing PASS (1 finding see instances/ae101--lecture--when-a-plan-is-good.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **The delegation-frontier slide (`## What you can test and check sets your complexity ceiling`).** The header is a claim rather than the model's name, and that is deliberate: at M2 the bare term *the delegation frontier* is an unearned container (`check_lectures.md §4`) and it pulls optimistic where the slide warns. The name rides the figure's own caption instead, so `the-gate-is-a-claim.md`'s `## The delegation frontier` stays the naming beat. Idea first, name after, the doctrine `the-whole-map.md` states for the laws.
 

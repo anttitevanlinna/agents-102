@@ -108,8 +108,8 @@ Then just hit stop.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-27 (writing@45f28404 story@f307fa46 technical@45f28404 behavior@45f28404 pedagogy@45f28404 strategy@45f28404 slides@45f28404)
-- judges @45f28404: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-27 (writing@dd52c026 story@f307fa46 technical@dd52c026 behavior@45f28404 pedagogy@dd52c026 strategy@dd52c026 slides@dd52c026)
+- judges @dd52c026: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **View summary:** You take a real multi-file task into plan mode, challenge the draft twice, then start a second-pass grilling and stop it when the valuable branches have landed. The result is an approved plan shaped by two different reads, with execution deliberately left for later.
 

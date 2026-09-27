@@ -111,8 +111,8 @@ Ask Claude whether it met any of these.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-27 (writing@45f28404 story@45f28404 technical@45f28404 behavior@45f28404 pedagogy@45f28404 strategy@45f28404 slides@45f28404)
-- judges @45f28404: writing PASS (1 finding see instances/ae101--exercise--extract-the-task-shaping-rule.writing.json), story PASS, technical PASS (2 findings see instances/ae101--exercise--extract-the-task-shaping-rule.technical.json), behavior PASS, pedagogy PASS (verify-refuted, 1 finding see instances/ae101--exercise--extract-the-task-shaping-rule.pedagogy.json), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-27 (writing@dd52c026 story@45f28404 technical@dd52c026 behavior@45f28404 pedagogy@dd52c026 strategy@dd52c026 slides@dd52c026)
+- judges @dd52c026: writing PASS (1 finding see instances/ae101--exercise--extract-the-task-shaping-rule.writing.json), story PASS, technical PASS (2 findings see instances/ae101--exercise--extract-the-task-shaping-rule.technical.json), behavior PASS, pedagogy PASS (verify-refuted, 1 finding see instances/ae101--exercise--extract-the-task-shaping-rule.pedagogy.json), strategy PASS, slides PASS
 - cohorts: none yet
 
 **No connector pointer here — it belongs to M1 (2026-08-14, Antti).** `close-the-ticket` carries the single navigational pointer to `reference/mcp-and-connectors.md`, and `getting-going.md`'s maintainer block states that one-pointer contract. The paste fallback stays, because the student needs it at the moment the tracker is unreachable; the reach-for-next-time link was the duplicate. Do not re-add it.

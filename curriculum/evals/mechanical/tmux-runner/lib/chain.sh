@@ -26,6 +26,7 @@ chain_register() {
   # $1=module, $2=run dir. No-op outside a chain (standalone run-mN.sh).
   [[ -n "${CLAUDE_RUNNER_CHAIN_DIR:-}" ]] || return 0
   printf '%s\n' "$2" > "$CLAUDE_RUNNER_CHAIN_DIR/$1.run"
+  printf '%s\n' "$1" >> "$CLAUDE_RUNNER_CHAIN_DIR/.order"    # run order, for resume checks
 }
 
 run_register() {
@@ -62,6 +63,17 @@ chain_require_prior() {
     echo "[chain] $1 ran in ${st_cwd:-an unrecorded dir}, not $3 — pass --cwd $st_cwd or start at $1" >&2
     return 1
   fi
+  # A module that completed in this dir AFTER $1 means the dir holds its
+  # output, not $1's end state. (A later run that failed wrote no state.)
+  local later s
+  for later in $(awk -v p="$1" '$0 == p {n = NR} {l[NR] = $0} END {for (i = n + 1; i <= NR; i++) print l[i]}' \
+                   "$CLAUDE_RUNNER_CHAIN_DIR/.order" 2>/dev/null | sort -u); do
+    [[ "$later" == "$1" ]] && continue
+    s="$(chain_state "$later")"
+    [[ -n "$s" ]] && grep -q "\"cwd\": *\"$3\"" "$s" || continue
+    echo "[chain] this chain already ran $later in $3 after $1 — the dir holds $later's output, not $1's end state. Start at the first module, or resume from a chain that stopped after $1" >&2
+    return 1
+  done
   echo "$st"
 }
 

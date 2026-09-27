@@ -60,8 +60,14 @@ drive bin
 chain="$(sed -n 's/^\[chain\] chain dir: \([^ ]*\).*/\1/p' <<< "$out")"
 drive bin --from m2
 [[ $rc -ne 0 && -z "$(got)" ]] && grep -q -- '--chain-dir' <<< "$out" && ok "m2 without M1 state: refused, names --chain-dir" || bad "rc=$rc trace='$(got)'"
+# The full chain already ran M2 here: the dir holds M2's output, not M1's end
+# state (live resume 2026-09-27 re-ran M2 over its own work). Refuse.
 drive bin --from m2 --chain-dir "$chain"
-[[ $rc -eq 0 && "$(got)" == "RUN m2" ]] && ok "m2 resumes on M1 state without arranging" || bad "rc=$rc trace='$(got)' $out"
+[[ $rc -ne 0 && -z "$(got)" ]] && grep -q 'already ran em-mock-m2' <<< "$out" && ok "m2 over a dir where m2 already ran: refused" || bad "rc=$rc trace='$(got)' $out"
+drive bin --to m1
+m1chain="$(sed -n 's/^\[chain\] chain dir: \([^ ]*\).*/\1/p' <<< "$out")"
+drive bin --from m2 --chain-dir "$m1chain"
+[[ $rc -eq 0 && "$(got)" == "RUN m2" ]] && ok "m2 resumes on a chain that stopped after m1, without arranging" || bad "rc=$rc trace='$(got)' $out"
 drive bin --from m2 --chain-dir "$chain" --arrange
 [[ $rc -ne 0 && -z "$(got)" ]] && ok "--arrange on a resume refused" || bad "rc=$rc trace='$(got)'"
 SUT_SAVE="$SUT"; SUT="$SB/other"; mkdir -p "$SUT"

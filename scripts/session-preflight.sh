@@ -41,3 +41,7 @@ peers=$(pgrep -x claude 2>/dev/null | wc -l | tr -d ' ')
 # Rules the writing path depends on. Stale index reads exactly like a fresh one,
 # so check it here rather than discovering it mid-draft.
 node curriculum/evals/scripts/build-rule-index.js --check 2>&1 | sed 's/^/rules: /'
+
+# A core read by two public worktrees mixes their evidence; bind-trace refuses
+# to write into one, so say it here rather than mid-eval.
+node scripts/core-pairing.js 2>&1 | grep -v 'belongs to this checkout alone' | sed 's/^/pairing: /' || true

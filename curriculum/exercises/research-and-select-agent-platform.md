@@ -82,8 +82,8 @@ Commit the selected architecture, selection board, and tabletop trace in the coh
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-27 (behavior@ccae53cc)
-- judges @ccae53cc: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered
+**Quality:** compendium-audited 2026-09-27 (behavior@b00c409c)
+- judges @b00c409c: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered
 
 **Primary Bloom's level:** Analyze + Evaluate + Create.
 

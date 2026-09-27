@@ -37,9 +37,9 @@ The architecture is no longer an abstract agent platform. It now carries explici
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-27 (story@ccae53cc)
-- judges @ccae53cc: writing grandfathered, story PASS, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered
-- cross_module @ccae53cc: PASS — set=[build-your-agent-platform,data-handling-you-can-defend]
+**Quality:** compendium-audited 2026-09-27 (story@b00c409c)
+- judges @b00c409c: writing grandfathered, story PASS, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered
+- cross_module @b00c409c: PASS — set=[build-your-agent-platform,data-handling-you-can-defend]
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create

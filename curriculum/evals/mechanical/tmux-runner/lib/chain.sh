@@ -45,6 +45,26 @@ chain_state() {
   return 0
 }
 
+chain_require_prior() {
+  # $1=prior state label (a101-m2), $2=this module, $3=training dir this resume
+  # runs in, $4=out root. For single-dir trainings (Agents 101, EM mock): the
+  # resume needs the prior module's state in THIS chain, recorded in THIS dir.
+  # Echoes the state path, or explains and returns 1 — never a guess.
+  local st st_cwd
+  st="$(chain_state "$1")"
+  if [[ -z "$st" ]]; then
+    echo "[chain] $2 builds on $1 and this chain has no $1 state — resume with --chain-dir <the chain that ran $1>, or start at $1. Recent chains:" >&2
+    chain_list_recent "$4" 5 >&2
+    return 1
+  fi
+  st_cwd="$(sed -n 's/.*"cwd": *"\([^"]*\)".*/\1/p' "$st" | head -1)"
+  if [[ "$st_cwd" != "$3" || ! -d "$3" ]]; then
+    echo "[chain] $1 ran in ${st_cwd:-an unrecorded dir}, not $3 — pass --cwd $st_cwd or start at $1" >&2
+    return 1
+  fi
+  echo "$st"
+}
+
 chain_list_recent() {
   # $1=out root, $2=count. For the resume error message.
   # Only chains that registered a run; an aborted resume leaves an empty one.

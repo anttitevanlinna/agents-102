@@ -70,15 +70,7 @@ chain_init "$HERE/out" "$chain_dir_arg" >/dev/null || exit 2
 echo "[chain] chain dir: $CLAUDE_RUNNER_CHAIN_DIR  (resume with --chain-dir this)"
 
 if [[ -n "$prior" ]]; then               # declared prior state, or stop
-  st="$(chain_state "a101-$prior")"
-  if [[ -z "$st" ]]; then
-    echo "[chain] $from builds on $prior and this chain has no $prior state — resume with --chain-dir <the chain that ran $prior>, or start at $prior. Recent chains:" >&2
-    chain_list_recent "$HERE/out" 5 >&2; exit 1
-  fi
-  st_cwd="$(sed -n 's/.*"cwd": *"\([^"]*\)".*/\1/p' "$st" | head -1)"
-  if [[ "$st_cwd" != "$sut_cwd" || ! -d "$sut_cwd" ]]; then
-    echo "[chain] $prior ran in ${st_cwd:-an unrecorded dir}, not $sut_cwd — pass --cwd $st_cwd or start at $prior" >&2; exit 1
-  fi
+  st="$(chain_require_prior "a101-$prior" "$from" "$sut_cwd" "$HERE/out")" || exit 1
   echo "[chain] resuming on $prior state: $st"
 fi
 source "$HERE/lib/tmux.sh"

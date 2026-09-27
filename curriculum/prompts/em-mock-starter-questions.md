@@ -3,6 +3,7 @@ key: em-mock-starter-questions
 dest: Claude Code
 runtime: cli
 origin: engineering-management-mock/ask-before-you-move
+note: EM mock M2 (tmux-runner proving training): starter questions from the memory, pick journaled with alternatives, one Quality Gate check. Approved prompt-ok 2026-09-27.
 requires:
   - id: em-leadership-memory
     source: prompt:em-mock-diagnose-your-team

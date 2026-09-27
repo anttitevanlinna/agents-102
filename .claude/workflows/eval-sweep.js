@@ -528,9 +528,16 @@ const expected = UNITS.length
 const surviving = done.filter(v => (v.confirmed || []).length)
 log(`eval-sweep: ${done.length}/${expected} returned · ${done.filter(v => v.verdict === 'PASS').length} PASS · ${surviving.length} with a finding surviving both refuters`)
 
+// Judges are read-only; a verdict counts only once stamped, and the stamp is the
+// step that slips. Hand the orchestrator the command. args.driftBase = the HEAD
+// the queue was read at, so the stamper skips any class whose bytes moved since.
+const stampWith = `node curriculum/evals/scripts/stamp-from-reeval.js <task-output.json> --drift-base ${args.driftBase || '<HEAD when dispatched>'}`
+log(`eval-sweep: stamp with: ${stampWith}`)
+
 return {
   returned: done.length,
   expected,
+  stamp_with: stampWith,
   // Named so the orchestrator can re-fire exactly what died rather than the set.
   missing: UNITS.filter(u => !done.some(v => v._key === u._key)).map(u => u._key),
   summary: done.map(v => ({

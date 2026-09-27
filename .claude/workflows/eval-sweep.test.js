@@ -440,3 +440,13 @@ test('a behavior confirmation gets the behavior schema and the instance contract
   assert.match(c.prompt, /`class` is exactly "behavior"/);
   assert.ok(c.opts.schema.properties.verdict.enum.includes('N/A'), 'a prompt-less file can return N/A');
 });
+
+// Nothing called stamp-from-reeval: judges ran, verdicts sat in the task output,
+// and the stamp was a step memory had to remind the orchestrator of. The result
+// now carries the command, with the drift base the run was dispatched against.
+test('the result names the stamp command with its drift base', async () => {
+  const withBase = await run({ ...ARGS, driftBase: 'abc1234' }, cleanJudge);
+  assert.match(withBase.stamp_with, /^node curriculum\/evals\/scripts\/stamp-from-reeval\.js <task-output\.json> --drift-base abc1234$/);
+  const without = await run(ARGS, cleanJudge);
+  assert.match(without.stamp_with, /--drift-base <HEAD when dispatched>$/);
+});

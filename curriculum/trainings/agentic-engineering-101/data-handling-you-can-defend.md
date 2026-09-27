@@ -4,7 +4,7 @@
 An agent's data boundary is every copy, inference, tool call, trace, reviewer view, backup, and deletion path, not only the model request.
 
 ## Prework
-Bring the selected Module 7 `docs/agent-platform/architecture.md`. If your group did not run Module 7, the trainer will provide the example architecture.
+Start a new session in the same cohort exchange branch or worktree that contains the selected Module 7 `docs/agent-platform/architecture.md`. Do not switch to a candidate or reviewer checkout. If your group did not run Module 7, the trainer will provide the example architecture in the cohort exchange repository.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -36,6 +36,10 @@ The platform design looks controlled from the task boundary. Now follow the data
 The architecture is no longer an abstract agent platform. It now carries explicit data limits, owner decisions, and stop conditions that a team can test before a real launch.
 
 <!-- maintainer -->
+
+**Quality:** compendium-audited 2026-09-27 (story@ccae53cc)
+- judges @ccae53cc: writing grandfathered, story PASS, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered
+- cross_module @ccae53cc: PASS — set=[build-your-agent-platform,data-handling-you-can-defend]
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create

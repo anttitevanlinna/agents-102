@@ -78,7 +78,12 @@ Run one useful CI-triage action and one case where the correct outcome is no act
 
 Read the trace as an argument: can you reconstruct why the outcome was allowed, denied, retried, stopped, or escalated without recovering sensitive content the trace should never have stored?
 
+Commit the selected architecture, selection board, and tabletop trace in the cohort exchange branch or worktree, then close this session. Module 8 starts a new session in that same branch or worktree. Do not switch back to a candidate or reviewer checkout.
+
 <!-- maintainer -->
+
+**Quality:** compendium-audited 2026-09-27 (behavior@ccae53cc)
+- judges @ccae53cc: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered
 
 **Primary Bloom's level:** Analyze + Evaluate + Create.
 

@@ -23,7 +23,7 @@ Before comparison, verify each candidate's four working-tree files byte for byte
 
 Optimize for the shared objective and hard constraints, not popularity. Do not average incompatible designs. Select the strongest coherent whole-plan candidate first, then import a component from another plan only when it fits the selected plan's assumptions and authority model.
 
-Write `docs/agent-platform/selection-board.md` with the selected whole-plan candidate, the strongest component choices from other plans, incompatible choices that must not be combined, the best objection, the strongest rejected alternative, open evidence gaps, and the evidence that would overturn the selection. Cite the candidate, review, and source behind every consequential choice.
+Write `docs/agent-platform/selection-board.md` with the selected whole-plan candidate, the strongest component choices from other plans, incompatible choices that must not be combined, the best objection, the strongest rejected alternative, open evidence gaps, and the evidence that would overturn the selection. For every factual claim, cite the candidate, review, and source plus the supporting passage or ledger entry. Mark a claim `UNVERIFIED` when the cited material does not substantiate it.
 
 Write `docs/agent-platform/architecture.md` as one coherent design. Cover the complete controlled execution from trigger to result or escalation, every custom tool contract, trust and credential boundaries, verification, trace schema, permitted and excluded trace fields, retry and idempotency, incident handling, the concrete AWS mapping, and the correct no-action path.
 

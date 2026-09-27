@@ -33,9 +33,13 @@ One shared challenge is going to produce several different answers. The interest
 
 ## Next
 
-You now have a platform design that can explain what it did. The next module asks a harder question: should the platform have received, copied, inferred, or retained that data at all?
+Commit the selected design and tabletop evidence in the cohort exchange branch or worktree, then close this session. The next module starts a new session in that same checkout and asks a harder question: should the platform have received, copied, inferred, or retained that data at all?
 
 <!-- maintainer -->
+
+**Quality:** compendium-audited 2026-09-27 (story@ccae53cc)
+- judges @ccae53cc: writing grandfathered, story PASS, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered
+- cross_module @ccae53cc: PASS — set=[build-your-agent-platform,data-handling-you-can-defend]
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
@@ -58,7 +62,8 @@ You now have a platform design that can explain what it did. The next module ask
 | Candidate packet | `docs/agent-platform/candidates/<student-slug>/` | Independent research prompt | Publication, two peer reviews, central synthesis |
 | Exchange manifest | `docs/agent-platform/exchange-manifest.md` | Trainer after publication | Review packet roster and synthesis integrity check |
 | Peer review | `docs/agent-platform/reviews/<reviewer-slug>--<candidate-slug>.md` | Cross-evaluation prompt | Central synthesis |
-| Selected design | `docs/agent-platform/selection-board.md` and `architecture.md` | Central synthesis | Tabletop and Module 8 |
+| Selection record | `docs/agent-platform/selection-board.md` | Central synthesis | Tabletop and trainer debrief |
+| Selected architecture | `docs/agent-platform/architecture.md` | Central synthesis | Tabletop and Module 8 |
 | Tabletop evidence | `docs/agent-platform/tabletop-traces.md` | Tabletop prompt | Architecture correction and trainer debrief |
 
 **Failure modes + escape hatches:**

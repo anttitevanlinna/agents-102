@@ -17,6 +17,6 @@ Read `docs/agent-platform/architecture.md` and `docs/agent-platform/data-handlin
 
 Build a ranked change list for the architecture. Ask me about one consequential change at a time and wait for my decision. Do not show the remaining list until I answer. For each change state the data-flow evidence, the control being changed, the case or cases affected, and what remains a privacy or legal decision outside engineering authority.
 
-After I accept, reject, or revise every consequential change, patch `architecture.md` in place. Narrow tool permissions, context assembly, trace fields, retention, deletion propagation, processors, rights-operation paths, and human-review placement where the evidence requires it. Keep unresolved legal calls explicit and assigned; do not convert them into engineering conclusions.
+After I accept, reject, or revise every consequential change, patch only the affected sections of `architecture.md` in place and preserve unrelated controls and prior decisions. Narrow tool permissions, context assembly, trace fields, retention, deletion propagation, processors, rights-operation paths, and human-review placement where the evidence requires it. Keep unresolved legal calls explicit and assigned; do not convert them into engineering conclusions.
 
-Then update `data-handling-decision.md` so its architecture references match the revised file. In chat, return only the changed architecture sections, rejected changes, and decisions still awaiting a named owner.
+Then update only the references in `data-handling-decision.md` that the accepted changes invalidate. Preserve its prior decision history. In chat, return only the changed architecture sections, rejected changes, and decisions still awaiting a named owner.

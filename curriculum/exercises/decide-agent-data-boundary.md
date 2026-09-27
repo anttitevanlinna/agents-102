@@ -4,7 +4,7 @@
 
 **Session** *(new, in the cohort exchange repository)*
 
-Open Claude Code where `docs/agent-platform/architecture.md` from Module 7 is available. Use only the fictional case data in the prompts.
+Open Claude Code in the same cohort exchange branch or worktree that contains `docs/agent-platform/architecture.md` from Module 7. Do not use a candidate or reviewer checkout. Use only the fictional case data in the prompts.
 
 **What you do:** trace two data flows, compare their decisions, and narrow the shared platform boundary.
 
@@ -55,6 +55,9 @@ Now make the architecture answer the maps. The agent will offer one consequentia
 Finish by reading only the changed sections of `architecture.md`. For each change, ask which data-flow row forced it, which case it protects, and which decision still belongs to a human owner.
 
 <!-- maintainer -->
+
+**Quality:** compendium-audited 2026-09-27 (behavior@ccae53cc)
+- judges @ccae53cc: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered
 
 **Primary Bloom's level:** Analyze + Evaluate + Create.
 

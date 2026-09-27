@@ -21,6 +21,6 @@ For each assigned candidate, first test the research against the author's own th
 
 Then test the plan against the common architecture contract: task boundary, success and correct no-action conditions, isolation, tool authority, credentials, verification, trace, masking, retry and idempotency, output, escalation, and AWS coherence.
 
-Write one review file per candidate under `docs/agent-platform/reviews/`. Name each file `<my-reviewer-slug>--<candidate-slug>.md`. Each review must name one decision that survives challenge, one source or inference that fails, one missing alternative, one incompatible pair of choices if present, and the single change that would strengthen the whole plan most.
+Write one review file per candidate under `docs/agent-platform/reviews/`. Name each file `<my-reviewer-slug>--<candidate-slug>.md`. Before writing, verify that the exact output path does not exist. If it exists, stop and report the collision; do not overwrite it or invent a versioned filename. Each review must name one decision that survives challenge, one source or inference that fails, one missing alternative, one incompatible pair of choices if present, and the single change that would strengthen the whole plan most.
 
 Do not score style. Do not rewrite the candidate. Do not select a winner. In chat, return only the two review paths and the most consequential disagreement between them.

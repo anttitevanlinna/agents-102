@@ -21,6 +21,6 @@ Tabletop two complete executions through the architecture. The first must perfor
 
 For each execution, write an event table to `docs/agent-platform/tabletop-traces.md`: event and span identifiers, actor identity, trigger, policy version, context references, tool request, authorization decision, credential path, side effect, verifier evidence, state transition, retry or cancellation decision, final outcome, and fields deliberately excluded from the trace.
 
-Try to break the design. If an action cannot be authorized, reconstructed, verified, contained, cancelled, or distinguished from a duplicate, patch `architecture.md` and update `selection-board.md` with the reason. Preserve the strongest rejected alternative.
+Try to break the design. If an action cannot be authorized, reconstructed, verified, contained, cancelled, or distinguished from a duplicate, patch only the affected sections of `architecture.md` and `selection-board.md`. Preserve unrelated decisions and the strongest rejected alternative, and record the reason for each change.
 
 In chat, return only the useful-action outcome, the no-action or escalation outcome, and the architecture sections changed by the tabletop.

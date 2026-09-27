@@ -25,4 +25,4 @@ Publish the four-file packet to the named Slack or Teams channel using only the 
 
 If no approved connection is available, do not improvise one. Write `publication-manifest.md` beside the packet with the exact message, file list, revisions or checksums, and intended channel so a human can publish it.
 
-After publishing, write or update `publication-manifest.md` with the channel, message URL or identifier, packet files, revisions or checksums, publication time, and any item that did not publish. In chat, report only the manifest path and whether publication happened or needs the human fallback.
+After publishing, append the new attempt to `publication-manifest.md` with the channel, message URL or identifier, packet files, revisions or checksums, publication time, and any item that did not publish. Preserve earlier attempts and mark which entry is current. In chat, report only the manifest path and whether publication happened or needs the human fallback.

@@ -83,8 +83,8 @@ The opening question at Module 1: *what's your favourite Claude Code trick that 
 
 <!-- maintainer -->
 
-**Quality:** sim-passed 2026-09-10 (writing@0d65ff01 story@96b5ca1e technical@96b5ca1e behavior@96b5ca1e pedagogy@96b5ca1e strategy@324b81d7 slides@0d65ff01)
-- judges @0d65ff01: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** sim-passed 2026-09-28 (writing@78409c0b story@78409c0b technical@78409c0b behavior@96b5ca1e pedagogy@78409c0b strategy@78409c0b slides@78409c0b)
+- judges @78409c0b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @01592193: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
 
 **Prework owes no licence check and no network/proxy check.** (Antti 2026-08-13, closing a maintainer-call.) When `cohort-onboarding-email.md` was collapsed into a welcome plus a link here, two of its sections had no other home: confirming a paid Claude licence is active, and confirming a corp proxy or VPN is not in the way. The call is that neither is owed. Licensing is settled in the sponsor conversation before anyone reads this page, and a blocked network cannot hide — the student opens a real session at the step below, which fails loudly and immediately if the connection is not there. A check that only ever confirms what the next step proves anyway adds nothing. Do not add a setup beat for either, and do not resolve it by restoring the email, which would re-open the drift the collapse closed.

@@ -10,7 +10,9 @@ The one trainer doc. **Start here** once; the module tab open during each sittin
 <!--/flag:module:earn-the-trust--><!--flag:module:run-the-first-experiment-->  <a href="#m4-glance">M4 · First experiment</a>
 <!--/flag:module:run-the-first-experiment--><!--flag:module:learn-from-the-test-->  <a href="#m5-glance">M5 · Learn from the test</a>
 <!--/flag:module:learn-from-the-test--><!--flag:module:spot-gaps-build-the-loop-->  <a href="#m6-glance">M6 · Spot gaps</a>
-<!--/flag:module:spot-gaps-build-the-loop--></nav>
+<!--/flag:module:spot-gaps-build-the-loop--><!--flag:module:build-your-agent-platform-->  <a href="#m7-glance">M7 · Agent platform</a>
+<!--/flag:module:build-your-agent-platform--><!--flag:module:data-handling-you-can-defend-->  <a href="#m8-glance">M8 · Data boundary</a>
+<!--/flag:module:data-handling-you-can-defend--></nav>
 
 <section class="module-glance" id="start-glance">
 
@@ -186,5 +188,47 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 </section>
 <!--/flag:module:spot-gaps-build-the-loop-->
+
+<!--flag:module:build-your-agent-platform-->
+<section class="module-glance" id="m7-glance">
+
+### M7 — Build your agent platform
+
+**Slot.** Optional production extension, 2h. Thinking effort `high`.
+
+**Runtime map.**
+
+{{runtime-map:build-your-agent-platform}}
+
+**Prep.** Copy `reference/agent-platform-challenge.md` into the exchange repository as `docs/agent-platform/challenge.md`. Give every participant an isolated branch or worktree, prepare a review-assignment file with two reviewers per candidate, and name the approved Slack or Teams channel if one exists. Git remains source of truth.
+
+- **A student asks which three search rules to use** → don't answer. Ask what evidence failure they most want to prevent. The criteria are the independent variable.
+- **Research runs long** → stop at a coherent evidence-linked plan. Preserve publication, review, synthesis, and tabletop; they are where disagreement becomes learning.
+- **The channel connection is absent** → use the prompt's human publication manifest. No connector setup during the slot.
+- **Synthesis produces a service catalogue** → return to one execution: one failed CI event to useful pull request, correct no-action, or escalation.
+
+</section>
+<!--/flag:module:build-your-agent-platform-->
+
+<!--flag:module:data-handling-you-can-defend-->
+<section class="module-glance" id="m8-glance">
+
+### M8 — Data handling you can defend
+
+**Slot.** Optional production extension, 2h. Thinking effort `high`.
+
+**Runtime map.**
+
+{{runtime-map:data-handling-you-can-defend}}
+
+**Prep.** Use the selected M7 `docs/agent-platform/architecture.md`, or provide a completed example. Name mock privacy/legal, product, operations, security, and engineering owner roles before the exercise starts.
+
+- **The map stops at the model request** → ask where the same content appears next: tool payload, trace, reviewer screen, backup, deletion queue.
+- **The agent gives a legal answer** → keep the question, remove the verdict, name the owner and the engineering facts still needed.
+- **Recommendation inferences disappear** → add each derived preference, score, segment, and feedback label as a data row.
+- **The final architecture bans everything** → split common controls from case-specific controls and require the forcing data-flow row for each change.
+
+</section>
+<!--/flag:module:data-handling-you-can-defend-->
 
 <!-- maintainer — tab contract: every module tab and its nav link sit inside a matching `flag:module:<slug>` pair, so a cut's handbook carries a tab exactly when the cut runs that module. build-workbook.js resolves this file from the parent contentKey and applies the flags against the cut's own module list. A new tab needs its flag pair in BOTH the nav strip and the section. The Start here tab's two-day schedule is keyed on `module:spot-gaps-build-the-loop` (M6 = six-module sentinel); the `no-module:` branch carries the weekly-sittings contract and the between-sittings chain. The Four-sitting clauses on the M1/M2/M4/M5 Slot lines are unflagged on purpose: flags do not nest, and the parser throws on the inner pair. Runtime maps are placeholders expanded from `scripts/calculate-time.js`; no tab states a total or verdict of its own. Scope rule (2026-08-23): Slot, runtime map, mood Check/Fix, verbatim push-backs, gotchas, cut order, demo state. No Flow, no exercise goals, no Big idea — the projected workbook page carries those. Slot lines state day + duration only ("Day 1 (2h)"), never clock time — the Start-here schedule tables are the one place a reshuffle gets edited; a clock time repeated on a tab drifts the next time the tables move (2026-08-24). Same reasoning kills a Slot line restating a runtime-map overrun number ("runs N min past") once the map below it computes OVER/FITS, or a Slot line stating Flow-level phase timing the workbook page already owns. -->

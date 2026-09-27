@@ -784,8 +784,10 @@ const TRAINER_MODULES_TAB_JS = `
 
 // Computed runtime maps, keyed by module slug, for `{{runtime-map:<slug>}}`.
 // Cached per training: one filesystem walk, however many markers the handbook
-// carries. The default shape is the sold cohort shape — the clock column only
-// means anything against a scheduled start.
+// carries. The default shape is the sold cohort shape when the module has one.
+// Optional extensions can live only in their own shape, so fall back to the
+// first declared cap instead of rendering a fictional no-cap cohort view. The
+// clock column only means anything against a scheduled start.
 const RUNTIME_MAP_CACHE = {};
 function runtimeMaps(trainingKey, shape) {
   const key = trainingKey + '|' + (shape || 'cohort-2day');
@@ -793,7 +795,11 @@ function runtimeMaps(trainingKey, shape) {
   const maps = {};
   try {
     const r = CT.computeTraining(trainingKey);
-    for (const m of r.modules) maps[m.slug] = CT.renderRuntimeMap(m, shape || 'cohort-2day');
+    for (const m of r.modules) {
+      const requested = shape || 'cohort-2day';
+      const effective = m.caps[requested] ? requested : (Object.keys(m.caps)[0] || requested);
+      maps[m.slug] = CT.renderRuntimeMap(m, effective);
+    }
   } catch (e) {
     // A training with no timings.md simply has no maps; a handbook that does not
     // reference one still builds. A handbook that DOES reference one then fails

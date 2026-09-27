@@ -1,0 +1,22 @@
+---
+key: ae101-m8-revise-platform-boundary
+dest: Claude Code
+context: M8 architecture revision
+runtime: any
+origin: exercises/decide-agent-data-boundary
+requires:
+  - id: m7-synthesized-architecture
+    source: prompt:ae101-m7-synthesize-platform-plans
+  - id: m8-data-handling-decision
+    source: prompt:ae101-m8-compare-data-cases
+produces:
+  - id: m8-revised-platform-architecture
+    location: docs/agent-platform/architecture.md
+---
+Read `docs/agent-platform/architecture.md` and `docs/agent-platform/data-handling-decision.md`.
+
+Build a ranked change list for the architecture. Ask me about one consequential change at a time and wait for my decision. Do not show the remaining list until I answer. For each change state the data-flow evidence, the control being changed, the case or cases affected, and what remains a privacy or legal decision outside engineering authority.
+
+After I accept, reject, or revise every consequential change, patch `architecture.md` in place. Narrow tool permissions, context assembly, trace fields, retention, deletion propagation, processors, rights-operation paths, and human-review placement where the evidence requires it. Keep unresolved legal calls explicit and assigned; do not convert them into engineering conclusions.
+
+Then update `data-handling-decision.md` so its architecture references match the revised file. In chat, return only the changed architecture sections, rejected changes, and decisions still awaiting a named owner.

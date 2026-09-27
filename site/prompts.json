@@ -1821,6 +1821,56 @@
       }
     ]
   },
+  "em-mock-diagnose-your-team": {
+    "key": "em-mock-diagnose-your-team",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management-mock/see-your-team",
+    "text": "Read my notes on my team in `team-notes.md` and set up `team-leadership.md` as my leadership memory. Give it three sections: Team Knowledge, Decision Journal and Quality Gate.\n\nIn Team Knowledge, place each person on ADKAR (Awareness, Desire, Knowledge, Ability, Reinforcement) and the whole team on the adoption curve, from chatting to compounding engineering. Tag every entry as an observation, a hypothesis or a rule, and quote the line from my notes it rests on. Where my notes are too thin to place someone, write that down instead of guessing.\n\nLeave the Decision Journal and Quality Gate empty for now. Then tell me what you wrote, and the one thing about my team you would most want me to find out this week.",
+    "requires": [
+      {
+        "id": "em-team-notes",
+        "source": "external"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-leadership-memory",
+        "location": "team-leadership.md",
+        "consumed-by": [
+          "prompt:em-mock-starter-questions"
+        ]
+      }
+    ],
+    "note": "EM mock M1, a tmux-runner proving training. Install the three-block memory, first ADKAR diagnostic; thin notes flagged, not guessed. Approved prompt-ok 2026-09-27."
+  },
+  "em-mock-starter-questions": {
+    "key": "em-mock-starter-questions",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management-mock/ask-before-you-move",
+    "text": "Using what `team-leadership.md` already knows about my team, draft five to ten starter questions I can put to my team this week. Each question should let a person show where they stand and what they would try with more room, so I learn who wants to move, not only what they think. Ground each question in a specific Team Knowledge entry and name it.\n\nThen pick the three I should ask first. Log that pick in the Decision Journal: what else was on the table, why these three won, and what I give up. Add one check to the Quality Gate that would tell me in a week whether the questions worked.\n\nSave the questions as `starter-questions.md` and tell me what you changed in `team-leadership.md`.",
+    "requires": [
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-mock-diagnose-your-team"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-starter-questions",
+        "location": "starter-questions.md"
+      },
+      {
+        "id": "em-leadership-memory",
+        "location": "team-leadership.md",
+        "note": "Decision Journal entry + first Quality Gate check added"
+      }
+    ],
+    "note": "EM mock M2, a tmux-runner proving training. Starter questions from the memory, pick journaled with alternatives, one Quality Gate check. Approved prompt-ok 2026-09-27."
+  },
   "eval-loop-1": {
     "key": "eval-loop-1",
     "dest": "Claude Code",

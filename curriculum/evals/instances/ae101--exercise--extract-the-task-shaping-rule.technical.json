@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/exercises/extract-the-task-shaping-rule.md",
   "verdict": "PASS",
-  "body_sha": "248cc0060bbb6322caa1282f483c414cef53d1f28ecb88c90151285d157c7f8a",
+  "body_sha": "8040d0b42f6b47afb29452bb6535939356dbaeb9fb47930078f5a0425239034d",
   "shape_hash": "04c8bbd89721df08",
   "pin": "8cc00874",
   "staleness_reason": "rule-drift",
@@ -504,18 +504,20 @@
       "compendium": "check_prompts.md",
       "rule_index": 35,
       "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
-      "verdict": "PASS",
-      "evidence": "Fence 3's propose-then-confirm-then-write dialog is a single-round, capped propose-then-execute exchange (rule's own counter: 'capped propose-then-execute prompts where iteration loop never opens'), not an open iterative loop needing the full 5-element shape.",
-      "fix_hint": "",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no genuinely-open multi-turn dialog with repeated mid-dialog file writes — Phase 1's stop-and-ask round stays in chat (extract-the-task-shaping-rule-1.md), Phase 2 and Phase 4 each write once after a single decide/propose round, matching the counter (capped propose-then-execute, iteration loop never opens)",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 36,
-      "rule_lead": "Wide prompts split by logical move - paragraph breaks = cheapest scan-affordance.",
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
       "verdict": "PASS",
-      "evidence": "Fence 6 (ae101-m2-integrate-branch) splits into 3 paragraphs by move (write-instruction / chat-report / null-case fallback) - a canonical match to the rule's own example shape. Fence 1 is the closest call: one paragraph carries propose+phrase+anchor+scope framing, then 'After proposing, stop and ask...' as a coda; read aloud it lands as one compounding specification of a single ask followed by its natural next step, which the rule's 'sequential-build... may stay one paragraph' allowance covers, so it stays inside.",
-      "fix_hint": "",
+      "evidence": "L90 '{{prompt:ae101-m2-integrate-branch}}' resolves to curriculum/prompts/ae101-m2-integrate-branch.md L29-33, already split one-move-per-paragraph: write-the-file move, then a separate 'In chat, show me…' report move, then a separate 'If nothing earned itself, say so and stop.' null-case fallback — the exact move-boundary pattern §36 names as earning a split. L22/L37/L48 prompts (extract-the-task-shaping-rule-1/-4/-2) are likewise paragraph-split by move (propose+anchor / stop-and-ask; reverse-engineer / can't-open fallback / separate-signals / propose / ticket-label). The two short single-paragraph prompts (push-back-on-the-plan-4 at L86, ae101-m2-tidier at L110) fall under the ≤30-word/≤2-move counter and stay one paragraph correctly.",
+      "na_reason": null,
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -577,11 +579,11 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 43,
-      "rule_lead": "Long-running prompts stream progress - never go silent.",
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "no prompt in this file runs more than a couple of minutes",
-      "fix_hint": "",
+      "na_reason": "no prompt in this file is a cross-project scan, memory build, or walk-away send-off; every fence is a bounded single-session read or decision, well under the 'more than a couple minutes' trigger",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -1528,8 +1530,36 @@
       "blocking": false,
       "carried_from": "9458b795f010a6943a5ac93e0c46a591174023f6dcdf108f093543235676f329",
       "carried_shape": "04c8bbd89721df08"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 61,
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "body proposes no SKILL.md/framework/tool change and this pass is not fixing a flagged audit item",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 66,
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "PASS",
+      "evidence": "L3,15,41,68,82,100 time-boxes on every phase ('**Time:** 20 minutes.', '*8 min*' … '*2 min*'); L92 '> This prompt is fair to read as replacing the file with only this rule, which would nuke the old rules. … If it did overwrite, the old rules are still in this session's scrollback; ask Claude to restore them.' is a named failure mode with a diagnostic hint — the file is at Pass-3 depth (facilitator-runnable prose, exact fenced prompts, named failure mode with recovery), not a Pass-1/2 skeleton.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 2
+  "nonblocking_findings_count": 2,
+  "scope": "drift",
+  "drift_rules": [
+    "check_pedagogy.md §61",
+    "check_pedagogy.md §66",
+    "check_prompts.md §35",
+    "check_prompts.md §36",
+    "check_prompts.md §43"
+  ]
 }

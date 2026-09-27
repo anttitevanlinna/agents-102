@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/lectures/how-instructions-grow.md",
   "verdict": "PASS",
-  "body_sha": "e3b4ff1bb3db31391ff76440b5eb5788e179146115ee6c52f81afe1e884fa689",
+  "body_sha": "7f2059692d952ca8cc1cbe93150ecad4201f44a2e1739f6a0ee660bdcafcf7f3",
   "shape_hash": "fb2d52597dcd19b3",
   "notes": "check_pedagogy scoped to the 5 technical sub-rules named in judges/technical.md (16, 22, 23, 36, 37); the pedagogy judge owns the rest. check_prompts scoped to the 5 named 'technical subset' surfaces (action lead-in=2, no-placeholders=1, chain-by-back-reference=5, multi-sample=8, citation-discipline=13) plus the 3 rules this dispatch's drift-audit explicitly assigned (17, 20, 40); the writing/behavior judges own prose-level prompt rules. check_platform_and_boundaries (65) and check_research_claims (17) are evaluated to full completeness per the template's primary-owner contract. Rules 7, 9, 36, 50, 51 of check_platform_and_boundaries were already resolved N/A by shape hash and are parked in the prefill sidecar, not re-derived here.",
   "drift_check": [
@@ -1084,8 +1084,66 @@
       "blocking": false,
       "carried_from": "60c49c93c68d5367dc6727f439b63ed47238b5d9098cf4c46bda0d9234a00f85",
       "carried_shape": "fb2d52597dcd19b3"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 61,
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "body proposes no SKILL.md/framework/tool change; rule scopes generation-time proposals, not present here",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 66,
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "governs multi-module generation sequencing; this is a single finished, already-audited lecture, not a build pass",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 35,
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "single-shot naming prompt; no multi-turn dialog and no artifact write (maintainer block L53: 'Naming only, nothing written, no artefact contract')",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "PASS",
+      "evidence": "L44 prompt body (expanded): 'Check out ./CLAUDE.local.md and the repository ./CLAUDE.md. If any parts appear that would be better moved into a skill, name the parts. Or none, if nothing appears that way.' — 29 words, 2 moves (check the files; conditional naming with null-case fallback), under the ≤30-word/≤2-move short-prompt threshold, stays one paragraph",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "single quick naming check on two local files, not a multi-minute run",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "scope": "drift",
+  "drift_rules": [
+    "check_pedagogy.md §61",
+    "check_pedagogy.md §66",
+    "check_prompts.md §35",
+    "check_prompts.md §36",
+    "check_prompts.md §43"
+  ]
 }

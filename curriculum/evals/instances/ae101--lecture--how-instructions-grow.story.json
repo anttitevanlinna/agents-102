@@ -1,207 +1,193 @@
 {
   "class": "story",
-  "training": "ae101",
   "file": "curriculum/lectures/how-instructions-grow.md",
+  "training": "ae101",
   "verdict": "PASS",
-  "body_sha": "e3b4ff1bb3db31391ff76440b5eb5788e179146115ee6c52f81afe1e884fa689",
-  "shape_hash": "fb2d52597dcd19b3",
-  "module_mood_contract": "grounded competence — I can feel when a plan is good before approving it, and I know the move is two reads, not one (bosser-strategy:content-strategy-agentic-engineering-101.md § M2 in detail)",
+  "body_sha": "7f2059692d952ca8cc1cbe93150ecad4201f44a2e1739f6a0ee660bdcafcf7f3",
+  "shape_hash": "4ff4e9a3cb04ad89",
+  "module_mood_contract": "grounded competence — I can feel when a plan is good before approving it, and I know the move is two reads, not one (M2, bosser-strategy:content-strategy-agentic-engineering-101.md § M2 in detail)",
   "trace_status": "regenerated",
+  "mood_summary": {
+    "phase_scores": [8],
+    "close_score": 8,
+    "any_below_8": false,
+    "stealing_the_mood": [],
+    "teaching_moment_lands": "PASS — bound persona trace (curriculum/evals/sim-cache/ae101--lecture--how-instructions-grow.persona.json, content_sha 0a5524d3... matching this body): mood_score 8 at the single phase and 8 at close, is_me_rating 8; the persona names the placement model (CLAUDE.local.md / CLAUDE.md / skill), the ceiling + prune move, and the generalising close as things it leaves holding, with no confusion_flags or under_scaffolded_phases recorded."
+  },
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
-      "rule_index": 1,
+      "rule_index": "1",
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Ran this session: `node scripts/calculate-time.js --check`, module table for plan-mode-done-right places 'Lecture: How instructions grow | 7 | 1h44' immediately after 'Lecture: Where the rule could live | ~3 | 1h41' and 'Exercise: Extract the task-shaping rule', immediately before 'Debrief | 7 | 1h51' — last teaching beat in the module. Maintainer block L50 confirms: 'M2 closing lecture, after the save-if-earned rule integration and before Key Concepts.' The lecture names a pattern (evidence -> CLAUDE.local.md/CLAUDE.md/skill; the double-loop name) the student just lived through in the preceding push-back and rule-extraction exercises -- recognition, not a cold claim taught in advance.",
+      "evidence": "L53 maintainer block: 'M2 closing lecture, after the save-if-earned rule integration and before Key Concepts.' This is a closer naming a pattern the student just lived (making a rule, watching it either stay local or get shared, hitting the ceiling) — 'Some rules grow into skills' / 'Rules have a ceiling' recognise, they don't pre-announce. Diagnostic: not a ceiling-demo opener, not mid-module vocabulary-only — it lands after the exercise, naming what happened.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
-      "rule_index": 3,
+      "rule_index": "2",
+      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "closer, not a pre-exercise opener for a contrast-mood beat",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": "3",
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Ran this session: `sed -n '1,47p' curriculum/lectures/how-instructions-grow.md | grep -n -E 'M[0-9]|[Mm]odule'` -> exit 1, zero hits. All M2/M3 sequencing language ('Skill use and authoring still land at M3' -- L54) lives in the maintainer block, not the student-facing body (lines 1-47).",
+      "evidence": "grep -E 'M[0-9]' against the body region (lines 1-46, above the maintainer fence) → 0 hits. All M2/M3 references sit in the maintainer block (L53, L57) and the backing block, both below the fence.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
-      "rule_index": 4,
+      "rule_index": "4",
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Five headers, no repeats: L3 'Some rules grow into skills', L13 'The second loop', L22 'Rules have a ceiling', L31 'Prohibitions stop; taste steers', L38 'Keep your context where it loads optimally'. Each names the one thing the body cashes out on this read. Checked specifically against the rule's 2026-09-03 'bare arc labels' addition (closer emptiness -- 'What happened', 'Wrap-up', 'Recap'): this lecture is itself the M2 closer, and none of its five headers is a slot-label -- L38, the final slide, is a substantive placement claim, not an arc marker. Ran this session: `sed -n '1,47p' ... | grep -n '—'` -> 0 hits (em-dash inherit clean). L38's imperative phrasing is the rule's own carved-out exception (payload is a live do-move: the trainer runs `{{prompt:ae101-m2-name-what-moves}}` on the projected demo repo at L44).",
+      "evidence": "Five headers, no repeats: 'Some rules grow into skills' (L3), 'The second loop' (L13), 'Rules have a ceiling' (L22), 'Prohibitions stop; taste steers' (L31), 'Keep your context where it loads optimally' (L38). Each names a concept or claim, none is an empty container or bare arc label. Truth clause: no unsupported universals — 'Rules have a ceiling' is qualified by the body's own mechanism (context bloat, hard-to-pin degradation), and the figure's caption 'No promotion step is mandatory' matches the maintainer block's figure contract (dashed direct-path, load-bearing).",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
-      "rule_index": 5,
+      "rule_index": "5",
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Ran this session: `node scripts/check-slide-size.js --file curriculum/lectures/how-instructions-grow.md` -> 'files: 1  slides: 5  limits: 210 words / 6 bullets  oversized: 0 / every slide is within limits.'",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/how-instructions-grow.md --report` → largest slide 153/210 words (Rules have a ceiling), 0 bullets on every slide, 0 oversized of 5 slides.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
-      "rule_index": 6,
+      "rule_index": "6",
       "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
       "verdict": "PASS",
-      "evidence": "Body L40-42: 'Variations of the rule and context management prompts you have run work on every type of context engineering file... This one runs on the screen; you can run this too on your files.' No second-person imperative aims the room at running it now; the sentence names the trainer's action and offers an opt-in, deferred alternative. Read this session, the prompt's own registry file `curriculum/prompts/ae101-m2-name-what-moves.md` frontmatter carries a dated accept-note on this exact prompt: 'note: lecture show-and-tell (check_lectures.md §6); optional student run. The move named, not performed. Antti-worded 2026-08-23, approved prompt-ok same day.' Carve-out check ('the answer must be theirs') does not fire: the prompt inspects the demo repo's own CLAUDE.local.md/CLAUDE.md (a repo the trainer seeds and projects, per the prompt's own `requires[0].note`), not the student's own session or plan.",
+      "evidence": "L42 'This one runs on the screen; you can run this too on your files.' is offer grammar, not an imperative aimed at the room — matches the rule's own author's-move remedy exactly. L53 maintainer block states the trainer runs it on the demo repo and reads the return aloud, and that a student's own-files run is optional. check_prompts.md §2b names this exact file as its calibration example for the matching lead-in-free carve-out.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
-      "rule_index": 27,
+      "rule_index": "16",
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "No scripted-reaction counts or prescribed instincts in body prose (no 'push back once', no round caps). The lecture's only forcing-function-adjacent move — the M2-2 rule-shaping exercise — has already run before this file opens; this file's own prompt is a trainer-run demo whose optional student-run invitation is genuinely optional ('you can run this too on your files'), not a disguised scripted step.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "27",
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Ran this session: `sed -n '1,47p' curriculum/lectures/how-instructions-grow.md | grep -n -iE \"discuss|share with|turn to|neighbor|neighbour|pair up|the room|talk to|compare with\"` -> exit 1, zero hits. Body carries zero conversation/pause/discuss-with-neighbor cues. L42 ('This one runs on the screen; you can run this too on your files') is about the WORK -- what the prompt does, who runs it, an optional student action -- not cohort management. Single-paste fence, no live-typed megaprompt.",
+      "evidence": "grep for room/discuss/neighbour/pair/share/group hits only 'team' in the sense of a git-repo team ('the team should inherit it', L5; 'a team deciding what loads for everyone', L29) — no authored conversation cue, no 'discuss with...' sentence. The one trainer-facing beat (running the prompt on the demo repo) is check_lectures §6's own mechanic, not a body-authored cohort-management cue.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
+      "rule_index": "1",
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Regenerated sim trace this session (cached content_sha had drifted from the current full-file sha ad68e2dd... because the trailing Quality line was re-stamped 2026-08-29->2026-09-02; re-read confirmed the five slides, maintainer block, and backing block are byte-identical to the prior trace, so the mood read carries over on a fresh sha). Single phase (no `## Phase` headers): mood_score 8, close.mood_score 8, is_me_rating 8, no beat below 8, stealing_the_mood empty. This is a TEACHING beat (recognition of a route + a named double-loop pattern + a ceiling/prune move + a generalization), not a mechanical setup beat, so the 8+ mood-floor applies and is met.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 2,
-      "rule_lead": "Epistemic mood ≠ punitive mood.",
-      "verdict": "PASS",
-      "evidence": "L25 names the ceiling failure as not-knowing-when-you've-crossed-it ('quality degrades in ways that are hard to pin'), not having-done-wrong. L29's declared-stop ('This training stops short of the full system... are for your team to automate right, in a way that fits your team workflow') hands a decision to the reader's own competence rather than apologizing for a gap -- agency framing, not punitive.",
+      "evidence": "L53 maintainer block: 'Mood: grounded competence; the student leaves able to place the artifacts without being told every artifact must move.' Matches the strategy doc's M2 mood ('grounded competence — I can feel when a plan is good before approving it, and I know the move is two reads, not one.') and the bound persona trace's mood_score 8 across the single phase and the close — no beat under the 8+ floor.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": 4,
+      "rule_index": "2",
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "PASS",
+      "evidence": "L25 'The work starts passing your rules and missing your point.' names a not-knowing/degradation risk, paired immediately (L27) with a concrete cure (keep files lean, move to skills, prune). No shame framing ('you did this wrong') anywhere in the ceiling section; the register stays diagnostic, matching the persona trace's read of the ceiling material as 'an addition to competence, not a subtraction from it.'",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "3",
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "PASS",
+      "evidence": "'Prohibitions stop; taste steers' (L31) pairs the failure case (prohibitions stop) with the discipline it resolves to (taste steers) and ends on the positive — matches the rule's own model where the failure mode becomes the negative case the discipline addresses, not the title's whole claim. The other four headers ('Some rules grow into skills', 'The second loop', 'Rules have a ceiling', 'Keep your context where it loads optimally') are discipline- or mechanism-led, not failure-named.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "4",
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Read this session via bosser-strategy skill: content-strategy-agentic-engineering-101.md § M2 in detail, line 314: 'The how-instructions-grow close shows a route, not a promotion ladder. Most rules remain rules, and repeated work can feed a skill directly without ever having been a rule... M2 names the destination and the loading behaviour; M3 owns first skill invocation and authoring, and recognises the same law once the skill exists.' L54 of the file ('Placement constraint: Skill use and authoring still land at M3... does not invoke, install, or author a skill') and the prompt registry's own note ('Naming only, nothing is written, so no artefact contract') both hold this line. Front-run check clean; no Big Idea field on a lecture; mood-doesn't-resolve-early holds on the same front-run evidence. Grepped the strategy doc fresh this session (`grep -n 'Four-slide\\|how-instructions-grow'`): the discrepancy a prior pass flagged (doc read 'Four-slide close... ~4-5 min' against the file's shipped 5-slide/7-minute shape) is GONE -- the doc's current L314 and its L769 cross-reference both describe the file accurately with no slide-count or timing claim left to contradict it. Resolved since the last audit; not re-filed as a todo.",
+      "evidence": "bosser-strategy:content-strategy-agentic-engineering-101.md § M2 in detail, verbatim: 'The how-instructions-grow close shows a route, not a promotion ladder. Most rules remain rules, and repeated work can feed a skill directly without ever having been a rule. ... M2 names the destination and the loading behaviour; M3 owns first skill invocation and authoring, and recognises the same law once the skill exists.' The lecture's own maintainer block (L57) states the identical placement constraint ('Skill use and authoring still land at M3. M2 names the destination and its loading behavior but does not invoke, install, or author a skill.') and the body never has the student invoke, install or author a skill. No front-run of M3's teaching moment.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "5",
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "lecture file, no Key Concepts section — module-only",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "6",
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "lecture file, no Key Concepts section — module-only",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "7",
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "lecture file, no What You'll Learn section — module-only",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_workshop.md",
       "rule_index": null,
       "judge_owned": true,
-      "rule_lead": "check_workshop.md — workshop-shaped trigger check (whole-compendium scope call).",
+      "rule_lead": "Whole-compendium scope call",
       "verdict": "N/A",
-      "evidence": "Body view flagged `group_beat_markers: true`. Ran this session: `grep -n -iE \"room|group|peer|team|cohort|neighbou?r|pair|everyone|classroom\" curriculum/lectures/how-instructions-grow.md` -> hits only on L5 and L29, both 'the team' as the STUDENT'S OWN WORKPLACE ORGANIZATION ('Share a short standing rule through ./CLAUDE.md when the team should inherit it'; '...a team deciding what loads for everyone... for your team to automate right'), not a room-scale beat happening in this training. No beat's output belongs to a group of students; this is a projected lecture with a trainer-run demo prompt. The signal is a false positive on 'team' as an org referent, not a workshop trigger. check_pedagogy.md / check_lectures.md govern the whole file.",
+      "evidence": null,
+      "na_reason": "no group/room beat — solo-read closer lecture with one trainer-run demo prompt, not a room-scale beat whose output belongs to the group",
       "fix_hint": null,
       "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": null,
-      "judge_owned": true,
-      "rule_lead": "check_prompts.md — scope determination for the storytelling class on this file's one prompt.",
-      "verdict": "N/A",
-      "evidence": "check_prompts.md's eval_classes include storytelling (49 rules land in this brief), but story.md's Completeness Contract narrows storytelling-owned rows only within check_pedagogy.md and check_strategy_tie_in.md; it names no storytelling-owned subset in check_prompts.md, whose 49 rules are prompt-mechanics (placeholders, lead-in phrasing, chaining, citation discipline, formatting) -- writing/technical territory, which carry their own per-rule verdicts elsewhere. The one story-relevant question this file's single prompt raises (lecture prompt = trainer demo vs room task) is fully governed by check_lectures.md §6, scored PASS above with a dated maintainer/registry accept-note. No check_prompts.md numbered row filed by this class; writing/technical remain primary owners. (Rule-drift recheck of §17/§20/§40, specifically requested for this dispatch, is recorded in this instance's top-level notes rather than as rows here, per the same scope boundary.)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 5,
-      "rule_lead": "Strategic themes recur in Key Concepts.",
-      "verdict": "N/A",
-      "evidence": "This rule targets a module's Key Concepts section (student-facing heading); this file has no such section -- it is a lecture with five slide headers (L3/L13/L22/L31/L38), none named Key Concepts. N/A on a lecture; the strategy judge owns this on modules.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "ad68e2dd80479e99681078ce11b765beec2f0b46af889d523f7884e3502d955e",
-      "carried_shape": "fb2d52597dcd19b3"
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 6,
-      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
-      "verdict": "N/A",
-      "evidence": "Same absent-section basis as §5: no Key Concepts heading exists on this lecture to carry a breadcrumb. N/A on a lecture.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "ad68e2dd80479e99681078ce11b765beec2f0b46af889d523f7884e3502d955e",
-      "carried_shape": "fb2d52597dcd19b3"
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 7,
-      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
-      "verdict": "N/A",
-      "evidence": "Same basis: this rule governs a module's anticipatory 'What You'll Learn' section; no such heading exists in this lecture's five `##` slides. N/A on a lecture.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "ad68e2dd80479e99681078ce11b765beec2f0b46af889d523f7884e3502d955e",
-      "carried_shape": "fb2d52597dcd19b3"
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 2,
-      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
-      "verdict": "N/A",
-      "evidence": "This file is the M2 closer (per rule 1's evidence), positioned after both of M2's exercises with only Debrief following, not an opener staged before a contrast-mood exercise. The dosage-ceiling this rule polices applies to pre-exercise openers only.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "ad68e2dd80479e99681078ce11b765beec2f0b46af889d523f7884e3502d955e",
-      "carried_shape": "fb2d52597dcd19b3"
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 16,
-      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-      "verdict": "N/A",
-      "evidence": "No student-performed forcing function exists on this page to misplace: the one fenced prompt is a trainer show-and-tell (check_lectures.md §6, scored PASS above), not an exercise mechanic the student must execute. Body prose at L42-44 states the technique's generality without narrating what THIS fence will find, so nothing that belongs in the fence has leaked into the body.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "ad68e2dd80479e99681078ce11b765beec2f0b46af889d523f7884e3502d955e",
-      "carried_shape": "fb2d52597dcd19b3"
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 3,
-      "rule_lead": "Lead with discipline, not failure mode.",
-      "verdict": "N/A",
-      "evidence": "This rule targets module Big Idea titles; a lecture carries no Big Idea field. Slide-header framing (including the failure-named L23 'Rules have a ceiling') is governed instead by check_lectures.md §4, already scored PASS above with corpus precedent for failure-named claim headers ('Gates decay', 'Passing is not proof').",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "ad68e2dd80479e99681078ce11b765beec2f0b46af889d523f7884e3502d955e",
-      "carried_shape": "fb2d52597dcd19b3"
     }
   ],
-  "mood_summary": {
-    "phase_scores": [
-      8
-    ],
-    "close_score": 8,
-    "any_below_8": false,
-    "stealing_the_mood": []
-  },
+  "suggestions": [],
   "blocking_findings_count": 0,
-  "notes": "No story-class REVISE rows this pass, so no todo is filed against this ledger (a todo must be a rules_evaluated row per this dispatch's counting rule, and nothing here failed a rule story owns). Out-of-lane observation, belongs to another class per dispatch-preamble guidance, not scored or counted here: `node scripts/calculate-time.js --check` (run this session) reports the whole plan-mode-done-right module at 123 min against a `cohort-2day`/`sitting-2h` cap of 120 -- OVER by 3 min. This lecture's own 7-minute Time line is not in dispute; the overrun is a module-level runtime-budget question with no check_lectures/check_strategy_tie_in rule behind it.",
-  "drift_rules_reread": [
-    "check_lectures.md §4 (current wording, incl. the 2026-09-03 bare-arc-label addition) -- re-read and scored PASS in rules_evaluated above; this lecture's five headers are none of them slot-labels, and it is the closer the new clause is aimed at.",
-    "check_prompts.md §17 (narrowed 2026-09-03 to plan-mode-only structural trigger) -- this file's one prompt is not a plan-mode prompt (it is a naming-only trainer-demo prompt on the demo repo); §17's structural trigger does not fire, and the advisory half finds no run evidence of preamble eating a read here. N/A, no row filed (out of story's per-rule check_prompts scope; see judge-owned check_prompts row above).",
-    "check_prompts.md §20 (narrowed 2026-09-03, near-never-fires) -- this prompt does not build/assemble a persisted artefact downstream work depends on (the prompt registry's own `produces: []` and the maintainer note 'Naming only, nothing is written, so no artefact contract' confirm this); no grill-before-save gap exists to raise. N/A, no row filed.",
-    "check_prompts.md §40 (session-boundary verification, wording unchanged from current fetch but flagged for re-check) -- read the module body: the prompt runs warm, same session, on the trainer's own demo repo immediately after the preceding M2 exercises; it needs no self-contained file refs because the trainer is physically at that repo, and no curriculum-coined labels (§40b) appear in the fence itself ('./CLAUDE.local.md and the repository ./CLAUDE.md' are literal paths, not coined event names). No violation.",
-    "check_strategy_tie_in.md §7 (What You'll Learn shape) -- re-fetched current wording; still governs a module's anticipatory What-You'll-Learn section only. This file has no such heading (five lecture slide headers, none named Key Concepts or What You'll Learn). The prefill-parked N/A verdict for this rule still holds under the current wording; not re-derived as a fresh row per brief instructions (rule not in my brief -- excluded as already-resolved)."
-  ],
+  "nonblocking_findings_count": 0,
+  "notes": "Drift re-read (pin 324b81d7, rule-drift): pedagogy §61 (verify mechanism before proposing surgery) — N/A, a generation-time discipline for proposing SKILL.md/framework changes, no such proposal in this file. pedagogy §66 (three-pass build) — N/A, a whole-training build-sequencing rule; this file is finished content, not a build pass. prompts §35 (Q&A persistence) — N/A, no multi-turn dialog-affecting prompt here. prompts §36 (wide prompts split by move) — PASS, the one prompt (curriculum/prompts/ae101-m2-name-what-moves.md) is a single short paragraph, one move, well under the ≤30-word/≤2-move stay-one-paragraph threshold. prompts §43 (long-running prompts stream progress) — N/A, the prompt is a quick trainer-run read, not a multi-minute run. strategy_tie_in §8 (doc carries strategy, not structure) — N/A to this file directly (binds the strategy doc's own content); the lecture's maintainer block correctly holds only file-local implementation detail (slide order, figure contract, timing), which is where §8 says such detail belongs. None of the six drift rules are owned by the story class's rules_evaluated ledger (check_prompts is not in story's owned-rule set; pedagogy §61/§66 are outside the storytelling-owned facets of check_pedagogy), so they are reported here only, not as rules_evaluated rows, per the dispatch preamble's 'verdict outside your lane' guidance. Diff since pin 324b81d7 touches only the maintainer block (condensed Quality/Lecture-meta/Time prose, re-stamped dates) and one body sentence tightened for economy (L29: 'Exact details of the context information lifecycle are for your team to automate right, in a way that fits your team workflow.' -> 'How those parts run is for your team to automate, in a way that fits how your team works.') — same claim, shorter words; re-scored under check_strategy_tie_in §§1-4 and check_lectures above with no change of verdict. Persona trace was stale against this body (old content_sha ad68e2dd... vs current 0a5524d3...) solely because of that maintainer-block restamp plus the L29 tightening; regenerated the phase's persona_action/mood text to reflect the current wording (no score change) and re-bound via bind-trace.js.",
   "accept_notes_found": [
-    "L50: Lecture meta -- M2 closing lecture placement, five-slide order and per-slide design rationale, Antti-directed dates 2026-08-19/2026-08-23.",
-    "L52: Time -- 7 minutes, the fifth slide's live prompt run is the two minutes added 2026-08-23.",
-    "L54: Placement constraint -- skill use/authoring still land at M3, this file only names the destination.",
-    "L56: Figure contract -- both figures self-contained inline SVG, load-bearing dashed path and caption on figure 1.",
-    "L75-77: Source stamps -- claude-memory, claude-skills, argyris-double-loop, all `[checked:2026-08-04 result:OK]`.",
-    "L83: Stance block `[stance:2026-08-04 level:L2]`.",
-    "L92: OODA last-run 2026-08-04.",
-    "L96-97: Quality line -- compendium-audited 2026-09-02, story@c0c37913 among the seven per-class shas."
-  ],
-  "nonblocking_findings_count": 0
+    "L50: **Quality:** compendium-audited 2026-09-06 (writing@08946dd8 story@324b81d7 technical@08946dd8 behavior@64d17eea pedagogy@a1ddfae2 strategy@08946dd8 slides@c0c37913)",
+    "L53: **Lecture meta:** M2 closing lecture, after the save-if-earned rule integration and before Key Concepts — full slide-order and per-slide rationale note, including the check_lectures §6 trainer-show-and-tell citation and the deliberate exception to supplements-link-from-modules",
+    "L78: claude-memory source stamp [checked:2026-08-04 result:OK due:cohort]",
+    "L79: claude-skills source stamp [checked:2026-08-04 result:OK due:cohort]",
+    "L80: argyris-double-loop source stamp [checked:2026-08-04 result:OK due:none]",
+    "L86: Stance [stance:2026-08-04 level:L2]",
+    "L95: last-run: 2026-08-04"
+  ]
 }

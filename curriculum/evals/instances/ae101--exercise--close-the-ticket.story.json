@@ -1,93 +1,293 @@
 {
   "class": "story",
-  "training": "ae101",
   "file": "curriculum/exercises/close-the-ticket.md",
+  "training": "ae101",
   "verdict": "PASS",
-  "body_sha": "3d6421552035ba222c2b226796a03adb21cb365688c96e294409b8e1b45807bb",
+  "body_sha": "2dea37267150fb39420c4f163923d699fb0175feeee86620f1f1f350e9a4475d",
   "shape_hash": "e452e88bf93d5241",
   "module_mood_contract": "M1 joyful creation — \"it works, on my repo\"; third of four in-class M1 exercises (the ticket close-out), sandwiched between fix-tests-first and compound-and-close, same session/repo/bug carried across",
   "trace_status": "cached",
-  "trace_verification": "curriculum/evals/sim-cache/ae101--exercise--close-the-ticket.persona.json content_sha/phase_sha do not byte-match a from-scratch re-hash of the current body under any phase-splitting convention I could reconstruct (no canonical phase-sha script exists in curriculum/evals/scripts/ to reproduce the original algorithm) — but per-phase quotes were grep-verified verbatim against the live body instead (L22 'Every field carries a convention...', L37 'Ask Claude to update the ticket with a close-out note and report what it wrote.', L43 'Does it sound like the comments already on the ticket?', L47 'Anything can be inspected and reverse-engineered with an LLM...', L50 header 'Two artefacts from one ticket'), all five hit verbatim, and `git diff 324b81d7..HEAD` (the pin) shows zero body changes (only maintainer/backing/Quality-line edits). Trace content verified current by direct text match; reused rather than regenerated.",
-  "diff_since_pin": "git diff 324b81d7..HEAD -- curriculum/exercises/close-the-ticket.md: zero body changes (L1-55 untouched). All hunks are inside the maintainer block (two new dated accept-notes added: the §33 closer carve-out at L58 and the §9 actor-clause decline at L60, both Antti 2026-09-06) and the backing block (one source-note rewording at the maintainer-frame entry, tightening how the extract-the-task-shaping-rule-3 cross-reference is described) and the trailing Quality-line stamp bump. No prompt fence, no sequencing claim, no mood-bearing sentence touched.",
-  "drift_rules_reread": [
-    "pedagogy §61/§61a/§61b (node curriculum/evals/scripts/rule.js pedagogy 61) — re-read at current wording. This is a judge-adjudication-discipline rule (verify mechanism/premise before filing a finding; discriminate deliberate-vs-accidental; don't manufacture notes on card-shaped findings), not a rule the file's body can itself violate — no row filed against it. Applied it reflexively while adjudicating check_pedagogy §47 below: an apparent gap (Phase 1's forcing function has no row in the maintainer's 'Per-phase failure mode + escape hatch' table) survived §61a's verify-before-fix discriminators only after checking whether the maintainer block names the failure mode/escape hatch ANYWHERE, not just in that one table — it does (Decision points section), so no REVISE was filed. §61b's net-words-vs-cards-cut discipline is not triggered — this run wrote no maintainer-block prose and filed no cards. Body unaffected either way (clean diff on this file since the pin), so this class's staleness reason (rule moved) resolved to a normal PASS re-confirmation, not a new finding."
-  ],
-  "accept_notes_found": [
-    "L58: §33 motivating-forward-reference carve-out (Antti 2026-09-06) — the closer's 'The next exercise sweeps this whole session' stays.",
-    "L60: §9's actor clause declined on L48's 'Extract a `.md` file' (Antti 2026-09-06) — a different compendium's rule (writing/student-facing register §9, not a story-owned rule); noted, not re-filed.",
-    "L66: 'Connector' ruled assumed-known vocabulary (Antti 2026-08-18) — check_writing §8 / check_student_facing §2 earned-vocabulary findings overruled.",
-    "L68: connector install named-not-taught, with verified claim against Claude Code 2.1.220 and the reference page's stamp; three-routes bullet cut 2026-08-12 as NVA, do not restore.",
-    "L119: maintainer-frame source — [checked:2026-08-03 result:ATTESTED due:none], author-attested, no URL owed per check_research_claims §1.",
-    "L128: stance note — the missing boundary-caveat bullet on the closer's 'anything' claim is deliberate (Antti 2026-08-30); do not file it as a defect.",
-    "L138: Quality-line stamp, compendium-audited 2026-09-06."
-  ],
+  "mood_summary": {
+    "phase_scores": [
+      8,
+      8,
+      8,
+      8,
+      8,
+      null
+    ],
+    "close_score": 8,
+    "any_below_8": false,
+    "stealing_the_mood": []
+  },
   "rules_evaluated": [
     {
-      "compendium": "check_lectures.md",
+      "compendium": "check_pedagogy.md",
       "rule_index": 1,
-      "rule_lead": "Meta-frame lectures = closers, not openers.",
+      "rule_lead": "Walk-away test (M2+).",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "Lecture-placement rule; this is an exercise file (curriculum/exercises/), not a lecture — the template's own worked example of an N/A row.",
+      "na_reason": "M2+ scope; this is M1.",
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_lectures.md",
+      "compendium": "check_pedagogy.md",
       "rule_index": 2,
-      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+      "rule_lead": "50% magic rule (M3–M8).",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "Governs pre-exercise LECTURE dosage, scored on the lecture file; this file has no preceding lecture of its own to dose.",
+      "na_reason": "M3–M8 scope; this is M1.",
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_lectures.md",
+      "compendium": "check_pedagogy.md",
       "rule_index": 3,
-      "rule_lead": "No cross-module sequencing in lecture bodies.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "Scoped to lecture bodies; this is an exercise. (Checked on the merits anyway since it's free: `grep -nE 'M[0-9]|fix-tests-first|compound-and-close' curriculum/evals/body-views/ae101--exercise--close-the-ticket.body.txt` → 0 hits in the body region L1-55; the only module/sibling-file refs live below the maintainer fence.)",
+      "rule_lead": "Trust the agentic design — no human backstops.",
+      "verdict": "PASS",
+      "evidence": "L27-31: agent proposes 5 rules autonomously, separates signal from guess on its own judgment; student's role is push-back, not manual observation/backstop scripting.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_lectures.md",
+      "compendium": "check_pedagogy.md",
       "rule_index": 4,
-      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "Titled and scoped to slide-rendered LECTURE headers; this exercise's header/squint concerns belong to check_slides.md, which the file's own maintainer block cites separately (§9, emphasis budget) — not double-owned here.",
+      "rule_lead": "Quality ladder.",
+      "verdict": "PASS",
+      "evidence": "Trace mood_score 8/10 at every scored beat (close.mood_score 8, is_me_rating 8). This is the third of four M1 supporting exercises (L67), not the module's designated arc-peak beat, so ship-bar 8 is the correct register — no claim to a 9 is made or owed here.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_lectures.md",
-      "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "check_lectures's slide-size rule; this exercise's slide-size budget is check_slides.md's lane, not check_lectures's.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
+      "compendium": "check_pedagogy.md",
       "rule_index": 6,
-      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "rule_lead": "One exercise = one bounded activity.",
+      "verdict": "PASS",
+      "evidence": "Single file, internal arc (read ticket → infer conventions → write close-out → verify voice), never sub-numbered into separate files.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 7,
+      "rule_lead": "Modules composable across variants.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "Rule's own text: 'Not covered: exercise prompts... all of which the student runs themselves.' This file's three prompts are exercise prompts — explicitly excluded.",
+      "na_reason": "No VARIANT markers needed or present; file is wholly AE101-scoped, no cross-training shared-library reuse signalled.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 8,
+      "rule_lead": "Three-level completeness.",
+      "verdict": "PASS",
+      "evidence": "L50-54 ('Two artefacts from one ticket') names both the runtime artifact (close-out posted to the real tracker) and the sendable/strategy-legible artifact (field rules as session evidence for the next exercise).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 9,
+      "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
+      "verdict": "PASS",
+      "evidence": "Body doesn't claim recognition mastery from one sample — L22-23 explicitly names the epistemic limit ('One ticket gives a sample... not the policy... names what it cannot tell from a single ticket'). The n≥2 contrast is delivered as a trainer push-back escape hatch ('A second bug ticket from a different part of the system shows which rules hold beyond one sample', maintainer block L31) rather than claimed as an in-body recognition skill.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "9b",
+      "rule_lead": "Progression-with-variations is the spine.",
+      "verdict": "PASS",
+      "evidence": "Closer (L45-48) explicitly varies the reverse-engineer move onto new faces (codebase, CI pipeline, config, API) rather than repeating the ticket instance verbatim.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 10,
+      "rule_lead": "Student agency — adults decide.",
+      "verdict": "PASS",
+      "evidence": "L14 ('If there is no ticket... say so') and L24 ('No ticket of your own to read? Any other real ticket... works') both hand the student the choice rather than forcing a path.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 11,
+      "rule_lead": "Delegation — student brings, Claude screens.",
+      "verdict": "PASS",
+      "evidence": "Student brings the ticket link (L13-16, their own judgment call on which ticket); Claude screens/infers conventions and drafts the close-out (L27,37). No inaccessible-connector default assumed — connector stays a pointer (L35).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 12,
+      "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Phases chain mechanically within one session on one artifact chain (ticket → rules + close-out); no natural pause/distinct-artifact split that would earn a second file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 13,
+      "rule_lead": "Artifact-realism check.",
+      "verdict": "PASS",
+      "evidence": "Ticket tracker existence is an external precondition handled by the registry `requires:` block (`ticket-tracker: external`), and the connector is named as an enhancement pointer (L35), not assumed installed.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 14,
+      "rule_lead": "Teach principle + technique — default.",
+      "verdict": "PASS",
+      "evidence": "The reverse-engineer technique is walked with reasoning (separate signal from guess, L27 lead-in / registry text); the closer (L45-48) explicitly deconstructs the pattern by name rather than invoking it as unexplained magic.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 15,
+      "rule_lead": "Auto-fire sim+eval after significant rewrite.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Process trigger on the AUTHOR's rewrite workflow, not a criterion evaluable against the shipped body.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
-      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "rule_lead": "Forcing functions stay, scripted reactions go — in fence, not body.",
       "verdict": "PASS",
-      "evidence": "Harm: a body that narrates the exercise's load-bearing move instead of encoding it in the prompt lets a speed-runner skip the pedagogy entirely. All three load-bearing forcing functions (read-the-ticket L18, reverse-engineer-rules L29, write-close-out L39) are fenced (`{{prompt:close-the-ticket-1/2/3}}`); reading each phase prompt-only (the rule's own diagnostic) still lands mood/artifact. The two unfenced body imperatives — L31 'Push back on the five...' and L43 'Does it sound like the comments already on the ticket? ... tell Claude which line and how you'd write it' — are optional push-backs/refinements, the rule's own named carve-out ('optional push-backs / refinements / \"if you want to take this further\" can live in body'). L48's 'Ask Claude to study the pipeline...' is the closer's forward-generalising recognition line (covered by the §33 accept-note at L58), not this exercise's own mechanic. No bare imperative count (a scripted-reaction violation) anywhere in body. Harm absent.",
+      "evidence": "The three forcing moves live in fences (read/reverse-engineer/close-out). 'Push back on the five' (L31) is unfenced but carries no prescribed count (not 'push back exactly once') — it is optional push-back register, which Boundary 2 of this rule explicitly permits to stay in body.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 17,
+      "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
+      "verdict": "PASS",
+      "evidence": "Connector named once as enhancement (L35, 'pays back on every session after this one') and maintainer block L71 confirms the paste path fully delivers the same teaching moment; no reassurance prose stacked after.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 18,
+      "rule_lead": "Personal-first, team promotion via human conversation.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No CLAUDE.local.md / shared-infra promotion content in this file — that hand-off belongs to compound-and-close (L100-101).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 19,
+      "rule_lead": "Measure silent failure, not just friction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Cohort-measurement rule for aggregate delivery data, not a single-file content criterion.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 20,
+      "rule_lead": "Don't pre-set categories before experiment runs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Not an evaluation-design file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 21,
+      "rule_lead": "Verification layers sample DIFFERENT error distributions.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Meta rule about the eval architecture, not file content.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "21b",
+      "rule_lead": "Cheap-before-expensive verification ordering.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Meta rule about verification process, not file content.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 22,
+      "rule_lead": "Rule in memory without forcing function = worse than no rule.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Meta rule about memory-authoring, not applicable to this exercise's content.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 23,
+      "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Meta authoring-process rule.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 24,
+      "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
+      "verdict": "PASS",
+      "evidence": "Trace delivery_mode 'in-room'; nothing in the body assumes sequential trainer-then-student timing, and the 20-minute time-box (L3) is consistent with the concurrent model.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 25,
+      "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block uses the mandated header 'Push-back moves (trainer delivers)' (L83) naming the trainer as actor, not a host-skill/Nerd voice.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 26,
+      "rule_lead": "Reflection beats: in-chat over file-write.",
+      "verdict": "PASS",
+      "evidence": "L54 explicitly keeps the field rules in scrollback ('The field rules stay in the scrollback') rather than writing a reflection file — direct alignment.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -96,7 +296,158 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Harm: an authored conversation cue (pair/discuss/compare-with-neighbor) converts a trainer-paced room read into a scripted performance the body demands on cue. Ran this session: `grep -n -iE '\\\\broom\\\\b|\\\\bdiscuss\\\\b|\\\\bshare\\\\b|\\\\bpair\\\\b|\\\\bneighbo(u)?r\\\\b|\\\\btrainer\\\\b|compare with|take .* (minutes|seconds) and' curriculum/evals/body-views/ae101--exercise--close-the-ticket.body.txt` → 0 hits (real output). No group/pair/room-share sentence, no pause-cue, no 'discuss with...' construction anywhere in the body region. None of the three carve-outs (Connections-opener room-harvest, human-round mode-defining cue, sparingly-named room) are invoked or needed — clean absence, not a carve-out reach. Harm absent.",
+      "evidence": "`grep -inE \"discuss with|compare with|share with|tell the room|neighbor|neighbour\"` against the raw file → 0 hits. Every body sentence is about the WORK (ticket, prompts, artifact, voice-check), never cohort pacing/sharing.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 29,
+      "rule_lead": "Eval = fixed yardstick; thing measured learns.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Meta rule about eval-loop design, not file content.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 30,
+      "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
+      "verdict": "PASS",
+      "evidence": "'Double-check the voice' (L41-43) asks the student to read for register/voice fit ('Does the note sound like the ticket's other comments?') — reading for emotional/voice payoff, which the rule explicitly exempts — not correctness-auditing of Claude's output.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 31,
+      "rule_lead": "Self-report + self-audit charity.",
+      "verdict": "PASS",
+      "evidence": "Prompt-3's lead-in (L37) asks Claude to 'report what it wrote' and the following section (L41-43) has the student verify at the artifact (the real ticket's register) rather than trusting the summary — matches the (a) verify-at-artifact discipline.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 32,
+      "rule_lead": "Offered structures need forced-engagement mechanic.",
+      "verdict": "PASS",
+      "evidence": "L31 ('Push back on the five... The ones you reject sharpen the read as much as the ones you keep') is the forced-customization mechanic on the offered five rules — matches (a) directly.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 33,
+      "rule_lead": "Source-type blindness on ingestion.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Not a heterogeneous slide-format folder ingestion scenario; single ticket read.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 34,
+      "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Not a task-selection exercise; the task (the shipped bug) is carried over from fix-tests-first.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "34b",
+      "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No hedge language undermining a section's own premise found in the maintainer block; its notes are dated decisions, not speculative hedges.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 35,
+      "rule_lead": "Audience tier determines authoring substrate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Meta rule about which install affordance a training tier gets; no skill-install claim in this exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs smoke-test before trust.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No verification machinery (hook/judge/loop) introduced in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "This file doesn't teach context-loading tiers.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 39,
+      "rule_lead": "Removals are strategic — ask before cutting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Author-facing generation rule; the diff since the pin cut no non-trivial entity (only a wording tweak on L43 and the Quality-block refresh).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 41,
+      "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "AE101 is Code-only, no dual-runtime fork in this training (per check_prompts.md §10's own note).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 42,
+      "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
+      "verdict": "PASS",
+      "evidence": "The connector is not load-bearing (§17 above); the paste path is the default, fully-teaching path, so there is no fallback-dilution concern to gate.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 43,
+      "rule_lead": "Eval architecture — partition by evidence source, not criterion count.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Meta rule about the eval system's own architecture, not file content.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 44,
+      "rule_lead": "Plug points + UX.",
+      "verdict": "PASS",
+      "evidence": "Maintainer 'Plug points' section (L91-92) names the KIND of org context ('The team's ticket tracker (Linear / Jira / GitHub Issues / other)') rather than a vague slot. UX: three short prompts, one connector pointer, hand-off from fix-tests-first already warm (L81) — no 'wait, what?' setup gaps.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -105,16 +456,748 @@
       "rule_index": 45,
       "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
       "verdict": "PASS",
-      "evidence": "Harm: an abstract-competency leap test gives the trainer nothing falsifiable to check a Monday later. Maintainer block L91-94 names three: (1) 'Pastes a real ticket into a session and asks what the fields encode... Falsifiable: scrollback shows a ticket pasted and a conventions question'; (2) 'Ships a ticket close-out the agent drafted... Falsifiable: the tracker comment names root cause and links the PR, and the wording matches a draft in the session scrollback'; (3) 'Rejects at least one proposed convention rule as a guess. Falsifiable: scrollback shows a keep/change/drop call... with one dropped.' Each names a concrete verb + object + falsifiability clause, per the rule's own diagnostic ('working engineer can't tell whether they did it Monday → it's a competency claim') — none of the three fails that read. Harm absent.",
+      "evidence": "L94-97 gives three falsifiable, verb-led outcomes (pastes a real ticket and asks what fields encode; ships a drafted close-out; rejects ≥1 proposed rule as a guess) — none are abstract competency claims.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 47,
       "rule_lead": "Per-phase failure mode + escape hatch.",
       "verdict": "PASS",
-      "evidence": "Harm: a forcing-function phase with no named failure mode + escape hatch leaves the trainer with no recovery move when a student stalls or rubber-stamps. Three phases carry forcing functions (per §16): Phase 1 (ticket read, L18), Phase 2 (reverse-engineer rules, L29), Phase 3 (close-out, L39). The maintainer's 'Per-phase failure mode + escape hatch' table (L100-105) names Phase 2 ('Rules rubber-stamp... Push: \"which of the five did the agent guess at?\"') and Phase 3 ('Close-out rubber-stamp... Push: \"read it against the comments already on that ticket.\"') explicitly. Phase 1 has no TABLE row, but the maintainer's separate 'Decision points' entry (L85-86) names Phase 1's actual dominant failure mode — tracker unreachable — and its escape hatch: 'The paste path covers the read; for the write, fall back to a markdown ticket in the repo.' §47 permits a 'fallback prompt' as one of its three valid escape-hatch forms, and Phase 1's own fence already self-corrects on the other plausible failure mode (wrong/self-created ticket) via its own conditional branches ('if you can't find it, search...'; 'if you find it but can't open it, ask me to paste the fields'). Read in full (not just the one table), the maintainer block names failure-mode + escape-hatch for all three forcing-function phases. Applied §61a's verify-before-fix discipline before concluding this: checked whether the maintainer block addresses Phase 1 ANYWHERE, not only in the one table, before treating the missing table row as a gap. Harm absent.",
+      "evidence": "Table at L103-108 names two forcing-function phases, each with a dominant failure mode and one escape hatch (trainer push).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 48,
+      "rule_lead": "Heavy fan-out prompts get body recovery callout.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "None of the three prompts fan out (no parallel subagents, no multi-source retrieval, no read-the-world scope).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 49,
+      "rule_lead": "Save belongs with authoring, not loading.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Not a create-then-use pair across paired exercises; the close-out is a terminal external write, not an install/save-for-later artifact.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 50,
+      "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
+      "verdict": "PASS",
+      "evidence": "Prompt-3 is a single-paste post-action write; the very next section, 'Double-check the voice' (L41-43), is the harsher-alternative step the rule asks for — it is a real step in the flow, not merely acknowledged in prose.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 51,
+      "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No deliberate antipattern prompt in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 52,
+      "rule_lead": "Session widget — placement.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No session-opening or re-fork beat here; maintainer block (L81) states the exercise continues the same session opened in fix-tests-first, so no widget is owed.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52b",
+      "rule_lead": "Widgets carry semantics, not just emphasis.",
+      "verdict": "PASS",
+      "evidence": "Only the mandated widget-chrome bolds are present (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, L3-9) — no Session/HOX/Note misused for loudness.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52a",
+      "rule_lead": "Module prose carrying a Session widget or prompt fence is an exercise that has not been extracted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "This is already an extracted `curriculum/exercises/` file, not module prose.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52c",
+      "rule_lead": "Exercise lead-in trio — three slots, three tenses.",
+      "verdict": "PASS",
+      "evidence": "L5 What-you-do is present-tense action ('have the agent close your bug's ticket in your team's own voice'); L7 What-you-build names the artifacts that outlive the beat ('bug rules read off your own tracker, and a close-out note on the bug you shipped'); L9 The-point is a repeatable one-sentence claim ('the agent can reverse-engineer your team's rules') that survives the deleting-the-artifact test. AE101-scoped rule; all three slots stay within the ~15-word budget, no colon-list.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52d",
+      "rule_lead": "Finding the point — four moves.",
+      "verdict": "PASS",
+      "evidence": "L9's point is a contestable claim (a competent engineer could disagree that a single ticket read generalises), not a plain description, satisfying (a). It sits one level below the file's own closer reveal ('anything can be inspected and reverse-engineered with an LLM', L47), satisfying (b). Note: the compendium's own worked example for this rule quotes a different canonical point for this exact file — see top-level `notes`.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 53,
+      "rule_lead": "Body prose must not supply an answer its prompt asks for.",
+      "verdict": "PASS",
+      "evidence": "'Read the conventions off the ticket' (L20-26) frames WHY the read matters and what the agent will separate (signal vs guess) without pre-announcing which five rules it will actually surface; no pre-action recap of a prompt's payoff anywhere in the file.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 56,
+      "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No audit-finding-fix scenario in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 57,
+      "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No new mid-arc mechanic introduced here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 58,
+      "rule_lead": "`/clear` = tool, not ceremony.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No `/clear` content in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 59,
+      "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No reference-page restructuring event in scope; the outbound pointer to mcp-and-connectors.md (L35) is unrestructured.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 60,
+      "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Meta rule about the auditing process itself, not file content.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 61,
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Meta rule for authors proposing tool/framework changes; not applicable here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61a",
+      "rule_lead": "Acting on a flagged item — verify before fixing.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Meta rule about how to handle audit findings/punchlist items; not applicable to fresh judging of this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61b",
+      "rule_lead": "An audit's card-shaped findings are discharged by CARDS, not by notes about them.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Meta rule about audit process discipline; no card-shaped finding is being filed here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 62,
+      "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No failure-mode callout beside any prompt in this file; the one adjacent instruction (L14, 'If there is no ticket... say so') is a contingency, not a specific-failure-mode warning of this rule's shape.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 63,
+      "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Not auditing a punchlist.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 64,
+      "rule_lead": "Maintainer blocks point, don't restate.",
+      "verdict": "PASS",
+      "evidence": "L80 ('Delivery architecture... canonical in training-architecture.md. Not restated here.') is a one-line pointer, exactly the rule's required shape.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 65,
+      "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Not a cross-module receiving-module scenario; this exercise picks up in-session from fix-tests-first (L100), not from a prior module's send-off artefact.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 66,
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Process/generation-sequencing rule scored at authoring time across a training; not retrospectively evaluable against one finished Pass-3 file. On the merits: the file already exhibits full Pass-3 content — facilitator-runnable prose, real fenced prompts, a time-box (L3), and named failure modes with escape hatches (L103-108) — consistent with a completed Pass 3, not a stalled Pass 1/2. [drift-reread: rule wording unchanged in substance from what this file was audited against; no violation surfaces on re-read.]",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 67,
+      "rule_lead": "Story and depth are judged per big learning that develops, never per feature that recurs.",
+      "verdict": "PASS",
+      "evidence": "This file's own facet of the M1 arc is named in `check_pedagogy.md` §52d(c)'s worked example ('your tracker is documentation nobody meant to write' as the third beat in M1's landed learning progression) — this exercise carries a distinct, developing facet of the trust/documentation learning rather than a restated headline idea.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "PASS",
+      "evidence": "All three registry prompts (close-the-ticket-1/2/3) checked verbatim — no `[BRACKETS]`. Prompt-1 uses the open-hook shape (fence ends 'Ticket:'), matching the rule's preferred (d) form.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": "L27 ('Ask Claude to reverse-engineer how your team handles bugs and propose five bug rules.') and L37 ('Ask Claude to update the ticket with a close-out note and report what it wrote.') are both <20-word command-verb lead-ins. Prompt-1 correctly has no separate lead-in sentence: L16 ('Drop the ticket link after the colon.') matches the rule's own documented sub-case for a fence ending in a dangling colon, where the lead-in's whole job is naming the input slot.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Handled structurally by the `{{prompt:<key>}}` registry-marker mechanism (rule 31) — the expander reconstructs the canonical `**Prompt** *(Claude Code)*` shape; not independently gradable against this file's raw markdown.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No skill invocation in these three prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Prompts chain via scrollback/conversational reference ('the bug we just fixed', 'this team'), not via file paths; no file-chaining risk present.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 6,
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "PASS",
+      "evidence": "Prompt-1 doesn't pre-announce that prompt-2 will reverse-engineer rules or that prompt-3 will close the ticket; each of the three registry prompts is self-contained on its own ask.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 7,
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No `/clear` or session-reset offered anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No self-consistency/ensemble/regeneration-diff method used.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout inside fenced prompts = dead weight in Claude Code.",
+      "verdict": "PASS",
+      "evidence": "All three registry prompt bodies checked verbatim — no `**bold**`/`*italic*` inside the fence text.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "AE101 is Code-only; no dual-runtime fork in this training.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 11,
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "AE101 has no Cowork fork to under-scaffold.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 12,
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No regeneration-with-new-context-source scenario in these prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 13,
+      "rule_lead": "Citation discipline.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No citation/cite-or-flag task in these prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 14,
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No regeneration-with-deliberate-edge scenario.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 15,
+      "rule_lead": "Question-dump default.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No multi-question interview sequence in these prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Ticket updates target a single existing tracker record by identity, not a file-overwrite-vs-new-file choice.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 21,
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "PASS",
+      "evidence": "Prompt-3's lead-in (L37) and the registry body both end on post-action report ('Tell me what you wrote') rather than a pre-confirm — direct match to the rule's preferred shape, and the action (posting a ticket comment) isn't the irreversible/external-trust-line carve-out class.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "None of these three prompts declare `permission-mode: plan`; the rule's live MUST is plan-mode only, and everywhere else is advisory absent an observed run — none observed here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 18,
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "None of these prompts ask Claude to critique its own prior output; they act on an external ticket.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 19,
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Not a long-running walk-away send-off; a bounded 20-minute exercise with the student present throughout.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 20,
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Registry's own `produces` metadata marks the close-out `consumed-by: []` / terminal artifact; not a downstream-dependent artefact-assembly scenario, and the rule itself is narrowed to rarely fire.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 22,
+      "rule_lead": "Prompt-body edits require maintainer approval.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Process gate on editing behaviour; this judge made no edits (read-only) and has no signal that an unapproved body edit landed in the registry files read.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Rule is explicitly Agents-101-scoped; AE101 is explicitly exempted in the rule's own text.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "PASS",
+      "evidence": "All three registry prompt bodies checked — no absolute paths or `cd` commands; references stay conversational (the ticket, the tracker).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 25,
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No subagent invocation in these prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 26,
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Process rule governing how edits are surfaced to the maintainer; not itself a criterion the shipped file's content can violate.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 27,
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No `Save it as <path>` construct in any of the three prompts; the close-out write targets the external tracker and the registry `produces` block already names it a terminal artifact with `consumed-by: []`.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
+      "verdict": "PASS",
+      "evidence": "All three fences resolve via the `{{prompt:key}}` registry-marker mechanism; the expander reconstructs the canonical label by construction — authors never hand-write the label here.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 29,
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "PASS",
+      "evidence": "Prompt-1 ('Read the ticket for the bug we just fixed. Tell me what it says...') reads as a natural work request, not a manufactured interview protocol.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 30,
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Not a live-test-correction context.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "PASS",
+      "evidence": "All three prompts are registry files (`curriculum/prompts/close-the-ticket-{1,2,3}.md`) referenced from the exercise body via `{{prompt:...}}` markers (L18,29,39), matching the canonical pattern exactly.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 32,
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No module numbers referenced inside any of the three prompt bodies.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 33,
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No git-log/branch grepping in these prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 34,
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "PASS",
+      "evidence": "Prompt-1's registry body handles its own contingencies in-fence (can't-find-it → search-then-offer-to-create; can't-open-it → ask for pasted fields) rather than relying on body callouts the runtime can't see.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 35,
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No multi-turn dialog that can prematurely rewrite an artifact file in these prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move.",
+      "verdict": "PASS",
+      "evidence": "Registry prompt-2's body is already split into four short paragraphs by move (reverse-engineer ask / self-check-on-authorship / separate-signals-from-guesses / propose-five); none of the three prompts run as one dense multi-move paragraph.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 37,
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No save-a-rule-to-CLAUDE.local.md prompt in this file (that belongs to compound-and-close).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 38,
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "PASS",
+      "evidence": "L27 ('reverse-engineer how your team handles bugs') mirrors prompt-2's opening ('Reverse-engineer how this team handles bugs'); L37 ('update the ticket with a close-out note') mirrors prompt-3's opening ('Update the ticket: short close-out note...'). Prompt-1 correctly carries no separate mirroring lead-in — its immediately-preceding line is the dangling-colon input cue (§2's own documented sub-case), not a lead-in the rhyme test applies to.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 39,
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "None of the three prompts is mode-dependent; correctly no `permission-mode:` declared in any of the three registry frontmatters.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 40,
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "PASS",
+      "evidence": "Session is warm — continues from fix-tests-first in the same session (maintainer block L81, 'runs in the same M1 session as the fix and the PR'). Back-references ('the bug we just fixed', 'this team') are appropriate for a warm session; no cold-launch markers (`/clear`, new worktree, Agent sub-task) present.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 41,
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No ask-and-wait STOP tail grafted onto a load-bearing-artifact write in these prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 42,
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Not a headless/CI-runner context; a live classroom exercise against a real external tracker.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "None of the three prompts is long-running; all are quick, single-ticket-scoped actions.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 44,
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Rule governs a later editor's fix-pass discipline, not initial content judgment of the shipped prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 45,
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Agents-101-specific dual-scope Builder rule; AE101 uses the student's own repo and none of these three prompts reference a training-dir path at all.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 46,
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "PASS",
+      "evidence": "None of the three prompts appends a trailing output-shape spec; 'propose five basic rules' is a natural count, not over-specified formatting.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 47,
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No regenerate-with-new-context-source scenario in these prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 48,
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Group-closing-mechanic rule (cold-critic/pair/group/solo/show-work); this is a solo mid-arc exercise, not a module-closing beat.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 49,
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "None of the three prompts is a take-home/save-and-run-later prompt; all run live, in-session, with the student present.",
       "fix_hint": null,
       "blocking": false
     },
@@ -123,7 +1206,8 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Harm: a draft that flattens or resolves the module's deliberate mood early steals the felt-evidence a later beat depends on. Strategy doc's M1 mood: 'Joyful creation — \"it works, on my repo\"' (content-strategy-agentic-engineering-101.md line 243). Sim trace (curriculum/evals/sim-cache/ae101--exercise--close-the-ticket.persona.json) scores all 5 TEACHING beats (phases 1-5) at mood_score 8, close at 8; phase 6 ('Two artefacts from one ticket') is a setup/sequencing-transition beat (states what's carried forward, compressible to a parenthetical per the mood-floor carve-out's own diagnostic) and correctly scored mood_score: null, judged on clarity instead — its renamed header ('Two artefacts from one ticket', was 'What happened') does real orientation work. Mood-floor (8+/10 teaching beats) met at every teaching beat; no beat below 7. Harm absent.",
+      "evidence": "module_mood_contract: 'M1 joyful creation'. All five scored phases hold mood_score 8/10 (phase 6 correctly mood-exempt as a setup/sequencing-transition beat per the rule's own diagnostic — it could compress to a parenthetical without breaking the arc). No beat below 7.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -132,7 +1216,8 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Harm: a module whose mood is billed as curious-uncertainty but reads as shame-at-having-erred teaches the wrong lesson about not-knowing. L23 'One ticket gives a sample of your team's rules, not the policy. The agent separates strong signals from guesses, and names what it cannot tell from a single ticket' and L31 'Push back on the five. The ones you reject sharpen the read as much as the ones you keep' frame rejection as sharpening, never as correcting an error. No 'you got it wrong' framing anywhere in body. Trace phase 2 mood_note independently confirms: 'Epistemic, not punitive... Rejecting a rule feels like sharpening the read.' Harm absent.",
+      "evidence": "L22-23,31: 'One ticket gives a sample of your team's rules, not the policy' and 'The ones you reject sharpen the read as much as the ones you keep' frame not-knowing as curiosity, never as having-done-wrong; trace confusion_flags are empty in phases 2-6.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -141,18 +1226,252 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Harm: a title/Big-Idea framed around a failure word puts the student in a defensive crouch instead of naming a positive practice to build. Title (L1) 'Close the ticket your team's way'; The point (L9) 'the agent can reverse-engineer your team's rules'; all six §§ headers (Read the ticket / Read the conventions / Write the close-out / Double-check the voice / Anything can be reverse-engineered / Two artefacts) name positive moves, none named for a failure mode. No carve-out needed (no canonical-named-result handle at stake here). Harm absent.",
+      "evidence": "L9 The-point leads with a positive capability claim ('the agent can reverse-engineer your team's rules'), not a failure word; title and widget frame lead the same way.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check.",
+      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "Harm: a draft that front-runs a downstream module's teaching moment or drifts from the doc's Big Idea/arc spends the corpus's most expensive-to-catch-late error. Verified against content-strategy-agentic-engineering-101.md directly this session (bosser-strategy skill, M1 section): (a) sequencing — doc line 243 names 'Ex3 read one real ticket, reverse-engineer the team's tracker conventions, close the bug in that register' as the third of M1's four exercises, matching the maintainer block's own 'third of four' (L64) and Arc (L96-98, picks up from fix-tests-first, hands off to compound-and-close) exactly; (b) Big Idea — doc line 282 'a ticket closed in your team's own register... capture-your-world (not lectured)' is honored verbatim by the file's own framing (What you build, L7: 'a close-out note on the bug you shipped'); (c) no front-run — body never mentions plan mode, packaging, or the M2-owned 'refinement' term (doc line 316 confirms the term is retired except inside a different file's simulated filename), consistent with the doc's M1/M2 split; (d) mood-doesn't-resolve-early is N/A here — that check binds M3/M4/M5's specific unease/rescue beats, not M1. One drift note, out of this file's scope: the doc's own §Delivery-architecture line 873 lists only three named M1 exercise files (orient-and-introspect / fix-tests-first / compound-and-close), omitting close-the-ticket from that inventory even though the doc's own M1 summary table (line 243) already counts four exercises and names Ex3 explicitly — a stale file-inventory span inside the PRIVATE strategy doc itself, exactly the kind of drift §8 (doc-carries-strategy-not-structure) warns rots. This is a strategy-doc maintenance item, not a defect in close-the-ticket.md, and out of a story judge's write scope on this file; noted, not filed as a finding against this exercise.",
+      "evidence": "Hands off cleanly to compound-and-close (L100-101, Arc); mood stays inside M1's joyful-creation register throughout, not pre-empting M2/M3's unease; Big Idea honoured per the backing block's own vision claim `agent-reverse-engineers-unwritten-rules`. Re-read against the current strategy-doc-ownership wording (§8, re-derived for drift — see drift_rules_reread): no doc-vs-file assertion mismatch surfaces from this file's side; §8 itself is check_strategy_tie_in's own primary lane, not story's, and is parked N/A for this class per the prefill sidecar.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 1,
+      "rule_lead": "Group beat ≠ parallel solo work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Applying the rule's own test: removing the room produces the identical artefact (a student's own ticket, own team, own close-out) — this is individual work, not a group beat.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 2,
+      "rule_lead": "The room's output is named as an artefact.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No group beat in this file; nothing for a room to leave with collectively.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 3,
+      "rule_lead": "React, don't author.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Not a room-scale authoring-from-blank beat.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 4,
+      "rule_lead": "Pre-built material is a hard prerequisite, stated in the module.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No pre-assembled-for-the-day workshop material in this exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 5,
+      "rule_lead": "Attribution is stated by a human, recorded verbatim.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No multi-participant attribution beat here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 6,
+      "rule_lead": "Nothing is written over.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No shared record being contributed to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 7,
+      "rule_lead": "Filing is invisible.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No participant-files-a-note beat; the exercise's own writes are the student's individually-owned ticket/close-out.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 8,
+      "rule_lead": "Scope-of-sharing is declared before contribution, not after.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No tiered personal/peers/promoted contribution surface in this exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 10,
+      "rule_lead": "A decision beat needs a real constraint.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Not a group decision beat.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 11,
+      "rule_lead": "Group decisions are human, and named as such.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No group decision in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 12,
+      "rule_lead": "Retrospective = group round, no prompts, trainer silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Not a retrospective beat.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 13,
+      "rule_lead": "Second-facilitator test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No room-scale mechanics that depend on a designer's undocumented head-knowledge; this is an individual prompt-driven exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 14,
+      "rule_lead": "Name the too-big and too-small room.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No group-size-dependent adjudication beat.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 15,
+      "rule_lead": "Mixed-experience is the default room.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No room-composition assumption in this individual exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 16,
+      "rule_lead": "Room beats overrun; name the protected beat.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No room-beat time-protection concern; the exercise carries its own 20-minute time-box (L3).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 17,
+      "rule_lead": "No mechanical coverage — the trainer guide carries the load.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Not a room-scale beat; this exercise's prompts ARE mechanically exercisable (fenced, harness-runnable), unlike a workshop beat.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 1,
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Lecture-placement rule; this is an exercise file (curriculum/exercises/), not a lecture — the template's own worked example of an N/A row.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "3d6421552035ba222c2b226796a03adb21cb365688c96e294409b8e1b45807bb",
+      "carried_shape": "e452e88bf93d5241"
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 2,
+      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Governs pre-exercise LECTURE dosage, scored on the lecture file; this file has no preceding lecture of its own to dose.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "3d6421552035ba222c2b226796a03adb21cb365688c96e294409b8e1b45807bb",
+      "carried_shape": "e452e88bf93d5241"
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 3,
+      "rule_lead": "No cross-module sequencing in lecture bodies.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Scoped to lecture bodies; this is an exercise. (Checked on the merits anyway since it's free: `grep -nE 'M[0-9]|fix-tests-first|compound-and-close' curriculum/evals/body-views/ae101--exercise--close-the-ticket.body.txt` → 0 hits in the body region L1-55; the only module/sibling-file refs live below the maintainer fence.)",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "3d6421552035ba222c2b226796a03adb21cb365688c96e294409b8e1b45807bb",
+      "carried_shape": "e452e88bf93d5241"
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 4,
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Titled and scoped to slide-rendered LECTURE headers; this exercise's header/squint concerns belong to check_slides.md, which the file's own maintainer block cites separately (§9, emphasis budget) — not double-owned here.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "3d6421552035ba222c2b226796a03adb21cb365688c96e294409b8e1b45807bb",
+      "carried_shape": "e452e88bf93d5241"
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 5,
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "check_lectures's slide-size rule; this exercise's slide-size budget is check_slides.md's lane, not check_lectures's.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "3d6421552035ba222c2b226796a03adb21cb365688c96e294409b8e1b45807bb",
+      "carried_shape": "e452e88bf93d5241"
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Rule's own text: 'Not covered: exercise prompts... all of which the student runs themselves.' This file's three prompts are exercise prompts — explicitly excluded.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "3d6421552035ba222c2b226796a03adb21cb365688c96e294409b8e1b45807bb",
+      "carried_shape": "e452e88bf93d5241"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -161,8 +1480,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "Governs a module file's Key Concepts section; this is an exercise file with no such section.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "3d6421552035ba222c2b226796a03adb21cb365688c96e294409b8e1b45807bb",
+      "carried_shape": "e452e88bf93d5241"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -171,8 +1492,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "Module-only Key Concepts formatting rule; not applicable to an exercise file.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "3d6421552035ba222c2b226796a03adb21cb365688c96e294409b8e1b45807bb",
+      "carried_shape": "e452e88bf93d5241"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -181,8 +1504,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "Module-only What You'll Learn formatting rule; not applicable to an exercise file.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "3d6421552035ba222c2b226796a03adb21cb365688c96e294409b8e1b45807bb",
+      "carried_shape": "e452e88bf93d5241"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -191,18 +1516,14 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "Not among story's owned §1-4; per the template's completeness contract the strategy judge is primary owner of §5-8. (The §4 row above notes a possibly-relevant drift on the doc side, but adjudicating/fixing the doc itself is the strategy judge's lane, not story's.)",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "3d6421552035ba222c2b226796a03adb21cb365688c96e294409b8e1b45807bb",
+      "carried_shape": "e452e88bf93d5241"
     }
   ],
-  "teaching_moment_lands": "Judge-owned, no check_strategy_tie_in rule_index (per template: record here, never as a rules_evaluated row). The named teaching moment ('the agent can reverse-engineer your team's rules') is robust to reasonable persona-skill variance: the two obvious escape routes a student could take — no ticket of their own, or a tracker Claude Code can't reach — are both pre-built into the body ('If there is no ticket for this bug, say so in the chat... Any other real ticket from your tracker works') and the maintainer's Decision points fallback, so the moment can't be silently skipped by a student who happens to lack a personal ticket or a connected tracker. Trace confirms it lands cleanly across all 6 phases with zero confusion flags on the core mechanic.",
-  "out_of_scope_compendiums": "check_prompts.md (49 rules) and check_workshop.md (16 rules) were pulled into the derive-class-brief.js output (their file-level eval_classes tag includes story) but the story template names no specific story-owned judgment from either — the 'Specific judgments storytelling owns' list and the Completeness contract's compendium enumeration (check_lectures full, check_pedagogy/check_strategy_tie_in narrowed subsets) never mention them. Per the dispatch preamble ('Evaluate ONLY the compendiums your template puts in scope... reaching into a sibling class's rules is an unowned claim'), no rows were emitted for either. check_workshop.md is additionally N/A on the merits: this file has no group/room beat (solo student+agent exercise) — the view's group_beat_markers:true signal traces to maintainer-block-only text ('the cohort's Claude Code', 'the room' in a trainer-delivery note), below the maintainer fence and out of any check_workshop room-beat's scope.",
-  "mood_summary": {
-    "phase_scores": [8, 8, 8, 8, 8, null],
-    "close_score": 8,
-    "any_below_8": false,
-    "stealing_the_mood": []
-  },
+  "suggestions": [],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "Drift re-read (pin 0d65ff01, staleness reason rule-drift): pedagogy §66 (three-pass build) and strategy_tie_in §8 (strategy doc carries strategy, not structure) both re-read at current wording via rule.js. §66 is a generation-sequencing process rule, not retrospectively evaluable against a finished Pass-3 file; scored N/A on the merits (facilitator-runnable prose, real fenced prompts, time-box, failure-mode/escape-hatch table all present, consistent with completed Pass 3). §8 is check_strategy_tie_in's own primary lane (§5-8), not story's (§1-4) per the template's completeness contract, and was already parked N/A by the prefill sidecar for that reason; re-reading it on the merits surfaces no doc-vs-file assertion mismatch on this file's side. Neither drift rule produced a finding. Diff since the pin is limited to one wording tweak (L43, 'Does the note sound like...' reworded from 'Does it sound like...') plus the Quality-block/View-summary refresh — no content that would trip either drifted rule. Separately (not drift-related, found on normal read): check_pedagogy.md §52d(b)'s own worked example names this exact file's canonical point as 'your tracker is documentation nobody meant to write', but the live body's point (L9) reads 'the agent can reverse-engineer your team's rules'. Not filed as REVISE — per §61a(g) this is a maintainer-premise question (which phrasing is the intended landed one), not something the repo settles unilaterally, and the backing block's own vision claim `agent-reverse-engineers-unwritten-rules` supports the current body wording. Flagging so the maintainer can either confirm the current point or update the compendium's stale worked example."
 }

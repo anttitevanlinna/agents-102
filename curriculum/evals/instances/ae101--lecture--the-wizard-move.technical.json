@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/lectures/the-wizard-move.md",
   "verdict": "PASS",
-  "body_sha": "fed4b01bfc8fa9a4db8ac9cdaeda4aa129f7b3566c75296a6ba220d74e913d6c",
+  "body_sha": "dec80ecc75c3609f49da2958f1371d577ae04fe52189b878d840a985affa5638",
   "shape_hash": "34646fe0875901f8",
   "rules_evaluated": [
     {
@@ -1104,9 +1104,23 @@
       "blocking": false,
       "carried_from": "a64be3f405ea264b6b96ba403bcd5e2b9f4fd928e60540b732de1a6c948822aa",
       "carried_shape": "34646fe0875901f8"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 66,
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "cross-module authoring-order/process rule for generation; not a property of one already-shipped file to re-check retroactively.",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,
   "nonblocking_findings_count": 0,
-  "notes": "Re-judge against a small maintainer-block-only diff since pin 08946dd8: `git diff 08946dd8..HEAD -- curriculum/lectures/the-wizard-move.md` touches only bookkeeping (Quality stamp bumped to compendium-audited 2026-09-05 with a superseded 2026-08-29 entry removed; the Demo watch-fors bullet gained the `--setting-sources project` flag + measured stat; the demo-fires-live stamp moved from `result:NEEDED` (2026-08-23, owed) to `result:OK` (2026-09-06, dry-run recorded); a few sentences condensed without content change) — zero lines of raw 1-16 (student-facing body) or the backing-block Claims/Frameworks/Stance sections moved. SCOPE per technical.md's own completeness contract: check_platform_and_boundaries.md and check_research_claims.md judged to full completeness (7 + 10 rows here; the remainder of each compendium's rule_inventory — 63 and 8 rules respectively — is carried forward via `prefill-instance.js --merge` from a prior verdict at matching shape_hash, per the dispatch preamble's Mechanics §3-4). check_pedagogy.md restricted to the 5 technical sub-rules the template names (16, 22, 23, 36, 37) — all already parked/merged, zero rows from me — NOT the ~63 other pedagogy rules the generic class-brief mechanically included from the full compendium; the pedagogy class judge owns those, and 'evaluate only the compendiums your template puts in scope / stay in your lane' (dispatch preamble) outranks the brief's broader inclusion. Confirmed this reading against the file's own prior technical instance, itself audit-clean (not flagged by `audit-eval-coverage.js`) under this same narrower scope. check_prompts.md collapsed to one whole-compendium judge_owned N/A row rather than 5 or 49 individual rows, because the file has zero prompt content full stop. New work this session beyond re-confirming the prior verdict: independently live-tested the new `--setting-sources project` capability claim (ran `claude -p` twice in fresh empty non-git directories, once default and once with the flag, on the currently-installed 2.1.263 build) rather than taking the file's own 2.1.259 dry-run on trust; ran `source-freshness.sh` and confirmed the demo-fires-live stamp's NEEDED→OK transition actually clears the audit (0 block, was 1); sampled the file's one external URL (curl → 200); grepped for `[Skill:` and `[capability]` corpus-wide to confirm labeling conventions."
+  "notes": "Re-judge against a small maintainer-block-only diff since pin 08946dd8: `git diff 08946dd8..HEAD -- curriculum/lectures/the-wizard-move.md` touches only bookkeeping (Quality stamp bumped to compendium-audited 2026-09-05 with a superseded 2026-08-29 entry removed; the Demo watch-fors bullet gained the `--setting-sources project` flag + measured stat; the demo-fires-live stamp moved from `result:NEEDED` (2026-08-23, owed) to `result:OK` (2026-09-06, dry-run recorded); a few sentences condensed without content change) — zero lines of raw 1-16 (student-facing body) or the backing-block Claims/Frameworks/Stance sections moved. SCOPE per technical.md's own completeness contract: check_platform_and_boundaries.md and check_research_claims.md judged to full completeness (7 + 10 rows here; the remainder of each compendium's rule_inventory — 63 and 8 rules respectively — is carried forward via `prefill-instance.js --merge` from a prior verdict at matching shape_hash, per the dispatch preamble's Mechanics §3-4). check_pedagogy.md restricted to the 5 technical sub-rules the template names (16, 22, 23, 36, 37) — all already parked/merged, zero rows from me — NOT the ~63 other pedagogy rules the generic class-brief mechanically included from the full compendium; the pedagogy class judge owns those, and 'evaluate only the compendiums your template puts in scope / stay in your lane' (dispatch preamble) outranks the brief's broader inclusion. Confirmed this reading against the file's own prior technical instance, itself audit-clean (not flagged by `audit-eval-coverage.js`) under this same narrower scope. check_prompts.md collapsed to one whole-compendium judge_owned N/A row rather than 5 or 49 individual rows, because the file has zero prompt content full stop. New work this session beyond re-confirming the prior verdict: independently live-tested the new `--setting-sources project` capability claim (ran `claude -p` twice in fresh empty non-git directories, once default and once with the flag, on the currently-installed 2.1.263 build) rather than taking the file's own 2.1.259 dry-run on trust; ran `source-freshness.sh` and confirmed the demo-fires-live stamp's NEEDED→OK transition actually clears the audit (0 block, was 1); sampled the file's one external URL (curl → 200); grepped for `[Skill:` and `[capability]` corpus-wide to confirm labeling conventions.",
+  "scope": "drift",
+  "drift_rules": [
+    "check_pedagogy.md §66"
+  ]
 }

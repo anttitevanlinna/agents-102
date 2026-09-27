@@ -91,8 +91,8 @@ Module 2 is where plan mode earns its keep: multi-file work, and a second pass t
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-10 (writing@0d65ff01 story@0d65ff01 technical@0d65ff01 behavior@1480362 pedagogy@0d65ff01 strategy@0d65ff01 slides@0d65ff01)
-- judges @0d65ff01: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (verify-refuted, 2 findings see instances/ae101--module--getting-going.pedagogy.json), strategy PASS (verify-refuted), slides PASS
+**Quality:** compendium-audited 2026-09-27 (writing@8b5de788 story@0d65ff01 technical@8b5de788 behavior@1480362 pedagogy@8b5de788 strategy@8b5de788 slides@8b5de788)
+- judges @8b5de788: writing PASS (1 finding see instances/ae101--module--getting-going.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @01592193: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
 
 **Carded and kept (Antti 2026-08-29): the "All modules are designed to cope with missing details from prior modules" bullet stays.** It is the rescue guarantee — a trainer improvising cuts mid-session, or a student who missed a beat, needs the stated design promise, not only the cutting permission the list grants above it. `check_student_facing.md` §33 does not take it; do not re-card.

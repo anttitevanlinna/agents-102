@@ -50,8 +50,8 @@ Drop your bug after the colon.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-10 (writing@c8bb1a71 story@0d65ff01 technical@0d65ff01 behavior@64d17eea pedagogy@0d65ff01 strategy@324b81d7 slides@0d65ff01)
-- judges @c8bb1a71: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-27 (writing@8b5de788 story@8b5de788 technical@8b5de788 behavior@64d17eea pedagogy@8b5de788 strategy@8b5de788 slides@8b5de788)
+- judges @8b5de788: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/ae101--exercise--fix-tests-first.pedagogy.json), strategy PASS, slides PASS
 
 **Carded and kept, then trimmed (Antti 2026-08-29): the compound-step mention in the push-back bullet stays.** The forward mechanism ("the compound step reads this scrollback, so your push-back is what becomes a rule") is the wanted motivation for authentic wording, not a leak — do not cut it as a pre-announcement; the shortening to its current form is the settled dose.
 

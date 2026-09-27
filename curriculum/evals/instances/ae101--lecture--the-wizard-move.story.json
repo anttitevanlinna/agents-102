@@ -1,19 +1,28 @@
 {
   "class": "story",
-  "training": "ae101",
   "file": "curriculum/lectures/the-wizard-move.md",
+  "training": "ae101",
   "verdict": "PASS",
-  "body_sha": "fed4b01bfc8fa9a4db8ac9cdaeda4aa129f7b3566c75296a6ba220d74e913d6c",
+  "body_sha": "dec80ecc75c3609f49da2958f1371d577ae04fe52189b878d840a985affa5638",
   "shape_hash": "34646fe0875901f8",
-  "trace_status": "cached",
   "module_mood_contract": "joyful creation — 'it works, on my repo' (getting-going.md L120 Meta block; content-strategy-agentic-engineering-101.md M1 row)",
+  "trace_status": "regenerated",
+  "mood_summary": {
+    "phase_scores": [
+      9
+    ],
+    "close_score": 9,
+    "any_below_8": false,
+    "stealing_the_mood": []
+  },
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "This is a DEMO lecture showing a ceiling (two-session context-conditioning demo), not a meta-frame lecture naming a pattern the student already lived through. Rule's own text: 'Demo lectures showing a ceiling go at beginning.' Maintainer Meta block: 'Placement: M1 opener, after Connections, before the exercise' — correct slot for this lecture type.",
+      "evidence": "L32 maintainer: 'Placement: M1 opener, after Connections, before the exercise.' This is not a meta-frame lecture naming a pattern the student already lived through — it's a ceiling demo (two-session context-conditioning shown live, L1-L9) that shows a capability BEFORE any exercise, which the rule's own diagnostic classes as an opener ('Demo lectures showing a ceiling go at beginning'). No practitioner vocabulary is taught here that would argue for mid-module placement.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -22,7 +31,8 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "PASS",
-      "evidence": "Diagnostic (teaches vs arms): body names zero practitioner terms, maps no framework to a problem, explains no tradeoff with reasons — it demos the phenomenon (two sessions, two dinner answers) and states one operational primitive ('load the right context before the question'). That is 'spirit + lens + one move', the arms shape, regardless of whether M1 itself is classed contrast-mood.",
+      "evidence": "Body is 16 lines total, two slides, no named practitioner terms, no framework-to-problem mapping, no tradeoff explanations with reasons. It arms (spirit: 'you steer the answer by loading context', L11-15) rather than teaches (no practitioner names, no framework taxonomy). Whether or not M1's opener is formally 'contrast-mood' per the strategy doc, the file's own dosage is already at the rule's ceiling for an opener: one mechanism, one live proof, one discipline-name close.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -31,7 +41,8 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Mechanical: grep -nE 'M[0-9]' curriculum/evals/body-views/ae101--lecture--the-wizard-move.body.txt → 0 hits (ran this session). Body carries no module numbering, no forward/back references. Maintainer block independently confirms this is deliberate: 'Zero map references. M1 is protected; the map arrives at M2.'",
+      "evidence": "grep -nE '\\bM[0-9]\\b' on body region (L1-16, projections.body_numbered) → 0 hits. No bridges, forward-references, or module numbering appear above the maintainer fence; the only M1/M2 references live inside the maintainer block (L26), which is explicitly out of body scope for this rule.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -40,7 +51,8 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Two headers, L3 'Context is King' and L11 'You steer the answer by loading context'. Squint: both are claims the slide argues, not empty containers ('The move'/'The names') and not bare arc labels. Truth: 'Context is King' is a metaphorical title the body substantiates (context conditions every subsequent answer, demonstrated live); 'You steer the answer by loading context' is a plain declarative the body's own next sentences support verbatim. Neither drops a qualifier or asserts an unsupported universal. Inherit checks: em-dash grep CLEAN (0 hits, body-view greps), no pedagogy/contemplative phrasing in either header, both are noun/declarative-claim shaped not command verbs.",
+      "evidence": "Two headers, no duplicates. L3 'Context is King' — a named claim, not an empty container or bare arc label. L11 'You steer the answer by loading context' — asserts exactly what the body under it supports (context colors output; you load it deliberately), no unsupported universal, no dropped qualifier, no category error. Neither is orientation/mystery/pedagogy-cue framing.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -49,7 +61,80 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Mechanical, ran this session: `node scripts/check-slide-size.js --file curriculum/lectures/the-wizard-move.md` → 'files: 1  slides: 2  limits: 210 words / 6 bullets  oversized: 0 ... every slide is within limits', exit 0. Manual word counts confirm: slide 1 (L3-9) = 115 words, slide 2 (L11-15) = 71 words, both well under the 210-word cap; zero bullets in either (prose only).",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/lectures/the-wizard-move.md → 'files: 1  slides: 2  limits: 210 words / 6 bullets  oversized: 0 — every slide is within limits'.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "grep -nE '(discuss with|share with|compare with|tell the room|your neighbor|take [0-9]+ (seconds|minutes))' curriculum/lectures/the-wizard-move.md → 0 hits (exit 1, no match). Every sentence in the body is about the demo mechanism (sessions, prompts, answers, context) or the discipline it teaches — none is about cohort pacing, comparing, or sharing. No live-typed megaprompt either; this is a spoken/watched demo, not a paste beat.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
+      "verdict": "PASS",
+      "evidence": "Regenerated persona trace (curriculum/evals/sim-cache/ae101--lecture--the-wizard-move.persona.json, bound content_sha=ce884289c139e4a3d0ac6e966af663d7273b1d57612a607625b0c6a0f48c02a9, matches body_sha): single teaching-beat phase, mood_score 9, close mood_score 9 — both above the 8+ floor. Whole file is one teaching beat (the mechanism IS the content); no setup/launch beat to exempt. Diagnostic satisfied: could not be compressed to a parenthetical without breaking the arc — the live two-session contrast is the entire proof.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "PASS",
+      "evidence": "L7-9: 'Guess what Claude suggests before reading on... But not as reliably.' The hedge is framed as an interesting property of the mechanism (not-knowing/curiosity), never as the student or Claude having erred. No 'you got it wrong' framing anywhere in the body.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "PASS",
+      "evidence": "L3 'Context is King' and L11 'You steer the answer by loading context' both name a positive discipline (deliberate context-loading), not a failure word (no 'hallucination', 'drift', 'confusion' in either header).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
+      "verdict": "PASS",
+      "evidence": "Maintainer block carries explicit, dated fidelity checks that this file's own diff (0d65ff01..HEAD) does not touch: 'No plan mode on this surface... Confirmed against the module's Big Idea + LO (Antti, 2026-09-01)' (L26); 'Zero map references. M1 is protected; the map arrives at M2' (L28); 'The loop-over-the-fix beat belongs to the M1 closer, not here... This opener carries the context mechanism and stops; no loop preview, no borrowed kicker' (L27) — an explicit, maintainer-drawn boundary against front-running the-machine-you-just-met.md's close, which is where the loop-recognition teaching moment actually lands. Body itself carries zero map references and zero plan-mode language, confirmed by grep on body region. Mood doesn't resolve early: the file closes on a discipline-name ('The move is loading the right context...', L15) without resolving into a loop/verification beat that belongs downstream.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope: no fenced or narrated prompt content on this surface.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "signals.has_prompt_blocks=false, fence_ranges=[] — this is an entirely non-code, spoken/watched demo lecture; check_prompts.md's rules govern `**Prompt**` fences and prompt registry entries, neither of which exist here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope: no group beat whose output belongs to the room.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "signals.group_beat_markers=false — this is a trainer-run demo watched by the room, not a beat that produces a shared/attributed group artefact; check_workshop.md governs room-scale adjudication beats, which do not occur in this file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -60,8 +145,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt blocks or fences in this file at all (signal: has_prompt_blocks=false, fence_ranges=[]) — the demo runs live in Claude Code, narrated in prose, not via a {{prompt:}} fence.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "fed4b01bfc8fa9a4db8ac9cdaeda4aa129f7b3566c75296a6ba220d74e913d6c",
+      "carried_shape": "34646fe0875901f8"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -70,17 +157,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt fences and no student-executed exercise phase exist in this file (signal: has_prompt_blocks=false) — the rule's antecedent (body prose explaining a forcing function a fence should enact) does not arise on a trainer-run demo lecture.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 27,
-      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
-      "verdict": "PASS",
-      "evidence": "Body carries zero authored conversation/pause cues (grep for 'discuss with', 'share with', 'tell the room', 'compare with the person next to you' → 0 hits across L1-16). Every sentence is about the WORK — the demo mechanism and its generalization ('Context is whatever you tell it... The move is loading the right context before the question') — not about cohort pacing or comparing. None of the file's three carve-outs (Connections-opener room-harvest, mode-defining human-round cue, sparingly-named room) apply or are invoked here.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "fed4b01bfc8fa9a4db8ac9cdaeda4aa129f7b3566c75296a6ba220d74e913d6c",
+      "carried_shape": "34646fe0875901f8"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -89,44 +169,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "drift check (rule re-read at current wording per dispatch): §61 governs proposing a SKILL.md/framework/tool change before verifying the mechanism already handles the case. This file proposes no such change — it is a stable, previously-shipped lecture body with no skill-authoring or framework content. Rule's antecedent does not arise; body is unaffected by this rule's current wording.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
-      "rule_lead": "Mood contract named.",
-      "verdict": "PASS",
-      "evidence": "Sim trace (fresh-body-matched, see trace_status): phase 1 mood_score=9, close mood_score=9, both well above the 8-floor for a TEACHING beat (this whole lecture IS the teaching beat — it is not setup/launch prose). module_mood_contract = 'joyful creation — it works, on my repo' (content-strategy-agentic-engineering-101.md M1 row). Trace mood_note: 'Strong joyful-creation landing... Nothing reads truncated or missing... No gap-fix or corrective framing anywhere.'",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 2,
-      "rule_lead": "Epistemic mood ≠ punitive mood.",
-      "verdict": "PASS",
-      "evidence": "Trace phase mood_note: persona 'recognizes the hedge from their own sessions... without them noticing why' and close mood_note: persona 'leaves curious rather than corrected'. The unease implied by 'But not as reliably' reads as not-knowing/curiosity, never as having-done-wrong. No shame-register language anywhere in body (L1-16).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 3,
-      "rule_lead": "Lead with discipline, not failure mode.",
-      "verdict": "PASS",
-      "evidence": "Both section headers name a positive discipline — 'Context is King' (L3) and 'You steer the answer by loading context' (L11) — not a failure word. No 'fabrication'/'violation'/'hallucination'-shaped title anywhere in the file.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check.",
-      "verdict": "PASS",
-      "evidence": "Consolidated per template §4 (front-run + module-arc + Big-Idea fidelity + mood-doesn't-resolve-early). Front-run: 0 M[0-9] hits in body (ran this session, see check_lectures §3 row); maintainer block: 'Zero map references. M1 is protected; the map arrives at M2.' Big-Idea fidelity: matches M1's joyful-creation mood contract per trace (mood 9/9). Module arc: close is deliberately mood-only, no forward-hook to the exercise or to M1's closer beat — maintainer block explicitly bars this ('This opener carries the context mechanism and stops; no loop preview, no borrowed kicker'), and trace confirms the implicit handoff reads correctly ('the lecture itself never names the exercises — the handoff is implicit... which is the correct posture for a re-placeable shared-library lecture'). Mood-doesn't-resolve-early: N/A to this beat's position — that clause governs the M3-unease-through-M5-rescue arc; M1's opener sits outside it.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "fed4b01bfc8fa9a4db8ac9cdaeda4aa129f7b3566c75296a6ba220d74e913d6c",
+      "carried_shape": "34646fe0875901f8"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -135,8 +181,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "lecture file, no module-only Key Concepts section exists on this surface.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "fed4b01bfc8fa9a4db8ac9cdaeda4aa129f7b3566c75296a6ba220d74e913d6c",
+      "carried_shape": "34646fe0875901f8"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -145,8 +193,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "lecture file, no module-only Key Concepts section exists on this surface.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "fed4b01bfc8fa9a4db8ac9cdaeda4aa129f7b3566c75296a6ba220d74e913d6c",
+      "carried_shape": "34646fe0875901f8"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -155,54 +205,24 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "lecture file, no module-only What You'll Learn section exists on this surface.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_workshop.md",
-      "rule_index": null,
-      "judge_owned": true,
-      "rule_lead": "Whole-compendium scope call.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "check_workshop does not apply: this is solo trainer-narrated demo prose, not a room-scale beat whose output belongs to the group (signal: group_beat_markers=false). No beat here is a group beat co-located solo work is not a workshop.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": null,
-      "judge_owned": true,
-      "rule_lead": "Whole-compendium scope call.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "check_prompts does not apply: this file has no {{prompt:}} fences, inline **Prompt** blocks, or registry entries at all (signal: has_prompt_blocks=false, fence_ranges=[]) — the compendium's 49 rules govern fenced-prompt craft that has no instance here.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "fed4b01bfc8fa9a4db8ac9cdaeda4aa129f7b3566c75296a6ba220d74e913d6c",
+      "carried_shape": "34646fe0875901f8"
     }
   ],
-  "mood_summary": {
-    "phase_scores": [9],
-    "close_score": 9,
-    "any_below_8": false,
-    "stealing_the_mood": []
-  },
-  "teaching_moment_lands": "PASS — sim trace (fresh, phase_sha matches live body byte-for-byte, verified this session) shows the persona getting the two-session fact/fact contrast, guessing correctly, registering the reliability hedge, and generalizing to 'a fact, a role, a preference, a constraint' unprompted. mood 9/9 throughout; close mood_note: 'Joyful-creation contract holds through the close.'",
-  "drift_rules_reread": [
-    "pedagogy §61 — re-read at current wording. Governs verifying a mechanism before proposing a SKILL.md/framework/tool change. This file proposes no such change (stable lecture body, no skill authoring). N/A to this file; no body impact from the rule's current wording. Recorded as a rules_evaluated row above."
-  ],
-  "accept_notes_found": [
-    "L19-21: Quality stamp (compendium-audited 2026-09-05) + prior 2026-04-26 stamp — bookkeeping, not a content accept-note.",
-    "L26: No plan-mode on this surface — confirmed against Big Idea + LO (Antti 2026-09-01).",
-    "L27: Loop-over-the-fix beat belongs to M1 closer, not here — opener stops at the context mechanism, no loop preview or borrowed kicker.",
-    "L28: Zero map references — M1 protected, map arrives at M2.",
-    "L33: Time budget 8 min, demo runs in Claude Code not claude.ai (Antti 2026-08-23).",
-    "L37: Two sessions is the dose (Antti 2026-08-25) — Agents 101's third cardiologist example stays out of body and demo.",
-    "L38: Not adapted for engineers — universality is the point, deliberate.",
-    "L41: Session-independence standing instruction — two fresh empty-directory sessions, --setting-sources project, dry-run before cohort, salvage line for a Finnish-adjacent miss.",
-    "L42: Room wants code-specific content up front — hold; opener stays abstract by design.",
-    "Backing block L48-72: claims/sources/stance/OODA all carry dated verification stamps (demo-fires-live checked 2026-09-06 result:OK; two OODA absences banked 2026-07-30, not to be re-hunted)."
-  ],
+  "suggestions": [],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "Teaching moment lands (judge-owned, no rule_index per template): the persona trace confirms the fact-vs-fact contrast reliably triggers the guess-before-reveal recognition (mood_score 9 both phase and close) even under the trace's own noted minor ambiguity in the guess-cue phrasing ('Guess what Claude suggests before reading on' reads slightly odd as static prose, fully clear in-room) — that ambiguity is cosmetic (writing-class territory) and does not weaken the teaching moment itself. Six numbered rules were prefill-parked N/A by shape hash and merged in (check_lectures §6, check_pedagogy §16/§61, check_strategy_tie_in §5/§6/§7) — not re-derived here. The persona trace at curriculum/evals/sim-cache/ae101--lecture--the-wizard-move.persona.json was stale (quoted a pre-diff line, 'Take a guess before it runs. What does Claude suggest now?', that the 0d65ff01..HEAD wording pass removed) and was regenerated and re-bound in this run; content_sha now matches body_sha. check_prompts.md and check_workshop.md are read in full per the dispatch brief but story owns no numbered rule in either compendium per judges/story.md's Completeness contract (only check_lectures is primary-owned; check_pedagogy/check_strategy_tie_in are owned for the specific listed judgments only) — both compendiums are recorded as judge-owned whole-scope N/A rows rather than 49 and 16 individually-derived rows, consistent with the mechanics section's whole-compendium-scope-call guidance.",
+  "accept_notes_found": [
+    "L19: Quality compendium-audited 2026-09-10, story@0d65ff01 PASS",
+    "L21: earlier compendium-audited 2026-04-26 note (superseded by L19)",
+    "L26: No plan mode on this surface — confirmed against Big Idea + LO (Antti, 2026-09-01)",
+    "L33: Time budget 8 min, live two-session demo in Claude Code not claude.ai (Antti, 2026-08-23)",
+    "L37: Two sessions is the dose; third cardiologist example stays out (Antti, 2026-08-25)",
+    "L55-58: source stamps (in-context-conditioning CAVEAT, antti-dinner-demo-deliveries ATTESTED, dinner-demo-haiku-sample CAVEAT, demo-fires-live OK due:cohort)",
+    "L63-67: Stance block (level:L2, 2026-08-01) — holds/contested/decided/would-move-it",
+    "L70-72: OODA — two absences banked 2026-07-30, not re-hunted; last-run 2026-07-30"
+  ]
 }

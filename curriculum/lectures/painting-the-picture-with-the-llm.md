@@ -29,8 +29,8 @@ Let's go.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-10 (writing@0d65ff01 story@0d65ff01 technical@0d65ff01 behavior@1480362 pedagogy@0d65ff01 strategy@08946dd8 slides@0d65ff01)
-- judges @0d65ff01: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-27 (writing@8b5de788 story@8b5de788 technical@8b5de788 behavior@1480362 pedagogy@8b5de788 strategy@8b5de788 slides@8b5de788)
+- judges @8b5de788: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Shotgun/cannon pair is a deliberate provocation beat (maintainer's own words, keep).** The unexplained image is the point: a think-beat that makes the reader do the cashing-out, in the opener's reframe register. Do not cut, literalize, or replace with a named lever — the precise lever already sits in the paragraph above ("Whatever you put in front of the LLM is what the LLM scales"), and the pair rides on it. Judges reading for decode cost: reframe-texture carve-out applies (`check_writing.md` §4 Sami-pass corollary — rules go banal, reframes keep texture).
 

@@ -92,8 +92,8 @@ The next module opens with what came back, or what you caught before it went fur
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@17446703 pedagogy@191ea58f strategy@324b81d7 slides@191ea58f)
-- judges @324b81d7: writing PASS, story PASS, technical PASS (1 finding see instances/ae101--module--run-the-first-experiment.technical.json), behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--module--run-the-first-experiment.strategy.json), slides PASS
+**Quality:** compendium-audited 2026-09-28 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@17446703 pedagogy@3bc472a1 strategy@324b81d7 slides@3bc472a1)
+- judges @3bc472a1: writing PASS, story PASS, technical PASS (1 finding see instances/ae101--module--run-the-first-experiment.technical.json), behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--module--run-the-first-experiment.strategy.json), slides PASS
 - cross_module @08946dd8: PASS — set=[earn-the-trust,run-the-first-experiment]; 1 pair, 0 blocking; see instances/ae101--module-set--m3-m4.cross_module.json
 - cross_module @fb797e3b: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 

@@ -1,25 +1,25 @@
 {
   "class": "slides",
   "file": "curriculum/lectures/the-agent-loop.md",
-  "body_sha": "fd715b89da2247f51be22967fb0933da83d7cba72a2c3914df4c09bbba88b8d3",
-  "shape_hash": "833e6069ce058654",
-  "verdict": "PASS",
   "training": "ae101",
+  "verdict": "PASS",
+  "body_sha": "5c15280e6b1dbff14a88861b6e108b0507bd7a757dfda047aedf1d4fc08e5f06",
+  "shape_hash": "833e6069ce058654",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "The agent loop (H1)",
-      "lines": "1-1"
+      "heading": "<H1/lede> The agent loop",
+      "lines": "1-2"
     },
     {
       "index": 1,
       "heading": "See the loop in your live session",
-      "lines": "3-18"
+      "lines": "3-16"
     },
     {
       "index": 2,
       "heading": "The agent, the harness, the loop",
-      "lines": "19-26"
+      "lines": "17-24"
     }
   ],
   "rules_evaluated": [
@@ -28,130 +28,154 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Chunk 0 (line 1) names 'The agent loop' as the file's own subject, reused chunk 1 line 3 ('See the loop') and chunk 2 lines 19/22/24/25 -- chunk-0-lede-noun carve-out. Chunk 1 resolves in-chunk: current line 5 reads 'Dig into whatever catches you.' (post 2026-08-30 edit, dropped 'Three prompts.'); 'this session' (lines 11, 15, and inside the expanded line-17 prompt) is the student's own live-session deixis, established by the header 'in your live session' (line 3); 'the same set' and 'the list you gave me earlier' (inside the expanded line-17 prompt -- current text confirmed via `node scripts/expand-md.js curriculum/lectures/the-agent-loop.md`: 'Explain how you know what tools you can call in this session. Then explain how MCP-connector tools get injected into the same set. Last, tell me whether any of them are deferred until you need them, and what that means for the list you gave me earlier.') resolve to the tool list line 13's prompt asks Claude to produce -- same chunk, prior prompt in the sequence. Chunk 2 resolves in-chunk: 'that iteration' (line 24) -> 'Each iteration' (line 22); 'this same loop' (line 25) -> 'The agent loop' just named (line 24). Closest candidate, unaffected by the wording edit: the expanded line-9 prompt ('Draw the agent loop as an ASCII diagram. Name the harness, the LLM, the tool-call step, and how tool results feed back to the LLM.') names 'the harness' one slide before its own bolded definition at line 23 -- forward reference in raw-file order. Stays inside: that sentence addresses the student's own live Claude Code session (a copy-paste instruction the tool answers, not prose the human reader must parse unaided), and the maintainer's 2026-08-25 note (line 31) explicitly forbids reordering back to anatomy-first. Filed as a rule-question in `notes`, not a REVISE.",
+      "evidence": "chunk 1 \"See the loop in your live session\": line 5 \"Ask for the loop as a diagram.\" -- \"the loop\" resolves to chunk 0's H1 (line 1 \"The agent loop\"), the chunk-0 lede/title-noun-reuse carve-out; line 13 \"Ask how the agent knows what tools it can call.\" -- \"the agent\" is arc-earned spine vocabulary: `grep -ic \"\\bagent\\b\"` on the three prior M1-M3 module files this M4 lecture follows returns getting-going.md=10, plan-mode-done-right.md=16, earn-the-trust.md=10, plus prework.md=7 -- the term is established long before this file.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "`grep -niE 'the opening lecture|the previous module|earlier lecture|earlier module|at the top of this|see below'` on lines 1-26 -> 0 hits. Only other-product mention is named, not located: 'Claude Code is one harness; Cursor, Cline, Gemini CLI are others.' (line 23) -- four parallel named examples of the defined term, not a callback to another file's content.",
+      "evidence": "grep -inE 'the opening lecture|earlier module|the previous (lecture|module)|that (module|lecture) said' on the body (lines 1-24) -> 0 hits; no cross-file positional callback present.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "`grep -niE 'the (bug|ticket|pr|diff|test|run) you (did|saw|caught|ran)'` on lines 1-26 -> 0 hits. Line 15's current wording ('Ask how the agent knows what tools it can call.', replacing the pre-2026-08-30 'Ask where that list comes from.') is a forward investigate-now instruction, not a claim about a completed prior beat -- no backward-reference construction anywhere in the body.",
+      "evidence": "grep -inE '\\bthe [a-z-]+ you (did|saw|caught|ran|sent)\\b' on the body (lines 1-24) -> 0 hits; the file contains no backward \"the X you did/saw\" phrasing at all.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Chunk 1 carries three complete live-prompt widgets plus framing sentences (lines 3-17). Chunk 2 carries four complete, distinct definitional bullets (lines 22-25). `node scripts/check-slide-size.js --file curriculum/lectures/the-agent-loop.md` -> 'files: 1  slides: 2  limits: 210 words / 6 bullets' / 'oversized: 0' (exit 0), confirming both chunks carry real measured content. Neither is a bare wait-state or single context-dependent bullet.",
+      "evidence": "chunk 1 (lines 3-16) carries three complete ask+prompt pairs, each self-carrying (\"Ask for the loop as a diagram.\", \"Ask what tools this session is carrying.\", \"Ask how the agent knows what tools it can call.\"); chunk 2 (lines 17-24) carries four definitional bullets. Neither chunk is a bare wait-state or single context-dependent bullet.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Chunk 1 header 'See the loop in your live session' (line 3) truthfully covers all three prompts under current wording (draw it, list tools, explain how the agent knows what tools it can call) -- live introspection of the loop in the student's own session. Chunk 2 header 'The agent, the harness, the loop' (line 19) names exactly the three terms bullets 1-3 (lines 22-24) define; bullet 4 (line 25) extends 'the loop' rather than contradicting the header.",
+      "evidence": "chunk 2 header (line 17) \"The agent, the harness, the loop\" -- the chunk's three defining bullets (lines 20-22) each define exactly one of the three named terms in that order; the header is a literally true summary of its own content.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "`grep -nE 'Not .*\\. Not .*\\.'` on the file -> 0 hits (none in body region 1-26 either way). No anaphora/epistrophe triple -- line 24's 'Prompt -> reason -> tool calls -> results -> reason again' is one arrow-chain of distinct stages, not rhetorical repetition. No self-grading superlative anywhere in lines 1-26. No number-with-retraction ('Four parts' line 22 is a plain unretracted count; the prior 'Three prompts' count at line 5 was cut in the 2026-08-30 edit, not retracted-in-place). No abstraction-noun stack. Verb-triplet check on line 23 ('exposes tool definitions to the LLM, executes the tool calls, and feeds results back in') -- all three verbs survive 'what does this concretely mean?' alone, no empty leg. Line 25 (current, post 2026-08-29 caveat-clause deletion): 'A long-running session is this same loop, iterated. The loop keeps choosing the next step from context and tool results, hour after hour.' -- no tic.",
+      "evidence": "Checked lines 20-23 against every sub-item: no \"Not X. Not Y. Z.\" construction; no anaphora/epistrophe triple; no self-grading superlative; no number-with-its-own-retraction; no abstraction-noun stack (concrete nouns throughout: \"context\", \"tools\", \"tool calls\"); line 21's verb triplet \"exposes tool definitions to the LLM, executes the tool calls, and feeds results back in\" -- all three verbs answer \"what does this concretely mean?\" on their own, none is an empty leg.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "`grep -niE '\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|forcing function|\\bbeat\\b|\\bmood\\b|\\bconnections\\b'` on the file -> hits only at lines 31, 33, 40, 50, 66, 81, 82, 90, 100, 103, 106 -- all inside the maintainer/backing blocks (body region ends line 26), zero in body. `<!--tier:3-->` (line 20) is an HTML comment, never rendered visible text on a projected slide. 'agent harness' (line 23) and 'agent loop' (lines 19, 24) are the taught vocabulary this lecture exists to install, not backstage authoring dialect.",
+      "evidence": "`grep -inE 'surface|firing|compendium|forcing function|\\bbeat\\b|\\bmood\\b|Connections' curriculum/evals/body-views/ae101--lecture--the-agent-loop.body.txt` -> 0 hits. \"harness\" (lines 17, 21) is Anthropic's own glossary term (`code.claude.com/docs/en/glossary`, cited in the file's own backing block), not repo-internal maintainer dialect.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Chunk 1 (lines 3-18): no `**` present -- matches the maintainer's note (line 29) that the live-session prompts slide 'carried no bold and is untouched,' still true after the 2026-08-30 wording trim (that edit touched lines 5 and 15, neither bolded before or after). Chunk 2 (lines 19-26): exactly 3 bold spans, one per defined term (**agent**, **agent harness**, **agent loop**), each <=2 words; bullet 4 (line 25) deliberately un-bolded. Maintainer accept-note (line 29, dated 2026-07-09, done explicitly 'per check_slides.md §9') covers this exact shape -- accept-note applied, not re-flagged.",
+      "evidence": "lines 20-22 each bold exactly one term as a sub-span (**agent**, **agent harness**, **agent loop**, all <=2 words); line 23 carries no bold. <=1 bolded element per line/slide, all are coined-term handles. Matches the maintainer's dated \"Emphasis pass\" note (line 30): \"bold = the three defined terms as sub-spans... the fourth bullet and the prompts slide carry none.\"",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Both `##` sections sit directly under the H1 with no prework/supplementary/reference wrapper between them -- a plain `curriculum/lectures/` file, reached via `.phase--lecture` in `buildDeckModel` (`site/layouts/slides.js` line 258: `root.querySelectorAll('.phase--lecture, .phase--exercise')`). `node scripts/check-slide-size.js --file curriculum/lectures/the-agent-loop.md` -> 'files: 1  slides: 2  limits: 210 words / 6 bullets' / 'oversized: 0' (exit 0), confirming the tooling sees exactly 2 slides matching the 2 body `##` headings -- nothing silently absent from the deck model.",
+      "evidence": "`node curriculum/evals/scripts/derive-body-view.js curriculum/lectures/the-agent-loop.md` signals.slide_count=2, confirming both `##` chunks are counted into the composed deck. File is under `curriculum/lectures/` and wired into `run-the-first-experiment.md § Start here` per the maintainer's dated Promotion note (line 34), which composes lectures inside `.phase--lecture`.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/the-agent-loop.md` -> 'OK — 1 files, no page-geometry pointers across the slide cut.' (exit 0). `grep -niE 'above|below|further down|at the top of this|see below'` on the file -> hits only at lines 31, 66, 81, 82, 100 -- all in the maintainer/backing blocks past the body cut (line 26), zero in body.",
+      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/the-agent-loop.md` -> \"OK -- 1 files, no page-geometry pointers across the slide cut.\"",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
-      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "rule_lead": "Slide size -- 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/the-agent-loop.md` -> 'files: 1  slides: 2  limits: 210 words / 6 bullets' / 'oversized: 0' / '✓ every slide is within limits' (exit 0). The 2026-08-30 edit shortened line 5 by one clause and swapped line 15 for a same-length sentence -- net word count moved further under the cap, not toward it.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/the-agent-loop.md` -> \"files: 1  slides: 2  limits: 210 words / 6 bullets  oversized: 0 -- every slide is within limits\".",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Chunk 2 header 'The agent, the harness, the loop' (line 19) is a catalogue entry naming its subject -- same shape as the compendium's own cleared examples ('Ralph', 'The numbers'): names the three terms the slide defines, asserts no claim about them. Chunk 1 header 'See the loop in your live session' (line 3) is an orientation/walk header directing the reader into a sequence of live investigate-prompts, same shape as the cleared 'You are here' / phase-label-inside-a-walk carve-outs. Neither chunk is a law/consolidation beat where the claim requirement binds.",
+      "evidence": "Both headings -- line 3 \"See the loop in your live session\" and line 17 \"The agent, the harness, the loop\" -- are catalogue-style headers naming their subject, matching the rule's explicit non-violation carve-out (\"catalogue entries naming their subject\", e.g. \"Ralph\", \"The numbers\"), not bare imperative-exercise labels owing a claim.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 16,
-      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "rule_lead": "A bullet earns its slot or dies -- three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Chunk 1 has no `-` bulleted lines to test -- prose + prompt widgets only. Chunk 2's four bullets each add distinct defining content (agent / agent harness / agent loop / long-running-session-is-the-same-loop). Bullet 4's current wording ('A long-running session is this same loop, iterated. The loop keeps choosing the next step from context and tool results, hour after hour.', post 2026-08-29 caveat-clause deletion) still adds the scaling claim the maintainer names as 'the ONLY new content -- the M4-fit line' (line 33) beyond bullets 1-3, not a restatement of bullet 3's 'reason again, until the agent decides to stop.' No bullet closes with an aphorism restating its own header; none is self-referential design commentary about the training's own pedagogy. No candidate for any of the three low-value classes.",
+      "evidence": "Lines 20-23: each bullet adds a distinct object -- the agent definition, the harness definition, the loop definition, the long-running-session extension. None is doctrine restatement (nothing here already did its work earlier in the file), self-referential design commentary about the training's own pedagogy, or an aphorism kicker restating a header/point line.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "`git diff c0c37913..HEAD -- curriculum/lectures/the-agent-loop.md` touches only the maintainer and backing blocks (lines 27-109); no `##` heading text changed in this window, so there is no retitle event for the bullets to re-earn against.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
@@ -162,8 +186,8 @@
       "na_reason": "no guess/predict-before-reveal construction present -- all three prompts are investigate-and-observe (run it, see what comes back), never a guess-first-then-check structure",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "011557d3263039514f87a27e04dc661ae83bb05d3ccb2d80b6f8abe14e20d7b0",
-      "carried_shape": "1903646330181a65"
+      "carried_from": "fd715b89da2247f51be22967fb0933da83d7cba72a2c3914df4c09bbba88b8d3",
+      "carried_shape": "833e6069ce058654"
     },
     {
       "compendium": "check_slides.md",
@@ -174,8 +198,8 @@
       "na_reason": "no `## Phase N:` / `## N.` step headers present -- both `##` headings are plain titles, not content ordinals (confirmed: `node scripts/check-slide-numbering.js --file curriculum/lectures/the-agent-loop.md` -> 'OK — 1 files, Phase/Step numbering consistent.', exit 0)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "011557d3263039514f87a27e04dc661ae83bb05d3ccb2d80b6f8abe14e20d7b0",
-      "carried_shape": "1903646330181a65"
+      "carried_from": "fd715b89da2247f51be22967fb0933da83d7cba72a2c3914df4c09bbba88b8d3",
+      "carried_shape": "833e6069ce058654"
     },
     {
       "compendium": "check_slides.md",
@@ -186,19 +210,12 @@
       "na_reason": "no in-body links present -- `grep -n '\\]('` on lines 1-26 -> 0 hits (signals.has_urls: false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "011557d3263039514f87a27e04dc661ae83bb05d3ccb2d80b6f8abe14e20d7b0",
-      "carried_shape": "1903646330181a65"
+      "carried_from": "fd715b89da2247f51be22967fb0933da83d7cba72a2c3914df4c09bbba88b8d3",
+      "carried_shape": "833e6069ce058654"
     }
   ],
+  "suggestions": [],
   "blocking_findings_count": 0,
-  "accept_notes_found": [
-    "L29: Emphasis pass (2026-07-09, Antti-directed) — bold reduced to 3 term sub-spans (agent/agent harness/agent loop) explicitly per check_slides.md §9; 4th bullet de-bolded; the live-session prompts slide carries no bold.",
-    "L31: Slide order flipped (2026-08-25, Antti-directed) — prompts slide now leads, definitional slide follows tagged T2; H1 attested to carry the 'the loop' referent for the reordered opening slide; 'Do not restore anatomy-first.'",
-    "L48: Plural round shape (Antti-directed, 2026-08-01, stamp: parallel-tool-calls) — bullets 1 and 3 deliberately pluralized to match bullet 2's always-plural phrasing, so the deck never shows a serial tool-call machine; relevant to rule 7's verb-triplet check."
-  ],
-  "notes": [
-    "Rule question for the maintainer (check_slides.md §1, not filed as REVISE): the expanded line-9 prompt ('Draw the agent loop as an ASCII diagram. Name the harness, the LLM, the tool-call step...') names 'the harness' one slide before its own bolded definition at line 23 -- a forward reference in raw-file order, unchanged by the 2026-08-30 edit (which touched only lines 5 and 15's wording, not slide order or the diagram-prompt text). Judged PASS because the text addresses the student's live Claude Code session (a copy-paste instruction the tool answers, not the human reader's own comprehension), and the maintainer's 2026-08-25 note (line 31) explicitly forbids restoring anatomy-first. If discovery-before-definition sequencing like this is meant to be a standing pattern in AE101, it may be worth a named carve-out in check_slides.md §1 rather than leaving each judge to make the harm call fresh.",
-    "Re-judged against a newer body than the previous slides instance: commit 9a6d906e (2026-08-30) trimmed line 5 ('Three prompts. Dig into whatever catches you.' -> 'Dig into whatever catches you.') and swapped line 15's investigate prompt ('Ask where that list comes from.' -> 'Ask how the agent knows what tools it can call.'). Both are wording-only, same line count, same `##` structure -- shape_hash unchanged (1903646330181a65), so the prefill's three N/A rows (4, 11, 13) carried forward correctly; every non-N/A row above was independently re-verified against the current text rather than carried from the prior instance."
-  ],
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "Rules 4, 11, 13 are parked N/A in the prefill sidecar (833e6069ce058654) and are not re-derived here per the completeness contract. Diff against pin c0c37913 shows only dated maintainer/backing-block edits (Quality line refresh, wording tightened on several notes) -- body (lines 1-24) is byte-identical to the last slides-passed version, consistent with re-confirming PASS rather than a fresh defect surface."
 }

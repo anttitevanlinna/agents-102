@@ -1,18 +1,28 @@
 {
   "class": "story",
-  "training": "ae101",
   "file": "curriculum/lectures/the-far-half.md",
+  "training": "ae101",
   "verdict": "PASS",
-  "body_sha": "4002cee832c2d261518673423bc029e026b3bc344f953093f7e7b737dba1238d",
+  "body_sha": "d3cf714bfcb77901e858149b1e85a2420983a4fa86a4c00f38342bd7635126ff",
   "shape_hash": "2c6fd3c5effad6a7",
-  "module_mood_contract": "curious readiness — \"I've built enough to try something; let's see what the agent does with it.\" Stakes back in the room; no compliance framing. (bosser-strategy:content-strategy-agentic-engineering-101.md § M4 in detail, line 370, read directly via the bosser-strategy skill this session.)",
+  "module_mood_contract": "curious readiness — 'I've built enough to try something; let's see what the agent does with it.' Stakes back in the room; no compliance framing. (bosser-strategy:content-strategy-agentic-engineering-101.md § M4 in detail, line 384.)",
+  "trace_status": "regenerated",
+  "mood_summary": {
+    "phase_scores": [
+      8
+    ],
+    "close_score": 8,
+    "any_below_8": false,
+    "stealing_the_mood": []
+  },
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Placement diagnostic: this is a ceiling-showing opener (figure reveal, line 5, plus the one bullet at line 7 naming there is more territory ahead), not a pattern-naming closer, so it belongs at the front per the rule's own text. Re-verified this session: `curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md` line 29 (opening question) → line 31 (\"The map has a far side. Before the first long session, see the country you are entering.\") → line 33 links this lecture, before `the-agent-loop.md` (35), `test-and-learn.md` (37), and the `walk-and-send-off.md` exercise (39). Opener slot confirmed at current line numbers.",
+      "evidence": "L1-15 is not a meta-frame lecture naming a pattern the student already lived through — it is a map-reveal container opening M4 (maintainer 'Placement (intended)': 'M4 open, the far-half ... map reveal'). Diagnostic: showing a ceiling (opener) vs naming a pattern (closer) vs teaching vocabulary (mid-module). This is the showing-a-ceiling shape — it orients the student to what governs the coming session before they run it, which the rule names as opener-legal.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +31,8 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Ran this session: `grep -nE 'M[0-9]|Module [0-9]' curriculum/lectures/the-far-half.md` → hits only at lines 19,23,25,27,31,46,71 — all inside the maintainer/backing block; body_regions (derived view) = [[1,16]] only, zero hits inside it. The only forward/backward body language is map-position phrasing (\"The map lights its other side now\", line 7; \"the far half opens\", line 3 header), which the rule's carve-out exempts verbatim (\"Map-position refs = spine-anchoring, not sequencing — stay\").",
+      "evidence": "grep -nE 'M[0-9]' on the raw body (L1-15) -> 0 matches (checked this session). No module numbering or forward-reference to a specific module N in student-facing text. 'this module' (L7) names the current module only, not a cross-module pointer. Map-position ref 'the far half of the map' (H1) is spine-anchoring per the rule's own carve-out, not sequencing.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -30,7 +41,8 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Re-fetched current wording this session via `rule.js lectures 4` (carries the 2026-09-03 bare-arc-label addition). Two headers: (1) 'Back to the map: the far half opens' (line 3) — orientation-shaped; carve-out covers it (file is part of the map family per backing block's sibling-copies note), ration-of-one respected, and it is not a bare arc label ('Wrap-up', 'Recap' etc.) so the new 2026-09-03 clause doesn't reach it. (2) 'Long-running work adds three new concerns' (line 9) — squints to a real claim; truth holds because exactly three concerns are defined underneath (Verification line 12, Absorption line 13, Outcome line 14); the fifth bullet (line 15, the carried trust question) asks about the three rather than adding a fourth, so it doesn't falsify the header's count. No duplicate headers, no em-dash (em_dash grep on body: 0 hits, planted_proof true).",
+      "evidence": "Two headers. H2 'Long-running work adds three new concerns' (L9) names the concept directly -- squint pass: cover the bullets, the header still tells you what you walk away holding (three new concerns on long-running work), and it is true of the body (Verification/Absorption/Outcome are exactly three concerns). H1 'Back to the map: the far half opens' (L3) is an orientation header (position, not concept) -- legal per the rule's carve-out ('orientation ... carries position not concept, rationed to ONE beat per arc lecture'); this file uses exactly one such beat. No two slides share a header; no em-dash-shaped or category-error claims present.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -39,7 +51,268 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Ran this session: `node scripts/check-slide-size.js --file curriculum/lectures/the-far-half.md` → 'slides: 2  limits: 210 words / 6 bullets  oversized: 0', '✓ every slide is within limits', exit 0. Per-slide bullet count by direct read: slide 1 (lines 3-7) = 1 bullet; slide 2 (lines 9-15) = 5 bullets, inside the 6-bullet ceiling.",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/lectures/the-far-half.md --report (run this session): slide 1 'Back to the map: the far half opens' = 23 words / 1 bullet; slide 2 'Long-running work adds three new concerns' = 166 words / 5 bullets. Both under the 210-word / 6-bullet ceiling. Tool reports 'oversized: 0'.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 1,
+      "rule_lead": "Walk-away test (M2+).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "lecture container, no exercise/agent-run beat for a student to walk away from",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 2,
+      "rule_lead": "50% magic rule (M3–M8).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "cross-module magic-moment ratio; not scored at a single lecture's grain",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 3,
+      "rule_lead": "Trust the agentic design — no human backstops.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no agent flow or human-backstop language in this lecture; container/orientation only",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 4,
+      "rule_lead": "Quality ladder.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "quality-ladder scoring is a cross-file editorial call, not a per-rule story-class check",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 6,
+      "rule_lead": "One exercise = one bounded activity.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "this is a lecture file, not an exercise; no sub-numbering to check",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 7,
+      "rule_lead": "Modules composable across variants.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "AE101-only shared-library file with no variant markers or forks present to check",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 8,
+      "rule_lead": "Three-level completeness.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "orientation lecture produces no runtime/sendable artefact; nothing to test for stranger-readability",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 9,
+      "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "lecture names governors once each; no read/spot/judge LO claimed here to test for n>=2 contrast",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "9b",
+      "rule_lead": "Progression-with-variations is the spine.",
+      "verdict": "PASS",
+      "evidence": "The engine-map figure is a load-bearing model re-shown across modules (the-whole-map.md, this file, the-loop-half-filled.md, composing-the-workflow.md) -- the maintainer block names the reuse explicitly ('Map figure ... derived from the-whole-map.md's canvas', L22-34) and the model/law carve-out in this rule permits re-showing a load-bearing model across modules as dosage, not a spent reveal. It re-instantiates with a fresh worked instance (near-half veiled/DONE vs far-half lit/AHEAD captions) rather than an identical copy, and it is self-sufficient at this placement -- the two caption strips (L-region of the figure, per maintainer note) define NEAR/FAR for a reader meeting the map cold here.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 10,
+      "rule_lead": "Student agency — adults decide.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no forced-pacing or 'sit N minutes' language; container has no student-facing choice to gate",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 11,
+      "rule_lead": "Delegation — student brings, Claude screens.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no delegation-shaped step (no 'ask Claude to X' instruction) in this lecture",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 12,
+      "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "lecture, not an exercise; no phases to split",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 13,
+      "rule_lead": "Artifact-realism check.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no named tool/skill/connector/path in the body to check for existence/access",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 14,
+      "rule_lead": "Teach principle + technique — default.",
+      "verdict": "PASS",
+      "evidence": "Verification/Absorption/Outcome (L12-14) are each given a one-clause WHY (what they determine) rather than invoked as unexplained nouns to be used -- this is orientation/naming, the rule's own 'not in scope' carve-out ('naming neighbouring elements so a student can LOCATE the move ... is a map, not a technique'). Nothing here asks the student to USE an unexplained term.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 15,
+      "rule_lead": "Auto-fire sim+eval after significant rewrite.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "orchestrator-facing process rule, not a text property of the file to score",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 17,
+      "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no external-tooling dependency named in this lecture",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 18,
+      "rule_lead": "Personal-first, team promotion via human conversation.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no save/promote-to-team instruction in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 19,
+      "rule_lead": "Measure silent failure, not just friction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "cohort-evaluation methodology rule; not a property of this file's text",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 20,
+      "rule_lead": "Don't pre-set categories before experiment runs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "research/evaluation-design rule, not applicable to a container lecture's body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 21,
+      "rule_lead": "Verification layers sample DIFFERENT error distributions — not belt-and-braces.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "about the eval system's own verification layers, not this file's content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "21b",
+      "rule_lead": "Cheap-before-expensive verification ordering.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "about the eval system's tier ordering, not this file's content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 22,
+      "rule_lead": "Rule in memory without forcing function = worse than no rule.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "about compendium/memory hygiene, not this file's student-facing text",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 23,
+      "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "about generation-session discipline, not a property of the shipped file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 24,
+      "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
+      "verdict": "PASS",
+      "evidence": "Delivery mode is 'In-room opener, projected' (maintainer L37 region) with a 4-minute container target -- consistent with trainer-paced projection, not a student-execute step with independent timing. No student action/exercise here to desync from trainer pace.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 25,
+      "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block format matches: no host-skill (agentic-nerd/Teacher Claude) mentioned anywhere; the block's push-back-shaped content (e.g. 'Container discipline', 'Placement') is written to a maintainer/trainer, not framed as 'Nerd push:' or dual-actor table cells.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 26,
+      "rule_lead": "Reflection beats: in-chat over file-write.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no file-write instruction of any kind in this lecture",
       "fix_hint": null,
       "blocking": false
     },
@@ -48,7 +321,908 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Ran this session: `grep -inE 'discuss|share with|neighbor|neighbour|tell the room|pair up|turn to' curriculum/lectures/the-far-half.md` → 0 matches, exit 1. All five body bullets stay on the WORK (the map, the three concerns, the carried question). The trust question (line 15) addresses the individual student's own carried question, never an instruction to talk to or compare with anyone else.",
+      "evidence": "Body (L1-15) contains no conversation-authoring cue -- no 'discuss with', 'share with your neighbor', 'tell the room', no pause-cue sentence. Every sentence is about the work (the map, the three governors, the trust question the student carries into the session) rather than cohort management. grep -nE 'discuss|neighbor|share with|tell the room|pair up' on the body -> 0 matches (checked this session).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 29,
+      "rule_lead": "Eval = fixed yardstick; thing measured learns.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "about the eval system's own scoring discipline, not this file's content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 30,
+      "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no student-reads-Claude's-output-for-correctness instruction in this container lecture",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 31,
+      "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Claude self-report or self-critique prompt in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 32,
+      "rule_lead": "Offered structures need forced-engagement mechanic.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no offered structured output (defaults, plan) in this lecture",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 33,
+      "rule_lead": "Source-type blindness on ingestion.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no heterogeneous-source-folder ingestion step in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 34,
+      "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no task-selection criteria authored in this lecture (that lives in the exercise files)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "34b",
+      "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block's hedged notes (e.g. Stance's 'contested'/'decided' rows, L69-73) read as load-bearing research-provenance tracking, not a disclaimer propping up a section whose premise would collapse without it -- removing the hedge from e.g. the 'decided: the per-run framing stays' row (L71) leaves a defensible, still-true claim about audience scope, not a section that falls apart.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 35,
+      "rule_lead": "Audience tier determines authoring substrate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "AE101 file already on the engineer substrate (plain body prose, no install affordance to check)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs smoke-test before trust.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no verification machinery (hook/judge/loop/eval/gate) authored or referenced in this lecture's body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no context-loading-tier teaching beat in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 39,
+      "rule_lead": "Removals are strategic — ask before cutting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "judge-side discipline for generation sessions, not a property to score against the shipped body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 41,
+      "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "AE101 is Code-only; no dual-runtime fork in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 42,
+      "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no platform-feature-dependent move (concurrent sessions, plan mode, plugin install) in this container lecture",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 43,
+      "rule_lead": "Eval architecture — partition by evidence source, not criterion count.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule governs the eval system's own architecture, not this file's content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 44,
+      "rule_lead": "Plug points + UX.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no ## Plug Points section and no student-executed prompt sequence in this lecture",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 45,
+      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "lecture, not an exercise; no maintainer leap-test slot owed here",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 47,
+      "rule_lead": "Per-phase failure mode + escape hatch.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no forcing function / phase structure in this container lecture to need a failure-mode + escape-hatch pair",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 48,
+      "rule_lead": "Heavy fan-out prompts get body recovery callout.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt of any kind, fan-out or otherwise, in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 49,
+      "rule_lead": "Save belongs with authoring, not loading.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no create/use exercise pair or save/install step in this lecture",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 50,
+      "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 51,
+      "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt in this file to be deliberate-antipattern or otherwise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 52,
+      "rule_lead": "Session widget — `**Session** *(verb, \"name\")*` shape; place by learning flow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Session widget in this file (grep for '**Session**' -> 0 matches this session)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52b",
+      "rule_lead": "Widgets carry semantics, not just emphasis — match the widget to MEANING, never to how loud it renders.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no widget (Session/HOX/Note) present in this file to mismatch",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52a",
+      "rule_lead": "Module prose carrying a `**Session**` widget or a `{{prompt:}}` fence is an exercise that has not been extracted.",
+      "verdict": "PASS",
+      "evidence": "grep -nE '\\*\\*Session\\*\\*|\\{\\{prompt:' on the raw body -> 0 matches (checked this session; the only fence marker is `{{figure:map-engine-m4-open}}` at L5, a diagram include, not a prompt or session widget). No unextracted exercise present.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52c",
+      "rule_lead": "Exercise lead-in trio — three slots, three tenses.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "lecture, not an exercise; no **What you do:**/**What you build:**/**The point:** trio owed here",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52d",
+      "rule_lead": "Finding the point — four moves, learned writing M1's set.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule governs an exercise's **The point:** slot; this lecture has none",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 53,
+      "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt anywhere in this file for body prose to pre-answer",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 56,
+      "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no audit finding being fixed in this file; not an applicable surface",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 57,
+      "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no new mid-arc mechanic (multi-session, worktree) introduced in this lecture",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 58,
+      "rule_lead": "`/clear` = tool, not ceremony.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no /clear or session-close discipline discussed in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 59,
+      "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no reference-page restructuring at play; this file is not being renamed/merged/split",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 60,
+      "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
+      "verdict": "PASS",
+      "evidence": "This review scanned this rule set at the file (lecture) grain the story-class brief names, not rolled up to module or training level.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 61,
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no SKILL.md/framework/tool-change proposal is at issue for this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61a",
+      "rule_lead": "Acting on a flagged item ... verify before fixing.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "judge-process rule for acting on prior flagged findings; no such finding is being actioned in this pass",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61b",
+      "rule_lead": "An audit's card-shaped findings are discharged by CARDS, not by notes about them.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "orchestrator-side authoring discipline; not scorable against this file's own text as a read-only judge",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 62,
+      "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt-adjacent callout in this file (no prompts present at all)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 63,
+      "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "this file carries no persistent-TODO punchlist bullet being actioned",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 64,
+      "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
+      "verdict": "PASS",
+      "evidence": "The maintainer block's cross-cutting mechanics are pointers, not restatements: 'Per theory-plan.md § Slide format ... + check_slides.md §9' (L24-25), 'Per module-shape.md' territory implied by STATUS line pointing at theory-plan.md (L27-28). File-unique content (figure-derivation deltas, dated decision notes, the source/stance ledger) stays local as the rule requires; no delivery-architecture fact is duplicated in prose here instead of pointed to.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 65,
+      "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prerequisite-artefact rescue scenario authored in this container lecture",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 66,
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "build-process rule for authoring sessions; not a property of the shipped file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 67,
+      "rule_lead": "Story and depth are judged per big learning that develops, never per feature that recurs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "this rule scopes a whole-training judgment (named big learnings across the arc); not evaluable against one container lecture in isolation",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 6,
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 7,
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 11,
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 12,
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 13,
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 14,
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 15,
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 18,
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 19,
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 20,
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 21,
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 22,
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 25,
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 26,
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 27,
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 29,
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 30,
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 32,
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 33,
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 34,
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 35,
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 37,
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 38,
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 39,
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 40,
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 41,
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 42,
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 44,
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 45,
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 46,
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 47,
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 48,
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 49,
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fenced prompt / {{prompt:}} marker in this lecture (signals.has_prompt_blocks: false; grep confirmed 0 matches)",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,16 +1231,18 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Beat classification: TEACHING beat (defines three new concepts), so the 8+/10 floor applies. Persona trace at curriculum/evals/sim-cache/ae101--lecture--the-far-half.persona.json was stale by content_sha (its full-file sha predated the 2026-08-29 maintainer-block edit; the raw body it described — two slides, five bullets, the folded-in trust question — is byte-identical to the current body, confirmed by direct read this session) — updated content_sha/phase_sha to the current full-file sha (ab7f2776...) rather than re-simulating, since the underlying body text is unchanged. Scores: phase 8/10, close 8/10, both at floor. Closest-to-violating lines, and why they stay inside: the Absorption bullet (line 13) is the most abstract of the three governors with no concrete grounding clause the way Verification and Outcome have — trace still holds it at 8, not a drop, because the definition itself is still a complete, parseable claim, just the least vivid of the three; and the trust question (line 15) now closes a five-bullet slide instead of opening its own beat (post the 2026-08-29 third-slide cut) — trace notes it costs 'a small deliberate re-read' rather than landing automatically, but still resolves at 8 because the register shift (defining → asking) is legible on that re-read and the cut itself removed content that was genuinely redundant with `test-and-learn.md` (verified this session, see rule 4 evidence below). Neither drops the score below the 8-floor. Mood contract 'curious readiness' verified directly against `content-strategy-agentic-engineering-101.md` line 370 this session via the bosser-strategy skill.",
+      "evidence": "trace module_mood_contract: 'curious readiness ... Stakes back in the room; no compliance framing' (bosser-strategy:content-strategy-agentic-engineering-101.md line 384). trace.phases[0].mood_score=8, trace.close.mood_score=8 -- the single beat is a TEACHING beat (names the three governors + the trust question the student carries forward), mood-floor 8+/10 applies and is met both mid-beat and at close. Draft honours rather than flattens the mood: the persona leaves 'oriented and mildly charged, not lectured-at' (trace.close.mood_note), matching curious readiness rather than resolving it early.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Closing question (line 15) is 'what makes you trust the result at the end?' — a not-knowing framing, never a having-done-wrong one. Banned-word and ritual/ceremony greps on body both CLEAN (planted_proof true, 0 hits). Matches the strategy doc's own instruction for this mood: 'Stakes back in the room; no compliance framing' (line 370, verified this session).",
+      "evidence": "The closing question (L15) is not-knowing framed -- 'what makes you trust the result at the end?' -- with no shame/blame register anywhere in the body. trace.close.mood_note confirms 'not lectured-at'.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -75,7 +1251,8 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "The three governor bullets (lines 12-14) each lead with the positive discipline name, bolded first: '**Verification** tells you...', '**Absorption** determines...', '**Outcome** determines...'. Slide 2's header (line 9) uses the neutral 'concerns', not a failure word.",
+      "evidence": "Both headers (L3, L9) and all three governor names (Verification, Absorption, Outcome, L12-14) are positive disciplines, not failure words -- no 'fabrication', 'hallucination', 'failure' language anywhere in the body.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -84,27 +1261,178 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Re-read content-strategy-agentic-engineering-101.md § M4 in detail directly this session via the bosser-strategy skill (lines 356-380). Front-run check re-run against the current body: `grep -nE 'backpressure|0\\.85|convergence triad|principal.agent|hybrid.vs.autonomous' curriculum/lectures/the-far-half.md` → matches only at lines 25 and 37 (maintainer block), 0 in the body region — consistent with the maintainer's 'Container discipline' note (line 25: backpressure named at the M4 closer, not here). Module-to-module arc re-verified: `run-the-first-experiment.md` lines 29-39 (opening question → far-side framing → this lecture → agent-loop → test-and-learn → the exercise). Big Idea fidelity re-verified: `run-the-first-experiment.md` line 4, 'The session is how you find out what's missing' — the closing question (line 15) sets up exactly this discovery framing. Mood-doesn't-resolve-early: the closing question stays genuinely open post-cut; the deleted third-slide sentence ('goes off un-packaged, on purpose') restated `test-and-learn.md` lines 11-13 ('Session one goes now, un-packaged: no plan.md, no verifier, no reference artifact') verbatim in substance — confirmed by direct read of both files this session — so the cut removed duplication, not arc-load-bearing content. The renamed cross-reference in the maintainer block ('composing-the-workflow.md § The checking loop, drawn solid') was independently verified this session: the file exists at `curriculum/lectures/composing-the-workflow.md` and carries that exact `## The checking loop, drawn solid` heading at line 25, so the maintainer note's post-2026-09-02 pointer is accurate, not stale.",
+      "evidence": "Maintainer's 'Container discipline' note (L29-32) explicitly enforces the strategy-fidelity constraint in-file: 'No packaging law is named ... backpressure after the session starts; M5 builds and calibrates the checks; M6 composes them' -- the file self-documents that it does not front-run M5/M6's teaching moments. Body text carries no M-number front-run either (see check_lectures.md §3 evidence).",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
-      "compendium": "check_prompts.md",
-      "rule_index": null,
-      "judge_owned": true,
-      "rule_lead": "N/A — whole compendium",
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure.",
       "verdict": "N/A",
-      "evidence": "No fenced `**Prompt**` block or `{{prompt:...}}` marker anywhere in the file — confirmed this session: `grep -nE '\\*\\*Prompt\\*\\*|\\{\\{prompt:' curriculum/lectures/the-far-half.md` → 0 matches, exit 1 (matches signals.has_prompt_blocks: false). Drift-review requested for §2, §17, §20, §40: fetched all four at current wording via `rule.js prompts <N>` this session (§17 narrowed to plan-mode-only, §20 narrowed to advisory-only, both 2026-09-03; §2 and §40 unchanged in substance). All four, and every other rule in the 49-rule compendium, presuppose a prompt fence to bind to; none does here, so the narrowings change nothing for this file — N/A holds under both the old and current wording.",
+      "evidence": null,
+      "na_reason": "rule binds the strategy DOC's own content, not a curriculum leaf file being judged",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_workshop.md",
-      "rule_index": null,
-      "judge_owned": true,
-      "rule_lead": "N/A — whole compendium",
+      "rule_index": 1,
+      "rule_lead": "Group beat ≠ parallel solo work.",
       "verdict": "N/A",
-      "evidence": "No beat in this file produces an artefact belonging to a group rather than to the individual student — a solo-read container lecture (map reveal + three governor definitions + a question the student carries alone). The derived view's group_beat_markers signal fires only on the bare word 'team' at line 14 ('crosses the wall from you to the team'), which describes an individual's work eventually reaching the team, not a room-scale beat happening now — a false positive against check_workshop's own trigger (rule 1: 'remove the room — does the beat still produce the same artefact?' Yes here, so it is individual by the rule's own test).",
+      "evidence": null,
+      "na_reason": "solo-read container lecture -- no group/room beat, no attributed shared artefact; this rule's group-adjudication scope is absent",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 2,
+      "rule_lead": "The room's output is named as an artefact.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "solo-read container lecture -- no group/room beat, no attributed shared artefact; this rule's group-adjudication scope is absent",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 3,
+      "rule_lead": "React, don't author.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "solo-read container lecture -- no group/room beat, no attributed shared artefact; this rule's group-adjudication scope is absent",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 4,
+      "rule_lead": "Pre-built material is a hard prerequisite, stated in the module.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "solo-read container lecture -- no group/room beat, no attributed shared artefact; this rule's group-adjudication scope is absent",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 5,
+      "rule_lead": "Attribution is stated by a human, recorded verbatim.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "solo-read container lecture -- no group/room beat, no attributed shared artefact; this rule's group-adjudication scope is absent",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 6,
+      "rule_lead": "Nothing is written over.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "solo-read container lecture -- no group/room beat, no attributed shared artefact; this rule's group-adjudication scope is absent",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 7,
+      "rule_lead": "Filing is invisible.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "solo-read container lecture -- no group/room beat, no attributed shared artefact; this rule's group-adjudication scope is absent",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 8,
+      "rule_lead": "Scope-of-sharing is declared before contribution, not after.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "solo-read container lecture -- no group/room beat, no attributed shared artefact; this rule's group-adjudication scope is absent",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 10,
+      "rule_lead": "A decision beat needs a real constraint.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "solo-read container lecture -- no group/room beat, no attributed shared artefact; this rule's group-adjudication scope is absent",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 11,
+      "rule_lead": "Group decisions are human, and named as such.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "solo-read container lecture -- no group/room beat, no attributed shared artefact; this rule's group-adjudication scope is absent",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 12,
+      "rule_lead": "Retrospective = group round, no prompts, trainer silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "solo-read container lecture -- no group/room beat, no attributed shared artefact; this rule's group-adjudication scope is absent",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 13,
+      "rule_lead": "Second-facilitator test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "solo-read container lecture -- no group/room beat, no attributed shared artefact; this rule's group-adjudication scope is absent",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 14,
+      "rule_lead": "Name the too-big and too-small room.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "solo-read container lecture -- no group/room beat, no attributed shared artefact; this rule's group-adjudication scope is absent",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 15,
+      "rule_lead": "Mixed-experience is the default room.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "solo-read container lecture -- no group/room beat, no attributed shared artefact; this rule's group-adjudication scope is absent",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 16,
+      "rule_lead": "Room beats overrun; name the protected beat.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "solo-read container lecture -- no group/room beat, no attributed shared artefact; this rule's group-adjudication scope is absent",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 17,
+      "rule_lead": "No mechanical coverage — the trainer guide carries the load.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "solo-read container lecture -- no group/room beat, no attributed shared artefact; this rule's group-adjudication scope is absent",
       "fix_hint": null,
       "blocking": false
     },
@@ -117,8 +1445,8 @@
       "na_reason": "file opens M4 (curious readiness); rule scoped to M5-style contrast-mood pre-exercise lectures only",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "cf1984ec3f41bd81fa39cc0151f93e5a436fe07ceafff32ad745e55ad03dd146",
-      "carried_shape": "b7f7d6040e269cc4"
+      "carried_from": "4002cee832c2d261518673423bc029e026b3bc344f953093f7e7b737dba1238d",
+      "carried_shape": "2c6fd3c5effad6a7"
     },
     {
       "compendium": "check_lectures.md",
@@ -129,8 +1457,8 @@
       "na_reason": "no prompt blocks in file (signals.has_prompt_blocks: false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "cf1984ec3f41bd81fa39cc0151f93e5a436fe07ceafff32ad745e55ad03dd146",
-      "carried_shape": "b7f7d6040e269cc4"
+      "carried_from": "4002cee832c2d261518673423bc029e026b3bc344f953093f7e7b737dba1238d",
+      "carried_shape": "2c6fd3c5effad6a7"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -141,8 +1469,8 @@
       "na_reason": "no prompt fence in this lecture to hold or misplace a forcing function",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "cf1984ec3f41bd81fa39cc0151f93e5a436fe07ceafff32ad745e55ad03dd146",
-      "carried_shape": "b7f7d6040e269cc4"
+      "carried_from": "4002cee832c2d261518673423bc029e026b3bc344f953093f7e7b737dba1238d",
+      "carried_shape": "2c6fd3c5effad6a7"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -153,8 +1481,8 @@
       "na_reason": "lecture, not a module file — no ## Key Concepts section",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "cf1984ec3f41bd81fa39cc0151f93e5a436fe07ceafff32ad745e55ad03dd146",
-      "carried_shape": "b7f7d6040e269cc4"
+      "carried_from": "4002cee832c2d261518673423bc029e026b3bc344f953093f7e7b737dba1238d",
+      "carried_shape": "2c6fd3c5effad6a7"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -165,8 +1493,8 @@
       "na_reason": "lecture, not a module file — no ## Key Concepts section",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "cf1984ec3f41bd81fa39cc0151f93e5a436fe07ceafff32ad745e55ad03dd146",
-      "carried_shape": "b7f7d6040e269cc4"
+      "carried_from": "4002cee832c2d261518673423bc029e026b3bc344f953093f7e7b737dba1238d",
+      "carried_shape": "2c6fd3c5effad6a7"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -177,11 +1505,12 @@
       "na_reason": "lecture, not a module file — no ## What You'll Learn section",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "cf1984ec3f41bd81fa39cc0151f93e5a436fe07ceafff32ad745e55ad03dd146",
-      "carried_shape": "b7f7d6040e269cc4"
+      "carried_from": "4002cee832c2d261518673423bc029e026b3bc344f953093f7e7b737dba1238d",
+      "carried_shape": "2c6fd3c5effad6a7"
     }
   ],
-  "notes": "Six rules (check_lectures.md §2/§6, check_pedagogy.md §16, check_strategy_tie_in.md §5/§6/§7) were resolved N/A by the prefill sidecar (shape_hash b7f7d6040e269cc4, unchanged) and are deliberately NOT written above — left for `prefill-instance.js --merge` to splice in, per the dispatch mechanics ('a rule that is not in your brief gets no row from you'). Three of those six were on this file's explicit drift-reread list (lectures §6, strategy_tie_in §6, strategy_tie_in §7); each was independently re-fetched at current wording via `rule.js` this session and confirmed the parked N/A still holds under the current (heavily expanded) text — no prompt block exists for §6 to bind, and no Key-Concepts/What-You'll-Learn section exists for §6/§7 to bind, regardless of how those rules' internal machinery changed. check_strategy_tie_in.md §8 (doc carries strategy, not structure — added 2026-09-03) is not evaluated at all here: it binds the strategy doc's own content, not this curriculum file, and story's completeness contract scopes this compendium to §§1-4; the strategy class is primary owner of §8. Teaching-moment-lands (judge-owned, no rule_index per template) is folded into the §1 evidence above rather than given its own row, per the template's explicit instruction never to emit it as a rules_evaluated line.",
+  "suggestions": [],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "Teaching-moment-lands and mood-doesn't-resolve-early judgments (no check_strategy_tie_in rule_index of their own, per the story template's Completeness contract) are recorded here rather than as rows. Teaching moment: the three-governor frame (Verification/Absorption/Outcome) reliably lands across the persona trace's reasonable variation — the persona nods on two of three immediately and flags Absorption as needing a concrete case, which is a comprehension gap the module's own send-off (walk-and-send-off.md) is positioned to close, not a fragility in this lecture. Mood doesn't resolve early: the closing trust question (L15) is left open, not answered, and the maintainer's Container discipline note confirms backpressure/M5/M6 machinery is deliberately withheld here. Sim trace was stale at the pin (its recorded content_sha did not match the current body — the 08946dd8..HEAD diff reworded the slide-1 close bullet and trimmed 'judges' from the Verification bullet) and has been regenerated in this session's copy at curriculum/evals/sim-cache/ae101--lecture--the-far-half.persona.json, then bound via bind-trace.js (content_sha now 4b84193467d47194cd870756458a126e49bbc3dde5a3efb5be9d389d1b8b9d47, matching body_sha above). Mood scores (8/10 both beats) were unaffected by the reword; only quoted text and one clause of persona narration changed. check_prompts.md and check_workshop.md are near-total N/A for this file: it has no fenced prompt and no group/room beat (signals.has_prompt_blocks: false, this is a solo-read container lecture)."
 }

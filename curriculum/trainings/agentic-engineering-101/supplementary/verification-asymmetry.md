@@ -20,8 +20,8 @@
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@b3143a4 pedagogy@1abb84c6 strategy@61da15ad slides@324b81d7)
-- judges @324b81d7: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-28 (writing@3bc472a1 story@3bc472a1 technical@3bc472a1 behavior@b3143a4 pedagogy@3bc472a1 strategy@3bc472a1 slides@3bc472a1)
+- judges @3bc472a1: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** two bold handles, **the verifier's rule** (Wei's coinage at its naming) and **find is easier than judge** (the M2 law at its recall); bullet leads, Wei quote, governor question all plain, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 

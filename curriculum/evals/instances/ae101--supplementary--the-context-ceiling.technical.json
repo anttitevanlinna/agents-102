@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md",
   "verdict": "PASS",
-  "body_sha": "387ec73c0f8cc6a5dfd883cf9afafa2defada277be355a1a029721143263ff49",
+  "body_sha": "3a59023d57be86102466e9f39d53592333a637eaa74eb28ecb93b8e87eea6f17",
   "shape_hash": "81e57214a612a2af",
   "rules_evaluated": [
     {
@@ -1217,8 +1217,9 @@
       "rule_index": 61,
       "rule_lead": "Verify mechanism before proposing surgery.",
       "verdict": "N/A",
-      "evidence": "No SKILL.md/framework/tool change was proposed this pass.",
-      "fix_hint": "",
+      "evidence": null,
+      "na_reason": "no skill/framework/tool change is proposed by this body — it advises the reader on skill-routing practice, it does not itself propose editing a skill or mechanism",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -1271,8 +1272,9 @@
       "rule_index": 66,
       "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
       "verdict": "N/A",
-      "evidence": "Process rule about initial curriculum BUILD methodology; not testable against an already-shipped, previously-audited file.",
-      "fix_hint": "",
+      "evidence": null,
+      "na_reason": "supplementary reference page, not a module build going through the three-pass process",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -1379,8 +1381,9 @@
       "rule_index": 36,
       "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
       "verdict": "PASS",
-      "evidence": "Fence's ~90 words already split into 3 paragraphs by logical move (pricing source / cost computation / caching factor), matching the one-move-per-paragraph guidance.",
-      "fix_hint": "",
+      "evidence": "L28 'Work out the dollar cost of carrying an extra 100,000 tokens of context across 20 turns. Then do the same for 20,000 tokens. Show the per-turn cost, the 20-turn total, and the difference.' — three sentences but one tightly-compounding sequential build (compute A, repeat for B, then state the output shape); the prompt is already split into three paragraphs by move (setup / compute-and-show / then-factor-caching), and read aloud each breath lands at a sentence or paragraph break, not mid-clause. Falls under the rule's own carve-out for sequential-build prompts where each step compounds tightly.",
+      "na_reason": null,
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -1809,11 +1812,10 @@
       "rule_index": 35,
       "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
       "verdict": "N/A",
-      "evidence": "Not a multi-turn dialog that can affect a persisted artifact file.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "3b2eca2a5d79af5bf8cfd8833e563beeb4f819faeb7df878d4a12dcd765e97e3",
-      "carried_shape": "81e57214a612a2af"
+      "evidence": null,
+      "na_reason": "the page's only prompt (L23-31) is a one-shot calculation with a single chat output, not a multi-turn dialog that writes an artifact file",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
@@ -1897,11 +1899,10 @@
       "rule_index": 43,
       "rule_lead": "Long-running prompts stream progress — never go silent.",
       "verdict": "N/A",
-      "evidence": "Task is a short arithmetic exercise plus one page fetch — not the multi-minute cross-project scan / big multi-file read shape this rule targets.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "3b2eca2a5d79af5bf8cfd8833e563beeb4f819faeb7df878d4a12dcd765e97e3",
-      "carried_shape": "81e57214a612a2af"
+      "evidence": null,
+      "na_reason": "a short arithmetic/pricing lookup, not a multi-minute scan or walk-away send-off",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
@@ -1982,5 +1983,13 @@
     }
   ],
   "notes": "Pedagogy scope: the mechanically-derived class brief includes all 67 check_pedagogy.md rules (matching the 155-owed total this brief reports), which is wider than technical.md template's written 5-item pedagogy subset (16,22,23,36,37); I followed the brief (full 67 rows) per the dispatch's explicit 'emit rows only for rules your brief contains' instruction, since the brief is the mechanically-current source of truth. check_prompts.md rows 17 and 20 are outside the brief's 14-item technical subset but were re-judged fresh (superseding stale prefill-parked evidence that cited a retired trigger) per this run's explicit rule-drift instruction; both remain N/A under current wording.",
-  "nonblocking_findings_count": 3
+  "nonblocking_findings_count": 3,
+  "scope": "drift",
+  "drift_rules": [
+    "check_pedagogy.md §61",
+    "check_pedagogy.md §66",
+    "check_prompts.md §35",
+    "check_prompts.md §36",
+    "check_prompts.md §43"
+  ]
 }

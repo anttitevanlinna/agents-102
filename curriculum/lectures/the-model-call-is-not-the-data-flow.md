@@ -30,6 +30,9 @@ The useful question is not “can we log it?” It is “what is the least data 
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-28 (writing@2fe73ede story@2fe73ede technical@2fe73ede pedagogy@2fe73ede strategy@2fe73ede slides@2fe73ede)
+- judges @2fe73ede: writing PASS, story PASS, technical PASS, behavior N/A (no-prompt-blocks), pedagogy PASS, strategy PASS, slides PASS
+
 **Time:** 7 minutes.
 
 **Role:** M8 opener. Gives the mapping unit before students meet the ticket and recommendation cases.

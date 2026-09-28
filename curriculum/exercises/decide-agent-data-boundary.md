@@ -58,6 +58,9 @@ Then choose one responsibility from your Modules 4–6 work. Predict the first a
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-28 (writing@2fe73ede story@2fe73ede technical@2fe73ede behavior@2fe73ede pedagogy@2fe73ede strategy@2fe73ede slides@2fe73ede)
+- judges @2fe73ede: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **View summary:** You follow every copy and inference through a ticket handler and recommendation bot, compare the boundaries without flattening the cases, then revise the shared platform and predict what changes for one of your own responsibilities.
 
 **Primary Bloom's level:** Analyze + Evaluate + Create.

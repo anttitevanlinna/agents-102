@@ -41,6 +41,9 @@ Before approving a transition, ask: **who may cause it, what data may it use and
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-28 (writing@2fe73ede story@2fe73ede technical@2fe73ede pedagogy@2fe73ede strategy@2fe73ede slides@2fe73ede)
+- judges @2fe73ede: writing PASS, story PASS, technical PASS, behavior N/A (no-prompt-blocks), pedagogy PASS, strategy PASS, slides PASS
+
 **Time:** 7 minutes.
 
 **Role:** M8 closer. Separates the evidence engineers own from decisions that require named privacy, legal, product, and operations owners.

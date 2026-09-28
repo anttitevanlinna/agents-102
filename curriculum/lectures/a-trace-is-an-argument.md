@@ -46,6 +46,9 @@ A data review keeps the same transition and adds another question: what may this
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-28 (writing@2fe73ede story@2fe73ede technical@2fe73ede pedagogy@2fe73ede strategy@2fe73ede slides@2fe73ede)
+- judges @2fe73ede: writing PASS, story PASS, technical PASS, behavior N/A (no-prompt-blocks), pedagogy PASS, strategy PASS, slides PASS
+
 **Time:** 7 minutes.
 
 **Role:** M7 closer. Names what the action, restraint, and mutation traces proved, then hands their stored fields to M8.

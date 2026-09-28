@@ -38,8 +38,8 @@ The architecture is no longer an abstract agent platform. It now carries explici
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-27
-- judges: not yet judge-audited
+**Quality:** compendium-audited 2026-09-28 (writing@2fe73ede story@2fe73ede technical@2fe73ede pedagogy@2fe73ede strategy@2fe73ede slides@2fe73ede)
+- judges @2fe73ede: writing PASS, story PASS, technical PASS, behavior N/A (no-prompt-blocks), pedagogy PASS, strategy PASS, slides PASS
 - cross_module @fcc4dfe6: PASS — set=[build-your-agent-platform,data-handling-you-can-defend]
 
 **Meta (trainer):**

@@ -41,6 +41,9 @@ It does not make the architecture coherent. Use a local model to expose the cont
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-28 (writing@2fe73ede story@2fe73ede technical@2fe73ede pedagogy@2fe73ede strategy@2fe73ede slides@2fe73ede)
+- judges @2fe73ede: writing PASS, story PASS, technical PASS, behavior N/A (no-prompt-blocks), pedagogy PASS, strategy PASS, slides PASS
+
 **Time:** 7 minutes.
 
 **Role:** M7 opener. Moves the unit of design from model process to one controlled responsibility before the failure tour.

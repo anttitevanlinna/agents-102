@@ -183,6 +183,16 @@ const THEORY_HANDBOOK_MANIFEST = {
       'lectures/story-of-module-6',
       'lectures/agents-that-build-agents',
     ]],
+    ['M7', [
+      'lectures/the-platform-is-the-agent',
+      'exercises/build-and-prove-agent-platform',
+      'lectures/a-trace-is-an-argument',
+    ]],
+    ['M8', [
+      'lectures/the-model-call-is-not-the-data-flow',
+      'exercises/decide-agent-data-boundary',
+      'lectures/legality-needs-an-evidence-package',
+    ]],
   ],
   // Agents 101: theory = the lectures and the pre-reads, in the module that wires
   // them; the three live demos (first-scheduled-agent, agent-that-takes-action,

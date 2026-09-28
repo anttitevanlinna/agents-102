@@ -30,6 +30,7 @@ The boundary model exposed what it catches and the design exposed what it still 
 - Drafting, sending, ranking, and learning are different purposes and authority levels.
 - Engineering prepares facts, controls, and unresolved questions; named owners make context-specific legal and product decisions.
 - A launch state is provisional and bounded. It is not a declaration of legality or compliance.
+- The controlled-transition model now includes the data used, purpose, decision owner, and retention or deletion rule.
 
 ## Next
 

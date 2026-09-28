@@ -54,7 +54,11 @@ Now make the architecture answer the maps. The agent will offer no more than thr
 
 Finish by reading only the changed sections of `architecture.md`. For each change, ask which data-flow row forced it, which case it protects, and which decision still belongs to a human owner.
 
+Then choose one responsibility from your Modules 4–6 work. Predict the first action boundary and the first data boundary that would have to change before it could run unattended. Add the prediction to `docs/agent-platform/data-handling-decision.md`; implementation is not part of this module.
+
 <!-- maintainer -->
+
+**View summary:** You follow every copy and inference through a ticket handler and recommendation bot, compare the boundaries without flattening the cases, then revise the shared platform and predict what changes for one of your own responsibilities.
 
 **Primary Bloom's level:** Analyze + Evaluate + Create.
 

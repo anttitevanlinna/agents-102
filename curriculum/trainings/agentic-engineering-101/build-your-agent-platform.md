@@ -32,6 +32,7 @@ Your long-running task already taught the agent how to work. Unattended operatio
 - Duplicate delivery and late results are state transitions to control, not retry details to document later.
 - Evidence levels matter: a local demonstration, a fixture simulation, a specified control, and a production-like test are different claims.
 - A boundary check earns trust only after a known violation makes it fail.
+- A controlled transition names who may change state, what evidence justifies it, and how the system stops or recovers.
 
 ## Next
 

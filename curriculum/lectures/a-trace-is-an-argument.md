@@ -35,6 +35,15 @@ The same trace contract must explain a useful action and correct restraint.
 
 If the system did nothing, the trace should distinguish denied authority, insufficient evidence, duplicate work, cancellation, timeout, and deliberate escalation. “No output” is not an incident model.
 
+## The pattern is a controlled transition
+<!--tier:1-->
+
+Every arrow in the execution changes state. It is controlled only when the platform can answer three questions: who may cause the change, what evidence justifies it, and what can stop or reverse it.
+
+That pattern wraps the whole engineering loop, not one cloud component. Before automating another responsibility, point to one transition and ask: **who may cause it, what would prove it was right, and how would we recover if it was wrong?**
+
+Module 8 keeps the same transition and adds the data question: what may this step read, copy, infer, and retain for this purpose?
+
 <!-- maintainer -->
 
 **Time:** 7 minutes.
@@ -51,6 +60,7 @@ Claims
 - `mutation-calibrates-check` · vision · "A passing trace proves little until the same check rejects a known violation." ← none-owed
 - `trace-is-data-store` · detail · "A trace becomes another data store with its own access, masking, retention, and deletion obligations." ← langfuse-masking
 - `no-output-not-incident-model` · vision · "“No output” is not an incident model." ← none-owed
+- `controlled-transition` · vision · "It is controlled only when the platform can answer three questions" ← none-owed
 
 Sources
 - langfuse-data-model `[checked:2026-09-27 result:OK due:cohort]` https://langfuse.com/docs/observability/data-model — [vendor primary documentation] Trace and observation data model. fallback: use generic trace and span terms.
@@ -60,6 +70,7 @@ Sources
 Frameworks
 - Trace as argument · [borrow:none] · law:none · ← none
 - Trace / span · [borrow:distributed systems] · law:none · ← langfuse-data-model
+- Controlled transition · [borrow:none] · law:none · ← none
 
 Stance `[stance:2026-09-27 level:L2]`
 - holds: production agent traces need semantic events and policy context, not only latency and token telemetry.

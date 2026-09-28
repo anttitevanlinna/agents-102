@@ -62,6 +62,8 @@ Commit `docs/agent-platform/` in your current branch or worktree, then close thi
 
 <!-- maintainer -->
 
+**View summary:** You break a local control plane, identify the invariant behind each rejection, then carry one bounded CI-triage responsibility through an AWS design and three incidents. The evidence ledger separates what the lab demonstrated from the production tests and approvals still owed.
+
 **Primary Bloom's level:** Analyze + Evaluate + Create.
 
 **Mood target:** architectural ownership through honest evidence.

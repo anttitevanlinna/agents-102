@@ -27,6 +27,7 @@ const {
   naRuleSet,
   splitMissing,
   SURFACES,
+  registryModuleSlugs,
   surfacesFor,
 } = require('./audit-eval-coverage.js');
 
@@ -540,8 +541,33 @@ test('surfacesFor derives a surface set for a training that is not AE101', () =>
 
 test('surfacesFor("agentic-engineering-101") is exactly the SURFACES it always was', () => {
   assert.deepStrictEqual(surfacesFor('agentic-engineering-101'), SURFACES,
-    'the AE101 surface set is hand-curated (12 named exercises, theory-manifest lectures) ' +
+    'the AE101 surface set is hand-curated (core and optional exercises, theory-manifest lectures) ' +
     'and must not change shape when the function is generalised');
+});
+
+test('optional modules and their linked surfaces cannot disappear from coverage', () => {
+  assert.deepStrictEqual(
+    registryModuleSlugs({
+      prework: { slug: 'prework' },
+      modules: [{ slug: 'core' }],
+      optionalModules: [{ slug: 'extension-a' }, { slug: 'extension-b' }],
+    }),
+    ['prework', 'core', 'extension-a', 'extension-b']
+  );
+
+  const ae101 = surfacesFor('agentic-engineering-101');
+  for (const slug of ['build-your-agent-platform', 'data-handling-you-can-defend']) {
+    assert.ok(ae101.modules.some(s => s.slug === slug), `missing optional module ${slug}`);
+  }
+  for (const slug of ['build-and-prove-agent-platform', 'decide-agent-data-boundary']) {
+    assert.ok(ae101.exercises.some(s => s.slug === slug), `missing optional exercise ${slug}`);
+  }
+  for (const slug of [
+    'the-platform-is-the-agent', 'a-trace-is-an-argument',
+    'the-model-call-is-not-the-data-flow', 'legality-needs-an-evidence-package',
+  ]) {
+    assert.ok(ae101.lectures.some(s => s.slug === slug), `missing optional lecture ${slug}`);
+  }
 });
 
 test('surfacesFor rejects a training the registry does not know', () => {

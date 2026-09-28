@@ -51,6 +51,21 @@ Status legend: **named** = law + mechanism in student body (recoverable from pag
 | name-the-uncertainty | Intent | **named** | e·m·n·e·e·e | |
 | comparative-advantage | Intent | **enacted** | a·e·e·e·a·e | confirmed-gap|
 
+### Optional production-extension coverage — M7 and M8 (2026-09-28)
+
+The core matrix above remains M1–M6. The optional pair is audited separately because it wraps and overlays the Field Map rather than adding phases.
+
+| theory surface | map position | M7 | M8 | gap verdict |
+|---|---|---|---|---|
+| controlled transition | boundary around every phase | **named + enacted** | **named + extended** | closed: both anchors carry the same schema and governor |
+| action authority separated from worker proposal | every state-changing arrow | **named + enacted** | **reused** | closed |
+| evidence enables proof but creates exposure | Verification across the loop | **named** | **named + constrained** | closed |
+| data, purpose, owner, retention/deletion | lifecycle overlay across every phase | **previewed** | **named + enacted** | closed |
+| useful autonomy needs authority; safe autonomy limits it | whole production boundary | **enacted** | **named** | closed |
+| transfer beyond the supplied cases | Outcome / Crossing | one M4–M6 responsibility prediction | one action-boundary + data-boundary prediction | closed |
+
+The conceptual compression is one schema, not another control catalogue. M7 earns it from rejected transitions and incident reconstruction. M8 annotates the same transitions with data and decision ownership. The two durable anchors therefore satisfy the pair-wide development requirement without moving cloud architecture or legal judgement onto the Field Map itself.
+
 ## The 8 confirmed delivery gaps — triage (proposal, Antti decides)
 
 | law | best | proposed home | why |
@@ -525,4 +540,3 @@ The course's own laws — named generalizations in student body that are NOT in 
 - **coding-agents-meta-platform**: A falsifiable strategic bet presented as theory: 'vendor platforms cannot extend themselves' is contested by the vendors themselves (agent-buildable workflow platforms, self-extending toolchains are exactly what several are shipping). No surveyed syllabus would teach this as a law. Valuable as the house worldview — label it as thesis, not theory, and give it a falsification condition.
 
 - **eval-judge-verifier-gate**: Names the primitive but omits the validity condition that the leading practitioner eval curriculum leads with: a judge is only evidence after its agreement with human labels is measured. As banked, it licenses uncalibrated LLM judges as gates — a false floor that manufactures confidence. One sentence ('a judge is itself a claim requiring verification against human labels') would close the hole.
-

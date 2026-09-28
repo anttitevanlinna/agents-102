@@ -30,6 +30,15 @@ Place review before the consequential action. Record what the reviewer saw, deci
 
 Each state needs a boundary, an owner for unresolved decisions, and evidence that would change it. That is more useful than a compliance badge and more honest than an architecture that waits for certainty before naming risk.
 
+## Extend the controlled transition
+<!--tier:1-->
+
+Module 7 asked who may change state, what evidence justifies the change, and how the system can stop or recover. A data boundary adds four annotations to that same transition: the data used, the purpose, the decision owner, and the retention or deletion rule.
+
+This exposes two tensions instead of hiding them. Proof needs observation, but observation creates exposure. Useful autonomy needs authority, but safe autonomy limits authority.
+
+Before approving a transition, ask: **who may cause it, what data may it use and retain for this purpose, and what bounded evidence would justify or reverse it?**
+
 <!-- maintainer -->
 
 **Time:** 7 minutes.
@@ -46,6 +55,7 @@ Claims
 - `dpia-is-decision-process` · detail · "A useful packet names the purpose, people affected, data and inferences, action and significance, processors and transfers, retention, rights path, security controls, alternatives, residual risks, and missing facts." ← edpb-dpia, edpb-design
 - `meaningful-human-review` · detail · "Review needs enough information, time, authority, and a real way to change or stop the outcome." ← edpb-automated-decisions
 - `launch-state-not-verdict` · vision · "describe an engineering recommendation under stated assumptions" ← none-owed
+- `controlled-transition-data-extension` · vision · "A data boundary adds four annotations to that same transition" ← none-owed
 
 Sources
 - edpb-dpia `[checked:2026-09-27 result:OK due:cohort]` https://www.edpb.europa.eu/topics/accountability-and-compliance-tools/data-protection-impact-assessment_en — [regulator guidance] DPIA purpose and decision context. fallback: call it a structured risk and owner-decision packet without naming the legal process.
@@ -55,6 +65,7 @@ Sources
 Frameworks
 - Evidence package · [borrow:privacy engineering] · law:none · ← edpb-dpia
 - Provisional launch state · [borrow:none] · law:none · ← none
+- Controlled transition with data boundary · [borrow:none] · law:none · ← none
 
 Stance `[stance:2026-09-27 level:L2]`
 - holds: legal and privacy decisions improve when engineering provides a complete data-flow and control record with explicit unknowns.

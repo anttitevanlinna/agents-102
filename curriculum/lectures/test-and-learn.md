@@ -23,8 +23,8 @@ For this first session, fifteen to thirty minutes is enough. Session length foll
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-28 (writing@3bc472a1 story@08946dd8 technical@3bc472a1 behavior@1c765f2 pedagogy@3bc472a1 strategy@3bc472a1 slides@3bc472a1)
-- judges @3bc472a1: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--lecture--test-and-learn.strategy.json), slides PASS
+**Quality:** compendium-audited 2026-09-28 (writing@3bc472a1 story@2d6b2b01 technical@3bc472a1 behavior@1c765f2 pedagogy@3bc472a1 strategy@3bc472a1 slides@3bc472a1)
+- judges @2d6b2b01: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--lecture--test-and-learn.strategy.json), slides PASS
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** slide 1 (spirit opener) is prose paragraphs, the tourist/practitioner koan plain; the other slides carry bullets with zero bold. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 

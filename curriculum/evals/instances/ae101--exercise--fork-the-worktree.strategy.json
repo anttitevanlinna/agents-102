@@ -1,24 +1,19 @@
 {
   "class": "strategy",
-  "resolution": {
-    "settled": "refuted",
-    "at": "2026-09-05",
-    "note": "Both refuters killed the one blocking finding (check_strategy_tie_in §4, line 21), and the scope refuter's first count is decisive: the finding silently tightened the rule's own bright line. The strategy doc's M5 section says the reveal is fragile and that nothing may name the three pieces *before the M4 evidence is read* — not before `diagnose-and-resend`'s header, which is where the finding relocated the boundary. By the time a student opens fork-the-worktree.md the M4 evidence has been read four times over: the Start here opener, `## Say what done-done means`, the whole of [Lecture: Reading the return], and `## Your mid-run worries hint at missing checks`. A finding that moves a documented constraint earlier than the doc states it is not enforcing the rule, it is writing a new one. Row stamps PASS:verify-refuted; the recorded REVISE stays as the record that the finding was filed and adjudicated, not overwritten."
-  },
-  "training": "ae101",
   "file": "curriculum/exercises/fork-the-worktree.md",
-  "verdict": "REVISE",
-  "body_sha": "d9596ff39cefcb108ccc22a31823d53f55a5c7cc46ce011b8ca9e2c5e7670609",
-  "shape_hash": "632025a350bd415b",
-  "strategy_doc_section_loaded": "content-strategy-agentic-engineering-101.md — '## M5 in detail — learn from the test, re-send packaged' (incl. Recurring themes, Mood arc, Woven design rules §2 Specs over chats)",
+  "training": "ae101",
+  "verdict": "PASS",
+  "body_sha": "b551ad47401f1eca512ce00168f07804032b3151f9cc18c8b95553411ed4e811",
+  "shape_hash": "b1db33adc306620b",
+  "strategy_doc_section_loaded": "content-strategy-agentic-engineering-101.md § M5 in detail — learn from the test, re-send packaged (Spirit/pedagogy/mood/themes-earned/in-class-beats)",
   "rules_evaluated": [
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "Mechanical setup beat (fork worktree, copy gitignored files, verify the copy, recover a fork point) — student's job is GET INTO POSITION for diagnose-and-resend.md's diagnosis, not to learn a concept. Rule's own diagnostic: 'could beat be compressed into parenthetical without breaking arc? Yes → setup, not teaching.' Holds after the diff — the two new Phase 1 bullets (L21-22) are rationale for why the copy matters, not new teaching content.",
+      "verdict": "PASS",
+      "evidence": "Setup-beat carve-out applies: every beat is instrumental fork/copy/verify plumbing (L17-L41), not a teaching beat asking the student to learn something new. Diagnostic per the rule (\"could beat be compressed into parenthetical without breaking arc?\") — yes for every bullet here. Judged on clarity+brevity instead of mood-floor: L25 'Ask Claude to fork the worktree and copy your gitignored files across.' is a single concrete instruction, and L33-35 give a falsifiable check ('ls ...') rather than prose to feel through.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -26,9 +21,9 @@
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "Rule 1 exempts this file from mood-floor as a setup beat, so there is no mood register to check for punitive flavour. Sanity-read anyway: L33 'A rules file that didn't copy changes two variables instead of one, and the contrast stops meaning anything' and L53 (maintainer) 'Dominant failure is the silent partial copy' stay diagnostic/mechanical, never shame-coded ('you messed up').",
+      "verdict": "PASS",
+      "evidence": "L34 'A copy that silently skipped still reports as done.' and maintainer L58 'Dominant failure is the silent partial copy ... which voids the split test the module rests on' — both name a system/tooling failure mode (Claude's report vs. reality), never frame it as the student having erred, and both pair the risk with a concrete escape hatch (the ls check).",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -36,8 +31,9 @@
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
-      "verdict": "PASS",
-      "evidence": "Title (L1) 'Fork the worktree, carry the evidence' and 'The point' (L13) 'a worktree lets you run the same task twice as a split test' both lead with the constructive discipline. The line closest to violating this is the section header that used to read '## If the coordinates are missing' (pre-diff) — the diff renamed it to '## Anchor the fork to the run coordinates' (L37), moving it off a failure-mode lead. The maintainer block's own 'Recovery ladder' note (L55) states the rationale directly: 'The section heading is neutral... because the first bullet is the normal path, not a fallback; a heading naming only the failure case contradicts its own opening line.' This is the rule being actively honoured, not skirted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No Big Idea / Key Concepts / What You'll Learn section in this file to check titling against; all three headings present (Fork it, Check the copy landed, Anchor the fork to the run coordinates) are already discipline/action-named, not failure-named.",
       "fix_hint": null,
       "blocking": false
     },
@@ -45,10 +41,11 @@
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
-      "verdict": "REVISE",
-      "evidence": "Harm this rule guards against: front-running a downstream teaching moment — here, M5's own explicitly load-bearing reveal ('The reveal is load-bearing and fragile: nothing may name the three pieces before the M4 evidence is read... a constraint on every beat in the module', doc §M5 in detail). The three pieces are reference artefact + plan.md + external verifier, reserved by design for diagnose-and-resend.md, whose own header (L15) reads 'What you build: a verifier, a reference, and a plan.md, each built against a failure you actually read' — clearly written as the FIRST reveal of these three names, tied to a felt failure. This file's L21 (new in this diff, confirmed via `git diff 61e7fc9..HEAD`) reads 'This module's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree' — naming all three pieces as a flat inventory BEFORE the student opens diagnose-and-resend, stripped of any failure-specific connection. This is not a borderline read: two sibling files in the same module enforce the opposite discipline explicitly in their own maintainer blocks — reading-the-return.md L35 'Fixes-not-named discipline held: no reference / plan.md / verifier' and L49 'Don't pre-empt the three-pattern (reference / plan.md / verifier)... Naming the fixes here collapses the M5 contrast'; hooks-always-fire.md L19 goes further, deliberately keeping its own two verifier mentions generic ('a verifier', never 'the verifier you just wrote') for exactly this reason, at a placement between reading-the-return and this exercise. fork-the-worktree.md sits in the same slot (module TOC: reading-the-return → hooks-always-fire → fork-the-worktree → diagnose-and-resend) and is the one file in that sequence that breaks the discipline the other two visibly hold. The maintainer's L59 accept-note ('Phase 1 opens with the moved-in rationale, 2026-08-25, Antti-directed') authorises MOVING 'why the work runs in the worktree' content into this file from the module body — it says nothing about the specific three-pattern-naming risk, so it is not a dispositive accept-note against this finding (dispatch-preamble: an accept-note covers what it actually authorised, not everything adjacent to it).",
-      "fix_hint": "Drop the specific artifact names from L21's parenthetical — the worktree-isolation rationale doesn't need them. E.g. 'This module's work runs in the worktree, so the second session starts from the same code state as the first' carries the same logistics point without pre-announcing verifier/reference/plan.md ahead of diagnose-and-resend's own reveal.",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": "grep -n -iE '\\beval\\b|\\bjudge\\b|\\bverifier\\b|\\bgate\\b' curriculum/exercises/fork-the-worktree.md -> 1 hit, L21 'diagnosis, verifier, reference, plan.md, and the re-send'. Per strategy doc L396, 'verifier' (unlike 'eval') is earned vocabulary at M5, so no front-run of the M6 eval-naming moment. Module 1/Module 4/Module 6 cross-references (L22, flag-gated to spot-gaps-build-the-loop) match doc's M5-in-detail description of the M4-baseline / M5-re-send / M6-merge-back arc (doc L405, L432-434) without asserting anything the doc reserves — the file defers the merge decision to Module 6 rather than pre-teaching it.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -56,7 +53,7 @@
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "No '## Key Concepts' heading in this file (grepped against projections.body_numbered — zero hits); exercise file, not the module file that carries Key Concepts.",
+      "na_reason": "No Key Concepts heading in this file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -66,7 +63,7 @@
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "Same as §5 — no Key Concepts section to shape-check. Re-read §6 at its current wording via rule.js (full breadcrumb/ceiling/variety text) per this run's drift check — unchanged from the class brief and the section-absence conclusion is unaffected.",
+      "na_reason": "No Key Concepts heading in this file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -76,43 +73,23 @@
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "No 'What You'll Learn' heading in this file — that section lives in the module file (learn-from-the-test.md), not in a per-phase exercise. Re-read §7 at its current wording via rule.js (grammar-fit check, apparatus failure modes, carve-outs) per this run's drift check — unchanged from the class brief and the section-absence conclusion is unaffected.",
+      "na_reason": "No What You'll Learn heading in this file.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 8,
-      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "Rule binds the DOC's own content (doc must point at curriculum-owned structure, never restate it) — this is the curriculum leaf, the other side of that split, so there's no doc-restatement risk to check from here. Doc-vs-file consistency for this file's actual claims is covered under §4 above (that's where the drift lives, not in §8's inventory-rot concern).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "strategy.md (judge template — 'Big Idea match')",
-      "rule_index": null,
-      "judge_owned": true,
-      "rule_lead": "Big Idea match.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "No 'Big Idea' section in this file — that's a module-file-level section (learn-from-the-test.md carries it); this exercise file has none to compare against the strategy doc's M5 spirit line.",
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum.",
+      "verdict": "PASS",
+      "evidence": "Re-read §8 at current wording (drift pin 874f921c, rule moved not the body). Checked both directions: (a) this file asserts only file-owned content — extraction provenance, timing budget, leap test, failure mode + escape hatch, recovery-ladder rationale (maintainer L45-64) — nothing that only the strategy doc should own (mood/arc-bets/buyer-reasoning/vocabulary-embargoes); (b) cross-checked against content-strategy-agentic-engineering-101.md M5 section, which explicitly declines to restate structure ('Structure lives in the files, not here', doc L390) and does not name this file, its phase count, or its placement — so there is no stale doc-side inventory claim about fork-the-worktree.md to catch here. No conflict either direction.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     }
   ],
-  "blocking_findings_count": 1,
-  "drift_rules_reread": [
-    "strategy_tie_in §6 — re-fetched via rule.js, full current wording (breadcrumb ceiling, variety-over-consistency, punchline-vs-breadcrumb swap test) — no change to the N/A verdict, this file has no Key Concepts section.",
-    "strategy_tie_in §7 — re-fetched via rule.js, full current wording (grammar-fit check, absent-theme-verb-is-not-a-finding, four apparatus failure modes, three carve-outs) — no change to the N/A verdict, this file has no What You'll Learn section."
-  ],
-  "accept_notes_found": [
-    "L47 — Extracted from learn-from-the-test.md, 2026-08-12, Antti-directed: this file's origin as a split-out exercise (Session widget + prompt = exercise shape). Covers provenance, not §4's naming-timing concern.",
-    "L55 — Recovery ladder, 2026-08-12, Antti-directed read: the 'Anchor the fork to the run coordinates' heading is deliberately neutral, and rung three's approximate merge-base wording is deliberately kept. Both directly support the §3 PASS above.",
-    "L59 — Phase 1 opens with the moved-in rationale, 2026-08-25, Antti-directed: authorises moving the module body's 'Set up the worktree' framing into this file's first two Phase 1 bullets. Does not address, and is not read here as covering, the §4 three-pattern-naming concern in the bullet it describes — the note's own scope is the relocation decision, not a review of the moved wording against M5's reveal discipline.",
-    "L61 — Quality line: compendium-audited 2026-08-29, strategy@61e7fc9 (the pin this run diffs against) — recorded PASS at that commit; this run supersedes it."
-  ],
-  "notes": "The pin diff (61e7fc9..HEAD) is substantive, not empty — new Phase 1 bullets, a section rename, a new 'ls' verification bullet, and several new maintainer paragraphs (Leap test, Failure mode + escape hatch, Recovery ladder, Phase-1-rationale note, Quality line). Only the L21 bullet trips a strategy rule; the rest are pedagogy/writing-shaped (not filed here, per dispatch-preamble lane discipline).",
-  "nonblocking_findings_count": 0
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "Pin 874f921c..HEAD diff for this file is writing/prose-only (two wording tweaks, a maintainer Quality-block refresh, and a new §38 cross-reference note) — no strategy-surface change. §8 was the only rule that moved since the pin; re-read and re-checked per drift_rules_reread above, no regression found."
 }

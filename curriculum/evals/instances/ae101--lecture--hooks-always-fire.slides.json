@@ -1,9 +1,9 @@
 {
  "class": "slides",
- "training": "ae101",
  "file": "curriculum/lectures/hooks-always-fire.md",
+ "training": "ae101",
  "verdict": "PASS",
- "body_sha": "4152c29900226b29b4c957055099a0145cf39ad244107dd6c21f0824bfe9ad7f",
+ "body_sha": "930cdb144c0f3f84d6bd55116cddfdac5ebafae809d3536f63b82b29632855f0",
  "shape_hash": "5c20e18b3d5c6c2f",
  "chunk_map": [
   {
@@ -14,12 +14,12 @@
   {
    "index": 1,
    "heading": "## Hooks always fire",
-   "lines": "3-7"
+   "lines": "3-9"
   },
   {
    "index": 2,
    "heading": "## Hooks for must-happen, prompts for taste",
-   "lines": "8-16"
+   "lines": "10-19"
   }
  ],
  "rules_evaluated": [
@@ -28,7 +28,8 @@
    "rule_index": 1,
    "rule_lead": "Referent resolution under a sequential deck read.",
    "verdict": "PASS",
-   "evidence": "Chunk 1 L5: \"it runs\"/\"it exists\" resolve same-sentence to \"the hook\"/\"the script\". Chunk 2 closest candidate is L15 \"A menu, not a checklist.\" -- no explicit antecedent noun, but it is the immediate continuation of the prompt directly above it on the same chunk (the just-run demo's returned list), matching the rule's NOT-violation carve-out for \"immediate continuation of the previous slide's subject\". No never-named or vague-with-full-history referents found.",
+   "evidence": "Chunk 1 (L5): \"it runs\"/\"it exists\" resolve same-sentence to \"a hook\"/\"the script\". Chunk 2 closest candidate L18 \"A menu, not a checklist.\" -- no proper-noun antecedent, but it is the immediate same-chunk continuation of the demo prompt directly above it (the returned list the prompt asks for), matching the rule's NOT-violation carve-out for immediate continuation of the previous content's subject within one chunk. No never-named or vague-with-full-history referent found in either chunk.",
+   "na_reason": null,
    "fix_hint": null,
    "blocking": true,
    "chunks_flagged": []
@@ -38,7 +39,8 @@
    "rule_index": 2,
    "rule_lead": "Cross-file and positional callbacks.",
    "verdict": "PASS",
-   "evidence": "grep -inE 'opening lecture|earlier module|previous lecture|the prework' over body -> 0 hits. Closest candidate L11 \"The same primitive covers everything else that must happen every time\" stays same-file/same-chunk (refers to \"hook\" from the same bullet block, not a positional pointer at another file). Maintainer block's own file-provenance note (L19, L23) is maintainer prose, not body, and out of scope for this rule.",
+   "evidence": "grep -inE 'opening lecture|earlier module|previous lecture|prework' curriculum/lectures/hooks-always-fire.md (lines 1-19 only) -> 0 hits. No sentence in the body points at another file by position; the maintainer/backing provenance notes (L25, L37) are maintainer prose, out of scope for a body-only rule.",
+   "na_reason": null,
    "fix_hint": null,
    "blocking": true,
    "chunks_flagged": []
@@ -48,7 +50,8 @@
    "rule_index": 5,
    "rule_lead": "No orphan slides.",
    "verdict": "PASS",
-   "evidence": "Chunk 1 (L3-7): two self-carrying claims (unconditional firing regardless of agent's say; hooks exist because the LLM forgets). Chunk 2 (L8-16): header + must-happen/taste split + concrete examples + demo prompt + tail line -- neither chunk is a bare wait-state or single context-dependent bullet.",
+   "evidence": "Chunk 1 (L5,L7): two self-carrying claims (hooks fire regardless of the agent's say; hooks exist because the LLM forgets). Chunk 2 (L12,L14,L16,L18): the must-happen/taste split, the verifier-to-hook cardinality, the trainer-run demo prompt, and the menu-not-checklist tail. Neither chunk is a bare wait-state or single context-dependent bullet.",
+   "na_reason": null,
    "fix_hint": null,
    "blocking": false,
    "chunks_flagged": []
@@ -58,7 +61,8 @@
    "rule_index": 6,
    "rule_lead": "Header self-carries at projection distance.",
    "verdict": "PASS",
-   "evidence": "Chunk 1 header \"Hooks always fire\" is borne out by L5 (\"the agent has no say in whether it runs\") and L5 (\"fires the script whether or not the model remembers it exists\"). Chunk 2 header \"Hooks for must-happen, prompts for taste\" is borne out by L10 (\"Must happen goes in a hook ... Anything taste-shaped stays in a prompt\"). Neither header is contradicted by its own chunk.",
+   "evidence": "Chunk 1 header \"Hooks always fire\" is borne out by L5 (\"the agent has no say in whether it runs ... fires the script whether or not the model remembers it exists\"). Chunk 2 header \"Hooks for must-happen, prompts for taste\" is borne out by L12 (\"Must happen goes in a hook; ... taste-shaped stays in a prompt\"). Neither header is contradicted by its own chunk's content.",
+   "na_reason": null,
    "fix_hint": null,
    "blocking": false,
    "chunks_flagged": []
@@ -68,7 +72,8 @@
    "rule_index": 7,
    "rule_lead": "LLM-cadence caps.",
    "verdict": "PASS",
-   "evidence": "Per sub-item, grepped over body_numbered lines 1-16: \"Not X. Not Y. Z.\" construction -> 0 hits. Anaphora/epistrophe triples -> 0 hits (only single occurrences of 'every ...', not repeated three times). Self-grading superlatives (most useful/important, one of the most/best) -> 0 hits. Number + own retraction -> 0 hits (no numeric hedging anywhere in body). Abstraction-noun stacks -> none found; L6's \"Drift, half-remembered rules\" are plain concrete failure-mode nouns, not invented jargon stacks like 'the bounded-window reality'. Verb triplets with an empty leg -> 0 hits (no triple-verb constructions present).",
+   "evidence": "grep -inE '^Not .*\\. Not .*\\.' body -> 0 hits (\"A menu, not a checklist.\" is a single X-not-Y contrast, not the banned triple). No anaphora/epistrophe triples (no phrase repeated 3x). No self-grading superlatives (no 'most useful/important' language). No number-plus-own-retraction. No abstraction-noun stacks -- L7's \"Drift, half-remembered rules\" are plain concrete failure-mode nouns, not invented jargon. No verb triplets with an empty leg.",
+   "na_reason": null,
    "fix_hint": null,
    "blocking": false,
    "chunks_flagged": []
@@ -78,7 +83,8 @@
    "rule_index": 8,
    "rule_lead": "Internal dialect never lands on a slide.",
    "verdict": "PASS",
-   "evidence": "grep -inE 'compendium|forcing function|\\bbeat\\b|\\bmood\\b|Connections|writing surface' over body -> 0 hits. L5/L11 use 'fires'/'primitive' as ordinary Claude Code platform vocabulary (matches the backing block's cc-hooks-docs citation for hook events firing), not maintainer/repo-authorial dialect -- appropriate register for AE101's engineer-IC audience.",
+   "evidence": "grep -inE 'compendium|forcing function|\\bbeat\\b|\\bmood\\b|Connections|writing surface' curriculum/lectures/hooks-always-fire.md (lines 1-19) -> 0 hits. L5/L14 use 'fires'/'primitive' as ordinary Claude Code platform terminology, matching the backing block's own cc-hooks-docs citation for hook events firing -- not maintainer/repo-authorial dialect, appropriate register for AE101's engineer-IC audience.",
+   "na_reason": null,
    "fix_hint": null,
    "blocking": true,
    "chunks_flagged": []
@@ -88,7 +94,8 @@
    "rule_index": 9,
    "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
    "verdict": "PASS",
-   "evidence": "grep -noE '\\*\\*[^*]+\\*\\*' over body -> exactly two bolds: L5 '**hook**' (1 word, textbook handle) and L10 '**Must happen goes in a hook**' (6 words). Neither chunk exceeds the <=1-bolded-element budget (1 each). The 6-word span is a single instance functioning as the section's named law (matches the header's must-happen/taste split) and leaves the sentence's second clause ('; recommended stays in a prompt.') unbolded, so it is not 'a whole lead sentence' bolded. Corpus precedent for a similarly-sized law-handle bold: curriculum/lectures/compounding.md:63 '**#3 Mental models only come from doing**' (6 words). Harm the rule guards against (decorative bold overwhelming true handles) is not present at one 6-word instance on an otherwise plain slide.",
+   "evidence": "grep -noE '\\*\\*[^*]+\\*\\*' curriculum/lectures/hooks-always-fire.md (body only, lines 1-19) -> two bolds: L5 '**hook**' (1 word, textbook handle) and L12 '**Must happen goes in a hook**' (6 words). Each slide carries exactly one bolded element, within the <=1-per-slide budget. The L12 span is slightly over the ~5-word handle guideline and only its first clause is bolded (the second clause, '; recommended stays in a prompt.', is plain) -- functions as the slide's one named distinction, not the pre-2026-07-09 monoculture of every bullet opening bolded. The harm the rule guards against (decorative bold crowding out true handles) is not present at a single instance on an otherwise unbolded slide.",
+   "na_reason": null,
    "fix_hint": null,
    "blocking": false,
    "chunks_flagged": []
@@ -98,7 +105,8 @@
    "rule_index": 10,
    "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
    "verdict": "PASS",
-   "evidence": "grep -n 'hooks-always-fire' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md -> line 48: '[Lecture: Hooks always fire](lectures/hooks-always-fire.md)', positioned after '[Lecture: Reading the return]' (line 37) and before '[Exercise: Fork the worktree...]' (line 50) -- matches the maintainer block's own Placement note verbatim. Standard bracket-link lecture-include syntax reaches the composed deck via the module's phase wrapper; not a phase-less prose section.",
+   "evidence": "grep -n 'hooks-always-fire' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md -> line 48: '[Lecture: Hooks always fire](lectures/hooks-always-fire.md)', positioned after '[Lecture: Reading the return]' and before '[Exercise: Fork the worktree...]' -- matches the maintainer block's own Placement note. Standard module lecture-include link reaches the composed deck via the module's phase wrapper; not a phase-less prose section.",
+   "na_reason": null,
    "fix_hint": null,
    "blocking": true,
    "chunks_flagged": []
@@ -108,7 +116,8 @@
    "rule_index": 12,
    "rule_lead": "Page geometry dies at the cut; reading order survives.",
    "verdict": "PASS",
-   "evidence": "grep -inE 'below|above|further down|at the top|see below|this page|top of this' over body -> 0 hits. Ran `node scripts/check-slide-deixis.js --file curriculum/lectures/hooks-always-fire.md` this session -> 'OK -- 1 files, no page-geometry pointers across the slide cut.', exit 0.",
+   "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/lectures/hooks-always-fire.md` this session -> 'OK -- 1 files, no page-geometry pointers across the slide cut.'",
+   "na_reason": null,
    "fix_hint": null,
    "blocking": true,
    "chunks_flagged": []
@@ -118,7 +127,8 @@
    "rule_index": 14,
    "rule_lead": "Slide size -- 210 words / 6 bullets, and the cap is machine-checked.",
    "verdict": "PASS",
-   "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/hooks-always-fire.md` this session -> 'files: 1  slides: 2  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits', exit implied 0 (script printed the success banner). No accept-note needed.",
+   "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/hooks-always-fire.md` this session -> 'files: 1  slides: 2  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits'. No accept-note needed.",
+   "na_reason": null,
    "fix_hint": null,
    "blocking": false,
    "chunks_flagged": []
@@ -128,7 +138,8 @@
    "rule_index": 15,
    "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
    "verdict": "PASS",
-   "evidence": "This is a lecture (mechanism-only, per maintainer Placement note), so headings should be claims. Chunk 1 header 'Hooks always fire' is a full declarative claim. Chunk 2 header 'Hooks for must-happen, prompts for taste' is an elliptical claim naming the split that governs the whole chunk (must-happen items go in hooks, taste-shaped items stay in prompts) -- functions as the section's thesis, not a bare label or phase marker. Neither header is a step/phase label.",
+   "evidence": "This is a lecture (mechanism-only, per the maintainer Placement note), so headings should be claims. Chunk 1 header 'Hooks always fire' is a full declarative claim. Chunk 2 header 'Hooks for must-happen, prompts for taste' is an elliptical claim naming the split that governs the whole chunk -- functions as the section's thesis, not a bare label or phase marker.",
+   "na_reason": null,
    "fix_hint": null,
    "blocking": false,
    "chunks_flagged": []
@@ -138,7 +149,8 @@
    "rule_index": 16,
    "rule_lead": "A bullet earns its slot or dies -- three classes that read as rigour and carry nothing.",
    "verdict": "PASS",
-   "evidence": "Checked all 4 bullets + tail line against the three classes (doctrine restatement / self-referential design commentary / aphorism kicker). L5 defines the primitive + names events (new). L5b explains memory-independence (new mechanism angle). L6 gives the causal WHY (LLM forgetful vs hooks don't forget) -- payoff, not restatement of the header. L10 gives concrete must-happen examples (verifier, pre-commit guard, session-start loader) -- new. L11 introduces the 1:1 verifier-to-hook cardinality -- a new specific claim, not a repeat of L10. L15 'A menu, not a checklist.' is explicitly the one piece of information the maintainer block (L21) says 'neither slide nor prompt says' -- new content, not a koan restating the header or a **The point:** line.",
+   "evidence": "Checked every prose beat against the three classes (doctrine restatement / self-referential design commentary / aphorism kicker). L5 defines the primitive and names event types (new). L5(cont) explains memory-independence (new mechanism angle). L7 gives the causal WHY (LLM forgetful vs hooks don't forget) -- payoff, not restatement. L12 gives concrete must-happen examples (verifier, pre-commit guard, session-start loader) -- new. L14 introduces the 1:1 verifier-to-hook cardinality -- a new specific claim. L18 'A menu, not a checklist.' is the one piece of information the maintainer block (L27) says neither slide nor prompt otherwise states -- new content, not a koan restating the header.",
+   "na_reason": null,
    "fix_hint": null,
    "blocking": false,
    "chunks_flagged": []
@@ -148,7 +160,8 @@
    "rule_index": 17,
    "rule_lead": "A retitled slide re-earns its bullets against the new header.",
    "verdict": "PASS",
-   "evidence": "Ran `git log -p --follow -- curriculum/lectures/hooks-always-fire.md | grep -nE '^\\+## |^-## '` this session -> both '## Hooks always fire' and '## Hooks for must-happen, prompts for taste' appear ONLY as additions, both introduced together at file creation (commit 0f46e4a2, 'Hooks always fire becomes its own lecture'); no removal/rename line for either header at any point since. No retitle-without-re-earn event on this file's history.",
+   "evidence": "Ran `git log -p --follow -- curriculum/lectures/hooks-always-fire.md | grep -nE '^\\+## |^-## '` this session -> both '## Hooks always fire' and '## Hooks for must-happen, prompts for taste' appear ONLY as additions (lines 514, 519 of the log output), introduced together at file creation; no removal/rename line for either header anywhere in history. No retitle-without-re-earn event on this file.",
+   "na_reason": null,
    "fix_hint": null,
    "blocking": false,
    "chunks_flagged": []
@@ -161,8 +174,8 @@
    "evidence": "grep -inE 'you (did|saw|wrote|built|ran|caught|made)' over body lines 1-16 -> 0 hits. No \"the X you did/saw\" construction naming a completed exercise beat anywhere in the current body -- nothing for this rule to strand.",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "3af3a8198c6fcddc47fcbe3f213da03332591686e4bb8ca1e07fa154c3927a87",
-   "carried_shape": "1903646330181a65"
+   "carried_from": "4152c29900226b29b4c957055099a0145cf39ad244107dd6c21f0824bfe9ad7f",
+   "carried_shape": "5c20e18b3d5c6c2f"
   },
   {
    "compendium": "check_slides.md",
@@ -172,8 +185,8 @@
    "evidence": "grep -inE 'guess|predict|before you (watch|see|run)' over body lines 1-16 -> 0 hits. The 2026-08-29 compaction removed the last stage direction (\"This one runs on the screen. Watch the list come back rather than typing along\"); the remaining prompt is a plain trainer-run demo with no guess-then-reveal structure for a reveal to land ahead of.",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "3af3a8198c6fcddc47fcbe3f213da03332591686e4bb8ca1e07fa154c3927a87",
-   "carried_shape": "1903646330181a65"
+   "carried_from": "4152c29900226b29b4c957055099a0145cf39ad244107dd6c21f0824bfe9ad7f",
+   "carried_shape": "5c20e18b3d5c6c2f"
   },
   {
    "compendium": "check_slides.md",
@@ -183,8 +196,8 @@
    "evidence": "grep -inE '^## *(Phase [0-9]|[0-9]+\\.)' over body -> 0 hits; no `## Phase N:` or `## N.` step headers in this file. Ran `node scripts/check-slide-numbering.js --file curriculum/lectures/hooks-always-fire.md` this session -> \"OK — 1 files, Phase/Step numbering consistent.\", exit 0.",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "3af3a8198c6fcddc47fcbe3f213da03332591686e4bb8ca1e07fa154c3927a87",
-   "carried_shape": "1903646330181a65"
+   "carried_from": "4152c29900226b29b4c957055099a0145cf39ad244107dd6c21f0824bfe9ad7f",
+   "carried_shape": "5c20e18b3d5c6c2f"
   },
   {
    "compendium": "check_slides.md",
@@ -194,26 +207,19 @@
    "evidence": "grep -n '\\[.*\\](' over body -> 0 hits. No markdown links of any kind in the current body.",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "3af3a8198c6fcddc47fcbe3f213da03332591686e4bb8ca1e07fa154c3927a87",
-   "carried_shape": "1903646330181a65"
+   "carried_from": "4152c29900226b29b4c957055099a0145cf39ad244107dd6c21f0824bfe9ad7f",
+   "carried_shape": "5c20e18b3d5c6c2f"
+  }
+ ],
+ "suggestions": [
+  {
+   "rule": "check_slides.md §9",
+   "line": 12,
+   "now": "**Must happen goes in a hook**; recommended stays in a prompt.",
+   "proposed": "**Must happen** goes in a hook; recommended stays in a prompt."
   }
  ],
  "blocking_findings_count": 0,
- "drift_pin": "4a722813",
- "drift_reason": "rule-drift",
- "drift_rules_reread": [
-  "slides §1 -- refetched via rule.js, wording unchanged from brief; verdict PASS (no referent violations in current body)",
-  "slides §9 -- refetched via rule.js, wording unchanged from brief; verdict PASS (bold budget within limits, one 6-word law-handle, corpus precedent checked)",
-  "slides §10 -- refetched via rule.js, wording unchanged from brief; verdict PASS (lecture confirmed present in composed deck via module include-link)"
- ],
- "accept_notes_found": [
-  "L19: Origin (2026-08-25, Antti-directed) -- extraction from what-packaging-is.md, verifier references generalized",
-  "L21: Slide 2 shape (2026-08-29, Antti-directed) -- primitive + prompt + one line only, no stage direction, tail carries the menu-not-checklist line",
-  "L27: Delivery -- trainer's spoken run-cue is load-bearing since the 2026-08-29 compaction removed the body's own run-this cue",
-  "L31: backing-block provenance -- rows moved verbatim from what-packaging-is.md's ledger, 2026-08-25",
-  "L40: source stamp -- cc-hooks-docs checked:2026-08-28 result:OK due:cohort",
-  "L47: Quality line -- compendium-audited 2026-08-29"
- ],
- "notes": "Prompt block ({{prompt:what-packaging-is-1}}) expanded via scripts/expand-md.js and read as fenced/exempt content per template Scope-and-chunking; only the surrounding slide prose (L5-6, L10-11, L15) and the two headers were judged against check_slides.md rules.",
- "nonblocking_findings_count": 0
+ "nonblocking_findings_count": 0,
+ "notes": "Prompt block ({{prompt:what-packaging-is-1}}) expanded via scripts/expand-md.js and read as trainer-demo content exempt from body-prose rules per template scope; only the surrounding slide prose (L5-7, L12-18) and the two headers were judged against check_slides.md rules. Diff against pin 874f921c touches only the maintainer block (Quality-line reorder, Origin/Placement text split, backing-block provenance line trim) -- the body (lines 1-19) is byte-identical in content to the prior instance's judged body, confirmed via git diff. shape_hash matched the prior instance so rules 3, 4, 11, 13 were parked N/A by prefill-instance.js and spliced in via --merge rather than re-derived."
 }

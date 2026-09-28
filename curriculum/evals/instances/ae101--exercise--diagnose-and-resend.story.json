@@ -1,197 +1,194 @@
 {
- "class": "story",
- "file": "curriculum/exercises/diagnose-and-resend.md",
- "training": "ae101",
- "verdict": "PASS",
- "body_sha": "654845cfd242d66f1d174bd673a83af093aadabd720a0bf84a96ea3ddc843ae5",
- "shape_hash": "0d572e3ebce46a4c",
- "pin": "9edae2ef",
- "module_mood_contract": "learning through contrast — \"I can feel what packaging adds now; I couldn't have read it as a lecture\"",
- "trace_status": "regenerated",
- "accept_notes_found": [
-  "L149 (`## Check both files are for the agent, not you` is cut, 2026-08-25) — forecloses re-flagging the missing section as a dropped forcing function or an unauthorised body cut.",
-  "L151 (The M4 return is never framed as a failed run, 2026-08-27) — governs the epistemic-not-punitive framing verified this session at line 27 and in the module vocabulary; forecloses re-flagging 'un-packaged run' terminology.",
-  "L165 (Phase 4 runs 10, 2026-08-30) — dated authorisation for the Phase 4 timing cut and the Timebox-check callout evaluated this session under check_pedagogy §16's suggestion-register boundary.",
-  "L147 (the 10% recall paragraph, undated design-rationale note) — defends the `## Push for quotes, then make your agent dig deeper` section (renamed this pass, quote updated in the same commit) as the third, deliberate instance of a cross-module prior; forecloses re-flagging it as unmotivated repetition under §9b."
- ],
- "rules_evaluated": [
-  {
-   "compendium": "check_lectures.md",
-   "rule_index": 4,
-   "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
-   "verdict": "PASS",
-   "evidence": "Ran `grep -n '^## ' curriculum/exercises/diagnose-and-resend.md` this session: 11 headers, no duplicates. One renamed since the pinned diff: 'Make Claude show its work, make it dig' -> 'Push for quotes, then make your agent dig deeper' (commit 38fd462f). Squint: covering the two bullets underneath (push back on ungrounded generalisation; ask Claude to locate its own quotes in the transcript), the new header names both moves rather than one vague one — an improvement over the prior header, not a regression. Truth: the body underneath does exactly 'push for quotes' (line 43: 'If a lens comes back without a quote from the run, send it back for one') and 'make your agent dig deeper' (line 44: 'Ask Claude to show you where two or three of its quotes appear in the transcript'). Remaining 10 headers unchanged from the prior pin and re-checked clean: no empty containers, no bare arc labels, no unsupported universals.",
-   "fix_hint": null,
-   "blocking": false
+  "class": "story",
+  "file": "curriculum/exercises/diagnose-and-resend.md",
+  "training": "ae101",
+  "verdict": "PASS",
+  "body_sha": "4917ca2677a92c8721754e642cf8e00176ed203d21bcaabdbbc8aa3885adfe9d",
+  "shape_hash": "fc8773576f55979c",
+  "module_mood_contract": "learning through contrast — \"I can feel what packaging adds now; I couldn't have read it as a lecture\"",
+  "trace_status": "regenerated",
+  "mood_summary": {
+    "phase_scores": [8, 8, 9, 8, 8],
+    "close_score": 8,
+    "any_below_8": false,
+    "stealing_the_mood": []
   },
-  {
-   "compendium": "check_lectures.md",
-   "rule_index": 5,
-   "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
-   "verdict": "PASS",
-   "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/diagnose-and-resend.md --report` this session. Output: 10 counted slides, largest first: 191w/4 bullets (Phase 3), 185w/0 (Send it off), 141w/0 (Phase 5), 129w/3 (Phase 1), 111w/2 (Phase 2), 109w/0 (Phase 4), 98w/2 (the renamed Phase-1 sub-header slide), 73w/4 (The reference and plan.md), 32w/1 (Prove the verifier fires), 9w/0 (Approve). Summary: 'oversized: 0 — every slide is within limits' against the 210w/6-bullet ceiling. The renamed header's own slide (98w/2) sits well under the bound; the flag-conditional-to-flat sentence in 'Send it off' shortened that slide slightly (185w, still under its own prior 179w+ headroom).",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 16,
-   "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-   "verdict": "PASS",
-   "evidence": "Diffed 9edae2ef..HEAD this session: the two body changes in this pass are a section-header rename (line 41) and a flag-conditional-to-flat rewrite of the Phase-5 opening sentence (line 133, see §4 below) — neither moves pedagogy into or out of a fence. Re-ran `node scripts/expand-md.js curriculum/exercises/diagnose-and-resend.md` and confirmed all six fenced prompts (diagnose-and-resend-1..5, ae101-m5-rerun-packaged / ae101-m5-clear-before-rerun) still carry their load-bearing asks verbatim; the quote-required diagnosis (Phase 1), the backwards-mapping (Phase 2), the shape-named build-and-save (Phase 3), and the grill-before-save (Phase 4) are all untouched fence content. The 'push for quotes' bullets (lines 43-44, under the renamed header) remain optional coaching in the §16 carve-out register ('optional push-backs/refinements... can live in body') — the core forcing function (quote-or-it-doesn't-count) is already structurally inside `diagnose-and-resend-2`'s ask, not newly asserted by this prose. HARM check: the harm is pedagogy migrating into body prose a speed-runner skips; nothing migrated this pass.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 27,
-   "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
-   "verdict": "PASS",
-   "evidence": "Ran `sed -n '1,142p' curriculum/exercises/diagnose-and-resend.md | grep -inE \"discuss with|neighbour|neighbor|share what|tell the room|pair up|the person next to|compare with|talk to your\"` this session over the full current body region (maintainer cut at line 143): zero matches, exit 1. Every sentence in the two changed spots (the renamed header's bullets; the Phase-5 opener) concerns the artefact or the agent, never the room.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_strategy_tie_in.md",
-   "rule_index": 1,
-   "rule_lead": "Mood contract named.",
-   "verdict": "PASS",
-   "evidence": "Regenerated the persona trace this session: computed sha256 over each phase's raw line range against the live body and found Phase 1 (lines 23-44) and Phase 5 (lines 105-141) mismatched the cached phase_sha (both exactly matched the sha at pin 9edae2ef, confirming the boundary convention, then diverged against HEAD); Phases 2-4 unchanged (confirmed both by the git diff touching nothing in their line ranges and, for phase 1/5's own ranges, by exact hash match at the pin). Regenerated Phase 1 and 5 score 8 and 8 (unchanged from cache); full set: 8,8,9,8,8, close 8, any_below_8: false. Read `content-strategy-agentic-engineering-101.md` § M5-in-detail this session (bosser-strategy skill, table row + spirit paragraph): 'Learning through contrast — \\\"I can feel what packaging adds now; I couldn't have read it as a lecture\\\"' — matches this file's module_mood_contract field verbatim.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_strategy_tie_in.md",
-   "rule_index": 2,
-   "rule_lead": "Epistemic mood ≠ punitive mood.",
-   "verdict": "PASS",
-   "evidence": "Ran `sed -n '1,142p' curriculum/exercises/diagnose-and-resend.md | grep -inE 'failed'` this session: zero occurrences. Line 27 (unchanged since pin): 'You're diagnosing, not fixing. The un-packaged run was supposed to underdeliver. What came back is data, not blame.' Locked in by the dated maintainer note (line 151, 2026-08-27): 'Failure names the failure modes inside the run, not the run.' The two edited spots this pass (header rename, Phase-5 opener) do not touch this framing.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_strategy_tie_in.md",
-   "rule_index": 3,
-   "rule_lead": "Lead with discipline, not failure mode.",
-   "verdict": "PASS",
-   "evidence": "Re-ran the header list this session (11 headers, see §4 lectures row above): title 'Diagnose and *package*' plus every `##` header leads with a discipline or action (Read, [Push for quotes / dig deeper], Match, Build, Prove, [reference and plan.md], Write, Approve, Re-send, Send it off, Bring home) — the renamed header follows the same pattern as the one it replaced. No header is titled by a failure word; the three failure-mode names (drift, context rot, plausible-but-wrong) stay content the disciplines act on.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_strategy_tie_in.md",
-   "rule_index": 4,
-   "rule_lead": "Strategy-fidelity check.",
-   "verdict": "PASS",
-   "evidence": "Re-read `content-strategy-agentic-engineering-101.md` § M5-in-detail this session in full. Front-run check, the live concern this pass: line 133's opener was rewritten (commit 4307de38, 'M5's close-out line says what arrives, not what M6 opens on') from a flag-conditional sentence naming 'what Module 6 opens on' in the module variant, to a flat 'The session closes with the agent's own report of what it did.' This REMOVES a pre-announcement of Module 6's opening move from inside M5, which is a front-run reduction, not a regression — the commit message states the intent directly and it matches this rule's own front-run-check facet. The hand-off itself is not lost: `learn-from-the-test.md` (grep confirmed this session) carries its own '## Bring to Module 6' section, flag-gated the same way, positioned after this exercise in reading order — the canonical home for that claim per `check_strategy_tie_in.md §8` (doc/structure-ownership logic applied one level down: the module file owns the module-to-module arc statement, the exercise owns its own artefact). Ran `sed -n '1,142p' <file> | grep -inE '\\beval\\b|Ronacher|three-pattern'` this session: zero hits — eval-embargo and three-pattern-reveal-reserved-for-the-closer both still hold. Mood-doesn't-resolve-early / Big-Idea fidelity: unaffected by this pass, title and phase structure unchanged. Prior instance's one open TODO here (private doc's stale 'four phases'/'module-owned re-send' language for M5) is now RESOLVED: grepped the current doc for 'four phases' and 'owned by the module file' this session — both hits belong to M4/M3 sections, not M5; the M5-in-detail section carries no such stale claim. No TODO carried forward.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_strategy_tie_in.md",
-   "rule_index": 8,
-   "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "Rule binds the STRATEGY DOC's own content (doc-must-not-restate-structure direction); this judge is auditing a curriculum exercise file, not the strategy doc, so the rule has no target here regardless of class ownership.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_lectures.md",
-   "rule_index": 1,
-   "rule_lead": "Meta-frame lectures = closers, not openers.",
-   "verdict": "N/A",
-   "evidence": "Rule governs where a meta-frame LECTURE is scheduled in module sequence. This is an exercise file; it schedules no lecture and this session's diff (timing figures + one section cut, all inside the exercise's own phases) touches nothing about lecture placement. HARM check: the harm is a naming-the-pattern lecture landing before the room has lived the pattern — no purchase here.",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "0653b629895d904bebd0c26f95d13b3d98d211f0938d4fcc521556a9e6ff9d24",
-   "carried_shape": "0d572e3ebce46a4c"
-  },
-  {
-   "compendium": "check_lectures.md",
-   "rule_index": 2,
-   "rule_lead": "Minimal lecturing before contrast-mood exercises.",
-   "verdict": "N/A",
-   "evidence": "Rule governs pre-exercise LECTURE dosage (module-open lectures, not this file). This file carries zero lecture content of its own and the diff added none.",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "0653b629895d904bebd0c26f95d13b3d98d211f0938d4fcc521556a9e6ff9d24",
-   "carried_shape": "0d572e3ebce46a4c"
-  },
-  {
-   "compendium": "check_lectures.md",
-   "rule_index": 3,
-   "rule_lead": "No cross-module sequencing in lecture bodies.",
-   "verdict": "N/A",
-   "evidence": "Rule text scopes explicitly to LECTURE bodies; this is an exercise. Its one cross-module callback (line 131, 'the repo read in Module 1' / the flagged 'what Module 6 opens on' sentence) is unchanged by this session's diff (only Phase 1/4 timing, the Phase-4 section cut, and the Phase-5 header trim moved) and was already covered by the maintainer's §9b defence for the M1 reference.",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "0653b629895d904bebd0c26f95d13b3d98d211f0938d4fcc521556a9e6ff9d24",
-   "carried_shape": "0d572e3ebce46a4c"
-  },
-  {
-   "compendium": "check_lectures.md",
-   "rule_index": 6,
-   "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
-   "verdict": "N/A",
-   "evidence": "Rule text explicitly excludes exercise prompts ('Not covered: exercise prompts... all of which the student runs themselves'). Every `{{prompt:...}}` in this file is an exercise prompt the student pastes into their own session; none moved this diff.",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "0653b629895d904bebd0c26f95d13b3d98d211f0938d4fcc521556a9e6ff9d24",
-   "carried_shape": "0d572e3ebce46a4c"
-  },
-  {
-   "compendium": "check_strategy_tie_in.md",
-   "rule_index": 5,
-   "rule_lead": "Strategic themes recur in Key Concepts.",
-   "verdict": "N/A",
-   "evidence": "Module-only section (student-facing `## Key Concepts` heading). This is an exercise file; it carries no Key Concepts section, and the diff added none. `learn-from-the-test.md` owns this rule for the module.",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "0653b629895d904bebd0c26f95d13b3d98d211f0938d4fcc521556a9e6ff9d24",
-   "carried_shape": "0d572e3ebce46a4c"
-  },
-  {
-   "compendium": "check_strategy_tie_in.md",
-   "rule_index": 6,
-   "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
-   "verdict": "N/A",
-   "evidence": "Module-only section; not present in this exercise file.",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "0653b629895d904bebd0c26f95d13b3d98d211f0938d4fcc521556a9e6ff9d24",
-   "carried_shape": "0d572e3ebce46a4c"
-  },
-  {
-   "compendium": "check_strategy_tie_in.md",
-   "rule_index": 7,
-   "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
-   "verdict": "N/A",
-   "evidence": "Module-only section; not present in this exercise file.",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "0653b629895d904bebd0c26f95d13b3d98d211f0938d4fcc521556a9e6ff9d24",
-   "carried_shape": "0d572e3ebce46a4c"
-  }
- ],
- "mood_summary": {
-  "phase_scores": [
-   8,
-   8,
-   9,
-   8,
-   8
+  "rules_evaluated": [
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 1,
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "exercise file, not a lecture",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 2,
+      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "governs dosage of the LECTURES preceding this exercise (reading-the-return.md, hooks-always-fire.md), not the exercise itself",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 3,
+      "rule_lead": "No cross-module sequencing in lecture bodies.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "lecture-body rule; this file is an exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 4,
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "verdict": "PASS",
+      "evidence": "Spot-checked the 10 `##` headers against the squint test: 'Phase 2: Match each failure to the check that catches it' and 'Prove the verifier actually fires' each name the one specific move; 'The reference and plan.md' names the two artefacts as definitional handles (maintainer-approved emphasis); short headers ('Approve', 'Send it off') name a specific operational action (the lock-in gate, the final re-send), not a generic empty container ('The move', 'Wrap-up') or a bare arc label. No header asserts a universal or dropped qualifier the body doesn't support. No two of the 10 headers repeat.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 5,
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/diagnose-and-resend.md --report → oversized: 0; largest slide 'Phase 3: Build the verifier for your worst failure' 191w/4 bullets against the 210w/6-bullet limit.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule's own text excludes exercise prompts ('Not covered: exercise prompts... all of which the student runs themselves')",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "No authored pause/compare/share cues anywhere in the body. Closest candidate is the header 'Push for quotes, then make your agent dig deeper' — but its bullets direct push-back at the AGENT'S diagnosis ('Push back where Claude generalises... Ask Claude to show you where two or three of its quotes appear'), not at a peer or the room, so it stays about the work per the rule's own diagnostic.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
+      "verdict": "PASS",
+      "evidence": "Persona trace (regenerated, bound to body_sha ec74c89a...): per-phase mood_score [8,8,9,8,8], close 8 — all ≥8, none below the teaching-beat floor. module_mood_contract 'learning through contrast — \"I can feel what packaging adds now; I couldn't have read it as a lecture\"' matches content-strategy-agentic-engineering-101.md's M5 'Mood: learning through contrast' line verbatim.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "PASS",
+      "evidence": "Phase 1 bullet, line ~24: \"You're diagnosing, not fixing. The un-packaged run was supposed to underdeliver. What came back is data, not blame.\" Not-knowing/diagnostic framing throughout; no shame language ('you messed up') anywhere in body.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "PASS",
+      "evidence": "Title 'Diagnose and *package*' and the top-widget line 'The point: packaging you built against your own failure beats packaging you guessed at.' lead with the discipline (diagnosis-driven packaging), not a failure label; per the maintainer's own dated note the M4 return is explicitly never framed as a failed run, only the failure MODES inside it are named.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "PASS",
+      "evidence": "Cross-checked against content-strategy-agentic-engineering-101.md § M5-in-detail: (a) eval embargo honored — `grep -i '\\beval\\b' curriculum/exercises/diagnose-and-resend.md` hits only the backing/sources block (lines 188-206), zero occurrences in student-facing body; (b) verifier-shape handles match the doc's shipped names exactly (LLM judge / Deterministic shell-hook / Ralph re-feed), body never uses 'background-agent verifier'; (c) Ronacher/'three-pattern' naming stays out of the body (only in the backing block, per the doc's 'nothing may name the three pieces before the M4 evidence is read' and the file's own Watch-for 'Three-pattern naming pre-empted'); (d) the top-widget's 'What you build: a verifier, a reference, and a plan.md' is the corpus-wide, template-mandated `**What you build:**` widget slot (identical pattern in every other exercise file, e.g. fix-tests-first.md, set-the-markers-send-it-off.md, both carrying maintainer notes defending the same concrete-object-list convention) — it names the artefact TYPES, not the theory/attribution the reveal protects, so it does not front-run the closing lecture.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Key Concepts is a module-file section; this is an exercise file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Key Concepts is a module-file section; this is an exercise file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "What You'll Learn is a module-file section; this is an exercise file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule-drift reread (rule moved) — binds the strategy DOC's own restraint, not a claim this exercise file makes; verified content-strategy-agentic-engineering-101.md's M5 section explicitly disclaims restating structure ('Structure lives in the files, not here... Do not restate structure here'), so no violation to attribute to this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "check_workshop.md does not apply",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no beat's output belongs to the group — signals.group_beat_markers=false, entire exercise is solo student work (Phases 1-5 all individual)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "judges/story.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Teaching moment lands",
+      "verdict": "PASS",
+      "evidence": "Trace: zero confusion_flags and zero under_scaffolded_phases across all 5 phases; close.is_me_rating 9/10. The verifier-building teaching moment (Phase 3, mood 9) and the diagnosis-drives-packaging arc survive the regenerated pass's small wording edits per each phase's mood_note — reasonable persona variation does not skip it.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    }
   ],
-  "close_score": 8,
-  "any_below_8": false,
-  "stealing_the_mood": [],
-  "teaching_moment_lands": "The named teaching moment ('packaging you built against your own failure beats packaging you guessed at') is unaffected by this session's two body edits. Both are register/scope tightenings: the Phase-1 sub-header now names both of its section's moves instead of one vague one, and the Phase-5 opener stops pre-announcing Module 6's teaching moment from inside M5 while the actual hand-off stays intact one level up, in the module file's own 'Bring to Module 6' section. All fenced forcing functions (quote-required diagnosis, verifier build-and-smoke-test, reference+plan.md grill) are untouched in substance."
- },
- "blocking_findings_count": 0,
- "notes": [
-  "check_prompts.md (49 rules) and check_workshop.md (16 rules) were assembled into the story class-brief by derive-class-brief.js but neither is claimed by story.md's own Completeness Contract (which names only check_lectures as primary owner, plus a named subset of check_pedagogy / check_strategy_tie_in). Per the dispatch preamble ('evaluate ONLY the compendiums your template puts in scope'), no rows emitted for either compendium — check_prompts.md is Class B's (behavior judge) territory per check_pedagogy.md §43(c); check_workshop.md is wholesale N/A for this file (no group-adjudicated beat) and pedagogy's/workshop's to mark.",
-  "Persona trace regenerated at curriculum/evals/sim-cache/ae101--exercise--diagnose-and-resend.persona.json: Phase 1 and Phase 5 phase_sha updated to match the current body (both changed since the prior cache, which matched pin 9edae2ef exactly); Phases 2-4 kept as cached, confirmed unchanged by the pin..HEAD diff."
- ],
- "nonblocking_findings_count": 0
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "Drift-rule reread (pin 54577f39, rule-drift): pedagogy §61/§61a/§61b (verify-mechanism-before-surgery / flagged-item discipline / approval-gate-cards) and §66 (three-pass build) are authoring/process rules with no content in this file to check against — N/A, not applicable to story's ledger. prompts §35 (grill/persistence 5-element shape) and §36 (wide-prompt paragraph splitting) verified compliant by inspection of the expanded prompt fences (Phase 4's grill prompt carries the lock-in gate (a), sectional-edit instruction (b), three-at-a-time cadence (c); the slowness-watch blockquote (d) sits right after the fence; '## Approve' gives the trigger a home (e); no prompt runs as one dense continuous move) — these belong to check_prompts.md, which is outside story's primary lane per the dispatch preamble ('if you notice a problem belonging to another class, put it in notes, never in rules_evaluated'), so recorded here rather than as rows. prompts §43 already carries a maintainer accept-note naming this exact file's `ae101-m5-rerun-packaged` fence as the canonical unattended-by-design case; current wording of §43 still contains that carve-out verbatim. Trace was stale against HEAD at dispatch start (content_sha bb34ee58... vs body_sha ec74c89a...); re-bound via bind-trace.js before judging — the trace's own REGENERATED mood_notes already accounted for every diff hunk between pin 54577f39 and HEAD, so no re-simulation was needed beyond the rebind."
 }

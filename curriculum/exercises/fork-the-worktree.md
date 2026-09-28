@@ -42,8 +42,8 @@ Ask Claude to fork the worktree and copy your gitignored files across.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-06 (writing@874f921c story@874f921c technical@874f921c behavior@64d17eea pedagogy@1abb84c6 strategy@874f921c slides@874f921c)
-- judges @64d17eea: writing PASS (4 findings see instances/ae101--exercise--fork-the-worktree.writing.json), story PASS (verify-refuted), technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS (verify-refuted), slides PASS
+**Quality:** compendium-audited 2026-09-28 (writing@2d6b2b01 story@2d6b2b01 technical@2d6b2b01 behavior@64d17eea pedagogy@2d6b2b01 strategy@2d6b2b01 slides@2d6b2b01)
+- judges @2d6b2b01: writing PASS (1 finding see instances/ae101--exercise--fork-the-worktree.writing.json), story PASS (verify-refuted), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **View summary:** You fork a sibling git worktree from the commit your un-packaged run started at, copy the gitignored rules and observations across by prompt, and check both landed, so the packaged re-send changes one variable rather than two.
 

@@ -19,8 +19,8 @@ A menu, not a checklist.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-06 (writing@874f921c story@874f921c technical@874f921c behavior@64d17eea pedagogy@d5aa7e3d strategy@874f921c slides@874f921c)
-- judges @64d17eea: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-28 (writing@2d6b2b01 story@2d6b2b01 technical@2d6b2b01 behavior@64d17eea pedagogy@2d6b2b01 strategy@2d6b2b01 slides@2d6b2b01)
+- judges @2d6b2b01: writing PASS (1 finding see instances/ae101--lecture--hooks-always-fire.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Origin (2026-08-25, Antti-directed, extracted from `what-packaging-is.md`):** doable for laymen, and it helps complete the exercise — the student meets the hook primitive before Phase 3 asks them to pick a verifier shape and wire one. Verifier references read generically (*"a verifier"*, not *"the verifier you just wrote"*) because at this placement the student has not built one yet; do not restore back-reference wording. Untiered: core material, not a skippable tail.
 

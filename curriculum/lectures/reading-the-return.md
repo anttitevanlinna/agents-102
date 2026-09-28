@@ -24,8 +24,8 @@ The arc is *test → learn → encode*. The un-packaged send-off was the test. T
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-05 (writing@874f921c story@874f921c technical@874f921c behavior@1c765f2 pedagogy@874f921c strategy@874f921c slides@c0c37913)
-- judges @874f921c: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/ae101--lecture--reading-the-return.pedagogy.json), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-28 (writing@2d6b2b01 story@2d6b2b01 technical@2d6b2b01 behavior@1c765f2 pedagogy@2d6b2b01 strategy@2d6b2b01 slides@2d6b2b01)
+- judges @2d6b2b01: writing PASS, story PASS, technical PASS (1 finding see instances/ae101--lecture--reading-the-return.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS (verify-refuted, 1 finding see instances/ae101--lecture--reading-the-return.slides.json)
 
 **Practitioners *hit* the three; they do not *name* them the same.** The slide-2 lead says *"Practitioners hit the same three"* deliberately: the phenomena are well attested across named accounts; only **context rot** is field vocabulary (Chroma study, Anthropic guidance, Ronacher + Osmani unprompted); *goal drift* and *plausible-but-wrong* are our labels for phenomena the field describes without a settled word — legitimate for a curriculum, not to be dressed as consensus. Evidence + stance in the backing block. **Writing/story judges: do not restore "name the same three" or "converge on this vocabulary."** The lens framing claims no per-session occurrence.
 

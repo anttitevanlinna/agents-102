@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
   "verdict": "PASS",
-  "body_sha": "0dba434396751ab2a42c0625c486c82021a675219d4368b6b65fd28de70cd4e9",
+  "body_sha": "a42444a4ea912480af9551b5489ad3c39ef0d4a3de6faaf7d5c2cba5a5877fef",
   "shape_hash": "94301cda9e6a5a78",
   "rules_evaluated": [
     {
@@ -235,7 +235,8 @@
       "rule_index": 36,
       "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
       "verdict": "PASS",
-      "evidence": "Maintainer block, added at the 2026-09-03 polish pass (raw line 170): \"the done-done prompt's four points stay one sentence, Antti's own wording approved 2026-08-23 (`check_prompts.md §36`). Judges should not re-file either.\" Dated accept-note directly adjudicating this exact prompt against this exact rule.",
+      "evidence": "prompt curriculum/prompts/ae101-m5-done-done.md, inlined at L33 via {{prompt:ae101-m5-done-done}}: the four done-done points stay one sentence ('1) ... 2) ... 3) ... 4) ...') rather than split into paragraphs; L173 maintainer block: \"the done-done prompt's four points stay one sentence, Antti's own wording approved 2026-08-23 (`check_prompts.md` §36)\" — the maintainer already ruled on this exact rule against this exact prompt",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -1474,13 +1475,12 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 35,
-      "rule_lead": "Repeated Q&A → premature re-edits.",
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
       "verdict": "N/A",
-      "evidence": "Single-shot Q&A; doesn't set up multi-turn dialog affecting an artifact file.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "653c8a0f3d13f47e78fb2f3c74f69811b0c841b6d4059b0054281f2938deeaed",
-      "carried_shape": "94301cda9e6a5a78"
+      "evidence": null,
+      "na_reason": "the file's only prompt block ({{prompt:ae101-m5-done-done}}) is a one-shot chat question, not multi-turn dialog affecting an artifact file",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
@@ -1520,11 +1520,10 @@
       "rule_index": 43,
       "rule_lead": "Long-running prompts stream progress — never go silent.",
       "verdict": "N/A",
-      "evidence": "Single-turn Q&A, not a multi-minute long-running task.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "653c8a0f3d13f47e78fb2f3c74f69811b0c841b6d4059b0054281f2938deeaed",
-      "carried_shape": "94301cda9e6a5a78"
+      "evidence": null,
+      "na_reason": "no long-running prompt fence is authored in this file's own body; the packaged re-send prompt lives in exercises/diagnose-and-resend.md, a separate instance",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
@@ -1569,6 +1568,26 @@
       "blocking": false,
       "carried_from": "653c8a0f3d13f47e78fb2f3c74f69811b0c841b6d4059b0054281f2938deeaed",
       "carried_shape": "94301cda9e6a5a78"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 61,
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no SKILL.md/framework/tool change proposed anywhere in this module body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 66,
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule governs the authoring/build workflow, not shipped body content, and this is a finished sim-passed module",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,
@@ -1596,5 +1615,13 @@
     "Line 149-150 (2026-08-27): verifier-shape handle is 'LLM judge', not 'background-agent verifier' — vocabulary decision, not a technical-rule matter but confirms the prompt/exercise menu language is deliberate.",
     "§2b itself (check_prompts.md, current wording): names this exact file's done-done fence as its worked lead-in-exemption calibration example."
   ],
-  "nonblocking_findings_count": 1
+  "nonblocking_findings_count": 1,
+  "scope": "drift",
+  "drift_rules": [
+    "check_pedagogy.md §61",
+    "check_pedagogy.md §66",
+    "check_prompts.md §35",
+    "check_prompts.md §36",
+    "check_prompts.md §43"
+  ]
 }

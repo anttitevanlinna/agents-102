@@ -42,7 +42,7 @@ Every arrow in the execution changes state. It is controlled only when the platf
 
 That pattern wraps the whole engineering loop, not one cloud component. Before automating another responsibility, point to one transition and ask: **who may cause it, what would prove it was right, and how would we recover if it was wrong?**
 
-Module 8 keeps the same transition and adds the data question: what may this step read, copy, infer, and retain for this purpose?
+A data review keeps the same transition and adds another question: what may this step read, copy, infer, and retain for this purpose?
 
 <!-- maintainer -->
 

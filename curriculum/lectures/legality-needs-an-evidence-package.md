@@ -33,11 +33,11 @@ Each state needs a boundary, an owner for unresolved decisions, and evidence tha
 ## Extend the controlled transition
 <!--tier:1-->
 
-Module 7 asked who may change state, what evidence justifies the change, and how the system can stop or recover. A data boundary adds four annotations to that same transition: the data used, the purpose, the decision owner, and the retention or deletion rule.
+The controlled transition still wraps every phase of the engineering loop. It names who may change state, what evidence justifies the change, and how the system can stop or recover. A data boundary adds four annotations to that same transition: the data used, the purpose, the decision owner, and the retention or deletion rule.
 
 This exposes two tensions instead of hiding them. Proof needs observation, but observation creates exposure. Useful autonomy needs authority, but safe autonomy limits authority.
 
-Before approving a transition, ask: **who may cause it, what data may it use and retain for this purpose, and what bounded evidence would justify or reverse it?**
+Before approving a transition, ask: **who may cause it, what data may it use and retain for this purpose, what bounded evidence would justify it, and how can the system stop or recover?**
 
 <!-- maintainer -->
 

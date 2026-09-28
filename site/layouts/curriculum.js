@@ -84,7 +84,8 @@
                 { slug: 'mcp-and-connectors',        title: 'MCP and connectors' },
                 { slug: 'multi-session-git',         title: 'Multi-session and Git: survival guide' },
                 { slug: 'prompt-anatomy',            title: 'Prompt anatomy: the named moves' },
-                { slug: 'agent-platform-challenge',  title: 'Agent platform challenge' }
+                { slug: 'agent-platform-challenge',  title: 'Agent platform challenge' },
+                { slug: 'unattended-agent-worked-execution', title: 'Unattended agent worked execution' }
             ]
         },
         // Preview / beta cut of Agentic Engineering 101: the first three modules,

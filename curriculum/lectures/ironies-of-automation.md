@@ -21,8 +21,8 @@ Trust and vigilance move in opposite directions. The same observed competence th
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-28 (writing@3bc472a1 story@3bc472a1 behavior@1c765f2 pedagogy@3bc472a1 strategy@3bc472a1 slides@3bc472a1)
-- judges @3bc472a1: writing PASS, story PASS, technical REVISE (0/2 see instances/ae101--lecture--ironies-of-automation.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-28 (writing@3bc472a1 story@3bc472a1 technical@22c4800d behavior@1c765f2 pedagogy@3bc472a1 strategy@3bc472a1 slides@3bc472a1)
+- judges @22c4800d: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Bainbridge is an argument, not a result.** The body reads *"This is a 1983 argument, not an AI take."* Bainbridge 1983 is filed in *Automatica* as a **Brief Paper**: a synthesis essay, no participants, no methods section, no data of its own, resting on Mackworth 1950 (sustained attention) and Edwards & Lees 1974 (experienced vs inexperienced operators). *Result* would claim an evidentiary form the paper does not have, in the one sentence whose job is to borrow its authority. **Writing/story judges: do not "restore the punch."** `essay` reads as a downgrade mid-projection and invites *"so it's just an opinion piece?"*; an explanatory clause spends a 2–3 min framing budget on epistemology this lecture does not teach. The disarming clause *not an AI take* is what does the work in the room.
 

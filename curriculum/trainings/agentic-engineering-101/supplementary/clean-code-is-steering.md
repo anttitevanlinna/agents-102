@@ -106,8 +106,8 @@ The more powerful the coding agent, the more important the steering system.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@b3143a4 pedagogy@b55cd28b strategy@324b81d7 slides@324b81d7)
-- judges @324b81d7: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-28 (writing@3bc472a1 story@3bc472a1 technical@3bc472a1 behavior@b3143a4 pedagogy@3bc472a1 strategy@3bc472a1 slides@3bc472a1)
+- judges @3bc472a1: writing PASS, story PASS, technical PASS (verify-refuted, 1 finding see instances/ae101--supplementary--clean-code-is-steering.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **CRAP gloss (`## Metrics are the dashboard, not the wheel`): `check_writing.md` §19 PASS by design.** Two nouns in the bold label, so a bare *"It"*/*"One"* fails `check_slides.md` §1 cold; opening on *CRAP* defines the metric rather than echoing the label. A pronoun proposal is the ping-pong; do not file.
 

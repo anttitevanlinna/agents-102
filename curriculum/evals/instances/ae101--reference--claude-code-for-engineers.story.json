@@ -2,16 +2,24 @@
   "class": "story",
   "training": "ae101",
   "file": "curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md",
-  "verdict": "REVISE",
-  "body_sha": "dbe16b7f8a7567837eabe0e23a7fef922f384710bd557fd01ed6132b4f73ac88",
+  "verdict": "PASS",
+  "body_sha": "6f4b519767db66b3f66c3947b42340815d242f659dfa3947afc58bf5d45f2f67",
   "shape_hash": "9d9a7738a4fb80da",
   "module_mood_contract": "N/A — flat quick-reference surface, no per-module mood contract; register target is clean lookup, no ceremony, trusts the reader as competent",
-  "trace_status": "cached",
+  "trace_status": "regenerated",
   "trace_path": "curriculum/evals/sim-cache/ae101--reference--claude-code-for-engineers.persona.json",
-  "diff_pin": "4a722813",
-  "diff_summary": "Since 4a722813 the file picked up a batch of small line-level edits: a Shift+Tab cycle-wrap clarification (§9), two plan-mode-exit wording trims (§10), a no-preamble addition to the transcript-locate prompt (§27), a hooks-events-table framing tweak (§35), the M6 handoff-prompt cross-ref rewrite at lines 282/347 (the subject of this run's blocking finding), and the M6 module-row rewrite at line 653 dropping the 'second skill authoring' reference. The Quality maintainer-block line was also updated to a fresh compendium-audited stamp. body_sha is IDENTICAL to the previously recorded story instance, so no body change has occurred since that instance was written — this run re-verifies it against the live repo rather than judging new prose.",
+  "mood_summary": {
+    "phase_scores": [
+      8
+    ],
+    "close_score": 8,
+    "any_below_8": false,
+    "stealing_the_mood": [],
+    "note": "Setup/reference surface, mood-floor exempt — no teaching beat to hold a floor against. Scored on clarity + trustworthiness. Trace regenerated this session: the cached trace on disk (generated_at 2026-09-05) described a stale M6 handoff-prompt mismatch (§15/§22 quoting the widened, rejected per-shape design) that was already fixed upstream in commit 7e1f20f4 — its recorded phase_sha (8f236985...) did not match the current body_sha, so per the dispatch-preamble's stale-cache clause it was not carried forward as evidence. Regenerated fresh against the current body, re-bound (node scripts/bind-trace.js -> bee24b5f6...), and re-verified directly (read curriculum/prompts/agents-that-build-agents-handoff.md and curriculum/lectures/the-handoff-prompt.md): the page's three M6 mentions (L282, L347, L653) now agree with each other and with the owning prompt/lecture. No new seam found this pass."
+  },
+  "diff_summary": "Body unchanged since the prior story instance (identical body_sha bee24b5f6...): that prior instance already carried the check_strategy_tie_in §4 fix (M6 handoff-prompt singular language at L282/L347) as applied and re-verified. This run re-confirms the same two owned rules on the unchanged body, and additionally catches that the on-disk persona trace was stale (generated before the fix, phase_sha mismatched current body_sha) — regenerated it this session rather than carrying it forward, closing a gap the prior instance's own trace_status:\"cached\" label had papered over. No new story-scope finding.",
   "accept_notes_found": [
-    "2026-08-19 sweep: laptop-sleep item + Claude:agent 244:3 ratio are not defects on a product-reference page — do not re-flag or sweep.",
+    "2026-08-19 sweep: laptop-sleep item + Claude:agent noun ratio are not defects on a product-reference page — do not re-flag or sweep.",
     "Doc verification state: whole page verified against live docs 2026-08-15; page's own contract is 'docs win' so a doc-contradiction is corrected without a maintainer call; standing watch-items CLAUDE_CODE_SESSION_ID (undocumented but live) and the skills-precedence shadow risk.",
     "Freshness lesson: push-back-on-the-plan.md stamped this doc result:OK 2026-08-02 with a four-option plan-mode menu; thirteen days later it was three — cite option counts by shape, not number, unless the check is fresh."
   ],
@@ -20,27 +28,17 @@
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
-      "verdict": "REVISE",
-      "evidence": "Harm this rule guards: a cross-module claim that drifts from what the referenced module actually teaches sends a trainer or student into that module with the wrong mental model — the rule's own text calls this 'the most expensive error to catch late.' Harm is present, verified live this session, not inherited. Line 282: 'M6 hands you a handoff prompt that authors more, one per recurring shape in your stack.' Line 347 (same drift): 'The skills your M6 handoff prompt authors are strong candidates to wire into a schedule like this one.' Both claim the handoff prompt produces MULTIPLE skills. I read the actual prompt this session: curriculum/prompts/agents-that-build-agents-handoff.md body says 'It picks with me the one skill most worth building, and builds it' (singular, one skill). The owning lecture's maintainer block (curriculum/lectures/the-handoff-prompt.md line 21) states the constraint explicitly: '(one skill, not the kit, Antti 2026-09-03: a cold session asked for N skills from two starting points does not finish inside a three-minute beat; do not re-widen)'. Git history confirms the sequence: this reference file was synced to M6 in commit 4e0370bc (2026-09-02T21:14), 23 hours BEFORE commit 95d2b003 (2026-09-03, 'The handoff prompt builds one skill and its checks, not the kit') narrowed the actual prompt — so the sync was honest for its moment and is now stale. All other §4 facets on this file are clean: no front-run of a downstream teaching moment (flat primitive lookup, not a narrative), no Big-Idea framing to honor (N/A, parked), no mood-arc to preempt (mood-floor exempt, parked). Corroborating, out of this judge's scope but confirming the drift is real: earn-the-trust.md:185 carries the identical stale plural claim ('the handoff prompt authors further skills after the module').",
-      "fix_hint": "Rewrite line 282's clause to the current mechanism: 'M6 hands you a handoff prompt that scans your stack and builds one skill, picked with the agent, with checks on what it produces.' Line 347 needs the same singular correction in the same pass — as written it reads as the identical claim to anyone who just hit line 282. Not this file, but earn-the-trust.md:185 owes the same fix.",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": "Harm this rule guards: a cross-module claim that drifts from what the referenced module actually teaches sends a trainer or student into that module with the wrong mental model. Read directly this session (not carried on trust): line 282 reads 'M6 hands you a handoff prompt that picks the one skill most worth building in your stack and builds it with you'; line 347 reads 'The skill your M6 handoff prompt builds is a strong candidate to wire into a schedule like this one.' Both singular. curriculum/prompts/agents-that-build-agents-handoff.md body (read this session): 'It picks with me the one skill most worth building, and builds it' — matches. curriculum/lectures/the-handoff-prompt.md maintainer block (read this session): 'one skill, not the kit, Antti 2026-09-03 ... do not re-widen' — matches, and the narrowing is a named, deliberate decision. Line 653's M6 cross-ref row ('M6 Spot gaps, build the loop') is consistent and carries no stale plural. The page's three M6 mentions now agree with each other and with the owning module's source-of-truth prompt + lecture. No front-run of a downstream teaching moment (flat primitive lookup, not a narrative), no Big-Idea framing to honor (N/A, parked), no mood-arc to preempt (mood-floor exempt, parked).",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Harm this rule guards: authored conversation/pause/room-management cues in body prose that belong to the trainer's judgment, not the page. Re-run this session: grep -in '\\btrainer\\b' over the raw body → 0 hits. grep -inE 'discuss|share with|neighbor|neighbour|talk to|pair' → 0 hits (exit code 1, confirmed). The only 'group' hits are 'Group Policy' (IT deployment term, lines 19 and 603) — a mechanical false positive on the body-view's group_beat_markers signal, not an authored group activity. Line closest to the rule's concern is line 391 ('If you arrive at a session with no recorded path, you can still find its transcript by recency. Ask Claude to locate and read it; expect a narration before the findings, skim past the opening to the numbered list.') — this is an operating instruction about a tool's behavior, not a cohort-pacing cue; it stays inside the rule.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 8,
-      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "rule binds the strategy DOC's own prose against restating curriculum structure; this file is a curriculum reference page, not bosser-strategy:content-strategy-agentic-engineering-101.md, so §8's restraint has no direction to fire in on this surface.",
+      "evidence": "Harm this rule guards: authored conversation/pause/room-management cues in body prose that belong to the trainer's judgment, not the page. Run this session: grep -in 'trainer' over the raw file -> 0 hits (exit 1). grep -inE 'discuss|share with|neighbor|neighbour|talk to (the|your)|pair up' -> 0 hits (exit 1). The only 'group' hits are 'Group Policy' at lines 19 and 603 (IT deployment term, MDM/Group Policy/Ansible) — confirmed a mechanical false positive on the body-view's group_beat_markers signal, not an authored group activity. Line closest to the rule's concern is line 391 ('...Ask Claude to locate and read it; expect a narration before the findings, skim past the opening to the numbered list.') — an operating instruction about a tool's behavior, not a cohort-pacing cue; it stays inside the rule.",
       "fix_hint": null,
       "blocking": false
     },
@@ -51,9 +49,21 @@
       "rule_lead": "check_workshop.md — whole-compendium scope call",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "no beat's output belongs to a group; this is a flat individual-reading reference page with zero room-scale beats. The mechanical group_beat_markers:true signal is a false positive on 'Group Policy' (an IT deployment term, lines 19 and 603), verified by direct grep this session.",
+      "na_reason": "no beat's output belongs to a group; this is a flat individual-reading reference page with zero room-scale beats. The mechanical group_beat_markers:true signal is a false positive on 'Group Policy' (IT deployment term), verified by direct grep this session.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule binds the strategy DOC's own prose against restating curriculum structure; this file is a curriculum reference page, not the strategy doc, so §8's restraint has no direction to fire in on this surface.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "bee24b5f64b958c699fe149a41c3a390a494e22374d4c02ae88a2257e6b09397",
+      "carried_shape": "9d9a7738a4fb80da"
     },
     {
       "compendium": "check_lectures.md",
@@ -63,8 +73,8 @@
       "evidence": "Re-fetched current wording (node scripts/rule.js lectures 5) per this run's rule-drift staleness reason. Text is unchanged in shape from the prior verdict: 210-word/≤6-bullet ceiling, enforced by scripts/check-slide-size.js, story-of-module-6 exempt. That enforcement mechanism is check_slides.md's lane, and this exact file already carries an independently-PASSed slides verdict on the Quality line — including the diff-touched sections. Neither this run's edits grew a slide past the ceiling or changed its shape; no new scope language in the current rule text pulls this compendium's ownership away from check_slides. Story defers to check_slides' lane per dispatch-preamble (own-lane discipline: an unowned claim outranks nothing and can contradict something). Carried unchanged from the shape-gated prior instance (same shape_hash) — not re-derived.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "25596e33da5482590c85bdf0993fb23a4e1f3e89312b4ce40eb57507e77af38e",
-      "carried_shape": "536f778b09eec9ef"
+      "carried_from": "bee24b5f64b958c699fe149a41c3a390a494e22374d4c02ae88a2257e6b09397",
+      "carried_shape": "9d9a7738a4fb80da"
     },
     {
       "compendium": "check_lectures.md",
@@ -74,8 +84,8 @@
       "evidence": "Surface is a reference page (curriculum/trainings/agentic-engineering-101/reference/), not a lecture. check_lectures.md's own frontmatter scopes it to lecture writing/placement; there is no meta-frame narrative here to place before or after an exercise. Carried unchanged from the shape-gated prior instance (same shape_hash) — not re-derived.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "25596e33da5482590c85bdf0993fb23a4e1f3e89312b4ce40eb57507e77af38e",
-      "carried_shape": "536f778b09eec9ef"
+      "carried_from": "bee24b5f64b958c699fe149a41c3a390a494e22374d4c02ae88a2257e6b09397",
+      "carried_shape": "9d9a7738a4fb80da"
     },
     {
       "compendium": "check_lectures.md",
@@ -85,8 +95,8 @@
       "evidence": "No exercise precedes or follows this file in a module flow; it is an on-demand lookup cross-referenced from multiple modules, not a pre-exercise opener. Carried unchanged from the shape-gated prior instance (same shape_hash) — not re-derived.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "25596e33da5482590c85bdf0993fb23a4e1f3e89312b4ce40eb57507e77af38e",
-      "carried_shape": "536f778b09eec9ef"
+      "carried_from": "bee24b5f64b958c699fe149a41c3a390a494e22374d4c02ae88a2257e6b09397",
+      "carried_shape": "9d9a7738a4fb80da"
     },
     {
       "compendium": "check_lectures.md",
@@ -96,8 +106,8 @@
       "evidence": "This rule binds lecture bodies specifically (\"lectures teach, module files sequence; lectures stay re-placeable shared library\"). The reference genre is the opposite by design: its own framing at line 3 is \"When a module says 'see the reference'... this is where\" and its closing section is literally titled 'Related AE101 modules (where these primitives land)', mapping §-ranges to M1-M6. A flat lookup that students arrive at via a module cross-ref is not the re-placeable-shared-library object this rule protects. Carried unchanged from the shape-gated prior instance (same shape_hash) — not re-derived.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "25596e33da5482590c85bdf0993fb23a4e1f3e89312b4ce40eb57507e77af38e",
-      "carried_shape": "536f778b09eec9ef"
+      "carried_from": "bee24b5f64b958c699fe149a41c3a390a494e22374d4c02ae88a2257e6b09397",
+      "carried_shape": "9d9a7738a4fb80da"
     },
     {
       "compendium": "check_lectures.md",
@@ -107,8 +117,8 @@
       "evidence": "This rule is check_lectures-scoped to lecture/slide headers per the compendium's lecture-writing frontmatter; the file's own Quality line already carries an independently-PASSed `slides` class judgment, which is the primary owner of header/body slide-shape checks per content-rules.md's Slide-rendered-files routing to check_slides.md. Duplicating that lane here would be an unowned claim, not extra coverage. Carried unchanged from the shape-gated prior instance (same shape_hash) — not re-derived.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "25596e33da5482590c85bdf0993fb23a4e1f3e89312b4ce40eb57507e77af38e",
-      "carried_shape": "536f778b09eec9ef"
+      "carried_from": "bee24b5f64b958c699fe149a41c3a390a494e22374d4c02ae88a2257e6b09397",
+      "carried_shape": "9d9a7738a4fb80da"
     },
     {
       "compendium": "check_lectures.md",
@@ -118,8 +128,8 @@
       "evidence": "New rule (added 2026-08-20) scoped explicitly by its own text to `curriculum/lectures/**` and names its own carve-out: \"Not covered: exercise prompts, prework prompts, and prompts on reference/supplementary pages, all of which the student runs themselves.\" This file is a reference page, named verbatim in the rule's own exclusion list. Its one prompt (§27, lines 397-413, a copy-paste transcript-finding prompt) is student-run by design, not a trainer demo — consistent with the rule's carve-out. Carried unchanged from the shape-gated prior instance (same shape_hash) — not re-derived.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "25596e33da5482590c85bdf0993fb23a4e1f3e89312b4ce40eb57507e77af38e",
-      "carried_shape": "536f778b09eec9ef"
+      "carried_from": "bee24b5f64b958c699fe149a41c3a390a494e22374d4c02ae88a2257e6b09397",
+      "carried_shape": "9d9a7738a4fb80da"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -129,8 +139,8 @@
       "evidence": "This rule governs exercise pedagogy (session-carrying moves cut from body into a fence). This file has exactly one worked prompt (§27, a copy-paste transcript-finding prompt), presented as illustrative reference material, not a graded exercise step with a pedagogical forcing function the body might be stealing. No count-scripts or scripted-reaction language appear anywhere in the body prose. Carried unchanged from the shape-gated prior instance (same shape_hash) — not re-derived.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "25596e33da5482590c85bdf0993fb23a4e1f3e89312b4ce40eb57507e77af38e",
-      "carried_shape": "536f778b09eec9ef"
+      "carried_from": "bee24b5f64b958c699fe149a41c3a390a494e22374d4c02ae88a2257e6b09397",
+      "carried_shape": "9d9a7738a4fb80da"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -140,8 +150,8 @@
       "evidence": "Trace's own module_mood_contract field states \"N/A — flat quick-reference surface, no per-module mood contract\" — there is no strategy-doc per-module mood paragraph for a shared reference page to honour or flatten. Carried unchanged from the shape-gated prior instance (same shape_hash) — not re-derived.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "25596e33da5482590c85bdf0993fb23a4e1f3e89312b4ce40eb57507e77af38e",
-      "carried_shape": "536f778b09eec9ef"
+      "carried_from": "bee24b5f64b958c699fe149a41c3a390a494e22374d4c02ae88a2257e6b09397",
+      "carried_shape": "9d9a7738a4fb80da"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -151,8 +161,8 @@
       "evidence": "No mood arc runs across a flat lookup; §40 Troubleshooting is FAQ-shaped but reads as a diagnostic list, not a punitive framing of the reader's failure — the file's tone is peer-competent throughout. Carried unchanged from the shape-gated prior instance (same shape_hash) — not re-derived.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "25596e33da5482590c85bdf0993fb23a4e1f3e89312b4ce40eb57507e77af38e",
-      "carried_shape": "536f778b09eec9ef"
+      "carried_from": "bee24b5f64b958c699fe149a41c3a390a494e22374d4c02ae88a2257e6b09397",
+      "carried_shape": "9d9a7738a4fb80da"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -162,8 +172,8 @@
       "evidence": "This rule governs module Big Idea titling. The file has no Big Idea; its own H1 is a plain descriptive title (\"Claude Code for engineers: reference\") and its section headers are primitive names, not module-level claims that could be failure-lead vs. discipline-lead. Carried unchanged from the shape-gated prior instance (same shape_hash) — not re-derived.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "25596e33da5482590c85bdf0993fb23a4e1f3e89312b4ce40eb57507e77af38e",
-      "carried_shape": "536f778b09eec9ef"
+      "carried_from": "bee24b5f64b958c699fe149a41c3a390a494e22374d4c02ae88a2257e6b09397",
+      "carried_shape": "9d9a7738a4fb80da"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -173,8 +183,8 @@
       "evidence": "Module-only section (\"each module's Key Concepts section\"). This file has no Key Concepts section — it is a reference, not a module. Carried unchanged from the shape-gated prior instance (same shape_hash) — not re-derived.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "25596e33da5482590c85bdf0993fb23a4e1f3e89312b4ce40eb57507e77af38e",
-      "carried_shape": "536f778b09eec9ef"
+      "carried_from": "bee24b5f64b958c699fe149a41c3a390a494e22374d4c02ae88a2257e6b09397",
+      "carried_shape": "9d9a7738a4fb80da"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -184,8 +194,8 @@
       "evidence": "No Key Concepts section exists on this file to carry breadcrumbs. Carried unchanged from the shape-gated prior instance (same shape_hash) — not re-derived.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "25596e33da5482590c85bdf0993fb23a4e1f3e89312b4ce40eb57507e77af38e",
-      "carried_shape": "536f778b09eec9ef"
+      "carried_from": "bee24b5f64b958c699fe149a41c3a390a494e22374d4c02ae88a2257e6b09397",
+      "carried_shape": "9d9a7738a4fb80da"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -195,20 +205,12 @@
       "evidence": "No What You'll Learn section exists on this file — it is a reference, not a module. Carried unchanged from the shape-gated prior instance (same shape_hash) — not re-derived.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "25596e33da5482590c85bdf0993fb23a4e1f3e89312b4ce40eb57507e77af38e",
-      "carried_shape": "536f778b09eec9ef"
+      "carried_from": "bee24b5f64b958c699fe149a41c3a390a494e22374d4c02ae88a2257e6b09397",
+      "carried_shape": "9d9a7738a4fb80da"
     }
   ],
-  "mood_summary": {
-    "phase_scores": [
-      8
-    ],
-    "close_score": 8,
-    "any_below_8": false,
-    "stealing_the_mood": [],
-    "note": "Setup/reference surface, mood-floor exempt (check_pedagogy §14 teaching-beat carve-out analog for storytelling's mood-lands criterion — there is no teaching beat to hold a floor against). Scored on clarity + trustworthiness instead: clean everywhere except the one M6 cross-ref, which reads confidently wrong rather than vague and is filed as the REVISE above, not as a mood deduction."
-  },
-  "notes": "check_lectures.md's 6 rules, check_strategy_tie_in.md §§1,2,3,5,6,7, check_pedagogy.md §16, and check_workshop.md §9 are all parked N/A by the prefill sidecar (shape_hash 536f778b09eec9ef unchanged) and are not re-derived here per dispatch-preamble mechanics; run --merge after this write to splice them in. check_prompts.md and check_workshop.md are both tagged eval_classes:storytelling at the file level and so appear in full in the brief, but the story template's own completeness contract names only check_lectures.md (primary owner) plus a narrow named subset of check_pedagogy.md / check_strategy_tie_in.md as story-owned rows; it never cites a check_prompts.md rule_index, so none is filed here — any of its 49 rules that genuinely bind this file belong to the writing/behavior/technical judges' lanes. This run re-verified the one blocking finding fresh against the live repo (read the actual handoff prompt body and the lecture's maintainer note, checked git log ordering) rather than carrying it forward on trust; body_sha is unchanged from the prior story instance, confirming no new prose has landed since.",
-  "blocking_findings_count": 1,
-  "nonblocking_findings_count": 0
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "check_lectures.md's rules, check_strategy_tie_in.md §§1,2,3,5,6,7,8, and check_pedagogy.md §16 are parked N/A by the prefill sidecar (shape_hash 9d9a7738a4fb80da unchanged since the prior instance) — left OUT of this write on purpose, for prefill-instance.js --merge to splice in after. check_prompts.md is tagged eval_classes:storytelling at the file level and so appears in full in the class brief (49 rules), but the story class template's own Completeness contract never names a check_prompts.md rule_index as story-owned — it scopes story to primary ownership of check_lectures.md plus a named subset of check_pedagogy.md/check_strategy_tie_in.md. No check_prompts.md row is filed here for that reason; its rules belong to the writing/behavior/technical judges' lanes. Trace staleness (this run's actual finding, non-blocking): the cached persona trace on disk predated the M6 fix by three weeks and its confusion_flags quoted text the current body no longer contains; regenerated and re-bound this session so the next reader of the trace isn't misled by a resolved finding presented as live."
 }

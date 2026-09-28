@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/exercises/author-test-strategy-skill.md",
   "verdict": "PASS",
-  "body_sha": "8a5e569b2884067387d12d21b3a828a6686d864e9595cd0833d17a9227f8f2c6",
+  "body_sha": "0644b52f6ba635ea790e5f6e18d74dc73c3257db4ea91b3f795666a6cf60f18b",
   "shape_hash": "04c8bbd89721df08",
   "pin": "8cc00874",
   "staleness_reason": "rule-drift",
@@ -685,13 +685,13 @@
     },
     {
       "compendium": "check_pedagogy.md",
-      "rule_index": "61",
+      "rule_index": 61,
       "rule_lead": "Verify mechanism before proposing surgery.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "",
-      "blocking": false,
-      "na_reason": "governs how an editor should propose SKILL.md/framework changes; not a content property of this file"
+      "na_reason": "no skill/framework/tool-change proposal in this exercise body to verify mechanism against",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
@@ -744,13 +744,13 @@
     },
     {
       "compendium": "check_pedagogy.md",
-      "rule_index": "66",
+      "rule_index": 66,
       "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
-      "verdict": "N/A",
-      "evidence": null,
-      "fix_hint": "",
-      "blocking": false,
-      "na_reason": "whole-training build-methodology rule (Pass 1/2/3 across the module set), not a single-file property"
+      "verdict": "PASS",
+      "evidence": "L86-L113 'Meta (trainer)' / 'Leap test (Monday)' / 'Push-back moves' / 'Watch-fors' / 'Plug points' — full Pass-3 facilitator layer present (timing, watch-fors, decision points, named failure modes), no open TODO gating ship",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
@@ -1055,20 +1055,22 @@
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": "35",
+      "rule_index": 35,
       "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
       "verdict": "PASS",
-      "evidence": "P1 explicitly gates the write to a single terminal write: 'When you have enough, write... Show me before saving' — no per-turn rewriting during the 7-question interview.",
-      "fix_hint": "",
+      "evidence": "L27 prompt (author-test-strategy-skill-1, expanded): 'Use the AskUserQuestion tool to interview me: one question per tool call, wait for my answer, then the next.' + 'When you have enough, write `~/.claude/skills/test-strategy/SKILL.md` ... Show me before saving.' The artifact write is single and deferred to conversation end, gated by an explicit show-before-save instruction — the harm §35 exists to prevent (each turn rewriting the file, dialog crawling) is not present because no mid-dialog write happens at all. One-question-at-a-time cadence (element c's batch-of-three is the general default) is confirmed as this exercise's deliberate design, not an oversight: L96 'Push-back moves' — 'P1 question-dump. Claude fires all questions at once instead of one at a time. Trainer push: tell Claude to ask one at a time, wait for your answer, then ask the next. You want the conversation to surface detail, not a form to fill.' The file's own trainer guidance coaches toward one-at-a-time for interview depth; applying the batch-cadence default here would fight the exercise's stated pedagogy.",
+      "na_reason": null,
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": "36",
+      "rule_index": 36,
       "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
       "verdict": "PASS",
-      "evidence": "P1: 4 paragraphs, one move each (ask-for-interview / cover-list / AskUserQuestion-mechanics-and-pushback / write-and-show), 210 words total. P2: 2 paragraphs (invoke / self-grade-question), 127 words. Read-aloud breaks land at paragraph boundaries in both.",
-      "fix_hint": "",
+      "evidence": "curriculum/prompts/author-test-strategy-skill-1.md L21/23/25/27: four paragraphs, one move each (task framing / coverage checklist / interview mechanics+pushback / write-and-show-gate). curriculum/prompts/author-test-strategy-skill-2.md L15/17: two paragraphs (invoke+produce / grade-by-question), split at 'Then, in the same response,'. Both prompts already scan by move; read-aloud diagnostic lands each natural breath at a paragraph break.",
+      "na_reason": null,
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -1128,13 +1130,13 @@
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": "43",
+      "rule_index": 43,
       "rule_lead": "Long-running prompts stream progress — never go silent.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "",
-      "blocking": false,
-      "na_reason": "neither prompt runs more than a couple of minutes (7-question interview; single invoke+self-grade), no cross-project scan or walk-away shape"
+      "na_reason": "both prompts are interactive default-duration turns (Q&A interview; single-skill invoke against one worktree), not cross-project scans or walk-away send-offs",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
@@ -2042,5 +2044,13 @@
     }
   ],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 2
+  "nonblocking_findings_count": 2,
+  "scope": "drift",
+  "drift_rules": [
+    "check_pedagogy.md §61",
+    "check_pedagogy.md §66",
+    "check_prompts.md §35",
+    "check_prompts.md §36",
+    "check_prompts.md §43"
+  ]
 }

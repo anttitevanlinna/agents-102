@@ -54,8 +54,8 @@ Ask Claude to fork a sibling worktree and copy your personal rules across. The p
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-06 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@64d17eea pedagogy@324b81d7 strategy@324b81d7 slides@9edae2ef)
-- judges @64d17eea: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-27 (writing@16a15ae5 story@16a15ae5 technical@16a15ae5 behavior@64d17eea pedagogy@16a15ae5 strategy@16a15ae5 slides@16a15ae5)
+- judges @16a15ae5: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "This is your main lane for Module 3." (dup of main-quest lead); worktree bullet condensed — dropped "It opens next to your repo…" and the second same-history/own-working-state restatement; two-windows bullet dropped "both visible at once" + "Each holds its own scrollback." Do not restore. Carded and kept (Antti 2026-08-25): the *Read back the worktree path* slide — the explicit read-back beat stays; do not re-card.
 

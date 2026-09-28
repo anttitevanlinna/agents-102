@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/trainings/agentic-engineering-101/prework.md",
   "verdict": "PASS",
-  "body_sha": "7219480cb1618bf1290f57a648bbd1c56983a3cb72cb66dcdba061abd6d7b381",
+  "body_sha": "49e43794fa0c09bfbe998cf9c4cb33376ea71072262b5a75ef4d2bfda71fe2e4",
   "shape_hash": "2f8bb074ab310171",
   "accept_notes_found": [
     "L86: Prework owes no licence check and no network/proxy check (Antti 2026-08-13).",
@@ -51,7 +51,7 @@
       "rule_index": 4,
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "AE101 voice quintet judged against a mostly-mechanical setup file. L11 'YOUR real work is the material' and the blockquote (L3-5) read Boris-flat/direct, appropriate for operational instructions. L70 '*Small steer, small trick. A minute here, another there.*' is the closest line to atmospheric/playful register in the file: passes the Godin-plausibility test (mischievous+warm, doesn't dunk on the student or the task, meaning doesn't flip if misread as slang) and stays inside. No retain-this wrapper (grep for **Remember/Hold onto/Keep in mind/Never forget — none found), no metaphor-valence collision, no negation-callout self-contradiction (no 'we don't X' framing present at all).",
+      "evidence": "L70 '*Small steer, small trick. A minute here, another there.*' is the closest line to atmospheric/playful register in the file: passes Godin-plausibility (mischievous+warm, doesn't dunk on the student, meaning doesn't flip if misread as slang), stays inside quintet. Grep on body (L1-83) for retain-this wrapper (\\*\\*Remember|Hold onto|Keep in mind|Never forget): 0 hits. Grep for flinch phrases (just a simple|trust the agent|leash|niceness): 0 hits. No negation-callout ('we refuse'/'we don't'/'we do not'): 0 hits. No metaphor-valence collision found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -178,7 +178,7 @@
       "rule_index": 27,
       "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
       "verdict": "PASS",
-      "evidence": "Checked the file's few multi-sentence beats for a third restating sentence: L60-62 (three sentences: trigger/symptom, corrective action, definition of 'trivial') carry three distinct jobs, not a restatement; L66 (instruction + 'Whichever reads better') is instruction + a single generalising/agency clause, then stops; L70 closes the whole Step 5 beat with one generalising line, not a third repeat. No abstract-twin, no restating-the-adjacent-prompt, no widening qualifier found anywhere.",
+      "evidence": "Checked the file's multi-sentence beats for a third restating sentence: L60-62 (trigger/symptom, corrective action, definition of 'trivial') carry three distinct jobs, not a restatement; L66 (instruction + 'Whichever reads better') is instruction + one generalising clause, then stops; L70 closes Step 5 with one generalising line, not a third repeat of the same idea. No abstract-twin pair, no restating-the-adjacent-prompt-block (L45/L53/L60 lead-ins name the action, don't narrate what the fence already instructs), no widening qualifier found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -803,10 +803,8 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no chat-print artifact moment (scoreboard/table/summary) in this file",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "399b1f55ac7e383b89d313f28a84ee8b357cffe5151e34e5837e20f433e60e43",
-      "carried_shape": "2f8bb074ab310171"
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
@@ -1411,14 +1409,21 @@
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 8,
-      "rule_lead": "Strategy doc carries strategy, not structure.",
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "this rule binds content-strategy.md's own maintenance, not this curriculum file",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "399b1f55ac7e383b89d313f28a84ee8b357cffe5151e34e5837e20f433e60e43",
-      "carried_shape": "2f8bb074ab310171"
+      "na_reason": "rule binds content-strategy.md's own maintenance, not this curriculum file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 28,
+      "rule_lead": "Body prose stands without the trainer — no cue-card prose.",
+      "verdict": "PASS",
+      "evidence": "Mechanical grep on body (L1-83) for the report-only list (Take a guess|before it runs|on the screen|^Let's go|^Go\\.|Your turn|What does .* now\\?): 0 hits. Muted-read diagnostic on the closest candidate, L70 '*Small steer, small trick. A minute here, another there.*': a verbless noun-pair aphorism, but it names its own referents (the steer and the trick just described in L66-68) rather than pointing at live terminal state, and it reads as a complete, self-contained closer without a trainer's voice — not a stage-direction fragment (contrast the rule's example 'A fact. A role. A preference. A constraint.', which lists items for the trainer to elaborate live). L38 '**Session** *(new, \"prework\")*' is a template session-widget label, not prose subject to this test. No screen deictic ('it'/'this'/'that'/'now' with no on-page referent) found anywhere in the body.",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,
@@ -1430,5 +1435,13 @@
       "now": "A small multi-file task: work you'd ship today if you had the hour. Plan mode wants something a few files wide.",
       "proposed": "A small multi-file task: work you'd ship today if you had the hour, spanning a few files."
     }
+  ],
+  "scope": "drift",
+  "drift_rules": [
+    "check_strategy_tie_in.md §8",
+    "check_student_facing.md §27",
+    "check_writing.md §4",
+    "check_writing.md §27",
+    "check_writing.md §28"
   ]
 }

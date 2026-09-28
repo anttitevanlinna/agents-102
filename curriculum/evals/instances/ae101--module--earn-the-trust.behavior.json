@@ -1,40 +1,45 @@
 {
   "class": "behavior",
   "file": "curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
-  "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "full_regen",
+  "verdict": "PASS",
+  "body_sha": "b838de7a9f3f35c58bc3e2c8e81ab8b4dd7c5ccc9249e70602ed4ca3e6efa80f",
+  "trace_status": "cached",
   "prompts_evaluated": 3,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "Read the test-strategy skill file at `~/.claude/skills/test-strategy/SKILL.md`. ",
+      "prompt_lead": "Read the test-strategy skill file at `~/.claude/skills/test-strategy/SKILL.md`. Read this ",
       "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
           "pattern_id": "niceness-tax",
           "confidence": "low",
-          "evidence": "Show me before and after, two or three lines each — body callout after the fence names RLHF softening explicitly ('RLHF softening can dress up a cosmetic edit as a meaningful one') and supplies paste-ready harsher alternatives; body-callout carve-out applied",
-          "fix_hint": "No fix needed; body callout naming the softening risk and opt-up paths is present and sufficient."
+          "carve_out": "body-callout-mitigation",
+          "evidence": "L55: 'sycophancy can dress up a cosmetic edit as a meaningful one' names the risk directly and pairs it with opt-up recovery moves ('be harsher than necessary...', skip-preamble, fresh-session subagent) in the paragraph immediately after the fence.",
+          "fix_hint": "No fix owed — the adjacent body callout already names the softening risk and supplies harsher alternatives."
         },
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "Prompt has 4+ named sub-steps — body callout after the fence names preamble risk ('Claude may open with a plan before showing the diff') and gives recovery ('tell it to skip preamble and lead with the before/after diff'); structural trigger (rule 17) satisfied by body primer; body-callout carve-out applied",
-          "fix_hint": "No fix needed; body callout gives the student the preamble recovery move."
+          "carve_out": "body-callout-mitigation",
+          "evidence": "L55: 'Claude may open with a plan before showing the diff' names the preamble tell, and the same sentence gives the recovery move ('tell it to skip preamble and lead with the before/after diff'). Prompt itself has 3 sequenced sub-asks (read file, read scrollback, find+rewrite, then a separate integrate step) that could otherwise invite a plan-first response.",
+          "fix_hint": "No fix owed — body callout names the risk and gives an inline opt-up instruction."
         },
         {
           "pattern_id": "self-audit-charity",
           "confidence": "low",
-          "evidence": "find the one section of the skill where invocation evidence shows it underdelivered — body callout names charity risk ('same-context-window self-audit under-flags') and provides over-flag variant and fresh-session subagent as recovery; evidence-backed Debrief carve-out applied",
-          "fix_hint": "No fix needed; named evidence surfaces and over-flag / fresh-session alternatives present in adjacent prose."
+          "carve_out": "evidence-backed-debrief-carveout",
+          "evidence": "L51 'find the one section of the skill where invocation evidence shows it underdelivered... Show me before and after, two or three lines each' requires artifact-level reporting (a named before/after diff) rather than a bare self-grade, and L55 names 'same-context-window self-audit under-flags' with pushback moves (over-flag ask, fresh-session subagent) in the paragraph after the fence.",
+          "fix_hint": "No fix owed — evidence-backed Debrief carve-out applies: concrete artifact required plus a named charity-risk callout with recovery."
         },
         {
           "pattern_id": "file-preservation-gap",
           "confidence": "low",
-          "evidence": "integrate it into ./CLAUDE.local.md — personal-scope carve-out applies: path is ./CLAUDE.local.md, prompt fence says 'personal file, not team ./CLAUDE.md', surrounding section describes iterative-evolution compound pedagogy",
-          "fix_hint": "No fix needed; integrate-verb on personal-scope file with explicit personal-scope markers is design intent."
+          "carve_out": "personal-scope-integrate-verb-carveout",
+          "evidence": "L52: 'integrate it into ./CLAUDE.local.md (integrate, don't append; personal file, not team ./CLAUDE.md)' — path is the personal-scope marker, the verb is 'integrate', and the surrounding body (L47: 'the rules-file update is opportunistic') frames the file as the student's evolving personal record, not a team artifact.",
+          "fix_hint": "No fix owed — personal-scope integrate-verb carve-out applies; full reshape is the design intent for a personal, gitignored file."
         }
       ]
     },
@@ -47,8 +52,8 @@
         {
           "pattern_id": "self-report-inflation",
           "confidence": "med",
-          "evidence": "All learnings in? — Claude defaults to affirmation rather than enumeration; same-session self-audit under-flags uncaptured branches; the adjacent blockquote ('Might be slightly leaky. Here, the simple ask is good enough.') accepts the risk rather than neutralising it with an enumeration hook, so no listed carve-out shape applies",
-          "fix_hint": "Add an enumeration hook: 'List what landed in the skill or rules-file versus what is still only in scrollback' — forces enumeration over confirmation. Low-stakes since load_bearing is false and the maintainer block already accepts this as good-enough."
+          "evidence": "L65: 'Ready to clear? All learnings in?' invites a same-session self-report; L67's own blockquote ('Might be slightly leaky. Here, the simple ask is good enough.') and the maintainer note at L135 record this as a deliberately light, accepted convergence check rather than an enumeration-hook design, so no carve-out shape from the template applies — but the prompt is not load-bearing (housekeeping wrap-up, not a teaching/hand-off moment) so it does not reach REVISE.",
+          "fix_hint": "An enumeration hook ('list what landed vs. what is still only in scrollback') would tighten this, but the maintainer block already accepts the light-ask design and names the residual as good-enough; not filed as a suggestion out of respect for that recorded call."
         }
       ]
     },
@@ -62,14 +67,6 @@
   ],
   "blocking_findings_count": 0,
   "nonblocking_findings_count": 0,
-  "suggestions": [
-    {
-      "from": "prompts_findings TODO",
-      "rule": "self-report-inflation",
-      "prompt_index": 2,
-      "note": "Add an enumeration hook: 'List what landed in the skill or rules-file versus what is still only in scrollback' — forces enumeration over confirmation. Low-stakes since load_bearing is false and the maintainer block already accepts this as good-enough.",
-      "evidence": "All learnings in? — Claude defaults to affirmation rather than enumeration; same-session self-audit under-flags uncaptured branches; the adjacent blockquote ('Might be slightly leaky. Here, the simple ask is good enough.') accepts the risk rather than neutralising it with an enumeration hook, so no listed carve-out shape applies"
-    }
-  ],
-  "suggestions_count": 1
+  "suggestions": [],
+  "notes": "Cache reuse: all 3 fenced prompts in curriculum/prompts/ae101-m3-{sharpen-skill,ready-to-clear,clear-session}.md are byte-identical to the prior sim-cache entries (verified by re-hashing the expanded view's fenced content), so prompt_sha still matches and the trace was reused rather than regenerated, despite substantial surrounding-prose rewrites since the trace's prior content_sha (778a193f...). content_sha was stale against the current body (diff since pin 1c765f2 rewrote most of the module's prose, Key Concepts, and maintainer block); ran bind-trace.js this session to rebind it to the current body_sha (b838de7a...) before judging. Prior instance file at this path used a non-conformant shape (free-text suggestions, no carve_out markers) and has been fully overwritten. Out-of-lane, not filed: the maintainer block's §38b accept-note (L137, ordering of the guard sentence relative to the fence) is a check_prompts/writing-class concern, not a behavioral-risk one."
 }

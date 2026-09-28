@@ -1,23 +1,14 @@
 {
   "class": "slides",
-  "training": "ae101",
   "file": "curriculum/exercises/set-the-markers-send-it-off.md",
+  "training": "ae101",
   "verdict": "PASS",
-  "body_sha": "ad51e573cc9cd8901a002b62a4c984da6a5f5ae9dfcea33228ec7e1817af30a9",
-  "shape_hash": "418a6b732eed4d3a",
-  "pin": "43e6cae1",
-  "accept_notes_found": [
-    "L66: Extracted-from provenance note (run-the-first-experiment.md § Send the task off, 2026-08-12, Antti-directed) — body split into this exercise; wording near-verbatim, four {{prompt:ae101-m4-*}} refs byte-intact.",
-    "L68: ae101-m4-take-task-end-to-end takes no added clauses — maintainer call 2026-09-03, declining check_prompts.md §19 self-augment invitation and §43 progress streaming (both prompts-class, not slides).",
-    "L70: ae101-m4-commit-starting-point stays one paragraph — check_prompts.md §36 sequential-build carve-out (prompts-class, not slides).",
-    "L74: \"Past ten or so, you've become the agent\" stays — maintainer call 2026-08-02, check_pedagogy.md §16 pacing-calibration boundary clause. Directly relevant to check_slides.md §7's number+retraction sub-item; used as evidence below.",
-    "L91: Vocabulary note (2026-08-26) — body uses *session*, never noun-*run*, per vocabulary.md §21b.",
-    "L93: Lean-intro trim (2026-08-25, Antti-approved) — a Phase 1 stance bullet cut as already installed by test-and-learn.md."
-  ],
+  "body_sha": "6d0d4d8df44416d9315a0b5c104c6e009791c39a98e9e4a70fdb8ba844e29e46",
+  "shape_hash": "3fd01e7dd2df9bec",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "H1 + lede — Set the markers, send it off (title slide)",
+      "heading": "H1/lede (Time / Session / What you do / What you build / The point)",
       "lines": "1-16"
     },
     {
@@ -46,15 +37,14 @@
       "lines": "52-61"
     }
   ],
-  "diff_since_pin": "git diff 43e6cae1..HEAD -- curriculum/exercises/set-the-markers-send-it-off.md: three body reword-not-reorder edits (line 32 'commit current state on a feature branch' -> 'create a feature branch and commit current state'; line 48 'run the scoped task' -> 'take the scoped task'; line 58 'If Claude stalls' -> 'If the agent stalls') plus two new dated maintainer paragraphs (L68, L70) and a Quality-line stamp refresh. No heading changed, no chunk added/removed/reordered.",
   "rules_evaluated": [
     {
       "compendium": "check_slides.md",
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm guarded against: a reader who can't find what a pronoun/noun points at anywhere up to that slide. Walked all 6 chunks. Chunk0 L7 'The same session that ran the audit. It already holds the scoped task.' — 'the audit'/'the scoped task' resolve under the session-artifact + module-arc-beat carve-outs: `grep -n \"Ask Claude to run the audit\" curriculum/exercises/walk-and-send-off.md` -> L44 (the audit exists), `grep -n \"Exercise: Prep the session\\|Exercise: Set the markers\" curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md` -> L39/L41 (walk-and-send-off.md sits immediately before this file in the module's CURRENT include order) — both ran this session. Chunk1 L21 'this one'/'that file' resolve in-sentence; L23 'this session' reuses chunk0's Session-widget tag (chunk0 is prior context by template rule). Chunk2 L29 'this commit' reuses chunk0 L11 'a starting commit' (arc-earned via chunk0, not forward-only). Chunk3 L38 'The commit'/'the local commit' continue chunk2's referent (same-file sequential callback, explicitly not a violation). Chunk4 L48 'the scoped task'/'this same session' reuse chunk0's referents; this line is the diff's own reword ('run' -> 'take') and the noun phrases it points at are unchanged, so the referent chain survives the edit. Chunk5 L58 is the diff's other reword: 'If the agent stalls' introduces 'the agent' as a new noun in this file's body — checked, it is a straightforward synonym for 'Claude'/'Claude Code' used throughout the same file, and 'the agent' is training-wide arc vocabulary earned well before M4 (`grep -n \"Lecture: The agent loop\" curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md` -> L35, same module, earlier in include order). L56 'The trace is the evidence either way' sits one bullet below L55's '...read the transcript' (same chunk, adjacent line) and is additionally arc-earned: `grep -n \"Traces are data\" curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md` -> L52 (module Key Concepts, prior context for every file the module includes), confirmed this session. No never-named or vague-with-full-history referent found; the diff's two reworded lines (L48, L58) do not introduce a new unresolved referent.",
+      "evidence": "chunk 0 \"H1/lede\": line 7: \"The same session that ran the audit.\" — \"the audit\" resolves via module include-order: run-the-first-experiment.md (the immediately preceding file in run-the-first-experiment.md's own include list, line 41 link) names the audit beat directly (\"Walk what you've built... against the task as a subagent audit\", \"the audit ranked the thin spots\"), so it is prior deck context per the module-include-order carve-out. chunk 4 \"Phase 2: Send it off\": line 48: \"the scoped task\" resolves the same way — the prior exercise's Phase 2 scopes the task this file continues. No never-named or vague-with-history referents found elsewhere.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": true
     },
@@ -63,8 +53,8 @@
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm guarded against: a callback that only resolves if the reader knows which file sits at a given delivery position. Scanned all 6 chunks: no 'the opening lecture said' or any content-by-page-position pointer into another file. Chunk3 L38 'the next module forks from the local commit' names the forward relationship functionally (what M5 does with the artefact), not a positional quote of M5's own content — and it is corroborated as a real contract, not narrative flourish, by `learn-from-the-test.md` L231 ('M4's walk-and-send-off is the real producer'). No cross-file or positional-by-page-order callback present in the diff or the surrounding body.",
+      "evidence": "grep for cross-file positional phrases (\"the opening lecture said\", \"earlier module said\", etc.) in the body → 0 hits. No chunk points at another file by position; the only cross-file relationships are the module include-order links already covered under rule 1.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": true
     },
@@ -73,8 +63,18 @@
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm guarded against: a 'the X you did' phrase pointing at a beat a rewrite has since cut. Only backward reference in body is chunk0 L7 'The same session that ran the audit.' Ran this session: `grep -n \"Ask Claude to run the audit\" curriculum/exercises/walk-and-send-off.md` -> L44 (beat exists, it's Phase 2's 'Walk your system against the task' audit); `grep -n \"Exercise: Prep the session\\|Exercise: Set the markers\" curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md` -> L39/L41 (walk-and-send-off.md is the immediately-preceding exercise in the module's CURRENT include order). Beat exists, placement current; the pinned diff touched only chunk2/chunk4/chunk5 wording, not this backward reference.",
+      "evidence": "chunk 0: line 7 \"the same session that ran the audit\" — verified against curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md, the preceding module include, which names the audit beat explicitly (\"the audit ranked the thin spots in your setup\", line 50). The beat exists in the module's current exercise set.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no guess-before-reveal or muted-scene demo beat in this file",
       "fix_hint": null,
       "blocking": true
     },
@@ -83,8 +83,8 @@
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm guarded against: a chunk that says nothing standalone. Chunk1 carries a grounding bullet + ask + prompt; chunk2 carries two mechanism bullets + ask + prompt; chunk3 (shortest) still states its own claim (local-by-default; here is the optional push) + prompt; chunk4 is the send-off ask + prompt (the exercise's payoff, self-carrying on its own); chunk5 carries three standalone bullets + a closing observation + prompt. `node scripts/check-slide-size.js --file curriculum/exercises/set-the-markers-send-it-off.md` (ran this session) confirms none is empty/near-empty: 'files: 1  slides: 5 ... oversized: 0'. No orphan found.",
+      "evidence": "chunk 3 \"Push it only if you want it off this laptop\": line 38 \"The commit is local, and that is the default. This is throwaway work you can reset away, and the next module forks from the local commit.\" — self-carrying claim, not a bare wait-state. All other chunks likewise carry a standalone bullet/claim plus their prompt.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -93,8 +93,8 @@
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Closest call: chunk1 header 'Phase 1: Set the two return markers' (L17) executes only ONE of the two markers (locating the transcript path) inside its own chunk (17-26); the second marker (the starting-point commit) lands two chunks later under 'Pin the starting point' (L27). Read as a phase-opening header spanning the sibling `##` slides beneath it — the identical shape the corpus already uses (`walk-and-send-off.md` 'Phase 1: Pick the task you'll send off' followed by a distinct, non-restating sub-heading 'Push back until the task is one end-to-end slice') — the chunk's content does not CONTRADICT the header, it delivers the first half of a claim the phase completes over the next chunk. All other headers (Pin the starting point / Push it only if you want it off this laptop / Phase 2: Send it off / Nudge sparingly while it runs) are fully borne out by their own chunk's content with no gap. Unaffected by the pinned diff (no heading changed).",
+      "evidence": "chunk 1 header \"Phase 1: Set the two return markers\" (line 17) covers only the transcript marker inside its own chunk lines 17-26, with the commit marker delivered by the following chunk \"Pin the starting point\" (lines 27-35) — but per rule 11, \"## Phase N:\" headers are content-level phase labels that group subsequent non-Phase-prefixed headers, so the header is not contradicted by its chunk's content, only completed across the phase's sibling slides. No chunk's content contradicts its own header.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -103,8 +103,8 @@
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Checked all six sub-items across the current body (post-diff). Ran this session: `sed -n '1,61p' curriculum/exercises/set-the-markers-send-it-off.md | grep -inE '^Not |\\. Not [A-Z][a-z]+\\. '` -> exit 1, zero hits ('Not X. Not Y. Z.'); `... | grep -inE 'one of the (most|best)|most useful|most valuable'` -> exit 1, zero hits (self-grading superlative); `... | grep -inE 'reality\\b|-ness\\b'` -> exit 1, zero hits (abstraction-noun stack). Manual read: no anaphora/epistrophe triple, no verb triplet with an empty leg; vocabulary stays concrete (branch, commit, SHA, transcript path, laptop) including the diff's two reworded lines (L32, L48, L58). One number+retraction candidate, unaffected by the diff: L55 'Past ten or so interventions, you have become the agent; call it and read the transcript.' Covered by this file's own dated maintainer note (L74: '\"Past ten or so, you've become the agent\" stays — maintainer call 2026-08-02', citing check_pedagogy.md §16's pacing-calibration boundary, quoted in full in the maintainer block) — accept-with-note per this rule's own EXCEPT clause, no edit owed.",
+      "evidence": "grep -inE \"Not [A-Z][a-z]+\\. Not\" body -> 0; grep -inE \"one of the most|most useful|best way|the single|only real\" body -> 0; no anaphora/epistrophe triples, no abstraction-noun stacks, no empty-leg verb triplets, and \"or so\" (line 55, \"Past ten or so interventions\") is a calibration phrase, not a number-then-retraction construction. All sub-items clean.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -113,8 +113,8 @@
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm guarded against: repo/maintainer vocabulary projected on a wall the room can't parse. Ran this session: `sed -n '1,61p' curriculum/exercises/set-the-markers-send-it-off.md | grep -inE '\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|\\bforcing function\\b|\\bbeat\\b|\\bmood\\b|\\bConnections\\b'` -> exit 1, zero hits. None of the listed dialect terms appear in body, including the diff's new 'the agent' (L58) — ordinary training-wide vocabulary, not repo-internal. 'the ADRs' (inside the {{prompt:ae101-m4-take-task-end-to-end}} block that raw L50 expands to) is ordinary engineer vocabulary (Architecture Decision Records) and is additionally fence-exempt per the template's fenced-block rule.",
+      "evidence": "grep -inE \"surface|firing|compendium|forcing function|\\bbeat\\b|\\bmood\\b|Connections\" over body lines 1-61 -> 0 hits. Body vocabulary is plain engineer register (branch, commit, transcript, session, agent).",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": true
     },
@@ -123,8 +123,8 @@
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran this session: `sed -n '1,61p' curriculum/exercises/set-the-markers-send-it-off.md | grep -n '\\*\\*[^*]*\\*\\*'` -> 5 hits, all in chunk0 (L3, L5, L9, L11, L13: '**Time:**', '**Session**', '**What you do:**', '**What you build:**', '**The point:**') — the fixed exercise-metadata label chrome used identically across every AE101 exercise, not narrative emphasis. Each Prompt block also carries the repeated '**Prompt** *(...)*' widget label, same chrome category. Chunks 1-5 carry zero bold in their own prose. Well within the <=1-per-slide budget; unaffected by the pinned diff.",
+      "evidence": "chunk 0 carries 5 bold spans (**Time:**, **Session**, **What you do:**, **What you build:**, **The point:**) — over the ≤1-per-slide budget on its face, but this is the fixed exercise-opener field-label convention used identically in 40 of 41 files under curriculum/exercises/ (grep -c '^\\*\\*Time:\\*\\*' curriculum/exercises/*.md), and **Session** is a widget marker the renderer keys on literally (curriculum/widgets.md line 11, decorateSessions). Per §9's own principle (\"check whether another rule or the module template requires the bold you are about to charge for\"), this is a corpus-wide, mechanically-required opener shape, not this file's choice — filing here would REVISE 40 files at once. Chunks 1-5 carry zero bold in the raw body.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -133,18 +133,18 @@
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Confirmed this session: `grep -n \"Exercise: Set the markers\" curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md` -> L41, the standard bare-path exercise-include mechanism; `grep -n \"phase--exercise\" site/layouts/slides.js` -> hits at L231/258/291/320/322, confirming `buildDeckModel` selects `.phase--lecture, .phase--exercise` wrappers into the composed deck. This file's entire body sits under `## Phase N` / imperative headings with no phase-less prework/supplementary-style prose, so all 6 chunks land inside `.phase--exercise` like every other AE101 exercise. No wrapper-shape change in the pinned diff (reword-only edits + two maintainer paragraphs, which sit below the maintainer cut and never reach the deck).",
+      "evidence": "File is included via a standard `[Exercise: Set the markers, send it off](exercises/set-the-markers-send-it-off.md)` link in run-the-first-experiment.md (line 41), no `<!--flag:no-module-->` or comparable exclusion marker present, so it composes into `.phase--exercise` normally and reaches the deck.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran this session: `node scripts/check-slide-numbering.js curriculum/exercises/set-the-markers-send-it-off.md` -> 'OK — 59 files, Phase/Step numbering consistent.' File's own Phase 1 / Phase 2 sequence is consecutive from 1; no in-file 'Phase K'/'Step K' prose cross-reference beyond the two headers themselves, so nothing else to resolve.",
+      "evidence": "`node scripts/check-slide-numbering.js` run against the repo -> no output naming set-the-markers-send-it-off.md (clean). Headers use \"Phase 1\" then \"Phase 2\", consecutive; no hand-numbered slide-position headers.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -153,18 +153,28 @@
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran this session: `node scripts/check-slide-deixis.js --file curriculum/exercises/set-the-markers-send-it-off.md` -> 'OK — 1 files, no page-geometry pointers across the slide cut.' Manually re-confirmed: `sed -n '1,61p' curriculum/exercises/set-the-markers-send-it-off.md | grep -inE 'below|above|further down|at the top|see below|this page|earlier in this|the rest of this'` -> exit 1, zero hits.",
+      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/exercises/set-the-markers-send-it-off.md` -> \"OK — 1 files, no page-geometry pointers across the slide cut.\" Corroborating grep -inE \"below|above|further down|at the top of this|see below\" over body -> 0 hits.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no in-body links present in this file",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran this session: `node scripts/check-slide-size.js --file curriculum/exercises/set-the-markers-send-it-off.md` -> 'files: 1  slides: 5  limits: 210 words / 6 bullets  oversized: 0 / every slide is within limits'. No maintainer 'Slide size accepted' note present or needed.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/exercises/set-the-markers-send-it-off.md` -> \"files: 1  slides: 5  limits: 210 words / 6 bullets  oversized: 0 ... every slide is within limits\".",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -173,20 +183,20 @@
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Re-read all 5 body `##` headings: 'Phase 1: Set the two return markers' and 'Phase 2: Send it off' are phase labels; 'Pin the starting point', 'Push it only if you want it off this laptop', 'Nudge sparingly while it runs' are imperatives. This is an exercise file, so the required grammar is imperative-or-phase-label, not the lecture claim requirement; every heading conforms and none is a mislabeled claim-in-waiting. No heading changed in the pinned diff.",
+      "evidence": "All five body headers are exercise-appropriate: \"Phase 1: Set the two return markers\" / \"Phase 2: Send it off\" are phase labels; \"Pin the starting point\", \"Push it only if you want it off this laptop\", \"Nudge sparingly while it runs\" are imperatives. No lecture-style bare declaratives misplaced here.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 16,
-      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "rule_lead": "A bullet earns its slot or dies.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Walked all 6 body bullets against the three low-value classes (doctrine restatement / self-referential design commentary / aphorism kicker). Chunk1's bullet (L21) names the transcript-file mechanism that grounds the ask below it. Chunk2's two bullets (L29-30) are a WIP-scoping warning and the task.md artefact-contract mechanism, distinct from chunk0's 'What you build' line. Chunk3's bullet (L38) gives the reasoning for the optional push (local-by-default, throwaway, forkable — a priority, not a restatement). Chunk5's three bullets (L54-56): a laptop-awake move, the nudge/become-the-agent calibration (rule-7-covered), and the stop-if-off-the-rails policy; the closing line 'If the agent stalls... reads as encouragement and lands as a taunt' is load-bearing setup for the deliberately-taunting prompt immediately below it, not a decorative kicker. Closest call: L56 'The trace is the evidence either way' echoes the module's own arc-level 'Traces are data' framing (`run-the-first-experiment.md` L52) but applies it to authorize stopping THIS specific session at THIS specific moment — an actionable permission, not a redundant recitation. None of the diff's three reworded lines (L32, L48, L58) introduced a low-value bullet. No cut candidate found.",
+      "evidence": "Checked each bullet (lines 21, 29-30, 38, 54-56): each adds a concrete mechanism fact or instruction (where scrollback lives, what the commit captures, why local-by-default, nudge-pacing calibration, off-the-rails stop rule) — none is doctrine restatement, self-referential pedagogy commentary, or an aphorism kicker.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -194,33 +204,13 @@
       "rule_lead": "A retitled slide re-earns its bullets against the new header.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "no header-rename event on this file — the pinned diff (43e6cae1..HEAD) touched only prompt-line wording (three verb/word swaps at L32/L48/L58) and added two dated maintainer paragraphs; no `##` heading text changed, so the stale-bullets-under-a-renamed-header failure mode does not apply here.",
+      "na_reason": "no evidence of a header rename against unchanged bullets — diff since pin 324b81d7 shows only a maintainer-block expansion and one body wording swap (line 58: \"keep going\" -> \"continue\"), no `##` heading change",
       "fix_hint": null,
       "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "evidence": "na_reason: no guess/predict-before-reveal construct in file — confirmed this session: `grep -in \"guess\\|predict\\|before you watch\\|reveal\" curriculum/evals/body-views/ae101--exercise--set-the-markers-send-it-off.body.txt` returned zero hits. Every chunk is instruction-then-prompt, no predict/observe pairing for this rule to apply to.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "f76882c32550564afa1b754b33efe873e6875655d4b93d5b004805d62a8f7748",
-      "carried_shape": "418a6b732eed4d3a"
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "evidence": "na_reason: no in-body markdown links present — confirmed this session: `grep -n '\\[.*\\](' curriculum/evals/body-views/ae101--exercise--set-the-markers-send-it-off.body.txt` returned zero hits; `signals.has_urls: false` in the derived view agrees. Nothing for this review surface to inventory in this file.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "f76882c32550564afa1b754b33efe873e6875655d4b93d5b004805d62a8f7748",
-      "carried_shape": "418a6b732eed4d3a"
     }
   ],
+  "suggestions": [],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "Diff since pin 324b81d7 (git diff 324b81d7..HEAD -- this file) touches only: the maintainer block (Quality-line refresh + several new dated maintainer notes — check_writing.md §3 territory, not slides) and one body wording swap on line 58 (\"keep going\" -> \"continue\"), which raises no slides-class issue. Prefill reported shape changed (418a6b732eed4d3a -> 3fd01e7dd2df9bec), so nothing was parked; all 17 rows above are freshly judged, not carried."
 }

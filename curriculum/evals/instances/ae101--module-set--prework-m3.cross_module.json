@@ -7,14 +7,14 @@
     "curriculum/trainings/agentic-engineering-101/earn-the-trust.md"
   ],
   "body_sha": {
-    "curriculum/trainings/agentic-engineering-101/prework.md": "5dc341cd64147c7885f9d998135e4dd50b2971d00679f4c9f196df7fc117fbce",
-    "curriculum/trainings/agentic-engineering-101/getting-going.md": "f28f4683e113d08a917fede041105297ee315d100b58a999ae38bfdb8332bdb1",
-    "curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md": "927fcf91eca4c58b9d4219e8984b35b754df7894798ea8a4459e49f72b867088",
-    "curriculum/trainings/agentic-engineering-101/earn-the-trust.md": "30978f5ae77ce9ffc9378e1b24578461c679392a06eb2e457693ebff101e4d29"
+    "curriculum/trainings/agentic-engineering-101/prework.md": "7f91da8f290db4b026e5a452ca40c49f9e47e923cc5231f7660af4c066001e12",
+    "curriculum/trainings/agentic-engineering-101/getting-going.md": "d86abaf0c1a6a47b63bd9e084848db2331747656ee9ce5a66f588e868cdf4159",
+    "curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md": "904790e88bd503caf0597ca06379c8f5e819c230cb07a2c0fe4f521f81b68cdf",
+    "curriculum/trainings/agentic-engineering-101/earn-the-trust.md": "e74e7016805187da46cfd917027c1308cf1ff7f1215281137df908b082e22be5"
   },
   "training": "ae101",
   "verdict": "PASS",
-  "refire_reason": "The on-disk instance ahead of this run recorded body_shas (ed91fd57.../62fd108c.../a01ceac8.../97a00953...) that matched none of the four current files at session start (git status --short was clean on all four, so this is not mid-session drift — the instance simply predates commits that landed after it was written). Diffed each file from 50658158 (the commit that actually produced the prior instance, per `git log -- <instance path>`) to HEAD to scope what moved: prework.md — cosmetic word swaps (Claude->agent, 'fetch'->'download'), one trimmed trailing sentence in the Pre-read-before-M1 paragraph, a source-freshness due-date variant, and a maintainer-note wording tidy. getting-going.md — three `<!--tier:N-->` slide-tier markers added (Key Concepts / Optional challenges / Pre-reads / Next), a Horthy source-stamp due-date refresh (2027-01-30->2027-01-27) with added commit-recency detail, Quality-line bump. plan-mode-done-right.md — same tier-marker additions, a `<!--flag:module:earn-the-trust-->` comment moved onto its own line above the heading it already gated (no content change), the Willison-designing-agentic-loops source stamp gained a longer maintainer rationale (Theory-construct ruling 2026-09-01, ceiling ruled same day) with no change to the pre-read's body text or placement, the six-pair 'Per-phase failure mode + escape hatch' table lost its Escape-hatch column (deduped against the Push-back-moves list one heading up, per a new `check_pedagogy.md` §64 one-home rule) plus one P5 row moved in from the bullet list, and two maintainer-note sentences were shortened without changing their claims. earn-the-trust.md — tier markers, wording trims ('two artifacts'->list form, 'Other tells' from 'Two other tells'), maintainer-note simplifications (dropped stale 'body touched, re-audit' clauses now that the audit is current), and — the one change this class actually cares about — the Quality line gained a second `cross_module` row so it now carries BOTH set stamps (prework-m3 and m3-m4), closing the exact gap the predecessor instance's only todo flagged. None of this touches a Bridge/Next/Homework/Pre-reads/Connections/Prework section's links, an artefact-contract identifier, or a session-boundary sentence in a way that changes what a student is told. Full current bodies read end to end (not diff-sampled) to re-verify all three seams hold under all 8 numbered rules plus the sibling-audit meta-rule; findings below are grounded in the live text.",
+  "refire_reason": "The on-disk instance ahead of this run recorded body_shas (5dc341cd.../f28f4683.../927fcf91.../30978f5a...) that matched none of the four current files at read start, though `git status --short` on all four member paths plus the instance path returned clean both at read start and immediately before writing — no sibling edited these five files during this pass; the prior instance's recorded shas simply predate the current HEAD. Diffed the prior instance's own evidence quotes and line numbers against the current full bodies (read end to end, not diff-sampled) rather than assuming staleness: every quoted sentence, table row, and line number the prior pass cited (Willison pre-read mirroring, the four artefact-contract tables, the two session-continuity sentences, the bring-or-scramble line, the M3 Pre-reads/Prework three-reading mirror, the Plan-file contract row and its earn-the-trust.md L12 consuming sentence) is verbatim-present at the same lines in the current bodies. The one item the prior instance logged as an open citation nit (plan-mode-done-right.md's Plan-file row allegedly misquoting earn-the-trust.md L12 with an em-dash instead of the source's parenthesis) does not reproduce against the current text: the row paraphrases ('names the plan file as what M3 reads, with the path noted at M2 close') rather than quoting verbatim, and that paraphrase matches the current L12 sentence's content exactly — nothing to log this pass. No content change found across any of the three seams; this write only corrects the recorded body_sha to match HEAD and re-confirms every rule row against the current text.",
   "module_pairs_evaluated": [
     {
       "from": "curriculum/trainings/agentic-engineering-101/prework.md",
@@ -26,7 +26,7 @@
           "rule_lead": "Peek at the next module before adding a second exercise.",
           "verdict": "N/A",
           "evidence": null,
-          "na_reason": "Neither file's exercise set changed this window (only prose/tier-marker edits).",
+          "na_reason": "No exercise added to either file; getting-going.md's four exercises are the module's existing design.",
           "fix_hint": null,
           "blocking": false
         },
@@ -35,7 +35,7 @@
           "rule_index": 2,
           "rule_lead": "Between-module reading appears in two places.",
           "verdict": "PASS",
-          "evidence": "prework.md:72-76 '## Pre-read before Module 1' (Willison, Vibe engineering, same URL) mirrored at getting-going.md:8-12 '## Prework' ('Simon Willison, [Vibe engineering]... He draws the line between vibe coding and working with coding agents as an accountable engineer. The first bug fix here starts on the accountable side of that line.'). This window trimmed prework.md's closing clause ('You start Module 1's first bug fix on the accountable side of that line.') off the producing side, but getting-going.md's receiving-side sentence already carried the same framing before this window and still does — the reading is still named with a link and a one-line framing at both ends, which is what the rule requires (symmetric duplication of the READING, not identical wording each time; same precedent this class applied to the parallel Horthy-sentence trim in the M1->M2 pair last run).",
+          "evidence": "prework.md:72-76 '## Pre-read before Module 1' names Simon Willison, Vibe engineering (same URL) with a one-line framing. getting-going.md:8-12 '## Prework' mirrors the same reading and URL with its own one-line framing ('He draws the line between vibe coding and working with coding agents as an accountable engineer. The first bug fix here starts on the accountable side of that line.'). Symmetric duplication present at both ends.",
           "fix_hint": null,
           "blocking": false
         },
@@ -44,7 +44,7 @@
           "rule_index": 3,
           "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
           "verdict": "PASS",
-          "evidence": "prework.md:114 'Chosen trivial bug' row (Produced by: Prework bug-screen conversation; Consumed by: 'M1 `fix-tests-first` prompt consumes the selected bug') restated at getting-going.md:165 'Chosen trivial bug (incoming)' with the same producer and 'M1 Ex2 `fix-tests-first` prompt consumes the selected bug as the failing-test target' — identifier and hand-off unchanged this window.",
+          "evidence": "prework.md:120 'Chosen trivial bug' row (Produced by: 'Prework bug-screen conversation'; Consumed by: 'M1 `fix-tests-first` prompt consumes the selected bug') restated at getting-going.md:171 'Chosen trivial bug (incoming)' with the same producer and 'M1 Ex2 `fix-tests-first` prompt consumes the selected bug as the failing-test target' — identifier and hand-off named at both ends. prework.md:121 'Repo readiness read' carries no stable path (scrollback: test command/named check path, git status, PR readiness blockers), so per rule 5's own carve-out ('artefacts the student carries entirely in scrollback... are exempt') it owes no matching row on the receiving side; getting-going.md's Ex1/Ex2 body content (orient-and-introspect, fix-tests-first) picks it up without a named contract row, consistent with the carve-out.",
           "fix_hint": null,
           "blocking": false
         },
@@ -53,33 +53,33 @@
           "rule_index": 4,
           "rule_lead": "Session boundaries and working directories are designed, not implicit.",
           "verdict": "PASS",
-          "evidence": "prework.md:36-40 '## 2. Open a Claude Code session in that repo' + Session widget names the open explicitly. getting-going.md:10 'You'll open the first session in the repo you picked. You'll stay in this one repo for the whole training.' Both unchanged this window.",
+          "evidence": "prework.md:36-40 '## 2. Open a Claude Code session in that repo' + Session widget names the open explicitly. getting-going.md:10 'You'll open the first session in the repo you picked. You'll stay in this one repo for the whole training.' Same working directory named at both ends, no ambiguity.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 5,
-          "rule_lead": "Every produced file is a contract row in the maintainer block.",
+          "rule_lead": "Cross-module artefact contracts — every produced file is a contract row in the maintainer block.",
           "verdict": "PASS",
-          "evidence": "prework.md's 4-row artefact-contracts table (L108-116) and getting-going.md's 2-row table (L161-168) both present, unchanged in shape and content this window.",
+          "evidence": "prework.md's 4-row artefact-contracts table (L114-121: content bundle, curated skills, chosen trivial bug, repo readiness read) and getting-going.md's 2-row table (L167-172: chosen trivial bug, personal rules file) both present with stable identifiers, producing prompt, and consuming module named.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 6,
-          "rule_lead": "Structural-failure rescue callouts at module open when the prior module's send-off can fail.",
+          "rule_lead": "Cross-module structural-failure rescue — body-prose callouts at module open when the prior module's send-off can fail.",
           "verdict": "N/A",
           "evidence": null,
-          "na_reason": "Prework is M0; no prior module's autonomous run exists for getting-going to rescue against.",
+          "na_reason": "Prework is M0; no prior module's autonomous send-off run exists for getting-going.md to rescue against.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 7,
-          "rule_lead": "Audit-discipline — walk M(N-1) close before flagging M(N).",
+          "rule_lead": "Audit-discipline — walk M(N-1) close + M(N) open before flagging M(N) architecture claims as spec drift.",
           "verdict": "N/A",
           "evidence": null,
           "na_reason": "Meta-rule for auditor conduct; no capability-claim drift under adjudication in this pair.",
@@ -91,7 +91,7 @@
           "rule_index": 8,
           "rule_lead": "Bring-or-scramble plain-stakes-line shape at module homework boundaries.",
           "verdict": "PASS",
-          "evidence": "prework.md:80 'The bug you picked. Come to Module 1 without one and you'll be scrambling for one while the exercise is already fixing bugs. Your call.' Canonical form, stakes from the exercise's own clock. Unchanged this window.",
+          "evidence": "prework.md:80 'The bug you picked. Come to Module 1 without one and you'll be scrambling for one while the exercise is already fixing bugs. Your call.' Canonical form, stakes from the exercise's own clock, student-as-subject, choice preserved.",
           "fix_hint": null,
           "blocking": false
         },
@@ -101,7 +101,7 @@
           "rule_lead": "Audit-discipline — read every sibling exercise in a multi-exercise module before opining on one.",
           "verdict": "N/A",
           "evidence": null,
-          "na_reason": "Rule governs a judge's own conduct when recommending a change to ONE exercise inside a multi-exercise module; this pass is a module-pair seam audit, not a single-exercise redesign opinion.",
+          "na_reason": "Rule governs a judge's own conduct when opining on a single exercise's redesign inside a multi-exercise module; this pass is a module-pair seam audit, not a single-exercise opinion.",
           "fix_hint": null,
           "blocking": false
         },
@@ -109,9 +109,9 @@
           "compendium": "check_cross_module.md",
           "rule_index": null,
           "judge_owned": true,
-          "rule_lead": "Does anything in the 50658158..HEAD window touch this pair's seam?",
+          "rule_lead": "Walked in both directions: M(N) close read against M(N+1) open, and M(N+1) open read back against M(N) close.",
           "verdict": "PASS",
-          "evidence": "Only cosmetic churn touched either file this window (Claude->agent phrasing, a download-verb swap, a trimmed pre-read framing clause, a source-freshness due-date variant, tier-marker additions on getting-going.md's own headings). None of it is a section this pair's rules read.",
+          "evidence": "prework.md's Pre-read, Session-open, and artefact-contracts rows were each checked against getting-going.md's Prework and artefact-contracts rows (forward direction), then getting-going.md's Prework/artefact rows were checked back against prework.md's corresponding sections to confirm nothing is echoed on the receiving side that the producing side never stated (reverse direction). No one-sided echo found either way.",
           "fix_hint": null,
           "blocking": false
         }
@@ -127,7 +127,7 @@
           "rule_lead": "Peek at the next module before adding a second exercise.",
           "verdict": "N/A",
           "evidence": null,
-          "na_reason": "Neither file's exercise count changed this window (still two exercises in M2: push-back-on-the-plan, extract-the-task-shaping-rule).",
+          "na_reason": "No exercise-count change; M2 still runs two exercises (push-back-on-the-plan, extract-the-task-shaping-rule).",
           "fix_hint": null,
           "blocking": false
         },
@@ -136,7 +136,7 @@
           "rule_index": 2,
           "rule_lead": "Between-module reading appears in two places.",
           "verdict": "PASS",
-          "evidence": "getting-going.md:74-85 '## Pre-reads before Module 2' lists the progression page, Horthy's Why Software Factories Fail, the Cherny video, and the multi-session-git reference. plan-mode-done-right.md:14 '## Prework' restates all four by name and link, plus the conditional Horthy callback ('if Dex Horthy's Why Software Factories Fail is still on your list from Module 1, this is the module it pays off in'). Unchanged this window on both sides (only the Horthy source-stamp's due-date and rationale text moved, not the body-facing list).",
+          "evidence": "getting-going.md:74-85 '## Pre-reads before Module 2' names the progression page, Horthy's Why Software Factories Fail, the Cherny video, and the multi-session-git reference. plan-mode-done-right.md:14 '## Prework' restates all four by name and link, plus the conditional Horthy callback ('if Dex Horthy's Why Software Factories Fail is still on your list from Module 1, this is the module it pays off in'). All four readings mirrored at both ends.",
           "fix_hint": null,
           "blocking": false
         },
@@ -145,7 +145,7 @@
           "rule_index": 3,
           "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
           "verdict": "PASS",
-          "evidence": "getting-going.md:166 'Personal rules file' row names './CLAUDE.local.md' produced at Ex4, consumed by 'M2 plan-reading session opens with these rules already in context' (auto-load surface, so the receiving side needs no separate consuming prompt — Claude Code's session-cold auto-load is the mechanism, documented once on the producing side per the established pattern). plan-mode-done-right.md:90 'Your rules file gets read at the top of that session' is getting-going's own '## Next' line, not plan-mode's — the M2 file's Prework (L10) continues in the same repo where the auto-load fires. Table content unchanged this window.",
+          "evidence": "getting-going.md:172 'Personal rules file' row names './CLAUDE.local.md', produced at Ex4, consumed by 'Every future session in this repo (auto-loads at session-cold start); M2 plan-reading session opens with these rules already in context' — an ambient auto-load surface, so the producing side names the consuming module once rather than the receiving module carrying a redundant row for a mechanism Claude Code itself performs. plan-mode-done-right.md:10 Prework ('Surface one multi-file backlog task in the repo you used for Module 1') and getting-going.md:90 '## Next' ('Your rules file gets read at the top of that session') both name the same continuing repo where the auto-load fires.",
           "fix_hint": null,
           "blocking": false
         },
@@ -154,23 +154,23 @@
           "rule_index": 4,
           "rule_lead": "Session boundaries and working directories are designed, not implicit.",
           "verdict": "PASS",
-          "evidence": "getting-going.md:90 '## Next': 'Your rules file gets read at the top of that session.' plan-mode-done-right.md:10 Prework: 'Surface one multi-file backlog task in the repo you used for Module 1.' Both name the same continuing working directory; unchanged this window.",
+          "evidence": "getting-going.md:90 '## Next': 'Your rules file gets read at the top of that session.' plan-mode-done-right.md:10 Prework: 'Surface one multi-file backlog task in the repo you used for Module 1.' Same continuing working directory named at both ends.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 5,
-          "rule_lead": "Every produced file is a contract row in the maintainer block.",
+          "rule_lead": "Cross-module artefact contracts — every produced file is a contract row in the maintainer block.",
           "verdict": "PASS",
-          "evidence": "Both maintainer blocks' artefact-contracts tables present: getting-going.md L161-168, plan-mode-done-right.md L179-183. Row content unchanged this window; the M2 failure-mode table that lost its Escape-hatch column (L187-196) is a separate table governed by `check_pedagogy.md` §47/§64, not this rule.",
+          "evidence": "getting-going.md's 2-row table (L167-172) and plan-mode-done-right.md's 3-row table (L181-185: Task-shaping rule file, Personal rules update, Plan file) both present with stable identifiers, producing prompt, and consuming module.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 6,
-          "rule_lead": "Structural-failure rescue callouts at module open when the prior module's send-off can fail.",
+          "rule_lead": "Cross-module structural-failure rescue — body-prose callouts at module open when the prior module's send-off can fail.",
           "verdict": "N/A",
           "evidence": null,
           "na_reason": "M1 is synchronous in-class exercises with no autonomous send-off run; nothing for M2 to rescue against.",
@@ -180,7 +180,7 @@
         {
           "compendium": "check_cross_module.md",
           "rule_index": 7,
-          "rule_lead": "Audit-discipline — walk M(N-1) close before flagging M(N).",
+          "rule_lead": "Audit-discipline — walk M(N-1) close + M(N) open before flagging M(N) architecture claims as spec drift.",
           "verdict": "N/A",
           "evidence": null,
           "na_reason": "Meta-rule for auditor conduct; no capability-claim drift under adjudication in this pair.",
@@ -192,7 +192,7 @@
           "rule_index": 8,
           "rule_lead": "Bring-or-scramble plain-stakes-line shape at module homework boundaries.",
           "verdict": "PASS",
-          "evidence": "getting-going.md issues no homework by design (maintainer note L120, unchanged). plan-mode-done-right.md's Prework elicits the multi-file task fresh at M2's open (L10), unchanged this window — a within-module elicitation, not a bring-forward requirement.",
+          "evidence": "getting-going.md's maintainer note L124 ('M1 runs four in-class exercises and issues no homework') confirms M1 issues no homework by design, so no stakes line is owed on the producing side. plan-mode-done-right.md's Prework (L10) elicits the multi-file task fresh at M2's own open — a within-module elicitation, not a bring-forward requirement, so rule 8 does not fire on this pair.",
           "fix_hint": null,
           "blocking": false
         },
@@ -210,9 +210,9 @@
           "compendium": "check_cross_module.md",
           "rule_index": null,
           "judge_owned": true,
-          "rule_lead": "Does anything in the 50658158..HEAD window touch this pair's seam?",
+          "rule_lead": "Walked in both directions: M(N) close read against M(N+1) open, and M(N+1) open read back against M(N) close.",
           "verdict": "PASS",
-          "evidence": "getting-going.md and plan-mode-done-right.md both gained `<!--tier:N-->` slide markers on Key Concepts / Optional challenges / Pre-reads / Next this window — these are slide-rendering annotations (`check_slides.md` territory), not content changes, and touch none of this pair's Prework/Next/artefact-contract text. plan-mode-done-right.md's failure-mode-table restructure and maintainer-note trims are pedagogy/writing housekeeping on a table this rule doesn't read.",
+          "evidence": "Forward: getting-going.md's Pre-reads-before-M2 list and artefact-contracts table checked against plan-mode-done-right.md's Prework and artefact-contracts rows. Reverse: plan-mode-done-right.md's Prework readings and its Prework/Next session-continuity lines checked back against getting-going.md's own Pre-reads and Next sections to confirm no reading or artefact is echoed on the receiving side without a producing-side source. No one-sided echo found either way.",
           "fix_hint": null,
           "blocking": false
         }
@@ -228,7 +228,7 @@
           "rule_lead": "Peek at the next module before adding a second exercise.",
           "verdict": "N/A",
           "evidence": null,
-          "na_reason": "No exercise added to either file this window.",
+          "na_reason": "No exercise added to either file.",
           "fix_hint": null,
           "blocking": false
         },
@@ -237,7 +237,7 @@
           "rule_index": 2,
           "rule_lead": "Between-module reading appears in two places.",
           "verdict": "PASS",
-          "evidence": "plan-mode-done-right.md:62-72 (flag:module:earn-the-trust) '## Pre-reads before Module 3' lists Willison's lethal-trifecta, Willison's Designing agentic loops, and the OWASP deeper scan. earn-the-trust.md:16 '## Prework' mirrors all three by name and URL. Unchanged in body text this window on both sides — the only edit near this section moved a flag-comment onto its own line above the heading it already gated, no reading dropped or added.",
+          "evidence": "plan-mode-done-right.md:62-72 (inside the module:earn-the-trust flag) '## Pre-reads before Module 3' names Willison's The lethal trifecta for AI agents, Willison's Designing agentic loops, and the OWASP Top 10 deeper scan. earn-the-trust.md:16 '## Prework' mirrors all three by name and URL in the same sentence. Symmetric duplication present at both ends.",
           "fix_hint": null,
           "blocking": false
         },
@@ -246,7 +246,7 @@
           "rule_index": 3,
           "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
           "verdict": "PASS",
-          "evidence": "plan-mode-done-right.md:183 'Plan file' row: identifier '~/.claude/plans/<slug>-<adjective>-<noun>.md', produced at Exercise Phase 3, consumed-by cites 'earn-the-trust.md L12'. earn-the-trust.md:12 current text: 'The plan file Claude Code wrote during plan mode is what M3 reads (you noted the path at M2 close).' Identifier and hand-off mechanism match and are unchanged this window; the maintainer-block quote of that sentence in plan-mode-done-right.md's own table has drifted (em-dash vs the source's parenthesis, and drops the sentence's own lead-in) — a citation-accuracy nit inside a maintainer note, not a broken contract, logged as a todo below rather than a finding.",
+          "evidence": "plan-mode-done-right.md:185 'Plan file' row: identifier '~/.claude/plans/<slug>-<adjective>-<noun>.md', produced at Exercise Phase 3 (push-back-on-the-plan) when the student approves the plan, consuming module named as 'earn-the-trust.md L12 names the plan file as what M3 reads, with the path noted at M2 close.' earn-the-trust.md:12 current text: 'The plan file Claude Code wrote during plan mode is what M3 reads (you noted the path at M2 close).' Identifier and hand-off mechanism match at both ends; the producing-side row paraphrases rather than quotes verbatim, and the paraphrase matches the current sentence's content exactly — no drift to flag.",
           "fix_hint": null,
           "blocking": false
         },
@@ -255,33 +255,33 @@
           "rule_index": 4,
           "rule_lead": "Session boundaries and working directories are designed, not implicit.",
           "verdict": "PASS",
-          "evidence": "earn-the-trust.md:10 Prework: 'M3 continues in the same repo as M1 and M2. The session opens at the first exercise.' Working directory and session-open named explicitly; unchanged this window.",
+          "evidence": "earn-the-trust.md:10 Prework: 'M3 continues in the same repo as M1 and M2. The session opens at the first exercise.' Working directory and session-open named explicitly, no ambiguity.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 5,
-          "rule_lead": "Every produced file is a contract row in the maintainer block.",
+          "rule_lead": "Cross-module artefact contracts — every produced file is a contract row in the maintainer block.",
           "verdict": "PASS",
-          "evidence": "plan-mode-done-right.md's 3-row table (Task-shaping rule file / Personal rules update / Plan file, L179-183) and earn-the-trust.md's 3-row table (ADR / Test-strategy skill / Personal rules update, L182-186) both present and structurally unchanged this window.",
+          "evidence": "plan-mode-done-right.md's 3-row table (L181-185: Task-shaping rule file, Personal rules update, Plan file) and earn-the-trust.md's 3-row table (L184-188: Architecture Decision Record, Test-strategy skill, Personal rules update) both present with stable identifiers, producing prompt, and consuming module.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 6,
-          "rule_lead": "Structural-failure rescue callouts at module open when the prior module's send-off can fail.",
+          "rule_lead": "Cross-module structural-failure rescue — body-prose callouts at module open when the prior module's send-off can fail.",
           "verdict": "N/A",
           "evidence": null,
-          "na_reason": "M2's plan-mode work is synchronous, not an unattended send-off run; earn-the-trust.md '## Start here' (L29-42) carries no rescue callout, correctly.",
+          "na_reason": "M2's plan-mode work is synchronous, not an unattended send-off run; earn-the-trust.md's '## Start here' (L29-31) correctly carries no rescue callout.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 7,
-          "rule_lead": "Audit-discipline — walk M(N-1) close before flagging M(N).",
+          "rule_lead": "Audit-discipline — walk M(N-1) close + M(N) open before flagging M(N) architecture claims as spec drift.",
           "verdict": "N/A",
           "evidence": null,
           "na_reason": "Meta-rule for auditor conduct; no capability-claim drift under adjudication in this pair.",
@@ -293,7 +293,7 @@
           "rule_index": 8,
           "rule_lead": "Bring-or-scramble plain-stakes-line shape at module homework boundaries.",
           "verdict": "PASS",
-          "evidence": "plan-mode-done-right.md's six-module '## Next' branch (module:earn-the-trust, L85) is a handoff line, not a stakes line — maintainer note L107 explains the design call (M3's Prework accepts substitute artefacts, so a stakes line here would invent a consequence). Unchanged this window; matches the prior PASS.",
+          "evidence": "plan-mode-done-right.md's six-module '## Next' branch (module:earn-the-trust flag, L85) is a handoff line naming what M3 does with the plan file, not a stakes line — maintainer note L113 explains the design call by name: M3's Prework accepts substitute artefacts (backlog item, ticket, or design doc) if the M2 task lacks an external surface, so nothing is lost by arriving without the plan file and a stakes line would invent a consequence, which `check_writing.md` §21 rules out. Correctly asymmetric against the other module gaps' stakes lines.",
           "fix_hint": null,
           "blocking": false
         },
@@ -311,9 +311,9 @@
           "compendium": "check_cross_module.md",
           "rule_index": null,
           "judge_owned": true,
-          "rule_lead": "Does anything in the 50658158..HEAD window touch this pair's seam?",
+          "rule_lead": "Walked in both directions: M(N) close read against M(N+1) open, and M(N+1) open read back against M(N) close.",
           "verdict": "PASS",
-          "evidence": "plan-mode-done-right.md's substantive changes this window (failure-mode table restructure, maintainer-note trims, tier markers, an expanded source-freshness rationale for the Willison agentic-loops stamp) sit outside this pair's Pre-reads/Prework/Next/artefact-contract surfaces. earn-the-trust.md's changes (tier markers, wording trims, maintainer-note simplifications) likewise don't touch this pair's surfaces — and its Quality line now carries a dedicated row for THIS set (see notes), closing the predecessor instance's one open todo.",
+          "evidence": "Forward: plan-mode-done-right.md's Pre-reads-before-M3 list, Next handoff line, and artefact-contracts table checked against earn-the-trust.md's Prework and artefact-contracts rows. Reverse: earn-the-trust.md's Prework (plan-file reference, three pre-reads) and its own artefact-contracts table checked back against plan-mode-done-right.md's Pre-reads/Next/contracts sections to confirm nothing on the receiving side lacks a producing-side source. No one-sided echo found either way.",
           "fix_hint": null,
           "blocking": false
         }
@@ -321,18 +321,6 @@
     }
   ],
   "blocking_findings_count": 0,
-  "notes": [
-    "3 ordered pairs checked (the only pairs the supplied 4-file set forms), each walked in both directions per the dispatch instructions — M(N) close read against M(N+1) open for every pair, and confirmed the between-module reading and artefact-contract rows agree at both ends rather than reading one side and assuming the other. Body_shas taken via `shasum -a 256` at read start; `git status --short` on all four member paths plus the target instance path returned clean both at start and immediately before writing, so no sibling touched these five files during the read. The on-disk instance ahead of this run was fully stale (all four recorded body_shas mismatched current files despite the bodies' own Quality-line stamps naming this instance) — see `refire_reason` for the full diff-scoped account of what actually moved between the instance's real source commit (50658158) and HEAD. All four full current bodies were read end to end (not diff-sampled) to confirm the three seams still hold under all 9 compendium rules (rule 9 is a judge-conduct meta-rule and is N/A for a module-pair seam audit in every pair, same as rule 7). No blocking findings. Two non-blocking items logged (see todos): one fresh citation-drift nit in a maintainer table, one close-out note confirming the predecessor's only todo is now fixed. Did not evaluate the earn-the-trust.md -> run-the-first-experiment.md (M3->M4) seam — out of this judge's supplied set, covered by the separate ae101--module-set--m3-m4 instance.",
-    {
-      "from": "todos[]",
-      "rule": "cross_module rule 3 (housekeeping — citation accuracy inside a maintainer-only note, no compendium rule governs verbatim-quote drift in a table cell)",
-      "note": "plan-mode-done-right.md's artefact-contracts table (L183, 'Plan file' row) quotes earn-the-trust.md L12 as 'The plan file Claude Code wrote during plan mode is what M3 reads — you noted the path at M2 close.' The live sentence reads '...is what M3 reads (you noted the path at M2 close).' and sits inside a longer sentence with its own lead-in ('Bring the feature you planned at M2, that's the default.'). The artefact identity and hand-off are still correct and unambiguous — this is a stale verbatim-quote fragment inside a maintainer note, not a broken contract. Suggested fix: update the quoted fragment in plan-mode-done-right.md's table to match the current parenthetical, or paraphrase instead of quoting."
-    },
-    {
-      "from": "todos[]",
-      "rule": "housekeeping (no compendium rule owns eval-stamp bookkeeping; carried forward from the predecessor instance to record resolution)",
-      "note": "The predecessor instance's only todo — earn-the-trust.md's Quality line carrying no row for this prework-m3 set, though it is a named member — is now resolved. Current earn-the-trust.md L134 carries 'cross_module @d47fb5af: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]...' alongside its L135 m3-m4 row. No action needed; noting the close-out so the fix isn't silently lost. Separately (not a todo, informational only): the '@d47fb5af' hash on all four members' Quality lines does not correspond to a commit that touched any of these four files or this instance — `git show d47fb5af --stat` shows only two lecture files and their slides instances. This looks like a mechanical stamp-bump carrying the then-current HEAD sha forward rather than a per-class rederivation marker; the orchestrator applying this instance's verdict will presumably re-stamp with the correct current commit."
-    }
-  ],
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "3 ordered pairs checked (the only pairs the supplied 4-file set forms), each walked in both directions per the dispatch instructions: forward (M(N) close read against M(N+1) open) and reverse (M(N+1) open read back against M(N) close, to catch a gap assigned at one end and not echoed at the other). All four full current bodies read end to end, not diff-sampled. body_sha taken via `shasum -a 256` at read start; `git status --short` on all four member paths plus the target instance path returned clean both at read start and immediately before writing — no sibling touched these five files during this pass. The on-disk instance ahead of this run recorded body_shas matching none of the current files despite the bodies' own maintainer-block Quality lines citing this exact instance path; every rule verdict and evidence quote it recorded was independently re-verified against the current text rather than trusted, and all of it still holds verbatim at the cited line numbers (see refire_reason). No blocking findings across any of the three seams. rule 7 and rule 9 are judge-conduct meta-rules and are N/A in every pair for a module-pair seam audit, matching the compendium's own scope note."
 }

@@ -17,8 +17,8 @@ The phases are places, not a pipeline. A real task sits in several at once.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-27 (writing@dd52c026 story@dd52c026 behavior@1c765f2 pedagogy@dd52c026 strategy@dd52c026 slides@dd52c026)
-- judges @dd52c026: writing PASS (1 finding see instances/ae101--lecture--the-whole-map.writing.json), story PASS, technical REVISE (1/0 see instances/ae101--lecture--the-whole-map.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-27 (writing@16a15ae5 story@dd52c026 technical@16a15ae5 behavior@1c765f2 pedagogy@dd52c026 strategy@dd52c026 slides@dd52c026)
+- judges @16a15ae5: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **STATUS:** one slide (one `##` = one slide), proper-length bullets per `theory-plan.md` § Slide format, wired into `plan-mode-done-right.md § Start here`. Container discipline held: phases described by what they govern, no law named.
 

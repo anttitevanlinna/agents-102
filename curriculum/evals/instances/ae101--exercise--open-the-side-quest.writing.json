@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/exercises/open-the-side-quest.md",
   "verdict": "PASS",
-  "body_sha": "46f30174d6375ac13acb940c208a7eb798220bbff3858508a66ba73dab00e2a5",
+  "body_sha": "062b0f03bda02dee5fc8fba6fbdd1c19134e54ca6cfb1fca87e48dc18bf1ed62",
   "shape_hash": "3cf5ace7aa38ed0f",
   "rules_evaluated": [
     {
@@ -38,7 +38,8 @@
       "rule_index": 4,
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "L11 'a long-running prompt is dead time only if you have one window' is a clean Rory-style reframe (turning wait time into an asset), credited in the backing block to Cherny's worktree-as-unlock framing ('the game vocabulary is ours'). No consultancy-register phrase-pairs, no L&D-coach or motivational-poster register. Sub-checks: no '**Remember:**'/'Hold onto'/'Keep in mind' wrapper (retain-this poster ban); no atmospheric/sensory/isolation imagery to mis-hit a feeling note; no 'we refuse/we don't' negation-callout to test for self-contradiction. Body reads Boris-direct throughout (factual, terse, mechanism-first), appropriate for a plumbing-setup exercise.",
+      "evidence": "student-facing AE101 body stays factual/direct (Boris register) throughout — L15 'Security is the main quest. Start it in your repo.', L23, L45; no flinch words present (grep for 'just a simple', 'trust the agent', 'leash', 'niceness' → 0 hits) and no atmospheric imagery to mis-fire the emotional-tone scan",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -191,7 +192,8 @@
       "rule_index": 27,
       "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
       "verdict": "PASS",
-      "evidence": "No abstract-twin restatement, no widening qualifier, no second announcement found. The one candidate — body bullet on CLAUDE.local.md not syncing (L24) vs. the prompt fence's own copy/no-sync-back lines — is not a duplicate under (b): the body gives the student-facing WHY (a general fact about worktrees), the fence carries the AGENT-facing HOW (the actual copy instruction), which is the division check_prompts.md §34 requires since body callouts never reach runtime.",
+      "evidence": "L45 'Authoring and invoking the test-strategy skill both happen in this window, on this codebase. It installs to user scope, so it crosses back to the main lane on its own, and you never carry it by hand.' is exactly the survivor shape — concrete instance then the one portable sentence, then stop; no third sentence found restating the same idea anywhere in the body",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -362,7 +364,8 @@
       "rule_index": 27,
       "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
       "verdict": "PASS",
-      "evidence": "L33 ('Claude reports the sibling worktree path. That path is where the second session opens.') gives the next move (where the path is used), not a bare 'read it' narration of a chat-print. No generic 'Look at it'/'Notice X' pattern anywhere in body.",
+      "evidence": "grep of the body for read it|look at it|notice → 0 hits; the closest lines (L33 'Claude reports the sibling worktree path. That path is where the second session opens.') give a next-move fact, not a narrate-what-you're-reading instruction",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -515,7 +518,8 @@
       "rule_index": 36,
       "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
       "verdict": "PASS",
-      "evidence": "Fork prompt already splits into four paragraphs by move (fork+command; copy+command; no-sync-back note; report ask) — matches the rule's own worked shape. Orient prompt is a single short bulleted ask (≤2 moves), legitimately staying in one block.",
+      "evidence": "ae101-m3-fork-quality-side.md already breaks by move (fork command / copy command / no-sync note / report ask); ae101-m3-quality-side-orient.md splits its four checks into a bulleted list then a separate report-ask sentence",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -578,7 +582,8 @@
       "rule_index": 8,
       "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
       "verdict": "N/A",
-      "evidence": "This rule binds the strategy doc's OWN content against the curriculum (checking the doc doesn't restate structure this file owns); it cannot be evaluated by reading the exercise file alone. This file's maintainer block does carry the structural specifics (Placement, Pedagogical role, Plug points, Push-back moves) that a compliant doc should merely point to, which is the correct shape on this file's side of the split.",
+      "evidence": null,
+      "na_reason": "rule binds what the strategy doc may restate about curriculum; it imposes no obligation on this exercise file itself",
       "fix_hint": null,
       "blocking": false
     },
@@ -1036,13 +1041,12 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 35,
-      "rule_lead": "Repeated Q&A -> premature re-edits. Separate iteration from persistence.",
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
       "verdict": "N/A",
-      "evidence": "Neither prompt sets up a multi-turn dialog that can rewrite a shared artifact file.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "54ab1609d72d33fc1f89c6eac1969e81e13d8a7fc4d3db29a08f02e3a6eaf670",
-      "carried_shape": "c4f5abf7d453d963"
+      "evidence": null,
+      "na_reason": "neither prompt sets up multi-turn dialog affecting an artifact file — both are single-shot: run commands then report",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
@@ -1091,13 +1095,12 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 43,
-      "rule_lead": "Long-running prompts stream progress - never go silent.",
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
       "verdict": "N/A",
-      "evidence": "Both prompts are short mechanical operations (fork a worktree, report four facts), not multi-minute runs needing progress cadence.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "54ab1609d72d33fc1f89c6eac1969e81e13d8a7fc4d3db29a08f02e3a6eaf670",
-      "carried_shape": "c4f5abf7d453d963"
+      "evidence": null,
+      "na_reason": "both prompts are a handful of quick commands (worktree add, cp, git ls-files), not a run that will take more than a couple of minutes",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
@@ -1351,8 +1354,29 @@
       "blocking": false,
       "carried_from": "54ab1609d72d33fc1f89c6eac1969e81e13d8a7fc4d3db29a08f02e3a6eaf670",
       "carried_shape": "c4f5abf7d453d963"
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 28,
+      "rule_lead": "Body prose stands without the trainer — no cue-card prose.",
+      "verdict": "PASS",
+      "evidence": "L37 'This is your side-quest lane.' passes the muted read — \"This\" resolves to the header immediately above it ('Open the quality lane in the new worktree'); grep of the body for the report-only list (Take a guess|before it runs|on the screen|^Let's go|^Go\\.|Your turn|What does .* now\\?) → 0 hits",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "scope": "drift",
+  "drift_rules": [
+    "check_prompts.md §35",
+    "check_prompts.md §36",
+    "check_prompts.md §43",
+    "check_strategy_tie_in.md §8",
+    "check_student_facing.md §27",
+    "check_writing.md §4",
+    "check_writing.md §27",
+    "check_writing.md §28"
+  ]
 }

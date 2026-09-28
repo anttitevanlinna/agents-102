@@ -79,9 +79,9 @@ The rest point at the same surprise: the effort in agent work sits in the framin
 
 **Read,** [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md). Uncle Bob's public learning journey with AI coding: early speed, mercury-like unpredictability, then tests, architecture visibility, and formal constraints as steering. It moves the question from "the agent ran" to "what would have constrained the drift?".
 
-**Watch,** Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich). Interview video and write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling..
+**Watch,** Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich). Interview video and write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling.
 
-**Read,** [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md). Some tasks are far cheaper to check than to do, and delegation pays exactly there..
+**Read,** [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md). Some tasks are far cheaper to check than to do, and delegation pays exactly there.
 
 **Read (longer),** Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide). The term and the philosophy, and the 80/20 that follows from it: the weight sits on planning and review.
 
@@ -92,10 +92,10 @@ The next module opens with what came back, or what you caught before it went fur
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@17446703 pedagogy@191ea58f strategy@324b81d7 slides@191ea58f)
-- judges @324b81d7: writing PASS, story PASS, technical PASS (1 finding see instances/ae101--module--run-the-first-experiment.technical.json), behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--module--run-the-first-experiment.strategy.json), slides PASS
-- cross_module @08946dd8: PASS — set=[earn-the-trust,run-the-first-experiment]; 1 pair, 0 blocking; see instances/ae101--module-set--m3-m4.cross_module.json
+**Quality:** compendium-audited 2026-09-28 (story@2d6b2b01 technical@2d6b2b01 behavior@17446703 pedagogy@3bc472a1 strategy@2d6b2b01 slides@3bc472a1)
+- judges @2d6b2b01: writing REVISE (2/1 see instances/ae101--module--run-the-first-experiment.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--module--run-the-first-experiment.strategy.json), slides PASS
 - cross_module @fb797e3b: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
+- cross_module @2d6b2b01: PASS — set=[earn-the-trust,run-the-first-experiment]; 1 pair, 0 blocking; see instances/ae101--module-set--m3-m4.cross_module.json
 
 **`## Prework`'s pre-read callback names da Costa unconditionally, no flag.** Willison's *Designing agentic loops* is the M3 access-surface read only (`plan-mode-done-right.md`); it does not belong at M4 in any cut. `plan-mode-done-right.md` assigns da Costa directly in its own `no-module:earn-the-trust` `## Pre-reads before Module 4` block, so the pre-M4 read is the same essay across every cut. Do not reintroduce a Willison branch here.
 

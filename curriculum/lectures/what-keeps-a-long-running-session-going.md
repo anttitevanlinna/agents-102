@@ -48,8 +48,8 @@ When your agent stops for missing information, check whether there was a way for
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 technical@08946dd8 behavior@93bb807 pedagogy@08946dd8 strategy@08946dd8 slides@c0c37913)
-- judges @08946dd8: writing PASS (1 finding see instances/ae101--lecture--what-keeps-a-long-running-session-going.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/ae101--lecture--what-keeps-a-long-running-session-going.pedagogy.json), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-28 (writing@2d6b2b01 story@3bc472a1 technical@3bc472a1 behavior@93bb807 pedagogy@3bc472a1 strategy@3bc472a1 slides@3bc472a1)
+- judges @2d6b2b01: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Lecture meta:** *~5 min, four slides. Post-send-off read while the un-packaged session remains active. The session is the specimen: each slide turns attention toward durable state, downstream feedback, and boundaries already present.*
 
@@ -61,7 +61,7 @@ When your agent stops for missing information, check whether there was a way for
 
 **§9's tell-clause fires on the kicker and is declined (Antti 2026-09-05: *"longer with very little value add"*).** The tell (a connector, a file, a command, a question to a colleague) stays in this note and out of the body. The kicker is one sentence on purpose; grafting a four-item apposition onto it buys precision the student does not need at that moment and spends the lightness the shape was chosen for. §9 is right that the tell is usually already written one fence away, and right that a look-line owes one; where the line is maintainer-worded and the tell would double its length, this file's answer is that the trainer carries it. A judge meeting the missing tell again reads this note and files nothing.
 
-**The last bullet's closing line is load-bearing** — the retry-churn case never stopped at all, so a slide titled *what stops a long-running session* closing on the one that did not is the point, not an inconsistency to tidy. It reads as a bare observation on purpose (2026-08-14): ranking the four changes nothing the student does and the bullet already shows the cost. No *most expensive of the four* tail.
+**The last bullet's closing line is load-bearing** — the retry-churn case never stopped at all, so a slide titled *what stops a long-running session* closing on the one that did not is the point, not an inconsistency to tidy. It reads as a bare observation on purpose (2026-08-14): ranking the four changes nothing the student does and the bullet already shows the cost.
 
 **Vocabulary (2026-08-26):** the slide-4 heading and its last bullet use *long-running session* / *session*, never noun-*run*, per `vocabulary.md § The work` + `check_student_facing.md §21b` — the 2026-08-14 notes authorize the slide's beat, not its vocabulary. The `spends-the-whole-run-on-one-obstacle` claim id is a stable identifier, not body prose.
 

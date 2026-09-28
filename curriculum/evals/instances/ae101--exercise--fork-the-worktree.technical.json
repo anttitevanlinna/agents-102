@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/exercises/fork-the-worktree.md",
   "verdict": "PASS",
-  "body_sha": "d9596ff39cefcb108ccc22a31823d53f55a5c7cc46ce011b8ca9e2c5e7670609",
+  "body_sha": "b551ad47401f1eca512ce00168f07804032b3151f9cc18c8b95553411ed4e811",
   "shape_hash": "632025a350bd415b",
   "pin": "8cc00874",
   "staleness_reason": "rule-drift",
@@ -444,8 +444,8 @@
       "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "no multi-turn dialog affecting an artifact file.",
-      "fix_hint": "",
+      "na_reason": "fence (curriculum/prompts/ae101-m5-worktree-setup.md) is one-shot setup, not a multi-turn dialog that iteratively rewrites an artifact file",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -453,8 +453,9 @@
       "rule_index": 36,
       "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
       "verdict": "PASS",
-      "evidence": "First paragraph of the fence bundles ~6 tightly sequential moves (read task.md → identify branch → verify it exists → find commit → ask-if-ambiguous → create worktree), each depending on the prior step's output. This is the rule's own named carve-out ('sequential-build prompts... may stay one paragraph if breaking feels artificial'); the second paragraph already splits off the file-copy + report-back move. Line closest to the ceiling: the conditional 'If that commit message has been rewritten or is ambiguous, ask me for the SHA...' — a legitimate If/then clause inside a causally-chained sequence, not an independent bundled move.",
-      "fix_hint": "",
+      "evidence": "registry curriculum/prompts/ae101-m5-worktree-setup.md L26 'Read `./task.md`. Use the branch named in its `Run coordinates...` block... Verify that branch exists... then find the \"M4 starting point\" commit... If that commit message has been rewritten or is ambiguous, ask me for the SHA... Spin up a git worktree at that commit. Put the worktree at `../<repo-name>-m5`...' and L28 'Then copy the gitignored personal files into the worktree...' (transcluded at fork-the-worktree.md L27 via {{prompt:ae101-m5-worktree-setup}}) — the fence already splits into two paragraphs by move (locate/verify branch + create worktree vs copy gitignored files), and inside paragraph 1 each clause is its own full-stopped sentence (locate, ignore-other-branches, don't-broad-search, verify-then-find-commit, conditional ask, spin-up, place). Per §36's carve-out this already scans by move; a sub-paragraph split of one tightly sequential setup is not owed.",
+      "na_reason": null,
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -1468,15 +1469,42 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 43,
-      "rule_lead": "Long-running prompts stream progress.",
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "1fe92bacfedb91188ab90cdbae7d056f036054639c45594444cfab9102f59153",
-      "carried_shape": "632025a350bd415b"
+      "na_reason": "worktree creation + two cp calls are seconds-scale git/filesystem ops, not a long-running task",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 61,
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "file proposes no SKILL.md/framework/tool change",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 66,
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "authoring-sequence rule across the corpus, not observable from one finished, already compendium-audited file",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "scope": "drift",
+  "drift_rules": [
+    "check_pedagogy.md §61",
+    "check_pedagogy.md §66",
+    "check_prompts.md §35",
+    "check_prompts.md §36",
+    "check_prompts.md §43"
+  ]
 }

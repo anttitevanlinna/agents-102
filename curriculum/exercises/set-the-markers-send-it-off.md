@@ -61,8 +61,8 @@ If the agent stalls, ask it to continue. The nudge reads as encouragement and la
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-06 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@64d17eea pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
-- judges @64d17eea: writing PASS (3 findings see instances/ae101--exercise--set-the-markers-send-it-off.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-28 (writing@3bc472a1 story@3bc472a1 behavior@64d17eea pedagogy@3bc472a1 strategy@3bc472a1 slides@3bc472a1)
+- judges @2d6b2b01: writing PASS, story PASS, technical REVISE (1/0 see instances/ae101--exercise--set-the-markers-send-it-off.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **View summary:** You pin the two markers the next module returns to, the session transcript path and a starting-point commit on a throwaway branch, then paste the send-off prompt and step away while the agent works the task alone.
 
@@ -89,7 +89,7 @@ If the agent stalls, ask it to continue. The nudge reads as encouragement and la
 - Student passes the final prompt to the SAME Claude Code session they've been in for 90+ minutes. No new session. No `/schedule`, no `/loop`, no cloud runner.
 - Student closes the laptop (power settings + plugged in) OR stops the run mid-flight when observation is sufficient.
 - Trace preservation: Claude Code scrollback is the artifact M5 reads. Anything the student's configured for conversation logging continues.
-- **Capability verified:** laptop-sleep freezes the session (not resumable on wake); Ctrl+C mid-tool-call can corrupt the `.jsonl`; no per-session token budget. Details in `reference/claude-code-for-engineers.md § 17`.
+- **Capability verified:** laptop-sleep freezes the session (not resumable on wake); Ctrl+C mid-tool-call can corrupt the `.jsonl`; no per-session token budget. Details in `reference/claude-code-for-engineers.md § 23`.
 
 **Placement:** the last exercise of M4. The two closing lectures sit below it in the module file and run while the task is already going: `what-keeps-a-long-running-session-going` rides the live session, then `ironies-of-automation` closes the module. This file owns only what the student does.
 

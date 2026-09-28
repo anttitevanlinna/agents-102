@@ -3,15 +3,36 @@
  "training": "ae101",
  "file": "curriculum/lectures/the-loop-half-filled.md",
  "verdict": "PASS",
- "body_sha": "d580feff6e57494c953cb3dbb251c0c170377c8fea645fa00f1036c3a3d5719a",
- "shape_hash": "1a45f572c31f174d",
+ "body_sha": "e0dcfa53d7735bca33a31e763f2c64e93305127497edf5ebd25adda5d56d9d70",
+ "shape_hash": "1e915cfba4fe7a67",
+ "module_mood_contract": "earned trust — \"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big\" (M3, content-strategy-agentic-engineering-101.md line 245)",
+ "trace_status": "regenerated",
+ "mood_summary": {
+   "phase_scores": [8, 9, 9, 8, 7, 7, 8],
+   "close_score": 8,
+   "any_below_8": true,
+   "stealing_the_mood": [
+     "Phase 5 (Reading was never the control, L38-45): 7/10 — L43's triple-clause sentence (delta note / one-threat pick / skill critique) packs three lived instances into one dense line; a cold read recovers roughly two of three.",
+     "Phase 6 (The branch is the permission, L48-57): 7/10 — L55's merge line reads as a step-skipped for a student who never literally merged the branch; the maintainer's line-76 accept-note already rules this resolves as a three-line unit."
+   ]
+ },
  "rules_evaluated": [
   {
    "compendium": "check_lectures.md",
    "rule_index": 1,
    "rule_lead": "Meta-frame lectures = closers, not openers.",
    "verdict": "PASS",
-   "evidence": "Verified against the live body (body_sha 297ed64d…). Placement per maintainer block line 70: \"M3 close, the near-half (loop-half) consolidation closer … Consolidation and recognition, NOT new teaching.\" All seven slides name moves already lived in M1–M3: plan mode (L15), the second read (L16), the delta-note/one-threat-pick/skill-critique triad (L36), the un-merged side-quest branch (L42). Recognition register throughout (\"you already made\", \"you already did\"); no new teaching content introduced. Diagnostic resolves to \"naming a pattern\" — a closer.",
+   "evidence": "Maintainer Placement note, L88: \"M3 close, the near-half (loop-half) consolidation closer ... Consolidation and recognition, NOT new teaching.\" All seven sections name moves already lived through in M1–M3: plan mode (L18), the second read (L19), the delta-note/one-threat-pick/skill-critique triad (L43), the un-merged side-quest branch (L51). Recognition register throughout (\"you already made\", \"you already did\", \"already lived ground\"); no new instruction anywhere in the body. Diagnostic resolves to naming a pattern already lived through — a closer.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_lectures.md",
+   "rule_index": 2,
+   "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+   "verdict": "N/A",
+   "na_reason": "This is a closer with no exercise following it in-file; the rule targets openers preceding a contrast-mood (M5-style) exercise.",
+   "evidence": null,
    "fix_hint": null,
    "blocking": false
   },
@@ -20,7 +41,7 @@
    "rule_index": 3,
    "rule_lead": "No cross-module sequencing in lecture bodies.",
    "verdict": "PASS",
-   "evidence": "Re-ran the rule's own pre-ship grep on the live body region: `sed -n '1,53p' curriculum/lectures/the-loop-half-filled.md | grep -nE '\\bM[0-9]\\b'` → 3 hits, lines 6, 7, 51 (M1/M2 at 6, M1 at 7, M4 at 51) — identical hit set to the prior audit. The one body change since then (L7's parenthetical word order, \"orient, fix, compound, close\" → \"orient, fix, close, compound\" — verified against content-strategy-agentic-engineering-101.md line 245's own phrasing, \"The loop closes in the room: orient → fix → close → compound\") adds no module reference. Stays inside the rule's carve-out: \"arc lectures (the map, consolidation closers) whose SUBJECT is the arc keep module ranges\" — this file's entire subject is the map's near half and its handoff to the far half. Maintainer Placement note (line 70) states the identical reading.",
+   "evidence": "Ran the rule's own pre-ship grep on the live body: `sed -n '1,68p' curriculum/lectures/the-loop-half-filled.md | grep -nE '\\bM[0-9]\\b'` → 3 hits, L6 (M1, M2), L8 (M1's orient/fix/close/compound), L65 (M4). Stays inside the carve-out: \"arc lectures (the map, consolidation closers) whose SUBJECT is the arc keep module ranges\" — this file's whole subject is the map's near half and its handoff to the far half, matching maintainer Placement note L88. The diff since the last audit reformatted every bullet list to prose paragraphs and reworded the title/first header but introduced zero new M-refs (identical hit set and count to the pre-diff body).",
    "fix_hint": null,
    "blocking": false
   },
@@ -29,7 +50,7 @@
    "rule_index": 4,
    "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
    "verdict": "PASS",
-   "evidence": "All seven `##` headers, read cold off the live body: L3 orientation (\"Back to the map: near half filled\"), L12/L19 name concepts, L25 names a practice (the governor), L32/L39 assert claims, L47 asserts a claim at map-position. No duplicates, no empty containers, no bare-arc-label closer — the closer names a specific claim, not a slot label. Orientation rationed to the single L3 beat. `grep -n '^## ' <file> | grep -c '—'` → 0 em-dashes in headers. Closest to the truth clause is L32 \"Reading was never the control\" (unqualified \"never\") — licensed at that strength by L35 (\"control never came from reading them whole\") and closed in scope by L37 (\"you can never read all\").",
+   "evidence": "All seven live `##` headers: L3 \"Three modules on the near half: Intent, Context, Work\" (names the three concepts — an upgrade from the pre-diff \"Back to the map: near half filled\", which was orientation-only), L15/L22 name concepts, L28 names a practice (the governor), L38/L48/L60 assert claims. No empty containers, no bare-arc-label closer (L60's \"The far half goes quiet\" is a specific claim, not a slot label), no duplicate headers, zero orientation beats spent (the map figure at L12 carries the single orientation role implicitly, no header claims it). `grep -n '^## ' <file> | grep -c '—'` → 0 em-dashes. Closest to the truth-clause edge is L38 \"Reading was never the control\" (unqualified \"never\") — licensed at that strength by L41 (\"control never came from reading them whole\") and bounded by L45 (\"you can never read all\"), same reading as the pre-diff audit; wording is byte-identical across the reformat.",
    "fix_hint": null,
    "blocking": false
   },
@@ -38,7 +59,17 @@
    "rule_index": 5,
    "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
    "verdict": "PASS",
-   "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/the-loop-half-filled.md` against the live body this session → \"files: 1 slides: 7 limits: 210 words / 6 bullets / oversized: 0 / ✓ every slide is within limits\", exit 0. Max bullet count is 4 (L39–45, \"The branch is the permission\").",
+   "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/the-loop-half-filled.md --report` against the live body this session → largest slide 160 words / 3 bullets (\"The loop and the model it runs on\"), all seven slides ≤210 words, ≤6 bullets, 0 oversized, exit summary \"✓ every slide is within limits\". The bullet-to-paragraph reformat since the last audit removed all `-` markers from five of seven sections (they now read 0 bullets) without changing word count or wording.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_lectures.md",
+   "rule_index": 6,
+   "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+   "verdict": "N/A",
+   "na_reason": "Body-view signal has_prompt_blocks: false; raw-body grep for `{{prompt:` and `**Prompt**` → zero hits. Pure lecture prose plus one figure include.",
+   "evidence": null,
    "fix_hint": null,
    "blocking": false
   },
@@ -47,7 +78,7 @@
    "rule_index": 1,
    "rule_lead": "Mood contract named.",
    "verdict": "PASS",
-   "evidence": "Cached persona trace's content_sha (6d222adb…, 2026-08-30) did not match the live body-region sha — caught before use per the dispatch preamble's cache-staleness clause. Diffed the two: exactly one body-region change since caching, L7's parenthetical word order, inside phase 1 only. Re-read phase 1 on the live text: the recognition payload (\"one loop, three sizes\") is unchanged by the word-order fix, so its score stands at 8. Phases 2–7 are byte-identical to the cached trace (confirmed by diff) and are carried at their existing scores: [8,9,9,8,7,7,8], close 8 — no beat below 7. Mood-floor carve-out: all seven beats classified TEACHING (each names a law or reframe; none compresses to a parenthetical without breaking the arc), so none is mood-exempt and none needed to be. Contract read directly from content-strategy-agentic-engineering-101.md this session (line 245): M3 = \"Earned trust — the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big\" — matches this file's register throughout (recognition of trust already earned, not trust under test). Regenerated persona trace written back to curriculum/evals/sim-cache/ae101--lecture--the-loop-half-filled.persona.json.",
+   "evidence": "The cached persona trace (content_sha 297ed64d…, 2026-09-05) did not match the live full-file sha — caught before use per the dispatch preamble's cache-staleness clause. Diffed the two directly: the entire body was reformatted (every bulleted list item converted to a blank-line paragraph across all seven sections; title changed \"The loop half, filled in\" → \"The near half of the map\"; first header changed \"Back to the map: near half filled\" → \"Three modules on the near half: Intent, Context, Work\"), with `git diff --word-diff` confirming zero word-level content deltas — only list-marker/blank-line churn. Re-read all seven sections on the live text and regenerated the trace (phase names/line-numbers updated to match; content unchanged), bound via `node curriculum/evals/scripts/bind-trace.js` → sha ad2e0306…, matching this instance's body_sha. Scores stand: [8,9,9,8,7,7,8], close 8 — no beat below 7. Mood-floor carve-out: all seven beats classified TEACHING (each names a law, model or reframe; none compresses to a parenthetical without breaking the arc), so none is mood-exempt. Contract read directly from content-strategy-agentic-engineering-101.md this session, line 245: M3 = \"Earned trust — the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big\" — matches this file's register throughout (recognition of trust already earned, not trust under test).",
    "fix_hint": null,
    "blocking": true
   },
@@ -57,8 +88,8 @@
    "judge_owned": true,
    "rule_lead": "Facilitator-premium mood flag (storytelling-owned; §1's own three-tier language treats a 7 as a flagged PASS, not a gate — filed as its own row so the flag is mechanically countable).",
    "verdict": "REVISE",
-   "evidence": "Phase 5 (\"Reading was never the control\", L32–37) scores 7/10 under §1's own wording (\"7 = facilitator-premium signature; flag what would take it from 7 to 8\"). L36 packs three lived instances — the delta note, the one-threat pick, the skill critique — into one triple-clause bullet; a cold read recovers roughly two of the three before a trainer moves on. Checked the maintainer block for an existing accept-note covering this specific concern before filing it: the \"Control pair added\" note (line 60) names a DIFFERENT trim candidate (\"the branch slide's bullet 3\", i.e. L44, for a time-budget reason) and the \"Merge bullet accepted\" note (line 58) covers L44's interpretation — neither dispositions L36's density, so this is live, not a re-flag of something already settled. Phase 6 (\"The branch is the permission\") also scores 7/10, but its live concern (L44's merge-bullet reading) IS covered by the line-58 accept-note and stays closed, not carried here.",
-   "fix_hint": "Split L36 into two bullets (e.g. separate the delta-note/one-threat-pick pair from the skill-critique) or drop one clause — takes phase 5 from 7 to 8 without adding new content. Named as a trim candidate by the maintainer's own 2026-07-10 note, just for the neighbouring bullet; this is the sibling half of the same budget squeeze.",
+   "evidence": "Phase 5 (\"Reading was never the control\", L38–45) scores 7/10 under §1's own wording (\"7 = facilitator-premium signature; flag what would take it from 7 to 8\"). L43 packs three lived instances — the delta note, the one-threat pick, the skill critique — into one triple-clause sentence; a cold read recovers roughly two of the three before a trainer moves on. Checked the maintainer block for an existing accept-note covering this specific concern: the \"Control pair added\" note (L78) names a different trim candidate (the branch slide's third line, for a time-budget reason) and does not dispose of L43's density. Phase 6 (\"The branch is the permission\") also scores 7/10, but its live concern (L55's merge-line reading) IS covered by the \"Merge bullet accepted as written\" accept-note at L76 and stays closed, not carried here — same disposition as the pre-diff audit, wording unchanged by the reformat.",
+   "fix_hint": "Split L43 into two sentences (e.g. separate the delta-note/one-threat-pick pair from the skill-critique) or drop one clause — takes phase 5 from 7 to 8 without adding new content. This is the sibling half of the same M3-closer time-budget squeeze the maintainer already flagged at L78 for the neighbouring section.",
    "blocking": false
   },
   {
@@ -66,7 +97,7 @@
    "rule_index": 2,
    "rule_lead": "Epistemic mood ≠ punitive mood.",
    "verdict": "PASS",
-   "evidence": "Grepped the live body for self-directed fault language: `sed -n '1,53p' curriculum/lectures/the-loop-half-filled.md | grep -niE 'mistake|you failed|you were wrong|should have'` → exit 1, zero hits. Closest to punitive is L16 \"Local success, global drift … The agent can win the function and lose the system\" — a failure named but attributed to the agent and to unwatched dimensions, never to the reader's competence. The close (L52) is an open question (\"how do you trust work you didn't watch?\"), and L45 actively removes a shame reading (\"An un-merged branch is not unfinished work\").",
+   "evidence": "Grepped the live body for self-directed fault language: `sed -n '1,68p' curriculum/lectures/the-loop-half-filled.md | grep -niE 'mistake|you failed|you were wrong|should have'` → exit 1, zero hits. Closest to punitive is L16 \"Local success, global drift … The agent can win the function and lose the system\" — a failure named but attributed to the agent and to unwatched dimensions, never to the reader's competence. The close (L67) is an open question (\"how do you trust work you didn't watch?\"), and L57 actively removes a shame reading (\"An un-merged branch is not unfinished work\").",
    "fix_hint": null,
    "blocking": false
   },
@@ -75,7 +106,7 @@
    "rule_index": 3,
    "rule_lead": "Lead with discipline, not failure mode.",
    "verdict": "PASS",
-   "evidence": "Title (L1) and six of seven headers lead with a positive discipline (the loop, compounding, the governor, control, permission). Closest to violating is L16's bolded law-lead \"Local success, global drift\" — stays inside on the rule's own corpus-precedent carve-out (ships failure-named handles like \"Gates decay\", \"Passing is not proof\"): it is a named law subordinate to the discipline-led slide header \"The loop and the model it runs on\" (L12), not the file's title or Big-Idea frame.",
+   "evidence": "Title (L1) and six of seven headers lead with a positive discipline (the three modules, the loop, compounding, the governor, control-as-interrogation, the branch). Closest to violating is L16's bolded law-lead \"Local success, global drift\" — stays inside on the rule's own corpus-precedent carve-out (ships failure-named handles like \"Gates decay\"): it is a named law subordinate to the discipline-led section header \"The loop and the model it runs on\" (L15), not the file's title or lead frame.",
    "fix_hint": null,
    "blocking": false
   },
@@ -84,7 +115,7 @@
    "rule_index": 4,
    "rule_lead": "Strategy-fidelity check.",
    "verdict": "PASS",
-   "evidence": "Read content-strategy-agentic-engineering-101.md directly this session, not carried from a prior citation. (a) FRONT-RUN: M4 owns the far half (\"Pick the multi-hour task … send off un-packaged\", M4 row of the module table); L51 names Verification/Absorption/Outcome but teaches none of them — the three names already sit on the M2-origin map figure this file re-projects (maintainer map-figure note, line 62: \"all six phase names stay legible\"), so naming them is recall of a figure the student already saw, not a reveal of M4's content. The backing block's \"known omission, decided 2026-08-02\" note records a genuine seventh near-half law (context-window capacity) deliberately withheld rather than front-run. (b) MODULE-TO-MODULE ARC: M4's open hook is \"Curious readiness — I've built enough to try; let's see what the agent does\"; L52 hands off with \"how do you trust work you didn't watch?\" — an unanswered question that sets up curious readiness rather than resolving it. (c) ARC-THREAD FIDELITY: strategy doc line 894 names this file's own closers by name — \"M3 take-into-use + control-is-interrogation / branch-is-the-permission closers\" — matching L32–45 exactly. (d) MOOD DOESN'T RESOLVE EARLY: the far-half unease opens, it does not close; no verification step appears anywhere in the body.",
+   "evidence": "Read content-strategy-agentic-engineering-101.md directly this session (line 245 for M3, line 246 for M4). (a) FRONT-RUN: M4's table row teaches \"pick the multi-hour task → walk what you've built against it → fill the worst gaps → settle the observations tree → send off un-packaged\"; nothing that content appears here. L65's \"Verification, Absorption, Outcome\" names three phase labels that are not taught by M4's content — grepped the strategy doc for these three terms together and found no match, confirming they are not M4's actual teaching payload but recall of the M2-origin map figure's own phase-header row (maintainer map-figure note, L80: \"all six phase names stay legible\"), which this file's students already saw at M2. (b) MODULE-TO-MODULE ARC: M4's mood is \"Curious readiness — I've built enough to try; let's see what the agent does\" (line 246); L67 hands off with an unanswered question (\"how do you trust work you didn't watch?\") that sets up curious readiness rather than resolving it. (c) MOOD DOESN'T RESOLVE EARLY: the far-half unease opens at L60–67 and does not close; no verification step appears anywhere in the body. (d) BIG IDEA FIDELITY: file leads with the three-module recognition frame (L1, L3, L6) matching its Placement note. None of this changed by the reformat — same claims, same sentences, just paragraph rather than bullet form.",
    "fix_hint": null,
    "blocking": true
   },
@@ -94,16 +125,56 @@
    "judge_owned": true,
    "rule_lead": "Teaching moment lands (storytelling-owned judgment; no check_strategy_tie_in rule_index).",
    "verdict": "PASS",
-   "evidence": "Named teaching moment: control is INTERROGATION, not coverage, and an un-merged branch is the control working (maintainer \"Control pair added\" note, line 60; strategy doc line 894 names both closers by name). It triggers across skill variation because it re-reads artefacts every student in the room actually produced (L36: the delta note, the one-threat pick, the skill critique; L42: the side-quest branch every student was told to open), not a new move a weaker student could miss. The one recurring wobble — a student who never literally `git merge`d the side quest reading L44 \"Control is exercised at the merge\" as describing a step they skipped — is already dispositioned: maintainer accept-note at line 58 (2026-08-19, Antti-directed) rules the beat resolves as a three-bullet unit and declines a reconciling clause. Per the dispatch preamble's accept-note clause, not re-flagged.",
+   "evidence": "Named teaching moment: control is INTERROGATION, not coverage, and an un-merged branch is the control working (maintainer \"Control pair added\" note, L78). It triggers across skill variation because it re-reads artefacts every student in the room actually produced (L43: the delta note, the one-threat pick, the skill critique; L51: the side-quest branch every student was told to open), not a new move a weaker student could miss. The one recurring wobble — a student who never literally merged the side quest reading L55 \"Control is exercised at the merge\" as a step they skipped — is already dispositioned: maintainer accept-note at L76 (2026-08-19, Antti-directed) rules the beat resolves as a three-line unit and declines a reconciling clause. Per the dispatch preamble's accept-note clause, not re-flagged.",
    "fix_hint": null,
    "blocking": true
+  },
+  {
+   "compendium": "check_strategy_tie_in.md",
+   "rule_index": 5,
+   "rule_lead": "Strategic themes recur in Key Concepts.",
+   "verdict": "N/A",
+   "na_reason": "Lecture file — no Key Concepts section (module-file-owned).",
+   "evidence": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_strategy_tie_in.md",
+   "rule_index": 6,
+   "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+   "verdict": "N/A",
+   "na_reason": "Lecture file — no Key Concepts section.",
+   "evidence": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_strategy_tie_in.md",
+   "rule_index": 7,
+   "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+   "verdict": "N/A",
+   "na_reason": "Lecture file — no What You'll Learn section.",
+   "evidence": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 16,
+   "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+   "verdict": "N/A",
+   "na_reason": "Body-view signal has_prompt_blocks: false; file carries no fenced prompts or exercise mechanic, so there is no forcing-function-vs-body-prose question to score.",
+   "evidence": null,
+   "fix_hint": null,
+   "blocking": false
   },
   {
    "compendium": "check_pedagogy.md",
    "rule_index": 27,
    "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
    "verdict": "PASS",
-   "evidence": "Grepped the live body region: `sed -n '1,53p' curriculum/lectures/the-loop-half-filled.md | grep -niE 'discuss|pair|neighbo|group|room|share|cohort|debrief|take .* seconds|turn to'` → exit 1, zero hits. The view's `group_beat_markers: true` signal traces only to maintainer/backing block text at line 54+ (outside the graded body), not to student-facing prose. No authored conversation, pause cue, or comparison prompt; every body sentence names work — a law, the governor, or an artefact the student already produced.",
+   "evidence": "Grepped the live body: `sed -n '1,68p' curriculum/lectures/the-loop-half-filled.md | grep -niE 'discuss|pair|neighbo|group|room|share|cohort|debrief|take .* seconds|turn to'` → exit 1, zero hits. The view's `group_beat_markers: true` signal traces only to maintainer-block text at L69+ (outside the graded body), not to student-facing prose. No authored conversation, pause cue, or comparison prompt; every body sentence names work — a law, the governor, or an artefact the student already produced.",
    "fix_hint": null,
    "blocking": false
   },
@@ -113,7 +184,7 @@
    "judge_owned": true,
    "rule_lead": "Whole-compendium scope call — no group beat in this file.",
    "verdict": "N/A",
-   "na_reason": "No beat's output belongs to a group. Individually-read/projected closer lecture; zero body hits for room/group/share/cohort (same grep as pedagogy §27). check_workshop §1's own test (\"remove the room — does the beat still produce the same artefact?\") resolves yes for every beat here.",
+   "na_reason": "No beat's output belongs to a group. Individually-read/projected closer lecture; same zero-hit grep as pedagogy §27. check_workshop §1's own test (\"remove the room — does the beat still produce the same artefact?\") resolves yes for every beat here.",
    "evidence": null,
    "fix_hint": null,
    "blocking": false
@@ -128,80 +199,10 @@
    "evidence": null,
    "fix_hint": null,
    "blocking": false
-  },
-  {
-   "compendium": "check_lectures.md",
-   "rule_index": 2,
-   "rule_lead": "Minimal lecturing before contrast-mood exercises.",
-   "verdict": "N/A",
-   "evidence": "Rule targets openers preceding a contrast-mood exercise. This file is a closer with no following exercise in-file; N/A by scope.",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "d05254cb50bf1c1e571ab9131b96bb82a70e47f3454b69289530614478224877",
-   "carried_shape": "1a45f572c31f174d"
-  },
-  {
-   "compendium": "check_lectures.md",
-   "rule_index": 6,
-   "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
-   "verdict": "N/A",
-   "evidence": "Body-view signal `has_prompt_blocks: false`; grep of the raw body confirms zero `{{prompt:<key>}}` markers and zero `**Prompt**` fenced blocks. Pure lecture prose plus one figure include — nothing for this rule to apply to. (This rule was missing a row in the prior instance; added here to close that coverage hole.)",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "d05254cb50bf1c1e571ab9131b96bb82a70e47f3454b69289530614478224877",
-   "carried_shape": "1a45f572c31f174d"
-  },
-  {
-   "compendium": "check_strategy_tie_in.md",
-   "rule_index": 5,
-   "rule_lead": "Strategic themes recur in Key Concepts.",
-   "verdict": "N/A",
-   "evidence": "Lecture file — no Key Concepts section (module-file-owned).",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "d05254cb50bf1c1e571ab9131b96bb82a70e47f3454b69289530614478224877",
-   "carried_shape": "1a45f572c31f174d"
-  },
-  {
-   "compendium": "check_strategy_tie_in.md",
-   "rule_index": 6,
-   "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
-   "verdict": "N/A",
-   "evidence": "Lecture file — no Key Concepts section.",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "d05254cb50bf1c1e571ab9131b96bb82a70e47f3454b69289530614478224877",
-   "carried_shape": "1a45f572c31f174d"
-  },
-  {
-   "compendium": "check_strategy_tie_in.md",
-   "rule_index": 7,
-   "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
-   "verdict": "N/A",
-   "evidence": "Lecture file — no What You'll Learn section.",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "d05254cb50bf1c1e571ab9131b96bb82a70e47f3454b69289530614478224877",
-   "carried_shape": "1a45f572c31f174d"
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 16,
-   "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-   "verdict": "N/A",
-   "evidence": "Body-view signal `has_prompt_blocks: false`. File carries no fenced prompts or exercise mechanic — pure lecture prose, so there is no forcing-function-vs-body-prose question to score.",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "d05254cb50bf1c1e571ab9131b96bb82a70e47f3454b69289530614478224877",
-   "carried_shape": "1a45f572c31f174d"
   }
  ],
+ "suggestions": [],
  "blocking_findings_count": 0,
- "notes": [
-  "Drift-rule re-read (rule moved, body may not have): check_lectures §4 (squint/truth test) — current wording re-fetched via rule.js, no change in outcome; all seven headers still pass. check_prompts §17 (plan-mode preamble, narrowed 2026-09-03 to plan-mode-only) and §20 (grill-before-save, narrowed 2026-09-03, evidence-gated) — both re-fetched at current wording; both remain N/A here regardless of narrowing because the file has zero prompt blocks (has_prompt_blocks: false), so neither rule has a fence to apply to. check_prompts §40 (verify session boundary) — same N/A, same reason. check_strategy_tie_in §7 (What You'll Learn shape) — re-fetched current wording; still N/A, this is a lecture with no What You'll Learn section (module-file-owned).",
-  "Trace regeneration: the cached persona trace (content_sha 6d222adb…, generated 2026-08-30) did not match the live body-region sha. Diffed the two directly in git: the only body-region change since caching is L7's parenthetical word-order fix (\"orient, fix, compound, close\" → \"orient, fix, close, compound\"), which also corrects the line to match content-strategy-agentic-engineering-101.md's own stated M1 order (\"orient → fix → close → compound\", line 245) — a technical-accuracy fix outside story's lane, noted for whichever class owns it, not flagged here. Re-read phase 1 on the live text and confirmed its score is unaffected; phases 2–7 are untouched. Trace file updated in place (content_sha, phase-1 sha, regeneration_note) at curriculum/evals/sim-cache/ae101--lecture--the-loop-half-filled.persona.json — gitignored cache, not part of this instance's evidence chain beyond the re-verification already quoted per row.",
-  "Ledger scope follows the template's Completeness contract, matching this file's own prior instance: check_lectures full (4 rows here + 2 parked by prefill = 6), check_strategy_tie_in full (5 rows here incl. one new judge-owned todo row + 3 parked by prefill = 8), check_pedagogy limited to the storytelling-owned rule (§27 here; §16 parked N/A by prefill), and one whole-compendium judge-owned N/A row each for check_prompts and check_workshop — the pedagogy/prompts/workshop rules outside the storytelling lane are the pedagogy and behavior judges' seats, confirmed against `scripts/audit-eval-coverage.js` line 435 (judge_owned:true rows are exempt from the duplicate-rule-index cram detector, so the second check_strategy_tie_in null-index row here does not collide with the teaching-moment-lands row).",
-  "Maintainer accept-notes reviewed before filing anything: five dated notes at lines 56, 58, 60, 62, 64 (plus the Slide-growth/Placement/Artifact-contract/Family-B notes at 66–84). None contradicted by any row above; the new todo row (phase-5 density) was checked against all of them first and is not covered by any."
- ],
- "nonblocking_findings_count": 1
+ "nonblocking_findings_count": 1,
+ "notes": "Whole-file reformat since the last audit (bullet lists → paragraphs across all seven sections, plus title/first-header reword) with zero word-level content change, confirmed via `git diff --word-diff`. This required regenerating the persona trace (old content_sha 297ed64d… no longer matched); regenerated trace re-scores each section on the live text, finds the content unaffected, and is bound to body_sha ad2e0306… via bind-trace.js. Ledger scope follows the template's Completeness contract: check_lectures full (6 rows, primary owner), check_strategy_tie_in full (7 numbered rows + 2 judge-owned rows), check_pedagogy limited to the two storytelling-owned rules (16, 27) per the 'Specific judgments storytelling owns' list — the other 67 pedagogy rules in this brief belong to the pedagogy judge, and one whole-compendium judge-owned N/A row each for check_prompts and check_workshop. shape_hash changed since the prior instance (1a45f572c31f174d → 1e915cfba4fe7a67) because of the reformat, so prefill-instance.js --write parked 0 rows and every row above is freshly judged, not carried."
 }

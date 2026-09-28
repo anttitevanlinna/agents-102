@@ -68,8 +68,8 @@ Nothing from the near half retires. The loop, the model in the files, the ladder
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-26 (writing@08946dd8 story@08946dd8 technical@25075e46 behavior@1c765f2 pedagogy@77991802 strategy@08946dd8 slides@c0c37913)
-- judges @25075e46: writing PASS (2 findings see instances/ae101--lecture--the-loop-half-filled.writing.json), story PASS (1 finding see instances/ae101--lecture--the-loop-half-filled.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-27 (writing@16a15ae5 story@16a15ae5 technical@25075e46 behavior@1c765f2 pedagogy@16a15ae5 strategy@16a15ae5 slides@16a15ae5)
+- judges @16a15ae5: writing PASS (1 finding see instances/ae101--lecture--the-loop-half-filled.writing.json), story PASS (1 finding see instances/ae101--lecture--the-loop-half-filled.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Lean pass (2026-08-25):** *"This close puts names on the ground covered."* cut — forward narration; the name-is-a-handle bullet carries the naming beat. Do not restore.
 

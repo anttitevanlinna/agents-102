@@ -94,7 +94,7 @@ The next sitting opens on that task and spends most of its time walking your sys
 
 **Quality:** compendium-audited 2026-09-27 (writing@dd52c026 story@45f28404 technical@dd52c026 behavior@17446703 pedagogy@dd52c026 strategy@dd52c026 slides@dd52c026)
 - judges @dd52c026: writing PASS (2 findings see instances/ae101--module--plan-mode-done-right.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/ae101--module--plan-mode-done-right.pedagogy.json), strategy PASS, slides PASS
-- cross_module @01592193: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
+- cross_module @3bc472a1: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
 
 **"Try to bully plan mode into a bad architecture" stands, Antti-directed 2026-08-23.** A writing judge filed it under `check_writing.md` §17 (no combative verbs about the agent). Rejected: the bullying is intentional and carries the teaching goal — the bullet asks the student to press a bad idea deliberately and record where Claude holds and where it caves, so the ugly verb names the instrument. §17 gained the matching carve-out the same day (a beat whose point IS the bad register), scoped to the probe, not to surrounding prose. Do not soften this verb. **`check_student_facing.md` §21 does not reach the noun either.** The subject is plan mode, a Claude Code surface, and what the bullet records is stance under pressure rather than files written; *the agent caves* flattens the personification *bully* and *caves* carry together. Judges re-file it; the answer is no.
 

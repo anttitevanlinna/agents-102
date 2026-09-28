@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/lectures/hooks-always-fire.md",
   "verdict": "PASS",
-  "body_sha": "4152c29900226b29b4c957055099a0145cf39ad244107dd6c21f0824bfe9ad7f",
+  "body_sha": "930cdb144c0f3f84d6bd55116cddfdac5ebafae809d3536f63b82b29632855f0",
   "shape_hash": "5c20e18b3d5c6c2f",
   "rules_evaluated": [
     {
@@ -1037,6 +1037,56 @@
       "na_reason": "rule is scoped to Agents 101's training-dir subfolders; this is an AE101 file with no file-save path in the prompt at all",
       "fix_hint": "",
       "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 61,
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "body proposes no SKILL.md/framework/tool change to verify against",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 66,
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "authoring-process rule for a build in progress, not a criterion the finished body is checked against",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 35,
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "prompt is a single-shot trainer show-and-tell (L33/L41 delivery note), not multi-turn dialog affecting an artifact file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "PASS",
+      "evidence": "L19-23 (expanded prompt fence): the fence is already three paragraphs by move — 'Name the top five hooks...' (ask), 'Cross-reference each with this repo: ... If one doesn't apply to this repo, say so.' (conditional cross-reference), 'No preamble. List them.' (output-format constraint) — read aloud, each natural breath lands at a paragraph break",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "single-repo cross-reference list, not a long-running scan; body's own Time line (L31 maintainer block) puts the whole beat at ~4 min including delivery",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "platform_claims_checked": [
@@ -1087,5 +1137,13 @@
     "research_claims §11 — re-fetched in full (with §11a). Verdict: PASS — the file's backing-block Sources stamp satisfies the rule's operating principle and §11a's unified capability-claim scope; unaffected by the body trim."
   ],
   "notes": "STALENESS REASON: rule-drift (pin technical@0cea7581). Diff since pin (`git diff 0cea7581..HEAD -- curriculum/lectures/hooks-always-fire.md`) trims two body sentences ('or rule' dropped from the hook/prompt split line; the old closing line and its preceding 'Your repo has demands...' sentence replaced by 'A menu, not a checklist.'), splits the maintainer Origin note and adds a new 'Slide 2 shape' note, rewords the Delivery note to match the now-cueless body, drops one backing Claims row (`keeper-hooks-are-repo-specific`, whose source sentence was cut), and re-pins Quality. None of this constitutes a technical-class defect — it is a writing/story-owned prose trim, already reflected correctly in the accept-notes above. PREFILL: `prefill-instance.js --write` reported shape changed (0f7defa9943cfa44 → 1903646330181a65) and parked 0 rows — every rule in the 202-rule brief was unresolved going in, so every row above (104 total) was freshly judged this session, none copied from a stale cache. SCOPE NOTE: the class brief brought full text of all four compendiums' numbered rules (69 + 17 + 67 + 49 = 202), but per this template's own completeness contract this class is primary owner only of check_platform_and_boundaries (all 69, covered) and check_research_claims (all 17, covered); check_pedagogy is scoped to the five named technical sub-rules (16, 22, 23, 36, 37 — covered, the other 62 pedagogy rules are the pedagogy judge's lane and are not rowed here); check_prompts is scoped to the mechanical-correctness subset this template names (fence shape/lead-in family §1-3/38, skill-invocation §4, back-reference/session-boundary §5/40, multi-sample §8, citation §13, preamble §17, grill-before-save §20 [both explicitly named in the drift-review ask], permission-mode §39, Builder-scope paths §45 — 13 rules, covered); the remaining ~36 check_prompts rules (prose-level lead-in style, niceness tax, runtime-fork mechanics, etc.) are the writing class's lane per this template's own text ('The writing-class judge owns prose-level prompt rules... this class owns mechanical correctness') and are intentionally not rowed here. COMPENDIUM DRIFT BEYOND THE ASSIGNED LIST: an older cached prefill sidecar for this (file, class) pair carried rows for check_research_claims §2a and §2b; a fresh fetch of check_research_claims.md this session shows no such sub-rules exist under §2 currently (§2 reads only as the flat 6-month freshness rule) — those sub-rules appear to have been removed or merged upstream at some point after the sidecar was last populated. Not re-added; flagged here as a data point, not a finding, since nothing in this file depended on them. Also newly present since the file's last technical audit: check_platform_and_boundaries §50 (thinking-effort levels) and §51 (two-file contradiction meta-rule), both N/A here and both newly covered for completeness. TWO ROWS EXCLUDED ON PURPOSE: an existing (now-superseded) instance for this file carried two check_writing.md rows (§1, §2) under the technical class; check_writing.md is not one of this template's four compendiums (confirmed: the class brief's own header lists only check_platform_and_boundaries/check_research_claims/check_pedagogy/check_prompts), so those two rows were dropped rather than carried forward, per the dispatch preamble's instruction to evaluate only in-lane compendiums. ONE OBSERVATION ROUTED OUT OF LANE (not filed as a finding): the maintainer's 'Slide 2 shape' note (raw line 21) describes the prompt's repo-cross-reference language as living in 'the prompt's own third paragraph', but `curriculum/prompts/what-packaging-is-1.md` shows that language is the SECOND of three paragraphs (para 1 names the task, para 2 is the cross-reference/repo-specificity sentence, para 3 is 'No preamble. List them.'). This is a maintainer-block internal-accuracy nit (prose stating what is true now, check_writing §3 territory, not a technical-class rule), so it is not scored above — surfacing it here for whichever pass owns maintainer-block prose. VERDICT: PASS. No blocking findings across the full 104-rule re-read; every non-N/A row was independently re-verified this session (fresh curl, fresh grep, fresh script runs, fresh git-log/merge-base checks), not carried from any cache.",
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "scope": "drift",
+  "drift_rules": [
+    "check_pedagogy.md §61",
+    "check_pedagogy.md §66",
+    "check_prompts.md §35",
+    "check_prompts.md §36",
+    "check_prompts.md §43"
+  ]
 }

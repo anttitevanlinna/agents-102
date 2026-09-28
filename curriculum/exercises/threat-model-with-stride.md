@@ -90,8 +90,8 @@ Ask Claude whether this ADR rides into future sessions automatically.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-06 (writing@08946dd8 story@324b81d7 technical@324b81d7 behavior@64d17eea pedagogy@43e6cae1 strategy@324b81d7 slides@9edae2ef)
-- judges @64d17eea: writing PASS (2 findings see instances/ae101--exercise--threat-model-with-stride.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-27 (writing@16a15ae5 story@16a15ae5 technical@16a15ae5 behavior@64d17eea pedagogy@16a15ae5 strategy@16a15ae5 slides@16a15ae5)
+- judges @16a15ae5: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "It will have more entries than you want to deal with." + "You are picking a single threat worth hardening against." (restatements); "You save it as the ADR next." (Phase-3 header carries it); Phase-3's "It reads like one engineer explaining a call to another, not a compliance checkbox." (verbatim-adjacent dup of the read-the-ADR slide, which keeps the line); worktree-inference bullet condensed 6→4 sentences (the M3=side-quest inference stated once, `pwd` + reasoned-from-conversation kept); "Not everything survived to disk."; closer's "The ADR is in the repo. Your CISO has something to read." (CISO landed in Phase 3). Do not restore.
 

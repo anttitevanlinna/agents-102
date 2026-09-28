@@ -120,8 +120,8 @@ Token efficiency is one lever with two payoffs: a cleaner window thinks better a
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@b3143a4 pedagogy@b55cd28b strategy@aa1f7826 slides@324b81d7)
-- judges @324b81d7: writing PASS, story PASS, technical PASS (3 findings see instances/ae101--supplementary--the-context-ceiling.technical.json), behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--supplementary--the-context-ceiling.strategy.json), slides PASS
+**Quality:** compendium-audited 2026-09-28 (writing@3bc472a1 story@3bc472a1 technical@3bc472a1 behavior@b3143a4 pedagogy@3bc472a1 strategy@3bc472a1 slides@3bc472a1)
+- judges @3bc472a1: writing PASS, story PASS, technical PASS (3 findings see instances/ae101--supplementary--the-context-ceiling.technical.json), behavior PASS, pedagogy PASS, strategy PASS (verify-refuted), slides PASS
 
 **Folklore handles are quotes, and quotes do not get trimmed to a word budget.** `check_slides.md` §9 caps a bold handle at roughly five words. The two handles in `## The folklore` are quoted claims being debunked, not labels: shortening *"Compaction is always lossy, so always hand off."* either misquotes the folklore or deletes the very advice the paragraph goes on to show reversing. §9's harm is an emphasis budget spent on decoration; a claim under examination is not decoration. Future judges should score §9 N/A on that section rather than propose a trim.
 

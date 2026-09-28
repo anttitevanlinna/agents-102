@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/trainings/agentic-engineering-101/prework.md",
   "verdict": "PASS",
-  "body_sha": "791cf589d4ab123a5ad1c1dc6153853791dffefca9fbc07599d41d3f672f7d1c",
+  "body_sha": "49e43794fa0c09bfbe998cf9c4cb33376ea71072262b5a75ef4d2bfda71fe2e4",
   "shape_hash": "0ebef3ad3b50ac58",
   "rules_evaluated": [
     {
@@ -18,9 +18,9 @@
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 8,
-      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum.",
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
       "verdict": "PASS",
-      "evidence": "This rule's direction is doc→curriculum: does the doc restate prework-owned structure instead of pointing? Checked the doc's only prework-adjacent structural claims. Doc: 'Curated skills ship with the training, installed as personal skills at prework' (spirit/sequencing, doc-owned) immediately followed by 'Which skills ship, and where they land, is the curriculum's to state: prework.md's artefact table and earn-the-trust.md's delivery-architecture note' (explicit point, not restate — names the owning file instead of listing the three skill paths itself). Doc also asserts 'The install is agentic... no shell command anyone types' — verified against prework's expanded Step 4 prompt: Claude runs curl/tar itself, student never types a shell command. No stale doc claim found that prework.md's current body contradicts.",
+      "evidence": "Rule direction is doc→curriculum. Read `content-strategy-agentic-engineering-101.md` (via bosser-strategy skill, agents-102-core/strategy/) L342-344: doc asserts spirit/sequencing ('install is agentic — the student asks Claude to install the training's curated skills from the content folder; no shell command anyone types') and explicitly points rather than restates the inventory ('Which skills ship, and where they land, is the curriculum's to state: prework.md's artefact table and earn-the-trust.md's delivery-architecture note'). Verified against the current body: Step 4 (L51-56, ## Extract the bundle and install the curated skills) matches — the {{prompt:ae101-prework-extract-and-install}} fence is the agentic install, no typed shell command in the body; the Artefact contracts table (L114-121) is still the live inventory of which skills ship and where. No stale doc claim found that this body's current structure contradicts.",
       "fix_hint": null,
       "blocking": false
     },
@@ -98,5 +98,9 @@
     }
   ],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "scope": "drift",
+  "drift_rules": [
+    "check_strategy_tie_in.md §8"
+  ]
 }

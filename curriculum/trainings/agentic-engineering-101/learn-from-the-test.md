@@ -123,8 +123,8 @@ Module 6 reads the packaged session: subtler misses, subtler drift.
 
 <!-- maintainer -->
 
-**Quality:** sim-passed 2026-09-06 (writing@5a52c2b9 story@5a52c2b9 technical@4589f1d5 behavior@b55cd28b pedagogy@5a52c2b9 strategy@fb797e3b slides@671e22ec)
-- judges @671e22ec: writing PASS (1 finding see instances/ae101--module--learn-from-the-test.writing.json), story PASS (1 finding see instances/ae101--module--learn-from-the-test.story.json), technical PASS (1 finding see instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** sim-passed 2026-09-28 (writing@2d6b2b01 story@2d6b2b01 technical@2d6b2b01 behavior@2d6b2b01 pedagogy@2d6b2b01 strategy@2d6b2b01 slides@2d6b2b01)
+- judges @2d6b2b01: writing PASS (1 finding see instances/ae101--module--learn-from-the-test.writing.json), story PASS, technical PASS (1 finding see instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS (verify-refuted)
 - cross_module @fb797e3b: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 
 **No rescue callout at `## Start here` — the asymmetry with M6's is deliberate (Antti 2026-08-30; overrides `check_pedagogy.md` §65's M4→M5 example, `check_cross_module.md` §6 is permissive).** M6 load-bears on a two-run contrast, so a missing packaged run guts it and earns body rescue. M5 load-bears on a trace, and the bar sits on the producing side: M4's `## Bring to Module 5` says a stopped session counts and the trace is the artefact, so a thin return is inside the contract and the diagnosis is built to read it. The truly-absent case is room-scale triage — the Connections-blocker push, per §65(b): compressed re-run, late, never a loaner artefact. Do not re-file §6 on the missing callout, and do not add rescue blockquotes to the body.
@@ -173,8 +173,6 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 **Declined at the 2026-09-03 polish pass:** *mid-run* in `## Your mid-run worries hint at missing checks` is the un-packaged send-off read from outside, the `vocabulary.md` § The work carve-out, not the sitting (`check_student_facing.md` §21b); the done-done prompt's four points stay one sentence, Antti's own wording approved 2026-08-23 (`check_prompts.md` §36); the same header stays declarative, since it names the worry that arms the beat and the section's close is suggestive, not a task (Antti 2026-09-04, `check_student_facing.md` §17). Judges should not re-file any of these.
 
 **No settings in body (Antti 2026-09-04, `check_student_facing.md` §32a):** the agent-team optional challenge names the feature and links the docs; the experimental flag is not printed. Judges should not re-file the missing switch.
-
-**No resume instruction on the done-done beat (Antti 2026-09-05).** *This one runs in the session you sent off* stays as two sentences; this audience knows how to resume a closed session, and a line saying so is text without value. Judges should not re-file `check_strategy_tie_in.md` §1 or `check_prompts.md` §40 on the beat.
 
 **`## Next` is one sentence (Antti 2026-09-05).** The student-carries half the slides addendum asks for is the first line of M6's own opener, so it is not repeated here. Judges should not re-file `check_slides.md`'s Next addendum on it.
 

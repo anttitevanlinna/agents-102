@@ -3,18 +3,34 @@
   "training": "ae101",
   "file": "curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
   "verdict": "PASS",
-  "body_sha": "2c33ac0466765100786ca688ce34de52758972c8734b4e2551bb7bad7b84842e",
-  "shape_hash": "ad713f75cd98040d",
-  "trace_status": "cached",
+  "body_sha": "b838de7a9f3f35c58bc3e2c8e81ab8b4dd7c5ccc9249e70602ed4ca3e6efa80f",
+  "shape_hash": "dc385dd14447f7f6",
+  "trace_status": "regenerated",
   "trace_path": "curriculum/evals/sim-cache/ae101--module--earn-the-trust.persona.json",
-  "trace_note": "trace content_sha (5019e67d...) predates the current pin, but git diff 191ea58f..HEAD touches only the maintainer block (Quality stamps + one artefact-contract cell); all body phase content (L1-112) is byte-identical since the trace was generated, so every cached phase_sha is still valid and the trace was read as-is, not regenerated.",
+  "module_mood_contract": "earned trust — \"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big\"",
+  "mood_summary": {
+    "phase_scores": [9, null, null, 8, 8, 8, null, 8, null, null, null, 8],
+    "close_score": 9,
+    "any_below_8": false,
+    "stealing_the_mood": []
+  },
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "L59 places 'The loop half, filled in' (a narrative lecture naming the pattern the student just lived through across three exercises: 'Three modules of loop work sit behind you... the near half of the map, seen whole with its parts named') AFTER the exercises (L33-41) -- lived-then-named, matching the closer diagnostic. The other referenced lecture, 'Skills from the frontier, skills of your own' (L35), sits mid-module between two exercises and teaches Skill vocabulary before the skill-authoring exercise consumes it -- matches the 'conceptual lecture, vocab earns itself mid-module' branch, so it is exempt from the closer requirement rather than a violation of it.",
+      "evidence": "L59 places 'The near half of the map' (retitled from 'The loop half, filled in' since the 324b81d7 pin) after L57's lead-in 'Before you clear the session, see the near half of the map whole, its parts named' -- a narrative lecture naming the pattern the student just lived through across the three exercises at L33-41 (lived-then-named, matching the closer diagnostic). The other referenced lecture, 'Skills from the frontier, skills of your own' (L35), still sits mid-module between two exercises and teaches Skill vocabulary before the skill-authoring exercise consumes it -- the 'conceptual lecture, vocab earns itself mid-module' branch, exempt rather than a violation.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 2,
+      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule scopes to M5-style contrast-mood modules (learn through doing, name it after); M3 is the strategy doc's 'earned trust' mood, not the contrast slot",
       "fix_hint": null,
       "blocking": false
     },
@@ -24,25 +40,53 @@
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "governs lecture-file bodies; earn-the-trust.md is the module file the rule itself names as the sanctioned home for such cross-references ('belong to the module file's ## Next/## Bridge')",
+      "na_reason": "governs lecture-file bodies; earn-the-trust.md is the module file the rule itself names as the sanctioned home for such cross-references",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 4,
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "target file is the module, not a lecture; the rule binds a lecture's own ## headers when that file is the judged target",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 5,
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
+      "verdict": "N/A",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/earn-the-trust.md` -> 'files: 1  slides: 12  limits: 210 words / 6 bullets  oversized: 0'. Mechanically clean, but this rule's own text still scopes to lectures + exercises ('Exercise slides count too'); module-file enforcement is check_slides.md §14, primary-owned by the slides class.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": "`grep -n '{{prompt:' curriculum/lectures/skills-from-the-frontier.md curriculum/lectures/the-loop-half-filled.md` -> 0 matches (re-run this pass). Neither linked lecture carries a {{prompt:}} fence, so the rule has nothing to bind.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named.",
+      "rule_lead": "Mood contract named / mood lands.",
       "verdict": "PASS",
-      "evidence": "Persona trace scores every TEACHING beat >=8: Big Idea 9, Start here 8, Sharpen the skill 8, Read the sharpen 8, Key Concepts 8, Next 9, close mood 9 / is_me 8. SETUP beats (Prework, What You'll Learn, Clear the session, Optional challenges, Bring to M4, Pre-read before M4) correctly score null under the mood-exempt carve-out. No beat below the 8-floor, none below 7.",
+      "evidence": "Regenerated trace (content_sha bound to current body b838de7a...) scores every TEACHING beat >=8: Big Idea 9, Start here 8, Sharpen the skill 8, Read the sharpen 8, Key Concepts 8, Next 8, close 9 / is_me 8. SETUP/SEQUENCING beats (Prework, What You'll Learn, Clear the session, Optional challenges, Bring to M4, Pre-read before M4) correctly score null under the mood-exempt carve-out. No beat below the 8-floor; Next dropped from 9 to 8 this pass (see notes) but stays inside the floor.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
-      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "rule_lead": "Epistemic mood, not punitive.",
       "verdict": "PASS",
-      "evidence": "L53-55 frames the self-audit-under-flags material as 'charitable' (a limitation to correct for), and the trace's phase-6 mood_note reads it the same way: 'Charitable-reader warning is epistemic, not punitive: the tool under-flags, so push it.' No shame/blame language anywhere in the body (scanned L1-112).",
+      "evidence": "L55-56 frames the self-audit-under-flags material as 'charitable' (a limitation to correct for, not a fault), matching the trace's phase-6 mood_note ('Charitable-reader warning stays epistemic, not punitive: the tool under-flags, so push it'). No shame/blame language anywhere in L1-111.",
       "fix_hint": null,
       "blocking": false
     },
@@ -51,16 +95,46 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title 'Earn the trust' and the Big Idea (L6, 'Trust isn't watching harder. It's verification you can run without being there.') both lead with the positive discipline; no failure word (breach, violation, fabrication) in the title or Big Idea.",
+      "evidence": "Title 'Earn the trust' and Big Idea (L6, 'Trust isn't watching harder. It's verification you can run without being there.') both lead with the positive discipline; no failure word (breach, violation, fabrication) in title or Big Idea.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check.",
+      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood doesn't resolve early).",
       "verdict": "PASS",
-      "evidence": "Big Idea (L6) matches the strategy doc's M3 framing ('discipline installed before M4's unwatched send-off... you feel covered when you push the agent off for hours'; 'M3's close names control as interrogation rather than coverage'). '## Next' (L106-111) hands off to M4 generically ('a real task walked against everything you have built so far') without revealing M4's mechanics, and the trace's close mood_note confirms it 'hands a limit forward to M4 without resolving M4's curious-readiness beat' -- no front-run. One doc-only drift surfaced, not a file defect: content-strategy-agentic-engineering-101.md L298 still lists da Costa's backpressure essay as a pre-read 'before M4' in the four-read canon paragraph while a separate summary line (Mood-arc section) references M6 gating for the same essay; earn-the-trust.md's own maintainer note (L119, dated 2026-08-21, Antti-directed) places it before M4 because M4's own closing lecture is what names the term -- a deliberate, dated, maintainer-directed placement (per check_pedagogy.md §61a(a): check for deliberate roughness in the maintainer block before flagging). The file is self-consistent and reasoned; any residual doc-inventory cleanup is strategy-doc maintenance, not an earn-the-trust.md defect.",
+      "evidence": "Big Idea (L6) still matches the strategy doc's M3 framing. '## Next' (L106-109) hands off to M4 generically ('a real task walked against everything you have built so far') without revealing M4's mechanics -- no front-run; the diff since 324b81d7 trimmed the close's wording ('Two signatures, earned' label and the optional context-ceiling pointer cut) but did not change what it hands forward. Maintainer note at L124 (dated 2026-08-21, Antti-directed) still gives the deliberate rationale for the Pre-read placement ahead of M4. Trifecta-beat note at L215 confirms the mood-arc boundary with M4 stays intact (removed 2026-08-12, not re-added).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "ownership sits with the strategy-class judge on module files, per this class's own template",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "ownership sits with the strategy-class judge on module files, per this class's own template",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "ownership sits with the strategy-class judge on module files, per this class's own template",
       "fix_hint": null,
       "blocking": false
     },
@@ -69,7 +143,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The three mandatory forcing functions (sharpen the skill L51, convergence L65, clear session L71) all sit inside {{prompt:}} fences; body prose immediately before each is a semantic action lead-in (check_prompts.md §2), not a restated mechanism. The optional escalation moves in 'Read the sharpen with a skeptical eye' (L55 -- over-flag phrasing, skip-preamble, fresh-session) are explicitly optional per this rule's own carve-out ('optional push-backs/refinements... can live in body') and are correctly left unfenced.",
+      "evidence": "The three mandatory forcing functions (sharpen-skill L51-52, convergence L65-66, clear-session L71-72) all sit inside {{prompt:}} fences; body prose immediately before each is a semantic action lead-in, not a restated mechanism (unchanged in kind since the pin, only reworded: 'The compound runs against...' replaces 'Module 3's compound runs against...' at L47). The optional escalation moves in 'Read the sharpen with a skeptical eye' (L55-56 -- over-flag phrasing, skip-preamble, fresh-session) remain explicitly optional per this rule's own carve-out and are correctly left unfenced.",
       "fix_hint": null,
       "blocking": false
     },
@@ -78,7 +152,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "No authored conversation cue ('discuss with', 'share with your neighbor', 'compare with the person next to you') anywhere in L1-112. L31 ('The room's features will differ wildly; that's the point') names the room without prescribing a specific human round or action -- inside the third carve-out's one-line-per-file ceiling.",
+      "evidence": "No authored conversation cue ('discuss with', 'share with your neighbor', 'compare with the person next to you') anywhere in L1-111. L31 ('The room's features will differ wildly; that's the point', now bolded as a lead-in) names the room without prescribing a human round -- inside the third carve-out's one-line-per-file ceiling.",
       "fix_hint": null,
       "blocking": false
     },
@@ -92,101 +166,27 @@
       "na_reason": "no beat's output belongs to the group -- the feature (Connections), the ADR (Ex2), and the test-strategy skill (Ex3) are each the individual student's own artefact throughout; removing the room changes nothing any single student produces",
       "fix_hint": null,
       "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 2,
-      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
-      "verdict": "N/A",
-      "evidence": "Rule's own scope clause: 'Contrast-mood modules (M5-style: learn through doing the thing, name it after)'. Strategy doc mood arc runs joyful creation → grounded competence → earned trust → curious readiness → learning through contrast → practitioner fluency; M3 (this file) is 'earned trust', 3rd, not the M5 contrast-mood slot. Rule's own scope excludes this file.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "75b67d866dfa72af688971e6a19313fef210e7612feffde8ff4b919a52f0f9ec",
-      "carried_shape": "ad713f75cd98040d"
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 4,
-      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
-      "verdict": "N/A",
-      "evidence": "Target file is the MODULE (earn-the-trust.md), not a lecture. This rule binds a lecture's own `##` headers when THAT file is the judged target; the two linked lectures get their own story-class instance when dispatched directly. Not re-derived here.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "75b67d866dfa72af688971e6a19313fef210e7612feffde8ff4b919a52f0f9ec",
-      "carried_shape": "ad713f75cd98040d"
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
-      "verdict": "N/A",
-      "evidence": "Re-read at CURRENT wording this pass (rule-drift check per dispatch): text now explicitly widens scope with 'Exercise slides count too (before-beat + after-beat, prompt excluded)' — lectures plus exercises, still no mention of module files. Confirmed the split empirically: ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/earn-the-trust.md` → '12 slides, oversized: 0' (this module would PASS the mechanical check if it were in scope), but the rule's canonical home for MODULE-file enforcement is a sibling rule in a different compendium owned by a different class — `check_slides.md §14` ('Slide size — 210 words / 6 bullets, and the cap is machine-checked... Ceiling per `##` chunk'), which explicitly covers 'AE101 lectures/exercises/modules' and is primary-owned by the slides class, not story. §5's own text still names only lectures + exercises. Verdict unchanged from the prior audit; reasoning refreshed against current wording and confirmed the scope split rather than assumed it.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "75b67d866dfa72af688971e6a19313fef210e7612feffde8ff4b919a52f0f9ec",
-      "carried_shape": "ad713f75cd98040d"
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 6,
-      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
-      "verdict": "N/A",
-      "evidence": "`grep -n '{{prompt:' curriculum/lectures/skills-from-the-frontier.md curriculum/lectures/the-loop-half-filled.md` → 0 matches (re-run this pass, empty output confirmed). Neither lecture this module links carries a `{{prompt:}}` fence, so the rule has nothing to bind.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "75b67d866dfa72af688971e6a19313fef210e7612feffde8ff4b919a52f0f9ec",
-      "carried_shape": "ad713f75cd98040d"
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 5,
-      "rule_lead": "Strategic themes recur in Key Concepts.",
-      "verdict": "N/A",
-      "evidence": "Template: '§5/§6/§7 govern module-only sections (Key Concepts, What You'll Learn) — N/A on a lecture; the strategy judge owns them on modules.' This file IS a module carrying both sections, but ownership of §5-§7's PASS/REVISE sits with the strategy-class judge's own instance on module files, not storytelling's. No independent judgment claimed here to avoid double-crediting a rule story doesn't own on this surface type.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "75b67d866dfa72af688971e6a19313fef210e7612feffde8ff4b919a52f0f9ec",
-      "carried_shape": "ad713f75cd98040d"
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 6,
-      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
-      "verdict": "N/A",
-      "evidence": "Same ownership-transfer reasoning as §5 — strategy class owns this rule's verdict on module files.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "75b67d866dfa72af688971e6a19313fef210e7612feffde8ff4b919a52f0f9ec",
-      "carried_shape": "ad713f75cd98040d"
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 7,
-      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
-      "verdict": "N/A",
-      "evidence": "Same ownership-transfer reasoning as §5 — strategy class owns this rule's verdict on module files.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "75b67d866dfa72af688971e6a19313fef210e7612feffde8ff4b919a52f0f9ec",
-      "carried_shape": "ad713f75cd98040d"
     }
   ],
+  "suggestions": [],
   "blocking_findings_count": 0,
-  "teaching_moment_lands": "The named M3 teaching moment (per strategy doc: the access-surface delta + the STRIDE hardening call, with the supply-chain stunt as the module's most consequential design decision) reads as reliably triggering: trace reports ambiguous_instructions: [] and under_scaffolded_phases: [] across all 12 phases, and the two confusion_flags present (M2-plan-path re-derivation at Prework; the opt-up decision at the skeptical-read phase) are both named, bounded frictions the body already scaffolds a fallback for, not places where the persona could skip the point.",
+  "nonblocking_findings_count": 0,
+  "teaching_moment_lands": "The named M3 teaching moment (the access-surface delta + the STRIDE hardening call, with the supply-chain stunt as the module's most consequential design decision) still reads as reliably triggering after the diff: ambiguous_instructions stays empty and under_scaffolded_phases stays empty across all 12 regenerated phases. The wording changes this pass (spot/name, this-codebase/security-tested-feature, Claude/the agent, the retitled 'near half of the map' lecture, the trimmed Next close) are register and tightening edits on beats the persona already cleared; none introduces a new confusion flag or removes scaffolding the teaching moment depended on.",
   "drift_rules_reread": [
-    "check_lectures §4 (slide/lecture header squint+truth test) -- spot-checked this file's own ## headers; none are empty containers or bare arc labels. Not story-owned (primary owner is the slides class, already PASS with 1 todo per the file's Quality line); no new issue found under current wording.",
-    "check_prompts §17 (preamble before action, narrowed 2026-09-03 to plan-mode-only trigger) -- none of this file's three {{prompt:}} fences (sharpen-skill, ready-to-clear, clear-session) run in plan mode, so the rule does not fire under the new narrowing. Not story-owned (behavior/Class B territory); no issue found.",
-    "check_prompts §20 (grill before save, narrowed 2026-09-03 to evidenced-re-run-only) -- no run evidence names a downstream re-run caused by a gap in this file's sharpen-skill prompt; no grill-before-save callout is owed or present. Not story-owned; no issue found.",
-    "check_prompts §40 (verify session boundary) -- body explicitly names the warm continuation (L45, 'Switch back... to the main quest window (m3-security) now') and explicitly instructs manually copying quotes across windows before sending the prompt when a cross-worktree referent is needed (L49), correctly handling the §40a concurrent-worktree corollary. Not story-owned; no issue found.",
-    "check_strategy_tie_in §7 (What You'll Learn shape) -- current wording unchanged in scope (Key Concepts/WYL module-only sections); per story's own template this stays owned by the strategy-class judge on modules, not story. Spot-checked anyway: WYL bullets (L21-27) are concrete verb+object with no Bloom tags or mechanism tails -- looks compliant, but the formal call belongs to the strategy judge."
+    "check_lectures §1 (closers not openers) -- re-cited against the retitled lecture link and lead-in sentence; placement (after all three exercises) is unchanged, verdict unchanged.",
+    "check_lectures §5/§6 (slide body size / lecture-prompt show-and-tell) -- both mechanical checks re-run this pass (check-slide-size.js and the lecture-prompt grep) rather than assumed stale-clean; both still return the same result.",
+    "check_pedagogy §16 (forcing functions in prompts) -- re-read against current wording; the What You'll Learn / Sharpen-lead-in rewording does not touch fence placement or content, verdict unchanged.",
+    "check_strategy_tie_in §4 (strategy-fidelity) -- re-checked the Next section's trim specifically for front-running or arc damage; found tightening, not a front-run (see rules_evaluated row and notes)."
   ],
-  "notes": "The diff since the 191ea58f pin (git diff 191ea58f..HEAD) touches only the maintainer block: the Quality stamp block (dates/SHAs/todo counts) and one cell in the Artefact-contracts table (Test-strategy skill's M6 consumer description). Both are check_writing.md §3 / cross_module territory, not story's -- noted here per the preamble, not filed as a rules_evaluated row. Body prose (L1-112) is unchanged since the pin.",
+  "notes": "Diff pin 324b81d7..HEAD (body region, excluding the maintainer block) touches six spots: (1) 'What You'll Learn' bullets -- 'name' -> 'spot', and 'the security-tested feature' -> 'this codebase' (the latter is a correctness fix: Ex3's body text at L41/the Ex3 file itself asks the student to invoke the skill on the codebase generally, not scoped to the just-tested feature -- the old WYL bullet over-promised a narrower scope than the exercise delivers; now aligned, not a story defect, but worth flagging to the writing/technical lens if either owns LO-to-exercise fidelity checks); (2) 'Start here' question bolded (cosmetic); (3) Sharpen-section lead-in drops the 'Module 3's' possessive (cosmetic); (4) 'Read the sharpen' section: 'Claude' -> 'the agent' (vocabulary register) and the lecture lead-in/title retitled from 'Three modules of loop work sit behind you... the near half of the map, seen whole with its parts named' / 'The loop half, filled in' to 'Before you clear the session, see the near half of the map whole, its parts named' / 'The near half of the map' (tightened, same referent); (5) 'Pre-read before Module 4' drops the explicit bridge sentence to M4's send-off and picks up a stray trailing double-period (typo -- check_writing.md territory, noted not filed); (6) 'Next' drops the 'Two signatures, earned.' label sentence and the optional context-ceiling supplementary pointer. None of the six crosses into REVISE territory for story's owned rules; (1) and (5) are flagged here for the writing/technical lenses since they sit outside story's own compendium set. Maintainer-block diff (Quality stamp advance, two new accept-notes at L122-123 and L134-135/204-205, the artefact-contract table's M6 cell and the new per-phase failure-mode/escape-hatch table rows) is check_writing §3 / cross_module / pedagogy §47 territory, not story's, and is consistent with the file's own accept-notes -- not filed here.",
   "accept_notes_found": [
     "Lean pass (2026-08-25): '(bar higher)' gloss cut from the skeptical-read section -- do not restore.",
-    "The two {{prompt:}} fences in ## Clear the session are accepted, not an unextracted exercise -- accepted-by-design 2026-08-13 (Antti-directed); this file's own ## Sharpen the skill from evidence fence is logged as still owing §52a an answer.",
+    "The two {{prompt:}} fences in ## Clear the session are accepted, not an unextracted exercise -- accepted-by-design 2026-08-13 (Antti-directed); prework.md carries the same call for its own fences.",
+    "## Sharpen the skill from evidence is accepted on the same terms (2026-09-05, eval-triage adjudication, not an Antti ruling) -- do not extract, do not re-raise; learn-from-the-test.md L33 remains the one unruled corpus fence.",
     "## Pre-read before Module 4 carries da Costa's Backpressure Is All You Need -- 2026-08-21, Antti-directed placement ahead of M4's closing lecture.",
     "Session-close convergence prompt (ae101-m3-ready-to-clear) kept, not cut, despite a low-yield flag.",
+    "§38 fires on L49 and is not owed a fix (2026-09-08, check_prompts §38b) -- reorder was drafted and rejected on its own merits; do not re-file.",
+    "Module-body rows added 2026-09-05 (eval-triage adjudication, not an Antti ruling) to the per-phase failure-mode/escape-hatch table -- do not re-raise §47 against the three module-body forcing functions without reading the added rows first.",
     "Trifecta pre-leash beat added to ## Next 2026-07-02, removed 2026-08-12 (Antti) -- do not re-add a forward-pointing copy."
-  ],
-  "nonblocking_findings_count": 0
+  ]
 }

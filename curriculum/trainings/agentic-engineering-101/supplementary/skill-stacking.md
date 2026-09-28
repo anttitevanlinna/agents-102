@@ -178,11 +178,11 @@ The answer is often "leaf today, route later" or "leaf today, hand-off when the 
 
 **`## Map your own kit` is written for one reader, M6 or not (2026-08-19).** The wording holds either way because an M6 student has written a skill back at M3. M6's close produces a handoff prompt the student runs later to author skills, so a module-conditional branch has no M6-produced skill to point at (see `spot-gaps-build-the-loop.md` Artefact contracts). Do not add one until there is.
 
-**Slide size accepted:** The three-layer model — a supplementary never reaches the composed Slides deck (`check_slides.md` §10), so the 210w/6-bullet cap has no projected page to be a claim about on this file. The three layers are one argument and the `### Layer` seams are its joints; three separate `##` slides would break the model into three unrelated pages on the only layout this file has.
+**Slide size accepted:** The three-layer model — the three layers are one argument and the `### Layer` seams are its joints; three separate `##` slides would break the model into three unrelated pages.
 
-**Slide size accepted:** Skill catalog by phase — nineteen one-line rows are the catalog. It is scanned for a skill name, and a PLAN/BUILD vs VERIFY/SHIP/OPS split cuts the lifecycle the section exists to show whole. Same non-projection ground as above.
+**Slide size accepted:** Skill catalog by phase — nineteen one-line rows are the catalog. It is scanned for a skill name, and a PLAN/BUILD vs VERIFY/SHIP/OPS split cuts the lifecycle the section exists to show whole.
 
-**Slide size accepted:** Design principles — seven numbered principles, one over the bullet cap, on a page that never projects. Each names a distinct rule the stack enforces and each is stated once; the list is the section.
+**Slide size accepted:** Design principles — seven numbered principles, one over the bullet cap. Each names a distinct rule the stack enforces and each is stated once; the list is the section.
 
 **Skill frontmatter is quoted from the shipped docs, not from memory.** The field is `user-invocable` (hyphenated), it defaults to `true`, and it is set `false` to hide a skill from the `/` menu, so the useful example is the negative one. `allowed-tools` pre-approves a tool set for the turn and does NOT restrict access; `disallowed-tools` is the restricting field. Re-verify against code.claude.com/docs/en/skills before editing, never against this note.
 

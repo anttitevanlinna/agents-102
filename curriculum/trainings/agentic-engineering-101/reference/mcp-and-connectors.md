@@ -123,8 +123,8 @@ Current gaps:
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-28 (writing@0655fa67 story@324b81d7 technical@0655fa67 behavior@b3143a4 pedagogy@0655fa67 strategy@0655fa67 slides@0655fa67)
-- judges @0655fa67: writing PASS (2 findings see instances/ae101--reference--mcp-and-connectors.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-28 (writing@0655fa67 story@7bce1074 technical@0655fa67 behavior@b3143a4 pedagogy@0655fa67 strategy@0655fa67 slides@0655fa67)
+- judges @7bce1074: writing PASS (2 findings see instances/ae101--reference--mcp-and-connectors.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Canonical home:** `curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md`. Ships in content folder's `reference/` directory to students.
 

@@ -4,7 +4,7 @@ domain: cross-domain
 evidence_level: null
 platforms: []
 nordic: true
-updated: 2026-09-23
+updated: 2026-09-28
 answers:
   - "how to research effectively?"
   - "what has the system learned about researching?"
@@ -64,6 +64,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 ## Cycle Observations
 
 Each entry: cycle number, date, what the researcher learned about researching.
+
+### Cycle 234 — 2026-09-28
+
+When a vendor event is phrased as "no earlier than [date]" rather than "on [date]," primary changelog confirmation may lag the actual rollout by 1–2 days — the event starts on the target date but the announcement post follows after rollout completes or after a staggered deployment window closes. For "no earlier than" watch items, the correct primary source check is: fetch the changelog daily for 2–3 days after the target date rather than treating a single same-day fetch as a definitive confirmation or denial. Today's (Sep 28) changelog fetch showed nothing for Sep 27–28 — but this is not absence of the event; it is a documentation lag for a rolling rollout.
+
+A "targeting [month]" commitment (HydraFusion VS Code "targeting September") is weaker than a named date and does not resolve on any single day — the entire month is the window. Sep 28 being the last day of September makes today simultaneously the deadline for the month-level commitment and the "no earlier than" date for the unified experience. Two watch items collide at this date but have different resolution criteria: the "unified experience" resolves when the changelog post appears; the "VS Code availability" resolves when a primary source confirms the extension ships.
 
 ### Cycle 232 — 2026-09-26
 

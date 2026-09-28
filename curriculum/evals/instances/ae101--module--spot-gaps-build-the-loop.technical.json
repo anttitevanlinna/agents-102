@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md",
   "verdict": "PASS",
-  "body_sha": "6e0b71d0ba5559d6b25a243cbc5b250a54fbcfa41ab21fea134e8bc3efac3017",
+  "body_sha": "fe5370f137daac1c85bc2098e84768f692adeeb880dfc4495360d3faed28df1e",
   "shape_hash": "3bf287f827d6a7ae",
   "notes": "Re-dispatch reason: prompts §17 drifted after pin 4e0370bc (narrowed to plan-mode-only structural trigger, 4+-sub-step half retired). Body is otherwise near-identical in shape to the prior technical-audited version but NOT byte-identical: the prior instance's body_sha (32d3b9c1...) does not match this session's (confirmed via shasum), because the maintainer block's source-verification section shrank from 6 stamped URLs to 1 (the `## Next` / `## Key Concepts` cut-whole passes and Quality-line SHA bump land between the two). Re-verified all owned rules fresh this session rather than trusting the prior body_sha's evidence forward. check_pedagogy.md: this class's brief pulled 62 non-moved rules (COMPENDIA['technical'] assigns the whole compendium at the tool level), but technical.md's own scope note ('For check_pedagogy, evaluate only the technical sub-rules listed above (items 16, 22, 23, 36, 37); the pedagogy judge is primary owner of the rest') and the dispatch preamble's stay-in-lane clause both narrow that. Those exact 5 items are shape-resolved N/A in the prefill sidecar (bare module-index file, no prompts/forcing-functions of its own for 16/22/23/36/37 to fire on) and are the ONLY pedagogy rows technical owes; I wrote zero fresh pedagogy rows and let --merge splice the parked 5. check_prompts.md: brief reported 0 kept rows (has_prompt_blocks: false, all 48 shape-resolved N/A) EXCEPT §17, which I re-derived myself under its current wording per the dispatch instruction rather than accepting the sidecar's pre-drift N/A verbatim — same conclusion (N/A), fresh evidence. --merge splices the remaining 59 platform + 47 prompts (48 minus the §17 I wrote myself) + 13 research_claims + 5 pedagogy N/A rows parked in the sidecar back into rules_evaluated.",
   "drift_rules_reread": [
@@ -1393,25 +1393,23 @@
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": "35",
+      "rule_index": 35,
       "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
       "verdict": "N/A",
-      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "32d3b9c1f66f3265594348805313c8200635b5211700014239363020fdb06621",
-      "carried_shape": "3bf287f827d6a7ae"
+      "evidence": null,
+      "na_reason": "no prompt fences in this module file (has_prompt_blocks: false)",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": "36",
+      "rule_index": 36,
       "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
       "verdict": "N/A",
-      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "32d3b9c1f66f3265594348805313c8200635b5211700014239363020fdb06621",
-      "carried_shape": "3bf287f827d6a7ae"
+      "evidence": null,
+      "na_reason": "no prompt fences in this module file (has_prompt_blocks: false)",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
@@ -1481,14 +1479,13 @@
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": "43",
+      "rule_index": 43,
       "rule_lead": "Long-running prompts stream progress — never go silent.",
       "verdict": "N/A",
-      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "32d3b9c1f66f3265594348805313c8200635b5211700014239363020fdb06621",
-      "carried_shape": "3bf287f827d6a7ae"
+      "evidence": null,
+      "na_reason": "no prompt fences in this module file (has_prompt_blocks: false)",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
@@ -1544,8 +1541,36 @@
       "blocking": false,
       "carried_from": "32d3b9c1f66f3265594348805313c8200635b5211700014239363020fdb06621",
       "carried_shape": "3bf287f827d6a7ae"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 61,
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no SKILL.md/framework/tool change is proposed anywhere in this module file's body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 66,
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "PASS",
+      "evidence": "L3-4 Big Idea is one sentence, one idea ('Every gap you found belongs somewhere durable, or you will find it again next week'); L12-16 What You'll Learn bullets lead with LO verbs (Diagnose, Cut, Read, Turn) at Analyze/Create Bloom level matching L100's stated Primary Bloom's level. This is a finished, audited file (L57 Quality line), not one mid three-pass build; the spine deviates from the generic module-shape template (no Key Concepts, no Next, Debrief replaced by Human close) but each deviation carries a dated, still-valid maintainer accept-note (L61 Next cut, L63 Key Concepts cut, L78 Human close is a pre-close beat) so it is not an incomplete pass",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "scope": "drift",
+  "drift_rules": [
+    "check_pedagogy.md §61",
+    "check_pedagogy.md §66",
+    "check_prompts.md §35",
+    "check_prompts.md §36",
+    "check_prompts.md §43"
+  ]
 }

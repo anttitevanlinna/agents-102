@@ -54,9 +54,9 @@ This slot is a human round: talk, compare, no prompts.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-06 (writing@5a52c2b9 story@94fcca2d technical@94fcca2d behavior@1c765f2 pedagogy@4e0370bc strategy@54577f39 slides@5a52c2b9)
-- judges @5a52c2b9: writing PASS (1 finding see instances/ae101--module--spot-gaps-build-the-loop.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @fb797e3b: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
+**Quality:** compendium-audited 2026-09-28 (writing@0655fa67 story@0655fa67 technical@0655fa67 behavior@1c765f2 pedagogy@0655fa67 strategy@0655fa67 slides@0655fa67)
+- judges @0655fa67: writing PASS (1 finding see instances/ae101--module--spot-gaps-build-the-loop.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @0655fa67: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 
 **`## Next` cut whole (Antti 2026-09-02).** The send-off paragraph, the *going deeper* link to `supplementary/how-the-best-do-ci-cd.md`, the *Keep on learning and sharing* line and the author sign-off: in git at `fe8fde13`. Terminal-module exception to `module-shape.md`; the CI/CD supplementary has no in-module link. Do not restore.
 

@@ -35,8 +35,8 @@ The training closes.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-05 (writing@fb797e3b story@289b45a3 technical@94fcca2d behavior@4e0370bc pedagogy@4e0370bc strategy@fb797e3b slides@289b45a3)
-- judges @fb797e3b: writing PASS (1 finding see instances/ae101--lecture--agents-that-build-agents.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-28 (writing@0655fa67 story@0655fa67 technical@0655fa67 behavior@4e0370bc pedagogy@0655fa67 strategy@0655fa67 slides@0655fa67)
+- judges @0655fa67: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - sim-passed 2026-05-31 (three-persona sim). Per-class instances at `curriculum/evals/instances/ae101--lecture--agents-that-build-agents.<class>.json`.
 
 **Bullet 2's *It stops exactly where the writing stops and your judgement takes over* stays (Antti 2026-09-07):** the border is stated on purpose; §27b restates-the-header cut refused, do not re-file.

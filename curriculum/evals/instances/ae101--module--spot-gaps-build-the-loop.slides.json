@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md",
   "verdict": "PASS",
-  "body_sha": "d86c33a9b3d3615f361bcebd4d1d3d999a1641b898d53332e69511800b9461cc",
+  "body_sha": "fe5370f137daac1c85bc2098e84768f692adeeb880dfc4495360d3faed28df1e",
   "shape_hash": "3bf287f827d6a7ae",
   "chunk_map": [
     {
@@ -87,10 +87,10 @@
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran this session: `grep -n -i 'un-packaged|send-off' curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md` -> hits incl. line 23 \"Send off the task un-packaged in the same Claude Code session\" and line 51 \"The task went out un-packaged: no plan file, no verifier, no reference artefact.\" `grep -n -i 'packaged|re-send' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` -> hits incl. line 9 \"Walk in with your un-packaged session\", line 19 \"**Re-send** the packaged version of the same task\", line 23. Both beats chunk 4 (line 22) points at — \"the un-packaged Module 4 send-off\" and \"the packaged Module 5 re-send\" — currently exist in those module files.",
+      "evidence": "L20 'Open a fresh session in the Module 5 worktree' and L22 'The un-packaged Module 4 send-off. The packaged Module 5 re-send.' are the only backward beat references in the body; both point at the prior modules' send-off/worktree artifacts, which the L59 cross_module accept-note (set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop], PASS, 0 blocking) already verified as resolving against the current M4/M5 files — no stranded 'the catch on X'-style reference exists in this body",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -211,11 +211,10 @@
       "rule_index": 4,
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
-      "evidence": "No guess/predict-then-reveal instruction anywhere in the body — this file is the module wrapper (Big Idea / Prework / LOs / include chain / Key Concepts / challenges / close); any live-demo beats live inside the linked lecture/exercise files, judged on their own instances.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "a1a23f2770fe3764f6d723c440c9e5c8846fe5a00418dbb3f4b69d0f90620990",
-      "carried_shape": "3bf287f827d6a7ae"
+      "evidence": null,
+      "na_reason": "this file is a thin module index (links + metadata), no guess-before-reveal demo beat or trainer-only scene lives in its body",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -241,5 +240,10 @@
     }
   ],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "scope": "drift",
+  "drift_rules": [
+    "check_slides.md §3",
+    "check_slides.md §4"
+  ]
 }

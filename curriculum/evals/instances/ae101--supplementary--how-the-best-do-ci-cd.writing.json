@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md",
   "verdict": "PASS",
-  "body_sha": "856325db9586ff5aca42e6a2df92574f3d2136cee436b1af2b44209fdffff8e5",
+  "body_sha": "bbba7850f12c18314cf6e62bf1f28e628c59cf175b7d02f9593d95a0d0308b86",
   "shape_hash": "43685ab34d2a22a8",
   "blocking_findings_count": 0,
   "rules_evaluated": [
@@ -39,7 +39,8 @@
       "rule_index": 4,
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "AE101 voice quintet (Boris/Martin/Godin/Sutherland/Siilasmaa). Body reads Boris-direct throughout ('Stripe's own numbers', 'Cloudflare's own numbers', concrete figures + citations) with Sutherland-reframe openers per move ('Treat CI as feedback into the loop, not a gate to pass'). No L&D-coach, cold-tech-only, or motivational-poster register found. Grep for Remember:/Hold onto/Keep in mind/Never forget: 0 hits. Closest candidate: line 71 'Slow deploys with painful rollbacks force teams to gold-plate pre-merge. Fast deploys with cheap rollback let teams ship hot and correct from real signal.' — direct/Boris register, stays inside.",
+      "evidence": "L17 'Try this Monday. Next CI failure you hit on agent-drafted code, ask Claude \"what rule in ./CLAUDE.local.md would have caught this?\" before you fix the diff. If the answer is none, write the rule.' — factual + direct (Boris) paired with an act-now imperative (Risto); L39 'That's a gap you can close on Monday' and L87 'Pick one move. Run it this week.' hold the same forward-action register throughout. No L&D-coach, cold-tech-only or motivational-poster tone; AE101 quintet register maintained end to end.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -182,9 +183,10 @@
     {
       "compendium": "check_writing.md",
       "rule_index": 27,
-      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it.",
+      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
       "verdict": "PASS",
-      "evidence": "This is a supplementary summarising other practitioners' work, the density prior the rule itself names as highest-risk. Checked for the four sub-shapes: no abstract-twin pairs found (each move's thesis sentence has one concrete instance, not a doubled altitude); no restating-an-adjacent-element (no prompt/figure/list is narrated by the surrounding prose); no widening-qualifier hedges; the L83-87 closing paragraph revisits the L5 opening framing but adds the 'six tunable surfaces' synthesis absent from the opener, functioning as an essay's bookend rather than a bare second announcement of the same claim.",
+      "evidence": "L73 comes closest: 'The sweet pace is not as fast as possible. It's fast enough that correction cost stays low. Two conditions: reverts are trivial, observability catches bad merges in minutes.' Three sentences, but each adds new content (a reframe, then the operational test that cashes it out) rather than restating the same claim at a different altitude — no abstract twin, no adjacent-artifact restatement (no figure/prompt/list sits beside it).",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -320,9 +322,9 @@
       "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
       "verdict": "N/A",
       "evidence": null,
+      "na_reason": "no chat-print moment in this file — it's take-home prose, not a scoreboard/table Claude just printed",
       "fix_hint": null,
-      "blocking": false,
-      "na_reason": "no chat-print artifact moment in this reading-only supplementary (signals: has_prompt_blocks false, has_figures false)"
+      "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
@@ -1004,10 +1006,9 @@
       "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
-      "carried_shape": "43685ab34d2a22a8"
+      "na_reason": "no prompt blocks in this file (signals.has_prompt_blocks: false, 0 code fences)",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
@@ -1015,10 +1016,9 @@
       "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
-      "carried_shape": "43685ab34d2a22a8"
+      "na_reason": "no prompt blocks/fences to score for width or paragraph split",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
@@ -1092,10 +1092,9 @@
       "rule_lead": "Long-running prompts stream progress — never go silent.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
-      "carried_shape": "43685ab34d2a22a8"
+      "na_reason": "no prompt fences in this file — nothing for the agent to run long",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
@@ -1386,13 +1385,22 @@
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 8,
-      "rule_lead": "Strategy doc carries strategy, not structure.",
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
-      "carried_shape": "43685ab34d2a22a8"
+      "na_reason": "rule binds the strategy doc's copy of this file, not this file's own body; the file's own audience pin (L117) is a navigational fact it's entitled to assert, and the doc-side drift is already tracked in the strategy-class instance's §8 row, not duplicated here",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 28,
+      "rule_lead": "Body prose stands without the trainer — no cue-card prose.",
+      "verdict": "PASS",
+      "evidence": "grep for screen deictics/cue fragments (`take a guess`, `before it runs`, `on the screen`, `^Let's go`, `^Go\\.`, `Your turn`, `**Remember`, `Hold onto`, `Keep in mind`, `Never forget`) → 0 in body. Closest candidate, L87 'Pick one move. Run it this week.' — a verbed closer with the noun ('one move') named two lines above (L85's 'six tunable surfaces'), not a trainer-only deictic; reads standalone in the muted-read test since this is take-home reading with no room and no live terminal.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "drift_rules_reread": [
@@ -1405,5 +1413,16 @@
     "L172: Declined at the 2026-09-03 polish pass — headers 4 and 5 stay declarative (check_student_facing.md §17); judges should not re-file. Honored on check_student_facing.md#17.",
     "L168-171: Org-diversity check + vendor-venue-cite note — standing rationale for check_writing.md#11 attribution cap and research-claims vendor-venue flagging; consulted, not itself a body-prose finding surface."
   ],
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "scope": "drift",
+  "drift_rules": [
+    "check_prompts.md §35",
+    "check_prompts.md §36",
+    "check_prompts.md §43",
+    "check_strategy_tie_in.md §8",
+    "check_student_facing.md §27",
+    "check_writing.md §4",
+    "check_writing.md §27",
+    "check_writing.md §28"
+  ]
 }

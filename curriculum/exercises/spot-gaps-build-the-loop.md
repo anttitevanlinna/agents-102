@@ -45,8 +45,8 @@ Ask Claude to read your rules file against the diagnosis and cut the one rule it
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-05 (writing@fb797e3b story@fb797e3b technical@4589f1d5 behavior@9696da99 pedagogy@fb797e3b strategy@fb797e3b slides@fb797e3b)
-- judges @9696da99: writing PASS, story PASS, technical PASS, behavior PASS (2 findings see instances/ae101--exercise--spot-gaps-build-the-loop.behavior.json), pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-28 (writing@0655fa67 story@0655fa67 technical@0655fa67 behavior@9696da99 pedagogy@0655fa67 strategy@0655fa67 slides@0655fa67)
+- judges @0655fa67: writing PASS, story PASS, technical PASS, behavior PASS (2 findings see instances/ae101--exercise--spot-gaps-build-the-loop.behavior.json), pedagogy PASS, strategy PASS, slides PASS
 
 **Atomic — no phase markers.** One read of two sessions, then one cut; the second move is a consequence of the first, not a phase.
 

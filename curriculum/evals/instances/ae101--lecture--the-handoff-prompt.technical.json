@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/lectures/the-handoff-prompt.md",
   "verdict": "PASS",
-  "body_sha": "7ba47834170f121fbb927c50d90b89bc2c8cb286291be46edddf65b3db39756e",
+  "body_sha": "5223c1426db3092089cbcf8c8dbb7d0778945627c7d7bd0f2280e79a3b3c4089",
   "shape_hash": "3046f580905e3676",
   "pin": "54577f39",
   "rules_evaluated": [
@@ -270,7 +270,8 @@
       "rule_index": 36,
       "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
       "verdict": "PASS",
-      "evidence": "git diff 54577f39..HEAD -- curriculum/prompts/agents-that-build-agents-handoff.md shows the fence was reformatted from one dense paragraph into six move-scoped paragraphs (context / framing / scan / pick+build / checks / cold-session instruction), no wording changed. Current shape satisfies the read-aloud diagnostic: each paragraph is one move.",
+      "evidence": "L7 registry curriculum/prompts/agents-that-build-agents-handoff.md L14-24: each move already sits in its own paragraph — L16 lead-in, L18 'It scans my work...', L20 'It picks with me the one skill most worth building, and builds it.', L22 'It makes sure the work that skill produces has efficient checks...', L24 closing instruction. Read aloud, each paragraph break lands at a natural breath.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -837,15 +838,13 @@
     },
     {
       "compendium": "check_pedagogy.md",
-      "rule_index": "61",
+      "rule_index": 61,
       "rule_lead": "Verify mechanism before proposing surgery.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "process rule for proposing SKILL/framework changes; no such proposal exists in or against this file",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "74a4369f6f3366d6f76199e4317bf8c96b30f12bcf3e785643b54c3412fab327",
-      "carried_shape": "3046f580905e3676"
+      "na_reason": "no SKILL.md/framework/tool change is proposed anywhere in this file's body, maintainer or backing block",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
@@ -897,15 +896,13 @@
     },
     {
       "compendium": "check_pedagogy.md",
-      "rule_index": "66",
+      "rule_index": 66,
       "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "authoring-process rule for initial builds, not a content check against an already-built file",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "74a4369f6f3366d6f76199e4317bf8c96b30f12bcf3e785643b54c3412fab327",
-      "carried_shape": "3046f580905e3676"
+      "na_reason": "rule governs the generation workflow (Pass 1/2/3 across a module set), not a property of an already-shipped, compendium-audited lecture body",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
@@ -1149,15 +1146,13 @@
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": "35",
+      "rule_index": 35,
       "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "single-turn generation; no multi-turn dialog that can affect an artifact file mid-dialog",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "74a4369f6f3366d6f76199e4317bf8c96b30f12bcf3e785643b54c3412fab327",
-      "carried_shape": "3046f580905e3676"
+      "na_reason": "registry prompt (curriculum/prompts/agents-that-build-agents-handoff.md L14-24) is a capped propose-then-execute flow — one pick, then build+checks — never an iteration loop that re-writes an artifact across many turns",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
@@ -1197,15 +1192,13 @@
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": "43",
+      "rule_index": 43,
       "rule_lead": "Long-running prompts stream progress — never go silent.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "task synthesizes already-in-context material into one response; maintainer's own \"Time: 3 minutes\" budget for the whole beat confirms this isn't a multi-minute long-running operation needing progress-streaming",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "74a4369f6f3366d6f76199e4317bf8c96b30f12bcf3e785643b54c3412fab327",
-      "carried_shape": "3046f580905e3676"
+      "na_reason": "scope is bounded to the shapes already named in context plus one skill pick+build; the fence's own 'picks with me' step is a built-in mid-run checkpoint, not a default silent multi-minute run this rule targets",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
@@ -2236,5 +2229,13 @@
     }
   ],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 1
+  "nonblocking_findings_count": 1,
+  "scope": "drift",
+  "drift_rules": [
+    "check_pedagogy.md §61",
+    "check_pedagogy.md §66",
+    "check_prompts.md §35",
+    "check_prompts.md §36",
+    "check_prompts.md §43"
+  ]
 }

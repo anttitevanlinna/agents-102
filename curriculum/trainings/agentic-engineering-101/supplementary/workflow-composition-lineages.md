@@ -146,8 +146,8 @@ Track two or three practitioners and you stay current. Watch what they ship in t
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 pedagogy@b55cd28b strategy@324b81d7 slides@324b81d7)
-- judges @324b81d7: writing PASS (2 findings see instances/ae101--supplementary--workflow-composition-lineages.writing.json), story PASS, technical PASS, behavior N/A (no prompt blocks on this page), pedagogy PASS, strategy PASS, slides PASS (1 finding see instances/ae101--supplementary--workflow-composition-lineages.slides.json)
+**Quality:** compendium-audited 2026-09-28 (writing@0655fa67 story@0655fa67 technical@0655fa67 pedagogy@0655fa67 strategy@0655fa67 slides@0655fa67)
+- judges @0655fa67: writing PASS (1 finding see instances/ae101--supplementary--workflow-composition-lineages.writing.json), story PASS, technical PASS, behavior N/A (no prompt blocks on this page), pedagogy PASS, strategy PASS, slides PASS (1 finding see instances/ae101--supplementary--workflow-composition-lineages.slides.json)
 
 **Slide deixis accepted:** "moves listed above" (check_slides.md §12) — the Cherny moves and the Read: list that points back at them share one `##` chunk.
 

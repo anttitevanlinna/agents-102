@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/lectures/the-2-frontiers.md",
   "verdict": "PASS",
-  "body_sha": "d7c61a8ab4173c17343ec2264e2357b33e1b6d12a7c534177d81917abf782aae",
+  "body_sha": "579369abf48240d5297769580cb18bc45baf43328d22abacd3aa3e88da3d4257",
   "shape_hash": "605546789744a58d",
   "notes": "Rule-drift re-audit pinned at 4e0370bc. git diff 4e0370bc..HEAD -- curriculum/lectures/the-2-frontiers.md shows exactly one changed span: the maintainer block's **Quality:** line and its judges@ list (stamp advances from concurrent sibling-class judges on this same file, most recently commit 68258204 bumping the strategy@ pin), plus nothing else — the 8-line body and the backing block are byte-identical to the pinned version throughout. body_sha below was re-taken at the current HEAD (post sibling stamp) after confirming via git diff/git log that only maintainer-block bookkeeping moved; none of the evaluated content did. check_pedagogy{16,22,23,36,37} and check_prompts{1,2,5,8,13} (technical's owned sub-rule sets per this class's template) plus all 67 non-drift check_platform_and_boundaries rules and 15 non-drift check_research_claims rules were parked by prefill-instance.js under unchanged shape_hash 605546789744a58d and merged in below unmodified; they were not re-derived. The remaining 43 check_prompts rules and 57 check_pedagogy rules the brief surfaced are outside this class's scope per technical.md ('this class owns mechanical correctness' for prompts; 'pedagogy judge is primary owner of the rest') and were correctly left unwritten.",
   "rules_evaluated": [
@@ -1054,8 +1054,66 @@
       "blocking": false,
       "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 61,
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no SKILL.md/framework/tool change proposed anywhere in this body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 66,
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-build-process rule; this is a single finished lecture body, not a build pass",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 35,
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "has_prompt_blocks: false — no prompt content in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "has_prompt_blocks: false — no prompt content in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "has_prompt_blocks: false — no prompt content in this file",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "scope": "drift",
+  "drift_rules": [
+    "check_pedagogy.md §61",
+    "check_pedagogy.md §66",
+    "check_prompts.md §35",
+    "check_prompts.md §36",
+    "check_prompts.md §43"
+  ]
 }

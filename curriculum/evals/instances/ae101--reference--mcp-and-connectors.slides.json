@@ -1,56 +1,20 @@
 {
   "class": "slides",
-  "training": "ae101",
   "file": "curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md",
+  "training": "ae101",
   "verdict": "PASS",
-  "body_sha": "bf758cc70992bf4533bfe3989d95040f3566b9166680921c64357971db955388",
-  "shape_hash": "7b3d7617cecc027b",
+  "body_sha": "e0e09c8d883c49e8cbd544e97dd7dc8ed9df63e4786409bc85121e96be86dcdf",
+  "shape_hash": "1953f17c2d976d86",
   "chunk_map": [
-    {
-      "index": 0,
-      "heading": "MCP and connectors: reference (H1/lede)",
-      "lines": "1-6"
-    },
-    {
-      "index": 1,
-      "heading": "Three paths to a work-app action",
-      "lines": "7-20"
-    },
-    {
-      "index": 2,
-      "heading": "GitHub Issues",
-      "lines": "21-43"
-    },
-    {
-      "index": 3,
-      "heading": "Jira: Atlassian Rovo MCP (official)",
-      "lines": "44-65"
-    },
-    {
-      "index": 4,
-      "heading": "Linear: first-party MCP (official)",
-      "lines": "66-82"
-    },
-    {
-      "index": 5,
-      "heading": "Other trackers (Asana, Shortcut, Azure DevOps, ServiceNow, etc.)",
-      "lines": "83-88"
-    },
-    {
-      "index": 6,
-      "heading": "Plugins and marketplaces: MCP servers bundled for distribution",
-      "lines": "89-103"
-    },
-    {
-      "index": 7,
-      "heading": "Marketplace governance: official vs team, and when to reach for plugin distribution",
-      "lines": "104-113"
-    },
-    {
-      "index": 8,
-      "heading": "What Claude Code doesn't do yet (as of 2026-08-19)",
-      "lines": "114-123"
-    }
+    {"index": 0, "heading": "MCP and connectors: reference (H1/lede)", "lines": "1-6"},
+    {"index": 1, "heading": "Three paths to a work-app action", "lines": "7-19"},
+    {"index": 2, "heading": "GitHub Issues", "lines": "21-42"},
+    {"index": 3, "heading": "Jira: Atlassian Rovo MCP (official)", "lines": "44-64"},
+    {"index": 4, "heading": "Linear: first-party MCP (official)", "lines": "66-81"},
+    {"index": 5, "heading": "Other trackers (Asana, Shortcut, Azure DevOps, ServiceNow, etc.)", "lines": "83-87"},
+    {"index": 6, "heading": "Plugins and marketplaces: MCP servers bundled for distribution", "lines": "89-102"},
+    {"index": 7, "heading": "Marketplace governance: official vs team, and when to reach for plugin distribution", "lines": "104-112"},
+    {"index": 8, "heading": "What Claude Code doesn't do yet (as of 2026-08-19)", "lines": "114-123"}
   ],
   "rules_evaluated": [
     {
@@ -58,8 +22,8 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Closest borderline: chunk 4 \"Linear: first-party MCP (official)\" line 77: \"Cleanest UX of the three trackers for solo engineers, regardless of path.\" \"The three trackers\" resolves against GitHub Issues (chunk 2), Jira (chunk 3), and Linear (chunk 4, current) — all three named and elaborated by this point in the sequential read. Stays inside; no never-named, vague, or re-chunk-stranded referent found anywhere else in the file.",
+      "evidence": "Walked every pronoun/demonstrative in reading order. Chunk 3 line 60 \"after that\" resolves within-chunk to \"first 3LO consent\" (line 60); chunk 4 line 77 \"the three trackers\" resolves to GitHub/Jira/Linear, all named in earlier chunks of this same file (arc-earned, not cross-file); chunk 6 line 91 \"this way\" resolves to the marketplace-install sentence immediately above it in the same chunk. No never-named, vague, or re-chunk-stranded referent found.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": true
     },
@@ -68,8 +32,28 @@
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "No callback to another curriculum file by position anywhere in the body (this is a standalone reference lookup page with no lecture/exercise cross-references). Closest candidate: chunk 1 line 15: \"Plugins distribute Path 2, `claude mcp add`, at scale, under *Plugins and marketplaces*.\" — names the target section by title, satisfying the carve-out (\"name it, don't locate it\").",
+      "evidence": "No chunk points at another file by position; all references are within-file (rule 1's arc-earned vocabulary) or named external sources with link text (e.g. line 19 \"Sources:\" list). No \"the opening lecture said\" or module-relative phrasing present.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "reference page, no \"the X you did/saw\" beat-callback construction anywhere in the body",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "flat lookup page, no guess/reveal or live-demo beat present",
       "fix_hint": null,
       "blocking": true
     },
@@ -78,8 +62,8 @@
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Closest/shortest chunk: chunk 5 \"Other trackers\" lines 83-88: \"Check the [Anthropic Directory] for reviewed connectors and your tracker's own docs. Most have a third-party MCP or a CLI fallback (like `gh`).\" One paragraph, but a self-carrying claim (the fallback path for any tracker not individually covered) — not a wait-state or context-dependent bullet. All other chunks carry substantially more content.",
+      "evidence": "Smallest chunk (index 5, \"Other trackers\", lines 83-87, 31 words per check-slide-size.js) still carries a self-standing claim: \"Check the Anthropic Directory for reviewed connectors and your tracker's own docs. Most have a third-party MCP or a CLI fallback (like gh).\" Every other chunk carries substantially more. No wait-state or context-dependent single bullet found.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -88,8 +72,8 @@
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Closest borderline: chunk 5 header \"Other trackers (Asana, Shortcut, Azure DevOps, ServiceNow, etc.)\" (line 83) against body (lines 85-87) that never names those four apps individually. Header is a category label naming illustrative examples; body delivers generic guidance for the class of \"other trackers,\" which is what the header promises — it doesn't contradict, it just doesn't itemize per-app, which the header never claimed either. All 8 headers checked; all match their chunk's content.",
+      "evidence": "Checked each header against its chunk's content under cover-the-body/uncover test: \"Three paths to a work-app action\" -> body lists exactly three numbered paths (lines 11-13); \"What Claude Code doesn't do yet (as of 2026-08-19)\" -> body is a gaps list (lines 116-120); \"Marketplace governance: official vs team, and when to reach for plugin distribution\" -> body covers both halves (lines 106, 110). No header contradicted by its own chunk.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -98,18 +82,18 @@
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Checked every sub-item across all 8 chunks. \"Not X. Not Y. Z.\": none (closest surface form is line 13's clipped \"No MCP.\" inside a list item — a single fragment, not the triple-negation pattern). Anaphora/epistrophe triples: none found. Self-grading superlative: line 77 \"Cleanest UX of the three trackers for solo engineers\" grades an external product (Linear), not the training's own value, so it does not trip the value-prop-leak clause. Number + own retraction: none — every date (e.g. line 46 \"GA on 2026-02-04\") is a plain unhedged fact. Abstraction-noun stacks: none — language stays concrete (endpoint, PAT, OAuth, marketplace.json). Empty-leg verb triplets: none.",
+      "evidence": "No \"Not X. Not Y. Z.\" construction, no anaphora/epistrophe triple, no number-plus-retraction, no abstraction-noun stack, no empty-leg verb triplet found in any chunk. Line 77 \"Cleanest UX of the three trackers for solo engineers\" is a comparative claim about the external product (Linear), not a self-grading superlative about this training's own material, so it does not trip the value-prop-leak sub-item.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `grep -n 'surface\\|firing\\|compendium\\|forcing function\\|\\bbeat\\b\\|\\bmood\\b\\|Connections'` against the body region. Only \"surface\" hits, all ordinary engineering usage: line 30 \"The surface is broad: every GitHub REST/GraphQL endpoint is reachable\" (API surface); lines 48/70 \"only admins can add at this surface\" (admin/install surface) — matches the compendium's own carve-out for \"surface\" as ordinary engineering vocabulary, distinct from the repo's \"writing surface\" jargon. No compendium/firing/forcing-function/beat/mood/Connections hits in the body at all.",
+      "evidence": "grep -n -iE \"\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|\\bforcing function\\b|\\bbeat\\b|\\bmood\\b\" on the body -> only \"surface\" hits, at lines 30, 48, 70 (\"The surface is broad\", \"admins can add at this surface\"), all used as ordinary engineering vocabulary (API/install surface, akin to \"attack surface\"), not the repo's \"writing surface\" authoring metaphor. No compendium/firing/beat/mood/forcing-function usage present.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": true
     },
@@ -118,8 +102,8 @@
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "File is an explicit lookup/reference page (H1 \"reference\", lede \"Flat lookup\"), so the §9 reference/lookup-surface waiver applies: the per-slide ≤1 budget is off. Handle cap still checked across every bold span in all 8 chunks: each is either a short label (`**Path 1, connector inheritance.**`, `**Sources:**`, `**CLI install:**`, single-word term defs `**Connector**`/`**Action**`/`**Tool**`) or a single lead sentence at most (`**When to add MCP instead.**` line 32, `**How MCPs ride inside plugins.**` line 93, `**When plugins beat \\`claude mcp add\\`.**` line 110) — none crosses into a second sentence, satisfying the prose-paragraph-lookup-page allowance.",
+      "evidence": "This file is a lookup/reference page (rule 9's own reference/supplementary carve-out applies): every bold span is a short label introducing an entry, not a whole sentence — e.g. line 11 \"**Path 1, connector inheritance.**\", line 23 \"**Default for AE101:**\", line 48 \"**Easiest path: Claude.ai inheritance.**\", line 62 \"**Note:**\", line 93 \"**How MCPs ride inside plugins.**\", line 106 \"**Official vs team marketplaces.**\". Per-slide bold count runs to 2-3 on several chunks (e.g. chunk 2: Default for AE101 / When to add MCP instead / MCP install), but the carve-out turns the per-slide budget off on a lookup surface and only the handle cap binds; no bold span crosses into a full sentence.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -128,28 +112,58 @@
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "derive-body-view.js's computed geometry reports `signals.slide_count: 8`, matching all 8 `##` headers enumerated in the chunk map (Three paths / GitHub Issues / Jira / Linear / Other trackers / Plugins and marketplaces / Marketplace governance / What Claude Code doesn't do yet) — no phase-less section is silently dropped from this file's own composed deck.",
+      "evidence": "site/layouts/slides.js buildDeckModel (lines 256-291): a training root with no .phase--lecture/.phase--exercise wrappers walks :scope > section.module and slide-ifies phase-less content (prework, supplementary, reference) in place under a kind-labelled divider (comment at line 273: \"prework, supplementary, reference — is slide-ified in place\"). This file is a reference page and reaches the composed deck via that path; confirmed by derive-body-view.js reporting slide_count: 8 for its 8 `##` chunks.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no `## Phase N:` / `## N.` step headers in this file; the numbered list at lines 11-13 (\"1. Path 1...\", \"2. Path 2...\", \"3. Path 3...\") is body prose, not header numbering, and `check-slide-numbering.js` produced no output for this file",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --report` -> no match for this file's slug in the output. Manually scanned for below/above/further-down/at-the-top phrasing — none found. The two forward-pointing phrases both pass on the stated hierarchy: line 15 \"Per-tracker install commands come next\" uses the allowed reading-order word (\"next\"); line 5's \"see the maintainer `Source verification` block\" names the target directly rather than locating it spatially.",
+      "evidence": "node scripts/check-slide-deixis.js curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md -> \"OK — 59 files, no page-geometry pointers across the slide cut.\" (this file not named among flagged rows). Line 15 \"Per-tracker install commands come next\" uses the allowed reading-order form (\"next\"), not a geometry pointer. Line 93's \"(above Claude.ai connectors, below user / project / local-CLI scopes)\" describes precedence RANK in a named hierarchy, not page position.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "PASS",
+      "evidence": "Review-aid only, never gates per the rule text. Every in-body/Sources link names its target in the link text (e.g. line 42 \"[`gh` CLI]\", line 112 \"[Claude Code plugins overview]\") rather than locating it by page geometry; no in-body link relies on positional phrasing.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md` -> \"files: 1 slides: 8 limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits.\"",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md --report -> \"oversized: 0\", \"every slide is within limits\". Largest chunks (\"Three paths to a work-app action\", \"GitHub Issues\", \"Plugins and marketplaces...\") sit at 207/210 words, close to the ceiling but under it.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "reference/lookup page, not an exercise or lecture; headers are catalogue entries naming their subject (\"GitHub Issues\", \"Jira: Atlassian Rovo MCP (official)\"), the rule's own explicitly-listed non-violation shape",
       "fix_hint": null,
       "blocking": false
     },
@@ -158,8 +172,8 @@
       "rule_index": 16,
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Scanned both bulleted lists (chunk 1's 3-path numbered list, lines 11-13; chunk 8's gap list, lines 118-120). Each bullet adds a distinct fact (a genuinely different path / a distinct capability gap) — none is doctrine restatement, self-referential design commentary, or an aphorism kicker. The file is procedural/technical throughout with no pedagogy-narration voice for the pattern to breed in.",
+      "evidence": "Read every bullet for doctrine restatement, self-referential design commentary, and aphorism-kicker shape. None present: this is procedural install/reference content with no curriculum self-narration and no koan-style closers.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -167,83 +181,15 @@
       "compendium": "check_slides.md",
       "rule_index": 17,
       "rule_lead": "A retitled slide re-earns its bullets against the new header.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Pinned diff (0cea7581..HEAD) touches only the `Quality:` line; no `##` header changed. No maintainer provenance note of the shape \"(from <old-file>, header his)\" anywhere in the maintainer block. Cross-checked against the rule-6 header-vs-body read: all 8 headers match their chunk's content, no leftover bullets from a prior header found.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "git diff 08946dd8..HEAD shows no `##` header changed since the pin; the only body-region change is a wording edit at line 9 (\"Three ways an action becomes callable...\" -> \"An action becomes callable...\"), not a header rename",
       "fix_hint": null,
       "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 3,
-      "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
-      "evidence": "Quick-reference lookup page, not tied to a module's exercise/lecture sequence. No 'the X you did/saw' phrasing anywhere in the body.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "172bc1ff75a2eeb9c1171faa24a5d6faf22353e1592081879e89ffa64ce74d25",
-      "carried_shape": "7b3d7617cecc027b"
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "evidence": "No guess-before-reveal demo mechanic anywhere in this file; it is a flat install/lookup reference with no live-session beats.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "172bc1ff75a2eeb9c1171faa24a5d6faf22353e1592081879e89ffa64ce74d25",
-      "carried_shape": "7b3d7617cecc027b"
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "evidence": "Ran `node scripts/check-slide-numbering.js --file curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md` -> 'OK — 1 files, Phase/Step numbering consistent.' No `##` header carries a hand-numbered slide position, and no 'Phase N'/'Step N' content ordinal appears in headers or prose; the '1./2./3.' Path list (lines 11-13) is a body list, not `##` step headers, so the numbering-consistency rule doesn't engage on this file.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "172bc1ff75a2eeb9c1171faa24a5d6faf22353e1592081879e89ffa64ce74d25",
-      "carried_shape": "7b3d7617cecc027b"
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "evidence": "No in-page anchor/fragment (`#...`) links anywhere in the body -- every link is an external citation URL with descriptive link text (e.g. line 19 '[Claude Code MCP docs](https://code.claude.com/docs/en/mcp)'), which reads fine with the link stripped. This rule scopes to in-deck fragment links, so it doesn't engage here; it is explicitly a review aid and never a gate regardless.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "172bc1ff75a2eeb9c1171faa24a5d6faf22353e1592081879e89ffa64ce74d25",
-      "carried_shape": "7b3d7617cecc027b"
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 15,
-      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-      "verdict": "N/A",
-      "evidence": "Rule 15's grammar split is stated only for exercise headings (imperative/phase label) vs lecture headings (claims) -- this file is a reference page, a third file type the rule text doesn't address. Checked anyway for fit: all 8 headings, including the new split 'Marketplace governance: official vs team, and when to reach for plugin distribution' (line 104), are noun-phrase topic/catalogue labels naming their subject (explicit NOT-violation carve-out even if the rule did apply), consistent with the lookup-surface register the compendium describes at §9.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "172bc1ff75a2eeb9c1171faa24a5d6faf22353e1592081879e89ffa64ce74d25",
-      "carried_shape": "7b3d7617cecc027b"
     }
   ],
+  "suggestions": [],
   "blocking_findings_count": 0,
-  "drift_rules_reread": [
-    {
-      "rule": "slides §1",
-      "verdict": "PASS — no antecedent-resolution violation under current wording; sequential-read carve-outs all check out (see rule_index 1 row)."
-    },
-    {
-      "rule": "slides §9",
-      "verdict": "PASS — current wording's 2026-08-13 reference/lookup-surface waiver applies to this file by type; handle cap and first-sentence-lead limit both hold (see rule_index 9 row)."
-    },
-    {
-      "rule": "slides §10",
-      "verdict": "PASS — current wording's symmetric both-layout risk re-verified via computed slide_count=8 matching the 8 `##` headers (see rule_index 10 row)."
-    }
-  ],
-  "accept_notes_found": [],
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "Pin 08946dd8..HEAD diff on this file touches only the maintainer block plus one body wording tweak at line 9 (list-lede simplified from 'Three ways an action becomes callable' to 'An action becomes callable'); no slides-class-relevant change. prefill-instance.js reported shape changed (7b3d7617cecc027b -> 1953f17c2d976d86), so nothing was parked and all 17 rows above are mine; --merge run after writing spliced 0 rows. Three chunks (Three paths to a work-app action / GitHub Issues / Plugins and marketplaces) sit at 207/210 words, 3 words under the machine-checked cap — not a finding, flagged only as a watch-point if the file grows."
 }

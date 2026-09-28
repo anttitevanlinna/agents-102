@@ -92,10 +92,10 @@ The next module opens with what came back, or what you caught before it went fur
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-28 (story@2d6b2b01 technical@2d6b2b01 behavior@17446703 pedagogy@3bc472a1 strategy@2d6b2b01 slides@3bc472a1)
-- judges @2d6b2b01: writing REVISE (2/1 see instances/ae101--module--run-the-first-experiment.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--module--run-the-first-experiment.strategy.json), slides PASS
-- cross_module @fb797e3b: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
+**Quality:** compendium-audited 2026-09-28 (writing@0655fa67 story@2d6b2b01 technical@0655fa67 behavior@17446703 pedagogy@3bc472a1 strategy@0655fa67 slides@0655fa67)
+- judges @0655fa67: writing PASS (1 finding see instances/ae101--module--run-the-first-experiment.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @2d6b2b01: PASS — set=[earn-the-trust,run-the-first-experiment]; 1 pair, 0 blocking; see instances/ae101--module-set--m3-m4.cross_module.json
+- cross_module @0655fa67: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 
 **`## Prework`'s pre-read callback names da Costa unconditionally, no flag.** Willison's *Designing agentic loops* is the M3 access-surface read only (`plan-mode-done-right.md`); it does not belong at M4 in any cut. `plan-mode-done-right.md` assigns da Costa directly in its own `no-module:earn-the-trust` `## Pre-reads before Module 4` block, so the pre-M4 read is the same essay across every cut. Do not reintroduce a Willison branch here.
 

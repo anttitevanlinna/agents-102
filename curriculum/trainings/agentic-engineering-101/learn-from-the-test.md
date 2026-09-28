@@ -174,8 +174,6 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 
 **No settings in body (Antti 2026-09-04, `check_student_facing.md` §32a):** the agent-team optional challenge names the feature and links the docs; the experimental flag is not printed. Judges should not re-file the missing switch.
 
-**No resume instruction on the done-done beat (Antti 2026-09-05).** *This one runs in the session you sent off* stays as two sentences; this audience knows how to resume a closed session, and a line saying so is text without value. Judges should not re-file `check_strategy_tie_in.md` §1 or `check_prompts.md` §40 on the beat.
-
 **`## Next` is one sentence (Antti 2026-09-05).** The student-carries half the slides addendum asks for is the first line of M6's own opener, so it is not repeated here. Judges should not re-file `check_slides.md`'s Next addendum on it.
 
 **Meta (trainer):**

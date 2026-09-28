@@ -206,7 +206,7 @@ const BORROW_FIELDS = [
   'flow engineering', 'groundwork pattern language', 'HCI', 'human factors',
   'information theory', 'journalism', 'learning science', 'legal drafting',
   'manufacturing', 'marketing', 'military strategy', 'ML research', 'navigation',
-  'organisational learning', 'organisational theory', 'pedagogy',
+  'organisational learning', 'organisational theory', 'pedagogy', 'privacy engineering',
   'reliability engineering', 'risk management', 'safety engineering', 'security',
   'security engineering', 'software economics', 'software engineering',
   'software testing', 'SRE', 'statistical process control', 'statistics', 'strategy',

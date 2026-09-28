@@ -51,7 +51,7 @@
             // Content tarball; its name is owned by training-architecture.md
             // § Material distribution.
             tarball: { name: 'ae101-content.tar.gz', script: 'scripts/build-ae101-content-tarball.sh' },
-            lede: 'Six modules for software engineers. Become the Claude wizard by learning the new loop and finding your habit.',
+            lede: 'Six core modules for software engineers, plus two optional production extensions. Learn the new loop, then design the platform and data boundary around it.',
             prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
             modules: [
                 { slug: 'getting-going',             title: 'Getting going + context' },
@@ -60,6 +60,10 @@
                 { slug: 'run-the-first-experiment',  title: 'Run the first experiment' },
                 { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' },
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
+            ],
+            optionalModules: [
+                { slug: 'build-your-agent-platform',       title: 'Build your agent platform' },
+                { slug: 'data-handling-you-can-defend',    title: 'Data handling you can defend' }
             ],
             // Ordered by first appearance across the module arc (prework → M6), so
             // the appendix reads in the sequence the modules reach for it. Both the
@@ -79,7 +83,9 @@
                 { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
                 { slug: 'mcp-and-connectors',        title: 'MCP and connectors' },
                 { slug: 'multi-session-git',         title: 'Multi-session and Git: survival guide' },
-                { slug: 'prompt-anatomy',            title: 'Prompt anatomy: the named moves' }
+                { slug: 'prompt-anatomy',            title: 'Prompt anatomy: the named moves' },
+                { slug: 'agent-platform-challenge',  title: 'Agent platform challenge' },
+                { slug: 'unattended-agent-worked-execution', title: 'Unattended agent worked execution' }
             ]
         },
         // Preview / beta cut of Agentic Engineering 101: the first three modules,

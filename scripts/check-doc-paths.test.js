@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 
-const { isPlaceholder, stripFences, resolves, isCurriculumInclude, isSkippedTree } = require('./check-doc-paths.js');
+const { isPlaceholder, stripFences, resolves, isCurriculumInclude, isSkippedTree, repoRootsFor } = require('./check-doc-paths.js');
 const { namesIt } = require('./find-session-docs.js');
 
 test('isPlaceholder: illustrative shapes are not pointers', () => {
@@ -85,6 +85,12 @@ test('isCurriculumInclude: the student working tree is not an include', () => {
   ]) {
     assert.equal(isCurriculumInclude(ref), false, ref);
   }
+});
+
+test('student-facing docs/ paths belong to the customer tree', () => {
+  assert.ok(!repoRootsFor('curriculum/exercises/example.md').includes('docs/'));
+  assert.ok(!repoRootsFor('curriculum/prompts/example.md').includes('docs/'));
+  assert.ok(repoRootsFor('CLAUDE.md').includes('docs/'), 'maintainer docs still validate repo docs');
 });
 
 test('every module include in every training actually resolves', () => {

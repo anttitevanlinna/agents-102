@@ -37,3 +37,15 @@ test('every shipped lecture and exercise is reached from shipped text', () => {
   const unreached = shipped.filter(f => ![...text].some(([g, body]) => g !== f && body.includes(f)))
   assert.deepEqual(unreached, [])
 })
+
+test('the M7 unattended-agent lab ships as an executable, dependency-free scaffold', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ae101-m7-lab-'))
+  const out = path.join(dir, 'c.tar.gz')
+  execFileSync('bash', ['scripts/build-ae101-content-tarball.sh', out], { cwd: repo, stdio: 'ignore' })
+  const x = path.join(dir, 'x'); fs.mkdirSync(x)
+  execFileSync('tar', ['xzf', out, '-C', x])
+  const lab = path.join(x, 'labs', 'unattended-agent')
+  assert.ok(fs.existsSync(path.join(lab, 'src', 'real-worker.mjs')))
+  execFileSync('npm', ['test'], { cwd: lab, stdio: 'ignore' })
+  execFileSync('npm', ['run', 'tour'], { cwd: lab, stdio: 'ignore' })
+})

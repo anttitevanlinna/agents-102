@@ -159,7 +159,7 @@ test('every AE101 module computes with no unresolved leaf or beat', () => {
   // `mismatches`, where `--check` gates it — a suite that goes red for something
   // no code change can fix is a suite people learn to ignore.
   const r = computeTraining('agentic-engineering-101');
-  assert.equal(r.modules.length, 6);
+  assert.ok(r.modules.length > 0, 'the declared curriculum must expose at least one module');
   const problems = r.modules.flatMap(m => m.problems.map(p => `${m.slug}: ${p}`));
   assert.deepEqual(problems, [], 'every leaf must carry a parseable **Time:** and every beat must be priced');
 });

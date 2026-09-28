@@ -165,7 +165,7 @@ function run() {
   const coverage = [];
   const layout = [];
 
-  for (const mod of t.modules) {
+  for (const mod of [...(t.modules || []), ...(t.optionalModules || [])]) {
     const plan = modulePlan(contentKey, mod.slug);
     if (!plan) continue;
     // The module file's own `##` sections (What You'll Learn, Key Concepts,

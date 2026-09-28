@@ -67,10 +67,10 @@ const ALLOW = new Map(Object.entries(require('./check-doc-paths.allow.json')));
 
 // Student-facing surfaces name two different trees. Ours (`curriculum/...`,
 // `scripts/...`) must resolve. The student's own working directory
-// (`outputs/policy-report.md`, `module-1/site.html`, `./challenge.md`) is
+// (`outputs/policy-report.md`, `docs/adr/decision.md`, `./challenge.md`) is
 // created during the exercise and cannot resolve here — checking it would flag
 // every exercise that tells a student to make a file. So on those surfaces we
-// validate only references rooted in a repo top-level directory.
+// validate only unambiguous references rooted in a repo top-level directory.
 // Prompts and scaffolds address the student's working tree as directly as an
 // exercise body does; skills carry upstream authors' own paths.
 // The tmux-runner drives Claude through OTHER repositories (lemmings, codesearch,
@@ -88,6 +88,14 @@ const REPO_ROOTS = [
   'continuous-research/',
 ];
 const isRepoPointer = (ref) => REPO_ROOTS.some((r) => ref.startsWith(r));
+
+// `docs/` is a repo root here and the conventional documentation root in the
+// customer's working repository. On a student-facing surface the customer-tree
+// reading wins; maintainer docs outside those surfaces still validate `docs/`
+// as a real repository pointer.
+const repoRootsFor = (file) => (STUDENT_SURFACE.test(file) || FOREIGN_TREE.test(file))
+  ? REPO_ROOTS.filter((r) => r !== 'docs/')
+  : REPO_ROOTS;
 
 const TRAINING_ROOTS = (() => {
   const base = path.join(ROOT, 'curriculum/trainings');
@@ -172,9 +180,7 @@ function collect(files) {
         if (seen.has(ref) || !ref.includes('/')) continue;
         seen.add(ref);
         if (isPlaceholder(ref) || /^https?:/.test(ref)) continue;
-        const roots = FOREIGN_TREE.test(f)
-          ? REPO_ROOTS.filter((r) => r !== 'docs/')   // in a foreign tree, docs/ is theirs
-          : REPO_ROOTS;
+        const roots = repoRootsFor(f);
         if ((STUDENT_SURFACE.test(f) || FOREIGN_TREE.test(f)) &&
             !roots.some((r) => ref.startsWith(r)) &&
             !isCurriculumInclude(ref)) continue;
@@ -206,4 +212,4 @@ if (require.main === module) {
   process.exit(1);
 }
 
-module.exports = { collect, isPlaceholder, stripFences, resolves, isCurriculumInclude, isSkippedTree };
+module.exports = { collect, isPlaceholder, stripFences, resolves, isCurriculumInclude, isSkippedTree, repoRootsFor };

@@ -186,6 +186,17 @@ Each day **opens with its half of the map** (container, `check_lectures §2`-leg
 
 Two durable anchors + the map, **not** six per-module anchors. Thin-slice = **M2** (where theory really starts).
 
+### Optional production extensions — one model, widened twice
+
+M7 and M8 sit outside the six-module core, so they do not add phases to the Field Map. They put a production boundary around the loop:
+
+- **M7 wraps every phase in controlled transitions.** A state change is acceptable only when action authority, justifying evidence, and a stop or recovery path are explicit. Its durable anchor is `a-trace-is-an-argument.md` § *The pattern is a controlled transition*, after the failure tour and incident review have made the need felt.
+- **M8 overlays the data lifecycle on those same transitions.** Each one gains the data used, purpose, decision owner, and retention or deletion rule. Its durable anchor is `legality-needs-an-evidence-package.md` § *Extend the controlled transition*, after the two cases have exposed the hidden copies and inferences.
+
+The pair-wide schema is **controlled transition**. Its mechanism is that unattended work is a chain of state changes: controlling only the worker or model call leaves the consequential arrows unowned. Its map position is the boundary around every Field Map phase, not a seventh phase. Its governor is: **who may cause this change, what data may it use and retain for this purpose, what bounded evidence would justify it, and how can it be stopped or reversed?**
+
+The schema makes two design tensions durable: proof needs observation while observation creates exposure; useful autonomy needs authority while safe autonomy limits authority. M7 establishes the action-and-evidence half. M8 changes the same model rather than introducing a parallel checklist.
+
 ## The general/local frame — why the training refuses to hand over best practice (2026-08-13→15; merged from `module-design/ae101-m4-frame-idea.md`, dissolved — full derivation in git)
 
 **The operating claim (full strength, student-facing thesis; directional, not literal omniscience):**
@@ -495,4 +506,3 @@ bank ✅ → spine drafted ✅ → evals spec'd ✅ → cut-mechanism shipped �
 - **B · Teaching-landing** — grades each per-module anchor the loops produce (the `/goalcheck` scoreboard). Keystone judge: **durability-without-voice** — can a student who did NOT hear the trainer get the theory from the durable artifact *alone*? Plus **spine-anchoring / cognitive-load** (every technique maps to a named slot) · **dose** (≤3 laws, container-not-content, each law generates a move) · **worldview-fit** (map-first then derive; not front-loaded empty box). Composes with the existing eval classes (pedagogy / strategy / writing / …) — does not duplicate them.
 
 **Implementation loops** (after the theory passes family A): one loop per module — build the law-anchor, wire it to the map, place the derivation beat, run family B until it passes.
-

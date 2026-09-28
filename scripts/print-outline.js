@@ -34,7 +34,7 @@ function resolveLink(href) {
 
 const out = [];
 const seen = new Set();
-const files = [t.prework, ...t.modules].filter(Boolean);
+const files = [t.prework, ...(t.modules || []), ...(t.optionalModules || [])].filter(Boolean);
 files.forEach((m, i) => {
   const file = path.join(ROOT, 'curriculum/trainings', contentKey, m.slug + '.md');
   const lines = body(file);

@@ -105,7 +105,7 @@ function fileSetFromTraining(trainingKey) {
   }
   const seen = new Set();
   const out = [];
-  for (const mod of t.modules) {
+  for (const mod of [...(t.modules || []), ...(t.optionalModules || [])]) {
     const modPath = path.join(ROOT, 'curriculum/trainings', trainingKey, mod.slug + '.md');
     if (!fs.existsSync(modPath)) continue;
     const modSlug = path.posix.join('trainings', trainingKey, mod.slug);

@@ -1,22 +1,47 @@
 # Agentic Engineering 101, Training Architecture
 
-AE101 is for software-engineer ICs who already use or have seen Claude Code. The training turns uneven self-taught usage into an engineering loop that compounds inside the engineer's real repo. Architecture differs from Agents 101 in two load-bearing ways: AE101 has no persistent training directory (work lives in the student's repo), and the runtime contract is engineer-shaped rather than leader-shaped (no Cowork; no async cloud agents).
+AE101 is for software-engineer ICs who already use or have seen Claude Code. The training turns uneven self-taught usage into an engineering loop that compounds inside the engineer's real repo. Architecture differs from Agents 101 in two load-bearing ways: AE101 has no persistent training directory (work lives in the student's repo), and the core runtime contract is engineer-shaped rather than leader-shaped (no Cowork; no async cloud agent required for Modules 1–6).
 
 Today AE101 ships only on Claude Code (CLI + Desktop). Gemini CLI is the planned alternate runtime; the diff plan lives under §Future TODO.
 
 ## Platform
 
-**Supported today: Claude Code (CLI + Desktop).** Canonical and battle-tested. Every shipped artefact has been authored against this runtime.
+**Supported classroom runtime today: Claude Code (CLI + Desktop).** Canonical and battle-tested. Every core artefact has been authored against this runtime.
 
 **Cowork is not a supported runtime for AE101.** Cowork is sandboxed to connected folders, not the engineer's coding flow. Engineers code in their real repo on their laptop, run tests, run MCP server installs at the org level, and compound rules into files Git tracks. None of that maps to Cowork's connected-folder + plugin-marketplace model. Cowork is the right surface for Agents 101 (non-engineer leaders); it is the wrong surface for AE101.
 
-**Jules and other async cloud agents are out of scope.** AE101 teaches a synchronous loop where the engineer reads what the agent did and steers in real time. Async PR-back agents fit a different pedagogy.
+**Hosted coding agents remain out of scope for the core.** Modules 1–6 teach a synchronous loop where the engineer reads what the agent did and steers in real time. Optional Module 7 is different: it designs a private unattended platform around a headless coding-agent worker. It does not use a hosted PR-back product and it does not require the student to deploy infrastructure.
+
+## Optional production-extension contract
+
+Modules 7 and 8 start a new problem at a wider boundary. They do not change the runtime or sequencing contract of Modules 1–6, and M6 remains a complete ending.
+
+**M7 treats the worker as an adapter.** Headless Claude Code is the classroom worker contract; Codex should be able to implement the same conceptual contract later without widening authority. The module teaches the surrounding system: trigger, admission policy, queue, isolated workspace, context assembly, tool broker, scoped credentials, verification, trace, result, and escalation. It uses AWS as the concrete mapping surface, not as a single blessed architecture and not as a provisioning lab.
+
+The current worker mechanics are deliberately narrow:
+
+- Claude Code supports non-interactive `-p` operation, structured and streaming JSON output, tool allow/deny lists, turn and budget limits, permission modes, and MCP configuration. Verify the current flags against the [official CLI reference](https://code.claude.com/docs/en/cli-usage) before a cohort.
+- Codex supports non-interactive `codex exec`, JSONL event output, output schemas, and explicit sandbox modes. Credentials stay outside repository-controlled execution, with privileged publication separated from the worker where possible. Verify against the [official non-interactive guide](https://developers.openai.com/codex/non-interactive-mode) and [sandbox-security guidance](https://developers.openai.com/api/docs/guides/agents-api/environments/security).
+
+**M7's trace is preliminary. M8 owns the correction.** A useful trace can include identity and policy versions, context references, tool authorization decisions, results, verifier evidence, state transitions, and the final outcome. That does not authorize raw prompts, model responses, tool payloads, or personal identifiers to be stored by default. M8 walks the data through every copy, then narrows fields, access, retention, deletion, and processor boundaries in the M7 design.
+
+**Neither module returns a compliance verdict.** Engineering owns the concrete data-flow facts and technical controls. Product and operations own purpose and human process. The organisation's privacy or legal owner decides context-specific legal questions. The student artefacts preserve unresolved decisions and named owners instead of asking the model to declare them lawful.
+
+### M7 boundary model
+
+M7 continues in the student's real repository, but the room uses one shared CI-triage responsibility. A common case is deliberate scaffolding: queue claims, cancellation, credential brokering, and recovery are new enough that asking every student to invent a workload at the same time hides the platform lesson. The student's Modules 4–6 work returns only in a short transfer note at the close.
+
+The student makes three responsibility decisions and defines one custom-tool contract inside `architecture.md`, then uses exactly three self-authored internet-search criteria to resolve one consequential architecture uncertainty. The research is deliberately narrow. It changes one decision and its AWS mapping rather than producing a general platform survey.
+
+The first artifact is an executable local boundary model, not a miniature production platform. Students do not bootstrap its plumbing from a blank file. The content tarball ships `labs/unattended-agent/`, a dependency-free Node lab with a deterministic worker, broker, local atomic file claim, metadata-driven timeout path, trace checker, fault tour, and passing tests. Students predict and inspect four prevented transitions; the test suite also sends two deliveries concurrently through the local claim and requires one effect. They then use a control-evidence table to state exactly what the model demonstrates, simulates, merely specifies, or leaves for a production-like test. The model does not claim distributed queue leasing, recovery after a crash between claim and effect, process cancellation, workspace isolation, credential brokering, or cloud recovery.
+
+The load-bearing design artifact is the controlled execution around that model. The student inspects the installed Claude Code help to add a worker-adapter contract to `architecture.md`, uses exactly three self-authored internet-search criteria to resolve one consequential uncertainty in the same file, then maps the responsibility and its invariants onto AWS. Three incident reviews stress concurrent duplicate delivery, a worker that continues after cancellation, and secret-bearing trace data. `proof.md` carries the evidence ledger, initial data boundary, and production gates. Module 8 consumes those two files in the same repository.
 
 ## Material distribution
 
 Two artefacts per student:
 
-1. **Content folder.** `ae101-content.tar.gz` (this file owns the tarball filename, build scripts, prework, and audit regex point back here). Shipped at training start. Contains `lectures/`, `exercises/`, `prework/`, `reference/`, `supplementary/`, and `content/skills/` (source files for the curated skills M3 uses). All markdown. Read in place at the agent's direction; skim when you want to. Same files render via the cohort site for projection and human browsing, the file-on-disk is the source of truth for agentic reading. **Ships only in cuts that run M3.** The two M3 security exercises are the tarball's only consumers; reference and supplementary material renders in the workbook regardless. A cut that drops M3 sets `flags: { payload: false }` on its registry entry, which strips prework's download, extract and install steps with it.
+1. **Content folder.** `ae101-content.tar.gz` (this file owns the tarball filename, build scripts, prework, and audit regex point back here). Shipped at training start. Contains `lectures/`, `exercises/`, `prework/`, `reference/`, `supplementary/`, `content/skills/` (source files for the curated skills M3 uses), and `labs/unattended-agent/` (the optional M7 executable boundary model). Read in place at the agent's direction; skim when you want to. The markdown renders via the cohort site for projection and human browsing, while M7 runs the executable lab in place from the content folder and leaves it unchanged. **Ships only in cuts that run M3.** The M3 security exercises and optional M7 lab are its consumers; reference and supplementary material renders in the workbook regardless. A cut that drops M3 sets `flags: { payload: false }` on its registry entry, which strips prework's download, extract and install steps with it; a future cut that includes M7 without M3 must explicitly retain the payload.
 
 2. **The student's real repo.** Where compounding actually happens. Picked in prework against four criteria: owned or co-owned, still active in six months, dense enough that compounding has somewhere to land, real work ahead at both sizes (a one-line bug for M1, an epic or refactor for M4 onward).
 

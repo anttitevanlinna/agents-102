@@ -183,6 +183,16 @@ const THEORY_HANDBOOK_MANIFEST = {
       'lectures/story-of-module-6',
       'lectures/agents-that-build-agents',
     ]],
+    ['M7', [
+      'lectures/the-platform-is-the-agent',
+      'exercises/build-and-prove-agent-platform',
+      'lectures/a-trace-is-an-argument',
+    ]],
+    ['M8', [
+      'lectures/the-model-call-is-not-the-data-flow',
+      'exercises/decide-agent-data-boundary',
+      'lectures/legality-needs-an-evidence-package',
+    ]],
   ],
   // Agents 101: theory = the lectures and the pre-reads, in the module that wires
   // them; the three live demos (first-scheduled-agent, agent-that-takes-action,
@@ -784,8 +794,10 @@ const TRAINER_MODULES_TAB_JS = `
 
 // Computed runtime maps, keyed by module slug, for `{{runtime-map:<slug>}}`.
 // Cached per training: one filesystem walk, however many markers the handbook
-// carries. The default shape is the sold cohort shape — the clock column only
-// means anything against a scheduled start.
+// carries. The default shape is the sold cohort shape when the module has one.
+// Optional extensions can live only in their own shape, so fall back to the
+// first declared cap instead of rendering a fictional no-cap cohort view. The
+// clock column only means anything against a scheduled start.
 const RUNTIME_MAP_CACHE = {};
 function runtimeMaps(trainingKey, shape) {
   const key = trainingKey + '|' + (shape || 'cohort-2day');
@@ -793,7 +805,11 @@ function runtimeMaps(trainingKey, shape) {
   const maps = {};
   try {
     const r = CT.computeTraining(trainingKey);
-    for (const m of r.modules) maps[m.slug] = CT.renderRuntimeMap(m, shape || 'cohort-2day');
+    for (const m of r.modules) {
+      const requested = shape || 'cohort-2day';
+      const effective = m.caps[requested] ? requested : (Object.keys(m.caps)[0] || requested);
+      maps[m.slug] = CT.renderRuntimeMap(m, effective);
+    }
   } catch (e) {
     // A training with no timings.md simply has no maps; a handbook that does not
     // reference one still builds. A handbook that DOES reference one then fails
@@ -817,7 +833,8 @@ function buildTrainerModules(customer, trainingKey) {
   const srcPath = path.join(ROOT, 'curriculum/trainings', contentKey, 'trainer-modules.md');
   let md = readMd(srcPath);
   if (md === null) return null;
-  md = CR.applyContentFlags(md, raw.flags, (t.modules || []).map(m => m.slug));
+  const moduleSlugs = [...(t.modules || []), ...(t.optionalModules || [])].map(m => m.slug);
+  md = CR.applyContentFlags(md, raw.flags, moduleSlugs);
   // Runtime maps are computed, never stored. Expanded BEFORE escapeTildes so the
   // emitted `~5` figures get the same tilde treatment as authored prose.
   md = CR.expandTimings(md, runtimeMaps(contentKey), { strict: true });
@@ -1002,7 +1019,7 @@ function renderTheoryEntry(trainingKey, entry) {
   );
 }
 
-function buildTheoryBody(trainingKey, recipient) {
+function buildTheoryBody(trainingKey, recipient, customer) {
   const t = CR.TRAININGS[trainingKey];
   const manifest = THEORY_HANDBOOK_MANIFEST[trainingKey];
   if (!manifest) {
@@ -1020,7 +1037,8 @@ function buildTheoryBody(trainingKey, recipient) {
 
   const sections = manifest.map(([beat, entries]) => {
     const m = beat.match(/^M(\d+)$/);
-    const modTitle = m && t.modules[Number(m[1]) - 1] ? t.modules[Number(m[1]) - 1].title : '';
+    const moduleEntries = [...(t.modules || []), ...(t.optionalModules || [])];
+    const modTitle = m && moduleEntries[Number(m[1]) - 1] ? moduleEntries[Number(m[1]) - 1].title : '';
     const label = modTitle ? `${beat} — ${modTitle}` : beat;
     const inner = entries.map(e => renderTheoryEntry(trainingKey, e)).join('\n\n');
     return `<section class="module" id="theory-${beat.toLowerCase()}">\n<h1>${CR.esc(label)}</h1>\n${inner}\n</section>`;
@@ -1040,7 +1058,7 @@ function buildTheoryBody(trainingKey, recipient) {
     + 'Browse what you find interesting. Make your own connections to what you already know.';
   const cover = `
 <header class="workbook-cover" id="top">
-  <p class="theory-cover-brand">Bosser</p>
+  ${BRAND.logo(customer)}<p class="theory-cover-brand">Bosser</p>
   <div class="theory-cover-path" aria-hidden="true">${coverPath}</div>
   <p class="eyebrow">Theory handbook</p>
   <h1 class="cover-title">${CR.esc(t.label)}</h1>${dedication}
@@ -1065,7 +1083,7 @@ function theoryHandbookTemplate(trainingKey, content, recipient) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${title}</title>
 <style>${SPA_CSS}</style>
-<style data-theory-handbook>${THEORY_HANDBOOK_CSS}</style>
+<style data-theory-handbook>${THEORY_HANDBOOK_CSS}</style>${BRAND.style}
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook theory-handbook" data-training="${trainingKey}">
 ${content}
@@ -1081,7 +1099,7 @@ function buildTheoryHandbook(customer, trainingKey, recipient) {
   const outDir = path.join(CLIENTS_ROOT, customer, trainingKey);
   fs.mkdirSync(outDir, { recursive: true });
   const html = theoryHandbookTemplate(
-    trainingKey, buildTheoryBody(trainingKey, recipient), recipient);
+    trainingKey, buildTheoryBody(trainingKey, recipient, customer), recipient);
   const outFile = path.join(outDir, 'theory-handbook.html');
   fs.writeFileSync(outFile, html);
   const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);
@@ -1122,11 +1140,12 @@ function renderExerciseEntry(slug) {
   return CR.wrapImageFigures(html);
 }
 
-function buildExercisesBody(trainingKey) {
+function buildExercisesBody(trainingKey, customer) {
   const t = CR.TRAININGS[trainingKey];
   if (!t) throw new Error(`Unknown training: ${trainingKey}`);
   const seen = new Set();
-  const sections = t.modules.map((mod, i) => {
+  const moduleEntries = [...(t.modules || []), ...(t.optionalModules || [])];
+  const sections = moduleEntries.map((mod, i) => {
     const slugs = exerciseSlugsForModule(trainingKey, mod.slug).filter(s => {
       if (seen.has(s)) return false;
       seen.add(s);
@@ -1140,7 +1159,7 @@ function buildExercisesBody(trainingKey) {
 
   const cover = `
 <header class="workbook-cover" id="top">
-  <p class="eyebrow">${CR.esc(t.label)}</p>
+  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(t.label)}</p>
   <h1 class="cover-title">Exercises workbook</h1>
 </header>
 `;
@@ -1156,7 +1175,7 @@ function exercisesWorkbookTemplate(trainingKey, content) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${CR.esc(t.label)} · Exercises workbook</title>
-<style>${SPA_CSS}</style>
+<style>${SPA_CSS}</style>${BRAND.style}
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook" data-training="${trainingKey}">
 ${content}
@@ -1170,7 +1189,7 @@ ${content}
 function buildExercisesWorkbook(customer, trainingKey) {
   const outDir = path.join(CLIENTS_ROOT, customer, trainingKey);
   fs.mkdirSync(outDir, { recursive: true });
-  const html = exercisesWorkbookTemplate(trainingKey, buildExercisesBody(trainingKey));
+  const html = exercisesWorkbookTemplate(trainingKey, buildExercisesBody(trainingKey, customer));
   const outFile = path.join(outDir, 'exercises-workbook.html');
   fs.writeFileSync(outFile, html);
   const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);

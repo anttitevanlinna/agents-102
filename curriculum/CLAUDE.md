@@ -11,7 +11,7 @@ Docs with authority over generation. Anything not listed is session material: re
 - **Writing style** (the five voices, the three readers, sentence rules, the muted read): `curriculum/writing-style.md`. The compendiums carry exceptions; this is the writer's page.
 - **Taste** (editorial calls on real text, counterweights, failed rewrites): `curriculum/taste-notes.md`. Append-only, newest first; written at wind-down Step 3b. Upstream of the compendiums, not a substitute — read it before a cut pass, cite `check_*.md` for anything that fires.
 - **Vocabulary** (controlled terms: session/task/run, kit terms, register splits): `curriculum/vocabulary.md`. Term change = amend the registry first, then one sweep pass, never a local synonym.
-- **Module file shape**: `curriculum/module-shape.md`. **Widgets**: `curriculum/widgets.md`. **Quality line**: `curriculum/quality-format.md`.
+- **Module file shape**: `curriculum/module-shape.md`. **New module integration**: `curriculum/new-module-checklist.md` (end-to-end hookup + completion receipt). **Widgets**: `curriculum/widgets.md`. **Quality line**: `curriculum/quality-format.md`.
 - **Backing blocks**: `curriculum/backing-format.md`. **Source stamps**: `curriculum/source-freshness-format.md`.
 - **Eval procedure**: `curriculum/evals/` top level (`curriculum/evals/README.md` = the testing pyramid; `simulation.md` Class A + `simulation-behavior.md` Class B; `exercise.md` / `lecture.md` manifests; `arc-pass.md`, `post-run-judge.md`, `pre-flight-checklist.md`, `manual-run-observation.md`, `slide-sweep.md` runbooks; `delivery-incidents.md` append-only; `IMPROVEMENTS.md` open machinery work). Rubrics: `curriculum/evals/judges/`. Lints: `curriculum/evals/lints/`.
 

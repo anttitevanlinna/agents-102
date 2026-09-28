@@ -839,6 +839,242 @@
       }
     ]
   },
+  "ae101-m7-build-control-plane": {
+    "key": "ae101-m7-build-control-plane",
+    "dest": "Claude Code",
+    "context": "M7 boundary-to-runtime design",
+    "runtime": "any",
+    "origin": "exercises/build-and-prove-agent-platform",
+    "text": "Turn the tested local boundary model into an honest system design for the responsibility in `docs/agent-platform/`. Do not implement or deploy the system.\n\nRead `architecture.md`, `failure-tour.md`, and the lab source plus README. Run the lab tests once to confirm the model still matches the record. Do not edit the lab.\n\nRead the locally installed Claude Code command help. Record only capabilities the local help actually exposes. Add `Worker adapter contract` to `architecture.md` with the task input, repository and context input, structured proposal output, allowed and denied tools, filesystem boundary, process lifetime, cancellation signal, budget, exit states, and evidence returned to the platform. Mark any capability the help does not establish `UNVERIFIED`. Treat Codex as a replaceable future adapter, not as a second classroom runtime to implement.\n\nNow attack the local model's limits. It demonstrates a local atomic file claim under two concurrent calls, but it does not prove distributed queue leasing or recovery after a crash between claim and effect. It decides timeout from fixture metadata and does not implement process cancellation, workspace isolation, credential brokering, or recovery. For each limitation, update `Control evidence` in `architecture.md` with the production mechanism, failure the mechanism prevents, evidence needed to trust it, and current evidence level. Do not promote a design claim to demonstrated evidence.\n\nPatch `architecture.md` into one concrete AWS design. Follow one task through trigger, admission, durable queue, claim or lease, isolated workspace, context assembly, headless worker, tool proposal, authorization, short-lived credential, side effect, verification, trace, terminal state, and operator recovery. Make concurrent delivery, retry, timeout, cancellation, and a worker that continues after cancellation explicit state transitions. Name the store or conditional write that makes the side effect idempotent. Name the component that can kill the worker and the component that alone can obtain the effect credential.\n\nMap AWS services only after the invariants are explicit. State one rejected alternative for every consequential service choice and what evidence would reverse it. Do not provision resources. In chat, return only the architecture path, the four weakest evidence rows, the AWS components selected, and the production-like tests still owed.",
+    "requires": [
+      {
+        "id": "m7-researched-architecture",
+        "source": "prompt:ae101-m7-research-boundary-decision"
+      },
+      {
+        "id": "m7-control-evidence-matrix",
+        "source": "prompt:ae101-m7-frame-unattended-responsibility"
+      },
+      {
+        "id": "m7-failure-tour",
+        "source": "prompt:ae101-m7-run-failure-tour"
+      }
+    ],
+    "produces": [
+      {
+        "id": "m7-worker-adapter-contract",
+        "location": "docs/agent-platform/architecture.md"
+      },
+      {
+        "id": "m7-system-design",
+        "location": "docs/agent-platform/architecture.md"
+      }
+    ]
+  },
+  "ae101-m7-frame-unattended-responsibility": {
+    "key": "ae101-m7-frame-unattended-responsibility",
+    "dest": "Claude Code",
+    "context": "M7 responsibility and boundary framing",
+    "runtime": "any",
+    "origin": "exercises/build-and-prove-agent-platform",
+    "text": "Help me turn the shared CI-failure triage case into a safe unattended-agent contract.\n\nRead `docs/agent-platform/failure-tour.md`, `~/Documents/ae101-content/reference/agent-platform-challenge.md`, and `~/Documents/ae101-content/reference/unattended-agent-worked-execution.md`. Use that one case for this module. Do not propose a different responsibility.\n\nAsk me three design questions, one at a time: which evidence is enough to permit a pull-request draft; where transient failure becomes no action versus escalation; and what independent evidence verifies the draft without trusting the worker's own success claim. Wait for each answer. Preserve disagreement or uncertainty instead of choosing for me.\n\nWrite one file: `docs/agent-platform/architecture.md`.\n\nIts `Responsibility` section records the shared trigger, useful bounded effect, correct no-action condition, escalation condition, forbidden effects, maximum duration, context included and excluded, my three decisions, and remaining uncertainty. Its `Tool contract` section defines one `create_pull_request_draft` proposal with its input and output schema, caller identity, authorization inputs, credential owner, side-effect class, idempotency rule, postcondition, verification method, timeout, and failure behavior. The worker may propose the call. A trusted broker must authorize and execute it.\n\nIts `Controlled execution` section follows one task through trigger, admission, queue, isolated workspace, worker adapter, context assembly, tool proposal, authorization, credential broker, side effect, verification, trace, result, no action, or escalation. For duplicate delivery, timeout, cancellation, and retry, state the owner, invariant, and terminal state rather than merely naming the concern. Mark untested assumptions and unresolved design decisions explicitly.\n\nIts `Data boundary seed` section lists the failed-job input, repository context, worker input, tool proposal, broker decision, verifier evidence, and trace fields. For each, state whether the system needs the raw value, a bounded summary, a stable reference, or exclusion. This is an engineering inventory, not a legal conclusion; Module 8 will deepen it.\n\nIts `Control evidence` section gives each claimed control one of four evidence levels: demonstrated by the local model, simulated by fixture data, specified in the architecture, or requiring a production-like test. Start with authorization ordering, proposal validation, local atomic claim, recovery between claim and effect, timeout, process cancellation, workspace isolation, credential isolation, side-effect verification, trace minimization, and incident reconstruction. The local lab's own README is authoritative about what it does not prove.\n\nDo not search the internet or provision resources yet. In chat, return only the architecture path, my three decisions, the weakest claimed control, and the unresolved architecture decision most likely to widen authority.",
+    "produces": [
+      {
+        "id": "m7-responsibility-contract",
+        "location": "docs/agent-platform/architecture.md"
+      },
+      {
+        "id": "m7-tool-contract",
+        "location": "docs/agent-platform/architecture.md"
+      },
+      {
+        "id": "m7-draft-architecture",
+        "location": "docs/agent-platform/architecture.md"
+      },
+      {
+        "id": "m7-control-evidence-matrix",
+        "location": "docs/agent-platform/architecture.md"
+      }
+    ]
+  },
+  "ae101-m7-prove-control-plane": {
+    "key": "ae101-m7-prove-control-plane",
+    "dest": "Claude Code",
+    "context": "M7 incident review and evidence boundary",
+    "runtime": "any",
+    "origin": "exercises/build-and-prove-agent-platform",
+    "text": "Run an incident review against the unattended-agent design. The goal is to find where the architecture changes state incorrectly, not to declare the platform production-ready.\n\nRead `architecture.md`, `failure-tour.md`, and the local lab. Run the lab's fault tour once as the executable baseline. Keep its limitations visible.\n\nReview three incidents one at a time. Before analyzing each incident, ask me to predict the terminal state, the control that owns it, and the trace evidence an operator should see. Wait for my answer. Then walk the current architecture event by event, show where my prediction holds or fails, and ask me to choose the architecture change before applying it.\n\n1. Two queue consumers claim the same event concurrently. Both workers return an eligible proposal before either side effect is visible.\n2. The task times out and cancellation is sent, but the worker continues and proposes the effect after a retry has already started.\n3. A tool result contains a customer secret. The raw result reaches the trace sink, and an operator later needs to reconstruct why the task escalated without replaying the secret.\n\nWrite one file: `docs/agent-platform/proof.md`.\n\nIts `Evidence ledger` records the local-model checks, the three incident predictions, observed design outcome, patch selected, remaining failure, and evidence level after the patch. Separate demonstrated, simulated, specified, and still-owed claims.\n\nIts `Data boundary` section inventories the actual lab fields plus the designed worker input, tool proposal, broker decision, credential request, trace fields, verifier evidence, operator view, and artifact stores. For each item record purpose, location, raw value or reference, access assumption, retention assumption, and whether it is stored, masked, summarized, or excluded.\n\nIts `Production gates` section names the service owner, change approver, credential owner, kill switch or disable path, rollback condition, evidence a reviewer must inspect, and the unresolved decision that blocks production use. Include the production-like tests required for concurrency, cancellation, isolation, credentials, recovery, and data deletion. A local green model is not production approval.\n\nIts `Transfer` section names one recurring responsibility visible in this repository's Modules 4–6 artifacts that could use the same pattern. Record only its trigger, bounded effect, correct restraint, and the first invariant that would differ from CI triage. Do not redesign the platform for it in this session.\n\nPatch only the architecture sections exercised by the incidents. Preserve the research decision. In chat, return only the three incident outcomes, changed architecture sections, controls still specified rather than demonstrated, and the production blocker.",
+    "requires": [
+      {
+        "id": "m7-system-design",
+        "source": "prompt:ae101-m7-build-control-plane"
+      },
+      {
+        "id": "m7-worker-adapter-contract",
+        "source": "prompt:ae101-m7-build-control-plane"
+      }
+    ],
+    "produces": [
+      {
+        "id": "m7-platform-proof",
+        "location": "docs/agent-platform/proof.md"
+      },
+      {
+        "id": "m7-data-boundary-inventory",
+        "location": "docs/agent-platform/proof.md"
+      },
+      {
+        "id": "m7-proven-architecture",
+        "location": "docs/agent-platform/architecture.md"
+      },
+      {
+        "id": "m7-production-gates",
+        "location": "docs/agent-platform/proof.md"
+      }
+    ]
+  },
+  "ae101-m7-research-boundary-decision": {
+    "key": "ae101-m7-research-boundary-decision",
+    "dest": "Claude Code",
+    "context": "M7 bounded architecture research",
+    "runtime": "any",
+    "origin": "exercises/build-and-prove-agent-platform",
+    "text": "Resolve one consequential uncertainty in `docs/agent-platform/architecture.md` with bounded internet research.\n\nRead `docs/agent-platform/architecture.md`. Identify the two unresolved decisions most likely to widen authority, weaken isolation, or make the outcome hard to verify. Recommend one and ask me which decision to research.\n\nThen ask me for exactly three rules that should govern this search. Ask for one rule at a time. Preserve my wording and ask what each rule should reject, prefer, or force you to do. Save the decision, the three rules, and their interpretations under `Research decision` in `architecture.md` before searching.\n\nUse at most five search queries and open at most eight sources. Research only the selected decision. Distinguish official capability documentation, primary security or regulator guidance, independent testing, operator experience, analysis, and vendor marketing. Record each query, source opened, source date, source type, accepted or rejected status, the rule that caused that decision, contradictions, and the stopping reason. For every accepted factual claim, include its URL and a supporting passage of at most 25 words. Mark unsupported claims `UNVERIFIED`.\n\nAs you work, report when the research policy is saved and when enough evidence exists to make or defer the decision.\n\nEnd the `Research decision` section with one decision, the strongest rejected alternative, the evidence that would reverse the decision, and remaining uncertainty. Patch only the affected architecture sections. AWS services implement the responsibility and trust boundaries; do not let the service list replace them.\n\nDo not provision resources. In chat, return only the decision, the weakest surviving evidence, the stopping reason, and the architecture sections changed.",
+    "requires": [
+      {
+        "id": "m7-responsibility-contract",
+        "source": "prompt:ae101-m7-frame-unattended-responsibility"
+      },
+      {
+        "id": "m7-tool-contract",
+        "source": "prompt:ae101-m7-frame-unattended-responsibility"
+      },
+      {
+        "id": "m7-draft-architecture",
+        "source": "prompt:ae101-m7-frame-unattended-responsibility"
+      }
+    ],
+    "produces": [
+      {
+        "id": "m7-research-decision",
+        "location": "docs/agent-platform/architecture.md"
+      },
+      {
+        "id": "m7-researched-architecture",
+        "location": "docs/agent-platform/architecture.md"
+      }
+    ]
+  },
+  "ae101-m7-run-failure-tour": {
+    "key": "ae101-m7-run-failure-tour",
+    "dest": "Claude Code",
+    "context": "M7 unattended-agent failure tour",
+    "runtime": "any",
+    "origin": "exercises/build-and-prove-agent-platform",
+    "text": "Set up and walk me through the supplied unattended-agent failure lab. Do not redesign it yet.\n\nUse the shipped lab at `~/Documents/ae101-content/labs/unattended-agent/` in place. If that path is missing, stop and report the missing prerequisite. Do not copy, edit, or generate a replacement lab.\n\nRun its test suite once. If the baseline does not pass, stop and report the failing command and output. Do not repair the baseline during this phase.\n\nThe lab has four named faults: `effect-without-authorization`, `duplicate-effect`, `effect-after-timeout`, and `raw-sensitive-payload`. Walk them one at a time. Before each run, ask me which invariant should reject the fault, which component should own that invariant, and what unsafe outcome follows if the boundary accepts it. Wait for my answer. Then run only the fault you just named with `npm run tour --` followed by its exact name, show the boundary's actual reason plus the unchanged state or trace count, and ask me to reconcile my prediction with the result before continuing.\n\nWrite `docs/agent-platform/failure-tour.md`. For each fault, record my prediction, the actual rejection, the boundary that owns the decision, and one production question the local lab does not answer. End with the three distinctions the later design must preserve: worker versus platform, proposal versus authorization, and tool completion versus verified outcome.\n\nDo not edit the lab, search the internet, or write an architecture yet. In chat, return only the baseline result, the four rejection reasons, and the path to the failure-tour record.",
+    "produces": [
+      {
+        "id": "m7-failure-tour",
+        "location": "docs/agent-platform/failure-tour.md"
+      }
+    ]
+  },
+  "ae101-m8-compare-data-cases": {
+    "key": "ae101-m8-compare-data-cases",
+    "dest": "Claude Code",
+    "context": "M8 cross-case decision record",
+    "runtime": "any",
+    "origin": "exercises/decide-agent-data-boundary",
+    "text": "Read the two case files under `docs/agent-platform/data-cases/` and `docs/agent-platform/architecture.md`.\n\nWrite `docs/agent-platform/data-handling-decision.md`. Compare the cases rather than merging them. Include purpose and necessity, minimization, access, retention and deletion, processors and transfers, rights operations, security controls, profiling and automated-decision screen, DPIA screen, human-review design, unresolved legal calls, and named decision owners.\n\nGive each case a provisional engineering launch state: `pilot`, `hold`, or `allow within boundary`. This is not a legal verdict. For each state name the technical and product boundary it assumes, the human owner who must decide the unresolved legal questions, and the evidence that would change the state.\n\nEnd with a ranked list of changes the shared platform architecture needs before it can host either case. Distinguish common controls from case-specific controls. In chat, return only the shared controls, the controls that must stay different, and the highest-priority unresolved owner decision.",
+    "requires": [
+      {
+        "id": "m8-ticket-data-map",
+        "source": "prompt:ae101-m8-map-ticket-data"
+      },
+      {
+        "id": "m8-recommendation-data-map",
+        "source": "prompt:ae101-m8-map-recommendation-data"
+      }
+    ],
+    "produces": [
+      {
+        "id": "m8-data-handling-decision",
+        "location": "docs/agent-platform/data-handling-decision.md"
+      }
+    ]
+  },
+  "ae101-m8-map-recommendation-data": {
+    "key": "ae101-m8-map-recommendation-data",
+    "dest": "Claude Code",
+    "context": "M8 in-product recommendation case",
+    "runtime": "any",
+    "origin": "exercises/decide-agent-data-boundary",
+    "text": "Read `docs/agent-platform/architecture.md` and `docs/agent-platform/proof.md`. The architecture contains the responsibility, tool and worker contracts, research decision, and control evidence. The proof contains the evidence ledger, initial data boundary, and production gates.\n\nAnalyze this case: an EU consumer marketplace wants an in-product recommendation agent. It ranks products and offers using account data, click and session history, purchases, coarse location, product availability, and preferences inferred from behavior. The ranking changes what appears first and what remains hard to discover. Product wants continuous learning from clicks and purchases. The proposed design has not decided whether users can disable personalization, how long histories or inferred preferences live, whether the same data supports marketing, or whether some recommendations could materially affect a user.\n\nWrite `docs/agent-platform/data-cases/recommendation-bot.md`. Map each data item and inference from collection through feature creation, context, tool calls, ranking output, feedback, traces, review, retention, deletion, and backup. For each copy name purpose, necessity, location, access, processor or recipient, retention assumption, deletion path, security control, and evidence still missing.\n\nScreen profiling, transparency, objection or consent questions where applicable, automated-decision significance, purpose compatibility, vulnerable-user risks, processors and transfers, and whether a DPIA decision is needed. Do not answer legal questions from general knowledge. Assign each unresolved judgement to a named decision-owner role and state which engineering or product fact would let that owner decide.\n\nIn chat, return only the three decisions that make this case different from the ticket handler.",
+    "requires": [
+      {
+        "id": "m7-proven-architecture",
+        "source": "prompt:ae101-m7-prove-control-plane"
+      },
+      {
+        "id": "m7-data-boundary-inventory",
+        "source": "prompt:ae101-m7-prove-control-plane"
+      }
+    ],
+    "produces": [
+      {
+        "id": "m8-recommendation-data-map",
+        "location": "docs/agent-platform/data-cases/recommendation-bot.md"
+      }
+    ]
+  },
+  "ae101-m8-map-ticket-data": {
+    "key": "ae101-m8-map-ticket-data",
+    "dest": "Claude Code",
+    "context": "M8 customer-ticket case",
+    "runtime": "any",
+    "origin": "exercises/decide-agent-data-boundary",
+    "text": "Read `docs/agent-platform/architecture.md` and `docs/agent-platform/proof.md`. The architecture contains the responsibility, tool and worker contracts, research decision, and control evidence. The proof contains the evidence ledger, initial data boundary, and production gates.\n\nAnalyze this case: an EU consumer SaaS product receives support tickets through email and a web form. Tickets contain names, email addresses, account identifiers, free text, screenshots, logs, and attachments. Customers sometimes include payment details, health information, credentials, or information about other people without being asked. The proposed agent may classify the ticket, retrieve public and internal knowledge, read limited CRM history, draft or send a reply, add an internal note, update tags, and escalate. Its worker, tools, traces, review queue, and backups may each create another copy.\n\nWrite `docs/agent-platform/data-cases/ticket-handler.md`. Map each data item from collection through context, tool calls, outputs, traces, review, retention, deletion, and backup. For each copy name its purpose, necessity, location, access, processor or recipient, retention assumption, deletion path, security control, and evidence still missing.\n\nSeparate draft assistance from customer-visible action. Name what must never enter the model or trace, what can be referenced instead of copied, what requires redaction, and where human review has enough information and authority to change the outcome.\n\nDo not declare the system lawful or GDPR compliant. Mark every legal judgement with a named decision-owner role and the engineering facts that role still needs. In chat, return only the highest-risk data copies the tested design omitted or underspecified.",
+    "requires": [
+      {
+        "id": "m7-proven-architecture",
+        "source": "prompt:ae101-m7-prove-control-plane"
+      },
+      {
+        "id": "m7-data-boundary-inventory",
+        "source": "prompt:ae101-m7-prove-control-plane"
+      }
+    ],
+    "produces": [
+      {
+        "id": "m8-ticket-data-map",
+        "location": "docs/agent-platform/data-cases/ticket-handler.md"
+      }
+    ]
+  },
+  "ae101-m8-revise-platform-boundary": {
+    "key": "ae101-m8-revise-platform-boundary",
+    "dest": "Claude Code",
+    "context": "M8 architecture revision",
+    "runtime": "any",
+    "origin": "exercises/decide-agent-data-boundary",
+    "text": "Read `docs/agent-platform/architecture.md` and `docs/agent-platform/data-handling-decision.md`.\n\nBuild a ranked change list for the architecture. Keep only the three most consequential changes. Ask me about one change at a time and wait for my decision. Do not show the remaining list until I answer. For each change state the data-flow evidence, the control being changed, the case or cases affected, and what remains a privacy or legal decision outside engineering authority.\n\nAfter I accept, reject, or revise every consequential change, patch only the affected sections of `architecture.md` in place and preserve unrelated controls and prior decisions. Narrow tool permissions, context assembly, trace fields, retention, deletion propagation, processors, rights-operation paths, and human-review placement where the evidence requires it. Keep unresolved legal calls explicit and assigned; do not convert them into engineering conclusions.\n\nThen update only the references in `data-handling-decision.md` that the accepted changes invalidate. Preserve its prior decision history. In chat, return only the changed architecture sections, rejected changes, and decisions still awaiting a named owner.",
+    "requires": [
+      {
+        "id": "m7-proven-architecture",
+        "source": "prompt:ae101-m7-prove-control-plane"
+      },
+      {
+        "id": "m8-data-handling-decision",
+        "source": "prompt:ae101-m8-compare-data-cases"
+      }
+    ],
+    "produces": [
+      {
+        "id": "m8-revised-platform-architecture",
+        "location": "docs/agent-platform/architecture.md"
+      }
+    ]
+  },
   "ae101-prework-download-tarball": {
     "key": "ae101-prework-download-tarball",
     "dest": "Claude Code",

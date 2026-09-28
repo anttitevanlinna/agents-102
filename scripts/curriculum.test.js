@@ -92,6 +92,12 @@ test('supplementary and reference index rows open in a new tab', () => {
   assert.match(html, /<a href="#supplementary-verification-asymmetry" target="_blank" rel="noopener">/);
 });
 
+test('AE101 registers both M7 reference targets that the exercise links', () => {
+  const slugs = TRAININGS['agentic-engineering-101'].references.map(reference => reference.slug);
+  assert.ok(slugs.includes('agent-platform-challenge'));
+  assert.ok(slugs.includes('unattended-agent-worked-execution'));
+});
+
 test('shared footer external links open in a new tab', () => {
   const html = renderFooter() + renderCopyrightBadge();
   const externalAnchors = html.match(/<a\b[^>]*href="https?:\/\/[^\"]+"[^>]*>/g) || [];
@@ -285,6 +291,8 @@ test('THEORY_HANDBOOK_MANIFEST lecture order is a subsequence of each module fil
     M4: 'run-the-first-experiment.md',
     M5: 'learn-from-the-test.md',
     M6: 'spot-gaps-build-the-loop.md',
+    M7: 'build-your-agent-platform.md',
+    M8: 'data-handling-you-can-defend.md',
   };
   const trainingDir = path.resolve(__dirname, '..', 'curriculum/trainings', AE);
 
@@ -321,7 +329,7 @@ test('THEORY_HANDBOOK_MANIFEST lecture order is a subsequence of each module fil
   assert.deepEqual(
     Object.keys(manifestByModule).sort(),
     Object.keys(MODULE_FILES).sort(),
-    'manifest module keys must match the six AE-101 module files'
+    'manifest module keys must match the core and optional AE-101 module files'
   );
 
   const isSubsequence = (sub, seq) => {
@@ -428,11 +436,13 @@ test('theory handbook build', async (t) => {
     assert.doesNotMatch(handbook, /id="verification-asymmetry"/);
   });
 
-  await t.test('renders thirteen slim exercise summaries, not exercise bodies', () => {
+  await t.test('renders fifteen slim exercise summaries, including the optional modules', () => {
     const cards = [...handbook.matchAll(
       /<section class="exercise-summary" id="exercise-summary-([a-z0-9-]+)">([\s\S]*?)<\/section>/g
     )];
-    assert.equal(cards.length, 13, 'expected one compact card for each in-class exercise');
+    assert.equal(cards.length, 15, 'expected one compact card for each theory-manifest exercise');
+    assert.ok(cards.some(([, slug]) => slug === 'build-and-prove-agent-platform'));
+    assert.ok(cards.some(([, slug]) => slug === 'decide-agent-data-boundary'));
 
     for (const [, slug, card] of cards) {
       assert.equal((card.match(/<h2>/g) || []).length, 1, `${slug}: expected one h2`);

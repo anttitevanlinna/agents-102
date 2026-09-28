@@ -75,3 +75,21 @@ Runs **after** Family A PASS (soundness precedes landing). Unit = one durable, p
 | `check_lectures §2` | "no naming/tradeoffs before the felt exercise" | **carve-out**: front-load the map SLOT (container) legal; the law NAME/MECHANISM/GOVERNOR stays name-after |
 
 New sim cache: `curriculum/evals/sim-cache/<training>--<slug>.anchor-alone.json`.
+
+### Optional production-extension contract — M7 and M8
+
+The optional pair uses the same Family A/B gates with one cross-module schema. It does not create a seventh Field Map phase.
+
+**Family A extension — controlled transition.** Grade the schema across both modules:
+
+- **Groundedness:** authorization, evidence, data minimization, purpose, retention, and owner decisions stay within their cited engineering or regulatory claims; the schema must not claim a legal verdict.
+- **Scar:** M7 must reject known-invalid transitions and walk incidents; M8 must expose hidden copies and force architecture changes. Description alone fails.
+- **Generativity:** the governor must produce a concrete action-boundary and data-boundary prediction for a responsibility outside the supplied cases.
+- **Coherence:** M7 wraps every Field Map phase and M8 overlays the same transitions. A new phase, parallel checklist, or conflicting model fails.
+- **Half-life:** the schema uses durable questions; worker, cloud, observability, or legal-product details remain replaceable examples.
+
+**M7 Family B anchor:** `curriculum/lectures/a-trace-is-an-argument.md` § *The pattern is a controlled transition*, read after `build-and-prove-agent-platform.md`. The learner reads that section plus the Field Map, not the rest of the closer. They must recover the name **controlled transition**, its placement around the whole loop, the state-change mechanism, and the action/evidence/recovery governor without trainer voice.
+
+**M8 Family B anchor:** `curriculum/lectures/legality-needs-an-evidence-package.md` § *Extend the controlled transition*, read after `decide-agent-data-boundary.md`. The learner reads that section plus the Field Map, not the rest of the closer. They must recover the same schema, its data/purpose/owner/retention extension, both named tensions, and the combined governor without trainer voice.
+
+**Pair-wide hard gate:** a trainer-absent learner must be able to explain what M8 changed in the M7 model, then use the combined governor to predict one action boundary and one data boundary for their own M4–M6 responsibility. If the explanation becomes two unrelated checklists, the pair fails even when each anchor passes alone.

@@ -23,7 +23,7 @@ if (!training) {
     process.exit(1);
 }
 
-const moduleSlugs = (training.modules || []).map(m => m.slug);
+const moduleSlugs = [...(training.modules || []), ...(training.optionalModules || [])].map(m => m.slug);
 
 let md = '';
 process.stdin.setEncoding('utf8');

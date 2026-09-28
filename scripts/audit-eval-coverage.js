@@ -211,6 +211,14 @@ const { instanceKey, evalTrainings } = require('../curriculum/evals/scripts/scan
 // rule goes unjudged was blind to every other training in the registry — clean
 // over content it had never opened. Same defect check-slide-size carried until
 // its file set stopped being derived from include-links alone.
+function registryModuleSlugs(t) {
+  const slugs = [];
+  if (t.prework) slugs.push(t.prework.slug);
+  for (const m of (t.modules || [])) slugs.push(m.slug);
+  for (const m of (t.optionalModules || [])) slugs.push(m.slug);
+  return slugs;
+}
+
 function surfacesFor(trainingKey) {
   if (trainingKey === 'agentic-engineering-101') return SURFACES;
   const t = CR.TRAININGS[trainingKey];
@@ -221,9 +229,7 @@ function surfacesFor(trainingKey) {
   const seen = new Set();
   const exercises = [];
   const lectures = [];
-  const modEntries = [];
-  if (t.prework) modEntries.push(t.prework.slug);
-  for (const m of t.modules) modEntries.push(m.slug);
+  const modEntries = registryModuleSlugs(t);
 
   for (const slug of modEntries) {
     const rel = path.posix.join('curriculum/trainings', trainingKey, slug + '.md');
@@ -253,6 +259,7 @@ const SURFACES = {
     'open-the-side-quest', 'map-the-access-surface', 'threat-model-with-stride',
     'author-test-strategy-skill', 'walk-and-send-off', 'diagnose-and-resend',
     'spot-gaps-build-the-loop', 'read-your-stack',
+    'build-and-prove-agent-platform', 'decide-agent-data-boundary',
   ].map(slug => ({ slug, file: `curriculum/exercises/${slug}.md`, instanceSlug: `ae101--exercise--${slug}` })),
   lectures: theoryManifestLectures()
     .map(slug => ({ slug, file: `curriculum/lectures/${slug}.md`, instanceSlug: `ae101--lecture--${slug}` })),
@@ -264,6 +271,8 @@ const SURFACES = {
     { slug: 'run-the-first-experiment', file: 'curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md', instanceSlug: 'ae101--module--run-the-first-experiment' },
     { slug: 'learn-from-the-test', file: 'curriculum/trainings/agentic-engineering-101/learn-from-the-test.md', instanceSlug: 'ae101--module--learn-from-the-test' },
     { slug: 'spot-gaps-build-the-loop', file: 'curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md', instanceSlug: 'ae101--module--spot-gaps-build-the-loop' },
+    { slug: 'build-your-agent-platform', file: 'curriculum/trainings/agentic-engineering-101/build-your-agent-platform.md', instanceSlug: 'ae101--module--build-your-agent-platform' },
+    { slug: 'data-handling-you-can-defend', file: 'curriculum/trainings/agentic-engineering-101/data-handling-you-can-defend.md', instanceSlug: 'ae101--module--data-handling-you-can-defend' },
   ],
 };
 
@@ -663,6 +672,7 @@ if (require.main === module) main();
 
 module.exports = {
   SURFACES,
+  registryModuleSlugs,
   surfacesFor,
   COMPENDIA_NAMESPACE: [...COMPENDIA, ...UNREPORTED_COMPENDIA],
   parseRules,

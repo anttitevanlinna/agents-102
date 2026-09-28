@@ -20,7 +20,14 @@ const build = env => {
   fs.rmSync(OUT, { recursive: true, force: true })
   const e = { ...process.env, ...env }; if (!env.AGENTS_BRAND_DIR) delete e.AGENTS_BRAND_DIR
   execFileSync('node', ['scripts/build-workbook.js', SLUG, 'claude-basics'], { cwd: REPO, env: e, stdio: 'pipe' })
-  return { wb: fs.readFileSync(path.join(OUT, 'claude-basics/index.html'), 'utf8'), hub: fs.readFileSync(path.join(OUT, 'index.html'), 'utf8') }
+  execFileSync('node', ['scripts/build-workbook.js', SLUG, 'agentic-engineering-101', '--theory'], { cwd: REPO, env: e, stdio: 'pipe' })
+  execFileSync('node', ['scripts/build-workbook.js', SLUG, 'agentic-engineering-101', '--exercises'], { cwd: REPO, env: e, stdio: 'pipe' })
+  return {
+    wb: fs.readFileSync(path.join(OUT, 'claude-basics/index.html'), 'utf8'),
+    hub: fs.readFileSync(path.join(OUT, 'index.html'), 'utf8'),
+    theory: fs.readFileSync(path.join(OUT, 'agentic-engineering-101/theory-handbook.html'), 'utf8'),
+    exercises: fs.readFileSync(path.join(OUT, 'agentic-engineering-101/exercises-workbook.html'), 'utf8'),
+  }
 }
 try {
   const plain = build({})
@@ -34,8 +41,9 @@ try {
     assert.ok(/<img class="brand-logo" src="data:image\/svg\+xml;base64,/.test(h), `${name}: logo on the cover`)
   }
   // Brand CSS comes after every other stylesheet, so it wins the cascade.
-  const wb = branded.wb
-  assert.strictEqual(wb.indexOf('<style', wb.indexOf('<style data-brand>') + 1), -1, 'no stylesheet after brand.css')
+  for (const [name, h] of Object.entries(branded)) {
+    assert.strictEqual(h.indexOf('<style', h.indexOf('<style data-brand>') + 1), -1, `${name}: no stylesheet after brand.css`)
+  }
   console.log('brand: unset leaves no trace; set inlines brand.css last and the logo on covers')
 } finally {
   fs.rmSync(OUT, { recursive: true, force: true })

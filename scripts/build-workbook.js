@@ -1019,7 +1019,7 @@ function renderTheoryEntry(trainingKey, entry) {
   );
 }
 
-function buildTheoryBody(trainingKey, recipient) {
+function buildTheoryBody(trainingKey, recipient, customer) {
   const t = CR.TRAININGS[trainingKey];
   const manifest = THEORY_HANDBOOK_MANIFEST[trainingKey];
   if (!manifest) {
@@ -1058,7 +1058,7 @@ function buildTheoryBody(trainingKey, recipient) {
     + 'Browse what you find interesting. Make your own connections to what you already know.';
   const cover = `
 <header class="workbook-cover" id="top">
-  <p class="theory-cover-brand">Bosser</p>
+  ${BRAND.logo(customer)}<p class="theory-cover-brand">Bosser</p>
   <div class="theory-cover-path" aria-hidden="true">${coverPath}</div>
   <p class="eyebrow">Theory handbook</p>
   <h1 class="cover-title">${CR.esc(t.label)}</h1>${dedication}
@@ -1083,7 +1083,7 @@ function theoryHandbookTemplate(trainingKey, content, recipient) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${title}</title>
 <style>${SPA_CSS}</style>
-<style data-theory-handbook>${THEORY_HANDBOOK_CSS}</style>
+<style data-theory-handbook>${THEORY_HANDBOOK_CSS}</style>${BRAND.style}
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook theory-handbook" data-training="${trainingKey}">
 ${content}
@@ -1099,7 +1099,7 @@ function buildTheoryHandbook(customer, trainingKey, recipient) {
   const outDir = path.join(CLIENTS_ROOT, customer, trainingKey);
   fs.mkdirSync(outDir, { recursive: true });
   const html = theoryHandbookTemplate(
-    trainingKey, buildTheoryBody(trainingKey, recipient), recipient);
+    trainingKey, buildTheoryBody(trainingKey, recipient, customer), recipient);
   const outFile = path.join(outDir, 'theory-handbook.html');
   fs.writeFileSync(outFile, html);
   const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);
@@ -1140,7 +1140,7 @@ function renderExerciseEntry(slug) {
   return CR.wrapImageFigures(html);
 }
 
-function buildExercisesBody(trainingKey) {
+function buildExercisesBody(trainingKey, customer) {
   const t = CR.TRAININGS[trainingKey];
   if (!t) throw new Error(`Unknown training: ${trainingKey}`);
   const seen = new Set();
@@ -1159,7 +1159,7 @@ function buildExercisesBody(trainingKey) {
 
   const cover = `
 <header class="workbook-cover" id="top">
-  <p class="eyebrow">${CR.esc(t.label)}</p>
+  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(t.label)}</p>
   <h1 class="cover-title">Exercises workbook</h1>
 </header>
 `;
@@ -1175,7 +1175,7 @@ function exercisesWorkbookTemplate(trainingKey, content) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${CR.esc(t.label)} · Exercises workbook</title>
-<style>${SPA_CSS}</style>
+<style>${SPA_CSS}</style>${BRAND.style}
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook" data-training="${trainingKey}">
 ${content}
@@ -1189,7 +1189,7 @@ ${content}
 function buildExercisesWorkbook(customer, trainingKey) {
   const outDir = path.join(CLIENTS_ROOT, customer, trainingKey);
   fs.mkdirSync(outDir, { recursive: true });
-  const html = exercisesWorkbookTemplate(trainingKey, buildExercisesBody(trainingKey));
+  const html = exercisesWorkbookTemplate(trainingKey, buildExercisesBody(trainingKey, customer));
   const outFile = path.join(outDir, 'exercises-workbook.html');
   fs.writeFileSync(outFile, html);
   const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);

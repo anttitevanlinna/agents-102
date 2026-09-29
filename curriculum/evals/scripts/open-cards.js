@@ -36,8 +36,10 @@
  *
  * Usage:
  *   node curriculum/evals/scripts/open-cards.js [--training ae101] [--json]
- *                                              [--pending] [--file <substr>]
+ *                                              [--pending] [--show] [--file <substr>]
  *                                              [--repo <path>]
+ * `--show` prints every open card in ruling order with BEFORE/AFTER/WHY/RISK and
+ * its anchor state read from the page (live / moved / applied).
  * `--pending` lists the prepped edits that apply cleanly right now, in the
  * shape apply-edits.js reads on stdin.
  * `--file` scopes every count to one page — the question actually asked is
@@ -96,6 +98,59 @@ function editState(r, repo, read) {
   if (text.includes(r.new_string)) return 'applied'
   if (r.old_string && text.includes(r.old_string)) return 'pending'
   return 'moved'
+}
+
+// A card is a judgement on text that was on the page when triage filed it. The
+// page moves on; the card does not. So a card is read against the file before it
+// is presented, like a prepped edit. BEFORE/AFTER carry ** around the changed
+// span for the maintainer's eye, and the page does not, so the markers go.
+// One text often contains the other (a cut leaves AFTER inside BEFORE, an
+// insertion leaves BEFORE inside AFTER), so finding the shorter one proves
+// nothing on its own.
+function cardAnchor(r, repo, read) {
+  const plain = t => String(t || '').replace(/\*\*/g, '')
+  const before = plain(r.before)
+  const after = plain(r.after)
+  if (!before) return 'unanchored'
+  let text
+  try { text = read(path.resolve(repo, r.target_file || '')) } catch { return 'unreadable' }
+  if (text == null) return 'unreadable'
+  text = plain(text)
+  const b = text.includes(before)
+  const a = after && text.includes(after)
+  if (b && a) return after.includes(before) ? 'applied' : 'live'
+  if (b) return 'live'
+  if (a) return 'applied'
+  return 'moved'
+}
+
+const CONF = { high: 0, medium: 1, low: 2 }
+const rankOf = r => (r.gate_triage || r.survivor_disposition || {}).value_rank
+// The order he rules in: most value first, and at equal value the surer call.
+const rulingOrder = (x, y) => (rankOf(y) ?? -1) - (rankOf(x) ?? -1) ||
+  (CONF[x.confidence] ?? 3) - (CONF[y.confidence] ?? 3)
+
+// `--show`: the cards themselves, not a tally. Presenting one used to mean a
+// hand-written `node -e` over the ledger, which is how a card filed against last
+// week's wording gets shown as if it were today's.
+function renderCards(s, training, { repo = process.cwd(), readFile } = {}) {
+  const read = readFile || (p => { try { return fs.readFileSync(p, 'utf8') } catch { return null } })
+  const cards = [...s.cards].sort(rulingOrder)
+  const out = [`=== OPEN CARDS — training: ${training}${s.scope ? ` · scope: ${s.scope}` : ''} · ${cards.length} awaiting a ruling ===`]
+  cards.forEach((r, i) => {
+    const state = cardAnchor(r, repo, read)
+    const v = rankOf(r)
+    out.push('')
+    out.push(`[${i + 1}/${cards.length}] ${r.rule}${v == null ? '' : ` · value_rank ${v}`}${r.confidence ? ` · ${r.confidence}` : ''} → ${r.target_file || '(no target)'}`)
+    out.push(`  anchor: ${state}${state === 'moved' ? ' — BEFORE is no longer on the page; re-derive before presenting' : ''}`)
+    if (r.claim) out.push(`  CLAIM:  ${r.claim}`)
+    out.push(`  BEFORE: ${r.before || '(none)'}`)
+    out.push(`  AFTER:  ${r.after || '(none)'}`)
+    out.push(`  WHY:    ${r.why || '(none)'}`)
+    out.push(`  RISK:   ${r.risk || '(none)'}`)
+  })
+  if (!cards.length) out.push('  none — every card triage raised has been ruled on')
+  return out.join('\n')
 }
 
 function summarise(ledger, { repo = process.cwd(), readFile, file } = {}) {
@@ -208,6 +263,10 @@ function main(argv) {
     })), null, 2) + '\n')
     return 0
   }
+  if (argv.includes('--show')) {
+    process.stdout.write(renderCards(s, training, { repo }) + '\n')
+    return 0
+  }
   if (argv.includes('--json')) {
     process.stdout.write(JSON.stringify({
       training, scope: scope || null, open_cards: s.cards.length, deferred: s.deferred.length,
@@ -222,4 +281,4 @@ function main(argv) {
 }
 
 if (require.main === module) process.exit(main(process.argv.slice(2)))
-module.exports = { rows, isOpenCard, matchesFile, editState, summarise, render, main }
+module.exports = { rows, isOpenCard, matchesFile, editState, cardAnchor, summarise, render, renderCards, main }

@@ -1,11 +1,19 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-09-28 (cycle 234)
-OODA cycles: 82
+Last updated: 2026-09-29 (cycle 235)
+OODA cycles: 83
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-09-29)
+
+**CYCLE 235 UPDATE (Sep 29) — HYDRAFUSION CONFIRMED DELIVERED ON BOTH DIMENSIONS: (1) VS CODE DEFAULT-ENABLED SEP 28 — PR #338567 MERGED "ENABLE HYDRAFUSION BY DEFAULT" IN VS CODE 1.140.0 (chat.copilot.hydraFusion.enabled = true) — PRIMARY SOURCE (OPEN-SOURCE COMMIT); (2) UNIFIED COPILOT EXPERIENCE LIVE SEP 28 — NO SINGLE NAMED CHANGELOG POST (GITHUB USING INCREMENTAL ADJACENT ENTRIES: SEP 23 CODE REVIEW + SEP 24 DEFAULT ENABLEMENT); DEVELOPERS DIGEST SEP 28 CONFIRMS "ONE UNIFIED AGENT EXPERIENCE, BALANCED REVIEWS BY DEFAULT" — CONSISTENT WITH AUG 28 ANNOUNCED CHANGES; ZERO PRACTITIONER POST-ROLLOUT REPORTS ON D+1 (EXPECT WITHIN 5–7 DAYS); GITHUB COPILOT APP ROLLOUT STILL UNCONFIRMED FROM PRIMARY SOURCE; KEY DISAMBIGUATION: CVE-2026-55607 IS NOT GITSPAWN — IT IS A SEPARATE GIT WORKTREE PATH-CONFUSION VULNERABILITY FIXED IN V2.1.163 (JUNE 29, CVSS 8.8); GITSPAWN ULTRAREVIEW REMAINS NO CVE ASSIGNED, UNPATCHED DAY+29; V2.1.284 (SEP 28) CONFIRMS SONNET 5.5 DEFAULT + PERFORMANCE/MCP — NOT SECURITY RELEASE; MANIFOLD EMBARGO 7+ DAYS PAST OWN SEP 22 THRESHOLD — ACTIVE COORDINATION CONFIRMED; OPENAI AGENTS API DAY+19: ZERO DEPLOYER-DIRECT PRODUCTION ACCOUNTS; OCT 10 DAY+30 INFLECTION INTACT; PROMPT OBJECTS NOV 30 (62 DAYS) ACTIVE WATCH.**
+
+**Watch Cycle 236 (Sep 30+):** HydraFusion — watch for first practitioner post-rollout reports (D+2 now; expect reports within 5–7 days from rollout); GitHub Copilot app primary confirmation still needed; GitSpawn Day+30 — any patch (v2.1.285+) or Manifold PoC; OpenAI Agents API Day+20 rolling toward Oct 10 Day+30; Prompt Objects Nov 30 (62 days) — watch for practitioner reports of teams hitting double-migration trap.
+
+([github.com/microsoft/vscode/pull/338567](https://github.com/microsoft/vscode/pull/338567), Sep 28 2026 — [vendor documentation — open-source commit, HydraFusion VS Code default-enabled]; [github.blog/changelog/month/09-2026/](https://github.blog/changelog/month/09-2026/), Sep 29 2026 — [vendor documentation]; [developersdigest.tech HydraFusion unified experience](https://www.developersdigest.tech/blog/github-copilot-september-policy-billing-reset-2026), Sep 28 2026 — [domain trade publication]; [code.claude.com/docs/en/changelog](https://code.claude.com/docs/en/changelog), Sep 28 2026 — [vendor documentation — v2.1.284 Sonnet 5.5 default]; [manifold.security/blog/ai-coding-agents-git-hijack](https://www.manifold.security/blog/ai-coding-agents-git-hijack) — [practitioner direct — embargo confirmed 7+ days past own threshold]; [advisories.gitlab.com/npm/@anthropic-ai/claude-code/CVE-2026-55607/](https://advisories.gitlab.com/npm/@anthropic-ai/claude-code/CVE-2026-55607/) — [vendor documentation — CVE-2026-55607 = git worktree, NOT GitSpawn]; [bighatgroup.com/blog/codex-weekly-2026-09-28/](https://www.bighatgroup.com/blog/codex-weekly-2026-09-28/), Sep 28 2026 — [practitioner analysis — no production deployment signal])
 
 ## Key Verdict (as of 2026-09-28)
 

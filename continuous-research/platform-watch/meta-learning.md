@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 235 — 2026-09-29
+
+When tracking multiple security vulnerabilities for the same product, CVE disambiguation becomes a mandatory check once any CVE is assigned in the ecosystem. CVE-2026-55607 (git worktree path confusion, v2.1.163, June 29) shares the Claude Code package namespace with the unassigned GitSpawn finding — secondary aggregators surface both together. Future security tracking for GitSpawn should explicitly confirm "is this the fsmonitor/ultrareview attack vector?" before updating status; version-number and patch-date alone are insufficient when multiple vulnerabilities exist in the same package.
+
+Open-source VS Code repository (github.com/microsoft/vscode) is the most reliable primary source for GitHub Copilot VS Code feature rollouts — more precise than the GitHub blog changelog or vendor documentation pages. The PR merge timestamp gives an exact delivery date. For features with "targeting [month]" commitments shipped via VS Code extension, direct PR search is faster and more precise than watching the changelog page or community discussion threads.
+
 ### Cycle 234 — 2026-09-28
 
 When a vendor event is phrased as "no earlier than [date]" rather than "on [date]," primary changelog confirmation may lag the actual rollout by 1–2 days — the event starts on the target date but the announcement post follows after rollout completes or after a staggered deployment window closes. For "no earlier than" watch items, the correct primary source check is: fetch the changelog daily for 2–3 days after the target date rather than treating a single same-day fetch as a definitive confirmation or denial. Today's (Sep 28) changelog fetch showed nothing for Sep 27–28 — but this is not absence of the event; it is a documentation lag for a rolling rollout.

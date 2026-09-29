@@ -101,7 +101,7 @@ The loop is the shape. The bug today was the excuse.
 
 **Deliberately absent (owned elsewhere):** the word "backpressure" + gates/session-reach vocabulary (the post-launch M4 closer names the feedback constraint; M5 builds and calibrates the checks; M6 composes them) · the three failure modes · map/phase references (M1 protected ground) · drift-wedge/position-fix chart vocabulary (the M5 chart owns that imagery). This lecture keeps plain "check resets the chain" language only.
 
-**Siblings:** `lectures/why-mostly-right-fails.md` = Claude Basics sibling: same checks-compound mechanism, business voice, explicit percent arithmetic (mechanism salvaged from there; voice not) · `lectures/what-keeps-a-long-running-session-going.md` = the post-launch M4 naming beat and governor. This lecture is the M1 machine-nature root both later forms stand on.
+**Sibling:** `lectures/what-keeps-a-long-running-session-going.md` = the post-launch M4 naming beat and governor. This lecture is the M1 machine-nature root it stands on.
 
 <!-- backing -->
 

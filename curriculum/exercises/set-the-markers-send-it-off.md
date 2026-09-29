@@ -61,8 +61,8 @@ If the agent stalls, ask it to continue. The nudge reads as encouragement and la
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-28 (writing@3bc472a1 story@3bc472a1 behavior@64d17eea pedagogy@3bc472a1 strategy@3bc472a1 slides@3bc472a1)
-- judges @2d6b2b01: writing PASS, story PASS, technical REVISE (1/0 see instances/ae101--exercise--set-the-markers-send-it-off.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-29 (writing@3bc472a1 story@3bc472a1 technical@3ce6146d behavior@3ce6146d pedagogy@3bc472a1 strategy@3bc472a1 slides@3bc472a1)
+- judges @3ce6146d: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **View summary:** You pin the two markers the next module returns to, the session transcript path and a starting-point commit on a throwaway branch, then paste the send-off prompt and step away while the agent works the task alone.
 

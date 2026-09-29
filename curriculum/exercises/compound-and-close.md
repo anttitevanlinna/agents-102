@@ -49,8 +49,8 @@ You can check the recurring cost by asking Claude how many tokens your rules fil
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-27 (writing@8b5de788 story@8b5de788 technical@8b5de788 behavior@8b5de788 pedagogy@8b5de788 strategy@8b5de788 slides@8b5de788)
-- judges @8b5de788: writing PASS (1 finding see instances/ae101--exercise--compound-and-close.writing.json), story PASS (1 finding see instances/ae101--exercise--compound-and-close.story.json), technical PASS (verify-refuted), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-29 (writing@3ce6146d story@3ce6146d technical@8b5de788 behavior@3ce6146d pedagogy@8b5de788 strategy@8b5de788 slides@3ce6146d)
+- judges @3ce6146d: writing PASS (2 findings see instances/ae101--exercise--compound-and-close.writing.json), story PASS, technical PASS (verify-refuted), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **View summary:** The agent reads the finished session as evidence and drafts `./CLAUDE.local.md` from how the work actually went. You push back where it misreads. The result is a personal rules file that improves the next session on this repository.
 

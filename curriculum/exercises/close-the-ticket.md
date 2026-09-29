@@ -55,8 +55,8 @@ The field rules stay in the scrollback. The next exercise sweeps this whole sess
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-27 (writing@8b5de788 story@8b5de788 technical@8b5de788 behavior@0d65ff01 pedagogy@8b5de788 strategy@8b5de788 slides@d45aaed2)
-- judges @d45aaed2: writing PASS (1 finding see instances/ae101--exercise--close-the-ticket.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-29 (writing@3ce6146d story@3ce6146d technical@8b5de788 behavior@0d65ff01 pedagogy@3ce6146d strategy@8b5de788 slides@3ce6146d)
+- judges @3ce6146d: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **The closer's *"The next exercise sweeps this whole session"* stays, under §33's motivating-forward-reference carve-out (Antti 2026-09-06, ruled on the sibling case in `set-the-markers-send-it-off.md`).** It is the reason the preceding sentence is acceptable: the field rules stay in the scrollback *because* the next exercise sweeps them, so a student who would otherwise stop to save them has their answer. Cartography tells the student where they are; this tells them why they can leave something undone. A judge meeting the clause again reads this note and files nothing.
 

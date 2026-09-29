@@ -3,13 +3,13 @@
   "file": "curriculum/exercises/close-the-ticket.md",
   "training": "ae101",
   "verdict": "PASS",
-  "body_sha": "ddb55e4b572bb8974510956ea06e10f278b803ef1f52657045b6613fff67969a",
-  "shape_hash": "e452e88bf93d5241",
+  "body_sha": "169fc1eedf3199abcaf8fd4d68ea4e4db8d1140aa4b60293bad27cd91fa7a6c9",
+  "shape_hash": "e8f22ae3cc129350",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "Close the ticket *your team's way* (H1/lede)",
-      "lines": "1-9"
+      "heading": "Close the ticket your team's way",
+      "lines": "1-10"
     },
     {
       "index": 1,
@@ -19,27 +19,27 @@
     {
       "index": 2,
       "heading": "Read the conventions off the ticket",
-      "lines": "20-31"
+      "lines": "20-32"
     },
     {
       "index": 3,
       "heading": "Write the close-out and send it",
-      "lines": "33-39"
+      "lines": "33-40"
     },
     {
       "index": 4,
       "heading": "Double-check the voice",
-      "lines": "41-43"
+      "lines": "41-44"
     },
     {
       "index": 5,
-      "heading": "Anything can be reverse-engineered",
-      "lines": "45-48"
+      "heading": "Reverse-engineer anything",
+      "lines": "45-49"
     },
     {
       "index": 6,
       "heading": "Two artefacts from one ticket",
-      "lines": "50-54"
+      "lines": "50-55"
     }
   ],
   "rules_evaluated": [
@@ -48,7 +48,7 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "evidence": "chunk 1 \"Read the ticket for your bug\": line 13: \"Open the ticket for the bug you fixed\" — session-artifact carve-out (the student's own bug/ticket). chunk 4 \"Double-check the voice\": line 43: \"Does the note sound like the ticket's other comments?\" — \"the note\" resolves to the close-out note written in chunk 3 (line 37: \"update the ticket with a close-out note\"), same-file earlier-slide reuse, not a violation. chunk 6 \"Two artefacts from one ticket\": line 52: \"The loop that started with a failing test closed\" — \"a failing test\" resolves against the module-arc beat from the prior exercise `fix-tests-first` (maintainer Arc block confirms: \"Picks up from: fix-tests-first — the shipped PR is what the close-out links to\"), covered by the module-arc-beats-in-closers carve-out.",
+      "evidence": "chunk 1 line 16: \"Drop the ticket link after the colon.\" is the nearest miss; the colon is the prompt's own `Ticket:` line on the same slide, so it resolves in-chunk. L52 \"The loop that started with a failing test\" is arc-earned spine vocabulary (carve-out); L54 \"The field rules\" resolves to L52 \"the conventions your team has been encoding\". Harm (pointer to nothing) absent.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true,
@@ -59,7 +59,7 @@
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "evidence": "chunk 3 \"Write the close-out and send it\": line 35: \"[MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md)\" — named in the link text (\"Adding a connector is one command per tracker\"), not located by page position; navigational-pointer carve-out. No other cross-file reference in the body.",
+      "evidence": "chunk 6 line 54: \"The next exercise sweeps this whole session.\" is the nearest; it is a forward pointer by reading order with a claim, and the maintainer block carries the dated \u00a733 accept-note. L35 names its link target by title.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true,
@@ -70,8 +70,19 @@
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
-      "evidence": "chunk 6, line 52: \"The loop that started with a failing test closed\" resolves against `fix-tests-first`, confirmed as M1's immediately-prior in-class exercise per maintainer block line 100 (\"Picks up from: fix-tests-first\") and `getting-going.md` line 135's include order (Ex2 fix-tests-first → Ex3 close-the-ticket). The beat exists in the module's current exercise set.",
+      "evidence": "chunk 6 line 52: \"The loop that started with a failing test closed.\" resolves to fix-tests-first, which the maintainer Arc block names as the exercise before this one; L7 \"the bug you shipped\" is the same session's PR. No dead beat.",
       "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no guess-before-reveal beat; muted read finds every setup verbed (L13, L27, L37)",
       "fix_hint": null,
       "blocking": true,
       "chunks_flagged": []
@@ -81,7 +92,7 @@
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "evidence": "Every chunk (1-6) carries at least one full self-carrying instruction or claim; none is a bare wait-state or single context-dependent bullet. Closest case: chunk 4 \"Double-check the voice\" has one bullet, but it states a complete check (\"Does the note sound like the ticket's other comments? If the wording feels off or wrong, tell Claude which line and how you'd write it.\") — a standalone instruction, not a fragment.",
+      "evidence": "chunk 4 \"Double-check the voice\" line 43 is the thinnest slide (one bullet) but carries a full self-standing instruction: \"Does the note sound like the ticket's other comments?\". Not a wait-state.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -92,7 +103,7 @@
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "evidence": "All six headers state what their chunk's content delivers, cross-checked against body: line 11 \"Read the ticket for your bug\" -> chunk reads the ticket; line 20 \"Read the conventions off the ticket\" -> chunk extracts conventions/proposes rules; line 33 \"Write the close-out and send it\" -> chunk writes+sends the close-out; line 41 \"Double-check the voice\" -> chunk checks voice; line 45 \"Anything can be reverse-engineered\" -> chunk generalises past the ticket (the compendium's own §15 note names this exact heading as one of only two deliberate declaratives in the AE101 exercise corpus, at the moment the exercise generalises); line 50 \"Two artefacts from one ticket\" -> chunk names the two artefacts. No header is contradicted by its own content.",
+      "evidence": "chunk 5 line 45 \"Reverse-engineer anything\" is the header most at risk; L47-48 state that anything can be reverse-engineered and give the move. Chunk 6 \"Two artefacts from one ticket\" matches L52. No contradiction.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -103,7 +114,7 @@
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "evidence": "Grepped every chunk for the five sub-patterns: no \"Not X. Not Y. Z.\" construction; no anaphora/epistrophe triples; no self-grading superlative (closest: line 9 \"the agent can reverse-engineer your team's rules\" is a plain capability claim, not a graded superlative); no number+retraction (only number in body is the \"20 minutes\" Time-widget chrome, not a claim-number); no abstraction-noun stack; no verb triplet with an empty leg.",
+      "evidence": "grep for 'Not X. Not Y.' constructions in body: 0. Nearest: L47 list \"a codebase nobody documented, a CI pipeline, a config, an API...\" is an enumeration inside a verbed sentence; L48 three imperatives each concrete (study, extract a .md file, use it as context). No superlative, no number+retraction, no abstraction stack, no empty-leg verb triplet.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -114,18 +125,18 @@
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "evidence": "grep -inE 'surface|firing|compendium|forcing function|\\bbeat(s)?\\b|\\bmood\\b|connections' on curriculum/exercises/close-the-ticket.md body (lines 1-54) → 0 matches. \"Connector\" (line 35) is ordinary engineer-register vocabulary, also cleared by maintainer note at line 69 (\"'Connector' is assumed-known vocabulary\").",
+      "evidence": "grep -niE 'compendium|firing|forcing|beat|surface' over body lines 1-55: 0 hits. 'connector' L35 is cleared by the maintainer accept-note (2026-08-18).",
       "na_reason": null,
       "fix_hint": null,
-      "blocking": true,
+      "blocking": false,
       "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "evidence": "Only bold in the body is widget chrome (line 3 **Time:**, line 5 **What you do:**, line 7 **What you build:**, line 9 **The point:**), which is architecture-mandated widget format, not a handle. No other bold anywhere in lines 1-54. Confirmed against maintainer accept-note at line 75: \"no bolded handle in the body. All bullet leads plain; widget chrome ... stays bold.\"",
+      "evidence": "grep '\\*\\*' over body lines 1-55: 4 hits, L3/5/7/9, all widget chrome (Time/What you do/What you build/The point); no bolded handle in bullets, matching the maintainer emphasis-budget note.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -134,9 +145,9 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "evidence": "grep -n 'close-the-ticket' curriculum/trainings/agentic-engineering-101/*.md → getting-going.md:48 `[Close the ticket](exercises/close-the-ticket.md)`, the standard module include-link pattern for `curriculum/exercises/` files, which the renderer wraps under `.phase--exercise` per the shared exercise-include convention. No phase-less/orphaned inclusion found.",
+      "evidence": "exercise is referenced from curriculum/trainings/agentic-engineering-101/getting-going.md and plan-mode-done-right.md (grep -rl close-the-ticket); derive-body-view reports slide_count 6 matching the 6 `##` chunks.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true,
@@ -144,10 +155,21 @@
     },
     {
       "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-numbering.js -> 'OK \u2014 59 files, Phase/Step numbering consistent.'; grep -c '^## Phase\\|^## [0-9]' -> 0 (no hand-numbered headers).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-deixis.js --file curriculum/exercises/close-the-ticket.md → \"OK — 1 files, no page-geometry pointers across the slide cut.\" (run this session). Only same-chunk locational phrase is line 16 \"Drop the ticket link after the colon\", which points at the prompt block inside the same chunk (chunk 1) — passes the same-chunk carve-out.",
+      "evidence": "node scripts/check-slide-deixis.js -> 'OK \u2014 59 files, no page-geometry pointers across the slide cut.'; grep -niE 'below|above|earlier' over body -> 0.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true,
@@ -158,7 +180,7 @@
       "rule_index": 13,
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "PASS",
-      "evidence": "One in-body link, line 35: \"[MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md)\" — names the document in the link text, not located by page geometry (also passes §12/§2). Mechanism settled per rule text; no open-question flag owed on this specimen.",
+      "evidence": "one link, L35 \"[MCP and connectors](../trainings/.../mcp-and-connectors.md)\": names the document in the link text so the sentence works stripped, no geometry. Review surface, never a gate.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -167,9 +189,9 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
-      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/close-the-ticket.md → \"files: 1  slides: 6  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits\" (run this session).",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/close-the-ticket.md -> 'oversized: 0 ... every slide is within limits'.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -180,7 +202,7 @@
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
-      "evidence": "Five headers are imperative (\"Read the ticket for your bug\", \"Read the conventions off the ticket\", \"Write the close-out and send it\", \"Double-check the voice\") or a catalogue-entry label (\"Two artefacts from one ticket\" names what its recap already holds — explicitly cited as the calibration example in the compendium's own rule text). \"Anything can be reverse-engineered\" (line 45) is the deliberate declarative at the exercise-generalises-past-its-task moment, explicitly named in the compendium as one of only two sanctioned declaratives in the AE101 exercise corpus (the other is `fix-tests-first.md`'s \"There is always a next plausible answer\").",
+      "evidence": "headers L11/L20/L33/L41/L45 are imperatives; L50 \"Two artefacts from one ticket\" is a closing recap label, the nearest to a non-imperative, and the rule states not every header owes a claim. L45 was reworded verb-led in the pinned diff, consistent with the rule.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -189,9 +211,9 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 16,
-      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
-      "evidence": "Every bullet checked for the three classes: no doctrine restatement (no split/lens/law re-announced after already doing its work), no self-referential design commentary (no line tells the student they are inside a pedagogy), no aphorism kicker restating the header or **The point:** line — closest candidate is chunk 6 line 52 \"The loop that started with a failing test closed\", but it adds a new claim (arc closure tying to the prior exercise) rather than restating the header (\"Two artefacts from one ticket\") or the point line (\"the agent can reverse-engineer your team's rules\"), so it is not a kicker.",
+      "evidence": "chunk 6 line 52: \"The loop that started with a failing test closed.\" is the nearest to an aphorism kicker; the rule's own calibration names this slide's recap as a non-violation and it closes the arc. L25 \"The rules the agent proposes are for this bug and the ones after it.\" adds scope, not restatement.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -202,39 +224,15 @@
       "rule_index": 17,
       "rule_lead": "A retitled slide re-earns its bullets against the new header.",
       "verdict": "PASS",
-      "evidence": "No commit in `git diff 0d65ff01..HEAD -- curriculum/exercises/close-the-ticket.md` (run this session) changes a `##` heading; the only body-region change is line 43's bullet reworded within the same header (\"Double-check the voice\", unchanged). The compendium's own rule text names this file's chunk 6 heading (\"Two artefacts from one ticket\") as the calibration example of a bullet that already matches its header, not a retitle-orphan case.",
+      "evidence": "pinned diff changed only the L45 header (\"Anything can be reverse-engineered\" -> \"Reverse-engineer anything\"). Cover-the-body test: the header promises an instruction to reverse-engineer beyond the ticket; L47 (what can be inspected) and L48 (the move) both answer it; no bullet answers only the old header.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "no guess/reveal construction anywhere in the file",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "3d6421552035ba222c2b226796a03adb21cb365688c96e294409b8e1b45807bb",
-      "carried_shape": "e452e88bf93d5241"
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "no `## Phase N:`/`## N.` step headers or in-body Step/Phase refs — confirmed via `node scripts/check-slide-numbering.js --file curriculum/exercises/close-the-ticket.md` → 'OK — 1 files, Phase/Step numbering consistent', run this session",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "3d6421552035ba222c2b226796a03adb21cb365688c96e294409b8e1b45807bb",
-      "carried_shape": "e452e88bf93d5241"
     }
   ],
   "suggestions": [],
   "blocking_findings_count": 0,
   "nonblocking_findings_count": 0,
-  "notes": "Rules 4 and 11 resolved N/A by the prefill sidecar (shape_hash e452e88bf93d5241) and are not re-derived here; run prefill-instance.js --merge to splice them in before this instance is read as complete. Diff since pin 0d65ff01 touches only the maintainer Quality-line stamp and a pronoun-to-noun tightening in the Double-check-the-voice bullet (line 43) plus a person-shift in the maintainer View-summary line (student -> you) — no `##` heading changed, no new body content added."
+  "notes": "Prefill parked 0 rows (shape changed); all 17 brief rules written by judge. Accept-notes honoured: 2026-09-06 next-exercise forward reference (\u00a733), 2026-09-06 L48 bare imperative, 2026-08-18 connector vocabulary, emphasis-budget note."
 }

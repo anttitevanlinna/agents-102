@@ -59,8 +59,8 @@ Run `/context` to see how much of the window is used and what fills it.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-27 (writing@8b5de788 story@8b5de788 technical@8b5de788 behavior@64d17eea pedagogy@8b5de788 strategy@8b5de788 slides@8b5de788)
-- judges @8b5de788: writing PASS (1 finding see instances/ae101--exercise--orient-and-introspect.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-29 (writing@3ce6146d story@8b5de788 technical@8b5de788 behavior@64d17eea pedagogy@8b5de788 strategy@8b5de788 slides@3ce6146d)
+- judges @3ce6146d: writing PASS (1 finding see instances/ae101--exercise--orient-and-introspect.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **View summary:** You direct the agent's first read of your real repository, ask what it skipped and why, spot-check that self-report against the files themselves, and close on the `/context` number naming how much of your codebase never entered the window at all.
 

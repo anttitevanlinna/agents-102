@@ -48,6 +48,7 @@ const CLIENTS_ROOT = process.env.AGENTS_OUTPUT_DIR
   : path.join(ROOT, 'site/clients');
 const shown = p => { const r = path.relative(process.cwd(), p); return r.startsWith('..') ? p : r || '.' };
 const { loadFigures, writeFigures, OUT_FILE: FIGURES_JSON } = require('./compile-figures.js');
+const { loadOverlay, applyOverlayIncludes } = require('./customer-overlay.js');
 
 // Wire heading-id generation into marked so cross-doc anchor links
 // (`target.md#section-anchor`) resolve in workbook output.
@@ -313,7 +314,7 @@ function plainDisplayText(value) {
 function inlineIncludes(md, seen = new Set()) {
   return md.replace(CR.INCLUDE_LINK_RE, (full, title, kindSlug) => {
     const [kind, slug] = kindSlug.split('/');
-    const incPath = path.join(ROOT, 'curriculum', kind, slug + '.md');
+    const incPath = (kind === 'lectures' && OVERLAY.lecturePath(slug)) || path.join(ROOT, 'curriculum', kind, slug + '.md');
     const inc = readMd(incPath);
     if (inc === null) return full;
     const key = `${kind}/${slug}`;
@@ -338,6 +339,7 @@ function renderModuleMd(trainingKey, slug, contentUrl, flags, moduleSlugs) {
   const modPath = path.join(ROOT, 'curriculum/trainings', trainingKey, slug + '.md');
   let md = readMd(modPath);
   if (md === null) throw new Error(`Module not found: ${modPath}`);
+  md = applyOverlayIncludes(md, trainingKey, slug, OVERLAY);
   md = inlineIncludes(md);
   md = CR.applyContentFlags(md, flags, moduleSlugs);
   md = rewriteCrossDocLinksToAnchors(md);
@@ -527,6 +529,16 @@ const BRAND = (() => {
     logo: alt => src ? `<img class="brand-logo" src="${src}" alt="${CR.esc(alt)}">\n  ` : '',
   }
 })()
+
+// Customer overlay (AGENTS_OVERLAY_DIR): label/lede overrides and customer
+// lectures slotted into modules, from a folder the customer owns. Contract and
+// refusals live in customer-overlay.js. Unset → no trace in the output.
+const OVERLAY = loadOverlay(process.env.AGENTS_OVERLAY_DIR, {
+  trainings: CR.TRAININGS,
+  readModule: (t, m) => { try { return fs.readFileSync(path.join(ROOT, 'curriculum/trainings', t, m + '.md'), 'utf8') } catch { return null } },
+  vendorLecture: slug => fs.existsSync(path.join(ROOT, 'curriculum/lectures', slug + '.md')),
+})
+for (const [k, o] of Object.entries(OVERLAY.labels)) Object.assign(CR.TRAININGS[k], o)
 
 // Workbook-only init — runs the shared CurriculumRuntime against document.body
 // and adds the active-section IntersectionObserver. The SPA runs the runtime

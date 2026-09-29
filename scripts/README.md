@@ -30,6 +30,13 @@ AGENTS_BRAND_DIR=../acme-delivery/brand AGENTS_OUTPUT_DIR=../acme-delivery/site 
   node scripts/build-workbook.js acme agents-101
 ```
 
+Customer content changes come from `AGENTS_OVERLAY_DIR`, also a folder the customer owns: `overlay.json` plus the customer's own `lectures/<slug>.md`. Per training key it may set `label`, `lede`, and `lectures: [{slug, module, after}]`, which slots each lecture right after the named include (`exercises/<slug>` or `lectures/<slug>`) in the named module, titled from the lecture's H1. Anything else fails the build: an unknown key, training, module or anchor, a missing file, or a slug that shadows a vendor lecture. Contract: `scripts/customer-overlay.js`.
+
+```sh
+AGENTS_OVERLAY_DIR=../acme-delivery/overlay AGENTS_BRAND_DIR=../acme-delivery/brand \
+  AGENTS_OUTPUT_DIR=../acme-delivery/site node scripts/build-workbook.js acme agents-101
+```
+
 A personalised `--for` build asks whichever repository holds the output whether that path is gitignored, and refuses when it is not. Outside any Git repository there is nothing to commit, so it proceeds.
 
 ## Curriculum Audits

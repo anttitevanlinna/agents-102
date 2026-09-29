@@ -49,6 +49,17 @@ test('training.json sets label and lede, nothing else', () => {
   assert.throws(() => load(tree({ 'trainings/t1/training.json': '{"modules":[]}' }), root), /training\.json: unknown key "modules"/)
 })
 
+test('prompts/ and figures/ shadow or extend the registries', () => {
+  const root = vendor()
+  const d = tree({ 'prompts/house-check.md': '---\nkey: house-check\n---\nCheck it.\n', 'figures/house-map.md': '<figure class="diagram"></figure>\n' })
+  const o = load(d, root)
+  assert.equal(o.resolve('prompts/house-check.md'), path.join(d, 'prompts/house-check.md'))
+  assert.equal(o.promptsDir, path.join(d, 'prompts'))
+  assert.equal(o.figuresDir, path.join(d, 'figures'))
+  assert.equal(load(tree({}), root).promptsDir, null)
+  assert.throws(() => load(tree({ 'prompts/sub/x.md': 'x' }), root), /not a curriculum path/)
+})
+
 test('refuses a path the build would never read', () => {
   const root = vendor()
   assert.throws(() => load(tree({ 'trainings/t2/m1.md': 'x' }), root), /unknown training "t2"/)
@@ -80,7 +91,8 @@ test('build: a shadowed module slots a customer lecture; label from training.jso
   assert.ok(src.includes(anchor), 'fixture anchor still in the vendor module')
   const d = tree({
     [mod]: src.replace(anchor, anchor + '\n\n[Lecture: Overlay house rules](lectures/overlay-house-rules.md)'),
-    'lectures/overlay-house-rules.md': '# Lecture: Overlay house rules\n\nOVERLAY-BODY-MARKER\n\n<!-- maintainer -->\n\nOVERLAY-MAINTAINER-MARKER\n',
+    'lectures/overlay-house-rules.md': '# Lecture: Overlay house rules\n\nOVERLAY-BODY-MARKER\n\n{{prompt:overlay-house-check}}\n\n<!-- maintainer -->\n\nOVERLAY-MAINTAINER-MARKER\n',
+    'prompts/overlay-house-check.md': '---\nkey: overlay-house-check\ndest: Claude Code\n---\nOVERLAY-PROMPT-MARKER check the house rules.\n',
     'trainings/claude-basics/training.json': JSON.stringify({ label: 'Claude Basics: Overlay Test', lede: 'Overlay lede marker.' }),
   })
   const before = execFileSync('git', ['status', '--porcelain'], { cwd: REPO }).toString()
@@ -90,10 +102,36 @@ test('build: a shadowed module slots a customer lecture; label from training.jso
     const hub = fs.readFileSync(path.join(OUT, 'index.html'), 'utf8')
     assert.ok(wb.includes('Claude Basics: Overlay Test') && hub.includes('Overlay lede marker.'), 'label + lede')
     assert.ok(wb.includes('OVERLAY-BODY-MARKER') && !wb.includes('OVERLAY-MAINTAINER-MARKER'), 'lecture inlined, maintainer block stripped')
+    assert.ok(wb.includes('OVERLAY-PROMPT-MARKER'), 'customer prompt expanded from the overlay registry')
     const at = id => wb.indexOf(`id="${id}"`)
     assert.ok(at('exercises-build-your-system') < at('lectures-overlay-house-rules') &&
       at('lectures-overlay-house-rules') < at('exercises-find-the-wrong-claims'), 'slotted where the shadow put it')
     assert.ok(fs.existsSync(path.join(d, 'overlay.lock.json')), 'lock written into the customer folder')
+    assert.equal(execFileSync('git', ['status', '--porcelain'], { cwd: REPO }).toString(), before, 'vendor tree unchanged')
+  } finally {
+    fs.rmSync(OUT, { recursive: true, force: true })
+    fs.rmSync(d, { recursive: true, force: true })
+  }
+})
+
+test('starter tarball: a customer lecture slotted into an A101 module ships its customer prompt; overlay messages print once', () => {
+  const SLUG = 'vip-overlaystarter'
+  const OUT = path.join(REPO, 'site/clients', SLUG)
+  const mod = 'trainings/agents-101/security.md'
+  const src = fs.readFileSync(path.join(REPO, 'curriculum', mod), 'utf8')
+  const anchor = '[Exercise: Audit your agent](exercises/audit-your-agent.md)'
+  assert.ok(src.includes(anchor), 'fixture anchor still in the vendor module')
+  const d = tree({
+    [mod]: src.replace(anchor, anchor + '\n\n[Lecture: Starter house rules](lectures/starter-house-rules.md)'),
+    'lectures/starter-house-rules.md': '# Lecture: Starter house rules\n\n{{prompt:starter-house-check}}\n',
+    'prompts/starter-house-check.md': '---\nkey: starter-house-check\n---\nSTARTER-PROMPT-MARKER\n',
+  })
+  const before = execFileSync('git', ['status', '--porcelain'], { cwd: REPO }).toString()
+  try {
+    const log = execFileSync('node', ['scripts/build-workbook.js', SLUG, 'agents-101'], { cwd: REPO, env: { ...process.env, AGENTS_OVERLAY_DIR: d }, stdio: ['ignore', 'pipe', 'pipe'] }).toString()
+    assert.equal(log.split('recorded the vendor base of trainings/agents-101/security.md').length - 1, 1, 'overlay message printed once')
+    const list = execFileSync('tar', ['tzf', path.join(OUT, 'agents-101/agents-101-starter.tar.gz')]).toString()
+    assert.match(list, /prompts\/starter-house-check\.md/)
     assert.equal(execFileSync('git', ['status', '--porcelain'], { cwd: REPO }).toString(), before, 'vendor tree unchanged')
   } finally {
     fs.rmSync(OUT, { recursive: true, force: true })

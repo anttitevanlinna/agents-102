@@ -2,8 +2,9 @@
 // Customer overlay (AGENTS_OVERLAY_DIR): a customer-owned folder that mirrors
 // curriculum/. At build time a file there wins over the vendor file at the same
 // path, and a file with no vendor twin is the customer's own (a new lecture, a
-// new reference page). trainings/<key>/training.json overrides the registry's
-// label and lede, the one piece of a training that is not a file.
+// new reference page). prompts/<key>.md and figures/<key>.md join the prompt
+// and figure registries the same way. trainings/<key>/training.json overrides
+// the registry's label and lede, the one piece of a training that is not a file.
 //
 // A shadow is a fork of the vendor file. overlay.lock.json records, per shadow,
 // the vendor file's content hash and commit when the fork was first built; a
@@ -35,7 +36,7 @@ function vendorCommit(root) {
 
 function loadOverlay(dir, { root, trainings }) {
   const vendor = rel => path.join(root, 'curriculum', rel)
-  if (!dir) return { dir: null, labels: {}, recorded: [], drift: [], resolve: vendor }
+  if (!dir) return { dir: null, labels: {}, recorded: [], drift: [], promptsDir: null, figuresDir: null, resolve: vendor }
 
   const shadows = new Set(), labels = {}
   for (const rel of walk(dir)) {
@@ -51,7 +52,7 @@ function loadOverlay(dir, { root, trainings }) {
         continue
       }
       if (isMd && parts.length >= 3) { shadows.add(rel); continue }
-    } else if ((parts[0] === 'lectures' || parts[0] === 'exercises') && parts.length === 2 && isMd) {
+    } else if (['lectures', 'exercises', 'prompts', 'figures'].includes(parts[0]) && parts.length === 2 && isMd) {
       shadows.add(rel); continue
     }
     throw new Error(`overlay: ${rel} is not a curriculum path the build reads`)
@@ -77,6 +78,9 @@ function loadOverlay(dir, { root, trainings }) {
 
   return {
     dir, labels, recorded, drift,
+    // Registry folders the build merges over ours (same key = shadow).
+    promptsDir: [...shadows].some(r => r.startsWith('prompts/')) ? path.join(dir, 'prompts') : null,
+    figuresDir: [...shadows].some(r => r.startsWith('figures/')) ? path.join(dir, 'figures') : null,
     resolve: rel => (shadows.has(rel) ? path.join(dir, rel) : vendor(rel)),
   }
 }

@@ -55,7 +55,7 @@ const { loadOverlay } = require('./customer-overlay.js');
 const OVERLAY = loadOverlay(process.env.AGENTS_OVERLAY_DIR, { root: ROOT, trainings: CR.TRAININGS });
 for (const [k, o] of Object.entries(OVERLAY.labels)) Object.assign(CR.TRAININGS[k], o);
 for (const r of OVERLAY.recorded) console.log(`overlay: recorded the vendor base of ${r} in overlay.lock.json`);
-for (const d of OVERLAY.drift) console.warn(`overlay: DRIFT ${d.rel}: the vendor file changed since this shadow was forked; see git diff ${d.since || '<base>'} -- curriculum/${d.rel}, merge, then delete its overlay.lock.json entry`);
+for (const d of OVERLAY.drift) console.log(`overlay: DRIFT ${d.rel}: the vendor file changed since this shadow was forked; see git diff ${d.since || '<base>'} -- curriculum/${d.rel}, merge, then delete its overlay.lock.json entry`);
 const cur = (...parts) => OVERLAY.resolve(path.posix.join(...parts));
 
 // Wire heading-id generation into marked so cross-doc anchor links
@@ -78,6 +78,9 @@ try {
 }
 writeRegistry(PROMPT_REGISTRY, PROMPTS_JSON);
 console.log(`Loaded ${Object.keys(PROMPT_REGISTRY).length} prompts from curriculum/prompts/`);
+// Customer prompts join after site/prompts.json is written, so that tracked
+// file stays ours; this build expands both.
+if (OVERLAY.promptsDir) PROMPT_REGISTRY = Object.assign({}, PROMPT_REGISTRY, loadRegistry(OVERLAY.promptsDir));
 
 // Figure registry: curriculum/figures/<key>.md → {{figure:key}} expansion.
 // Same lifecycle as prompts — loaded once, strict at expand time, compiled to
@@ -92,6 +95,7 @@ try {
 }
 writeFigures(FIGURE_REGISTRY, FIGURES_JSON);
 console.log(`Loaded ${Object.keys(FIGURE_REGISTRY).length} figures from curriculum/figures/`);
+if (OVERLAY.figuresDir) FIGURE_REGISTRY = Object.assign({}, FIGURE_REGISTRY, loadFigures(OVERLAY.figuresDir));
 
 // Soft sanity check on registry frontmatter values. Strict expansion already
 // fails on unresolved keys; these checks catch typos in dest/runtime that

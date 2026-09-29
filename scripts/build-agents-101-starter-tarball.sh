@@ -92,6 +92,13 @@ strip_maintainer "$SELF_STUDY_SKILL" "$ROOT/.claude/skills/self-study/SKILL.md"
 # nests a marker deeper than this depth-1 walk follows.
 PROMPTS_SRC="curriculum/prompts"
 A101_MODULES_DIR="curriculum/trainings/agents-101"
+# Customer overlay (AGENTS_OVERLAY_DIR, validated by the build that calls this):
+# a customer file wins over ours at the same curriculum/ path, so the closure
+# reads what the workbook renders.
+cur() {
+  if [ -n "${AGENTS_OVERLAY_DIR:-}" ] && [ -f "$AGENTS_OVERLAY_DIR/$1" ]; then echo "$AGENTS_OVERLAY_DIR/$1"
+  elif [ -f "curriculum/$1" ]; then echo "curriculum/$1"; fi
+}
 if [ -d "$PROMPTS_SRC" ]; then
   mkdir -p "$ROOT/prompts"
 
@@ -100,8 +107,10 @@ if [ -d "$PROMPTS_SRC" ]; then
   #    ships (scaffold .md + the self-study skill), since any shipped marker must
   #    resolve locally.
   scan_list="$(mktemp)"
-  ls "$A101_MODULES_DIR"/*.md \
-    | grep -vE 'training-architecture|pre-cohort-todos|trainer-guide|trainer-modules' > "$scan_list"
+  { ls "$A101_MODULES_DIR"; [ -d "${AGENTS_OVERLAY_DIR:-/nonexistent}/trainings/agents-101" ] && ls "$AGENTS_OVERLAY_DIR/trainings/agents-101"; } \
+    | grep -E '\.md$' | sort -u \
+    | grep -vE 'training-architecture|pre-cohort-todos|trainer-guide|trainer-modules' \
+    | while IFS= read -r f; do cur "trainings/agents-101/$f"; done > "$scan_list"
   # Resolve linked exercises/lectures into a separate temp, then append — never
   # read and append the same file in one pipeline. `if` (not `&&`) so a missing
   # link can't make the loop exit nonzero under set -e/pipefail.
@@ -110,7 +119,7 @@ if [ -d "$PROMPTS_SRC" ]; then
     grep -hoE '\]\((exercises|lectures|supplementary)/[a-z0-9-]+\.md\)' "$m" 2>/dev/null \
       | sed -E 's/^\]\(//; s/\)$//' || true   # a module with no links: grep exits 1, not a failure
   done < "$scan_list" | sort -u | while IFS= read -r rel; do
-    if [ -f "curriculum/$rel" ]; then echo "curriculum/$rel"; fi
+    cur "$rel"
   done > "$links_tmp"
   cat "$links_tmp" >> "$scan_list"
   rm -f "$links_tmp"
@@ -128,9 +137,9 @@ if [ -d "$PROMPTS_SRC" ]; then
   shipped=0
   while IFS= read -r k; do
     [ -n "$k" ] || continue
-    pf="$PROMPTS_SRC/$k.md"
-    if [ ! -f "$pf" ]; then
-      echo "ERROR — A101 references {{prompt:$k}} but $pf does not exist" >&2; exit 1
+    pf="$(cur "prompts/$k.md")"
+    if [ -z "$pf" ]; then
+      echo "ERROR — A101 references {{prompt:$k}} but prompts/$k.md does not exist" >&2; exit 1
     fi
     if grep -qE '\{\{prompt:[a-z0-9-]+\}\}' "$pf"; then
       echo "ERROR — $pf nests a {{prompt:}} marker; closure is deeper than depth-1 — extend the build walk" >&2; exit 1

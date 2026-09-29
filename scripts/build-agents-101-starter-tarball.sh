@@ -98,6 +98,7 @@ A101_MODULES_DIR="curriculum/trainings/agents-101"
 cur() {
   if [ -n "${AGENTS_OVERLAY_DIR:-}" ] && [ -f "$AGENTS_OVERLAY_DIR/$1" ]; then echo "$AGENTS_OVERLAY_DIR/$1"
   elif [ -f "curriculum/$1" ]; then echo "curriculum/$1"; fi
+  return 0   # absent is an empty answer, not a failure under set -e
 }
 if [ -d "$PROMPTS_SRC" ]; then
   mkdir -p "$ROOT/prompts"
@@ -107,7 +108,7 @@ if [ -d "$PROMPTS_SRC" ]; then
   #    ships (scaffold .md + the self-study skill), since any shipped marker must
   #    resolve locally.
   scan_list="$(mktemp)"
-  { ls "$A101_MODULES_DIR"; [ -d "${AGENTS_OVERLAY_DIR:-/nonexistent}/trainings/agents-101" ] && ls "$AGENTS_OVERLAY_DIR/trainings/agents-101"; } \
+  { ls "$A101_MODULES_DIR"; if [ -d "${AGENTS_OVERLAY_DIR:-/nonexistent}/trainings/agents-101" ]; then ls "$AGENTS_OVERLAY_DIR/trainings/agents-101"; fi; } \
     | grep -E '\.md$' | sort -u \
     | grep -vE 'training-architecture|pre-cohort-todos|trainer-guide|trainer-modules' \
     | while IFS= read -r f; do cur "trainings/agents-101/$f"; done > "$scan_list"

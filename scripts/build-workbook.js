@@ -48,7 +48,15 @@ const CLIENTS_ROOT = process.env.AGENTS_OUTPUT_DIR
   : path.join(ROOT, 'site/clients');
 const shown = p => { const r = path.relative(process.cwd(), p); return r.startsWith('..') ? p : r || '.' };
 const { loadFigures, writeFigures, OUT_FILE: FIGURES_JSON } = require('./compile-figures.js');
-const { loadOverlay, applyOverlayIncludes } = require('./customer-overlay.js');
+const { loadOverlay } = require('./customer-overlay.js');
+// Customer overlay (AGENTS_OVERLAY_DIR): a folder mirroring curriculum/ whose
+// files win over ours at build time; contract in customer-overlay.js. Every
+// curriculum read below goes through cur(). Unset → the vendor tree, unchanged.
+const OVERLAY = loadOverlay(process.env.AGENTS_OVERLAY_DIR, { root: ROOT, trainings: CR.TRAININGS });
+for (const [k, o] of Object.entries(OVERLAY.labels)) Object.assign(CR.TRAININGS[k], o);
+for (const r of OVERLAY.recorded) console.log(`overlay: recorded the vendor base of ${r} in overlay.lock.json`);
+for (const d of OVERLAY.drift) console.warn(`overlay: DRIFT ${d.rel}: the vendor file changed since this shadow was forked; see git diff ${d.since || '<base>'} -- curriculum/${d.rel}, merge, then delete its overlay.lock.json entry`);
+const cur = (...parts) => OVERLAY.resolve(path.posix.join(...parts));
 
 // Wire heading-id generation into marked so cross-doc anchor links
 // (`target.md#section-anchor`) resolve in workbook output.
@@ -314,7 +322,7 @@ function plainDisplayText(value) {
 function inlineIncludes(md, seen = new Set()) {
   return md.replace(CR.INCLUDE_LINK_RE, (full, title, kindSlug) => {
     const [kind, slug] = kindSlug.split('/');
-    const incPath = (kind === 'lectures' && OVERLAY.lecturePath(slug)) || path.join(ROOT, 'curriculum', kind, slug + '.md');
+    const incPath = cur(kind, slug + '.md');
     const inc = readMd(incPath);
     if (inc === null) return full;
     const key = `${kind}/${slug}`;
@@ -336,10 +344,9 @@ function postProcessIncludes(html) {
 }
 
 function renderModuleMd(trainingKey, slug, contentUrl, flags, moduleSlugs) {
-  const modPath = path.join(ROOT, 'curriculum/trainings', trainingKey, slug + '.md');
+  const modPath = cur('trainings', trainingKey, slug + '.md');
   let md = readMd(modPath);
   if (md === null) throw new Error(`Module not found: ${modPath}`);
-  md = applyOverlayIncludes(md, trainingKey, slug, OVERLAY);
   md = inlineIncludes(md);
   md = CR.applyContentFlags(md, flags, moduleSlugs);
   md = rewriteCrossDocLinksToAnchors(md);
@@ -369,7 +376,7 @@ function buildToc(contentKey, t) {
   const bigIdeaCache = {};
   function bigIdeaFor(slug) {
     if (slug in bigIdeaCache) return bigIdeaCache[slug];
-    const modPath = path.join(ROOT, 'curriculum/trainings', contentKey, slug + '.md');
+    const modPath = cur('trainings', contentKey, slug + '.md');
     const md = readMd(modPath) || '';
     return (bigIdeaCache[slug] = CR.extractBigIdea(md));
   }
@@ -457,7 +464,7 @@ ${buildToc(contentKey, t)}
   // module bodies don't die. Same chrome as modules; no Big Idea hero.
   // Files live under curriculum/trainings/<training>/<kind>/<slug>.md.
   function renderStandalone(kind, slug) {
-    const docPath = path.join(ROOT, 'curriculum/trainings', contentKey, kind, slug + '.md');
+    const docPath = cur('trainings', contentKey, kind, slug + '.md');
     let md = readMd(docPath);
     // A registry slug with no backing file is always a dead nav link: the index
     // (built from the registry) links to #<kind>-<slug>, but no section renders.
@@ -529,16 +536,6 @@ const BRAND = (() => {
     logo: alt => src ? `<img class="brand-logo" src="${src}" alt="${CR.esc(alt)}">\n  ` : '',
   }
 })()
-
-// Customer overlay (AGENTS_OVERLAY_DIR): label/lede overrides and customer
-// lectures slotted into modules, from a folder the customer owns. Contract and
-// refusals live in customer-overlay.js. Unset → no trace in the output.
-const OVERLAY = loadOverlay(process.env.AGENTS_OVERLAY_DIR, {
-  trainings: CR.TRAININGS,
-  readModule: (t, m) => { try { return fs.readFileSync(path.join(ROOT, 'curriculum/trainings', t, m + '.md'), 'utf8') } catch { return null } },
-  vendorLecture: slug => fs.existsSync(path.join(ROOT, 'curriculum/lectures', slug + '.md')),
-})
-for (const [k, o] of Object.entries(OVERLAY.labels)) Object.assign(CR.TRAININGS[k], o)
 
 // Workbook-only init — runs the shared CurriculumRuntime against document.body
 // and adds the active-section IntersectionObserver. The SPA runs the runtime
@@ -657,7 +654,7 @@ const WORKBOOK_INIT_JS = `
 // decorations) as the workbook, but no module spine — one document, rendered
 // top-to-bottom.
 function buildTrainerGuide(customer, trainingKey) {
-  const guidePath = path.join(ROOT, 'curriculum/trainings', trainingKey, 'trainer-guide.md');
+  const guidePath = cur('trainings', trainingKey, 'trainer-guide.md');
   let md = readMd(guidePath);
   if (md === null) return null;
   md = escapeTildes(md);
@@ -826,7 +823,7 @@ function buildTrainerModules(customer, trainingKey) {
   const raw = CR.TRAININGS[trainingKey] || {};
   const contentKey = raw.contentKey || trainingKey;
   const t = raw.contentKey ? Object.assign({}, CR.TRAININGS[contentKey], raw) : raw;
-  const srcPath = path.join(ROOT, 'curriculum/trainings', contentKey, 'trainer-modules.md');
+  const srcPath = cur('trainings', contentKey, 'trainer-modules.md');
   let md = readMd(srcPath);
   if (md === null) return null;
   md = CR.applyContentFlags(md, raw.flags, (t.modules || []).map(m => m.slug));
@@ -921,7 +918,7 @@ function stripTheorySessionWidgets(md) {
 }
 
 function readExerciseViewMeta(slug) {
-  const srcPath = path.join(ROOT, 'curriculum/exercises', slug + '.md');
+  const srcPath = cur('exercises', slug + '.md');
   if (!fs.existsSync(srcPath)) {
     throw new Error(`Exercise summary source missing: ${path.relative(ROOT, srcPath)}`);
   }
@@ -968,7 +965,7 @@ function renderTheoryEntry(trainingKey, entry) {
   const [kind, slug] = entry.split('/');
 
   if (kind === 'lectures') {
-    const srcPath = path.join(ROOT, 'curriculum/lectures', slug + '.md');
+    const srcPath = cur('lectures', slug + '.md');
     if (!fs.existsSync(srcPath)) {
       throw new Error(`Theory manifest entry missing: ${path.relative(ROOT, srcPath)}`);
     }
@@ -985,7 +982,7 @@ function renderTheoryEntry(trainingKey, entry) {
   }
 
   if (kind === 'supplementary') {
-    const docPath = path.join(ROOT, 'curriculum/trainings', trainingKey, 'supplementary', slug + '.md');
+    const docPath = cur('trainings', trainingKey, 'supplementary', slug + '.md');
     let md = readMd(docPath);
     if (md === null) {
       throw new Error(`Theory manifest entry missing: ${path.relative(ROOT, docPath)}`);
@@ -1108,7 +1105,7 @@ function buildTheoryHandbook(customer, trainingKey, recipient) {
 // manifest to drift). Eyeball surface for the slide-chunking refactor + a
 // student handout.
 function exerciseSlugsForModule(trainingKey, moduleSlug) {
-  const modPath = path.join(ROOT, 'curriculum/trainings', trainingKey, moduleSlug + '.md');
+  const modPath = cur('trainings', trainingKey, moduleSlug + '.md');
   if (!fs.existsSync(modPath)) return [];
   const body = CR.stripMaintainerTail(fs.readFileSync(modPath, 'utf8'));
   const re = /\[[^\]]+\]\(exercises\/([a-z0-9-]+)\.md\)/g;
@@ -1119,7 +1116,7 @@ function exerciseSlugsForModule(trainingKey, moduleSlug) {
 }
 
 function renderExerciseEntry(slug) {
-  const srcPath = path.join(ROOT, 'curriculum/exercises', slug + '.md');
+  const srcPath = cur('exercises', slug + '.md');
   if (!fs.existsSync(srcPath)) {
     throw new Error(`Exercise missing: ${path.relative(ROOT, srcPath)}`);
   }

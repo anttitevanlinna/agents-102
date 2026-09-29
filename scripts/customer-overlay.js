@@ -1,88 +1,84 @@
 'use strict'
-// Customer overlay (AGENTS_OVERLAY_DIR): a customer-owned folder holding
-// overlay.json and the customer's own lectures/<slug>.md. The contract, per
-// training key in the TRAININGS registry:
+// Customer overlay (AGENTS_OVERLAY_DIR): a customer-owned folder that mirrors
+// curriculum/. At build time a file there wins over the vendor file at the same
+// path, and a file with no vendor twin is the customer's own (a new lecture, a
+// new reference page). trainings/<key>/training.json overrides the registry's
+// label and lede, the one piece of a training that is not a file.
 //
-//   { "<training>": { "label": "...", "lede": "...",
-//       "lectures": [{ "slug": "house-rules", "module": "<module slug>",
-//                      "after": "exercises/<slug>" | "lectures/<slug>" }] } }
+// A shadow is a fork of the vendor file. overlay.lock.json records, per shadow,
+// the vendor file's content hash and commit when the fork was first built; a
+// later build reports every shadow whose vendor file has moved since, with the
+// commit to diff from. To take the vendor's change: merge it into the shadow,
+// delete that lock entry, rebuild.
 //
-// label/lede replace the registry's; each lecture is inserted as an include
-// link right after the named include in the named module, titled from its own
-// H1. Unknown keys, trainings, modules, anchors, missing files and slugs that
-// shadow a vendor lecture all throw: a customer change either applies exactly
-// or the build stops.
+// Fails closed: a path the build would never read (a typo, an unknown training,
+// a non-.md file) stops the build instead of silently doing nothing.
+const crypto = require('node:crypto')
 const fs = require('node:fs')
 const path = require('node:path')
+const { execFileSync } = require('node:child_process')
 
-const TRAINING_KEYS = new Set(['label', 'lede', 'lectures'])
-const LECTURE_KEYS = new Set(['slug', 'module', 'after'])
-const SLUG_RE = /^[a-z0-9-]+$/
-const ANCHOR_RE = /^(exercises|lectures)\/[a-z0-9-]+$/
+const LOCK = 'overlay.lock.json'
+const TRAINING_JSON_KEYS = new Set(['label', 'lede'])
+const sha = buf => crypto.createHash('sha256').update(buf).digest('hex')
 
-const EMPTY = { dir: null, labels: {}, inserts: {}, lecturePath: () => null }
-
-function onlyKeys(obj, allowed, where) {
-  for (const k of Object.keys(obj)) if (!allowed.has(k)) throw new Error(`overlay: unknown key "${k}" in ${where}`)
+function walk(dir, rel = '') {
+  return fs.readdirSync(path.join(dir, rel), { withFileTypes: true }).flatMap(e => {
+    const r = rel ? `${rel}/${e.name}` : e.name
+    return e.isDirectory() ? (e.name === '.git' ? [] : walk(dir, r)) : [r]
+  })
 }
 
-function includeLine(md, anchor) {
-  return md.split('\n').find(l => new RegExp(`^\\[[^\\]]+\\]\\(${anchor}\\.md\\)[ \\t]*$`).test(l))
+function vendorCommit(root) {
+  try { return execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim() } catch { return null }
 }
 
-// trainings: the TRAININGS registry. readModule(training, module) → module
-// source (for anchor checks). vendorLecture(slug) → true when the vendor tree
-// already has lectures/<slug>.md.
-function loadOverlay(dir, { trainings, readModule, vendorLecture }) {
-  if (!dir) return EMPTY
-  const file = path.join(dir, 'overlay.json')
-  if (!fs.existsSync(file)) throw new Error(`overlay: ${file} not found`)
-  const spec = JSON.parse(fs.readFileSync(file, 'utf8'))
-  const labels = {}, inserts = {}, lectures = new Map()
-  for (const [tk, entry] of Object.entries(spec)) {
-    const reg = trainings[tk]
-    if (!reg) throw new Error(`overlay: unknown training "${tk}"`)
-    onlyKeys(entry, TRAINING_KEYS, tk)
-    if (entry.label !== undefined || entry.lede !== undefined) {
-      labels[tk] = {}
-      if (entry.label !== undefined) labels[tk].label = String(entry.label)
-      if (entry.lede !== undefined) labels[tk].lede = String(entry.lede)
+function loadOverlay(dir, { root, trainings }) {
+  const vendor = rel => path.join(root, 'curriculum', rel)
+  if (!dir) return { dir: null, labels: {}, recorded: [], drift: [], resolve: vendor }
+
+  const shadows = new Set(), labels = {}
+  for (const rel of walk(dir)) {
+    if (rel === LOCK || rel.split('/').some(p => p.startsWith('.'))) continue
+    const parts = rel.split('/')
+    const isMd = rel.endsWith('.md')
+    if (parts[0] === 'trainings') {
+      if (!trainings[parts[1]]) throw new Error(`overlay: unknown training "${parts[1]}" (${rel})`)
+      if (parts.length === 3 && parts[2] === 'training.json') {
+        const spec = JSON.parse(fs.readFileSync(path.join(dir, rel), 'utf8'))
+        for (const k of Object.keys(spec)) if (!TRAINING_JSON_KEYS.has(k)) throw new Error(`overlay: ${rel}: training.json: unknown key "${k}"`)
+        labels[parts[1]] = spec
+        continue
+      }
+      if (isMd && parts.length >= 3) { shadows.add(rel); continue }
+    } else if ((parts[0] === 'lectures' || parts[0] === 'exercises') && parts.length === 2 && isMd) {
+      shadows.add(rel); continue
     }
-    const contentKey = reg.contentKey || tk
-    const modules = new Set((reg.modules || (trainings[contentKey] || {}).modules || []).map(m => m.slug))
-    for (const [i, lec] of (entry.lectures || []).entries()) {
-      const where = `${tk}.lectures[${i}]`
-      onlyKeys(lec, LECTURE_KEYS, where)
-      if (!SLUG_RE.test(lec.slug || '')) throw new Error(`overlay: ${where} slug must match ${SLUG_RE}`)
-      if (!modules.has(lec.module)) throw new Error(`overlay: ${where} module "${lec.module}" is not in ${tk}`)
-      if (!ANCHOR_RE.test(lec.after || '') || !includeLine(readModule(contentKey, lec.module) || '', lec.after))
-        throw new Error(`overlay: ${where} anchor "${lec.after}" is not an include in ${tk}/${lec.module}`)
-      if (vendorLecture(lec.slug)) throw new Error(`overlay: ${where} "${lec.slug}" collides with a vendor lecture`)
-      const abs = path.join(dir, 'lectures', lec.slug + '.md')
-      if (!fs.existsSync(abs)) throw new Error(`overlay: ${where} lectures/${lec.slug}.md not found in ${dir}`)
-      const h1 = (fs.readFileSync(abs, 'utf8').match(/^# (.+)$/m) || [])[1]
-      if (!h1) throw new Error(`overlay: lectures/${lec.slug}.md has no H1 to title its include`)
-      lectures.set(lec.slug, abs)
-      const key = `${contentKey}/${lec.module}`
-      ;(inserts[key] = inserts[key] || []).push({ after: lec.after, link: `[Lecture: ${h1.trim().replace(/^Lecture:\s*/, '')}](lectures/${lec.slug}.md)` })
+    throw new Error(`overlay: ${rel} is not a curriculum path the build reads`)
+  }
+
+  const lockPath = path.join(dir, LOCK)
+  const lock = fs.existsSync(lockPath) ? JSON.parse(fs.readFileSync(lockPath, 'utf8')) : {}
+  const next = {}, recorded = [], drift = []
+  let commit
+  for (const rel of [...shadows].sort()) {
+    if (!fs.existsSync(vendor(rel))) continue            // customer-only file: nothing to drift from
+    const now = sha(fs.readFileSync(vendor(rel)))
+    if (!lock[rel]) {
+      if (commit === undefined) commit = vendorCommit(root)
+      next[rel] = { sha256: now, commit }
+      recorded.push(rel)
+    } else {
+      next[rel] = lock[rel]
+      if (lock[rel].sha256 !== now) drift.push({ rel, since: lock[rel].commit })
     }
   }
-  return { dir, labels, inserts, lecturePath: slug => lectures.get(slug) || null }
-}
+  if (JSON.stringify(next) !== JSON.stringify(lock)) fs.writeFileSync(lockPath, JSON.stringify(next, null, 2) + '\n')
 
-// Insert each customer lecture link as its own paragraph after its anchor.
-// Several lectures on one anchor keep overlay.json order.
-function applyOverlayIncludes(md, contentKey, moduleSlug, overlay) {
-  const list = overlay.inserts[`${contentKey}/${moduleSlug}`]
-  if (!list) return md
-  const byAnchor = new Map()
-  for (const ins of list) byAnchor.set(ins.after, [...(byAnchor.get(ins.after) || []), ins.link])
-  for (const [anchor, links] of byAnchor) {
-    const line = includeLine(md, anchor)
-    if (!line) throw new Error(`overlay: anchor "${anchor}" vanished from ${contentKey}/${moduleSlug}`)
-    md = md.replace(line, [line, ...links].join('\n\n'))
+  return {
+    dir, labels, recorded, drift,
+    resolve: rel => (shadows.has(rel) ? path.join(dir, rel) : vendor(rel)),
   }
-  return md
 }
 
-module.exports = { loadOverlay, applyOverlayIncludes }
+module.exports = { loadOverlay }

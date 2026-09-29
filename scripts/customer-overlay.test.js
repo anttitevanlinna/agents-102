@@ -1,92 +1,99 @@
 'use strict'
-// AGENTS_OVERLAY_DIR: a customer-owned folder with overlay.json and the
-// customer's own lectures/<slug>.md. It overrides a training's label and lede
-// and inserts customer lectures after a named include in a named module, so a
-// customer's changes live in the customer's repository, not in this one.
-// Anything the contract does not name fails the build.
+// AGENTS_OVERLAY_DIR: a customer-owned folder that mirrors curriculum/. At
+// build time a file there wins over the vendor file at the same path; a file
+// with no vendor twin is the customer's own. trainings/<key>/training.json
+// overrides label and lede. overlay.lock.json records the vendor file each
+// shadow was forked from, so the build can say when the vendor moved on.
 const { test } = require('node:test')
 const assert = require('node:assert/strict')
 const fs = require('node:fs')
 const os = require('node:os')
 const path = require('node:path')
 const { execFileSync } = require('node:child_process')
-const { loadOverlay, applyOverlayIncludes } = require('./customer-overlay.js')
+const { loadOverlay } = require('./customer-overlay.js')
 
 const REPO = path.resolve(__dirname, '..')
-const TRAININGS = {
-  't1': { label: 'T1', lede: 'Vendor lede.', modules: [{ slug: 'm1' }, { slug: 'm2' }] },
-}
-const MODULE = '# M1\n\n[Exercise: Do it](exercises/do-it.md)\n\n[Lecture: Why](lectures/why.md)\n\n## Next\n'
-const readModule = (t, m) => (t === 't1' && m === 'm1' ? MODULE : '# M2\n')
-const vendorLecture = slug => slug === 'why'
+const TRAININGS = { t1: { label: 'T1', lede: 'Vendor lede.' } }
 
-function dir(overlay, lectures = { 'house-rules': '# House rules\n\nBody.\n' }) {
+function tree(files) {
   const d = fs.mkdtempSync(path.join(os.tmpdir(), 'overlay-'))
-  if (overlay !== undefined) fs.writeFileSync(path.join(d, 'overlay.json'), JSON.stringify(overlay))
-  fs.mkdirSync(path.join(d, 'lectures'))
-  for (const [s, body] of Object.entries(lectures)) fs.writeFileSync(path.join(d, 'lectures', s + '.md'), body)
+  for (const [rel, body] of Object.entries(files)) {
+    fs.mkdirSync(path.dirname(path.join(d, rel)), { recursive: true })
+    fs.writeFileSync(path.join(d, rel), body)
+  }
   return d
 }
-const load = d => loadOverlay(d, { trainings: TRAININGS, readModule, vendorLecture })
-const ok = { t1: { label: 'T1: Tundra', lede: 'Customer lede.', lectures: [{ slug: 'house-rules', module: 'm1', after: 'exercises/do-it' }] } }
+const vendor = () => tree({ 'curriculum/trainings/t1/m1.md': '# M1 vendor\n', 'curriculum/lectures/why.md': '# Why\n' })
+const load = (dir, root) => loadOverlay(dir, { root, trainings: TRAININGS })
 
-test('unset leaves the registry and modules untouched', () => {
-  const o = loadOverlay(undefined, { trainings: TRAININGS, readModule, vendorLecture })
+test('unset resolves every path to the vendor tree', () => {
+  const root = vendor()
+  const o = loadOverlay(undefined, { root, trainings: TRAININGS })
+  assert.equal(o.resolve('trainings/t1/m1.md'), path.join(root, 'curriculum/trainings/t1/m1.md'))
   assert.deepEqual(o.labels, {})
-  assert.equal(applyOverlayIncludes(MODULE, 't1', 'm1', o), MODULE)
 })
 
-test('label and lede override the named training only', () => {
-  const o = load(dir(ok))
+test('a customer file shadows its vendor twin; a new file is the customer\'s own', () => {
+  const root = vendor()
+  const d = tree({ 'trainings/t1/m1.md': '# M1 customer\n', 'lectures/house-rules.md': '# House rules\n' })
+  const o = load(d, root)
+  assert.equal(o.resolve('trainings/t1/m1.md'), path.join(d, 'trainings/t1/m1.md'))
+  assert.equal(o.resolve('lectures/house-rules.md'), path.join(d, 'lectures/house-rules.md'))
+  assert.equal(o.resolve('lectures/why.md'), path.join(root, 'curriculum/lectures/why.md'))
+})
+
+test('training.json sets label and lede, nothing else', () => {
+  const root = vendor()
+  const o = load(tree({ 'trainings/t1/training.json': JSON.stringify({ label: 'T1: Tundra', lede: 'Customer lede.' }) }), root)
   assert.deepEqual(o.labels.t1, { label: 'T1: Tundra', lede: 'Customer lede.' })
+  assert.throws(() => load(tree({ 'trainings/t1/training.json': '{"modules":[]}' }), root), /training\.json: unknown key "modules"/)
 })
 
-test('a customer lecture lands right after its anchor, with its own H1 as the link title', () => {
-  const o = load(dir(ok))
-  const md = applyOverlayIncludes(MODULE, 't1', 'm1', o)
-  assert.match(md, /\[Exercise: Do it\]\(exercises\/do-it\.md\)\n\n\[Lecture: House rules\]\(lectures\/house-rules\.md\)\n\n\[Lecture: Why\]/)
-  assert.equal(o.lecturePath('house-rules'), path.join(o.dir, 'lectures', 'house-rules.md'))
-  assert.equal(o.lecturePath('why'), null, 'vendor lectures resolve from the vendor tree')
-  assert.equal(applyOverlayIncludes('# M2\n', 't1', 'm2', o), '# M2\n', 'other modules untouched')
+test('refuses a path the build would never read', () => {
+  const root = vendor()
+  assert.throws(() => load(tree({ 'trainings/t2/m1.md': 'x' }), root), /unknown training "t2"/)
+  assert.throws(() => load(tree({ 'lecture/typo.md': 'x' }), root), /lecture\/typo\.md is not a curriculum path/)
+  assert.throws(() => load(tree({ 'lectures/notes.txt': 'x' }), root), /lectures\/notes\.txt is not a curriculum path/)
 })
 
-test('an H1 already reading "Lecture: X" titles the link once, as vendor lectures do', () => {
-  const o = load(dir(ok, { 'house-rules': '# Lecture: House rules\n' }))
-  assert.match(applyOverlayIncludes(MODULE, 't1', 'm1', o), /\n\[Lecture: House rules\]\(lectures\/house-rules\.md\)\n/)
+test('first build records each shadow\'s vendor base; a later vendor edit is reported as drift', () => {
+  const root = vendor()
+  const d = tree({ 'trainings/t1/m1.md': '# M1 customer\n', 'lectures/house-rules.md': '# House rules\n' })
+  const first = load(d, root)
+  assert.deepEqual(first.recorded, ['trainings/t1/m1.md'])
+  assert.deepEqual(first.drift, [])
+  const lock = JSON.parse(fs.readFileSync(path.join(d, 'overlay.lock.json'), 'utf8'))
+  assert.deepEqual(Object.keys(lock), ['trainings/t1/m1.md'], 'only shadows are locked, not customer-only files')
+  assert.deepEqual(load(d, root).recorded, [], 'second build records nothing new')
+  fs.writeFileSync(path.join(root, 'curriculum/trainings/t1/m1.md'), '# M1 vendor, fixed\n')
+  const later = load(d, root)
+  assert.deepEqual(later.drift.map(x => x.rel), ['trainings/t1/m1.md'])
+  assert.equal(later.resolve('trainings/t1/m1.md'), path.join(d, 'trainings/t1/m1.md'), 'drift warns, the shadow still wins')
 })
 
-const refuses = (overlay, re, lectures) => assert.throws(() => load(dir(overlay, lectures)), re)
-
-test('refuses what the contract does not name', () => {
-  refuses({ t1: { title: 'x' } }, /unknown key "title"/)
-  refuses({ zz: { label: 'x' } }, /unknown training "zz"/)
-  refuses({ t1: { lectures: [{ slug: 'house-rules', module: 'm9', after: 'exercises/do-it' }] } }, /module "m9" is not in t1/)
-  refuses({ t1: { lectures: [{ slug: 'house-rules', module: 'm1', after: 'exercises/nope' }] } }, /anchor "exercises\/nope" is not an include in t1\/m1/)
-  refuses({ t1: { lectures: [{ slug: 'missing', module: 'm1', after: 'exercises/do-it' }] } }, /lectures\/missing\.md not found/)
-  refuses({ t1: { lectures: [{ slug: 'why', module: 'm1', after: 'exercises/do-it' }] } }, /"why" collides with a vendor lecture/, { why: '# Why\n' })
-  refuses({ t1: { lectures: [{ slug: 'house-rules', module: 'm1', after: 'exercises/do-it', extra: 1 }] } }, /unknown key "extra"/)
-  refuses({ t1: { lectures: [{ slug: 'house-rules', module: 'm1', after: 'exercises/do-it' }] } }, /has no H1/, { 'house-rules': 'no heading\n' })
-  assert.throws(() => load(dir(undefined)), /overlay\.json not found/)
-})
-
-test('build: overlay label and customer lecture reach the workbook; vendor tree stays clean', () => {
+test('build: a shadowed module slots a customer lecture; label from training.json; vendor tree clean', () => {
   const SLUG = 'vip-overlaytest'                     // vip-* is gitignored
   const OUT = path.join(REPO, 'site/clients', SLUG)
-  const d = dir({ 'claude-basics': {
-    label: 'Claude Basics: Overlay Test', lede: 'Overlay lede marker.',
-    lectures: [{ slug: 'overlay-house-rules', module: 'homework-build-and-verify', after: 'exercises/build-your-system' }],
-  } }, { 'overlay-house-rules': '# Overlay house rules\n\nOVERLAY-BODY-MARKER\n\n<!-- maintainer -->\n\nOVERLAY-MAINTAINER-MARKER\n' })
+  const mod = 'trainings/claude-basics/homework-build-and-verify.md'
+  const src = fs.readFileSync(path.join(REPO, 'curriculum', mod), 'utf8')
+  const anchor = '[Exercise: Build your system](exercises/build-your-system.md)'
+  assert.ok(src.includes(anchor), 'fixture anchor still in the vendor module')
+  const d = tree({
+    [mod]: src.replace(anchor, anchor + '\n\n[Lecture: Overlay house rules](lectures/overlay-house-rules.md)'),
+    'lectures/overlay-house-rules.md': '# Lecture: Overlay house rules\n\nOVERLAY-BODY-MARKER\n\n<!-- maintainer -->\n\nOVERLAY-MAINTAINER-MARKER\n',
+    'trainings/claude-basics/training.json': JSON.stringify({ label: 'Claude Basics: Overlay Test', lede: 'Overlay lede marker.' }),
+  })
   const before = execFileSync('git', ['status', '--porcelain'], { cwd: REPO }).toString()
   try {
-    const env = { ...process.env, AGENTS_OVERLAY_DIR: d }
-    execFileSync('node', ['scripts/build-workbook.js', SLUG, 'claude-basics'], { cwd: REPO, env, stdio: 'pipe' })
+    execFileSync('node', ['scripts/build-workbook.js', SLUG, 'claude-basics'], { cwd: REPO, env: { ...process.env, AGENTS_OVERLAY_DIR: d }, stdio: 'pipe' })
     const wb = fs.readFileSync(path.join(OUT, 'claude-basics/index.html'), 'utf8')
     const hub = fs.readFileSync(path.join(OUT, 'index.html'), 'utf8')
     assert.ok(wb.includes('Claude Basics: Overlay Test') && hub.includes('Overlay lede marker.'), 'label + lede')
-    assert.ok(wb.includes('OVERLAY-BODY-MARKER'), 'customer lecture inlined')
-    assert.ok(!wb.includes('OVERLAY-MAINTAINER-MARKER'), 'its maintainer block stripped')
-    assert.ok(wb.indexOf('id="exercises-build-your-system"') < wb.indexOf('id="lectures-overlay-house-rules"') &&
-      wb.indexOf('id="lectures-overlay-house-rules"') < wb.indexOf('id="exercises-find-the-wrong-claims"'), 'slotted after its anchor')
+    assert.ok(wb.includes('OVERLAY-BODY-MARKER') && !wb.includes('OVERLAY-MAINTAINER-MARKER'), 'lecture inlined, maintainer block stripped')
+    const at = id => wb.indexOf(`id="${id}"`)
+    assert.ok(at('exercises-build-your-system') < at('lectures-overlay-house-rules') &&
+      at('lectures-overlay-house-rules') < at('exercises-find-the-wrong-claims'), 'slotted where the shadow put it')
+    assert.ok(fs.existsSync(path.join(d, 'overlay.lock.json')), 'lock written into the customer folder')
     assert.equal(execFileSync('git', ['status', '--porcelain'], { cwd: REPO }).toString(), before, 'vendor tree unchanged')
   } finally {
     fs.rmSync(OUT, { recursive: true, force: true })

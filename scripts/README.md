@@ -30,7 +30,7 @@ AGENTS_BRAND_DIR=../acme-delivery/brand AGENTS_OUTPUT_DIR=../acme-delivery/site 
   node scripts/build-workbook.js acme agents-101
 ```
 
-Customer content changes come from `AGENTS_OVERLAY_DIR`, also a folder the customer owns: `overlay.json` plus the customer's own `lectures/<slug>.md`. Per training key it may set `label`, `lede`, and `lectures: [{slug, module, after}]`, which slots each lecture right after the named include (`exercises/<slug>` or `lectures/<slug>`) in the named module, titled from the lecture's H1. Anything else fails the build: an unknown key, training, module or anchor, a missing file, or a slug that shadows a vendor lecture. Contract: `scripts/customer-overlay.js`.
+Customer content changes come from `AGENTS_OVERLAY_DIR`, also a folder the customer owns, mirroring `curriculum/`. At build time a file there wins over ours at the same path (`trainings/agents-101/security.md` with one more include line), and a file with no twin here, such as a new lecture, is the customer's own. `trainings/<key>/training.json` sets `label` and `lede`. A path the build never reads fails the build. A shadow is a fork: `overlay.lock.json`, written into the customer folder, records the vendor file each shadow came from, and every later build names the shadows whose vendor file has moved since, with the commit to diff from. Contract: `scripts/customer-overlay.js`.
 
 ```sh
 AGENTS_OVERLAY_DIR=../acme-delivery/overlay AGENTS_BRAND_DIR=../acme-delivery/brand \

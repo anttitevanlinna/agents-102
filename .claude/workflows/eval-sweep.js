@@ -243,7 +243,21 @@ delete BEHAVIOR_VERDICT_SCHEMA.properties.rows_written_by_you
 delete BEHAVIOR_VERDICT_SCHEMA.properties.rows_spliced_by_merge
 // A file with no prompt blocks writes verdict N/A to its instance (instance-contract.js).
 BEHAVIOR_VERDICT_SCHEMA.properties.verdict = { enum: ['PASS', 'REVISE', 'N/A'] }
-const verdictSchemaFor = j => (j.cls === 'behavior' ? BEHAVIOR_VERDICT_SCHEMA : VERDICT_SCHEMA)
+// Story and behavior read a cached trace and bind it to the body they judged.
+// Six of ~45 skipped the bind on 2026-09-28 (mostly after reusing the cache) and
+// the stamper TRACE-SKIPped them. Binding afterwards on their behalf is what
+// bind-trace.js was split out to stop: only the judge knows the file on disk is
+// the trace it read. So the judge reports what bind-trace printed, and a
+// mismatch comes back as a re-fire (`unbound`), never repaired here.
+const withTraceSha = schema => {
+  const out = JSON.parse(JSON.stringify(schema))
+  out.required = [...out.required, 'trace_bound_sha']
+  out.properties.trace_bound_sha = { type: 'string', description: 'the sha `bind-trace.js` printed (`bound <trace> -> <sha>`) after you wrote your trace back — copy it, do not compute it. Must equal body_sha.' }
+  return out
+}
+const STORY_VERDICT_SCHEMA = withTraceSha(VERDICT_SCHEMA)
+const BEHAVIOR_TRACE_SCHEMA = withTraceSha(BEHAVIOR_VERDICT_SCHEMA)
+const verdictSchemaFor = j => (j.cls === 'behavior' ? BEHAVIOR_TRACE_SCHEMA : j.cls === 'story' ? STORY_VERDICT_SCHEMA : VERDICT_SCHEMA)
 
 // A drift judge reports per class. `merged` is what `drift-scope.js --merge`
 // printed: false means the carry was refused and the class owes a full judge.
@@ -352,6 +366,22 @@ Report both integers: the rows you wrote yourself as \`rows_written_by_you\`, an
 // read a sim-trace cache at `{{trace_path}}` and write the merged trace back
 // there. Bind them here instead.
 const TRACE_SUFFIX = { story: 'persona', behavior: 'behavior' }
+function bindStep(j) {
+  const suffix = TRACE_SUFFIX[j.cls]
+  if (!suffix || !j.slug) return ''
+  const trace = `curriculum/evals/sim-cache/${j.slug}.${suffix}.json`
+  return `
+## Last step: bind your trace
+
+Write your trace back to \`${trace}\` — even when every entry was reused — then run:
+
+\`\`\`
+node curriculum/evals/scripts/bind-trace.js ${trace} ${j.file}
+\`\`\`
+
+Copy the sha it prints into \`trace_bound_sha\`. It must equal your \`body_sha\`; if it does not, the file moved while you read, so say so. A verdict without it is re-fired: the stamper refuses a ${j.cls} verdict whose trace is not bound to the body you read, and nobody else may bind it for you.
+`
+}
 function paramsBlock(j) {
   const rows = [`- \`{{file_path}}\` → \`${j.file}\``,
                 '- `{{compendium_paths}}` → the rulebook named above']
@@ -444,6 +474,7 @@ node curriculum/evals/scripts/check-instance-schema.js --training ${j.training |
 The first counts ungrounded verdicts only — a terse N/A is healthy and is not one. Report its count as \`ungrounded_count\`. Its top-level \`verdict\` must match what you return here — a gate compares the two and fires when they disagree. The second must not name your instance under CONTRADICTIONS; if it does, fix your file and run it again.
 ` : ''}${fires}${EVIDENCE}
 
+${bindStep(j)}
 Return the structured verdict.`
 }
 
@@ -524,6 +555,7 @@ Overwrite \`curriculum/evals/instances/${c.slug}.${c.cls}.json\` with the record
 
 ${EVIDENCE}
 
+${bindStep(c)}
 Return the structured verdict.`
 }
 
@@ -670,8 +702,13 @@ return {
   stamp_with: stampWith,
   // Named so the orchestrator can re-fire exactly what died rather than the set.
   missing: UNITS.filter(u => !done.some(v => v._key === u._key)).map(u => u._key),
+  // Returned, but the judge left its trace unbound: re-fire these, never bind for them.
+  // A drift-carried story is exempt: drift-scope.js routes story to drift only
+  // when its trace is already bound to the current body.
+  unbound: done.filter(v => TRACE_SUFFIX[v.class] && v.scope !== 'drift' && v.trace_bound_sha !== v.body_sha).map(v => v._key),
   summary: done.map(v => ({
     file: v.file, class: v.class, verdict: v.verdict, body_sha: v.body_sha,
+    trace_bound: !TRACE_SUFFIX[v.class] ? null : v.scope === 'drift' ? 'carried' : v.trace_bound_sha === v.body_sha && !!v.body_sha,
     // `drift`: only drift_rules were re-judged, the rest carried by drift-scope.js.
     scope: v.scope || 'full', drift_rules: v.drift_rules || [],
     set_name: v.set_name || null, module_set: v.module_set || null,

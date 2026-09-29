@@ -64,7 +64,7 @@ function loadOverlay(dir, { trainings, readModule, vendorLecture }) {
       if (!h1) throw new Error(`overlay: lectures/${lec.slug}.md has no H1 to title its include`)
       lectures.set(lec.slug, abs)
       const key = `${contentKey}/${lec.module}`
-      ;(inserts[key] = inserts[key] || []).push({ after: lec.after, link: `[Lecture: ${h1.trim()}](lectures/${lec.slug}.md)` })
+      ;(inserts[key] = inserts[key] || []).push({ after: lec.after, link: `[Lecture: ${h1.trim().replace(/^Lecture:\s*/, '')}](lectures/${lec.slug}.md)` })
     }
   }
   return { dir, labels, inserts, lecturePath: slug => lectures.get(slug) || null }

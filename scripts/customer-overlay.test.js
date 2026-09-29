@@ -50,6 +50,11 @@ test('a customer lecture lands right after its anchor, with its own H1 as the li
   assert.equal(applyOverlayIncludes('# M2\n', 't1', 'm2', o), '# M2\n', 'other modules untouched')
 })
 
+test('an H1 already reading "Lecture: X" titles the link once, as vendor lectures do', () => {
+  const o = load(dir(ok, { 'house-rules': '# Lecture: House rules\n' }))
+  assert.match(applyOverlayIncludes(MODULE, 't1', 'm1', o), /\n\[Lecture: House rules\]\(lectures\/house-rules\.md\)\n/)
+})
+
 const refuses = (overlay, re, lectures) => assert.throws(() => load(dir(overlay, lectures)), re)
 
 test('refuses what the contract does not name', () => {

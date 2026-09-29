@@ -13,7 +13,7 @@ YOUR real work is the material. You'll work at different task sizes across the t
 Roughly in the order you'll reach for them:
 
 - **Trivial bug**, wanted on day one: a few lines here and there. Picked from your repo's backlog or a recurring annoyance.
-- **A small multi-file task**: work you'd ship today if you had the hour. Plan mode wants something a few files wide.<!--flag:module:earn-the-trust-->
+- **A small multi-file task**: work you'd ship today if you had the hour, spanning a few files.<!--flag:module:earn-the-trust-->
 - **A small feature**: external or user-facing surface, shippable in a few hours.<!--/flag:module:earn-the-trust-->
 - **A bigger piece**: a refactor, or a feature with unknowns. Size this one by the agent rather than by yourself. Roughly 30 to 120 minutes of the agent working, not counting the time you spend writing prompts.
 

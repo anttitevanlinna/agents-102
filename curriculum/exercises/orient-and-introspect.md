@@ -40,7 +40,7 @@ Ask the agent what it read and what it skipped.
 ## Read the self-report, then spot-check it
 
 - The account is a reconstruction, not ground truth. The LLM confabulates its actions as well as its reasons. Assume about 10% of what it says or does is made up. Could be more or less than this heuristic suggests.
-- You can spot-check it. Quote a specific file or function back and ask Claude to confirm it read what it claims.
+- You can spot-check it. Quote a specific file or function back and ask Claude to confirm it read what it claims. If what comes back does not match what is really there, that is a possible problem.
 
 ## Check how full the window is
 

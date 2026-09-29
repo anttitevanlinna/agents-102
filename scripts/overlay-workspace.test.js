@@ -41,6 +41,7 @@ const run = (cwd, ...a) => execFileSync('bash', [SCRIPT, ...a], { cwd, stdio: ['
 test('sync → eval → harvest → sync into a fresh pair restores the results', () => {
   const { T, vendor, overlay } = fixture()
   try {
+    fs.mkdirSync(path.join(vendor, 'node_modules/marker'), { recursive: true })   // gitignored; a real checkout has it after npm ci
     const mainBefore = git(vendor, 'rev-parse', 'main')
     const pair = path.join(T, 'pair')
     run(vendor, 'sync', overlay, pair, 'ws')
@@ -49,6 +50,8 @@ test('sync → eval → harvest → sync into a fresh pair restores the results'
     assert.equal(fs.readFileSync(path.join(ws, 'curriculum', LECTURE), 'utf8'), fs.readFileSync(path.join(overlay, LECTURE), 'utf8'))
     assert.equal(fs.readFileSync(path.join(ws, 'curriculum', MOD), 'utf8'), fs.readFileSync(path.join(overlay, MOD), 'utf8'))
     assert.equal(git(ws, 'status', '--porcelain'), '', 'overlay committed on the branch')
+    assert.ok(fs.existsSync(path.join(ws, 'node_modules/marker')), 'workspace uses the checkout\'s node_modules')
+    assert.equal(git(ws, 'ls-files', 'node_modules'), '', 'the link is never committed')
     assert.equal(git(vendor, 'rev-parse', 'main'), mainBefore, 'our main untouched')
 
     // What an eval run leaves behind: a stamped file, an instance, a trace.

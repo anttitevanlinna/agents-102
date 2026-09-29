@@ -48,6 +48,13 @@ case "$cmd" in
     fi
     root="$(cd "$root" && pwd -P)"
     ws="$root/agents-102"; core="$root/agents-102-core"
+    vendor="$(git rev-parse --show-toplevel)"
+    if [[ -d "$vendor/node_modules" && ! -e "$ws/node_modules" ]]; then
+      ln -s "$vendor/node_modules" "$ws/node_modules"
+      # .gitignore's node_modules/ matches a directory, not this link.
+      ex="$(git -C "$ws" rev-parse --git-common-dir)/info/exclude"
+      mkdir -p "$(dirname "$ex")"; grep -qx '/node_modules' "$ex" 2>/dev/null || echo '/node_modules' >> "$ex"
+    fi
     while IFS= read -r rel; do
       mkdir -p "$(dirname "$ws/curriculum/$rel")"
       cp "$overlay/$rel" "$ws/curriculum/$rel"

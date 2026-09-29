@@ -42,7 +42,7 @@ Ask Claude to update the ticket with a close-out note and report what it wrote.
 
 - Does the note sound like the ticket's other comments? If the wording feels off or wrong, tell Claude which line and how you'd write it.
 
-## Anything can be reverse-engineered
+## Reverse-engineer anything
 
 - The ticket is one instance. Anything can be inspected and reverse-engineered with an LLM: a codebase nobody documented, a CI pipeline, a config, an API you did not write, the system your team runs on and cannot explain.
 - Ask Claude to study the pipeline, the config, the undocumented code. Extract a `.md` file. Use that file as context in the next agent.

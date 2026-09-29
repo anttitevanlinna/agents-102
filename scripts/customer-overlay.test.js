@@ -60,6 +60,12 @@ test('prompts/ and figures/ shadow or extend the registries', () => {
   assert.throws(() => load(tree({ 'prompts/sub/x.md': 'x' }), root), /not a curriculum path/)
 })
 
+test('evals/ holds harvested eval results; the build ignores it', () => {
+  const root = vendor()
+  const o = load(tree({ 'evals/instances/x.writing.json': '{}', 'evals/sim-cache/x.persona.json': '{}' }), root)
+  assert.deepEqual(o.recorded, [])
+})
+
 test('refuses a path the build would never read', () => {
   const root = vendor()
   assert.throws(() => load(tree({ 'trainings/t2/m1.md': 'x' }), root), /unknown training "t2"/)

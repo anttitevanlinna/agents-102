@@ -40,7 +40,7 @@ function loadOverlay(dir, { root, trainings }) {
 
   const shadows = new Set(), labels = {}
   for (const rel of walk(dir)) {
-    if (rel === LOCK || rel.split('/').some(p => p.startsWith('.'))) continue
+    if (rel === LOCK || rel.startsWith('evals/') || rel.split('/').some(p => p.startsWith('.'))) continue   // evals/: harvested results (overlay-workspace.sh)
     const parts = rel.split('/')
     const isMd = rel.endsWith('.md')
     if (parts[0] === 'trainings') {

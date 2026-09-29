@@ -37,6 +37,8 @@ AGENTS_OVERLAY_DIR=../acme-delivery/overlay AGENTS_BRAND_DIR=../acme-delivery/br
   AGENTS_OUTPUT_DIR=../acme-delivery/site node scripts/build-workbook.js acme agents-101
 ```
 
+Customer files are judged in a workspace, because the eval machinery needs a real tree: `scripts/overlay-workspace.sh sync <overlay> <pair-root> <customer>` makes or updates a paired public+core worktree on `overlay/<customer>` with the overlay applied, the normal eval flow runs there (eval-sweep with `args.repo`/`args.core` pointing at the pair), and `harvest` copies the stamped files, their instances and their traces back into the overlay's `evals/`, which the build ignores. Keep the pair between runs: Quality pins name its commits.
+
 A personalised `--for` build asks whichever repository holds the output whether that path is gitignored, and refuses when it is not. Outside any Git repository there is nothing to commit, so it proceeds.
 
 ## Curriculum Audits

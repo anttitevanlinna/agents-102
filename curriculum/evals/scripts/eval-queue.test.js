@@ -292,7 +292,14 @@ test('collect: `scanned` counts the wanted training, not the whole universe', ()
     assert.match(r.stderr, /ae101/)
   })
   test('a training with zero surfaces exits non-zero', () => {
-    const r = q('engineering-management')
+    // A fixture, not a real training: a real one that is empty today gets
+    // written tomorrow (engineering-management did, 2026-09-30).
+    const os = require('node:os')
+    const fixture = fs.mkdtempSync(path.join(os.tmpdir(), 'eq-empty-'))
+    fs.mkdirSync(path.join(fixture, 'curriculum/trainings/empty-one'), { recursive: true })
+    spawnSync('git', ['init', '-q'], { cwd: fixture })
+    const r = spawnSync('node', [path.join(__dirname, 'eval-queue.js'), '--repo', fixture, '--training', 'empty-one'], { encoding: 'utf8' })
+    fs.rmSync(fixture, { recursive: true, force: true })
     assert.notStrictEqual(r.status, 0)
     assert.match(r.stderr, /0 surfaces/)
   })

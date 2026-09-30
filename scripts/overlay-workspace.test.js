@@ -26,11 +26,14 @@ const MOD = 'trainings/agents-101/security.md'
 function fixture() {
   const T = fs.mkdtempSync(path.join(os.tmpdir(), 'ows-'))
   const vendor = path.join(T, 'v/agents-102')
-  // -b main: the checkout running the test may be a worktree on another branch,
-  // and the clone's own branch would then be that one, with no local main.
-  git(T, 'clone', '-q', '--local', '-b', 'main', REPO, vendor)
-  git(T, 'clone', '-q', '--local', '-b', 'main', CORE, path.join(T, 'v/agents-102-core'))
-  for (const r of [vendor, path.join(T, 'v/agents-102-core')]) { git(r, 'config', 'user.name', 't'); git(r, 'config', 'user.email', 't@example.invalid') }
+  git(T, 'clone', '-q', '--local', REPO, vendor)
+  git(T, 'clone', '-q', '--local', CORE, path.join(T, 'v/agents-102-core'))
+  // The fixture's main is whatever was cloned: the checkout running the test may
+  // be a worktree or a fresh clone on another branch, with no local main at all.
+  for (const r of [vendor, path.join(T, 'v/agents-102-core')]) {
+    git(r, 'checkout', '-q', '-B', 'main')
+    git(r, 'config', 'user.name', 't'); git(r, 'config', 'user.email', 't@example.invalid')
+  }
   const overlay = path.join(T, 'overlay')
   const anchor = '[Exercise: Audit your agent](exercises/audit-your-agent.md)'
   write(path.join(overlay, MOD), fs.readFileSync(path.join(vendor, 'curriculum', MOD), 'utf8').replace(anchor, anchor + '\n\n[Lecture: WS house rules](lectures/ws-house-rules.md)'))

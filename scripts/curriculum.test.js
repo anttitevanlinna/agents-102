@@ -369,7 +369,12 @@ test('THEORY_HANDBOOK_MANIFEST lecture order is a subsequence of each module fil
 
 const ROOT = path.resolve(__dirname, '..');
 const FIXTURE_CUSTOMER = 'theory-test-fixture';
-const FIXTURE_DIR = path.join(ROOT, 'site/clients', FIXTURE_CUSTOMER);
+// Built under its own output root, never site/clients: node --test runs files
+// in parallel, and output-root.test.js asserts the vendor tree's git status is
+// unchanged across its own build (a fresh clone failed that on this fixture,
+// 2026-09-30).
+const FIXTURE_OUT = fs.mkdtempSync(path.join(require('os').tmpdir(), 'theory-fixture-'));
+const FIXTURE_DIR = path.join(FIXTURE_OUT, FIXTURE_CUSTOMER);
 
 // Strip inline <script>/<style> before content assertions — same move as the
 // build's own post-render audit. SPA_JS/CSS ride inside every page and mention
@@ -385,14 +390,15 @@ test('theory handbook build', async (t) => {
     fs.existsSync(FIXTURE_DIR), false,
     `scratch dir already exists: ${FIXTURE_DIR} — refusing to build over it`
   );
-  t.after(() => fs.rmSync(FIXTURE_DIR, { recursive: true, force: true }));
+  t.after(() => fs.rmSync(FIXTURE_OUT, { recursive: true, force: true }));
+  const env = { ...process.env, AGENTS_OUTPUT_DIR: FIXTURE_OUT };
 
   const trainingDir = path.join(FIXTURE_DIR, 'agentic-engineering-101');
   const theoryFile = path.join(trainingDir, 'theory-handbook.html');
 
-  execSync(`node scripts/build-workbook.js ${FIXTURE_CUSTOMER} agentic-engineering-101`, { cwd: ROOT, stdio: 'pipe' });
+  execSync(`node scripts/build-workbook.js ${FIXTURE_CUSTOMER} agentic-engineering-101`, { cwd: ROOT, stdio: 'pipe', env });
   const theoryEmittedByNormalBuild = fs.existsSync(theoryFile);
-  execSync(`node scripts/build-workbook.js ${FIXTURE_CUSTOMER} agentic-engineering-101 --theory`, { cwd: ROOT, stdio: 'pipe' });
+  execSync(`node scripts/build-workbook.js ${FIXTURE_CUSTOMER} agentic-engineering-101 --theory`, { cwd: ROOT, stdio: 'pipe', env });
 
   const handbookRaw = fs.readFileSync(theoryFile, 'utf8');
   const handbook = contentOnly(handbookRaw);

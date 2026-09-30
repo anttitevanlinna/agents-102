@@ -194,6 +194,7 @@
         'engineering-management-mock': {
             label: 'Leading agentic engineering (mock)',
             status: 'draft',          // tmux-runner proving mock; gates report, not block
+            simulation: true,         // generated test run, never taught: prompts skip the prompt-ok gate (scripts/prompt-sim-exempt.js); the maintainer reads them when this flag comes off
             lede: 'A one-hour mock of Leading agentic engineering: see your team, then ask before you move. Proves a new training runs on the tmux engine.',
             runtime: 'cli',
             modules: [

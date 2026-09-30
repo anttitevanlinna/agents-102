@@ -45,6 +45,25 @@ if [ -z "$staged" ]; then
     exit 0
 fi
 
+# Simulation trainings (maintainer 2026-09-30): a prompt whose origin training
+# carries `simulation: true` is read by the maintainer when that training is
+# promoted, not per commit. scripts/prompt-sim-exempt.js decides, per file,
+# from the staged content and HEAD's.
+if [ -f scripts/prompt-sim-exempt.js ]; then
+    ungated=""
+    while IFS= read -r f; do
+        [ -z "$f" ] && continue
+        node scripts/prompt-sim-exempt.js "$f" --staged 2>/dev/null || ungated="$ungated$f
+"
+    done <<EOF
+$staged
+EOF
+    staged=$(printf '%s' "$ungated")
+    if [ -z "$staged" ]; then
+        exit 0
+    fi
+fi
+
 # Region check (added 2026-05-18): per check_prompts.md rule 22 + rule 26 carve-out,
 # the gate applies to the BODY of the prompt (what students paste). Frontmatter
 # edits (between leading `---` markers) and maintainer-block edits (below

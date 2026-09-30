@@ -33,5 +33,25 @@ if commit "$r"; then bad 'a plain delete slipped through'; else ok 'a delete is 
 r=$(repo); printf -- '---\nkey: a\n---\nPaste that.\n' > "$r/curriculum/prompts/a.md"; git -C "$r" add -A
 if commit "$r"; then bad 'a body edit slipped through'; else ok 'a body edit is still gated'; fi
 
+# Simulation trainings (maintainer 2026-09-30): a prompt whose origin training has
+# `simulation: true` commits without a y/N; the maintainer reads it at promotion.
+simrepo() {
+  local r; r=$(repo)
+  mkdir -p "$r/site/layouts" "$r/scripts"
+  cp "$(dirname "$HOOK")/../scripts/prompt-sim-exempt.js" "$r/scripts/"
+  echo "module.exports = { TRAININGS: { sim: { simulation: true }, live: {} } }" > "$r/site/layouts/curriculum.js"
+  git -C "$r" add -A; SKIP_PROMPT_GATE=1 git -C "$r" commit -qm registry
+  echo "$r"
+}
+r=$(simrepo); printf -- '---\nkey: s\norigin: sim/m1\n---\nPaste this.\n' > "$r/curriculum/prompts/s.md"; git -C "$r" add -A
+if commit "$r"; then ok 'a new simulation prompt needs no y/N'; else bad 'a simulation prompt was gated'; fi
+
+r=$(simrepo); printf -- '---\nkey: s\norigin: live/m1\n---\nPaste this.\n' > "$r/curriculum/prompts/s.md"; git -C "$r" add -A
+if commit "$r"; then bad 'a new taught prompt slipped through'; else ok 'a new taught prompt is still gated'; fi
+
+r=$(simrepo); printf -- '---\nkey: s\norigin: sim/m1\n---\nPaste this.\n' > "$r/curriculum/prompts/s.md"
+printf -- '---\nkey: a\n---\nPaste that.\n' > "$r/curriculum/prompts/a.md"; git -C "$r" add -A
+if commit "$r"; then bad 'a taught edit rode in beside a simulation prompt'; else ok 'a mixed commit is still gated'; fi
+
 echo "pre-commit.test.sh: $pass passed, $fail failed"
 [ "$fail" -eq 0 ]

@@ -53,5 +53,20 @@ r=$(simrepo); printf -- '---\nkey: s\norigin: sim/m1\n---\nPaste this.\n' > "$r/
 printf -- '---\nkey: a\n---\nPaste that.\n' > "$r/curriculum/prompts/a.md"; git -C "$r" add -A
 if commit "$r"; then bad 'a taught edit rode in beside a simulation prompt'; else ok 'a mixed commit is still gated'; fi
 
+# A commit that stages a registry source must carry the rebuilt JSON
+# (scripts/check-generated-registries.js --staged).
+genrepo() {
+  local r; r=$(simrepo)
+  cp "$(dirname "$HOOK")/../scripts/"{compile-prompts.js,compile-figures.js,write-if-changed.js,check-generated-registries.js} "$r/scripts/"
+  ln -s "$(cd "$(dirname "$HOOK")/.." && pwd)/node_modules" "$r/node_modules"; echo node_modules > "$r/.gitignore"
+  (cd "$r" && node -e "const c=require('./scripts/compile-prompts.js');c.writeRegistry(c.loadRegistry())" && node -e "const f=require('./scripts/compile-figures.js');f.writeFigures(f.loadFigures())")
+  git -C "$r" add -A; SKIP_PROMPT_GATE=1 git -C "$r" commit -qm json
+  echo "$r"
+}
+r=$(genrepo); printf -- '---\nkey: s\norigin: sim/m1\nnote: x\n---\nPaste this.\n' > "$r/curriculum/prompts/s.md"; git -C "$r" add curriculum/prompts/s.md
+if commit "$r"; then bad 'a prompt commit without its rebuilt prompts.json slipped through'; else ok 'a prompt commit without its rebuilt prompts.json is refused'; fi
+(cd "$r" && node -e "const c=require('./scripts/compile-prompts.js');c.writeRegistry(c.loadRegistry())"); git -C "$r" add site/prompts.json
+if commit "$r"; then ok 'the same commit with the rebuilt prompts.json goes through'; else bad 'a consistent prompt commit was refused'; fi
+
 echo "pre-commit.test.sh: $pass passed, $fail failed"
 [ "$fail" -eq 0 ]

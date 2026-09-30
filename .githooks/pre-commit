@@ -19,6 +19,15 @@
 
 set -e
 
+# Generated registries: a commit touching a registry source or its JSON must
+# stage the two consistently, or the next build anywhere (a customer's fresh
+# clone included) dirties the tracked JSON. Not bypassed by SKIP_PROMPT_GATE,
+# which is about who approves a prompt, not about stale build output.
+if [ -f scripts/check-generated-registries.js ] && \
+   git diff --cached --name-only -- curriculum/prompts curriculum/figures site/prompts.json site/figures.json | grep -q .; then
+    node scripts/check-generated-registries.js --staged || exit 1
+fi
+
 # Bypass
 if [ "${SKIP_PROMPT_GATE:-0}" = "1" ]; then
     exit 0

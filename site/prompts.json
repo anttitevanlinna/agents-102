@@ -1821,6 +1821,652 @@
       }
     ]
   },
+  "em-add-backfire-gates": {
+    "key": "em-add-backfire-gates",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management/see-your-team",
+    "text": "Add three checks to the Quality Gate in `team-leadership.md`, under the progress question. Every move I log from now on gets run against them before it goes in the Decision Journal.\n\n1. Competence before platform: does this move build my people's ability to use agents, or does it pick a tool or platform before they can use one well?\n2. Pull, not mandate: does this move make someone want to try, or does it require usage, set a usage target, or tie AI to performance reviews?\n3. Hybrid from day one: does this move keep a person checking the agent's work at the points that matter, or does it aim for the agent to run alone?\n\nWrite each check as a question I can answer yes or no about a specific move, and add one line under each on what a failing move looks like on my team, using what Team Knowledge already says about my people.\n\nDon't ask me questions while you work. Then tell me which of the three my team is closest to failing today, and why.",
+    "requires": [
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-install-leadership-memory"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-leadership-memory",
+        "location": "team-leadership.md",
+        "note": "Quality Gate gains three backfire checks",
+        "consumed-by": [
+          "prompt:em-shortlist-and-first-move",
+          "prompt:em-deliberate-intent"
+        ]
+      }
+    ],
+    "note": "EM M1. Student-run lecture prompt (check_lectures §6 carve-out, the answer must be theirs). Writes the three backfire checks (competence before platform, pull not mandate, hybrid from day one) into the Quality Gate under the calibration question, each as a testable check run before any move is logged. Lecture include lectures/three-moves-that-backfire."
+  },
+  "em-build-creation-v1": {
+    "key": "em-build-creation-v1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management/declare-your-intent",
+    "text": "Build a first version around the frustration I just picked. It lives in `creation/`: one agent file that says what it reads, what it does and what it writes, plus whatever it needs to run, such as an example or a shared file.\n\nDesign it from this team. Quote the Team Knowledge entries and the notes in `observations/` it was built from. If it would work for any team unchanged, it is not done.\n\nSomeone other than me should be able to use it, starting with one person from my coalition in Team Knowledge. It proposes and drafts; it never sends messages or changes anything outside `creation/`. One agent, one job.\n\nRun it once now on my team's real material and save the output in `creation/`. If the run needs material that isn't there, say what, rather than making it up.\n\nLog it in the Decision Journal in `team-leadership.md`: the frustration, the others on the list, why this one, which crux it moves, and what this version leaves out on purpose.\n\nTell me what you built and what the run produced. If it should run on a schedule, give me the prompt to paste into a scheduled task. Don't call AskUserQuestion; where a design choice is open, take the simpler one and say so.",
+    "requires": [
+      {
+        "id": "em-frustrations",
+        "source": "prompt:em-list-frustrations"
+      },
+      {
+        "id": "em-manager-pick",
+        "source": "scrollback (the frustration the manager picked, and why, typed in chat)"
+      },
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-install-leadership-memory"
+      },
+      {
+        "id": "em-two-crux",
+        "source": "prompt:em-find-two-crux"
+      },
+      {
+        "id": "em-intent",
+        "source": "prompt:em-write-intent"
+      },
+      {
+        "id": "em-observations",
+        "source": "prompt:em-schedule-weekly-diagnostic"
+      },
+      {
+        "id": "em-coalition",
+        "source": "prompt:em-schedule-coalition-checkin"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-creation",
+        "location": "creation/",
+        "consumed-by": [
+          "prompt:em-close-declare-your-intent"
+        ]
+      },
+      {
+        "id": "em-leadership-memory",
+        "location": "team-leadership.md",
+        "note": "Decision Journal entry naming the frustration, options passed over, which crux it moves, what v1 leaves out"
+      }
+    ],
+    "note": "EM M4 exercise build-your-first-creation, Phase 2. One working leadership mechanism in creation/ (one agent file + what it needs), grounded in cited Team Knowledge + observations, usable by someone other than the manager, proposes only. Runs once on real material; journal entry. Hands back a Schedule-sidebar prompt only if it needs a cadence."
+  },
+  "em-build-response-reader": {
+    "key": "em-build-response-reader",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management/ask-before-you-move",
+    "text": "Write a reader agent for my team's answers and save its instructions as `agents/response-reader.md`. Each time it runs, it reads every file in `responses/` against Team Knowledge in `team-leadership.md` and the questions in `questions.md`, then rewrites `shortlists.md` with two lists.\n\nMove candidates: what the answers say is blocked, wanted or worth trying, each with the line it comes from quoted.\n\nCoalition candidates: people whose answers show agency, such as a proposal, an offer to help, a question back, or an objection with a fix in it. Sort by what they wrote, not by seniority and not by how positive they sound. Quote the line that put each person there.\n\nUnder both lists, name who hasn't answered yet, without ranking them down. While `responses/` is empty or thin, read `observations/` as a starting point and mark every entry that rests on an observation rather than an answer. The reader only proposes: it never edits `team-leadership.md`.\n\nThen run it once now and tell me what it put on each list. Don't call AskUserQuestion; if something is unclear, say so and make a reasonable call.",
+    "requires": [
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-log-first-three"
+      },
+      {
+        "id": "em-starter-questions",
+        "source": "prompt:em-draft-starter-questions"
+      },
+      {
+        "id": "em-responses",
+        "source": "student-input (responses/, one file per person, verbatim answer + the question + date; exercises/send-the-first-three)",
+        "conditional": "answers-arrived"
+      },
+      {
+        "id": "em-observations",
+        "source": "prompt:em-schedule-weekly-diagnostic",
+        "note": "cold-start input while responses/ is still empty in the room"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-response-reader",
+        "location": "agents/response-reader.md",
+        "consumed-by": [
+          "prompt:em-response-reader-task",
+          "prompt:em-shortlist-and-first-move"
+        ]
+      },
+      {
+        "id": "em-shortlists",
+        "location": "shortlists.md",
+        "note": "two lists, move candidates and coalition candidates, each entry quoting its answer; rewritten by every scheduled run",
+        "consumed-by": [
+          "prompt:em-close-ask-before-you-move",
+          "prompt:em-shortlist-and-first-move"
+        ]
+      }
+    ],
+    "note": "EM M2, exercises/build-the-response-reader. Writes the reader agent file and runs it once; the daily scheduled task (em-response-reader-task) runs the same file. Proposes only, never writes team-leadership.md."
+  },
+  "em-close-ask-before-you-move": {
+    "key": "em-close-ask-before-you-move",
+    "dest": "Claude Code",
+    "context": "final move of the module",
+    "runtime": "cli",
+    "origin": "engineering-management/ask-before-you-move",
+    "text": "Put the Quality Gate's top question to this module: did I make progress, and did I lay ground for progress later? Answer from what is in my folder, not from how the session felt: which questions went out and to whom (the Decision Journal and `outbox.md`), what has come back in `responses/`, what `shortlists.md` says so far, and who hasn't answered.\n\nThen ask me one question about what surprised me, in the answers or in who stayed quiet. Write my answer and your verdict into the Decision Journal as this module's closing entry. If nothing has come back yet, say what that tells us and what a yes would look like before the next module.\n\nDon't call AskUserQuestion. If I'm not here to answer, write the verdict and leave the surprise line open for me.",
+    "requires": [
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-log-first-three"
+      },
+      {
+        "id": "em-starter-questions",
+        "source": "prompt:em-draft-starter-questions"
+      },
+      {
+        "id": "em-outbox",
+        "source": "prompt:em-draft-first-three-messages"
+      },
+      {
+        "id": "em-shortlists",
+        "source": "prompt:em-build-response-reader"
+      },
+      {
+        "id": "em-responses",
+        "source": "student-input (responses/, one file per person)",
+        "conditional": "answers-arrived"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-leadership-memory",
+        "location": "team-leadership.md",
+        "note": "Decision Journal gains the M2 calibration entry",
+        "consumed-by": [
+          "prompt:em-shortlist-and-first-move"
+        ]
+      }
+    ],
+    "note": "EM M2 close, the Did you make progress? beat. Calibration question against this module's evidence (questions sent, first answers, shortlists, who has not answered), one in-chat question on what surprised the manager, verdict into the Decision Journal."
+  },
+  "em-close-declare-your-intent": {
+    "key": "em-close-declare-your-intent",
+    "dest": "Claude Code",
+    "context": "final move of the module",
+    "runtime": "cli",
+    "origin": "engineering-management/declare-your-intent",
+    "text": "Ask me whether I made progress in this module, and whether I laid ground for progress later. Hold my answer against the evidence: `intent.md`, `rehearsal.md`, what is in `creation/` and its first run, and my hand-off note in `observations/` if I wrote one. If nobody has used the creation yet, say so plainly; the hand-off is the evidence for now.\n\nThen ask whether the people I am bringing along came with me, and what tells me.\n\nLast, ask me to rate from 1 to 10 my confidence in leading my organisation to an AI-first and agentic world. Put the number next to my first rating in the Decision Journal's opening entry, and ask what moved it.\n\nAsk one question at a time, in chat, not with AskUserQuestion. When I have answered all three, write them into the Decision Journal in `team-leadership.md` as this module's closing entry, and tell me what you wrote.",
+    "requires": [
+      {
+        "id": "em-intent",
+        "source": "prompt:em-write-intent"
+      },
+      {
+        "id": "em-rehearsal",
+        "source": "prompt:em-rehearse-reactions"
+      },
+      {
+        "id": "em-creation",
+        "source": "prompt:em-build-creation-v1"
+      },
+      {
+        "id": "em-confidence-baseline",
+        "source": "prompt:em-install-leadership-memory"
+      },
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-install-leadership-memory"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-leadership-memory",
+        "location": "team-leadership.md",
+        "note": "calibration answer + second confidence rating in the Decision Journal"
+      }
+    ],
+    "opportunistic-copy": [
+      {
+        "id": "em-observations",
+        "if-present-at": "observations/",
+        "rationale": "the hand-off note from \"Put it in someone's hands\"; the coalition member may not have used v1 by the close, so the prompt reads the note if it is there and says so if not"
+      }
+    ],
+    "note": "EM M4 close. Calibration question (progress / ground for progress; did the coalition come along) against intent, rehearsal, creation v1 and the hand-off note; second 1-10 confidence rating against the M1 baseline in the Decision Journal's opening entry (stands in for the M6 rating; the proving run ends at M4). Answers written to the Decision Journal."
+  },
+  "em-close-find-the-two-crux": {
+    "key": "em-close-find-the-two-crux",
+    "dest": "Claude Code",
+    "context": "final move of the module",
+    "runtime": "cli",
+    "origin": "engineering-management/find-the-two-crux",
+    "text": "Did I make progress in this module, and did I lay ground for progress later? Answer from the evidence, not from how the session felt: the two `crux` hypotheses in Team Knowledge and the lines under them, my first-move entry, and the coalition drafts in `diagnostics/`.\n\nSay plainly whether anyone in my coalition has agreed to come along yet. If nobody has, the crux are still mine alone, and the entry should say so.\n\nWrite the answer into the Decision Journal in `team-leadership.md` as this module's calibration entry. Then name the one conversation that would most change the answer. Don't use AskUserQuestion.",
+    "requires": [
+      {
+        "id": "em-two-crux",
+        "source": "prompt:em-find-two-crux"
+      },
+      {
+        "id": "em-first-move",
+        "source": "prompt:em-shortlist-and-first-move"
+      },
+      {
+        "id": "em-coalition",
+        "source": "prompt:em-schedule-coalition-checkin"
+      },
+      {
+        "id": "em-coalition-checkin-drafts",
+        "source": "prompt:em-coalition-checkin-task"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-leadership-memory",
+        "location": "team-leadership.md",
+        "note": "Decision Journal entry answering the calibration question for M3"
+      }
+    ],
+    "note": "EM M3 close. Calibration question (did you make progress, did you lay ground) against this module's evidence = the two crux + whether a coalition member has agreed to come along; answer into the Decision Journal."
+  },
+  "em-close-see-your-team": {
+    "key": "em-close-see-your-team",
+    "dest": "Claude Code",
+    "context": "final move of the module",
+    "runtime": "cli",
+    "origin": "engineering-management/see-your-team",
+    "text": "Read `team-leadership.md` and the newest file in `diagnostics/`, and put two questions to me in plain chat, one at a time. Did I make progress in this module? Did I lay ground for progress later?\n\nBefore each question, give me the evidence from the files in three lines or fewer: who is placed, who is still a gap, what the first diagnostic proposed. Then wait for my answer.\n\nAfter I answer both, add a dated entry to the Decision Journal with my answers in my own words and the evidence you showed me. Tell me what you wrote.",
+    "requires": [
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-install-leadership-memory"
+      },
+      {
+        "id": "em-diagnostic",
+        "source": "prompt:em-run-weekly-diagnostic"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-leadership-memory",
+        "location": "team-leadership.md",
+        "note": "Decision Journal gains the M1 calibration entry",
+        "consumed-by": [
+          "prompt:em-close-ask-before-you-move"
+        ]
+      }
+    ],
+    "note": "EM M1 close. Asks the calibration question (did you make progress? did you lay ground for progress?) against this module's evidence (placements, thin spots, first diagnostic) and writes the answer into the Decision Journal. Lives in the module file's Did you make progress? section."
+  },
+  "em-coalition-checkin-task": {
+    "key": "em-coalition-checkin-task",
+    "dest": "Claude Code",
+    "context": "Schedule sidebar task prompt, weekly",
+    "runtime": "cli",
+    "origin": "engineering-management/find-the-two-crux",
+    "text": "Follow the instructions in `agents/coalition-check-in.md`. Write this week's drafts to `diagnostics/`, with today's date in the file name.\n\nNobody is here to answer questions, so don't use AskUserQuestion. If something the agent needs is missing, note it at the top of the drafts file and do what you can with the rest.",
+    "requires": [
+      {
+        "id": "em-coalition-checkin-agent",
+        "source": "prompt:em-schedule-coalition-checkin"
+      },
+      {
+        "id": "em-coalition",
+        "source": "prompt:em-schedule-coalition-checkin"
+      },
+      {
+        "id": "em-observations",
+        "source": "prompt:em-schedule-weekly-diagnostic"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-coalition-checkin-drafts",
+        "location": "diagnostics/coalition-<date>.md",
+        "note": "one draft question per coalition member; the manager sends, the agent never does",
+        "consumed-by": [
+          "prompt:em-close-find-the-two-crux"
+        ]
+      }
+    ],
+    "note": "EM M3, exercise schedule-the-coalition-check-in. The prompt pasted into the desktop app's Schedule sidebar (and runnable headless in the CLI); follows agents/coalition-check-in.md."
+  },
+  "em-cross-read-peer-memory": {
+    "key": "em-cross-read-peer-memory",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management/find-the-two-crux",
+    "text": "A manager in my company shared their memory export. It's in `peers/`. Read it against my `team-leadership.md` and `shortlists.md`.\n\nGive me three things: patterns our teams share, what they see in their team that my memory has no line for, and where their team contradicts something my memory treats as settled. Quote the line from each file behind every point.\n\nAdd what I don't already have to Team Knowledge as observations tagged with `peer:` and the peer file's name. One outside report is one sighting, so none of these become hypotheses or rules yet.\n\nThen add one check to the Quality Gate that comes from the outside view: something their team shows that I would otherwise miss in mine.\n\nTell me what changed in `team-leadership.md`. If the peer file is thin, say so and work with what's there. Don't use AskUserQuestion.",
+    "requires": [
+      {
+        "id": "em-peer-file",
+        "source": "external (a peer manager's peer-export.md, saved as peers/<name>.md; without a partner, curriculum/trainings/engineering-management/sample-peer-export.md saved as peers/sample.md)"
+      },
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-install-leadership-memory"
+      },
+      {
+        "id": "em-shortlists",
+        "source": "prompt:em-shortlist-and-first-move"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-leadership-memory",
+        "location": "team-leadership.md",
+        "note": "Team Knowledge observations tagged peer:<name>; one outside-view check added to the Quality Gate",
+        "consumed-by": [
+          "prompt:em-find-two-crux"
+        ]
+      }
+    ],
+    "note": "EM M3, exercise cross-read-a-peers-memory. Read a peer manager's export against my memory; shared patterns + blind spots into Team Knowledge as peer-tagged observations; one outside-view Quality Gate check."
+  },
+  "em-deliberate-intent": {
+    "key": "em-deliberate-intent",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management/declare-your-intent",
+    "text": "Read my memory in `team-leadership.md`. Find my two crux (the Team Knowledge hypotheses tagged `crux`), my coalition, and what the Decision Journal says about my first move.\n\nThen start three subagents. Each argues, at its strongest, for one shape my team could take this quarter:\n\n- Keep the hierarchy: run the change through the structure we have now.\n- Flatten it: treat the layers, my own role included, as routing that agents could replace.\n- A hybrid: keep some structure, dissolve some, and say which.\n\nEach argument says how its shape moves both crux, and quotes the Team Knowledge entries it rests on. An argument that moves neither crux is out of bounds. No argument drifts toward the middle to be agreeable.\n\nWhen all three are back, start a fourth subagent that reads only the three arguments. It tells me where they agree, where they split, and what each shape would cost the people on my team.\n\nGive me the three arguments and the fourth read in chat, short. Don't write any files. Don't call AskUserQuestion; where something is unclear, say what you assumed and carry on.",
+    "requires": [
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-install-leadership-memory"
+      },
+      {
+        "id": "em-two-crux",
+        "source": "prompt:em-find-two-crux"
+      },
+      {
+        "id": "em-coalition",
+        "source": "prompt:em-schedule-coalition-checkin"
+      },
+      {
+        "id": "em-first-move",
+        "source": "prompt:em-shortlist-and-first-move"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-intent-deliberation",
+        "location": "scrollback",
+        "consumed-by": [
+          "prompt:em-write-intent"
+        ]
+      }
+    ],
+    "note": "EM M4 exercise deliberate-your-intent, Phase 1. Three posture subagents (keep the hierarchy / flatten it / hybrid) bound by the crux-tagged hypotheses + a fresh synthesis subagent. Chat only, no file writes; the manager's pick feeds em-write-intent."
+  },
+  "em-draft-first-three-messages": {
+    "key": "em-draft-first-three-messages",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management/ask-before-you-move",
+    "text": "Draft one short message for each of the three people I'm sending a question to first, from the pick logged in my Decision Journal in `team-leadership.md` and the questions in `questions.md`.\n\nWrite each one the way I would send it to that person: a line on why I'm asking, the question, and that any answer is welcome, including \"not sure yet\". Match the voice of my own notes in `team-notes.md`. Use what Team Knowledge says about each person to set the tone, but leave out the memory, ADKAR, and anything that reads like an assessment. Keep each message under 80 words.\n\nSave all three in `outbox.md`, one section per person, with the channel they most likely answer me in. Don't send anything. Tell me which line in each message you're least sure sounds like me. Don't call AskUserQuestion; if something is unclear, say so and make a reasonable call.",
+    "requires": [
+      {
+        "id": "em-starter-questions",
+        "source": "prompt:em-draft-starter-questions"
+      },
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-log-first-three",
+        "note": "the Decision Journal pick (which three, to whom) and Team Knowledge for tone"
+      },
+      {
+        "id": "em-team-notes",
+        "source": "external",
+        "note": "team-notes.md from M1, read for the manager's own voice"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-outbox",
+        "location": "outbox.md",
+        "consumed-by": [
+          "prompt:em-close-ask-before-you-move"
+        ]
+      }
+    ],
+    "note": "EM M2, exercises/send-the-first-three. Drafts one short message per chosen recipient in the manager's voice into outbox.md. The agent never sends; the manager edits and sends by their own channel."
+  },
+  "em-draft-starter-questions": {
+    "key": "em-draft-starter-questions",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management/ask-before-you-move",
+    "text": "Draft five to ten starter questions I can put to my team this week, from what `team-leadership.md` knows about each person and from the latest report in `diagnostics/`, if there is one.\n\nEach question should let a person show where they stand and what they would try with more room, so the answers tell me who wants to move, not only what they think. Keep each one open and answerable in a single message. Tie every question to the Team Knowledge entry it rests on and name that entry. Where an entry is thin, ask for the missing ground instead of guessing. Make at least one question ask who people go to when they want to try something new.\n\nBefore you save, run each question past the Quality Gate in `team-leadership.md`. If one reads as a mandate, a performance check or a push toward a tool, rewrite it and tell me which check it tripped.\n\nSave the questions as `questions.md`, numbered. Then recommend the three I should send first, one line on why for each, and tell me what you wrote. Don't call AskUserQuestion; if something is unclear, say so in your reply and make a reasonable call.",
+    "requires": [
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-add-backfire-gates",
+        "note": "Team Knowledge grounds the questions; the Quality Gate's backfire checks screen them"
+      },
+      {
+        "id": "em-diagnostic",
+        "source": "prompt:em-run-weekly-diagnostic",
+        "conditional": "diagnostic-ran"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-starter-questions",
+        "location": "questions.md",
+        "consumed-by": [
+          "prompt:em-log-first-three",
+          "prompt:em-draft-first-three-messages",
+          "prompt:em-build-response-reader",
+          "prompt:em-close-ask-before-you-move"
+        ]
+      }
+    ],
+    "note": "EM M2, exercises/draft-your-starter-questions. Five to ten open questions grounded in Team Knowledge, each run past the Quality Gate before saving; recommends three. The manager's pick is logged by em-log-first-three."
+  },
+  "em-export-peer-memory": {
+    "key": "em-export-peer-memory",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management/find-the-two-crux",
+    "text": "Write `peer-export.md`: what my memory has learned about my team, in a form another manager in my company can read. Take it from Team Knowledge in `team-leadership.md` and from the two lists in `shortlists.md`.\n\nNobody on my team appears by name. Give each person their role, or a pseudonym where two people share a role, and keep it the same every time they appear. Leave out every quote from `responses/`, anything about health, family or performance, and anything I wouldn't say to that person's face.\n\nKeep the patterns: where people sit on ADKAR, where the team sits on the adoption curve, what the answers showed, and which moves and coalition candidates are on the lists.\n\nWhere a line is borderline, leave it out. Then tell me what you left out and why. Don't use AskUserQuestion.",
+    "requires": [
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-install-leadership-memory"
+      },
+      {
+        "id": "em-shortlists",
+        "source": "prompt:em-shortlist-and-first-move"
+      },
+      {
+        "id": "em-responses",
+        "source": "student-input (responses/, read only to know what to leave out)"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-peer-export",
+        "location": "peer-export.md",
+        "note": "leaves the machine by the manager's hand; lands in the peer's peers/<name>.md",
+        "consumed-by": [
+          "prompt:em-cross-read-peer-memory"
+        ]
+      }
+    ],
+    "note": "EM M3, exercise cross-read-a-peers-memory. Draft a shareable export of Team Knowledge + shortlists; people become roles or pseudonyms, no quotes from responses/; owner reviews before it leaves."
+  },
+  "em-find-two-crux": {
+    "key": "em-find-two-crux",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management/find-the-two-crux",
+    "text": "Find the crux of my team's move toward agentic work. Read `team-leadership.md`, every answer in `responses/`, `shortlists.md`, my first-move entry in the Decision Journal, and the peer file in `peers/`.\n\nA crux is the obstacle that, once it moves, makes other stuck things movable. It is not a goal (\"get the team using agents\") and not a category (\"culture\"). It names the mechanism that blocks: \"the two seniors who review every change have no time to try agents, so nobody sees it done on our own code.\" Test each candidate: if it moved, would at least three other stuck things release? If not, keep looking.\n\nPropose four to six candidates. For each, quote the lines from my files that point to it and name the alternative it beats. When I push back on one, rewrite it rather than defend it. Then ask me in chat which two I'm keeping, and wait.\n\nWrite my two into Team Knowledge as hypotheses tagged `crux`, one sentence each, with the evidence lines under them. Log the choice in the Decision Journal: the candidates I cut, why these two won, and what I give up by not working on the others.\n\nShow me both crux as they now read in the file. Don't use AskUserQuestion.",
+    "requires": [
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-cross-read-peer-memory"
+      },
+      {
+        "id": "em-responses",
+        "source": "student-input (responses/, one file per person)"
+      },
+      {
+        "id": "em-shortlists",
+        "source": "prompt:em-shortlist-and-first-move"
+      },
+      {
+        "id": "em-first-move",
+        "source": "prompt:em-shortlist-and-first-move"
+      },
+      {
+        "id": "em-peer-file",
+        "source": "external (peers/<name>.md, saved by the manager in cross-read-a-peers-memory)"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-two-crux",
+        "location": "team-leadership.md",
+        "note": "two crux in Team Knowledge as hypotheses tagged crux + Decision Journal entry (candidates not picked, why these two, trade-offs)",
+        "consumed-by": [
+          "prompt:em-schedule-coalition-checkin",
+          "prompt:em-close-find-the-two-crux",
+          "prompt:em-deliberate-intent",
+          "prompt:em-rehearse-reactions",
+          "module:declare-your-intent"
+        ]
+      }
+    ],
+    "note": "EM M3, exercise find-your-two-crux. Crux method inlined (no crux skill ships to this audience). Reads memory + responses + shortlists + first move + peers; proposes 4-6 candidates with quoted evidence and the alternative each beats; manager picks two in turn."
+  },
+  "em-install-leadership-memory": {
+    "key": "em-install-leadership-memory",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management/see-your-team",
+    "text": "Read my notes on my team in `team-notes.md` and set up `team-leadership.md` as my leadership memory. Give it three sections: Team Knowledge, Decision Journal and Quality Gate.\n\nIn Team Knowledge, place each person on ADKAR (Awareness, Desire, Knowledge, Ability, Reinforcement): the furthest stage they have clearly reached, and what they need next. Then place the whole team on the adoption curve: chatting, custom assistants, agentic workflows, compounding engineering.\n\nTag every entry as an observation, a hypothesis or a rule, and quote the line from my notes it rests on. Nothing starts as a rule unless my notes say I have seen it again and again. Where my notes are too thin to place someone, write that down instead of guessing.\n\nIn the Decision Journal, add one dated entry: the placements you made, what else you considered for the ones you are least sure of, and why you chose as you did. Put the confidence rating from the first line of my notes in that entry, marked as my starting baseline.\n\nIn the Quality Gate, put one gate at the top: \"Did this make progress? Did it lay ground for progress later?\"\n\nDon't ask me questions while you work. Where something is unclear, make a sensible call and note it in the file. Then tell me what you wrote, which placement you are least sure of, and the one thing about my team you would most want me to find out this week.",
+    "requires": [
+      {
+        "id": "em-team-notes",
+        "source": "external",
+        "note": "team-notes.md, written by hand in exercises/write-your-team-notes; line one = 1-10 confidence baseline"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-leadership-memory",
+        "location": "team-leadership.md",
+        "consumed-by": [
+          "prompt:em-add-backfire-gates",
+          "prompt:em-schedule-weekly-diagnostic",
+          "prompt:em-run-weekly-diagnostic",
+          "prompt:em-close-see-your-team",
+          "prompt:em-draft-starter-questions",
+          "prompt:em-build-response-reader",
+          "prompt:em-close-ask-before-you-move",
+          "prompt:em-shortlist-and-first-move",
+          "prompt:em-find-two-crux",
+          "prompt:em-schedule-coalition-checkin",
+          "prompt:em-close-find-the-two-crux",
+          "prompt:em-deliberate-intent",
+          "prompt:em-rehearse-reactions",
+          "prompt:em-build-creation-v1",
+          "prompt:em-close-declare-your-intent"
+        ]
+      },
+      {
+        "id": "em-confidence-baseline",
+        "location": "team-leadership.md",
+        "note": "copied from team-notes.md line one into the Decision Journal's opening entry",
+        "consumed-by": [
+          "prompt:em-close-declare-your-intent"
+        ]
+      }
+    ],
+    "note": "EM M1. Reads the manager's hand-written notes, installs team-leadership.md with Team Knowledge (ADKAR per person, adoption-curve tier for the team, observation/hypothesis/rule tags, quoted evidence, thin notes named), Decision Journal (why these placements + confidence baseline) and Quality Gate (calibration question as top gate). Exercise include exercises/install-your-leadership-memory."
+  },
+  "em-list-frustrations": {
+    "key": "em-list-frustrations",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management/declare-your-intent",
+    "text": "List the frustrations that keep coming back in my team's week. Read `team-leadership.md`, `intent.md` and the notes in `observations/`, and the latest file in `diagnostics/` if there is one.\n\nI mean things that stall, get lost, wait on me, or never get shared. Give me five. For each, quote where it shows up, name the crux it sits on, and say whether a mechanism could take it on or only a conversation could.\n\nTell me the list in chat. Don't build anything yet. Don't call AskUserQuestion.",
+    "requires": [
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-install-leadership-memory"
+      },
+      {
+        "id": "em-intent",
+        "source": "prompt:em-write-intent"
+      },
+      {
+        "id": "em-observations",
+        "source": "prompt:em-schedule-weekly-diagnostic"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-frustrations",
+        "location": "scrollback",
+        "consumed-by": [
+          "prompt:em-build-creation-v1"
+        ]
+      }
+    ],
+    "opportunistic-copy": [
+      {
+        "id": "em-diagnostic",
+        "if-present-at": "diagnostics/",
+        "rationale": "the weekly diagnostic's latest output shows which frustrations recur; absent if it never ran"
+      }
+    ],
+    "note": "EM M4 exercise build-your-first-creation, Phase 1. Reads the memory, intent and observations; lists recurring frustrations with quoted evidence and the crux each sits on. Chat only; the manager's pick feeds em-build-creation-v1."
+  },
+  "em-log-first-three": {
+    "key": "em-log-first-three",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management/ask-before-you-move",
+    "text": "Log my pick in the Decision Journal in `team-leadership.md`: the three questions from `questions.md` I'm sending first and who each goes to, the questions that were on the table and not chosen, why these three won, and what I give up by holding the others back. If my pick differs from your recommendation, record both and my reason. If I haven't told you my pick, log your recommendation and mark it as yours, not mine.\n\nThen add one check to the Quality Gate that I can read against `responses/` in a week to tell whether these questions surfaced who wants to move. Say what a yes and a no would look like in the answers.\n\nTell me what you added. Don't call AskUserQuestion; if something is unclear, say so and make a reasonable call.",
+    "requires": [
+      {
+        "id": "em-starter-questions",
+        "source": "prompt:em-draft-starter-questions"
+      },
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-add-backfire-gates"
+      },
+      {
+        "id": "em-first-three-pick",
+        "source": "scrollback (the manager's reply naming the three questions and why; absent when run headless)"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-leadership-memory",
+        "location": "team-leadership.md",
+        "note": "Decision Journal entry (first three + alternatives + trade-off) and one Quality Gate check",
+        "consumed-by": [
+          "prompt:em-draft-first-three-messages",
+          "prompt:em-build-response-reader",
+          "prompt:em-close-ask-before-you-move",
+          "prompt:em-shortlist-and-first-move"
+        ]
+      }
+    ],
+    "note": "EM M2, exercises/draft-your-starter-questions. Logs the manager's pick of the first three questions in the Decision Journal (context, alternatives, why, trade-off) and adds one Quality Gate check readable against responses/. Headless, it takes Claude's own recommendation and marks it as Claude's."
+  },
   "em-mock-diagnose-your-team": {
     "key": "em-mock-diagnose-your-team",
     "dest": "Claude Code",
@@ -1870,6 +2516,303 @@
       }
     ],
     "note": "EM mock M2, a tmux-runner proving training. Starter questions from the memory, pick journaled with alternatives, one Quality Gate check. Approved prompt-ok 2026-09-27."
+  },
+  "em-rehearse-reactions": {
+    "key": "em-rehearse-reactions",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management/declare-your-intent",
+    "text": "Read `intent.md` and Team Knowledge in `team-leadership.md`. From the entries, find the three to five kinds of people my team actually has: for example who is already ahead, who the last change burned, who waits to see. Name each kind by what it is, never by a person's name.\n\nStart one subagent per kind. Give each only `intent.md` and the Team Knowledge entries that describe its kind. Each one reacts to the intent the way those entries suggest: which line lands, which line loses them, and what they would ask me. Every reaction quotes the entries it stands on. Where the entries are too thin to know, the subagent says so instead of guessing.\n\nWrite the reactions to `rehearsal.md`, one section per kind. Under them, name the line that lands best, the line that loses the most people, and one revision to the intent that keeps its aim and loses fewer people.\n\nAdd each thin spot to Team Knowledge as something I need to find out, and say about whom.\n\nTell me what you wrote. Don't change `intent.md`. Don't call AskUserQuestion.",
+    "requires": [
+      {
+        "id": "em-intent",
+        "source": "prompt:em-write-intent"
+      },
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-install-leadership-memory"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-rehearsal",
+        "location": "rehearsal.md",
+        "consumed-by": [
+          "prompt:em-close-declare-your-intent"
+        ]
+      },
+      {
+        "id": "em-leadership-memory",
+        "location": "team-leadership.md",
+        "note": "gaps the rehearsal could not ground, added to Team Knowledge as things to find out"
+      }
+    ],
+    "note": "EM M4 exercise rehearse-the-reactions. One subagent per kind of person on the team, each given only intent.md + the Team Knowledge entries that describe that kind; never a named colleague, never a persona alone. Writes rehearsal.md and Team Knowledge gaps; leaves intent.md to the manager's conversational revision."
+  },
+  "em-response-reader-task": {
+    "key": "em-response-reader-task",
+    "dest": "Claude Code",
+    "context": "scheduled task prompt",
+    "runtime": "cli",
+    "origin": "engineering-management/ask-before-you-move",
+    "text": "Read the reader's instructions in `agents/response-reader.md` and follow them. Rewrite `shortlists.md` from what is in `responses/` now, and end it with one line on what changed since the last run. Don't call AskUserQuestion; if something is unclear, note it at the top of `shortlists.md` and carry on.",
+    "requires": [
+      {
+        "id": "em-response-reader",
+        "source": "prompt:em-build-response-reader"
+      },
+      {
+        "id": "em-responses",
+        "source": "student-input (responses/, one file per person)",
+        "conditional": "answers-arrived"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-shortlists",
+        "location": "shortlists.md",
+        "note": "rewritten every run",
+        "consumed-by": [
+          "prompt:em-close-ask-before-you-move",
+          "prompt:em-shortlist-and-first-move"
+        ]
+      }
+    ],
+    "note": "EM M2, exercises/build-the-response-reader. The Prompt field of the desktop app's daily scheduled task; must also run headless (claude -p). Points at agents/response-reader.md and follows it (same split as em-run-weekly-diagnostic)."
+  },
+  "em-run-weekly-diagnostic": {
+    "key": "em-run-weekly-diagnostic",
+    "dest": "Claude Code",
+    "context": "scheduled task prompt",
+    "runtime": "cli",
+    "origin": "engineering-management/see-your-team",
+    "text": "Read `agents/weekly-diagnostic.md` and do what it says, using `team-leadership.md`, `observations/` and, if it exists, `responses/`.\n\nWrite this run's diagnostic to `diagnostics/`, named with today's date. Don't edit `team-leadership.md`.\n\nThis runs unattended, so don't ask questions. Where something is unclear, make a sensible call and note it in the diagnostic.",
+    "requires": [
+      {
+        "id": "em-weekly-diagnostic",
+        "source": "prompt:em-schedule-weekly-diagnostic"
+      },
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-install-leadership-memory"
+      },
+      {
+        "id": "em-observations",
+        "source": "prompt:em-schedule-weekly-diagnostic"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-diagnostic",
+        "location": "diagnostics/<date>.md",
+        "consumed-by": [
+          "module:ask-before-you-move",
+          "prompt:em-close-see-your-team"
+        ]
+      }
+    ],
+    "opportunistic-copy": [
+      {
+        "id": "em-responses",
+        "if-present-at": "responses/",
+        "rationale": "M2 answers land here from the second week; the diagnostic reads them when present (cross-module decision 5)"
+      }
+    ],
+    "note": "EM M1. The Prompt field of the desktop app's weekly scheduled task; must also run headless (claude -p) with no AskUserQuestion. Reads agents/weekly-diagnostic.md and follows it. Exercise include exercises/schedule-the-weekly-diagnostic. Same split as personal-agent-homework-2/-3."
+  },
+  "em-schedule-coalition-checkin": {
+    "key": "em-schedule-coalition-checkin",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management/find-the-two-crux",
+    "text": "Ask me in chat which people from the coalition list in `shortlists.md` are coming with me on the two crux, and wait for my answer.\n\nRecord them in Team Knowledge in `team-leadership.md` as my coalition. For each person, name the crux they're closest to and quote the answer from `responses/` that put them on the list.\n\nThen write `agents/coalition-check-in.md`, an agent that runs weekly. Each run it reads the coalition and the two `crux` hypotheses in Team Knowledge, plus the newest files in `observations/`. It drafts one short question per coalition member about what they need next to move their crux: time, access, someone to learn from, permission. It never asks what they did or how far they got. The coalition are companions, not a reporting line.\n\nThe agent writes its drafts to a file in `diagnostics/` named `coalition-` followed by the run date, and stops there. It never sends anything and never edits `team-leadership.md`.\n\nTell me what you wrote. Don't use AskUserQuestion.",
+    "requires": [
+      {
+        "id": "em-two-crux",
+        "source": "prompt:em-find-two-crux"
+      },
+      {
+        "id": "em-shortlists",
+        "source": "prompt:em-shortlist-and-first-move"
+      },
+      {
+        "id": "em-responses",
+        "source": "student-input (responses/, one file per person)"
+      },
+      {
+        "id": "em-observations",
+        "source": "prompt:em-schedule-weekly-diagnostic"
+      },
+      {
+        "id": "em-coalition-names",
+        "source": "student-input (the people the manager names from the coalition shortlist)"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-coalition",
+        "location": "team-leadership.md",
+        "note": "Team Knowledge coalition tier, each member tied to a crux",
+        "consumed-by": [
+          "prompt:em-coalition-checkin-task",
+          "prompt:em-close-find-the-two-crux",
+          "module:declare-your-intent"
+        ]
+      },
+      {
+        "id": "em-coalition-checkin-agent",
+        "location": "agents/coalition-check-in.md",
+        "consumed-by": [
+          "prompt:em-coalition-checkin-task"
+        ]
+      }
+    ],
+    "note": "EM M3, exercise schedule-the-coalition-check-in. Record the named coalition in Team Knowledge against the crux; write the weekly check-in agent (asks what they need, never what they did; proposes only, never sends)."
+  },
+  "em-schedule-weekly-diagnostic": {
+    "key": "em-schedule-weekly-diagnostic",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management/see-your-team",
+    "text": "Write an agent file at `agents/weekly-diagnostic.md` that keeps Team Knowledge in `team-leadership.md` current. Create the folders `observations/` and `diagnostics/` if they don't exist.\n\nEach run, the agent reads Team Knowledge, every file in `observations/`, and every file in `responses/` if that folder exists. It compares what it reads with each person's current entry.\n\nIt proposes changes, it does not make them. It proposes promoting an observation to a hypothesis when a new file backs it up, a hypothesis to a rule when evidence has held across several weeks, and demoting anything a new file contradicts. Every proposal quotes the file and line it rests on. It also lists who has no new evidence since the last run.\n\nIt writes its proposals to `diagnostics/` as a file named with the run's date, and never edits `team-leadership.md` itself. If there is nothing new to read, it says so in one line instead of restating Team Knowledge.\n\nDon't ask me questions while you work. Then tell me what you wrote, and what the agent will do on a week when I have added nothing to `observations/`.",
+    "requires": [
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-install-leadership-memory"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-weekly-diagnostic",
+        "location": "agents/weekly-diagnostic.md",
+        "consumed-by": [
+          "prompt:em-run-weekly-diagnostic",
+          "prompt:em-draft-starter-questions"
+        ]
+      },
+      {
+        "id": "em-observations",
+        "location": "observations/",
+        "note": "created empty; the manager drops one file per conversation (Bring to Module 2; M3 coalition conversation; M4 creation hand-off)",
+        "consumed-by": [
+          "prompt:em-run-weekly-diagnostic",
+          "prompt:em-coalition-checkin-task",
+          "prompt:em-build-creation-v1",
+          "prompt:em-close-declare-your-intent",
+          "module:ask-before-you-move",
+          "module:find-the-two-crux",
+          "module:declare-your-intent"
+        ]
+      },
+      {
+        "id": "em-diagnostics-folder",
+        "location": "diagnostics/",
+        "note": "created empty; filled by em-run-weekly-diagnostic"
+      }
+    ],
+    "opportunistic-copy": [
+      {
+        "id": "em-responses",
+        "if-present-at": "responses/",
+        "rationale": "M2 answers land here from the second week; the diagnostic reads them when present (cross-module decision 5)"
+      }
+    ],
+    "note": "EM M1. Writes the weekly diagnostic agent file (reads observations/, responses/ when present, and Team Knowledge; proposes tier promotions/demotions with cited evidence, writes diagnostics/<date>.md, never edits team-leadership.md) and creates the observations/ and diagnostics/ folders. Exercise include exercises/schedule-the-weekly-diagnostic."
+  },
+  "em-shortlist-and-first-move": {
+    "key": "em-shortlist-and-first-move",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management/find-the-two-crux",
+    "text": "Run the response reader in `agents/response-reader.md` over everything in `responses/`, not only the answers that came in first. Let it rewrite `shortlists.md`.\n\nThen walk me through the move shortlist. For each move, quote the answers behind it and say what it would cost the team. Don't pick for me. Ask me in chat which move I'm starting, and wait.\n\nBefore you log my pick, check it against the Quality Gate in `team-leadership.md`. If it trips a check, name the check and let me decide whether the move stands.\n\nLog the pick in the Decision Journal: the context, what else was on the table, why this one won, and the trade-offs I'm accepting. If fewer than three people have answered, say so in the entry and tag the move as a hypothesis.\n\nTell me what you wrote. Don't use AskUserQuestion.",
+    "requires": [
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-install-leadership-memory"
+      },
+      {
+        "id": "em-response-reader",
+        "source": "prompt:em-build-response-reader"
+      },
+      {
+        "id": "em-responses",
+        "source": "student-input (the week's answers, one file per person in responses/)"
+      },
+      {
+        "id": "em-shortlists",
+        "source": "prompt:em-build-response-reader"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-shortlists",
+        "location": "shortlists.md",
+        "note": "refreshed over the full week of responses/",
+        "consumed-by": [
+          "prompt:em-cross-read-peer-memory",
+          "prompt:em-find-two-crux",
+          "prompt:em-schedule-coalition-checkin"
+        ]
+      },
+      {
+        "id": "em-first-move",
+        "location": "team-leadership.md",
+        "note": "Decision Journal entry, context + alternatives + why this won + trade-offs",
+        "consumed-by": [
+          "prompt:em-find-two-crux",
+          "prompt:em-close-find-the-two-crux"
+        ]
+      }
+    ],
+    "note": "EM M3, exercise pick-your-first-move. Rerun the response reader on the full week, manager picks one move, Quality Gate check, Decision Journal entry with alternatives."
+  },
+  "em-write-intent": {
+    "key": "em-write-intent",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "engineering-management/declare-your-intent",
+    "text": "Write `intent.md` from the shape I just chose. One paragraph, in my voice: where the team is heading this quarter, which crux it moves and in which direction, and what the team's week should look like if it works. Name one thing we don't know yet. Write it as a claim I can revise, not a vision.\n\nThen search the Decision Journal in `team-leadership.md` for earlier decisions this touches, and say if it contradicts one. Log the intent there: the context, the shapes I set aside, why this one won, and what I accept by choosing it.\n\nTell me what you wrote. Don't call AskUserQuestion.",
+    "requires": [
+      {
+        "id": "em-intent-deliberation",
+        "source": "prompt:em-deliberate-intent"
+      },
+      {
+        "id": "em-manager-pick",
+        "source": "scrollback (the shape the manager chose, and why, typed in chat)"
+      },
+      {
+        "id": "em-two-crux",
+        "source": "prompt:em-find-two-crux"
+      },
+      {
+        "id": "em-leadership-memory",
+        "source": "prompt:em-install-leadership-memory"
+      }
+    ],
+    "produces": [
+      {
+        "id": "em-intent",
+        "location": "intent.md",
+        "consumed-by": [
+          "prompt:em-rehearse-reactions",
+          "prompt:em-list-frustrations",
+          "prompt:em-build-creation-v1",
+          "prompt:em-close-declare-your-intent"
+        ]
+      },
+      {
+        "id": "em-leadership-memory",
+        "location": "team-leadership.md",
+        "note": "Decision Journal entry for the intent, shapes set aside, trade-offs accepted"
+      }
+    ],
+    "note": "EM M4 exercise deliberate-your-intent, Phase 2. Runs after the manager names the pick in chat. Writes intent.md (one paragraph, crux-bound, revisable) and the Decision Journal entry."
   },
   "eval-loop-1": {
     "key": "eval-loop-1",

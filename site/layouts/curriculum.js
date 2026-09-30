@@ -191,6 +191,19 @@
                 { slug: 'organisers-run-the-workshop', title: 'Organisers: run the workshop' }
             ]
         },
+        'engineering-management': {
+            label: 'Leading agentic engineering',
+            status: 'draft',          // gates report, not block (scripts/gates.js)
+            simulation: true,         // generated test run (the-system proving run, 2026-09-30), never taught: prompts skip the prompt-ok gate; the maintainer reads it all when this flag comes off
+            lede: 'For engineering managers. Build a leadership memory on your own team, ask before you move, find the two crux, and declare where you are heading.',
+            runtime: 'cli',
+            modules: [
+                { slug: 'see-your-team',       title: 'See your team' },
+                { slug: 'ask-before-you-move', title: 'Ask before you move' },
+                { slug: 'find-the-two-crux',   title: 'Find the two crux' },
+                { slug: 'declare-your-intent', title: 'Declare your intent' }
+            ]
+        },
         'engineering-management-mock': {
             label: 'Leading agentic engineering (mock)',
             status: 'draft',          // tmux-runner proving mock; gates report, not block

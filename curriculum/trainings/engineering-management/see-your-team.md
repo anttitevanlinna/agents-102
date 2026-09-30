@@ -76,6 +76,9 @@ You can see your team on one page, with the evidence behind each call and the ga
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-30 (writing@518a2710 story@518a2710 technical@518a2710 behavior@518a2710 pedagogy@518a2710 strategy@518a2710 slides@518a2710)
+- judges @518a2710: writing PASS (verify-refuted), story PASS (verify-refuted), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 ## Design (EM proving run 2026-09-30)
 
 - **Mood:** diagnostic directness. Plain placements, thin spots marked, no reassurance.

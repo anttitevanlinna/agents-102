@@ -38,6 +38,9 @@ From here on, every move you log gets asked these three questions before it goes
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-30 (writing@518a2710 story@518a2710 behavior@518a2710 pedagogy@518a2710 strategy@518a2710 slides@518a2710)
+- judges @518a2710: writing PASS (verify-refuted, 1 finding see instances/engineering-management--lecture--three-moves-that-backfire.writing.json), story PASS (1 finding see instances/engineering-management--lecture--three-moves-that-backfire.story.json), technical REVISE (1/0 see instances/engineering-management--lecture--three-moves-that-backfire.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 ## Design (EM proving run 2026-09-30)
 
 - **Placement:** after `install-your-leadership-memory`, before `schedule-the-weekly-diagnostic` (strategy § Three things NOT to do: M1, before any first move is picked).

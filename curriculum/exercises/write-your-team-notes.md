@@ -35,6 +35,9 @@ Those are the first gaps the memory will show you, and it is better that you saw
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-30 (writing@518a2710 story@518a2710 technical@518a2710 pedagogy@518a2710 strategy@518a2710 slides@518a2710)
+- judges @518a2710: writing PASS (2 findings see instances/engineering-management--exercise--write-your-team-notes.writing.json), story PASS, technical PASS, behavior REVISE (0/0 see instances/engineering-management--exercise--write-your-team-notes.behavior.json), pedagogy PASS, strategy PASS, slides PASS
+
 ## Design (EM proving run 2026-09-30)
 
 - **Atomic — no phase markers.** one continuous writing beat in one file; the three sections are the file's own order, not separately timed steps.

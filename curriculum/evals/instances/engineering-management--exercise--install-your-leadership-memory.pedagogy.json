@@ -1,0 +1,879 @@
+{
+  "class": "pedagogy",
+  "file": "curriculum/exercises/install-your-leadership-memory.md",
+  "training": "engineering-management",
+  "verdict": "PASS",
+  "body_sha": "9cfa6f94fbf434574dc7924c9b449427319937f13c454ead5559a41e84dc52b9",
+  "shape_hash": "44e9dbfc173dedee",
+  "rules_evaluated": [
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 1,
+      "rule_lead": "Walk-away test (M2+).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "M2+ rule; this is M1",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 2,
+      "rule_lead": "50% magic rule (M3–M8).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "M3-M8 magic budget; M1 exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 3,
+      "rule_lead": "Trust the agentic design — no human backstops.",
+      "verdict": "PASS",
+      "evidence": "L27 \"Where it is wrong, tell Claude which person...\" keeps judgement with the manager and the prompt says \"make a sensible call and note it in the file\"; closest to a human backstop is L29 \"Open team-leadership.md... is that true of them?\" which is reading the manager alone can do (no agent can know the person), so no backstop is added for something Claude could audit.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 4,
+      "rule_lead": "Quality ladder.",
+      "verdict": "PASS",
+      "evidence": "Ship bar 8 met: re-runnable artifact (team-leadership.md persisted, prompt em-install-leadership-memory lists 15 downstream consumers), traveling vocabulary (observation/hypothesis/rule used bare later, maintainer L45), one belief beat (L47). Closest to a 7: L25 recap sentence is mildly redundant with the prompt, not a facilitator gap.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 6,
+      "rule_lead": "One exercise = one bounded activity.",
+      "verdict": "PASS",
+      "evidence": "grep -cE \"^#+ +(Phase|Step)? ?[0-9]+[.)]\" -> 0; three unnumbered sections (Install, Argue, Keep the gaps) = one atomic activity per maintainer L43. Planted \"## 1. x\" is matched by the pattern shape used for sub-numbering.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 7,
+      "rule_lead": "Modules composable across variants.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no VARIANT markers; not a shared-library variant file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 8,
+      "rule_lead": "Three-level completeness.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-scope chain (strategy to sendable); cross_module owns it",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 9,
+      "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
+      "verdict": "PASS",
+      "evidence": "LO verb is judge (\"is that true of them?\", L29). Contrast n>=2 is met by design: the manager reads several people, each against what only they know, and L29 says \"Go to the people you know best first. For each...\" so the gap between reads is the skill. Closest: L31 \"One or two corrections are plenty\" allows n=1 disagreement, but the reads are per person, not per correction.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "9b",
+      "rule_lead": "Progression-with-variations is the spine.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "first face of the memory-build move; no earlier instance to vary from",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 10,
+      "rule_lead": "Student agency — adults decide.",
+      "verdict": "PASS",
+      "evidence": "L31 \"One or two corrections are plenty in the room; the rest can wait for the week.\" is suggestion-register pacing (harm: paternalistic forced pacing, absent). L29 \"Go to the people you know best first\" is an ordering suggestion, skipping it creates no dead end. Closest imperative: L29 \"Open team-leadership.md.\" which is the sole route to the artifact.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 11,
+      "rule_lead": "Delegation — student brings, Claude screens.",
+      "verdict": "PASS",
+      "evidence": "Access: prompt reads team-notes.md, written by hand in the prior exercise write-your-team-notes (prompt requires: em-team-notes), so no Jira/wiki/chat access is assumed. Whose judgement: Claude places and screens (prompt), the student adjudicates (L29-31). Closest: prompt L \"the one thing about my team you would most want me to find out\" is Claude surfacing a gap, not picking for the student.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 12,
+      "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
+      "verdict": "PASS",
+      "evidence": "One prompt, one artifact (team-leadership.md); phases chain mechanically (install -> argue -> read gaps) with no cognitive break, so counter-clause holds and it stays one exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 13,
+      "rule_lead": "Artifact-realism check.",
+      "verdict": "PASS",
+      "evidence": "team-notes.md exists (exercises/write-your-team-notes.md is included at see-your-team.md L38, before this include at L44); team-leadership.md is created by the prompt itself; \"confidence rating from the first line of my notes\" matches prompt registry note \"line one = 1-10 confidence baseline\". ls curriculum/exercises | grep team-notes -> write-your-team-notes.md.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 14,
+      "rule_lead": "Teach principle + technique — default.",
+      "verdict": "PASS",
+      "evidence": "Closest: prompt names ADKAR stages and the four adoption-curve tiers and the body never explains why (L19 explains the three blocks and the tiers observation/hypothesis/rule). Harm (black-box invocation the student is asked to USE) is absent: Claude applies the frameworks, the student only reads placements, and the theory lecture (lectures/theory-times-people-knowledge.md L9) teaches ADKAR in the same module. Orientation carve-out applies to the listed stage words.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 15,
+      "rule_lead": "Auto-fire sim+eval after significant rewrite.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "dispatch-time process rule; this run is the fire",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "Closest: \"Argue with the placements\" (L27-33) is the module belief beat and is a body-only student move with no fence. Boundary 2 (2026-08-02) covers a conversational register where a manufactured prompt is over-prescription; maintainer L47 carries the accept-note (correction goes to Claude in conversation because the utterance is the manager own words about their people). Mandatory teaching prompt (the install) is fenced at L23. No count-scripts: L31 \"One or two corrections are plenty\" is suggestion register.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 17,
+      "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
+      "verdict": "PASS",
+      "evidence": "grep -ciE \"mcp|connector|jira|linear|sso|confluence\" -> 0 (planted \"Jira\" matched). Personal-only path, no infra framing.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 18,
+      "rule_lead": "Personal-first, team promotion via human conversation.",
+      "verdict": "PASS",
+      "evidence": "team-leadership.md lives in the student own leading-agentic-engineering folder (L7); no team-shared promotion, no shared infra changed. Closest: none; nothing is auto-promoted.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 19,
+      "rule_lead": "Measure silent failure, not just friction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "cohort pass-rate estimation rule; no cohort data in a static read",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 20,
+      "rule_lead": "Don't pre-set categories before experiment runs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "eval-experiment design rule; no experiment in this exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 21,
+      "rule_lead": "Verification layers sample DIFFERENT error distributions — not belt-and-braces.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "verification-layer rule for eval architecture; no verification machinery here",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "21b",
+      "rule_lead": "Cheap-before-expensive verification ordering.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "verification ordering; no verification tiers here",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 22,
+      "rule_lead": "Rule in memory without forcing function = worse than no rule.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "compounding rule; no rule being memorised",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 23,
+      "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "agent behaviour on user pushback; not a content property",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 24,
+      "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "sim-timing model; no overrun reported",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 25,
+      "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
+      "verdict": "PASS",
+      "evidence": "grep -ciE \"nerd|teacher claude|host-skill\" -> 0 (planted \"Nerd push\" matched). Maintainer block names no host-skill actor; trainer move at L49 names the trainer.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 26,
+      "rule_lead": "Reflection beats: in-chat over file-write.",
+      "verdict": "PASS",
+      "evidence": "The only write is team-leadership.md; downstream readers exist: prompt em-install-leadership-memory produces em-leadership-memory consumed-by 15 prompts (em-close-declare-your-intent, em-run-weekly-diagnostic, ...). Not a proof-of-reflection artifact.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "Closest: L31 \"in the room\" names the room once, inside suggestion-register pacing; check_pedagogy 27 third carve-out (2026-08-12) lifts the blanket ban for a sparing single mention and no accept-note is owed within the ceiling (grep -n room -> only L31). No group/pair/discuss-with sentence; all conversation is student-to-Claude.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 29,
+      "rule_lead": "Eval = fixed yardstick; thing measured learns.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "eval yardstick rule; no scorer in this exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 30,
+      "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
+      "verdict": "PASS",
+      "evidence": "Closest: L29 \"Open team-leadership.md... is that true of them?\" asks the student to read Claude output for correctness. Harm the rule prevents: student burden on what Claude could audit (diffs, errors). Absent here: whether a placement is true of a person is only in the manager head, so Claude cannot audit it, and the maintainer L47 records this as the beat (student_facing 9 carve-out). Rule question: 30 has no sentence for ground truth that lives in the reader, only for emotional-payoff reading.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 31,
+      "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
+      "verdict": "PASS",
+      "evidence": "Phase does not end on Claude summary: L25 reports what it placed, then L29 \"Open team-leadership.md\" sends the student to the artifact. Self-audit charity: the prompt asks Claude to name its least sure placement and to write gaps instead of guessing, an over-flag instruction in miniature. Closest: L25 \"tells you what it placed\" alone would be a summary-trust risk, held by L29.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 32,
+      "rule_lead": "Offered structures need forced-engagement mechanic.",
+      "verdict": "PASS",
+      "evidence": "Offered structure (three blocks, ADKAR, tiers) is paired with forced engagement: L29 \"For each, ask one question: is that true of them?\" and L33 \"A placement you disagree with is not a failed exercise\" (permission to reject). Closest: L31 \"One or two corrections are plenty\" lets a student stop at one, but the per-person question already forces each read.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 33,
+      "rule_lead": "Source-type blindness on ingestion.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no heterogeneous source folder; one hand-written notes file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 34,
+      "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no task selection; input is the manager notes file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "34b",
+      "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "the maintainer failure-mode line (thin notes) is recoverable by the body Keep-the-gaps section, and no hedge holds a premise up",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 35,
+      "rule_lead": "Audience tier determines authoring substrate.",
+      "verdict": "PASS",
+      "evidence": "Audience is engineering managers; substrate is a plain markdown memory file the student installs on day 1 with one paste, no plugin install to steal the teaching moment. Closest: none.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs smoke-test before trust.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no verification machinery built (no hook, judge or loop)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no context-tier reveal; the file loads via later prompts naming it, not taught here",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 39,
+      "rule_lead": "Removals are strategic — ask before cutting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "generation-time removal rule; nothing removed in this read",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 41,
+      "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "single runtime (cli), no dual-runtime fork",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 42,
+      "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no load-bearing platform feature with a fallback; session widget is plain Claude Code",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 43,
+      "rule_lead": "Eval architecture — partition by evidence source, not criterion count.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "eval-architecture rule; not a content property",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 44,
+      "rule_lead": "Plug points + UX.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Plug Points section; UX half judged separately in row UX-check below",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 45,
+      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
+      "verdict": "PASS",
+      "evidence": "Maintainer L50-53: three named-verb Monday outcomes (opens team-leadership.md before a one-to-one; changes one placement citing what the notes missed; books a conversation with one person flagged too thin). Closest to a competency claim: item 2 \"Disagrees with one placement\", but it is observable in the file (entry changed, correction quoted).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 47,
+      "rule_lead": "Per-phase failure mode + escape hatch.",
+      "verdict": "PASS",
+      "evidence": "Failure mode + hatch present for the fenced forcing function: L49 \"notes too thin for any placement -> Claude writes mostly gaps... Trainer move: have them add three lines to the thinnest block and ask Claude to rerun the placement for that person only.\" and the body covers it at L35-37. Per-phase cross-check (student can catch in the moment?): thin-notes -> tell already in BODY (L37 \"Look at the people Claude declined to place\"). Closest to a gap: the Argue beat (L27-33) has no rubber-stamp row (student accepts every placement because each quotes a line); see suggestion.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 48,
+      "rule_lead": "Heavy fan-out prompts get body recovery callout.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "one file read, one file written; no parallel subagents or read-the-world scan",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 49,
+      "rule_lead": "Save belongs with authoring, not loading.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "the file is saved by the create prompt itself; no create-then-use pair inside this exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 50,
+      "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "prompt has no self-grading or overwrite risk accepted for convenience; no known shape-bias",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 51,
+      "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "prompt is not a deliberate antipattern",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 52,
+      "rule_lead": "Session widget — `",
+      "verdict": "PASS",
+      "evidence": "L5 `**Session** *(new, \"Module 1 - See your team\")*` matches the shape; pattern (a) exercise-top, first agentic exercise (maintainer L44). /rename slug in fence L9-11.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52b",
+      "rule_lead": "Widgets carry semantics, not just emphasis — match the widget to MEANING, never to how loud it renders.",
+      "verdict": "PASS",
+      "evidence": "The beat starts a session, so **Session** is the matching widget (L5); no HOX/Note misuse. Closest: none.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52a",
+      "rule_lead": "Module prose carrying a `",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "file is already an extracted exercise under curriculum/exercises",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52c",
+      "rule_lead": "Exercise lead-in trio — three slots, three tenses. A slot filled past its label is this corpus's most common defect.",
+      "verdict": "PASS",
+      "evidence": "Trio present at L13-15 in do/build/point order. Words: do 12, build 13, point 16 (grep of the three lines; budget ~15, point is one over, tolerable). Build names artifact plus what it enables (\"a page that places every person with the evidence behind each call\"). Point survives deleting the artifact (\"A placement you can trace to a line you wrote is one you can argue with\"). Closest: point at 16 words with \"a line you wrote\" clause; no colon-list.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52d",
+      "rule_lead": "Finding the point — four moves, learned writing M1's set 2026-08-12.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "point is a plain purpose line (52c scope note: not a gate on plain points); no backing block to requote",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 53,
+      "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test (widened 2026-08-12).",
+      "verdict": "PASS",
+      "evidence": "Closest: L25 \"Claude writes the file and tells you what it placed, where it is least sure, and what it would want you to find out this week.\" names what the prompt will report, below the prompt. Stays inside: it restates the prompt own three asks (artifact-contract framing, axis c) and hands over no placement content; L19 primer teaches the tier words the student needs to read the answer. Pre-action lead-ins L13-15 name artifact/activity only. Suggestion: cut L25.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 56,
+      "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no audit fix in this file; EM audience, no silent-slow-miss accumulation",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 57,
+      "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no new multi-session mechanic; single session opened",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 58,
+      "rule_lead": "`/clear` = tool, not ceremony.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no /clear or close ceremony in this exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 59,
+      "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no reference restructuring",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 60,
+      "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "scan-unit discipline for auditors; judged at exercise unit here (one file = one exercise)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 61,
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no skill or framework change proposed",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61a",
+      "rule_lead": "Acting on a flagged item (punchlist entry / audit finding / eval BLOCK) — verify before fixing; its prescribed fix is a hypothesis, not an instruction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule for acting on flagged items; nothing flagged",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61b",
+      "rule_lead": "An audit's card-shaped findings are discharged by CARDS, not by notes about them.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "audit-pass process rule; no card-shaped cuts owed by this read",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 62,
+      "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no callouts adjacent to the prompt",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 63,
+      "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "punchlist-audit process rule; none consulted",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 64,
+      "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
+      "verdict": "PASS",
+      "evidence": "Closest: L46 restates most of the registry prompt (ADKAR per person, tags, Decision Journal entry, Quality Gate) inside the maintainer block. Consistent with the registered prompt today (checked against prompts/em-install-leadership-memory.md), so the rot the rule prevents is absent; the unique content (the Bring to Module 2 seed, the no-AUQ guard) is kept. Suggestion to shorten to a pointer.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 65,
+      "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no send-off artefact prerequisite; input is the manager own notes from the prior exercise write-your-team-notes",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 66,
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "build-order rule; not a content property",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 67,
+      "rule_lead": "Story and depth are judged per big learning that develops, never per feature that recurs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "arc-scope rule; judged by the sequential arc read, not per file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 1,
+      "rule_lead": "Group beat ≠ parallel solo work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no beat here belongs to the group: the artifact team-leadership.md is one manager own file and the room is named once as pacing context at L31",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 2,
+      "rule_lead": "The room's output is named as an artefact.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group beat (personal artifact)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 3,
+      "rule_lead": "React, don't author.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group beat (personal artifact)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 4,
+      "rule_lead": "Pre-built material is a hard prerequisite, stated in the module.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group beat (personal artifact)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 5,
+      "rule_lead": "Attribution is stated by a human, recorded verbatim.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group beat (personal artifact)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 6,
+      "rule_lead": "Nothing is written over.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group beat (personal artifact)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 7,
+      "rule_lead": "Filing is invisible.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group beat (personal artifact)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 8,
+      "rule_lead": "Scope-of-sharing is declared before contribution, not after.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group beat (personal artifact)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 10,
+      "rule_lead": "A decision beat needs a real constraint.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group beat (personal artifact)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 11,
+      "rule_lead": "Group decisions are human, and named as such.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group beat (personal artifact)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 12,
+      "rule_lead": "Retrospective = group round, no prompts, trainer silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group beat (personal artifact)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 13,
+      "rule_lead": "Second-facilitator test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group beat (personal artifact)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 14,
+      "rule_lead": "Name the too-big and too-small room.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group beat (personal artifact)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 15,
+      "rule_lead": "Mixed-experience is the default room.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group beat (personal artifact)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 16,
+      "rule_lead": "Room beats overrun; name the protected beat.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group beat (personal artifact)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 17,
+      "rule_lead": "No mechanical coverage — the trainer guide carries the load.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group beat (personal artifact)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Look-lines name the object and the tell (judge-owned, template) with the per-phase failure-row cross-check",
+      "verdict": "PASS",
+      "evidence": "Closest: L29 \"For each, ask one question: is that true of them?\" and L37 \"Look at the people Claude declined to place.\" Object is named (the placement / the gap, Claude account of a person, not the person) and the tell is given for the gaps (L37 \"the things you do not yet know about your own team\") and for a wrong placement (L31 \"what it got wrong, and what you know that the notes did not say\"). Cross-check against maintainer failure rows (L49 thin notes) and leap tests (L51-53): the thin-notes failure is catchable in the moment and its tell is already in BODY L37; nothing catchable is filed only below the fence. Not caught in body: a quoted line that does not say what Claude claims it says (suggestion not owed).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "UX operating ease in seat and reading/reflection scope (template-owned)",
+      "verdict": "PASS",
+      "evidence": "Walk prompt-to-prompt: the single fence L23 pastes as-is (one copy-paste), names team-notes.md (written in the prior exercise, included at see-your-team.md L38) and creates team-leadership.md; no setup assumed beyond the L7 folder. Closest wait-what: L7 \"Start a new Claude Code session in your `leading-agentic-engineering` folder\" relies on the module Start here creating the folder (maintainer L44).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "suggestions": [
+    {
+      "rule": "check_pedagogy.md §47",
+      "line": 49,
+      "now": "Trainer move: have them add three lines to the thinnest block and ask Claude to rerun the placement for that person only.",
+      "proposed": "Trainer move: have them add three lines to the thinnest block and ask Claude to rerun the placement for that person only. Rubber-stamp (every placement accepted because each quotes a line): trainer picks one person and asks the manager what Claude could not have known about them."
+    },
+    {
+      "rule": "check_pedagogy.md §53",
+      "line": 25,
+      "now": "Claude writes the file and tells you what it placed, where it is least sure, and what it would want you to find out this week.",
+      "proposed": "(cut the line; the prompt already asks for exactly these three things)"
+    },
+    {
+      "rule": "check_pedagogy.md §64",
+      "line": 46,
+      "now": "**One prompt, `em-install-leadership-memory`.** Builds `team-leadership.md`: ADKAR per person (furthest stage clearly reached + what they need next), adoption-curve tier for the team (chatting → custom assistants → agentic workflows → compounding engineering), every entry tagged and quoting its line; nothing starts as a rule unless the notes say it has been seen repeatedly; thin notes named, not guessed. Decision Journal opens with one dated entry (placements, alternatives for the least certain, confidence baseline). Quality Gate opens with the calibration question as its top gate. Tail = post-action report (`check_prompts.md` §21) + one thing to find out this week, which seeds Bring to Module 2. No-AUQ guard for the tmux runner (§42).",
+      "proposed": "**One prompt, `em-install-leadership-memory`** (contents live in the registry entry). Tail = post-action report (`check_prompts.md` §21) + one thing to find out this week, which seeds Bring to Module 2. No-AUQ guard for the tmux runner (§42)."
+    }
+  ],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "Rule 30 has no clause for ground truth held only by the reader (does a placement hold true of this person); filed as a rule question, the maintainer L47 records the beat as deliberate. Accept-note found: L41 heading \"Design (EM proving run 2026-09-30)\" dates the whole design block, whose L47 carries the boundary-2 accept for the unfenced Argue beat. The 69 vs 85 rows: brief contained 69 pedagogy + 16 workshop rules, none parked."
+}

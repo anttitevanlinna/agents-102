@@ -38,6 +38,9 @@ Look at the people Claude declined to place. Those gaps are not Claude's failure
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-30 (writing@518a2710 story@518a2710 technical@518a2710 behavior@518a2710 pedagogy@518a2710 strategy@518a2710 slides@518a2710)
+- judges @518a2710: writing PASS (2 findings see instances/engineering-management--exercise--install-your-leadership-memory.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 ## Design (EM proving run 2026-09-30)
 
 - **Atomic — no phase markers.** one prompt and the conversation that follows it; the sections are reading order, not separately timed steps.

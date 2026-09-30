@@ -47,6 +47,9 @@ The diagnostic reads them on its next run and tells you what they change. The pe
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-30 (writing@518a2710 story@518a2710 behavior@518a2710 pedagogy@518a2710 strategy@518a2710 slides@518a2710)
+- judges @518a2710: writing PASS, story PASS, technical REVISE (1/1 see instances/engineering-management--exercise--schedule-the-weekly-diagnostic.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 ## Design (EM proving run 2026-09-30)
 
 - **Atomic — no phase markers.** one setup flow (write, schedule, run once); the last section is between-session work and costs no room time.

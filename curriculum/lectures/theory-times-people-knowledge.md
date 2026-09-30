@@ -39,6 +39,9 @@ Most teams are spread across all four steps. That spread is what you are about t
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-30 (story@518a2710 technical@518a2710 pedagogy@518a2710 strategy@518a2710 slides@518a2710)
+- judges @518a2710: writing REVISE (1/3 see instances/engineering-management--lecture--theory-times-people-knowledge.writing.json), story PASS, technical PASS, behavior REVISE (0/0 see instances/engineering-management--lecture--theory-times-people-knowledge.behavior.json), pedagogy PASS, strategy PASS, slides PASS
+
 ## Design (EM proving run 2026-09-30)
 
 - **Placement:** after `write-your-team-notes`, before `install-your-leadership-memory`. Names the frameworks the install prompt uses, so the placements Claude writes are legible on first read. Short (`check_lectures.md` §2).

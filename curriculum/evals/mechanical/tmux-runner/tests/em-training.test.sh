@@ -120,5 +120,10 @@ grep -q '^RUN m2 .*a.md' "$TRACE" && ok "week 1 observations are there for M2" |
 grep '^RUN m3 ' "$TRACE" | grep -q 'petra.md' && grep '^RUN m3 ' "$TRACE" | grep -q 'sample.md' && ok "week 2 answers and the sample peer are there for M3" || bad "week 2 missing at M3: $(grep 'RUN m3' "$TRACE")"
 [[ "$(cat "$CW/responses/petra.md")" == "manager's own" ]] && ok "a week never overwrites the manager's own file" || bad "fixture overwrote the manager's file"
 
+# With no --to, the chain runs every module (it inherited the mock's --to m2).
+: > "$TRACE"; CW2="$SB/cwd2"; mkdir -p "$CW2"
+( export PATH="$SB/bin:$PATH" HOME="$SB/home" EM_SAMPLE_PEER="$SB/sample/sample-peer-export.md"; bash "$SB/tr/chain-em.sh" --cwd "$CW2" ) >"$SB/chain2.log" 2>&1
+[[ "$(grep -c '^RUN ' "$TRACE")" == 4 ]] && grep -q '^RUN m4' "$TRACE" && ok "no --to runs M1 through M4" || bad "default slice ran: $(grep -o '^RUN m[0-9]' "$TRACE" | tr '\n' ' ')"
+
 echo "em-training.test.sh: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]

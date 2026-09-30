@@ -21,7 +21,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 sut_cwd="$HOME/Documents/em-runner"
 WEEKS="$HERE/fixtures/em-synthetic"
 SAMPLE_PEER="${EM_SAMPLE_PEER:-$HERE/../../../trainings/engineering-management/sample-peer-export.md}"
-from="m1"; to="m2"; do_arrange=""; chain_dir_arg=""
+from="m1"; to="m4"; do_arrange=""; chain_dir_arg=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --from) from="$2"; shift 2 ;;

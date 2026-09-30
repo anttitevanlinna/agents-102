@@ -116,26 +116,34 @@ produced_locations() {
     "$REGISTRY_DIR/$1.md" | sort -u
 }
 
-# $1=prompt key $2=mtime baseline. Every produced location exists (a folder
-# non-empty); at least one of them was written this turn. A prompt may declare
-# a location it only sometimes rewrites, so "every one advanced" would fail the
-# run that behaved best.
+# $1=prompt key $2=mtime baseline. Every produced file exists; a produced
+# folder exists and may be empty (a prompt can create the place later runs write
+# to). At least one location was written this turn: a prompt may declare a
+# location it only sometimes rewrites, so "every one advanced" would fail the
+# run that behaved best. A prompt that produces only scrollback (a chat-only
+# step the next prompt reads from the conversation) owes no file.
 assert_contract() {
   local key="$1" base="$2" loc path fresh=0 fail=0 n=0
+  local all
+  all="$(produced_locations "$key")"
+  if [[ -n "$all" ]] && ! grep -qv '^scrollback$' <<<"$all"; then
+    echo "[assert] PASS $key: chat-only (produces scrollback)"; return 0
+  fi
   while IFS= read -r loc; do
-    [[ -z "$loc" ]] && continue; n=$((n + 1))
+    [[ -z "$loc" || "$loc" == scrollback ]] && continue; n=$((n + 1))
     if [[ "$loc" == */ ]]; then
       path="$sut_cwd/$loc"
-      if [[ -d "$path" && -n "$(ls -A "$path")" ]]; then
+      if [[ -d "$path" ]]; then
         [[ -n "$(find "$path" -type f -newermt "@$base" 2>/dev/null | head -1)" ]] && fresh=1
-      else echo "[assert] FAIL $key: produced folder $loc missing or empty" >&2; fail=1; fi
+        [[ $(stat -f %m "$path" 2>/dev/null || stat -c %Y "$path") -ge $base ]] && fresh=1
+      else echo "[assert] FAIL $key: produced folder $loc missing" >&2; fail=1; fi
     else
       local hits=() f
       for f in "$sut_cwd"/$loc; do [[ -f "$f" ]] && hits+=("$f"); done
       if [[ ${#hits[@]} -eq 0 ]]; then echo "[assert] FAIL $key: produced file $loc missing" >&2; fail=1
       else for f in "${hits[@]}"; do [[ $(stat -f %m "$f" 2>/dev/null || stat -c %Y "$f") -ge $base ]] && fresh=1; done; fi
     fi
-  done < <(produced_locations "$key")
+  done <<<"$all"
   [[ $n -gt 0 ]] || { echo "[assert] FAIL $key: declares no produces: location" >&2; return 1; }
   [[ $fresh -eq 1 ]] || { echo "[assert] FAIL $key: wrote none of the $n location(s) it declares" >&2; fail=1; }
   [[ $fail -eq 0 ]] && echo "[assert] PASS $key: all $n produced location(s) present, written this turn"

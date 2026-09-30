@@ -39,13 +39,29 @@ contract() { ( cd "$W" && PROMPT_REGISTRY="$SB/prompts" RUN_EM_SOURCE_ONLY=1 sou
 base=$(( $(date +%s) - 2 ))
 mkdir -p "$W/agents" "$W/diagnostics"; echo x > "$W/memo.md"; echo x > "$W/agents/a.md"; echo x > "$W/diagnostics/check-2026-09-30.md"
 contract "$base" && ok "all produced locations present, one written this turn: pass" || bad "a real deliverable failed the contract"
-rm "$W/agents/a.md"
-contract "$base" && bad "an empty produced folder passed" || ok "an empty produced folder fails"
+mv "$W/agents" "$W/agents.away"
+contract "$base" && bad "a missing produced folder passed" || ok "a missing produced folder fails"
+mv "$W/agents.away" "$W/agents"; rm "$W/agents/a.md"
+contract "$base" && ok "an empty produced folder passes (a prompt may create the place for later runs)" || bad "an empty produced folder failed"
 echo x > "$W/agents/a.md"; rm "$W/diagnostics/check-2026-09-30.md"
 contract "$base" && bad "a missing dated file passed" || ok "a missing <date> file fails"
 echo x > "$W/diagnostics/check-2026-09-30.md"
-touch -t 202001010000 "$W/memo.md" "$W/agents/a.md" "$W/diagnostics/check-2026-09-30.md"
+touch -t 202001010000 "$W/memo.md" "$W/agents/a.md" "$W/diagnostics/check-2026-09-30.md" "$W/agents" "$W/diagnostics"
 contract "$base" && bad "a turn that wrote nothing passed" || ok "a turn that wrote nothing it declares fails"
+
+cat > "$SB/prompts/t-chat.md" <<'EOF2'
+---
+key: t-chat
+produces:
+  - id: talk
+    location: scrollback
+    consumed-by:
+      - prompt:t-two
+---
+Body.
+EOF2
+chat() { ( cd "$W" && PROMPT_REGISTRY="$SB/prompts" RUN_EM_SOURCE_ONLY=1 source "$ROOT/run-em.sh" --training em --module m1 --cwd "$W" && assert_contract t-chat "$1" ) >/dev/null 2>&1; }
+chat "$base" && ok "a chat-only prompt (produces scrollback) owes no file" || bad "a scrollback-only prompt failed the contract"
 
 # ---- module-end checks ------------------------------------------------------
 mod_end() { ( cd "$W" && RUN_EM_SOURCE_ONLY=1 source "$ROOT/run-em.sh" --training em --module "$1" --cwd "$W" && assert_module_end "$1" ) >/dev/null 2>&1; }

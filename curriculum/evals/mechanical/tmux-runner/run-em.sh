@@ -161,7 +161,10 @@ assert_module_end() {
       done
       for p in "${PEOPLE[@]}"; do section "team knowledge" | grep -q "$p" || missing="$missing $p"; done
       [[ -z "$missing" ]] || { echo "[assert] FAIL m1 end: Team Knowledge does not place:$missing" >&2; fail=1; }
-      section "team knowledge" | grep -qi 'hypothes' || { echo "[assert] FAIL m1 end: no hypothesis tier" >&2; fail=1; } ;;
+      section "team knowledge" | grep -qi 'hypothes' || { echo "[assert] FAIL m1 end: no hypothesis tier" >&2; fail=1; }
+      # The 1-10 rating from line one of the notes is the baseline M4 compares to.
+      section "decision journal" | grep -iE 'baseline|confidence' | grep -vi 'not recorded' | grep -qE '(^|[^0-9])([1-9]|10)([^0-9]|$)' \
+        || { echo "[assert] FAIL m1 end: no confidence baseline in the Decision Journal" >&2; fail=1; } ;;
     m2)
       [[ $(grep -c '?' "$sut_cwd/questions.md" 2>/dev/null || echo 0) -ge 5 ]] || { echo "[assert] FAIL m2 end: fewer than 5 questions in questions.md" >&2; fail=1; } ;;
     m3)

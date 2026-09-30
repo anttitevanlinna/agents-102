@@ -11,7 +11,6 @@
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-KIT="$HERE/fixtures/em-mock-synthetic"
 
 sut_cwd="$HOME/Documents/em-runner"
 while [[ $# -gt 0 ]]; do
@@ -29,7 +28,7 @@ if [[ -e "$sut_cwd" ]]; then
 fi
 mkdir -p "$sut_cwd"
 
-perl -0777 -pe 's/<!--.*?-->\s*//s' "$KIT/team-notes.md" > "$sut_cwd/team-notes.md"
+cp "$HERE/fixtures/em-synthetic/team-notes.md" "$sut_cwd/team-notes.md"
 "$HERE/install-sut.sh" "$sut_cwd"
 
 echo "[arrange] DONE. Training dir: $sut_cwd"

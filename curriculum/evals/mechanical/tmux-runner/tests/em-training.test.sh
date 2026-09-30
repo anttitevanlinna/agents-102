@@ -77,7 +77,10 @@ cat > "$W/team-leadership.md" <<'EOF'
 ## Quality Gate
 - Did you make progress?
 EOF
-mod_end m1 && ok "M1 end: three blocks, everyone placed, a hypothesis" || bad "a good M1 memory failed"
+mod_end m1 && ok "M1 end: three blocks, everyone placed, a hypothesis, the baseline" || bad "a good M1 memory failed"
+sed -i.bak 's/Confidence baseline: 4\./Confidence baseline: not recorded./' "$W/team-leadership.md"
+mod_end m1 && bad "M1 end passed with no confidence baseline" || ok "M1 end fails when the confidence baseline is not recorded"
+sed -i.bak 's/Confidence baseline: not recorded\./Confidence baseline: 4./' "$W/team-leadership.md"
 sed -i.bak 's/Ingrid: Ability. //' "$W/team-leadership.md"
 mod_end m1 && bad "M1 end passed with a person missing" || ok "M1 end fails when a person is not placed"
 mod_end m3 && ok "M3 end: two crux-tagged hypotheses" || bad "two crux failed M3 end"
@@ -124,6 +127,10 @@ grep '^RUN m3 ' "$TRACE" | grep -q 'petra.md' && grep '^RUN m3 ' "$TRACE" | grep
 : > "$TRACE"; CW2="$SB/cwd2"; mkdir -p "$CW2"
 ( export PATH="$SB/bin:$PATH" HOME="$SB/home" EM_SAMPLE_PEER="$SB/sample/sample-peer-export.md"; bash "$SB/tr/chain-em.sh" --cwd "$CW2" ) >"$SB/chain2.log" 2>&1
 [[ "$(grep -c '^RUN ' "$TRACE")" == 4 ]] && grep -q '^RUN m4' "$TRACE" && ok "no --to runs M1 through M4" || bad "default slice ran: $(grep -o '^RUN m[0-9]' "$TRACE" | tr '\n' ' ')"
+
+# The kit's notes open on the confidence rating, as write-your-team-notes asks.
+head -1 "$ROOT/fixtures/em-synthetic/team-notes.md" | grep -qE '^[0-9]+\b' && ok "EM kit notes: line one is the 1-10 rating" || bad "EM kit notes do not open on the rating"
+grep -q 'em-synthetic/team-notes.md' "$ROOT/arrange-em.sh" && ok "arrange-em.sh lays the EM kit's notes" || bad "arrange-em.sh still lays the mock's notes"
 
 echo "em-training.test.sh: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]

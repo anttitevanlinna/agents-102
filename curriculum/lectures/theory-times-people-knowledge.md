@@ -2,7 +2,7 @@
 
 The notes you just wrote are half of a diagnosis. The other half is a set of lenses: ways of looking at people and teams that others have tested before you. Neither half works alone.
 
-## We bring the lenses
+## Lenses others have tested
 
 Three lenses run through this training.
 

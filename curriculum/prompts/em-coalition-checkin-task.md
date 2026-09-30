@@ -1,10 +1,10 @@
 ---
 key: em-coalition-checkin-task
 dest: Claude Code
-context: Schedule sidebar task prompt, weekly
+context: local routine instructions (desktop app Routines), weekly
 runtime: cli
 origin: engineering-management/find-the-two-crux
-note: EM M3, exercise schedule-the-coalition-check-in. The prompt pasted into the desktop app's Schedule sidebar (and runnable headless in the CLI); follows agents/coalition-check-in.md.
+note: EM M3, exercise schedule-the-coalition-check-in. The prompt pasted as a local routine's instructions in the desktop app (and runnable headless in the CLI); follows agents/coalition-check-in.md.
 requires:
   - id: em-coalition-checkin-agent
     source: prompt:em-schedule-coalition-checkin

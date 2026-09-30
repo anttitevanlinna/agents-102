@@ -20,12 +20,11 @@ Claude writes the agent file, creates `observations/` and `diagnostics/`, and te
 
 ## Put it on a weekly clock
 
-Open the Claude Code desktop app and go to the **Schedule** sidebar. Click **New task → New local task**, and fill in:
+Open the Claude Code desktop app. In the **Code** tab, click **Routines**, then **New routine**, and choose **Local**. Fill in:
 
 - **Name:** `Weekly team diagnostic`
-- **Folder:** your `leading-agentic-engineering` folder
-- **Frequency:** Weekly, on the day before your usual one-to-ones
-- **Prompt:** the one below
+- **Instructions:** the prompt below, with your `leading-agentic-engineering` folder picked underneath it
+- **Schedule:** Weekly, on the day before your usual one-to-ones
 
 The prompt tells Claude to read the agent file and do what it says.
 
@@ -58,7 +57,7 @@ The diagnostic reads them on its next run and tells you what they change. The pe
 - **Proposes only.** Keeps the tier label an epistemic stance the manager owns (strategy § Block 1: the promotion cycle is the learning). Promotions and demotions reach `team-leadership.md` only when the manager asks Claude to apply one.
 - **Agent defined in one breath** before first use (`check_student_facing.md` §2): chatting-fluency audience, first agent file of the training.
 - **Weekday choice** ("the day before your usual one-to-ones") ties the diagnostic to a moment the manager will use it; no time-of-day anchor (§22).
-- **Platform claims** verified 2026-09-30 against https://code.claude.com/docs/en/desktop-scheduled-tasks.md via `claude-code-guide`: Schedule → New local task, Weekly frequency with day + time picker, Run now on the task page, local tasks read and write the chosen folder. Laptop must be awake with the app running for a scheduled run; catch-up behaviour lives in Agents 101's quick reference, not here. Re-verify at cohort (`check_platform_and_boundaries.md` §4).
+- **Platform claims** verified 2026-09-30 against https://code.claude.com/docs/en/desktop-scheduled-tasks.md (curl): Code tab → Routines → New routine → Local; fields Name, Description, Instructions (folder picked below it), Schedule presets incl. Daily and Weekly (day + time); Run now on the task detail page; a run the machine sleeps through is skipped, not caught up. The laptop must be awake with the app running. Re-verify at cohort (`check_platform_and_boundaries.md` §4).
 - **First run on an empty `observations/`** is expected to be near-empty; the body names that as the baseline (§47 failure mode + escape hatch). Trainer move if the run fails: rerun `em-run-weekly-diagnostic` in the terminal session to see the error in scrollback.
 - **Observation file shape** is left loose (name or role, date, a few lines). M3's coalition check-in and M4's hand-off write observations too; a strict schema would break them.
 - **Leap test (3 Monday outcomes):**

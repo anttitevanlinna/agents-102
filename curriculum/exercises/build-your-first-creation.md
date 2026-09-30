@@ -38,7 +38,7 @@ The test is whether it could only exist here. If you could hand it to another ma
 
 *4 min*
 
-Some creations should wake up without you: weekly, or when new notes arrive. If yours is one, schedule it in the Claude Code desktop app's **Schedule** sidebar, the same way you scheduled the weekly diagnostic, with the prompt the agent gave you. If it runs when someone asks it to, leave it as it is.
+Some creations should wake up without you: weekly, or when new notes arrive. If yours is one, schedule it as a local routine in the Claude Code desktop app, the same way you scheduled the weekly diagnostic, with the prompt the agent gave you. If it runs when someone asks it to, leave it as it is.
 
 <!-- maintainer -->
 
@@ -46,7 +46,7 @@ Some creations should wake up without you: weekly, or when new notes arrive. If 
 - **Originality bar** (strategy § Deliverable): template with the team's name pasted in does not count. Enforced in the fence (cite entries + observations; "if it would work for any team unchanged, it is not done") and in the Phase 2 push-back line.
 - **Leadership work, not product features** (strategy § player-coach). Body examples are a range, not a menu (pedagogy §20), plus an explicit open door.
 - **Scope cap:** one agent, one job (prompts §49). Proposes only, never sends or edits outside `creation/`. Manager-as-bottleneck guard (strategy § "the manager's own necessity becomes a design question"): fence requires someone other than the manager can use it.
-- **Scheduling:** desktop app Schedule sidebar, same flow as `schedule-the-weekly-diagnostic` and Agents 101 `personal-agent-homework`. The build prompt tells the agent to hand back a schedule prompt only if it needs one; everything runs headless in the CLI.
+- **Scheduling:** desktop app local routine, same flow as `schedule-the-weekly-diagnostic` (verified 2026-09-30 against https://code.claude.com/docs/en/desktop-scheduled-tasks.md (curl): Code tab → Routines → New routine → Local; fields Name, Description, Instructions (folder picked below it), Schedule presets incl. Daily and Weekly (day + time); Run now on the task detail page; a run the machine sleeps through is skipped, not caught up.) The build prompt tells the agent to hand back a schedule prompt only if it needs one; everything runs headless in the CLI.
 - **Failure modes:** too big → Phase 2 callout; too generic → push-back line; first run fails on missing material → the agent says what it needed (fence), and the manager adds it to `observations/` rather than inventing it.
 - **Timing:** 35 → 30 at Pass 3 (105-min cap).
 - **Leap test (Monday, arc-mood carve-out: name the artifact):**

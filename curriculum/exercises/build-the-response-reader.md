@@ -24,11 +24,11 @@ Check the coalition list against your instinct. Someone on it you would not have
 
 ## Schedule it daily
 
-In the desktop app, open the **Schedule** sidebar. Click **New task → New local task**. Fill in:
+In the desktop app's **Code** tab, click **Routines**, then **New routine**, and choose **Local**. Fill in:
 
 - **Name:** `Response reader`
-- **Frequency:** Daily, at a time you will actually look at the result
-- **Prompt:** the prompt below
+- **Instructions:** the prompt below, with your `leading-agentic-engineering` folder picked underneath it
+- **Schedule:** Daily, at a time you will actually look at the result
 
 Ask Claude to read the reader's instructions and rewrite the shortlists from what is in `responses/` now.
 
@@ -48,10 +48,10 @@ Save. Click **Run now** once and check that `shortlists.md` changed. Each run st
 - **Companions, not instruments** (strategy § Coalition as companions): the reader lists who has not answered without ranking them down, and quotes the line that put each person on the list so the manager judges the evidence, not a score.
 - **Cold start (§47):** in the room there may be no answers yet. The reader reads `observations/` (M1's Bring) as a starting point and marks every entry that rests on an observation rather than an answer. Both empty: it writes the two empty lists so the shape is visible.
 - **Correct the instructions, not the output:** a wrong placement becomes an edit to the agent file, so the next daily run carries the correction.
-- **Platform claim:** Schedule sidebar, *New task → New local task*, *Run now*, as shipped in `personal-agent-homework` (Agents 101). Re-verify labels before a cohort (`check_platform_and_boundaries` §4). The page names no working-folder field because the Agents 101 page does not; verify whether a local task needs one set to the training folder.
+- **Platform claim:** verified 2026-09-30 against https://code.claude.com/docs/en/desktop-scheduled-tasks.md (curl): Code tab → Routines → New routine → Local; fields Name, Description, Instructions (folder picked below it), Schedule presets incl. Daily and Weekly (day + time); Run now on the task detail page; a run the machine sleeps through is skipped, not caught up.
 - **Handoff:** `shortlists.md` and `agents/response-reader.md` are read by M3 (`em-shortlist-and-first-move` reruns the reader on the full week; `em-find-two-crux`; the coalition check-in names members from it; the peer export carries it).
 
 **Leap test** (`check_pedagogy` §45, three observable outcomes by the next working day):
-1. **`Response reader` is a scheduled task in the desktop app and has run at least once.** Falsifiable: the Schedule sidebar shows a last-run time.
+1. **`Response reader` is a scheduled task in the desktop app and has run at least once.** Falsifiable: the routine's history shows a run.
 2. **`shortlists.md` holds two lists, and every entry quotes the answer or observation behind it.** Falsifiable: an entry with no quote is a guess.
 3. **The manager names one coalition candidate they would not have picked by title.** Falsifiable: a Decision Journal line or observation saying who, and which answer did it.

@@ -8,7 +8,7 @@ The tempting move is to pick the platform first: evaluate the vendors, choose th
 
 The trouble is that people who have not used agents cannot tell you what they need from a platform. You end up choosing between vendor stories. Competence comes first because it creates pull: once people can do real work with an agent, they find the walls themselves, and those walls tell you what the platform has to do.
 
-Fin (Intercom) is a useful picture of the order. Its engineering platform is a shared repository of skills its own engineers wrote. The company reports 153 people contributing 267 skills within three months. The platform grew around what people had already learned to build.
+Fin (Intercom) shows what fills a platform once people can build: its engineers wrote the skills in its shared plugin repository, and the company reports 153 people contributing 267 skills within three months.
 
 ## Pull, not mandate
 

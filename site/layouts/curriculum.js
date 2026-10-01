@@ -974,6 +974,26 @@
         });
     }
 
+    // Exercise timing rows get `.ex-time`, so a theme styles them by meaning.
+    // Two source forms: a `**Time:** 20 minutes.` row, and a duration alone in
+    // emphasis under a phase heading (`*15 min*`). An emphasised prose sentence
+    // after a heading looks the same to CSS (text nodes don't count for
+    // :only-child), so the duration itself decides. Slides calls this too.
+    var TIMING_ALONE_RE = /^~?\s*\d+(\s*[–-]\s*\d+)?\s*(min|mins|minutes?)\.?$/i;
+    function isTimingRow(p) {
+        var first = p.firstElementChild;
+        if (!first) return false;
+        if (first.tagName === 'STRONG' && /^time\b/i.test(first.textContent.trim())) return true;
+        return first.tagName === 'EM' && p.children.length === 1
+            && p.textContent.trim() === first.textContent.trim()
+            && TIMING_ALONE_RE.test(first.textContent.trim());
+    }
+    function decorateTiming(root) {
+        Array.prototype.forEach.call(root.querySelectorAll('p'), function (p) {
+            if (isTimingRow(p)) p.classList.add('ex-time');
+        });
+    }
+
     // Generic guidance widget. Source shape (single paragraph):
     //   **Note** <guidance prose>
     // Same construction as .hox-block but calm teal, not alarm-orange: HOX is
@@ -1423,6 +1443,7 @@
         decorateSessions: decorateSessions,
         decorateHox: decorateHox,
         decorateNote: decorateNote,
+        decorateTiming: decorateTiming,
         decoratePrompts: decoratePrompts,
         attachAnchorPopups: attachAnchorPopups,
         addCopyButton: addCopyButton,

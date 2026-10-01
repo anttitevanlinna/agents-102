@@ -64,10 +64,7 @@
       }
       i--;
     }
-    Array.prototype.forEach.call(root.querySelectorAll('p'), function (p) {
-      var s = leadStrong(p);
-      if (s && /^time\b/i.test(s.textContent)) p.classList.add('ex-time');
-    });
+    if (global.CurriculumRuntime && global.CurriculumRuntime.decorateTiming) global.CurriculumRuntime.decorateTiming(root);
     Array.prototype.forEach.call(root.querySelectorAll('blockquote'), function (bq) {
       bq.classList.add('steer');
       var fp = bq.querySelector('p'), fs = fp && leadStrong(fp);

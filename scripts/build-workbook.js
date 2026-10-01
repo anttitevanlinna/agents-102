@@ -583,6 +583,7 @@ const WORKBOOK_INIT_JS = `
     CurriculumRuntime.decorateSessions(document.body);
     CurriculumRuntime.decorateHox(document.body);
     CurriculumRuntime.decorateNote(document.body);
+    CurriculumRuntime.decorateTiming(document.body);
     CurriculumRuntime.decoratePrompts(document.body);
     CurriculumRuntime.decorateDiagramZoom(document.body);
     CurriculumRuntime.installReadingProgress();
@@ -714,6 +715,7 @@ const TRAINER_GUIDE_INIT_JS = `
     CurriculumRuntime.decorateSessions(document.body);
     CurriculumRuntime.decorateHox(document.body);
     CurriculumRuntime.decorateNote(document.body);
+    CurriculumRuntime.decorateTiming(document.body);
     CurriculumRuntime.decoratePrompts(document.body);
     CurriculumRuntime.decorateDiagramZoom(document.body);
     CurriculumRuntime.installReadingProgress();

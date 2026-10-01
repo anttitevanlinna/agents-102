@@ -1,11 +1,19 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-09-29 (cycle 235)
-OODA cycles: 83
+Last updated: 2026-10-01 (cycle 236)
+OODA cycles: 84
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-10-01)
+
+**CYCLE 236 UPDATE (Oct 1) — HYDRAFUSION D+3: ZERO PRACTITIONER POST-ROLLOUT REPORTS (WITHIN 5–7 DAY WINDOW; EXPECT FIRST REPORTS OCT 2–4); FORUM SHIFTS TO ENTERPRISE COMPLIANCE QUESTIONS (WHICH DPA GOVERNS MULTI-VENDOR ROUTING? DOES MODEL-POLICY LIST TRAVEL THROUGH ROUTING LAYER?); GITHUB COPILOT APP STILL UNCONFIRMED FROM PRIMARY SOURCE; NEW KB FINDING: HYDRAFUSION CONTEXT ARCHITECTURE LIMITATION — INVARIANT KNOWLEDGE (BUILD COMMANDS, STYLE GUIDES) SURVIVES ROUTING; DISCOVERED KNOWLEDGE (DECISIONS, CONSTRAINTS LEARNED THROUGH CORRECTION) CANNOT SURVIVE PER-REQUEST ROUTING — MUST BE EXTERNALIZED TO MEMORY INFRASTRUCTURE (MEMORYLAKE ANALYSIS [PRACTITIONER ANALYSIS], EXTENDS CYCLE 224 L4 META-PATTERN WITH INVARIANT/DISCOVERED TAXONOMY); GITSPAWN ULTRAREVIEW DAY+30: STILL UNPATCHED — V2.1.286 (SEP 30) IS LATEST; V2.1.285 (SEP 29) CONTAINED SIGNIFICANT SECURITY FIXES (POWERSHELL PERMISSION CHECK, POLICY LOADING, URL PASSWORD REDACTION, ARTIFACT TOOL AUTHORIZATION, DISABLE_WEB_FETCH, ALLOWEDPROVIDERS) BUT NONE TOUCH FSMONITOR/ULTRAREVIEW ATTACK VECTOR; THREE RELEASES (V2.1.284–286) IN THREE DAYS = DELIBERATE NON-PRIORITY POSTURE FROM ANTHROPIC, NOT LAG; MANIFOLD EMBARGO CONTINUES PAST DAY+30; NO CVE ASSIGNED; NO IN-WILD EXPLOITATION; CTO IMPLICATION: ARCHITECT ULTRAREVIEW MITIGATIONS INDEPENDENTLY — DO NOT AWAIT PATCH; OPENAI AGENTS API DAY+21: BILLING STARTS OCT 5 (NOT OCT 10 AS PRIOR ANALYSIS ASSUMED) — FIRST PRACTITIONER REPORTS EXPECTED OCT 5–19; ZERO DEPLOYER-DIRECT PRODUCTION ACCOUNTS THROUGH PRE-BILLING WINDOW; PROMPT OBJECTS NOV 30 (60 DAYS) — NO SEARCH PASS THIS CYCLE.**
+
+**Watch Cycle 237 (Oct 2–4+):** HydraFusion — D+4 to D+7 window for first practitioner post-rollout reports; GitHub Copilot app primary confirmation still needed; GitSpawn Day+31–34 — any patch or Manifold PoC; OpenAI Agents API approaching Oct 5 billing onset (Day+25) — watch for first deployer announcements on/after Oct 5; Prompt Objects Nov 30 (60 days) — search for practitioner reports of teams encountering double-migration trap.
+
+([github.com/orgs/community/discussions/206492](https://github.com/orgs/community/discussions/206492), Sep 30 2026 — [practitioner direct — forum, enterprise compliance questions]; [memorylake.ai/en/blogs/copilot-hydrafusion-per-request-context](https://www.memorylake.ai/en/blogs/copilot-hydrafusion-per-request-context) — [practitioner analysis — invariant/discovered context taxonomy]; [code.claude.com/docs/en/changelog](https://code.claude.com/docs/en/changelog), Sep 30 2026 — [vendor documentation — v2.1.286 no security fix]; [github.com/anthropics/claude-code/releases](https://github.com/anthropics/claude-code/releases) — [vendor documentation — v2.1.286 latest]; [dev.classmethod.jp/en/articles/20260930-cc-updates-v2-1-285/](https://dev.classmethod.jp/en/articles/20260930-cc-updates-v2-1-285/), Sep 30 2026 — [practitioner analysis — v2.1.285 security fix detail]; [shattered.io/gitspawn-ai-coding-agent-vulnerability-2026/](https://shattered.io/gitspawn-ai-coding-agent-vulnerability-2026/) — [domain trade publication — patch status summary]; [eesel.ai/blog/openai-agents-api-pricing](https://www.eesel.ai/blog/openai-agents-api-pricing) — [practitioner analysis — billing date Oct 5 confirmed])
 
 ## Key Verdict (as of 2026-09-29)
 

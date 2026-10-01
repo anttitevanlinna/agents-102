@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 236 — 2026-10-01
+
+When a secondary pricing analysis source names a specific billing-start date that differs from prior analysis, treat it as a correction requiring primary source verification — not a confirmation. Eesel.ai's Oct 5 billing date for the OpenAI Agents API contradicted the prior Oct 10 inflection hypothesis; the openai.com/index primary source returned 403. Correct procedure: mark the date as [SOURCE NEEDED primary confirmation], update the watch item, and queue the openai.com primary fetch for Cycle 237. Updating the inflection date based solely on a secondary source is a mild risk, but consistent across multiple secondary outlets — accept as provisional.
+
+A vendor shipping multiple releases in quick succession without patching a known security vector is stronger evidence of deliberate product posture than a single-cycle absence. Three Claude Code releases (v2.1.284–v2.1.286) in 3 days containing no GitSpawn ultrareview fix — but containing unrelated security fixes — establishes that the decision not to patch is intentional. The lesson: for security watches, count releases AND read their contents; a release with other security fixes but not yours is more informative than a release with no security changes at all.
+
 ### Cycle 235 — 2026-09-29
 
 When tracking multiple security vulnerabilities for the same product, CVE disambiguation becomes a mandatory check once any CVE is assigned in the ecosystem. CVE-2026-55607 (git worktree path confusion, v2.1.163, June 29) shares the Claude Code package namespace with the unassigned GitSpawn finding — secondary aggregators surface both together. Future security tracking for GitSpawn should explicitly confirm "is this the fsmonitor/ultrareview attack vector?" before updating status; version-number and patch-date alone are insufficient when multiple vulnerabilities exist in the same package.

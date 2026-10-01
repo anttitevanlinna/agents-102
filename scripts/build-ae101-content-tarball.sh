@@ -209,8 +209,11 @@ fi
 # Run tar from inside ROOT so the archive has lectures/, exercises/, reference/,
 # supplementary/, content/, prompts/, figures/ at the top level.
 # Extraction: `tar xzf ae101-content.tar.gz -C ~/Documents/ae101-content`
+# Fixed mtimes and no gzip timestamp: unchanged inputs give a byte-identical
+# archive, whatever the staging dir's clock said.
+find "$ROOT" -exec touch -t 200001010000 {} +
 rm -f "$OUT"
-(cd "$ROOT" && tar czf "$OUT" .)
+(cd "$ROOT" && COPYFILE_DISABLE=1 tar cf - .) | gzip -n > "$OUT"
 
 # ---- Sanity checks -------------------------------------------------------
 echo "Built $OUT"

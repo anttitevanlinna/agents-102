@@ -407,7 +407,7 @@ function buildTopNav(trainingKey, t, customer) {
     chips.push(`      <li><a href="#${m.slug}" data-target="${m.slug}">M${CR.moduleOrdinal(trainingKey, m.slug)}</a></li>`);
   });
   return `<nav class="workbook-topnav" aria-label="Workbook navigation">
-  <a class="workbook-topnav__home" href="#top">${CR.esc(t.label)} — ${CR.esc(customer)}</a>
+  <a class="workbook-topnav__home" href="#top">${CR.esc(t.label)} — ${CR.esc(BRAND.name(customer))}</a>
   <ol class="workbook-topnav__modules">
 ${chips.join('\n')}
   </ol>
@@ -428,7 +428,7 @@ function buildBody(trainingKey, customer, contentUrl) {
 
   const cover = `
 <header class="workbook-cover" id="top">
-  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(customer)} workbook</p>
+  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(BRAND.name(customer))} workbook</p>
   <h1 class="cover-title">${CR.esc(t.label)}</h1>
   <p class="lede">${CR.esc(plainDisplayText(t.lede))}</p>
 </header>
@@ -526,18 +526,45 @@ const SLIDES_CSS = fs.readFileSync(path.join(ROOT, 'site/layouts/slides.css'), '
 const SLIDES_JS = fs.readFileSync(path.join(ROOT, 'site/layouts/slides.js'), 'utf8');
 
 // Customer branding (AGENTS_BRAND_DIR): a folder the customer owns, holding
-// brand.css (appended after every stylesheet, so it wins the cascade) and/or
-// logo.svg | logo.png (inlined on the covers). Unset → no trace in the output.
+//   brand.css      appended after every stylesheet, so it wins the cascade
+//   logo.svg|png   inlined on the covers, and once as `--brand-logo` (defined
+//                  before brand.css) so customer CSS can place the same mark
+//                  anywhere without carrying a second copy
+//   customer.json  display identity: name, logoAlt, hubHeading, hubLede. The
+//                  customer argument stays the path/URL slug; it is the name
+//                  only when customer.json gives none
+//   assets/        copied to <customer>/brand-assets/; brand.css refers to
+//                  them as url(assets/...), rewritten per page depth
+// Every page passes its depth below the customer dir to style(). Unset → no
+// trace in the output, and the covers keep the vendor identity.
 const BRAND = (() => {
   const dir = process.env.AGENTS_BRAND_DIR
-  if (!dir) return { style: '', logo: () => '' }
+  if (!dir) return { on: false, name: s => s, hub: {}, style: () => '', logo: () => '', copyAssets: () => {} }
   const read = f => { try { return fs.readFileSync(path.join(dir, f)) } catch { return null } }
   const css = read('brand.css')
   const svg = read('logo.svg'), png = svg ? null : read('logo.png')
   const src = svg ? `data:image/svg+xml;base64,${svg.toString('base64')}` : png ? `data:image/png;base64,${png.toString('base64')}` : ''
+  const raw = read('customer.json')
+  let id = {}
+  if (raw) {
+    try { id = JSON.parse(raw.toString('utf8')) } catch (e) { throw new Error(`AGENTS_BRAND_DIR/customer.json is not valid JSON: ${e.message}`) }
+  }
+  const name = slug => id.name || slug
+  const assetsDir = path.join(dir, 'assets')
   return {
-    style: css ? `\n<style data-brand>${css.toString('utf8')}</style>` : '',
-    logo: alt => src ? `<img class="brand-logo" src="${src}" alt="${CR.esc(alt)}">\n  ` : '',
+    on: true, name,
+    hub: { heading: id.hubHeading, lede: id.hubLede },
+    style: depth => (src ? `\n<style data-brand-logo>:root { --brand-logo: url("${src}"); }</style>` : '')
+      + (css ? `\n<style data-brand>${css.toString('utf8').replace(
+        /url\(\s*(["']?)(?:\.\/)?assets\/([^"')]+)\1\s*\)/g,
+        (_, q, p) => `url("${'../'.repeat(depth)}brand-assets/${p}")`)}</style>` : ''),
+    logo: slug => src ? `<img class="brand-logo" src="${src}" alt="${CR.esc(id.logoAlt || name(slug))}">\n  ` : '',
+    copyAssets: customerDir => {
+      if (!fs.existsSync(assetsDir)) return
+      const dst = path.join(customerDir, 'brand-assets')
+      fs.rmSync(dst, { recursive: true, force: true })
+      fs.cpSync(assetsDir, dst, { recursive: true })
+    },
   }
 })()
 
@@ -673,7 +700,7 @@ function buildTrainerGuide(customer, trainingKey) {
 
   const cover = `
 <header class="workbook-cover" id="top">
-  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(customer)} workbook</p>
+  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(BRAND.name(customer))} workbook</p>
   <h1 class="cover-title">Trainer delivery guide</h1>
 </header>
 `;
@@ -705,9 +732,9 @@ function trainerGuideTemplate(customer, content) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trainer delivery guide — ${CR.esc(customer)}</title>
+<title>Trainer delivery guide — ${CR.esc(BRAND.name(customer))}</title>
 <style>${SPA_CSS}
-${TRAINER_WIDTH_CSS}</style>${BRAND.style}
+${TRAINER_WIDTH_CSS}</style>${BRAND.style(1)}
 </head>
 <body class="runtime-cli workbook">
 ${content}
@@ -846,7 +873,7 @@ function buildTrainerModules(customer, trainingKey) {
 
   const cover = `
 <header class="workbook-cover" id="top">
-  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(customer)} workbook</p>
+  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(BRAND.name(customer))} workbook</p>
   <h1 class="cover-title">Per-module glance</h1>
 </header>
 `;
@@ -860,10 +887,10 @@ function trainerModulesTemplate(customer, content) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Per-module glance — ${CR.esc(customer)}</title>
+<title>Per-module glance — ${CR.esc(BRAND.name(customer))}</title>
 <style>${SPA_CSS}
 ${TRAINER_WIDTH_CSS}
-${TRAINER_MODULES_TABS_CSS}</style>${BRAND.style}
+${TRAINER_MODULES_TABS_CSS}</style>${BRAND.style(1)}
 </head>
 <body class="runtime-cli workbook">
 ${content}
@@ -1015,7 +1042,7 @@ function renderTheoryEntry(trainingKey, entry) {
   );
 }
 
-function buildTheoryBody(trainingKey, recipient) {
+function buildTheoryBody(customer, trainingKey, recipient) {
   const t = CR.TRAININGS[trainingKey];
   const manifest = THEORY_HANDBOOK_MANIFEST[trainingKey];
   if (!manifest) {
@@ -1051,9 +1078,12 @@ function buildTheoryBody(trainingKey, recipient) {
   // order to the reader. Ships personalised or not.
   const blurb = `The theory portions of ${t.label} distilled into a single doc. `
     + 'Browse what you find interesting. Make your own connections to what you already know.';
+  const coverBrand = BRAND.on
+    ? `${BRAND.logo(customer)}<p class="theory-cover-brand">${CR.esc(BRAND.name(customer))}</p>`
+    : '<p class="theory-cover-brand">Bosser</p>';
   const cover = `
 <header class="workbook-cover" id="top">
-  <p class="theory-cover-brand">Bosser</p>
+  ${coverBrand}
   <div class="theory-cover-path" aria-hidden="true">${coverPath}</div>
   <p class="eyebrow">Theory handbook</p>
   <h1 class="cover-title">${CR.esc(t.label)}</h1>${dedication}
@@ -1063,14 +1093,15 @@ function buildTheoryBody(trainingKey, recipient) {
   return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
-function theoryHandbookTemplate(trainingKey, content, recipient) {
+function theoryHandbookTemplate(customer, trainingKey, content, recipient) {
   const t = CR.TRAININGS[trainingKey];
   const runtime = t.runtime || 'cli';
   // Recipient leads the <title> so the browser tab, the bookmark and the
   // print/PDF header all carry it — the personalisation survives "save as PDF".
+  const forCustomer = BRAND.on ? ` — ${CR.esc(BRAND.name(customer))}` : '';
   const title = recipient
-    ? `${CR.esc(recipient)} · ${CR.esc(t.label)} · Theory handbook`
-    : `${CR.esc(t.label)} · Theory handbook`;
+    ? `${CR.esc(recipient)} · ${CR.esc(t.label)} · Theory handbook${forCustomer}`
+    : `${CR.esc(t.label)} · Theory handbook${forCustomer}`;
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1078,7 +1109,7 @@ function theoryHandbookTemplate(trainingKey, content, recipient) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${title}</title>
 <style>${SPA_CSS}</style>
-<style data-theory-handbook>${THEORY_HANDBOOK_CSS}</style>
+<style data-theory-handbook>${THEORY_HANDBOOK_CSS}</style>${BRAND.style(1)}
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook theory-handbook" data-training="${trainingKey}">
 ${content}
@@ -1094,7 +1125,7 @@ function buildTheoryHandbook(customer, trainingKey, recipient) {
   const outDir = path.join(CLIENTS_ROOT, customer, trainingKey);
   fs.mkdirSync(outDir, { recursive: true });
   const html = theoryHandbookTemplate(
-    trainingKey, buildTheoryBody(trainingKey, recipient), recipient);
+    customer, trainingKey, buildTheoryBody(customer, trainingKey, recipient), recipient);
   const outFile = path.join(outDir, 'theory-handbook.html');
   fs.writeFileSync(outFile, html);
   const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);
@@ -1135,7 +1166,7 @@ function renderExerciseEntry(slug) {
   return CR.wrapImageFigures(html);
 }
 
-function buildExercisesBody(trainingKey) {
+function buildExercisesBody(customer, trainingKey) {
   const t = CR.TRAININGS[trainingKey];
   if (!t) throw new Error(`Unknown training: ${trainingKey}`);
   const seen = new Set();
@@ -1153,14 +1184,14 @@ function buildExercisesBody(trainingKey) {
 
   const cover = `
 <header class="workbook-cover" id="top">
-  <p class="eyebrow">${CR.esc(t.label)}</p>
+  ${BRAND.logo(customer)}<p class="eyebrow">${BRAND.on ? `${CR.esc(BRAND.name(customer))} · ` : ''}${CR.esc(t.label)}</p>
   <h1 class="cover-title">Exercises workbook</h1>
 </header>
 `;
   return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
-function exercisesWorkbookTemplate(trainingKey, content) {
+function exercisesWorkbookTemplate(customer, trainingKey, content) {
   const t = CR.TRAININGS[trainingKey];
   const runtime = t.runtime || 'cli';
   return `<!DOCTYPE html>
@@ -1168,8 +1199,8 @@ function exercisesWorkbookTemplate(trainingKey, content) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${CR.esc(t.label)} · Exercises workbook</title>
-<style>${SPA_CSS}</style>
+<title>${CR.esc(t.label)} · Exercises workbook${BRAND.on ? ` — ${CR.esc(BRAND.name(customer))}` : ''}</title>
+<style>${SPA_CSS}</style>${BRAND.style(1)}
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook" data-training="${trainingKey}">
 ${content}
@@ -1183,7 +1214,7 @@ ${content}
 function buildExercisesWorkbook(customer, trainingKey) {
   const outDir = path.join(CLIENTS_ROOT, customer, trainingKey);
   fs.mkdirSync(outDir, { recursive: true });
-  const html = exercisesWorkbookTemplate(trainingKey, buildExercisesBody(trainingKey));
+  const html = exercisesWorkbookTemplate(customer, trainingKey, buildExercisesBody(customer, trainingKey));
   const outFile = path.join(outDir, 'exercises-workbook.html');
   fs.writeFileSync(outFile, html);
   const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);
@@ -1205,7 +1236,7 @@ function template(title, content, trainingKey) {
 <title>${CR.esc(title)}</title>
 <style>${SPA_CSS}</style>
 <style data-student-handbook-print>${STUDENT_HANDBOOK_PRINT_CSS}</style>
-<style>${SLIDES_CSS}</style>${BRAND.style}
+<style>${SLIDES_CSS}</style>${BRAND.style(1)}
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook student-handbook" data-training="${trainingKey}"${deck}>
 ${content}
@@ -1324,7 +1355,7 @@ function buildTraining(customer, trainingKey, opts = {}) {
     console.log(`  (no payload: ${trainingKey} ships no content tarball)`);
   }
   const body = buildBody(trainingKey, customer, contentUrl);
-  const html = template(`${CR.TRAININGS[trainingKey].label} — ${customer}`, body, trainingKey);
+  const html = template(`${CR.TRAININGS[trainingKey].label} — ${BRAND.name(customer)}`, body, trainingKey);
   const outFile = path.join(outDir, 'index.html');
   fs.writeFileSync(outFile, html);
 
@@ -1388,7 +1419,7 @@ function customerIndexTemplate(customer, trainingKeys) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agents 102 — ${CR.esc(customer)}</title>
+<title>${CR.esc(BRAND.hub.heading || 'Agents 102')} — ${CR.esc(BRAND.name(customer))}</title>
 <style>
   :root { color-scheme: light; --ink: #1c1917; --muted: #6b625b; --line: #ded8d0; --paper: #fbfaf7; --accent: #c2410c; }
   * { box-sizing: border-box; }
@@ -1408,13 +1439,13 @@ function customerIndexTemplate(customer, trainingKeys) {
     .lede { font-size: 18px; }
   }
   .brand-logo { display: block; max-height: 56px; max-width: 240px; margin: 0 0 24px; }
-</style>${BRAND.style}
+</style>${BRAND.style(0)}
 </head>
 <body>
 <main>
-  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(customer)} training hub</p>
-  <h1>Agents 102</h1>
-  <p class="lede">Training workbooks deployed for this customer. Each program has its own workbook, plus trainer guides and downloadable payloads where needed.</p>
+  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(BRAND.name(customer))} training hub</p>
+  <h1>${CR.esc(BRAND.hub.heading || 'Agents 102')}</h1>
+  <p class="lede">${CR.esc(BRAND.hub.lede || 'Training workbooks deployed for this customer. Each program has its own workbook, plus trainer guides and downloadable payloads where needed.')}</p>
   <ul class="training-list">
 ${cards}
   </ul>
@@ -1534,6 +1565,7 @@ if (recipient) {
   guardPersonalisedOutput(customer);
 }
 
+BRAND.copyAssets(path.join(CLIENTS_ROOT, customer));
 if (theoryMode) {
   trainings.forEach(trainingKey => buildTheoryHandbook(customer, trainingKey, recipient));
 } else if (exercisesMode) {

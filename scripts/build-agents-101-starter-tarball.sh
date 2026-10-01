@@ -153,8 +153,9 @@ if [ -d "$PROMPTS_SRC" ]; then
 fi
 
 # The theory handbook — the learner's read-back of every lecture, no server.
-# Customer-independent; built into the stage, whatever output root the caller set.
-AGENTS_OUTPUT_DIR="$STAGE/handbook" node scripts/build-workbook.js _starter agents-101 --theory >/dev/null
+# Customer-independent; built into the stage, whatever output root the caller set,
+# and without the caller's brand (its copied assets would not be in the archive).
+env -u AGENTS_BRAND_DIR AGENTS_OUTPUT_DIR="$STAGE/handbook" node scripts/build-workbook.js _starter agents-101 --theory >/dev/null
 cp "$STAGE/handbook/_starter/agents-101/theory-handbook.html" "$ROOT/agents-101-handbook.html"
 
 # Build tarball from inside ROOT so the archive has prework/, module-4/policies/,

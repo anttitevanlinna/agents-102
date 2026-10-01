@@ -30,6 +30,15 @@ AGENTS_BRAND_DIR=../acme-delivery/brand AGENTS_OUTPUT_DIR=../acme-delivery/site 
   node scripts/build-workbook.js acme agents-101
 ```
 
+Every page a build writes (hub, workbook and Slides, trainer pages, `--theory`, `--exercises`) takes the same brand folder:
+
+- `brand.css` loads after every stylesheet. `url(assets/…)` in it points at the copied asset folder from wherever the page sits.
+- `logo.svg` or `logo.png` goes on every cover, and once as the CSS property `--brand-logo`, so brand.css can place the same mark in the nav or the Slides rail (`background-image: var(--brand-logo)`) without a second copy.
+- `customer.json` names the customer: `name`, `logoAlt`, `hubHeading`, `hubLede`. The `acme` argument stays the folder and URL segment; it is shown as the name only when `customer.json` gives none.
+- `assets/` (fonts, images) is copied to `<customer>/brand-assets/` beside the pages, so a font ships once rather than base64 inside every page. Inline `data:` URLs in brand.css still work and keep a page self-contained.
+
+Prompt blocks take their colours from tokens, so one pair in brand.css reaches every phase, dark Slides and the theory handbook: `--prompt-bg`/`--prompt-fg`, `--prompt-header-bg`/`--prompt-header-fg`, `--prompt-label-fg`, `--prompt-border`. Set the pair rather than restyling `.prompt-block` descendants: phase rules set the private `--_prompt-*` defaults, never the properties. The vendor legal footer stays on every page. The Agents 101 starter's embedded handbook is customer-independent and ignores the brand.
+
 Customer content changes come from `AGENTS_OVERLAY_DIR`, also a folder the customer owns, mirroring `curriculum/`. At build time a file there wins over ours at the same path (`trainings/agents-101/security.md` with one more include line), and a file with no twin here, such as a new lecture, is the customer's own. `trainings/<key>/training.json` sets `label` and `lede`. A path the build never reads fails the build. A shadow is a fork: `overlay.lock.json`, written into the customer folder, records the vendor file each shadow came from, and every later build names the shadows whose vendor file has moved since, with the commit to diff from. Contract: `scripts/customer-overlay.js`.
 
 ```sh

@@ -1,6 +1,6 @@
 # Group Work Plan — agents in room-scale exercises
 
-**Status:** v0.1 — 2026-10-01. Exploration, not design. Collects group exercise formats that put agents into a room working on a shared board. First carrier: the agentic PO / product-management training (strategy in progress, `bosser-strategy:`, key TBD). Sibling of `theory-plan.md`, same role: one place the patterns gather until each finds its home in a module or a rule. Room rules already in force → `check_workshop.md` (core); nothing here amends it yet.
+**Status:** v0.1 — 2026-10-01. Exploration, not design. Collects group exercise formats that put agents into a room working on a shared board. First carrier: the agentic PO / product-management training (strategy: `bosser-strategy:content-strategy-agentic-product-management.md`). Sibling of `theory-plan.md`, same role: one place the patterns gather until each finds its home in a module or a rule. Room rules already in force → `check_workshop.md` (core); nothing here amends it yet.
 
 **Why this exists.** agents-102 prompts are solo-shaped: one person, one Claude session. The post-it-era PO training put 3–4 people on one group, one story, one wall, and that was what people loved. The question is how the room stays a room with an agent in it.
 
@@ -11,7 +11,7 @@
 - **Shared board** (Miro-class). Humans write by hand in the web UI. The board is the commons: parallel, loud, democratic.
 - **Each person's own Claude chat** for exploring the material between and inside beats. Solo agents-102 prompts live here; they become the "me" of me-we-us.
 - **Agents reach the board** through the connector: read frames, post candidates.
-- **Runs on the customer's Claude and the customer's board tenant.** Their data governance covers the material; the students' own customer material is fine to use. The dependency we own: connector enabled by their admin, confirmed before the day (pre-engagement checklist).
+- **Runs on the customer's Claude and the customer's board tenant.** Their data governance covers the material; the students' own customer material is fine to use. Connector and IT plumbing are out of scope for the design.
 - **Student's own material and challenges first**; synthetic material is the fallback (§ Evals).
 
 ## Patterns that emerged
@@ -60,6 +60,30 @@ Agent version: easy with Miro. A single agent can synthesize across all boards.
 - **1-2-4-All** (Liberating Structures) — covered by me-we-us.
 - **TRIZ** (Liberating Structures) — "how would we guarantee the worst outcome?" then "which are we doing already?"
 
+## Three-day sketch: fused with Agents 101
+
+Design sketch, not settled. The fusion bets and mood alignment live in the strategy doc; this is one way the days could fall.
+
+**Day 1: Our product, our system** (pride, joy, compounding)
+- Vision: physical product box + pitch. Then Agents 101 M1's move: Claude writes the press release from the transcript, generic vs grounded in their context; they catch it inventing facts about the product they know best.
+- Hypotheses: transcript → candidates at the edge.
+- Insight memory (A101 M2): each person wires one source (tickets, interviews, docs, analytics) into one shared memory. Group owns the system, each person owns a part.
+- Out the door: overnight synthesis scheduled.
+
+**Day 2: What's actually true?** (unease, rescue, humility)
+- Overnight digest waiting.
+- Retrieval + opportunity tree (A101 M3): retrievers + curator over the evidence, then me-we-us tree. The three deciders grill; jester stays.
+- Grounding (A101 M5): every branch cites its evidence; hunt the fabricated opportunity.
+- Skills + security (A101 M4), compressed: one personal skill each, e.g. a hypothesis-statement checker; customer data through agents as the security angle. Weakest fit.
+- Pre-mortem: ranking rounds → what's missing → laptops shut.
+
+**Day 3: Learn faster than the market** (leverage, rhythm, awe)
+- Evals (A101 M6): groups write their own criteria and run them over Days 1–2.
+- Story map + build the slice: the flywheel moment, an agent builds what the agents helped decide.
+- Test the slice; read the "we will know when" signal.
+- Personal to team (A101 M7): sharing strategy for the insight memory and the weekly rhythm.
+- Close (A101 M8 mood): what is a product owner when building is nearly free?
+
 ## Evals
 
 The students' work is evaluated against the training's own principles: outcome first, feedback drives, early to market. Two kinds:
@@ -70,7 +94,6 @@ Evals that fire during the work, not only at the end, are the principle enacted:
 
 ## Open
 
-- Connector depth, unverified: can an agent read stickies with clusters and positions, and post a sticky into a named frame? One live test before any design leans on it.
 - Who hosts the room-level agents (consensus, grillers, jester): a group member each, or the trainer.
 - Jester cadence, and whether the room can silence it.
 - Four Claudes converge on the same sensible answer: variety has to be designed in (lenses, roles, sources).

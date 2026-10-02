@@ -1,11 +1,19 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-10-01 (cycle 236)
-OODA cycles: 84
+Last updated: 2026-10-02 (cycle 237)
+OODA cycles: 85
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-10-02)
+
+**CYCLE 237 UPDATE (Oct 2) — HYDRAFUSION D+4: GITHUB COPILOT APP PRIMARY SOURCE RESOLVED — GITHUB CHANGELOG SEP 30 CONFIRMS VS CODE 1.140+ AND COPILOT APP AVAILABILITY; ENTERPRISE/BUSINESS REQUIRE ADMIN PREVIEW-FEATURE ENABLEMENT; FIRST PRACTITIONER POST-ROLLOUT REPORTS CONFIRMED IN COMMUNITY THREAD (OCT 1–2): MIXED — ONE "WORKED FLAWLESSLY," ONE PLAN-MODE IMPLEMENTATION BUG (CANNOT START IMPLEMENTATION EVEN ON EXPLICIT APPROVAL; FIX = SWITCH TO OPUS), @ASTROPHIZZ FLAGS MODEL SELECTION QUALITY (TERRA OVER LUNA/SOL); ENTERPRISE GOVERNANCE CONCERNS DOMINATE THREAD AT D+4: BYOK COMPATIBILITY, DPA FOR MULTI-VENDOR ROUTING, MODEL RESTRICTION COMPLIANCE; GPT-6.1 SOL ADDED TO COPILOT SEP 29 — HYDRAFUSION ROUTING MAY NOT YET INCLUDE IT (EXPLAINS TERRA-OVER-SOL COMPLAINT); GITSPAWN ULTRAREVIEW DAY+32: STILL UNPATCHED — V2.1.287 (OCT 1) IS LATEST; NO FSMONITOR/ULTRAREVIEW FIX; MANIFOLD EMBARGO CONTINUES 11 DAYS PAST RESPONSIBLE-DISCLOSURE THRESHOLD; NO CVE ASSIGNED; NO IN-WILD EXPLOITATION; V2.1.287 MAJOR FEATURE = CLAUDE MODS (PLUGIN BEHAVIOR MODIFICATION, "YOU SHOULD KNOW" BUILT-IN MOD); OPENAI AGENTS API DAY+25: BILLING OCT 5 (3 DAYS); ZERO DEPLOYER-DIRECT PRODUCTION ACCOUNTS PRE-BILLING; FIRST REPORTS EXPECTED OCT 5–19; PROMPT OBJECTS NOV 30 (59 DAYS) — NO NEW DOUBLE-MIGRATION TRAP REPORTS FOUND.**
+
+**Watch Cycle 238 (Oct 3–5+):** HydraFusion D+5–7 — watch for standalone practitioner blog posts on VS Code/app experience (forum comments not enough for L3); model selection sub-optimality (Terra over Sol) — check if routing includes GPT-6.1 Sol; GitSpawn Day+33–35 — any patch or Manifold PoC; OpenAI Agents API Oct 5 BILLING ONSET — watch for first deployer announcements on/after Oct 5; Prompt Objects Nov 30 (59 days) — low urgency, check clearcontext.dev for updates.
+
+([github.blog/changelog/2026-09-30-hydrafusion-in-vs-code-and-the-github-copilot-app/](https://github.blog/changelog/2026-09-30-hydrafusion-in-vs-code-and-the-github-copilot-app/), Sep 30 2026 — [vendor documentation — PRIMARY: VS Code + app availability confirmed]; [github.com/orgs/community/discussions/206492](https://github.com/orgs/community/discussions/206492), Oct 1–2 2026 — [practitioner direct — forum, first post-rollout reports, mixed experience]; [github.blog/changelog/2026-09-29-gpt-6-1-sol-in-github-copilot/](https://github.blog/changelog/2026-09-29-gpt-6-1-sol-in-github-copilot/), Sep 29 2026 — [vendor documentation — GPT-6.1 Sol GA in Copilot]; [releasebot.io/updates/anthropic/claude-code](https://releasebot.io/updates/anthropic/claude-code), Oct 1 2026 — [vendor documentation — v2.1.287 Claude Mods, no GitSpawn fix]; [shattered.io/gitspawn-ai-coding-agent-vulnerability-2026/](https://shattered.io/gitspawn-ai-coding-agent-vulnerability-2026/) — [domain trade publication — ultrareview unpatched confirmed]; [eesel.ai/blog/openai-agents-api-pricing](https://www.eesel.ai/blog/openai-agents-api-pricing) — [practitioner analysis — Oct 5 billing confirmed])
 
 ## Key Verdict (as of 2026-10-01)
 

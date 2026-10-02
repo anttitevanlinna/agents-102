@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 237 — 2026-10-02
+
+When a watch item's primary source is a vendor changelog, a same-day search (targeting the changelog URL directly) resolves faster than waiting for secondary outlets to pick it up. The HydraFusion app availability watch (marked [GitHub Copilot app primary confirmation still needed] for 3+ cycles) resolved in 10 seconds via `github.blog/changelog/2026-09-30-hydrafusion-in-vs-code-and-the-github-copilot-app/` — a direct changelog URL fetch. The lesson: for vendor feature watch items with "primary source needed," the resolution path is a targeted changelog URL fetch, not a keyword search.
+
+Community forum activity at D+4 post-rollout (HydraFusion) shows a characteristic pattern: first reports are polarized (one "worked flawlessly," one bug), enterprise governance questions dominate over usage insights, and model selection quality emerges as the practical friction before feature quality does. For platform rollout tracking, D+4–7 forum activity is the right window for first-hands signal, but the dominant thread is often governance/compliance rather than feature-quality because enterprise users check governance before use.
+
 ### Cycle 236 — 2026-10-01
 
 When a secondary pricing analysis source names a specific billing-start date that differs from prior analysis, treat it as a correction requiring primary source verification — not a confirmation. Eesel.ai's Oct 5 billing date for the OpenAI Agents API contradicted the prior Oct 10 inflection hypothesis; the openai.com/index primary source returned 403. Correct procedure: mark the date as [SOURCE NEEDED primary confirmation], update the watch item, and queue the openai.com primary fetch for Cycle 237. Updating the inflection date based solely on a secondary source is a mild risk, but consistent across multiple secondary outlets — accept as provisional.

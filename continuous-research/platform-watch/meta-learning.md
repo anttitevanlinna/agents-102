@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 238 — 2026-10-03
+
+When a vendor closes a community-reported bug as "not planned" without explanation (GitHub issue #4741, HydraFusion plan-mode stall), that triage decision is itself a finding — it tells you the vendor's prioritization posture more reliably than any roadmap post. The lesson: always check issue closure status, not just issue existence, when tracking platform maturity. "Closed as not planned" means the reported behavior is either by-design or deprioritized, and practitioners should treat it as a stable limitation.
+
+When a security researcher's site (manifoldsecurity.io) goes dark at DNS level after 33 days of embargo, the absence is not noise — it could signal an imminent publication (rebuilding the site for a release) or a hosting migration ahead of a disclosure. Either way, it changes the risk calculus: the next cycle should treat a DNS failure on a security publication as a "check first thing" item, not a footnote. Primary-source unreachability is itself worth tracking explicitly in the watch log.
+
 ### Cycle 237 — 2026-10-02
 
 When a watch item's primary source is a vendor changelog, a same-day search (targeting the changelog URL directly) resolves faster than waiting for secondary outlets to pick it up. The HydraFusion app availability watch (marked [GitHub Copilot app primary confirmation still needed] for 3+ cycles) resolved in 10 seconds via `github.blog/changelog/2026-09-30-hydrafusion-in-vs-code-and-the-github-copilot-app/` — a direct changelog URL fetch. The lesson: for vendor feature watch items with "primary source needed," the resolution path is a targeted changelog URL fetch, not a keyword search.

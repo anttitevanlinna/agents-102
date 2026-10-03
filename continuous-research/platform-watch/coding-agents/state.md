@@ -1,11 +1,19 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-10-02 (cycle 237)
-OODA cycles: 85
+Last updated: 2026-10-03 (cycle 238)
+OODA cycles: 86
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-10-03)
+
+**CYCLE 238 UPDATE (Oct 3) — HYDRAFUSION D+5: BUG PICTURE DETERIORATING — PLAN-MODE STALL (#4741) CLOSED "NOT PLANNED" BY GITHUB (NO FIX COMING ON CURRENT TRACK; WORKAROUND = SWITCH TO OPUS); SECOND NEW BUG (#5042): MID-SESSION CONTEXT WINDOW COLLAPSE — HYDRAFUSION RE-ROUTES TO SMALL-CONTEXT MODELS MID-SESSION CAUSING CATASTROPHIC FAILURES; MODEL SELECTION TERRA-OVER-SOL APPROACHING L3 (TWO INDEPENDENT REPORTS; GPT-6.1 SOL ADDED SEP 29 MAY NOT BE IN ROUTING TABLE YET); ENTERPRISE GOVERNANCE QUESTIONS (BYOK, DPA) STILL UNANSWERED BY GITHUB TEAM; GITSPAWN ULTRAREVIEW DAY+33: V2.1.288 (OCT 2) RELEASED — STILL NO CVE FIX; DAY+12 PAST RESPONSIBLE-DISCLOSURE THRESHOLD; MANIFOLD SITE (manifoldsecurity.io) UNREACHABLE VIA DNS OCT 3 — FIRST TIME IN 33 DAYS; TREAT AS POSSIBLE EMBARGO-LIFT SIGNAL; OPENAI AGENTS API: BILLING STARTS OCT 5 (TOMORROW); DEVDAY 2026 ADDED COMPUTER USE + MULTI-AGENT ORCHESTRATION TO AGENTS API AT BILLING LAUNCH; DATA RESIDENCY US-ONLY + ZDR UNSUPPORTED = ENTERPRISE EU DEPLOYMENT BLOCKED; ZERO DEPLOYER-DIRECT PRODUCTION ACCOUNTS THROUGH PRE-BILLING; PROMPT OBJECTS NOV 30 (58 DAYS) — NO NEW COMMENTARY FOUND.**
+
+**Watch Cycle 239 (Oct 4–5+):** PRIORITY — GitSpawn: check manifoldsecurity.io DNS status; if site recovers, fetch for PoC or embargo-lift announcement; OpenAI Agents API Oct 5 BILLING DAY — watch for first deployer-direct production announcements; HydraFusion D+6: check if GitHub acknowledges #5042 context-window collapse bug or responds to BYOK/DPA governance questions; HydraFusion routing update: check for any changelog mention of GPT-6.1 Sol added to HydraFusion pool; Prompt Objects Nov 30 (57 days) — no new search pass needed until <30 days.
+
+([github.com/github/copilot-cli/issues/4741](https://github.com/github/copilot-cli/issues/4741), Oct 2–3 2026 — [vendor community tracker — plan-mode bug closed "not planned"]; [github.com/orgs/community/discussions/206492](https://github.com/orgs/community/discussions/206492), Oct 2–3 2026 — [practitioner direct — #5042 context-window collapse, Terra-over-Sol second report]; [releasebot.io/updates/anthropic/claude-code](https://releasebot.io/updates/anthropic/claude-code), Oct 2 2026 — [vendor documentation — v2.1.288, no GitSpawn fix]; [shattered.io/gitspawn-ai-coding-agent-vulnerability-2026/](https://shattered.io/gitspawn-ai-coding-agent-vulnerability-2026/) — [domain trade publication — ultrareview unpatched confirmed]; [developers.openai.com/api/docs/pricing](https://developers.openai.com/api/docs/pricing), Oct 3 2026 — [vendor documentation — Oct 5 billing confirmed]; [community.openai.com/t/devday-2026-announcements-and-developer-resources/1402006](https://community.openai.com/t/devday-2026-announcements-and-developer-resources/1402006) — [vendor documentation — DevDay 2026 computer use + multi-agent added to Agents API])
 
 ## Key Verdict (as of 2026-10-02)
 

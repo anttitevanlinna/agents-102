@@ -65,6 +65,10 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 239 — 2026-10-04
+
+Issue tracker sort=updated queries are a faster HydraFusion bug-surface check than community discussion thread fetches: the tracker shows total issue count and most-recent-filed date immediately, confirming "no new bugs since D+4" in one fetch. For platform-watch items in their early bug-surfacing window (D+3 to D+7), the tracker query should run alongside — not after — the community discussion fetch. Persistent DNS failure over 2+ consecutive days on a security-disclosure source is a qualitatively different signal than a one-day failure: it shifts interpretation from "possible transient outage" to "infrastructure event." The watch note should explicitly name the failure-day count and both interpretations (site migration ahead of PoC vs. unrelated infrastructure). Naming alternatives prevents over-reading absence as evidence in either direction.
+
 ### Cycle 238 — 2026-10-03
 
 When a vendor closes a community-reported bug as "not planned" without explanation (GitHub issue #4741, HydraFusion plan-mode stall), that triage decision is itself a finding — it tells you the vendor's prioritization posture more reliably than any roadmap post. The lesson: always check issue closure status, not just issue existence, when tracking platform maturity. "Closed as not planned" means the reported behavior is either by-design or deprioritized, and practitioners should treat it as a stable limitation.

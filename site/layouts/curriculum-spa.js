@@ -390,11 +390,11 @@
     // A link is an include only when it is the ENTIRE paragraph (its own line, no surrounding prose).
     // If the file fetch fails, the link is left as-is (renders as a normal link).
     function expandIncludes(md) {
-        var re = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+\.md)\)[ \t]*$/gm;
+        var re = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+\.md)(?:#([a-z0-9-]+))?\)[ \t]*$/gm;
         var matches = [];
         var m;
         while ((m = re.exec(md)) !== null) {
-            matches.push({ full: m[0], path: m[2] });
+            matches.push({ full: m[0], path: m[2], slide: m[3] || null });
         }
         if (matches.length === 0) return Promise.resolve(md);
 
@@ -412,8 +412,11 @@
             matches.forEach(function (mm) {
                 var content = map[mm.path];
                 if (content !== null && content !== undefined) {
-                    // Strip maintainer tail so it doesn't bleed into module pages
-                    content = stripMaintainerTail(content);
+                    // Strip maintainer tail so it doesn't bleed into module pages;
+                    // a `#<id>` include keeps only that slide.
+                    content = mm.slide
+                        ? CurriculumRuntime.sliceSlide(content, mm.slide)
+                        : stripMaintainerTail(content);
                     // Linkify the first H1 so the included exercise/lecture title
                     // becomes a link to its standalone view.
                     var standalone = mm.path.replace(/\.md$/, '');

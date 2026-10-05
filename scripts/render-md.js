@@ -39,21 +39,21 @@ const FIGURES = loadFigures();
 // Captures: [1] = link title, [2] = `exercises/<slug>` or `lectures/<slug>`.
 function inlineIncludes(md, seen) {
   seen = seen || new Set();
-  return md.replace(CR.INCLUDE_LINK_RE, function (full, title, kindSlug) {
+  return md.replace(CR.INCLUDE_LINK_RE, function (full, title, kindSlug, slideId) {
     const parts = kindSlug.split('/');
     const kind = parts[0];
     const slug = parts[1];
     const incPath = path.join(ROOT, 'curriculum', kind, slug + '.md');
     if (!fs.existsSync(incPath)) return full; // dead link — pass through
-    const key = kind + '/' + slug;
+    const key = kind + '/' + slug + (slideId ? '#' + slideId : '');
     if (seen.has(key)) return full; // cycle guard
     const next = new Set(seen);
     next.add(key);
     const raw = fs.readFileSync(incPath, 'utf8');
-    const stripped = CR.stripMaintainerTail(raw);
+    const stripped = slideId ? CR.sliceSlide(raw, slideId) : CR.stripMaintainerTail(raw);
     const expanded = CR.expandFigures(CR.expandPrompts(stripped, REGISTRY), FIGURES);
     const inlined = inlineIncludes(expanded, next);
-    return '\n\n<!--INC:' + kind + ':' + slug + ':' + CR.esc(title) + '-->\n\n'
+    return '\n\n<!--INC:' + kind + ':' + (slideId ? slug + '--' + slideId : slug) + ':' + CR.esc(title) + '-->\n\n'
       + inlined
       + '\n\n<!--/INC-->\n\n';
   });

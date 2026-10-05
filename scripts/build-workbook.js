@@ -324,16 +324,23 @@ function plainDisplayText(value) {
 // wrapped in HTML comment markers; postProcessIncludes turns the markers into
 // <section class="phase phase--<kind>"> after marked.parse.
 function inlineIncludes(md, seen = new Set()) {
-  return md.replace(CR.INCLUDE_LINK_RE, (full, title, kindSlug) => {
+  return md.replace(CR.INCLUDE_LINK_RE, (full, title, kindSlug, slideId) => {
     const [kind, slug] = kindSlug.split('/');
     const incPath = cur(kind, slug + '.md');
-    const inc = readMd(incPath);
+    let inc = readMd(incPath);
     if (inc === null) return full;
-    const key = `${kind}/${slug}`;
+    // `#<id>` = one slide; wrapper id `<kind>-<slug>--<id>` never collides with
+    // the whole-file wrapper. An unresolved id fails the build.
+    if (slideId) {
+      try { inc = CR.sliceSlide(inc, slideId); }
+      catch (e) { throw new Error(`${kindSlug}.md#${slideId}: ${e.message}`); }
+    }
+    const key = slideId ? `${kind}/${slug}#${slideId}` : `${kind}/${slug}`;
     if (seen.has(key)) return full; // prevent loops
     seen.add(key);
     const body = inlineIncludes(inc, seen);
-    return `\n\n<!--INC:${kind}:${slug}:${CR.esc(title)}-->\n\n${body}\n\n<!--/INC-->\n\n`;
+    const wrapSlug = slideId ? `${slug}--${slideId}` : slug;
+    return `\n\n<!--INC:${kind}:${wrapSlug}:${CR.esc(title)}-->\n\n${body}\n\n<!--/INC-->\n\n`;
   });
 }
 

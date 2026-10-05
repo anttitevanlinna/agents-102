@@ -18,6 +18,8 @@ const {
   expandPrompts,
   expandFigures,
   expandTiers,
+  sliceSlide,
+  INCLUDE_LINK_RE,
   moduleOrdinal,
   moduleNumber,
   applyContentFlags,
@@ -1009,4 +1011,43 @@ test('trainer pages carry no hand-typed Flow inventory', () => {
     .map((l, i) => /^\*\*Flow\.\*\*/.test(l) ? `${path.relative(dir, p)}:${i + 1}` : null)
     .filter(Boolean));
   assert.deepEqual(flows, []);
+});
+
+// ── slide-level includes ─────────────────────────────────────────────────────
+const SLIDE_SRC = [
+  '# A lecture', '', 'Cover line.', '',
+  '## First slide', '<!--slide:first-->', '', 'First body.', '',
+  '## Second slide', '<!--tier:2-->', '<!--slide:second-->', '', '```', '## not a heading', '```', 'Second body.', '',
+  '## Third slide', '', 'Third body.', '',
+  '<!-- maintainer -->', '', '## Maintainer heading', '<!--slide:tail-->', ''
+].join('\n');
+
+test('INCLUDE_LINK_RE: optional #fragment captured as group 3, whole-file include unchanged', () => {
+  const re = new RegExp(INCLUDE_LINK_RE.source);
+  const whole = re.exec('[Context](lectures/context-is-king.md)');
+  assert.equal(whole[2], 'lectures/context-is-king');
+  assert.equal(whole[3], undefined);
+  const frag = re.exec('[Context](lectures/context-is-king.md#same-question)');
+  assert.equal(frag[2], 'lectures/context-is-king');
+  assert.equal(frag[3], 'same-question');
+  assert.equal(re.exec('See [x](lectures/a.md#b) inline.'), null, 'mid-sentence is never an include');
+});
+
+test('sliceSlide: returns the ## section that carries the marker, up to the next ##', () => {
+  assert.equal(sliceSlide(SLIDE_SRC, 'first'), '## First slide\n<!--slide:first-->\n\nFirst body.\n');
+});
+
+test('sliceSlide: other markers may sit between heading and slide marker; fenced ## is not a boundary', () => {
+  const out = sliceSlide(SLIDE_SRC, 'second');
+  assert.match(out, /^## Second slide\n<!--tier:2-->\n<!--slide:second-->/);
+  assert.match(out, /## not a heading/);
+  assert.match(out, /Second body\.\n$/);
+  assert.doesNotMatch(out, /Third/);
+});
+
+test('sliceSlide: unknown id, maintainer-tail id, duplicate id and orphan marker all throw', () => {
+  assert.throws(() => sliceSlide(SLIDE_SRC, 'nope'), /no <!--slide:nope-->/);
+  assert.throws(() => sliceSlide(SLIDE_SRC, 'tail'), /no <!--slide:tail-->/);
+  assert.throws(() => sliceSlide(SLIDE_SRC.replace('## Third slide\n', '## Dup\n<!--slide:first-->\n\n## Third slide\n'), 'first'), /2 <!--slide:first-->/);
+  assert.throws(() => sliceSlide('# T\n\nprose\n<!--slide:orphan-->\n', 'orphan'), /directly under a ## heading/);
 });

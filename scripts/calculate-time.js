@@ -301,9 +301,11 @@ function readModule(trainingKey, modSlug) {
   let m;
   while ((m = re.exec(body)) !== null) {
     const kindSlug = m[2];
-    if (seen.has(kindSlug)) continue;
-    seen.add(kindSlug);
-    leaves.push({ kindSlug, title: m[1].trim() });
+    const slideId = m[3] || null;
+    const key = slideId ? `${kindSlug}#${slideId}` : kindSlug;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    leaves.push({ kindSlug, title: m[1].trim(), slideId });
   }
 
   const tm = TRANSITIONS_RE.exec(tail);
@@ -365,9 +367,14 @@ function computeModule(trainingKey, modSlug) {
   const mismatches = [];
   if (!mod.hasTransitions) problems.push(`no "- **Transitions:**" line in ${mod.file} — beats with no file of their own are unpriced`);
 
-  const leafBeats = mod.leaves.map(({ kindSlug, title }) => {
-    const leaf = readLeaf(kindSlug);
-    const slug = kindSlug.split('/')[1];
+  const leafBeats = mod.leaves.map(({ kindSlug, title, slideId }) => {
+    // A slide include (`#<id>`) owns no **Time:** line — the file's runtime is
+    // the whole lecture's. It is priced only by a **Charge:** keyed
+    // `<slug>--<id>`; without one the beat is an unpriced problem, never the
+    // whole file's minutes.
+    const leaf = slideId ? { file: `curriculum/${kindSlug}.md#${slideId}` } : readLeaf(kindSlug);
+    const slug = kindSlug.split('/')[1] + (slideId ? `--${slideId}` : '');
+    if (slideId && !mod.charges[slug]) problems.push(`${mod.file}: slide include ${kindSlug}.md#${slideId} has no duration — add "- **Charge:** ${slug} <N> — <why>"`);
     const kind = kindSlug.split('/')[0] === 'exercises' ? 'exercise' : 'lecture';
     if (leaf.error) problems.push(`${leaf.file}: ${leaf.error}`);
     if (leaf.conflict) problems.push(`${leaf.file}: states its runtime twice — ${leaf.conflict}`);

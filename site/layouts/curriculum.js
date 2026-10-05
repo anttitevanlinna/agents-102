@@ -285,7 +285,40 @@
 
     // Standalone include-link pattern: the entire paragraph is `[Title](kind/slug.md)`.
     // SPA fetches and inlines; workbook reads sync. Same regex, same shape.
-    var INCLUDE_LINK_RE = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md\)[ \t]*$/gm;
+    // Optional `#<id>` (group 3) includes ONE slide: the `##` section carrying
+    // `<!--slide:<id>-->` (sliceSlide). Groups 1-2 are unchanged for readers
+    // that only need the file.
+    var INCLUDE_LINK_RE = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md(?:#([a-z0-9-]+))?\)[ \t]*$/gm;
+
+    // Slide id marker: `<!--slide:<id>-->` on its own line under a `##` heading
+    // (other `<!--...-->` marker lines may sit between). Id is unique per file;
+    // the include address is `<kind>/<slug>.md#<id>`. Stays an HTML comment in
+    // the render. Maintainer-tail markers do not count.
+    var SLIDE_MARKER_RE = /^<!--slide:([a-z0-9-]+)-->[ \t]*$/;
+
+    function sliceSlide(md, id) {
+        var lines = stripMaintainerTail(md).split('\n');
+        var hits = [];
+        lines.forEach(function (l, i) {
+            var m = SLIDE_MARKER_RE.exec(l);
+            if (m && m[1] === id) hits.push(i);
+        });
+        if (hits.length !== 1) {
+            throw new Error((hits.length ? hits.length : 'no') + ' <!--slide:' + id + '--> marker' +
+                (hits.length ? 's (ids are unique per file)' : ' in file'));
+        }
+        var start = hits[0] - 1;
+        while (start >= 0 && /^<!--.*-->[ \t]*$/.test(lines[start])) start--;
+        if (start < 0 || !/^## /.test(lines[start])) {
+            throw new Error('<!--slide:' + id + '--> must sit directly under a ## heading');
+        }
+        var end = lines.length, inFence = false;
+        for (var i = start + 1; i < lines.length; i++) {
+            if (/^\s*(```|~~~)/.test(lines[i])) inFence = !inFence;
+            if (!inFence && /^#{1,2} /.test(lines[i])) { end = i; break; }
+        }
+        return lines.slice(start, end).join('\n').trim() + '\n';
+    }
 
     // Prompt-include marker: `{{prompt:<key>}}` on its own line, expanded by
     // expandPrompts() at the start of the markdown pipeline (before marked).
@@ -1406,6 +1439,8 @@
         TRAININGS: TRAININGS,
         DEFAULT_TRAINING: DEFAULT_TRAINING,
         INCLUDE_LINK_RE: INCLUDE_LINK_RE,
+        SLIDE_MARKER_RE: SLIDE_MARKER_RE,
+        sliceSlide: sliceSlide,
         CROSS_DOC_SHARED_RE: CROSS_DOC_SHARED_RE,
         CROSS_DOC_TRAINING_RE: CROSS_DOC_TRAINING_RE,
         CROSS_DOC_TRAINING_KS_RE: CROSS_DOC_TRAINING_KS_RE,

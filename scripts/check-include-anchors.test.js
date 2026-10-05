@@ -91,3 +91,25 @@ test('every exercise/lecture link in the shipped trainings resolves', () => {
   assert.equal(code, 0, `check-include-anchors.js failed:\n${out}`);
   assert.match(out, /OK — [1-9]\d* trainings, [1-9]\d* files, every exercise\/lecture link resolves/);
 });
+
+// ── slide includes: `[Title](lectures/<slug>.md#<id>)` alone on its line ────
+// The library dir is overridable for the same reason TRAININGS_DIR is.
+const LIBRARY = fs.mkdtempSync(path.join(os.tmpdir(), 'include-anchors-lib-'));
+fs.mkdirSync(path.join(LIBRARY, 'lectures'));
+fs.writeFileSync(path.join(LIBRARY, 'lectures', 'shared.md'),
+  '# Shared\n\n## A slide\n<!--slide:a-slide-->\n\nBody.\n');
+
+test('a slide include whose id resolves passes', () => {
+  withFixture('# M\n\n[A slide](lectures/shared.md#a-slide)\n', () => {
+    const { code, out } = run(['--training', FIXTURE], { TRAININGS_DIR: TRAININGS, LIBRARY_DIR: LIBRARY });
+    assert.equal(code, 0, out);
+  });
+});
+
+test('a slide include whose id does not resolve fails and names it', () => {
+  withFixture('# M\n\n[Gone](lectures/shared.md#gone)\n', () => {
+    const { code, out } = run(['--training', FIXTURE], { TRAININGS_DIR: TRAININGS, LIBRARY_DIR: LIBRARY });
+    assert.equal(code, 1);
+    assert.match(out, /lectures\/shared\.md#gone/);
+  });
+});

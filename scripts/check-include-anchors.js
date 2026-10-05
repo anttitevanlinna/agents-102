@@ -48,6 +48,12 @@ const TRAININGS_DIR = process.env.TRAININGS_DIR
   ? path.resolve(process.env.TRAININGS_DIR)
   : path.join(ROOT, 'curriculum/trainings');
 
+// Shared library root (lectures/, exercises/), overridable for the same reason.
+const LIBRARY_DIR = process.env.LIBRARY_DIR
+  ? path.resolve(process.env.LIBRARY_DIR)
+  : path.join(ROOT, 'curriculum');
+const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
+
 const argv = process.argv.slice(2);
 const REPORT = argv.includes('--report');
 const flag = (name) => {
@@ -59,6 +65,9 @@ const ONE_TRAINING = flag('training');
 // Alone on its line — the same shape INCLUDE_LINK_RE requires, and the whole
 // point of this check is that anything else is NOT an include.
 const INCLUDE_RE = /^\[[^\]]+\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md\)[ \t]*$/;
+// Slide include: one `##` section by its `<!--slide:<id>-->` marker. Must resolve
+// to exactly one marker, or the build throws mid-render.
+const SLIDE_INCLUDE_RE = /^\[[^\]]+\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md#([a-z0-9-]+)\)[ \t]*$/;
 // Any link to a shared-library file, wherever it sits.
 const REFERENCE_RE = /\]\((?:\.\.\/)*((?:exercises|lectures)\/[a-z0-9-]+)\.md\)/g;
 
@@ -72,6 +81,7 @@ function scanTraining(key) {
 
   const inlined = new Set();
   const references = [];
+  const badSlides = [];
 
   for (const name of files) {
     const body = bodyOf(fs.readFileSync(path.join(dir, name), 'utf8'));
@@ -80,6 +90,15 @@ function scanTraining(key) {
     lines.forEach((line, i) => {
       const inc = line.trim().match(INCLUDE_RE);
       if (inc) { inlined.add(inc[1]); return; }
+      const sl = line.trim().match(SLIDE_INCLUDE_RE);
+      if (sl) {
+        const src = path.join(LIBRARY_DIR, sl[1] + '.md');
+        let why = null;
+        if (!fs.existsSync(src)) why = 'file missing';
+        else { try { CR.sliceSlide(fs.readFileSync(src, 'utf8'), sl[2]); } catch (e) { why = e.message; } }
+        if (why) badSlides.push({ file: name, line: i + 1, target: `${sl[1]}.md#${sl[2]}`, why });
+        return;
+      }
       let m;
       REFERENCE_RE.lastIndex = 0;
       while ((m = REFERENCE_RE.exec(line)) !== null) {
@@ -89,7 +108,7 @@ function scanTraining(key) {
   }
 
   const dead = references.filter(r => !inlined.has(r.target));
-  return { files, inlined, references, dead };
+  return { files, inlined, references, dead, badSlides };
 }
 
 const trainings = ONE_TRAINING
@@ -98,12 +117,14 @@ const trainings = ONE_TRAINING
       fs.statSync(path.join(TRAININGS_DIR, d)).isDirectory()).sort();
 
 let dead = [];
+let badSlides = [];
 let fileCount = 0;
 
 for (const key of trainings) {
   const res = scanTraining(key);
   fileCount += res.files.length;
   dead = dead.concat(res.dead.map(d => ({ ...d, training: key })));
+  badSlides = badSlides.concat(res.badSlides.map(d => ({ ...d, training: key })));
   if (REPORT) {
     console.log(`\n${key}: ${res.inlined.size} inlined, ${res.references.length} in-sentence reference(s)`);
     for (const r of res.references) {
@@ -118,6 +139,12 @@ if (!trainings.length) {
   process.exit(1);
 }
 
+if (badSlides.length) {
+  console.error(`\n${badSlides.length} slide include(s) do not resolve:\n`);
+  for (const d of badSlides) console.error(`  [${d.training}] ${d.file}:${d.line} -> ${d.target} (${d.why})`);
+  console.error(`\nFix: put <!--slide:<id>--> under the ## heading in the target file, or correct the id.\n`);
+}
+
 if (dead.length) {
   console.error(`\n${dead.length} link(s) point at a section no file in the training inlines:\n`);
   for (const d of dead) {
@@ -126,6 +153,8 @@ if (dead.length) {
   }
   console.error(`\nFix: add a standalone include line — the link ALONE on its own line — in the`);
   console.error(`file that assigns the work, or drop the link and let the prose name it.\n`);
+  process.exit(1);
+} else if (badSlides.length) {
   process.exit(1);
 } else if (!REPORT) {
   console.log(`OK — ${trainings.length} trainings, ${fileCount} files, every exercise/lecture link resolves.`);

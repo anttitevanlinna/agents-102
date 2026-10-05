@@ -86,7 +86,7 @@ const SHAPE_KEYS = [
   'has_prompt_blocks', 'has_figures', 'has_backing_block', 'has_maintainer_block',
   'has_urls', 'has_source_stamps', 'has_code_fences', 'group_beat_markers',
 ]
-function shapeHash(signals, headers = null) {
+function shapeHash(signals, headers = null, borrowed = null) {
   const shape = {}
   for (const k of SHAPE_KEYS) shape[k] = signals[k]
   // Slide count is structural, but a single added `##` should not invalidate
@@ -98,6 +98,11 @@ function shapeHash(signals, headers = null) {
   // instance field stays one short token.
   shape.headers = headers === null ? 'unknown'
     : crypto.createHash('sha256').update(headers.join('\n')).digest('hex').slice(0, 16)
+  // Borrowed slides are judged surface (expand-md inlines them), and neither the
+  // signals nor this file's own headers move when a borrow is added or edited
+  // at home. Their text is shape, keyed only when present, so a file that
+  // borrows nothing keeps the hash it always had.
+  if (borrowed !== null) shape.borrowed = crypto.createHash('sha256').update(borrowed).digest('hex').slice(0, 16)
   return crypto.createHash('sha256').update(JSON.stringify(shape)).digest('hex').slice(0, 16)
 }
 
@@ -129,9 +134,23 @@ const MECHANICAL = {
   },
 }
 
+// The borrowed slides' text in include order, or null when the file borrows none.
+function borrowedText(md) {
+  const CR = require(path.join(REPO, 'site/layouts/curriculum.js'))
+  const parts = []
+  for (const m of CR.stripMaintainerTail(md).matchAll(CR.INCLUDE_LINK_RE)) {
+    if (!m[3]) continue
+    let home
+    try { home = fs.readFileSync(path.join(REPO, 'curriculum', m[2] + '.md'), 'utf8') } catch { home = '' }
+    try { parts.push(CR.sliceSlides(home, m[3])) } catch (e) { parts.push(`unresolved ${m[2]}#${m[3]}`) }
+  }
+  return parts.length ? parts.join('\n') : null
+}
+
 function prefill(fileArg, cls, { instancesDir = INSTANCES } = {}) {
   const view = derive(fileArg, { write: true })
-  const shape = shapeHash(view.signals, headersOf(view))
+  const raw = fs.readFileSync(path.resolve(REPO, view.file), 'utf8')
+  const shape = shapeHash(view.signals, headersOf(view), borrowedText(raw))
   const instPath = path.join(instancesDir, `${view.slug}.${cls}.json`)
 
   const out = {
@@ -212,7 +231,7 @@ function prefill(fileArg, cls, { instancesDir = INSTANCES } = {}) {
   return { view, out }
 }
 
-module.exports = { prefill, shapeHash, headersOf, SHAPE_KEYS }
+module.exports = { prefill, shapeHash, headersOf, borrowedText, SHAPE_KEYS }
 
 // ---------------------------------------------------------------------------
 // The sidecar. `prefill()` decides; these two move the rows.

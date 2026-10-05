@@ -1,76 +1,53 @@
 # Agentic Product Teams 101 — Day 2 beat sheet
 
-**Status:** design draft v5, not student-facing, nothing here is taught yet. Strategy: `bosser-strategy:content-strategy-agentic-product-management.md`. Sketch it refines: `group-work-plan.md` § *Three-day sketch*. Judge and persona records: core `evals/persona-panel/2026-10-05-day2-beats/`.
+**Status:** design draft v6, not student-facing, nothing here is taught yet. Strategy: `bosser-strategy:content-strategy-agentic-product-management.md`. Sketch it refines: `group-work-plan.md` § *Three-day sketch*. Records: core `evals/persona-panel/2026-10-05-day2-beats/`, `2026-10-05-day2-score/`.
 
-**Day 2: What's actually true?** Mood: unease, rescue, humility. Spine: Agents 101 M3 → M4 → M5, in Agents 101's own order. The tree raises a doubt and holds it (unease), the access review asks what the agents now hold and can reach (unease, sharpened), grounding is the rescue with its limit written on it, the pre-mortem is the humility.
+## Day 2: What's actually true?
 
-## Day assumptions
+**You arrive with** a product box, a handful of hunches written as hypotheses, and agents that kept working on your team's material overnight.
 
-- **Hours:** 08:30–16:00, lunch 75, two breaks of 15. Design assumption: no Agents 101 day shape exists; AE101's rhythm (`agentic-engineering-101/timings.md`) shortened to Nordic hours.
-- **Room:** groups of three to four on one product, typically product owner, designer, team lead. One shared board per group. Each person in their own Claude.
-- **Board agents:** one group member hosts the board-level agents; the host rotates at breaks and lunch, starting with the most fluent Claude user, so the pen does not quietly stay with one person.
-- **Hard prerequisites from Day 1** (the morning fails without them): the shared insight memory with each person's source wired in; the hypotheses on the board; the overnight synthesis that ran; the product box; the one-line "what may go in" each person agreed before wiring their source; the team lead's source is the delivery record (tickets, retro notes), with a trainer-built starter brief; the designer brings the real consent forms for the interviews that went in.
-- **Trainer-built material:** two planted claims per group for beat 6, drafted from Day 1's material the evening before and hidden from the group; one planted instruction-giving customer text per group for beat 5; the data-rules source for beat 5's policy lens (the customer's own data policy, or a distilled GDPR and EU AI Act file as in Agents 101 M4's `module-4/policies/`); a worked consent example for beat 5's room-wide input, from the synthetic material, so no group's customer text goes on the projector; detector prompts for beat 6, the voting page for beat 8, a fallback digest from the synthetic material.
-- **Booked ahead, optional:** the customer's data protection contact gives beat 5's input to the whole room. When they come, "who decides" gets a real answer in the room.
+**What's in the way.** Your evidence is scattered across interviews, tickets, analytics and retro notes. Some of it is shaky. And an agent can write a customer need that sounds exactly like your users, and nobody said it.
 
-## Beats
+**What you quietly wonder.** When an agent can build a screen in minutes, what is each of us for? Will I look slow in front of my own team?
 
-Pillars: **T** = as a team, **C** = control your AI, **K** = transfer your knowledge into AI practice. Unit: **G** = group beat (the artefact belongs to the group), **S** = solo or co-located work, **I** = input.
+**Your guides.** Claude, at your side all day, in your own chat. The trainer, who has run this day with teams like yours.
 
-| # | Beat | The group does | The agent does | Artefact (owner) | Min | Agents 101 source | Pillar | Unit |
-|---|---|---|---|---|---|---|---|---|
-| 1 | Read the overnight digest | Each person finds the one line from their own source they would least trust and says why; the group names the doubt that would change the crux most and carries it into beat 2 | Wrote the digest overnight from the shared insight memory | Digest with the group's doubts (group) | 15 | M2 scheduled agent, M3 opener | C, T | S → G |
-| 2 | Name the crux | Picks the one outcome the tree hangs from, out of Day 1's hypotheses | Lists the candidate outcomes the hypotheses already imply | The crux, one line (group) | 10 | M3 *Name your crux* | T | G |
-| 3 | Retrievers, one curator | Each person runs a retriever over their own source and briefs it in that source's dialect. The group reads the curator's conflict list and picks the conflict that matters for the crux | Retrievers write to each person's own file in the shared memory; the host's curator agent merges them into one evidence file and keeps the conflicts visible | Evidence file and the chosen conflict (group); retriever brief (each) | 35 | M3 *Three retrievers, one curator* | K, T | S → G |
-| 4 | Opportunity tree, me-we-us | 10 min each person builds a tree in their own chat. 15 min the group edits a consensus map that shows who found each branch. 15 min each person grills the map from their own role's lens and brings the sharpest question. 5 min the group writes on the board the branch it would stake least on, and leaves it there | A consensus agent keeps the map from the personal trees; each person's own Claude sharpens their lens's question | Opportunity tree v1 and the held doubt (group) | 45 | M3 *Three minds, one synthesis* | T, K | S → G |
-| | Break | | | | 15 | | | |
-| 5 | What the agents hold | 10 min the check runs over what the shared memory holds and what the agents can reach. 15 min the group sorts the eight items the agent flags highest into in, out or can't tell. 10 min room-wide input that answers the room's can't-tells: customer data through agents in plain terms, GDPR and the EU AI Act included, on a worked consent example. 15 min each person works their own part of the agent's draft rule: the designer checks the can't-tells from the interviews against the consent forms; the product owner says what evidence behind the crux was lost and whether the tree still stands; the team lead lays out how the rule gets adopted: who signs it off, by when, what the team hears. 10 min the group corrects the draft together, names the one risk it leaves open, and packages the check as its skill | Runs the check with two lenses: the data-rules source, and customer text that tries to give the agent instructions; removes what is out and quarantines what can't be told and every flag beyond the eight, so tonight's run does not read them; drafts the proposed rule from the sort | Proposed data rule with owner, open risk and adoption path; the check skill (group) | 60 | M4 *Discipline of risk*, *Run and package a security skill*, *Audit your agent* (access review) | C, T, K | G |
-| 6 | Check what the tree claims | Short input on what a groundedness check catches, and that two claims in the pool are planted. The group adjudicates a pool of twelve claims from the tree, claim by claim: supported, unsupported, invented. Each person speaks for the claims from their own source; the team lead, or whoever holds the delivery lens, takes the delivery claims across all sources. The group compares its calls with two detectors, sees which caught the planted claims, names the judge it keeps, and writes the one thing the judge cannot check | Pulls the claim pool from the tree, with this morning's doubts marked and the hidden planted claims mixed in; two detectors mark each claim; a scoreboard shows group against detectors | Scoreboard, and the named judge with its known limit, frozen (group) | 50 | M5 *Grounded*, *Hallucination benchmark*, compressed | C, K, T | G |
-| | Float | | | | 25 | | | |
-| | Lunch | | | | 75 | | | |
-| 7 | Re-cut the tree | Prunes branches with nothing under them, keeps the minority branch visible, picks the branch Day 3 builds from | Re-runs the frozen judge on the edited tree | Opportunity tree v2 and the chosen branch (group) | 25 | M5 debrief | T, C | G |
-| 8 | Pre-mortem rounds | Each person writes their own failure causes first; then ranks in three-item rounds, then adds what was missing | Serves the rounds on a live voting page, shows everyone's ranks at once, and lists the causes people added | Ranked causes and where the group disagreed (group) | 20 | (product craft; Klein) | T | G |
-| 9 | Laptops shut | Plain conversation on the top cause and the one the group split on, and on which agent output the branch is staked: does the judge's known limit cover it? Decides whether the chosen branch survives, and a person names Day 3's slicing rule from the top cause | None | The decision, said aloud and written on the board by a person (group) | 20 | (product craft) | T | G |
-| | Break | | | | 15 | | | |
-| 10 | Rules from today | Reads what the agents propose for the shared rules file, pushes back, and applies only what the group agrees; rejected rules stay listed with the reason. Last five minutes, each person drafts in their own Claude the Monday note their role carries: the team lead's to the team and the employee representative about the data rule; the product owner's on which decision the judge runs before; the designer's on which interviews stay out of the agents and the check before research-cited opportunities reach the backlog | Proposes rules from the day's evidence: what to doubt in the digest, the proposed data rule, when to run the judge | Shared rules file update (group); Monday note (each) | 15 | M3–M5 debriefs, M5 *Propose, double-check, apply* | K, C, T | G |
-| 11 | Out the door | Briefs tonight's run | Scheduled run opens with the group's data check skill, then pre-populates Day 3's story map from the box, the hypotheses, the chosen branch and the top pre-mortem cause | Overnight run scheduled (group) | 10 | M2 scheduled agent | K | G |
-| 12 | Close | Human round: where the agent got it wrong today, what we now trust, and the doubt from beat 4 that still stands | None | | 15 | (Agents 101 debrief mode) | T, C | G |
+**By the evening** your team has chosen one bet with real evidence under it. Each of you has made your first piece of it, in your own craft. You caught the agent making something up, and you know what you'd trust it with tomorrow.
 
-Planned: 320 working minutes and a 25-minute float before lunch, which fill the 345 the day holds.
+**What you avoid.** Building the wrong thing fast.
 
-## Per-beat design notes
+## The day
 
-**1. Digest.** The Day 1 overnight run is what Day 2 opens on: agents worked while people did not. One line each, not a full read: the person who owns a source is the one who can tell a true line from a plausible one. The doubts travel to beat 6's scoreboard. *Failure:* the digest is thin or failed. *Recovery:* the fallback digest; the move is the same.
+| # | Moment | What you make | You learn | Min | Where it's taught |
+|---|---|---|---|---|---|
+| 1 | See what came in overnight | Each of you reads what the agents wrote from your own material and marks the one line you trust least. Together you pick the doubt that matters most | Control | 15 | Exercise |
+| 2 | Pick one outcome | Together, the one outcome today's tree hangs from | Together | 10 | Exercise |
+| 3 | Gather your evidence | Each of you sends Claude through your own material, in your own words. Together you look at where the sources disagree | Control, together | 35 | Short demo, then exercise |
+| | Break | | | 15 | |
+| 4 | Grow the opportunity tree | Each of you sketches a tree alone first. Then you build one together, every branch showing who found it, and each of you questions it from your own role | Creativity, together | 45 | Exercise |
+| 5 | Decide what the agents may keep | Together you look at what the agents now hold and write a proposal for your team: what stays, what goes, who decides the unclear cases | Control, together | 30 | Short talk on customer data, GDPR and the EU AI Act, in plain terms |
+| 6 | Catch the agent making things up | Two false claims are hidden in your tree. You go through its claims with Claude, find them, and keep the check that found them, with a note of what it can't see | Control | 45 | Short talk, then exercise |
+| | Float | | | 15 | |
+| | Lunch | | | 75 | |
+| 7 | Choose the bet | Together you prune what has nothing behind it and choose the branch Day 3 builds | Together | 20 | |
+| 8 | Make your first piece | Each of you makes your own piece of the bet with Claude, in your own craft: the designer a rough screen or flow, the product owner the press-release paragraph, the team lead how the team would run the work. You lay the three side by side | Creativity, together | 40 | Exercise |
+| 9 | How it could fail | Each of you writes how this fails a year from now. Then quick rounds of ranking, and the causes you missed | Together | 20 | Voting page |
+| 10 | Laptops shut | Plain talk about the top cause. Does the bet survive? Which part of it rests on the agents' work? | Together, control | 20 | |
+| | Break | | | 15 | |
+| 11 | What we keep, what runs tonight | Together you keep the day's lessons as rules your agents follow, and set tonight's run that prepares Day 3 | Control | 15 | Exercise |
+| 12 | Close | Talk, no laptops: where the agent got it wrong today, what we now trust, and what each of us made | Together | 15 | |
 
-**2. Crux.** *Constraint:* one outcome. The tree has one root. *Failure:* the group splits between two outcomes. *Recovery:* the product owner, who owns the outcome, picks and the other outcome is parked on the board's edge as the second tree.
+## Monday
 
-**3. Retrievers.** Agents 101 gives one person three retrievers; here each person owns one source, so each runs one retriever. The source's owner writes its brief, which is where their knowledge goes in. *Cut from Agents 101:* the demo *Agent that takes action*. *Failure:* one source is empty or unreachable, or someone missed Day 1. *Recovery:* that person pairs on the strongest source holder's retriever; the curator notes the gap. *Failure:* a retriever brief misses its source's dialect and returns generic results. *Recovery:* the owner asks the retriever how it searched, then rewrites the brief once with the words the source actually uses.
+- Team lead: takes the data proposal to the team, and shows how the team would run one piece of work with agents.
+- Product owner: checks a research summary for invented claims before it reaches a priority call.
+- Designer: makes a rough screen with Claude for an opportunity before the team commits to it.
+- All three: read the overnight digest from your own backlog and mark the line you trust least.
 
-**4. Tree.** Personal trees come first so the minority branch exists before the consensus agent can average it away. People hold the lenses (the designer, customer voice; the product owner, outcome and evidence; the team lead, delivery), and each person's Claude sharpens the question, so no agent plays anyone's role. The held doubt is Agents 101 M3's ending: the uneasy part stays named, not settled. *Room size:* a fourth person takes the evidence lens; with two people, the lenses double up. *Cut from Agents 101:* lectures *When to split an agent* and *Debugging stuck agents* move to reference. *Failure:* four Claudes return the same tree. *Recovery:* each person's chat leads with their own source, so trees differ by evidence.
+## Design notes
 
-**5. What the agents hold.** Agents 101 M4's shape on product material: run the check raw, sort, then package what worked. The check runs before the input, so the input answers the room's own can't-tells instead of opening on a lecture. The question is an access review, what the agents now hold and can reach, not a verdict on Day 1: each person agreed a one-line "what may go in" before wiring, and this beat tests it against what actually arrived. The designer's interview consent is the worked example, because that is where the question is sharpest. Every planted instruction-giving text gets caught or missed in the open. *Proposal, not decision:* the group writes a proposed rule for its team and data owner, and the team lead's adoption path names who signs it off, including the employee representative where the change touches how people work. *Room size:* with a fourth person, they take the delivery lens with the team lead; with a role missing, its part of the draft goes to the group's correction step. *Overrun:* packaging is cut first and finished in beat 10. *Constraint:* at most eight items are sorted by hand; anything in can't-tell stays out until its named owner says otherwise. *Group decision is human:* a person states each sort; the agent writes it down and removes what is out. *Failure:* the room cannot answer what company policy says. *Recovery:* the open question goes into the rule with an owner and a date, which is what "who decides" means.
-
-**6. Check what the tree claims.** Agents 101 M5 runs four detectors over a 30-claim benchmark. Here the claim pool comes from the group's own tree, two detectors, and the hidden planted claims are the ground truth that lets the group tell a good judge from a confident one. The scoreboard compares the group's call with the detectors, never person with person: agents get checked, people don't get watched. The judge is frozen at the end of the beat, and its known limit travels with it into Day 3's evaluation criteria. *Failure:* the detectors disagree everywhere. *Recovery:* the planted claims decide which detector the group keeps.
-
-**7. Re-cut.** *Constraint:* one branch goes to Day 3. *Nothing written over:* pruned branches move to the board's edge with the reason. *Group decision is human:* the judge's marks are input, not the vote. *Failure:* deadlock between two branches, or the judge empties the branch the group loves. *Recovery:* both go into beat 8 and beat 9 chooses.
-
-**8–9. Pre-mortem.** Placed where confidence peaks, right after the re-cut, the last cheap moment to switch branches. With three or four voters, the useful signal is who ranked what, not a spread. The riskiest cause becomes Day 3's slicing rule. Private causes first, so the loudest voice does not set the list. **Protected beat:** 9. The morning overruns into the float, five minutes of which is a stretch between beats 5 and 6; past it, lunch shortens to 60, never beat 6. When the afternoon overruns, 8 drops to one round, then 12 to five minutes, then 11 runs with the trainer's brief; 9 and 10 keep their minutes. *Failure:* the voting page fails. *Recovery:* ranks by hand on the board. *Failure:* a polite "it survives". *Recovery:* the trainer asks what would make the top cause true by spring. If the branch dies, the minority branch from beat 7 replaces it, so beat 11 has an input.
-
-**10. Rules.** The three Agents 101 debriefs (M3, M4, M5) become one, since the group shares one rules file. *Failure:* the agent proposes a pile of rules. *Recovery:* the group keeps the ones it can say aloud.
-
-**11. Out the door.** Day 1's overnight move repeated with heavier material, so Day 3 opens on a story map 80% ready and the group's work is the missing 20%. *Failure:* the run fails overnight. *Recovery:* the trainer runs it at Day 3's start while the evals beat begins.
-
-**12. Close.** Human round, no prompts. The question checks the agent, not the people in the room.
-
-## Monday, for the team lead, product owner and designer
-
-- Team lead: takes the proposed data rule, with its adoption path, to the team and the data owner.
-- Product owner: runs the saved groundedness judge on a research summary before it reaches a priority decision, knowing what it cannot check.
-- Designer: checks the opportunities that cite user research against the interviews before they reach the backlog.
-- All three: open the scheduled digest on their own backlog and mark the line they trust least before anyone acts on it.
-
-## Open
-
-- Who hosts the board-level agents: rotating member (this sheet) or trainer.
-- Day 1 must carry the one-line "what may go in" before wiring; Day 1's sheet owes it.
-- Designer walk proposed folding the pre-mortem rounds into the laptops-shut conversation; the rounds are the maintainer's design, so v3 refines them instead.
+- **Learnings lead, mechanics follow.** Control (you check the agents and decide what to trust), creativity (each of you makes something you couldn't make alone yesterday), together (the group makes and decides). How the agents do their part lives in the exercises. Agents 101 sources: M2 scheduled agent (1, 11), M3 crux, retrievers and three-minds synthesis (2–4), M4 risk and access review (5), M5 grounding benchmark and propose-double-check-apply (6, 7). Beat 8 is new.
+- **Hours:** 08:30–16:00. 310 planned minutes, a 15-minute float before lunch, twenty to spare.
+- **Day 1 owes:** the team agrees what may go into the agents before anything goes in, and everyone leaves with a working setup.
+- **Protected:** 10. Overrun: the morning uses the float, 9 drops to one round, 12 to five minutes.
+- **Trainer-built:** a fallback overnight digest, the two hidden false claims per group, the voting page.

@@ -74,15 +74,15 @@ Design sketch, not settled. The fusion bets and mood alignment live in the strat
 - Overnight digest waiting.
 - Retrieval + opportunity tree (A101 M3): retrievers + curator over the evidence, then me-we-us tree. The three deciders grill; jester stays.
 - Grounding (A101 M5): every branch cites its evidence; hunt the fabricated opportunity.
-- Skills + security (A101 M4), compressed: one personal skill each, e.g. a hypothesis-statement checker; customer data through agents as the security angle. Weakest fit.
+- Skills + security (A101 M4), compressed: one personal skill each, e.g. a hypothesis-statement checker; customer data through agents in plain terms, GDPR and the EU AI Act included: what may go in, what stays out, who decides. Weakest fit; the data question is the candidate angle.
 - Pre-mortem: ranking rounds → what's missing → laptops shut.
 
 **Day 3: Learn faster than the market** (leverage, rhythm, awe)
 - Evals (A101 M6): groups write their own criteria and run them over Days 1–2.
 - Story map + build the slice: the flywheel moment, an agent builds what the agents helped decide.
 - Test the slice; read the "we will know when" signal.
-- Personal to team (A101 M7): sharing strategy for the insight memory and the weekly rhythm.
-- Close (A101 M8 mood): what is a product owner when building is nearly free?
+- Personal to team (A101 M7): a proposal for the rest of the team to decide on: who keeps the insight memory, what the weekly rhythm is.
+- Close (A101 M8 mood): what is each of us for, the product owner, the designer and the team lead, when building gets cheap?
 
 ## Evals
 

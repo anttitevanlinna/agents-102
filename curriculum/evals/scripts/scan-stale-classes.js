@@ -18,6 +18,7 @@
 //   lead-in trio slot line   → + pedagogy (Time / What you do / build / happened / The point)
 //   >15 changed body lines   → + story, pedagogy (bulk rewrite shifts arc + architecture)
 //   behavior extra: any consumed curriculum/prompts/<key>.md changed since pin → behavior
+//   borrowed slides: a `<kind>/<slug>.md#<id>` include whose slides changed at home since pin → those hunks' classes
 //   rule-drift: a compendium rule edited after the pin's commit date → that
 //               compendium's eval_classes (see compendium-drift.js)
 // Known under-detection: prose-only platform-capability claim edits won't re-fire
@@ -322,6 +323,32 @@ function panelState(relpath, text, io, meta) {
   return { sha: row.sha }
 }
 
+// Fourth axis: borrowed slides. A file including `<kind>/<slug>.md#<id>[,…]`
+// reads those slides as its own surface (expand-md inlines them), but its body
+// sha never moves when they change at home. Diff the HOME file since this pin,
+// keep the hunks inside the borrowed slides' line ranges, and route them with
+// the same tagger a local edit gets. A borrowed id that no longer resolves, or
+// a home file that is gone, stales every class: fail closed.
+function borrowedTags(text, sha, io) {
+  const tags = new Set()
+  for (const m of CR.stripMaintainerTail(text).matchAll(CR.INCLUDE_LINK_RE)) {
+    if (!m[3]) continue
+    const home = `curriculum/${m[2]}.md`
+    const homeText = io.readFile(home)
+    if (homeText === null) return new Set(CLASSES)
+    let ranges
+    try { ranges = m[3].split(',').map(id => CR.slideRange(homeText, id)) } catch { return new Set(CLASSES) }
+    // 1-based lines. A removal's slot is the line that FOLLOWED it, so a cut at
+    // a slide's last line lands on the next heading: allow end + 1 for removals.
+    const inAdded = L => ranges.some(r => L >= r.start + 1 && L <= r.end)
+    const inRemoved = L => ranges.some(r => L >= r.start + 1 && L <= r.end + 1)
+    const hunks = parseHunks(io.gitDiff(sha, home))
+      .filter(h => h.added.some(inAdded) || h.removedAt.some(inRemoved))
+    for (const t of changeTags(buildLineMeta(homeText), hunks).tags) tags.add(t)
+  }
+  return tags
+}
+
 function promptKeys(text) {
   return [...text.matchAll(/\{\{prompt:([a-z0-9-]+)\}\}/g)].map(m => m[1])
 }
@@ -365,6 +392,8 @@ function filterItems(items, io) {
       if (cls === 'behavior' && keys.some(k => io.gitDiff(sha, `curriculum/prompts/${k}.md`).trim() !== '')) {
         kept.push({ cls, reason: 'registry-prompt' }); continue
       }
+      if (!(('b:' + sha) in cache)) cache['b:' + sha] = borrowedTags(text, sha, io)
+      if (cache['b:' + sha].has(cls)) { kept.push({ cls, reason: 'borrowed-slide' }); continue }
       pruned.push(cls)
     }
     out.push({ ...item, classes: kept.map(k => k.cls) })
@@ -397,6 +426,10 @@ function scanFile(relpath, io) {
       let stale = cache[sha].has(cls)
       let reason = 'diff-region'
       if (!stale && cls === 'behavior') stale = promptKeys(text).some(k => io.gitDiff(sha, `curriculum/prompts/${k}.md`).trim() !== '')
+      if (!stale) {
+        if (!(('b:' + sha) in cache)) cache['b:' + sha] = borrowedTags(text, sha, io)
+        if (cache['b:' + sha].has(cls)) { stale = true; reason = 'borrowed-slide' }
+      }
       // The other axis of staleness: the FILE held still but the RULE moved.
       // Reported second so a file that also drifted still reads as diff-region.
       if (!stale && driftCache[sha].has(cls)) {

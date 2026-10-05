@@ -186,6 +186,8 @@ function signals(raw, g, bodyText) {
     // with no prompt in it.
     has_prompt_blocks: /\*\*Prompt\*\*/.test(body) || /\{\{prompt:/.test(body),
     has_figures: /\{\{figure:/.test(body),
+    // Borrowed slides: expand-md inlines them, so the judge must expand to see them.
+    has_slide_includes: /^\[[^\]]+\]\((?:exercises|lectures)\/[a-z0-9-]+\.md#[a-z0-9,-]+\)[ \t]*$/m.test(body),
     has_backing_block: g.backing !== null,
     has_maintainer_block: g.maintainerCut !== null,
     has_urls: /https?:\/\//.test(body),

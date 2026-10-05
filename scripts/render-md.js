@@ -80,6 +80,7 @@ if (listMode) {
     const body = CR.stripMaintainerTail(raw);
     // INCLUDE_LINK_RE is /gm — use matchAll for non-mutating iteration.
     for (const m of body.matchAll(CR.INCLUDE_LINK_RE)) {
+      if (m[3]) continue; // borrowed slides: judged at home, read in place via expand-md
       const kindSlug = m[2];
       const parts = kindSlug.split('/');
       const incPath = path.join(ROOT, 'curriculum', parts[0], parts[1] + '.md');

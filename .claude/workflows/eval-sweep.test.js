@@ -170,7 +170,7 @@ test('the default dispatch carries every mechanic the hillclimb validated', asyn
   assert.match(p, /plus every explicit judge-owned criterion in your template/,
     'template-owned checks survive brief filtering');
   assert.match(p, /in ONE turn/, 'BATCH_READ: independent reads issued together');
-  assert.match(p, /only if `has_prompt_blocks` or `has_figures`/, 'LAZY_EXPAND');
+  assert.match(p, /only if `has_prompt_blocks`, `has_figures` or `has_slide_includes`/, 'LAZY_EXPAND');
   assert.match(p, /check-instance-evidence\.js/, 'the guard that replaced the raw null-grep');
   assert.doesNotMatch(p, /grep -c '"evidence": \*null'/, 'the raw grep counts healthy N/A rows and means nothing now');
 });

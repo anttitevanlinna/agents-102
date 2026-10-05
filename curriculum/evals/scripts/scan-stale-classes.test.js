@@ -954,3 +954,36 @@ test('changeTags: a slide-id marker line stales nothing and counts as no body li
   assert.strictEqual(r.tags.size, 0)
   assert.strictEqual(r.changedBody, 0)
 })
+
+// --- borrowed slides: a module including `lectures/x.md#<id>` goes stale when
+// THOSE slides change at home, routed by the same hunk tagger; an edit to a
+// slide it did not borrow stales nothing. ---------------------------------------
+{
+  const PINS = '(writing@aaa1111 story@aaa1111 technical@aaa1111 behavior@aaa1111 pedagogy@aaa1111 strategy@aaa1111 slides@aaa1111)'
+  const MOD = `# M\n\n[B](lectures/home.md#b)\n\n<!-- maintainer -->\n**Quality:** compendium-audited 2026-01-01 ${PINS}\n`
+  const HOME = '# Home\n\n## A\n<!--slide:a-->\n\nalpha prose\n\n## B\n<!--slide:b-->\n\nbeta prose\n\n## C\n\ngamma closes\n'
+  //            1       2 3    4             5 6           7 8    9             10 11
+  const io = diff => ({
+    readFile: p => (p === 'curriculum/trainings/t/m.md' ? MOD : p === 'curriculum/lectures/home.md' ? HOME : null),
+    gitDiff: (sha, p) => (p === 'curriculum/lectures/home.md' ? diff : ''),
+    validSha: () => true, ruleDrift: () => new Set(), staleFinding: () => false,
+  })
+  test('scanFile: a prose edit inside a borrowed slide stales the borrower (writing+slides, reason borrowed-slide)', () => {
+    const r = scanFile('curriculum/trainings/t/m.md', io('@@ -11,1 +11,1 @@\n-beta\n+beta prose\n'))
+    assert.deepStrictEqual([...r.classes].sort(), ['slides', 'writing'])
+    assert.equal(r.detail.writing, 'borrowed-slide')
+  })
+  test('scanFile: an edit to a slide the module did not borrow stales nothing', () => {
+    assert.deepStrictEqual(scanFile('curriculum/trainings/t/m.md', io('@@ -6,1 +6,1 @@\n-alpha\n+alpha prose\n')).classes, [])
+  })
+  test('scanFile: a borrowed id that no longer resolves stales every class (fail closed)', () => {
+    const gone = io('')
+    const rf = gone.readFile
+    gone.readFile = p => (p === 'curriculum/lectures/home.md' ? HOME.replace('<!--slide:b-->', '') : rf(p))
+    assert.equal(scanFile('curriculum/trainings/t/m.md', gone).classes.length, 7)
+  })
+  test('filterItems: same borrowed-slide axis', () => {
+    const { items } = filterItems([{ file: 'curriculum/trainings/t/m.md', classes: ['writing', 'behavior'] }], io('@@ -11,1 +11,1 @@\n-beta\n+beta prose\n'))
+    assert.deepStrictEqual(items[0].classes, ['writing'])
+  })
+}

@@ -298,7 +298,9 @@
     // the render. Maintainer-tail markers do not count.
     var SLIDE_MARKER_RE = /^<!--slide:([a-z0-9-]+)-->[ \t]*$/;
 
-    function sliceSlide(md, id) {
+    // Line range of one slide: [start, end) as 0-based indexes into md's lines
+    // (the maintainer tail is cut, so body indexes are file indexes).
+    function slideRange(md, id) {
         var lines = stripMaintainerTail(md).split('\n');
         var hits = [];
         lines.forEach(function (l, i) {
@@ -319,7 +321,12 @@
             if (/^\s*(```|~~~)/.test(lines[i])) inFence = !inFence;
             if (!inFence && /^#{1,2} /.test(lines[i])) { end = i; break; }
         }
-        return lines.slice(start, end).join('\n').trim() + '\n';
+        return { start: start, end: end, lines: lines };
+    }
+
+    function sliceSlide(md, id) {
+        var r = slideRange(md, id);
+        return r.lines.slice(r.start, r.end).join('\n').trim() + '\n';
     }
 
     function sliceSlides(md, ids) {
@@ -1446,6 +1453,7 @@
         DEFAULT_TRAINING: DEFAULT_TRAINING,
         INCLUDE_LINK_RE: INCLUDE_LINK_RE,
         SLIDE_MARKER_RE: SLIDE_MARKER_RE,
+        slideRange: slideRange,
         sliceSlide: sliceSlide,
         sliceSlides: sliceSlides,
         CROSS_DOC_SHARED_RE: CROSS_DOC_SHARED_RE,

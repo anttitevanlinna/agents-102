@@ -416,8 +416,8 @@ Every in-scope rule VERBATIM — full lead, full body, every carve-out — minus
     ? `\n**Issue the template read, the rulebook and the body view in ONE turn** — they have no dependency on each other, and three sequential round-trips for three independent reads is the largest avoidable cost in a judge run.\n`
     : ''
   const expand = LAZY_EXPAND
-    ? `\n## The read view\n\nThe body view's \`signals\` tell you whether there is anything to expand. Run \`node scripts/expand-md.js ${j.file}\` only if \`has_prompt_blocks\` or \`has_figures\` is true; on a file with neither it returns the source and costs a read. Cite line numbers against the RAW source either way.\n`
-    : `\n## The read view\n\n\`node scripts/expand-md.js ${j.file}\` gives the student's view ({{prompt:}} / {{figure:}} expanded). Judge that; cite line numbers against the RAW source.\n`
+    ? `\n## The read view\n\nThe body view's \`signals\` tell you whether there is anything to expand. Run \`node scripts/expand-md.js ${j.file}\` only if \`has_prompt_blocks\`, \`has_figures\` or \`has_slide_includes\` is true; on a file with none it returns the source and costs a read. Cite line numbers against the RAW source either way.\n`
+    : `\n## The read view\n\n\`node scripts/expand-md.js ${j.file}\` gives the student's view ({{prompt:}} / {{figure:}} expanded, borrowed slides inlined). Judge that; cite line numbers against the RAW source.\n`
   return `## Read
 
 ${preamble}
@@ -507,7 +507,7 @@ Each class below is stale ONLY because compendium rules moved after its pin; dif
 \`\`\`
 ${briefs}
 \`\`\`
-3. \`node curriculum/evals/scripts/derive-body-view.js ${d.file}\` — grep \`projections.body_numbered\`, not the source. Run \`node scripts/expand-md.js ${d.file}\` only if \`has_prompt_blocks\` or \`has_figures\` is true. Cite line numbers against the RAW source.
+3. \`node curriculum/evals/scripts/derive-body-view.js ${d.file}\` — grep \`projections.body_numbered\`, not the source. Run \`node scripts/expand-md.js ${d.file}\` only if \`has_prompt_blocks\`, \`has_figures\` or \`has_slide_includes\` is true. Cite line numbers against the RAW source.
 
 Take \`body_sha\` (shasum -a 256 of the file, first 64 hex) when you start reading.
 

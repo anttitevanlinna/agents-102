@@ -1070,3 +1070,25 @@ test('sliceSlides: ids come back in the order listed, skipped slides stay out', 
   assert.doesNotMatch(out, /Second/);
   assert.throws(() => sliceSlides(src, 'first,nope'), /nope/);
 });
+
+// The judges' read view: borrowed slides are inlined (and fenced as borrowed),
+// whole-file includes stay links — those files are judged at home.
+test('expand-md: inlines a slide include between borrowed markers; whole-file include stays a link', () => {
+  const out = execSync('node scripts/expand-md.js -', {
+    cwd: path.join(__dirname, '..'), encoding: 'utf8',
+    input: '# M\n\n[C](lectures/context-is-king.md#cover)\n\n[W](lectures/what-just-happened.md)\n',
+  });
+  assert.match(out, /<!-- borrowed: lectures\/context-is-king\.md#cover[^>]*-->\n# Context is King/);
+  assert.match(out, /<!-- \/borrowed -->/);
+  assert.match(out, /^\[W\]\(lectures\/what-just-happened\.md\)$/m);
+});
+
+test('render-md --list-includes: a slide include is not a file to audit here', () => {
+  const tmp = fs.mkdtempSync(path.join(require('node:os').tmpdir(), 'list-inc-'));
+  const mod = path.join(tmp, 'm.md');
+  fs.writeFileSync(mod, '# M\n\n[C](lectures/context-is-king.md#cover)\n\n[W](lectures/what-just-happened.md)\n');
+  const out = execSync(`node scripts/render-md.js --list-includes ${mod}`, { cwd: path.join(__dirname, '..'), encoding: 'utf8' });
+  assert.doesNotMatch(out, /context-is-king\.md/);
+  assert.match(out, /what-just-happened\.md/);
+  fs.rmSync(tmp, { recursive: true, force: true });
+});

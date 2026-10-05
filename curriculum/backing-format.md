@@ -122,6 +122,16 @@ Cleared on resolution — resolved items leave no residue (`check_writing.md §3
 
 Only genuinely open forced decisions stay in `Flagged`. The test at the end of an OODA run: could someone read this list as a to-do? If any line on it is already done, it is in the wrong field.
 
+## Slide grain
+
+A slide another training includes by id (`[T](lectures/x.md#<id>)`) keeps its backing here, in its home file; freshness and judging stay home. `node scripts/slide-card.js lectures/x.md[#<id>]` prints what a slide carries:
+
+- **Claims** — located by `anchor`, no slide field. A claim whose anchor spans two `##` sections is a straddler, carried by neither: split the anchor so each slide owns its half.
+- **Stance** — one subject. `**Stance** `[stance:…]` (`<id>`)` keys it to the slides it is about; unkeyed, it travels with any slide carrying a `detail` or `borrowed` claim.
+- **Maintainer notes** — a paragraph or top-level bullet naming `` `<id>` `` travels with that slide (guards: do-not-soften, zombie-stat, bold budget). Unkeyed notes are about the file's place in its home training and stay home.
+
+The card does not judge fit. A borrowed slide's referents resolve against the borrower's deck: the borrower's slides and cross_module judges own that.
+
 ## Auto-degrade
 
 Touch-based, inherited from the stamp format. Editing a body phrase that appears as a claim `anchor` degrades that claim's sources to re-check — the pin may no longer match the prose. Editing body prose no anchor quotes does not. The `Flagged` list is not degraded by anything; only resolution clears it.

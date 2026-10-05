@@ -291,8 +291,9 @@
     var INCLUDE_LINK_RE = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md(?:#([a-z0-9-]+(?:,[a-z0-9-]+)*))?\)[ \t]*$/gm;
 
     // Slide id marker: `<!--slide:<id>-->` on its own line under a `##` heading,
-    // or under the `#` title for the cover (title + lede); other `<!--...-->`
-    // marker lines may sit between. Id is unique per file;
+    // or under the `#` title for the cover (title + lede). Write it first, above
+    // `<!--tier:N-->`: a tier marker needs a blank line after it
+    // (check-slide-tiers). sliceSlide tolerates either order. Id is unique per file;
     // the include address is `<kind>/<slug>.md#<id>`. Stays an HTML comment in
     // the render. Maintainer-tail markers do not count.
     var SLIDE_MARKER_RE = /^<!--slide:([a-z0-9-]+)-->[ \t]*$/;

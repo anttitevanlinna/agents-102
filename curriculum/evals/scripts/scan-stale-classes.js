@@ -137,6 +137,8 @@ function tagLine(m, tags) {
   if (m.region === 'maintainer' && /`\[checked:/.test(m.text)) { tags.add('technical'); return 0 }
   if (m.region === 'maintainer' || m.region === 'frontmatter') return 0
   if (m.region === 'fence') { tags.add('technical'); return 0 }
+  // Slide-id marker: an include address, never rendered, no prose to judge.
+  if (CR.SLIDE_MARKER_RE.test(m.text)) return 0
   tags.add('writing'); tags.add('slides')
   if (m.heading) { tags.add('story'); tags.add('pedagogy') }
   if (m.opener || m.close) tags.add('story')

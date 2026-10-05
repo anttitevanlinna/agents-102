@@ -1,8 +1,10 @@
 # The machine you just met
+<!--slide:cover-->
 
 The machine you just met can be steered. What you bring, what you build, and what you ask for all change the work.
 
 ## Agreeable answers won the preference round
+<!--slide:agreeable-answers-->
 <!--tier:2-->
 
 The LLM is trained twice. First it learns to predict the next likely word, from more text than any person has read. Then it is tuned on human preference: people compare answers side by side, and the kind of answer people prefer wins.
@@ -15,6 +17,7 @@ The agent's report of its own success is the same kind of output. "Fixed, and th
 
 
 ## The agent chat is an abstraction
+<!--slide:chat-is-an-abstraction-->
 <!--tier:2-->
 
 The agent's chat is an abstraction of the work, necessarily. Something has to be left out; otherwise the agent would be printing the code back, narrated.
@@ -25,6 +28,7 @@ Current state lives on disk, and the agent reads it on request. A state question
 
 
 ## Errors stack until a check resets them
+<!--slide:errors-stack-->
 <!--tier:2-->
 
 Each step is mostly right, and each step builds on the one before. One mostly-right answer reads fine on its own. A session is not one answer; it is a chain of them, each standing on the last.
@@ -37,6 +41,7 @@ That is why the failing test came before the fix. The check existed before the c
 
 
 ## Ask for a ranked list, not an essay
+<!--slide:ranked-list-not-essay-->
 <!--tier:2-->
 
 The fix was small; the answers around it were pages. Complete, not prioritized, is the machine's default: an answer that covers everything is never wrong by omission.
@@ -47,6 +52,7 @@ Tell the LLM what output you want: a ranked list first, detail on request. Chang
 
 
 ## The machine is steerable
+<!--slide:machine-is-steerable-->
 <!--tier:2-->
 
 - The mirror is steered by what you bring. The machine amplifies posture, and the posture is yours to pick: a stated doubt, a standard the answer has to clear, a question that asks for what is wrong before what is right.
@@ -56,6 +62,7 @@ Tell the LLM what output you want: a ranked list first, detail on request. Chang
 That is the machine. The rest is steering.
 
 ## You just ran the same loop
+<!--slide:you-just-ran-the-loop-->
 <!--tier:1-->
 
 Orient, fix, close, compound. You just ran that loop. The agent's first read was partly wrong. You found the useful wrongness and corrected it. The correction did not stay in the scrollback. It went to disk, and the next session can use the learning.
@@ -63,6 +70,7 @@ Orient, fix, close, compound. You just ran that loop. The agent's first read was
 Kieran Klaassen calls this **compound engineering**: work produces evidence; evidence improves the system that does the next work.
 
 ## What compounds
+<!--slide:what-compounds-->
 <!--tier:1-->
 
 Klaassen's definition: each unit of engineering work should make subsequent units easier, not harder. What that looks like, in his words:
@@ -81,23 +89,23 @@ The loop is the shape. The bug today was the excuse.
 **Quality:** compendium-audited 2026-09-29 (writing@dd52c026 story@d45aaed2 technical@d45aaed2 behavior@1480362 pedagogy@d45aaed2 strategy@f54d3c6e slides@d45aaed2)
 - judges @f54d3c6e: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
-**Scrollback slide (2026-08-08, Antti-directed; header *The agent chat is an abstraction* 2026-09-13, Antti-directed, so header and body share one noun):** the slide carries the maintainer's own frame, *the scrollback is not the work*, near-verbatim in all three beats: necessity (the chat has to leave things out or it would print the code back, narrated), the architecture-vs-code analog, and disk-as-current-state with the fresh-read move (*read x, y, z*, then ask). Guards for judges: do not soften *not the work*; do not strengthen to everything-in-the-scrollback-is-false (the claim is which surface answers a state question, and the fresh-read bullet shows conversation CAN answer it once grounded); the analog owes no attribution (architecture-drifts-from-code is common engineering knowledge, `check_writing.md` §6 counter-rule); claims are observation-grade by construction (a lossless narration would reproduce the artifact), no citation owed. The closer's bring/build/ask triad deliberately does NOT gain a fourth leg — the disk rule is a reading discipline, not a steering knob. Downstream joins: `orient-and-introspect`'s spot-check is the lived M1 instance (the check quotes a file, not the account); M3's `threat-model-with-stride` ADR catch (*"reasoned forward from the conversation, not from the filesystem"*) is the exercise-level payoff and stays un-cited there on purpose. Trainer line available, not on the slide: *more conversation is more reflection* — the fresh read is the exception that proves it.
+**Scrollback slide `chat-is-an-abstraction`, closer `machine-is-steerable` (2026-08-08, Antti-directed; header *The agent chat is an abstraction* 2026-09-13, Antti-directed, so header and body share one noun):** the slide carries the maintainer's own frame, *the scrollback is not the work*, near-verbatim in all three beats: necessity (the chat has to leave things out or it would print the code back, narrated), the architecture-vs-code analog, and disk-as-current-state with the fresh-read move (*read x, y, z*, then ask). Guards for judges: do not soften *not the work*; do not strengthen to everything-in-the-scrollback-is-false (the claim is which surface answers a state question, and the fresh-read bullet shows conversation CAN answer it once grounded); the analog owes no attribution (architecture-drifts-from-code is common engineering knowledge, `check_writing.md` §6 counter-rule); claims are observation-grade by construction (a lossless narration would reproduce the artifact), no citation owed. The closer's bring/build/ask triad deliberately does NOT gain a fourth leg — the disk rule is a reading discipline, not a steering knob. Downstream joins: `orient-and-introspect`'s spot-check is the lived M1 instance (the check quotes a file, not the account); M3's `threat-model-with-stride` ADR catch (*"reasoned forward from the conversation, not from the filesystem"*) is the exercise-level payoff and stays un-cited there on purpose. Trainer line available, not on the slide: *more conversation is more reflection* — the fresh read is the exception that proves it.
 
-**Output-shape slide (2026-07-10, Antti-directed cognitive-load arc):** *Ask for a ranked list, not an essay* (header 2026-09-13) sits between the errors-stack-until-a-check-resets-them slide (header 2026-09-13) and the closer, whose ask-steering bullet completes bring / build / ask. Carries the M1 anchor of the selective-reading arc (M2 exception → M3 take-into-use → M5 remind). Mechanism observation-grade: no training-cause claim for verbosity, no citation owed — don't strengthen to a tuning claim without a source. The M1 trainer flow names the mirror, chain, and output without a behavior count.
+**Output-shape slide `ranked-list-not-essay` (2026-07-10, Antti-directed cognitive-load arc):** *Ask for a ranked list, not an essay* (header 2026-09-13) sits between the errors-stack-until-a-check-resets-them slide (header 2026-09-13) and the closer, whose ask-steering bullet completes bring / build / ask. Carries the M1 anchor of the selective-reading arc (M2 exception → M3 take-into-use → M5 remind). Mechanism observation-grade: no training-cause claim for verbosity, no citation owed — don't strengthen to a tuning claim without a source. The M1 trainer flow names the mirror, chain, and output without a behavior count.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet slides carry bold only on the coined-term handles at their naming moments (**sycophancy**, **error cascade**); the nine-in-ten/seven-steps illustration wording sits under the zombie-stat guard below. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
+**Emphasis pass `agreeable-answers` `errors-stack` (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet slides carry bold only on the coined-term handles at their naming moments (**sycophancy**, **error cascade**); the nine-in-ten/seven-steps illustration wording sits under the zombie-stat guard below. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 
 **STATUS:** new lecture (2026-07-02), Antti-directed promotion from completeness-review finding 3. Decision verbatim (Antti, 2026-07-02): "sycophancy is a good catch. I feel that actually could live in lecture in module 1. After exercises. Could teach sycophancy and reliablity math." Slide format per `theory-plan.md` § Slide format: lede + 5 slides + kicker, one `##` = one slide, bolded claim + 1-3 mechanism sentences per bullet.
 
 **Placement:** M1's final lecture, after `compound-and-close` (Ex4). Zoom order: exercise-level recognition first (the machine tendencies felt in Ex1–Ex3), then arc-level recognition (the two loop slides). The loop kicker ("The loop is the shape. The bug today was the excuse.") is the lecture's last line and the designed hand-off into `## Next`: M1's mood target is joyful creation and the loop carries that as the last word. **Do not restore a separate training-built lecture or its build-story slides** (bulletpoint origin, rule-count snapshot, testing-stack tour, Antti narrator lede — `how-this-training-was-built`, dissolved 2026-08-25, Antti-called; git carries them).
 
 **Loop-slide constraints:**
-- **`## You just ran the same loop` names no artifact and no build story (Antti-directed 2026-09-01).** The slide opens on M1's own loop (orient, fix, close, compound) and closes on the learning being available to the next session. Two things it must not regain: the *"the way this training was built"* opener, which made the repo's own method look like writing a local rules file; and `./CLAUDE.local.md` by name, which in the definitional slot taught that compound engineering IS rules-file maintenance — the equation the next slide then has to dismantle. The file is owned by `compound-and-close` (which writes it) and by M1's Key Concepts (which qualifies it).
-- **`## What compounds` is the definitional slide (Antti-directed 2026-08-23).** Opens Klaassen's four bullets after the attribution line and before the closer; the slide says the file is an instance, not the class. The one bulleted-definition slide in the pair, accepted: a quoted definition is a list. Keep the closer line last.
-- **Klaassen is named twice on the student surface across M1, and both are on this page.** The same-loop slide connects the student's work to the name; the definitional slide attributes the quoted definition. `compound-and-close` prints the loop but names the practice rather than the person. Two is the cap; a third M1 mention breaches it.
-- **Loop slides stay prose paragraphs**; the only bold handle on them is **compound engineering** at its naming.
+- `you-just-ran-the-loop` **`## You just ran the same loop` names no artifact and no build story (Antti-directed 2026-09-01).** The slide opens on M1's own loop (orient, fix, close, compound) and closes on the learning being available to the next session. Two things it must not regain: the *"the way this training was built"* opener, which made the repo's own method look like writing a local rules file; and `./CLAUDE.local.md` by name, which in the definitional slot taught that compound engineering IS rules-file maintenance — the equation the next slide then has to dismantle. The file is owned by `compound-and-close` (which writes it) and by M1's Key Concepts (which qualifies it).
+- `what-compounds` **`## What compounds` is the definitional slide (Antti-directed 2026-08-23).** Opens Klaassen's four bullets after the attribution line and before the closer; the slide says the file is an instance, not the class. The one bulleted-definition slide in the pair, accepted: a quoted definition is a list. Keep the closer line last.
+- `you-just-ran-the-loop` `what-compounds` **Klaassen is named twice on the student surface across M1, and both are on this page.** The same-loop slide connects the student's work to the name; the definitional slide attributes the quoted definition. `compound-and-close` prints the loop but names the practice rather than the person. Two is the cap; a third M1 mention breaches it.
+- `you-just-ran-the-loop` `what-compounds` **Loop slides stay prose paragraphs**; the only bold handle on them is **compound engineering** at its naming.
 
-**Laws carried:** sycophancy-mechanism (preference tuning rewards agreeable answers, so mirroring is optimization, not courtesy; lived consequence: the agent's self-report is a hypothesis, grounding the module's Key Concept) · reliability-compounding in chain-length form (error stacks over unverified chain length; an outside check resets the chain) · scrollback-is-abstraction (the chat necessarily omits, so it drifts from disk like architecture drifts from code; lived consequence: state questions get a fresh read, which is the mechanism under the spot-check and under M3's ADR-placement catch). The nine-in-ten / seven-steps line is a worded subjunctive illustration, labeled "an illustration, not a measurement" in body. Zombie-stat guard: do NOT let edits promote it to a measured constant, add notation, or add percent forms.
+**Laws carried** (`agreeable-answers` `errors-stack` `chat-is-an-abstraction`)**:** sycophancy-mechanism (preference tuning rewards agreeable answers, so mirroring is optimization, not courtesy; lived consequence: the agent's self-report is a hypothesis, grounding the module's Key Concept) · reliability-compounding in chain-length form (error stacks over unverified chain length; an outside check resets the chain) · scrollback-is-abstraction (the chat necessarily omits, so it drifts from disk like architecture drifts from code; lived consequence: state questions get a fresh read, which is the mechanism under the spot-check and under M3's ADR-placement catch). The nine-in-ten / seven-steps line is a worded subjunctive illustration, labeled "an illustration, not a measurement" in body. Zombie-stat guard: do NOT let edits promote it to a measured constant, add notation, or add percent forms.
 
 **Deliberately absent (owned elsewhere):** the word "backpressure" + gates/session-reach vocabulary (the post-launch M4 closer names the feedback constraint; M5 builds and calibrates the checks; M6 composes them) · the three failure modes · map/phase references (M1 protected ground) · drift-wedge/position-fix chart vocabulary (the M5 chart owns that imagery). This lecture keeps plain "check resets the chain" language only.
 
@@ -139,7 +147,7 @@ Format → `curriculum/backing-format.md`.
 - Error compounding over chain length · [borrow:reliability engineering] · law:compound-reliability-floor-0-85 · ← cultural-vocab. Body carries the subjunctive illustration only; the banked law's 0.85ⁿ form is NOT on the student surface here by design.
 - Architecture-vs-code drift · [borrow:software engineering] · law:none · ← cultural-vocab — the diagram describes intention and ages; the application to the scrollback is the maintainer's own.
 
-**Stance** `[stance:2026-07-29 level:L3]`
+**Stance** `[stance:2026-07-29 level:L3]` (`agreeable-answers`)
 - holds: sycophancy is a documented consequence of preference tuning, not a quirk — measured across five frontier assistants and traced to human + preference-model judgment. The lecture's causal hedge matches the literature.
 - contested: the magnitude, not the mechanism. Sycophancy is measurably present in a current model (Anthropic, Apr 2026, 639K conversations), so the present-tense framing is safe. What moves is how much, and every published rate is a vendor measuring its own model. The lecture never quantifies, so no measured reduction can falsify it — training a behaviour down does not unmake its origin.
 - decided: **both far-half findings are handed forward, not applied here, 2026-08-02.** Ronacher's *The Coming Loop* warns that in harness-driven loops the check degrades into another model's judgment (*"it does not have to be objective or binary"*), which would undercut `check-resets-chain` — but M1's check IS a failing test, genuinely outside the run, so the assumption holds where it is made. And Anthropic's *Agentic Misalignment in Summer 2026* is stronger than this lecture's "mostly right, stacking wrong": under stress-test a model produces *"normal-looking artifacts"* over covertly zeroed work, which is active fabrication rather than drift. M1's mood target is recognition, not alarm, so the body stays as written; both belong to whichever far-half lecture teaches verification under stress.

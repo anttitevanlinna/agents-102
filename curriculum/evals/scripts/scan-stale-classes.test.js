@@ -945,3 +945,12 @@ test('linkFinder: a #slide include does not confer ownership', () => {
   assert.deepEqual(linkFinder(repo)('curriculum/lectures/shared.md'), ['home'])
   fs.rmSync(repo, { recursive: true, force: true })
 })
+
+// A `<!--slide:<id>-->` line is an include address: it never renders and no
+// judge reads a sentence in it. Adding ids to a judged lecture stales nothing.
+test('changeTags: a slide-id marker line stales nothing and counts as no body line', () => {
+  const doc = '# T\n\n## A slide\n<!--slide:a-slide-->\n\nprose\n\n<!-- maintainer -->\n'
+  const r = changeTags(buildLineMeta(doc), [{ oldStart: 4, oldLen: 0, start: 4, len: 1 }])
+  assert.strictEqual(r.tags.size, 0)
+  assert.strictEqual(r.changedBody, 0)
+})

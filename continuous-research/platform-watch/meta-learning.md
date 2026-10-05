@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 240 — 2026-10-05
+
+When a security research firm's site is repeatedly unreachable, verify canonical domain before logging "primary source unreachable." manifoldsecurity.io (DNS failure, cycles 238-240) and manifold.security (the live site, .security TLD) are different hosts — three cycles of "site down" observations were based on checking the wrong domain. The canonical URL had been correctly recorded in all earlier state.md entries (manifold.security/blog); the watch-item DNS checks were the anomaly. Lesson: before logging "primary site unreachable" for a security firm, cross-check the URL against all prior KB entries for the same source — if earlier cycles successfully fetched a different URL, the discrepancy reveals the wrong domain, not a new outage.
+
+L3 convergence for HydraFusion model sub-optimality confirmed via community discussion thread alone — no standalone blog posts required. Four users (@Csaba8472, @Astrophizz, @philjones88, @hallatore) independently reported the same pattern (Terra/older model routing over Sol/newer cheaper alternatives) across 5 days without visible cross-reading. This re-confirms Cycle 224's heuristic: an active community thread with independent reporters is functionally equivalent to a practitioner-direct source cluster for pattern confirmation. For new platform rollouts, the community discussion thread IS the first L3 convergence surface — no need to wait for blog posts.
+
 ### Cycle 239 — 2026-10-04
 
 Issue tracker sort=updated queries are a faster HydraFusion bug-surface check than community discussion thread fetches: the tracker shows total issue count and most-recent-filed date immediately, confirming "no new bugs since D+4" in one fetch. For platform-watch items in their early bug-surfacing window (D+3 to D+7), the tracker query should run alongside — not after — the community discussion fetch. Persistent DNS failure over 2+ consecutive days on a security-disclosure source is a qualitatively different signal than a one-day failure: it shifts interpretation from "possible transient outage" to "infrastructure event." The watch note should explicitly name the failure-day count and both interpretations (site migration ahead of PoC vs. unrelated infrastructure). Naming alternatives prevents over-reading absence as evidence in either direction.
@@ -74,6 +80,8 @@ Issue tracker sort=updated queries are a faster HydraFusion bug-surface check th
 When a vendor closes a community-reported bug as "not planned" without explanation (GitHub issue #4741, HydraFusion plan-mode stall), that triage decision is itself a finding — it tells you the vendor's prioritization posture more reliably than any roadmap post. The lesson: always check issue closure status, not just issue existence, when tracking platform maturity. "Closed as not planned" means the reported behavior is either by-design or deprioritized, and practitioners should treat it as a stable limitation.
 
 When a security researcher's site (manifoldsecurity.io) goes dark at DNS level after 33 days of embargo, the absence is not noise — it could signal an imminent publication (rebuilding the site for a release) or a hosting migration ahead of a disclosure. Either way, it changes the risk calculus: the next cycle should treat a DNS failure on a security publication as a "check first thing" item, not a footnote. Primary-source unreachability is itself worth tracking explicitly in the watch log.
+
+**[BACK-SWEEP CORRECTION — Cycle 240]:** manifoldsecurity.io was the WRONG domain. The canonical Manifold Security site is manifold.security/blog (the .security TLD), confirmed live throughout. Three cycles of "site down" observations were a domain mix-up. The meta-learning about tracking DNS failure as a signal is still valid, but the specific case must be retracted: manifold.security was always accessible. New lesson: before logging "primary source unreachable" for a security research site, verify the canonical domain by checking both the .io and the vendor-named TLD variants.
 
 ### Cycle 237 — 2026-10-02
 

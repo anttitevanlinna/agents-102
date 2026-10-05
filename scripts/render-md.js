@@ -50,10 +50,10 @@ function inlineIncludes(md, seen) {
     const next = new Set(seen);
     next.add(key);
     const raw = fs.readFileSync(incPath, 'utf8');
-    const stripped = slideId ? CR.sliceSlide(raw, slideId) : CR.stripMaintainerTail(raw);
+    const stripped = slideId ? CR.sliceSlides(raw, slideId) : CR.stripMaintainerTail(raw);
     const expanded = CR.expandFigures(CR.expandPrompts(stripped, REGISTRY), FIGURES);
     const inlined = inlineIncludes(expanded, next);
-    return '\n\n<!--INC:' + kind + ':' + (slideId ? slug + '--' + slideId : slug) + ':' + CR.esc(title) + '-->\n\n'
+    return '\n\n<!--INC:' + kind + ':' + (slideId ? slug + '--' + slideId.split(',')[0] : slug) + ':' + CR.esc(title) + '-->\n\n'
       + inlined
       + '\n\n<!--/INC-->\n\n';
   });

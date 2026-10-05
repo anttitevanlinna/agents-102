@@ -67,7 +67,7 @@ const ONE_TRAINING = flag('training');
 const INCLUDE_RE = /^\[[^\]]+\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md\)[ \t]*$/;
 // Slide include: one `##` section by its `<!--slide:<id>-->` marker. Must resolve
 // to exactly one marker, or the build throws mid-render.
-const SLIDE_INCLUDE_RE = /^\[[^\]]+\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md#([a-z0-9-]+)\)[ \t]*$/;
+const SLIDE_INCLUDE_RE = /^\[[^\]]+\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md#([a-z0-9-]+(?:,[a-z0-9-]+)*)\)[ \t]*$/;
 // Any link to a shared-library file, wherever it sits.
 const REFERENCE_RE = /\]\((?:\.\.\/)*((?:exercises|lectures)\/[a-z0-9-]+)\.md\)/g;
 
@@ -95,7 +95,7 @@ function scanTraining(key) {
         const src = path.join(LIBRARY_DIR, sl[1] + '.md');
         let why = null;
         if (!fs.existsSync(src)) why = 'file missing';
-        else { try { CR.sliceSlide(fs.readFileSync(src, 'utf8'), sl[2]); } catch (e) { why = e.message; } }
+        else { try { CR.sliceSlides(fs.readFileSync(src, 'utf8'), sl[2]); } catch (e) { why = e.message; } }
         if (why) badSlides.push({ file: name, line: i + 1, target: `${sl[1]}.md#${sl[2]}`, why });
         return;
       }

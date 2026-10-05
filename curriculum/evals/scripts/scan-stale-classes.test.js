@@ -930,3 +930,18 @@ test('changeTags: maintainer-only deletion still tags nothing', () => {
   test('findingIndex: one open row beside a settled one keeps the class live', () => assert.ok(idx.has(key('mixed'))))
   resetFindingIndex()
 }
+
+// A slide include (`.md#<id>`) borrows slides; only a whole-file include owns
+// the file. Otherwise a home training's instances turn "not derivable" the
+// moment a second training borrows one slide.
+test('linkFinder: a #slide include does not confer ownership', () => {
+  const fs = require('node:fs'), os = require('node:os'), path = require('node:path')
+  const { linkFinder } = require('./scan-stale-classes.js')
+  const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'linkfinder-'))
+  for (const [t, line] of [['home', '[L](lectures/shared.md)'], ['borrower', '[L](lectures/shared.md#cover,a)']]) {
+    fs.mkdirSync(path.join(repo, 'curriculum/trainings', t), { recursive: true })
+    fs.writeFileSync(path.join(repo, 'curriculum/trainings', t, 'm.md'), `# M\n\n${line}\n`)
+  }
+  assert.deepEqual(linkFinder(repo)('curriculum/lectures/shared.md'), ['home'])
+  fs.rmSync(repo, { recursive: true, force: true })
+})

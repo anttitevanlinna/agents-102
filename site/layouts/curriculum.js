@@ -285,13 +285,14 @@
 
     // Standalone include-link pattern: the entire paragraph is `[Title](kind/slug.md)`.
     // SPA fetches and inlines; workbook reads sync. Same regex, same shape.
-    // Optional `#<id>` (group 3) includes ONE slide: the `##` section carrying
-    // `<!--slide:<id>-->` (sliceSlide). Groups 1-2 are unchanged for readers
-    // that only need the file.
-    var INCLUDE_LINK_RE = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md(?:#([a-z0-9-]+))?\)[ \t]*$/gm;
+    // Optional `#<id>[,<id>...]` (group 3) includes only those slides, in the
+    // order listed (sliceSlides). Groups 1-2 are unchanged for readers that
+    // only need the file.
+    var INCLUDE_LINK_RE = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md(?:#([a-z0-9-]+(?:,[a-z0-9-]+)*))?\)[ \t]*$/gm;
 
-    // Slide id marker: `<!--slide:<id>-->` on its own line under a `##` heading
-    // (other `<!--...-->` marker lines may sit between). Id is unique per file;
+    // Slide id marker: `<!--slide:<id>-->` on its own line under a `##` heading,
+    // or under the `#` title for the cover (title + lede); other `<!--...-->`
+    // marker lines may sit between. Id is unique per file;
     // the include address is `<kind>/<slug>.md#<id>`. Stays an HTML comment in
     // the render. Maintainer-tail markers do not count.
     var SLIDE_MARKER_RE = /^<!--slide:([a-z0-9-]+)-->[ \t]*$/;
@@ -309,8 +310,8 @@
         }
         var start = hits[0] - 1;
         while (start >= 0 && /^<!--.*-->[ \t]*$/.test(lines[start])) start--;
-        if (start < 0 || !/^## /.test(lines[start])) {
-            throw new Error('<!--slide:' + id + '--> must sit directly under a ## heading');
+        if (start < 0 || !/^#{1,2} /.test(lines[start])) {
+            throw new Error('<!--slide:' + id + '--> must sit directly under a ## heading (or the # title)');
         }
         var end = lines.length, inFence = false;
         for (var i = start + 1; i < lines.length; i++) {
@@ -318,6 +319,10 @@
             if (!inFence && /^#{1,2} /.test(lines[i])) { end = i; break; }
         }
         return lines.slice(start, end).join('\n').trim() + '\n';
+    }
+
+    function sliceSlides(md, ids) {
+        return ids.split(',').map(function (id) { return sliceSlide(md, id); }).join('\n');
     }
 
     // Prompt-include marker: `{{prompt:<key>}}` on its own line, expanded by
@@ -1441,6 +1446,7 @@
         INCLUDE_LINK_RE: INCLUDE_LINK_RE,
         SLIDE_MARKER_RE: SLIDE_MARKER_RE,
         sliceSlide: sliceSlide,
+        sliceSlides: sliceSlides,
         CROSS_DOC_SHARED_RE: CROSS_DOC_SHARED_RE,
         CROSS_DOC_TRAINING_RE: CROSS_DOC_TRAINING_RE,
         CROSS_DOC_TRAINING_KS_RE: CROSS_DOC_TRAINING_KS_RE,

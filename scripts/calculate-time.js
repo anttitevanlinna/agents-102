@@ -370,10 +370,10 @@ function computeModule(trainingKey, modSlug) {
   const leafBeats = mod.leaves.map(({ kindSlug, title, slideId }) => {
     // A slide include (`#<id>`) owns no **Time:** line — the file's runtime is
     // the whole lecture's. It is priced only by a **Charge:** keyed
-    // `<slug>--<id>`; without one the beat is an unpriced problem, never the
+    // `<slug>--<first id>`; without one the beat is an unpriced problem, never the
     // whole file's minutes.
     const leaf = slideId ? { file: `curriculum/${kindSlug}.md#${slideId}` } : readLeaf(kindSlug);
-    const slug = kindSlug.split('/')[1] + (slideId ? `--${slideId}` : '');
+    const slug = kindSlug.split('/')[1] + (slideId ? `--${slideId.split(',')[0]}` : '');
     if (slideId && !mod.charges[slug]) problems.push(`${mod.file}: slide include ${kindSlug}.md#${slideId} has no duration — add "- **Charge:** ${slug} <N> — <why>"`);
     const kind = kindSlug.split('/')[0] === 'exercises' ? 'exercise' : 'lecture';
     if (leaf.error) problems.push(`${leaf.file}: ${leaf.error}`);

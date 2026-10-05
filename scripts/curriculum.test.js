@@ -19,6 +19,7 @@ const {
   expandFigures,
   expandTiers,
   sliceSlide,
+  sliceSlides,
   INCLUDE_LINK_RE,
   moduleOrdinal,
   moduleNumber,
@@ -1050,4 +1051,22 @@ test('sliceSlide: unknown id, maintainer-tail id, duplicate id and orphan marker
   assert.throws(() => sliceSlide(SLIDE_SRC, 'tail'), /no <!--slide:tail-->/);
   assert.throws(() => sliceSlide(SLIDE_SRC.replace('## Third slide\n', '## Dup\n<!--slide:first-->\n\n## Third slide\n'), 'first'), /2 <!--slide:first-->/);
   assert.throws(() => sliceSlide('# T\n\nprose\n<!--slide:orphan-->\n', 'orphan'), /directly under a ## heading/);
+});
+
+test('INCLUDE_LINK_RE: a comma list of ids is one include', () => {
+  const m = new RegExp(INCLUDE_LINK_RE.source).exec('[X](lectures/a.md#cover,first,third)');
+  assert.equal(m[3], 'cover,first,third');
+});
+
+test('sliceSlide: a marker under the # title selects the cover (title + lede), not the first ##', () => {
+  const src = SLIDE_SRC.replace('# A lecture\n', '# A lecture\n<!--slide:cover-->\n');
+  assert.equal(sliceSlide(src, 'cover'), '# A lecture\n<!--slide:cover-->\n\nCover line.\n');
+});
+
+test('sliceSlides: ids come back in the order listed, skipped slides stay out', () => {
+  const src = SLIDE_SRC.replace('## Third slide\n', '## Third slide\n<!--slide:third-->\n');
+  const out = sliceSlides(src, 'third,first');
+  assert.ok(out.indexOf('## Third slide') < out.indexOf('## First slide'));
+  assert.doesNotMatch(out, /Second/);
+  assert.throws(() => sliceSlides(src, 'first,nope'), /nope/);
 });

@@ -332,14 +332,14 @@ function inlineIncludes(md, seen = new Set()) {
     // `#<id>` = one slide; wrapper id `<kind>-<slug>--<id>` never collides with
     // the whole-file wrapper. An unresolved id fails the build.
     if (slideId) {
-      try { inc = CR.sliceSlide(inc, slideId); }
+      try { inc = CR.sliceSlides(inc, slideId); }
       catch (e) { throw new Error(`${kindSlug}.md#${slideId}: ${e.message}`); }
     }
     const key = slideId ? `${kind}/${slug}#${slideId}` : `${kind}/${slug}`;
     if (seen.has(key)) return full; // prevent loops
     seen.add(key);
     const body = inlineIncludes(inc, seen);
-    const wrapSlug = slideId ? `${slug}--${slideId}` : slug;
+    const wrapSlug = slideId ? `${slug}--${slideId.split(',')[0]}` : slug;
     return `\n\n<!--INC:${kind}:${wrapSlug}:${CR.esc(title)}-->\n\n${body}\n\n<!--/INC-->\n\n`;
   });
 }

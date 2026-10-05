@@ -555,11 +555,12 @@ function trainingOf(relpath, findLinkers, preferredTraining = null) {
 // putting 5 foreign files on AE101's board. The build inlines exactly the
 // standalone-paragraph `[Title](exercises|lectures/slug.md)` shape, so that is
 // the shape that confers ownership — CR.INCLUDE_LINK_RE, the build's own
-// constant, so the two cannot drift.
+// constant, so the two cannot drift. A `#<slide-id>` include (group 3) borrows
+// slides and confers nothing: the file stays judged in its home training.
 function includesSlug(txt, kind, slug) {
   const re = new RegExp(CR.INCLUDE_LINK_RE.source, 'gm')
   let m
-  while ((m = re.exec(txt)) !== null) if (m[2] === `${kind}/${slug}`) return true
+  while ((m = re.exec(txt)) !== null) if (m[2] === `${kind}/${slug}` && !m[3]) return true
   return false
 }
 

@@ -92,6 +92,10 @@ for (const src of sources) {
     let md;
     try { md = fs.readFileSync(src, 'utf8'); }
     catch (e) { vanished.push(`${path.relative(ROOT, src)} (${e.code || e.message})`); continue; }
+    // A standalone `[T](lectures/x.md#<slide-id>[,...])` is a slide include, not
+    // a heading link: its fragment names <!--slide:--> markers, and
+    // check-include-anchors.js resolves it. Blank those lines out of this scan.
+    md = md.replace(CR.INCLUDE_LINK_RE, (full, t, ks, ids) => (ids ? '' : full));
     let m;
     LINK_RE.lastIndex = 0;
     while ((m = LINK_RE.exec(md)) !== null) {

@@ -1,6 +1,6 @@
 # Agentic Product Teams 101 — Day 2 beat sheet
 
-**Status:** design draft v8, not student-facing, nothing here is taught yet. Strategy: `bosser-strategy:content-strategy-agentic-product-management.md`. Sketch it refines: `group-work-plan.md` § *Three-day sketch*. Records: core `evals/persona-panel/2026-10-05-day2-beats/`, `2026-10-05-day2-score/`.
+**Status:** design draft v9, not student-facing, nothing here is taught yet. Strategy: `bosser-strategy:content-strategy-agentic-product-management.md`. Sketch it refines: `group-work-plan.md` § *Three-day sketch*. Records: core `evals/persona-panel/2026-10-05-day2-beats/`, `2026-10-05-day2-score/`.
 
 ## Day 2: What's actually true?
 
@@ -12,7 +12,7 @@
 
 **Your guides.** Claude, at your side all day, in your own chat. The trainer, who has run this day with teams like yours.
 
-**By the evening** your team has chosen one bet with real evidence under it. Each of you has made your first piece of it, in your own craft. You caught the agent making something up, and you know what you'd trust it with tomorrow.
+**By the evening** your team has chosen one bet with real evidence under it. Each of you has made your first piece of it, in your own craft. You caught the agent making something up, and you know what you'd trust it with tomorrow. And it was safe for anyone in the group to say "the agent got this wrong", which is the habit the team lead takes home.
 
 **What you avoid.** Building the wrong thing fast.
 
@@ -25,12 +25,12 @@
 | 3 | Gather your evidence | Each of you sends Claude through your own material, in your own words. Together you look at where the sources disagree | Control, together | 35 | Short demo, then exercise |
 | | Break | | | 15 | |
 | 4 | Grow the opportunity tree | Each of you sketches a tree alone first. Then you build one together, every branch showing who found it, and each of you questions it from your own role | Creativity, together | 45 | Exercise |
-| 5 | Check what the agents kept | Together you check what the agents now hold against what you agreed on Day 1, and write a proposal for your team: what stays, what goes, who decides the unclear cases | Control, together | 30 | Short talk on customer data, GDPR and the EU AI Act, in plain terms |
+| 5 | Check what the agents kept | Together you check what the agents now hold against what you agreed on Day 1, and write a proposal for your team: what stays, what goes, who decides the unclear cases | Control, together | 30 | The questions your legal team and employee representative will ask first, GDPR and the EU AI Act included, and your team's answers. Bring your data protection contact if you can |
 | 6 | Catch the agent making things up | Two false claims are hidden in your tree. You go through its claims with Claude, find them, and keep the check that found them, with a note of what it can't see. Then you run it on a real research summary of your own | Control | 45 | Short talk, then exercise |
 | | Float | | | 10 | |
 | | Lunch | | | 75 | |
 | 7 | Choose the bet | Together you prune what has nothing behind it and choose the branch Day 3 builds | Together | 20 | |
-| 8 | Make your first piece | Each of you builds your own piece of the bet with Claude, something you couldn't have built alone yesterday: the designer a clickable rough prototype built from the interview quotes behind the bet; the product owner the experiment that could kill the bet, built so it can run, a fake-door page or a short survey, with the signal you'd watch; the team lead a working agent that would check the bet's signal every morning, built as a proposal: it runs on the team only once the team has agreed. You lay the three side by side | Creativity, together | 45 | Exercise |
+| 8 | Make your first piece | Each of you builds your own piece of the bet with Claude, something you couldn't have built alone yesterday: the designer a clickable rough prototype built from the interview quotes behind the bet; the product owner the experiment that could kill the bet, built so it can run, a fake-door page or a short survey, with the signal you'd watch; the team lead how the team would work on this bet with agents, what the agents do and what stays with people, then rehearses telling it with Claude playing a sceptical colleague who remembers the last change negotiations. You lay the three side by side | Creativity, together | 45 | Exercise |
 | 9 | How it could fail | Each of you writes how this fails a year from now. Then quick rounds of ranking, and the causes you missed | Together | 20 | Voting page |
 | 10 | Laptops shut | Plain talk about the top cause. Does the bet survive? Which part of it rests on the agents' work? | Together, control | 20 | |
 | | Break | | | 15 | |
@@ -39,7 +39,7 @@
 
 ## Monday
 
-- Team lead: takes the data proposal to the team, and asks them whether the morning agent should run.
+- Team lead: takes the data proposal and the way-of-working draft to the team, for them to decide with you.
 - Product owner: runs the experiment that could kill the bet, and checks a research summary for invented claims before it reaches a priority call.
 - Designer: makes a clickable rough prototype with Claude for an opportunity before the team commits to it.
 - All three: read the overnight digest from your own backlog and mark the line you trust least.

@@ -40,7 +40,7 @@ const TAIL = `
 
 **Pair note** (\`alpha\`, \`beta\`): read them together.
 
-**Place in the training:** M1 opener.
+**Place in the training:** M1 opener; the short cut skips \`beta\`.
 
 <!-- backing -->
 
@@ -108,6 +108,14 @@ test('notes travel: keyed only here moves, keyed to several is copied, unkeyed s
   assert.match(lec, /\*\*Pair note\*\*/);
   assert.doesNotMatch(slide, /Place in the training|Quality:/);
   assert.match(lec, /\*\*Quality:\*\*/);
+})
+
+test('a note that only mentions an id in passing is about the file: it stays home and does not travel', () => {
+  const d = tree();
+  run(d, 'lectures/lec.md#beta');
+  assert.match(read(d, 'lectures/lec.md'), /\*\*Place in the training:\*\* M1 opener; the short cut skips `beta`\./);
+  assert.doesNotMatch(read(d, 'slides/beta.md'), /Place in the training/);
+  assert.match(read(d, 'slides/beta.md'), /\*\*Pair note\*\*/, 'keyed in its lead to alpha and beta: copied');
 })
 
 test('cutting the second slide moves the source nothing at home cites any more; one framework still cites src-two', () => {

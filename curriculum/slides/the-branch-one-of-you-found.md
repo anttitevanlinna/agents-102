@@ -9,7 +9,7 @@ So sketch alone first, then merge. Keep the name of whoever found each branch on
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), Agentic Product Teams 101 gap slide G6, from `group-work-plan.md` § Opportunity solution tree (risk to watch: consensus buries the minority find). Not taught (simulation training). Owes judging rounds.
+**STATUS:** round 3 fixes applied (2026-10-06), Agentic Product Teams 101 gap slide G6, from `group-work-plan.md` § Opportunity solution tree (risk to watch: consensus buries the minority find). Not taught (simulation training).
 
 **Guard:** "often the one worth the most" is a design stance, not a measured rate; do not add a number.
 
@@ -22,3 +22,5 @@ So sketch alone first, then merge. Keep the name of whoever found each branch on
 
 **Frameworks**
 - 1-2-4-All · [borrow:practitioner-coined] · law:none · ← cultural-vocab
+
+<!-- /backing -->

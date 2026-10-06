@@ -1,7 +1,7 @@
-## Watch five users, fix, then watch five more
+## Test with five users, fix, then test five more
 <!--slide:watch-them-use-it-->
 
-Jakob Nielsen's 2000 article is remembered for one number: test with five users. His own sentence has a second half: "The best results come from testing no more than 5 users and running as many small tests as you can afford."
+Jakob Nielsen's 2000 article on usability testing is remembered for one number: test with five users. His own sentence has a second half: "The best results come from testing no more than 5 users and running as many small tests as you can afford."
 
 Each extra user in the same round mostly shows you what the earlier ones already showed. So if the budget covers fifteen users, he says to spend it on three rounds of five, and fix the design between rounds.
 
@@ -9,7 +9,7 @@ The five only hold for comparable users, people who will use the product in simi
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), APT101 gap G:watch-them-use-it from `apt101-source-pack-2.md` §8. Krug (think-aloud, don't defend the design) is not in either pack yet, so the slide carries Nielsen only. The 85% figure is left out: it rests on L = 31%, an average across Nielsen's projects (pack Drift 2). Not taught (simulation training). Owes judging rounds.
+**STATUS:** round 3 fixes applied (2026-10-06), APT101 gap G:watch-them-use-it from `apt101-source-pack-2.md` §8. Carries Nielsen's numbers only; the watching (think-aloud, observers, debrief) is Krug's and lives on `a-morning-a-month`, which follows. Scoped to usability testing (pack Drift 3). The 85% figure is left out: it rests on L = 31%, an average across Nielsen's projects (pack Drift 2). Not taught (simulation training).
 
 <!-- backing -->
 

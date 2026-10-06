@@ -11,7 +11,7 @@ The summary at the top is a claim too. Language models are tuned partly on what 
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), Agentic Product Teams 101 gap slide G4 (`apt101-slide-reuse-map.md`). Rewrites for product people the ideas of AE101 `the-machine-you-just-met` § Agreeable answers and § Ask for a ranked list, and the last paragraph of `the-loop-half-filled` § Reading was never the control. Not taught (simulation training). Owes judging rounds.
+**STATUS:** round 3 fixes applied (2026-10-06), Agentic Product Teams 101 gap slide G4 (`apt101-slide-reuse-map.md`). Rewrites for product people the ideas of AE101 `the-machine-you-just-met` § Agreeable answers and § Ask for a ranked list, and the last paragraph of `the-loop-half-filled` § Reading was never the control. Not taught (simulation training).
 
 <!-- backing -->
 
@@ -26,3 +26,5 @@ The summary at the top is a claim too. Language models are tuned partly on what 
 
 **Frameworks**
 - Sycophancy as preference-tuning artifact · [borrow:alignment research] · law:none · ← sharma-sycophancy-2023
+
+<!-- /backing -->

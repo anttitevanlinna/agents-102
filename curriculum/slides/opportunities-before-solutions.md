@@ -9,7 +9,7 @@ She asks teams to set several solutions against each other for the opportunity t
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), Agentic Product Teams 101 gap slide G5, from `apt101-source-pack.md` §1. Not taught (simulation training). Owes judging rounds.
+**STATUS:** round 3 fixes applied (2026-10-06), Agentic Product Teams 101 gap slide G5, from `apt101-source-pack.md` §1. Not taught (simulation training).
 
 **Fidelity guards:** opportunity = Torres's own definition, verbatim. Torres prefers a product outcome at the root, not a business metric; if a later edit names the root, keep it a product outcome. "Three rough solutions cost an afternoon" is framing, not a measurement.
 
@@ -28,3 +28,5 @@ She asks teams to set several solutions against each other for the opportunity t
 
 **Frameworks**
 - Opportunity solution tree · [borrow:practitioner-coined] · law:none · ← torres-ost
+
+<!-- /backing -->

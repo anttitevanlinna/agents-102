@@ -26,3 +26,5 @@ For years the slow step was the slice. A team could afford a few real bets a yea
 
 **Frameworks**
 - Opportunity solution tree · [borrow:practitioner-coined] · law:none · ← cultural-vocab
+
+<!-- /backing -->

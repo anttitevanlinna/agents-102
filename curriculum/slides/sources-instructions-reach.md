@@ -1,27 +1,28 @@
 ## Find which part went wrong before fixing anything
 <!--slide:sources-instructions-reach-->
 
-When an agent's digest comes back wrong, the urge is to rewrite its instructions. First ask which of three things it was.
+When an agent's digest comes back wrong, the urge is to rewrite its instructions.
 
-- The material. A stale export, a missing interview, two sources that disagreed and got blended. Fix the material. Cleverer instructions do not make up for bad ground.
+- The material. A stale export, a missing interview, two sources that disagreed and got blended. Fix the material.
 - The instructions. One agent doing two jobs, an unclear ask, the wrong shape of answer. Fix the instructions.
-- What it could reach. It opened something it should not have, or could not open what it needed. Change what it can open, or turn the risky step into a proposal a person approves.
+- What it could reach. It opened something it should not have. Give it less, or have it propose the risky step for a person to approve.
 
 Ask the agent to make this diagnosis first. Then rerun the smallest step that should now behave differently, not the whole night.
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), APT101 rewrite of `debugging-stuck-agents` § Diagnose before repair + § Sources, processing, boundary (Agents 101). Not taught (simulation training). Owes judging rounds.
+**STATUS:** round 3 fixes applied (2026-10-06), APT101 rewrite of `debugging-stuck-agents` § Diagnose before repair + § Sources, processing, boundary (Agents 101). Not taught (simulation training).
 
-**Carried from home:** sources / processing / boundary become material / instructions / what it could reach, in product words. The home's prompt and its `./CLAUDE.md` write-down step stay out; writing the lesson down belongs to the keep-what-we-learned slides.
+**Carried from home:** sources / processing / boundary become material / instructions / what it could reach, in product words. The boundary fixes narrow only, as at home; a source the agent needed and could not open is a material fix, and `what-stopped-the-run` on the previous slide carries it. The home's prompt and its `./CLAUDE.md` write-down step stay out; writing the lesson down belongs to the keep-what-we-learned slides.
 
 <!-- backing -->
 
 **Claims**
-- `three-places-it-goes-wrong` · vision · "First ask which of three things it was." ← none-owed — `debugging-stuck-agents` § Sources, processing, boundary, a house stance.
-- `fix-the-ground-not-the-prompt` · vision · "Cleverer instructions do not make up for bad ground." ← none-owed — same home ("Do not write a cleverer prompt to compensate for bad ground").
 - `diagnose-before-repair` · vision · "Ask the agent to make this diagnosis first." ← none-owed — `debugging-stuck-agents` § Diagnose before repair.
 - `shrink-the-rerun` · vision · "rerun the smallest step that should now behave differently" ← none-owed — same home, move 4.
+- `boundary-fixes-narrow` · vision · "Give it less, or have it propose the risky step for a person to approve." ← none-owed — same home's boundary fixes (narrow the job, do → propose).
 
 **Frameworks**
 (none. House debugging moves.)
+
+<!-- /backing -->

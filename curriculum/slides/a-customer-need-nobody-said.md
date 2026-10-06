@@ -9,7 +9,7 @@ The person who can catch it is the one who sat in the interviews. That is the de
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), Agentic Product Teams 101 gap slide G7 (`apt101-slide-reuse-map.md`): the product-team kind of fabrication. Not taught (simulation training). Owes judging rounds.
+**STATUS:** round 3 fixes applied (2026-10-06), Agentic Product Teams 101 gap slide G7 (`apt101-slide-reuse-map.md`): the product-team kind of fabrication. Not taught (simulation training).
 
 **Guard:** "most dangerous" is the slide's stance about product work, not a measured ranking; keep it scoped to product work. The invented quote is the Day 2 planted-claim exercise's subject (`apt101-day-2-beats.md` beat 6).
 
@@ -19,3 +19,5 @@ The person who can catch it is the one who sat in the interviews. That is the de
 - `quote-most-dangerous` · vision · "The most dangerous thing an agent writes in product work is not a wrong number. It is a quote." ← none-owed — design stance.
 - `fits-what-team-suspected` · vision · "It agrees with what the team already suspected" ← none-owed — observation-grade; the agreeable-answers mechanism applied to research.
 - `catcher-was-in-the-room` · vision · "The person who can catch it is the one who sat in the interviews" ← none-owed
+
+<!-- /backing -->

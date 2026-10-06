@@ -3,11 +3,11 @@
 
 Henrik Kniberg treats alignment and autonomy as two separate axes, not two ends of one slider. High alignment without autonomy is being told exactly how to build the bridge. High autonomy without alignment is every team doing whatever it wants. The quadrant worth having is both: leaders make the why and the context clear, and the team works out the how. His phrase for it is **aligned autonomy**: alignment enables autonomy.
 
-Agents join the same picture. An agent given a clear outcome, the context, and the line it must not cross can be left to work. An agent given only a task needs watching at every step, like a team that was handed the bridge drawings.
+Agents join the same picture. An agent given a clear goal, the context, and the line it must not cross can be left to work. An agent given only a task needs watching at every step, like a team that was handed the bridge drawings.
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), Agentic Product Teams 101 gap slide G12, from `apt101-source-pack.md` §7; also a positioning line in the strategy ("Aligned autonomy, now with agents in the team"). Not taught (simulation training). Owes judging rounds.
+**STATUS:** round 3 fixes applied (2026-10-06), Agentic Product Teams 101 gap slide G12, from `apt101-source-pack.md` §7; also a positioning line in the strategy ("Aligned autonomy, now with agents in the team"). Not taught (simulation training).
 
 **Header accept-note:** the header is an adopted positioning line (strategy, 2026-10-05); round 1 craft judge proposed "Aligned autonomy works for agents too" (writing §13). Kept as the maintainer's wording pending their call.
 
@@ -26,3 +26,5 @@ Agents join the same picture. An agent given a clear outcome, the context, and t
 
 **Frameworks**
 - Aligned autonomy · [borrow:practitioner-coined] · law:none · ← kniberg-flowcon-2016
+
+<!-- /backing -->

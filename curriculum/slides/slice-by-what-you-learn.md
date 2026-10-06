@@ -9,7 +9,7 @@ With agents building, slices are cheap, so the first slice tests the assumption 
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), Agentic Product Teams 101 gap slide G11, from `apt101-source-pack.md` §3. Not taught (simulation training). Owes judging rounds.
+**STATUS:** round 3 fixes applied (2026-10-06), Agentic Product Teams 101 gap slide G11, from `apt101-source-pack.md` §3. Not taught (simulation training).
 
 **Fidelity guards:** "backbone" is Patton's term credited by him to Dan Rawsthorne; "walking skeleton" (not used here) is Cockburn's. Patton slices across the backbone and names slices by outcome; do not reduce it to slicing by size. The last paragraph is our agentic extension, not Patton's claim.
 
@@ -28,3 +28,5 @@ With agents building, slices are cheap, so the first slice tests the assumption 
 
 **Frameworks**
 - User story mapping · [borrow:practitioner-coined] · law:none · ← patton-new-backlog
+
+<!-- /backing -->

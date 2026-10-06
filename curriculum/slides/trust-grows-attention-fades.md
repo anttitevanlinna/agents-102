@@ -9,7 +9,7 @@ So when the next result lands clean, ask the plain question: when did you last d
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), Agentic Product Teams 101 rewrite for product people of AE101 `ironies-of-automation` § Trust and vigilance move in opposite directions. Not taught (simulation training). Owes judging rounds.
+**STATUS:** round 3 fixes applied (2026-10-06), Agentic Product Teams 101 rewrite for product people of AE101 `ironies-of-automation` § Trust and vigilance move in opposite directions. Not taught (simulation training).
 
 **Fidelity guard:** round 2 fidelity: the 1993 study used 40 subjects on a flight-simulation task and plant operators come from Bainbridge 1983, so the slide names neither population; do not upgrade to a claim about agent users, which the literature has not measured. Bainbridge (1983) is the older root and is not quoted here.
 
@@ -26,3 +26,5 @@ So when the next result lands clean, ask the plain question: when did you last d
 
 **Frameworks**
 - Automation misuse / overreliance · [borrow:human factors] · law:none · ← parasuraman-riley
+
+<!-- /backing -->

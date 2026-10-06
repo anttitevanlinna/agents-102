@@ -1,4 +1,4 @@
-## Agents shrink one product risk; three remain
+## Agents shrink the feasibility work; three risks remain
 <!--slide:four-product-risks-->
 
 Marty Cagan names four big risks (2017):
@@ -10,11 +10,11 @@ Marty Cagan names four big risks (2017):
 
 He asks teams to tackle them early, with product, design and engineering side by side, especially value and viability.
 
-Agents make much of the building cheap, which shrinks the feasibility work. They do not answer the other three. Customers still choose, users still get stuck, and the business can still say no.
+Agents make much of the building cheap, which shrinks the feasibility work. They do not settle the other three. Customers still choose, users still get stuck, and the business can still say no.
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), APT101 gap G:four-product-risks from `apt101-source-pack-2.md` §4. Not taught (simulation training). Owes judging rounds.
+**STATUS:** round 3 fixes applied (2026-10-06), APT101 gap G:four-product-risks from `apt101-source-pack-2.md` §4. Not taught (simulation training).
 
 **Fidelity guard:** Cagan's four, with ethics folded into viability (2023). Do not add Torres's five assumption categories to this slide; they are a different author's list.
 
@@ -32,3 +32,5 @@ Agents make much of the building cheap, which shrinks the feasibility work. They
 
 **Frameworks**
 - Four big risks · [borrow:practitioner-coined] · law:none · ← cagan-four-risks-2017
+
+<!-- /backing -->

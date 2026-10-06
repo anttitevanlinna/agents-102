@@ -3,13 +3,13 @@
 
 Your agent works well for you. A colleague asks for a copy, and you send the agent's instructions: a page of text. They run it, get a generic answer, and quietly stop.
 
-The page was never where the work lived. The work lives in the memory you built up from your interviews and tickets, in every correction you made when a summary rounded a corner, and in your calls on output that looked fine and was not. All of that is still on your laptop and in your head.
+The page was never where the work lived. The work lives in the memory you built up from your interviews and tickets, in every correction you made when a summary smoothed over a doubt, and in your calls on output that looked fine and was not. All of that is still on your laptop and in your head.
 
-So a proposal to the wider team cannot promise "everyone gets our agent". It has to say what the others will feed it, who corrects it, and how they learn to read what comes back.
+So a proposal to the wider team cannot promise "everyone gets our agent". It names what the others will feed the agent, who corrects it, and how they learn to read what comes back.
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), APT101 rewrite of `access-is-not-absorption` § You cannot share an agent. "Agent file" becomes the agent's instructions; the four sharing shapes are not carried (no referent in this deck). Not taught (simulation training). Owes judging rounds.
+**STATUS:** round 3 fixes applied (2026-10-06), APT101 rewrite of `access-is-not-absorption` § You cannot share an agent. "Agent file" becomes the agent's instructions; the four sharing shapes are not carried (no referent in this deck). Not taught (simulation training).
 
 <!-- backing -->
 

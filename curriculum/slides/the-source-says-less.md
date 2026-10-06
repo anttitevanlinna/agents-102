@@ -7,13 +7,13 @@ It stretches. One ticket: a customer complained about the export. The summary: c
 
 It smooths. Two interviews disagree: one customer wants fewer steps, another wants more control. The summary blends them into one clean need. It reads better than the evidence, and it hides what you most needed to see: this is not settled.
 
-So when you read a summary, ask of each line how much its source actually says. Keep disagreements visible, with both sources named.
+So for each line a decision rests on, ask how much its source actually says. Keep disagreements visible, with both sources named.
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), APT101 rewrite of `module-5-prework` § Why grounding fails even when the facts are in context (Agents 101). Not taught (simulation training). Owes judging rounds.
+**STATUS:** round 3 fixes applied (2026-10-06), APT101 rewrite of `module-5-prework` § Why grounding fails even when the facts are in context (Agents 101). Not taught (simulation training).
 
-**Carried from home:** the second and third mechanisms (the source says less than the answer wants; conflict gets smoothed), in interview and ticket register. The first mechanism (present but not load-bearing) and the prework's take-home stay out. `grounded#four-candidates` carries the same "one customer complained" example under entailment; deliberate echo across lectures.
+**Carried from home:** the second and third mechanisms (the source says less than the answer wants; conflict gets smoothed), in interview and ticket register. The first mechanism (present but not load-bearing) and the prework's take-home stay out. The map places `grounded#four-candidates`, which carries the same "one customer complained" example under entailment, in lecture 5b; that lecture does not include it yet.
 
 <!-- backing -->
 
@@ -24,3 +24,5 @@ So when you read a summary, ask of each line how much its source actually says. 
 
 **Frameworks**
 (none.)
+
+<!-- /backing -->

@@ -1,9 +1,9 @@
 ## Agree with the team what the agents do
 <!--slide:working-agreements-with-agents-->
 
-Agents change how people in the team work, so how they are used is a team decision, not one enthusiast's. Write it down as a working agreement and decide it together.
+Agents change how people in the team work, so how they are used is a team decision, not one enthusiast's. Write it down as a working agreement.
 
-It answers plain questions. What do the agents do: draft the digest, sort the tickets, build rough prototypes? What stays with people: talking to customers, choosing the bet, anything a customer sees before someone checks it? Who checks what, and when do you revisit the agreement?
+It answers plain questions. What do the agents do: draft the digest, sort the tickets, build rough prototypes? What stays with people: talking to customers, choosing which opportunity to pursue, anything a customer sees before a person reads it? Who reads what, and when do you revisit the agreement?
 
 David Marquet's answer to who decides: "we take the authority for making decisions and we push it down to the people with the information." The people doing the work know where an agent helps.
 
@@ -11,7 +11,7 @@ Your employee representative will ask whether this is a change to negotiate with
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), APT101 gap G:working-agreements-with-agents from `apt101-source-pack-2.md` §10 (Marquet). Not taught (simulation training). Owes judging rounds.
+**STATUS:** round 3 fixes applied (2026-10-06), APT101 gap G:working-agreements-with-agents from `apt101-source-pack-2.md` §10 (Marquet). Not taught (simulation training).
 
 **Fidelity guard:** Marquet's quote is from the 2015 post, read in Wayback only (live 404); if it fails at verification, fall back to the live my-story line "giving control, not taking control". "I intend to" stays off the slide (pack Drift 1: level 5 of 7, not the top). "The people doing the work know where an agent helps" is the slide's application, not Marquet's claim. Co-determination appears only as the representative's question; no law is asserted. The "followed or judged" question lives on `the-questions-legal-will-ask` and is not repeated here.
 
@@ -19,7 +19,7 @@ Your employee representative will ask whether this is a change to negotiate with
 
 **Claims**
 - `team-decision` · vision · "how they are used is a team decision, not one enthusiast's" ← none-owed — house stance (map G:working-agreements-with-agents).
-- `agreement-questions` · vision · "What do the agents do … What stays with people … Who checks what, and when do you revisit the agreement?" ← none-owed
+- `agreement-questions` · vision · "What do the agents do … What stays with people … Who reads what, and when do you revisit the agreement?" ← none-owed
 - `push-authority-to-information` · borrowed · "we take the authority for making decisions and we push it down to the people with the information." ← marquet-push-authority-2015
 - `rep-will-ask` · vision · "Your employee representative will ask whether this is a change to negotiate with staff." ← none-owed — a question, no legal claim.
 
@@ -29,3 +29,5 @@ Your employee representative will ask whether this is a change to negotiate with
 
 **Frameworks**
 - Intent-based leadership · [borrow:Marquet] · law:none · ← marquet-push-authority-2015
+
+<!-- /backing -->

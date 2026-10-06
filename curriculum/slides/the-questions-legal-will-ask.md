@@ -13,7 +13,7 @@ Your data protection contact will add GDPR and the EU AI Act to the conversation
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), Agentic Product Teams 101 gap slide G9 (`apt101-slide-reuse-map.md`), carries the panel-tested Day 2 data beat (v9: "the questions your legal team and employee representative will ask first … and your team's answers"). Not taught (simulation training). Owes judging rounds.
+**STATUS:** round 3 fixes applied (2026-10-06), Agentic Product Teams 101 gap slide G9 (`apt101-slide-reuse-map.md`), carries the panel-tested Day 2 data beat (v9: "the questions your legal team and employee representative will ask first … and your team's answers"). Not taught (simulation training).
 
 **Guard:** the slide asserts no law. It names GDPR and the EU AI Act only as topics a data protection contact raises; any legal content added later owes research-claims sourcing (`check_research_claims.md`) and should come from the customer's own data protection contact.
 
@@ -22,3 +22,5 @@ Your data protection contact will add GDPR and the EU AI Act to the conversation
 **Claims**
 - `questions-not-answers` · vision · "Draft an answer to each, as a proposal your team takes to both" ← none-owed — design stance: proposal, not decision (strategy Transfer path).
 - `dpo-raises-gdpr-ai-act` · vision · "Your data protection contact will add GDPR and the EU AI Act to the conversation" ← none-owed — Nordic setting (strategy § Audience).
+
+<!-- /backing -->

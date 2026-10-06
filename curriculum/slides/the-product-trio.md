@@ -9,7 +9,7 @@ A product owner, a designer and a team lead deciding together are that team. Age
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), APT101 gap G:the-product-trio from `apt101-source-pack-2.md` §1. Not taught (simulation training). Owes judging rounds.
+**STATUS:** round 3 judged, no fixes owed (2026-10-06), APT101 gap G:the-product-trio from `apt101-source-pack-2.md` §1. Not taught (simulation training). The one place the deck quotes Torres's continuous-discovery definition.
 
 **Fidelity guard:** the packs carry no Torres quote for the word *trio*, so the body never attributes it to her; the room's three are named as "the team building the product" in her sense. Quote the 2018 page ("desired product outcome"), not the glossary paraphrase.
 
@@ -26,3 +26,5 @@ A product owner, a designer and a team lead deciding together are that team. Age
 
 **Frameworks**
 - Continuous discovery · [borrow:practitioner-coined] · law:none · ← torres-cd-definition
+
+<!-- /backing -->

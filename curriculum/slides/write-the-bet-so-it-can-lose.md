@@ -1,7 +1,7 @@
 ## Write the bet so it can lose
 <!--slide:write-the-bet-so-it-can-lose-->
 
-Barry O'Reilly's hypothesis statement has three lines:
+A product bet is a hypothesis about what will happen. Barry O'Reilly's hypothesis statement has three lines:
 
 - **We believe** this capability
 - **will result in** this outcome.
@@ -13,7 +13,7 @@ A signal that can only come back yes is not a test. Write one that could embarra
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), Agentic Product Teams 101 gap slide G3, from `apt101-source-pack.md` §2. Not taught (simulation training). Owes judging rounds.
+**STATUS:** round 3 fixes applied (2026-10-06), Agentic Product Teams 101 gap slide G3, from `apt101-source-pack.md` §2. Not taught (simulation training).
 
 **Fidelity guard:** the template's third line is O'Reilly's own wording ("We will have confidence to proceed when … we see a measurable signal"), not the popular "We will know we have succeeded when". Keep it.
 
@@ -30,3 +30,5 @@ A signal that can only come back yes is not a test. Write one that could embarra
 
 **Frameworks**
 - Hypothesis-driven development · [borrow:practitioner-coined] · law:none · ← oreilly-hdd
+
+<!-- /backing -->

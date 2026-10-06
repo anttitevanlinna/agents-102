@@ -5,11 +5,11 @@ The six parts of an agent are a stable list: context, tools, a goal, checks, a b
 
 What the model can do with each part is not stable. It changes without asking you, on somebody else's release schedule.
 
-So the assembly is the part that lasts: which interviews and tickets go in, what the goal is, what the checks look for, where the boundary sits. Your team owns that. A tool, a vendor's console or an instruction that worked once does not last the same way.
+So the assembly is the part that lasts: which interviews and tickets go in, what the goal is, what the checks look for, where the boundary sits. Your team owns that.
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), APT101 rewrite of `parts-hold-model-rotates` (Agents 101 `where-is-this-all-going` § The parts hold; the model rotates). The Agents 101 list (interface, no goal) is replaced by the six words of APT101's `parts-of-an-agent`: context, tools, a goal, checks, a boundary, a loop. Replaces the borrow in Day 3 lecture 4. Not taught (simulation training). Owes judging rounds.
+**STATUS:** round 3 fixes applied (2026-10-06), APT101 rewrite of `parts-hold-model-rotates` (Agents 101 `where-is-this-all-going` § The parts hold; the model rotates). The Agents 101 list (interface, no goal) is replaced by the six words of APT101's `parts-of-an-agent`: context, tools, a goal, checks, a boundary, a loop. Replaces the borrow in Day 3 lecture 4. Not taught (simulation training).
 
 <!-- backing -->
 

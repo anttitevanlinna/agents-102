@@ -1,7 +1,7 @@
 ## Your criteria become a target
 <!--slide:your-rubric-becomes-a-target-->
 
-Write down what good looks like, give it to an agent as a check, and run it on every piece of work. Within days, the work starts to score well.
+Give an agent your criteria and score every piece of work against them. Within days, the work starts to score well.
 
 That is the moment to look closer. Anthropologist Marilyn Strathern gave the economist Charles Goodhart's law the form everyone quotes: when a measure becomes a target, it ceases to be a good measure. Agents optimise for whatever they are scored on, and so do teams.
 
@@ -28,3 +28,5 @@ A team that writes for its own criteria has rebuilt the feature factory with a d
 
 **Frameworks**
 - Goodhart's law · [borrow:economics] · law:none · ← mattson-2021-goodhart
+
+<!-- /backing -->

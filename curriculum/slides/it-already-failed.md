@@ -11,7 +11,7 @@ The right moment is when confidence is highest, just after the team has chosen.
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), Agentic Product Teams 101 gap slide G10, from `apt101-source-pack.md` §4. Not taught (simulation training). Owes judging rounds.
+**STATUS:** round 3 fixes applied (2026-10-06), Agentic Product Teams 101 gap slide G10, from `apt101-source-pack.md` §4. Not taught (simulation training).
 
 **Fidelity guard (zombie-stat):** the 1989 Mitchell, Russo and Pennington study measured the number of reasons generated, not their correctness. Klein's own article says "correctly identify reasons … by 30%", which overstates it. Keep "about thirty percent more reasons"; never "thirty percent more accurate". The study itself was not opened (403); the reading rests on Collins.
 
@@ -30,3 +30,5 @@ The right moment is when confidence is highest, just after the team has chosen.
 
 **Frameworks**
 - Pre-mortem · [borrow:practitioner-coined] · law:none · ← klein-premortem-2007
+
+<!-- /backing -->

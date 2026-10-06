@@ -100,6 +100,10 @@ function buildLineMeta(text) {
   let marker = lines.findIndex(l => l.includes('<!-- maintainer -->'))
   if (marker === -1) marker = lines.length
   for (let k = marker; k < lines.length; k++) meta[k].region = 'maintainer'
+  // The blank run right above the marker renders nothing: a stamp creating a
+  // slide file's first tail adds one, and must not stale what it just stamped.
+  // It stays body so a cut above the marker still anchors on it (tagRemoved).
+  if (marker < lines.length) for (let k = marker - 1; k >= i && lines[k].trim() === ''; k--) meta[k].gap = true
 
   let inFence = false
   let section = null
@@ -186,7 +190,7 @@ function changeTags(meta, hunks) {
   for (const h of hunks) {
     if (h.len > 0) {
       if (h.added) {
-        for (const L of h.added) changedBody += tagLine(meta[Math.min(L, meta.length) - 1], tags)
+        for (const L of h.added) { const m = meta[Math.min(L, meta.length) - 1]; if (!(m && m.gap)) changedBody += tagLine(m, tags) }
         const rt = h.removedText || []
         h.removedAt.forEach((L, k) => { changedBody += tagRemoved(meta, L, rt[k], tags) })
       } else {

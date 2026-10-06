@@ -1058,3 +1058,18 @@ test('changeTags: a slide-id marker line stales nothing and counts as no body li
     assert.equal(r.detail.writing, 'borrowed-slide')
   })
 }
+
+// A slide file is born with no maintainer block; its first stamp appends
+// "\n<!-- maintainer -->\n\n**Quality:** …". The blank line before the marker
+// lands in body region, and a stamp must not stale the classes it just stamped.
+test('changeTags: a first maintainer tail, blank separator included, routes nothing', () => {
+  const before = '## Title\n<!--slide:t-->\n\nBody line.\n'
+  const after = before + '\n<!-- maintainer -->\n\n**Quality:** compendium-audited 2026-10-06 (writing@abc1234)\n'
+  const { textDiff } = require('./scan-stale-classes.js')
+  const r = changeTags(buildLineMeta(after), parseHunks(textDiff(before, after)))
+  assert.deepStrictEqual([...r.tags], [])
+  // A blank line that splits a body paragraph still renders, so it still routes.
+  const split = '## Title\n<!--slide:t-->\n\nBody\n\nline.\n'
+  const r2 = changeTags(buildLineMeta(split), parseHunks(textDiff('## Title\n<!--slide:t-->\n\nBody\nline.\n', split)))
+  assert.ok(r2.tags.has('writing'))
+})

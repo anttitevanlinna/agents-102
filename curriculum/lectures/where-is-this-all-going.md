@@ -43,6 +43,7 @@ The interesting question is which half. The judge you wrote, or the thing it jud
 Hold the question rather than the answer. A plan that survives a model release is one that was written knowing a model release was coming.
 
 ## Will your organisation learn faster than the model changes underneath it?
+<!--slide:learn-faster-than-the-model-->
 
 That is the question to carry out of here, and nothing today answers it.
 

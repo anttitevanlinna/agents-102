@@ -34,6 +34,7 @@ That might look like a limitation. It isn't. Language models are strongest at re
 The point is simple: the simplest possible setup beats the fancy ones, because it respects what the model actually does well. Fundamentals outlast tools. Platforms will churn. But *text that an agent can read and write* isn't going anywhere.
 
 ## Three layers, one folder
+<!--slide:three-layers-one-folder-->
 
 The folder has three layers, and they stay separate on purpose. The raw sources sit untouched, the originals you dropped in. The memory sits above them: the topic pages the agent maintains and sharpens. The rules file sits on top and keeps the shape of every update the same.
 
@@ -56,6 +57,7 @@ Spot what's still generic and sharpen it.
 Claude comes back with three pointed requests. Answer one. Let it update the page. The memory just got a fourth round of compounding. You steer; the system maintains; the loop runs.
 
 ## It can only use what someone wrote down
+<!--slide:only-what-someone-wrote-down-->
 
 One limit worth seeing while the memory is fresh in front of you.
 

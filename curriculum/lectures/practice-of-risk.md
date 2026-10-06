@@ -31,6 +31,7 @@ The work is the loop. You don't get certainty, you get four steps, plain and rep
 **Mitigate.** Pick one risk. Apply the smallest change that reduces it. Agent mitigations are shaped differently than firewalls. Scope (give the agent less). Split (break it into two agents with different trust levels). Filter (post-process the output before it leaves). Gate (a human approves before a sensitive action). Review (a second agent judges the first's output). None of these are perimeter. All of them are loop design.
 
 ## Reassess the residual, then decide
+<!--slide:reassess-the-residual-->
 
 **Reassess residual.** After the mitigation, the risk isn't gone. Something remains. Name it. Write it down. *The residual risk here is X. If Y happens, we haven't prevented it, we've made it less likely.* Residual risk as an artifact, not a shame.
 
@@ -41,6 +42,7 @@ The work is the loop. You don't get certainty, you get four steps, plain and rep
 Run the loop. You never finish. You iterate. The discipline isn't arriving at certainty. It's running the loop again.
 
 ## Now the move is to give it less
+<!--slide:give-it-less-->
 
 Everything you have built so far gave the agent more. More context. A memory that survives the session. More stances at the table. Now the move is to give it less.
 
@@ -49,6 +51,7 @@ Both moves are right, and the difference is what happens when the agent is wrong
 Every door you close is a source you won't read. The tool you take away was a capability. The split you make leaves two agents each knowing half of what one agent knew. Scope it down far enough and the system is safe and useless. Nobody hands you the number. You pick it, you write down what is left, and you sign for it.
 
 ## The best mitigation is the door you don't open
+<!--slide:door-you-dont-open-->
 
 Here's the oldest move in the security book, the one that sounds too much like common sense to charge for. The cheapest, most reliable way to reduce risk on an agent is to not open the door in the first place.
 

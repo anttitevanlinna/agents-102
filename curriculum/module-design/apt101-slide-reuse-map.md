@@ -146,3 +146,8 @@ Marker goes directly under the `##`, **above** any `<!--tier:N-->` line (convent
 Already marked: `context-is-king` (all), `grounded#there-is-truth-out-there,are-you-sure`, `the-machine-you-just-met` (all).
 
 **Before touching `lectures/grounded.md`:** it is modified in the shared working tree. `git diff -- curriculum/lectures/grounded.md`, read whose hunks they are, then follow the same-file collision procedure.
+
+## Maintainer calls
+
+- **AE101 slides (2026-10-06): rewrite for the audience, don't reuse.** The five AE101-only borrows become APT101 slides written for product people, with the AE101 slide as the idea to start from, not as an include. Borrowed share = Agents 101 slides only.
+- **Product-craft gaps (2026-10-06): write them,** faithful to what the original authors say. Source pack: `apt101-source-pack.md`.

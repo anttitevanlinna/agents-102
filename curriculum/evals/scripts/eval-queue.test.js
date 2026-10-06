@@ -309,3 +309,24 @@ test('collect: `scanned` counts the wanted training, not the whole universe', ()
 }
 
 console.log(`\n1..${n}`)
+
+// Slide files are training-neutral surfaces. A training's queue lists the ones
+// reachable from its own modules (module → lecture manifest → slide file, or a
+// module including a slide file directly), named shared--slide--<id>.
+test('collect: slide files reachable from a training are queued as shared--slide--<id>, others are not', () => {
+  const { gitIo } = require('./scan-stale-classes.js')
+  const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'queue-slides-'))
+  const w = (p, t) => { fs.mkdirSync(path.dirname(path.join(repo, p)), { recursive: true }); fs.writeFileSync(path.join(repo, p), t) }
+  w('curriculum/trainings/agents-101/m1.md', '# M1\n\nBody.\n\n[L](lectures/l.md)\n\n[D](slides/direct.md)\n')
+  w('curriculum/trainings/claude-basics/m.md', '# M\n\nBody.\n')
+  w('curriculum/lectures/l.md', '# L\n<!--slide:cover-->\n\nLede.\n\n[A](slides/via-lecture.md)\n')
+  w('curriculum/slides/via-lecture.md', '## A\n<!--slide:via-lecture-->\n\nbody a\n')
+  w('curriculum/slides/direct.md', '## D\n<!--slide:direct-->\n\nbody d\n')
+  w('curriculum/slides/orphan.md', '## O\n<!--slide:orphan-->\n\nbody o\n')
+  const io = gitIo(repo)
+  const mine = collect(repo, io, 'agents-101').items.filter(i => i.type === 'slide')
+  assert.deepStrictEqual(mine.map(i => i.instanceSlug).sort(), ['shared--slide--direct', 'shared--slide--via-lecture'])
+  assert.deepStrictEqual([...mine[0].classes].sort(), ['slides', 'technical', 'writing'])
+  assert.strictEqual(collect(repo, io, 'claude-basics').items.filter(i => i.type === 'slide').length, 0)
+  fs.rmSync(repo, { recursive: true, force: true })
+})

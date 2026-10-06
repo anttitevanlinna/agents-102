@@ -134,14 +134,22 @@ const MECHANICAL = {
   },
 }
 
-// The borrowed slides' text in include order, or null when the file borrows none.
+// The text of every slide this file pulls in (slide files, then #id borrows),
+// or null when it pulls in none.
 function borrowedText(md) {
   const CR = require(path.join(REPO, 'site/layouts/curriculum.js'))
+  const { readCurriculumMd, slideReader } = require(path.join(REPO, 'scripts/read-curriculum.js'))
   const parts = []
-  for (const m of CR.stripMaintainerTail(md).matchAll(CR.INCLUDE_LINK_RE)) {
+  const body = CR.stripMaintainerTail(md)
+  const readSlide = slideReader(path.join(REPO, 'curriculum', 'slides'))
+  for (const m of body.matchAll(new RegExp(CR.SLIDE_FILE_RE.source, 'gm'))) {
+    const t = readSlide(m[2])
+    parts.push(t === null ? `unresolved slides/${m[2]}` : CR.slideFileBody(t))
+  }
+  for (const m of body.matchAll(CR.INCLUDE_LINK_RE)) {
     if (!m[3]) continue
     let home
-    try { home = fs.readFileSync(path.join(REPO, 'curriculum', m[2] + '.md'), 'utf8') } catch { home = '' }
+    try { home = readCurriculumMd(path.join(REPO, 'curriculum', m[2] + '.md')) } catch { home = '' }
     try { parts.push(CR.sliceSlides(home, m[3])) } catch (e) { parts.push(`unresolved ${m[2]}#${m[3]}`) }
   }
   return parts.length ? parts.join('\n') : null

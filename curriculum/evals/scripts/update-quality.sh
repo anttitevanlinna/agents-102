@@ -130,6 +130,7 @@ surface_of() {
     */curriculum/trainings/*)               echo module ;;
     */curriculum/exercises)                 echo exercise ;;
     */curriculum/lectures)                  echo lecture ;;
+    */curriculum/slides)                    echo slide ;;
     *)                                      echo "" ;;
   esac
 }
@@ -143,6 +144,8 @@ case "$(cd "$(dirname "$FILE")" && pwd)" in
     tdir="$(cd "$(dirname "$FILE")" && pwd)"; tdir="${tdir##*/curriculum/trainings/}"; tdir="${tdir%%/*}"
     owner="$(node -e 'process.stdout.write(require(process.argv[1]).instanceKey(process.argv[2]))' "$SCRIPT_DIR/scan-stale-classes.js" "$tdir" 2>/dev/null)" || owner='*'
     [[ -n "$owner" ]] || owner='*' ;;
+  # A slide file has no home training; its instances are shared--slide--<id>.
+  */curriculum/slides) owner='shared' ;;
 esac
 
 check_instance_sha() { # class state
@@ -425,6 +428,11 @@ else
               "slides $state_slides"; do
     cls="${pair%% *}"
     raw="${pair#* }"
+    # A slide file owes writing/technical/slides only (scan-stale-classes
+    # SLIDE_CLASSES); naming any other class on its row would be a false record.
+    if [[ "$surface" == "slide" ]]; then
+      case "$cls" in writing|technical|slides) ;; *) continue ;; esac
+    fi
     if [[ "$raw" == "keep" ]]; then
       case "$cls" in
         writing)    raw=$(prior_state_for writing   "$prior_judges_writing")   ;;

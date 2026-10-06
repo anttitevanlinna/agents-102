@@ -36,7 +36,8 @@
 'use strict'
 const fs = require('node:fs')
 const path = require('node:path')
-const { scanFile, typeOf, trainingOf, linkFinder, gitIo, CLASSES } = require('./scan-stale-classes.js')
+const { scanFile, typeOf, trainingOf, linkFinder, gitIo, CLASSES, SHARED, slideFileIds, instanceKey } = require('./scan-stale-classes.js')
+const CR = require('../../../site/layouts/curriculum.js')
 const makeIo = gitIo
 
 // Maintainer- and trainer-facing files that live in a training dir but are not
@@ -91,7 +92,33 @@ function buildUniverse(repo) {
   }
   files.push(...mdFiles(repo, 'curriculum/exercises'))
   files.push(...mdFiles(repo, 'curriculum/lectures'))
+  files.push(...mdFiles(repo, 'curriculum/slides'))
   return files.filter(f => isSurface(repo, f))
+}
+
+// Slide id → the instance keys of every training that reaches it: a module file
+// including it directly, or including (whole-file) a lecture/exercise that does.
+// A slide file has no owner, so this is how a training's board finds its slides.
+function slideReach(repo) {
+  const reach = new Map()
+  const add = (id, key) => { if (!reach.has(id)) reach.set(id, new Set()); reach.get(id).add(key) }
+  const read = rel => { try { return CR.stripMaintainerTail(fs.readFileSync(path.join(repo, rel), 'utf8')) } catch { return '' } }
+  const root = 'curriculum/trainings'
+  let dirs = []
+  try { dirs = fs.readdirSync(path.join(repo, root)) } catch {}
+  for (const t of dirs) {
+    if (!fs.statSync(path.join(repo, root, t)).isDirectory()) continue
+    const key = instanceKey(t)
+    for (const rel of mdFiles(repo, `${root}/${t}`)) {
+      const body = read(rel)
+      for (const id of slideFileIds(body)) add(id, key)
+      for (const m of body.matchAll(new RegExp(CR.INCLUDE_LINK_RE.source, 'gm'))) {
+        if (m[3]) continue
+        for (const id of slideFileIds(read(`curriculum/${m[2]}.md`))) add(id, key)
+      }
+    }
+  }
+  return reach
 }
 
 function collect(repo, io, want) {
@@ -104,10 +131,12 @@ function collect(repo, io, want) {
   // under a header naming ONE training, so the universe-wide length read as that
   // training's own size and inflated every coverage claim quoting it.
   let scanned = 0
+  const reach = slideReach(repo)
   for (const rel of buildUniverse(repo)) {
+    if (typeOf(rel) === 'slide' && want !== 'all' && !(reach.get(path.basename(rel, '.md')) || new Set()).has(want)) continue
     const training = trainingOf(rel, findLinkers, want === 'all' ? null : want)
     if (!training) { unowned.push(rel); continue }
-    if (want !== 'all' && training !== want) continue
+    if (want !== 'all' && training !== want && training !== SHARED) continue
     scanned++
     const r = scanFile(rel, io)
     if (!r) { unreadable.push(rel); continue }
@@ -196,7 +225,7 @@ function renderScope(scope) {
   return out
 }
 
-const DISPLAY = { module: 'mod', exercise: 'exr', lecture: 'lec', supplementary: 'sup', reference: 'ref' }
+const DISPLAY = { module: 'mod', exercise: 'exr', lecture: 'lec', supplementary: 'sup', reference: 'ref', slide: 'sld' }
 
 // A moved rule stales the same class on every file pinned before it, so printing
 // the rule numbers per row repeats one fact 57 times. Name each moved rule once,

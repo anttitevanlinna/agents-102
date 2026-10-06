@@ -987,3 +987,74 @@ test('changeTags: a slide-id marker line stales nothing and counts as no body li
     assert.deepStrictEqual(items[0].classes, ['writing'])
   })
 }
+
+// --- slide files (curriculum/slides/<id>.md) + manifests that include them ---
+// A slide file is a training-neutral surface owing writing/technical/slides.
+// A file including slide files is diffed on its EXPANDED text, so extraction
+// (expanded byte-identical) stales nothing and a member-slide edit stales it.
+{
+  const { typeOf, trainingOf, scanFile } = require('./scan-stale-classes.js')
+  test('typeOf: curriculum/slides/<id>.md is a slide; trainingOf: training-neutral "shared"', () => {
+    assert.equal(typeOf('curriculum/slides/a-slide.md'), 'slide')
+    assert.equal(trainingOf('curriculum/slides/a-slide.md', () => ['agents-101', 'claude-basics']), 'shared')
+  })
+  test('scanFile: an unjudged slide file owes writing, technical and slides only', () => {
+    const io = { readFile: () => '## A\n<!--slide:a-->\n\nbody\n', gitDiff: () => '', validSha: () => true, ruleDrift: () => new Set(), staleFinding: () => false }
+    assert.deepStrictEqual([...scanFile('curriculum/slides/a.md', io).classes].sort(), ['slides', 'technical', 'writing'])
+  })
+
+  const PINS = '(writing@aaa1111 story@aaa1111 technical@aaa1111 behavior@aaa1111 pedagogy@aaa1111 strategy@aaa1111 slides@aaa1111)'
+  const TAIL = `\n<!-- maintainer -->\n**Quality:** compendium-audited 2026-01-01 ${PINS}\n`
+  const SLIDE_A = '## Alpha\n<!--slide:alpha-->\n\nalpha prose\n'
+  const SLIDE_B = '## Beta\n<!--slide:beta-->\n\nbeta prose\n'
+  // At the pin: the old-style lecture, slides inline. Now: the manifest.
+  const OLD = `# L\n<!--slide:cover-->\n\nLede.\n\n${SLIDE_A}\n${SLIDE_B}\n## Close\n\nlast words\n${TAIL}`
+  const NOW = `# L\n<!--slide:cover-->\n\nLede.\n\n[Alpha](slides/alpha.md)\n\n[Beta](slides/beta.md)\n\n## Close\n\nlast words\n${TAIL}`
+  const mk = (slidesNow, extra = {}) => ({
+    readFile: p => (p === 'curriculum/lectures/l.md' ? NOW : p.startsWith('curriculum/slides/') ? (slidesNow[p.slice(18, -3)] ?? null) : null),
+    showAt: (sha, p) => (p === 'curriculum/lectures/l.md' ? OLD : null),
+    gitDiff: () => '@@ -6,9 +6,3 @@\n-x\n+y\n', // the raw diff is large; it must not be what routes
+    validSha: () => true, ruleDrift: () => new Set(), staleFinding: () => false, ...extra,
+  })
+  test('scanFile: extracting slides into files (expanded text identical) stales nothing', () => {
+    assert.deepStrictEqual(scanFile('curriculum/lectures/l.md', mk({ alpha: SLIDE_A, beta: SLIDE_B })).classes, [])
+  })
+  test('scanFile: a prose edit in a member slide stales the manifest (writing+slides), reason member-slide', () => {
+    const r = scanFile('curriculum/lectures/l.md', mk({ alpha: SLIDE_A.replace('alpha prose', 'alpha prose, edited'), beta: SLIDE_B }))
+    assert.deepStrictEqual([...r.classes].sort(), ['slides', 'writing'])
+    assert.equal(r.detail.writing, 'member-slide')
+  })
+  test('scanFile: a member slide file that is gone stales every class (fail closed)', () => {
+    assert.equal(scanFile('curriculum/lectures/l.md', mk({ alpha: SLIDE_A })).classes.length, 7)
+  })
+  test('scanFile: a file including slide files with an io lacking showAt throws, never reads as clean', () => {
+    const io = mk({ alpha: SLIDE_A, beta: SLIDE_B }); delete io.showAt
+    assert.throws(() => scanFile('curriculum/lectures/l.md', io), /showAt/)
+  })
+}
+
+// A #id borrow whose home lecture became a manifest of slide files: the id
+// lives in the inlined text. Extraction must not stale the borrower; an edit to
+// the borrowed slide's FILE must.
+{
+  const { scanFile } = require('./scan-stale-classes.js')
+  const PINS = '(writing@aaa1111 story@aaa1111 technical@aaa1111 behavior@aaa1111 pedagogy@aaa1111 strategy@aaa1111 slides@aaa1111)'
+  const MOD = `# M\n\n[B](lectures/home.md#b)\n\n<!-- maintainer -->\n**Quality:** compendium-audited 2026-01-01 ${PINS}\n`
+  const SB = '## B\n<!--slide:b-->\n\nbeta prose\n'
+  const HOME_OLD = `# Home\n\n## A\n<!--slide:a-->\n\nalpha prose\n\n${SB}\n## C\n\ngamma closes\n`
+  const HOME_NOW = '# Home\n\n## A\n<!--slide:a-->\n\nalpha prose\n\n[B](slides/b.md)\n\n## C\n\ngamma closes\n'
+  const io = sb => ({
+    readFile: p => ({ 'curriculum/trainings/t/m.md': MOD, 'curriculum/lectures/home.md': HOME_NOW, 'curriculum/slides/b.md': sb })[p] ?? null,
+    showAt: (sha, p) => (p === 'curriculum/lectures/home.md' ? HOME_OLD : null),
+    gitDiff: () => '@@ -9,5 +9,1 @@\n-x\n+y\n',
+    validSha: () => true, ruleDrift: () => new Set(), staleFinding: () => false,
+  })
+  test('scanFile: #id borrow from a home that became a manifest — extraction stales nothing', () => {
+    assert.deepStrictEqual(scanFile('curriculum/trainings/t/m.md', io(SB)).classes, [])
+  })
+  test('scanFile: #id borrow from a manifest — an edit to the borrowed slide file stales the borrower', () => {
+    const r = scanFile('curriculum/trainings/t/m.md', io(SB.replace('beta prose', 'beta prose, edited')))
+    assert.deepStrictEqual([...r.classes].sort(), ['slides', 'writing'])
+    assert.equal(r.detail.writing, 'borrowed-slide')
+  })
+}

@@ -1092,3 +1092,16 @@ test('render-md --list-includes: a slide include is not a file to audit here', (
   assert.match(out, /what-just-happened\.md/);
   fs.rmSync(tmp, { recursive: true, force: true });
 });
+
+test('expand-md: a slide-file include is inlined between slide-file markers', () => {
+  const tmp = fs.mkdtempSync(path.join(require('node:os').tmpdir(), 'expand-slides-'));
+  fs.mkdirSync(path.join(tmp, 'slides'));
+  fs.writeFileSync(path.join(tmp, 'slides', 'a-slide.md'), '## A slide\n<!--slide:a-slide-->\n\nBody.\n\n<!-- maintainer -->\nnote\n');
+  const out = execSync('node scripts/expand-md.js -', {
+    cwd: path.join(__dirname, '..'), encoding: 'utf8', env: { ...process.env, SLIDES_DIR: path.join(tmp, 'slides') },
+    input: '# L\n\n[A](slides/a-slide.md)\n',
+  });
+  assert.match(out, /<!-- slide-file: slides\/a-slide\.md[^>]*-->\n## A slide\n<!--slide:a-slide-->\n\nBody\.\n<!-- \/slide-file -->/);
+  assert.doesNotMatch(out, /note/);
+  fs.rmSync(tmp, { recursive: true, force: true });
+});

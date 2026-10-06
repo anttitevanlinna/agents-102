@@ -84,6 +84,16 @@ Template + module include + bare-path cross-doc rules → `curriculum/module-sha
 
 Inline SVG diagrams are single-sourced in `curriculum/figures/<key>.md` (one blank-line-free `<figure class="diagram">…</figure>` per file) and referenced from body prose as `{{figure:<key>}}` on its own line — same registry pattern as prompts (`scripts/compile-figures.js` → `site/figures.json`; build expands strict). One drawing, many slides; never paste an SVG inline.
 
+## Slide reuse (editions, variants)
+
+Reuse unit = one `##` slide in its home file. **Never copy a lecture into a `-<variant>.md` fork** — forks drift silently (`context-is-king-cb`: pre-rename headers, open §4 REVISE; replaced by a borrow).
+- Borrow: `[Title](lectures/<slug>.md#<id>[,<id>…])` alone on its line → those slides, listed order. Whole-file include = ownership; `#id` = borrow, judged at home.
+- Id: `<!--slide:<id>-->` directly under the `##` (cover: under `#`), above `<!--tier:N-->`. Add ids to the home file when borrowing; adding one stales no eval.
+- Before borrowing: `node scripts/slide-card.js lectures/<slug>.md#<id>` → claims, source due dates, stance, guard notes. T2 slides name prior work: check every referent resolves in YOUR deck (`the-machine-you-just-met#agreeable-answers` says "the mirror", which means something else in A101).
+- Price it: `- **Charge:** <slug>--<first-id> <min> — <why>` in the borrowing module's maintainer block.
+- Wording doesn't fit → fix at home (card if student-facing); every borrower gets it. The borrower's judges read borrowed slides inlined and judge fit.
+- Spec → `backing-format.md` § Slide grain.
+
 ## Widgets
 
 Author-typed widget palette (Session / HOX / Note / Prompt / runtime-fork) + when-to-use + add-a-widget procedure → `curriculum/widgets.md`. Generation-time check → `check_pedagogy.md` §52b.

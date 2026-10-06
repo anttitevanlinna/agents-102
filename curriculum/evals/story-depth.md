@@ -5,6 +5,27 @@ section per run, newest first; per-judge reports under `story-depth/`.
 
 
 
+
+## Agents 101 theory handbook vs AE101: reference run `a101-handbook-r1`, 2026-10-06
+
+Same paired protocol (three Opus judges, 1–100, handbooks only), run as the reference point for APT101. The judges were barred from reading this report. Reports: `story-depth/a101-handbook-r1.judge-{1,2,3}.md`.
+
+| | AE101 | A101 handbook | APT101 r2 | A101 full training (Opus, 2026-09-23) |
+|---|---|---|---|---|
+| Frame | 95 | 76 | 80 | 94 |
+| Narrative | 93 | 84 | 58 | 93 |
+| Point of view | 94 | 48 | 60 | 86 |
+| Stance | 92 | 86 | 80 | 96 |
+
+Per judge, A101: 74/82/52/86 · 80/85/48/88 · 76/84/46/86.
+
+**Read:**
+- A handbook made of lectures alone scores well below its full training. A101 drops about 18 on frame and about 38 on point of view: the scar and the mood arc live in the exercises and the room, not the lectures.
+- AE101 alone keeps its point of view in the handbook, because `story-of-module-6` is a first-person lecture.
+- APT101 is already ahead of A101's handbook on frame and point of view (the essay narrator), and behind on narrative by about 26 and on stance by 6.
+- A101's narrative lives in a designed mood arc that its lectures carry. APT101's does not yet.
+- All three judges' first move for A101 is APT101's too: one signed first-person failure on the page.
+
 ## APT101 theory handbook vs AE101: run `apt101-handbook-r2` (after the story pass), 2026-10-06
 
 Same protocol as r1 (three Opus judges, paired, 1–100). This is after the round-4 story pass, 31b0fc56: a narrator built from the maintainer's year-one essays (verbatim and attested), the overnight-digest thread, the Red Queen as the frame break, and Martin defending "deciding didn't". Reports: `story-depth/apt101-handbook-r2.judge-{1,2,3}.md`.

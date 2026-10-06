@@ -86,7 +86,8 @@ Inline SVG diagrams are single-sourced in `curriculum/figures/<key>.md` (one bla
 
 ## Slide reuse (editions, variants)
 
-Reuse unit = one `##` slide in its home file. **Never copy a lecture into a `-<variant>.md` fork** — forks drift silently (`context-is-king-cb`: pre-rename headers, open §4 REVISE; replaced by a borrow).
+Reuse unit = one `##` slide. **Never copy a lecture into a `-<variant>.md` fork** — forks drift silently (`context-is-king-cb`: pre-rename headers, open §4 REVISE; replaced by a borrow).
+- Slide file (direction, maintainer 2026-10-06): `curriculum/slides/<id>.md` = one `##` + `<!--slide:<id>-->` + body + own maintainer/backing tail; id global = filename. `[Title](slides/<id>.md)` alone on its line is transparent (inlined before any reader; a lecture of include lines = manifest; cover stays in the lecture). Cut: `node scripts/extract-slide.js lectures/<slug>.md#<id>[,…]` (byte-identical check; claims/sources/stance + notes keyed in their lead travel). Readers read via `scripts/read-curriculum.js`, never raw. Evals: `shared--slide--<id>`, writing/technical/slides. AE101 stays on `#id` borrows.
 - Borrow: `[Title](lectures/<slug>.md#<id>[,<id>…])` alone on its line → those slides, listed order. Whole-file include = ownership; `#id` = borrow, judged at home.
 - Id: `<!--slide:<id>-->` directly under the `##` (cover: under `#`), above `<!--tier:N-->`. Add ids to the home file when borrowing; adding one stales no eval.
 - Before borrowing: `node scripts/slide-card.js lectures/<slug>.md#<id>` → claims, source due dates, stance, guard notes. T2 slides name prior work: check every referent resolves in YOUR deck (`the-machine-you-just-met#agreeable-answers` says "the mirror", which means something else in A101).

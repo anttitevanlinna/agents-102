@@ -3,6 +3,29 @@
 Rubric: `story-depth-rubric.md`. Goal spec: `trainings/agents-101/story-depth.md`. One `## Run`
 section per run, newest first; per-judge reports under `story-depth/`.
 
+
+## APT101 theory handbook vs AE101 — 2026-10-06 — paired, run `apt101-handbook-r1`
+
+Three Opus judges, each reading both theory handbooks (`THEORY_HANDBOOK_MANIFEST` order, via `read-curriculum.js`, maintainer and backing blocks out of view) and scoring nothing until both reads were done. 1–100 on the storytelling anchors. Reports: `story-depth/apt101-handbook-r1.judge-{1,2,3}.md`.
+
+| | AE101 (median) | APT101 (median) | gap |
+|---|---|---|---|
+| Frame | 94 | 66 | 28 |
+| Narrative | 93 | 52 | 41 |
+| Point of view | 95 | 36 | 59 |
+| Stance | 91 | 74 | 17 |
+
+Per judge, APT101: 66/54/36/74 · 62/42/30/74 · 70/52/40/80. AE101: 94/92/95/93 · 94/93/95/91 · 93/94/93/90 (in line with its stored 95/92/95/92).
+
+**The gap is the story, not the material.** Every judge read APT101 as a well-sourced handbook. Stance is closest, because the positions (deciding didn't get cheap, agents get checked and people don't get watched, the source pack's authors held to their own words) are on the page. Frame is stated ("building got cheap, deciding didn't") but no slide says where it breaks. Narrative and point of view are where the distance is. Nobody tells it, and the trio never lives through a failure the handbook names.
+
+**The moves the three judges converged on:**
+1. **A narrator with a scar.** One first-person, signed passage near the Day 2 overnight return, the APT101 counterpart of `story-of-module-6`: a digest that invented a customer need, and the bet that nearly rested on it. Only the maintainer can write this. The old PO training is the material.
+2. **The overnight run as the plot.** `apt101-when-the-run-went-wrong` opens on a concrete failed digest. Day 3's check slides catch that same failure, and `read-the-signal` closes on the bet coming back no.
+3. **Name where the frame breaks.** One line in `apt101-what-each-of-us-is-for` on when "deciding didn't get cheap" stops holding, and what would change the training's mind.
+
+Volume: APT101 has 84 `##` lecture slides. Counted the same way, AE101's handbook has 102 (judge 1 counted about 181 with exercise phase headers included) and Agents 101's has 104.
+
 ## Verification on Opus — 2026-09-23 — branch `a101-story`
 
 Three Opus reads, strict: maintainer blocks out of view, and the point-of-view anchor restated

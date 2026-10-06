@@ -57,6 +57,7 @@ function slugFor(rel, repo = REPO) {
   else if (/\/reference$/.test(dir)) surface = 'reference'
   else if (/curriculum\/exercises$/.test(dir)) surface = 'exercise'
   else if (/curriculum\/lectures$/.test(dir)) surface = 'lecture'
+  else if (/curriculum\/slides$/.test(dir)) return `shared--slide--${base}` // training-neutral
   else if (/curriculum\/trainings\//.test(dir)) surface = 'module'
   const m = dir.match(/curriculum\/trainings\/([^/]+)/)
   if (m) return `${instanceKey(m[1])}--${surface}--${base}`
@@ -186,8 +187,8 @@ function signals(raw, g, bodyText) {
     // with no prompt in it.
     has_prompt_blocks: /\*\*Prompt\*\*/.test(body) || /\{\{prompt:/.test(body),
     has_figures: /\{\{figure:/.test(body),
-    // Borrowed slides: expand-md inlines them, so the judge must expand to see them.
-    has_slide_includes: /^\[[^\]]+\]\((?:exercises|lectures)\/[a-z0-9-]+\.md#[a-z0-9,-]+\)[ \t]*$/m.test(body),
+    // Borrowed slides and slide files: expand-md inlines both, so the judge must expand to see them.
+    has_slide_includes: /^\[[^\]]+\]\((?:(?:exercises|lectures)\/[a-z0-9-]+\.md#[a-z0-9,-]+|slides\/[a-z0-9-]+\.md)\)[ \t]*$/m.test(body),
     has_backing_block: g.backing !== null,
     has_maintainer_block: g.maintainerCut !== null,
     has_urls: /https?:\/\//.test(body),

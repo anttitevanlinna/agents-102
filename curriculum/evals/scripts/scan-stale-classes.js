@@ -334,19 +334,106 @@ function borrowedTags(text, sha, io) {
   for (const m of CR.stripMaintainerTail(text).matchAll(CR.INCLUDE_LINK_RE)) {
     if (!m[3]) continue
     const home = `curriculum/${m[2]}.md`
-    const homeText = io.readFile(home)
+    let homeText = io.readFile(home)
     if (homeText === null) return new Set(CLASSES)
+    // A home that is a manifest of slide files holds the borrowed ids only in
+    // its inlined text: diff that, pin against now, like expandedRouting does.
+    let diff = null
+    if (slideFileIds(homeText).length) {
+      if (typeof io.showAt !== 'function') throw new TypeError(`${home} includes slide files; io needs showAt(sha, path)`)
+      const atPin = io.showAt(sha, home)
+      if (atPin === null) return new Set(CLASSES)
+      const slidePath = id => `curriculum/slides/${id}.md`
+      try {
+        const pinX = inlineSlideFiles(atPin, id => io.showAt(sha, slidePath(id)))
+        homeText = inlineSlideFiles(homeText, id => io.readFile(slidePath(id)))
+        diff = textDiff(pinX, homeText)
+      } catch { return new Set(CLASSES) }
+    }
     let ranges
     try { ranges = m[3].split(',').map(id => CR.slideRange(homeText, id)) } catch { return new Set(CLASSES) }
     // 1-based lines. A removal's slot is the line that FOLLOWED it, so a cut at
     // a slide's last line lands on the next heading: allow end + 1 for removals.
     const inAdded = L => ranges.some(r => L >= r.start + 1 && L <= r.end)
     const inRemoved = L => ranges.some(r => L >= r.start + 1 && L <= r.end + 1)
-    const hunks = parseHunks(io.gitDiff(sha, home))
+    const hunks = parseHunks(diff === null ? io.gitDiff(sha, home) : diff)
       .filter(h => h.added.some(inAdded) || h.removedAt.some(inRemoved))
     for (const t of changeTags(buildLineMeta(homeText), hunks).tags) tags.add(t)
   }
   return tags
+}
+
+// --- slide files ------------------------------------------------------------
+// curriculum/slides/<id>.md holds one `##` slide; `[T](slides/<id>.md)` alone on
+// its line inlines it (CR.inlineSlideFiles). A slide file owes only the classes
+// that judge its own text; story/pedagogy/strategy/behavior judge sequence and
+// fit, on the including file's expanded view.
+const SHARED = 'shared'
+const SLIDE_CLASSES = ['writing', 'technical', 'slides']
+const classesFor = relpath => (typeOf(relpath) === 'slide' ? SLIDE_CLASSES : CLASSES)
+
+function slideFileIds(text) {
+  const re = new RegExp(CR.SLIDE_FILE_RE.source, 'gm')
+  return [...CR.stripMaintainerTail(text).matchAll(re)].map(m => m[2])
+}
+
+// Unified -U0 diff of two texts, for parseHunks. git is already this module's
+// diff engine; --no-index exits 1 when the texts differ, which is not an error.
+function textDiff(a, b) {
+  if (a === b) return ''
+  const dir = fs.mkdtempSync(path.join(require('os').tmpdir(), 'textdiff-'))
+  try {
+    fs.writeFileSync(path.join(dir, 'a'), a); fs.writeFileSync(path.join(dir, 'b'), b)
+    try { return execFileSync('git', ['diff', '--no-index', '-U0', 'a', 'b'], { cwd: dir, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 }) }
+    catch (e) { if (e.status === 1) return e.stdout; throw e }
+  } finally { fs.rmSync(dir, { recursive: true, force: true }) }
+}
+
+const slideFileBody = CR.slideFileBody
+const inlineSlideFiles = CR.inlineSlideFiles
+
+// Route a file that includes slide files on its EXPANDED text: diff the file
+// at the pin, expanded with the slide files as they were then (an old-style
+// lecture at the pin has no include lines, its slides are inline text),
+// against the file now, expanded with the slide files now. Extraction keeps
+// that pair byte-identical, so it routes to nothing. Each hunk is then split by
+// WHERE it lands: inside an inlined slide's lines → `member` (reason
+// member-slide), anywhere else → `own` (diff-region). A member that cannot be
+// read now, or a file absent at the pin, stales every class: fail closed.
+function expandedRouting(relpath, text, sha, io) {
+  if (typeof io.showAt !== 'function') {
+    throw new TypeError(`${relpath} includes slide files; io needs showAt(sha, path) to diff its expanded text`)
+  }
+  const all = { own: new Set(CLASSES), member: new Set() }
+  const atPin = io.showAt(sha, relpath)
+  if (atPin === null) return all
+  const slidePath = id => `curriculum/slides/${id}.md`
+  const nowSlide = id => io.readFile(slidePath(id))
+  let oldX, nowX
+  try {
+    oldX = inlineSlideFiles(atPin, id => io.showAt(sha, slidePath(id)))
+    nowX = inlineSlideFiles(text, nowSlide)
+  } catch { return all }
+  // 1-based [first, last] line of each inlined slide in nowX, in include order.
+  const ranges = []
+  let cursor = 0
+  for (const id of slideFileIds(text)) {
+    const body = slideFileBody(nowSlide(id))
+    const at = nowX.indexOf(body, cursor)
+    if (at < 0) return all
+    const first = nowX.slice(0, at).split('\n').length
+    ranges.push([first, first + body.split('\n').length - 1])
+    cursor = at + body.length
+  }
+  const inSlide = (L, slack = 0) => ranges.some(([f, l]) => L >= f && L <= l + slack)
+  const own = [], member = []
+  for (const h of parseHunks(textDiff(oldX, nowX))) {
+    const lines = [...h.added.map(L => inSlide(L)), ...h.removedAt.map(L => inSlide(L, 1))]
+    ;(lines.length && lines.every(Boolean) ? member : own).push(h)
+  }
+  const meta = buildLineMeta(nowX)
+  const ownTags = changeTags(meta, own).tags
+  return { own: ownTags, member: new Set([...changeTags(meta, member).tags].filter(c => !ownTags.has(c))) }
 }
 
 function promptKeys(text) {
@@ -379,6 +466,7 @@ function filterItems(items, io) {
     const meta = buildLineMeta(text)
     const pins = extractPins(text)
     const keys = promptKeys(text)
+    const slideFiles = slideFileIds(text).length > 0
     const cache = {}
     const kept = []
     const pruned = []
@@ -386,8 +474,12 @@ function filterItems(items, io) {
       const sha = pins[cls]
       if (!sha) { kept.push({ cls, reason: 'unpinned' }); continue }
       if (!io.validSha(sha)) { kept.push({ cls, reason: 'bad-sha' }); continue }
-      if (!(sha in cache)) cache[sha] = changeTags(meta, parseHunks(io.gitDiff(sha, item.file))).tags
-      if (cache[sha].has(cls)) { kept.push({ cls, reason: 'diff-region' }); continue }
+      if (!(sha in cache)) {
+        cache[sha] = slideFiles ? expandedRouting(item.file, text, sha, io)
+          : { own: changeTags(meta, parseHunks(io.gitDiff(sha, item.file))).tags, member: new Set() }
+      }
+      if (cache[sha].own.has(cls)) { kept.push({ cls, reason: 'diff-region' }); continue }
+      if (cache[sha].member.has(cls)) { kept.push({ cls, reason: 'member-slide' }); continue }
       if (io.ruleDrift(sha).has(cls)) { kept.push({ cls, reason: 'rule-drift' }); continue }
       if (cls === 'behavior' && keys.some(k => io.gitDiff(sha, `curriculum/prompts/${k}.md`).trim() !== '')) {
         kept.push({ cls, reason: 'registry-prompt' }); continue
@@ -417,14 +509,19 @@ function scanFile(relpath, io) {
   // Which rules a drifted class owes a re-read of. Empty when nothing drifted,
   // and empty for a Set-shaped ruleDrift, which routes but carries no detail.
   const driftRules = {}
-  for (const cls of CLASSES) {
+  const slideFiles = slideFileIds(text).length > 0
+  for (const cls of classesFor(relpath)) {
     const sha = pins[cls]
     if (sha) {
       if (!io.validSha(sha)) { classes.push(cls); detail[cls] = 'bad-sha'; continue }
-      if (!(sha in cache)) cache[sha] = changeTags(meta, parseHunks(io.gitDiff(sha, relpath))).tags
+      if (!(sha in cache)) {
+        cache[sha] = slideFiles ? expandedRouting(relpath, text, sha, io)
+          : { own: changeTags(meta, parseHunks(io.gitDiff(sha, relpath))).tags, member: new Set() }
+      }
       if (!(sha in driftCache)) driftCache[sha] = io.ruleDrift(sha)
-      let stale = cache[sha].has(cls)
+      let stale = cache[sha].own.has(cls)
       let reason = 'diff-region'
+      if (!stale && cache[sha].member.has(cls)) { stale = true; reason = 'member-slide' }
       if (!stale && cls === 'behavior') stale = promptKeys(text).some(k => io.gitDiff(sha, `curriculum/prompts/${k}.md`).trim() !== '')
       if (!stale) {
         if (!(('b:' + sha) in cache)) cache['b:' + sha] = borrowedTags(text, sha, io)
@@ -477,6 +574,7 @@ function gitIo(repo) {
   const once = (memo, key, fn) => { if (!memo.has(key)) memo.set(key, fn()); return memo.get(key) }
   return {
     readFile: p => { try { return fs.readFileSync(path.join(repo, p), 'utf8') } catch { return null } },
+    showAt: (sha, p) => { try { return execFileSync('git', ['show', `${sha}:${p}`], { cwd: repo, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024, stdio: ['ignore', 'pipe', 'ignore'] }) } catch { return null } },
     gitDiff: (sha, p) => once(diffMemo, `${sha}\0${p}`, () => { try { return execFileSync('git', ['diff', sha, '--', p], { cwd: repo, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 }) } catch { return '' } }),
     validSha: sha => once(shaMemo, sha, () => { try { execFileSync('git', ['rev-parse', '--verify', '-q', `${sha}^{commit}`], { cwd: repo, stdio: 'ignore' }); return true } catch { return false } }),
     ruleDrift: sha => {
@@ -540,6 +638,7 @@ function fileHash(abs) {
 // module fallback or they silently resolve to `module` and the scanner finds
 // no pins (reads as "never judged" on a file judged clean minutes earlier).
 function typeOf(relpath) {
+  if (relpath.includes('curriculum/slides/')) return 'slide'
   if (relpath.includes('/exercises/')) return 'exercise'
   if (relpath.includes('/lectures/')) return 'lecture'
   if (relpath.includes('/supplementary/')) return 'supplementary'
@@ -573,6 +672,9 @@ function evalTrainings() {
 }
 
 function trainingOf(relpath, findLinkers, preferredTraining = null) {
+  // A slide file has no home training: every training that includes it is a
+  // peer, and its own classes (SLIDE_CLASSES) judge only what holds anywhere.
+  if (typeOf(relpath) === 'slide') return SHARED
   const m = relpath.match(/curriculum\/trainings\/([^/]+)\//)
   if (m) return instanceKey(m[1])
   const owners = [...new Set(findLinkers ? findLinkers(relpath) : [])]
@@ -674,6 +776,6 @@ function main(argv) {
   process.exit(2)
 }
 
-module.exports = { TRAINING_PREFIX, instanceKey, evalTrainings, gitIo, requireIo, findingIndex, resetFindingIndex, parseHunks, buildLineMeta, changeTags, extractPins, judgesRow, blockRow, promptKeys, filterItems, scanFile, typeOf, trainingOf, linkFinder, CLASSES, EXTRA_CLASSES, crossRow, panelRow, crossState, panelState }
+module.exports = { SHARED, SLIDE_CLASSES, classesFor, slideFileIds, textDiff, expandedRouting, TRAINING_PREFIX, instanceKey, evalTrainings, gitIo, requireIo, findingIndex, resetFindingIndex, parseHunks, buildLineMeta, changeTags, extractPins, judgesRow, blockRow, promptKeys, filterItems, scanFile, typeOf, trainingOf, linkFinder, CLASSES, EXTRA_CLASSES, crossRow, panelRow, crossState, panelState }
 
 if (require.main === module) main(process.argv.slice(2))

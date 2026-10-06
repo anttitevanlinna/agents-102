@@ -124,7 +124,7 @@ Only genuinely open forced decisions stay in `Flagged`. The test at the end of a
 
 ## Slide grain
 
-A slide another training includes by id (`[T](lectures/x.md#<id>)`) keeps its backing here, in its home file; freshness and judging stay home. `node scripts/slide-card.js lectures/x.md[#<id>]` prints what a slide carries:
+A slide another training includes by id (`[T](lectures/<slug>.md#<id>)`) keeps its backing here, in its home file; freshness and judging stay home. `node scripts/slide-card.js lectures/<slug>.md[#<id>]` prints what a slide carries:
 
 - **Claims** — located by `anchor`, no slide field. A claim whose anchor spans two `##` sections is a straddler, carried by neither: split the anchor so each slide owns its half.
 - **Stance** — one subject. `**Stance** `[stance:…]` (`<id>`)` keys it to the slides it is about; unkeyed, it travels with any slide carrying a `detail` or `borrowed` claim.

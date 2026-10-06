@@ -28,7 +28,6 @@
 const fs = require('fs');
 const path = require('path');
 const CR = require('../site/layouts/curriculum.js');
-const { readCurriculumMd } = require('./read-curriculum.js');
 const VB = require('./validate-backing.js');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -129,14 +128,43 @@ function slideCard(text, id, { expand } = {}) {
   };
 }
 
+// Where a slide's card is read from. `slides/<id>.md` is its own file, backing
+// and notes included. `<kind>/<slug>.md#<id>` whose home includes that id as a
+// slide file follows it there; otherwise the home file is sliced as before.
+function cardSource(kindSlug, id, read) {
+  if (kindSlug.startsWith('slides/')) {
+    return { kindSlug, id: kindSlug.slice('slides/'.length), text: read(kindSlug) };
+  }
+  const home = read(kindSlug);
+  if (id && new RegExp(`^\\[[^\\]]+\\]\\(slides/${id}\\.md\\)[ \\t]*$`, 'm').test(CR.stripMaintainerTail(home))) {
+    return { kindSlug: `slides/${id}`, id, text: read(`slides/${id}`) };
+  }
+  return { kindSlug, id, text: home };
+}
+
+// Every file under curriculum/ that pulls this slide in: a `slides/<id>.md`
+// include, or a `<kind>/<slug>.md#…<id>…` borrow.
 function borrowers(kindSlug, id) {
+  if (kindSlug.startsWith('slides/')) {
+    const out = [];
+    const re = new RegExp(`^\\[[^\\]]+\\]\\(slides/${id}\\.md\\)[ \\t]*$`, 'm');
+    const walk = dir => {
+      for (const n of fs.readdirSync(dir)) {
+        const p = path.join(dir, n);
+        if (fs.statSync(p).isDirectory()) { if (n !== 'evals' && n !== 'slides') walk(p); continue; }
+        if (n.endsWith('.md') && re.test(CR.stripMaintainerTail(fs.readFileSync(p, 'utf8')))) out.push(path.relative(path.join(ROOT, 'curriculum'), p));
+      }
+    };
+    walk(path.join(ROOT, 'curriculum'));
+    return out;
+  }
   const out = [];
   const root = path.join(ROOT, 'curriculum/trainings');
   for (const t of fs.readdirSync(root)) {
     const dir = path.join(root, t);
     if (!fs.statSync(dir).isDirectory()) continue;
     for (const f of fs.readdirSync(dir).filter(n => n.endsWith('.md'))) {
-      const body = CR.stripMaintainerTail(readCurriculumMd(path.join(dir, f)));
+      const body = CR.stripMaintainerTail(fs.readFileSync(path.join(dir, f), 'utf8'));
       for (const m of body.matchAll(CR.INCLUDE_LINK_RE)) {
         if (m[2] === kindSlug && m[3] && m[3].split(',').includes(id)) out.push(`${t}/${f}`);
       }
@@ -169,10 +197,12 @@ function print(kindSlug, text, id, expand) {
 function main(argv) {
   const arg = argv[0];
   if (!arg) { console.error('Usage: slide-card.js <kind>/<slug>.md[#<id>]'); return 2; }
-  const [file, id] = arg.split('#');
-  const kindSlug = file.replace(/^curriculum\//, '').replace(/\.md$/, '');
-  const abs = path.join(ROOT, 'curriculum', kindSlug + '.md');
-  const text = readCurriculumMd(abs);
+  const [file, wantId] = arg.split('#');
+  const read = ks => { try { return fs.readFileSync(path.join(ROOT, 'curriculum', ks + '.md'), 'utf8'); } catch { return null; } };
+  const src = cardSource(file.replace(/^curriculum\//, '').replace(/\.md$/, ''), wantId || null, read);
+  if (src.text === null) { console.error(`curriculum/${src.kindSlug}.md not found`); return 1; }
+  const { kindSlug, text } = src;
+  const id = wantId ? src.id : (kindSlug.startsWith('slides/') ? src.id : null);
   const { loadRegistry } = require('./compile-prompts.js');
   const { loadFigures } = require('./compile-figures.js');
   const prompts = loadRegistry(), figures = loadFigures();
@@ -186,6 +216,6 @@ function main(argv) {
   return 0;
 }
 
-module.exports = { slideCard, straddlers, maintainerNotes, borrowers };
+module.exports = { slideCard, straddlers, maintainerNotes, borrowers, cardSource };
 
 if (require.main === module) process.exit(main(process.argv.slice(2)));

@@ -175,3 +175,12 @@ test('signals: has_slide_includes is true only for a #id include alone on its li
   assert.equal(probe('# M\n\n[S](lectures/x.md#a,b)\n'), true)
   assert.equal(probe('# M\n\n[L](lectures/x.md)\n'), false)
 })
+
+test('slugFor: a slide file is training-neutral, shared--slide--<id>', () => {
+  assert.equal(slugFor('curriculum/slides/agreeable-answers.md'), 'shared--slide--agreeable-answers')
+})
+
+test('signals: has_slide_includes also fires on a slide-file include', () => {
+  const body = '# L\n\n[A](slides/a.md)\n'
+  assert.equal(signals(body, { backing: null, maintainerCut: null, fences: [], bodyLines: body.split('\n') }, body).has_slide_includes, true)
+})

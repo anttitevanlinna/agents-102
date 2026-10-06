@@ -29,14 +29,30 @@ if (!arg) {
 // their wording and backing are judged at home, their FIT is judged here.
 // Whole-file includes stay links — that file is judged in its own right.
 const ROOT = path.join(__dirname, '..');
+const { readCurriculumMd, slideReader, slidesDirFor } = require('./read-curriculum.js');
 function inlineBorrowed(md) {
   return md.replace(CR.INCLUDE_LINK_RE, (full, title, kindSlug, ids) => {
     if (!ids) return full;
-    const src = fs.readFileSync(path.join(ROOT, 'curriculum', kindSlug + '.md'), 'utf8');
+    // The home file may be a manifest of slide files: slice its inlined text.
+    const src = readCurriculumMd(path.join(ROOT, 'curriculum', kindSlug + '.md'));
     return `<!-- borrowed: ${kindSlug}.md#${ids} — wording and backing judged at home; judge fit here -->\n`
       + CR.sliceSlides(src, ids).trim() + '\n<!-- /borrowed -->';
   });
 }
 
+// Slide files (`[T](slides/<id>.md)`) are inlined the same way, fenced so the
+// judge knows the wording is judged in the slide file and only fit is judged
+// here. SLIDES_DIR overrides the directory (tests).
+function inlineSlideFilesMarked(md, file) {
+  const dir = process.env.SLIDES_DIR || slidesDirFor(file === '-' ? path.join(ROOT, 'curriculum', 'x.md') : path.resolve(file));
+  const read = slideReader(dir);
+  return md.replace(new RegExp(CR.SLIDE_FILE_RE.source, 'gm'), (full, title, id) => {
+    const t = read(id);
+    if (t === null) throw new Error(`slides/${id}.md: no such slide file`);
+    return `<!-- slide-file: slides/${id}.md — wording and backing judged in the slide file; judge fit here -->\n`
+      + CR.slideFileBody(t) + '\n<!-- /slide-file -->';
+  });
+}
+
 const raw = arg === '-' ? fs.readFileSync(0, 'utf8') : fs.readFileSync(arg, 'utf8');
-process.stdout.write(CR.expandFigures(CR.expandPrompts(inlineBorrowed(raw), loadRegistry()), loadFigures()));
+process.stdout.write(CR.expandFigures(CR.expandPrompts(inlineBorrowed(inlineSlideFilesMarked(raw, arg)), loadRegistry()), loadFigures()));

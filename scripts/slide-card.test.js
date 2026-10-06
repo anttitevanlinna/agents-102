@@ -100,3 +100,18 @@ test('a Stance header naming slide ids travels only to those slides', () => {
   assert.equal(slideCard(src, 'mirror').stance, null, 'mirror carries a detail claim but the stance is keyed elsewhere');
   assert.match(slideCard(src, 'chain').stance.header, /level:L3/);
 });
+
+// Slide files carry their own backing and notes. A card for `slides/<id>.md`
+// reads that file; a card for `lectures/x.md#<id>` whose home now includes
+// `slides/<id>.md` follows it there.
+test('cardSource: slides/<id>.md and a manifest #id both resolve to the slide file', () => {
+  const { cardSource } = require('./slide-card.js')
+  const files = {
+    'slides/mirror': '## Mirror\n<!--slide:mirror-->\n\nBody.\n',
+    'lectures/home': '# Home\n<!--slide:cover-->\n\nLede.\n\n[M](slides/mirror.md)\n',
+  }
+  const read = ks => files[ks] ?? null
+  assert.deepEqual(cardSource('slides/mirror', null, read), { kindSlug: 'slides/mirror', id: 'mirror', text: files['slides/mirror'] })
+  assert.deepEqual(cardSource('lectures/home', 'mirror', read), { kindSlug: 'slides/mirror', id: 'mirror', text: files['slides/mirror'] })
+  assert.equal(cardSource('lectures/home', 'cover', read).kindSlug, 'lectures/home')
+})

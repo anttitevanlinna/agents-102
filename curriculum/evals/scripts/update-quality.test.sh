@@ -574,6 +574,26 @@ rc=$(run "$F36" --writing PASS)
 assert_rc "$rc" 1 'T37 the stale-verdict guard is armed on a shared module slug'
 unset QUALITY_INSTANCES_DIR
 
+# ── T38 — a slide file (curriculum/slides/<id>.md) owes writing/technical/slides
+# only: its judges row never names a class it does not owe, and the stale-verdict
+# guard finds its instance under shared--slide--<id>.
+mkdir -p "$TMP/c38/curriculum/slides"
+F38="$TMP/c38/curriculum/slides/s38.md"
+printf '## S\n<!--slide:s38-->\n\nBody.\n' > "$F38"
+rc=$(run "$F38" --writing PASS)
+assert_rc "$rc" 0 'T38 a slide file stamps'
+assert_grep    "$F38" 'writing PASS' 'T38 writing recorded'
+assert_no_grep "$F38" 'story'    'T38 no story on a slide file'
+assert_no_grep "$F38" 'behavior' 'T38 no behavior on a slide file'
+assert_no_grep "$F38" 'pedagogy' 'T38 no pedagogy on a slide file'
+assert_no_grep "$F38" 'strategy' 'T38 no strategy on a slide file'
+INST38="$TMP/inst38"; mkdir -p "$INST38"; export QUALITY_INSTANCES_DIR="$INST38"
+other38="$(printf 'x%.0s' {1..64} | tr x 0)"
+printf '{"class":"technical","body_sha":"%s"}\n' "$other38" > "$INST38/shared--slide--s38.technical.json"
+rc=$(run "$F38" --technical PASS)
+assert_rc "$rc" 1 'T38 the stale-verdict guard finds shared--slide--<id>'
+unset QUALITY_INSTANCES_DIR
+
 echo "──────────────────────────────"
 echo "update-quality.test.sh: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]

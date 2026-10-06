@@ -33,6 +33,8 @@ function assertPaired(tracePath, targetPath) {
   if (!trace.startsWith(core + path.sep)) throw new Error(`${trace} is not in ${core}, the core ${checkout} reads`);
 }
 
+const { contentSha } = require('./content-sha.js');
+
 function bind(tracePath, targetPath) {
   assertPaired(tracePath, targetPath);
   const text = fs.readFileSync(tracePath, 'utf8');
@@ -40,7 +42,7 @@ function bind(tracePath, targetPath) {
   if (trace === null || typeof trace !== 'object' || Array.isArray(trace)) {
     throw new Error(`${tracePath}: not a trace object`);
   }
-  const sha = crypto.createHash('sha256').update(fs.readFileSync(targetPath)).digest('hex');
+  const sha = contentSha(targetPath); // slide files inlined; raw sha when there are none
   const next = /"content_sha"\s*:\s*"[^"]*"/.test(text)
     ? text.replace(/("content_sha"\s*:\s*")[^"]*(")/, `$1${sha}$2`)
     : JSON.stringify({ content_sha: sha, ...trace }, null, 2) + '\n';

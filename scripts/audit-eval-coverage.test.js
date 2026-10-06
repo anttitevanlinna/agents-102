@@ -649,3 +649,16 @@ test('CLI: an unregistered training is refused', () => {
   assert.equal(r.status, 2);
   assert.match(String(r.stderr), /Unknown training/);
 });
+
+// A #id borrow confers no ownership (scan-stale-classes linkFinder), so the
+// coverage audit must not owe a borrower's instances for the home lecture.
+// Slide files are their own surface, instance shared--slide--<id>.
+test('surfacesFor: a #id borrow is not the borrower\'s lecture; slide files are their own surface', () => {
+  const cb = surfacesFor('claude-basics')
+  assert.ok(!cb.lectures.some(l => l.slug === 'context-is-king'), 'claude-basics only borrows context-is-king slides')
+  assert.ok(Array.isArray(cb.slides), 'every training has a slides surface')
+  for (const s of surfacesFor('agents-101').slides) {
+    assert.match(s.instanceSlug, /^shared--slide--[a-z0-9-]+$/)
+    assert.ok(fs.existsSync(path.join(ROOT, s.file)), `${s.file} must exist`)
+  }
+})

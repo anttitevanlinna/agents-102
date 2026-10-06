@@ -67,7 +67,7 @@ const isFinding = r => !!r && typeof r === 'object' && r.verdict === 'REVISE';
 function shaOf(file, cache) {
   if (cache.has(file)) return cache.get(file);
   let v = null;
-  try { v = crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex'); } catch { /* unreadable */ }
+  try { v = require('./content-sha.js').contentSha(file); } catch { /* unreadable */ } // body_sha: slide files inlined
   cache.set(file, v);
   return v;
 }

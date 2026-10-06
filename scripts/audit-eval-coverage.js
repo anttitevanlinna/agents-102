@@ -98,6 +98,9 @@ const SURFACE_COMPENDIA = {
   // check_cross_module is judged at the module-PAIR level (ae101--m1-m2.cross_module.json),
   // not per module file — audited separately, not in this per-file rule matrix.
   modules:   ['check_writing', 'check_student_facing', 'check_pedagogy', 'check_strategy_tie_in'],
+  // A slide file (curriculum/slides/<id>.md) owes writing/technical/slides;
+  // check_slides is outside this audit's reported set, so writing carries it.
+  slides:    ['check_writing', 'check_student_facing'],
 };
 
 // Classes a surface type MUST carry an instance of (the gate fails without them).
@@ -110,6 +113,7 @@ const MANDATORY_CLASSES = {
   exercises: ['writing', 'pedagogy'],
   lectures:  ['writing', 'story'],
   modules:   ['writing', 'pedagogy', 'strategy'],
+  slides:    ['writing'],
 };
 
 // ── N/A-by-design ────────────────────────────────────────────────────────────
@@ -220,6 +224,17 @@ function surfacesFor(trainingKey) {
   const modules = [];
   const seen = new Set();
   const exercises = [];
+  // Slide files reachable from this training: included by a module directly or
+  // by a lecture/exercise it includes whole. Training-neutral instances.
+  const slides = [];
+  const slideSeen = new Set();
+  const readBody = rel => { try { return CR.stripMaintainerTail(fs.readFileSync(path.join(REPO, rel), 'utf8')); } catch { return ''; } };
+  const slideIdsIn = body => [...body.matchAll(new RegExp(CR.SLIDE_FILE_RE.source, 'gm'))].map(m => m[2]);
+  const addSlide = id => {
+    if (slideSeen.has(id)) return;
+    slideSeen.add(id);
+    slides.push({ slug: id, file: `curriculum/slides/${id}.md`, instanceSlug: `shared--slide--${id}` });
+  };
   const lectures = [];
   const modEntries = [];
   if (t.prework) modEntries.push(t.prework.slug);
@@ -233,8 +248,11 @@ function surfacesFor(trainingKey) {
     const body = CR.stripMaintainerTail(fs.readFileSync(abs, 'utf8'));
     const re = new RegExp(CR.INCLUDE_LINK_RE.source, 'gm');
     let m;
+    for (const id of slideIdsIn(body)) addSlide(id);
     while ((m = re.exec(body)) !== null) {
+      if (m[3]) continue;                          // #id borrow: judged at home, owns nothing here
       const kindSlug = m[2];                       // e.g. "exercises/name-your-crux"
+      for (const id of slideIdsIn(readBody(`curriculum/${kindSlug}.md`))) addSlide(id);
       if (seen.has(kindSlug)) continue;
       seen.add(kindSlug);
       const [kind, leafSlug] = kindSlug.split('/');
@@ -243,7 +261,7 @@ function surfacesFor(trainingKey) {
       bucket.push({ slug: leafSlug, file: `curriculum/${kindSlug}.md`, instanceSlug: `${prefix}--${type}--${leafSlug}` });
     }
   }
-  return { exercises, lectures, modules };
+  return { exercises, lectures, modules, slides };
 }
 
 const SURFACES = {

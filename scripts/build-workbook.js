@@ -37,6 +37,7 @@ const { marked } = require('marked');
 
 const ROOT = path.resolve(__dirname, '..');
 const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
+const { readCurriculumMd } = require('./read-curriculum.js');
 const CT = require(path.join(ROOT, 'scripts/calculate-time.js'));
 const { loadRegistry, writeRegistry, OUT_FILE: PROMPTS_JSON } = require('./compile-prompts.js');
 
@@ -254,7 +255,7 @@ const THEORY_HANDBOOK_MANIFEST = {
 
 function readMd(absPath) {
   if (!fs.existsSync(absPath)) return null;
-  const raw = fs.readFileSync(absPath, 'utf8');
+  const raw = readCurriculumMd(absPath);
   const stripped = CR.stripMaintainerTail(raw);
   // Strict mode: any unresolved {{prompt:<key>}} marker fails the build,
   // pointing at the offending file via the path included in the error.
@@ -963,7 +964,7 @@ function readExerciseViewMeta(slug) {
     throw new Error(`Exercise summary source missing: ${path.relative(ROOT, srcPath)}`);
   }
 
-  const raw = fs.readFileSync(srcPath, 'utf8');
+  const raw = readCurriculumMd(srcPath);
   const marker = '<!-- maintainer -->';
   const markerAt = raw.indexOf(marker);
   if (markerAt === -1) {
@@ -1151,7 +1152,7 @@ function buildTheoryHandbook(customer, trainingKey, recipient) {
 function exerciseSlugsForModule(trainingKey, moduleSlug) {
   const modPath = cur('trainings', trainingKey, moduleSlug + '.md');
   if (!fs.existsSync(modPath)) return [];
-  const body = CR.stripMaintainerTail(fs.readFileSync(modPath, 'utf8'));
+  const body = CR.stripMaintainerTail(readCurriculumMd(modPath));
   const re = /\[[^\]]+\]\(exercises\/([a-z0-9-]+)\.md\)/g;
   const slugs = [];
   let m;

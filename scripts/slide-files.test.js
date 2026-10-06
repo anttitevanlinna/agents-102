@@ -65,3 +65,20 @@ test('readCurriculumMd inlines from the curriculum tree the file lives in', () =
   fs.writeFileSync(lec, '# L\n\n[Two answers](slides/two-answers.md)\n');
   assert.equal(readCurriculumMd(lec), '# L\n\n' + SLIDE);
 })
+
+// The SPA fetches; it inlines through the same function with a Promise fetcher.
+test('inlineSlideFilesAsync inlines what the fetcher returns, fetching each slide once', async () => {
+  const seen = [];
+  const md = '# L\n\n[Two answers](slides/two-answers.md)\n\n[Two answers](slides/two-answers.md)\n';
+  const out = await CR.inlineSlideFilesAsync(md, id => { seen.push(id); return Promise.resolve(SLIDE_WITH_TAIL); });
+  assert.equal(out, CR.inlineSlideFiles(md, () => SLIDE_WITH_TAIL));
+  assert.deepEqual(seen, ['two-answers']);
+  assert.equal(await CR.inlineSlideFilesAsync('# No includes\n', () => { throw new Error('no fetch') }), '# No includes\n');
+  await assert.rejects(CR.inlineSlideFilesAsync('[X](slides/x.md)\n', () => Promise.resolve(null)), /slides\/x\.md: no such slide file/);
+})
+
+test('the SPA inlines slide files on the page it loads and inside every include', () => {
+  const spa = fs.readFileSync(path.join(__dirname, '..', 'site', 'layouts', 'curriculum-spa.js'), 'utf8');
+  assert.match(spa, /\.then\(extractParent\)\s*\.then\(inlineSlides\)\s*\.then\(stripMaintainerTail\)/, 'loadAndRender inlines before stripping');
+  assert.match(spa, /return fetch\('\.\.\/curriculum\/' \+ p\)[\s\S]{0,200}\.then\(function \(text\) \{ return text === null \? null : inlineSlides\(text\); \}\)/, 'expandIncludes inlines each fetched lecture before slicing');
+})

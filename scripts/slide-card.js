@@ -28,6 +28,7 @@
 const fs = require('fs');
 const path = require('path');
 const CR = require('../site/layouts/curriculum.js');
+const { readCurriculumMd } = require('./read-curriculum.js');
 const VB = require('./validate-backing.js');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -135,7 +136,7 @@ function borrowers(kindSlug, id) {
     const dir = path.join(root, t);
     if (!fs.statSync(dir).isDirectory()) continue;
     for (const f of fs.readdirSync(dir).filter(n => n.endsWith('.md'))) {
-      const body = CR.stripMaintainerTail(fs.readFileSync(path.join(dir, f), 'utf8'));
+      const body = CR.stripMaintainerTail(readCurriculumMd(path.join(dir, f)));
       for (const m of body.matchAll(CR.INCLUDE_LINK_RE)) {
         if (m[2] === kindSlug && m[3] && m[3].split(',').includes(id)) out.push(`${t}/${f}`);
       }
@@ -171,7 +172,7 @@ function main(argv) {
   const [file, id] = arg.split('#');
   const kindSlug = file.replace(/^curriculum\//, '').replace(/\.md$/, '');
   const abs = path.join(ROOT, 'curriculum', kindSlug + '.md');
-  const text = fs.readFileSync(abs, 'utf8');
+  const text = readCurriculumMd(abs);
   const { loadRegistry } = require('./compile-prompts.js');
   const { loadFigures } = require('./compile-figures.js');
   const prompts = loadRegistry(), figures = loadFigures();

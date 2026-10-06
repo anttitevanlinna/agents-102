@@ -46,6 +46,7 @@ const fs = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
+const { readCurriculumMd } = require('./read-curriculum.js');
 
 const argv = process.argv.slice(2);
 function flag(name, def) {
@@ -66,7 +67,7 @@ const TRAINING = flag('training', 'agentic-engineering-101');
 function modulePlan(contentKey, slug) {
   const p = path.join(ROOT, 'curriculum/trainings', contentKey, slug + '.md');
   if (!fs.existsSync(p)) return null;
-  const body = CR.stripMaintainerTail(fs.readFileSync(p, 'utf8'));
+  const body = CR.stripMaintainerTail(readCurriculumMd(p));
   const re = new RegExp(CR.INCLUDE_LINK_RE.source, 'gm');
   const refs = [];
   let m;
@@ -103,7 +104,7 @@ function tagsInBody(body) {
 function tagsIn(ref) {
   const p = path.join(ROOT, 'curriculum', ref + '.md');
   if (!fs.existsSync(p)) return [];
-  return tagsInBody(CR.stripMaintainerTail(fs.readFileSync(p, 'utf8'))).map(t => Object.assign({ ref }, t));
+  return tagsInBody(CR.stripMaintainerTail(readCurriculumMd(p))).map(t => Object.assign({ ref }, t));
 }
 
 // A marker must be followed by a blank line. Without one, expandTiers turns it
@@ -141,7 +142,7 @@ function acceptedHeadings(ref) {
 
 function countSlidesAt(p) {
   if (!fs.existsSync(p)) return 0;
-  const body = CR.stripMaintainerTail(fs.readFileSync(p, 'utf8'));
+  const body = CR.stripMaintainerTail(readCurriculumMd(p));
   let fenced = false, n = 0;
   for (const line of body.split('\n')) {
     if (/^\s*```/.test(line)) { fenced = !fenced; continue; }
@@ -176,12 +177,12 @@ function run() {
     // ref list, Big Idea before it), so "before the first exercise" is not a
     // property the file has.
     const modPath = path.join(ROOT, 'curriculum/trainings', contentKey, mod.slug + '.md');
-    let tagged = tagsInBody(CR.stripMaintainerTail(fs.readFileSync(modPath, 'utf8'))).length;
+    let tagged = tagsInBody(CR.stripMaintainerTail(readCurriculumMd(modPath))).length;
     let slides = countSlidesAt(modPath);
     for (const ref of plan.refs) { slides += countSlides(ref); }
     for (const f of [modPath].concat(plan.refs.map(r => path.join(ROOT, 'curriculum', r + '.md')))) {
       if (!fs.existsSync(f)) continue;
-      for (const p of markerLayoutProblems(CR.stripMaintainerTail(fs.readFileSync(f, 'utf8')))) {
+      for (const p of markerLayoutProblems(CR.stripMaintainerTail(readCurriculumMd(f)))) {
         layout.push({ file: path.relative(ROOT, f), ...p });
       }
     }

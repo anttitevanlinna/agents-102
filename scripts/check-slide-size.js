@@ -32,6 +32,7 @@ const fs = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
+const { readCurriculumMd } = require('./read-curriculum.js');
 
 // ── args ────────────────────────────────────────────────────────────────────
 const argv = process.argv.slice(2);
@@ -113,7 +114,7 @@ function fileSetFromTraining(trainingKey) {
       seen.add(modSlug);
       out.push({ module: mod.slug, kindSlug: modSlug, file: path.join('curriculum', modSlug + '.md') });
     }
-    const body = CR.stripMaintainerTail(fs.readFileSync(modPath, 'utf8'));
+    const body = CR.stripMaintainerTail(readCurriculumMd(modPath));
     // INCLUDE_LINK_RE is anchored + /g; reset lastIndex per file.
     const re = new RegExp(CR.INCLUDE_LINK_RE.source, 'gm');
     let m;
@@ -237,7 +238,7 @@ function measureOneRuntime(body) {
 }
 
 function measureFile(absPath, moduleSlugs) {
-  const stripped = CR.stripMaintainerTail(fs.readFileSync(absPath, 'utf8'));
+  const stripped = CR.stripMaintainerTail(readCurriculumMd(absPath));
   // Capability flags default to present (absent-or-true keeps the passage), which
   // is the widest reading of the page — the variant that carries the most text.
   const flagged = CR.applyContentFlags(stripped, {}, moduleSlugs || []);
@@ -277,7 +278,7 @@ for (const f of files) {
   const story = STORY_EXEMPT.has(slug);
   if (story && !INCLUDE_STORIES) continue;
 
-  const accepted = acceptedSlides(fs.readFileSync(abs, 'utf8'));
+  const accepted = acceptedSlides(readCurriculumMd(abs));
   const { slides } = measureFile(abs, MODULE_SLUGS);
   for (const s of slides) {
     const ok = accepted.has(s.header);

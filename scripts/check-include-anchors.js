@@ -53,6 +53,10 @@ const LIBRARY_DIR = process.env.LIBRARY_DIR
   ? path.resolve(process.env.LIBRARY_DIR)
   : path.join(ROOT, 'curriculum');
 const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
+const { slideReader } = require('./read-curriculum.js');
+const SLIDES_DIR = path.join(LIBRARY_DIR, 'slides');
+const readSlide = slideReader(SLIDES_DIR);
+const inlineHome = src => CR.inlineSlideFiles(src, readSlide);
 
 const argv = process.argv.slice(2);
 const REPORT = argv.includes('--report');
@@ -95,7 +99,7 @@ function scanTraining(key) {
         const src = path.join(LIBRARY_DIR, sl[1] + '.md');
         let why = null;
         if (!fs.existsSync(src)) why = 'file missing';
-        else { try { CR.sliceSlides(fs.readFileSync(src, 'utf8'), sl[2]); } catch (e) { why = e.message; } }
+        else { try { CR.sliceSlides(inlineHome(fs.readFileSync(src, 'utf8')), sl[2]); } catch (e) { why = e.message; } }
         if (why) badSlides.push({ file: name, line: i + 1, target: `${sl[1]}.md#${sl[2]}`, why });
         return;
       }
@@ -134,6 +138,38 @@ for (const key of trainings) {
   }
 }
 
+// Slide files: every `[T](slides/<id>.md)` in a lecture, exercise or module
+// reaches a well-formed slide file; every slide file is included somewhere.
+const badSlideFiles = [];
+const slideIncluders = new Map();
+const mdIn = dir => fs.existsSync(dir) ? fs.readdirSync(dir).filter(f => f.endsWith('.md')).map(f => path.join(dir, f)) : [];
+const includerFiles = [
+  ...['lectures', 'exercises'].flatMap(k => mdIn(path.join(LIBRARY_DIR, k))),
+  ...trainings.flatMap(k => mdIn(path.join(TRAININGS_DIR, k))),
+];
+for (const abs of includerFiles) {
+  const rel = path.relative(abs.startsWith(TRAININGS_DIR) ? TRAININGS_DIR : LIBRARY_DIR, abs);
+  bodyOf(fs.readFileSync(abs, 'utf8')).split('\n').forEach((line, i) => {
+    const m = new RegExp(CR.SLIDE_FILE_RE.source).exec(line);
+    if (!m) return;
+    const id = m[2];
+    slideIncluders.set(id, (slideIncluders.get(id) || 0) + 1);
+    const text = readSlide(id);
+    const why = text === null ? 'no such slide file' : CR.slideFileProblem(id, text);
+    if (why) badSlideFiles.push(`${rel}:${i + 1} -> slides/${id}.md (${why})`);
+  });
+}
+for (const f of mdIn(SLIDES_DIR)) {
+  const id = path.basename(f, '.md');
+  if (!slideIncluders.has(id)) badSlideFiles.push(`slides/${id}.md: no file includes it`);
+}
+if (REPORT && slideIncluders.size) console.log(`\nslide files: ${slideIncluders.size} included`);
+if (badSlideFiles.length) {
+  console.error(`\n${badSlideFiles.length} slide-file problem(s):\n`);
+  for (const b of badSlideFiles) console.error(`  ${b}`);
+  console.error(`\nFix: a slide file is one ## slide with <!--slide:<id>--> under it, named <id>.md, and included by at least one file.\n`);
+}
+
 if (!trainings.length) {
   console.error(`FAIL — 0 trainings found under ${TRAININGS_DIR}: nothing was checked.`);
   process.exit(1);
@@ -154,7 +190,7 @@ if (dead.length) {
   console.error(`\nFix: add a standalone include line — the link ALONE on its own line — in the`);
   console.error(`file that assigns the work, or drop the link and let the prose name it.\n`);
   process.exit(1);
-} else if (badSlides.length) {
+} else if (badSlides.length || badSlideFiles.length) {
   process.exit(1);
 } else if (!REPORT) {
   console.log(`OK — ${trainings.length} trainings, ${fileCount} files, every exercise/lecture link resolves.`);

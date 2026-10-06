@@ -357,6 +357,19 @@
         });
     }
 
+    // The SPA's form: fetchText(id) → Promise of the slide file's text or null.
+    // Each slide is fetched once, then inlined by the same function.
+    function inlineSlideFilesAsync(md, fetchText) {
+        var ids = [], m, re = new RegExp(SLIDE_FILE_RE.source, 'gm');
+        while ((m = re.exec(md)) !== null) if (ids.indexOf(m[2]) < 0) ids.push(m[2]);
+        if (!ids.length) return Promise.resolve(md);
+        return Promise.all(ids.map(function (id) { return fetchText(id); })).then(function (texts) {
+            var got = {};
+            ids.forEach(function (id, i) { got[id] = texts[i]; });
+            return inlineSlideFiles(md, function (id) { return got[id]; });
+        });
+    }
+
     // A slide file's shape, or the reason it is not one: first line `## …`
     // (`# …` is a cover and stays in its lecture), the marker for <id> directly
     // under it (other comment lines may sit between), no second heading.
@@ -1502,6 +1515,7 @@
         SLIDE_FILE_RE: SLIDE_FILE_RE,
         slideFileBody: slideFileBody,
         inlineSlideFiles: inlineSlideFiles,
+        inlineSlideFilesAsync: inlineSlideFilesAsync,
         slideFileProblem: slideFileProblem,
         CROSS_DOC_SHARED_RE: CROSS_DOC_SHARED_RE,
         CROSS_DOC_TRAINING_RE: CROSS_DOC_TRAINING_RE,

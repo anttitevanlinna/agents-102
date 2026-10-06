@@ -46,6 +46,7 @@ const fs = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
+const { readCurriculumMd } = require('./read-curriculum.js');
 
 // ── args ─────────────────────────────────────────────────────────────────────
 const argv = process.argv.slice(2);
@@ -157,7 +158,7 @@ function readLeaf(kindSlug) {
   const file = path.join(ROOT, 'curriculum', kindSlug + '.md');
   const rel = path.relative(ROOT, file);
   if (!fs.existsSync(file)) return { kindSlug, file: rel, error: 'file not found' };
-  const raw = fs.readFileSync(file, 'utf8');
+  const raw = readCurriculumMd(file);
 
   const hits = [];
   const re = new RegExp(TIME_LINE_RE.source, 'gm');
@@ -284,7 +285,7 @@ function readModule(trainingKey, modSlug) {
   const file = path.join(ROOT, 'curriculum/trainings', trainingKey, modSlug + '.md');
   const rel = path.relative(ROOT, file);
   if (!fs.existsSync(file)) return { slug: modSlug, file: rel, error: 'module file not found', beats: [] };
-  const raw = fs.readFileSync(file, 'utf8');
+  const raw = readCurriculumMd(file);
 
   // Include-links live in the BODY (above the maintainer tail); the transitions
   // and charges live in the maintainer block. Read each from its own half.

@@ -227,6 +227,7 @@
                 return res.text();
             })
             .then(extractParent)
+            .then(inlineSlides)
             .then(stripMaintainerTail)
             .then(expandIncludes)
             .then(function (md) { return CurriculumRuntime.expandPrompts(md, PROMPT_REGISTRY); })
@@ -385,6 +386,16 @@
         return Promise.resolve(CurriculumRuntime.rewriteCrossDocLinks(md));
     }
 
+    // Slide files (`[T](slides/<id>.md)`) are transparent: inline them before
+    // anything else reads the page or an included lecture (layouts/curriculum.js).
+    function inlineSlides(md) {
+        return CurriculumRuntime.inlineSlideFilesAsync(md, function (id) {
+            return fetch('../curriculum/slides/' + id + '.md')
+                .then(function (res) { return res.ok ? res.text() : null; })
+                .catch(function () { return null; });
+        });
+    }
+
     // Expand standalone include links of the form:
     //   [Any text](exercises/slug.md)    or    [Any text](lectures/slug.md)
     // A link is an include only when it is the ENTIRE paragraph (its own line, no surrounding prose).
@@ -403,6 +414,7 @@
         var fetches = uniquePaths.map(function (p) {
             return fetch('../curriculum/' + p)
                 .then(function (res) { return res.ok ? res.text() : null; })
+                .then(function (text) { return text === null ? null : inlineSlides(text); })
                 .catch(function () { return null; });
         });
 

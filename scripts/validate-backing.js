@@ -35,6 +35,7 @@
 const fs = require('fs');
 const path = require('path');
 const CR = require(path.join(__dirname, '..', 'site/layouts/curriculum.js'));
+const { readCurriculumMd } = require('./read-curriculum.js');
 const { loadRegistry } = require('./compile-prompts.js');
 const { loadFigures } = require('./compile-figures.js');
 
@@ -502,7 +503,7 @@ function main() {
 
   for (const abs of files) {
     const rel = path.relative(ROOT, abs);
-    const text = fs.readFileSync(abs, 'utf8');
+    const text = readCurriculumMd(abs);
     const r = auditText(text, { laws, now, stanceWindow: opts.stanceWindow, file: rel, expand });
     findings.push(...r.findings);
     for (const k of r.lawsUsed) lawsUsed.add(k);

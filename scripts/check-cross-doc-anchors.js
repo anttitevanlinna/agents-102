@@ -17,6 +17,7 @@ const { marked } = require('marked');
 
 const ROOT = path.join(__dirname, '..');
 const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
+const { readCurriculumMd } = require('./read-curriculum.js');
 
 // Configure marked exactly as the build does, so heading ids match the
 // student-facing HTML byte-for-byte (including any slugger quirks).
@@ -47,7 +48,7 @@ function walk(dir, acc) {
 const idCache = new Map();
 function idsFor(file) {
     if (idCache.has(file)) return idCache.get(file);
-    const md = fs.readFileSync(file, 'utf8');
+    const md = readCurriculumMd(file);
     const html = marked.parse(md);
     const ids = new Set();
     let m;
@@ -90,7 +91,7 @@ for (const src of sources) {
     // under it". Name it and carry on: the run is still a valid statement about
     // every file that was there when it was read.
     let md;
-    try { md = fs.readFileSync(src, 'utf8'); }
+    try { md = readCurriculumMd(src); }
     catch (e) { vanished.push(`${path.relative(ROOT, src)} (${e.code || e.message})`); continue; }
     // A standalone `[T](lectures/x.md#<slide-id>[,...])` is a slide include, not
     // a heading link: its fragment names <!--slide:--> markers, and

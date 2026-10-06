@@ -113,3 +113,30 @@ test('a slide include whose id does not resolve fails and names it', () => {
     assert.match(out, /lectures\/shared\.md#gone/);
   });
 });
+
+// Slide files: a lecture's `[T](slides/<id>.md)` must reach a well-formed slide
+// file, and a slide file nothing includes is a cut slide that fell out of every
+// deck.
+test('slide-file includes: missing, malformed and orphaned slide files fail; a good one passes', () => {
+  const lib = fs.mkdtempSync(path.join(os.tmpdir(), 'include-anchors-lib-'));
+  fs.mkdirSync(path.join(lib, 'lectures'));
+  fs.mkdirSync(path.join(lib, 'slides'));
+  const tr = fs.mkdtempSync(path.join(os.tmpdir(), 'include-anchors-tr-'));
+  fs.mkdirSync(path.join(tr, 'zz'));
+  fs.writeFileSync(path.join(tr, 'zz', 'm.md'), '# M\n\n[L](lectures/l.md)\n');
+  fs.writeFileSync(path.join(lib, 'slides', 'good.md'), '## Good\n<!--slide:good-->\n\nok\n');
+  const env = { TRAININGS_DIR: tr, LIBRARY_DIR: lib };
+
+  fs.writeFileSync(path.join(lib, 'lectures', 'l.md'), '# L\n\n[Good](slides/good.md)\n');
+  let r = run([], env);
+  assert.equal(r.code, 0, r.out);
+
+  fs.writeFileSync(path.join(lib, 'slides', 'bent.md'), '## Bent\n<!--slide:other-->\n\nx\n');
+  fs.writeFileSync(path.join(lib, 'slides', 'stray.md'), '## Stray\n<!--slide:stray-->\n\nx\n');
+  fs.writeFileSync(path.join(lib, 'lectures', 'l.md'), '# L\n\n[Good](slides/good.md)\n\n[Gone](slides/gone.md)\n\n[Bent](slides/bent.md)\n');
+  r = run([], env);
+  assert.equal(r.code, 1);
+  assert.match(r.out, /lectures\/l\.md:5 -> slides\/gone\.md \(no such slide file\)/);
+  assert.match(r.out, /lectures\/l\.md:7 -> slides\/bent\.md \(marker says other, filename says bent\)/);
+  assert.match(r.out, /slides\/stray\.md: no file includes it/);
+})

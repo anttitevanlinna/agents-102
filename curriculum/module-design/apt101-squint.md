@@ -1,6 +1,6 @@
 # APT101 squint: slide titles only, in story order
 
-Method (maintainer, 2026-10-06): squint at the slide titles alone and put them in sequence. Bodies come only once the titles flow. The storyline is the appendix to `agents-102-core/strategy/content-strategy-agentic-product-management.md`, *you were right all along, and now it is dangerous*. ✱ = new title, no slide yet. "We…" narrator titles are the maintainer's essay wording (`practitioner-essays-year-one.md`), lightly cut, never invented. After three rounds (squint r1 72/64/35/64 · r2 74/70/55/68 · r3 70/70/57/72), r4 (student-journey lens) 74/75/72/68, forward 82. Round 5 = r4 judges + advisor union. Lens (maintainer 2026-10-06): "the story is always the students' journey. it is about future too." The trio is the hero and the essay voice is the guide. The ending stays open and points forward.
+Method (maintainer, 2026-10-06): squint at the slide titles alone and put them in sequence. Bodies come only once the titles flow. The storyline is the appendix to `agents-102-core/strategy/content-strategy-agentic-product-management.md`, *you were right all along, and now it is dangerous*. ✱ = new title, no slide yet. "We…" narrator titles are the maintainer's essay wording (`practitioner-essays-year-one.md`), lightly cut, never invented. After three rounds (squint r1 72/64/35/64 · r2 74/70/55/68 · r3 70/70/57/72), r4 (student-journey lens) 74/75/72/68, forward 82. Round 5 = r4 judges + advisor union (r5 76/78/80/72, forward 82). Round 6 = header style pass from `header-style-distilled.md`. Lens (maintainer 2026-10-06): "the story is always the students' journey. it is about future too." The trio is the hero and the essay voice is the guide. The ending stays open and points forward.
 
 ## Day 1: You were right all along
 
@@ -18,35 +18,35 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - Discovery belongs to the team that builds
 
 **Start from your customer's sentence**
-- Work backwards from your customer
+- Would a customer pick up the box? ✱ (style)
 - The product box keeps the agents on course
 
 **The agent knows only what you tell it**
 - Same question, two answers
 - You steer with what you bring, what you set and what you ask ✱ (retitle)
-- Ask for the plan before the agent writes
+- Leave it out of the plan and the agent decides ✱ (style)
 - On your own product, you are the check
 
 **Your first bet**
-- A bet names the signal that would prove it wrong ✱ (retitle)
+- A signal that can only say yes is not a test ✱ (style)
 - Agents shrink the feasibility work; three risks remain
-- Test the important, unproven assumption first
+- Test first what matters most and is proven least ✱ (style)
 
 **Your material is the moat**
 - Generic AI is everyone's; your material is yours ✱
-- Outcome, insights, sources: three layers in one folder ✱ (retitle)
+- Sharpen the insights, never the sources ✱ (style)
 - A file the team writes once steers every answer
-- New interviews sharpen the old insight pages
+- New interviews make the insight pages sharper, not longer ✱ (style)
 
 **Send it off**
 - The best mitigation is the door you don't open
-- One agent for each job that recurs in your week
-- Six parts make an agent: context, tools, goal, checks, boundary, loop ✱ (retitle)
-- It keeps working while the team is away, fluently ✱
+- One agent per recurring job, not one company brain ✱ (style)
+- A chat runs on one part; an agent needs six ✱ (style)
+- It works overnight; some of what it writes will be wrong ✱ (style)
 
 ## Day 2: What came back
 
-**The digest is back**
+**The digest is back, and it agrees with you**
 - You cannot read it all, so read where you know most
 - The digest agrees with your favourite hypothesis ✱
 
@@ -54,28 +54,28 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - It found what you asked it to look for ✱
 - A faster feature factory is still a feature factory ✱
 - I used to think of being wrong as failure ✱ (narrator)
-- Find which part went wrong before fixing anything
+- The instructions are only one suspect ✱ (style)
 
 **Go back to your customers**
 - One agent first; split only when it can't be one ✱
-- Talk to your customers every week, toward an outcome
+- Great research can still miss the outcome ✱ (style)
 - What customers did beats what they say they will do
 
 **Widen before you choose**
-- Widen first, then choose, and expect to loop back
-- Hear every idea before anything gets merged
-- Agents jump to solutions; the tree holds the opportunities ✱ (retitle)
-- The branch only one of you found
+- An agent widens in minutes; the choosing stays with you ✱ (style)
+- Hear every idea before anything gets averaged ✱ (style)
+- A solution can wear an opportunity's clothes ✱ (style)
+- The branch one of you found is often worth most ✱ (style)
 - The outcome at the root makes the merge choose
 
 **The team is the control**
 - Agents get checked, people don't get watched
 - "The agent got this wrong" costs nobody face ✱
-- The questions legal and your employee representative will ask
+- Answer legal's questions before legal asks them ✱ (style)
 - Safe enough, under these conditions, for now
 
 **Fluent is not true**
-- It quoted the source, then added what wasn't there ✱ (retitle)
+- The summary reads better than the evidence ✱ (style)
 - A customer quote no customer said ✱ (retitle)
 - "Are you sure?" is another fluent answer
 
@@ -86,7 +86,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - The team lead's piece: what agents do here, agreed together ✱ (retitle)
 - Imagine it already failed
 
-**Keep what you learned**
+**Write it down or lose it**
 - The agent stops where you stop writing
 - A list of don'ts does not teach good work
 - Change the rules on recurrence, not one miss
@@ -95,18 +95,18 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 
 **Slice by what you learn**
 - Specifying what to build is now the harder half
-- The first slice is the Day 1 assumption, tested ✱ (retitle)
+- The first slice tests what you are least sure of ✱ (style)
 
-**Write down what good means**
+**What good means is yours to write**
 - A check is what good means, written down
 - Criteria keep a floor and can raise a ceiling
 - A pass is a claim about the check
-- Compare the scoring agent with your own calls
+- A scoring agent is one more thing nobody has tested ✱ (style)
 - Your criteria become a target
 
 **Your Day 1 bet meets five users**
 - Test with five users, fix, then test five more
-- The signal you agreed decides your next bet, especially when it says no ✱ (retitle)
+- A slice that comes back no has done its job ✱ (style)
 
 **The three of you, now that building is cheap**
 - What each of us is for when building gets cheap
@@ -120,7 +120,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - An agent's instructions are not the agent
 - Access is easy; absorption is scarce
 - What would have to be true for your team to switch? ✱ (retitle)
-- Monday: a proposal your team decides on ✱
+- On Monday the team decides, not the three of you ✱ (style)
 
 **Where you go from here**
 - Cheap building helps your rivals too

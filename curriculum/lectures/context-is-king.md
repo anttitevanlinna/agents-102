@@ -52,8 +52,8 @@ That's a guardrail. That's your turn.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-10-06 (writing@a614d08a story@a614d08a technical@725101ec behavior@725101ec pedagogy@a614d08a strategy@725101ec slides@a614d08a)
+- judges @a614d08a: writing PASS (2 findings see instances/agents-101--lecture--context-is-king.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Story blend, M1 slides (2026-09-23).** Headers per `module-design/a101-story-proposals/blend.md` § Titles, M1: `Same question, two answers`, `It reads the whole conversation every time`, `Context is whatever you tell it`, `The first piece of the picture`, `A file it reads every time`. The refrain paragraph (*In the full agent picture, this is the first piece: context*) is its own slide and sits after the role example, which is the widest statement of context in the lecture. No body prose is rewritten for the re-chunk. Claude Basics (`personal-site-with-guardrails`) includes the cover and four slides by id, all but `first-piece-of-the-picture`: that training never shows the agent picture. An id rename breaks its include (`check-include-anchors`).
 

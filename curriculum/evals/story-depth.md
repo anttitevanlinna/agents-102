@@ -4,6 +4,29 @@ Rubric: `story-depth-rubric.md`. Goal spec: `trainings/agents-101/story-depth.md
 section per run, newest first; per-judge reports under `story-depth/`.
 
 
+
+## APT101 theory handbook vs AE101: run `apt101-handbook-r2` (after the story pass), 2026-10-06
+
+Same protocol as r1 (three Opus judges, paired, 1–100). This is after the round-4 story pass, 31b0fc56: a narrator built from the maintainer's year-one essays (verbatim and attested), the overnight-digest thread, the Red Queen as the frame break, and Martin defending "deciding didn't". Reports: `story-depth/apt101-handbook-r2.judge-{1,2,3}.md`.
+
+| | AE101 | APT101 r2 | APT101 r1 | moved |
+|---|---|---|---|---|
+| Frame | 95 | 80 | 66 | +14 |
+| Narrative | 93 | 58 | 52 | +6 |
+| Point of view | 95 | 60 | 36 | +24 |
+| Stance | 92 | 80 | 74 | +6 |
+
+Per judge, APT101: 84/62/60/80 · 80/58/60/80 · 72/58/60/78.
+
+**What moved and what didn't.** Point of view and frame took the gains. All three judges still read the essays as **cited, not told**: "one more cited source", not a narrator. Narrative barely moved. The digest thread reads as a forecast ("say the digest says…"), not as something that happened.
+
+**The three judges converged on:**
+1. **Narrated, not cited.** The essay passages should carry the training's voice in first person, without the block-quote byline framing.
+2. **The turn as a scene that happened.** One dated, concrete wrong digest line from a real run is met on the Day 2 opening slide, and the same line fails the Day 3 criteria.
+3. **Carried-in Day 2 slides read through the frame or go.** Mata v. Avianca, the Confluence retriever, start-with-don't, and residual risk would each need re-registering for this training.
+
+Judge 3 also noted that the AE101 handbook includes `story-of-module-6`, although a comment above `THEORY_HANDBOOK_MANIFEST` says it is excluded. AE101's narrative and point-of-view scores rest on it.
+
 ## APT101 theory handbook vs AE101 — 2026-10-06 — paired, run `apt101-handbook-r1`
 
 Three Opus judges, each reading both theory handbooks (`THEORY_HANDBOOK_MANIFEST` order, via `read-curriculum.js`, maintainer and backing blocks out of view) and scoring nothing until both reads were done. 1–100 on the storytelling anchors. Reports: `story-depth/apt101-handbook-r1.judge-{1,2,3}.md`.

@@ -3,7 +3,7 @@
 
 When the agent's check says "good", it means the check saw nothing wrong. It does not mean the work is good. Three different things look identical from outside: the check judges differently from you, the work was shaped to pass the check, or this run happened to go well.
 
-Each has its own answer. Compare the check's verdicts with your own on a handful of real cases. Keep one check the agent never sees. Run the same task more than once before you trust it.
+Each has its own answer. Keep one check the agent never sees. Run the same task more than once before you trust it.
 
 Asking the same agent twice in the same conversation is not a second opinion.
 

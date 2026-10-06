@@ -10,11 +10,13 @@ Two Claude chat windows.
 
 In one, the first prompt is *"What is the capital of Italy?"* Claude answers *Rome.* Then the second prompt: *"What should we have for dinner?"* Claude suggests something Italian: pasta, osso buco, risotto.
 
-In the other window, the first prompt is *"What is the largest lake in Finland?"* Claude answers *Saimaa.* Then the same second prompt as before. Claude suggests something Finnish: salmon, rye bread, meatballs.
+In the other window, the first prompt is *"What is the largest lake in Finland?"* Claude answers *Saimaa.* Then the same second prompt as before.
+
+Before you read on, take a guess. What will it suggest? Your guess reveals what you already know about how this works, and what you're about to learn.
+
+Claude suggests something Finnish: salmon, rye bread, meatballs.
 
 Same words. Different answer. The first exchange became part of context, and the context colored everything after.
-
-Before you watch the second session run, take a guess. What will it suggest? Your guess reveals what you already know about how this works, and what you're about to learn.
 
 ## It reads the whole conversation every time
 <!--slide:reads-whole-conversation-->
@@ -54,5 +56,7 @@ That's a guardrail. That's your turn.
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Story blend, M1 slides (2026-09-23).** Headers per `module-design/a101-story-proposals/blend.md` § Titles, M1: `Same question, two answers`, `It reads the whole conversation every time`, `Context is whatever you tell it`, `The first piece of the picture`, `A file it reads every time`. The refrain paragraph (*In the full agent picture, this is the first piece: context*) is its own slide and sits after the role example, which is the widest statement of context in the lecture. No body prose is rewritten for the re-chunk. Claude Basics (`personal-site-with-guardrails`) includes the cover and four slides by id, all but `first-piece-of-the-picture`: that training never shows the agent picture. An id rename breaks its include (`check-include-anchors`).
+
+**Guess before reveal** `same-question-two-answers` (Antti, 2026-10-06): the guess cue sits above the Finnish answer and asks the reader to guess *before you read on*, so the beat survives a text read with no live demo (`check_slides.md §4`; Claude Basics borrows it as self-study). Keep the reveal below the cue.
 
 **Time:** 10 minutes.

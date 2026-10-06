@@ -333,6 +333,49 @@
         return ids.split(',').map(function (id) { return sliceSlide(md, id); }).join('\n');
     }
 
+    // Slide files: `curriculum/slides/<id>.md` holds one slide — its `##`, the
+    // `<!--slide:<id>-->` marker under it, the body, and its own maintainer /
+    // backing tail. `[Title](slides/<id>.md)` alone on its line is TRANSPARENT:
+    // it is replaced by the slide's body (tail stripped, trailing whitespace
+    // trimmed) before anything else reads the file, so a lecture whose slides
+    // were cut out reads byte-for-byte as it did (extract-slide.js proves it).
+    // Its own pattern, not INCLUDE_LINK_RE: lecture/exercise includes render as
+    // phase sections; a slide include renders as nothing but the slide.
+    var SLIDE_FILE_RE = /^\[([^\]]+)\]\(slides\/([a-z0-9-]+)\.md\)[ \t]*$/gm;
+
+    function slideFileBody(text) {
+        return stripMaintainerTail(text).replace(/\s+$/, '');
+    }
+
+    // getSlide(id) → the slide file's text, or null. Inlining is one level: a
+    // slide file holds one slide and includes nothing.
+    function inlineSlideFiles(md, getSlide) {
+        return md.replace(new RegExp(SLIDE_FILE_RE.source, 'gm'), function (full, title, id) {
+            var t = getSlide(id);
+            if (t === null || t === undefined) throw new Error('slides/' + id + '.md: no such slide file');
+            return slideFileBody(t);
+        });
+    }
+
+    // A slide file's shape, or the reason it is not one: first line `## …`
+    // (`# …` is a cover and stays in its lecture), the marker for <id> directly
+    // under it (other comment lines may sit between), no second heading.
+    function slideFileProblem(id, text) {
+        var lines = slideFileBody(text).split('\n');
+        if (!/^## /.test(lines[0] || '')) return 'first line must be a ## heading';
+        var i = 1;
+        while (i < lines.length && /^<!--.*-->[ \t]*$/.test(lines[i]) && !SLIDE_MARKER_RE.test(lines[i])) i++;
+        var m = SLIDE_MARKER_RE.exec(lines[i] || '');
+        if (!m) return 'no <!--slide:' + id + '--> marker directly under the heading';
+        if (m[1] !== id) return 'marker says ' + m[1] + ', filename says ' + id;
+        var inFence = false;
+        for (var j = 1; j < lines.length; j++) {
+            if (/^\s*(```|~~~)/.test(lines[j])) inFence = !inFence;
+            if (!inFence && /^#{1,2} /.test(lines[j])) return 'second heading at line ' + (j + 1) + ' (one slide per file)';
+        }
+        return null;
+    }
+
     // Prompt-include marker: `{{prompt:<key>}}` on its own line, expanded by
     // expandPrompts() at the start of the markdown pipeline (before marked).
     // Source of truth lives in curriculum/prompts/<key>.md; the SPA reads the
@@ -1456,6 +1499,10 @@
         slideRange: slideRange,
         sliceSlide: sliceSlide,
         sliceSlides: sliceSlides,
+        SLIDE_FILE_RE: SLIDE_FILE_RE,
+        slideFileBody: slideFileBody,
+        inlineSlideFiles: inlineSlideFiles,
+        slideFileProblem: slideFileProblem,
         CROSS_DOC_SHARED_RE: CROSS_DOC_SHARED_RE,
         CROSS_DOC_TRAINING_RE: CROSS_DOC_TRAINING_RE,
         CROSS_DOC_TRAINING_KS_RE: CROSS_DOC_TRAINING_KS_RE,

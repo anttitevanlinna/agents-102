@@ -6,7 +6,6 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 
 **You knew the craft; building rationed it**
 - The post-it was the craft on a budget ✱
-- We built a tool that worked. It was used just a bit. ✱ (narrator)
 - An opportunity tree on Friday, a feature roadmap on Monday ✱
 - A feature factory ships without asking if it worked
 - An outcome is what your customers do differently
@@ -14,29 +13,30 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 
 **Now building is cheap**
 - Building got cheap, deciding didn't
+- It got working and it was used just a bit ✱ (narrator; essay's own words)
 - A hypothesis can meet a working slice the same day ✱
 - Discovery belongs to the team that builds
+
+**Start from your customer's sentence**
+- Work backwards from your customer
+- The product box keeps the agents on course
 
 **The agent knows only what you tell it**
 - Same question, two answers
 - You steer with what you bring, what you set and what you ask ✱ (retitle)
 - Ask for the plan before the agent writes
-
-**Your material is the moat**
-- Generic AI is everyone's; your material is yours ✱
-- Outcome, insights, sources: three layers in one folder ✱ (retitle)
-- A file the team writes once steers every answer
-- New interviews sharpen the old insight pages
-
-**Start from your customer's sentence**
-- Work backwards from your customer
-- The product box keeps the agents on course
 - On your own product, you are the check
 
 **Your first bet**
 - A bet names the signal that would prove it wrong ✱ (retitle)
 - Agents shrink the feasibility work; three risks remain
 - Test the important, unproven assumption first
+
+**Your material is the moat**
+- Generic AI is everyone's; your material is yours ✱
+- Outcome, insights, sources: three layers in one folder ✱ (retitle)
+- A file the team writes once steers every answer
+- New interviews sharpen the old insight pages
 
 **Send it off**
 - The best mitigation is the door you don't open
@@ -55,9 +55,6 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - It found what you asked it to look for ✱
 - A faster feature factory is still a feature factory ✱
 - I used to think of being wrong as failure ✱ (narrator)
-- It quoted the source, then added what wasn't there ✱ (retitle)
-- A customer quote no customer said ✱ (retitle)
-- "Are you sure?" is another fluent answer
 - Find which part went wrong before fixing anything
 
 **Go back to your customers**
@@ -76,6 +73,11 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - "The agent got this wrong" costs nobody face ✱
 - The questions legal and your employee representative will ask
 - Safe enough, under these conditions, for now
+
+**Fluent is not true**
+- It quoted the source, then added what wasn't there ✱ (retitle)
+- A customer quote no customer said ✱ (retitle)
+- "Are you sure?" is another fluent answer
 
 **Each of you makes something**
 - Your taste is the ceiling
@@ -106,8 +108,9 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - Test with five users, fix, then test five more
 - The signal you agreed decides your next bet, especially when it says no ✱ (retitle)
 
-**What each of you is for**
-- The team lead's job is outcomes, not player-coaching ✱
+**The three of you, now that building is cheap**
+- What each of us is for when building gets cheap
+- Future leadership is about strategy, outcomes and customers ✱ (adopted positioning line)
 - Clear outcomes, free hands, for agents too ✱ (retitle)
 - Would you let an agent post your weekly update?
 - The more you trust it, the less you notice

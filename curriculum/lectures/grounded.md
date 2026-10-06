@@ -1,25 +1,8 @@
 # Lecture: Grounded, and four candidates to measure
 
-## There is truth out there
-<!--slide:there-is-truth-out-there-->
+[There is truth out there](slides/there-is-truth-out-there.md)
 
-There is truth out there. Your sources carry shards of it. Your agent, left to itself, has no model of truth, only a model of what usually comes next in language that looks like yours.
-
-When you ask it for something your sources support, it produces grounded output. When you ask it for something your sources don't support, it still produces something. The difference between those two states is invisible in the tone of the output. That's the whole problem.
-
-Every output your agent produces is either connected to truth (to specific files, specific numbers, specific quotes in specific sources) or it isn't. Connected to truth is grounded. Approximating truth without being tied to it is ungrounded.
-
-Grounded isn't "accurate." A grounded claim can still be wrong, if the source it's tied to is wrong. Grounded means *traceable to a real piece of evidence*. Accuracy is a harder question, and an agent alone can't answer it. Traceability is a mechanical discipline, and an agent CAN be forced into it. Start with grounded.
-
-## Mostly right, ten times over, is mostly wrong
-
-If an agent were 85% correct on a single step (an illustrative number, picked because it sounds forgivable), that would not sound bad. Eighty-five out of a hundred. You'd forgive that in an intern.
-
-Now run ten steps. Retrieval, synthesis, formatting, writing, checking, rewriting, summarising, publishing. Ten is not a lot. Ten unverified steps in a row at 85% each would land near 20% end-to-end: one task in five correct, four in five with a defect somewhere, usually somewhere you won't see. The arithmetic is an illustration, not a measurement; the compounding is what holds.
-
-A short customer-service loop shows the difference: look up the order, check the policy, draft the reply. Nothing stacks unverified for long. A full workflow with no check anywhere in it compounds every miss. That is the difference between a demo that delights and a production system that leaks.
-
-The number doesn't tell you *what* will go wrong. It tells you that something will. Your job is to design for that, not against it.
+[Mostly right, ten times over, is mostly wrong](slides/mostly-right-ten-times.md)
 
 ## A test-and-fix loop collapses the error rate
 
@@ -33,14 +16,7 @@ The same compounding that destroys single-pass reliability *builds* loop-based r
 
 Now you'll run the test side: a benchmark to find the detector that works on *your* output. The compounding-error math is the problem; the compounding-check math is the answer.
 
-## "Are you sure?" is another fluent answer
-<!--slide:are-you-sure-->
-
-When something comes back and you can't tell whether it is grounded, the cheap move is to ask the agent. Are you sure? Check that again. What comes back is another answer from the same place the first one came from, in the same confident voice.
-
-Large language models generate the next likely word. Not the next true word; the next likely one. They're trained on text where people spoke confidently, cited specifically, wrote fluently, and the models learned to produce language that looks like all of that, whether the underlying material supports it or not. Fluency is not evidence. Confidence is not correctness. The model has no way to tell you which parts of its output are grounded and which are plausible-sounding fill.
-
-This isn't a bug that gets patched in the next release. It's the shape of the technology. Later models will fabricate less; they won't stop.
+["Are you sure?" is another fluent answer](slides/are-you-sure.md)
 
 ## Don't pick a method. Run the candidates.
 

@@ -26,13 +26,7 @@ Every agent in the forum published what it read, what it could not find, and wha
 
 The plan names which wall your company hits first, and there are three: data access, the runtime platform, and discoverability. Seeing one of them named is the sign the kernel worked on something real. A plan with no wall in it was written about a laptop.
 
-## The parts hold; the model rotates
-
-The list of parts is stable. Context, tools, boundary, checks, loop, interface. That list would have been the same list a year ago and it will probably be the same list a year from now.
-
-What the model can do with each part is not stable. It moves without asking you, on somebody else's release schedule.
-
-So the assembly is the durable half, and the assembly is what you spent your time on. Not a tool, not a vendor's console, not a prompt that worked once.
+[The parts hold; the model rotates](slides/parts-hold-model-rotates.md)
 
 ## Which half of this is obsolete next year?
 
@@ -42,14 +36,7 @@ The interesting question is which half. The judge you wrote, or the thing it jud
 
 Hold the question rather than the answer. A plan that survives a model release is one that was written knowing a model release was coming.
 
-## Will your organisation learn faster than the model changes underneath it?
-<!--slide:learn-faster-than-the-model-->
-
-That is the question to carry out of here, and nothing today answers it.
-
-The model gets better on its own, for free, whether or not you do anything at all. What your company knows about its own work gets better only when somebody writes it down and somebody else picks it up. Those two curves are running at once, and only one of them responds to anything you do.
-
-If the second curve is flat, every model release makes the gap wider, not smaller.
+[Will your organisation learn faster than the model changes underneath it?](slides/learn-faster-than-the-model.md)
 
 ## What would change our mind?
 
@@ -70,9 +57,7 @@ That is not a graduation. It is the first turn.
 <!-- maintainer -->
 **Laws moved in from Key Concepts (2026-09-24, Antti-directed).** `## Agents reading agents must cite` and `## Three walls past the laptop` carry what `agents-building-agents.md` § Key Concepts used to state.
 
-
 **2026-09-23, iteration 2:** the closing slide echoes the M3 turn once (the kernel came out of the same move as the first briefing, unchecked) so the last word admits the room's own synthesis loop cannot verify itself; two of three iteration-1 storytelling judges asked for it.
-
 
 **Meta:**
 - **Time:** 6 minutes.

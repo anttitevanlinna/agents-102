@@ -30,38 +30,11 @@ The work is the loop. You don't get certainty, you get four steps, plain and rep
 
 **Mitigate.** Pick one risk. Apply the smallest change that reduces it. Agent mitigations are shaped differently than firewalls. Scope (give the agent less). Split (break it into two agents with different trust levels). Filter (post-process the output before it leaves). Gate (a human approves before a sensitive action). Review (a second agent judges the first's output). None of these are perimeter. All of them are loop design.
 
-## Reassess the residual, then decide
-<!--slide:reassess-the-residual-->
+[Reassess the residual, then decide](slides/reassess-the-residual.md)
 
-**Reassess residual.** After the mitigation, the risk isn't gone. Something remains. Name it. Write it down. *The residual risk here is X. If Y happens, we haven't prevented it, we've made it less likely.* Residual risk as an artifact, not a shame.
+[Now the move is to give it less](slides/give-it-less.md)
 
-**Decide.** Accept the residual on record, or close the door. Those are the two options. *"Hope it doesn't happen"* is not one.
-
-**"I can't tell."** Most rows land there. That is not a failure; it is the plain state of a system that does not run the same way twice. Closing one takes evidence, not a better guess.
-
-Run the loop. You never finish. You iterate. The discipline isn't arriving at certainty. It's running the loop again.
-
-## Now the move is to give it less
-<!--slide:give-it-less-->
-
-Everything you have built so far gave the agent more. More context. A memory that survives the session. More stances at the table. Now the move is to give it less.
-
-Both moves are right, and the difference is what happens when the agent is wrong. More context makes a good answer likelier. Less access makes a bad answer smaller.
-
-Every door you close is a source you won't read. The tool you take away was a capability. The split you make leaves two agents each knowing half of what one agent knew. Scope it down far enough and the system is safe and useless. Nobody hands you the number. You pick it, you write down what is left, and you sign for it.
-
-## The best mitigation is the door you don't open
-<!--slide:door-you-dont-open-->
-
-Here's the oldest move in the security book, the one that sounds too much like common sense to charge for. The cheapest, most reliable way to reduce risk on an agent is to not open the door in the first place.
-
-Should the agent have write access to that system? If not, scope down before you scope up. Should the agent read from that mailbox? If not, don't connect it. Should the agent be the one that drafts customer-facing language? If that's where the biggest risk lives, maybe a human drafts and the agent reviews, not the other way around.
-
-The policy lens exists partly to tell you which doors not to open. Your company has already decided. The job is to notice.
-
-Avoidance beats reduction. Scope beats patch. Don't-open beats mitigate. This isn't timid design. It's plain design. Every door you don't open is a residual risk you don't have to name, mitigate, monitor, re-test, or apologise for.
-
-Expect it to cost you a feature somebody in your company wanted. It costs whoever sells you agents too, this training included: an agent that reaches less is a smaller thing to sell, and it is still the right call.
+[The best mitigation is the door you don't open](slides/door-you-dont-open.md)
 
 ## The discipline is what carries
 
@@ -80,9 +53,7 @@ That's the work.
 
 **Law moved in from Key Concepts (2026-09-24, Antti-directed).** The *"I can't tell"* paragraph on `## Reassess the residual, then decide` carries what `security.md` § Key Concepts used to state.
 
-
 **2026-09-23, iteration 2:** one sentence under *The best mitigation is the door you don't open* names what the less-access stance costs the seller, this training included; the stance rubric's against-interest rung at M4, asked for by one iteration-1 judge. Register check: a claim about the buyer's decision, `check_writing §13`.
-
 
 **Lecture meta:** *8 min in-room lecture. Placement: after Connections, before the two exercises. Primes the loop the exercises run. Mood contract: deepened unease — names the unease as the permanent condition, does not resolve it; Module 5 is the rescue.*
 

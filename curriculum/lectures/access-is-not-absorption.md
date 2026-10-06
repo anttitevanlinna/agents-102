@@ -14,17 +14,9 @@ Four shapes are on the list. Share the context. Share a skill. Share the output 
 
 The agent file is a page of instructions. It is not where the work lives. The work lives in the memory you curated, in the corrections you made every time a summary rounded a corner, in the judgement you brought to output that looked fine and was not. Hand someone the agent file and you have handed them the shell of a thing whose contents are still on your disk and in your head. They run it, get a generic answer, and quietly stop.
 
-## Three parts copy, one does not
+[Three parts copy, one does not](slides/three-parts-copy.md)
 
-An agent is context, a boundary, a set of checks and somebody who answers for what it does. The first three copy in an afternoon. The fourth does not copy at all, which is why the product being sold as a shared agent is always three of the four parts, with the fourth still sitting with whoever built it.
-
-Accountability is the part with a name on it, and a name does not travel inside a folder.
-
-## Access is easy; absorption is scarce
-
-Many companies have rolled out access far ahead of trust. People can reach the agent. That does not mean they know when to use it, trust it with real work, or have a way to encounter it in the flow of the day.
-
-Access is a switch somebody flips, and it completes in a minute. Absorption happens in other people's weeks, at their pace, for their reasons. The two get reported as one number and they are not one thing.
+[Access is easy; absorption is scarce](slides/access-is-easy.md)
 
 ## People absorb what they already half know
 
@@ -38,12 +30,7 @@ In the full agent picture, this is the interface piece. It is the first one that
 
 Context you chose. Boundaries you set. Checks you wrote. Each of those was a decision you could make and remake on your own. The interface is the first piece whose shape depends on somebody whose calendar you do not control.
 
-## What would have to be true for them to switch?
-<!--slide:what-would-have-to-be-true-->
-
-Every job your teammate has already has a current solution: a spreadsheet, a colleague, a gut call that has worked well enough for years. Your candidate is not competing with nothing. It is competing with that.
-
-So ask the question the other way round. Not *how do I get them to adopt this?* but *what would have to be true for them to switch?* The answers come back small and specific. It has to land where they already look. It has to be right the first time they try it. Somebody they trust has to have used it first and said so.
+[What would have to be true for them to switch?](slides/what-would-have-to-be-true.md)
 
 ## The one piece you don't decide
 
@@ -61,7 +48,6 @@ So the move stays small. One name. One person whose week this would change, who 
 
 <!-- maintainer -->
 **Laws moved in from Key Concepts (2026-09-24, Antti-directed).** `## The job comes first, the candidate second` carries the outcome-first, design-contract and third-outcome bullets `personal-to-team.md` § Key Concepts used to state; the replacement test already lived on `## What would have to be true for them to switch?`.
-
 
 **Meta:**
 - **Time:** 8 minutes.

@@ -202,6 +202,25 @@ const THEORY_HANDBOOK_MANIFEST = {
   // them; the three live demos (first-scheduled-agent, agent-that-takes-action,
   // agent-loop-raw) are room beats, not theory, and stay out. module-3-prework is
   // a setup exercise with nothing to summarise.
+  'agentic-product-teams-101': [
+    ['M1', [
+      'lectures/apt101-work-backwards',
+      'lectures/apt101-write-the-bet',
+    ]],
+    ['M2', [
+      'lectures/apt101-what-came-in-overnight',
+      'lectures/apt101-opportunities-before-solutions',
+      'lectures/apt101-what-the-agents-may-keep',
+      'lectures/apt101-fluent-is-not-true',
+      'lectures/apt101-your-taste-is-the-ceiling',
+      'lectures/apt101-how-it-could-fail',
+    ]],
+    ['M3', [
+      'lectures/apt101-a-check-is-a-claim',
+      'lectures/apt101-slice-by-learning',
+      'lectures/apt101-what-each-of-us-is-for',
+    ]],
+  ],
   'agents-101': [
     ['M1', [
       'lectures/context-is-king',

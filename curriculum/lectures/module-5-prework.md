@@ -41,6 +41,7 @@ Read:
 - The Register's technical summary, including the GPT-4o disclosure and the "new fake refs in the revision" detail: [The Register, Deloitte to refund part of A$440k Australian report after AI snafu](https://www.theregister.com/2025/10/06/deloitte_ai_report_australia/)
 
 ## Why the LLM fabricates
+<!--slide:why-the-llm-fabricates-->
 
 - **It completes the shape.** An LLM continues text in the pattern that looks right. If the pattern is "legal brief with supporting cases" or "consulting report with academic references," the next likely thing is a case name, a citation, a careful paragraph. The form arrives whether or not the world contains the fact. Fluency is cheap; existence is separate.
 - **It fills gaps instead of stopping.** When the sources don't hold the missing piece, the model supplies what would make the answer feel complete. The invented part sits next to true parts and borrows their credibility, which is why partial grounding is treacherous. Specific names, docket numbers, dates: more convincing, not more true.

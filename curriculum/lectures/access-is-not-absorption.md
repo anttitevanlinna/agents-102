@@ -39,6 +39,7 @@ In the full agent picture, this is the interface piece. It is the first one that
 Context you chose. Boundaries you set. Checks you wrote. Each of those was a decision you could make and remake on your own. The interface is the first piece whose shape depends on somebody whose calendar you do not control.
 
 ## What would have to be true for them to switch?
+<!--slide:what-would-have-to-be-true-->
 
 Every job your teammate has already has a current solution: a spreadsheet, a colleague, a gut call that has worked well enough for years. Your candidate is not competing with nothing. It is competing with that.
 

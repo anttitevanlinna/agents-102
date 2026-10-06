@@ -191,6 +191,18 @@
                 { slug: 'organisers-run-the-workshop', title: 'Organisers: run the workshop' }
             ]
         },
+        'agentic-product-teams-101': {
+            label: 'Agentic Product Teams 101',
+            status: 'draft',          // design-stage; gates report, not block
+            simulation: true,         // generated test run, never taught: pages and prompts land uncarded; the maintainer reads them when this flag comes off
+            lede: 'Three days for a product owner, a designer and a team lead on their own product: learn to do AI as a team, and stay in control of it.',
+            runtime: 'cowork',
+            modules: [
+                { slug: 'our-product-our-system',       title: 'Our product, our system' },
+                { slug: 'whats-actually-true',          title: "What's actually true?" },
+                { slug: 'learn-faster-than-the-market', title: 'Learn faster than the market' }
+            ]
+        },
         'engineering-management-mock': {
             label: 'Leading agentic engineering (mock)',
             status: 'draft',          // tmux-runner proving mock; gates report, not block

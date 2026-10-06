@@ -1,7 +1,7 @@
 ## The branch only one of you found
 <!--slide:the-branch-one-of-you-found-->
 
-Put four people's trees together and the obvious happens: the branches everyone saw grow thick, and the branch one person saw looks like noise. Hand the merge to an agent and it gets worse. An agent asked for a summary gives you the middle, smoothly.
+Merge four people's opportunity trees and the obvious happens: the branches everyone saw grow thick, and the branch one person saw looks like noise. Hand the merge to an agent and it gets worse. An agent asked for a summary gives you the middle, smoothly.
 
 The branch one of you found is often the one worth the most. It is where someone heard a customer the others did not, or read a ticket nobody else opened.
 

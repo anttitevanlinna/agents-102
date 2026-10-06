@@ -5,7 +5,7 @@ Jeff Patton lays the customer's journey left to right as the backbone of a story
 
 Each slice gets a name for the outcome it should produce and a measure for whether it did. Inside the first release, Patton orders the slices so the team can learn fast and avoid risk.
 
-When building was expensive, the slices also had to be cheap. With agents building, cost stops deciding the order. Learning does: the first slice is the one that tests the bet you are least sure of.
+With agents building, cheap matters less and learning matters more: the first slice tests the assumption you are least sure of.
 
 <!-- maintainer -->
 
@@ -20,7 +20,7 @@ When building was expensive, the slices also had to be cheap. With agents buildi
 - `little-at-a-time` · borrowed · "all major features a little at a time, never a car without brakes" ← patton-new-backlog
 - `slice-outcome-and-measure` · borrowed · "Each slice gets a name for the outcome it should produce and a measure" ← patton-story-map-concepts
 - `learn-fast-avoid-risk` · borrowed · "so the team can learn fast and avoid risk" ← patton-story-map-concepts
-- `learning-decides-order` · vision · "With agents building, cost stops deciding the order. Learning does" ← none-owed — our extension.
+- `learning-decides-order` · vision · "With agents building, cheap matters less and learning matters more" ← none-owed — our extension.
 
 **Sources**
 - patton-new-backlog `[checked:2026-10-06 result:OK due:none]` https://jpattonassociates.com/the-new-backlog/ — [practitioner direct] backbone; all major features a little at a time; car without brakes. Live page 403s to curl; verified in Wayback.

@@ -5,11 +5,11 @@ Every move in outcome-driven product work sits on one loop:
 
 - **Outcome:** the change in the customer's life you are after.
 - **Opportunities:** the needs and pains standing between them and it.
-- **Bet:** the one you choose to try.
+- **Bet:** the solution you choose to try.
 - **Slice:** the smallest thing that tests the bet.
-- **Signal:** what comes back, yes or no.
+- **Signal:** what comes back, and what it tells you.
 
-For years the slow step was the slice. A team could afford a few real bets a year, so most of the loop lived on post-its. Agents make the slice cheap. The loop can now turn in days, and the hard part moves to the steps only people can do: choosing the outcome, hearing the opportunity, placing the bet, reading the signal even when it says no.
+For years the slow step was the slice. A team could afford a few real bets a year, so most of the loop lived on post-its. Agents make the slice cheap. The loop can now turn in days, and the hard part moves to the decisions: choosing the outcome, hearing the opportunity, placing the bet, reading the signal even when it says no.
 
 <!-- maintainer -->
 

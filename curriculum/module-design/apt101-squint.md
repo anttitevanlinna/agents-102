@@ -1,10 +1,10 @@
 # APT101 squint: slide titles only, in story order
 
-Method (maintainer, 2026-10-06): squint at the slide titles alone and put them in sequence. Bodies come only once the titles flow. The storyline is the appendix to `agents-102-core/strategy/content-strategy-agentic-product-management.md`, *you were right all along, and now it is dangerous*. ✱ = new title, no slide yet. "We…" narrator titles are the maintainer's essay wording (`practitioner-essays-year-one.md`), lightly cut, never invented. After three rounds (squint r1 72/64/35/64 · r2 74/70/55/68 · r3 70/70/57/72), plus the r3 consensus edits, which are not yet judged.
+Method (maintainer, 2026-10-06): squint at the slide titles alone and put them in sequence. Bodies come only once the titles flow. The storyline is the appendix to `agents-102-core/strategy/content-strategy-agentic-product-management.md`, *you were right all along, and now it is dangerous*. ✱ = new title, no slide yet. "We…" narrator titles are the maintainer's essay wording (`practitioner-essays-year-one.md`), lightly cut, never invented. After three rounds (squint r1 72/64/35/64 · r2 74/70/55/68 · r3 70/70/57/72), plus the r3 consensus edits. Round 4 lens (maintainer 2026-10-06): "the story is always the students' journey. it is about future too." The trio is the hero and the essay voice is the guide. The ending stays open and points forward.
 
 ## Day 1: You were right all along
 
-**The craft was rationed**
+**You knew the craft; building rationed it**
 - The post-it was the craft on a budget ✱
 - An opportunity tree on Friday, a feature roadmap on Monday ✱
 - A feature factory ships without asking if it worked
@@ -28,7 +28,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - Ask for the plan before the agent writes
 - On your own product, you are the check
 
-**Bets that can lose**
+**Your first bet**
 - A bet names the signal that would prove it wrong ✱ (retitle)
 - Agents shrink the feasibility work; three risks remain
 - Test the important, unproven assumption first
@@ -52,7 +52,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - The digest agrees with your favourite hypothesis ✱
 
 **Why it agreed**
-- It found what we asked it to look for ✱
+- It found what you asked it to look for ✱
 - I used to think of being wrong as failure ✱ (narrator)
 - The agent read the source and still said more
 - Find which part went wrong before fixing anything
@@ -96,7 +96,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - Change the rules on recurrence, not one miss
 - What must happen every time needs its own check
 
-## Day 3: The craft steers
+## Day 3: Where your team goes next
 
 **Write down what good means**
 - A check is what good means, written down
@@ -112,25 +112,27 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 
 **Let customers answer**
 - Test with five users, fix, then test five more
-- The Day 1 bet meets five users ✱
-- The agreed signal decides, especially when it says no
+- Your Day 1 bet meets five users ✱
+- The signal you agreed decides, especially when it says no
+- What it says shapes your next bet ✱
 
 **What each of us is for**
-- What changes for each of us when building gets cheap ✱ (retitle)
+- What each of you is for when building gets cheap ✱ (retitle)
 - The team lead's job is outcomes, not player-coaching ✱
 - Clear outcomes, free hands, for agents too ✱ (retitle)
 - Would you let an agent post your weekly update?
 
-**From us to the team**
+**From the three of you to your team**
 - We built good things. We failed to share them well. ✱ (narrator)
 - An agent's instructions are not the agent
 - Access is easy; absorption is scarce
 - What would have to be true for them to switch?
-- A proposal for the team: who owns it, where it runs, what data ✱
+- Monday: a proposal your team decides on ✱
 
-**Where this goes**
+**Where you go from here**
 - Cheap building helps your rivals too
 - The six parts hold; the model keeps changing
+- Which half of this is obsolete next year?
 - I still make mistakes. I make them faster now. ✱ (narrator)
 - Will your organisation learn faster than the model changes underneath it?
 

@@ -34,3 +34,10 @@ function readCurriculumMd(absPath) {
 }
 
 module.exports = { readCurriculumMd, inlineSlides, slidesDirFor, slideReader };
+
+// CLI for shell builds (tarball scripts): print a file with its slide files inlined.
+//   node scripts/read-curriculum.js <path.md>
+if (require.main === module) {
+  if (!process.argv[2]) { console.error('usage: read-curriculum.js <path.md>'); process.exit(2); }
+  process.stdout.write(readCurriculumMd(process.argv[2]));
+}

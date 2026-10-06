@@ -68,8 +68,10 @@ TRAINING_KEY="agentic-engineering-101"
 # What a student of this training reads: the maintainer block cut, content
 # flags resolved. Links are collected from this too, never from the raw file, so
 # a maintainer-only mention cannot pull a page into the tarball.
+# Slide files (`[T](slides/<id>.md)`) are inlined first: a lecture whose
+# slides were cut ships to the student exactly as it read before.
 student_text() {
-  awk '/<!-- maintainer -->/{exit} {print}' "$1" \
+  node scripts/read-curriculum.js "$1" | awk '/<!-- maintainer -->/{exit} {print}' \
     | node scripts/resolve-content-flags.js "$TRAINING_KEY"
 }
 

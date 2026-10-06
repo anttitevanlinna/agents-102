@@ -20,14 +20,19 @@ const { spawnSync } = require('node:child_process');
 const REPO = path.resolve(__dirname, '..');
 const CORE = process.env.AGENTS_CORE_DIR || path.join(REPO, '..', 'agents-102-core');
 const LECTURE = 'lectures/context-is-king.md';
-const TRAININGS = ['agents-101', 'claude-basics'];
+// the-machine-you-just-met (AE101) carries tier markers, a backing block and
+// keyed notes, so tiers, backing and notes are exercised too. Sandbox only:
+// the real AE101 stays old style.
+const LECTURE2 = 'lectures/the-machine-you-just-met.md';
+const TRAININGS = ['agents-101', 'claude-basics', 'agentic-engineering-101'];
 
 const READERS = [
   ['render-md', ['scripts/render-md.js', `curriculum/${LECTURE}`]],
   ['render-md borrower', ['scripts/render-md.js', 'curriculum/trainings/claude-basics/personal-site-with-guardrails.md']],
-  ['slide-card', ['scripts/slide-card.js', LECTURE]],
   ['check-include-anchors', ['scripts/check-include-anchors.js', '--report']],
   ['check-cross-doc-anchors', ['scripts/check-cross-doc-anchors.js']],
+  ['validate-backing', ['scripts/validate-backing.js', `curriculum/${LECTURE2}`]],
+  ['render-md 2', ['scripts/render-md.js', `curriculum/${LECTURE2}`]],
   ...TRAININGS.flatMap(t => [
     [`calculate-time ${t}`, ['scripts/calculate-time.js', '--training', t]],
     [`check-slide-size ${t}`, ['scripts/check-slide-size.js', '--report', '--training', t]],
@@ -39,7 +44,7 @@ const READERS = [
 
 function sandbox() {
   const d = fs.mkdtempSync(path.join(os.tmpdir(), 'slide-eq-'));
-  for (const p of ['curriculum', 'scripts', 'site', 'package.json']) {
+  for (const p of ['curriculum', 'scripts', 'site', 'content', 'package.json']) {
     fs.cpSync(path.join(REPO, p), path.join(d, p), { recursive: true, filter: s => !s.includes(`${path.sep}clients${path.sep}`) });
   }
   fs.cpSync(path.join(REPO, '.claude', 'skills'), path.join(d, '.claude', 'skills'), { recursive: true, dereference: true });
@@ -53,21 +58,34 @@ function runAll(d) {
   const env = { ...process.env, AGENTS_CORE_DIR: CORE, AGENTS_OUTPUT_DIR: path.join(d, 'out') };
   const out = {};
   // A line number into a file moves when the file is cut; what is at it does not.
+  // Intended deltas, and only these: a moved keyed note leaves the lecture's
+  // maintainer tail (render-md prints the tail), and the include check's report
+  // gains a slide-file count line.
+  const intended = (name, s) => name.startsWith('render-md') && !name.includes('borrower') ? s.split('<!-- maintainer -->')[0]
+    : name === 'check-include-anchors' ? s.replace(/\nslide files: \d+ included\n/, '') : s;
   const scrub = s => s.split(d).join('<SB>').replace(/(\.md):\d+/g, '$1:N').replace(/pid: \d+/g, 'pid: N');
   for (const [name, args] of READERS) {
     const r = spawnSync('node', args, { cwd: d, env, encoding: 'utf8' });
-    out[name] = scrub(`exit ${r.status}\n${r.stdout}\n${r.stderr}`);
+    out[name] = intended(name, scrub(`exit ${r.status}\n${r.stdout}\n${r.stderr}`));
   }
-  for (const t of TRAININGS) {
+  for (const t of [...TRAININGS, 'agentic-engineering-101 --theory']) {
     fs.rmSync(path.join(d, 'out'), { recursive: true, force: true });
-    const r = spawnSync('node', ['scripts/build-workbook.js', 'eqtest', t], { cwd: d, env, encoding: 'utf8' });
+    const r = spawnSync('node', ['scripts/build-workbook.js', 'eqtest', ...t.split(' ')], { cwd: d, env, encoding: 'utf8' });
     out[`build ${t}`] = `exit ${r.status}\n${scrub(r.stderr)}`;
-    if (r.status !== 0) console.error(`build ${t} failed:\n${r.stderr.split('\n').filter(l => !/^\s+at /.test(l)).slice(0, 8).join('\n')}`);
+    if (r.status !== 0) console.error(`build ${t} failed:\n${r.stderr.split('\n').filter(l => !/^\s+at /.test(l)).slice(0, 14).join('\n')}`);
     const root = path.join(d, 'out', 'eqtest');
     const walk = dir => fs.existsSync(dir) ? fs.readdirSync(dir, { withFileTypes: true }).flatMap(e =>
       e.isDirectory() ? walk(path.join(dir, e.name)) : [path.join(dir, e.name)]) : [];
     for (const f of walk(root).filter(f => f.endsWith('.html')).sort()) {
       out[`build ${t} ${path.relative(root, f)}`] = scrub(fs.readFileSync(f, 'utf8'));
+    }
+    // Tarballs ship markdown to students: what is inside must not change either.
+    for (const tgz of walk(root).filter(f => f.endsWith('.tar.gz')).sort()) {
+      const x = path.join(d, 'tar-x'); fs.rmSync(x, { recursive: true, force: true }); fs.mkdirSync(x);
+      spawnSync('tar', ['xzf', tgz, '-C', x]);
+      for (const f of walk(x).sort()) {
+        out[`tar ${path.basename(tgz)} ${path.relative(x, f)}`] = fs.readFileSync(f).toString('base64');
+      }
     }
   }
   return out;
@@ -77,11 +95,14 @@ test('every reader sees the same thing after context-is-king is cut into slide f
   const d = sandbox();
   try {
     const before = runAll(d);
-    const lec = fs.readFileSync(path.join(d, 'curriculum', LECTURE), 'utf8');
-    const ids = lec.split('<!-- maintainer -->')[0].match(/<!--slide:([a-z0-9-]+)-->/g).map(m => m.slice(10, -3)).filter(i => i !== 'cover');
-    assert.ok(ids.length >= 5, `expected context-is-king's five slides, found ${ids}`);
-    const x = spawnSync('node', ['scripts/extract-slide.js', `${LECTURE}#${ids.join(',')}`], { cwd: d, encoding: 'utf8' });
-    assert.equal(x.status, 0, x.stderr);
+    const slideIds = rel => fs.readFileSync(path.join(d, 'curriculum', rel), 'utf8').split('<!-- maintainer -->')[0]
+      .match(/<!--slide:([a-z0-9-]+)-->/g).map(m => m.slice(10, -3)).filter(i => i !== 'cover');
+    const ids = slideIds(LECTURE), ids2 = slideIds(LECTURE2);
+    assert.ok(ids.length >= 5 && ids2.length >= 7, `expected 5 + 7 slides, found ${ids} / ${ids2}`);
+    for (const [rel, list] of [[LECTURE, ids], [LECTURE2, ids2]]) {
+      const x = spawnSync('node', ['scripts/extract-slide.js', `${rel}#${list.join(',')}`], { cwd: d, encoding: 'utf8' });
+      assert.equal(x.status, 0, x.stderr);
+    }
     assert.match(fs.readFileSync(path.join(d, 'curriculum', LECTURE), 'utf8'), /^\[[^\]]+\]\(slides\/same-question-two-answers\.md\)$/m);
     const after = runAll(d);
     const differ = Object.keys(before).filter(k => before[k] !== after[k]);
@@ -92,6 +113,10 @@ test('every reader sees the same thing after context-is-king is cut into slide f
     }
     assert.deepEqual(differ, [], `readers whose output changed: ${differ.join(', ')}`);
     assert.deepEqual(Object.keys(after).sort(), Object.keys(before).sort(), 'the build produced a different set of pages');
+    // slide-card names where each slide now lives, so it is checked by content.
+    const card = spawnSync('node', ['scripts/slide-card.js', LECTURE], { cwd: d, encoding: 'utf8' }).stdout;
+    for (const i of ids) assert.match(card, new RegExp(`^## slides/${i}\\.md#${i} — `, 'm'), `card for ${i}`);
+    assert.match(card, /note: \*\*Guess before reveal\*\*/, 'the keyed note travels with its slide');
     assert.ok(Object.keys(before).some(k => k.startsWith('build agents-101 ') && before[k].includes('Same question, two answers')), 'the agents-101 build must carry the cut lecture');
   } finally {
     fs.rmSync(d, { recursive: true, force: true });

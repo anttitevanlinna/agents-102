@@ -53,7 +53,7 @@ mkdir -p "$ROOT"
 strip_maintainer() {
   local src="$1"
   local dst="$2"
-  awk '/<!-- maintainer -->/{exit} {print}' "$src" > "$dst"
+  node scripts/read-curriculum.js "$src" | awk '/<!-- maintainer -->/{exit} {print}' > "$dst"   # slide files inlined first
 }
 
 # Mirror the scaffold tree into ROOT, stripping maintainer blocks from .md.

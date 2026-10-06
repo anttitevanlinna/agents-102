@@ -28,6 +28,7 @@
 const fs = require('fs');
 const path = require('path');
 const CR = require('../site/layouts/curriculum.js');
+const { inlineSlides } = require('./read-curriculum.js');
 const VB = require('./validate-backing.js');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -208,10 +209,16 @@ function main(argv) {
   const prompts = loadRegistry(), figures = loadFigures();
   const expand = t => CR.expandFigures(CR.expandPrompts(t, prompts), figures);
 
-  const list = id ? [id] : ids(text);
+  // Whole file: its slides as a reader sees them (slide files inlined), each
+  // card built from wherever that slide lives (cardSource).
+  const whole = id ? text : inlineSlides(text, path.join(ROOT, 'curriculum', kindSlug + '.md'));
+  const list = id ? [id] : ids(whole);
   if (!list.length) { console.error(`${kindSlug}.md carries no <!--slide:<id>--> markers`); return 1; }
-  console.log(list.map(i => print(kindSlug, text, i, expand)).join('\n\n'));
-  const s = straddlers(text, { expand });
+  console.log(list.map(i => {
+    const at = id ? { kindSlug, text } : cardSource(kindSlug, i, read);
+    return print(at.kindSlug, at.text, i, expand);
+  }).join('\n\n'));
+  const s = straddlers(whole, { expand });
   if (!id && s.length) console.log(`\nstraddlers (anchor spans two slides, carried by neither): ${s.join(', ')}`);
   return 0;
 }

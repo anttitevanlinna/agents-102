@@ -1,6 +1,7 @@
 # Lecture: Grounded, and four candidates to measure
 
 ## There is truth out there
+<!--slide:there-is-truth-out-there-->
 
 There is truth out there. Your sources carry shards of it. Your agent, left to itself, has no model of truth, only a model of what usually comes next in language that looks like yours.
 
@@ -33,6 +34,7 @@ The same compounding that destroys single-pass reliability *builds* loop-based r
 Now you'll run the test side: a benchmark to find the detector that works on *your* output. The compounding-error math is the problem; the compounding-check math is the answer.
 
 ## "Are you sure?" is another fluent answer
+<!--slide:are-you-sure-->
 
 When something comes back and you can't tell whether it is grounded, the cheap move is to ask the agent. Are you sure? Check that again. What comes back is another answer from the same place the first one came from, in the same confident voice.
 

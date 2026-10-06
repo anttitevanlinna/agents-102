@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 241 — 2026-10-06
+
+Changelog language distinguishes correctness fixes from security fixes — "Fixed `/ultrareview` dropping uncommitted changes without a warning on Windows" is product quality; a security patch for an attack vector would name the vector (fsmonitor, CVE, or attack path). When watching for a security patch to an unpatched vulnerability, require either CVE language, the attack vector name, or a linked advisory in the changelog entry — product-quality language for the same subsystem is not enough to confirm the security fix. Absence of security language in v2.1.290/291 ultrareview entries is itself a finding.
+
+For billing-onset inflection points (OpenAI Agents API Oct 5), Day+1 is structurally too early for deployer-direct accounts: operators need time to build, deploy, and write about their first bill. The expected signal window is Day+1 to Day+7; searching on Day+1 finds pre-billing analysis, not post-billing reactions. Note this in the watch-item rather than burning a search cycle — returning on Day+3 or Day+5 produces higher-yield results.
+
 ### Cycle 240 — 2026-10-05
 
 When a security research firm's site is repeatedly unreachable, verify canonical domain before logging "primary source unreachable." manifoldsecurity.io (DNS failure, cycles 238-240) and manifold.security (the live site, .security TLD) are different hosts — three cycles of "site down" observations were based on checking the wrong domain. The canonical URL had been correctly recorded in all earlier state.md entries (manifold.security/blog); the watch-item DNS checks were the anomaly. Lesson: before logging "primary site unreachable" for a security firm, cross-check the URL against all prior KB entries for the same source — if earlier cycles successfully fetched a different URL, the discrepancy reveals the wrong domain, not a new outage.

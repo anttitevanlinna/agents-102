@@ -1,11 +1,19 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-10-05 (cycle 240)
-OODA cycles: 88
+Last updated: 2026-10-06 (cycle 241)
+OODA cycles: 89
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-10-06)
+
+**CYCLE 241 UPDATE (Oct 6) — GITSPAWN ULTRAREVIEW DAY+36: V2.1.290 (OCT 5) SHIPS TWO ULTRAREVIEW CORRECTNESS FIXES (UNCOMMITTED CHANGES WARNING ON WINDOWS STASH FAILURE + GIT 2.54+ BRANCHES OUTSIDE .GIT UPLOAD GAP) — NEITHER IS THE FSMONITOR ATTACK VECTOR; V2.1.291 (OCT 6) IS REGRESSION FIX FOR V2.1.290; SHATTERED.IO (LAST UPDATED SEP 17) STILL SAYS "TREAT AS UNRESOLVED UNTIL ANTHROPIC CONFIRMS FIX"; MANIFOLD EMBARGO HOLDS — NO NEW BLOG POSTS, NO POC; NO CVE ASSIGNED; CTO POSTURE UNCHANGED: ARCHITECT ULTRAREVIEW MITIGATIONS INDEPENDENTLY; HYDRAFUSION ISSUE #5042 (CONTEXT-WINDOW COLLAPSE POST-400) STILL OPEN — NO GITHUB TEAM RESPONSE, NO ASSIGNEE, REPORTER-ONLY WORKAROUND "PIN LARGE-CONTEXT MODEL FOR LONG SESSIONS"; GITHUB TEAM SILENT 20+ DAYS (LAST RESPONSE SEP 16 ON ALL GOVERNANCE QUESTIONS INCLUDING BYOK + DPA + ROUTING POLICY); MODEL SUB-OPTIMALITY L3 HOLDS (4 REPORTS); OPENAI AGENTS API DAY+1 BILLING: ZERO DEPLOYER-DIRECT PRODUCTION ACCOUNTS — NAMED DEVDAY CUSTOMERS (DWELLY 86% FAILURE REDUCTION, NASH LOGISTICS) ARE VENDOR-ATTRIBUTED LEVEL 0, NOT INDEPENDENT; COST RUNAWAY EMERGING PRE-BILLING — SIMON WILLISON (OCT 3, practitioner-direct) ADVOCATES DEFAULT HARD BUDGET CAPS AHEAD OF OCT 5 BILLING ONSET; FIRST DEPLOYER-DIRECT COST SHOCK OR PRODUCTION DEPLOYMENT EXPECTED OCT 6-10; EU/GDPR STILL BLOCKED; PROMPT OBJECTS NOV 30 (55 DAYS) — NO CHANGE.**
+
+**Watch Cycle 242 (Oct 7+):** PRIORITY-1 — OpenAI Agents API first deployer-direct reactions: Oct 6-10 is the window; watch dev.to, community.openai.com, HN for cost shocks or named production deployments (billing Day+2); PRIORITY-2 — HydraFusion: any GitHub team response to #5042 or model sub-optimality? Any routing patch? PRIORITY-3 — GitSpawn Day+37: any v2.1.292+ with CVE or security language? Manifold PoC release? Prompt Objects Nov 30 (55 days) — low urgency.
+
+([code.claude.com/docs/en/changelog](https://code.claude.com/docs/en/changelog), Oct 5-6 2026 — [vendor documentation — v2.1.290 ultrareview correctness fixes, v2.1.291 regression fix]; [shattered.io/gitspawn-ai-coding-agent-vulnerability-2026/](https://shattered.io/gitspawn-ai-coding-agent-vulnerability-2026/), Sep 17 2026 — [domain trade publication — ultrareview unresolved, no update]; [manifold.security/blog/ai-coding-agents-git-hijack](https://www.manifold.security/blog/ai-coding-agents-git-hijack) — [practitioner direct — CANONICAL URL, embargo holds, no new posts Oct 6]; [github.com/github/copilot-cli/issues/5042](https://github.com/github/copilot-cli/issues/5042), Oct 6 2026 — [vendor community tracker — #5042 still open, no team response]; [github.com/orgs/community/discussions/206492](https://github.com/orgs/community/discussions/206492), Oct 3-5 2026 — [practitioner direct — @Csaba8472 4th L3 model sub-optimality report; GitHub team silent]; [redreamality.com/blog/default-hard-budget-caps-agent-deployed-services](https://redreamality.com/blog/default-hard-budget-caps-agent-deployed-services), Oct 3 2026 — [practitioner direct — Willison: default hard budget caps for agent billing])
 
 ## Key Verdict (as of 2026-10-05)
 

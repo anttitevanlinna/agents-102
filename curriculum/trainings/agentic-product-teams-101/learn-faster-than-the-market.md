@@ -4,9 +4,13 @@
 
 What is each of us for, the product owner, the designer and the team lead, when building gets cheap?
 
-[Lecture: A check is a claim too](lectures/apt101-a-check-is-a-claim.md)
+[Lecture: A check is a claim](lectures/apt101-a-check-is-a-claim.md)
 
-[Lecture: Slice by what you need to learn](lectures/apt101-slice-by-learning.md)
+[Lecture: Slice by what you learn](lectures/apt101-slice-by-learning.md)
+
+[Lecture: Read the signal](lectures/apt101-read-the-signal.md)
+
+[Lecture: From us to the team](lectures/apt101-from-us-to-the-team.md)
 
 [Lecture: What each of us is for](lectures/apt101-what-each-of-us-is-for.md)
 

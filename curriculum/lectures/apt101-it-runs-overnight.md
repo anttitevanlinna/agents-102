@@ -1,10 +1,10 @@
-# Fluent is not true
+# It runs overnight
 
-[There is truth out there](slides/there-is-truth-out-there.md)
+[A system remembers and runs; either alone is a toy](slides/it-remembers-and-it-runs.md)
 
-[A customer need nobody said](slides/a-customer-need-nobody-said.md)
+[One agent for each job that recurs in your week](slides/one-agent-per-recurring-job.md)
 
-["Are you sure?" is another fluent answer](slides/are-you-sure.md)
+[A chat runs on context; an agent needs six parts](slides/parts-of-an-agent.md)
 
 <!-- maintainer -->
 

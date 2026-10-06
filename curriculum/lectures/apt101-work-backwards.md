@@ -2,14 +2,20 @@
 
 [Building got cheap, deciding didn't](slides/the-outcome-loop.md)
 
+[Discovery belongs to the team that builds](slides/the-product-trio.md)
+
+[An outcome is what customers do differently](slides/outcomes-over-outputs.md)
+
+[A feature factory ships without asking if it worked](slides/the-feature-factory.md)
+
 [Work backwards from the customer](slides/work-backwards-from-the-customer.md)
 
-[Same question, two answers](lectures/context-is-king.md#same-question-two-answers,context-is-whatever-you-tell-it)
+[Customers hire a product to make progress](slides/the-job-they-hire-it-for.md)
 
-[The agent stops where you stop writing](slides/the-agent-stops-where-you-stop-writing.md)
+[A line a competitor could claim is still generic](slides/could-a-competitor-claim-it.md)
 
 <!-- maintainer -->
 
-- **Time:** 15 minutes.
+- **Time:** 18 minutes.
 
-**STATUS:** generated for the `simulation: true` training Agentic Product Teams 101 (2026-10-06), not taught. A lecture here is an ordered set of slides: 2 of 5 borrowed from Agents 101 by `#id`, the rest are slide files under `curriculum/slides/` (first cuts, judged in core `evals/apt101-slides/`). Placement and sources: `curriculum/module-design/apt101-slide-reuse-map.md`.
+**STATUS:** generated for the `simulation: true` training Agentic Product Teams 101 (2026-10-06), not taught. A lecture here is an ordered set of slide files under `curriculum/slides/`: Agents 101 slides cut at home, rewrites and gaps written for this training (judged in core `evals/apt101-slides/`). Placement: `curriculum/module-design/apt101-slide-reuse-map-v2.md`.

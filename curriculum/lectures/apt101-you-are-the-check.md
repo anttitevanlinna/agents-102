@@ -1,10 +1,10 @@
-# Fluent is not true
+# You are the check
 
-[There is truth out there](slides/there-is-truth-out-there.md)
+[On your own product, you are the check](slides/you-are-the-check.md)
 
-[A customer need nobody said](slides/a-customer-need-nobody-said.md)
+[Generic AI becomes yours when you shape its context](slides/generic-becomes-yours.md)
 
-["Are you sure?" is another fluent answer](slides/are-you-sure.md)
+[The product box is what the agents re-read](slides/the-box-is-the-reference.md)
 
 <!-- maintainer -->
 

@@ -6,15 +6,23 @@ Agents keep working between sessions and overnight; you come back, read what the
 
 [Lecture: What came in overnight](lectures/apt101-what-came-in-overnight.md)
 
+[Lecture: When the overnight work went wrong](lectures/apt101-when-the-run-went-wrong.md)
+
+[Lecture: Gather the evidence](lectures/apt101-gather-the-evidence.md)
+
 [Lecture: Opportunities before solutions](lectures/apt101-opportunities-before-solutions.md)
 
 [Lecture: What the agents may keep](lectures/apt101-what-the-agents-may-keep.md)
 
 [Lecture: Fluent is not true](lectures/apt101-fluent-is-not-true.md)
 
+[Lecture: The check that found them](lectures/apt101-the-check-that-found-them.md)
+
 [Lecture: Your taste is the ceiling](lectures/apt101-your-taste-is-the-ceiling.md)
 
 [Lecture: How it could fail](lectures/apt101-how-it-could-fail.md)
+
+[Lecture: What we keep](lectures/apt101-what-we-keep.md)
 
 <!-- maintainer -->
 

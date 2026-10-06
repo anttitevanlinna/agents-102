@@ -6,7 +6,17 @@ Learn to do AI as a team, and stay in control of it.
 
 [Lecture: Work backwards from the customer](lectures/apt101-work-backwards.md)
 
-[Lecture: Write the bet, and what the agents need to know](lectures/apt101-write-the-bet.md)
+[Lecture: Context is whatever you tell it](lectures/apt101-context-is-king.md)
+
+[Lecture: You are the check](lectures/apt101-you-are-the-check.md)
+
+[Lecture: Write the bet so it can lose](lectures/apt101-write-the-bet.md)
+
+[Lecture: A memory that compounds](lectures/apt101-a-memory-that-compounds.md)
+
+[Lecture: Before anything goes in](lectures/apt101-before-anything-goes-in.md)
+
+[Lecture: It runs overnight](lectures/apt101-it-runs-overnight.md)
 
 <!-- maintainer -->
 

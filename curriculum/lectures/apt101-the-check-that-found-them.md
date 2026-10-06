@@ -1,10 +1,10 @@
-# Fluent is not true
+# The check that found them
 
-[There is truth out there](slides/there-is-truth-out-there.md)
+[Why the LLM fabricates](slides/why-the-llm-fabricates.md)
 
-[A customer need nobody said](slides/a-customer-need-nobody-said.md)
+[Run more than one check on your own material](slides/run-more-than-one-check.md)
 
-["Are you sure?" is another fluent answer](slides/are-you-sure.md)
+[Agents get checked, people don't get watched](slides/agents-checked-people-not-watched.md)
 
 <!-- maintainer -->
 

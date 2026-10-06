@@ -54,6 +54,7 @@ test('slideFileProblem accepts one ## slide with its marker, rejects the rest', 
   assert.match(CR.slideFileProblem('other', SLIDE), /marker says two-answers, filename says other/);
   assert.match(CR.slideFileProblem('two-answers', SLIDE + '\n## Second\n\ny\n'), /second heading/);
   assert.equal(CR.slideFileProblem('two-answers', SLIDE + '\n```\n## not a heading\n```\n'), null);
+  assert.match(CR.slideFileProblem('two-answers', SLIDE + '\n[Other](slides/other.md)\n'), /includes slides\/other\.md/);
 })
 
 test('readCurriculumMd inlines from the curriculum tree the file lives in', () => {

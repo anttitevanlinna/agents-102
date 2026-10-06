@@ -60,7 +60,11 @@ function plan(text, id, otherIds) {
   const { head, tail } = splitTail(text);
   const r = CR.slideRange(text, id);
   if (/^# /.test(r.lines[r.start])) throw new Error(`${id} is the cover (# title + lede): it stays in its lecture`);
+  // A slide also ends at a slide-file include: a slide cut earlier in this run
+  // (or an earlier run) left its include line where its ## was.
   let end = r.end;
+  const inc = new RegExp(CR.SLIDE_FILE_RE.source);
+  for (let i = r.start + 1; i < end; i++) if (inc.test(r.lines[i])) { end = i; break; }
   while (end > r.start && !r.lines[end - 1].trim()) end--;
   const slideBody = r.lines.slice(r.start, end).join('\n') + '\n';
   const heading = r.lines[r.start].replace(/^##\s+/, '').trim();

@@ -397,6 +397,8 @@
         for (var j = 1; j < lines.length; j++) {
             if (/^\s*(```|~~~)/.test(lines[j])) inFence = !inFence;
             if (!inFence && /^#{1,2} /.test(lines[j])) return 'second heading at line ' + (j + 1) + ' (one slide per file)';
+            var inc = new RegExp(SLIDE_FILE_RE.source).exec(lines[j]);
+            if (!inFence && inc) return 'includes slides/' + inc[2] + '.md at line ' + (j + 1) + ' (a slide file includes nothing)';
         }
         return null;
     }

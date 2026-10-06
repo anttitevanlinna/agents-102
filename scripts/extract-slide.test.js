@@ -132,6 +132,15 @@ test('cutting the second slide moves the source nothing at home cites any more; 
   assert.equal(CR.stripMaintainerTail(readCurriculumMd(path.join(d, 'curriculum', 'lectures', 'lec.md'))), CR.stripMaintainerTail(BODY + TAIL));
 })
 
+test('a later slide cut first: the earlier slide stops at its include line, in one call or two', () => {
+  for (const calls of [['lectures/lec.md#beta,alpha'], ['lectures/lec.md#beta', 'lectures/lec.md#alpha']]) {
+    const d = tree();
+    for (const c of calls) run(d, c);
+    assert.doesNotMatch(read(d, 'slides/alpha.md'), /slides\/beta\.md/, `alpha swallowed beta's include (${calls})`);
+    assert.equal(CR.stripMaintainerTail(readCurriculumMd(path.join(d, 'curriculum', 'lectures', 'lec.md'))), CR.stripMaintainerTail(BODY + TAIL));
+  }
+})
+
 test('refusals: the cover, an unknown id, an id already a slide file — and nothing is written', () => {
   const d = tree();
   for (const [arg, why] of [['lectures/lec.md#cover', /cover/], ['lectures/lec.md#nope', /no <!--slide:nope-->/]]) {

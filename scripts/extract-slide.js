@@ -15,8 +15,9 @@
 //                                                        a home claim or framework still cites them
 //   stance   keyed only to this slide                  → moved; keyed to it and
 //                                                        others, or unkeyed but owed → copied
-//   notes    naming only this id in backticks          → moved; naming it and
-//                                                        other ids → copied
+//   notes    keyed to this id in their lead            → moved; keyed to it and
+//                                                        other ids → copied; an id mentioned
+//                                                        only in a note's body stays home
 // Frameworks, OODA, Quality and unkeyed notes are about the file: they stay home.
 // The cover (`#` title + lede) is the lecture's own and is never cut.
 const fs = require('fs');
@@ -85,11 +86,14 @@ function plan(text, id, otherIds) {
     for (const t of st) { slideBacking.Stance.push(b.lines[t.i]); if (keyedOnlyHere) drop.add(t.i); }
   }
 
-  // Notes: a paragraph or bullet naming `id`. Moved when it names no other
-  // slide id of this file, copied otherwise.
+  // Notes: a paragraph or bullet keyed to `id` in its LEAD (first line up to
+  // the first colon: "**Guard** `id`: …", "- `id`: …"). Moved when the lead
+  // keys no other slide of this file, copied otherwise. An id mentioned only
+  // in a note's body is a reference from a note about the file: it stays home.
   const key = '`' + id + '`';
-  const notes = maintainerNotes(text).filter(n => n.includes(key));
-  const movedNotes = notes.filter(n => !otherIds.some(o => o !== id && n.includes('`' + o + '`')));
+  const lead = n => { const l = n.split('\n')[0]; const c = l.indexOf(':'); return c < 0 ? l : l.slice(0, c); };
+  const notes = maintainerNotes(text).filter(n => lead(n).includes(key));
+  const movedNotes = notes.filter(n => !otherIds.some(o => o !== id && lead(n).includes('`' + o + '`')));
 
   let tailLines = b.lines.filter((_, i) => !drop.has(i));
   let newTail = tailLines.join('\n');

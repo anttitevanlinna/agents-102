@@ -1,12 +1,12 @@
 # APT101 squint: slide titles only, in story order
 
-Method (maintainer, 2026-10-06): squint at the slide titles alone and put them in sequence. Bodies come only once the titles flow. The storyline is the appendix to `agents-102-core/strategy/content-strategy-agentic-product-management.md`, *you were right all along, and now it is dangerous*. ✱ = new title, no slide yet. "We…" narrator titles are the maintainer's essay wording (`practitioner-essays-year-one.md`), lightly cut, never invented. Round 3 (after squint r1 72/64/35/64, r2 74/70/55/68).
+Method (maintainer, 2026-10-06): squint at the slide titles alone and put them in sequence. Bodies come only once the titles flow. The storyline is the appendix to `agents-102-core/strategy/content-strategy-agentic-product-management.md`, *you were right all along, and now it is dangerous*. ✱ = new title, no slide yet. "We…" narrator titles are the maintainer's essay wording (`practitioner-essays-year-one.md`), lightly cut, never invented. After three rounds (squint r1 72/64/35/64 · r2 74/70/55/68 · r3 70/70/57/72), plus the r3 consensus edits, which are not yet judged.
 
 ## Day 1: You were right all along
 
 **The craft was rationed**
 - The post-it was the craft on a budget ✱
-- The tree on Friday, the roadmap on Monday ✱
+- An opportunity tree on Friday, a feature roadmap on Monday ✱
 - A feature factory ships without asking if it worked
 - An outcome is what customers do differently
 - Customers hire a product to make progress
@@ -42,7 +42,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 **Send it off**
 - One agent for each job that recurs in your week
 - One agent first; split only when it can't be one ✱
-- Context, tools, a goal, checks, a boundary, a loop ✱ (retitle)
+- Six parts make an agent: context, tools, goal, checks, boundary, loop ✱ (retitle)
 - It keeps working while the team is away, fluently ✱
 
 ## Day 2: What came back
@@ -50,15 +50,13 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 **Read where you know most**
 - You cannot read it all, so read where you know most
 - The digest agrees with your favourite hypothesis ✱
-- I used to think of being wrong as failure ✱ (narrator)
 
 **Why it agreed**
 - It found what we asked it to look for ✱
+- I used to think of being wrong as failure ✱ (narrator)
 - The agent read the source and still said more
 - Find which part went wrong before fixing anything
-- Agents amplify; they don't transform ✱
 - A faster feature factory is still a feature factory ✱
-- Ship the ideas, discover the wrongs ✱ (narrator; retitle)
 
 **Go back to the customers**
 - Talk to customers every week, toward an outcome
@@ -73,7 +71,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - The outcome at the root makes the merge choose
 
 **Fluent is not true**
-- A customer need nobody said
+- The more you trust it, the less you notice
 - "Are you sure?" is another fluent answer
 - Run more than one check on your own material
 
@@ -122,7 +120,6 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - The team lead's job is outcomes, not player-coaching ✱
 - Clear outcomes, free hands, for agents too ✱ (retitle)
 - Would you let an agent post your weekly update?
-- The more you trust it, the less you notice
 
 **From us to the team**
 - We built good things. We failed to share them well. ✱ (narrator)

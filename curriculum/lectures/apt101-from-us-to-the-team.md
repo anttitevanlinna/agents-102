@@ -8,13 +8,15 @@
 
 [Discovery runs beside delivery, every week](slides/discovery-beside-delivery.md)
 
+[Sharing what you built is harder than building it](slides/sharing-is-harder-than-building.md)
+
 [Three walls stand between your laptops and the team](slides/three-walls.md)
 
 [A missing name marks what isn't built yet](slides/a-missing-name-is-a-finding.md)
 
 <!-- maintainer -->
 
-- **Time:** 15 minutes.
+- **Time:** 18 minutes.
 - **Learning:** team | transfer — what the trio learned travels to the wider team only with named people, agreed places and a proposal the team decides on.
 
 **STATUS:** generated for the `simulation: true` training Agentic Product Teams 101 (2026-10-06), not taught. A lecture here is an ordered set of slide files under `curriculum/slides/`: Agents 101 slides cut at home, rewrites and gaps written for this training (judged in core `evals/apt101-slides/`). Placement: `curriculum/module-design/apt101-slide-reuse-map-v2.md`.

@@ -12,9 +12,9 @@
 
 [The six parts hold; the model keeps changing](slides/the-parts-hold.md)
 
-[Will your organisation learn faster than the model changes underneath it?](slides/learn-faster-than-the-model.md)
+[Cheap building helps your rivals too](slides/where-the-frame-breaks.md)
 
-[Three habits that carry past the training](slides/three-habits-that-carry.md)
+[Will your organisation learn faster than the model changes underneath it?](slides/learn-faster-than-the-model.md)
 
 <!-- maintainer -->
 

@@ -5,11 +5,11 @@ A bet is what the team believes will happen, written down with its signal before
 
 Eric Ries frames the decision as pivot or persevere. Stopping is also a choice. Agreeing the signal in advance matters most when the people reading the result also built the slice. Decide on what you agreed, not on how the result feels.
 
-A slice that came back no did its job.
+A slice that came back no did its job. The team writes down what it now believes instead, and places the next bet on that.
 
 <!-- maintainer -->
 
-**STATUS:** round 3 fixes applied (2026-10-06), APT101 gap G:read-the-signal from `apt101-source-pack-2.md` §6 (Ries). Ries's wording is "pivot or persevere"; stopping is the slide's own addition, in its own sentence, attributed to no one. O'Reilly's signal-before-the-test is taught on `write-the-bet-so-it-can-lose` and is not re-credited here. Not taught (simulation training).
+**STATUS:** round 4 story-pass edits applied (2026-10-06), APT101 gap G:read-the-signal from `apt101-source-pack-2.md` §6 (Ries). Ries's wording is "pivot or persevere"; stopping is the slide's own addition, in its own sentence, attributed to no one. O'Reilly's signal-before-the-test is taught on `write-the-bet-so-it-can-lose` and is not re-credited here. Not taught (simulation training).
 
 <!-- backing -->
 

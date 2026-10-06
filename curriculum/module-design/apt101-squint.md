@@ -13,7 +13,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 
 **Now building is cheap**
 - Building got cheap, deciding didn't
-- It got working and it was used just a bit ✱ (narrator; essay's own words)
+- We built a tool that worked. It was used just a bit. ✱ (narrator)
 - A hypothesis can meet a working slice the same day ✱
 - Discovery belongs to the team that builds
 
@@ -41,7 +41,6 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 **Send it off**
 - The best mitigation is the door you don't open
 - One agent for each job that recurs in your week
-- One agent first; split only when it can't be one ✱
 - Six parts make an agent: context, tools, goal, checks, boundary, loop ✱ (retitle)
 - It keeps working while the team is away, fluently ✱
 
@@ -58,6 +57,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - Find which part went wrong before fixing anything
 
 **Go back to your customers**
+- One agent first; split only when it can't be one ✱
 - Talk to your customers every week, toward an outcome
 - What customers did beats what they say they will do
 

@@ -594,6 +594,25 @@ rc=$(run "$F38" --technical PASS)
 assert_rc "$rc" 1 'T38 the stale-verdict guard finds shared--slide--<id>'
 unset QUALITY_INSTANCES_DIR
 
+# ── T39 — a manifest (a file including slide files): body_sha is the hash of
+# its INLINED content (content-sha.js). A verdict on that content stamps; after
+# a slide-file edit the same verdict is stale and the guard refuses.
+mkdir -p "$TMP/c39/curriculum/lectures" "$TMP/c39/curriculum/slides"
+F39="$TMP/c39/curriculum/lectures/m39.md"
+printf '# M\n\n[A](slides/a39.md)\n' > "$F39"
+printf '## A\n<!--slide:a39-->\n\nalpha\n' > "$TMP/c39/curriculum/slides/a39.md"
+INST39="$TMP/inst39"; mkdir -p "$INST39"; export QUALITY_INSTANCES_DIR="$INST39"
+sha39="$(node "$HERE/content-sha.js" "$F39")"
+printf '{"class":"writing","body_sha":"%s"}\n' "$sha39" > "$INST39/x--lecture--m39.writing.json"
+rc=$(run "$F39" --writing PASS)
+assert_rc "$rc" 0 'T39 a verdict on the inlined manifest stamps'
+sha39b="$(node "$HERE/content-sha.js" "$F39")"
+printf '{"class":"technical","body_sha":"%s"}\n' "$sha39b" > "$INST39/x--lecture--m39.technical.json"
+printf '## A\n<!--slide:a39-->\n\nalpha, edited\n' > "$TMP/c39/curriculum/slides/a39.md"
+rc=$(run "$F39" --technical PASS)
+assert_rc "$rc" 1 'T39 a slide-file edit after judging stales the manifest verdict'
+unset QUALITY_INSTANCES_DIR
+
 echo "──────────────────────────────"
 echo "update-quality.test.sh: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]

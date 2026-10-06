@@ -199,7 +199,7 @@ const VERDICT_SCHEMA = {
     // observations into REVISE — the separate channel is what fixes that, not a
     // third enum value the orchestrator then has to triage.
     verdict: { enum: ['PASS', 'REVISE'] },
-    body_sha: { type: 'string', description: 'shasum -a 256 of the file, first 64 hex, taken when you START reading' },
+    body_sha: { type: 'string', description: 'node curriculum/evals/scripts/content-sha.js <file> (slide files inlined; = shasum -a 256 when there are none), taken when you START reading' },
     // §49's companion. Re-deriving the parked rows costs only time, so it is
     // invisible in a finished instance: same ledger, same verdict, same hash.
     // Splitting the ledger by who wrote each row turns a four-minute tax into a
@@ -509,7 +509,7 @@ ${briefs}
 \`\`\`
 3. \`node curriculum/evals/scripts/derive-body-view.js ${d.file}\` — grep \`projections.body_numbered\`, not the source. Run \`node scripts/expand-md.js ${d.file}\` only if \`has_prompt_blocks\`, \`has_figures\` or \`has_slide_includes\` is true. Cite line numbers against the RAW source.
 
-Take \`body_sha\` (shasum -a 256 of the file, first 64 hex) when you start reading.
+Take \`body_sha\` (\`node curriculum/evals/scripts/content-sha.js <file>\`: slide files inlined, = shasum -a 256 when there are none) when you start reading.
 
 ## Before filing anything
 

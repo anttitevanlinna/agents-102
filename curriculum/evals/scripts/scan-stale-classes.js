@@ -626,7 +626,7 @@ const HASH_MEMO = new Map()
 function fileHash(abs) {
   if (HASH_MEMO.has(abs)) return HASH_MEMO.get(abs)
   let v = null
-  try { v = require('node:crypto').createHash('sha256').update(fs.readFileSync(abs)).digest('hex') } catch { /* gone */ }
+  try { v = require('./content-sha.js').contentSha(abs) } catch { /* gone */ } // body_sha: slide files inlined
   HASH_MEMO.set(abs, v)
   return v
 }

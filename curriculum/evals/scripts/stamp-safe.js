@@ -18,12 +18,10 @@
 //           rather than merely going missing.
 'use strict'
 const { execFileSync } = require('node:child_process')
-const crypto = require('node:crypto')
 const fs = require('node:fs')
 const path = require('node:path')
-const { parseHunks, buildLineMeta, changeTags } = require('./scan-stale-classes.js')
-
-const sha256 = t => crypto.createHash('sha256').update(t, 'utf8').digest('hex')
+const { parseHunks, buildLineMeta, changeTags, slideFileIds, expandedRouting, gitIo } = require('./scan-stale-classes.js')
+const { inlinedAt, sha256 } = require('./content-sha.js')
 
 function git(repo, args) {
   try { return execFileSync('git', args, { cwd: repo, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 }) }
@@ -31,23 +29,31 @@ function git(repo, args) {
 }
 
 // The commit whose blob for `rel` hashes to `recorded`, or null. `--follow` so a
-// rename does not read as "never existed".
+// rename does not read as "never existed". body_sha hashes the file with its
+// slide files inlined (content-sha.js), so each version is inlined as committed;
+// for a file with no slide includes that is its raw blob, as it always was.
 function commitFor(repo, rel, recorded) {
   const commits = git(repo, ['log', '--format=%H', '--follow', '--', rel]).trim().split('\n').filter(Boolean)
   for (const c of commits) {
-    const blob = git(repo, ['show', `${c}:${rel}`])
-    if (blob && sha256(blob) === recorded) return c
+    const view = inlinedAt(repo, rel, c)
+    if (view !== null && sha256(view) === recorded) return c
   }
   return null
 }
 
 function verdict(repo, rel, recorded, cls) {
   if (!/^[a-f0-9]{64}$/.test(recorded || '')) return 'UNKNOWN'
-  let current
-  try { current = fs.readFileSync(path.join(repo, rel), 'utf8') } catch { return 'UNKNOWN' }
+  const current = inlinedAt(repo, rel, null)
+  if (current === null) return 'UNKNOWN'
   if (sha256(current) === recorded) return 'SAFE'          // nothing moved at all
   const commit = commitFor(repo, rel, recorded)
   if (!commit) return 'UNKNOWN'                            // unanchored: fail closed
+  // A file with slide includes routes on its inlined diff, member slides included.
+  const raw = fs.readFileSync(path.join(repo, rel), 'utf8')
+  if (slideFileIds(raw).length) {
+    const r = expandedRouting(rel, raw, commit, gitIo(repo))
+    return r.own.has(cls) || r.member.has(cls) ? 'STALE' : 'SAFE'
+  }
   const { tags } = changeTags(buildLineMeta(current), parseHunks(git(repo, ['diff', commit, '--', rel])))
   return tags.has(cls) ? 'STALE' : 'SAFE'
 }

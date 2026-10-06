@@ -96,7 +96,7 @@ function readSource(fileArg) {
   const abs = path.isAbsolute(fileArg) ? fileArg : path.join(REPO, fileArg)
   const rel = path.relative(REPO, abs)
   const raw = fs.readFileSync(abs, 'utf8')
-  return { abs, rel, raw, slug: slugFor(rel), sha: crypto.createHash('sha256').update(raw, 'utf8').digest('hex') }
+  return { abs, rel, raw, slug: slugFor(rel), sha: require('./content-sha.js').contentSha(abs) } // body_sha: slide files inlined
 }
 
 // The raw source first; the student view (prompts / figures expanded) only when
@@ -152,7 +152,7 @@ function personaBound(file, simDir) {
   let slug, sha
   try {
     slug = readSource(file).slug
-    sha = require('node:crypto').createHash('sha256').update(fs.readFileSync(path.resolve(REPO, file))).digest('hex')
+    sha = require('./content-sha.js').contentSha(path.resolve(REPO, file))
   } catch { return false }
   try {
     const m = fs.readFileSync(path.join(simDir, `${slug}.persona.json`), 'utf8').match(/"content_sha"\s*:\s*"([^"]*)"/)

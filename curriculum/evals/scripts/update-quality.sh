@@ -116,7 +116,10 @@ done
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 INSTANCES_DIR="${QUALITY_INSTANCES_DIR:-$SCRIPT_DIR/../instances}"
 slug="$(basename "$FILE" .md)"
-file_sha="$(shasum -a 256 "$FILE" 2>/dev/null | awk '{print $1}')"
+# body_sha = the file's content as judges read it: slide files inlined
+# (content-sha.js). For a file with no slide includes this IS shasum -a 256.
+content_sha() { node "$SCRIPT_DIR/content-sha.js" "$1" 2>/dev/null || shasum -a 256 "$1" 2>/dev/null | awk '{print $1}'; }
+file_sha="$(content_sha "$FILE")"
 
 # Surface-type comes from the parent directory, never the basename — the same
 # derivation the instance filenames use. A slug can name both a module and an
@@ -665,7 +668,7 @@ mv "$TMP" "$FILE"
 # The Quality block opens the maintainer block (quality-format.md § Position).
 # Hoisting here, inside the same maintainer-only write, is what converges files.
 node "$(dirname "$0")/hoist-quality.js" --write "$FILE" >/dev/null
-new_file_sha="$(shasum -a 256 "$FILE" 2>/dev/null | awk '{print $1}')"
+new_file_sha="$(content_sha "$FILE")"
 if [[ -n "$file_sha" && -n "$new_file_sha" && "$file_sha" != "$new_file_sha" && -d "$INSTANCES_DIR" ]]; then
   for cls in writing story technical behavior pedagogy strategy slides; do
     if [[ -n "$surface" ]]; then

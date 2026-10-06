@@ -22,20 +22,49 @@ const REPO = path.resolve(__dirname, '..');
 const CORE = process.env.AGENTS_CORE_DIR || path.join(REPO, '..', 'agents-102-core');
 const TRAININGS = ['agents-101', 'claude-basics', 'agentic-engineering-101'];
 
-// Lectures still whole: two or more ## slide ids and no slide-file include yet.
-// Preference order keeps the run stable; the asserts below keep it meaningful.
+// Two lectures with two or more ## slide ids, between them carrying a backing
+// block and tier markers. A lecture already cut on main is rebuilt whole in the
+// sandbox (its slide files inlined back, then deleted) and cut again, so the
+// test keeps its subjects as the corpus moves to slide files. A cut lecture
+// qualifies only when no other file includes its slide files.
 const PREFER = ['lectures/grounded.md', 'lectures/the-machine-you-just-met.md'];
-function uncut(root) {
-  const dir = path.join(root, 'curriculum', 'lectures');
+const { readCurriculumMd } = require('./read-curriculum.js');
+const CRT = require('../site/layouts/curriculum.js');
+function pick(root) {
+  const cur = path.join(root, 'curriculum');
+  const includers = {};
+  const walk = dir => fs.readdirSync(dir, { withFileTypes: true }).forEach(e => {
+    const p = path.join(dir, e.name);
+    if (e.isDirectory()) { if (!['evals', 'slides'].includes(e.name)) walk(p); return; }
+    if (!e.name.endsWith('.md')) return;
+    for (const m of CRT.stripMaintainerTail(fs.readFileSync(p, 'utf8')).matchAll(new RegExp(CRT.SLIDE_FILE_RE.source, 'gm'))) {
+      (includers[m[2]] = includers[m[2]] || []).push(path.relative(cur, p));
+    }
+  });
+  walk(cur);
   const info = f => {
-    const t = fs.readFileSync(path.join(dir, f), 'utf8'), body = t.split('<!-- maintainer -->')[0];
+    const rel = `lectures/${f}`, raw = fs.readFileSync(path.join(cur, rel), 'utf8');
+    const whole = readCurriculumMd(path.join(cur, rel)), body = whole.split('<!-- maintainer -->')[0];
     const ids = (body.match(/<!--slide:([a-z0-9-]+)-->/g) || []).map(m => m.slice(10, -3)).filter(i => i !== 'cover');
-    return { rel: `lectures/${f}`, ids, backing: t.includes('<!-- backing -->'), tiers: /<!--tier:/.test(body), cut: /\]\(slides\//.test(body) };
+    const cutIds = [...CRT.stripMaintainerTail(raw).matchAll(new RegExp(CRT.SLIDE_FILE_RE.source, 'gm'))].map(m => m[2]);
+    const shared = cutIds.some(i => (includers[i] || []).some(r => r !== rel));
+    return { rel, ids, cutIds, backing: raw.includes('<!-- backing -->'), tiers: /<!--tier:/.test(body), shared };
   };
-  const all = fs.readdirSync(dir).filter(f => f.endsWith('.md')).map(info).filter(l => l.ids.length >= 2 && !l.cut);
-  return all.sort((a, b) => (PREFER.indexOf(a.rel) + 1 || 99) - (PREFER.indexOf(b.rel) + 1 || 99)).slice(0, 2);
+  const all = fs.readdirSync(path.join(cur, 'lectures')).filter(f => f.endsWith('.md')).map(info).filter(l => l.ids.length >= 2 && !l.shared);
+  const rank = l => (PREFER.indexOf(l.rel) + 1 || 99) * 2 + (l.cutIds.length ? 1 : 0);
+  return all.sort((a, b) => rank(a) - rank(b)).slice(0, 2);
 }
-const LECTURES = uncut(REPO);
+const LECTURES = pick(REPO);
+
+// Rebuild a cut lecture whole in the sandbox: the inlined text back in place,
+// its slide files gone. (Notes that moved to a slide file go with it; the
+// readers compare like with like, before and after the re-cut.)
+function rebuildWhole(d, l) {
+  if (!l.cutIds.length) return;
+  const abs = path.join(d, 'curriculum', l.rel);
+  fs.writeFileSync(abs, readCurriculumMd(abs));
+  for (const i of l.cutIds) fs.rmSync(path.join(d, 'curriculum', 'slides', i + '.md'));
+}
 
 const READERS = [
   ...LECTURES.map(l => [`render-md ${l.rel}`, ['scripts/render-md.js', `curriculum/${l.rel}`]]),
@@ -102,10 +131,12 @@ function runAll(d) {
 }
 
 test('every reader sees the same thing after whole lectures are cut into slide files', { timeout: 900000 }, () => {
-  assert.ok(LECTURES.length >= 2, `need two whole lectures with slide ids, found ${LECTURES.map(l => l.rel)}`);
+  assert.ok(LECTURES.length >= 2, `need two lectures with slide ids, found ${LECTURES.map(l => l.rel)}`);
   assert.ok(LECTURES.some(l => l.backing) && LECTURES.some(l => l.tiers), 'the picked lectures must carry a backing block and tier markers between them');
   const d = sandbox();
   try {
+    for (const l of LECTURES) rebuildWhole(d, l);
+    spawnSync('sh', ['-c', 'git add -A && git -c user.email=t@t -c user.name=t commit -qm whole'], { cwd: d });
     const before = runAll(d);
     for (const l of LECTURES) {
       const x = spawnSync('node', ['scripts/extract-slide.js', `${l.rel}#${l.ids.join(',')}`], { cwd: d, encoding: 'utf8' });

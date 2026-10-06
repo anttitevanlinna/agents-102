@@ -9,7 +9,7 @@ Before an agent reads customer interviews or tickets, someone in your company wi
 - Who decides when a case is unclear?
 - Does this change how anyone's work is followed or judged, and has the team discussed it?
 
-Your data protection contact will add GDPR and the EU AI Act to the conversation. Your employee representative will ask the last question. Your company's answers belong next to each one. Write them as a proposal your team can take to them.
+Your data protection contact will add GDPR and the EU AI Act to the conversation. Your employee representative will ask the last question. Draft an answer to each, as a proposal your team takes to both.
 
 <!-- maintainer -->
 
@@ -20,5 +20,5 @@ Your data protection contact will add GDPR and the EU AI Act to the conversation
 <!-- backing -->
 
 **Claims**
-- `questions-not-answers` · vision · "Your company's answers belong next to each one" ← none-owed — design stance: proposal, not decision (strategy Transfer path).
+- `questions-not-answers` · vision · "Draft an answer to each, as a proposal your team takes to both" ← none-owed — design stance: proposal, not decision (strategy Transfer path).
 - `dpo-raises-gdpr-ai-act` · vision · "Your data protection contact will add GDPR and the EU AI Act to the conversation" ← none-owed — Nordic setting (strategy § Audience).

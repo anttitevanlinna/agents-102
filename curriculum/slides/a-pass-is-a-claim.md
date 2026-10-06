@@ -5,7 +5,7 @@ When the agent's check says "good", it means the check saw nothing wrong. It doe
 
 Each has its own answer. Compare the check's verdicts with your own on a handful of real cases. Keep one check the agent never sees. Run the same task more than once before you trust it.
 
-What the three answers share: each rests on something the work did not produce. Asking the same agent twice in the same conversation is not a second opinion.
+Asking the same agent twice in the same conversation is not a second opinion.
 
 <!-- maintainer -->
 
@@ -16,4 +16,3 @@ What the three answers share: each rests on something the work did not produce. 
 **Claims**
 - `pass-means-check-saw-nothing` · vision · "it means the check saw nothing wrong. It does not mean the work is good" ← none-owed — AE101 *green is a claim*.
 - `three-reasons` · vision · "Three different things look identical from outside" ← none-owed — AE101's three failure modes, restated.
-- `independence` · vision · "each rests on something the work did not produce" ← none-owed

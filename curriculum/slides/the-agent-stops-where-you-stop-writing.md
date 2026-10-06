@@ -1,7 +1,7 @@
 ## The agent stops where you stop writing
 <!--slide:the-agent-stops-where-you-stop-writing-->
 
-An agent cannot read your mind. It works from what your team has written down: the box, the hypotheses, the interview notes, the rules for what may go in. What is written, it can act on. What is still in your heads, it cannot.
+An agent cannot read your mind. It works from what your team has written down: hypotheses, interview notes, rules. What is written, it can act on. What is still in your heads, it cannot.
 
 So the line where the agent stops is yours to move. Every time someone in the team says "not like that", there is a sentence to write down: a rule, a check, an example of good. The next run goes one step further on its own.
 

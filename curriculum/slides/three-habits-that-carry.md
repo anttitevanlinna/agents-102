@@ -3,7 +3,7 @@
 
 - **Act before you are sure.** The tools change every month and nobody has this figured out. A small bet run this week teaches more than a plan polished for a quarter.
 - **Do the reps yourselves.** Judgement about agents comes from using them on your own product, not from watching demos. The team that has run a hundred small loops sees the next move first.
-- **Go from me to we.** One power user is a curiosity. A team that shares its rules, its checks and its doubts is a different kind of team.
+- **Go from me to we.** One power user is a curiosity. A team that shares its rules, its checks and its doubts is a capability.
 
 <!-- maintainer -->
 

@@ -1,11 +1,11 @@
 ## What each of us is for when building gets cheap
 <!--slide:what-each-of-us-is-for-->
 
-Lay three things side by side: the designer's rough prototype, the product owner's experiment that could kill the bet, the team lead's way of working with agents. An agent helped build all three. None of them came from the agent.
+An agent can help build the designer's prototype, the product owner's experiment and the team lead's way of working. None of them comes from the agent.
 
 - **The product owner** decides which bet is worth a slice, and writes the signal that could say no.
 - **The designer** knows what a customer actually said, and shapes what they will touch.
-- **The team lead** decides how the team works with agents, and keeps it safe to say the agent got it wrong.
+- **The team lead** agrees with the team how it works with agents, and keeps it safe to say the agent got it wrong.
 
 Each answer is one person's first draft. The team writes the real one together.
 
@@ -18,6 +18,5 @@ Each answer is one person's first draft. The team writes the real one together.
 <!-- backing -->
 
 **Claims**
-- `three-pieces` · vision · "Lay three things side by side" ← none-owed — Day 2 beat 8 (v9).
 - `role-lines` · vision · "The product owner decides which bet is worth a slice" ← none-owed — the training's proposal.
 - `team-writes-real-one` · vision · "The team writes the real one together" ← none-owed — proposal, not decision.

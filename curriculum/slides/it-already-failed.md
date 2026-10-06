@@ -5,7 +5,7 @@ Gary Klein's pre-mortem starts with one sentence from the leader: the project ha
 
 Then everyone writes, alone and in silence, every reason they can think of, especially the ones they would normally keep to themselves to stay polite. Then the group goes round the table one reason at a time until the lists run out.
 
-Klein sets it against the usual risk session, which asks what might go wrong. Assuming the patient has died gives people permission to say what they actually fear without being the pessimist. Research he cites found that imagining an outcome as already happened produces about thirty percent more reasons than imagining it might.
+Klein sets it against the usual risk session, which asks what might go wrong. Assuming the patient has died gives people permission to say what they actually fear . Research he cites found that imagining an outcome has already happened produces about thirty percent more reasons than imagining it might.
 
 The right moment is when confidence is highest, just after the team has chosen.
 

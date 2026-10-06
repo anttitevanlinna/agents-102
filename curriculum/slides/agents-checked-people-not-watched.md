@@ -3,7 +3,7 @@
 
 Amy Edmondson defines psychological safety as a shared belief that the team is safe for interpersonal risk taking: confidence that nobody will be embarrassed, rejected or punished for speaking up. She is explicit that it is not permissiveness and not relentless positivity. Teams where people feel it ask more, admit more, and learn more.
 
-With agents in the team, one sentence matters more than it used to: "the agent got this wrong". It has to be safe for anyone to say it, including the newest person and including about an agent the team lead set up.
+With agents in the team, one sentence matters more than it used to: "the agent got this wrong". It has to be safe for anyone to say it, including the newest person, even about the team lead's own agent.
 
 A check on the agent's work is not a check on the person who ran it.
 

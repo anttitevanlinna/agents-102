@@ -4,7 +4,7 @@
 Every move in outcome-driven product work sits on one loop:
 
 - **Outcome:** the change in the customer's life you are after.
-- **Opportunities:** the needs and pains standing between them and it.
+- **Opportunities:** the needs and pains in the way.
 - **Bet:** the solution you choose to try.
 - **Slice:** the smallest thing that tests the bet.
 - **Signal:** what comes back, and what it tells you.

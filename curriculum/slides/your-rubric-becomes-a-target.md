@@ -3,9 +3,9 @@
 
 Write down what good looks like, give it to an agent as a check, and run it on every piece of work. Within days, the work starts to score well.
 
-That is the moment to look closer. Anthropologist Marilyn Strathern put it in a line people now attach to the economist Charles Goodhart: when a measure becomes a target, it ceases to be a good measure. Agents optimise for whatever they are scored on, and so do teams.
+That is the moment to look closer. Anthropologist Marilyn Strathern gave the economist Charles Goodhart's law the form everyone quotes: when a measure becomes a target, it ceases to be a good measure. Agents optimise for whatever they are scored on, and so do teams.
 
-A team that writes for its own checklist has rebuilt the feature factory with a dashboard. Keep one question the checklist cannot answer, asked by a person: did this change anything for the customer?
+A team that writes for its own criteria has rebuilt the feature factory with a dashboard. Keep one question the criteria cannot answer, asked by a person: did this change anything for the customer?
 
 <!-- maintainer -->
 
@@ -17,7 +17,7 @@ A team that writes for its own checklist has rebuilt the feature factory with a 
 
 **Claims**
 - `strathern-line` · borrowed · "when a measure becomes a target, it ceases to be a good measure" ← strathern-1997, mattson-2021-goodhart
-- `attached-to-goodhart` · borrowed · "a line people now attach to the economist Charles Goodhart" ← mattson-2021-goodhart, goodhart-1975
+- `attached-to-goodhart` · borrowed · "gave the economist Charles Goodhart's law the form everyone quotes" ← mattson-2021-goodhart, goodhart-1975
 - `agents-optimise-for-score` · vision · "Agents optimise for whatever they are scored on, and so do teams" ← none-owed
 - `feature-factory-dashboard` · vision · "rebuilt the feature factory with a dashboard" ← none-owed — maintainer's phrase (`group-work-plan.md` § Evals).
 

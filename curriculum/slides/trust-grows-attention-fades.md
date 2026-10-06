@@ -1,7 +1,7 @@
 ## The more you trust it, the less you notice
 <!--slide:trust-grows-attention-fades-->
 
-The agents will get things right, many times in a row. Each good result is real evidence that they can be trusted, and it also makes you a little worse at spotting the one that is wrong. Researchers who studied pilots and plant operators named it in the 1990s: people come to rely on a highly reliable system past the point where they still catch its mistakes.
+The agent will get things right, many times in a row. Each good result is real evidence that it can be trusted, and it also makes you a little worse at spotting the one that is wrong. Automation researchers named it in the 1990s: people come to rely on a system that keeps getting it right past the point where they still catch its mistakes.
 
 The trust is deserved. The noticing still has to be designed. Keep a habit of doing a piece of the work yourself now and then, and of reading one result properly instead of skimming ten.
 
@@ -11,13 +11,13 @@ So when the next result lands clean, ask the plain question: when did you last d
 
 **STATUS:** first cut (2026-10-06), Agentic Product Teams 101 rewrite for product people of AE101 `ironies-of-automation` § Trust and vigilance move in opposite directions. Not taught (simulation training). Owes judging rounds.
 
-**Fidelity guard:** "pilots and plant operators" names the automation-studies populations (Parasuraman and colleagues, 1990s); do not upgrade to a claim about agent users, which the literature has not measured. Bainbridge (1983) is the older root and is not quoted here.
+**Fidelity guard:** round 2 fidelity: the 1993 study used 40 subjects on a flight-simulation task and plant operators come from Bainbridge 1983, so the slide names neither population; do not upgrade to a claim about agent users, which the literature has not measured. Bainbridge (1983) is the older root and is not quoted here.
 
 <!-- backing -->
 
 **Claims**
-- `overreliance` · borrowed · "people come to rely on a highly reliable system past the point where they still catch its mistakes" ← parasuraman-riley, pms-1993-complacency
-- `nineties` · detail · "Researchers who studied pilots and plant operators named it in the 1990s" ← parasuraman-riley, pms-1993-complacency
+- `overreliance` · borrowed · "people come to rely on a system that keeps getting it right past the point where they still catch its mistakes" ← parasuraman-riley, pms-1993-complacency
+- `nineties` · detail · "Automation researchers named it in the 1990s" ← parasuraman-riley, pms-1993-complacency
 - `noticing-designed` · vision · "The noticing still has to be designed" ← none-owed — AE101 *the watching still has to be engineered*.
 
 **Sources**

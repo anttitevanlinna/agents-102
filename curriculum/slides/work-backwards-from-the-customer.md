@@ -1,7 +1,7 @@
 ## Work backwards from the customer
 <!--slide:work-backwards-from-the-customer-->
 
-Amazon teams write the press release before they build. Amazon calls it **working backwards**: a short release in the customer's own words, then the questions a customer would ask, then the questions your leaders would ask. Colin Bryar and Bill Carr, who wrote the practice down, describe the release as a way to force the idea to stay focused on the customer.
+Amazon teams write the press release before they build. Amazon calls it **working backwards**: a short release in the customer's own words, then the questions a customer would ask, then the questions your leaders would ask.
 
 The release is not marketing. Its readers are the people deciding whether to build, and its internal questions include the top three reasons the product will not succeed.
 
@@ -18,7 +18,6 @@ A product box is the same move in cardboard: one face, one promise, in words a c
 **Claims**
 - `amazon-release-first` · borrowed · "Amazon teams write the press release before they build" ← vogels-working-backwards-2006, bryar-carr-prfaq
 - `working-backwards-term` · borrowed · "Amazon calls it **working backwards**" ← vogels-working-backwards-2006, bryar-carr-prfaq
-- `forcing-function` · borrowed · "describe the release as a way to force the idea to stay focused on the customer" ← bryar-carr-prfaq
 - `release-readers-internal` · borrowed · "Its readers are the people deciding whether to build" ← bryar-carr-prfaq
 - `why-it-will-fail` · borrowed · "its internal questions include the top three reasons the product will not succeed" ← bryar-carr-prfaq
 - `hohmann-customers-sell` · borrowed · "Luke Hohmann's original game hands the box to customers" ← hohmann-product-box

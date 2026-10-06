@@ -3,7 +3,7 @@
 
 A check run by an agent is one more thing nobody has tested. Until you compare its verdicts with your own, you do not know how often it approves work you would have sent back.
 
-The move is small. Take a handful of real cases, judge them yourselves, and put your calls next to the check's. Where you disagree, tell the check why, and run it again. Hamel Husain, who writes on evaluating AI products, reported reaching better than ninety percent agreement on one product after three rounds of exactly this.
+Take a handful of real cases, judge them yourselves, and put your calls next to the check's. Where you disagree, tell the check why, and run it again. In 2024, Hamel Husain, who writes on evaluating AI products, reported reaching better than ninety percent agreement on one product after three rounds of exactly this.
 
 Start from real work, not imagined failures. Read what actually came back, sort what went wrong into piles, and write the first check for the biggest pile.
 

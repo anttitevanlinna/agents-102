@@ -531,9 +531,12 @@ test('surfacesFor derives a surface set for a training that is not AE101', () =>
     for (const f of files) {
       assert.ok(fs.existsSync(path.join(ROOT, f.file)),
         `${group}: ${f.file} does not exist — a derived surface must name a real file`);
-      assert.match(f.instanceSlug, /^agents-101--(exercise|lecture|module)--/,
-        `${group}: instanceSlug "${f.instanceSlug}" must carry the training prefix and its ` +
-        'surface-type segment, matching the instances already on disk');
+      // A slide file is training-neutral: every training reaching it shares one
+      // instance, so it carries `shared`, not the training that reached it.
+      const want = group === 'slides' ? /^shared--slide--/ : /^agents-101--(exercise|lecture|module)--/;
+      assert.match(f.instanceSlug, want,
+        `${group}: instanceSlug "${f.instanceSlug}" must carry the training prefix (shared for slide files) ` +
+        'and its surface-type segment, matching the instances already on disk');
     }
   }
 });

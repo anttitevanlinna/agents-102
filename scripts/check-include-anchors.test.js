@@ -131,6 +131,13 @@ test('slide-file includes: missing, malformed and orphaned slide files fail; a g
   let r = run([], env);
   assert.equal(r.code, 0, r.out);
 
+  // A library slide written before any deck includes it warns; it does not fail.
+  fs.writeFileSync(path.join(lib, 'slides', 'early.md'), '## Early\n<!--slide:early-->\n\nx\n');
+  r = run([], env);
+  assert.equal(r.code, 0, r.out);
+  assert.match(r.out, /WARN slides\/early\.md: no file includes it yet/);
+  fs.rmSync(path.join(lib, 'slides', 'early.md'));
+
   fs.writeFileSync(path.join(lib, 'slides', 'bent.md'), '## Bent\n<!--slide:other-->\n\nx\n');
   fs.writeFileSync(path.join(lib, 'slides', 'stray.md'), '## Stray\n<!--slide:stray-->\n\nx\n');
   fs.writeFileSync(path.join(lib, 'lectures', 'l.md'), '# L\n\n[Good](slides/good.md)\n\n[Gone](slides/gone.md)\n\n[Bent](slides/bent.md)\n');
@@ -138,5 +145,5 @@ test('slide-file includes: missing, malformed and orphaned slide files fail; a g
   assert.equal(r.code, 1);
   assert.match(r.out, /lectures\/l\.md:5 -> slides\/gone\.md \(no such slide file\)/);
   assert.match(r.out, /lectures\/l\.md:7 -> slides\/bent\.md \(marker says other, filename says bent\)/);
-  assert.match(r.out, /slides\/stray\.md: no file includes it/);
+  assert.match(r.out, /WARN slides\/stray\.md: no file includes it yet/);
 })

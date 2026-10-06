@@ -159,15 +159,21 @@ for (const abs of includerFiles) {
     if (why) badSlideFiles.push(`${rel}:${i + 1} -> slides/${id}.md (${why})`);
   });
 }
+// A library slide may be written before a deck includes it: warn, don't fail.
+// Its own shape is still checked.
+const unincluded = [];
 for (const f of mdIn(SLIDES_DIR)) {
   const id = path.basename(f, '.md');
-  if (!slideIncluders.has(id)) badSlideFiles.push(`slides/${id}.md: no file includes it`);
+  const why = CR.slideFileProblem(id, fs.readFileSync(f, 'utf8'));
+  if (why) badSlideFiles.push(`slides/${id}.md (${why})`);
+  if (!slideIncluders.has(id)) unincluded.push(id);
 }
+for (const id of unincluded) console.log(`WARN slides/${id}.md: no file includes it yet`);
 if (REPORT && slideIncluders.size) console.log(`\nslide files: ${slideIncluders.size} included`);
 if (badSlideFiles.length) {
   console.error(`\n${badSlideFiles.length} slide-file problem(s):\n`);
   for (const b of badSlideFiles) console.error(`  ${b}`);
-  console.error(`\nFix: a slide file is one ## slide with <!--slide:<id>--> under it, named <id>.md, and included by at least one file.\n`);
+  console.error(`\nFix: a slide file is one ## slide with <!--slide:<id>--> under it, named <id>.md; an include names an existing slide file.\n`);
 }
 
 if (!trainings.length) {

@@ -1,9 +1,11 @@
 ## Imagine it already failed
 <!--slide:it-already-failed-->
 
-Confidence peaks just after the team chooses. With agents building, a working piece of the bet can sit on the table the same day, and a thing that works makes doubts harder to say. That is the moment to ask how it fails.
+Confidence peaks just after the team chooses. That is the moment to ask how it fails.
 
 Gary Klein's pre-mortem asks it in the past tense: the project has failed, spectacularly. Everyone writes the reasons alone and in silence, especially the ones they would normally keep to themselves. Then the group goes round one reason at a time. Research he cites found that imagining the failure has already happened produces about thirty percent more reasons than imagining it might.
+
+Agents can build a working piece of the bet the same day, and a thing that works makes doubts harder to say. The build got cheap. Dropping a bet the team has grown fond of is still a hard call.
 
 <!-- maintainer -->
 
@@ -16,6 +18,7 @@ Gary Klein's pre-mortem asks it in the past tense: the project has failed, spect
 **Claims**
 - `premortem-procedure` · borrowed · "Everyone writes the reasons alone and in silence" ← klein-premortem-2007
 - `working-piece-quiets-doubt` · vision · "a thing that works makes doubts harder to say" ← none-owed — APT101 reason the pre-mortem matters more when building is cheap; no study claimed.
+- `build-cheap-drop-not` · vision · "The build got cheap. Dropping a bet the team has grown fond of is still a hard call." ← none-owed — the training's frame (building got cheap, deciding didn't) read through the pre-mortem; not Klein's claim.
 - `thirty-percent-more-reasons` · detail · "produces about thirty percent more reasons than imagining it might" ← collins-premortem-30pct, mitchell-russo-pennington-1989
 - `peak-confidence` · vision · "Confidence peaks just after the team chooses" ← none-owed — maintainer's placement (`group-work-plan.md`).
 

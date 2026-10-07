@@ -5,7 +5,7 @@ Checking the agent's work is not watching the person who ran it.
 
 That line leans on what Amy Edmondson calls psychological safety: a shared belief that the team is safe for interpersonal risk taking, confidence that nobody will be embarrassed, rejected or punished for speaking up. She is explicit that it is not permissiveness and not relentless positivity. Teams where people feel it ask more, admit more, and learn more.
 
-With agents in the team, there is more to speak up about. Point the scrutiny at the work, and speaking up stays safe.
+Point the scrutiny at the work, and speaking up stays safe. Producing work got cheap with agents; calling a piece of it wrong is still a person's decision.
 
 <!-- maintainer -->
 
@@ -21,6 +21,7 @@ With agents in the team, there is more to speak up about. Point the scrutiny at 
 - `not-permissiveness` · borrowed · "She is explicit that it is not permissiveness and not relentless positivity" ← edmondson-1999-asq
 - `learning-behaviour` · borrowed · "Teams where people feel it ask more, admit more, and learn more" ← edmondson-1999-asq
 - `scrutiny-on-the-work` · vision · "Point the scrutiny at the work, and speaking up stays safe." ← none-owed
+- `calling-it-wrong-is-a-decision` · vision · "Producing work got cheap with agents; calling a piece of it wrong is still a person's decision." ← none-owed — the training's frame (building got cheap, deciding didn't) read through Edmondson; not her claim.
 
 **Sources**
 - edmondson-1999-asq `[checked:2026-10-06 result:OK due:none]` https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Group_Performance/Edmondson%20Psychological%20safety.pdf — [academic/research] definition; not permissiveness; learning behaviour (ASQ 44(2), 1999).

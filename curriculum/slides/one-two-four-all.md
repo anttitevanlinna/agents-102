@@ -5,11 +5,13 @@ Ask an agent to merge everyone's ideas and it tends to hand back the middle, and
 
 1-2-4-All, from Liberating Structures, builds that in. A minute alone, in silence, writing ideas down. Then pairs, then fours, then a few people share something everyone should hear. The numbers are group sizes, not minutes. Its authors say it "engages every voice regardless of group size".
 
+Merging the pile now takes an agent seconds. Choosing which idea survives it takes the same people it always did.
+
 <!-- maintainer -->
 
 **STATUS:** rebuilt from the APT101 squint (2026-10-07), Day 2 § Widen before you choose. APT101 gap G:one-two-four-all from `apt101-source-pack-2.md` §12. Not taught (simulation training). Owes judging rounds.
 
-**Fidelity guard:** the one minute alone is the live page's (intro 1, alone 1, pairs 2, fours 5, all 7; about fifteen minutes in all); later steps carry no minutes on the slide, so the 2021 page's 1/2/4/5 cannot creep in (pack Drift 1: the numbers are group sizes). The "All" step is "a few people share something everyone should hear", not every group reporting back. For a team of three or four, the fours step is the whole team; the slide does not adapt the structure, it states it. The opening line is the training's use of it, not Liberating Structures' claim; `the-branch-one-of-you-found` in the same lecture carries why the lone idea matters.
+**Fidelity guard:** the one minute alone is the live page's (intro 1, alone 1, pairs 2, fours 5, all 7; about fifteen minutes in all); later steps carry no minutes on the slide, so the 2021 page's 1/2/4/5 cannot creep in (pack Drift 1: the numbers are group sizes). The "All" step is "a few people share something everyone should hear", not every group reporting back. For a team of three or four, the fours step is the whole team; the slide does not adapt the structure, it states it. The opening line and the closing line are the training's reading of it, not Liberating Structures' claim; `the-branch-one-of-you-found` in the same lecture carries why the lone idea matters.
 
 <!-- backing -->
 
@@ -20,6 +22,7 @@ Ask an agent to merge everyone's ideas and it tends to hand back the middle, and
 - `few-people-share` · borrowed · "a few people share something everyone should hear" ← ls-1-2-4-all
 - `numbers-are-group-sizes` · borrowed · "The numbers are group sizes, not minutes." ← ls-1-2-4-all, ls-1-2-4-all-2021
 - `every-voice` · borrowed · "engages every voice regardless of group size" ← ls-1-2-4-all
+- `merge-cheap-choice-not` · vision · "Merging the pile now takes an agent seconds. Choosing which idea survives it takes the same people it always did." ← none-owed — the training's frame (building got cheap, deciding didn't) read through 1-2-4-All; not Liberating Structures' claim.
 
 **Sources**
 - ls-1-2-4-all `[checked:2026-10-06 result:OK due:none]` https://www.liberatingstructures.com/1-2-4-all — [practitioner direct] alone → pairs → quartets → all; current timings 1/1/2/5/7 (~15 min); a few people share in plenary; "engages every voice"; Lipmanowicz & McCandless. Redirected from `/1-1-2-4-all/`; live page merges online adaptations in brackets.

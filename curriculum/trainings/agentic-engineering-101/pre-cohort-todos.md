@@ -89,3 +89,23 @@ The want: a student working an exercise opens another exercise's instructions in
 - **`[watch]` Exercise links still open in the same tab.** The deck honours the arrival fragment (`startAnchor`, first mount only, tested in `scripts/slides.test.js` and in headless Chrome against the acme build: `#exercises-author-test-strategy-skill` → `M3 — 162 / 527`, a dead fragment → cover, a later long-read → Slides toggle → cover). A student who opens an exercise link in a new tab by hand lands on the right slide in either layout. What is still open is whether exercise links should spawn the tab themselves. The category policy (every `#exercises-*` link → new tab) turns a dead anchor into an 870 KB reload onto the cover on slides a trainer projects, and nothing holds every tracked build's anchors resolved: `check-include-anchors.js` reads source, and a built page is invisible to it. **Fires if** a student follows an exercise link, stays in the same tab, and loses their place. **Fix when it fires:** the per-link author mark, not the category policy; the category version owes a resolve-check over `site/clients/**/index.html` first.
 
 - **`[parked]` Unknown unknowns + long sessions — Antti's topic, opens when the M2 line-by-line read finishes.** Parked 2026-08-12 mid-M2-read. Nothing has been said about the content — do not reconstruct or pre-answer it; raise the topic and let him state it. Likely surfaces: M4 `run-the-first-experiment` (first multi-hour send-off, far-half lectures) and M5 `learn-from-the-test` (reading the return through three failure-mode lenses).
+
+## Rights and credits
+
+Third-party words, names and marks in what a licensee receives. A flagged item is a lead to check, not a verdict: compare with the source before rewording. Prompt bodies go through the prompt approval gate.
+
+- **Cut the skill-stacking supplement.** `supplementary/skill-stacking.md`, the `skill-stacking/` diagrams and `curriculum/figures/dino-skill-stack.md` describe a named engineer's private system with its internal names, and no written consent is on file. The cut reaches `lectures/composing-the-workflow.md` (the `dino-skill-stack` figure), `supplementary/workflow-composition-lineages.md` (the case-study section), `spot-gaps-build-the-loop.md`, `curriculum/vocabulary.md` and `site/figures.json`.
+- **Song lyrics in a shipped script.** `content/skills/security-tools/check.sh` prints four lines of a pop chorus under the ASCII face. Cut the lyric lines, keep the face and the lesson text. `trainer-modules.md` and `training-architecture.md` describe the gag.
+- **`supplementary/clean-code-is-steering.md` quotes whole posts.** Eight complete X posts by one author. One sentence each or paraphrase, links kept. Retitle if the page still reads as his journey.
+- **The grill prompt is Matt Pocock's `grill-me`, MIT.** `prompts/push-back-on-the-plan-2-original.md` carries it verbatim: the MIT notice travels with the prompt and inside the content tarball. `push-back-on-the-plan-2.md`, `push-back-on-the-plan-2-askuserquestion.md` and `diagnose-and-resend-6.md` adapt it: one credit line per exercise.
+- **`reference/claude-code-for-engineers.md` sits close to Anthropic's docs.** The memory passage is near-verbatim: paraphrase. Across the page, swap doc examples for own ones and compare each section with the page it links.
+- **`lectures/the-machine-you-just-met.md` (shared with Agents 101):** the compound-engineering definition runs close to Klaassen's wording. Mark it as a quotation with the source, or paraphrase.
+- **`exercises/compound-and-close.md` and its prompts:** credit Klaassen and Every in the exercise; diff the compound prompt against their published command.
+- **`supplementary/verification-asymmetry.md`:** quote and link Jason Wei's post; vary the examples.
+- **`supplementary/workflow-composition-lineages.md`:** trim each practitioner quote to the phrase the argument needs.
+- **`supplementary/agentic-engineering-progression.md`:** compare the stage ladder with the credited "Crawl, Walk, Run, Fly" source.
+- **`lectures/evals-as-steering.md` (shared with Agents 101):** compare the opening with Mollick's post; add the link.
+- **`supplementary/build-a-project-from-zero.md` names a commercial game.** Generic name on the student page; the harness's own name for its test repo is internal.
+- **`lectures/skills-from-the-frontier.md`, `lectures/story-of-module-6.md`:** company figures and a quote carry source and date in the body.
+- **`exercises/extract-the-task-shaping-rule.md`:** the example `CLAUDE.md` content: compare with the docs' examples and reword.
+- **Real names in trainer pages.** `trainer-modules.md` and this file name people and customer runs: role words before a licensee receives them.

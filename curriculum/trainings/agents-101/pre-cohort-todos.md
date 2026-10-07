@@ -76,3 +76,20 @@ Pattern promoted to `check_prompts.md § 35` after AE101 M2 push-back-on-the-pla
 ## 9. The narrator's scar (Antti)
 
 - **Point of view is the one storytelling factor A101 does not reach** (Opus 86 against AE101's 95; `curriculum/evals/story-depth.md` § Verification). The rubric's top rung is the narrator's own failure told as an incident. Antti's call 2026-09-23: this will be the story of how his own thinking evolved, written by him. Slots specified in the maintainer blocks of `curriculum/lectures/practice-of-risk.md` (M4, access) and `curriculum/lectures/access-is-not-absorption.md` (M7, absorption); the Mata pre-read paragraph in `curriculum/lectures/grounded.md` is the smaller fallback. When it lands, one Opus point-of-view read closes the loop.
+
+## 10. Rights and credits
+
+Third-party words, names and marks in what a licensee receives. A flagged item is a lead to check, not a verdict: compare with the source before rewording. Prompt bodies go through the prompt approval gate.
+
+- **A past customer is named as evidence.** `theory-plan.md` (an evidence tag) and `supplementary/agent-ready-data.md` ("…-style cohorts"): role words. The unsourced passage in `theory-plan.md` under the same heading: source or delete.
+- **`reference/claude-quick-reference.md` sits close to Anthropic's docs.** Compare the three flagged stretches with the pages they link; own wording and own examples.
+- **The wiki-shaped memory comes from Karpathy's "LLM Wiki" gist.** `building-agent-systems.md`, `supplementary/cookbook-for-agent-system-design.md`, `exercises/build-your-challenge-memory.md` and its prompts (shared with Agentic Product Teams 101): credit where the structure is taught, after a side-by-side read of the gist.
+- **`exercises/personal-site-with-guardrails.md` (and the `-cb` variant, shared with Claude Basics):**
+  - StoryBrand is a branded framework: reduce to "apply StoryBrand" and let the model supply the beats, as the page's own tip suggests; cut the aside about how LinkedIn uses it; check the mark.
+  - The ascription to Adam Grant: verify or remove the name.
+  - "Steal a look and feel by naming the site" → take inspiration from.
+  - The LinkedIn copy-the-whole-page step: limit to the participant's own sections.
+- **Rumelt's crux.** `exercises/name-your-crux.md`, `three-minds-one-synthesis.md`, `joint-double-diamond.md`: credit the books once per module; the extended version is not "Rumelt form".
+- **Pre-mortem is Gary Klein's.** `prompts/share-your-work-6.md`, `exercises/test-the-sharing-plan.md`: credit in the exercise.
+- **Jobs to be done.** `exercises/share-your-work.md` and its prompts use the "minimize / increase … when" statement form: credit Ulwick or drop the template form; check the mark.
+- **`exercises/module-3-prework.md`:** open the five reading-list links and check each one-line characterisation against its page; compare the example `CLAUDE.md` content with the docs' examples.

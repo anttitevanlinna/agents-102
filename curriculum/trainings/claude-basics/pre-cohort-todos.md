@@ -42,3 +42,11 @@ These are non-blocking but improve trainer rehearsal-passability and source prov
 3. Address the maintainer-block additions queued above.
 4. Update each file's Quality block when its row clears; flip the row in this file to DONE + date + sha.
 5. Re-read this file before the cohort runs. The workshop is ready when every row is DONE.
+
+## Rights and credits
+
+Third-party words, names and marks in what a licensee receives. A flagged item is a lead to check, not a verdict: compare with the source before rewording. Prompt bodies go through the prompt approval gate.
+
+- **A customer key in a lecture.** `lectures/agentic-systems-demo-script.md` names the same key as the tracked build under `site/clients/`. Confirm it is a pseudonym, or replace it in both.
+- **Rumelt's crux.** `exercises/find-the-crux.md`: credit the books once in the module.
+- **`exercises/personal-site-with-guardrails-cb.md` and `lectures/what-just-happened-cb.md`:** the StoryBrand, Adam Grant, "steal a look" and LinkedIn items are tracked in the Agents 101 file; the `-cb` variants take the same fixes.

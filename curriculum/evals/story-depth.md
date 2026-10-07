@@ -10,6 +10,34 @@ section per run, newest first; per-judge reports under `story-depth/`.
 
 
 
+## APT101 full training, hill-climb round 2 (`apt101-full-r3`), 2026-10-07
+
+Same protocol as r2. The fixes, from the r2 judges and the trial:
+- The turn lands on every seat. The expect line is kept outside the brief. "It finds what you asked it to look for" holds whatever the line asked. There is a same-morning rerun with the line reversed.
+- Lectures sit after the exercises they name (the pre-mortem, *Safe to say it's wrong*).
+- Every seat has a move in the benchmark, and retrievers carry the chosen doubt.
+- The five users do the job the product serves.
+- One agent file is handed over between trios.
+- The stance question is asked once, at the close.
+
+Judge files: `story-depth/apt101-full-r3.judge-{1,2,3}.md`.
+
+| Factor | AE101 (j1/j2/j3) | median | APT101 (j1/j2/j3) | median | r2 | r1 |
+|---|---|---|---|---|---|---|
+| Frame | 95/95/95 | 95 | 92/92/92 | 92 | 91 | 89 |
+| Narrative | 94/94/93 | 94 | 90/90/89 | 90 | 87 | 84 |
+| Point of view | 95/95/95 | 95 | 88/87/87 | 87 | 86 | 85 |
+| Stance | 92/93/92 | 92 | 93/91/91 | 91 | 90 | 88 |
+| Depth | 92/92/91 | 92 | 83/89/88 | 88 | 88 | n/a |
+
+**Reading.**
+- Narrative is up 6 over two rounds: the turn is lived now.
+- One judge scores stance above AE101 (93 vs 92), for "That sells less of this training. It is still where to start." and for naming where the frame breaks.
+- Depth is capped by breadth. Six learnings are developed, two of them only to 70. Headline ideas never developed: crux, double diamond, one agent per job, aligned autonomy, the six parts of an agent.
+- Point of view is still the guide's missing scene (3/3).
+
+**Trial (scratchpad record).** The turn landed fully for the team lead and early for the product owner (the room did it). For the designer, whose line asked for a test, the designed turn failed, but a deeper one landed: the digest counts only what his interview guide asked. Two problems hit every seat: the Day 2 headline is heard on Day 1 at the send-off, and the door never decides whether agents may read about named colleagues.
+
 ## APT101 full training, hill-climb round 1 (`apt101-full-r2`), 2026-10-07
 
 Same protocol as r1, plus Depth: the rubric's Step 1 learnings scored on the Depth anchors, with per-learning progression by day. A trio trial ran beside it, a simulated product owner, designer and team lead walking the three days (scratchpad record, not committed). The fixes came from r1's consensus:

@@ -1017,7 +1017,7 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-product-teams-101/apt101-write-the-bet",
-    "text": "Copy each team/<name>/hypothesis.md into team/bet.md, under a ## Hypotheses heading below the outcome. Word for word, each under the name of the person who wrote it.\n\nDon't edit, merge or rank them. If a folder has no hypothesis.md yet, write that person's name with \"not written yet\" under it.\n\nTell me which names you found.",
+    "text": "Copy each team/<name>/hypothesis.md into team/bet.md, under a ## Hypotheses heading below the outcome. Word for word, each under the name of the person who wrote it. Leave ## Outcome as it is. If ## Hypotheses already exists, replace what is under it; never add a second one.\n\nDon't edit, merge or rank them. If a folder has no hypothesis.md yet, write that person's name with \"not written yet\" under it.\n\nTell me which names you found.",
     "requires": [
       {
         "id": "hypothesis-md",
@@ -1381,6 +1381,439 @@
         "id": "look-for-line",
         "location": "module-2/morning-agent/morning.md (## Look for)",
         "note": "read by the overnight run; quoted by Day 2 apt101-d2-what-ran-overnight"
+      }
+    ]
+  },
+  "apt101-d2-add-the-challenges": {
+    "key": "apt101-d2-add-the-challenges",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-grow-the-tree",
+    "text": "Read the challenge stickies on the Merged tree frame of our Miro board, every sticky including any on its edge, or the screenshot I paste. Each sticky's colour tells you whose it is; ask if you don't know.\n\nAdd each challenge under its branch in team/tree.md, word for word, with the name of whoever wrote it. Leave every existing branch, name and source sentence untouched.\n\nTell me which challenges you couldn't place under a branch.",
+    "requires": [
+      {
+        "id": "tree-md",
+        "source": "prompt:apt101-d2-merge-the-tree"
+      }
+    ],
+    "produces": [
+      {
+        "id": "tree-md",
+        "location": "team/tree.md (challenges added)",
+        "note": "read by apt101-d2-whats-behind-each-branch"
+      }
+    ]
+  },
+  "apt101-d2-ask-the-other-way": {
+    "key": "apt101-d2-ask-the-other-way",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-read-the-digest",
+    "text": "Run the job in module-2/morning-agent/morning.md once more, over the same material, with one change: my ## Look for line turned round, against my hypothesis in team/<my-name>/hypothesis.md.\n\n- If my line looked for support, the new line is: find what in my material argues against it.\n- If my line looked for a test, or looked both ways, the new line is: find what in my material supports it. Support only.\n\nEither way, the run also says how much of it there is, and where.\n\nLeave morning.md and latest.html untouched. Write the result to team/<my-name>/digest-against.html.\n\nThen show me its headline beside my first headline, both quoted exactly. Add nothing.",
+    "requires": [
+      {
+        "id": "look-for-line",
+        "source": "prompt:apt101-d1-your-look-for-line"
+      },
+      {
+        "id": "hypothesis-md",
+        "source": "prompt:apt101-d1-bet-hypothesis"
+      }
+    ],
+    "produces": [
+      {
+        "id": "digest-against",
+        "location": "team/<my-name>/digest-against.html",
+        "note": "read by Day 3 what good means, five users"
+      }
+    ]
+  },
+  "apt101-d2-carry-the-doubt": {
+    "key": "apt101-d2-carry-the-doubt",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-gather-the-evidence",
+    "text": "Two limits for this retrieval, before you run.\n\nFirst, the door. Read team/what-goes-in.md. Open nothing from our own wiki, drives or folders that it keeps out. Treat any source it says to strip as kept out too, unless a stripped copy is already in sources/. At the end of your retrieval file, list each source you skipped for that reason.\n\nSecond, the doubt. Take the ## Doubt in ./crux.md as one more search.\n\nBefore you finish, append at least one finding that argues against the bet in team/bet.md, marked AGAINST. If you find none, write \"[NOT FOUND]\" and where you looked.",
+    "requires": [
+      {
+        "id": "door",
+        "source": "prompt:apt101-d1-the-door"
+      },
+      {
+        "id": "crux-md",
+        "source": "prompt:apt101-d2-the-call-it-blocks"
+      }
+    ],
+    "produces": [
+      {
+        "id": "retrieval-against",
+        "location": "sources/<retriever>-retrieval.md (AGAINST finding + skipped list)",
+        "note": "read by the curator"
+      }
+    ]
+  },
+  "apt101-d2-designer-prototype": {
+    "key": "apt101-d2-designer-prototype",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-make-your-piece",
+    "text": "Read team/chosen-bet.md and the interview quotes it carries.\n\nAsk me two things, one at a time: which one question this prototype should answer, and the job our customer hires the product for here.\n\nThen build a clickable rough prototype as one HTML file at team/<my-name>/prototype.html. Rough is right: grey boxes, real words. Every screen carries the customer quote it was built from, and that quote's source.\n\nAt the end of the page, list what the prototype does not answer.",
+    "requires": [
+      {
+        "id": "chosen-bet",
+        "source": "prompt:apt101-d2-write-the-chosen-bet"
+      }
+    ],
+    "produces": [
+      {
+        "id": "prototype",
+        "location": "team/<my-name>/prototype.html",
+        "note": "laid beside the other pieces; Day 3 map the story"
+      }
+    ]
+  },
+  "apt101-d2-find-the-obstacle": {
+    "key": "apt101-d2-find-the-obstacle",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-pick-the-outcome",
+    "text": "Read my memory in memory/, the outcome in team/bet.md, and the chosen doubt at the top of team/doubts.md.\n\nFind the obstacle between our customers and that outcome: the one thing that, if it moved, would release at least three other stuck things. Say it in one sentence, in our customers' words, with the memory line it rests on.\n\nRules:\n- Not the outcome again. \"Customers need to finish onboarding faster\" is the outcome restated.\n- Not a category. \"Onboarding is unclear\" is a category.\n- Not a feature. \"We need an import wizard\" is a solution.\n- Test it: if this obstacle moved, what three other stuck things would release? Name them. If you can't, keep looking.\n\nShow me the sentence. When I agree, save it to ./crux.md under ## Crux.",
+    "requires": [
+      {
+        "id": "team-bet",
+        "source": "prompt:apt101-d1-bet-gather"
+      }
+    ],
+    "produces": [
+      {
+        "id": "crux-md",
+        "location": "./crux.md (## Crux)",
+        "note": "read by three-retrievers-one-curator-*, three-minds-one-synthesis-*, hallucination-bakeoff-1, eval-loop-*"
+      }
+    ]
+  },
+  "apt101-d2-judge-a-real-summary": {
+    "key": "apt101-d2-judge-a-real-summary",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-catch-it-making-things-up",
+    "text": "Run judges/groundedness-judge.md on my real summary, against its sources. The summary and its sources are in team/<my-name>/real-summary.md if I readied one. If not, use the summary file I name below and the files it cites or was built from.\n\nFor each claim the judge flags, give me the sentence from the source that supports it, or \"not found\".\n\nIf there's a claim under ## My bet, set the judge's result beside it.\n\nSave it all to team/<my-name>/judge-run.md. End with the one flagged claim most likely to have reached a decision unchecked.",
+    "requires": [
+      {
+        "id": "real-summary",
+        "source": "prompt:apt101-d2-ready-a-real-summary"
+      },
+      {
+        "id": "groundedness-judge",
+        "source": "prompt:hallucination-bakeoff-8"
+      }
+    ],
+    "produces": [
+      {
+        "id": "judge-run",
+        "location": "team/<my-name>/judge-run.md",
+        "note": "read by apt101-d2-team-rules"
+      }
+    ]
+  },
+  "apt101-d2-lead-sceptical-colleague": {
+    "key": "apt101-d2-lead-sceptical-colleague",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-make-your-piece",
+    "text": "Play a sceptical senior colleague on my wider team. You've heard change announced before and you remember the last change negotiations. You're not hostile; you just won't be talked into anything.\n\nI'll present team/<my-name>/way-of-working.md in my own words. Ask me one hard question at a time, and wait for my answer before the next.\n\nAfter five questions, step out of the role. Tell me which answer landed, which didn't, and which line in the draft to change.",
+    "requires": [
+      {
+        "id": "way-of-working",
+        "source": "prompt:apt101-d2-lead-way-of-working"
+      }
+    ],
+    "produces": [
+      {
+        "id": "rehearsal",
+        "location": "scrollback"
+      }
+    ]
+  },
+  "apt101-d2-lead-way-of-working": {
+    "key": "apt101-d2-lead-way-of-working",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-make-your-piece",
+    "text": "Read team/chosen-bet.md, team/what-goes-in.md and today's files in team/.\n\nDraft a one-page working agreement for how our wider team would work on this bet with agents. Save it to team/<my-name>/way-of-working.md. Cover:\n- what the agents do on this bet\n- what stays with people: talking to customers, choosing which opportunity to pursue, anything a customer sees before a person reads it\n- who reads what the agents write, and when\n- when the team revisits the agreement\n\nWrite it as a proposal the team decides, not a decision. Where you're guessing at how our team works, mark it as a question for me.",
+    "requires": [
+      {
+        "id": "chosen-bet",
+        "source": "prompt:apt101-d2-write-the-chosen-bet"
+      },
+      {
+        "id": "door",
+        "source": "prompt:apt101-d1-the-door"
+      }
+    ],
+    "produces": [
+      {
+        "id": "way-of-working",
+        "location": "team/<my-name>/way-of-working.md",
+        "note": "read by apt101-d2-lead-sceptical-colleague, Day 3 take it to the team"
+      }
+    ]
+  },
+  "apt101-d2-mark-the-doubt": {
+    "key": "apt101-d2-mark-the-doubt",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-read-the-digest",
+    "text": "Append the line I quote below to team/<my-name>/doubts.md, with the source the digest gave for it and my reason, in my words.\n\nThen open that source and find what it actually says about this. Put the source's own sentence next to the digest's line, both quoted exactly. If the source doesn't say it, say so plainly.\n\nThe line, and why I trust it least:",
+    "requires": [
+      {
+        "id": "doubts-md",
+        "source": "prompt:apt101-d2-what-ran-overnight"
+      }
+    ],
+    "produces": [
+      {
+        "id": "doubts-md",
+        "location": "team/<my-name>/doubts.md (marked line + reason)",
+        "note": "read in phase 5; Day 3 what good means"
+      }
+    ]
+  },
+  "apt101-d2-merge-the-tree": {
+    "key": "apt101-d2-merge-the-tree",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-grow-the-tree",
+    "text": "Read the tree frame on our team's Miro board: every sticky on it, including any on its edge. If you can't reach the board, say so, and I'll paste a screenshot. Ask us which sticky colour is whose if you don't know. Read the outcome in ./crux.md too.\n\nMerge our three sketches into one opportunity solution tree: the outcome at the root, opportunities under it, solutions under the opportunities.\n- Label every branch with the names of everyone who put it down. A branch only one of us put down stays, marked with that one name. Don't drop it, and don't average it into a neighbour.\n- An \"opportunity\" with only one possible solution is a solution in disguise. Flag it.\n- List the branches you would cut as not serving the outcome, each with its reason. Don't cut them.\n\nDraw the merged tree in a new frame on the board, titled Merged tree, with stickies and connecting lines, written inside the frame.\n\nThen write it to team/tree.md, with the names. Under each branch, quote the source sentence behind it word for word, with its file and whose it is, so any of us can check the branch from team/tree.md alone. Where that sentence sits on another person's laptop, ask them to paste it in.",
+    "requires": [
+      {
+        "id": "crux-md",
+        "source": "prompt:apt101-d2-the-call-it-blocks"
+      }
+    ],
+    "produces": [
+      {
+        "id": "tree-md",
+        "location": "team/tree.md",
+        "note": "read by three-minds-one-synthesis, apt101-d2-add-the-challenges, apt101-d2-whats-behind-each-branch"
+      }
+    ]
+  },
+  "apt101-d2-po-kill-test": {
+    "key": "apt101-d2-po-kill-test",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-make-your-piece",
+    "text": "Read team/chosen-bet.md and its riskiest assumption.\n\nPropose two or three of the cheapest experiments that could prove it wrong: a fake-door page, a short survey, a concierge test. For each, one line on what it costs and how fast it answers. Ask me to pick one.\n\nThen write a test card to team/<my-name>/kill-test.md:\n- what must be true\n- the test\n- the measure\n- the threshold below which the bet fails\n\nThen build the experiment I picked so it can run on Monday: a fake-door page at team/<my-name>/fake-door.html, or a survey at team/<my-name>/survey.md.",
+    "requires": [
+      {
+        "id": "chosen-bet",
+        "source": "prompt:apt101-d2-write-the-chosen-bet"
+      }
+    ],
+    "produces": [
+      {
+        "id": "kill-test",
+        "location": "team/<my-name>/kill-test.md (+ fake-door.html or survey.md)",
+        "note": "laid beside the other pieces; Day 3"
+      }
+    ]
+  },
+  "apt101-d2-ready-a-real-summary": {
+    "key": "apt101-d2-ready-a-real-summary",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-catch-it-making-things-up",
+    "text": "I'll name a research summary below: the overnight digest, a synthesis note, or a summary from our team's drive. Write to team/<my-name>/real-summary.md the path of that summary, and the path of each source file it cites or was built from. Where a source isn't on this laptop, write its name and \"not here\".\n\nThen, under ## My bet, write the one claim I quote as the one I think is unsupported, with my reason, in my words. Don't check it.\n\nThe summary:",
+    "produces": [
+      {
+        "id": "real-summary",
+        "location": "team/<my-name>/real-summary.md",
+        "note": "read by apt101-d2-judge-a-real-summary"
+      }
+    ]
+  },
+  "apt101-d2-team-rules": {
+    "key": "apt101-d2-team-rules",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-keep-and-run-tonight",
+    "text": "Read team/team-rules.md, the three team/<name>/rules.md files, team/doubts.md, team/tree.md, each team/<name>/judge-run.md and team/premortem.md.\n\nPropose changes to team/team-rules.md, only for mistakes that showed up in at least two places today. Give each one where it showed up.\n\nAdd at least one example of good the agents should copy: a line that kept two sources' disagreement visible, or a quote with its interview and minute. A rules file that is all don'ts teaches only what to avoid.\n\nShow me the proposed team/team-rules.md before saving.",
+    "requires": [
+      {
+        "id": "team-rules",
+        "source": "prompt:apt101-d1-team-rules"
+      }
+    ],
+    "produces": [
+      {
+        "id": "team-rules",
+        "location": "team/team-rules.md (Day 2)",
+        "note": "read on Day 3"
+      }
+    ]
+  },
+  "apt101-d2-the-call-it-blocks": {
+    "key": "apt101-d2-the-call-it-blocks",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-pick-the-outcome",
+    "text": "Read ./crux.md and team/bet.md. What is the sharpest decision this obstacle blocks: one our team has to make in the next few weeks? One sentence, as a call between options, not a topic. \"What about onboarding?\" is a topic. \"Do we build the import step ourselves, or partner for it?\" is a call.\n\nShow it to me. When I agree, append it to ./crux.md under ## Question, without touching the lines above.",
+    "requires": [
+      {
+        "id": "crux-md",
+        "source": "prompt:apt101-d2-find-the-obstacle"
+      }
+    ],
+    "produces": [
+      {
+        "id": "crux-md",
+        "location": "./crux.md (## Question)",
+        "note": "read by every Day 2 reused prompt"
+      }
+    ]
+  },
+  "apt101-d2-the-failure-we-missed": {
+    "key": "apt101-d2-the-failure-we-missed",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-imagine-it-failed",
+    "text": "Read the pre-mortem frame on our team's Miro board: every sticky, including any on its edge, and the dots on each. Sticky and dot colours tell you whose they are; ask us if you don't know. If you can't reach the board, say so, and I'll paste a screenshot.\n\nRead team/chosen-bet.md and our three pieces in team/<name>/ too.\n\nThe bet failed a year from now. Add the causes we missed, at most three. Lean toward what we seem to assume will go fine. Each cause in the past tense, with the early warning sign we would have seen in week two. Put them on the frame in a colour none of us used, inside the frame.\n\nThen save every sticky to team/premortem.md: its words, its author, its dots, and your additions marked as Claude's.",
+    "requires": [
+      {
+        "id": "chosen-bet",
+        "source": "prompt:apt101-d2-write-the-chosen-bet"
+      }
+    ],
+    "produces": [
+      {
+        "id": "premortem",
+        "location": "team/premortem.md",
+        "note": "read by apt101-d2-team-rules, apt101-d2-tonights-question, Day 3 five users"
+      }
+    ]
+  },
+  "apt101-d2-tonights-question": {
+    "key": "apt101-d2-tonights-question",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-keep-and-run-tonight",
+    "text": "Edit module-2/morning-agent/morning.md for tonight's run:\n- It reads chosen-bet.md and premortem.md from our team folder, by the full path team/ points to. A scheduled run starts fresh, so write the full path, not team/.\n- It reports the evidence for the bet and the evidence against it, with how many customers said each.\n- It watches for the early warning signs in premortem.md.\n- It runs judges/groundedness-judge.md on its own digest before writing it.\n\nShow me the diff before saving.",
+    "requires": [
+      {
+        "id": "morning-agent-brief",
+        "source": "prompt:personal-agent-homework-2"
+      },
+      {
+        "id": "chosen-bet",
+        "source": "prompt:apt101-d2-write-the-chosen-bet"
+      },
+      {
+        "id": "premortem",
+        "source": "prompt:apt101-d2-the-failure-we-missed"
+      }
+    ],
+    "produces": [
+      {
+        "id": "morning-agent-brief",
+        "location": "module-2/morning-agent/morning.md (Day 2 edit)",
+        "note": "read by tonight’s scheduled run"
+      }
+    ]
+  },
+  "apt101-d2-what-ran-overnight": {
+    "key": "apt101-d2-what-ran-overnight",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-read-the-digest",
+    "text": "First, keep copies before tonight's run overwrites anything. Copy module-2/morning-agent/latest.html to team/<my-name>/digest-day1.html, unchanged. Then write two lines at the head of team/<my-name>/doubts.md, word for word: my ## Look for line from module-2/morning-agent/morning.md, and my expectation from team/<my-name>/expect.md. Ask my first name if you don't know it.\n\nThen read morning.md, latest.html, team/what-goes-in.md and team/bet.md. Show me four lines side by side, each quoted exactly:\n- the digest's headline\n- my expectation\n- my look-for line\n- the hypothesis in team/bet.md the digest speaks to\n\nDon't comment on how they compare. That's for us.\n\nThen report what ran:\n- when latest.html was last written\n- which job ran, from which brief\n- which files it read, and any it read that sit outside what team/what-goes-in.md lets in\n\nLast, list every claim in the digest, ranked by how much a decision would rest on it. Give each the source file it came from, or \"no source\".",
+    "requires": [
+      {
+        "id": "morning-agent-output",
+        "source": "prompt:personal-agent-homework-3"
+      },
+      {
+        "id": "look-for-line",
+        "source": "prompt:apt101-d1-your-look-for-line"
+      },
+      {
+        "id": "expect-md",
+        "source": "prompt:apt101-d1-your-expect-line"
+      }
+    ],
+    "produces": [
+      {
+        "id": "digest-day1",
+        "location": "team/<my-name>/digest-day1.html",
+        "note": "read by Day 3 five users, what good means"
+      },
+      {
+        "id": "doubts-md",
+        "location": "team/<my-name>/doubts.md (head: look-for + expect lines)",
+        "note": "read by apt101-d2-mark-the-doubt"
+      }
+    ]
+  },
+  "apt101-d2-whats-behind-each-branch": {
+    "key": "apt101-d2-whats-behind-each-branch",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-choose-the-bet",
+    "text": "Run judges/groundedness-judge.md on every branch of team/tree.md, against the source sentences quoted under that branch.\n\nFor each branch, list:\n- what holds: the supporting sentence, and where it came from\n- what is stretched\n- what has nothing behind it\n\nThen put one sticky per branch on the bet frame of our Miro board, inside the frame, with that verdict in a few words. If you can't reach the board, give me the list to copy.\n\nCut nothing, from the board or from the file.",
+    "requires": [
+      {
+        "id": "tree-md",
+        "source": "prompt:apt101-d2-add-the-challenges"
+      },
+      {
+        "id": "groundedness-judge",
+        "source": "prompt:hallucination-bakeoff-8"
+      }
+    ],
+    "produces": [
+      {
+        "id": "branch-verdicts",
+        "location": "Miro bet frame (one sticky per branch)",
+        "note": "read by the trio in phase 2"
+      }
+    ]
+  },
+  "apt101-d2-write-the-chosen-bet": {
+    "key": "apt101-d2-write-the-chosen-bet",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-choose-the-bet",
+    "text": "Read the branch we chose on the bet frame of our Miro board and in team/tree.md. Read the outcome in ./crux.md and team/bet.md.\n\nWrite team/chosen-bet.md as a hypothesis statement: We believe <this capability> for <these people> will achieve <this outcome>. We'll know we're right when we see <this signal>. The signal has a number and a window, and could come back no.\n\nUnder it:\n- the evidence behind it, quoted from team/tree.md with its source\n- the riskiest assumption\n- the branches we set aside, and why\n\nMark the set-aside branches in team/tree.md as set aside. Don't delete them.\n\nShow me chosen-bet.md before saving.",
+    "requires": [
+      {
+        "id": "tree-md",
+        "source": "prompt:apt101-d2-add-the-challenges"
+      }
+    ],
+    "produces": [
+      {
+        "id": "chosen-bet",
+        "location": "team/chosen-bet.md",
+        "note": "read by make your piece, imagine it failed, tonight’s run, Day 3"
       }
     ]
   },

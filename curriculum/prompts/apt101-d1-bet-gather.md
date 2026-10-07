@@ -11,7 +11,7 @@ produces:
     location: "team/bet.md (## Hypotheses, attributed)"
     note: "read by apt101-d1-pin-the-bet, apt101-d1-bet-assumptions, Day 2"
 ---
-Copy each team/<name>/hypothesis.md into team/bet.md, under a ## Hypotheses heading below the outcome. Word for word, each under the name of the person who wrote it.
+Copy each team/<name>/hypothesis.md into team/bet.md, under a ## Hypotheses heading below the outcome. Word for word, each under the name of the person who wrote it. Leave ## Outcome as it is. If ## Hypotheses already exists, replace what is under it; never add a second one.
 
 Don't edit, merge or rank them. If a folder has no hypothesis.md yet, write that person's name with "not written yet" under it.
 

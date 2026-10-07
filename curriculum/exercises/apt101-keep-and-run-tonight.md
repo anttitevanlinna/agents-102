@@ -22,7 +22,7 @@ It reads the benchmark files from `module-5/` and your judge. Push back where a 
 
 The team lead drives at the shared screen. Ask Claude to propose changes to the team's rules from what came back more than once today.
 
-**Prompt** · `apt101-d2-team-rules`, reads `team/team-rules.md`, the three `team/<name>/rules.md` files, `team/doubts.md`, `team/tree.md`, each `team/<name>/judge-run.md` and `team/premortem.md`; proposes rule changes only for mistakes that showed up in at least two places, each with where it showed up; adds at least one example of good the agents should copy (a line that kept two sources' disagreement visible, a quote with its interview and minute); shows the proposed `team/team-rules.md` before saving
+{{prompt:apt101-d2-team-rules}}
 
 Each of you has a say on the proposal before it saves. Push back on a rule written from a single miss. One wrong line in one digest is worth a note, not yet a rule. And push back on a file that is all don'ts.
 
@@ -32,7 +32,7 @@ Each of you has a say on the proposal before it saves. Push back on a rule writt
 
 Each of you, on your own laptop. Tonight's digest should read the chosen bet and look as hard for what argues against it as for what supports it. Ask Claude to change your agent's brief for tonight.
 
-**Prompt** · `apt101-d2-tonights-question`, edits `module-2/morning-agent/morning.md` so tonight's run reads `chosen-bet.md` and `premortem.md` by the team folder's full path, the one the trainer posted (a scheduled run starts fresh and cannot resolve a bare `team/`), reports evidence for and against the bet with how many customers said each, watches for the early warning signs from the pre-mortem, and runs `judges/groundedness-judge.md` on its own digest before writing it; shows me the diff before saving
+{{prompt:apt101-d2-tonights-question}}
 
 Then ask Claude to run it once now, so you see it read the chosen bet before you leave.
 

@@ -14,7 +14,7 @@ The team lead runs the benchmark on their laptop, in the <span class="rt-code">s
 
 Pick the summary you will check in phase 5: the overnight digest, your curator's synthesis note, or a research summary from your team's drive that someone is about to put in front of a priority call. Read it where you know the material best. Then ask Claude to get it ready, and say which claim you would bet is unsupported before any judge exists.
 
-**Prompt** · `apt101-d2-ready-a-real-summary`, writes to `team/<my-name>/real-summary.md` the path of the summary file I name and of each source file it cites or was built from, and writes under `## My bet` the one claim I quote as the one I think is unsupported, in my words, without checking it
+{{prompt:apt101-d2-ready-a-real-summary}}
 
 Then join the team lead's screen when the scoreboard lands in phase 3.
 
@@ -95,7 +95,7 @@ The briefing was built to be caught. Your real summary was not. Team lead, pick 
 
 Ask Claude to run the judge on it against the sources it claims to draw on.
 
-**Prompt** · `apt101-d2-judge-a-real-summary`, runs `judges/groundedness-judge.md` on my real summary against its sources (from `team/<my-name>/real-summary.md` if I readied one, else the summary file I name and the files it cites or was built from); lists each flagged claim with the sentence from the source that supports it or "not found"; sets the result beside the claim under `## My bet`, if there is one; saves to `team/<my-name>/judge-run.md`; ends with the one flagged claim most likely to have reached a decision unchecked
+{{prompt:apt101-d2-judge-a-real-summary}}
 
 Then tell your two teammates which line it was, and whether the judge caught the claim you bet on. "The agent got this wrong" is the sentence.
 

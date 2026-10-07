@@ -26,7 +26,7 @@ The designer drives at the shared screen: the designer sat closest to what custo
 
 Ask Claude to merge the three sketches into one tree against the outcome, keeping whose each branch was.
 
-**Prompt** · `apt101-d2-merge-the-tree`, reads the tree frame through the Miro connector (or the screenshot) and the outcome in `./crux.md`; merges the three sketches into one tree in a new frame, every branch labelled with the names of everyone who put it down; marks a branch with one name instead of dropping it; flags any "opportunity" that has only one possible solution as a solution in disguise; lists the branches it would cut as not serving the outcome, each with its reason, without cutting them; writes the merged tree with names to `team/tree.md`, quoting under each branch the source sentence behind it word for word, with its file and whose it is, so any laptop can check the branch from `team/tree.md` alone; where that sentence sits on another person's laptop, asks them to paste it in
+{{prompt:apt101-d2-merge-the-tree}}
 
 Push back on a merge that reads like the average of the three of you. If your single-name branch disappeared into a bigger one, ask for it back. If a cut has no reason you can argue with, ask for the reason.
 
@@ -69,7 +69,7 @@ Back to the board. Each of you adds your challenges to the merged tree on sticki
 
 Then the designer asks Claude to record the challenges in the tree file, with whose each one was.
 
-**Prompt** · `apt101-d2-add-the-challenges`, reads the challenge stickies on the merged tree frame; adds each under its branch in `team/tree.md` with the name on the sticky, word for word, and leaves every existing branch, name and source untouched
+{{prompt:apt101-d2-add-the-challenges}}
 
 The tree is not finished, and it should not be. You choose from it in *Choose the bet*.
 

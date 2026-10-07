@@ -20,7 +20,7 @@ Pick the one question your prototype should answer before you ask for a single s
 
 Ask Claude to build a clickable rough prototype from the quotes behind the bet.
 
-**Prompt** · `apt101-d2-designer-prototype`, reads `team/chosen-bet.md` and the interview quotes it carries; asks me which one question the prototype should answer and the job the customer hires it for; builds a clickable rough prototype as one HTML file at `team/<your-name>/prototype.html`, every screen carrying the customer quote it was built from and its source; lists at the end what the prototype does not answer
+{{prompt:apt101-d2-designer-prototype}}
 
 Push back when it comes back polished. A finished look makes people believe the design is further along than it is. Rough is the point: the customer reacts to the idea, not the colours. And push back on any quote you don't recognise from the interviews. Ask for the source; if there isn't one, it goes.
 
@@ -30,7 +30,7 @@ Write down what would kill the bet before you build anything, while nobody in th
 
 Ask Claude to build the experiment that could prove the bet wrong, ready to run on Monday.
 
-**Prompt** · `apt101-d2-po-kill-test`, reads `team/chosen-bet.md` and its riskiest assumption; proposes two or three of the cheapest experiments that could prove it wrong (a fake-door page, a short survey, a concierge test) and asks me to pick; writes a test card to `team/<your-name>/kill-test.md` (what must be true, the test, the measure, the threshold below which the bet fails); builds the chosen experiment so it can run, a fake-door page at `team/<your-name>/fake-door.html` or a survey at `team/<your-name>/survey.md`
+{{prompt:apt101-d2-po-kill-test}}
 
 The test card is Alex Osterwalder's, from Strategyzer. Push back on a threshold you could hit by accident ("some people click"). Push back on a survey that asks what customers would do; ask what they did last time.
 
@@ -38,11 +38,11 @@ The test card is Alex Osterwalder's, from Strategyzer. Push back on a threshold 
 
 Ask Claude to draft how your wider team would work on this bet with agents, for the team to decide.
 
-**Prompt** · `apt101-d2-lead-way-of-working`, reads `team/chosen-bet.md`, `team/what-goes-in.md` and today's files in `team/`; drafts a one-page working agreement at `team/<your-name>/way-of-working.md`: what the agents do on this bet, what stays with people (talking to customers, choosing which opportunity to pursue, anything a customer sees before a person reads it), who reads what the agents write and when, and when the team revisits the agreement; written as a proposal the team decides, not a decision
+{{prompt:apt101-d2-lead-way-of-working}}
 
 Then rehearse telling it. Ask Claude to play a colleague who has heard change announced before.
 
-**Prompt** · `apt101-d2-lead-sceptical-colleague`, plays a sceptical senior colleague on my wider team who remembers the last change negotiations; I present `team/<your-name>/way-of-working.md` in my own words; they ask one hard question at a time and wait for my answer; after five questions, tells me which answer landed, which did not, and which line in the draft to change
+{{prompt:apt101-d2-lead-sceptical-colleague}}
 
 Push back on a colleague who folds after one answer. The real one won't. And keep the draft a draft: the point of Monday is that the team decides with you.
 

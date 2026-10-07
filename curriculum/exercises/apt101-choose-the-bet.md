@@ -14,7 +14,7 @@ The product owner drives at the shared screen. The designer and the team lead wo
 
 Ask Claude to check every branch of the tree against its evidence and mark the result on the board.
 
-**Prompt** · `apt101-d2-whats-behind-each-branch`, runs `judges/groundedness-judge.md` on every branch of `team/tree.md` against the source sentences quoted under it there; for each branch, lists what holds (the supporting sentence and where it came from), what is stretched, and what has nothing behind it; puts one sticky per branch on the bet frame with that verdict; cuts nothing
+{{prompt:apt101-d2-whats-behind-each-branch}}
 
 Push back when a branch is marked solid on one ticket or one enthusiastic interview line. "Customers said they would love this" is not evidence of what they do.
 
@@ -38,7 +38,7 @@ Choose one. The choice is yours, not Claude's, and not a count of stickies. If t
 
 Ask Claude to write the chosen branch as a bet the team can test.
 
-**Prompt** · `apt101-d2-write-the-chosen-bet`, reads the chosen branch on the board and in `team/tree.md`, the outcome in `./crux.md` and `team/bet.md`; writes `team/chosen-bet.md` as a hypothesis statement (*We believe [this capability] for [these people] will achieve [this outcome]. We'll know we're right when [signal]*), with the evidence behind it quoted from `team/tree.md`, the riskiest assumption, the branches set aside and why; marks the set-aside branches in `team/tree.md` without deleting them; shows me the file before saving
+{{prompt:apt101-d2-write-the-chosen-bet}}
 
 The hypothesis statement is Jeff Gothelf and Josh Seiden's, from *Lean UX*. Push back if the signal can only say yes. "Users like it" is not a signal. "Ten of forty admins finish the import without calling us" is.
 

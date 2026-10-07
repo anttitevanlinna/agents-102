@@ -26,7 +26,7 @@ Each of your agents ran overnight on your own material, through the door your te
 
 Each of you, on your own laptop. Ask Claude to keep a copy of the digest and of the two lines you wrote into the brief on Day 1, what to look for and what you expected, because tonight's run overwrites them. Then have it put four lines side by side, the digest's headline, your expectation, your look-for line and your bet, and report what ran overnight, on which material, as a ranked list with the source of each line.
 
-**Prompt** · `apt101-d2-what-ran-overnight`, first copies `module-2/morning-agent/latest.html` to `team/<your-name>/digest-day1.html` unchanged, and writes my Day 1 `## Look for` line from `module-2/morning-agent/morning.md` and my expectation from `team/<your-name>/expect.md`, word for word, at the head of `team/<your-name>/doubts.md`; then reads `morning.md`, the run's `latest.html`, `team/what-goes-in.md` and `team/bet.md`; shows four lines side by side, quoted exactly: the digest's headline, my expectation, my look-for line, and the hypothesis in `team/bet.md` it speaks to; then reports when `latest.html` was last written, which job ran, which files it read (and any it read that sit outside what your team agreed), and lists every claim in the digest ranked by how much a decision would rest on it, each with the source file it came from or "no source"
+{{prompt:apt101-d2-what-ran-overnight}}
 
 Push back if the list comes back as a summary of the digest. You want lines and sources, not a second essay about the first one. Push back too if any of the four lines comes back paraphrased.
 
@@ -40,7 +40,7 @@ Read your own digest. Every line in it came from your material. You know these s
 
 Pick the one line you trust least. Not the one that is plainly wrong; the one you would least want a priority call to rest on. Ask Claude to write it down with your reason.
 
-**Prompt** · `apt101-d2-mark-the-doubt`, appends the line I quote, its source, and my reason in my words to `team/<your-name>/doubts.md`, then checks the source and tells me what it actually says next to the digest's line
+{{prompt:apt101-d2-mark-the-doubt}}
 
 If your doubt lands on a typo, look again.
 
@@ -59,7 +59,7 @@ Laptops half shut. Each of you reads your four lines to the other two: the headl
 
 Each of you, on your own laptop. Ask Claude to run your digest once more from the same brief, with only your look-for line turned round, and to set the two headlines side by side. Your Day 1 digest and brief stay as they are.
 
-**Prompt** · `apt101-d2-ask-the-other-way`, runs the job in `module-2/morning-agent/morning.md` once more over the same material with only my `## Look for` line turned round against my hypothesis from `team/<my-name>/hypothesis.md`: a line that looked for support becomes "find what in my material argues against it"; a line that looked for a test, or both ways, becomes "find what in my material supports it", for support only; either way it asks how much of it there is and where; leaves `morning.md` and `latest.html` untouched and writes the result to `team/<my-name>/digest-against.html`; then shows its headline beside my first headline, both quoted exactly, with nothing added
+{{prompt:apt101-d2-ask-the-other-way}}
 
 Each of you reads your two headlines aloud, the first and the one that came back the other way round.
 

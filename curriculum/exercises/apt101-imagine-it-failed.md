@@ -28,7 +28,7 @@ Then rank. Each of you puts three dots on the causes you think most likely. A se
 
 The team lead drives at the shared screen. Ask Claude to read the board and add what the three of you did not see.
 
-**Prompt** · `apt101-d2-the-failure-we-missed`, reads the pre-mortem frame through the Miro connector (or a screenshot) with every sticky and its dots, plus `team/chosen-bet.md` and the three pieces in `team/<name>/`; leans toward what we seem to assume will go fine; adds at most three causes in a separate colour, each with the early warning sign we would see in week two; saves every sticky with its author and dots, and its own additions marked as Claude's, to `team/premortem.md`
+{{prompt:apt101-d2-the-failure-we-missed}}
 
 Push back on a cause that is a rewording of one already on the board. You want the one nobody in the trio was in a position to see.
 

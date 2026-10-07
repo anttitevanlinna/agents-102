@@ -12,7 +12,7 @@ The product owner drives at the shared screen. The designer checks the obstacle 
 
 Ask Claude to read your product memory and the bet, and find the obstacle between your customers and the outcome you wrote on Day 1: the one that, if it moved, would release the most else.
 
-**Prompt** · `apt101-d2-find-the-obstacle`, reads `memory/`, the outcome in `team/bet.md` and the chosen doubt in `team/doubts.md`; names in one sentence, in customers' words, the obstacle between our customers and that outcome which, if it moved, would release at least three other stuck things, with the memory line it rests on; rejects an answer that restates the outcome, names a category or names a feature; shows it, then saves it to `./crux.md` under `## Crux`
+{{prompt:apt101-d2-find-the-obstacle}}
 
 Push back hard when the first answer restates the outcome. "Customers need to finish onboarding faster" is the outcome again. "New admins stall at the import step and wait for us to call them" is an obstacle you can do something about.
 
@@ -20,7 +20,7 @@ Push back hard when the first answer restates the outcome. "Customers need to fi
 
 Ask Claude to name the sharpest decision the obstacle blocks, the one today's tree has to inform, and append it to the same file.
 
-**Prompt** · `apt101-d2-the-call-it-blocks`, reads `./crux.md` and `team/bet.md`; names in one sentence the decision the obstacle blocks that our team has to make in the next few weeks, as a call between options, not a topic; shows it, then appends it to `./crux.md` under `## Question` without touching the lines above
+{{prompt:apt101-d2-the-call-it-blocks}}
 
 Push back if the question is a topic ("what about onboarding?"). It should be a call one of you would stay late to make.
 

@@ -38,7 +38,7 @@ Product owner, ask Claude to act as your internet retriever and stream findings 
 
 When your retriever's search terms are confirmed, before it runs, give it two limits. It reads only what your team let in on Day 1, and it brings back at least one finding against the bet.
 
-**Prompt** · `apt101-d2-carry-the-doubt`, tells the retriever in this session: read `team/what-goes-in.md` and open nothing from our own wiki, drive or folders that it keeps out, treating any source the door says to strip as kept out unless a stripped copy is in `sources/`, and listing each source skipped for that reason at the end of the retrieval file; take the `## Doubt` in `./crux.md` as one more search; before finishing, append at least one finding that argues against the bet in `team/bet.md`, marked AGAINST, or write "[NOT FOUND]" with where it looked
+{{prompt:apt101-d2-carry-the-doubt}}
 
 If a retriever starts reading the world, stop it, steer narrower ("ten sources at most, only the space I named"), then say *"continue"*.
 

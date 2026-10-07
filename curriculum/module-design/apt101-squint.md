@@ -1,6 +1,6 @@
 # APT101 squint: slide titles only, in story order
 
-Method (maintainer, 2026-10-06): squint at the slide titles alone and put them in sequence. Bodies come only once the titles flow. The storyline is the appendix to `agents-102-core/strategy/content-strategy-agentic-product-management.md`, *you were right all along, and now it is dangerous*. ✱ = new title, no slide yet. "We…" narrator titles are the maintainer's essay wording (`practitioner-essays-year-one.md`), lightly cut, never invented. After three rounds (squint r1 72/64/35/64 · r2 74/70/55/68 · r3 70/70/57/72), r4 (student-journey lens) 74/75/72/68, forward 82. Round 5 = r4 judges + advisor union (r5 76/78/80/72, forward 82). Round 6 = header style pass from `header-style-distilled.md` (r6 76/78/82/74, forward 85), then r6 consensus edits. Lens (maintainer 2026-10-06): "the story is always the students' journey. it is about future too." The trio is the hero and the essay voice is the guide. The ending stays open and points forward.
+Method (maintainer, 2026-10-06): squint at the slide titles alone and put them in sequence. Bodies come only once the titles flow. The storyline is the appendix to `agents-102-core/strategy/content-strategy-agentic-product-management.md`, *you were right all along, and now it is dangerous*. ✱ = new title, no slide yet. "We…" narrator titles are the maintainer's essay wording (`practitioner-essays-year-one.md`), lightly cut, never invented. After three rounds (squint r1 72/64/35/64 · r2 74/70/55/68 · r3 70/70/57/72), r4 (student-journey lens) 74/75/72/68, forward 82. Round 5 = r4 judges + advisor union (r5 76/78/80/72, forward 82). Round 6 = header style pass from `header-style-distilled.md` (r6 76/78/82/74, forward 85), then r6 consensus edits. Stance thread (maintainer 2026-10-07): when models analyse wider, deeper and faster, what is your insight? Answer: real strategy work. It is planted on Day 1, sharpened at the Day 2 turn, answered on Day 3 and asked again at the close. Governance is cut, and data stays as one plain door on Day 1. Lens (maintainer 2026-10-06): "the story is always the students' journey. it is about future too." The trio is the hero and the essay voice is the guide. The ending stays open and points forward.
 
 ## Day 1: You were right all along
 
@@ -13,6 +13,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 
 **Now building is cheap**
 - Building got cheap, deciding didn't
+- When agents analyse wider, deeper and faster, what is your insight? ✱ (stance)
 - We built a tool that worked. It was used just a bit. ✱ (narrator)
 - A hypothesis can meet a working slice the same day ✱
 - Discovery belongs to the team that builds
@@ -52,6 +53,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 
 **Why it agreed**
 - It found what you asked it to look for ✱
+- It analysed everything and still had no insight ✱ (stance)
 - A faster feature factory is still a feature factory ✱
 - I used to think of being wrong as failure ✱ (narrator)
 - The instructions are one suspect; your question is another ✱ (style)
@@ -67,11 +69,9 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - The branch one of you found is often worth most ✱ (style)
 - The outcome at the root makes the merge choose
 
-**The team is the control**
+**Safe to say it's wrong**
 - Agents get checked, people don't get watched
 - "The agent got this wrong" costs nobody face ✱
-- Answer legal's questions before legal asks them ✱ (style)
-- Safe enough, under these conditions, for now
 
 **Fluent is not true**
 - The summary reads better than the evidence ✱ (style)
@@ -109,6 +109,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 
 **Three jobs, rewritten**
 - What each of us is for when building gets cheap
+- Your insight is the strategy: which customer, which bet, which no ✱ (stance answer)
 - Future leadership is about strategy, outcomes and customers ✱ (adopted positioning line)
 - Clear outcomes, free hands, for agents too ✱ (retitle)
 - Would you let an agent post your weekly update?
@@ -125,6 +126,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - Cheap building helps your rivals too
 - The six parts hold; the model keeps changing
 - I still make mistakes. I make them faster now. ✱ (narrator)
+- The models will analyse wider, deeper and faster. What will your insight be? ✱ (stance, echo)
 - Will your organisation learn faster than the model changes underneath it?
 
 ## Map (not part of the squint)

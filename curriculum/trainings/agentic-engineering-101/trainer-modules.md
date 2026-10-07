@@ -59,7 +59,7 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 - A stuck student asks their own Claude first. One broken laptop: 30 seconds, then a buddy.
 - Narrate agent waits; never apologize for them. A quiet first beat is a Nordic norm, not no-signal.
 
-**After each sitting.** Note what slipped and what fired while it's fresh; send it to your delivery contact (ArcticRex).
+**After each sitting.** Note what slipped and what fired while it's fresh; send it to your delivery contact.
 
 </section>
 

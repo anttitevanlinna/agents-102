@@ -24,7 +24,7 @@ Put down the opportunity only you would think of. The ones all three of you saw 
 
 The designer drives at the shared screen: the designer sat closest to what customers actually said. While Claude merges, the product owner checks each merged branch against the outcome at the root, and the team lead marks on the board every branch only one person found, so none of them goes missing in the merge.
 
-Ask Claude to merge the three sketches into one tree against the outcome, keeping whose each branch was.
+Ask Claude to merge the three sketches into one tree against the outcome, keeping each branch's names.
 
 {{prompt:apt101-d2-merge-the-tree}}
 
@@ -69,7 +69,7 @@ If the answer comes back with a longer list of issues than you have time for, ha
 
 Back to the board. Each of you adds your challenges to the merged tree on stickies in your colour, from the stance you kept: the product owner on the branch whose assumptions are thinnest, the designer on the branch that is really a solution or misread the customer, the team lead on the branch the team could not carry.
 
-Then the designer asks Claude to record the challenges in the tree file, with whose each one was.
+Then the designer asks Claude to record the challenges in the tree file, each with its author's name.
 
 {{prompt:apt101-d2-add-the-challenges}}
 
@@ -77,8 +77,8 @@ The tree is not finished, and it should not be. You choose from it in *Choose th
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (technical@1faabaa8 behavior@21214fc5 pedagogy@20018100)
-- judges @1faabaa8: technical PASS, behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-grow-the-tree.pedagogy.json)
+**Quality:** compendium-audited 2026-10-07 (writing@7ff539b9 technical@1faabaa8 behavior@21214fc5 pedagogy@20018100)
+- judges @7ff539b9: writing PASS, technical PASS, behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-grow-the-tree.pedagogy.json)
 
 **Role in Day 2:** beat 4. Produces the team's opportunity solution tree, attributed per branch, and each person's three-stance read of the evidence. Placed after *Go back to your customers*; *Widen before you choose* names afterwards what the trio just did (alone first, merge keeps the single-name branch, the outcome makes the merge choose).
 

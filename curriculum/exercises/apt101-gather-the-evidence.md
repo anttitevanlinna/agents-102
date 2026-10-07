@@ -46,7 +46,7 @@ Retrievers tend to wrap up early. A tidy *Conflicts and gaps* section looks fini
 
 {{prompt:three-retrievers-one-curator-4}}
 
-If you have no connector to your wiki or drive, point the retriever at your own `sources/` from Day 1 instead. Two retrievers still show the disagreement; so does one.
+If you have no connector to your wiki or drive, point the retriever at your own `sources/` from Day 1 instead.
 
 ## Phase 2: Curate while they run
 
@@ -78,8 +78,8 @@ Three sources read at once, three memories curated from the same evidence, and a
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (technical@1faabaa8 behavior@21214fc5 pedagogy@20018100)
-- judges @1faabaa8: technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-gather-the-evidence.pedagogy.json)
+**Quality:** compendium-audited 2026-10-07 (writing@7ff539b9 technical@1faabaa8 behavior@21214fc5 pedagogy@20018100)
+- judges @7ff539b9: writing PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-gather-the-evidence.writing.json), technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-gather-the-evidence.pedagogy.json)
 
 **Role in Day 2:** beat 3. Fills every `sources/` and `memory/` with fresh evidence scoped to the agreed outcome; surfaces the contradictions the tree grows from. Followed by the lecture *Why it agreed*, which names why the digest agreed after the trio has seen sources disagree.
 

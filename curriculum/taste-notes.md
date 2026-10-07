@@ -23,6 +23,16 @@ Append-only stream of editorial calls made on real curriculum text. **Newest at 
 
 ---
 
+## 2026-10-07 — rights pass before licensing (AE101, Agents 101)
+
+**Counterweight: a famous name stays.** An audit flagged the student page that says to build "a small Lemmings game" as a trademark risk and proposed a generic "guide-the-creatures game". Antti: *"come on. Lemmings is a famous enough thing. Like pacman. Keep."* The name is the instruction: it tells the participant in one word what to build and how it should feel. A generic description would need a paragraph and still be vaguer.
+
+**Counterweight: an adapted prompt is not a copy.** Two auditors called the walk-down prompt Pocock's `grill-me`. Antti: *"it only has shape similarity. It has also clear differences to what Matt now proposes. Also: credit is on following slides."* Side by side he was right: three questions at a time, prose answers, "lock it in". The credit sits one slide on, and that is close enough. What went was the optional slide that reproduced the original word for word; it became two links.
+
+**A cut, with its reason.** Three reference pages restating product documentation, about twelve thousand words: *"It goes stale and the right way is to use the agent to check itself."* Where a step needed a fact from them, the replacement is one sentence: *"Ask Claude to look up the one for yours."*
+
+**A cut by value, not by risk.** Two supplements came up as rights questions (a trainer's private skill system, whole posts by one author). The answer was not to fix the rights: *"cut both… They don't really add value."* Then, of the two figures of a skill system in the module six lecture: *"Pocock is enough."*
+
 ## 2026-09-14 — the exercises and module pages read cold, and the duplication that was kept
 
 Thirty-six cards over two days on exercise and module bodies, every one a cut or a same-length swap. Thirty applied. The calls that teach something are the refusals and one reframe.

@@ -100,6 +100,5 @@ Third-party words, names and marks in what a licensee receives. A flagged item i
 - **`supplementary/workflow-composition-lineages.md`:** trim each practitioner quote to the phrase the argument needs.
 - **`supplementary/agentic-engineering-progression.md`:** compare the stage ladder with the credited "Crawl, Walk, Run, Fly" source.
 - **`lectures/evals-as-steering.md` (shared with Agents 101):** compare the opening with Mollick's post; add the link.
-- **`supplementary/build-a-project-from-zero.md` names a commercial game.** Generic name on the student page; the harness's own name for its test repo is internal.
 - **`lectures/skills-from-the-frontier.md`, `lectures/story-of-module-6.md`:** company figures and a quote carry source and date in the body.
 - **`exercises/extract-the-task-shaping-rule.md`:** the example `CLAUDE.md` content: compare with the docs' examples and reword.

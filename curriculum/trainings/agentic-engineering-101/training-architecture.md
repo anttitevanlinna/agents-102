@@ -137,8 +137,6 @@ does instead. Standing facts:
 - **A customer-authored workshop is the customer's IPR and never enters this repository.** The two
   workshops of this cut live in the customer's own repository. No file here, and no commit in this
   history, holds them or text taken from them.
-- **The two workshops were read for their contracts, not their pedagogy** — what the customer
-  loses by re-authoring them from scratch was never priced.
 - **The supplementaries were checked for dropped-module references only** (not for whether
   their sequencing assumptions survive a four-sitting arc), and as of 2026-08 no live delivery
   had run against this cut — every cost in it was derived from the text.

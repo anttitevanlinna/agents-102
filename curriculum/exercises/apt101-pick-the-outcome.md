@@ -30,14 +30,14 @@ Read the obstacle and the question beside the outcome in `team/bet.md` and the c
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (technical@d747a00d behavior@0ac6010f pedagogy@761a20a3)
-- judges @d747a00d: technical PASS, behavior PASS, pedagogy PASS (verify-refuted)
+**Quality:** compendium-audited 2026-10-08 (writing@9d3527f2 technical@d747a00d behavior@0ac6010f pedagogy@761a20a3)
+- judges @9d3527f2: writing PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-pick-the-outcome.writing.json), technical PASS, behavior PASS, pedagogy PASS (verify-refuted)
 
 **Role in Day 2:** beat 2. Fixes the root of today's tree (the agreed outcome) and the decision it informs, in one file every Day 2 prompt reads.
 
-**Reuse:** shape of Agents 101 `name-your-crux` (obstacle, then the decision it blocks), rewritten as `apt101-d2-find-the-obstacle` and `apt101-d2-the-call-it-blocks` so the prompts read the bet, not a `challenge.md` (removes the "your prompt says challenge" seam). Headings stay `## Crux` and `## Question`: the reused `three-retrievers-one-curator`, `three-minds-one-synthesis` and `hallucination-bakeoff` prompts read them. The outcome comes from `team/bet.md`, agreed by the trio; the crux is the obstacle under it; the `## Question` is the decision. `## Outcome` and `## Doubt` go above the prompt's sections, at the product owner's ask; `## Doubt` is how the chosen doubt reaches the retrievers in `apt101-gather-the-evidence`, which read `./crux.md`.
+**Reuse:** shape of Agents 101 `name-your-crux` (obstacle, then the decision it blocks), rewritten as `apt101-d2-find-the-obstacle` and `apt101-d2-the-call-it-blocks` so the prompts read the bet, not a `challenge.md`. Headings stay `## Crux` and `## Question`: the reused `three-retrievers-one-curator`, `three-minds-one-synthesis` and `hallucination-bakeoff` prompts read them. The outcome comes from `team/bet.md`, agreed by the trio; the crux is the obstacle under it; the `## Question` is the decision. `## Outcome` and `## Doubt` go above the prompt's sections, at the product owner's ask; `## Doubt` is how the chosen doubt reaches the retrievers in `apt101-gather-the-evidence`, which read `./crux.md`.
 
-**Frameworks:** Rumelt's crux (*Good Strategy / Bad Strategy*) carried by the reused prompt; the body says "obstacle" and never names the term, because the trio picks the outcome and the word is not needed. The outcome statement from Day 1.
+**Frameworks:** Rumelt's crux (*Good Strategy / Bad Strategy*) carried by the two prompts; the body says "obstacle" and never names the term, because the trio picks the outcome and the word is not needed. The outcome statement from Day 1.
 
 **Artefacts:**
 - Consumes: `memory/` (Day 1, product memory); `team/bet.md`; `team/doubts.md` (read the digest).

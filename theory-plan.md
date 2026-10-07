@@ -31,7 +31,7 @@ Definition is deliberately construct-neutral: defines the activity, not the meth
 
 ## Decisions banked
 
-- **Tight co-generation** — shared briefs regenerate both the groundwork card and the AE101 lesson from one source. *(Crosses the public-CC ↔ F-Secure-IPR + pseudonym fence — see Open decisions.)*
+- **Tight co-generation** — shared briefs regenerate both the groundwork card and the AE101 lesson from one source. *(Crosses the public-CC ↔ pseudonym fence — see Open decisions.)*
 - **Enumerate the full theory → delivery linkage upfront**, not piece-by-piece as we go.
 - **Bank everything here.**
 
@@ -440,7 +440,7 @@ Verified against `~/Projects/groundwork/` (map.md, philosophy.md, mapping-rules.
 
 Editorial law for the bullet-editing (from pattern-card-spec): **genre before spine** (a law = INSIGHT card, its governor is the move; don't manufacture confident how-tos onto frontier content) · **max substance per word** · **restatement-as-progress = cardinal sin** · layer routing (pattern/component/dish/**foundation**) keeps lectures from becoming law-dumps — laws recede into the Why of a move the student made; only governors surface as questions.
 
-Canonical-home decision closed: groundwork IS the canonical map; the AE101 Field Map is its software-mat projection + pedagogical fold. Fence: no gate (Antti, 2026-09-02 — Bosser is a one-person company; the prospect-pseudonym rule and the F-Secure copyright fence stand as standing rules, not blockers on co-generation).
+Canonical-home decision closed: groundwork IS the canonical map; the AE101 Field Map is its software-mat projection + pedagogical fold. Fence: no gate (Antti, 2026-09-02 — Bosser is a one-person company; the prospect-pseudonym rule stands as a standing rule, not a blocker on co-generation).
 
 ## Coverage audit + canon check (2026-07-02) → `theory-audit.md`
 

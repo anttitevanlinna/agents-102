@@ -81,7 +81,7 @@ Pattern promoted to `check_prompts.md § 35` after AE101 M2 push-back-on-the-pla
 
 Third-party words, names and marks in what a licensee receives. A flagged item is a lead to check, not a verdict: compare with the source before rewording. Prompt bodies go through the prompt approval gate.
 
-- **A past customer is named as evidence.** `theory-plan.md` (an evidence tag) and `supplementary/agent-ready-data.md` ("…-style cohorts"): role words. The unsourced passage in `theory-plan.md` under the same heading: source or delete.
+- **`theory-plan.md` carries an unsourced passage** beside its evidence tags: source or delete.
 - **The wiki-shaped memory comes from Karpathy's "LLM Wiki" gist.** `building-agent-systems.md`, `supplementary/cookbook-for-agent-system-design.md`, `exercises/build-your-challenge-memory.md` and its prompts (shared with Agentic Product Teams 101): credit where the structure is taught, after a side-by-side read of the gist.
 - **`exercises/personal-site-with-guardrails.md` (and the `-cb` variant, shared with Claude Basics):**
   - StoryBrand is a branded framework: reduce to "apply StoryBrand" and let the model supply the beats, as the page's own tip suggests; cut the aside about how LinkedIn uses it; check the mark.

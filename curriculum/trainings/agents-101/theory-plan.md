@@ -223,7 +223,7 @@ The half the step-0 cold reads could not name. Every beat exists; no law does.
   (M2) is the work and why sharing context (M7) is harder than sharing a file. On the page
   once, in an unlinked supplementary.
 - **Three walls after competence: data access, runtime platform, discoverability.**
-  `[rsch:L2–3, F-Secure evidence]` `[curr:agents-building-agents KC]` Named at M8.
+  `[rsch:L2–3]` `[curr:agents-building-agents KC]` Named at M8.
 - **Amplification; individual ≠ institutional.** AI amplifies the system it enters; personal
   gains do not aggregate without organisational change. `[rsch:L3]` Not on any A101 surface;
   the leader-facing consequence of *cross personal → team*. Candidate for M7.

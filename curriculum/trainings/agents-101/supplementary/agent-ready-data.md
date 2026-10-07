@@ -52,7 +52,7 @@ Named-company examples to seed Pass 2: Stripe (headless SaaS archetype), Shopify
 - How semantic skills differ from generic tool calls (a semantic skill knows what "customer," "active," "revenue" mean in your company)
 - The build pattern: start from one person's repeated question, extract the definitions, ship the skill
 - Connection to Module 4: scoping a semantic skill = defining a trust boundary around a slice of company meaning
-- Named examples (to fill in): practitioner reports of semantic-skill ecosystems at F-Secure-style cohorts, emerging patterns in analytics-adjacent work
+- Named examples (to fill in): practitioner reports of semantic-skill ecosystems, emerging patterns in analytics-adjacent work
 
 *Semantic models:*
 - The layer stack: raw data → semantic layer → semantic skills → agents

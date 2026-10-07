@@ -100,8 +100,8 @@ Tonight the agent reads your chosen bet and looks for what argues against it. On
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (technical@5f1eb1b7 pedagogy@20018100)
-- judges @5f1eb1b7: technical PASS, behavior N/A, pedagogy PASS (1 finding see instances/agentic-product-teams-101--module--whats-actually-true.pedagogy.json)
+**Quality:** compendium-audited 2026-10-08 (writing@d78a1108 technical@5f1eb1b7 pedagogy@20018100)
+- judges @d78a1108: writing PASS (1 finding see instances/agentic-product-teams-101--module--whats-actually-true.writing.json), technical PASS, behavior N/A, pedagogy PASS (1 finding see instances/agentic-product-teams-101--module--whats-actually-true.pedagogy.json)
 
 **STATUS:** built from the build plan (`curriculum/module-design/apt101-build-plan.md`) and the Day 2 beat sheet (`apt101-day-2-beats.md` v10), 2026-10-07. `simulation: true` training: pages and prompt lines land uncarded. New prompts are named lines; bodies come in the prompt-body pass. Big Idea = an adopted positioning line (strategy, 2026-10-05).
 

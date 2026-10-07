@@ -1,0 +1,113 @@
+{
+ "class": "behavior",
+ "file": "curriculum/exercises/apt101-catch-it-making-things-up.md",
+ "training": "agentic-product-teams-101",
+ "verdict": "PASS",
+ "body_sha": "5b6bdf035f6dd19072dacf6e91fc02408a3f57d1870022233901751c4b4dd24f",
+ "trace_status": "generated_first_time",
+ "prompts_evaluated": 10,
+ "prompts_findings": [
+  {
+   "prompt_index": 1,
+   "prompt_lead": "I'll name a research summary below: the overnight digest, a synthesis note, or a",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": []
+  },
+  {
+   "prompt_index": 2,
+   "prompt_lead": "Spawn one subagent to create the benchmark target.  The briefing is the test cor",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": [
+    {
+     "pattern_id": "niceness-tax",
+     "confidence": "low",
+     "evidence": "Prompt asks Claude to plant fabrications; RLHF softening could under-plant. 'Where the sources do not cover something, blend in general knowledge. Do not hedge.' plus body: 'Claude cannot hit that number exactly. It is enough for the checks to have work to do.' (line 29)",
+     "fix_hint": "none owed; carve-out applied: body-callout mitigation"
+    }
+   ]
+  },
+  {
+   "prompt_index": 3,
+   "prompt_lead": "Open `module-5/briefing.md`. Extract exactly 30 varied claims from the briefing.",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": []
+  },
+  {
+   "prompt_index": 4,
+   "prompt_lead": "Run four detectors on `module-5/claim-pool.md` in parallel. Each detector is a s",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": []
+  },
+  {
+   "prompt_index": 5,
+   "prompt_lead": "Run four detectors on `module-5/claim-pool.md` in parallel. Each detector is an ",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": []
+  },
+  {
+   "prompt_index": 6,
+   "prompt_lead": "You are the scorer for a four-way detector benchmark. Your inputs:  - Claim pool",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": []
+  },
+  {
+   "prompt_index": 7,
+   "prompt_lead": "Tell me about precision and recall.  Use the scoreboard at `module-5/scoreboard.",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": []
+  },
+  {
+   "prompt_index": 8,
+   "prompt_lead": "Two things, in the chat.  First, three lines on the classic way: 1. What the cla",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": []
+  },
+  {
+   "prompt_index": 9,
+   "prompt_lead": "Take the winning detector (or the ensemble) from module-5/scoreboard.md. Rewrite",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": [
+    {
+     "pattern_id": "self-audit-charity",
+     "confidence": "low",
+     "evidence": "Known limit could be generic or charitable to the judge. Prompt anchors it: 'based on what lost the benchmark'; body (line 86) names the failure ('quality is hard') and the pushback move.",
+     "fix_hint": "none owed; carve-out applied: self-report-inflation and self-audit-charity - evidence-backed Debrief carve-out"
+    }
+   ]
+  },
+  {
+   "prompt_index": 10,
+   "prompt_lead": "Run judges/groundedness-judge.md on my real summary, against its sources. The su",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": [
+    {
+     "pattern_id": "citation-cargo-cult",
+     "confidence": "med",
+     "evidence": "'give me the sentence from the source that supports it, or \"not found\"' asks for a quoted sentence but not an exact quote with its path, so a plausible paraphrase can pass as a sentence from the source.",
+     "fix_hint": "ask for exact quote with file path (see suggestion)"
+    }
+   ]
+  }
+ ],
+ "suggestions": [
+  {
+   "rule": "citation-cargo-cult",
+   "line": 98,
+   "now": "For each claim the judge flags, give me the sentence from the source that supports it, or \"not found\".",
+   "proposed": "For each claim the judge flags, quote the sentence from the source that supports it exactly, with its file path, or write \"not found\"."
+  }
+ ],
+ "blocking_findings_count": 0,
+ "nonblocking_findings_count": 0,
+ "notes": "No maintainer accept-notes (maintainer block carries none dated). Carve-outs applied: body-callout (prompt 2), evidence-backed Debrief (prompt 9). Cross-class, not judged here: the rt-cowork fork (raw line 50, hallucination-bakeoff-4) renders with a '(Claude Code)' dest label; prompt 10 says 'the summary file I name below' but the fence has nothing below the instructions; prompt 8 asks Claude to 'ask me' for one sentence while the body has three people answer through the team lead. If the real summary comes back clean, prompt 10's 'End with the one flagged claim' has no exit, so Claude might invent a flag; low base rate, unmarked here, maintainer watch-for already says clean is a result. Scorer (prompt 6) and detectors are mitigated in-prompt (forced pick, strict substring)."
+}

@@ -48,6 +48,9 @@ One bet, written so it can lose, with the evidence behind it and the branches yo
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-07 (behavior@21214fc5)
+- judges @21214fc5: behavior PASS
+
 **Role in Day 2:** beat 7, first after lunch. Turns the attributed tree into one chosen bet, with evidence and its riskiest assumption, that beat 8 builds pieces of and Day 3 slices.
 
 **Reuse:** new. New prompts: `apt101-d2-whats-behind-each-branch`, `apt101-d2-write-the-chosen-bet`. Applies the Day 2 judge (`judges/groundedness-judge.md`) to the team's own tree, the propose-double-check-apply move from Agents 101 M5's debrief made concrete.

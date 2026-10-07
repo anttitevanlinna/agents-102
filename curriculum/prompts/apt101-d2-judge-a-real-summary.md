@@ -15,7 +15,7 @@ produces:
 ---
 Run judges/groundedness-judge.md on my real summary, against its sources. The summary and its sources are in team/<my-name>/real-summary.md if I readied one. If not, use the summary file I name below and the files it cites or was built from.
 
-For each claim the judge flags, give me the sentence from the source that supports it, or "not found".
+For each claim the judge flags, quote the sentence from the source that supports it exactly, with its file path, or write "not found".
 
 If there's a claim under ## My bet, set the judge's result beside it.
 

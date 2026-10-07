@@ -40,6 +40,9 @@ One dot each on the board for the cause you now think most likely, Claude's incl
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-07 (behavior@21214fc5)
+- judges @21214fc5: behavior PASS
+
 **Role in Day 2:** beat 9. A pre-mortem on the chosen bet and its three pieces, at the moment confidence peaks. Feeds beat 10, *Laptops shut* (a module section), which talks the top cause through. The lecture *Imagine it already failed*, right after this exercise, names Klein's method and why it fits peak confidence, once the trio has done it.
 
 **Reuse:** shape only, from Agents 101 `share-your-work-6` (failure stories: social, technical, "the failure I'm not seeing", each with a week-two warning sign). Here the humans write the causes first and Claude adds only the third leg. New prompt: `apt101-d2-the-failure-we-missed`.

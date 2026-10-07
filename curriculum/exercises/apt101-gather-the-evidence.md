@@ -78,6 +78,9 @@ Three sources read at once, three memories curated from the same evidence, and a
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-07 (behavior@21214fc5)
+- judges @21214fc5: behavior PASS
+
 **Role in Day 2:** beat 3. Fills every `sources/` and `memory/` with fresh evidence scoped to the agreed outcome; surfaces the contradictions the tree grows from. Followed by the lecture *Why it agreed*, which names why the digest agreed after the trio has seen sources disagree.
 
 **Reuse:** Agents 101 `three-retrievers-one-curator`, keys `three-retrievers-one-curator-1` to `-5`, unchanged. New: `apt101-d2-carry-the-doubt`, said after the search terms are confirmed, carries the door (`team/what-goes-in.md`; the team lead's wiki retriever otherwise pulls back pages the door kept out) and the chosen doubt (`## Doubt` in `./crux.md`, from pick the outcome), and requires at least one finding against the bet. Priced inside phase 1's 15 minutes: said at the confirm step. Role mapping is APT101's: team lead wiki, designer docs, product owner internet; each person runs the curator in a further session.

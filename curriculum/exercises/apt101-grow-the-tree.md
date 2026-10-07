@@ -75,6 +75,9 @@ The tree is not finished, and it should not be. You choose from it in *Choose th
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-07 (behavior@21214fc5)
+- judges @21214fc5: behavior PASS
+
 **Role in Day 2:** beat 4. Produces the team's opportunity solution tree, attributed per branch, and each person's three-stance read of the evidence. Placed after *Go back to your customers*; *Widen before you choose* names afterwards what the trio just did (alone first, merge keeps the single-name branch, the outcome makes the merge choose).
 
 **Reuse:** Agents 101 `three-minds-one-synthesis`, keys `three-minds-one-synthesis-1`, `-2` (runtime fork), `-3`, unchanged; its planner / assumption tester / reframer stances are mapped to roles in body prose. New: `apt101-d2-merge-the-tree`, `apt101-d2-add-the-challenges`. Keeping `three-minds-one-synthesis-1` also writes `module-3/stances/` and the `## Answer` in `./crux.md`, which `hallucination-bakeoff-1` requires.

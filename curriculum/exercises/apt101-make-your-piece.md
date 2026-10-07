@@ -22,7 +22,7 @@ Ask Claude to build a clickable rough prototype from the quotes behind the bet.
 
 {{prompt:apt101-d2-designer-prototype}}
 
-Push back when it comes back polished. A finished look makes people believe the design is further along than it is. Rough is the point: the customer reacts to the idea, not the colours. And push back on any quote you don't recognise from the interviews. Ask for the source; if there isn't one, it goes.
+Push back when it comes back polished. A finished look makes people believe the design is further along than it is. Rough is the point: the customer reacts to the idea, not the colours. And push back on any quote you don't recognise from the interviews. Ask Claude to find each quote in the interview files; any it can't find goes.
 
 ## Product owner: build the cheapest test that could kill the bet
 
@@ -58,8 +58,8 @@ Then one round, piece by piece. The other two point at the part of it that only 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@0ac6010f)
-- judges @0ac6010f: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@0ac6010f pedagogy@761a20a3)
+- judges @761a20a3: behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-make-your-piece.pedagogy.json)
 
 **Role in Day 2:** beat 8, protected. The creativity beat: each role makes a first piece of the chosen bet in its own craft, answering the room's private question of what each of us is for. Placed after the lecture *Each of you makes something*, whose slides set each role's frame (Houde and Hill's prototype questions, the test card, the working agreement). Its last slide (*Imagine it already failed*) carries into beat 9.
 
@@ -73,6 +73,8 @@ Then one round, piece by piece. The other two point at the part of it that only 
 
 **Room:** three solo tracks in parallel, then the trio on the board. Phase 2's contradictions are a human call. Phase 2's closing round is hidden-spine thread 3 on Day 2: each role's answer to what it is for, said by the other two about the piece, never stated in body. Overrun: phase 2 is not cut; trim the rehearsal to three questions instead.
 
-**Failure modes:** the designer asks for screens before choosing the question (the prompt asks first); the threshold is unfalsifiable; the working agreement reads as a decision handed down (the prompt frames it as a proposal; the rehearsal tests it).
+**Leap test:** on Monday each person (1) has a piece only their seat could have made (prototype, kill test, working agreement); (2) can say what it is for in one sentence; (3) can name what the other two pieces need from theirs.
+
+**Failure modes:** phase 2, the three pieces laid out but nobody says which only one person could have made (each names one); phase 1, the designer asks for screens before choosing the question (the prompt asks first); the threshold is unfalsifiable; the working agreement reads as a decision handed down (the prompt frames it as a proposal; the rehearsal tests it).
 
 **View summary:** Each of you builds a first piece of the chosen bet in your own craft: the designer a rough prototype from the interview quotes, the product owner the experiment that could kill the bet, the team lead a working agreement for the team, rehearsed against a sceptical colleague.

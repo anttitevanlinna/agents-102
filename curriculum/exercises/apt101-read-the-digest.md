@@ -77,8 +77,8 @@ You have three doubts, one chosen, each tied to a line and a source. Each of you
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@0ac6010f)
-- judges @0ac6010f: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@0ac6010f pedagogy@761a20a3)
+- judges @761a20a3: behavior PASS, pedagogy PASS (4 findings see instances/agentic-product-teams-101--exercise--apt101-read-the-digest.pedagogy.json)
 
 **Role in Day 2:** opening exercise, beat 1. Turns the overnight digest from Day 1 into one doubt the team chose, which the outcome pick and the evidence run read next.
 
@@ -93,6 +93,10 @@ You have three doubts, one chosen, each tied to a line and a source. Each of you
 
 **Room:** each person solo for phases 1, 2 and 4; phases 3 and 5 are the trio, phase 5 a decision, product owner writes the file.
 
-**Failure modes:** phase 4's rerun is slower than five minutes on a large memory (read the two headlines aloud when it lands, during phase 5); a turned-round run that finds nothing is a result, and its headline still says so. The decision is human (workshop §11).
+**Failure modes:** phase 1, the run did not fire (rerun from the person's own brief, five minutes); phase 2, the lines are read as confirmation (ask which line its source does not support); phase 3, a headline read as proof (ask what your line asked for); phase 4's rerun is slower than five minutes on a large memory (read the two headlines aloud when it lands, during phase 5); a turned-round run that finds nothing is a result, and its headline still says so. Phase 5, the doubt picked by seniority (each person says what would change if their doubt were true). The decision is human (workshop §11).
+
+**Leap test:** on Monday each person (1) reads a research summary and marks the line they trust least, with its source; (2) asks the next digest for what argues against the bet as well as for it; (3) can say which sentence of their own brief chose their Day 1 headline.
+
+**Open (maintainer):** the fallback digest for a laptop that cannot run the brief is a stand-in written from someone else's material, so that seat cannot mark a doubt on sources it knows. Alternatives: pair that seat with a neighbour's own run, or run the brief on that person's memory from a spare laptop.
 
 **View summary:** You find out what your overnight agent actually ran on, keep a copy of its digest, read it where you know the material best, and mark the line you trust least. Each of you sets the headline beside what you expected and the look-for line you wrote, then runs the same brief with the line turned round. The team picks the doubt that matters most for the bet.

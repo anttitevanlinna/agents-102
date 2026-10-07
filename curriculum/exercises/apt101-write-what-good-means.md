@@ -34,13 +34,15 @@ Push back if Claude rewrites your line into something smoother. The line is your
 
 *25 min*
 
-Back to your own laptop. First one run by hand, so you see what the fixed judge does on fresh work.
+Back to your own laptop. First one run by hand, so you see what the fixed judge does on fresh work. The prompts call this hand run Phase 0, the calibration.
 
 Ask Claude to write a fresh digest on the outcome you picked on Day 2 in `./crux.md`, and score it with your judge.
 
 {{prompt:eval-loop-1}}
 
 Then ask Claude to run the loop. Generation and judging run separately, so neither grades its own work. The main session rewrites `./generation-tactic.md` between rounds. The judge never moves.
+
+A heavy run: a writer and a judge per round, three rounds or more. If it starts reading far beyond your memory, stop it, steer narrower, then say *"continue"*. If it stops after one round and calls it done, send it on.
 
 {{prompt:eval-loop-2}}
 
@@ -64,8 +66,8 @@ Hold your post-it against what you found. Each of you says your missing line out
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@3d7fd713)
-- judges @3d7fd713: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@3d7fd713 pedagogy@761a20a3)
+- judges @761a20a3: behavior PASS, pedagogy PASS (5 findings see instances/agentic-product-teams-101--exercise--apt101-write-what-good-means.pedagogy.json)
 
 **Role in Day 3:** The digest from Day 1 gets caught by the team's own standard: the fixed judge holds the floor, the team's written lines are the ceiling, and the gap between them is what the criteria missed.
 
@@ -82,5 +84,9 @@ Hold your post-it against what you found. Each of you says your missing line out
 - Consumes: `judges/groundedness-judge.md` (Day 2, never edited), `team/<name>/doubts.md` (Day 2 read the digest: the line each person trusted least, set beside the judge's passes in `apt101-d3-what-it-missed`), `./crux.md` (Day 2), `memory/` (Day 1), `team/<name>/digest-day1.html` (each person's Day 1 digest, saved in Day 2's read the digest before any rerun).
 
 **Design note:** the judge is not rewritten with the team's lines. The reused keys fix it, and the lesson is the fixed yardstick. The team's ceiling lines are what a person holds the passing digest against; they go into the judge only in a later run, outside this loop.
+
+**Failure modes:** phase 1, a line rewritten smoother (the prompt records it word for word; push back); phase 2, the loop declares done after the first pass or the judge gets edited (the judge never moves; send the loop on); phase 3, every passed claim waved through (put the least-trusted line first, as the prompt does). **Protected:** phase 3. **Cut first:** the hand run in phase 2 shrinks to reading the judge's output.
+
+**Leap test:** on Monday each person (1) has a ceiling line the judge can't check; (2) can name a claim the judge passed that they would send back; (3) reruns the judge on the next digest before reading it.
 
 **View summary:** You write down what a summary has to be before it reaches a priority call, let a fixed judge tighten the digest round by round, and then put your own calls beside the judge's. The artefact is the team's written standard and the line the judge could not see.

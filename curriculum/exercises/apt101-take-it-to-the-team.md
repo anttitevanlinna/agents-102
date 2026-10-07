@@ -92,8 +92,8 @@ Then the board again. Stand at the frame and read it as your wider team will see
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@3d7fd713)
-- judges @3d7fd713: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@3d7fd713 pedagogy@761a20a3)
+- judges @761a20a3: behavior PASS, pedagogy PASS (verify-refuted, 2 findings see instances/agentic-product-teams-101--exercise--apt101-take-it-to-the-team.pedagogy.json)
 
 **Role in Day 3:** Transfer: the trio's way of working becomes a proposal the wider team decides on, with a named first move per role in `team/monday.md`.
 
@@ -116,5 +116,9 @@ Then the board again. Stand at the frame and read it as your wider team will see
 
 **Open:**
 - § Sharpen the proposal reuses `a101-m7-debrief-sharing-artifact`, whose registry `requires:` names `share-your-work-6`; with the named prompts here the chain resolves only once their bodies land with `produces:` for the same `module-7/` ids. The prompt-body pass settles it.
+
+**Failure modes:** phase 1, the call written as a hope (ask for persevere, pivot or stop and the sentence held or changed); phase 2, the receiving trio fixes the file before running it (run it as written; the generic line is the finding); phase 3, the job written in the trio's words (ask how the wider team would say it); phase 4, every obstacle technical (ask who would stop using it and why); phase 5, assumptions with no test this week (ask for one); phase 6, a part with no name (it stays visibly empty). A participant who arrives without the Day 1 and Day 2 files works from the team folder's copies.
+
+**Leap test:** on Monday the trio (1) opens with the door as the wider team's first decision; (2) brings a proposal with a name or an open slot on every part; (3) can say which line of their agent file went generic in another trio's hands.
 
 **View summary:** The three of you interview for the job your wider team is trying to get done, find what would stop them taking up your way of working, and imagine it failing six months on. The artefact is `team/monday.md`: a proposal the team decides, with each role's first move.

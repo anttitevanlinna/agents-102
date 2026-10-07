@@ -65,8 +65,8 @@ Laptops shut, back at the wall. Persevere, pivot or stop: the three of you decid
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@3d7fd713)
-- judges @3d7fd713: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@3d7fd713 pedagogy@761a20a3)
+- judges @761a20a3: behavior PASS, pedagogy PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-five-users.pedagogy.json)
 
 **Role in Day 3:** The chosen bet meets people who did not build it; each person's Day 1 digest, which found what its look-for line asked for, is read against what they did; the trio makes the persevere / pivot / stop call.
 
@@ -85,5 +85,9 @@ Laptops shut, back at the wall. Persevere, pivot or stop: the three of you decid
 **Board:** *Five users* frame, five empty columns, set up by the trainer. Rhythm: post-its during the sessions, Claude reads the wall and copies it to file (phase 3), the wall again for the call (phase 4). The moments are copied into `team/five-users.md` because Day 3's `apt101-d3-team-monday` reads them. Fallback without the Miro connector: a frame screenshot into the chat.
 
 **Room:** the five users are five people from outside the trios who resemble the product's users (do its job, or one close to it), booked by the trainer before the day for each team (Day 2 *Bring to Day 3*). Colleagues from an unrelated function are not stand-ins: a dispatcher product tested on salespeople reads the wrong behaviour (trial r1). Where no such people can be booked, the trio says so in the decision. Fewer than five arrive: the trio runs what it has and says so in the decision. Protected: phase 4, the human decision (`check_workshop.md` §11). Overrun: phase 2 drops to four sessions.
+
+**Leap test (next working day, own product):** (1) books one user who does the product's job and writes three tasks as goals, no button named; (2) watches a first use without explaining and writes what the user did as moments, not verdicts; (3) names the line of their own hypothesis a user touched, says held or broke, then calls persevere, pivot or stop against the signal agreed before building.
+
+**Failure modes:** phase 1, tasks that name a button or ask for an opinion (push back; the product owner checks against watch-for.md); phase 2, the designer explains the slice after the second user (the confusion is the finding; hold the next user cold) and moments written as verdicts such as "liked it" (ask what the user did); phase 3, Claude reads a signal the bet did not name (ask which line of chosen-bet.md names it); phase 4, the call made without naming a line (ask what result would have broken it).
 
 **View summary:** People who resemble your users see your box and use your first slice while you watch, and you read what they did against the bet you chose and your Day 1 digest. The artefact is the team's persevere, pivot or stop call, in its own words.

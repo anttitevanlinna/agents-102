@@ -85,8 +85,8 @@ If the three sentences name three different things, the slice is testing too muc
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@3d7fd713)
-- judges @3d7fd713: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@3d7fd713 pedagogy@761a20a3)
+- judges @761a20a3: behavior PASS, pedagogy PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-map-the-story.pedagogy.json)
 
 **Role in Day 3:** The day's first build: the chosen bet becomes a story map on the board and one end-to-end slice that five users meet in the next exercise.
 
@@ -104,5 +104,9 @@ If the three sentences name three different things, the slice is testing too muc
 - Consumes: `team/chosen-bet.md`, `team/tree.md`, `team/bet.md`, `team/product-box.html`, the designer's Day 2 piece in `team/<designer>/`, `memory/`.
 
 **Room:** each phase names one driver at the shared screen; the other two react (`check_workshop.md` §3). Only the driver writes the team root. Protected phase: 3 (the slice must exist for five users). Overrun: phase 4 drops to one sentence from the product owner.
+
+**Failure modes:** phase 1, steps drift into the product's menu instead of the customer's journey (ask for the customer's words and the interview behind each step); phase 2, the first slice picked for ease, not for the riskiest assumption (ask what the slice would teach if it worked); phase 3, polish on one screen while the walk stops halfway (the team lead's walk names the stop; build the stop first); phase 4, one-sentence round answered with features (ask what you'd see if the answer is no).
+
+**Leap test:** on Monday the trio (1) has a story map with a backbone in customers' words; (2) can name the assumption the first slice tests and the signal that says no; (3) has a clickable slice that runs from the first step to the last.
 
 **View summary:** The three of you lay the customer's journey out on the board, cut it by what each slice would teach you, and build the first slice so it works end to end. The artefact is a story map and a rough slice that five people will use next.

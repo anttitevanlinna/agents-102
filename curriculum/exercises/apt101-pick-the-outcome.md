@@ -30,8 +30,8 @@ Read the obstacle and the question beside the outcome in `team/bet.md` and the c
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@0ac6010f)
-- judges @0ac6010f: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@0ac6010f pedagogy@761a20a3)
+- judges @761a20a3: behavior PASS, pedagogy PASS (verify-refuted, 3 findings see instances/agentic-product-teams-101--exercise--apt101-pick-the-outcome.pedagogy.json)
 
 **Role in Day 2:** beat 2. Fixes the root of today's tree (the agreed outcome) and the decision it informs, in one file every Day 2 prompt reads.
 
@@ -44,5 +44,9 @@ Read the obstacle and the question beside the outcome in `team/bet.md` and the c
 - Produces: `./crux.md` (outcome, chosen doubt, crux, question; product owner's folder, then copied), `team/crux.md`; each person's `./crux.md`, which the retrievers in `apt101-gather-the-evidence` read.
 
 **Room:** one driver (product owner) at the shared screen; the designer checks the obstacle against customer evidence, the team lead checks it is actionable by the team. Outcome decision is the trio's (workshop §11).
+
+**Failure modes:** obstacle phase, the outcome restated as an obstacle (the prompt rejects it; the trainer asks for three things that would release); call phase, a topic instead of a decision (ask which two options); agree phase, the doubt ignored because it is uncomfortable (the designer reads it aloud before the outcome is saved).
+
+**Leap test:** on Monday the trio (1) has one outcome, one obstacle and one decision question in `team/crux.md`; (2) can say which three stuck things the obstacle releases; (3) frames the next priority call as a choice between options.
 
 **View summary:** You agree the one outcome today's opportunity tree hangs from, and find with Claude the obstacle between your customers and it, plus the decision it blocks.

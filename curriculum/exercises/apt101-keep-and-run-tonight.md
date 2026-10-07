@@ -14,7 +14,7 @@ Each of you, on your own laptop. Ask Claude to review today and update your `./C
 
 {{prompt:a101-m5-debrief-groundedness-rules}}
 
-It reads the benchmark files from `module-5/` and your judge. Push back where a rule is too vague to act on: "check important claims" tells a future agent nothing; "run the groundedness judge on any customer quote before it goes on the tree" does. When it is right, copy the Groundedness checks section to `team/<your-name>/rules.md`.
+It reads the benchmark files from `module-5/` and your judge. Push back where a rule is too vague to act on: "check important claims" tells a future agent nothing; "run the groundedness judge on any customer quote before it goes on the tree" does. When it is right, ask Claude to copy the Groundedness checks section to `team/<your-name>/rules.md`.
 
 ## Phase 2: Keep the team's rules
 
@@ -46,8 +46,8 @@ Your own rules now say when a summary gets checked. The team's rules carry an ex
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@0ac6010f)
-- judges @0ac6010f: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@0ac6010f pedagogy@761a20a3)
+- judges @761a20a3: behavior PASS, pedagogy PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-keep-and-run-tonight.pedagogy.json)
 
 **Role in Day 2:** beat 11, last exercise. Compounds the day into personal and team rules, and turns the overnight digest from Day 1's agreeable reader into tomorrow's check on the chosen bet. Placed after the lecture *Write it down or lose it* (corrections become rules on recurrence; examples of good beside the don'ts).
 
@@ -61,6 +61,8 @@ Your own rules now say when a summary gets checked. The team's rules carry an ex
 
 **Room:** phases 1 and 3 solo; phase 2 team lead drives, each person approves before save.
 
-**Failure modes:** rules from one miss (push back, recurrence); the brief edit leaves "find evidence for" in place (the test run shows it; read the brief again); a laptop that will sleep tonight (Day 1 owes the scheduled-task setup; the trainer's fallback digest covers a run that did not fire).
+**Failure modes:** phase 1, rules too vague to act on or edits beyond the Groundedness checks section (push back to a named check and claim shape; ask Claude which sections changed); phase 2, rules from one miss (push back, recurrence); phase 3, the brief edit leaves "find evidence for" in place (the test run shows it; read the brief again) and a laptop that will sleep tonight (Day 1 owes the scheduled-task setup; a run that did not fire is rerun from the person's own brief).
+
+**Leap test:** on Monday each person (1) has a Groundedness checks section in `./CLAUDE.md` whose rules each name a check and the claim shape it covers; (2) can point to one team rule that came from two misses and the example of good beside the don'ts; (3) opens `module-2/morning-agent/morning.md` and finds the line that asks for evidence against the bet.
 
 **View summary:** You keep today's lessons as rules your agents follow, your own and the team's, and change tonight's run so the Day 3 digest checks the chosen bet instead of agreeing with it.

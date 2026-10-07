@@ -20,7 +20,7 @@ Write the reasons you would normally keep to yourself. The one about the team, t
 
 Go round one sticky at a time, each of you reading one of yours to the other two, until the stickies are all up. No arguing yet; questions only to understand.
 
-Then rank. Each of you puts three dots on the causes you think most likely. A second quick round: one dot each on the cause that would hurt most if it happened. The trainer keeps time.
+Then rank. Each of you puts three dots on the causes you think most likely. A second quick round: one dot each on the cause that would hurt most if it happened.
 
 ## Phase 3: Add the causes you missed
 
@@ -40,8 +40,8 @@ One dot each on the board for the cause you now think most likely, Claude's incl
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@21214fc5)
-- judges @21214fc5: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@21214fc5 pedagogy@761a20a3)
+- judges @761a20a3: behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-imagine-it-failed.pedagogy.json)
 
 **Role in Day 2:** beat 9. A pre-mortem on the chosen bet and its three pieces, at the moment confidence peaks. Feeds beat 10, *Laptops shut* (a module section), which talks the top cause through. The lecture *Imagine it already failed*, right after this exercise, names Klein's method and why it fits peak confidence, once the trio has done it.
 
@@ -54,6 +54,8 @@ One dot each on the board for the cause you now think most likely, Claude's incl
 - Produces: ranked stickies on the board; `team/premortem.md` (team lead drives; authors kept, Claude's additions marked). Read by keep and run tonight and Day 3 five users.
 
 **Room:** phase 1 solo in silence; phases 2 and 4 the trio on the board, trainer times the rounds; phase 3 team lead drives. Ranking is input to the talk in beat 10, not a decision; nothing is decided by the dots (workshop §11). Overrun: drop to one ranking round (beat sheet).
+
+**Leap test:** on Monday the trio (1) has a ranked pre-mortem in `team/premortem.md` with every cause kept under its author's colour; (2) can name the one cause Claude added that none of them wrote, and the week-two sign that would show it; (3) checks a Claude cause against the board for a rewording before it enters the ranking.
 
 **Failure modes:** reasons written in the future conditional ("might not adopt") lose the past-tense effect, push back to "did not"; Claude's additions restate board stickies (push back).
 

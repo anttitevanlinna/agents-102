@@ -10,6 +10,32 @@ section per run, newest first; per-judge reports under `story-depth/`.
 
 
 
+## APT101 full training, hill-climb round 1 (`apt101-full-r2`), 2026-10-07
+
+Same protocol as r1, plus Depth: the rubric's Step 1 learnings scored on the Depth anchors, with per-learning progression by day. A trio trial ran beside it, a simulated product owner, designer and team lead walking the three days (scratchpad record, not committed). The fixes came from r1's consensus:
+- Day 1 no longer announces the turn;
+- each person's own look-for line produces the agreement, and Day 2 quotes it back;
+- the Day 3 close opens from the five-users call.
+
+Judge files: `story-depth/apt101-full-r2.judge-{1,2,3}.md`.
+
+| Factor | AE101 (j1/j2/j3) | median | APT101 (j1/j2/j3) | median | r1 |
+|---|---|---|---|---|---|
+| Frame | 94/94/93 | 94 | 91/88/91 | 91 | 89 |
+| Narrative | 93/93/94 | 93 | 86/87/87 | 87 | 84 |
+| Point of view | 95/95/95 | 95 | 88/86/85 | 86 | 85 |
+| Stance | 92/92/92 | 92 | 91/90/90 | 90 | 88 |
+| Depth | 96/92/88 | 92 | 88/87/88 | 88 | n/a |
+
+**Reading.**
+- Narrative +3 and stance +2: the lived turn counts.
+- Point of view barely moves; all three judges ask for the guide's failure as a scene, which only the maintainer can supply.
+- The trial found what the judges can't see: the turn landed for one seat of three.
+  - The designer's look-for line asked about behaviour, so "it agreed with you" was false for him.
+  - The team lead's run didn't fire, so he read a generic fallback.
+
+Round 2 aims at the turn landing on every seat ("it finds what you asked it to look for", whatever the line asked), a lived counter-move the same morning, and lectures placed after the exercises they name.
+
 ## APT101 full training vs AE101 full training: run `apt101-full-r1`, 2026-10-07
 
 First like-for-like run. Each judge reads both trainings whole: modules with their lectures and exercises inlined, in student order, through `scripts/read-training.js`. Maintainer notes and backing are stripped. Prompt markers stay unexpanded in both trainings, and APT101's new prompts are named lines with no bodies. The setup is 3 Opus judges, paired, AE101 read first, scored 1–100 on the rubric anchors, with the intended shape of APT101 stated as in the hill-climb rounds. Judge files are `story-depth/apt101-full-r1.judge-{1,2,3}.md`. The build came from `module-design/apt101-build-plan.md`, after one arc read and its fixes.

@@ -89,12 +89,12 @@ Agents 102 is made of two parts with deliberately different terms:
 
 The split is deliberate: the research system is a public good; the curriculum and content are Bosser IP. For licensing questions, contact [bosser.consulting](https://bosser.consulting).
 
-### If you're a student
+### Personal use
 
-You've been granted a **personal usage license** — designed to be generous where it matters and firm where it has to be. In short:
+Anyone reading this has a **personal usage license** — designed to be generous where it matters and firm where it has to be. In short:
 
-**You can:** learn from every module, run every exercise, **own everything you build** (agents, skills, memory pages, evals, sites — your outputs are yours, not Bosser's), **apply anything you learn at your own workplace** (that's the whole point of the training), share your own artifacts with teammates inside your company, and quote briefly with attribution.
+**You can:** learn from every module, run every exercise, **own everything you build** (agents, skills, memory pages, evals, sites — your outputs are yours, not Bosser's), **apply anything you learn at your own workplace** (that's the whole point of the training), and quote briefly with attribution.
 
-**You can't:** redistribute the curriculum files, teach the material as your own training, resell or transfer your seat, build a competing course from it, or feed the proprietary files into a public AI dataset.
+**You can't:** redistribute the curriculum files, teach the material as your own training, build a competing course from it, or feed the proprietary files into a public AI dataset.
 
-The simple test: *am I using this for my own learning, my own work, or teammates inside my own company?* If yes, you're inside the license. Full terms in [`COPYRIGHT.md`](COPYRIGHT.md) § Student Usage License.
+The simple test: *am I using this for my own learning and my own work?* If yes, you're inside the license. It is free for personal use. Running the material as a training, inside your company or outside it, takes a separate training licence from Bosser Oy. Full terms in [`COPYRIGHT.md`](COPYRIGHT.md) § Personal Use License.

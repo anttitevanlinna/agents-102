@@ -97,8 +97,8 @@ Before Day 2, three agents read three memories against one bet, and write to you
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74)
-- judges @dd243e74: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74 pedagogy@dd242fd9)
+- judges @dd242fd9: behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--module--our-product-our-system.pedagogy.json)
 
 **STATUS:** built from the build plan (`curriculum/module-design/apt101-build-plan.md` § Day 1), 2026-10-07, for the `simulation: true` training Agentic Product Teams 101. Not taught. Big Idea = the adopted positioning line (strategy, 2026-10-05), kept as the Day 1 module's; the day's story heading in the squint and build plan is *You were right all along*, and the H1 stays the registered module title (`site/layouts/curriculum.js`) so nav and file agree.
 
@@ -108,6 +108,7 @@ Before Day 2, three agents read three memories against one bet, and write to you
 
 **Meta (trainer):**
 - **Transitions:** open 10 @start "Start here" · close 10 @end "Write down how you worked" · team rules 5 @end "Put the team's rules in one file"
+- **Protected and cut-first:** protected, the look-for and expect lines in `apt101-send-it-off` (the Day 2 turn rests on them) and the door in `apt101-what-goes-in`. Cut first on overrun: the product box's phase 5 (make it yours) and the memory's phase 4 (let it find its own problems).
 - **Where these numbers come from:** the build plan's beat sheet (beats 1 and 8). Every other beat has a file of its own that prices it.
 - **Beat minutes vs lectures:** exercise `**Time:**` = the beat sheet's minutes, matching their Agents 101 sources. The "before / after" lectures sit on top of the beat minutes, except the beat-2 opener, which is lectures only. Totals: the beat sheet, `curriculum/module-design/apt101-build-plan.md` § Day 1 (`calculate-time.js` does not know this training yet).
 - **Primary Bloom's level:** Apply (box, memory, agent) → Evaluate (riskiest assumption, the door, the cold read).

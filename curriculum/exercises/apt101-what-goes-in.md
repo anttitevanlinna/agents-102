@@ -46,6 +46,8 @@ Go through each kind of material out loud. One question for each: does the agent
 
 It will cost a source somebody wanted in. That is the door working. Anyone may say no to a source, and a no needs no defending.
 
+Open `team/what-goes-in.md` and read its Out section once, together.
+
 ## Take stock of the door
 
 **What happened:**
@@ -58,8 +60,8 @@ Next, each of you builds your memory through that door.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74)
-- judges @dd243e74: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74 pedagogy@dd242fd9)
+- judges @dd242fd9: behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-what-goes-in.pedagogy.json)
 
 **Role in Day 1:** beat 5; the one plain data beat in APT101 (no governance, no legal). Day 2's beat sheet owes this: "the team agrees what may go into the agents before anything goes in."
 
@@ -71,6 +73,8 @@ Next, each of you builds your memory through that door.
 
 **Workshop shape:** scope of sharing declared before contribution (workshop §8); each line attributed (§5); a no is a decision by humans (§11).
 
-**Watch-for:** a trio that lets everything in to save time. The trainer asks for one named thing that stays out.
+**Watch-for:** phase 1, three briefs that read the same (ask each person what their own seat sees that the other two don't); phase 2, a scouting list of tools, not sources (ask for the folder or the export by name); phase 3, a trio that lets everything in to save time (the trainer asks for one named thing that stays out).
+
+**Leap test:** on Monday the trio (1) has a written door in `team/what-goes-in.md`; (2) can name one source it kept out and why; (3) strips names from a file before an agent reads it.
 
 **View summary:** Each person pins the bet in their own brief and scouts their own material, then the trio agrees what may go into the agents and what stays out. The artefact is the team's door, written before anything goes in.

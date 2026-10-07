@@ -121,8 +121,8 @@ You keep this box. The bet is written against it next, and on Day 3 five people 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74)
-- judges @dd243e74: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74 pedagogy@dd242fd9)
+- judges @dd242fd9: behavior PASS, pedagogy PASS
 
 **Role in Day 1:** beat 3, the first hands-on beat; the opener after the two lectures; the trio meets the Agents 101 Module 1 mechanism (context shapes output) on its own product, before *Start from your customer's sentence* and *The agent knows only what you tell it* name what it did.
 

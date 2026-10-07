@@ -86,8 +86,8 @@ In a moment the bet becomes what each of your agents works on. Before Day 2, one
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@0ac6010f)
-- judges @0ac6010f: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@0ac6010f pedagogy@dd242fd9)
+- judges @dd242fd9: behavior PASS, pedagogy PASS (verify-refuted, 1 finding see instances/agentic-product-teams-101--exercise--apt101-write-the-bet.pedagogy.json)
 
 **Role in Day 1:** beat 4; the trio's first written bet. Read by every agent from here on via `./challenge.md` in `apt101-what-goes-in`.
 
@@ -102,5 +102,9 @@ In a moment the bet becomes what each of your agents works on. Before Day 2, one
 **Workshop shape:** Claude drafts, humans place (Phase 3). Hypotheses copied verbatim with attribution, nothing written over (Phase 2). Split dots are recorded, not resolved by Claude.
 
 **Taught around it:** *Your first bet* after. Take-stock stops at what the trio did.
+
+**Failure modes:** phase 1, an outcome that is a feature ("ship the onboarding flow"; ask what the customer does differently); phase 2, a signal that can only say yes (no number, no window; the prompt pushes, the trainer checks one aloud); phase 3, every sticky in the important half (push until a few drop); phase 4, the riskiest picked by seniority (each person says aloud whether the bet dies if it's false).
+
+**Leap test:** on Monday the trio (1) has `team/bet.md` with an outcome, three named hypotheses and an assumption map; (2) can name the riskiest assumption and the test that would kill it; (3) writes the next hypothesis with a signal that could come back no.
 
 **View summary:** The trio writes one outcome, a hypothesis from each person in a form that can lose, and maps the assumptions on the team board, then marks the riskiest together. The artefact is the bet file every agent reads from here on.

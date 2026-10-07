@@ -98,8 +98,8 @@ The memory sits still until something reads it. Next, each of you gives it a job
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74)
-- judges @dd243e74: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74 pedagogy@dd242fd9)
+- judges @dd242fd9: behavior PASS, pedagogy PASS (verify-refuted)
 
 **Role in Day 1:** beat 6, after lunch; each person's own material becomes a memory pointed at the bet. Day 2's overnight digest and every Day 2 prompt read it.
 
@@ -111,8 +111,10 @@ The memory sits still until something reads it. Next, each of you gives it a job
 
 **Role moves:** each role brings its own material (product owner: analytics, decisions; designer: interviews, usability notes; team lead: tickets, retros, build lessons). Phase 5 lays the three memories side by side without settling the disagreement; Day 2 *gather the evidence* picks it up.
 
-**Per-phase failure mode + escape hatch:** Phase 1 runs long on ingest → cap at ten sources, imperfect is fine; material outside the door creeps in → the plan line is checked against `team/what-goes-in.md` before ingest; Phase 3 "longer not sharper" → push back on the top; Phase 5 turns into a debate → the trainer stops it at three minutes, the disagreement is Day 2's input.
+**Per-phase failure mode + escape hatch:** Phase 1 runs long on ingest → cap at ten sources, imperfect is fine; material outside the door creeps in → the plan line is checked against `team/what-goes-in.md` before ingest; Phase 2 the audit calls every page fine → ask for the two pages a competitor could also have written; Phase 3 "longer not sharper" → push back on the top; Phase 4 the review lists only small fixes → ask which contradiction it would fix first; Phase 5 turns into a debate → the trainer stops it at three minutes, the disagreement is Day 2's input.
 
 **Prerequisite:** prework created `~/Documents/apt101/` with empty `sources/`, `memory/`, `agents/`.
+
+**Leap test:** on Monday each person (1) has a cited memory their agents read; (2) can name one soft page and what source would sharpen it; (3) checks a memory claim against its `[sources/…]` citation before repeating it.
 
 **View summary:** Each person builds a memory from their own material, through the door the team agreed, pointed at the bet, then finds its soft pages and makes it sharper. The artefact is three personal memories every agent reads from here on.

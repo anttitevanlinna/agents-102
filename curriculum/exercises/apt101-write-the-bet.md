@@ -20,7 +20,7 @@ Post-its first. Two minutes, no talking: each of you puts one candidate outcome 
 
 Ask Claude to read the three candidates, interview the three of you down to one outcome, and write it to the bet file.
 
-**Prompt** · `apt101-d1-bet-outcome`, read the outcome stickies on the Bet frame (or the pasted screenshot) and `team/product-box.html`, ask one question at a time until there is one outcome (who, doing what differently, by when, seen how), and write it as the first section of `team/bet.md`
+{{prompt:apt101-d1-bet-outcome}}
 
 The product owner answers first. The designer checks the *who*: is it a customer you have actually met? The team lead checks the *seen how*: can the team see that change today, or would someone have to build the measurement first?
 
@@ -38,13 +38,13 @@ The signal is the line that matters. Write one that could come back no, with a n
 
 Each of you, on your own laptop, asks Claude to turn your hunch into one hypothesis statement.
 
-**Prompt** · `apt101-d1-bet-hypothesis`, read the outcome in `team/bet.md`, ask for my hunch, push until the signal has a number and a window and could come back no, and save one hypothesis statement to `team/<my-name>/hypothesis.md`
+{{prompt:apt101-d1-bet-hypothesis}}
 
 Three seats, three hunches. The product owner's usually concerns value: will they want it. The designer's usually concerns use: will they get it. The team lead's usually concerns the build or the business: can we, should we. Different is good. Don't converge yet.
 
 Then the product owner asks Claude to bring the three into the bet file, word for word.
 
-**Prompt** · `apt101-d1-bet-gather`, copy each `team/<name>/hypothesis.md` into `team/bet.md` under the outcome, word for word, each under the name of the person who wrote it
+{{prompt:apt101-d1-bet-gather}}
 
 Read the three out loud. Each author says one sentence on why theirs, and puts their hypothesis on the frame as a sticky with their name on it. No editing someone else's line.
 
@@ -56,7 +56,7 @@ Under every hypothesis sit assumptions: that customers want it (desirable), that
 
 Ask Claude to list the assumptions under each hypothesis, sorted desirable, viable and feasible, as stickies for the board.
 
-**Prompt** · `apt101-d1-bet-assumptions`, list the assumptions under each hypothesis in `team/bet.md`, one line each, tagged desirable, viable or feasible, and put them as stickies beside the 2x2 on the Bet frame (or give the list for us to copy onto the board)
+{{prompt:apt101-d1-bet-assumptions}}
 
 Claude drafts the stickies. Where each one sits is the team's call. Each of you takes the assumptions under your own hypothesis and drags them onto the 2x2, saying out loud as you go: does the bet die if this is wrong? Do we have anything behind it beyond our own belief? The other two may move a sticky only by asking.
 
@@ -70,7 +70,7 @@ One dot each, on the assumption that is important and has the least evidence beh
 
 Ask Claude to read the map and record it in the bet file.
 
-**Prompt** · `apt101-d1-bet-record-map`, read the assumption 2x2 and the dots on the Bet frame (or the pasted screenshot), and add the assumption map to `team/bet.md`: each assumption with its tag and quadrant, the riskiest marked, and any split in the dots recorded with who put which
+{{prompt:apt101-d1-bet-record-map}}
 
 If the three of you disagree, the bet file keeps both and the reason each of you gave. That disagreement is worth more than a tidy map.
 

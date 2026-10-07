@@ -16,7 +16,22 @@ The three of you paint the box your product would come in. The sketch grows on y
 
 **Who drives.** The designer drives Claude at the shared screen and saves the page to the team folder. The product owner and the team lead work the board, answer out loud and argue with each other. Every pass overwrites `team/product-box.html`, so the latest version always lives there.
 
-**Reach the board and the team folder.** The trainer posts both in chat: your team's Miro board, with a frame for the box, and the team folder. All three of you add the team folder now; each of you writes to it in later exercises. <span class="rt-code">Give Claude the folder's absolute path when you first ask it to save there; it reads and writes the path directly.</span><span class="rt-cowork">Add the team folder to this task with the **+** button, next to your training folder.</span> Only the driver's Claude needs the board. It reads the board through the Miro connector; if your company hasn't turned it on, paste a screenshot of the frame into the chat instead.
+**Reach the board and the team folder.** The trainer posts both in chat: your team's Miro board, with a frame for the box, and the team folder. All three of you link the team folder now; each of you writes to it in later exercises. Only the driver's Claude needs the board.
+
+<div class="rt-code">
+
+Ask Claude to link the team folder into your training folder as `team/`, then paste the path the trainer posted.
+
+{{prompt:apt101-d1-link-the-team-folder}}
+
+</div>
+<div class="rt-cowork">
+
+Add the team folder to this task with the **+** button, next to your training folder. Wherever a prompt says `team/`, Claude uses that folder.
+
+</div>
+
+Claude reads the board through the Miro connector; if your company hasn't turned it on, paste a screenshot of the frame into the chat instead.
 
 ## Phase 1: The boring baseline
 
@@ -26,7 +41,7 @@ Open your product's public page: the website front page, the app store listing, 
 
 Ask Claude to paint a product box from your public page.
 
-**Prompt** · `apt101-d1-box-baseline`, paint a one-page product box (front: name, one promise, three reasons to buy; back: who it is for) as HTML from the pasted public page alone, saved to `team/product-box.html`
+{{prompt:apt101-d1-box-baseline}}
 
 Open the page. It works. It reads like a box. It is also a box your nearest competitor could print with their logo on it. Keep it that way for now: you need it generic to feel what the next passes change.
 
@@ -42,7 +57,7 @@ Then name the framework, tune it, ask Claude to run it. Claude knows working bac
 
 Ask Claude to read the box frame, walk you through the beats the stickies leave open, then repaint the box.
 
-**Prompt** · `apt101-d1-read-the-board`, read the box frame on our Miro board (or the pasted screenshot), sort the stickies into the press-release beats (the customer, their problem in their words, what changes for them, a customer quote, the top three reasons it fails), ask one at a time about any beat with no sticky, then repaint `team/product-box.html` with the press release on the back
+{{prompt:apt101-d1-read-the-board}}
 
 Back to the board. Where Claude's wording beat a sticky, the sticky's author moves it; where a sticky beat Claude's wording, say so and the driver asks for it back.
 
@@ -56,9 +71,9 @@ Every product in your category promises speed, ease and peace of mind. Each of y
 
 The team lead usually knows the true version of each line: what is actually built, and what is still a slide.
 
-Tell Claude what only your product does and have it repaint the box.
+Ask Claude to read the three only-us stickies and repaint the box on them.
 
-**Prompt** · `apt101-d1-box-only-us`, read the three only-us stickies from the box frame and repaint `team/product-box.html` so the front promise and the reasons to buy rest on them, replacing claims any competitor could make
+{{prompt:apt101-d1-box-only-us}}
 
 ## Phase 4: What your customers would never say
 
@@ -70,7 +85,7 @@ The designer leads this one: interviews, support calls, usability sessions. The 
 
 Ask Claude to repaint the box from what your customers hate and the words they'd never use.
 
-**Prompt** · `apt101-d1-box-never-say`, read the hate and never-say stickies from the box frame, turn them into what the box stands against, ban the never-say words from the page, and repaint `team/product-box.html`
+{{prompt:apt101-d1-box-never-say}}
 
 ## Phase 5: Make it yours
 
@@ -88,7 +103,7 @@ Claude has been painting this box for half an hour, and it reads its own work ki
 
 Ask Claude for a cold read of the box: the line a competitor couldn't print, and the line they could.
 
-**Prompt** · `apt101-d1-box-cold-read`, have a reader with no memory of this session read `team/product-box.html` cold and quote the one line only this product could print and the most generic line on the page
+{{prompt:apt101-d1-box-cold-read}}
 
 Read the two quotes out loud. Then put the Phase 1 baseline in your head next to the page on the screen. You told Claude different things between the two, and nothing else changed.
 

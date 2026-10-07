@@ -990,6 +990,250 @@
       }
     ]
   },
+  "apt101-d1-bet-assumptions": {
+    "key": "apt101-d1-bet-assumptions",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-write-the-bet",
+    "text": "Read the hypotheses in team/bet.md. Under each one, list the assumptions it rests on: what has to be true for it to work. One line each, as short as a sticky. Tag each one desirable (customers want it), viable (it works for the business) or feasible (we can build it).\n\nPut them as stickies on the Bet frame of our Miro board, beside the 2x2, not on it. Each sticky in the colour of the person whose hypothesis it sits under, with their name on it; ask us whose colour is which if you don't know. Write them inside the frame. If you can't reach the board, give me the list grouped by hypothesis, and we'll copy them onto the board.\n\nDon't place them on the 2x2. Where each one sits is our call.",
+    "requires": [
+      {
+        "id": "team-bet",
+        "source": "prompt:apt101-d1-bet-gather"
+      }
+    ],
+    "produces": [
+      {
+        "id": "assumption-stickies",
+        "location": "Miro Bet frame (or a list in chat)",
+        "note": "placed on the 2x2 by the trio"
+      }
+    ]
+  },
+  "apt101-d1-bet-gather": {
+    "key": "apt101-d1-bet-gather",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-write-the-bet",
+    "text": "Copy each team/<name>/hypothesis.md into team/bet.md, under a ## Hypotheses heading below the outcome. Word for word, each under the name of the person who wrote it.\n\nDon't edit, merge or rank them. If a folder has no hypothesis.md yet, write that person's name with \"not written yet\" under it.\n\nTell me which names you found.",
+    "requires": [
+      {
+        "id": "hypothesis-md",
+        "source": "prompt:apt101-d1-bet-hypothesis"
+      }
+    ],
+    "produces": [
+      {
+        "id": "team-bet",
+        "location": "team/bet.md (## Hypotheses, attributed)",
+        "note": "read by apt101-d1-pin-the-bet, apt101-d1-bet-assumptions, Day 2"
+      }
+    ]
+  },
+  "apt101-d1-bet-hypothesis": {
+    "key": "apt101-d1-bet-hypothesis",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-write-the-bet",
+    "text": "Read the outcome in team/bet.md. Then ask me for my hunch about what would move it, in my own words.\n\nTurn my hunch into one hypothesis statement: We believe that <doing this> for <these people> will achieve <this outcome>. We'll know we're right when we see <this signal>.\n\nPush until the signal has a number and a time window, and could come back no. If the signal can only say yes, tell me, and ask again. Use my words for the hunch; don't polish them.\n\nSave the statement to team/<my-name>/hypothesis.md. Ask my first name if you don't know it.",
+    "requires": [
+      {
+        "id": "team-bet",
+        "source": "prompt:apt101-d1-bet-outcome"
+      }
+    ],
+    "produces": [
+      {
+        "id": "hypothesis-md",
+        "location": "team/<my-name>/hypothesis.md",
+        "note": "gathered into team/bet.md; read by apt101-d1-your-look-for-line, Day 2"
+      }
+    ]
+  },
+  "apt101-d1-bet-outcome": {
+    "key": "apt101-d1-bet-outcome",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-write-the-bet",
+    "text": "Read the outcome stickies on the Bet frame of our team's Miro board, every sticky on it including any on its edge, or the screenshot I paste. Read team/product-box.html too.\n\nAn outcome is what our customers do differently once the product works for them, not something we ship.\n\nInterview the three of us down to one outcome. Ask one question at a time and wait for the answer. Keep going until the outcome names who, doing what differently, by when, and how we would see it. Where a candidate is a feature or a deliverable, say so and ask what the customer would do differently because of it.\n\nWrite the outcome as the first section of team/bet.md, under ## Outcome. Show me the sentence before saving.",
+    "requires": [
+      {
+        "id": "product-box",
+        "source": "prompt:apt101-d1-box-never-say"
+      }
+    ],
+    "produces": [
+      {
+        "id": "team-bet",
+        "location": "team/bet.md (## Outcome)",
+        "note": "read by every later bet prompt"
+      }
+    ]
+  },
+  "apt101-d1-bet-record-map": {
+    "key": "apt101-d1-bet-record-map",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-write-the-bet",
+    "text": "Read the Bet frame of our team's Miro board, everything on it including stickies on its edge, or the screenshot I paste. First ask us which sticky and dot colour belongs to whom, if you don't know yet.\n\nFrom the 2x2, read each assumption sticky: its words, its tag, and which quadrant it sits in. Then read the dots: which assumption each dot sits on, and from its colour, who put it there.\n\nAdd the assumption map to team/bet.md under ## Assumption map: each assumption with its tag and quadrant, the riskiest marked. Where the dots split, record it with who put which.\n\nTell me what you wrote, and anything on the frame you couldn't place.",
+    "requires": [
+      {
+        "id": "team-bet",
+        "source": "prompt:apt101-d1-bet-gather"
+      }
+    ],
+    "produces": [
+      {
+        "id": "team-bet",
+        "location": "team/bet.md (## Assumption map)",
+        "note": "read by Day 2 choose the bet, Day 3 story map"
+      }
+    ]
+  },
+  "apt101-d1-box-baseline": {
+    "key": "apt101-d1-box-baseline",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-paint-the-product-box",
+    "text": "Paint a product box for our product from the public page I'll paste below, and nothing else. One page of HTML, saved to team/product-box.html.\n\nThe front: the product's name, one promise, three reasons to buy. The back: who it is for.\n\nUse only what the page says. Don't ask me questions yet.\n\nOur public page:",
+    "requires": [
+      {
+        "id": "team-folder",
+        "source": "prompt:apt101-d1-link-the-team-folder"
+      }
+    ],
+    "produces": [
+      {
+        "id": "product-box",
+        "location": "team/product-box.html",
+        "note": "repainted by every later box prompt; read by apt101-d1-bet-outcome, Day 3 five users"
+      }
+    ]
+  },
+  "apt101-d1-box-cold-read": {
+    "key": "apt101-d1-box-cold-read",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-paint-the-product-box",
+    "text": "Spawn a subagent to read team/product-box.html cold, with no memory of this session and of how the box was made.\n\nHave it answer:\n1. Quote the one line only this product could print: not the best line, the most uniquely ours.\n2. Quote the most generic line on the page, the one a competitor could paste onto their own box today.\n\nGive me both quotes exactly as the subagent wrote them.",
+    "requires": [
+      {
+        "id": "product-box",
+        "source": "prompt:apt101-d1-box-never-say"
+      }
+    ],
+    "produces": [
+      {
+        "id": "box-cold-read",
+        "location": "scrollback",
+        "note": "read aloud in the room; the generic line goes on the board"
+      }
+    ]
+  },
+  "apt101-d1-box-never-say": {
+    "key": "apt101-d1-box-never-say",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-paint-the-product-box",
+    "text": "Read the hate and never-say stickies on the box frame of our Miro board, or in the screenshot I paste. The hate stickies are what our customers hate about the way they do the job today. The never-say stickies are words our customers would never use about our product.\n\nTurn each hate into what the box stands against, said as what the product does instead. Not a list of what we're against, but the voice of the whole box.\n\nBan every never-say word from the page. Then repaint team/product-box.html, and keep the only-us lines and the press release.\n\nFinish by quoting any never-say word you found on the old box.",
+    "requires": [
+      {
+        "id": "product-box",
+        "source": "prompt:apt101-d1-box-only-us"
+      }
+    ],
+    "produces": [
+      {
+        "id": "product-box",
+        "location": "team/product-box.html (repainted)"
+      }
+    ]
+  },
+  "apt101-d1-box-only-us": {
+    "key": "apt101-d1-box-only-us",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-paint-the-product-box",
+    "text": "Read the three only-us stickies we picked on the box frame of our Miro board, or in the screenshot I paste. Each is a thing our product does that a competitor's doesn't.\n\nRepaint team/product-box.html so the front promise and the three reasons to buy rest on those three lines. Every claim on the box that any competitor in our category could also make: replace it, or cut it. Keep the press release on the back.\n\nThen tell me which lines you replaced or cut, quoting the old wording.",
+    "requires": [
+      {
+        "id": "product-box",
+        "source": "prompt:apt101-d1-read-the-board"
+      }
+    ],
+    "produces": [
+      {
+        "id": "product-box",
+        "location": "team/product-box.html (repainted)"
+      }
+    ]
+  },
+  "apt101-d1-link-the-team-folder": {
+    "key": "apt101-d1-link-the-team-folder",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-paint-the-product-box",
+    "text": "Our team shares one folder for this training. I'll paste its path after this. Make it reachable from my training folder as team/, as a link to the shared folder, not a copy.\n\nThen check you can write to it: create team/<my-name>/, write a short test file there, read it back, and delete the test file. Ask me my first name if you don't know it.\n\nTell me in one line the path team/ now points to, and whether the write worked.\n\nThe team folder is at:",
+    "requires": [
+      {
+        "id": "working-tree-scaffold",
+        "source": "prompt:apt101-d1-make-the-folders"
+      }
+    ],
+    "produces": [
+      {
+        "id": "team-folder",
+        "location": "team/ (link to the shared team folder)",
+        "note": "every later team/ path"
+      }
+    ]
+  },
+  "apt101-d1-look-check": {
+    "key": "apt101-d1-look-check",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-send-it-off",
+    "text": "Copy module-2/morning-agent/latest.html to module-2/morning-agent/look-check.html. In the copy, replace every line of text with placeholder text of about the same length. Keep the layout, colours, type and images exactly as they are.\n\nThen open look-check.html in my browser.\n\nDon't quote, summarise or describe what latest.html says, in the chat or anywhere else. Reply only with the path of the copy.",
+    "requires": [
+      {
+        "id": "morning-agent-output",
+        "source": "prompt:personal-agent-homework-3"
+      }
+    ],
+    "produces": [
+      {
+        "id": "look-check",
+        "location": "module-2/morning-agent/look-check.html",
+        "note": "opened for the look; latest.html stays unread until Day 2"
+      }
+    ]
+  },
+  "apt101-d1-make-the-folders": {
+    "key": "apt101-d1-make-the-folders",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/our-product-our-system",
+    "text": "Make my training folder ready. Inside the folder you're working in, create three empty folders: sources/, memory/ and agents/. Leave anything already there untouched.\n\nThen list what's in the folder, so I can see all three.",
+    "produces": [
+      {
+        "id": "working-tree-scaffold",
+        "location": "~/Documents/apt101/ (sources/, memory/, agents/)",
+        "note": "read by every Day 1 prompt"
+      }
+    ]
+  },
   "apt101-d1-pin-the-bet": {
     "key": "apt101-d1-pin-the-bet",
     "dest": "Claude Code",
@@ -1008,6 +1252,135 @@
         "id": "challenge-md",
         "location": "./challenge.md",
         "note": "the bet seen from one seat; read by build-your-challenge-memory-* and a101-m2-debrief-claude-md"
+      }
+    ]
+  },
+  "apt101-d1-read-the-board": {
+    "key": "apt101-d1-read-the-board",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-paint-the-product-box",
+    "text": "Read the box frame on our team's Miro board. Read every sticky on it, including any dragged onto its edge. If you can't reach the board, say so, and I'll paste a screenshot of the frame instead.\n\nSort the stickies into the beats of a working-backwards press release:\n- the customer\n- their problem, in their words\n- what changes for them\n- a quote a real customer could say\n- the top three reasons it could still fail\n\nShow me the sorted beats, with each sticky's words as written. Then ask about any beat that has no sticky, one beat at a time. Wait for my answer before the next. Don't fill a beat yourself.\n\nThen repaint team/product-box.html. The front carries the customer's promise. The press release goes on the back, in the stickies' words where they are better than yours.",
+    "requires": [
+      {
+        "id": "product-box",
+        "source": "prompt:apt101-d1-box-baseline"
+      }
+    ],
+    "produces": [
+      {
+        "id": "product-box",
+        "location": "team/product-box.html (repainted, press release on the back)"
+      }
+    ]
+  },
+  "apt101-d1-scout-the-material": {
+    "key": "apt101-d1-scout-the-material",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-what-goes-in",
+    "text": "Read ./challenge.md. Then ask me where the material on this bet lives in my own work. Ask one question at a time: interview notes, ticket exports, analytics, retro notes, shared folders, and anything else I name.\n\nThen list each source I named, with:\n- where it is (tool, folder or path)\n- what is in it, in a few words\n- whether it holds people's names: customers, colleagues, anyone\n\nShow me the list. Save nothing.",
+    "requires": [
+      {
+        "id": "challenge-md",
+        "source": "prompt:apt101-d1-pin-the-bet"
+      }
+    ],
+    "produces": [
+      {
+        "id": "curation-seed",
+        "location": "scrollback",
+        "note": "scouting list; read by apt101-d1-the-door and build-your-challenge-memory-1"
+      }
+    ]
+  },
+  "apt101-d1-team-rules": {
+    "key": "apt101-d1-team-rules",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/our-product-our-system",
+    "text": "Read each team/<name>/CLAUDE.md in our team folder. Three rules files, written from three seats.\n\nWrite team/team-rules.md in two parts:\n- Rules all three of us arrived at, in any wording, each with whose files it came from.\n- Open questions for Day 2: the rules only one or two of us wrote, each under its author's name, worded as a question for the team.\n\nDon't merge a disagreement into a compromise. Then tell me how many rules landed in each part, and the open question you think will be hardest.",
+    "requires": [
+      {
+        "id": "root-claude-md",
+        "source": "prompt:a101-m2-debrief-claude-md"
+      }
+    ],
+    "produces": [
+      {
+        "id": "team-rules",
+        "location": "team/team-rules.md",
+        "note": "read at Day 2 close"
+      }
+    ]
+  },
+  "apt101-d1-the-door": {
+    "key": "apt101-d1-the-door",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-what-goes-in",
+    "text": "The three of us are about to decide what may go into our agents. Ask each of us, one at a time, to read out our scouting list. Wait for each before the next.\n\nThen go through the kinds of material out loud with us, one at a time. For each, ask: does the agent need this to read the bet, or is it just there? Ask by name about customer names, phone numbers, colleagues' names in notes or tickets, and folders nobody remembers sharing. Record what we decide; don't decide for us.\n\nWrite team/what-goes-in.md in three sections:\n- In: what may go in.\n- Out: what stays out, with the reason in our words.\n- Strip: what we remove before a file goes in.\n\nAttribute each line to who said it. A no from any one of us is final and needs no reason.",
+    "requires": [
+      {
+        "id": "curation-seed",
+        "source": "prompt:apt101-d1-scout-the-material"
+      }
+    ],
+    "produces": [
+      {
+        "id": "door",
+        "location": "team/what-goes-in.md",
+        "note": "read by build-your-product-memory, Day 2 retrievers and digest read, Day 3 take it to the team"
+      }
+    ]
+  },
+  "apt101-d1-your-expect-line": {
+    "key": "apt101-d1-your-expect-line",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-send-it-off",
+    "text": "Ask me for one sentence in my own words: what I expect the digest to say about my hypothesis.\n\nDon't suggest one, and don't improve mine. Write it word for word to team/<my-name>/expect.md. Not into the brief: the run must never read it.\n\nConfirm in one line where you saved it.",
+    "requires": [
+      {
+        "id": "look-for-line",
+        "source": "prompt:apt101-d1-your-look-for-line"
+      }
+    ],
+    "produces": [
+      {
+        "id": "expect-md",
+        "location": "team/<my-name>/expect.md",
+        "note": "never read by the run; quoted by Day 2 apt101-d2-what-ran-overnight"
+      }
+    ]
+  },
+  "apt101-d1-your-look-for-line": {
+    "key": "apt101-d1-your-look-for-line",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-send-it-off",
+    "text": "Read team/<my-name>/hypothesis.md. Then ask me for one sentence, in my own words: what the digest should look for in my material about this hypothesis.\n\nDon't suggest a sentence, and don't improve mine. If my answer runs longer than a sentence, ask me which sentence to keep.\n\nWrite that sentence word for word into module-2/morning-agent/morning.md, under a ## Look for heading. Don't reword it, and don't add a line of your own. Then show me the heading and the line as saved.",
+    "requires": [
+      {
+        "id": "hypothesis-md",
+        "source": "prompt:apt101-d1-bet-hypothesis"
+      },
+      {
+        "id": "morning-agent-brief",
+        "source": "prompt:personal-agent-homework-2"
+      }
+    ],
+    "produces": [
+      {
+        "id": "look-for-line",
+        "location": "module-2/morning-agent/morning.md (## Look for)",
+        "note": "read by the overnight run; quoted by Day 2 apt101-d2-what-ran-overnight"
       }
     ]
   },

@@ -9,9 +9,13 @@ Learn to do AI as a team, and stay in control of it.
 Come as a team of three: a product owner, a designer and a team lead who work on the same product. Each of you brings:
 
 - **A laptop with Claude installed and signed in.** <span class="rt-code">Claude Code, desktop app.</span><span class="rt-cowork">Claude Desktop with Cowork.</span>
-- **A training folder** at `~/Documents/apt101/`, with three empty folders inside: `sources/`, `memory/` and `agents/`.
+- **A training folder** at `~/Documents/apt101/`, opened in Claude, with the three folders below made.
 - **Your own material on the product,** somewhere you can reach from that laptop: interview notes, a ticket export, an analytics dashboard or export, retro notes. Your own seat's material, not the whole company's.
 - **The link to your product's public page:** website, app store listing or sales one-pager.
+
+In your training folder, ask Claude to make the three folders every agent reads from.
+
+{{prompt:apt101-d1-make-the-folders}}
 
 Arrive without your own material and you build a memory of nothing. Your call.
 
@@ -71,7 +75,7 @@ Read its summary. Push back on anything that doesn't match the day: *"No, that r
 
 Three rules files, written from three seats, will differ. Each of you asks Claude to copy your `./CLAUDE.md` into your own folder in the team folder. Then the team lead drives at the shared screen and asks Claude to lay the three side by side.
 
-**Prompt** · `apt101-d1-team-rules`, read each `team/<name>/CLAUDE.md`, write `team/team-rules.md` with the rules all three of us arrived at, each attributed, and list the rules only one of us wrote as open questions for Day 2
+{{prompt:apt101-d1-team-rules}}
 
 Read the open questions out loud. Agree on nothing yet. Each person's own file stays as it is; the team file is what you share.
 

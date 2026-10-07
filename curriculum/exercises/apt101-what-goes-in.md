@@ -24,9 +24,9 @@ Answer in your own words. The product owner's brief will lean on the outcome, th
 
 *3 min*
 
-Ask Claude where you'd go scouting for raw material on this bet.
+Ask Claude to find out where the material on this bet lives in your own work.
 
-**Prompt** · `apt101-d1-scout-the-material`, reads `./challenge.md`; asks me where the material on this bet lives in my own work (interview notes, ticket exports, analytics, retro notes, shared folders, anything else I name), then lists each source with where it is, what is in it, and whether it holds people's names; shows the list and saves nothing
+{{prompt:apt101-d1-scout-the-material}}
 
 Answer for your own world. Keep the list on screen. It is what the door is about to decide.
 
@@ -40,7 +40,7 @@ Your company's rules on what may go through an AI tool are the outer edge. The d
 
 The team lead drives at the shared screen and asks Claude to write the door from the three scouting lists.
 
-**Prompt** · `apt101-d1-the-door`, ask each of us to read out our scouting list, then write `team/what-goes-in.md`: what may go in, what stays out (with the reason in our words), and what we strip before it goes in, each line attributed to who said it
+{{prompt:apt101-d1-the-door}}
 
 Go through each kind of material out loud. One question for each: does the agent need this to read the bet, or is it just there? Customer names in interview notes, phone numbers in a ticket export, a colleague's name in a retro note or ticket, the folder nobody remembers sharing: decide them now, by name.
 

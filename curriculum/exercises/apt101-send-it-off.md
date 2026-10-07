@@ -56,11 +56,11 @@ Claude offers three jobs. Pick the one closest to a digest, with the line each f
 
 Then the one line in the brief that only you write. Open your hypothesis, `team/<your-name>/hypothesis.md`, and say in one sentence what the digest should look for in your material about it. Your words, the way you would brief a colleague. Claude writes the sentence into the brief exactly as you said it.
 
-**Prompt** · `apt101-d1-your-look-for-line`, read `team/<my-name>/hypothesis.md`, ask me for one sentence in my own words saying what the digest should look for in my material about it, and write that sentence word for word into `module-2/morning-agent/morning.md` under a `## Look for` heading, without rewording it or adding a line of your own
+{{prompt:apt101-d1-your-look-for-line}}
 
 One more sentence before it runs, in your own words: what do you expect the digest to say about your hypothesis?
 
-**Prompt** · `apt101-d1-your-expect-line`, ask me for one sentence in my own words saying what I expect the digest to say about my hypothesis, and write it word for word, without rewording it, into `team/<my-name>/expect.md`, outside the brief so the run never reads it
+{{prompt:apt101-d1-your-expect-line}}
 
 ## Phase 5: Schedule it
 
@@ -86,7 +86,7 @@ Leave your laptop plugged in until the run fires, lid open if you can.
 
 Ask Claude for a copy of the first run's page with every line of text swapped for placeholder, and open the copy.
 
-**Prompt** · `apt101-d1-look-check`, copy `module-2/morning-agent/latest.html` to `module-2/morning-agent/look-check.html` with every line of text replaced by placeholder text of the same length, keeping layout, colours and type; open the copy in the browser; never quote, summarise or describe what the original says
+{{prompt:apt101-d1-look-check}}
 
 Check the look only: your colours, your type, a page and not a wall of text. If it looks off, or the page is empty, fix `./style.md` or `morning.md`; the scheduled run reads both, so the next run picks up the change.
 

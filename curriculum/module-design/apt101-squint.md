@@ -55,7 +55,9 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - It found what you asked it to look for ✱
 - It analysed everything and still had no insight ✱ (stance)
 - A faster feature factory is still a feature factory ✱
-- I used to think of being wrong as failure ✱ (narrator)
+- I wanted to be right ✱ (narrator)
+- About the future, all was blurry ✱ (narrator)
+- Being wrong does not diminish you ✱ (narrator)
 - The instructions are one suspect; your question is another ✱ (style)
 
 **Go back to your customers**

@@ -46,7 +46,7 @@ Either way: know where the toggle is, what the footer says when it's on, and why
 </div>
 <div class="rt-cowork">
 
-- **Try** it. Cowork has no plan-mode toggle, so Module 2 uses a prompt-level simulation. A line like *"Before you write any files, lay out a plan as a numbered list and ask me to approve it"* creates the review point.
+- Cowork has no plan-mode toggle, so Module 2 uses a prompt-level simulation. A line like *"Before you write any files, lay out a plan as a numbered list and ask me to approve it"* creates the review point.
 - **Watch** Matt Pocock's [*"I was an AI skeptic. Then I tried plan mode"*](https://www.youtube.com/watch?v=WNx-s-RxVxk) on YouTube. The demo is in Code, but the move is the same one you'll ask for in Cowork.
 
 Either way: know what the plan-mode simulation looks like, and why you'd reach for it before anything that writes more than one file.

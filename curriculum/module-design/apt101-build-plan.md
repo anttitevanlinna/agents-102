@@ -16,6 +16,7 @@ Agents 101's model, for a trio:
 - **Each person** runs Claude Code (or Cowork) on their own laptop, in their own training folder `~/Documents/apt101/`. Personal material, memory and agents live there. Exercises carry the same `rt-code` / `rt-cowork` spans as Agents 101.
 - **The team folder:** a shared folder the trainer posts in chat (Agents 101 M8 pattern). Each person writes only to `team/<your-name>/`. Team artefacts (product box, bet, tree, chosen bet, story map, way of working) sit at the team folder root, written by whoever drives that beat; the exercise names the driver.
 - One session per day per person: `**Session** *(new, "Day N - …")*` at the day's first exercise, `/rename apt101-day-N`.
+- **The team board is Miro** (strategy: "runs on the customer's own Claude and Miro", "Miro-style group work part of the time, each person exploring in their own Claude chat the rest"). Group-made, visual artefacts live on one Miro board per team, one frame per beat, set up by the trainer: the product box sketch, the assumption map, the opportunity solution tree (sketched alone, then merged), the bet choice, the pre-mortem stickies and votes, the story map, the five-users wall. Claude reads the board and writes back to it through the Miro connector; if the company hasn't enabled it, a board screenshot or export goes into the chat instead. Text the agents must keep reading (memory, `bet.md`, the judge, `CLAUDE.md`, rules) stays in files. Rhythm per room beat: post-its on the board first, then Claude works on what the board holds, then the board again.
 - **No governance taught.** Data is one plain door on Day 1: the team agrees what may go in before anything goes in. Day 2 v9 beat 5 (legal, GDPR, AI Act) is cut; its time goes to the made-up-claims benchmark.
 
 ## Artefact chain (the overnight digest is the thread)
@@ -100,3 +101,13 @@ Agents 101's model, for a trio:
 - **Module files** (`curriculum/trainings/agentic-product-teams-101/<day>.md`): module-shape template; lectures and exercises interleaved in beat order; Debrief, Key Concepts, Bring to Day N+1, Next. Days are modules; the existing lecture includes stay, reordered only where a beat needs it.
 - **Exercise files** (`curriculum/exercises/apt101-*.md`): Agents 101 exercise shape (Time, Session, What you do, phases, prompts, maintainer block with Role, Frameworks, Artefacts produced/consumed).
 - **No edits** to lectures, slides, Agents 101 exercises or prompts.
+
+## Open
+
+- **Miro connector, test live before the exercises promise it** (maintainer has a free Miro on the Google account; connector installed, sign-in via `/mcp` → claude.ai Miro). On a scratch board:
+  1. Does Claude read stickies per frame, with the author of each?
+  2. Does it write stickies and connectors back (a merged tree, a story map layout)?
+  3. Does it read a vote, either the voting tool's results or dot stickies?
+  4. Does it stay fast enough on a board with 60+ stickies to hold the room rhythm?
+
+  The result decides whether Claude only reads the board or also writes to it, and becomes the platform fact in § Delivery.

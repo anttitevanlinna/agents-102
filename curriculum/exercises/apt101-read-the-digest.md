@@ -77,6 +77,9 @@ You have three doubts, one chosen, each tied to a line and a source. Each of you
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-07 (behavior@0ac6010f)
+- judges @0ac6010f: behavior PASS
+
 **Role in Day 2:** opening exercise, beat 1. Turns the overnight digest from Day 1 into one doubt the team chose, which the outcome pick and the evidence run read next.
 
 **Reuse:** return leg of Agents 101 `personal-agent-homework` (same `module-2/morning-agent/` paths). `personal-agent-homework-3` unchanged, for a run that did not fire. New: `apt101-d2-what-ran-overnight`, `apt101-d2-mark-the-doubt`, `apt101-d2-ask-the-other-way`.

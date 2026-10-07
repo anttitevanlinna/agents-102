@@ -46,6 +46,9 @@ Your own rules now say when a summary gets checked. The team's rules carry an ex
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-07 (behavior@0ac6010f)
+- judges @0ac6010f: behavior PASS
+
 **Role in Day 2:** beat 11, last exercise. Compounds the day into personal and team rules, and turns the overnight digest from Day 1's agreeable reader into tomorrow's check on the chosen bet. Placed after the lecture *Write it down or lose it* (corrections become rules on recurrence; examples of good beside the don'ts).
 
 **Reuse:** keys `a101-m5-debrief-groundedness-rules` (Agents 101 M5 debrief) and `personal-agent-homework-3`, unchanged. New: `apt101-d2-team-rules`, `apt101-d2-tonights-question`.

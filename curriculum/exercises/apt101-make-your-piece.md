@@ -58,6 +58,9 @@ Then one round, piece by piece. The other two point at the part of it that only 
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-07 (behavior@0ac6010f)
+- judges @0ac6010f: behavior PASS
+
 **Role in Day 2:** beat 8, protected. The creativity beat: each role makes a first piece of the chosen bet in its own craft, answering the room's private question of what each of us is for. Placed after the lecture *Each of you makes something*, whose slides set each role's frame (Houde and Hill's prototype questions, the test card, the working agreement). Its last slide (*Imagine it already failed*) carries into beat 9.
 
 **Reuse:** new. New prompts: `apt101-d2-designer-prototype`, `apt101-d2-po-kill-test`, `apt101-d2-lead-way-of-working`, `apt101-d2-lead-sceptical-colleague`.

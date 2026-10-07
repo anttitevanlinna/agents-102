@@ -30,6 +30,9 @@ Read the obstacle and the question beside the outcome in `team/bet.md` and the c
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-07 (behavior@0ac6010f)
+- judges @0ac6010f: behavior PASS
+
 **Role in Day 2:** beat 2. Fixes the root of today's tree (the agreed outcome) and the decision it informs, in one file every Day 2 prompt reads.
 
 **Reuse:** shape of Agents 101 `name-your-crux` (obstacle, then the decision it blocks), rewritten as `apt101-d2-find-the-obstacle` and `apt101-d2-the-call-it-blocks` so the prompts read the bet, not a `challenge.md` (removes the "your prompt says challenge" seam). Headings stay `## Crux` and `## Question`: the reused `three-retrievers-one-curator`, `three-minds-one-synthesis` and `hallucination-bakeoff` prompts read them. The outcome comes from `team/bet.md`, agreed by the trio; the crux is the obstacle under it; the `## Question` is the decision. `## Outcome` and `## Doubt` go above the prompt's sections, at the product owner's ask; `## Doubt` is how the chosen doubt reaches the retrievers in `apt101-gather-the-evidence`, which read `./crux.md`.

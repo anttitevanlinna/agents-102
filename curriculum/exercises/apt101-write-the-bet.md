@@ -86,8 +86,8 @@ In a moment the bet becomes what each of your agents works on. Before Day 2, one
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74)
-- judges @dd243e74: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@0ac6010f)
+- judges @0ac6010f: behavior PASS
 
 **Role in Day 1:** beat 4; the trio's first written bet. Read by every agent from here on via `./challenge.md` in `apt101-what-goes-in`.
 

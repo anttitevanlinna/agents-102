@@ -1,29 +1,34 @@
 ## I used to think of being wrong as failure
 <!--slide:ship-the-ideas-discover-the-wrongs-->
 
-I wanted to be right. Being right equated to creating value. Being right was progress.
+For most of my working life I wanted to be right. Being right was progress.
 
-I used to think of being wrong as failure. But being wrong does not diminish you as a person. Lack of effort to understand does.
+Then came a year inside an AI transformation. Most weeks I could not tell which of our bets would turn out right. About the future, all was blurry. It gave me anxiety, and a feeling of insufficiency.
 
-What I've learned about design bit by bit is to not be afraid of failing either totally or partially with the many first versions of the design. My creations are not me and not everything has to be perfect.
+The blur did not go away. What changed was what I did with it: make something in an hour, put it in front of someone who can react, and let them show me the wrong. Being wrong does not diminish you. Lack of effort to understand does.
 
-Antti Tevanlinna, *Expect to Be Wrong with the Vision and Ideas*, 2025-05-09
+Antti Tevanlinna
 
-A digest that agrees with your favourite hypothesis is a first version too, so go and find where it is wrong.
+When the digest agrees with you, that is the moment to go looking for your wrong.
 
 <!-- maintainer -->
 
-**STATUS:** rebuilt from the APT101 squint (2026-10-07), narrator slide at Day 2's turn, § Why it agreed. Three passages from the essay, each verbatim, in essay order; the essay's first sentence ("I used to be worried about making a good impression — always.") is left out for its em dash, and the PDCA paragraph is left out so the voice carries the slide rather than a framework. Narrated, not block-quoted; one byline line; one plain sentence after it. Names no employer or colleague. Not taught (simulation training). Owes judging rounds.
+**STATUS:** first-person guide passage at Day 2's turn (§ Why it agreed). Maintainer-commissioned 2026-10-07: "write the failure based on the essay on not knowing what will be the real outcome. The feelings of uncertainty and not knowing what is right". Composed from the year-one essays *Expect to Be Wrong with the Vision and Ideas* (2025-05-09) and *Failing and Succeeding at the Same Time* (2025-12-05). Not taught (simulation training). Owes the maintainer's read and a judging round.
+
+**Guard (maintainer to confirm):** most lines are the essays' own wording, lightly cut. The joins are composed: "For most of my working life", "Then came a year inside an AI transformation", "Most weeks I could not tell which of our bets would turn out right" and "The blur did not go away. What changed was what I did with it". They stay in his voice only once he has read them. If a join is untrue, cut it rather than reword it.
 
 <!-- backing -->
 
 **Claims**
 - `wanted-to-be-right` · detail · "Being right was progress." ← essay-expect-to-be-wrong
-- `wrong-is-not-failure` · detail · "Lack of effort to understand does." ← essay-expect-to-be-wrong
-- `first-versions` · detail · "My creations are not me and not everything has to be perfect." ← essay-expect-to-be-wrong
-- `digest-is-a-first-version` · vision · "A digest that agrees with your favourite hypothesis is a first version too" ← none-owed — APT101 design stance; the Day 2 turn.
+- `blurry` · detail · "About the future, all was blurry." ← essay-expect-to-be-wrong — essay: "About the future: all is blurry most of the time."
+- `anxiety` · detail · "It gave me anxiety, and a feeling of insufficiency." ← essay-failing-and-succeeding — essay: "It gives you anxiety. It gives you a feeling of insufficiency."
+- `show-me-the-wrong` · detail · "make something in an hour, put it in front of someone who can react" ← essay-expect-to-be-wrong
+- `lack-of-effort` · detail · "Being wrong does not diminish you. Lack of effort to understand does." ← essay-expect-to-be-wrong
+- `go-looking-for-your-wrong` · vision · "When the digest agrees with you, that is the moment to go looking for your wrong." ← none-owed — the Day 2 turn.
 
 **Sources**
-- essay-expect-to-be-wrong `[checked:2025-05-09 result:ATTESTED due:none]` attested:Antti 2025-05-09 year-one-essays — [practitioner direct, maintainer-attested] Antti Tevanlinna, *Expect to Be Wrong with the Vision and Ideas*, 2025-05-09, Drive, bosser strategy folder, year-one practitioner essays, § 2025-05-09. The author's own word, quoted verbatim. fallback: none.
+- essay-expect-to-be-wrong `[checked:2025-05-09 result:ATTESTED due:none]` attested:Antti 2025-05-09 year-one-essays — [practitioner direct, maintainer-attested] Antti Tevanlinna, *Expect to Be Wrong with the Vision and Ideas*, 2025-05-09, Drive, bosser strategy folder, year-one practitioner essays, § 2025-05-09. fallback: none.
+- essay-failing-and-succeeding `[checked:2025-12-05 result:ATTESTED due:none]` attested:Antti 2025-12-05 year-one-essays — [practitioner direct, maintainer-attested] Antti Tevanlinna, *Failing and Succeeding at the Same Time*, 2025-12-05, Drive, bosser strategy folder, year-one practitioner essays, § 2025-12-05. fallback: none.
 
 <!-- /backing -->

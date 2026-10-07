@@ -212,7 +212,7 @@ The half the step-0 cold reads could not name. Every beat exists; no law does.
   *The Coming Loop* both linked; personal-to-team KC "the technical plan fills quickly; the
   people plan stalls on names"]` The sources are already on an A101 surface; the law is
   named in a supplementary no module links: `personal-to-company-gap.md` is absent from the
-  `TRAININGS` registry in `site/layouts/curriculum.js` (as is `agent-ready-data.md`), so it
+  `TRAININGS` registry in `site/layouts/curriculum.js`, so it
   renders nowhere a student is sent. Registering it is a delivery decision, not a theory one. For a leader the
   bottleneck is organisational (who reads, who decides, who signs), which is where §5's role
   shift lands.
@@ -223,7 +223,7 @@ The half the step-0 cold reads could not name. Every beat exists; no law does.
   (M2) is the work and why sharing context (M7) is harder than sharing a file. On the page
   once, in an unlinked supplementary.
 - **Three walls after competence: data access, runtime platform, discoverability.**
-  `[rsch:L2–3, F-Secure evidence]` `[curr:agents-building-agents KC]` Named at M8.
+  `[rsch:L2–3]` `[curr:agents-building-agents KC]` Named at M8.
 - **Amplification; individual ≠ institutional.** AI amplifies the system it enters; personal
   gains do not aggregate without organisational change. `[rsch:L3]` Not on any A101 surface;
   the leader-facing consequence of *cross personal → team*. Candidate for M7.

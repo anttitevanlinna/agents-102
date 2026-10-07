@@ -104,10 +104,6 @@ Author-typed widget palette (Session / HOX / Note / Prompt / runtime-fork) + whe
 
 Strategy and module file change in the same edit. Drift = process bug.
 
-## Copyright fence
-
-**F-Secure delivers their own version. Their materials = F-Secure IPR — off-limits.** All exercises / examples / language original.
-
 ## Platform claims
 
 `check_platform_and_boundaries.md` autoloads on platform-claim surface.

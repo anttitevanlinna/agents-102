@@ -98,8 +98,8 @@ The memory sits still until something reads it. Next, each of you gives it a job
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74 pedagogy@dd242fd9)
-- judges @dd242fd9: behavior PASS, pedagogy PASS (verify-refuted)
+**Quality:** compendium-audited 2026-10-07 (technical@5f1eb1b7 behavior@dd243e74 pedagogy@dd242fd9)
+- judges @5f1eb1b7: technical PASS, behavior PASS, pedagogy PASS (verify-refuted)
 
 **Role in Day 1:** beat 6, after lunch; each person's own material becomes a memory pointed at the bet. Day 2's overnight digest and every Day 2 prompt read it.
 

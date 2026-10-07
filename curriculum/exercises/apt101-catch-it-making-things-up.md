@@ -107,8 +107,8 @@ Four checks ran, a scorer measured them, and the one that won on your own eviden
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@3d7fd713 pedagogy@20018100)
-- judges @20018100: behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-catch-it-making-things-up.pedagogy.json)
+**Quality:** compendium-audited 2026-10-07 (technical@5f1eb1b7 behavior@3d7fd713 pedagogy@20018100)
+- judges @5f1eb1b7: technical PASS, behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-catch-it-making-things-up.pedagogy.json)
 
 **Role in Day 2:** beat 6, the trust centre of the day. Produces the groundedness judge every later beat leans on, and the first real catch. *Safe to say it's wrong* and *Fluent is not true* sit after: the first names the norm the phase 5 share just used ("the agent got this wrong", said about a real summary), the second names what the trio caught (stretch, smooth, the made-up quote).
 

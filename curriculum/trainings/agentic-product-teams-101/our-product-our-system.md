@@ -89,16 +89,16 @@ Read the open questions out loud. Agree on nothing yet. Each person's own file s
 
 ## Bring to Day 2
 
-**Your laptop, with the overnight digest scheduled and the laptop plugged in.** Day 2 opens on what came back. A digest that didn't run means you start the day reading someone else's.
+**Your laptop, with the overnight digest scheduled, plugged in, lid open.** Day 2 opens on what came back. A digest that didn't run means you start the day reading someone else's.
 
 ## Next
 
-Before Day 2, three agents read three memories against one bet, and write to you in your own company's look. On Day 2 the three of you read them, and decide what is actually true.
+Before Day 2, three agents each read their own memory with the team's bet in hand, and write to you in your own company's look. On Day 2 the three of you read them, and decide what is actually true.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74 pedagogy@dd242fd9)
-- judges @dd242fd9: behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--module--our-product-our-system.pedagogy.json)
+**Quality:** compendium-audited 2026-10-07 (technical@5f1eb1b7 behavior@dd243e74 pedagogy@dd242fd9)
+- judges @5f1eb1b7: technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--module--our-product-our-system.pedagogy.json)
 
 **STATUS:** built from the build plan (`curriculum/module-design/apt101-build-plan.md` § Day 1), 2026-10-07, for the `simulation: true` training Agentic Product Teams 101. Not taught. Big Idea = the adopted positioning line (strategy, 2026-10-05), kept as the Day 1 module's; the day's story heading in the squint and build plan is *You were right all along*, and the H1 stays the registered module title (`site/layouts/curriculum.js`) so nav and file agree.
 

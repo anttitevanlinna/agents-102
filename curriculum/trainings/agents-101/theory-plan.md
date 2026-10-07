@@ -212,7 +212,7 @@ The half the step-0 cold reads could not name. Every beat exists; no law does.
   *The Coming Loop* both linked; personal-to-team KC "the technical plan fills quickly; the
   people plan stalls on names"]` The sources are already on an A101 surface; the law is
   named in a supplementary no module links: `personal-to-company-gap.md` is absent from the
-  `TRAININGS` registry in `site/layouts/curriculum.js` (as is `agent-ready-data.md`), so it
+  `TRAININGS` registry in `site/layouts/curriculum.js`, so it
   renders nowhere a student is sent. Registering it is a delivery decision, not a theory one. For a leader the
   bottleneck is organisational (who reads, who decides, who signs), which is where §5's role
   shift lands.

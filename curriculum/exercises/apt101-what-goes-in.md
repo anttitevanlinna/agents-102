@@ -42,7 +42,7 @@ The team lead drives at the shared screen and asks Claude to write the door from
 
 **Prompt** · `apt101-d1-the-door`, ask each of us to read out our scouting list, then write `team/what-goes-in.md`: what may go in, what stays out (with the reason in our words), and what we strip before it goes in, each line attributed to who said it
 
-Go through each kind of material out loud. One question for each: does the agent need this to read the bet, or is it just there? Customer names in interview notes, phone numbers in a ticket export, the folder nobody remembers sharing: decide them now, by name.
+Go through each kind of material out loud. One question for each: does the agent need this to read the bet, or is it just there? Customer names in interview notes, phone numbers in a ticket export, a colleague's name in a retro note or ticket, the folder nobody remembers sharing: decide them now, by name.
 
 It will cost a source somebody wanted in. That is the door working. Anyone may say no to a source, and a no needs no defending.
 

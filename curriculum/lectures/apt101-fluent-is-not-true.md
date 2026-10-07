@@ -4,7 +4,7 @@
 
 [A customer quote no customer said](slides/a-customer-need-nobody-said.md)
 
-["Are you sure?" is another fluent answer](slides/are-you-sure.md)
+["Are you sure?" is another fluent answer](slides/another-fluent-answer.md)
 
 <!-- maintainer -->
 

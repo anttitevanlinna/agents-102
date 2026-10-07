@@ -65,7 +65,7 @@ Then one round, each of you in turn, no discussion until all three have spoken:
 ## Key Concepts
 - The first slice tests the assumption you are least sure of, from the first step of the journey to the last.
 - A fixed judge holds the floor. The team's written lines are the ceiling. A pass is the judge's claim until your own calls agree with it.
-- Five users did things the digest could not have said. The bet is read against the signal agreed before anyone built.
+- Five users showed what the digest could and could not have said. The bet is read against the signal agreed before anyone built.
 - The product owner picks the bet and its signal, the designer holds what customers said and did, the team lead agrees how agents join the work.
 - What goes to your team is a proposal, with a name on every part. They decide.
 
@@ -93,7 +93,7 @@ The bet is still open, and the next slice is yours to place.
 - **Transitions:** start 10 @start "Which line would you now cut?" · debrief 5 @end "Sharpen the proposal" · round 12 @end "Say it to each other"
 - **Minutes against the beat sheet:** 10 + 55 + 15 break + 45 + 50 + 75 lunch + 15 + 55 + 15 break + 25 = 360. Lectures before or after an exercise sit inside that beat's minutes, as the beat sheet prices them.
 - **Primary Bloom's level:** Apply → Evaluate (slice, test, decide), Create at the close (the proposal).
-- **Protected:** five users phase 4 (the human call) and take it to the team phase 6 (`team/monday.md`). Overrun: map the story phase 4 shrinks to one sentence; write what good means drops its walk-away comparison; the close round drops the third bullet.
+- **Protected:** five users phase 4 (the human call) and take it to the team phase 6 (`team/monday.md`). Overrun: map the story phase 4 shrinks to one sentence; write what good means drops the post-it prediction; the close round drops the third bullet.
 
 **Artefact contracts**
 | Artefact | Stable identifier | Produced by | Consumed by |
@@ -105,6 +105,7 @@ The bet is still open, and the next slice is yours to place.
 | First slice | `team/slice-1/` | map the story | five users |
 | What good means | `team/what-good-means.md`, `team/<name>/what-it-missed.md` | write what good means | later runs of the judge (outside this day) |
 | Eval run | `./generation-tactic.md`, `module-6/runs/`, `module-6/eval-notes.md` | write what good means (`eval-loop-1/2/5`) | write what good means (`apt101-d3-what-it-missed` reads `module-6/runs/`) |
+| Least-trusted line | `team/<name>/doubts.md` | Day 2 read the digest (`apt101-d2-mark-the-doubt`) | write what good means (`apt101-d3-what-it-missed`, beside the judge's passes) |
 | Each Day 1 hypothesis | `team/bet.md` | Day 1 write the bet | five users (`apt101-d3-read-the-sessions`, phase 4) |
 | Five users | *Five users* frame, `team/five-users.md` (call, each author's touched line and whether it held or broke, the sentence now believed) | five users | take it to the team (phase 1, `apt101-d3-the-job-your-team-hires`, `apt101-d3-team-monday`) |
 | Sharing package | `module-7/*.md` | take it to the team (`apt101-d3-the-job-your-team-hires`, `apt101-d3-bottleneck-and-plans`, `apt101-d3-test-the-switch`) | § Sharpen the proposal |

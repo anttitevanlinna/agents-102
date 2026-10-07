@@ -6,8 +6,6 @@
 
 [Future leadership is about strategy, outcomes and customers](slides/future-leadership.md)
 
-[Clear outcomes, free hands, for agents too](slides/aligned-autonomy-with-agents.md)
-
 [Would you let an agent post your weekly update?](slides/one-level-up.md)
 
 [The more you trust it, the less you notice](slides/trust-grows-attention-fades.md)

@@ -1,4 +1,4 @@
-## What your five users did that the digest never said
+## What your five users did, beside what the digest said
 <!--slide:what-five-users-did-->
 
 Put three things side by side: your bet, with the signal you agreed; your digest; and what each of your five users did with the slice. Write down moments, not verdicts: where someone hesitated, what they tried instead, what they used it for.

@@ -26,7 +26,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - Same question, two answers
 - You steer with what you bring, what you set and what you ask ✱ (retitle)
 - Leave it out of the plan and the agent decides ✱ (style)
-- On your own product, you are the check
+- On your own product, you are the check (r3: "it still rounds the corners" cut; nothing has rounded yet on Day 1)
 
 **Your first bet**
 - A signal that can only say yes is not a test ✱ (style)
@@ -41,8 +41,8 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 
 **Send it off**
 - The best mitigation is the door you don't open
-- One agent per recurring job, not one company brain ✱ (style)
-- A chat runs on one part; an agent needs six ✱ (style)
+- ~~One agent per recurring job, not one company brain~~ (cut in r3: named, never developed)
+- ~~A chat runs on one part; an agent needs six~~ (cut in r3: named, never developed)
 - It runs without you until Day 2 (r1: retitled so Day 1 does not announce the turn)
 
 ## Day 2: What came back
@@ -78,7 +78,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 **Fluent is not true**
 - The summary reads better than the evidence ✱ (style)
 - A customer quote no customer said ✱ (retitle)
-- "Are you sure?" is another fluent answer
+- "Are you sure?" is another fluent answer (r3: APT101 rewrite `another-fluent-answer`, ends on a question, not a forecast)
 
 **Each of you makes something**
 - Your taste is the ceiling
@@ -106,14 +106,14 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 
 **Your bet meets five users**
 - Test with five users, fix, then test five more
-- What your five users did that the digest never said ✱
+- What your five users did, beside what the digest said ✱
 - A slice that comes back no has done its job ✱ (style)
 
 **Three jobs, rewritten**
 - What each of us is for when building gets cheap
 - Your insight is the strategy: which customer, which bet, which no ✱ (stance answer)
 - Future leadership is about strategy, outcomes and customers ✱ (adopted positioning line)
-- Clear outcomes, free hands, for agents too ✱ (retitle)
+- ~~Clear outcomes, free hands, for agents too~~ (cut in r3: never developed)
 - Would you let an agent post your weekly update?
 - The more you trust it, the less you notice
 
@@ -126,7 +126,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 
 **Where you go from here**
 - Cheap building helps your rivals too
-- The six parts hold; the model keeps changing
+- ~~The six parts hold; the model keeps changing~~ (cut in r3: Day 1 no longer builds the six parts)
 - Will your organisation learn faster than the model changes underneath it?
 - I still make mistakes. I make them faster now. ✱ (narrator)
 - The models will analyse wider, deeper and faster. What will your insight be? ✱ (stance, echo)

@@ -3,7 +3,7 @@
 
 An agent drafting a press release for your product fills the gaps with what sounds likely: a customer count, a feature you dropped last year, a quote nobody said. Those lines read as well as the true ones.
 
-So read the draft as a claim about your product, not a verdict. The agent read every word you gave it, and it still rounds the corners.
+So read the draft as a claim about your product, not a verdict.
 
 You hold what it hasn't got: you know this product. Where the draft matches what you know, two reads agree. Where it doesn't, yours counts, and the gap is worth a look. Either the agent invented a fact, or your team never wrote that one down.
 

@@ -12,7 +12,7 @@
 
 **What you do:**
 
-You chose one bet on Day 2, and each of you made a first piece of it. Now you lay the customer's journey out flat, cut it into slices by what each one teaches you, and build the first slice so it works end to end. Five people from other teams will use that slice next.
+You chose one bet on Day 2, and each of you made a first piece of it. Now you lay the customer's journey out flat, cut it into slices by what each one teaches you, and build the first slice so it works end to end. Five people who do the job your product serves will use that slice next.
 
 The shape is Jeff Patton's story map. The backbone is the customer's journey, left to right, in their words. The walking skeleton is the thinnest version that still works from the first step to the last. Each slice below it is cut across the whole journey and named for the assumption it tests.
 

@@ -76,15 +76,17 @@ Ask Claude to read the overnight brief, follow the rules, and write the output t
 
 {{prompt:personal-agent-homework-3}}
 
-Save. Click **Run now** once. Open `module-2/morning-agent/latest.html` in your browser. If it looks off, fix `morning.md` or `./style.md`; the scheduled run reads both, so the next run picks up the change.
+Save. Click **Run now** once.
 
 Leave your laptop plugged in until the run fires, lid open if you can.
 
-## Phase 6: Read it like a stranger
+## Phase 6: Check the look, then close it
 
 *3 min*
 
-Each of you reads the first run's top line to the other two. Don't judge it yet. Say one thing: does it sound sure of itself?
+Open `module-2/morning-agent/latest.html` in your browser. Check the look only: your colours, your type, a page and not a wall of text. If it looks off, or the page is empty, fix `./style.md` or `morning.md`; the scheduled run reads both, so the next run picks up the change.
+
+Then close it unread. What it says waits for Day 2.
 
 ## Take stock of what you sent off
 
@@ -102,11 +104,11 @@ Day 2 starts with what came back.
 
 **Reuse:** keys `build-your-challenge-memory-5`, `-6` (first agent), `personal-agent-homework-1`, `-2`, `-3` (style, brief, scheduled run). Framing in prose: the three-job menu in `-2` is steered to a digest; what it looks for is the student's own sentence, written word for word by the new named prompt `apt101-d1-your-look-for-line`; what the student expects it to say is a second own sentence, written word for word to `team/<name>/expect.md`, outside the brief, by the new named prompt `apt101-d1-your-expect-line`, before the first `Run now`; the `module-2/morning-agent/` path is Agents 101's and stays (rename at the prompt-body pass, per the build plan's wrinkle note).
 
-**Frameworks:** none named in body. *Send it off* before (door you don't open, one agent per job, six parts, it runs without you until Day 2) frames the beat; the door slide names what `apt101-what-goes-in` already did, so it lands as recognition.
+**Frameworks:** none named in body. *Send it off* before (door you don't open, it runs without you until Day 2) frames the beat; the door slide names what `apt101-what-goes-in` already did, so it lands as recognition.
 
-**Artefacts:** produces `agents/<job>.md`, `./style.md`, the Styling line in `./CLAUDE.md`, `module-2/morning-agent/morning.md` (with each person's own sentence under `## Look for`), `team/<name>/expect.md`, `module-2/morning-agent/latest.html` (first run), and the scheduled task. Consumes `memory/`, `./challenge.md`, `team/what-goes-in.md`. `latest.html` is read in Day 2 beat 1 (`apt101-read-the-digest`); its `apt101-d2-what-ran-overnight` quotes the look-for and expect sentences back word for word beside `team/bet.md`, and `team/<name>/doubts.md` keeps a copy because tonight's brief replaces `morning.md`. `## Expect` sits in the file the scheduled run reads, so the prompt marks it as the student's note the run does not act on. Untested whether a run honours that mark; check at the prompt-body pass.
+**Artefacts:** produces `agents/<job>.md`, `./style.md`, the Styling line in `./CLAUDE.md`, `module-2/morning-agent/morning.md` (with each person's own sentence under `## Look for`), `team/<name>/expect.md`, `module-2/morning-agent/latest.html` (first run), and the scheduled task. Consumes `memory/`, `./challenge.md`, `team/what-goes-in.md`. `latest.html` is read in Day 2 beat 1 (`apt101-read-the-digest`); its `apt101-d2-what-ran-overnight` quotes the look-for and expect sentences back word for word beside `team/bet.md`, and `team/<name>/doubts.md` keeps a copy because tonight's brief replaces `morning.md`.
 
-**The Day 2 turn, left to happen:** the digest looks for what each person's own sentence asks for. The body offers no example sentence and no verb: whatever the student writes ("find what supports…", "what do users say about…"), the agreement on Day 2 traces back to a sentence they wrote, not to the exercise. The expectation line is written before any run, so Day 2 can set the headline against what each person expected; it carries no example either. Nothing on Day 1 says the digest will agree or be wrong; the Day 2 turn (*Why it agreed*) depends on the trio finding its own sentence behind the agreement. Phase 6 plants the observation (sure of itself) without naming it.
+**The Day 2 turn, left to happen:** the digest looks for what each person's own sentence asks for. The body offers no example sentence and no verb: whatever the student writes ("find what supports…", "what do users say about…"), the agreement on Day 2 traces back to a sentence they wrote, not to the exercise. The expectation line is written before any run, so Day 2 can set the headline against what each person expected; it carries no example either. Nothing on Day 1 says the digest will agree or be wrong; the Day 2 turn (*Why it agreed*) depends on the trio finding its own sentence behind the agreement. Phase 6 checks the first run's look and closes the page unread: no one hears a headline on Day 1, so every seat meets its own digest first on Day 2.
 
 **Capability check owed:** Cowork's scheduling flow (the Schedule sidebar wording is Claude Code Desktop's, copied from `personal-agent-homework`); laptop-asleep catch-up behaviour (A101 facilitator note says one catch-up run on wake). Trainer keeps the Day 2 fallback digest for any run that didn't fire.
 

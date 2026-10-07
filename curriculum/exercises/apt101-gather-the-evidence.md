@@ -8,7 +8,7 @@ Each of you sends a retriever through one source of evidence, on your own laptop
 
 Your evidence is scattered: interviews in one place, tickets and decisions in another, what other teams learned somewhere else again. Three retrievers at once is how the scatter gets read in half an hour instead of a week.
 
-Every retriever reads `./crux.md` from your own folder: the outcome, the crux and the question you agreed in the last exercise.
+Every retriever reads `./crux.md` from your own folder: the outcome, the obstacle and the question you agreed in the last exercise.
 
 ## Phase 1: Send your retriever
 
@@ -70,6 +70,8 @@ Each of you reads the contradictions that touch your own source, then reads them
 
 Push back if the curator smoothed a disagreement into one clean need. Ask it to quote both sides raw. A disagreement between two sources is not noise to average away. It is often the first branch of your tree.
 
+Then read your retriever's skipped list aloud: the sources it left out because your team kept them out on Day 1. For one of them, say whether it would have changed the outcome you picked. If yours skipped nothing, say so.
+
 ## Take stock
 
 Three sources read at once, three memories curated from the same evidence, and a short list of places your evidence does not agree with itself. Keep the list in your heads for the tree after the break.
@@ -89,6 +91,8 @@ Three sources read at once, three memories curated from the same evidence, and a
 - Produces: `sources/wiki-retrieval.md`, `sources/docs-retrieval.md`, `sources/internet-retrieval.md` (one per person, copied to `team/<name>/` and into every `sources/`); each person's curated `memory/` and the curator's synthesis note (`memory/_synthesis-m3.md`).
 
 **Room:** solo retrievers and curators in parallel; phase 3 is the trio together, each reading out the contradictions on their own source. Trainer demos the two-session open at the start (beat sheet "short demo").
+
+**Door test:** phase 3's skipped-list read makes the Day 1 door a tested decision, not only an obeyed one: each person says whether one skipped source would have changed the outcome picked in `apt101-pick-the-outcome`.
 
 **Failure modes:** a retriever with no connector (escape: point it at `sources/`); curator batching at the end instead of streaming (coach as Agents 101); the contradiction line smoothed (push back to quote both sides).
 

@@ -2,7 +2,7 @@
 
 [Test with five users, fix, then test five more](slides/watch-them-use-it.md)
 
-[What your five users did that the digest never said](slides/what-five-users-did.md)
+[What your five users did, beside what the digest said](slides/what-five-users-did.md)
 
 [A slice that comes back no has done its job](slides/read-the-signal.md)
 

@@ -44,7 +44,7 @@ Then ask Claude to run the loop. Generation and judging run separately, so neith
 
 {{prompt:eval-loop-2}}
 
-Now step away from the screen. While the loop runs, the three of you compare what the calibration run caught on each laptop. Same judge, three memories: where did it flag the same kind of claim?
+While the loop runs, each of you writes one post-it: the ceiling line in `team/what-good-means.md` you predict the looped digest will fail.
 
 ## Phase 3: See what it missed
 
@@ -58,9 +58,9 @@ Push back where the answer is too neat. If the score dropped and the digest stil
 
 Then put your own calls next to the judge's.
 
-**Prompt** · `apt101-d3-what-it-missed`, read the last round's briefing and judgment in `module-6/runs/`, the ceiling lines in `team/what-good-means.md` and what they caught in `team/caught.md`; show me five claims the judge passed, one at a time, and ask whether I would send each back; then list where my call and the judge's verdict differ, append them to `module-6/eval-notes.md`, and add the one ceiling line the team lacked to `team/<my-name>/what-it-missed.md`
+**Prompt** · `apt101-d3-what-it-missed`, read the last round's briefing and judgment in `module-6/runs/`, the ceiling lines in `team/what-good-means.md`, what they caught in `team/caught.md`, and the line I marked as trusting least in `team/<my-name>/doubts.md` with my reason; put that line and my reason first; then show me five claims the judge passed, one at a time, beside it, and ask whether I would send each back; then list where my call and the judge's verdict differ, append them to `module-6/eval-notes.md`, and add the one ceiling line the team lacked to `team/<my-name>/what-it-missed.md`
 
-Each of you says your missing line out loud. If two of you found the same one, it goes into `team/what-good-means.md`. The judge stays as it is. A yardstick you rewrite mid-run is not a yardstick.
+Hold your post-it against what you found. Each of you says your missing line out loud. If two of you found the same one, it goes into `team/what-good-means.md`. The judge stays as it is. A yardstick you rewrite mid-run is not a yardstick.
 
 <!-- maintainer -->
 
@@ -76,7 +76,7 @@ Each of you says your missing line out loud. If two of you found the same one, i
 
 **Artefacts:**
 - Produces: `team/what-good-means.md`, `team/caught.md` (what the ceiling lines caught in the Day 1 digests, read by `apt101-d3-what-it-missed`), `./generation-tactic.md`, `module-6/fresh-briefing.md`, `module-6/runs/round-N/`, `module-6/eval-notes.md` (with the disagreements appended), `team/<name>/what-it-missed.md`.
-- Consumes: `judges/groundedness-judge.md` (Day 2, never edited), `./crux.md` (Day 2), `memory/` (Day 1), `team/<name>/digest-day1.html` (each person's Day 1 digest, saved in Day 2's read the digest before any rerun).
+- Consumes: `judges/groundedness-judge.md` (Day 2, never edited), `team/<name>/doubts.md` (Day 2 read the digest: the line each person trusted least, set beside the judge's passes in `apt101-d3-what-it-missed`), `./crux.md` (Day 2), `memory/` (Day 1), `team/<name>/digest-day1.html` (each person's Day 1 digest, saved in Day 2's read the digest before any rerun).
 
 **Design note:** the judge is not rewritten with the team's lines. The reused keys fix it, and the lesson is the fixed yardstick. The team's ceiling lines are what a person holds the passing digest against; they go into the judge only in a later run, outside this loop.
 

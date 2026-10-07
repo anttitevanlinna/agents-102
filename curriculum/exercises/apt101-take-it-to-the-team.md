@@ -20,13 +20,17 @@ Then three columns: what the agents do, what stays with people, where the old wa
 
 ## Phase 2: Hand over one file
 
-*5 min*
+*7 min*
 
-The trainer pairs your trio with another. **The designer** sends one file across, and only that file: their agent's instructions from `agents/`. The other trio's designer does the same. Each designer runs the file they received, as written, in their own folder.
+The trainer pairs your trio with another. **The designer** sends one file across, and only that file: their agent's instructions from `agents/`. The other trio's designer does the same.
+
+Before running it, each designer reads the file they received and writes one sentence on a post-it: what you expect it to return. The run never sees the post-it.
+
+Then run the file as written, in your own folder.
 
 **Prompt** · `apt101-d3-run-their-file`, run the agent file I was sent, exactly as written, in this folder; change nothing in it; show me what it returns
 
-The three of you read what came back. Then tell its sender.
+The three of you read what came back beside the post-it. The designer points at the line in the output that went generic and says what their own memory would have said there. Then name one thing the file needed that stayed on its sender's laptop, and tell its sender.
 
 ## Phase 3: Interview for the job
 
@@ -49,7 +53,7 @@ Read `module-7/jtbd.md`. Does it name your team, how they do the job today, and 
 
 ## Phase 4: Find the bottleneck, draft both plans
 
-*13 min*
+*11 min*
 
 Ask Claude to find the one obstacle between your wider team and the way of working, then draft the technical plan and the people plan together.
 
@@ -90,7 +94,7 @@ Then the board again. Stand at the frame and read it as your wider team will see
 
 **Role in Day 3:** Transfer: the trio's way of working becomes a proposal the wider team decides on, with a named first move per role in `team/monday.md`.
 
-**Reuse:** the beat order of Agents 101's `share-your-work` (job, bottleneck, two plans, what would have to be true, failure story), rewritten as named APT101 prompts for a trio proposing to its wider team: the Agents 101 keys speak of one teammate and one candidate, and the five users' call has to reach the job interview. Same `module-7/` paths, so § Sharpen the proposal finds the files. Agents 101 runs these over 70 min across three exercises; here 55 min in one, by putting one driver on all of them. Phase 2 (hand over one file) is new: the lecture after names "an agent's instructions are not the agent", so the room runs a stranger's instruction file before the slide says it (recognition before naming, `curriculum/story-craft.md`); the body does not name the result. Failure stories cut to one: Day 2 ran *imagine it failed*. New: `apt101-d3-run-their-file`, `apt101-d3-the-job-your-team-hires`, `apt101-d3-bottleneck-and-plans`, `apt101-d3-test-the-switch`, `apt101-d3-team-monday`.
+**Reuse:** the beat order of Agents 101's `share-your-work` (job, bottleneck, two plans, what would have to be true, failure story), rewritten as named APT101 prompts for a trio proposing to its wider team: the Agents 101 keys speak of one teammate and one candidate, and the five users' call has to reach the job interview. Same `module-7/` paths, so § Sharpen the proposal finds the files. Agents 101 runs these over 70 min across three exercises; here 55 min in one, by putting one driver on all of them. Phase 2 (hand over one file) is new: the lecture after names "an agent's instructions are not the agent", so the room runs a stranger's instruction file before the slide says it (recognition before naming, `curriculum/story-craft.md`); the body does not name the result: the designer writes what they expect before the run, then names the line that went generic, what their own memory would have said there, and one thing that stayed on the sender's laptop (r3, judges 1 and 2). 7 min, two taken from phase 4. Failure stories cut to one: Day 2 ran *imagine it failed*. New: `apt101-d3-run-their-file`, `apt101-d3-the-job-your-team-hires`, `apt101-d3-bottleneck-and-plans`, `apt101-d3-test-the-switch`, `apt101-d3-team-monday`.
 
 **Frameworks:**
 - Jobs to be Done (Christensen and collaborators): the frame is named once in the body, the authors only here.

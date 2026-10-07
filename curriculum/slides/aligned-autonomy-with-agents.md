@@ -9,7 +9,7 @@ Agents made the how cheap. Deciding the why and the line not to cross did not ge
 
 <!-- maintainer -->
 
-**STATUS:** composed from the squint (2026-10-07), fourth in `apt101-three-jobs-rewritten`. Agentic Product Teams 101 gap slide G12, from `apt101-source-pack.md` §7. Header is the squint's r6 retitle (`header-style-distilled.md` lists it under "keep"); the strategy's positioning line "Aligned autonomy, now with agents in the team" stays in the strategy, not on this slide. The opening paragraph and the closing line are the claim, Kniberg the citation. Not taught (simulation training).
+**STATUS:** cut from `apt101-three-jobs-rewritten` in hill-climb round 3 (2026-10-07): no Day 3 beat uses aligned autonomy, so it was a named headline the training never develops. File kept; whether the header returns is the maintainer's call. Before the cut: composed from the squint (2026-10-07), fourth in `apt101-three-jobs-rewritten`. Agentic Product Teams 101 gap slide G12, from `apt101-source-pack.md` §7. Header is the squint's r6 retitle (`header-style-distilled.md` lists it under "keep"); the strategy's positioning line "Aligned autonomy, now with agents in the team" stays in the strategy, not on this slide. The opening paragraph and the closing line are the claim, Kniberg the citation. Not taught (simulation training).
 
 **Fidelity guard:** Kniberg says of the 2×2: "I did not make this up, but I don't remember who I stole it from." Credit him with the phrase "aligned autonomy", never with inventing the matrix. The agents lines, first and last, are our extension.
 

@@ -16,7 +16,7 @@ Leave one out and someone has to stand in for it by hand.
 
 <!-- maintainer -->
 
-**STATUS:** squint build (2026-10-07), header from `apt101-squint.md` Day 1 (`header-style-distilled.md` rule 4, the file's former diptych tightened); APT101 rewrite of `context-is-king` § The first piece of the picture (the idea, not the "full agent picture" figure). Not taught (simulation training).
+**STATUS:** not in any lecture: cut from `apt101-it-runs-overnight` (hill-climb r3, named and never developed). squint build (2026-10-07), header from `apt101-squint.md` Day 1 (`header-style-distilled.md` rule 4, the file's former diptych tightened); APT101 rewrite of `context-is-king` § The first piece of the picture (the idea, not the "full agent picture" figure). Not taught (simulation training).
 
 **Guard:** the agent's part is "a goal", never "outcome": on Day 1 an outcome is Seiden's change in what customers do. Day 3's `the-parts-hold` names the same six words.
 

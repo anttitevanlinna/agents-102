@@ -110,7 +110,7 @@ Tonight the agent reads your chosen bet and looks for what argues against it. On
 
 | # | Beat | Min | Include(s) |
 |---|---|---|---|
-| 1 | See what came in overnight | 20 | `apt101-read-the-digest` (20, its phase 4 reruns each digest with the look-for line reversed) · lecture *The digest is back* (after the read) |
+| 1 | See what came in overnight | 20 | `apt101-read-the-digest` (20, its phase 4 reruns each digest with the look-for line turned round: support → against, a test or both ways → support only) · lecture *The digest is back* (after the read) |
 | 2 | Pick one outcome | 10 | `apt101-pick-the-outcome` |
 | 3 | Gather your evidence | 35 | `apt101-gather-the-evidence`, then lecture *Why it agreed* (the turn; three guide slides) |
 | | Break | 15 | |
@@ -127,7 +127,7 @@ Tonight the agent reads your chosen bet and looks for what argues against it. On
 
 Beat 5 (legal and data review) is cut; governance is not taught.
 
-**Transitions:** the digest read where each person knows most, its headline set beside each person's own Day 1 expectation and look-for line, then rerun with the line reversed and the two headlines read side by side, so every seat sees the headline follow the question whatever the line asked for (1) → the outcome it should have served (2) → evidence that disagrees with itself (3) → the turn, *Why it agreed*, named after the trio has seen both. Tree alone → merged → questioned by role (4), then named (*Widen*). The benchmark (6) produces the judge that prunes the tree (7); the first "the agent got this wrong" about a real summary comes before *Safe to say it's wrong* names it. Chosen bet → three pieces (8) → its failure imagined, then the pre-mortem named (9) → talked through (10) → kept as rules and tonight's brief (11). The digest opens and closes the day: read on its own terms in the morning, rewritten at the end to check the bet.
+**Transitions:** the digest read where each person knows most, its headline set beside each person's own Day 1 expectation and look-for line, then rerun with the line turned round and the two headlines read side by side, so every seat sees the headline follow the question whatever the line asked for (1) → the outcome it should have served (2) → evidence that disagrees with itself (3) → the turn, *Why it agreed*, named after the trio has seen both. Tree alone → merged → questioned by role (4), then named (*Widen*). The benchmark (6) produces the judge that prunes the tree (7); the first "the agent got this wrong" about a real summary comes before *Safe to say it's wrong* names it. Chosen bet → three pieces (8) → its failure imagined, then the pre-mortem named (9) → talked through (10) → kept as rules and tonight's brief (11). The digest opens and closes the day: read on its own terms in the morning, rewritten at the end to check the bet.
 
 **Protected:** beats 8 and 10. **Overrun order** (beat sheet): the morning uses the float; beat 9 drops to one ranking round; beat 12 to five minutes.
 
@@ -143,8 +143,8 @@ Beat 5 (legal and data review) is cut; governance is not taught.
 
 | Artefact | Produced by | Consumed by |
 |---|---|---|
-| `team/<name>/doubts.md` (headed by the Day 1 look-for and expect lines, word for word), `team/doubts.md` | read the digest | pick the outcome; keep and run tonight |
-| `team/<name>/digest-against.html` (the same brief rerun with the look-for line reversed) | read the digest (each, phase 4) | available to Day 3 what good means and five users |
+| `team/<name>/doubts.md` (headed by the Day 1 look-for and expect lines, word for word), `team/doubts.md` | read the digest | pick the outcome; keep and run tonight; Day 3 `apt101-d3-what-it-missed` |
+| `team/<name>/digest-against.html` (the same brief rerun with the look-for line turned round) | read the digest (each, phase 4) | available to Day 3 what good means and five users |
 | `team/<name>/digest-day1.html` (copy of the Day 1 digest, kept before tonight's run overwrites `latest.html`) | read the digest (each) | Day 3 what good means |
 | `./crux.md` (outcome, chosen doubt, crux, question; `## Answer` later), `team/crux.md` | pick the outcome (product owner, copied to all) | gather the evidence; grow the tree; catch it making things up; choose the bet |
 | `sources/*-retrieval.md`, each person's curated `memory/` and the curator's synthesis note | gather the evidence | grow the tree; catch it making things up |

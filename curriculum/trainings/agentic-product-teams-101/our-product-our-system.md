@@ -95,7 +95,7 @@ Before Day 2, three agents read three memories against one bet, and write to you
 
 **STATUS:** built from the build plan (`curriculum/module-design/apt101-build-plan.md` § Day 1), 2026-10-07, for the `simulation: true` training Agentic Product Teams 101. Not taught. Big Idea = the adopted positioning line (strategy, 2026-10-05), kept as the Day 1 module's; the day's story heading in the squint and build plan is *You were right all along*, and the H1 stays the registered module title (`site/layouts/curriculum.js`) so nav and file agree.
 
-**Mood target:** vindication with a pulse: the craft they knew was right, and building their own box and memory in one day proves the cost has moved. The unease is planted (Phase 6 of *Send it off*: "does it sound sure of itself?"), not named; Day 2 names it.
+**Mood target:** vindication with a pulse: the craft they knew was right, and building their own box and memory in one day proves the cost has moved. The unease is not voiced on Day 1: each person writes what they expect the digest to say, and the first run's page is closed unread (Phase 6 of *Send it off*). Day 2 opens on what it says.
 
 **Board:** one Miro board per team, set up by the trainer, Day 1 frames: *Product box*, *Bet* (outcome stickies, hypotheses with names, assumption 2x2, dots). Text agents keep reading stays in files.
 

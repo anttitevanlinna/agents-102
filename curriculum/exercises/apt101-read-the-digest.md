@@ -10,15 +10,15 @@
 /rename apt101-day-2
 ```
 
-**What you do:**
-
-Each of your agents ran overnight on your own material, through the door your team agreed on Day 1. Before you read your digest, find out what actually ran: which job, on which files, and what it wrote. Then read it, mark the one line you trust least, and run it once more the other way round. Together you pick the doubt that matters most.
-
-If your agent did not run, run it now from your own brief before anything else. Open the **Overnight digest** task in the Schedule sidebar and click **Run now**, or paste its prompt into this session. It takes about five minutes; start Phase 1 when `module-2/morning-agent/latest.html` lands.
+First, open the **Overnight digest** task in the Schedule sidebar. If its last run is from before Day 1 ended, click **Run now**, or paste its prompt into this session. It takes about five minutes; start Phase 1 when `module-2/morning-agent/latest.html` lands.
 
 {{prompt:personal-agent-homework-3}}
 
 Only a laptop that cannot run the brief at all takes the trainer's fallback digest.
+
+**What you do:**
+
+Each of your agents ran overnight on your own material, through the door your team agreed on Day 1. Before you read your digest, find out what actually ran: which job, on which files, and what it wrote. Then read it, mark the one line you trust least, and run it once more the other way round. Together you pick the doubt that matters most.
 
 ## Phase 1: See what ran
 
@@ -26,9 +26,11 @@ Only a laptop that cannot run the brief at all takes the trainer's fallback dige
 
 Each of you, on your own laptop. Ask Claude to keep a copy of the digest and of the two lines you wrote into the brief on Day 1, what to look for and what you expected, because tonight's run overwrites them. Then have it put four lines side by side, the digest's headline, your expectation, your look-for line and your bet, and report what ran overnight, on which material, as a ranked list with the source of each line.
 
-**Prompt** · `apt101-d2-what-ran-overnight`, first copies `module-2/morning-agent/latest.html` to `team/<your-name>/digest-day1.html` unchanged, and writes my Day 1 `## Look for` line from `module-2/morning-agent/morning.md` and my expectation from `team/<your-name>/expect.md`, word for word, at the head of `team/<your-name>/doubts.md`; then reads `morning.md`, the run's `latest.html`, `team/what-goes-in.md` and `team/bet.md`; shows four lines side by side, quoted exactly: the digest's headline, my expectation, my look-for line, and the hypothesis in `team/bet.md` it speaks to; then reports which job ran, which files it read (and any it read that sit outside what your team agreed), and lists every claim in the digest ranked by how much a decision would rest on it, each with the source file it came from or "no source"
+**Prompt** · `apt101-d2-what-ran-overnight`, first copies `module-2/morning-agent/latest.html` to `team/<your-name>/digest-day1.html` unchanged, and writes my Day 1 `## Look for` line from `module-2/morning-agent/morning.md` and my expectation from `team/<your-name>/expect.md`, word for word, at the head of `team/<your-name>/doubts.md`; then reads `morning.md`, the run's `latest.html`, `team/what-goes-in.md` and `team/bet.md`; shows four lines side by side, quoted exactly: the digest's headline, my expectation, my look-for line, and the hypothesis in `team/bet.md` it speaks to; then reports when `latest.html` was last written, which job ran, which files it read (and any it read that sit outside what your team agreed), and lists every claim in the digest ranked by how much a decision would rest on it, each with the source file it came from or "no source"
 
 Push back if the list comes back as a summary of the digest. You want lines and sources, not a second essay about the first one. Push back too if any of the four lines comes back paraphrased.
+
+If the run read any file outside what your team agreed, read its name aloud to the other two and say what let it through: the door in `team/what-goes-in.md`, or your brief.
 
 ## Phase 2: Mark the line you trust least
 
@@ -50,7 +52,6 @@ Laptops half shut. Each of you reads your four lines to the other two: the headl
 
 - Is the headline the one you expected?
 - Did it find what your line asked for?
-- Did your line ask for support, a test, or a frame?
 
 ## Phase 4: Ask it the other way round
 
@@ -58,7 +59,7 @@ Laptops half shut. Each of you reads your four lines to the other two: the headl
 
 Each of you, on your own laptop. Ask Claude to run your digest once more from the same brief, with only your look-for line turned round, and to set the two headlines side by side. Your Day 1 digest and brief stay as they are.
 
-**Prompt** · `apt101-d2-ask-the-other-way`, runs the job in `module-2/morning-agent/morning.md` once more over the same material with only my `## Look for` line replaced by "find what in my material argues against:" and my hypothesis from `team/<my-name>/hypothesis.md`, asking how much of it there is and where; leaves `morning.md` and `latest.html` untouched and writes the result to `team/<my-name>/digest-against.html`; then shows its headline beside my first headline, both quoted exactly, with nothing added
+**Prompt** · `apt101-d2-ask-the-other-way`, runs the job in `module-2/morning-agent/morning.md` once more over the same material with only my `## Look for` line turned round against my hypothesis from `team/<my-name>/hypothesis.md`: a line that looked for support becomes "find what in my material argues against it"; a line that looked for a test, or both ways, becomes "find what in my material supports it", for support only; either way it asks how much of it there is and where; leaves `morning.md` and `latest.html` untouched and writes the result to `team/<my-name>/digest-against.html`; then shows its headline beside my first headline, both quoted exactly, with nothing added
 
 Each of you reads your two headlines aloud, the first and the one that came back the other way round.
 
@@ -80,7 +81,7 @@ You have three doubts, one chosen, each tied to a line and a source. Each of you
 
 **Reuse:** return leg of Agents 101 `personal-agent-homework` (same `module-2/morning-agent/` paths). `personal-agent-homework-3` unchanged, for a run that did not fire. New: `apt101-d2-what-ran-overnight`, `apt101-d2-mark-the-doubt`, `apt101-d2-ask-the-other-way`.
 
-**Frameworks:** none named in body. Read-where-you-know-most is named in `apt101-the-digest-is-back`, after this exercise. Hidden-spine thread 1 is lived here for every seat, whatever the Day 1 line asked: phase 3 sets the headline beside the expectation and the look-for line and asks what kind of line it was; phase 4 reverses the line on the same material, so the headline follows the question for a line that asked for support, a test or a frame alike. `apt101-why-it-agreed` names it after beat 3. The body states no mechanism.
+**Frameworks:** none named in body. Read-where-you-know-most is named in `apt101-the-digest-is-back`, after this exercise. Hidden-spine thread 1 is lived here for every seat, whatever the Day 1 line asked: phase 3 sets the headline beside the expectation and the look-for line and asks only whether it is the expected one and whether it found what the line asked; phase 4 turns the line round on the same material (support → against; a test or both ways → support only), so every seat gets its own second headline. Nothing before the rerun names what kind of line it was. `apt101-why-it-agreed` names it after beat 3. The body states no mechanism. Phase 1 tests the door: a file read outside `team/what-goes-in.md` is read aloud with what let it through, the door or the brief.
 
 **Artefacts:**
 - Consumes: `module-2/morning-agent/morning.md` (its per-person `## Look for` line, written by `apt101-d1-your-look-for-line`, ), `team/<name>/expect.md` (Day 1's send it off), `module-2/morning-agent/latest.html` (Day 1, send it off); `team/what-goes-in.md` (Day 1, the door); `team/bet.md` (Day 1, write the bet; read in phase 1 beside the headline, and in phase 3).
@@ -89,6 +90,6 @@ You have three doubts, one chosen, each tied to a line and a source. Each of you
 
 **Room:** each person solo for phases 1, 2 and 4; phases 3 and 5 are the trio, phase 5 a decision, product owner writes the file.
 
-**Failure modes:** phase 4's rerun is slower than five minutes on a large memory (read the two headlines aloud when it lands, during phase 5); a reversed run that finds nothing against is a result, and its headline still says so. The decision is human (workshop §11).
+**Failure modes:** phase 4's rerun is slower than five minutes on a large memory (read the two headlines aloud when it lands, during phase 5); a turned-round run that finds nothing is a result, and its headline still says so. The decision is human (workshop §11).
 
 **View summary:** You find out what your overnight agent actually ran on, keep a copy of its digest, read it where you know the material best, and mark the line you trust least. Each of you sets the headline beside what you expected and the look-for line you wrote, then runs the same brief with the line turned round. The team picks the doubt that matters most for the bet.

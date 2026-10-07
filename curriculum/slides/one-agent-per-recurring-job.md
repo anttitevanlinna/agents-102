@@ -9,7 +9,7 @@ For a product team the first one is often easy to name. Someone reads last week'
 
 <!-- maintainer -->
 
-**STATUS:** squint build (2026-10-07), header from `apt101-squint.md` Day 1 (`header-style-distilled.md` rule 4), body opens on the rejected alternative and what breaks in it (instructions coupled across jobs); the overnight sentence lives on `it-works-overnight`. APT101 rewrite of `when-to-split-an-agent` § The unit is the recurring workflow. Not taught (simulation training).
+**STATUS:** not in any lecture: cut from `apt101-it-runs-overnight` (hill-climb r3, named and never developed). squint build (2026-10-07), header from `apt101-squint.md` Day 1 (`header-style-distilled.md` rule 4), body opens on the rejected alternative and what breaks in it (instructions coupled across jobs); the overnight sentence lives on `it-works-overnight`. APT101 rewrite of `when-to-split-an-agent` § The unit is the recurring workflow. Not taught (simulation training).
 
 <!-- backing -->
 

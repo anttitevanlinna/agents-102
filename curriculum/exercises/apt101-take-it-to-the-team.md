@@ -8,7 +8,7 @@ The three of you have worked out a way of working with agents on one bet. Your w
 
 So you start from their job, not from what you built. This is the Jobs-to-be-Done frame: your team does not want your agents, they want a job done. The way of working the team lead drafted on Day 2 competes with whatever the team uses today.
 
-**The team lead drives** this whole exercise at their screen. The other two answer with you and read what comes back.
+**The team lead drives** this exercise at their screen, all but Phase 2. The other two answer with you and read what comes back.
 
 ## Phase 1: Sketch the way of working
 
@@ -18,9 +18,19 @@ Open `team/five-users.md` at the call you made. The product owner writes two pos
 
 Then three columns: what the agents do, what stays with people, where the old way still wins. The team lead starts from the draft made on Day 2; the designer and the product owner add what the five users showed you. One post-it per thing, no discussion yet.
 
-## Phase 2: Interview for the job
+## Phase 2: Hand over one file
 
-*13 min*
+*5 min*
+
+The trainer pairs your trio with another. **The designer** sends one file across, and only that file: their agent's instructions from `agents/`. The other trio's designer does the same. Each designer runs the file they received, as written, in their own folder.
+
+**Prompt** · `apt101-d3-run-their-file`, run the agent file I was sent, exactly as written, in this folder; change nothing in it; show me what it returns
+
+The three of you read what came back. Then tell its sender.
+
+## Phase 3: Interview for the job
+
+*10 min*
 
 Ask Claude to draft the job your wider team is trying to get done, then question you about it. Answer each question together. The designer takes the questions about the job in the team's own words; the product owner takes the questions about the outcome.
 
@@ -37,9 +47,9 @@ When Claude asks you to pick, pick the shapes that carry the way of working on t
 
 Read `module-7/jtbd.md`. Does it name your team, how they do the job today, and an outcome you could observe? If it could describe any team in the company, point at the generic line and ask Claude to try that part again.
 
-## Phase 3: Find the bottleneck, draft both plans
+## Phase 4: Find the bottleneck, draft both plans
 
-*15 min*
+*13 min*
 
 Ask Claude to find the one obstacle between your wider team and the way of working, then draft the technical plan and the people plan together.
 
@@ -52,7 +62,7 @@ While Claude drafts, split the reading:
 
 A polished technical plan beside a people plan full of `UNASSIGNED` is a finding. Leave the gaps visible. They are Monday's questions.
 
-## Phase 4: Test the switch
+## Phase 5: Test the switch
 
 *15 min*
 
@@ -64,13 +74,15 @@ When Claude asks which assumptions you will test, the three of you choose. The p
 
 Push back on the failure story if it blames the team for being slow. The old way stayed because it did the job well enough.
 
-## Phase 5: Put Monday on the board and in the team folder
+## Phase 6: Put Monday on the board and in the team folder
 
 *7 min*
 
 The plans sit on the team lead's laptop in `module-7/`. The other two need them too, with their own first move in them.
 
-**Prompt** · `apt101-d3-team-monday`, read `module-7/people-plan.md`, `module-7/assumptions.md`, the *Way of working* frame on our Miro board, `team/five-users.md` and `team/chosen-bet.md`; ask each of us in turn for our first Monday move (product owner: the next slice and its signal; designer: the next five users; team lead: the conversation with the team); write `team/monday.md` with the proposal in five lines, the three moves verbatim with names, and the question the team decides; then post the proposal back to the frame beside our post-its, with a name on every part
+The team lead opens `team/what-goes-in.md` first. On Day 1 it was the three of you deciding what your agents could read. On Monday it is the first thing your wider team decides for itself.
+
+**Prompt** · `apt101-d3-team-monday`, read `team/what-goes-in.md`, `module-7/people-plan.md`, `module-7/assumptions.md`, the *Way of working* frame on our Miro board, `team/five-users.md` and `team/chosen-bet.md`; ask each of us in turn for our first Monday move (product owner: the next slice and its signal; designer: the next five users; team lead: the conversation with the team); write `team/monday.md` opening with what goes in, from `team/what-goes-in.md`, as the first thing the wider team decides: which sources its agents may read, what stays out, and that anyone may say no; then the proposal in five lines, the three moves verbatim with names, and the question the team decides; then post the proposal back to the frame beside our post-its, with a name on every part
 
 Then the board again. Stand at the frame and read it as your wider team will see it on Monday. A part with no name gets one now, or stays visibly empty. It is a proposal. The team that lives with it decides.
 
@@ -78,7 +90,7 @@ Then the board again. Stand at the frame and read it as your wider team will see
 
 **Role in Day 3:** Transfer: the trio's way of working becomes a proposal the wider team decides on, with a named first move per role in `team/monday.md`.
 
-**Reuse:** the beat order of Agents 101's `share-your-work` (job, bottleneck, two plans, what would have to be true, failure story), rewritten as named APT101 prompts for a trio proposing to its wider team: the Agents 101 keys speak of one teammate and one candidate, and the five users' call has to reach the job interview. Same `module-7/` paths, so § Sharpen the proposal finds the files. Agents 101 runs these over 70 min across three exercises; here 55 min in one, by putting one driver on all of them. Failure stories cut to one: Day 2 ran *imagine it failed*. New: `apt101-d3-the-job-your-team-hires`, `apt101-d3-bottleneck-and-plans`, `apt101-d3-test-the-switch`, `apt101-d3-team-monday`.
+**Reuse:** the beat order of Agents 101's `share-your-work` (job, bottleneck, two plans, what would have to be true, failure story), rewritten as named APT101 prompts for a trio proposing to its wider team: the Agents 101 keys speak of one teammate and one candidate, and the five users' call has to reach the job interview. Same `module-7/` paths, so § Sharpen the proposal finds the files. Agents 101 runs these over 70 min across three exercises; here 55 min in one, by putting one driver on all of them. Phase 2 (hand over one file) is new: the lecture after names "an agent's instructions are not the agent", so the room runs a stranger's instruction file before the slide says it (recognition before naming, `curriculum/story-craft.md`); the body does not name the result. Failure stories cut to one: Day 2 ran *imagine it failed*. New: `apt101-d3-run-their-file`, `apt101-d3-the-job-your-team-hires`, `apt101-d3-bottleneck-and-plans`, `apt101-d3-test-the-switch`, `apt101-d3-team-monday`.
 
 **Frameworks:**
 - Jobs to be Done (Christensen and collaborators): the frame is named once in the body, the authors only here.
@@ -89,9 +101,11 @@ Then the board again. Stand at the frame and read it as your wider team will see
 
 **Artefacts:**
 - Produces: *Way of working* frame (board, the call and the sentence at its head), `module-7/jtbd.md`, `branch.md`, `absorption-bottleneck.md`, `technical-plan.md`, `people-plan.md`, `assumptions.md`, `failure-stories.md` (team lead's laptop), `team/monday.md`.
-- Consumes: `team/five-users.md` (the call and the sentence, phase 1 and `apt101-d3-the-job-your-team-hires`), `team/chosen-bet.md`, the team lead's Day 2 `team/<team lead>/way-of-working.md`.
+- Consumes: `team/five-users.md` (the call and the sentence, phase 1 and `apt101-d3-the-job-your-team-hires`), `team/chosen-bet.md`, the team lead's Day 2 `team/<team lead>/way-of-working.md`, the designer's `agents/<job>.md` (Day 1 *Send it off*, phase 2, sent to another trio), `team/what-goes-in.md` (Day 1 door, phase 6: the first line of `team/monday.md`, now the wider team's to decide).
 
-**Board:** *Way of working* frame, three columns, set up by the trainer. Rhythm: the call and the sentence at the head, then post-its (phase 1), Claude interviews and plans from the frame and files (phases 2–4), the proposal posted back to the frame and read standing (phase 5). Claude reaches the board through the Miro connector; without it, a frame screenshot into the chat and the team lead posts the proposal by hand.
+**Board:** *Way of working* frame, three columns, set up by the trainer. Rhythm: the call and the sentence at the head, then post-its (phase 1), Claude interviews and plans from the frame and files (phases 3–5), the proposal posted back to the frame and read standing (phase 6).
+
+**Room:** phase 2 needs trios paired before the day; the two designers swap files at the same moment. The sender's file reaches the other trio by chat or the team folder, never with its `memory/`. Claude reaches the board through the Miro connector; without it, a frame screenshot into the chat and the team lead posts the proposal by hand.
 
 **Open:**
 - § Sharpen the proposal reuses `a101-m7-debrief-sharing-artifact`, whose registry `requires:` names `share-your-work-6`; with the named prompts here the chain resolves only once their bodies land with `produces:` for the same `module-7/` ids. The prompt-body pass settles it.

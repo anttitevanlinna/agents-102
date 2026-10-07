@@ -4,7 +4,7 @@
 
 **What you do:**
 
-Keep what today taught as rules your agents follow, yours and the team's. Then set tonight's run so the digest you open on Day 3 checks the chosen bet instead of agreeing with it.
+Keep what today taught as rules your agents follow, yours and the team's. Then set tonight's run so the digest you open on Day 3 looks both ways at the chosen bet.
 
 ## Phase 1: Sharpen your own rules
 
@@ -53,7 +53,7 @@ Your own rules now say when a summary gets checked. The team's rules carry an ex
 **Frameworks:** Deming's tampering, change-on-recurrence (in the lecture before); positive examples over prohibitions (lecture).
 
 **Artefacts:**
-- Consumes: `./CLAUDE.md` (Day 1 close, `a101-m2-debrief-claude-md`); `module-5/` and `judges/groundedness-judge.md` (catch it making things up); `team/team-rules.md` (Day 1 close); today's `team/` files; `team/chosen-bet.md`; `team/premortem.md`; `module-2/morning-agent/morning.md` (Day 1, send it off).
+- Consumes: `./CLAUDE.md` (Day 1 close, `a101-m2-debrief-claude-md`); `module-5/` and `judges/groundedness-judge.md` (catch it making things up; benchmark run on the team lead's laptop and copied into every folder at its phase 4); `team/team-rules.md` (Day 1 close); today's `team/` files; `team/chosen-bet.md`; `team/premortem.md`; `module-2/morning-agent/morning.md` (Day 1, send it off).
 - Produces: `./CLAUDE.md` Groundedness checks section (each person) and its copy in `team/<name>/rules.md`; `team/team-rules.md` sharpened (team lead drives); `module-2/morning-agent/morning.md` updated, naming team files by the team folder's full path; a test `module-2/morning-agent/latest.html`. Tonight's run is what Day 3 beat 1 reads.
 
 **Room:** phases 1 and 3 solo; phase 2 team lead drives, each person approves before save.

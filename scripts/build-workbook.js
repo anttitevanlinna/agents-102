@@ -220,6 +220,7 @@ const THEORY_HANDBOOK_MANIFEST = {
       'lectures/apt101-safe-to-say-its-wrong',
       'lectures/apt101-fluent-is-not-true',
       'lectures/apt101-each-of-you-makes-something',
+      'lectures/apt101-imagine-it-already-failed',
       'lectures/apt101-write-it-down-or-lose-it',
     ]],
     ['M3', [

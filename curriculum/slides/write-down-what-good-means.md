@@ -5,7 +5,7 @@ Agents now write more summaries than a team can read, so the standard you carry 
 
 What makes a research summary good enough to bring to a priority call? Every claim traces to its source and says how many customers said it, so "customers are unhappy" fails when one customer complained. A quote is the customer's own words, not the agent's paraphrase. Open questions stay listed instead of smoothed over.
 
-Hold the overnight digest that agreed with your favourite hypothesis against those lines, and you can see where it agreed on thin evidence. Written down, that standard becomes a check the agent runs on every piece of work, including the pieces nobody reads.
+Hold your overnight digest against those lines, and you can see where it said more than its evidence carries. Written down, that standard becomes a check the agent runs on every piece of work, including the pieces nobody reads.
 
 <!-- maintainer -->
 
@@ -15,6 +15,6 @@ Hold the overnight digest that agreed with your favourite hypothesis against tho
 
 **Claims**
 - `check-is-good-written-down` · vision · "Written down, that standard becomes a check the agent runs on every piece of work" ← none-owed — `evals-as-steering` preamble: evals are how you write down what good means.
-- `digest-caught-by-criteria` · vision · "you can see where it agreed on thin evidence" ← none-owed — APT101 design: the digest thread pays off against the team's own criteria.
+- `digest-caught-by-criteria` · vision · "you can see where it said more than its evidence carries" ← none-owed — APT101 design: the digest thread pays off against the team's own criteria.
 
 <!-- /backing -->

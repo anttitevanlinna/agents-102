@@ -52,7 +52,7 @@ Push back where the rewrite is wrong: *"the team's job wasn't vague, you just di
 
 ## Say it to each other
 
-Before the laptops shut, the team lead reads two files out loud, with no comment after either. First `team/caught.md`: what your own lines caught in the digest that agreed with you. Then `team/monday.md`.
+Before the laptops shut, the team lead reads two files out loud, with no comment after either. First `team/caught.md`: what your own lines caught in the digests you sent off on Day 1. Then `team/monday.md`.
 
 Laptops shut. The question you started Day 1 with, asked of what you just heard: is anything in `team/monday.md` the next thing your team builds that nobody asked for? Who decided it, and what are you sure of?
 
@@ -75,7 +75,7 @@ Then one round, each of you in turn, no discussion until all three have spoken:
 
 ## Next
 
-The bet is still open, and the next slice is yours to place. When models analyse wider, deeper and faster, what will your insight be?
+The bet is still open, and the next slice is yours to place.
 
 <!-- maintainer -->
 
@@ -83,16 +83,17 @@ The bet is still open, and the next slice is yours to place. When models analyse
 
 **Beat order (build plan § Day 3):** 1 what came back (§ Start here, no Claude: the digest opens in a browser, so the day's session opens in the first exercise) · lecture *Slice by what you learn* · 2 map the story · 3 write what good means · lecture *What good means* (after: slides 3–4 name what Phase 3 produces; the lecture file cannot split here, and the exercise body sets up floor and ceiling itself) · 4 five users · lecture *Bet meets five users* (after) · 5 lecture *Three jobs, rewritten* · 6 take it to the team · lecture *From the three of you* (after) · 7 close: § Sharpen the proposal, lecture *Where you go from here*, § Say it to each other.
 
-**Close shape:** Day 1 closes on `CLAUDE.md`, Day 2 on groundedness rules; Day 3 sharpens the sharing artefact (`a101-m7-debrief-sharing-artifact`), so the compound shape differs per day (`check_student_facing.md` §7). The round after it is laptops shut, no prompts, trainer silent (`check_workshop.md` §12). It opens on the spine-1 payoff (`team/caught.md` read aloud, the digest that agreed caught by the team's own lines) and `team/monday.md`, then asks the Day 1 opening question (`our-product-our-system.md` § the last thing your team built that nobody asked for) of Monday's proposal. `## Next` asks the stance question again and does not answer it; the lecture *Where you go from here* asks it first, so `## Next` is two sentences and nothing else.
+**Close shape:** Day 1 closes on `CLAUDE.md`, Day 2 on groundedness rules; Day 3 sharpens the sharing artefact (`a101-m7-debrief-sharing-artifact`), so the compound shape differs per day (`check_student_facing.md` §7). The round after it is laptops shut, no prompts, trainer silent (`check_workshop.md` §12). It opens on the spine-1 payoff (`team/caught.md` read aloud, each Day 1 digest, which found what its look-for line asked for, caught by the team's own lines) and `team/monday.md`, then asks the Day 1 opening question (`our-product-our-system.md` § the last thing your team built that nobody asked for) of Monday's proposal. The stance question is asked once at the close, on the last slide of *Where you go from here*, and answered nowhere there; *Three jobs, rewritten* carries the answer earlier in the day without the stance wording. `## Next` does not ask it again (trial r1: three askings in the last hour flattened it), so it is one sentence and nothing else.
 
 **Board:** the trainer sets up three frames on each team's Miro board before the day: *Story map* (backbone row plus three slice rows), *Five users* (five columns), *Way of working* (three columns: agents do, people keep, where the old way wins). Criteria, the judge, rules and `team/monday.md` stay in files because agents keep reading them.
 
 **Meta (trainer):**
-- **Five users:** the trainer books five people from outside the trios per team before the day (announced in Day 2 *Bring to Day 3*).
+- **Five users:** the trainer books five people from outside the trios per team before the day who resemble the product's users: they do its job, or one close to it (announced in Day 2 *Bring to Day 3*). Colleagues from an unrelated function are not stand-ins (trial r1: a dispatcher product tested on salespeople).
+- **Paired trios:** take it to the team phase 2 swaps one agent file between two trios; the trainer pairs them before the day.
 - **Transitions:** start 10 @start "Which line would you now cut?" · debrief 5 @end "Sharpen the proposal" · round 12 @end "Say it to each other"
 - **Minutes against the beat sheet:** 10 + 55 + 15 break + 45 + 50 + 75 lunch + 15 + 55 + 15 break + 25 = 360. Lectures before or after an exercise sit inside that beat's minutes, as the beat sheet prices them.
 - **Primary Bloom's level:** Apply → Evaluate (slice, test, decide), Create at the close (the proposal).
-- **Protected:** five users phase 4 (the human call) and take it to the team phase 5 (`team/monday.md`). Overrun: map the story phase 4 shrinks to one sentence; write what good means drops its walk-away comparison; the close round drops the third bullet.
+- **Protected:** five users phase 4 (the human call) and take it to the team phase 6 (`team/monday.md`). Overrun: map the story phase 4 shrinks to one sentence; write what good means drops its walk-away comparison; the close round drops the third bullet.
 
 **Artefact contracts**
 | Artefact | Stable identifier | Produced by | Consumed by |
@@ -105,6 +106,8 @@ The bet is still open, and the next slice is yours to place. When models analyse
 | What good means | `team/what-good-means.md`, `team/<name>/what-it-missed.md` | write what good means | later runs of the judge (outside this day) |
 | Eval run | `./generation-tactic.md`, `module-6/runs/`, `module-6/eval-notes.md` | write what good means (`eval-loop-1/2/5`) | write what good means (`apt101-d3-what-it-missed` reads `module-6/runs/`) |
 | Each Day 1 hypothesis | `team/bet.md` | Day 1 write the bet | five users (`apt101-d3-read-the-sessions`, phase 4) |
-| Five users | *Five users* frame, `team/five-users.md` (call, proved-wrong lines, the sentence now believed) | five users | take it to the team (phase 1, `apt101-d3-the-job-your-team-hires`, `apt101-d3-team-monday`) |
+| Five users | *Five users* frame, `team/five-users.md` (call, each author's touched line and whether it held or broke, the sentence now believed) | five users | take it to the team (phase 1, `apt101-d3-the-job-your-team-hires`, `apt101-d3-team-monday`) |
 | Sharing package | `module-7/*.md` | take it to the team (`apt101-d3-the-job-your-team-hires`, `apt101-d3-bottleneck-and-plans`, `apt101-d3-test-the-switch`) | § Sharpen the proposal |
+| The door | `team/what-goes-in.md` | Day 1 what goes in | take it to the team (`apt101-d3-team-monday`, phase 6: first line of `team/monday.md`) |
+| Each agent file | `agents/<job>.md` | Day 1 send it off | take it to the team (`apt101-d3-run-their-file`, phase 2: the designer's, run by another trio) |
 | Monday | *Way of working* frame, `team/monday.md` | take it to the team (`apt101-d3-team-monday`), sharpened in § Sharpen the proposal | § Say it to each other (read aloud); the wider team, Monday |

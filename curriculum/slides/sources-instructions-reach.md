@@ -5,7 +5,7 @@ When your digest misleads you, the urge is to rewrite the agent's instructions. 
 
 - The material. Open your agreed list of sources. A stale export, a missing interview, two sources that disagreed and got blended? Fix the material.
 - The instructions. Read your brief again. One agent doing two jobs, or themes asked for but never how many customers said each one? Fix the instructions.
-- Your question. A look-for line that asks for support gets support. Ask what argues against it too.
+- Your question. A look-for line finds what it asks for. Ask what argues against it too.
 
 Ask the agent to make this diagnosis first. Then rerun only the smallest step that should now behave differently.
 
@@ -18,7 +18,7 @@ Ask the agent to make this diagnosis first. Then rerun only the smallest step th
 <!-- backing -->
 
 **Claims**
-- `question-is-a-suspect` · vision · "A look-for line that asks for support gets support." ← none-owed — APT101 addition; observation-grade.
+- `question-is-a-suspect` · vision · "A look-for line finds what it asks for." ← none-owed — APT101 addition; observation-grade.
 - `diagnose-before-repair` · vision · "Ask the agent to make this diagnosis first." ← none-owed — `debugging-stuck-agents` § Diagnose before repair.
 - `shrink-the-rerun` · vision · "rerun only the smallest step that should now behave differently" ← none-owed — same home, move 4.
 

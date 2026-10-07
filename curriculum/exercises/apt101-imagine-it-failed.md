@@ -4,9 +4,7 @@
 
 **What you do:**
 
-It is a year from now. The bet you chose today failed. Each of you writes why, alone and in silence, on the pre-mortem frame of your team board. Then quick rounds of ranking. Then Claude adds the causes the three of you did not write, and you rank once more. Gary Klein calls it a pre-mortem.
-
-Your confidence in the bet is at its highest right now, with three working pieces of it on the board. That is the moment to ask how it fails.
+It is a year from now. The bet you chose today failed. Each of you writes why, alone and in silence, on the pre-mortem frame of your team board. Then quick rounds of ranking. Then Claude adds the causes the three of you did not write, and you rank once more.
 
 ## Phase 1: Write why it failed
 
@@ -38,15 +36,15 @@ Push back on a cause that is a rewording of one already on the board. You want t
 
 *3 min*
 
-One dot each on the board for the cause you now think most likely, Claude's included. That top cause is what you talk about next, with laptops shut.
+One dot each on the board for the cause you now think most likely, Claude's included. That top cause is what you talk about with laptops shut.
 
 <!-- maintainer -->
 
-**Role in Day 2:** beat 9. A pre-mortem on the chosen bet and its three pieces, at the moment confidence peaks. Feeds beat 10, *Laptops shut* (a module section), which talks the top cause through. The lecture slide *Imagine it already failed* (end of *Each of you makes something*, before beat 8) carries Klein's method.
+**Role in Day 2:** beat 9. A pre-mortem on the chosen bet and its three pieces, at the moment confidence peaks. Feeds beat 10, *Laptops shut* (a module section), which talks the top cause through. The lecture *Imagine it already failed*, right after this exercise, names Klein's method and why it fits peak confidence, once the trio has done it.
 
 **Reuse:** shape only, from Agents 101 `share-your-work-6` (failure stories: social, technical, "the failure I'm not seeing", each with a week-two warning sign). Here the humans write the causes first and Claude adds only the third leg. New prompt: `apt101-d2-the-failure-we-missed`.
 
-**Frameworks:** pre-mortem (Gary Klein, named once in body): past tense, alone, in silence, then round-robin.
+**Frameworks:** pre-mortem (Gary Klein): past tense, alone, in silence, then round-robin. Not named in body; the slide after names it.
 
 **Artefacts:**
 - Consumes: `team/chosen-bet.md`; the three pieces in `team/<name>/` (make your piece); the pre-mortem frame on the team's Miro board (trainer-built; it replaces the beat sheet's voting page, and the dot rounds are its ranking).

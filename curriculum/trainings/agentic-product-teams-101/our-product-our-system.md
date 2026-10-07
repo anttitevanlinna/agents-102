@@ -104,7 +104,7 @@ Before Day 2, three agents read three memories against one bet, and write to you
 - **Where these numbers come from:** the build plan's beat sheet (beats 1 and 8). Every other beat has a file of its own that prices it.
 - **Beat minutes vs lectures:** exercise `**Time:**` = the beat sheet's minutes, matching their Agents 101 sources. The "before / after" lectures sit on top of the beat minutes, except the beat-2 opener, which is lectures only. Totals: the beat sheet, `curriculum/module-design/apt101-build-plan.md` § Day 1 (`calculate-time.js` does not know this training yet).
 - **Primary Bloom's level:** Apply (box, memory, agent) → Evaluate (riskiest assumption, the door, the cold read).
-- **Materials (trainer):** a Miro board per team with the Day 1 frames; a team folder per team, posted in chat, with one empty subfolder per person; the fallback digest for Day 2 beat 1.
+- **Materials (trainer):** a Miro board per team with the Day 1 frames; a team folder per team, posted in chat, with one empty subfolder per person; the fallback digest for Day 2 beat 1, only for a laptop that cannot run; a run that didn't fire is rerun from the person's own brief.
 - **Prework time:** 15 minutes, plus finding your own material.
 
 **Artefact contracts**
@@ -120,6 +120,7 @@ Before Day 2, three agents read three memories against one bet, and write to you
 | Style | `./style.md` | `apt101-send-it-off` (`personal-agent-homework-1`) | every HTML output |
 | Overnight digest | `module-2/morning-agent/morning.md`, `latest.html` | `apt101-send-it-off` | Day 2 beat 1 `apt101-read-the-digest` |
 | Look-for line | `module-2/morning-agent/morning.md` § `## Look for` (personal, the student's sentence word for word) | `apt101-send-it-off` (`apt101-d1-your-look-for-line`) | Day 2 `apt101-d2-what-ran-overnight`, quoted beside `team/bet.md` |
+| Expectation line | `team/<name>/expect.md` (personal, the student's sentence word for word, written before the first run, kept outside the brief so the run never reads it) | `apt101-send-it-off` (`apt101-d1-your-expect-line`) | Day 2 `apt101-d2-what-ran-overnight`, quoted beside the look-for line; copied into `team/<name>/doubts.md` |
 | Rules file | `./CLAUDE.md` (personal) | Day 1 close (`a101-m2-debrief-claude-md`) | every later run; sharpened at Day 2 close |
 | Team rules | `team/team-rules.md` | Day 1 close (`apt101-d1-team-rules`, team lead drives) | Day 2 close |
 

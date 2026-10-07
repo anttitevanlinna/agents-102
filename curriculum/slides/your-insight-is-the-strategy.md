@@ -5,7 +5,7 @@ Agents can read your interviews, tickets and competitor pages overnight and hand
 
 Your insight is the choice it leaves you with. Which outcome the team works toward. Which customer you serve first, and so which one waits. Which bet gets the next slice. Which good idea you say no to, out loud, so the team stops half-building it.
 
-That is real strategy work, and it does not get cheaper when building does. When agents analyse wider, deeper and faster, which of these will the three of you decide this week?
+That is real strategy work, and it does not get cheaper when building does. Which of these will the three of you decide this week?
 
 <!-- maintainer -->
 

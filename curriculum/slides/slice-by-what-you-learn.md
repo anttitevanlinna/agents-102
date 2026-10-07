@@ -3,7 +3,7 @@
 
 With agents building, slices are cheap, so the first slice tests the assumption you are least sure of. Not the easiest part, not the part the roadmap lists first.
 
-Jeff Patton gives the slice its shape. He lays the customer's journey left to right as the backbone of a story map, then cuts slices across the whole journey, so each release works end to end: in his words, all major features a little at a time, never a car without brakes. Each slice gets a name for the outcome it should produce and a measure for whether it did, and the first release is ordered so the team can learn fast and avoid risk.
+Cheap also tempts you to build one part well and leave the rest. Cut across the whole journey instead, so the slice works end to end and the test means something. Jeff Patton's story map gives that shape: the customer's journey laid left to right, slices cut across it, never a car without brakes. Name each slice for the outcome it should produce, with a measure for whether it did.
 
 <!-- maintainer -->
 
@@ -14,15 +14,15 @@ Jeff Patton gives the slice its shape. He lays the customer's journey left to ri
 <!-- backing -->
 
 **Claims**
-- `backbone-and-slices` · borrowed · "lays the customer's journey left to right as the backbone of a story map" ← patton-new-backlog
-- `little-at-a-time` · borrowed · "all major features a little at a time, never a car without brakes" ← patton-new-backlog
-- `slice-outcome-and-measure` · borrowed · "Each slice gets a name for the outcome it should produce and a measure" ← patton-story-map-concepts
-- `learn-fast-avoid-risk` · borrowed · "so the team can learn fast and avoid risk" ← patton-story-map-concepts
+- `backbone-and-slices` · borrowed · "the customer's journey laid left to right, slices cut across it" ← patton-new-backlog
+- `little-at-a-time` · borrowed · "never a car without brakes" ← patton-new-backlog
+- `slice-outcome-and-measure` · borrowed · "Name each slice for the outcome it should produce, with a measure for whether it did." ← patton-story-map-concepts
+- `cut-across-so-the-test-means-something` · vision · "Cut across the whole journey instead, so the slice works end to end and the test means something." ← none-owed — our reason for Patton's shape when slices are cheap.
 - `learning-decides-order` · vision · "With agents building, slices are cheap, so the first slice tests the assumption you are least sure of" ← none-owed — our extension.
 
 **Sources**
 - patton-new-backlog `[checked:2026-10-06 result:OK due:none]` https://jpattonassociates.com/the-new-backlog/ — [practitioner direct] backbone; all major features a little at a time; car without brakes. Live page 403s to curl; verified in Wayback.
-- patton-story-map-concepts `[checked:2026-10-06 result:OK due:none]` https://www.jpattonassociates.com/wp-content/uploads/2015/03/story_mapping.pdf — [practitioner direct] slices named by target outcome and success metric; first release sliced to learn fast and avoid risk.
+- patton-story-map-concepts `[checked:2026-10-06 result:OK due:none]` https://www.jpattonassociates.com/wp-content/uploads/2015/03/story_mapping.pdf — [practitioner direct] slices named by target outcome and success metric.
 
 **Frameworks**
 - User story mapping · [borrow:practitioner-coined] · law:none · ← patton-new-backlog

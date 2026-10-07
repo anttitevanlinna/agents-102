@@ -1,20 +1,20 @@
 ## The digest agrees with your favourite hypothesis
 <!--slide:the-digest-agrees-with-you-->
 
-The overnight digest is back, and its headline is the hunch your team liked most: customers stall at the import step. Three quotes sit under it, and a ticket count beside it.
+Open the digest and put your bet beside it, the one you wrote with a signal that could say no. Read the headline. Does it say what your bet says, with a few quotes under it and a ticket count beside it?
 
-It feels like good news. It is also the moment you are least likely to check, because the answer is the one you hoped for.
+If it does, it feels like good news. It is also the moment you are least likely to check, because the answer is the one you hoped for.
 
-Read the headline as the line to check first. Which interviews are behind it, and what did the rest of your material say?
+Read that headline as the line to check first. Which interviews are behind it, and what did the rest of your material say?
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-07), APT101 squint slide, Day 2 § The digest is back. Recognition beat: the overnight digest sent on Day 1 comes back agreeing. The mechanism belongs to `it-found-what-you-asked`, the stance to `analysed-everything-no-insight`; this slide names the feeling only. "The import step" is an illustrative hypothesis, not a reported finding. Not taught (simulation training). Owes judging rounds.
+**STATUS:** first cut (2026-10-07), APT101 squint slide, Day 2 § The digest is back. Recognition beat: the reader sets their own digest's headline beside their own written bet and sees whether it agrees. The mechanism belongs to `it-found-what-you-asked`, the stance to `analysed-everything-no-insight`; this slide names the feeling only. No hypothesis is supplied; the culprit is the reader's own bet. Not taught (simulation training). Owes judging rounds.
 
 <!-- backing -->
 
 **Claims**
 - `agreement-least-checked` · vision · "It is also the moment you are least likely to check, because the answer is the one you hoped for." ← none-owed — APT101 storyline turn (strategy appendix step 3: the digest agrees with the favourite hypothesis).
-- `headline-checked-first` · vision · "Read the headline as the line to check first." ← none-owed
+- `headline-checked-first` · vision · "Read that headline as the line to check first." ← none-owed
 
 <!-- /backing -->

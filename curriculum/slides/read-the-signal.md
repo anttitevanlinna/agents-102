@@ -3,7 +3,7 @@
 
 A slice that comes back no has done its job. It answered the question it was built to ask, before anyone built the whole thing on a wrong guess.
 
-That only holds if the bet was written down with its signal before anything was built: the number, the window, what would count. Eric Ries frames the decision as pivot or persevere. Stopping is also a choice. Agreeing the signal in advance matters most when the people reading the result also built the slice. Decide on what you agreed, not on how the result feels.
+That holds because your bet was written down with its signal before anything was built. Read the result against that signal: the number, the window, what would count. Eric Ries frames the decision as pivot or persevere. Stopping is also a choice. Agreeing the signal in advance matters most when the people reading the result also built the slice. Decide on what you agreed, not on how the result feels.
 
 Then the team writes down what it now believes instead, and places the next bet on that.
 

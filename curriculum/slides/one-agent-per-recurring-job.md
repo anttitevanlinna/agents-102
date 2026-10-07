@@ -1,7 +1,7 @@
 ## One agent per recurring job, not one company brain
 <!--slide:one-agent-per-recurring-job-->
 
-One company brain drifts in scope, and nobody can say what it is responsible for. A hundred tiny agents cost more to keep in step than they save.
+One company brain carries every job's instructions at once. Each new job adds rules on top of the last, a fix for one job shifts the answers for the others, and when something goes wrong nobody can say which job's instructions did it. A hundred tiny agents fail the other way: they cost more to keep in step than they save.
 
 So build one agent for each piece of work that recurs in your week, with instructions written for that job.
 
@@ -9,13 +9,13 @@ For a product team the first one is often easy to name. Someone reads last week'
 
 <!-- maintainer -->
 
-**STATUS:** squint build (2026-10-07), header from `apt101-squint.md` Day 1 (`header-style-distilled.md` rule 4), body opens on the rejected alternative; the overnight and wrong-lines sentences live on `it-works-overnight`. APT101 rewrite of `when-to-split-an-agent` § The unit is the recurring workflow. Not taught (simulation training).
+**STATUS:** squint build (2026-10-07), header from `apt101-squint.md` Day 1 (`header-style-distilled.md` rule 4), body opens on the rejected alternative and what breaks in it (instructions coupled across jobs); the overnight and wrong-lines sentences live on `it-works-overnight`. APT101 rewrite of `when-to-split-an-agent` § The unit is the recurring workflow. Not taught (simulation training).
 
 <!-- backing -->
 
 **Claims**
 - `the-unit-is-the-recurring-workflow` · vision · "build one agent for each piece of work that recurs in your week" ← none-owed — Bosser stance, carried from `when-to-split-an-agent` (its backing: house position, L0).
-- `no-company-brain` · vision · "One company brain drifts in scope, and nobody can say what it is responsible for" ← none-owed — same stance.
+- `no-company-brain` · vision · "a fix for one job shifts the answers for the others, and when something goes wrong nobody can say which job's instructions did it" ← none-owed — same stance, defended by mechanism: shared instructions couple the jobs; the diagnostic twin is `sources-instructions-reach` (one agent doing two jobs).
 - `digest-is-first` · vision · "Make that the first agent" ← none-owed — APT101 design: the overnight digest is Day 1's send-off.
 
 **Frameworks**

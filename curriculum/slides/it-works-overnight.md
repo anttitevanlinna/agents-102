@@ -1,7 +1,7 @@
 ## It works overnight; some of what it writes will be wrong
 <!--slide:it-works-overnight-->
 
-The digest agent runs while the team is away. It reads last week's tickets, interviews and analytics, only what the team agreed may go in, and leaves the digest ready by morning.
+The digest agent runs while the team is away. It reads last week's tickets, interviews and analytics, only what the team agreed may go in, and leaves the digest ready by morning. It looks for what your brief tells it to look for.
 
 It will read well. Every line will sound as sure as the next. Some of those lines will be wrong: a pattern stretched past its evidence, a quote smoothed into something nobody said.
 

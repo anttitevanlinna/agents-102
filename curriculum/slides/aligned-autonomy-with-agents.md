@@ -1,9 +1,9 @@
 ## Clear outcomes, free hands, for agents too
 <!--slide:aligned-autonomy-with-agents-->
 
-An agent given a clear outcome, the context and the line it must not cross can be left to work. An agent given only a task needs watching at every step. People work the same way.
+An agent given a clear outcome, the context and the line it must not cross can be left to work. An agent given only a task needs watching at every step. People work the same way, so leading a team with agents in it is the same job: make the why and the context clear, and leave the how.
 
-Henrik Kniberg treats alignment and autonomy as two separate axes, not two ends of one slider. High alignment without autonomy is being told exactly how to build the bridge. High autonomy without alignment is every team doing whatever it wants. The quadrant worth having is both: leaders make the why and the context clear, and the team works out the how. His phrase for it is **aligned autonomy**: alignment enables autonomy.
+Henrik Kniberg's phrase for it is **aligned autonomy**. He treats alignment and autonomy as two separate axes, not two ends of one slider: "alignment enables autonomy".
 
 <!-- maintainer -->
 
@@ -14,9 +14,10 @@ Henrik Kniberg treats alignment and autonomy as two separate axes, not two ends 
 <!-- backing -->
 
 **Claims**
-- `two-axes` · borrowed · "Henrik Kniberg treats alignment and autonomy as two separate axes" ← kniberg-flowcon-2016
-- `quadrants` · borrowed · "High alignment without autonomy is being told exactly how to build the bridge" ← kniberg-flowcon-2016
-- `aligned-autonomy-phrase` · borrowed · "His phrase for it is **aligned autonomy**: alignment enables autonomy" ← kniberg-flowcon-2016
+- `two-axes` · borrowed · "He treats alignment and autonomy as two separate axes" ← kniberg-flowcon-2016
+- `aligned-autonomy-phrase` · borrowed · "Henrik Kniberg's phrase for it is **aligned autonomy**" ← kniberg-flowcon-2016
+- `alignment-enables-autonomy` · borrowed · "alignment enables autonomy" ← kniberg-flowcon-2016
+- `leading-with-agents-same-job` · vision · "leading a team with agents in it is the same job: make the why and the context clear, and leave the how" ← none-owed — our extension.
 - `agents-same-picture` · vision · "An agent given a clear outcome, the context and the line it must not cross can be left to work." ← none-owed — our extension.
 
 **Sources**

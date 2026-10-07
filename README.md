@@ -97,4 +97,4 @@ You've been granted a **personal usage license** — designed to be generous whe
 
 **You can't:** redistribute the curriculum files, teach the material as your own training, resell or transfer your seat, build a competing course from it, or feed the proprietary files into a public AI dataset.
 
-The simple test: *am I using this for my own learning, my own work, or teammates inside my own company?* If yes, you're inside the license. Full terms in [`COPYRIGHT.md`](COPYRIGHT.md) § Student Usage License.
+The simple test: *am I using this for my own learning or my own work, or showing teammates what I built?* If yes, you're inside the license. Running the material as a training, inside your company or outside it, takes a separate training licence from Bosser Oy. Full terms in [`COPYRIGHT.md`](COPYRIGHT.md) § Student Usage License.

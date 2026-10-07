@@ -1,11 +1,19 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-10-06 (cycle 241)
-OODA cycles: 89
+Last updated: 2026-10-07 (cycle 242)
+OODA cycles: 90
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-10-07)
+
+**CYCLE 242 UPDATE (Oct 7) — GITSPAWN ULTRAREVIEW DAY+37: V2.1.292 (OCT 6) SHIPS SECURITY CLUSTER INCLUDING "FIXED SANDBOXED COMMANDS BEING ABLE TO READ STAGED FILE COPIES OF /ULTRAREVIEW UPLOADS UNDER ~/.CLAUDE/SEED-ADMIN" — CLOSEST CHANGELOG LANGUAGE TO GITSPAWN ULTRAREVIEW ATTACK SURFACE SINCE SEP 1 DISCLOSURE; ALSO FIXES: PRETOOLUSE HOOK BYPASSING UNC PATH PERMISSION PROMPTS, MANAGED SANDBOX READ-DENY PATH DROPPING PROJECT GRANTS MID-SESSION, NOTEBOOK/PDF LINK-SWAP OUT-OF-SCOPE READS, TAMPERED SETTINGS CACHE UNSEATING POLICY PLUGIN, RM -RF WINDOWS DRIVE ALTERNATE SPELLINGS; STATUS = PARTIAL CANDIDATE PATCH (seed-admin hardening is adjacent to FSMONITOR attack surface but FSMONITOR/GITSPAWN NOT NAMED IN CHANGELOG, NO CVE ASSIGNED); MANIFOLD.SECURITY NOT UPDATED FOR V2.1.292 (STILL SAYS "ultrareview unpatched as of 2.1.252"); SHATTERED.IO NOT UPDATED SINCE SEP 17; MANIFOLD/SHATTERED CONFIRMATION WATCH NOW ELEVATED FROM PASSIVE TO ACTIVE; CTO POSTURE UNCHANGED UNTIL THIRD-PARTY CONFIRMS; HYDRAFUSION #5042 STILL OPEN — NO GITHUB TEAM RESPONSE AT 21+ DAYS; NO ROUTING UPDATE FOR GPT-6.1 SOL FOUND; MODEL SUB-OPTIMALITY L3 HOLDS (4 REPORTS); OPENAI AGENTS API DAY+2 BILLING: ZERO DEPLOYER-DIRECT PRODUCTION ACCOUNTS OR COST SHOCK REPORTS INDEXED; PRICING CONFIRMED LIVE ($4/$20 PER 1M SOL, $2/$12 TERRA, $0.20/$1.20 LUNA); EU/GDPR BLOCKED AT BILLING START; FIRST DEPLOYER-DIRECT REACTIONS EXPECTED OCT 8-10; PROMPT OBJECTS NOV 30 (54 DAYS) — NO CHANGE.**
+
+**Watch Cycle 243 (Oct 8+):** PRIORITY-1 — OpenAI Agents API first deployer-direct cost reactions: Oct 8-10 is the core window; watch dev.to, HN, community.openai.com for cost shocks, loop failures, or named production deployments; PRIORITY-2 — GitSpawn v2.1.292 patch confirmation: fetch manifold.security blog for new post confirming or denying seed-admin fix as GitSpawn patch; check shattered.io for update; PRIORITY-3 — HydraFusion: GitHub team response to #5042 at 22+ days? Any routing patch or BYOK response?
+
+([code.claude.com/docs/en/changelog](https://code.claude.com/docs/en/changelog), Oct 6 2026 — [vendor documentation — v2.1.292 security cluster: seed-admin staged-file read fix, PreToolUse UNC bypass, sandbox read-deny, notebook/PDF link-swap, settings cache tamper, rm -rf Windows]; [shattered.io/gitspawn-ai-coding-agent-vulnerability-2026/](https://shattered.io/gitspawn-ai-coding-agent-vulnerability-2026/), Sep 17 2026 — [domain trade publication — not updated for v2.1.292, still "treat as unresolved"]; [manifold.security/blog/ai-coding-agents-git-hijack](https://manifold.security/blog/ai-coding-agents-git-hijack), Sep 1 2026 — [practitioner direct — still says ultrareview unpatched as of 2.1.252, no new posts]; [eesel.ai/blog/openai-agents-api-pricing](https://www.eesel.ai/blog/openai-agents-api-pricing) — [practitioner analysis — pricing confirmed live, cost runaway risk framing])
 
 ## Key Verdict (as of 2026-10-06)
 

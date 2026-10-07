@@ -75,7 +75,7 @@ If you have been granted access to Agents 102 as an enrolled student — whether
 
 **Your outputs are not a derivative work.** An agent you build on your own company content, a memory page that encodes your own policies, a skill you write for your team's process — these are yours, even though you learned the moves here. This is the whole design of the training. Only the curriculum files themselves are proprietary.
 
-**Not sure?** When in doubt, ask: *am I using this for my own learning or my own work, or showing teammates what I built?* If yes — you're inside the license. Running the material as a training, inside your company or outside it, takes a separate training licence from Bosser Oy. If you're considering anything that reaches people outside your own seat or sits alongside material sold by someone else, contact Bosser Oy first: [bosser.consulting](https://bosser.consulting).
+**Not sure?** When in doubt, ask: *am I using this for my own learning and my own work?* If yes — you're inside the license. It is free for personal use. Running the material as a training, inside your company or outside it, takes a separate training licence from Bosser Oy. If you're considering anything that reaches people outside your own seat or sits alongside material sold by someone else, contact Bosser Oy first: [bosser.consulting](https://bosser.consulting).
 
 ## Rights Reserved
 

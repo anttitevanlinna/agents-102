@@ -12,13 +12,13 @@ Keep the same <span class="rt-code">session</span><span class="rt-cowork">task</
 
 *6 min*
 
-Each of your agents reads one short brief at your training-directory root, `./challenge.md`. Claude's prompt calls it your challenge. Here the challenge is the bet you just wrote, seen from your own seat: what you're trying, what you already know, where you are stuck.
+Each of your agents reads one short brief at your training-directory root, `./challenge.md`: the bet you just wrote, seen from your own seat. What you're trying, what you already know, where you are stuck.
 
-Ask Claude to interview you with three focusing questions and write the brief to `./challenge.md`.
+Ask Claude to interview you, one question at a time, and write the brief.
 
-{{prompt:name-your-challenge-1}}
+**Prompt** · `apt101-d1-pin-the-bet`, reads `team/bet.md`; asks me three questions one at a time (what my hypothesis in it tries, what I already know from my own material, where I am stuck), using my words, not the bet file's; writes my answers as a half-page brief to `./challenge.md`, headed by the outcome and my hypothesis quoted from `team/bet.md`
 
-Answer from `team/bet.md`, in your own words. The product owner's brief will lean on the outcome, the designer's on the customers, the team lead's on what the team can build and how. That difference is the point; three agents will read three briefs. If Claude shows all three questions at once, ask for one at a time.
+Answer in your own words. The product owner's brief will lean on the outcome, the designer's on the customers, the team lead's on what the team can build and how. That difference is the point; three agents will read three briefs.
 
 ## Phase 2: Scout where your material lives
 
@@ -26,9 +26,9 @@ Answer from `team/bet.md`, in your own words. The product owner's brief will lea
 
 Ask Claude where you'd go scouting for raw material on this bet.
 
-{{prompt:name-your-challenge-2}}
+**Prompt** · `apt101-d1-scout-the-material`, reads `./challenge.md`; asks me where the material on this bet lives in my own work (interview notes, ticket exports, analytics, retro notes, shared folders, anything else I name), then lists each source with where it is, what is in it, and whether it holds people's names; shows the list and saves nothing
 
-Claude asks about a wiki and shared drives. Answer for your own world: the interview notes, the ticket export, the analytics dashboard, the retro board. Keep the list on screen. It is what the door is about to decide.
+Answer for your own world. Keep the list on screen. It is what the door is about to decide.
 
 ## Phase 3: Agree the door
 
@@ -60,7 +60,7 @@ Next, each of you builds your memory through that door.
 
 **Role in Day 1:** beat 5; the one plain data beat in APT101 (no governance, no legal). Day 2's beat sheet owes this: "the team agrees what may go into the agents before anything goes in."
 
-**Reuse:** keys `name-your-challenge-1` (produces `./challenge.md`, here = the bet from this person's seat) and `name-your-challenge-2` (scouting list in scrollback, feeds `build-your-challenge-memory-1`). New: `apt101-d1-the-door`. The A101 key wording ("challenge", Confluence / OneDrive) is framed in body prose, not edited.
+**Reuse:** shape of Agents 101 `name-your-challenge` (interview → brief, then scouting), rewritten as `apt101-d1-pin-the-bet` and `apt101-d1-scout-the-material` so the prompts speak of the bet and the trio's own sources (removes the "Claude's prompt calls it your challenge" seam). The file stays `./challenge.md`: the reused `build-your-challenge-memory-*` prompts read it. The scouting list stays in scrollback, where `build-your-challenge-memory-1` picks it up. New: `apt101-d1-the-door`.
 
 **Frameworks:** none named; the door is the data-minimisation move ("the door you don't open") taught by the lecture *Send it off* before beat 7, so the exercise produces it and the lecture names it.
 

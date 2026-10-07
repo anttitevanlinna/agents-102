@@ -14,7 +14,7 @@ So you start from their job, not from what you built. This is the Jobs-to-be-Don
 
 *5 min*
 
-Open `team/five-users.md` at the call you made. The product owner writes two post-its at the head of the *Way of working* frame on your team's Miro board: persevere, pivot or stop, and the one sentence you now believe instead. Everything below them answers to those two.
+Open `team/five-users.md` at the call you made. The product owner writes two post-its at the head of the *Way of working* frame on your team's Miro board: persevere, pivot or stop, and the one sentence you now believe, held or changed. Everything below them answers to those two.
 
 Then three columns: what the agents do, what stays with people, where the old way still wins. The team lead starts from the draft made on Day 2; the designer and the product owner add what the five users showed you. One post-it per thing, no discussion yet.
 
@@ -47,7 +47,7 @@ Claude reads the call and the sentence at the head of the frame, the bet and the
 
 When Claude asks you to pick, pick the shapes that carry the way of working on the board.
 
-**Prompt** · `apt101-d3-the-job-your-team-hires`, read `team/five-users.md` (our call and the one sentence we now believe instead), `team/chosen-bet.md`, the team lead's `team/<name>/way-of-working.md` and the *Way of working* frame on our Miro board; draft the job our wider team is trying to get done, in their words, with what they use for it today and one outcome we could observe; ask us one question at a time to correct it; write `module-7/jtbd.md`; then show us which of the four shapes would carry our way of working to them and how each would move that outcome, let us pick one to three, and write `module-7/branch.md`; show us each file before saving
+**Prompt** · `apt101-d3-the-job-your-team-hires`, read `team/five-users.md` (our call and the one sentence we now believe, held or changed), `team/chosen-bet.md`, the team lead's `team/<name>/way-of-working.md` and the *Way of working* frame on our Miro board; draft the job our wider team is trying to get done, in their words, with what they use for it today and one outcome we could observe; ask us one question at a time to correct it; write `module-7/jtbd.md`; then show us which of the four shapes would carry our way of working to them and how each would move that outcome, let us pick one to three, and write `module-7/branch.md`; show us each file before saving
 
 Read `module-7/jtbd.md`. Does it name your team, how they do the job today, and an outcome you could observe? If it could describe any team in the company, point at the generic line and ask Claude to try that part again.
 

@@ -18,7 +18,7 @@ Only a laptop that cannot run the brief at all takes the trainer's fallback dige
 
 **What you do:**
 
-Each of your agents ran overnight on your own material, through the door your team agreed on Day 1. Before you read your digest, find out what actually ran: which job, on which files, and what it wrote. Then read it, mark the one line you trust least, and run it once more the other way round. Together you pick the doubt that matters most.
+Each of your agents ran overnight on your own material, through the door your team agreed on Day 1. Before you read your digest, find out what actually ran: which job, on which files, and what it wrote. Then read it, mark the one line you trust least. Together you pick the doubt that matters most.
 
 ## Phase 1: See what ran
 

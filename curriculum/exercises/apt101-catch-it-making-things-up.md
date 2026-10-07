@@ -59,7 +59,11 @@ Don't read the four files as they land. The scorer reads them.
 
 A fifth agent checks every claim against the evidence and measures each method: of what it flagged, how much was really made up, and of what was made up, how much it caught.
 
+Before it runs, the team lead reads the four methods aloud from the phase 2 files. Each of you writes on a post-it which one will catch the most, and why, in one line. Face down until the scoreboard lands.
+
 {{prompt:hallucination-bakeoff-5}}
+
+Turn the post-its over. Whoever called it says what they saw that the others didn't; whoever missed says what they trusted instead.
 
 Ask Claude to explain the two columns using your own rows.
 

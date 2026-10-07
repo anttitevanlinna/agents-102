@@ -84,9 +84,13 @@ Leave your laptop plugged in until the run fires, lid open if you can.
 
 *3 min*
 
-Open `module-2/morning-agent/latest.html` in your browser. Check the look only: your colours, your type, a page and not a wall of text. If it looks off, or the page is empty, fix `./style.md` or `morning.md`; the scheduled run reads both, so the next run picks up the change.
+Ask Claude for a copy of the first run's page with every line of text swapped for placeholder, and open the copy.
 
-Then close it unread. What it says waits for Day 2.
+**Prompt** · `apt101-d1-look-check`, copy `module-2/morning-agent/latest.html` to `module-2/morning-agent/look-check.html` with every line of text replaced by placeholder text of the same length, keeping layout, colours and type; open the copy in the browser; never quote, summarise or describe what the original says
+
+Check the look only: your colours, your type, a page and not a wall of text. If it looks off, or the page is empty, fix `./style.md` or `morning.md`; the scheduled run reads both, so the next run picks up the change.
+
+`latest.html` stays unopened. What it says waits for Day 2.
 
 ## Take stock of what you sent off
 
@@ -106,7 +110,7 @@ Day 2 starts with what came back.
 
 **Frameworks:** none named in body. *Send it off* before (door you don't open, it runs without you until Day 2) frames the beat; the door slide names what `apt101-what-goes-in` already did, so it lands as recognition.
 
-**Artefacts:** produces `agents/<job>.md`, `./style.md`, the Styling line in `./CLAUDE.md`, `module-2/morning-agent/morning.md` (with each person's own sentence under `## Look for`), `team/<name>/expect.md`, `module-2/morning-agent/latest.html` (first run), and the scheduled task. Consumes `memory/`, `./challenge.md`, `team/what-goes-in.md`. `latest.html` is read in Day 2 beat 1 (`apt101-read-the-digest`); its `apt101-d2-what-ran-overnight` quotes the look-for and expect sentences back word for word beside `team/bet.md`, and `team/<name>/doubts.md` keeps a copy because tonight's brief replaces `morning.md`.
+**Artefacts:** produces `agents/<job>.md`, `./style.md`, the Styling line in `./CLAUDE.md`, `module-2/morning-agent/morning.md` (with each person's own sentence under `## Look for`), `team/<name>/expect.md`, `module-2/morning-agent/latest.html` (first run, unopened), `module-2/morning-agent/look-check.html` (placeholder copy), and the scheduled task. Consumes `memory/`, `./challenge.md`, `team/what-goes-in.md`. `latest.html` is read in Day 2 beat 1 (`apt101-read-the-digest`); its `apt101-d2-what-ran-overnight` quotes the look-for and expect sentences back word for word beside `team/bet.md`, and `team/<name>/doubts.md` keeps a copy because tonight's brief replaces `morning.md`.
 
 **The Day 2 turn, left to happen:** the digest looks for what each person's own sentence asks for. The body offers no example sentence and no verb: whatever the student writes ("find what supports…", "what do users say about…"), the agreement on Day 2 traces back to a sentence they wrote, not to the exercise. The expectation line is written before any run, so Day 2 can set the headline against what each person expected; it carries no example either. Nothing on Day 1 says the digest will agree or be wrong; the Day 2 turn (*Why it agreed*) depends on the trio finding its own sentence behind the agreement. Phase 6 checks the first run's look and closes the page unread: no one hears a headline on Day 1, so every seat meets its own digest first on Day 2.
 

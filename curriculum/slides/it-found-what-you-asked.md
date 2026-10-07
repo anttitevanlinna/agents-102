@@ -1,7 +1,7 @@
 ## It found what you asked it to look for
 <!--slide:it-found-what-you-asked-->
 
-Your look-for line told the agent what counted as a finding, and it found it. A line that asked for support got support. A line that asked about what customers do got behaviour, sorted the way your line sorted it. Turned round, the same material usually gave you a second headline. If your line already asked for a test, what came back came from the questions your material asked, such as the interview guide.
+Your look-for line told the agent what counted as a finding, and it found it. A line that asked for support got support. A line that asked about what customers do got behaviour, sorted the way your line sorted it. A line that asked both ways still chose what counted as a finding. Turned round, the same material usually gave you a second headline. If your line already asked for a test, what came back came from the questions your material asked, such as the interview guide or the ticket categories.
 
 Ask an agent to look for something in enough customer conversations and it will usually find a few. Your line chose what to look for. It did not ask what else was there, how many customers said it, or what would show the hypothesis wrong.
 
@@ -17,7 +17,7 @@ The headline came from your question as much as from your customers.
 - `asked-for-it-found-it` · vision · "Ask an agent to look for something in enough customer conversations and it will usually find a few." ← none-owed — observation-grade, scoped to "usually".
 - `line-chose-the-finding` · vision · "Your look-for line told the agent what counted as a finding, and it found it." ← none-owed — lived in `apt101-read-the-digest` phases 3 and 4.
 - `usually-a-second-headline` · vision · "Turned round, the same material usually gave you a second headline." ← none-owed — lived in `apt101-read-the-digest` phase 4; "usually" covers a turned-round run that finds nothing.
-- `test-line-reads-the-guide` · vision · "what came back came from the questions your material asked, such as the interview guide" ← none-owed — observation-grade; the test seat's case of the line choosing the finding.
+- `test-line-reads-the-guide` · vision · "what came back came from the questions your material asked, such as the interview guide or the ticket categories" ← none-owed — observation-grade; the test seat's case of the line choosing the finding.
 - `agreement-from-the-question` · vision · "The headline came from your question as much as from your customers." ← none-owed — whatever the Day 1 look-for line asked for.
 
 <!-- /backing -->

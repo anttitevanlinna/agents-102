@@ -36,7 +36,7 @@ Ask Claude to create one file in `sources/` for every source in the plan.
 
 {{prompt:build-your-challenge-memory-2}}
 
-Look at Claude's three lists. Anything not reachable stays a reference unless you share the file. Never type or paste content yourself; that's the agent's job. Aim for eight to ten items with real content. Strip what the door says to strip before you share it: names, phone numbers, the customer's company.
+Look at Claude's three lists. Anything not reachable stays a reference unless you share the file. Never type or paste content yourself; that's the agent's job. Aim for eight to ten items with real content. Stripping is the one edit you make yourself, in your own editor, before Claude sees the file. Strip what the door says to strip before you share it: names, phone numbers, the customer's company.
 
 ### Build the memory under a plan
 

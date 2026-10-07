@@ -22,6 +22,6 @@ What would change this training's mind: agents that start deciding well, choosin
 - `what-would-change-our-mind` · vision · "agents that start deciding well" ← none-owed — the training's own falsifier for its frame.
 
 **Sources**
-- essay-red-queen `[checked:2026-03-20 result:ATTESTED due:none]` attested:Antti 2026-03-20 year-one-essays — [practitioner direct, maintainer-attested] Antti Tevanlinna, *The Red Queen*, 2026-03-20, Drive `bosser/strategy/practitioner-essays-year-one.md` § 2026-03-20. The author's own word; quoted verbatim, maintainer-supplied for this pass (2026-10-06). fallback: none.
+- essay-red-queen `[checked:2026-03-20 result:ATTESTED due:none]` attested:Antti 2026-03-20 year-one-essays — [practitioner direct, maintainer-attested] Antti Tevanlinna, *The Red Queen*, 2026-03-20, Drive, bosser strategy folder, year-one practitioner essays, § 2026-03-20. The author's own word; quoted verbatim, maintainer-supplied for this pass (2026-10-06). fallback: none.
 
 <!-- /backing -->

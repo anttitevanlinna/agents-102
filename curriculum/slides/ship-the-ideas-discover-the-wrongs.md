@@ -24,7 +24,7 @@ Expect an agent's first digest of your customer material to be wrong in places. 
 - `first-digest-wrong-in-places` · vision · "Expect an agent's first digest of your customer material to be wrong in places." ← none-owed — APT101 design stance; the Day 2 return.
 
 **Sources**
-- essay-expect-to-be-wrong `[checked:2025-05-09 result:ATTESTED due:none]` attested:Antti 2025-05-09 year-one-essays — [practitioner direct, maintainer-attested] Antti Tevanlinna, *Expect to Be Wrong with the Vision and Ideas*, 2025-05-09, Drive `bosser/strategy/practitioner-essays-year-one.md` § 2025-05-09. The author's own word; quoted verbatim, maintainer-supplied for this pass (2026-10-06). The PDCA variant is the author's account of a design variation he "came across"; the slide credits only his wording. fallback: none.
+- essay-expect-to-be-wrong `[checked:2025-05-09 result:ATTESTED due:none]` attested:Antti 2025-05-09 year-one-essays — [practitioner direct, maintainer-attested] Antti Tevanlinna, *Expect to Be Wrong with the Vision and Ideas*, 2025-05-09, Drive, bosser strategy folder, year-one practitioner essays, § 2025-05-09. The author's own word; quoted verbatim, maintainer-supplied for this pass (2026-10-06). The PDCA variant is the author's account of a design variation he "came across"; the slide credits only his wording. fallback: none.
 
 **Frameworks**
 - Plan-Do-Check-Act · [borrow:manufacturing] · law:none · ← essay-expect-to-be-wrong

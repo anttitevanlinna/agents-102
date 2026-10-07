@@ -21,6 +21,6 @@ The build was the cheap part, and it worked. The decision before it went wrong: 
 - `decision-went-wrong` · vision · "The decision before it went wrong" ← none-owed — the slide's reading of the essay against the outcome loop.
 
 **Sources**
-- essay-failing-and-succeeding `[checked:2025-12-05 result:ATTESTED due:none]` attested:Antti 2025-12-05 year-one-essays — [practitioner direct, maintainer-attested] Antti Tevanlinna, *Failing and Succeeding at the Same Time*, 2025-12-05, Drive `bosser/strategy/practitioner-essays-year-one.md` § 2025-12-05. The author's own word; quoted verbatim, maintainer-supplied for this pass (2026-10-06). fallback: none.
+- essay-failing-and-succeeding `[checked:2025-12-05 result:ATTESTED due:none]` attested:Antti 2025-12-05 year-one-essays — [practitioner direct, maintainer-attested] Antti Tevanlinna, *Failing and Succeeding at the Same Time*, 2025-12-05, Drive, bosser strategy folder, year-one practitioner essays, § 2025-12-05. The author's own word; quoted verbatim, maintainer-supplied for this pass (2026-10-06). fallback: none.
 
 <!-- /backing -->

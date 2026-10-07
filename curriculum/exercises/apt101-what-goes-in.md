@@ -14,9 +14,9 @@ Keep the same <span class="rt-code">session</span><span class="rt-cowork">task</
 
 Each of your agents reads one short brief at your training-directory root, `./challenge.md`: the bet you just wrote, seen from your own seat. What you're trying, what you already know, where you are stuck.
 
-Ask Claude to interview you, one question at a time, and write the brief.
+Ask Claude to read the bet, interview you one question at a time, and write your brief.
 
-**Prompt** · `apt101-d1-pin-the-bet`, reads `team/bet.md`; asks me three questions one at a time (what my hypothesis in it tries, what I already know from my own material, where I am stuck), using my words, not the bet file's; writes my answers as a half-page brief to `./challenge.md`, headed by the outcome and my hypothesis quoted from `team/bet.md`
+{{prompt:apt101-d1-pin-the-bet}}
 
 Answer in your own words. The product owner's brief will lean on the outcome, the designer's on the customers, the team lead's on what the team can build and how. That difference is the point; three agents will read three briefs.
 

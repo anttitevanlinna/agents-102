@@ -8,9 +8,9 @@ A chat forgets. A memory remembers.
 
 Each of you builds a memory from your own material, on your own laptop, pointed at the bet. The product owner brings the analytics, the decisions and the roadmap notes. The designer brings the interviews and the usability notes. The team lead brings the tickets, the retro notes and what the team learned building the last thing. Three memories, one bet, three seats.
 
-The empty `sources/`, `memory/` and `agents/` folders are already in your training folder from prework. Keep the same <span class="rt-code">session</span><span class="rt-cowork">task</span> running. Claude has your brief in scrollback, and `./challenge.md` is on disk.
+The empty `sources/`, `memory/` and `agents/` folders are already in your training folder from prework. Keep the same <span class="rt-code">session</span><span class="rt-cowork">task</span> running. Claude still has your brief, and `./challenge.md` is on disk.
 
-**Through the door.** Only what `team/what-goes-in.md` lets in goes in. If Claude's curation plan marks a source *"skip for now, revisit after Module 4,"* that source is outside the door. The door you agreed decides. Anything it keeps out stays out.
+**Through the door.** Only what `team/what-goes-in.md` lets in goes in. The door you agreed decides. Anything it keeps out stays out.
 
 ## Phase 1: Curate, ingest, build
 
@@ -56,7 +56,7 @@ Ask Claude to audit its own pages for generic top claims.
 
 {{prompt:build-your-challenge-memory-4}}
 
-Claude calls the memory "your challenge memory". It is your product memory; the test is the same. Could a competitor's memory carry this top claim? If yes, it's soft. That list is your first quality check.
+Could a competitor's memory carry this top claim? If yes, it's soft. That list is your first quality check.
 
 ## Phase 3: Make it sharper, not longer
 

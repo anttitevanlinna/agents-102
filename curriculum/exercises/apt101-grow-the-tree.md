@@ -22,11 +22,11 @@ Put down the opportunity only you would think of. The ones all three of you saw 
 
 *10 min*
 
-The designer drives at the shared screen: the designer sat closest to what customers actually said. The product owner and the team lead watch the merge on the board from their own laptops.
+The designer drives at the shared screen: the designer sat closest to what customers actually said. While Claude merges, the product owner checks each merged branch against the outcome at the root, and the team lead marks on the board every branch only one person found, so none of them goes missing in the merge.
 
 Ask Claude to merge the three sketches into one tree against the outcome, keeping whose each branch was.
 
-**Prompt** · `apt101-d2-merge-the-tree`, reads the tree frame through the Miro connector (or the screenshot) and the outcome in `./crux.md`; merges the three sketches into one tree in a new frame, every branch labelled with the names of everyone who put it down; marks a branch with one name instead of dropping it; flags any "opportunity" that has only one possible solution as a solution in disguise; lists the branches it would cut as not serving the outcome, each with its reason, without cutting them; writes the merged tree with names and the source behind each branch to `team/tree.md`
+**Prompt** · `apt101-d2-merge-the-tree`, reads the tree frame through the Miro connector (or the screenshot) and the outcome in `./crux.md`; merges the three sketches into one tree in a new frame, every branch labelled with the names of everyone who put it down; marks a branch with one name instead of dropping it; flags any "opportunity" that has only one possible solution as a solution in disguise; lists the branches it would cut as not serving the outcome, each with its reason, without cutting them; writes the merged tree with names to `team/tree.md`, quoting under each branch the source sentence behind it word for word, with its file and whose it is, so any laptop can check the branch from `team/tree.md` alone; where that sentence sits on another person's laptop, asks them to paste it in
 
 Push back on a merge that reads like the average of the three of you. If your single-name branch disappeared into a bigger one, ask for it back. If a cut has no reason you can argue with, ask for the reason.
 
@@ -51,7 +51,7 @@ Ask Claude to spawn three agents with different stances, then synthesize their n
 
 </div>
 
-Claude frames it as a strategy answer to your challenge. Here it is three reads of the same evidence, and each of you keeps the one closest to your role:
+Each of you keeps the read closest to your role:
 
 - **Product owner: the assumption tester.** What would have to be true for the branch you like best to pay off?
 - **Designer: the reframer.** Is the question itself wrong? What did customers do that nobody asked about?
@@ -83,9 +83,9 @@ The tree is not finished, and it should not be. You choose from it in *Choose th
 
 **Artefacts:**
 - Consumes: `./crux.md` (outcome, crux, question); `memory/`, `sources/` (gather the evidence); the tree frame on the team's Miro board (trainer-built).
-- Produces: merged tree frame on the board; `team/tree.md` (designer drives; branches with authors and sources; challenges with names); each person's `module-3/stances/` and `## Answer` in `./crux.md`.
+- Produces: merged tree frame on the board; `team/tree.md` (designer drives; branches with authors and each branch's source sentence quoted with file and owner, so readers on any laptop check against the quote; challenges with names); each person's `module-3/stances/` and `## Answer` in `./crux.md`.
 
-**Room:** phase 1 solo in silence on the board; phase 2 designer drives, others watch on the board; phase 3 solo; phase 4 all three on the board, designer records. Attribution comes from the sticky's name or colour, stated by the person who wrote it (workshop §5); nothing is written over (§6): Claude lists cuts, the trio makes them at *Choose the bet*.
+**Room:** phase 1 solo in silence on the board; phase 2 designer drives, product owner checks branches against the outcome, team lead marks single-name branches on the board; phase 3 solo; phase 4 all three on the board, designer records. Attribution comes from the sticky's name or colour, stated by the person who wrote it (workshop §5); nothing is written over (§6): Claude lists cuts, the trio makes them at *Choose the bet*.
 
 **Failure modes:** merge averages toward the middle (push back for the single-name branch); "opportunities" that are features (Torres's more-than-one-way test, inside the merge prompt); no Miro connector (screenshot fallback).
 

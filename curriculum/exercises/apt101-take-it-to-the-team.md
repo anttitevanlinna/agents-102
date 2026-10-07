@@ -8,7 +8,7 @@ The three of you have worked out a way of working with agents on one bet. Your w
 
 So you start from their job, not from what you built. This is the Jobs-to-be-Done frame: your team does not want your agents, they want a job done. The way of working the team lead drafted on Day 2 is one candidate for that job. It competes with whatever the team uses today.
 
-**The team lead drives** this whole exercise at their screen. The other two answer with you and read what comes back. The prompts come from a training where one person shares with one teammate. Where Claude says *teammate*, read *your wider team*. Where it says *candidate*, read *the way of working*.
+**The team lead drives** this whole exercise at their screen. The other two answer with you and read what comes back. Where Claude says *teammate*, read *your wider team*. Where it says *candidate*, read *the way of working*.
 
 ## Phase 1: Sketch the way of working
 

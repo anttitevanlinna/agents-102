@@ -65,7 +65,7 @@ Ten minutes. Each of you writes your first `./CLAUDE.md` at your training-direct
 
 {{prompt:a101-m2-debrief-claude-md}}
 
-Claude reads `./challenge.md` as the bet from your seat. Read its summary. Push back on anything that doesn't match the day: *"No, that rule's too strict."* *"You missed the part where the door kept the interview notes out."* What Claude leaves out is often the signal. A tidy summary that skips the moment you re-prompted three times is the tell.
+Read its summary. Push back on anything that doesn't match the day: *"No, that rule's too strict."* *"You missed the part where the door kept the interview notes out."* What Claude leaves out is often the signal. A tidy summary that skips the moment you re-prompted three times is the tell.
 
 ## Put the team's rules in one file
 
@@ -89,7 +89,7 @@ Read the open questions out loud. Agree on nothing yet. Each person's own file s
 
 ## Next
 
-Before Day 2, three agents read three memories against one bet, and write to you in your own company's look. Every line will sound sure. On Day 2 the three of you read them, and decide what is actually true.
+Before Day 2, three agents read three memories against one bet, and write to you in your own company's look. On Day 2 the three of you read them, and decide what is actually true.
 
 <!-- maintainer -->
 

@@ -91,7 +91,7 @@ Paths are in the student's training folder or the team folder, not this repo.
 | 2 | Map the story | A story map of the chosen bet; slices cut by what each one teaches; the first slice built | Creativity, together | 55 | *Slice by what you learn* before |
 | | Break | | | 15 | |
 | 3 | Write what good means | Your criteria as a fixed judge; the digest regenerated until it passes; what the criteria missed | Control | 45 | *What good means is yours to write* before |
-| 4 | Five users | A test script; five short sessions with people from other teams; what they did that the digest never said; persevere, pivot or stop | Together | 50 | *Your Day 1 bet meets five users* after |
+| 4 | Five users | A test script; five short sessions with people from other teams; what they did that the digest never said; persevere, pivot or stop | Together | 50 | *Your bet meets five users* after |
 | | Lunch | | | 75 | |
 | 5 | Three jobs | — | | 15 | *Three jobs, rewritten* |
 | 6 | Take it to the team | The job your wider team hires this way of working for; the bottleneck; technical and people plan; failure stories; `monday.md` | Together, transfer | 55 | *From the three of you to your team* after |

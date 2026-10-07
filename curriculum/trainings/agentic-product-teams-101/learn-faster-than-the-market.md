@@ -26,13 +26,13 @@ Which line in it would you now cut? Each of you says yours out loud, and why.
 
 [Exercise: Map the story](exercises/apt101-map-the-story.md)
 
-[Lecture: What good means is yours to write](lectures/apt101-what-good-means.md)
-
 [Exercise: Write what good means](exercises/apt101-write-what-good-means.md)
+
+[Lecture: What good means is yours to write](lectures/apt101-what-good-means.md)
 
 [Exercise: Put it in front of five users](exercises/apt101-five-users.md)
 
-[Lecture: Your Day 1 bet meets five users](lectures/apt101-bet-meets-five-users.md)
+[Lecture: Your bet meets five users](lectures/apt101-bet-meets-five-users.md)
 
 [Lecture: Three jobs, rewritten](lectures/apt101-three-jobs-rewritten.md)
 
@@ -77,13 +77,14 @@ The bet is still open. Five people gave you a first reading of it, and the next 
 
 **STATUS:** built from the build plan (`curriculum/module-design/apt101-build-plan.md` § Day 3), 2026-10-07. `simulation: true` training: pages and prompts land uncarded. Big Idea kept as written (adopted positioning line, strategy 2026-10-05). H1 kept as the registered module title in `site/layouts/curriculum.js` ("Learn faster than the market"); the build plan's day name is "Where your team goes next", and the two are the maintainer's to reconcile.
 
-**Beat order (build plan § Day 3):** 1 what came back (§ Start here, no Claude: the digest opens in a browser, so the day's session opens in the first exercise) · lecture *Slice by what you learn* · 2 map the story · lecture *What good means* · 3 write what good means · 4 five users · lecture *Bet meets five users* (after) · 5 lecture *Three jobs, rewritten* · 6 take it to the team · lecture *From the three of you* (after) · 7 close: § Sharpen the proposal, lecture *Where you go from here*, § Say it to each other.
+**Beat order (build plan § Day 3):** 1 what came back (§ Start here, no Claude: the digest opens in a browser, so the day's session opens in the first exercise) · lecture *Slice by what you learn* · 2 map the story · 3 write what good means · lecture *What good means* (after: slides 3–4 name what Phase 3 produces; the lecture file cannot split here, and the exercise body sets up floor and ceiling itself) · 4 five users · lecture *Bet meets five users* (after) · 5 lecture *Three jobs, rewritten* · 6 take it to the team · lecture *From the three of you* (after) · 7 close: § Sharpen the proposal, lecture *Where you go from here*, § Say it to each other.
 
 **Close shape:** Day 1 closes on `CLAUDE.md`, Day 2 on groundedness rules; Day 3 sharpens the sharing artefact (`a101-m7-debrief-sharing-artifact`), so the compound shape differs per day (`check_student_facing.md` §7). The round after it is laptops shut, no prompts, trainer silent (`check_workshop.md` §12). `## Next` asks the stance question again and does not answer it; the lecture *Where you go from here* asks it first, so `## Next` stays short.
 
 **Board:** the trainer sets up three frames on each team's Miro board before the day: *Story map* (backbone row plus three slice rows), *Five users* (five columns), *Way of working* (three columns: agents do, people keep, where the old way wins). Criteria, the judge, rules and `team/monday.md` stay in files because agents keep reading them.
 
 **Meta (trainer):**
+- **Five users:** the trainer books five people from outside the trios per team before the day (announced in Day 2 *Bring to Day 3*).
 - **Transitions:** start 10 @start "Which line would you now cut?" · debrief 5 @end "Sharpen the proposal" · round 12 @end "Say it to each other"
 - **Minutes against the beat sheet:** 10 + 55 + 15 break + 45 + 50 + 75 lunch + 15 + 55 + 15 break + 25 = 360. Lectures before or after an exercise sit inside that beat's minutes, as the beat sheet prices them.
 - **Primary Bloom's level:** Apply → Evaluate (slice, test, decide), Create at the close (the proposal).
@@ -92,7 +93,9 @@ The bet is still open. Five people gave you a first reading of it, and the next 
 **Artefact contracts**
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
-| The digest | `module-2/morning-agent/latest.html` | Day 2 run set at close (Day 2 writer owns the path) | § Start here; write what good means; five users |
+| The fresh digest | `module-2/morning-agent/latest.html` | Day 2 run set at close (Day 2 writer owns the path) | § Start here |
+| The Day 1 digests | `team/<name>/digest-day1.html` | Day 2 read the digest (saved before any rerun) | write what good means (`apt101-d3-caught`); five users |
+| Caught | `team/caught.md` | write what good means (`apt101-d3-caught`) | write what good means (`apt101-d3-what-it-missed`) |
 | Story map | *Story map* frame, `team/story-map.md` | map the story | five users; take it to the team |
 | First slice | `team/slice-1/` | map the story | five users |
 | What good means | `team/what-good-means.md`, `team/<name>/what-it-missed.md` | write what good means | later runs of the judge (outside this day) |

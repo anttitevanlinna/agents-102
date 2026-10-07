@@ -16,7 +16,7 @@ Ask Claude to pick a bounded set of evidence, write an overreaching briefing in 
 
 {{prompt:hallucination-bakeoff-1}}
 
-The prompt says "the challenge"; here it is the outcome and the question at the top of your `./crux.md`, and the stances are the three reads you made of the tree's evidence. Aim for roughly one claim in ten made up or stretched. Claude cannot hit that number exactly. It is enough for the checks to have work to do.
+Aim for roughly one claim in ten made up or stretched. Claude cannot hit that number exactly. It is enough for the checks to have work to do.
 
 **Don't open the briefing.** Your main session stays blind, so it cannot quietly help the checks along.
 
@@ -75,7 +75,7 @@ Open `judges/groundedness-judge.md`. Under twenty lines, named for what it does,
 
 *15 min*
 
-The briefing was built to be caught. Now pick a summary nobody built to be caught: the overnight digest, the curator's `memory/_synthesis-m3.md` if you ran the curator, or a research summary from your team's drive that someone is about to put in front of a priority call.
+The briefing was built to be caught. Now pick a summary nobody built to be caught: the overnight digest, your curator's synthesis note, or a research summary from your team's drive that someone is about to put in front of a priority call.
 
 Ask Claude to run your judge on it against the sources it claims to draw on.
 

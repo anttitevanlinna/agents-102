@@ -32,7 +32,7 @@ Each of you has a say on the proposal before it saves. Push back on a rule writt
 
 Each of you, on your own laptop. Tonight's digest should read the chosen bet and look as hard for what argues against it as for what supports it. Ask Claude to change your agent's brief for tonight.
 
-**Prompt** · `apt101-d2-tonights-question`, edits `module-2/morning-agent/morning.md` so tonight's run reads `team/chosen-bet.md` and `team/premortem.md`, reports evidence for and against the bet with how many customers said each, watches for the early warning signs from the pre-mortem, and runs `judges/groundedness-judge.md` on its own digest before writing it; shows me the diff before saving
+**Prompt** · `apt101-d2-tonights-question`, edits `module-2/morning-agent/morning.md` so tonight's run reads `chosen-bet.md` and `premortem.md` by the team folder's full path, the one the trainer posted (a scheduled run starts fresh and cannot resolve a bare `team/`), reports evidence for and against the bet with how many customers said each, watches for the early warning signs from the pre-mortem, and runs `judges/groundedness-judge.md` on its own digest before writing it; shows me the diff before saving
 
 Then ask Claude to run it once now, so you see it read the chosen bet before you leave.
 
@@ -54,7 +54,7 @@ Your own rules now say when a summary gets checked. The team's rules carry an ex
 
 **Artefacts:**
 - Consumes: `./CLAUDE.md` (Day 1 close, `a101-m2-debrief-claude-md`); `module-5/` and `judges/groundedness-judge.md` (catch it making things up); `team/team-rules.md` (Day 1 close); today's `team/` files; `team/chosen-bet.md`; `team/premortem.md`; `module-2/morning-agent/morning.md` (Day 1, send it off).
-- Produces: `./CLAUDE.md` Groundedness checks section (each person) and its copy in `team/<name>/rules.md`; `team/team-rules.md` sharpened (team lead drives); `module-2/morning-agent/morning.md` updated; a test `module-2/morning-agent/latest.html`. Tonight's run is what Day 3 beat 1 reads.
+- Produces: `./CLAUDE.md` Groundedness checks section (each person) and its copy in `team/<name>/rules.md`; `team/team-rules.md` sharpened (team lead drives); `module-2/morning-agent/morning.md` updated, naming team files by the team folder's full path; a test `module-2/morning-agent/latest.html`. Tonight's run is what Day 3 beat 1 reads.
 
 **Room:** phases 1 and 3 solo; phase 2 team lead drives, each person approves before save.
 

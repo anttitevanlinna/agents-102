@@ -6,7 +6,7 @@
 
 Today's opportunity tree hangs from one outcome. Your bet in `team/bet.md` already states one. The doubt you just chose may have shaken it. Before anyone draws a branch, agree which outcome the tree hangs from, and find what stands between your customers and it.
 
-The product owner drives at the shared screen. The designer and the team lead each keep `team/bet.md` and `team/doubts.md` open on their own laptops, and push back from there.
+The product owner drives at the shared screen. The designer checks the crux against what customers actually said. The team lead checks whether it names something the team can act on.
 
 ## Find what stands in the way
 
@@ -26,13 +26,13 @@ Push back if the question is a topic ("what about onboarding?"). It should be a 
 
 ## Agree the outcome
 
-Read the crux and the question beside the outcome in `team/bet.md` and the chosen doubt. Does the doubt change the outcome, or only how sure you are of it? Decide together. The product owner writes the outcome you agreed at the top of `./crux.md` under `## Outcome`, then copies the file to `team/crux.md`. The designer and the team lead copy `team/crux.md` into their own training folders as `./crux.md`, because the evidence run reads it from there.
+Read the crux and the question beside the outcome in `team/bet.md` and the chosen doubt. Does the doubt change the outcome, or only how sure you are of it? Decide together. The product owner asks Claude to put the outcome you agreed at the top of `./crux.md` under `## Outcome` and save the file to `team/crux.md`. The designer and the team lead each ask their own Claude to take `team/crux.md` as their `./crux.md`, where the evidence run reads it.
 
 <!-- maintainer -->
 
 **Role in Day 2:** beat 2. Fixes the root of today's tree (the agreed outcome) and the decision it informs, in one file every Day 2 prompt reads.
 
-**Reuse:** Agents 101 `name-your-crux`, keys `name-your-crux-1`, `name-your-crux-2`, unchanged. The crux prompt rejects goals by its own rule, so the outcome is not asked of it: the outcome comes from `team/bet.md`, agreed by the trio; the crux is the obstacle under it; the `## Question` is the decision. `## Outcome` is written by the product owner, by hand, above the prompt's sections.
+**Reuse:** Agents 101 `name-your-crux`, keys `name-your-crux-1`, `name-your-crux-2`, unchanged. The crux prompt rejects goals by its own rule, so the outcome is not asked of it: the outcome comes from `team/bet.md`, agreed by the trio; the crux is the obstacle under it; the `## Question` is the decision. `## Outcome` goes above the prompt's sections, at the product owner's ask.
 
 **Frameworks:** Rumelt's crux (*Good Strategy / Bad Strategy*); the outcome statement from Day 1.
 
@@ -40,6 +40,6 @@ Read the crux and the question beside the outcome in `team/bet.md` and the chose
 - Consumes: `memory/`, `./challenge.md` (Day 1, product memory); `team/bet.md`; `team/doubts.md` (read the digest).
 - Produces: `./crux.md` (product owner's folder, then copied), `team/crux.md`; each person's `./crux.md`, which the retrievers in `apt101-gather-the-evidence` read.
 
-**Room:** one driver (product owner) at the shared screen; the others read and push back from their own laptops. Outcome decision is the trio's (workshop §11).
+**Room:** one driver (product owner) at the shared screen; the designer checks the crux against customer evidence, the team lead checks it is actionable by the team. Outcome decision is the trio's (workshop §11).
 
 **View summary:** You agree the one outcome today's opportunity tree hangs from, and find with Claude the obstacle between your customers and it, plus the decision it blocks.

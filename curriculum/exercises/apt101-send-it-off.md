@@ -36,7 +36,7 @@ Give it a task from your next working day's to-do list. The citations tell you w
 
 *5 min*
 
-The digest shouldn't read like a terminal dump. Give it your company's look once, as a file every agent reuses.
+The digest shouldn't read like a wall of plain text. Give it your company's look once, as a file every agent reuses.
 
 Ask Claude to extract the visual pattern from your company website and write it as a plain-language style file.
 
@@ -52,7 +52,7 @@ Ask Claude to interview you on the job, the output shape and the hard boundary, 
 
 {{prompt:personal-agent-homework-2}}
 
-Claude offers three jobs. Pick the one closest to a digest and tell it what you want: what your material says about the bet, with the line it came from. For the boundary, the door: the digest reads only your memory, and only what the team let in. Read `module-2/morning-agent/morning.md` before Claude saves it. Leave the folder name as it is.
+Claude offers three jobs. Pick the one closest to a digest and tell it what you want: what your material says about the bet, with the line it came from. For the boundary, the door: the digest reads only your memory, and only what the team let in. Wherever `morning.md` names the door or the bet, have Claude write the team folder's full path, the one the trainer posted, not `team/`. The overnight run starts fresh and has nothing else to find the folder by. Read `module-2/morning-agent/morning.md` before Claude saves it. Leave the folder name as it is.
 
 ## Phase 5: Schedule it
 
@@ -82,7 +82,7 @@ Each of you reads the first run's top line to the other two. Don't judge it yet.
 
 **What happened:**
 
-Three agents, each with one job, each reading one person's memory through the team's door. Three overnight runs scheduled. Each will be waiting when Day 2 starts, written in your company's look, and every line in it will sound as sure as the next.
+Three agents, each with one job, each reading one person's memory through the team's door. Three overnight runs scheduled. Each will be waiting when Day 2 starts, written in your company's look.
 
 **What's next:**
 

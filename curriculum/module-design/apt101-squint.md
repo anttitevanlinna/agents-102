@@ -104,7 +104,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - A pass is a claim about a check nobody has tested ✱ (merge)
 - Your criteria become a target
 
-**Your Day 1 bet meets five users**
+**Your bet meets five users**
 - Test with five users, fix, then test five more
 - What your five users did that the digest never said ✱
 - A slice that comes back no has done its job ✱ (style)

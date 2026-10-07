@@ -32,7 +32,7 @@ Ask Claude to read the frame and check each step against the customers' own word
 
 While the designer drives:
 
-- **The product owner** opens `team/bet.md` and finds the assumption on the map that is still riskiest after Day 2. Write it on a post-it at the top of the frame. The slices hang from it.
+- **The product owner** opens `team/chosen-bet.md` and finds the assumption still riskiest after Day 2. Write it on a post-it at the top of the frame. The slices hang from it.
 - **The team lead** reads each step as Claude posts it and asks: did a customer do this, or did we imagine they would? A step the team invented gets a red dot, not the bin.
 
 One pattern to watch: the first backbone often reads like your product's menu, not like the customer's day. If the steps are screens, push back: *"Write the steps as what the customer is trying to get done, in their words."*
@@ -91,7 +91,7 @@ If the three sentences name three different things, the slice is testing too muc
 
 **Frameworks:**
 - User story map: backbone, walking skeleton, slices by learning goal (Jeff Patton). Named once in the body; the lecture *Slice by what you learn* names him before the exercise, which does different work (the law), so the pair is credit at point of use plus the law (`check_writing.md` §11 carve-out).
-- Hypothesis statement and signal, carried from Day 1's `team/bet.md`.
+- Hypothesis statement and signal, carried from Day 2's `team/chosen-bet.md`.
 - Assumption map (riskiest first), carried from Day 1.
 
 **Board:** *Story map* frame, set up by the trainer (empty backbone row, three empty slice rows). Rhythm: post-its (phase 1), Claude reads and posts back (phases 1–2), the board again (phase 2 regrouping, phase 4 stand-up). Fallback without the Miro connector: a frame screenshot into the chat, and the driver moves Claude's rows onto the board by hand.

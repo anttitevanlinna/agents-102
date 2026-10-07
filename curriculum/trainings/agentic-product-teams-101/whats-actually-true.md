@@ -21,9 +21,9 @@ After this day, you will be able to:
 
 When did your team last build something because the research agreed with what you already thought?
 
-[Lecture: The digest is back](lectures/apt101-the-digest-is-back.md)
-
 [Exercise: Read the digest](exercises/apt101-read-the-digest.md)
+
+[Lecture: The digest is back](lectures/apt101-the-digest-is-back.md)
 
 [Exercise: Pick the outcome](exercises/apt101-pick-the-outcome.md)
 
@@ -90,6 +90,8 @@ Laptops shut, one round, each of you in turn:
 
 **Leave the next digest unopened until the room.** You read it together against the chosen bet when Day 3 opens, and a digest read alone is a digest read where you know least.
 
+**Five people from outside your trio use your first slice on Day 3.** The trainer books them for the five-users beat; nobody from another trio stands in.
+
 ## Next
 
 Tonight the agent reads your chosen bet and looks for what argues against it. On Day 3 you slice the bet by what you need to learn, write what good means in your own words, and put the first slice in front of five people who never saw your tree.
@@ -106,7 +108,7 @@ Tonight the agent reads your chosen bet and looks for what argues against it. On
 
 | # | Beat | Min | Include(s) |
 |---|---|---|---|
-| 1 | See what came in overnight | 15 | lecture *The digest is back* · `apt101-read-the-digest` |
+| 1 | See what came in overnight | 15 | `apt101-read-the-digest` · lecture *The digest is back* (after the read, so it names what the trio just found) |
 | 2 | Pick one outcome | 10 | `apt101-pick-the-outcome` |
 | 3 | Gather your evidence | 35 | `apt101-gather-the-evidence`, then lecture *Why it agreed* (the turn; three guide slides) |
 | | Break | 15 | |
@@ -123,24 +125,25 @@ Tonight the agent reads your chosen bet and looks for what argues against it. On
 
 Beat 5 (legal and data review) is cut; governance is not taught.
 
-**Transitions:** the digest's agreement (1) → the outcome it should have served (2) → evidence that disagrees with itself (3) → the turn, *Why it agreed*, named after the trio has seen both. Tree alone → merged → questioned by role (4), then named (*Widen*). The benchmark (6) produces the judge that prunes the tree (7). Chosen bet → three pieces (8) → its failure imagined (9) → talked through (10) → kept as rules and tonight's brief (11). The digest opens and closes the day: read on its own terms in the morning, rewritten at the end to check the bet.
+**Transitions:** the digest read where each person knows most, then named (1) → the outcome it should have served (2) → evidence that disagrees with itself (3) → the turn, *Why it agreed*, named after the trio has seen both. Tree alone → merged → questioned by role (4), then named (*Widen*). The benchmark (6) produces the judge that prunes the tree (7). Chosen bet → three pieces (8) → its failure imagined (9) → talked through (10) → kept as rules and tonight's brief (11). The digest opens and closes the day: read on its own terms in the morning, rewritten at the end to check the bet.
 
 **Protected:** beats 8 and 10. **Overrun order** (beat sheet): the morning uses the float; beat 9 drops to one ranking round; beat 12 to five minutes.
 
 **Timing gap:** the lectures outside beats 3 and 6 (*The digest is back*, *Why it agreed*, *Go back to your customers*, *Widen before you choose*, *Each of you makes something*, *Write it down or lose it*) are not in the v10 minutes. They draw on the twenty spare minutes and the float, and run over them; the beat sheet owes a pass that prices them.
 
-**Delivery:** each person on their own laptop in `~/Documents/apt101/`, one session for the day (`apt101-day-2`); team files in the shared team folder, each person writing only to `team/<name>/`; room beats on the team's Miro board, one frame per beat set up by the trainer (tree, bet, pre-mortem). Drivers: product owner beats 1 (doubt), 2 and 7; team lead beat 3 (curator), 9 (Claude's additions) and 11; designer beat 4.
+**Delivery:** each person on their own laptop in `~/Documents/apt101/`, one session for the day (`apt101-day-2`); team files in the shared team folder, each person writing only to `team/<name>/`; room beats on the team's Miro board, one frame per beat set up by the trainer (tree, bet, pre-mortem). Drivers: product owner beats 1 (doubt), 2 and 7; team lead beats 9 (Claude's additions) and 11; designer beat 4.
 
-**Trainer-built:** a fallback digest per group; the Miro board with the tree, bet and pre-mortem frames. The beat sheet's "two hidden false claims per group" are not needed: `hallucination-bakeoff-1` plants its own.
+**Trainer-built:** a fallback digest per group; five users per trio from outside the trios, booked for Day 3's five-users beat; the Miro board with the tree, bet and pre-mortem frames. The beat sheet's "two hidden false claims per group" are not needed: `hallucination-bakeoff-1` plants its own.
 
 **Artefact contracts:**
 
 | Artefact | Produced by | Consumed by |
 |---|---|---|
 | `team/<name>/doubts.md`, `team/doubts.md` | read the digest | pick the outcome; keep and run tonight |
+| `team/<name>/digest-day1.html` (copy of the Day 1 digest, kept before tonight's run overwrites `latest.html`) | read the digest (each) | Day 3 what good means |
 | `./crux.md` (outcome, crux, question; `## Answer` later), `team/crux.md` | pick the outcome (product owner, copied to all) | gather the evidence; grow the tree; catch it making things up; choose the bet |
-| `sources/*-retrieval.md`, team lead's `memory/_synthesis-m3.md` | gather the evidence | grow the tree; catch it making things up |
-| `team/tree.md` + tree frame | grow the tree (designer) | choose the bet; keep and run tonight; Day 3 story map |
+| `sources/*-retrieval.md`, each person's curated `memory/` and the curator's synthesis note | gather the evidence | grow the tree; catch it making things up |
+| `team/tree.md` (each branch with its source sentence quoted, file and owner) + tree frame | grow the tree (designer) | choose the bet; keep and run tonight; Day 3 story map |
 | `module-3/stances/` | grow the tree (`three-minds-one-synthesis-1`) | catch it making things up (`hallucination-bakeoff-1`) |
 | `module-5/*`, `judges/groundedness-judge.md` | catch it making things up | choose the bet; keep and run tonight; Day 3 what good means |
 | `team/<name>/judge-run.md` | catch it making things up | keep and run tonight |

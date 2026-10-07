@@ -1,4 +1,4 @@
-# Your Day 1 bet meets five users
+# Your bet meets five users
 
 [Test with five users, fix, then test five more](slides/watch-them-use-it.md)
 

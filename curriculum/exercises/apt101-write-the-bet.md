@@ -6,7 +6,7 @@
 
 The box says what the product promises. The bet says what you'll try next, and how you'd know it failed. The three of you write one outcome, three hypotheses (one from each of you), and map the assumptions under them on your team's board. Then you mark the one that would sink the bet and has the least behind it.
 
-Keep the same <span class="rt-code">session</span><span class="rt-cowork">task</span> running. Claude has the box in scrollback, and `team/product-box.html` is on disk.
+Keep the same <span class="rt-code">session</span><span class="rt-cowork">task</span> running. Claude still has the box, and `team/product-box.html` is on disk.
 
 **Who drives.** The product owner drives Claude at the shared screen and writes `team/bet.md`, the file every agent reads from here on. The board's *Bet* frame holds the stickies and the assumption map. The designer and the team lead each write their own hypothesis on their own laptop, into their own folder in the team folder.
 
@@ -92,7 +92,7 @@ In a moment the bet becomes what each of your agents works on. Before Day 2, one
 
 **Board:** Miro frame *Bet*: outcome stickies, the three hypotheses with names, the assumption 2x2 and the dots. Rhythm: stickies → Claude reads / drafts → board → Claude records in `team/bet.md`. The board holds the conversation; `team/bet.md` is what the agents keep reading.
 
-**Frameworks:** outcome statement (Seiden, named in the morning lecture); hypothesis statement in the Gothelf and Seiden Lean UX form; assumption map, desirable / viable / feasible × importance / evidence (Bland and Osterwalder). The lecture after, *Your first bet*, names O'Reilly's three-line hypothesis form and Cagan's four risks; the body says "Lean UX" for the template so the two don't compete for one attribution. Flagged for the maintainer: lecture form (O'Reilly) and exercise form (Gothelf and Seiden) differ slightly.
+**Frameworks:** outcome statement (Seiden, named in the morning lecture); hypothesis statement in the Gothelf and Seiden Lean UX form; assumption map, desirable / viable / feasible × importance / evidence (Bland and Osterwalder). The lecture after, *Your first bet*, names O'Reilly's three-line hypothesis form and Bland's three questions (desirable, viable, feasible); the body says "Lean UX" for the template so the two don't compete for one attribution. Flagged for the maintainer: lecture form (O'Reilly) and exercise form (Gothelf and Seiden) differ slightly.
 
 **Artefacts:** produces `team/bet.md` (outcome, three attributed hypotheses, assumption map, riskiest marked; driver: product owner), `team/<name>/hypothesis.md` (each person) and the Bet frame. Consumes `team/product-box.html`. `team/bet.md` is read by `apt101-what-goes-in` (as the challenge), Day 2 *pick the outcome*, Day 3 *map the story*.
 

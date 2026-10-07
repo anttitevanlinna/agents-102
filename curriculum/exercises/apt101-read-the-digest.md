@@ -12,7 +12,7 @@
 
 **What you do:**
 
-Your agent ran overnight on the material your team agreed on Day 1. Before anyone reads the digest itself, find out what actually ran: which job, on which files, and what it wrote. Then each of you reads the lines that came from your own material, the part you know better than anyone in the room, and marks the one line you trust least.
+Each of your agents ran overnight on your own material, through the door your team agreed on Day 1. Before you read your digest, find out what actually ran: which job, on which files, and what it wrote. Then read it and mark the one line you trust least. Together you pick the doubt that matters most.
 
 If your agent did not run, the trainer has a fallback digest built from the same kind of material. Drop it into `module-2/morning-agent/latest.html` and carry on.
 
@@ -20,9 +20,9 @@ If your agent did not run, the trainer has a fallback digest built from the same
 
 *5 min*
 
-Ask Claude to report what ran overnight, on which material, and what it wrote, as a ranked list with the source of each line.
+Each of you, on your own laptop. Ask Claude to keep a copy of the digest first, because tonight's run overwrites it, then report what ran overnight, on which material, and what it wrote, as a ranked list with the source of each line.
 
-**Prompt** · `apt101-d2-what-ran-overnight`, reads `module-2/morning-agent/morning.md`, the run's `module-2/morning-agent/latest.html` and `team/what-goes-in.md`; reports which job ran, which files it read (and any it read that sit outside what your team agreed), and lists every claim in the digest ranked by how much a decision would rest on it, each with the source file it came from or "no source"
+**Prompt** · `apt101-d2-what-ran-overnight`, first copies `module-2/morning-agent/latest.html` to `team/<your-name>/digest-day1.html` unchanged; then reads `module-2/morning-agent/morning.md`, the run's `module-2/morning-agent/latest.html` and `team/what-goes-in.md`; reports which job ran, which files it read (and any it read that sit outside what your team agreed), and lists every claim in the digest ranked by how much a decision would rest on it, each with the source file it came from or "no source"
 
 Push back if the list comes back as a summary of the digest. You want lines and sources, not a second essay about the first one.
 
@@ -30,13 +30,13 @@ Push back if the list comes back as a summary of the digest. You want lines and 
 
 *5 min*
 
-Each of you, on your own laptop. Read only the lines whose source is your own material: the product owner's tickets and numbers, the designer's interviews, the team lead's retro notes. You know these sources. The agent read them once.
+Read your own digest. Every line in it came from your material. You know these sources. The agent read them once.
 
 Pick the one line you trust least. Not the one that is plainly wrong; the one you would least want a priority call to rest on. Ask Claude to write it down with your reason.
 
 **Prompt** · `apt101-d2-mark-the-doubt`, appends the line I quote, its source, and my reason in my words to `team/<your-name>/doubts.md`, then checks the source and tells me what it actually says next to the digest's line
 
-One pattern to watch: the line you trust least is often the one that agrees most with what your team already believed. If your doubt lands on a typo, look again at the headline.
+If your doubt lands on a typo, look again.
 
 ## Phase 3: Pick the doubt that matters most
 
@@ -56,13 +56,13 @@ You have three doubts, one chosen, each tied to a line and a source. The digest 
 
 **Reuse:** new. Return leg of Agents 101 `personal-agent-homework` (same `module-2/morning-agent/` paths; no keys reused, since homework-1–3 set the agent up rather than read it back).
 
-**Frameworks:** none named in body. Read-where-you-know-most and the agreeable-summary point are taught in `apt101-the-digest-is-back`, placed before this exercise.
+**Frameworks:** none named in body. Read-where-you-know-most and the agreeable-summary point are named in `apt101-the-digest-is-back`, placed after this exercise so it names what the trio just found.
 
 **Artefacts:**
 - Consumes: `module-2/morning-agent/morning.md`, `module-2/morning-agent/latest.html` (Day 1, send it off); `team/what-goes-in.md` (Day 1, the door); `team/bet.md` (Day 1, write the bet).
-- Produces: `team/<name>/doubts.md` (each person); `team/doubts.md` (product owner drives, the chosen doubt with its owner).
+- Produces: `team/<name>/digest-day1.html` (each person; the Day 1 digest kept before tonight's run overwrites `latest.html`; read by Day 3 what good means); `team/<name>/doubts.md` (each person); `team/doubts.md` (product owner drives, the chosen doubt with its owner).
 - Trainer-built: a fallback digest per group, for an agent that did not run.
 
 **Room:** each person solo for phases 1–2; phase 3 is a trio decision, product owner writes the file. The decision is human (workshop §11).
 
-**View summary:** You find out what your overnight agent actually ran on, read only the lines that came from your own material, and mark the one you trust least. The team picks the doubt that matters most for the bet.
+**View summary:** You find out what your overnight agent actually ran on, keep a copy of its digest, read it where you know the material best, and mark the line you trust least. The team picks the doubt that matters most for the bet.

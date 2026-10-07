@@ -20,7 +20,7 @@ Pick the one question your prototype should answer before you ask for a single s
 
 Ask Claude to build a clickable rough prototype from the quotes behind the bet.
 
-**Prompt** · `apt101-d2-designer-prototype`, reads `team/chosen-bet.md` and the interview sources it cites; asks me which one question the prototype should answer and the job the customer hires it for; builds a clickable rough prototype as one HTML file at `team/<your-name>/prototype.html`, every screen carrying the customer quote it was built from and its source; lists at the end what the prototype does not answer
+**Prompt** · `apt101-d2-designer-prototype`, reads `team/chosen-bet.md` and the interview quotes it carries; asks me which one question the prototype should answer and the job the customer hires it for; builds a clickable rough prototype as one HTML file at `team/<your-name>/prototype.html`, every screen carrying the customer quote it was built from and its source; lists at the end what the prototype does not answer
 
 Push back when it comes back polished. A finished look makes people believe the design is further along than it is. Rough is the point: the customer reacts to the idea, not the colours. And push back on any quote you don't recognise from the interviews. Ask for the source; if there isn't one, it goes.
 
@@ -63,7 +63,7 @@ Each of you looks at the other two pieces from your own craft. Do they test the 
 **Frameworks:** Jobs to be Done (the designer's brief, unnamed beyond "the job the customer hires this for"); prototype questions (Houde and Hill, 1997, in the lecture); test card (Osterwalder, named once in body); *Testing Business Ideas* experiment types (Bland and Osterwalder, in the lecture); working agreement and Marquet's push-authority-to-information (in the lecture).
 
 **Artefacts:**
-- Consumes: `team/chosen-bet.md` (choose the bet); interview sources in `sources/`; `team/what-goes-in.md` (Day 1).
+- Consumes: `team/chosen-bet.md` (choose the bet); the interview quotes carried in `team/chosen-bet.md`; `team/what-goes-in.md` (Day 1).
 - Produces: `team/<designer>/prototype.html`; `team/<product-owner>/kill-test.md` plus `fake-door.html` or `survey.md`; `team/<team-lead>/way-of-working.md`. Read by imagine it failed, the Monday list, Day 3 slice, five users (the prototype and fake door) and take it to the team (the working agreement).
 
 **Room:** three solo tracks in parallel, then the trio on the board. Phase 2's contradictions are a human call. Overrun: phase 2 is not cut; trim the rehearsal to three questions instead.

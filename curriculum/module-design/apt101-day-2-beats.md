@@ -1,6 +1,6 @@
 # Agentic Product Teams 101 — Day 2 beat sheet
 
-**Status:** design draft v9, not student-facing, nothing here is taught yet. Strategy: `bosser-strategy:content-strategy-agentic-product-management.md`. Sketch it refines: `group-work-plan.md` § *Three-day sketch*. Records: core `evals/persona-panel/2026-10-05-day2-beats/`, `2026-10-05-day2-score/`.
+**Status:** design draft v10 (2026-10-07: beat 5, the legal and data review, cut — governance is not taught, and data is one plain door on Day 1; its time went to beat 6, the Agents 101 benchmark), not student-facing, nothing here is taught yet. Strategy: `bosser-strategy:content-strategy-agentic-product-management.md`. Sketch it refines: `group-work-plan.md` § *Three-day sketch*. Records: core `evals/persona-panel/2026-10-05-day2-beats/`, `2026-10-05-day2-score/`.
 
 ## Day 2: What's actually true?
 
@@ -25,8 +25,7 @@
 | 3 | Gather your evidence | Each of you sends Claude through your own material, in your own words. Together you look at where the sources disagree | Control, together | 35 | Short demo, then exercise |
 | | Break | | | 15 | |
 | 4 | Grow the opportunity tree | Each of you sketches a tree alone first. Then you build one together, every branch showing who found it, and each of you questions it from your own role | Creativity, together | 45 | Exercise |
-| 5 | Check what the agents kept | Together you check what the agents now hold against what you agreed on Day 1, and write a proposal for your team: what stays, what goes, who decides the unclear cases | Control, together | 30 | The questions your legal team and employee representative will ask first, GDPR and the EU AI Act included, and your team's answers. Bring your data protection contact if you can |
-| 6 | Catch the agent making things up | Two false claims are hidden in your tree. You go through its claims with Claude, find them, and keep the check that found them, with a note of what it can't see. Then you run it on a real research summary of your own | Control | 45 | Short talk, then exercise |
+| 6 | Catch the agent making things up | Claude writes a briefing from your evidence with made-up claims planted in it. Four ways of checking compete to find them; the winner becomes the check you keep, with a note of what it can't see. Then you run it on a real research summary of your own | Control | 75 | Short talk, then exercise |
 | | Float | | | 10 | |
 | | Lunch | | | 75 | |
 | 7 | Choose the bet | Together you prune what has nothing behind it and choose the branch Day 3 builds | Together | 20 | |
@@ -39,7 +38,7 @@
 
 ## Monday
 
-- Team lead: takes the data proposal and the way-of-working draft to the team, for them to decide with you.
+- Team lead: takes the way-of-working draft to the team, for them to decide with you.
 - Product owner: runs the experiment that could kill the bet, and checks a research summary for invented claims before it reaches a priority call.
 - Designer: makes a clickable rough prototype with Claude for an opportunity before the team commits to it.
 - All three: read the overnight digest from your own backlog and mark the line you trust least.

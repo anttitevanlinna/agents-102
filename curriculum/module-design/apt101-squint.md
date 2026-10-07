@@ -125,9 +125,9 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 **Where you go from here**
 - Cheap building helps your rivals too
 - The six parts hold; the model keeps changing
+- Will your organisation learn faster than the model changes underneath it?
 - I still make mistakes. I make them faster now. ✱ (narrator)
 - The models will analyse wider, deeper and faster. What will your insight be? ✱ (stance, echo)
-- Will your organisation learn faster than the model changes underneath it?
 
 ## Map (not part of the squint)
 

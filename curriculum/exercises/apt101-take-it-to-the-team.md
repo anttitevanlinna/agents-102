@@ -28,7 +28,7 @@ Before running it, each designer reads the file they received and writes one sen
 
 Then run the file as written, in your own folder.
 
-**Prompt** · `apt101-d3-run-their-file`, run the agent file I was sent, exactly as written, in this folder; change nothing in it; show me what it returns
+{{prompt:apt101-d3-run-their-file}}
 
 The three of you read what came back beside the post-it. The designer points at the line in the output that went generic and says what their own memory would have said there. Then name one thing the file needed that stayed on its sender's laptop, and tell its sender.
 
@@ -47,7 +47,7 @@ Claude reads the call and the sentence at the head of the frame, the bet and the
 
 When Claude asks you to pick, pick the shapes that carry the way of working on the board.
 
-**Prompt** · `apt101-d3-the-job-your-team-hires`, read `team/five-users.md` (our call and the one sentence we now believe, held or changed), `team/chosen-bet.md`, the team lead's `team/<name>/way-of-working.md` and the *Way of working* frame on our Miro board; draft the job our wider team is trying to get done, in their words, with what they use for it today and one outcome we could observe; ask us one question at a time to correct it; write `module-7/jtbd.md`; then show us which of the four shapes would carry our way of working to them and how each would move that outcome, let us pick one to three, and write `module-7/branch.md`; show us each file before saving
+{{prompt:apt101-d3-the-job-your-team-hires}}
 
 Read `module-7/jtbd.md`. Does it name your team, how they do the job today, and an outcome you could observe? If it could describe any team in the company, point at the generic line and ask Claude to try that part again.
 
@@ -57,7 +57,7 @@ Read `module-7/jtbd.md`. Does it name your team, how they do the job today, and 
 
 Ask Claude to find the one obstacle between your wider team and the way of working, then draft the technical plan and the people plan together.
 
-**Prompt** · `apt101-d3-bottleneck-and-plans`, read `module-7/jtbd.md` and `module-7/branch.md`; list what stands between our wider team and the way of working, technical, social, habitual or trust, and name the one that, removed, makes several others easier, in `module-7/absorption-bottleneck.md`; then draft `module-7/technical-plan.md` (what we ship, how the team receives it, the first real test against their job) and `module-7/people-plan.md` (who owns it, who reads what the agents write, who notices when it slips, who decides it no longer does the job, who teaches the next person); invent no names, write `UNASSIGNED — Monday's question` where we have none; show us both before saving
+{{prompt:apt101-d3-bottleneck-and-plans}}
 
 While Claude drafts, split the reading:
 
@@ -72,7 +72,7 @@ A polished technical plan beside a people plan full of `UNASSIGNED` is a finding
 
 Ask Claude what would have to be true for your wider team to switch, and how the switch would fail.
 
-**Prompt** · `apt101-d3-test-the-switch`, read everything in `module-7/` so far; list the five things that would have to be true for our wider team to leave how they do the job today for our way of working, each with how sure we are and one test we could run this week, most load-bearing first, in `module-7/assumptions.md`; ask us which two or three we will test and mark them; then write one story of the team going back to the old way six months from now, saying what the old way did that ours did not, with the warning sign we would see in week two, in `module-7/failure-stories.md`; show us both before saving
+{{prompt:apt101-d3-test-the-switch}}
 
 When Claude asks which assumptions you will test, the three of you choose. The product owner says which one would sink the proposal if it is false.
 
@@ -86,7 +86,7 @@ The plans sit on the team lead's laptop in `module-7/`. The other two need them 
 
 The team lead opens `team/what-goes-in.md` first. On Day 1 it was the three of you deciding what your agents could read. On Monday it is the first thing your wider team decides for itself.
 
-**Prompt** · `apt101-d3-team-monday`, read `team/what-goes-in.md`, `module-7/people-plan.md`, `module-7/assumptions.md`, the *Way of working* frame on our Miro board, `team/five-users.md` and `team/chosen-bet.md`; ask each of us in turn for our first Monday move (product owner: the next slice and its signal; designer: the next five users; team lead: the conversation with the team); write `team/monday.md` opening with what goes in, from `team/what-goes-in.md`, as the first thing the wider team decides: which sources its agents may read, what stays out, and that anyone may say no; then the proposal in five lines, the three moves verbatim with names, and the question the team decides; then post the proposal back to the frame beside our post-its, with a name on every part
+{{prompt:apt101-d3-team-monday}}
 
 Then the board again. Stand at the frame and read it as your wider team will see it on Monday. A part with no name gets one now, or stays visibly empty. It is a proposal. The team that lives with it decides.
 

@@ -18,7 +18,7 @@ What the users did goes on the *Five users* frame of your team's Miro board, one
 
 Ask Claude to write a test script for the first slice.
 
-**Prompt** · `apt101-d3-test-script`, read `team/story-map.md` (the first slice and its signal), `team/chosen-bet.md`, `team/slice-1/` and `team/product-box.html`; open the script with the box front shown on its own for thirty seconds and one question: who is this for, and what does it promise them?; then three tasks a customer would bring to this slice, phrased as goals, never naming a button or a screen; one opening line, no leading questions; a short list of moments worth noting; write `team/five-users.md`
+{{prompt:apt101-d3-test-script}}
 
 While the designer drives:
 
@@ -49,7 +49,7 @@ When the fifth user leaves, the three of you stand at the wall for two minutes. 
 
 Ask Claude to read the wall and lay the bet, the digest and the five users side by side.
 
-**Prompt** · `apt101-d3-read-the-sessions`, read the *Five users* frame on our Miro board, `team/chosen-bet.md` (the hypothesis and its signal), each of our Day 1 hypotheses in `team/bet.md`, our Day 1 digests in `team/<name>/digest-day1.html`, this morning's digest in `module-2/morning-agent/latest.html` and `team/five-users.md`; copy every moment from the wall into `team/five-users.md` under its user; for each moment, say whether the digest said it, could have said it, or could not have; then read the moments against the agreed signal and lay out what persevere, pivot and stop would each mean for the next slice; quote each of our Day 1 hypotheses word for word under its author's name, without marking which lines the moments touch; do not choose; when we come back with our call, record it in `team/five-users.md` exactly as we say it, with who said what, the line of each Day 1 hypothesis its author names as touched, held or broken (or, where none broke, the result that would have broken it), and the one sentence we now believe instead
+{{prompt:apt101-d3-read-the-sessions}}
 
 While the product owner drives, the designer and the team lead each pick the one moment they would not have predicted from the digest. Say it when Claude finishes.
 

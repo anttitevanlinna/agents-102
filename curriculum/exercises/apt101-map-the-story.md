@@ -28,7 +28,7 @@ The map lives on your team's Miro board, in the *Story map* frame. Post-its go u
 
 Ask Claude to read the frame and check each step against the customers' own words.
 
-**Prompt** · `apt101-d3-backbone`, read the *Story map* frame on our Miro board, `team/chosen-bet.md`, `team/tree.md` and `memory/`; turn the post-its into a backbone of five to eight steps left to right, each in the customer's words with the interview or ticket it comes from; mark any step no customer source supports; post the backbone back to the frame as a row above our post-its and write it to `team/story-map.md`
+{{prompt:apt101-d3-backbone}}
 
 While the designer drives:
 
@@ -45,7 +45,7 @@ One pattern to watch: the first backbone often reads like your product's menu, n
 
 Ask Claude to cut the map into slices, the riskiest assumption first.
 
-**Prompt** · `apt101-d3-slice-by-learning`, read the *Story map* frame, `team/story-map.md`, the assumption map in `team/bet.md` and `team/chosen-bet.md`; propose the walking skeleton and two or three slices, each cut across the whole backbone, each named for the assumption it tests, with its hypothesis statement and the signal that would say no; draw each slice as a labelled row under the backbone on the frame; do not choose the first slice; wait while we move post-its and choose, then read the frame again and write the slices and our choice to `team/story-map.md`
+{{prompt:apt101-d3-slice-by-learning}}
 
 **Then the board again.** The three of you move post-its between the rows until each slice still runs from the first step to the last. Then choose the first slice and tell Claude.
 
@@ -64,14 +64,14 @@ Push back on a first slice chosen because it is easy to build. The question is w
 
 Ask Claude to build the first slice as a clickable page set.
 
-**Prompt** · `apt101-d3-build-the-slice`, read `team/story-map.md` (the chosen first slice), the designer's Day 2 prototype in `team/<designer's name>/` and `team/product-box.html`; build the first slice as clickable HTML in `team/slice-1/`, every backbone step present and working, thin where the slice says thin; show the start page when done
+{{prompt:apt101-d3-build-the-slice}}
 
 While the build runs:
 
 - **The product owner** writes the one thing you will watch for when someone uses the slice: the signal from the story map, said as a moment you could see. Put it in `team/<your-name>/watch-for.md`.
 - **The team lead**, once the first version lands, asks Claude on their own laptop to walk the slice as someone who has never seen it.
 
-**Prompt** · `apt101-d3-walk-the-slice`, open `team/slice-1/` as a first-time customer with the job named in `team/story-map.md`; walk every step from first to last; list each place the walk stops, a step is missing or the page assumes knowledge the customer does not have; do not fix anything, report to me in chat
+{{prompt:apt101-d3-walk-the-slice}}
 
 The team lead reads the list to the designer. The designer decides which breaks get fixed now. Fix only what stops the walk. A slice that works end to end and looks rough is ready. A polished slice that stops halfway is not.
 

@@ -22,11 +22,11 @@ Each of you runs the loop on your own laptop. The lines you agree on go in the t
 
 Ask Claude to record the lines as you say them.
 
-**Prompt** · `apt101-d3-what-good-means`, record each person's line verbatim with their name in `team/what-good-means.md`, split into floor (already in `judges/groundedness-judge.md`) and ceiling (not in it); do not touch the judge
+{{prompt:apt101-d3-what-good-means}}
 
 Then hold your Day 1 digests against those lines.
 
-**Prompt** · `apt101-d3-caught`, read each of our Day 1 digests in `team/<name>/digest-day1.html` against the ceiling lines in `team/what-good-means.md`; under each ceiling line in `team/caught.md`, quote the digest lines that fall short of it, with whose digest each came from; show me the file before saving
+{{prompt:apt101-d3-caught}}
 
 Push back if Claude rewrites your line into something smoother. The line is yours as you said it.
 
@@ -58,7 +58,7 @@ Push back where the answer is too neat. If the score dropped and the digest stil
 
 Then put your own calls next to the judge's.
 
-**Prompt** · `apt101-d3-what-it-missed`, read the last round's briefing and judgment in `module-6/runs/`, the ceiling lines in `team/what-good-means.md`, what they caught in `team/caught.md`, and the line I marked as trusting least in `team/<my-name>/doubts.md` with my reason; put that line and my reason first; then show me five claims the judge passed, one at a time, beside it, and ask whether I would send each back; then list where my call and the judge's verdict differ, append them to `module-6/eval-notes.md`, and add the one ceiling line the team lacked to `team/<my-name>/what-it-missed.md`
+{{prompt:apt101-d3-what-it-missed}}
 
 Hold your post-it against what you found. Each of you says your missing line out loud. If two of you found the same one, it goes into `team/what-good-means.md`. The judge stays as it is. A yardstick you rewrite mid-run is not a yardstick.
 

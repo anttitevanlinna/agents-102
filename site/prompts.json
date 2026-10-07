@@ -1817,6 +1817,349 @@
       }
     ]
   },
+  "apt101-d3-backbone": {
+    "key": "apt101-d3-backbone",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-map-the-story",
+    "text": "Read the Story map frame on our team's Miro board: every post-it on it, including any on its edge. If you can't reach the board, say so, and I'll paste a screenshot. Read team/chosen-bet.md, team/tree.md and my memory in memory/ too.\n\nTurn our post-its into a backbone of five to eight steps, left to right: the steps a customer goes through for this bet. Each step in the customer's words, with the interview or ticket it comes from. Mark any step no customer source supports. Don't drop it.\n\nPost the backbone back to the frame, inside it, as a row above our post-its. Then write it to team/story-map.md.",
+    "requires": [
+      {
+        "id": "chosen-bet",
+        "source": "prompt:apt101-d2-write-the-chosen-bet"
+      },
+      {
+        "id": "tree-md",
+        "source": "prompt:apt101-d2-add-the-challenges"
+      }
+    ],
+    "produces": [
+      {
+        "id": "story-map",
+        "location": "team/story-map.md (backbone)",
+        "note": "read by apt101-d3-slice-by-learning"
+      }
+    ]
+  },
+  "apt101-d3-bottleneck-and-plans": {
+    "key": "apt101-d3-bottleneck-and-plans",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-take-it-to-the-team",
+    "text": "Read module-7/jtbd.md and module-7/branch.md.\n\nList what stands between our wider team and the way of working: technical, social, political, habit or trust. Cluster them. Name the one that, removed, makes several others easier, in one sentence. Write it to module-7/absorption-bottleneck.md.\n\nThen draft two plans together:\n- module-7/technical-plan.md: what we ship, how the team receives it, and the first real test against their job.\n- module-7/people-plan.md: who owns it, who reads what the agents write, who notices when it slips, who decides it no longer does the job, and who teaches the next person.\n\nInvent no names. Where we have none, write \"UNASSIGNED: Monday's question\".\n\nShow us both plans before saving.",
+    "requires": [
+      {
+        "id": "m7-jtbd",
+        "source": "prompt:apt101-d3-the-job-your-team-hires"
+      },
+      {
+        "id": "m7-branch",
+        "source": "prompt:apt101-d3-the-job-your-team-hires"
+      }
+    ],
+    "produces": [
+      {
+        "id": "m7-plans",
+        "location": "module-7/absorption-bottleneck.md, technical-plan.md, people-plan.md",
+        "note": "read by apt101-d3-test-the-switch, apt101-d3-team-monday"
+      }
+    ]
+  },
+  "apt101-d3-build-the-slice": {
+    "key": "apt101-d3-build-the-slice",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-map-the-story",
+    "text": "Read the chosen first slice in team/story-map.md, the designer's Day 2 prototype in team/<designer's name>/, and team/product-box.html.\n\nBuild the first slice as clickable HTML in team/slice-1/. Every backbone step is present and works, end to end. Where the slice says thin, keep it thin; where it says skip, put a plain placeholder page. Use the box's look and words.\n\nWhen it's done, open the start page and tell me which steps are thin.",
+    "requires": [
+      {
+        "id": "story-map",
+        "source": "prompt:apt101-d3-slice-by-learning"
+      },
+      {
+        "id": "prototype",
+        "source": "prompt:apt101-d2-designer-prototype"
+      },
+      {
+        "id": "product-box",
+        "source": "prompt:apt101-d1-box-never-say"
+      }
+    ],
+    "produces": [
+      {
+        "id": "slice-1",
+        "location": "team/slice-1/",
+        "note": "read by apt101-d3-walk-the-slice, apt101-d3-test-script, the five users"
+      }
+    ]
+  },
+  "apt101-d3-caught": {
+    "key": "apt101-d3-caught",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-write-what-good-means",
+    "text": "Read each of our Day 1 digests in team/<name>/digest-day1.html against the ceiling lines in team/what-good-means.md.\n\nIn team/caught.md, under each ceiling line, quote the digest lines that fall short of it, each with whose digest it came from. A ceiling line no digest falls short of gets \"none found\".\n\nShow me the file before saving.",
+    "requires": [
+      {
+        "id": "what-good-means",
+        "source": "prompt:apt101-d3-what-good-means"
+      },
+      {
+        "id": "digest-day1",
+        "source": "prompt:apt101-d2-what-ran-overnight"
+      }
+    ],
+    "produces": [
+      {
+        "id": "caught",
+        "location": "team/caught.md",
+        "note": "read at the close; apt101-d3-what-it-missed"
+      }
+    ]
+  },
+  "apt101-d3-read-the-sessions": {
+    "key": "apt101-d3-read-the-sessions",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-five-users",
+    "text": "Read the Five users frame on our team's Miro board: every post-it, including any on its edge, one column per user. If you can't reach the board, say so, and I'll paste a screenshot. Read team/chosen-bet.md (the hypothesis and its signal), each of our Day 1 hypotheses in team/bet.md, our Day 1 digests in team/<name>/digest-day1.html, this morning's digest in module-2/morning-agent/latest.html, and team/five-users.md.\n\nFirst, copy every moment from the wall into team/five-users.md, under its user, word for word.\n\nFor each moment, say whether a digest said it, could have said it, or could not have.\n\nThen read the moments against the signal we agreed. Lay out what persevere, pivot and stop would each mean for the next slice. Don't choose.\n\nQuote each of our Day 1 hypotheses word for word, under its author's name. Don't mark which lines the moments touch. That's ours to say.\n\nWhen we come back with our call, record it in team/five-users.md exactly as we say it, with who said what:\n- the call: persevere, pivot or stop\n- for each of us, the line of our Day 1 hypothesis we name as touched, and whether it held or broke; where none broke, the result that would have broken it\n- the one sentence we now believe, held or changed",
+    "requires": [
+      {
+        "id": "five-users",
+        "source": "prompt:apt101-d3-test-script"
+      },
+      {
+        "id": "digest-day1",
+        "source": "prompt:apt101-d2-what-ran-overnight"
+      }
+    ],
+    "produces": [
+      {
+        "id": "five-users",
+        "location": "team/five-users.md (moments, call, held/broken lines)",
+        "note": "read by apt101-d3-the-job-your-team-hires, apt101-d3-team-monday"
+      }
+    ]
+  },
+  "apt101-d3-run-their-file": {
+    "key": "apt101-d3-run-their-file",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-take-it-to-the-team",
+    "text": "Run the agent file I was sent, exactly as written, here in my folder. Change nothing in it, and add nothing to it from my own files beyond what it asks for.\n\nShow me what it returns.",
+    "produces": [
+      {
+        "id": "their-run",
+        "location": "scrollback",
+        "note": "read beside the receiver’s expect post-it"
+      }
+    ]
+  },
+  "apt101-d3-slice-by-learning": {
+    "key": "apt101-d3-slice-by-learning",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-map-the-story",
+    "text": "Read the Story map frame, team/story-map.md, the assumption map in team/bet.md and team/chosen-bet.md.\n\nPropose a walking skeleton and two or three slices. Each slice cuts across the whole backbone, from the first step to the last. Name each slice for the assumption it tests, riskiest first, and give it a hypothesis statement and the signal that would say no.\n\nDraw each slice as a labelled row under the backbone, inside the frame.\n\nDon't choose the first slice. That's ours. Wait while we move post-its and choose. When we tell you we're done, read the frame again and write the slices and our choice to team/story-map.md, in the words now on the board.",
+    "requires": [
+      {
+        "id": "story-map",
+        "source": "prompt:apt101-d3-backbone"
+      },
+      {
+        "id": "team-bet",
+        "source": "prompt:apt101-d1-bet-record-map"
+      }
+    ],
+    "produces": [
+      {
+        "id": "story-map",
+        "location": "team/story-map.md (slices + chosen first slice)",
+        "note": "read by apt101-d3-build-the-slice, apt101-d3-test-script"
+      }
+    ]
+  },
+  "apt101-d3-team-monday": {
+    "key": "apt101-d3-team-monday",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-take-it-to-the-team",
+    "text": "Read team/what-goes-in.md, module-7/people-plan.md, module-7/assumptions.md, the Way of working frame on our Miro board (every post-it, including any on its edge), team/five-users.md and team/chosen-bet.md.\n\nAsk each of us in turn for our first Monday move, and wait for each answer:\n- the product owner: the next slice and its signal\n- the designer: the next five users\n- the team lead: the conversation with the team\n\nWrite team/monday.md:\n1. Open with what goes in, from team/what-goes-in.md, as the first thing our wider team decides for itself: which sources its agents may read, what stays out, and that anyone may say no.\n2. Then the proposal, in five lines.\n3. The three moves, word for word, with our names.\n4. The question the team decides.\n\nThen post the proposal back to the Way of working frame, inside it, beside our post-its, with a name on every part. A part nobody owns says so.",
+    "requires": [
+      {
+        "id": "door",
+        "source": "prompt:apt101-d1-the-door"
+      },
+      {
+        "id": "m7-artifacts",
+        "source": "prompt:apt101-d3-test-the-switch"
+      },
+      {
+        "id": "five-users",
+        "source": "prompt:apt101-d3-read-the-sessions"
+      }
+    ],
+    "produces": [
+      {
+        "id": "monday",
+        "location": "team/monday.md",
+        "note": "read at the Day 3 close"
+      }
+    ]
+  },
+  "apt101-d3-test-script": {
+    "key": "apt101-d3-test-script",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-five-users",
+    "text": "Read the first slice and its signal in team/story-map.md, team/chosen-bet.md, team/slice-1/ and team/product-box.html.\n\nWrite a test script for five sessions with people who do the job our product serves:\n- Open with the box front, shown on its own for thirty seconds, and one question: who is this for, and what does it promise them?\n- Then three tasks a customer would bring to this slice, phrased as goals. Never name a button or a screen.\n- One opening line for the facilitator. No leading questions.\n- A short list of moments worth noting: where they hesitate, what they try instead, what they say they'd use it for.\n\nWrite it to team/five-users.md.",
+    "requires": [
+      {
+        "id": "slice-1",
+        "source": "prompt:apt101-d3-build-the-slice"
+      },
+      {
+        "id": "chosen-bet",
+        "source": "prompt:apt101-d2-write-the-chosen-bet"
+      }
+    ],
+    "produces": [
+      {
+        "id": "five-users",
+        "location": "team/five-users.md (script)",
+        "note": "read by the trio in sessions; apt101-d3-read-the-sessions"
+      }
+    ]
+  },
+  "apt101-d3-test-the-switch": {
+    "key": "apt101-d3-test-the-switch",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-take-it-to-the-team",
+    "text": "Read everything in module-7/ so far.\n\nList the five things that would have to be true for our wider team to leave how they do the job today for our way of working. For each: how sure we are, and one test we could run this week. Most load-bearing first. Write them to module-7/assumptions.md.\n\nAsk us which two or three we will test, and mark them.\n\nThen write one story of the team going back to the old way, six months from now. Say what the old way did that ours didn't, and the warning sign we would have seen in week two. Write it to module-7/failure-stories.md.\n\nShow us both files before saving.",
+    "requires": [
+      {
+        "id": "m7-plans",
+        "source": "prompt:apt101-d3-bottleneck-and-plans"
+      }
+    ],
+    "produces": [
+      {
+        "id": "m7-artifacts",
+        "location": "module-7/jtbd.md, branch.md, absorption-bottleneck.md, technical-plan.md, people-plan.md, assumptions.md, failure-stories.md",
+        "note": "read by a101-m7-debrief-sharing-artifact, apt101-d3-team-monday"
+      }
+    ]
+  },
+  "apt101-d3-the-job-your-team-hires": {
+    "key": "apt101-d3-the-job-your-team-hires",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-take-it-to-the-team",
+    "text": "Read team/five-users.md (our call, and the one sentence we now believe, held or changed), team/chosen-bet.md, the team lead's team/<name>/way-of-working.md, and the Way of working frame on our Miro board: every post-it, including any on its edge.\n\nDraft the job our wider team is trying to get done, in their words, not ours: the functional part, and at least one emotional or social part. Name their current hire for it: what they use today, and what's broken about it. Every job already has an incumbent. Then one outcome in this form: \"minimize/increase <measure> when <doing the job>\".\n\nConfirm or correct each piece with us, one question at a time, each with three or four lettered options drawn from our files. Wait for our answer before the next. Then write module-7/jtbd.md, every claim anchored to the file it came from.\n\nThen show us four shapes that could carry our way of working to them: a file they run, a page they read, a habit in a meeting they already hold, a person who walks them through it. For each, the concrete mechanism by which it would move that outcome. Let us pick one to three. Write module-7/branch.md with one sentence per pick: \"This moves the outcome because <mechanism>.\" Tools and infrastructure go after the mechanism, as constraints, not as the reason.\n\nShow us each file before saving.",
+    "requires": [
+      {
+        "id": "five-users",
+        "source": "prompt:apt101-d3-read-the-sessions"
+      },
+      {
+        "id": "way-of-working",
+        "source": "prompt:apt101-d2-lead-way-of-working"
+      }
+    ],
+    "produces": [
+      {
+        "id": "m7-jtbd",
+        "location": "module-7/jtbd.md"
+      },
+      {
+        "id": "m7-branch",
+        "location": "module-7/branch.md"
+      }
+    ]
+  },
+  "apt101-d3-walk-the-slice": {
+    "key": "apt101-d3-walk-the-slice",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-map-the-story",
+    "text": "Open team/slice-1/ as a customer seeing it for the first time, with the job named in team/story-map.md. You know nothing about how it was built.\n\nWalk every step, from the first to the last. List each place where:\n- the walk stops\n- a step is missing\n- a page assumes knowledge this customer doesn't have\n\nDon't fix anything. Report to me here in the chat.",
+    "requires": [
+      {
+        "id": "slice-1",
+        "source": "prompt:apt101-d3-build-the-slice"
+      }
+    ],
+    "produces": [
+      {
+        "id": "walk",
+        "location": "scrollback",
+        "note": "read by the team lead to the driver"
+      }
+    ]
+  },
+  "apt101-d3-what-good-means": {
+    "key": "apt101-d3-what-good-means",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-write-what-good-means",
+    "text": "Each of us will say one line about what a good digest does for our team. Record each line word for word, with the name of who said it, in team/what-good-means.md.\n\nRead judges/groundedness-judge.md, and split the lines in two:\n- Floor: lines the judge already checks.\n- Ceiling: lines it doesn't.\n\nDon't touch the judge.",
+    "requires": [
+      {
+        "id": "groundedness-judge",
+        "source": "prompt:hallucination-bakeoff-8"
+      }
+    ],
+    "produces": [
+      {
+        "id": "what-good-means",
+        "location": "team/what-good-means.md",
+        "note": "read by apt101-d3-caught, apt101-d3-what-it-missed"
+      }
+    ]
+  },
+  "apt101-d3-what-it-missed": {
+    "key": "apt101-d3-what-it-missed",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-product-teams-101/apt101-write-what-good-means",
+    "text": "Read the last round's briefing and judgment in module-6/runs/, the ceiling lines in team/what-good-means.md, what they caught in team/caught.md, and the line I marked as trusting least in team/<my-name>/doubts.md, with my reason.\n\nPut that line and my reason first.\n\nThen show me five claims the judge passed, one at a time, each beside my line. For each, ask whether I would send it back, and wait for my answer.\n\nThen list where my call and the judge's verdict differ, and append them to module-6/eval-notes.md.\n\nLast, ask me for the one ceiling line our team lacked, and add it in my words to team/<my-name>/what-it-missed.md.",
+    "requires": [
+      {
+        "id": "m6-run-artifacts",
+        "source": "prompt:eval-loop-2"
+      },
+      {
+        "id": "caught",
+        "source": "prompt:apt101-d3-caught"
+      },
+      {
+        "id": "doubts-md",
+        "source": "prompt:apt101-d2-mark-the-doubt"
+      }
+    ],
+    "produces": [
+      {
+        "id": "what-it-missed",
+        "location": "team/<my-name>/what-it-missed.md",
+        "note": "read at the close"
+      }
+    ]
+  },
   "audit-your-agent-1": {
     "key": "audit-your-agent-1",
     "dest": "Claude Code",

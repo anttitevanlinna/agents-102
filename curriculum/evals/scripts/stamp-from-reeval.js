@@ -160,6 +160,9 @@ function stateFor(r, meta = null) {
   // A non-blocking finding is not a gate: PASS stays PASS, and carries the
   // count plus a pointer to the instance holding the findings, so a row reading
   // a bare `PASS` never hides notes. The verdict is not rewritten.
+  // N/A = the class has nothing to judge on this file (a prompt-less page for
+  // behavior). It is not a failure; falling through below stamped it REVISE 0/0.
+  if (r.verdict === 'N/A') return 'na'
   if (r.verdict === 'PASS') {
     return r.todos ? `PASS:${plural(r.todos)}${pointer(r)}` : 'PASS'
   }

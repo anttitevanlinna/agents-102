@@ -49,11 +49,6 @@ cat <<'EOF'
              /`\_`>  <_/ \
              \__/'---'\__/
 
-         NEVER GONNA GIVE YOU UP
-         NEVER GONNA LET YOU DOWN
-         NEVER GONNA RUN AROUND
-              AND DESERT YOU
-
   ─────────────────────────────────────────────
   You just ran a script you never read,
   from a skill you installed from a tarball

@@ -98,8 +98,7 @@
     // Choice persists in localStorage. Default is 'cowork' — Agents 101's
     // most-friendly mode; matches the leftmost button position.
     //
-    // Verified facts driving this design (see Agents 101-side reference
-    // curriculum/trainings/agents-101/reference/claude-quick-reference.md, maintainer audit):
+    // Verified facts driving this design:
     //  - same agent engine across all three; CLAUDE.md + subagents identical
     //  - .plugin install path: Desktop + Cowork; CLI uses folder skills
     //  - no plan mode in Cowork (use prompt-level discipline instead)
@@ -216,7 +215,7 @@
     function loadAndRender(path, fallbackTitle) {
         // Images in a doc are written relative to that doc; the SPA fetches the
         // doc from `../curriculum/<...>.md` but renders into a page at
-        // `site/curriculum.html`, so a bare `skill-stacking/01.png` would
+        // `site/curriculum.html`, so a bare `diagrams/01.png` would
         // resolve against the page, not the doc. Re-root each relative target
         // onto the doc's own directory.
         var docDir = path.replace(/[^/]*$/, '');

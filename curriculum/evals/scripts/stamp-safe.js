@@ -4,7 +4,7 @@
 // `update-quality.sh`'s stale-verdict guard hashes the WHOLE file, while
 // `scan-stale-classes.js` routes staleness per diff region. So a two-word repair
 // re-owed every class, including the ones whose routing says they were never
-// touched: one reworded sentence in `clean-code-is-steering` cost four judge
+// touched: one reworded sentence in a supplementary page cost four judge
 // runs, two of which had nothing to re-read. The scanner already computes exactly
 // what the stamper needs.
 //

@@ -61,8 +61,6 @@ Decide the location with Claude.
 Roll your own is often facilitated by hooks and router skills: a hook injects it at session start, a router skill reads it when the work calls for it.
 
 - If the picked path only loads when named, ask for the `@import` line before you move on. Without it the file sits unread.
-- [Claude Code for engineers](../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md) is the long form: precedence, walk-up, the managed layer.
-
 ## Phase 3: Explore what this file could automate later
 
 *3 min*
@@ -115,7 +113,7 @@ Ask Claude whether it met any of these.
 - judges @dd52c026: writing PASS (1 finding see instances/ae101--exercise--extract-the-task-shaping-rule.writing.json), story PASS, technical PASS (2 findings see instances/ae101--exercise--extract-the-task-shaping-rule.technical.json), behavior PASS, pedagogy PASS (verify-refuted, 1 finding see instances/ae101--exercise--extract-the-task-shaping-rule.pedagogy.json), strategy PASS, slides PASS
 - cohorts: none yet
 
-**No connector pointer here — it belongs to M1 (2026-08-14, Antti).** `close-the-ticket` carries the single navigational pointer to `reference/mcp-and-connectors.md`, and `getting-going.md`'s maintainer block states that one-pointer contract. The paste fallback stays, because the student needs it at the moment the tracker is unreachable; the reach-for-next-time link was the duplicate. Do not re-add it.
+**No connector pointer here — it belongs to M1 (2026-08-14, Antti).** `close-the-ticket` carries the single connector line (ask Claude for the command), and `getting-going.md`'s maintainer block states that one-line contract. The paste fallback stays, because the student needs it at the moment the tracker is unreachable; the reach-for-next-time link was the duplicate. Do not re-add it.
 
 **The `@import` wiring stays in body, not the fence — standing `[watch]`, reaffirmed 2026-08-02.** (The ask sits in a plain bullet under the load-map table on the *Where rules can live* slide.) This is a KNOWN §16 gap held open on purpose, logged in `pre-cohort-todos.md` (2026-07-26): *"stays REVISE, `[watch]` … Accepted as-is. Fires if a cohort run shows a student picking a non-auto-load path and missing the wire. Fix when it fires: fold the `@import` ask into `extract-the-task-shaping-rule-2.md`'s fence."* The trigger is field evidence from a cohort, not a judge's re-derivation — so a pedagogy REVISE here is the expected steady state, not a new finding. **Do not fold it into the fence before the trigger fires**, and do not re-argue it from §16's optional-refinements carve-out: the Note says *"before you move on"*, which is a gate, so that carve-out does NOT cover this. The reason is the watch decision, and the maintainer's grounds are that the wiring stays the student's choice.
 

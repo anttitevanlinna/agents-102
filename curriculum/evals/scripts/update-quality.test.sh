@@ -613,6 +613,19 @@ rc=$(run "$F39" --technical PASS)
 assert_rc "$rc" 1 'T39 a slide-file edit after judging stales the manifest verdict'
 unset QUALITY_INSTANCES_DIR
 
+# ── T30 — first stamp on a never-judged file: unjudged classes are omitted, never grandfathered
+#    `grandfathered` is a SETTLED state (scan-stale-classes): stamping it on a class
+#    no judge ever read drops that class out of the eval queue. Fail closed.
+mkfix t30.md '# Exercise: New
+<!-- maintainer -->
+**Role:** new page, never judged.
+
+body'
+run "$TMP/t30.md" --behavior PASS --sha new5678 --date 2026-10-07 >/dev/null
+assert_grep    "$TMP/t30.md" 'behavior PASS'  'T30 the judged class is stamped'
+assert_no_grep "$TMP/t30.md" 'grandfathered'  'T30 never-judged classes are not stamped grandfathered'
+assert_no_grep "$TMP/t30.md" 'writing '       'T30 an unjudged class is absent from the row'
+
 echo "──────────────────────────────"
 echo "update-quality.test.sh: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]

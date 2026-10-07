@@ -449,7 +449,10 @@ else
       # slides postdates the judge refactor (class added 2026-07-08): keep with
       # no prior entry means never-judged — omit rather than stamp grandfathered.
       if [[ -z "$raw" && "$cls" == "slides" ]]; then continue; fi
-      [[ -z "$raw" ]] && raw=grandfathered  # no prior judges row at all
+      # No Quality block before this stamp = a file no judge ever read: omit the
+      # class. `grandfathered` is settled and would drop it out of the queue.
+      if [[ -z "$raw" && -z "$prior_top" ]]; then continue; fi
+      [[ -z "$raw" ]] && raw=grandfathered  # pre-refactor Quality line, no judges row
     fi
     rendered=$(render_class_inline "$cls" "$raw")
     parts+="${parts:+, }$rendered"

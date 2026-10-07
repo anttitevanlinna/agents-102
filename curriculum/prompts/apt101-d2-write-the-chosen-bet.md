@@ -11,7 +11,7 @@ produces:
     location: "team/chosen-bet.md"
     note: "read by make your piece, imagine it failed, tonight’s run, Day 3"
 ---
-Read the branch we chose on the bet frame of our Miro board and in team/tree.md. Read the outcome in ./crux.md and team/bet.md.
+Read the branch we chose on the bet frame of our Miro board and in team/tree.md. If you can't reach the board, ask me which branch we chose. Read the outcome in ./crux.md and team/bet.md.
 
 Write team/chosen-bet.md as a hypothesis statement: We believe <this capability> for <these people> will achieve <this outcome>. We'll know we're right when we see <this signal>. The signal has a number and a window, and could come back no.
 

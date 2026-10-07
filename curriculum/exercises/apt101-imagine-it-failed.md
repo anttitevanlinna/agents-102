@@ -40,8 +40,8 @@ One dot each on the board for the cause you now think most likely, Claude's incl
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@21214fc5 pedagogy@761a20a3)
-- judges @761a20a3: behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-imagine-it-failed.pedagogy.json)
+**Quality:** compendium-audited 2026-10-07 (technical@1faabaa8 behavior@21214fc5 pedagogy@761a20a3)
+- judges @1faabaa8: technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-imagine-it-failed.pedagogy.json)
 
 **Role in Day 2:** beat 9. A pre-mortem on the chosen bet and its three pieces, at the moment confidence peaks. Feeds beat 10, *Laptops shut* (a module section), which talks the top cause through. The lecture *Imagine it already failed*, right after this exercise, names Klein's method and why it fits peak confidence, once the trio has done it.
 

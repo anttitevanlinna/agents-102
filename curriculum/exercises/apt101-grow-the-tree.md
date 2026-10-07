@@ -77,8 +77,8 @@ The tree is not finished, and it should not be. You choose from it in *Choose th
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@21214fc5 pedagogy@20018100)
-- judges @20018100: behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-grow-the-tree.pedagogy.json)
+**Quality:** compendium-audited 2026-10-07 (technical@1faabaa8 behavior@21214fc5 pedagogy@20018100)
+- judges @1faabaa8: technical PASS, behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-grow-the-tree.pedagogy.json)
 
 **Role in Day 2:** beat 4. Produces the team's opportunity solution tree, attributed per branch, and each person's three-stance read of the evidence. Placed after *Go back to your customers*; *Widen before you choose* names afterwards what the trio just did (alone first, merge keeps the single-name branch, the outcome makes the merge choose).
 

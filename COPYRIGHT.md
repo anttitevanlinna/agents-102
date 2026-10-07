@@ -58,14 +58,13 @@ If you have been granted access to Agents 102 as an enrolled student — whether
 - **Run the exercises.** Paste prompts into Claude Code, build the agents, populate `memory/`, write skills, run evals, and generate any artifacts the exercises ask you to produce.
 - **Own what you build.** The agents, skills, memory pages, eval judges, sites, and any other artifacts **you produce** during the training are yours. Bosser Oy makes no claim on your outputs.
 - **Apply what you learn at your own employer.** Bring the moves, patterns, frameworks, and builder practices into your day job. Build agents for your team. Rewrite your company's processes around what you've learned. That is the point of the training.
-- **Share your own artifacts with teammates.** Module 7 is literally about this. Share the context, share a skill, share an output, share an interface — with your colleagues, inside your own company. The four sharing strategies are yours to use.
 - **Quote briefly with attribution.** Short excerpts (a sentence, a framework name, a list of principles) may be quoted in your own writing, talks, or internal docs, with attribution to *"Agents 102 — Bosser Oy"* and a link to [bosser.consulting](https://bosser.consulting) where practical.
 - **Contribute to the research base.** `continuous-research/` is open to you on the same terms as anyone else — see [`continuous-research/LICENSE.md`](continuous-research/LICENSE.md).
 
 **You may not, without separate written permission from Bosser Oy:**
 
 - **Redistribute the curriculum files.** Do not copy, mirror, upload, post, or forward the module / exercise / lecture / eval / scaffold files — in whole or in substantial part — to anyone outside your own seat. One access grant = one student.
-- **Teach it as your own.** Do not deliver Agents 102 material as a training, workshop, or course — internal to your company or external — under your own name or anyone else's. Internal evangelism and "show your teammates what you built" is different and explicitly allowed above; running the curriculum as a training is not.
+- **Teach it as your own.** Do not deliver Agents 102 material as a training, workshop, or course — internal to your company or external — under your own name or anyone else's.
 - **Resell or sublicense.** No selling access, no bundling into another paid product, no passing your seat to someone else.
 - **Build a competing training from it.** Do not use Agents 102 material (curriculum, exercises, lectures, evals, skills, site copy) as the basis for a competing course, bootcamp, or program — whether authored by a human, assembled by an AI, or any combination.
 - **Feed it to AI training pipelines.** Do not add the proprietary-scope files to a public dataset, a corporate fine-tuning corpus, a RAG index for external users, or any other pipeline whose output reaches people outside your own seat. Using Claude Code to read and work with the material as part of taking the training is of course fine — that's how the training runs.

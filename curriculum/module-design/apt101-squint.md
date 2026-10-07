@@ -43,7 +43,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 - The best mitigation is the door you don't open
 - One agent per recurring job, not one company brain ✱ (style)
 - A chat runs on one part; an agent needs six ✱ (style)
-- It works overnight; some of what it writes will be wrong ✱ (style)
+- It runs without you until Day 2 (r1: retitled so Day 1 does not announce the turn)
 
 ## Day 2: What came back
 

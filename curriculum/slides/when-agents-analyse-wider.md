@@ -5,7 +5,7 @@ An agent can read every interview transcript, every support ticket and a year of
 
 So analysis is getting cheap, the way building did. What does your team bring that the analysis does not?
 
-Keep your own answer to that question. It decides what the three of you are for.
+Keep your own answer to that question.
 
 <!-- maintainer -->
 

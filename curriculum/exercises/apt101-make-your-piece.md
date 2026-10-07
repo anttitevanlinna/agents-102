@@ -54,6 +54,8 @@ Put the three pieces next to each other on the bet frame of your team board: a s
 
 Each of you looks at the other two pieces from your own craft. Do they test the same bet? Does the prototype show what the fake door promises? Does the working agreement give the agents a job that would have produced today's made-up quote? Where one piece contradicts another, decide together which one changes.
 
+Then one round, piece by piece. The other two point at the part of it that only its maker could have made, and say why. The maker says nothing until both have spoken.
+
 <!-- maintainer -->
 
 **Role in Day 2:** beat 8, protected. The creativity beat: each role makes a first piece of the chosen bet in its own craft, answering the room's private question of what each of us is for. Placed after the lecture *Each of you makes something*, whose slides set each role's frame (Houde and Hill's prototype questions, the test card, the working agreement). Its last slide (*Imagine it already failed*) carries into beat 9.
@@ -66,7 +68,7 @@ Each of you looks at the other two pieces from your own craft. Do they test the 
 - Consumes: `team/chosen-bet.md` (choose the bet); the interview quotes carried in `team/chosen-bet.md`; `team/what-goes-in.md` (Day 1).
 - Produces: `team/<designer>/prototype.html`; `team/<product-owner>/kill-test.md` plus `fake-door.html` or `survey.md`; `team/<team-lead>/way-of-working.md`. Read by imagine it failed, the Monday list, Day 3 slice, five users (the prototype and fake door) and take it to the team (the working agreement).
 
-**Room:** three solo tracks in parallel, then the trio on the board. Phase 2's contradictions are a human call. Overrun: phase 2 is not cut; trim the rehearsal to three questions instead.
+**Room:** three solo tracks in parallel, then the trio on the board. Phase 2's contradictions are a human call. Phase 2's closing round is hidden-spine thread 3 on Day 2: each role's answer to what it is for, said by the other two about the piece, never stated in body. Overrun: phase 2 is not cut; trim the rehearsal to three questions instead.
 
 **Failure modes:** the designer asks for screens before choosing the question (the prompt asks first); the threshold is unfalsifiable; the working agreement reads as a decision handed down (the prompt frames it as a proposal; the rehearsal tests it).
 

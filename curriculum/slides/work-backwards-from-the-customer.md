@@ -1,7 +1,7 @@
 ## Would a customer pick up the box?
 <!--slide:work-backwards-from-the-customer-->
 
-Draw the box your product would come in, as in Luke Hohmann's Product Box game. One face, one promise, in words a customer would repeat. Then ask whether a customer would pick it up.
+You drew the box your product would come in, as in Luke Hohmann's Product Box game. One face, one promise, in words a customer would repeat. Then ask whether a customer would pick it up.
 
 If you cannot write that face, you are not yet sure what you are building for. Better to find out on cardboard than after the build.
 
@@ -9,7 +9,7 @@ Amazon teams make the same move in prose, and call it **working backwards**: a p
 
 <!-- maintainer -->
 
-**STATUS:** squint build (2026-10-07), APT101 gap slide G1 from `curriculum/module-design/apt101-source-pack.md` §5–6; header from `apt101-squint.md` Day 1 (`header-style-distilled.md` rule 12), body opens on the box test. Not taught (simulation training). Owes judging rounds.
+**STATUS:** squint build (2026-10-07), APT101 gap slide G1 from `curriculum/module-design/apt101-source-pack.md` §5–6; header from `apt101-squint.md` Day 1 (`header-style-distilled.md` rule 12), body opens on the box the trio has just painted (the lecture sits after the box exercise). Not taught (simulation training). Owes judging rounds.
 
 **Fidelity guards:** the PR/FAQ's reader is internal decision-makers, written in the customer's voice; do not turn it into a launch announcement. Product Box in Hohmann's original is played by customers; the body credits the box to his game but the pick-up question is the team's own test; it claims nothing about what his customer-played version reveals. "Working backwards" is Amazon's term, not Bryar and Carr's coinage.
 

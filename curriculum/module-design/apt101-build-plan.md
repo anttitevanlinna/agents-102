@@ -2,6 +2,18 @@
 
 **Status:** design, not student-facing (2026-10-07). Built from the squint (`apt101-squint.md`), the Day 2 beat sheet (`apt101-day-2-beats.md`, v9) and Agents 101's exercises, per the strategy appendix's *Build next*. Maintainer brief (2026-10-07): "exercises can be built without expanding the prompts. Just placing pretty much the name of the prompt inline… reuse very much from a101. The prompt sequences there are tested and good. Sprinkle in PO-style: story map, outcome tree, hypothesis statement, …"
 
+## Hidden spine (depth: ideas whose meaning changes)
+
+The storyline is the strategy appendix's: *you were right all along, and now it is dangerous*. Depth comes from five threads, each planted, complicated and paid off across the days. Every edit protects them, and none is restated without a change in meaning.
+
+1. **The digest.** Day 1: each of you sends an agent off with your own look-for line. Day 2: it comes back agreeing with your bet, and you find your own sentence that made it agree. Day 3: your own written criteria catch it (`team/caught.md`).
+2. **The bet.** Day 1: written so it can lose. Day 2: chosen with evidence under it. Day 3: five users show the trio where its own certainty was wrong, and the call is persevere, pivot or stop.
+3. **What each of us is for when building gets cheap.** Day 1: the box says what the product is for. Day 2: each role makes its own piece; the agent writes in your users' voice and someone has to catch it. Day 3: three jobs rewritten, and the team decides on Monday.
+4. **The stance question.** *When models analyse wider, deeper and faster, what is your insight?* Planted Day 1, sharpened at the Day 2 turn ("it analysed everything and still had no insight"), answered Day 3 as real strategy work, asked again at the close and left open.
+5. **The craft was a rationing device.** Day 1: the post-it was the craft on a budget. Day 2: a faster feature factory is still a feature factory. Day 3: slice by what you learn, because building is no longer the cost.
+
+The guide (essays) stands beside the trio at the start, the turn and the close, and never takes the hero's place.
+
 ## Prompt convention
 
 - **Reused Agents 101 prompt** → `{{prompt:<key>}}`, unchanged. The build expands it, and it carries its tested body and its `requires:`/`produces:` chain. Never edit an Agents 101 prompt to fit; frame it in the exercise prose instead ("your challenge is the bet you wrote this morning").
@@ -61,7 +73,7 @@ Paths are in the student's training folder or the team folder, not this repo.
 | `apt101-map-the-story` | D3 · 2 | — | **New**: user story map (backbone, walking skeleton, slices by learning goal), first slice built |
 | `apt101-write-what-good-means` | D3 · 3 | `eval-loop` 1, 2, 5 | **Keys** (fixed judge from Day 2; the digest regenerated against your criteria) |
 | `apt101-five-users` | D3 · 4 | — | **New**: test script, five sessions, what they did vs what the digest said, persevere / pivot / stop |
-| `apt101-take-it-to-the-team` | D3 · 5 | `share-your-work` 1–6 | **Keys** (the teammate = your wider team; the candidate = the way of working) |
+| `apt101-take-it-to-the-team` | D3 · 5 | `share-your-work` 1–6 | **Shape only** (job, bottleneck, two plans, switch test, one failure story as named APT101 prompts on the same `module-7/` paths; the keys speak of one teammate) |
 
 ## Day 1: You were right all along
 

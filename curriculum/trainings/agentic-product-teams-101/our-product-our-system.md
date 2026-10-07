@@ -39,9 +39,9 @@ After this day, you will be able to:
 
 [Lecture: Now building is cheap](lectures/apt101-building-is-cheap.md)
 
-[Lecture: Start from your customer's sentence](lectures/apt101-work-backwards.md)
-
 [Exercise: Paint the product box](exercises/apt101-paint-the-product-box.md)
+
+[Lecture: Start from your customer's sentence](lectures/apt101-work-backwards.md)
 
 [Lecture: The agent knows only what you tell it](lectures/apt101-only-what-you-tell-it.md)
 
@@ -119,6 +119,7 @@ Before Day 2, three agents read three memories against one bet, and write to you
 | Agent | `agents/<job>.md` | `apt101-send-it-off` (`build-your-challenge-memory-5`) | Day 2 onward |
 | Style | `./style.md` | `apt101-send-it-off` (`personal-agent-homework-1`) | every HTML output |
 | Overnight digest | `module-2/morning-agent/morning.md`, `latest.html` | `apt101-send-it-off` | Day 2 beat 1 `apt101-read-the-digest` |
+| Look-for line | `module-2/morning-agent/morning.md` § `## Look for` (personal, the student's sentence word for word) | `apt101-send-it-off` (`apt101-d1-your-look-for-line`) | Day 2 `apt101-d2-what-ran-overnight`, quoted beside `team/bet.md` |
 | Rules file | `./CLAUDE.md` (personal) | Day 1 close (`a101-m2-debrief-claude-md`) | every later run; sharpened at Day 2 close |
 | Team rules | `team/team-rules.md` | Day 1 close (`apt101-d1-team-rules`, team lead drives) | Day 2 close |
 

@@ -19,4 +19,6 @@
 - **Time:** 13 minutes.
 - **Learning:** control — the team traces the agreement to its question and its instructions, and holds the insight the analysis cannot supply.
 
+**Owed (maintainer only):** the guide's failure as a scene, one named bet he was sure of and the person who showed him the wrong. Agents do not write it; the guide slides' essay wording stays as is until the maintainer supplies the scene.
+
 **STATUS:** composed from the APT101 squint (`curriculum/module-design/apt101-squint.md`, Day 2, 2026-10-07). Not taught (simulation training).

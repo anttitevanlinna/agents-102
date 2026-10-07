@@ -4,7 +4,7 @@
 
 **What you do:**
 
-Your memory sits still until something reads it. Each of you gives it one agent for one recurring job, tries it once, then schedules the job that runs overnight: a digest of what your material says about the bet, waiting for you when Day 2 starts.
+Your memory sits still until something reads it. Each of you gives it one agent for one recurring job, tries it once, then schedules the job that runs overnight: a digest of your material, briefed in your own words, waiting for you when Day 2 starts.
 
 Keep the same <span class="rt-code">session</span><span class="rt-cowork">task</span> running. Your memory is on disk, and `./challenge.md` points at the bet.
 
@@ -52,7 +52,11 @@ Ask Claude to interview you on the job, the output shape and the hard boundary, 
 
 {{prompt:personal-agent-homework-2}}
 
-Claude offers three jobs. Pick the one closest to a digest and tell it what you want: what your material says about the bet, with the line it came from. For the boundary, the door: the digest reads only your memory, and only what the team let in. Wherever `morning.md` names the door or the bet, have Claude write the team folder's full path, the one the trainer posted, not `team/`. The overnight run starts fresh and has nothing else to find the folder by. Read `module-2/morning-agent/morning.md` before Claude saves it. Leave the folder name as it is.
+Claude offers three jobs. Pick the one closest to a digest, with the line each finding came from. For the boundary, the door: the digest reads only your memory, and only what the team let in. Wherever `morning.md` names the door or the bet, have Claude write the team folder's full path, the one the trainer posted, not `team/`. The overnight run starts fresh and has nothing else to find the folder by. Read `module-2/morning-agent/morning.md` before Claude saves it. Leave the folder name as it is.
+
+Then the one line in the brief that only you write. Open your hypothesis, `team/<your-name>/hypothesis.md`, and say in one sentence what the digest should look for in your material about it. Your words, the way you would brief a colleague. Claude writes the sentence into the brief exactly as you said it.
+
+**Prompt** · `apt101-d1-your-look-for-line`, read `team/<my-name>/hypothesis.md`, ask me for one sentence in my own words saying what the digest should look for in my material about it, and write that sentence word for word into `module-2/morning-agent/morning.md` under a `## Look for` heading, without rewording it or adding a line of your own
 
 ## Phase 5: Schedule it
 
@@ -92,14 +96,14 @@ Day 2 starts with what came back.
 
 **Role in Day 1:** beat 7, the last hands-on beat; sends off the overnight digest that opens Day 2 (*What came back*) and threads the training (sent Day 1, agrees with you Day 2, caught by your own criteria Day 3).
 
-**Reuse:** keys `build-your-challenge-memory-5`, `-6` (first agent), `personal-agent-homework-1`, `-2`, `-3` (style, brief, scheduled run). Framing in prose: the three-job menu in `-2` is steered to "a digest of what the material says about the bet"; the `module-2/morning-agent/` path is Agents 101's and stays (rename at the prompt-body pass, per the build plan's wrinkle note).
+**Reuse:** keys `build-your-challenge-memory-5`, `-6` (first agent), `personal-agent-homework-1`, `-2`, `-3` (style, brief, scheduled run). Framing in prose: the three-job menu in `-2` is steered to a digest; what it looks for is the student's own sentence, written word for word by the new named prompt `apt101-d1-your-look-for-line`; the `module-2/morning-agent/` path is Agents 101's and stays (rename at the prompt-body pass, per the build plan's wrinkle note).
 
-**Frameworks:** none named in body. *Send it off* before (door you don't open, one agent per job, six parts, it will be wrong) frames the beat; the door slide names what `apt101-what-goes-in` already did, so it lands as recognition.
+**Frameworks:** none named in body. *Send it off* before (door you don't open, one agent per job, six parts, it runs without you until Day 2) frames the beat; the door slide names what `apt101-what-goes-in` already did, so it lands as recognition.
 
-**Artefacts:** produces `agents/<job>.md`, `./style.md`, the Styling line in `./CLAUDE.md`, `module-2/morning-agent/morning.md`, `module-2/morning-agent/latest.html` (first run), and the scheduled task. Consumes `memory/`, `./challenge.md`, `team/what-goes-in.md`. `latest.html` is read in Day 2 beat 1 (`apt101-read-the-digest`).
+**Artefacts:** produces `agents/<job>.md`, `./style.md`, the Styling line in `./CLAUDE.md`, `module-2/morning-agent/morning.md` (with each person's own sentence under `## Look for`), `module-2/morning-agent/latest.html` (first run), and the scheduled task. Consumes `memory/`, `./challenge.md`, `team/what-goes-in.md`. `latest.html` is read in Day 2 beat 1 (`apt101-read-the-digest`); its `apt101-d2-what-ran-overnight` quotes the `## Look for` sentence back word for word beside `team/bet.md`.
 
-**The Day 2 turn, left to happen:** the digest brief asks "what the material says about the bet". The exercise does not ask for evidence against; the Day 2 turn (*Why it agreed*) depends on the trio recognising the agreement themselves. Phase 6 plants the observation (sure of itself) without naming it.
+**The Day 2 turn, left to happen:** the digest looks for what each person's own sentence asks for. The body offers no example sentence and no verb: whatever the student writes ("find what supports…", "what do users say about…"), the agreement on Day 2 traces back to a sentence they wrote, not to the exercise. Nothing on Day 1 says the digest will agree or be wrong; the Day 2 turn (*Why it agreed*) depends on the trio finding its own sentence behind the agreement. Phase 6 plants the observation (sure of itself) without naming it.
 
 **Capability check owed:** Cowork's scheduling flow (the Schedule sidebar wording is Claude Code Desktop's, copied from `personal-agent-homework`); laptop-asleep catch-up behaviour (A101 facilitator note says one catch-up run on wake). Trainer keeps the Day 2 fallback digest for any run that didn't fire.
 
-**View summary:** Each person gives their memory one agent for one recurring job, tries it, then schedules an overnight digest of what their material says about the bet, in the company's own look. The artefact is a running job that will be waiting when Day 2 starts.
+**View summary:** Each person gives their memory one agent for one recurring job, tries it, then schedules an overnight digest, briefed by one sentence each person writes from their own hypothesis, in the company's own look. The artefact is a running job that will be waiting when Day 2 starts.

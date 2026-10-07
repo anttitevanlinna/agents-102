@@ -49,7 +49,7 @@ When the fifth user leaves, the three of you stand at the wall for two minutes. 
 
 Ask Claude to read the wall and lay the bet, the digest and the five users side by side.
 
-**Prompt** · `apt101-d3-read-the-sessions`, read the *Five users* frame on our Miro board, `team/chosen-bet.md` (the hypothesis and its signal), our Day 1 digests in `team/<name>/digest-day1.html` and `team/five-users.md`; copy every moment from the wall into `team/five-users.md` under its user; for each moment, say whether the digest said it, could have said it, or could not have; then read the moments against the agreed signal and lay out what persevere, pivot and stop would each mean for the next slice; do not choose; when we come back with our call, record it in `team/five-users.md` exactly as we say it, with who said what, and the one sentence we now believe instead
+**Prompt** · `apt101-d3-read-the-sessions`, read the *Five users* frame on our Miro board, `team/chosen-bet.md` (the hypothesis and its signal), each of our Day 1 hypotheses in `team/bet.md`, our Day 1 digests in `team/<name>/digest-day1.html` and `team/five-users.md`; copy every moment from the wall into `team/five-users.md` under its user; for each moment, say whether the digest said it, could have said it, or could not have; then read the moments against the agreed signal and lay out what persevere, pivot and stop would each mean for the next slice; quote each of our Day 1 hypotheses word for word under its author's name, without marking which lines the moments touch; do not choose; when we come back with our call, record it in `team/five-users.md` exactly as we say it, with who said what, the line of each Day 1 hypothesis its author names as proved wrong, and the one sentence we now believe instead
 
 While the product owner drives, the designer and the team lead each pick the one moment they would not have predicted from the digest. Say it when Claude finishes.
 
@@ -59,7 +59,9 @@ Push back if Claude reads a signal into the moments that the bet did not name. R
 
 *5 min*
 
-Laptops shut, back at the wall. Persevere, pivot or stop: the three of you decide, and write the call on a post-it at the top of the frame. Then the product owner opens the laptop and tells Claude the call. Claude records it as you said it.
+Before the laptops shut, each of you reads your own Day 1 hypothesis where Claude quoted it, and says out loud the line in it the five users proved wrong. Your own line, not someone else's.
+
+Laptops shut, back at the wall. Persevere, pivot or stop: the three of you decide, and write the call on a post-it at the top of the frame. Then the product owner opens the laptop and tells Claude the call and the three lines. Claude records them as you said them.
 
 <!-- maintainer -->
 
@@ -71,10 +73,11 @@ Laptops shut, back at the wall. Persevere, pivot or stop: the three of you decid
 - Test with five users (Nielsen). Not named in the body: the lecture *Your bet meets five users* comes after and names him, so naming here would pre-state the law before the room has run it (recognition before naming, `curriculum/story-craft.md`).
 - Persevere / pivot / stop (Ries), likewise named only in the lecture after.
 - Hypothesis statement and signal from Day 2's `team/chosen-bet.md`.
+- Each person's own Day 1 hypothesis (`team/bet.md`, under its author's name): phase 4 has each author name the line the users proved wrong (build plan § Hidden spine, thread 2). The prompt quotes the hypotheses unmarked so the author finds the line.
 
 **Artefacts:**
-- Produces: *Five users* frame (board: one column per user, the call on top), `team/five-users.md` (script, the moments copied from the wall, decision verbatim, what the team now believes).
-- Consumes: `team/story-map.md`, `team/slice-1/`, `team/chosen-bet.md`, `team/<product owner>/watch-for.md` (from map the story), `team/<name>/digest-day1.html` (Day 2's read the digest), `team/product-box.html` (via the slice).
+- Produces: *Five users* frame (board: one column per user, the call on top), `team/five-users.md` (script, the moments copied from the wall, decision verbatim, each author's proved-wrong line, what the team now believes).
+- Consumes: `team/bet.md` (each person's Day 1 hypothesis), `team/story-map.md`, `team/slice-1/`, `team/chosen-bet.md`, `team/<product owner>/watch-for.md` (from map the story), `team/<name>/digest-day1.html` (Day 2's read the digest), `team/product-box.html` (via the slice).
 
 **Board:** *Five users* frame, five empty columns, set up by the trainer. Rhythm: post-its during the sessions, Claude reads the wall and copies it to file (phase 3), the wall again for the call (phase 4). The moments are copied into `team/five-users.md` because Day 3's `apt101-d3-team-monday` reads them. Fallback without the Miro connector: a frame screenshot into the chat.
 

@@ -52,7 +52,11 @@ Push back where the rewrite is wrong: *"the team's job wasn't vague, you just di
 
 ## Say it to each other
 
-Laptops shut. One round, each of you in turn, no discussion until all three have spoken:
+Before the laptops shut, the team lead reads two files out loud, with no comment after either. First `team/caught.md`: what your own lines caught in the digest that agreed with you. Then `team/monday.md`.
+
+Laptops shut. The question you started Day 1 with, asked of what you just heard: is anything in `team/monday.md` the next thing your team builds that nobody asked for? Who decided it, and what are you sure of?
+
+Then one round, each of you in turn, no discussion until all three have spoken:
 
 - the bet, as you would now say it to your team;
 - your first move on Monday;
@@ -71,7 +75,7 @@ Laptops shut. One round, each of you in turn, no discussion until all three have
 
 ## Next
 
-The bet is still open. Five people gave you a first reading of it, and the next slice is yours to place. Building keeps getting cheaper, for you and for your rivals. When models analyse wider, deeper and faster, what will your insight be? You answer that on your own product, with your team, one bet at a time.
+The bet is still open, and the next slice is yours to place. When models analyse wider, deeper and faster, what will your insight be?
 
 <!-- maintainer -->
 
@@ -79,7 +83,7 @@ The bet is still open. Five people gave you a first reading of it, and the next 
 
 **Beat order (build plan § Day 3):** 1 what came back (§ Start here, no Claude: the digest opens in a browser, so the day's session opens in the first exercise) · lecture *Slice by what you learn* · 2 map the story · 3 write what good means · lecture *What good means* (after: slides 3–4 name what Phase 3 produces; the lecture file cannot split here, and the exercise body sets up floor and ceiling itself) · 4 five users · lecture *Bet meets five users* (after) · 5 lecture *Three jobs, rewritten* · 6 take it to the team · lecture *From the three of you* (after) · 7 close: § Sharpen the proposal, lecture *Where you go from here*, § Say it to each other.
 
-**Close shape:** Day 1 closes on `CLAUDE.md`, Day 2 on groundedness rules; Day 3 sharpens the sharing artefact (`a101-m7-debrief-sharing-artifact`), so the compound shape differs per day (`check_student_facing.md` §7). The round after it is laptops shut, no prompts, trainer silent (`check_workshop.md` §12). `## Next` asks the stance question again and does not answer it; the lecture *Where you go from here* asks it first, so `## Next` stays short.
+**Close shape:** Day 1 closes on `CLAUDE.md`, Day 2 on groundedness rules; Day 3 sharpens the sharing artefact (`a101-m7-debrief-sharing-artifact`), so the compound shape differs per day (`check_student_facing.md` §7). The round after it is laptops shut, no prompts, trainer silent (`check_workshop.md` §12). It opens on the spine-1 payoff (`team/caught.md` read aloud, the digest that agreed caught by the team's own lines) and `team/monday.md`, then asks the Day 1 opening question (`our-product-our-system.md` § the last thing your team built that nobody asked for) of Monday's proposal. `## Next` asks the stance question again and does not answer it; the lecture *Where you go from here* asks it first, so `## Next` is two sentences and nothing else.
 
 **Board:** the trainer sets up three frames on each team's Miro board before the day: *Story map* (backbone row plus three slice rows), *Five users* (five columns), *Way of working* (three columns: agents do, people keep, where the old way wins). Criteria, the judge, rules and `team/monday.md` stay in files because agents keep reading them.
 
@@ -95,11 +99,12 @@ The bet is still open. Five people gave you a first reading of it, and the next 
 |---|---|---|---|
 | The fresh digest | `module-2/morning-agent/latest.html` | Day 2 run set at close (Day 2 writer owns the path) | § Start here |
 | The Day 1 digests | `team/<name>/digest-day1.html` | Day 2 read the digest (saved before any rerun) | write what good means (`apt101-d3-caught`); five users |
-| Caught | `team/caught.md` | write what good means (`apt101-d3-caught`) | write what good means (`apt101-d3-what-it-missed`) |
+| Caught | `team/caught.md` | write what good means (`apt101-d3-caught`) | write what good means (`apt101-d3-what-it-missed`); § Say it to each other (read aloud) |
 | Story map | *Story map* frame, `team/story-map.md` | map the story | five users; take it to the team |
 | First slice | `team/slice-1/` | map the story | five users |
 | What good means | `team/what-good-means.md`, `team/<name>/what-it-missed.md` | write what good means | later runs of the judge (outside this day) |
-| Eval run | `./generation-tactic.md`, `module-6/runs/`, `module-6/eval-notes.md` | write what good means (`eval-loop-1/2/5`) | `share-your-work-1` reads `module-6/` |
-| Five users | *Five users* frame, `team/five-users.md` | five users | take it to the team (`apt101-d3-team-monday`) |
-| Sharing package | `module-7/*.md` | take it to the team (`share-your-work-1..6`) | § Sharpen the proposal |
-| Monday | *Way of working* frame, `team/monday.md` | take it to the team (`apt101-d3-team-monday`), sharpened in § Sharpen the proposal | the wider team, Monday |
+| Eval run | `./generation-tactic.md`, `module-6/runs/`, `module-6/eval-notes.md` | write what good means (`eval-loop-1/2/5`) | write what good means (`apt101-d3-what-it-missed` reads `module-6/runs/`) |
+| Each Day 1 hypothesis | `team/bet.md` | Day 1 write the bet | five users (`apt101-d3-read-the-sessions`, phase 4) |
+| Five users | *Five users* frame, `team/five-users.md` (call, proved-wrong lines, the sentence now believed) | five users | take it to the team (phase 1, `apt101-d3-the-job-your-team-hires`, `apt101-d3-team-monday`) |
+| Sharing package | `module-7/*.md` | take it to the team (`apt101-d3-the-job-your-team-hires`, `apt101-d3-bottleneck-and-plans`, `apt101-d3-test-the-switch`) | § Sharpen the proposal |
+| Monday | *Way of working* frame, `team/monday.md` | take it to the team (`apt101-d3-team-monday`), sharpened in § Sharpen the proposal | § Say it to each other (read aloud); the wider team, Monday |

@@ -125,7 +125,7 @@ Tonight the agent reads your chosen bet and looks for what argues against it. On
 
 Beat 5 (legal and data review) is cut; governance is not taught.
 
-**Transitions:** the digest read where each person knows most, then named (1) → the outcome it should have served (2) → evidence that disagrees with itself (3) → the turn, *Why it agreed*, named after the trio has seen both. Tree alone → merged → questioned by role (4), then named (*Widen*). The benchmark (6) produces the judge that prunes the tree (7). Chosen bet → three pieces (8) → its failure imagined (9) → talked through (10) → kept as rules and tonight's brief (11). The digest opens and closes the day: read on its own terms in the morning, rewritten at the end to check the bet.
+**Transitions:** the digest read where each person knows most, its headline set beside the bet and each person's own Day 1 look-for line until the trio finds which sentence asked for the agreement, then the feeling named (1) → the outcome it should have served (2) → evidence that disagrees with itself (3) → the turn, *Why it agreed*, named after the trio has seen both. Tree alone → merged → questioned by role (4), then named (*Widen*). The benchmark (6) produces the judge that prunes the tree (7). Chosen bet → three pieces (8) → its failure imagined (9) → talked through (10) → kept as rules and tonight's brief (11). The digest opens and closes the day: read on its own terms in the morning, rewritten at the end to check the bet.
 
 **Protected:** beats 8 and 10. **Overrun order** (beat sheet): the morning uses the float; beat 9 drops to one ranking round; beat 12 to five minutes.
 
@@ -139,7 +139,7 @@ Beat 5 (legal and data review) is cut; governance is not taught.
 
 | Artefact | Produced by | Consumed by |
 |---|---|---|
-| `team/<name>/doubts.md`, `team/doubts.md` | read the digest | pick the outcome; keep and run tonight |
+| `team/<name>/doubts.md` (headed by the Day 1 look-for line, word for word), `team/doubts.md` | read the digest | pick the outcome; keep and run tonight |
 | `team/<name>/digest-day1.html` (copy of the Day 1 digest, kept before tonight's run overwrites `latest.html`) | read the digest (each) | Day 3 what good means |
 | `./crux.md` (outcome, crux, question; `## Answer` later), `team/crux.md` | pick the outcome (product owner, copied to all) | gather the evidence; grow the tree; catch it making things up; choose the bet |
 | `sources/*-retrieval.md`, each person's curated `memory/` and the curator's synthesis note | gather the evidence | grow the tree; catch it making things up |

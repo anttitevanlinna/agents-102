@@ -134,11 +134,9 @@ in §Rule files, the four-beat reading arc in §Reading contract, the sitting sh
 §Delivery-shape variants. Read those sections as written; each names what a cut without M3 or M6
 does instead. Standing facts:
 
-- **The autumn module files, the forked exercises and lecture, and the two workshop exercises have no recoverable history, deliberately.**
-  The commits that added them and the commit that removed them
-  were squashed into one before anything was pushed, because the workshop material is the customer's
-  IPR under the ownership split. Anything worth keeping was re-authored in surviving files; nothing
-  points back at them.
+- **A customer-authored workshop is the customer's IPR and never enters this repository.** The two
+  workshops of this cut live in the customer's own repository. No file here, and no commit in this
+  history, holds them or text taken from them.
 - **The two workshops were read for their contracts, not their pedagogy** — what the customer
   loses by re-authoring them from scratch was never priced.
 - **The supplementaries were checked for dropped-module references only** (not for whether

@@ -7,6 +7,25 @@ section per run, newest first; per-judge reports under `story-depth/`.
 
 
 
+
+## APT101 hill-climb: round 2, lived turns (`apt101-handbook-hc2`), 2026-10-07
+
+Same protocol and lens as hc1. Change: the Day 2 turn points at the trio's own brief and bet, Day 3 reads their own five users beside their digest, the training's position leads the method slides, and two stances are defended by mechanism. Reports: `story-depth/apt101-handbook-hc2.judge-{1,2,3}.md`.
+
+| | AE101 | APT101 hc2 | hc1 |
+|---|---|---|---|
+| Frame | 95 | 88 | 85 |
+| Narrative | 93 | 84 | 76 |
+| Point of view | 95 | 85 | 84 |
+| Stance | 92 | 87 | 81 |
+
+Per judge, APT101: 88/84/85/85 · 88/84/85/87 · 90/85/84/87.
+
+**Converged:**
+- **Point of view** is the gap left. Every judge asks for the guide's own first-person moment at the Day 2 turn, a brief or digest that agreed with him. Only the maintainer can supply it.
+- **Frame:** the borrowed-method slides (Mom Test, 1-2-4-All, Houde and Hill, Kniberg) should end by naming what got cheap and which decision didn't.
+- **Stance:** one position in the training's own voice, against its own sale.
+
 ## APT101 hill-climb: round 1, squint built into slides (`apt101-handbook-hc1`), 2026-10-07
 
 Paired, three Opus judges, 1–100. The judges were given the intended shape: the student is the hero, a first-person voice is the guide, an open forward ending is intended, and the point-of-view anchor is unchanged. Both trainings were judged under the same lens. Reports: `story-depth/apt101-handbook-hc1.judge-{1,2,3}.md`. Build: b758b28b, 78 handbook slides.

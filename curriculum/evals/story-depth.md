@@ -9,6 +9,31 @@ section per run, newest first; per-judge reports under `story-depth/`.
 
 
 
+
+## APT101 vs Agents 101 for the trio: blind persona reads, 2026-10-07
+
+Three Opus persona readers (product owner, designer and team lead, each L2 proficient-chat and Nordic) read both theory handbooks in full. The handbooks were labelled A and B, with the order alternated across readers. Each reader had to choose one. Reports: `story-depth/apt101-vs-a101-trio.{product-owner,designer,team-lead}.md`.
+
+| fits my job / use next week / respects what I know / recommend / remember | APT101 | Agents 101 |
+|---|---|---|
+| Product owner | 9 / 8 / 7 / 8 / 8 | 4 / 6 / 6 / 5 / 7 |
+| Designer | 9 / 8 / 8 / 8 / 8 | 5 / 6 / 6 / 5 / 7 |
+| Team lead | 8 / 8 / 6 / 7 / 8 | 5 / 6 / 6 / 5 / 7 |
+
+**APT101, unanimously.** All three readers picked it, for the same reasons. It starts from their own job and pain, and it treats the trio as one unit, giving each role a piece. It answers the team lead's private question, *what am I for*, and fits co-determination: "agents get checked, people don't get watched". Its honesty against its own sale made the rest believable. Agents 101 read as written for an exec and for an individual builder: pricing and market-entry examples, the team only arriving in M7, and "You are now agent builders".
+
+**What Agents 101 does better, which is APT101's to-do list:**
+- **Hands-on:** you build and run the agent, so "six parts" is felt, not listed. APT101's handbook is lectures only.
+- **Trust machinery in depth:** the detector benchmark, the judge, and checking the judge against your own calls.
+- **Harder evidence:** court and audit records (Mata v. Avianca, Deloitte), against APT101's author essays and a parade of named authorities.
+- **Earned slides:** the shared slides land after an exercise in Agents 101.
+
+**APT101 readers flagged:**
+- The citation parade.
+- The essays, quoted four or five times, starting to read like a pitch to two of the three readers.
+- The "wider, deeper and faster" refrain, back four times.
+- The discovery-craft middle, familiar ground to the team lead.
+
 ## APT101 hill-climb: round 3, stance and frame (`apt101-handbook-hc3`), 2026-10-07
 
 Same protocol and lens. Changes:

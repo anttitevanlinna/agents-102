@@ -36,6 +36,8 @@ Push back on a merge that reads like the average of the three of you. If your si
 
 Each of you, on your own laptop, back in your first <span class="rt-code">session</span><span class="rt-cowork">task</span>. Ask Claude to send three minds through your memory, each from a different angle, and write back what they find.
 
+Three subagents fanning out at once. If one starts reading the world, stop it, steer narrower, then say *"continue"*.
+
 <div class="rt-code">
 
 Ask Claude to spawn three subagents with different stances, then synthesize their notes back into `./crux.md`.
@@ -75,8 +77,8 @@ The tree is not finished, and it should not be. You choose from it in *Choose th
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@21214fc5)
-- judges @21214fc5: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@21214fc5 pedagogy@20018100)
+- judges @20018100: behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-grow-the-tree.pedagogy.json)
 
 **Role in Day 2:** beat 4. Produces the team's opportunity solution tree, attributed per branch, and each person's three-stance read of the evidence. Placed after *Go back to your customers*; *Widen before you choose* names afterwards what the trio just did (alone first, merge keeps the single-name branch, the outcome makes the merge choose).
 
@@ -90,6 +92,8 @@ The tree is not finished, and it should not be. You choose from it in *Choose th
 
 **Room:** phase 1 solo in silence on the board; phase 2 designer drives, product owner checks branches against the outcome, team lead marks single-name branches on the board; phase 3 solo; phase 4 all three on the board, designer records. Attribution comes from the sticky's name or colour, stated by the person who wrote it (workshop §5); nothing is written over (§6): Claude lists cuts, the trio makes them at *Choose the bet*.
 
-**Failure modes:** merge averages toward the middle (push back for the single-name branch); "opportunities" that are features (Torres's more-than-one-way test, inside the merge prompt); no Miro connector (screenshot fallback).
+**Failure modes:** phase 1, one person's colour fills the frame (trainer: equal sticky count each, then stop); phase 2, merge averages toward the middle (push back for the single-name branch) and "opportunities" that are features (Torres's more-than-one-way test, inside the merge prompt); phase 3, a stance read taken as agreement (ask which stance disagreed, and with what); phase 4, challenges written in the room's majority colour (each in their own colour, on their own branch); no Miro connector throughout (screenshot fallback).
+
+**Leap test:** on Monday each person (1) can point to a branch in `team/tree.md` only one of them found, kept with its name; (2) checks a branch against the source sentence quoted under it before quoting it to anyone; (3) has one challenge in their own colour that changed the tree.
 
 **View summary:** You grow an opportunity solution tree from the agreed outcome: sketched alone on the team board, merged by Claude with every branch's names kept, then questioned by each of you from your own role.

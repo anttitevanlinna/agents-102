@@ -48,8 +48,8 @@ One bet, written so it can lose, with the evidence behind it and the branches yo
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@21214fc5)
-- judges @21214fc5: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@21214fc5 pedagogy@20018100)
+- judges @20018100: behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-choose-the-bet.pedagogy.json)
 
 **Role in Day 2:** beat 7, first after lunch. Turns the attributed tree into one chosen bet, with evidence and its riskiest assumption, that beat 8 builds pieces of and Day 3 slices.
 
@@ -64,5 +64,7 @@ One bet, written so it can lose, with the evidence behind it and the branches yo
 **Room:** product owner drives the screen; all three on the board; each role has its own lens in phase 2. Decision is the trio's, never vote-counted or agent-adjudicated (workshop §11); the real constraint is that Day 3 builds one branch only (§10). Nothing is written over (§6): pruned branches move aside with their reason.
 
 **Failure modes:** the team picks the branch it liked before lunch and the judge's verdicts are skimmed (point at the sticky); the signal can only say yes (push back in phase 3).
+
+**Leap test:** on Monday the trio (1) has one bet in `team/chosen-bet.md` with a signal that could come back no; (2) can name each branch it set aside and why; (3) quotes the evidence behind the bet with its source, not from memory.
 
 **View summary:** You check every branch of your tree against its evidence with the judge you built, set aside what has nothing behind it, and choose one bet, written as a hypothesis statement with a signal that could say no.

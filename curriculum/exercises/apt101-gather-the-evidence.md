@@ -78,8 +78,8 @@ Three sources read at once, three memories curated from the same evidence, and a
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@21214fc5)
-- judges @21214fc5: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@21214fc5 pedagogy@20018100)
+- judges @20018100: behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-gather-the-evidence.pedagogy.json)
 
 **Role in Day 2:** beat 3. Fills every `sources/` and `memory/` with fresh evidence scoped to the agreed outcome; surfaces the contradictions the tree grows from. Followed by the lecture *Why it agreed*, which names why the digest agreed after the trio has seen sources disagree.
 
@@ -98,5 +98,7 @@ Three sources read at once, three memories curated from the same evidence, and a
 **Door test:** phase 3's skipped-list read makes the Day 1 door a tested decision, not only an obeyed one: each person says whether one skipped source would have changed the outcome picked in `apt101-pick-the-outcome`.
 
 **Failure modes:** a retriever with no connector (escape: point it at `sources/`); curator batching at the end instead of streaming (coach as Agents 101); the contradiction line smoothed (push back to quote both sides).
+
+**Leap test:** on Monday each person (1) has a memory that carries at least one finding against the bet, marked; (2) can name a source the door kept out and what it might have said; (3) reads a contradiction between two sources with both sides quoted.
 
 **View summary:** Each of you sends a retriever through one source of evidence while a curator folds the findings into memory. Together you read where your sources disagree.

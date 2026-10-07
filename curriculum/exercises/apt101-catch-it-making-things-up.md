@@ -40,6 +40,8 @@ Ask Claude to turn the briefing into a pool of claims the checks can score.
 
 Four checks, four methods, the same claim pool, each in its own <span class="rt-code">subagent</span><span class="rt-cowork">agent</span>, each writing to its own file.
 
+Four of them fanning out at once over the evidence. If one starts reading far beyond it, stop it, steer narrower, then say *"continue"*.
+
 <div class="rt-code">
 
 {{prompt:hallucination-bakeoff-3}}
@@ -105,8 +107,8 @@ Four checks ran, a scorer measured them, and the one that won on your own eviden
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@3d7fd713)
-- judges @3d7fd713: behavior PASS
+**Quality:** compendium-audited 2026-10-07 (behavior@3d7fd713 pedagogy@20018100)
+- judges @20018100: behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-catch-it-making-things-up.pedagogy.json)
 
 **Role in Day 2:** beat 6, the trust centre of the day. Produces the groundedness judge every later beat leans on, and the first real catch. *Safe to say it's wrong* and *Fluent is not true* sit after: the first names the norm the phase 5 share just used ("the agent got this wrong", said about a real summary), the second names what the trio caught (stretch, smooth, the made-up quote).
 
@@ -120,8 +122,10 @@ Four checks ran, a scorer measured them, and the one that won on your own eviden
 
 **Room:** one benchmark per trio, on the team lead's laptop. During phases 1–2 the other two ready their real summary and write down the claim they bet is unsupported (their own prediction, checked by the judge in phase 5); phases 3–4 are the trio at one screen, each giving their own surprise line; phase 5 each on their own laptop. The phase 5 share is to the other two in the trio, not the room. Every seat has a move throughout; three identical benchmarks would leave about 30 minutes with nobody able to watch anyone.
 
-**Watch-fors (as Agents 101 M5):** reading the briefing before extraction; scorer hedging "all four are useful" (re-run, force a pick, ensemble cap two); judge file sprawl past 20 lines; generic *Known limit*. Phase 5: the real summary comes back clean. That is a result, not a failure; the judge's limit line says what it could have missed.
+**Watch-fors (as Agents 101 M5):** reading the briefing before extraction (recover: re-plant with `hallucination-bakeoff-1`); phase 2, a detector's paraphrased flags scored as misses against the strict pool (read its file before trusting its row; the scorer's notes say which); scorer hedging "all four are useful" (re-run, force a pick, ensemble cap two); judge file sprawl past 20 lines; generic *Known limit*. Phase 5: the real summary comes back clean. That is a result, not a failure; the judge's limit line says what it could have missed.
 
 **Timing:** 70-minute beat = this exercise 60 + the two lectures after it ~10. Phase 5 runs 10 because two summaries and their sources were readied during phases 1–2.
+
+**Leap test:** on Monday the trio (1) runs `judges/groundedness-judge.md` on the next research summary before it reaches a priority call; (2) can say which method won on their own evidence and what its known limit misses; (3) has one real claim the judge flagged that someone would otherwise have repeated.
 
 **View summary:** One of you plants made-up claims in a briefing built from your evidence, four checking methods compete to find them, and the trio keeps the winner as a judge. The other two ready a real research summary meanwhile. Then each of you runs the judge on a summary your team was about to trust.

@@ -71,7 +71,7 @@ If the bet does not survive, that is good work. Go back to the tree and choose a
 
 ## Close
 
-Laptops shut, one round, each of you in turn:
+Laptops shut:
 
 - Where did the agent get it wrong today?
 - What do you now trust it with, and what not?
@@ -100,8 +100,8 @@ Tonight the agent reads your chosen bet and looks for what argues against it. On
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07
-- judges @21214fc5: behavior N/A
+**Quality:** compendium-audited 2026-10-07 (pedagogy@20018100)
+- judges @20018100: behavior N/A, pedagogy PASS (1 finding see instances/agentic-product-teams-101--module--whats-actually-true.pedagogy.json)
 
 **STATUS:** built from the build plan (`curriculum/module-design/apt101-build-plan.md`) and the Day 2 beat sheet (`apt101-day-2-beats.md` v10), 2026-10-07. `simulation: true` training: pages and prompt lines land uncarded. New prompts are named lines; bodies come in the prompt-body pass. Big Idea = an adopted positioning line (strategy, 2026-10-05).
 

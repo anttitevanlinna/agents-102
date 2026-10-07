@@ -8,6 +8,33 @@ section per run, newest first; per-judge reports under `story-depth/`.
 
 
 
+
+## APT101 hill-climb: round 3, stance and frame (`apt101-handbook-hc3`), 2026-10-07
+
+Same protocol and lens. Changes:
+- a stance held against the training's own sale (`customers-before-agents`);
+- borrowed-method slides close on what got cheap and which decision didn't;
+- the Day 2 stance link sharpened.
+
+Reports: `story-depth/apt101-handbook-hc3.judge-{1,2,3}.md`.
+
+| | AE101 | hc3 | hc2 | hc1 | r2 (pre-squint) |
+|---|---|---|---|---|---|
+| Frame | 95 | 88 | 88 | 85 | 80 |
+| Narrative | 94 | 84 | 84 | 76 | 58 |
+| Point of view | 95 | 84 | 85 | 84 | 60 |
+| Stance | 92 | 88 | 87 | 81 | 80 |
+
+Per judge, APT101: 88/84/84/89 · 87/84/85/88 · 88/83/84/88.
+
+**Plateau.** Stance gained a point; nothing else moved.
+
+**Overcorrection.** All three judges flag the "X got cheap; Y did not" closer as a tagline. It belongs only where the frame is stated, where it is load-bearing, and where it breaks. Revert it on the method slides.
+
+**Remaining gaps.**
+- Point of view (about 11) and narrative (about 10) converge on one move: the guide's own first-person failure at the Day 2 turn. That means a real brief or digest that agreed with his favourite hypothesis, and what a customer later showed him. Only the maintainer can supply it.
+- Part of the narrative gap comes from the manifest (lectures only against AE101's lectures plus exercises).
+
 ## APT101 hill-climb: round 2, lived turns (`apt101-handbook-hc2`), 2026-10-07
 
 Same protocol and lens as hc1. Change: the Day 2 turn points at the trio's own brief and bet, Day 3 reads their own five users beside their digest, the training's position leads the method slides, and two stances are defended by mechanism. Reports: `story-depth/apt101-handbook-hc2.judge-{1,2,3}.md`.

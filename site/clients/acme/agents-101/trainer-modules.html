@@ -123,7 +123,8 @@ main { flex: 1 0 auto; }
    phrasing in <span class="rt-code">…</span> and <span class="rt-cowork">…</span>;
    the body.runtime-* class hides the inactive variant.
 
-   Claude Code and Cowork run the same engine behind different surfaces. */
+   Verified facts driving the design — see curriculum/reference/claude-code-for-engineers.md
+   § Claude Cowork — same engine, different surface. */
 
 .runtime-switcher {
     display: inline-flex;
@@ -510,39 +511,13 @@ main::before {
    The renderer wraps the label paragraph + the following <pre> in
    .prompt-block, surfaces destination + optional context as a header
    chip, and adds a Copy button to the <pre>. Every other <pre> in
-   the document also gets a Copy button (universal affordance).
-
-   Colour contract: a prompt block owns its colours as tokens. Customer CSS
-   sets the public pair once and every phase takes it, nested <code> and the
-   header's copy button included:
-     --prompt-bg / --prompt-fg                  plate + text
-     --prompt-header-bg / --prompt-header-fg    header row (label, destination,
-                                                context, copy button)
-     --prompt-label-fg                          label only, when it should differ
-     --prompt-border                            frame + header rule
-   Unset, the private --_prompt-* defaults apply, which the phase rules below
-   re-point. Phase rules set private tokens, never the properties, so no
-   descendant rule can outrank a customer's pair (scripts/prompt-contrast.test.js). */
+   the document also gets a Copy button (universal affordance). */
 
 .module .prompt-block {
-    --_prompt-bg: var(--bg-2);
-    --_prompt-fg: var(--fg);
-    --_prompt-border: var(--line-2);
-    --_prompt-header-bg: var(--bg-3);
-    --_prompt-header-border: var(--line-2);
-    --_prompt-label: var(--accent);
-    --_prompt-arrow: var(--fg-3);
-    --_prompt-dest: var(--fg);
-    --_prompt-context: var(--fg-2);
-    --_prompt-context-dot: var(--fg-4);
-    --_prompt-copy-bg: var(--bg);
-    --_prompt-copy-border: var(--line);
-    --_prompt-copy-fg: var(--fg-2);
     margin: 0 0 1.5rem;
-    border: 1px solid var(--prompt-border, var(--_prompt-border));
+    border: 1px solid var(--line-2);
     border-radius: 5px;
-    background-color: var(--prompt-bg, var(--_prompt-bg));
-    color: var(--prompt-fg, var(--_prompt-fg));
+    background: var(--bg-2);
     overflow: hidden;
 }
 
@@ -552,8 +527,8 @@ main::before {
     flex-wrap: wrap;
     gap: 0.55rem;
     padding: 0.4rem 0.55rem 0.4rem 0.95rem;
-    background-color: var(--prompt-header-bg, var(--_prompt-header-bg));
-    border-bottom: 1px solid var(--prompt-border, var(--_prompt-header-border));
+    background: var(--bg-3);
+    border-bottom: 1px solid var(--line-2);
     font-size: 0.78rem;
     line-height: 1.3;
 }
@@ -561,32 +536,32 @@ main::before {
 .module .prompt-block__label {
     font-family: var(--font-body);
     font-weight: 600;
-    color: var(--prompt-label-fg, var(--prompt-header-fg, var(--_prompt-label)));
+    color: var(--accent);
     text-transform: uppercase;
     letter-spacing: 0.06em;
 }
 
 .module .prompt-block__arrow {
-    color: var(--prompt-header-fg, var(--_prompt-arrow));
+    color: var(--fg-3);
 }
 
 .module .prompt-block__dest {
     font-family: var(--font-body);
     font-weight: 600;
-    color: var(--prompt-header-fg, var(--_prompt-dest));
+    color: var(--fg);
 }
 
 .module .prompt-block__context {
     font-family: var(--font-serif);
     font-style: italic;
-    color: var(--prompt-header-fg, var(--_prompt-context));
+    color: var(--fg-2);
     font-size: 0.92em;
 }
 
 .module .prompt-block__context::before {
     content: "·";
     margin-right: 0.5rem;
-    color: var(--prompt-header-fg, var(--_prompt-context-dot));
+    color: var(--fg-4);
 }
 
 /* Permission-mode chip — emitted by decoratePrompts() when a prompt's
@@ -639,13 +614,75 @@ main::before {
     margin: 0;
     border: 0;
     border-radius: 0;
-    background-color: var(--prompt-bg, var(--_prompt-bg));
-    color: var(--prompt-fg, var(--_prompt-fg));
+    background: var(--bg-2);
 }
 
-.module .prompt-block .prompt-block__pre code {
-    background: none;
-    color: inherit;
+/* Cut-candidate — a prompt flagged for review by a `{{cut:key|reason}}` marker
+   (sibling of `{{prompt:key}}`). The material is fully retained; the block is
+   dimmed + grayed and wears the ribbon below so the maintainer can eyeball
+   removal candidates before committing a real cut. Reversible: swap the marker
+   back to `{{prompt:key}}` on one line. Hover lifts the veil so the prompt stays
+   readable while judging. */
+.module .prompt-block.cut-candidate {
+    opacity: 0.5;
+    filter: grayscale(0.9);
+    border-style: dashed;
+}
+
+.module .prompt-block.cut-candidate:hover {
+    opacity: 1;
+    filter: none;
+}
+
+/* Muted-danger chip bar, same typographic key as the header chips (uppercase,
+   tracked, small). No --danger token in the palette, so a restrained oxblood-
+   adjacent red that reads as "flagged" without shouting. */
+.module .cut-candidate__ribbon {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.95rem;
+    background: #a3443b;
+    color: var(--bg);
+    border-bottom: 1px solid var(--line-2);
+}
+
+/* Covered-region — a prose span wrapped by `{{covered:slug#anchor}}` …
+   `{{/covered}}` markers (sibling of the cut-candidate treatment, but for
+   passages whose content a new slide-format section now carries). Neutral
+   semantic: dimmed + ribboned so the maintainer can eyeball the redundancy;
+   the passage either gets deleted once the covering slides are perfected, or
+   stays as the depth layer beneath them. Hover lifts the veil. Unscoped —
+   covered regions appear in lectures rendered both inside .module and as
+   standalone sections. */
+.covered-region {
+    opacity: 0.5;
+    filter: grayscale(0.9);
+    border: 1px dashed var(--line-2);
+    padding: 0 1rem 0.25rem;
+    margin: 1rem 0;
+}
+
+.covered-region:hover {
+    opacity: 1;
+    filter: none;
+}
+
+/* Neutral steel chip bar — same typographic key as the cut ribbon, cooler
+   hue: "has a new home", not "flagged for danger". */
+.covered-region__ribbon {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.95rem;
+    margin: 0 -1rem;
+    background: #4a6274;
+    color: var(--bg);
+    border-bottom: 1px solid var(--line-2);
 }
 
 /* Anchored clauses inside a prompt body — planted by injectAnchorSentinels
@@ -775,12 +812,6 @@ main::before {
     transition: opacity 0.15s ease, color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
 }
 
-.module .prompt-block__header .copy-btn {
-    color: var(--prompt-header-fg, var(--_prompt-copy-fg));
-    background-color: var(--prompt-header-bg, var(--_prompt-copy-bg));
-    border-color: var(--prompt-header-fg, var(--_prompt-copy-border));
-}
-
 .module .copy-btn:hover {
     color: var(--accent);
     border-color: var(--accent);
@@ -820,8 +851,16 @@ main::before {
    warmest (--bg-3). Header stays distinct as the darker chip on a lighter
    prompt card, which itself reads as a card on the lecture warmth. */
 .phase--lecture .prompt-block {
-    --_prompt-bg: var(--bg);
-    --_prompt-header-bg: var(--bg-2);
+    background: var(--bg);
+    border-color: var(--line-2);
+}
+
+.phase--lecture .prompt-block__header {
+    background: var(--bg-2);
+}
+
+.phase--lecture .prompt-block .prompt-block__pre {
+    background: var(--bg);
 }
 
 /* Inside ink-dark exercise phases — invert chrome to read on dark bg.
@@ -829,25 +868,31 @@ main::before {
    chip and copy button read as a separate row. Border lifted to ink-text
    alpha so the widget has a real frame, not a 1px shadow. */
 .phase--exercise .prompt-block {
-    --_prompt-bg: rgba(244,236,219,.03);
-    --_prompt-fg: var(--ink-text);
-    --_prompt-border: rgba(244,236,219,.18);
-    --_prompt-header-bg: rgba(244,236,219,.09);
-    --_prompt-header-border: rgba(244,236,219,.14);
-    --_prompt-label: var(--warm);
-    --_prompt-arrow: var(--ink-muted);
-    --_prompt-dest: var(--ink-text);
-    --_prompt-context: var(--ink-text-2);
-    --_prompt-context-dot: var(--ink-muted);
-    --_prompt-copy-bg: rgba(244,236,219,.10);
-    --_prompt-copy-border: rgba(244,236,219,.22);
-    --_prompt-copy-fg: var(--ink-text);
+    background: rgba(244,236,219,.03);
+    border-color: rgba(244,236,219,.18);
+}
+
+.phase--exercise .prompt-block__header {
+    background: rgba(244,236,219,.09);
+    border-bottom-color: rgba(244,236,219,.14);
 }
 
 /* Label drops slightly so the destination ("Claude Code", "Builder Claude")
    wins the header. Student needs to glance and know where this paste goes. */
-.phase--exercise .prompt-block__label { font-size: 0.72rem; }
-.phase--exercise .prompt-block__dest { font-size: 0.84rem; }
+.phase--exercise .prompt-block__label {
+    color: var(--warm);
+    font-size: 0.72rem;
+}
+.phase--exercise .prompt-block__arrow { color: var(--ink-muted); }
+.phase--exercise .prompt-block__dest {
+    color: var(--ink-text);
+    font-size: 0.84rem;
+}
+.phase--exercise .prompt-block__context { color: var(--ink-text-2); }
+.phase--exercise .prompt-block__context::before { color: var(--ink-muted); }
+.phase--exercise .prompt-block .prompt-block__pre {
+    background: rgba(244,236,219,.03);
+}
 
 /* Copy button reads as a button on dark — bright enough plate, real text
    colour, real border. Was three near-blacks stacked; now it sits forward. */
@@ -1649,11 +1694,11 @@ main::before {
     color: var(--warm);
 }
 
-.phase--exercise pre:not(.prompt-block__pre) {
+.phase--exercise pre {
     background: rgba(244,236,219,.04);
     border-color: var(--ink-line);
 }
-.phase--exercise pre:not(.prompt-block__pre) code { background: none; color: var(--ink-text); }
+.phase--exercise pre code { background: none; color: var(--ink-text); }
 
 .phase--exercise hr { border-top-color: var(--ink-line); }
 
@@ -2050,12 +2095,6 @@ body.workbook .workbook-toc {
     border-bottom: 1px solid var(--line);
     margin-bottom: 3rem;
 }
-.workbook-cover .brand-logo {
-    display: block;
-    max-height: 64px;
-    max-width: 260px;
-    margin: 0 auto 1.5rem;
-}
 .workbook-cover .eyebrow {
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -2439,7 +2478,7 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
 
 <h3 id="m1--getting-going">M1 — Getting Going</h3>
 <p><strong>Big idea.</strong> Context and guardrails turn generic generation into something the student can recognize as their own. Module 1 stays deliberately scoped inside <code>module-1/</code>.</p>
-<p><strong>Room cues.</strong> Open with the room agreement. Close on the Module 2 handoff.</p>
+<p><strong>Flow.</strong> Opening room agreement → <a href="./#lectures-context-is-king">Context is King</a> → <a href="./#exercises-personal-site-with-guardrails">Paint by agent with guardrails</a> → <a href="./#lectures-what-just-happened">Iterate and learn</a> → Debrief and rules retro → cold critic → Key Concepts → Module 2 handoff.</p>
 <p><strong>Mood.</strong> Joyful creation: <em>&quot;I made this. It is me.&quot;</em> Check: the student talks only about making a website or about tool mechanics. Fix: compare the generic first pass with the line that became unmistakably theirs, then point at the context that caused the difference.</p>
 <p><strong>Protect.</strong> The baseline-to-guardrailed contrast, the student&#39;s own evaluation, the retro into <code>module-1/personal-brand-generation.md</code>, and the cold read.</p>
 <p><strong>Push-backs.</strong></p>
@@ -2521,7 +2560,7 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
 
 <h3 id="m2--building-agent-systems">M2 — Building Agent Systems</h3>
 <p><strong>Big idea.</strong> A one-shot becomes a system when it has durable sources, maintained memory, operating rules, and a recurring job on the student&#39;s real challenge.</p>
-<p><strong>Room cues.</strong> Fresh session at the training root, then the connector demo. Close on the scheduled-agent homework and the M3 prework.</p>
+<p><strong>Flow.</strong> Fresh session at the training root → connector demo → <a href="./#lectures-first-scheduled-agent">first scheduled agent</a> → <a href="./#exercises-name-your-challenge">name the challenge</a> → <a href="./#exercises-build-your-challenge-memory">build the challenge memory</a> → <a href="./#lectures-compounding">Compounding</a> → Debrief creates root <code>CLAUDE.md</code> → Key Concepts → scheduled-agent homework and M3 prework.</p>
 <p><strong>Mood.</strong> Satisfied compounding: <em>&quot;This persists and keeps working on my real challenge.&quot;</em> Check: the student describes a setup exercise or a folder of notes. Fix: run the hardest open question against the memory and trace the cited answer back to the sources that now remain on disk.</p>
 <p><strong>Protect.</strong> The live challenge, three source zones, plan-first review, one real custom agent, and the first root rules file written from what happened.</p>
 <p><strong>Push-backs.</strong></p>
@@ -2616,7 +2655,7 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
 
 <h3 id="m3--multi-agent-systems">M3 — Multi-Agent Systems</h3>
 <p><strong>Big idea.</strong> Separate agents search from different source positions and think from different stances; files make the handoffs inspectable.</p>
-<p><strong>Room cues.</strong> Fresh session at the training root, then the action boundary demo. Close on the M4 handoff.</p>
+<p><strong>Flow.</strong> Fresh session at the training root → action boundary demo → <a href="./#exercises-name-your-crux">name the crux</a> → <a href="./#exercises-three-retrievers-one-curator">three retrievers</a> → <a href="./#exercises-three-minds-one-synthesis">three minds</a> → <a href="./#lectures-when-to-split-an-agent">when to split</a> → <a href="./#lectures-debugging-stuck-agents">debugging stuck agents</a> → Debrief sharpens handoff rules → Key Concepts → M4 handoff.</p>
 <p><strong>Mood.</strong> Unsettled competence: <em>&quot;This is useful, and I wonder whether it is right.&quot;</em> Check: the synthesis is presented as finished truth. Fix: ask which conflict disappeared at a seam and write the doubt into <code>module-3/wonder.md</code>; do not resolve it here.</p>
 <p><strong>Protect.</strong> Two visibly different coordination shapes, separate source-zone outputs, stance diversity, a framework-backed synthesis, and the unresolved doubt.</p>
 <p><strong>Push-backs.</strong></p>
@@ -2716,7 +2755,7 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
 
 <h3 id="m4--security">M4 — Security</h3>
 <p><strong>Big idea.</strong> Safety is not visible in a polished output. The durable practice is assess, mitigate, reassess, and name the residual risk.</p>
-<p><strong>Room cues.</strong> Fresh session at the training root. The debrief generalizes the operating rules into recurring skills. Close on the M5 handoff.</p>
+<p><strong>Flow.</strong> Fresh session at the training root → <a href="./#lectures-agent-loop-raw">agent loop, raw</a> → <a href="./#lectures-practice-of-risk">discipline of risk</a> → <a href="./#exercises-author-security-skill">author the security skill</a> → <a href="./#exercises-audit-your-agent">audit the agent</a> → Debrief compounds operating rules → recurring-skills generalization → Key Concepts → M5 handoff.</p>
 <p><strong>Mood.</strong> Deepened unease without blame: <em>&quot;This is complex, and I now have a practice for working with the uncertainty.&quot;</em> Check: the room treats the audit as a compliance checklist or celebrates a clean bill of health. Fix: read one <code>I can&#39;t tell</code> row and one residual decision; the loop is the competence, not certainty.</p>
 <p><strong>Protect.</strong> Raw policy read before packaging, a student-authored skill, both policy and agent-security lenses, one mitigation, and a real before/after residual.</p>
 <p><strong>Push-backs.</strong></p>
@@ -2813,7 +2852,7 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
 
 <h3 id="m5--grounded-output">M5 — Grounded Output</h3>
 <p><strong>Big idea.</strong> Grounding is a discipline. The student measures candidate detectors against their own benchmark and keeps a narrow judge whose limits are explicit.</p>
-<p><strong>Room cues.</strong> Fresh session at the training root. The debrief ends on the action-proposal boundary. Close on the M6 handoff.</p>
+<p><strong>Flow.</strong> Fresh session at the training root → <a href="./#lectures-grounded">Grounded</a> → <a href="./#exercises-hallucination-bakeoff">hallucination benchmark</a> → Debrief compounds groundedness triggers → action-proposal boundary → Key Concepts → M6 handoff.</p>
 <p><strong>Mood.</strong> Mechanical rescue: <em>&quot;This is actually fixable, and I can see which method worked.&quot;</em> Check: the student picks a detector by authority or treats the winner as universal. Fix: return to the scoreboard and the judge&#39;s Known limit line.</p>
 <p><strong>Protect.</strong> One shared claim pool, adjudicated benchmark, several detectors on the same input, a measurable scoreboard, a saved winner judge, and the explicit limit.</p>
 <p><strong>Push-backs.</strong></p>
@@ -2886,7 +2925,7 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
 
 <h3 id="m6--evaluations">M6 — Evaluations</h3>
 <p><strong>Big idea.</strong> A fixed judge turns human judgment into repeatable steering while the generation tactic learns across rounds.</p>
-<p><strong>Room cues.</strong> Fresh session at the training root. The debrief sharpens the tactic without touching the judge. Close on the core close, or the M7 handoff.</p>
+<p><strong>Flow.</strong> Fresh session at the training root → <a href="./#lectures-evals-as-steering">evals as steering</a> → <a href="./#exercises-eval-loop">eval loop</a> → <a href="./#lectures-when-the-score-stops-moving">when the score stops moving</a> → <a href="./#lectures-new-human-role-in-the-loop">new human role in the loop</a> → Debrief sharpens the tactic without touching the judge → Key Concepts → core close or M7 handoff.</p>
 <p><strong>Mood.</strong> Unleashed leverage: <em>&quot;The loop can keep pressure on the work while I design the yardstick and boundaries.&quot;</em> Check: the student celebrates score improvement without showing what changed, or the judge moved with the generator. Fix: compare the judge hash and quote one tactic rule added from one piece of judge feedback.</p>
 <p><strong>Protect.</strong> Separate generation and judging roles, a byte-stable judge, round artifacts, tactic changes tied to feedback, score trajectory, and a walk-away period.</p>
 <p><strong>Push-backs.</strong></p>
@@ -2965,7 +3004,7 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
 
 <h3 id="m7--from-personal-to-team">M7 — From Personal to Team</h3>
 <p><strong>Big idea.</strong> The teammate&#39;s job comes first. Context, skill, output, and interface are different sharing designs with different absorption costs.</p>
-<p><strong>Room cues.</strong> Fresh session at the training root. Close on the real-world test each student runs before M8.</p>
+<p><strong>Flow.</strong> Fresh session at the training root → interview-for-the-job framing → four sharing shapes → <a href="./#exercises-share-your-work">interview and pick</a> → <a href="./#exercises-design-the-sharing-plan">design both plans</a> → <a href="./#exercises-test-the-sharing-plan">test and write Monday</a> → Debrief sharpens the sharing artifact → Key Concepts → real-world test before M8.</p>
 <p><strong>Mood.</strong> Generous impulse: <em>&quot;This is working for me; could it help someone else?&quot;</em> Check: the room starts with governance, deployment, or an abstract enterprise rollout. Fix: name one teammate, the job they are already hiring something to do, and the outcome that would make them switch.</p>
 <p><strong>Protect.</strong> A real teammate, a bounded interview, a measurable outcome statement, one to three chosen sharing shapes, equal technical and people plans, and one assumption tested outside the room.</p>
 <p><strong>Push-backs.</strong></p>
@@ -3044,7 +3083,7 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
 
 <h3 id="m8--agents-building-agents-the-flywheel">M8 — Agents Building Agents (The Flywheel)</h3>
 <p><strong>Big idea.</strong> The system extends itself, then many agents use shared context to propose, cross-check, criticize, and synthesize a grounded strategy kernel.</p>
-<p><strong>Room cues.</strong> Have the separate room-scale working folder ready, then the agent-builds-agent demo. Close on the sponsor identity line and the forward close.</p>
+<p><strong>Flow.</strong> Separate room-scale working folder ready → agent-builds-agent demo → <a href="./#exercises-extend-your-system">extend your system</a> → <a href="./#exercises-joint-double-diamond">Agent Proposal Forum</a> → Debrief sharpens the load-bearing file → Key Concepts → sponsor identity line and forward close.</p>
 <p><strong>Mood.</strong> Awe and curiosity: <em>&quot;Where is this going, and what can this system build next?&quot;</em> Check: the ending becomes a graduation ceremony or a tidy strategy presentation. Fix: point at the unresolved assumptions, the next experiments, and the fact that the flywheel can run again on the next problem.</p>
 <p><strong>Protect.</strong> A new agent generated from a real extension need; declared sharing scope; attributed stances; cross-checks before promotion; a human decision over the constrained options; criticism that changes the synthesis; and grounded kernel, agent-set, and plan artifacts.</p>
 <p><strong>Room-scale diagnostics and recovery.</strong></p>
@@ -3148,8 +3187,6 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
     var TRAININGS = {
         'agents-101': {
             label: 'Agents 101',
-            // Starter skeleton, extracted in place into the student's working folder.
-            tarball: { name: 'agents-101-starter.tar.gz', script: 'scripts/build-agents-101-starter-tarball.sh' },
             lede: 'Eight modules. The chat-to-systems leap. Build real *agents* on your own company content.',
             prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
             modules: [
@@ -3169,14 +3206,12 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
                 { slug: 'learning-and-compounding-systems',      title: 'Learning and Compounding Systems' },
                 { slug: 'cookbook-for-agent-system-design',      title: 'Cookbook for Agent System Design' }
             ],
-            references: []
+            references: [
+                { slug: 'claude-quick-reference',                title: 'Claude quick reference — commands and how-tos' }
+            ]
         },
         'agentic-engineering-101': {
             label: 'Agentic Engineering 101',
-            evalKey: 'ae101',         // instance/trace filename prefix
-            // Content tarball; its name is owned by training-architecture.md
-            // § Material distribution.
-            tarball: { name: 'ae101-content.tar.gz', script: 'scripts/build-ae101-content-tarball.sh' },
             lede: 'Six modules for software engineers. Become the Claude wizard by learning the new loop and finding your habit.',
             prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
             modules: [
@@ -3195,11 +3230,14 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
                 { slug: 'agentic-engineering-progression', title: 'The agentic engineering progression' }, // M1
                 { slug: 'the-lethal-trifecta',        title: 'The lethal trifecta' },                // M3
                 { slug: 'the-context-ceiling',        title: 'The context ceiling and token efficiency: the craft and the folklore' }, // M2→M3
+                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Reading Uncle Bob\'s Agent Experiments' }, // M4→M5
                 { slug: 'verification-asymmetry',     title: 'Verification asymmetry' },             // M4→M5
                 { slug: 'workflow-composition-lineages', title: 'Workflow composition lineages' },   // M6
+                { slug: 'skill-stacking',             title: "Dino's skill stacking system" },       // M6
                 { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' } // M6
             ],
             references: [
+                { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
                 { slug: 'mcp-and-connectors',        title: 'MCP and connectors' },
                 { slug: 'multi-session-git',         title: 'Multi-session and Git: survival guide' },
                 { slug: 'prompt-anatomy',            title: 'Prompt anatomy: the named moves' }
@@ -3303,7 +3341,6 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
         },
         'claude-basics': {
             label: 'Claude Basics',
-            status: 'draft',          // gates report, not block (scripts/gates.js)
             lede: 'A 3-hour live workshop for people helping their organisation roll out Claude. See the system, find the crux, then build and verify in your own folder.',
             runtime: 'cowork',
             modules: [
@@ -3312,29 +3349,6 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
                 { slug: 'homework-build-and-verify', title: 'Separate homework: build and verify' },
                 { slug: 'personal-site-with-guardrails', title: 'Paint by agent with guardrails' },
                 { slug: 'organisers-run-the-workshop', title: 'Organisers: run the workshop' }
-            ]
-        },
-        'agentic-product-teams-101': {
-            label: 'Agentic Product Teams 101',
-            status: 'draft',          // design-stage; gates report, not block
-            simulation: true,         // generated test run, never taught: pages and prompts land uncarded; the maintainer reads them when this flag comes off
-            lede: 'Three days for a product owner, a designer and a team lead on their own product: learn to do AI as a team, and stay in control of it.',
-            runtime: 'cowork',
-            modules: [
-                { slug: 'our-product-our-system',       title: 'Our product, our system' },
-                { slug: 'whats-actually-true',          title: "What's actually true?" },
-                { slug: 'learn-faster-than-the-market', title: 'Learn faster than the market' }
-            ]
-        },
-        'engineering-management-mock': {
-            label: 'Leading agentic engineering (mock)',
-            status: 'draft',          // tmux-runner proving mock; gates report, not block
-            simulation: true,         // generated test run, never taught: prompts skip the prompt-ok gate (scripts/prompt-sim-exempt.js); the maintainer reads them when this flag comes off
-            lede: 'A one-hour mock of Leading agentic engineering: see your team, then ask before you move. Proves a new training runs on the tmux engine.',
-            runtime: 'cli',
-            modules: [
-                { slug: 'see-your-team',       title: 'See your team' },
-                { slug: 'ask-before-you-move', title: 'Ask before you move' }
             ]
         }
     };
@@ -3420,111 +3434,7 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
 
     // Standalone include-link pattern: the entire paragraph is `[Title](kind/slug.md)`.
     // SPA fetches and inlines; workbook reads sync. Same regex, same shape.
-    // Optional `#<id>[,<id>...]` (group 3) includes only those slides, in the
-    // order listed (sliceSlides). Groups 1-2 are unchanged for readers that
-    // only need the file.
-    var INCLUDE_LINK_RE = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md(?:#([a-z0-9-]+(?:,[a-z0-9-]+)*))?\)[ \t]*$/gm;
-
-    // Slide id marker: `<!--slide:<id>-->` on its own line under a `##` heading,
-    // or under the `#` title for the cover (title + lede). Write it first, above
-    // `<!--tier:N-->`: a tier marker needs a blank line after it
-    // (check-slide-tiers). sliceSlide tolerates either order. Id is unique per file;
-    // the include address is `<kind>/<slug>.md#<id>`. Stays an HTML comment in
-    // the render. Maintainer-tail markers do not count.
-    var SLIDE_MARKER_RE = /^<!--slide:([a-z0-9-]+)-->[ \t]*$/;
-
-    // Line range of one slide: [start, end) as 0-based indexes into md's lines
-    // (the maintainer tail is cut, so body indexes are file indexes).
-    function slideRange(md, id) {
-        var lines = stripMaintainerTail(md).split('\n');
-        var hits = [];
-        lines.forEach(function (l, i) {
-            var m = SLIDE_MARKER_RE.exec(l);
-            if (m && m[1] === id) hits.push(i);
-        });
-        if (hits.length !== 1) {
-            throw new Error((hits.length ? hits.length : 'no') + ' <!--slide:' + id + '--> marker' +
-                (hits.length ? 's (ids are unique per file)' : ' in file'));
-        }
-        var start = hits[0] - 1;
-        while (start >= 0 && /^<!--.*-->[ \t]*$/.test(lines[start])) start--;
-        if (start < 0 || !/^#{1,2} /.test(lines[start])) {
-            throw new Error('<!--slide:' + id + '--> must sit directly under a ## heading (or the # title)');
-        }
-        var end = lines.length, inFence = false;
-        for (var i = start + 1; i < lines.length; i++) {
-            if (/^\s*(```|~~~)/.test(lines[i])) inFence = !inFence;
-            if (!inFence && /^#{1,2} /.test(lines[i])) { end = i; break; }
-        }
-        return { start: start, end: end, lines: lines };
-    }
-
-    function sliceSlide(md, id) {
-        var r = slideRange(md, id);
-        return r.lines.slice(r.start, r.end).join('\n').trim() + '\n';
-    }
-
-    function sliceSlides(md, ids) {
-        return ids.split(',').map(function (id) { return sliceSlide(md, id); }).join('\n');
-    }
-
-    // Slide files: `curriculum/slides/<id>.md` holds one slide — its `##`, the
-    // `<!--slide:<id>-->` marker under it, the body, and its own maintainer /
-    // backing tail. `[Title](slides/<id>.md)` alone on its line is TRANSPARENT:
-    // it is replaced by the slide's body (tail stripped, trailing whitespace
-    // trimmed) before anything else reads the file, so a lecture whose slides
-    // were cut out reads byte-for-byte as it did (extract-slide.js proves it).
-    // Its own pattern, not INCLUDE_LINK_RE: lecture/exercise includes render as
-    // phase sections; a slide include renders as nothing but the slide.
-    var SLIDE_FILE_RE = /^\[([^\]]+)\]\(slides\/([a-z0-9-]+)\.md\)[ \t]*$/gm;
-
-    function slideFileBody(text) {
-        return stripMaintainerTail(text).replace(/\s+$/, '');
-    }
-
-    // getSlide(id) → the slide file's text, or null. Inlining is one level: a
-    // slide file holds one slide and includes nothing.
-    function inlineSlideFiles(md, getSlide) {
-        return md.replace(new RegExp(SLIDE_FILE_RE.source, 'gm'), function (full, title, id) {
-            var t = getSlide(id);
-            if (t === null || t === undefined) throw new Error('slides/' + id + '.md: no such slide file');
-            return slideFileBody(t);
-        });
-    }
-
-    // The SPA's form: fetchText(id) → Promise of the slide file's text or null.
-    // Each slide is fetched once, then inlined by the same function.
-    function inlineSlideFilesAsync(md, fetchText) {
-        var ids = [], m, re = new RegExp(SLIDE_FILE_RE.source, 'gm');
-        while ((m = re.exec(md)) !== null) if (ids.indexOf(m[2]) < 0) ids.push(m[2]);
-        if (!ids.length) return Promise.resolve(md);
-        return Promise.all(ids.map(function (id) { return fetchText(id); })).then(function (texts) {
-            var got = {};
-            ids.forEach(function (id, i) { got[id] = texts[i]; });
-            return inlineSlideFiles(md, function (id) { return got[id]; });
-        });
-    }
-
-    // A slide file's shape, or the reason it is not one: first line `## …`
-    // (`# …` is a cover and stays in its lecture), the marker for <id> directly
-    // under it (other comment lines may sit between), no second heading.
-    function slideFileProblem(id, text) {
-        var lines = slideFileBody(text).split('\n');
-        if (!/^## /.test(lines[0] || '')) return 'first line must be a ## heading';
-        var i = 1;
-        while (i < lines.length && /^<!--.*-->[ \t]*$/.test(lines[i]) && !SLIDE_MARKER_RE.test(lines[i])) i++;
-        var m = SLIDE_MARKER_RE.exec(lines[i] || '');
-        if (!m) return 'no <!--slide:' + id + '--> marker directly under the heading';
-        if (m[1] !== id) return 'marker says ' + m[1] + ', filename says ' + id;
-        var inFence = false;
-        for (var j = 1; j < lines.length; j++) {
-            if (/^\s*(```|~~~)/.test(lines[j])) inFence = !inFence;
-            if (!inFence && /^#{1,2} /.test(lines[j])) return 'second heading at line ' + (j + 1) + ' (one slide per file)';
-            var inc = new RegExp(SLIDE_FILE_RE.source).exec(lines[j]);
-            if (!inFence && inc) return 'includes slides/' + inc[2] + '.md at line ' + (j + 1) + ' (a slide file includes nothing)';
-        }
-        return null;
-    }
+    var INCLUDE_LINK_RE = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md\)[ \t]*$/gm;
 
     // Prompt-include marker: `{{prompt:<key>}}` on its own line, expanded by
     // expandPrompts() at the start of the markdown pipeline (before marked).
@@ -3533,6 +3443,17 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
     // directly. Marker MUST be alone on a line so expansion produces block-level
     // markdown (label paragraph + fenced code), not inline text.
     var PROMPT_INCLUDE_RE = /^\{\{prompt:([a-z0-9-]+)\}\}[ \t]*$/gm;
+
+    // Cut-candidate marker: `{{cut:<key>}}` or `{{cut:<key>|<reason-slug>}}` on
+    // its own line. Sibling of `{{prompt:}}` — same registry lookup, same block
+    // shape — but flagged for review: decoratePrompts() dims the rendered block
+    // and prepends a "cut candidate" ribbon so the maintainer can eyeball removal
+    // candidates before committing a real cut. Fully reversible: swap
+    // `{{prompt:key}}` ↔ `{{cut:key|reason}}` on one line; the material is
+    // retained. `{{prompt:}}` and `{{cut:}}` are disjoint prefixes; expansion is
+    // order-independent. Every tool that scans `{{prompt:` as a reference treats
+    // `{{cut:}}` as an equivalent reference (a cut candidate is still "used").
+    var PROMPT_CUT_RE = /^\{\{cut:([a-z0-9-]+)(?:\|([a-z0-9-]+))?\}\}[ \t]*$/gm;
 
     // Figure-include marker: `{{figure:<key>}}` on its own line, expanded by
     // expandFigures() at the start of the markdown pipeline (before marked).
@@ -3563,6 +3484,19 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
     // no timings registry shipping alongside the way curriculum/prompts/ does),
     // so keep runtime-map markers out of shipped files until that path exists.
     var RUNTIME_MAP_RE = /^\{\{runtime-map:([a-z0-9-]+)\}\}[ \t]*$/gm;
+
+    // Covered-region markers: `{{covered:<slug>#<anchor>}}` … `{{/covered}}`,
+    // each alone on its own line with blank lines around them. Sibling of
+    // `{{cut:}}` but for PROSE spans, not prompt refs: wraps a passage whose
+    // content a new slide-format section now carries. Neutral semantic — the
+    // passage is dimmed + ribboned ("covered by …") so the maintainer can
+    // eyeball redundancy; the endgame per passage is either deletion (once the
+    // covering slides are perfected) or staying as the depth layer beneath the
+    // slides. Fully reversible: remove the two marker lines. Expansion emits a
+    // raw-HTML div; CommonMark parses the markdown between the tags normally
+    // as long as blank lines separate the tags from the content.
+    var COVERED_OPEN_RE  = /^\{\{covered:([a-z0-9-]+)(?:#([a-z0-9-]+))?\}\}[ \t]*$/gm;
+    var COVERED_CLOSE_RE = /^\{\{\/covered\}\}[ \t]*$/gm;
 
     // Inline cross-doc link patterns. Renderer rewrites to `?file=...` URLs.
     //   - Exercises and lectures live in shared dirs:
@@ -3860,7 +3794,7 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
         return out;
     }
 
-    function renderPromptBlock(entry) {
+    function renderPromptBlock(entry, cut) {
         var dest = (entry && entry.dest) || 'Claude Code';
         var ctx = entry && entry.context ? ', ' + entry.context : '';
         var label = '**Prompt** *(' + dest + ctx + ')*';
@@ -3874,6 +3808,11 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
         if (mode && /^[A-Za-z]+$/.test(mode)) {
             label += ' ⟦M:' + mode + '⟧';
         }
+        // Cut-candidate sentinel ⟦CUT[:reason]⟧, mirrors the ⟦M:mode⟧ pattern.
+        // decoratePrompts() parses it off the label paragraph, strips it, and
+        // renders the block dimmed with a ribbon. Sits after the mode sentinel
+        // so both survive the marked() render cycle as inline paragraph text.
+        if (cut) { label += ' ⟦CUT' + (cut.reason ? ':' + cut.reason : '') + '⟧'; }
         var text = String((entry && entry.text) || '').replace(/\s+$/, '');
         if (entry && entry.anchors && entry.anchors.length) {
             text = injectAnchorSentinels(text, entry.anchors);
@@ -3934,10 +3873,42 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
             }
             return renderPromptBlock(entry);
         });
+        // Second pass: cut-candidate markers. Same registry lookup + unresolved
+        // tracking as the prompt pass (so strict build throws on a bad key), but
+        // the block is flagged cut. Disjoint prefix from {{prompt:}}; order of
+        // the two passes doesn't matter.
+        out = out.replace(PROMPT_CUT_RE, function (match, key, reason) {
+            var entry = registry[key];
+            if (!entry) {
+                unresolved.push(key);
+                return match;
+            }
+            return renderPromptBlock(entry, { reason: reason || '' });
+        });
         if (opts && opts.strict && unresolved.length) {
             throw new Error(
                 'expandPrompts: unresolved {{prompt:<key>}} marker(s): ' +
                 unresolved.map(function (k) { return '{{prompt:' + k + '}}'; }).join(', ')
+            );
+        }
+        // Third pass: covered-region markers. No registry lookup — the pair
+        // expands to a wrapping div the runtime decorates. Balance is checked
+        // in strict mode so an unclosed region fails the build instead of
+        // silently swallowing the rest of the page.
+        var opens = 0, closes = 0;
+        out = out.replace(COVERED_OPEN_RE, function (match, slug, anchor) {
+            opens += 1;
+            var ref = slug + (anchor ? '#' + anchor : '');
+            return '<div class="covered-region" data-covered-by="' + esc(ref) + '">';
+        });
+        out = out.replace(COVERED_CLOSE_RE, function () {
+            closes += 1;
+            return '</div>';
+        });
+        if (opts && opts.strict && opens !== closes) {
+            throw new Error(
+                'expandPrompts: unbalanced {{covered:}} region(s): ' +
+                opens + ' open vs ' + closes + ' close'
             );
         }
         return out;
@@ -4213,26 +4184,6 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
         });
     }
 
-    // Exercise timing rows get `.ex-time`, so a theme styles them by meaning.
-    // Two source forms: a `**Time:** 20 minutes.` row, and a duration alone in
-    // emphasis under a phase heading (`*15 min*`). An emphasised prose sentence
-    // after a heading looks the same to CSS (text nodes don't count for
-    // :only-child), so the duration itself decides. Slides calls this too.
-    var TIMING_ALONE_RE = /^~?\s*\d+(\s*[–-]\s*\d+)?\s*(min|mins|minutes?)\.?$/i;
-    function isTimingRow(p) {
-        var first = p.firstElementChild;
-        if (!first) return false;
-        if (first.tagName === 'STRONG' && /^time\b/i.test(first.textContent.trim())) return true;
-        return first.tagName === 'EM' && p.children.length === 1
-            && p.textContent.trim() === first.textContent.trim()
-            && TIMING_ALONE_RE.test(first.textContent.trim());
-    }
-    function decorateTiming(root) {
-        Array.prototype.forEach.call(root.querySelectorAll('p'), function (p) {
-            if (isTimingRow(p)) p.classList.add('ex-time');
-        });
-    }
-
     // Generic guidance widget. Source shape (single paragraph):
     //   **Note** <guidance prose>
     // Same construction as .hox-block but calm teal, not alarm-orange: HOX is
@@ -4380,15 +4331,27 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
             // prompt's frontmatter declares `permission-mode:`. Parse it off
             // here, strip from the paragraph so the literal sentinel never
             // renders, surface as a separate header chip.
+            // Cut-candidate sentinel ⟦CUT[:reason]⟧ (planted by renderPromptBlock
+            // when a {{cut:}} marker expanded) rides alongside the ⟦M:mode⟧ chip
+            // in the label paragraph. Parse both off, strip both in a single
+            // innerHTML write, and surface them as chrome — mode as a header chip,
+            // cut as a dimming class + ribbon.
             var mode = '';
-            var modeMatch = p.innerHTML.match(/⟦M:([A-Za-z]+)⟧/);
-            if (modeMatch) {
-                mode = modeMatch[1];
-                p.innerHTML = p.innerHTML.replace(/\s*⟦M:[A-Za-z]+⟧\s*/g, '');
+            var cut = false;
+            var cutReason = '';
+            var pHtml = p.innerHTML;
+            var modeMatch = pHtml.match(/⟦M:([A-Za-z]+)⟧/);
+            var cutMatch = pHtml.match(/⟦CUT(?::([a-z0-9-]+))?⟧/);
+            if (modeMatch) mode = modeMatch[1];
+            if (cutMatch) { cut = true; cutReason = cutMatch[1] || ''; }
+            if (modeMatch || cutMatch) {
+                p.innerHTML = pHtml
+                    .replace(/\s*⟦M:[A-Za-z]+⟧\s*/g, '')
+                    .replace(/\s*⟦CUT(?::[a-z0-9-]+)?⟧\s*/g, '');
             }
 
             var wrap = document.createElement('div');
-            wrap.className = 'prompt-block';
+            wrap.className = 'prompt-block' + (cut ? ' cut-candidate' : '');
             var header = document.createElement('div');
             header.className = 'prompt-block__header';
             header.innerHTML =
@@ -4399,6 +4362,14 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
                 (context ? '<span class="prompt-block__context">' + esc(context) + '</span>' : '');
 
             p.parentNode.insertBefore(wrap, p);
+            // Cut-candidate ribbon sits above the header. textContent (not
+            // innerHTML) so the reason slug can never inject markup.
+            if (cut) {
+                var ribbon = document.createElement('div');
+                ribbon.className = 'cut-candidate__ribbon';
+                ribbon.textContent = '✂ cut candidate' + (cutReason ? ' · ' + cutReason : '');
+                wrap.appendChild(ribbon);
+            }
             wrap.appendChild(header);
             wrap.appendChild(pre);
             pre.classList.add('prompt-block__pre');
@@ -4406,6 +4377,18 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
 
             addCopyButton(pre, header);
             convertAnchorSentinels(pre);
+        });
+
+        // Covered-region ribbons: planted by the {{covered:…}} expansion pass.
+        // Same decorate call site as the prompt chrome so the workbook's single
+        // decoratePrompts(document.body) invocation covers both.
+        root.querySelectorAll('.covered-region').forEach(function (region) {
+            if (region.querySelector('.covered-region__ribbon')) return;
+            var ribbon = document.createElement('div');
+            ribbon.className = 'covered-region__ribbon';
+            var ref = region.getAttribute('data-covered-by') || '';
+            ribbon.textContent = 'covered by · ' + ref.replace('#', ' § ');
+            region.insertBefore(ribbon, region.firstChild);
         });
 
         // Universal copy buttons on every standalone <pre>.
@@ -4645,15 +4628,6 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
         TRAININGS: TRAININGS,
         DEFAULT_TRAINING: DEFAULT_TRAINING,
         INCLUDE_LINK_RE: INCLUDE_LINK_RE,
-        SLIDE_MARKER_RE: SLIDE_MARKER_RE,
-        slideRange: slideRange,
-        sliceSlide: sliceSlide,
-        sliceSlides: sliceSlides,
-        SLIDE_FILE_RE: SLIDE_FILE_RE,
-        slideFileBody: slideFileBody,
-        inlineSlideFiles: inlineSlideFiles,
-        inlineSlideFilesAsync: inlineSlideFilesAsync,
-        slideFileProblem: slideFileProblem,
         CROSS_DOC_SHARED_RE: CROSS_DOC_SHARED_RE,
         CROSS_DOC_TRAINING_RE: CROSS_DOC_TRAINING_RE,
         CROSS_DOC_TRAINING_KS_RE: CROSS_DOC_TRAINING_KS_RE,
@@ -4691,7 +4665,6 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
         decorateSessions: decorateSessions,
         decorateHox: decorateHox,
         decorateNote: decorateNote,
-        decorateTiming: decorateTiming,
         decoratePrompts: decoratePrompts,
         attachAnchorPopups: attachAnchorPopups,
         addCopyButton: addCopyButton,
@@ -4718,7 +4691,6 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#s
     CurriculumRuntime.decorateSessions(document.body);
     CurriculumRuntime.decorateHox(document.body);
     CurriculumRuntime.decorateNote(document.body);
-    CurriculumRuntime.decorateTiming(document.body);
     CurriculumRuntime.decoratePrompts(document.body);
     CurriculumRuntime.decorateDiagramZoom(document.body);
     CurriculumRuntime.installReadingProgress();

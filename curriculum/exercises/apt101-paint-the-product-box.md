@@ -121,6 +121,9 @@ You keep this box. The bet is written against it next, and on Day 3 five people 
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74)
+- judges @dd243e74: behavior PASS
+
 **Role in Day 1:** beat 3, the first hands-on beat; the opener after the two lectures; the trio meets the Agents 101 Module 1 mechanism (context shapes output) on its own product, before *Start from your customer's sentence* and *The agent knows only what you tell it* name what it did.
 
 **Reuse:** shape only, from `personal-site-with-guardrails` (baseline → framework → strengths → anti-mirror → free iteration → look back) and `a101-m1-debrief-cold-critic` (cold read, unique line vs generic line). All prompts new: `apt101-d1-box-baseline`, `apt101-d1-read-the-board`, `apt101-d1-box-only-us`, `apt101-d1-box-never-say`, `apt101-d1-box-cold-read`. The cold-read prompt body will spawn a fresh reader (subagent); the body lead-in avoids the word.

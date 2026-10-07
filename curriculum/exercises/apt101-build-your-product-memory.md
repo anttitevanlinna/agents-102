@@ -98,6 +98,9 @@ The memory sits still until something reads it. Next, each of you gives it a job
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74)
+- judges @dd243e74: behavior PASS
+
 **Role in Day 1:** beat 6, after lunch; each person's own material becomes a memory pointed at the bet. Day 2's overnight digest and every Day 2 prompt read it.
 
 **Reuse:** keys `build-your-challenge-memory-1`, `-2`, `-3`, `-4`, `-7`, `-8` (per the reuse map; `-5`, `-6` move to `apt101-send-it-off`, `-9` is dropped). Framing in prose: "challenge" = the bet seen from this person's seat; the "revisit after Module 4" line in `-1` is overridden by the door.

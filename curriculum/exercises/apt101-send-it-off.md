@@ -104,6 +104,9 @@ Day 2 starts with what came back.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74)
+- judges @dd243e74: behavior PASS
+
 **Role in Day 1:** beat 7, the last hands-on beat; sends off the overnight digest that opens Day 2 (*What came back*) and threads the training (sent Day 1, agrees with you Day 2, caught by your own criteria Day 3).
 
 **Reuse:** keys `build-your-challenge-memory-5`, `-6` (first agent), `personal-agent-homework-1`, `-2`, `-3` (style, brief, scheduled run). Framing in prose: the three-job menu in `-2` is steered to a digest; what it looks for is the student's own sentence, written word for word by the new named prompt `apt101-d1-your-look-for-line`; what the student expects it to say is a second own sentence, written word for word to `team/<name>/expect.md`, outside the brief, by the new named prompt `apt101-d1-your-expect-line`, before the first `Run now`; the `module-2/morning-agent/` path is Agents 101's and stays (rename at the prompt-body pass, per the build plan's wrinkle note).

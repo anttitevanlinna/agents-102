@@ -1,0 +1,64 @@
+{
+  "class": "behavior",
+  "file": "curriculum/trainings/agentic-product-teams-101/our-product-our-system.md",
+  "training": "agentic-product-teams-101",
+  "verdict": "PASS",
+  "body_sha": "b61adedff037d8ecd33bddd1c234d8400f2097a9b9cf33d01af0861964f04b00",
+  "suggestions": [
+    {
+      "rule": "file-preservation-gap",
+      "line": 70,
+      "now": "Review this session and write the first version of CLAUDE.md at the training-directory root. The evidence: ./challenge.md,",
+      "proposed": "Review this session and write the first version of CLAUDE.md at the training-directory root; keep the Styling line it already holds, word for word. The evidence: ./challenge.md,"
+    }
+  ],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "trace_status": "generated_first_time",
+  "prompts_evaluated": 3,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Make my training folder ready. Inside the folder you're working in, create three",
+      "verdict": "PASS",
+      "load_bearing": false,
+      "risks_fired": []
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Review this session and write the first version of CLAUDE.md at the training-dir",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "file-preservation-gap",
+          "confidence": "med",
+          "evidence": "write the first version of CLAUDE.md ... (existing Styling line not named in prompt)",
+          "fix_hint": "Name the Styling line to keep; one med risk only, so PASS with suggestion."
+        },
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "carve_out": "evidence-backed Debrief carve-out",
+          "evidence": "names concrete evidence surfaces and demands named omissions; body line 72 gives pushback",
+          "fix_hint": "none owed"
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "carve_out": "evidence-backed Debrief carve-out",
+          "evidence": "grounding per rule required; body line 72 pushback",
+          "fix_hint": "none owed"
+        }
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Read each team/<name>/CLAUDE.md in our team folder. Three rules files, written f",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": []
+    }
+  ],
+  "notes": "Accept-notes: maintainer L100 STATUS (simulation: true, not taught). Prompt 2 reuses A101 key a101-m2-debrief-claude-md; body L68 supplies the keep-Styling instruction, so the gap is one med risk, not a gate. Prompt 3: question-dump not fired (single output file, no question list to the student). Prompt chain note L131 is a maintainer-side open item, not judged."
+}

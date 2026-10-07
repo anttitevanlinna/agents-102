@@ -1,0 +1,89 @@
+{
+  "class": "behavior",
+  "file": "curriculum/exercises/apt101-write-the-bet.md",
+  "training": "agentic-product-teams-101",
+  "verdict": "PASS",
+  "body_sha": "515e0419d51f80f20c248cd6dfd2c25d43e358fbf11b61390e3988c062e8d0e7",
+  "trace_status": "generated_first_time",
+  "prompts_evaluated": 5,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Read the outcome stickies on the Bet frame of our team's Miro board, every stick",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "question-dump",
+          "confidence": "low",
+          "carve_out": "question-dump (structural in-prompt one-at-a-time)",
+          "evidence": "Ask one question at a time and wait for the answer.",
+          "fix_hint": "none owed; carve-out applied"
+        }
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Read the outcome in team/bet.md. Then ask me for my hunch about what would move ",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": []
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Copy each team/<name>/hypothesis.md into team/bet.md, under a ## Hypotheses head",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "file-preservation-gap",
+          "confidence": "low",
+          "carve_out": "verbatim-copy and no-edit directive; append target named",
+          "evidence": "Word for word, each under the name... Don't edit, merge or rank them.",
+          "fix_hint": "none owed; carve-out applied"
+        }
+      ]
+    },
+    {
+      "prompt_index": 4,
+      "prompt_lead": "Read the hypotheses in team/bet.md. Under each one, list the assumptions it rest",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "low",
+          "carve_out": "default-acceptance (in-prompt boundary plus body callout on placement)",
+          "evidence": "Don't place them on the 2x2. Where each one sits is our call.",
+          "fix_hint": "none owed; carve-out applied"
+        }
+      ]
+    },
+    {
+      "prompt_index": 5,
+      "prompt_lead": "Read the Bet frame of our team's Miro board, everything on it including stickies",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "carve_out": "self-report-inflation (evidence-backed: reads named frame, reports unplaced items)",
+          "evidence": "Tell me what you wrote, and anything on the frame you couldn't place.",
+          "fix_hint": "none owed; carve-out applied"
+        }
+      ]
+    }
+  ],
+  "suggestions": [
+    {
+      "rule": "file-preservation-gap",
+      "line": 70,
+      "now": "Copy each team/<name>/hypothesis.md into team/bet.md, under a ## Hypotheses heading below the outcome.",
+      "proposed": "Copy each team/<name>/hypothesis.md into team/bet.md, under a ## Hypotheses heading below the outcome. Leave ## Outcome as it is; if ## Hypotheses already exists, replace its contents, never add a second one."
+    }
+  ],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "No prior trace; all five prompts generated fresh. No accept-notes in maintainer block. Each prompt is load-bearing; every risk is low with a named carve-out. Flagged by maintainer in block, not here: lecture vs exercise hypothesis form differ (cross-class)."
+}

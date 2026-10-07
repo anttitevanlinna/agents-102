@@ -94,7 +94,6 @@ The want: a student working an exercise opens another exercise's instructions in
 
 Third-party words, names and marks in what a licensee receives. A flagged item is a lead to check, not a verdict: compare with the source before rewording. Prompt bodies go through the prompt approval gate.
 
-- **Song lyrics in a shipped script.** `content/skills/security-tools/check.sh` prints four lines of a pop chorus under the ASCII face. Cut the lyric lines, keep the face and the lesson text. `trainer-modules.md` and `training-architecture.md` describe the gag.
 - **`lectures/the-machine-you-just-met.md` (shared with Agents 101):** the compound-engineering definition runs close to Klaassen's wording. Mark it as a quotation with the source, or paraphrase.
 - **`exercises/compound-and-close.md` and its prompts:** credit Klaassen and Every in the exercise; diff the compound prompt against their published command.
 - **`supplementary/verification-asymmetry.md`:** quote and link Jason Wei's post; vary the examples.

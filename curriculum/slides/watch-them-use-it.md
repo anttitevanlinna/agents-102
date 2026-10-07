@@ -9,7 +9,7 @@ The five only hold for comparable users, people who will use the product in simi
 
 <!-- maintainer -->
 
-**STATUS:** round 3 fixes applied (2026-10-06), APT101 gap G:watch-them-use-it from `apt101-source-pack-2.md` §8. Carries Nielsen's numbers only; the watching (think-aloud, observers, debrief) is Krug's and lives on `a-morning-a-month`, which follows. Scoped to usability testing (pack Drift 3). The 85% figure is left out: it rests on L = 31%, an average across Nielsen's projects (pack Drift 2). Not taught (simulation training).
+**STATUS:** composed from the squint (2026-10-07), opens `apt101-bet-meets-five-users`. APT101 gap G:watch-them-use-it from `apt101-source-pack-2.md` §8. Carries Nielsen's numbers only; Krug's watching method (think-aloud, observers, debrief) is on `a-morning-a-month`, which this lecture does not include. Scoped to usability testing (pack Drift 3). The 85% figure is left out: it rests on L = 31%, an average across Nielsen's projects (pack Drift 2). Not taught (simulation training).
 
 <!-- backing -->
 

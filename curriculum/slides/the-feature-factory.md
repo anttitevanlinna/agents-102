@@ -1,27 +1,24 @@
 ## A feature factory ships without asking if it worked
 <!--slide:the-feature-factory-->
 
-In a November 2016 post, John Cutler traced the term to a developer friend who said he was "just sitting in the factory, cranking out features, and sending them down the line."
+In a feature factory, deciding what to build gets rigour and finding out whether it worked gets none. Nobody measures the impact. Nobody compares the benefit expected with the benefit delivered. "Developers have 'passing tests', but product managers do not."
 
-Many of Cutler's twelve signs are about what happens after shipping. Teams do not measure the impact of their work. Nobody compares expected benefit with actual. Deciding what to build gets rigour, finding out whether it was right does not. "Developers have 'passing tests', but product managers do not."
+Those are signs from John Cutler's list, in a November 2016 post. He traced the term to a developer friend who was "just sitting in the factory, cranking out features, and sending them down the line."
 
-The risk now is that agents make the factory faster: more features shipped, the same nothing learned.
-
-Cutler's own caveat, three years later: a prescriptive "build this" bet may be the right approach. The term names missing validation, not a team that ships a lot.
+His own caveat, three years later: a prescriptive "build this" bet may be the right approach. The term names missing validation, not a team that ships a lot.
 
 <!-- maintainer -->
 
-**STATUS:** round 3 fixes applied (2026-10-06), APT101 gap G:the-feature-factory from `apt101-source-pack-2.md` §3. Not taught (simulation training).
+**STATUS:** squint build (2026-10-07), body opens on the turn; APT101 gap G:the-feature-factory from `apt101-source-pack-2.md` §3. Not taught (simulation training).
 
-**Fidelity guard:** say "November 2016" (platform 16 Nov, his blog 17 Nov) as the post's date; Cutler does not claim to have coined the term or say when he started using it. "Many", not "most": about half the twelve signs are post-ship. Keep his caveat; the popular telling makes the term a pure insult.
+**Fidelity guard:** say "November 2016" (platform 16 Nov, his blog 17 Nov) as the post's date; Cutler does not claim to have coined the term or say when he started using it. "Many", not "most": about half the twelve signs are post-ship; the opening paraphrases those signs, never all twelve. The agents-make-it-faster turn is Day 2's title (`apt101-squint.md`), so it stays off this Day 1 slide. Keep his caveat; the popular telling makes the term a pure insult.
 
 <!-- backing -->
 
 **Claims**
 - `factory-origin` · borrowed · "just sitting in the factory, cranking out features, and sending them down the line." ← cutler-feature-factory-2016
-- `signs-after-shipping` · borrowed · "Many of Cutler's twelve signs are about what happens after shipping" ← cutler-feature-factory-2016
+- `signs-after-shipping` · borrowed · "deciding what to build gets rigour and finding out whether it worked gets none" ← cutler-feature-factory-2016 — his signs: no measurement of impact, no comparison of expected with actual benefit.
 - `pm-passing-tests` · borrowed · "Developers have 'passing tests', but product managers do not." ← cutler-feature-factory-2016 — the source's inner double quotes rendered as single quotes.
-- `agents-faster-factory` · vision · "The risk now is that agents make the factory faster: more features shipped, the same nothing learned" ← none-owed — APT101 stance.
 - `build-this-may-be-right` · borrowed · "a prescriptive "build this" bet may be the right approach" ← cutler-feature-factory-3y
 
 **Sources**

@@ -9,7 +9,7 @@ A team that writes for its own criteria has rebuilt the feature factory with a d
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), Agentic Product Teams 101 gap slide G15 (`apt101-slide-reuse-map.md`). Rewrites for product people the idea of AE101 `the-gate-is-a-claim` § Gates decay. Not taught (simulation training). Owes judging rounds.
+**STATUS:** composed from the squint (2026-10-07), closes `apt101-what-good-means`. Agentic Product Teams 101 gap slide G15 (`apt101-slide-reuse-map.md`). Rewrites for product people the idea of AE101 `the-gate-is-a-claim` § Gates decay. Not taught (simulation training). Owes judging rounds.
 
 **Fidelity guard:** the popular line is Strathern's 1997 generalisation; Goodhart's own 1975 wording is "Any observed statistical regularity will tend to collapse once pressure is placed upon it for control purposes." Never quote the popular line as Goodhart's words. Both primaries were paywalled; wording rests on Mattson et al. 2021.
 

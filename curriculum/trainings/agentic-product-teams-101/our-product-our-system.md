@@ -4,19 +4,19 @@
 
 Learn to do AI as a team, and stay in control of it.
 
-[Lecture: Work backwards from the customer](lectures/apt101-work-backwards.md)
+[Lecture: You knew the craft; building rationed it](lectures/apt101-building-rationed-it.md)
 
-[Lecture: Context is whatever you tell it](lectures/apt101-context-is-king.md)
+[Lecture: Now building is cheap](lectures/apt101-building-is-cheap.md)
 
-[Lecture: You are the check](lectures/apt101-you-are-the-check.md)
+[Lecture: Start from your customer's sentence](lectures/apt101-work-backwards.md)
 
-[Lecture: Write the bet so it can lose](lectures/apt101-write-the-bet.md)
+[Lecture: The agent knows only what you tell it](lectures/apt101-only-what-you-tell-it.md)
 
-[Lecture: A memory that compounds](lectures/apt101-a-memory-that-compounds.md)
+[Lecture: Your first bet](lectures/apt101-write-the-bet.md)
 
-[Lecture: Before anything goes in](lectures/apt101-before-anything-goes-in.md)
+[Lecture: Your material is the moat](lectures/apt101-your-material-is-the-moat.md)
 
-[Lecture: It runs overnight](lectures/apt101-it-runs-overnight.md)
+[Lecture: Send it off](lectures/apt101-it-runs-overnight.md)
 
 <!-- maintainer -->
 

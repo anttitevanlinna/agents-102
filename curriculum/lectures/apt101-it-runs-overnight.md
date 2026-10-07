@@ -1,12 +1,16 @@
-# It runs overnight
+# Send it off
 
-[One agent for each job that recurs in your week](slides/one-agent-per-recurring-job.md)
+[The best mitigation is the door you don't open](slides/the-door-you-dont-open.md)
 
-[A chat runs on context; an agent needs six parts](slides/parts-of-an-agent.md)
+[One agent per recurring job, not one company brain](slides/one-agent-per-recurring-job.md)
+
+[A chat runs on one part; an agent needs six](slides/parts-of-an-agent.md)
+
+[It works overnight; some of what it writes will be wrong](slides/it-works-overnight.md)
 
 <!-- maintainer -->
 
-- **Time:** 5 minutes.
-- **Learning:** transfer + control — one agent per recurring job, each part written down so nobody stands in for it by hand
+- **Time:** 10 minutes.
+- **Learning:** control + transfer — the team decides which doors stay shut, gives each recurring job its own agent, and sends the digest off knowing some of it will be wrong
 
-**STATUS:** generated for the `simulation: true` training Agentic Product Teams 101 (2026-10-06), not taught. A lecture here is an ordered set of slide files under `curriculum/slides/`: Agents 101 slides cut at home, rewrites and gaps written for this training (judged in core `evals/apt101-slides/`). Placement: `curriculum/module-design/apt101-slide-reuse-map-v2.md`.
+**STATUS:** composed from the squint `curriculum/module-design/apt101-squint.md` Day 1 (2026-10-07), slides in squint order, for the `simulation: true` training Agentic Product Teams 101. Not taught.

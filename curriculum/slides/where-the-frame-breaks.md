@@ -11,7 +11,7 @@ What would change this training's mind: agents that start deciding well, choosin
 
 <!-- maintainer -->
 
-**STATUS:** first cut (2026-10-06), APT101 narrator slide (story pass round 4): the frame names where it breaks (`story-depth-rubric.md` § Storytelling, Frame 100 rung). Sits before `learn-faster-than-the-model` (which keeps the carry-out question last) in `apt101-what-each-of-us-is-for`, in place of `three-habits-that-carry`. Quotes only the author's own sentences; the essay's Grimm & Smith definition and the Wardley talk stay off the slide. Not taught (simulation training). Owes judging rounds.
+**STATUS:** composed from the squint (2026-10-07), APT101 narrator slide: the frame names where it breaks (`story-depth-rubric.md` § Storytelling, Frame 100 rung). Opens `apt101-where-you-go-from-here`; the lecture closes on the stance question in `what-will-your-insight-be`. Quotes only the author's own sentences; the essay's Grimm & Smith definition and the Wardley talk stay off the slide. Not taught (simulation training). Owes judging rounds.
 
 <!-- backing -->
 

@@ -1,22 +1,18 @@
-# From us to the team
+# From the three of you to your team
+
+[We built good things. We failed to share them well.](slides/sharing-is-harder-than-building.md)
 
 [An agent's instructions are not the agent](slides/you-cannot-hand-over-an-agent.md)
 
 [Access is easy; absorption is scarce](slides/access-is-easy.md)
 
-[What would have to be true for them to switch?](slides/what-would-have-to-be-true.md)
+[What would have to be true for your team to switch?](slides/what-would-make-your-team-switch.md)
 
-[Discovery runs beside delivery, every week](slides/discovery-beside-delivery.md)
-
-[Sharing what you built is harder than building it](slides/sharing-is-harder-than-building.md)
-
-[Three walls stand between your laptops and the team](slides/three-walls.md)
-
-[A missing name marks what isn't built yet](slides/a-missing-name-is-a-finding.md)
+[On Monday the team decides, not the three of you](slides/the-team-decides-on-monday.md)
 
 <!-- maintainer -->
 
-- **Time:** 18 minutes.
-- **Learning:** team | transfer — what the trio learned travels to the wider team only with named people, agreed places and a proposal the team decides on.
+- **Time:** 13 minutes.
+- **Learning:** team | transfer — what the trio learned travels to the wider team only as a proposal with named people, the first wall it will meet, and a decision the team makes.
 
-**STATUS:** generated for the `simulation: true` training Agentic Product Teams 101 (2026-10-06), not taught. A lecture here is an ordered set of slide files under `curriculum/slides/`: Agents 101 slides cut at home, rewrites and gaps written for this training (judged in core `evals/apt101-slides/`). Placement: `curriculum/module-design/apt101-slide-reuse-map-v2.md`.
+**STATUS:** composed from the squint (`curriculum/module-design/apt101-squint.md`, Day 3) on 2026-10-07 for the `simulation: true` training Agentic Product Teams 101, not taught. An ordered set of slide files under `curriculum/slides/`; headers are the squint titles.

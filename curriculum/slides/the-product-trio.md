@@ -1,15 +1,15 @@
 ## Discovery belongs to the team that builds
 <!--slide:the-product-trio-->
 
-Teresa Torres defines continuous discovery as "weekly touch points with customers, by the team building the product, where they conduct small research activities, in pursuit of a desired product outcome" (2018).
+Discovery is not a research team handing a report to the people who build. Teresa Torres defines continuous discovery as "weekly touch points with customers, by the team building the product, where they conduct small research activities, in pursuit of a desired product outcome" (2018).
 
-The popular version, talk to customers every week, drops two clauses. Who: the team building the product, not a research team handing over a report. Toward what: a product outcome. Torres sees teams that are great at research and still miss their outcomes, because the research serves no outcome.
+A product owner, a designer and a team lead deciding together are that team. When building gets cheap, this matters more: the people who can now build quickly are the ones who need to have heard the customer.
 
-A product owner, a designer and a team lead deciding together are that team. Agents can gather, sort and draft. What the evidence means stays with the people who build.
+Agents can gather, sort and draft. What the evidence means stays with the people who build.
 
 <!-- maintainer -->
 
-**STATUS:** round 3 judged, no fixes owed (2026-10-06), APT101 gap G:the-product-trio from `apt101-source-pack-2.md` §1. Not taught (simulation training). The one place the deck quotes Torres's continuous-discovery definition.
+**STATUS:** squint build (2026-10-07), body opens on the turn; APT101 gap G:the-product-trio from `apt101-source-pack-2.md` §1. Not taught (simulation training). The one place the deck quotes Torres's continuous-discovery definition. The great-at-research-still-miss-outcomes line lives on Day 2's *Great research can still miss the outcome*, so it is not repeated here.
 
 **Fidelity guard:** the packs carry no Torres quote for the word *trio*, so the body never attributes it to her; the room's three are named as "the team building the product" in her sense. Quote the 2018 page ("desired product outcome"), not the glossary paraphrase.
 
@@ -17,8 +17,8 @@ A product owner, a designer and a team lead deciding together are that team. Age
 
 **Claims**
 - `cd-definition` · borrowed · "weekly touch points with customers, by the team building the product, where they conduct small research activities, in pursuit of a desired product outcome" ← torres-cd-definition
-- `popular-drops-two-clauses` · vision · "The popular version, talk to customers every week, drops two clauses" ← none-owed — the pack's Drift (1) reading.
-- `research-without-outcome` · borrowed · "Torres sees teams that are great at research and still miss their outcomes, because the research serves no outcome" ← torres-cd-definition
+- `not-a-handover` · vision · "Discovery is not a research team handing a report to the people who build" ← none-owed — the pack's Drift (1) reading of "by the team building the product".
+- `builders-must-hear` · vision · "the people who can now build quickly are the ones who need to have heard the customer" ← none-owed — APT101 frame.
 - `meaning-stays-with-builders` · vision · "What the evidence means stays with the people who build" ← none-owed — APT101 control learning.
 
 **Sources**

@@ -1,24 +1,12 @@
-# Work backwards from the customer
+# Start from your customer's sentence
 
-[Building got cheap, deciding didn't](slides/the-outcome-loop.md)
+[Would a customer pick up the box?](slides/work-backwards-from-the-customer.md)
 
-[A tool that worked, and was used just a bit](slides/the-installer-nobody-needed.md)
-
-[Discovery belongs to the team that builds](slides/the-product-trio.md)
-
-[An outcome is what customers do differently](slides/outcomes-over-outputs.md)
-
-[A feature factory ships without asking if it worked](slides/the-feature-factory.md)
-
-[Work backwards from the customer](slides/work-backwards-from-the-customer.md)
-
-[Customers hire a product to make progress](slides/the-job-they-hire-it-for.md)
-
-[A line a competitor could claim is still generic](slides/could-a-competitor-claim-it.md)
+[The product box keeps the agents on course](slides/the-box-is-the-reference.md)
 
 <!-- maintainer -->
 
-- **Time:** 20 minutes.
-- **Learning:** team — vision and outcomes first: the product owner, designer and team lead decide together which customer outcome the agents serve
+- **Time:** 5 minutes.
+- **Learning:** team — the trio writes the customer's promise first and keeps it as the reference every agent is measured against
 
-**STATUS:** generated for the `simulation: true` training Agentic Product Teams 101 (2026-10-06), not taught. A lecture here is an ordered set of slide files under `curriculum/slides/`: Agents 101 slides cut at home, rewrites and gaps written for this training (judged in core `evals/apt101-slides/`). Placement: `curriculum/module-design/apt101-slide-reuse-map-v2.md`.
+**STATUS:** composed from the squint `curriculum/module-design/apt101-squint.md` Day 1 (2026-10-07), slides in squint order, for the `simulation: true` training Agentic Product Teams 101. Not taught.

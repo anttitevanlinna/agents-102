@@ -1,29 +1,28 @@
-## Build the prototype that answers your question
+## The designer's piece: a prototype that answers one question
 <!--slide:prototype-to-learn-->
 
-Stephanie Houde and Charles Hill (1997) define a prototype as any representation of a design idea. What matters is the question it answers. They name three kinds of question: role, what the thing does in someone's life; look and feel, what using it is like; and implementation, how it works. A fourth kind, the integration prototype, brings all three together and is the hardest to build.
+A prototype, for Stephanie Houde and Charles Hill (1997), is any representation of a design idea. What matters is the question it answers: role, what the thing does in someone's life; look and feel, what using it is like; or implementation, how it works. An integration prototype brings all three together and is the hardest to build.
 
-They call the labels high-fidelity and low-fidelity misleading. How finished a prototype looks says little about how solid the design is, and how finished it needs to be depends most on who will see it. So tell your audience which question it explores, and which it does not.
+Agents make a finished-looking prototype cheap, so their warning matters more: people new to prototypes tend to believe one works more than it does. How finished it looks says little about how solid the design is.
 
-Agents make a finished-looking prototype cheap, so the authors' warning matters more: people new to prototypes tend to believe one works more than it does.
+So tell your audience which question it explores, and which it does not.
 
 <!-- maintainer -->
 
-**STATUS:** round 3 fixes applied (2026-10-06), APT101 gap G:prototype-to-learn from `apt101-source-pack-3.md` §2. Not taught (simulation training). The designer's piece.
+**STATUS:** rebuilt from the APT101 squint (2026-10-07), Day 2 § Each of you makes something. APT101 gap G:prototype-to-learn from `apt101-source-pack-3.md` §2. Not taught (simulation training). Owes judging rounds.
 
-**Fidelity guard:** four kinds, integration included (pack Drift 1). "Role" stays their word, not "value" (Drift 4). Fidelity depends on the audience as well as the question, and the hi-fi/lo-fi labels are "misleading" (Drift 2). No "polish tests nothing": their claim is that refinement "does not necessarily correspond to the solidity of the design" (Drift 3), here "says little about". "People new to prototypes" paraphrases "inexperienced audiences". The three dimensions are not stages; the slide lists them without an order of work.
+**Fidelity guard:** four kinds, integration included (pack Drift 1). "Role" stays their word, not "value" (Drift 4). No "polish tests nothing": their claim is that refinement "does not necessarily correspond to the solidity of the design" (Drift 3), here "says little about". The hi-fi/lo-fi labels and fidelity-depends-on-audience (Drift 2) are off this slide for length; if they return, keep the audience half. "People new to prototypes" paraphrases "inexperienced audiences". The three dimensions are not stages; the slide lists them without an order of work. "One question" in the header is the designer's move on the day, not Houde and Hill's rule: an integration prototype answers several.
 
 <!-- backing -->
 
 **Claims**
-- `prototype-any-representation` · borrowed · "define a prototype as any representation of a design idea" ← houde-hill-1997
-- `three-kinds-of-question` · borrowed · "role, what the thing does in someone's life; look and feel, what using it is like; and implementation, how it works" ← houde-hill-1997
-- `integration-prototype` · borrowed · "A fourth kind, the integration prototype, brings all three together and is the hardest to build." ← houde-hill-1997
-- `fidelity-labels-misleading` · borrowed · "They call the labels high-fidelity and low-fidelity misleading." ← houde-hill-1997
-- `fidelity-depends-on-audience` · borrowed · "how finished it needs to be depends most on who will see it" ← houde-hill-1997
-- `say-what-it-explores` · borrowed · "tell your audience which question it explores, and which it does not" ← houde-hill-1997
-- `audiences-overbelieve` · borrowed · "people new to prototypes tend to believe one works more than it does" ← houde-hill-1997
+- `prototype-any-representation` · borrowed · "is any representation of a design idea" ← houde-hill-1997
+- `three-kinds-of-question` · borrowed · "role, what the thing does in someone's life; look and feel, what using it is like; or implementation, how it works" ← houde-hill-1997
+- `integration-prototype` · borrowed · "An integration prototype brings all three together and is the hardest to build." ← houde-hill-1997
 - `agents-make-polish-cheap` · vision · "Agents make a finished-looking prototype cheap" ← none-owed — the training's thesis (building got cheap).
+- `audiences-overbelieve` · borrowed · "people new to prototypes tend to believe one works more than it does" ← houde-hill-1997
+- `finish-not-solidity` · borrowed · "How finished it looks says little about how solid the design is." ← houde-hill-1997
+- `say-what-it-explores` · borrowed · "tell your audience which question it explores, and which it does not" ← houde-hill-1997
 
 **Sources**
 - houde-hill-1997 `[checked:2026-10-06 result:OK due:none]` https://hci.stanford.edu/courses/cs247/2012/readings/WhatDoPrototypesPrototype.pdf — [academic/research] role / look and feel / implementation, plus integration prototypes; prototype = any representation of a design idea; hi-fi/lo-fi labels misleading; fidelity depends on audience; say what a prototype does and does not explore; inexperienced audiences believe prototypes more functional than they are. Authors' version of the 1997 Handbook chapter (Elsevier page 403s).

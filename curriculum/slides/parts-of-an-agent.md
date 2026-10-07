@@ -1,4 +1,4 @@
-## A chat runs on context; an agent needs six parts
+## A chat runs on one part; an agent needs six
 <!--slide:parts-of-an-agent-->
 
 A chat runs on one part: context, the material you put in front of it. You supply everything else by hand, every time you ask.
@@ -12,11 +12,11 @@ An agent that works while nobody is watching needs six parts, written down:
 - A boundary: what it may not read or touch.
 - A loop: it starts again when new material arrives.
 
-The digest an agent writes overnight from your tickets and interviews has all six. Leave one out and someone has to stand in for it by hand.
+Leave one out and someone has to stand in for it by hand.
 
 <!-- maintainer -->
 
-**STATUS:** round 3 fixes applied (2026-10-06), APT101 rewrite of `context-is-king` § The first piece of the picture (the idea, not the "full agent picture" figure). Not taught (simulation training).
+**STATUS:** squint build (2026-10-07), header from `apt101-squint.md` Day 1 (`header-style-distilled.md` rule 4, the file's former diptych tightened); APT101 rewrite of `context-is-king` § The first piece of the picture (the idea, not the "full agent picture" figure). Not taught (simulation training).
 
 **Guard:** the agent's part is "a goal", never "outcome": on Day 1 an outcome is Seiden's change in what customers do. Day 3's `the-parts-hold` names the same six words.
 

@@ -3,15 +3,15 @@
 
 Gary Klein's pre-mortem starts with one sentence from the leader: the project has failed, spectacularly. Not might fail. Failed.
 
-Then everyone writes, alone and in silence, every reason they can think of, especially the ones they would normally keep to themselves to stay polite. Then the group goes round the table one reason at a time until the lists run out.
+Then everyone writes, alone and in silence, every reason they can think of, especially the ones they would normally keep to themselves. Then the group goes round the table one reason at a time until the lists run out.
 
-Klein sets it against the usual risk session, which asks what might go wrong. Assuming the patient has died gives people permission to say what they actually fear. Research he cites found that imagining an outcome has already happened produces about thirty percent more reasons than imagining it might.
+Klein sets it against the usual risk session, which asks what might go wrong. Research he cites found that imagining an outcome has already happened produces about thirty percent more reasons than imagining it might.
 
 The right moment is when confidence is highest, just after the team has chosen.
 
 <!-- maintainer -->
 
-**STATUS:** round 3 fixes applied (2026-10-06), Agentic Product Teams 101 gap slide G10, from `apt101-source-pack.md` §4. Not taught (simulation training).
+**STATUS:** rebuilt from the APT101 squint (2026-10-07), Day 2 § Each of you makes something. APT101 gap G10, from `apt101-source-pack.md` §4. Not taught (simulation training). Owes judging rounds.
 
 **Fidelity guard (zombie-stat):** the 1989 Mitchell, Russo and Pennington study measured the number of reasons generated, not their correctness. Klein's own article says "correctly identify reasons … by 30%", which overstates it. Keep "about thirty percent more reasons"; never "thirty percent more accurate". The study itself was not opened (403); the reading rests on Collins.
 

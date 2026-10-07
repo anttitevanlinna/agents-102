@@ -4,25 +4,21 @@
 
 Agents keep working between sessions and overnight; you come back, read what they did and decide what to trust.
 
-[Lecture: What came in overnight](lectures/apt101-what-came-in-overnight.md)
+[Lecture: The digest is back](lectures/apt101-the-digest-is-back.md)
 
-[Lecture: When the overnight work went wrong](lectures/apt101-when-the-run-went-wrong.md)
+[Lecture: Why it agreed](lectures/apt101-why-it-agreed.md)
 
-[Lecture: Gather the evidence](lectures/apt101-gather-the-evidence.md)
+[Lecture: Go back to your customers](lectures/apt101-go-back-to-your-customers.md)
 
-[Lecture: Opportunities before solutions](lectures/apt101-opportunities-before-solutions.md)
+[Lecture: Widen before you choose](lectures/apt101-widen-before-you-choose.md)
 
-[Lecture: What the agents may keep](lectures/apt101-what-the-agents-may-keep.md)
+[Lecture: Safe to say it's wrong](lectures/apt101-safe-to-say-its-wrong.md)
 
 [Lecture: Fluent is not true](lectures/apt101-fluent-is-not-true.md)
 
-[Lecture: The check that found them](lectures/apt101-the-check-that-found-them.md)
+[Lecture: Each of you makes something](lectures/apt101-each-of-you-makes-something.md)
 
-[Lecture: Your taste is the ceiling](lectures/apt101-your-taste-is-the-ceiling.md)
-
-[Lecture: How it could fail](lectures/apt101-how-it-could-fail.md)
-
-[Lecture: What we keep](lectures/apt101-what-we-keep.md)
+[Lecture: Write it down or lose it](lectures/apt101-write-it-down-or-lose-it.md)
 
 <!-- maintainer -->
 

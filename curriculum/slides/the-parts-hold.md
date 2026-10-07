@@ -9,7 +9,7 @@ So the assembly is the part that lasts: which interviews and tickets go in, what
 
 <!-- maintainer -->
 
-**STATUS:** round 3 fixes applied (2026-10-06), APT101 rewrite of `parts-hold-model-rotates` (Agents 101 `where-is-this-all-going` § The parts hold; the model rotates). The Agents 101 list (interface, no goal) is replaced by the six words of APT101's `parts-of-an-agent`: context, tools, a goal, checks, a boundary, a loop. Replaces the borrow in Day 3 lecture 4. Not taught (simulation training).
+**STATUS:** round 3 fixes applied (2026-10-06), APT101 rewrite of `parts-hold-model-rotates` (Agents 101 `where-is-this-all-going` § The parts hold; the model rotates). The Agents 101 list (interface, no goal) is replaced by the six words of APT101's `parts-of-an-agent`: context, tools, a goal, checks, a boundary, a loop. Second in `apt101-where-you-go-from-here`. Not taught (simulation training).
 
 <!-- backing -->
 

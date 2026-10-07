@@ -1,12 +1,12 @@
 # Slice by what you learn
 
-[Slice by what you need to learn](slides/slice-by-what-you-learn.md)
-
 [Specifying what to build is now the harder half](slides/you-specify-it-builds.md)
+
+[The first slice tests what you are least sure of](slides/slice-by-what-you-learn.md)
 
 <!-- maintainer -->
 
 - **Time:** 5 minutes.
-- **Learning:** team | transfer — the trio writes the specification together, each bringing what they know about the customer, the journey and how the team will check the slice.
+- **Learning:** team | transfer — the trio writes the specification together, each bringing what they know about the customer, the journey and how the team will check the slice, and orders the slices by what they are least sure of.
 
-**STATUS:** generated for the `simulation: true` training Agentic Product Teams 101 (2026-10-06), not taught. A lecture here is an ordered set of slide files under `curriculum/slides/`: Agents 101 slides cut at home, rewrites and gaps written for this training (judged in core `evals/apt101-slides/`). Placement: `curriculum/module-design/apt101-slide-reuse-map-v2.md`.
+**STATUS:** composed from the squint (`curriculum/module-design/apt101-squint.md`, Day 3) on 2026-10-07 for the `simulation: true` training Agentic Product Teams 101, not taught. An ordered set of slide files under `curriculum/slides/`; headers are the squint titles.

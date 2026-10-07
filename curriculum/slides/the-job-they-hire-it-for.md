@@ -1,15 +1,15 @@
-## Customers hire a product to make progress
+## Your customers hire the product to make progress
 <!--slide:the-job-they-hire-it-for-->
 
 Clayton Christensen and colleagues call it the job to be done: "the progress that the customer is trying to make in a given circumstance" (HBR, 2016). Customers hire a product to help with that job, and fire it when it does the job badly.
 
 A well-known case is older, from a 2005 article. At one chain, 40% of milkshakes were bought early in the morning. Most of those buyers faced a long, boring commute and wanted something to make the drive more interesting. Improving the shake for a customer profile had not lifted sales. Knowing the commute changed what the shake was up against.
 
-A feature list answers the wrong question. Name the circumstance and the progress.
+A feature list answers the wrong question. Name your customer's circumstance and the progress they are after.
 
 <!-- maintainer -->
 
-**STATUS:** round 3 fixes applied (2026-10-06), APT101 gap G:the-job-they-hire-it-for from `apt101-source-pack.md` §9. Not taught (simulation training).
+**STATUS:** squint build (2026-10-07), header from `apt101-squint.md` Day 1; APT101 gap G:the-job-they-hire-it-for from `apt101-source-pack.md` §9. Not taught (simulation training).
 
 **Fidelity guard:** the definition is the 2016 article's wording ("in a given circumstance"), not the popular "particular circumstance" line. The milkshake is not in the 2016 article; it is the 2005 "Marketing Malpractice" piece, company disguised, so the body names no chain. A researcher made the 40% finding, not the seller. Nothing about what else the shake competed with beyond the commute is in the pack.
 
@@ -21,7 +21,7 @@ A feature list answers the wrong question. Name the circumstance and the progres
 - `milkshake-forty-percent` · detail · "40% of milkshakes were bought early in the morning" ← christensen-milkshake-hbr-2005
 - `milkshake-commute` · borrowed · "faced a long, boring commute and wanted something to make the drive more interesting" ← christensen-milkshake-hbr-2005
 - `profile-did-not-lift-sales` · borrowed · "Improving the shake for a customer profile had not lifted sales" ← christensen-milkshake-hbr-2005 — the pack's summary of the case.
-- `features-answer-wrong-question` · vision · "A feature list answers the wrong question" ← none-owed
+- `features-answer-wrong-question` · vision · "A feature list answers the wrong question" ← none-owed — APT101 design.
 
 **Sources**
 - christensen-jtbd-hbr-2016 `[checked:2026-10-06 result:OK due:none]` https://web.archive.org/web/20161222172057/https://hbr.org/2016/09/know-your-customers-jobs-to-be-done — [practitioner direct] Christensen, Hall, Dillon & Duncan, HBR Sept 2016: job definition; hire/fire. Read in Wayback (live hbr.org paywalled).

@@ -21,22 +21,24 @@ Agents 101's model, for a trio:
 
 ## Artefact chain (the overnight digest is the thread)
 
+Paths are in the student's training folder or the team folder, not this repo.
+
 | Artefact | Made | Read |
 |---|---|---|
-| `team/product-box.html` | Day 1, product box | Day 1 bet; Day 3 five users |
-| `team/bet.md` (outcome, hypothesis statements, assumption map) | Day 1, write the bet | Day 1 memory (`challenge.md` points at it); Day 2 outcome; Day 3 story map |
-| `team/what-goes-in.md` | Day 1, the door | Day 1 memory curation; Day 2 digest read |
-| `./challenge.md`, `sources/`, `memory/` (personal) | Day 1, product memory | Day 1 agent; every Day 2 prompt |
-| `agents/<job>.md`, `module-2/morning-agent/` | Day 1, send it off | The overnight digest, Day 2 opening |
-| `./crux.md` | Day 2, pick the outcome | Day 2 retrievers, benchmark |
-| `team/tree.md` (opportunity solution tree, branches attributed) | Day 2, grow the tree | Day 2 choose the bet; Day 3 story map |
-| `judges/groundedness-judge.md` | Day 2, catch it making things up | Day 3 what good means |
-| `team/chosen-bet.md`, each role's piece in `team/<name>/` | Day 2 afternoon | Day 3 slice, five users, way of working |
-| `./CLAUDE.md` (personal), `team/team-rules.md` | Day 1 close, sharpened Day 2 close | Every later run |
-| `team/story-map.md`, the first slice | Day 3 | Day 3 five users |
-| `module-6/eval-notes.md`, `./generation-tactic.md` | Day 3, what good means | Day 3 close |
-| `team/five-users.md` | Day 3 | Day 3 way of working |
-| `module-7/…` → `team/monday.md` | Day 3, to the team | Monday |
+| team/product-box.html | Day 1, product box | Day 1 bet; Day 3 five users |
+| team/bet.md (outcome, hypothesis statements, assumption map) | Day 1, write the bet | Day 1 memory (`challenge.md` points at it); Day 2 outcome; Day 3 story map |
+| team/what-goes-in.md | Day 1, the door | Day 1 memory curation; Day 2 digest read |
+| ./challenge.md, sources/, memory/ (personal) | Day 1, product memory | Day 1 agent; every Day 2 prompt |
+| agents/<job>.md, module-2/morning-agent/ | Day 1, send it off | The overnight digest, Day 2 opening |
+| ./crux.md | Day 2, pick the outcome | Day 2 retrievers, benchmark |
+| team/tree.md (opportunity solution tree, branches attributed) | Day 2, grow the tree | Day 2 choose the bet; Day 3 story map |
+| judges/groundedness-judge.md | Day 2, catch it making things up | Day 3 what good means |
+| team/chosen-bet.md, each role's piece in team/<name>/ | Day 2 afternoon | Day 3 slice, five users, way of working |
+| ./CLAUDE.md (personal), team/team-rules.md | Day 1 close, sharpened Day 2 close | Every later run |
+| team/story-map.md, the first slice | Day 3 | Day 3 five users |
+| module-6/eval-notes.md, ./generation-tactic.md | Day 3, what good means | Day 3 close |
+| team/five-users.md | Day 3 | Day 3 way of working |
+| module-7/… → team/monday.md | Day 3, to the team | Monday |
 
 ## Exercise reuse map
 

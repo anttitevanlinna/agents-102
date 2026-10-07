@@ -1,0 +1,105 @@
+# Exercise: Map the *story*
+
+**Time:** 55 minutes.
+
+**Session** *(new, "Day 3 - Learn faster than the market")*
+
+<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
+
+```
+/rename apt101-day-3
+```
+
+**What you do:**
+
+You chose one bet on Day 2, and each of you made a first piece of it. Now you lay the customer's journey out flat, cut it into slices by what each one teaches you, and build the first slice so it works end to end. Five people from other teams will use that slice next.
+
+The shape is Jeff Patton's story map. The backbone is the customer's journey, left to right, in their words. The walking skeleton is the thinnest version that still works from the first step to the last. Each slice below it is cut across the whole journey and named for the assumption it tests.
+
+The map lives on your team's Miro board, in the *Story map* frame. Post-its go up first, then Claude works on what the board holds, then the board again. Claude reads and writes the board through the Miro connector; if your company has not turned it on, paste a screenshot of the frame into the chat. The text the agents keep reading goes in `team/story-map.md`.
+
+## Phase 1: Lay the backbone
+
+*15 min*
+
+**Post-its first, five minutes.** Each of you writes the steps a customer goes through for this bet, one per post-it, in the words customers used. The designer arranges them left to right on the frame. Duplicates stack; gaps stay visible.
+
+**Then the designer drives** at their screen. You hold what customers actually said, so the backbone starts from you.
+
+Ask Claude to read the frame and check each step against the customers' own words.
+
+**Prompt** · `apt101-d3-backbone`, read the *Story map* frame on our Miro board, `team/chosen-bet.md`, `team/tree.md` and `memory/`; turn the post-its into a backbone of five to eight steps left to right, each in the customer's words with the interview or ticket it comes from; mark any step no customer source supports; post the backbone back to the frame as a row above our post-its and write it to `team/story-map.md`
+
+While the designer drives:
+
+- **The product owner** opens `team/bet.md` and finds the assumption on the map that is still riskiest after Day 2. Write it on a post-it at the top of the frame. The slices hang from it.
+- **The team lead** reads each step as Claude posts it and asks: did a customer do this, or did we imagine they would? A step the team invented gets a red dot, not the bin.
+
+One pattern to watch: the first backbone often reads like your product's menu, not like the customer's day. If the steps are screens, push back: *"Write the steps as what the customer is trying to get done, in their words."*
+
+## Phase 2: Slice by what you learn
+
+*15 min*
+
+**The product owner drives.** You decide which idea is worth testing, so the cuts are yours to call.
+
+Ask Claude to cut the map into slices, the riskiest assumption first.
+
+**Prompt** · `apt101-d3-slice-by-learning`, read the *Story map* frame, `team/story-map.md`, the assumption map in `team/bet.md` and `team/chosen-bet.md`; propose the walking skeleton and two or three slices, each cut across the whole backbone, each named for the assumption it tests, with its hypothesis statement and the signal that would say no; draw each slice as a labelled row under the backbone on the frame; do not choose the first slice; wait while we move post-its and choose, then read the frame again and write the slices and our choice to `team/story-map.md`
+
+**Then the board again.** The three of you move post-its between the rows until each slice still runs from the first step to the last. Then choose the first slice and tell Claude.
+
+While you move post-its:
+
+- **The designer** checks every row reaches the last step. A slice that builds one step well and leaves the rest is a car without brakes. Say which step is missing.
+- **The team lead** asks of the first slice: what can an agent build in twenty minutes, and what needs one of us? Say it before the slice is chosen.
+
+Push back on a first slice chosen because it is easy to build. The question is which slice teaches you the most if it comes back no. If Claude's rows follow the roadmap instead of the assumption map, ask it to reorder them by risk.
+
+## Phase 3: Build the first slice
+
+*20 min*
+
+**The designer drives the build**, starting from the prototype you made on Day 2. It already holds the customers' words; the slice extends it across the whole backbone.
+
+Ask Claude to build the first slice as a clickable page set.
+
+**Prompt** · `apt101-d3-build-the-slice`, read `team/story-map.md` (the chosen first slice), the designer's Day 2 prototype in `team/<designer's name>/` and `team/product-box.html`; build the first slice as clickable HTML in `team/slice-1/`, every backbone step present and working, thin where the slice says thin; show the start page when done
+
+While the build runs:
+
+- **The product owner** writes the one thing you will watch for when someone uses the slice: the signal from the story map, said as a moment you could see. Put it in `team/<your-name>/watch-for.md`.
+- **The team lead**, once the first version lands, asks Claude on their own laptop to walk the slice as someone who has never seen it.
+
+**Prompt** · `apt101-d3-walk-the-slice`, open `team/slice-1/` as a first-time customer with the job named in `team/story-map.md`; walk every step from first to last; list each place the walk stops, a step is missing or the page assumes knowledge the customer does not have; do not fix anything, report to me in chat
+
+The team lead reads the list to the designer. The designer decides which breaks get fixed now. Fix only what stops the walk. A slice that works end to end and looks rough is ready. A polished slice that stops halfway is not.
+
+## Phase 4: Take stock
+
+*5 min*
+
+Laptops half shut, standing at the board. Each of you says one sentence: what the first slice is built to find out, and what you would see if the answer is no.
+
+If the three sentences name three different things, the slice is testing too much. Point at the row on the frame and agree which one it tests. The other two become the next slices.
+
+<!-- maintainer -->
+
+**Role in Day 3:** The day's first build: the chosen bet becomes a story map on the board and one end-to-end slice that five users meet in the next exercise.
+
+**Reuse:** new. No Agents 101 source. Phase rhythm borrowed from `personal-site-with-guardrails` (build, then a cold read): the team lead's walk-through plays the cold critic.
+
+**Frameworks:**
+- User story map: backbone, walking skeleton, slices by learning goal (Jeff Patton). Named once in the body; the lecture *Slice by what you learn* names him before the exercise, which does different work (the law), so the pair is credit at point of use plus the law (`check_writing.md` §11 carve-out).
+- Hypothesis statement and signal, carried from Day 1's `team/bet.md`.
+- Assumption map (riskiest first), carried from Day 1.
+
+**Board:** *Story map* frame, set up by the trainer (empty backbone row, three empty slice rows). Rhythm: post-its (phase 1), Claude reads and posts back (phases 1–2), the board again (phase 2 regrouping, phase 4 stand-up). Fallback without the Miro connector: a frame screenshot into the chat, and the driver moves Claude's rows onto the board by hand.
+
+**Artefacts:**
+- Produces: *Story map* frame (board), `team/story-map.md` (backbone, slices, chosen first slice), `team/slice-1/` (clickable first slice), `team/<product owner>/watch-for.md`.
+- Consumes: `team/chosen-bet.md`, `team/tree.md`, `team/bet.md`, `team/product-box.html`, the designer's Day 2 piece in `team/<designer>/`, `memory/`.
+
+**Room:** each phase names one driver at the shared screen; the other two react (`check_workshop.md` §3). Only the driver writes the team root. Protected phase: 3 (the slice must exist for five users). Overrun: phase 4 drops to one sentence from the product owner.
+
+**View summary:** The three of you lay the customer's journey out on the board, cut it by what each slice would teach you, and build the first slice so it works end to end. The artefact is a story map and a rough slice that five people will use next.

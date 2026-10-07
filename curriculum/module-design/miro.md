@@ -53,7 +53,7 @@ Agent notes for building and running board beats (APT101 first; any training wit
 
 - **Team beat** (merge the tree, read the pre-mortem, story map backbone, five-users wall): the driver's Claude reads the frame by area, writes Claude's stickies/connectors into the frame or a new one, then the room works the board again. All steps verified above.
 - **Personal beat on the board** (alone, own colour, own side of a frame: tree sketch, pre-mortem causes): no Claude call during it; the later team read separates people by colour. Verified as part of the team read.
-- **Each person's own Claude reading the team board**: same calls from another account. Not testable with one account; holds if the trainer shares the board as editor and that person signed into the connector. Check on the first dry run with two accounts.
+- **Each person's own Claude reading the team board**: the same calls under that person's account. Miro is multi-user by design (maintainer 2026-10-07); the setup step is the trainer sharing the board as editor and each person signing into the connector.
 
 ## More gotchas
 

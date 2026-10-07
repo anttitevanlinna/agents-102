@@ -118,4 +118,3 @@ Paths are in the student's training folder or the team folder, not this repo.
 
 ## Open
 
-- **Miro: second account.** Each person's own Claude reading the shared board is untested (one account). Check on the first dry run with two accounts; details in `miro.md`.

@@ -19,4 +19,4 @@ Propose a walking skeleton and two or three slices. Each slice cuts across the w
 
 Draw each slice as a labelled row under the backbone, inside the frame.
 
-Don't choose the first slice. That's ours. Wait while we move post-its and choose. When we tell you we're done, read the frame again and write the slices and our choice to team/story-map.md, in the words now on the board.
+Don't choose the first slice. That's ours. Wait while we move post-its and choose. When we tell you we're done, read the frame again and add the slices and our choice to team/story-map.md, under the backbone, in the words now on the board. Keep the backbone as it is.

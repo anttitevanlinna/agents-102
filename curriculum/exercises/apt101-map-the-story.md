@@ -85,6 +85,9 @@ If the three sentences name three different things, the slice is testing too muc
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-07 (behavior@3d7fd713)
+- judges @3d7fd713: behavior PASS
+
 **Role in Day 3:** The day's first build: the chosen bet becomes a story map on the board and one end-to-end slice that five users meet in the next exercise.
 
 **Reuse:** new. No Agents 101 source. Phase rhythm borrowed from `personal-site-with-guardrails` (build, then a cold read): the team lead's walk-through plays the cold critic.

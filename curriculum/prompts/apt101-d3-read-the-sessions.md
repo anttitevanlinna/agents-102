@@ -15,7 +15,7 @@ produces:
 ---
 Read the Five users frame on our team's Miro board: every post-it, including any on its edge, one column per user. If you can't reach the board, say so, and I'll paste a screenshot. Read team/chosen-bet.md (the hypothesis and its signal), each of our Day 1 hypotheses in team/bet.md, our Day 1 digests in team/<name>/digest-day1.html, this morning's digest in module-2/morning-agent/latest.html, and team/five-users.md.
 
-First, copy every moment from the wall into team/five-users.md, under its user, word for word.
+First, add every moment from the wall to team/five-users.md, below the script, under its user, word for word. Leave the script as it is.
 
 For each moment, say whether a digest said it, could have said it, or could not have.
 

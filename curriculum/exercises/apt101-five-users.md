@@ -65,6 +65,9 @@ Laptops shut, back at the wall. Persevere, pivot or stop: the three of you decid
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-07 (behavior@3d7fd713)
+- judges @3d7fd713: behavior PASS
+
 **Role in Day 3:** The chosen bet meets people who did not build it; each person's Day 1 digest, which found what its look-for line asked for, is read against what they did; the trio makes the persevere / pivot / stop call.
 
 **Reuse:** new. No Agents 101 source.

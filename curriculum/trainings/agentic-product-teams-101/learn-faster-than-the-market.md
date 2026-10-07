@@ -79,6 +79,9 @@ The bet is still open, and the next slice is yours to place.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-07 (behavior@3d7fd713)
+- judges @3d7fd713: behavior PASS
+
 **STATUS:** built from the build plan (`curriculum/module-design/apt101-build-plan.md` § Day 3), 2026-10-07. `simulation: true` training: pages and prompts land uncarded. Big Idea kept as written (adopted positioning line, strategy 2026-10-05). H1 kept as the registered module title in `site/layouts/curriculum.js` ("Learn faster than the market"); the build plan's day name is "Where your team goes next", and the two are the maintainer's to reconcile.
 
 **Beat order (build plan § Day 3):** 1 what came back (§ Start here, no Claude: the digest opens in a browser, so the day's session opens in the first exercise) · lecture *Slice by what you learn* · 2 map the story · 3 write what good means · lecture *What good means* (after: slides 3–4 name what Phase 3 produces; the lecture file cannot split here, and the exercise body sets up floor and ceiling itself) · 4 five users · lecture *Bet meets five users* (after) · 5 lecture *Three jobs, rewritten* · 6 take it to the team · lecture *From the three of you* (after) · 7 close: § Sharpen the proposal, lecture *Where you go from here*, § Say it to each other.

@@ -64,6 +64,9 @@ Hold your post-it against what you found. Each of you says your missing line out
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-07 (behavior@3d7fd713)
+- judges @3d7fd713: behavior PASS
+
 **Role in Day 3:** The digest from Day 1 gets caught by the team's own standard: the fixed judge holds the floor, the team's written lines are the ceiling, and the gap between them is what the criteria missed.
 
 **Reuse:** `eval-loop` keys `eval-loop-1`, `eval-loop-2`, `eval-loop-5`, unchanged. The briefing is framed as the digest regenerated against `./crux.md` (Day 2's outcome). Bonus prompts `eval-loop-3/4` dropped for time. New: `apt101-d3-what-good-means`, `apt101-d3-caught`, `apt101-d3-what-it-missed`.

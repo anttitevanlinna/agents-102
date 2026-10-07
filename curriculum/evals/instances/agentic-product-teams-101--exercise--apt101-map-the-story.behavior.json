@@ -1,0 +1,71 @@
+{
+ "class": "behavior",
+ "file": "curriculum/exercises/apt101-map-the-story.md",
+ "training": "agentic-product-teams-101",
+ "verdict": "PASS",
+ "body_sha": "ed854e76efcc00d2c2a750592fa4cce5d0bbc491611764b8bcd72f2abd99a5d9",
+ "trace_status": "generated_first_time",
+ "prompts_evaluated": 4,
+ "prompts_findings": [
+  {
+   "prompt_index": 1,
+   "prompt_lead": "Read the Story map frame on our team's Miro board: every post-it on it, includin",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": [
+    {
+     "pattern_id": "citation-cargo-cult",
+     "confidence": "low",
+     "evidence": "Each step in the customer's words, with the interview or ticket it comes from",
+     "fix_hint": "Claude may attach plausible but unchecked interview references"
+    }
+   ]
+  },
+  {
+   "prompt_index": 2,
+   "prompt_lead": "Read the Story map frame, team/story-map.md, the assumption map in team/bet.md a",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": [
+    {
+     "pattern_id": "file-preservation-gap",
+     "confidence": "med",
+     "evidence": "read the frame again and write the slices and our choice to team/story-map.md",
+     "fix_hint": "file already holds the backbone from phase 1; no preserve-vs-replace language"
+    }
+   ]
+  },
+  {
+   "prompt_index": 3,
+   "prompt_lead": "Read the chosen first slice in team/story-map.md, the designer's Day 2 prototype",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": []
+  },
+  {
+   "prompt_index": 4,
+   "prompt_lead": "Open team/slice-1/ as a customer seeing it for the first time, with the job name",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": [
+    {
+     "pattern_id": "niceness-tax",
+     "confidence": "med",
+     "evidence": "Walk every step ... List each place where",
+     "fix_hint": "Claude may report a charitable few breaks on static HTML it cannot truly click"
+    }
+   ]
+  }
+ ],
+ "suggestions": [
+  {
+   "rule": "file-preservation-gap",
+   "line": 48,
+   "now": "read the frame again and write the slices and our choice to team/story-map.md, in the words now on the board.",
+   "proposed": "read the frame again and add the slices and our choice to team/story-map.md under the backbone, keeping the backbone as it is, in the words now on the board."
+  }
+ ],
+ "blocking_findings_count": 0,
+ "nonblocking_findings_count": 0,
+ "notes": "No accept-notes in maintainer block. Phase 2 prompt line cited against raw source is the {{prompt:apt101-d3-slice-by-learning}} marker at line 48; the closing sentence sits in the registry body. Single med risks never reach REVISE; prompt 4 niceness-tax is mitigated by team lead reading the list and designer deciding fixes (body 76)."
+}

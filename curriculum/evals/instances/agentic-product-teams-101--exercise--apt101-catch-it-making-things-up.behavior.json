@@ -3,8 +3,8 @@
  "file": "curriculum/exercises/apt101-catch-it-making-things-up.md",
  "training": "agentic-product-teams-101",
  "verdict": "PASS",
- "body_sha": "5b6bdf035f6dd19072dacf6e91fc02408a3f57d1870022233901751c4b4dd24f",
- "trace_status": "generated_first_time",
+ "body_sha": "d48ef3dda1530f178fa6e50a93b7e96907ca644f5c4558198f9768e84cecdb2b",
+ "trace_status": "partial_regen",
  "prompts_evaluated": 10,
  "prompts_findings": [
   {
@@ -92,22 +92,15 @@
    "risks_fired": [
     {
      "pattern_id": "citation-cargo-cult",
-     "confidence": "med",
-     "evidence": "'give me the sentence from the source that supports it, or \"not found\"' asks for a quoted sentence but not an exact quote with its path, so a plausible paraphrase can pass as a sentence from the source.",
-     "fix_hint": "ask for exact quote with file path (see suggestion)"
+     "confidence": "low",
+     "evidence": "\"quote the sentence from the source that supports it exactly, with its file path, or write \\\"not found\\\"\" (line 98 fence)",
+     "fix_hint": "none owed; exact quote plus path plus \"not found\" escape make a fabricated citation checkable"
     }
    ]
   }
  ],
- "suggestions": [
-  {
-   "rule": "citation-cargo-cult",
-   "line": 98,
-   "now": "For each claim the judge flags, give me the sentence from the source that supports it, or \"not found\".",
-   "proposed": "For each claim the judge flags, quote the sentence from the source that supports it exactly, with its file path, or write \"not found\"."
-  }
- ],
+ "suggestions": [],
  "blocking_findings_count": 0,
  "nonblocking_findings_count": 0,
- "notes": "No maintainer accept-notes (maintainer block carries none dated). Carve-outs applied: body-callout (prompt 2), evidence-backed Debrief (prompt 9). Cross-class, not judged here: the rt-cowork fork (raw line 50, hallucination-bakeoff-4) renders with a '(Claude Code)' dest label; prompt 10 says 'the summary file I name below' but the fence has nothing below the instructions; prompt 8 asks Claude to 'ask me' for one sentence while the body has three people answer through the team lead. If the real summary comes back clean, prompt 10's 'End with the one flagged claim' has no exit, so Claude might invent a flag; low base rate, unmarked here, maintainer watch-for already says clean is a result. Scorer (prompt 6) and detectors are mitigated in-prompt (forced pick, strict substring)."
+ "notes": "No maintainer accept-notes (maintainer block carries none dated). Prompts 1-9 trace entries reused (sha match); prompt 10 regenerated after the exact-quote edit (prior suggestion taken, now low). Carve-outs applied: body-callout (prompt 2), evidence-backed Debrief (prompt 9). Cross-class, not judged here: the rt-cowork fork (raw line 50, hallucination-bakeoff-4) renders with a '(Claude Code)' dest label; prompt 10 says 'the summary file I name below' but the fence has nothing below the instructions; prompt 8 asks Claude to 'ask me' for one sentence while the body has three people answer through the team lead. If the real summary comes back clean, prompt 10's 'End with the one flagged claim' has no exit, so Claude might invent a flag; low base rate, unmarked here, maintainer watch-for already says clean is a result. Scorer (prompt 6) and detectors are mitigated in-prompt (forced pick, strict substring)."
 }

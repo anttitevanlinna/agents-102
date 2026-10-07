@@ -92,6 +92,9 @@ Then the board again. Stand at the frame and read it as your wider team will see
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-07 (behavior@3d7fd713)
+- judges @3d7fd713: behavior PASS
+
 **Role in Day 3:** Transfer: the trio's way of working becomes a proposal the wider team decides on, with a named first move per role in `team/monday.md`.
 
 **Reuse:** the beat order of Agents 101's `share-your-work` (job, bottleneck, two plans, what would have to be true, failure story), rewritten as named APT101 prompts for a trio proposing to its wider team: the Agents 101 keys speak of one teammate and one candidate, and the five users' call has to reach the job interview. Same `module-7/` paths, so § Sharpen the proposal finds the files. Agents 101 runs these over 70 min across three exercises; here 55 min in one, by putting one driver on all of them. Phase 2 (hand over one file) is new: the lecture after names "an agent's instructions are not the agent", so the room runs a stranger's instruction file before the slide says it (recognition before naming, `curriculum/story-craft.md`); the body does not name the result: the designer writes what they expect before the run, then names the line that went generic, what their own memory would have said there, and one thing that stayed on the sender's laptop (r3, judges 1 and 2). 7 min, two taken from phase 4. Failure stories cut to one: Day 2 ran *imagine it failed*. New: `apt101-d3-run-their-file`, `apt101-d3-the-job-your-team-hires`, `apt101-d3-bottleneck-and-plans`, `apt101-d3-test-the-switch`, `apt101-d3-team-monday`.

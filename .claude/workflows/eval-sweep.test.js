@@ -616,3 +616,11 @@ test('a drift-scoped story verdict is not listed as unbound', async () => {
   assert.equal(story.scope, 'drift');
   assert.deepEqual(out.unbound, []);
 });
+
+// Behavior judges counted their suggestions into nonblocking_findings_count and
+// recorded no matching prompts_findings row: COUNT_MISMATCH on 3 of 23 APT101
+// instances (2026-10-07). The count-what-you-wrote warning skipped behavior.
+test('behavior is told a suggestion is never counted as a finding', async () => {
+  const p = await promptFor({});
+  assert.match(p, /never counts? `suggestions`/);
+});

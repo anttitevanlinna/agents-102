@@ -626,6 +626,17 @@ assert_grep    "$TMP/t30.md" 'behavior PASS'  'T30 the judged class is stamped'
 assert_no_grep "$TMP/t30.md" 'grandfathered'  'T30 never-judged classes are not stamped grandfathered'
 assert_no_grep "$TMP/t30.md" 'writing '       'T30 an unjudged class is absent from the row'
 
+# ── T31 — restamp where the prior judges row omits a class: still omitted, never grandfathered
+mkfix t31.md '# Exercise: Judged once
+<!-- maintainer -->
+**Quality:** compendium-audited 2026-10-07 (behavior@old1234)
+- judges @old1234: behavior PASS
+
+body'
+run "$TMP/t31.md" --behavior PASS --sha new5678 --date 2026-10-08 >/dev/null
+assert_grep    "$TMP/t31.md" 'behavior PASS'  'T31 the judged class is restamped'
+assert_no_grep "$TMP/t31.md" 'grandfathered'  'T31 a class absent from the prior judges row is not grandfathered'
+
 echo "──────────────────────────────"
 echo "update-quality.test.sh: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]

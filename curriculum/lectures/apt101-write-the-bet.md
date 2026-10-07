@@ -2,7 +2,7 @@
 
 [A signal that can only say yes is not a test](slides/write-the-bet-so-it-can-lose.md)
 
-[Agents shrink the feasibility work; three risks remain](slides/four-product-risks.md)
+[Agents shrink "can we build it?"; two questions remain](slides/four-product-risks.md)
 
 [Test first what matters most and is proven least](slides/riskiest-assumption-first.md)
 

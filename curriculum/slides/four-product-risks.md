@@ -1,33 +1,33 @@
-## Agents shrink the feasibility work; three risks remain
+## Agents shrink "can we build it?"; two questions remain
 <!--slide:four-product-risks-->
 
-Agents make much of the building cheap. Of Marty Cagan's four big risks (2017), that shrinks one:
+Under every idea sit three questions, the colours on David Bland's assumption map:
 
-- Value: whether customers will buy it, or users choose to use it.
-- Usability: whether users can figure out how to use it.
-- Feasibility: whether we can build it with the time, skills and technology we have.
-- Business viability: whether it works for the rest of the business.
+- Desirable: do they want this?
+- Viable: should we do this?
+- Feasible: can we do this?
 
-Customers still choose, users still get stuck, and the business can still say no. Cagan asks teams to tackle the risks early, with product, design and engineering side by side.
+Agents make much of the third one cheap. A working slice can exist by the afternoon. The first two they cannot settle for you: customers still choose, and only your business can say whether this is worth doing.
+
+So when you map your bet, the post-its that matter most are the ones about wanting and should.
 
 <!-- maintainer -->
 
-**STATUS:** squint build (2026-10-07), body opens on the turn; APT101 gap G:four-product-risks from `apt101-source-pack-2.md` §4. Not taught (simulation training).
+**STATUS:** squint build (2026-10-07), rewritten the same day on the maintainer's steer ("Cagan is not really great fit for our storytelling. He is not action-oriented enough"): Bland's three questions replace Cagan's four risks, so the slide sets up the assumption map the bet exercise builds. Not taught (simulation training).
 
-**Fidelity guard:** Cagan's four. Ethics and compliance, which Cagan's 2023 taxonomy folds into viability, are left off: no governance is taught (maintainer, 2026-10-07). Do not add Torres's five assumption categories to this slide; they are a different author's list.
+**Fidelity guard:** Bland's worksheet questions, verbatim. He credits the desirable / viable / feasible themes to Larry Keeley and IDEO; the 2x2 itself comes from Lean UX (named on the next slide). Viable is "Should we do this?", which is broader than money; don't gloss it as "can we make money". Don't add Torres's five categories.
 
 <!-- backing -->
 
 **Claims**
-- `four-risks` · borrowed · "Value … Usability … Feasibility … Business viability" ← cagan-four-risks-2017
-- `early-and-together` · borrowed · "tackle the risks early, with product, design and engineering side by side" ← cagan-four-risks-2017
-- `agents-shrink-feasibility` · vision · "Agents make much of the building cheap" ← none-owed — APT101 stance; the outcome loop's "agents make the slow step cheap".
-- `settle-only-one` · vision · "that shrinks one" ← none-owed — APT101 reading; feasibility shrinks, the other three stay.
+- `three-questions` · borrowed · "Desirable: do they want this? … Viable: should we do this? … Feasible: can we do this?" ← bland-assumptions-worksheet
+- `agents-shrink-feasibility` · vision · "Agents make much of the third one cheap" ← none-owed — APT101 stance; the outcome loop's "agents make the slow step cheap".
+- `two-remain` · vision · "The first two they cannot settle for you" ← none-owed — APT101 reading; feasibility shrinks, wanting and should stay with the team.
 
 **Sources**
-- cagan-four-risks-2017 `[checked:2026-10-06 result:OK due:none]` https://www.svpg.com/four-big-risks/ — [practitioner direct] Cagan, "The Four Big Risks", SVPG, 4 Dec 2017: the four risks; tackle early, collaboratively.
+- bland-assumptions-worksheet `[checked:2026-10-06 result:OK due:none]` https://www.precoil.com/assumptions-mapping — [practitioner direct] David J Bland, Precoil, assumptions mapping page and linked worksheet v3.0: "Desirable - Do they want this?" / "Viable - Should we do this?" / "Feasible - Can we do this?". fallback: `apt101-source-pack-3.md` §3.
 
 **Frameworks**
-- Four big risks · [borrow:practitioner-coined] · law:none · ← cagan-four-risks-2017
+- Assumptions mapping · [borrow:practitioner-coined] · law:none · ← bland-assumptions-worksheet
 
 <!-- /backing -->

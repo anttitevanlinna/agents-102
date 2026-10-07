@@ -30,7 +30,7 @@ Method (maintainer, 2026-10-06): squint at the slide titles alone and put them i
 
 **Your first bet**
 - A signal that can only say yes is not a test ✱ (style)
-- Agents shrink the feasibility work; three risks remain
+- Agents shrink "can we build it?"; two questions remain (Bland, replaces Cagan on the maintainer's steer 2026-10-07)
 - Test first what matters most and is proven least ✱ (style)
 
 **Your material is the moat**

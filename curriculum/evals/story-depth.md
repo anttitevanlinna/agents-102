@@ -6,6 +6,27 @@ section per run, newest first; per-judge reports under `story-depth/`.
 
 
 
+
+## APT101 hill-climb: round 1, squint built into slides (`apt101-handbook-hc1`), 2026-10-07
+
+Paired, three Opus judges, 1–100. The judges were given the intended shape: the student is the hero, a first-person voice is the guide, an open forward ending is intended, and the point-of-view anchor is unchanged. Both trainings were judged under the same lens. Reports: `story-depth/apt101-handbook-hc1.judge-{1,2,3}.md`. Build: b758b28b, 78 handbook slides.
+
+| | AE101 | APT101 hc1 | APT101 r2 (before the squint) |
+|---|---|---|---|
+| Frame | 94 | 85 | 80 |
+| Narrative | 92 | 76 | 58 |
+| Point of view | 95 | 84 | 60 |
+| Stance | 92 | 81 | 80 |
+
+Per judge, APT101: 85/72/86/81 · 85/80/84/82 · 88/76/84/79.
+
+**What the judges converged on:**
+1. **The turn is still told, not lived.** The Day 2 digest failure and the Day 3 five-user test are written as hypotheticals ("Say one hesitates…"). Point them at the trio's own Day 1 brief and their own users.
+2. **Authority bodies lead where the training's position should.** Nielsen, Patton, the double diamond, 1-2-4-All, the pre-mortem, Kniberg: cut each to the one fact used, or say what agents change.
+3. **The guide has scars, but they are quoted, not narrated.** The point-of-view gap that remains is the guide's own agent-era product failure, told in the first person. Only the maintainer can supply it.
+
+Part of the narrative gap is the manifest: AE101's handbook includes its exercises, where the turn is lived on the page, and APT101's is lectures only.
+
 ## Agents 101 theory handbook vs AE101: reference run `a101-handbook-r1`, 2026-10-06
 
 Same paired protocol (three Opus judges, 1–100, handbooks only), run as the reference point for APT101. The judges were barred from reading this report. Reports: `story-depth/a101-handbook-r1.judge-{1,2,3}.md`.

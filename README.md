@@ -95,6 +95,6 @@ Anyone reading this has a **personal usage license** — designed to be generous
 
 **You can:** learn from every module, run every exercise, **own everything you build** (agents, skills, memory pages, evals, sites — your outputs are yours, not Bosser's), **apply anything you learn at your own workplace** (that's the whole point of the training), and quote briefly with attribution.
 
-**You can't:** redistribute the curriculum files, teach the material as your own training, resell it, build a competing course from it, or feed the proprietary files into a public AI dataset.
+**You can't:** redistribute the curriculum files, teach the material as your own training, build a competing course from it, or feed the proprietary files into a public AI dataset.
 
 The simple test: *am I using this for my own learning and my own work?* If yes, you're inside the license. It is free for personal use. Running the material as a training, inside your company or outside it, takes a separate training licence from Bosser Oy. Full terms in [`COPYRIGHT.md`](COPYRIGHT.md) § Personal Use License.

@@ -2269,60 +2269,6 @@
   }
  },
  {
-  "target_file": "curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md",
-  "instance": "ae101--reference--mcp-and-connectors.technical.json",
-  "rule": "platform_and_boundaries 5a",
-  "claim": "L60's 'individual engineers don't need per-install admin approval' is a behavioural claim about Atlassian's 3LO admin gating that no dated stamp names specifically; it needs its own stamp or a live probe.",
-  "disposition": "REFUTE",
-  "confidence": "medium",
-  "why": "§5a is scoped to 'what binary actually does' AND a test taking under five minutes. This clause describes Atlassian's own org consent flow — whose first-3LO-consent state and domain allow-list live in a customer's Atlassian admin console — not Claude Code behaviour, and it is not probeable in five minutes without an Atlassian org and admin rights. §5a's own remedy for that case is a marker, not a stamp. The stamp format also does not do what the finding asks: `curriculum/source-freshness-format.md` specifies one line per SOURCE with a claim-anchor, not a line per sentence, and extending the Atlassian anchor to name admin-gating would assert a 2026-07-26 check the checker's note does not record — fabricating verification to close a todo. The page is already inside the re-verification system at `due:cohort`.",
-  "evidence": "Read rule body via `rule.js platform_and_boundaries 5a` — 'AND test takes <5 minutes', plus 'Unprobeable in moment -> mark limitation assumed, live-probe owed'. Read mcp-and-connectors.md L60 (the clause) and L141 (the Atlassian Rovo stamp: `[checked:2026-07-26 result:OK due:cohort]`, claim-anchor covers the endpoint and the product list). Read curriculum/source-freshness-format.md lines 1-30: grammar is 'One line per source, inside the file's Source verification block', claim-anchor = 'the number / quote / framework this source backs'.",
-  "anchor": "- `[checked:2026-07-26 result:OK due:cohort]` https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/",
-  "accept_note": "**The 3LO admin-gating sentence is doc-grounded and stays (2026-09-05).** *Individual engineers don't need per-install admin approval* describes Atlassian's own org consent flow, not what the Claude Code binary does, and `check_platform_and_boundaries.md` §5a is scoped to binary behaviour with a sub-five-minute probe — an org's first-consent state is neither. The Atlassian Rovo stamp carries the page at `due:cohort`, which is where a re-read of this clause belongs; `source-freshness-format.md` puts one stamp on a source, not one per sentence, so widening its claim-anchor would assert a check nobody ran. Do not file this as an unstamped runtime-behaviour claim.",
-  "verification": {
-   "ruling": "FINDING_SURVIVES",
-   "reason": "The refutation defeats itself. §5a's remedy for exactly the case the triage argues for is not silence: \"Unprobeable in moment → mark `limitation assumed, live-probe owed` + don't harden against it yet.\" The triage quotes this (\"§5a's own remedy for that case is a marker, not a stamp\") and then drafts a note saying \"Do not file this as an unstamped runtime-behaviour claim\" without adding the marker — naming the owed work and then switching the rule off. Two further claims fail. (a) §5a's own enumeration includes \"install affordance,\" and L60's \"individual engineers don't need per-install admin approval ... Admins control product scopes and which domains can connect, not whether individuals can install after that\" is a doc-derived NEGATIVE claim, which §5a calls \"the highest-risk shape.\" (b) \"`source-freshness-format.md` puts one stamp on a source, not one per sentence, so widening its claim-anchor would assert a check nobody ran\" attacks a fix the judge did not require: its fix_hint offers \"the same URL with a claim-anchor naming it, or live-verify once.\" The format doc defines claim-anchor as \"the number / quote / framework this source backs — what breaks if it doesn't hold,\" and L141's anchor covers only the endpoint and product list, so a cohort re-verifier re-checks those, ticks OK, and never re-reads the admin-gating sentence. The page already records honest non-verification elsewhere (`result:BLOCKED` at L146-147), so the cheap remedy exists in-file, and reference pages are exempt from the approval gate — this costs one clause, not a card."
-  },
-  "survivor_disposition": {
-   "disposition": "LAND",
-   "land_surface": "maintainer_block",
-   "value_rank": 3,
-   "room_cost": "A student in an Atlassian shop reads a flat promise that admin approval is behind them, hits a tenant that gates the install anyway, and burns exercise minutes on an OAuth bounce with no fallback line on the page — while the cohort re-verify keeps ticking the Atlassian stamp OK, because its claim-anchor covers the endpoint and the product list and never points at this sentence. Small blast radius (AE101 defaults to `gh`), but it recurs every cohort until someone probes it.",
-   "reasoning": "Reference page, so nothing here is gated — and the honest remedy is not a body edit at all. §5a's own text supplies it: an unprobeable runtime claim gets `limitation assumed, live-probe owed`, not silence and not a stamp nobody ran. The refutation quoted that clause and then declined to write the marker, which is the rule named and switched off in one move. The claim qualifies squarely: §5a enumerates \"install affordance\" among its binary behaviours, and L60's clause is doc-derived and NEGATIVE (individual engineers *don't* need per-install admin approval; admins control scopes and domains, *not* whether individuals can install) — §5a's stated highest-risk shape, because a student architects around the absence of a wall. The stamp route the triage attacked is genuinely wrong: `source-freshness-format.md` anchors one line per source, and widening the Atlassian anchor would assert a 2026-07-26 check of admin-gating that nobody ran. So the landing is a scoped accept-with-note modelled on the file's own precedent — the plugin-scope-precedence note directly above it does exactly this for exactly this rule — naming the clause, the rule number, why the marker rather than a stamp, and the concrete probe a re-verifier runs. The note is scoped to this one clause and says so, leaving the separately-confirmed Team/Enterprise admin-only lines untouched, so a future technical judge reads it as an open item and stops re-filing rather than treating the whole section as adjudicated. The body clause stays as written until a probe says otherwise: hedging it without evidence would be inventing the opposite claim."
-  },
-  "card": {
-   "outcome": "applied",
-   "note": "landed on a non-gated surface (maintainer_block) at 95aa7f57",
-   "at": "2026-09-05"
-  }
- },
- {
-  "target_file": "curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md",
-  "instance": "ae101--reference--mcp-and-connectors.technical.json",
-  "rule": "platform_and_boundaries 38",
-  "claim": "L93's plugin-scope precedence / URL-collision claim is covered only by an unstamped end-of-section Sources link, not by an individually dated stamp.",
-  "disposition": "STALE",
-  "confidence": "medium",
-  "why": "The verification gap is real but §38 is the wrong home and cannot be closed by inventing a stamp. §38 fires on 'any forward-looking automation beat (what an agent could do, wired later)' and its three tells — an *X against Y* retrieval metaphor, a lifecycle noun from an untouched stage, an unsourced cadence — are all absent; L93 is present-tense install mechanics. The claim does land squarely in §5a's own list ('settings precedence'), and §5a prescribes the marker when the probe cannot run in the moment: 'mark limitation assumed, live-probe owed + don't harden against it yet'. The fix is therefore a dated maintainer note recording the owed probe, not a stamp asserting a check nobody ran and not an edit to the student-facing sentence. It lands in the Source verification block, which no student reads. RETIRED 2026-09-10: already landed, shorter, as the **Plugin-scope precedence** maintainer paragraph. The row read as pending only because its anchor (the composio stamp) is unchanged.",
-  "evidence": "Read rule bodies via `rule.js platform_and_boundaries 38` and `5a`; walked all three §38 tells against L93 and none matches. Read mcp-and-connectors.md L89-93 (the plugins section), L112 (the section's unstamped Sources line, which does include the plugins-reference URL), and L139-149 (the Source verification block — no stamp for code.claude.com/docs/en/plugins-reference). Anchor uniqueness: `grep -c 'fallback: link the homepage, not the deep link, if it rots again.'` = 1.",
-  "anchor": "- `[checked:2026-07-26 result:OK due:cohort]` https://composio.dev/ — [third-party bridge docs] Composio Jira MCP bridge",
-  "surface": "maintainer-block"
- },
- {
-  "target_file": "curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md",
-  "instance": "ae101--reference--mcp-and-connectors.writing.json",
-  "rule": "writing 20",
-  "claim": "Line 9's 'Three ways an action becomes callable in a Claude Code session:' states a count the three-item list directly below already holds.",
-  "disposition": "EXEMPT_BODY",
-  "confidence": "high",
-  "why": "The finding is right and the file is under `reference/`, which the maintainer standing-exempted from the approval gate (widened 2026-08-29). §20 governs 'a count in prose adjacent to its list', and this is the rule's own paradigm shape: the numeral sits one line above items 1-3 and buys nothing on the way in. The two carve-outs both miss it — the header numeral at L7 ('## Three paths to a work-app action') is explicitly protected and stays, and the memory-handle carve-out protects the recurring 'Path 1/2/3' labels at distance (L15, L23, L32, L40, L93, L110), which are named labels, not this tally. Fix is the rule's prescribed one: drop the numeral, no hedge quantifier substituted.",
-  "evidence": "Read rule body via `rule.js writing 20` — 'A numeral in a `##` header is NOT covered by this rule' and the memory-handle test ('does the numeral appear where the items are NOT visible?') both read directly. Read mcp-and-connectors.md L7-15: header, count line, three numbered items, then the Path-2 callback. `grep -c '^Three ways an action becomes callable in a Claude Code session:$'` = 1, so the anchor is unique. File path is curriculum/trainings/agentic-engineering-101/reference/, matching the standing body exemption.",
-  "anchor": "L9: Three ways an action becomes callable in a Claude Code session:",
-  "old_string": "Three ways an action becomes callable in a Claude Code session:",
-  "new_string": "An action becomes callable in a Claude Code session:",
-  "surface": "exempt-page"
- },
- {
   "target_file": "curriculum/lectures/how-instructions-grow.md",
   "instance": "ae101--lecture--how-instructions-grow.writing.json",
   "rule": "writing 3",

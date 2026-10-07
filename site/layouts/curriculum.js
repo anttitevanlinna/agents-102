@@ -72,7 +72,6 @@
                 { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' } // M6
             ],
             references: [
-                { slug: 'mcp-and-connectors',        title: 'MCP and connectors' },
                 { slug: 'multi-session-git',         title: 'Multi-session and Git: survival guide' },
                 { slug: 'prompt-anatomy',            title: 'Prompt anatomy: the named moves' }
             ]

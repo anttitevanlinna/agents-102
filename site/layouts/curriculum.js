@@ -41,9 +41,7 @@
                 { slug: 'learning-and-compounding-systems',      title: 'Learning and Compounding Systems' },
                 { slug: 'cookbook-for-agent-system-design',      title: 'Cookbook for Agent System Design' }
             ],
-            references: [
-                { slug: 'claude-quick-reference',                title: 'Claude quick reference — commands and how-tos' }
-            ]
+            references: []
         },
         'agentic-engineering-101': {
             label: 'Agentic Engineering 101',
@@ -74,7 +72,6 @@
                 { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' } // M6
             ],
             references: [
-                { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
                 { slug: 'mcp-and-connectors',        title: 'MCP and connectors' },
                 { slug: 'multi-session-git',         title: 'Multi-session and Git: survival guide' },
                 { slug: 'prompt-anatomy',            title: 'Prompt anatomy: the named moves' }

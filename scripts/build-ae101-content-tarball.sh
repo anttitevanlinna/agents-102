@@ -232,7 +232,7 @@ echo
 EXPECTED=(
   "lectures/the-wizard-move.md"
   "exercises/compound-and-close.md"
-  "reference/claude-code-for-engineers.md"
+  "reference/prompt-anatomy.md"
   "supplementary/verification-asymmetry.md"
   "content/skills/access-control-analysis/SKILL.md"
   "content/skills/stride/SKILL.md"
@@ -255,7 +255,6 @@ FORBIDDEN=(
   "exercises/raw-llm.md"                  # Agents-101 introductory exercise
   "supplementary/what-is-an-agent.md"     # moved to Agents-101 supplementary/
   "supplementary/agent-trigger-list.md"   # Agents-101
-  "reference/claude-quick-reference.md"   # Agents-101
 )
 LEAKS=()
 for path in "${FORBIDDEN[@]}"; do

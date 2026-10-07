@@ -96,7 +96,6 @@ Third-party words, names and marks in what a licensee receives. A flagged item i
 
 - **Song lyrics in a shipped script.** `content/skills/security-tools/check.sh` prints four lines of a pop chorus under the ASCII face. Cut the lyric lines, keep the face and the lesson text. `trainer-modules.md` and `training-architecture.md` describe the gag.
 - **The optional original grill prompt is Matt Pocock's skill, word for word, MIT.** `prompts/push-back-on-the-plan-2-original.md`, offered and credited in `exercises/push-back-on-the-plan.md`. The MIT notice travels inside the content tarball.
-- **`reference/claude-code-for-engineers.md` sits close to Anthropic's docs.** The memory passage is near-verbatim: paraphrase. Across the page, swap doc examples for own ones and compare each section with the page it links.
 - **`lectures/the-machine-you-just-met.md` (shared with Agents 101):** the compound-engineering definition runs close to Klaassen's wording. Mark it as a quotation with the source, or paraphrase.
 - **`exercises/compound-and-close.md` and its prompts:** credit Klaassen and Every in the exercise; diff the compound prompt against their published command.
 - **`supplementary/verification-asymmetry.md`:** quote and link Jason Wei's post; vary the examples.

@@ -52,7 +52,7 @@ Look at Claude's three lists. Anything in list (3), the NOT REACHABLE pile, stay
 
 <div class="rt-code">
 
-Heads up on what happens at the end of the plan: Claude will pause and ask *"Claude has written up a plan and is ready to execute. Would you like to proceed?"* For this exercise, **Yes, and use auto mode** is the friendly default if the plan's topic split looks right. If two topics should merge, or something's missing, pick **No, keep planning** and type one sentence of feedback; Claude rewrites the plan. The remaining option walks you through each file write one at a time, which this exercise doesn't need. Your first option may be worded a little differently depending on your account, so pick by wording rather than by position. Full rundown in the [quick reference](../trainings/agents-101/reference/claude-quick-reference.md).
+Heads up on what happens at the end of the plan: Claude will pause and ask *"Claude has written up a plan and is ready to execute. Would you like to proceed?"* For this exercise, **Yes, and use auto mode** is the friendly default if the plan's topic split looks right. If two topics should merge, or something's missing, pick **No, keep planning** and type one sentence of feedback; Claude rewrites the plan. The remaining option walks you through each file write one at a time, which this exercise doesn't need. Your first option may be worded a little differently depending on your account, so pick by wording rather than by position.
 
 </div>
 <div class="rt-cowork">
@@ -177,6 +177,6 @@ You just ran **Recipe 2** end-to-end: the three layers (sources, memory, rules f
 **Deferred facilitator notes:**
 - Watch-fors: participant picks a challenge too broad ("digital transformation") — redirect to one concrete decision; too few sources make it through curation — fallback is to let Claude propose public-web substitutes; connector sign-in issues (live support via Slack/Teams during delivery, not in the student's read); Claude fires all three Phase 2 questions at once (tell the participant to answer in order — not a real break); Phase 3 "it got longer not sharper" failure mode; Phase 3 source-hunt running long (cap at 3 minutes — imperfect sources are fine, the integration is the lesson); Close "put it to work" question too vague (push back: "that's a topic, not a decision — what's the question you'd actually answer for your CEO?").
 - Decision points: if a cohort is uniformly short on internal-wiki access, pivot Phase 1 curation to OneDrive + internet-only — still teaches the move.
-- Claude Code project setup verification belongs in the prework quick reference, not here.
+- Claude Code project setup verification belongs in prework, not here.
 
 **View summary:** You build a folder of curated notes and sources that the agent reads before answering, then watch it compile claims grounded in your world rather than the open internet. The artifact is a memory that persists between sessions and sharpens each run.

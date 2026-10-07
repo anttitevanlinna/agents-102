@@ -189,7 +189,7 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 - **Backpressure vocabulary:** the source essay is the M3→M4 gap read (`earn-the-trust.md § Pre-read before Module 4`) and the term is named in the room by M4's closing lecture. Module 5 assigns no reading on it and needs none: the student arrives holding both the word and a session that produced changes faster than they could read them. Do not re-assign da Costa here.
 
 **Push-back moves** (trainer delivers). *Paired with the `check_pedagogy.md` §47 per-phase table below — same eight pushes, one spoken list and one audit grid. Edit both or neither.*
-- **Connections blocker** — student walks in without the M4 artefact accessible (closed laptop, ran out of credit, repo state unclear). Trainer push: *"the artefact is whatever's there. Repo commits since M4. Files modified. Scrollback at `~/.claude/projects/<project>/` if you closed the session. Open a fresh Claude Code session in the repo and ask it to read what the M4 run touched."* See [Claude Code for engineers — session transcripts](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#25-session-transcripts-default-location).
+- **Connections blocker** — student walks in without the M4 artefact accessible (closed laptop, ran out of credit, repo state unclear). Trainer push: *"the artefact is whatever's there. Repo commits since M4. Files modified. Scrollback at `~/.claude/projects/<project>/` if you closed the session. Open a fresh Claude Code session in the repo and ask it to read what the M4 run touched."*
 - **Phase 1 diagnosis-as-blame** — student frames failures as their fault (*"I should have written a better prompt"*). Trainer push: *"the un-packaged run was supposed to underdeliver. The diagnosis is data, not blame. Quote me one moment of goal drift."*
 - **Phase 1 over-diagnosis** — student lists 8 failures across all three modes. Trainer push: *"pick the dominant. The verifier you build at Phase 3 fits one shape. Which failure cost the most?"*
 - **Phase 2 prescription-skip** — student goes straight from named failure to building the fix without the align-then-run question. Trainer push: *"the question matters more than the answer. What validation would have caught this in minutes, not hours?"*
@@ -262,7 +262,7 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 
 **Frameworks riffed on (attributed in lecture):**
 - **Ronacher's three-pattern** — Armin Ronacher. Earns its name in the closing lecture, not before.
-- **Cherny's three stop-hook shapes** — Boris Cherny. Phase 3 names the menu; attribution lives in M6's module-file Frameworks section (the M6 *Eval* slide in `composing-the-workflow.md` never names Cherny). Hook system reference (event names, config shape, when-to-reach-for-hooks): `claude-code-for-engineers.md` § 34.
+- **Cherny's three stop-hook shapes** — Boris Cherny. Phase 3 names the menu; attribution lives in M6's module-file Frameworks section (the M6 *Eval* slide in `composing-the-workflow.md` never names Cherny).
 - **Compound engineering** — Kieran Klaassen. Debrief self-compound, fifth rep for the student.
 - **Hook-vs-prompt partition (must vs should)** — this training's framing, worked from the mechanism: a hook fires whether or not the model cooperates, a prompt asks. Named in the closing lecture's *"Hooks always fire"* section. Not a practitioner convergence and not attributed to one — the other three rows here name a person because they can.
 

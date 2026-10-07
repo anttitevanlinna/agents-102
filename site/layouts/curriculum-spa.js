@@ -98,8 +98,7 @@
     // Choice persists in localStorage. Default is 'cowork' — Agents 101's
     // most-friendly mode; matches the leftmost button position.
     //
-    // Verified facts driving this design (see Agents 101-side reference
-    // curriculum/trainings/agents-101/reference/claude-quick-reference.md, maintainer audit):
+    // Verified facts driving this design:
     //  - same agent engine across all three; CLAUDE.md + subagents identical
     //  - .plugin install path: Desktop + Cowork; CLI uses folder skills
     //  - no plan mode in Cowork (use prompt-level discipline instead)

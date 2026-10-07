@@ -30,7 +30,7 @@
 | | Lunch | | | 75 | |
 | 7 | Choose the bet | Together you prune what has nothing behind it and choose the branch Day 3 builds | Together | 20 | |
 | 8 | Make your first piece | Each of you builds your own piece of the bet with Claude, something you couldn't have built alone yesterday: the designer a clickable rough prototype built from the interview quotes behind the bet; the product owner the experiment that could kill the bet, built so it can run, a fake-door page or a short survey, with the signal you'd watch; the team lead how the team would work on this bet with agents, what the agents do and what stays with people, then rehearses telling it with Claude playing a sceptical colleague who remembers the last change negotiations. You lay the three side by side | Creativity, together | 45 | Exercise |
-| 9 | How it could fail | Each of you writes how this fails a year from now. Then quick rounds of ranking, and the causes you missed | Together | 20 | Voting page |
+| 9 | How it could fail | Each of you writes how this fails a year from now. Then quick rounds of ranking, and the causes you missed | Together | 20 | Miro board, dot votes |
 | 10 | Laptops shut | Plain talk about the top cause. Does the bet survive? Which part of it rests on the agents' work? | Together, control | 20 | |
 | | Break | | | 15 | |
 | 11 | What we keep, what runs tonight | Together you keep the day's lessons as rules your agents follow, and set tonight's run that prepares Day 3 | Control | 15 | Exercise |
@@ -49,4 +49,4 @@
 - **Hours:** 08:30–16:00. 315 planned minutes, a 10-minute float before lunch, twenty to spare.
 - **Day 1 owes:** the team agrees what may go into the agents before anything goes in, and everyone leaves with a working setup.
 - **Protected:** 8 and 10. Overrun: the morning uses the float, 9 drops to one round, 12 to five minutes.
-- **Trainer-built:** a fallback overnight digest, the two hidden false claims per group, the voting page.
+- **Trainer-built:** a fallback overnight digest, the team's Miro board with one frame per beat.

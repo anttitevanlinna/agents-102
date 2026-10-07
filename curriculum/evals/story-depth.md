@@ -10,6 +10,32 @@ section per run, newest first; per-judge reports under `story-depth/`.
 
 
 
+## APT101 full training vs AE101 full training: run `apt101-full-r1`, 2026-10-07
+
+First like-for-like run. Each judge reads both trainings whole: modules with their lectures and exercises inlined, in student order, through `scripts/read-training.js`. Maintainer notes and backing are stripped. Prompt markers stay unexpanded in both trainings, and APT101's new prompts are named lines with no bodies. The setup is 3 Opus judges, paired, AE101 read first, scored 1–100 on the rubric anchors, with the intended shape of APT101 stated as in the hill-climb rounds. Judge files are `story-depth/apt101-full-r1.judge-{1,2,3}.md`. The build came from `module-design/apt101-build-plan.md`, after one arc read and its fixes.
+
+| Factor | AE101 (j1/j2/j3) | median | APT101 (j1/j2/j3) | median | Handbook hc3 |
+|---|---|---|---|---|---|
+| Frame | 94/94/94 | 94 | 90/89/89 | 89 | 88 |
+| Narrative | 93/93/95 | 93 | 86/84/84 | 84 | 84 |
+| Point of view | 95/95/92 | 95 | 85/87/85 | 85 | 84 |
+| Stance | 92/92/92 | 92 | 89/87/88 | 88 | 88 |
+
+**Reading.** The exercises lift frame and point of view by a point or so, and narrative not at all. The turn is still told before it is lived:
+- Day 1's overnight lecture announces that the digest will be wrong, which is the judges' main finding (3/3).
+- The send-off brief asks the agent neutrally, so Day 2's agreement depends on luck, not on the student's own instruction (3/3).
+- The close of Day 3 translates Agents 101's sharing prompts ("teammate", "candidate") instead of growing from the five-users result (3/3).
+- The guide's failure is a sentiment, not a scene: one named bet and the moment someone showed him the wrong (2/3; only the maintainer can supply it).
+
+**Moves the judges converge on:**
+1. Cut the Day 1 lines that pre-announce the turn (`it-works-overnight`: "some of what it writes will be wrong", "It looks for what your brief tells it to look for").
+2. In `send-it-off`, each person writes the digest's look-for line from their own hypothesis, in their own words. On Day 2, `what-ran-overnight` quotes that sentence back beside `team/bet.md`, so the trio finds why it agreed before *Why it agreed* names it.
+3. Open `take-it-to-the-team` from the five-users call (persevere, pivot or stop, and the one sentence we now believe instead), and drop the teammate/candidate gloss.
+4. Single-judge moves:
+   - move *Start from your customer's sentence* after the product box exercise;
+   - pose the *Digest is back* header as a question;
+   - in five users, each person names the line of their own Day 1 hypothesis the users proved wrong.
+
 ## APT101 vs Agents 101 for the trio: blind persona reads, 2026-10-07
 
 Three Opus persona readers (product owner, designer and team lead, each L2 proficient-chat and Nordic) read both theory handbooks in full. The handbooks were labelled A and B, with the order alternated across readers. Each reader had to choose one. Reports: `story-depth/apt101-vs-a101-trio.{product-owner,designer,team-lead}.md`.

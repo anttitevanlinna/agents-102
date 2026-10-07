@@ -49,7 +49,7 @@ Open the page. It works. It reads like a box. It is also a box your nearest comp
 
 *10 min*
 
-Amazon teams write the press release before anything is built, in the customer's words, and call it **working backwards**. The release names the customer, the problem in their words, what changes for them, a quote a real customer could say, and the top reasons the product could still fail.
+Amazon teams write the press release before anything is built, in the customer's words, and call it **working backwards**. The release names the customer, the problem in their words, what changes for them, and a quote a real customer could say; the questions behind it ask for the top reasons the product could still fail.
 
 Post-its first. Three minutes, no talking: each of you puts stickies on the box frame, one per beat you can answer. Each beat has an owner. The product owner writes what changes for the customer. The designer writes the customer's problem and a sentence a customer actually said. The team lead writes why it could fail: what is hard to build, what the team has never shipped before.
 
@@ -121,8 +121,8 @@ You keep this box. The bet is written against it next, and on Day 3 five people 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74 pedagogy@dd242fd9)
-- judges @dd242fd9: behavior PASS, pedagogy PASS
+**Quality:** compendium-audited 2026-10-07 (technical@d747a00d behavior@dd243e74 pedagogy@dd242fd9)
+- judges @d747a00d: technical PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-paint-the-product-box.technical.json), behavior PASS, pedagogy PASS
 
 **Role in Day 1:** beat 3, the first hands-on beat; the opener after the two lectures; the trio meets the Agents 101 Module 1 mechanism (context shapes output) on its own product, before *Start from your customer's sentence* and *The agent knows only what you tell it* name what it did.
 

@@ -11,7 +11,7 @@ produces:
     location: "scrollback"
     note: "read by the team lead to the driver"
 ---
-Open team/slice-1/ as a customer seeing it for the first time, with the job named in team/story-map.md. You know nothing about how it was built.
+Open team/slice-1/ as a customer seeing it for the first time, trying to get done what the backbone in team/story-map.md describes. You know nothing about how it was built.
 
 Walk every step, from the first to the last. List each place where:
 - the walk stops

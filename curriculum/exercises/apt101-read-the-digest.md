@@ -10,7 +10,7 @@
 /rename apt101-day-2
 ```
 
-First, open the **Overnight digest** task in the Schedule sidebar. If its last run is from before Day 1 ended, click **Run now**, or paste its prompt into this session. It takes about five minutes; start Phase 1 when `module-2/morning-agent/latest.html` lands.
+First, open the **Overnight digest** routine in the **Routines** list. If its last run is from before Day 1 ended, click **Run now** on its page, or paste its prompt into this session. It takes about five minutes; start Phase 1 when `module-2/morning-agent/latest.html` lands.
 
 {{prompt:personal-agent-homework-3}}
 
@@ -78,7 +78,7 @@ You have three doubts, one chosen, each tied to a line and a source. Each of you
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-10-07 (behavior@0ac6010f pedagogy@761a20a3)
-- judges @761a20a3: behavior PASS, pedagogy PASS (4 findings see instances/agentic-product-teams-101--exercise--apt101-read-the-digest.pedagogy.json)
+- judges @d747a00d: technical REVISE (1/0 see instances/agentic-product-teams-101--exercise--apt101-read-the-digest.technical.json), behavior PASS, pedagogy PASS (4 findings see instances/agentic-product-teams-101--exercise--apt101-read-the-digest.pedagogy.json)
 
 **Role in Day 2:** opening exercise, beat 1. Turns the overnight digest from Day 1 into one doubt the team chose, which the outcome pick and the evidence run read next.
 

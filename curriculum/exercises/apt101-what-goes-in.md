@@ -60,8 +60,8 @@ Next, each of you builds your memory through that door.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74 pedagogy@dd242fd9)
-- judges @dd242fd9: behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-what-goes-in.pedagogy.json)
+**Quality:** compendium-audited 2026-10-07 (technical@d747a00d behavior@dd243e74 pedagogy@dd242fd9)
+- judges @d747a00d: technical PASS, behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-what-goes-in.pedagogy.json)
 
 **Role in Day 1:** beat 5; the one plain data beat in APT101 (no governance, no legal). Day 2's beat sheet owes this: "the team agrees what may go into the agents before anything goes in."
 

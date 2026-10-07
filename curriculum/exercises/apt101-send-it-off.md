@@ -66,11 +66,12 @@ One more sentence before it runs, in your own words: what do you expect the dige
 
 *6 min*
 
-In the desktop app, open the **Schedule** sidebar. Click **New task → New local task**. Fill in:
+In the desktop app, open **Routines** in the sidebar. Click **New routine**, then **Local**. Fill in:
 
 - **Name:** `Overnight digest`
-- **Frequency:** daily, early, before Day 2 starts
-- **Prompt:** the one below.
+- **Schedule:** daily, early, before Day 2 starts
+- **Folder:** your training folder, `~/Documents/apt101/`
+- **Instructions:** the prompt below.
 
 Ask Claude to read the overnight brief, follow the rules, and write the output to `latest.html`.
 
@@ -78,7 +79,7 @@ Ask Claude to read the overnight brief, follow the rules, and write the output t
 
 Save. Click **Run now** once.
 
-Leave your laptop plugged in until the run fires, lid open if you can.
+Leave your laptop plugged in with the lid open until the run fires.
 
 ## Phase 6: Check the look, then close it
 
@@ -105,7 +106,7 @@ Day 2 starts with what came back.
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-10-07 (behavior@dd243e74 pedagogy@dd242fd9)
-- judges @dd242fd9: behavior PASS, pedagogy PASS (verify-refuted, 3 findings see instances/agentic-product-teams-101--exercise--apt101-send-it-off.pedagogy.json)
+- judges @d747a00d: technical REVISE (1/1 see instances/agentic-product-teams-101--exercise--apt101-send-it-off.technical.json), behavior PASS, pedagogy PASS (verify-refuted)
 
 **Role in Day 1:** beat 7, the last hands-on beat; sends off the overnight digest that opens Day 2 (*What came back*) and threads the training (sent Day 1, agrees with you Day 2, caught by your own criteria Day 3).
 

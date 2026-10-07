@@ -163,9 +163,8 @@ done
 copy_md_dir "$TRAINING_DIR/reference"     "$ROOT/reference"
 copy_md_dir "$TRAINING_DIR/supplementary" "$ROOT/supplementary"
 
-# Supplementary subfolders ship verbatim (e.g., skill-stacking/ with primary doc
-# + diagrams). copy_md_dir only globs *.md at top level; this picks up any
-# subfolder a supplementary section refers to as a multi-file artefact.
+# Supplementary subfolders ship verbatim (a page's diagrams, say). copy_md_dir
+# only globs *.md at top level; this picks up any subfolder a supplementary section refers to as a multi-file artefact.
 for sub in "$TRAINING_DIR/supplementary"/*/; do
   [ -d "$sub" ] || continue
   cp -R "${sub%/}" "$ROOT/supplementary/"
@@ -234,7 +233,7 @@ EXPECTED=(
   "lectures/the-wizard-move.md"
   "exercises/compound-and-close.md"
   "reference/claude-code-for-engineers.md"
-  "supplementary/clean-code-is-steering.md"
+  "supplementary/verification-asymmetry.md"
   "content/skills/access-control-analysis/SKILL.md"
   "content/skills/stride/SKILL.md"
   "content/skills/security-tools/SKILL.md"

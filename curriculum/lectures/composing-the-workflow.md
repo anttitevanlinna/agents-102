@@ -17,10 +17,6 @@ The checks you built are the instruments inside it. *Verifier* when deterministi
 
 {{figure:double-loop-m6}}
 
-## Dino Repo's skill stack
-
-{{figure:dino-skill-stack}}
-
 ## Pocock's skill system
 
 {{figure:pocock-skill-system}}
@@ -68,7 +64,7 @@ One move takes a single fix at a turning point. Another carries a whole leg. A t
 
 **Control-loop slide is header + figure only (Antti 2026-09-02, "not sure if bullets really needed if the pic is good").** The drawing carries every term the slide needs (spec, gap, you·Claude·rules, session, change, drift, tests·diff·eval, the two brackets, the autopilot caption, *the sensor:* on the measurement block). The accumulation claim belongs to the second-loop slide (its own note below), without module numbers. Do not add bullets.
 
-**Dino Repo's skill stack / Pocock's skill system are figures only (Antti 2026-09-02: *"I will give concrete examples rather than try bulletpoint this into clarity"*; *"just pic, no bullets"*).** No bodies owed, no trainer talk track owed (a good agentic engineer can explain them). `figures/dino-skill-stack.md` redraws the supplementary's `skill-stacking/01-meta-model.svg` (mermaid) in the house palette: five lifecycle columns, the three routed gates in rust, `/ship` as the one orchestrator with its sequenced chain, OPS looping back to BUILD. Source of truth for the skill list is `supplementary/skill-stacking.md`; regenerate the figure when that catalog changes. `figures/pocock-skill-system.md` is drawn from `mattpocock/skills` (sha, date and the page read are on the `pocock-skills-repo` stamp); the flow it draws is its own aria-label. Skill count deliberately not stated. `ask-matt` routes; nothing in the repo runs the flow, so the *pocock-by-hand* claim on the T3 slide holds. Both figures render at 1200×560 with all labels ≥ 9px; checked by headless-Chrome screenshot. The two supplementaries behind them, [Dino's skill stacking system](trainings/agentic-engineering-101/supplementary/skill-stacking.md) and [Workflow composition lineages](trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md), sit in the training index and are not linked from the deck.
+**Pocock's skill system is a figure only (Antti 2026-09-02: *"I will give concrete examples rather than try bulletpoint this into clarity"*; *"just pic, no bullets"*).** No body owed, no trainer talk track owed (a good agentic engineer can explain it). `figures/pocock-skill-system.md` is drawn from `mattpocock/skills` (sha, date and the page read are on the `pocock-skills-repo` stamp); the flow it draws is its own aria-label. Skill count deliberately not stated. `ask-matt` routes; nothing in the repo runs the flow, so the *pocock-by-hand* claim on the T3 slide holds. The figure renders at 1200×560 with all labels ≥ 9px; checked by headless-Chrome screenshot. The supplementary behind it, [Workflow composition lineages](trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md), sits in the training index and is not linked from the deck.
 
 **Lean pass (2026-08-25):** cut *"Same passage, same drift, same fixes and guardrails."* from the footprint slide; the figure shows it. Do not restore.
 
@@ -78,7 +74,7 @@ One move takes a single fix at a turning point. Another carries a whole leg. A t
 
 **Figure.** `figures/skill-sea-passage.md`. Base geometry is the M5 passage chart from `what-packaging-is.md` (same cream/teal/oxblood palette, drift cones, fixes, guardrails, lighthouse, ghost, spot); only the label layer differs (the mapped next move at the pier, test-strategy across a leg, verifier at the orange-ring fix) plus the under-drawn pilot and the weighted hand-off. Single id `sk-reefhatch`, `sk-` prefixed against collision when the theory handbook renders several charts on one page.
 
-**Vocabulary bridge (earned once).** move = skill (the footprint slide's first bullet; the skills-to-workflow slide then speaks *skill* throughout, and the noun *move* stays on the footprint slide where the chart defines it, avoiding the moves-verb/move-noun collision); pilot = orchestrator (the skills-to-workflow slide's pilot clause). The chart speaks nautical (pilot); the supplementaries speak Dino (orchestrator, leaf); the slide bridges them so chart, slide, and reads are one system. Do not re-earn in the supplementaries. Session/task/run vocabulary per `check_student_facing.md §21b`.
+**Vocabulary bridge (earned once).** move = skill (the footprint slide's first bullet; the skills-to-workflow slide then speaks *skill* throughout, and the noun *move* stays on the footprint slide where the chart defines it, avoiding the moves-verb/move-noun collision); pilot = orchestrator (the skills-to-workflow slide's pilot clause). The chart speaks nautical (pilot); the supplementary speaks the field's word (orchestrator); the slide bridges them so chart, slide, and reads are one system. Do not re-earn in the supplementary. Session/task/run vocabulary per `check_student_facing.md §21b`.
 
 **§3 disposition (no cross-module sequencing in body).** Backward recognition only, no forward sequencing; no `M[0-9]` tags in body. The chart callback (the passage the student already sailed) is spine-anchoring on the shared M5 image, not a cross-module ref.
 
@@ -86,7 +82,7 @@ One move takes a single fix at a turning point. Another carries a whole leg. A t
 
 **Headers (squint + truth, `check_lectures §4`).** *A skill's footprint is where its job lands* (thesis-claim, matches the chart's own bottom caption); *From skills to a workflow* (names the composition concept the slide teaches in its variety). No orphan-mystery, no empty container.
 
-**Lecture meta:** *The M6 loop lecture: control loop (T1, figure) → Eval (T1) → The second loop (T1, figure) → Dino Repo's skill stack and Pocock's skill system (figures) → The checking loop, drawn solid (T2, figure) → the T3 tail: cadence, footprint, skills-to-workflow. The title stays *Composing the workflow* (Antti 2026-09-02: both words earn their place); do not re-propose a rename.*
+**Lecture meta:** *The M6 loop lecture: control loop (T1, figure) → Eval (T1) → The second loop (T1, figure) → Pocock's skill system (figure) → The checking loop, drawn solid (T2, figure) → the T3 tail: cadence, footprint, skills-to-workflow. The title stays *Composing the workflow* (Antti 2026-09-02: both words earn their place); do not re-propose a rename.*
 
 **Time:** 11 min at presentation pace.
 
@@ -96,7 +92,7 @@ One move takes a single fix at a turning point. Another carries a whole leg. A t
 
 **The latency axis stays off the slides (2026-08-23, Antti, `0a56ebd9`):** no bullet placing checks by latency (seconds inline, minutes in the background, expensive judgement at a named gate); students realise the axis through their own practice, and a closing lecture is recognition, not instruction. Do not add one without a new call; the deep treatment stays in `supplementary/how-the-best-do-ci-cd.md` § *Eval latency is part of the loop*.
 
-**`## The checking loop, drawn solid` (from `the-map-filled-in.md`, Antti 2026-09-02):** the engine map re-shown with the checking loop solid, figure only, T2, after the Dino / Pocock slides.
+**`## The checking loop, drawn solid` (from `the-map-filled-in.md`, Antti 2026-09-02):** the engine map re-shown with the checking loop solid, figure only, T2, after the Pocock slide.
 
 **SVG:** `figures/map-engine-filled.md` derives from `the-whole-map.md`'s engine canvas, differing only in: the checking-loop ellipse is solid (stroke 2.6, opacity 0.9), the tag is un-ghosted (teal, no `◌`), the sub reads `by your evals now`, the aria-label matches. Ids carry the `mf-` prefix (the theory handbook renders both copies on one page; duplicate ids break defs and markers). If the M2 map changes, re-derive this copy.
 
@@ -127,7 +123,7 @@ Claims
 - `field-wires-more-ways-than-one` · detail · "The field wires kits more ways than one; no way has won." ← lineages-supp
 - `pocock-by-hand` · detail · "Pocock ships a public kit with no orchestrator: you call each skill by hand." ← lineages-supp, pocock-skills-repo
 - `klaassen-one-command-per-stage` · detail · "Klaassen ships one slash command per stage, and the last one writes the lesson to disk for the next agent." ← lineages-supp
-- `many-kits-keep-zero-pilots` · detail · "Some workflows have a pilot; many do not." ← skill-stacking-supp, lineages-supp
+- `many-kits-keep-zero-pilots` · detail · "Some workflows have a pilot; many do not." ← lineages-supp
 - `workflow-is-skills-composed-around-one-task` · vision · "A **workflow** is skills composed around one task." ← none-owed — Antti's definition 2026-09-05: composition and per-step instructions, checks are not part of it
 - `skill-carries-instructions-for-its-one-step` · vision · "Each skill carries the best instructions for its one step, and nothing else's." ← none-owed
 - `composition-per-task-recomposed` · vision · "Which skills are in, and in what order, is composed per task and recomposed when the task changes." ← none-owed
@@ -135,27 +131,25 @@ Claims
 
 Sources
 - cc-scheduling-primitives `[checked:2026-04-24 result:OK due:cohort]` https://code.claude.com/docs/en/ — [capability] The body names three scheduling primitives and distinguishes local Routines from `/schedule`'s cloud-backed remote Routines. `/schedule` is Routines, remote and cloud-backed; Desktop local tasks are a separate primitive. fallback: teach the pattern (a kit skill is what the scheduled agent invokes) and name only the primitives a re-test confirms.
-- skill-stacking-supp `[checked:2026-07-05 result:OK due:none]` kb:none — [delegated stamp] `curriculum/trainings/agentic-engineering-101/supplementary/skill-stacking.md` carries the primary stamps for the four composition mechanisms and the `/ship`-as-pilot worked example (Dino's in-repo stack). A worked example of a shipped kit does not expire. **`/ship` is Dino's own skill, NOT a Claude Code built-in** — the passage chart keeps the orchestrator generic ("the pilot"); on the deck `/ship` appears only on the Dino figure, as his. fallback: re-verify in that doc if its own stamps age out.
 - pocock-skills-repo `[checked:2026-09-02 result:OK due:cohort]` https://github.com/mattpocock/skills — [practitioner direct, primary repo] @ `6654f6b` (2026-08-24). Backs the Pocock figure's flow and skill names; `ask-matt/SKILL.md` is the page that describes the main flow and on-ramps. Re-check before each cohort: the kit churns monthly. fallback: redraw from the README's Reference section.
 - lineages-supp `[checked:2026-08-01 result:CAVEAT due:none]` kb:none — [delegated stamp] `curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md` carries the field-survey lineages and their per-source stamps. `due:none` per `backing-format.md` § Delegated. fallback: this lecture asserts no dated specific of its own; if the supplementary's lineages change, only `field-wires-more-ways-than-one` is affected, and that claim gets *stronger* when the field moves.
 
 Frameworks
 - eval = judge / verifier / gate · [borrow:none] · law:eval-judge-verifier-gate · ← none — the three-way split is banked as a law and taught as a definition; the words are in real use, the taxonomy is ours
 - Footprint follows the job · [borrow:none] · law:none · ← none — house framing; phases-as-legs is the rejected alternative
-- Orchestrator / leaf · [borrow:distributed systems] · law:none · ← skill-stacking-supp — Dino's vocabulary, bridged once to the chart's nautical *pilot*
-- The value cycle · [borrow:none] · law:the-value-cycle · ← none — the lifecycle columns on the Dino figure are the cycle in run-local form
+- Orchestrator · [borrow:distributed systems] · law:none · ← lineages-supp — the field's word, bridged once to the chart's nautical *pilot*
 
 Stance `[stance:2026-08-01 level:L1]`
-- holds: that composition comes in recorded variety — called by hand (Pocock), chained through files (Klaassen), the orchestrated kit the Dino figure draws — and that no way has won, which the lineages' own stance supports at L2. Every named specific delegates to the two supplementaries.
-- contested: whether the four wirings are the complete set. Nobody has enumerated composition mechanisms across kits (the delegate's stance says so in as many words); the body states no count and teaches the variety.
+- holds: that composition comes in recorded variety — called by hand (Pocock), chained through files (Klaassen), run by a pilot or by none — and that no way has won, which the lineages' own stance supports at L2. Every named specific delegates to the lineages supplementary.
+- contested: whether the wirings the slide names are the complete set. Nobody has enumerated composition mechanisms across kits (the delegate's stance says so in as many words); the body states no count and teaches the variety.
 - decided: **delegated stamps take `due:none`, 2026-08-02.** The pointer is legitimate; a computed date on it is a second copy of the delegate's freshness that nothing in the toolchain compares. Rule: `backing-format.md` § Delegated.
 - contested (eval naming): *judge* is the field's word; *verifier* and *gate* are ours (evidence and roster in Flagged, first row). Live question: does the Eval slide earn one bridging clause naming the field's words?
 - decided: **judge / verifier / gate is stated as a definition, not a survey, 2026-08-01.** The names are in real use; the split by check-type is ours. Do not restore a survey verb (*"Practitioners say…"*); the standing usage question lives in the OODA below.
-- would-move-it: a mechanism renamed at field level, or convergence on one composition shape, which would turn the variety sentence into a recommendation; either edits the skills-to-workflow slide and the two example figures.
+- would-move-it: a mechanism renamed at field level, or convergence on one composition shape, which would turn the variety sentence into a recommendation; either edits the skills-to-workflow slide and the Pocock figure.
 
 OODA
-- question: have the four wiring mechanisms held their names, and has a fifth appeared? And do practitioners actually use *judge*, *verifier* and *gate* with the Eval slide's three distinctions?
-- roster: Dino (skill-stacking), Kieran Klaassen, Simon Willison, Geoffrey Huntley, Hamel Husain, Shreya Shankar, Eugene Yan, the Anthropic eval cookbook, Braintrust and LangSmith docs for vendor usage, the Amp Chronicle, Anthropic's skills documentation
+- question: have the wirings the slide names (by hand, chained through files, a pilot or none) held, and has another appeared? And do practitioners actually use *judge*, *verifier* and *gate* with the Eval slide's three distinctions?
+- roster: Matt Pocock, Kieran Klaassen, Simon Willison, Geoffrey Huntley, Hamel Husain, Shreya Shankar, Eugene Yan, the Anthropic eval cookbook, Braintrust and LangSmith docs for vendor usage, the Amp Chronicle, Anthropic's skills documentation
 - last-run: 2026-08-01
 
 Flagged

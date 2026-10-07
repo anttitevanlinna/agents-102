@@ -216,7 +216,7 @@
     function loadAndRender(path, fallbackTitle) {
         // Images in a doc are written relative to that doc; the SPA fetches the
         // doc from `../curriculum/<...>.md` but renders into a page at
-        // `site/curriculum.html`, so a bare `skill-stacking/01.png` would
+        // `site/curriculum.html`, so a bare `diagrams/01.png` would
         // resolve against the page, not the doc. Re-root each relative target
         // onto the doc's own directory.
         var docDir = path.replace(/[^/]*$/, '');

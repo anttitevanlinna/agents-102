@@ -29,7 +29,7 @@ First like-for-like run. Each judge reads both trainings whole: modules with the
 
 **Moves the judges converge on:**
 1. Cut the Day 1 lines that pre-announce the turn (`it-works-overnight`: "some of what it writes will be wrong", "It looks for what your brief tells it to look for").
-2. In `send-it-off`, each person writes the digest's look-for line from their own hypothesis, in their own words. On Day 2, `what-ran-overnight` quotes that sentence back beside `team/bet.md`, so the trio finds why it agreed before *Why it agreed* names it.
+2. In `send-it-off`, each person writes the digest's look-for line from their own hypothesis, in their own words. On Day 2, `what-ran-overnight` quotes that sentence back beside the trio's bet file, so the trio finds why it agreed before *Why it agreed* names it.
 3. Open `take-it-to-the-team` from the five-users call (persevere, pivot or stop, and the one sentence we now believe instead), and drop the teammate/candidate gloss.
 4. Single-judge moves:
    - move *Start from your customer's sentence* after the product box exercise;

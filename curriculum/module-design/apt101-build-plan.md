@@ -115,6 +115,3 @@ Paths are in the student's training folder or the team folder, not this repo.
 - **Module files** (`curriculum/trainings/agentic-product-teams-101/<day>.md`): module-shape template; lectures and exercises interleaved in beat order; Debrief, Key Concepts, Bring to Day N+1, Next. Days are modules; the existing lecture includes stay, reordered only where a beat needs it.
 - **Exercise files** (`curriculum/exercises/apt101-*.md`): Agents 101 exercise shape (Time, Session, What you do, phases, prompts, maintainer block with Role, Frameworks, Artefacts produced/consumed).
 - **No edits** to lectures, slides, Agents 101 exercises or prompts.
-
-## Open
-

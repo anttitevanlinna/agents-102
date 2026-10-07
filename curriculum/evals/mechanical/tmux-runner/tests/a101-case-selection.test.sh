@@ -46,7 +46,7 @@ required_answers=(
 
 for case_name in nordveil finnish-psychologist; do
   case_dir="$($RUNNER/run-a101.sh --case "$case_name" --print-case-dir)"
-  [[ -f "$case_dir/case.env" ]]
+  [[ -f "$case_dir/case.sh" ]]
   [[ -f "$case_dir/linkedin-profile.md" ]]
   [[ -f "$case_dir/meetings-week.md" ]]
   for answer in "${required_answers[@]}"; do

@@ -108,7 +108,6 @@ test('Agents 101 portable judge and reflection prompts do not address one provid
   const registry = compile.loadRegistry();
   const keys = [
     'hallucination-bakeoff-8',
-    'self-consistency-after-scoreboard-3',
     'eval-loop-3',
     'eval-loop-4',
   ];

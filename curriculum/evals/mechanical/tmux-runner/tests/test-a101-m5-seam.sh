@@ -26,7 +26,7 @@ kit="$root/fixtures/agents-101-synthetic"
 seed="$kit/answers/m5-briefing-seed.txt"
 q2="$kit/sources/docs/q2-revenue-review.md"
 runner="$root/run-a101.sh"
-config="$kit/case.env"
+config="$kit/case.sh"
 fail=0
 
 # Seed exists and carries all three planted claims.

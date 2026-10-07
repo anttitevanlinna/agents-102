@@ -74,6 +74,7 @@ if [[ ! -e "$r/.claude/prompt-approvals/b.confirmed" ]]; then ok 'the body appro
 genrepo() {
   local r; r=$(simrepo)
   cp "$(dirname "$HOOK")/../scripts/"{compile-prompts.js,compile-figures.js,write-if-changed.js,check-generated-registries.js} "$r/scripts/"
+  cp "$(dirname "$HOOK")/../site/layouts/a101-runtimes.js" "$r/site/layouts/"
   ln -s "$(cd "$(dirname "$HOOK")/.." && pwd)/node_modules" "$r/node_modules"; echo node_modules > "$r/.gitignore"
   (cd "$r" && node -e "const c=require('./scripts/compile-prompts.js');c.writeRegistry(c.loadRegistry())" && node -e "const f=require('./scripts/compile-figures.js');f.writeFigures(f.loadFigures())")
   git -C "$r" add -A; SKIP_PROMPT_GATE=1 git -C "$r" commit -qm json

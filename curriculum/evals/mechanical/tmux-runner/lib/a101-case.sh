@@ -20,15 +20,15 @@ a101_load_case() {
     echo "unknown Agents 101 case: $case_name (expected nordveil or finnish-psychologist)" >&2
     return 2
   }
-  [[ -f "$resolved/case.env" ]] || {
-    echo "Agents 101 case is missing case.env: $resolved" >&2
+  [[ -f "$resolved/case.sh" ]] || {
+    echo "Agents 101 case is missing case.sh: $resolved" >&2
     return 2
   }
   A101_CASE="$case_name"
   A101_CASE_DIR="$resolved"
-  # case.env files are trusted, versioned runner configuration.
+  # case.sh files are trusted, versioned runner configuration.
   # shellcheck source=/dev/null
-  source "$resolved/case.env"
+  source "$resolved/case.sh"
   export A101_CASE A101_CASE_DIR
 }
 

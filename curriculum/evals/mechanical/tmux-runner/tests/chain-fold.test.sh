@@ -90,6 +90,14 @@ run_case() {      # $1=command line (driver + args) -> prints normalized trace
     stub_runner "$SB/tr/$r.sh"
   done
   git_shim "$SB/bin/git"
+  cat > "$SB/bin/claude" <<'EOF'
+#!/usr/bin/env bash
+case "${1:-}" in
+  --version) echo '2.1.300 (Claude Code)' ;;
+  --help) echo 'choices: "auto", "plan"' ;;
+esac
+EOF
+  chmod +x "$SB/bin/claude"
   for k in lemmings picoshare codesearch; do                    # so pre-wipes show
     mkdir -p "$SB/home/.claude/skills/test-strategy-$k" "$SB/home/.claude/skills/session-shaper-$k"
   done

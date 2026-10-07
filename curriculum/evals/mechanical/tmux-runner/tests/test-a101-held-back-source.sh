@@ -31,7 +31,7 @@ curate="$root/fixtures/agents-101-synthetic/answers/m2-curation-where.txt"
 ingest="$root/fixtures/agents-101-synthetic/answers/m2-ingest.txt"
 scenario="$root/scenarios/a101-m2.txt"
 runner="$root/run-a101.sh"
-config="$root/fixtures/agents-101-synthetic/case.env"
+config="$root/fixtures/agents-101-synthetic/case.sh"
 fail=0
 
 # 1. curate answer must name the real provenances and must NOT expose the

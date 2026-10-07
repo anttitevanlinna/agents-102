@@ -19,7 +19,7 @@ grep -q 'BLANKET-LABEL-CLAIM' "$kit/sources/web/label-everything-adviser-checkli
 if grep -qiE 'BLANKET-LABEL-CLAIM|label-everything-adviser' "$kit/answers/m2-curation-where.txt" "$kit/answers/m2-ingest.txt"; then
   echo 'FAIL: M2 participant inputs expose the held-back counter-source'; fail=1
 fi
-grep -q 'A101_M2_INTEGRATION_RE' "$kit/case.env" || {
+grep -q 'A101_M2_INTEGRATION_RE' "$kit/case.sh" || {
   echo 'FAIL: case does not distinguish hidden-source and integrated-claim evidence'; fail=1; }
 
 # M3 clarification is unique to the fresh source and not named in the retriever
@@ -29,7 +29,7 @@ grep -q 'EC-2026-ARTICLE50-GUIDANCE' "$kit/sources-m3/commission-article-50-guid
 if grep -rq 'EC-2026-ARTICLE50-GUIDANCE' "$kit/sources" "$kit/answers/m3-net-answer.txt"; then
   echo 'FAIL: M3 sentinel leaked before the fresh-source retrieval'; fail=1
 fi
-grep -q 'A101_M3_INTEGRATION_RE' "$kit/case.env" || {
+grep -q 'A101_M3_INTEGRATION_RE' "$kit/case.sh" || {
   echo 'FAIL: case does not distinguish M3 source-open and synthesis evidence'; fail=1; }
 
 # M4 has three distinct plants without introducing clinical data.
@@ -47,7 +47,7 @@ if grep -rq '42%' "$kit/sources" "$kit/sources-m3"; then
 fi
 
 # This requested case deliberately ends at M6.
-grep -q "A101_MAX_MODULE='m6'" "$kit/case.env" || { echo 'FAIL: case is not capped at M6'; fail=1; }
+grep -q "A101_MAX_MODULE='m6'" "$kit/case.sh" || { echo 'FAIL: case is not capped at M6'; fail=1; }
 
 [[ $fail -eq 0 ]] && echo 'PASS: Finnish psychologist case preserves boundaries and all M2-M5 evidence seams'
 exit $fail

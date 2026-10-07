@@ -24,7 +24,7 @@ netans="$kit/answers/m3-net-answer.txt"
 scenario="$root/scenarios/a101-m3.txt"
 runner="$root/run-a101.sh"
 arrange="$root/arrange-agents-101.sh"
-config="$kit/case.env"
+config="$kit/case.sh"
 fail=0
 
 # Source exists and carries the sentinel.

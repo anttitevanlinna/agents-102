@@ -10,6 +10,34 @@ section per run, newest first; per-judge reports under `story-depth/`.
 
 
 
+## APT101 full training, hill-climb round 3 (`apt101-full-r4`), 2026-10-07
+
+Same protocol. The fixes concentrated the hidden spine:
+- Undeveloped headline ideas were cut: one agent per job, the six parts, aligned autonomy, the double diamond, "crux" as a word.
+- The Day 2 headline is no longer read on Day 1.
+- The reversed rerun turns every seat's line round.
+- The door is tested aloud.
+- Day 3 pays off each person's own Day 2 doubt.
+- The one forecast became a question.
+
+Judge files: `story-depth/apt101-full-r4.judge-{1,2,3}.md`.
+
+| Factor | AE101 median | APT101 (j1/j2/j3) | median | r3 | r2 | r1 |
+|---|---|---|---|---|---|---|
+| Frame | 95 | 94/93/92 | 93 | 92 | 91 | 89 |
+| Narrative | 94 | 91/91/88 | 91 | 90 | 87 | 84 |
+| Point of view | 95 | 89/89/86 | 89 | 87 | 86 | 85 |
+| Stance | 92 | 93/92/90 | 92 | 91 | 90 | 88 |
+| Depth | 92 | 90/89/90 | 90 | 88 | 88 | n/a |
+
+**Reading.**
+- Every factor rose again. Stance is level with AE101, and depth is 2 behind; cutting the undeveloped headlines raised the mean.
+- The remaining gap is point of view (6) and narrative (3). All three judges ask for the guide's failure on the turn itself, as one scene.
+- Two judges propose a different way to close the narrative gap: let the frame lectures follow the product box, so "building got cheap, deciding didn't" names what the trio just did. That runs against story-craft's "state the frame early", and it is the maintainer's call.
+- The judges also agree that the benchmark beat still leaves two seats watching, and that the "your challenge" seams from the borrowed prompts are still visible.
+
+**Trial r3 (scratchpad record).** The turn landed on all three seats (support, both ways and test lines). It still leaks: the headline is the biggest text on the page the trio opens on Day 1 "to check the look", and Day 2's *What you do* announces the rerun. The Day 3 close carried a bet that survived, "arguably better", except for "the one sentence we now believe instead", which assumes a change. One unplanned moment was the best of the run: the team lead saw the chosen bet put a status on every technician, so his worry about being watched came back as a product risk.
+
 ## APT101 full training, hill-climb round 2 (`apt101-full-r3`), 2026-10-07
 
 Same protocol as r2. The fixes, from the r2 judges and the trial:

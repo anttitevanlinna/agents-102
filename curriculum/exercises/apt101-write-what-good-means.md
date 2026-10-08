@@ -66,8 +66,8 @@ Hold your post-it against what you found. Each of you says your missing line out
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@843767c4 technical@d747a00d behavior@3d7fd713 pedagogy@843767c4 strategy@1fd93c06 slides@843767c4)
-- judges @843767c4: writing PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-write-what-good-means.writing.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@843767c4 story@a09e9456 technical@d747a00d behavior@3d7fd713 pedagogy@843767c4 strategy@1fd93c06 slides@843767c4)
+- judges @a09e9456: writing PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-write-what-good-means.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Role in Day 3:** The digest from Day 1 gets caught by the team's own standard: the fixed judge holds the floor, the team's written lines are the ceiling, and the gap between them is what the criteria missed.
 
@@ -85,7 +85,7 @@ Hold your post-it against what you found. Each of you says your missing line out
 
 **Design note:** the judge is not rewritten with the team's lines. The reused keys fix it, and the lesson is the fixed yardstick. The team's ceiling lines are what a person holds the passing digest against; they go into the judge only in a later run, outside this loop.
 
-**Failure modes:** phase 1, a line rewritten smoother (the prompt records it word for word; push back); phase 2, the loop declares done after the first pass or the judge gets edited (the judge never moves; send the loop on); phase 3, every passed claim waved through (put the least-trusted line first, as the prompt does). **Protected:** phase 3. **Cut first:** the hand run in phase 2 shrinks to reading the judge's output.
+**Failure modes:** phase 1, a line rewritten smoother (the prompt records it word for word; push back); phase 2, the loop declares done after the first pass or the judge gets edited (the judge never moves; send the loop on); phase 3, every passed claim waved through (put the least-trusted line first, as the prompt does). **Protected:** phase 3. **Cut first:** the post-it prediction (the module's overrun line). The hand run in phase 2 stays: `eval-loop-2` stops without the `./generation-tactic.md` it writes.
 
 **Leap test:** on Monday each person (1) has a ceiling line the judge can't check; (2) can name a claim the judge passed that they would send back; (3) reruns the judge on the next digest before reading it.
 

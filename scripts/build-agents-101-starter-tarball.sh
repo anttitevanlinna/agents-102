@@ -145,7 +145,8 @@ if [ -d "$PROMPTS_SRC" ]; then
     if grep -qE '\{\{prompt:[a-z0-9-]+\}\}' "$pf"; then
       echo "ERROR — $pf nests a {{prompt:}} marker; closure is deeper than depth-1 — extend the build walk" >&2; exit 1
     fi
-    cp "$pf" "$ROOT/prompts/$(basename "$pf")"
+    # The student's copy: body plus the run fields, without the authoring record.
+    node scripts/student-prompt.js "$pf" > "$ROOT/prompts/$(basename "$pf")"
     shipped=$((shipped + 1))
   done <<< "$keys"
   total=$(ls "$PROMPTS_SRC"/*.md | wc -l | tr -d ' ')

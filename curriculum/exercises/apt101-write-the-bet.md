@@ -86,8 +86,8 @@ In a moment the bet becomes what each of your agents works on. Before Day 2, one
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@44588d6d technical@d747a00d behavior@0ac6010f pedagogy@dd242fd9)
-- judges @44588d6d: writing PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-write-the-bet.writing.json), technical PASS, behavior PASS, pedagogy PASS (verify-refuted)
+**Quality:** compendium-audited 2026-10-08 (writing@44588d6d technical@d747a00d behavior@0ac6010f pedagogy@dd242fd9 strategy@1fd93c06)
+- judges @1fd93c06: writing PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-write-the-bet.writing.json), technical PASS, behavior PASS, pedagogy PASS (verify-refuted), strategy PASS
 
 **Role in Day 1:** beat 4; the trio's first written bet. Read by every agent from here on via `./challenge.md` in `apt101-what-goes-in`.
 

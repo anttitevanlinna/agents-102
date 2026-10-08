@@ -2,13 +2,13 @@
   "class": "slides",
   "file": "curriculum/exercises/apt101-catch-it-making-things-up.md",
   "training": "agentic-product-teams-101",
-  "verdict": "REVISE",
-  "body_sha": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+  "verdict": "PASS",
+  "body_sha": "fc111fa3890683b0569b8ee11dc69a58ca1c396445a8d3b89da057e3e345e6aa",
   "shape_hash": "e082db954b6c400e",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "Exercise: Catch it making things up (H1 + lede)",
+      "heading": "Exercise: Catch it making things up (lede)",
       "lines": "1-9"
     },
     {
@@ -53,9 +53,10 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "evidence": "Closest: chunk 1 line 19 \"Then join the team lead's screen when the scoreboard lands in phase 3.\" (scoreboard first named here, but the lede line 7 names the scorer that measures and it is a session artifact of the exercise per the carve-out); chunk 7 line 106 \"It found something\" resolves to \"a file you can run\" in the same sentence. Harm (unresolvable referent on a projected slide) absent.",
+      "evidence": "closest: chunk 4 \"Phase 3\" line 70: \"explain the two columns using your own rows\" - harm (reader cannot tell which columns) absent: same chunk line 62 names the two measures (of what it flagged, how much was made up; of what was made up, how much it caught) and the scoreboard; 'rows' are session artifacts (carve-out). chunk 1 line 19 'the scoreboard' resolves via chunk 0 'a scorer measures' + session artifact. Module include order checked: whats-actually-true.md line 40 includes it after read-the-digest.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false,
+      "blocking": true,
       "chunks_flagged": []
     },
     {
@@ -63,9 +64,10 @@
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "evidence": "No pointer to another file by position. Closest: chunk 1 line 11-15 \"your curator's synthesis note\" names a document by title, not position. Harm (callback aimed at whichever opener precedes) absent.",
+      "evidence": "closest: chunk 4 line 64 \"the four methods aloud from the phase 2 files\" - in-file sequential callback, allowed. No 'the opening lecture'-style pointer in body (grep of body for lecture/module-level positional phrases: none).",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false,
+      "blocking": true,
       "chunks_flagged": []
     },
     {
@@ -73,29 +75,30 @@
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
-      "evidence": "Backward refs: line 64 \"the four methods aloud from the phase 2 files\" -> chunk 3 writes four files (lines 41-52); line 68 \"Turn the post-its over\" -> line 64; line 102 \"the claim you bet on\" -> line 15. All resolve in-file.",
+      "evidence": "closest: chunk 0 line 9 \"opened at the start of the day\" and \"Your three memories were curated from the same retrievals\"; module whats-actually-true.md line 151 lists retrievals, curated memory and curator's synthesis note produced by gather-the-evidence earlier in the module; line 24 read-the-digest exists (overnight digest).",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false,
+      "blocking": true,
       "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 4,
       "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "REVISE",
-      "evidence": "chunk 3 \"Phase 2: Run four checks\": line 41 \"Four checks, four methods, the same claim pool, each in its own subagent, each writing to its own file.\" and line 43 \"Four of them fanning out at once over the evidence.\" carry no finite verb: a muted read gets a set list and a scene for the live fan-out, not a sentence. Harm (\u00a728(a) cue fragment: the room hears a scene, the deck reader a list) is present; no maintainer accept-note covers them and neither follows a verbed sentence naming the set.",
-      "fix_hint": "Give line 41 a verb and subject (\"Four checks run on the same claim pool, each as its own subagent writing to its own file.\") and line 43 likewise (\"The four fan out at once over the evidence.\")",
+      "verdict": "PASS",
+      "evidence": "closest: chunk 4 line 64 \"Face down until the scoreboard lands.\" - elliptical but follows verbed sentence 'writes on a post-it'; guess (line 64) precedes the scoreboard prompt (line 66) and reveal line 68; chunk 1 line 15 bet precedes judge. No narrated outcome above a guess-line, no terminal-only cue. Muted read: scene carried by verbed sentences throughout.",
+      "na_reason": null,
+      "fix_hint": null,
       "blocking": true,
-      "chunks_flagged": [
-        3
-      ]
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "evidence": "Every chunk carries a claim. Closest: chunk 1 line 19 \"Then join the team lead's screen when the scoreboard lands in phase 3.\" is a one-line handoff but sits under a full chunk of instruction (lines 11-17).",
+      "evidence": "closest: chunk 7 \"Take stock\" line 106 - single paragraph but self-carrying (what ran, what is kept, what the limit line says). Every other chunk has a stated task.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -105,7 +108,8 @@
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "evidence": "Closest: chunk 1 header \"While the benchmark runs: ready your real summary\" (line 11); body is exactly that task, so the header is literally true.",
+      "evidence": "closest: chunk 4 \"Phase 3: Let the scorer decide\" line 58 - content (post-its, scoreboard, precision/recall, surprise) is the scorer's verdict and the room's reaction, no contradiction; chunk 1 header 'ready your real summary' matches line 15.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -114,30 +118,31 @@
       "compendium": "check_slides.md",
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
-      "verdict": "REVISE",
-      "evidence": "chunk 2 \"Phase 1: Plant the claims\" line 29: \"Aim for roughly one claim in ten made up or stretched. Claude cannot hit that number exactly.\" is the number + own retraction sub-item; the maintainer block carries no attest. Other sub-items clean: no Not X/Not Y, no anaphora triple (line 96 \"The briefing was built to be caught. Your real summary was not.\" is a pair), no self-grading superlative, no verb triplet.",
-      "fix_hint": "Pick the claim: label the number as a direction in one sentence.",
-      "blocking": false,
-      "chunks_flagged": [
-        2
-      ]
+      "verdict": "PASS",
+      "evidence": "closest: chunk 6 line 96 \"The briefing was built to be caught. Your real summary was not.\" - a contrast pair, not 'Not X. Not Y. Z.'; chunk 4 line 78 triplet 'the row, the number, and what it means' every leg concrete. No superlatives, no number+retraction in body (line 29 'roughly one claim in ten' has no retraction; the 'cannot make that number precise' line is inside a fence), no abstraction stacks.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "evidence": "grep dialect (surface|firing|compendium|forcing|beat|mood) in body lines 1-107 -> 0 hits (only maintainer lines 110-127 hit). Closest: line 41 \"detector\"/\"scorer\" are exercise vocabulary the prompts define, what the room calls them.",
+      "evidence": "grep -niE '\\b(above|below|beat|surface|firing|compendium|mood|forcing function)\\b' over body lines 1-107 -> 0 hits. 'scorer', 'detector', 'benchmark' are the prompts' own plain vocabulary.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false,
+      "blocking": true,
       "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
-      "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
+      "rule_lead": "Emphasis budget - bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "evidence": "Bold in body: line 5 \"**What you do:**\" (chunk 0) and line 31 \"**Don't open the briefing.**\" (chunk 2, 5 words, one per slide). Closest: line 31 is a whole sentence but within the 5-word handle cap and a single element.",
+      "evidence": "closest: chunk 2 line 31 \"**Don't open the briefing.**\" - one bold per slide, 4 words, within count and cap though an instruction rather than a named handle; harm (bold monoculture) absent. Chunk 0 bold labels '**Time:**' '**What you do:**' are template labels. Prompt lead-ins '**Prompt**' are widget labels. Suggestion filed, not owed.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -145,19 +150,21 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
-      "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
+      "rule_lead": "Presence precedes content - verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "evidence": "All body content sits under `##` headings of an exercise file (chunks 1-7, lines 11-106) with no phase-less prose section; lede lines 1-9 are chunk 0 title slide.",
+      "evidence": "Exercise file included by whats-actually-true.md line 40 as '[Exercise: Catch it making things up](exercises/...)' under the module include scheme; scripts/check-slide-size.js --file reports slides: 7 (all ## chunks present in the deck model).",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false,
+      "blocking": true,
       "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
-      "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
+      "rule_lead": "Numbering - position is computed, content ordinals are linted.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-numbering.js -> \"OK \u2014 55 files, Phase/Step numbering consistent.\" Headers Phase 1-5 consecutive (lines 21,37,58,80,92); in-file refs \"phase 5\" (15), \"phase 3\" (19), \"phase 2 files\" (64) resolve.",
+      "evidence": "node scripts/check-slide-numbering.js -> 'OK - 55 files, Phase/Step numbering consistent' (exit 0); headers Phase 1..5 consecutive; in-file refs 'phase 5', 'phases 1 to 3', 'phase 3', 'phase 2 files' all resolve.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -167,7 +174,41 @@
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-deixis.js curriculum/exercises/apt101-catch-it-making-things-up.md -> \"OK \u2014 55 files, no page-geometry pointers across the slide cut.\"",
+      "evidence": "node scripts/check-slide-deixis.js -> 'OK - 55 files, no page-geometry pointers across the slide cut' (exit 0); body grep for above/below -> 0 (the only 'below' is inside the prompt fence, line 15 of the fence, same slide).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size - 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/apt101-catch-it-making-things-up.md -> 'slides: 7 ... oversized: 0' (exit 0).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "evidence": "closest: chunk 7 \"Take stock\" line 104 - imperative closer; chunk 1 'While the benchmark runs: ready your real summary' imperative; Phase 1-5 are phase labels. No declarative claim heading inside the exercise, which is allowed (not every header owes a claim).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies - three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "closest: chunk 7 line 106 recap paragraph and chunk 3 line 56 \"Don't read the four files as they land. The scorer reads them.\" - the latter is a move (do not read) with its reason; the recap names the artefact kept and the Known limit, adding the phase 5 outcome. Not doctrine restatement, design commentary or a koan restating a header.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -178,40 +219,11 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": null,
+      "na_reason": "no in-body markdown links in the file (grep \\]\\( in body -> 0); rule is a review surface, never a gate",
+      "fix_hint": "",
       "blocking": false,
-      "chunks_flagged": [],
-      "na_reason": "no in-body markdown links in the file (grep \\]\\( in body -> 0); rule is a review surface, never a gate"
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 14,
-      "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
-      "verdict": "PASS",
-      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/apt101-catch-it-making-things-up.md -> \"slides: 7 oversized: 0\" (limits 210 words / 6 bullets).",
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 15,
-      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-      "verdict": "PASS",
-      "evidence": "Exercise headings are phase labels or imperatives: line 11 \"While the benchmark runs: ready your real summary\", lines 21-92 \"Phase 1: Plant the claims\" ... \"Phase 5: Run it on something real\", line 104 \"Take stock\". Closest: \"Take stock\" is imperative, not a declarative claim, correct for an exercise close.",
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 16,
-      "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
-      "verdict": "PASS",
-      "evidence": "Closest: chunk 7 line 106 recap \"Four checks ran, a scorer measured them, ...\" could read as doctrine restatement, but it names the artifact kept and its Known limit line, a close the exercise owes; line 102 '\"The agent got this wrong\" is the sentence.' is a move, not a koan.",
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
+      "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+      "carried_shape": "e082db954b6c400e"
     },
     {
       "compendium": "check_slides.md",
@@ -219,14 +231,22 @@
       "rule_lead": "A retitled slide re-earns its bullets against the new header.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": null,
+      "na_reason": "no maintainer provenance note of a header rename; git log -p -3 on the file shows no changed `## ` line",
+      "fix_hint": "",
       "blocking": false,
-      "chunks_flagged": [],
-      "na_reason": "no maintainer provenance note of a header rename; git log -p -3 on the file shows no changed `## ` line"
+      "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+      "carried_shape": "e082db954b6c400e"
     }
   ],
-  "suggestions": [],
-  "blocking_findings_count": 1,
-  "nonblocking_findings_count": 1,
-  "notes": "Prefill parked 0 rows (no prior instance); all 17 rules written by judge. Accept-notes in maintainer block: none touching slides (only the Quality stamp line). Line 29 and lines 41/43 both echo the prompt text in phase 1/2; writing class owns cadence overlap."
+  "suggestions": [
+    {
+      "rule": "check_slides.md 9",
+      "line": 31,
+      "now": "**Don't open the briefing.** Your main session stays blind, so it cannot quietly help the checks along.",
+      "proposed": "Don't open the briefing. Your main session stays blind, so it cannot quietly help the checks along."
+    }
+  ],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "Accept-notes in maintainer block: none beyond the Quality line (L110). Prefill parked rules 13 and 17 (N/A). Body-view greps all CLEAN."
 }

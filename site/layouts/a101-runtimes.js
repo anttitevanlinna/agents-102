@@ -18,10 +18,21 @@
         'desktop',
         'cli',
         'codex-desktop',
-        'codex-cli'
+        'codex-cli',
+        'copilot-app',
+        'copilot-cli'
     ]);
 
-    function profile(key, label, family, surface, transport, capabilities, rootInstructions, projectSkills) {
+    var CLAUDE_ARTIFACTS = Object.freeze({
+        'root-instructions': 'CLAUDE.md',
+        'project-skills': '.claude/skills'
+    });
+    var AGENT_STANDARD_ARTIFACTS = Object.freeze({
+        'root-instructions': 'AGENTS.md',
+        'project-skills': '.agents/skills'
+    });
+
+    function profile(key, label, family, surface, transport, capabilities, artifacts) {
         return Object.freeze({
             key: key,
             label: label,
@@ -29,33 +40,38 @@
             surface: surface,
             transport: transport,
             capabilities: Object.freeze(capabilities.slice()),
-            artifacts: Object.freeze({
-                'root-instructions': rootInstructions,
-                'project-skills': projectSkills
-            })
+            artifacts: artifacts
         });
     }
 
     var PROFILES = Object.freeze({
         cowork: profile(
             'cowork', 'Cowork', 'claude', 'cowork', '',
-            ['claude', 'cowork'], 'CLAUDE.md', '.claude/skills'
+            ['claude', 'cowork', 'slash-skill', 'claude-skills'], CLAUDE_ARTIFACTS
         ),
         desktop: profile(
             'desktop', 'Claude Code Desktop', 'claude', 'desktop', '',
-            ['claude', 'desktop', 'code'], 'CLAUDE.md', '.claude/skills'
+            ['claude', 'desktop', 'code', 'slash-skill', 'claude-skills'], CLAUDE_ARTIFACTS
         ),
         cli: profile(
             'cli', 'Claude Code CLI', 'claude', 'cli', 'claude-tmux',
-            ['claude', 'cli', 'code'], 'CLAUDE.md', '.claude/skills'
+            ['claude', 'cli', 'code', 'slash-skill', 'claude-skills'], CLAUDE_ARTIFACTS
         ),
         'codex-desktop': profile(
             'codex-desktop', 'Codex Desktop', 'codex', 'desktop', '',
-            ['codex', 'desktop', 'code'], 'AGENTS.md', '.agents/skills'
+            ['codex', 'desktop', 'code', 'dollar-skill', 'agent-skills'], AGENT_STANDARD_ARTIFACTS
         ),
         'codex-cli': profile(
             'codex-cli', 'Codex CLI', 'codex', 'cli', 'codex-tmux',
-            ['codex', 'cli', 'code'], 'AGENTS.md', '.agents/skills'
+            ['codex', 'cli', 'code', 'dollar-skill', 'agent-skills'], AGENT_STANDARD_ARTIFACTS
+        ),
+        'copilot-app': profile(
+            'copilot-app', 'GitHub Copilot app', 'copilot', 'desktop', '',
+            ['copilot', 'desktop', 'code', 'slash-skill', 'agent-skills'], AGENT_STANDARD_ARTIFACTS
+        ),
+        'copilot-cli': profile(
+            'copilot-cli', 'GitHub Copilot CLI', 'copilot', 'cli', 'copilot-prompt',
+            ['copilot', 'cli', 'code', 'slash-skill', 'agent-skills'], AGENT_STANDARD_ARTIFACTS
         )
     });
 
@@ -68,10 +84,12 @@
 
     function compatibleProfiles(runtime) {
         if (runtime === 'any') return PROFILE_ORDER.slice();
-        if (runtime === 'code') return ['desktop', 'cli', 'codex-desktop', 'codex-cli'];
+        if (runtime === 'code') return [
+            'desktop', 'cli', 'codex-desktop', 'codex-cli', 'copilot-app', 'copilot-cli'
+        ];
         if (runtime === 'cowork') return ['cowork'];
-        if (runtime === 'desktop') return ['desktop', 'codex-desktop'];
-        if (runtime === 'cli') return ['cli', 'codex-cli'];
+        if (runtime === 'desktop') return ['desktop', 'codex-desktop', 'copilot-app'];
+        if (runtime === 'cli') return ['cli', 'codex-cli', 'copilot-cli'];
         throw new Error('Unknown Agents 101 prompt runtime: ' + runtime);
     }
 
@@ -96,8 +114,8 @@
         var profile = getProfile(profileKey);
         var displayed = Object.assign({}, entry);
         if (displayed.dest === 'Claude Code') displayed.dest = profile.label;
-        if (displayed.dest === 'Builder Claude' && profile.family === 'codex') {
-            displayed.dest = 'Builder Codex';
+        if (displayed.dest === 'Builder Claude' && profile.family !== 'claude') {
+            displayed.dest = profile.family === 'codex' ? 'Builder Codex' : 'Builder Copilot';
         }
         return displayed;
     }

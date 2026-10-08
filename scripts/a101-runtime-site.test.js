@@ -15,6 +15,8 @@ test('runtime profiles expose the approved order and concrete artifact bindings'
     'cli',
     'codex-desktop',
     'codex-cli',
+    'copilot-app',
+    'copilot-cli',
   ]);
 
   assert.equal(R.DEFAULT_PROFILE, 'cowork');
@@ -22,6 +24,9 @@ test('runtime profiles expose the approved order and concrete artifact bindings'
   assert.equal(R.PROFILES['codex-cli'].artifacts['root-instructions'], 'AGENTS.md');
   assert.equal(R.PROFILES.cli.artifacts['project-skills'], '.claude/skills');
   assert.equal(R.PROFILES['codex-cli'].artifacts['project-skills'], '.agents/skills');
+  assert.equal(R.PROFILES['copilot-cli'].artifacts['root-instructions'], 'AGENTS.md');
+  assert.equal(R.PROFILES['copilot-cli'].artifacts['project-skills'], '.agents/skills');
+  assert.equal(R.PROFILES['copilot-cli'].artifacts, R.PROFILES['codex-cli'].artifacts);
 });
 
 test('runtime profiles carry the executable transport only on CLI surfaces', () => {
@@ -30,15 +35,17 @@ test('runtime profiles carry the executable transport only on CLI surfaces', () 
   assert.equal(R.PROFILES.cli.transport, 'claude-tmux');
   assert.equal(R.PROFILES['codex-desktop'].transport, '');
   assert.equal(R.PROFILES['codex-cli'].transport, 'codex-tmux');
+  assert.equal(R.PROFILES['copilot-app'].transport, '');
+  assert.equal(R.PROFILES['copilot-cli'].transport, 'copilot-prompt');
 });
 
-test('surface metadata activates equivalent Claude and Codex profiles', () => {
+test('surface metadata activates equivalent profiles across runtime families', () => {
   assert.deepEqual(R.compatibleProfiles('any'), R.PROFILE_ORDER);
   assert.deepEqual(R.compatibleProfiles('code'), [
-    'desktop', 'cli', 'codex-desktop', 'codex-cli'
+    'desktop', 'cli', 'codex-desktop', 'codex-cli', 'copilot-app', 'copilot-cli'
   ]);
-  assert.deepEqual(R.compatibleProfiles('desktop'), ['desktop', 'codex-desktop']);
-  assert.deepEqual(R.compatibleProfiles('cli'), ['cli', 'codex-cli']);
+  assert.deepEqual(R.compatibleProfiles('desktop'), ['desktop', 'codex-desktop', 'copilot-app']);
+  assert.deepEqual(R.compatibleProfiles('cli'), ['cli', 'codex-cli', 'copilot-cli']);
   assert.deepEqual(R.compatibleProfiles('cowork'), ['cowork']);
 });
 
@@ -80,6 +87,8 @@ test('prompt expansion emits concrete runtime variants with exact profile wrappe
         cli: { dest: 'Claude Code', text: 'Write ./CLAUDE.md.' },
         'codex-desktop': { dest: 'Claude Code', text: 'Write ./AGENTS.md.' },
         'codex-cli': { dest: 'Claude Code', text: 'Write ./AGENTS.md.' },
+        'copilot-app': { dest: 'Claude Code', text: 'Write ./AGENTS.md.' },
+        'copilot-cli': { dest: 'Claude Code', text: 'Write ./AGENTS.md.' },
       },
     },
   };
@@ -91,11 +100,13 @@ test('prompt expansion emits concrete runtime variants with exact profile wrappe
     renderPromptBlock: render,
   });
 
-  assert.equal((md.match(/class="rt-profile /g) || []).length, 5);
+  assert.equal((md.match(/class="rt-profile /g) || []).length, 7);
   assert.match(md, /rt-profile-cowork[^]*Cowork\|Write \.\/CLAUDE\.md\./);
   assert.match(md, /rt-profile-cli[^]*Claude Code CLI\|Write \.\/CLAUDE\.md\./);
   assert.match(md, /rt-profile-codex-desktop[^]*Codex Desktop\|Write \.\/AGENTS\.md\./);
   assert.match(md, /rt-profile-codex-cli[^]*Codex CLI\|Write \.\/AGENTS\.md\./);
+  assert.match(md, /rt-profile-copilot-app[^]*GitHub Copilot app\|Write \.\/AGENTS\.md\./);
+  assert.match(md, /rt-profile-copilot-cli[^]*GitHub Copilot CLI\|Write \.\/AGENTS\.md\./);
   assert.doesNotMatch(md, /\{\{artifact:/);
 });
 
@@ -106,6 +117,7 @@ test('surface-specific prompt expansion emits only compatible wrappers', () => {
       runtimeVariants: {
         cli: { dest: 'Claude Code', text: 'Claude CLI.' },
         'codex-cli': { dest: 'Claude Code', text: 'Codex CLI.' },
+        'copilot-cli': { dest: 'Claude Code', text: 'Copilot CLI.' },
       },
     },
   };
@@ -115,7 +127,8 @@ test('surface-specific prompt expansion emits only compatible wrappers', () => {
   });
   assert.match(md, /rt-profile-cli/);
   assert.match(md, /rt-profile-codex-cli/);
-  assert.doesNotMatch(md, /rt-profile-cowork|rt-profile-desktop|rt-profile-codex-desktop/);
+  assert.match(md, /rt-profile-copilot-cli/);
+  assert.doesNotMatch(md, /rt-profile-cowork|rt-profile-desktop|rt-profile-codex-desktop|rt-profile-copilot-app/);
 });
 
 test('cut markers preserve their reason for every generated profile block', () => {
@@ -167,6 +180,10 @@ test('Agents 101 runtime CSS selects only the active runtime family prose', () =
   assert.match(css, /body\.runtime-cowork[^}]*\.rt-codex/);
   assert.match(css, /body\.runtime-desktop[^}]*\.rt-codex/);
   assert.match(css, /body\.runtime-cli[^}]*\.rt-codex/);
+  assert.match(css, /body\.runtime-copilot-app[^}]*\.rt-claude/);
+  assert.match(css, /body\.runtime-copilot-app[^}]*\.rt-codex/);
+  assert.match(css, /body\.runtime-copilot-cli[^}]*\.rt-claude/);
+  assert.match(css, /body\.runtime-copilot-cli[^}]*\.rt-codex/);
 });
 
 test('workbook and SPA select the extension only for Agents 101', () => {

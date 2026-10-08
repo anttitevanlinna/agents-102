@@ -8,6 +8,7 @@ trap 'rm -rf "$TMP"' EXIT
 
 [[ "$($RUNNER/run-a101.sh --print-runtime)" == cli ]]
 [[ "$($RUNNER/run-a101.sh --runtime codex-cli --print-runtime)" == codex-cli ]]
+[[ "$($RUNNER/run-a101.sh --runtime copilot-cli --print-runtime)" == copilot-cli ]]
 set +e
 "$RUNNER/run-a101.sh" --runtime nope --print-runtime >"$TMP/out" 2>"$TMP/err"
 rc=$?
@@ -25,10 +26,16 @@ codex_open() { CODEX_RUN_DIR="$2"; export CODEX_RUN_DIR; printf 'codex-open %s %
 codex_turn() { cp "$1" "$CODEX_RUN_DIR/turn-$2.response.txt"; }
 codex_close() { printf 'codex-close\n' >> "$A101_FAKE_LOG"; }
 SH
+cat > "$TMP/fake-copilot.sh" <<'SH'
+copilot_open() { COPILOT_RUN_DIR="$2"; export COPILOT_RUN_DIR; printf 'copilot-open %s %s\n' "$1" "$2" >> "$A101_FAKE_LOG"; }
+copilot_turn() { cp "$1" "$COPILOT_RUN_DIR/turn-$2.transcript.txt"; }
+copilot_close() { printf 'copilot-close\n' >> "$A101_FAKE_LOG"; }
+SH
 
 export A101_FAKE_LOG="$TMP/transport.log"
 export A101_CLAUDE_TRANSPORT="$TMP/fake-claude.sh"
 export A101_CODEX_TRANSPORT="$TMP/fake-codex.sh"
+export A101_COPILOT_TRANSPORT="$TMP/fake-copilot.sh"
 source "$RUNNER/lib/transport.sh"
 
 mkdir -p "$TMP/work" "$TMP/run-m1" "$TMP/run-m2" "$TMP/run-codex"
@@ -36,6 +43,12 @@ printf '%s' prompt > "$TMP/prompt.txt"
 transport_open cli "$TMP/work" "$TMP/run-m1"
 transport_turn "$TMP/prompt.txt" 1 3
 [[ "$(cat "$TMP/run-m1/turn-1.transcript.txt")" == prompt ]]
+transport_close
+
+mkdir -p "$TMP/run-copilot"
+transport_open copilot-cli "$TMP/work" "$TMP/run-copilot"
+transport_turn "$TMP/prompt.txt" 1 3
+[[ "$(cat "$TMP/run-copilot/turn-1.transcript.txt")" == prompt ]]
 transport_close
 transport_open cli "$TMP/work" "$TMP/run-m2"
 transport_close
@@ -50,6 +63,9 @@ A101_RUNTIME_PROFILE=cli
 [[ "$(artifact_path root-instructions)" == CLAUDE.md ]]
 [[ "$(artifact_path project-skills)" == .claude/skills ]]
 A101_RUNTIME_PROFILE=codex-cli
+[[ "$(artifact_path root-instructions)" == AGENTS.md ]]
+[[ "$(artifact_path project-skills)" == .agents/skills ]]
+A101_RUNTIME_PROFILE=copilot-cli
 [[ "$(artifact_path root-instructions)" == AGENTS.md ]]
 [[ "$(artifact_path project-skills)" == .agents/skills ]]
 

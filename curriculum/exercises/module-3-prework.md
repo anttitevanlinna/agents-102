@@ -40,7 +40,7 @@ When the job is done, it returns a single result to the main agent and disappear
 
 *What you don't need.* You don't need to write an agent definition file for Module 3 or learn a special command. Defining your own reusable helpers is a later move; launching ones that the lead session or task describes on the fly is what Phase 2 uses, and plain-language prompting is enough.
 
-For the full reference, <span class="rt-claude rt-code">open the [Claude Code helper-agent documentation](https://code.claude.com/docs/en/sub-agents)</span><span class="rt-codex rt-code">open the [Codex helper-agent documentation](https://learn.chatgpt.com/docs/agent-configuration/subagents)</span><span class="rt-cowork">open the in-app help and search for *agents*</span>. You're after the shape: *helper with instructions, own context, returns a result. You summon it by asking.*
+For the full reference, <span class="rt-claude rt-code">open the [Claude Code helper-agent documentation](https://code.claude.com/docs/en/sub-agents)</span><span class="rt-codex rt-code">open the [Codex helper-agent documentation](https://learn.chatgpt.com/docs/agent-configuration/subagents)</span><span class="rt-copilot rt-code">open the [GitHub Copilot subagent documentation](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-custom-agents)</span><span class="rt-cowork">open the in-app help and search for *agents*</span>. You're after the shape: *helper with instructions, own context, returns a result. You summon it by asking.*
 
 **What to bring to class:** the three one-line practitioner takeaways. That's it. Module 3 runs on the memory you already built in Module 2.
 

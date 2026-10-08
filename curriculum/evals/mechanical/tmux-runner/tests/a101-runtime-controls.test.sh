@@ -10,6 +10,7 @@ trap 'rm -rf "$TMP"' EXIT
 tokens='<CONTROL:NO_QUESTIONS> <CONTROL:DIRECT_EXECUTION> <CONTROL:MULTI_AGENT> <CONTROL:SAVE_WITHOUT_REVIEW>'
 claude="$(render_controls cli "$tokens")"
 codex="$(render_controls codex-cli "$tokens")"
+copilot="$(render_controls copilot-cli "$tokens")"
 
 [[ "$claude" == *AskUserQuestion* ]]
 [[ "$claude" == *'plan mode'* ]]
@@ -20,7 +21,11 @@ codex="$(render_controls codex-cli "$tokens")"
 [[ "$codex" != *AskUserQuestion* ]]
 [[ "$codex" != *'plan mode'* ]]
 [[ "$codex" != *subagent* ]]
-[[ "$claude$codex" != *'<CONTROL:'* ]]
+[[ "$copilot" == *'interactive user input'* ]]
+[[ "$copilot" == *'approval pause'* ]]
+[[ "$copilot" == *'GitHub Copilot subagents'* ]]
+[[ "$copilot" != *AskUserQuestion* ]]
+[[ "$claude$codex$copilot" != *'<CONTROL:'* ]]
 
 set +e
 render_controls codex-cli '<CONTROL:NOT_REAL>' >"$TMP/controls.out" 2>"$TMP/controls.err"

@@ -36,6 +36,11 @@ transport_open() {
       A101_ACTIVE_TRANSPORT=codex
       codex_open "$cwd" "$run_dir"
       ;;
+    copilot-cli)
+      source "${A101_COPILOT_TRANSPORT:-$A101_RUNNER_DIR/transports/copilot-prompt.sh}"
+      A101_ACTIVE_TRANSPORT=copilot
+      copilot_open "$cwd" "$run_dir"
+      ;;
     *)
       echo "transport_open: unsupported executable profile: $profile" >&2
       return 2
@@ -58,6 +63,9 @@ transport_turn() {
       fi
       return "$rc"
       ;;
+    copilot)
+      copilot_turn "$prompt_file" "$seq" "$timeout"
+      ;;
     *)
       echo 'transport_turn: no active transport' >&2
       return 2
@@ -69,6 +77,7 @@ transport_close() {
   case "${A101_ACTIVE_TRANSPORT:-}" in
     claude) claude_close ;;
     codex) codex_close ;;
+    copilot) copilot_close ;;
     '') return 0 ;;
     *) echo "transport_close: unknown active transport: $A101_ACTIVE_TRANSPORT" >&2; return 2 ;;
   esac

@@ -40,10 +40,11 @@ Write ./{{artifact:root-instructions}}.
   assert.equal(entry.text, 'Write ./CLAUDE.md.');
   assert.equal(entry.produces[0].location, './CLAUDE.md');
   assert.deepEqual(Object.keys(entry.runtimeVariants), [
-    'cowork', 'desktop', 'cli', 'codex-desktop', 'codex-cli'
+    'cowork', 'desktop', 'cli', 'codex-desktop', 'codex-cli', 'copilot-app', 'copilot-cli'
   ]);
   assert.equal(entry.runtimeVariants.cli.text, 'Write ./CLAUDE.md.');
   assert.equal(entry.runtimeVariants['codex-cli'].text, 'Write ./AGENTS.md.');
+  assert.equal(entry.runtimeVariants['copilot-cli'].text, 'Write ./AGENTS.md.');
   assert.equal(
     entry.runtimeVariants['codex-desktop'].produces[0].location,
     './AGENTS.md'
@@ -57,12 +58,17 @@ test('Agents 101 Module 2 debrief projects the root-instructions identity by run
   assert.equal(prompt.produces[0].id, 'root-instructions');
   assert.equal(prompt.runtimeVariants.cli.produces[0].location, './CLAUDE.md');
   assert.equal(prompt.runtimeVariants['codex-cli'].produces[0].location, './AGENTS.md');
+  assert.equal(prompt.runtimeVariants['copilot-cli'].produces[0].location, './AGENTS.md');
   assert.match(
     prompt.runtimeVariants.cli.text,
     /write the first version of CLAUDE\.md at the training-directory root/
   );
   assert.match(
     prompt.runtimeVariants['codex-cli'].text,
+    /write the first version of AGENTS\.md at the training-directory root/
+  );
+  assert.match(
+    prompt.runtimeVariants['copilot-cli'].text,
     /write the first version of AGENTS\.md at the training-directory root/
   );
 });
@@ -75,6 +81,7 @@ test('Agents 101 scheduled-agent styling updates the selected root instructions'
   assert.ok(prompt.produces.some(({ id }) => id === 'root-instructions'));
   assert.match(prompt.runtimeVariants.cli.text, /root CLAUDE\.md/);
   assert.match(prompt.runtimeVariants['codex-cli'].text, /root AGENTS\.md/);
+  assert.match(prompt.runtimeVariants['copilot-cli'].text, /root AGENTS\.md/);
 });
 
 test('Agents 101 scheduled-agent run reads the selected root instructions', () => {
@@ -84,6 +91,7 @@ test('Agents 101 scheduled-agent run reads the selected root instructions', () =
   assert.ok(prompt.requires.some(({ id }) => id === 'root-instructions'));
   assert.match(prompt.runtimeVariants.cli.text, /root CLAUDE\.md/);
   assert.match(prompt.runtimeVariants['codex-cli'].text, /root AGENTS\.md/);
+  assert.match(prompt.runtimeVariants['copilot-cli'].text, /root AGENTS\.md/);
 });
 
 test('Agents 101 downstream rule prompts resolve the root instructions for Codex', () => {
@@ -101,6 +109,8 @@ test('Agents 101 downstream rule prompts resolve the root instructions for Codex
     assert.match(registry[key].runtimeVariants.cli.text, /CLAUDE\.md/, key);
     assert.doesNotMatch(registry[key].runtimeVariants['codex-cli'].text, /CLAUDE\.md/, key);
     assert.match(registry[key].runtimeVariants['codex-cli'].text, /AGENTS\.md/, key);
+    assert.doesNotMatch(registry[key].runtimeVariants['copilot-cli'].text, /CLAUDE\.md/, key);
+    assert.match(registry[key].runtimeVariants['copilot-cli'].text, /AGENTS\.md/, key);
   }
 });
 
@@ -113,7 +123,7 @@ test('Agents 101 portable judge and reflection prompts do not address one provid
   ];
 
   for (const key of keys) {
-    for (const profile of ['cli', 'codex-cli']) {
+    for (const profile of ['cli', 'codex-cli', 'copilot-cli']) {
       assert.doesNotMatch(registry[key].runtimeVariants[profile].text, /\bClaude\b/, `${key}/${profile}`);
     }
   }
@@ -123,7 +133,7 @@ test('Agents 101 reusable eval loop gives every round a durable artifact boundar
   const registry = compile.loadRegistry();
   const prompt = registry['eval-loop-6'];
 
-  for (const profile of ['cli', 'codex-cli']) {
+  for (const profile of ['cli', 'codex-cli', 'copilot-cli']) {
     const text = prompt.runtimeVariants[profile].text;
     assert.match(text, /`generation-tactic\.md`/);
     assert.match(text, /`round-1\/`, `round-2\/`, `round-3\/`/);
@@ -139,9 +149,10 @@ test('Agents 101 security skill installs once at the selected project-skills pat
 
   assert.match(author.runtimeVariants.cli.text, /\.claude\/skills\/security-audit\/SKILL\.md/);
   assert.match(author.runtimeVariants['codex-cli'].text, /\.agents\/skills\/security-audit\/SKILL\.md/);
+  assert.match(author.runtimeVariants['copilot-cli'].text, /\.agents\/skills\/security-audit\/SKILL\.md/);
   assert.doesNotMatch(author.runtimeVariants['codex-cli'].text, /Claude|~\/\.claude/);
   assert.deepEqual(Object.keys(install.runtimeVariants), [
-    'desktop', 'cli', 'codex-desktop', 'codex-cli'
+    'desktop', 'cli', 'codex-desktop', 'codex-cli', 'copilot-app', 'copilot-cli'
   ]);
   assert.equal(
     install.runtimeVariants.cli.produces[0].location,
@@ -149,6 +160,10 @@ test('Agents 101 security skill installs once at the selected project-skills pat
   );
   assert.equal(
     install.runtimeVariants['codex-cli'].produces[0].location,
+    '.agents/skills/security-audit/SKILL.md'
+  );
+  assert.equal(
+    install.runtimeVariants['copilot-cli'].produces[0].location,
     '.agents/skills/security-audit/SKILL.md'
   );
   assert.equal(registry['author-security-skill-5'], undefined);
@@ -162,6 +177,8 @@ test('Agents 101 invokes the installed security skill with runtime-native syntax
   assert.doesNotMatch(prompt.runtimeVariants.cli.text, /^\$security-audit/m);
   assert.match(prompt.runtimeVariants['codex-cli'].text, /^\s*\$security-audit — load the skill/);
   assert.doesNotMatch(prompt.runtimeVariants['codex-cli'].text, /^\/security-audit/m);
+  assert.match(prompt.runtimeVariants['copilot-cli'].text, /^\s*\/security-audit — load the skill/);
+  assert.doesNotMatch(prompt.runtimeVariants['copilot-cli'].text, /^\$security-audit/m);
 });
 
 test('capability blocks keep matching mechanics and remove non-matching mechanics', (t) => {
@@ -177,6 +194,9 @@ Use Claude mechanics.
 {{#capability:codex}}
 Use Codex mechanics.
 {{/capability:codex}}
+{{#capability:copilot}}
+Use Copilot mechanics.
+{{/capability:copilot}}
 End.
 `,
   });
@@ -185,15 +205,18 @@ End.
   const registry = compile.loadRegistry(dir);
   const claude = registry.mechanics.runtimeVariants.cli.text;
   const codex = registry.mechanics.runtimeVariants['codex-cli'].text;
+  const copilot = registry.mechanics.runtimeVariants['copilot-cli'].text;
 
   assert.match(claude, /Use Claude mechanics\./);
   assert.doesNotMatch(claude, /Use Codex mechanics\./);
   assert.match(codex, /Use Codex mechanics\./);
   assert.doesNotMatch(codex, /Use Claude mechanics\./);
-  assert.doesNotMatch(claude + codex, /\{\{[#/]capability:/);
+  assert.match(copilot, /Use Copilot mechanics\./);
+  assert.doesNotMatch(copilot, /Use Claude mechanics\.|Use Codex mechanics\./);
+  assert.doesNotMatch(claude + codex + copilot, /\{\{[#/]capability:/);
 });
 
-test('surface-specific prompts compile only compatible Claude and Codex variants', (t) => {
+test('surface-specific prompts compile only compatible runtime variants', (t) => {
   const dir = promptDir({
     'cli-card': `---
 key: cli-card
@@ -211,10 +234,10 @@ Write ./{{artifact:root-instructions}}.
   t.after(() => removeDir(dir));
 
   const registry = compile.loadRegistry(dir);
-  assert.deepEqual(Object.keys(registry['cli-card'].runtimeVariants), ['cli', 'codex-cli']);
+  assert.deepEqual(Object.keys(registry['cli-card'].runtimeVariants), ['cli', 'codex-cli', 'copilot-cli']);
   assert.deepEqual(
     Object.keys(registry['desktop-card'].runtimeVariants),
-    ['desktop', 'codex-desktop']
+    ['desktop', 'codex-desktop', 'copilot-app']
   );
   assert.equal(registry['cli-card'].text, 'Write ./CLAUDE.md.');
   assert.equal(registry['desktop-card'].text, 'Write ./CLAUDE.md.');
@@ -322,5 +345,7 @@ test('compiler gates Agents 101 once per profile and AE101 once on its legacy pa
     { training: 'agents-101', profile: 'cli' },
     { training: 'agents-101', profile: 'codex-desktop' },
     { training: 'agents-101', profile: 'codex-cli' },
+    { training: 'agents-101', profile: 'copilot-app' },
+    { training: 'agents-101', profile: 'copilot-cli' },
   ]);
 });

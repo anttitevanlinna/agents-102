@@ -1,6 +1,6 @@
 # tmux-runner — drives real agent sessions through the curriculum
 
-Drives a real Claude Code or Codex CLI session in a tmux pane through a sequence of prompts and captures the transcript. This preserves the interactive, multi-turn TTY surface while testing the real prompt chain and its compounding artifacts.
+Drives a real Claude Code, Codex CLI, or GitHub Copilot CLI session through a sequence of prompts and captures the transcript. Claude and Codex use interactive tmux transports. GitHub Copilot uses its bounded, resumable prompt mode. All three test the same prompt chain and compounding artifacts.
 
 ## Shape
 
@@ -13,6 +13,8 @@ tmux-runner/
   arrange-*.sh           # reset a SUT to its M1 baseline
   install-sut.sh         # one-time: registers the Stop hook in a SUT cwd
   prune-out.sh           # retention for out/ (dry run by default)
+  transports/
+    copilot-prompt.sh    # isolated, resumable GitHub Copilot prompt-mode process
   hooks/
     stop-sentinel.sh     # Claude: writes turn-N.done after each response
   lib/
@@ -32,7 +34,7 @@ tmux-runner/
 - **Scenarios reference prompt keys, never copy prompt bodies.** Source of truth for prompts is this repo's `curriculum/prompts/<key>.md`. Override the registry path with `PROMPT_REGISTRY`.
 - **A turn ends on the Stop-hook sentinel AND an idle pane.** The sentinel is deterministic but fires when the main agent yields — not when its backgrounded subagents finish, and also when another Stop hook blocks and re-opens the turn. `lib/sync.sh` holds while the pane's last status line is a spinner or "Waiting for N background agent(s)", then trims the surplus Stop the re-invocation writes. Only `lib/sync.sh` reads sentinels (`tests/sentinel-reads-go-through-sync.test.sh`).
 - **Runtime-neutral artifact identities.** Shared controls refer to identities such as `root-instructions` and `project-skills`. The runtime profile resolves those to real paths (`CLAUDE.md`/`.claude/skills` or `AGENTS.md`/`.agents/skills`). Scenarios and downstream prompts do not fork by runtime.
-- **Runtime-specific completion detection behind one transport.** Claude uses its Stop-hook sentinel. Codex uses its stable interactive prompt state. The scenario driver does not duplicate prompt bodies or assertions.
+- **Runtime-specific completion detection behind one transport.** Claude uses its Stop-hook sentinel. Codex uses its stable interactive prompt state. GitHub Copilot prompt mode exits at turn completion. The scenario driver does not duplicate prompt bodies or assertions.
 - **One tmux session per run**, on its own socket (`RUNNER_TMUX_SOCKET`), so concurrent runners cannot kill each other's server.
 
 ## Agents 101 cases and runtimes
@@ -51,6 +53,15 @@ Case kits own only facts, source fixtures, canned student answers, semantic asse
 ./chain-agents-101.sh \
   --case finnish-psychologist \
   --runtime codex-cli \
+  --to m6 \
+  --no-arrange \
+  --cwd /tmp/a101-psych/work \
+  --material /tmp/a101-psych/material
+
+# The same chain on GitHub Copilot CLI
+./chain-agents-101.sh \
+  --case finnish-psychologist \
+  --runtime copilot-cli \
   --to m6 \
   --no-arrange \
   --cwd /tmp/a101-psych/work \
@@ -92,6 +103,7 @@ ls out/<run-id>/
 - `CLAUDE_CMD` — launch command (default: `claude`). Every `claude` launch is preflighted (`claude_cli_preflight`, `lib/tmux.sh`): the binary it resolves must be Claude Code ≥ `CLAUDE_CLI_FLOOR` (2.1.281, the lowest verified) and offer the requested `--permission-mode`, or the run stops before tmux starts and names the binary path. A stale Homebrew copy ahead of `~/.local/bin` on PATH is the usual cause. Use `CLAUDE_CMD="claude --permission-mode auto"` for headless runs (the auto-mode classifier allows tool calls without prompts). **Do NOT use `--permission-mode bypassPermissions`** — it shows a "Yes/No, exit" confirmation dialog at startup that hangs the runner forever (no Stop hook fires for the dialog).
 - `CLAUDE_RUNNER_TIMEOUT` — explicit per-turn timeout in seconds. General Agents 101 turns default to 1800s; its reusable M6 fixed-judge loop defaults to 3600s because it performs three generator/judge rounds. An explicit value always wins. Other runners retain their own defaults.
 - `CLAUDE_RUNNER_SLASH_SLEEP` — render-wait for slash-only turns (default: 3s).
+- `COPILOT_BIN` — GitHub Copilot CLI executable (default: `copilot`). The transport needs `COPILOT_GITHUB_TOKEN`, `GH_TOKEN`, `GITHUB_TOKEN`, or an authenticated `gh` CLI. It creates an isolated `COPILOT_HOME`, disables auto-update and remote export, leaves prompt-mode Memory disabled, enables trusted project extensions so `.agents/skills` loads, and uses `--allow-all --no-ask-user`. Use only with an isolated training directory.
 
 ## Per-turn artifact assertions
 

@@ -6,6 +6,8 @@ Land at Module 1 with your agent runtime working, your work calendar connected o
 
 Make sure you can access the agent runtime you selected. Then create an empty folder at `~/Documents/agents-101/` (right-click in Finder or File Explorer → *New Folder*). This is your training directory; everything you produce over the eight modules lands here.
 
+<span class="rt-copilot">In GitHub, open *Copilot settings*. Under *Features*, set *Copilot Memory* to *Disabled* for the training. You turn it back on after the course if you want it.</span>
+
 **Session** *(new, "Prework")*
 
 <span class="rt-code">Open your code agent in the interface you selected. Start a new session at `~/Documents/agents-101/`.</span><span class="rt-cowork">Open the *Cowork* tab next to *Chat* in your desktop app. Click *New task* and select `~/Documents/agents-101/` as the working folder. No terminal required.</span>

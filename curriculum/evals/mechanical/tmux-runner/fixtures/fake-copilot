@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+printf '%s\n' "$*" >> "${FAKE_COPILOT_LOG:?FAKE_COPILOT_LOG is required}"
+[[ "${COPILOT_AUTO_UPDATE:-}" == false ]]
+[[ "${GITHUB_COPILOT_PROMPT_MODE_EXTENSIONS:-}" == true ]]
+[[ -n "${COPILOT_GITHUB_TOKEN:-}" ]]
+[[ -d "${COPILOT_HOME:?}" ]]
+
+prompt=''
+session_id=''
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --prompt) prompt="$2"; shift 2 ;;
+    --session-id) session_id="$2"; shift 2 ;;
+    *) shift ;;
+  esac
+done
+printf '%s\n' "$session_id" >> "${FAKE_COPILOT_SESSION_LOG:?FAKE_COPILOT_SESSION_LOG is required}"
+
+case "${FAKE_COPILOT_CASE:-success}" in
+  success) printf '%s response\n' "$prompt" ;;
+  exit-seven) echo 'synthetic Copilot failure' >&2; exit 7 ;;
+  timeout) exec sleep 30 ;;
+  empty) exit 0 ;;
+  *) echo "unknown fake case: $FAKE_COPILOT_CASE" >&2; exit 64 ;;
+esac

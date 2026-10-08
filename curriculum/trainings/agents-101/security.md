@@ -102,7 +102,7 @@ The agent is scoped, the residual risk is named. But the output *inside* the sco
 | Module 4 policy references | `module-4/policies/*.md` | Prework starter; customer prep | M4 raw policy run and reusable security check |
 | Reusable security check | personal security skill in the active runtime | M4 author-security-skill exercise | M4 audit; M7 skill-sharing preview; post-training reuse |
 | Module 4 security outputs | `outputs/policy-report-raw.md`, `outputs/policy-report.md`, `outputs/security-report.md` | M4 policy run and agent audit | M4 Debrief; M5-M8 operating-rule context |
-| Root security rules | `./CLAUDE.md` security operating rules | M4 Debrief | M5-M8 fresh sessions as risk memory |
+| Root security rules | security operating rules in the active runtime's root instructions file | M4 Debrief | M5-M8 fresh sessions as risk memory |
 
 **Plug Points (trainer):**
 
@@ -122,10 +122,11 @@ The agent is scoped, the residual risk is named. But the output *inside* the sco
 - Belief — name what you don't know — lands implicitly in the "I can't tell" column. Not announced; earned by the student writing one themselves.
 - Belief — practice beats external proof — anchors the lecture's core message. Named in maintainer-space, experienced in body.
 
-**Runtime verification:** Claude Code's personal-skill path and automatic or direct invocation are documentation-backed below. The [M4 run sheet](trainer-modules.md#m4-glance) owns the remaining pre-delivery Cowork authoring/load rehearsal and the fallback if packaging fails.
+**Runtime verification:** Claude Code and GitHub Copilot skill paths and invocation are documentation-backed below. The [M4 run sheet](trainer-modules.md#m4-glance) owns the remaining pre-delivery runtime rehearsal and the fallback if packaging fails.
 
 **Sources:**
 - `[checked:2026-08-23 result:OK due:cohort]` https://code.claude.com/docs/en/skills — [vendor docs, capability] personal skills live at `~/.claude/skills/<skill-name>/SKILL.md`; Claude can invoke a matching skill automatically or the user can invoke it directly. fallback: follow the documentation index at https://code.claude.com/docs/llms.txt to the current Skills page.
+- `[checked:2026-10-08 result:OK due:cohort]` https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills — [vendor docs, capability] project skills can live at `.agents/skills/<skill-name>/SKILL.md`; GitHub Copilot can load a matching skill automatically or invoke it with `/skill-name`. fallback: open the current GitHub Copilot customization documentation and locate Agent skills.
 
 **Customer prep (sold separately):**
 - Customer-policy reference distillation — 0.5–1 day of Antti's time per customer. Inputs: data-usage policy, security policy, AI-use policy (optional), sector rules. Output: `module-4/policies/*.md` reference files the student runs raw and then packages. The reusable check the student authors during Module 4 is also theirs to keep; it travels with them after training.

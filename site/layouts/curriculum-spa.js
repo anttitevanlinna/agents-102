@@ -104,7 +104,7 @@
     //  - no plan mode in Cowork (use prompt-level discipline instead)
     //  - terminology: subagent (Code), agent (Cowork)
     // ============================================================
-    // Agents 101 extends the legacy three-profile switcher to five profiles.
+    // Agents 101 extends the legacy three-profile switcher to seven profiles.
     // Other trainings keep the shared runtime byte-for-byte at render time.
     var useA101Runtimes = trainingKey === 'agents-101' && window.A101Runtimes;
     var runtimeSwitcher = document.getElementById('runtime-switcher');

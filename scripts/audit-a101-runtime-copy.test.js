@@ -2,6 +2,7 @@ const { test } = require('node:test');
 const assert = require('node:assert/strict');
 
 const {
+  COPILOT_RULES,
   applyRuntimeVisibility,
   audit,
   collectStudentFiles,
@@ -50,6 +51,27 @@ test('slash-command detection does not classify Agents 101 file paths', () => {
   );
 });
 
+test('Copilot copy audit allows slash skills and plan mode but rejects other-runtime mechanics', () => {
+  const text = [
+    '/security-audit — load the skill',
+    'Start in plan mode.',
+    'Write CLAUDE.md with Claude.',
+    '$security-audit',
+    'Open this in Codex.',
+  ].join('\n');
+
+  const findings = scanText(text, 'prompt', 'fixture', [], COPILOT_RULES);
+  assert.deepEqual(
+    findings.map(({ term, category }) => [term, category]),
+    [
+      ['CLAUDE.md', 'artifact-path'],
+      ['Claude', 'runtime-name'],
+      ['$security-audit', 'interaction-mechanic'],
+      ['Codex', 'runtime-name'],
+    ]
+  );
+});
+
 test('runtime visibility removes Cowork copy from Codex CLI scanning', () => {
   const source = [
     '<span class="rt-cowork">Open Claude Code and write CLAUDE.md.</span>',
@@ -65,6 +87,16 @@ test('runtime visibility removes Cowork copy from Codex CLI scanning', () => {
   assert.match(visible, /Continue in this session/);
   assert.match(visible, /Use the command line/);
   assert.deepEqual(findings, []);
+});
+
+test('runtime visibility exposes shared agent-standard skill copy to Copilot', () => {
+  const source = [
+    '<span class="rt-claude-skills">Use .claude/skills.</span>',
+    '<span class="rt-agent-skills">Use .agents/skills.</span>',
+  ].join('\n');
+  const visible = applyRuntimeVisibility(source, 'copilot-cli');
+  assert.doesNotMatch(visible, /\.claude\/skills/);
+  assert.match(visible, /\.agents\/skills/);
 });
 
 test('student-copy collection follows linked Agents 101 supplementary pages without reviving deleted references', () => {
@@ -99,8 +131,8 @@ test('an exact allowlist entry suppresses comparison prose and requires rational
   );
 });
 
-test('live Agents 101 student copy is runtime-clean for both Codex profiles', () => {
-  for (const profile of ['codex-cli', 'codex-desktop']) {
-    assert.deepEqual(audit(profile), [], `${profile} exposes Claude-only student copy`);
+test('live Agents 101 student copy is runtime-clean for every non-Claude profile', () => {
+  for (const profile of ['codex-cli', 'codex-desktop', 'copilot-cli', 'copilot-app']) {
+    assert.deepEqual(audit(profile), [], `${profile} exposes another runtime's student copy`);
   }
 });

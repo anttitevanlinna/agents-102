@@ -18,12 +18,29 @@ const RULES = Object.freeze([
   { regex: /\.claude\/skills/g, category: 'skill-path' },
   { regex: /\bClaude(?:'s)?\b/g, category: 'runtime-name' },
   { regex: /\bCowork\b/g, category: 'runtime-name' },
+  { regex: /\bCopilot\b/g, category: 'runtime-name' },
   { regex: /AskUserQuestion/g, category: 'tool-name' },
   { regex: /^\/[a-z][a-z0-9-]*\b/g, category: 'interaction-mechanic' },
   { regex: /Customize\s*(?:→|->)\s*Skills/g, category: 'interaction-mechanic' },
   { regex: /(?:^|(?<=[\s`]))\/(?:agents|rename)\b/g, category: 'interaction-mechanic' },
   { regex: /\bplan mode\b/gi, category: 'interaction-mechanic' },
 ]);
+
+const COPILOT_RULES = Object.freeze([
+  { regex: /CLAUDE\.md/g, category: 'artifact-path' },
+  { regex: /\.claude\/skills/g, category: 'skill-path' },
+  { regex: /\bClaude(?:'s)?\b/g, category: 'runtime-name' },
+  { regex: /\bCowork\b/g, category: 'runtime-name' },
+  { regex: /\bCodex\b/g, category: 'runtime-name' },
+  { regex: /AskUserQuestion/g, category: 'tool-name' },
+  { regex: /(?:^|(?<=[\s`]))\$[a-z][a-z0-9-]*\b/g, category: 'interaction-mechanic' },
+  { regex: /(?:^|(?<=[\s`]))\/agents\b/g, category: 'interaction-mechanic' },
+]);
+
+const RULES_BY_FAMILY = Object.freeze({
+  codex: RULES,
+  copilot: COPILOT_RULES,
+});
 
 // Intentional comparisons can be added here only with an exact surface,
 // file/key, matched term, and a durable explanation. Keep this list narrow:
@@ -46,6 +63,7 @@ function activeRuntimeClasses(profileKey) {
     `rt-${profile.surface}`,
     'rt-code',
     `rt-profile-${profileKey}`,
+    ...profile.capabilities.map((capability) => `rt-${capability}`),
   ]);
 }
 
@@ -74,13 +92,13 @@ function validateAllowlist(allowlist) {
   }
 }
 
-function scanText(text, surface, keyOrFile, allowlist = DEFAULT_ALLOWLIST) {
+function scanText(text, surface, keyOrFile, allowlist = DEFAULT_ALLOWLIST, rules = RULES) {
   validateAllowlist(allowlist);
   const findings = [];
   const lines = String(text).split('\n');
   for (let index = 0; index < lines.length; index += 1) {
     const lineText = lines[index];
-    for (const rule of RULES) {
+    for (const rule of rules) {
       rule.regex.lastIndex = 0;
       let match;
       while ((match = rule.regex.exec(lineText)) !== null) {
@@ -140,8 +158,9 @@ function collectStudentFiles() {
 
 function audit(profileKey, options = {}) {
   const profile = A101Runtimes.getProfile(profileKey);
-  if (profile.family !== 'codex') {
-    throw new Error(`Runtime-copy audit requires a Codex profile, received '${profileKey}'`);
+  const rules = RULES_BY_FAMILY[profile.family];
+  if (!rules) {
+    throw new Error(`Runtime-copy audit requires a non-Claude profile, received '${profileKey}'`);
   }
   const allowlist = options.allowlist || DEFAULT_ALLOWLIST;
   validateAllowlist(allowlist);
@@ -153,13 +172,13 @@ function audit(profileKey, options = {}) {
   for (const { key } of orderedKeys(TRAINING_KEY)) {
     if (seenPrompts.has(key) || !selected[key]) continue;
     seenPrompts.add(key);
-    findings.push(...scanText(selected[key].text || '', 'prompt', key, allowlist));
+    findings.push(...scanText(selected[key].text || '', 'prompt', key, allowlist, rules));
   }
 
   const files = options.files || collectStudentFiles();
   for (const file of files) {
     const visible = applyRuntimeVisibility(fs.readFileSync(file, 'utf8'), profileKey);
-    findings.push(...scanText(visible, 'student-copy', rel(file), allowlist));
+    findings.push(...scanText(visible, 'student-copy', rel(file), allowlist, rules));
   }
   return findings;
 }
@@ -171,8 +190,11 @@ function argValue(name, fallback = '') {
 
 function main() {
   const profileKey = argValue('--runtime');
-  if (!['codex-cli', 'codex-desktop'].includes(profileKey)) {
-    console.error('usage: node scripts/audit-a101-runtime-copy.js --runtime codex-cli|codex-desktop [--json]');
+  const supported = A101Runtimes.PROFILE_ORDER.filter((key) =>
+    Object.prototype.hasOwnProperty.call(RULES_BY_FAMILY, A101Runtimes.PROFILES[key].family)
+  );
+  if (!supported.includes(profileKey)) {
+    console.error(`usage: node scripts/audit-a101-runtime-copy.js --runtime ${supported.join('|')} [--json]`);
     process.exit(2);
   }
   const findings = audit(profileKey);
@@ -193,7 +215,9 @@ if (require.main === module) main();
 
 module.exports = {
   DEFAULT_ALLOWLIST,
+  COPILOT_RULES,
   RULES,
+  RULES_BY_FAMILY,
   applyRuntimeVisibility,
   audit,
   collectStudentFiles,

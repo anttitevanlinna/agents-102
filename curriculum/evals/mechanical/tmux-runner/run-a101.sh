@@ -20,7 +20,7 @@
 # rules files) not git commits — so assertions are file-exists + grep-evidence
 # + mtime-advanced, not new-commit/tree-hash.
 #
-# Usage: run-a101.sh --module {prework|m1|m2|m3|m4a|m4b|m5|m6|m7|m8} [--case nordveil|finnish-psychologist] [--runtime cli|codex-cli] [--from-turn N] [--cwd DIR] [--material DIR]
+# Usage: run-a101.sh --module {prework|m1|m2|m3|m4a|m4b|m5|m6|m7|m8} [--case nordveil|finnish-psychologist] [--runtime cli|codex-cli|copilot-cli] [--from-turn N] [--cwd DIR] [--material DIR]
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -60,8 +60,8 @@ a101_load_case "$HERE" "$case_name"
 KIT="$A101_CASE_DIR"
 
 case "$runtime" in
-  cli|codex-cli) ;;
-  *) echo "unknown Agents 101 runner runtime: $runtime (expected cli or codex-cli)" >&2; exit 2 ;;
+  cli|codex-cli|copilot-cli) ;;
+  *) echo "unknown Agents 101 runner runtime: $runtime (expected cli, codex-cli, or copilot-cli)" >&2; exit 2 ;;
 esac
 if [[ $print_runtime -eq 1 ]]; then
   printf '%s\n' "$runtime"
@@ -82,7 +82,7 @@ PROJECT_SKILLS_REL="$(artifact_path project-skills)"
 
 case "$module" in
   prework|m1|m2|m3|m4a|m4b|m5|m6|m7|m8) ;;
-  *) echo "usage: $0 --module {prework|m1|m2|m3|m4a|m4b|m5|m6|m7|m8} [--case nordveil|finnish-psychologist] [--runtime cli|codex-cli] [--from-turn N] [--cwd DIR] [--material DIR]" >&2; exit 2 ;;
+  *) echo "usage: $0 --module {prework|m1|m2|m3|m4a|m4b|m5|m6|m7|m8} [--case nordveil|finnish-psychologist] [--runtime cli|codex-cli|copilot-cli] [--from-turn N] [--cwd DIR] [--material DIR]" >&2; exit 2 ;;
 esac
 a101_case_supports_module "$module" || {
   echo "Agents 101 case '$A101_CASE' supports through $A101_MAX_MODULE, not $module" >&2

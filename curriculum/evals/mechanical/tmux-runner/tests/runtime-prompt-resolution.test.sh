@@ -20,12 +20,17 @@ source "$HERE/../lib/resolve-prompt.sh"
 
 claude="$(resolve_prompt root-card cli)"
 codex="$(resolve_prompt root-card codex-cli)"
+copilot="$(resolve_prompt root-card copilot-cli)"
 [[ "$claude" == 'Write ./CLAUDE.md.' ]] || {
   echo "FAIL: Claude resolution leaked or changed: $claude" >&2
   exit 1
 }
 [[ "$codex" == 'Write ./AGENTS.md.' ]] || {
   echo "FAIL: Codex resolution leaked or changed: $codex" >&2
+  exit 1
+}
+[[ "$copilot" == 'Write ./AGENTS.md.' ]] || {
+  echo "FAIL: Copilot resolution leaked or changed: $copilot" >&2
   exit 1
 }
 

@@ -15,6 +15,11 @@ render_controls() {
       direct_execution='Execute directly without entering an interactive planning pause.'
       multi_agent='Use Codex agents for the parallel work.'
       ;;
+    copilot-cli)
+      no_questions='Headless dry-run: do not request interactive user input and do not pause for questions.'
+      direct_execution='Execute directly without entering plan mode or an approval pause.'
+      multi_agent='Use GitHub Copilot subagents for the parallel work.'
+      ;;
     *)
       echo "render_controls: unsupported executable profile: $profile" >&2
       return 2

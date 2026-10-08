@@ -4,11 +4,21 @@ Agents 101 uses a compounding working-directory model. The student is not just r
 
 ## Platform
 
-Agents 101 runs on Claude Code (CLI + Desktop) and Cowork. Not Claude.ai chat.
+Agents 101 runs on Claude Code (CLI + Desktop), Cowork, Codex (CLI + Desktop), and GitHub Copilot (CLI + app). It does not run in a plain chat surface.
 
-The two runtimes use the same prompts and artifacts. Differences live in install-step UI language and terminology:
+All profiles use one prompt graph and the same runtime-neutral artifact identities. The selected profile resolves each identity to a concrete path:
+
+- `root-instructions` resolves to `CLAUDE.md` under Claude and `AGENTS.md` under Codex or GitHub Copilot.
+- `project-skills` resolves to `.claude/skills` under Claude and `.agents/skills` under Codex or GitHub Copilot.
+
+Differences in UI language and interaction mechanics stay behind runtime profiles:
+
 - Claude Code: subagent, local working directory, `+` button next to the prompt, Settings -> Connectors, Schedule sidebar, `/loop`, plan mode, desktop mode dropdown, Shift+Tab cycle.
 - Cowork: agent, Cowork tab in Claude Desktop, Customize -> Skills -> New -> Create with Claude, connected-folder model in place of CWD.
+- Codex: subagents, local working directory, `$skill-name` invocation, plan mode, and CLI or desktop session controls.
+- GitHub Copilot: subagents, local project, `/skill-name` invocation, Plan / Interactive / Autopilot modes, and CLI or app session controls.
+
+GitHub Copilot Memory must be disabled for the standard training run. The Module 1 and Module 2 empty-state design depends on the runtime carrying no learned repository or user preferences into the training directory.
 
 Cloud/remote features are out of scope for Agents 101 exercises. Remote tasks need a cloud source for the working directory, typically a cloud Git repo. Agents 101 uses a local training directory.
 
@@ -23,13 +33,13 @@ Participants receive:
 
 Never ask participants to clone Git.
 
-The default training directory is defined in `.claude/skills/self-study/SKILL.md`. Curriculum prose should refer to it generically as the training directory.
+The default training directory is `~/Documents/agents-101/`. Curriculum prose should refer to it generically as the training directory after prework establishes the path.
 
 ## Training Directory Shape
 
 ```
 <training-dir>/
-├── CLAUDE.md                      # NOT shipped; student creates in Module 2 Debrief
+├── <root-instructions>            # CLAUDE.md or AGENTS.md; student creates it in Module 2 Debrief
 ├── memory/                        # cross-module, Module 2 onward
 ├── agents/                        # cross-module, custom agent files
 ├── sources/                       # cross-module, raw company material
@@ -71,17 +81,17 @@ Use `return` at boundaries where the prior session is the load-bearing context (
 
 Inside a module, keep the same session running by default. Exercises in the same module may rely on short-term scrollback from the previous exercise, plus files written on disk.
 
-The durable handoff between modules is always file-based: `./CLAUDE.md`, `./challenge.md`, `memory/`, `sources/`, `agents/`, `judges/`, `outputs/`, and the relevant `module-N/` evidence. The session is disposable; the training directory compounds.
+The durable handoff between modules is always file-based: the root instructions file, `./challenge.md`, `memory/`, `sources/`, `agents/`, `judges/`, `outputs/`, and the relevant `module-N/` evidence. The session is disposable; the training directory compounds.
 
 ## Agents 101 Rule Files
 
-Module 1 starts with zero context on purpose. `module-1/` ships empty: no `CLAUDE.md`, no scaffolded material. Module 1 does not create a `CLAUDE.md`; doing so would install an always-loaded rule file before the student understands the scope. The exercise creates and sharpens `module-1/personal-brand-generation.md`, a portable generation-rules file for one task family. It stays scoped to Module 1.
+Module 1 starts with zero context on purpose. `module-1/` ships empty: no root instructions file, no scaffolded material. Module 1 does not create root instructions; doing so would install an always-loaded rule file before the student understands the scope. The exercise creates and sharpens `module-1/personal-brand-generation.md`, a portable generation-rules file for one task family. It stays scoped to Module 1.
 
-Module 2 starts with zero root rules. The training-directory root is empty of always-loaded rules when Module 2 begins: no `CLAUDE.md`, no READMEs in `memory/`, `sources/`, or `agents/`. Rules that matter for the exercise live in the pasted prompts. Module 2 Debrief creates the wider root `CLAUDE.md` from session evidence, with student pushback.
+Module 2 starts with zero root rules. The training-directory root is empty of always-loaded rules when Module 2 begins: no root instructions file, no READMEs in `memory/`, `sources/`, or `agents/`. Rules that matter for the exercise live in the pasted prompts. Module 2 Debrief creates the wider root instructions file from session evidence, with student pushback.
 
-Do not ship a prewritten root `CLAUDE.md`. It violates the "student writes their own rules" principle and causes agents to auto-execute behavior the student never authorized.
+Do not ship a prewritten root instructions file. It violates the "student writes their own rules" principle and causes agents to auto-execute behavior the student never authorized.
 
-The root `CLAUDE.md` grows through each later module's Debrief. Claude reviews the session, rewrites in place, integrates rather than appends, and reports what changed. The student pushes back.
+The root instructions file grows through each later module's Debrief. The agent reviews the session, rewrites in place, integrates rather than appends, and reports what changed. The student pushes back.
 
 ## Artifact Conventions
 
@@ -94,7 +104,7 @@ Use root-level homes when an artifact should travel forward and shape later agen
 - `agents/`
 - `sources/`
 - `outputs/`
-- root `CLAUDE.md`
+- root instructions file
 - `judges/` when introduced by Module 5
 
 Per-module working files live inside `module-N/`. The diagnostic is: should future sessions automatically live with this artifact, or deliberately reach back to it as evidence? If automatically, use the root or a root-level home. If deliberately, use `module-N/`.
@@ -113,7 +123,7 @@ Agents 101 installs all trainer-provided working material during prework. Do not
 
 The prework starter must be:
 - Installed once and idempotent. Extracting it twice produces the same tree.
-- Non-clobbering. Do not ship a `CLAUDE.md`, agent file, judge file, report, or other artifact the student is meant to create or compound.
+- Non-clobbering. Do not ship a root instructions file, agent file, judge file, report, or other artifact the student is meant to create or compound.
 - Reference material only. Module 4 can ship `module-4/policies/*.md` because those files are source material the student runs raw. Module 4 must not ship a prebuilt security skill.
 - Small. Include `prework/`, `agents-101-handbook.html` (the theory handbook: every lecture plus exercise summaries, opened from disk), and cross-module homes (`memory/`, `sources/`, `agents/`) because the student uses them early. Include module folders only when they contain shipped reference material, such as `module-4/policies/`. Optional self-study facilitation is distributed separately; it must not auto-load in the standard Builder experience.
 
@@ -131,6 +141,6 @@ Current Agents 101 stance:
 
 ## Local-Only Work
 
-Do not place the whole training directory inside OneDrive, Google Drive, Dropbox, or another synced folder. Claude writes files faster than sync daemons reconcile; conflict copies will happen.
+Do not place the whole training directory inside OneDrive, Google Drive, Dropbox, or another synced folder. Agents write files faster than sync daemons reconcile; conflict copies will happen.
 
 Module 8 deliberately uses a separate synced shared folder for live deliberation. Keep the blast radius small: the shared surface starts nearly empty, every participant writes only inside their own named subfolder, and only the central synthesizer agents write shared synthesis files at the root.

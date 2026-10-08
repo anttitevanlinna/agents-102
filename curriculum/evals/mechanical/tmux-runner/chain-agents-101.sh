@@ -23,7 +23,7 @@
 #
 # Usage: chain-agents-101.sh [--case nordveil|finnish-psychologist]
 #          [--from prework|m1|m2|m3|m4a|m4b|m5|m6|m7|m8] [--to ...]
-#          [--runtime cli|codex-cli] [--chain-dir DIR]
+#          [--runtime cli|codex-cli|copilot-cli] [--chain-dir DIR]
 #          [--no-arrange | --arrange] [--cwd DIR] [--material DIR]
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -50,8 +50,8 @@ while [[ $# -gt 0 ]]; do
 done
 a101_load_case "$HERE" "$case_name"
 case "$runtime" in
-  cli|codex-cli) ;;
-  *) echo "unknown Agents 101 runner runtime: $runtime (expected cli or codex-cli)" >&2; exit 2 ;;
+  cli|codex-cli|copilot-cli) ;;
+  *) echo "unknown Agents 101 runner runtime: $runtime (expected cli, codex-cli, or copilot-cli)" >&2; exit 2 ;;
 esac
 a101_case_supports_module "$to" || {
   echo "Agents 101 case '$A101_CASE' supports through $A101_MAX_MODULE, not $to" >&2

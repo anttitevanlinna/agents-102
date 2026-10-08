@@ -5,6 +5,9 @@ An agent can widen a list of opportunities, or of rough solutions, in minutes. C
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@2c731613 technical@2c731613 slides@2c731613)
+- judges @2c731613: writing PASS, technical PASS, slides PASS
+
 **STATUS:** rebuilt from the APT101 squint (2026-10-07), Day 2 § Widen before you choose. APT101 gap G:diverge-then-converge from `apt101-source-pack-2.md` §9. Not taught (simulation training). Owes judging rounds.
 
 **Named frameworks:** none. The widen-then-choose move stays; the double diamond is not named, because no Day 2 beat develops it beyond the name. If the Design Council's double diamond is ever named here: name no phase, quote "This is not a linear process" from the framework page, and keep the diagram's origin (the Council's 2003–04 codification of earlier divergence/convergence models) off the slide.

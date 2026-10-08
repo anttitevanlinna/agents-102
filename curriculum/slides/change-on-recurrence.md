@@ -11,8 +11,8 @@ After a bad night, the next one is usually better with no change at all, so a ru
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@facf4e50 technical@facf4e50 slides@facf4e50)
-- judges @facf4e50: writing PASS (1 finding see instances/shared--slide--change-on-recurrence.writing.json), technical PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@2c731613 technical@2c731613 slides@2c731613)
+- judges @2c731613: writing PASS (1 finding see instances/shared--slide--change-on-recurrence.writing.json), technical PASS, slides PASS
 
 **STATUS:** round 3 fixes applied (2026-10-06), APT101 rewrite of `the-gate-is-a-claim` § Change on recurrence, not on noise (AE101). Not taught (simulation training).
 

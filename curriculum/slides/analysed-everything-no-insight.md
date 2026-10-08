@@ -9,8 +9,8 @@ When agents analyse wider, deeper and faster than you can, analysis stops being 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@facf4e50 technical@facf4e50 slides@facf4e50)
-- judges @facf4e50: writing PASS, technical PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@2c731613 technical@2c731613 slides@2c731613)
+- judges @2c731613: writing PASS, technical PASS, slides PASS
 
 **STATUS:** first cut (2026-10-07), APT101 squint stance slide, Day 2 § Why it agreed. Sharpens the stance planted on Day 1 (*When agents analyse wider, deeper and faster, what is your insight?*) at the turn; the answer, real strategy work, belongs to Day 3's *Your insight is the strategy…* and is deliberately not given here. Posed as a question, no prediction. Lands on the trio's own digest: the headline they set beside their look-for line in `apt101-read-the-digest`. Not taught (simulation training). Owes judging rounds.
 

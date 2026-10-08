@@ -10,8 +10,8 @@
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@55670f8b)
-- judges @55670f8b: writing PASS
+**Quality:** compendium-audited 2026-10-08 (writing@55670f8b story@b5046ef7 technical@b5046ef7 pedagogy@b5046ef7 strategy@b5046ef7 slides@b5046ef7)
+- judges @b5046ef7: writing PASS, story PASS, technical PASS, behavior N/A, pedagogy PASS, strategy PASS, slides PASS
 
 - **Time:** 10 minutes.
 - **Learning:** team — each of the three brings a craft (the designer's prototype, the product owner's killing test, the team lead's working agreement).

@@ -12,8 +12,8 @@
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@55670f8b)
-- judges @55670f8b: writing PASS (1 finding see instances/agentic-product-teams-101--lecture--apt101-building-rationed-it.writing.json)
+**Quality:** compendium-audited 2026-10-08 (writing@55670f8b story@b5046ef7 technical@b5046ef7 pedagogy@b5046ef7 strategy@b5046ef7 slides@b5046ef7)
+- judges @b5046ef7: writing PASS (1 finding see instances/agentic-product-teams-101--lecture--apt101-building-rationed-it.writing.json), story PASS, technical PASS, behavior N/A, pedagogy PASS, strategy PASS, slides PASS
 
 - **Time:** 13 minutes.
 - **Learning:** team — the trio recognises the outcome craft it already knows, and that building cost, not naivety, shrank it to post-its

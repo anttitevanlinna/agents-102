@@ -9,6 +9,9 @@ His own caveat, three years later: a prescriptive "build this" bet may be the ri
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@b66aaf81 technical@b66aaf81 slides@b66aaf81)
+- judges @b66aaf81: writing PASS, technical PASS, slides PASS
+
 **STATUS:** squint build (2026-10-07), body opens on the turn; APT101 gap G:the-feature-factory from `apt101-source-pack-2.md` §3. Not taught (simulation training).
 
 **Fidelity guard:** say "November 2016" (platform 16 Nov, his blog 17 Nov) as the post's date; Cutler does not claim to have coined the term or say when he started using it. "Many", not "most": about half the twelve signs are post-ship; the opening paraphrases those signs, never all twelve. The agents-make-it-faster turn is Day 2's title (`apt101-squint.md`), so it stays off this Day 1 slide. Keep his caveat; the popular telling makes the term a pure insult.

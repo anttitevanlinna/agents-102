@@ -9,6 +9,9 @@ With agents, more of what your team builds will work; whether a customer needs i
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@b66aaf81 technical@b66aaf81 slides@b66aaf81)
+- judges @b66aaf81: writing PASS, technical PASS, slides PASS
+
 **STATUS:** squint build (2026-10-07), APT101 narrator slide, header and body from `apt101-squint.md` Day 1 (narrator title, essay wording lightly cut). The body is the essay paragraph verbatim, narrated rather than block-quoted, one byline, one bridge sentence. No employer, company or colleague named. Not taught (simulation training). Owes judging rounds.
 
 <!-- backing -->

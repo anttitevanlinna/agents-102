@@ -11,6 +11,9 @@ The floor keeps the work tied to its sources. The ceiling makes it worth reading
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@b66aaf81 technical@b66aaf81 slides@b66aaf81)
+- judges @b66aaf81: writing PASS (1 finding see instances/shared--slide--the-floor-and-the-ceiling.writing.json), technical PASS, slides PASS
+
 **STATUS:** composed from the squint (2026-10-07), APT101 rewrite for product people of Agents 101 `evals-as-steering` § Groundedness protects the floor and § Steering raises the ceiling, merged into one slide without the "eval" vocabulary. Second slide of `apt101-what-good-means`. Not taught (simulation training). Owes a judging round.
 
 <!-- backing -->

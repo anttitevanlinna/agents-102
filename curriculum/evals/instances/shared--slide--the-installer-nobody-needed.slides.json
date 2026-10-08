@@ -1,0 +1,194 @@
+{
+  "class": "slides",
+  "file": "curriculum/slides/the-installer-nobody-needed.md",
+  "training": "shared",
+  "verdict": "PASS",
+  "body_sha": "cb65f58a9d6b375990ed21e8021f0fbabcdce3db069a1437e6136623c36f912a",
+  "shape_hash": "33195ee8d0e38957",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "We built a tool that worked. It was used just a bit.",
+      "lines": "1-9"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "evidence": "L4: \"It got working and it was used just a bit.\" closest to violating; \"It\" resolves to \"a local installer\" in the previous sentence of the same chunk; \"it\" in \"(Lucky it did not take that long to build it.)\" likewise. L8 \"your team builds\" is self-contained.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "evidence": "No pointer to another file or slide by position; L4 \"One of the first things we tried building\" is narrator history, not a callback to a deck slide.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no \"the X you did/saw/caught\" reference in body",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no guess/reveal demo beat; narrated essay paragraph",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "evidence": "L1-L8: slide carries a self-contained claim in L8 \"more of what your team builds will work; whether a customer needs it is still decided before the build\" plus the narrated story in L4.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "evidence": "L1 \"We built a tool that worked. It was used just a bit.\" is borne out by L4 \"It got working and it was used just a bit\"; nothing contradicts it.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "evidence": "Closest: L8 \"more of what your team builds will work; whether a customer needs it is still decided before the build\" is one declarative with a semicolon, not a \"Not X. Not Y. Z.\" construction; no triple, no superlative, no number, no abstraction-noun stack, no verb triplet in the chunk.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "evidence": "Body vocabulary (installer, ecosystem, customer, build) is ordinary engineering/product register; no surface-as-noun, firing, compendium, beat, mood. grep banned_words CLEAN (0 hits).",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "evidence": "grep of body for ** returns 0 bold elements; only L6 byline italic title, which is a title not emphasis.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "evidence": "Slide file is included by line in curriculum/lectures/apt101-building-is-cheap.md (grep of the slide id), so it reaches the composed deck as a ## chunk.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/slides/the-installer-nobody-needed.md -> \"OK — 1 files, Phase/Step numbering consistent.\" exit 0",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/slides/the-installer-nobody-needed.md -> \"OK — 1 files, no page-geometry pointers across the slide cut.\" exit 0",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no links in body; rule is a review surface, never a gate",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/slides/the-installer-nobody-needed.md -> \"oversized: 0 ... every slide is within limits\" exit 0",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "evidence": "L1 \"We built a tool that worked. It was used just a bit.\" is a declarative claim, the lecture-heading grammar; the slide is a narrator beat in a lecture manifest, not an exercise.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "Closest: L8 bridge sentence; it adds the move the story owes (the lesson for the audience) and does not restate the L1 header, so not a (c) kicker; no doctrine restatement or design commentary in body.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "Maintainer note L12 records header and body built together on 2026-10-07 (\"header and body from apt101-squint.md Day 1\"); no inherited bullets from an older header; L4 and L8 both answer L1.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    }
+  ],
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "Single-## slide file, one chunk. Accept-notes in maintainer/backing blocks: L12 STATUS squint-build 2026-10-07; L22 essay source ATTESTED. Dated-line grep hit (1) is the byline date 2025-12-05 at L6, a source attribution."
+}

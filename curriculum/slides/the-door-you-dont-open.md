@@ -9,6 +9,9 @@ It will cost you a source somebody wanted in. Leaving it out is still the right 
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@b66aaf81 technical@b66aaf81 slides@b66aaf81)
+- judges @b66aaf81: writing PASS, technical PASS, slides PASS
+
 **STATUS:** APT101 rewrite (2026-10-07) of Agents 101 `door-you-dont-open` for the trio's Day 1 data moment, without the policy-lens and governance paragraph (maintainer 2026-10-07: governance is not taught; data in plain terms where the team decides what may go in). Not taught (simulation training). Owes a judging round.
 
 <!-- backing -->

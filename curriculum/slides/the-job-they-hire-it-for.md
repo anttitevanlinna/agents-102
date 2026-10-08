@@ -9,6 +9,9 @@ A feature list answers the wrong question. Name your customer's circumstance and
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@b66aaf81 technical@b66aaf81 slides@b66aaf81)
+- judges @b66aaf81: writing PASS, technical PASS, slides PASS
+
 **STATUS:** squint build (2026-10-07), header from `apt101-squint.md` Day 1; APT101 gap G:the-job-they-hire-it-for from `apt101-source-pack.md` §9. Not taught (simulation training).
 
 **Fidelity guard:** the definition is the 2016 article's wording ("in a given circumstance"), not the popular "particular circumstance" line. The milkshake is not in the 2016 article; it is the 2005 "Marketing Malpractice" piece, company disguised, so the body names no chain. A researcher made the 40% finding, not the seller. Nothing about what else the shake competed with beyond the commute is in the pack.

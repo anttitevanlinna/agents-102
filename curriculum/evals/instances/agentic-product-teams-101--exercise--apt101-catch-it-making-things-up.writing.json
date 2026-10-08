@@ -3,7 +3,7 @@
  "file": "curriculum/exercises/apt101-catch-it-making-things-up.md",
  "training": "agentic-product-teams-101",
  "verdict": "PASS",
- "body_sha": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+ "body_sha": "96969d17d5246d466804e2587240278feeeb73db74eaea60643bacde33dd5bca",
  "shape_hash": "e082db954b6c400e",
  "rules_evaluated": [
   {
@@ -11,7 +11,7 @@
    "rule_index": 1,
    "rule_lead": "Banned words — grep zero-tolerance.",
    "verdict": "PASS",
-   "evidence": "Harm = flinch words and the hook-bypassed em-dash reaching students; absent. Body lines 1-107: view greps em_dash, banned_words, leverage_verb all CLEAN (planted_proof true); awk-body grep -c '—' -> 0; grep -ciE 'landscape|importantly|substrate|paradigm' -> 0. The 15 em-dashes sit inside registry prompt fences (expanded view), outside body scope.",
+   "evidence": "Harm = banned register words reaching students; absent. Body view greps: banned_words 0, em_dash 0, leverage_verb 0 (all CLEAN, planted-proof); own grep '\\blandscape' on body.txt -> 0.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -21,7 +21,7 @@
    "rule_index": 2,
    "rule_lead": "Ritual / ceremony — hard ban",
    "verdict": "PASS",
-   "evidence": "Harm = ritual/ceremony register; absent. grep -ciE 'ritual|ceremony|practice' over body -> 0 (view ritual_ceremony CLEAN). Activity is called 'exercise'/'phase' (L21 'Phase 1: Plant the claims').",
+   "evidence": "Harm = ritual/ceremony naming the activity; absent. View grep ritual_ceremony -> 0; own grep '[Pp]ractice' on body.txt -> 0.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -31,7 +31,7 @@
    "rule_index": 3,
    "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
    "verdict": "PASS",
-   "evidence": "Harm = changelog in a block that should state present fact; absent. Body: dated_line, session_biography greps -> 0. Closest line: L115 'the beat sheet's trainer-built \"two hidden false claims per group\" is not used' is a negative-present sentence, but the beat sheet is a live source a later editor could re-apply, so the guard has a named pull and stays. L110 Quality line is the licensed dated-provenance form. No transition verbs (relocated/renamed/previously) in L110-131.",
+   "evidence": "Harm = changelog in a block that should state present fact; absent. Body greps session_biography 0, dated_line 0. Closest: L115 'the beat sheet's trainer-built \"two hidden false claims per group\" is not used' is a negative-present sentence, but the beat sheet is a live source a later editor could re-apply, so the guard has a named pull and stays. L110 Quality line is the licensed dated-provenance form; no transition verbs (relocated, renamed, previously) in L110-131.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -41,7 +41,787 @@
    "rule_index": 4,
    "rule_lead": "Register match.",
    "verdict": "PASS",
-   "evidence": "Harm = wrong register (coach, deck, poster); absent. Voice is peer-flat and concrete (Godin/Sutherland/Siilasmaa trio for the A101-spine training). Closest to violating: L88 'Under twenty lines, named for what it does, with a *Known limit:* line at the bottom.' is terse spec register, still a concrete tell. Grep '\\*\\*Remember|Hold onto|Keep in mind|Never forget' -> 0. Negation check: L7 'You don't hunt for them by hand' holds against L25-L56 where the student never hunts. No atmospheric imagery.",
+   "evidence": "Harm = wrong register (poster, consultancy, cold-tech). Voice contract = Agents 101 trio (APT101 audience is PO/PM/designer). Closest: L63 'Your main session stays blind, so it cannot quietly help the checks along' - peer-warm, concrete, a Sutherland-style reframe of why not to look; no retain-this wrapper (grep 'Remember|Hold onto|Keep in mind|Never forget' on body.txt -> 0), no atmospheric imagery, no we-refuse callout to contradict.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 6,
+   "rule_lead": "Credit original when paraphrasing named technique.",
+   "verdict": "REVISE",
+   "evidence": "3:'**Time:** 60 minutes. Phase 1 ~10, Phase 2 ~7, Phase 3 ~18, Phase 4 ~10, Phase 5 ~10, close ~5.' Sub-rule 'Timing location by surface' (Total ONLY). Harm present: the breakdown is a second copy of the per-phase italic markers at L23, L39, L60, L82, L94 and goes stale on the next phase edit; 'Phase 1' etc. are also ordinals. Sibling APT101 exercises carry the total only (sed -n 3p over curriculum/exercises/apt101-*.md). Creator-name and author-we greps -> 0.",
+   "na_reason": null,
+   "fix_hint": "Cut line 3 to the total: '**Time:** 60 minutes.' (the per-phase italic markers already carry the numbers; re-run calculate-time --check)",
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 7,
+   "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
+   "verdict": "PASS",
+   "evidence": "Harm = third-person student voice / delivery mechanics in body. View grep the_student -> 0. Closest: L9 'The team lead runs the benchmark on their laptop' is a trio role, not 'the student'; L64 'the team lead reads the four methods aloud' is the group beat's own move (workshop beat), not a trainer-delivery instruction.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 8,
+   "rule_lead": "Don't smuggle terms of art from maintainer into body.",
+   "verdict": "PASS",
+   "evidence": "Harm = maintainer term of art leaking unearned. Closest: L29/L33 'claim pool' - earned at L33 ('a pool of claims the checks can score') before L41 'the same claim pool'; 'scorer' earned at L62 ('A fifth agent checks every claim ... and measures each method'); 'Known limit' glossed at L88. 'adjudicat*', 'ensemble', 'detector' appear only inside registry fences. No term found only in the maintainer block.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 9,
+   "rule_lead": "Over-hedge detector.",
+   "verdict": "PASS",
+   "evidence": "Harm = reassurance sentences signalling defensiveness. grep 'no penalty|fine way|it.s OK|not a downgrade|not on the hook' on body.txt -> 0. Closest: raw L29 'It is enough for the checks to have work to do.' justifies the dose rather than absolving the reader; offered as a cut in suggestions (duplicates the fence).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 12,
+   "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
+   "verdict": "PASS",
+   "evidence": "Harm = a slogan overpromising with no boundary. Closest: L96 'The briefing was built to be caught. Your real summary was not.' is a factual contrast, and the next sentences give the move; no slogan needing a carve-out paragraph.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 13,
+   "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
+   "verdict": "PASS",
+   "evidence": "Harm = positioning posture imported into a teaching beat. grep 'vendor|not an aspirational|grounded in actual|not theoretical' on body.txt -> 0. Closest: L7 'Four ways of checking compete' - a method contest, not a defence of the training.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 14,
+   "rule_lead": "Watch out for planting jargon too early.",
+   "verdict": "PASS",
+   "evidence": "Harm = operational copy lifting vocabulary above the arc. Closest: L25 lead-in says 'a separate worker' and L15 'before any judge exists' - judge is earned in the Day 2 arc before this exercise and glossed again at L84; L70 lead-in 'explain the two columns' deliberately avoids precision/recall, which arrive in the fence and the scoreboard.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 15,
+   "rule_lead": "Audit closer when trimming body-prose forcing function.",
+   "verdict": "PASS",
+   "evidence": "Harm = a closer pronoun with two possible referents. Closest: L102 'tell your two teammates which line it was' - 'it' resolves to the flagged claim the fence ends on ('End with the one flagged claim most likely to have reached a decision unchecked'), the only line in play; L106 'Its Known limit line' - the judge file and the winning check are the same object.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 16,
+   "rule_lead": "The `**What happened:**` block is OPTIONAL — default is to omit it (Antti-directed 2026-08-12, mandation removed from `curriculum/exercises/README.md`).",
+   "verdict": "REVISE",
+   "evidence": "106:'It found something in a summary nobody planted anything in, and two of you know whether it caught the claim you would have bet on.' Harm present: failure mode (a), the recap asserts what the instructions do not guarantee. The maintainer note at L125 says 'Phase 5: the real summary comes back clean. That is a result, not a failure', so the sentence is false in the clean case; no accept-note covers it.",
+   "na_reason": null,
+   "fix_hint": "Make the recap true either way: say the judge ran on a summary nobody planted anything in (see suggestion).",
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 17,
+   "rule_lead": "No combative verbs about the agent in body prose.",
+   "verdict": "PASS",
+   "evidence": "Harm = talking down to the agent. grep 'bark|order|command|whip|force|drag|boss|scold|lecture' on body.txt -> 0. Closest: L43 'stop it, steer it narrower' - peer-flat steering verbs.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 18,
+   "rule_lead": "Headers must be literally true about the mechanism.",
+   "verdict": "PASS",
+   "evidence": "Harm = a header a precise reader could call false. Closest: L58 '## Phase 3: Let the scorer decide' - the scorer does produce the verdict the room then reads; L11 'While the benchmark runs: ready your real summary' is literally true (phases 1-3 run on the team lead's laptop while the other two work).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 19,
+   "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
+   "verdict": "PASS",
+   "evidence": "Harm = empty negation / deictic drumroll / label echo. Closest: L7 'You don't hunt for them by hand.' - the reader's actual prior is hunting by hand, so the negation is needed once; L102 '\"The agent got this wrong\" is the sentence.' names a concrete phrase, resolves its antecedent. No bold-label echo (L31 '**Don't open the briefing.** Your main session stays blind' does not restate its label).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 20,
+   "rule_lead": "Don't state a count the adjacent list already holds.",
+   "verdict": "REVISE",
+   "evidence": "43:'All four run at once.' and 56:'Don't read the four files as they land.' sit directly under/after the four-detector fence that lists the four methods and four output files, and under the header 'Run four checks'. Harm present: a second copy of a count the fence and header already hold; adding or dropping a detector silently falsifies both lines. Kept: header numeral, L7 'Four ways of checking' and L64 'the four methods' (memory handles reused away from the list), L106 'Four checks ran'.",
+   "na_reason": null,
+   "fix_hint": "Drop the numerals at L43 and L56 (see suggestions).",
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 21,
+   "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
+   "verdict": "PASS",
+   "evidence": "Harm = a false-as-stated superlative surviving as a slogan. Closest: L7 'a scorer measures which one caught what' and L62 'checks every claim' - scoped to the benchmark's own 30-claim pool, not a claim about how the world works; L63 'it cannot quietly help' is true by construction (blind main session).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 26,
+   "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
+   "verdict": "PASS",
+   "evidence": "Harm = a how-you'd-know clause pointing at a self-witnessing artifact. Closest: L90 'When the judge is right' - the test is L88's (under twenty lines, Known limit line naming one kind of claim let through), so it points at observable properties; L102 points at the outcome (did the judge catch the claim you bet on). Optional sharpening offered in suggestions.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 27,
+   "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
+   "verdict": "PASS",
+   "evidence": "Advisory rule (own text: 'Not a REVISE on its own'). Closest: raw L29 'It is enough for the checks to have work to do.' restates the fence's 'so the detectors have something to catch' (class b, restating an adjacent artifact); no superlative so rule 21 does not own it. Offered as a cut in suggestions.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 28,
+   "rule_lead": "Body prose stands without the trainer — no cue-card prose.",
+   "verdict": "PASS",
+   "evidence": "Harm = trainer-cue prose failing the muted read. Muted read of L41, L43, L64, L68: each sentence has a verb and a page-named subject (L41 'Each check is a different method...', L43 'All four run at once. If one starts reading...'). Closest: L64 'Face down until the scoreboard lands.' - elliptical but 'post-it' is named in the sentence before; grep 'before it runs' hits L64, where 'it' resolves to 'A fifth agent' in L62 (a noun on the page).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 1,
+   "rule_lead": "Aspirational destination, never corrective gap.",
+   "verdict": "PASS",
+   "evidence": "Harm = corrective gap / assumed ability tier. grep 'at your scale|for a beginner|more experienced|a senior' on body.txt -> 0. Closest: L68 'whoever missed says what they trusted instead' - names a normal miss, asks for what was trusted, not a deficiency.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 2,
+   "rule_lead": "Earn every technical term on first use.",
+   "verdict": "PASS",
+   "evidence": "Harm = cold technical word stopping the reader. Closest: 'scorer' earned at L62 before L64/L66 use it; 'judge' glossed at L84; 'subagent' (L41, rt-code span) pairs with 'agent' for Cowork and is working vocabulary in the training's earlier exercises; precision/recall arrive in the fence and L70 'explain the two columns'. grep 'M[0-9]|Module [0-9]' on body.txt -> 0.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 3,
+   "rule_lead": "Business-audience word ban (Agents 101 default).",
+   "verdict": "PASS",
+   "evidence": "Harm = SVP-flinch word. Closest: 'subagent' L41 (code-runtime span only; Cowork reads 'agent'). Banned-list words in jargon-ban.md checked against body.txt: embeddings/vector/RAG/retrieval/pipeline/orchestration/schema/architecture/token/context window -> 0 hits ('retrievals' in L9 is ordinary-English plural of the Day 1 retrieval step).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 4,
+   "rule_lead": "Memory vs context — use deliberately.",
+   "verdict": "PASS",
+   "evidence": "Harm = memory/context blur. Closest: L9 'Your three memories were curated from the same retrievals' - memory used as the persistent artefact; the word 'context' does not appear in body.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 5,
+   "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
+   "verdict": "PASS",
+   "evidence": "Harm = FAQ clutter in the golden path, or a deleted needed rescue. Closest: L43 'If one starts reading far beyond the evidence, stop it, steer it narrower' - plausible failure (a detector wandering) plus a non-obvious rescue, so it stays in body per the boundary clause; no below-fence routing needed.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 6,
+   "rule_lead": "Trust Claude's defaults for structure.",
+   "verdict": "PASS",
+   "evidence": "Harm = over-specified shape. Closest: the scoreboard column list in the scorer fence - a scoring format, the case the rule allows when the teaching moment depends on it (the column names are what L70 explains).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 8,
+   "rule_lead": "Don't smuggle another module's voice.",
+   "verdict": "PASS",
+   "evidence": "Harm = another module's mood imported. Closest: L63-64 and L68 (blind session, post-its face down) are the benchmark's own suspense, consistent with the Agents 101 M5 source this reuses; no joyful-creation register.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 9,
+   "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
+   "verdict": "PASS",
+   "evidence": "Harm = error-catching handed to the student by hand; absent. Closest: L15 'Read it where you know the material best ... say which claim you would bet is unsupported before any judge exists' - the student's bet is the measured human prior, checked by the judge at L98 ('Ask Claude to run the judge'), not a substitute for it. Addressees named: L64 post-it, L68 the trio, L102 'tell your two teammates'. L88 gives object (the judge file) and tell ('describe one kind of claim this judge will let through'). No attitude adverbs (grep 'carefully|closely|thoroughly' -> 0).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 11,
+   "rule_lead": "No \"What research says\" callout boxes",
+   "verdict": "PASS",
+   "evidence": "grep -i 'what research says' on body.txt -> 0.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 12,
+   "rule_lead": "Student moves stay in conversation with agent.",
+   "verdict": "PASS",
+   "evidence": "Harm = student made a mechanic outside the conversation; absent in substance. Closest: L90 'the team lead copies `judges/groundedness-judge.md` and `module-5/`' leaves the mechanism open while the next sentence says 'ask Claude to copy', implying a hand copy for the lead. One file and one folder, not the forcing function (the benchmark in chat). Rule question for the maintainer, not filed: whether the lead's copy should also route through Claude; the technical class owns whether the copy works.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 14,
+   "rule_lead": "No em-dashes. Simple sentences.",
+   "verdict": "PASS",
+   "evidence": "Harm = sub-clause em-dashes slowing the read. Body view grep em_dash -> 0 (CLEAN, planted-proof). Registry fences carry em-dashes (awk over expanded.md fences, grep -c '—' -> 15) but fenced prompt text is outside the writing body scope. Rule question for the maintainer: whether the shared hallucination-bakeoff prompts owe the same ban.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 17,
+   "rule_lead": "Section headers use command verbs when section is about doing something.",
+   "verdict": "PASS",
+   "evidence": "Harm = a doing-section headed by a noun phrase, or Claude as a header actor. Headers: 'Plant the claims', 'Run four checks', 'Let the scorer decide', 'Keep the winner', 'Run it on something real', 'Take stock' - all student verbs; closest 'Let the scorer decide' keeps the student as the verb's actor and names the agent role, not the product.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 18,
+   "rule_lead": "Inline links use target's title, never filename.",
+   "verdict": "REVISE",
+   "evidence": "13:'*Designer and product owner, while phases 1 to 3 run*'; 15:'Pick the summary you will check in phase 5'; 19:'when the scoreboard lands in phase 3'; 64:'from the phase 2 files'. Harm present: ordinals are coordinates; inserting or splitting a phase silently repoints four references and the reader counts to resolve them. Module abbreviations and counts of real things are exempt; these are neither.",
+   "na_reason": null,
+   "fix_hint": "Refer by what the section is (the end, the scoreboard, the check files) or drop the reference; see suggestions.",
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 20,
+   "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
+   "verdict": "PASS",
+   "evidence": "Harm = a curriculum word colliding with a Claude Code primitive on first authored use. Closest: L9 'memories' - not authored in this exercise (curated on Day 1); 'skill'/'rule'/'plan' do not appear in body.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 21,
+   "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
+   "verdict": "PASS",
+   "evidence": "Harm = assistant-shaped framing in agent-shaped curriculum. Body 'Claude' occurs as addressee ('Ask Claude to ...' at L15, L25, L33, L70, L74, L84, L98) and once as actor (L7); 'agent' carries the autonomous work (L62 'A fifth agent checks', L102 'The agent got this wrong'). Closest: L7 'Claude writes a briefing' - active stance, offered as a swap in suggestions; not an audit-signal ratio.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": "21b",
+   "rule_lead": "Session / task / run split (all trainings).",
+   "verdict": "PASS",
+   "evidence": "Harm = noun-run for an agent sitting. grep -nE '\\brun\\b' on body.txt: L9/L41/L43/L98 are verb uses ('runs the benchmark', 'run in its own', 'All four run at once', 'run the judge'); no noun-run; L9 uses the session/task fork spans.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 22,
+   "rule_lead": "No time-of-day anchors in body prose.",
+   "verdict": "PASS",
+   "evidence": "Harm = pinning a module to a time-of-day or gap; absent in substance. Only hit: L15 'the overnight digest' (grep -nE 'tomorrow|overnight|this morning|tonight|yesterday|last night' on body.txt -> 1). It is the fixed name of a Day 1 artefact used across sibling exercises, not a claim about when this exercise runs. Rule question for the maintainer: whether an artefact name containing a time word is exempt.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 23,
+   "rule_lead": "Reflection beats stay invisible in flow.",
+   "verdict": "PASS",
+   "evidence": "Harm = announcing that reflection is happening. grep 'sit with|let it land|take a moment|pause and reflect|Step back|Meta-moment' on body.txt -> 0. Closest: L104 '## Take stock' - the closing label across the training's exercises (10 exercise files carry the header per grep -l '^## Take stock'), over a statement recap rather than a reflection prompt.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 24,
+   "rule_lead": "No meta-ask when student has already decided.",
+   "verdict": "PASS",
+   "evidence": "Harm = meta-loop asking the student for what they already decided. Closest: the surprise prompt (L74-76) asks which scoreboard row surprised them - a fresh observation on the live scoreboard, not a restatement of a decision or of the agent's proposal; L15 asks for the bet before any judge exists.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 25,
+   "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
+   "verdict": "PASS",
+   "evidence": "grep '\\.txt|\\.docx|\\.html' on body.txt -> 0; every saved artefact in the expanded fences is .md.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 26,
+   "rule_lead": "Cut NVA: true but not moving student forward.",
+   "verdict": "PASS",
+   "evidence": "Harm = true-but-useless clauses. Closest: L9 'Your three memories were curated from the same retrievals, so one benchmark speaks for all three' tells the designer and product owner why they do not run their own benchmark, which changes what they do. Raw L29's second sentence is the one near-NVA clause (offered as a cut in suggestions); the L106 recap is carried under check_writing 16.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 27,
+   "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
+   "verdict": "PASS",
+   "evidence": "Harm = 'read it' narrating what the student already does after a chat print. grep -iE 'read it|look at it|study the|notice the' on body.txt -> 1 hit, L15 'Read it where you know the material best' - the student's own source summary before any chat print exists, so not dead weight after a print. Closest after a print: L88 'Open `judges/groundedness-judge.md`. Under twenty lines...' - names object and tell, a check not a read.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 28,
+   "rule_lead": "Forward-callout closer: student as grammatical subject.",
+   "verdict": "PASS",
+   "evidence": "Harm = training or a coach imperative as the forward subject. Closest: L19 'Then join the team lead's screen when the scoreboard lands' - student as subject; L106 closes on 'Its Known limit line says what it still won't see' - an artefact as subject of a present-tense fact, no forward gesture at the training or other roles.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 30,
+   "rule_lead": "Echo the training's theory spine before inventing a synonym.",
+   "verdict": "PASS",
+   "evidence": "Harm = a neutral synonym replacing the house frame. Closest: L7 'Four ways of checking' and L25 'checks' use the training's own word for verification (checks); L102 uses the training's norm phrase 'The agent got this wrong'.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 31,
+   "rule_lead": "Name the artifact, not the act.",
+   "verdict": "PASS",
+   "evidence": "Harm = student cast as key-presser. Closest: L43 'then say *\"continue\"*' - say + a quoted utterance is the training's established prompt trigger per the 2026-09-03 widening, though 'continue' is the filler case the rule names. Restored on purpose by the maintainer (commit dd242fd9, 'fan-out steer restored'). Rule question, not filed; a prompt-noun swap is offered in suggestions.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 32,
+   "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
+   "verdict": "PASS",
+   "evidence": "Harm = walking professionals through trivial mechanics. No install, login or setting recipes in body; L90 names the copy outcome only.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 33,
+   "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
+   "verdict": "PASS",
+   "evidence": "Harm = the training describing its own arc. grep -nE 'later module|next module|Day [0-9]|the training' on body.txt -> 0. Closest: L9 subject is the student's memories and benchmark; L106 subject is the student's checks and file.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 36,
+   "rule_lead": "Trust the prompt over the scaffold.",
+   "verdict": "PASS",
+   "evidence": "Harm = a scaffold the student should have produced. Every artefact (roster, briefing, claim pool, detectors, judge) is produced by the student's own prompts; the only seeded paths are the Day 1 trees named in the fences.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 38,
+   "rule_lead": "Exercise headers pass the build-squint test.",
+   "verdict": "PASS",
+   "evidence": "Squint on headers alone: 'Catch it making things up / While the benchmark runs: ready your real summary / Plant the claims / Run four checks / Let the scorer decide / Keep the winner / Run it on something real / Take stock' recovers: plant fabrications, race four checks, keep the winner, try it on a real summary. H1 names the failure-hunt rather than the kept judge file, but the headers recover the build at 'Keep the winner'; a title rename is a separate pass.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 39,
+   "rule_lead": "Self-study is invisible in the training flow.",
+   "verdict": "PASS",
+   "evidence": "grep -iE 'self-study|Teacher Claude' on body.txt -> 0.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 1,
+   "rule_lead": "No placeholders inside fences.",
+   "verdict": "PASS",
+   "evidence": "Harm = student must edit the prompt before pasting. Closest: 'team/<my-name>/' in the two apt101-d2 fences (markers L17, L100) is the training's path template that Claude resolves, not a slot the student edits; the only slot is the deliberate open-hook 'The summary:' (fix d). Rule question: Day 1 prompts add 'Ask my first name if you don't know it' at first use and these two rely on it.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 2,
+   "rule_lead": "Every prompt block: one-sentence action lead-in.",
+   "verdict": "REVISE",
+   "evidence": "66:{{prompt:hallucination-bakeoff-5}} is preceded by L64 'Face down until the scoreboard lands.' - a hold instruction, not a command-verb lead-in. The semantic summary (L62 'A fifth agent checks every claim ...') sits two paragraphs up, declarative, with the post-it step between. Harm present: the skim-cue is separated from a 30-line fence and the student reaches it with no instruction to run it. Phase 2 fences are not filed: L41 is a one-paragraph summary of the fence directly under the header. Other lead-ins open on 'Ask Claude to' (L25, L33, L70, L74, L84, L98).",
+   "na_reason": null,
+   "fix_hint": "Add a command-verb lead-in immediately before the scorer marker (see suggestion).",
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 3,
+   "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+   "verdict": "PASS",
+   "evidence": "Harm = chrome the renderer owns. Every prompt is a {{prompt:key}} marker on its own line preceded by a blank line (L17, L27, L35, L47, L52, L66, L72, L76, L86, L100); label and destination chip come from the registry; both rt forks keep '*(Claude Code)*' per rule 10.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 5,
+   "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+   "verdict": "PASS",
+   "evidence": "Harm = filename drift across chained prompts. Chain is by deterministic path: briefing.md -> claim-pool.md -> detectors/*.md -> scoreboard.md -> judges/groundedness-judge.md -> judge-run.md, each fence naming the path the prior one saved (e.g. 'Open `module-5/briefing.md`').",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 6,
+   "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+   "verdict": "PASS",
+   "evidence": "Harm = a prompt pre-doing or deferring the next prompt's job. Closest: the detector fence's 'The scorer uses strict substring match; paraphrased findings count as misses' leaks the scorer, but the output format is load-bearing for the contest and the maintainer Watch-fors name it. Planter fence 'so the detectors have something to catch' is the instrument's dose, also pedagogically load-bearing.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 7,
+   "rule_lead": "No session-resets mid-phase.",
+   "verdict": "PASS",
+   "evidence": "Harm = a reset breaking scrollback-dependent phases. grep -E '/clear|new session|fresh session' on the expanded fences -> 0; isolation uses subagents.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 9,
+   "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
+   "verdict": "PASS",
+   "evidence": "Harm = literal asterisks in the pasted prompt. awk over expanded.md fence lines, grep -c '\\*' -> 0.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 10,
+   "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+   "verdict": "PASS",
+   "evidence": "Harm = runtime forks drifting beyond mechanics. L45-54 paired rt-code/rt-cowork divs with the shared '*(Claude Code)*' chip; the two fences differ only in 'subagent'/'agent' (expanded.md lines 98 vs 119).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 11,
+   "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+   "verdict": "PASS",
+   "evidence": "Harm = a Cowork fork thinner than the Code fork. The two detector fences are the same length; no Cowork-specific mechanics are removed.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 13,
+   "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+   "verdict": "PASS",
+   "evidence": "Harm = format-only citations. Closest: the judge-run fence asks to 'quote the sentence from the source that supports it exactly, with its file path, or write \"not found\"' and the scorer fence 'Quote the evidence line or file that supports the label' - sentence-level integrity check present.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 17,
+   "rule_lead": "Preamble before action — design around it.",
+   "verdict": "PASS",
+   "evidence": "Advisory everywhere (2026-09-08). No plan-mode fence in this file (grep 'permission-mode: plan' -> 0).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 18,
+   "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no prompt asks Claude to interrogate its own work",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 20,
+   "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+   "verdict": "PASS",
+   "evidence": "Advisory (narrowed 2026-09-03): never gates. Closest: the judge-writing fence (L86) assembles an artefact downstream beats read and closes without a grill line; no run showed a downstream re-run caused by a save-time gap, so no finding.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 23,
+   "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+   "verdict": "PASS",
+   "evidence": "Harm = naked filenames piling at the root. Every Save/Write names a subpath: 'team/<my-name>/real-summary.md', 'module-5/evidence-roster.md', 'module-5/scoreboard.md', 'judges/groundedness-judge.md', 'team/<my-name>/judge-run.md'; one inline case 'Save the scoreboard to module-5/scoreboard.md' is unquoted but still a subpath.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 24,
+   "rule_lead": "Don't restate session CWD inside prompt body.",
+   "verdict": "PASS",
+   "evidence": "Harm = a second source of truth for the working directory. grep -E '/Users|cd |~/' on the expanded fences -> 0.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 25,
+   "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+   "verdict": "PASS",
+   "evidence": "Harm = a subagent unexplained. Closest: the planter fence spawns a subagent; raw L31 'Your main session stays blind, so it cannot quietly help the checks along' explains why, after the fence. The detector fence's why is L41 ('Each check is a different method ... run in its own subagent').",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 27,
+   "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+   "verdict": "PASS",
+   "evidence": "Harm = (c)-only writes bloating disk. Every Save has a named downstream reader: real-summary.md is read by the judge-run prompt ('The summary and its sources are in team/<my-name>/real-summary.md'); briefing, claim-pool and detector files by the later prompts; scoreboard by the judge-writing prompt; judge-run.md lands in the team folder the trio shares and L102 sends teammates to its flagged line.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 28,
+   "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
+   "verdict": "PASS",
+   "evidence": "Harm = custom labels breaking decoratePrompts. Prompts enter only through registry markers (rule 31), so the label is generated as '**Prompt** *(dest)*'; grep '\\*\\*Prompt:' on body.txt -> 0.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 29,
+   "rule_lead": "Normal work request before orchestration.",
+   "verdict": "PASS",
+   "evidence": "Harm = orchestration bloat on a normal work request. The planter and detector fences are the benchmark protocol, which IS the lesson (the maintainer role line names the contest); the real-summary and judge-run fences ask a normal work request first.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 31,
+   "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+   "verdict": "PASS",
+   "evidence": "Harm = prompt text drifting from its registry. Every prompt is a {{prompt:key}} marker on its own line; no inline '**Prompt**' block in body.txt (grep -c '^\\*\\*Prompt\\*\\*' -> 0).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 32,
+   "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+   "verdict": "PASS",
+   "evidence": "Module names in prompt prose are legitimate grounding: 'module-5/' paths throughout; no curriculum event label.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 34,
+   "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+   "verdict": "PASS",
+   "evidence": "Harm = binding logic only in a body callout the agent never sees. Closest: the strict-substring quoting rule and the 'ask me for the summary file' fallback live inside the fences; body L63 mirrors why for the student only.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 36,
+   "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+   "verdict": "PASS",
+   "evidence": "Harm = wide single-paragraph prompt. The planter, detector, scorer and judge-run fences split by move into short paragraphs or lists; longest unit is the judge-writing fence's four-item list, which scans by move. The condensed real-summary fence's first paragraph carries two moves in three short sentences.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 38,
+   "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+   "verdict": "REVISE",
+   "evidence": "25: lead-in 'Ask Claude to pick a bounded set of evidence, write an overreaching briefing in a separate worker, and save both' vs fence opening 'Spawn one subagent to create the benchmark target.' (hallucination-bakeoff-1); 15: lead-in 'ask Claude to get it ready' vs fence opening 'I'll name a research summary below'. Neither shares verb or noun phrase with its fence. Other pairs rhyme: L70/explain-the-two-columns, L74/the usual way-the classic way, L84/save-the-winning-method-as-a-judge vs 'Rewrite it as a portable judge prompt', L98/run-the-judge vs 'Run judges/groundedness-judge.md'. No 38a/38b carve-out applies. Harm present: reads as two drafts.",
+   "na_reason": null,
+   "fix_hint": "Align the L15 and L25 lead-ins to the opening clause of their fences (see suggestions).",
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 40,
+   "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+   "verdict": "PASS",
+   "evidence": "Harm = a cold prompt missing context or a warm one carrying clutter. Detector subagent fences carry their own paths (cold); L70/L74 prompts run warm in the scoreboard session and back-reference module-5/scoreboard.md; the judge-run fence reads files, so it works after the other two readied theirs in a separate session.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 43,
+   "rule_lead": "Long-running prompts stream progress — never go silent.",
+   "verdict": "PASS",
+   "evidence": "Harm = a long run going silent. Closest: the four-detector run (couple of minutes) - body L43 hands the student the narrowing move in-beat ('stop it, steer it narrower, then say \"continue\"'), which the dose clause says discharges the tail in body.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 44,
+   "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "editor-time rule; no prompt edit in the pinned diff",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 45,
+   "rule_lead": "Prompt paths match Builder scope.",
+   "verdict": "PASS",
+   "evidence": "Harm = wrong-scope paths. APT101 Builder sits at the training root: 'module-5/...' single-segment per-module, bare 'judges/', 'team/', 'memory/', 'sources/', './crux.md'; no '../'.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 46,
+   "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+   "verdict": "PASS",
+   "evidence": "Harm = padded output-shape specs. Closest: the judge-writing fence's 'a short heading, one paragraph ..., then the prompt itself' and the scorer's table columns are shapes the teaching moment depends on (under-twenty-lines tell at L88; the columns L70 explains).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 48,
+   "rule_lead": "Vary closings deliberately.",
+   "verdict": "PASS",
+   "evidence": "Harm = every exercise ending the same way. Closings here: post-its then room compare (L64-68), one-sentence surprise round (L74), Claude-as-judge on a real summary then a pair share (L98-102) - varied mechanics.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 49,
+   "rule_lead": "A take-home prompt asks for one bounded build.",
+   "verdict": "PASS",
+   "evidence": "Harm = a take-home prompt asking for a kit. The kept artefact is one judge file; the judge-writing fence asks for one deliverable with a length cap and a Known-limit line.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -53,48 +833,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "not an article rough-cut",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 6,
-   "rule_lead": "Credit original when paraphrasing named technique.",
-   "verdict": "REVISE",
-   "evidence": "3:**Time:** 60 minutes. Phase 1 ~10, Phase 2 ~7, Phase 3 ~18, Phase 4 ~10, Phase 5 ~10, close ~5. (creator-name grep \\bAntti\\b|the creator|the author -> 0; author-we grep -> 0; so only the timing sub-rule fires.) Harm present: the breakdown is a second copy of the per-phase italic markers at L23, L39, L60, L82, L94, and goes stale on the next phase edit; the rule's amended form is Total ONLY on line 3.",
-   "na_reason": null,
-   "fix_hint": "Cut line 3 to the total: **Time:** 60 minutes. (re-run calculate-time --check after; per-phase markers already carry the numbers)",
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 7,
-   "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
-   "verdict": "PASS",
-   "evidence": "Harm = third-person/teacher voice leaking into student body; absent. grep -c 'the student' body -> 0 (view the_student CLEAN). Closest: L64 'the team lead reads the four methods aloud' is a student role in the trio, not a trainer delivery cue; no 'the trainer shows' or 'before students start' strings.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 8,
-   "rule_lead": "Don't smuggle terms of art from maintainer into body.",
-   "verdict": "PASS",
-   "evidence": "Harm = maintainer-only vocabulary reaching students cold; absent. Closest: L56 'The scorer reads them' uses 'scorer' before the L58 header, but L7 already earns it ('a scorer measures which one caught what'); 'judge' is earned at L84 ('a short judge you can run on any summary'). 'Known limit' is defined at L88. No grill-me/substrate/three-pattern strings.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 9,
-   "rule_lead": "Over-hedge detector.",
-   "verdict": "PASS",
-   "evidence": "Harm = reassurance telling a senior engineer an alternative is OK; absent. grep -iE 'no penalty|fine way|it.s OK|not a downgrade|on the hook|sometimes humans|consolation' -> 0. Closest: L29 'Claude cannot hit that number exactly. It is enough for the checks to have work to do.' states the tolerance the student needs so a 7% briefing is not re-planted; it informs, it does not absolve.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_writing.md",
@@ -103,8 +845,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no user-given verbal frame captured as a reference artefact",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_writing.md",
@@ -113,108 +857,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no practitioner named in student-facing body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 12,
-   "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
-   "verdict": "PASS",
-   "evidence": "Harm = softened slogan or unbounded slogan; absent. Closest: L102 '\"The agent got this wrong\" is the sentence.' is a norm line, not an overreaching slogan, and its boundary is the preceding clause 'which line it was, and whether the judge caught the claim you bet on'.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 13,
-   "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
-   "verdict": "PASS",
-   "evidence": "Harm = positioning posture imported into a teaching beat; absent. grep -ic 'vendor' body -> 0; flag phrases ('not theoretical', 'grounded in actual', 'real practitioners', 'from the person running it') -> 0.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 14,
-   "rule_lead": "Watch out for planting jargon too early.",
-   "verdict": "PASS",
-   "evidence": "Harm = vocabulary above the arc's current level in operational copy; absent. Closest: L15 'before any judge exists' uses judge ahead of its L84 gloss, but the module intro earns 'judge' before this exercise opens. L70 lead-in 'explain the two columns' deliberately avoids precision/recall, which arrive only in the fence and scoreboard.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 15,
-   "rule_lead": "Audit closer when trimming body-prose forcing function.",
-   "verdict": "PASS",
-   "evidence": "Harm = dangling pronoun or spatial metaphor at a closer; absent. Closest: L43 'If one starts reading far beyond it' where 'it' = the evidence named one sentence earlier; resolvable without a hunt. Section closers L56, L78, L102, L106 all anchor to concrete nouns.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 16,
-   "rule_lead": "The `",
-   "verdict": "REVISE",
-   "evidence": "106:'It found something in a summary nobody planted anything in, and two of you know whether it caught the claim you would have bet on.' Harm present: failure mode (a), the recap asserts what the instructions do not guarantee. The file's own maintainer note L125 says 'Phase 5: the real summary comes back clean. That is a result, not a failure', so the sentence is false in the clean case.",
-   "na_reason": null,
-   "fix_hint": "Drop the 'It found something' clause or make the recap true either way (keep the destination and the Known limit line).",
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 17,
-   "rule_lead": "No combative verbs about the agent in body prose.",
-   "verdict": "PASS",
-   "evidence": "Harm = talking down to the agent; absent. grep -iE '\\b(bark|order|command|whip|force|drag|boss|shout|snap|lecture|scold)\\b' body -> 0. Closest: L43 'stop it, steer narrower' are steering verbs for an interrupted subagent. 'force the pick' sits inside the P5 fence, outside body.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 18,
-   "rule_lead": "Headers must be literally true about the mechanism.",
-   "verdict": "PASS",
-   "evidence": "Harm = header a precise reader could call false; absent. Closest: L58 '## Phase 3: Let the scorer decide' - the scorer prompt forces a single winner (fence: 'name ONE winner'), so the header is literally true; L37 '## Phase 2: Run four checks' matches the four-detector fence.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 19,
-   "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
-   "verdict": "PASS",
-   "evidence": "Harm = rigour-shaped filler; absent. Closest: L96 'The briefing was built to be caught. Your real summary was not.' - the negation is against the student's live prior (a real summary is trusted), and is not repeated. L31 '**Don't open the briefing.**' is a bold lead followed by its reason, not an echo.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 20,
-   "rule_lead": "Don't state a count the adjacent list already holds.",
-   "verdict": "REVISE",
-   "evidence": "41:'Four checks, four methods, the same claim pool, each in its own subagent' directly under 'Phase 2: Run four checks' and above the four-detector fence; 43:'Four of them fanning out at once'; 56:'Don't read the four files as they land.' Harm present: the numeral is a second copy of a count the header and the fence list already carry. Kept: L64 'the four methods' (reused away from the list, memory-handle carve-out) and the header numeral.",
-   "na_reason": null,
-   "fix_hint": "Drop the numerals at L41, L43, L56 (the header and the fence carry the four).",
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 21,
-   "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
-   "verdict": "PASS",
-   "evidence": "Harm = a world-claim with a counterexample; absent. grep -nE '\\b(only|always|never|nothing else|the one thing)\\b' body -> 0. Closest comparative: L64 'which one will catch the most' is a prediction prompt, not an assertion.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_writing.md",
@@ -223,8 +869,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no backing block or source ids in this file",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_writing.md",
@@ -233,8 +881,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "multi-file sweep process rule, not a body property",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_writing.md",
@@ -243,8 +893,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "audience-doc architecture rule, not a body property",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_writing.md",
@@ -253,98 +905,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "file is student-facing, not a built trainer page",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 26,
-   "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
-   "verdict": "PASS",
-   "evidence": "Harm = self-witnessing instrument; absent in substance. Closest: L90 'When the judge is right' leaves 'right' implicit, but the preceding L88 gives the observable test (under twenty lines, Known limit that names one kind of claim it lets through) and L102 ends on the outcome (whether the judge caught the bet). Suggestion filed, not owed.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 27,
-   "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
-   "verdict": "PASS",
-   "evidence": "Advisory rule (own text: 'Not a REVISE on its own'). Closest: L41 restates what the P3 fence says ('Each detector is a subagent with a different method'), a (b) restating-adjacent-artifact shape; carried by the L41/L43 cue-card finding under rule 28, so no second row here. Check against rule 21: no superlative on that sentence.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 28,
-   "rule_lead": "Body prose stands without the trainer — no cue-card prose.",
-   "verdict": "REVISE",
-   "evidence": "41:'Four checks, four methods, the same claim pool, each in its own subagent, each writing to its own file.' (verbless noun stack, no verbed sentence naming the set before it) and 43:'Four of them fanning out at once over the evidence.' (no finite verb). Muted read fails: neither sentence says what is true or what to do; they cue a speaker. Harm present: the deck read cold gets a set list. Not carved out: the fragment carve-out needs a verbed sentence naming the set first, and L39 is a timing marker. Also L64 'Face down until the scoreboard lands.' is elliptical but resolves to 'post-it' in the sentence before; left.",
-   "na_reason": null,
-   "fix_hint": "Give L41/L43 a verb and drop the count (see suggestion).",
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 1,
-   "rule_lead": "Aspirational destination, never corrective gap.",
-   "verdict": "PASS",
-   "evidence": "Harm = corrective-gap or tier-pegging framing; absent. grep -ciE 'at your scale|beginner|senior|already think|you.re missing|the difference is whether' body -> 0. Closest: L102 '\"The agent got this wrong\" is the sentence.' sets a norm rather than a verdict on the reader. No pre-prompt readiness gate in body.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 2,
-   "rule_lead": "Earn every technical term on first use.",
-   "verdict": "PASS",
-   "evidence": "Harm = cold technical word stopping the reader; absent. Closest: 'scorer' L7 earns it before L56/L58 use it; 'judge' L15 is glossed at L84; 'subagent' (L41, rt-code span) pairs with 'agent' for Cowork and is a working term in the training's earlier exercises (apt101-grow-the-tree, apt101-paint-the-product-box). Bare MN abbreviations: grep -E '\\bM[0-9]\\b|Module [0-9]' -> 0.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 3,
-   "rule_lead": "Business-audience word ban (Agents 101 default).",
-   "verdict": "PASS",
-   "evidence": "Harm = SVP-flinch word; absent. Closest: 'subagent' L41 (code-runtime span only; Cowork reads 'agent'). 'precision'/'recall'/'entailment'/'triangulation' never appear in body prose, only in fences and the scoreboard Claude explains at L70.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 4,
-   "rule_lead": "Memory vs context — use deliberately.",
-   "verdict": "PASS",
-   "evidence": "Harm = blurring persistent memory with ambient context; absent. L9 'Your three memories were curated from the same retrievals' uses memory for the persistent artifact; grep -c 'context' body -> 0.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 5,
-   "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
-   "verdict": "PASS",
-   "evidence": "Harm = pre-emptive FAQ in body; absent. Closest: L43 'If one starts reading far beyond it, stop it, steer narrower, then say \"continue\"' is a recovery branch, but the failure is plausible (four parallel subagents reading widely) and the rescue is non-obvious, so it stays in body per the rule's boundary. L131 **View summary:** ships and reads clean.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 6,
-   "rule_lead": "Trust Claude's defaults for structure.",
-   "verdict": "PASS",
-   "evidence": "Harm = over-specified prompt shape; absent. Closest: P5 scoreboard table spec (expanded view) is a scoring format the teaching moment depends on; P8 file shape is bounded by the L88 check the student makes.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_student_facing.md",
@@ -353,28 +917,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no Debrief or retro interview in this exercise",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 8,
-   "rule_lead": "Don't smuggle another module's voice.",
-   "verdict": "PASS",
-   "evidence": "Harm = another module's mood or voice imported; absent. Steady, task-first register throughout; M-references 0; no joy/unease framing from other modules.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 9,
-   "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
-   "verdict": "PASS",
-   "evidence": "Harm = error-catching handed to the student by hand; absent. Closest: L15 'Read it where you know the material best' is the student placing a bet BEFORE the judge exists, the measured human prior, while the checking is delegated (L98 'Ask Claude to run the judge'). Addressees: L64 post-it, L68 'says what they saw that the others didn't', L102 'tell your two teammates' all name whom. L88 gives object and tell. L90 'When the judge is right' is applicable via L88's test. No attitude adverbs (carefully/closely).",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_student_facing.md",
@@ -383,28 +929,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no simulation persona content",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 11,
-   "rule_lead": "No \"What research says\" callout boxes",
-   "verdict": "PASS",
-   "evidence": "grep -ic 'research says' body -> 0.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 12,
-   "rule_lead": "Student moves stay in conversation with agent.",
-   "verdict": "PASS",
-   "evidence": "Harm = student made a mechanic outside the conversation; absent in substance. Closest: L90 'the team lead copies `judges/groundedness-judge.md` and `module-5/`' leaves the mechanism open, while the next sentence says 'ask Claude to copy', which implies by contrast a hand copy. A one-file/one-folder copy, not the forcing function (the forcing function is the benchmark in chat); noted in notes, no card.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_student_facing.md",
@@ -413,138 +941,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no CLAUDE.md mentioned in body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 14,
-   "rule_lead": "No em-dashes. Simple sentences.",
-   "verdict": "PASS",
-   "evidence": "awk-body grep -c '—' -> 0 (view em_dash CLEAN). Simple sentences: closest is L15 first sentence (~40 words) but it is one colon-list of three options, not nested clauses.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 17,
-   "rule_lead": "Section headers use command verbs when section is about doing something.",
-   "verdict": "PASS",
-   "evidence": "Harm = headers that seat Claude as actor or name a topic when the student acts; absent. L11 'While the benchmark runs: ready your real summary' (student owns 'ready'; agent only in an embedded clause, allowed); L58 'Let the scorer decide' (the agent is 'the scorer', not the product name Claude). Other headers: Plant / Run / Keep / Run / Take stock - all verb-led.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 18,
-   "rule_lead": "Inline links use target's title, never filename.",
-   "verdict": "REVISE",
-   "evidence": "13:'*Designer and product owner, while phases 1 to 3 run*'; 15:'Pick the summary you will check in phase 5'; 19:'when the scoreboard lands in phase 3'; 64:'from the phase 2 files'. Harm present: ordinals are coordinates; adding or splitting a phase repoints four references silently and the reader counts to resolve them. Module abbreviations and counts-of-things are exempt; these are neither.",
-   "na_reason": null,
-   "fix_hint": "Refer by what the section is (the end, the scoreboard, the check files) or drop the reference; see suggestions.",
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 20,
-   "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
-   "verdict": "PASS",
-   "evidence": "Part 1 (first student-authored write of a contested word): no memory/skill/rule file is authored in this exercise. Part 2 deictics: grep -nE '\\b(here|above|below)\\b' body -> 0.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 21,
-   "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
-   "verdict": "PASS",
-   "evidence": "Harm = chatbot-shaped framing of an agent curriculum; absent. Body counts: 'Claude' used only as addressee/product ('Ask Claude to ...' L25, L33, L70, L74, L84, L98); 'agent' where autonomous ('A fifth agent checks every claim' L62, L102). Closest: L29 'Claude cannot hit that number exactly' is the writer-of-the-briefing acting, but it is a capability statement about the product.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": "21b",
-   "rule_lead": "Session / task / run split (all trainings).",
-   "verdict": "PASS",
-   "evidence": "Harm = session/task/run conflation; absent. L9 'session'/'task' fork spans match the runtime vocabulary; grep for noun 'run': only verb uses (L9, L13, L64, L84, L98) and the filename judge-run.md.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 22,
-   "rule_lead": "No time-of-day anchors in body prose.",
-   "verdict": "PASS",
-   "evidence": "Harm = pinning a module to an overnight gap; absent in substance. Only hit: L15 'the overnight digest' (grep -nE 'tomorrow|overnight|this morning|tonight|yesterday|last night' -> 1 hit). It is the fixed name of a Day 1 artifact used across the sibling exercises (apt101-read-the-digest, apt101-send-it-off, apt101-keep-and-run-tonight), not a claim about when this module runs. Raised as a rule question in notes.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 23,
-   "rule_lead": "Reflection beats stay invisible in flow.",
-   "verdict": "PASS",
-   "evidence": "Harm = announcing reflection. grep for wellness prefixes ('sit with', 'let it land', 'take a moment', 'pause and reflect', 'Step back', 'Meta-moment') -> 0. Closest: L104 '## Take stock', which is the house closing label across the training's exercises (seven of the sibling exercise files end on 'Take stock...') over a statement recap, not a reflection prompt.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 24,
-   "rule_lead": "No meta-ask when student has already decided.",
-   "verdict": "PASS",
-   "evidence": "Harm = asking the student to restate what they already decided. Closest: P7 (hallucination-bakeoff-7, marker L76) asks which scoreboard row surprised them - a new judgement formed after the scoreboard, not a prior decision; P-ready (marker L17) has the student state the bet once.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 25,
-   "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
-   "verdict": "PASS",
-   "evidence": "Every saved artifact is .md: grep of expanded fences for 'Save .* to' paths -> all .md (module-5/*.md, judges/groundedness-judge.md, team/<my-name>/*.md).",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 26,
-   "rule_lead": "Cut NVA: true but not moving student forward.",
-   "verdict": "PASS",
-   "evidence": "Harm = true-but-useless clauses. Closest: L9 'Your three memories were curated from the same retrievals, so one benchmark speaks for all three' - it tells the designer and product owner why they do not run their own benchmark, which changes what they do. L106 (recap) is carried under check_writing 16.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 27,
-   "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
-   "verdict": "PASS",
-   "evidence": "grep -nE 'Read it|Look at it|Study the|Notice the' body -> 1 hit L15 'Read it where you know the material best'; not after a chat-print (the summary is the student's own file read before Claude runs anything), so the dead-weight shape does not apply.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 28,
-   "rule_lead": "Forward-callout closer: student as grammatical subject.",
-   "verdict": "PASS",
-   "evidence": "Harm = salesy or coach-register forward callout. Closest closer: L106 last sentence 'Its *Known limit* line says what it still won't see.' - subject is the student's own artifact line, no training-as-subject, no watch-for imperative, no role-gating.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_student_facing.md",
@@ -553,48 +953,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no per-module operational setting stated",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 30,
-   "rule_lead": "Echo the training's theory spine before inventing a synonym.",
-   "verdict": "PASS",
-   "evidence": "Harm = invented synonym beside earned frames. Closest: L25 'a separate worker' is inherited verbatim from the Agents 101 bake-off (hallucination-bakeoff.md:29), and L31 explains why ('Your main session stays blind'); 'worker' is not in curriculum/vocabulary.md. Left; no spine word replaces it cleanly in a Cowork-neutral lead-in.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 31,
-   "rule_lead": "Name the artifact, not the act.",
-   "verdict": "PASS",
-   "evidence": "Harm = student cast as key-presser. Closest: L43 'then say *\"continue\"*' - say + a quoted utterance is the training's established prompt trigger per the 2026-09-03 widening, though 'continue' is the filler case the rule names. Marginal; restored on purpose by the maintainer (commit dd242fd9 'fan-out steer restored'). Raised as a rule question in notes, not filed.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 32,
-   "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
-   "verdict": "PASS",
-   "evidence": "Harm = walking professionals through trivial mechanics; absent. No install/login recipes; L90 names the copy outcome only.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 33,
-   "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
-   "verdict": "PASS",
-   "evidence": "Harm = the training describing its own arc. grep -nE 'later module|next module|Day [0-9]|the training' body -> 0. Closest: L9 subject is the student's memories and benchmark; L106 subject is the student's checks and file.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_student_facing.md",
@@ -603,8 +965,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "Agents 101 M7 sharing-strategies taxonomy; not on this surface",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_student_facing.md",
@@ -613,18 +977,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "Agents 101 M2+ Debrief shape; this is an exercise without a Debrief",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 36,
-   "rule_lead": "Trust the prompt over the scaffold.",
-   "verdict": "PASS",
-   "evidence": "Harm = scaffold where the student should write. The judge file, roster, briefing, claim pool and scoreboard are all produced by prompts (fences L25-L88); nothing is unzipped.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_student_facing.md",
@@ -633,58 +989,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "mood scoring belongs to the story/strategy classes; no doubt-module verification conflict visible in body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 38,
-   "rule_lead": "Exercise headers pass the build-squint test.",
-   "verdict": "PASS",
-   "evidence": "Squint test on headers alone: 'Catch it making things up / While the benchmark runs: ready your real summary / Plant the claims / Run four checks / Let the scorer decide / Keep the winner / Run it on something real / Take stock' reconstructs: plant fabrications, race four checks, keep the winner and try it on a real summary. H1 names the failure-hunt rather than the kept judge file, but the headers recover the build at Phase 4 ('Keep the winner'); a title rename is a separate pass.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 39,
-   "rule_lead": "Self-study is invisible in the training flow.",
-   "verdict": "PASS",
-   "evidence": "grep -ciE 'self-study|Teacher Claude' body -> 0 (view signals).",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 1,
-   "rule_lead": "No placeholders inside fences.",
-   "verdict": "PASS",
-   "evidence": "Harm = student must edit the prompt before pasting. Closest: `team/<my-name>/` appears in the two APT101 d2 fences (markers L17, L100). It is the training's path template that Claude resolves, not a slot the student edits, and Day 1 handles first use explicitly (apt101-d1-bet-hypothesis.md:20 'Ask my first name if you don't know it'). The only slot is the deliberate open-hook ending 'The summary:' (fix d). Raised as a rule question in notes.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 2,
-   "rule_lead": "Every prompt block: one-sentence action lead-in.",
-   "verdict": "REVISE",
-   "evidence": "66:{{prompt:hallucination-bakeoff-5}} is preceded by L64 'Face down until the scoreboard lands.' - a hold instruction, not a command-verb summary of the fence. The semantic summary (a fifth agent checks every claim and measures each method) sits at L62, two paragraphs up and declarative. Harm present: the skim-cue is separated from a 30-line fence. Other lead-ins pass (L15 20 words at the ceiling for a short fence; L25 long fence earns the fuller lead; L33, L70, L74, L84, L98 each open on 'Ask Claude to'); Phase 2 fences (L45-L54) are discharged by the command-verb header per 2c.",
-   "na_reason": null,
-   "fix_hint": "Add a command-verb lead-in immediately before the scorer marker (see suggestion).",
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 3,
-   "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
-   "verdict": "PASS",
-   "evidence": "Expanded view: all 10 fences are '**Prompt** *(Claude Code)*', blank line, fence; grep -c '{{prompt:' in source -> 10 and fences in the expanded view -> 10. No 'copy ->' prefix, no '(end of prompt)'.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_prompts.md",
@@ -693,38 +1001,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no installed Skill invoked; judges/groundedness-judge.md is a prompt file the student wrote",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 5,
-   "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
-   "verdict": "PASS",
-   "evidence": "Harm = filename drift on a chain. Closest: P2 (marker L35) opens 'Open `module-5/briefing.md`' - deterministic path, no 'file you just created' anchor, but P1 ends by confirming that exact path exists (L58 expanded). P-judge names `team/<my-name>/real-summary.md` that the d2-ready prompt wrote.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 6,
-   "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
-   "verdict": "PASS",
-   "evidence": "Harm = downstream awareness collapsing the teaching contrast. Closest: P1 tells the subagent 'so the detectors have something to catch' - load-bearing, because the planted fabrication IS the design. P2 'so later detector findings can be matched back' fixes the excerpt format.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 7,
-   "rule_lead": "No session-resets mid-phase.",
-   "verdict": "PASS",
-   "evidence": "grep -nE '/clear|new session|new conversation|fresh session' over the expanded fences -> 0.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_prompts.md",
@@ -733,38 +1013,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "detectors are four different methods, not N samples of one method",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 9,
-   "rule_lead": "Markdown shout (`",
-   "verdict": "PASS",
-   "evidence": "Expanded fences: grep -c '\\*' inside the 10 fences -> 0 (checked with a fence-aware script; bullets, numbers and backticks only).",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 10,
-   "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
-   "verdict": "PASS",
-   "evidence": "P3/P4 at L45-L54 are paired <div class=\"rt-code\"> / <div class=\"rt-cowork\">; both keep '**Prompt** *(Claude Code)*'; the forks differ only in 'subagent' vs 'agent' (diffed in the expanded view).",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 11,
-   "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
-   "verdict": "PASS",
-   "evidence": "Harm = Cowork fork thinner than Code fork. The Cowork fork (expanded view) is the same length and content as the Code fork, with no install, multi-session or walk-away cliff in this beat.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_prompts.md",
@@ -773,18 +1025,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no regeneration with a new context source",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 13,
-   "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
-   "verdict": "PASS",
-   "evidence": "Harm = citation cargo-cult. P-judge fence: 'quote the sentence from the source that supports it exactly, with its file path, or write \"not found\"' is the sentence-level integrity check (b); P4/Detector 3 does the same for citations.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_prompts.md",
@@ -793,8 +1037,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no regeneration with stance edge to preserve",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_prompts.md",
@@ -803,8 +1049,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt walks the student through a question sequence; P7 asks one question and waits",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_prompts.md",
@@ -813,28 +1061,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no regeneration prompt; every prompt creates its file",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 17,
-   "rule_lead": "Preamble before action — design around it.",
-   "verdict": "PASS",
-   "evidence": "Advisory everywhere (rule's own text); no plan-mode fence in this file and no run evidence of preamble eating the read.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 18,
-   "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
-   "verdict": "PASS",
-   "evidence": "grep -iE '\\b(defend|justify|prove|argue)\\b' over the expanded fences -> 0; the scorer and judge prompts ask Claude to find and label, not to defend.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_prompts.md",
@@ -843,18 +1073,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no walk-away send-off prompt",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 20,
-   "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
-   "verdict": "PASS",
-   "evidence": "Narrowed rule (never gates, needs a named run showing a downstream re-run); no such evidence for P8, the one artefact-assembling prompt.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_prompts.md",
@@ -863,8 +1085,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt with external side effects",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_prompts.md",
@@ -873,38 +1097,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "process rule for prompt-body edits; this judge makes none",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 23,
-   "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
-   "verdict": "PASS",
-   "evidence": "Every save names a directory path: module-5/evidence-roster.md, module-5/briefing.md, module-5/claim-pool.md, module-5/detectors/*.md, module-5/adjudicated-claims.md, module-5/scoreboard.md (P5 L169 expanded writes the path unquoted but still a subpath), judges/groundedness-judge.md, team/<my-name>/*.md. No naked filename.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 24,
-   "rule_lead": "Don't restate session CWD inside prompt body.",
-   "verdict": "PASS",
-   "evidence": "grep -nE '/Users|^cd |~/' over the expanded fences -> 0; all paths are session-relative.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 25,
-   "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
-   "verdict": "PASS",
-   "evidence": "Harm = subagent unexplained. Closest: P1 spawns a subagent; L31 'Your main session stays blind, so it cannot quietly help the checks along' explains why, after the fence. P3 setup at L41 says 'each in its own subagent, each writing to its own file', which makes the parallel isolation obvious.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_prompts.md",
@@ -913,38 +1109,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "process rule for maintainer cards; this judge applies none",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 27,
-   "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
-   "verdict": "PASS",
-   "evidence": "Harm = (c)-only writes on disk. Every Save has a named reader: real-summary.md read by apt101-d2-judge-a-real-summary; judge-run.md read by apt101-d2-team-rules (prompt frontmatter note); briefing/claim-pool/detectors read by later prompts; judge read by the Day 3 beat.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 28,
-   "rule_lead": "Strong-bold prompt label is exactly `",
-   "verdict": "PASS",
-   "evidence": "Expanded view labels are exactly '**Prompt**' for all 10 registry-sourced fences.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 29,
-   "rule_lead": "Normal work request before orchestration.",
-   "verdict": "PASS",
-   "evidence": "Harm = orchestration bloat on the first ask. P-judge (marker L100) starts 'Run judges/groundedness-judge.md on my real summary, against its sources.' - a natural work request with the ask-me fallback only for the missing-file case; P-ready (marker L17) opens as a plain request plus the deliberate open-hook.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_prompts.md",
@@ -953,28 +1121,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "process rule for live-test corrections",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 31,
-   "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
-   "verdict": "PASS",
-   "evidence": "grep -c '{{prompt:' source -> 10; every prompt is a registry marker, none inline.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 32,
-   "rule_lead": "Module names in prompt prose are fine — they ground the session.",
-   "verdict": "PASS",
-   "evidence": "Module numbers appear only as path prefixes (module-3/stances/, module-5/...), which is grounding in the session's own tree, not leakage.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_prompts.md",
@@ -983,18 +1133,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no git-output greps",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 34,
-   "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
-   "verdict": "PASS",
-   "evidence": "Harm = binding logic left in body. Closest: P-judge carries the missing-file fallback inside the fence ('If not, ask me for the summary file'), so the prompt executes alone.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_prompts.md",
@@ -1003,18 +1145,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no multi-turn dialog that can rewrite an artifact file",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 36,
-   "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
-   "verdict": "PASS",
-   "evidence": "Harm = wide single-paragraph prompt. P1, P3 detectors, P5 and P-judge split by move into short paragraphs or lists (expanded view); P8's four-item numbered list then one paragraph then one line is the longest unit and scans by move.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_prompts.md",
@@ -1023,18 +1157,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no save-the-rule prompt",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 38,
-   "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
-   "verdict": "REVISE",
-   "evidence": "25 lead-in 'Ask Claude to pick a bounded set of evidence, write an overreaching briefing in a separate worker, and save both' vs fence opening 'Spawn one subagent to create the benchmark target.' (hallucination-bakeoff-1); 15 lead-in 'ask Claude to get it ready' vs fence opening 'I'll name a research summary below'. Neither shares verb or noun phrase with its fence. Other pairs rhyme: L70/P6 (explain... my rows/my run), L74/P7 (the usual way / the classic way), L84/P8 (save the winning method as a judge / Rewrite it as a portable judge prompt), L98/P-judge (run the judge on it, sources / Run judges/groundedness-judge.md ... against its sources). No 38a/38b carve-out applies (no surprise lesson, no pre-paste guard).",
-   "na_reason": null,
-   "fix_hint": "Align the L15 and L25 lead-ins to the opening clause of their fences, or the fence opening to the lead-in.",
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_prompts.md",
@@ -1043,18 +1169,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt's behavior depends on a permission mode",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 40,
-   "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
-   "verdict": "PASS",
-   "evidence": "Harm = prompt assuming scrollback it lacks. Closest: P7 (marker L76) ends 'before we move to saving the judge', a curriculum step the agent has not been told; the clause also orients the student reading the fence and the agent behaves the same without it, so by the two-reader test it is not inert to both readers. All other referents are file paths or in-session artifacts (the scoreboard, the winning detector).",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_prompts.md",
@@ -1063,8 +1181,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no ask-and-wait tail grafted onto an artifact prompt",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_prompts.md",
@@ -1073,48 +1193,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "student-pasted prompts; the no-AUQ guard belongs to the headless harness",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 43,
-   "rule_lead": "Long-running prompts stream progress — never go silent.",
-   "verdict": "PASS",
-   "evidence": "Harm = silent long run. Dose: the four-detector run is framed as a 7-minute phase with an in-body interrupt-and-steer (L43), which discharges the tail per the rule's dose clause; P1 is a single subagent.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 44,
-   "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
-   "verdict": "PASS",
-   "evidence": "Harm = tidying a load-bearing line. Closest: P5 'Do not return \"all four are useful\" - force the pick' and P1 'Do not hedge' are forcing functions that stay.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 45,
-   "rule_lead": "Prompt paths match Builder scope.",
-   "verdict": "PASS",
-   "evidence": "Paths are single-segment module-N/ for per-module artifacts, bare for cross-module (memory/, sources/, ./crux.md, judges/), team/<my-name>/ for the team folder; no ../ and no deeper module nesting.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 46,
-   "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
-   "verdict": "PASS",
-   "evidence": "Harm = over-specified shape. Closest: P5 scoreboard table and P8 'short heading, one paragraph, then the prompt itself, under 20 lines' - shape the teaching moment depends on (the L88 check). P-ready uses an open-hook rather than a slot.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_prompts.md",
@@ -1123,28 +1205,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no add-X-and-regenerate prompt",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 48,
-   "rule_lead": "Vary closings deliberately.",
-   "verdict": "PASS",
-   "evidence": "Closings vary: scorer then post-it reveal (L68), Claude-as-critic (L70-L76), judge run then pair share with teammates (L102).",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 49,
-   "rule_lead": "A take-home prompt asks for one bounded build.",
-   "verdict": "PASS",
-   "evidence": "Harm = wide take-home. P8 builds ONE judge and its Known limit; the judge it produces is then run on one summary at L98.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1153,8 +1217,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "buyer-facing copy only; this is a student exercise",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1163,8 +1229,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "buyer-facing copy only; this is a student exercise",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1173,8 +1241,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "buyer-facing copy only; this is a student exercise",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1183,8 +1253,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "buyer-facing copy only; this is a student exercise",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1193,8 +1265,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "buyer-facing copy only; this is a student exercise",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1203,8 +1277,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "buyer-facing copy only; this is a student exercise",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1213,8 +1289,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "buyer-facing copy only; this is a student exercise",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1223,8 +1301,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "buyer-facing copy only; this is a student exercise",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1233,8 +1313,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "buyer-facing copy only; this is a student exercise",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1243,8 +1325,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "buyer-facing copy only; this is a student exercise",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1253,8 +1337,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "buyer-facing copy only; this is a student exercise",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1263,8 +1349,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "buyer-facing copy only; this is a student exercise",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1273,8 +1361,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "buyer-facing copy only; this is a student exercise",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_strategy_tie_in.md",
@@ -1283,8 +1373,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "mood contract is judged by the story/strategy classes",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_strategy_tie_in.md",
@@ -1293,8 +1385,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "unease mood not at issue; judged by strategy class",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_strategy_tie_in.md",
@@ -1303,8 +1397,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "governs Big Idea/Key Concepts/What You'll Learn; exercise has none",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_strategy_tie_in.md",
@@ -1313,8 +1409,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "module sequencing claims are judged by the strategy class",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_strategy_tie_in.md",
@@ -1323,8 +1421,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "exercise has no Key Concepts section",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_strategy_tie_in.md",
@@ -1333,8 +1433,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "exercise has no Key Concepts section",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_strategy_tie_in.md",
@@ -1343,8 +1445,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "exercise has no What You'll Learn section",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   },
   {
    "compendium": "check_strategy_tie_in.md",
@@ -1353,28 +1457,36 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "governs the strategy doc, not an exercise",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "0de3bf09d4027a4fe0833ec65c1dbeeb0477bc9c106d2564112725df5018d772",
+   "carried_shape": "e082db954b6c400e"
   }
  ],
  "suggestions": [
   {
-   "rule": "check_writing.md §28",
-   "line": 41,
-   "now": "Four checks, four methods, the same claim pool, each in its own <span class=\"rt-code\">subagent</span><span class=\"rt-cowork\">agent</span>, each writing to its own file.",
-   "proposed": "Each check is a different method on the same claim pool, run in its own <span class=\"rt-code\">subagent</span><span class=\"rt-cowork\">agent</span> and writing to its own file."
+   "rule": "check_writing.md §6",
+   "line": 3,
+   "now": "**Time:** 60 minutes. Phase 1 ~10, Phase 2 ~7, Phase 3 ~18, Phase 4 ~10, Phase 5 ~10, close ~5.",
+   "proposed": "**Time:** 60 minutes."
   },
   {
-   "rule": "check_writing.md §28",
+   "rule": "check_writing.md §16",
+   "line": 106,
+   "now": "It found something in a summary nobody planted anything in, and two of you know whether it caught the claim you would have bet on.",
+   "proposed": "It ran on a summary nobody planted anything in, and two of you know whether it caught the claim you would have bet on."
+  },
+  {
+   "rule": "check_writing.md §20",
    "line": 43,
-   "now": "Four of them fanning out at once over the evidence. If one starts reading far beyond it, stop it, steer narrower, then say *\"continue\"*.",
-   "proposed": "All run at once. If one starts reading far beyond the evidence, stop it, steer it narrower, then say *\"continue\"*."
+   "now": "All four run at once.",
+   "proposed": "They all run at once."
   },
   {
-   "rule": "check_writing.md §26",
-   "line": 90,
-   "now": "When the judge is right, the team lead copies",
-   "proposed": "When the file passes those checks, the team lead copies"
+   "rule": "check_writing.md §20",
+   "line": 56,
+   "now": "Don't read the four files as they land.",
+   "proposed": "Don't read the files as they land."
   },
   {
    "rule": "check_student_facing.md §18",
@@ -1405,9 +1517,45 @@
    "line": 64,
    "now": "Face down until the scoreboard lands.",
    "proposed": "Face down until the scoreboard lands. Then ask Claude to run the scorer."
+  },
+  {
+   "rule": "check_prompts.md §38",
+   "line": 25,
+   "now": "Ask Claude to pick a bounded set of evidence, write an overreaching briefing in a separate worker, and save both without showing you the briefing.",
+   "proposed": "Ask Claude to spawn one subagent that picks a bounded set of evidence, writes an overreaching briefing, and saves both without showing you the briefing."
+  },
+  {
+   "rule": "check_prompts.md §38",
+   "line": 15,
+   "now": "Then ask Claude to get it ready, and say which claim you would bet is unsupported before any judge exists.",
+   "proposed": "Then ask Claude to write down where that summary and its sources live, and say which claim you would bet is unsupported before any judge exists."
+  },
+  {
+   "rule": "check_student_facing.md §31",
+   "line": 43,
+   "now": "stop it, steer it narrower, then say *\"continue\"*.",
+   "proposed": "stop it, steer it narrower; a *\"continue\"*-prompt resumes it."
+  },
+  {
+   "rule": "check_student_facing.md §21",
+   "line": 7,
+   "now": "Claude writes a briefing on your outcome from your own evidence, with made-up claims planted in it.",
+   "proposed": "The agent writes a briefing on your outcome from your own evidence, with made-up claims planted in it."
+  },
+  {
+   "rule": "check_writing.md §27",
+   "line": 29,
+   "now": "Aim for roughly one claim in ten made up or stretched. It is enough for the checks to have work to do.",
+   "proposed": "Aim for roughly one claim in ten made up or stretched."
+  },
+  {
+   "rule": "check_writing.md §26",
+   "line": 90,
+   "now": "When the judge is right, the team lead copies",
+   "proposed": "When the file passes those checks, the team lead copies"
   }
  ],
  "blocking_findings_count": 0,
- "nonblocking_findings_count": 7,
- "notes": "Brief built (135 rules, nothing parked, so every row is mine). MAINTAINER_CUT=108, no body fences, body region 1-107; prompt-fence rules judged on the expanded registry prompts, line numbers cited against raw source (marker lines for fences). Em-dashes (15) exist only inside registry prompt fences, out of body scope. Rule questions for the maintainer, not filed: (1) check_student_facing 22 vs 'the overnight digest' (L15), a fixed Day 1 artifact name used by sibling exercises; the rule would need to say whether artifact names containing a time word are exempt. (2) check_student_facing 31 vs 'then say \"continue\"' (L43): the 2026-09-03 widening permits say + quoted utterance but names 'continue' as filler; restored deliberately in dd242fd9. (3) check_prompts 1 vs the team/<my-name>/ path template in the two d2 fences: Day 1 prompts add 'Ask my first name if you don't know it' at first use, d2 relies on it being known. (4) check_student_facing 12 / 9 at L90: team lead 'copies' vs others 'ask Claude to copy'. The judges-owned technical class owns whether the other two can copy from the team lead's laptop. check_student_facing 37 and check_strategy_tie_in rows are N/A here because mood and sequencing belong to story/strategy."
+ "nonblocking_findings_count": 6,
+ "notes": "Pin d78a1108, diff-region. Diff since pin (git diff d78a1108..HEAD): L29 drops 'Claude cannot hit that number exactly', L41 and L43 rewritten with verbs (the prior cue-card finding is resolved), Quality line restamped. Pre-existing lines re-read in full: six non-blocking REVISE rows remain (writing 6, 16, 20; student_facing 18; prompts 2, 38), none blocking, so top-level PASS. Prompt-fence rules judged on the expanded registry prompts, citations against raw source (marker lines for fences). Rule questions for the maintainer, not filed: (1) student_facing 22 vs 'the overnight digest' (L15), a fixed Day 1 artefact name; (2) student_facing 31 vs 'then say \"continue\"' (L43), restored on purpose in dd242fd9; (3) prompts 1 vs the team/<my-name>/ template in the two d2 fences; (4) student_facing 12 vs L90 where the lead 'copies' and the others 'ask Claude to copy'; (5) student_facing 14 vs 15 em-dashes inside the shared hallucination-bakeoff fences. Brief assembled normally (82 rules kept, 53 parked); maintainer block carries no accept-notes beyond the Quality line."
 }

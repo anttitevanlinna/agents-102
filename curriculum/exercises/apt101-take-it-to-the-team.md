@@ -14,7 +14,7 @@ So you start from their job, not from what you built. This is the Jobs-to-be-Don
 
 *5 min*
 
-Open `team/five-users.md` at the call you made. The product owner writes two post-its at the head of the *Way of working* frame on your team's Miro board: persevere, pivot or stop, and the one sentence you now believe, held or changed. Everything below them answers to those two.
+Open `team/five-users.md` at the call you made. The product owner writes two post-its at the head of the *Way of working* frame on your team's Miro board: persevere, pivot or stop, and the one sentence you now believe, held or changed. Everything else in the frame answers to those two.
 
 Then three columns: what the agents do, what stays with people, where the old way still wins. The team lead starts from the draft made on Day 2; the designer and the product owner add what the five users showed you. One post-it per thing, no discussion yet.
 

@@ -12,7 +12,7 @@ Everyone reads `team/chosen-bet.md` first. All three pieces serve that one bet.
 
 *35 min*
 
-Each of you on your own laptop, in your own track below.
+Each of you on your own laptop, in your own track, one of the three that follow.
 
 ## Designer: build a prototype that answers one question
 
@@ -59,7 +59,7 @@ Then one round, piece by piece. The other two point at the part of it that only 
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-10-08 (writing@9d3527f2 technical@d747a00d behavior@0ac6010f pedagogy@761a20a3 strategy@2a492ac7)
-- judges @2a492ac7: writing PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-make-your-piece.writing.json), technical PASS, behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-make-your-piece.pedagogy.json), strategy PASS
+- judges @ccbff4e7: writing PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-make-your-piece.writing.json), technical PASS, behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-make-your-piece.pedagogy.json), strategy PASS, slides REVISE (1/0 see instances/agentic-product-teams-101--exercise--apt101-make-your-piece.slides.json)
 
 **Role in Day 2:** beat 8, protected. The creativity beat: each role makes a first piece of the chosen bet in its own craft, answering the room's private question of what each of us is for. Placed after the lecture *Each of you makes something*, whose slides set each role's frame (Houde and Hill's prototype questions, the test card, the working agreement). Its last slide (*Imagine it already failed*) carries into beat 9.
 

@@ -34,7 +34,7 @@ Push back if Claude rewrites your line into something smoother. The line is your
 
 *25 min*
 
-Back to your own laptop. First one run by hand, so you see what the fixed judge does on fresh work. The prompts call this hand run Phase 0, the calibration.
+Back to your own laptop. First one run by hand, so you see what the fixed judge does on fresh work. The prompts call this hand run the calibration, step zero.
 
 Ask Claude to write a fresh digest on the outcome you picked on Day 2 in `./crux.md`, and score it with your judge.
 

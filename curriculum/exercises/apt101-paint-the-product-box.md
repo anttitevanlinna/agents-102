@@ -51,17 +51,17 @@ Open the page. It works. It reads like a box. It is also a box your nearest comp
 
 Amazon teams write the press release before anything is built, in the customer's words, and call it **working backwards**. The release names the customer, the problem in their words, what changes for them, and a quote a real customer could say; the questions behind it ask for the top reasons the product could still fail.
 
-Post-its first. Three minutes, no talking: each of you puts stickies on the box frame, one per part of the box you can answer. Each part has an owner. The product owner writes what changes for the customer. The designer writes the customer's problem and a sentence a customer actually said. The team lead writes why it could fail: what is hard to build, what the team has never shipped before.
+Post-its first. Three minutes, no talking: each of you puts stickies on the box frame, one per part of the box you can answer. The product owner writes what changes for the customer. The designer writes the customer's problem and a sentence a customer said. The team lead writes why it could fail.
 
-Then name the framework, tune it, ask Claude to run it. Claude knows working backwards already, so you don't have to recite it. The tune here: the box face carries the customer's promise, and the press release sits behind it.
+Claude knows working backwards already. The tune here: the box face carries the customer's promise, and the press release sits behind it.
 
 Ask Claude to read the box frame, walk you through the parts the stickies leave open, then repaint the box.
 
 {{prompt:apt101-d1-read-the-board}}
 
-Back to the board. Where Claude's wording beat a sticky, the sticky's author moves it; where a sticky beat Claude's wording, say so and the driver asks for it back.
+Where Claude's wording beat a sticky, the sticky's author moves it; where a sticky beat Claude's wording, say so and the driver asks for it back.
 
-One pattern to watch: the customer quote. Claude will offer a smooth one. Ask whose sentence it is. If nobody in the room has heard a customer say something like it, replace it with a line you have heard.
+Watch the customer quote: Claude will offer a smooth one. Ask whose sentence it is. If nobody has heard a customer say it, replace it with a line you have heard.
 
 ## Phase 3: What only your product does
 
@@ -121,8 +121,8 @@ You keep this box. The bet is written against it next, and on Day 3 five people 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@9d3527f2 technical@d747a00d behavior@dd243e74 pedagogy@dd242fd9 strategy@2a492ac7)
-- judges @2a492ac7: writing PASS (4 findings see instances/agentic-product-teams-101--exercise--apt101-paint-the-product-box.writing.json), technical PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-paint-the-product-box.technical.json), behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-10-08 (writing@9d3527f2 technical@d747a00d behavior@dd243e74 pedagogy@dd242fd9 strategy@2a492ac7 slides@ccbff4e7)
+- judges @ccbff4e7: writing PASS (4 findings see instances/agentic-product-teams-101--exercise--apt101-paint-the-product-box.writing.json), technical PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-paint-the-product-box.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-paint-the-product-box.slides.json)
 
 **Role in Day 1:** beat 3, the first hands-on beat; the opener after the two lectures; the trio meets the Agents 101 Module 1 mechanism (context shapes output) on its own product, before *Start from your customer's sentence* and *The agent knows only what you tell it* name what it did.
 

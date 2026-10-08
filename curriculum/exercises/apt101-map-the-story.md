@@ -85,8 +85,8 @@ If the three sentences name three different things, the slice is testing too muc
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@9d3527f2 technical@d747a00d behavior@3d7fd713 pedagogy@761a20a3 strategy@2a492ac7)
-- judges @2a492ac7: writing PASS, technical PASS, behavior PASS, pedagogy PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-map-the-story.pedagogy.json), strategy PASS
+**Quality:** compendium-audited 2026-10-08 (writing@9d3527f2 technical@d747a00d behavior@3d7fd713 pedagogy@761a20a3 strategy@2a492ac7 slides@ccbff4e7)
+- judges @ccbff4e7: writing PASS, technical PASS, behavior PASS, pedagogy PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-map-the-story.pedagogy.json), strategy PASS, slides PASS
 
 **Role in Day 3:** The day's first build: the chosen bet becomes a story map on the board and one end-to-end slice that five users meet in the next exercise.
 

@@ -4,7 +4,7 @@
 
 **What you do:**
 
-Grow an opportunity solution tree for the outcome you agreed in *Pick the outcome*. Teresa Torres draws it with the outcome at the root, the customer needs, pains and wishes under it as opportunities, and the ideas that might address each one hanging below. Each of you sketches alone first, on the team's Miro board. Then Claude merges the three sketches, keeping every name on every branch. Then each of you questions the merged tree from your own role.
+Grow an opportunity solution tree for the outcome you agreed in *Pick the outcome*. Teresa Torres draws it with the outcome at the root, the customer needs, pains and wishes under it as opportunities, and under each one the ideas that might address it. Each of you sketches alone first, on the team's Miro board. Then Claude merges the three sketches, keeping every name on every branch. Then each of you questions the merged tree from your own role.
 
 The trainer has set up a frame for the tree on your team board. If your company has not enabled the Miro connector, a screenshot or export of the frame goes into the chat instead.
 
@@ -77,8 +77,8 @@ The tree is not finished, and it should not be. You choose from it in *Choose th
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@7ff539b9 technical@1faabaa8 behavior@21214fc5 pedagogy@20018100 strategy@ed634491)
-- judges @ed634491: writing PASS, technical PASS, behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-grow-the-tree.pedagogy.json), strategy PASS
+**Quality:** compendium-audited 2026-10-08 (writing@7ff539b9 technical@1faabaa8 behavior@21214fc5 pedagogy@20018100 strategy@ed634491 slides@ccbff4e7)
+- judges @ccbff4e7: writing PASS, technical PASS, behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-grow-the-tree.pedagogy.json), strategy PASS, slides PASS
 
 **Role in Day 2:** beat 4. Produces the team's opportunity solution tree, attributed per branch, and each person's three-stance read of the evidence. Placed after *Go back to your customers*; *Widen before you choose* names afterwards what the trio just did (alone first, merge keeps the single-name branch, the outcome makes the merge choose).
 

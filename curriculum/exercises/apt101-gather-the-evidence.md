@@ -24,6 +24,8 @@ Each of you takes the retriever closest to the evidence you know:
 
 Each retriever proposes search terms, clues or authors first and asks you to keep, swap or sharpen them. This is where your words go in: the term your customers use, the interview you remember, the person who wrote the post-mortem. Confirm quickly.
 
+## Start your retriever
+
 Team lead, ask Claude to act as your wiki retriever and stream findings into `sources/wiki-retrieval.md`.
 
 {{prompt:three-retrievers-one-curator-1}}
@@ -78,8 +80,8 @@ Three sources read at once, three memories curated from the same evidence, and a
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@7ff539b9 technical@1faabaa8 behavior@21214fc5 pedagogy@20018100 strategy@ed634491)
-- judges @ed634491: writing PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-gather-the-evidence.writing.json), technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-gather-the-evidence.pedagogy.json), strategy PASS
+**Quality:** compendium-audited 2026-10-08 (writing@7ff539b9 technical@1faabaa8 behavior@21214fc5 pedagogy@20018100 strategy@ed634491 slides@ccbff4e7)
+- judges @ccbff4e7: writing PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-gather-the-evidence.writing.json), technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-gather-the-evidence.pedagogy.json), strategy PASS, slides PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-gather-the-evidence.slides.json)
 
 **Role in Day 2:** beat 3. Fills every `sources/` and `memory/` with fresh evidence scoped to the agreed outcome; surfaces the contradictions the tree grows from. Followed by the lecture *Why it agreed*, which names why the digest agreed after the trio has seen sources disagree.
 

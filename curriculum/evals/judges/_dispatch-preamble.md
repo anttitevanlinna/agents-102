@@ -96,6 +96,8 @@ Every in-scope rule at its full T3 wording, every carve-out, every boundary clau
 
 Paths inside rule text are repo-root relative. `scripts/check-slide-size.js` is `<repo>/scripts/check-slide-size.js`, not a file under `curriculum/evals/scripts/`; two story judges in a row reported it missing after looking only there and hand-counted instead.
 
+The three slide scripts (`check-slide-size.js`, `check-slide-deixis.js`, `check-slide-numbering.js`) scan Agentic Engineering 101 when given no flag. Run them with `--file <target>`. A bare run reports OK on a file it never read.
+
 **3. Rows that turn on SHAPE rather than prose are resolved before you start.**
 
 ```

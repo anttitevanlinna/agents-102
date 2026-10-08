@@ -1,0 +1,215 @@
+{
+ "class": "slides",
+ "file": "curriculum/exercises/apt101-imagine-it-failed.md",
+ "training": "agentic-product-teams-101",
+ "verdict": "PASS",
+ "body_sha": "d20c153ffce9e032761fcba07c410a1a6be93982bf9c7d1b9a397913dedad6d3",
+ "shape_hash": "55bd128e2da87e0f",
+ "chunk_map": [
+  {
+   "index": 0,
+   "heading": "Exercise: Imagine it failed",
+   "lines": "1-7"
+  },
+  {
+   "index": 1,
+   "heading": "Phase 1: Write why it failed",
+   "lines": "9-15"
+  },
+  {
+   "index": 2,
+   "heading": "Phase 2: Rank in rounds",
+   "lines": "17-23"
+  },
+  {
+   "index": 3,
+   "heading": "Phase 3: Add the causes you missed",
+   "lines": "25-33"
+  },
+  {
+   "index": 4,
+   "heading": "Phase 4: Rank once more",
+   "lines": "35-39"
+  }
+ ],
+ "rules_evaluated": [
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 1,
+   "rule_lead": "Referent resolution under a sequential deck read.",
+   "verdict": "PASS",
+   "evidence": "L29 \"Ask Claude to read the board and add what the three of you did not see.\" - \"the board\" resolves to \"your team board\" named at L7; L39 \"Claude's included\" resolves to the Phase 3 additions; no pronoun lacks an in-deck antecedent. \"the bet you chose today\" (L7) resolves to the module's choose-the-bet beat.",
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 2,
+   "rule_lead": "Cross-file and positional callbacks.",
+   "verdict": "PASS",
+   "evidence": "grep for \"opening lecture|earlier file|previous module|top of\" over body_numbered -> 0; closest L39 \"what you talk about with laptops shut\" points at a room beat by activity, not at a file by position.",
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 3,
+   "rule_lead": "Every backward reference points at a beat that exists.",
+   "verdict": "PASS",
+   "evidence": "L7 \"The bet you chose today\" - choose-the-bet exercise exists in whats-actually-true.md L123 beat sequence ahead of this one; no \"the X you did/saw\" other than that.",
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 4,
+   "rule_lead": "Live-demo beats survive a text read.",
+   "verdict": "N/A",
+   "evidence": null,
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": [],
+   "na_reason": "no guess-before-reveal demo beat in the body"
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 5,
+   "rule_lead": "No orphan slides.",
+   "verdict": "PASS",
+   "evidence": "L35-39 chunk 4 \"Phase 4: Rank once more\" is the thinnest chunk but carries a full instruction (L39 \"One dot each on the board for the cause you now think most likely, Claude's included.\") with a duration line; not a wait-state.",
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 6,
+   "rule_lead": "Header self-carries at projection distance.",
+   "verdict": "PASS",
+   "evidence": "L25 \"Phase 3: Add the causes you missed\" matches L29 \"add what the three of you did not see\"; L17 \"Rank in rounds\" matches L21-23 two rounds; headers are literally true.",
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 7,
+   "rule_lead": "LLM-cadence caps.",
+   "verdict": "PASS",
+   "evidence": "closest L15 \"The one about the team, the one about your own piece, the one about the agents.\" - three parallel fragments, but each names a different concrete category (team, piece, agents), no empty leg; no \"Not X. Not Y. Z.\", no superlatives, no number+retraction, no abstraction-noun stack.",
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 8,
+   "rule_lead": "Internal dialect never lands on a slide.",
+   "verdict": "PASS",
+   "evidence": "grep banned/dialect terms (compendium, forcing function, firing, surface-as-noun, mood, beat, Connections) over body_numbered -> 0; \"pre-mortem frame\" (L7) is the board object's label and names a method engineers use.",
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 9,
+   "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
+   "verdict": "PASS",
+   "evidence": "closest L3 and L5 \"**Time:**\" / \"**What you do:**\" - two bolds on chunk 0, but they are the exercise template's field labels (one word to three), not emphasis on narrative; no other bold in body (the \"**Prompt**\" label is the expand-md prompt-block shape).",
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 10,
+   "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
+   "verdict": "N/A",
+   "evidence": null,
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": [],
+   "na_reason": "exercise is included by whats-actually-true.md L52 as a standard phase include; no phase-less prose section"
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 11,
+   "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
+   "verdict": "PASS",
+   "evidence": "headers L9,17,25,35 are Phase 1..4 consecutive from 1; body has no \"Phase K\"/\"Step K\" reference; node scripts/check-slide-numbering.js filtered to this file -> no output.",
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 12,
+   "rule_lead": "Page geometry dies at the cut; reading order survives.",
+   "verdict": "PASS",
+   "evidence": "node scripts/check-slide-deixis.js filtered to this file -> no matches; grep \"below|above|further down|see below|top of\" over body_numbered -> 0. The prompt follows the L29 sentence within the same chunk.",
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 13,
+   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+   "verdict": "N/A",
+   "evidence": null,
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": [],
+   "na_reason": "no in-body links; rule states there is no rule here and the structural include is not in this file"
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 14,
+   "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
+   "verdict": "PASS",
+   "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/apt101-imagine-it-failed.md -> \"oversized: 0\", exit 0, 4 slides within 210 words / 6 bullets.",
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 15,
+   "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+   "verdict": "PASS",
+   "evidence": "L9 \"Phase 1: Write why it failed\", L17 \"Phase 2: Rank in rounds\", L25 \"Phase 3: Add the causes you missed\", L35 \"Phase 4: Rank once more\" - all phase labels, which the rule prescribes for exercises; no declarative law slide is claimed.",
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 16,
+   "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
+   "verdict": "PASS",
+   "evidence": "body is prose, no bullets; closest L33 \"You want the one nobody in the trio was in a position to see.\" adds the selection criterion for pushing back, not a restatement of the header or a kicker.",
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 17,
+   "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+   "verdict": "N/A",
+   "evidence": null,
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": [],
+   "na_reason": "no header rename evidence; git log shows no commit changing a ## line without its body; no provenance note of the rename shape in the maintainer block"
+  }
+ ],
+ "suggestions": [],
+ "blocking_findings_count": 0,
+ "nonblocking_findings_count": 0,
+ "notes": "Brief built (17 rules, 0 prefilled). Accept-notes: none dated beyond the Quality stamp (L43)."
+}

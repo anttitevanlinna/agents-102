@@ -397,7 +397,7 @@ We found no academic study, practitioner account, or survey that directly tests 
 
 ### 3. No documented case of HR-led AI transformation at a non-tech European company
 
-Zapier (US tech) and Spotify (Nordic tech) have HR-led models. F-Secure (in our own experience) has SVP HR leading. But we found **zero documented cases** of a non-tech European company where HR/People function led the AI transformation. This may be the single most important white space.
+Zapier (US tech) and Spotify (Nordic tech) have HR-led models. A Nordic software company (in our own experience) has SVP HR leading. But we found **zero documented cases** of a non-tech European company where HR/People function led the AI transformation. This may be the single most important white space.
 
 ### 4. No Finnish-specific practitioner accounts
 
@@ -444,7 +444,7 @@ Competence-first training has a differentiated position: it addresses the compet
 ## ACT (Research Priorities)
 
 1. **Finnish-language research sweep** -- search for Finnish practitioner accounts in Finnish. The English-language absence may be a language barrier, not an evidence gap.
-2. **Interview/signal capture from F-Secure case** -- our own HR-led transformation case is unique and undocumented publicly. This is primary evidence.
+2. **Interview/signal capture from client case** -- our own HR-led transformation case is unique and undocumented publicly. This is primary evidence.
 3. **Swedish union AI positions** -- search Swedish-language sources for Unionen/TCO/IF Metall positions on AI.
 4. **Track IKEA 70K training progress** -- this is the most visible European case. Monitor for outcomes by H2 2026.
 5. **German ICT study deep-dive** -- the Doellgast/Kampf/Langes 2026 study on three German ICT companies deserves a full read. It's the best academic evidence on co-determination + AI.

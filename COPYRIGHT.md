@@ -6,7 +6,7 @@ Copyright (c) 2026 **Bosser Oy**. All rights reserved.
 
 ## Origin and Independence
 
-This project, **Agents 102**, is an independent work created by Antti Tevanlinna and owned by **Bosser Oy**, a single-person company. It is established as a separate body of intellectual property, distinct from any prior or concurrent training materials, consulting deliverables, or educational content — including, but not limited to, training programs developed in the context of employment or consulting engagements at F-Secure or any other organization.
+This project, **Agents 102**, is an independent work created by Antti Tevanlinna for **Bosser Oy**, his single-person company, and owned by Bosser Oy. It is a separate body of intellectual property, distinct from the training programs and other deliverables Bosser Oy produces in consulting engagements for its clients, and from anything created in earlier employment. It is not a deliverable of any client engagement.
 
 While the author brings professional experience in AI training and education — including running "Claude 101 for Business" sessions — this project represents an original, independently conceived work owned by Bosser Oy. Any similarity in subject matter reflects the author's domain expertise, not derivation from prior works created under other engagements.
 

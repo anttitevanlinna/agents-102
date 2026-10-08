@@ -140,17 +140,17 @@ This is why hands-on competence precedes advisory. The hands-on experience gives
 
 ---
 
-## Three Enablers That Emerge After Competence (F-Secure Evidence)
+## Three Enablers That Emerge After Competence (Field Evidence)
 
 **Thesis:** Once people can build agents, they discover three infrastructure needs the organization hasn't solved — data access, a platform to run what they built, and a way for others to find and use it.
 
-F-Secure evidence (March 2026): after 2 modules of hands-on training, pretty much everyone started building — dashboards, agents, applications. Not because they were told to, but because competence creates pull. But most builders hit walls. The walls are not about capability — they're about infrastructure:
+Field evidence (March 2026): after 2 modules of hands-on training, pretty much everyone started building — dashboards, agents, applications. Not because they were told to, but because competence creates pull. But most builders hit walls. The walls are not about capability — they're about infrastructure:
 
 1. **Data access.** Agents need Snowflake, Salesforce, internal systems. Without access, the agent is a toy that works on sample data. This is the multi-tool problem from our platform research, experienced from the inside. It's also why vertical SaaS agents (Agentforce, Zendesk) have an advantage — they already own the data. For everything else, someone needs to connect the pipes.
 
-2. **A platform to run AI-generated apps.** People build personal agents that work. Then: "where does this live? How do I share it? Can it run when I'm not running it?" This is the promotion path problem — personal→team→company — that no platform has solved. F-Secure is hitting exactly the gap we documented across Microsoft, Google, OpenAI, and Anthropic.
+2. **A platform to run AI-generated apps.** People build personal agents that work. Then: "where does this live? How do I share it? Can it run when I'm not running it?" This is the promotion path problem — personal→team→company — that no platform has solved. A Nordic software company is hitting exactly the gap we documented across Microsoft, Google, OpenAI, and Anthropic.
 
-3. **Agent skills / user guidance.** Once builders create agents, other people in the org need to find them, understand what they do, and know how to use them. This is the discoverability and governance layer — what OpenAI is calling "Skills" and what Microsoft is building with Agent 365. Nobody has shipped it yet. F-Secure needs it now.
+3. **Agent skills / user guidance.** Once builders create agents, other people in the org need to find them, understand what they do, and know how to use them. This is the discoverability and governance layer — what OpenAI is calling "Skills" and what Microsoft is building with Agent 365. Nobody has shipped it yet. A Nordic software company needs it now.
 
 **The implication for CTOs:** Hands-on training builds competence. Competence creates builders. Builders discover your real infrastructure gaps — and they discover them faster and more accurately than any consultancy assessment. The three enablers (data access, runtime platform, discoverability) are predictable and plannable. Budget for them.
 
@@ -159,7 +159,7 @@ F-Secure evidence (March 2026): after 2 modules of hands-on training, pretty muc
 **Evidence level:** Level 2 (single deployment, strong signal). Watch for convergence as more orgs go through hands-on training.
 
 **Applies to:** Advisory positioning, training→advisory handoff, platform watch, value proposition canvas
-**Source:** F-Secure deployment experience (March 2026, Antti direct)
+**Source:** Client deployment experience (March 2026, Antti direct)
 **Date:** 2026-03-21
 
 ---
@@ -170,7 +170,7 @@ F-Secure evidence (March 2026): after 2 modules of hands-on training, pretty muc
 
 The traditional transformation sequence is: assess → select platform → big procurement decision → 6-month pilot → maybe rollout. This produces PowerPoints and vendor lock-in before anyone knows what they actually need.
 
-What happens when you build competence first (F-Secure, March 2026): people build agents → they hit data access walls → the question becomes "we need MCPs for Snowflake and Salesforce" → then "where do we run simple apps?" These are lightweight choices: scoped, reversible, made by people who know what they need because they've built things. No board-level vendor evaluation needed. No 6-month assessment. Just practical people making practical decisions.
+What happens when you build competence first (a Nordic software company, March 2026): people build agents → they hit data access walls → the question becomes "we need MCPs for Snowflake and Salesforce" → then "where do we run simple apps?" These are lightweight choices: scoped, reversible, made by people who know what they need because they've built things. No board-level vendor evaluation needed. No 6-month assessment. Just practical people making practical decisions.
 
 The big platform decision might still come later — but by then it's informed by months of real usage, real needs, and real data about what works. The platform question answers itself when you have 50 people building and you know exactly what they need.
 
@@ -179,7 +179,7 @@ The big platform decision might still come later — but by then it's informed b
 **Corollary: any research that takes more than a week is irrational.** The landscape moves so fast that a 3-month vendor evaluation is stale before it's done. This applies to us too — our research runs in hourly cycles, not quarterly reports. The freshness window is weeks, not months.
 
 **Applies to:** Core value proposition (strongest formulation), sales conversations, advisory positioning, newsletter
-**Source:** F-Secure deployment experience (March 2026, Antti direct)
+**Source:** Client deployment experience (March 2026, Antti direct)
 **Date:** 2026-03-21
 
 ---
@@ -188,14 +188,14 @@ The big platform decision might still come later — but by then it's informed b
 
 **Thesis:** You don't need to tell people which processes to automate. Teach them to build agents, and they discover the right processes themselves.
 
-F-Secure evidence: after 2 modules, people started building dashboards, agents, and applications for their own work — unprompted. Nobody assigned "build an agent for X." The competence itself created the pull. This is stronger validation than any process assessment a consultancy could deliver, because the people who know the process best (the ones doing it) are the ones identifying the opportunity.
+Field evidence: after 2 modules, people started building dashboards, agents, and applications for their own work — unprompted. Nobody assigned "build an agent for X." The competence itself created the pull. This is stronger validation than any process assessment a consultancy could deliver, because the people who know the process best (the ones doing it) are the ones identifying the opportunity.
 
 This inverts the traditional transformation sequence. Consultancies do: assess processes → identify candidates → build solutions → train users. Our sequence is: train people → they identify candidates → they build solutions → assess what worked. The second sequence is faster, cheaper, and produces better candidates — because the domain expert and the builder are the same person.
 
 **The implication for CTOs:** Stop commissioning process assessments. Build competence. Your people will tell you where agents create value — and they'll be right more often than the consultancy, because they know the work.
 
 **Applies to:** Core value proposition, sales conversations
-**Source:** F-Secure deployment experience (March 2026, Antti direct)
+**Source:** Client deployment experience (March 2026, Antti direct)
 **Date:** 2026-03-21
 
 ---
@@ -354,12 +354,12 @@ Trying to jump from 1 to 4 is the same error at a different level. You need pers
 
 This is also why $20/month coding agents are the right starting point — not because they're cheap, but because they're **personal.** Nobody needs permission. Nobody needs a platform decision. Nobody needs a use case workshop. One person, one agent, their own work. The organizational transformation is an emergent property of enough individuals having mental models.
 
-F-Secure evidence: after 2 modules of hands-on training, people started building dashboards, agents, and applications for their own work — unprompted. No use case workshop needed. Competence created pull. The right use cases emerged from the people who know the work best.
+Field evidence: after 2 modules of hands-on training, people started building dashboards, agents, and applications for their own work — unprompted. No use case workshop needed. Competence created pull. The right use cases emerged from the people who know the work best.
 
 **The implication for CTOs:** Don't commission a use case assessment. Give 20 people $20/month coding agents and 2 days of training. The use cases will find themselves — and they'll be better than anything a workshop produces, because the domain experts and the builders are the same people.
 
 **Applies to:** Core value proposition, advisory positioning, sales conversations
-**Source:** Antti's direct observation across multiple engagements + F-Secure field evidence (March 2026)
+**Source:** Antti's direct observation across multiple engagements + Field evidence (March 2026)
 **Date:** 2026-03-22
 
 ---
@@ -384,14 +384,14 @@ When leadership uses agents personally, four things change:
 
 Without leadership personal use, top-down is mandates from people who don't understand what they're mandating. This is why use case workshops produce PowerPoints that die — everyone in the room knows leadership is performing transformation, not experiencing it. The performative quality kills momentum.
 
-Living this at F-Secure (March 2026): when leadership engages personally with agents, the energy in the organization shifts. It's the difference between "we've been told to do this" and "we're all discovering this together." The latter scales. The former doesn't.
+Living this at a client company (March 2026): when leadership engages personally with agents, the energy in the organization shifts. It's the difference between "we've been told to do this" and "we're all discovering this together." The latter scales. The former doesn't.
 
 **The implication for CTOs:** Before you mandate anything, spend a week building with a coding agent yourself. Not a demo. Not a briefing. Actually build something you need for your own work. Then mandate — and your mandate will be different, more specific, more credible, and more effective than anything a strategy deck produces.
 
 **The implication for Bosser:** Training design should include a leadership track — not a separate executive briefing (that's the old model) but the same hands-on exercises. The CTO should sit in the same room, building the same things. That shared experience IS the scaling unlock. Consider a half-day "CTO builds" session as part of the core program or as a standalone pre-engagement.
 
 **Applies to:** Advisory positioning, sales conversations (sell to the CTO who wants to understand, not delegate), customer journey design
-**Source:** Antti's direct observation at F-Secure (March 2026) + Mollick Leadership-Lab-Crowd framework
+**Source:** Antti's direct observation at a client company (March 2026) + Mollick Leadership-Lab-Crowd framework
 **Date:** 2026-03-22
 
 ---
@@ -436,7 +436,7 @@ Every company has the technology. Nobody has the clarity. Platform comparisons a
 **The implication for CTOs:** Stop evaluating platforms. Start building competence. The platform question becomes trivially answerable once your people have built something and hit their own three walls (data access, runtime, discoverability). Those are scoped, practical, two-way-door decisions — not the heavyweight vendor evaluation you're currently running.
 
 **Applies to:** Advisory conversations, newsletter ("Deploying Agents"), business model validation (P1 assumption), content strategy
-**Source:** Pattern 44 — convergence of Mollick, MIT, Quintero/Every, shadow AI data, F-Secure field evidence (cycle 41, March 2026)
+**Source:** Pattern 44 — convergence of Mollick, MIT, Quintero/Every, shadow AI data, field evidence (cycle 41, March 2026)
 **Date:** 2026-03-22
 
 ---
@@ -467,7 +467,7 @@ Sales/GTM has active practitioner publishing: Lemkin blogs, Norton podcasts, the
 
 This isn't because nothing is happening. ConductorOne's survey shows 95% of enterprises run AI agents autonomously. Ramp's finance agents process thousands of transactions. HPE's "Alfred" reduced manual finance effort by 90%. The deployments exist — the public knowledge doesn't.
 
-**The implication for CTOs:** The absence of public case studies in your domain doesn't mean nobody is doing it — it means the knowledge is trapped inside organizations. This is the gap our advisory fills: practitioners who have trained 200+ people across F-Secure, Neste, and Posti see the cross-organizational patterns that no single company's internal team can see.
+**The implication for CTOs:** The absence of public case studies in your domain doesn't mean nobody is doing it — it means the knowledge is trapped inside organizations. This is the gap our advisory fills: practitioners who have trained 200+ people across three large Nordic companies see the cross-organizational patterns that no single company's internal team can see.
 
 **Applies to:** Content strategy, newsletter positioning, advisory value proposition
 **Source:** Cycle 43 meta-pattern — 43 cycles of practitioner discovery across 7 business domains
@@ -518,7 +518,7 @@ The structural pattern connecting all three: **(1) rules are codified** (GAAP, r
 
 **Thesis:** Non-engineering AI-native transformation doesn't start with team mandates or platform decisions. It starts with domain experts who have just enough technical background to steer coding agents — and it transforms what they produce, not how fast they produce it.
 
-57 research cycles found zero published evidence of non-engineering AI-native teams. But direct observation at F-Secure reveals an emerging pattern with a specific profile:
+57 research cycles found zero published evidence of non-engineering AI-native teams. But direct observation at a client company reveals an emerging pattern with a specific profile:
 
 **Person 1 — Finance.** Consulting background, CS minor, NOT a coder ("couldn't produce more than hello world without AI"). Coding with Claude for 9 months. Automating quarterly bookkeeping → building in-house tool to replace Excel → now adding AI features via Claude Code. Trajectory: automation → AI features → production tooling.
 
@@ -528,12 +528,12 @@ The profile connects them: CS minor (not CS major, not engineer), domain experti
 
 **The output shift is the real story.** These people didn't get better at their old job. Their old job became obsolete. The finance person isn't making better spreadsheets — they're building the system that replaces spreadsheets. The director isn't making better slides — they're building the dashboard that makes slides unnecessary. Coding agents didn't accelerate consumption artifacts. They enabled creation artifacts. The shift is from *describing* things to *building* things.
 
-This is why it's invisible to public research. It's happening inside enterprises, done by domain experts who don't blog or tweet. The practitioner-publishing gap. We see it because Antti is inside F-Secure training people. There could be thousands of these people. Nobody's counting because they don't identify as developers and don't show up in developer surveys.
+This is why it's invisible to public research. It's happening inside enterprises, done by domain experts who don't blog or tweet. The practitioner-publishing gap. We see it because Antti is inside a client company training people. There could be thousands of these people. Nobody's counting because they don't identify as developers and don't show up in developer surveys.
 
 **The implication for CTOs:** Your AI-native pioneers are already in your organization. They're not in engineering. They're the finance person who's been quietly building tools for 9 months. The director who stopped making slides and started building dashboards. Look for the profile: domain expertise + technical curiosity + structured thinking. The CS minor is a predictor, but the real variable is "can this person describe work in terms an agent can execute?" After hands-on training, you'll have more of them — because training is what gives the rest of the organization the vocabulary the CS minors already have.
 
 **Applies to:** Advisory ("find your internal pioneers"), newsletter, AI-native teams research
-**Source:** F-Secure direct observation — 2 practitioners, emerging pattern (March 2026); domain-crossing pattern (cycles 55-57)
+**Source:** Direct client observation — 2 practitioners, emerging pattern (March 2026); domain-crossing pattern (cycles 55-57)
 **Date:** 2026-03-23
 
 ---
@@ -547,7 +547,7 @@ The evidence now spans 5+ independent sources:
 2. **MIT NANDA (N=52 interviews):** 95% of custom/task-specific GenAI tools report no measurable P&L impact (narrow success definition, directional — see cycle 80 audit). Line managers with competence outperform centralized AI labs.
 3. **Quintero (Every, 100+ companies):** "Clarity problem" is root cause. Documentation culture enables.
 4. **Shadow AI data:** ~50% unsanctioned use — demand exists, clarity doesn't.
-5. **F-Secure (March 2026):** After 2 modules, people built unprompted. Competence created pull. Level 2.
+5. **A Nordic software company (March 2026):** After 2 modules, people built unprompted. Competence created pull. Level 2.
 6. **Moderna/HBS (NEW):** Enterprise-scale validation. Trained thousands in AI literacy before platform selection. Measurable outcomes. Published Harvard Business School case study. First large enterprise confirming the sequence works.
 
 Zero counter-evidence found across 53+ research cycles. No company has been found succeeding with "buy platform first, train later." The absence of counter-evidence is now itself Level 3 — we've looked systematically and found nothing.
@@ -555,7 +555,7 @@ Zero counter-evidence found across 53+ research cycles. No company has been foun
 **The implication for CTOs:** This is no longer opinion. Five independent sources, including one Fortune 500 company, converge on the same pattern. Build competence first. The platform question answers itself afterward.
 
 **Applies to:** Core value proposition (strongest evidence), advisory, sales conversations
-**Source:** Cycle 53 convergence analysis; Moderna/HBS case study; F-Secure evidence; Mollick, MIT, Quintero
+**Source:** Cycle 53 convergence analysis; Moderna/HBS case study; field evidence; Mollick, MIT, Quintero
 **Date:** 2026-03-23
 
 ---
@@ -564,7 +564,7 @@ Zero counter-evidence found across 53+ research cycles. No company has been foun
 
 **Thesis:** Every major 2026 survey says competence is the bottleneck, not platforms. Organizations that invest in people first outperform those that buy platforms first. Zero counter-evidence in 58 research cycles.
 
-The signal count crossed 10+ independent sources in cycle 58: PwC (38% cite skill gaps as top-3 barrier), Deloitte (n=3,235: "education was #1 talent adjustment"), BCG (companies with deeply engaged C-suite are 12x more likely to be top AI performers, invest 2x in upskilling), Meta (first company tying performance reviews to AI usage), Mollick at UNLEASH ("biggest constraint is leadership and organizational design, not technology"), shadow AI data (93% of enterprise ChatGPT use on non-corporate accounts — employees self-training because orgs aren't), Moderna (HBS: trained workforce first → 1,000s custom GPTs organically), MIT NANDA (95% of custom/task-specific tools, N=52, directional — cycle 80 audit), Quintero (100+ companies), F-Secure (competence created pull).
+The signal count crossed 10+ independent sources in cycle 58: PwC (38% cite skill gaps as top-3 barrier), Deloitte (n=3,235: "education was #1 talent adjustment"), BCG (companies with deeply engaged C-suite are 12x more likely to be top AI performers, invest 2x in upskilling), Meta (first company tying performance reviews to AI usage), Mollick at UNLEASH ("biggest constraint is leadership and organizational design, not technology"), shadow AI data (93% of enterprise ChatGPT use on non-corporate accounts — employees self-training because orgs aren't), Moderna (HBS: trained workforce first → 1,000s custom GPTs organically), MIT NANDA (95% of custom/task-specific tools, N=52, directional — cycle 80 audit), Quintero (100+ companies), a Nordic software company (competence created pull).
 
 Zero platform-first success stories found across 58 cycles. The closest (PwC's 230K Copilot users) is actually competence-first — PwC's core business IS change management.
 
@@ -573,7 +573,7 @@ Mollick's new "Leadership, Lab, Crowd" framework maps directly to a five-step tr
 **The implication for CTOs:** Stop evaluating platforms. Start building competence. The platform question becomes answerable once your people know what they need.
 
 **Applies to:** Core value proposition, marketing messaging, advisory conversations, newsletter content
-**Source:** Cycle 58 synthesis — PwC, Deloitte, BCG, Meta, Mollick/UNLEASH, shadow AI, Moderna/HBS, MIT, Quintero, F-Secure
+**Source:** Cycle 58 synthesis — PwC, Deloitte, BCG, Meta, Mollick/UNLEASH, shadow AI, Moderna/HBS, MIT, Quintero, a Nordic software company
 **Date:** 2026-03-23
 
 ---

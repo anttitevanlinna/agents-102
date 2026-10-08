@@ -55,11 +55,11 @@ He also noted that Fortune 50 CTOs are saying "We're not signing another five-ye
    - Source: https://www.techtarget.com/searchsecurity/tip/Shadow-AI-How-CISOs-can-regain-control-in-2026 [domain trade publication]
    - Source: https://zylo.com/blog/shadow-ai/ [domain trade publication]
 
-**Previous signals (from cycle 53):** Mollick ("organizational structure is the moderating factor"), MIT 95% pilot failure, Moderna (trained first → 1,000s of custom GPTs), Quintero's practitioner analysis, F-Secure direct experience.
+**Previous signals (from cycle 53):** Mollick ("organizational structure is the moderating factor"), MIT 95% pilot failure, Moderna (trained first → 1,000s of custom GPTs), Quintero's practitioner analysis, direct client experience.
 
 **Updated signal count:** 10+ independent signals across surveys, case studies, practitioner analysis, and organizational behavior data.
 
-**Evidence level:** Level 3 (convergence). This pattern has now crossed the threshold. Multiple independent sources — academic (Mollick), survey (PwC, Deloitte, BCG), organizational behavior (Meta, shadow AI data), practitioner (Moderna, F-Secure) — all point the same direction: **competence is the ceiling, not capability.**
+**Evidence level:** Level 3 (convergence). This pattern has now crossed the threshold. Multiple independent sources — academic (Mollick), survey (PwC, Deloitte, BCG), organizational behavior (Meta, shadow AI data), practitioner (Moderna, a Nordic software company) — all point the same direction: **competence is the ceiling, not capability.**
 
 **Updated verdict:** CONFIRMED at Level 3. The training-first vs platform-first question is now answered by convergent evidence: organizations that invest in people first outperform those that buy platforms first. Zero platform-first success stories in 58 cycles.
 

@@ -115,7 +115,7 @@ No major public statements or trajectory changes found for Harrison Chase in Mar
 - **Mikko Alasaarela / Agentics Helsinki:** No new public output found in March 2026.
   - [SOURCE NEEDED]
 
-**Assessment:** The Nordic practitioner gap is structural — Nordic builders publish less publicly than US/UK counterparts. Antti's direct network (Agentics Helsinki, F-Secure contacts) remains the primary channel for Nordic practitioner signals.
+**Assessment:** The Nordic practitioner gap is structural — Nordic builders publish less publicly than US/UK counterparts. Antti's direct network (Agentics Helsinki, client contacts) remains the primary channel for Nordic practitioner signals.
 
 ---
 

@@ -127,6 +127,6 @@ The strategic frame — the *why* behind the rules — stays here:
 
 ## Antti's practitioner credentials
 
-Author of a hands-on agentic engineering curriculum (7 modules including multi-agent workflows, evals, agents building agents). Trained 200+ people at F-Secure, Neste, Posti. Member of Agentics Helsinki (Mikko Alasaarela's community). Not a journalist or analyst — a practitioner who builds what he writes about.
+Author of a hands-on agentic engineering curriculum (7 modules including multi-agent workflows, evals, agents building agents). Trained 200+ people at three large Nordic companies. Member of Agentics Helsinki (Mikko Alasaarela's community). Not a journalist or analyst — a practitioner who builds what he writes about.
 
 **Bosser identity:** *"The best strategies emerge from action, not analysis."* Framework-integrative, not framework-driven. See bosser.consulting.

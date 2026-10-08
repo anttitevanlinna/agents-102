@@ -77,7 +77,7 @@ These are serious frameworks with real traction that compete with or complement 
 - **URL:** [github.com/anthropics/claude-agent-sdk-python](https://github.com/anthropics/claude-agent-sdk-python) [vendor press release]
 - **Language:** Python (0.1.48), TypeScript/Node.js (0.2.71)
 - **What makes it different:** Powers Claude Code internally. Same agent loop, tools, and context management Anthropic uses. Built-in tools: file read/write, shell commands, HTTP requests, web search. MCP-native -- tools implemented as in-process MCP servers. Subagent orchestration built in.
-- **Enterprise evidence:** Powers Claude Code (used by F-Secure, among many others). No independent enterprise case studies for the SDK itself.
+- **Enterprise evidence:** Powers Claude Code (used by a Nordic software company, among many others). No independent enterprise case studies for the SDK itself.
 - **Business user accessible:** No. Developer-only.
 - **Status:** Active, rapid iteration. The "pattern-based" approach (not a traditional framework).
 - **Evidence level:** Level 1

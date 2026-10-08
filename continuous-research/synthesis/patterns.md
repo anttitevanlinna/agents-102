@@ -37,7 +37,7 @@ answers: ["cross-platform patterns", "what research established", "evidence patt
 
 **Pattern 38: Enterprise agent failure data convergent.** MIT 95%, Gartner 40%+ canceled by 2027, 46% of POCs scrapped, 32% stall after pilot. Context gap: agents access ~20% of enterprise data.
 
-**Pattern 43: "Training > Tooling" -- competence-first at Level 3.** Moderna (HBS): trained first, 1,000s of GPTs built organically. F-Secure: competence creates pull. SaaStr: "Training more important than vendor." Quintero: "CEO's AI skills correlate with org adoption." Klarna reversal. Mollick. Zero platform-first success stories across 58+ cycles.
+**Pattern 43: "Training > Tooling" -- competence-first at Level 3.** Moderna (HBS): trained first, 1,000s of GPTs built organically. A Nordic software company: competence creates pull. SaaStr: "Training more important than vendor." Quintero: "CEO's AI skills correlate with org adoption." Klarna reversal. Mollick. Zero platform-first success stories across 58+ cycles.
 
 **Pattern 44: "Clarity is the ceiling, not capability."** Mollick's "Leadership, Lab, Crowd" + MIT 95% pilot failure + Quintero "clarity problem" + shadow AI (50% unsanctioned). The transformation sequence: competence -> clarity -> compounding capability (platform, if ever, is a reversible mid-sequence node, not the destination).
 
@@ -65,9 +65,9 @@ answers: ["cross-platform patterns", "what research established", "evidence patt
 
 **Pattern 11: Vertical SaaS ceiling is 1 of 200.** Salesforce automates CS -- 1 of 200 processes. The other 199 are yours.
 
-**Pattern 12: Competence creates pull.** F-Secure field evidence. After training, people build unprompted. Inverts the assess->identify->build->train sequence.
+**Pattern 12: Competence creates pull.** Field evidence. After training, people build unprompted. Inverts the assess->identify->build->train sequence.
 
-**Pattern 13: Three predictable enablers after competence.** F-Secure: (1) data access, (2) runtime platform, (3) discoverability. The natural handoff from training to advisory.
+**Pattern 13: Three predictable enablers after competence.** A Nordic software company: (1) data access, (2) runtime platform, (3) discoverability. The natural handoff from training to advisory.
 
 **Pattern 14: Computer use is the convergence point.** GPT-5.4 (75% OSWorld) and Claude (72.7%). Most relevant to legacy integration -- no independent enterprise evidence yet.
 

@@ -41,7 +41,7 @@ cycle: 117
 **Source:** https://www.fool.com/earnings/call-transcripts/2026/04/29/ch-robinson-chrw-q1-2026-earnings-transcript/ — [general press / transcript]
 **Date:** 2026-04-29
 **Agent level:** company
-**What:** Management explicitly connects the transformation to headcount reductions, personnel expense reductions, and productivity. Bozeman says C.H. Robinson invested in some customer-facing roles for SMB and solution solving, but the broader pattern is decoupling headcount from volume rather than publishing a builder marketplace, team-2x method, or competence-first playbook. This makes C.H. Robinson a strong traditional-enterprise throughput case but a culturally different archetype from Ramp/Intercom/F-Secure.
+**What:** Management explicitly connects the transformation to headcount reductions, personnel expense reductions, and productivity. Bozeman says C.H. Robinson invested in some customer-facing roles for SMB and solution solving, but the broader pattern is decoupling headcount from volume rather than publishing a builder marketplace, team-2x method, or competence-first playbook. This makes C.H. Robinson a strong traditional-enterprise throughput case but a culturally different archetype from Ramp/Intercom/a Nordic software company.
 **Evidence level:** Level 2 interpretive read from the transcript; the headcount/productivity claims are direct, the cultural-archetype comparison is synthesis.
 **Key claims:** Headcount down, roles shifted toward customer-facing solution solving, manual order-to-cash workflow automated.
 

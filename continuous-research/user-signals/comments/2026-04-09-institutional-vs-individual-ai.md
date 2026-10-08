@@ -59,7 +59,7 @@ Alternative framing (this research program's thesis): institutional AI is someth
 
 The electrification analogy actually supports BOTH readings: the 1920s assembly line was designed by factory engineers who understood the work, not by the electric company. But it also required new equipment, new specialists, and new organizational forms. The question is: who does the redesigning?
 
-**Evidence for BUILD thesis:** F-Secure (trained own people → built own agents → discovered own infrastructure gaps). Pattern 43 (competence-first at Level 3). Coding agent meta-platform thesis (Pattern 41).
+**Evidence for BUILD thesis:** A Nordic software company (trained own people → built own agents → discovered own infrastructure gaps). Pattern 43 (competence-first at Level 3). Coding agent meta-platform thesis (Pattern 41).
 
 **Evidence for BUY thesis:** Stanford Enterprise AI Playbook (Mar 2026): high performers 3x more likely to redesign workflows — but doesn't specify internal vs. external. Palantir commercial revenue growth. Sivulka's finance client example (bank turned off by lab that didn't know what a CIM was — trusted Hebbia because they understood the domain). OpenAI pivoting to PE distribution ($10B JV, forward-deployed engineers at $10M min — admission that enterprise agents need Palantir-style implementation).
 

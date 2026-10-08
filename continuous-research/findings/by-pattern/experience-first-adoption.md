@@ -3,7 +3,7 @@ type: finding
 domain: cross-domain
 evidence_level: 3
 platforms: [multiple]
-practitioners: [Mollick/Wharton, Microsoft/HBR, BCG, McKinsey, Coursera, Workera, Infosys/MIT, F-Secure]
+practitioners: [Mollick/Wharton, Microsoft/HBR, BCG, McKinsey, Coursera, Workera, Infosys/MIT, field-engagement]
 nordic: true
 updated: 2026-03-31
 answers:
@@ -71,7 +71,7 @@ Source: [HBR](https://hbr.org/2026/03/peer-influence-can-make-or-break-your-ai-r
 
 Source: [McKinsey](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai) — [vendor press release] (consultancy, N=1,993, treat as directional), 2025
 
-**Practitioner validation:** The F-Secure finance person wasn't told to build tools with Claude Code for 9 months. She couldn't stop. Self-actualisation as the driver — business people adopt more eagerly than engineers because they've been consumers of tools their entire careers and suddenly become creators.
+**Practitioner validation:** A client-company finance person wasn't told to build tools with Claude Code for 9 months. She couldn't stop. Self-actualisation as the driver — business people adopt more eagerly than engineers because they've been consumers of tools their entire careers and suddenly become creators.
 
 ## The Precondition: Psychological Safety
 

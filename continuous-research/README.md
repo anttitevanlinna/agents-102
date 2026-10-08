@@ -163,7 +163,7 @@ McKinsey can talk to 500 CTOs. They can't track what's happening on X.com at the
 - **Vendors** (Microsoft, Salesforce, Google) source from their own platform → ecosystem-locked. They curate their products, not the frontier. They can't tell you what's happening on a competing platform.
 - **Academics** source from peer review → 6-18 months behind. Rigorous but structurally late.
 - **Media** (TechCrunch, The Information) source from press releases and leaks → news, not synthesis. "Company X launched Y" without "here's what this means for your agent strategy."
-- **Us:** Source from the builders themselves → forward-looking by design. We track innovators and early adopters, then translate chasm-crossing patterns for the early majority. Practitioner credibility (F-Secure, Neste, Posti, 200+ trained) means we can bridge both worlds. The adoption curve is our analytical framework; the builder community is our source network; the quiz is our distribution instrument. The combination is the moat.
+- **Us:** Source from the builders themselves → forward-looking by design. We track innovators and early adopters, then translate chasm-crossing patterns for the early majority. Practitioner credibility (three large Nordic companies, 200+ trained) means we can bridge both worlds. The adoption curve is our analytical framework; the builder community is our source network; the quiz is our distribution instrument. The combination is the moat.
 
 ---
 

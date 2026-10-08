@@ -107,7 +107,7 @@ Finnish developer who has built practical tooling for parallel coding agents and
 - Focus is AI governance and AI-native organizations, not coding agents specifically
 - **Community signal:** Active Nordic agentic community exists, but no specific evidence of coding agent discussions.
 
-**F-Secure (Helsinki, Finland) — Training, not public deployment data**
+**A Nordic software company — Training, not public deployment data**
 - 200+ people trained on agentic coding via a practitioner-led training program, non-coders building with Claude Code [direct knowledge — Antti Tevanlinna]
 - No public blog posts, engineering reports, or external evidence about agentic coding deployment
 - **This is valuable first-party evidence but not citable as an independent finding — the source is the training provider, not an arm's-length observer.**
@@ -216,7 +216,7 @@ Lovable-style vibe coding for non-coders introduces serious security risks:
 
 4. **No Nordic conference talks about agentic coding in production.** We found no Nordic-specific conference presentations (Slush, Nordic.js, etc.) about enterprise coding agent deployments.
 
-5. **No data on how F-Secure's 200+ trained non-coders are using Claude Code in production.** This is first-party knowledge but not publicly documented — represents a major evidence gap that could be filled.
+5. **No data on how the client company's 200+ trained non-coders are using Claude Code in production.** This is first-party knowledge but not publicly documented — represents a major evidence gap that could be filled.
 
 6. **No Nordic equivalent of the METR study.** The Reaktor/Helsinki study may address this, but we don't know if they're testing agentic tools specifically or just copilot-style autocomplete.
 

@@ -3,13 +3,13 @@ type: finding
 domain: cross-domain
 evidence_level: 3
 platforms: [multiple]
-practitioners: [F-Secure, Mollick/Wharton, MIT/BCG]
+practitioners: [field-engagement, Mollick/Wharton, MIT/BCG]
 nordic: true
 updated: 2026-03-28
 answers:
   - "why does competence need to come before platform selection?"
   - "what evidence supports competence-first?"
-  - "how does F-Secure validate the thesis?"
+  - "how does the field evidence validate the thesis?"
   - "what's the mechanism behind competence-first?"
   - "what's the competence gap in numbers?"
 ---
@@ -40,7 +40,7 @@ No mental models → no shared vision → experiments stay isolated → no organ
 
 Competence creates mental models. Mental models create shared vision. Vision connects experiments. Connected experiments create organizational learning.
 
-## F-Secure Evidence (March 2026, Level 2)
+## Field Evidence (March 2026, Level 2)
 
 After 2 modules of Claude Code 101, pretty much everyone started building — dashboards, agents, applications. Unprompted. Competence created pull. But builders hit three infrastructure walls:
 
@@ -50,7 +50,7 @@ After 2 modules of Claude Code 101, pretty much everyone started building — da
 
 **The implication:** Competence creates builders. Builders discover infrastructure gaps faster and more accurately than any consultancy assessment. The three enablers are predictable and plannable. This is the natural handoff from training to Advisory.
 
-Source: F-Secure deployment experience, Antti direct [practitioner direct — first party]
+Source: Client deployment experience, Antti direct [practitioner direct — first party]
 
 ## Independent Research Confirmation
 
@@ -61,7 +61,7 @@ Source: F-Secure deployment experience, Antti direct [practitioner direct — fi
 
 ## Competence Creates Pull — People Find Their Own Processes
 
-You don't need to tell people which processes to automate. Teach them to build agents, and they discover the right processes themselves. F-Secure evidence: nobody assigned "build an agent for X." The competence itself created the pull. Domain experts identifying opportunities are right more often than consultancies because they know the work.
+You don't need to tell people which processes to automate. Teach them to build agents, and they discover the right processes themselves. Field evidence: nobody assigned "build an agent for X." The competence itself created the pull. Domain experts identifying opportunities are right more often than consultancies because they know the work.
 
 This inverts the traditional transformation sequence:
 - **Consultancy model:** Assess processes → identify candidates → build solutions → train users

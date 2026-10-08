@@ -19,7 +19,7 @@ answers: ["which platform", "what to do", "CTO advice", "platform recommendation
 - Three infrastructure enablers emerge predictably (data access, runtime, discoverability)
 - Platform questions, if they arise at all, are lightweight, reversible, two-way-door decisions -- the coding agent is the meta-platform, so most never need a purchase
 
-**Field evidence (F-Secure, March 2026):** After 2 modules of agent training, pretty much everyone started building unprompted. They then hit three walls: (1) data access, (2) where do apps run, (3) how do others find and use what was built. These are the real questions -- scoped, practical, answerable.
+**Field evidence (a Nordic software company, March 2026):** After 2 modules of agent training, pretty much everyone started building unprompted. They then hit three walls: (1) data access, (2) where do apps run, (3) how do others find and use what was built. These are the real questions -- scoped, practical, answerable.
 
 ## Platform Recommendations by Use Case
 

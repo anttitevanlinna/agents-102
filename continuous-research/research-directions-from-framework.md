@@ -296,7 +296,7 @@ See: [`observations/enterprise-agentic-transformation-case.md`](observations/ent
 
 2. **The "design first" vs. "experience first" question.** Any cases where org redesign preceded AI deployment and produced results? Any cases where it preceded and failed? This is the direct evidence gap — our competence-first evidence is L3, but we haven't systematically searched for counter-evidence from the org design camp.
 
-3. **SV builder culture vs. non-SV pathways.** Shopify, Anthropic, Block = founder-driven builder culture. Who is doing culture change for AI without the SV playbook? Nordic examples. European examples. Non-tech companies. F-Secure (SVP HR leading) is our single case — who else?
+3. **SV builder culture vs. non-SV pathways.** Shopify, Anthropic, Block = founder-driven builder culture. Who is doing culture change for AI without the SV playbook? Nordic examples. European examples. Non-tech companies. A Nordic software company (SVP HR leading) is our single case — who else?
 
 4. **The Lewinian theory of change in AI context.** "Unfreeze → move → refreeze" is the implicit model behind every org design framework. Is anyone in the change management / OD community challenging this for AI? Is "continuous unfreezing" replacing the traditional model?
 

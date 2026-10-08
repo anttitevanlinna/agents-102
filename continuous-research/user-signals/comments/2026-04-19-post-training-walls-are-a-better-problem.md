@@ -1,4 +1,4 @@
-Practitioner validation (F-Secure, 2 cohorts of similar training): the post-training walls (data access, runtime platform, discoverability — Pattern 13) are real and get hit. But that's a dramatically better problem than the enterprise default, which is "why is nobody doing anything relevant?"
+Practitioner validation (a Nordic software company, 2 cohorts of similar training): the post-training walls (data access, runtime platform, discoverability — Pattern 13) are real and get hit. But that's a dramatically better problem than the enterprise default, which is "why is nobody doing anything relevant?"
 
 **Reframe:** The walls are a symptom of success. Pre-training state = zero relevant building. Post-training state = building and hitting three predictable walls. Moving from "nothing happens" to "things happen and then get stuck on data access" is the transformation.
 

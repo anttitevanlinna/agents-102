@@ -3,7 +3,7 @@ type: finding
 domain: cross-domain
 evidence_level: 3
 platforms: [microsoft, google, openai, anthropic, salesforce]
-practitioners: [F-Secure, ConductorOne, Microsoft Agent 365]
+practitioners: [field-engagement, ConductorOne, Microsoft Agent 365]
 nordic: true
 updated: 2026-03-28
 answers:
@@ -34,7 +34,7 @@ You cannot take a personal agent that works and "promote" it to a governed team 
 
 **Anthropic's Antspace + BYOC is the first possible exception** — same artifact from personal hosting to enterprise K8s. But still staging, not production.
 
-## The F-Secure Evidence
+## The Field Evidence
 
 After 2 modules of agent training (March 2026), builders hit exactly this gap:
 1. People build personal agents that work
@@ -43,7 +43,7 @@ After 2 modules of agent training (March 2026), builders hit exactly this gap:
 
 This confirms the gap isn't theoretical — organizations building competence discover it organically within weeks.
 
-Source: F-Secure deployment experience, Antti direct [practitioner direct — first party]
+Source: Client deployment experience, Antti direct [practitioner direct — first party]
 
 ## Agent Sprawl Is the Consequence
 

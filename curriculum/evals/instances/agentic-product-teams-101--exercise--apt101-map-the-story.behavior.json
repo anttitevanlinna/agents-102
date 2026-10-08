@@ -1,71 +1,73 @@
 {
- "class": "behavior",
- "file": "curriculum/exercises/apt101-map-the-story.md",
- "training": "agentic-product-teams-101",
- "verdict": "PASS",
- "body_sha": "ab2419aa38ce88056706ebd3405b96ff12945bc2c35742e0fd0762cf53ede9a3",
- "trace_status": "generated_first_time",
- "prompts_evaluated": 4,
- "prompts_findings": [
-  {
-   "prompt_index": 1,
-   "prompt_lead": "Read the Story map frame on our team's Miro board: every post-it on it, includin",
-   "verdict": "PASS",
-   "load_bearing": true,
-   "risks_fired": [
+  "class": "behavior",
+  "file": "curriculum/exercises/apt101-map-the-story.md",
+  "training": "agentic-product-teams-101",
+  "verdict": "PASS",
+  "body_sha": "de4db6e4dddeb7966f6f7882884450a7ab0c202fd48c4e22fa8f1d78f2c640e5",
+  "trace_status": "cached",
+  "prompts_evaluated": 4,
+  "prompts_findings": [
     {
-     "pattern_id": "citation-cargo-cult",
-     "confidence": "low",
-     "evidence": "Each step in the customer's words, with the interview or ticket it comes from",
-     "fix_hint": "Claude may attach plausible but unchecked interview references"
-    }
-   ]
-  },
-  {
-   "prompt_index": 2,
-   "prompt_lead": "Read the Story map frame, team/story-map.md, the assumption map in team/bet.md a",
-   "verdict": "PASS",
-   "load_bearing": true,
-   "risks_fired": [
+      "prompt_index": 1,
+      "prompt_lead": "Read the Story map frame on our team's Miro board: every post-it on it, includin",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "citation-cargo-cult",
+          "confidence": "low",
+          "carve_out": "body-callout mitigation",
+          "evidence": "Each step in the customer's words, with the interview or ticket it comes from; neutralised by in-prompt 'Mark any step no customer source supports. Don't drop it.' and body L36 team-lead red-dot check",
+          "fix_hint": "none owed"
+        }
+      ]
+    },
     {
-     "pattern_id": "file-preservation-gap",
-     "confidence": "med",
-     "evidence": "read the frame again and write the slices and our choice to team/story-map.md",
-     "fix_hint": "file already holds the backbone from phase 1; no preserve-vs-replace language"
-    }
-   ]
-  },
-  {
-   "prompt_index": 3,
-   "prompt_lead": "Read the chosen first slice in team/story-map.md, the designer's Day 2 prototype",
-   "verdict": "PASS",
-   "load_bearing": true,
-   "risks_fired": []
-  },
-  {
-   "prompt_index": 4,
-   "prompt_lead": "Open team/slice-1/ as a customer seeing it for the first time, with the job name",
-   "verdict": "PASS",
-   "load_bearing": true,
-   "risks_fired": [
+      "prompt_index": 2,
+      "prompt_lead": "Read the Story map frame, team/story-map.md, the assumption map in team/bet.md a",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": []
+    },
     {
-     "pattern_id": "niceness-tax",
-     "confidence": "med",
-     "evidence": "Walk every step ... List each place where",
-     "fix_hint": "Claude may report a charitable few breaks on static HTML it cannot truly click"
+      "prompt_index": 3,
+      "prompt_lead": "Read the chosen first slice in team/story-map.md, the designer's Day 2 prototype ",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "carve_out": "self-report-inflation and self-audit-charity - evidence-backed Debrief carve-out",
+          "evidence": "tell me which steps are thin; cross-checked by the cold walk in the next prompt (body L74-76)",
+          "fix_hint": "none owed"
+        }
+      ]
+    },
+    {
+      "prompt_index": 4,
+      "prompt_lead": "Open team/slice-1/ as a customer seeing it for the first time, trying to get done",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "med",
+          "evidence": "Walk every step ... List each place where: the walk stops / a step is missing / a page assumes knowledge; three concrete break types, but a polite walker may report a short clean list. Single med risk, so PASS.",
+          "fix_hint": "ask for what the walker did on a step that worked"
+        }
+      ]
     }
-   ]
-  }
- ],
- "suggestions": [
-  {
-   "rule": "file-preservation-gap",
-   "line": 48,
-   "now": "read the frame again and write the slices and our choice to team/story-map.md, in the words now on the board.",
-   "proposed": "read the frame again and add the slices and our choice to team/story-map.md under the backbone, keeping the backbone as it is, in the words now on the board."
-  }
- ],
- "blocking_findings_count": 0,
- "nonblocking_findings_count": 0,
- "notes": "No accept-notes in maintainer block. Phase 2 prompt line cited against raw source is the {{prompt:apt101-d3-slice-by-learning}} marker at line 48; the closing sentence sits in the registry body. Single med risks never reach REVISE; prompt 4 niceness-tax is mitigated by team lead reading the list and designer deciding fixes (body 76)."
+  ],
+  "suggestions": [
+    {
+      "rule": "niceness-tax",
+      "line": 74,
+      "now": "Don't fix anything. Report to me here in the chat.",
+      "proposed": "Don't fix anything. Report to me here in the chat. If a step works, say what you did on it, so a clean walk reads differently from a skim."
+    }
+  ],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 1,
+  "notes": "Diff 3d7fd713..HEAD touches only the maintainer block (Quality line, Failure modes, Leap test); prompt bodies unchanged, trace prompt_sha reused. Cached trace cited body L98 for the cold-walk prompt (body is 82 lines); corrected to L76 against live file. No dated accept-notes in maintainer block. Adjacent compendiums read only as carve-out context."
 }

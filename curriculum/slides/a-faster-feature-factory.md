@@ -9,6 +9,9 @@ Speed shows up in both teams' numbers. The difference is whether anyone checks w
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@fc1c9aa3 technical@fc1c9aa3 slides@fc1c9aa3)
+- judges @fc1c9aa3: writing PASS, technical PASS, slides PASS
+
 **STATUS:** first cut (2026-10-07), APT101 squint slide, Day 2 § Why it agreed. Carries the strategy's hidden big point *agents amplify; they don't transform*, from the maintainer's year-one essays (*What I Know Now*: "AI is an amplifier, not a transformer"), stated here as the training's own claim, not as a narrator appearance. Cutler and the term's origin live on Day 1's `the-feature-factory`; not re-cited here (`check_writing.md §11`). Not taught (simulation training). Owes judging rounds.
 
 <!-- backing -->

@@ -1,0 +1,203 @@
+{
+  "class": "slides",
+  "file": "curriculum/slides/the-outcome-loop.md",
+  "training": "shared",
+  "verdict": "PASS",
+  "body_sha": "a17ac5fb1ab78b86ca369459a598d33eb758ae75e66de7da98ac7af1858c6970",
+  "shape_hash": "44291415d6e929d0",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "Building got cheap, deciding didn't",
+      "lines": "1-14"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "evidence": "line 4: \"Agents make the slow step cheap.\" -- 'the slow step' is named only at line 14 (slice), but the chunk header 'Building got cheap' supplies the antecedent in-chunk; line 14 'it' = the slice (line 11), 'those' = the four decisions just listed. Closest to violating is line 4, stays inside via the header.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": [],
+      "na_reason": "no pointer at another file"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": [],
+      "na_reason": "no backward reference to a beat"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": [],
+      "na_reason": "no live-demo or guess beat"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "evidence": "one chunk, line 4-14: lede claim, five-step loop, and a turn paragraph; self-carrying claim 'None of those got cheaper'.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "evidence": "line 1 'Building got cheap, deciding didn't' vs body line 14 'Now an agent can build it. Every other step is a decision... None of those got cheaper.' -- header is a true summary.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "evidence": "grep -c -E 'Not [A-Za-z ]+\\. Not' -> 0; closest is line 14 four-gerund list 'choosing... hearing... placing... reading...' which is one enumeration after a verbed sentence naming the set, not anaphora; no superlatives, no number+retraction, no abstraction stacks, no verb triplet.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "evidence": "terms bet/slice/signal/outcome/opportunity are product-craft vocabulary defined on the slide (lines 8-12); no surface-as-noun, compendium, forcing function, beat or mood on the slide body.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "evidence": "lines 8-12: five bolded one-word handles (**Outcome:**, **Opportunities:**, **Bet:**, **Slice:**, **Signal:**) are the loop's coined checklist item names, each inside the handle cap; no bold on narrative lines 4, 6, 14.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "evidence": "curriculum/lectures/apt101-building-is-cheap.md:3 includes '[Building got cheap, deciding didn't](slides/the-outcome-loop.md)' -- present in the lecture's composed deck.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": [],
+      "na_reason": "no numbered headers or Phase/Step refs"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-deixis.js -> 'OK -- 55 files, no page-geometry pointers across the slide cut.' exit 0; grep -c -E 'below|above' on body -> 0 matches (the 4 hits were em dashes in the maintainer/backing region).",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": [],
+      "na_reason": "no in-body links"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/slides/the-outcome-loop.md -> 'slides: 1 ... oversized: 0' exit 0.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "evidence": "line 1 'Building got cheap, deciding didn't' is a declarative claim, correct for a lecture slide.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "line 14 'None of those got cheaper.' is the closest to class (c) kicker, since it echoes header 'deciding didn't', but it carries the slide's claim about the four named decisions and is the backing-block claim decisions-not-cheaper; line 4 'The hard steps stay where they were.' is the closest to (a) restatement, kept as the lede turn. Suggestion offered, not owed.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "line 1 header is the squint-build header (maintainer line 18: header from apt101-squint.md Day 1, body opens on the turn); the body was written to it, no inherited bullets from an older header.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    }
+  ],
+  "suggestions": [
+    {
+      "rule": "check_slides.md §16",
+      "line": 4,
+      "now": "Agents make the slow step cheap. The hard steps stay where they were.",
+      "proposed": "Agents make the slow step cheap."
+    }
+  ],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "Single-chunk slide. Line 4 'the slow step' resolves via the header and line 14; the maintainer block carries no accept-notes."
+}

@@ -7,6 +7,9 @@ A product owner, a designer and a team lead deciding together are that team. Whe
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@fdf541ef technical@fdf541ef slides@fdf541ef)
+- judges @fdf541ef: writing PASS, technical PASS, slides PASS
+
 **STATUS:** squint build (2026-10-07), body opens on the turn; APT101 gap G:the-product-trio from `apt101-source-pack-2.md` §1. Not taught (simulation training). The one place the deck quotes Torres's continuous-discovery definition. The great-at-research-still-miss-outcomes line lives on Day 2's *Great research can still miss the outcome*, so it is not repeated here. What each role is for (who reads the evidence) is Day 3's answer and is not stated here.
 
 **Fidelity guard:** the packs carry no Torres quote for the word *trio*, so the body never attributes it to her; the room's three are named as "the team building the product" in her sense. Quote the 2018 page ("desired product outcome"), not the glossary paraphrase.

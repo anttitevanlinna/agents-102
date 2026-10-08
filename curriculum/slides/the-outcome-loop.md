@@ -15,6 +15,9 @@ For years the slice was the slow step. Now an agent can build it. Every other st
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@fdf541ef technical@fdf541ef slides@fdf541ef)
+- judges @fdf541ef: writing PASS (1 finding see instances/shared--slide--the-outcome-loop.writing.json), technical PASS, slides PASS
+
 **STATUS:** squint build (2026-10-07), APT101 gap slide G2, the training's theory spine (`curriculum/trainings/agentic-product-teams-101/theory-plan.md` § Theory spine); header from `apt101-squint.md` Day 1, body opens on the turn. Not taught (simulation training). Owes judging rounds.
 
 **Guard:** the loop is our synthesis of Torres (outcome → opportunity → solution), O'Reilly (signal) and Patton (slice); do not attribute the loop as a whole to any of them. "A few real bets a year" is framing, not a measurement.

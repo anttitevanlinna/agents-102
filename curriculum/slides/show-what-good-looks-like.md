@@ -9,6 +9,9 @@ So when an agent gets something exactly right, keep it as an example of good. A 
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@8b8f4070 technical@8b8f4070 slides@8b8f4070)
+- judges @8b8f4070: writing PASS, technical PASS, slides PASS
+
 **STATUS:** round 3 fixes applied (2026-10-06), APT101 rewrite of `how-instructions-grow` § Prohibitions stop; taste steers (AE101). Not taught (simulation training).
 
 **Carried from home:** prohibitions-don't-teach, the positive form generalises, good runs earn rules. The home's "the positive form is shorter" stays out: the slide's own example is longer than its prohibition. The home's child analogy stays out for length. `the-agent-stops-where-you-stop-writing` in the same lecture already turns "not like that" into a sentence to write; this slide does the other job, why the positive form steers better.

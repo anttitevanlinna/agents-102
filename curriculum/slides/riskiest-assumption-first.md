@@ -9,6 +9,9 @@ An agent can draft the list from your interviews and tickets. Where each one sit
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@8b8f4070 technical@8b8f4070 slides@8b8f4070)
+- judges @8b8f4070: writing PASS, technical PASS, slides PASS
+
 **STATUS:** squint build (2026-10-07), header from `apt101-squint.md` Day 1 (`header-style-distilled.md` rule 8); APT101 gap G:riskiest-assumption-first from `apt101-source-pack-3.md` §3. Not taught (simulation training). Owes judging rounds.
 
 **Fidelity guard:** credit the mapping to Bland and the 2x2 to Lean UX (pack 3 Drift 4: Gothelf, Seiden, Constable; the personal names stay off the body because Seiden is already named on `outcomes-over-outputs` in this module, writing §11). "Riskiest assumption" is our paraphrase of his top-right quadrant; quote his words "important and unproven" (Drift 5). The three kinds are his desirable / viable / feasible, with viable as "Should we do this?", not "can we make money" (Drift 6); the opener paraphrases them as want / should / can and never maps them onto Cagan's four risks on the slide before. The Test Card belongs to the Day 2 slide.

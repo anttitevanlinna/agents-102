@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 243 — 2026-10-08
+
+When a security research firm is actively publishing blog posts (3 in 7 days), their continued silence on a specific vulnerability is a stronger signal than it would be from a dormant source — it is deliberate, not absence. Manifold.security's Oct 1/6/7 posts on AI agent security while keeping the GitSpawn config key unnamed is the publishing equivalent of a red flag still flying: they have the audience and the moment; they are choosing not to update yet. For sustained-embargo watches, count recent posts on adjacent topics — active publishing without the specific update = the embargo is a controlled decision, not an oversight or resource issue.
+
+Incidental new KB findings often surface from secondary searches targeting watch items. The OpenAI container overbilling incident (Sep 18-19) and Anthropic SDK billing walkback (Jun 15) appeared as search byproducts of the Agents API billing Day+3 search — neither was on the watch list. When a search returns a result cluster pointing to an event that is (a) practitioner-grade, (b) dated within 6 months, and (c) absent from the KB, add it even if it wasn't the cycle's focus. The cost of a short digression to verify is lower than rebuilding the context in a future cycle.
+
 ### Cycle 241 — 2026-10-06
 
 Changelog language distinguishes correctness fixes from security fixes — "Fixed `/ultrareview` dropping uncommitted changes without a warning on Windows" is product quality; a security patch for an attack vector would name the vector (fsmonitor, CVE, or attack path). When watching for a security patch to an unpatched vulnerability, require either CVE language, the attack vector name, or a linked advisory in the changelog entry — product-quality language for the same subsystem is not enough to confirm the security fix. Absence of security language in v2.1.290/291 ultrareview entries is itself a finding.

@@ -46,8 +46,8 @@ Your own rules now say when a summary gets checked. The team's rules carry an ex
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@9d3527f2 technical@d747a00d behavior@0ac6010f pedagogy@761a20a3)
-- judges @9d3527f2: writing PASS, technical PASS, behavior PASS, pedagogy PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-keep-and-run-tonight.pedagogy.json)
+**Quality:** compendium-audited 2026-10-08 (writing@9d3527f2 technical@d747a00d behavior@0ac6010f pedagogy@761a20a3 strategy@2a492ac7)
+- judges @2a492ac7: writing PASS, technical PASS, behavior PASS, pedagogy PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-keep-and-run-tonight.pedagogy.json), strategy PASS
 
 **Role in Day 2:** beat 11, last exercise. Compounds the day into personal and team rules, and turns the overnight digest from Day 1's agreeable reader into tomorrow's check on the chosen bet. Placed after the lecture *Write it down or lose it* (corrections become rules on recurrence; examples of good beside the don'ts).
 

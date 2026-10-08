@@ -77,8 +77,8 @@ You have three doubts, one chosen, each tied to a line and a source. Each of you
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@44588d6d behavior@0ac6010f pedagogy@761a20a3)
-- judges @44588d6d: writing PASS (4 findings see instances/agentic-product-teams-101--exercise--apt101-read-the-digest.writing.json), technical REVISE (1/0 see instances/agentic-product-teams-101--exercise--apt101-read-the-digest.technical.json), behavior PASS, pedagogy PASS (4 findings see instances/agentic-product-teams-101--exercise--apt101-read-the-digest.pedagogy.json)
+**Quality:** compendium-audited 2026-10-08 (writing@44588d6d behavior@0ac6010f pedagogy@761a20a3 strategy@2a492ac7)
+- judges @2a492ac7: writing PASS (4 findings see instances/agentic-product-teams-101--exercise--apt101-read-the-digest.writing.json), technical REVISE (1/0 see instances/agentic-product-teams-101--exercise--apt101-read-the-digest.technical.json), behavior PASS, pedagogy PASS (4 findings see instances/agentic-product-teams-101--exercise--apt101-read-the-digest.pedagogy.json), strategy PASS
 
 **Role in Day 2:** opening exercise, beat 1. Turns the overnight digest from Day 1 into one doubt the team chose, which the outcome pick and the evidence run read next.
 

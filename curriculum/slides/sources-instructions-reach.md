@@ -11,6 +11,9 @@ Ask the agent to make this diagnosis first. Then rerun only the smallest step th
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@0f922c3b technical@0f922c3b slides@0f922c3b)
+- judges @0f922c3b: writing PASS, technical PASS, slides PASS
+
 **STATUS:** rebuilt from the APT101 squint (2026-10-07), Day 2 § Why it agreed. APT101 rewrite of `debugging-stuck-agents` § Diagnose before repair + § Sources, processing, boundary (Agents 101). Not taught (simulation training). Owes judging rounds.
 
 **Carried from home:** sources and processing become material and instructions, in product words. The home's third suspect (the boundary, what the agent could reach) is off this slide: APT101 teaches no access or governance beat on Day 2, and the squint names the question as the second suspect. "Your question" is the APT101 addition, the diagnostic form of `it-found-what-you-asked`. Each suspect points at an artefact the reader wrote: the agreed source list, the digest brief, the bet. The home's prompt and its `./CLAUDE.md` write-down step stay out; writing the lesson down belongs to § Write it down or lose it.

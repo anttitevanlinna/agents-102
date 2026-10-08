@@ -11,6 +11,9 @@ Keep the box current. A stale reference steers just as firmly.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@0f922c3b technical@0f922c3b slides@0f922c3b)
+- judges @0f922c3b: writing PASS (2 findings see instances/shared--slide--the-box-is-the-reference.writing.json), technical PASS, slides PASS
+
 **STATUS:** round 3 fixes applied (2026-10-06), APT101 rewrite of AE101 `what-packaging-is` § Reference and plan (the reference half only; no plan file, no Ronacher or Huntley, so their stamps stay home). Not taught (simulation training).
 
 **Fidelity guard:** the product box is the team's own; nothing here borrows Hohmann's claim about what his customer-played game reveals.

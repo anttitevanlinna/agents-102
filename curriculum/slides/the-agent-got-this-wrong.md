@@ -9,6 +9,9 @@ So say it out loud, early, about anything an agent produced. The person who ran 
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@0f922c3b technical@0f922c3b slides@0f922c3b)
+- judges @0f922c3b: writing PASS (1 finding see instances/shared--slide--the-agent-got-this-wrong.writing.json), technical PASS, slides PASS
+
 **STATUS:** first cut (2026-10-07), APT101 squint slide, Day 2 § Safe to say it's wrong. Carries the strategy's hidden big point *safety moves from people to agents* ("it's wrong" costs nobody face). The "newest person … team lead's own agent" line is the one `agents-checked-people-not-watched` held; it lives here, and that slide keeps Edmondson and the adopted line. Not taught (simulation training). Owes judging rounds.
 
 <!-- backing -->

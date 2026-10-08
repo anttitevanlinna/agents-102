@@ -9,6 +9,9 @@ The line never disappears. There is always something your team knows and has not
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@0f922c3b technical@0f922c3b slides@0f922c3b)
+- judges @0f922c3b: writing PASS, technical PASS, slides PASS
+
 **STATUS:** round 3 fixes applied (2026-10-06), Agentic Product Teams 101 rewrite for product people of AE101 `agents-that-build-agents` § The agent stops where your judgement begins (maintainer 2026-10-06: AE101 slides are rewritten for the audience, not borrowed). Not taught (simulation training).
 
 <!-- backing -->

@@ -1,0 +1,208 @@
+{
+  "class": "slides",
+  "file": "curriculum/slides/the-agent-stops-where-you-stop-writing.md",
+  "training": "shared",
+  "verdict": "PASS",
+  "body_sha": "cb4a49b023716f4a73eba860917277ad5444a25122a9954d1f13a211e8f347be",
+  "shape_hash": "05331dbebbb7d0ba",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "The agent stops where you stop writing",
+      "lines": "1-9"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "evidence": "Closest: L6 \"So the line where the agent stops is yours to move.\" \"the line\" resolves to the header and L4 (\"the agent stops where you stop writing\"; what is written vs still in heads); L8 \"Finding it is the work.\" \"it\" = the unsaid knowledge named in the same sentence. Harm (unresolvable pronoun) absent.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "evidence": "Closest: L12 names AE101 `agents-that-build-agents`, but only in the maintainer block (outside body). grep for \"opening lecture|earlier lecture|last module\" in body: 0.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no \"the X you did/saw\" backward references in body L4-8",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no guess/reveal demo beat; slide is a single declarative lecture slide",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "evidence": "L4 carries a self-contained claim: \"What is written, it can act on. What is still in your heads, it cannot.\" Slide stands alone.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "evidence": "Header \"The agent stops where you stop writing\" is true of L4-8: L4 states it, L6 says the line is movable, L8 says it never vanishes. No contradiction.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "evidence": "Closest: L4 \"What is written, it can act on. What is still in your heads, it cannot.\" is a two-leg contrast, not a triple; L6 \"a rule, a check or an example of good\" is a list of three nouns each concrete. No \"Not X. Not Y. Z.\", no self-grading superlative, no number+retraction (grep digits in body: 0), no verb triplet.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "evidence": "grep -ciE \"surface|firing|compendium|forcing function|beat|mood\" body L4-8 -> 0 (words used: hypotheses, interview notes, rules, check, example of good: ordinary product vocabulary).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "evidence": "grep -c \"\\*\\*\" body L1-9 -> 0 bolded elements.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "evidence": "Slide file is included from curriculum/lectures/apt101-write-it-down-or-lose-it.md (grep -rl found it) under the lecture wrapper, so it reaches the composed deck.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Phase/Step headers; node scripts/check-slide-numbering.js --file -> \"OK — 1 files, Phase/Step numbering consistent.\" exit 0",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/slides/the-agent-stops-where-you-stop-writing.md -> \"OK — 1 files, no page-geometry pointers across the slide cut.\" exit 0",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no links in body (has_urls false, no [..](..) in L4-8)",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/slides/the-agent-stops-where-you-stop-writing.md -> \"oversized: 0 ... every slide is within limits\", exit 0",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "evidence": "L1 \"The agent stops where you stop writing\" is a declarative claim, correct for a lecture slide that is a law/consolidation beat; no exercise-imperative mismatch.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "Closest: L8 \"The line never disappears. There is always something your team knows and has not yet said. Finding it is the work.\" Could read as kicker (c), but it adds a new claim the header and L4-6 do not hold (the line is permanent; the job is ongoing discovery) and is not a restatement of the header. Not doctrine restatement (a): \"the line\" is stated once before. Not design commentary (b).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "Header promises: the agent stops where the team stops writing. L4 states that, L6 gives the lever (write down, promote on recurrence), L8 the limit. No bullet answers an older header (maintainer L12 says the slide was rewritten for the audience, body matches the current header).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    }
+  ],
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "Single-slide file, one ## chunk. Accept-note found: L12 STATUS round 3 (2026-10-06) rewrite for APT101 audience; no rule accepted against it."
+}

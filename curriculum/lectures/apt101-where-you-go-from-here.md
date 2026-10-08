@@ -8,6 +8,9 @@
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@49e12612 story@49e12612 technical@49e12612 pedagogy@49e12612 strategy@49e12612 slides@49e12612)
+- judges @49e12612: writing PASS, story PASS, technical PASS, behavior N/A, pedagogy PASS, strategy PASS, slides PASS
+
 - **Time:** 13 minutes.
 - **Learning:** transfer — the frame names where it breaks, and the team leaves with the stance question open on its own product.
 

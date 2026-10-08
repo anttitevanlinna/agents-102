@@ -542,7 +542,7 @@ ${buildToc(contentKey, t)}
   const allBody = standaloneHtml ? modulesHtml + '\n\n' + standaloneHtml : modulesHtml;
 
   // Footer markup lives in CR.renderFooter (shared with SPA — single source).
-  return topNav + '\n<main>\n' + cover + '\n' + allBody + '\n</main>\n' + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
+  return topNav + '\n<main>\n' + cover + '\n' + allBody + '\n</main>\n' + pageFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
 // ── Inline assets ───────────────────────────────────────────────────────────
@@ -558,6 +558,13 @@ const STUDENT_HANDBOOK_PRINT_CSS = fs.readFileSync(
 const ANATOMY = Object.values(PROMPT_REGISTRY).some(e => e && e.anchors && e.anchors.length)
   ? require('./compile-anatomy.js').entries() : null;
 if (ANATOMY) require('./write-if-changed.js').writeIfChanged(path.join(ROOT, 'site/anatomy.json'), JSON.stringify(ANATOMY, null, 2) + '\n');
+// Every built page ends with the legal footer and, folded under it, the
+// third-party notices: a licence that asks for its notice "in all copies" is
+// answered by the page carrying it, wherever the page is hosted.
+const NOTICES_HTML = '<details class="third-party-notices"><summary>Third-party notices</summary>\n'
+  + marked.parse(fs.readFileSync(path.join(ROOT, 'content/THIRD-PARTY-NOTICES.md'), 'utf8').replace(/^# .*\n/, ''))
+  + '</details>';
+const pageFooter = () => CR.renderFooter() + '\n' + NOTICES_HTML;
 const SPA_JS_SRC = fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.js'), 'utf8');
 // The runtime a page inlines carries the registry entry of the training it was
 // built for and no other (scripts/workbook-runtime.js).
@@ -748,7 +755,7 @@ function buildTrainerGuide(customer, trainingKey) {
 </header>
 `;
   const main = '<main>\n' + cover + '\n<section class="module" id="trainer-guide">\n' + bodyHtml + '\n</section>\n</main>\n';
-  return main + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
+  return main + pageFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
 const TRAINER_GUIDE_INIT_JS = `
@@ -922,7 +929,7 @@ function buildTrainerModules(customer, trainingKey) {
 </header>
 `;
   const main = '<main>\n' + cover + '\n<section class="module" id="trainer-modules">\n' + bodyHtml + '\n</section>\n</main>\n';
-  return main + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
+  return main + pageFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
 function trainerModulesTemplate(customer, trainingKey, content) {
@@ -1134,7 +1141,7 @@ function buildTheoryBody(customer, trainingKey, recipient) {
   <p class="cover-blurb">${CR.esc(blurb)}</p>
 </header>
 `;
-  return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
+  return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + pageFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
 function theoryHandbookTemplate(customer, trainingKey, content, recipient) {
@@ -1232,7 +1239,7 @@ function buildExercisesBody(customer, trainingKey) {
   <h1 class="cover-title">Exercises workbook</h1>
 </header>
 `;
-  return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
+  return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + pageFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
 function exercisesWorkbookTemplate(customer, trainingKey, content) {

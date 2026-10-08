@@ -39,6 +39,7 @@ try {
     const js = [...html.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)].map(m => m[1]).find(s => s.includes('CurriculumRuntime'))
     assert.ok(js, `${path.basename(p)}: the runtime is inlined`)
     assert.deepStrictEqual(registryKeys(js), ['claude-basics'], `${path.basename(p)}: registry holds only the built training`)
+    assert.ok(html.includes('Permission is hereby granted, free of charge'), `${path.basename(p)}: third-party notices travel in the page`)
     for (const c of customers) {
       assert.ok(!new RegExp(`\\b${c}\\b`, 'i').test(html), `${path.basename(p)}: names the customer slug "${c}"`)
     }

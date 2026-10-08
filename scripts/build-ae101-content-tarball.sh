@@ -11,7 +11,7 @@
 #        reference each other.)
 #   - content/skills/ whitelisted per AE101 training-architecture: access-control-analysis + stride + security-tools
 #   - prompts/, figures/: the entries the shipped pages name (student copies of the prompts)
-#   - COPYRIGHT.md at the root
+#   - COPYRIGHT.md and THIRD-PARTY-NOTICES.md at the root
 #
 # Maintainer blocks stripped from .md content; SKILL.md files ship verbatim.
 #
@@ -224,6 +224,8 @@ done <<< "$(named_keys prompt "${PAGES[@]}" "$ROOT/figures")"
 # ---- Copyright notice ------------------------------------------------------
 # The licence forbids removing the notice, so the archive carries one.
 cp content/PAYLOAD-COPYRIGHT.md "$ROOT/COPYRIGHT.md"
+# Third-party material travels with the notice its licence asks for.
+cp content/THIRD-PARTY-NOTICES.md "$ROOT/THIRD-PARTY-NOTICES.md"
 
 # ---- Pack ----------------------------------------------------------------
 # Run tar from inside ROOT so the archive has lectures/, exercises/, reference/,

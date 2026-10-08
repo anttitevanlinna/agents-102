@@ -86,3 +86,21 @@ test('the tarball carries the copyright notice at its root', () => {
   assert.match(notice, /Copyright \(c\) \d{4} \*\*Bosser Oy\*\*/)
   assert.equal(notice, fs.readFileSync(path.join(repo, 'content/PAYLOAD-COPYRIGHT.md'), 'utf8'), 'one source for the shipped notice')
 })
+
+// Third-party material ships with the notice its licence asks for: one source
+// file, carried at the archive root beside the copyright notice.
+test('the tarball carries the third-party notices at its root', () => {
+  const notices = fs.readFileSync(path.join(x, 'THIRD-PARTY-NOTICES.md'), 'utf8')
+  assert.equal(notices, fs.readFileSync(path.join(repo, 'content/THIRD-PARTY-NOTICES.md'), 'utf8'), 'one source for the shipped notices')
+  assert.match(notices, /Permission is hereby granted, free of charge/, 'an MIT-licensed source needs its permission notice in full')
+})
+
+// A page that credits an MIT-licensed repository is adapting it, so the
+// notices have to name that repository's copyright holder.
+test('every MIT repository a shipped page credits has its copyright line in the notices', () => {
+  const notices = fs.readFileSync(path.join(repo, 'content/THIRD-PARTY-NOTICES.md'), 'utf8')
+  const credited = new Set()
+  for (const [, body] of shippedText()) for (const m of body.matchAll(/github\.com\/([\w.-]+\/[\w.-]+)\/blob\//g)) credited.add(m[1])
+  assert.ok(credited.size > 0, 'no credited repository found: the check read nothing')
+  for (const r of credited) assert.ok(notices.includes(r), `${r} is credited by a shipped page and absent from the notices`)
+})

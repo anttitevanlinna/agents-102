@@ -78,8 +78,8 @@ Three sources read at once, three memories curated from the same evidence, and a
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (writing@7ff539b9 technical@1faabaa8 behavior@21214fc5 pedagogy@20018100)
-- judges @7ff539b9: writing PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-gather-the-evidence.writing.json), technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-gather-the-evidence.pedagogy.json)
+**Quality:** compendium-audited 2026-10-08 (writing@7ff539b9 technical@1faabaa8 behavior@21214fc5 pedagogy@20018100 strategy@ed634491)
+- judges @ed634491: writing PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-gather-the-evidence.writing.json), technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-gather-the-evidence.pedagogy.json), strategy PASS
 
 **Role in Day 2:** beat 3. Fills every `sources/` and `memory/` with fresh evidence scoped to the agreed outcome; surfaces the contradictions the tree grows from. Followed by the lecture *Why it agreed*, which names why the digest agreed after the trio has seen sources disagree.
 

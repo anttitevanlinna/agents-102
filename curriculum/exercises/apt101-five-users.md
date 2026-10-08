@@ -65,8 +65,8 @@ Laptops shut, back at the wall. Persevere, pivot or stop: the three of you decid
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (writing@7ff539b9 technical@1faabaa8 behavior@3d7fd713 pedagogy@761a20a3)
-- judges @7ff539b9: writing PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-five-users.writing.json), technical PASS, behavior PASS, pedagogy PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-five-users.pedagogy.json)
+**Quality:** compendium-audited 2026-10-08 (writing@7ff539b9 technical@1faabaa8 behavior@3d7fd713 pedagogy@761a20a3 strategy@ed634491)
+- judges @ed634491: writing PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-five-users.writing.json), technical PASS, behavior PASS, pedagogy PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-five-users.pedagogy.json), strategy PASS
 
 **Role in Day 3:** The chosen bet meets people who did not build it; each person's Day 1 digest, which found what its look-for line asked for, is read against what they did; the trio makes the persevere / pivot / stop call.
 

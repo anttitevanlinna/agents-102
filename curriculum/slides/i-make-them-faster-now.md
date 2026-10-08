@@ -9,6 +9,9 @@ With agents building, your team's next wrong bet can show itself in days, while 
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@7412ff6d technical@7412ff6d slides@7412ff6d)
+- judges @7412ff6d: writing PASS, technical PASS, slides PASS
+
 **STATUS:** composed from the squint (2026-10-07), new APT101 narrator slide (✱ narrator title in `apt101-squint.md`), fourth in `apt101-where-you-go-from-here`. Header is the essay wording lightly cut; the body is the essay paragraph verbatim, its bold lead-in included as plain text, narrated rather than block-quoted, one byline, one bridge sentence (same shape as `the-installer-nobody-needed`). The essay carries no date in the source file; it closes the collection (2025-04 to 2026-03), so the byline says 2026 and no day. Not taught (simulation training). Owes judging rounds.
 
 <!-- backing -->

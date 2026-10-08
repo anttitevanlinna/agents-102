@@ -9,6 +9,9 @@ A quick test on anything an agent drafts: could a competitor claim this line? "S
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@7412ff6d technical@7412ff6d slides@7412ff6d)
+- judges @7412ff6d: writing PASS (1 finding see instances/shared--slide--generic-becomes-yours.writing.json), technical PASS, slides PASS
+
 **STATUS:** first cut (2026-10-07), APT101 rewrite of `compounding` § What this unlocks (map row `R:generic-becomes-yours`, never written before), with the competitor test from `compounding` § Could a competitor claim this? (the APT101 file `could-a-competitor-claim-it` was cut in squint r5 as a near-repeat; its example is folded in here). Composed from `apt101-squint.md` Day 1. Not taught (simulation training). Owes judging rounds.
 
 <!-- backing -->

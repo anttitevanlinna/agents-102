@@ -9,6 +9,9 @@ It only works if the bet comes first. A slice built without one answers no quest
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@7412ff6d technical@7412ff6d slides@7412ff6d)
+- judges @7412ff6d: writing PASS, technical PASS, slides PASS
+
 **STATUS:** first cut (2026-10-07), APT101 new slide composed from `apt101-squint.md` Day 1 (squint r6 title ✱), from the strategy appendix step 2 ("Building is cheap, so a hypothesis meets a working slice the same day. Day 1 feels like vindication"). Not taught (simulation training). Owes judging rounds.
 
 **Guard:** the mood (vindication) is lived, not named on the slide. "can", never "will": a same-day slice is possible, not guaranteed. Examples stay in the product register (prototype, landing page, analytics), no code.

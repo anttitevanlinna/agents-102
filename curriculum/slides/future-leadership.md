@@ -9,6 +9,9 @@ That is leadership for each of the three of you, not only for whoever holds the 
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@7412ff6d technical@7412ff6d slides@7412ff6d)
+- judges @7412ff6d: writing PASS, technical PASS, slides PASS
+
 **STATUS:** composed from the squint (2026-10-07), new APT101 slide (✱ in `apt101-squint.md`), third in `apt101-three-jobs-rewritten`. Header is the maintainer-adopted positioning line, kept verbatim; the body is where the stance answer on `your-insight-is-the-strategy` lands (`bosser-strategy:content-strategy-agentic-product-management.md` § Appendix, step 5 and Stance on the future). The team lead line carries the appendix's hidden point: a role that is not player-coach. Not taught (simulation training). Owes judging rounds.
 
 <!-- backing -->

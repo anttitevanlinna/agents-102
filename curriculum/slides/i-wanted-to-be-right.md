@@ -7,6 +7,9 @@ I used to think of being wrong as failure.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@7412ff6d technical@7412ff6d slides@7412ff6d)
+- judges @7412ff6d: writing PASS, technical PASS, slides PASS
+
 **STATUS:** first-person guide passage at Day 2's turn (§ Why it agreed), slide 1 of 3. Maintainer-commissioned 2026-10-07: "write the failure based on the essay on not knowing what will be the real outcome. The feelings of uncertainty and not knowing what is right"; split into three slides on his call. Composed from the year-one essays. Not taught (simulation training). Owes the maintainer's read and a judging round.
 
 **Guard (maintainer to confirm):** The essay's own wording, apart from the composed join "For most of my working life". If a join is untrue, cut it rather than reword it.

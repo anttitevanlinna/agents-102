@@ -1,6 +1,6 @@
 // Content flags — per-variant inclusion of passages inside a SHARED source file.
 //
-// The mechanism exists because the Northwind team track ships no content
+// The mechanism exists because a cut can ship no content
 // tarball, so AE101's prework steps that download and extract one describe
 // equipment that variant does not issue. Both variants read the same
 // prework.md, so the difference has to be expressible in the file rather than

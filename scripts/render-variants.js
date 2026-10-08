@@ -16,7 +16,7 @@
 // script modelled two cuts while `site/clients/acme/` held builds of four: its
 // PREVIEW omitted `earn-the-trust`, which the real preview ships, and carried a
 // `prework` slug no variant table lists — so it rendered one cut that ships and
-// one that does not exist. The northwind team track (`flags: { payload: false }`)
+// one that does not exist. A cut declaring `flags: { payload: false }`
 // was modelled nowhere, and `{}` went in for flags on every call, so no
 // payload-stripped cut could be rendered at all. A coverage tool covering the
 // wrong set reads exactly like a coverage tool that passes, which is why the

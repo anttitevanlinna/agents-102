@@ -4,16 +4,11 @@
 #
 #   --sut-kit lemmings | picoshare | codesearch     (default lemmings)
 #   --cut     full      prework → M1 … M6
-#             northwind prework → M1, M2, M4, M5 — Northwind Team Track
-#                       (registry key agentic-engineering-101-northwind): stock
-#                       module files, M3 and M6 replaced by customer workshops,
-#                       so M4 positions from M2's ending SHA instead of M3's ADR
-#                       commit (training-architecture.md § Variant: Northwind)
 #
 # Usage:
 #   chain-ae101.sh                                   # lemmings, full, arrange + m1..m6
 #   chain-ae101.sh --from prework                    # arrange, prework, m1..m6
-#   chain-ae101.sh --sut-kit picoshare --cut northwind
+#   chain-ae101.sh --sut-kit picoshare
 #   chain-ae101.sh --from m4 --chain-dir out/_chains/<id>   # resume: reads that chain's state
 #   chain-ae101.sh --sut-kit codesearch --m2-sha <sha>      # codesearch has no arrange: starts at m3
 #   chain-ae101.sh --from m4 --m3-sha <sha>          # full cut: M4 positions from M3's ending SHA
@@ -87,7 +82,7 @@ case "$SUT_KIT" in
     ;;
   codesearch)
     SUT_DEFAULT="${HOME}/Projects/codesearch"
-    ARRANGE=""                              # no arrange helper: can't start before M3 (full) / M4 (northwind)
+    ARRANGE=""                              # no arrange helper: can't start before M3
     M1_SLUG="codesearch-01"
     M2_SLUG=""
     M3_SLUG="threat-model-csweb-bind"
@@ -105,20 +100,18 @@ SUT="${SUT:-$SUT_DEFAULT}"
 # ---- cut table -----------------------------------------------------------
 case "$CUT" in
   full)      MODULES="prework m1 m2 m3 m4 m5 m6" ;;
-  northwind) MODULES="prework m1 m2 m4 m5" ;;
-  *) echo "unknown --cut: $CUT (want: full | northwind)" >&2; exit 2 ;;
+  *) echo "unknown --cut: $CUT (want: full)" >&2; exit 2 ;;
 esac
 if [[ -z "$FROM" ]]; then
   if [[ -n "$ARRANGE" ]]; then FROM="m1"
-  elif [[ "$CUT" == full ]]; then FROM="m3"
-  else FROM="m4"; fi
+  else FROM="m3"; fi
 fi
 TO="${TO:-${MODULES##* }}"
 for m in "$FROM" "$TO"; do
   [[ " $MODULES " == *" $m "* ]] || { echo "[chain] $m is not part of the $CUT cut ($MODULES)" >&2; exit 2; }
 done
 if [[ -z "$ARRANGE" ]] && [[ " prework m1 m2 " == *" $FROM "* ]]; then
-  echo "[chain] --from $FROM not supported on the $SUT_KIT kit: no arrange helper exists (lemmings and picoshare have one). Start at $([[ $CUT == full ]] && echo m3 || echo m4) with --m2-sha or --chain-dir." >&2
+  echo "[chain] --from $FROM not supported on the $SUT_KIT kit: no arrange helper exists (lemmings and picoshare have one). Start at m3 with --m2-sha or --chain-dir." >&2
   exit 2
 fi
 
@@ -282,13 +275,11 @@ if in_range m3; then
     run_module m3 "$HERE/run-m3.sh" --main-cwd "$SUT" --quality-cwd "$QUALITY_CWD"
 fi
 
-# ---- M4: send-off. full: branch from M3's ending SHA (its main side ends on
-#       the ADR commit). northwind: no M3 — branch from M2's ending SHA, the
-#       way M2 branches from M1. Never the SUT's current HEAD: on a resume that
-#       is whatever the last run left behind.
+# ---- M4: send-off. Branch from M3's ending SHA (its main side ends on the ADR
+#       commit). Never the SUT's current HEAD: on a resume that is whatever the
+#       last run left behind.
 if in_range m4; then
-  if [[ "$CUT" == full ]]; then m4_base="$(m3_ending_sha)" || exit 1
-  else m4_base="$(m2_ending_sha)" || exit 1; fi
+  m4_base="$(m3_ending_sha)" || exit 1
   position "m4/$CHAIN_SLUG" "$m4_base"
   wipe_leg_branches m4
   wipe_run_artifacts task.md

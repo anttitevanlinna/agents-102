@@ -1,13 +1,13 @@
 # AE101 chain — runbook (lemmings, the reference kit)
 
-How to run the **AE101 tmux-runner chain** — full M1→M6 or the Northwind cut,
+How to run the **AE101 tmux-runner chain** — full M1→M6,
 on the lemmings SUT (or the picoshare / codesearch kits) — repeatably, from a
 clean baseline. This is the procedure that used to live only
 as tribal knowledge between the `run-mN.sh` calls. Two scripts encode it:
 
 - **`arrange-lemmings.sh`** — resets `~/Projects/lemmings` to the M1 baseline.
 - **`chain-ae101.sh`** — arranges, then drives the modules of one cut on one
-  SUT kit (`--sut-kit lemmings|picoshare|codesearch`, `--cut full|northwind`),
+  SUT kit (`--sut-kit lemmings|picoshare|codesearch`, `--cut full`),
   positioning each module's branch/worktree from the prior module's
   `state.json`, read through this chain's own chain dir (`out/_chains/<id>/`).
 
@@ -152,56 +152,16 @@ pass, fail or Ctrl-C. The chain's own end state is kept in
 earlier modules wrote (M4+ read M3's `test-strategy-<sut>`). A standalone
 `run-mN.sh` restores the same way; `CLAUDE_RUNNER_KEEP_SKILLS=1` opts out.
 
-## Northwind variant — `--cut northwind`
+## SUT kits
 
-The `agentic-engineering-101-northwind` registry entry (`site/layouts/curriculum.js`)
-is a `contentKey`-aliased cut running the same four module files as stock AE101
-(getting-going, plan-mode-done-right, run-the-first-experiment, learn-from-the-test
-— stock M1/M2/M4/M5) and dropping M3 (`earn-the-trust`) and M6
-(`spot-gaps-build-the-loop`). With the room-scale workshops gone from this cut,
-the tmux battery can drive every sitting — `--cut northwind` is that. (First recorded
-in the retired autumn-gaps inventory; cut-level facts now live in
-`training-architecture.md` § *Variant: Northwind Team Track*.)
-
-Same `run-mN.sh` scripts, same `scenarios/mN.txt`, same prompts as the stock
-chain (content is byte-identical). The one change: M3 never runs, so M4 can't
-inherit "current HEAD" (the stock chain's assumption — M3's ADR commit). It
-positions from M2's ending SHA directly instead, the same mechanism M2 already
-uses to position from M1's. Confirmed live: M2 makes no repo commit
-(`m2_ending_sha == m2_starting_sha`), so this is not merely a fallback — it's
-the SUT's actual git state either way.
-
-```bash
-./chain-ae101.sh --cut northwind                        # lemmings: arrange, then m1, m2, m4, m5
-./chain-ae101.sh --cut northwind --to m2                # arrange + M1 + M2 only
-./chain-ae101.sh --cut northwind --from m4 --chain-dir out/_chains/<id>   # resume at M4
-./chain-ae101.sh --cut northwind --sut-kit picoshare    # same cut on picoshare
-./chain-ae101.sh --cut northwind --sut-kit codesearch --m2-sha <sha>   # no arrange helper: starts at m4
-```
-
-**SUT kits.** The cut is content, not SUT — `--sut-kit lemmings | picoshare |
+`--sut-kit lemmings | picoshare |
 codesearch` fixes the repo path, the slugs, the M5 worktree, the scenario
 suffix, the quality-branch names, and whether an arrange helper exists (the kit
 table in `chain-ae101.sh`). A new SUT is a kit-table entry. codesearch has no
 arrange script, so `--from prework|m1|m2` is refused there rather than half-run.
-The module sequence per kit × cut is pinned by `tests/chain-fold.test.sh`.
+The module sequence per kit is pinned by `tests/chain-fold.test.sh`.
 
-**Validated live, medium effort, lemmings kit, 2026-08-13 — full PASS, M1
-through M5. Zero WARN, zero FAIL.** M4 positions from M2's ending SHA and
-passes its in-repo-memory assertion with no dependency on M3's ADR or a
-`test-strategy-lemmings` skill — the cut's one structural difference, exercised
-rather than assumed. M4 named its own branch from the task (`m4/deadlock-terminal-state`,
-not the wrapper's slug) and M5 forked from the right commit anyway, so the
-slug-reconciliation path is covered too. M5 phase B all 6 key turns PASS; phase
-C (packaged re-send, fresh session) shipped 2 commits, 15/15 tests green via the
-project's own `npm test`, clean worktree.
-
-M5's `verify-by-hand-judge` finds no `test-strategy-lemmings` skill on disk (M3
-never runs to author it) and stands down with "nothing to judge" rather than
-erroring — the graceful degradation on a dropped M3 that the retired
-autumn-gaps inventory predicted from the prompt body, confirmed at runtime.
-
-### Standing constraints
+## Standing constraints
 
 Four things about this battery that are easy to break and expensive to diagnose.
 

@@ -1585,7 +1585,7 @@ function guardPersonalisedOutput(customer) {
     console.error(`Build aborted: --for would write a named copy into ${rel}, which git does NOT ignore.`);
     console.error('  A personalised handbook carries the recipient\'s name in the HTML; committing it leaks that name.');
     console.error('  Use a gitignored customer slug (convention: vip-<pseudonym>), e.g.:');
-    console.error('    node scripts/build-workbook.js vip-northwind agentic-engineering-101 --theory --for "<Name>"');
+    console.error('    node scripts/build-workbook.js vip-<pseudonym> agentic-engineering-101 --theory --for "<Name>"');
     process.exit(1);
   }
 }

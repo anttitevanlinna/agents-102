@@ -728,27 +728,40 @@ test('payload base URL is registry-resolvable, not hardcoded', () => {
 // nav above a page that said Module 4, so the same token meant two things in
 // one build and a stated mapping could not repair it. Numbering from the parent
 // keeps one meaning and shows the skipped module as a gap.
-test('a variant cut numbers its modules from the parent, not by position', () => {
+// No shipped cut skips a module, so the gap is a fixture: modules 1, 2, 4 and 5
+// of the parent, registered for the length of one test.
+const GAP_CUT = 'agentic-engineering-101-gap-fixture';
+function withGapCut(fn) {
+  const parent = TRAININGS['agentic-engineering-101'].modules;
+  TRAININGS[GAP_CUT] = {
+    contentKey: 'agentic-engineering-101',
+    label: 'gap fixture',
+    modules: [0, 1, 3, 4].map(i => parent[i]),
+  };
+  try { return fn(); } finally { delete TRAININGS[GAP_CUT]; }
+}
+
+test('a variant cut numbers its modules from the parent, not by position', () => withGapCut(() => {
   const parent = TRAININGS['agentic-engineering-101'].modules.map(m => m.slug);
-  const cut = TRAININGS['agentic-engineering-101-northwind'];
-  assert.ok(cut.contentKey, 'northwind must resolve content through a parent');
+  const cut = TRAININGS[GAP_CUT];
+  assert.ok(cut.contentKey, 'the fixture must resolve content through a parent');
   assert.ok(cut.modules.length < parent.length, 'the fixture must actually be a cut');
 
   cut.modules.forEach((m) => {
     assert.equal(
-      moduleOrdinal('agentic-engineering-101-northwind', m.slug),
+      moduleOrdinal(GAP_CUT, m.slug),
       parent.indexOf(m.slug) + 1,
       `${m.slug} must carry its parent ordinal, not its position in the cut`);
   });
 
   // The concrete regression: sitting 3 is Module 4, and its number is not 3.
-  assert.equal(moduleOrdinal('agentic-engineering-101-northwind', 'run-the-first-experiment'), 4);
-  assert.equal(moduleNumber('agentic-engineering-101-northwind', 'run-the-first-experiment'), '04');
+  assert.equal(moduleOrdinal(GAP_CUT, 'run-the-first-experiment'), 4);
+  assert.equal(moduleNumber(GAP_CUT, 'run-the-first-experiment'), '04');
 
   // Ordinals in a cut are unique, so two cards never collide on one number.
-  const nums = cut.modules.map(m => moduleNumber('agentic-engineering-101-northwind', m.slug));
+  const nums = cut.modules.map(m => moduleNumber(GAP_CUT, m.slug));
   assert.equal(new Set(nums).size, nums.length, 'module numbers must be unique within a cut');
-});
+}));
 
 test('a non-variant training still numbers by position', () => {
   TRAININGS['agentic-engineering-101'].modules.forEach((m, i) => {
@@ -883,7 +896,7 @@ test('--for without --theory aborts rather than silently dropping the name', () 
  *     section was trimmed is the failure worth a test: it is silent in the
  *     builder and lands as a dead tab in front of a trainer mid-cohort.
  *   - No flag marker survives into the rendered page.
- *   - The six-module arc keeps all seven tabs; the Northwind cut drops M3 + M6
+ *   - The six-module arc keeps all seven tabs; a cut without M3 + M6 drops them
  *     and swaps the two-day schedule for the per-sitting line.
  */
 const HANDBOOK_KEYS = Object.keys(TRAININGS).filter(k => fs.existsSync(
@@ -944,8 +957,8 @@ test('trainer handbook: a tab exists exactly when the cut runs that module', () 
   });
 });
 
-test('trainer handbook: the Northwind cut drops the six-module schedule', () => {
-  const cut = trimHandbook('agentic-engineering-101-northwind');
+test('trainer handbook: a cut without M3 and M6 drops the six-module schedule', () => withGapCut(() => {
+  const cut = trimHandbook(GAP_CUT);
   const full = trimHandbook('agentic-engineering-101');
 
   assert.doesNotMatch(cut, /Two-day cohort schedule/,
@@ -957,7 +970,7 @@ test('trainer handbook: the Northwind cut drops the six-module schedule', () => 
 
   assert.match(full, /Two-day cohort schedule/, 'the six-module arc keeps its schedule');
   assert.doesNotMatch(full, /\*\*Sittings\.\*\*/, 'and does not take the cut-only line');
-});
+}));
 
 // ── Cross-doc link FORM ─────────────────────────────────────────────────────
 // A link to a training-specific page must carry its `trainings/<training>/`

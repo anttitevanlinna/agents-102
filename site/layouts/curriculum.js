@@ -118,60 +118,6 @@
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
             ]
         },
-        // Team-track variant of Agentic Engineering 101: four sittings, running
-        // AE101 modules 1, 2, 4 and 5 unmodified. AE101 M3 (`earn-the-trust`) is
-        // dropped and M6 (`spot-gaps-build-the-loop`) becomes a customer-authored
-        // workshop; workshops slot between the sittings and are not ours. Same
-        // `contentKey` mechanism as the preview cut above — file resolution points
-        // at the canonical AE101 content dir, so prework, supplementaries and
-        // references are inherited one copy each and a fix to a shared artefact
-        // reaches every variant. Only the module list, label and lede are its own.
-        //
-        // No `prework:` override, and none needed: AE101's own prework page is now
-        // module-count-neutral, and the payload flag below takes the download,
-        // extract and skill-install steps with it. What remains true for both cuts
-        // is stated once, in one file, rather than forked per variant.
-        //
-        // The gaps inventory beside the module files in
-        // `curriculum/trainings/agentic-engineering-101/` lists what plain AE101
-        // still does not fit about this cut, and the seams a customer-authored
-        // workshop has to be written against. Read it before changing anything here.
-        //
-        // Build student-facing:
-        // node scripts/build-workbook.js northwind agentic-engineering-101-northwind --no-trainer-docs
-        //
-        // Drop the flag to also build the trainer handbook. It trims itself to the
-        // module list below — M3 and M6 tabs gone, and the six-module two-day
-        // schedule replaced by the one-module-per-sitting line — so the cut's
-        // trainers read only delivery that happens in their rooms. The M3 security
-        // spoiler that keeps the flag on for other cuts cannot leak here: this cut
-        // drops M3, so the tab carrying it is not built.
-        'agentic-engineering-101-northwind': {
-            contentKey: 'agentic-engineering-101',
-            // No content tarball. Its only hard consumers were the two M3
-            // security exercises, and M3 is the module this cut drops; reference
-            // and supplementary material renders in the workbook regardless. So
-            // the payload would be equipment issued for a module nobody sits.
-            // Drops the prework's download + extract steps with it (the shared
-            // source carries them behind `<!--flag:payload-->`), which is also
-            // what keeps the student's first instruction from pointing at a URL
-            // this variant never publishes.
-            flags: { payload: false },
-            label: 'Agentic Engineering 101 — Team Track',
-            // The nav and the cards number from the parent, so the row reads
-            // M1 M2 M4 M5 and the skip is visible. The lede does not explain the
-            // skip, count the modules, or describe what surrounds them. What
-            // fills the other slots is the customer's programme, not Bosser
-            // material, and it belongs on the customer's own start page. What is
-            // left is what this material is for, which is all a lede owes.
-            lede: 'For software engineers. Learn the new loop on your own repo.',
-            modules: [
-                { slug: 'getting-going',             title: 'Getting going + context' },
-                { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
-                { slug: 'run-the-first-experiment',  title: 'Run the first experiment' },
-                { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' }
-            ]
-        },
         'claude-basics': {
             label: 'Claude Basics',
             status: 'draft',          // gates report, not block (scripts/gates.js)

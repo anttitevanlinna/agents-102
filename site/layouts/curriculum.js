@@ -161,27 +161,32 @@
     // Legal footer — single source for SPA + workbook. SPA fills its empty
     // <footer class="curriculum-footer"> at boot via innerHTML; workbook
     // emits the wrapped form via renderFooter() at build time.
+    //
+    // It states ownership and points at the licence the reader already holds.
+    // It grants nothing itself: one page is read under a personal licence and
+    // the next under a company's training licence, and the same sentence has
+    // to be true for both.
     var FOOTER_INNER = '<p>' +
         '<strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. ' +
-        'Agents 102 is proprietary training material. As an enrolled student you have a personal usage license &mdash; ' +
-        'you may learn from this, run the exercises, own what you build, and apply it at your own workplace. ' +
-        'You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training. ' +
-        'See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" target="_blank" rel="noopener">full license terms</a> ' +
-        '&middot; <a href="https://bosser.consulting" target="_blank" rel="noopener">bosser.consulting</a>' +
+        'This is proprietary training material. Using, copying or passing it on is ' +
+        'governed by the licence under which you received it. ' +
+        '<a href="https://bosser.consulting" target="_blank" rel="noopener">bosser.consulting</a>' +
         '</p>';
 
     function renderFooter() {
         return '<footer class="curriculum-footer">' + FOOTER_INNER + '</footer>';
     }
 
-    // Persistent bottom-right mark — same license, shortest legible form.
+    // Persistent bottom-right mark, shortest legible form of the same notice.
     // Long-read: fixed overlay so the full footer below doesn't need a scroll
-    // to be seen. Slides: rendered into the deck bar by slides.js, same string.
+    // to be seen. Slides: rendered into the deck bar by slides.js, same string
+    // and same link.
     var COPYRIGHT_MARK = '&copy; Bosser 2026';
+    var COPYRIGHT_LINK = { href: 'https://bosser.consulting', title: 'Proprietary training material of Bosser Oy' };
 
     function renderCopyrightBadge() {
         return '<div class="copyright-badge">' +
-            '<a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" title="Agents 102 is proprietary training material — full license terms" target="_blank" rel="noopener">' +
+            '<a href="' + COPYRIGHT_LINK.href + '" title="' + COPYRIGHT_LINK.title + '" target="_blank" rel="noopener">' +
             COPYRIGHT_MARK + '</a></div>';
     }
 
@@ -1477,6 +1482,7 @@
         FOOTER_INNER: FOOTER_INNER,
         renderFooter: renderFooter,
         COPYRIGHT_MARK: COPYRIGHT_MARK,
+        COPYRIGHT_LINK: COPYRIGHT_LINK,
         renderCopyrightBadge: renderCopyrightBadge,
 
         // Pure (Node-safe)

@@ -40,6 +40,13 @@ try {
     assert.ok(js, `${path.basename(p)}: the runtime is inlined`)
     assert.deepStrictEqual(registryKeys(js), ['claude-basics'], `${path.basename(p)}: registry holds only the built training`)
     assert.ok(html.includes('Permission is hereby granted, free of charge'), `${path.basename(p)}: third-party notices travel in the page`)
+    // The legal footer states ownership and points at the licence the reader
+    // holds. It grants no licence of its own, names no other product, and links
+    // to no terms page that describes a different deal.
+    for (const stale of ['personal usage license', 'enrolled student', 'COPYRIGHT.md', 'Agents 102']) {
+      assert.ok(!html.includes(stale), `${path.basename(p)}: footer still says "${stale}"`)
+    }
+    assert.ok(html.includes('governed by the licence under which you received it'), `${path.basename(p)}: footer points at the reader's own licence`)
     for (const c of customers) {
       assert.ok(!new RegExp(`\\b${c}\\b`, 'i').test(html), `${path.basename(p)}: names the customer slug "${c}"`)
     }

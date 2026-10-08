@@ -585,13 +585,13 @@
     btnNext.addEventListener('click', function () { go(i + 1); });
     exit.addEventListener('click', function () { if (opts.onExit) opts.onExit(); });
     nav.append(btnRail, btnPrev, count, btnNext);
+    // Same short string and link as the long-read badge and full footer: one
+    // source (CurriculumRuntime.COPYRIGHT_MARK / COPYRIGHT_LINK, curriculum.js).
+    var link = (global.CurriculumRuntime && global.CurriculumRuntime.COPYRIGHT_LINK)
+      || { href: 'https://bosser.consulting', title: 'Proprietary training material of Bosser Oy' };
     var mark = el('a', 'deck__copyright', {
-      href: 'https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md',
-      target: '_blank', rel: 'noopener',
-      title: 'Agents 102 is proprietary training material — full license terms'
+      href: link.href, target: '_blank', rel: 'noopener', title: link.title
     });
-    // Same short string as the long-read badge and full footer — one source
-    // (CurriculumRuntime.COPYRIGHT_MARK, curriculum.js), rendered three ways.
     mark.innerHTML = (global.CurriculumRuntime && global.CurriculumRuntime.COPYRIGHT_MARK) || '&copy; Bosser 2026';
     // Barebones control. Mounted only when the host passes onMaxTier — a
     // standalone deck with nowhere to persist the choice shows no dead switch.

@@ -99,7 +99,7 @@ test('shared footer external links open in a new tab', () => {
   const html = renderFooter() + renderCopyrightBadge();
   const externalAnchors = html.match(/<a\b[^>]*href="https?:\/\/[^\"]+"[^>]*>/g) || [];
 
-  assert.equal(externalAnchors.length, 3);
+  assert.ok(externalAnchors.length > 0, 'the footer and badge carry at least one external link, or this checks nothing');
   externalAnchors.forEach((anchor) => {
     assert.match(anchor, /target="_blank"/);
     assert.match(anchor, /rel="noopener"/);

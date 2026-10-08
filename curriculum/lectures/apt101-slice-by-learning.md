@@ -6,6 +6,9 @@
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@99cb13c5)
+- judges @99cb13c5: writing PASS
+
 - **Time:** 5 minutes.
 - **Learning:** team | transfer — the trio writes the specification together, each bringing what they know about the customer, the journey and how the team will check the slice, and orders the slices by what they are least sure of.
 

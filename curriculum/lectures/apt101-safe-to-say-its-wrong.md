@@ -6,6 +6,9 @@
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@99cb13c5)
+- judges @99cb13c5: writing PASS
+
 - **Time:** 5 minutes.
 - **Learning:** team — anyone can say "the agent got this wrong", because the scrutiny lands on the agent's work, not on a person.
 

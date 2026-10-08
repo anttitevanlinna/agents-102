@@ -8,6 +8,9 @@
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@99cb13c5)
+- judges @99cb13c5: writing PASS (2 findings see instances/agentic-product-teams-101--lecture--apt101-go-back-to-your-customers.writing.json)
+
 - **Time:** 8 minutes.
 - **Learning:** transfer — the team's own interviews, aimed at an outcome and sorted into what customers did, become the material the agents work from; a team without weekly customer contact starts there, before agents.
 

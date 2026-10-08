@@ -12,6 +12,9 @@
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@99cb13c5)
+- judges @99cb13c5: writing PASS
+
 - **Time:** 13 minutes.
 - **Learning:** team | transfer — what the trio learned travels to the wider team only as a proposal with named people, the first wall it will meet, and a decision the team makes.
 

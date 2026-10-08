@@ -6,6 +6,9 @@
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@99cb13c5)
+- judges @99cb13c5: writing PASS
+
 - **Time:** 10 minutes.
 - **Learning:** control + transfer — the team decides which doors stay shut and sends the digest off on each person's own look-for line
 

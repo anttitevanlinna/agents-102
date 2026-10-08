@@ -10,6 +10,37 @@ section per run, newest first; per-judge reports under `story-depth/`.
 
 
 
+## Three trainings on one scale: runs `apt101-full-r5` and `a101-full-r1`, 2026-10-08
+
+Build ba5ffcaa, after the full eval sweep of APT101. Two paired sets of three Opus judges, each reading AE101 first and then one other training whole through `scripts/read-training.js`. The prompts are `story-depth/full-bench-prompt.apt101.md` (the prompt of rounds r1 to r4) and `story-depth/full-bench-prompt.a101.md` (same prompt; audience, intended shape and progression row swapped). Judge files: `story-depth/apt101-full-r5.judge-{1,2,3}.md`, `story-depth/a101-full-r1.judge-{1,2,3}.md`.
+
+| Factor | AE101 (six reads) | median | APT101 (j1/j2/j3) | median | r4 | Agents 101 (j1/j2/j3) | median |
+|---|---|---|---|---|---|---|---|
+| Frame | 95/95/95/95/94/95 | 95 | 94/94/94 | 94 | 93 | 92/88/91 | 91 |
+| Narrative | 93/93/93/94/93/94 | 93 | 91/90/90 | 90 | 91 | 90/87/90 | 90 |
+| Point of view | 95/95/95/95/95/95 | 95 | 90/89/87 | 89 | 89 | 76/72/60 | 72 |
+| Stance | 92/92/92/92/91/92 | 92 | 93/93/92 | 93 | 92 | 94/93/94 | 94 |
+| Depth | 92/90/91/92/84/87 | 91 | 86/85/86 | 86 | 90 | 87/83/85 | 85 |
+
+**Reading.**
+- AE101's four story factors repeat within a point across six reads, so a one-point move on those factors is noise. Its depth ranges from 84 to 92, so depth is the noisy factor and a four-point move is inside one judge's spread.
+- APT101's story factors sit where r4 left them. The sweep's edits cost the story nothing and bought it nothing.
+- APT101's depth reads 86 from all three judges, against 90 in r4. The judges agree on where it is thin: three learnings reach the top rung (the bet that can lose, the check is a claim, your insight) and the rest trail. *What each of you is for* scored 88, 80 and 68; *the door* 78 and 70; *write it down* 72 and 75. Judge 3: "This is Day 3's headline and its thinnest learning", because the answer arrives as a three-bullet slide and nobody says it in their own words.
+- Agents 101 matches APT101 on narrative and depth, leads all three on stance, and trails on point of view by a wide margin. The judges give one reason: the voice is "the people running this training", with opinions and no stated history. Judge 2 notes that a hero-student training should keep the narrator small, and that the top rungs still need the narrator's own miss.
+
+**Moves the APT101 judges converge on:**
+1. Day 3's *Say it to each other* round: each person answers *what am I for now* in their own sentence (j2, j3; j1 proposes a face-down sticky from Day 1 turned over here).
+2. Day 3's *Start here*: collect what Day 2 set up, the digest that was told to argue against the bet (j1, j2).
+3. Cut the "got cheap, did not" closer from the slides that only restate it (j1, j2).
+4. *Take it to the team*: end in the trio's hands, with the people named by them before Claude drafts (j2, j3).
+
+**Moves the Agents 101 judges converge on:**
+1. `joint-double-diamond`: cut the scripted sponsor sentence "You are now agent builders" and end on the participant counting the folders the kernel cites (3/3).
+2. `output-quality` *Start here*: cut "This module is the rescue" (j1, j2).
+3. `design-the-sharing-plan`: the student names the five people-plan roles before the agent drafts (j1, j3).
+4. `security`: the closing turn of `practice-of-risk` lands after `audit-your-agent` (j1, j2).
+5. `grounded`: the Mata pre-read told in the first person, as the narrator's own miss (j1, j2; j3 asks for a real scar from the maintainer elsewhere).
+
 ## APT101 full training, hill-climb round 3 (`apt101-full-r4`), 2026-10-07
 
 Same protocol. The fixes concentrated the hidden spine:

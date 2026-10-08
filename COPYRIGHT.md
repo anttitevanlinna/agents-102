@@ -2,7 +2,7 @@
 
 ## Ownership
 
-Copyright (c) 2026 **Bosser Oy** (sole proprietor: Antti Tevanlinna). All rights reserved.
+Copyright (c) 2026 **Bosser Oy**. All rights reserved.
 
 ## Origin and Independence
 

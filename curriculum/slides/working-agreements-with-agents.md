@@ -9,6 +9,9 @@ David Marquet's answer to who decides: "we take the authority for making decisio
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@3d335826 technical@3d335826 slides@3d335826)
+- judges @3d335826: writing PASS, technical PASS, slides PASS
+
 **STATUS:** rebuilt from the APT101 squint (2026-10-07), Day 2 § Each of you makes something. APT101 gap G:working-agreements-with-agents from `apt101-source-pack-2.md` §10 (Marquet). Not taught (simulation training). Owes judging rounds.
 
 **Fidelity guard:** Marquet's quote is from the 2015 post, read in Wayback only (live 404); if it fails at verification, fall back to the live my-story line "giving control, not taking control". "I intend to" stays off the slide (pack Drift 1: level 5 of 7, not the top). The squint teaches no governance beat; the employee representative's question is held by the Day 2 exercise (beat 8, the sceptical colleague), not by this slide.

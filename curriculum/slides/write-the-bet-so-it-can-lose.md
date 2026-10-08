@@ -13,6 +13,9 @@ Write a signal that could embarrass you, and agree on it before the agents start
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@3d335826 technical@3d335826 slides@3d335826)
+- judges @3d335826: writing PASS (2 findings see instances/shared--slide--write-the-bet-so-it-can-lose.writing.json), technical PASS, slides PASS
+
 **STATUS:** squint build (2026-10-07), header from `apt101-squint.md` Day 1 (`header-style-distilled.md` rule 2, the body's former closing line), APT101 gap slide G3, from `apt101-source-pack.md` §2. Not taught (simulation training).
 
 **Fidelity guard:** the template's third line is O'Reilly's own wording ("We will have confidence to proceed when … we see a measurable signal"), not the popular "We will know we have succeeded when". Keep it.

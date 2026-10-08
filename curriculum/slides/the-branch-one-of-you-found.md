@@ -9,6 +9,9 @@ Keep the name of whoever found each branch on it. Treat a branch with one name a
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (technical@3d335826)
+- judges @3d335826: technical PASS
+
 **STATUS:** rebuilt from the APT101 squint (2026-10-07), Day 2 § Widen before you choose. APT101 gap G6, from `group-work-plan.md` § Opportunity solution tree (risk to watch: consensus buries the minority find). Not taught (simulation training). Owes judging rounds.
 
 **Guard:** "often the one worth the most" is a design stance, not a measured rate; do not add a number. Alone-first sketching is `one-two-four-all`'s job in the same lecture.

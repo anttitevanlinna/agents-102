@@ -1,0 +1,194 @@
+{
+  "class": "slides",
+  "file": "curriculum/slides/another-fluent-answer.md",
+  "training": "shared",
+  "verdict": "PASS",
+  "body_sha": "7ff9038e9ba252c4c48aa7895ca83db0b7f5c43ed61f6404a2dc8b23c4953bd4",
+  "shape_hash": "8c28d72cc721109b",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "\"Are you sure?\" is another fluent answer",
+      "lines": "1-9"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "evidence": "chunk 0 L8: \"what would your judge show?\" is the closest; 'your judge' is not named in this file but the module include order (whats-actually-true.md L40,L44) puts exercise apt101-catch-it-making-things-up (builds judges/groundedness-judge.md) before this lecture, so the module-arc carve-out resolves it. L4 'something', 'the first one' resolve in-sentence. Harm (unresolvable referent on the wall) absent.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "evidence": "L8 'your judge' names the artefact, not another file by position; no 'the opening lecture' style pointer. Closest line to violating it.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "PASS",
+      "evidence": "L8 points at the judge from the preceding exercise; verified exists: grep -n judge curriculum/exercises/apt101-catch-it-making-things-up.md → L84,L88 'judges/groundedness-judge.md'. No 'the X you did' phrasing otherwise.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no live-demo or guess-before-reveal beat",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "evidence": "L4-L8 carry a self-sufficient claim (asking the agent returns another fluent answer; fluency is not evidence). Closest: L8 single-line question, but it sits under two claim paragraphs.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "evidence": "L1 header '\"Are you sure?\" is another fluent answer' is true to L4 ('What comes back is another answer from the same place… same confident voice'). Contradiction absent.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "evidence": "L6 'Not the next true word; the next likely one.' is a two-leg contrast in one declarative, not 'Not X. Not Y. Z.'; L6 'Fluency is not evidence. Confidence is not correctness.' is a pair, not a triple; L6 'cited specifically, wrote fluently' is a list inside one sentence with concrete content. No superlative, number, abstraction stack or verb triplet. Closest: L6 pair; stays at two legs.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "evidence": "grep of body view: banned_words/ritual/leverage CLEAN. 'grounded', 'judge', 'sources' are ordinary engineer vocabulary (L4, L6, L8); no beat/mood/compendium/surface-as-noun.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "evidence": "grep -c '\\*\\*' on body L1-9 → 0 bold; budget is ≤1.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "evidence": "Slide file inlined by include at curriculum/lectures/apt101-fluent-is-not-true.md L7 as a standalone-paragraph include; lecture is listed in whats-actually-true.md L44 under .phase--lecture. Reaches the deck.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Phase/Step headers or hand-numbered headings; node scripts/check-slide-numbering.js --file → OK exit 0",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/slides/another-fluent-answer.md → OK, exit 0; no above/below pointers.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no in-body links; signals.has_urls false",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/slides/another-fluent-answer.md → oversized: 0, exit 0 (1 slide, limits 210 words / 6 bullets).",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "evidence": "L1 lecture heading is a claim ('… is another fluent answer'), matching the lecture-claims convention.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "L6 'Fluency is not evidence. Confidence is not correctness.' is the closest to an aphorism kicker but sits mid-paragraph before the final sentence and states the mechanism's consequence, not a restatement of the header or a closing koan; maintainer attests word-for-word carry (L14). L8 question adds a move (apply your judge to a no-fabrication scenario). No doctrine restatement or design commentary.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "Header and body were authored together as a rewrite (maintainer L12); body L4 answers the header's promise. No inherited bullets answering an old header.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    }
+  ],
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "Single-chunk slide file; judged against host lecture apt101-fluent-is-not-true and module whats-actually-true include order. Rule 1/3 depend on the exercise preceding the lecture in that module."
+}

@@ -9,6 +9,9 @@ If a model stopped making things up on your sources, what would your judge show?
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@facf4e50 technical@facf4e50 slides@facf4e50)
+- judges @facf4e50: writing PASS (1 finding see instances/shared--slide--another-fluent-answer.writing.json), technical PASS, slides PASS
+
 **STATUS:** APT101 rewrite of `grounded` § "Are you sure?" is another fluent answer (Agents 101), 2026-10-07, Day 2 § Fluent is not true. Id differs from the home's `are-you-sure`: that file is the Agents 101 slide itself, so this rewrite takes its own name. Not taught (simulation training). Owes judging rounds.
 
 **Carried from home:** the first two paragraphs, word for word. The home's closing prediction (not a bug patched in the next release; later models fabricate less and won't stop) is replaced by a question the trio can answer with the judge it kept in `apt101-catch-it-making-things-up`, which this lecture follows. The question asks what evidence would change their mind; the slide makes no forecast about models.

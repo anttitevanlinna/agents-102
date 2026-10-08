@@ -11,6 +11,9 @@ After a bad night, the next one is usually better with no change at all, so a ru
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@facf4e50 technical@facf4e50 slides@facf4e50)
+- judges @facf4e50: writing PASS (1 finding see instances/shared--slide--change-on-recurrence.writing.json), technical PASS, slides PASS
+
 **STATUS:** round 3 fixes applied (2026-10-06), APT101 rewrite of `the-gate-is-a-claim` § Change on recurrence, not on noise (AE101). Not taught (simulation training).
 
 **Fidelity guard:** Deming is one sentence, name-only, saying only what the home's backing carries (tampering = chasing ordinary variance case by case adds noise). No funnel experiment, no control-chart terms, no quote. Regression to the mean stays unattributed and keeps *usually*. **tampering** is the slide's one bold handle, as at home. "Worth a note" agrees with `the-agent-stops-where-you-stop-writing` in the same lecture: every "not like that" is noted, and a note becomes a rule when it recurs.

@@ -4,8 +4,8 @@
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@99cb13c5)
-- judges @99cb13c5: writing PASS
+**Quality:** compendium-audited 2026-10-08 (writing@99cb13c5 story@33d70a67 technical@33d70a67 pedagogy@33d70a67 strategy@33d70a67 slides@33d70a67)
+- judges @33d70a67: writing PASS, story PASS, technical PASS, behavior N/A, pedagogy PASS, strategy PASS, slides PASS
 
 - **Time:** 3 minutes.
 - **Learning:** team — the pre-mortem the trio just ran gets its name and its reason: confidence peaks after choosing, and a working piece makes doubts harder to say.

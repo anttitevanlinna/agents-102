@@ -79,8 +79,8 @@ The bet is still open, and the next slice is yours to place.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@9299f184 technical@5f1eb1b7 behavior@3d7fd713 pedagogy@761a20a3 strategy@8f78989b slides@8196e1a3)
-- judges @8196e1a3: writing PASS (1 finding see instances/agentic-product-teams-101--module--learn-faster-than-the-market.writing.json), technical PASS, behavior PASS, pedagogy PASS (2 findings see instances/agentic-product-teams-101--module--learn-faster-than-the-market.pedagogy.json), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@9299f184 story@6d12f3e4 technical@5f1eb1b7 behavior@3d7fd713 pedagogy@761a20a3 strategy@8f78989b slides@8196e1a3)
+- judges @6d12f3e4: writing PASS (1 finding see instances/agentic-product-teams-101--module--learn-faster-than-the-market.writing.json), story PASS (1 finding see instances/agentic-product-teams-101--module--learn-faster-than-the-market.story.json), technical PASS, behavior PASS, pedagogy PASS (2 findings see instances/agentic-product-teams-101--module--learn-faster-than-the-market.pedagogy.json), strategy PASS, slides PASS
 
 **STATUS:** built from the build plan (`curriculum/module-design/apt101-build-plan.md` § Day 3), 2026-10-07. `simulation: true` training: pages and prompts land uncarded. Big Idea kept as written (adopted positioning line, strategy 2026-10-05). H1 kept as the registered module title in `site/layouts/curriculum.js` ("Learn faster than the market"); the build plan's day name is "Where your team goes next", and the two are the maintainer's to reconcile.
 

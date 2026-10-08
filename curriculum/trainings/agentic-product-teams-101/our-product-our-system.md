@@ -97,8 +97,8 @@ Before Day 2, three agents each read their own memory with the team's bet in han
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@03787e69 technical@5f1eb1b7 behavior@dd243e74 pedagogy@03787e69 strategy@8f78989b slides@bb791683)
-- judges @03787e69: writing PASS (2 findings see instances/agentic-product-teams-101--module--our-product-our-system.writing.json), technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--module--our-product-our-system.pedagogy.json), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@03787e69 story@6d12f3e4 technical@5f1eb1b7 behavior@dd243e74 pedagogy@03787e69 strategy@8f78989b slides@bb791683)
+- judges @6d12f3e4: writing PASS (2 findings see instances/agentic-product-teams-101--module--our-product-our-system.writing.json), story PASS (verify-refuted, 1 finding see instances/agentic-product-teams-101--module--our-product-our-system.story.json), technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--module--our-product-our-system.pedagogy.json), strategy PASS, slides PASS
 
 **STATUS:** built from the build plan (`curriculum/module-design/apt101-build-plan.md` § Day 1), 2026-10-07, for the `simulation: true` training Agentic Product Teams 101. Not taught. Big Idea = the adopted positioning line (strategy, 2026-10-05), kept as the Day 1 module's; the day's story heading in the squint and build plan is *You were right all along*, and the H1 stays the registered module title (`site/layouts/curriculum.js`) so nav and file agree.
 

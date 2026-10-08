@@ -36,7 +36,7 @@ Push back on a merge that reads like the average of the three of you. If your si
 
 Each of you, on your own laptop, back in your first <span class="rt-code">session</span><span class="rt-cowork">task</span>. Ask Claude to send three minds through your memory, each from a different angle, and write back what they find.
 
-Three subagents fanning out at once. If one starts reading the world, stop it, steer narrower, then say *"continue"*.
+Three subagents fanning out at once. If one starts reading the world, stop it, steer narrower, then say *"continue"*. If one comes back fast with almost nothing, tell it there is more here and send it back.
 
 <div class="rt-code">
 

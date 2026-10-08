@@ -1,0 +1,218 @@
+{
+  "class": "cross_module",
+  "module_set": [
+    "curriculum/trainings/agentic-product-teams-101/our-product-our-system.md",
+    "curriculum/trainings/agentic-product-teams-101/whats-actually-true.md",
+    "curriculum/trainings/agentic-product-teams-101/learn-faster-than-the-market.md"
+  ],
+  "training": "agentic-product-teams-101",
+  "body_sha": {
+    "curriculum/trainings/agentic-product-teams-101/our-product-our-system.md": "2e50936e0b24afe83ee1ce01fc0d4d2e6cbbdd51a785221381366e54e894951d",
+    "curriculum/trainings/agentic-product-teams-101/whats-actually-true.md": "44f8e7f725e52fe6e3f7a2b023d2c1b14a1a754a9e32b08b4dd0b6f21dd272be",
+    "curriculum/trainings/agentic-product-teams-101/learn-faster-than-the-market.md": "00237edb7b7f22dc358b78a9fd7915851efc3546f2ab5af752e31c0ca9b74e38"
+  },
+  "verdict": "PASS",
+  "module_pairs_evaluated": [
+    {
+      "from": "curriculum/trainings/agentic-product-teams-101/our-product-our-system.md",
+      "to": "curriculum/trainings/agentic-product-teams-101/whats-actually-true.md",
+      "directions_walked": [
+        "D1 close -> D2 open",
+        "D2 open -> D1 close (every claim D2 makes of Day 1 traced to a D1 producer)"
+      ],
+      "rules_evaluated": [
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 1,
+          "rule_lead": "Peek at the next module before adding a second exercise.",
+          "verdict": "PASS",
+          "evidence": "Walked D1->D2 and D2->D1. Harm: a second exercise added silently breaks the next day's contract. Absent: every D1 artefact the D2 body relies on (digest, look-for line, expect line, bet, door) has a D1 contract row naming Day 2 as consumer (our-product-our-system.md:125-131) and a matching consuming exercise (grep: team/bet.md in apt101-pick-the-outcome.md, apt101-read-the-digest.md; expect.md x2 in apt101-d2-what-ran-overnight.md).",
+          "fix_hint": null,
+          "blocking": false
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 2,
+          "rule_lead": "Between-module reading appears in two places.",
+          "verdict": "N/A",
+          "evidence": null,
+          "fix_hint": null,
+          "blocking": false,
+          "na_reason": "no between-module reading at this boundary; D1 Bring to Day 2 (:92) is a laptop, not reading, and D2 has no Prework section"
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 3,
+          "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
+          "verdict": "PASS",
+          "evidence": "Closest: `team/bet.md` and `team/what-goes-in.md` are consumed by D2 per D1 table (:122,:124) but D2's own table (whats-actually-true.md:147-160) lists no inbound rows for them. Stays inside because the consuming prompts name them (grep: team/bet.md in apt101-d2-carry-the-doubt, apt101-d2-write-the-chosen-bet; what-goes-in.md in apt101-d2-what-ran-overnight, apt101-d2-carry-the-doubt) and the digest path `module-2/morning-agent/latest.html` is named at both ends (:129 and apt101-read-the-digest.md). Both directions walked.",
+          "fix_hint": null,
+          "blocking": false
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 4,
+          "rule_lead": "Session boundaries and working directories are designed, not implicit.",
+          "verdict": "PASS",
+          "evidence": "D2 opens with `Start a new Claude Code session in your training folder, ~/Documents/apt101/` and `/rename apt101-day-2` (apt101-read-the-digest.md:7-10); D1 prework names the same path (our-product-our-system.md:12). Closest to violating: D1 close names no explicit end-of-session act. Stays inside because the day boundary is overnight and the open names the folder and a new session, the rule's diagnostic (cd target known). Same directory, no change needing rationale.",
+          "fix_hint": null,
+          "blocking": false
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 5,
+          "rule_lead": "Cross-module artefact contracts \u2014 every produced file is a contract row in the maintainer block.",
+          "verdict": "PASS",
+          "evidence": "D1 maintainer block carries an Artefact contracts table with identifier, producer, consumer for every file artefact (our-product-our-system.md:118-133); D2 likewise (whats-actually-true.md:143-160). Closest: `team/bet.md` row (:122) names consumers as 'Day 2 outcome' without a prompt key; identifier and producer are unambiguous, so not REVISE.",
+          "fix_hint": null,
+          "blocking": false
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 6,
+          "rule_lead": "Cross-module structural-failure rescue \u2014 body-prose callouts at module open when the prior module's send-off can fail.",
+          "verdict": "N/A",
+          "evidence": null,
+          "fix_hint": null,
+          "blocking": false,
+          "na_reason": "no rescue callouts in D2 Start here or What you arrive with; rule is a MAY"
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 7,
+          "rule_lead": "Audit-discipline \u2014 walk M(N-1) close + M(N) open before flagging M(N) architecture claims as spec drift.",
+          "verdict": "N/A",
+          "evidence": null,
+          "fix_hint": null,
+          "blocking": false,
+          "na_reason": "meta-rule for the audit, no capability claim 'Module N+' is in play here"
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 8,
+          "rule_lead": "Bring-or-scramble plain-stakes-line shape at module homework boundaries.",
+          "verdict": "PASS",
+          "evidence": "Closest: D1 Bring to Day 2 `A digest that didn't run means you start the day reading someone else's.` (:92). One short plain sentence, student-as-subject, cost named is the day's own start, no peer comparison, no next-day mechanics, no head-start prompt. Also :20 `Arrive without your own material and you build a memory of nothing. Your call.` is prework not a module boundary and stays in form.",
+          "fix_hint": null,
+          "blocking": false
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 9,
+          "rule_lead": "Audit-discipline \u2014 read every sibling exercise in a multi-exercise module before opining on one.",
+          "verdict": "N/A",
+          "evidence": null,
+          "fix_hint": null,
+          "blocking": false,
+          "na_reason": "no opinion on a single exercise is being formed; this is a set-level read"
+        }
+      ]
+    },
+    {
+      "from": "curriculum/trainings/agentic-product-teams-101/whats-actually-true.md",
+      "to": "curriculum/trainings/agentic-product-teams-101/learn-faster-than-the-market.md",
+      "directions_walked": [
+        "D2 close -> D3 open",
+        "D3 open -> D2 close (every claim D3 makes of Day 2 traced to a D2 producer)"
+      ],
+      "rules_evaluated": [
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 1,
+          "rule_lead": "Peek at the next module before adding a second exercise.",
+          "verdict": "PASS",
+          "evidence": "Walked D2->D3 and D3->D2. Harm as above. Absent: D2's Next promises tonight's digest 'looks for what argues against' the bet (whats-actually-true.md:97) and the producing exercise delivers it (grep: 'argues against' at apt101-keep-and-run-tonight.md:33, :45, leap test :66); D3 Start here reads that digest against the chosen bet (learn-faster-than-the-market.md:21).",
+          "fix_hint": null,
+          "blocking": false
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 2,
+          "rule_lead": "Between-module reading appears in two places.",
+          "verdict": "N/A",
+          "evidence": null,
+          "fix_hint": null,
+          "blocking": false,
+          "na_reason": "no between-module reading; D2 Bring to Day 3 (:91-93) is an unopened digest and five booked people, D3 has no Prework section"
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 3,
+          "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
+          "verdict": "PASS",
+          "evidence": "Closest: D2 table lists `team/chosen-bet.md`, `team/tree.md`, `team/premortem.md`, `prototype.html`, `way-of-working.md` and the judge as consumed by Day 3 (whats-actually-true.md:152-157) while D3's table (learn-faster-than-the-market.md:101-117) has inbound rows only for digest, digest-day1, doubts, hypotheses, door and agents. Stays inside because the consuming prompts name them (grep: team/chosen-bet.md in apt101-d3-slice-by-learning, apt101-d3-read-the-sessions, apt101-d3-team-monday; groundedness-judge in apt101-d3-what-good-means; way-of-working in apt101-d3-the-job-your-team-hires; digest-day1 in apt101-d3-caught). `module-2/morning-agent/latest.html` is the same string at both ends (:154,:160 and D3 :21,:104). Both directions walked.",
+          "fix_hint": null,
+          "blocking": false
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 4,
+          "rule_lead": "Session boundaries and working directories are designed, not implicit.",
+          "verdict": "PASS",
+          "evidence": "D3 opens `Start a new Claude Code session at your training-directory root` with `/rename apt101-day-3` (apt101-map-the-story.md:7-10). Closest to violating: the term differs from D2's `your training folder, ~/Documents/apt101/` (apt101-read-the-digest.md:7) and the exact path is not repeated. Stays inside because D1 uses 'training-directory root' for the same folder (our-product-our-system.md:68) and D3 notes at :87 why the day's session opens in the first exercise; offered as a suggestion, not a gate.",
+          "fix_hint": null,
+          "blocking": false
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 5,
+          "rule_lead": "Cross-module artefact contracts \u2014 every produced file is a contract row in the maintainer block.",
+          "verdict": "PASS",
+          "evidence": "D3 table carries identifier, producer, consumer for each artefact (learn-faster-than-the-market.md:101-117). Closest: `Eval run` row's producer and consumer are the same exercise (:110); it is self-contained so no cross-module reader is unnamed.",
+          "fix_hint": null,
+          "blocking": false
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 6,
+          "rule_lead": "Cross-module structural-failure rescue \u2014 body-prose callouts at module open when the prior module's send-off can fail.",
+          "verdict": "N/A",
+          "evidence": null,
+          "fix_hint": null,
+          "blocking": false,
+          "na_reason": "no rescue callouts in D3 Start here; rule is a MAY"
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 7,
+          "rule_lead": "Audit-discipline \u2014 walk M(N-1) close + M(N) open before flagging M(N) architecture claims as spec drift.",
+          "verdict": "N/A",
+          "evidence": null,
+          "fix_hint": null,
+          "blocking": false,
+          "na_reason": "meta-rule for the audit, no 'Module N+' capability claim in play"
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 8,
+          "rule_lead": "Bring-or-scramble plain-stakes-line shape at module homework boundaries.",
+          "verdict": "PASS",
+          "evidence": "Closest: D2 `Leave the next digest unopened until the room.` with reason `a digest read alone is a digest read where you know least.` (whats-actually-true.md:91). Plain, student-subject, one sentence of cost; the second Bring line (:93) names who books the five people, a fact, no stakes from the room. No head-start prompt, no next-day mechanics beyond 'read it together against the chosen bet'.",
+          "fix_hint": null,
+          "blocking": false
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 9,
+          "rule_lead": "Audit-discipline \u2014 read every sibling exercise in a multi-exercise module before opining on one.",
+          "verdict": "N/A",
+          "evidence": null,
+          "fix_hint": null,
+          "blocking": false,
+          "na_reason": "no opinion on a single exercise is being formed; set-level read"
+        }
+      ]
+    }
+  ],
+  "suggestions": [
+    {
+      "rule": "check_cross_module.md 4",
+      "line": 7,
+      "now": "Start a new Claude Code session at your training-directory root. (curriculum/exercises/apt101-map-the-story.md:7)",
+      "proposed": "Start a new Claude Code session in your training folder, `~/Documents/apt101/`. (same words as apt101-read-the-digest.md:7, and the Cowork span likewise)"
+    }
+  ],
+  "notes": "Both adjacent pairs walked in both directions. Every cross-day artefact claimed in a producing maintainer table was grep-traced to a consuming prompt or exercise in the next day. D3 table lacks inbound rows for several Day 2 artefacts; the consuming prompts name them, so not blocking. Out-of-lane: D1 uses both 'training folder' and 'training-directory root' for one place (vocabulary).",
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 1
+}

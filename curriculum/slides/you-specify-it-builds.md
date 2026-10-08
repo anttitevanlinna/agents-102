@@ -7,6 +7,9 @@ Nobody can hand the agent that knowledge of your customers and your direction. T
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@c383e080 technical@c383e080 slides@c383e080)
+- judges @c383e080: writing PASS, technical PASS, slides PASS
+
 **STATUS:** composed from the squint (2026-10-07), APT101 rewrite of `where-is-this-all-going` § You described it; something else built it, drawing on AE101 `agents-that-build-agents` § The right information grounds and makes quality (vision line only; the 500K-lines example is code register and is not carried). Opens `apt101-slice-by-learning`, before `slice-by-what-you-learn`; it names no slicing method, so Patton stays on that slide. Specifying is the trio's shared work, each bringing their part (maintainer, 2026-10-06). Not taught (simulation training).
 
 <!-- backing -->

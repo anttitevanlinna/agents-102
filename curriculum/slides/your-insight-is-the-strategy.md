@@ -9,6 +9,9 @@ That is real strategy work, and it does not get cheaper when building does. Whic
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@c383e080 technical@c383e080 slides@c383e080)
+- judges @c383e080: writing PASS (1 finding see instances/shared--slide--your-insight-is-the-strategy.writing.json), technical PASS, slides PASS
+
 **STATUS:** composed from the squint (2026-10-07), new APT101 stance slide (✱, stance answer in `apt101-squint.md`), second in `apt101-three-jobs-rewritten`. Answers the stance thread planted on Day 1 and sharpened on Day 2: when models analyse wider, deeper and faster, what is your insight? Answer = real strategy work (`bosser-strategy:content-strategy-agentic-product-management.md` § Appendix, Stance on the future, maintainer 2026-10-07). Posed as a question, no prediction. Not taught (simulation training). Owes judging rounds.
 
 <!-- backing -->

@@ -594,7 +594,7 @@
     // source file. A cut variant (different module list) is still a `contentKey`
     // entry, not a flag; flags are for when two variants read the SAME file and
     // one of them genuinely does not have the thing the passage describes. The
-    // motivating case: the Northwind team track ships no content tarball, so the
+    // motivating case: a team-track cut that ships no content tarball, so the
     // prework steps that download and extract it describe equipment that variant
     // does not issue.
     //

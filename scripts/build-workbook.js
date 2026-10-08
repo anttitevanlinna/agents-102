@@ -38,6 +38,7 @@ const { marked } = require('marked');
 const ROOT = path.resolve(__dirname, '..');
 const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
 const { readCurriculumMd } = require('./read-curriculum.js');
+const { scopedRuntime } = require('./workbook-runtime.js');
 const CT = require(path.join(ROOT, 'scripts/calculate-time.js'));
 const { loadRegistry, writeRegistry, OUT_FILE: PROMPTS_JSON } = require('./compile-prompts.js');
 
@@ -557,7 +558,10 @@ const STUDENT_HANDBOOK_PRINT_CSS = fs.readFileSync(
 const ANATOMY = Object.values(PROMPT_REGISTRY).some(e => e && e.anchors && e.anchors.length)
   ? require('./compile-anatomy.js').entries() : null;
 if (ANATOMY) require('./write-if-changed.js').writeIfChanged(path.join(ROOT, 'site/anatomy.json'), JSON.stringify(ANATOMY, null, 2) + '\n');
-const SPA_JS = (ANATOMY ? `window.__ANATOMY = ${JSON.stringify(ANATOMY).replace(/<\//g, '<\\/')};\n` : '') + fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.js'), 'utf8');
+const SPA_JS_SRC = fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.js'), 'utf8');
+// The runtime a page inlines carries the registry entry of the training it was
+// built for and no other (scripts/workbook-runtime.js).
+const spaJs = trainingKey => (ANATOMY ? `window.__ANATOMY = ${JSON.stringify(ANATOMY).replace(/<\//g, '<\\/')};\n` : '') + scopedRuntime(SPA_JS_SRC, CR.TRAININGS, trainingKey);
 // The slide viewer (Long-read ⇄ Slides). Inlined so the handbook keeps working
 // offline; inert until the reader toggles Slides.
 const SLIDES_CSS = fs.readFileSync(path.join(ROOT, 'site/layouts/slides.css'), 'utf8');
@@ -766,7 +770,7 @@ const TRAINER_GUIDE_INIT_JS = `
 // templates so the workbook's .module keeps its narrower projected measure.
 const TRAINER_WIDTH_CSS = `.module { max-width: 56em; }`;
 
-function trainerGuideTemplate(customer, content) {
+function trainerGuideTemplate(customer, trainingKey, content) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -778,7 +782,7 @@ ${TRAINER_WIDTH_CSS}</style>${BRAND.style(1)}
 </head>
 <body class="runtime-cli workbook">
 ${content}
-<script>${SPA_JS}</script>
+<script>${spaJs(trainingKey)}</script>
 <script>${TRAINER_GUIDE_INIT_JS}</script>
 </body>
 </html>
@@ -921,7 +925,7 @@ function buildTrainerModules(customer, trainingKey) {
   return main + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
-function trainerModulesTemplate(customer, content) {
+function trainerModulesTemplate(customer, trainingKey, content) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -934,7 +938,7 @@ ${TRAINER_MODULES_TABS_CSS}</style>${BRAND.style(1)}
 </head>
 <body class="runtime-cli workbook">
 ${content}
-<script>${SPA_JS}</script>
+<script>${spaJs(trainingKey)}</script>
 <script>${TRAINER_GUIDE_INIT_JS}</script>
 <script>${TRAINER_MODULES_TAB_JS}</script>
 </body>
@@ -1153,7 +1157,7 @@ function theoryHandbookTemplate(customer, trainingKey, content, recipient) {
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook theory-handbook" data-training="${trainingKey}">
 ${content}
-<script>${SPA_JS}</script>
+<script>${spaJs(trainingKey)}</script>
 <script data-theory-handbook>${THEORY_HANDBOOK_JS}</script>
 <script>${TRAINER_GUIDE_INIT_JS}</script>
 </body>
@@ -1244,7 +1248,7 @@ function exercisesWorkbookTemplate(customer, trainingKey, content) {
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook" data-training="${trainingKey}">
 ${content}
-<script>${SPA_JS}</script>
+<script>${spaJs(trainingKey)}</script>
 <script>${TRAINER_GUIDE_INIT_JS}</script>
 </body>
 </html>
@@ -1280,7 +1284,7 @@ function template(title, content, trainingKey) {
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook student-handbook" data-training="${trainingKey}"${deck}>
 ${content}
-<script>${SPA_JS}</script>
+<script>${spaJs(trainingKey)}</script>
 <script>${SLIDES_JS}</script>
 <script>${WORKBOOK_INIT_JS}</script>
 </body>
@@ -1417,7 +1421,7 @@ function buildTraining(customer, trainingKey, opts = {}) {
   // resolve into that workbook.
   const guideBody = buildTrainerGuide(customer, trainingKey);
   if (guideBody !== null) {
-    const guideHtml = trainerGuideTemplate(customer, guideBody);
+    const guideHtml = trainerGuideTemplate(customer, trainingKey, guideBody);
     const guideFile = path.join(outDir, 'trainer-guide.html');
     fs.writeFileSync(guideFile, guideHtml);
     const guideKB = (fs.statSync(guideFile).size / 1024).toFixed(0);
@@ -1428,7 +1432,7 @@ function buildTraining(customer, trainingKey, opts = {}) {
   // resolve into this workbook the same way the trainer guide's do.
   const modulesBody = buildTrainerModules(customer, trainingKey);
   if (modulesBody !== null) {
-    const modulesHtml = trainerModulesTemplate(customer, modulesBody);
+    const modulesHtml = trainerModulesTemplate(customer, trainingKey, modulesBody);
     const modulesFile = path.join(outDir, 'trainer-modules.html');
     fs.writeFileSync(modulesFile, modulesHtml);
     const modulesKB = (fs.statSync(modulesFile).size / 1024).toFixed(0);

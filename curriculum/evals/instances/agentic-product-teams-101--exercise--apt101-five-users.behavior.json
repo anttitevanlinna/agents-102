@@ -3,8 +3,8 @@
   "file": "curriculum/exercises/apt101-five-users.md",
   "training": "agentic-product-teams-101",
   "verdict": "PASS",
-  "body_sha": "d14df65cbf38e3dfbd39a5699d564cf1d4addb50446069bc9ce381acf4358469",
-  "trace_status": "generated_first_time",
+  "body_sha": "01f4af1b39c14562d52950f712eccb962e39db25608477432f72ed73d33d9b0e",
+  "trace_status": "cached",
   "prompts_evaluated": 2,
   "prompts_findings": [
     {
@@ -22,22 +22,16 @@
       "risks_fired": [
         {
           "pattern_id": "file-preservation-gap",
-          "confidence": "med",
-          "evidence": "First, copy every moment from the wall into team/five-users.md, under its user, word for word.",
-          "fix_hint": "name the Phase 1 script as staying; moments go below it"
+          "confidence": "low",
+          "carve_out": "preserve boundary named in prompt",
+          "evidence": "First, add every moment from the wall to team/five-users.md, below the script, under its user, word for word. Leave the script as it is.",
+          "fix_hint": "none owed; the prompt names the script as staying"
         }
       ]
     }
   ],
-  "suggestions": [
-    {
-      "rule": "file-preservation-gap",
-      "line": 18,
-      "now": "First, copy every moment from the wall into team/five-users.md, under its user, word for word.",
-      "proposed": "First, add every moment from the wall to team/five-users.md below the script, under its user, word for word. Leave the script as it is."
-    }
-  ],
+  "suggestions": [],
   "blocking_findings_count": 0,
   "nonblocking_findings_count": 0,
-  "notes": "No accept-notes in the maintainer block. Prompt 2 fires one med, non-blocking (a single med on a load-bearing prompt does not reach REVISE). Suggestion line is the prompt-registry line (apt101-d3-read-the-sessions), not a raw-source line. Other risks considered: Don't choose / Don't mark lines neutralise default-acceptance and self-report; body line 56 pushes back on reading a signal the bet did not name."
+  "notes": "Accept-notes: none (only dated line is the Quality stamp). Diff 3d7fd713..HEAD touches only the maintainer block (Quality stamp, Leap test, Failure modes); both prompts unchanged, cached trace entries reused. Prompt 1 writes a new file, no risk. Prompt 2 file-preservation-gap low, neutralised in-prompt by 'below the script... Leave the script as it is.' Don't choose / Don't mark neutralise default-acceptance and self-report-inflation; body line 56 pushes back on unnamed signals; unreachable-Miro path handled in-prompt."
 }

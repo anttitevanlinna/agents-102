@@ -98,12 +98,12 @@ The memory sits still until something reads it. Next, each of you gives it a job
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (technical@5f1eb1b7 behavior@dd243e74 pedagogy@dd242fd9)
-- judges @5f1eb1b7: technical PASS, behavior PASS, pedagogy PASS (verify-refuted)
+**Quality:** compendium-audited 2026-10-08 (writing@9299f184 technical@5f1eb1b7 behavior@dd243e74 pedagogy@dd242fd9)
+- judges @9299f184: writing PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-build-your-product-memory.writing.json), technical PASS, behavior PASS, pedagogy PASS (verify-refuted)
 
 **Role in Day 1:** beat 6, after lunch; each person's own material becomes a memory pointed at the bet. Day 2's overnight digest and every Day 2 prompt read it.
 
-**Reuse:** keys `build-your-challenge-memory-1`, `-2`, `-3`, `-4`, `-7`, `-8` (per the reuse map; `-5`, `-6` move to `apt101-send-it-off`, `-9` is dropped). Framing in prose: "challenge" = the bet seen from this person's seat; the "revisit after Module 4" line in `-1` is overridden by the door.
+**Reuse:** keys `build-your-challenge-memory-1`, `-2`, `-3`, `-4`, `-7`, `-8` (`-5` and `-6` are used in `apt101-send-it-off`; `-9` is not used in this training). Framing in prose: "challenge" = the bet seen from this person's seat; the "revisit after Module 4" line in `-1` is overridden by the door.
 
 **Frameworks:** none named in body; the three layers (sources, memory, rules file) and "sharper, not longer" are named by *Your material is the moat* after, so the take-stock section stops at what each person saw.
 

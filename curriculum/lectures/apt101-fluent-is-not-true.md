@@ -8,6 +8,9 @@
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@55670f8b)
+- judges @55670f8b: writing PASS
+
 - **Time:** 8 minutes.
 - **Learning:** control — a fluent answer is not evidence; the person who sat in the interviews is the one who catches the invented quote.
 

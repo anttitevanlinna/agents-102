@@ -12,6 +12,9 @@
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@55670f8b)
+- judges @55670f8b: writing PASS (1 finding see instances/agentic-product-teams-101--lecture--apt101-building-rationed-it.writing.json)
+
 - **Time:** 13 minutes.
 - **Learning:** team — the trio recognises the outcome craft it already knows, and that building cost, not naivety, shrank it to post-its
 

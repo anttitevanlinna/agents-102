@@ -12,6 +12,9 @@
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@55670f8b)
+- judges @55670f8b: writing PASS
+
 - **Time:** 13 minutes.
 - **Learning:** team — with the slice cheap, the decisions are the work, and the team that builds owns them; the stance question is planted
 

@@ -8,6 +8,9 @@
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@55670f8b)
+- judges @55670f8b: writing PASS
+
 - **Time:** 8 minutes.
 - **Learning:** team | control — the whole team watches users, sets what they did against what the digest said, and reads the result against the signal it agreed before building.
 

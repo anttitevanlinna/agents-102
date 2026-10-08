@@ -30,8 +30,8 @@ Read the obstacle and the question beside the outcome in `team/bet.md` and the c
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@259b781c story@ba032676 technical@d747a00d behavior@0ac6010f pedagogy@761a20a3 strategy@2a492ac7 slides@ccbff4e7)
-- judges @ba032676: writing PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-pick-the-outcome.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (verify-refuted), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@259b781c story@ba032676 technical@a16b0c55 behavior@0ac6010f pedagogy@761a20a3 strategy@2a492ac7 slides@ccbff4e7)
+- judges @a16b0c55: writing PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-pick-the-outcome.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (verify-refuted), strategy PASS, slides PASS
 
 **Role in Day 2:** beat 2. Fixes the root of today's tree (the agreed outcome) and the decision it informs, in one file every Day 2 prompt reads.
 

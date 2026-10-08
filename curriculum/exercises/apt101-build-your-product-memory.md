@@ -98,8 +98,8 @@ The memory sits still until something reads it. Next, each of you gives it a job
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@03787e69 story@6d12f3e4 technical@5f1eb1b7 behavior@dd243e74 pedagogy@03787e69 strategy@8f78989b slides@bb791683)
-- judges @6d12f3e4: writing PASS (4 findings see instances/agentic-product-teams-101--exercise--apt101-build-your-product-memory.writing.json), story PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-build-your-product-memory.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@03787e69 story@6d12f3e4 technical@a16b0c55 behavior@dd243e74 pedagogy@03787e69 strategy@8f78989b slides@bb791683)
+- judges @a16b0c55: writing PASS (4 findings see instances/agentic-product-teams-101--exercise--apt101-build-your-product-memory.writing.json), story PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-build-your-product-memory.story.json), technical PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-build-your-product-memory.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Role in Day 1:** beat 6, after lunch; each person's own material becomes a memory pointed at the bet. Day 2's overnight digest and every Day 2 prompt read it.
 

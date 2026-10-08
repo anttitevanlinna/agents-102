@@ -107,8 +107,8 @@ Four checks ran, a scorer measured them, and the one that won on your own eviden
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@9669d4c1 story@9669d4c1 technical@5f1eb1b7 behavior@6d12f3e4 pedagogy@9669d4c1 strategy@8f78989b slides@9669d4c1)
-- judges @9669d4c1: writing PASS (8 findings see instances/agentic-product-teams-101--exercise--apt101-catch-it-making-things-up.writing.json), story PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-catch-it-making-things-up.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@9669d4c1 story@9669d4c1 technical@a16b0c55 behavior@6d12f3e4 pedagogy@9669d4c1 strategy@8f78989b slides@9669d4c1)
+- judges @a16b0c55: writing PASS (8 findings see instances/agentic-product-teams-101--exercise--apt101-catch-it-making-things-up.writing.json), story PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-catch-it-making-things-up.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Role in Day 2:** beat 6, the trust centre of the day. Produces the groundedness judge every later beat leans on, and the first real catch. *Safe to say it's wrong* and *Fluent is not true* sit after: the first names the norm the phase 5 share just used ("the agent got this wrong", said about a real summary), the second names what the trio caught (stretch, smooth, the made-up quote).
 

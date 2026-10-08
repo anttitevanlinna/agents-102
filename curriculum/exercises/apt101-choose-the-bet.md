@@ -48,8 +48,8 @@ One bet, written so it can lose, with the evidence behind it and the branches yo
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@7ff539b9 story@5494bb26 technical@1faabaa8 behavior@5494bb26 pedagogy@f40bde8d strategy@ed634491 slides@8196e1a3)
-- judges @5494bb26: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@7ff539b9 story@5494bb26 technical@a16b0c55 behavior@5494bb26 pedagogy@f40bde8d strategy@ed634491 slides@8196e1a3)
+- judges @a16b0c55: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Role in Day 2:** beat 7, first after lunch. Turns the attributed tree into one chosen bet, with evidence and its riskiest assumption, that beat 8 builds pieces of and Day 3 slices.
 

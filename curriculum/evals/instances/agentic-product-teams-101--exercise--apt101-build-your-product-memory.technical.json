@@ -3,8 +3,8 @@
  "file": "curriculum/exercises/apt101-build-your-product-memory.md",
  "training": "agentic-product-teams-101",
  "verdict": "PASS",
- "body_sha": "55bac02fac4a8ee2dbb39ee4d3f484d032e61e4bc125df3d05bc00f18190f9d1",
- "shape_hash": "2659c02df24ec8b4",
+ "body_sha": "ad2740f9e827fa5c75fb6af6267994b1c38360acb57fdb5739e2bc71cb5cf5de",
+ "shape_hash": "fa6ae055ead9247b",
  "rules_evaluated": [
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -220,9 +220,9 @@
    "compendium": "check_platform_and_boundaries.md",
    "rule_index": 8,
    "rule_lead": "Others' material off-limits as-is.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "no external curriculum referenced",
+   "verdict": "PASS",
+   "evidence": "Harm (copying third-party curricula/prompts into our material) absent: grep -ciE 'client|northwind|acme|copyright|licen' on body -> 0; the six prompts are registry-authored (curriculum/prompts/build-your-challenge-memory-*), no third-party text. Closest: L33/prompt 1 tell Claude to fetch public practitioner articles into the student's own sources/ (L35-39); that is the student's private memory, not material shipped under curriculum/.",
+   "na_reason": null,
    "fix_hint": null,
    "blocking": false
   },
@@ -1970,10 +1970,10 @@
    "compendium": "check_prompts.md",
    "rule_index": 40,
    "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
-   "verdict": "PASS",
-   "evidence": "L11 'Keep the same session running. Claude still has your brief' establishes warm scrollback, so back-references like 'the curation plan we just agreed' are correct.",
+   "verdict": "REVISE",
+   "evidence": "L11 'Keep the same session/task running. Claude still has your brief' makes the session warm, so 'the curation plan we just agreed' (prompt 2) resolves. Warm is not referent-present (40b): prompt 2 (L37) says 'You'll read the actual file directly when Beat 3 needs it', but in prompt 1's scrollback 'three beats' ends with Beat 3 = 'propose a curation plan', while the memory build is prompt 3; the body no longer says beats (L19 'Three steps'), so the coined ordinal reaches the agent only from prompt 1 and points at the wrong move. Prompt 1 also prints 'skip for now, revisit after Module 4' into Claude's plan; agentic-product-teams-101 has three modules and the Reuse line only says the door overrides it (no dated accept-note). Harm present but small: a misread ordinal or a dangling Module 4 in the student's plan; recoverable in-beat.",
    "na_reason": null,
-   "fix_hint": null,
+   "fix_hint": "Prompt 2: replace 'Beat 3' with the build move; prompt 1: drop 'revisit after Module 4' (card-gated, check_prompts 22)",
    "blocking": false
   },
   {
@@ -2091,13 +2091,13 @@
  ],
  "suggestions": [
   {
-   "rule": "check_prompts.md §32",
+   "rule": "check_prompts.md §40",
    "line": 27,
    "now": "flag it as \"skip for now, revisit after Module 4\" rather than putting it in the plan",
    "proposed": "flag it as \"skip for now\" rather than putting it in the plan"
   },
   {
-   "rule": "check_prompts.md §6",
+   "rule": "check_prompts.md §40",
    "line": 37,
    "now": "You'll read the actual file directly when Beat 3 needs it.",
    "proposed": "You'll read the actual file directly when we build the memory."
@@ -2129,7 +2129,7 @@
    "source": "inferred"
   },
   {
-   "claim": "Turn on plan mode first... pick Plan from the mode dropdown, or press Shift+Tab to cycle",
+   "claim": "Turn on plan mode first. Tell Claude 'Enable plan mode.' (Or pick Plan from the mode dropdown, or press Shift+Tab to cycle.)",
    "line": 43,
    "verdict": "PASS",
    "source": "compendium"
@@ -2139,6 +2139,6 @@
  "skills_referenced": [],
  "urls_sampled": [],
  "blocking_findings_count": 0,
- "nonblocking_findings_count": 0,
- "notes": "Brief built (206 rules, none parked). Prompt-body suggestions are card-gated (check_prompts 22); the prompts live in curriculum/prompts/build-your-challenge-memory-{1,2,8}.md and are shared with agents-101 and AE101. Non-technical pedagogy and prompt-prose rules marked N/A as outside lane. + button and 'Enable plan mode' were not live-tested this session; same wording passed the agents-101 sibling instance. Maintainer block carries no dated accept-note beyond the Quality stamp."
+ "nonblocking_findings_count": 1,
+ "notes": "Drift rule re-read: platform_and_boundaries 8 (current wording: client deliverables, prior-engagement curricula, third-party courses/skills/prompts never pulled in) -> PASS, body carries no third-party text. Brief built (206 rules, none parked, shape changed). Rows for rules whose judgement is unchanged since the 5f1eb1b7 pass were carried from the prior technical instance after checking each cited line against the current body (line numbers unchanged: the diff since the pin only renames ### to ## headings, drops two bold lead-ins and 'beats'->'steps'). Plan mode phrasing 'Enable plan mode', Shift+Tab and Plan dropdown match reference_claude_code_capabilities.md L31 and platform 6; '+' button and Cowork folder claims not live-tested this session. Prompt-body edits are card-gated (check_prompts 22); prompts live in curriculum/prompts/build-your-challenge-memory-{1,2,3,4,7,8}.md. Writing-class owns the 21-word lead-in (L67) and filed it. Maintainer block carries no dated accept-note beyond the Quality stamp."
 }

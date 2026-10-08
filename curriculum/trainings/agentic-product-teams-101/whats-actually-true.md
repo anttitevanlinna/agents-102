@@ -98,8 +98,8 @@ Tonight the agent reads your chosen bet and looks for what argues against it. On
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@03787e69 story@6d12f3e4 technical@5f1eb1b7 pedagogy@03787e69 strategy@03787e69 slides@bb791683)
-- judges @6d12f3e4: writing PASS, story PASS (1 finding see instances/agentic-product-teams-101--module--whats-actually-true.story.json), technical PASS, behavior N/A, pedagogy PASS (1 finding see instances/agentic-product-teams-101--module--whats-actually-true.pedagogy.json), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@03787e69 story@6d12f3e4 technical@a16b0c55 pedagogy@03787e69 strategy@03787e69 slides@bb791683)
+- judges @a16b0c55: writing PASS, story PASS (1 finding see instances/agentic-product-teams-101--module--whats-actually-true.story.json), technical PASS, behavior N/A, pedagogy PASS (1 finding see instances/agentic-product-teams-101--module--whats-actually-true.pedagogy.json), strategy PASS, slides PASS
 - cross_module @4d040c7c: PASS — set=[our-product-our-system,whats-actually-true,learn-faster-than-the-market]; 2 pairs, 0 blocking; see instances/agentic-product-teams-101--module-set--full-arc.cross_module.json
 
 **STATUS:** built from the build plan (`curriculum/module-design/apt101-build-plan.md`) and the Day 2 beat sheet (`apt101-day-2-beats.md` v10), 2026-10-07. `simulation: true` training: pages and prompt lines land uncarded. New prompts are named lines; bodies come in the prompt-body pass. Big Idea = an adopted positioning line (strategy, 2026-10-05).

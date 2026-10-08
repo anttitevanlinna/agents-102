@@ -46,8 +46,8 @@ Your own rules now say when a summary gets checked. The team's rules carry an ex
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@9d3527f2 story@6a268245 technical@d747a00d behavior@6a268245 pedagogy@d49f18bf strategy@2a492ac7 slides@ccbff4e7)
-- judges @6a268245: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@9d3527f2 story@6a268245 technical@a16b0c55 behavior@6a268245 pedagogy@d49f18bf strategy@2a492ac7 slides@ccbff4e7)
+- judges @a16b0c55: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Role in Day 2:** beat 11, last exercise. Compounds the day into personal and team rules, and turns the overnight digest from Day 1's agreeable reader into tomorrow's check on the chosen bet. Placed after the lecture *Write it down or lose it* (corrections become rules on recurrence; examples of good beside the don'ts).
 

@@ -10,8 +10,8 @@
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@99cb13c5)
-- judges @99cb13c5: writing PASS (1 finding see instances/agentic-product-teams-101--lecture--apt101-only-what-you-tell-it.writing.json)
+**Quality:** compendium-audited 2026-10-08 (writing@99cb13c5 story@b9d40ce4 technical@b9d40ce4 pedagogy@b9d40ce4 strategy@b9d40ce4 slides@b9d40ce4)
+- judges @b9d40ce4: writing PASS (1 finding see instances/agentic-product-teams-101--lecture--apt101-only-what-you-tell-it.writing.json), story PASS (1 finding see instances/agentic-product-teams-101--lecture--apt101-only-what-you-tell-it.story.json), technical PASS, behavior N/A, pedagogy PASS, strategy PASS, slides PASS
 
 - **Time:** 10 minutes.
 - **Learning:** control — what the team brings, sets and asks shapes every answer, and on its own product the team is the check

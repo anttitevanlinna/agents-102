@@ -9,6 +9,9 @@ So name the outcome. Not "adds a dashboard", but what a named customer will be d
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@b59a7134 technical@b59a7134 slides@b59a7134)
+- judges @b59a7134: writing PASS (1 finding see instances/shared--slide--outcomes-over-outputs.writing.json), technical PASS, slides PASS
+
 **STATUS:** squint build (2026-10-07), header from `apt101-squint.md` Day 1; APT101 gap G:outcomes-over-outputs from `apt101-source-pack-2.md` §2. Not taught (simulation training).
 
 **Fidelity guard:** never "a change in human behavior that drives business results"; that wording was not found on any Seiden page opened. Keep the 2026 Substack wording with its date. Revenue-at-impact is the pack's gloss, not a Seiden quote; keep it off the body.

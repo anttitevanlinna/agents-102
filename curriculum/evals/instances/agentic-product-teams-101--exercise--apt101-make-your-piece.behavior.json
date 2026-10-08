@@ -3,11 +3,8 @@
   "file": "curriculum/exercises/apt101-make-your-piece.md",
   "training": "agentic-product-teams-101",
   "verdict": "PASS",
-  "body_sha": "74b1a87168e9b06785b326d0f93d786088eab260c12d0cdcc220fbb199ae516d",
-  "suggestions": [],
-  "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0,
-  "trace_status": "generated_first_time",
+  "body_sha": "90c96ab78659fe413c18b9d1bc02142d8e88c025773f99fe11c2d0910a1b0d80",
+  "trace_status": "cached",
   "prompts_evaluated": 4,
   "prompts_findings": [
     {
@@ -15,18 +12,21 @@
       "prompt_lead": "Read team/chosen-bet.md and the interview quotes it carries.\n\nAsk me two things,",
       "verdict": "PASS",
       "load_bearing": true,
+      "expected_response_shape": "Read the bet and quotes; ask two questions one at a time; build one rough HTML prototype with each screen carrying its verbatim quote and interview file, blank where none is found; end with a list of what it does not answer.",
       "risks_fired": [
         {
           "pattern_id": "citation-cargo-cult",
           "confidence": "low",
-          "evidence": "Every screen carries the customer quote it was built from, and that quote's source.",
-          "fix_hint": "none owed; default-acceptance/body-callout mitigation: line 25 tells the student to push back on any quote not recognised and ask for the source"
+          "carve_out": "in-prompt guard plus body-callout mitigation",
+          "evidence": "If you can't find a quote in the interview files, leave that screen's quote blank rather than writing one. (prompt); line 25: Ask Claude to find each quote in the interview files; any it can't find goes.",
+          "fix_hint": "none owed: in-prompt guard plus body-callout mitigation"
         },
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
+          "carve_out": "body-callout mitigation: the two questions are the designed first move, not a plan preamble",
           "evidence": "Ask me two things, one at a time",
-          "fix_hint": "none owed; body-callout mitigation: the two questions are the designed first move, not a plan preamble"
+          "fix_hint": "none owed: body-callout mitigation: the two questions are the designed first move, not a plan preamble"
         }
       ]
     },
@@ -35,18 +35,21 @@
       "prompt_lead": "Read team/chosen-bet.md and its riskiest assumption.\n\nPropose two or three of th",
       "verdict": "PASS",
       "load_bearing": true,
+      "expected_response_shape": "Read bet; propose 2-3 experiments with cost/speed; wait for pick; write test card; build fake door or survey.",
       "risks_fired": [
         {
           "pattern_id": "default-acceptance",
           "confidence": "low",
+          "carve_out": "body-callout mitigation: line 35 names the accidental-hit threshold and the push-back",
           "evidence": "the threshold below which the bet fails",
-          "fix_hint": "none owed; body-callout mitigation: line 35 names the accidental-hit threshold and the push-back"
+          "fix_hint": "none owed: body-callout mitigation: line 35 names the accidental-hit threshold and the push-back"
         },
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
+          "carve_out": "body-callout mitigation: the proposal-then-pick is the designed hand-off",
           "evidence": "Propose two or three of the cheapest experiments",
-          "fix_hint": "none owed; body-callout mitigation: the proposal-then-pick is the designed hand-off"
+          "fix_hint": "none owed: body-callout mitigation: the proposal-then-pick is the designed hand-off"
         }
       ]
     },
@@ -55,12 +58,14 @@
       "prompt_lead": "Read team/chosen-bet.md, team/what-goes-in.md and today's files in team/.\n\nDraft",
       "verdict": "PASS",
       "load_bearing": true,
+      "expected_response_shape": "Read bet and Day 1 file; write a one-page working agreement as a proposal with guesses marked as questions.",
       "risks_fired": [
         {
           "pattern_id": "file-preservation-gap",
           "confidence": "low",
+          "carve_out": "fresh-install-context: new personal-scope file under the student own team/<my-name>/ folder, no prior file expected",
           "evidence": "Save it to team/<my-name>/way-of-working.md",
-          "fix_hint": "none owed; fresh-install-context: new personal-scope file under the student own team/<my-name>/ folder, no prior file expected"
+          "fix_hint": "none owed: fresh-install-context: new personal-scope file under the student own team/<my-name>/ folder, no prior file expected"
         }
       ]
     },
@@ -69,21 +74,27 @@
       "prompt_lead": "Play a sceptical senior colleague on my wider team. You've heard change announce",
       "verdict": "PASS",
       "load_bearing": true,
+      "expected_response_shape": "Claude plays a sceptical colleague, asks one hard question at a time, after five steps out and debriefs.",
       "risks_fired": [
         {
           "pattern_id": "niceness-tax",
           "confidence": "low",
+          "carve_out": "body-callout mitigation: line 47 tells the student to push back on a colleague who folds after one answer",
           "evidence": "You're not hostile; you just won't be talked into anything.",
-          "fix_hint": "none owed; body-callout mitigation: line 47 tells the student to push back on a colleague who folds after one answer"
+          "fix_hint": "none owed: body-callout mitigation: line 47 tells the student to push back on a colleague who folds after one answer"
         },
         {
           "pattern_id": "question-dump",
           "confidence": "low",
+          "carve_out": "question-dump body-callout / in-prompt one-at-a-time structure already present",
           "evidence": "Ask me one hard question at a time, and wait for my answer before the next.",
-          "fix_hint": "none owed; question-dump body-callout / in-prompt one-at-a-time structure already present"
+          "fix_hint": "none owed: question-dump body-callout / in-prompt one-at-a-time structure already present"
         }
       ]
     }
   ],
-  "notes": "No dated accept-notes in maintainer block. Cross-class (writing, not scored): prompt 4 'you remember the last change negotiations' reads oddly."
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "All four prompt_sha values match the cached trace, so every entry was reused. Diff 0ac6010f..HEAD touches body line 25 (quote push-back now names the verification move) and the maintainer block only; both strengthen the citation-cargo-cult mitigation. No dated accept-notes in the maintainer block. Every fired risk is low confidence with a named carve-out."
 }

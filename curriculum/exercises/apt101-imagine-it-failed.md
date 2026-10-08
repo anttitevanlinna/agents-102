@@ -40,8 +40,8 @@ One dot each on the board for the cause you now think most likely, Claude's incl
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@7ff539b9 technical@1faabaa8 behavior@21214fc5 pedagogy@a3f96345 strategy@ed634491 slides@ccbff4e7)
-- judges @a3f96345: writing PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@7ff539b9 story@6a268245 technical@1faabaa8 behavior@21214fc5 pedagogy@a3f96345 strategy@ed634491 slides@ccbff4e7)
+- judges @6a268245: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Role in Day 2:** beat 9. A pre-mortem on the chosen bet and its three pieces, at the moment confidence peaks. Feeds beat 10, *Laptops shut* (a module section), which talks the top cause through. The lecture *Imagine it already failed*, right after this exercise, names Klein's method and why it fits peak confidence, once the trio has done it.
 

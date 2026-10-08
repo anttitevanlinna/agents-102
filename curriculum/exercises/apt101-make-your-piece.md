@@ -58,8 +58,8 @@ Then one round, piece by piece. The other two point at the part of it that only 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@d49f18bf technical@d747a00d behavior@0ac6010f pedagogy@d49f18bf strategy@2a492ac7 slides@d49f18bf)
-- judges @d49f18bf: writing PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-make-your-piece.writing.json), technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-make-your-piece.pedagogy.json), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@d49f18bf story@6a268245 technical@d747a00d behavior@6a268245 pedagogy@d49f18bf strategy@2a492ac7 slides@d49f18bf)
+- judges @6a268245: writing PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-make-your-piece.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-make-your-piece.pedagogy.json), strategy PASS, slides PASS
 
 **Role in Day 2:** beat 8, protected. The creativity beat: each role makes a first piece of the chosen bet in its own craft, answering the room's private question of what each of us is for. Placed after the lecture *Each of you makes something*, whose slides set each role's frame (Houde and Hill's prototype questions, the test card, the working agreement). Its last slide (*Imagine it already failed*) carries into beat 9.
 

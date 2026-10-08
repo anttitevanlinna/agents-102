@@ -92,8 +92,8 @@ Then the board again. Stand at the frame and read it as your wider team will see
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@44588d6d technical@d747a00d behavior@3d7fd713 pedagogy@761a20a3 strategy@1fd93c06)
-- judges @1fd93c06: writing PASS (5 findings see instances/agentic-product-teams-101--exercise--apt101-take-it-to-the-team.writing.json), technical PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-take-it-to-the-team.technical.json), behavior PASS, pedagogy PASS (verify-refuted), strategy PASS
+**Quality:** compendium-audited 2026-10-08 (writing@843767c4 technical@843767c4 behavior@3d7fd713 pedagogy@761a20a3 strategy@1fd93c06 slides@843767c4)
+- judges @843767c4: writing PASS (4 findings see instances/agentic-product-teams-101--exercise--apt101-take-it-to-the-team.writing.json), technical PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-take-it-to-the-team.technical.json), behavior PASS, pedagogy PASS (verify-refuted), strategy PASS, slides PASS
 
 **Role in Day 3:** Transfer: the trio's way of working becomes a proposal the wider team decides on, with a named first move per role in `team/monday.md`.
 

@@ -3,7 +3,7 @@
   "file": "curriculum/exercises/apt101-write-what-good-means.md",
   "training": "agentic-product-teams-101",
   "verdict": "PASS",
-  "body_sha": "70cb105b60141257d5502403fe8e78a846abf74616aa0c0b08ae58a80f13e43b",
+  "body_sha": "c95c978ad68e47c505fd138cc63d138c6cdca16d94365e6470737dd660f4ec33",
   "shape_hash": "7b4a6ea45e598464",
   "chunk_map": [
     {
@@ -33,10 +33,10 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "evidence": "chunk 0 L7: \"It lives at `judges/groundedness-judge.md`\" comes closest; 'It' binds to 'the check you kept' in the same sentence. L11 'the loop' and L9 'the agents' are arc-earned spine vocabulary (carve-out); L65 'your post-it' is named at L49 in the preceding chunk; L37 'Phase 0' is glossed in-line. Harm (unresolvable referent) absent.",
+      "evidence": "L7 'It lives at `judges/groundedness-judge.md`' comes closest; 'It' binds to 'the check you kept' in the same sentence. L27 'those lines' binds to the lines named L17-21; L65 'your post-it' is named L49 in the prior chunk; 'the loop' (L11) is lede-earned spine vocabulary; 'your judge' (L39) binds to the L7 check. Harm (unresolvable referent) absent.",
       "na_reason": null,
       "fix_hint": null,
-      "blocking": false,
+      "blocking": true,
       "chunks_flagged": []
     },
     {
@@ -44,10 +44,10 @@
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "evidence": "chunk 0 L7: 'On Day 2 the check you kept caught claims nobody had made' comes closest; it names the source by claim and path in the same sentence, not by position in a deck. No 'the opening lecture' style pointers.",
+      "evidence": "L7 'On Day 2 the check you kept caught claims nobody had made' comes closest; it names the source by claim and path in the same sentence, a schedule day not a deck position. No 'the opening lecture' style pointers; grep 'opening|earlier lecture|the lecture' on body -> 0.",
       "na_reason": null,
       "fix_hint": null,
-      "blocking": false,
+      "blocking": true,
       "chunks_flagged": []
     },
     {
@@ -55,10 +55,10 @@
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
-      "evidence": "L7 'the check you kept' and L27 'Day 1 digests' resolve: maintainer Artefacts line 84 lists judges/groundedness-judge.md (Day 2) and digest-day1.html (Day 1); learn-faster-than-the-market.md L20-22 shows the Day 2 read-the-digest beat exists and Day 2 is chosen at 'the bet you chose together on Day 2'.",
+      "evidence": "L7 'the check you kept' resolves: apt101-catch-it-making-things-up.md L88-90 produces judges/groundedness-judge.md. L27 'Day 1 digests' and L39 'the outcome you picked on Day 2 in ./crux.md' resolve: apt101-pick-the-outcome.md L29 writes ./crux.md; learn-faster-than-the-market.md L20-22 shows the Day 1 digest and Day 2 beats. No dead reference.",
       "na_reason": null,
       "fix_hint": null,
-      "blocking": false,
+      "blocking": true,
       "chunks_flagged": []
     },
     {
@@ -66,10 +66,10 @@
       "rule_index": 4,
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "PASS",
-      "evidence": "chunk 2 L49 post-it prediction ('you predict the looped digest will fail') sits before the reveal at chunk 3 L65, so guess precedes outcome. Muted read: L45 'A heavy run: a writer and a judge per round...' is a verbless label, but it is a warning not a demo scene; noted for writing class.",
+      "evidence": "No guess-before-reveal demo in the body. Closest: L49 post-it prediction ('you predict the looped digest will fail') precedes the reveal at L59-65, so guess precedes outcome. L45 'A heavy run: ...' is verbless but a warning, not a demo scene.",
       "na_reason": null,
       "fix_hint": null,
-      "blocking": false,
+      "blocking": true,
       "chunks_flagged": []
     },
     {
@@ -77,7 +77,7 @@
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "evidence": "chunks 1-3 each carry a self-carrying instruction set; chunk 3 L55 'Ask Claude to show the loop result...' plus prompt and L65 close. No wait-state-only slide.",
+      "evidence": "Closest: chunk 3 (L51-65) is the shortest but carries an instruction, a push-back paragraph and a close. Each chunk holds a self-carrying instruction set; no wait-state-only slide.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -88,7 +88,7 @@
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "evidence": "chunk 2 L33 'Run the judge once, then the loop' matches L37-47 (hand run, then loop prompt); chunk 3 L51 'See what it missed' matches L55-65; chunk 1 L13 matches L17-31.",
+      "evidence": "chunk 2 L33 'Run the judge once, then the loop' matches L37-47 (hand run, then loop); chunk 3 L51 'See what it missed' matches L55-65; chunk 1 L13 'Write the team's lines' matches L17-31. No contradiction.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -99,7 +99,7 @@
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "evidence": "closest: L19 'A quote is a quote, not a paraphrase.' single contrast, not 'Not X. Not Y. Z.'; L7-9/L43 'fixed' / 'never moves' do not form a triple with a new-content leg. No self-grading superlative, no number+retraction, no empty verb triplet.",
+      "evidence": "Closest: L19 'A quote is a quote, not a paraphrase.' single contrast, not 'Not X. Not Y. Z.'. L7 'stays fixed. It does not move' / L43 'The judge never moves' are restatements across different chunks, not an anaphora triple within a chunk. L45 and L59 'If ... If ...' are pairs. No self-grading superlative, number+retraction, abstraction stack or empty verb triplet.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -110,18 +110,18 @@
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "evidence": "closest: L37 'Phase 0, the calibration' and L7 'floor/ceiling'; both glossed in-line (L7-9, L37) and ordinary product/engineering vocabulary. No compendium/beat/surface/firing in body (view greps CLEAN for banned list).",
+      "evidence": "Closest: L37 'the calibration, step zero' and L7 'floor/ceiling'; both glossed in-line (L7-9, L37) and ordinary engineering vocabulary. grep -nE '\\b(beat|compendium|firing|mood|surface)\\b' on body -> 0; view greps CLEAN.",
       "na_reason": null,
       "fix_hint": null,
-      "blocking": false,
+      "blocking": true,
       "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
-      "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "evidence": "chunk 1 L17 '**The product owner drives**' plus L19, L20, L21 bolded role leads (3) = 4 bolds on one slide, over the nominal 1. Role leads act as list-item names and the driver cue is the APT101 exercise convention (same shape in 4 APT101 exercises, grep 'drives**' -> 4 files); emphasis dilution harm is weak where bold marks who does what in a room. Reported as suggestion, not a gate.",
+      "evidence": "Chunk 1 L17 '**The product owner drives**' plus L19-21 bolded role leads = 4 bolds on one slide, over the nominal 1. Harm (bold diluted so nothing stands out) is weak: role names are checklist-item labels each <=5 words, and the same driver-cue shape sits in apt101-five-users L48, apt101-map-the-story L27, apt101-take-it-to-the-team L11 (sibling is the answer). Chunk 0 '**Time:**'/'**What you do:**' are template labels.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -130,20 +130,20 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
-      "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "evidence": "learn-faster-than-the-market.md L29 '[Exercise: Write what good means](exercises/apt101-write-what-good-means.md)' is a standalone-paragraph include; body view slide_count=3 under exercise wrapper.",
+      "evidence": "learn-faster-than-the-market.md L29 '[Exercise: Write what good means](exercises/apt101-write-what-good-means.md)' is a standalone include; body view slide_count=3 under the exercise wrapper.",
       "na_reason": null,
       "fix_hint": null,
-      "blocking": false,
+      "blocking": true,
       "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
-      "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-numbering.js -> 'OK \u2014 55 files, Phase/Step numbering consistent.'; headers at L13/L33/L51 are Phase 1,2,3 consecutive; 'Phase 0' at L37 refers to the prompts' own label, glossed.",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/exercises/apt101-write-what-good-means.md -> 'OK — 1 files, Phase/Step numbering consistent.'; headers L13/L33/L51 are Phase 1,2,3 consecutive; prose 'step zero' L37 is glossed.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -154,27 +154,16 @@
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-deixis.js -> 'OK \u2014 55 files, no page-geometry pointers across the slide cut.'; grep -niE 'above|below|further down|at the top|see below' on body L1-66 -> 0 hits.",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/exercises/apt101-write-what-good-means.md -> 'OK — 1 files, no page-geometry pointers across the slide cut.'",
       "na_reason": null,
       "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "no in-body links in the body (signals has_urls false; no markdown links)",
-      "fix_hint": null,
-      "blocking": false,
+      "blocking": true,
       "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
-      "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/apt101-write-what-good-means.md -> 'slides: 3 ... oversized: 0 ... every slide is within limits'.",
       "na_reason": null,
@@ -187,7 +176,7 @@
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
-      "evidence": "exercise headings L13 'Phase 1: Write the team's lines', L33 'Phase 2: Run the judge once, then the loop', L51 'Phase 3: See what it missed' are phase labels with imperatives; no law/consolidation slide owes a declarative heading.",
+      "evidence": "Headings L13 'Phase 1: Write the team's lines', L33 'Phase 2: Run the judge once, then the loop', L51 'Phase 3: See what it missed' are phase labels; no law/consolidation slide owes a declarative heading.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -196,13 +185,25 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 16,
-      "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
-      "evidence": "closest: chunk 3 L65 'A yardstick you rewrite mid-run is not a yardstick.' is an aphorism kicker (class c) that also states the reason the judge stays fixed, the first place the why appears in the file (L7 and L43 only state the fact); so it earns a slot narrowly. Offered as a suggestion, not owed.",
+      "evidence": "Closest: chunk 3 L65 'A yardstick you rewrite mid-run is not a yardstick.' is an aphorism kicker (class c), but it gives the reason the judge stays fixed, which L7/L43 state only as fact, and the maintainer Frameworks line 80 names the closing line of Phase 3 as the deliberate in-room Goodhart instance (attested). Stays inside; offered as suggestion only.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no in-body links in the body (signals has_urls false; no markdown links)",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "70cb105b60141257d5502403fe8e78a846abf74616aa0c0b08ae58a80f13e43b",
+      "carried_shape": "7b4a6ea45e598464"
     },
     {
       "compendium": "check_slides.md",
@@ -211,26 +212,21 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no header rename or provenance note in maintainer block; body answers its headers",
-      "fix_hint": null,
+      "fix_hint": "",
       "blocking": false,
-      "chunks_flagged": []
+      "carried_from": "70cb105b60141257d5502403fe8e78a846abf74616aa0c0b08ae58a80f13e43b",
+      "carried_shape": "7b4a6ea45e598464"
     }
   ],
   "suggestions": [
     {
-      "rule": "check_slides.md \u00a716",
+      "rule": "check_slides.md §16",
       "line": 65,
       "now": "The judge stays as it is. A yardstick you rewrite mid-run is not a yardstick.",
       "proposed": "The judge stays as it is."
-    },
-    {
-      "rule": "check_slides.md \u00a79",
-      "line": 17,
-      "now": "**The product owner drives** at their screen.",
-      "proposed": "The product owner drives at their screen."
     }
   ],
   "blocking_findings_count": 0,
   "nonblocking_findings_count": 0,
-  "notes": "Cross-class (writing): L45 'A heavy run: a writer and a judge per round, three rounds or more.' is a verbless label under a muted read; 'This is a heavy run: ...' would verb it. Prefill had no prior instance, so every row is judged here."
+  "notes": "Cross-class (writing): L45 'A heavy run: a writer and a judge per round, three rounds or more.' is verbless; 'This is a heavy run: ...' would verb it. Accept-notes: maintainer block carries none for slides (only the dated Quality line). Prior instance was for body sha 70cb105b; this one re-judged on dfe9c792."
 }

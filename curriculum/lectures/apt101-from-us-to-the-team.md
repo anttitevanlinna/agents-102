@@ -12,8 +12,8 @@
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@99cb13c5)
-- judges @99cb13c5: writing PASS
+**Quality:** compendium-audited 2026-10-08 (writing@99cb13c5 story@b08cc924 technical@b08cc924 pedagogy@b08cc924 strategy@b08cc924 slides@b08cc924)
+- judges @b08cc924: writing PASS, story PASS, technical PASS, behavior N/A, pedagogy PASS, strategy PASS, slides PASS
 
 - **Time:** 13 minutes.
 - **Learning:** team | transfer — what the trio learned travels to the wider team only as a proposal with named people, the first wall it will meet, and a decision the team makes.

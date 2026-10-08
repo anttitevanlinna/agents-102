@@ -9,6 +9,9 @@ The five hold only for comparable users. Two distinct groups means testing each.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@0ba99eb1 technical@0ba99eb1 slides@0ba99eb1)
+- judges @0ba99eb1: writing PASS, technical PASS, slides PASS
+
 **STATUS:** composed from the squint (2026-10-07), opens `apt101-bet-meets-five-users`. APT101 gap G:watch-them-use-it from `apt101-source-pack-2.md` §8. Opens on the training's position (cheap fixes make small, many rounds the right size), then Nielsen's full sentence as the one fact used; Krug's watching method (think-aloud, observers, debrief) is on `a-morning-a-month`, which this lecture does not include. Scoped to usability testing (pack Drift 3). The 85% figure is left out: it rests on L = 31%, an average across Nielsen's projects (pack Drift 2). Not taught (simulation training).
 
 <!-- backing -->

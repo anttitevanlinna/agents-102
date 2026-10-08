@@ -9,6 +9,9 @@ The gap between the three is where the bet gets read. Some moments sharpen it. S
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@0ba99eb1 technical@0ba99eb1 slides@0ba99eb1)
+- judges @0ba99eb1: writing PASS (1 finding see instances/shared--slide--what-five-users-did.writing.json), technical PASS, slides PASS
+
 **STATUS:** composed from the squint (2026-10-07), new APT101 slide (✱ in `apt101-squint.md`), second in `apt101-bet-meets-five-users`. The digest thread's open beat: the reader sets their own five users' observed moments beside their own digest and their own bet, and reads the gap. No users are supplied and no figure is claimed. Not taught (simulation training). Owes judging rounds.
 
 <!-- backing -->

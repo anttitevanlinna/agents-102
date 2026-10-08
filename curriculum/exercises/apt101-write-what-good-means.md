@@ -66,8 +66,8 @@ Hold your post-it against what you found. Each of you says your missing line out
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@843767c4 story@a09e9456 technical@d747a00d behavior@3d7fd713 pedagogy@843767c4 strategy@1fd93c06 slides@843767c4)
-- judges @a09e9456: writing PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-write-what-good-means.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@9669d4c1 story@a09e9456 technical@d747a00d behavior@3d7fd713 pedagogy@843767c4 strategy@1fd93c06 slides@843767c4)
+- judges @9669d4c1: writing PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-write-what-good-means.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Role in Day 3:** The digest from Day 1 gets caught by the team's own standard: the fixed judge holds the floor, the team's written lines are the ceiling, and the gap between them is what the criteria missed.
 

@@ -11,8 +11,8 @@ So when the next result lands clean, ask the plain question: when did you last d
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@0ba99eb1 technical@0ba99eb1 slides@0ba99eb1)
-- judges @0ba99eb1: writing PASS (1 finding see instances/shared--slide--trust-grows-attention-fades.writing.json), technical PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@9669d4c1 technical@0ba99eb1 slides@0ba99eb1)
+- judges @9669d4c1: writing PASS (1 finding see instances/shared--slide--trust-grows-attention-fades.writing.json), technical PASS, slides PASS
 
 **STATUS:** Agentic Product Teams 101 rewrite, for product people, of AE101 `ironies-of-automation` § Trust and vigilance move in opposite directions (2026-10-07). The evidence is the trio's own Day 2 moment (`team/<name>/doubts.md`, the line each trusted least). Not taught (simulation training).
 

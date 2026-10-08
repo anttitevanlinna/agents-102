@@ -9,8 +9,8 @@ Keep the name of whoever found each branch on it. Treat a branch with one name a
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (technical@3d335826)
-- judges @3d335826: technical PASS
+**Quality:** compendium-audited 2026-10-08 (writing@9669d4c1 technical@3d335826 slides@9669d4c1)
+- judges @9669d4c1: writing PASS, technical PASS, slides PASS
 
 **STATUS:** rebuilt from the APT101 squint (2026-10-07), Day 2 § Widen before you choose. APT101 gap G6, from `group-work-plan.md` § Opportunity solution tree (risk to watch: consensus buries the minority find). Not taught (simulation training). Owes judging rounds.
 

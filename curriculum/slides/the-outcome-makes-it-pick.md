@@ -9,8 +9,8 @@ The variety comes from each of you. The choice comes from the outcome you agreed
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@fdf541ef technical@fdf541ef slides@fdf541ef)
-- judges @fdf541ef: writing PASS (1 finding see instances/shared--slide--the-outcome-makes-it-pick.writing.json), technical PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@9669d4c1 technical@fdf541ef slides@fdf541ef)
+- judges @9669d4c1: writing PASS, technical PASS, slides PASS
 
 **STATUS:** APT101 rewrite (2026-10-06) of `when-to-split-an-agent` § A framework makes it pick (Agents 101). Not taught (simulation training).
 

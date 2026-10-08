@@ -3,7 +3,7 @@
   "file": "curriculum/exercises/apt101-grow-the-tree.md",
   "training": "agentic-product-teams-101",
   "verdict": "PASS",
-  "body_sha": "7e74cb66790c959567c4cb8e77e9b1f6c90e8b1bcfbd0c402894985a696745d8",
+  "body_sha": "820b019c315e1dde74575cadf02d1fe77ae29d45bd7251cc67435de13b564788",
   "shape_hash": "6efb0e72e83498be",
   "chunk_map": [
     {
@@ -38,7 +38,7 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "evidence": "Harm: a projected slide with a referent nobody can resolve. Closest: L70 'the stance you kept' (chunk 4) and L72 'the tree file'. 'the stance' is named in chunk 3 bullets L58-60 (assumption tester / reframer / planner); 'the tree file' is a session artifact of the Phase 2 merge, exempt under the session-artifacts carve-out. L15 'The outcome from ./crux.md' is named by path. L37 'your memory' is the memory/ the student gathered in the prior exercise (arc-earned).",
+      "evidence": "Harm: a projected slide whose referent nobody can resolve. Closest: L70 'the stance you kept' (chunk 4) resolves to the three role stances named in chunk 3 bullets L58-60; L72 'the tree file' is a session artifact of the Phase 2 merge (session-artifacts carve-out); L39 added sentence 'If one comes back fast with almost nothing, tell it there is more here and send it back' - 'one'/'it' resolve to the subagent named in the preceding sentence 'Three subagents fanning out'.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true,
@@ -49,7 +49,7 @@
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "evidence": "Harm: a callback whose target depends on deck position. L7 'Pick the outcome', L76 'Choose the bet' name the exercises by title (module-order siblings apt101-pick-the-outcome.md and apt101-choose-the-bet.md exist); no 'the earlier lecture'-style positional pointer. grep 'opening|earlier|previous' in body → none.",
+      "evidence": "Harm: a callback whose target depends on deck position. L7 'Pick the outcome' and L76 'Choose the bet' name sibling exercises by title; grep -nE 'opening|earlier|previous|last lecture' over body L1-77 -> 0 hits.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true,
@@ -60,7 +60,7 @@
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
-      "evidence": "Harm: a pointer to a beat that no longer exists. Candidates: L7 'the outcome you agreed in Pick the outcome' (exercises/apt101-pick-the-outcome.md exists), L37 'back in your first session' (the gather-the-evidence session that produced memory/, same arc), L76 'You choose from it in Choose the bet' (apt101-choose-the-bet.md exists). Verified by ls.",
+      "evidence": "Harm: a pointer to a beat that no longer exists. L7 'the outcome you agreed in Pick the outcome' (apt101-pick-the-outcome exercise exists, same module arc); L37 'back in your first session' (the evidence-gathering session of the prior exercise); L76 'Choose the bet' is a forward title pointer to a sibling exercise. No 'the X you caught' beat reference.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true,
@@ -71,7 +71,7 @@
       "rule_index": 4,
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "PASS",
-      "evidence": "Harm: a demo beat with no scene under a muted read. No guess-before-reveal beat in this file (no 'guess', 'predict'). Closest: L39 'Three subagents fanning out at once.' is a verbless fragment but it narrates a run the student starts one line earlier, not a demo reveal, and is followed by a verbed steer ('If one starts reading the world, stop it'). See suggestion.",
+      "evidence": "Harm: a demo beat with no scene under a muted read. No guess-before-reveal beat (grep -niE 'guess|predict' body -> 0). Closest: L39 'Three subagents fanning out at once.' is a verbless fragment, but it narrates a run the student started one line earlier and is followed by verbed steers ('stop it, steer narrower', and the new 'tell it there is more here'); not a trainer-only scene. See suggestion.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true,
@@ -82,7 +82,7 @@
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "evidence": "Harm: a slide saying nothing standalone. Smallest chunk is chunk 1 (L11-19): three paragraphs, each with its own claim (sketch alone, what to write, put down the opportunity only you would think of). Every chunk carries a task.",
+      "evidence": "Harm: a slide saying nothing standalone. Smallest chunk 1 (L11-19, ~85 words): three paragraphs each with a task claim (no talking/no Claude, write opportunities, put down the one only you would think of). Every chunk carries an instruction.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -93,7 +93,7 @@
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "evidence": "Harm: header contradicted by its slide. Closest: chunk 3 'Read the evidence three ways' (L33) vs content L37-60: three stance subagents, three role reads, i.e. three ways. True. Chunk 2 'Merge with every name kept' vs L25-31: merge keeping names. True.",
+      "evidence": "Harm: header contradicted by its slide. Closest: chunk 3 'Read the evidence three ways' (L33) vs L37-60: three stance subagents and three role reads = three ways; chunk 2 'Merge with every name kept' vs L25-31 merge keeping names. True.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -104,10 +104,10 @@
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "evidence": "Harm: a cadence tic becoming the whole slide. grep for 'Not X. Not Y.' → none; no anaphora triple (closest L25 'the designer... the product owner... the team lead' are three distinct roles with distinct verbs); no superlatives; no number+retraction; no abstraction stack (closest L7 'customer needs, pains and wishes' is a concrete list); L17 'asked for, worked around' legs each concrete. L19 'The ones all three of you saw will turn up anyway.' is one declarative.",
+      "evidence": "Harm: a tic that becomes the whole slide. grep -nE 'Not [A-Za-z]+\\. Not' -> 0. No anaphora triple (L25 roles each carry a distinct verb); no superlatives; no number+retraction; no abstraction stack; no empty-leg verb triplet (closest L39 'stop it, steer narrower, then say continue' - three concrete actions). New L39 sentence is one declarative with a concrete move.",
       "na_reason": null,
       "fix_hint": null,
-      "blocking": true,
+      "blocking": false,
       "chunks_flagged": []
     },
     {
@@ -115,7 +115,7 @@
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "evidence": "Harm: maintainer dialect on a projected wall. grep -iE 'beat|compendium|forcing function|firing|mood|writing surface' over body L1-77 → 0 hits ('beat' appears only in the maintainer block after L78). 'stance' / 'subagents' are the reused A101 prompt's ordinary words.",
+      "evidence": "Harm: maintainer vocabulary on a wall. grep -niE 'compendium|forcing function|surface|firing|beat|mood' over body L1-77 -> 0 hits. 'stance'/'subagents' are the reused A101 prompt's ordinary words.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true,
@@ -124,9 +124,9 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "rule_lead": "Emphasis budget - bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "evidence": "Harm: bold sprayed so nothing is a handle. Body bold elements: L5 'What you do:' (field label), L58-60 three role:stance leads. L58 '**Product owner: the assumption tester.**' is a coined stance handle (5 words), not a whole sentence; the three are the named stances of the reused prompt and read as checklist item names. Chunk 3 is over the 'most slides' ≤1 line but each bold names one of three parallel handles, which the rule allows for sets of named terms. Judgement PASS; see notes.",
+      "evidence": "Harm: bold sprayed so nothing is a handle. Body bold: L3 'Time:', L5 'What you do:' (field labels), L58-60 three role:stance leads. Closest: L60 '**Team lead: the planner working back from the outcome.**' is 9 words, past the ~5-word cap; L58 '**Product owner: the assumption tester.**' is 5. The three form a parallel set of named stances (checklist-item names) with the question after each, so judged PASS as a set, not a budget breach; see suggestion.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -135,9 +135,9 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "rule_lead": "Numbering - position is computed, content ordinals are linted.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-numbering.js --file curriculum/exercises/apt101-grow-the-tree.md -> 'OK — 1 files, Phase/Step numbering consistent.' exit 0; headers Phase 1..4 consecutive (L11,21,33,66).",
+      "evidence": "node scripts/check-slide-numbering.js -> 'OK - 1 files, Phase/Step numbering consistent.' exit 0; headers Phase 1..4 at L11, 21, 33, 66.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -148,7 +148,7 @@
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "evidence": "Harm: pointer to page position that dies at the cut. node scripts/check-slide-deixis.js --file curriculum/exercises/apt101-grow-the-tree.md -> 'OK — 1 files, no page-geometry pointers' exit 0. Closest: L7 lede 'under each one the ideas that might address it' (rewritten since ccbff4e7, removing 'hanging below'); it describes the tree's own structure, not page position. Same chunk-0 sentence.",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/exercises/apt101-grow-the-tree.md -> 'OK - 1 files, no page-geometry pointers across the slide cut.' exit 0; grep -nE 'below|above|further down|see below|top of' over body -> 0.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true,
@@ -157,9 +157,9 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
-      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "rule_lead": "Slide size - 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/apt101-grow-the-tree.md --report -> slides: 4, oversized: 0; largest Phase 3 at 163 words / 3 bullets (limits 210/6).",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/apt101-grow-the-tree.md --report -> slides: 4, oversized: 0; largest Phase 3 at 181 words / 3 bullets (limits 210/6). Exit 0.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -170,7 +170,7 @@
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
-      "evidence": "Harm: a declarative heading mislabelled or a label heading where the slide owes a claim. Exercise headings are phase labels: 'Phase 1: Sketch alone', 'Phase 2: Merge with every name kept', 'Phase 3: Read the evidence three ways', 'Phase 4: Question the tree from your role' (L11, 21, 33, 66). Matches the exercise grammar; no law slide that owes a claim.",
+      "evidence": "Harm: a label heading where a law slide owes a claim. Headings L11, 21, 33, 66 are phase labels ('Phase 1: Sketch alone' ... 'Phase 4: Question the tree from your role'), the exercise grammar; no law/consolidation slide in this file.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -179,9 +179,9 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 16,
-      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "rule_lead": "A bullet earns its slot or dies - three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
-      "evidence": "Harm: a bullet restating what the slide holds. Closest: L76 'The tree is not finished, and it should not be.' could read as a closing kicker, but it does not restate the header (Question the tree from your role) and sets the expectation that the next exercise chooses from it; L19 'Put down the opportunity only you would think of.' is a move. No doctrine restatement or design commentary found.",
+      "evidence": "Harm: a bullet restating what the slide holds. Closest: L76 'The tree is not finished, and it should not be.' - does not restate the header 'Question the tree from your role' and sets up Choose the bet; L39 new sentence adds a move (what to do when a subagent returns thin). No doctrine restatement, design commentary or header-echo kicker.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -196,7 +196,7 @@
       "na_reason": "exercise inlined by the module include; no phase-less prose section in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "9e8161878ba6aba7324cc13c8b74ca96f30519d5ad3ba44a5ca7110d7c08fcff",
+      "carried_from": "7e74cb66790c959567c4cb8e77e9b1f6c90e8b1bcfbd0c402894985a696745d8",
       "carried_shape": "6efb0e72e83498be"
     },
     {
@@ -208,7 +208,7 @@
       "na_reason": "no links in body; no URLs (signals has_urls false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "9e8161878ba6aba7324cc13c8b74ca96f30519d5ad3ba44a5ca7110d7c08fcff",
+      "carried_from": "7e74cb66790c959567c4cb8e77e9b1f6c90e8b1bcfbd0c402894985a696745d8",
       "carried_shape": "6efb0e72e83498be"
     },
     {
@@ -220,7 +220,7 @@
       "na_reason": "no header rename: git log -p shows all four '## Phase' headers added once at creation and never changed",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "9e8161878ba6aba7324cc13c8b74ca96f30519d5ad3ba44a5ca7110d7c08fcff",
+      "carried_from": "7e74cb66790c959567c4cb8e77e9b1f6c90e8b1bcfbd0c402894985a696745d8",
       "carried_shape": "6efb0e72e83498be"
     }
   ],
@@ -230,9 +230,15 @@
       "line": 39,
       "now": "Three subagents fanning out at once.",
       "proposed": "Three subagents fan out at once."
+    },
+    {
+      "rule": "check_slides.md §9",
+      "line": 60,
+      "now": "**Team lead: the planner working back from the outcome.** What has to be true in three months, and who on the team does it?",
+      "proposed": "**Team lead: the planner.** Working back from the outcome, what has to be true in three months, and who on the team does it?"
     }
   ],
   "blocking_findings_count": 0,
   "nonblocking_findings_count": 0,
-  "notes": "Diff ccbff4e7..HEAD: lede L7 reworded ('and under each one the ideas that might address it'), quality-stamp lines in maintainer block. No other body change. Rows 10/13/17 parked by prefill, spliced by --merge. Rule 9: three bolded stance handles on chunk 3 judged as a named set, not a budget breach. Prompt blocks resolved via registry; not expanded."
+  "notes": "Diff a3f96345..HEAD body change: L39 added sentence about a subagent returning thin; rest is maintainer-block stamp lines. Maintainer block carries no dated accept-notes (only the Quality stamp). Prompt blocks resolved via registry and not expanded (prompt bodies are judged by the behavior class). Rows 10/13/17 parked by prefill and spliced by --merge."
 }

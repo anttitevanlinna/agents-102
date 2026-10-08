@@ -3,7 +3,7 @@
  "file": "curriculum/slides/trust-grows-attention-fades.md",
  "training": "shared",
  "verdict": "PASS",
- "body_sha": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+ "body_sha": "07eb027d6d929ff8df789262e71f44f3947600768442c8c3ad8433912de87bcd",
  "shape_hash": "cfd36e61c1898327",
  "rules_evaluated": [
   {
@@ -11,7 +11,7 @@
    "rule_index": 1,
    "rule_lead": "Banned words — grep zero-tolerance.",
    "verdict": "PASS",
-   "evidence": "view greps em_dash body_hits 0 CLEAN; banned_words body_hits 0 CLEAN; leverage_verb 0 CLEAN",
+   "evidence": "view greps em_dash 0 CLEAN; banned_words 0 CLEAN; leverage_verb 0 CLEAN (planted-proof status CLEAN); body has no landscape(v) either",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -21,7 +21,7 @@
    "rule_index": 2,
    "rule_lead": "Ritual / ceremony — hard ban",
    "verdict": "PASS",
-   "evidence": "view grep ritual_ceremony body_hits 0 CLEAN; no practice(n) in body",
+   "evidence": "view grep ritual_ceremony body_hits 0 CLEAN; no \"practice\" noun in body",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -31,9 +31,9 @@
    "rule_index": 3,
    "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
    "verdict": "REVISE",
-   "evidence": "L14: '**STATUS:** hill-climb round 3 (2026-10-07): the 1990s automation-research sentence is cut and the evidence is...' and 'Before: round 3 fixes applied (2026-10-06), Agentic Product Teams 101 rewrite for product people of AE101 ironies-of-automation § Trust and vigilance move in opposite directions.' narrate the edit ('is cut', 'Before: ... fixes applied') rather than state what is true; the 'Before:' clause is also unparseable. L16: 'round 2 fidelity:' labels the pass that produced the guard. Harm (reader who never saw the prior version loses nothing if the journey goes) is present. The dated header itself is legitimate provenance and is not filed.",
+   "evidence": "L19: \"**Fidelity guard:** round 2 fidelity: the 1993 study used 40 subjects...\" labels the pass that produced the guard (session biography). Tense test: a reader who never saw round 1 loses nothing if \"round 2 fidelity:\" goes; the constraint after it (name neither population, no claim about agent users) is the live part. Harm (a maintainer reading a pass-label as part of the standing constraint) is mildly present. Not filed: L17 STATUS now states what is true (rewrite of AE101 ironies-of-automation, evidence = Day 2 doubts.md, not taught) with a single dated provenance header (2026-10-07), which the rule says not to sweep; L14-15 are stamper-owned.",
    "na_reason": null,
-   "fix_hint": "Rewrite STATUS as present-tense state, drop 'Before:' clause and 'round 2' label",
+   "fix_hint": "Drop \"round 2 fidelity:\" from L19; keep the guard as present-tense constraint",
    "blocking": false
   },
   {
@@ -41,7 +41,327 @@
    "rule_index": 4,
    "rule_lead": "Register match.",
    "verdict": "PASS",
-   "evidence": "L8 'The trust is deserved. The noticing still has to be designed.' is the closest to poster register; it is a plain concession then a claim, no Remember/Hold onto wrapper (grep 0), warm and concrete",
+   "evidence": "L8 \"The trust is deserved. The noticing still has to be designed.\" is the closest to poster register; it is a plain concession then a claim, immediately unpacked by the habit sentence, no retain-this wrapper (grep Remember|Hold onto|Keep in mind|Never forget = 0), no atmospheric imagery, no Boris-flat or consulting-deck cadence; warm peer voice",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 6,
+   "rule_lead": "Credit original when paraphrasing named technique.",
+   "verdict": "PASS",
+   "evidence": "no creator name, no practitioner named in body; grep Antti|the creator|the author|we|We over L1-11 = 0",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 7,
+   "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
+   "verdict": "PASS",
+   "evidence": "L6 \"each of you marked the one digest line you trusted least\" is second person; grep \"student\" in body = 0; no trainer delivery mechanics in body",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 8,
+   "rule_lead": "Don't smuggle terms of art from maintainer into body.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no maintainer-only term of art in body (substrate, self-compound, grill-me absent)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 9,
+   "rule_lead": "Over-hedge detector.",
+   "verdict": "PASS",
+   "evidence": "L8 \"Keep a habit of doing a piece of the work yourself now and then\" is the closest to a reassurance/softener but is the slide's instruction, not an absolution; no \"no penalty / fine way to / it's OK if / not on the hook\" shapes",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 11,
+   "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no practitioner attributed in body prose",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 12,
+   "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
+   "verdict": "PASS",
+   "evidence": "L8 \"The trust is deserved. The noticing still has to be designed.\" is the punchy pair; the boundary is the next sentence in the same paragraph (the habit and the one-result read), so the slogan keeps its punch with a concrete downstream cue",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 13,
+   "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
+   "verdict": "PASS",
+   "evidence": "grep vendor|marketing|not theoretical|grounded in = 0 in body; no positioning posture",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 14,
+   "rule_lead": "Watch out for planting jargon too early.",
+   "verdict": "PASS",
+   "evidence": "L6 \"digest\" is the closest term of art; it is the student's own Day 2 artifact (earned upstream), not LLM-internal vocabulary; no token/embedding/orchestration shapes",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 15,
+   "rule_lead": "Audit closer when trimming body-prose forcing function.",
+   "verdict": "PASS",
+   "evidence": "L10 \"when did you last do this kind of work by hand?\" is the nearest pronoun closer; \"this kind of work\" resolves to the work behind the clean result in the same sentence, and \"by hand\" is a concrete action, not a spatial metaphor",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 17,
+   "rule_lead": "No combative verbs about the agent in body prose.",
+   "verdict": "PASS",
+   "evidence": "grep bark|order|command|whip|boss|force|drag = 0; L10 \"ask the plain question\" is addressed to the student, not a verb done to the agent",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 18,
+   "rule_lead": "Headers must be literally true about the mechanism.",
+   "verdict": "PASS",
+   "evidence": "L1 \"The more you trust it, the less you notice\" is what the body claims (L4 trust makes you a little worse at spotting the wrong one); no spatial metaphor, no \"other X\" without a primary",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 19,
+   "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
+   "verdict": "PASS",
+   "evidence": "L8 \"The trust is deserved. The noticing still has to be designed.\" is the nearest to a deictic drumroll but has no \"That is / This is\" pointer and each sentence carries a claim; L8 \"reading one result properly instead of skimming ten\" negates the reader's actual prior (skimming), not an unguessed Y",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 20,
+   "rule_lead": "Don't state a count the adjacent list already holds.",
+   "verdict": "PASS",
+   "evidence": "L6 \"after ten good digests\" is a hypothetical, not a tally of an adjacent list; no list on the slide, no numeral above one",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 21,
+   "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
+   "verdict": "PASS",
+   "evidence": "L4 \"Each good result is real evidence that it can be trusted, and it also makes you a little worse at spotting the one that is wrong.\" is the closest to an overreaching universal; it is hedged (\"a little\"), carries no only/always/never/nothing-else superlative, and the claim is borrowed with sources (parasuraman-riley, pms-1993-complacency), not vision-grade none-owed. The noticing-designed claim is vision-grade but is a design stance with no superlative",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 22,
+   "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
+   "verdict": "PASS",
+   "evidence": "grep -rlE \"← .*(parasuraman-riley|pms-1993-complacency)\" curriculum/ returned the shared slide and lectures/ironies-of-automation.md (plus an expanded body view); the AE101 lecture is the stamp inheritance source, the slide names neither study population per the fidelity guard, and no body line quoted by a claim was edited in the pinned diff (maintainer block only)",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 26,
+   "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no \"X tells you whether Y\" / \"you will know it worked when\" clause",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 27,
+   "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
+   "verdict": "PASS",
+   "evidence": "L4 and L8 restate one idea at two altitudes (trust helps and costs noticing / trust deserved, noticing still needs designing); L8 adds the concrete habit, and the rule is style, not a gate. Not a REVISE; no replacement shorter than the original that keeps the backing-ledger quote \"The noticing still has to be designed\"",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 28,
+   "rule_lead": "Body prose stands without the trainer — no cue-card prose.",
+   "verdict": "PASS",
+   "evidence": "muted read: L6 \"On Day 2 each of you marked the one digest line you trusted least\" has verb and subject, \"Day 2\" resolves inside APT101 and the digest is the student's own artifact; L10 \"when did you last do this kind of work by hand?\" every pronoun points at a noun in the sentence; grep Take a guess|before it runs|on the screen|^Let's go|^Go\\.|Your turn = 0",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 1,
+   "rule_lead": "Aspirational destination, never corrective gap.",
+   "verdict": "PASS",
+   "evidence": "L4 \"makes you a little worse at spotting the one that is wrong\" is the nearest to a corrective gap; it is a universal effect of trust (cited human-factors finding), not a deficiency asserted of this student, and L6 invites the student to inspect their own evidence; no tier language, no identity criterion (L10 is a question, satisfiable today)",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 2,
+   "rule_lead": "Earn every technical term on first use.",
+   "verdict": "PASS",
+   "evidence": "L6 \"digest\" earned by the Day 2 artifact it names; \"agent\" is the working term of the training; no unearned technical term in L1-11",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 3,
+   "rule_lead": "Business-audience word ban (Agents 101 default).",
+   "verdict": "PASS",
+   "evidence": "SVP test on L1-11: no flinch word (no token, schema, orchestration); \"digest\" and \"agent\" are plain",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 9,
+   "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
+   "verdict": "PASS",
+   "evidence": "L8 \"reading one result properly instead of skimming ten\" is the nearest error-catching-by-hand line; the slide's subject is that the person's own noticing is the scarce element, the object is \"one result\" and the tell is set by L6 (the line you trusted least, and why); \"properly\" is not the whole instruction (delete it and the line is still obeyable); by the rule's test the agent would not be doing this if phrased well. Fourth axis: L8 \"The noticing still has to be designed\" is unpacked by the habit sentence directly after it, so it is not a compressed aphorism standing alone",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 12,
+   "rule_lead": "Student moves stay in conversation with agent.",
+   "verdict": "PASS",
+   "evidence": "L8 \"doing a piece of the work yourself\" and L10 \"by hand\" are the nearest bypass-the-agent shapes; the rule protects an exercise forcing function from becoming mechanic work, whereas this is a lecture slide whose claim is that hand skill and noticing decay under trust, so the harm is absent. Rule question for the maintainer: §12 does not say lecture-slide claims about preserving manual skill are out of its scope",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 14,
+   "rule_lead": "No em-dashes. Simple sentences.",
+   "verdict": "PASS",
+   "evidence": "grep em-dash in body = 0 (view greps em_dash CLEAN); L4 longest sentence has one conjunction and stays simple",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 21,
+   "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
+   "verdict": "PASS",
+   "evidence": "L4 \"The agent will get things right\" uses agent for autonomous work per the split; no Claude/LLM mix in L1-11 (grep Claude = 0)",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 22,
+   "rule_lead": "No time-of-day anchors in body prose.",
+   "verdict": "PASS",
+   "evidence": "grep tomorrow|overnight|this morning|tonight|yesterday|last night over L1-11 = 0; L6 \"On Day 2\" is APT101's own structural reference (Day 1/2/3 used across the training's slides), not a time-of-day anchor",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 23,
+   "rule_lead": "Reflection beats stay invisible in flow.",
+   "verdict": "PASS",
+   "evidence": "L10 \"So when the next result lands clean, ask the plain question:\" is the closest to a reflection wrapper; it is a natural transition with a command verb leading to the question itself, the form the rule allows; grep pause|take a moment|sit with|let it land|Step back = 0",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 26,
+   "rule_lead": "Cut NVA: true but not moving student forward.",
+   "verdict": "PASS",
+   "evidence": "L4 \"The agent will get things right, many times in a row.\" is the nearest NVA; it sets the premise the whole slide turns on (good results breed trust), so deleting it leaves L4 second clause unanchored; obvious-to-engineer screen: the trust-vs-noticing trade is the point, not obvious",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 27,
+   "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no chat-print moment on this slide",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 28,
+   "rule_lead": "Forward-callout closer: student as grammatical subject.",
+   "verdict": "PASS",
+   "evidence": "L10 closer has the student as subject of the question (\"when did you last do this\"), is a slide call to action rather than an aside about the rest of the training, and uses no training-as-subject, they/them or role-gating",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 33,
+   "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
+   "verdict": "PASS",
+   "evidence": "L6 \"On Day 2 each of you marked...\" names an earlier beat but its subject is the student and their own artifact, and it is the evidence the slide stands on; no sentence is about the training's shape; deletion test: removing it leaves L8 without its grounding",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": 39,
+   "rule_lead": "Self-study is invisible in the training flow.",
+   "verdict": "PASS",
+   "evidence": "grep self-study|Teacher Claude in body = 0",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -53,48 +373,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "not an article rough cut",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 6,
-   "rule_lead": "Credit original when paraphrasing named technique.",
-   "verdict": "PASS",
-   "evidence": "view greps author_we 0, the_student 0; no creator name or practitioner named in body",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 7,
-   "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
-   "verdict": "PASS",
-   "evidence": "view grep the_student body_hits 0 CLEAN; body speaks to 'you' throughout (L6, L8, L10)",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 8,
-   "rule_lead": "Don't smuggle terms of art from maintainer into body.",
-   "verdict": "PASS",
-   "evidence": "L8 'The noticing still has to be designed' is the closest to a maintainer coinage; it is plain verb-and-noun English, no term of art from the backing block (overreliance, complacency) reaches the body",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 9,
-   "rule_lead": "Over-hedge detector.",
-   "verdict": "PASS",
-   "evidence": "L8 'The trust is deserved.' is the closest reassurance-shaped line; it concedes the point the next sentence builds on rather than absolving the reader of a duty",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_writing.md",
@@ -103,58 +385,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no user-given verbatim frame in this slide",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 11,
-   "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
-   "verdict": "PASS",
-   "evidence": "no practitioner is named in body prose (0 attributions)",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 12,
-   "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
-   "verdict": "PASS",
-   "evidence": "L1 'The more you trust it, the less you notice' is the punchy claim; L4 'a little worse at spotting' is the downstream boundary, so the header does not overpromise",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 13,
-   "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
-   "verdict": "PASS",
-   "evidence": "grep vendor/marketing-defence phrases in body 0; L4-L10 teach, no positioning posture",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 14,
-   "rule_lead": "Watch out for planting jargon too early.",
-   "verdict": "PASS",
-   "evidence": "L6 'digest' is the closest term; it names the student's own Day 2 artifact, not a term still ahead of the arc",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 15,
-   "rule_lead": "Audit closer when trimming body-prose forcing function.",
-   "verdict": "PASS",
-   "evidence": "L10 closer: 'this kind of work' resolves to the work named in L8 ('a piece of the work yourself'); one referent, no pronoun hunt; ends on a question the reader answers",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_writing.md",
@@ -163,68 +397,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "not an exercise; no What happened block",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 17,
-   "rule_lead": "No combative verbs about the agent in body prose.",
-   "verdict": "PASS",
-   "evidence": "no combative verb about the agent; L4 'The agent will get things right' is the closest agent sentence",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 18,
-   "rule_lead": "Headers must be literally true about the mechanism.",
-   "verdict": "PASS",
-   "evidence": "L1 header 'The more you trust it, the less you notice' reads true against L4-L8 (trust up, noticing down)",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 19,
-   "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
-   "verdict": "PASS",
-   "evidence": "L8 'instead of skimming ten' is the closest empty-negation shape; skimming is the reader's actual prior, so the contrast is needed",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 20,
-   "rule_lead": "Don't state a count the adjacent list already holds.",
-   "verdict": "PASS",
-   "evidence": "L6 'ten good digests' and L8 'skimming ten' are quantities in a hypothetical, not a count above an adjacent list; no list on the slide",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 21,
-   "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
-   "verdict": "PASS",
-   "evidence": "L4 'many times in a row' and 'real evidence' are the closest absolutes; neither is a superlative (only/always/never) asserted about the world",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 22,
-   "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
-   "verdict": "PASS",
-   "evidence": "the claim quote 'worse at spotting' occurs only in this body (grep lectures+slides: 1 hit, L4); sibling ironies-of-automation states a differently worded claim from the same sources",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_writing.md",
@@ -233,8 +409,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "single-file target, no multi-file sweep",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_writing.md",
@@ -243,8 +421,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "not a trainer-facing audience doc",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_writing.md",
@@ -253,68 +433,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "not trainer-facing text",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 26,
-   "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
-   "verdict": "PASS",
-   "evidence": "L10 'when did you last do this kind of work by hand?' points at an observable the reader can answer negatively, not at a self-witnessing read",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 27,
-   "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
-   "verdict": "PASS",
-   "evidence": "L4 'Each good result is real evidence that it can be trusted' and L8 'The trust is deserved' are the closest to a second statement of one idea; L8 turns it into the pivot to the habit, and the rule is style not a gate",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 28,
-   "rule_lead": "Body prose stands without the trainer — no cue-card prose.",
-   "verdict": "PASS",
-   "evidence": "muted read of L4-L10: every sentence carries a verb; L6 'that line' resolves to 'the one digest line' in the same sentence; L10 'this kind of work' resolves to L8; grep Take a guess/before it runs/on the screen/Your turn 0; L1 'it' resolves to L4 'The agent'",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 1,
-   "rule_lead": "Aspirational destination, never corrective gap.",
-   "verdict": "PASS",
-   "evidence": "L4 'also makes you a little worse at spotting the one that is wrong' is the closest to a corrective gap; it names an effect of good results on anyone, ability-neutral, and L8 opens 'The trust is deserved'",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 2,
-   "rule_lead": "Earn every technical term on first use.",
-   "verdict": "PASS",
-   "evidence": "L6 'digest' is the only term not defined on the slide; it names the student's own Day 2 artifact so no primer is owed here",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 3,
-   "rule_lead": "Business-audience word ban (Agents 101 default).",
-   "verdict": "PASS",
-   "evidence": "L4 'The agent' is the only tech word; plain English, passes the SVP flinch test",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -323,8 +445,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no memory/context terms",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -333,8 +457,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no troubleshooting branches",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -343,8 +469,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -353,8 +481,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no debrief",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -363,18 +493,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "slide placement in a module sequence is judged on the including file",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 9,
-   "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
-   "verdict": "PASS",
-   "evidence": "L8 'reading one result properly instead of skimming ten' is the closest to error-catching by hand; the carve-out applies, the slide's point is that vigilance stays human and the agent cannot do the noticing for you; 'properly' is an attitude adverb (suggestion filed, shorter)",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -383,8 +505,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no simulation persona",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -393,18 +517,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no research callout box",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 12,
-   "rule_lead": "Student moves stay in conversation with agent.",
-   "verdict": "PASS",
-   "evidence": "L8 'doing a piece of the work yourself now and then' steps outside the chat on purpose; it is a habit named in a lecture slide, not an exercise forcing function",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -413,18 +529,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no CLAUDE.md reference",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 14,
-   "rule_lead": "No em-dashes. Simple sentences.",
-   "verdict": "PASS",
-   "evidence": "view grep em_dash body_hits 0 CLEAN; sentences are short",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -433,8 +541,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "slide header is a statement, not an exercise or debrief section header",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -443,8 +553,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no inline links",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -453,18 +565,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no shared-word collision with a Claude Code primitive",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 21,
-   "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
-   "verdict": "PASS",
-   "evidence": "L4 'The agent will get things right' uses agent for acting, which is the rule's split",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -473,28 +577,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no session/task/run vocabulary",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 22,
-   "rule_lead": "No time-of-day anchors in body prose.",
-   "verdict": "PASS",
-   "evidence": "grep tomorrow/yesterday/overnight/tonight/this morning in body 0; L6 'On Day 2' names an event of the training's own 3-day shape, not a clock anchor",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 23,
-   "rule_lead": "Reflection beats stay invisible in flow.",
-   "verdict": "PASS",
-   "evidence": "L10 'ask the plain question:' is the closest to a reflection wrapper; the question itself is the beat, no sit-with/take-a-moment/pause prefix (grep 0)",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -503,8 +589,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt asking Claude a meta-question",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -513,38 +601,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no student artifact file type named",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 26,
-   "rule_lead": "Cut NVA: true but not moving student forward.",
-   "verdict": "PASS",
-   "evidence": "L8 'The trust is deserved.' is the closest to NVA; it changes what the reader does next (keep trusting, add noticing), so it earns the slot",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 27,
-   "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
-   "verdict": "PASS",
-   "evidence": "no chat-print precedes a read instruction; L8 'reading one result' names the object",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 28,
-   "rule_lead": "Forward-callout closer: student as grammatical subject.",
-   "verdict": "PASS",
-   "evidence": "L10 closer has the student as subject ('did you'); no training-as-subject or role-gating",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -553,8 +613,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no operational setting",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -563,8 +625,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no spine term replaced by a synonym on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -573,8 +637,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no message to the agent quoted",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -583,18 +649,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no setup instruction",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 33,
-   "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
-   "verdict": "PASS",
-   "evidence": "L6 'On Day 2 each of you marked...' is about the student's own act, not the training's shape; closest to arc-positioning but subject is the student",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -603,8 +661,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "not the sharing-strategies taxonomy",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -613,8 +673,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "not a Debrief",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -623,8 +685,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no scaffold or unzip",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -633,8 +697,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "mood contract is judged on the including module (story class)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_student_facing.md",
@@ -643,18 +709,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "not an exercise header",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": 39,
-   "rule_lead": "Self-study is invisible in the training flow.",
-   "verdict": "PASS",
-   "evidence": "grep self-study / Teacher Claude in body 0",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -663,8 +721,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -673,8 +733,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -683,8 +745,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -693,8 +757,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -703,8 +769,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -713,8 +781,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -723,8 +793,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -733,8 +805,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -743,8 +817,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -753,8 +829,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -763,8 +841,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -773,8 +853,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -783,8 +865,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -793,8 +877,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -803,8 +889,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -813,8 +901,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -823,8 +913,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -833,8 +925,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -843,8 +937,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -853,8 +949,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -863,8 +961,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -873,8 +973,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -883,8 +985,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -893,8 +997,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -903,8 +1009,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -913,8 +1021,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -923,8 +1033,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -933,8 +1045,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -943,8 +1057,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -953,8 +1069,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -963,8 +1081,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -973,8 +1093,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -983,8 +1105,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -993,8 +1117,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -1003,8 +1129,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -1013,8 +1141,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -1023,8 +1153,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -1033,8 +1165,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -1043,8 +1177,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -1053,8 +1189,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -1063,8 +1201,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -1073,8 +1213,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -1083,8 +1225,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -1093,8 +1237,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -1103,8 +1249,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -1113,8 +1261,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -1123,8 +1273,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -1133,8 +1285,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_prompts.md",
@@ -1143,8 +1297,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks or registry prompts on this slide",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1153,8 +1309,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "student-facing slide, not buyer copy",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1163,8 +1321,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "student-facing slide, not buyer copy",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1173,8 +1333,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "student-facing slide, not buyer copy",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1183,8 +1345,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "student-facing slide, not buyer copy",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1193,8 +1357,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "student-facing slide, not buyer copy",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1203,8 +1369,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "student-facing slide, not buyer copy",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1213,8 +1381,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "student-facing slide, not buyer copy",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1223,8 +1393,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "student-facing slide, not buyer copy",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1233,8 +1405,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "student-facing slide, not buyer copy",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1243,8 +1417,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "student-facing slide, not buyer copy",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1253,8 +1429,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "student-facing slide, not buyer copy",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1263,8 +1441,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "student-facing slide, not buyer copy",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_sales_copy.md",
@@ -1273,8 +1453,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "student-facing slide, not buyer copy",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_strategy_tie_in.md",
@@ -1283,8 +1465,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no Big Idea, Key Concepts or What You Will Learn on a slide file; mood is judged in the story class",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_strategy_tie_in.md",
@@ -1293,8 +1477,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no Big Idea, Key Concepts or What You Will Learn on a slide file; mood is judged in the story class",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_strategy_tie_in.md",
@@ -1303,8 +1489,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no Big Idea, Key Concepts or What You Will Learn on a slide file; mood is judged in the story class",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_strategy_tie_in.md",
@@ -1313,8 +1501,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no Big Idea, Key Concepts or What You Will Learn on a slide file; mood is judged in the story class",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_strategy_tie_in.md",
@@ -1323,8 +1513,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no Big Idea, Key Concepts or What You Will Learn on a slide file; mood is judged in the story class",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_strategy_tie_in.md",
@@ -1333,8 +1525,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no Big Idea, Key Concepts or What You Will Learn on a slide file; mood is judged in the story class",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_strategy_tie_in.md",
@@ -1343,8 +1537,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no Big Idea, Key Concepts or What You Will Learn on a slide file; mood is judged in the story class",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   },
   {
    "compendium": "check_strategy_tie_in.md",
@@ -1353,25 +1549,21 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no Big Idea, Key Concepts or What You Will Learn on a slide file; mood is judged in the story class",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "9c227080025a2a20a97c37275ba67e906a8f08c7be65a9cf67b96c8dad1cb41e",
+   "carried_shape": "cfd36e61c1898327"
   }
  ],
  "suggestions": [
   {
-   "rule": "check_student_facing.md §9",
-   "line": 8,
-   "now": "Keep a habit of doing a piece of the work yourself now and then, and of reading one result properly instead of skimming ten.",
-   "proposed": "Keep a habit of doing a piece of the work yourself now and then, and of reading one result instead of skimming ten."
-  },
-  {
    "rule": "check_writing.md §3",
-   "line": 14,
-   "now": "**STATUS:** hill-climb round 3 (2026-10-07): the 1990s automation-research sentence is cut and the evidence is the trio's own Day 2 moment (`team/<name>/doubts.md`, the line each trusted least); the claim stands. Before: round 3 fixes applied (2026-10-06), Agentic Product Teams 101 rewrite for product people of AE101 `ironies-of-automation` § Trust and vigilance move in opposite directions. Not taught (simulation training).",
-   "proposed": "**STATUS:** Agentic Product Teams 101 rewrite, for product people, of AE101 `ironies-of-automation` § Trust and vigilance move in opposite directions (hill-climb round 3, 2026-10-07). The evidence is the trio's own Day 2 moment (`team/<name>/doubts.md`, the line each trusted least). Not taught (simulation training)."
+   "line": 19,
+   "now": "**Fidelity guard:** round 2 fidelity: the 1993 study used 40 subjects on a flight-simulation task",
+   "proposed": "**Fidelity guard:** the 1993 study used 40 subjects on a flight-simulation task"
   }
  ],
  "blocking_findings_count": 0,
  "nonblocking_findings_count": 1,
- "notes": "Maintainer STATUS block (check_writing §3) is a non-blocking REVISE: narrates the edit. No accept-note authorises anything on this file; the dated lines in the view are provenance and source stamps. Slide uses Day 2 / digest referents from the Day 2 exercise; whether they resolve in every including deck is a slides-class call. Fidelity guard claim (1993 study, 40 subjects) is technical-class."
+ "notes": "Pinned diff 0ba99eb1..HEAD touches the maintainer block only (Quality row added, STATUS rewritten to present-tense state); body unchanged. The earlier §3 finding on the old STATUS is fixed; one residual pass-label (\"round 2 fidelity:\") remains in the Fidelity guard. Accept-notes found: none authorising anything in scope (dated lines are the quality stamp, STATUS provenance 2026-10-07, and two source-check stamps). Rule question: check_student_facing §12 does not state whether a lecture-slide claim about keeping hand skill alive is in scope. Out of lane, not filed: the claim \"makes you a little worse at spotting\" is extended from the 1993/1997 human-factors literature to agent users, which the Fidelity guard itself warns against (technical class)."
 }

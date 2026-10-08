@@ -105,8 +105,8 @@ Day 2 starts with what came back.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@8e1304d1 story@ba032676 technical@8e1304d1 behavior@dd243e74 pedagogy@dd242fd9 strategy@1fd93c06 slides@8e1304d1)
-- judges @ba032676: writing PASS (4 findings see instances/agentic-product-teams-101--exercise--apt101-send-it-off.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (verify-refuted), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@9669d4c1 story@ba032676 technical@8e1304d1 behavior@dd243e74 pedagogy@dd242fd9 strategy@1fd93c06 slides@8e1304d1)
+- judges @9669d4c1: writing PASS (4 findings see instances/agentic-product-teams-101--exercise--apt101-send-it-off.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (verify-refuted), strategy PASS, slides PASS
 
 **Role in Day 1:** beat 7, the last hands-on beat; sends off the overnight digest that opens Day 2 (*What came back*) and threads the training (sent Day 1, agrees with you Day 2, caught by your own criteria Day 3).
 

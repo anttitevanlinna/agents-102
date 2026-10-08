@@ -3,7 +3,7 @@
   "file": "curriculum/exercises/apt101-paint-the-product-box.md",
   "training": "agentic-product-teams-101",
   "verdict": "PASS",
-  "body_sha": "4cd7629a692a64711715e53e1244eb31dbca28b8cc9b6990438b03e43422ced5",
+  "body_sha": "a9b3169838ca63e0c5b3c3a4ba3a00ad9b86485b2c5a6093c9c0a10cccd2903e",
   "shape_hash": "884cabee8fea30a7",
   "chunk_map": [
     {
@@ -53,7 +53,7 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "evidence": "chunk 7 \"Take stock of the box\": line 120: \"The bet is written against it next\" is the closest (definite noun for the next exercise, not named earlier in the file); it is a forward navigational pointer in a closer, and every other referent (the box frame, the baseline, the only-us stickies, the fresh read) is named by a header or earlier sentence in-file; session artifacts carve-out covers the page and stickies",
+      "evidence": "chunk 7 \"Take stock of the box\": line 120: \"The bet is written against it next\" is the closest: \"the bet\" is not named earlier in the file; it is a forward pointer in a closer (module-arc closer carve-out), and the harm (a reader stuck on an unresolved referent) is absent because the sentence names the next step, not a claim that depends on it. Every other referent resolves in-file: line 108 \"the Phase 1 baseline\", line 104 \"the two quotes\" -> line 104 two lines, line 116 \"five boxes\" -> Phases 1-5.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -64,7 +64,7 @@
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "evidence": "line 120: \"on Day 3 five people from outside the team look at it\" names the event by claim, not by file position; line 108 \"the Phase 1 baseline\" is in-file. No \"the opening lecture said\" shape. grep for lecture/earlier file refs in body: none",
+      "evidence": "line 120: \"on Day 3 five people from outside the team look at it\" names the event by claim, not by file position; no \"the opening lecture said\" shape. grep -nEi 'lecture|earlier file|opening' in body: only maintainer block.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -75,7 +75,7 @@
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
-      "evidence": "line 108: \"the Phase 1 baseline\" resolves to chunk 2 \"Phase 1: The boring baseline\"; line 116 \"five boxes\" resolves to the five passes Phases 1-5; no \"the X you did\" pointing outside the file",
+      "evidence": "line 108 \"the Phase 1 baseline\" resolves to chunk 1 \"Phase 1: The boring baseline\"; line 116 \"Same model, five boxes\" resolves to the passes of Phases 1-5; line 110 \"Phase 6\" fresh read in-file. No \"the X you did\" pointing outside the file.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -86,7 +86,7 @@
       "rule_index": 4,
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "PASS",
-      "evidence": "line 46: \"Open the page. It works. It reads like a box. It is also a box your nearest competitor could print\" is a reveal but no guess-cue precedes or follows it; Phase 6 line 106-108 has no predict instruction. Every beat is verbed (no verbless scene-setting, no terminal-aimed guess cue)",
+      "evidence": "line 46: \"Open the page. It works. It reads like a box.\" is the closest, a verbed reveal with no guess-cue before or after it; line 108 \"You told Claude different things between the two, and nothing else changed\" is a stated observation, not a guess beat. No predict instruction anywhere, so reveal-before-guess cannot occur; every sentence is verbed so the muted read has a scene.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -97,7 +97,7 @@
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "evidence": "smallest chunk is chunk 5 \"Phase 4\" / chunk 6 \"Phase 5\" (line 94-96): each carries instruction plus a prompt or screenshot move; none is a wait-state",
+      "evidence": "smallest chunks: chunk 7 \"Take stock of the box\" (87 words) and chunk 5 \"Phase 5: Make it yours\" (89 words, line 94 \"Iterate until the three of you would put it on the table in a customer meeting\"); each carries an instruction and a stop condition, so none is a wait-state.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -108,7 +108,7 @@
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "evidence": "chunk 4 \"Phase 3: What only your product does\" line 70-76: content is exactly the only-us stickies and the repaint; chunk 6 \"Phase 6: A fresh read\" line 102-110 is the cold read. No header the content contradicts",
+      "evidence": "chunk 3 \"Phase 3: What only your product does\" lines 70-76: content is exactly the only-us stickies and the repaint, header literally true; chunk 6 \"Phase 6: A fresh read\" lines 102-110: closest, the header says read while the slide also adds a push-back, which is still the read's outcome.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -119,7 +119,7 @@
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "evidence": "line 46 \"It works. It reads like a box. It is also a box...\" is the closest to a triplet; every leg is concrete and the third carries new content. line 82 \"Not categories (...) but the real complaint\" is a single contrast with an example, not \"Not X. Not Y. Z.\" No self-grading superlative, no number+retraction, no abstraction-noun stack",
+      "evidence": "line 46 \"It works. It reads like a box. It is also a box your nearest competitor could print\" is the closest to an anaphora triple; the third leg carries new concrete content. line 82 \"Not categories (...) but the real complaint\" is a single not-X-but-Y, not the banned Not X. Not Y. Z. grep -nE 'most useful|one of the' body: 0 superlatives; no number-plus-retraction; no empty verb triplets.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -130,7 +130,7 @@
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "evidence": "grep beat|mood|compendium|forcing function|firing in body: only line 62 \"Where Claude's wording beat a sticky\" (ordinary verb). \"Banter expected\" (line 3) is plain English. Dialect lives only below the maintainer cut",
+      "evidence": "grep -nEi 'compendium|forcing function|mood|firing|surface' in body: 0. line 62 \"Where Claude's wording beat a sticky\" is ordinary verb use of beat; line 3 \"Banter expected\" is plain room register.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -139,9 +139,9 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
-      "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "evidence": "chunk 0 lines 3-19: Time, Session, What you do, Who drives. and \"Reach the board and the team folder.\" are bolded; the first three are exercise-template labels, \"Who drives.\" is a 2-word handle. Closest: line 19 \"**Reach the board and the team folder.**\" (7 words, a lead sentence) - label-shaped and the only one; other chunks carry one handle (\"working backwards\", line 52) or only template labels; see suggestion",
+      "evidence": "chunk 0 lines 3-19 carries **Time:**, **Session**, **What you do:**, **Who drives.**, **Reach the board and the team folder.** (exercise-template labels plus two lead labels); line 19 \"**Reach the board and the team folder.**\" is 7 words, over the handle cap, but it is a label followed by prose, not every-bullet-bold monoculture. chunk 2 line 52 bolds only **working backwards**, a coined handle. chunk 7 bolds only the template labels **What happened:** / **What's next:**.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -150,9 +150,9 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
-      "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "evidence": "exercise is included by trainings/agentic-product-teams-101/our-product-our-system.md:46 as a standalone-paragraph include link, so it reaches the composed deck under .phase--exercise; no phase-less section",
+      "evidence": "grep -n 'paint-the-product-box' curriculum/trainings/agentic-product-teams-101/our-product-our-system.md -> line 46 standalone-paragraph include link, so the exercise reaches the composed deck under .phase--exercise.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -161,9 +161,9 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
-      "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-numbering.js -> \"OK - 55 files, Phase/Step numbering consistent.\" rc=0; headers Phase 1..6 consecutive; line 108 \"Phase 1 baseline\" resolves",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/exercises/apt101-paint-the-product-box.md -> \"OK — 1 files, Phase/Step numbering consistent.\"; headers Phase 1..6 consecutive; the only in-file ref (line 108 and 110 \"Phase 1\", \"Phase 6\") resolves.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -174,7 +174,7 @@
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-deixis.js --file curriculum/exercises/apt101-paint-the-product-box.md -> \"OK - 1 files, no page-geometry pointers across the slide cut.\"; no above/below/see below in body",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/exercises/apt101-paint-the-product-box.md -> \"OK — 1 files, no page-geometry pointers across the slide cut.\"; grep -nEi '\\b(below|above|further down|at the top)\\b' body: 0.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -185,7 +185,7 @@
       "rule_index": 13,
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "PASS",
-      "evidence": "no markdown links in the body (greps: url CLEAN, only the {{prompt:}} markers); rule is a review surface, never a gate",
+      "evidence": "grep -c 'http' -> 0; grep -nE '\\]\\(' body: 0 links (only {{prompt:}} markers). Review surface, never a gate.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -194,22 +194,20 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
-      "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
-      "verdict": "REVISE",
-      "evidence": "chunk 3 \"Phase 2: Write it backwards from your customer\" line 48-64: node scripts/check-slide-size.js --file curriculum/exercises/apt101-paint-the-product-box.md -> \"oversized: 1  exercises/apt101-paint-the-product-box.md:41 [258w] ## Phase 2: Write it backwards from your customer\"; cap is 210 words; no \"Slide size accepted\" line in the maintainer block. Harm (a wall slide too dense to read at projection distance) is present: 5 paragraphs of prose before the prompt.",
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/apt101-paint-the-product-box.md --report -> oversized: 0; largest is \"Phase 2: Write it backwards from your customer\" at 210 words / 0 bullets, exactly at the 210 ceiling, not over; no Slide size accepted note owed.",
       "na_reason": null,
-      "fix_hint": "Cut or split Phase 2 by about 50 words (e.g. drop line 56's 'Claude knows working backwards already...' recital or move the owner-per-part sentence into the prompt), or add a **Slide size accepted:** line to the maintainer block",
+      "fix_hint": null,
       "blocking": false,
-      "chunks_flagged": [
-        3
-      ]
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
-      "evidence": "headings: \"Phase 1: The boring baseline\" ... \"Phase 6: A fresh read\" are phase labels, \"Take stock of the box\" (line 112) is imperative; exercise mood preserved, no declaratives needed",
+      "evidence": "headings: \"Phase 1: The boring baseline\" .. \"Phase 6: A fresh read\" are phase labels; \"Take stock of the box\" (line 112) is imperative; exercise mood preserved and no declarative heading is claimed, none owed.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -218,9 +216,9 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 16,
-      "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
-      "evidence": "closest: line 108 \"You told Claude different things between the two, and nothing else changed.\" restates the exercise point, but it is the one place the contrast is drawn for the reader and the Take-stock recap (line 116) is a different level (names the five boxes and the attribution); no bullets, no doctrine restatement, no design commentary, no koan kicker",
+      "evidence": "closest: line 108 \"You told Claude different things between the two, and nothing else changed.\" restates the lede's line 15 \"changing only what Claude is told\", but here it is the Phase 6 payoff paired with an action (hold the Phase 1 baseline next to the page) and sits where the contrast is first felt; line 116 \"Same model, five boxes.\" opens the recap and adds the attribution move. No aphorism kicker, no design commentary.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -233,26 +231,27 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no header rename without body re-earn evidenced: git log -p over the last 3 commits touching the file shows no changed ## line",
-      "fix_hint": null,
+      "fix_hint": "",
       "blocking": false,
-      "chunks_flagged": []
+      "carried_from": "4cd7629a692a64711715e53e1244eb31dbca28b8cc9b6990438b03e43422ced5",
+      "carried_shape": "884cabee8fea30a7"
     }
   ],
   "suggestions": [
     {
-      "rule": "check_slides.md \u00a79",
+      "rule": "check_slides.md §9",
       "line": 19,
       "now": "**Reach the board and the team folder.** The trainer posts both in chat",
       "proposed": "**Board and team folder.** The trainer posts both in chat"
     },
     {
-      "rule": "check_slides.md \u00a71",
+      "rule": "check_slides.md §1",
       "line": 120,
-      "now": "You keep this box. The bet is written against it next",
-      "proposed": "You keep this box. Next you write the team's bet against it"
+      "now": "You keep this box. The bet is written against it next, and on Day 3",
+      "proposed": "You keep this box. Next you write the team's bet against it, and on Day 3"
     }
   ],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 1,
-  "notes": "Chunk map: the file has 8 chunks by this count (lede + 6 phases + take-stock); the slide-size checker counts 7 slides (lede/title counted differently). Phase 2 raw prose is 258 words by wc over lines 50-64 and 258w by the checker. Maintainer-block accept-notes: none (only the dated Quality line, line 124). Per rule 14 this is the only owed item and non-blocking, so verdict PASS."
+  "nonblocking_findings_count": 0,
+  "notes": "Diff ccbff4e7..HEAD trimmed Phase 2 to exactly 210 words (rule 14 now at cap, not over). Accept-notes: none dated in maintainer block."
 }

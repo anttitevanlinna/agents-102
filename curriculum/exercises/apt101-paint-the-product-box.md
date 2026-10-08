@@ -121,8 +121,8 @@ You keep this box. The bet is written against it next, and on Day 3 five people 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@9d3527f2 technical@d747a00d behavior@dd243e74 pedagogy@dd242fd9 strategy@2a492ac7 slides@ccbff4e7)
-- judges @ccbff4e7: writing PASS (4 findings see instances/agentic-product-teams-101--exercise--apt101-paint-the-product-box.writing.json), technical PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-paint-the-product-box.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-paint-the-product-box.slides.json)
+**Quality:** compendium-audited 2026-10-08 (writing@259b781c technical@259b781c behavior@dd243e74 pedagogy@dd242fd9 strategy@2a492ac7 slides@259b781c)
+- judges @259b781c: writing PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-paint-the-product-box.writing.json), technical PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-paint-the-product-box.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Role in Day 1:** beat 3, the first hands-on beat; the opener after the two lectures; the trio meets the Agents 101 Module 1 mechanism (context shapes output) on its own product, before *Start from your customer's sentence* and *The agent knows only what you tell it* name what it did.
 

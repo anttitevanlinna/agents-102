@@ -2,8 +2,8 @@
  "class": "technical",
  "file": "curriculum/exercises/apt101-read-the-digest.md",
  "training": "agentic-product-teams-101",
- "verdict": "REVISE",
- "body_sha": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+ "verdict": "PASS",
+ "body_sha": "f43f5990aeeae19ea141f5a1221a9a681bd8ba485e8fe47d32d18f2291205a0e",
  "shape_hash": "ce58b5ca9f034b9f",
  "rules_evaluated": [
   {
@@ -11,7 +11,317 @@
    "rule_index": 1,
    "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
    "verdict": "PASS",
-   "evidence": "grep -c \"claude.ai\" on raw file -> 0; L7 names Claude Code session and Cowork task only. Harm (Claude.ai-only feature leaning) absent.",
+   "evidence": "grep claude.ai in body view -> 0; L7 names Claude Code and Cowork only. Harm (student sent to unsupported surface) absent.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_platform_and_boundaries.md",
+   "rule_index": 3,
+   "rule_lead": "Local scheduled tasks catch up on wake, but only once, only for runs missed in last 7 days.",
+   "verdict": "PASS",
+   "evidence": "L13: \"If its last run is from before Day 1 ended, click **Run now**\" makes no catch-up claim; it routes around a missed run by manual trigger, which matches desktop-scheduled-tasks (Run now = start immediately).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_platform_and_boundaries.md",
+   "rule_index": 4,
+   "rule_lead": "Verify capabilities BEFORE asserting, not after.",
+   "verdict": "PASS",
+   "evidence": "Ran curl https://code.claude.com/docs/en/desktop-scheduled-tasks today: text contains \"Run now\" as a task-detail control (\"click Run now after creating a task\"). L13 \"open the Overnight digest routine in the Routines list ... click Run now on its page\" is consistent. Closest-to-violating: L13 'It takes about five minutes' is a duration estimate, not a platform claim. Prior 'Schedule sidebar' wording is gone.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_platform_and_boundaries.md",
+   "rule_index": 6,
+   "rule_lead": "Known correct Claude Code facts (easy to get wrong):",
+   "verdict": "PASS",
+   "evidence": "L13 'Routines list' matches rule 6 'Routines sidebar -> New routine -> Local'; the 2026-05-14 correction (was 'Schedule sidebar') is honoured; no 'Schedule sidebar' string remains (grep -n 'Schedule' body -> 0). Closest: L13 'Routines list' vs 'sidebar'; docs say 'click a task in the Routines list' so it is accurate.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_platform_and_boundaries.md",
+   "rule_index": 7,
+   "rule_lead": "Sessions = unit of work — write \"start a new session in X,\" not \"open Claude Code in X.\"",
+   "verdict": "PASS",
+   "evidence": "L7 'Start a new Claude Code session in your training folder'; L7 Cowork twin 'Start a new Cowork task'. Closest: L13 'open the Overnight digest routine' is UI access (Routines list), the reserved case.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_platform_and_boundaries.md",
+   "rule_index": 23,
+   "rule_lead": "Cowork sandboxed to its connected working directories.",
+   "verdict": "PASS",
+   "evidence": "All fence paths (module-2/morning-agent/..., team/...) sit under ~/Documents/apt101/ named as Cowork working folder at L7; no ~/.claude or /tmp. Closest: L13 Routines list on the Cowork seat is unverified (reference_cowork_capabilities.md L53 'Routines (cloud): UNVERIFIED in Cowork'), but L13 gives 'or paste its prompt into this session' as the fallback, so the seat is not stranded.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_platform_and_boundaries.md",
+   "rule_index": 25,
+   "rule_lead": "Cowork capability surface — UI surfaces subagent reads; no session rename in Cowork or Desktop.",
+   "verdict": "PASS",
+   "evidence": "L9-11 plain fenced '/rename apt101-day-2' with no runtime wrapper; rule says authors write plain markdown and decorateSessions wraps it in .rt-cli. No subagent fan-out in this exercise, so (a) does not fire.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_platform_and_boundaries.md",
+   "rule_index": 38,
+   "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism — no judge catches it, because no artefact contradicts it.",
+   "verdict": "PASS",
+   "evidence": "L13 'It takes about five minutes; start Phase 1 when module-2/morning-agent/latest.html lands' states what TRIGGERS and what LANDS. L27 'tonight's run overwrites them' is a cadence claim backed by P1 copy step and the nightly Overnight digest routine. No 'X against Y' mechanism metaphor; closest is L39 'The agent read them once', a landing statement.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 16,
+   "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+   "verdict": "PASS",
+   "evidence": "Forcing functions are fenced: P1 'Don't comment on how they compare', 'quoted exactly', 'no source'; P2 'Put the source's own sentence next to the digest's line'; P3 'Add nothing.' Closest count-script: L31 'Push back if the list comes back as a summary' is an optional push-back, carved out to body. L45 'If your doubt lands on a typo, look again.' is a refinement, not a count.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 1,
+   "rule_lead": "No placeholders inside fences.",
+   "verdict": "PASS",
+   "evidence": "P1/P2/P3 fences use team/<my-name>/...; P1 and (via hypothesis prompt) carry 'Ask my first name if you don't know it' = fix (a). P2 ends with open-hook 'The line, and why I trust it least:' where student input is genuinely required (student's own doubt). Closest: P3 team/<my-name>/ has no ask tail but runs warm after P1 resolved the name (L60 same session).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 3,
+   "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+   "verdict": "PASS",
+   "evidence": "Markers L15,29,43,62 each on own line; shape produced by expandPrompts. Lead-ins: L27, L41, L60 'Ask Claude to ...'. L13 precedes personal-agent-homework-3 as a pre-paste guard.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 5,
+   "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+   "verdict": "PASS",
+   "evidence": "P1 writes team/<my-name>/doubts.md; P2 'Append the line ... to team/<my-name>/doubts.md' (same deterministic path); P3 reads team/<my-name>/hypothesis.md, which apt101-d1-bet-hypothesis L20 writes verbatim. No 'if file doesn't exist' filler.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 6,
+   "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+   "verdict": "PASS",
+   "evidence": "P1 'Don't comment on how they compare. That's for us.' defers to the room without naming P2/P3. P3 does not mention doubts or phase 5. Closest: P1 ranking 'by how much a decision would rest on it' hints at doubt-picking but does no pre-selection.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 7,
+   "rule_lead": "No session-resets mid-phase.",
+   "verdict": "PASS",
+   "evidence": "Only reset is L7 session start, before phase 1; no /clear or new session inside phases 1-5 (grep '/clear' -> 0). /rename is not a reset.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 9,
+   "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
+   "verdict": "PASS",
+   "evidence": "Fences use dash bullets and plain text. Closest: '## Look for' in P1/P3 is the literal heading of morning.md, a path-like reference, not emphasis.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 13,
+   "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+   "verdict": "PASS",
+   "evidence": "P1 'Give each the source file it came from, or \"no source\"' (flag path); P2 'Put the source's own sentence next to the digest's line, both quoted exactly. If the source doesn't say it, say so plainly' = quote-the-sentence integrity check.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 16,
+   "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+   "verdict": "PASS",
+   "evidence": "P3 names destination team/<my-name>/digest-against.html and 'Leave morning.md and latest.html untouched'; P1 copies to a new path 'unchanged'. Closest: P1 'write two lines at the head of team/<my-name>/doubts.md' on a file that may exist if P1 is rerun; first-create intent, fuzzy fallback acceptable.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 18,
+   "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+   "verdict": "PASS",
+   "evidence": "P2 'find what it actually says ... If the source doesn't say it, say so plainly' interrogates the digest (prior run output), asks for fault-finding, no defend/justify verbs. P1 ranking verbs: list, give source.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 23,
+   "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+   "verdict": "PASS",
+   "evidence": "grep of fences: every save names a dir: team/<my-name>/digest-day1.html, team/<my-name>/doubts.md, module-2/morning-agent/latest.html, team/<my-name>/digest-against.html. No naked filename.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 24,
+   "rule_lead": "Don't restate session CWD inside prompt body.",
+   "verdict": "PASS",
+   "evidence": "No absolute path or cd inside any fence; ~/Documents/apt101/ appears only in body L7.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 27,
+   "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+   "verdict": "PASS",
+   "evidence": "digest-day1.html: read by P1 four-line step and Day 3 (registry note); doubts.md: read in phase 5 (L70-72) and Day 3; digest-against.html: shown in P3 headline comparison and read Day 3 (registry note + maintainer Produces). None is (c)-only.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 28,
+   "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
+   "verdict": "PASS",
+   "evidence": "Registry-sourced via markers (L15,29,43,62); expandPrompts rebuilds the label from dest/context. grep '**Prompt' in body -> 0 inline.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 29,
+   "rule_lead": "Normal work request before orchestration.",
+   "verdict": "PASS",
+   "evidence": "P3-homework (personal-agent-homework-3) is a natural 'Read ... and run the job'. P1 is a multi-step protocol ('First, keep copies ... Then read ...'), but the protocol IS the lesson (find out what ran, L21). Closest: P1 four-line side-by-side.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 31,
+   "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+   "verdict": "PASS",
+   "evidence": "Four markers L15,29,43,62; all four registry files exist at curriculum/prompts/<key>.md (read this session). No inline **Prompt** blocks.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 34,
+   "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+   "verdict": "PASS",
+   "evidence": "P3 carries the support/test branch inside the fence ('If my line looked for support, the new line is: find what ... argues against it'); P1 carries the door test ('outside what team/what-goes-in.md lets in'). Body L31/L33 mirror for the student only.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 36,
+   "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+   "verdict": "PASS",
+   "evidence": "P1 splits into four paragraphs (keep copies / show four lines / report what ran / list claims); P3 splits into run / branches / leave untouched / show. P2 three short paragraphs. Closest: P1 first paragraph holds copy + write-two-lines, two moves in one block; <=2 moves, sequential-build exemption.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 38,
+   "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+   "verdict": "PASS",
+   "evidence": "L27 'keep a copy of the digest ... put four lines side by side ... report what ran' vs P1 'keep copies ... Show me four lines side by side ... report what ran' (rhymes). L60 'run your digest once more from the same brief, with only your look-for line turned round' vs P3 'Run the job ... once more ... my ## Look for line turned round' (rhymes). L13 before personal-agent-homework-3 is a pre-paste guard (38b: verb 'open'/'click' acts on environment). Closest: L27 'two lines you wrote into the brief' contradicts expect-line (see suggestion).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 40,
+   "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+   "verdict": "PASS",
+   "evidence": "P1 runs cold (L7 new session) and carries all file refs (morning.md, latest.html, team/what-goes-in.md, team/bet.md). P2/P3 run warm in same session (no /clear between phases); back-references 'my first headline', 'the line I quote below' resolve in P1's scrollback (40b: 'my first headline' = the headline P1 quoted). No curriculum-coined phase labels in fences.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 41,
+   "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no STOP/ask-and-wait tail grafted onto an artifact prompt",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 43,
+   "rule_lead": "Long-running prompts stream progress — never go silent.",
+   "verdict": "PASS",
+   "evidence": "L13 'It takes about five minutes' attaches to the homework-3 run, which L13 frames as a conditional rerun (minority route: only if last run predates Day 1 end), and the student is at the machine. Dose-first: not default duration; P3 rerun slower-than-5-min is a maintainer failure mode, loud and recoverable (read headlines during phase 5).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 46,
+   "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+   "verdict": "PASS",
+   "evidence": "No trailing shape spec. P1 'Show me four lines side by side, each quoted exactly' and P3 'Add nothing.' are shape-dependent teaching moments (headline comparison). Under one page.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_prompts.md",
+   "rule_index": 47,
+   "rule_lead": "\"Add X and regenerate\" is a trap.",
+   "verdict": "PASS",
+   "evidence": "P3 'with one change: my ## Look for line turned round' replaces rather than appends; branches say 'the new line is: ...' (substitution), and 'Leave morning.md ... untouched' blocks appending.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -23,28 +333,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_platform_and_boundaries.md",
-   "rule_index": 3,
-   "rule_lead": "Local scheduled tasks catch up on wake, but only once, only for runs missed in last 7 days.",
-   "verdict": "PASS",
-   "evidence": "L13 closest: \"If its last run is from before Day 1 ended, click **Run now**\" - handles a missed run by manual rerun and asserts no catch-up-on-wake behaviour, so it cannot contradict the 7-day/once rule.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_platform_and_boundaries.md",
-   "rule_index": 4,
-   "rule_lead": "Verify capabilities BEFORE asserting, not after.",
-   "verdict": "PASS",
-   "evidence": "Only embedded platform assertion that fails verification is L13 \"Schedule sidebar\"; filed under the specific known-fact rule 6 (not double-counted here). Other assertions (/rename, Run now, Cowork working folder) verified: platform_claims_checked.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -53,8 +345,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "compendium-maintenance rule; this file is not a compendium or capability-reference file",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -63,8 +357,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "author-process rule about maintaining capability notes; file asserts no Cowork capability beyond the connected working folder",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -73,8 +369,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no template/macro syntax carried across runtimes (no $ARGUMENTS, no skill body)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -83,8 +381,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no defensive-recovery fix in the file",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -93,8 +393,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no maintainer practitioner observation in play",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -103,18 +405,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no runtime-behaviour claim needing a live test beyond the L13 label, handled under rule 6",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_platform_and_boundaries.md",
-   "rule_index": 6,
-   "rule_lead": "Known correct Claude Code facts (easy to get wrong):",
-   "verdict": "REVISE",
-   "evidence": "L13: \"First, open the **Overnight digest** task in the Schedule sidebar.\" Rule 6 records scheduling as \"Routines sidebar -> New routine -> Local\"; reference_claude_code_capabilities.md L80 records the 2026-05-14 correction \"Routines sidebar (was 'Schedule sidebar')\". Run today: curl https://code.claude.com/docs/en/desktop-scheduled-tasks -> text has \"click Routines in the sidebar ... then click New routine and choose Local\" and \"In the Code tab, click a task in the Routines list to open its detail page ... Run now\"; \"Schedule\" appears only as a control name (\"Pick a preset from the Schedule control\"). Harm the rule prevents: a student sends the 5-minute step-1 hunt for a sidebar entry that is not named that way, at the first minute of Day 2 with the room waiting. Harm present. Seat on Cowork is also unverified (reference_cowork_capabilities.md has no scheduled-task entry; send-it-off maintainer block says capability check owed).",
-   "na_reason": null,
-   "fix_hint": "Name the sidebar entry Routines (open the Overnight digest routine in the Routines list, Run now on its page); keep the paste-the-prompt fallback for the Cowork seat until its flow is verified.",
-   "blocking": true
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -123,8 +417,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -133,8 +429,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -143,8 +441,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -153,8 +453,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -163,8 +465,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -173,18 +477,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_platform_and_boundaries.md",
-   "rule_index": 7,
-   "rule_lead": "Sessions = unit of work — write \"start a new session in X,\" not \"open Claude Code in X.\"",
-   "verdict": "PASS",
-   "evidence": "L7 \"Start a new Claude Code session in your training folder\" / \"Start a new Cowork task\"; no \"open Claude Code in X\" phrasing (grep -c \"[Oo]pen Claude Code\" -> 0).",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -193,8 +489,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -203,8 +501,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -213,8 +513,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -223,8 +525,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -233,8 +537,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -243,8 +549,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -253,8 +561,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -263,8 +573,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -273,8 +585,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -283,8 +597,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -293,8 +609,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -303,8 +621,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -313,8 +633,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -323,8 +645,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -333,8 +657,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -343,8 +669,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -353,8 +681,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -363,8 +693,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -373,8 +705,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -383,8 +717,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -393,18 +729,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_platform_and_boundaries.md",
-   "rule_index": 23,
-   "rule_lead": "Cowork sandboxed to its connected working directories.",
-   "verdict": "PASS",
-   "evidence": "Everything the prompts touch lives under the connected working folder: module-2/morning-agent/..., team/<my-name>/... (fences 1-4); L7 forks the session open per runtime in paired spans (rt-code / rt-cowork). Closest: L13 \"Schedule sidebar\" is a Desktop surface, filed under rule 6.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -413,8 +741,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -423,18 +753,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_platform_and_boundaries.md",
-   "rule_index": 25,
-   "rule_lead": "Cowork capability surface — UI surfaces subagent reads; no session rename in Cowork or Desktop.",
-   "verdict": "PASS",
-   "evidence": "L9-11 fence \"/rename apt101-day-2\" is plain markdown (renderer wraps it .rt-cli per the rule); L7 Cowork seat opens a new task with the folder, no rename claimed for Cowork/Desktop.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -443,8 +765,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -453,8 +777,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -463,8 +789,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -473,8 +801,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -483,8 +813,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -493,8 +825,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -503,8 +837,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -513,8 +849,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -523,8 +861,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -533,8 +873,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -543,8 +885,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -553,18 +897,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_platform_and_boundaries.md",
-   "rule_index": 38,
-   "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism — no judge catches it, because no artefact contradicts it.",
-   "verdict": "PASS",
-   "evidence": "Closest: L27 \"because tonight's run overwrites them\" (digest and the two Day 1 lines). The digest part is true (prompt personal-agent-homework-3 writes latest.html); the expectation line lives in team/<name>/expect.md, not in the brief, and no run touches it. Stays inside as a TRIGGERS/LANDS clause about the digest; wording nit offered as a suggestion, no gate.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -573,8 +909,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -583,8 +921,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -593,8 +933,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -603,8 +945,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -613,8 +957,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -623,8 +969,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -633,8 +981,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -643,8 +993,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -653,8 +1005,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -663,8 +1017,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -673,8 +1029,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -683,8 +1041,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -693,8 +1053,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -703,8 +1065,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "repo/eval-tooling or authoring-process rule; file makes no such claim and builds no such mechanism",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_research_claims.md",
@@ -713,8 +1077,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no citations, URLs or practitioner claims in body (signals has_urls false, has_source_stamps false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_research_claims.md",
@@ -723,8 +1089,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no citations, URLs, stats or research conclusions in body (signals has_urls false, has_source_stamps false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_research_claims.md",
@@ -733,8 +1101,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no citations, URLs, stats or research conclusions in body (signals has_urls false, has_source_stamps false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_research_claims.md",
@@ -743,8 +1113,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no percentages or failure-rate stats (grep -nE \"[0-9]+ ?%\" -> 0)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_research_claims.md",
@@ -753,8 +1125,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no citations, URLs, stats or research conclusions in body (signals has_urls false, has_source_stamps false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_research_claims.md",
@@ -763,8 +1137,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no citations, URLs, stats or research conclusions in body (signals has_urls false, has_source_stamps false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_research_claims.md",
@@ -773,8 +1149,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no citations, URLs, stats or research conclusions in body (signals has_urls false, has_source_stamps false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_research_claims.md",
@@ -783,8 +1161,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no citations, URLs, stats or research conclusions in body (signals has_urls false, has_source_stamps false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_research_claims.md",
@@ -793,8 +1173,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no citations, URLs, stats or research conclusions in body (signals has_urls false, has_source_stamps false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_research_claims.md",
@@ -803,8 +1185,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no citations, URLs, stats or research conclusions in body (signals has_urls false, has_source_stamps false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_research_claims.md",
@@ -813,8 +1197,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no citations, URLs, stats or research conclusions in body (signals has_urls false, has_source_stamps false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_research_claims.md",
@@ -823,8 +1209,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no citations, URLs, stats or research conclusions in body (signals has_urls false, has_source_stamps false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_research_claims.md",
@@ -833,8 +1221,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no citations, URLs, stats or research conclusions in body (signals has_urls false, has_source_stamps false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_research_claims.md",
@@ -843,8 +1233,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no citations, URLs, stats or research conclusions in body (signals has_urls false, has_source_stamps false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_research_claims.md",
@@ -853,8 +1245,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no citations, URLs, stats or research conclusions in body (signals has_urls false, has_source_stamps false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_research_claims.md",
@@ -863,8 +1257,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no citations, URLs, stats or research conclusions in body (signals has_urls false, has_source_stamps false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_research_claims.md",
@@ -873,8 +1269,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no citations, URLs, stats or research conclusions in body (signals has_urls false, has_source_stamps false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_research_claims.md",
@@ -883,8 +1281,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no citations, URLs, stats or research conclusions in body (signals has_urls false, has_source_stamps false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -893,8 +1293,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -903,8 +1305,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -913,8 +1317,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -923,8 +1329,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -933,8 +1341,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -943,8 +1353,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -953,8 +1365,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -963,8 +1377,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -973,8 +1389,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -983,8 +1401,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -993,8 +1413,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1003,8 +1425,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1013,8 +1437,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1023,8 +1449,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1033,18 +1461,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 16,
-   "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-   "verdict": "PASS",
-   "evidence": "L31 closest: \"Push back if the list comes back as a summary of the digest.\" - optional steer, allowed in body by the carve-out; every mandatory move (copy, four lines, rank by source, quote source, turn the line round) sits inside the fences of apt101-d2-what-ran-overnight / mark-the-doubt / ask-the-other-way.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1053,8 +1473,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1063,8 +1485,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1073,8 +1497,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1083,8 +1509,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1093,8 +1521,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1103,8 +1533,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1113,8 +1545,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no memory rule authored in this file",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1123,8 +1557,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no skeptical-pushback-on-done trigger in the file",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1133,8 +1569,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1143,8 +1581,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1153,8 +1593,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1163,8 +1605,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1173,8 +1617,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1183,8 +1629,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1193,8 +1641,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1203,8 +1653,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1213,8 +1665,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1223,8 +1677,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1233,8 +1689,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1243,8 +1701,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1253,8 +1713,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "file builds no hook/judge/eval machinery",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1263,8 +1725,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no context-loading tier taught or claimed",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1273,8 +1737,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1283,8 +1749,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1293,8 +1761,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1303,8 +1773,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1313,8 +1785,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1323,8 +1797,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1333,8 +1809,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1343,8 +1821,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1353,8 +1833,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1363,8 +1845,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1373,8 +1857,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1383,8 +1869,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1393,8 +1881,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1403,8 +1893,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1413,8 +1905,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1423,8 +1917,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1433,8 +1929,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1443,8 +1941,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1453,8 +1953,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1463,8 +1965,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1473,8 +1977,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1483,8 +1989,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1493,8 +2001,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1503,8 +2013,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1513,8 +2025,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1523,8 +2037,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1533,8 +2049,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1543,8 +2061,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1553,8 +2073,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1563,8 +2085,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -1573,18 +2097,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "pedagogy-judge-owned; not in the technical sub-rule list (16, 22, 23, 36, 37)",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 1,
-   "rule_lead": "No placeholders inside fences.",
-   "verdict": "PASS",
-   "evidence": "Mechanical: 5 fences expanded; square-bracket placeholders -> 0 in all. Angle placeholder <my-name> in fences 2-4: fence 2 carries \"Ask my first name if you don't know it.\" (fix a); fences 3-4 rely on the name already in scrollback from fence 2 in the same session (fix b). Fence 3 ends in a colon open-hook (\"The line, and why I trust it least:\") where student input is genuinely required.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1593,18 +2109,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "prose-level lead-in style is writing-class lane per template; noted in notes (L27 lead-in runs several sentences)",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 3,
-   "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
-   "verdict": "PASS",
-   "evidence": "Expanded view lines 15, 33, 66, 93: lead-in, blank line, \"**Prompt** *(Claude Desktop|Claude Code)*\", blank line, fence; no copy prefix, no closer.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1613,38 +2121,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no skill invocation in any fence",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 5,
-   "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
-   "verdict": "PASS",
-   "evidence": "Fence 3 \"Append the line ... to team/<my-name>/doubts.md\" chains on the file fence 2 wrote; fence 4 reads team/<my-name>/hypothesis.md, produced by apt101-d1-bet-hypothesis (registry L11 location). Deterministic paths, no invented alias.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 6,
-   "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
-   "verdict": "PASS",
-   "evidence": "Closest: fence 2 \"Don't comment on how they compare. That's for us.\" - holds the comparison back for the room, names no downstream prompt or skill.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 7,
-   "rule_lead": "No session-resets mid-phase.",
-   "verdict": "PASS",
-   "evidence": "grep -ciE \"/clear|new session|new conversation\" inside fences -> 0; the only reset is the session open at L7, before Phase 1.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1653,18 +2133,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no multi-sample/ensemble method; phase 4 is one contrasted rerun, not self-consistency sampling",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 9,
-   "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
-   "verdict": "PASS",
-   "evidence": "Mechanical: count of \"*\" characters inside each of the 5 fences -> 0,0,0,0,0.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1673,8 +2145,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt body differs by runtime (frontmatter runtime: any); only the L7 setup line forks",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1683,8 +2157,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no runtime-forked prompt body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1693,18 +2169,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no new context source added to a regeneration",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 13,
-   "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
-   "verdict": "PASS",
-   "evidence": "Fence 3: \"put the source's own sentence next to the digest's line, both quoted exactly. If the source doesn't say it, say so plainly.\" - quote-the-supporting-sentence discipline is built in.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1713,8 +2181,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no regeneration of an edge-carrying artefact",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1723,18 +2193,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "fence 2 asks one question (first name), no question sequence",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 16,
-   "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
-   "verdict": "PASS",
-   "evidence": "Fence 4 names destination team/<my-name>/digest-against.html and \"Leave morning.md and latest.html untouched\" - no overwrite ambiguity, new path.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1743,18 +2205,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no plan-mode prompt",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 18,
-   "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
-   "verdict": "PASS",
-   "evidence": "Fence 3 \"find what it actually says about this\" with \"say so plainly\" - audit verbs, no defend/justify verbs.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1763,8 +2217,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no walk-away send-off prompt in this exercise",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1773,8 +2229,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "narrowed rule, never gates; no artefact-assembly prompt",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1783,8 +2241,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no external side-effect action (post/send/push)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1793,28 +2253,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "read-only judge pass; this run edits no prompt body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 23,
-   "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
-   "verdict": "PASS",
-   "evidence": "All saves are subpaths: team/<my-name>/digest-day1.html, team/<my-name>/doubts.md, team/<my-name>/digest-against.html, module-2/morning-agent/latest.html; grep for a naked \"Save it as <file>\" in fences -> 0.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 24,
-   "rule_lead": "Don't restate session CWD inside prompt body.",
-   "verdict": "PASS",
-   "evidence": "Closest: fence 1 (personal-agent-homework-3) \"module-2/morning-agent/morning.md\" - subpath from session root; no absolute path or cd in any fence.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1823,8 +2265,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no subagent in any fence",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1833,38 +2277,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "card-presentation rule for the orchestrator, not a property of the file",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 27,
-   "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
-   "verdict": "PASS",
-   "evidence": "Writes name readers: digest-day1.html and digest-against.html feed Day 3 (maintainer L91), doubts.md is read in Phase 5 and by Day 3 - (a)/(b) consumers, not (c)-only.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 28,
-   "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
-   "verdict": "PASS",
-   "evidence": "Expanded view carries exactly \"**Prompt**\" at lines 15, 33, 66, 93 (grep -nE \"\\*\\*Prompt\" -> 4 hits, no custom labels).",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 29,
-   "rule_lead": "Normal work request before orchestration.",
-   "verdict": "PASS",
-   "evidence": "Closest: fence 2 is a protocol (copy, four quoted lines, report, ranked claims). Stays inside because seeing what ran IS the Phase 1 lesson; it starts from the real state (latest.html, morning.md), not an interview.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1873,18 +2289,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no live-test correction in play",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 31,
-   "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
-   "verdict": "PASS",
-   "evidence": "4 {{prompt:...}} markers on own lines (grep -c \"{{prompt\" -> 4); raw source has 0 inline \"**Prompt**\" blocks; registry files apt101-d2-what-ran-overnight, -mark-the-doubt, -ask-the-other-way, personal-agent-homework-3 exist under curriculum/prompts/.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1893,8 +2301,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "only module-N directory paths appear, no module number in prose; nothing to grade",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1903,18 +2313,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no git-output grep",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 34,
-   "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
-   "verdict": "PASS",
-   "evidence": "Fence 4 holds its own decision logic (\"If my line looked for support ... If ... a test, or ... both ways ...\") inside the fence; fence 2 names the exact files to read - executes with no body context.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1923,18 +2325,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no open multi-turn dialog that edits an artefact",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 36,
-   "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
-   "verdict": "PASS",
-   "evidence": "Fence 2 (153 words) splits by move into paragraphs: keep copies / read and show four lines / report what ran / list claims; fence 4 uses a bullet pair for the conditional. No wide single-paragraph prompt.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1943,18 +2337,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no save-the-rule prompt",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 38,
-   "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
-   "verdict": "PASS",
-   "evidence": "Closest: L27 \"Ask Claude to keep a copy of the digest and of the two lines\" vs fence 2 opening \"First, keep copies before tonight's run overwrites anything. Copy ... latest.html\" - same verb and object. L60 \"run your digest once more from the same brief, with only your look-for line turned round\" vs fence 4 \"Run the job ... once more, over the same material, with one change: my ## Look for line turned round\" - rhyme holds.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1963,28 +2349,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt whose behaviour depends on a permission mode (registry frontmatter declares none; none plan-only)",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 40,
-   "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
-   "verdict": "PASS",
-   "evidence": "Cold at fence 2 (new session at L7): it names every file it needs (morning.md, latest.html, team/what-goes-in.md, team/bet.md) rather than back-referencing. Fences 3-4 warm in the same session; their only back-reference is <my-name>, set in fence 2.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 41,
-   "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
-   "verdict": "PASS",
-   "evidence": "Fence 2 last imperative is \"list every claim in the digest, ranked ... or \\\"no source\\\"\" - no STOP tail after a write instruction.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -1993,18 +2361,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "not a headless runner prompt; students paste interactively",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 43,
-   "rule_lead": "Long-running prompts stream progress — never go silent.",
-   "verdict": "PASS",
-   "evidence": "Closest: fence 4 reruns the whole job, which L13 prices at about five minutes. Dose test: student is at the machine, the phase is a timed 5-minute wait, Claude Code shows tool activity as it works, and the slow-rerun case has a trainer-side move in the maintainer failure modes (read the headlines aloud during phase 5). The silence harm the rule exists to prevent is absent; no fence edit owed.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -2013,8 +2373,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no leading line being cleaned up",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -2023,28 +2385,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "Agents 101 Builder-scope rule; APT101 tree (team/, module-2/morning-agent/) is inherited verbatim from personal-agent-homework-3",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 46,
-   "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
-   "verdict": "PASS",
-   "evidence": "Closest: fence 2 specifies four quoted lines and a ranked list with sources - shape the Phase 1 teaching depends on; fence 4 ends \"Add nothing.\" No trailing format spec for its own sake; fence 2 is about 150 words, under a page.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_prompts.md",
-   "rule_index": 47,
-   "rule_lead": "\"Add X and regenerate\" is a trap.",
-   "verdict": "PASS",
-   "evidence": "Fence 4 states the mode: \"my ## Look for line turned round\" replaces the line for the run; nothing is added-and-regenerated.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -2053,8 +2397,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "exercise-closing mechanic choice is pedagogy lane",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
   },
   {
    "compendium": "check_prompts.md",
@@ -2063,76 +2409,50 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "not a take-home prompt",
-   "fix_hint": null,
-   "blocking": false
-  },
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "a06d8362ad04b0218638f811faece82da9017ed6a191d779e91eea6fe66187f6",
+   "carried_shape": "ce58b5ca9f034b9f"
+  }
+ ],
+ "suggestions": [
   {
-   "compendium": "check_platform_and_boundaries.md",
-   "rule_index": null,
-   "judge_owned": true,
-   "rule_lead": "URL liveness (template surface 5)",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "no URLs in file (signals has_urls false; url grep CLEAN)",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_platform_and_boundaries.md",
-   "rule_index": null,
-   "judge_owned": true,
-   "rule_lead": "Skill availability (template surface 3)",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "no [Skill: name] references in body or fences",
-   "fix_hint": null,
-   "blocking": false
+   "rule": "check_prompts.md §38",
+   "line": 27,
+   "now": "Ask Claude to keep a copy of the digest and of the two lines you wrote into the brief on Day 1, what to look for and what you expected, because tonight's run overwrites them.",
+   "proposed": "Ask Claude to keep a copy of the digest and to copy down the two lines you wrote on Day 1, your look-for line from the brief and your expectation from your expect file, because tonight's run overwrites them."
   }
  ],
  "platform_claims_checked": [
   {
-   "claim": "open the Overnight digest task in the Schedule sidebar",
-   "line": 13,
-   "verdict": "REVISE",
-   "source": "compendium (rule 6, capabilities note L80) + code.claude.com/docs/en/desktop-scheduled-tasks fetched this session"
-  },
-  {
-   "claim": "click Run now (on the task)",
+   "claim": "open the Overnight digest routine in the Routines list ... click Run now on its page",
    "line": 13,
    "verdict": "PASS",
-   "source": "code.claude.com/docs/en/desktop-scheduled-tasks \"Manage scheduled tasks: Run now\""
-  },
-  {
-   "claim": "/rename apt101-day-2 (session rename)",
-   "line": 10,
-   "verdict": "PASS",
-   "source": "compendium (rule 25: CLI /rename is the only rename path)"
+   "source": "compendium"
   },
   {
    "claim": "Start a new Cowork task with ~/Documents/apt101/ as the working folder",
    "line": 7,
    "verdict": "PASS",
-   "source": "compendium (rules 23, 25)"
+   "source": "compendium"
   },
   {
-   "claim": "Start a new Claude Code session in your training folder",
-   "line": 7,
+   "claim": "/rename apt101-day-2",
+   "line": 10,
    "verdict": "PASS",
-   "source": "compendium (rule 7)"
+   "source": "compendium"
   }
  ],
  "citations_checked": [],
  "skills_referenced": [],
- "urls_sampled": [],
- "suggestions": [
+ "urls_sampled": [
   {
-   "rule": "check_platform_and_boundaries.md §38",
-   "line": 27,
-   "now": "Ask Claude to keep a copy of the digest and of the two lines you wrote into the brief on Day 1, what to look for and what you expected, because tonight's run overwrites them.",
-   "proposed": "Ask Claude to keep a copy of the digest and of the two lines you wrote on Day 1, what to look for and what you expected, because tonight's run overwrites the digest and tonight's brief replaces your look-for line."
+   "url": "https://code.claude.com/docs/en/desktop-scheduled-tasks",
+   "alive": true,
+   "status_code": 200
   }
  ],
- "blocking_findings_count": 1,
+ "blocking_findings_count": 0,
  "nonblocking_findings_count": 0,
- "notes": "Brief built (206 rules, no prefill rows parked). Cross-class observations, not rules_evaluated: (1) L27 lead-in is several sentences, over check_prompts 2/2a (writing lane); same sentence says both Day 1 lines were written \"into the brief\" but the expectation lives in team/<name>/expect.md (\"Not into the brief: the run must never read it\", apt101-d1-your-expect-line). (2) L39 \"Every line in it came from your material\" sits against fence 2 allowing \"no source\" and send-it-off failure mode \"answered from general knowledge\" (behavior/pedagogy lane). (3) The same \"Schedule\" sidebar wording is at curriculum/exercises/apt101-send-it-off.md L69 and curriculum/exercises/personal-agent-homework.md L53; the fix reaches those files too (their own judges). (4) No URL sampling: file has no URLs. Docs evidence for the finding is a curl of the docs page run in this session, not claude-code-guide. (5) Maintainer-block provenance: fence 4 consumes team/<name>/hypothesis.md (produced by apt101-d1-bet-hypothesis) but the Consumes list at L90 does not name it."
+ "notes": "Prior REVISE ('Schedule sidebar', L13) is fixed: body now says Routines list. Cowork seat for Routines remains UNVERIFIED (reference_cowork_capabilities.md L53) but L13 offers paste-the-prompt fallback; not filed. Body L27 says both lines were written 'into the brief' but apt101-d1-your-expect-line L16 says expectation is 'Not into the brief' (team/<my-name>/expect.md); the P1 prompt itself is correct, so filed as suggestion. research_claims: no citations/URLs in body."
 }

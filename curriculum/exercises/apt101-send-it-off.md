@@ -77,9 +77,9 @@ Ask Claude to read the overnight brief, follow the rules, and write the output t
 
 {{prompt:personal-agent-homework-3}}
 
-Save. Click **Run now** once.
+Save. Click **Run now** once. Where it asks to use a tool, choose **Always allow**, so tonight's run does not stall waiting for you.
 
-Leave your laptop plugged in with the lid open until the run fires.
+Turn on **Keep computer awake** in **Settings > This computer > System**, and leave your laptop plugged in with the lid open until the run fires.
 
 ## Phase 6: Check the look, then close it
 

@@ -3,7 +3,7 @@
   "file": "curriculum/slides/customers-before-agents.md",
   "training": "shared",
   "verdict": "PASS",
-  "body_sha": "908a518d438100bd98f4c46828f31b7225ce43fdae820db6c24f513ecd3d98bf",
+  "body_sha": "118e09dbb7bc7c22882ee3f46e133628f5834d1aae65999bb109b8b6d604849c",
   "shape_hash": "575ecfb8ab134cf0",
   "chunk_map": [
     {
@@ -18,7 +18,7 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "evidence": "Harm: reader cannot tell what a pronoun points at. Closest: l.4 \"that something is the team's guesses\" and \"Agents build them\" resolve in-chunk (that something = \"something tells the team which build is worth making\"; them = guesses); l.6 \"should start there\" = talking with customers every week, same sentence.",
+      "evidence": "L4 'Agents build them in days': 'them' = 'the team's guesses' in the same sentence chain; L6 'start there' = talking with customers every week, same sentence. Closest to violating: 'That sells less of this training' (L6), 'That' = starting with customer contact, named one clause earlier. Harm (unresolvable referent) absent.",
       "fix_hint": null,
       "blocking": true,
       "chunks_flagged": []
@@ -28,7 +28,7 @@
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "evidence": "grep -nEi \"(opening|earlier|previous|last) (lecture|module|slide)|said earlier\" body -> 0; no pointer to another file; the only outward mention (this training, l.6) is by name, not position.",
+      "evidence": "Single-chunk file; grep for 'opening lecture|earlier file|previous lecture' in body: none. Harm (callback by position to another file) absent.",
       "fix_hint": null,
       "blocking": true,
       "chunks_flagged": []
@@ -37,29 +37,19 @@
       "compendium": "check_slides.md",
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "PASS",
-      "evidence": "No \"the X you did/saw/caught\" in body. Closest l.6 \"what customers did last month\": customers' behavior, not a student beat.",
-      "fix_hint": null,
-      "blocking": true,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "no guess/predict or demo beat in the chunk",
       "fix_hint": null,
       "blocking": true,
-      "chunks_flagged": []
+      "chunks_flagged": [],
+      "na_reason": "no 'the X you did/saw/caught' reference in body"
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "evidence": "Chunk 1 carries a self-sufficient claim in two paragraphs (l.4 mechanism, l.6 consequence); not a wait-state.",
+      "evidence": "L4-6: slide carries a full mechanism (cheap build, no evidence, guesses shipped) and a stated action (book interviews, sit in on calls, read last month's behaviour). Self-carrying; not a wait-state.",
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -69,7 +59,7 @@
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "evidence": "Header l.1 \"Without customer contact, agents build your guesses faster\" is what l.4 says (\"Agents build them in days\"); l.6 is the consequence for a team in that state, which the conditional header covers.",
+      "evidence": "Header L1 'Without customer contact, agents build your guesses faster' vs L4 'With no fresh evidence from customers... Agents build them in days': header is the slide's claim and body supports it. Closest: L6 body turns to what to do first, which the header does not name, but does not contradict it.",
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -79,7 +69,7 @@
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "evidence": "All six sub-items checked: no \"Not X. Not Y. Z.\" (grep -c \"Not .*\\. Not\" -> 0); no anaphora triple (closest l.6 \"Book... sit in... read...\" is three distinct concrete imperatives, not repeated openers); no self-grading superlative (grep -ci \"most useful|best|powerful\" -> 0); no number+retraction; no abstraction-noun stack; no empty-leg verb triplet (each l.6 verb names a concrete act).",
+      "evidence": "L6 'That sells less of this training. It is still where to start.' is the nearest to a not-X-Z or pair tic but is two declaratives, no negated setup. L6 'Book the interviews, sit in on support calls, read what customers did last month' is three concrete imperatives, each answers 'what concretely'. No self-grading superlative, no number+retraction, no abstraction stack (grep 'most useful|one of the' → none).",
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -89,7 +79,7 @@
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "evidence": "Scanned for surface-as-noun, firing, compendium, forcing function, beat, mood: grep -ciE -> 0 in body. \"guesses\", \"interviews\", \"support calls\" are room vocabulary.",
+      "evidence": "No repo/authorial vocabulary in body L4-6; closest 'fresh evidence' (L4) is ordinary product-team English. grep compendium|firing|forcing function|beat|mood → none.",
       "fix_hint": null,
       "blocking": true,
       "chunks_flagged": []
@@ -99,7 +89,7 @@
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "evidence": "grep -c \"\\*\\*\" over body l.1-6 -> 0 (maintainer-block bold excluded); within the <=1 budget.",
+      "evidence": "Bold count in body = 0 (no ** in L1-6). Within budget.",
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -109,7 +99,7 @@
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "evidence": "Slide file is included by curriculum/lectures/apt101-go-back-to-your-customers.md (grep -n returned the include); a lecture-included slide file reaches the deck via the lecture wrapper.",
+      "evidence": "Slide file referenced from APT101 training module per maintainer STATUS (first in apt101-go-back-to-your-customers); signals slide_count=1; check-slide-size scanned it as a slide (1 slide). Not a phase-less prose section.",
       "fix_hint": null,
       "blocking": true,
       "chunks_flagged": []
@@ -118,31 +108,21 @@
       "compendium": "check_slides.md",
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "PASS",
-      "evidence": "node scripts/check-slide-numbering.js -> \"OK — 55 files, Phase/Step numbering consistent.\"; no Phase/Step headers in body.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "chunks_flagged": []
+      "chunks_flagged": [],
+      "na_reason": "no Phase/Step headers or hand-numbered headings; check-slide-numbering --file → OK, exit 0"
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "evidence": "grep -nEi \"above|below|further down|see below|top of this\" over file -> 0 hits; node scripts/check-slide-deixis.js filtered to this file -> no hits.",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/slides/customers-before-agents.md → OK, exit 0. Closest: L6 'start there' points at a named activity, not page position.",
       "fix_hint": null,
       "blocking": true,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "no in-body links; rule itself says there is no gate here",
-      "fix_hint": null,
-      "blocking": false,
       "chunks_flagged": []
     },
     {
@@ -150,7 +130,7 @@
       "rule_index": 14,
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-size.js --file curriculum/slides/customers-before-agents.md -> \"oversized: 0 ... every slide is within limits\"; 0 bullets.",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/slides/customers-before-agents.md → oversized: 0, exit 0.",
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -160,7 +140,7 @@
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
-      "evidence": "Lecture slide, header l.1 is a claim (\"Without customer contact, agents build your guesses faster\"), as the rule requires for law slides.",
+      "evidence": "L1 header is a claim ('Without customer contact, agents build your guesses faster'), the lecture/stance form the rule requires.",
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -170,7 +150,7 @@
       "rule_index": 16,
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
-      "evidence": "Closest: l.6 \"It is still where to start.\" partly restates \"should start there\" in the same paragraph, but it resolves the admission just made (\"That sells less of this training\") and the maintainer block attests the admission; not a koan restating the header. No doctrine restatement, no design commentary.",
+      "evidence": "L6 'It is still where to start.' is the nearest to class (c) kicker: it restates the prior sentence's 'should start there'. Stays inside because it is one clause carrying the turn after the admission, and the maintainer block records it as the training's own stance, not a koan restating the header. Offered as a suggestion, not a gate. Classes (a) and (b) absent: L6 'That sells less of this training' is candour backed as claim sells-less, not design commentary on the pedagogy.",
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -179,15 +159,47 @@
       "compendium": "check_slides.md",
       "rule_index": 17,
       "rule_lead": "A retitled slide re-earns its bullets against the new header.",
-      "verdict": "PASS",
-      "evidence": "git log -- file shows one commit (e9cbe889), file created with this header; no rename, no inherited body.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "chunks_flagged": []
+      "chunks_flagged": [],
+      "na_reason": "no header rename on record: git log shows one commit for the file, bullets written with header"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no guess/predict or demo beat in the chunk",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "908a518d438100bd98f4c46828f31b7225ce43fdae820db6c24f513ecd3d98bf",
+      "carried_shape": "575ecfb8ab134cf0"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no in-body links; rule itself says there is no gate here",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "908a518d438100bd98f4c46828f31b7225ce43fdae820db6c24f513ecd3d98bf",
+      "carried_shape": "575ecfb8ab134cf0"
     }
   ],
-  "suggestions": [],
+  "suggestions": [
+    {
+      "rule": "check_slides.md §16",
+      "line": 6,
+      "now": "That sells less of this training. It is still where to start.",
+      "proposed": "That sells less of this training."
+    }
+  ],
   "blocking_findings_count": 0,
   "nonblocking_findings_count": 0,
-  "notes": "Single-chunk file (body opens on ##). Rule 10: include confirmed by grep only, composed deck not rendered. Prefill parked 0 rows (no prior instance); all 17 rows authored."
+  "notes": "Single-chunk stance slide. Maintainer accept-note: STATUS 2026-10-07 only (no rule-specific accepts). Rules 4 and 13 spliced from prefill."
 }

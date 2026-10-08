@@ -9,8 +9,8 @@ It gave me anxiety, and a feeling of insufficiency.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@facf4e50 technical@facf4e50 slides@facf4e50)
-- judges @facf4e50: writing PASS (1 finding see instances/shared--slide--all-was-blurry.writing.json), technical PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@87285049 technical@87285049 slides@87285049)
+- judges @87285049: writing PASS, technical PASS, slides PASS
 
 **STATUS:** first-person guide passage at Day 2's turn (§ Why it agreed), slide 2 of 3. Maintainer-commissioned 2026-10-07: "write the failure based on the essay on not knowing what will be the real outcome. The feelings of uncertainty and not knowing what is right"; split into three slides on his call. Composed from the year-one essays. Not taught (simulation training). Owes the maintainer's read and a judging round.
 

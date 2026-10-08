@@ -1,235 +1,245 @@
 {
- "class": "slides",
- "file": "curriculum/exercises/apt101-send-it-off.md",
- "training": "agentic-product-teams-101",
- "verdict": "PASS",
- "body_sha": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
- "shape_hash": "e4484a76a0b6f0d8",
- "chunk_map": [
-  {
-   "index": 0,
-   "heading": "# Exercise: Send it off",
-   "lines": "1-9"
-  },
-  {
-   "index": 1,
-   "heading": "Phase 1: One agent, one job",
-   "lines": "11-23"
-  },
-  {
-   "index": 2,
-   "heading": "Phase 2: Try it once",
-   "lines": "25-33"
-  },
-  {
-   "index": 3,
-   "heading": "Phase 3: Capture the look",
-   "lines": "35-45"
-  },
-  {
-   "index": 4,
-   "heading": "Phase 4: Write the overnight brief",
-   "lines": "47-63"
-  },
-  {
-   "index": 5,
-   "heading": "Phase 5: Schedule it",
-   "lines": "65-82"
-  },
-  {
-   "index": 6,
-   "heading": "Phase 6: Check the look, then close it",
-   "lines": "84-94"
-  },
-  {
-   "index": 7,
-   "heading": "Take stock of what you sent off",
-   "lines": "96-104"
-  }
- ],
- "rules_evaluated": [
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 1,
-   "rule_lead": "Referent resolution under a sequential deck read.",
-   "verdict": "PASS",
-   "evidence": "Closest: chunk 7 line 100 'Three agents, each with one job, each reading one person's memory': 'three' resolves to the trio named by line 17's three roles (product owner, designer, team lead) and 'each of you' line 7; 'the door' (line 23, 55) is arc-earned spine vocabulary from apt101-what-goes-in (exists); './challenge.md' and 'your memory' are session artifacts. Harm (unresolvable referent) absent.",
-   "fix_hint": null,
-   "blocking": true,
-   "chunks_flagged": []
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 2,
-   "rule_lead": "Cross-file and positional callbacks.",
-   "verdict": "PASS",
-   "evidence": "Closest: line 55 'the one the trainer posted' and line 23 'team/what-goes-in.md' name documents the student holds (navigational, named not located); no 'the opening lecture' style pointer. Harm (callback depends on deck order across files) absent.",
-   "fix_hint": null,
-   "blocking": true,
-   "chunks_flagged": []
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 3,
-   "rule_lead": "Every backward reference points at a beat that exists.",
-   "verdict": "PASS",
-   "evidence": "Closest: line 23/55 'the door' and 'team/what-goes-in.md' -> curriculum/exercises/apt101-what-goes-in.md exists (ls/grep); line 57 'team/<your-name>/hypothesis.md' -> prompt apt101-d1-bet-hypothesis exists; line 55 'the one the trainer posted' -> apt101-d1-link-the-team-folder exists. No 'the X you did' that is dead.",
-   "fix_hint": null,
-   "blocking": true,
-   "chunks_flagged": []
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 4,
-   "rule_lead": "Live-demo beats survive a text read.",
-   "verdict": "PASS",
-   "evidence": "Closest: line 61 'what do you expect the digest to say about your hypothesis?' is a guess-cue asked before any run; no outcome narrated above it, and line 94 keeps latest.html unopened. Verbed sentences, no terminal-pointing cue.",
-   "fix_hint": null,
-   "blocking": true,
-   "chunks_flagged": []
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 5,
-   "rule_lead": "No orphan slides.",
-   "verdict": "PASS",
-   "evidence": "Smallest chunk 7 (lines 96-104) carries a self-contained recap: 'Three agents ... Three overnight runs scheduled.' and 'Day 2 starts with what came back.' Every chunk holds a claim and an action.",
-   "fix_hint": null,
-   "blocking": false,
-   "chunks_flagged": []
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 6,
-   "rule_lead": "Header self-carries at projection distance.",
-   "verdict": "PASS",
-   "evidence": "Closest: chunk 6 'Phase 6: Check the look, then close it' (line 84) vs body lines 92-94 check look, then 'latest.html stays unopened': header matches. Phase 5 'Schedule it' matches lines 69-82.",
-   "fix_hint": null,
-   "blocking": false,
-   "chunks_flagged": []
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 7,
-   "rule_lead": "LLM-cadence caps.",
-   "verdict": "PASS",
-   "evidence": "Closest: line 17 'might want' x3 (PO, designer, team lead): parallel role examples each with new concrete content, not an empty triple. No 'Not X. Not Y. Z.', no superlatives, no number+retraction, no empty verb triplets (grep of body for 'Not .*\\. Not' by read: none).",
-   "fix_hint": null,
-   "blocking": false,
-   "chunks_flagged": []
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 8,
-   "rule_lead": "Internal dialect never lands on a slide.",
-   "verdict": "PASS",
-   "evidence": "grep beat|firing|compendium|forcing function|mood|surface on lines 1-105 -> 0 (hits only at maintainer lines 111+). 'door', 'bet', 'hypothesis', 'look' are training vocabulary earned earlier, not repo-internal dialect.",
-   "fix_hint": null,
-   "blocking": true,
-   "chunks_flagged": []
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 9,
-   "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
-   "verdict": "PASS",
-   "evidence": "Closest: chunk 5 lines 69-74 bold 'Routines','New routine','Local','Name:','Schedule:','Folder:','Instructions:' (7 bolds). They are UI control names and form-field labels the student must find, one word each, navigational like the menu waiver; not decorative lead sentences. Harm (bold monoculture of lead sentences) absent. Rule question: the rule has no clause for UI control labels in a click-path; it would have to say bolded UI names and form-field labels in a click-path are exempt from the count.",
-   "fix_hint": null,
-   "blocking": false,
-   "chunks_flagged": []
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 10,
-   "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
-   "verdict": "PASS",
-   "evidence": "Exercise with ## Phase headings under the exercise wrapper; check-slide-size.js --file reports 'slides: 7' for this file, so the sections are composed into the deck.",
-   "fix_hint": null,
-   "blocking": true,
-   "chunks_flagged": []
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 11,
-   "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
-   "verdict": "PASS",
-   "evidence": "node scripts/check-slide-numbering.js -> 'OK \u2014 55 files, Phase/Step numbering consistent.' Headers Phase 1-6 consecutive (lines 11,25,35,47,65,84); no hand-numbered slide position.",
-   "fix_hint": null,
-   "blocking": false,
-   "chunks_flagged": []
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 12,
-   "rule_lead": "Page geometry dies at the cut; reading order survives.",
-   "verdict": "PASS",
-   "evidence": "Closest: line 74 'Instructions: the prompt below.' with the prompt block {{prompt:personal-agent-homework-3}} at line 78 in the same chunk (same-chunk use passes). node scripts/check-slide-deixis.js output for this file: none. Line 55 'later prompts' is reading order.",
-   "fix_hint": null,
-   "blocking": true,
-   "chunks_flagged": []
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 13,
-   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-   "verdict": "N/A",
-   "evidence": null,
-   "fix_hint": null,
-   "blocking": false,
-   "na_reason": "no in-body links in the file",
-   "chunks_flagged": []
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 14,
-   "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
-   "verdict": "PASS",
-   "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/apt101-send-it-off.md -> 'slides: 7 ... oversized: 0'.",
-   "fix_hint": null,
-   "blocking": false,
-   "chunks_flagged": []
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 15,
-   "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-   "verdict": "PASS",
-   "evidence": "Closest: line 96 '## Take stock of what you sent off' is a phase-style imperative closer; headings lines 11,25,35,47,65,84 are 'Phase N: ...' labels as exercise grammar requires. No declarative claim headings owed.",
-   "fix_hint": null,
-   "blocking": false,
-   "chunks_flagged": []
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 16,
-   "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
-   "verdict": "PASS",
-   "evidence": "Closest: line 94 'What it says waits for Day 2.' adds the reason latest.html stays unopened (a move), not a restatement of the header; line 100 recap restates line 7 only as the **What happened:** recap the exercise template requires.",
-   "fix_hint": null,
-   "blocking": false,
-   "chunks_flagged": []
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 17,
-   "rule_lead": "A retitled slide re-earns its bullets against the new header.",
-   "verdict": "N/A",
-   "evidence": null,
-   "fix_hint": null,
-   "blocking": false,
-   "na_reason": "no retitled slide: git log on the file shows audit commits only, no header rename",
-   "chunks_flagged": []
-  }
- ],
- "suggestions": [
-  {
-   "rule": "check_slides.md \u00a71",
-   "line": 100,
-   "now": "Three agents, each with one job, each reading one person's memory through the team's door. Three overnight runs scheduled.",
-   "proposed": "Each of you sent off one agent with one job, reading your own memory through the team's door. Your overnight run is scheduled."
-  }
- ],
- "blocking_findings_count": 0,
- "nonblocking_findings_count": 0,
- "notes": "Rule 9 question for maintainer: UI control names and form-field labels in a click-path (Phase 5) are bolded; rule has no clause for them. Chunk 0 prompt blocks are fenced and exempt. Rule 17 N/A from git log only."
+  "class": "slides",
+  "file": "curriculum/exercises/apt101-send-it-off.md",
+  "training": "agentic-product-teams-101",
+  "verdict": "PASS",
+  "body_sha": "63cc107e7d8498f016c4ebee2f9fc9c0e55510b24026698353a06ce957d8e6fb",
+  "shape_hash": "e4484a76a0b6f0d8",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "Exercise: Send it off (title + lede)",
+      "lines": "1-9"
+    },
+    {
+      "index": 1,
+      "heading": "Phase 1: One agent, one job",
+      "lines": "11-23"
+    },
+    {
+      "index": 2,
+      "heading": "Phase 2: Try it once",
+      "lines": "25-33"
+    },
+    {
+      "index": 3,
+      "heading": "Phase 3: Capture the look",
+      "lines": "35-45"
+    },
+    {
+      "index": 4,
+      "heading": "Phase 4: Write the overnight brief",
+      "lines": "47-63"
+    },
+    {
+      "index": 5,
+      "heading": "Phase 5: Schedule it",
+      "lines": "65-82"
+    },
+    {
+      "index": 6,
+      "heading": "Phase 6: Check the look, then close it",
+      "lines": "84-94"
+    },
+    {
+      "index": 7,
+      "heading": "Take stock of what you sent off",
+      "lines": "96-104"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "evidence": "chunk 5 line 74: \"Instructions: the prompt below.\" is the closest pronoun-like pointer; antecedent is the paste block in the same chunk (line 78). Line 92 \"morning.md\" was first named in chunk 4 line 55; line 23 \"the door\" is unpacked in place (\"the agent reads only what team/what-goes-in.md lets in\"). Line 9 \"the same session\" is a session artifact (carve-out). Harm (reader cannot resolve a referent) absent.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "evidence": "line 23 \"what-goes-in.md\" and line 55 \"the one the trainer posted\" name a file/artifact by title, no positional pointer to another file. Harm (callback that depends on deck start) absent.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "PASS",
+      "evidence": "line 23 \"team/what-goes-in.md\" is the nearest backward reference; maintainer Consumes line names it and apt101-what-goes-in is the prior beat. Line 9 \"./challenge.md points at the bet\" is a session artifact. No \"the X you did\" with a missing beat.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "PASS",
+      "evidence": "line 61 \"what do you expect the digest to say about your hypothesis?\" is a guess cue; no outcome narrated above or below it on any slide (line 94 says latest.html stays unopened). Verbed sentences throughout; no screen-only referent. Harm (reveal before guess) absent.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "evidence": "chunk 7 \"Take stock of what you sent off\" lines 98-104: \"Three agents, each with one job... Each will be waiting when Day 2 starts, written in your company's look\" is a self-carrying claim. Smallest chunk is chunk 2 (lines 25-33), a full instruction with prompt and a check.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "evidence": "chunk 6 \"Phase 6: Check the look, then close it\" lines 84-94: body checks the look (line 92) and leaves latest.html unopened (line 94); the header does not contradict the content. Chunk 5 \"Schedule it\" matches lines 69-82.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "evidence": "grep for \"Not X. Not Y. Z.\" shape: none. Closest, line 17 \"One job, not three.\" is a single contrast, not a triple. Line 17 \"The product owner might... The designer might... The team lead might...\" is a triple but each leg carries new concrete content. Line 100 \"each with one job, each reading\" is a pair. No superlatives, no number+retraction, no abstraction stacks, no empty verb triplets.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "evidence": "grep -nEi 'beat|mood|firing|compendium|surface|forcing function' over body lines 1-105 -> 0 hits (run this session, empty output). \"door\" is the training's earned term, unpacked at line 23.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "evidence": "chunk 5 lines 69-82 carries bold UI control names (**Routines**, **New routine**, **Local**, the four field labels, **Run now**, **Always allow**, **Keep computer awake**, **Settings > This computer > System**); the diff since ccbff4e7 added the last three. Judged a PASS: these name on-screen controls the student must find, not emphasis on narrative, and sibling exercises personal-agent-homework.md and apt101-read-the-digest.md bold the same controls (sibling is the answer). Harm (emphasis dilution on narrative) absent; no whole lead sentence is bold.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "evidence": "Exercise file with `##` headings; deck-visible content is the exercise phase wrapper. The change since the pin is two sentences inside an existing chunk (5), so no section is added or dropped from the composed deck. Rendered both layouts not run; the check turns on structure, which is unchanged.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/exercises/apt101-send-it-off.md -> \"OK — 1 files, Phase/Step numbering consistent.\" exit 0. Phases 1-6 consecutive.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/exercises/apt101-send-it-off.md -> \"OK — 1 files, no page-geometry pointers across the slide cut.\" exit 0. Closest, line 74 \"the prompt below\" has its paste block at line 78 in the same chunk.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/apt101-send-it-off.md -> \"oversized: 0 ... every slide is within limits\" exit 0.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "evidence": "Exercise headings are phase labels (\"Phase 1: One agent, one job\" ... \"Phase 6: Check the look, then close it\") and the closer \"Take stock of what you sent off\" is an imperative label. No declarative heading is claimed, so no claim is owed. Harm (mood switch blurred) absent.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "line 33 \"The citations tell you whether the memory earned its keep, or whether Claude filled in from somewhere else.\" is the closest to a kicker but gives the student a tell to check, not a restatement of the header. Line 94 \"What it says waits for Day 2.\" adds a priority (do not open). No doctrine restatement, design commentary or header-echo koan. The two lines added since the pin (80, 82) are instructions.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no in-body links in the file",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+      "carried_shape": "e4484a76a0b6f0d8"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no retitled slide: git log on the file shows audit commits only, no header rename",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+      "carried_shape": "e4484a76a0b6f0d8"
+    }
+  ],
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "Diff since ccbff4e7 touches only chunk 5 (Always allow, Keep computer awake sentences) and the maintainer Quality line. Rendered-deck diff not run (rule 10 judged structural). Bold UI controls (rule 9) follow sibling exercises."
 }

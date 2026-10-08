@@ -2,8 +2,8 @@
  "class": "technical",
  "file": "curriculum/exercises/apt101-send-it-off.md",
  "training": "agentic-product-teams-101",
- "verdict": "REVISE",
- "body_sha": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+ "verdict": "PASS",
+ "body_sha": "63cc107e7d8498f016c4ebee2f9fc9c0e55510b24026698353a06ce957d8e6fb",
  "shape_hash": "e4484a76a0b6f0d8",
  "rules_evaluated": [
   {
@@ -30,20 +30,20 @@
    "compendium": "check_platform_and_boundaries.md",
    "rule_index": 3,
    "rule_lead": "Local scheduled tasks catch up on wake, but only once, only for runs missed in last 7 days.",
-   "verdict": "REVISE",
-   "evidence": "L82 \"Leave your laptop plugged in with the lid open until the run fires.\" Rule 3 and the live docs (curl https://code.claude.com/docs/en/desktop-scheduled-tasks, fetched this session) say: \"If your computer sleeps through a scheduled time, the run is skipped. To prevent idle-sleep, turn on Keep computer awake in Settings > This computer > System.\" Plugged in with lid open does not prevent idle-sleep. Harm present: overnight run skipped, no latest.html on Day 2 (mitigated: one catch-up run on wake, trainer fallback digest, maintainer L123 names the failure mode; hence non-blocking).",
+   "verdict": "PASS",
+   "evidence": "L82 \"Turn on **Keep computer awake** in **Settings > This computer > System**, and leave your laptop plugged in with the lid open until the run fires.\" Matches rule 3 and live docs (curl code.claude.com/docs/en/desktop-scheduled-tasks this session): \"To prevent idle-sleep, turn on Keep computer awake in Settings > This computer > System. Closing the laptop lid still puts it to sleep.\" Lid-open advice is consistent. Harm (skipped overnight run) mitigated.",
    "na_reason": null,
-   "fix_hint": "Name the Keep computer awake setting at L82.",
+   "fix_hint": null,
    "blocking": false
   },
   {
    "compendium": "check_platform_and_boundaries.md",
    "rule_index": 4,
    "rule_lead": "Verify capabilities BEFORE asserting, not after.",
-   "verdict": "REVISE",
-   "evidence": "L7/L100 \"waiting for you when Day 2 starts\" with L80 \"Save. Click **Run now** once.\" Docs fetched this session, Permissions for scheduled tasks: \"If a task runs in Manual mode and needs to run a tool it doesn't have permission for, the run stalls until you approve it... To avoid stalls, click Run now after creating a task, watch for permission prompts, and select always allow for each one.\" The exercise has the click but not the instruction to approve with always allow, so an unattended run can sit on its first Write prompt. Harm present for the central Day 2 deliverable (default permission mode of the picker unverified; mitigated by trainer fallback digest, hence non-blocking). Other assertions checked and match docs: Routines > New routine > Local (L69), folder required (L73), Run now (L80), fresh session per run (L55).",
+   "verdict": "PASS",
+   "evidence": "L80 \"Click **Run now** once. Where it asks to use a tool, choose **Always allow**, so tonight's run does not stall waiting for you.\" Docs fetched this session: \"click Run now after creating a task, watch for permission prompts, and select always allow for each one. Future runs of that task auto-approve the same tools.\" Matches. L69 Routines > New routine > Local, L73 folder, L55 fresh session per run also match docs. Closest: UI label casing \"Always allow\" vs docs \"always allow\" (cosmetic).",
    "na_reason": null,
-   "fix_hint": "At L80 say to watch the Run now permission prompts and pick always allow.",
+   "fix_hint": null,
    "blocking": false
   },
   {
@@ -91,158 +91,8 @@
    "rule_index": 38,
    "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism — no judge catches it, because no artefact contradicts it.",
    "verdict": "PASS",
-   "evidence": "L92 \"the scheduled run reads both, so the next run picks up the change.\" States CONTEXT/LANDS: the task instruction reads morning.md, which points at style.md, and docs confirm each run starts a fresh session. Cadence L72 \"daily, early\" is supported by the Daily preset in the Desktop docs. No \"X against Y\" retrieval metaphor.",
+   "evidence": "L92 \"the scheduled run reads both, so the next run picks up the change.\" States CONTEXT/LANDS (task reads morning.md which points at style.md; each run starts a fresh session per docs). L72 cadence \"daily, early\" is the Daily preset, supported by the rule 6 stamp.",
    "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 1,
-   "rule_lead": "Walk-away test (M2+).",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 2,
-   "rule_lead": "50% magic rule (M3–M8).",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 3,
-   "rule_lead": "Trust the agentic design — no human backstops.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 4,
-   "rule_lead": "Quality ladder.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 6,
-   "rule_lead": "One exercise = one bounded activity.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 7,
-   "rule_lead": "Modules composable across variants.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 8,
-   "rule_lead": "Three-level completeness.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 9,
-   "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": "9b",
-   "rule_lead": "Progression-with-variations is the spine.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 10,
-   "rule_lead": "Student agency — adults decide.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 11,
-   "rule_lead": "Delegation — student brings, Claude screens.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 12,
-   "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 13,
-   "rule_lead": "Artifact-realism check.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 14,
-   "rule_lead": "Teach principle + technique — default.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 15,
-   "rule_lead": "Auto-fire sim+eval after significant rewrite.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
    "fix_hint": null,
    "blocking": false
   },
@@ -258,66 +108,6 @@
   },
   {
    "compendium": "check_pedagogy.md",
-   "rule_index": 17,
-   "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 18,
-   "rule_lead": "Personal-first, team promotion via human conversation.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 19,
-   "rule_lead": "Measure silent failure, not just friction.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 20,
-   "rule_lead": "Don't pre-set categories before experiment runs.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 21,
-   "rule_lead": "Verification layers sample DIFFERENT error distributions — not belt-and-braces.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": "21b",
-   "rule_lead": "Cheap-before-expensive verification ordering.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
    "rule_index": 22,
    "rule_lead": "Rule in memory without forcing function = worse than no rule.",
    "verdict": "PASS",
@@ -328,441 +118,11 @@
   },
   {
    "compendium": "check_pedagogy.md",
-   "rule_index": 24,
-   "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 25,
-   "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 26,
-   "rule_lead": "Reflection beats: in-chat over file-write.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 27,
-   "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 29,
-   "rule_lead": "Eval = fixed yardstick; thing measured learns.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 30,
-   "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 31,
-   "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 32,
-   "rule_lead": "Offered structures need forced-engagement mechanic.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 33,
-   "rule_lead": "Source-type blindness on ingestion.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 34,
-   "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": "34b",
-   "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 35,
-   "rule_lead": "Audience tier determines authoring substrate.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
    "rule_index": 36,
    "rule_lead": "Verification machinery needs smoke-test before trust.",
    "verdict": "PASS",
    "evidence": "L80 \"Save. Click **Run now** once.\" and Phase 6 L88-92 look-check copy of latest.html: the scheduled job is smoke-tested before the overnight run and its look checked without reading content (fence: \"Reply only with the path of the copy\").",
    "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 39,
-   "rule_lead": "Removals are strategic — ask before cutting.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 41,
-   "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 42,
-   "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 43,
-   "rule_lead": "Eval architecture — partition by evidence source, not criterion count.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 44,
-   "rule_lead": "Plug points + UX.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 45,
-   "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 47,
-   "rule_lead": "Per-phase failure mode + escape hatch.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 48,
-   "rule_lead": "Heavy fan-out prompts get body recovery callout.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 49,
-   "rule_lead": "Save belongs with authoring, not loading.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 50,
-   "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 51,
-   "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 52,
-   "rule_lead": "Session widget — `",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": "52b",
-   "rule_lead": "Widgets carry semantics, not just emphasis — match the widget to MEANING, never to how loud it renders.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": "52a",
-   "rule_lead": "Module prose carrying a `",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": "52c",
-   "rule_lead": "Exercise lead-in trio — three slots, three tenses. A slot filled past its label is this corpus's most common defect.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": "52d",
-   "rule_lead": "Finding the point — four moves, learned writing M1's set 2026-08-12.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 53,
-   "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test (widened 2026-08-12).",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 56,
-   "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 57,
-   "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 58,
-   "rule_lead": "`/clear` = tool, not ceremony.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 59,
-   "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 60,
-   "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 61,
-   "rule_lead": "Verify mechanism before proposing surgery.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": "61a",
-   "rule_lead": "Acting on a flagged item (punchlist entry / audit finding / eval BLOCK) — verify before fixing; its prescribed fix is a hypothesis, not an instruction.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": "61b",
-   "rule_lead": "An audit's card-shaped findings are discharged by CARDS, not by notes about them.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 62,
-   "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 63,
-   "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 64,
-   "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 65,
-   "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 66,
-   "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 67,
-   "rule_lead": "Story and depth are judged per big learning that develops, never per feature that recurs.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
    "fix_hint": null,
    "blocking": false
   },
@@ -947,6 +307,774 @@
    "blocking": false
   },
   {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 1,
+   "rule_lead": "Walk-away test (M2+).",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 2,
+   "rule_lead": "50% magic rule (M3–M8).",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 3,
+   "rule_lead": "Trust the agentic design — no human backstops.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 4,
+   "rule_lead": "Quality ladder.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 6,
+   "rule_lead": "One exercise = one bounded activity.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 7,
+   "rule_lead": "Modules composable across variants.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 8,
+   "rule_lead": "Three-level completeness.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 9,
+   "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "9b",
+   "rule_lead": "Progression-with-variations is the spine.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 10,
+   "rule_lead": "Student agency — adults decide.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 11,
+   "rule_lead": "Delegation — student brings, Claude screens.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 12,
+   "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 13,
+   "rule_lead": "Artifact-realism check.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 14,
+   "rule_lead": "Teach principle + technique — default.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 15,
+   "rule_lead": "Auto-fire sim+eval after significant rewrite.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 17,
+   "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 18,
+   "rule_lead": "Personal-first, team promotion via human conversation.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 19,
+   "rule_lead": "Measure silent failure, not just friction.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 20,
+   "rule_lead": "Don't pre-set categories before experiment runs.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 21,
+   "rule_lead": "Verification layers sample DIFFERENT error distributions — not belt-and-braces.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "21b",
+   "rule_lead": "Cheap-before-expensive verification ordering.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 24,
+   "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 25,
+   "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 26,
+   "rule_lead": "Reflection beats: in-chat over file-write.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 27,
+   "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 29,
+   "rule_lead": "Eval = fixed yardstick; thing measured learns.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 30,
+   "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 31,
+   "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 32,
+   "rule_lead": "Offered structures need forced-engagement mechanic.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 33,
+   "rule_lead": "Source-type blindness on ingestion.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 34,
+   "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "34b",
+   "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 35,
+   "rule_lead": "Audience tier determines authoring substrate.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 39,
+   "rule_lead": "Removals are strategic — ask before cutting.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 41,
+   "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 42,
+   "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 43,
+   "rule_lead": "Eval architecture — partition by evidence source, not criterion count.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 44,
+   "rule_lead": "Plug points + UX.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 45,
+   "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 47,
+   "rule_lead": "Per-phase failure mode + escape hatch.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 48,
+   "rule_lead": "Heavy fan-out prompts get body recovery callout.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 49,
+   "rule_lead": "Save belongs with authoring, not loading.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 50,
+   "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 51,
+   "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 52,
+   "rule_lead": "Session widget — `",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "52b",
+   "rule_lead": "Widgets carry semantics, not just emphasis — match the widget to MEANING, never to how loud it renders.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "52a",
+   "rule_lead": "Module prose carrying a `",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "52c",
+   "rule_lead": "Exercise lead-in trio — three slots, three tenses. A slot filled past its label is this corpus's most common defect.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "52d",
+   "rule_lead": "Finding the point — four moves, learned writing M1's set 2026-08-12.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 53,
+   "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test (widened 2026-08-12).",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 56,
+   "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 57,
+   "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 58,
+   "rule_lead": "`/clear` = tool, not ceremony.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 59,
+   "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 60,
+   "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 61,
+   "rule_lead": "Verify mechanism before proposing surgery.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "61a",
+   "rule_lead": "Acting on a flagged item (punchlist entry / audit finding / eval BLOCK) — verify before fixing; its prescribed fix is a hypothesis, not an instruction.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "61b",
+   "rule_lead": "An audit's card-shaped findings are discharged by CARDS, not by notes about them.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 62,
+   "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 63,
+   "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 64,
+   "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 65,
+   "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 66,
+   "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 67,
+   "rule_lead": "Story and depth are judged per big learning that develops, never per feature that recurs.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy judge owns it; technical subset is 16, 22, 23, 36, 37",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
+   "carried_shape": "e4484a76a0b6f0d8"
+  },
+  {
    "compendium": "check_platform_and_boundaries.md",
    "rule_index": "4b",
    "rule_lead": "Compendium platform claims rot at 60 days.",
@@ -955,7 +1083,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -967,7 +1095,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -979,7 +1107,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -991,7 +1119,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1003,7 +1131,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1015,7 +1143,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1027,7 +1155,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1039,7 +1167,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1051,7 +1179,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1063,7 +1191,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1075,7 +1203,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1087,7 +1215,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1099,7 +1227,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1111,7 +1239,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1123,7 +1251,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1135,7 +1263,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1147,7 +1275,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1159,7 +1287,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1171,7 +1299,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1183,7 +1311,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1195,7 +1323,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1207,7 +1335,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1219,7 +1347,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1231,7 +1359,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1243,7 +1371,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1255,7 +1383,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1267,7 +1395,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1279,7 +1407,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1291,7 +1419,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1303,7 +1431,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1315,7 +1443,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1327,7 +1455,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1339,7 +1467,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1351,7 +1479,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1363,7 +1491,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1375,7 +1503,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1387,7 +1515,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1399,7 +1527,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1411,7 +1539,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1423,7 +1551,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1435,7 +1563,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1447,7 +1575,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1459,7 +1587,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1471,7 +1599,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1483,7 +1611,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1495,7 +1623,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1507,7 +1635,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1519,7 +1647,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1531,7 +1659,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1543,7 +1671,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1555,7 +1683,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1567,7 +1695,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1579,7 +1707,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1591,7 +1719,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1603,7 +1731,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1615,7 +1743,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1627,7 +1755,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1639,7 +1767,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1651,7 +1779,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1663,7 +1791,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1675,7 +1803,7 @@
    "na_reason": "repo/eval-tooling or process rule; page makes no claim in this rule's lane",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1687,7 +1815,7 @@
    "na_reason": "no citations, URLs, statistics or practitioner claims in body (url grep CLEAN; no % hits)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1699,7 +1827,7 @@
    "na_reason": "no citations, URLs, statistics or practitioner claims in body (url grep CLEAN; no % hits)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1711,7 +1839,7 @@
    "na_reason": "no citations, URLs, statistics or practitioner claims in body (url grep CLEAN; no % hits)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1723,7 +1851,7 @@
    "na_reason": "no citations, URLs, statistics or practitioner claims in body (url grep CLEAN; no % hits)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1735,7 +1863,7 @@
    "na_reason": "no citations, URLs, statistics or practitioner claims in body (url grep CLEAN; no % hits)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1747,7 +1875,7 @@
    "na_reason": "no citations, URLs, statistics or practitioner claims in body (url grep CLEAN; no % hits)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1759,7 +1887,7 @@
    "na_reason": "no citations, URLs, statistics or practitioner claims in body (url grep CLEAN; no % hits)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1771,7 +1899,7 @@
    "na_reason": "no citations, URLs, statistics or practitioner claims in body (url grep CLEAN; no % hits)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1783,7 +1911,7 @@
    "na_reason": "no citations, URLs, statistics or practitioner claims in body (url grep CLEAN; no % hits)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1795,7 +1923,7 @@
    "na_reason": "no citations, URLs, statistics or practitioner claims in body (url grep CLEAN; no % hits)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1807,7 +1935,7 @@
    "na_reason": "no citations, URLs, statistics or practitioner claims in body (url grep CLEAN; no % hits)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1819,7 +1947,7 @@
    "na_reason": "no citations, URLs, statistics or practitioner claims in body (url grep CLEAN; no % hits)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1831,7 +1959,7 @@
    "na_reason": "no citations, URLs, statistics or practitioner claims in body (url grep CLEAN; no % hits)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1843,7 +1971,7 @@
    "na_reason": "no citations, URLs, statistics or practitioner claims in body (url grep CLEAN; no % hits)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1855,7 +1983,7 @@
    "na_reason": "no citations, URLs, statistics or practitioner claims in body (url grep CLEAN; no % hits)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1867,7 +1995,7 @@
    "na_reason": "no citations, URLs, statistics or practitioner claims in body (url grep CLEAN; no % hits)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1879,7 +2007,7 @@
    "na_reason": "no citations, URLs, statistics or practitioner claims in body (url grep CLEAN; no % hits)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1891,7 +2019,7 @@
    "na_reason": "no citations, URLs, statistics or practitioner claims in body (url grep CLEAN; no % hits)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1903,7 +2031,7 @@
    "na_reason": "no beat or claim of this kind on the page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1915,7 +2043,7 @@
    "na_reason": "no beat or claim of this kind on the page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1927,7 +2055,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1939,7 +2067,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1951,7 +2079,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1963,7 +2091,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1975,7 +2103,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1987,7 +2115,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -1999,7 +2127,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2011,7 +2139,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2023,7 +2151,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2035,7 +2163,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2047,7 +2175,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2059,7 +2187,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2071,7 +2199,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2083,7 +2211,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2095,7 +2223,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2107,7 +2235,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2119,7 +2247,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2131,7 +2259,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2143,7 +2271,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2155,7 +2283,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2167,7 +2295,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2179,7 +2307,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2191,7 +2319,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2203,7 +2331,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2215,7 +2343,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2227,7 +2355,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2239,7 +2367,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2251,7 +2379,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2263,7 +2391,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2275,7 +2403,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   },
   {
@@ -2287,7 +2415,7 @@
    "na_reason": "trigger shape absent from the eight prompts of this page",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "808aafc2c69f4bfe3ac7fc48e290887aaa0d9efe1a97a4d67847112bfe4662fd",
+   "carried_from": "570bbbeffa374d22badab38013c16265fa29e0606e72b35620509ef3b5174a25",
    "carried_shape": "e4484a76a0b6f0d8"
   }
  ],
@@ -2296,7 +2424,7 @@
    "claim": "In the desktop app, open Routines in the sidebar. Click New routine, then Local.",
    "line": 69,
    "verdict": "PASS",
-   "source": "claude-code-guide"
+   "source": "compendium"
   },
   {
    "claim": "Fields Name / Schedule / Folder / Instructions",
@@ -2305,15 +2433,15 @@
    "source": "claude-code-guide"
   },
   {
-   "claim": "Save. Click Run now once.",
+   "claim": "Click Run now once. Where it asks to use a tool, choose Always allow",
    "line": 80,
-   "verdict": "REVISE",
+   "verdict": "PASS",
    "source": "claude-code-guide"
   },
   {
-   "claim": "Leave your laptop plugged in with the lid open until the run fires.",
+   "claim": "Turn on Keep computer awake in Settings > This computer > System ... lid open",
    "line": 82,
-   "verdict": "REVISE",
+   "verdict": "PASS",
    "source": "compendium"
   },
   {
@@ -2332,21 +2460,8 @@
    "status_code": 200
   }
  ],
- "suggestions": [
-  {
-   "rule": "check_platform_and_boundaries.md §3",
-   "line": 82,
-   "now": "Leave your laptop plugged in with the lid open until the run fires.",
-   "proposed": "Turn on **Keep computer awake** in **Settings > This computer > System**, and leave your laptop plugged in and the app open until the run fires."
-  },
-  {
-   "rule": "check_platform_and_boundaries.md §4",
-   "line": 80,
-   "now": "Save. Click **Run now** once.",
-   "proposed": "Save. Click **Run now** once, and when permission prompts appear, choose always allow, so the overnight run does not stall waiting for you."
-  }
- ],
- "notes": "Same unattended-run gaps (awake, always-allow) likely also bear on curriculum/exercises/apt101-read-the-digest.md and personal-agent-homework.md; fix at home. Unprobed: whether AskUserQuestion stalls an unattended scheduled Desktop session (rule 42 scope names harnesses only); default permission mode of the Routines picker. Cowork scheduling fork owed per maintainer L121. Brief built (94 kept, 112 parked).",
+ "suggestions": [],
+ "notes": "Both prior non-blocking findings (L80 always-allow, L82 keep-awake) are fixed in the body and match the live scheduled-tasks docs. Unprobed: whether AskUserQuestion stalls an unattended scheduled Desktop session; Cowork scheduling fork owed per maintainer L121. Brief built (30 kept, 176 parked).",
  "blocking_findings_count": 0,
- "nonblocking_findings_count": 2
+ "nonblocking_findings_count": 0
 }

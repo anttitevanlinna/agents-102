@@ -14,7 +14,7 @@ So when the next result lands clean, ask the plain question: when did you last d
 **Quality:** compendium-audited 2026-10-08 (writing@0ba99eb1 technical@0ba99eb1 slides@0ba99eb1)
 - judges @0ba99eb1: writing PASS (1 finding see instances/shared--slide--trust-grows-attention-fades.writing.json), technical PASS, slides PASS
 
-**STATUS:** hill-climb round 3 (2026-10-07): the 1990s automation-research sentence is cut and the evidence is the trio's own Day 2 moment (`team/<name>/doubts.md`, the line each trusted least); the claim stands. Before: round 3 fixes applied (2026-10-06), Agentic Product Teams 101 rewrite for product people of AE101 `ironies-of-automation` § Trust and vigilance move in opposite directions. Not taught (simulation training).
+**STATUS:** Agentic Product Teams 101 rewrite, for product people, of AE101 `ironies-of-automation` § Trust and vigilance move in opposite directions (2026-10-07). The evidence is the trio's own Day 2 moment (`team/<name>/doubts.md`, the line each trusted least). Not taught (simulation training).
 
 **Fidelity guard:** round 2 fidelity: the 1993 study used 40 subjects on a flight-simulation task and plant operators come from Bainbridge 1983, so the slide names neither population; do not upgrade to a claim about agent users, which the literature has not measured. Bainbridge (1983) is the older root and is not quoted here.
 

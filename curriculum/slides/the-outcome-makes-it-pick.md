@@ -12,7 +12,7 @@ The variety comes from each of you. The choice comes from the outcome you agreed
 **Quality:** compendium-audited 2026-10-08 (writing@fdf541ef technical@fdf541ef slides@fdf541ef)
 - judges @fdf541ef: writing PASS (1 finding see instances/shared--slide--the-outcome-makes-it-pick.writing.json), technical PASS, slides PASS
 
-**STATUS:** round 3 fixes applied (2026-10-06), APT101 rewrite of `when-to-split-an-agent` § A framework makes it pick (Agents 101). Not taught (simulation training).
+**STATUS:** APT101 rewrite (2026-10-06) of `when-to-split-an-agent` § A framework makes it pick (Agents 101). Not taught (simulation training).
 
 **Carried from home:** "the variety comes from the stances, the choice comes from the frame", and the frameless merge where nobody chose. The strategy kernel becomes the agreed outcome at the root of the opportunity tree. The home's frameless merge weighs three views evenly; here it drifts toward the majority, so it agrees with `the-branch-one-of-you-found` one slide earlier (the branches everyone saw grow thick). The slide names no team size: groups run three or four people. Torres is not named here: `opportunities-before-solutions` names her in the same lecture (`check_writing.md §11`).
 

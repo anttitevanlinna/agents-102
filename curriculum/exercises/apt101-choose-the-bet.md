@@ -48,8 +48,8 @@ One bet, written so it can lose, with the evidence behind it and the branches yo
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@7ff539b9 technical@1faabaa8 behavior@21214fc5 pedagogy@20018100 strategy@ed634491)
-- judges @ed634491: writing PASS, technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-choose-the-bet.pedagogy.json), strategy PASS
+**Quality:** compendium-audited 2026-10-08 (writing@7ff539b9 technical@1faabaa8 behavior@21214fc5 pedagogy@20018100 strategy@ed634491 slides@8196e1a3)
+- judges @8196e1a3: writing PASS, technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-choose-the-bet.pedagogy.json), strategy PASS, slides PASS
 
 **Role in Day 2:** beat 7, first after lunch. Turns the attributed tree into one chosen bet, with evidence and its riskiest assumption, that beat 8 builds pieces of and Day 3 slices.
 

@@ -82,17 +82,15 @@ Laptops shut:
 - Read the digest where you know the most; the line you trust least is where checking starts.
 - The digest found what its brief asked it to look for. Ask the other way round too.
 - Sketch alone before anything gets merged, and keep the name on every branch.
-- The outcome at the root is what lets a merge choose instead of average.
 - A judge is kept because it won on your own evidence, and it says what it can't see.
 - "The agent got this wrong" costs nobody face, so say it early.
-- Each of you made a piece of the bet in your own craft; together they test one thing.
 - A mistake becomes a rule when it comes back, and examples of good sit beside the don'ts.
 
 ## Bring to Day 3
 
 **Leave the next digest unopened until the room.** You read it together against the chosen bet when Day 3 opens, and a digest read alone is a digest read where you know least.
 
-**Five people who do the job your product serves, or one close to it, use your first slice on Day 3.** The trainer books them for the five-users beat; nobody from another trio stands in.
+**Five people who do the job your product serves, or one close to it, use your first slice on Day 3.** The trainer books them for Day 3; nobody from another trio stands in.
 
 ## Next
 

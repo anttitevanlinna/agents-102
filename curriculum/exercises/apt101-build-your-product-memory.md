@@ -16,11 +16,11 @@ The empty `sources/`, `memory/` and `agents/` folders are already in your traini
 
 *25 min*
 
-A memory is only as good as what goes into it. The temptation is to shovel in whatever is nearest. Three beats: Claude helps you curate a plan, then pulls the content into `sources/`, then builds `memory/` from what is on disk.
+A memory is only as good as what goes into it. The temptation is to shovel in whatever is nearest. Three steps: Claude helps you curate a plan, then pulls the content into `sources/`, then builds `memory/` from what is on disk.
 
-**Keep the heavy reads under control.** Several prompts read all of `sources/` or `memory/` at once. If one starts reading the world, stop it, steer narrower, then say *"continue"*. A hard cap helps: *"ten sources at most."*
+Several prompts read all of `sources/` or `memory/` at once. If one starts reading the world, stop it, steer narrower, then say *"continue"*. A hard cap helps: *"ten sources at most."*
 
-### Curate the source plan
+## Curate the source plan
 
 Ask Claude to survey what it can reach and ask about your world, then propose a curation plan.
 
@@ -28,9 +28,9 @@ Ask Claude to survey what it can reach and ask about your world, then propose a 
 
 Answer for your own seat. Push back, sharpen, add what's missing. Hold each item against the door: if it isn't on the *in* list, it isn't in the plan.
 
-### Ingest the sources
+## Ingest the sources
 
-**A note on what Claude reads.** <span class="rt-cli">Claude Code CLI reads any path you name. For sources outside the training folder, give Claude the absolute path; it reads the file directly.</span><span class="rt-desktop">Claude Code Desktop reads files you attach via the **+** button at the prompt. For sources outside the training folder, attach them with **+** before sending the prompt.</span><span class="rt-cowork">Cowork reads files in the working folders you've selected for this task. Add another folder (your downloads, a notes directory) via the **+** button. To attach a single file for one message, also **+**.</span>
+<span class="rt-cli">Claude Code CLI reads any path you name. For sources outside the training folder, give Claude the absolute path; it reads the file directly.</span><span class="rt-desktop">Claude Code Desktop reads files you attach via the **+** button at the prompt. For sources outside the training folder, attach them with **+** before sending the prompt.</span><span class="rt-cowork">Cowork reads files in the working folders you've selected for this task. Add another folder (your downloads, a notes directory) via the **+** button. To attach a single file for one message, also **+**.</span>
 
 Ask Claude to create one file in `sources/` for every source in the plan.
 
@@ -38,7 +38,7 @@ Ask Claude to create one file in `sources/` for every source in the plan.
 
 Look at Claude's three lists. Anything not reachable stays a reference unless you share the file. Never type or paste content yourself; that's the agent's job. Aim for eight to ten items with real content. Stripping is the one edit you make yourself, in your own editor, before Claude sees the file. Strip what the door says to strip before you share it: names, phone numbers, the customer's company.
 
-### Build the memory under a plan
+## Build the memory under a plan
 
 <span class="rt-code">Turn on plan mode first. Tell Claude *"Enable plan mode."* (Or pick *Plan* from the mode dropdown, or press Shift+Tab to cycle.) Claude writes what it is about to do before touching files, and nothing is written until you say go.</span><span class="rt-cowork">Ask Claude to write a plan first. It writes what it is about to do before touching files, so you can steer before anything is written.</span>
 

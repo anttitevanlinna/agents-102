@@ -51,11 +51,11 @@ Open the page. It works. It reads like a box. It is also a box your nearest comp
 
 Amazon teams write the press release before anything is built, in the customer's words, and call it **working backwards**. The release names the customer, the problem in their words, what changes for them, and a quote a real customer could say; the questions behind it ask for the top reasons the product could still fail.
 
-Post-its first. Three minutes, no talking: each of you puts stickies on the box frame, one per beat you can answer. Each beat has an owner. The product owner writes what changes for the customer. The designer writes the customer's problem and a sentence a customer actually said. The team lead writes why it could fail: what is hard to build, what the team has never shipped before.
+Post-its first. Three minutes, no talking: each of you puts stickies on the box frame, one per part of the box you can answer. Each part has an owner. The product owner writes what changes for the customer. The designer writes the customer's problem and a sentence a customer actually said. The team lead writes why it could fail: what is hard to build, what the team has never shipped before.
 
 Then name the framework, tune it, ask Claude to run it. Claude knows working backwards already, so you don't have to recite it. The tune here: the box face carries the customer's promise, and the press release sits behind it.
 
-Ask Claude to read the box frame, walk you through the beats the stickies leave open, then repaint the box.
+Ask Claude to read the box frame, walk you through the parts the stickies leave open, then repaint the box.
 
 {{prompt:apt101-d1-read-the-board}}
 

@@ -1,0 +1,155 @@
+{
+  "class": "slides",
+  "file": "curriculum/trainings/agentic-product-teams-101/whats-actually-true.md",
+  "training": "agentic-product-teams-101",
+  "verdict": "REVISE",
+  "body_sha": "10006eb3a25008d9760e16f5dd5e6f18e26f3b937856d4c4b3a7e873204580bd",
+  "shape_hash": "66c25cc4b9942639",
+  "chunk_map": [
+    {"index": 0, "heading": "What's actually true? (H1)", "lines": "1-2"},
+    {"index": 1, "heading": "Big Idea", "lines": "3-6"},
+    {"index": 2, "heading": "What you arrive with", "lines": "7-10"},
+    {"index": 3, "heading": "What You'll Learn", "lines": "11-19"},
+    {"index": 4, "heading": "Start here", "lines": "20-55"},
+    {"index": 5, "heading": "Talk it through, laptops shut", "lines": "56-65"},
+    {"index": 6, "heading": "Keep it and set tonight", "lines": "66-71"},
+    {"index": 7, "heading": "Close", "lines": "72-79"},
+    {"index": 8, "heading": "Key Concepts", "lines": "80-90"},
+    {"index": 9, "heading": "Bring to Day 3", "lines": "91-96"},
+    {"index": 10, "heading": "Next", "lines": "97-100"}
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md", "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "evidence": "Closest: chunk 4 \"Start here\" line 22: \"Before you open it: what did you expect your headline to say?\" - 'it' and 'headline' resolve to the overnight digest named in chunk 3 line 14 (\"Check an overnight digest\"); What You'll Learn signposting counts as prior context per the module-arc carve-out. Chunk 5 line 58 \"the cause your board ranked most likely\" sits directly after the include of Imagine it failed (line 52-54), the lived-module carve-out. Harm (a pointer that aims at nothing) absent.",
+      "fix_hint": null, "blocking": true, "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md", "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "evidence": "Closest: chunk 7 \"Close\" line 78: \"could not have made on Day 1\" - names the day, not a position, and the Day 1 file is a named module. grep for 'opening lecture|first lecture|earlier file' in body returned nothing (greps run by eye over body_numbered, 100 lines).",
+      "fix_hint": null, "blocking": true, "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md", "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "PASS",
+      "evidence": "Closest: chunk 7 line 76 \"Where did the agent get it wrong today?\" resolves to Catch it making things up (line 40); line 78 \"What did you make\" resolves to Make your piece (line 50); line 58 board resolves to Imagine it failed (line 52). All three exist in the include list.",
+      "fix_hint": null, "blocking": true, "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md", "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "PASS",
+      "evidence": "Chunk 4 line 22 puts the guess (\"what did you expect your headline to say?\") before any reveal; no outcome is narrated above it. Muted read: the one pronoun 'it' resolves to the digest named in chunk 3 line 14, not to the screen. See suggestion on line 22.",
+      "fix_hint": null, "blocking": true, "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md", "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "evidence": "Closest: chunk 6 \"Keep it and set tonight\" lines 66-70 holds only two include links; the includes inline a lecture and an exercise into the deck at that point and the header states the slide's job, so no wait-state slide is projected.",
+      "fix_hint": null, "blocking": false, "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md", "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "evidence": "Closest: chunk 4 \"Start here\" is an orientation label; its content (a question, then the day's first include) is true to it. \"Talk it through, laptops shut\" (line 56) matches its twenty-minute no-screens content (line 58).",
+      "fix_hint": null, "blocking": false, "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md", "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "evidence": "Checked all six sub-items per chunk. Closest: chunk 7 lines 76-78 three parallel questions - each opens differently and each names concrete content (the agent's error, what to trust, what you made), not anaphora. Line 64 \"Better now, with three pieces in hand, than after a sprint.\" is one declarative, no Not-X-Not-Y. No superlatives, number-plus-retraction, abstraction stacks or empty verb triplets.",
+      "fix_hint": null, "blocking": false, "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md", "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "REVISE",
+      "evidence": "chunk 9 \"Bring to Day 3\": line 95: \"The trainer books them for the five-users beat\" - 'beat' is named in the rule as maintainer/authorial dialect; a slide is projected to the room, no accept-note in the maintainer block covers it (accept_notes carries only Quality and STATUS lines). Harm: the room reads an authoring unit name for a Day 3 exercise. grep -nEi 'beat|surface|firing|compendium|forcing function|mood' on body lines 1-100 -> one hit, line 95.",
+      "fix_hint": "Name it as the room does: the five-users exercise.",
+      "blocking": true, "chunks_flagged": [9]
+    },
+    {
+      "compendium": "check_slides.md", "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "evidence": "Closest: chunk 9 lines 93 and 95 carry two bolded whole sentences. curriculum/module-shape.md line 43-44 prescribes for `## Bring to Module [N]`: \"Bold the ask, then the stakes line\", so the template mandates the spend and a budget cannot outrank a rule that mandates it. Chunk 3 What You'll Learn bold verbs are template-mandated (N/A per the rule). No other bold in body.",
+      "fix_hint": null, "blocking": false, "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md", "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "N/A", "evidence": null,
+      "na_reason": "no layout, chunking or wrapper change under judgement; module body sections ride the top-level section.module wrapper and nothing was rendered here",
+      "fix_hint": null, "blocking": true, "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md", "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A", "evidence": null,
+      "na_reason": "no `## Phase N:` or `## N.` step headers and no Phase/Step references in the body",
+      "fix_hint": null, "blocking": false, "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md", "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-deixis.js <file> -> \"OK — 55 files, no page-geometry pointers across the slide cut.\"; grep -nEi 'above|below|see below|top of' on body lines 1-100 -> 0 hits.",
+      "fix_hint": null, "blocking": true, "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md", "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "PASS",
+      "evidence": "Every link in the body is a standalone structural include (lines 24-54, 68-70), which the rule puts out of scope; no in-body prose links, so nothing to name or locate.",
+      "fix_hint": null, "blocking": false, "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md", "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "REVISE",
+      "evidence": "chunk 8 \"Key Concepts\": line 80: node scripts/check-slide-size.js --file curriculum/trainings/agentic-product-teams-101/whats-actually-true.md -> \"oversized: 1 ... whats-actually-true.md:80 [8 bullets] ## Key Concepts\". No `**Slide size accepted:**` note in the maintainer block. Harm (a slide too dense to project) is present: 8 bullets against a 6 ceiling.",
+      "fix_hint": "Merge bullets that are one move split in two (lines 82-83 digest/brief; lines 84-85 sketch-alone/root outcome) to reach six, or add a per-slide accept note.",
+      "blocking": false, "chunks_flagged": [8]
+    },
+    {
+      "compendium": "check_slides.md", "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "N/A", "evidence": null,
+      "na_reason": "module file: its `##` headings are canonical module sections and orientation labels, not exercise or lecture headings",
+      "fix_hint": null, "blocking": false, "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md", "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "Closest: chunk 9 line 93 \"a digest read alone is a digest read where you know least\" could read as an aphorism kicker (class c), but it gives the reason for leaving the digest unopened rather than restating the bold lead. Chunk 5 line 64 \"Better now, with three pieces in hand, than after a sprint.\" adds the cost comparison. Key Concepts bullets (lines 82-89) each add a distinct move, none re-announces a doctrine.",
+      "fix_hint": null, "blocking": false, "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md", "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "git log -p --since=2026-10-01 -- <file> | grep -E '^[-+]## ' -> additions only, no removed or renamed `##` line, so no header changed under standing bullets.",
+      "fix_hint": null, "blocking": false, "chunks_flagged": []
+    }
+  ],
+  "suggestions": [
+    {
+      "rule": "check_slides.md §4",
+      "line": 22,
+      "now": "Before you open it: what did you expect your headline to say?",
+      "proposed": "Before you open the digest: what did you expect your headline to say?"
+    }
+  ],
+  "blocking_findings_count": 1,
+  "nonblocking_findings_count": 1,
+  "notes": "Module file: includes are judged at home. The unnumbered `## Next` paragraph (line 99) read against the two-plain-sentences paragraph: two sentences, no parentheticals or housekeeping; 'what good means' names a Day 3 exercise and is the one phrase near the front-running ban, left as PASS since it names what the next day does. Cross-class: writing and pedagogy findings are filed in their own instances."
+}

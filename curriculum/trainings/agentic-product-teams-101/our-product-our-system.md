@@ -30,10 +30,10 @@ After this day, you will be able to:
 
 ## How we work in this room
 
-- The three of you are one team. Room beats name who drives at the shared screen; the other two work the board, answer and argue.
+- The three of you are one team. When you work together, one of you drives at the shared screen; the other two work the board, answer and argue.
 - Each of you runs Claude on your own laptop. In the team folder, write only to your own folder; the driver writes the team's files at the root.
 - Group work lives on your team's Miro board. What the agents keep reading lives in files.
-- Exercises over lectures. Cut depth where you need to; every beat copes with a missing detail from the one before.
+- Exercises over lectures. Cut depth where you need to.
 
 ## Start here
 
@@ -89,7 +89,7 @@ Read the open questions out loud. Agree on nothing yet. Each person's own file s
 
 ## Bring to Day 2
 
-**Your laptop, with the overnight digest scheduled, plugged in, lid open.** Day 2 opens on what came back. A digest that didn't run means you start the day reading someone else's.
+**Your laptop,** with the overnight digest scheduled, plugged in, lid open. Day 2 opens on what came back. A digest that didn't run means you start the day reading someone else's.
 
 ## Next
 

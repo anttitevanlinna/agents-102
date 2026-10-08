@@ -26,7 +26,7 @@ Ask Claude to pick a bounded set of evidence, write an overreaching briefing in 
 
 {{prompt:hallucination-bakeoff-1}}
 
-Aim for roughly one claim in ten made up or stretched. Claude cannot hit that number exactly. It is enough for the checks to have work to do.
+Aim for roughly one claim in ten made up or stretched. It is enough for the checks to have work to do.
 
 **Don't open the briefing.** Your main session stays blind, so it cannot quietly help the checks along.
 
@@ -38,9 +38,9 @@ Ask Claude to turn the briefing into a pool of claims the checks can score.
 
 *7 min, team lead*
 
-Four checks, four methods, the same claim pool, each in its own <span class="rt-code">subagent</span><span class="rt-cowork">agent</span>, each writing to its own file.
+Each check is a different method on the same claim pool, run in its own <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> and writing to its own file.
 
-Four of them fanning out at once over the evidence. If one starts reading far beyond it, stop it, steer narrower, then say *"continue"*.
+All four run at once. If one starts reading far beyond the evidence, stop it, steer it narrower, then say *"continue"*.
 
 <div class="rt-code">
 

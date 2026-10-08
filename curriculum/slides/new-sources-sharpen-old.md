@@ -9,6 +9,9 @@ Read the cuts too. A claim the agent dropped is a decision someone on the team s
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@a0295413 technical@a0295413 slides@a0295413)
+- judges @a0295413: writing PASS, technical PASS, slides PASS
+
 **STATUS:** squint build (2026-10-07), header from `apt101-squint.md` Day 1 (`header-style-distilled.md` rule 2, the body's former closing line); APT101 rewrite of `compounding` § Why the sharpening happens. Not taught (simulation training).
 
 <!-- backing -->

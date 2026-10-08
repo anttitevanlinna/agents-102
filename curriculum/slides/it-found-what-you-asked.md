@@ -9,6 +9,9 @@ The headline came from your question as much as from your customers.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@a0295413 technical@a0295413 slides@a0295413)
+- judges @a0295413: writing PASS, technical PASS, slides PASS
+
 **STATUS:** first cut (2026-10-07), APT101 squint slide, Day 2 § Why it agreed. Names, after the trio lived it, that the headline follows the look-for line: `apt101-read-the-digest` phase 3 sets each person's Day 1 look-for line (`apt101-d1-your-look-for-line`) beside the headline, and phase 4 reruns the brief with the line turned round (support → against; a test or both ways → support only). Holds for every seat: a line asking for support, a line asking about behaviour and a line asking for a test are all cases of the line choosing what counts as a finding; the test seat's sentence names where its finding came from, the questions the material itself asked. Stays in product register (brief, interviews, tickets); no bias literature named, so nothing to keep faithful to. The diagnosis checklist that names "your question" as one suspect among several is `sources-instructions-reach`. Not taught (simulation training). Owes judging rounds.
 
 <!-- backing -->

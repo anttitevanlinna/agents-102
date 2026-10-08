@@ -1,0 +1,208 @@
+{
+  "class": "slides",
+  "file": "curriculum/slides/one-level-up.md",
+  "training": "shared",
+  "verdict": "PASS",
+  "body_sha": "97d31f1912f75a3a4e75b140cf802bfd6af8b8485e98001f0c25c43c2be9c8a4",
+  "shape_hash": "de3301433cb46c99",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "Would you let an agent post your weekly update?",
+      "lines": "1-9"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "evidence": "chunk 0 line 6: \"It does not work for every agent a team runs.\" closest; 'It' resolves to 'Reading every draft yourself' in the preceding sentence; 'the answers' (l.8) resolves to the three questions in l.6; header and l.4 name 'the team's weekly update' before 'every draft'.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "evidence": "grep for 'opening lecture|earlier lecture|the lecture|prework' in body -> none; l.4-8 name no other file or position.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no 'the X you did/saw/caught' backward reference in body (l.4-8)",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no guess-before-reveal or demo beat; l.4-8 are verbed sentences",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "evidence": "l.4-8: three paragraphs; closest to thin is l.4 'Take the team's weekly update...People act on it.' but it sets the scene the slide builds on; the slide as a whole carries the claim 'choosing which, for which work, is the job'.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "evidence": "l.1 'Would you let an agent post your weekly update?' vs l.8 four answers from draft only to never without a person; the body answers the question it asks, no contradiction.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "evidence": "closest: l.6 'What can the agent reach? Which check runs every time? Where does a person still belong?' three questions, but each opens differently and carries a distinct design choice (reach, check, person), so not anaphora; no 'Not X. Not Y. Z.' (grep 'Not ' -> 0 in body), no self-grading superlative, no number+retraction, no empty-leg verb triplet; l.8 four-item list is a semicolon enumeration of distinct answers.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "evidence": "closest: l.6 'designing the loop'; 'loop' is spine vocabulary an engineer in the room uses, not repo dialect; grep surface|firing|compendium|forcing function|beat|mood -> 0 in body.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget - bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "evidence": "grep -c '\\*\\*' body.txt -> 0; no bold, within the <=1 budget.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content - verify against the composed deck, not long-read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no renderer/section-wrapper change; single standalone slide file with one ## chunk, nothing phase-less",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering - position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/slides/one-level-up.md -> 'OK - 1 files, Phase/Step numbering consistent.' exit 0; header carries no hand number.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/slides/one-level-up.md -> 'OK - 1 files, no page-geometry pointers across the slide cut.' exit 0.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no links in body (grep -c '](' body.txt -> 0); review surface, never a gate",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size - 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/slides/one-level-up.md -> 'oversized: 0', exit 0; limits 210 words / 6 bullets.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "evidence": "l.1 '## Would you let an agent post your weekly update?' is a lecture-slide header posing the question the body answers; not an exercise imperative-or-phase header, and not a law/consolidation slide where a claim is required; an orientation-style question header is not a violation.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies - three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "closest: l.8 'Choosing which, for which work, is the job.' reads as a kicker, but it names the move (pick the answer per kind of work) that the preceding list sets up rather than restating the header; no doctrine restatement, no design commentary.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "header l.1 promises a decision on letting an agent post; every paragraph (l.4 scene, l.6 move up a level, l.8 four answers) answers it; maintainer STATUS says the slide was rewritten whole, no inherited old-header bullets remain.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    }
+  ],
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "One accept-note in maintainer block (STATUS 2026-10-06 rewrite); none covers a passage a rule catches. Simulation training, not taught."
+}

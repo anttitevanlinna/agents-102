@@ -1,0 +1,831 @@
+{
+ "class": "writing",
+ "file": "curriculum/slides/one-level-up.md",
+ "training": "shared",
+ "verdict": "PASS",
+ "body_sha": "97d31f1912f75a3a4e75b140cf802bfd6af8b8485e98001f0c25c43c2be9c8a4",
+ "shape_hash": "de3301433cb46c99",
+ "rules_evaluated": [
+  [
+   "check_writing.md",
+   "1",
+   "Banned words — grep zero-tolerance.",
+   "1. **Banned words — grep zero-tolerance.** `\\bhonest`, `\\bdelve`, `\\blandscape` (verb), `\\bimportantly`, `\\bcrucial`, `\\bsubstrate`, `\\bleverage` (verb), `\\bsynergize`, `\\bparadigm shift`. Substitutes: *candid, direct, real, straight*, or drop the adjective. For `substrate`: *your system, what you've built, your rules and context, your memory, your kit, your setup* — pick what's concrete (it's lab-speak; flinches engineer readers, leaks from strategy docs into student prose via paraphrase). For `leverage`(v)/`synergize`/`paradigm shift`: *use, combine, real shift*, or drop the abstraction. Consultancy register; flinches CTO same way `substrate` flinches engineers. **Punctuation sits on the same table.** The em-dash is banned in body prose and rewritten to `, ` by the `SUBS` table in `.claude/hooks/eval-class-router.sh` on every Write/Edit, alongside `ritual`/`ceremony` and the banned-word substitutes. Two consequences worth knowing before you draft. The rewrite is silent and runs over the WHOLE body above `<!-- maintainer -->`, not the region you edited — so a maintainer-block-only edit can still produce a body diff and stale `writing`/`story`/`slides`; that is the auto-fix landing on older text, not a scanner false positive. And this table is the rule's only prose statement: its absence from a compendium grep is not evidence em-dashes are allowed. Write the comma yourself and the hook has nothing to do. **And know when the hook is not there at all (2026-08-20):** its matcher is `Write|Edit|MultiEdit`, so a body edit made through Bash — `sed -i`, a `python3` heredoc, `cat > file` — bypasses the auto-fix completely and lands the em-dash verbatim. That is how one reached a committed lecture body today, caught by a judge rather than by the table. The safety net is tool-shaped, not repo-shaped: reach for Edit on any file a student reads, and if a scripted edit is genuinely the right instrument, grep the body afterwards (`awk '/^<!-- maintainer -->/{exit} /—/{print NR}' <file>` — empty output is the passing condition)."
+  ],
+  [
+   "check_writing.md",
+   "2",
+   "Ritual / ceremony — hard ban",
+   "2. **Ritual / ceremony — hard ban** in any curriculum/training surface. The activity's name is **exercise**; the ban is on *ritual* / *ceremony* as its name, not on the noun *exercise* anywhere in body. Acceptable: *move, step, phase, debrief*. **`practice`(n), AE101 (Antti-decided 2026-08-15): OK, sparingly.** No earning beat owed and no arc position required; dosage is the whole constraint — a handful of load-bearing uses across the arc (M5's *durable practice*, M6's *Practice is core* are the calibration), never ambient. Ordinary-English senses (*a practitioner's practice*, quoted *best practice*) don't count against the cap. Character cultivated throughout: *practitioner*. Agents 101 retains the absolute practice(n) ban. Maintainer blocks across all files prefer *exercise* — `practice`(n) in maintainer leaks to audience via paraphrase. Registry: `curriculum/vocabulary.md` § Register bans, kept in step."
+  ],
+  [
+   "check_writing.md",
+   "3",
+   "No stale markers, no \"fixed\" retrospectives, no session biography.",
+   "3. **No stale markers, no \"fixed\" retrospectives, no session biography.** Never *\"NOTE: this is outdated\"* or *\"retained as historical\"*. TODO closed → delete; don't annotate as \"fixed\" or keep changelog in file. **Rules are rules; history is git.** Don't write *\"Source: <session>\"*, *\"Caught live YYYY-MM-DD\"*, *\"Concrete instance: compounded YYYY-MM-DD\"*, *\"Item origins\"* tables, *\"Moved out\"* blocks, or *MOVED* markers inside rule bodies or memory-file bodies. Principle + one example + canonical-home pointer enough; git blame carries provenance. Exceptions: frontmatter `session_date` (load-bearing for `/refresh`); source-date references in freshness claims (load-bearing for 6-month rule); `example_from_session` fields in compounded entries (that IS the artifact). Grep before ship: `2026-`, `caught live`, `compounded`, `restructure`, `extracted from`, `(MOVED` — any match inside rule body, delete containing clause. A file's own existing strike-annotated or \"Closed <date>\" items are prior violations to delete on touch, not a local convention to imitate — this rule outranks the file's own precedent. **Writing up a decision you just made is the highest-risk moment for this rule and the one where it least feels like it applies:** the block is new, so it reads as authoring, but its content is the diff. Per sentence — does it state what IS true, or how it CAME to be true? *\"The fork is a band because the spread is real\"* = fact. *\"The corpus carried both, so we settled on a band\"* = transition, delete. Banned in a block body: `settled <date>`, `retired`, `no longer`, `historically`, `used to`, `the old X`, `X was changed to Y`, `swapped/dropped/cut <date>`, any bare year. The tells are examples, not the test — any verb narrating the edit you just made is the shape, and the apply-phase of an adjudicated batch is the same moment wearing a second disguise: the row records the card just approved, and the approved-decision framing masks that its content is the diff (sixth recurrence, 2026-08-30 — the violating verbs sat outside the tell list). Having good evidence is not a defence — the reasoning belongs in the compendium governing the class (`check_pedagogy.md §64`), the audit trail in git. **A minimal-diff correction inside an existing note is still a revision — the WHOLE touched note re-takes the fact-or-transition test, not just the clause you came to fix; fixing a false clause inside a cut-ledger and leaving the ledger is the failure mode (2026-08-30).**"
+  ],
+  [
+   "check_writing.md",
+   "4",
+   "Register match.",
+   "4. **Register match.** Internal strategy doc → Rory/Seth/Risto stylized OK. Sales page → buyer-register, no preening phrase-pairs. Student-facing → concrete + warm, earned jargon only. Unsure which register → check sibling rule-group: `check_sales_copy.md` or `check_student_facing.md`."
+  ],
+  [
+   "check_writing.md",
+   "5",
+   "Rough-cut drafts for articles.",
+   "5. **Rough-cut drafts for articles.** Short declarative lines, one idea per line, no flowing paragraphs, no transitions. Include named examples + numbers. Don't polish — Antti rewrites 60–80% keeping blunt lines he likes."
+  ],
+  [
+   "check_writing.md",
+   "6",
+   "Credit original when paraphrasing named technique.",
+   "6. **Credit original when paraphrasing named technique.** Move belongs to recognizable practitioner or framework (Pocock's grill-me, Klaassen's compound engineering, Martin's *\"what would have to be true\"*, StoryBrand, JTBD, Huryn's three blocks) → credit originator (inline in student-facing prose when natural; in maintainer notes otherwise). Test: reader who knows field would recognize this as X's move if named? Yes → credit X. Paraphrasing or inlining skill as plain prompt does NOT remove credit obligation. Counter-rule: don't force attribution onto common patterns (*\"test before you ship\"*)."
+  ],
+  [
+   "check_writing.md",
+   "7",
+   "Always \"you\", never \"the student\"; teacher framing stays out of body.",
+   "7. **Always \"you\", never \"the student\"; teacher framing stays out of body.** Sentence describes what student does → second person — in student-facing prose AND authorial surfaces (strategy docs, compendium rules, compounded entries, SKILL.md prose). \"The student wants X\" drifts into paraphrase + leaks third-person voice into student-facing output. \"You want X\" survives copy-paste into module file without edit. In student-facing body, `you` always means student. Do not write delivery mechanics (*\"the trainer shows...\"*, *\"before students start...\"*, *\"say it plainly...\"*) in body prose; put below `<!-- maintainer -->`. Exception: trainer-POV maintainer blocks below `<!-- maintainer -->` can use \"the student\" because reader there = trainer, not student. **Connections-paragraph carve-out:** per `check_pedagogy.md` rule 27 carve-out, bare room-read sentence in body (*\"The room harvests everyone's before the lecture names the pattern.\"*) = in-scope-by-design as separate paragraph after Connections question. Do not flag Connections room-harvest paragraph as rule-7 violation."
+  ],
+  [
+   "check_writing.md",
+   "8",
+   "Don't smuggle terms of art from maintainer into body.",
+   "8. **Don't smuggle terms of art from maintainer into body.** Term only appears in maintainer blocks, strategy docs, or framework-credit text (*self-compound, substrate, three-pattern, grill-me*) → don't paraphrase into student-facing body. Either (a) earn it in body on first use — one-breath primer tied to what reader just did — then real word, or (b) use plain mechanical description in body + keep term in maintainer/credit text where audience already knows it. Grep: for any term-of-art in body, can point to earning moment in same file or upstream module's body? No → maintainer-leak."
+  ],
+  [
+   "check_writing.md",
+   "9",
+   "Over-hedge detector.",
+   "9. **Over-hedge detector.** After any edit adding alternative path or softening mechanic → grep result for reassurance-shaped sentences. Flags: *no penalty, fine way to, it's OK if, no consolation prize, not a downgrade, sometimes humans should, not a box-check,* **you are not on the hook for X** (swept to zero 2026-08-12; five instances, one per exercise, each wrapping a division-of-labour sentence that already said it — *\"The subagent does the walk; you read the result\"* needs no reassurance appended). The delegation shape is the highest-frequency host for this: describing what the agent does invites a matching sentence absolving the reader, and the absolution is always the cuttable half. Prose reassuring choice is fine → readers register that author thought it needed defending. Peer voice does not apologise for pragmatism. Cut reassurance; trust structural framing (teaching-moment line, principle-line) to carry work. Test: senior engineer reading prose thinks *why is the author telling me this is OK?* Yes → cut."
+  ],
+  [
+   "check_writing.md",
+   "10",
+   "Verbatim-frame-cite in reference artefact.",
+   "10. **Verbatim-frame-cite in reference artefact.** User gives specific verbal frame — 3–7 word blunt sentences, named thesis, quoted lines → capture **verbatim** in reference artefact under *\"Frame to land\"* section. Paraphrasing frame into prose drifts at ship time: draft ends up wrapping frame in commentary, dropping parts of it, philosophising around it. Only verbatim-in-reference survives cite-and-compare at ship time (author re-reads reference, quotes frame, holds draft against quote). Same discipline when user specifies frame/list/claim verbatim DURING session — paste those exact words into artifact, only reshape on subsequent pass with explicit re-approval. \"Polished\" rewrites flatten register, verb tense, agency choices user encoded."
+  ],
+  [
+   "check_writing.md",
+   "11",
+   "Cap practitioner attribution at one student-side mention per module.",
+   "11. **Cap practitioner attribution at one student-side mention per module.** Credit obligation does not require redundant placement. Prefer lecture/closer (practitioner story has room to breathe) or anchor-exercise body (move is being run). LOs and module Big Ideas = wrong place — front-load attribution before student knows what the move is. Maintainer notes exempt (full citation chain). Naming same practitioner four times in one module = collecting credits, not crediting; one well-placed cite = the credit, two = bookkeeping, three+ = insecurity. **Carve-out (2026-08-02): deliberate reinforcement of a FUNDAMENTAL is not bookkeeping.** Test is not *is this the second mention* but *does the second do different work*. Credit-at-point-of-use in the anchor exercise + recognition-at-the-closer are different jobs, and where the concept is the one thing the module exists to install, the second encounter is spaced repetition, which is how it gets memorised. Applies only where the repeated element is load-bearing for retention, named as such in the maintainer block, and the two placements differ in function. Precedent: AE101 M1 names Klaassen in `compound-and-close` (credit where his loop is printed) and again in `how-this-training-was-built` (the naming beat). A judge reading one file cannot see the pair; a persona sim will score the second as a spent reveal, which measures novelty when the design wants recall. Neither is a defect. Still fires on a THIRD mention, and on any mention that adds no new job. **Prereads and links don't count (Antti 2026-08-15).** Cap counts body-prose mentions only. Author-before-link citations, prep/bridge reading-list items, any name labelling a link = attribution bookkeeping the reader scans, exempt alongside maintainer notes. Fires on prose that names the practitioner as actor/authority. Citation + prose repeat in one paragraph: citation exempt, repeat counts. → `compounded/2026-08-15-writing-attribution-cap-excludes-prereads-and-links.md`"
+  ],
+  [
+   "check_writing.md",
+   "12",
+   "Punchy framing keeps punch; carve-out lives downstream.",
+   "12. **Punchy framing keeps punch; carve-out lives downstream.** Reframe lands sharper than literal cadence justifies (banner question holds for two of three failure modes but overstates for third; slogan captures aspiration but overpromises on cadence) → don't soften original to hedged middle, don't drop framing. Add ONE carve-out paragraph after punchy line naming boundary in concrete terms (which subset doesn't fit, why) + ending with directional cue (*\"match X to Y, not the slogan\"*). Carve-out voice = Boris-direct (factual, terse, specific). Slogan stays where it lands; boundary sits one paragraph downstream."
+  ],
+  [
+   "check_writing.md",
+   "13",
+   "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
+   "13. **Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.** Body prose defends against vendor-story / marketing-deck / consultancy-pap / aspirational-frame critiques → imports curriculum's positioning posture into beat that should be teaching. Reads defensive, sounds marketing-shaped, treats student as needing reassurance. Engineers read citations + decide for themselves. Flag phrases: *\"not an aspirational X\"*, *\"not a vendor Y\"*, *\"this isn't marketing\"*, *\"the real practitioners\"*, *\"unlike consultancy decks\"*, *\"grounded in actual\"*, *\"not theoretical\"*, *\"from the person running it\"*. Any of these in body → framing belongs in project `CLAUDE.md` or sales copy. Cut from body. Teaching following citation should carry substance — if citation needs defense, citation isn't doing its job + different source is the fix. **Hard sub-rule: treat *vendor* in student-facing body as suspect every time.** Automatically pulls marketing-vs-practitioner frame because project's value prop defined against vendor stories. Even non-defensive uses (vendor lock-in, vendor SDK, vendor docs) drag positioning into teaching beat. Audit every body hit; usually swap to concrete name (Anthropic SDK, AWS SDK, the docs from X) or drop sentence. **Narrow Agents 101 M7 exception:** the exact taxonomy close *\"Share the whole agent\" is a vendor pitch and is NOT on the list* is required verbatim by `check_student_facing.md` §34; judge that sentence under the specific canonical rule and do not flag it here. Architectural policy lines in `curriculum/CLAUDE.md` (*\"no vendor comparison\"*) fine — that's where positioning belongs. **Boundary surfaces — cookbook supplement, supplementary docs, lecture intros that quote strategy, module Big Ideas — leak strategy-doc vocabulary into student-facing body most often, written in voice closer to strategy than module body. On file-open, scan-and-flip register before writing.** **Pre-reads sections = worst boundary surface:** each item is a mini pitch for reading it, and the pitch defaults to the DESIGNER's reason (sequencing, what it primes, how it lands) not the READER's gain. Banned shapes: *\"Why for Module N:\"* labels, *\"primes a reframe\"*, *\"felt evidence\"*, *\"lands as recognition\"*, *\"recognition rather than novelty\"*. Each item = what the piece gives the reader + at most one plain clause on how the module picks it up."
+  ],
+  [
+   "check_writing.md",
+   "14",
+   "Watch out for planting jargon too early.",
+   "14. **Watch out for planting jargon too early.** Lead-ins, bolded callouts, headers, prompt bodies — anywhere student copies, paraphrases, or internalises a phrase — stay at or below arc's CURRENT vocabulary level. Body prose can teach term where it earns; operational copy does not echo terms still ahead. Diagnostic: identify module's arc position, pull each jargon-shaped phrase, ask whether term has been earned in body prose at or before this module. No → swap for plain operational word student-at-this-point would use, even if term gets earned three modules later. Earning term in body does NOT earn in operational copy (lead-ins read out of context — copy buffer, trainer projection, sub-second skim — where surrounding prose can't carry them); earning in module N does NOT earn for 1..N-1. Premature planting pre-spoils future module's clean teach AND lifts vocabulary student-at-this-point wouldn't use back to themselves. Recurring offenders: LLM-internal vocabulary (statistical default, token, embedding, retrieval, inference, fine-tuning, prompt engineering, orchestration, schema, frontmatter) — but applies to any term-of-art outside student's current vocabulary regardless of banned list."
+  ],
+  [
+   "check_writing.md",
+   "15",
+   "Audit closer when trimming body-prose forcing function.",
+   "15. **Audit closer when trimming body-prose forcing function.** Moving forcing function from body into fenced prompt (rule-16 fix) leaves surrounding sentences unmoored. Two reflexes fire post-trim: (a) **dangling pronouns/demonstratives** — *\"the three you got\"*, *\"that one\"*, *\"this answer\"* — referred back to trimmed sentence, now point at hypothetical from two sentences earlier. (b) **Bypass-the-agent punchlines** — *\"write that yourself\"*, *\"go fix it\"*, *\"do it manually\"* — auto-pilot replaces trimmed forcing function with action verb sending student outside conversation, violating `check_student_facing.md` §12. Default cleanest landing: let section close on maxim or example; reader supplies conclusion. Punchy closers tempting + usually unnecessary."
+  ],
+  [
+   "check_writing.md",
+   "16",
+   "The `",
+   "16. **The `**What happened:**` block is OPTIONAL — default is to omit it (Antti-directed 2026-08-12, mandation removed from `curriculum/exercises/README.md`).** Include only where the exercise leaves a durable artifact whose value is not already obvious from the last slide; otherwise end on the last real move. **Two failure modes justify the demotion, and neither is fixable by better wording.** (a) *It drifts* — a recap re-derives the instructions in prose, so any later edit to a phase silently falsifies it, invisibly, because the sentence still reads fine. (b) *It answers what the module holds open* — `extract-the-task-shaping-rule`'s recap asserted the rules file would auto-load, two beats before M2 has the student put exactly that question to Claude. A slot that owes a re-verify against every phase on every edit has to earn its place. Three tries at rewriting that one instance produced three different false statements (a promise no instruction backs, a choice the prompt gives Claude, a qualifier true of one rule only) — that is the signal to cut the beat rather than the sentence. When it IS included, the three moves below are the shape."
+  ],
+  [
+   "check_writing.md",
+   "17",
+   "No combative verbs about the agent in body prose.",
+   "17. **No combative verbs about the agent in body prose.** Verbs describing human→agent interaction stay peer-flat or warmer (*steer, give, hand, ask, point, share, tell, show*). Combative verbs (*bark, order, command, whip, force, drag, push around, boss, shout at, snap at, lecture, scold*) flinch peer-warmth register Agents 101 voice depends on. Same root as equals-not-pupils principle — extends from \"don't talk down to student\" to \"don't talk down to agent in front of student\". Agent = collaborator student works through, not subordinate to be commanded. Diagnostic: verb describing what student does TO agent reads as something bad manager would do to junior employee → replace. **Carve-out — the beat whose point IS the bad register (Antti, 2026-08-23):** where the exercise asks the student to behave badly ON PURPOSE to find what the agent resists, the combative verb is the teaching content, not a register slip. Test: is the student being shown how to work, or asked to run an experiment on the agent's spine? Experiment → keep, and keep the ugly verb; softening it hides the instrument. Specimen: `plan-mode-done-right.md` Optional challenges, *\"Try to bully plan mode into a bad architecture… record where Claude pushes back and where it caves.\"* Not a licence for combative verbs in the surrounding prose — scoped to the probe itself."
+  ],
+  [
+   "check_writing.md",
+   "18",
+   "Headers must be literally true about the mechanism.",
+   "18. **Headers must be literally true about the mechanism.** A section header survives a literal cold read or it gets renamed. Two recurring faults: (a) a spatial/structural metaphor that contradicts the mechanism — *\"beyond the window\"* for tokens that live INSIDE the context window; check the metaphor against what actually happens. (b) *\"other X\"* / *\"the rest of the X\"* presupposes a named PRIMARY X earlier in scope; no primary designated → drop *\"other\"*. Diagnostic: read the header against the section's actual claim — a precise reader could call it false, or ask *\"other than what?\"* → rename. (Example: *\"Beyond the window\"* → tokens are in the window; *\"Other drivers\"* → no primary named; landed on *\"Drivers of inefficient context.\"*)"
+  ],
+  [
+   "check_writing.md",
+   "19",
+   "Machine-cadence fat — the shape of good prose without the content.",
+   "19. **Machine-cadence fat — the shape of good prose without the content.** Four shapes, all cheap to generate because they LOOK like rigour. Cut at generation, not on sweep. (a) **Empty negation** — *\"X, not Y\"* where no reader would have guessed Y (*visible, not merely hoped for*; *a failure you read in your own artefact, not a slide*). Negate only against the reader's ACTUAL prior; never twice about the same misconception. Distinct from #4's negation-callout check (that one tests refusals for self-contradiction; this one tests whether the negation was needed at all). (b) **Deictic drumroll** — *\"That is the X.\"* / *\"This is the Y.\"* announcing a claim the same clause states. Delete pointer, keep claim. Legitimate when it NAMES a concept (*\"This is the mercury problem\"*) or resolves a real antecedent (*\"That is the machine. The rest is steering.\"*); the test is whether you can point at what *that* refers to. (c) **Bold-label echo** — `**Acceptance Tests.** Acceptance tests define…`; label restated as the sentence's subject. Open on the claim; a pronoun is fine. Acronym expansion (`**TDD.** Test-driven development…`) is not an echo. (d) **Citation / appendix duplication** — practitioner cite re-explaining the body sentence above it; Sources block repeating inline glosses verbatim. Inline cite carries the gloss, appendix carries bare links; a block that split into *\"Sources, continued\"* has outgrown its job."
+  ],
+  [
+   "check_writing.md",
+   "20",
+   "Don't state a count the adjacent list already holds.",
+   "20. **Don't state a count the adjacent list already holds.** *\"You'll work at four task sizes\"* sitting above four bullets; *\"the three failure modes below\"*; *\"these two moves\"*. The numeral is a second copy of a fact the structure already carries — the reader can see the bullets — so it buys nothing on the way in and goes stale on the way out. Every variant cut, added item and reorder silently falsifies it, and the falsification is invisible to the author editing the list, who is looking at items and not at a sentence one paragraph up. Fix = drop the numeral (*\"different task sizes\"*, *\"the failure modes\"*). Do NOT branch it per variant: a flagged or conditional count is two copies of the drift plus machinery to maintain them. **Carve-out — count as a memory handle across distance.** A numeral the reader carries AWAY from the enumeration and reuses later (*the lethal trifecta*; *the four layers* named in a header, referenced three sections on) does work the list cannot: recall scaffolding, not a tally. Test: does the numeral appear where the items are NOT visible? Yes → keep it, and keep it accurate. Adjacent to the list → cut. **A numeral in a `##` header is NOT covered by this rule — it stays (Antti, 2026-08-22).** A header is a handle, not a tally: *Five things a good plan has*, *Three pressures that make bad plans look good*, *Three agents using the file* all keep their numeral. It carries into the nav rail and the TOC, where the items are not visible, and that is exactly the carve-out. This rule governs a count in **prose adjacent to its list**, not a count in the heading above it. A judge that flags a header numeral is reading the rule too wide. The drift risk is real and is priced in: a header that gains a sixth item owes a header edit, and the maintainer takes that trade. **In body prose the default is the other way: \"often counting is just NVA\" (Antti, 2026-08-22).** Where a count is not a header and not a handle reused away from its list, drop it and do not reach for a replacement quantifier — *several ways*, *a number of*, *multiple* buy nothing the list does not already carry and read like hedging. *\"One documented kit wires skills several ways\"* became *\"One documented kit wires skills.\"* Cross-check `check_student_facing.md §26`: the count is true and still not moving the reader forward. **Generalises past counts to anything the list already carries** — ordering, grouping, *\"the following\"*. A lede reading *\"roughly in the order you'll reach for them\"* makes every per-item positional marker below it (*for the back half*, *later on*, *soon after*) a second copy of the same fact; state the ordering once, in the lede or in the items, never both. Survivor test for a positional marker: does it name a real constraint the sequence cannot (*wanted on day one* = a deadline, and the one item that must be picked before arrival), or only where the item sits (cut)? → `compounded/2026-08-12-writing-no-count-adjacent-to-its-own-list.md`"
+  ],
+  [
+   "check_writing.md",
+   "21",
+   "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
+   "21. **A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.** §12's remedy (keep the punch, carve out downstream) presupposes a claim that holds broadly and overreaches on a subset. It cannot rescue a claim with no true reading: *\"the failing test is the only proof the bug exists\"* has no subset where the test is the only proof, so a carve-out would leave a false sentence standing with a hedge bolted on. **Superlative is the tell; scope is the test.** *only / always / never / nothing else / the one thing that* — scoped to an artifact we built (*\"`/ship` is the only orchestrator\"*), a corpus we control (*\"the only M6 exercise\"*), or a dated finding (*\"the only candidate in staging as of 2026-Q1\"*) → legitimate, and the corpus handles these well. Asserted about how the world works → name one counterexample. Found one → false, and a professional audience finds it faster than the author does (`check_student_facing.md` §1: they have pride and are often right). **Cheapest counterexample source is the curriculum's own contingency plan:** the trainer row for that same exercise says *\"if no test infrastructure on this path, log 'no verifier here'\"*, and a supplement two files over lists a failing test as one verifier among four. A claim your own fallback contradicts is not bold, it is unread. **`vision`-grade in a `<!-- backing -->` block means no source is owed, not that nothing is asserted.** `← none-owed` is where these survive every pass: the review apparatus points at cited claims, so the design stances — the memorable ones, the ones students quote back — are the least audited prose in the corpus. **The fix is never a hedge.** *\"Usually the only proof\"* is worse than the original: same shape, plus mush. Cut the superlative and ask what the line was for; the sentence beside it is usually already carrying the weight, propped up by a falsehood it never needed."
+  ],
+  [
+   "check_writing.md",
+   "22",
+   "A claim binds to every body that states it, not just the one holding the stamp.",
+   "22. **A claim binds to every body that states it, not just the one holding the stamp.** Teach-in-lecture + recall-at-point-of-use in its exercise (§11 carve-out, `check_slides.md` §1) makes ONE claim with TWO bodies. Every instrument works on one file: judges run per file, `validate-backing.js` checks a quote against its OWN body, the `<!-- backing -->` stamp sits wherever the live check happened. So a re-verification corrects the stamp-owning body and the sibling keeps teaching the superseded version, pointing `←` at the stamp that superseded it. **Firing moment = editing any body line a claim quotes.** Command, not vigilance: `grep -rlE '← .*<source-id>' curriculum/` → read every file returned, edit all or state why one differs. Measured 2026-08-12: **31 of 228 source ids claimed in 2+ files**, up to five. `← none-owed` → grep the claim id instead (only 3 ids repeat corpus-wide, so it is nearly free, and not empty — `intercom-auto-approval-numbers` resolves to two different source ids in two files). **`keep the two in step` in a backing block is NOT this rule discharged** — that exact sentence sits in four blocks and both AE101 M2 pairs broke under it; a note addressed to nobody at no moment is not a forcing function. Sibling of §3's keep-notes-bind, one level up: a keep-note binds to its passage, a claim binds to every body that states it. → `compounded/2026-08-12-writing-a-correction-crosses-to-every-file-that-claims-the-source.md`"
+  ],
+  [
+   "check_writing.md",
+   "23",
+   "A rule set reconstructed at session start goes stale inside the session — re-derive it per target, not per sweep.",
+   "23. **A rule set reconstructed at session start goes stale inside the session — re-derive it per target, not per sweep.** A multi-file sweep builds its checklist once, at the first file, then repeats it; that is what makes it a sweep, and it is wrong whenever the rule set is still moving, which here it is — other sessions compound while you work. Two shapes, and the second hides: **forward**, a rule landing mid-sweep reaches the targets after it and none before; **backward**, the completed half was written under the old set and nobody reads it again, so the newest rule indicts the oldest work at exactly the place the sweep will not look. Measured 2026-08-12 across AE101 M2→M6: `check_pedagogy.md §52d` was written AFTER the point slots it governs had been rewritten, and the §1 banned-word grep had only ever run on the last two modules, leaving eight `honest` hits in the first three. Both gaps came from the maintainer asking twice whether the work was done, not from the sweep. **Command, at each target, not once:** `ls memory/compounded/ | grep <today>` for entries + `grep -c <today> memory/check_*.md` for the rules those entries amended — a landed rule announces itself by its stamp. **Then run the new rule against what you already shipped before running it against what is left.** Sibling of §22 one level up: §22 says a correction crosses to every file that states the claim; this says a rule crosses to every file already swept under its predecessor. → `compounded/2026-08-12-content_creation-a-sweep-caches-its-rule-set-and-goes-stale-mid-run.md`"
+  ],
+  [
+   "check_writing.md",
+   "24",
+   "One doc per scarce-attention audience; delta-only.",
+   "24. **One doc per scarce-attention audience; delta-only.** An audience that reads under time pressure (trainers, execs, sponsors) gets ONE artifact — structure lives INSIDE it (tabs, sections), never across files; a second doc is where content goes to be unread. The doc carries only the DELTA beyond surfaces the reader already sees in the moment of use (the projected student page, the tool's own output) — restating them overwhelms and teaches skimming. Design test at authoring time: \"will this specific reader, with their actual time budget, open this — and what do they need that isn't already on their screen?\" Reader-behavior beats information-architecture elegance. → `compounded/2026-08-01-writing-one-doc-per-audience-delta-only.md`"
+  ],
+  [
+   "check_writing.md",
+   "25",
+   "Trainer-facing text is self-contained.",
+   "25. **Trainer-facing text is self-contained.** Trainers receive built trainer pages (trainer-guide, trainer-modules) only — never point them at repo paths, maintainer blocks, check_*.md, skill files, or eval docs; inline the meaning in one or two sentences instead. A reference is not a delivery: even when a target exists on some surface, assume it is never followed. Pointers between trainer pages themselves (guide ↔ run sheets) are fine — both ship. → `compounded/2026-08-01-writing-trainer-facing-text-self-contained-no-repo-pointers.md`"
+  ],
+  [
+   "check_writing.md",
+   "26",
+   "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
+   "26. **A sentence saying how you'd know points at the outcome, not the nearest artifact.** Any *X tells you whether Y* / *you'll know it worked when…* clause: name the observation that could come back negative. Self-witnessing instruments fail silently — a read judging the context it was read from, a summary reporting on itself, a plan asserting its own soundness. *\"the read tells you whether it is the right load\"* → *\"accuracy on the next task tells you whether it is the right load.\"* Same length, evidence instead of opinion. Diagnostic: what would have to be observed for this to be false? Point the clause there. Writing-surface twin of `check_pedagogy.md §45` (falsifiable leap tests) and §31 (artifact = evidence, summary = not). → `compounded/2026-08-14-writing-how-you-know-points-at-the-outcome.md`"
+  ],
+  [
+   "check_writing.md",
+   "27",
+   "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
+   "27. **Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.** Survivor shape = concrete instance + the sentence that makes it portable, then stop: *\"A verifier against one failure is one hook. The same primitive covers everything else that must happen every time.\"* A third sentence on one idea is restatement or hedge, whichever it thinks it is. Four classes, measured across an AE101 M1–M5 compaction pass (2026-08-29, ~15 cuts, **none of them a missing idea**): **(a) the abstract twin** — two sentences saying one thing at different altitudes (*\"The instructions get buried as the conversation grows\"* then *\"The LLM reasons from what fills the window now, and the original ask competes with everything generated since\"*). Keep the concrete one; the abstract reads as emphasis at the keyboard and as padding at projection distance. **(b) restating an adjacent artifact** — body telling the reader what the `{{prompt:}}` block below it already instructs, a bullet opening with its own `##` header, prose narrating the figure beside it. **Generalises §20 past lists**: a prompt, a header, a figure and a list are all things the reader can see. Firing moment = writing prose next to any non-prose element — read the element first, then write only what it does not say. **Carve-out — orientation at a window or session switch (Antti 2026-09-14, \"a little duplication makes sure student is oriented\"):** a one-line *this is your X lane* / *you are back in Y* beside a header that says the same is kept; the student is changing terminals and the restatement is the handrail. **(c) the widening qualifier** — *or rule*, *or context-dependent*, *where the LLM weighs it*: coverage bolted onto a rule until it stops ruling. Sibling of §9, which catches hedging-as-reassurance; this catches hedging-as-completeness. **(d) the second announcement** — one claim made twice, files apart, the earlier one abstract (an M4 opener announced the un-packaged run; the lecture two beats on announced it again with the concrete list). Grep the coinage before restating it. **Not a REVISE on its own** — a deliberate second pass at a genuinely hard idea is legitimate, and this rule is the default move, not the law. **Check whether §21 owns the sentence before filing here.** A superlative — *only / always / never / nothing else / the one thing that* — makes a third sentence a TRUTH question, not a rhythm one, and §21 outranks. A §27 row on a line §21 owns reads as adjudicated and clears it: a filed finding hides a sentence better than an empty row, because the next pass can see someone already looked. **Fix bar on a shipped slide (2026-09-13): same length or shorter.** A repair that adds words is refused by default even when the fault is real — four cards in one session, one verdict: *\"longer and not enough value\"*. Count AFTER against BEFORE before carding; a positive delta means try again with a cut, or leave the sentence and note the fault. Exception: the old sentence did not parse at all — and then two flat sentences beat one that explains the join. → `compounded/2026-09-13-writing-shorter-or-nothing-fix-bar-on-shipped-slides.md` →  Slides-class face: `check_slides.md` §16. → `compounded/2026-08-29-writing-say-it-once-at-its-most-concrete.md`"
+  ],
+  [
+   "check_writing.md",
+   "28",
+   "Body prose stands without the trainer — no cue-card prose.",
+   "28. **Body prose stands without the trainer — no cue-card prose.** One source file feeds three readers: the room (trainer talking over the slide), the deck read cold later, and the theory handbook handed to someone who never enrolled. Prose written as the trainer's cue works for the first and fails the other two, and the failure is invisible to the author because the author IS the trainer. Two disguises: **(a) the cue fragment** — verbless noun stacks that tell the speaker what to say next, not the reader what is true (*\"The same question, two answers. Two Claude Code sessions.\"* / *\"A fact. A role. A preference. A constraint.\"*). The room hears a scene; the page gets a set list. **(b) the screen deictic** — a pronoun, demonstrative or stage direction whose referent is the live terminal, not the text (*\"Context is whatever you tell it\"* with no *it* on the slide; *\"take a guess before it runs\"*; *\"this one runs on the screen\"*; *\"now\"*, *\"Let's go\"*, *\"Go.\"*). The trainer's finger resolves it; the reader's does not. **Diagnostic — the muted read:** read the slide with the trainer's audio off. Every sentence must carry a verb and a subject the page itself named; every *it / this / that / now* must point at a noun on this slide or its header. Fails → give the fragment its verb, name the noun. Grep list, report-only: `Take a guess`, `before it runs`, `on the screen`, `^Let's go`, `^Go\\.`, `Your turn`, `What does .* now\\?`. **Reader-first is free for the room:** prose a reader can follow is always speakable, and the trainer compresses live; cue-card prose never expands itself for a reader. **Carve-outs:** a fragment list that follows a verbed sentence naming the set (*\"Whatever you put in front of the LLM is what the LLM scales. The rules file. The prompt.\"*) is enumeration, not a cue, and so is an option-list bullet whose verbed sentence sits in the adjacent bullet, whichever comes first (Antti 2026-09-14, kept); a verdict-shaped fragment opening a bullet whose mechanism follows in the same bullet (*\"A strong candidate for a team PR, after you talk to the team. A test-strategy skill encodes…\"*) is the voice, not a cue (Antti 2026-09-13, kept); a koan or closer the maintainer block attests (*shotgun/cannon*, a `Let's go` the watch-fors name) is accept-with-note, not a REVISE; session artifacts in exercises resolve per `check_slides.md §1`'s carve-out. Slides-class face: `check_slides.md` §4 (demo beats). Siblings: §15 (dangling closer pronouns), §19 (deictic drumroll), `check_slides.md §1` (referent resolution). → `compounded/2026-09-13-writing-body-prose-stands-without-the-trainer.md`"
+  ],
+  [
+   "check_student_facing.md",
+   "1",
+   "Aspirational destination, never corrective gap.",
+   "1. **Aspirational destination, never corrective gap.** Name what student is becoming (*wizard, force multiplier, conditions creator*). Never *\"you already think you're using X\"* or *\"you're missing Y\"*. Professional audiences have pride and are often right."
+  ],
+  [
+   "check_student_facing.md",
+   "2",
+   "Earn every technical term on first use.",
+   "2. **Earn every technical term on first use.** One-breath primer tied to what student just did or about to do, then real word. Don't dilute. Don't re-earn after first use — trust student, let fluency build. *\"Connector\"* earned next to *\"actions and tools\"* lands; *\"connector\"* cold fails. **Earning extends to two more cases:** (a) *Curriculum's own load-bearing terms* — `compounding`, `the loop`, `the move`, `the practice` — count when in body BEFORE introducing module. Replace with anticipatory unfold (concrete preview of what term will mean) until module earns abstract noun: *\"compounding has somewhere to land\"* → *\"rules and memory have somewhere to build up over six weeks.\"*"
+  ],
+  [
+   "check_student_facing.md",
+   "3",
+   "Business-audience word ban (Agents 101 default).",
+   "3. **Business-audience word ban (Agents 101 default).** No unearned tech word in any student-facing surface. SVP marketing test: any flinch = replace or earn. Source of truth: `curriculum/evals/lints/jargon-ban.md` (canonical list + SVP test)."
+  ],
+  [
+   "check_student_facing.md",
+   "4",
+   "Memory vs context — use deliberately.",
+   "4. **Memory vs context — use deliberately.** *Memory* = persistent artifact training builds (rules file, `observations/`, team kit). *Context* = ambient runtime state that dies at session close. Engineers discriminate cleanly; blurring reads imprecise. *\"Your context compounds\"* wrong. *\"Memory compounds, context feeds it.\"*"
+  ],
+  [
+   "check_student_facing.md",
+   "5",
+   "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
+   "5. **Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.** Troubleshooting, recovery, \"what if X fails\" branches do NOT belong in student-facing narrative. Goes to: live support, trailing facilitator notes below `---`, or quick reference if generic. Body = calm forward-moving narrative, not pre-emptive FAQ. **Boundary — a needed recovery stays in body.** Assume neither trainer nor student reads below the maintainer fence in delivery; routing a recovery there deletes it. **Mechanism, so this is not a judgement call:** `stripMaintainerTail()` (`site/layouts/curriculum.js`) and the workbook build both cut everything from `<!-- maintainer -->` onward. The block reaches maintainers and judges reading source — never a student, never a trainer in a room. Trainer-facing material is a separately authored file (`curriculum/trainings/<t>/trainer-modules.md`). \"Move it to the maintainer block so the trainer can say it\" is not a routing option; it is deletion. **Time-critical rescues always qualify for body:** where the recovery window closes when the session does (scrollback, undo stack, uncommitted state), body is the only surface reaching the student while the rescue still works. **This clause is SUFFICIENT, not necessary** — the base test stays *plausible failure + non-obvious rescue*, and a rescue that is merely un-hurried still stays in body if it passes that. A judge treated time-criticality as the test on 2026-08-02 and flagged a needed fallback-repo pointer that the base test covers. When the failure is plausible and the rescue is non-obvious (state + one move back, one tight line), it stays in body next to the risk. Route below the fence only what the student doesn't need; live-support/quick-reference routing applies only where those surfaces actually ship. **One below-fence field is the exception: `**View summary:**` ships.** `readExerciseViewMeta()` (`scripts/build-workbook.js`) reads it from the tail AFTER the marker and renders it as the theory handbook's exercise card `<p>`; four customer handbooks carry it. Treat that one line as student-facing body wherever the fence is the routing test — approval gate, compendium surface selection, stale-class sweep planning (`scan-stale-classes.js` routes maintainer-region edits to no class, so it will not stale on a change to shipped prose). One named exception, not a reopened boundary. → `compounded/2026-08-12-student_facing-view-summary-ships-from-below-the-fence.md`"
+  ],
+  [
+   "check_student_facing.md",
+   "6",
+   "Trust Claude's defaults for structure.",
+   "6. **Trust Claude's defaults for structure.** Specify shape only when teaching moment depends on it. Otherwise prompt ends with output destination + *\"show me before saving\"*. One takeaway: ask + destination."
+  ],
+  [
+   "check_student_facing.md",
+   "7",
+   "Q1/Q2/Q3 retro interview is banned at every module. Compound-shape varies per module — never repeat same Debrief.",
+   "7. **Q1/Q2/Q3 retro interview is banned at every module. Compound-shape varies per module — never repeat same Debrief.** Full compound move taught once, in M1, in full. M2+ each get SHORT, DIFFERENT shape exercising different face of compounding: *save-if-earned* (optional, no quota), *sharpen different artifact* (SKILL.md or memory file that just got tested, not rules-file), *no-close* (when mood demands stew — M4-shaped modules), *subtract a rule* (rules-files have half-life), *promote one rule personal→team* (leverage as compound act). Repeating same review→rewrite→report shape across five modules turns loop into ritual it was meant to replace; ships as Scrum-retro ceremony, not compound velocity. Variety teaches more than repetition; move = opportunistic, not slotted. No evidence earned itself → move doesn't fire that module."
+  ],
+  [
+   "check_student_facing.md",
+   "8",
+   "Don't smuggle another module's voice.",
+   "8. **Don't smuggle another module's voice.** Reach for pattern from another module? Ask whether it belongs *here*. M1's joyful creation and M5's long-running mood not interchangeable."
+  ],
+  [
+   "check_student_facing.md",
+   "9",
+   "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
+   "9. **Don't ask student to manually diff or spot-check Claude's output as error-catching.** Reading for emotional payoff (feeling citations land, feeling output sound like company) stays. Error-catching gets replaced with *\"ask Claude to audit its own work\"*. Foreshadow M5/M6 instead of competing. **Every instruction line names an actor AND a mechanism — test runs on body bullets, not only prompt lead-ins (§16), which is why this rule kept missing.** Two shapes slip past because both read as instructions at a glance. (a) *No actor named* — *\"quote the moments and check them\"*: the student doesn't produce quotes, the agent does, and *check them* names no mechanism. A sentence that can be read as either actor hasn't decided, and vagueness is not neutral here; it defaults to manual. **Carve-out — A DIRECT \"YOU DO IT\" IS FULLY ACCEPTABLE (Antti 2026-09-06, wording his).** The ban is on handing the student *error-catching by hand* that the agent should do. It is not a ban on the student doing things, and a bare imperative is the corpus's normal way of saying so. Where the student genuinely performs the step, *\"Extract a `.md` file\"* is correct as written and needs no actor bolted on. Test before filing: **would the agent be doing this if the line were phrased well?** No → the line is already right, whatever its grammar. **And the fix is never more words.** Two cards died on this in one sitting, both declined with the same reason — *\"longer with very little value add\"*, *\"no. Longer.\"* An actor-naming fix that lengthens the line is a worse line; if naming the actor cannot be done by rewriting or cutting, the finding is not worth the words it would cost. Judges flag either shape → accept-with-note, no edit. (b) *Claim where an action belongs* — *\"about 10% of the account misrepresents\"* states a fact about agents in a slot that owes a move; the imperative carries identical content (*\"assume about 10% is wrong and go find which part\"*). Diagnostic per instruction sentence at generation time: **who does this, and through what?** *Student, by hand* → the ban above has already fired, rewrite as delegation. *No answer* → not yet an instruction. **Sibling rule for LOOK-lines: name the OBJECT and the TELL, as do-lines name the actor and the mechanism.** Any line asking the student to read, watch, check, notice or judge owes two things the generator will not supply on its own. (a) **The object** — precisely what is under inspection, and in this corpus that is almost always *the agent's account of X* rather than X. *\"dig into code quality\"* → *\"dig into Claude's view of code quality\"*; *\"read the diff\"* is fine because the diff is the artifact. Getting this wrong promises direct access to a fact where only a generated answer is available, and it is worst on questions the model will always answer yes to (*did you make it better?*). (b) **The tell** — what a good or bad instance looks like, so the student knows what they are looking for. *\"Read the diff\"* alone is a stare; *\"if a line isn't what you'd have written, quote it and say why\"* is a move. **Mechanical source for the tell, and this is the point: it is usually already written, one fence away.** Files carry per-phase failure modes (§47) and leap tests in the maintainer block — a precise list of what goes wrong at each step, filed where no student and no in-room trainer ever reads it. For each failure row, ask: *could the student catch this themselves, in the moment?* Yes → its tell belongs in body; the maintainer row keeps the trainer's recovery move. **Root cause worth remembering: the procedure comes from the design brief, the what-to-notice is tacit practitioner knowledge that does not, so a generator with a slot and no source fills it with something plausible and in-voice** (*whoever has the better argument wins*; *let the read finish*; *the words you reach for are yours*). All well-formed, none load-bearing. Diagnose by asking of every look-line: **what exactly am I looking at, and how do I know when I have found it?**"
+  ],
+  [
+   "check_student_facing.md",
+   "10",
+   "Simulation personas never alone.",
+   "10. **Simulation personas never alone.** Self-study simulations default to Teacher Claude present (personas: Teacher Claude facilitates, Builder Claude executes — `self-study` skill). 7/10 simulation scores usually = facilitator-premium gap facilitator already covers — not real breakage."
+  ],
+  [
+   "check_student_facing.md",
+   "11",
+   "No \"What research says\" callout boxes",
+   "11. **No \"What research says\" callout boxes** (same rule as sales copy — practitioner voice, not consultancy deck). Default to one-line inline citations."
+  ],
+  [
+   "check_student_facing.md",
+   "12",
+   "Student moves stay in conversation with agent.",
+   "12. **Student moves stay in conversation with agent.** Before including student move using editor, terminal command, or file-edit primitive: does this keep student talking to agent, or makes them mechanic? Practitioner primitives (Ctrl+G plan editing, manual git, editor tooling) real + worth knowing, but belong at Debrief as next-tier moves — not exercise's forcing function. Forcing function stays in chat. When Claude Code ships native in-conversation alternative, use that path first."
+  ],
+  [
+   "check_student_facing.md",
+   "13",
+   "Specify which CLAUDE.md layer — every time.",
+   "13. **Specify which CLAUDE.md layer — every time.** `CLAUDE.md` unqualified smuggles social-governance assumption: session-level rules can be written to file actually subject to team PR review. Always name layer: `./CLAUDE.md` (team, PR-gated), `./CLAUDE.local.md` (personal, gitignored), `~/.claude/CLAUDE.md` (user-level, cross-repo). Session Debriefs default to `CLAUDE.local.md`. Team-worthy rules flagged in Debrief summary for student to decide whether to open separate PR — never auto-PR'd."
+  ],
+  [
+   "check_student_facing.md",
+   "14",
+   "No em-dashes. Simple sentences.",
+   "14. **No em-dashes. Simple sentences.** Study material gets read aloud by Teacher Claude and skimmed by tired engineer. Em-dashes create sub-clauses that slow both. Split into two short sentences. Use parentheses only when aside = true parenthetical (role, origin, clarification). Extends site em-dash ban (`check_sales_copy.md §9`) to all student-facing curriculum, including supplementary take-home reference like cookbook."
+  ],
+  [
+   "check_student_facing.md",
+   "17",
+   "Section headers use command verbs when section is about doing something.",
+   "17. **Section headers use command verbs when section is about doing something.** *\"Bring to M1\"* not *\"What to bring to M1\"*; *\"Pick the repo\"* not *\"The repo\"*; *\"Unzip the content folder\"* not *\"Content folder\"*. Applies especially to exercises and Debriefs (subsection headers + callouts) — any section where student acts. Lectures + reference sections may use declarative noun-phrase headers (*\"Why plans fail,\"* *\"The four layers\"*) since reader's job = understanding, not doing. Test: section body tells student to do something? Yes → lead header with verb. The student is a header's only actor — Claude does not act in a header (*\"Read the shapes\"*, never *\"Read the shapes Claude proposes\"*; Antti veto 2026-09-02: the body names Claude's part, the header names yours). → `compounded/2026-09-02-student_facing-headers-never-claude-as-subject.md` **The ban is on the PRODUCT NAME in the header, and *the agent* is the sanctioned form (Antti 2026-09-05, wording supplied: `## Ask what the agent skipped, and why`).** A header may carry the agent in an embedded clause where the student still owns the main verb; what it may not carry is *Claude*, which puts a product where the student's work belongs and reads as the vendor's page rather than theirs. Swept in AE101 at that ruling: orient-and-introspect ×2, walk-and-send-off. Do not file on *the agent* in a header, and do not \"fix\" one back to Claude."
+  ],
+  [
+   "check_student_facing.md",
+   "18",
+   "Inline links use target's title, never filename.",
+   "18. **Inline links use target's title, never filename.** Referencing another curriculum surface in student-facing prose (lecture, exercise, reference page, supplementary) → link text = target's H1 title or sentence-case paraphrase. Format: `[MCP and connectors](trainings/agents-101/reference/mcp-and-connectors.md)`. **This rule governs link TEXT, not path form** — path form is `curriculum/module-shape.md` § *Cross-doc links*, which forbids depth-counted `../` prefixes in source. The example above carried one until 2026-08-13 and a writing judge read it as this rule prescribing relative paths, filing a TODO against a link that was already correct. An illustrative example is read as normative; keep it obeying every rule it is not about. Never `[reference/mcp-and-connectors.md](...)` and never code-span backtick path `` `reference/mcp-and-connectors.md` ``. Filenames = implementation detail; titles = what reader recognises. Code-span paths in student-facing prose read lab-speak + miss link affordance entirely."
+  ],
+  [
+   "check_student_facing.md",
+   "20",
+   "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
+   "20. **Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.** Some curriculum words collide with Claude Code primitives sharing same word (*memory* — the three-block knowledge the student authors in `observations/` vs Claude Code's auto-memory at `~/.claude/projects/<project>/memory/`, the `/memory` one; the `observations/` rename 2026-05-26 took the folder out of the collision, but the *concept* \"memory\" still appears in the closing lecture; *skill* — team-kit skill vs installed Claude Code skill; *rule, plan, agent, subagent* likewise). First time student writes to or authors contested thing, disambiguate in one line — name both, say who writes each. Don't re-earn every module; do earn on first authored write."
+  ],
+  [
+   "check_student_facing.md",
+   "21",
+   "LLM-vs-agent-vs-Claude vocabulary discipline.",
+   "21. **LLM-vs-agent-vs-Claude vocabulary discipline.** Use *LLM* when topic is thinking — reasoning, drift, framing, non-deterministic cognitive-like behaviour. Use *the agent* when topic is acting — files written, tools called, execution, multi-step autonomous work. Use *Claude* for specific product, version grounding (*claude-opus-4-7*), addressee of prompt (*\"Ask Claude to...\"*), or UI surface reference (*\"in Claude Code, Shift+Tab...\"*). Default to specific word. Vendors conflate chatbot and agent on purpose; curriculum corrects conflation, not confirms. **Concrete contextual split for body prose:** autonomous work → ***the agent*** (default — *\"the agent reviews the session, writes one named pattern\"*); invocation/addressee → ***Claude*** (*\"Ask Claude to review the session\"*); product/UI surface → ***Claude*** / ***Claude Code***; thinking/drift → ***the LLM***. Agency framing load-bearing — students learn agent IS agent partly through how curriculum speaks about it. **Active-stance override (2026-08-30, Antti):** say ***the agent*** whenever the harness+LLM takes on an active stance — even inside invocation/addressee grammar. Calibration pair: *\"Ask the agent what's weakest about its own output\"* stays **agent** (self-critique = active stance; do not swap to Claude on the addressee test alone) vs *\"Ask Claude to review the session\"* / *\"ask Claude to use the AskUserQuestion tool\"* stay **Claude** (plain service ask, no stance). Addressee test yields to this override when both apply. Audit signal: student-facing file with body Claude-count ≫ agent-count (e.g., 10:0) = assistant-shaped framing in agent-shaped curriculum. Applies to student-facing body AND authorial surfaces (strategy docs, compendium rules) because third-person paraphrase drifts into body on copy-paste."
+  ],
+  [
+   "check_student_facing.md",
+   "21b",
+   "Session / task / run split (all trainings).",
+   "21b. **Session / task / run split (all trainings).** Canonical: `curriculum/vocabulary.md` § The work. *Session* = one sitting of the agent on one task (law: **one session, one task** — never the converse; a task may take several sessions). *Task* = the work item — the task lands, the session sits; prefer the concrete noun. Noun-run for the agent sitting = banned in student-facing body; *run* survives only as test/CI/eval executions, the completed delegated execution read from outside (*the un-packaged run*, *a run you weren't watching* — execution-record sense, carve-out in `vocabulary.md` § The work), verbatim quotes, artifact/path/branch names, *long-running* adjective. Verb-run unrestricted. Diagnostic: what lands? the task. What opens fresh? a session. What does CI do? a run. In it → session; reading its return → run."
+  ],
+  [
+   "check_student_facing.md",
+   "22",
+   "No time-of-day anchors in body prose.",
+   "22. **No time-of-day anchors in body prose.** Single module can run any time of day with any gap to next — back-to-back same day, week apart, 2-day intensive, 6-week format, whatever customer's cadence. Strip *tomorrow / overnight / this morning / tonight / next morning / yesterday / last night* wherever they appear in student-facing body. Replace with module names (*at M5*, *M5 opens with the return when the next slot lands*), session-relative phrasing (*while you step away*, *when you come back*, *now*), or plain references (*here*, *this run*, *the previous send-off*). Mechanics being described (laptop awake, plugged in, walk-away launches) preserved; only time-of-day phrasing changes. Trainer-only docs + maintainer blocks exempt. Power-settings jargon (*\"prevent sleep on power\"*) = false positive (macOS setting name)."
+  ],
+  [
+   "check_student_facing.md",
+   "23",
+   "Reflection beats stay invisible in flow.",
+   "23. **Reflection beats stay invisible in flow.** Don't label reflective moment with self-aware pedagogy header. Banned: *\"Pause before you promote,\"* *\"Meta-moment,\"* *\"The reflection beat,\"* *\"Step back,\"* *\"Moment of truth,\"* or any variant announcing *\"reflection is happening now\"*. Ban extends to **sentence-form contemplative-pause prefixes** too — *\"sit with X for a minute,\"* *\"let it land,\"* *\"take a moment to,\"* *\"give yourself space to,\"* *\"breathe,\"* *\"be present with,\"* *\"pause and reflect,\"* + similar wellness/coach-register openers. Question or action that follows prefix IS reflection beat; prefix = theatre, costs engineer-trust, signals to student that curriculum doesn't trust action to land on its own. Acceptable: natural transition sentence with command verb — *\"Before Phase 3, ask Claude to contrast what you just did with the classic way.\"* Prompt + its action carry reflection; wrapper announcing it imports SAFe-coach register. Adjacent to but distinct from ritual/ceremony/practice-as-noun ban (word-level): this = structural ban on pedagogy-aware framings, whether section headers OR sentence-shape transitions."
+  ],
+  [
+   "check_student_facing.md",
+   "24",
+   "No meta-ask when student has already decided.",
+   "24. **No meta-ask when student has already decided.** Student has already decided or written something down → don't have Claude ask them what they decided. Student states; Claude proposes or acts; student steers if proposal misses. Meta-loops — student tells Claude to ask student something student already knows — read as pedagogy theatre + break stay-in-conversation rule (#12) by inserting paper/scratch-note step between decision and action. Symptom: prompt reads *\"Ask me which one — ask me to name it in one sentence\"* when exercise body above already had student pick + write it down. Fix: drop meta-ask; student names in chat, Claude proposes next step, student steers. Student steers with judgement; Claude carries technical taxonomy (e.g., mitigation shape from scope/split/filter/gate/review) — student shouldn't have to hold vocabulary on top of decision."
+  ],
+  [
+   "check_student_facing.md",
+   "25",
+   "`.md` is default file type for student artifacts across curriculum.",
+   "25. **`.md` is default file type for student artifacts across curriculum.** Applies to every prompt saving text, notes, summaries, plans, dashboards, retros, eval observations — anything not determined by alternate native format (game = `.html`, image = `.png`, dataset = `.csv`, code = its own ext). Don't earn term — `.md` lands ambient by repetition. Don't substitute `.txt` (signals notes-app) or `.docx` (signals office-suite). Applies retroactively across Agents 101, AE101, claude-basics, all future training variants. Diagnostic at generation time: prompt with *\"Save it as `<filename>`\"* → default `.md` unless artifact's purpose mandates otherwise."
+  ],
+  [
+   "check_student_facing.md",
+   "26",
+   "Cut NVA: true but not moving student forward.",
+   "26. **Cut NVA: true but not moving student forward.** `NVA` = non-value-add. Editor shorthand for information correct but not changing what student understands/decides/does/notices next. Common NVA: implementation detail before point-of-use, administrative aside, accurate caveat not affecting golden path, extra source trivia, maintainer reasoning leaking into body. Fix by cutting, or moving below `<!-- maintainer -->` if trainer needs it. Mild generation rule: before adding detail, ask which next sentence/prompt/artifact it makes better. None → NVA. **Applies to edits, not only first-draft prose:** when adding a callout/note/line to an existing file, run NVA on each clause you ADD — the mechanic or rationale you're tempted to include is usually the NVA. A request for *a note* wants the point named, not the mechanism explained; lean toward the user's near-final wording rather than expanding it. **Run the NVA test BEFORE the truth test.** A doubtful claim invites verification, and verifying it is wasted work when the claim was never earning its slot: *\"`gh`, an official CLI pre-installed on most developer machines\"* is NVA whether or not it is true, because the student installs it either way. Order the two questions — does this change what the student does? No → cut, and never mind whether it is accurate. Yes → then check it. Symptom of the wrong order: offering to go and confirm a sentence instead of asking what it is for. **Fastest NVA screen, added 2026-08-14: is this obvious to a working engineer?** Yes → cut, whatever else it is doing. Catches the clauses the value question misses because they *feel* like meaning: the recap naming where a closed ticket becomes visible, the reassurance that broken software should be fixed before continuing, the destination of a link the heading already names, the sentence explaining that a fix happens once. This screen runs on the audience's competence, never on their assumed rung — it licenses cutting what any engineer knows, and licenses nothing about *\"a senior would already know\"* or *\"at your scale\"* (§1, ability-neutral framing). Obvious-to-engineers is a reason to delete a line, not a reason to write one that seats the student on a tier."
+  ],
+  [
+   "check_student_facing.md",
+   "27",
+   "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
+   "27. **Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.** Claude prints artifact in chat (scoreboard, table, summary, list) → student is already reading it (that's what they're doing in front of agent). Body prose like *\"Read it,\"* *\"Look at it,\"* *\"Study the table,\"* *\"Notice the row labelled X\"* tells student to do what they're already doing. Reads patronizing; sibling of #3 (no narrating student state) specific to chat-print moments. Body's job after chat-print = next move (contrast, question, action), not narration of read. Carve-out: body line naming *specific column* or *specific row* for next decision fine when row-name load-bearing for what follows. Ban on generic *\"read it\"* with no follow-on direction. **A judgement verb is not a read (Antti 2026-09-14):** *\"Check what Claude proposes. Push back if…\"* stays — *check* names the act the push-back rests on, where *read* named what the student was already doing; when the fix for a read-it is tempting, ask whether the beat wants a check verb before cutting."
+  ],
+  [
+   "check_student_facing.md",
+   "28",
+   "Forward-callout closer: student as grammatical subject.",
+   "28. **Forward-callout closer: student as grammatical subject.** Closing sentence of any forward-looking aside or callout — anything gesturing at what student will find/do/notice across rest of training — run **subject test**: who is grammatical subject? Four failure modes: (a) training/curriculum/system as subject (*\"the training is full of X,\"* *\"this course covers Y\"*) → value-prop leak, salesy. (b) imperative verb with student as implicit object (*\"watch for X,\"* *\"look out for Y,\"* *\"notice when Z\"*) → coach-register, peer-flat violated. (c) generic *they*/*them* with no anchor → passive scan-mode. (d) **audience-shift/role-gating** — addresses role student doesn't inhabit (*\"if you came in as a CTO,\"* *\"for the staff engineer reading,\"* *\"if you're an executive...\"*). Subject test passes (\"you\" preserved) but \"you\" = different-you. Common when module body links to supplementary/reference/external whose stated audience differs from host module's. **Fix shape:** frame forward from student's own arc, not by addressing different role. *\"if you came in as a CTO and want to scale this\"* → *\"when this loop has to scale past you.\"* Linked surface still lands in hands of whoever needs it; audience integrity preserved on host file. Right shape across all four: student as subject of declarative claim about what's true (*\"You find them,\"* *\"You earn them,\"* *\"You catch the pattern,\"* *\"when this loop has to scale past you\"*). **Inversion of rule 3** (Sutherland-flip OFF student onto artifact) — here flip is ONTO student as actor of future thing. Same root: equals-not-pupils."
+  ],
+  [
+   "check_student_facing.md",
+   "29",
+   "Operational reminders live at moment of use, not only where introduced.",
+   "29. **Operational reminders live at moment of use, not only where introduced.** Per-module operational settings (thinking-effort level, model choice, mode tag, slash-command shortcut, worktree path convention) stated at TWO surfaces: (1) prework or training-architecture as default, (2) top of each module that uses setting, as one-line reminder. Default-in-prework does not preclude per-module reminder — students open fresh sessions at module open + operational state isn't carried in head from prework file read days earlier. Restating = affordance, not redundancy. Diagnostic before DRY-ing out per-module reminder: at moment student opens module's session, do they need to know setting? Yes → restate (short blockquote: setting + back-reference to prework default; or short override with reason if module overrides)."
+  ],
+  [
+   "check_student_facing.md",
+   "30",
+   "Echo the training's theory spine before inventing a synonym.",
+   "30. **Echo the training's theory spine before inventing a synonym.** Drafting or revising any body sentence: pull vocabulary from the training's own earned concepts first — the loop, the map, gates and checks, steering, drift, send-off and return, the experiment — and reach for a neutral synonym only when no house frame fits. A house echo is precise AND re-encodes the model (dosage, `check_pedagogy.md` §9b); an invented synonym is one more word the student holds beside the theory. Example: *how well your checks guide it* beat both *the checks behind it* and any neutral rewrite because it is the navigation frame speaking. Boundary: only frames earned at that arc position (§2/§14 still rule); prompts and maintainer blocks exempt."
+  ],
+  [
+   "check_student_facing.md",
+   "31",
+   "Name the artifact, not the act.",
+   "31. **Name the artifact, not the act.** Directing a message to the agent in body prose: the prompt is the noun, the physical act stays unnarrated — *a \"continue\"-prompt is usually enough*, never *typing continue* / *saying continue* / *tell it to continue*. Act-verbs cast the student as an operator pressing keys; the prompt-noun treats the utterance as an artifact in the training's own vocabulary (prompts are already the house noun for everything the student sends). Grep tells: `typing `, `type in`, `say to Claude`, `tell it to` in body prose around quoted message content. **Carve-out (Antti 2026-09-03): a literal trigger string the fence itself listens for.** *\"More words to say what is already obvious.\"* The rule is aimed at filler whose wording does not matter — *continue*, *go on* — where the prompt-noun costs nothing. When the exact phrase is load-bearing (`push-back-on-the-plan`'s *\"Say lock it in.\"*, against a fence reading *Don't touch the plan file until I say 'lock it in.'*), the act IS the information: the student is scanning for what to type, and the noun form buries the phrase mid-sentence to state something the sentence already showed. Do not re-raise where the quoted string appears verbatim in a fence. **Widened (Antti 2026-09-03, `read-your-stack.md`): *say* / *tell* + a quoted utterance is the training's established prompt trigger, and the noun *prompt* is not owed beside it** — *\"no need to say prompt; say and tell have been established as prompt triggers way earlier.\"* So *say \"tell me what you've found so far\"* and *say \"give me this in HTML\"* stand. What the rule still catches is the act-verb around FILLER whose wording does not matter (*type continue*, *tell it to continue*, *just say go*): there the decision verb replaces the utterance (*If it asks, approve.*), not a prompt-noun. Test: does the quoted text carry the ask? Yes → the verb is fine. No quoted text, or filler → recast."
+  ],
+  [
+   "check_student_facing.md",
+   "32",
+   "Name the outcome; don't walk a professional through trivial mechanics.",
+   "32. **Name the outcome; don't walk a professional through trivial mechanics.** This audience installs CLIs, logs into things, and follows browser auth flows every week of their working lives. Writing the recipe out (*\"run `gh auth login`, follow the browser flow, then `gh auth status` to confirm it took\"*) is NVA (#26) wearing a helpful hat, and it reads as talking down (#1) — the student who needed it will ask, and everyone else has just been told how to log in. Write the state you need instead: *\"Make sure your Claude Code can operate the GitHub CLI.\"* **Second half, and the reason the short version is not just shorter but righter: if the agent can do the setup, say so rather than writing a terminal recipe at all** — *\"Ask it to install `gh` if it isn't there\"* is one clause, keeps the student in conversation with the agent (#12), and survives every OS and package manager without a matrix. Diagnostic before writing any setup instruction: could a working engineer do this from the outcome alone? Yes → state the outcome. Could the agent do it? Yes → hand it to the agent. Only what fails both earns steps. Watch the adjacent temptation to write an escape hatch for students the prerequisite doesn't fit (*\"if your code lives somewhere other than GitHub…\"*) — a prerequisite the maintainer has set is a decision, and hedging it in body is overriding it."
+  ],
+  [
+   "check_student_facing.md",
+   "33",
+   "The curriculum does not narrate itself — subject test, then deletion test.",
+   "33. **The curriculum does not narrate itself — subject test, then deletion test.** The highest-yield NVA in this corpus is the training describing its own shape to the student. **Subject test:** what is the sentence about? The student's repo, agent, task, artifact, decision → keep. A module, the training, an exercise, a later beat, the arc → arc-positioning, cut. It survives review because it reads as orientation and orientation feels generous, but the student came for the work; the author is the only person who finds the arc interesting. Five landed cuts, one session (2026-08-12): *\"A later module commits your working tree as a fixed starting point…\"* (also a duplicate of the module that owns it) · *\"The first move outside the repo\"* (trailing an LO) · *\"Everyone names a trick first; the training picks up from there.\"* · *\"Together they map the window you steer for the rest of the training.\"* · *\"…is often the right thing\"*-style positional markers under a lede that already stated the ordering. Distinct from #26, which catches maintainer *reasoning* leaking into body — this catches maintainer *cartography*, a different leak with a friendlier face. **Boundary:** the canonical signposting sections exist to do exactly this and are exempt — `## What You'll Learn`, `## Connections`, `## Bridge` / `## Next`, `## Prework`, `**The point:**`. **`## Pre-reads before Module N` does NOT inherit `## Prework`'s exemption (Antti, 2026-08-23).** A pre-read annotation says what the reading is about and stops; which later module cashes it is cartography like anywhere else. Evidence at the ruling: of AE101's three pre-reads sections, exactly one narrated a later module — the exemption would have blessed the outlier and called it convention. Arc-positioning is their job. It is nobody else's, and an LO is not one of them: an objective states a capability and stops. **`## Big Idea` is exempt only for what the module EARNS, never for where it SITS (narrowed 2026-08-12, Antti-directed).** It is the section most likely to duplicate: `## What You'll Learn` states the same arc immediately below it in the more precise register, so prose that positions rather than names is the duplicate, not the summary. Spec + ~30-word ceiling + the below-the-fence relocation → `curriculum/module-shape.md` § Big Idea. The blanket exemption is why four sentences of M2's module summarising its own lecture survived seven judges — this is [[2026-08-12-student_facing-a-carve-out-is-scoped-to-the-rule-that-grants-it]] recurring inside the rule that wrote it. **Where the fact is genuinely needed, it usually already lives on the trainer surface** — two-for-two on 2026-08-12, both cut facts were already in `trainer-modules.md`, stated better and actionably. Check there before assuming a cut deletes knowledge. **Deletion test (revision-time mechanic, use it on every summarising or orienting sentence):** delete the sentence and read its neighbours together. They join cleanly → it was NVA, leave it out. #26's *\"which next sentence does this make better?\"* fires at generation; this fires at revision, which is where these are actually found (same firing-moment split as `check_writing.md` §3 and §14). **Paragraph-scale drumroll:** the closer that can only restate is `check_writing.md` §19b one level up — it hides better at paragraph scale because there it looks like structure rather than filler. Tell: the sentence sits at the END of a passage that already landed, and adds no noun the passage lacked. **The subject test has a predicate leak (2026-08-23).** *\"Your file … before the training shows you where the rest goes\"* passes on subject (the student's artifact) and fails on predicate (a later module's job). Any clause promising what a later beat will do is cartography however the sentence starts, and it is a cheque that beat must cash. State the present fact; let the later module do its own work. **Carve-out — A FORWARD REFERENCE THAT IS THE REASON FOR THE STEP IN HAND STAYS (Antti 2026-09-06).** Cartography tells the student where they are; this tells them why they are doing the thing they are doing right now, and that is not decoration. Canonical case: `set-the-markers-send-it-off.md`'s *\"and the next module forks from the local commit\"* — Antti: *\"It informs why the commit is made. That is not obvious.\"* The commit has no visible payoff inside its own exercise, so without the clause the student is following an instruction whose point arrives a module later. Test before filing: **delete the clause and ask what the student loses.** Only their place in the arc → cut, as the rule says. The motive for an action they are taking now → keep, and the deletion test is answering a different question than the one that matters. The tell for the cuttable kind is that the step already justifies itself and the clause only adds where it sits. → `compounded/2026-08-23-student_facing-later-module-predicate-is-still-cartography.md`"
+  ],
+  [
+   "check_student_facing.md",
+   "34",
+   "Four sharing strategies (Agents 101 M7 canonical) — use verbatim.",
+   "34. **Four sharing strategies (Agents 101 M7 canonical) — use verbatim.** (1) **Share the context** — teammates get your `memory/`, `sources/`, `CLAUDE.md` and build their own agents on top. (2) **Share a skill** — one scoped capability extracted. (3) **Share the output (push)** — scheduled deploy; the output lands where the team already looks. (4) **Share an interface (pull)** — Slack bot / Teams @mention / web form / endpoint; teammates invoke on demand. *\"Share the whole agent\"* is a vendor pitch and is NOT on the list. Text framing M7 as \"package your agent for others\" violates strategy."
+  ],
+  [
+   "check_student_facing.md",
+   "35",
+   "Agents 101 M2+ Debrief — canonical shape.",
+   "35. **Agents 101 M2+ Debrief — canonical shape.** Q1/Q2/Q3 retro is forbidden in new content (#7); M1 ships it as a named exception, never ported forward. Shape = **review → rewrite in place → report**: read the rules file, scan the relevant artifact folders, look back over the session (which rules did we lean on, which did we work around, which never came up, where did the output wobble) → **rewrite the file, integrate don't append** (sharpen weak rules, add what's missing, remove what turned out wrong, NO \"retro notes\" section) → report in 3–5 lines what was added, sharpened, removed, and why, grounded in specific moments from the session. Per-module variation = the rules file, the artefact folders, the failure modes to look for; the shape holds. → `compounded/2026-04-25-pedagogy-compound-shape-varies-per-module.md`."
+  ],
+  [
+   "check_student_facing.md",
+   "36",
+   "Trust the prompt over the scaffold.",
+   "36. **Trust the prompt over the scaffold.** Working in Claude Code with a populated dir → prefer a well-crafted prompt to a pre-built scaffold. Students *produce* the agent / rules / structure through the exercise; they don't unzip it. A scaffold earns its keep only as a trainer-authored artefact the student wouldn't produce (M4 compliance skills; the M2 initial empty `sources/` `memory/` `agents/` folders). Rule of thumb: scaffold contains text the student should write in their own voice → wrong, convert it to a prompt."
+  ],
+  [
+   "check_student_facing.md",
+   "37",
+   "Mood is a design constraint, not a garnish.",
+   "37. **Mood is a design constraint, not a garnish.** Per-module `Mood (deliberate)` is authoritative in `bosser-strategy:content-strategy.md` — read it there, don't cache a copy. Operational: check the CURRENT and NEXT mood before writing any Debrief / Close / Bridge, because each mood feeds the one after. *\"Does it feel right to be uncertain here?\"* is valid only when the target mood is unease. **No verification / check-the-URL / fix-the-bug steps in sustained-doubt modules** — checking resolves doubt, and the doubt IS the curriculum. Don't front-load a later module's rescue mood into an earlier doubt module. Each module also has a signature wrong-edit that kills its mood (joy → tech warm-up; compounding → tool setup; unease → resolving the doubt; deeper unease → security tidied/solved; rescue → premature rescue; leverage → eval-as-compliance; generosity → sharing-as-governance; awe → graduation ceremony); name the target mood in one sentence before drafting, and check the draft against that module's wrong-edit. Scoring scale → `curriculum/evals/simulation.md` § *Mood scale*."
+  ],
+  [
+   "check_student_facing.md",
+   "38",
+   "Exercise headers pass the build-squint test.",
+   "38. **Exercise headers pass the build-squint test.** Header set ALONE → a cold reader reconstructs what the exercise BUILDS. Drill carve-out: where the MOVE is the deliverable (orient-and-introspect, fix-tests-first, push-back-on-the-plan), headers name the move plainly — \"no artifact\" is a lens mismatch, not a failure; the failure axis on drills is jargon/opacity. H1 names the construction/deliverable, never the process; title rename cheap, slug rename = graph op, separate pass. Demote technique names below the build they serve. Format + fan-out spec: `theory-plan.md` § Re-assembly spec; exemplar `curriculum/exercises/diagnose-and-resend.md`. Validated across all 12 AE101 exercises 2026-07-04 (avg blind-squint 3.9/5 vs exemplar 4.0). → `compounded/2026-08-31-student_facing-build-squint-exercise-headers.md`"
+  ],
+  [
+   "check_student_facing.md",
+   "39",
+   "Self-study is invisible in the training flow.",
+   "39. **Self-study is invisible in the training flow.** The `/self-study` facilitator (Agents 101) is optional, most learners never use it → module, lecture, exercise and prework body never names it: no \"self-study\" path, no Teacher Claude, no \"self-study readers skip\", no companion in a list of shipped files. Lives only in its own skill + maintainer blocks. AE101 has no self-study at all. Hard grep above the fence: `self-study`, `Teacher Claude`. Carve-out: `claude-basics` \"bonus self-study\" = optional async homework, a different thing."
+  ],
+  [
+   "check_prompts.md",
+   "1",
+   "No placeholders inside fences.",
+   "1. **No placeholders inside fences.** `[BRACKETS]`, `[path from step 1]`, `[your task]`, `[feature area]` → violation. Fixes: (a) prompt tells Claude to ask for value; (b) prompt references \"task we just scoped\"/\"file you just created\" + scrollback; (c) student pastes value as separate step; (d) **open-hook (preferred for student-supplied input)** — internal action paragraph first, single open-hook line + colon last, all in ONE fence. Student pastes, cursor lands after colon, types/pastes input, sends. Lead-in (rule 2) still fires + names fill-in slot (\"Ask Claude to write the failing test, fix root cause, show diff. Drop your bug after the colon.\"). No pre-prompt \"paste this into chat\" instructions. **Qualifier:** open-hook ONLY when student input genuinely required. Claude has context to propose (scrollback carries artefacts; auto-load reads CLAUDE.local.md, git history, previous-phase output) → NO open-hook. Default: Claude proposes → student steers via push-back. Two diagnostics: (a) Claude write plausible value cold? Yes → no hook. (b) Student has value MORE concretely (bug they live with, task they own, feature name)? Yes → hook right."
+  ],
+  [
+   "check_prompts.md",
+   "2",
+   "Every prompt block: one-sentence action lead-in.",
+   "2. **Every prompt block: one-sentence action lead-in.** Before `**Prompt**` label, one sentence with command verb summarizing what prompt does. <20 words. *\"Ask Claude to read the framing, screen three candidate bugs, confirm repo is ready.\"* Prompts run before fully read; lead-in = skim-cue. Mechanical narration (\"Now paste this\") still banned — lead-in is semantic."
+  ],
+  [
+   "check_prompts.md",
+   "3",
+   "Canonical shape — lead-in, label with destination, blank line, fence.",
+   "3. **Canonical shape — lead-in, label with destination, blank line, fence.**"
+  ],
+  [
+   "check_prompts.md",
+   "4",
+   "Installed Skills invoke by name, never path.",
+   "4. **Installed Skills invoke by name, never path.** Skill at `~/.claude/skills/<name>/SKILL.md` or `.claude/skills/<name>/SKILL.md` → say *\"invoke the `<name>` skill on…\"* — no path. Auto-discovery works; path = noise/breakage. Not installed yet → install step at prework (agentic — Claude writes files), not path in invocation. Symptom: `content/skills/` or any folder path inside fence."
+  ],
+  [
+   "check_prompts.md",
+   "5",
+   "Chain by back-reference + deterministic path, never invented alias.",
+   "5. **Chain by back-reference + deterministic path, never invented alias.** Prompt chains on file an earlier prompt wrote → back-reference anchor (\"the file you just created at `notes/X.md`\") AND deterministic path. Without anchor, filename drift → silent-create second file. Without deterministic path, chain isn't harness-testable. Prefer scrollback-review chains (\"review this session end-to-end\") when possible. Fuzzy fallbacks (\"if file doesn't exist, create it\") fine for first-create intent; harmful as filler papering over upstream drift."
+  ],
+  [
+   "check_prompts.md",
+   "6",
+   "Chained-prompt isolation — don't leak downstream pipeline.",
+   "6. **Chained-prompt isolation — don't leak downstream pipeline.** Exercise chains P2 → P3 → P4 → each prompt checked: leaks what comes next? Planner told *\"grill is next\"* either pre-grills (stealing grill's job), defers hard choices (\"grill will catch it\"), or invokes named skill during planning. All three collapse the contrast = teaching moment. Each prompt produces its output as if downstream didn't exist, unless downstream awareness pedagogically load-bearing."
+  ],
+  [
+   "check_prompts.md",
+   "7",
+   "No session-resets mid-phase.",
+   "7. **No session-resets mid-phase.** Before offering session-reset (`/clear`, \"start a new session\", \"open a new conversation\") inside phase prompt → check whether downstream phase references \"this session\", \"the task we scoped\", \"what we just discussed\", scrollback-dependent phrases. Yes → remove reset option. Use subagents (Agent tool) for isolation — fresh context preserving parent scrollback."
+  ],
+  [
+   "check_prompts.md",
+   "8",
+   "Multi-sample methods need structural enforcement.",
+   "8. **Multi-sample methods need structural enforcement.** Detection/eval depending on multiple independent samples (self-consistency, majority vote, ensemble, regeneration-diff, agents-101) → prompt structurally enforces N-independent-runs (name N, name independence — separate subagents with blinded/differently-framed context, name variance mechanism). Else method collapses to self-audit + single-shot deterministic, mechanically indistinguishable from simpler methods. Symptom: *\"regenerate key claims and diff against original; flag what varies\"* with no N or independence — deterministic agent re-reads and reasons about likely variance, never measures. Fix: spawn N parallel subagents with blinded contexts + explicit framings, collate with labelled gradient (STABLE/CONTESTED/FABRICATED at N=4)."
+  ],
+  [
+   "check_prompts.md",
+   "9",
+   "Markdown shout (`",
+   "9. **Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.** Pasted prompts render literal asterisks in input. Author optimizes for rendered curriculum site; student reads in Claude Code input/scrollback where markdown does NOT render. Inside fence: bullets (`- one per line`), numbers (`1./2./3.`), backticks for paths/code, plain emphasis via word choice. Outside fence (recap site): bold/italic render fine. Line = fence boundary."
+  ],
+  [
+   "check_prompts.md",
+   "10",
+   "Runtime-fork prompts: paired divs, shared chip.",
+   "10. **Runtime-fork prompts: paired divs, shared chip.** Agents 101 dual-runtime (Cowork/Code Desktop/Code CLI). Prompt body must differ across runtimes → wrap two complete prompt blocks in paired `<div class=\"rt-code\">` / `<div class=\"rt-cowork\">` (or narrower `.rt-cli` / `.rt-desktop` only where install affordance differs). Both forks keep canonical `**Prompt** *(Claude Code)*` chip — renderer auto-swaps destination per active runtime; writing `*(Cowork)*` short-circuits swap. Forks differ ONLY in runtime-mechanical content (subagent ↔ agent, plan-mode-as-feature ↔ plan-as-ask, four-session-open phrasing). Pedagogical content identical. Prefer one shared lead-in; per-fork lead-ins only when runtime mechanic genuinely changes what prompt asks. Class semantics: `.rt-cli` / `.rt-desktop` / `.rt-cowork` / `.rt-code` (CLI AND Desktop — common Code-vs-Cowork fork). **Two-way vs three-way:** per affordance, ask \"differs within Code (CLI vs Desktop), or only at Code/Cowork seam?\" Two-way `.rt-code` / `.rt-cowork` for Code/Cowork-seam (vocabulary, plan mode, session-open, file-sharing/concurrent). Three-way `.rt-cli` / `.rt-desktop` only when invocation differs within Code (file paths typed vs UI clicked — M4 plugin install). Fires only on Agents 101 / future dual-runtime. AE101 Code-only, ignores pattern."
+  ],
+  [
+   "check_prompts.md",
+   "11",
+   "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+   "11. **Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.** Forking for runtime whose users have less ambient terminal/CLI fluency to fall back on (Cowork in Agents 101) → runtime-mechanical fork needs MORE mechanical scaffolding, not less. Cowork users picked Cowork because terminal plumbing = friction; no fallback fluency. Install affordances, multi-session patterns, walk-away mechanics each need explicit guidance in Cowork fork. Symptom: Cowork fork shorter than Code fork. Fix is NOT more `.rt-cowork` spans inside Code-shaped prose; Cowork-native paragraphs at runtime cliffs (M3 four-session open, M4 Save-plugin install, M2 plan-as-ask). No-terminal user ≠ terminal user with terminal hidden."
+  ],
+  [
+   "check_prompts.md",
+   "12",
+   "Append-vs-integrate — name integration mode on regeneration with new context source.",
+   "12. **Append-vs-integrate — name integration mode on regeneration with new context source.** New context source added to regeneration → default Claude behavior is APPEND new source as new section, not rewrite through it. *\"Add the brand voice file and regenerate\"* → homepage with new *Brand voice* section appended at bottom, not voice-shaped paragraphs. Recurring across modules (voice-shaping, brand-rewrite, persona-rewrite, mood-rewrite, audience-shift). Name integration mode. Integration: *\"rewrite using X as voice-shaping context\"*, *\"the file informs HOW you write, not WHAT you add\"*, *\"voice visible in every paragraph, not in new section\"*. Append: *\"add new section titled Y, drawing from X\"*. No middle ground."
+  ],
+  [
+   "check_prompts.md",
+   "13",
+   "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+   "13. **Citation discipline — extend cite-or-flag scope + quote supporting sentence.** Two failure modes, same RLHF root, same fix-shape. **(a) Citation-gap asymmetry:** generic *\"cite or flag\"* lands asymmetrically — Claude cites specific facts (revenue, named entities, dates) + skips conventional-wisdom claims (industry truisms, *\"enterprise buyers prioritize integration\"*) as common knowledge. Extend scope: *\"cite-or-flag applies to every factual claim including conventional-wisdom + industry-truism; if you can't cite, mark [UNVERIFIED CONVENTIONAL WISDOM]\"*. Or design the gap as teaching moment (student locates uncited claims). **(b) Citation cargo-cult:** citations format correctly + fraction point to files that don't contain cited claim. Format-correctness hides substance-failure. Sentence-level integrity check: *\"for each cited claim, quote the sentence in cited file that supports it; if you can't find one, mark [CITATION UNSUPPORTED]\"*. Quote-the-sentence forces real retrieval; format-only fakeable."
+  ],
+  [
+   "check_prompts.md",
+   "14",
+   "Niceness tax — name the edge or pin the line on regeneration.",
+   "14. **Niceness tax — name the edge or pin the line on regeneration.** Default Claude regeneration drifts toward generic-virtue / collaborative-leadership / partnership-driven language. Anti-positioning paragraphs → collaborative-leadership pap; hate-flips → virtues. Invisible at first read (grammatical and competent) — only visible against what edge was DOING strategically (differentiation, refusal, anti-positioning). Regeneration with deliberate edge → name it: *\"keep the edge — don't soften stances. The hate-flip is doing pedagogical work; losing it is regression\"*. Or pin lines: *\"these sentences are non-negotiable; rewrite around them, not through them\"*. Default *\"regenerate\"* erases edge; discipline lives in prompt."
+  ],
+  [
+   "check_prompts.md",
+   "15",
+   "Question-dump default — `in turn` too soft; two legal shapes.",
+   "15. **Question-dump default — `in turn` too soft; two legal shapes.** Prompt asks Claude to walk student through sequence of questions → default Claude reads *\"ask these questions in turn\"* as *\"here are the questions, in order\"* and posts all in one message. Student answers two, skims rest; rhythm collapses to batch-form. Pick one: **(a) Structural prompt** inside fence: *\"ask one question, wait for my answer, then ask the next. Don't show me the next question until I've answered the previous one.\"* Question list exists → forbid showing: *\"DO NOT show me the question list\"*. Right when rhythm non-negotiable. **(b) Body callout** right after fence: *\"Use the AskUserQuestion tool, or ask the agent to give you findings one at a time if you'd rather. Your call.\"* Hands student choice. Right when elicitation genuinely interview (not recipe), prompt block already dense, or prompt edits not on table (maintainer-approval-gated) but body text is. Behavior-class fix_hint for question-dump suggests both, not default prompt restructure."
+  ],
+  [
+   "check_prompts.md",
+   "16",
+   "Overwrite anxiety — name overwrite default on regeneration.",
+   "16. **Overwrite anxiety — name overwrite default on regeneration.** Regeneration prompt without specifying overwrite-or-new → Claude pauses *\"overwrite or create new?\"*. Student picks something (often *\"create new\"* to be safe) → `agent.md` + `agent-v2.md`, now confused about current. Every regeneration prompt names destination AND overwrite behavior: *\"regenerate and overwrite the existing file at `path/X`\"*. Versioning belongs to git; *agent-v2.md* alongside *agent.md* = version-soup."
+  ],
+  [
+   "check_prompts.md",
+   "17",
+   "Preamble before action — design around it.",
+   "17. **Preamble before action — design around it.** Claude narrates what it's about to do: *\"Great — I'll now read the file you mentioned and walk through the questions one at a time.\"* Plan-mode worst case: 2-4 sentences of *\"I'll now read X and propose…\"* eat student's highest-attention top-of-response slot before plan items appear. `No preamble` in prompt → partial suppression; treat preamble as Claude-behavior fact and design around. Two paths: (a) bake preamble into expected output so doesn't break rhythm; (b) prime student — *\"Claude will narrate before acting; skim past opening sentence and look for [question/artifact/numbered list]\"*. Pair both for high-stakes plan-mode moments. **Structural trigger (narrowed, Antti 2026-09-03): plan mode ONLY.** The 4+-named-sub-steps half is retired — *\"I see no reason the Claude would go outputting too much info.\"* The preamble-as-Claude-behavior-fact above describes an older generation; on an ordinary multi-step fence current Claude acts. So the rule was firing on step arithmetic rather than on observed narration, and every hit it produced was a true count attached to a false premise. Plan mode still MUST carry one of: (a) in-fence `No preamble. <first action>` suppressor as prompt's last line; (b) body primer after fence naming preamble + skim-past cue (\"Claude will narrate before acting; skip past opening, look for [SHA/question/artifact name]\") — there the top-of-response slot is genuinely contested. Everywhere else §17 is advisory: fix the file where a run actually showed preamble eating the read; never sweep the corpus counting sub-steps. Declined under this narrowing, do not re-raise: `ae101-m4-commit-starting-point`, `fix-tests-first-1`, `fix-tests-first-3`. **The plan-mode MUST is retired too — §17 is advisory everywhere (2026-09-08, live-tested).** The 2026-09-03 narrowing kept plan mode on the belief that the top-of-response slot is still contested there. It is not, on the evidence available: `claude -p --permission-mode plan` run 3× on `when-a-plan-is-good-1`'s fence and once on a plan-requesting fence in a two-file scratch repo put substance in the first clause every time, plan items included — 4/4, no intent-narration. **Caveat, stated so nobody treats this as settled: all four are `-p` print-mode runs and a student is interactive.** Re-test through the `tmux-runner` battery before either restoring the MUST or citing this as closed. Until then a plan-mode fence owes a suppressor only where a run actually showed preamble — the same bar as everywhere else. The five corpus prompts declaring `permission-mode: plan` (`when-a-plan-is-good-1`, `push-back-on-the-plan-1`, `-2`, `-2-original`, `-2-askuserquestion`) carry no suppressor between them and are not a backlog; do not card them."
+  ],
+  [
+   "check_prompts.md",
+   "18",
+   "Self-critique register, not defense, when Claude interrogates own work.",
+   "18. **Self-critique register, not defense, when Claude interrogates own work.** Prompt asks Claude to look at own work (own diff, own SKILL.md, own analysis) → self-critique verbs (re-read, audit, find what's still surface, be honest, look again). Avoid defense verbs (defend, justify, prove, argue, explain why). Defense framing primes Claude's helpful-advocate mode → surfaces rationalizations rather than gaps. Self-critique gives explicit permission to find fault → surfaces specific weaknesses. Lead-in outside fence matches: *\"Ask Claude to interrogate the fix and name what's still surface\"* not *\"Ask Claude to defend the fix as root cause\"*."
+  ],
+  [
+   "check_prompts.md",
+   "19",
+   "Minimal hand-off + Claude self-augments for send-off prompts.",
+   "19. **Minimal hand-off + Claude self-augments for send-off prompts.** Long-running send-offs (M4-style walk-away, M5-style packaged re-run) → prefer minimal hand-off + Claude self-augments over engineering exhaustive prompt. Four sections: (1) Task + paths (minimal — task identity, where artefacts live); (2) Rules (minimal — what NOT to do, fallback on stuck, walk-away framing); (3) Self-augment invitation — *\"Before you start, ask for or write anything else you want for this run\"*; (4) Report-back — what to tell human when done. Bet: Claude knows what scaffolding it needs better than student does. Distinct from open-hook (rule 1d): open-hook = student-supplied INPUT (bug, task); minimal hand-off = SETUP Claude can author for itself (TODOs, plans, clarifications)."
+  ],
+  [
+   "check_prompts.md",
+   "20",
+   "Grill before save — collaborative quality at artefact assembly.",
+   "20. **Grill before save — collaborative quality at artefact assembly.** Prompt has Claude build/assemble/author artefact downstream work depends on (reference doc, plan.md, SKILL.md, verifier script) → close with *\"Before you save, grill me on missing details that can ruin the smooth [downstream beat name]\"*. Grill BEFORE persistence so student still in room to answer. Without it, gaps surface mid-run when student walked away → re-run cost. **Narrowed (Antti 2026-09-03) — the benefit is unevidenced, so this never gates and rarely fires:** *\"There is no known correlation between grilling and team-readiness. Adds action without clear benefit.\"* That re-run-cost line is a plausible mechanism nobody has measured, while every artefact-assembling prompt trips the trigger — so the rule bills a certain extra round-trip against a speculative saving. Raise §20 only where a run actually showed a downstream re-run caused by a gap the student could have filled at save time, and name that run in the finding; absent it, there is no finding. A prompt whose interview already refuses generic answers has the coverage. Declined under this narrowing, do not re-raise: `author-test-strategy-skill-1`. Variants: *\"Before you finalize, ask me anything you'd want a teammate to know to make this work standalone\"* or *\"Pause before save — name two questions whose answers would sharpen this artefact\"*."
+  ],
+  [
+   "check_prompts.md",
+   "21",
+   "Tell me what you wrote, not show me what you'll write.",
+   "21. **Tell me what you wrote, not show me what you'll write.** Prompts with side-effects (post comment, send email, commit code, update ticket, push branch) → post-action report over pre-confirm. *\"Tell me what you wrote\"* > *\"Show me what you'll write before you post\"*. Benefits: (1) cuts round-trip — student push-back fires AFTER Claude acts, on real evidence; (2) forces Claude to honestly account for what it DID, exposing what it CAN'T do (missing prerequisites surface as honest refusal rather than confident fabrication). **Carve-out for irreversible / external-trust-line actions** (production deploys, mass email sends, payment moves) — keep pre-confirm where \"correct after\" genuinely impossible/expensive. Default for everything else: post-action report."
+  ],
+  [
+   "check_prompts.md",
+   "22",
+   "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+   "22. **Prompt-body edits require maintainer approval — registry files AND inline blocks.** Any change to BODY of a prompt (text students paste) = gated. **Frontmatter** (between leading `---` markers — `key`, `dest`, `runtime`, `origin`, `requires:`, `produces:`) and **maintainer-block** edits (below `<!-- maintainer -->`) = NOT gated; apply directly. Two source-form surfaces, same rule:"
+  ],
+  [
+   "check_prompts.md",
+   "23",
+   "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+   "23. **Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).** Agents 101 training dir = structured tree (`prework/`, `module-1/`...`module-8/`, `memory/`, `sources/`, `agents/`, `outputs/`, `.claude/`) with each module's artifacts in own subfolder. Prompt saves file → name destination as path relative to working dir: *\"Save it as `prework/snake.html`\"*, *\"Save summary as `module-3/eval-notes.md`\"*, *\"Write retro to `memory/2026-04-28-retro.md`\"*, *\"Write report to `outputs/policy-report.md`\"*. Naked filenames (*\"Save it as snake.html\"*) → Claude infers location, inference goes to working-dir root, artifacts pile at wrong level. Agents 101-scoped because AE101 uses student's existing repo with no training-imposed subfolder structure — naked filenames there fine, repo conventions decide path. Diagnostic at prompt-write time on Agents 101: every *Save it as ...* names dir + filename, never just filename. Special case: deliberate root saves use `./` prefix so intent visible — *\"Save it as `./CLAUDE.md`\"*. **`outputs/` vs `module-N/` split:** cross-module thinking-assets describing SYSTEM (audit reports, evals over whole memory + sources + agents, system-wide diagnostics) → `outputs/<name>.md`; module-specific working files (per-run output, per-module evidence, inputs being read THIS module) → `module-N/`. Diagnostic: artifact describes cross-module system or current module's working state? Cross-module → `outputs/`. Module-specific → `module-N/`. Latest-only at `outputs/` — re-runs overwrite, git tracks history. `./guardrails.md` (residual + door commitments) stays at root, separate from `outputs/`. See `curriculum/CLAUDE.md` § *Material Distribution* for full directory shape + outputs convention."
+  ],
+  [
+   "check_prompts.md",
+   "24",
+   "Don't restate session CWD inside prompt body.",
+   "24. **Don't restate session CWD inside prompt body.** Setup line above prompt set working directory; fence trusts it. Reference subpaths from session root (`agents/`, `module-3/wonder.md`, `./CLAUDE.md`), not absolute paths or `cd` commands. Restating absolute path inside fence = bookkeeping + creates second source of truth that drifts when directory convention changes. **Carve-out:** when prompt's intent IS to change directory (entering worktree, switching project), name path explicitly because that IS the action."
+  ],
+  [
+   "check_prompts.md",
+   "25",
+   "`subagent` allowed in prompt blocks; explain why after prompt.",
+   "25. **`subagent` allowed in prompt blocks; explain why after prompt.** Don't flatten prompt or fork runtime copy merely to erase `subagent` when Claude Code mechanism matters. Use for fresh-context reads, isolation, parallel work, unbiased judging. After fence, add one plain sentence explaining why subagent was needed unless surrounding setup already obvious. Explanation outside fence so student understands design without adding noise to copied instruction. Cowork runtime text may say `agent` where UI does; `subagent` inside Code prompt is not itself a defect."
+  ],
+  [
+   "check_prompts.md",
+   "26",
+   "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+   "26. **Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.** Per #22 + broader orchestrator default: when surfacing any edit or finding needing maintainer judgement, present ONE card at a time in PRIORITY ORDER (highest-leverage first). Card shape: **BEFORE** (quoted current line + number), **AFTER** (quoted proposed line), **WHY** (one sentence — rule or finding), **RISK** (low/med/high). Wait for call. Move to next. Do NOT bundle findings into numbered lists, paragraph prose, *\"here are the three\"* summaries — bundling forces parallel context-switch + slows decisions. **Fires on TWO surfaces only: student-facing body text, and prompt bodies students copy.** Nothing else. Status one-liner first fine; everything beyond status on those two surfaces = one card at a time. **Everything else applies DIRECTLY, no card, no wait** — maintainer blocks (below `<!-- maintainer -->`: Meta runtime, Quality stamps, source-type labels, backing blocks, frontmatter, trainer notes), `check_*.md` compendium amendments, `.claude/rules/`, root and tier `CLAUDE.md`, `memory/compounded/` entries, `continuous-research/` files, scripts, and audit findings on any of those. Stale-role relabels (body placement right → fix meta to match) apply directly too. **The test is \"will a student read this string?\", not \"does this need judgement?\"** — card-shaping internal work spends the maintainer's attention on decisions they have already delegated, and a rule surfaced as a card is a rule not yet in force. Report internal changes as landed work in prose; card only what ships to a room. **A card that cuts content names the non-obvious outputs/outcomes being dropped** — the obvious half of a claim can go silently; the hook cannot. Surfacing the cut is the maintainer's decision point, not the editor's. **Low-risk mechanical edits are exempt on standing order** (2026-08-12, Antti mid-sweep, cutting off the first card of ~14 identical page-geometry fixes: *\"ok for low risk edits. only unclear by me\"*). The §26 test (*will a student read this string?*) is necessary, not sufficient — it correctly excludes internal work and then over-fires on student-facing changes carrying no decision. Where a swap replaces a broken pointer with a working one and leaves the claim, the voice, and the act asked of the student untouched (page geometry → reading order, *\"picked in Step 1 below\"* → *\"picked next\"*; a dead anchor slug; a stale locator), apply directly and report the whole set as landed work in one list — the maintainer reverts any line in a sentence, which is cheaper than approving fourteen certainties. **Card what is genuinely unclear — and the certainty test is the ONLY gate.** *Could you write BEFORE/AFTER and be certain of the call yourself?* Certain → not a card, whatever else is true of the edit. The list that follows is **subordinate to that test, not parallel to it**: these usually fail it, and any of them can pass it. A cut taking non-obvious content with it (the existing cut-rule still binds); a phrasing with two defensible readings; a change to what the beat asks the student to DO; a choice setting precedent for a class of files. **Third recurrence 2026-08-12 came from reading this list as a set of independent triggers** — a keystroke removed from a do-line technically \"changes what the beat asks\", so the list fired while the test was passing, and the card asked Antti to confirm something I was certain of. A trigger list beside a test will out-fire the test every time, because matching an item is easier than judging a call. Match the list → run the test; the test decides. **Per-edit, not per-file** — one unclear line inside a mechanically-swept file is still a card. The timing carve-out below is the first instance of this same principle; both live here now. **Second exemption, widened 2026-08-12 (recurrence, same day, second session): an edit whose wording Antti just supplied, or whose direction he just called, is not a card either — mechanical was too narrow a frame.** The gate exists to buy a decision; when the maintainer states the replacement (*\"first pass is plausible but usually not good enough\"*) or names the fault and the fix in one breath, the decision is already taken and the card asks him to approve his own sentence. Distinguish the two halves of such an edit: the wording lands directly, while a genuine open question it exposes (a term now echoing across two files, a claim losing its only home) is reported as a **note beside the landed work**, never as a gate holding the work. **Root `CLAUDE.md` § Approval gate carries both exemptions now** — it is the always-loaded tier, it stated the gate absolutely, and a compendium carve-out contradicted by the tier in context every session is a carve-out that does not fire. When amending this rule, amend that tier in the same pass. → `memory/compounded/2026-08-09-prompts-timing-figures-are-not-card-shaped.md`"
+  ],
+  [
+   "check_prompts.md",
+   "27",
+   "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+   "27. **Name consumer at write time — `Save it as <path>` requires downstream reader.** Any prompt with `Save it as <path>` (per #23) → name which downstream consumer reads file. Three categories: (a) another agent/subagent/judge/scheduled run reads it; (b) later session's Debrief or fresh-context recall reads it (chat scrollback may have compacted); (c) student opens it. (c)-only writes belong in chat, not on disk — file is worse channel than chat (student switches app, scrolls, loses context). Articulation has forcing-function value; *file* doesn't add anything. Diagnostic catches both directions: kills (c)-only writes bloating training dir AND defends (a)/(b) writes looking gratuitous but aren't."
+  ],
+  [
+   "check_prompts.md",
+   "28",
+   "Strong-bold prompt label is exactly `",
+   "28. **Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.** Applies to RENDERED markdown (what `marked.parse` sees). Site renderer's `decoratePrompts` matches `<strong>` text equal to exactly `\"Prompt\"`. Custom labels like `**Prompt: regenerate the briefing**`, `**Prompt for X**`, `**Prompt (urgent)**` fail match — render as plain bold paragraph + bare `<pre>`, no header chip, no destination chip, no in-header Copy button. Semantic name of what prompt does goes in one-sentence lead-in above label (rule 3), where doubles as skim-cue (rule 2). Multiple prompts in single section distinguished by lead-ins, not labels. **For registry-sourced prompts (rule 31):** `expandPrompts` reconstructs `**Prompt** *(<dest>[, <context>])*` exactly — authors don't think about label shape, just frontmatter `dest` + `context`."
+  ],
+  [
+   "check_prompts.md",
+   "29",
+   "Normal work request before orchestration.",
+   "29. **Normal work request before orchestration.** In student-facing exercises, first prompt for task looks like something student would really ask LLM at work. Don't turn context selection, task choice, or repeatability needs into mini protocol unless protocol IS the lesson. If student placed files in folder or chose task in body prose → prompt from that state directly: *\"Based on material in this folder, make a 1 page briefing on the following:\"* Preserve repeatability with smallest artifact after natural request, not by front-loading interview. Diagnostic: prompt starts with *\"Ask me which files...\"* or *\"Ask me what I want you to generate...\"* after exercise body already established choices → orchestration bloat."
+  ],
+  [
+   "check_prompts.md",
+   "30",
+   "Live-test corrections preserve operator workflow.",
+   "30. **Live-test corrections preserve operator workflow.** Maintainer actively running curriculum simulation reports what happened → treat report as evidence from runtime, not abstract example to generalize away. Preserve concrete observed failure when asked. Do not turn optional prompts into chained protocols unless maintainer explicitly says prompts depend on each other. Do not write meta-instructions like *\"End with this instruction...\"* inside student/organiser prompts; write actual prompt organiser can send. Diagnostic during live-test edits: standalone prompt organiser may choose, or required next step? Standalone → open hook or normal work request. Required next step → back-reference exact prior artifact/session."
+  ],
+  [
+   "check_prompts.md",
+   "31",
+   "Prompts live in registry; module/exercise/lecture files reference by marker.",
+   "31. **Prompts live in registry; module/exercise/lecture files reference by marker.** Source-of-truth for every student-copied prompt = `curriculum/prompts/<key>.md` (frontmatter: `key`, `dest`, optional `context`, `runtime`, `origin`, `permission-mode` + body = prompt text). Module/exercise/lecture files contain only lead-in sentence (rule 2) + marker on own line:"
+  ],
+  [
+   "check_prompts.md",
+   "32",
+   "Module names in prompt prose are fine — they ground the session.",
+   "32. **Module names in prompt prose are fine — they ground the session.** A prompt body may name modules (`M1`–`M8`, \"Module 1\"). In a fixed-sequence training the session's own artifacts are module-numbered by design (branch `` `m4/<slug>` ``, worktree `` `../<repo>-m5` ``, commit `\"M4 starting point\"`, transcript slugs), so a prose \"M5\" is consonant with that namespace and points the agent at the right branch / worktree / transcript — grounding, not leakage. Consistent with `check_student_facing.md §2b`, which already treats prompts as agent-read (abbreviations fine there). Don't card, lint, or strip a module number from prompt prose. **Boundary:** in *\"merging back after Module 6 is the arc-retrospective's call\"* the defect is the dangling reference to a curricular **event** with no in-session referent (§40/§40b territory), NOT the module number itself. Residual caution (not a rule): a prompt shared verbatim across trainings with different numbering should prefer the artefact reference so it travels."
+  ],
+  [
+   "check_prompts.md",
+   "33",
+   "Git-output greps asserting exact-N need multi-result fallback.",
+   "33. **Git-output greps asserting exact-N need multi-result fallback.** Prompts text-grep git output (branches, log messages, refs) asserting *\"there'll be one\"* = fragile by default. Reality: pushed branches show local + remote-tracking; replays produce duplicate prefixes; autonomous runs may amend/rebase/squash named-message commits, eliminating search marker. Three legal landings: **(A) body callout AFTER prompt** names multi-result case + fallback shape (preferred for engineer-audience AE101; lightweight). **(B) prompt inline-handles** multi-result case (*\"if multiple, pick the one whose log contains <marker>; if missing, fall back to SHA at <known-location>\"*) — force when no body adjacency (autonomous-run prompts without surrounding curriculum). **(C) more specific git filter** (`git for-each-ref refs/heads/m4/*`, `git branch --list 'm4/*' --no-remote`, `reflog`-walk) that disambiguates by mechanism rather than text. Default for AE101: option A."
+  ],
+  [
+   "check_prompts.md",
+   "34",
+   "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+   "34. **Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.** Body callouts don't reach runtime. Student pastes prompt; Claude reads only fenced text; body callouts around prompt unreachable. Diagnostic before shipping any setup-shaped or evidence-finding prompt: read prompt fence in isolation, no body context. Executes correctly against realistic student machine state (multiple matching branches, fresh worktrees without `.claude/`, prior helper sessions in cwd)? No → missing context lives in wrong layer. Body callouts mirror explanation for student; prompt carries runtime instruction."
+  ],
+  [
+   "check_prompts.md",
+   "35",
+   "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+   "35. **Repeated Q&A → premature re-edits. Separate iteration from persistence.** Prompt sets up multi-turn dialog AND dialog can affect artifact file → agent defaults to applying each turn's outcome to artifact mid-dialog. Each turn rewrites file; dialog crawls. Pair this rule with rule 20 whenever iteration loop genuinely open. **Apply 5-element shape** when (a) prompt sets up multi-turn dialog AND (b) dialog can affect artifact file. Prompt body: (a) explicit operator trigger gates writes — *\"Don't touch [artifact] until I say 'lock it in.'\"* (b) Sectional edits when writes happen — *\"Use Edit on changed section, not Write on whole file.\"* (c) Batch Q&A cadence — three-at-a-time, not one-at-a-time (amortizes round-trips ~3x). Exercise body: (d) slowness-watch blockquote callout right after fence, naming gate + push-back move if agent touches artifact mid-dialog anyway. (e) Explicit `## Approve` section before `**What happened:**` — *\"Say lock it in. The agent writes [artifacts].\"* — gives operational trigger a home. **Applies to:** grill-me variants, step-by-step debugging with hypothesis file, iterative brainstorm with doc to update, multi-turn refinement with show-before-save. **Counter (when NOT to apply):** one-shot dialogs with single output, capped propose-then-execute prompts where iteration loop never opens. **(d) is dosed, not owed (2026-09-10).** It is body prose, so it earns its words like any addition: it is owed where a mid-dialog write is the DEFAULT path or lands silently. Where (a)'s gate sits in the fence in plain words AND the session runs in plan mode, the trigger is the agent disobeying an explicit instruction under a mode that blocks source edits, and the failure is loud — the file changes, the agent says so, the student says revert. Score (a)/(b)/(c)/(e) as owed; score (d) on dose. Canonical: `push-back-on-the-plan-2`."
+  ],
+  [
+   "check_prompts.md",
+   "36",
+   "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+   "36. **Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.** Prompt carries >2 logical moves (file-write rule + chat-output rule + null-case fallback; or sequential *\"Then X. Then Y.\"*; or conditional *\"If X, do A; if Y, do B\"*) → split into paragraphs by move, one move per paragraph. Short prompts (≤30 words / ≤2 moves) stay one paragraph. Sequential-build prompts where each step compounds tightly may stay one paragraph if breaking feels artificial. Diagnostic: read prompt aloud; each natural breath lands at paragraph break, not mid-clause. Common move-boundaries earning split: *\"In chat, ...\"* (file/chat output split), *\"If nothing earned itself, stop.\"* (null-case fallback), *\"Then ...\"* (sequential), *\"If X, do A; if Y, do B\"* (conditional). Wide single-paragraph prompts = continuous instruction-stream; Claude (and student) drop structural signals mid-paragraph. **Fires at EDIT time too, not only authoring:** a maintainer-approval card minimizes the diff against the current prompt; if that prompt is already a §36 violation, the minimal edit inherits its density. Re-run the read-aloud diagnostic against the RESULTING prompt, not the size of the diff. **Sentence grain, not just paragraph grain:** two independent instructions joined by *\"and\"*/comma read as one move and skim as one — split into separate simple sentences (*\"Do X. Then Y.\"*), which usually earn separate paragraphs. **Carve-out — CONDENSED IS FINE IN A FENCE (Antti 2026-09-10, on `ae101-m4-take-task-end-to-end` and the `threat-model-with-stride` report pair: *\"in prompt that condensed format is OK\"*).** A tight conditional pair or two report-asks sharing a sentence are already full-stopped moves that read the same aloud; splitting them buys whitespace in text pasted once. The rule's target is the WIDE prompt — many moves running as one continuous instruction-stream — not every boundary a diagnostic can find inside one short paragraph. Score the whole fence, not the clause: if the prompt already scans by move, a sub-paragraph split is not owed and is not a finding."
+  ],
+  [
+   "check_prompts.md",
+   "37",
+   "Orient saved rule by where it FIRES, not surface activity producing it.",
+   "37. **Orient saved rule by where it FIRES, not surface activity producing it.** Rules saved to auto-loaded files (`./CLAUDE.local.md`, `./CLAUDE.md`, `~/.claude/CLAUDE.md`) read by Claude as instruction when generating next artifact — rule's downstream consumer = Claude doing next make-action, not engineer reviewing what just happened. Naming what rule does in any save-the-rule prompt, lead-in, or maintainer note → name verb rule will CAUSE next session, not verb student PERFORMED this session. M2 surface activity = engineers READING plans (push-back, walk-down, pattern-recognition); rule fires on Claude MAKING next plan → phrase rule *\"sharpened how plans get made\"*, not *\"how plans get read\"*. Engineer's reading skill sharpens as byproduct because Claude now generates better plans; framing by source-of-evidence activity misses where compound happens."
+  ],
+  [
+   "check_prompts.md",
+   "38",
+   "Body lead-in mirrors prompt's opening phrasing.",
+   "38. **Body lead-in mirrors prompt's opening phrasing.** Body sentence immediately preceding `{{prompt}}` block mirrors prompt's opening clause — same verb, same noun-phrase, parallel conditional/imperative shape. Student lives one continuous sentence-shape across body + fence; mismatched phrasing breaks rhyme, reads as drafting drift. Diagnostic at prompt-write time + after any prompt-card application: place body lead-in's last sentence next to prompt's first sentence; share verb + noun-phrase? Rhyme → student feels one move. No → body + prompt sound like two drafts. Common origin: prompt text changes through maintainer-approval card flow (rules 22/26); body text doesn't get paired update because card flow doesn't surface body-side edits. Distinct from rule 2 (action lead-in summarizes what prompt does — semantic accuracy + skim-cue); this rule = phrasal congruence between body + fence."
+  ],
+  [
+   "check_prompts.md",
+   "39",
+   "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+   "39. **Declare `permission-mode:` when paste requires specific Claude Code mode.** Prompt's correct behavior depends on agent being in specific permission mode (paste runs differently in plan vs default) → declare `permission-mode: <token>` in frontmatter. Canonical tokens per code.claude.com/docs/en/permission-modes: `default | acceptEdits | plan | auto | bypassPermissions`. Renderer emits leftmost solid-accent chip in prompt-block header (built via `⟦M:<mode>⟧` sentinel at expand time, parsed + stripped at decorate time). Omit field when mode not load-bearing — no chip renders, no constraint implied. Mode chip fires only when frontmatter declares it. Diagnostic at prompt-write: behavior depend on specific mode? Plan-mode-only prompts (plan the task, walk down branches, second-pass read) need chip. Default-mode prompts (most exercises, most lectures) don't declare anything."
+  ],
+  [
+   "check_prompts.md",
+   "40",
+   "Verify session boundary before deciding prompt's context-carrying.",
+   "40. **Verify session boundary before deciding prompt's context-carrying.** Before deciding whether prompt must be self-contained (carry file refs, branch names, the \"how\") or may back-reference prior scrollback → verify session boundary by reading module + lecture body. NOT prompt's frontmatter `context:` line alone (hint, can be stale against module's real flow). **Cold** (fresh launch / after `/clear` / different cwd or git worktree / inside `Agent` sub-task — fresh context by default) → no shared scrollback, prompt must carry own context. **Warm** (same session, no clear, same cwd) → back-reference works, file refs redundant clutter. Diagnostic, one question: when student pastes this, what is actually in scrollback? Answer by reading where prompt runs, not by inferring. Markers: \"open a new/fresh session\" vs \"in this same session\"; `/clear` between producer + this prompt; `Agent`-tool sub-task; worktree/cwd change. §34 = where binding logic lives (fence); §32 = module numbers are fine (it's curriculum-coined *event/exercise* labels with no in-session referent, §40b, that leak); this rule = upstream check both presuppose."
+  ],
+  [
+   "check_prompts.md",
+   "41",
+   "Artifact-vs-STOP tail ordering — last imperative wins.",
+   "41. **Artifact-vs-STOP tail ordering — last imperative wins.** When ask-and-wait tail is grafted onto prompt that produces load-bearing artifact (plan file, commit, written skill, ADR), artifact instruction must be LAST imperative in tail. Claude weights most-recent directive; a STOP that follows the write-X command blocks the write. Symptom: tail reads *\"Write the plan to <path>. … ask and STOP — don't proceed yet\"* → agent obeys STOP, skips the write. Fix: *\"Write the plan to <path>. The plan file landing is the load-bearing artifact — write it first. If you have refinement questions, list them at the END of your reply\"* — no STOP, questions become end-of-response additions. Tail-bottom-up reading is real across prompt failures (SAVED-PATH-as-future-promise, etc.); use the weighting deliberately."
+  ],
+  [
+   "check_prompts.md",
+   "42",
+   "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+   "42. **Headless-runner discipline — tail every prompt with no-AUQ guard.** Inside a non-interactive Claude Code instance (tmux-runner, automated harness, CI pipeline), tail every prompt with explicit *\"Don't call AskUserQuestion\"* EVEN IF prompt body has no interactive scaffolding and looks purely declarative. Symptom: a purely-declarative body (create worktree, copy files) carries an ambiguity the agent notices mid-run → it triggers AUQ on its OWN reasoning and hangs the runner. `claude --permission-mode auto` does NOT prevent AUQ — auto-mode classifies AUQ as safe-to-call and lets it through. Agent-initiated AUQ from prompt-body ambiguity is indistinguishable at the runtime layer from author-intended AUQ; both hang the runner identically. Treat every prompt as AUQ-risk surface until proven otherwise; pair the suppression with an explicit ambiguity-handling instruction (*\"use your judgment\"* / *\"surface in chat and proceed under assumption\"*)."
+  ],
+  [
+   "check_prompts.md",
+   "43",
+   "Long-running prompts stream progress — never go silent.",
+   "43. **Long-running prompts stream progress — never go silent.** Prompt that will run more than a couple of minutes (cross-project `~/.claude/projects/` scans, read-the-world memory builds, big multi-file reads, walk-away send-offs) → instruct the agent IN THE FENCE to surface incremental progress + early findings AS IT WORKS: which repos/files covered, the groups/results taking shape, anything surprising. Phrase as a between-chunks habit (*\"as you go,\"* *\"every ~30s or so\"*), NOT a wall-clock timer — Claude Code turn-streaming is sequential (prose doesn't interleave with in-flight tool calls), so a literal interval can't fire mid-tool-call but the felt cadence can. Also tail the fence to honor a mid-run *\"tell me what you've found so far\"* → report, then continue (not restart). Proactive half; `check_pedagogy.md §48` = reactive half (student-initiated interrupt/steer/continue). Pair them: a long run should be neither silent (this rule) nor unsteerable (§48). **Carve-out — UNATTENDED BY DESIGN (Antti 2026-09-05).** Both halves assume someone is there. Where the curriculum sends the student away and the teaching beat is reading the return afterward, streaming has no audience and pre-empts the read: the not-knowing IS the lesson. Canonical case: AE101 M5 (`ae101-m5-rerun-packaged`, fence says *\"I'm walking away\"*). Test before filing — is the student at the machine? A walk-away send-off is the rule's trigger only when walking away is incidental, never when it is the pedagogy. §43 scores N/A there; do not file, and do not read a `**Session**` widget's long runtime as attendance. **Dose first (2026-09-09).** Trigger = DEFAULT duration, not worst case. Body frames the long run as the anomaly to interrupt (*\"if it stalls or runs past a couple of minutes\"*) → not a long-running prompt, proactive half does not fire; reading a fence's own escape hatch as proof of duration fires §43 on every fence that ships one. The tail is separable and discharges in BODY — a callout beside the fence handing the student the narrowing move satisfies it; in-fence tail owed only where the interrupt has no body-side steer. Both halves are additions to a fence copied once, so score dose before filing: minority route + loud, in-beat-recoverable failure = no card. Canonical: `compound-and-close-1`."
+  ],
+  [
+   "check_prompts.md",
+   "44",
+   "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+   "44. **A leading-looking line can be a forcing function; prefer the simpler prompt.** Editing a student prompt in a fix pass → before \"cleaning up\" a line that reads as leading-the-witness (*\"assume at least one of the three is generic, name it\"*), check if it's load-bearing: leading lines often exist to push the LLM off the lazy/charitable default (all-specific, all-fine, nothing-wrong), with an honest-case fallback already covering the true negative → strip it and the prompt reverts to beige. Symmetrically, resist adding structure — recommendation-under-uncertainty framing, never-invent guards, multi-clause decision logic — to a prompt whose plain *\"do X, cite\"* close already works; complexity carries the burden of proof against the simpler version, not the reverse. A fix pass is for defects, not for tidying load-bearing roughness. Diagnostic: would removing this line let the LLM pick the lazy path? Keep it. Would adding this clause change what the student actually gets? If no, cut it. (Sibling of the deliberate-antipattern/eval-exempt rule in `check_pedagogy.md`: there a *judge* misreads a by-design prompt; here the *editor* does. Origin: 2026-06-06 Agents 101 runner fix phase, C5/C6.)"
+  ],
+  [
+   "check_prompts.md",
+   "45",
+   "Prompt paths match Builder scope.",
+   "45. **Prompt paths match Builder scope.** Every path inside a prompt block is relative to wherever the Builder is open. Agents 101 has two scopes (`curriculum/CLAUDE.md` § *Material Distribution*). **Prework + M1** → Builder open INSIDE the artifact folder (`<training-dir>/prework/`, `/module-1/`) → **bare filenames** (`snake.html`, `CLAUDE.md`); a `prework/` prefix here creates the duplicated-path bug (`prework/prework/snake.html`). **M2 onward** → Builder sits at the training-dir ROOT and stays → **single-segment `module-N/`** for per-module artifacts (`module-6/orchestrator.md`), **bare** for crossmodule ones (`memory/`, `sources/`, `agents/`, `CLAUDE.md`). Never deeper nesting, never `../memory/`. Per-module Builder-reopens were REJECTED for M2+: every M2+ exercise reads crossmodule artifacts, so `../memory/` in every prompt is noisier than `module-N/foo.md` once. Prose exception: prose OUTSIDE prompt blocks may name the canonical path (`module-4/residual.md`) for reader orientation even when the prompt below uses the shorter form. Ship test: where will the Builder be when the student pastes this?"
+  ],
+  [
+   "check_prompts.md",
+   "46",
+   "Output shape — trust Claude's defaults, don't pad.",
+   "46. **Output shape — trust Claude's defaults, don't pad.** Long prompts OK to ~1 page; paragraph structure mandatory. **Prefer questions over slots** — the agent asks for simple input; don't make the participant edit the prompt. Don't append trailing shape specs (*\"clear title, a Rules section, a Never line, plain markdown, no header block\"*) — Claude infers shape from role + question set. Specify shape ONLY where the teaching moment depends on it (e.g. a scoring format for an eval judge). Otherwise end with destination + \"show me before saving.\" Over-specified prompts read intimidating to business readers and train them to over-specify their own — the opposite of what M2 teaches."
+  ],
+  [
+   "check_prompts.md",
+   "47",
+   "\"Add X and regenerate\" is a trap.",
+   "47. **\"Add X and regenerate\" is a trap.** When X should shape OUTPUT (voice, stance, framing), *\"add X\"* reads as *\"append X as a new section\"* → Claude grows a bullet list and calls it done. Say instead: *\"rewrite using X as voice-shaping context\"* / *\"let X change how the output SOUNDS.\"* Always name which is meant — APPENDED (new section) or INTEGRATED (rewritten through X's lens)."
+  ],
+  [
+   "check_prompts.md",
+   "48",
+   "Vary closings deliberately.",
+   "48. **Vary closings deliberately.** Each mechanic has a different strength; pick per exercise. **Claude-as-cold-critic** — reproducible, structured, produces an artifact; use when feedback quality matters, foreshadows LLM-as-judge. **Pair exchange** — social energy, quick, unexpected angles; use for bonding or where individual domain expertise matters; variable quality. **Group discussion** — collective pattern-finding; use when the room sees what no one alone can. **Solo retro with Claude** — private learning extraction; good for module debriefs. **Show-your-work to the room** — public ownership moment; use for artefact-producing exercises where the reveal matters. Don't default to any one. Ask what this exercise actually needs — structured feedback, social bonding, collective insight, private extraction, or public ownership — then pick. *\"Talk to your neighbor\"* is not a free pass; neither is *\"ask Claude for feedback.\"*"
+  ],
+  [
+   "check_prompts.md",
+   "49",
+   "A take-home prompt asks for one bounded build.",
+   "49. **A take-home prompt asks for one bounded build.** A prompt the student saves and runs later (a handoff, a Monday prompt, a kit-builder) names ONE thing to build and the check on its output; never *the kit*, never *one per shape across my whole stack*, never a triage the cold session must run before it can start. `agents-that-build-agents-handoff` 2026-09-03 asked for one skill per recurring shape across the stack, gave the cold session two starting points (start from the shapes / re-study the repos) and left it the worth-packaging call; Antti: *\"too wide and tries to do too much. nobody can complete that in 15 mins.\"* Rewritten to three moves in order: scan the work, pick the most valuable skill with me and build it, ensure efficient checks on the quality of what it produces. Tells: a plural deliverable (*skills*, *the kit*), a *per X* clause, a *worth …* qualifier the prompt does not resolve, two sentences that each say where to start. Fix = one deliverable, one starting point, the selection made WITH the student inside the prompt, the rest of the list named as the next runs. Sibling of §19 (minimal hand-off) and `check_pedagogy.md` §6 (one bounded activity); this rule fires on the prompt's ASK, not its length."
+  ],
+  [
+   "check_sales_copy.md",
+   "1",
+   "CTO-repeatable test.",
+   "1. **CTO-repeatable test.** Every headline, sub-copy, phase title, CTA: read aloud. CTO say this to head of engineering without feeling silly? *\"Room. And horizon.\"* lands → strike."
+  ],
+  [
+   "check_sales_copy.md",
+   "2",
+   "No stylized phrase-pairs.",
+   "2. **No stylized phrase-pairs.** Rory two-beat *\"X. And Y.\"* register stays internal. Lead with real sentence, no A-is-useful-but-A+-is-leverage preachy parallels."
+  ],
+  [
+   "check_sales_copy.md",
+   "3",
+   "Strip strategy-doc vocabulary.",
+   "3. **Strip strategy-doc vocabulary.** AE101: *veto-stakeholder, compounding substrate, authoring move, plan-mode approval inflation, gate spec, blast-radius constraint, judge, verifier, team kit, skills-as-capability* all fail public-page cold-read test. Replace with plain thing or earn in appositive."
+  ],
+  [
+   "check_sales_copy.md",
+   "4",
+   "Earn every term.",
+   "4. **Earn every term.** Nothing out of the blue. Earned in-module or translated on first use. Page-bottom test: staff engineer scanning cold understands every module in 90 seconds without looking up term."
+  ],
+  [
+   "check_sales_copy.md",
+   "5",
+   "No M-number cross-references.",
+   "5. **No M-number cross-references.** *\"Your M3 gates apply here\"* — readers don't hold module map. Say by name: *\"the quality checks from the previous module.\"*"
+  ],
+  [
+   "check_sales_copy.md",
+   "6",
+   "\"What you build\" = 20–30 words.",
+   "6. **\"What you build\" = 20–30 words.** Artifact, not recipe. Anti-pattern: 55-word callout with three parentheticals. *\"Teaching moment\"* earns one idea, not three."
+  ],
+  [
+   "check_sales_copy.md",
+   "7",
+   "Describe failure modes, don't name them.",
+   "7. **Describe failure modes, don't name them.** *\"The agent argues with itself\"* > *\"argue-loops\"*. *\"The output looks right but isn't\"* > *\"plausible-but-wrong\"*."
+  ],
+  [
+   "check_sales_copy.md",
+   "8",
+   "Agency on right noun.",
+   "8. **Agency on right noun.** *\"Memory reads code\"* wrong — memory = store; agents read. Put verb on agent, or rephrase."
+  ],
+  [
+   "check_sales_copy.md",
+   "9",
+   "No em dashes on site.",
+   "9. **No em dashes on site.** Nordic style — periods + short sentences. Break thought into two sentences. Never `—` or `&mdash;` on ai-training. (Internal strategy docs keep em dashes; site different.)"
+  ],
+  [
+   "check_sales_copy.md",
+   "10",
+   "No \"What research says\" callout boxes.",
+   "10. **No \"What research says\" callout boxes.** Default to one-line inline citations. Scarcity beats frequency — visual device used 2–3 times across training max."
+  ],
+  [
+   "check_sales_copy.md",
+   "11",
+   "Don't describe mood arc externally.",
+   "11. **Don't describe mood arc externally.** Lived, not advertised. Same for Godin belief structure — *\"this is for people who believe X\"* works; *\"here is our mood arc\"* doesn't."
+  ],
+  [
+   "check_sales_copy.md",
+   "12",
+   "Ownership claims scope to customer-built artifacts.",
+   "12. **Ownership claims scope to customer-built artifacts.** Customer keeps agents, team's kit, work produced on their data in their environment. They do NOT keep our curriculum, methodology, materials, or modification rights — Bosser retains those. Anti-pattern: *\"You keep everything / the methodology / the right to modify.\"* Pattern: *\"The agents stay with you / the team's kit is yours / runs on your data.\"*"
+  ],
+  [
+   "check_sales_copy.md",
+   "13",
+   "Numbers carry their denominator + axis.",
+   "13. **Numbers carry their denominator + axis.** Any adoption/productivity % on a slide/deck/page names the population (all-sector vs sector vs size-class vs individual-vs-org) and the metric axis (volume vs count vs share vs outcome). A figure swings 38%↔80% by denominator and 2X↔8X by axis — the wrong one reads as spin or invites a teardown. Sector audience → lead with the sector cut, all-sector avg as the reveal. Full rule + provenance: `check_research_claims.md §12`."
+  ],
+  [
+   "check_strategy_tie_in.md",
+   "1",
+   "Mood contract named.",
+   "1. **Mood contract named.** Every module has deliberate mood (per `curriculum/content-strategy.md` per-module \"Mood (deliberate)\" paragraph + synthesis mood-arc). Resolving mood meant to stew steals next module's teaching moment. Check: draft honours mood, or flattens it? State in one sentence what emotional state student leaves this piece in + how it sets up next piece. Can't state → haven't read enough strategy yet."
+  ],
+  [
+   "check_strategy_tie_in.md",
+   "2",
+   "Epistemic mood ≠ punitive mood.",
+   "2. **Epistemic mood ≠ punitive mood.** When module's mood is \"unease\", the unease = *not-knowing* (*\"I'd like to know and I can't\"*), never *having-done-wrong* (*\"I messed up\"*). Check flavour — student leaves uncertain about what's possible, not ashamed of what they did."
+  ],
+  [
+   "check_strategy_tie_in.md",
+   "3",
+   "Lead with discipline, not failure mode.",
+   "3. **Lead with discipline, not failure mode.** Big ideas name positive disciplines (*grounded, steering, compounding, practice of risk*), not failure words (*fabrication, violation, hallucination*). Failure mode becomes negative case the discipline addresses, not the title. **Carve-out — named canonical results keep their names.** Title that IS the searchable handle of a canonical result / named practice (Bainbridge's *Ironies of Automation*, the lethal trifecta) stays failure-named; discipline-lead satisfied at slide-header/body level. Renaming the handle trades searchability for tone + usually names a remedy the piece doesn't teach. Sibling: `check_lectures.md §4` carve-outs (named practices where the name is the takeaway). Corpus precedent ships failure-named: *Gates decay*, *Passing is not proof*, *Why mostly-right fails*. → `compounded/2026-04-27-strategy_tie_in-lead-with-discipline.md`"
+  ],
+  [
+   "check_strategy_tie_in.md",
+   "4",
+   "Strategy-fidelity check.",
+   "4. **Strategy-fidelity check.** Before designing or reviewing module → pull per-module sequencing claims from relevant content-strategy doc (*\"first X lands at module N,\"* *\"no Y before module M,\"* *\"M_k owns Z\"*). Verify draft doesn't front-run downstream teaching moment. Cross-module sequencing = strategic IP + most expensive error to catch late — one skill-by-name reference in M2 ripples to M3's teaching moment, eval instance, lecture, module spine."
+  ],
+  [
+   "check_strategy_tie_in.md",
+   "5",
+   "Strategic themes recur in Key Concepts.",
+   "5. **Strategic themes recur in Key Concepts.** Every training has recurring themes in content-strategy (AE101: 90% correct / compounding / mirror / self-awareness / capture-your-world / non-agentic-default). Themes ≠ rules — they're the *why* underneath rules. For themes to land, each module's **Key Concepts** section (student-facing heading; emergent-from-doing = underlying authoring rule) must surface module-specific instance of ≥2-3 themes, phrased in module's own language. Test: walk Key Concepts bullets; for each, ask *which theme is this an instance of?* No bullet names theme-instance → module teaches tactics without worldview."
+  ],
+  [
+   "check_strategy_tie_in.md",
+   "6",
+   "Key Concepts shape — theme breadcrumbs, not standalone section.",
+   "6. **Key Concepts shape — theme breadcrumbs, not standalone section.** **Run §§ 3 / 4 / 5 BEFORE §6 on every Key Concepts pass.** Each bullet must be emergent (§5), lead with discipline not failure-mode (§3), not front-run downstream module (§4). Breadcrumbs decorate survivors; breadcrumb on bullet that shouldn't exist makes section worse. Diagnostic before adding any breadcrumb: would cutting this bullet improve section? Yes → cut first; breadcrumb question moot. Survivors settled: keep tactical bullets as module's own voice, one idea each. On 1–3 bullets where theme naturally fits, close bullet on short breadcrumb clause, 5–8 words, theme's essence. **No `Remember:` label, no bold** — labelled+bolded form swept corpus-wide as YUCK/MILD by AE101 voice pass (`a90c9ec`, 27 files); zero survive anywhere in `curriculum/`. Clause content kept, wrapper cut. A judge citing the old form cites a retired rule, NOT a per-file regression — two 2026-08-02 strategy fires each reported it as a fresh REVISE. Example: *\"Structure is persuasive. A 7-item plan with headers looks like a decision even when it's a draft. At least 10% wrong.\"* **Detection:** breadcrumb is no longer greppable. Score §6 by reading whether a bullet lands on a compact memorable clause — never by scanning for a marker; marker-absence ≠ breadcrumb-absence. (Directional discipline: breadcrumb names the move — hunt the wrong 10% — not trust ratio. *\"Assume 90% on first pass\"* would invert into trust-prior. Same §3 hazard inside breadcrumb.) Rules: breadcrumb uses theme's essence as memorable hook, not *\"(theme N)\"* notation; engineer register, not strategy-doc vocabulary (translate *curriculum, substrate, posture* to *memory, system, habit, default*); never add standalone **Themes this module instances:** section; never reference all themes. **Variety beats consistency for breadcrumbs.** Themes recur (§5) — phrasings shouldn't. Candidate breadcrumb's theme already fired in adjacent module's breadcrumb (especially within same arc segment — M1↔M2, M2↔M3) → default to either (a) different theme that naturally hooks candidate bullet, or (b) no breadcrumb (1–3 = range; floor 1, ceiling 3 across section). NEVER ship same breadcrumb verbatim across adjacent modules — turns memorable hook into refrain, hook stops landing. Near-verbatim (same theme, paraphrased) also discouraged within two-module windows. Diagnostic before adding breadcrumb: check adjacent module file's Key Concepts; same theme already fired as breadcrumb there → pick different theme or drop breadcrumb. §5's *\"themes recur\"* applies to body-text presence (which-theme-is-this-bullet-an-instance-of), NOT breadcrumb phrasing. **Ceiling counts breadcrumbs, not punchlines.** A closing clause counts against the 1–3 ceiling only when it hooks a training-arc theme — reaches outside the bullet's own tactical content to the arc. A clause landing the bullet's own idea more memorably = module voice, uncounted, however punchy. Swap test: could the clause close a similar bullet in another module unchanged? Portable → breadcrumb, counted. Welded to this bullet's content → punchline, uncounted. Counting every punchy closer as a breadcrumb reads M1/M3/M6 over-ceiling; with the boundary drawn here, all six modules comply."
+  ],
+  [
+   "check_strategy_tie_in.md",
+   "7",
+   "What You'll Learn shape — capability register, not syllabus.",
+   "7. **What You'll Learn shape — capability register, not syllabus.** §6 covers Key Concepts (emergent, after-the-work); §7 covers What You'll Learn (anticipatory, before-the-work). **Run §§ 3 / 4 BEFORE §7 on every What You'll Learn pass.** Each bullet must lead with discipline not failure-mode (§3) + not front-run downstream module (§4). §7 governs register after bullet earned place. **Audience contract:** bullet reads way engineer would describe new capability to peer in Slack — concrete verb, named artifact, no apparatus. Diagnostic: strip bullet to verb + immediate object. Result reads like thing student does that another engineer would recognise as work → bullet in register. What's left = thing curriculum does to student → rewrite. **Strategic theme verbs permitted in bullets, never owed.** Theme verb fits the grammar → keep it, do NOT strip as \"argot.\" Do not expect them: measured 2026-08-30, 1 of 32 AE101 What You'll Learn bullets leads with one (`Compound`, M1); the rest of the theme vocabulary (*Earn, Mirror, Ground, Introspect, Sharpen, Capture*) leads none. The grammar-fit check below is why — theme verbs are abstract verbs of acquisition, WYL bullets are concrete artifact lists by §7's own audience contract, and the two pull opposite ways. Working as intended. **Absent theme verb is NOT a finding — do not file one.** (Three judges filed it independently 2026-08-30, all non-blocking, all correct, all wasted.) Open, bigger than this rule: themes may be design vocabulary rather than student vocabulary — the AE101 throughline is currently audible in the strategy doc, not in the room. **Grammar-fit check.** Theme verbs only lead when verb's grammar fits object. *Earn the trust*, *Earn the right to use a term* — abstract noun, verb of acquisition, fits. *Earn three pieces of packaging* — concrete artifact list, verb collapses to meta-pedagogy (\"the curriculum makes you earn these\"). For concrete artifact lists, use verb of construction or pairing (*Build*, *Pair*, *Match*, *Assemble*) — practice = matching/building, not earning. **Two failure modes on verb itself:** (a) *Performative / academic register verbs* with no strategic theme behind: `**Articulate** one key learning…` (L&D facilitation), `**Recognise the pairing as a repeatable design pattern**` (GoF/architect), `**Compound by subtraction**` (formal \"by X\" construction, academic). Engineer-shape replacement: verb the discipline actually uses (`**Cut**`, `**Name**`, `**Pair**`, `**Run**`, `**Spot**`). (b) *Object-leads-with-destination:* `**Sharpen** ./CLAUDE.local.md with one rule from the session` — file is object, practice hidden in tail. Fix: lead with practice, file becomes destination (`**Compound** one rule from the session into ./CLAUDE.local.md`). Verb + immediate object = the skill; paths and filenames come after. **Four apparatus failure modes around any verb:** (i) *Bloom-tag parentheticals on bullets* — no `(Analyze)`, `(Evaluate)`, `(Create)`, `(Understand)` stamped per bullet. Bloom level lives in maintainer `Meta` block as one line. (ii) *Pedagogical-mechanism tails* — no *\"by mapping each piece to the failure it would have caught\"*, *\"by walking what you've built against…\"* Bullet names action + object; mechanism = what exercise body teaches. (iii) *Author-defence asides* — no *\"not a moralistic warning\"*, *\"not a performance; a marker of…\"*, *\"not built-to-spec, arranged from…\"*, *\"without building one today\"*. Bullet needs carve-out to survive → bullet is bug. (iv) *Didactic taxonomy stamps* — no *\": the three things that separate a plan from a draft\"* used as definition. Concrete artifact list fine (file list, verification steps, named assumptions); definition-stamping triplet = not. **Carve-outs:** (a) Trailing fragment naming artifact student walks away with (*\"The first move outside the repo\"* — M1) — fine, outcome-side description in engineer register. (b) Module names in tail (*\"Module 6 gives evals their full weight\"*) — fine, signals forward-arc, sister of §4. (c) Brief operational how-to inside bullet — acceptable when one line + bullet would be cryptic without it; cut to follow-on body sentence when runs longer."
+  ],
+  [
+   "check_strategy_tie_in.md",
+   "8",
+   "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
+   "8. **Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum** (Antti 2026-09-03: *\"no point in storing non-strategic stuff in strategy doc. If needed move details into maintainer blocks\"*). Split test: **a curriculum file asserts it → doc points, never restates. Only the doc can assert it → doc owns it.** DOC OWNS: spirit, mood, arc bets, cross-module sequencing claims, themes earned, exclusions + why, format/delivery-shape dependencies, pre-read rationale, buyer/audience reasoning, vocabulary embargoes. **Strategy-stage stop:** while an early training idea is taking shape, capture the thesis, audience, standard challenge, deeper learning, and transfer path; leave module sequence, numerical NFR thresholds, delivery mechanics, and assessment design unresolved until course design is requested. DOC MUST NOT RESTATE: section names, wiring order, slide counts, phase lists, file inventories, ownership claims (*\"owned by the module file\"*), verbatim headings. Those live in the module file + each leaf's maintainer block — surfaces judged across seven classes and re-read every cohort; the doc is linted by nobody, so the copy rots while the original moves. **The doc's inventory rots; its theory holds.** Measured on the AE101 M5 reconciliation 2026-09-03: of 8 stale spans, 6 were pure inventory (a `## Debrief` + `## Closing` deleted 2026-04, a lecture heading quoted as *One run is a sample* that never shipped, the opener wired to the wrong section, hooks filed inside the lecture they were extracted from in 2026-08 — contradicted by the doc's own adjacent line). Delivery-shape block cut 4345→2030 chars; nothing needed relocating because every deleted claim was ALREADY in a maintainer block, richer. **Before deleting a structural claim, grep the owning file's maintainer block; absent → move it there first, never drop it.** **§8 fix = correct the span, never empty it.** Grep the doc for the claim's twin first: the same stale claim recurs hundreds of lines apart, and fixing one leaves the doc saying both. Fix the doc's own voice, not a quoted trainer line; a guard inside a quoted script is a line the trainer then must not say. A dangling qualifier with nothing after it (*when it fits, and how it composes*) is the tell that a deletion took doc-owned reasoning with it. Corollary, and the real prize: a doc that restates structure hides the strategic errors in the noise — the same pass found `eval` claimed as earned-and-named at M5 while `learn-from-the-test.md`'s block records it embargoed to M6 (Antti 2026-08-27) and the word appears 0× in M5 body. Structural drift is cheap and loud; strategic drift is expensive and silent. → `compounded/2026-09-03-strategy_tie_in-doc-carries-strategy-not-structure.md`"
+  ]
+ ],
+ "suggestions": [
+  {
+   "rule": "check_writing.md §3",
+   "line": 12,
+   "now": "**STATUS:** round 3 fixes applied (2026-10-06), APT101 rewrite of `new-human-role-in-the-loop` § Would you let it send the mail? and § The human moves one level up. The internal mail becomes the team's weekly update; no goal-nudger, steering eval or module recap. The ladder of answers is the home's, minus the judge vocabulary. Not taught (simulation training).",
+   "proposed": "**STATUS:** APT101 version of `new-human-role-in-the-loop` § Would you let it send the mail? and § The human moves one level up (2026-10-06). The example is the team's weekly update. The ladder of answers is the home's, minus the judge vocabulary. Not taught (simulation training)."
+  }
+ ],
+ "blocking_findings_count": 0,
+ "nonblocking_findings_count": 0,
+ "notes": "Brief built (135 rules across writing, student_facing, prompts, sales_copy, strategy_tie_in); prefill parked nothing (no prior instance). Rules in check_prompts, check_sales_copy, check_strategy_tie_in are N/A by shape. Only finding is the maintainer-block STATUS line (section 3), non-blocking; body is clean."
+}

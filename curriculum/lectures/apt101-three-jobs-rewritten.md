@@ -12,8 +12,8 @@
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@99cb13c5)
-- judges @99cb13c5: writing PASS
+**Quality:** compendium-audited 2026-10-08 (writing@99cb13c5 story@ab62db01 technical@ab62db01 pedagogy@ab62db01 strategy@ab62db01 slides@ab62db01)
+- judges @ab62db01: writing PASS, story PASS, technical PASS, behavior N/A, pedagogy PASS, strategy PASS, slides PASS
 
 - **Time:** 15 minutes.
 - **Learning:** team | control — each role names what it is for, the team answers the stance question with its own strategy calls, and decides how far agents go alone and where a person keeps the call.

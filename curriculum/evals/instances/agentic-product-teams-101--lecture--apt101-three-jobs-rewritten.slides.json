@@ -1,0 +1,224 @@
+{
+  "class": "slides",
+  "file": "curriculum/lectures/apt101-three-jobs-rewritten.md",
+  "training": "agentic-product-teams-101",
+  "verdict": "PASS",
+  "body_sha": "2f2ac9fad237607474b8f9fcdb20f9ef25f8fd5a6edf81914c63bfa115e03650",
+  "shape_hash": "e1847200fbc33630",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "Three jobs, rewritten",
+      "lines": "1-2"
+    },
+    {
+      "index": 1,
+      "heading": "What each of us is for when building gets cheap",
+      "lines": "3-4"
+    },
+    {
+      "index": 2,
+      "heading": "Your insight is the strategy: which customer, which bet, which no",
+      "lines": "5-6"
+    },
+    {
+      "index": 3,
+      "heading": "Future leadership is about strategy, outcomes and customers",
+      "lines": "7-8"
+    },
+    {
+      "index": 4,
+      "heading": "Would you let an agent post your weekly update?",
+      "lines": "9-10"
+    },
+    {
+      "index": 5,
+      "heading": "The more you trust it, the less you notice",
+      "lines": "11-12"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "evidence": "L5-L11 chunk 2 \"Your insight is the strategy\": 'the three of you' (L7 slide 2, 'Which of these will the three of you decide this week?') resolves to the product owner, designer and team lead named in chunk 1; chunk 4 \"Would you let an agent post...\": 'the loop' is unpacked by the three questions that follow it in the same paragraph; chunk 5 'Each good result' resolves inside the sentence. Closest to violating: chunk 1 'Each answer is one person's first draft' - 'answer' resolves to the three bullets directly above it in the same chunk.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "evidence": "chunk 5 \"The more you trust it, the less you notice\": 'On Day 2 each of you marked the one digest line you trusted least, and wrote down why' names the day and unpacks the beat in the same sentence; no 'the opening lecture'-style positional pointer to a file. Harm (callback aimed at a file whose position varies) absent: Day 2 is a fixed module-day label and the beat is described by its content.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "PASS",
+      "evidence": "chunk 5: 'On Day 2 each of you marked the one digest line you trusted least' - resolves: curriculum/exercises/apt101-read-the-digest.md L35 '## Phase 2: Mark the line you trust least' and L41 'Ask Claude to write it down with your reason'; the exercise is in the Day 2 module. No other 'the X you did' references in the file.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no live-demo or guess-before-reveal beat; chunk 5 questions ('What made you stop on that line?') ask for recall of a past exercise, no outcome is narrated before them and every setup sentence is verbed",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "evidence": "Every chunk carries a self-standing claim: chunk 1 'None of them comes from the agent'; chunk 2 'The analysis does not choose'; chunk 3 'What stays is what nobody can hand the agent'; chunk 4 'Choosing which, for which work, is the job'; chunk 5 'The trust is deserved. The noticing still has to be designed.' Smallest chunk (chunk 1, ~100 words) still holds three role bullets plus a claim.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "evidence": "Chunk 4 header 'Would you let an agent post your weekly update?' vs body L9 (slide) 'Take the team's weekly update... So you move one level up' - the body answers the question with four graded levels, so the header is true of the chunk. Closest: chunk 3 header 'Future leadership is about strategy, outcomes and customers' - body L31 names exactly those three under 'What stays'.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "evidence": "grep -c -E '\\bNot [a-z].*\\. Not ' over the five slide files -> 0 in each. Closest: chunk 2 'Which outcome... Which customer... Which bet... Which good idea you say no to' - four-leg anaphora but each leg carries new concrete content (outcome, customer, bet, no), so the third-leg-new-content test passes. Chunk 5 'The trust is deserved. The noticing still has to be designed.' is a contrast pair, not 'Not X. Not Y. Z.'. No superlatives, no number-plus-retraction, no empty verb triplet (chunk 4 'draft only; post after one of you reads it; post on its own when the check passes; never without a person' - each leg is a distinct concrete rung).",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "evidence": "Body dialect scan: none of surface-as-noun, firing, compendium, forcing function, beat, mood in the five slides. 'stance question' appears only in the maintainer block (Learning line), outside the body. Closest: chunk 4 'designing the loop' - ordinary engineering vocabulary, and unpacked by the three questions after it.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "evidence": "Chunk 1 bolds 'The product owner', 'The designer', 'The team lead' (3 handles, each <=4 words, none a whole sentence); other chunks carry 0 bold. The per-slide count is over the <=1 budget but the harm (bold-lead-sentence monoculture) is absent: three role labels scan as a role list. Rule question, not a finding; see suggestion.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "evidence": "Lecture is included at curriculum/trainings/agentic-product-teams-101/learn-faster-than-the-market.md L37 '[Lecture: Three jobs, rewritten](lectures/apt101-three-jobs-rewritten.md)', and the five slide files are inlined (expanded view shows 5 slide-file blocks); node scripts/check-slide-size.js --file ... -> 'slides: 5' so the checker saw all five chunks. Both-layout render not run by this judge.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/lectures/apt101-three-jobs-rewritten.md -> 'OK - 1 files, Phase/Step numbering consistent.' exit 0; no hand-numbered headers.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/lectures/apt101-three-jobs-rewritten.md -> 'OK - 1 files, no page-geometry pointers across the slide cut.' exit 0; grep -n -i -E 'below|above|earlier|following|see ' over the five slide files -> no hits.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-deixis.js --file ... --links -> no in-body cross-doc links reported; the only links are the five structural include paragraphs (lines 3,5,7,9,11), which are how the file inlines. Review surface only, never a gate.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/lectures/apt101-three-jobs-rewritten.md -> 'slides: 5 limits: 210 words / 6 bullets  oversized: 0' exit 0 (largest slide file is chunk 5, ~2.5KB).",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "evidence": "Lecture headings: chunk 2 'Your insight is the strategy: ...' and chunk 5 'The more you trust it, the less you notice' are claims. Closest: chunk 4 'Would you let an agent post your weekly update?' is a question and chunk 1 'What each of us is for when building gets cheap' a topic; headers are the maintainer's squint titles (STATUS L21 'headers are the squint titles') and the rule binds the claim requirement to law and consolidation slides, where a question hook that the body then answers does not waste the beat. Rule question, no finding.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "Closest: chunk 5 L (slide) 'So when the next result lands clean, ask the plain question: when did you last do this kind of work by hand?' follows 'Keep a habit of doing a piece of the work yourself now and then' - converts the habit into a prompt the room answers, so it adds a move. Chunk 4 'Choosing which, for which work, is the job.' is the only place the slide states its claim, so not a header-restating kicker. Chunk 3 para 2 overlaps chunk 2 ('which outcome', 'what they actually said') but adds the outcome/customer glosses and the leadership frame; not a doctrine recitation.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "git log -p --follow on all five slide files: each '## ' header line appears once, as an addition at file creation (what-each-of-us-is-for, one-level-up, trust-grows-attention-fades at a6b8901c/f8c46df1; your-insight, future-leadership at b758b28b); no commit changes a header without its bullets. Header covered, body read: chunk 4 header promises 'would you let it', body answers with the four levels.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    }
+  ],
+  "suggestions": [
+    {
+      "rule": "check_slides.md §9",
+      "line": 3,
+      "now": "- **The product owner** decides which idea is worth testing... / **The designer** knows... / **The team lead** agrees...",
+      "proposed": "- The product owner decides which idea is worth testing, and writes the signal that could say no. (and the same de-bolding for the designer and team lead bullets, which leaves the slide with zero bold)"
+    }
+  ],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "Slide files inlined; body is five include lines, so line numbers cite the include line of each chunk (raw L3,5,7,9,11) and chunk labels carry the slide content. Slide wording judged in slides/*.md by their own classes. Prefill had no prior instance, so all 17 rules authored here."
+}

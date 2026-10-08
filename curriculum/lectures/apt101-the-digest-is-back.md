@@ -4,8 +4,8 @@
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@99cb13c5)
-- judges @99cb13c5: writing PASS
+**Quality:** compendium-audited 2026-10-08 (writing@99cb13c5 story@ab62db01 technical@ab62db01 pedagogy@ab62db01 strategy@ab62db01 slides@ab62db01)
+- judges @ab62db01: writing PASS, story PASS, technical PASS, behavior N/A, pedagogy PASS, strategy PASS, slides PASS
 
 - **Time:** 3 minutes.
 - **Learning:** control — you read where you know most, and ask for a ranked list with sources instead of an essay. Nothing here tells what the digest found or why; *Why it agreed* names that.

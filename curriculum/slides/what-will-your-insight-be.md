@@ -5,6 +5,9 @@ The models your agents run on are your rivals' models too. The question stays op
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@68da919b technical@68da919b slides@68da919b)
+- judges @68da919b: writing PASS, technical PASS, slides PASS
+
 **STATUS:** composed from the squint (2026-10-07), new APT101 stance slide (✱ stance echo in `apt101-squint.md`), closes `apt101-where-you-go-from-here` and the training. Asks the stance again at the close (`story-craft.md` § Stance: plant, sharpen, answer, ask again). Open ending by design: the body poses the question and does not answer it; the training's only asking of it on Day 3 (the answer sits on `your-insight-is-the-strategy` without the stance wording, and `## Next` does not repeat it). Not taught (simulation training). Owes judging rounds.
 
 <!-- backing -->

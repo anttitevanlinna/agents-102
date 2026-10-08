@@ -1,0 +1,215 @@
+{
+  "class": "slides",
+  "file": "curriculum/lectures/apt101-your-material-is-the-moat.md",
+  "training": "agentic-product-teams-101",
+  "verdict": "PASS",
+  "body_sha": "6222799285b60659c568fc1d536c2217d457aa2546b122a314584d045db88e3d",
+  "shape_hash": "67fcf19cb67210e3",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "Your material is the moat",
+      "lines": "1-1"
+    },
+    {
+      "index": 1,
+      "heading": "Generic AI is everyone's; your material is yours",
+      "lines": "3-3 (slide include)"
+    },
+    {
+      "index": 2,
+      "heading": "Sharpen the insights, never the sources",
+      "lines": "5-5 (slide include)"
+    },
+    {
+      "index": 3,
+      "heading": "A file the team writes once steers every answer",
+      "lines": "7-7 (slide include)"
+    },
+    {
+      "index": 4,
+      "heading": "New interviews make the insight pages sharper, not longer",
+      "lines": "9-9 (slide include)"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "evidence": "chunk 2 \"Sharpen the insights\": \"The team's folder has three layers\" is the closest call: the folder is introduced by that sentence itself and its layers are enumerated at once; chunk 3 \"A file the team writes once\": \"the agent reads each time\" resolves to \"the agent\" named in chunk 1 (\"Put that in front of the agent\"); chunk 4 \"insight pages\" resolves to chunk 2's bolded \"Insight pages:\" lead. No forward pointers, no unresolved pronouns.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "evidence": "No chunk points at another file or lecture by position; grep \"the opening|earlier|previous|last slide\" over the four slide files returned no hits (exit 1).",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no \"the X you did/saw/caught\" references; \"the calls you made\" (chunk 1) is a general description of what a team holds, not a beat",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no live-demo or guess-before-reveal beat",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "evidence": "Smallest chunk, 4 \"New interviews make the insight pages sharper, not longer\" (79 words), carries a full mechanism (read pages, read new material, rewrite; cut claims) plus an ask (\"Read the cuts too\"); none is a wait-state slide.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "evidence": "chunk 2 header \"Sharpen the insights, never the sources\" vs body \"Let the agent rewrite a source and you lose the evidence\": body supports both halves. chunk 4 header \"sharper, not longer\" vs \"does not add a new section ... rewrites\": matches. Closest: chunk 1 header \"Generic AI is everyone's\" vs body \"much the same answer you would\": consistent.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "evidence": "grep -nE \"^\\s*Not |\\. Not \" over the four slide files returned no hits (exit 1). Closest: chunk 3 \"The product owner knows the outcome, the designer the customer's own words, the team lead what the agents may touch\": three parallel clauses but each leg carries distinct concrete content, not anaphora or an empty verb triplet. No self-grading superlatives, no number+retraction, no abstraction-noun stacks.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "evidence": "grep -niE \"surface|firing|compendium|forcing|beat\" over the four slide files: no hits in body (matches only in maintainer STATUS blocks, outside the body). Closest: \"insight pages\" / \"rules file\" are the team-facing names, ordinary product-team vocabulary.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "evidence": "chunk 2 carries three bolds (\"**Sources:**\", \"**Insight pages:**\", \"**The rules file:**\"): each is a 2-3 word handle on a named layer (checklist-item names), never a whole lead sentence; other three chunks carry no bold. Closest to violating, but within the handle allowance.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "evidence": "Body is four include-links `[Title](slides/<id>.md)`; the expanded view (expand-md) inlined all four as `##` chunks, and check-slide-size --report listed 4 slides for this file, so all are in the composed deck.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/lectures/apt101-your-material-is-the-moat.md → \"OK — 1 files, Phase/Step numbering consistent.\" exit 0; no hand-numbered headers.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-deixis.js --file ... --report → exit 0, no matches; grep for above|below over the slide files returned no hits.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no in-body links beyond the structural includes; rule states there is no gate here",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/lectures/apt101-your-material-is-the-moat.md --report → \"oversized: 0\", largest 106 words / 0 bullets (limits 210 / 6), exit 0.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "evidence": "All four lecture headings are claims (\"Generic AI is everyone's; your material is yours\", \"Sharpen the insights, never the sources\", \"A file the team writes once steers every answer\", \"New interviews make the insight pages sharper, not longer\"); no label headings in a lecture.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "Closest: chunk 3 last sentence \"A file written by all three of you steers better than one written by whoever got there first\" partly echoes the header but adds a new claim (co-authorship) and the three-seat division before it; chunk 2 last paragraph adds traceability as the reason for the header, not a restatement; chunk 4 \"Read the cuts too\" is a move. No doctrine restatement, design commentary or koan kicker.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no header rename over inherited bullets; slides were composed fresh from the squint (maintainer STATUS 2026-10-07)",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    }
+  ],
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "Brief built normally (17 rules, prefill parked none). Slide files live in curriculum/slides/, resolved via expand-md."
+}

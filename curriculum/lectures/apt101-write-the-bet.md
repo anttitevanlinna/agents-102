@@ -8,6 +8,9 @@
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@53052a3e story@53052a3e technical@53052a3e pedagogy@53052a3e strategy@53052a3e slides@53052a3e)
+- judges @53052a3e: writing PASS, story PASS, technical PASS, behavior N/A, pedagogy PASS, strategy PASS, slides PASS
+
 - **Time:** 8 minutes.
 - **Learning:** control + team — the signal is agreed before the agents build, and the team maps its assumptions together
 

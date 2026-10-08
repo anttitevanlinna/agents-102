@@ -3,7 +3,7 @@
   "file": "curriculum/exercises/apt101-grow-the-tree.md",
   "training": "agentic-product-teams-101",
   "verdict": "PASS",
-  "body_sha": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+  "body_sha": "c75b8a23ac4c214984b67cce4e32a320d3f00679b82886c46c19324851228ab5",
   "shape_hash": "6efb0e72e83498be",
   "rules_evaluated": [
     {
@@ -11,7 +11,7 @@
       "rule_index": 1,
       "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": "view greps banned_words, em_dash, ritual_ceremony, leverage_verb: 0 body hits each (all CLEAN, planted-proof). Own grep landscape over lines 1-77: 0. Expanded fences carry one em-dash each in the reused three-minds-one-synthesis-1/-2 prompts (fence-exempt, judged at home).",
+      "evidence": "view greps em_dash, banned_words, leverage_verb: 0 body hits each, status CLEAN with planted_proof; awk em-dash line count over body: 0; own grep practice/honest: 0.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false
@@ -21,7 +21,7 @@
       "rule_index": 2,
       "rule_lead": "Ritual / ceremony — hard ban",
       "verdict": "PASS",
-      "evidence": "view grep ritual_ceremony: 0 body hits; own grep for practice(n) over lines 1-77: 0.",
+      "evidence": "view grep ritual_ceremony: 0 body hits (CLEAN); own grep \\bpractice: 0.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false
@@ -31,7 +31,7 @@
       "rule_index": 3,
       "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
       "verdict": "PASS",
-      "evidence": "view greps session_biography, dated_line: 0 body hits. Maintainer block L80-99 read for transition verbs: closest L85 'Reuse: Agents 101 three-minds-one-synthesis ... unchanged;' states a relation to the source, not a diff; L81 pointer is the stamper's Quality-line format. No settled/retired/no longer/previously clauses.",
+      "evidence": "view greps session_biography and dated_line: 0 body hits. Maintainer tell-regex (settled|retired|no longer|used to be|was changed to|previously|swapped|dropped|renamed ... year) over the tail: empty, exit 1. Closest L85 'unchanged' states the reuse relation to the Agents 101 keys, a present fact not a transition; L80 is the Quality stamp.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false
@@ -41,8 +41,748 @@
       "rule_index": 4,
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "closest L27 'keeping whose each branch was' decodes slowly but is not wrong register; body is concrete and warm (L19 'Put down the opportunity only you would think of.'). Poster-wrapper grep (Remember|Hold onto|Keep in mind|Never forget): 0. L15 'No talking, no Claude.' is a phase rule, not a refusal contradicted later (Claude acts in Phase 2). Suggestion offered for L27/L72 wording.",
+      "evidence": "Register: warm, concrete, role-addressed. Closest to a slip L25 'The designer drives at the shared screen: the designer sat closest to what customers actually said.' stays plain and literal; no atmospheric imagery; retain-this wrapper grep (Remember|Hold onto|Keep in mind|Never forget): 0. Negation callout L15 'No talking, no Claude.' is not contradicted: Claude enters only at L27.",
       "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 6,
+      "rule_lead": "Credit original when paraphrasing named technique.",
+      "verdict": "PASS",
+      "evidence": "L7 'Teresa Torres draws it' credits the originator at point of use. Martin's what-would-have-to-be-true (L58) is credited in maintainer L87, which the rule allows when inline credit is not natural. Creator-name and author-we greps: 0.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 7,
+      "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
+      "verdict": "PASS",
+      "evidence": "view grep the_student: 0. Closest L9 'The trainer has set up a frame for the tree on your team board.' is the one permitted sparing 'the trainer' mention and tells the student where the frame comes from. Delivery-mechanics grep (the trainer shows, before students start): 0. Optional flatter wording in suggestions.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 8,
+      "rule_lead": "Don't smuggle terms of art from maintainer into body.",
+      "verdict": "PASS",
+      "evidence": "Closest L58-60 stance names (assumption tester, reframer, planner) are each defined by their question in the same bullet and cued by L43 'different stances'; 'subagent' L39 follows the plain 'three minds' L37. No kernel, grill-me or other maintainer-only term in body.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 9,
+      "rule_lead": "Over-hedge detector.",
+      "verdict": "PASS",
+      "evidence": "Own grep for reassurance tells (no penalty, fine way to, it's OK if, not on the hook, not a downgrade, no consolation): 0. Closest L19 'The ones all three of you saw will turn up anyway.' gives the reason for the instruction rather than absolving the reader.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 11,
+      "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
+      "verdict": "PASS",
+      "evidence": "One student-side attribution (Torres, L7). Martin and Rumelt appear only in maintainer L87. Cap not reached.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 12,
+      "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
+      "verdict": "PASS",
+      "evidence": "Closest L76 'The tree is not finished, and it should not be.' is true as stated (a 45-minute tree that Choose the bet narrows), so no overreach needing a downstream carve-out.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 13,
+      "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
+      "verdict": "PASS",
+      "evidence": "Own grep vendor: 0; positioning flag phrases (not an aspirational, not theoretical, grounded in actual, from the person running it): 0. Closest L9 Miro-connector fallback is a practical branch, not defensive positioning.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 14,
+      "rule_lead": "Watch out for planting jargon too early.",
+      "verdict": "PASS",
+      "evidence": "Jargon-list grep (embedding|vector|RAG|retriev|pipeline|orchestrat|schema|architecture|frontmatter|inference|token|context window): 0. Closest L39/L43 'subagents', operational copy: preceded by plain 'three minds' (L37) and licensed in prompt-adjacent lead-ins by check_prompts §25; the Cowork fork says 'agents'.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 15,
+      "rule_lead": "Audit closer when trimming body-prose forcing function.",
+      "verdict": "PASS",
+      "evidence": "Closers read cold: L76 'You choose from it in Choose the bet.' (it = the tree, one candidate); L62 'hand the triage back' (the triage = the longer list in the same sentence); L31 'ask for the reason' (the reason for the cut). No dangling pronoun with two referents.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 17,
+      "rule_lead": "No combative verbs about the agent in body prose.",
+      "verdict": "PASS",
+      "evidence": "Own grep (bark|order|command|whip|force|drag|boss|shout|scold|lecture): 0. Closest L39 'stop it, steer narrower' is a peer-flat interrupt of a subagent run, not in the combative list; L31 'Push back on a merge' targets the output.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 18,
+      "rule_lead": "Headers must be literally true about the mechanism.",
+      "verdict": "PASS",
+      "evidence": "Headers literally true: closest 'Phase 3: Read the evidence three ways' matches the three stance reads over memory (L37-60); 'Phase 2: Merge with every name kept' matches the merge that keeps names; no spatial metaphor, no 'other X'.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 19,
+      "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
+      "verdict": "PASS",
+      "evidence": "Closest L15 'No talking, no Claude.' negates the reader's actual prior (ask Claude at once) and phase 1 is deliberately solo. L76 'not finished, and it should not be' negates a real expectation. No 'That is the X' drumroll, no bold-label echo, no citation duplication (no URLs).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 20,
+      "rule_lead": "Don't state a count the adjacent list already holds.",
+      "verdict": "PASS",
+      "evidence": "Closest L39 'Three subagents fanning out at once.' and L37 'three minds': the numeral names the fan-out of the reused prompt and the role bullets (L58-60) sit 17 lines away after the fence, so no adjacent list holds it; header 'three ways' is a header numeral, exempt. L7 'the three sketches' counts people, not a list.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 21,
+      "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
+      "verdict": "PASS",
+      "evidence": "Superlative grep (only|always|never|nothing else): 2 body lines, both scoped: L19 'the opportunity only you would think of' and L25 'every branch only one person found' describe this team's own board, not how the world works.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 26,
+      "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
+      "verdict": "PASS",
+      "evidence": "Own grep 'tells you|you'll know|tell you whether': 0. Closest L25 'marks on the board every branch only one person found, so none of them goes missing' points at the observable outcome on the board.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 27,
+      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
+      "verdict": "PASS",
+      "evidence": "Advisory rule, cannot be REVISE. Closest L7 previews the three stages that the Phase headers then carry; it also defines the tree, which the headers do not, and the merge step is stated once in each place at a different grain.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 28,
+      "rule_lead": "Body prose stands without the trainer — no cue-card prose.",
+      "verdict": "PASS",
+      "evidence": "Closest L15 'No talking, no Claude.' / 'Each of you, in your own sticky colour, on your own side of the frame.' and L70 'Back to the board.': verbless imperatives, but each resolves on a muted read (the Miro board is named at L7 and L9). Report-only grep list (Take a guess, before it runs, on the screen, Let's go, Your turn): 0.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 1,
+      "rule_lead": "Aspirational destination, never corrective gap.",
+      "verdict": "PASS",
+      "evidence": "Own grep for tier-pegging (at your scale|beginner|more experienced|senior would): 0. Closest L19 'Put down the opportunity only you would think of.' is aspirational contribution, not a corrective gap; no identity criterion split.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 2,
+      "rule_lead": "Earn every technical term on first use.",
+      "verdict": "PASS",
+      "evidence": "Closest L9 'Miro connector': the same sentence earns it (the screenshot or export is the stand-in when it is off); L7 defines the opportunity solution tree on first use; 'subagents' L39 follows 'three minds' L37. Bare MN grep: 0.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 3,
+      "rule_lead": "Business-audience word ban (Agents 101 default).",
+      "verdict": "PASS",
+      "evidence": "Jargon-ban grep over body (embedding|vector|RAG|retriev|pipeline|orchestrat|schema|architecture|frontmatter|inference|token|context window): 0. SVP test closest L43 'synthesize' and L39 'subagents', both plain in context.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 4,
+      "rule_lead": "Memory vs context — use deliberately.",
+      "verdict": "PASS",
+      "evidence": "Body grep memory|context: 1 hit. L37 'send three minds through your memory' uses memory as the persistent memory/ artefact, correctly; no 'context compounds' blur.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 5,
+      "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
+      "verdict": "PASS",
+      "evidence": "Golden path with needed rescues kept in body: L9 screenshot fallback (plausible failure, non-obvious move) and L39 'If one starts reading the world, stop it, steer narrower, then say continue' (one-move rescue). Neither is routed below the fence; no FAQ branches.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 6,
+      "rule_lead": "Trust Claude's defaults for structure.",
+      "verdict": "PASS",
+      "evidence": "Body prescribes no output structure; closest L27 'keeping each branch's names' is the teaching constraint of the merge, not a shape spec.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 8,
+      "rule_lead": "Don't smuggle another module's voice.",
+      "verdict": "PASS",
+      "evidence": "Closest L39 'fanning out at once' is the Agents 101 three-minds voice, kept deliberately for the reused fork; no other module's mood borrowed.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 9,
+      "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
+      "verdict": "PASS",
+      "evidence": "Look-lines carry object and tell: L58-60 each give the question to read the evidence by; L25 'checks each merged branch against the outcome at the root'; L31 push-back cues. L17 'Write the opportunities you have seen' is a direct you-do-it (carve-out). Closest speech verbs L31 'ask for it back' / 'ask for the reason': addressee is the merge's author in the preceding clause and L27 (Claude), so not the room. Hedge adverb grep (carefully|closely|thoroughly|properly): 0.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 11,
+      "rule_lead": "No \"What research says\" callout boxes",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no research callout box in body (grep 'research says': 0)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 12,
+      "rule_lead": "Student moves stay in conversation with agent.",
+      "verdict": "PASS",
+      "evidence": "Phase 1 and 4 sticky work is team-board work, not an editor, terminal or file-edit primitive; the file edit in phase 4 is handed to Claude (L72). Forcing function stays in the conversation.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 14,
+      "rule_lead": "No em-dashes. Simple sentences.",
+      "verdict": "PASS",
+      "evidence": "view grep em_dash: 0 body hits (CLEAN, planted proof); awk em-dash line count: 0. Closest long sentence L70 is colon-and-comma, three parallel clauses, no sub-clause nesting.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 17,
+      "rule_lead": "Section headers use command verbs when section is about doing something.",
+      "verdict": "PASS",
+      "evidence": "Phase headers L11, L21, L33, L66 all lead with the student's verb (Sketch, Merge, Read, Question); no Claude in any header. Canonical H1 'Exercise: ...' shape.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 18,
+      "rule_lead": "Inline links use target's title, never filename.",
+      "verdict": "PASS",
+      "evidence": "Cross-references use titles: *Pick the outcome* (L7), *Choose the bet* (L76); no filenames as link text. Ordinal grep: 4 hits, all the Phase N headings themselves (L11, L21, L33, L66), none a reference. `./crux.md` is the student's own artefact, not a curriculum surface.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 20,
+      "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
+      "verdict": "PASS",
+      "evidence": "No first student-authored write of a contested word here: L37 reads the student's memory, L43/L50 spawn (sub)agents inside the prompt, and the rt-code/rt-cowork fork names the primitive per runtime.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 21,
+      "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
+      "verdict": "PASS",
+      "evidence": "L7 'Then Claude merges' and L25 'While Claude merges' are the nearest to the agent-as-actor default, but APT101 siblings use Claude throughout (this file 8 Claude : 0 agent; sibling exercises likewise), so the audit signal is training-wide, not a defect of this file. Not owed; optional swap in suggestions.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "21b",
+      "rule_lead": "Session / task / run split (all trainings).",
+      "verdict": "PASS",
+      "evidence": "The only session/task wording is the L37 runtime fork 'first session' / 'first task'; no noun-run for the agent sitting. Run-grep: 0.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 22,
+      "rule_lead": "No time-of-day anchors in body prose.",
+      "verdict": "PASS",
+      "evidence": "Own grep (tomorrow|overnight|tonight|this morning|yesterday|last night|next morning): 0 in body. Closest L60 'in three months' is a planning horizon, not a time-of-day anchor.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 23,
+      "rule_lead": "Reflection beats stay invisible in flow.",
+      "verdict": "PASS",
+      "evidence": "Own grep (pause|sit with|let it land|take a moment|breathe): 0. No self-aware reflection header; Phase 3 and 4 are verb headers over actions.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 24,
+      "rule_lead": "No meta-ask when student has already decided.",
+      "verdict": "PASS",
+      "evidence": "Closest L72 'the designer asks Claude to record the challenges': the stickies are already written by the people, Claude records them; no prompt asks the student to restate a decision they hold.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 25,
+      "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
+      "verdict": "PASS",
+      "evidence": "Student artefacts are `./crux.md` (L15, L43) and the tree file (L72, `team/tree.md` in the registry prompt); no .txt or .docx.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 26,
+      "rule_lead": "Cut NVA: true but not moving student forward.",
+      "verdict": "PASS",
+      "evidence": "NVA screen: closest L9 'If your company has not enabled the Miro connector, a screenshot or export of the frame goes into the chat instead.' changes what the student does and is a maintainer-recorded failure mode (L95 'no Miro connector throughout (screenshot fallback)'), so it stays. L7 definition of the tree is not obvious to a working PM and stays.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 27,
+      "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
+      "verdict": "PASS",
+      "evidence": "Own grep (read it|look at it|notice|study the): 0. No chat-print followed by a read-it line.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 28,
+      "rule_lead": "Forward-callout closer: student as grammatical subject.",
+      "verdict": "PASS",
+      "evidence": "Closest L76 'You choose from it in *Choose the bet*.': student is the grammatical subject of a declarative, no imperative watch-for, no role gating.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 30,
+      "rule_lead": "Echo the training's theory spine before inventing a synonym.",
+      "verdict": "PASS",
+      "evidence": "House vocabulary used: L39 'steer', 'continue', L70 'stance' (cued at L43) and L25 'against the outcome at the root'; no invented synonym for an earned frame.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 31,
+      "rule_lead": "Name the artifact, not the act.",
+      "verdict": "PASS",
+      "evidence": "Own grep (typing|type in|tell it to|say to Claude): 0. L39 say *'continue'* is a quoted utterance, an established prompt trigger (rule 31 widening).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 32,
+      "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
+      "verdict": "PASS",
+      "evidence": "Closest L9 states the outcome (a screenshot or export goes into the chat), not a recipe; the fallback is maintainer-set (L95), so not an escape hatch the writer invented. 32a settings/flags grep (CLAUDE_CODE|settings.json|--flag|env var|permission mode): 0.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 33,
+      "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
+      "verdict": "PASS",
+      "evidence": "Subject test: L7 (student and Claude merging the student's tree) keeps. Closest L76 'You choose from it in *Choose the bet*.' names a later exercise but is the reason the tree stops unfinished here (carve-out: motive for the step in hand); deletion test loses 'and it should not be' its reason. Not cartography.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 36,
+      "rule_lead": "Trust the prompt over the scaffold.",
+      "verdict": "PASS",
+      "evidence": "The one scaffold is the trainer-built tree frame on the Miro board (L9), an artefact the student would not produce; the tree content itself is written by the students and Claude.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 38,
+      "rule_lead": "Exercise headers pass the build-squint test.",
+      "verdict": "PASS",
+      "evidence": "H1 'Exercise: Grow the *opportunity* tree' names the construction (a tree), not the process; phase headers are verb-first moves a cold reader can reassemble.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 39,
+      "rule_lead": "Self-study is invisible in the training flow.",
+      "verdict": "PASS",
+      "evidence": "Own grep (self-study|Teacher Claude): 0 in body.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "PASS",
+      "evidence": "Registry prompts used here (apt101-d2-merge-the-tree, apt101-d2-add-the-challenges, three-minds-one-synthesis-1/-2/-3): grep '\\[' in each file: 0. No placeholder; merge prompt asks 'Ask us which sticky colour is whose if you don't know.'",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": "Lead-ins: L27 17 words, L43 and L50 17 words, L72 18 words, all command-led; L62 'If the answer comes back with a longer list of issues than you have time for, hand the triage back.' is 20 words, at the ceiling and a conditional with the trigger, not an enumeration of the fence. Harm (bloated skim-cue on a two-line fence) is marginal; shorter wording offered in suggestions.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "PASS",
+      "evidence": "No inline fenced prompt in body (fence_ranges empty); markers expand to the canonical lead-in, label, fence shape at build.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "PASS",
+      "evidence": "Chain by back-reference and deterministic path: merge prompt reads ./crux.md and titles its frame 'Merged tree' and writes team/tree.md; add-challenges reads 'the Merged tree frame' and 'team/tree.md' by name.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 6,
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "PASS",
+      "evidence": "Merge prompt (apt101-d2-merge-the-tree) never mentions the challenges or the three-minds step that follow; closest its last line asks only for team/tree.md with quoted sources.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout (`",
+      "verdict": "PASS",
+      "evidence": "grep '\\*' in all five registry prompts: 0 asterisks; lists use hyphens.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "PASS",
+      "evidence": "Fork L41-54: paired <div class=rt-code> / <div class=rt-cowork>, shared chip via registry, lead-ins differ only 'subagents' / 'agents' (runtime wording); both prompts the same shape.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 11,
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+      "verdict": "PASS",
+      "evidence": "Cowork fork is not shorter: three-minds-one-synthesis-2 matches -1 line for line (Agent 1-3 for Subagent 1-3), lead-ins equal length (17 words).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 12,
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "PASS",
+      "evidence": "Closest apt101-d2-add-the-challenges: 'Add each challenge under its branch in team/tree.md ... Leave every existing branch, name and source sentence untouched.' names append mode explicitly; merge prompt creates a new tree.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 13,
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "PASS",
+      "evidence": "Merge prompt requires 'quote the source sentence behind it word for word, with its file and whose it is', the sentence-level integrity check of (b).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "PASS",
+      "evidence": "Merge prompt first-creates team/tree.md; add-challenges edits in place and says 'Leave every existing branch ... untouched', so no overwrite-or-new pause.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 21,
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "PASS",
+      "evidence": "Prompts that write ('Then write it to team/tree.md', 'Add each challenge under its branch') are non-irreversible and end with a post-action report ('Tell me which challenges you couldn't place'); no pre-confirm gate.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "PASS",
+      "evidence": "Destinations are explicit: team/tree.md, ./crux.md (deliberate root), module-3/stances/ (reused fork); no naked filename.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "PASS",
+      "evidence": "grep for cd or absolute paths in the five prompts: none; subpaths only.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 25,
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "PASS",
+      "evidence": "L37 'send three minds through your memory, each from a different angle' and the role bullets L58-60 give the why of the parallel stances beside the fence; subagent stays in the Code prompt.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 27,
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "PASS",
+      "evidence": "team/tree.md consumers named in the registry frontmatter and maintainer L90-91 (read by three-minds-one-synthesis, add-challenges, whats-behind-each-branch, Choose the bet); module-3/stances/ and ## Answer read by hallucination-bakeoff-1 (maintainer L85).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly `",
+      "verdict": "PASS",
+      "evidence": "Body grep '\\*\\*Prompt': 0 inline labels; every prompt is a {{prompt:key}} marker (L29, 45, 52, 64, 74) so the label is generated.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 29,
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "PASS",
+      "evidence": "Merge prompt starts from the state the students built (stickies on the board): 'Merge our three sketches into one opportunity solution tree' is a normal work request, with the read of the board as setup rather than an interview.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "PASS",
+      "evidence": "All five prompts are {{prompt:key}} markers on their own line (L29, 45, 52, 64, 74), each under a lead-in; no inline **Prompt** block.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 34,
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "PASS",
+      "evidence": "Binding logic lives in the fence: merge prompt carries the board-unreachable fallback ('say so, and I'll paste a screenshot'), the colour-ownership question and 'including any on its edge'; add-challenges carries the same board-read and colour rule.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "PASS",
+      "evidence": "Merge prompt is split by move (read, merge with bullets, draw, write); add-challenges is three paragraphs (read, add, tell). Reused -1 splits by stance.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 38,
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "PASS",
+      "evidence": "Pairs checked: L27 'merge the three sketches into one tree' / prompt 'Merge our three sketches into one opportunity solution tree'; L43 'spawn three subagents with different stances' / prompt-1 'Spawn three subagents in parallel, each with a different stance'; L72 'record the challenges' / 'Add each challenge'. Closest to drift L62 'hand the triage back' / prompt-3 'You choose fixes.': no shared verb or noun, though the sense is parallel (the Agents 101 lead-in was 'ask Claude to choose the fixes'). Harm is a small rhyme break, not a misread; swap in suggestions.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 40,
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "PASS",
+      "evidence": "Phase 3 is warm (L37 'back in your first session'; prompt-1 'my curated memory/'); merge and add-challenges survive a cold open because they name files and the board frame by title. Closest 40b: prompt-1 parenthetical 'the layer the previous exercise integrated the retrievals into' is a reused, maintainer-declared 'unchanged' clause (L85) that serves the student reader; unverified for APT101 order, see notes.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "PASS",
+      "evidence": "Dose first: the three-subagent run is the one possibly long prompt and the body carries the steer (L39 'If one starts reading the world, stop it, steer narrower, then say continue'), so the in-fence tail is not owed. Merge prompt is a single board read and a write, not a multi-minute scan.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 45,
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "PASS",
+      "evidence": "Single-segment dirs only: team/tree.md, module-3/stances/ (reused fork, maintainer L85 and L91), ./crux.md; no '../'.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 46,
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "PASS",
+      "evidence": "Merge prompt specifies shape only where the next step depends on it ('a new frame ... titled Merged tree', source sentence quoted); no trailing shape padding.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 47,
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no add-X-and-regenerate prompt in this exercise",
       "fix_hint": null,
       "blocking": false
     },
@@ -53,48 +793,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "not an article rough-cut",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 6,
-      "rule_lead": "Credit original when paraphrasing named technique.",
-      "verdict": "PASS",
-      "evidence": "L7 'Teresa Torres draws it' credits the OST once in body; Martin and Rumelt ride inside the reused fence; 1-2-4-All named in maintainer L87 per the rule. Creator-name grep (Antti|the creator|the author): 0; author_we grep: 0. L3 '**Time:** 45 minutes.' sits on line 3, total only; phase markers 8+10+12+15 = 45.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 7,
-      "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
-      "verdict": "PASS",
-      "evidence": "closest L9 'The trainer has set up a frame for the tree on your team board.' states a fact the student needs (who built the frame, where it is), not delivery mechanics; the_student grep: 0; roles (designer, product owner, team lead) used, never 'the student'.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 8,
-      "rule_lead": "Don't smuggle terms of art from maintainer into body.",
-      "verdict": "PASS",
-      "evidence": "closest L31 'single-name branch': coinage is earned by L25 'every branch only one person found' and the merge fence; 'assumption tester' / 'reframer' defined at L58-60. No maintainer-only term (strategy-doc vocabulary) in body.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 9,
-      "rule_lead": "Over-hedge detector.",
-      "verdict": "PASS",
-      "evidence": "closest L31 'If a cut has no reason you can argue with, ask for the reason.' is an instruction with a mechanism, not reassurance; flagged phrases (no penalty, fine way to, it's OK if, not a downgrade): 0 in lines 1-77.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_writing.md",
@@ -103,58 +805,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no user-specified verbatim frame or reference artefact",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 11,
-      "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
-      "verdict": "PASS",
-      "evidence": "one body mention of a practitioner (L7 Torres); Martin/Rumelt appear only inside the reused fence, not body prose.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 12,
-      "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
-      "verdict": "PASS",
-      "evidence": "closest L76 'The tree is not finished, and it should not be.' holds broadly (an opportunity tree is a living artefact) so there is no overreach needing a carve-out paragraph.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 13,
-      "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
-      "verdict": "PASS",
-      "evidence": "vendor grep: 0; flag phrases (not an aspirational, not a vendor, this isn't marketing, grounded in actual): 0. Closest L7 'Teresa Torres draws it with the outcome at the root' attributes without defending.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 14,
-      "rule_lead": "Watch out for planting jargon too early.",
-      "verdict": "PASS",
-      "evidence": "closest L39 'Three subagents fanning out at once.' lands one sentence after L37's plain 'three minds ... each from a different angle', and gather-the-evidence (beat 3) already earned 'connector'. 'opportunity solution tree' is defined in L7 before any operational copy uses it. Headers and lead-ins use plain words.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 15,
-      "rule_lead": "Audit closer when trimming body-prose forcing function.",
-      "verdict": "PASS",
-      "evidence": "closest L76 'You choose from it in *Choose the bet*.' 'it' resolves to 'The tree' in the sentence before; L31 closer 'ask for the reason' resolves to the cut's reason. No spatial/temporal metaphor standing in for an action.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_writing.md",
@@ -163,58 +817,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no **What happened:** block (optional; default is to omit)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 17,
-      "rule_lead": "No combative verbs about the agent in body prose.",
-      "verdict": "PASS",
-      "evidence": "closest L39 'stop it, steer narrower' (steer is peer-flat); L31 'Push back' is the corpus term, not on the combative list. Combative-verb grep (bark|order|command|whip|force|drag|boss|shout|scold): 0 in lines 1-77.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 18,
-      "rule_lead": "Headers must be literally true about the mechanism.",
-      "verdict": "PASS",
-      "evidence": "closest H2 'Phase 3: Read the evidence three ways' is literally true of the three stance reads at L56-60; no spatial metaphor, no 'other X' headers.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 19,
-      "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
-      "verdict": "PASS",
-      "evidence": "closest L25 'so none of them goes missing in the merge' states a purpose, not an echo. Deictic-drumroll grep ((That|This) (is|are)): 1 hit at L70, a relative 'the branch that is really a solution', not a drumroll. L15 'No talking, no Claude.' negates the reader's actual prior (chatting while sketching). No bold-label echo in L58-60.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 20,
-      "rule_lead": "Don't state a count the adjacent list already holds.",
-      "verdict": "PASS",
-      "evidence": "closest L39 'Three subagents' and L37 'three minds': neither sits adjacent to a list of the same items (the roles list at L58-60 carries no numeral, 'Each of you keeps the read closest to your role:'). 'three sketches' / 'three of you' count people, not list items. Header numeral at 'three ways' is exempt.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 21,
-      "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
-      "verdict": "PASS",
-      "evidence": "closest L19 'only you would think of' and L25 'only one person found' are scoped to a person and the team's own board, not claims about how the world works; no always/never/nothing-else slogans (grep: only L19, L25).",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_writing.md",
@@ -223,8 +829,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no <!-- backing --> block or source stamps (signals has_backing_block false)",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_writing.md",
@@ -233,8 +841,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "sweep-process rule; not a property of this body",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_writing.md",
@@ -243,8 +853,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "trainer-doc authoring rule; this file is a student exercise",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_writing.md",
@@ -253,98 +865,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no trainer-facing built page in scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 26,
-      "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
-      "verdict": "PASS",
-      "evidence": "closest L25 'the product owner checks each merged branch against the outcome at the root' points at the outcome, and the merge fence says 'quote the source sentence behind it word for word ... so any of us can check the branch from team/tree.md alone'. Neither is a self-witnessing instrument.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 27,
-      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
-      "verdict": "PASS",
-      "evidence": "advisory rule. Closest L39 'Three subagents fanning out at once.' restates the fan-out that L37 and the fence at L43-45 already carry; suggestion offered with a shorter replacement, no gate.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 28,
-      "rule_lead": "Body prose stands without the trainer — no cue-card prose.",
-      "verdict": "PASS",
-      "evidence": "muted read: closest L39 'Three subagents fanning out at once.' is verbless but its referent resolves on the page (the subagents L43 names); L15 'No talking, no Claude.' resolves fully. Cue-list grep (Take a guess|before it runs|on the screen|^Let's go|^Go\\.|Your turn): 0. Harm (referent only the trainer's finger resolves) absent; suggestion on L39 under 27.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 1,
-      "rule_lead": "Aspirational destination, never corrective gap.",
-      "verdict": "PASS",
-      "evidence": "closest L19 'Put down the opportunity only you would think of.' frames a contribution, not a gap. Tier/identity grep (beginner|senior|at your scale|more experienced|the difference is|the real test is|you know you): 0. L9 connector fallback is plausibly failable (company may not have enabled it) and is new to this gate.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 2,
-      "rule_lead": "Earn every technical term on first use.",
-      "verdict": "PASS",
-      "evidence": "closest L39 'subagents' (see §3) is glossed by L37 'three minds'; L9 'Miro connector': 'connector' was earned in gather-the-evidence (beat 3). L7 defines 'opportunity solution tree' in one breath. Bare MN abbreviations: 0 (grep).",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 3,
-      "rule_lead": "Business-audience word ban (Agents 101 default).",
-      "verdict": "PASS",
-      "evidence": "jargon-ban list grep (embedding|vector|RAG|retriev|pipeline|orchestrat|schema|architecture|frontmatter|inference|token|context window): 0 in lines 1-77. 'subagent' is on the list: L39 is its first body use in this training's order, one sentence after the plain 'three minds', and vocabulary.md fixes subagent as the platform word. Suggestion not owed.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 4,
-      "rule_lead": "Memory vs context — use deliberately.",
-      "verdict": "PASS",
-      "evidence": "closest L37 'send three minds through your memory': memory = the memory/ the student built, used as the persistent artefact; no 'context' used in either sense.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 5,
-      "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
-      "verdict": "PASS",
-      "evidence": "closest L9 'If your company has not enabled the Miro connector, a screenshot or export of the frame goes into the chat instead.' is plausible failure plus non-obvious rescue, so it stays in body; L39 stop/steer recovery likewise. Nothing is routed below the fence that a student needs.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 6,
-      "rule_lead": "Trust Claude's defaults for structure.",
-      "verdict": "PASS",
-      "evidence": "closest the merge fence's shape specs ('titled Merged tree', quote the source sentence): load-bearing, because the Phase 4 fence finds the frame by that title and team/tree.md is read downstream.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_student_facing.md",
@@ -353,28 +877,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no Q1/Q2/Q3 retro or debrief in this exercise",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 8,
-      "rule_lead": "Don't smuggle another module's voice.",
-      "verdict": "PASS",
-      "evidence": "closest L76 closer: convergent, hands the tree to the next beat; no joyful-creation or long-running mood imported from another module.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 9,
-      "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
-      "verdict": "PASS",
-      "evidence": "closest L25 'the product owner checks each merged branch against the outcome at the root': the criterion's authority is the student (the product owner knows the outcome) and the fence already asks Claude to list cuts with reasons. L31 look-lines name object and tell ('If your single-name branch disappeared into a bigger one, ask for it back'). Speech verbs have addressees (ask Claude; ask for the reason). Name-verb grep: 0. Attitude adverbs (carefully|closely|thoroughly|properly): 0.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_student_facing.md",
@@ -383,28 +889,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "self-study simulation rule; no simulation persona here",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 11,
-      "rule_lead": "No \"What research says\" callout boxes",
-      "verdict": "PASS",
-      "evidence": "grep 'What research says': 0.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 12,
-      "rule_lead": "Student moves stay in conversation with agent.",
-      "verdict": "PASS",
-      "evidence": "closest L15 'No talking, no Claude.': the sketch and the challenge stickies are the alone-before-merge design on the Miro board, not an editor, terminal or file-edit move; merge, evidence read and file write all run through Claude in chat.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_student_facing.md",
@@ -413,138 +901,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no CLAUDE.md mention in body (grep 0)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 14,
-      "rule_lead": "No em-dashes. Simple sentences.",
-      "verdict": "PASS",
-      "evidence": "em_dash grep: 0 body hits. Sentence length: L70 second sentence runs 55 words; suggestion offered to split it into the L58-60 list shape.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 17,
-      "rule_lead": "Section headers use command verbs when section is about doing something.",
-      "verdict": "PASS",
-      "evidence": "H2s: Sketch alone / Merge with every name kept / Read the evidence three ways / Question the tree from your role all lead with the student's verb; no header names Claude. H1 'Grow the opportunity tree' leads with a command verb. Closest: 'Merge with every name kept' (student is the actor via 'kept').",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 18,
-      "rule_lead": "Inline links use target's title, never filename.",
-      "verdict": "PASS",
-      "evidence": "closest L7 '*Pick the outcome*' and L76 '*Choose the bet*' match the H1 titles 'Pick the outcome' / 'Choose the bet'; no filenames or backticked curriculum paths. Ordinal grep (Step N|Exercise N|third bullet): 0; 'Phase N' appears only in the file's own H2s.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 20,
-      "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
-      "verdict": "PASS",
-      "evidence": "closest L37 'your memory': the memory/ was authored in Day 1 and the collision with Claude Code's /memory is not re-earned here; no skill/rule/plan authored in this exercise. Deictic grep (here|above|below): 1 hit, L7 'hanging below' describes tree geometry, not beside a write verb.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 21,
-      "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
-      "verdict": "PASS",
-      "evidence": "closest L7 'Then Claude merges the three sketches' and L25 'While Claude merges' are autonomous work phrased with the product name (the agent is the default). Body count: Claude x8 (L7, L15, L25, L27, L37, L43, L50, L72), 'the agent' x0; six are addressee/contrast uses, so under the 10:0 audit signal. Suggestion offered, not a gate; same call as the sibling APT101 exercises.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "21b",
-      "rule_lead": "Session / task / run split (all trainings).",
-      "verdict": "PASS",
-      "evidence": "L37 carries <span class=rt-code>session</span><span class=rt-cowork>task</span>; no noun-run for the agent sitting. Grep \\brun(s|ning)?\\b over lines 1-77: 0.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 22,
-      "rule_lead": "No time-of-day anchors in body prose.",
-      "verdict": "PASS",
-      "evidence": "time-of-day grep (tomorrow|tonight|overnight|yesterday|this morning|last night|next morning): 0 in lines 1-77.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 23,
-      "rule_lead": "Reflection beats stay invisible in flow.",
-      "verdict": "PASS",
-      "evidence": "reflection-prefix grep (sit with|let it land|take a moment|breathe|Pause|Meta-moment|Step back): 0.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 24,
-      "rule_lead": "No meta-ask when student has already decided.",
-      "verdict": "PASS",
-      "evidence": "closest merge fence 'Ask us which sticky colour is whose if you don't know.' is conditional on a fact Claude cannot see, not a meta-ask; L25 does not ask the student to restate what Claude proposed.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 25,
-      "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
-      "verdict": "PASS",
-      "evidence": "artefacts are ./crux.md and team/tree.md; no .txt or .docx.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 26,
-      "rule_lead": "Cut NVA: true but not moving student forward.",
-      "verdict": "PASS",
-      "evidence": "closest L76 'You choose from it in *Choose the bet*.' (see §33, suggestion offered). L9 fallback and L39 steer change what the student does. Not-obvious-to-an-engineer screen: L19 second sentence gives the reason for 'only you would think of'.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 27,
-      "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
-      "verdict": "PASS",
-      "evidence": "read-it grep (Read it|Look at it|Study the|Notice the): 0. L56 'Each of you keeps the read closest to your role:' names a stance, then directs.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 28,
-      "rule_lead": "Forward-callout closer: student as grammatical subject.",
-      "verdict": "PASS",
-      "evidence": "closest L76 'You choose from it in *Choose the bet*.' has the student as subject; no 'watch for', no training-as-subject, no role-gating.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_student_facing.md",
@@ -553,48 +913,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no per-module operational setting named in body",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 30,
-      "rule_lead": "Echo the training's theory spine before inventing a synonym.",
-      "verdict": "PASS",
-      "evidence": "closest L58-60 stances and L39 'steer' use the theory spine's own words; no invented synonym.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 31,
-      "rule_lead": "Name the artifact, not the act.",
-      "verdict": "PASS",
-      "evidence": "closest L39 'then say *\"continue\"*': a quoted utterance is the established trigger (§31 widened carve-out); typing/tell-it-to grep: 0.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 32,
-      "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
-      "verdict": "PASS",
-      "evidence": "closest L9 states the outcome ('a screenshot or export of the frame goes into the chat'); no CLI recipe or login steps.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 33,
-      "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
-      "verdict": "PASS",
-      "evidence": "subject test: closest L76 'You choose from it in *Choose the bet*.' has the student as subject and states what the student does, but names a later beat (cartography). Kept as PASS because the sentence before it ('The tree is not finished, and it should not be.') is the motive for stopping with open branches, and the sentence tells the student where choosing happens; suggestion offered to cut it. L7 '*Pick the outcome*' is provenance of the student's own outcome, not cartography.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_student_facing.md",
@@ -603,8 +925,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "Agents 101 M7 sharing taxonomy only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_student_facing.md",
@@ -613,18 +937,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "Agents 101 M2+ Debrief shape; this exercise has no debrief",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 36,
-      "rule_lead": "Trust the prompt over the scaffold.",
-      "verdict": "PASS",
-      "evidence": "closest L9 'The trainer has set up a frame': a trainer-authored board frame is the scaffold the student would not produce; the tree itself is produced by prompt.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_student_facing.md",
@@ -633,58 +949,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "mood contract is owned by the strategy/story class; body has no verification step in a sustained-doubt module",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 38,
-      "rule_lead": "Exercise headers pass the build-squint test.",
-      "verdict": "PASS",
-      "evidence": "squint: H1 'Grow the opportunity tree' then 'Sketch alone / Merge with every name kept / Read the evidence three ways / Question the tree from your role' lets a cold reader reconstruct a tree built alone, merged, read and questioned.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 39,
-      "rule_lead": "Self-study is invisible in the training flow.",
-      "verdict": "PASS",
-      "evidence": "grep self-study|Teacher Claude over lines 1-77: 0.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 1,
-      "rule_lead": "No placeholders inside fences.",
-      "verdict": "PASS",
-      "evidence": "expanded fences scanned: bracket-placeholder regex \\[[A-Za-z][^\\]]*\\] → 0 in all 5 fences. Merge fence: 'Ask us which sticky colour is whose if you don't know' asks only for what Claude cannot see.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 2,
-      "rule_lead": "Every prompt block: one-sentence action lead-in.",
-      "verdict": "PASS",
-      "evidence": "lead-ins: L27 'Ask Claude to merge the three sketches ... keeping whose each branch was.' 18 words; L72 18 words; L43/L50 14 words; L62 'If the answer comes back ... hand the triage back.' 20 words for a 2-line fence, where it names the trigger the fence lacks.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 3,
-      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
-      "verdict": "PASS",
-      "evidence": "expanded view: each fence is lead-in, blank, '**Prompt** *(Claude Code)*', blank, fence; no copy→ prefix, no end-of-prompt closer. Third fence chip '(Claude Code, optional)'.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -693,28 +961,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no installed skill invoked in any fence",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 5,
-      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
-      "verdict": "PASS",
-      "evidence": "closest Phase 4 fence 'Add each challenge under its branch in team/tree.md' chains on the Phase 2 file with a deterministic path and 'the Merged tree frame' title the merge fence sets.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 6,
-      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
-      "verdict": "PASS",
-      "evidence": "closest merge fence 'List the branches you would cut ... Don't cut them.' names no downstream beat (Choose the bet is not mentioned in any fence).",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -723,8 +973,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no /clear or new-session offer in any fence",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -733,58 +985,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no multi-sample detection method; the three stances are distinct roles, not independent samples",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 9,
-      "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
-      "verdict": "PASS",
-      "evidence": "markdown-shout regex over the 5 expanded fences (\\*\\*|single-asterisk emphasis): 0 hits; bullets use '- '.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 10,
-      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
-      "verdict": "PASS",
-      "evidence": "L41-54: paired <div class=rt-code>/<div class=rt-cowork>, both forks carry the canonical **Prompt** *(Claude Code)* chip; forks differ only in subagent/agent wording (fence 2 vs fence 3: 257 words each).",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 11,
-      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
-      "verdict": "PASS",
-      "evidence": "fence 2 (Code) and fence 3 (Cowork) are 257 words each; the only runtime-mechanical difference is subagent ↔ agent, so the Cowork fork is not shorter than the Code fork.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 12,
-      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
-      "verdict": "PASS",
-      "evidence": "merge fence: 'Merge our three sketches into one opportunity solution tree' names integration; Phase 4 fence 'Add each challenge under its branch' names placement, and 'Leave every existing branch ... untouched'.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 13,
-      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
-      "verdict": "PASS",
-      "evidence": "merge fence: 'quote the source sentence behind it word for word, with its file and whose it is' is the quote-the-sentence discipline (b).",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -793,8 +997,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no regeneration prompt carrying a deliberate edge",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -803,18 +1009,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no question-sequence prompt",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 16,
-      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
-      "verdict": "PASS",
-      "evidence": "closest merge fence 'Then write it to team/tree.md' names one deterministic destination on first create; the push-back at L31 is conversational and the named path is the same file. Phase 4 fence edits the same file in place.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -823,8 +1021,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no plan-mode fence; rule is advisory outside plan mode",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -833,8 +1033,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no fence asks Claude to interrogate its own work",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -843,8 +1045,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no long-running send-off prompt",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -853,18 +1057,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "narrowed: no run showed a downstream re-run from a skipped grill; merge fence ends with an explicit check list instead",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 21,
-      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
-      "verdict": "PASS",
-      "evidence": "closest Phase 4 fence ends 'Tell me which challenges you couldn't place under a branch.' (post-action report); merge fence lists cuts with reasons in chat; no pre-confirm gate on the Miro write. The Show-me-before-saving tail in fences 2/3 guards a local ./crux.md append and is reused unchanged.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -873,38 +1069,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "read-only judge; no prompt-body edit made or proposed in this run",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 23,
-      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
-      "verdict": "PASS",
-      "evidence": "paths: team/tree.md, ./crux.md (deliberate root), module-3/stances/; no bare filenames.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 24,
-      "rule_lead": "Don't restate session CWD inside prompt body.",
-      "verdict": "PASS",
-      "evidence": "no absolute path or cd in any fence (regex /Users/|\\bcd : 0).",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 25,
-      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
-      "verdict": "PASS",
-      "evidence": "closest fence 2 'Spawn three subagents in parallel': subagent allowed; the why is carried by L37 'each from a different angle', so no separate after-fence sentence is owed.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -913,38 +1081,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "card-flow process rule, not a property of the body",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 27,
-      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
-      "verdict": "PASS",
-      "evidence": "merge fence names its consumer: 'so any of us can check the branch from team/tree.md alone'; team/tree.md is read by Choose the bet (maintainer L90-91); module-3/stances/ and ./crux.md ## Answer are read by hallucination-bakeoff-1.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 28,
-      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
-      "verdict": "PASS",
-      "evidence": "expanded labels are exactly '**Prompt** *(Claude Code)*' on all 5 fences.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 29,
-      "rule_lead": "Normal work request before orchestration.",
-      "verdict": "PASS",
-      "evidence": "merge fence opens with the Miro read then 'Merge our three sketches'; protocol (names kept, source quoted) is the lesson, so it is not orchestration bloat.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -953,18 +1093,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no live-test correction in this edit",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 31,
-      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
-      "verdict": "PASS",
-      "evidence": "6 markers on their own lines ({{prompt:apt101-d2-merge-the-tree}}, three-minds-one-synthesis-1/-2/-3, apt101-d2-add-the-challenges); expand-md resolved all 5 fences.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -973,8 +1105,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no module-number prose in any fence",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -983,18 +1117,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no git-output grep",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 34,
-      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
-      "verdict": "PASS",
-      "evidence": "closest merge fence carries its own anchors ('the tree frame on our team's Miro board', 'Merged tree' title, './crux.md') and the Miro-unreachable fallback, so it executes without body context.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -1003,18 +1129,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no multi-turn dialog that can rewrite an artefact mid-dialog",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 36,
-      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
-      "verdict": "PASS",
-      "evidence": "merge fence splits by move: read; merge with bullets; draw; then write. Phase 4 fence: read; add; report. Condensed paragraphs are full-stopped moves.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -1023,18 +1141,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no save-the-rule prompt",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 38,
-      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
-      "verdict": "PASS",
-      "evidence": "judged: L27 lead-in 'merge the three sketches' rhymes with fence line 'Merge our three sketches into one opportunity solution tree'; fence opens with a read-the-board precondition, as L43/fence 2's 'Start dispatching immediately' precedes 'Spawn three subagents'. L72 'record the challenges in the tree file' vs fence 'Add each challenge under its branch in team/tree.md' shares noun phrase. Borderline on the opening clause only; drift harm absent.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -1043,18 +1153,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no fence whose behaviour depends on a permission mode",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 40,
-      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
-      "verdict": "PASS",
-      "evidence": "merge and Phase 4 fences carry their own referents (board frame, title, file path); fence 2/3 'the layer the previous exercise integrated the retrievals into' is the reused A101 parenthetical, readable by the student pasting it, judged at home.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -1063,8 +1165,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no ask-and-wait tail grafted onto an artefact prompt (fences 2/3 end 'Show me before saving')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -1073,18 +1177,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "not a headless-runner prompt",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 43,
-      "rule_lead": "Long-running prompts stream progress — never go silent.",
-      "verdict": "PASS",
-      "evidence": "closest L39 'If one starts reading the world, stop it, steer narrower, then say *\"continue\"*.' is the body-side steer that discharges the proactive half for the three-subagent fence.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -1093,38 +1189,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no fix pass on a leading-looking line in this run",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 45,
-      "rule_lead": "Prompt paths match Builder scope.",
-      "verdict": "PASS",
-      "evidence": "single-segment dirs only: team/tree.md, module-3/stances/, ./crux.md; no '../'.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 46,
-      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
-      "verdict": "PASS",
-      "evidence": "closest merge fence: 'titled Merged tree' and 'quote the source sentence' are shape specs the next beats depend on; length under one page, paragraphs by move.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 47,
-      "rule_lead": "\"Add X and regenerate\" is a trap.",
-      "verdict": "PASS",
-      "evidence": "Phase 4 fence 'Add each challenge under its branch in team/tree.md, word for word' names placement, not a vague 'add X and regenerate'.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -1133,8 +1201,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "single exercise; closing-mechanic variation is a cross-file property",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_prompts.md",
@@ -1143,8 +1213,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "in-session prompts, not take-home",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1153,8 +1225,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "buyer-facing copy only; this is a curriculum exercise",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1163,8 +1237,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "buyer-facing copy only; this is a curriculum exercise",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1173,8 +1249,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "buyer-facing copy only; this is a curriculum exercise",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1183,8 +1261,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "buyer-facing copy only; this is a curriculum exercise",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1193,8 +1273,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "buyer-facing copy only; this is a curriculum exercise",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1203,8 +1285,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "buyer-facing copy only; this is a curriculum exercise",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1213,8 +1297,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "buyer-facing copy only; this is a curriculum exercise",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1223,8 +1309,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "buyer-facing copy only; this is a curriculum exercise",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1233,8 +1321,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "buyer-facing copy only; this is a curriculum exercise",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1243,8 +1333,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "buyer-facing copy only; this is a curriculum exercise",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1253,8 +1345,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "buyer-facing copy only; this is a curriculum exercise",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1263,8 +1357,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "buyer-facing copy only; this is a curriculum exercise",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1273,8 +1369,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "buyer-facing copy only; this is a curriculum exercise",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1283,8 +1381,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "mood contract judged by strategy class",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1293,8 +1393,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "applies to unease modules; strategy class owns the mood read",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1303,8 +1405,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "applies to Big Idea titles; exercise has none",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1313,8 +1417,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "strategy-fidelity is a strategy-class check",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1323,8 +1429,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "exercise has no Key Concepts section",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1333,8 +1441,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "exercise has no Key Concepts section",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1343,8 +1453,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "exercise has no What You'll Learn section",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1353,11 +1465,25 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "binds the strategy doc, not curriculum body",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8de8f2b9a5110fa391c28aaf4d401941982cdc356740418c0e89e1bf9273b8f5",
+      "carried_shape": "6efb0e72e83498be"
     }
   ],
   "suggestions": [
+    {
+      "rule": "check_prompts.md §38",
+      "line": 62,
+      "now": "If the answer comes back with a longer list of issues than you have time for, hand the triage back.",
+      "proposed": "If the list is longer than you have time for, ask Claude to choose the fixes."
+    },
+    {
+      "rule": "check_writing.md §7",
+      "line": 9,
+      "now": "The trainer has set up a frame for the tree on your team board.",
+      "proposed": "The frame for the tree is on your team board."
+    },
     {
       "rule": "check_student_facing.md §21",
       "line": 7,
@@ -1369,39 +1495,9 @@
       "line": 25,
       "now": "While Claude merges, the product owner checks each merged branch",
       "proposed": "While the agent merges, the product owner checks each merged branch"
-    },
-    {
-      "rule": "check_writing.md §27",
-      "line": 39,
-      "now": "Three subagents fanning out at once. If one starts reading the world, stop it, steer narrower, then say *\"continue\"*.",
-      "proposed": "If one of the three subagents starts reading the world, stop it, steer narrower, then say *\"continue\"*."
-    },
-    {
-      "rule": "check_writing.md §4",
-      "line": 27,
-      "now": "keeping whose each branch was.",
-      "proposed": "keeping each branch's names."
-    },
-    {
-      "rule": "check_writing.md §4",
-      "line": 72,
-      "now": "Then the designer asks Claude to record the challenges in the tree file, with whose each one was.",
-      "proposed": "Then the designer asks Claude to record the challenges in the tree file, each with its author's name."
-    },
-    {
-      "rule": "check_student_facing.md §14",
-      "line": 70,
-      "now": "Each of you adds your challenges to the merged tree on stickies in your colour, from the stance you kept: the product owner on the branch whose assumptions are thinnest, the designer on the branch that is really a solution or misread the customer, the team lead on the branch the team could not carry.",
-      "proposed": "Each of you adds your challenges to the merged tree on stickies in your colour, from the stance you kept.\n\n- Product owner: the branch whose assumptions are thinnest.\n- Designer: the branch that is really a solution, or misreads the customer.\n- Team lead: the branch the team could not carry."
-    },
-    {
-      "rule": "check_student_facing.md §33",
-      "line": 76,
-      "now": "The tree is not finished, and it should not be. You choose from it in *Choose the bet*.",
-      "proposed": "The tree is not finished, and it should not be."
     }
   ],
   "blocking_findings_count": 0,
   "nonblocking_findings_count": 0,
-  "notes": "Brief built (135 rules, 0 dropped; prefill parked 0, no prior instance). Accept-notes: none in the maintainer block (only the dated Quality stamp L80). Borderline PASS calls recorded as suggestions: check_student_facing 21 (Claude x8 / agent x0 in body, same as sibling APT101 exercises), 33 (L76 forward clause), check_prompts 38 (fence opens with a board-read precondition). Reused fences three-minds-one-synthesis-1/-2 carry an em-dash and the A101 'previous exercise' parenthetical, judged at their home. Cross-class: none."
+  "notes": "MAINTAINER_CUT=78; FENCE_RANGES=[]; body 1-77. Diff 7ff539b9..HEAD changes three body lines (L7, L27, L72) plus the Quality stamp; all read clean. Brief built normally. Unverified, other classes: reused prompt three-minds-one-synthesis-1 carries an em-dash and '(the layer the previous exercise integrated the retrievals into)', where the previous exercise in APT101 order may not be Gather the evidence (behavior/technical). No accept-notes in the maintainer block beyond the Quality stamp."
 }

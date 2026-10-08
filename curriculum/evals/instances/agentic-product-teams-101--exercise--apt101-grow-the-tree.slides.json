@@ -3,7 +3,7 @@
   "file": "curriculum/exercises/apt101-grow-the-tree.md",
   "training": "agentic-product-teams-101",
   "verdict": "PASS",
-  "body_sha": "9e8161878ba6aba7324cc13c8b74ca96f30519d5ad3ba44a5ca7110d7c08fcff",
+  "body_sha": "c75b8a23ac4c214984b67cce4e32a320d3f00679b82886c46c19324851228ab5",
   "shape_hash": "6efb0e72e83498be",
   "chunk_map": [
     {
@@ -134,21 +134,10 @@
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "exercise inlined by the module include; no phase-less prose section in this file",
-      "fix_hint": null,
-      "blocking": true,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
-      "evidence": "Harm: dead or hand-numbered phase refs. node scripts/check-slide-numbering.js → 'OK — 55 files, Phase/Step numbering consistent.' rc=0. Headers Phase 1-4 consecutive (L11, L21, L33, L66); body has no 'Phase K' reference.",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/exercises/apt101-grow-the-tree.md -> 'OK — 1 files, Phase/Step numbering consistent.' exit 0; headers Phase 1..4 consecutive (L11,21,33,66).",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -159,7 +148,7 @@
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "evidence": "Harm: pointer to page position that dies at the cut. node scripts/check-slide-deixis.js --report | grep grow-the-tree → no hit. Closest: L7 'each one hanging below' is the tree's own geometry (ideas hang below opportunities), not page position; same chunk-0 sentence. Other 'below/above' in body → none.",
+      "evidence": "Harm: pointer to page position that dies at the cut. node scripts/check-slide-deixis.js --file curriculum/exercises/apt101-grow-the-tree.md -> 'OK — 1 files, no page-geometry pointers' exit 0. Closest: L7 lede 'under each one the ideas that might address it' (rewritten since ccbff4e7, removing 'hanging below'); it describes the tree's own structure, not page position. Same chunk-0 sentence.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true,
@@ -167,21 +156,10 @@
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "no links in body; no URLs (signals has_urls false)",
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
       "rule_index": 14,
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/apt101-grow-the-tree.md → 'slides: 4 oversized: 0 ✓ every slide is within limits', rc=0. Largest is chunk 3 (L33-64), under 210 words and 6 bullets (3 bullets).",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/apt101-grow-the-tree.md --report -> slides: 4, oversized: 0; largest Phase 3 at 163 words / 3 bullets (limits 210/6).",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -211,14 +189,39 @@
     },
     {
       "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "exercise inlined by the module include; no phase-less prose section in this file",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "9e8161878ba6aba7324cc13c8b74ca96f30519d5ad3ba44a5ca7110d7c08fcff",
+      "carried_shape": "6efb0e72e83498be"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no links in body; no URLs (signals has_urls false)",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "9e8161878ba6aba7324cc13c8b74ca96f30519d5ad3ba44a5ca7110d7c08fcff",
+      "carried_shape": "6efb0e72e83498be"
+    },
+    {
+      "compendium": "check_slides.md",
       "rule_index": 17,
       "rule_lead": "A retitled slide re-earns its bullets against the new header.",
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no header rename: git log -p shows all four '## Phase' headers added once at creation and never changed",
-      "fix_hint": null,
+      "fix_hint": "",
       "blocking": false,
-      "chunks_flagged": []
+      "carried_from": "9e8161878ba6aba7324cc13c8b74ca96f30519d5ad3ba44a5ca7110d7c08fcff",
+      "carried_shape": "6efb0e72e83498be"
     }
   ],
   "suggestions": [
@@ -231,5 +234,5 @@
   ],
   "blocking_findings_count": 0,
   "nonblocking_findings_count": 0,
-  "notes": "Prompt blocks resolved via registry; not expanded (prompt fences exempt). Rule 9: three bolded stance handles on chunk 3 judged as a named set, not a budget breach. Prefill parked 0 rows (no prior instance), all 17 rows authored here."
+  "notes": "Diff ccbff4e7..HEAD: lede L7 reworded ('and under each one the ideas that might address it'), quality-stamp lines in maintainer block. No other body change. Rows 10/13/17 parked by prefill, spliced by --merge. Rule 9: three bolded stance handles on chunk 3 judged as a named set, not a budget breach. Prompt blocks resolved via registry; not expanded."
 }

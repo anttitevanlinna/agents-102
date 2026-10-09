@@ -15,6 +15,17 @@ set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 [ "${1:-}" = "--no-pull" ] || git pull --ff-only 2>&1 | sed 's/^/pull: /'
 
+# The research base is its own repository, linked in as continuous-research/.
+# A missing sibling leaves the link dangling, and every research path then
+# reads as an empty corpus, so say it here.
+if [ -d continuous-research/.git ] || [ -f continuous-research/.git ]; then
+  [ "${1:-}" = "--no-pull" ] || git -C continuous-research pull --ff-only 2>&1 | sed 's/^/research pull: /'
+  rdirty="$(git -C continuous-research status --short | wc -l | tr -d ' ')"
+  [ "$rdirty" = 0 ] || echo "research: $rdirty uncommitted path(s) in agents-102-research — commit + push them there"
+else
+  echo "research: continuous-research/ does not resolve — clone agents-102-research beside this checkout"
+fi
+
 echo "branch: $(git rev-parse --abbrev-ref HEAD)  head: $(git log -1 --format='%h %s' | cut -c1-72)"
 
 echo "── recent ──"

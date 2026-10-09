@@ -29,6 +29,12 @@ root="$(cd "$root" && pwd -P)"
 
 git -C "$public" worktree add -q "$root/agents-102" -b "$branch" "$from"
 git -C "$core" worktree add -q "$root/agents-102-core" -b "$branch-core" "$from"
+# The research base is linked in as ../agents-102-research; give the pair its
+# own worktree of it when a research checkout sits beside the public one.
+research="${AGENTS_RESEARCH_DIR:-$public/../agents-102-research}"
+if [[ -d "$research/.git" || -f "$research/.git" ]]; then
+  git -C "$research" worktree add -q "$root/agents-102-research" -b "$branch-research" main
+fi
 
 node "$root/agents-102/scripts/core-pairing.js" "$root/agents-102" 2>/dev/null \
   || node "$(dirname "$0")/core-pairing.js" "$root/agents-102"

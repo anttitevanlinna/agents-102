@@ -2,7 +2,7 @@
 
 Curated knowledge engine for the agentic transformation. **Curate → Connect → Advise.**
 
-- **Research** (OODA, findings, KB, signals) → [`continuous-research/CLAUDE.md`](continuous-research/CLAUDE.md), auto-loads under `continuous-research/`.
+- **Research** (OODA, findings, KB, signals) → [`continuous-research/CLAUDE.md`](continuous-research/CLAUDE.md). `continuous-research/` = link to its own repo, `agents-102-research`, cloned beside this one; commit + push research THERE (`git -C continuous-research …`), a path under the link cannot be committed here.
 - **Curriculum** → [`curriculum/CLAUDE.md`](curriculum/CLAUDE.md). Generation rules autoload per [`.claude/rules/content-rules.md`](.claude/rules/content-rules.md).
 - **Strategy** → `bosser-strategy` skill.
 - **Research results** → `continuous-research/synthesis/index.md`. Never hardcode findings here.
@@ -30,7 +30,7 @@ Full context → `bosser-strategy`.
 Shared tree, multiple live sessions. Assume a neighbour is inside your files.
 
 - Start `git pull` · during: commit+push signals every 30–60 min · end: commit+push uncommitted.
-- `main` = shared KB; OODA pushes direct (gates enforced). Users + experimental → branches, Antti merges.
+- `main` = shared KB; OODA pushes direct (gates enforced), research cycles to `agents-102-research` `main`. Users + experimental → branches, Antti merges.
 - **Never bare `git commit`** → `git commit -m msg --only -- <paths>` (flags before `--`). Index = shared state, so `git add` can't protect a commit; `--only` ignores it. Read column 1 of `git status --short`, not only column 2.
 - **Never** `git stash` / `reset` / `checkout` / `restore` on dirty paths; no rebasing. WIP is deliberate — don't manufacture clean state. `git pull` complains → `git fetch` or commit.
 - **`--only` guards the INDEX, not the neighbour's working tree.** It commits the working-tree state of the paths you name, so an agent's uncommitted edit inside one of those files rides in under your message. Naming explicit paths does not narrow it to your own hunks. Before committing any path a live peer may hold, `git diff -- <path>` and read whose hunks they are — then the collision procedure below, not a path-scoped commit.

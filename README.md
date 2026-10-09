@@ -54,7 +54,7 @@ Three research systems feed each other:
 2. **Domain research** — who is doing real agentic work in operations, finance, HR, compliance, customer service, sales. 7 domains tracked, evidence-leveled.
 3. **Your questions** — what you ask and comment is automatically captured and steers future research. The system gets smarter because you use it.
 
-**Start here:** [`continuous-research/synthesis/index.md`](continuous-research/synthesis/index.md) routes you to the right topic file in one read.
+**Start here:** [`synthesis/index.md`](https://github.com/anttitevanlinna/agents-102-research/blob/main/synthesis/index.md) in the research repository routes you to the right topic file in one read.
 
 ## Why This Exists
 
@@ -82,10 +82,10 @@ Built by [Bosser](https://bosser.consulting). Independent. Practitioner-led.
 
 ## Copyright and Reuse
 
-Agents 102 is made of two parts with deliberately different terms:
+Agents 102 and its research base carry deliberately different terms:
 
 - **Proprietary — © 2026 Bosser Oy.** The training product and its supporting assets: `curriculum/`, `content/`, `site/`, `scripts/`, `.claude/`, and the root docs (`README.md`, `CLAUDE.md`, `AGENTS.md`). No reuse without written permission. See [`COPYRIGHT.md`](COPYRIGHT.md).
-- **Open — public knowledge base.** [`continuous-research/`](continuous-research/) is open for reading, quoting, forking, and contribution. Contribute findings, user signals, and observations back — the system gets smarter when you use it. See [`continuous-research/LICENSE.md`](continuous-research/LICENSE.md) for terms.
+- **Open — public knowledge base.** The research base is its own repository, [agents-102-research](https://github.com/anttitevanlinna/agents-102-research), open for reading, quoting, forking, and contribution. Contribute findings, user signals, and observations back — the system gets smarter when you use it. See its [`LICENSE.md`](https://github.com/anttitevanlinna/agents-102-research/blob/main/LICENSE.md) for terms. A checkout of this repository links it in as `continuous-research/`.
 
 The split is deliberate: the research system is a public good; the curriculum and content are Bosser IP. For licensing questions, contact [bosser.consulting](https://bosser.consulting).
 

@@ -36,11 +36,7 @@ Any new file created under these paths — including but not limited to new modu
 
 ## Scope — What Is Open for Contribution
 
-**`continuous-research/` is the public knowledge base.** It is intentionally open for contribution and use by the broader community of agentic industry leaders — not limited to Bosser Oy.
-
-- Anyone may read, fork, quote, extend, and redistribute the contents of `continuous-research/`, provided they respect the evidence standards documented in `CLAUDE.md` and the source rights of third parties cited within.
-- Contributions are welcome. By contributing research findings, user signals, or observations into `continuous-research/`, a contributor grants Bosser Oy and the community a perpetual, non-exclusive license to use, adapt, and redistribute that contribution as part of the public research base.
-- Third-party content referenced inside research files (quotations, links, excerpts) remains the property of its original authors and is used here under fair-use / citation norms.
+The research base is a separate repository, [agents-102-research](https://github.com/anttitevanlinna/agents-102-research), open for use and contribution under its own terms ([`LICENSE.md`](https://github.com/anttitevanlinna/agents-102-research/blob/main/LICENSE.md)). A checkout of this repository links it in as `continuous-research/`; the link grants nothing beyond those terms, and nothing there is covered by this notice.
 
 The distinction is deliberate: the **research system is a public good** (curate → connect → advise for the industry); the **curriculum, content, strategy, and site are proprietary IP** (the Bosser training product and its supporting assets).
 
@@ -59,7 +55,7 @@ Agents 102 is published openly. Anyone reading it receives a **personal, non-exc
 - **Own what you build.** The agents, skills, memory pages, eval judges, sites, and any other artifacts **you produce** while working through it are yours. Bosser Oy makes no claim on your outputs.
 - **Apply what you learn at your own employer.** Bring the moves, patterns, frameworks, and builder practices into your day job. Build agents for your team. Rewrite your company's processes around what you've learned. That is the point of the training.
 - **Quote briefly with attribution.** Short excerpts (a sentence, a framework name, a list of principles) may be quoted in your own writing, talks, or internal docs, with attribution to *"Agents 102 — Bosser Oy"* and a link to [bosser.consulting](https://bosser.consulting) where practical.
-- **Contribute to the research base.** `continuous-research/` is open to you on the same terms as anyone else — see [`continuous-research/LICENSE.md`](continuous-research/LICENSE.md).
+- **Contribute to the research base.** [agents-102-research](https://github.com/anttitevanlinna/agents-102-research) is open to you on the same terms as anyone else — see its [`LICENSE.md`](https://github.com/anttitevanlinna/agents-102-research/blob/main/LICENSE.md).
 
 **You may not, without separate written permission from Bosser Oy:**
 
@@ -78,6 +74,6 @@ Agents 102 is published openly. Anyone reading it receives a **personal, non-exc
 
 ## Rights Reserved
 
-Except as granted in the **Personal Use License** above, no part of the proprietary scope may be reproduced, distributed, or used without the express permission of Bosser Oy, unless a separate license is later attached to this project. The public scope (`continuous-research/`) is open for contribution and reuse under the terms described in the earlier section.
+Except as granted in the **Personal Use License** above, no part of the proprietary scope may be reproduced, distributed, or used without the express permission of Bosser Oy, unless a separate license is later attached to this project. The research base is a separate repository under its own terms.
 
 For licensing questions, contact Bosser Oy via [bosser.consulting](https://bosser.consulting).

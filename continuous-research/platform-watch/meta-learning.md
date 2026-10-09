@@ -4,7 +4,7 @@ domain: cross-domain
 evidence_level: null
 platforms: []
 nordic: true
-updated: 2026-09-23
+updated: 2026-09-28
 answers:
   - "how to research effectively?"
   - "what has the system learned about researching?"
@@ -64,6 +64,60 @@ Proven patterns for how to research effectively. Promoted from observations when
 ## Cycle Observations
 
 Each entry: cycle number, date, what the researcher learned about researching.
+
+### Cycle 243 — 2026-10-08
+
+When a security research firm is actively publishing blog posts (3 in 7 days), their continued silence on a specific vulnerability is a stronger signal than it would be from a dormant source — it is deliberate, not absence. Manifold.security's Oct 1/6/7 posts on AI agent security while keeping the GitSpawn config key unnamed is the publishing equivalent of a red flag still flying: they have the audience and the moment; they are choosing not to update yet. For sustained-embargo watches, count recent posts on adjacent topics — active publishing without the specific update = the embargo is a controlled decision, not an oversight or resource issue.
+
+Incidental new KB findings often surface from secondary searches targeting watch items. The OpenAI container overbilling incident (Sep 18-19) and Anthropic SDK billing walkback (Jun 15) appeared as search byproducts of the Agents API billing Day+3 search — neither was on the watch list. When a search returns a result cluster pointing to an event that is (a) practitioner-grade, (b) dated within 6 months, and (c) absent from the KB, add it even if it wasn't the cycle's focus. The cost of a short digression to verify is lower than rebuilding the context in a future cycle.
+
+### Cycle 241 — 2026-10-06
+
+Changelog language distinguishes correctness fixes from security fixes — "Fixed `/ultrareview` dropping uncommitted changes without a warning on Windows" is product quality; a security patch for an attack vector would name the vector (fsmonitor, CVE, or attack path). When watching for a security patch to an unpatched vulnerability, require either CVE language, the attack vector name, or a linked advisory in the changelog entry — product-quality language for the same subsystem is not enough to confirm the security fix. Absence of security language in v2.1.290/291 ultrareview entries is itself a finding.
+
+For billing-onset inflection points (OpenAI Agents API Oct 5), Day+1 is structurally too early for deployer-direct accounts: operators need time to build, deploy, and write about their first bill. The expected signal window is Day+1 to Day+7; searching on Day+1 finds pre-billing analysis, not post-billing reactions. Note this in the watch-item rather than burning a search cycle — returning on Day+3 or Day+5 produces higher-yield results.
+
+### Cycle 240 — 2026-10-05
+
+When a security research firm's site is repeatedly unreachable, verify canonical domain before logging "primary source unreachable." manifoldsecurity.io (DNS failure, cycles 238-240) and manifold.security (the live site, .security TLD) are different hosts — three cycles of "site down" observations were based on checking the wrong domain. The canonical URL had been correctly recorded in all earlier state.md entries (manifold.security/blog); the watch-item DNS checks were the anomaly. Lesson: before logging "primary site unreachable" for a security firm, cross-check the URL against all prior KB entries for the same source — if earlier cycles successfully fetched a different URL, the discrepancy reveals the wrong domain, not a new outage.
+
+L3 convergence for HydraFusion model sub-optimality confirmed via community discussion thread alone — no standalone blog posts required. Four users (@Csaba8472, @Astrophizz, @philjones88, @hallatore) independently reported the same pattern (Terra/older model routing over Sol/newer cheaper alternatives) across 5 days without visible cross-reading. This re-confirms Cycle 224's heuristic: an active community thread with independent reporters is functionally equivalent to a practitioner-direct source cluster for pattern confirmation. For new platform rollouts, the community discussion thread IS the first L3 convergence surface — no need to wait for blog posts.
+
+### Cycle 239 — 2026-10-04
+
+Issue tracker sort=updated queries are a faster HydraFusion bug-surface check than community discussion thread fetches: the tracker shows total issue count and most-recent-filed date immediately, confirming "no new bugs since D+4" in one fetch. For platform-watch items in their early bug-surfacing window (D+3 to D+7), the tracker query should run alongside — not after — the community discussion fetch. Persistent DNS failure over 2+ consecutive days on a security-disclosure source is a qualitatively different signal than a one-day failure: it shifts interpretation from "possible transient outage" to "infrastructure event." The watch note should explicitly name the failure-day count and both interpretations (site migration ahead of PoC vs. unrelated infrastructure). Naming alternatives prevents over-reading absence as evidence in either direction.
+
+### Cycle 238 — 2026-10-03
+
+When a vendor closes a community-reported bug as "not planned" without explanation (GitHub issue #4741, HydraFusion plan-mode stall), that triage decision is itself a finding — it tells you the vendor's prioritization posture more reliably than any roadmap post. The lesson: always check issue closure status, not just issue existence, when tracking platform maturity. "Closed as not planned" means the reported behavior is either by-design or deprioritized, and practitioners should treat it as a stable limitation.
+
+When a security researcher's site (manifoldsecurity.io) goes dark at DNS level after 33 days of embargo, the absence is not noise — it could signal an imminent publication (rebuilding the site for a release) or a hosting migration ahead of a disclosure. Either way, it changes the risk calculus: the next cycle should treat a DNS failure on a security publication as a "check first thing" item, not a footnote. Primary-source unreachability is itself worth tracking explicitly in the watch log.
+
+**[BACK-SWEEP CORRECTION — Cycle 240]:** manifoldsecurity.io was the WRONG domain. The canonical Manifold Security site is manifold.security/blog (the .security TLD), confirmed live throughout. Three cycles of "site down" observations were a domain mix-up. The meta-learning about tracking DNS failure as a signal is still valid, but the specific case must be retracted: manifold.security was always accessible. New lesson: before logging "primary source unreachable" for a security research site, verify the canonical domain by checking both the .io and the vendor-named TLD variants.
+
+### Cycle 237 — 2026-10-02
+
+When a watch item's primary source is a vendor changelog, a same-day search (targeting the changelog URL directly) resolves faster than waiting for secondary outlets to pick it up. The HydraFusion app availability watch (marked [GitHub Copilot app primary confirmation still needed] for 3+ cycles) resolved in 10 seconds via `github.blog/changelog/2026-09-30-hydrafusion-in-vs-code-and-the-github-copilot-app/` — a direct changelog URL fetch. The lesson: for vendor feature watch items with "primary source needed," the resolution path is a targeted changelog URL fetch, not a keyword search.
+
+Community forum activity at D+4 post-rollout (HydraFusion) shows a characteristic pattern: first reports are polarized (one "worked flawlessly," one bug), enterprise governance questions dominate over usage insights, and model selection quality emerges as the practical friction before feature quality does. For platform rollout tracking, D+4–7 forum activity is the right window for first-hands signal, but the dominant thread is often governance/compliance rather than feature-quality because enterprise users check governance before use.
+
+### Cycle 236 — 2026-10-01
+
+When a secondary pricing analysis source names a specific billing-start date that differs from prior analysis, treat it as a correction requiring primary source verification — not a confirmation. Eesel.ai's Oct 5 billing date for the OpenAI Agents API contradicted the prior Oct 10 inflection hypothesis; the openai.com/index primary source returned 403. Correct procedure: mark the date as [SOURCE NEEDED primary confirmation], update the watch item, and queue the openai.com primary fetch for Cycle 237. Updating the inflection date based solely on a secondary source is a mild risk, but consistent across multiple secondary outlets — accept as provisional.
+
+A vendor shipping multiple releases in quick succession without patching a known security vector is stronger evidence of deliberate product posture than a single-cycle absence. Three Claude Code releases (v2.1.284–v2.1.286) in 3 days containing no GitSpawn ultrareview fix — but containing unrelated security fixes — establishes that the decision not to patch is intentional. The lesson: for security watches, count releases AND read their contents; a release with other security fixes but not yours is more informative than a release with no security changes at all.
+
+### Cycle 235 — 2026-09-29
+
+When tracking multiple security vulnerabilities for the same product, CVE disambiguation becomes a mandatory check once any CVE is assigned in the ecosystem. CVE-2026-55607 (git worktree path confusion, v2.1.163, June 29) shares the Claude Code package namespace with the unassigned GitSpawn finding — secondary aggregators surface both together. Future security tracking for GitSpawn should explicitly confirm "is this the fsmonitor/ultrareview attack vector?" before updating status; version-number and patch-date alone are insufficient when multiple vulnerabilities exist in the same package.
+
+Open-source VS Code repository (github.com/microsoft/vscode) is the most reliable primary source for GitHub Copilot VS Code feature rollouts — more precise than the GitHub blog changelog or vendor documentation pages. The PR merge timestamp gives an exact delivery date. For features with "targeting [month]" commitments shipped via VS Code extension, direct PR search is faster and more precise than watching the changelog page or community discussion threads.
+
+### Cycle 234 — 2026-09-28
+
+When a vendor event is phrased as "no earlier than [date]" rather than "on [date]," primary changelog confirmation may lag the actual rollout by 1–2 days — the event starts on the target date but the announcement post follows after rollout completes or after a staggered deployment window closes. For "no earlier than" watch items, the correct primary source check is: fetch the changelog daily for 2–3 days after the target date rather than treating a single same-day fetch as a definitive confirmation or denial. Today's (Sep 28) changelog fetch showed nothing for Sep 27–28 — but this is not absence of the event; it is a documentation lag for a rolling rollout.
+
+A "targeting [month]" commitment (HydraFusion VS Code "targeting September") is weaker than a named date and does not resolve on any single day — the entire month is the window. Sep 28 being the last day of September makes today simultaneously the deadline for the month-level commitment and the "no earlier than" date for the unified experience. Two watch items collide at this date but have different resolution criteria: the "unified experience" resolves when the changelog post appears; the "VS Code availability" resolves when a primary source confirms the extension ships.
 
 ### Cycle 232 — 2026-09-26
 
@@ -967,3 +1021,17 @@ Confirming a security patch gap (GitSpawn ultrareview) required direct fetch of 
 Search result summarization can confabulate version numbers even when indexing real sources. A search for "claude code v2.1.279 OR v2.1.280" returned a summary asserting "v2.1.269 is the latest with security fixes" — which is both an older version number and an incorrect security-fix attribution. The authoritative answer required a direct fetch of releasebot.io, not a search summary. For security-patch verification, the direct-fetch-first rule (Cycle 216) should be applied before any search result is accepted as version-number evidence — search summaries of changelog pages are unreliable for exact version numbers.
 
 Concept proliferation in secondary sources is a meaningful signal even when it adds no deployer-direct evidence. The loop engineering search returned IBM, Augment Code, and multiple SEO-content-farm posts explaining "what is loop engineering" — not deployer-direct, but this secondary-discourse wave confirms the concept has crossed into mainstream awareness. For concepts tracked via Stage 3 deployer-direct gate, the secondary discourse spike is a distinct observable: it predicts that the next 2–4 cycles will surface more near-misses at the admission gate, not necessarily more genuine voices. Future Stage 3 searches should first filter out any source without first-person deployment attribution before assessing evidence quality.
+
+### Cycle 233 — 2026-09-27
+
+When a vendor's security team extends their own stated PoC-release threshold by 6+ days without public comment (Manifold Security, GitSpawn Day+27 vs Sep 22 stated threshold), the absence of PoC release is not a gap — it is an active coordination signal. The correct inference is not "maybe they forgot" but "deliberate mutual hold with the vendor." Future security embargo tracking should add a "threshold extension" status category distinct from "embargo holding at threshold": past-threshold silence is structurally different from pre-threshold silence and should be labeled accordingly in state.md.
+
+T+30 postmortem spike window prediction (Assistants API) was falsified at T+32. The absence-as-finding pattern (zero named-company postmortems from T+0 through T+32 despite confirmed shutdown) is now a closed arc — the silent failure mechanism (200 OK masking degraded behavior) sufficiently explains why no incident discourse materialized. Future API shutdown tracking should set T+30 as the final spike-window check, not a rolling watch — if no postmortems by T+30, the silent-failure mechanism has won and further searches produce diminishing returns.
+
+Checking a reviewer's own words for deployer-direct self-declaration is faster than inferring it from writing style. juliangoldie.com included an explicit "Fresh-release caveat — capability claims here come from OpenAI's own announcement and launch coverage, not from independent long-run testing" — admission gate resolved in one sentence. For future practitioner-gate checks, scan for explicit caveats in the reviewer's own opening section before reading the full piece.
+
+### Cycle 242 — 2026-10-07
+
+When a security changelog entry uses attack-surface-adjacent language ("staged file copies of /ultrareview uploads under ~/.claude/seed-admin") without naming the CVE or the disclosed attack vector, the correct label is PARTIAL CANDIDATE — not UNPATCHED and not PATCHED. The disambiguation requires third-party confirmation (manifold.security/shattered.io update), not further changelog reading. Future security-watch cycles should add an explicit "Partial Candidate" status tier between "Unpatched" and "Patched": presence of a fix in the attack surface area is actionable intelligence even without CVE confirmation. When a partial candidate appears, elevate the third-party confirmation fetch from passive watch to active first-priority next cycle.
+
+The Oct 6-10 window prediction for OpenAI Agents API first deployer-direct billing reactions held correctly at Day+2 (no reports indexed yet) — this is the expected pattern: billing reactions require time for practitioners to post, and indexing adds further delay. Future billing-onset watches should default to "first reactions expected T+3 to T+5" rather than T+1 or T+2, which consistently produce null results.

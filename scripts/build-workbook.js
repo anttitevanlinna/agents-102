@@ -198,6 +198,17 @@ const THEORY_HANDBOOK_MANIFEST = {
       'lectures/story-of-module-6',
       'lectures/agents-that-build-agents',
     ]],
+    ['M7', [
+      'lectures/the-platform-is-the-agent',
+      'exercises/build-and-prove-agent-platform',
+      'lectures/a-trace-is-an-argument',
+    ]],
+    ['M8', [
+      'lectures/the-model-call-is-not-the-data-flow',
+      'lectures/legality-needs-an-evidence-package',
+      'exercises/decide-agent-data-boundary',
+      'lectures/the-transition-carries-its-data',
+    ]],
   ],
   // Agents 101: theory = the lectures and the pre-reads, in the module that wires
   // them; the three live demos (first-scheduled-agent, agent-that-takes-action,
@@ -442,7 +453,7 @@ function buildTopNav(trainingKey, t, customer) {
   if (t.prework) {
     chips.push(`      <li><a href="#${t.prework.slug}" data-target="${t.prework.slug}">Prework</a></li>`);
   }
-  t.modules.forEach((m) => {
+  CR.allModules(t).forEach((m) => {
     chips.push(`      <li><a href="#${m.slug}" data-target="${m.slug}">M${CR.moduleOrdinal(trainingKey, m.slug)}</a></li>`);
   });
   return `<nav class="workbook-topnav" aria-label="Workbook navigation">
@@ -459,9 +470,11 @@ function buildBody(trainingKey, customer, contentUrl) {
   // A variant training (contentKey set) reads its FILES from another training's
   // content dir and inherits that parent's prework + supplementaries + references
   // unless it overrides them; its own (cut) modules list and label/lede win.
+  // Optional modules are opt-in per cut (CR.resolveTraining).
   // Non-variant trainings resolve contentKey to themselves and are unchanged.
   const contentKey = raw.contentKey || trainingKey;
-  const t = raw.contentKey ? Object.assign({}, CR.TRAININGS[contentKey], raw) : raw;
+  const t = CR.resolveTraining(trainingKey);
+  const flags = CR.contentFlags(trainingKey);
 
   const topNav = buildTopNav(trainingKey, t, customer);
 
@@ -479,10 +492,7 @@ ${buildToc(contentKey, t)}
 `;
 
   // All modules: prework first (if present), then ordered modules, then optional.
-  const allModules = [];
-  if (t.prework) allModules.push(t.prework);
-  t.modules.forEach(m => allModules.push(m));
-  if (t.optionalModules) t.optionalModules.forEach(m => allModules.push(m));
+  const allModules = (t.prework ? [t.prework] : []).concat(CR.allModules(t));
 
   // Slugs of the modules THIS cut actually runs, for `<!--flag:module:<slug>-->`.
   // Read from the resolved entry rather than declared anywhere, so homework for a
@@ -493,7 +503,7 @@ ${buildToc(contentKey, t)}
   const modulesHtml = allModules
     .map(m => {
       if (TRAINER_ONLY.has(m.slug + '.md')) return '';
-      const md = renderModuleMd(contentKey, m.slug, contentUrl, raw.flags, moduleSlugs);
+      const md = renderModuleMd(contentKey, m.slug, contentUrl, flags, moduleSlugs);
       let html = marked.parse(md);
       html = postProcessIncludes(html);
       html = CR.wrapImageFigures(html);
@@ -523,7 +533,7 @@ ${buildToc(contentKey, t)}
     // to be read alone weeks later with no trainer to correct it, so a page
     // congratulating the student on a module their cut never ran is worse here
     // than anywhere else.
-    md = CR.applyContentFlags(md, raw.flags, moduleSlugs);
+    md = CR.applyContentFlags(md, flags, moduleSlugs);
     md = md
       .replace(CR.CROSS_DOC_SHARED_RE,      (_, k, s, hash) => hash ? '](' + hash + ')' : '](#' + k + '-' + s + ')')
       .replace(CR.CROSS_DOC_TRAINING_KS_RE, (_, k, s, hash) => hash ? '](' + hash + ')' : '](#' + k + '-' + s + ')');
@@ -875,16 +885,24 @@ const TRAINER_MODULES_TAB_JS = `
 
 // Computed runtime maps, keyed by module slug, for `{{runtime-map:<slug>}}`.
 // Cached per training: one filesystem walk, however many markers the handbook
-// carries. The default shape is the sold cohort shape — the clock column only
-// means anything against a scheduled start.
+// carries. The default shape is the sold cohort shape. An optional module can
+// live only in its own shape, so it alone falls back to its first declared cap;
+// a core module missing the requested cap keeps the visible no-cap view. The
+// clock column only means anything against a scheduled start.
 const RUNTIME_MAP_CACHE = {};
 function runtimeMaps(trainingKey, shape) {
   const key = trainingKey + '|' + (shape || 'cohort-2day');
   if (RUNTIME_MAP_CACHE[key]) return RUNTIME_MAP_CACHE[key];
   const maps = {};
+  const optional = new Set(((CR.TRAININGS[trainingKey] || {}).optionalModules || []).map(m => m.slug));
   try {
     const r = CT.computeTraining(trainingKey);
-    for (const m of r.modules) maps[m.slug] = CT.renderRuntimeMap(m, shape || 'cohort-2day');
+    for (const m of r.modules) {
+      const requested = shape || 'cohort-2day';
+      const fallback = optional.has(m.slug) ? Object.keys(m.caps)[0] : null;
+      const effective = m.caps[requested] ? requested : (fallback || requested);
+      maps[m.slug] = CT.renderRuntimeMap(m, effective);
+    }
   } catch (e) {
     // A training with no timings.md simply has no maps; a handbook that does not
     // reference one still builds. A handbook that DOES reference one then fails
@@ -904,11 +922,12 @@ function buildTrainerModules(customer, trainingKey) {
   // flags cover the prose too, so both move together.
   const raw = CR.TRAININGS[trainingKey] || {};
   const contentKey = raw.contentKey || trainingKey;
-  const t = raw.contentKey ? Object.assign({}, CR.TRAININGS[contentKey], raw) : raw;
+  const t = CR.resolveTraining(trainingKey) || {};
   const srcPath = cur('trainings', contentKey, 'trainer-modules.md');
   let md = readMd(srcPath);
   if (md === null) return null;
-  md = CR.applyContentFlags(md, raw.flags, (t.modules || []).map(m => m.slug));
+  const moduleSlugs = CR.allModules(t).map(m => m.slug);
+  md = CR.applyContentFlags(md, CR.contentFlags(trainingKey), moduleSlugs);
   // Runtime maps are computed, never stored. Expanded BEFORE escapeTildes so the
   // emitted `~5` figures get the same tilde treatment as authored prose.
   md = CR.expandTimings(md, runtimeMaps(contentKey), { strict: true });
@@ -1071,7 +1090,7 @@ function renderTheoryEntry(trainingKey, entry) {
     }
     // The theory handbook is the full training — resolve module-conditional
     // flag blocks against the complete module list (no customer flags apply).
-    const allModuleSlugs = (CR.TRAININGS[trainingKey].modules || []).map(m => m.slug);
+    const allModuleSlugs = CR.allModules(CR.resolveTraining(trainingKey)).map(m => m.slug);
     md = CR.applyContentFlags(md, null, allModuleSlugs);
     md = stripTheorySessionWidgets(md);
     md = rewriteCrossDocLinksToAnchors(md);
@@ -1094,7 +1113,7 @@ function renderTheoryEntry(trainingKey, entry) {
 }
 
 function buildTheoryBody(customer, trainingKey, recipient) {
-  const t = CR.TRAININGS[trainingKey];
+  const t = CR.resolveTraining(trainingKey);
   const manifest = THEORY_HANDBOOK_MANIFEST[trainingKey];
   if (!manifest) {
     throw new Error(`No theory handbook manifest for training: ${trainingKey}. Add one to THEORY_HANDBOOK_MANIFEST in scripts/build-workbook.js.`);
@@ -1111,7 +1130,8 @@ function buildTheoryBody(customer, trainingKey, recipient) {
 
   const sections = manifest.map(([beat, entries]) => {
     const m = beat.match(/^M(\d+)$/);
-    const modTitle = m && t.modules[Number(m[1]) - 1] ? t.modules[Number(m[1]) - 1].title : '';
+    const moduleEntries = CR.allModules(t);
+    const modTitle = m && moduleEntries[Number(m[1]) - 1] ? moduleEntries[Number(m[1]) - 1].title : '';
     const label = modTitle ? `${beat} — ${modTitle}` : beat;
     const inner = entries.map(e => renderTheoryEntry(trainingKey, e)).join('\n\n');
     return `<section class="module" id="theory-${beat.toLowerCase()}">\n<h1>${CR.esc(label)}</h1>\n${inner}\n</section>`;
@@ -1218,10 +1238,11 @@ function renderExerciseEntry(slug) {
 }
 
 function buildExercisesBody(customer, trainingKey) {
-  const t = CR.TRAININGS[trainingKey];
+  const t = CR.resolveTraining(trainingKey);
   if (!t) throw new Error(`Unknown training: ${trainingKey}`);
   const seen = new Set();
-  const sections = t.modules.map((mod, i) => {
+  const moduleEntries = CR.allModules(t);
+  const sections = moduleEntries.map((mod, i) => {
     const slugs = exerciseSlugsForModule(trainingKey, mod.slug).filter(s => {
       if (seen.has(s)) return false;
       seen.add(s);
@@ -1384,15 +1405,13 @@ function buildTraining(customer, trainingKey, opts = {}) {
   // path (urlKey = trainingKey). Non-variant trainings resolve to themselves.
   const contentKey = (CR.TRAININGS[trainingKey] || {}).contentKey || trainingKey;
 
-  // `flags: { payload: false }` — this variant issues no content tarball, so
-  // there is nothing to build, nothing to host, and no URL to substitute. The
-  // prework passages that fetch and extract it are flagged out of the shared
-  // source by the same name.
-  const flags = (CR.TRAININGS[trainingKey] || {}).flags;
-  const contentUrl = (flags && flags.payload === false)
-    ? null
-    : buildPayload(contentKey, customer, trainingKey, outDir);
-  if (flags && flags.payload === false) {
+  // No payload (CR.payloadEnabled: `flags: { payload: false }`, or a cut that
+  // runs none of its parent's payloadModules) → there is nothing to build,
+  // nothing to host, and no URL to substitute. The prework passages that fetch
+  // and extract it are flagged out of the shared source by the same name.
+  const hasPayload = CR.payloadEnabled(trainingKey);
+  const contentUrl = hasPayload ? buildPayload(contentKey, customer, trainingKey, outDir) : null;
+  if (!hasPayload) {
     // Sweep any tarball a previous build left here. Without this, turning the
     // flag off leaves the old payload in the output dir, where it is
     // indistinguishable from a current one to anything that copies the tree —

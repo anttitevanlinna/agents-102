@@ -469,7 +469,8 @@ function computeTraining(trainingKey) {
   const t = CR.TRAININGS[trainingKey];
   if (!t) throw new Error(`Unknown training: ${trainingKey}. Known: ${Object.keys(CR.TRAININGS).join(', ')}`);
   const shapes = readShapes(trainingKey);
-  const modules = (t.modules || []).map(m => {
+  const moduleEntries = CR.allModules(t);
+  const modules = moduleEntries.map(m => {
     const r = computeModule(trainingKey, m.slug);
     r.title = m.title;
     r.caps = shapes.caps[m.slug] || {};
@@ -628,7 +629,7 @@ const AGGREGATE_PATTERNS = [
 function findPrepDisagreements(trainingKey) {
   const t = CR.TRAININGS[trainingKey];
   const figs = {};
-  for (const mod of (t.modules || [])) {
+  for (const mod of CR.allModules(t)) {
     const abs = path.join(ROOT, 'curriculum/trainings', trainingKey, mod.slug + '.md');
     if (!fs.existsSync(abs)) continue;
     const raw = fs.readFileSync(abs, 'utf8');
@@ -692,7 +693,8 @@ function findRestatements(trainingKey) {
 
 function findAggregates(trainingKey) {
   const t = CR.TRAININGS[trainingKey];
-  const files = (t.modules || []).map(m => path.join('curriculum/trainings', trainingKey, m.slug + '.md'));
+  const files = CR.allModules(t)
+    .map(m => path.join('curriculum/trainings', trainingKey, m.slug + '.md'));
   files.push(path.join('curriculum/trainings', trainingKey, 'trainer-modules.md'));
 
   const hits = [];

@@ -28,7 +28,11 @@ const {
   simpleRowHtml,
   renderFooter,
   renderCopyrightBadge,
-  TRAININGS
+  TRAININGS,
+  allModules,
+  resolveTraining,
+  payloadEnabled,
+  contentFlags
 } = require('../site/layouts/curriculum.js');
 const audit = require('../scripts/audit-eval-coverage.js');
 
@@ -93,6 +97,12 @@ test('configured Markdown opens external and supplementary/reference links in a 
 test('supplementary and reference index rows open in a new tab', () => {
   const html = simpleRowHtml('Reference', 'Verification asymmetry', '#supplementary-verification-asymmetry');
   assert.match(html, /<a href="#supplementary-verification-asymmetry" target="_blank" rel="noopener">/);
+});
+
+test('AE101 registers both M7 reference targets that the exercise links', () => {
+  const slugs = TRAININGS['agentic-engineering-101'].references.map(reference => reference.slug);
+  assert.ok(slugs.includes('agent-platform-challenge'));
+  assert.ok(slugs.includes('unattended-agent-worked-execution'));
 });
 
 test('shared footer external links open in a new tab', () => {
@@ -288,6 +298,8 @@ test('THEORY_HANDBOOK_MANIFEST lecture order is a subsequence of each module fil
     M4: 'run-the-first-experiment.md',
     M5: 'learn-from-the-test.md',
     M6: 'spot-gaps-build-the-loop.md',
+    M7: 'build-your-agent-platform.md',
+    M8: 'data-handling-you-can-defend.md',
   };
   const trainingDir = path.resolve(__dirname, '..', 'curriculum/trainings', AE);
 
@@ -324,7 +336,7 @@ test('THEORY_HANDBOOK_MANIFEST lecture order is a subsequence of each module fil
   assert.deepEqual(
     Object.keys(manifestByModule).sort(),
     Object.keys(MODULE_FILES).sort(),
-    'manifest module keys must match the six AE-101 module files'
+    'manifest module keys must match the core and optional AE-101 module files'
   );
 
   const isSubsequence = (sub, seq) => {
@@ -437,11 +449,13 @@ test('theory handbook build', async (t) => {
     assert.doesNotMatch(handbook, /id="verification-asymmetry"/);
   });
 
-  await t.test('renders thirteen slim exercise summaries, not exercise bodies', () => {
+  await t.test('renders fifteen slim exercise summaries, including the optional modules', () => {
     const cards = [...handbook.matchAll(
       /<section class="exercise-summary" id="exercise-summary-([a-z0-9-]+)">([\s\S]*?)<\/section>/g
     )];
-    assert.equal(cards.length, 13, 'expected one compact card for each in-class exercise');
+    assert.equal(cards.length, 15, 'expected one compact card for each theory-manifest exercise');
+    assert.ok(cards.some(([, slug]) => slug === 'build-and-prove-agent-platform'));
+    assert.ok(cards.some(([, slug]) => slug === 'decide-agent-data-boundary'));
 
     for (const [, slug, card] of cards) {
       assert.equal((card.match(/<h2>/g) || []).length, 1, `${slug}: expected one h2`);
@@ -783,6 +797,63 @@ test('payload tarballs come from the registry, not a per-training branch', () =>
   assert.doesNotMatch(src, /contentKey === '/, 'no per-training branch in the build');
 });
 
+// Optional modules are opt-in per cut. A cut inherits its parent's prework,
+// supplementaries and references, so without this the preview ("the first 3
+// modules of 6") and barebones cuts rendered M7 and M8 in full.
+test('a cut runs no optional module it does not list, nor the references that belong to one', () => {
+  for (const [key, raw] of Object.entries(TRAININGS)) {
+    if (!raw.contentKey) continue;
+    const t = resolveTraining(key);
+    const own = (raw.optionalModules || []).map(m => m.slug);
+    assert.deepEqual(t.optionalModules.map(m => m.slug), own, `${key}: optional modules must be the cut's own`);
+    const runs = allModules(t).map(m => m.slug);
+    for (const r of t.references || []) {
+      assert.ok(!r.module || runs.includes(r.module), `${key}: reference ${r.slug} belongs to ${r.module}, which this cut does not run`);
+    }
+  }
+  const full = allModules(resolveTraining('agentic-engineering-101')).map(m => m.slug);
+  assert.ok(full.includes('build-your-agent-platform') && full.includes('data-handling-you-can-defend'),
+    'the full training still offers both optional modules');
+});
+
+// The tarball's consumers are M3's security exercises and M7's lab. A cut keeps
+// the payload when it runs either, whatever else it drops.
+test('the payload follows the modules that consume it', () => {
+  const parent = TRAININGS['agentic-engineering-101'];
+  assert.deepEqual(parent.payloadModules, ['earn-the-trust', 'build-your-agent-platform']);
+  const fixture = (key, entry, fn) => {
+    TRAININGS[key] = Object.assign({ contentKey: 'agentic-engineering-101', label: key }, entry);
+    try { return fn(); } finally { delete TRAININGS[key]; }
+  };
+  const core = parent.modules;
+  const m7 = parent.optionalModules.filter(m => m.slug === 'build-your-agent-platform');
+  fixture('ae101-m7-no-m3-fixture', { modules: core.slice(0, 2), optionalModules: m7 },
+    () => assert.equal(payloadEnabled('ae101-m7-no-m3-fixture'), true, 'M7 without M3 keeps the lab payload'));
+  fixture('ae101-no-consumer-fixture', { modules: core.slice(0, 2) },
+    () => assert.equal(payloadEnabled('ae101-no-consumer-fixture'), false, 'no consumer, no payload'));
+  fixture('ae101-explicit-fixture', { modules: core.slice(0, 2), flags: { payload: true } },
+    () => assert.equal(payloadEnabled('ae101-explicit-fixture'), true, 'an explicit flag wins'));
+  for (const key of Object.keys(TRAININGS)) {
+    const runs = allModules(resolveTraining(key)).map(m => m.slug);
+    if (runs.includes('build-your-agent-platform')) assert.equal(payloadEnabled(key), true, `${key} runs M7 and must ship the lab`);
+  }
+});
+
+test('the preview workbook renders no optional module', () => {
+  const out = fs.mkdtempSync(path.join(require('os').tmpdir(), 'preview-cut-'));
+  try {
+    const env = { ...process.env, AGENTS_OUTPUT_DIR: out };
+    execSync('node scripts/build-workbook.js preview-fixture agentic-engineering-101-preview --no-trainer-docs', { cwd: ROOT, stdio: 'pipe', env });
+    const html = fs.readFileSync(path.join(out, 'preview-fixture', 'agentic-engineering-101-preview', 'index.html'), 'utf8');
+    for (const slug of ['build-your-agent-platform', 'data-handling-you-can-defend', 'reference-agent-platform-challenge', 'reference-unattended-agent-worked-execution']) {
+      assert.doesNotMatch(html, new RegExp(`id="${slug}"`), `preview must not render ${slug}`);
+    }
+    assert.match(html, /id="earn-the-trust"/, 'the preview still renders its own modules');
+  } finally {
+    fs.rmSync(out, { recursive: true, force: true });
+  }
+});
+
 // The nav chip is the surface where the collision was visible. It must read the
 // ordinal, not the loop index.
 test('workbook top nav chips are built from the inherited ordinal', () => {
@@ -903,13 +974,12 @@ const HANDBOOK_KEYS = Object.keys(TRAININGS).filter(k => fs.existsSync(
   path.join(ROOT, 'curriculum/trainings', TRAININGS[k].contentKey || k, 'trainer-modules.md')
 ));
 
+// Mirrors buildTrainerModules: the resolved entry's modules, optional ones included.
 function trimHandbook(key) {
-  const raw = TRAININGS[key];
-  const contentKey = raw.contentKey || key;
-  const t = raw.contentKey ? Object.assign({}, TRAININGS[contentKey], raw) : raw;
+  const contentKey = TRAININGS[key].contentKey || key;
   const md = fs.readFileSync(
     path.join(ROOT, 'curriculum/trainings', contentKey, 'trainer-modules.md'), 'utf8');
-  return applyContentFlags(md, raw.flags, (t.modules || []).map(m => m.slug));
+  return applyContentFlags(md, contentFlags(key), allModules(resolveTraining(key)).map(m => m.slug));
 }
 
 const glanceIds = md => [...md.matchAll(/id="([a-z0-9-]+-glance)"/g)].map(m => m[1]);
@@ -948,10 +1018,8 @@ test('trainer handbook: no flag marker survives the trim', () => {
 
 test('trainer handbook: a tab exists exactly when the cut runs that module', () => {
   HANDBOOK_KEYS.forEach(key => {
-    const raw = TRAININGS[key];
-    const t = raw.contentKey ? Object.assign({}, TRAININGS[raw.contentKey], raw) : raw;
     const expected = ['start-glance'].concat(
-      (t.modules || []).map(m => 'm' + moduleOrdinal(key, m.slug) + '-glance'));
+      allModules(resolveTraining(key)).map(m => 'm' + moduleOrdinal(key, m.slug) + '-glance'));
     assert.deepEqual(glanceIds(trimHandbook(key)), expected,
       `${key}: handbook tabs must track the cut's module list`);
   });

@@ -41,6 +41,19 @@ test('every shipped lecture and exercise is reached from shipped text', () => {
   assert.deepEqual(unreached, [])
 })
 
+// The lab ships as the files git tracks: a trainer's in-tree smoke run leaves
+// `run*/` claims behind, and a student's first run would read them as duplicates.
+test('the M7 unattended-agent lab ships as an executable, dependency-free scaffold', () => {
+  const lab = path.join(x, 'labs', 'unattended-agent')
+  assert.ok(fs.existsSync(path.join(lab, 'src', 'real-worker.mjs')))
+  const shipped = execFileSync('find', ['.', '-type', 'f'], { cwd: lab, encoding: 'utf8' }).split('\n').filter(Boolean)
+  assert.deepEqual(shipped.filter(f => /^\.\/(run[^/]*|node_modules)\//.test(f)), [])
+  const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'ae101-m7-lab-'))
+  fs.cpSync(lab, scratch, { recursive: true })
+  execFileSync('npm', ['test'], { cwd: scratch, stdio: 'ignore' })
+  execFileSync('npm', ['run', 'tour'], { cwd: scratch, stdio: 'ignore' })
+})
+
 // The registries (prompts/, figures/) hold every training's entries. This
 // tarball is one training's: it carries the entries its own pages name, by
 // `{{prompt:<key>}}` / `{{figure:<key>}}` marker or by path, and no others.

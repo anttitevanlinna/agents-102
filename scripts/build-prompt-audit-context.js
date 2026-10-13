@@ -33,7 +33,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { TRAININGS } = require('../site/layouts/curriculum.js');
+const { TRAININGS, allModules } = require('../site/layouts/curriculum.js');
 const { loadRegistry } = require('./compile-prompts.js');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -104,7 +104,7 @@ function trainingOccurrences(trainingKey) {
   if (training.prework) {
     collectOccurrences(path.join(trainingDir, `${training.prework.slug}.md`), seen, out);
   }
-  for (const mod of training.modules) {
+  for (const mod of allModules(training)) {
     collectOccurrences(path.join(trainingDir, `${mod.slug}.md`), seen, out);
   }
   return out;

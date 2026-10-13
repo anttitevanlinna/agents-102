@@ -49,7 +49,7 @@
             // Content tarball; its name is owned by training-architecture.md
             // § Material distribution.
             tarball: { name: 'ae101-content.tar.gz', script: 'scripts/build-ae101-content-tarball.sh' },
-            lede: 'Six modules for software engineers. Become the Claude wizard by learning the new loop and finding your habit.',
+            lede: 'Six modules for software engineers, plus two optional extensions. Become the Claude wizard by learning the new loop and finding your habit.',
             prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
             modules: [
                 { slug: 'getting-going',             title: 'Getting going + context' },
@@ -59,6 +59,16 @@
                 { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' },
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
             ],
+            // Opt-in per cut: a cut (contentKey) inherits none of these unless it
+            // lists them itself (resolveTraining).
+            optionalModules: [
+                { slug: 'build-your-agent-platform',       title: 'Build your agent platform' },
+                { slug: 'data-handling-you-can-defend',    title: 'Data handling you can defend' }
+            ],
+            // Modules that consume the content tarball (M3's security exercises,
+            // M7's executable lab). A cut ships the payload when it runs any of
+            // them, unless it sets `flags: { payload }` itself (payloadEnabled).
+            payloadModules: ['earn-the-trust', 'build-your-agent-platform'],
             // Ordered by first appearance across the module arc (prework → M6), so
             // the appendix reads in the sequence the modules reach for it. Both the
             // long-read index and the composed Slides deck follow this array order.
@@ -73,7 +83,10 @@
             ],
             references: [
                 { slug: 'multi-session-git',         title: 'Multi-session and Git: survival guide' },
-                { slug: 'prompt-anatomy',            title: 'Prompt anatomy: the named moves' }
+                { slug: 'prompt-anatomy',            title: 'Prompt anatomy: the named moves' },
+                // `module:` = the page belongs to that module; a cut without it drops the page.
+                { slug: 'agent-platform-challenge',  title: 'Agent platform challenge', module: 'build-your-agent-platform' },
+                { slug: 'unattended-agent-worked-execution', title: 'Unattended agent worked execution', module: 'build-your-agent-platform' }
             ]
         },
         // Preview / beta cut of Agentic Engineering 101: the first three modules,
@@ -157,6 +170,47 @@
     };
 
     var DEFAULT_TRAINING = 'agents-101';
+
+    // Every module a resolved entry runs: core modules, then optional ones.
+    function allModules(t) {
+        return ((t && t.modules) || []).concat((t && t.optionalModules) || []);
+    }
+
+    // The entry a build reads for `key`. A cut (contentKey set) reads its files
+    // from the parent and inherits every key it does not override, except
+    // optionalModules: those are opt-in, so a cut that does not list them runs
+    // none. A reference with `module:` is dropped when its module does not run.
+    function resolveTraining(key) {
+        var raw = TRAININGS[key];
+        if (!raw) return null;
+        var t = Object.assign({}, raw.contentKey ? TRAININGS[raw.contentKey] : {}, raw);
+        if (raw.contentKey && !Object.prototype.hasOwnProperty.call(raw, 'optionalModules')) t.optionalModules = [];
+        var slugs = allModules(t).map(function (m) { return m.slug; });
+        if (t.references) {
+            t.references = t.references.filter(function (r) { return !r.module || slugs.indexOf(r.module) !== -1; });
+        }
+        return t;
+    }
+
+    // Whether `key` ships its content payload. A cut's own `flags.payload`
+    // wins; otherwise the cut ships it when it runs any of `payloadModules`.
+    function payloadEnabled(key) {
+        var raw = TRAININGS[key];
+        if (!raw) return false;
+        if (raw.flags && typeof raw.flags.payload === 'boolean') return raw.flags.payload;
+        var t = resolveTraining(key);
+        if (!t.payloadModules) return true;
+        var slugs = allModules(t).map(function (m) { return m.slug; });
+        return t.payloadModules.some(function (s) { return slugs.indexOf(s) !== -1; });
+    }
+
+    // The content flags `key` builds with: its own flags plus the derived payload flag.
+    function contentFlags(key) {
+        var raw = TRAININGS[key] || {};
+        var flags = Object.assign({}, raw.flags);
+        flags.payload = payloadEnabled(key);
+        return flags;
+    }
 
     // Legal footer — single source for SPA + workbook. SPA fills its empty
     // <footer class="curriculum-footer"> at boot via innerHTML; workbook
@@ -1466,6 +1520,10 @@
         // Data
         TRAININGS: TRAININGS,
         DEFAULT_TRAINING: DEFAULT_TRAINING,
+        allModules: allModules,
+        resolveTraining: resolveTraining,
+        payloadEnabled: payloadEnabled,
+        contentFlags: contentFlags,
         INCLUDE_LINK_RE: INCLUDE_LINK_RE,
         SLIDE_MARKER_RE: SLIDE_MARKER_RE,
         slideRange: slideRange,

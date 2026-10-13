@@ -106,7 +106,7 @@ function fileSetFromTraining(trainingKey) {
   }
   const seen = new Set();
   const out = [];
-  for (const mod of t.modules) {
+  for (const mod of CR.allModules(t)) {
     const modPath = path.join(ROOT, 'curriculum/trainings', trainingKey, mod.slug + '.md');
     if (!fs.existsSync(modPath)) continue;
     const modSlug = path.posix.join('trainings', trainingKey, mod.slug);
@@ -266,7 +266,7 @@ if (ONE_FILE) {
 // renderer resolves them. An ad-hoc `--file` run has no training cut behind it,
 // so it falls back to the configured training's list rather than to nothing —
 // an empty list would silently drop every `flag:module:` passage and under-report.
-const MODULE_SLUGS = (CR.TRAININGS[TRAINING]?.modules || []).map(m => m.slug);
+const MODULE_SLUGS = CR.allModules(CR.resolveTraining(TRAINING)).map(m => m.slug);
 
 const rows = [];      // every slide, for --report
 const oversized = []; // flagged slides

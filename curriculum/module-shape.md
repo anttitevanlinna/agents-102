@@ -2,6 +2,8 @@
 
 Canonical template + include/link mechanics. Loaded at Pass 1 of the three-pass build (`check_pedagogy.md`) + any session creating a new module file or editing includes/cross-doc links. Pointer from `curriculum/CLAUDE.md`.
 
+This is the shape of the module file, not the whole shipping contract. For a new module, finish with `curriculum/new-module-checklist.md` so strategy, theory, delivery, packaging, trainer, and eval surfaces are connected too.
+
 ## Module File Shape
 
 ```markdown

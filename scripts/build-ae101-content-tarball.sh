@@ -10,6 +10,7 @@
 #        trainer-only artifacts; 2-hop walk catches lectures/exercises that
 #        reference each other.)
 #   - content/skills/ whitelisted per AE101 training-architecture: access-control-analysis + stride + security-tools
+#   - labs/unattended-agent/ executable local scaffold for optional M7
 #   - prompts/, figures/: the entries the shipped pages name (student copies of the prompts)
 #   - COPYRIGHT.md and THIRD-PARTY-NOTICES.md at the root
 #
@@ -53,7 +54,7 @@ STAGE="$(mktemp -d)"
 trap 'rm -rf "$STAGE"' EXIT
 
 ROOT="$STAGE/content"
-mkdir -p "$ROOT/lectures" "$ROOT/exercises" "$ROOT/reference" "$ROOT/supplementary" "$ROOT/content/skills"
+mkdir -p "$ROOT/lectures" "$ROOT/exercises" "$ROOT/reference" "$ROOT/supplementary" "$ROOT/content/skills" "$ROOT/labs"
 
 # Training key whose cut this tarball is for. Content flags resolve against its
 # modules list, so the student's local copy carries one branch of each flagged
@@ -183,6 +184,29 @@ for name in "${SKILLS[@]}"; do
   fi
 done
 
+# ---- Executable labs -----------------------------------------------------
+# M7 teaches boundary decisions by adapting and testing a known local control
+# plane. Starting from a working scaffold keeps the coding agent from spending
+# the whole slot inventing queue, broker, trace, and idempotency plumbing.
+# Only files git tracks or would track: a local smoke run's `run*/` output
+# (claims a student's first run would read as duplicates) or a `node_modules/`
+# stays behind, and the archive stays byte-reproducible.
+LAB_SRC="curriculum/scaffolds/ae101-unattended-agent-lab"
+if [ -d "$LAB_SRC" ]; then
+  mkdir -p "$ROOT/labs/unattended-agent"
+  while IFS= read -r -d '' f; do
+    [ -f "$f" ] || continue
+    rel="${f#"$LAB_SRC"/}"
+    mkdir -p "$ROOT/labs/unattended-agent/$(dirname "$rel")"
+    cp "$f" "$ROOT/labs/unattended-agent/$rel"
+  done < <(git ls-files -z --cached --others --exclude-standard -- "$LAB_SRC")
+  [ -f "$ROOT/labs/unattended-agent/package.json" ] || {
+    echo "ERROR: M7 lab scaffold at $LAB_SRC copied no package.json" >&2; exit 1; }
+else
+  echo "ERROR: M7 lab scaffold not found at $LAB_SRC" >&2
+  exit 1
+fi
+
 # ---- Figures and prompts: this training's entries, no other's --------------
 # Shipped pages keep `{{figure:<key>}}` and `{{prompt:<key>}}` markers and
 # resolve them against figures/ and prompts/ here. Both registries hold every
@@ -247,8 +271,12 @@ echo "  skills shipped:        $(find "$ROOT/content/skills" -name 'SKILL.md' | 
 echo "  prompts shipped:       $PROMPT_COUNT (named by shipped pages)"
 echo "  figures shipped:       $FIGURE_COUNT"
 echo
+# One listing, read by every check below. Piping `tar tzf` into `grep -q`
+# under pipefail fails at random: grep exits on the first match, tar takes
+# SIGPIPE, and the pipeline returns 141.
+LISTING="$(tar tzf "$OUT")"
 echo "Top-level entries:"
-tar tzf "$OUT" | awk -F/ 'NF>1 && $2 != "" {print $2}' | sort -u | sed 's|^|  |'
+awk -F/ 'NF>1 && $2 != "" {print $2}' <<< "$LISTING" | sort -u | sed 's|^|  |'
 echo
 
 # Spot-check that key load-bearing files made it.
@@ -261,10 +289,14 @@ EXPECTED=(
   "content/skills/stride/SKILL.md"
   "content/skills/security-tools/SKILL.md"
   "content/skills/security-tools/check.sh"
+  "labs/unattended-agent/package.json"
+  "labs/unattended-agent/src/fault-tour.mjs"
+  "labs/unattended-agent/src/faults.mjs"
+  "labs/unattended-agent/test/platform.test.mjs"
 )
 MISSING=()
 for path in "${EXPECTED[@]}"; do
-  tar tzf "$OUT" | grep -q "^\./${path}\$" || MISSING+=("$path")
+  grep -qx "\./${path}" <<< "$LISTING" || MISSING+=("$path")
 done
 if [ "${#MISSING[@]}" -gt 0 ]; then
   echo "ERROR — expected paths missing from archive:" >&2
@@ -281,7 +313,7 @@ FORBIDDEN=(
 )
 LEAKS=()
 for path in "${FORBIDDEN[@]}"; do
-  tar tzf "$OUT" | grep -q "^\./${path}\$" && LEAKS+=("$path")
+  if grep -qx "\./${path}" <<< "$LISTING"; then LEAKS+=("$path"); fi
 done
 if [ "${#LEAKS[@]}" -gt 0 ]; then
   echo "ERROR — foreign Agents-101 material leaked into AE101 tarball:" >&2

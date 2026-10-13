@@ -17,6 +17,7 @@ const assert = require('node:assert/strict');
 const path = require('path');
 
 const CT = require(path.join(__dirname, 'calculate-time.js'));
+const CR = require(path.join(__dirname, '..', 'site/layouts/curriculum.js'));
 const { parseBand, computeTraining, verdict, parseTransitions, parseCharges } = CT;
 
 // ── band grammar ─────────────────────────────────────────────────────────────
@@ -159,7 +160,10 @@ test('every AE101 module computes with no unresolved leaf or beat', () => {
   // `mismatches`, where `--check` gates it — a suite that goes red for something
   // no code change can fix is a suite people learn to ignore.
   const r = computeTraining('agentic-engineering-101');
-  assert.equal(r.modules.length, 6);
+  const t = CR.TRAININGS['agentic-engineering-101'];
+  assert.equal(r.modules.length, t.modules.length + (t.optionalModules || []).length,
+    'every core and optional module must compute');
+  assert.ok(t.modules.length >= 6, 'the six core modules must stay declared');
   const problems = r.modules.flatMap(m => m.problems.map(p => `${m.slug}: ${p}`));
   assert.deepEqual(problems, [], 'every leaf must carry a parseable **Time:** and every beat must be priced');
 });

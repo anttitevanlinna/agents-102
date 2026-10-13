@@ -29,7 +29,7 @@ Full context → `bosser-strategy`.
 
 Shared tree, multiple live sessions. Assume a neighbour is inside your files.
 
-- Start `git pull` · during: commit+push signals every 30–60 min · end: commit+push uncommitted.
+- Trunk-based.
 - `main` = shared KB; OODA pushes direct (gates enforced), research cycles to `agents-102-research` `main`. Users + experimental → branches, Antti merges.
 - **Never bare `git commit`** → `git commit -m msg --only -- <paths>` (flags before `--`). Index = shared state, so `git add` can't protect a commit; `--only` ignores it. Read column 1 of `git status --short`, not only column 2.
 - **Never** `git stash` / `reset` / `checkout` / `restore` on dirty paths; no rebasing. WIP is deliberate — don't manufacture clean state. `git pull` complains → `git fetch` or commit.

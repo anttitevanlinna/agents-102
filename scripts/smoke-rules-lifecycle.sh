@@ -54,7 +54,7 @@ step "drift detected against scratch ledger" '! node "$S/compendium-drift.js" --
 step "repin scratch ledger → drift clears" 'node "$S/compendium-drift.js" --repin --ledger "$T/pins.json" && node "$S/compendium-drift.js" --check --ledger "$T/pins.json"'
 unset AGENTS_CORE_DIR
 step "live core + pins unchanged by the run" '[ "$(snap)" = "$BEFORE" ]'
-step "core hook tests (autocommit, extra rules, gates)" 'for t in "$LIVE_CORE"/project-claude/hooks/test-*.sh; do CLAUDE_PROJECT_DIR="$REPO" bash "$t" || exit 1; done'
+step "core hook tests (extra rules, gates)" 'for t in "$LIVE_CORE"/project-claude/hooks/test-*.sh; do CLAUDE_PROJECT_DIR="$REPO" bash "$t" || exit 1; done'
 step "org rules (AGENTS_EXTRA_RULES) reach writers and judges" 'node "$S/extra-rules.test.js"'
 
 echo "C. eval machinery (deterministic)"

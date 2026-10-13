@@ -39,7 +39,7 @@ Shared tree, multiple live sessions. Assume a neighbour is inside your files.
 
 ## Subagent rule injection
 
-Subagents inherit the full CLAUDE.md hierarchy + `.claude/rules/`; built-in Explore and Plan are the only exceptions. Prepend ONLY what sits outside an auto-load surface:
+Claude Code subagents inherit the full CLAUDE.md hierarchy + `.claude/rules/`; built-in Explore and Plan are the only exceptions. Other runtimes have different inheritance contracts: Copilot custom subagents opt in with `include-custom-instructions: true`, while its built-in `explore`, `task`, and `code-review` agents do not inherit repository instructions. In every runtime, prepend only what sits outside that runtime's auto-load surface:
 
 - Research → `continuous-research/research-rules.md`, **verbatim**. Does not auto-load; a subagent never sees it otherwise.
 - Content → `.claude/rules/content-rules.md` arrives on its own, **do not prepend**. Name `memory/_index/<surface>.leads.md` instead (indices don't auto-load either). WRITE prose → T1 index. JUDGE → full `memory/check_*.md` (T3); judges cite rule numbers, need carve-outs.
@@ -50,12 +50,14 @@ Subagents inherit the full CLAUDE.md hierarchy + `.claude/rules/`; built-in Expl
 2. 3–5 parallel subagents by file group; each writes structured output to disk.
 3. Subagents write, don't talk. Main thread reads summary files only.
 4. Synthesize from summaries → one verdict.
-5. One message, all agents, `run_in_background: true`.
+5. Launch all independent agents together through the runtime's parallel-subagent surface.
 6. Validate sweep output at apply time, at the Edit Read-first gate. → `memory/compounded/2026-05-18-platform-explore-sweep-validate-each-at-apply-time.md`
 
 ## Approval gate
 
 Card ONLY **student-facing body text + prompt bodies students copy** (`check_prompts.md §26`) **still carrying a decision the maintainer has not made.** Maintainer = whoever owns `main` in this checkout (Antti upstream; your curator in a customer copy). Format: BEFORE/AFTER/WHY/RISK, changed spans **bolded** in both BEFORE and AFTER — **always, every card, no exceptions** (insertion = bold only in AFTER; deletion = bold the cut span in BEFORE **and** the text that now closes over it in AFTER, so the join is visible). One at a time, wait for the call.
+
+Before yielding a prompt-body card, create `.claude/prompt-approvals/<prompt-key>.pending`. The prompt-submit hook converts the sole fresh pending marker to `<prompt-key>.confirmed` when the maintainer's next genuine message contains `prompt-ok`. The PreToolUse and pre-commit gates consume that confirmation. Never create a confirmed marker directly.
 
 **Not card-shaped though a student reads it** (§26 standing exemptions):
 

@@ -13,13 +13,16 @@ function hookCommands(settings) {
     groups.flatMap(g => (g.hooks || []).map(h => h.command)))
 }
 
-// Expand the only forms settings.json uses: $CLAUDE_PROJECT_DIR and
-// "${AGENTS_CORE_DIR:-<default>}". AGENTS_CORE_DIR is treated as unset: the
-// default is what a fresh clone gets.
+// Expand the only forms settings.json uses. AGENTS_CORE_DIR and
+// CLAUDE_PROJECT_DIR are treated as unset: those defaults are what a fresh
+// non-Claude runtime gets. A hook may be launched through an interpreter.
 function resolve(cmd, repo) {
-  let s = cmd.trim().split(/\s+/)[0].replace(/^"|"$/g, '')
+  let s = cmd.trim().replace(/^(?:python3|node|bash|sh)\s+/, '')
+  s = s.split(/\s+/)[0].replace(/^"|"$/g, '')
+  s = s.replace(/\$\{CLAUDE_PROJECT_DIR:-\$PWD\}/g, repo)
   s = s.replace(/"?\$\{AGENTS_CORE_DIR:-([^}]*)\}"?/, '$1').replace(/"/g, '')
   s = s.replace(/\$CLAUDE_PROJECT_DIR/g, repo)
+  s = s.replace(/\$PWD/g, repo)
   return s
 }
 

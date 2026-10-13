@@ -1,6 +1,6 @@
-# Codex Loader for Agents 102
+# Cross-runtime Loader for Agents 102
 
-This repository is primarily a Claude Code project. For Codex sessions, treat this file as the auto-loaded shim that points you to the canonical Claude instructions.
+Claude Code is the canonical authoring runtime for this repository. Codex and GitHub Copilot sessions use this file as the auto-loaded shim into the same instructions, rules, skills, and private core. Do not fork the generation system or its prompts by provider.
 
 ## Private Core Resolution
 
@@ -21,7 +21,7 @@ If an instruction here conflicts with a `CLAUDE.md`, the `CLAUDE.md` is the proj
 
 ## Content Creation Rules
 
-Claude loads content rules through hooks; Codex does not, so reproduce the current tiered loading protocol manually. Before writing, revising, reviewing, or advising on curriculum or other prose:
+Claude loads content rules through hooks. Copilot reuses the compatible hooks in `.claude/settings.json` and adds its transformed-prompt adapter in `.github/copilot/settings.json`; Codex follows this protocol directly. In every non-Claude runtime, the protocol below remains the source of truth even when a hook is unavailable or disabled. Before writing, revising, reviewing, or advising on curriculum or other prose:
 
 1. Read `.claude/rules/content-rules.md` and follow its current surface mapping.
 2. Read `<core>/memory/_index/diamond.md` (T0) at session start.
@@ -42,6 +42,14 @@ For Claude Basics specifically, resolve and read `bosser-strategy:content-strate
 ## Working Rule
 
 Mimic Claude Code's project-loading behavior: before editing a path, check whether that path has a closer `CLAUDE.md` and read it. Keep the root `CLAUDE.md` in force for strategy, copyright, multi-user hygiene, subagent rule injection, orchestration, and self-review.
+
+## Runtime adapters
+
+- GitHub Copilot combines `AGENTS.md` and `CLAUDE.md`; treat `CLAUDE.md` as canonical when the two overlap.
+- Generation needs read/write access to the sibling private core. Start Copilot CLI with `--add-dir ../agents-102-core` (or the resolved `$AGENTS_CORE_DIR`) and enable project extensions with `--experimental`. Non-interactive runs also set `GITHUB_COPILOT_PROMPT_MODE_EXTENSIONS=true`.
+- The queue-clearing evaluator has one canonical body at `.claude/workflows/eval-sweep.js`. Claude runs that script through its Workflow surface. Copilot loads the project extension at `.github/extensions/eval-sweep/extension.mjs` and runs the registered `eval-sweep` dynamic workflow.
+- `.github/agents` and `.claude/agents` resolve to the same private-core profiles. Copilot custom agents spawned as subagents need `include-custom-instructions: true`; do not assume built-in `explore`, `task`, or `code-review` agents receive repository instructions. Put any rule outside the auto-loaded hierarchy explicitly in the dispatch.
+- Codex and Copilot may use different tool names or model identifiers. Depend on artifact paths, schemas, and role names rather than provider-specific tool syntax or model aliases.
 
 ## Agents 101 Orientation
 

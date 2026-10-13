@@ -5,7 +5,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
-const { parseAsRuntimeWould, checkMeta, collect } = require('./check-workflow-scripts.js');
+const { parseAsRuntimeWould, extractMeta, checkMeta, collect } = require('./check-workflow-scripts.js');
 
 const GOOD = `export const meta = {
   name: 'x',
@@ -48,6 +48,19 @@ test('meta must carry name and description', () => {
   assert.match(checkMeta("export const meta = { name: 'x' }"), /description/);
   assert.match(checkMeta("export const meta = { description: 'x' }"), /name/);
   assert.equal(checkMeta(GOOD), null);
+});
+
+test('the canonical metadata object is available to runtime adapters', () => {
+  const meta = extractMeta(GOOD);
+  assert.equal(meta.name, 'x');
+  assert.equal(meta.description, 'does a thing');
+  assert.deepEqual(meta.phases, [{ title: 'Judge' }]);
+});
+
+test('braces inside metadata strings do not truncate the literal', () => {
+  const body = "export const meta = { name: 'x', description: 'args: {items}', phases: [] }\nreturn {}";
+  assert.equal(extractMeta(body).description, 'args: {items}');
+  assert.equal(checkMeta(body), null);
 });
 
 test('meta must be a literal — a computed name cannot be shown in a permission dialog', () => {

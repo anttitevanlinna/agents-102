@@ -33,32 +33,69 @@ const RUNTIME_GLOBALS = ['agent', 'parallel', 'pipeline', 'log', 'phase', 'args'
 
 // Returns null when the body parses, else the SyntaxError message.
 function parseAsRuntimeWould(body) {
-  const src = String(body).replace(/^export\s+(const\s+meta)/m, '$1');
   try {
-    new AsyncFunction(...RUNTIME_GLOBALS, src);
+    compileWorkflow(body);
     return null;
   } catch (e) {
     return `${e.constructor.name}: ${e.message}`;
   }
 }
 
-// Returns null when meta is acceptable, else a one-line reason.
-function checkMeta(body) {
+function compileWorkflow(body) {
+  const src = String(body).replace(/^export\s+(const\s+meta)/m, '$1');
+  return new AsyncFunction(...RUNTIME_GLOBALS, src);
+}
+
+// The metadata is a pure object literal by contract. Keep its extraction here
+// so Claude's parser gate and Copilot's extension register the same metadata.
+function metaLiteral(body) {
   const m = /^export\s+const\s+meta\s*=\s*\{/m.exec(body);
-  if (!m) return 'no `export const meta` — the runtime requires one';
-  // Read the object literal by brace balance from the opening `{`.
+  if (!m) throw new Error('no `export const meta` — the runtime requires one');
   const start = body.indexOf('{', m.index);
   let depth = 0;
-  let end = -1;
+  let quote = null;
+  let escaped = false;
+  let lineComment = false;
+  let blockComment = false;
   for (let i = start; i < body.length; i++) {
-    if (body[i] === '{') depth++;
-    else if (body[i] === '}' && --depth === 0) {
-      end = i;
-      break;
+    const ch = body[i];
+    const next = body[i + 1];
+    if (lineComment) {
+      if (ch === '\n') lineComment = false;
+      continue;
     }
+    if (blockComment) {
+      if (ch === '*' && next === '/') { blockComment = false; i++; }
+      continue;
+    }
+    if (quote) {
+      if (escaped) escaped = false;
+      else if (ch === '\\') escaped = true;
+      else if (ch === quote) quote = null;
+      continue;
+    }
+    if (ch === '/' && next === '/') { lineComment = true; i++; continue; }
+    if (ch === '/' && next === '*') { blockComment = true; i++; continue; }
+    if (ch === '"' || ch === "'" || ch === '`') { quote = ch; continue; }
+    if (ch === '{') depth++;
+    else if (ch === '}' && --depth === 0) return body.slice(start, i + 1);
   }
-  if (end === -1) return 'the meta literal never closes';
-  const lit = body.slice(start, end + 1);
+  throw new Error('the meta literal never closes');
+}
+
+function extractMeta(body) {
+  const lit = metaLiteral(String(body));
+  return Function(`"use strict"; return (${lit});`)();
+}
+
+// Returns null when meta is acceptable, else a one-line reason.
+function checkMeta(body) {
+  let lit;
+  try {
+    lit = metaLiteral(String(body));
+  } catch (e) {
+    return e.message;
+  }
   // Present-but-computed is diagnosed before absent: a field whose value is an
   // identifier IS there, and reporting it as missing sends the author looking
   // for the wrong thing.
@@ -69,6 +106,12 @@ function checkMeta(body) {
     if (!f) return `meta is missing a string \`${field}\``;
   }
   if (/\.\.\./.test(lit)) return 'meta must be a pure literal — no spreads';
+  try {
+    const meta = extractMeta(body);
+    if (!meta || typeof meta !== 'object' || Array.isArray(meta)) return 'meta must evaluate to an object';
+  } catch (e) {
+    return `meta literal cannot be evaluated: ${e.message}`;
+  }
   return null;
 }
 
@@ -111,4 +154,11 @@ if (require.main === module) {
   process.exit(bad ? 1 : 0);
 }
 
-module.exports = { parseAsRuntimeWould, checkMeta, collect, RUNTIME_GLOBALS };
+module.exports = {
+  parseAsRuntimeWould,
+  compileWorkflow,
+  extractMeta,
+  checkMeta,
+  collect,
+  RUNTIME_GLOBALS,
+};

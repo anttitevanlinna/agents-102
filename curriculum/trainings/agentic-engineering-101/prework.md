@@ -13,7 +13,7 @@ YOUR real work is the material. You'll work at different task sizes across the t
 Roughly in the order you'll reach for them:
 
 - **Trivial bug**, wanted on day one: a few lines here and there. Picked from your repo's backlog or a recurring annoyance.
-- **A small multi-file task**: work you'd ship today if you had the hour. Plan mode wants something a few files wide.<!--flag:module:earn-the-trust-->
+- **A small multi-file task**: work you'd ship today if you had the hour, spanning a few files.<!--flag:module:earn-the-trust-->
 - **A small feature**: external or user-facing surface, shippable in a few hours.<!--/flag:module:earn-the-trust-->
 - **A bigger piece**: a refactor, or a feature with unknowns. Size this one by the agent rather than by yourself. Roughly 30 to 120 minutes of the agent working, not counting the time you spend writing prompts.
 
@@ -83,9 +83,9 @@ The opening question at Module 1: *what's your favourite Claude Code trick that 
 
 <!-- maintainer -->
 
-**Quality:** sim-passed 2026-09-28 (writing@78409c0b story@78409c0b technical@78409c0b behavior@96b5ca1e pedagogy@78409c0b strategy@78409c0b slides@78409c0b)
-- judges @78409c0b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @3bc472a1: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
+**Quality:** sim-passed 2026-09-29 (writing@3ce6146d story@78409c0b technical@78409c0b behavior@96b5ca1e pedagogy@78409c0b strategy@78409c0b slides@3ce6146d)
+- judges @3ce6146d: writing PASS (3 findings see instances/ae101--module--prework.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @01df77e9: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
 
 **Prework owes no licence check and no network/proxy check.** (Antti 2026-08-13, closing a maintainer-call.) When `cohort-onboarding-email.md` was collapsed into a welcome plus a link here, two of its sections had no other home: confirming a paid Claude licence is active, and confirming a corp proxy or VPN is not in the way. The call is that neither is owed. Licensing is settled in the sponsor conversation before anyone reads this page, and a blocked network cannot hide — the student opens a real session at the step below, which fails loudly and immediately if the connection is not there. A check that only ever confirms what the next step proves anyway adds nothing. Do not add a setup beat for either, and do not resolve it by restoring the email, which would re-open the drift the collapse closed.
 

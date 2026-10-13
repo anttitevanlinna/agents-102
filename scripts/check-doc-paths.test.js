@@ -51,6 +51,11 @@ test('implementation plans and specs may name future and sibling-repository path
 // Regression: a reference to `the-loop-has-a-name.md` must not register as a hit
 // on `loop-has-a-name.md`. Naive substring matching granted canon to a file that
 // nothing actually named.
+test('story-depth judge records quote the student working tree and are records, not pointers', () => {
+  assert.equal(isSkippedTree('curriculum/evals/story-depth/apt101-full-r1.judge-1.md'), true);
+  assert.equal(isSkippedTree('curriculum/evals/story-depth.md'), false);
+});
+
 test('namesIt: basename matches whole path segments, not substrings', () => {
   const text = 'see `curriculum/lectures/the-loop-has-a-name.md` for the close';
   assert.equal(namesIt(text, 'curriculum/evals/scratch/loop-has-a-name.md'), false);

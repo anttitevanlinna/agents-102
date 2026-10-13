@@ -930,3 +930,146 @@ test('changeTags: maintainer-only deletion still tags nothing', () => {
   test('findingIndex: one open row beside a settled one keeps the class live', () => assert.ok(idx.has(key('mixed'))))
   resetFindingIndex()
 }
+
+// A slide include (`.md#<id>`) borrows slides; only a whole-file include owns
+// the file. Otherwise a home training's instances turn "not derivable" the
+// moment a second training borrows one slide.
+test('linkFinder: a #slide include does not confer ownership', () => {
+  const fs = require('node:fs'), os = require('node:os'), path = require('node:path')
+  const { linkFinder } = require('./scan-stale-classes.js')
+  const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'linkfinder-'))
+  for (const [t, line] of [['home', '[L](lectures/shared.md)'], ['borrower', '[L](lectures/shared.md#cover,a)']]) {
+    fs.mkdirSync(path.join(repo, 'curriculum/trainings', t), { recursive: true })
+    fs.writeFileSync(path.join(repo, 'curriculum/trainings', t, 'm.md'), `# M\n\n${line}\n`)
+  }
+  assert.deepEqual(linkFinder(repo)('curriculum/lectures/shared.md'), ['home'])
+  fs.rmSync(repo, { recursive: true, force: true })
+})
+
+// A `<!--slide:<id>-->` line is an include address: it never renders and no
+// judge reads a sentence in it. Adding ids to a judged lecture stales nothing.
+test('changeTags: a slide-id marker line stales nothing and counts as no body line', () => {
+  const doc = '# T\n\n## A slide\n<!--slide:a-slide-->\n\nprose\n\n<!-- maintainer -->\n'
+  const r = changeTags(buildLineMeta(doc), [{ oldStart: 4, oldLen: 0, start: 4, len: 1 }])
+  assert.strictEqual(r.tags.size, 0)
+  assert.strictEqual(r.changedBody, 0)
+})
+
+// --- borrowed slides: a module including `lectures/x.md#<id>` goes stale when
+// THOSE slides change at home, routed by the same hunk tagger; an edit to a
+// slide it did not borrow stales nothing. ---------------------------------------
+{
+  const PINS = '(writing@aaa1111 story@aaa1111 technical@aaa1111 behavior@aaa1111 pedagogy@aaa1111 strategy@aaa1111 slides@aaa1111)'
+  const MOD = `# M\n\n[B](lectures/home.md#b)\n\n<!-- maintainer -->\n**Quality:** compendium-audited 2026-01-01 ${PINS}\n`
+  const HOME = '# Home\n\n## A\n<!--slide:a-->\n\nalpha prose\n\n## B\n<!--slide:b-->\n\nbeta prose\n\n## C\n\ngamma closes\n'
+  //            1       2 3    4             5 6           7 8    9             10 11
+  const io = diff => ({
+    readFile: p => (p === 'curriculum/trainings/t/m.md' ? MOD : p === 'curriculum/lectures/home.md' ? HOME : null),
+    gitDiff: (sha, p) => (p === 'curriculum/lectures/home.md' ? diff : ''),
+    validSha: () => true, ruleDrift: () => new Set(), staleFinding: () => false,
+  })
+  test('scanFile: a prose edit inside a borrowed slide stales the borrower (writing+slides, reason borrowed-slide)', () => {
+    const r = scanFile('curriculum/trainings/t/m.md', io('@@ -11,1 +11,1 @@\n-beta\n+beta prose\n'))
+    assert.deepStrictEqual([...r.classes].sort(), ['slides', 'writing'])
+    assert.equal(r.detail.writing, 'borrowed-slide')
+  })
+  test('scanFile: an edit to a slide the module did not borrow stales nothing', () => {
+    assert.deepStrictEqual(scanFile('curriculum/trainings/t/m.md', io('@@ -6,1 +6,1 @@\n-alpha\n+alpha prose\n')).classes, [])
+  })
+  test('scanFile: a borrowed id that no longer resolves stales every class (fail closed)', () => {
+    const gone = io('')
+    const rf = gone.readFile
+    gone.readFile = p => (p === 'curriculum/lectures/home.md' ? HOME.replace('<!--slide:b-->', '') : rf(p))
+    assert.equal(scanFile('curriculum/trainings/t/m.md', gone).classes.length, 7)
+  })
+  test('filterItems: same borrowed-slide axis', () => {
+    const { items } = filterItems([{ file: 'curriculum/trainings/t/m.md', classes: ['writing', 'behavior'] }], io('@@ -11,1 +11,1 @@\n-beta\n+beta prose\n'))
+    assert.deepStrictEqual(items[0].classes, ['writing'])
+  })
+}
+
+// --- slide files (curriculum/slides/<id>.md) + manifests that include them ---
+// A slide file is a training-neutral surface owing writing/technical/slides.
+// A file including slide files is diffed on its EXPANDED text, so extraction
+// (expanded byte-identical) stales nothing and a member-slide edit stales it.
+{
+  const { typeOf, trainingOf, scanFile } = require('./scan-stale-classes.js')
+  test('typeOf: curriculum/slides/<id>.md is a slide; trainingOf: training-neutral "shared"', () => {
+    assert.equal(typeOf('curriculum/slides/a-slide.md'), 'slide')
+    assert.equal(trainingOf('curriculum/slides/a-slide.md', () => ['agents-101', 'claude-basics']), 'shared')
+  })
+  test('scanFile: an unjudged slide file owes writing, technical and slides only', () => {
+    const io = { readFile: () => '## A\n<!--slide:a-->\n\nbody\n', gitDiff: () => '', validSha: () => true, ruleDrift: () => new Set(), staleFinding: () => false }
+    assert.deepStrictEqual([...scanFile('curriculum/slides/a.md', io).classes].sort(), ['slides', 'technical', 'writing'])
+  })
+
+  const PINS = '(writing@aaa1111 story@aaa1111 technical@aaa1111 behavior@aaa1111 pedagogy@aaa1111 strategy@aaa1111 slides@aaa1111)'
+  const TAIL = `\n<!-- maintainer -->\n**Quality:** compendium-audited 2026-01-01 ${PINS}\n`
+  const SLIDE_A = '## Alpha\n<!--slide:alpha-->\n\nalpha prose\n'
+  const SLIDE_B = '## Beta\n<!--slide:beta-->\n\nbeta prose\n'
+  // At the pin: the old-style lecture, slides inline. Now: the manifest.
+  const OLD = `# L\n<!--slide:cover-->\n\nLede.\n\n${SLIDE_A}\n${SLIDE_B}\n## Close\n\nlast words\n${TAIL}`
+  const NOW = `# L\n<!--slide:cover-->\n\nLede.\n\n[Alpha](slides/alpha.md)\n\n[Beta](slides/beta.md)\n\n## Close\n\nlast words\n${TAIL}`
+  const mk = (slidesNow, extra = {}) => ({
+    readFile: p => (p === 'curriculum/lectures/l.md' ? NOW : p.startsWith('curriculum/slides/') ? (slidesNow[p.slice(18, -3)] ?? null) : null),
+    showAt: (sha, p) => (p === 'curriculum/lectures/l.md' ? OLD : null),
+    gitDiff: () => '@@ -6,9 +6,3 @@\n-x\n+y\n', // the raw diff is large; it must not be what routes
+    validSha: () => true, ruleDrift: () => new Set(), staleFinding: () => false, ...extra,
+  })
+  test('scanFile: extracting slides into files (expanded text identical) stales nothing', () => {
+    assert.deepStrictEqual(scanFile('curriculum/lectures/l.md', mk({ alpha: SLIDE_A, beta: SLIDE_B })).classes, [])
+  })
+  test('scanFile: a prose edit in a member slide stales the manifest (writing+slides), reason member-slide', () => {
+    const r = scanFile('curriculum/lectures/l.md', mk({ alpha: SLIDE_A.replace('alpha prose', 'alpha prose, edited'), beta: SLIDE_B }))
+    assert.deepStrictEqual([...r.classes].sort(), ['slides', 'writing'])
+    assert.equal(r.detail.writing, 'member-slide')
+  })
+  test('scanFile: a member slide file that is gone stales every class (fail closed)', () => {
+    assert.equal(scanFile('curriculum/lectures/l.md', mk({ alpha: SLIDE_A })).classes.length, 7)
+  })
+  test('scanFile: a file including slide files with an io lacking showAt throws, never reads as clean', () => {
+    const io = mk({ alpha: SLIDE_A, beta: SLIDE_B }); delete io.showAt
+    assert.throws(() => scanFile('curriculum/lectures/l.md', io), /showAt/)
+  })
+}
+
+// A #id borrow whose home lecture became a manifest of slide files: the id
+// lives in the inlined text. Extraction must not stale the borrower; an edit to
+// the borrowed slide's FILE must.
+{
+  const { scanFile } = require('./scan-stale-classes.js')
+  const PINS = '(writing@aaa1111 story@aaa1111 technical@aaa1111 behavior@aaa1111 pedagogy@aaa1111 strategy@aaa1111 slides@aaa1111)'
+  const MOD = `# M\n\n[B](lectures/home.md#b)\n\n<!-- maintainer -->\n**Quality:** compendium-audited 2026-01-01 ${PINS}\n`
+  const SB = '## B\n<!--slide:b-->\n\nbeta prose\n'
+  const HOME_OLD = `# Home\n\n## A\n<!--slide:a-->\n\nalpha prose\n\n${SB}\n## C\n\ngamma closes\n`
+  const HOME_NOW = '# Home\n\n## A\n<!--slide:a-->\n\nalpha prose\n\n[B](slides/b.md)\n\n## C\n\ngamma closes\n'
+  const io = sb => ({
+    readFile: p => ({ 'curriculum/trainings/t/m.md': MOD, 'curriculum/lectures/home.md': HOME_NOW, 'curriculum/slides/b.md': sb })[p] ?? null,
+    showAt: (sha, p) => (p === 'curriculum/lectures/home.md' ? HOME_OLD : null),
+    gitDiff: () => '@@ -9,5 +9,1 @@\n-x\n+y\n',
+    validSha: () => true, ruleDrift: () => new Set(), staleFinding: () => false,
+  })
+  test('scanFile: #id borrow from a home that became a manifest — extraction stales nothing', () => {
+    assert.deepStrictEqual(scanFile('curriculum/trainings/t/m.md', io(SB)).classes, [])
+  })
+  test('scanFile: #id borrow from a manifest — an edit to the borrowed slide file stales the borrower', () => {
+    const r = scanFile('curriculum/trainings/t/m.md', io(SB.replace('beta prose', 'beta prose, edited')))
+    assert.deepStrictEqual([...r.classes].sort(), ['slides', 'writing'])
+    assert.equal(r.detail.writing, 'borrowed-slide')
+  })
+}
+
+// A slide file is born with no maintainer block; its first stamp appends
+// "\n<!-- maintainer -->\n\n**Quality:** …". The blank line before the marker
+// lands in body region, and a stamp must not stale the classes it just stamped.
+test('changeTags: a first maintainer tail, blank separator included, routes nothing', () => {
+  const before = '## Title\n<!--slide:t-->\n\nBody line.\n'
+  const after = before + '\n<!-- maintainer -->\n\n**Quality:** compendium-audited 2026-10-06 (writing@abc1234)\n'
+  const { textDiff } = require('./scan-stale-classes.js')
+  const r = changeTags(buildLineMeta(after), parseHunks(textDiff(before, after)))
+  assert.deepStrictEqual([...r.tags], [])
+  // A blank line that splits a body paragraph still renders, so it still routes.
+  const split = '## Title\n<!--slide:t-->\n\nBody\n\nline.\n'
+  const r2 = changeTags(buildLineMeta(split), parseHunks(textDiff('## Title\n<!--slide:t-->\n\nBody\nline.\n', split)))
+  assert.ok(r2.tags.has('writing'))
+})

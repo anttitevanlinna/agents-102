@@ -160,6 +160,9 @@ function stateFor(r, meta = null) {
   // A non-blocking finding is not a gate: PASS stays PASS, and carries the
   // count plus a pointer to the instance holding the findings, so a row reading
   // a bare `PASS` never hides notes. The verdict is not rewritten.
+  // N/A = the class has nothing to judge on this file (a prompt-less page for
+  // behavior). It is not a failure; falling through below stamped it REVISE 0/0.
+  if (r.verdict === 'N/A') return 'na'
   if (r.verdict === 'PASS') {
     return r.todos ? `PASS:${plural(r.todos)}${pointer(r)}` : 'PASS'
   }
@@ -295,7 +298,7 @@ function main() {
       stamped++
     }
     if (skipped.length) process.stderr.write(`DRIFT-SKIP ${file}: ${skipped.join(' ')}\n`)
-    if (unbound.length) process.stderr.write(`TRACE-SKIP ${file}: ${unbound.join(' ')} (trace not bound to the body the judge read — persist it, run bind-trace.js, or re-fire)\n`)
+    if (unbound.length) process.stderr.write(`TRACE-SKIP ${file}: ${unbound.join(' ')} (trace not bound to the body the judge read — re-fire; the sweep lists it under unbound. Binding it yourself vouches for a trace you did not read)\n`)
     if (!flags.length) continue
     if (dry) { process.stderr.write(`DRY ${file}: ${flags.join(' ')}\n`); continue }
     recordRefutations(pairs.filter(r => !drift.has(r.cls)), path.join(repo, INSTANCES), new Date().toISOString().slice(0, 10))

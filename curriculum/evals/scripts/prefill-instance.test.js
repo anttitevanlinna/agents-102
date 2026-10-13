@@ -246,3 +246,24 @@ test('a header rename changes the shape, so every carried N/A is re-owed', () =>
   assert.match(doc.reason, /shape changed/)
   assert.equal(doc.shape_hash, same)
 })
+
+// Borrowed slides are part of the judged surface (expand-md inlines them), so a
+// parked N/A written before they arrived must not carry onto a body that now
+// has them. A file that borrows nothing hashes exactly as before.
+test('shapeHash: borrowed slide text is shape; absent borrowing leaves the hash unchanged', () => {
+  const { borrowedText } = require('./prefill-instance.js')
+  const sig = { slide_count: 3 }
+  const h = ['A', 'B']
+  assert.equal(shapeHash(sig, h), shapeHash(sig, h, null), 'no borrowing → legacy hash')
+  assert.notEqual(shapeHash(sig, h), shapeHash(sig, h, '## Borrowed\nbody'))
+  assert.notEqual(shapeHash(sig, h, '## Borrowed\nbody'), shapeHash(sig, h, '## Borrowed\nbody edited'))
+  assert.equal(borrowedText('# M\n\n[L](lectures/x.md)\n'), null)
+  assert.match(borrowedText('# M\n\n[C](lectures/context-is-king.md#cover)\n'), /^# Context is King/)
+})
+
+test('borrowedText: slide-file includes count as borrowed shape too', () => {
+  const { borrowedText } = require('./prefill-instance.js')
+  const got = borrowedText('# L\n\n[S](slides/nope-not-a-slide.md)\n')
+  assert.ok(got !== null, 'a slide-file include is shape even when unresolved')
+  assert.match(got, /unresolved slides\/nope-not-a-slide/)
+})

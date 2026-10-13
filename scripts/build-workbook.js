@@ -37,6 +37,8 @@ const { marked } = require('marked');
 
 const ROOT = path.resolve(__dirname, '..');
 const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
+const { readCurriculumMd } = require('./read-curriculum.js');
+const { scopedRuntime } = require('./workbook-runtime.js');
 const CT = require(path.join(ROOT, 'scripts/calculate-time.js'));
 const { loadRegistry, writeRegistry, OUT_FILE: PROMPTS_JSON } = require('./compile-prompts.js');
 
@@ -48,6 +50,15 @@ const CLIENTS_ROOT = process.env.AGENTS_OUTPUT_DIR
   : path.join(ROOT, 'site/clients');
 const shown = p => { const r = path.relative(process.cwd(), p); return r.startsWith('..') ? p : r || '.' };
 const { loadFigures, writeFigures, OUT_FILE: FIGURES_JSON } = require('./compile-figures.js');
+const { loadOverlay } = require('./customer-overlay.js');
+// Customer overlay (AGENTS_OVERLAY_DIR): a folder mirroring curriculum/ whose
+// files win over ours at build time; contract in customer-overlay.js. Every
+// curriculum read below goes through cur(). Unset → the vendor tree, unchanged.
+const OVERLAY = loadOverlay(process.env.AGENTS_OVERLAY_DIR, { root: ROOT, trainings: CR.TRAININGS });
+for (const [k, o] of Object.entries(OVERLAY.labels)) Object.assign(CR.TRAININGS[k], o);
+for (const r of OVERLAY.recorded) console.log(`overlay: recorded the vendor base of ${r} in overlay.lock.json`);
+for (const d of OVERLAY.drift) console.log(`overlay: DRIFT ${d.rel}: the vendor file changed since this shadow was forked; see git diff ${d.since || '<base>'} -- curriculum/${d.rel}, merge, then delete its overlay.lock.json entry`);
+const cur = (...parts) => OVERLAY.resolve(path.posix.join(...parts));
 
 // Wire heading-id generation into marked so cross-doc anchor links
 // (`target.md#section-anchor`) resolve in workbook output.
@@ -69,6 +80,9 @@ try {
 }
 writeRegistry(PROMPT_REGISTRY, PROMPTS_JSON);
 console.log(`Loaded ${Object.keys(PROMPT_REGISTRY).length} prompts from curriculum/prompts/`);
+// Customer prompts join after site/prompts.json is written, so that tracked
+// file stays ours; this build expands both.
+if (OVERLAY.promptsDir) PROMPT_REGISTRY = Object.assign({}, PROMPT_REGISTRY, loadRegistry(OVERLAY.promptsDir));
 
 // Figure registry: curriculum/figures/<key>.md → {{figure:key}} expansion.
 // Same lifecycle as prompts — loaded once, strict at expand time, compiled to
@@ -83,6 +97,7 @@ try {
 }
 writeFigures(FIGURE_REGISTRY, FIGURES_JSON);
 console.log(`Loaded ${Object.keys(FIGURE_REGISTRY).length} figures from curriculum/figures/`);
+if (OVERLAY.figuresDir) FIGURE_REGISTRY = Object.assign({}, FIGURE_REGISTRY, loadFigures(OVERLAY.figuresDir));
 
 // Soft sanity check on registry frontmatter values. Strict expansion already
 // fails on unresolved keys; these checks catch typos in dest/runtime that
@@ -198,6 +213,36 @@ const THEORY_HANDBOOK_MANIFEST = {
   // them; the three live demos (first-scheduled-agent, agent-that-takes-action,
   // agent-loop-raw) are room beats, not theory, and stay out. module-3-prework is
   // a setup exercise with nothing to summarise.
+  'agentic-product-teams-101': [
+    ['M1', [
+      'lectures/apt101-building-rationed-it',
+      'lectures/apt101-building-is-cheap',
+      'lectures/apt101-work-backwards',
+      'lectures/apt101-only-what-you-tell-it',
+      'lectures/apt101-write-the-bet',
+      'lectures/apt101-your-material-is-the-moat',
+      'lectures/apt101-it-runs-overnight',
+    ]],
+    ['M2', [
+      'lectures/apt101-the-digest-is-back',
+      'lectures/apt101-why-it-agreed',
+      'lectures/apt101-go-back-to-your-customers',
+      'lectures/apt101-widen-before-you-choose',
+      'lectures/apt101-safe-to-say-its-wrong',
+      'lectures/apt101-fluent-is-not-true',
+      'lectures/apt101-each-of-you-makes-something',
+      'lectures/apt101-imagine-it-already-failed',
+      'lectures/apt101-write-it-down-or-lose-it',
+    ]],
+    ['M3', [
+      'lectures/apt101-slice-by-learning',
+      'lectures/apt101-what-good-means',
+      'lectures/apt101-bet-meets-five-users',
+      'lectures/apt101-three-jobs-rewritten',
+      'lectures/apt101-from-us-to-the-team',
+      'lectures/apt101-where-you-go-from-here',
+    ]],
+  ],
   'agents-101': [
     ['M1', [
       'lectures/context-is-king',
@@ -251,7 +296,7 @@ const THEORY_HANDBOOK_MANIFEST = {
 
 function readMd(absPath) {
   if (!fs.existsSync(absPath)) return null;
-  const raw = fs.readFileSync(absPath, 'utf8');
+  const raw = readCurriculumMd(absPath);
   const stripped = CR.stripMaintainerTail(raw);
   // Strict mode: any unresolved {{prompt:<key>}} marker fails the build,
   // pointing at the offending file via the path included in the error.
@@ -321,16 +366,23 @@ function plainDisplayText(value) {
 // wrapped in HTML comment markers; postProcessIncludes turns the markers into
 // <section class="phase phase--<kind>"> after marked.parse.
 function inlineIncludes(md, seen = new Set()) {
-  return md.replace(CR.INCLUDE_LINK_RE, (full, title, kindSlug) => {
+  return md.replace(CR.INCLUDE_LINK_RE, (full, title, kindSlug, slideId) => {
     const [kind, slug] = kindSlug.split('/');
-    const incPath = path.join(ROOT, 'curriculum', kind, slug + '.md');
-    const inc = readMd(incPath);
+    const incPath = cur(kind, slug + '.md');
+    let inc = readMd(incPath);
     if (inc === null) return full;
-    const key = `${kind}/${slug}`;
+    // `#<id>` = one slide; wrapper id `<kind>-<slug>--<id>` never collides with
+    // the whole-file wrapper. An unresolved id fails the build.
+    if (slideId) {
+      try { inc = CR.sliceSlides(inc, slideId); }
+      catch (e) { throw new Error(`${kindSlug}.md#${slideId}: ${e.message}`); }
+    }
+    const key = slideId ? `${kind}/${slug}#${slideId}` : `${kind}/${slug}`;
     if (seen.has(key)) return full; // prevent loops
     seen.add(key);
     const body = inlineIncludes(inc, seen);
-    return `\n\n<!--INC:${kind}:${slug}:${CR.esc(title)}-->\n\n${body}\n\n<!--/INC-->\n\n`;
+    const wrapSlug = slideId ? `${slug}--${slideId.split(',')[0]}` : slug;
+    return `\n\n<!--INC:${kind}:${wrapSlug}:${CR.esc(title)}-->\n\n${body}\n\n<!--/INC-->\n\n`;
   });
 }
 
@@ -345,7 +397,7 @@ function postProcessIncludes(html) {
 }
 
 function renderModuleMd(trainingKey, slug, contentUrl, flags, moduleSlugs) {
-  const modPath = path.join(ROOT, 'curriculum/trainings', trainingKey, slug + '.md');
+  const modPath = cur('trainings', trainingKey, slug + '.md');
   let md = readMd(modPath);
   if (md === null) throw new Error(`Module not found: ${modPath}`);
   md = inlineIncludes(md);
@@ -377,7 +429,7 @@ function buildToc(contentKey, t) {
   const bigIdeaCache = {};
   function bigIdeaFor(slug) {
     if (slug in bigIdeaCache) return bigIdeaCache[slug];
-    const modPath = path.join(ROOT, 'curriculum/trainings', contentKey, slug + '.md');
+    const modPath = cur('trainings', contentKey, slug + '.md');
     const md = readMd(modPath) || '';
     return (bigIdeaCache[slug] = CR.extractBigIdea(md));
   }
@@ -404,7 +456,7 @@ function buildTopNav(trainingKey, t, customer) {
     chips.push(`      <li><a href="#${m.slug}" data-target="${m.slug}">M${CR.moduleOrdinal(trainingKey, m.slug)}</a></li>`);
   });
   return `<nav class="workbook-topnav" aria-label="Workbook navigation">
-  <a class="workbook-topnav__home" href="#top">${CR.esc(t.label)} — ${CR.esc(customer)}</a>
+  <a class="workbook-topnav__home" href="#top">${CR.esc(t.label)} — ${CR.esc(BRAND.name(customer))}</a>
   <ol class="workbook-topnav__modules">
 ${chips.join('\n')}
   </ol>
@@ -425,7 +477,7 @@ function buildBody(trainingKey, customer, contentUrl) {
 
   const cover = `
 <header class="workbook-cover" id="top">
-  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(customer)} workbook</p>
+  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(BRAND.name(customer))} workbook</p>
   <h1 class="cover-title">${CR.esc(t.label)}</h1>
   <p class="lede">${CR.esc(plainDisplayText(t.lede))}</p>
 </header>
@@ -465,7 +517,7 @@ ${buildToc(contentKey, t)}
   // module bodies don't die. Same chrome as modules; no Big Idea hero.
   // Files live under curriculum/trainings/<training>/<kind>/<slug>.md.
   function renderStandalone(kind, slug) {
-    const docPath = path.join(ROOT, 'curriculum/trainings', contentKey, kind, slug + '.md');
+    const docPath = cur('trainings', contentKey, kind, slug + '.md');
     let md = readMd(docPath);
     // A registry slug with no backing file is always a dead nav link: the index
     // (built from the registry) links to #<kind>-<slug>, but no section renders.
@@ -500,7 +552,7 @@ ${buildToc(contentKey, t)}
   const allBody = standaloneHtml ? modulesHtml + '\n\n' + standaloneHtml : modulesHtml;
 
   // Footer markup lives in CR.renderFooter (shared with SPA — single source).
-  return topNav + '\n<main>\n' + cover + '\n' + allBody + '\n</main>\n' + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
+  return topNav + '\n<main>\n' + cover + '\n' + allBody + '\n</main>\n' + pageFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
 // ── Inline assets ───────────────────────────────────────────────────────────
@@ -516,25 +568,62 @@ const STUDENT_HANDBOOK_PRINT_CSS = fs.readFileSync(
 const ANATOMY = Object.values(PROMPT_REGISTRY).some(e => e && e.anchors && e.anchors.length)
   ? require('./compile-anatomy.js').entries() : null;
 if (ANATOMY) require('./write-if-changed.js').writeIfChanged(path.join(ROOT, 'site/anatomy.json'), JSON.stringify(ANATOMY, null, 2) + '\n');
-const SPA_JS = (ANATOMY ? `window.__ANATOMY = ${JSON.stringify(ANATOMY).replace(/<\//g, '<\\/')};\n` : '') + fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.js'), 'utf8');
+// Every built page ends with the legal footer and, folded under it, the
+// third-party notices: a licence that asks for its notice "in all copies" is
+// answered by the page carrying it, wherever the page is hosted.
+const NOTICES_HTML = '<details class="third-party-notices"><summary>Third-party notices</summary>\n'
+  + marked.parse(fs.readFileSync(path.join(ROOT, 'content/THIRD-PARTY-NOTICES.md'), 'utf8').replace(/^# .*\n/, ''))
+  + '</details>';
+const pageFooter = () => CR.renderFooter() + '\n' + NOTICES_HTML;
+const SPA_JS_SRC = fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.js'), 'utf8');
+// The runtime a page inlines carries the registry entry of the training it was
+// built for and no other (scripts/workbook-runtime.js).
+const spaJs = trainingKey => (ANATOMY ? `window.__ANATOMY = ${JSON.stringify(ANATOMY).replace(/<\//g, '<\\/')};\n` : '') + scopedRuntime(SPA_JS_SRC, CR.TRAININGS, trainingKey);
 // The slide viewer (Long-read ⇄ Slides). Inlined so the handbook keeps working
 // offline; inert until the reader toggles Slides.
 const SLIDES_CSS = fs.readFileSync(path.join(ROOT, 'site/layouts/slides.css'), 'utf8');
 const SLIDES_JS = fs.readFileSync(path.join(ROOT, 'site/layouts/slides.js'), 'utf8');
 
 // Customer branding (AGENTS_BRAND_DIR): a folder the customer owns, holding
-// brand.css (appended after every stylesheet, so it wins the cascade) and/or
-// logo.svg | logo.png (inlined on the covers). Unset → no trace in the output.
+//   brand.css      appended after every stylesheet, so it wins the cascade
+//   logo.svg|png   inlined on the covers, and once as `--brand-logo` (defined
+//                  before brand.css) so customer CSS can place the same mark
+//                  anywhere without carrying a second copy
+//   customer.json  display identity: name, logoAlt, hubHeading, hubLede. The
+//                  customer argument stays the path/URL slug; it is the name
+//                  only when customer.json gives none
+//   assets/        copied to <customer>/brand-assets/; brand.css refers to
+//                  them as url(assets/...), rewritten per page depth
+// Every page passes its depth below the customer dir to style(). Unset → no
+// trace in the output, and the covers keep the vendor identity.
 const BRAND = (() => {
   const dir = process.env.AGENTS_BRAND_DIR
-  if (!dir) return { style: '', logo: () => '' }
+  if (!dir) return { on: false, name: s => s, hub: {}, style: () => '', logo: () => '', copyAssets: () => {} }
   const read = f => { try { return fs.readFileSync(path.join(dir, f)) } catch { return null } }
   const css = read('brand.css')
   const svg = read('logo.svg'), png = svg ? null : read('logo.png')
   const src = svg ? `data:image/svg+xml;base64,${svg.toString('base64')}` : png ? `data:image/png;base64,${png.toString('base64')}` : ''
+  const raw = read('customer.json')
+  let id = {}
+  if (raw) {
+    try { id = JSON.parse(raw.toString('utf8')) } catch (e) { throw new Error(`AGENTS_BRAND_DIR/customer.json is not valid JSON: ${e.message}`) }
+  }
+  const name = slug => id.name || slug
+  const assetsDir = path.join(dir, 'assets')
   return {
-    style: css ? `\n<style data-brand>${css.toString('utf8')}</style>` : '',
-    logo: alt => src ? `<img class="brand-logo" src="${src}" alt="${CR.esc(alt)}">\n  ` : '',
+    on: true, name,
+    hub: { heading: id.hubHeading, lede: id.hubLede },
+    style: depth => (src ? `\n<style data-brand-logo>:root { --brand-logo: url("${src}"); }</style>` : '')
+      + (css ? `\n<style data-brand>${css.toString('utf8').replace(
+        /url\(\s*(["']?)(?:\.\/)?assets\/([^"')]+)\1\s*\)/g,
+        (_, q, p) => `url("${'../'.repeat(depth)}brand-assets/${p}")`)}</style>` : ''),
+    logo: slug => src ? `<img class="brand-logo" src="${src}" alt="${CR.esc(id.logoAlt || name(slug))}">\n  ` : '',
+    copyAssets: customerDir => {
+      if (!fs.existsSync(assetsDir)) return
+      const dst = path.join(customerDir, 'brand-assets')
+      fs.rmSync(dst, { recursive: true, force: true })
+      fs.cpSync(assetsDir, dst, { recursive: true })
+    },
   }
 })()
 
@@ -553,6 +642,7 @@ const WORKBOOK_INIT_JS = `
     CurriculumRuntime.decorateSessions(document.body);
     CurriculumRuntime.decorateHox(document.body);
     CurriculumRuntime.decorateNote(document.body);
+    CurriculumRuntime.decorateTiming(document.body);
     CurriculumRuntime.decoratePrompts(document.body);
     CurriculumRuntime.decorateDiagramZoom(document.body);
     CurriculumRuntime.installReadingProgress();
@@ -655,7 +745,7 @@ const WORKBOOK_INIT_JS = `
 // decorations) as the workbook, but no module spine — one document, rendered
 // top-to-bottom.
 function buildTrainerGuide(customer, trainingKey) {
-  const guidePath = path.join(ROOT, 'curriculum/trainings', trainingKey, 'trainer-guide.md');
+  const guidePath = cur('trainings', trainingKey, 'trainer-guide.md');
   let md = readMd(guidePath);
   if (md === null) return null;
   md = escapeTildes(md);
@@ -670,12 +760,12 @@ function buildTrainerGuide(customer, trainingKey) {
 
   const cover = `
 <header class="workbook-cover" id="top">
-  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(customer)} workbook</p>
+  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(BRAND.name(customer))} workbook</p>
   <h1 class="cover-title">Trainer delivery guide</h1>
 </header>
 `;
   const main = '<main>\n' + cover + '\n<section class="module" id="trainer-guide">\n' + bodyHtml + '\n</section>\n</main>\n';
-  return main + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
+  return main + pageFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
 const TRAINER_GUIDE_INIT_JS = `
@@ -684,6 +774,7 @@ const TRAINER_GUIDE_INIT_JS = `
     CurriculumRuntime.decorateSessions(document.body);
     CurriculumRuntime.decorateHox(document.body);
     CurriculumRuntime.decorateNote(document.body);
+    CurriculumRuntime.decorateTiming(document.body);
     CurriculumRuntime.decoratePrompts(document.body);
     CurriculumRuntime.decorateDiagramZoom(document.body);
     CurriculumRuntime.installReadingProgress();
@@ -696,19 +787,19 @@ const TRAINER_GUIDE_INIT_JS = `
 // templates so the workbook's .module keeps its narrower projected measure.
 const TRAINER_WIDTH_CSS = `.module { max-width: 56em; }`;
 
-function trainerGuideTemplate(customer, content) {
+function trainerGuideTemplate(customer, trainingKey, content) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trainer delivery guide — ${CR.esc(customer)}</title>
+<title>Trainer delivery guide — ${CR.esc(BRAND.name(customer))}</title>
 <style>${SPA_CSS}
-${TRAINER_WIDTH_CSS}</style>${BRAND.style}
+${TRAINER_WIDTH_CSS}</style>${BRAND.style(1)}
 </head>
 <body class="runtime-cli workbook">
 ${content}
-<script>${SPA_JS}</script>
+<script>${spaJs(trainingKey)}</script>
 <script>${TRAINER_GUIDE_INIT_JS}</script>
 </body>
 </html>
@@ -830,7 +921,7 @@ function buildTrainerModules(customer, trainingKey) {
   const raw = CR.TRAININGS[trainingKey] || {};
   const contentKey = raw.contentKey || trainingKey;
   const t = raw.contentKey ? Object.assign({}, CR.TRAININGS[contentKey], raw) : raw;
-  const srcPath = path.join(ROOT, 'curriculum/trainings', contentKey, 'trainer-modules.md');
+  const srcPath = cur('trainings', contentKey, 'trainer-modules.md');
   let md = readMd(srcPath);
   if (md === null) return null;
   const moduleSlugs = [...(t.modules || []), ...(t.optionalModules || [])].map(m => m.slug);
@@ -850,28 +941,28 @@ function buildTrainerModules(customer, trainingKey) {
 
   const cover = `
 <header class="workbook-cover" id="top">
-  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(customer)} workbook</p>
+  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(BRAND.name(customer))} workbook</p>
   <h1 class="cover-title">Per-module glance</h1>
 </header>
 `;
   const main = '<main>\n' + cover + '\n<section class="module" id="trainer-modules">\n' + bodyHtml + '\n</section>\n</main>\n';
-  return main + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
+  return main + pageFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
-function trainerModulesTemplate(customer, content) {
+function trainerModulesTemplate(customer, trainingKey, content) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Per-module glance — ${CR.esc(customer)}</title>
+<title>Per-module glance — ${CR.esc(BRAND.name(customer))}</title>
 <style>${SPA_CSS}
 ${TRAINER_WIDTH_CSS}
-${TRAINER_MODULES_TABS_CSS}</style>${BRAND.style}
+${TRAINER_MODULES_TABS_CSS}</style>${BRAND.style(1)}
 </head>
 <body class="runtime-cli workbook">
 ${content}
-<script>${SPA_JS}</script>
+<script>${spaJs(trainingKey)}</script>
 <script>${TRAINER_GUIDE_INIT_JS}</script>
 <script>${TRAINER_MODULES_TAB_JS}</script>
 </body>
@@ -926,12 +1017,12 @@ function stripTheorySessionWidgets(md) {
 }
 
 function readExerciseViewMeta(slug) {
-  const srcPath = path.join(ROOT, 'curriculum/exercises', slug + '.md');
+  const srcPath = cur('exercises', slug + '.md');
   if (!fs.existsSync(srcPath)) {
     throw new Error(`Exercise summary source missing: ${path.relative(ROOT, srcPath)}`);
   }
 
-  const raw = fs.readFileSync(srcPath, 'utf8');
+  const raw = readCurriculumMd(srcPath);
   const marker = '<!-- maintainer -->';
   const markerAt = raw.indexOf(marker);
   if (markerAt === -1) {
@@ -973,7 +1064,7 @@ function renderTheoryEntry(trainingKey, entry) {
   const [kind, slug] = entry.split('/');
 
   if (kind === 'lectures') {
-    const srcPath = path.join(ROOT, 'curriculum/lectures', slug + '.md');
+    const srcPath = cur('lectures', slug + '.md');
     if (!fs.existsSync(srcPath)) {
       throw new Error(`Theory manifest entry missing: ${path.relative(ROOT, srcPath)}`);
     }
@@ -990,7 +1081,7 @@ function renderTheoryEntry(trainingKey, entry) {
   }
 
   if (kind === 'supplementary') {
-    const docPath = path.join(ROOT, 'curriculum/trainings', trainingKey, 'supplementary', slug + '.md');
+    const docPath = cur('trainings', trainingKey, 'supplementary', slug + '.md');
     let md = readMd(docPath);
     if (md === null) {
       throw new Error(`Theory manifest entry missing: ${path.relative(ROOT, docPath)}`);
@@ -1019,7 +1110,7 @@ function renderTheoryEntry(trainingKey, entry) {
   );
 }
 
-function buildTheoryBody(trainingKey, recipient, customer) {
+function buildTheoryBody(customer, trainingKey, recipient) {
   const t = CR.TRAININGS[trainingKey];
   const manifest = THEORY_HANDBOOK_MANIFEST[trainingKey];
   if (!manifest) {
@@ -1056,26 +1147,30 @@ function buildTheoryBody(trainingKey, recipient, customer) {
   // order to the reader. Ships personalised or not.
   const blurb = `The theory portions of ${t.label} distilled into a single doc. `
     + 'Browse what you find interesting. Make your own connections to what you already know.';
+  const coverBrand = BRAND.on
+    ? `${BRAND.logo(customer)}<p class="theory-cover-brand">${CR.esc(BRAND.name(customer))}</p>`
+    : '<p class="theory-cover-brand">Bosser</p>';
   const cover = `
 <header class="workbook-cover" id="top">
-  ${BRAND.logo(customer)}<p class="theory-cover-brand">Bosser</p>
+  ${coverBrand}
   <div class="theory-cover-path" aria-hidden="true">${coverPath}</div>
   <p class="eyebrow">Theory handbook</p>
   <h1 class="cover-title">${CR.esc(t.label)}</h1>${dedication}
   <p class="cover-blurb">${CR.esc(blurb)}</p>
 </header>
 `;
-  return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
+  return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + pageFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
-function theoryHandbookTemplate(trainingKey, content, recipient) {
+function theoryHandbookTemplate(customer, trainingKey, content, recipient) {
   const t = CR.TRAININGS[trainingKey];
   const runtime = t.runtime || 'cli';
   // Recipient leads the <title> so the browser tab, the bookmark and the
   // print/PDF header all carry it — the personalisation survives "save as PDF".
+  const forCustomer = BRAND.on ? ` — ${CR.esc(BRAND.name(customer))}` : '';
   const title = recipient
-    ? `${CR.esc(recipient)} · ${CR.esc(t.label)} · Theory handbook`
-    : `${CR.esc(t.label)} · Theory handbook`;
+    ? `${CR.esc(recipient)} · ${CR.esc(t.label)} · Theory handbook${forCustomer}`
+    : `${CR.esc(t.label)} · Theory handbook${forCustomer}`;
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1083,11 +1178,11 @@ function theoryHandbookTemplate(trainingKey, content, recipient) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${title}</title>
 <style>${SPA_CSS}</style>
-<style data-theory-handbook>${THEORY_HANDBOOK_CSS}</style>${BRAND.style}
+<style data-theory-handbook>${THEORY_HANDBOOK_CSS}</style>${BRAND.style(1)}
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook theory-handbook" data-training="${trainingKey}">
 ${content}
-<script>${SPA_JS}</script>
+<script>${spaJs(trainingKey)}</script>
 <script data-theory-handbook>${THEORY_HANDBOOK_JS}</script>
 <script>${TRAINER_GUIDE_INIT_JS}</script>
 </body>
@@ -1099,7 +1194,7 @@ function buildTheoryHandbook(customer, trainingKey, recipient) {
   const outDir = path.join(CLIENTS_ROOT, customer, trainingKey);
   fs.mkdirSync(outDir, { recursive: true });
   const html = theoryHandbookTemplate(
-    trainingKey, buildTheoryBody(trainingKey, recipient, customer), recipient);
+    customer, trainingKey, buildTheoryBody(customer, trainingKey, recipient), recipient);
   const outFile = path.join(outDir, 'theory-handbook.html');
   fs.writeFileSync(outFile, html);
   const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);
@@ -1114,9 +1209,9 @@ function buildTheoryHandbook(customer, trainingKey, recipient) {
 // manifest to drift). Eyeball surface for the slide-chunking refactor + a
 // student handout.
 function exerciseSlugsForModule(trainingKey, moduleSlug) {
-  const modPath = path.join(ROOT, 'curriculum/trainings', trainingKey, moduleSlug + '.md');
+  const modPath = cur('trainings', trainingKey, moduleSlug + '.md');
   if (!fs.existsSync(modPath)) return [];
-  const body = CR.stripMaintainerTail(fs.readFileSync(modPath, 'utf8'));
+  const body = CR.stripMaintainerTail(readCurriculumMd(modPath));
   const re = /\[[^\]]+\]\(exercises\/([a-z0-9-]+)\.md\)/g;
   const slugs = [];
   let m;
@@ -1125,7 +1220,7 @@ function exerciseSlugsForModule(trainingKey, moduleSlug) {
 }
 
 function renderExerciseEntry(slug) {
-  const srcPath = path.join(ROOT, 'curriculum/exercises', slug + '.md');
+  const srcPath = cur('exercises', slug + '.md');
   if (!fs.existsSync(srcPath)) {
     throw new Error(`Exercise missing: ${path.relative(ROOT, srcPath)}`);
   }
@@ -1140,7 +1235,7 @@ function renderExerciseEntry(slug) {
   return CR.wrapImageFigures(html);
 }
 
-function buildExercisesBody(trainingKey, customer) {
+function buildExercisesBody(customer, trainingKey) {
   const t = CR.TRAININGS[trainingKey];
   if (!t) throw new Error(`Unknown training: ${trainingKey}`);
   const seen = new Set();
@@ -1159,14 +1254,14 @@ function buildExercisesBody(trainingKey, customer) {
 
   const cover = `
 <header class="workbook-cover" id="top">
-  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(t.label)}</p>
+  ${BRAND.logo(customer)}<p class="eyebrow">${BRAND.on ? `${CR.esc(BRAND.name(customer))} · ` : ''}${CR.esc(t.label)}</p>
   <h1 class="cover-title">Exercises workbook</h1>
 </header>
 `;
-  return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
+  return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + pageFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
-function exercisesWorkbookTemplate(trainingKey, content) {
+function exercisesWorkbookTemplate(customer, trainingKey, content) {
   const t = CR.TRAININGS[trainingKey];
   const runtime = t.runtime || 'cli';
   return `<!DOCTYPE html>
@@ -1174,12 +1269,12 @@ function exercisesWorkbookTemplate(trainingKey, content) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${CR.esc(t.label)} · Exercises workbook</title>
-<style>${SPA_CSS}</style>${BRAND.style}
+<title>${CR.esc(t.label)} · Exercises workbook${BRAND.on ? ` — ${CR.esc(BRAND.name(customer))}` : ''}</title>
+<style>${SPA_CSS}</style>${BRAND.style(1)}
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook" data-training="${trainingKey}">
 ${content}
-<script>${SPA_JS}</script>
+<script>${spaJs(trainingKey)}</script>
 <script>${TRAINER_GUIDE_INIT_JS}</script>
 </body>
 </html>
@@ -1189,7 +1284,7 @@ ${content}
 function buildExercisesWorkbook(customer, trainingKey) {
   const outDir = path.join(CLIENTS_ROOT, customer, trainingKey);
   fs.mkdirSync(outDir, { recursive: true });
-  const html = exercisesWorkbookTemplate(trainingKey, buildExercisesBody(trainingKey, customer));
+  const html = exercisesWorkbookTemplate(customer, trainingKey, buildExercisesBody(customer, trainingKey));
   const outFile = path.join(outDir, 'exercises-workbook.html');
   fs.writeFileSync(outFile, html);
   const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);
@@ -1211,11 +1306,11 @@ function template(title, content, trainingKey) {
 <title>${CR.esc(title)}</title>
 <style>${SPA_CSS}</style>
 <style data-student-handbook-print>${STUDENT_HANDBOOK_PRINT_CSS}</style>
-<style>${SLIDES_CSS}</style>${BRAND.style}
+<style>${SLIDES_CSS}</style>${BRAND.style(1)}
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook student-handbook" data-training="${trainingKey}"${deck}>
 ${content}
-<script>${SPA_JS}</script>
+<script>${spaJs(trainingKey)}</script>
 <script>${SLIDES_JS}</script>
 <script>${WORKBOOK_INIT_JS}</script>
 </body>
@@ -1330,7 +1425,7 @@ function buildTraining(customer, trainingKey, opts = {}) {
     console.log(`  (no payload: ${trainingKey} ships no content tarball)`);
   }
   const body = buildBody(trainingKey, customer, contentUrl);
-  const html = template(`${CR.TRAININGS[trainingKey].label} — ${customer}`, body, trainingKey);
+  const html = template(`${CR.TRAININGS[trainingKey].label} — ${BRAND.name(customer)}`, body, trainingKey);
   const outFile = path.join(outDir, 'index.html');
   fs.writeFileSync(outFile, html);
 
@@ -1352,7 +1447,7 @@ function buildTraining(customer, trainingKey, opts = {}) {
   // resolve into that workbook.
   const guideBody = buildTrainerGuide(customer, trainingKey);
   if (guideBody !== null) {
-    const guideHtml = trainerGuideTemplate(customer, guideBody);
+    const guideHtml = trainerGuideTemplate(customer, trainingKey, guideBody);
     const guideFile = path.join(outDir, 'trainer-guide.html');
     fs.writeFileSync(guideFile, guideHtml);
     const guideKB = (fs.statSync(guideFile).size / 1024).toFixed(0);
@@ -1363,7 +1458,7 @@ function buildTraining(customer, trainingKey, opts = {}) {
   // resolve into this workbook the same way the trainer guide's do.
   const modulesBody = buildTrainerModules(customer, trainingKey);
   if (modulesBody !== null) {
-    const modulesHtml = trainerModulesTemplate(customer, modulesBody);
+    const modulesHtml = trainerModulesTemplate(customer, trainingKey, modulesBody);
     const modulesFile = path.join(outDir, 'trainer-modules.html');
     fs.writeFileSync(modulesFile, modulesHtml);
     const modulesKB = (fs.statSync(modulesFile).size / 1024).toFixed(0);
@@ -1394,7 +1489,7 @@ function customerIndexTemplate(customer, trainingKeys) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agents 102 — ${CR.esc(customer)}</title>
+<title>${CR.esc(BRAND.hub.heading || 'Agents 102')} — ${CR.esc(BRAND.name(customer))}</title>
 <style>
   :root { color-scheme: light; --ink: #1c1917; --muted: #6b625b; --line: #ded8d0; --paper: #fbfaf7; --accent: #c2410c; }
   * { box-sizing: border-box; }
@@ -1414,13 +1509,13 @@ function customerIndexTemplate(customer, trainingKeys) {
     .lede { font-size: 18px; }
   }
   .brand-logo { display: block; max-height: 56px; max-width: 240px; margin: 0 0 24px; }
-</style>${BRAND.style}
+</style>${BRAND.style(0)}
 </head>
 <body>
 <main>
-  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(customer)} training hub</p>
-  <h1>Agents 102</h1>
-  <p class="lede">Training workbooks deployed for this customer. Each program has its own workbook, plus trainer guides and downloadable payloads where needed.</p>
+  ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(BRAND.name(customer))} training hub</p>
+  <h1>${CR.esc(BRAND.hub.heading || 'Agents 102')}</h1>
+  <p class="lede">${CR.esc(BRAND.hub.lede || 'Training workbooks deployed for this customer. Each program has its own workbook, plus trainer guides and downloadable payloads where needed.')}</p>
   <ul class="training-list">
 ${cards}
   </ul>
@@ -1516,7 +1611,7 @@ function guardPersonalisedOutput(customer) {
     console.error(`Build aborted: --for would write a named copy into ${rel}, which git does NOT ignore.`);
     console.error('  A personalised handbook carries the recipient\'s name in the HTML; committing it leaks that name.');
     console.error('  Use a gitignored customer slug (convention: vip-<pseudonym>), e.g.:');
-    console.error('    node scripts/build-workbook.js vip-northwind agentic-engineering-101 --theory --for "<Name>"');
+    console.error('    node scripts/build-workbook.js vip-<pseudonym> agentic-engineering-101 --theory --for "<Name>"');
     process.exit(1);
   }
 }
@@ -1540,6 +1635,7 @@ if (recipient) {
   guardPersonalisedOutput(customer);
 }
 
+BRAND.copyAssets(path.join(CLIENTS_ROOT, customer));
 if (theoryMode) {
   trainings.forEach(trainingKey => buildTheoryHandbook(customer, trainingKey, recipient));
 } else if (exercisesMode) {

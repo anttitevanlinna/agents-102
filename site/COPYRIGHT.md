@@ -1,6 +1,6 @@
 # Copyright Notice — `site/`
 
-Copyright (c) 2026 **Bosser Oy** (sole proprietor: Antti Tevanlinna). All rights reserved.
+Copyright (c) 2026 **Bosser Oy**. All rights reserved.
 
 All material in this directory — the curriculum renderer, layouts, stylesheets, JavaScript, compiled data and customer workbooks — is proprietary to Bosser Oy. Any new file added under `site/` is automatically covered by this notice.
 

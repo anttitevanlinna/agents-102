@@ -28,6 +28,7 @@
 const fs = require('fs');
 const path = require('path');
 const CR = require(path.join(__dirname, '..', 'site/layouts/curriculum.js'));
+const { readCurriculumMd, inlineSlides } = require('./read-curriculum.js');
 const { loadRegistry } = require(path.join(__dirname, 'compile-prompts.js'));
 const { loadFigures } = require(path.join(__dirname, 'compile-figures.js'));
 
@@ -39,21 +40,21 @@ const FIGURES = loadFigures();
 // Captures: [1] = link title, [2] = `exercises/<slug>` or `lectures/<slug>`.
 function inlineIncludes(md, seen) {
   seen = seen || new Set();
-  return md.replace(CR.INCLUDE_LINK_RE, function (full, title, kindSlug) {
+  return md.replace(CR.INCLUDE_LINK_RE, function (full, title, kindSlug, slideId) {
     const parts = kindSlug.split('/');
     const kind = parts[0];
     const slug = parts[1];
     const incPath = path.join(ROOT, 'curriculum', kind, slug + '.md');
     if (!fs.existsSync(incPath)) return full; // dead link — pass through
-    const key = kind + '/' + slug;
+    const key = kind + '/' + slug + (slideId ? '#' + slideId : '');
     if (seen.has(key)) return full; // cycle guard
     const next = new Set(seen);
     next.add(key);
-    const raw = fs.readFileSync(incPath, 'utf8');
-    const stripped = CR.stripMaintainerTail(raw);
+    const raw = readCurriculumMd(incPath);
+    const stripped = slideId ? CR.sliceSlides(raw, slideId) : CR.stripMaintainerTail(raw);
     const expanded = CR.expandFigures(CR.expandPrompts(stripped, REGISTRY), FIGURES);
     const inlined = inlineIncludes(expanded, next);
-    return '\n\n<!--INC:' + kind + ':' + slug + ':' + CR.esc(title) + '-->\n\n'
+    return '\n\n<!--INC:' + kind + ':' + (slideId ? slug + '--' + slideId.split(',')[0] : slug) + ':' + CR.esc(title) + '-->\n\n'
       + inlined
       + '\n\n<!--/INC-->\n\n';
   });
@@ -76,10 +77,11 @@ if (listMode) {
   const seen = new Set();
   function collect(filePath) {
     if (!fs.existsSync(filePath)) return;
-    const raw = fs.readFileSync(filePath, 'utf8');
+    const raw = readCurriculumMd(filePath);
     const body = CR.stripMaintainerTail(raw);
     // INCLUDE_LINK_RE is /gm — use matchAll for non-mutating iteration.
     for (const m of body.matchAll(CR.INCLUDE_LINK_RE)) {
+      if (m[3]) continue; // borrowed slides: judged at home, read in place via expand-md
       const kindSlug = m[2];
       const parts = kindSlug.split('/');
       const incPath = path.join(ROOT, 'curriculum', parts[0], parts[1] + '.md');
@@ -97,7 +99,7 @@ if (listMode) {
   process.exit(0);
 }
 
-const raw = arg === '-' ? fs.readFileSync(0, 'utf8') : fs.readFileSync(arg, 'utf8');
+const raw = arg === '-' ? inlineSlides(fs.readFileSync(0, 'utf8'), path.join(ROOT, 'curriculum', '-')) : readCurriculumMd(arg);
 
 // Split at first maintainer marker. Body half: inline includes + expand
 // prompts. Maintainer half: pass through untouched (judges need the

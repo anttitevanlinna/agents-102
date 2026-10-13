@@ -145,39 +145,6 @@ Every module's exercises must produce artefacts deterministically enough to repl
 
 The student's repo lives wherever the team's code actually lives. If the repo is on a synced folder (OneDrive, Dropbox, Google Drive), the repo's `CLAUDE.md` opens with a one-line runtime-naming rule per `check_platform_and_boundaries.md` §7a, *"You are working in a OneDrive-synced folder. Assume eventual consistency on cross-folder reads."* Most engineering repos live on local disk; the rule fires when they don't.
 
-## Variant: Northwind Team Track
-
-`agentic-engineering-101-northwind` (`site/layouts/curriculum.js`) is a `contentKey`-aliased cut:
-same module files as everything above, four sittings instead of six, getting-going,
-plan-mode-done-right, run-the-first-experiment, learn-from-the-test (stock M1/M2/M4/M5). M3
-(`earn-the-trust`) and M6 (`spot-gaps-build-the-loop`) are absent; a customer-authored workshop
-stands in for both.
-
-**Everything this cut changes is stated where the thing itself is defined**, not restated here:
-the tarball and the curated skills in §Material distribution and §Skills, the single worktree fork
-in §Rule files, the four-beat reading arc in §Reading contract, the sitting shape in
-§Delivery-shape variants. Read those sections as written; each names what a cut without M3 or M6
-does instead. Standing facts:
-
-- **The autumn module files, the forked exercises and lecture, and the two workshop exercises have no recoverable history, deliberately.**
-  The commits that added them and the commit that removed them
-  were squashed into one before anything was pushed, because the workshop material is the customer's
-  IPR under the ownership split. Anything worth keeping was re-authored in surviving files; nothing
-  points back at them.
-- **The two workshops were read for their contracts, not their pedagogy** — what the customer
-  loses by re-authoring them from scratch was never priced.
-- **The supplementaries were checked for dropped-module references only** (not for whether
-  their sequencing assumptions survive a four-sitting arc), and as of 2026-08 no live delivery
-  had run against this cut — every cost in it was derived from the text.
-
-**Mechanically validated, not just read off source.**
-`curriculum/evals/mechanical/tmux-runner/chain-ae101.sh --cut northwind` drives M1→M2→M4→M5 on the
-lemmings SUT with M3/M6 absent from the topology (M4 positions from M2's ending SHA instead of
-M3's now-nonexistent ADR commit). Full PASS, 2026-07-28: M4's audit turn carries no hard dependency
-on M3's ADR or the `test-strategy-lemmings` skill; M5's `verify-by-hand-judge` correctly stands down
-("nothing to judge") when that skill is absent from disk, rather than erroring. Full account:
-`curriculum/evals/mechanical/tmux-runner/lemmings-chain-runbook.md` § *Northwind variant*.
-
 ## Delivery-shape variants (six-module, 2-day)
 
 Both shapes below are six-module. A four-sitting cut runs one module per weekly sitting in registry order; `timings.md` holds the caps per shape.
@@ -377,7 +344,7 @@ The cheap, durable shape: write body prose abstractly, push runtime-specific pat
 
 3. **Prework runtime pick + install branch.** Add one line at the top of `prework.md`: *"You're on Claude Code or Gemini CLI?"* Branches to a short install paragraph per runtime (~6 lines each), then reconverges. The Gemini install paragraph carries the `./GEMINI.local.md` convention setup (gitignore line + `@import` from `./GEMINI.md`).
 
-4. **One new reference page.** `curriculum/trainings/agentic-engineering-101/reference/gemini-cli-for-engineers.md` as peer of the existing `claude-code-for-engineers.md`. Four-layer hierarchy mapped to `GEMINI.md` + global + subdir + `@import`, common command translations, MCP install per tracker, the `/loop` runtime-difference callout. The renderer's existing per-runtime include picks the right page based on the student's runtime.
+4. **One new reference page.** `curriculum/trainings/agentic-engineering-101/reference/gemini-cli-for-engineers.md`. Four-layer hierarchy mapped to `GEMINI.md` + global + subdir + `@import`, common command translations, MCP install per tracker, the `/loop` runtime-difference callout. The renderer's existing per-runtime include picks the right page based on the student's runtime.
 
 5. **Content tarball, dual-format skills.** `scripts/build-ae101-content-tarball.sh` extends to ship skill copies in both formats: Claude Code skill format under `content/skills/claude-code/<name>/SKILL.md`, Gemini Agent Skill format under `content/skills/gemini/<name>/`. The tarball builder picks based on runtime variable. Re-author each curated skill (`access-control-analysis`, `stride`) once in Gemini format. ~one afternoon.
 

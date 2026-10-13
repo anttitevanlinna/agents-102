@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md",
   "verdict": "PASS",
-  "body_sha": "d2da4928fff35741cda7cf711dbb497d1df7649fc12b73e61503db4034c96199",
+  "body_sha": "72e473657d96c0b0865d500146b99ef72fffe233b04c8eedcdd479e2bc67995d",
   "shape_hash": "a30da522a0c495f4",
   "pin": "28a4abc5",
   "staleness_reason": "rule-drift",
@@ -29,7 +29,7 @@
       "rule_index": 8,
       "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
       "verdict": "PASS",
-      "evidence": "Ran `grep -in \"prompt-anatomy\\|prompt anatomy\"` against the full AE101 strategy doc (`content-strategy-agentic-engineering-101.md`, read in full, 936 lines) → 0 matches. The doc makes no claim — structural or strategic — about this file, so there is nothing for the doc to have gone stale against and nothing this file could contradict. Checked the reverse direction too: this file's maintainer block (Authoring contract, Source-of-truth, Voice rotation, Em-dash discipline, Count audit, Sweep coverage, Quality) is exactly the leaf-level structural bookkeeping §8 says belongs in the file, not the doc — the body asserts none of the DOC-OWNS categories (mood, arc bets, cross-module sequencing claims, themes-earned, buyer/audience reasoning, vocabulary embargoes) as its own; it states craft/tactics about prompt-writing, which is this file's own subject matter, not the doc's. No drift either direction.",
+      "evidence": "Ran `grep -in \"prompt-anatomy\\|prompt anatomy\" strategy/content-strategy-agentic-engineering-101.md` (agents-102-core, 975 lines, read in full for context) → 0 matches: the doc asserts nothing structural or strategic about this file, so there is nothing to have gone stale and nothing this file could contradict. Reverse direction: this file's `<!-- maintainer -->` block (L371-376: Quality stamp, judge history, Authoring contract) is leaf-level bookkeeping, not a DOC-OWNS category (spirit, mood, arc bets, cross-module sequencing claims, themes earned, exclusions+why, format/delivery-shape dependencies, pre-read rationale, buyer/audience reasoning, vocabulary embargoes) — grep for those categories in the body (`grep -inE \"mood|arc bet|big idea|buyer|audience|embargo\" curriculum/evals/body-views/ae101--reference--prompt-anatomy.body.txt`) returns only craft-register uses of 'strategic' at L133/L363 describing prompt-writing technique (dissent-preservation), never a claim about the training's own mood/arc/buyer reasoning. The file also asserts no DOC-MUST-NOT-RESTATE items (no phase list, no file inventory, no slide-count claim, no ownership claim like 'owned by the module file', no verbatim doc heading quoted). No drift either direction; the rule's 2026-09-03 rewording (Strategy-stage-stop clause, AE101 M5 measurement example) narrows nothing relevant to a reference-type glossary page.",
       "fix_hint": null,
       "blocking": false
     },
@@ -101,5 +101,9 @@
     }
   ],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "scope": "drift",
+  "drift_rules": [
+    "check_strategy_tie_in.md §8"
+  ]
 }

@@ -390,3 +390,26 @@ test('--file on a training module owes only that training\'s traces, not a same-
   assert.deepStrictEqual(targetRows(repo, [A]).map(r => r.name), ['ae101--module--a.persona.json'])
   assert.strictEqual(gate(repo, A), 0)
 })
+
+// A file that includes slide files binds its trace to the INLINED content: the
+// persona walked the slides, not the include lines. So a slide-file edit makes
+// the trace stale even though the manifest's raw bytes never moved; a file with
+// no slide includes hashes exactly as before.
+test('a manifest trace binds to its inlined slides: fresh as walked, stale after a slide-file edit', () => {
+  const { collect } = require('./sim-freshness.js')
+  const { contentSha } = require('./content-sha.js')
+  const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'simfresh-slides-'))
+  const rel = 'curriculum/trainings/agentic-engineering-101/m.md'
+  const w = (p, t) => { fs.mkdirSync(path.dirname(path.join(repo, p)), { recursive: true }); fs.writeFileSync(path.join(repo, p), t) }
+  w(rel, '# M\n\n[A](slides/a.md)\n')
+  w('curriculum/slides/a.md', '## A\n<!--slide:a-->\n\nbody\n')
+  const inlined = '# M\n\n## A\n<!--slide:a-->\n\nbody\n'
+  assert.strictEqual(contentSha(path.join(repo, rel)), sha256(inlined))
+  w('curriculum/evals/sim-cache/ae101--module--m.persona.json', JSON.stringify({ content_sha: sha256(inlined) }))
+  assert.strictEqual(collect(repo, 'all')[0].verdict, 'fresh')
+  w('curriculum/slides/a.md', '## A\n<!--slide:a-->\n\nbody, edited\n')
+  assert.strictEqual(collect(repo, 'all')[0].verdict, 'stale')
+  const plain = path.join(repo, 'curriculum/trainings/agentic-engineering-101/p.md')
+  fs.writeFileSync(plain, '# P\n\nno slides\n')
+  assert.strictEqual(contentSha(plain), sha256('# P\n\nno slides\n'), 'no slide includes: raw sha, unchanged')
+})

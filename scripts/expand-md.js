@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Print a curriculum .md file with `{{prompt:<key>}}` markers expanded into
+// Print a curriculum .md file with borrowed slides inlined and `{{prompt:<key>}}` markers expanded into
 // the canonical `**Prompt** *(<dest>[, <context>])*` + fenced shape. Lets
 // shell-side tooling (mechanical tests, eval scripts, parsers) keep matching
 // the inline-prompt pattern without becoming registry-aware themselves.
@@ -24,5 +24,35 @@ if (!arg) {
   process.exit(1);
 }
 
+// Borrowed slides (`[T](lectures/x.md#<id>[,…])` alone on a line) are part of
+// THIS file's student surface, so the judge reads them here, fenced as borrowed:
+// their wording and backing are judged at home, their FIT is judged here.
+// Whole-file includes stay links — that file is judged in its own right.
+const ROOT = path.join(__dirname, '..');
+const { readCurriculumMd, slideReader, slidesDirFor } = require('./read-curriculum.js');
+function inlineBorrowed(md) {
+  return md.replace(CR.INCLUDE_LINK_RE, (full, title, kindSlug, ids) => {
+    if (!ids) return full;
+    // The home file may be a manifest of slide files: slice its inlined text.
+    const src = readCurriculumMd(path.join(ROOT, 'curriculum', kindSlug + '.md'));
+    return `<!-- borrowed: ${kindSlug}.md#${ids} — wording and backing judged at home; judge fit here -->\n`
+      + CR.sliceSlides(src, ids).trim() + '\n<!-- /borrowed -->';
+  });
+}
+
+// Slide files (`[T](slides/<id>.md)`) are inlined the same way, fenced so the
+// judge knows the wording is judged in the slide file and only fit is judged
+// here. SLIDES_DIR overrides the directory (tests).
+function inlineSlideFilesMarked(md, file) {
+  const dir = process.env.SLIDES_DIR || slidesDirFor(file === '-' ? path.join(ROOT, 'curriculum', 'x.md') : path.resolve(file));
+  const read = slideReader(dir);
+  return md.replace(new RegExp(CR.SLIDE_FILE_RE.source, 'gm'), (full, title, id) => {
+    const t = read(id);
+    if (t === null) throw new Error(`slides/${id}.md: no such slide file`);
+    return `<!-- slide-file: slides/${id}.md — wording and backing judged in the slide file; judge fit here -->\n`
+      + CR.slideFileBody(t) + '\n<!-- /slide-file -->';
+  });
+}
+
 const raw = arg === '-' ? fs.readFileSync(0, 'utf8') : fs.readFileSync(arg, 'utf8');
-process.stdout.write(CR.expandFigures(CR.expandPrompts(raw, loadRegistry()), loadFigures()));
+process.stdout.write(CR.expandFigures(CR.expandPrompts(inlineBorrowed(inlineSlideFilesMarked(raw, arg)), loadRegistry()), loadFigures()));

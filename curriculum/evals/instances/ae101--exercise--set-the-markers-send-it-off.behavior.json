@@ -1,16 +1,15 @@
 {
   "class": "behavior",
-  "training": "ae101",
   "file": "curriculum/exercises/set-the-markers-send-it-off.md",
-  "body_sha": "767fac7a82b3ac82b3d273b4b817568c4bf298cd9c4edd08c65970d75ba1595c",
-  "shape_hash": "prefill fell through — prior instance has no rules_evaluated array (see notes)",
+  "training": "ae101",
   "verdict": "PASS",
+  "body_sha": "349acb6d24998f30d6dedcaa593378830a7d7389fc593e4dae6435ca16ca6d82",
   "trace_status": "partial_regen",
   "prompts_evaluated": 5,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "Show me where Claude Code is keeping the record of this session. Every ses",
+      "prompt_lead": "Show me where Claude Code is keeping the record of this session. Every session's",
       "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": []
@@ -38,9 +37,9 @@
         {
           "pattern_id": "self-report-inflation",
           "confidence": "low",
-          "carve_out": "deliberate-antipattern (check_pedagogy.md §51)",
-          "evidence": "\"If you finish, tell me what you shipped and what you didn't.\" closes an unattended run on Claude's self-report with no artifact-level verify instruction — catalog pattern would read high/load-bearing on shape alone. Not blocking: the maintainer block (2026-08-12; reaffirmed 2026-09-03) names this as deliberate — the un-packaged run must underdeliver visibly or M5's contrast has nothing to teach on — and I confirmed the rescue is real, not just asserted: curriculum/exercises/diagnose-and-resend.md Phase 1 opens 'You're diagnosing, not fixing. The un-packaged run was supposed to underdeliver. What came back is data, not blame,' and has Claude read this exact run's transcript and repo state through three failure-mode lenses. check_pedagogy.md §51's diagnostic (flagged risk = what the prompt demonstrates?) reads yes.",
-          "fix_hint": "Not a fix target under the carve-out. The maintainer's own 2026-09-03 note already declined the two adjacent additions a fresh judge would reach for on this prompt — a check_prompts.md §19 self-augment invitation and a §43 progress-streaming tail — for the same design reason; do not re-propose either."
+          "carve_out": "deliberate-antipattern (check_pedagogy.md \u00a751) \u2014 M4 underdeliver / M5 diagnose-and-resend contrast",
+          "evidence": "\"If you finish, tell me what you shipped and what you didn't.\" closes an unattended run on Claude's own summary with no artifact-level verify instruction. Maintainer block (2026-08-12, reaffirmed 2026-09-03) states this is deliberate: the un-packaged run must underdeliver visibly or M5's contrast has nothing to teach on. Confirmed live: curriculum/exercises/diagnose-and-resend.md Phase 1 opens 'You're diagnosing, not fixing. The un-packaged run was supposed to underdeliver. What came back is data, not blame,' and reads this exact branch's transcript and repo state through three failure-mode lenses \u2014 the rescue this carve-out requires actually exists downstream, not just in the maintainer's assertion.",
+          "fix_hint": "none owed; deliberate antipattern per maintainer block 2026-08-12/2026-09-03"
         }
       ]
     },
@@ -52,7 +51,8 @@
       "risks_fired": []
     }
   ],
+  "suggestions": [],
   "blocking_findings_count": 0,
-  "notes": "Prior instance (body_sha a58f6161…, 2026-08-12) flagged prompt 2 (ae101-m4-commit-starting-point) with preamble-before-action at med confidence. check_prompts.md §17 was narrowed 2026-09-03 to a plan-mode-only structural trigger and now names ae101-m4-commit-starting-point BY SLUG as declined under that narrowing — none of this file's 5 prompts declare plan mode, so preamble-before-action does not fire on any of them under the current rule; the prior TODO is superseded, not re-raised. All 5 prompt fenced-content SHAs are byte-identical to the 2026-08-12 cache (verified via node scripts/expand-md.js + sha256, trimmed trailing newline to match the cache's hashing convention) — only the maintainer block changed since then (2026-09-03/05/06 dated notes), which is why content_sha moved but no prompt needed a full behavioral re-derivation, only a re-check against the current compendium and the new accept-notes. One adjacent, out-of-catalog observation for the maintainer, not filed as a finding: prompt 4 sends the student away mid-run, and if Claude calls AskUserQuestion during that unattended stretch the session just waits — check_prompts.md §42's no-AUQ guard is written for headless/CI runners, not an interactive session the human stepped away from, so it doesn't cleanly apply, and the prompt's own 'write what you tried and why it didn't work rather than inventing a way forward' already gives Claude a stuck-path that isn't asking a question. Not raising as a rule violation; flagging in case the maintainer wants an explicit no-AUQ line anyway. Per the dispatch preamble and check-instance-evidence.js's documented behavior-class exception ('the behavior class does not have a rule ledger... judges prompt behaviour patterns, not compendium rules'), this instance uses the class's own prompts_findings ledger rather than the generic {compendium, rule_index, ...} rules_evaluated shape — writing a parallel rules_evaluated array against 116 check_prompts.md/check_pedagogy.md rules would itself create the RIVAL_LEDGERS condition check-instance-schema.js gates on. shape_hash could not be recorded as a real hash: prefill-instance.js reported the prior instance has no rules_evaluated array, so nothing parked and the fall-through path applies (0 rows parked, confirmed by direct run).",
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "Diff since pin 64d17eea: prompt 1 (ae101-m4-locate-transcript) sha changed (folder rule now every non-alphanumeric char to -); regenerated, no risks (read-only path build, single action, verifiable via file-exists check). Prompts 2-5 sha-matched cached. Prompt 4 self-report-inflation low carries carve_out deliberate-antipattern (check_pedagogy.md 51) with maintainer accept-note 2026-09-03 (no added clauses; M5 diagnose-and-resend is the rescue). Prompt 2 append to task.md: append verb, protected-block heading, so overwrite-anxiety/file-preservation not invited. Prompt 5 taunt nudge is deliberate (body says lands as a taunt). Accept-notes read: 2026-08-12, 2026-08-25, 2026-08-26, 2026-09-03, 2026-09-06, 2026-09-08, 2026-08-02, 2026-09-28 quality line."
 }

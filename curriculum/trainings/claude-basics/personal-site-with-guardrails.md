@@ -25,7 +25,7 @@ This bonus module is self-study. The build-and-verify homework gave you a small 
 
 **Context is king.** You steer your agent by the context you give it. You paint by choosing the brush.
 
-[Opening: Context is King](lectures/context-is-king-cb.md)
+[Opening: Context is King](lectures/context-is-king.md#cover,same-question-two-answers,reads-whole-conversation,context-is-whatever-you-tell-it,a-file-it-reads-every-time)
 
 [Exercise: Paint by agent with guardrails](exercises/personal-site-with-guardrails-cb.md)
 
@@ -92,8 +92,8 @@ You just made great output AND packaged what you learned into a file the agent c
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-02 (writing@304f061 pedagogy@304f061 strategy@304f061 slides@3552e8c2)
-- judges @3552e8c2: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS (3 findings see instances/claude-basics--module--personal-site-with-guardrails.slides.json)
+**Quality:** compendium-audited 2026-10-06 (writing@304f061 pedagogy@a614d08a strategy@304f061 slides@a614d08a)
+- judges @a614d08a: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS (3 findings see instances/claude-basics--module--personal-site-with-guardrails.slides.json)
 
 **Source:** `curriculum/trainings/agents-101/getting-going.md` (Agents 101 M1 canonical module).
 
@@ -102,6 +102,7 @@ You just made great output AND packaged what you learned into a file the agent c
 - **Length:** 60–90 minutes self-study (optional bonus, runs after the live session alongside the build-and-verify homework).
 - **Materials (trainer):** none — Cowork + the participant's own LinkedIn profile.
 - **Plug points:** participant's own LinkedIn profile — no org data needed.
+- **Charge:** context-is-king--cover 10 — the A101 lecture minus its agent-picture slide; the demo carries the time
 
 **Artifact contracts**
 | Artifact | Stable identifier | Produced by | Consumed by |

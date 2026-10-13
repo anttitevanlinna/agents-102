@@ -165,4 +165,52 @@ test('a settled row is not also counted as deferred', () => {
   assert.strictEqual(s.dispositions['settled:declined'], 1)
 })
 
+test('a card is checked against its page before it is presented', () => {
+  const { cardAnchor } = require('./open-cards.js')
+  const read = files => p => (p in files ? files[p] : null)
+  const at = (text, extra) => cardAnchor(card(Object.assign({ target_file: 'p.md' }, extra)), '/r', read({ '/r/p.md': text }))
+
+  // BEFORE/AFTER carry ** around the changed span for the card; the page does not.
+  const swap = { before: '## **Anything can be reverse-engineered**', after: '## **Reverse-engineer anything**' }
+  assert.strictEqual(at('x\n## Anything can be reverse-engineered\ny', swap), 'live', 'bold markers are presentation, not page text')
+  assert.strictEqual(at('x\n## Reverse-engineer anything\ny', swap), 'applied')
+  assert.strictEqual(at('x\n## Something else now\ny', swap), 'moved', 'the anchor changed underneath the card')
+  // The page's own bold and the card's span markers are the same characters, so
+  // both sides lose them before comparing.
+  assert.strictEqual(at('- **A task**: ship it. Plan mode wants width.',
+    { before: '- **A task**: ship it. **Plan mode wants width.**', after: '- **A task**: ship it, **wide.**' }),
+  'live', 'bold that is really on the page does not read as a moved anchor')
+
+  // A cut: AFTER is a piece of BEFORE, so finding AFTER on the page proves nothing.
+  const cut = { before: 'Three cases. **The instinct earns itself.**', after: 'Three cases.' }
+  assert.strictEqual(at('Three cases. The instinct earns itself.', cut), 'live')
+  assert.strictEqual(at('Three cases.', cut), 'applied')
+
+  // An insertion: BEFORE is a piece of AFTER, so finding BEFORE proves nothing.
+  const ins = { before: 'ask Claude to confirm it.', after: 'ask Claude to confirm it. **A mismatch is the gap.**' }
+  assert.strictEqual(at('ask Claude to confirm it. A mismatch is the gap.', ins), 'applied')
+  assert.strictEqual(at('ask Claude to confirm it.', ins), 'live')
+
+  assert.strictEqual(at('anything', {}), 'unanchored', 'a card with no BEFORE cannot be checked')
+})
+
+test('--show prints every open card in ruling order, with its four fields and anchor state', () => {
+  const { renderCards } = require('./open-cards.js')
+  const files = { '/r/a.md': 'old a', '/r/b.md': 'old b', '/r/c.md': 'changed' }
+  const read = p => (p in files ? files[p] : null)
+  const mk = (f, rank, conf) => card({
+    target_file: f, confidence: conf, gate_triage: { value_rank: rank },
+    claim: `claim ${f}`, before: `**old ${f[0]}**`, after: `**new ${f[0]}**`, why: `why ${f}`, risk: `risk ${f}`,
+  })
+  const s = summarise([mk('b.md', 1, 'low'), mk('a.md', 3, 'medium'), mk('c.md', 3, 'high')], { repo: '/r', readFile: read })
+  const out = renderCards(s, 'ae101', { repo: '/r', readFile: read })
+
+  const order = ['c.md', 'a.md', 'b.md'].map(f => out.indexOf(`→ ${f}`))
+  assert.ok(order.every(i => i >= 0), 'every open card is printed')
+  assert.ok(order[0] < order[1] && order[1] < order[2], 'value_rank first, then confidence')
+  for (const field of ['BEFORE', 'AFTER', 'WHY', 'RISK']) assert.ok(out.includes(field), `prints ${field}`)
+  assert.ok(/c\.md[\s\S]*moved/.test(out.slice(out.indexOf('→ c.md'), out.indexOf('→ a.md'))),
+    'a moved card says so, so it is re-derived rather than presented blind')
+})
+
 console.log(`1..${n}`)

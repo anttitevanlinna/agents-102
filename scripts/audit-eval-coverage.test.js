@@ -532,9 +532,12 @@ test('surfacesFor derives a surface set for a training that is not AE101', () =>
     for (const f of files) {
       assert.ok(fs.existsSync(path.join(ROOT, f.file)),
         `${group}: ${f.file} does not exist — a derived surface must name a real file`);
-      assert.match(f.instanceSlug, /^agents-101--(exercise|lecture|module)--/,
-        `${group}: instanceSlug "${f.instanceSlug}" must carry the training prefix and its ` +
-        'surface-type segment, matching the instances already on disk');
+      // A slide file is training-neutral: every training reaching it shares one
+      // instance, so it carries `shared`, not the training that reached it.
+      const want = group === 'slides' ? /^shared--slide--/ : /^agents-101--(exercise|lecture|module)--/;
+      assert.match(f.instanceSlug, want,
+        `${group}: instanceSlug "${f.instanceSlug}" must carry the training prefix (shared for slide files) ` +
+        'and its surface-type segment, matching the instances already on disk');
     }
   }
 });
@@ -675,3 +678,16 @@ test('CLI: an unregistered training is refused', () => {
   assert.equal(r.status, 2);
   assert.match(String(r.stderr), /Unknown training/);
 });
+
+// A #id borrow confers no ownership (scan-stale-classes linkFinder), so the
+// coverage audit must not owe a borrower's instances for the home lecture.
+// Slide files are their own surface, instance shared--slide--<id>.
+test('surfacesFor: a #id borrow is not the borrower\'s lecture; slide files are their own surface', () => {
+  const cb = surfacesFor('claude-basics')
+  assert.ok(!cb.lectures.some(l => l.slug === 'context-is-king'), 'claude-basics only borrows context-is-king slides')
+  assert.ok(Array.isArray(cb.slides), 'every training has a slides surface')
+  for (const s of surfacesFor('agents-101').slides) {
+    assert.match(s.instanceSlug, /^shared--slide--[a-z0-9-]+$/)
+    assert.ok(fs.existsSync(path.join(ROOT, s.file)), `${s.file} must exist`)
+  }
+})

@@ -1,0 +1,197 @@
+{
+  "class": "slides",
+  "file": "curriculum/slides/the-agent-got-this-wrong.md",
+  "training": "shared",
+  "verdict": "PASS",
+  "body_sha": "9a5a402477527e14e501495c1aa598325dc275144cba051964730f3ca73a2bc6",
+  "shape_hash": "4f4302701138ae8f",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "\"The agent got this wrong\" costs nobody face",
+      "lines": "1-8"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "evidence": "L6: \"That makes the sentence cheap to say\" - 'That' resolves to the L4 contrast in the same chunk, 'the sentence' to the quoted header phrase; no harm (unresolvable referent) present.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": [],
+      "na_reason": "no pointer to another file or earlier slide"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": [],
+      "na_reason": "no 'the X you did/saw' reference"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": [],
+      "na_reason": "no guess/reveal demo beat"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "evidence": "L4-8: three paragraphs carry a claim (naming the agent spares a person), a condition (stay cheap for newest person and lead's agent) and a move (say it early); closest to orphan is L8 but it is the slide's ask.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "evidence": "L1 header 'costs nobody face' vs L4 'what gets questioned is the agent's output, not a person' - body supports the header literally.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "evidence": "grep for 'Not X. Not Y.' triples, anaphora, superlatives, verb triplets in L4-8 -> none; closest L4 'the agent's output, not a person' is a single contrast inside one sentence, not the banned triple.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "evidence": "grep -ciE 'surface|compendium|forcing function|beat|mood' on L1-8 -> 0; 'squint slide' appears only in the maintainer block L12.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget - bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "evidence": "grep -c '\\*\\*' on body L1-8 -> 0 (bold only in maintainer block L12).",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content - verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "evidence": "grep -rl 'the-agent-got-this-wrong' curriculum/lectures -> lectures/apt101-safe-to-say-its-wrong.md includes it; slide marker L2 present.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering - position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": [],
+      "na_reason": "no Phase/Step numbering in header or body"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "evidence": "grep -ciE '\\b(below|above|further down|see below|top of)\\b' L1-8 -> 0; node scripts/check-slide-deixis.js | grep -c the-agent-got-this-wrong -> 0.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": [],
+      "na_reason": "no links in body; review surface, never a gate"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size - 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/slides/the-agent-got-this-wrong.md -> 'oversized: 0 / every slide is within limits'; about 107 words, 0 bullets.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "evidence": "L1 '\"The agent got this wrong\" costs nobody face' is a claim, correct for a lecture-slide header.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies - three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "L8 'The person who ran the agent can join the check instead of defending it.' - closest to a kicker but adds a distinct move (joining the check) not held by L4-6; no doctrine restatement or design commentary.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": [],
+      "na_reason": "first-cut file per maintainer block, no header rename history"
+    }
+  ],
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "No accept-notes in maintainer block. Single-chunk file; fences none."
+}

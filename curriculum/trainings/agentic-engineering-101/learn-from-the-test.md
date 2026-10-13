@@ -8,7 +8,7 @@ Steer your long session. You can't stand over it hour by hour, so the steering g
 
 Walk in with your un-packaged session. Stopped, finished, ran out of credit, doesn't matter.
 
-Optional prep while it's still running: read Ethan Mollick, [The Bitter Lesson versus The Garbage Can](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage), the one to start with; read [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md); watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich); read [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md); read [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).
+Optional prep while it's still running: read Ethan Mollick, [The Bitter Lesson versus The Garbage Can](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage), the one to start with; watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich); read [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md); read [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -123,9 +123,9 @@ Module 6 reads the packaged session: subtler misses, subtler drift.
 
 <!-- maintainer -->
 
-**Quality:** sim-passed 2026-09-28 (writing@2d6b2b01 story@2d6b2b01 technical@2d6b2b01 behavior@2d6b2b01 pedagogy@2d6b2b01 strategy@2d6b2b01 slides@2d6b2b01)
-- judges @2d6b2b01: writing PASS (1 finding see instances/ae101--module--learn-from-the-test.writing.json), story PASS, technical PASS (1 finding see instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS (verify-refuted)
-- cross_module @fb797e3b: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
+**Quality:** sim-passed 2026-09-28 (writing@0655fa67 story@2d6b2b01 technical@2d6b2b01 behavior@2d6b2b01 pedagogy@2d6b2b01 strategy@2d6b2b01 slides@2d6b2b01)
+- judges @0655fa67: writing PASS, story PASS, technical PASS (1 finding see instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS (verify-refuted)
+- cross_module @0655fa67: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 
 **No rescue callout at `## Start here` — the asymmetry with M6's is deliberate (Antti 2026-08-30; overrides `check_pedagogy.md` §65's M4→M5 example, `check_cross_module.md` §6 is permissive).** M6 load-bears on a two-run contrast, so a missing packaged run guts it and earns body rescue. M5 load-bears on a trace, and the bar sits on the producing side: M4's `## Bring to Module 5` says a stopped session counts and the trace is the artefact, so a thin return is inside the contract and the diagnosis is built to read it. The truly-absent case is room-scale triage — the Connections-blocker push, per §65(b): compressed re-run, late, never a loaner artefact. Do not re-file §6 on the missing callout, and do not add rescue blockquotes to the body.
 
@@ -189,7 +189,7 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 - **Backpressure vocabulary:** the source essay is the M3→M4 gap read (`earn-the-trust.md § Pre-read before Module 4`) and the term is named in the room by M4's closing lecture. Module 5 assigns no reading on it and needs none: the student arrives holding both the word and a session that produced changes faster than they could read them. Do not re-assign da Costa here.
 
 **Push-back moves** (trainer delivers). *Paired with the `check_pedagogy.md` §47 per-phase table below — same eight pushes, one spoken list and one audit grid. Edit both or neither.*
-- **Connections blocker** — student walks in without the M4 artefact accessible (closed laptop, ran out of credit, repo state unclear). Trainer push: *"the artefact is whatever's there. Repo commits since M4. Files modified. Scrollback at `~/.claude/projects/<project>/` if you closed the session. Open a fresh Claude Code session in the repo and ask it to read what the M4 run touched."* See [Claude Code for engineers — session transcripts](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#25-session-transcripts-default-location).
+- **Connections blocker** — student walks in without the M4 artefact accessible (closed laptop, ran out of credit, repo state unclear). Trainer push: *"the artefact is whatever's there. Repo commits since M4. Files modified. Scrollback at `~/.claude/projects/<project>/` if you closed the session. Open a fresh Claude Code session in the repo and ask it to read what the M4 run touched."*
 - **Phase 1 diagnosis-as-blame** — student frames failures as their fault (*"I should have written a better prompt"*). Trainer push: *"the un-packaged run was supposed to underdeliver. The diagnosis is data, not blame. Quote me one moment of goal drift."*
 - **Phase 1 over-diagnosis** — student lists 8 failures across all three modes. Trainer push: *"pick the dominant. The verifier you build at Phase 3 fits one shape. Which failure cost the most?"*
 - **Phase 2 prescription-skip** — student goes straight from named failure to building the fix without the align-then-run question. Trainer push: *"the question matters more than the answer. What validation would have caught this in minutes, not hours?"*
@@ -262,7 +262,7 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 
 **Frameworks riffed on (attributed in lecture):**
 - **Ronacher's three-pattern** — Armin Ronacher. Earns its name in the closing lecture, not before.
-- **Cherny's three stop-hook shapes** — Boris Cherny. Phase 3 names the menu; attribution lives in M6's module-file Frameworks section (the M6 *Eval* slide in `composing-the-workflow.md` never names Cherny). Hook system reference (event names, config shape, when-to-reach-for-hooks): `claude-code-for-engineers.md` § 34.
+- **Cherny's three stop-hook shapes** — Boris Cherny. Phase 3 names the menu; attribution lives in M6's module-file Frameworks section (the M6 *Eval* slide in `composing-the-workflow.md` never names Cherny).
 - **Compound engineering** — Kieran Klaassen. Debrief self-compound, fifth rep for the student.
 - **Hook-vs-prompt partition (must vs should)** — this training's framing, worked from the mechanism: a hook fires whether or not the model cooperates, a prompt asks. Named in the closing lecture's *"Hooks always fire"* section. Not a practitioner convergence and not attributed to one — the other three rows here name a person because they can.
 

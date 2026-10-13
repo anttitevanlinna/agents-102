@@ -11,7 +11,8 @@
 #        reference each other.)
 #   - content/skills/ whitelisted per AE101 training-architecture: access-control-analysis + stride + security-tools
 #   - labs/unattended-agent/ executable local scaffold for optional M7
-#   - prompts/ (full registry; consuming files resolve {{prompt:<key>}} markers against this)
+#   - prompts/, figures/: the entries the shipped pages name (student copies of the prompts)
+#   - COPYRIGHT.md and THIRD-PARTY-NOTICES.md at the root
 #
 # Maintainer blocks stripped from .md content; SKILL.md files ship verbatim.
 #
@@ -69,8 +70,10 @@ TRAINING_KEY="agentic-engineering-101"
 # What a student of this training reads: the maintainer block cut, content
 # flags resolved. Links are collected from this too, never from the raw file, so
 # a maintainer-only mention cannot pull a page into the tarball.
+# Slide files (`[T](slides/<id>.md)`) are inlined first: a lecture whose
+# slides were cut ships to the student exactly as it read before.
 student_text() {
-  awk '/<!-- maintainer -->/{exit} {print}' "$1" \
+  node scripts/read-curriculum.js "$1" | awk '/<!-- maintainer -->/{exit} {print}' \
     | node scripts/resolve-content-flags.js "$TRAINING_KEY"
 }
 
@@ -162,9 +165,8 @@ done
 copy_md_dir "$TRAINING_DIR/reference"     "$ROOT/reference"
 copy_md_dir "$TRAINING_DIR/supplementary" "$ROOT/supplementary"
 
-# Supplementary subfolders ship verbatim (e.g., skill-stacking/ with primary doc
-# + diagrams). copy_md_dir only globs *.md at top level; this picks up any
-# subfolder a supplementary section refers to as a multi-file artefact.
+# Supplementary subfolders ship verbatim (a page's diagrams, say). copy_md_dir
+# only globs *.md at top level; this picks up any subfolder a supplementary section refers to as a multi-file artefact.
 for sub in "$TRAINING_DIR/supplementary"/*/; do
   [ -d "$sub" ] || continue
   cp -R "${sub%/}" "$ROOT/supplementary/"
@@ -194,36 +196,59 @@ else
   exit 1
 fi
 
-# ---- Prompt registry -----------------------------------------------------
-# Consuming exercise / lecture / reference / supplementary files keep
-# `{{prompt:<key>}}` markers; resolve against this directory at runtime.
-PROMPTS_SRC="curriculum/prompts"
-if [ -d "$PROMPTS_SRC" ]; then
-  mkdir -p "$ROOT/prompts"
-  for f in "$PROMPTS_SRC"/*.md; do
-    [ -f "$f" ] || continue
-    cp "$f" "$ROOT/prompts/$(basename "$f")"
-  done
-fi
+# ---- Figures and prompts: this training's entries, no other's --------------
+# Shipped pages keep `{{figure:<key>}}` and `{{prompt:<key>}}` markers and
+# resolve them against figures/ and prompts/ here. Both registries hold every
+# training's entries, so each ships as the closure of what the staged pages
+# name, by marker or by path. A named entry with no registry file stops the
+# build: the page that names it would point at nothing.
+named_keys() {   # $1 = prompt | figure ; remaining args = directories to scan
+  local kind="$1"; shift
+  grep -rhoE "\{\{$kind:[a-z0-9-]+\}\}|${kind}s/[a-z0-9-]+\.md" "$@" 2>/dev/null \
+    | sed -E "s/^\{\{$kind:([a-z0-9-]+)\}\}$/\1/; s#^${kind}s/([a-z0-9-]+)\.md\$#\1#" | sort -u
+}
+PAGES=("$ROOT/lectures" "$ROOT/exercises" "$ROOT/reference" "$ROOT/supplementary" "$ROOT/content")
 
-# ---- Figure registry -----------------------------------------------------
-# Consuming files keep `{{figure:<key>}}` markers the same way they keep
-# prompt markers; resolve against this directory at runtime.
-FIGURES_SRC="curriculum/figures"
-if [ -d "$FIGURES_SRC" ]; then
-  mkdir -p "$ROOT/figures"
-  for f in "$FIGURES_SRC"/*.md; do
-    [ -f "$f" ] || continue
-    cp "$f" "$ROOT/figures/$(basename "$f")"
-  done
-fi
+mkdir -p "$ROOT/figures"
+FIGURE_COUNT=0
+while IFS= read -r k; do
+  [ -n "$k" ] || continue
+  src="curriculum/figures/$k.md"
+  [ -f "$src" ] || { echo "ERROR: a shipped page names figure '$k' but $src does not exist" >&2; exit 1; }
+  cp "$src" "$ROOT/figures/$k.md"
+  FIGURE_COUNT=$((FIGURE_COUNT + 1))
+done <<< "$(named_keys figure "${PAGES[@]}")"
+
+# Prompts ship as the student's copy (scripts/student-prompt.js): the body and
+# the fields that say how to run it, without the authoring record.
+mkdir -p "$ROOT/prompts"
+PROMPT_COUNT=0
+while IFS= read -r k; do
+  [ -n "$k" ] || continue
+  src="curriculum/prompts/$k.md"
+  [ -f "$src" ] || { echo "ERROR: a shipped page names prompt '$k' but $src does not exist" >&2; exit 1; }
+  if grep -qE '\{\{prompt:[a-z0-9-]+\}\}' "$src"; then
+    echo "ERROR: $src nests a {{prompt:}} marker; the closure is one level deep, extend the walk" >&2; exit 1
+  fi
+  node scripts/student-prompt.js "$src" > "$ROOT/prompts/$k.md"
+  PROMPT_COUNT=$((PROMPT_COUNT + 1))
+done <<< "$(named_keys prompt "${PAGES[@]}" "$ROOT/figures")"
+
+# ---- Copyright notice ------------------------------------------------------
+# The licence forbids removing the notice, so the archive carries one.
+cp content/PAYLOAD-COPYRIGHT.md "$ROOT/COPYRIGHT.md"
+# Third-party material travels with the notice its licence asks for.
+cp content/THIRD-PARTY-NOTICES.md "$ROOT/THIRD-PARTY-NOTICES.md"
 
 # ---- Pack ----------------------------------------------------------------
 # Run tar from inside ROOT so the archive has lectures/, exercises/, reference/,
 # supplementary/, content/, prompts/, figures/ at the top level.
 # Extraction: `tar xzf ae101-content.tar.gz -C ~/Documents/ae101-content`
+# Fixed mtimes and no gzip timestamp: unchanged inputs give a byte-identical
+# archive, whatever the staging dir's clock said.
+find "$ROOT" -exec touch -t 200001010000 {} +
 rm -f "$OUT"
-(cd "$ROOT" && tar czf "$OUT" .)
+(cd "$ROOT" && COPYFILE_DISABLE=1 tar cf - .) | gzip -n > "$OUT"
 
 # ---- Sanity checks -------------------------------------------------------
 echo "Built $OUT"
@@ -232,6 +257,8 @@ echo "  exercises shipped:     $EXERCISE_COUNT"
 echo "  reference shipped:     $(find "$ROOT/reference"     -name '*.md' | wc -l | tr -d ' ')"
 echo "  supplementary shipped: $(find "$ROOT/supplementary" -name '*.md' | wc -l | tr -d ' ')"
 echo "  skills shipped:        $(find "$ROOT/content/skills" -name 'SKILL.md' | wc -l | tr -d ' ')"
+echo "  prompts shipped:       $PROMPT_COUNT (named by shipped pages)"
+echo "  figures shipped:       $FIGURE_COUNT"
 echo
 echo "Top-level entries:"
 tar tzf "$OUT" | awk -F/ 'NF>1 && $2 != "" {print $2}' | sort -u | sed 's|^|  |'
@@ -241,8 +268,8 @@ echo
 EXPECTED=(
   "lectures/the-wizard-move.md"
   "exercises/compound-and-close.md"
-  "reference/claude-code-for-engineers.md"
-  "supplementary/clean-code-is-steering.md"
+  "reference/prompt-anatomy.md"
+  "supplementary/verification-asymmetry.md"
   "content/skills/access-control-analysis/SKILL.md"
   "content/skills/stride/SKILL.md"
   "content/skills/security-tools/SKILL.md"
@@ -253,7 +280,7 @@ EXPECTED=(
 )
 MISSING=()
 for path in "${EXPECTED[@]}"; do
-  tar tzf "$OUT" | grep -q "^\./${path}\$" || MISSING+=("$path")
+  grep -q "^\./${path}$" <<< "$(tar tzf "$OUT")" || MISSING+=("$path")
 done
 if [ "${#MISSING[@]}" -gt 0 ]; then
   echo "ERROR — expected paths missing from archive:" >&2
@@ -267,7 +294,6 @@ FORBIDDEN=(
   "exercises/raw-llm.md"                  # Agents-101 introductory exercise
   "supplementary/what-is-an-agent.md"     # moved to Agents-101 supplementary/
   "supplementary/agent-trigger-list.md"   # Agents-101
-  "reference/claude-quick-reference.md"   # Agents-101
 )
 LEAKS=()
 for path in "${FORBIDDEN[@]}"; do

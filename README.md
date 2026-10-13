@@ -54,7 +54,7 @@ Three research systems feed each other:
 2. **Domain research** — who is doing real agentic work in operations, finance, HR, compliance, customer service, sales. 7 domains tracked, evidence-leveled.
 3. **Your questions** — what you ask and comment is automatically captured and steers future research. The system gets smarter because you use it.
 
-**Start here:** [`continuous-research/synthesis/index.md`](continuous-research/synthesis/index.md) routes you to the right topic file in one read.
+**Start here:** [`synthesis/index.md`](https://github.com/anttitevanlinna/agents-102-research/blob/main/synthesis/index.md) in the research repository routes you to the right topic file in one read.
 
 ## Why This Exists
 
@@ -82,19 +82,19 @@ Built by [Bosser](https://bosser.consulting). Independent. Practitioner-led.
 
 ## Copyright and Reuse
 
-Agents 102 is made of two parts with deliberately different terms:
+Agents 102 and its research base carry deliberately different terms:
 
 - **Proprietary — © 2026 Bosser Oy.** The training product and its supporting assets: `curriculum/`, `content/`, `site/`, `scripts/`, `.claude/`, and the root docs (`README.md`, `CLAUDE.md`, `AGENTS.md`). No reuse without written permission. See [`COPYRIGHT.md`](COPYRIGHT.md).
-- **Open — public knowledge base.** [`continuous-research/`](continuous-research/) is open for reading, quoting, forking, and contribution. Contribute findings, user signals, and observations back — the system gets smarter when you use it. See [`continuous-research/LICENSE.md`](continuous-research/LICENSE.md) for terms.
+- **Open — public knowledge base.** The research base is its own repository, [agents-102-research](https://github.com/anttitevanlinna/agents-102-research), open for reading, quoting, forking, and contribution. Contribute findings, user signals, and observations back — the system gets smarter when you use it. See its [`LICENSE.md`](https://github.com/anttitevanlinna/agents-102-research/blob/main/LICENSE.md) for terms. A checkout of this repository links it in as `continuous-research/`.
 
 The split is deliberate: the research system is a public good; the curriculum and content are Bosser IP. For licensing questions, contact [bosser.consulting](https://bosser.consulting).
 
-### If you're a student
+### Personal use
 
-You've been granted a **personal usage license** — designed to be generous where it matters and firm where it has to be. In short:
+Anyone reading this has a **personal usage license** — designed to be generous where it matters and firm where it has to be. In short:
 
-**You can:** learn from every module, run every exercise, **own everything you build** (agents, skills, memory pages, evals, sites — your outputs are yours, not Bosser's), **apply anything you learn at your own workplace** (that's the whole point of the training), share your own artifacts with teammates inside your company, and quote briefly with attribution.
+**You can:** learn from every module, run every exercise, **own everything you build** (agents, skills, memory pages, evals, sites — your outputs are yours, not Bosser's), **apply anything you learn at your own workplace** (that's the whole point of the training), and quote briefly with attribution.
 
-**You can't:** redistribute the curriculum files, teach the material as your own training, resell or transfer your seat, build a competing course from it, or feed the proprietary files into a public AI dataset.
+**You can't:** redistribute the curriculum files, teach the material as your own training, build a competing course from it, or feed the proprietary files into a public AI dataset.
 
-The simple test: *am I using this for my own learning, my own work, or teammates inside my own company?* If yes, you're inside the license. Full terms in [`COPYRIGHT.md`](COPYRIGHT.md) § Student Usage License.
+The simple test: *am I using this for my own learning and my own work?* If yes, you're inside the license. It is free for personal use. Running the material as a training, inside your company or outside it, takes a separate training licence from Bosser Oy. Full terms in [`COPYRIGHT.md`](COPYRIGHT.md) § Personal Use License.

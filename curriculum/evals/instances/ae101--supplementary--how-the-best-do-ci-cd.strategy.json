@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md",
   "verdict": "PASS",
-  "body_sha": "856325db9586ff5aca42e6a2df92574f3d2136cee436b1af2b44209fdffff8e5",
+  "body_sha": "bbba7850f12c18314cf6e62bf1f28e628c59cf175b7d02f9593d95a0d0308b86",
   "shape_hash": "43685ab34d2a22a8",
   "rules_evaluated": [
     {
@@ -76,10 +76,11 @@
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 8,
-      "rule_lead": "Strategy doc carries strategy, not structure.",
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
       "verdict": "REVISE",
-      "evidence": "The FILE itself is compliant: its maintainer-block audience pin (L114, 'The supplementary is the IC's next-altitude reading after M6: the same loop, slightly wider lens') is the kind of practical navigational fact a file is entitled to assert, not a restatement of doc-owned reasoning. The harm is on the DOC side, which §8 also binds ('this one binds doc→curriculum'): content-strategy-agentic-engineering-101.md L771 restates two spans of this file's structure verbatim instead of pointing, and both have rotted since the pinned diff. (a) Doc L771 still reads 'the IC's next-altitude reading after their second skill: same loop, slightly wider lens' — the file's own maintainer block was corrected in the pinned diff from exactly that wording to 'after M6', and the doc's M6 section itself (L432 area) now describes the encode-move as a handoff prompt with the next skill authored *after* the module on a real run, not a second skill shipped inside M6 — so the doc line is doubly stale, not merely differently phrased. (b) Doc L771 also still enumerates header 3 as '(3) tier by blast radius, make the Tier-1 case on your own PRs', but the file's current header 3 (L29) is just '## 3. Tier by blast radius' — the pinned diff dropped the second clause from the heading (the 'make the case' framing survives only in the body's Try-this-Monday line, L41). Neither drift makes the FILE wrong; both make the DOC's copy of the file wrong, which is exactly the 'doc's inventory rots' failure this rule names.",
-      "fix_hint": "Not an edit to this curriculum file. In content-strategy-agentic-engineering-101.md, correct L771's audience-pin clause to 'after M6' and either drop the header-3 sub-clause or update it to match the file's current heading — per §8, fix the span, don't empty it.",
+      "evidence": "The FILE is compliant: its maintainer-block audience pin (L117, \"The supplementary is the IC's next-altitude reading after M6: the same loop, slightly wider lens.\") states a navigational fact the file is entitled to assert, not a restatement of doc-owned reasoning. The harm is on the DOC side, which §8 also binds: agents-102-core/strategy/content-strategy-agentic-engineering-101.md L811 still reads 'The shipped piece is the IC's next-altitude reading after their second skill: same loop, slightly wider lens' — stale against this file's own corrected maintainer-block wording ('after M6'), and still enumerates header 3 as '(3) tier by blast radius, make the Tier-1 case on your own PRs' while the file's current L29 heading is just '## 3. Tier by blast radius' (the 'make the case' clause survives only in the body's Try-this-Monday line, L41). Verified live in this session: grepped the doc at current HEAD, both spans unchanged from the prior judge's finding. Not fixed since the last verdict.",
+      "na_reason": null,
+      "fix_hint": "Not an edit to this curriculum file. In agents-102-core/strategy/content-strategy-agentic-engineering-101.md L811, correct 'after their second skill' to 'after M6' and either drop the header-3 sub-clause or update it to match the file's current heading — per §8, fix the span, don't empty it.",
       "blocking": false
     }
   ],
@@ -96,5 +97,9 @@
     "L172 'Declined at the 2026-09-03 polish pass: headers 4 and 5 stay declarative (check_student_facing.md §17) ... Judges should not re-file' — a check_student_facing accept-note, not strategy, honored by not re-filing anything against headers 4/5's phrasing",
     "L174-175 Quality line: compendium-audited 2026-09-04, prior strategy judge PASS @da65157"
   ],
-  "nonblocking_findings_count": 1
+  "nonblocking_findings_count": 1,
+  "scope": "drift",
+  "drift_rules": [
+    "check_strategy_tie_in.md §8"
+  ]
 }

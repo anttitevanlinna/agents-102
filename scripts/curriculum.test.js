@@ -18,6 +18,9 @@ const {
   expandPrompts,
   expandFigures,
   expandTiers,
+  sliceSlide,
+  sliceSlides,
+  INCLUDE_LINK_RE,
   moduleOrdinal,
   moduleNumber,
   applyContentFlags,
@@ -102,7 +105,7 @@ test('shared footer external links open in a new tab', () => {
   const html = renderFooter() + renderCopyrightBadge();
   const externalAnchors = html.match(/<a\b[^>]*href="https?:\/\/[^\"]+"[^>]*>/g) || [];
 
-  assert.equal(externalAnchors.length, 3);
+  assert.ok(externalAnchors.length > 0, 'the footer and badge carry at least one external link, or this checks nothing');
   externalAnchors.forEach((anchor) => {
     assert.match(anchor, /target="_blank"/);
     assert.match(anchor, /rel="noopener"/);
@@ -377,7 +380,12 @@ test('THEORY_HANDBOOK_MANIFEST lecture order is a subsequence of each module fil
 
 const ROOT = path.resolve(__dirname, '..');
 const FIXTURE_CUSTOMER = 'theory-test-fixture';
-const FIXTURE_DIR = path.join(ROOT, 'site/clients', FIXTURE_CUSTOMER);
+// Built under its own output root, never site/clients: node --test runs files
+// in parallel, and output-root.test.js asserts the vendor tree's git status is
+// unchanged across its own build (a fresh clone failed that on this fixture,
+// 2026-09-30).
+const FIXTURE_OUT = fs.mkdtempSync(path.join(require('os').tmpdir(), 'theory-fixture-'));
+const FIXTURE_DIR = path.join(FIXTURE_OUT, FIXTURE_CUSTOMER);
 
 // Strip inline <script>/<style> before content assertions — same move as the
 // build's own post-render audit. SPA_JS/CSS ride inside every page and mention
@@ -393,14 +401,15 @@ test('theory handbook build', async (t) => {
     fs.existsSync(FIXTURE_DIR), false,
     `scratch dir already exists: ${FIXTURE_DIR} — refusing to build over it`
   );
-  t.after(() => fs.rmSync(FIXTURE_DIR, { recursive: true, force: true }));
+  t.after(() => fs.rmSync(FIXTURE_OUT, { recursive: true, force: true }));
+  const env = { ...process.env, AGENTS_OUTPUT_DIR: FIXTURE_OUT };
 
   const trainingDir = path.join(FIXTURE_DIR, 'agentic-engineering-101');
   const theoryFile = path.join(trainingDir, 'theory-handbook.html');
 
-  execSync(`node scripts/build-workbook.js ${FIXTURE_CUSTOMER} agentic-engineering-101`, { cwd: ROOT, stdio: 'pipe' });
+  execSync(`node scripts/build-workbook.js ${FIXTURE_CUSTOMER} agentic-engineering-101`, { cwd: ROOT, stdio: 'pipe', env });
   const theoryEmittedByNormalBuild = fs.existsSync(theoryFile);
-  execSync(`node scripts/build-workbook.js ${FIXTURE_CUSTOMER} agentic-engineering-101 --theory`, { cwd: ROOT, stdio: 'pipe' });
+  execSync(`node scripts/build-workbook.js ${FIXTURE_CUSTOMER} agentic-engineering-101 --theory`, { cwd: ROOT, stdio: 'pipe', env });
 
   const handbookRaw = fs.readFileSync(theoryFile, 'utf8');
   const handbook = contentOnly(handbookRaw);
@@ -729,27 +738,40 @@ test('payload base URL is registry-resolvable, not hardcoded', () => {
 // nav above a page that said Module 4, so the same token meant two things in
 // one build and a stated mapping could not repair it. Numbering from the parent
 // keeps one meaning and shows the skipped module as a gap.
-test('a variant cut numbers its modules from the parent, not by position', () => {
+// No shipped cut skips a module, so the gap is a fixture: modules 1, 2, 4 and 5
+// of the parent, registered for the length of one test.
+const GAP_CUT = 'agentic-engineering-101-gap-fixture';
+function withGapCut(fn) {
+  const parent = TRAININGS['agentic-engineering-101'].modules;
+  TRAININGS[GAP_CUT] = {
+    contentKey: 'agentic-engineering-101',
+    label: 'gap fixture',
+    modules: [0, 1, 3, 4].map(i => parent[i]),
+  };
+  try { return fn(); } finally { delete TRAININGS[GAP_CUT]; }
+}
+
+test('a variant cut numbers its modules from the parent, not by position', () => withGapCut(() => {
   const parent = TRAININGS['agentic-engineering-101'].modules.map(m => m.slug);
-  const cut = TRAININGS['agentic-engineering-101-northwind'];
-  assert.ok(cut.contentKey, 'northwind must resolve content through a parent');
+  const cut = TRAININGS[GAP_CUT];
+  assert.ok(cut.contentKey, 'the fixture must resolve content through a parent');
   assert.ok(cut.modules.length < parent.length, 'the fixture must actually be a cut');
 
   cut.modules.forEach((m) => {
     assert.equal(
-      moduleOrdinal('agentic-engineering-101-northwind', m.slug),
+      moduleOrdinal(GAP_CUT, m.slug),
       parent.indexOf(m.slug) + 1,
       `${m.slug} must carry its parent ordinal, not its position in the cut`);
   });
 
   // The concrete regression: sitting 3 is Module 4, and its number is not 3.
-  assert.equal(moduleOrdinal('agentic-engineering-101-northwind', 'run-the-first-experiment'), 4);
-  assert.equal(moduleNumber('agentic-engineering-101-northwind', 'run-the-first-experiment'), '04');
+  assert.equal(moduleOrdinal(GAP_CUT, 'run-the-first-experiment'), 4);
+  assert.equal(moduleNumber(GAP_CUT, 'run-the-first-experiment'), '04');
 
   // Ordinals in a cut are unique, so two cards never collide on one number.
-  const nums = cut.modules.map(m => moduleNumber('agentic-engineering-101-northwind', m.slug));
+  const nums = cut.modules.map(m => moduleNumber(GAP_CUT, m.slug));
   assert.equal(new Set(nums).size, nums.length, 'module numbers must be unique within a cut');
-});
+}));
 
 test('a non-variant training still numbers by position', () => {
   TRAININGS['agentic-engineering-101'].modules.forEach((m, i) => {
@@ -884,7 +906,7 @@ test('--for without --theory aborts rather than silently dropping the name', () 
  *     section was trimmed is the failure worth a test: it is silent in the
  *     builder and lands as a dead tab in front of a trainer mid-cohort.
  *   - No flag marker survives into the rendered page.
- *   - The six-module arc keeps all seven tabs; the Northwind cut drops M3 + M6
+ *   - The six-module arc keeps all seven tabs; a cut without M3 + M6 drops them
  *     and swaps the two-day schedule for the per-sitting line.
  */
 const HANDBOOK_KEYS = Object.keys(TRAININGS).filter(k => fs.existsSync(
@@ -945,8 +967,8 @@ test('trainer handbook: a tab exists exactly when the cut runs that module', () 
   });
 });
 
-test('trainer handbook: the Northwind cut drops the six-module schedule', () => {
-  const cut = trimHandbook('agentic-engineering-101-northwind');
+test('trainer handbook: a cut without M3 and M6 drops the six-module schedule', () => withGapCut(() => {
+  const cut = trimHandbook(GAP_CUT);
   const full = trimHandbook('agentic-engineering-101');
 
   assert.doesNotMatch(cut, /Two-day cohort schedule/,
@@ -958,7 +980,7 @@ test('trainer handbook: the Northwind cut drops the six-module schedule', () => 
 
   assert.match(full, /Two-day cohort schedule/, 'the six-module arc keeps its schedule');
   assert.doesNotMatch(full, /\*\*Sittings\.\*\*/, 'and does not take the cut-only line');
-});
+}));
 
 // ── Cross-doc link FORM ─────────────────────────────────────────────────────
 // A link to a training-specific page must carry its `trainings/<training>/`
@@ -1013,4 +1035,96 @@ test('trainer pages carry no hand-typed Flow inventory', () => {
     .map((l, i) => /^\*\*Flow\.\*\*/.test(l) ? `${path.relative(dir, p)}:${i + 1}` : null)
     .filter(Boolean));
   assert.deepEqual(flows, []);
+});
+
+// ── slide-level includes ─────────────────────────────────────────────────────
+const SLIDE_SRC = [
+  '# A lecture', '', 'Cover line.', '',
+  '## First slide', '<!--slide:first-->', '', 'First body.', '',
+  '## Second slide', '<!--tier:2-->', '<!--slide:second-->', '', '```', '## not a heading', '```', 'Second body.', '',
+  '## Third slide', '', 'Third body.', '',
+  '<!-- maintainer -->', '', '## Maintainer heading', '<!--slide:tail-->', ''
+].join('\n');
+
+test('INCLUDE_LINK_RE: optional #fragment captured as group 3, whole-file include unchanged', () => {
+  const re = new RegExp(INCLUDE_LINK_RE.source);
+  const whole = re.exec('[Context](lectures/context-is-king.md)');
+  assert.equal(whole[2], 'lectures/context-is-king');
+  assert.equal(whole[3], undefined);
+  const frag = re.exec('[Context](lectures/context-is-king.md#same-question)');
+  assert.equal(frag[2], 'lectures/context-is-king');
+  assert.equal(frag[3], 'same-question');
+  assert.equal(re.exec('See [x](lectures/a.md#b) inline.'), null, 'mid-sentence is never an include');
+});
+
+test('sliceSlide: returns the ## section that carries the marker, up to the next ##', () => {
+  assert.equal(sliceSlide(SLIDE_SRC, 'first'), '## First slide\n<!--slide:first-->\n\nFirst body.\n');
+});
+
+test('sliceSlide: other markers may sit between heading and slide marker; fenced ## is not a boundary', () => {
+  const out = sliceSlide(SLIDE_SRC, 'second');
+  assert.match(out, /^## Second slide\n<!--tier:2-->\n<!--slide:second-->/);
+  assert.match(out, /## not a heading/);
+  assert.match(out, /Second body\.\n$/);
+  assert.doesNotMatch(out, /Third/);
+});
+
+test('sliceSlide: unknown id, maintainer-tail id, duplicate id and orphan marker all throw', () => {
+  assert.throws(() => sliceSlide(SLIDE_SRC, 'nope'), /no <!--slide:nope-->/);
+  assert.throws(() => sliceSlide(SLIDE_SRC, 'tail'), /no <!--slide:tail-->/);
+  assert.throws(() => sliceSlide(SLIDE_SRC.replace('## Third slide\n', '## Dup\n<!--slide:first-->\n\n## Third slide\n'), 'first'), /2 <!--slide:first-->/);
+  assert.throws(() => sliceSlide('# T\n\nprose\n<!--slide:orphan-->\n', 'orphan'), /directly under a ## heading/);
+});
+
+test('INCLUDE_LINK_RE: a comma list of ids is one include', () => {
+  const m = new RegExp(INCLUDE_LINK_RE.source).exec('[X](lectures/a.md#cover,first,third)');
+  assert.equal(m[3], 'cover,first,third');
+});
+
+test('sliceSlide: a marker under the # title selects the cover (title + lede), not the first ##', () => {
+  const src = SLIDE_SRC.replace('# A lecture\n', '# A lecture\n<!--slide:cover-->\n');
+  assert.equal(sliceSlide(src, 'cover'), '# A lecture\n<!--slide:cover-->\n\nCover line.\n');
+});
+
+test('sliceSlides: ids come back in the order listed, skipped slides stay out', () => {
+  const src = SLIDE_SRC.replace('## Third slide\n', '## Third slide\n<!--slide:third-->\n');
+  const out = sliceSlides(src, 'third,first');
+  assert.ok(out.indexOf('## Third slide') < out.indexOf('## First slide'));
+  assert.doesNotMatch(out, /Second/);
+  assert.throws(() => sliceSlides(src, 'first,nope'), /nope/);
+});
+
+// The judges' read view: borrowed slides are inlined (and fenced as borrowed),
+// whole-file includes stay links — those files are judged at home.
+test('expand-md: inlines a slide include between borrowed markers; whole-file include stays a link', () => {
+  const out = execSync('node scripts/expand-md.js -', {
+    cwd: path.join(__dirname, '..'), encoding: 'utf8',
+    input: '# M\n\n[C](lectures/context-is-king.md#cover)\n\n[W](lectures/what-just-happened.md)\n',
+  });
+  assert.match(out, /<!-- borrowed: lectures\/context-is-king\.md#cover[^>]*-->\n# Context is King/);
+  assert.match(out, /<!-- \/borrowed -->/);
+  assert.match(out, /^\[W\]\(lectures\/what-just-happened\.md\)$/m);
+});
+
+test('render-md --list-includes: a slide include is not a file to audit here', () => {
+  const tmp = fs.mkdtempSync(path.join(require('node:os').tmpdir(), 'list-inc-'));
+  const mod = path.join(tmp, 'm.md');
+  fs.writeFileSync(mod, '# M\n\n[C](lectures/context-is-king.md#cover)\n\n[W](lectures/what-just-happened.md)\n');
+  const out = execSync(`node scripts/render-md.js --list-includes ${mod}`, { cwd: path.join(__dirname, '..'), encoding: 'utf8' });
+  assert.doesNotMatch(out, /context-is-king\.md/);
+  assert.match(out, /what-just-happened\.md/);
+  fs.rmSync(tmp, { recursive: true, force: true });
+});
+
+test('expand-md: a slide-file include is inlined between slide-file markers', () => {
+  const tmp = fs.mkdtempSync(path.join(require('node:os').tmpdir(), 'expand-slides-'));
+  fs.mkdirSync(path.join(tmp, 'slides'));
+  fs.writeFileSync(path.join(tmp, 'slides', 'a-slide.md'), '## A slide\n<!--slide:a-slide-->\n\nBody.\n\n<!-- maintainer -->\nnote\n');
+  const out = execSync('node scripts/expand-md.js -', {
+    cwd: path.join(__dirname, '..'), encoding: 'utf8', env: { ...process.env, SLIDES_DIR: path.join(tmp, 'slides') },
+    input: '# L\n\n[A](slides/a-slide.md)\n',
+  });
+  assert.match(out, /<!-- slide-file: slides\/a-slide\.md[^>]*-->\n## A slide\n<!--slide:a-slide-->\n\nBody\.\n<!-- \/slide-file -->/);
+  assert.doesNotMatch(out, /note/);
+  fs.rmSync(tmp, { recursive: true, force: true });
 });

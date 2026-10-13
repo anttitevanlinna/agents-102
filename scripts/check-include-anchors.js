@@ -48,6 +48,16 @@ const TRAININGS_DIR = process.env.TRAININGS_DIR
   ? path.resolve(process.env.TRAININGS_DIR)
   : path.join(ROOT, 'curriculum/trainings');
 
+// Shared library root (lectures/, exercises/), overridable for the same reason.
+const LIBRARY_DIR = process.env.LIBRARY_DIR
+  ? path.resolve(process.env.LIBRARY_DIR)
+  : path.join(ROOT, 'curriculum');
+const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
+const { slideReader } = require('./read-curriculum.js');
+const SLIDES_DIR = path.join(LIBRARY_DIR, 'slides');
+const readSlide = slideReader(SLIDES_DIR);
+const inlineHome = src => CR.inlineSlideFiles(src, readSlide);
+
 const argv = process.argv.slice(2);
 const REPORT = argv.includes('--report');
 const flag = (name) => {
@@ -59,6 +69,9 @@ const ONE_TRAINING = flag('training');
 // Alone on its line — the same shape INCLUDE_LINK_RE requires, and the whole
 // point of this check is that anything else is NOT an include.
 const INCLUDE_RE = /^\[[^\]]+\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md\)[ \t]*$/;
+// Slide include: one `##` section by its `<!--slide:<id>-->` marker. Must resolve
+// to exactly one marker, or the build throws mid-render.
+const SLIDE_INCLUDE_RE = /^\[[^\]]+\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md#([a-z0-9-]+(?:,[a-z0-9-]+)*)\)[ \t]*$/;
 // Any link to a shared-library file, wherever it sits.
 const REFERENCE_RE = /\]\((?:\.\.\/)*((?:exercises|lectures)\/[a-z0-9-]+)\.md\)/g;
 
@@ -72,6 +85,7 @@ function scanTraining(key) {
 
   const inlined = new Set();
   const references = [];
+  const badSlides = [];
 
   for (const name of files) {
     const body = bodyOf(fs.readFileSync(path.join(dir, name), 'utf8'));
@@ -80,6 +94,15 @@ function scanTraining(key) {
     lines.forEach((line, i) => {
       const inc = line.trim().match(INCLUDE_RE);
       if (inc) { inlined.add(inc[1]); return; }
+      const sl = line.trim().match(SLIDE_INCLUDE_RE);
+      if (sl) {
+        const src = path.join(LIBRARY_DIR, sl[1] + '.md');
+        let why = null;
+        if (!fs.existsSync(src)) why = 'file missing';
+        else { try { CR.sliceSlides(inlineHome(fs.readFileSync(src, 'utf8')), sl[2]); } catch (e) { why = e.message; } }
+        if (why) badSlides.push({ file: name, line: i + 1, target: `${sl[1]}.md#${sl[2]}`, why });
+        return;
+      }
       let m;
       REFERENCE_RE.lastIndex = 0;
       while ((m = REFERENCE_RE.exec(line)) !== null) {
@@ -89,7 +112,7 @@ function scanTraining(key) {
   }
 
   const dead = references.filter(r => !inlined.has(r.target));
-  return { files, inlined, references, dead };
+  return { files, inlined, references, dead, badSlides };
 }
 
 const trainings = ONE_TRAINING
@@ -98,12 +121,14 @@ const trainings = ONE_TRAINING
       fs.statSync(path.join(TRAININGS_DIR, d)).isDirectory()).sort();
 
 let dead = [];
+let badSlides = [];
 let fileCount = 0;
 
 for (const key of trainings) {
   const res = scanTraining(key);
   fileCount += res.files.length;
   dead = dead.concat(res.dead.map(d => ({ ...d, training: key })));
+  badSlides = badSlides.concat(res.badSlides.map(d => ({ ...d, training: key })));
   if (REPORT) {
     console.log(`\n${key}: ${res.inlined.size} inlined, ${res.references.length} in-sentence reference(s)`);
     for (const r of res.references) {
@@ -113,9 +138,53 @@ for (const key of trainings) {
   }
 }
 
+// Slide files: every `[T](slides/<id>.md)` in a lecture, exercise or module
+// reaches a well-formed slide file; every slide file is included somewhere.
+const badSlideFiles = [];
+const slideIncluders = new Map();
+const mdIn = dir => fs.existsSync(dir) ? fs.readdirSync(dir).filter(f => f.endsWith('.md')).map(f => path.join(dir, f)) : [];
+const includerFiles = [
+  ...['lectures', 'exercises'].flatMap(k => mdIn(path.join(LIBRARY_DIR, k))),
+  ...trainings.flatMap(k => mdIn(path.join(TRAININGS_DIR, k))),
+];
+for (const abs of includerFiles) {
+  const rel = path.relative(abs.startsWith(TRAININGS_DIR) ? TRAININGS_DIR : LIBRARY_DIR, abs);
+  bodyOf(fs.readFileSync(abs, 'utf8')).split('\n').forEach((line, i) => {
+    const m = new RegExp(CR.SLIDE_FILE_RE.source).exec(line);
+    if (!m) return;
+    const id = m[2];
+    slideIncluders.set(id, (slideIncluders.get(id) || 0) + 1);
+    const text = readSlide(id);
+    const why = text === null ? 'no such slide file' : CR.slideFileProblem(id, text);
+    if (why) badSlideFiles.push(`${rel}:${i + 1} -> slides/${id}.md (${why})`);
+  });
+}
+// A library slide may be written before a deck includes it: warn, don't fail.
+// Its own shape is still checked.
+const unincluded = [];
+for (const f of mdIn(SLIDES_DIR)) {
+  const id = path.basename(f, '.md');
+  const why = CR.slideFileProblem(id, fs.readFileSync(f, 'utf8'));
+  if (why) badSlideFiles.push(`slides/${id}.md (${why})`);
+  if (!slideIncluders.has(id)) unincluded.push(id);
+}
+for (const id of unincluded) console.log(`WARN slides/${id}.md: no file includes it yet`);
+if (REPORT && slideIncluders.size) console.log(`\nslide files: ${slideIncluders.size} included`);
+if (badSlideFiles.length) {
+  console.error(`\n${badSlideFiles.length} slide-file problem(s):\n`);
+  for (const b of badSlideFiles) console.error(`  ${b}`);
+  console.error(`\nFix: a slide file is one ## slide with <!--slide:<id>--> under it, named <id>.md; an include names an existing slide file.\n`);
+}
+
 if (!trainings.length) {
   console.error(`FAIL — 0 trainings found under ${TRAININGS_DIR}: nothing was checked.`);
   process.exit(1);
+}
+
+if (badSlides.length) {
+  console.error(`\n${badSlides.length} slide include(s) do not resolve:\n`);
+  for (const d of badSlides) console.error(`  [${d.training}] ${d.file}:${d.line} -> ${d.target} (${d.why})`);
+  console.error(`\nFix: put <!--slide:<id>--> under the ## heading in the target file, or correct the id.\n`);
 }
 
 if (dead.length) {
@@ -126,6 +195,8 @@ if (dead.length) {
   }
   console.error(`\nFix: add a standalone include line — the link ALONE on its own line — in the`);
   console.error(`file that assigns the work, or drop the link and let the prose name it.\n`);
+  process.exit(1);
+} else if (badSlides.length || badSlideFiles.length) {
   process.exit(1);
 } else if (!REPORT) {
   console.log(`OK — ${trainings.length} trainings, ${fileCount} files, every exercise/lecture link resolves.`);

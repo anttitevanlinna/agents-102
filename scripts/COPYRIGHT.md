@@ -1,6 +1,6 @@
 # Copyright Notice — `scripts/`
 
-Copyright (c) 2026 **Bosser Oy** (sole proprietor: Antti Tevanlinna). All rights reserved.
+Copyright (c) 2026 **Bosser Oy**. All rights reserved.
 
 All scripts in this directory — eval runners, cover generators, and any other tooling shipped with this project — are proprietary to Bosser Oy. Any new file added under `scripts/` is automatically covered by this notice.
 

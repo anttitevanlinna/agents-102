@@ -116,7 +116,10 @@ done
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 INSTANCES_DIR="${QUALITY_INSTANCES_DIR:-$SCRIPT_DIR/../instances}"
 slug="$(basename "$FILE" .md)"
-file_sha="$(shasum -a 256 "$FILE" 2>/dev/null | awk '{print $1}')"
+# body_sha = the file's content as judges read it: slide files inlined
+# (content-sha.js). For a file with no slide includes this IS shasum -a 256.
+content_sha() { node "$SCRIPT_DIR/content-sha.js" "$1" 2>/dev/null || shasum -a 256 "$1" 2>/dev/null | awk '{print $1}'; }
+file_sha="$(content_sha "$FILE")"
 
 # Surface-type comes from the parent directory, never the basename — the same
 # derivation the instance filenames use. A slug can name both a module and an
@@ -130,6 +133,7 @@ surface_of() {
     */curriculum/trainings/*)               echo module ;;
     */curriculum/exercises)                 echo exercise ;;
     */curriculum/lectures)                  echo lecture ;;
+    */curriculum/slides)                    echo slide ;;
     *)                                      echo "" ;;
   esac
 }
@@ -143,6 +147,8 @@ case "$(cd "$(dirname "$FILE")" && pwd)" in
     tdir="$(cd "$(dirname "$FILE")" && pwd)"; tdir="${tdir##*/curriculum/trainings/}"; tdir="${tdir%%/*}"
     owner="$(node -e 'process.stdout.write(require(process.argv[1]).instanceKey(process.argv[2]))' "$SCRIPT_DIR/scan-stale-classes.js" "$tdir" 2>/dev/null)" || owner='*'
     [[ -n "$owner" ]] || owner='*' ;;
+  # A slide file has no home training; its instances are shared--slide--<id>.
+  */curriculum/slides) owner='shared' ;;
 esac
 
 check_instance_sha() { # class state
@@ -425,6 +431,11 @@ else
               "slides $state_slides"; do
     cls="${pair%% *}"
     raw="${pair#* }"
+    # A slide file owes writing/technical/slides only (scan-stale-classes
+    # SLIDE_CLASSES); naming any other class on its row would be a false record.
+    if [[ "$surface" == "slide" ]]; then
+      case "$cls" in writing|technical|slides) ;; *) continue ;; esac
+    fi
     if [[ "$raw" == "keep" ]]; then
       case "$cls" in
         writing)    raw=$(prior_state_for writing   "$prior_judges_writing")   ;;
@@ -438,7 +449,11 @@ else
       # slides postdates the judge refactor (class added 2026-07-08): keep with
       # no prior entry means never-judged — omit rather than stamp grandfathered.
       if [[ -z "$raw" && "$cls" == "slides" ]]; then continue; fi
-      [[ -z "$raw" ]] && raw=grandfathered  # no prior judges row at all
+      # Grandfather only a legacy Quality line with no judges row at all. No
+      # Quality block, or a judges row that never named this class, means no
+      # judge read it: omit. `grandfathered` is settled and drops it from the queue.
+      if [[ -z "$raw" && ( -z "$prior_top" || -n "$keep_judges_all" ) ]]; then continue; fi
+      [[ -z "$raw" ]] && raw=grandfathered  # pre-refactor Quality line, no judges row
     fi
     rendered=$(render_class_inline "$cls" "$raw")
     parts+="${parts:+, }$rendered"
@@ -657,7 +672,7 @@ mv "$TMP" "$FILE"
 # The Quality block opens the maintainer block (quality-format.md § Position).
 # Hoisting here, inside the same maintainer-only write, is what converges files.
 node "$(dirname "$0")/hoist-quality.js" --write "$FILE" >/dev/null
-new_file_sha="$(shasum -a 256 "$FILE" 2>/dev/null | awk '{print $1}')"
+new_file_sha="$(content_sha "$FILE")"
 if [[ -n "$file_sha" && -n "$new_file_sha" && "$file_sha" != "$new_file_sha" && -d "$INSTANCES_DIR" ]]; then
   for cls in writing story technical behavior pedagogy strategy slides; do
     if [[ -n "$surface" ]]; then

@@ -199,7 +199,7 @@ const VERDICT_SCHEMA = {
     // observations into REVISE — the separate channel is what fixes that, not a
     // third enum value the orchestrator then has to triage.
     verdict: { enum: ['PASS', 'REVISE'] },
-    body_sha: { type: 'string', description: 'shasum -a 256 of the file, first 64 hex, taken when you START reading' },
+    body_sha: { type: 'string', description: 'node curriculum/evals/scripts/content-sha.js <file> (slide files inlined; = shasum -a 256 when there are none), taken when you START reading' },
     // §49's companion. Re-deriving the parked rows costs only time, so it is
     // invisible in a finished instance: same ledger, same verdict, same hash.
     // Splitting the ledger by who wrote each row turns a four-minute tax into a
@@ -243,7 +243,21 @@ delete BEHAVIOR_VERDICT_SCHEMA.properties.rows_written_by_you
 delete BEHAVIOR_VERDICT_SCHEMA.properties.rows_spliced_by_merge
 // A file with no prompt blocks writes verdict N/A to its instance (instance-contract.js).
 BEHAVIOR_VERDICT_SCHEMA.properties.verdict = { enum: ['PASS', 'REVISE', 'N/A'] }
-const verdictSchemaFor = j => (j.cls === 'behavior' ? BEHAVIOR_VERDICT_SCHEMA : VERDICT_SCHEMA)
+// Story and behavior read a cached trace and bind it to the body they judged.
+// Six of ~45 skipped the bind on 2026-09-28 (mostly after reusing the cache) and
+// the stamper TRACE-SKIPped them. Binding afterwards on their behalf is what
+// bind-trace.js was split out to stop: only the judge knows the file on disk is
+// the trace it read. So the judge reports what bind-trace printed, and a
+// mismatch comes back as a re-fire (`unbound`), never repaired here.
+const withTraceSha = schema => {
+  const out = JSON.parse(JSON.stringify(schema))
+  out.required = [...out.required, 'trace_bound_sha']
+  out.properties.trace_bound_sha = { type: 'string', description: 'the sha `bind-trace.js` printed (`bound <trace> -> <sha>`) after you wrote your trace back — copy it, do not compute it. Must equal body_sha.' }
+  return out
+}
+const STORY_VERDICT_SCHEMA = withTraceSha(VERDICT_SCHEMA)
+const BEHAVIOR_TRACE_SCHEMA = withTraceSha(BEHAVIOR_VERDICT_SCHEMA)
+const verdictSchemaFor = j => (j.cls === 'behavior' ? BEHAVIOR_TRACE_SCHEMA : j.cls === 'story' ? STORY_VERDICT_SCHEMA : VERDICT_SCHEMA)
 
 // A drift judge reports per class. `merged` is what `drift-scope.js --merge`
 // printed: false means the carry was refused and the class owes a full judge.
@@ -352,6 +366,22 @@ Report both integers: the rows you wrote yourself as \`rows_written_by_you\`, an
 // read a sim-trace cache at `{{trace_path}}` and write the merged trace back
 // there. Bind them here instead.
 const TRACE_SUFFIX = { story: 'persona', behavior: 'behavior' }
+function bindStep(j) {
+  const suffix = TRACE_SUFFIX[j.cls]
+  if (!suffix || !j.slug) return ''
+  const trace = `curriculum/evals/sim-cache/${j.slug}.${suffix}.json`
+  return `
+## Last step: bind your trace
+
+Write your trace back to \`${trace}\` — even when every entry was reused — then run:
+
+\`\`\`
+node curriculum/evals/scripts/bind-trace.js ${trace} ${j.file}
+\`\`\`
+
+Copy the sha it prints into \`trace_bound_sha\`. It must equal your \`body_sha\`; if it does not, the file moved while you read, so say so. A verdict without it is re-fired: the stamper refuses a ${j.cls} verdict whose trace is not bound to the body you read, and nobody else may bind it for you.
+`
+}
 function paramsBlock(j) {
   const rows = [`- \`{{file_path}}\` → \`${j.file}\``,
                 '- `{{compendium_paths}}` → the rulebook named above']
@@ -386,8 +416,8 @@ Every in-scope rule VERBATIM — full lead, full body, every carve-out — minus
     ? `\n**Issue the template read, the rulebook and the body view in ONE turn** — they have no dependency on each other, and three sequential round-trips for three independent reads is the largest avoidable cost in a judge run.\n`
     : ''
   const expand = LAZY_EXPAND
-    ? `\n## The read view\n\nThe body view's \`signals\` tell you whether there is anything to expand. Run \`node scripts/expand-md.js ${j.file}\` only if \`has_prompt_blocks\` or \`has_figures\` is true; on a file with neither it returns the source and costs a read. Cite line numbers against the RAW source either way.\n`
-    : `\n## The read view\n\n\`node scripts/expand-md.js ${j.file}\` gives the student's view ({{prompt:}} / {{figure:}} expanded). Judge that; cite line numbers against the RAW source.\n`
+    ? `\n## The read view\n\nThe body view's \`signals\` tell you whether there is anything to expand. Run \`node scripts/expand-md.js ${j.file}\` only if \`has_prompt_blocks\`, \`has_figures\` or \`has_slide_includes\` is true; on a file with none it returns the source and costs a read. Cite line numbers against the RAW source either way.\n`
+    : `\n## The read view\n\n\`node scripts/expand-md.js ${j.file}\` gives the student's view ({{prompt:}} / {{figure:}} expanded, borrowed slides inlined). Judge that; cite line numbers against the RAW source.\n`
   return `## Read
 
 ${preamble}
@@ -430,9 +460,11 @@ ${READ_ONLY}
 
 ## Write the instance
 ${j.slug ? `
+**Scratch files.** Sibling judges share one scratchpad. Every scratch file you write is named after \`${j.slug}.${j.cls}\` (a generator script, a draft JSON), and you never run a script you did not write in this session: a judge that ran a sibling's generic \`gen.js\` overwrote another judge's instance with a body sha that matched no version.
+
 Overwrite \`curriculum/evals/instances/${j.slug}.${j.cls}.json\`. Do NOT copy the shape of whatever is there now — the instances were written to no schema for a long time and carry 60+ different top-level keys between them, so imitating the nearest example is how the next one drifts further. Write the record your class brief's **Output contract** section defines — it is generated from \`curriculum/evals/scripts/instance-contract.js\`, the only copy of the shared fields (${j.cls === 'behavior' ? 'behavior skips the brief, so print it: ' : 'no brief? print it: '}\`node curriculum/evals/scripts/instance-contract.js ${j.cls}\`). Your \`training\` is "${j.training || ''}"; \`class\` is exactly "${j.cls}", which is what every tool globs on.
 
-${j.cls === 'behavior' ? '' : `**A finding you counted but did not write down is a finding that does not exist.** The Quality row copies \`nonblocking_findings_count\` and appends "see instances/${j.slug}.${j.cls}.json", so a count with no row behind it makes the row cite evidence that is not in the file. 134 AE101 todos were lost exactly this way. Both counts are derived from \`rules_evaluated\`, never authored beside it — write the rows first and count them second.
+${j.cls === 'behavior' ? `**\`nonblocking_findings_count\` counts the \`prompts_findings\` risks you recorded with \`blocking: false\`, and never counts \`suggestions\`.** A suggestion is a swap nothing is owed on; counting it makes the Quality row cite a finding the instance does not hold (COUNT_MISMATCH).` : `**A finding you counted but did not write down is a finding that does not exist.** The Quality row copies \`nonblocking_findings_count\` and appends "see instances/${j.slug}.${j.cls}.json", so a count with no row behind it makes the row cite evidence that is not in the file. 134 AE101 todos were lost exactly this way. Both counts are derived from \`rules_evaluated\`, never authored beside it — write the rows first and count them second.
 
 Do not write a \`todos\` array — the field is retired (2026-09-08). It was a second ledger for the same thing, and where both existed they disagreed in 61 of 79 instances. \`suggestions\` is not its replacement: it is a different channel, for swaps nothing is owed on, and it carries \`now\` and \`proposed\` or it is not written.`}
 
@@ -444,6 +476,7 @@ node curriculum/evals/scripts/check-instance-schema.js --training ${j.training |
 The first counts ungrounded verdicts only — a terse N/A is healthy and is not one. Report its count as \`ungrounded_count\`. Its top-level \`verdict\` must match what you return here — a gate compares the two and fires when they disagree. The second must not name your instance under CONTRADICTIONS; if it does, fix your file and run it again.
 ` : ''}${fires}${EVIDENCE}
 
+${bindStep(j)}
 Return the structured verdict.`
 }
 
@@ -476,9 +509,9 @@ Each class below is stale ONLY because compendium rules moved after its pin; dif
 \`\`\`
 ${briefs}
 \`\`\`
-3. \`node curriculum/evals/scripts/derive-body-view.js ${d.file}\` — grep \`projections.body_numbered\`, not the source. Run \`node scripts/expand-md.js ${d.file}\` only if \`has_prompt_blocks\` or \`has_figures\` is true. Cite line numbers against the RAW source.
+3. \`node curriculum/evals/scripts/derive-body-view.js ${d.file}\` — grep \`projections.body_numbered\`, not the source. Run \`node scripts/expand-md.js ${d.file}\` only if \`has_prompt_blocks\`, \`has_figures\` or \`has_slide_includes\` is true. Cite line numbers against the RAW source.
 
-Take \`body_sha\` (shasum -a 256 of the file, first 64 hex) when you start reading.
+Take \`body_sha\` (\`node curriculum/evals/scripts/content-sha.js <file>\`: slide files inlined, = shasum -a 256 when there are none) when you start reading.
 
 ## Before filing anything
 
@@ -524,6 +557,7 @@ Overwrite \`curriculum/evals/instances/${c.slug}.${c.cls}.json\` with the record
 
 ${EVIDENCE}
 
+${bindStep(c)}
 Return the structured verdict.`
 }
 
@@ -670,8 +704,13 @@ return {
   stamp_with: stampWith,
   // Named so the orchestrator can re-fire exactly what died rather than the set.
   missing: UNITS.filter(u => !done.some(v => v._key === u._key)).map(u => u._key),
+  // Returned, but the judge left its trace unbound: re-fire these, never bind for them.
+  // A drift-carried story is exempt: drift-scope.js routes story to drift only
+  // when its trace is already bound to the current body.
+  unbound: done.filter(v => TRACE_SUFFIX[v.class] && v.scope !== 'drift' && v.trace_bound_sha !== v.body_sha).map(v => v._key),
   summary: done.map(v => ({
     file: v.file, class: v.class, verdict: v.verdict, body_sha: v.body_sha,
+    trace_bound: !TRACE_SUFFIX[v.class] ? null : v.scope === 'drift' ? 'carried' : v.trace_bound_sha === v.body_sha && !!v.body_sha,
     // `drift`: only drift_rules were re-judged, the rest carried by drift-scope.js.
     scope: v.scope || 'full', drift_rules: v.drift_rules || [],
     set_name: v.set_name || null, module_set: v.module_set || null,

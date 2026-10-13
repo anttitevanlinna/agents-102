@@ -17,7 +17,7 @@ This file is a starter. Everyone sees how this will bloat almost immediately.
 ## Write your rules file from the session
 
 - The agent reviews the whole scrollback in one shot and drafts your rules from how you actually worked.
-- You are not drafting from a blank page.
+- From there you shape the rules together, starting from evidence instead of a blank page.
 - The tracker conventions count as evidence too. The field rules you read off your own ticket are in this scrollback, and this is where they land on disk.
 
 > **Long session, long read.** If the review stalls or runs past a couple of minutes, interrupt with `Esc`, narrow to the orient and introspect phases first, and say `continue`. It fails the other way too: a summary that arrives fast and reads clean has usually covered the last few turns and skipped the rest. If nothing in it comes from the early part of the session, a `"there's more here"`-prompt buys another pass.
@@ -49,8 +49,8 @@ You can check the recurring cost by asking Claude how many tokens your rules fil
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-27 (writing@8b5de788 story@8b5de788 technical@8b5de788 behavior@8b5de788 pedagogy@8b5de788 strategy@8b5de788 slides@8b5de788)
-- judges @8b5de788: writing PASS (1 finding see instances/ae101--exercise--compound-and-close.writing.json), story PASS (1 finding see instances/ae101--exercise--compound-and-close.story.json), technical PASS (verify-refuted), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-29 (writing@3ce6146d story@3ce6146d technical@8b5de788 behavior@3ce6146d pedagogy@8b5de788 strategy@8b5de788 slides@3ce6146d)
+- judges @3ce6146d: writing PASS (2 findings see instances/ae101--exercise--compound-and-close.writing.json), story PASS, technical PASS (verify-refuted), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **View summary:** The agent reads the finished session as evidence and drafts `./CLAUDE.local.md` from how the work actually went. You push back where it misreads. The result is a personal rules file that improves the next session on this repository.
 
@@ -75,7 +75,7 @@ Claims
 - `session-is-the-evidence` · vision · "the session is the evidence" ← none-owed
 - `no-three-question-retro` · vision · "No retro questionnaire" ← none-owed
 - `compound-definition-plain` · borrowed · "make the next one easier with what this one taught" ← klaassen-definitive-guide — plain-words paraphrase of the core philosophy. The Compound-step lineage is not anchored here; it sits in Claude's own summary, per the Frameworks note below. Wording per `vocabulary.md` § compound engineering.
-- `not-drafting-from-a-blank-page` · vision · "You are not drafting from a blank page." ← none-owed
+- `shape-the-rules-together` · vision · "From there you shape the rules together, starting from evidence instead of a blank page." ← none-owed
 - `heads-up-before-close-flushes-wip` · detail · "A heads-up that you are about to compact or end the session flushes out work in progress." ← maintainer-attested-flush
 - `quote-the-moment-back` · vision · "Quote the specific session moment back at Claude." ← none-owed
 - `rules-file-is-yours-now` · vision · "The rules file is yours now." ← none-owed

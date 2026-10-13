@@ -98,8 +98,7 @@
     // Choice persists in localStorage. Default is 'cowork' — Agents 101's
     // most-friendly mode; matches the leftmost button position.
     //
-    // Verified facts driving this design (see Agents 101-side reference
-    // curriculum/trainings/agents-101/reference/claude-quick-reference.md, maintainer audit):
+    // Verified facts driving this design:
     //  - same agent engine across all three; CLAUDE.md + subagents identical
     //  - .plugin install path: Desktop + Cowork; CLI uses folder skills
     //  - no plan mode in Cowork (use prompt-level discipline instead)
@@ -216,7 +215,7 @@
     function loadAndRender(path, fallbackTitle) {
         // Images in a doc are written relative to that doc; the SPA fetches the
         // doc from `../curriculum/<...>.md` but renders into a page at
-        // `site/curriculum.html`, so a bare `skill-stacking/01.png` would
+        // `site/curriculum.html`, so a bare `diagrams/01.png` would
         // resolve against the page, not the doc. Re-root each relative target
         // onto the doc's own directory.
         var docDir = path.replace(/[^/]*$/, '');
@@ -227,6 +226,7 @@
                 return res.text();
             })
             .then(extractParent)
+            .then(inlineSlides)
             .then(stripMaintainerTail)
             .then(expandIncludes)
             .then(function (md) { return CurriculumRuntime.expandPrompts(md, PROMPT_REGISTRY); })
@@ -242,6 +242,7 @@
                 CurriculumRuntime.decorateSessions(container);
                 CurriculumRuntime.decorateHox(container);
                 CurriculumRuntime.decorateNote(container);
+                CurriculumRuntime.decorateTiming(container);
                 CurriculumRuntime.decoratePrompts(container);
                 CurriculumRuntime.decorateDiagramZoom(container);
                 CurriculumRuntime.attachAnchorPopups(document.body);
@@ -384,16 +385,26 @@
         return Promise.resolve(CurriculumRuntime.rewriteCrossDocLinks(md));
     }
 
+    // Slide files (`[T](slides/<id>.md)`) are transparent: inline them before
+    // anything else reads the page or an included lecture (layouts/curriculum.js).
+    function inlineSlides(md) {
+        return CurriculumRuntime.inlineSlideFilesAsync(md, function (id) {
+            return fetch('../curriculum/slides/' + id + '.md')
+                .then(function (res) { return res.ok ? res.text() : null; })
+                .catch(function () { return null; });
+        });
+    }
+
     // Expand standalone include links of the form:
     //   [Any text](exercises/slug.md)    or    [Any text](lectures/slug.md)
     // A link is an include only when it is the ENTIRE paragraph (its own line, no surrounding prose).
     // If the file fetch fails, the link is left as-is (renders as a normal link).
     function expandIncludes(md) {
-        var re = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+\.md)\)[ \t]*$/gm;
+        var re = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+\.md)(?:#([a-z0-9-]+(?:,[a-z0-9-]+)*))?\)[ \t]*$/gm;
         var matches = [];
         var m;
         while ((m = re.exec(md)) !== null) {
-            matches.push({ full: m[0], path: m[2] });
+            matches.push({ full: m[0], path: m[2], slide: m[3] || null });
         }
         if (matches.length === 0) return Promise.resolve(md);
 
@@ -402,6 +413,7 @@
         var fetches = uniquePaths.map(function (p) {
             return fetch('../curriculum/' + p)
                 .then(function (res) { return res.ok ? res.text() : null; })
+                .then(function (text) { return text === null ? null : inlineSlides(text); })
                 .catch(function () { return null; });
         });
 
@@ -411,8 +423,11 @@
             matches.forEach(function (mm) {
                 var content = map[mm.path];
                 if (content !== null && content !== undefined) {
-                    // Strip maintainer tail so it doesn't bleed into module pages
-                    content = stripMaintainerTail(content);
+                    // Strip maintainer tail so it doesn't bleed into module pages;
+                    // a `#<id>` include keeps only that slide.
+                    content = mm.slide
+                        ? CurriculumRuntime.sliceSlides(content, mm.slide)
+                        : stripMaintainerTail(content);
                     // Linkify the first H1 so the included exercise/lecture title
                     // becomes a link to its standalone view.
                     var standalone = mm.path.replace(/\.md$/, '');

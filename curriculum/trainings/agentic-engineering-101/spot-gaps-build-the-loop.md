@@ -54,9 +54,9 @@ This slot is a human round: talk, compare, no prompts.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-06 (writing@5a52c2b9 story@94fcca2d technical@94fcca2d behavior@1c765f2 pedagogy@4e0370bc strategy@54577f39 slides@5a52c2b9)
-- judges @5a52c2b9: writing PASS (1 finding see instances/ae101--module--spot-gaps-build-the-loop.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @fb797e3b: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
+**Quality:** compendium-audited 2026-09-28 (writing@0655fa67 story@0655fa67 technical@0655fa67 behavior@1c765f2 pedagogy@0655fa67 strategy@0655fa67 slides@0655fa67)
+- judges @0655fa67: writing PASS (1 finding see instances/ae101--module--spot-gaps-build-the-loop.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @0655fa67: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 
 **`## Next` cut whole (Antti 2026-09-02).** The send-off paragraph, the *going deeper* link to `supplementary/how-the-best-do-ci-cd.md`, the *Keep on learning and sharing* line and the author sign-off: in git at `fe8fde13`. Terminal-module exception to `module-shape.md`; the CI/CD supplementary has no in-module link. Do not restore.
 
@@ -103,7 +103,7 @@ This slot is a human round: talk, compare, no prompts.
 - **Prep / bridge timing:** optional Klaassen verifier article 10 min; human close 10–15 min.
 - **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know how to encode."* Not confidence-as-performance; competence-as-posture. Failure shapes that steal the mood: compliance-feel (*"build the eval, pass the gate"*), paperwork-feel, credibility-performance (*"we live what we teach"*), trainer-monologue retrospective. If any beat reads like one of those, revise.
 - **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries / §Material distribution (no training-dir state, no `module-N/` folders). Not restated here. Module-specific: M6 opens a fresh session in the M5 worktree at `../<repo-name>-m5` where both runs already live, then reads, routes, and maps in-place. The handoff prompt from `the-handoff-prompt.md` is the take-home; skill candidates it surfaces later ship personal-first, team-PR via human conversation — not auto-promoted.
-- **Pre-read placement:** none. M6 deck order (2026-09-02): the-2-frontiers → exercise `spot-gaps-build-the-loop` (diff + rule cut) → composing-the-workflow (control loop, Eval, cadence, skills, the Dino / Pocock examples, the filled-in map figure) → exercise `read-your-stack` → the-handoff-prompt (titled *Agents that build agents*) → story-of-module-6 → Human close → agents-that-build-agents (titled *There is no last turn*, last).
+- **Pre-read placement:** none. M6 deck order (2026-09-02): the-2-frontiers → exercise `spot-gaps-build-the-loop` (diff + rule cut) → composing-the-workflow (control loop, Eval, cadence, skills, the Pocock example, the filled-in map figure) → exercise `read-your-stack` → the-handoff-prompt (titled *Agents that build agents*) → story-of-module-6 → Human close → agents-that-build-agents (titled *There is no last turn*, last).
 
 **Push-back moves** (trainer delivers):
 - **Connections blocker** — student walks in without one of the two artefacts accessible (laptop closed between M5 and M6, scrollback gone, repo state unclear on the packaged run). Trainer push: *"both artefacts are whatever's there. Commits between M4 and M5 send-offs, files modified during each run, scrollback at `~/.claude/projects/<project>/` if the sessions closed — if M4 and M5 share a cwd, recency alone can grab the wrong attempt; filter by a phrase unique to that send-off's opening prompt instead. Open a fresh Claude Code session in the repo and ask it to surface what each run touched."*

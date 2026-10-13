@@ -298,3 +298,7 @@ test('recordRefutations settles a fully refuted REVISE from the refuters\' reaso
   assert.strictEqual(recordRefutations([row], dir, '2026-09-27'), 0, 'an existing resolution is left alone')
   fs.rmSync(dir, { recursive: true, force: true })
 })
+
+test('stateFor: an N/A verdict stamps na, never REVISE', () => {
+  assert.strictEqual(stateFor({ cls: 'behavior', verdict: 'N/A', todos: 0, blocking: 0, instanceSlug: 'x' }), 'na')
+})

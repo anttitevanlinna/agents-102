@@ -52,7 +52,11 @@ done
 STAMP_RE='`\[checked:(20[0-9][0-9]-|never)'
 dirs=(); files=()
 for p in "${PATHS[@]}"; do
-  if [[ -d "$p" ]]; then dirs+=("$p"); else files+=("$p"); fi
+  # A linked directory (the research base is its own repository, mounted
+  # here) is named as `<link>/.`: grep -r does not descend a link given as an
+  # argument on every platform, and it does descend the directory behind it.
+  if [[ -L "$p" && -d "$p" ]]; then dirs+=("$p/.")
+  elif [[ -d "$p" ]]; then dirs+=("$p"); else files+=("$p"); fi
 done
 matches=""
 if [[ ${#dirs[@]} -gt 0 ]]; then
@@ -60,7 +64,7 @@ if [[ ${#dirs[@]} -gt 0 ]]; then
   # evidence QUOTES a stamp parses as one. All 32 stamp-shaped lines under it
   # were machinery — 28 instances, 3 scripts, 1 lint, none a real citation.
   matches="$(grep -rnE --exclude='*.fixture.md' "$STAMP_RE" "${dirs[@]}" 2>/dev/null \
-    | grep -vE '(^|/)curriculum/evals/' || true)"
+    | grep -vE '(^|/)curriculum/evals/' | sed -E 's#^([^:]*)/\./#\1/#' || true)"
 fi
 if [[ ${#files[@]} -gt 0 ]]; then
   more="$(grep -nHE "$STAMP_RE" "${files[@]}" 2>/dev/null || true)"

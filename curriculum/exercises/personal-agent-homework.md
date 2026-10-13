@@ -109,7 +109,6 @@ A memory that sits there is a document. A memory that gets read by an agent on a
 - Live support: push troubleshooting through the cohort Slack/Teams during the homework window. OAuth admin approval is the most common blocker; HTML-doesn't-look-native is the second — neither belongs in the exercise body.
 - Fallback when connectors aren't enabled: swap the job for the risk-scan or next-move variant — neither requires calendar or email access.
 - Fallback when a company website isn't accessible or isn't distinctive: student can pick a brand they admire (a publication, a product they use) and style after that — the pedagogical move (file-based style rule, applied to HTML output) survives.
-- Laptop-awake / catch-up / cloud-scheduling notes live in `curriculum/trainings/agents-101/reference/claude-quick-reference.md` → Scheduling section. Students who want the mental model read it there; the exercise body stays narrative.
 - Future variant note: when this training ships in a Cowork edition, the surface changes (Cowork's own scheduling flow replaces the desktop app's Schedule sidebar) but the shape — instructions in a file, style in a file, triggered on a clock, reading the memory, producing the same output shape — stays identical.
 
 **Capability check owed:**

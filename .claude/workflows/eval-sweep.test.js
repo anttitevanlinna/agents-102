@@ -170,9 +170,18 @@ test('the default dispatch carries every mechanic the hillclimb validated', asyn
   assert.match(p, /plus every explicit judge-owned criterion in your template/,
     'template-owned checks survive brief filtering');
   assert.match(p, /in ONE turn/, 'BATCH_READ: independent reads issued together');
-  assert.match(p, /only if `has_prompt_blocks` or `has_figures`/, 'LAZY_EXPAND');
+  assert.match(p, /only if `has_prompt_blocks`, `has_figures` or `has_slide_includes`/, 'LAZY_EXPAND');
   assert.match(p, /check-instance-evidence\.js/, 'the guard that replaced the raw null-grep');
   assert.doesNotMatch(p, /grep -c '"evidence": \*null'/, 'the raw grep counts healthy N/A rows and means nothing now');
+});
+
+test('every judge keeps its scratch files apart from its siblings', async () => {
+  for (const cls of ['writing', 'behavior']) {
+    const p = await promptForClass(cls, {});
+    assert.match(p, /scratch file you write is named after `ae101--exercise--e\.\w+`/,
+      `${cls}: sibling judges share one scratchpad; a generic gen.js was run by the wrong judge and overwrote another instance`);
+    assert.match(p, /never run a script you did not write in this session/, cls);
+  }
 });
 
 test('behavior skips rule-ledger machinery it does not own', async () => {
@@ -566,4 +575,61 @@ test('a verdict carries the dispatched file and class, whatever the judge report
   assert.equal(out.summary.length, 1);
   assert.equal(out.summary[0].file, 'curriculum/exercises/e.md');
   assert.equal(out.summary[0].class, 'behavior');
+});
+
+// Story and behavior judges read a cached trace and are told to bind it to the
+// body they read. Six of ~45 skipped the bind on 2026-09-28, most after reusing
+// the cache, and the stamper then TRACE-SKIPped them. Binding for them afterwards
+// is the laundering bind-trace.js exists to prevent: only the judge knows whether
+// the file on disk is the trace it read. So the judge reports the sha bind-trace
+// printed, and a mismatch is surfaced as a re-fire, never repaired here.
+test('story and behavior judges must report the sha bind-trace printed; other classes do not', async () => {
+  const schemas = {};
+  const capture = async (prompt, opts) => { schemas[(opts.label || '').split(':')[0]] = opts.schema; return cleanJudge(prompt, opts); };
+  for (const cls of ['story', 'behavior', 'writing']) {
+    await run({ items: [{ file: 'curriculum/exercises/e.md', instanceSlug: 'ae101--exercise--e', classes: [cls], detail: { [cls]: 'diff-region' }, pins: {}, driftRules: {} }] }, capture);
+  }
+  assert.ok(schemas.story.required.includes('trace_bound_sha'), 'story');
+  assert.ok(schemas.behavior.required.includes('trace_bound_sha'), 'behavior');
+  assert.ok(!schemas.writing.required.includes('trace_bound_sha'), 'writing has no trace');
+});
+
+test('the story prompt names the exact bind-trace command for its trace and file', async () => {
+  const p = await promptForClass('story', {});
+  assert.match(p, /bind-trace\.js curriculum\/evals\/sim-cache\/ae101--exercise--e\.persona\.json curriculum\/exercises\/e\.md/);
+  assert.match(p, /trace_bound_sha/);
+});
+
+test('a trace the judge did not bind to the body it read is listed for re-fire, not bound for it', async () => {
+  const judge = bound => async (prompt, opts) => {
+    const v = await cleanJudge(prompt, opts);
+    if ((opts.label || '').startsWith('story:')) Object.assign(v, { file: 'curriculum/exercises/e.md', body_sha: 'aaa', trace_bound_sha: bound });
+    return v;
+  };
+  const items = [{ file: 'curriculum/exercises/e.md', instanceSlug: 'ae101--exercise--e', classes: ['story'], detail: { story: 'diff-region' }, pins: {}, driftRules: {} }];
+  const ok = await run({ items }, judge('aaa'));
+  assert.deepEqual(ok.unbound, [], 'a bound trace is not listed');
+  assert.equal(ok.summary[0].trace_bound, true);
+  for (const bad of ['bbb', undefined, '']) {
+    const out = await run({ items }, judge(bad));
+    assert.deepEqual(out.unbound, ['story:curriculum/exercises/e.md'], `trace_bound_sha=${bad}`);
+    assert.equal(out.summary[0].trace_bound, false);
+  }
+});
+
+// drift-scope.js only routes story to drift when the trace is already bound to
+// the current body, so a drift-carried story verdict is not an unbound one.
+test('a drift-scoped story verdict is not listed as unbound', async () => {
+  const { out } = await driftRun({ driftScope: true }, driftJudge());
+  const story = out.summary.find((v) => v.class === 'story');
+  assert.equal(story.scope, 'drift');
+  assert.deepEqual(out.unbound, []);
+});
+
+// Behavior judges counted their suggestions into nonblocking_findings_count and
+// recorded no matching prompts_findings row: COUNT_MISMATCH on 3 of 23 APT101
+// instances (2026-10-07). The count-what-you-wrote warning skipped behavior.
+test('behavior is told a suggestion is never counted as a finding', async () => {
+  const p = await promptFor({});
+  assert.match(p, /never counts? `suggestions`/);
 });

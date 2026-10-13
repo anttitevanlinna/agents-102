@@ -8,17 +8,9 @@ Build one agent per recurring workflow, a single `.md` file, guardrailed for the
 
 That's the across-workflow answer. The question this lecture answers is the within-workflow one: when, inside a single workflow, does splitting into multiple agents pay?
 
-## Start with don't
+[Start with don't](slides/start-with-dont.md)
 
-Inside a workflow, start with don't. Default to one agent with a good prompt. Splitting adds coordination cost: handoffs to manage, mis-framing to watch for, prompts to tune per agent, a synthesis step that lies if you let it. If a single well-shaped agent with a single well-shaped prompt can produce what you need, do that. Most of the time, it can.
-
-## Split when they can't be one
-
-Three tests. If any hold, splitting pays. If none do, a single prompt probably beats you.
-
-- **Different access.** Each agent needs different data, different tools, different credentials. A Confluence retriever (an agent that searches and returns matches from Confluence) can't pretend to be a web search. A legal-policy agent shouldn't also have customer-data access. Access boundaries force separation.
-- **Different dialect.** The material in each source speaks a different language: internal jargon vs. public tone vs. email shorthand. One agent bending between them loses nuance. Three agents each native to their source keep the signal.
-- **Different stance.** The agents should actively disagree with each other. A backward planner and a reframer (an agent that reframes the material from a different stance) thinking *in the same voice* is one agent pretending to be three. If your three are paraphrases, collapse them.
+[Split when they can't be one](slides/split-when-they-cant-be-one.md)
 
 ## More agents is not more rigour
 

@@ -3,6 +3,304 @@
 Rubric: `story-depth-rubric.md`. Goal spec: `trainings/agents-101/story-depth.md`. One `## Run`
 section per run, newest first; per-judge reports under `story-depth/`.
 
+
+
+
+
+
+
+
+## Three trainings on one scale: runs `apt101-full-r5` and `a101-full-r1`, 2026-10-08
+
+Build ba5ffcaa, after the full eval sweep of APT101. Two paired sets of three Opus judges, each reading AE101 first and then one other training whole through `scripts/read-training.js`. The prompts are `story-depth/full-bench-prompt.apt101.md` (the prompt of rounds r1 to r4) and `story-depth/full-bench-prompt.a101.md` (same prompt; audience, intended shape and progression row swapped). Judge files: `story-depth/apt101-full-r5.judge-{1,2,3}.md`, `story-depth/a101-full-r1.judge-{1,2,3}.md`.
+
+| Factor | AE101 (six reads) | median | APT101 (j1/j2/j3) | median | r4 | Agents 101 (j1/j2/j3) | median |
+|---|---|---|---|---|---|---|---|
+| Frame | 95/95/95/95/94/95 | 95 | 94/94/94 | 94 | 93 | 92/88/91 | 91 |
+| Narrative | 93/93/93/94/93/94 | 93 | 91/90/90 | 90 | 91 | 90/87/90 | 90 |
+| Point of view | 95/95/95/95/95/95 | 95 | 90/89/87 | 89 | 89 | 76/72/60 | 72 |
+| Stance | 92/92/92/92/91/92 | 92 | 93/93/92 | 93 | 92 | 94/93/94 | 94 |
+| Depth | 92/90/91/92/84/87 | 91 | 86/85/86 | 86 | 90 | 87/83/85 | 85 |
+
+**Reading.**
+- AE101's four story factors repeat within a point across six reads, so a one-point move on those factors is noise. Its depth ranges from 84 to 92, so depth is the noisy factor and a four-point move is inside one judge's spread.
+- APT101's story factors sit where r4 left them. The sweep's edits cost the story nothing and bought it nothing.
+- APT101's depth reads 86 from all three judges, against 90 in r4. The judges agree on where it is thin: three learnings reach the top rung (the bet that can lose, the check is a claim, your insight) and the rest trail. *What each of you is for* scored 88, 80 and 68; *the door* 78 and 70; *write it down* 72 and 75. Judge 3: "This is Day 3's headline and its thinnest learning", because the answer arrives as a three-bullet slide and nobody says it in their own words.
+- Agents 101 matches APT101 on narrative and depth, leads all three on stance, and trails on point of view by a wide margin. The judges give one reason: the voice is "the people running this training", with opinions and no stated history. Judge 2 notes that a hero-student training should keep the narrator small, and that the top rungs still need the narrator's own miss.
+
+**Moves the APT101 judges converge on:**
+1. Day 3's *Say it to each other* round: each person answers *what am I for now* in their own sentence (j2, j3; j1 proposes a face-down sticky from Day 1 turned over here).
+2. Day 3's *Start here*: collect what Day 2 set up, the digest that was told to argue against the bet (j1, j2).
+3. Cut the "got cheap, did not" closer from the slides that only restate it (j1, j2).
+4. *Take it to the team*: end in the trio's hands, with the people named by them before Claude drafts (j2, j3).
+
+**Moves the Agents 101 judges converge on:**
+1. `joint-double-diamond`: cut the scripted sponsor sentence "You are now agent builders" and end on the participant counting the folders the kernel cites (3/3).
+2. `output-quality` *Start here*: cut "This module is the rescue" (j1, j2).
+3. `design-the-sharing-plan`: the student names the five people-plan roles before the agent drafts (j1, j3).
+4. `security`: the closing turn of `practice-of-risk` lands after `audit-your-agent` (j1, j2).
+5. `grounded`: the Mata pre-read told in the first person, as the narrator's own miss (j1, j2; j3 asks for a real scar from the maintainer elsewhere).
+
+## APT101 full training, hill-climb round 3 (`apt101-full-r4`), 2026-10-07
+
+Same protocol. The fixes concentrated the hidden spine:
+- Undeveloped headline ideas were cut: one agent per job, the six parts, aligned autonomy, the double diamond, "crux" as a word.
+- The Day 2 headline is no longer read on Day 1.
+- The reversed rerun turns every seat's line round.
+- The door is tested aloud.
+- Day 3 pays off each person's own Day 2 doubt.
+- The one forecast became a question.
+
+Judge files: `story-depth/apt101-full-r4.judge-{1,2,3}.md`.
+
+| Factor | AE101 median | APT101 (j1/j2/j3) | median | r3 | r2 | r1 |
+|---|---|---|---|---|---|---|
+| Frame | 95 | 94/93/92 | 93 | 92 | 91 | 89 |
+| Narrative | 94 | 91/91/88 | 91 | 90 | 87 | 84 |
+| Point of view | 95 | 89/89/86 | 89 | 87 | 86 | 85 |
+| Stance | 92 | 93/92/90 | 92 | 91 | 90 | 88 |
+| Depth | 92 | 90/89/90 | 90 | 88 | 88 | n/a |
+
+**Reading.**
+- Every factor rose again. Stance is level with AE101, and depth is 2 behind; cutting the undeveloped headlines raised the mean.
+- The remaining gap is point of view (6) and narrative (3). All three judges ask for the guide's failure on the turn itself, as one scene.
+- Two judges propose a different way to close the narrative gap: let the frame lectures follow the product box, so "building got cheap, deciding didn't" names what the trio just did. That runs against story-craft's "state the frame early", and it is the maintainer's call.
+- The judges also agree that the benchmark beat still leaves two seats watching, and that the "your challenge" seams from the borrowed prompts are still visible.
+
+**Trial r3 (scratchpad record).** The turn landed on all three seats (support, both ways and test lines). It still leaks: the headline is the biggest text on the page the trio opens on Day 1 "to check the look", and Day 2's *What you do* announces the rerun. The Day 3 close carried a bet that survived, "arguably better", except for "the one sentence we now believe instead", which assumes a change. One unplanned moment was the best of the run: the team lead saw the chosen bet put a status on every technician, so his worry about being watched came back as a product risk.
+
+## APT101 full training, hill-climb round 2 (`apt101-full-r3`), 2026-10-07
+
+Same protocol as r2. The fixes, from the r2 judges and the trial:
+- The turn lands on every seat. The expect line is kept outside the brief. "It finds what you asked it to look for" holds whatever the line asked. There is a same-morning rerun with the line reversed.
+- Lectures sit after the exercises they name (the pre-mortem, *Safe to say it's wrong*).
+- Every seat has a move in the benchmark, and retrievers carry the chosen doubt.
+- The five users do the job the product serves.
+- One agent file is handed over between trios.
+- The stance question is asked once, at the close.
+
+Judge files: `story-depth/apt101-full-r3.judge-{1,2,3}.md`.
+
+| Factor | AE101 (j1/j2/j3) | median | APT101 (j1/j2/j3) | median | r2 | r1 |
+|---|---|---|---|---|---|---|
+| Frame | 95/95/95 | 95 | 92/92/92 | 92 | 91 | 89 |
+| Narrative | 94/94/93 | 94 | 90/90/89 | 90 | 87 | 84 |
+| Point of view | 95/95/95 | 95 | 88/87/87 | 87 | 86 | 85 |
+| Stance | 92/93/92 | 92 | 93/91/91 | 91 | 90 | 88 |
+| Depth | 92/92/91 | 92 | 83/89/88 | 88 | 88 | n/a |
+
+**Reading.**
+- Narrative is up 6 over two rounds: the turn is lived now.
+- One judge scores stance above AE101 (93 vs 92), for "That sells less of this training. It is still where to start." and for naming where the frame breaks.
+- Depth is capped by breadth. Six learnings are developed, two of them only to 70. Headline ideas never developed: crux, double diamond, one agent per job, aligned autonomy, the six parts of an agent.
+- Point of view is still the guide's missing scene (3/3).
+
+**Trial (scratchpad record).** The turn landed fully for the team lead and early for the product owner (the room did it). For the designer, whose line asked for a test, the designed turn failed, but a deeper one landed: the digest counts only what his interview guide asked. Two problems hit every seat: the Day 2 headline is heard on Day 1 at the send-off, and the door never decides whether agents may read about named colleagues.
+
+## APT101 full training, hill-climb round 1 (`apt101-full-r2`), 2026-10-07
+
+Same protocol as r1, plus Depth: the rubric's Step 1 learnings scored on the Depth anchors, with per-learning progression by day. A trio trial ran beside it, a simulated product owner, designer and team lead walking the three days (scratchpad record, not committed). The fixes came from r1's consensus:
+- Day 1 no longer announces the turn;
+- each person's own look-for line produces the agreement, and Day 2 quotes it back;
+- the Day 3 close opens from the five-users call.
+
+Judge files: `story-depth/apt101-full-r2.judge-{1,2,3}.md`.
+
+| Factor | AE101 (j1/j2/j3) | median | APT101 (j1/j2/j3) | median | r1 |
+|---|---|---|---|---|---|
+| Frame | 94/94/93 | 94 | 91/88/91 | 91 | 89 |
+| Narrative | 93/93/94 | 93 | 86/87/87 | 87 | 84 |
+| Point of view | 95/95/95 | 95 | 88/86/85 | 86 | 85 |
+| Stance | 92/92/92 | 92 | 91/90/90 | 90 | 88 |
+| Depth | 96/92/88 | 92 | 88/87/88 | 88 | n/a |
+
+**Reading.**
+- Narrative +3 and stance +2: the lived turn counts.
+- Point of view barely moves; all three judges ask for the guide's failure as a scene, which only the maintainer can supply.
+- The trial found what the judges can't see: the turn landed for one seat of three.
+  - The designer's look-for line asked about behaviour, so "it agreed with you" was false for him.
+  - The team lead's run didn't fire, so he read a generic fallback.
+
+Round 2 aims at the turn landing on every seat ("it finds what you asked it to look for", whatever the line asked), a lived counter-move the same morning, and lectures placed after the exercises they name.
+
+## APT101 full training vs AE101 full training: run `apt101-full-r1`, 2026-10-07
+
+First like-for-like run. Each judge reads both trainings whole: modules with their lectures and exercises inlined, in student order, through `scripts/read-training.js`. Maintainer notes and backing are stripped. Prompt markers stay unexpanded in both trainings, and APT101's new prompts are named lines with no bodies. The setup is 3 Opus judges, paired, AE101 read first, scored 1–100 on the rubric anchors, with the intended shape of APT101 stated as in the hill-climb rounds. Judge files are `story-depth/apt101-full-r1.judge-{1,2,3}.md`. The build came from `module-design/apt101-build-plan.md`, after one arc read and its fixes.
+
+| Factor | AE101 (j1/j2/j3) | median | APT101 (j1/j2/j3) | median | Handbook hc3 |
+|---|---|---|---|---|---|
+| Frame | 94/94/94 | 94 | 90/89/89 | 89 | 88 |
+| Narrative | 93/93/95 | 93 | 86/84/84 | 84 | 84 |
+| Point of view | 95/95/92 | 95 | 85/87/85 | 85 | 84 |
+| Stance | 92/92/92 | 92 | 89/87/88 | 88 | 88 |
+
+**Reading.** The exercises lift frame and point of view by a point or so, and narrative not at all. The turn is still told before it is lived:
+- Day 1's overnight lecture announces that the digest will be wrong, which is the judges' main finding (3/3).
+- The send-off brief asks the agent neutrally, so Day 2's agreement depends on luck, not on the student's own instruction (3/3).
+- The close of Day 3 translates Agents 101's sharing prompts ("teammate", "candidate") instead of growing from the five-users result (3/3).
+- The guide's failure is a sentiment, not a scene: one named bet and the moment someone showed him the wrong (2/3; only the maintainer can supply it).
+
+**Moves the judges converge on:**
+1. Cut the Day 1 lines that pre-announce the turn (`it-works-overnight`: "some of what it writes will be wrong", "It looks for what your brief tells it to look for").
+2. In `send-it-off`, each person writes the digest's look-for line from their own hypothesis, in their own words. On Day 2, `what-ran-overnight` quotes that sentence back beside the trio's bet file, so the trio finds why it agreed before *Why it agreed* names it.
+3. Open `take-it-to-the-team` from the five-users call (persevere, pivot or stop, and the one sentence we now believe instead), and drop the teammate/candidate gloss.
+4. Single-judge moves:
+   - move *Start from your customer's sentence* after the product box exercise;
+   - pose the *Digest is back* header as a question;
+   - in five users, each person names the line of their own Day 1 hypothesis the users proved wrong.
+
+## APT101 vs Agents 101 for the trio: blind persona reads, 2026-10-07
+
+Three Opus persona readers (product owner, designer and team lead, each L2 proficient-chat and Nordic) read both theory handbooks in full. The handbooks were labelled A and B, with the order alternated across readers. Each reader had to choose one. Reports: `story-depth/apt101-vs-a101-trio.{product-owner,designer,team-lead}.md`.
+
+| fits my job / use next week / respects what I know / recommend / remember | APT101 | Agents 101 |
+|---|---|---|
+| Product owner | 9 / 8 / 7 / 8 / 8 | 4 / 6 / 6 / 5 / 7 |
+| Designer | 9 / 8 / 8 / 8 / 8 | 5 / 6 / 6 / 5 / 7 |
+| Team lead | 8 / 8 / 6 / 7 / 8 | 5 / 6 / 6 / 5 / 7 |
+
+**APT101, unanimously.** All three readers picked it, for the same reasons. It starts from their own job and pain, and it treats the trio as one unit, giving each role a piece. It answers the team lead's private question, *what am I for*, and fits co-determination: "agents get checked, people don't get watched". Its honesty against its own sale made the rest believable. Agents 101 read as written for an exec and for an individual builder: pricing and market-entry examples, the team only arriving in M7, and "You are now agent builders".
+
+**What Agents 101 does better, which is APT101's to-do list:**
+- **Hands-on:** you build and run the agent, so "six parts" is felt, not listed. APT101's handbook is lectures only.
+- **Trust machinery in depth:** the detector benchmark, the judge, and checking the judge against your own calls.
+- **Harder evidence:** court and audit records (Mata v. Avianca, Deloitte), against APT101's author essays and a parade of named authorities.
+- **Earned slides:** the shared slides land after an exercise in Agents 101.
+
+**APT101 readers flagged:**
+- The citation parade.
+- The essays, quoted four or five times, starting to read like a pitch to two of the three readers.
+- The "wider, deeper and faster" refrain, back four times.
+- The discovery-craft middle, familiar ground to the team lead.
+
+## APT101 hill-climb: round 3, stance and frame (`apt101-handbook-hc3`), 2026-10-07
+
+Same protocol and lens. Changes:
+- a stance held against the training's own sale (`customers-before-agents`);
+- borrowed-method slides close on what got cheap and which decision didn't;
+- the Day 2 stance link sharpened.
+
+Reports: `story-depth/apt101-handbook-hc3.judge-{1,2,3}.md`.
+
+| | AE101 | hc3 | hc2 | hc1 | r2 (pre-squint) |
+|---|---|---|---|---|---|
+| Frame | 95 | 88 | 88 | 85 | 80 |
+| Narrative | 94 | 84 | 84 | 76 | 58 |
+| Point of view | 95 | 84 | 85 | 84 | 60 |
+| Stance | 92 | 88 | 87 | 81 | 80 |
+
+Per judge, APT101: 88/84/84/89 · 87/84/85/88 · 88/83/84/88.
+
+**Plateau.** Stance gained a point; nothing else moved.
+
+**Overcorrection.** All three judges flag the "X got cheap; Y did not" closer as a tagline. It belongs only where the frame is stated, where it is load-bearing, and where it breaks. Revert it on the method slides.
+
+**Remaining gaps.**
+- Point of view (about 11) and narrative (about 10) converge on one move: the guide's own first-person failure at the Day 2 turn. That means a real brief or digest that agreed with his favourite hypothesis, and what a customer later showed him. Only the maintainer can supply it.
+- Part of the narrative gap comes from the manifest (lectures only against AE101's lectures plus exercises).
+
+## APT101 hill-climb: round 2, lived turns (`apt101-handbook-hc2`), 2026-10-07
+
+Same protocol and lens as hc1. Change: the Day 2 turn points at the trio's own brief and bet, Day 3 reads their own five users beside their digest, the training's position leads the method slides, and two stances are defended by mechanism. Reports: `story-depth/apt101-handbook-hc2.judge-{1,2,3}.md`.
+
+| | AE101 | APT101 hc2 | hc1 |
+|---|---|---|---|
+| Frame | 95 | 88 | 85 |
+| Narrative | 93 | 84 | 76 |
+| Point of view | 95 | 85 | 84 |
+| Stance | 92 | 87 | 81 |
+
+Per judge, APT101: 88/84/85/85 · 88/84/85/87 · 90/85/84/87.
+
+**Converged:**
+- **Point of view** is the gap left. Every judge asks for the guide's own first-person moment at the Day 2 turn, a brief or digest that agreed with him. Only the maintainer can supply it.
+- **Frame:** the borrowed-method slides (Mom Test, 1-2-4-All, Houde and Hill, Kniberg) should end by naming what got cheap and which decision didn't.
+- **Stance:** one position in the training's own voice, against its own sale.
+
+## APT101 hill-climb: round 1, squint built into slides (`apt101-handbook-hc1`), 2026-10-07
+
+Paired, three Opus judges, 1–100. The judges were given the intended shape: the student is the hero, a first-person voice is the guide, an open forward ending is intended, and the point-of-view anchor is unchanged. Both trainings were judged under the same lens. Reports: `story-depth/apt101-handbook-hc1.judge-{1,2,3}.md`. Build: b758b28b, 78 handbook slides.
+
+| | AE101 | APT101 hc1 | APT101 r2 (before the squint) |
+|---|---|---|---|
+| Frame | 94 | 85 | 80 |
+| Narrative | 92 | 76 | 58 |
+| Point of view | 95 | 84 | 60 |
+| Stance | 92 | 81 | 80 |
+
+Per judge, APT101: 85/72/86/81 · 85/80/84/82 · 88/76/84/79.
+
+**What the judges converged on:**
+1. **The turn is still told, not lived.** The Day 2 digest failure and the Day 3 five-user test are written as hypotheticals ("Say one hesitates…"). Point them at the trio's own Day 1 brief and their own users.
+2. **Authority bodies lead where the training's position should.** Nielsen, Patton, the double diamond, 1-2-4-All, the pre-mortem, Kniberg: cut each to the one fact used, or say what agents change.
+3. **The guide has scars, but they are quoted, not narrated.** The point-of-view gap that remains is the guide's own agent-era product failure, told in the first person. Only the maintainer can supply it.
+
+Part of the narrative gap is the manifest: AE101's handbook includes its exercises, where the turn is lived on the page, and APT101's is lectures only.
+
+## Agents 101 theory handbook vs AE101: reference run `a101-handbook-r1`, 2026-10-06
+
+Same paired protocol (three Opus judges, 1–100, handbooks only), run as the reference point for APT101. The judges were barred from reading this report. Reports: `story-depth/a101-handbook-r1.judge-{1,2,3}.md`.
+
+| | AE101 | A101 handbook | APT101 r2 | A101 full training (Opus, 2026-09-23) |
+|---|---|---|---|---|
+| Frame | 95 | 76 | 80 | 94 |
+| Narrative | 93 | 84 | 58 | 93 |
+| Point of view | 94 | 48 | 60 | 86 |
+| Stance | 92 | 86 | 80 | 96 |
+
+Per judge, A101: 74/82/52/86 · 80/85/48/88 · 76/84/46/86.
+
+**Read:**
+- A handbook made of lectures alone scores well below its full training. A101 drops about 18 on frame and about 38 on point of view: the scar and the mood arc live in the exercises and the room, not the lectures.
+- AE101 alone keeps its point of view in the handbook, because `story-of-module-6` is a first-person lecture.
+- APT101 is already ahead of A101's handbook on frame and point of view (the essay narrator), and behind on narrative by about 26 and on stance by 6.
+- A101's narrative lives in a designed mood arc that its lectures carry. APT101's does not yet.
+- All three judges' first move for A101 is APT101's too: one signed first-person failure on the page.
+
+## APT101 theory handbook vs AE101: run `apt101-handbook-r2` (after the story pass), 2026-10-06
+
+Same protocol as r1 (three Opus judges, paired, 1–100). This is after the round-4 story pass, 31b0fc56: a narrator built from the maintainer's year-one essays (verbatim and attested), the overnight-digest thread, the Red Queen as the frame break, and Martin defending "deciding didn't". Reports: `story-depth/apt101-handbook-r2.judge-{1,2,3}.md`.
+
+| | AE101 | APT101 r2 | APT101 r1 | moved |
+|---|---|---|---|---|
+| Frame | 95 | 80 | 66 | +14 |
+| Narrative | 93 | 58 | 52 | +6 |
+| Point of view | 95 | 60 | 36 | +24 |
+| Stance | 92 | 80 | 74 | +6 |
+
+Per judge, APT101: 84/62/60/80 · 80/58/60/80 · 72/58/60/78.
+
+**What moved and what didn't.** Point of view and frame took the gains. All three judges still read the essays as **cited, not told**: "one more cited source", not a narrator. Narrative barely moved. The digest thread reads as a forecast ("say the digest says…"), not as something that happened.
+
+**The three judges converged on:**
+1. **Narrated, not cited.** The essay passages should carry the training's voice in first person, without the block-quote byline framing.
+2. **The turn as a scene that happened.** One dated, concrete wrong digest line from a real run is met on the Day 2 opening slide, and the same line fails the Day 3 criteria.
+3. **Carried-in Day 2 slides read through the frame or go.** Mata v. Avianca, the Confluence retriever, start-with-don't, and residual risk would each need re-registering for this training.
+
+Judge 3 also noted that the AE101 handbook includes `story-of-module-6`, although a comment above `THEORY_HANDBOOK_MANIFEST` says it is excluded. AE101's narrative and point-of-view scores rest on it.
+
+## APT101 theory handbook vs AE101 — 2026-10-06 — paired, run `apt101-handbook-r1`
+
+Three Opus judges, each reading both theory handbooks (`THEORY_HANDBOOK_MANIFEST` order, via `read-curriculum.js`, maintainer and backing blocks out of view) and scoring nothing until both reads were done. 1–100 on the storytelling anchors. Reports: `story-depth/apt101-handbook-r1.judge-{1,2,3}.md`.
+
+| | AE101 (median) | APT101 (median) | gap |
+|---|---|---|---|
+| Frame | 94 | 66 | 28 |
+| Narrative | 93 | 52 | 41 |
+| Point of view | 95 | 36 | 59 |
+| Stance | 91 | 74 | 17 |
+
+Per judge, APT101: 66/54/36/74 · 62/42/30/74 · 70/52/40/80. AE101: 94/92/95/93 · 94/93/95/91 · 93/94/93/90 (in line with its stored 95/92/95/92).
+
+**The gap is the story, not the material.** Every judge read APT101 as a well-sourced handbook. Stance is closest, because the positions (deciding didn't get cheap, agents get checked and people don't get watched, the source pack's authors held to their own words) are on the page. Frame is stated ("building got cheap, deciding didn't") but no slide says where it breaks. Narrative and point of view are where the distance is. Nobody tells it, and the trio never lives through a failure the handbook names.
+
+**The moves the three judges converged on:**
+1. **A narrator with a scar.** One first-person, signed passage near the Day 2 overnight return, the APT101 counterpart of `story-of-module-6`: a digest that invented a customer need, and the bet that nearly rested on it. Only the maintainer can write this. The old PO training is the material.
+2. **The overnight run as the plot.** `apt101-when-the-run-went-wrong` opens on a concrete failed digest. Day 3's check slides catch that same failure, and `read-the-signal` closes on the bet coming back no.
+3. **Name where the frame breaks.** One line in `apt101-what-each-of-us-is-for` on when "deciding didn't get cheap" stops holding, and what would change the training's mind.
+
+Volume: APT101 has 84 `##` lecture slides. Counted the same way, AE101's handbook has 102 (judge 1 counted about 181 with exercise phase headers included) and Agents 101's has 104.
+
 ## Verification on Opus — 2026-09-23 — branch `a101-story`
 
 Three Opus reads, strict: maintainer blocks out of view, and the point-of-view anchor restated

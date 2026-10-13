@@ -41,6 +41,36 @@ function repo() {
   return { root, rel, write: t => fs.writeFileSync(path.join(root, rel), t) }
 }
 
+// A manifest's body_sha is the hash of its INLINED content (content-sha.js).
+// A slide-file edit after judging moves that hash with the manifest's raw bytes
+// untouched; the guard must route it like a body edit, never stamp SAFE.
+function manifestRepo() {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'stamp-safe-man-'))
+  const w = (p, t) => { fs.mkdirSync(path.dirname(path.join(root, p)), { recursive: true }); fs.writeFileSync(path.join(root, p), t) }
+  w('curriculum/lectures/m.md', '# M\n\n[A](slides/a.md)\n\n## Close\n\nlast\n\n<!-- maintainer -->\n\nnote\n')
+  w('curriculum/slides/a.md', '## A\n<!--slide:a-->\n\nalpha prose\n')
+  const g = args => execFileSync('git', args, { cwd: root, encoding: 'utf8' })
+  g(['init', '-q']); g(['config', 'user.email', 't@t.t']); g(['config', 'user.name', 't'])
+  g(['add', '-A']); g(['commit', '-qm', 'first'])
+  return { root, rel: 'curriculum/lectures/m.md', w }
+}
+
+test('manifest: body_sha over inlined content stamps SAFE when nothing moved', () => {
+  const { contentSha } = require('./content-sha.js')
+  const r = manifestRepo()
+  const recorded = contentSha(path.join(r.root, r.rel))
+  for (const cls of ['writing', 'story', 'slides']) assert.strictEqual(verdict(r.root, r.rel, recorded, cls), 'SAFE')
+})
+
+test('manifest: a slide-file edit after judging is STALE for the classes it routes to', () => {
+  const { contentSha } = require('./content-sha.js')
+  const r = manifestRepo()
+  const recorded = contentSha(path.join(r.root, r.rel))
+  r.w('curriculum/slides/a.md', '## A\n<!--slide:a-->\n\nalpha prose, edited\n')
+  assert.strictEqual(verdict(r.root, r.rel, recorded, 'writing'), 'STALE')
+  assert.strictEqual(verdict(r.root, r.rel, recorded, 'technical'), 'SAFE')
+})
+
 test('unchanged file stamps SAFE for every class', () => {
   const { root, rel } = repo()
   assert.strictEqual(verdict(root, rel, sha256(BODY), 'writing'), 'SAFE')

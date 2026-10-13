@@ -343,10 +343,7 @@ body.theory-handbook .module .diagram svg {
     border-radius: 0 !important;
 }
 
-body.theory-handbook .prompt-block,
-body.theory-handbook .prompt-block__header,
-body.theory-handbook .prompt-block .prompt-block__pre,
-body.theory-handbook .module pre,
+body.theory-handbook .module pre:not(.prompt-block__pre),
 body.theory-handbook .session-block,
 body.theory-handbook .session-block__header,
 body.theory-handbook .session-block__body,
@@ -357,12 +354,32 @@ body.theory-handbook .note-block {
     border-color: var(--line-2) !important;
 }
 
-body.theory-handbook .prompt-block *,
 body.theory-handbook .session-block *,
 body.theory-handbook .hox-block *,
 body.theory-handbook .note-block *,
-body.theory-handbook .module pre code {
+body.theory-handbook .module pre:not(.prompt-block__pre) code {
     color: #111111 !important;
+    font-family: var(--font-body);
+}
+
+/* Prompt blocks: the same flat print look, set as the prompt-block's private
+   colour tokens (curriculum.css) rather than !important properties, so a
+   customer's public pair still reaches this page. */
+body.theory-handbook .prompt-block {
+    --_prompt-bg: var(--bg-2);
+    --_prompt-fg: #111111;
+    --_prompt-border: var(--line-2);
+    --_prompt-header-bg: var(--bg-2);
+    --_prompt-header-border: var(--line-2);
+    --_prompt-label: #111111;
+    --_prompt-arrow: #111111;
+    --_prompt-dest: #111111;
+    --_prompt-context: #111111;
+    --_prompt-context-dot: #111111;
+    --_prompt-copy-fg: #111111;
+}
+
+body.theory-handbook .prompt-block * {
     font-family: var(--font-body);
 }
 

@@ -43,6 +43,20 @@ assert_not_contains "$TMP/out-explicit.txt" "continuous-research" "explicit curr
 ( cd "$TMP" && bash "$SCRIPT" continuous-research ) > "$TMP/out-research.txt" 2>&1 || true
 assert_contains "$TMP/out-research.txt" "1 ok" "continuous-research stamp parses (the check saw its input)"
 
+# ── T3b — a corpus mounted through a link is read like any other ────────────
+# The research base is its own repository, linked in beside the curriculum. A
+# recursive grep that skips linked directories reports "no stamps" there, which
+# reads exactly like a clean corpus.
+mkdir -p "$TMP/linked/curriculum" "$TMP/research-repo/observations"
+cp "$TMP/curriculum/a.md" "$TMP/linked/curriculum/a.md"
+cp "$TMP/continuous-research/observations/b.md" "$TMP/research-repo/observations/b.md"
+ln -s ../research-repo "$TMP/linked/continuous-research"
+( cd "$TMP/linked" && bash "$SCRIPT" ) > "$TMP/out-linked.txt" 2>&1 || true
+assert_contains "$TMP/out-linked.txt" "2 ok" "a linked research corpus is scanned by default (2 ok)"
+( cd "$TMP/linked" && bash "$SCRIPT" continuous-research ) > "$TMP/out-linked-research.txt" 2>&1 || true
+assert_contains "$TMP/out-linked-research.txt" "1 ok" "a linked research corpus is scanned on its own"
+assert_not_contains "$TMP/out-linked-research.txt" "/./" "paths print without the link-resolving segment"
+
 # ── T4 — the gate does not audit its own test fixtures ──────────────────────
 # The parser fixture is a file of deliberately-broken stamps. It lives under
 # curriculum/, so the default walk read it and reported its BLOCKED example rows

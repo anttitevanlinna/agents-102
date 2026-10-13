@@ -370,8 +370,8 @@ A well-shaped prompt has three moves doing the heavy lifting and a handful of ot
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 technical@08946dd8 behavior@28a4abc5 pedagogy@1abb84c6 strategy@08946dd8 slides@08946dd8)
-- judges @08946dd8: writing PASS, story PASS (1 finding see instances/ae101--reference--prompt-anatomy.story.json), technical PASS (verify-refuted), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (verify-refuted, 1 finding see instances/ae101--reference--prompt-anatomy.slides.json)
+**Quality:** compendium-audited 2026-09-28 (writing@0655fa67 story@0655fa67 technical@0655fa67 behavior@28a4abc5 pedagogy@0655fa67 strategy@0655fa67 slides@0655fa67)
+- judges @0655fa67: writing PASS, story PASS (verify-refuted), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (1 finding see instances/ae101--reference--prompt-anatomy.slides.json)
 
 **Authoring contract:** prompt frontmatter may carry `anchors` metadata later, but the current renderer does not surface hover highlights. If highlight mode ships, add the frontmatter anchors and renderer support in the same change. Until then, this page is the lookup surface and the examples are the binding.
 

@@ -35,6 +35,7 @@
 const fs = require('fs');
 const path = require('path');
 const CR = require(path.join(__dirname, '..', 'site/layouts/curriculum.js'));
+const { readCurriculumMd } = require('./read-curriculum.js');
 const { loadRegistry } = require('./compile-prompts.js');
 const { loadFigures } = require('./compile-figures.js');
 
@@ -116,6 +117,26 @@ function normalizeAnchor(s) {
     .replace(/[\u2013\u2014]/g, '-')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+/*
+ * Where an anchor sits in normalised prose: [start, end] or null. An ellipsis
+ * elides the middle of a long quote — a quoting convention the corpus uses
+ * freely. Each fragment must appear, and in order, so elision shortens a quote
+ * without licensing a reworded tail. Shared with slide-card.js, which locates
+ * a claim's slide by the same match ANCHOR-DRIFT checks.
+ */
+function anchorAt(prose, anchor) {
+  const phrase = normalizeAnchor(stripAnchorQuotes(anchor));
+  if (!phrase) return null;
+  let at = 0, start = -1;
+  for (const part of phrase.split(/\s*(?:\u2026|\.\.\.)\s*/).filter(Boolean)) {
+    const hit = prose.indexOf(part, at);
+    if (hit === -1) return null;
+    if (start === -1) start = hit;
+    at = hit + part.length;
+  }
+  return start === -1 ? null : [start, at];
 }
 
 function stripAnchorQuotes(s) {
@@ -374,19 +395,7 @@ function auditText(text, { laws, now, stanceWindow, file = '<text>', expand = t 
   for (const c of claims) {
     const phrase = normalizeAnchor(stripAnchorQuotes(c.anchor));
     if (!phrase) continue;
-    /*
-     * An ellipsis elides the middle of a long quote — a quoting convention the
-     * corpus uses freely. Each fragment must appear, and in order, so elision
-     * shortens a quote without licensing a reworded tail.
-     */
-    let at = 0;
-    let intact = true;
-    for (const part of phrase.split(/\s*(?:\u2026|\.\.\.)\s*/).filter(Boolean)) {
-      const hit = prose.indexOf(part, at);
-      if (hit === -1) { intact = false; break; }
-      at = hit + part.length;
-    }
-    if (!intact) {
+    if (!anchorAt(prose, c.anchor)) {
       add('ERROR', 'ANCHOR-DRIFT', c.line,
         `claim \`${c.id}\` quotes a phrase absent from the body: "${phrase.slice(0, 70)}${phrase.length > 70 ? '…' : ''}"`);
     }
@@ -494,7 +503,7 @@ function main() {
 
   for (const abs of files) {
     const rel = path.relative(ROOT, abs);
-    const text = fs.readFileSync(abs, 'utf8');
+    const text = readCurriculumMd(abs);
     const r = auditText(text, { laws, now, stanceWindow: opts.stanceWindow, file: rel, expand });
     findings.push(...r.findings);
     for (const k of r.lawsUsed) lawsUsed.add(k);
@@ -548,4 +557,4 @@ function main() {
 }
 
 if (require.main === module) main();
-module.exports = { auditText, parseClaim, parseSource, parseBlock, fields, slugify, bankedLaws };
+module.exports = { auditText, parseClaim, parseSource, parseBlock, fields, slugify, bankedLaws, normalizeAnchor, anchorAt, OPEN, CLOSE };

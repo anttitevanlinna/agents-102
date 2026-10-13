@@ -11,7 +11,8 @@
  * does not go quiet, it interpolates. So a green queue and a rotten cache look
  * identical from the outside, and the next re-fire reuses the rot.
  *
- * Each trace records `content_sha`, the sha256 of the whole raw file it read,
+ * Each trace records `content_sha`, the sha256 of the whole file it read (raw,
+ * with any slide files inlined — content-sha.js),
  * the same binding an eval instance's `body_sha` carries. update-quality.sh
  * advances both on the stamper's own writes, so a stamp never strands a trace.
  *
@@ -48,6 +49,7 @@ const { trainingOf, typeOf, linkFinder, instanceKey } = require('./scan-stale-cl
 
 const SIM_DIR = 'curriculum/evals/sim-cache'
 const NAME_RE = /^(.+)\.(behavior|persona)\.json$/
+const { readCurriculumMd } = require(path.join(__dirname, '../../../scripts/read-curriculum.js'))
 const sha256 = s => crypto.createHash('sha256').update(s).digest('hex')
 
 // A trace names its file by slug only. The universe is the authority on where
@@ -172,7 +174,7 @@ function collect(repo, want) {
     try { trace = JSON.parse(fs.readFileSync(path.join(repo, SIM_DIR, name), 'utf8')) }
     catch (e) { rows.push({ name, cls, file: rel, training, verdict: 'unresolved', note: `unparseable: ${e.message.slice(0, 60)}` }); continue }
 
-    const { verdict, note } = classify(trace, fs.readFileSync(path.join(repo, rel), 'utf8'))
+    const { verdict, note } = classify(trace, readCurriculumMd(path.join(repo, rel)))
     const row = { name, cls, file: rel, training, generated_at: (trace.generated_at || '').slice(0, 10) || null, verdict, note }
     if (cls === 'persona') row.mood = { contract: trace.module_mood_contract || null, beats: moodBeats(trace), exempt: moodExemptions(trace) }
     rows.push(row)
@@ -198,7 +200,7 @@ function targetRows(repo, files) {
     if (!fs.existsSync(path.join(repo, rel))) {
       const e = new Error(`no such target: ${rel}`); e.code = 'NO_TARGET'; throw e
     }
-    const body = fs.readFileSync(path.join(repo, rel), 'utf8')
+    const body = readCurriculumMd(path.join(repo, rel)) // what the trace walked
     const surface = typeOf(rel) || 'file'
     const base = path.basename(rel, '.md')
     // A training's own file is judged only under that training; a same-slug

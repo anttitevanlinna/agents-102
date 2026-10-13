@@ -1,3 +1,0 @@
-How should a central DevSecOps team safely automate security-ticket handling across GitHub, AWS, and related systems for a roughly 1,000-person software unit?
-
-**Cycles 215–217 and 221–222:** Treat the ticket as a case file, separate decision from execution by identity, and promote autonomy per action class only after independent closure and outcome evidence. The human learning gate is role- and scope-specific. Conflicting service, security, and operational lessons remain linked until evidence or the authorized owners resolve them; restrictive precedence applies to controls, not semantic truth. Current evidence is L2; no end-to-end multi-team production model is public.

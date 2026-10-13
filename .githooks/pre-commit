@@ -19,6 +19,15 @@
 
 set -e
 
+# Generated registries: a commit touching a registry source or its JSON must
+# stage the two consistently, or the next build anywhere (a customer's fresh
+# clone included) dirties the tracked JSON. Not bypassed by SKIP_PROMPT_GATE,
+# which is about who approves a prompt, not about stale build output.
+if [ -f scripts/check-generated-registries.js ] && \
+   git diff --cached --name-only -- curriculum/prompts curriculum/figures site/prompts.json site/figures.json | grep -q .; then
+    node scripts/check-generated-registries.js --staged || exit 1
+fi
+
 # Bypass
 if [ "${SKIP_PROMPT_GATE:-0}" = "1" ]; then
     exit 0
@@ -43,6 +52,25 @@ if [ -n "$archived" ]; then
 fi
 if [ -z "$staged" ]; then
     exit 0
+fi
+
+# Simulation trainings (maintainer 2026-09-30): a prompt whose origin training
+# carries `simulation: true` is read by the maintainer when that training is
+# promoted, not per commit. scripts/prompt-sim-exempt.js decides, per file,
+# from the staged content and HEAD's.
+if [ -f scripts/prompt-sim-exempt.js ]; then
+    ungated=""
+    while IFS= read -r f; do
+        [ -z "$f" ] && continue
+        node scripts/prompt-sim-exempt.js "$f" --staged 2>/dev/null || ungated="$ungated$f
+"
+    done <<EOF
+$staged
+EOF
+    staged=$(printf '%s' "$ungated")
+    if [ -z "$staged" ]; then
+        exit 0
+    fi
 fi
 
 # Region check (added 2026-05-18): per check_prompts.md rule 22 + rule 26 carve-out,

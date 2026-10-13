@@ -47,7 +47,7 @@ function contract(cls) {
     file: '<repo-relative path>',
     training: trainings().join(' | '),
     verdict: VERDICTS.join(' | '),
-    body_sha: '<shasum -a 256 of the raw source, taken when you start reading>',
+    body_sha: '<node curriculum/evals/scripts/content-sha.js <file> (slide files inlined; = shasum -a 256 when there are none), taken when you start reading>',
   }
   if (cls === 'behavior') return behavior(rec)
   rec.shape_hash = '<exactly as prefill-instance.js --write reports it>'

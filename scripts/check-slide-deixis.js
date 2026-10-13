@@ -43,6 +43,7 @@ const fs = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
+const { readCurriculumMd } = require('./read-curriculum.js');
 
 const argv = process.argv.slice(2);
 function flag(name, def) {
@@ -109,7 +110,7 @@ function fileSet(trainingKey) {
     add(modPath);
     const abs = path.join(ROOT, modPath);
     if (!fs.existsSync(abs)) continue;
-    const body = CR.stripMaintainerTail(fs.readFileSync(abs, 'utf8'));
+    const body = CR.stripMaintainerTail(readCurriculumMd(abs));
     const re = new RegExp(CR.INCLUDE_LINK_RE.source, 'gm');
     let m;
     while ((m = re.exec(body)) !== null) add(path.join('curriculum', m[2] + '.md'));
@@ -139,7 +140,7 @@ function acceptedPhrases(raw) {
 
 // ── scan one file ────────────────────────────────────────────────────────────
 function scanFile(relPath) {
-  const raw = fs.readFileSync(path.isAbsolute(relPath) ? relPath : path.join(ROOT, relPath), 'utf8');
+  const raw = readCurriculumMd(path.isAbsolute(relPath) ? relPath : path.join(ROOT, relPath));
   const accepted = acceptedPhrases(raw);
   const lines = studentBody(raw).split('\n');
   const chunkStarts = [];

@@ -33,6 +33,7 @@ const GATES = [
   'scripts/check-hook-paths.js',
   'scripts/check-owner-paths.js',
   'scripts/lint-prompts.js',
+  'scripts/check-generated-registries.js --ref HEAD',   // the last commit's prompts.json / figures.json match its sources (pre-commit checks the index)
   `${EVALS}/check-instance-names.js`,
   `${EVALS}/check-trace-names.js --quiet`,
   `${EVALS}/check-instance-schema.js --training all --quiet`,

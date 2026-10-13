@@ -574,6 +574,69 @@ rc=$(run "$F36" --writing PASS)
 assert_rc "$rc" 1 'T37 the stale-verdict guard is armed on a shared module slug'
 unset QUALITY_INSTANCES_DIR
 
+# ── T38 — a slide file (curriculum/slides/<id>.md) owes writing/technical/slides
+# only: its judges row never names a class it does not owe, and the stale-verdict
+# guard finds its instance under shared--slide--<id>.
+mkdir -p "$TMP/c38/curriculum/slides"
+F38="$TMP/c38/curriculum/slides/s38.md"
+printf '## S\n<!--slide:s38-->\n\nBody.\n' > "$F38"
+rc=$(run "$F38" --writing PASS)
+assert_rc "$rc" 0 'T38 a slide file stamps'
+assert_grep    "$F38" 'writing PASS' 'T38 writing recorded'
+assert_no_grep "$F38" 'story'    'T38 no story on a slide file'
+assert_no_grep "$F38" 'behavior' 'T38 no behavior on a slide file'
+assert_no_grep "$F38" 'pedagogy' 'T38 no pedagogy on a slide file'
+assert_no_grep "$F38" 'strategy' 'T38 no strategy on a slide file'
+INST38="$TMP/inst38"; mkdir -p "$INST38"; export QUALITY_INSTANCES_DIR="$INST38"
+other38="$(printf 'x%.0s' {1..64} | tr x 0)"
+printf '{"class":"technical","body_sha":"%s"}\n' "$other38" > "$INST38/shared--slide--s38.technical.json"
+rc=$(run "$F38" --technical PASS)
+assert_rc "$rc" 1 'T38 the stale-verdict guard finds shared--slide--<id>'
+unset QUALITY_INSTANCES_DIR
+
+# ── T39 — a manifest (a file including slide files): body_sha is the hash of
+# its INLINED content (content-sha.js). A verdict on that content stamps; after
+# a slide-file edit the same verdict is stale and the guard refuses.
+mkdir -p "$TMP/c39/curriculum/lectures" "$TMP/c39/curriculum/slides"
+F39="$TMP/c39/curriculum/lectures/m39.md"
+printf '# M\n\n[A](slides/a39.md)\n' > "$F39"
+printf '## A\n<!--slide:a39-->\n\nalpha\n' > "$TMP/c39/curriculum/slides/a39.md"
+INST39="$TMP/inst39"; mkdir -p "$INST39"; export QUALITY_INSTANCES_DIR="$INST39"
+sha39="$(node "$HERE/content-sha.js" "$F39")"
+printf '{"class":"writing","body_sha":"%s"}\n' "$sha39" > "$INST39/x--lecture--m39.writing.json"
+rc=$(run "$F39" --writing PASS)
+assert_rc "$rc" 0 'T39 a verdict on the inlined manifest stamps'
+sha39b="$(node "$HERE/content-sha.js" "$F39")"
+printf '{"class":"technical","body_sha":"%s"}\n' "$sha39b" > "$INST39/x--lecture--m39.technical.json"
+printf '## A\n<!--slide:a39-->\n\nalpha, edited\n' > "$TMP/c39/curriculum/slides/a39.md"
+rc=$(run "$F39" --technical PASS)
+assert_rc "$rc" 1 'T39 a slide-file edit after judging stales the manifest verdict'
+unset QUALITY_INSTANCES_DIR
+
+# ── T30 — first stamp on a never-judged file: unjudged classes are omitted, never grandfathered
+#    `grandfathered` is a SETTLED state (scan-stale-classes): stamping it on a class
+#    no judge ever read drops that class out of the eval queue. Fail closed.
+mkfix t30.md '# Exercise: New
+<!-- maintainer -->
+**Role:** new page, never judged.
+
+body'
+run "$TMP/t30.md" --behavior PASS --sha new5678 --date 2026-10-07 >/dev/null
+assert_grep    "$TMP/t30.md" 'behavior PASS'  'T30 the judged class is stamped'
+assert_no_grep "$TMP/t30.md" 'grandfathered'  'T30 never-judged classes are not stamped grandfathered'
+assert_no_grep "$TMP/t30.md" 'writing '       'T30 an unjudged class is absent from the row'
+
+# ── T31 — restamp where the prior judges row omits a class: still omitted, never grandfathered
+mkfix t31.md '# Exercise: Judged once
+<!-- maintainer -->
+**Quality:** compendium-audited 2026-10-07 (behavior@old1234)
+- judges @old1234: behavior PASS
+
+body'
+run "$TMP/t31.md" --behavior PASS --sha new5678 --date 2026-10-08 >/dev/null
+assert_grep    "$TMP/t31.md" 'behavior PASS'  'T31 the judged class is restamped'
+assert_no_grep "$TMP/t31.md" 'grandfathered'  'T31 a class absent from the prior judges row is not grandfathered'
+
 echo "──────────────────────────────"
 echo "update-quality.test.sh: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]

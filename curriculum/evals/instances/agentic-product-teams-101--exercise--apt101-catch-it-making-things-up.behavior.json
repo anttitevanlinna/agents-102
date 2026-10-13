@@ -1,0 +1,109 @@
+{
+ "class": "behavior",
+ "file": "curriculum/exercises/apt101-catch-it-making-things-up.md",
+ "training": "agentic-product-teams-101",
+ "verdict": "PASS",
+ "body_sha": "8e0109417831383689dac39540243e9f78857ba39f68b09cfc7bf30fba66baf6",
+ "trace_status": "cached",
+ "prompts_evaluated": 10,
+ "prompts_findings": [
+  {
+   "prompt_index": 1,
+   "prompt_lead": "I'll name a research summary below: the overnight digest, a synthesis note, or a",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": []
+  },
+  {
+   "prompt_index": 2,
+   "prompt_lead": "Spawn one subagent to create the benchmark target.  The briefing is the test cor",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": [
+    {
+     "pattern_id": "niceness-tax",
+     "confidence": "low",
+     "evidence": "Prompt asks Claude to plant fabrications; RLHF softening could under-plant. In the prompt: 'You cannot make that number precise. Treat it as a direction, not a target metric.' and 'Where the sources do not cover something, blend in general knowledge. Do not hedge.'; body line 29: 'It is enough for the checks to have work to do.'",
+     "carve_out": "in-prompt direction-not-target framing plus 'Do not hedge' (no named catalog carve-out)",
+     "fix_hint": "none owed; carve-out applied"
+    }
+   ]
+  },
+  {
+   "prompt_index": 3,
+   "prompt_lead": "Open `module-5/briefing.md`. Extract exactly 30 varied claims from the briefing.",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": []
+  },
+  {
+   "prompt_index": 4,
+   "prompt_lead": "Run four detectors on `module-5/claim-pool.md` in parallel. Each detector is a s",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": []
+  },
+  {
+   "prompt_index": 5,
+   "prompt_lead": "Run four detectors on `module-5/claim-pool.md` in parallel. Each detector is an ",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": []
+  },
+  {
+   "prompt_index": 6,
+   "prompt_lead": "You are the scorer for a four-way detector benchmark. Your inputs:  - Claim pool",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": []
+  },
+  {
+   "prompt_index": 7,
+   "prompt_lead": "Tell me about precision and recall.  Use the scoreboard at `module-5/scoreboard.",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": []
+  },
+  {
+   "prompt_index": 8,
+   "prompt_lead": "Two things, in the chat.  First, three lines on the classic way: 1. What the cla",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": []
+  },
+  {
+   "prompt_index": 9,
+   "prompt_lead": "Take the winning detector (or the ensemble) from module-5/scoreboard.md. Rewrite",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": [
+    {
+     "pattern_id": "self-audit-charity",
+     "confidence": "low",
+     "evidence": "Known limit could be generic or charitable to the judge. Prompt anchors it: 'based on what lost the benchmark'; body (line 88) names the failure ('quality is hard') and the pushback move.",
+     "carve_out": "self-report-inflation and self-audit-charity - evidence-backed Debrief carve-out",
+     "fix_hint": "none owed; carve-out applied"
+    }
+   ]
+  },
+  {
+   "prompt_index": 10,
+   "prompt_lead": "Run judges/groundedness-judge.md on my real summary, against its sources. The su",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": [
+    {
+     "pattern_id": "citation-cargo-cult",
+     "confidence": "low",
+     "carve_out": "in-prompt exact-quote-with-path-or-\"not found\" escape (no named catalog carve-out)",
+     "evidence": "\"quote the sentence from the source that supports it exactly, with its file path, or write \\\"not found\\\"\"",
+     "fix_hint": "none owed; carve-out applied"
+    }
+   ]
+  }
+ ],
+ "suggestions": [],
+ "blocking_findings_count": 0,
+ "nonblocking_findings_count": 0,
+ "notes": "All 10 prompt_sha values match the expanded fences (recomputed). Diff since 3d7fd713 touches only surrounding prose (line 29 trimmed, line 41 reworded, line 43 added stop-and-steer callout), no prompt body; the new callout strengthens the heavy-run mitigation. Trace evidence line ref for prompt 9 updated 86 -> 88. No dated accept-notes in the maintainer block."
+}

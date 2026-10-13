@@ -2,9 +2,9 @@
   "class": "story",
   "training": "ae101",
   "file": "curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md",
-  "verdict": "PASS",
-  "body_sha": "d2da4928fff35741cda7cf711dbb497d1df7649fc12b73e61503db4034c96199",
-  "shape_hash": "a30da522a0c495f4",
+  "verdict": "REVISE",
+  "body_sha": "72e473657d96c0b0865d500146b99ef72fffe233b04c8eedcdd479e2bc67995d",
+  "shape_hash": "e1b0de2b606c6ed1",
   "trace_status": "regenerated",
   "module_mood_contract": "N/A — cross-module quick-reference page (curriculum/CLAUDE.md surface-type: reference, 'flat lookup, no progression'); no per-module Mood (deliberate) paragraph in the strategy doc names this surface.",
   "mood_summary": {
@@ -22,7 +22,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "24 `##` headers, all following one consistent construction: 'Shape the <family>: <specific sub-topic>' (e.g. L15 'Shape the input: naming the file, naming the window', L89 'Shape the output: format and anti-pattern', L217 'Shape the boundary: the scope guard', L313 'Three-move patterns: compound and audit'). Squint test: covering the bullets, each still names a concrete family + the specific move(s) inside it (e.g. 'the scope guard' names the ONE mechanic the section teaches, not a bare container word). None match the failure-mode list: no empty containers ('The move'/'The spirit'), no bare arc labels ('Recap'/'Wrap-up'), no orphan mood-mystery headers. Truth clause: spot-checked three — L15's 'naming the file, naming the window' promises path-binding + scrollback-weighting and the two entries beneath it (Input-binding by path, Primed context list) deliver exactly that; L107 'integration and sequence' promises append-vs-integrate + ordering words and delivers Integration mode + Sequencing signal; L313's 'compound and audit' promises exactly the two three-move patterns named beneath it. No dropped qualifiers or unsupported universals found in any header.",
+      "evidence": "24 `##` headers, all following one consistent construction: 'Shape the <family>: <specific sub-topic>' (e.g. L15 'Shape the input: naming the file, naming the window', L89 'Shape the output: format and anti-pattern', L217 'Shape the interaction: pacing and pressure' — renamed this pass from 'pacing the questions', now naming BOTH moves under it (batching AND push-back), not just the batching one — a squint-test improvement, L313 'Three-move patterns: compound and audit'). Squint test: covering the bullets, each still names a concrete family + the specific move(s) inside it. None match the failure-mode list: no empty containers, no bare arc labels, no orphan mood-mystery headers. Truth clause: spot-checked L217 directly against the rename — 'pacing and pressure' promises Batched-not-dumped (pacing) + Push-back invitation (pressure) and the two entries beneath it deliver exactly that; the old 'pacing the questions' undersold the second entry. No dropped qualifiers or unsupported universals found in any header.",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,10 +30,10 @@
       "compendium": "check_lectures.md",
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
-      "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md` this session. Output: 'files: 1  slides: 24  limits: 210 words / 6 bullets' / 'oversized: 0' / '✓ every slide is within limits'. Mechanical, exit clean.",
-      "fix_hint": null,
-      "blocking": false
+      "verdict": "REVISE",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md` this session. Output: 'files: 1  slides: 24  limits: 210 words / 6 bullets' / 'oversized: 1' — '⚠ trainings/agentic-engineering-101/reference/prompt-anatomy.md:333  [235w]  ## Three-move patterns: walk-away, grill, and skill-author'. The pinned diff added one sentence to the grill-before-save entry under this same `##` ('Reach for it where a gap has already cost you a re-run, not by default: the extra round of questions is certain, the saving is not.', ~26 words) — a real, worthwhile dosage caveat, but it pushed this three-pattern grouping (walk-away + grill-before-save + skill-author, L333-354) from just-under to 235w, 25w over the 210w ceiling. Mechanical, exit 1, this is the rule's own hard gate, not a judgement call.",
+      "fix_hint": "Split the `##` at the conceptual seam rather than trim the new caveat: 'The walk-away prompt' alone as its own `##` slide (mirrors the single-pattern grouping already used for 'the multi-perspective synthesis' at L360), and a second `##` pairing 'The grill-before-save' + 'The skill-author conversation' (mirrors the two-pattern grouping already used for 'compound and audit' at L317). Keeps the new sentence intact; both resulting slides land well under 210w on a rough halving of the current 235w.",
+      "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
@@ -616,7 +616,7 @@
       "rule_index": 39,
       "rule_lead": "Removals are strategic — ask before cutting.",
       "verdict": "PASS",
-      "evidence": "The pinned diff (e11bbeb4..HEAD) removed one sentence from the Count-audit line: \"Earlier drafts said 'twenty-six' and 'twenty-eight.' Both wrong. Corrected 2026-05-18 on the Agents 101 sweep.\" This is draft-history trivia about how the count was arrived at, not teaching content — a future reader loses no technique, no example, no named pattern. Diagnostic ('future reader who liked it would miss it?'): no — it documents an old correction against a count that's since been re-audited multiple times (Quality line shows 2026-08-24 and 2026-08-29 audits after the cited 2026-05-18 fix). Non-strategic tidy, not a cut costing the reader anything.",
+      "evidence": "The pinned diff (08946dd8..HEAD) makes four removal-shaped edits: (a) drops `self-consistency-after-scoreboard-1` from both example lists (grill-before-save L347, multi-perspective-synthesis L365) — verified this session via `git log --oneline --diff-filter=D -- '*self-consistency-after-scoreboard*'`: commit 09173e41 retired that whole prompt/lecture cluster to `curriculum/prompts/archive/` as a dead cluster, so the removal keeps this catalogue's named examples real (feeds §13 artifact-realism below) rather than pointing at an archived file — the correct move, not a strategic loss; (b) trims the maintainer block's Source-of-truth / Voice-rotation / Em-dash-discipline notes and drops the 'Sweep coverage' bullet list + its historical miscount footnote — all maintainer-block bookkeeping, not teaching content a student-facing reader would miss (confirmed no body-prose entry, technique, or worked quote was cut, only maintainer-side prose); (c) replaces the hardcoded 'Count audit: 33 entries...' sentence with a regenerable `awk` command — re-ran it this session (`awk -F': ' ... prompt-anatomy.md`) and it reproduces exactly the claimed counts (4/4/8/6/4/5/2 = 33, plus 6 three-move patterns), so this is a self-verifying replacement, not a loss. None of the four is a cut a future reader would miss.",
       "fix_hint": null,
       "blocking": false
     },
@@ -625,7 +625,7 @@
       "rule_index": 64,
       "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
       "verdict": "PASS",
-      "evidence": "The maintainer block (L371–389) carries only file-unique content: an authoring contract about a not-yet-shipped highlight feature, a source-of-truth pointer to the private `check_prompts.md` compendium, a voice-rotation note, an em-dash-discipline note citing `check_student_facing.md §14`, a count audit, a sweep-coverage list, and the Quality stamp. None restates cross-cutting delivery mechanics (working-dir, sessions, skills-install) that `training-architecture.md` already owns — nothing here duplicates a canonical home that could rot.",
+      "evidence": "The maintainer block (L371-386) now carries only file-unique content, and this pass made it MORE pointer-shaped than before: Source-of-truth and Voice-rotation trimmed to their load-bearing clauses (dropped restated per-entry-shape prose that duplicates L11's body sentence), Em-dash-discipline trimmed to cite `check_student_facing.md §14` plus the one exception, and the Count-audit line swapped a hand-maintained number for a regenerable `awk` command — exactly the 'name the shape or ship the command' discipline this rule's spirit shares with `feedback_do_not_write_counts`. Nothing here restates cross-cutting delivery mechanics that `training-architecture.md` already owns; the block stays file-unique and got leaner without losing any of it.",
       "fix_hint": null,
       "blocking": false
     },
@@ -1200,9 +1200,9 @@
       "compendium": "check_prompts.md",
       "rule_index": 20,
       "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
-      "verdict": "REVISE",
-      "evidence": "The compendium was narrowed 2026-09-03 (dated the same day as this file's most recent Quality audit): 'the benefit is unevidenced... this never gates and rarely fires... Raise §20 only where a run actually showed a downstream re-run caused by a gap.' The 'grill-before-save' three-move pattern entry on this page (L342–347) still frames the pattern as firing generically 'when an artifact needs cross-examination before it persists', with no hint that §20's own compendium now treats reaching for this shape by default as unevidenced. The entry is descriptive of two real, already-shipped exercises (`push-back-on-the-plan-2`, `diagnose-and-resend-6`), so it isn't factually wrong — but a reader skimming this catalogue for a template to reach for when authoring a NEW artifact-assembly exercise would come away thinking 'grill before save' is a default move to add, exactly the instinct the 2026-09-03 narrowing was written to head off. Low harm (descriptive naming, not a live prompt this page ships), so non-blocking.",
-      "fix_hint": "Add a half-clause to the grill-before-save entry noting the move is confirmed-by-evidence-only now (point at §20), or leave the entry purely descriptive of the two named exercises without generalising 'fires when' language a future author could read as a green light.",
+      "verdict": "PASS",
+      "evidence": "The prior instance (2026-09-05 audit) filed this as a non-blocking REVISE: the grill-before-save entry framed the pattern as firing generically with no hint that `check_prompts.md` §20 (narrowed 2026-09-03) now treats reaching for this shape by default as unevidenced. This pass's pinned diff adds exactly the missing caveat to L345: 'Reach for it where a gap has already cost you a re-run, not by default: the extra round of questions is certain, the saving is not.' — matches the prior fix_hint almost verbatim ('Add a half-clause to the grill-before-save entry noting the move is confirmed-by-evidence-only now'). The finding is resolved; entry now correctly signals confirmed-by-evidence-only framing instead of reading as a default reach.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -1239,9 +1239,7 @@
       "verdict": "N/A",
       "evidence": "Rule fires on placement of a LECTURE file relative to exercises. Surface-type is `reference` (curriculum/CLAUDE.md's four student-facing types), consulted standalone, never placed in a module arc. None of this pass's four wording changes touch placement or file type. Unaffected.",
       "fix_hint": "",
-      "blocking": false,
-      "carried_from": "4105f4ad67e8f16f7d85dc45d94c864e4c8a3dc15da77e3089b672e196ca9191",
-      "carried_shape": "a30da522a0c495f4"
+      "blocking": false
     },
     {
       "compendium": "check_lectures.md",
@@ -1250,9 +1248,7 @@
       "verdict": "N/A",
       "evidence": "Same reasoning as §1 — governs pre-exercise lecture dosage ahead of a specific module opener. This page is not positioned before any exercise. Unaffected by this pass's edits.",
       "fix_hint": "",
-      "blocking": false,
-      "carried_from": "4105f4ad67e8f16f7d85dc45d94c864e4c8a3dc15da77e3089b672e196ca9191",
-      "carried_shape": "a30da522a0c495f4"
+      "blocking": false
     },
     {
       "compendium": "check_lectures.md",
@@ -1261,9 +1257,7 @@
       "verdict": "N/A",
       "evidence": "Re-ran the grep on the current body: `grep -nE 'M[0-9]' curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md` → two hits. The one above the maintainer fence (line 287) is `m4/<slug>` / `remotes/origin/m4/<slug>` inside an example quote about git branch naming, not a module-sequencing claim; the other (line 386) is inside the maintainer footer's own sweep-coverage list, below the fence, which is bookkeeping not student-facing body. Rule doesn't apply twice over: not a lecture file, and even judged as one, carries no cross-module sequencing prose. None of the four changed lines touch this.",
       "fix_hint": "",
-      "blocking": false,
-      "carried_from": "4105f4ad67e8f16f7d85dc45d94c864e4c8a3dc15da77e3089b672e196ca9191",
-      "carried_shape": "a30da522a0c495f4"
+      "blocking": false
     },
     {
       "compendium": "check_lectures.md",
@@ -1272,9 +1266,7 @@
       "verdict": "N/A",
       "evidence": "Double ground. (a) Rule's own text: 'Not covered: exercise prompts, prework prompts, and prompts on reference/supplementary pages' — this file's surface-type is `reference` per `curriculum/CLAUDE.md`'s four student-facing types (`.../reference/prompt-anatomy.md`), explicitly named in the carve-out. (b) Even setting the file-type carve-out aside, the rule's own trigger construct doesn't exist on this page: `grep -n '{{prompt:'` → no hits, `grep -n '\\*\\*Prompt\\*\\*'` → no hits, `grep -c '```'` → 0 (all run this session). Every prompt fragment on this page is an italicised inline quote of a prompt that lives, fenced, in its own registry/exercise file elsewhere — not a `{{prompt:<key>}}` marker or inline `**Prompt**` block this page hosts. This row was owed by the brief (check_lectures.md's 3-rule set: §4/5/6) but missing from the prior instance on disk — added here to close that coverage gap; it is a bookkeeping fix to the eval record, not a body defect.",
       "fix_hint": "",
-      "blocking": false,
-      "carried_from": "4105f4ad67e8f16f7d85dc45d94c864e4c8a3dc15da77e3089b672e196ca9191",
-      "carried_shape": "a30da522a0c495f4"
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1283,9 +1275,7 @@
       "verdict": "N/A",
       "evidence": "`grep -c '```'` on the current body → 0: zero fenced code blocks (only italicised inline quotes of prompts FROM other files). No forcing function to locate — exposition about prompts, not an exercise a student runs. Unaffected by this pass.",
       "fix_hint": "",
-      "blocking": false,
-      "carried_from": "4105f4ad67e8f16f7d85dc45d94c864e4c8a3dc15da77e3089b672e196ca9191",
-      "carried_shape": "a30da522a0c495f4"
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1294,9 +1284,7 @@
       "verdict": "N/A",
       "evidence": "No per-module Mood (deliberate) paragraph names this cross-module reference page — see trace.module_mood_contract. Unaffected by this pass.",
       "fix_hint": "",
-      "blocking": false,
-      "carried_from": "4105f4ad67e8f16f7d85dc45d94c864e4c8a3dc15da77e3089b672e196ca9191",
-      "carried_shape": "a30da522a0c495f4"
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1305,9 +1293,7 @@
       "verdict": "N/A",
       "evidence": "Rule fires on a module's Big Idea/title framing. This page has no Big Idea slot — a technique catalogue whose entry names are the searchable handles, the rule's own stated carve-out. Judged at the file's own framing (H1 + intro), the lead stays disciplinary. None of the four changed lines sit in the H1 or opening framing sentences (they're at lines 11, 77, 307, 369) — the file-level lead is untouched.",
       "fix_hint": "",
-      "blocking": false,
-      "carried_from": "4105f4ad67e8f16f7d85dc45d94c864e4c8a3dc15da77e3089b672e196ca9191",
-      "carried_shape": "a30da522a0c495f4"
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1316,9 +1302,7 @@
       "verdict": "N/A",
       "evidence": "Rule fires on cross-module sequencing claims. Confirmed via check_lectures.md §3's grep above: body carries no module-numbered or cross-module sequencing prose. The closing-sentence edit (dropping 'six pattern names just walked through' in favor of 'each pattern named on the preceding slides') is a within-page navigational reference, not a cross-module claim — doesn't trip this rule.",
       "fix_hint": "",
-      "blocking": false,
-      "carried_from": "4105f4ad67e8f16f7d85dc45d94c864e4c8a3dc15da77e3089b672e196ca9191",
-      "carried_shape": "a30da522a0c495f4"
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1327,9 +1311,7 @@
       "verdict": "N/A",
       "evidence": "`grep -n \"Key Concepts\"` on the current file returns no match — reference page, no such section.",
       "fix_hint": "",
-      "blocking": false,
-      "carried_from": "4105f4ad67e8f16f7d85dc45d94c864e4c8a3dc15da77e3089b672e196ca9191",
-      "carried_shape": "a30da522a0c495f4"
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1338,9 +1320,7 @@
       "verdict": "N/A",
       "evidence": "Same as §5 — no Key Concepts section exists on this reference page.",
       "fix_hint": "",
-      "blocking": false,
-      "carried_from": "4105f4ad67e8f16f7d85dc45d94c864e4c8a3dc15da77e3089b672e196ca9191",
-      "carried_shape": "a30da522a0c495f4"
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1349,11 +1329,33 @@
       "verdict": "N/A",
       "evidence": "`grep -n \"What You'll Learn\"` returns no match — no such section on this reference page.",
       "fix_hint": "",
-      "blocking": false,
-      "carried_from": "4105f4ad67e8f16f7d85dc45d94c864e4c8a3dc15da77e3089b672e196ca9191",
-      "carried_shape": "a30da522a0c495f4"
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61b",
+      "rule_lead": "An audit's card-shaped findings are discharged by CARDS, not by notes about them.",
+      "verdict": "N/A",
+      "evidence": "Governs an AUDITOR's own conduct when clearing a punchlist (card-shaped cuts vs. notes-about-cuts, net-words-added-vs-cut discipline). Not a checkable property of this file's own prose — applied procedurally in this dispatch (the one real finding below is filed as a REVISE row with a concrete fix, not a note describing the problem).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 67,
+      "rule_lead": "Story and depth are judged per big learning that develops, never per feature that recurs.",
+      "verdict": "N/A",
+      "evidence": "Rule scopes a TRAINING-ARC read (naming the big learnings a student leaves carrying across a whole training, e.g. AE101's trust learning across M1-M6) — this dispatch judges one reference page in isolation, not the arc. A single lookup page has no arc of its own to plant/complicate/pay off a learning across; that judgment belongs to the sequential arc-read pass (`compounded/2026-07-09-...`), out of scope for a per-file story dispatch.",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
-  "blocking_findings_count": 0,
-  "nonblocking_findings_count": 1
+  "blocking_findings_count": 1,
+  "nonblocking_findings_count": 0,
+  "suggestions": [],
+  "resolution": {
+    "settled": "refuted",
+    "at": "2026-09-28",
+    "note": "Both refuters killed every blocking finding, so the row stamps PASS:verify-refuted and this REVISE stays as the record. lectures §5 line 333: scope: The count is right and the scope is wrong. I checked the number: `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md` reports L333 at 235w and exits 1. The caveat sentence came in with commit 79a30fb9, and without it the slide would sit at about 202w. So the judge's arithmetic stands. The finding still fails because the rule's reach and its reason for existing don't cover this page.\n\n(a) Rule wording: `rule.js lectures 5` ties the ceiling to \"One `##` = one projected slide; keep it glance-legible\". The compendium's own description is \"Fire when writing or placing a lecture.\" §5 extends the ceiling to exercise slides by name (\"Exercise slides count too\"). It never names reference or supplementary pages. The harm the judge claims (\"Projected as a deck, this slide no longer fits the glance-legible bound\") is exactly the room-projection harm the rule protects against.\n\n(b) The enforcer excludes this surface on purpose. The rule says it is \"Enforced by scripts/check-slide-size.js\", and that script's header (around L56) says: \"The training scan covers modules and the files they include; reference and supplementary pages sit outside it.\" The corpus gate `node scripts/check-slide-size.js` passes: 44 files, 245 slides, 0 oversized. The judge only got a failure by pointing `--file` at a page the gate is built to skip.\n\n(c) The repo's standing classification of this surface: root CLAUDE.md calls reference pages \"the training index's quieter rows, optional reading, never projected in a room\". check_slides.md §9 calls reference/supplementary pages \"lookup surfaces … consulted, not read through\", and names prompt-anatomy.md specifically as a prose-paragraph lookup page. A page that is never projected can't suffer the projection harm this rule guards against.\n\n(d) Class mismatch: a story judge used a lectures-compendium dosage rule as BLOCKING on a reference page. This page's own slides-class judge returned PASS.\n\nApplying the fix would cut an approved lookup section in two to meet a projection bound the page is explicitly exempt from. / harm: The count holds. `node scripts/check-slide-size.js --file .../reference/prompt-anatomy.md` reports 235w at L333 and exits 1. The grill-before-save caveat (\"Reach for it where a gap has already cost you a re-run, not by default: the extra round of questions is certain, the saving is not.\") is 26 words, which puts the section at 209w before the edit. The finding still fails on scope and harm.\n\n(1) Wrong surface. check_lectures.md is scoped \"Fire when writing or placing a lecture.\" §5 exists to protect \"one projected slide\". prompt-anatomy.md is a reference page, not a lecture. Root CLAUDE.md calls reference pages \"optional reading, never projected in a room\". check_slides.md §9 classes them as lookup surfaces that are \"consulted, not read through\", and names prompt-anatomy.md specifically as one whose paragraph-entry shape is its voice contract.\n\n(2) The enforcement tool leaves reference pages out on purpose. check-slide-size.js L56-57 says \"The training scan covers modules and the files they include; reference and supplementary pages sit outside it\". `--training agentic-engineering-101` scans 44 files and 245 slides and finds 0 oversized. The judge got a failure only by pointing `--file` at a page the gate deliberately skips.\n\n(3) Harm lens (a)/(b). The harm claimed is \"Projected as a deck, this slide no longer fits the glance-legible bound\". That premise is false for a reference page. It can appear in the opt-in Slides layout, but no one projects it to a room, and a student looks up one entry at their own pace. Being 25 words over (about 12%) on an optional lookup page is tidiness. The harm given is a restatement of the rule, not an actual consequence.\n\n(4) Fix cost (c). Splitting the section retitles a `##` and re-cuts the \"Three-move patterns\" grouping to satisfy arithmetic on a surface the rule does not govern. That is exactly what the §5/§14 history warns against (\"would have been trimmed to satisfy arithmetic\")."
+  }
 }

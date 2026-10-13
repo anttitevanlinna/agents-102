@@ -53,7 +53,7 @@ mkdir -p "$ROOT"
 strip_maintainer() {
   local src="$1"
   local dst="$2"
-  awk '/<!-- maintainer -->/{exit} {print}' "$src" > "$dst"
+  node scripts/read-curriculum.js "$src" | awk '/<!-- maintainer -->/{exit} {print}' > "$dst"   # slide files inlined first
 }
 
 # Mirror the scaffold tree into ROOT, stripping maintainer blocks from .md.
@@ -92,6 +92,14 @@ strip_maintainer "$SELF_STUDY_SKILL" "$ROOT/.claude/skills/self-study/SKILL.md"
 # nests a marker deeper than this depth-1 walk follows.
 PROMPTS_SRC="curriculum/prompts"
 A101_MODULES_DIR="curriculum/trainings/agents-101"
+# Customer overlay (AGENTS_OVERLAY_DIR, validated by the build that calls this):
+# a customer file wins over ours at the same curriculum/ path, so the closure
+# reads what the workbook renders.
+cur() {
+  if [ -n "${AGENTS_OVERLAY_DIR:-}" ] && [ -f "$AGENTS_OVERLAY_DIR/$1" ]; then echo "$AGENTS_OVERLAY_DIR/$1"
+  elif [ -f "curriculum/$1" ]; then echo "curriculum/$1"; fi
+  return 0   # absent is an empty answer, not a failure under set -e
+}
 if [ -d "$PROMPTS_SRC" ]; then
   mkdir -p "$ROOT/prompts"
 
@@ -100,8 +108,10 @@ if [ -d "$PROMPTS_SRC" ]; then
   #    ships (scaffold .md + the self-study skill), since any shipped marker must
   #    resolve locally.
   scan_list="$(mktemp)"
-  ls "$A101_MODULES_DIR"/*.md \
-    | grep -vE 'training-architecture|pre-cohort-todos|trainer-guide|trainer-modules' > "$scan_list"
+  { ls "$A101_MODULES_DIR"; if [ -d "${AGENTS_OVERLAY_DIR:-/nonexistent}/trainings/agents-101" ]; then ls "$AGENTS_OVERLAY_DIR/trainings/agents-101"; fi; } \
+    | grep -E '\.md$' | sort -u \
+    | grep -vE 'training-architecture|pre-cohort-todos|trainer-guide|trainer-modules' \
+    | while IFS= read -r f; do cur "trainings/agents-101/$f"; done > "$scan_list"
   # Resolve linked exercises/lectures into a separate temp, then append — never
   # read and append the same file in one pipeline. `if` (not `&&`) so a missing
   # link can't make the loop exit nonzero under set -e/pipefail.
@@ -110,7 +120,7 @@ if [ -d "$PROMPTS_SRC" ]; then
     grep -hoE '\]\((exercises|lectures|supplementary)/[a-z0-9-]+\.md\)' "$m" 2>/dev/null \
       | sed -E 's/^\]\(//; s/\)$//' || true   # a module with no links: grep exits 1, not a failure
   done < "$scan_list" | sort -u | while IFS= read -r rel; do
-    if [ -f "curriculum/$rel" ]; then echo "curriculum/$rel"; fi
+    cur "$rel"
   done > "$links_tmp"
   cat "$links_tmp" >> "$scan_list"
   rm -f "$links_tmp"
@@ -128,14 +138,15 @@ if [ -d "$PROMPTS_SRC" ]; then
   shipped=0
   while IFS= read -r k; do
     [ -n "$k" ] || continue
-    pf="$PROMPTS_SRC/$k.md"
-    if [ ! -f "$pf" ]; then
-      echo "ERROR — A101 references {{prompt:$k}} but $pf does not exist" >&2; exit 1
+    pf="$(cur "prompts/$k.md")"
+    if [ -z "$pf" ]; then
+      echo "ERROR — A101 references {{prompt:$k}} but prompts/$k.md does not exist" >&2; exit 1
     fi
     if grep -qE '\{\{prompt:[a-z0-9-]+\}\}' "$pf"; then
       echo "ERROR — $pf nests a {{prompt:}} marker; closure is deeper than depth-1 — extend the build walk" >&2; exit 1
     fi
-    cp "$pf" "$ROOT/prompts/$(basename "$pf")"
+    # The student's copy: body plus the run fields, without the authoring record.
+    node scripts/student-prompt.js "$pf" > "$ROOT/prompts/$(basename "$pf")"
     shipped=$((shipped + 1))
   done <<< "$keys"
   total=$(ls "$PROMPTS_SRC"/*.md | wc -l | tr -d ' ')
@@ -143,8 +154,9 @@ if [ -d "$PROMPTS_SRC" ]; then
 fi
 
 # The theory handbook — the learner's read-back of every lecture, no server.
-# Customer-independent; built into the stage, whatever output root the caller set.
-AGENTS_OUTPUT_DIR="$STAGE/handbook" node scripts/build-workbook.js _starter agents-101 --theory >/dev/null
+# Customer-independent; built into the stage, whatever output root the caller set,
+# and without the caller's brand (its copied assets would not be in the archive).
+env -u AGENTS_BRAND_DIR AGENTS_OUTPUT_DIR="$STAGE/handbook" node scripts/build-workbook.js _starter agents-101 --theory >/dev/null
 cp "$STAGE/handbook/_starter/agents-101/theory-handbook.html" "$ROOT/agents-101-handbook.html"
 
 # Build tarball from inside ROOT so the archive has prework/, module-4/policies/,

@@ -24,9 +24,11 @@ const MEMORY = require('../curriculum/evals/scripts/compendium-drift.js').MEM;
 // allowed to rot; fixtures and playgrounds name files inside student sandboxes.
 // continuous-research/ is excluded: it addresses itself by paths relative to its
 // own root, has its own review skill, and is the one public tree here. Bringing
-// it in wants a second resolution convention, not a wider glob.
+// it in wants a second resolution convention, not a wider glob. Story-depth
+// judge records (curriculum/evals/story-depth/) are dated reads of a training;
+// they quote the student's working tree (team/bet.md, module-7/...) as evidence.
 const SKIP_TREE =
-  /^docs\/archive\/|^docs\/superpowers\/(?:plans|specs)\/|playgrounds\/|fixtures\/|^node_modules\/|^continuous-research\//;
+  /^curriculum\/evals\/story-depth\/|^docs\/archive\/|^docs\/superpowers\/(?:plans|specs)\/|playgrounds\/|fixtures\/|^node_modules\/|^continuous-research\//;
 const isSkippedTree = file => SKIP_TREE.test(file);
 
 const EXT = String.raw`md|js|sh|json|html|css|yaml|yml`;

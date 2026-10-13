@@ -10,6 +10,7 @@ Docs with authority over generation. Anything not listed is session material: re
 - **Pedagogy** (Bloom, 4 Cs, audience, throughlines): `curriculum/lecture-guardrails.md`.
 - **Writing style** (the five voices, the three readers, sentence rules, the muted read): `curriculum/writing-style.md`. The compendiums carry exceptions; this is the writer's page.
 - **Taste** (editorial calls on real text, counterweights, failed rewrites): `curriculum/taste-notes.md`. Append-only, newest first; written at wind-down Step 3b. Upstream of the compendiums, not a substitute — read it before a cut pass, cite `check_*.md` for anything that fires.
+- **Story craft** (how frame, narrative, point of view, stance and depth are built; strategy → squint titles → placement → bodies → judges): `curriculum/story-craft.md`. Header style: `curriculum/module-design/header-style-distilled.md`.
 - **Vocabulary** (controlled terms: session/task/run, kit terms, register splits): `curriculum/vocabulary.md`. Term change = amend the registry first, then one sweep pass, never a local synonym.
 - **Module file shape**: `curriculum/module-shape.md`. **New module integration**: `curriculum/new-module-checklist.md` (end-to-end hookup + completion receipt). **Widgets**: `curriculum/widgets.md`. **Quality line**: `curriculum/quality-format.md`.
 - **Backing blocks**: `curriculum/backing-format.md`. **Source stamps**: `curriculum/source-freshness-format.md`.
@@ -84,6 +85,17 @@ Template + module include + bare-path cross-doc rules → `curriculum/module-sha
 
 Inline SVG diagrams are single-sourced in `curriculum/figures/<key>.md` (one blank-line-free `<figure class="diagram">…</figure>` per file) and referenced from body prose as `{{figure:<key>}}` on its own line — same registry pattern as prompts (`scripts/compile-figures.js` → `site/figures.json`; build expands strict). One drawing, many slides; never paste an SVG inline.
 
+## Slide reuse (editions, variants)
+
+Reuse unit = one `##` slide. **Never copy a lecture into a `-<variant>.md` fork** — forks drift silently (`context-is-king-cb`: pre-rename headers, open §4 REVISE; replaced by a borrow).
+- Slide file (direction, maintainer 2026-10-06): `curriculum/slides/<id>.md` = one `##` + `<!--slide:<id>-->` + body + own maintainer/backing tail; id global = filename. `[Title](slides/<id>.md)` alone on its line is transparent (inlined before any reader; a lecture of include lines = manifest; cover stays in the lecture). Cut: `node scripts/extract-slide.js lectures/<slug>.md#<id>[,…]` (byte-identical check; claims/sources/stance + notes keyed in their lead travel). Readers read via `scripts/read-curriculum.js`, never raw. Evals: `shared--slide--<id>`, writing/technical/slides. AE101 stays on `#id` borrows.
+- Borrow: `[Title](lectures/<slug>.md#<id>[,<id>…])` alone on its line → those slides, listed order. Whole-file include = ownership; `#id` = borrow, judged at home.
+- Id: `<!--slide:<id>-->` directly under the `##` (cover: under `#`), above `<!--tier:N-->`. Add ids to the home file when borrowing; adding one stales no eval.
+- Before borrowing: `node scripts/slide-card.js lectures/<slug>.md#<id>` → claims, source due dates, stance, guard notes. T2 slides name prior work: check every referent resolves in YOUR deck (`the-machine-you-just-met#agreeable-answers` says "the mirror", which means something else in A101).
+- Price it: `- **Charge:** <slug>--<first-id> <min> — <why>` in the borrowing module's maintainer block.
+- Wording doesn't fit → fix at home (card if student-facing); every borrower gets it. The borrower's judges read borrowed slides inlined and judge fit.
+- Spec → `backing-format.md` § Slide grain.
+
 ## Widgets
 
 Author-typed widget palette (Session / HOX / Note / Prompt / runtime-fork) + when-to-use + add-a-widget procedure → `curriculum/widgets.md`. Generation-time check → `check_pedagogy.md` §52b.
@@ -91,10 +103,6 @@ Author-typed widget palette (Session / HOX / Note / Prompt / runtime-fork) + whe
 ## Alignment
 
 Strategy and module file change in the same edit. Drift = process bug.
-
-## Copyright fence
-
-**F-Secure delivers their own version. Their materials = F-Secure IPR — off-limits.** All exercises / examples / language original.
 
 ## Platform claims
 

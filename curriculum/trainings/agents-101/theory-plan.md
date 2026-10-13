@@ -175,8 +175,10 @@ The half the step-0 cold reads could not name. Every beat exists; no law does.
 ### 4 · Laws of compounding and the organisation — the future thread
 
 - ★ **Persistence + automation = system; the system gets better by being edited.**
-  `[curr:compounding, building-agent-systems KC, how-do-you-make-your-system-learn]` A101's
-  founding compounding law, named at M2.
+  `[curr:compounding, building-agent-systems KC]` A101's founding compounding law, named at
+  M2. Consider its sharpest demo: two participants' outputs carry two different wrong claims,
+  and one merged rule in the rules file retires both. The fix lands in the rules file, where
+  it outlives the conversation, not in the next prompt.
 - **Double-loop learning.** Single-loop fixes the output; double-loop changes the rule that
   let it recur. `[borrow:Argyris & Schön 1974/1978]` `[owed]` `[curr: every Debrief — "do the
   work → capture the rules → reflect → sharpen"]` Enacted eight times, never named. The
@@ -210,7 +212,7 @@ The half the step-0 cold reads could not name. Every beat exists; no law does.
   *The Coming Loop* both linked; personal-to-team KC "the technical plan fills quickly; the
   people plan stalls on names"]` The sources are already on an A101 surface; the law is
   named in a supplementary no module links: `personal-to-company-gap.md` is absent from the
-  `TRAININGS` registry in `site/layouts/curriculum.js` (as is `agent-ready-data.md`), so it
+  `TRAININGS` registry in `site/layouts/curriculum.js`, so it
   renders nowhere a student is sent. Registering it is a delivery decision, not a theory one. For a leader the
   bottleneck is organisational (who reads, who decides, who signs), which is where §5's role
   shift lands.
@@ -221,7 +223,7 @@ The half the step-0 cold reads could not name. Every beat exists; no law does.
   (M2) is the work and why sharing context (M7) is harder than sharing a file. On the page
   once, in an unlinked supplementary.
 - **Three walls after competence: data access, runtime platform, discoverability.**
-  `[rsch:L2–3, F-Secure evidence]` `[curr:agents-building-agents KC]` Named at M8.
+  `[rsch:L2–3]` `[curr:agents-building-agents KC]` Named at M8.
 - **Amplification; individual ≠ institutional.** AI amplifies the system it enters; personal
   gains do not aggregate without organisational change. `[rsch:L3]` Not on any A101 surface;
   the leader-facing consequence of *cross personal → team*. Candidate for M7.
@@ -278,6 +280,30 @@ engineer. House-thesis pieces (learning-rate ceiling, competence-first, the head
 carry confirmation-bias risk; the step-0 rubric's *self-challenging* factor is the adversarial
 check, not a formality. Research-tagged levels are as the strategy doc recorded them and two
 have moved since; re-verify before any stamp.
+
+### 7 · Consider: concepts on no A101 surface yet
+
+Candidates for placement. Their source pages live in git history only: the Claude Basics
+lectures `the-data-question`, `why-mostly-right-fails` and `how-do-you-make-your-system-learn`,
+and the exercise `ground-your-output`. Grounding categories, compound reliability, *checks
+compound too* and counter-evidence are already carried by `grounded.md`,
+`hallucination-bakeoff` and `output-quality`.
+
+- **Grounded is not right.** Grounding stops invention; it does not settle whether the cited
+  source is current, whether the framing tilts the same data ("12% left" vs "88% stayed"),
+  what was left out, or whether the recommended move is the right one. Consider as the M5
+  close: the line the student writes about what they still cannot trust is what M6's evals
+  come back for.
+- **Grounding tightness is a setting, not a virtue.** Rules that force every claim to cite a
+  file also drop output worth keeping; the leader picks tight, medium or loose per output and
+  names what each costs. Consider as the M5 tradeoff beat.
+- **The data fence.** The agent sees what was connected plus what was pasted, nothing more,
+  and the fence is configurable. Whether conversations train future models is set by the
+  organisation's contract. Processing personal data through a model is processing under
+  GDPR: the lawful basis has to extend to model use, and data subjects' rights still have to
+  be honoured. The leader's job is routing the question to the answer-holder, plus three
+  sentences a colleague can say plainly. `[owed]` licensing and contract claims re-verified
+  at placement. Consider for M4 beside `security.md`'s policy distillation.
 
 ## The spine — candidate, not decided
 

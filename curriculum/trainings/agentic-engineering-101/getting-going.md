@@ -82,7 +82,7 @@ Optional.
 
 **Watch:** Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0). Cherny walks through how he and the team actually use the tool: plan mode, verification loops, parallel worktrees, `./CLAUDE.md` compounding, slash commands, subagent map-reduce, the finish-the-migration rule. The moves of Agentic Engineering 101 (AE101 from here on) show up here first as one person's working rhythm.
 
-**Read:** [Multi-session and Git: survival guide](trainings/agentic-engineering-101/reference/multi-session-git.md). Short local reference page on worktrees versus branches versus clones, and how to open several Claude Code sessions on the same repo without wrecking each other's state. Cherny calls parallel worktrees his single biggest productivity unlock: one repo, several Claude Code sessions running at once, each on its own branch, no stashing and no clobbering. Reach for them when one session is waiting on a long run and another piece of work is ready to move, when you want to try two approaches to the same problem side by side, or when a review task can run alongside the build. The instinct earns itself in use.
+**Read:** [Multi-session and Git: survival guide](trainings/agentic-engineering-101/reference/multi-session-git.md). Short local reference page on worktrees versus branches versus clones, and how to open several Claude Code sessions on the same repo without wrecking each other's state. Cherny calls parallel worktrees his single biggest productivity unlock: one repo, several Claude Code sessions running at once, each on its own branch, no stashing and no clobbering. Reach for them when one session is waiting on a long run and another piece of work is ready to move, when you want to try two approaches to the same problem side by side, or when a review task can run alongside the build.
 
 ## Next
 <!--tier:3-->
@@ -91,9 +91,9 @@ Module 2 is where plan mode earns its keep: multi-file work, and a second pass t
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-27 (writing@8b5de788 story@45f28404 technical@8b5de788 behavior@1480362 pedagogy@8b5de788 strategy@8b5de788 slides@8b5de788)
-- judges @45f28404: writing PASS (1 finding see instances/ae101--module--getting-going.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @3bc472a1: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
+**Quality:** compendium-audited 2026-09-29 (writing@3ce6146d story@45f28404 technical@8b5de788 behavior@1480362 pedagogy@8b5de788 strategy@8b5de788 slides@3ce6146d)
+- judges @3ce6146d: writing PASS (2 findings see instances/ae101--module--getting-going.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @01df77e9: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
 
 **Carded and kept (Antti 2026-08-29): the "All modules are designed to cope with missing details from prior modules" bullet stays.** It is the rescue guarantee — a trainer improvising cuts mid-session, or a student who missed a beat, needs the stated design promise, not only the cutting permission the list grants above it. `check_student_facing.md` §33 does not take it; do not re-card.
 
@@ -133,8 +133,8 @@ Module 2 is where plan mode earns its keep: multi-file work, and a second pass t
 - **Prep timing:** prework 30 min; optional progression page 5 min; optional Cherny video 30 min; optional multi-session reference 10 min; optional factory essay 15 min.
 - **Mood target:** joyful creation — *"it works, on my repo."* Watch for: mood drift toward technical warm-up (the bug feels arbitrary, the loop feels mechanical, "this is just a TDD fix I do anyway"). Diagnostic: student narrates Ex2 as a generic engineering move with no surprise. Fix: trainer surfaces the agentic specificity — *"the loop you just ran was orient → fix → close → compound on YOUR repo, with a close-out written in your team's own register and a rules file born from how YOU just worked. That's not a bug fix; that's the instrument starting to play your music."*
 - **Opening-bid install mechanic:** the wizard-move lecture's live demo (the dinner-question context trick, two fresh Claude Code sessions each in its own empty directory; the question is deliberately not about code) installs the mood → Connections harvests tricks each student brought → Ex1 (orient-and-introspect) each student runs the orient + introspect move on their own repo → Ex2 (fix-tests-first) TDD bug fix, ship the PR → Ex3 (close-the-ticket) read the team's tracker conventions off one real ticket, close the bug's ticket in that register → Ex4 (compound-and-close) compound `./CLAUDE.local.md` from session evidence, the tracker read included. No separate module-level Debrief.
-- **Delivery architecture** (content folder, working-dir model, compounding-artifact split, no training-dir state): canonical in `training-architecture.md` §Working directory model / §Material distribution / §Rule files. Not restated here. The four-layer rule-file hierarchy is in `reference/claude-code-for-engineers.md § 1`.
-- **Claude Code specifics** (MCP install per tracker, tenant-admin fallbacks): `curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md`. No in-class beat installs a connector; the page is the student's own path when they want one, and the exercise body carries a single navigational pointer at it.
+- **Delivery architecture** (content folder, working-dir model, compounding-artifact split, no training-dir state): canonical in `training-architecture.md` §Working directory model / §Material distribution / §Rule files. Not restated here.
+- **Claude Code specifics** (MCP install per tracker, tenant-admin fallbacks): the training carries no copy; the student asks Claude to look them up. No in-class beat installs a connector, and `close-the-ticket` carries the single line saying so.
 - **Freshness-rule exception — Cherny *Mastering Claude Code in 30 minutes* (May 2025).** Kept outside the 6-month window by decision; pedagogy match unbeaten by successors.
 
 **Push-back moves** (trainer delivers):

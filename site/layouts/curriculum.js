@@ -41,9 +41,7 @@
                 { slug: 'learning-and-compounding-systems',      title: 'Learning and Compounding Systems' },
                 { slug: 'cookbook-for-agent-system-design',      title: 'Cookbook for Agent System Design' }
             ],
-            references: [
-                { slug: 'claude-quick-reference',                title: 'Claude quick reference — commands and how-tos' }
-            ]
+            references: []
         },
         'agentic-engineering-101': {
             label: 'Agentic Engineering 101',
@@ -73,15 +71,11 @@
                 { slug: 'agentic-engineering-progression', title: 'The agentic engineering progression' }, // M1
                 { slug: 'the-lethal-trifecta',        title: 'The lethal trifecta' },                // M3
                 { slug: 'the-context-ceiling',        title: 'The context ceiling and token efficiency: the craft and the folklore' }, // M2→M3
-                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Reading Uncle Bob\'s Agent Experiments' }, // M4→M5
                 { slug: 'verification-asymmetry',     title: 'Verification asymmetry' },             // M4→M5
                 { slug: 'workflow-composition-lineages', title: 'Workflow composition lineages' },   // M6
-                { slug: 'skill-stacking',             title: "Dino's skill stacking system" },       // M6
                 { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' } // M6
             ],
             references: [
-                { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
-                { slug: 'mcp-and-connectors',        title: 'MCP and connectors' },
                 { slug: 'multi-session-git',         title: 'Multi-session and Git: survival guide' },
                 { slug: 'prompt-anatomy',            title: 'Prompt anatomy: the named moves' },
                 { slug: 'agent-platform-challenge',  title: 'Agent platform challenge' },
@@ -130,60 +124,6 @@
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
             ]
         },
-        // Team-track variant of Agentic Engineering 101: four sittings, running
-        // AE101 modules 1, 2, 4 and 5 unmodified. AE101 M3 (`earn-the-trust`) is
-        // dropped and M6 (`spot-gaps-build-the-loop`) becomes a customer-authored
-        // workshop; workshops slot between the sittings and are not ours. Same
-        // `contentKey` mechanism as the preview cut above — file resolution points
-        // at the canonical AE101 content dir, so prework, supplementaries and
-        // references are inherited one copy each and a fix to a shared artefact
-        // reaches every variant. Only the module list, label and lede are its own.
-        //
-        // No `prework:` override, and none needed: AE101's own prework page is now
-        // module-count-neutral, and the payload flag below takes the download,
-        // extract and skill-install steps with it. What remains true for both cuts
-        // is stated once, in one file, rather than forked per variant.
-        //
-        // The gaps inventory beside the module files in
-        // `curriculum/trainings/agentic-engineering-101/` lists what plain AE101
-        // still does not fit about this cut, and the seams a customer-authored
-        // workshop has to be written against. Read it before changing anything here.
-        //
-        // Build student-facing:
-        // node scripts/build-workbook.js northwind agentic-engineering-101-northwind --no-trainer-docs
-        //
-        // Drop the flag to also build the trainer handbook. It trims itself to the
-        // module list below — M3 and M6 tabs gone, and the six-module two-day
-        // schedule replaced by the one-module-per-sitting line — so the cut's
-        // trainers read only delivery that happens in their rooms. The M3 security
-        // spoiler that keeps the flag on for other cuts cannot leak here: this cut
-        // drops M3, so the tab carrying it is not built.
-        'agentic-engineering-101-northwind': {
-            contentKey: 'agentic-engineering-101',
-            // No content tarball. Its only hard consumers were the two M3
-            // security exercises, and M3 is the module this cut drops; reference
-            // and supplementary material renders in the workbook regardless. So
-            // the payload would be equipment issued for a module nobody sits.
-            // Drops the prework's download + extract steps with it (the shared
-            // source carries them behind `<!--flag:payload-->`), which is also
-            // what keeps the student's first instruction from pointing at a URL
-            // this variant never publishes.
-            flags: { payload: false },
-            label: 'Agentic Engineering 101 — Team Track',
-            // The nav and the cards number from the parent, so the row reads
-            // M1 M2 M4 M5 and the skip is visible. The lede does not explain the
-            // skip, count the modules, or describe what surrounds them. What
-            // fills the other slots is the customer's programme, not Bosser
-            // material, and it belongs on the customer's own start page. What is
-            // left is what this material is for, which is all a lede owes.
-            lede: 'For software engineers. Learn the new loop on your own repo.',
-            modules: [
-                { slug: 'getting-going',             title: 'Getting going + context' },
-                { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
-                { slug: 'run-the-first-experiment',  title: 'Run the first experiment' },
-                { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' }
-            ]
-        },
         'claude-basics': {
             label: 'Claude Basics',
             status: 'draft',          // gates report, not block (scripts/gates.js)
@@ -197,9 +137,22 @@
                 { slug: 'organisers-run-the-workshop', title: 'Organisers: run the workshop' }
             ]
         },
+        'agentic-product-teams-101': {
+            label: 'Agentic Product Teams 101',
+            status: 'draft',          // design-stage; gates report, not block
+            simulation: true,         // generated test run, never taught: pages and prompts land uncarded; the maintainer reads them when this flag comes off
+            lede: 'Three days for a product owner, a designer and a team lead on their own product: learn to do AI as a team, and stay in control of it.',
+            runtime: 'cowork',
+            modules: [
+                { slug: 'our-product-our-system',       title: 'Our product, our system' },
+                { slug: 'whats-actually-true',          title: "What's actually true?" },
+                { slug: 'learn-faster-than-the-market', title: 'Learn faster than the market' }
+            ]
+        },
         'engineering-management-mock': {
             label: 'Leading agentic engineering (mock)',
             status: 'draft',          // tmux-runner proving mock; gates report, not block
+            simulation: true,         // generated test run, never taught: prompts skip the prompt-ok gate (scripts/prompt-sim-exempt.js); the maintainer reads them when this flag comes off
             lede: 'A one-hour mock of Leading agentic engineering: see your team, then ask before you move. Proves a new training runs on the tmux engine.',
             runtime: 'cli',
             modules: [
@@ -214,27 +167,32 @@
     // Legal footer — single source for SPA + workbook. SPA fills its empty
     // <footer class="curriculum-footer"> at boot via innerHTML; workbook
     // emits the wrapped form via renderFooter() at build time.
+    //
+    // It states ownership and points at the licence the reader already holds.
+    // It grants nothing itself: one page is read under a personal licence and
+    // the next under a company's training licence, and the same sentence has
+    // to be true for both.
     var FOOTER_INNER = '<p>' +
         '<strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. ' +
-        'Agents 102 is proprietary training material. As an enrolled student you have a personal usage license &mdash; ' +
-        'you may learn from this, run the exercises, own what you build, and apply it at your own workplace. ' +
-        'You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training. ' +
-        'See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" target="_blank" rel="noopener">full license terms</a> ' +
-        '&middot; <a href="https://bosser.consulting" target="_blank" rel="noopener">bosser.consulting</a>' +
+        'This is proprietary training material. Using, copying or passing it on is ' +
+        'governed by the licence under which you received it. ' +
+        '<a href="https://bosser.consulting" target="_blank" rel="noopener">bosser.consulting</a>' +
         '</p>';
 
     function renderFooter() {
         return '<footer class="curriculum-footer">' + FOOTER_INNER + '</footer>';
     }
 
-    // Persistent bottom-right mark — same license, shortest legible form.
+    // Persistent bottom-right mark, shortest legible form of the same notice.
     // Long-read: fixed overlay so the full footer below doesn't need a scroll
-    // to be seen. Slides: rendered into the deck bar by slides.js, same string.
+    // to be seen. Slides: rendered into the deck bar by slides.js, same string
+    // and same link.
     var COPYRIGHT_MARK = '&copy; Bosser 2026';
+    var COPYRIGHT_LINK = { href: 'https://bosser.consulting', title: 'Proprietary training material of Bosser Oy' };
 
     function renderCopyrightBadge() {
         return '<div class="copyright-badge">' +
-            '<a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" title="Agents 102 is proprietary training material — full license terms" target="_blank" rel="noopener">' +
+            '<a href="' + COPYRIGHT_LINK.href + '" title="' + COPYRIGHT_LINK.title + '" target="_blank" rel="noopener">' +
             COPYRIGHT_MARK + '</a></div>';
     }
 
@@ -290,7 +248,111 @@
 
     // Standalone include-link pattern: the entire paragraph is `[Title](kind/slug.md)`.
     // SPA fetches and inlines; workbook reads sync. Same regex, same shape.
-    var INCLUDE_LINK_RE = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md\)[ \t]*$/gm;
+    // Optional `#<id>[,<id>...]` (group 3) includes only those slides, in the
+    // order listed (sliceSlides). Groups 1-2 are unchanged for readers that
+    // only need the file.
+    var INCLUDE_LINK_RE = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md(?:#([a-z0-9-]+(?:,[a-z0-9-]+)*))?\)[ \t]*$/gm;
+
+    // Slide id marker: `<!--slide:<id>-->` on its own line under a `##` heading,
+    // or under the `#` title for the cover (title + lede). Write it first, above
+    // `<!--tier:N-->`: a tier marker needs a blank line after it
+    // (check-slide-tiers). sliceSlide tolerates either order. Id is unique per file;
+    // the include address is `<kind>/<slug>.md#<id>`. Stays an HTML comment in
+    // the render. Maintainer-tail markers do not count.
+    var SLIDE_MARKER_RE = /^<!--slide:([a-z0-9-]+)-->[ \t]*$/;
+
+    // Line range of one slide: [start, end) as 0-based indexes into md's lines
+    // (the maintainer tail is cut, so body indexes are file indexes).
+    function slideRange(md, id) {
+        var lines = stripMaintainerTail(md).split('\n');
+        var hits = [];
+        lines.forEach(function (l, i) {
+            var m = SLIDE_MARKER_RE.exec(l);
+            if (m && m[1] === id) hits.push(i);
+        });
+        if (hits.length !== 1) {
+            throw new Error((hits.length ? hits.length : 'no') + ' <!--slide:' + id + '--> marker' +
+                (hits.length ? 's (ids are unique per file)' : ' in file'));
+        }
+        var start = hits[0] - 1;
+        while (start >= 0 && /^<!--.*-->[ \t]*$/.test(lines[start])) start--;
+        if (start < 0 || !/^#{1,2} /.test(lines[start])) {
+            throw new Error('<!--slide:' + id + '--> must sit directly under a ## heading (or the # title)');
+        }
+        var end = lines.length, inFence = false;
+        for (var i = start + 1; i < lines.length; i++) {
+            if (/^\s*(```|~~~)/.test(lines[i])) inFence = !inFence;
+            if (!inFence && /^#{1,2} /.test(lines[i])) { end = i; break; }
+        }
+        return { start: start, end: end, lines: lines };
+    }
+
+    function sliceSlide(md, id) {
+        var r = slideRange(md, id);
+        return r.lines.slice(r.start, r.end).join('\n').trim() + '\n';
+    }
+
+    function sliceSlides(md, ids) {
+        return ids.split(',').map(function (id) { return sliceSlide(md, id); }).join('\n');
+    }
+
+    // Slide files: `curriculum/slides/<id>.md` holds one slide — its `##`, the
+    // `<!--slide:<id>-->` marker under it, the body, and its own maintainer /
+    // backing tail. `[Title](slides/<id>.md)` alone on its line is TRANSPARENT:
+    // it is replaced by the slide's body (tail stripped, trailing whitespace
+    // trimmed) before anything else reads the file, so a lecture whose slides
+    // were cut out reads byte-for-byte as it did (extract-slide.js proves it).
+    // Its own pattern, not INCLUDE_LINK_RE: lecture/exercise includes render as
+    // phase sections; a slide include renders as nothing but the slide.
+    var SLIDE_FILE_RE = /^\[([^\]]+)\]\(slides\/([a-z0-9-]+)\.md\)[ \t]*$/gm;
+
+    function slideFileBody(text) {
+        return stripMaintainerTail(text).replace(/\s+$/, '');
+    }
+
+    // getSlide(id) → the slide file's text, or null. Inlining is one level: a
+    // slide file holds one slide and includes nothing.
+    function inlineSlideFiles(md, getSlide) {
+        return md.replace(new RegExp(SLIDE_FILE_RE.source, 'gm'), function (full, title, id) {
+            var t = getSlide(id);
+            if (t === null || t === undefined) throw new Error('slides/' + id + '.md: no such slide file');
+            return slideFileBody(t);
+        });
+    }
+
+    // The SPA's form: fetchText(id) → Promise of the slide file's text or null.
+    // Each slide is fetched once, then inlined by the same function.
+    function inlineSlideFilesAsync(md, fetchText) {
+        var ids = [], m, re = new RegExp(SLIDE_FILE_RE.source, 'gm');
+        while ((m = re.exec(md)) !== null) if (ids.indexOf(m[2]) < 0) ids.push(m[2]);
+        if (!ids.length) return Promise.resolve(md);
+        return Promise.all(ids.map(function (id) { return fetchText(id); })).then(function (texts) {
+            var got = {};
+            ids.forEach(function (id, i) { got[id] = texts[i]; });
+            return inlineSlideFiles(md, function (id) { return got[id]; });
+        });
+    }
+
+    // A slide file's shape, or the reason it is not one: first line `## …`
+    // (`# …` is a cover and stays in its lecture), the marker for <id> directly
+    // under it (other comment lines may sit between), no second heading.
+    function slideFileProblem(id, text) {
+        var lines = slideFileBody(text).split('\n');
+        if (!/^## /.test(lines[0] || '')) return 'first line must be a ## heading';
+        var i = 1;
+        while (i < lines.length && /^<!--.*-->[ \t]*$/.test(lines[i]) && !SLIDE_MARKER_RE.test(lines[i])) i++;
+        var m = SLIDE_MARKER_RE.exec(lines[i] || '');
+        if (!m) return 'no <!--slide:' + id + '--> marker directly under the heading';
+        if (m[1] !== id) return 'marker says ' + m[1] + ', filename says ' + id;
+        var inFence = false;
+        for (var j = 1; j < lines.length; j++) {
+            if (/^\s*(```|~~~)/.test(lines[j])) inFence = !inFence;
+            if (!inFence && /^#{1,2} /.test(lines[j])) return 'second heading at line ' + (j + 1) + ' (one slide per file)';
+            var inc = new RegExp(SLIDE_FILE_RE.source).exec(lines[j]);
+            if (!inFence && inc) return 'includes slides/' + inc[2] + '.md at line ' + (j + 1) + ' (a slide file includes nothing)';
+        }
+        return null;
+    }
 
     // Prompt-include marker: `{{prompt:<key>}}` on its own line, expanded by
     // expandPrompts() at the start of the markdown pipeline (before marked).
@@ -489,7 +551,7 @@
     // source file. A cut variant (different module list) is still a `contentKey`
     // entry, not a flag; flags are for when two variants read the SAME file and
     // one of them genuinely does not have the thing the passage describes. The
-    // motivating case: the Northwind team track ships no content tarball, so the
+    // motivating case: a team-track cut that ships no content tarball, so the
     // prework steps that download and extract it describe equipment that variant
     // does not issue.
     //
@@ -979,6 +1041,26 @@
         });
     }
 
+    // Exercise timing rows get `.ex-time`, so a theme styles them by meaning.
+    // Two source forms: a `**Time:** 20 minutes.` row, and a duration alone in
+    // emphasis under a phase heading (`*15 min*`). An emphasised prose sentence
+    // after a heading looks the same to CSS (text nodes don't count for
+    // :only-child), so the duration itself decides. Slides calls this too.
+    var TIMING_ALONE_RE = /^~?\s*\d+(\s*[–-]\s*\d+)?\s*(min|mins|minutes?)\.?$/i;
+    function isTimingRow(p) {
+        var first = p.firstElementChild;
+        if (!first) return false;
+        if (first.tagName === 'STRONG' && /^time\b/i.test(first.textContent.trim())) return true;
+        return first.tagName === 'EM' && p.children.length === 1
+            && p.textContent.trim() === first.textContent.trim()
+            && TIMING_ALONE_RE.test(first.textContent.trim());
+    }
+    function decorateTiming(root) {
+        Array.prototype.forEach.call(root.querySelectorAll('p'), function (p) {
+            if (isTimingRow(p)) p.classList.add('ex-time');
+        });
+    }
+
     // Generic guidance widget. Source shape (single paragraph):
     //   **Note** <guidance prose>
     // Same construction as .hox-block but calm teal, not alarm-orange: HOX is
@@ -1391,12 +1473,22 @@
         TRAININGS: TRAININGS,
         DEFAULT_TRAINING: DEFAULT_TRAINING,
         INCLUDE_LINK_RE: INCLUDE_LINK_RE,
+        SLIDE_MARKER_RE: SLIDE_MARKER_RE,
+        slideRange: slideRange,
+        sliceSlide: sliceSlide,
+        sliceSlides: sliceSlides,
+        SLIDE_FILE_RE: SLIDE_FILE_RE,
+        slideFileBody: slideFileBody,
+        inlineSlideFiles: inlineSlideFiles,
+        inlineSlideFilesAsync: inlineSlideFilesAsync,
+        slideFileProblem: slideFileProblem,
         CROSS_DOC_SHARED_RE: CROSS_DOC_SHARED_RE,
         CROSS_DOC_TRAINING_RE: CROSS_DOC_TRAINING_RE,
         CROSS_DOC_TRAINING_KS_RE: CROSS_DOC_TRAINING_KS_RE,
         FOOTER_INNER: FOOTER_INNER,
         renderFooter: renderFooter,
         COPYRIGHT_MARK: COPYRIGHT_MARK,
+        COPYRIGHT_LINK: COPYRIGHT_LINK,
         renderCopyrightBadge: renderCopyrightBadge,
 
         // Pure (Node-safe)
@@ -1428,6 +1520,7 @@
         decorateSessions: decorateSessions,
         decorateHox: decorateHox,
         decorateNote: decorateNote,
+        decorateTiming: decorateTiming,
         decoratePrompts: decoratePrompts,
         attachAnchorPopups: attachAnchorPopups,
         addCopyButton: addCopyButton,

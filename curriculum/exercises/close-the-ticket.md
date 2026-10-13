@@ -32,7 +32,7 @@ Push back on the five. The ones you reject sharpen the read as much as the ones 
 
 ## Write the close-out and send it
 
-- Adding a connector is one command per tracker. [MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md) has them, and it pays back on every session after this one.
+- Adding a connector is one command per tracker. Ask Claude to look up the one for yours. It pays back on every session after this one.
 
 Ask Claude to update the ticket with a close-out note and report what it wrote.
 
@@ -42,7 +42,7 @@ Ask Claude to update the ticket with a close-out note and report what it wrote.
 
 - Does the note sound like the ticket's other comments? If the wording feels off or wrong, tell Claude which line and how you'd write it.
 
-## Anything can be reverse-engineered
+## Reverse-engineer anything
 
 - The ticket is one instance. Anything can be inspected and reverse-engineered with an LLM: a codebase nobody documented, a CI pipeline, a config, an API you did not write, the system your team runs on and cannot explain.
 - Ask Claude to study the pipeline, the config, the undocumented code. Extract a `.md` file. Use that file as context in the next agent.
@@ -55,8 +55,8 @@ The field rules stay in the scrollback. The next exercise sweeps this whole sess
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-27 (writing@8b5de788 story@8b5de788 technical@8b5de788 behavior@0d65ff01 pedagogy@8b5de788 strategy@8b5de788 slides@d45aaed2)
-- judges @d45aaed2: writing PASS (1 finding see instances/ae101--exercise--close-the-ticket.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-29 (writing@3ce6146d story@3ce6146d technical@8b5de788 behavior@0d65ff01 pedagogy@3ce6146d strategy@8b5de788 slides@3ce6146d)
+- judges @3ce6146d: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **The closer's *"The next exercise sweeps this whole session"* stays, under §33's motivating-forward-reference carve-out (Antti 2026-09-06, ruled on the sibling case in `set-the-markers-send-it-off.md`).** It is the reason the preceding sentence is acceptable: the field rules stay in the scrollback *because* the next exercise sweeps them, so a student who would otherwise stop to save them has their answer. Cartography tells the student where they are; this tells them why they can leave something undone. A judge meeting the clause again reads this note and files nothing.
 
@@ -68,7 +68,7 @@ The field rules stay in the scrollback. The next exercise sweeps this whole sess
 
 **"Connector" is assumed-known vocabulary (Antti 2026-08-18):** engineer audience knows MCP/connectors; the term owes no one-breath earning at its line-35 use. `check_writing §8` / `check_student_facing §2` earned-vocabulary findings on it are overruled — do not re-file.
 
-**Connector install is named, not taught — because it is a one-liner, not because it is hard.** A connector added at the Claude account's connector surface inherits into a logged-in Claude Code session, and `claude mcp add --transport http <name> <url>` is a single command otherwise (verified against Claude Code 2.1.220 and the reference page's 2026-07-26 stamp). Spending room time on that choreography earns nothing, so the body carries one pointer to `reference/mcp-and-connectors.md` and nothing else. The three-routes bullet (gh / inherited connector / paste) was cut 2026-08-12 as NVA: the session picks the route, the student neither chooses nor acts on it, and the paste fallback needs no forewarning. Do not restore it. The exercise completes on any of them, so per `check_pedagogy.md §17` the connector stays enhancement and never a forcing function.
+**Connector install is named, not taught — because it is a one-liner, not because it is hard.** A connector added at the Claude account's connector surface inherits into a logged-in Claude Code session, and `claude mcp add --transport http <name> <url>` is a single command otherwise (verified against Claude Code 2.1.220). Spending room time on that choreography earns nothing, so the body carries one line telling the student to ask Claude for the command and nothing else. The three-routes bullet (gh / inherited connector / paste) was cut 2026-08-12 as NVA: the session picks the route, the student neither chooses nor acts on it, and the paste fallback needs no forewarning. Do not restore it. The exercise completes on any of them, so per `check_pedagogy.md §17` the connector stays enhancement and never a forcing function.
 
 **Trainer plug-point caveat, deliberately not in the body:** on Team and Enterprise Claude.ai plans only admins can add at the connector surface. Where the sponsor's tenant has not enabled tracker connectors, the room falls to `gh` and paste, and the ask is worth raising with the sponsor before the cohort rather than in the slot.
 
@@ -120,7 +120,7 @@ Claims
 
 Sources
 - maintainer-frame `[checked:2026-08-03 result:ATTESTED due:none]` — [maintainer-attested] Antti's own working frame, given verbatim in session and carried near-verbatim into the closing slide: *"Anything can be inspected and reverse engineered with LLM. The move is: ask LLM to study it. Extract .md file. Use .md file as context in the next agent."* Per `check_research_claims.md §1` a maintainer-attested claim is the author's own word and owes no URL. One reshape on the record: *LLM* → *the agent* on the three action steps, per the acting-versus-thinking vocabulary split; the capability sentence keeps *LLM*. fallback: cut the generalisation and the exercise stands as a tracker read, losing the Monday-morning transfer.
-- No other source owed. The body cites no practitioner and asserts no platform capability beyond the frame above. The one external pointer is to a local reference page, which carries its own stamps. (*Refinement* is not used in AE101 body prose — M2's story-ticket read does the activity without naming it. The term does sit inside the `extract-the-task-shaping-rule-3` fence, as *"automated ticket refinement"*, which is Antti's own wording at `7f1b192c`: a prompt the student pastes, not prose the student reads. If a later pass wants the term in body, it earns itself at M2, not here.)
+- No other source owed. The body cites no practitioner and asserts no platform capability beyond the frame above. (*Refinement* is not used in AE101 body prose — M2's story-ticket read does the activity without naming it. The term does sit inside the `extract-the-task-shaping-rule-3` fence, as *"automated ticket refinement"*, which is Antti's own wording at `7f1b192c`: a prompt the student pastes, not prose the student reads. If a later pass wants the term in body, it earns itself at M2, not here.)
 
 Frameworks
 - Access-trust gap · [borrow:none] · law:access-trust-gap · ← none — reaching past the repo is the first place granted access outruns earned trust

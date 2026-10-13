@@ -3,7 +3,7 @@
   "training": "ae101",
   "file": "curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md",
   "verdict": "PASS",
-  "body_sha": "856325db9586ff5aca42e6a2df92574f3d2136cee436b1af2b44209fdffff8e5",
+  "body_sha": "bbba7850f12c18314cf6e62bf1f28e628c59cf175b7d02f9593d95a0d0308b86",
   "shape_hash": "43685ab34d2a22a8",
   "pin": "54577f39",
   "diff_summary": "Since 54577f39: source-freshness re-checks (klaassen-definitive-guide, stripe-minions checked dates bumped to 2026-09-03), Taylor/Ramp citation reworded to attribute Simon Taylor writing about Charles rather than Charles directly, Majors citation dated 'in March 2026', a new maintainer decline note (headers 4/5 stay declarative, 2026-09-03), and the Quality block updated to the 2026-09-03 compendium-audit stamp. No `##` heading, chunking, or structural change.",
@@ -118,10 +118,10 @@
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Judgment PASS, cross-file verified. Line 5's 'Two sessions of the same task, a gap map, one rule cut from `./CLAUDE.local.md`, the handoff prompt that grows your kit' checked against M6's CURRENT include set: `grep -n '^##' curriculum/exercises/spot-gaps-build-the-loop.md` shows live headers '## Diff the two sessions, rank the gaps' and '## Cut one stale rule the diagnosis killed'; the module file's Artefact-contracts table lists 'Two-run gap map', 'Stale-rule deletion' and 'Workflow-skills handoff prompt' (produced by lectures/the-handoff-prompt.md) as current, live artefacts. All four referenced beats exist; none stranded by a re-chunk.",
+      "evidence": "L5 (module-flag variant) 'You finished M6 owning the loop at your desk. Two sessions of the same task, a gap map, one rule cut from ./CLAUDE.local.md, the handoff prompt that grows your kit.' Cross-checked against curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md (M6): 'two sessions of the same task' (L22), 'gap map' (Two-run gap map row, L89), 'one rule from ./CLAUDE.local.md' cut (L14, L82, L91), 'handoff prompt' (L16, L92) — all four named beats exist in the current M6 module. No dead referent found.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -251,11 +251,9 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "no guess-before-reveal demo beat anywhere in the file; expository take-home reading, not an exercise (signals.has_prompt_blocks: false)",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "b58ab90ccae44927192b1531b9f2f555bc600f48b6b71fd2c12ee4daedc20edc",
-      "carried_shape": "43685ab34d2a22a8"
+      "na_reason": "no guess-before-reveal or live-demo beat in this file — it's take-home reading with six practitioner-move sections, no trainer-delivered demo",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -272,5 +270,10 @@
   ],
   "blocking_findings_count": 0,
   "notes": "Rules 4 and 13 are out of scope (prefill-resolved N/A, shape_hash 43685ab34d2a22a8 — live-demo-beat and in-deck-links respectively; this file has neither). Open rule question for the maintainer, not filed as a finding: check_slides.md §8 names 'surface-as-noun' as genuinely repo-internal (contrasted with 'forcing function' as ordinary shop vocabulary), which would catch line 55's 'Promote them into the CI surface' on a narrow reading; judged PASS here because that specific compound reads as the mainstream 'attack surface / API surface' idiom rather than this repo's writing-surface metaphor, with no comprehension harm for the AE101 IC audience — worth a maintainer look regardless, since the rule text doesn't currently carve this shape out explicitly.",
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "scope": "drift",
+  "drift_rules": [
+    "check_slides.md §3",
+    "check_slides.md §4"
+  ]
 }

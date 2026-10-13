@@ -11,8 +11,7 @@ Surface one multi-file backlog task in the repo you used for Module 1. Criteria:
 
 **A task that spans a few files. Not an epic.**
 
-Optional reading before this module: [The agentic engineering progression](trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md), which sets up reach and calibrated trust; Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0); [Multi-session and Git: survival guide](../../trainings/agentic-engineering-101/reference/multi-session-git.md). And if Dex Horthy's [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md) is still on your list from Module 1, this is the module it pays off in: the cure he lands on is human review made affordable by upfront planning. If you like a lookup page nearby, [plan mode at depth in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#9-plan-mode-at-depth) has the approval paths in one table.
-
+Optional reading before this module: [The agentic engineering progression](trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md), which sets up reach and calibrated trust; Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0); [Multi-session and Git: survival guide](../../trainings/agentic-engineering-101/reference/multi-session-git.md). And if Dex Horthy's [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md) is still on your list from Module 1, this is the module it pays off in: the cure he lands on is human review made affordable by upfront planning.
 ## What You'll Learn
 After this module, you will be able to:
 - **Run** plan mode on a real multi-file task and judge the plan against five criteria
@@ -94,7 +93,7 @@ The next sitting opens on that task and spends most of its time walking your sys
 
 **Quality:** compendium-audited 2026-09-27 (writing@dd52c026 story@45f28404 technical@dd52c026 behavior@17446703 pedagogy@dd52c026 strategy@dd52c026 slides@dd52c026)
 - judges @dd52c026: writing PASS (2 findings see instances/ae101--module--plan-mode-done-right.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/ae101--module--plan-mode-done-right.pedagogy.json), strategy PASS, slides PASS
-- cross_module @3bc472a1: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
+- cross_module @01df77e9: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
 
 **"Try to bully plan mode into a bad architecture" stands, Antti-directed 2026-08-23.** A writing judge filed it under `check_writing.md` §17 (no combative verbs about the agent). Rejected: the bullying is intentional and carries the teaching goal — the bullet asks the student to press a bad idea deliberately and record where Claude holds and where it caves, so the ugly verb names the instrument. §17 gained the matching carve-out the same day (a beat whose point IS the bad register), scoped to the probe, not to surrounding prose. Do not soften this verb. **`check_student_facing.md` §21 does not reach the noun either.** The subject is plan mode, a Claude Code surface, and what the bullet records is stance under pressure rather than files written; *the agent caves* flattens the personification *bully* and *caves* carry together. Judges re-file it; the answer is no.
 
@@ -139,7 +138,7 @@ This module points at four sources in body and owned a stamp for none of them; t
 - **No charge on `push-back-on-the-plan`** — rationale in that exercise's block.
 - **Prep timing:** backlog-task surfacing 10 min; optional progression page 5 min; optional Cherny video 30 min; optional multi-session reference 10 min; Module 3 pre-reads 10–15 min (trifecta) + 10 min (agentic loops); optional OWASP scan 20 min. In cuts without M3 the three are replaced by the Module 4 pre-read, da Costa's *Backpressure Is All You Need*, 15 min.
 - **Mood target:** grounded competence — *"I can feel when a plan is good before approving it, and I know the move is two reads, not one."* Watch for: mood drift toward *"the second read did everything; my push-back was pointless."* Diagnostic: student at P5 reports the second-pass read caught the interesting stuff. Fix: trainer surfaces the contrast — *"your push-back caught the soft item the second read re-softened; your voice-of-experience beats the agent's breadth on that axis."*
-- **Delivery architecture** (working-dir model, compounding-artifact split, no training-dir state): canonical in `training-architecture.md` §Working directory model / §Rule files. Not restated here. Plan files land in Claude Code's default location; the four-layer rule-file hierarchy is in `reference/claude-code-for-engineers.md § 1`.
+- **Delivery architecture** (working-dir model, compounding-artifact split, no training-dir state): canonical in `training-architecture.md` §Working directory model / §Rule files. Not restated here. Plan files land in Claude Code's default location.
 - **Wizard demo:** intentionally none — engineer audience, the lecture carries push-back calibration.
 
 **Push-back moves:**

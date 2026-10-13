@@ -27,6 +27,7 @@ The move is loading the right context before the question, not a clever prompt o
 - **The loop-over-the-fix beat belongs to the M1 closer, not here.** `the-machine-you-just-met.md` lands it after the four exercises as recognition (`## You just ran the same loop`, kicker *"The loop is the shape. The bug today was the excuse."*). This opener carries the context mechanism and stops; no loop preview, no borrowed kicker.
 - **Zero map references.** M1 is protected; the map arrives at M2.
 - Openers carry no setup lede.
+- ***All of it colors what comes next* stays (Antti 2026-09-29).** It keeps the painting metaphor from the dinner demo (*the context colored everything after*) alive into the compel sentence; it is the thread, not a restatement. Judges do not file `check_writing.md` §27 on it.
 
 **Meta:**
 - **Placement:** M1 opener, after Connections, before the exercise.

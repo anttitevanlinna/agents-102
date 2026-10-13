@@ -4,7 +4,7 @@
 
 **Session** *(new, in your current repository)*
 
-Start a new session in the Module 5 worktree at `../<repo-name>-m5`. Confirm that it contains `docs/agent-platform/architecture.md` and `proof.md` from Module 7 before continuing. If you are using the trainer's example evidence set, use the checkout path the trainer names. Use only the fictional case data in the prompts.
+Start a new session in the Module 5 worktree at `../<repo-name>-m5`. This exercise revises the `docs/agent-platform/architecture.md` and `proof.md` you committed in Module 7. Use only the fictional case data in the prompts.
 
 **What you do:** trace two data flows, compare their decisions, and narrow the shared platform boundary.
 
@@ -22,13 +22,13 @@ The support ticket looks like one input. Follow it until it becomes several copi
 
 {{prompt:ae101-m8-map-ticket-data}}
 
-Find the highest-risk copies the tested design omitted or underspecified. Check that customer-visible sending has a stronger authority boundary than drafting.
+If Claude's map lets the agent send a reply under the same permission it drafts with, push back.
 
 ## Phase 2: Map the recommendation bot
 
 *20 minutes*
 
-The recommender begins with familiar product telemetry, then creates inferred preferences and ranked visibility. Map both the collected data and what the system infers.
+The recommender begins with familiar product telemetry, then creates inferred preferences and ranked visibility. Map both the collected data and what the system infers. On the shared platform, the agent would refresh offers and preference profiles offline; ranking at serving time stays outside it.
 
 {{prompt:ae101-m8-map-recommendation-data}}
 
@@ -52,20 +52,17 @@ Now make the architecture answer the maps. The agent will offer no more than thr
 
 {{prompt:ae101-m8-revise-platform-boundary}}
 
-Finish by reading only the changed sections of `architecture.md`. For each change, ask which data-flow row forced it, which case it protects, and which decision still belongs to a human owner.
-
-Then choose one responsibility from your Modules 4–6 work. Predict the first action boundary and the first data boundary that would have to change before it could run unattended. Add the prediction to `docs/agent-platform/data-handling-decision.md`; implementation is not part of this module.
+Commit `docs/agent-platform/` in your current branch or worktree.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-28 (writing@2fe73ede story@2fe73ede technical@2fe73ede behavior@2fe73ede pedagogy@2fe73ede strategy@2fe73ede slides@2fe73ede)
-- judges @2fe73ede: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Review status:** static review only (2026-10-13 PR review), real audit pending. No judge run has scored this file.
 
-**View summary:** You follow every copy and inference through a ticket handler and recommendation bot, compare the boundaries without flattening the cases, then revise the shared platform and predict what changes for one of your own responsibilities.
+**View summary:** You follow every copy and inference through a ticket handler and recommendation bot, compare the boundaries without flattening the cases, then revise the shared platform and record the first data boundary that would change for the responsibility in Module 7's transfer note.
 
 **Primary Bloom's level:** Analyze + Evaluate + Create.
 
-**Mood target:** sober agency.
+**Mood target:** defensible judgement.
 
 **Leap test:**
 - Maps every material copy and inference through trace, review, retention, deletion, and backup rather than stopping at the model call.

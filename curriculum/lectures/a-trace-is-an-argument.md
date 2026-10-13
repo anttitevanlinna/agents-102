@@ -7,12 +7,12 @@
 
 A useful trace joins the decision chain: trigger, identity, policy, context references, tool proposal, authorization, side effect, verifier evidence, and outcome.
 
-## Every event must move the state
+## Every event must explain a transition
 <!--tier:1-->
 
 Agent-observability systems represent work as traces containing observations or spans. Use that structure to preserve causality, not merely timing.
 
-An event should answer: what changed, who caused it, under which policy, from which prior state, and what evidence justified the next state. An event with no state consequence is telemetry, not proof.
+An event should answer: what changed, who caused it, under which policy, from which prior state, and what evidence justified the next state. An event that explains no transition is telemetry, not proof.
 
 ## Make the check reject a lie
 <!--tier:1-->
@@ -42,16 +42,13 @@ Every arrow in the execution changes state. It is controlled only when the platf
 
 That pattern wraps the whole engineering loop, not one cloud component. Before automating another responsibility, point to one transition and ask: **who may cause it, what would prove it was right, and how would we recover if it was wrong?**
 
-A data review keeps the same transition and adds another question: what may this step read, copy, infer, and retain for this purpose?
-
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-28 (writing@2fe73ede story@2fe73ede technical@2fe73ede pedagogy@2fe73ede strategy@2fe73ede slides@2fe73ede)
-- judges @2fe73ede: writing PASS, story PASS, technical PASS, behavior N/A (no-prompt-blocks), pedagogy PASS, strategy PASS, slides PASS
+**Review status:** static review only, real audit pending. No judge run has scored this file, so it carries no Quality line.
 
 **Time:** 7 minutes.
 
-**Role:** M7 closer. Names what the action, restraint, and mutation traces proved, then hands their stored fields to M8.
+**Role:** M7 closer. Names what the action, restraint, and mutation traces proved. The bridge to the data question lives in the module's `## Next`.
 
 **Mood:** earned skepticism.
 

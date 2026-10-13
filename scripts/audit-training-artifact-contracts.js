@@ -19,7 +19,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { TRAININGS } = require('../site/layouts/curriculum.js');
+const { TRAININGS, allModules } = require('../site/layouts/curriculum.js');
 
 const ROOT = path.resolve(__dirname, '..');
 const DEFAULT_TRAINING = 'agentic-engineering-101';
@@ -299,7 +299,7 @@ function lineNumber(text, index) {
 }
 
 function moduleNumber(slug, training) {
-  const idx = training.modules.findIndex((m) => m.slug === slug);
+  const idx = allModules(training).findIndex((m) => m.slug === slug);
   return idx === -1 ? null : idx + 1;
 }
 
@@ -630,7 +630,7 @@ function buildAudit(trainingSlug) {
       ...stage,
       file: stageFile(trainingSlug, stage.slug),
     })),
-    ...training.modules.map((m) => ({
+    ...allModules(training).map((m) => ({
       slug: m.slug,
       title: m.title,
       index: moduleNumber(m.slug, training),

@@ -159,14 +159,14 @@ function run() {
     process.exit(2);
   }
   const contentKey = raw.contentKey || TRAINING;
-  const t = raw.contentKey ? Object.assign({}, CR.TRAININGS[contentKey], raw) : raw;
+  const t = CR.resolveTraining(TRAINING);
 
   const violations = [];
   const notes = [];
   const coverage = [];
   const layout = [];
 
-  for (const mod of [...(t.modules || []), ...(t.optionalModules || [])]) {
+  for (const mod of CR.allModules(t)) {
     const plan = modulePlan(contentKey, mod.slug);
     if (!plan) continue;
     // The module file's own `##` sections (What You'll Learn, Key Concepts,

@@ -216,11 +216,7 @@ const { instanceKey, evalTrainings } = require('../curriculum/evals/scripts/scan
 // over content it had never opened. Same defect check-slide-size carried until
 // its file set stopped being derived from include-links alone.
 function registryModuleSlugs(t) {
-  const slugs = [];
-  if (t.prework) slugs.push(t.prework.slug);
-  for (const m of (t.modules || [])) slugs.push(m.slug);
-  for (const m of (t.optionalModules || [])) slugs.push(m.slug);
-  return slugs;
+  return [...(t.prework ? [t.prework] : []), ...CR.allModules(t)].map(m => m.slug);
 }
 
 function surfacesFor(trainingKey) {

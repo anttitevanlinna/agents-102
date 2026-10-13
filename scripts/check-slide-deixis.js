@@ -96,15 +96,14 @@ function fileSet(trainingKey) {
     process.exit(2);
   }
   const contentKey = raw.contentKey || trainingKey;
-  const t = raw.contentKey ? Object.assign({}, CR.TRAININGS[contentKey], raw) : raw;
+  const t = CR.resolveTraining(trainingKey);
   const out = [];
   const seen = new Set();
   const add = p => { if (!seen.has(p) && fs.existsSync(path.join(ROOT, p))) { seen.add(p); out.push(p); } };
 
   const modLike = [];
   if (t.prework) modLike.push(t.prework);
-  modLike.push(...t.modules);
-  if (t.optionalModules) modLike.push(...t.optionalModules);
+  modLike.push(...CR.allModules(t));
   for (const mod of modLike) {
     const modPath = path.join('curriculum/trainings', contentKey, mod.slug + '.md');
     add(modPath);

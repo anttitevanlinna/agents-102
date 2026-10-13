@@ -54,6 +54,14 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 **You are their colleague on Monday.** That is the reason to let a weak run stand, not the reason to rescue it. The M4 run is supposed to underdeliver; M5 has nothing to diagnose if you fixed it.<!--/flag:no-module:spot-gaps-build-the-loop-->
 
+<!--flag:module:build-your-agent-platform-->**Optional extensions.** M7 and M8 each run as their own 2h sitting after the core, M7 first. M8 needs M7's output and never runs without it. Each sitting consumes what the last one left on the laptop, so send a two-line reminder before each with the item below.
+
+| Gap | Must exist at the next sitting |
+|---|---|
+| 6 → 7 | The extracted `~/Documents/ae101-content/` folder with `labs/unattended-agent/`, and the M5 worktree at `../<repo>-m5` intact. |
+<!--/flag:module:build-your-agent-platform--><!--flag:module:data-handling-you-can-defend-->| 7 → 8 | `docs/agent-platform/` (`architecture.md`, `proof.md`) committed in `../<repo>-m5`. |
+<!--/flag:module:data-handling-you-can-defend-->
+
 **Craft that isn't on the workbook page.**
 
 - Quote before summary: if Claude can't quote the line, diff, commit or transcript moment, the claim doesn't carry.
@@ -202,8 +210,13 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 **Prep.** Build the content tarball. Extract it once and run `npm test` plus `npm run tour` inside `labs/unattended-agent/`. Verify `claude --help` works on the classroom runtime. Every student uses `reference/agent-platform-challenge.md`; do not widen the case in the room.
 
-- **A student asks which three search rules to use** → don't answer. Ask what evidence failure they most want to prevent. The criteria are the independent variable.
-- **Research runs long** → stop after one evidence-linked decision, one rejected alternative, and the evidence that would reverse it. Protect the incident review.
+**Demo state.** Your own run of the exercise on the CI-triage case: the lab after `npm run tour`, and `docs/agent-platform/` with `failure-tour.md`, `architecture.md` and `proof.md`. It is also what you project in M8.
+
+**Mood: architectural ownership.** Check: after Phase 1, can each student name the invariant that rejected a fault, not just that the checker went red? Fix: re-run one fault and ask who must prevent the unsafe outcome if the worker is wrong.
+
+**Cut order.** Shrink the runtime design to the transitions the two incidents exercise first. Protect the fault tour and both room incidents; the cancellation incident is already a take-home row in `proof.md`. The research challenge is optional and sits outside the timed path.
+
+- **A student takes the optional research challenge** → it runs in float or after the sitting, never in place of an incident. If they ask which three search rules to use, don't answer; ask what evidence failure they most want to prevent. The rules are the independent variable. Stop at one evidence-linked decision, one rejected alternative, and the evidence that would reverse it.
 - **The lab is missing** → recopy `labs/unattended-agent/` from the extracted content folder. Do not have the agent recreate it from memory.
 - **A student calls the local lab a proof of exactly-once or cancellation** → point to its README limits, then ask which production-like test would earn the stronger claim.
 - **Synthesis produces a service catalogue** → return to one execution: one failed CI event to useful pull request, correct no-action, or escalation.
@@ -222,14 +235,21 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 {{runtime-map:data-handling-you-can-defend}}
 
-**Prep.** Use the selected M7 `docs/agent-platform/architecture.md`, or provide a completed example. Name mock privacy/legal, product, operations, security, and engineering owner roles before the exercise starts.
+**Prep.** M8 runs on each student's own M7 output: `docs/agent-platform/architecture.md` and `proof.md` in `../<repo>-m5`. Name mock privacy/legal, product, operations, security, and engineering owner roles before the exercise starts.
+
+**Demo state.** Your M7 docs set, for projection only. Never hand it to a student as their input.
+
+**Mood: defensible judgement.** Check: when a legal question comes up, does the room name an owner and the missing facts, instead of issuing a verdict or freezing? Fix: keep the question, remove the verdict, name the owner and the engineering facts still needed.
+
+**Cut order.** Cap the Phase 3 legal discussion first: an unresolved call with an owner and its missing facts is a finished row. Then take one Phase 4 change instead of three. The own-responsibility prediction goes home last; the two maps are not cut.
+
+- **No M7 artefacts at all** → they run M7's exercise now, compressed, on the CI-triage case in their own worktree, and trail the room. M8 becomes homework on that output.
 
 - **The map stops at the model request** → ask where the same content appears next: tool payload, trace, reviewer screen, backup, deletion queue.
-- **The agent gives a legal answer** → keep the question, remove the verdict, name the owner and the engineering facts still needed.
 - **Recommendation inferences disappear** → add each derived preference, score, segment, and feedback label as a data row.
 - **The final architecture bans everything** → split common controls from case-specific controls and require the forcing data-flow row for each change.
 
 </section>
 <!--/flag:module:data-handling-you-can-defend-->
 
-<!-- maintainer — tab contract: every module tab and its nav link sit inside a matching `flag:module:<slug>` pair, so a cut's handbook carries a tab exactly when the cut runs that module. build-workbook.js resolves this file from the parent contentKey and applies the flags against the cut's own module list. A new tab needs its flag pair in BOTH the nav strip and the section. The Start here tab's two-day schedule is keyed on `module:spot-gaps-build-the-loop` (M6 = six-module sentinel); the `no-module:` branch carries the weekly-sittings contract and the between-sittings chain. The Four-sitting clauses on the M1/M2/M4/M5 Slot lines are unflagged on purpose: flags do not nest, and the parser throws on the inner pair. Runtime maps are placeholders expanded from `scripts/calculate-time.js`; no tab states a total or verdict of its own. Scope rule (2026-08-23): Slot, runtime map, mood Check/Fix, verbatim push-backs, gotchas, cut order, demo state. No Flow, no exercise goals, no Big idea — the projected workbook page carries those. Slot lines state day + duration only ("Day 1 (2h)"), never clock time — the Start-here schedule tables are the one place a reshuffle gets edited; a clock time repeated on a tab drifts the next time the tables move (2026-08-24). Same reasoning kills a Slot line restating a runtime-map overrun number ("runs N min past") once the map below it computes OVER/FITS, or a Slot line stating Flow-level phase timing the workbook page already owns. -->
+<!-- maintainer — tab contract: every module tab and its nav link sit inside a matching `flag:module:<slug>` pair, so a cut's handbook carries a tab exactly when the cut runs that module. build-workbook.js resolves this file from the parent contentKey and applies the flags against the cut's own module list. A new tab needs its flag pair in BOTH the nav strip and the section. The Start here tab's two-day schedule is keyed on `module:spot-gaps-build-the-loop` (M6 = six-module sentinel); the `no-module:` branch carries the weekly-sittings contract and the between-sittings chain. The optional-extensions block sits after both M6 branches because M7 and M8 run in either shape: keyed on `module:build-your-agent-platform`, with the 7 → 8 row in its own adjacent `module:data-handling-you-can-defend` pair, since flags do not nest. The Four-sitting clauses on the M1/M2/M4/M5 Slot lines are unflagged on purpose: flags do not nest, and the parser throws on the inner pair. Runtime maps are placeholders expanded from `scripts/calculate-time.js`; no tab states a total or verdict of its own. Scope rule (2026-08-23): Slot, runtime map, mood Check/Fix, verbatim push-backs, gotchas, cut order, demo state. No Flow, no exercise goals, no Big idea — the projected workbook page carries those. Slot lines state day + duration only ("Day 1 (2h)"), never clock time — the Start-here schedule tables are the one place a reshuffle gets edited; a clock time repeated on a tab drifts the next time the tables move (2026-08-24). Same reasoning kills a Slot line restating a runtime-map overrun number ("runs N min past") once the map below it computes OVER/FITS, or a Slot line stating Flow-level phase timing the workbook page already owns. -->

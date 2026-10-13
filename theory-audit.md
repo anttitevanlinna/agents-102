@@ -57,14 +57,14 @@ The core matrix above remains M1–M6. The optional pair is audited separately b
 
 | theory surface | map position | M7 | M8 | gap verdict |
 |---|---|---|---|---|
-| controlled transition | boundary around every phase | **named + enacted** | **named + extended** | closed: both anchors carry the same schema and governor |
-| action authority separated from worker proposal | every state-changing arrow | **named + enacted** | **reused** | closed |
-| evidence enables proof but creates exposure | Verification across the loop | **named** | **named + constrained** | closed |
-| data, purpose, owner, retention/deletion | lifecycle overlay across every phase | **previewed** | **named + enacted** | closed |
-| useful autonomy needs authority; safe autonomy limits it | whole production boundary | **enacted** | **named** | closed |
-| transfer beyond the supplied cases | Outcome / Crossing | one M4–M6 responsibility prediction | one action-boundary + data-boundary prediction | closed |
+| controlled transition | boundary around every phase | **named + enacted** | **named + extended** | spec'd, landing unverified |
+| action authority separated from worker proposal | every state-changing arrow | **named + enacted** | **reused** | spec'd, landing unverified |
+| evidence enables proof but creates exposure | Verification across the loop | **named** | **named + constrained** | spec'd, landing unverified |
+| data, purpose, owner, retention/deletion | lifecycle overlay across every phase | **previewed** | **named + enacted** | spec'd, landing unverified |
+| useful autonomy needs authority; safe autonomy limits it | whole production boundary | **enacted** | **named** | spec'd, landing unverified |
+| transfer beyond the supplied cases | Outcome / Crossing | one M4–M6 responsibility prediction | one action-boundary + data-boundary prediction | spec'd, landing unverified |
 
-The conceptual compression is one schema, not another control catalogue. M7 earns it from rejected transitions and incident reconstruction. M8 annotates the same transitions with data and decision ownership. The two durable anchors therefore satisfy the pair-wide development requirement without moving cloud architecture or legal judgement onto the Field Map itself.
+The conceptual compression is one schema, not another control catalogue. M7 earns it from rejected transitions and incident reconstruction. M8 annotates the same transitions with data and decision ownership. The two durable anchors are designed to meet the pair-wide development requirement without moving cloud architecture or legal judgement onto the Field Map itself. No row is closed: the Family B landing verdict and the pair-wide hard gate in `theory-evals.md` have not run, because Family B has no anchor-alone runner or cache shape (`curriculum/evals/IMPROVEMENTS.md` § Open, Theory Family B).
 
 ## The 8 confirmed delivery gaps — triage (proposal, Antti decides)
 

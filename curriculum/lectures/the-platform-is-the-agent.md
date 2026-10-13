@@ -25,12 +25,12 @@ trigger → admission → queue → isolated workspace → context → worker �
 
 Retries, cancellation, timeout, and duplicate events belong on the same line. They are part of the execution, not an operations appendix.
 
-## A tool call is a proposal
+## An effect is a proposal
 <!--tier:1-->
 
-The model can propose `read logs`, `open pull request`, or `send reply`. The platform decides whether that actor may perform that operation on that resource under the current policy.
+Inside its workspace the worker acts directly, which is why that workspace holds no credential and no open network. Anything that changes the world outside it, such as `open pull request` or `send reply`, goes to the broker as a proposal. The platform decides whether that actor may perform that operation on that resource under the current policy.
 
-Give the broker the shortest credential that can complete the allowed operation. Record the request, policy decision, credential path, side effect, and verifier evidence. Do not make a powerful long-lived token part of the worker's ambient environment.
+Give the broker the shortest-lived, narrowest-scoped credential that can complete the allowed operation. Record the request, policy decision, credential path, side effect, and verifier evidence. Do not make a powerful long-lived token part of the worker's ambient environment.
 
 ## Map the boundary onto AWS
 <!--tier:1-->
@@ -41,8 +41,7 @@ It does not make the architecture coherent. Use a local model to expose the cont
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-28 (writing@2fe73ede story@2fe73ede technical@2fe73ede pedagogy@2fe73ede strategy@2fe73ede slides@2fe73ede)
-- judges @2fe73ede: writing PASS, story PASS, technical PASS, behavior N/A (no-prompt-blocks), pedagogy PASS, strategy PASS, slides PASS
+**Review status:** static review only, real audit pending. No judge run has scored this file, so it carries no Quality line.
 
 **Time:** 7 minutes.
 
@@ -57,17 +56,19 @@ Claims
 - `headless-workers-supported` · detail · "Headless Codex or Claude Code can receive a task, work in a directory, and return machine-readable output." ← openai-noninteractive, anthropic-cli
 - `three-valid-endings` · vision · "An unattended responsibility has three valid endings" ← none-owed
 - `controlled-execution-line` · vision · "Follow one task all the way through" ← none-owed
-- `tool-call-proposal` · vision · "A tool call is a proposal" ← none-owed
-- `short-credentials` · detail · "Give the broker the shortest credential that can complete the allowed operation." ← aws-agent-security
+- `effect-proposal` · vision · "An effect is a proposal" ← none-owed
+- `workspace-acts-directly` · detail · "Inside its workspace the worker acts directly" ← anthropic-headless
+- `short-credentials` · detail · "Give the broker the shortest-lived, narrowest-scoped credential that can complete the allowed operation." ← aws-agent-security
 
 Sources
 - openai-noninteractive `[checked:2026-09-27 result:OK due:cohort]` https://developers.openai.com/codex/non-interactive-mode — [platform capability, primary documentation] Codex non-interactive execution and structured output. fallback: describe a generic headless coding worker.
 - anthropic-cli `[checked:2026-09-27 result:OK due:cohort]` https://code.claude.com/docs/en/cli-usage — [platform capability, primary documentation] Claude Code CLI invocation and non-interactive usage. fallback: describe a generic headless coding worker.
+- anthropic-headless `[checked:2026-10-13 result:OK due:cohort]` https://code.claude.com/docs/en/headless — [platform capability, primary documentation] A `claude -p` run uses its built-in tools in the working directory and, without `--bare`, runs the project's hooks and `.mcp.json` servers with no workspace trust dialog. fallback: state that a headless worker's built-in tools act inside its workspace without a broker.
 - aws-agent-security `[checked:2026-09-27 result:OK due:cohort]` https://docs.aws.amazon.com/prescriptive-guidance/latest/security-reference-architecture-generative-ai/gen-auto-agents.html — [vendor primary guidance] Identity, least privilege, credential and agent security boundaries in AWS. fallback: teach short-lived least-privilege credentials without AWS mapping.
 
 Frameworks
 - Controlled execution · [borrow:security engineering] · law:none · ← aws-agent-security
-- Tool call as proposal · [borrow:none] · law:none · ← none
+- Effect as proposal · [borrow:none] · law:none · ← none
 
 Stance `[stance:2026-09-27 level:L2]`
 - holds: unattended coding workers need control planes around admission, isolation, tools, verification, and observability.

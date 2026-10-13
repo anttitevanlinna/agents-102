@@ -3,7 +3,7 @@ key: ae101-m7-research-boundary-decision
 dest: Claude Code
 context: M7 bounded architecture research
 runtime: any
-origin: exercises/build-and-prove-agent-platform
+origin: agentic-engineering-101/build-your-agent-platform
 requires:
   - id: m7-responsibility-contract
     source: prompt:ae101-m7-frame-unattended-responsibility

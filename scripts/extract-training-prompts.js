@@ -284,8 +284,9 @@ function recordsForTraining(trainingKey, flavor) {
   records.push({ type: 'module', title: training.prework.title, file: preworkFile });
   records.push(...processFile(preworkFile, training.prework.title, 0, flavor));
 
-  for (let i = 0; i < training.modules.length; i += 1) {
-    const mod = training.modules[i];
+  const modules = CR.allModules(training);
+  for (let i = 0; i < modules.length; i += 1) {
+    const mod = modules[i];
     const file = path.join(trainingDir, `${mod.slug}.md`);
     records.push({ type: 'module', title: `Module ${i + 1}: ${mod.title}`, file });
     records.push(...processFile(file, mod.title, 0, flavor));

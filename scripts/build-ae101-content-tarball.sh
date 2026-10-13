@@ -188,9 +188,20 @@ done
 # M7 teaches boundary decisions by adapting and testing a known local control
 # plane. Starting from a working scaffold keeps the coding agent from spending
 # the whole slot inventing queue, broker, trace, and idempotency plumbing.
+# Only files git tracks or would track: a local smoke run's `run*/` output
+# (claims a student's first run would read as duplicates) or a `node_modules/`
+# stays behind, and the archive stays byte-reproducible.
 LAB_SRC="curriculum/scaffolds/ae101-unattended-agent-lab"
 if [ -d "$LAB_SRC" ]; then
-  cp -R "$LAB_SRC" "$ROOT/labs/unattended-agent"
+  mkdir -p "$ROOT/labs/unattended-agent"
+  while IFS= read -r -d '' f; do
+    [ -f "$f" ] || continue
+    rel="${f#"$LAB_SRC"/}"
+    mkdir -p "$ROOT/labs/unattended-agent/$(dirname "$rel")"
+    cp "$f" "$ROOT/labs/unattended-agent/$rel"
+  done < <(git ls-files -z --cached --others --exclude-standard -- "$LAB_SRC")
+  [ -f "$ROOT/labs/unattended-agent/package.json" ] || {
+    echo "ERROR: M7 lab scaffold at $LAB_SRC copied no package.json" >&2; exit 1; }
 else
   echo "ERROR: M7 lab scaffold not found at $LAB_SRC" >&2
   exit 1
@@ -260,8 +271,12 @@ echo "  skills shipped:        $(find "$ROOT/content/skills" -name 'SKILL.md' | 
 echo "  prompts shipped:       $PROMPT_COUNT (named by shipped pages)"
 echo "  figures shipped:       $FIGURE_COUNT"
 echo
+# One listing, read by every check below. Piping `tar tzf` into `grep -q`
+# under pipefail fails at random: grep exits on the first match, tar takes
+# SIGPIPE, and the pipeline returns 141.
+LISTING="$(tar tzf "$OUT")"
 echo "Top-level entries:"
-tar tzf "$OUT" | awk -F/ 'NF>1 && $2 != "" {print $2}' | sort -u | sed 's|^|  |'
+awk -F/ 'NF>1 && $2 != "" {print $2}' <<< "$LISTING" | sort -u | sed 's|^|  |'
 echo
 
 # Spot-check that key load-bearing files made it.
@@ -276,11 +291,12 @@ EXPECTED=(
   "content/skills/security-tools/check.sh"
   "labs/unattended-agent/package.json"
   "labs/unattended-agent/src/fault-tour.mjs"
+  "labs/unattended-agent/src/faults.mjs"
   "labs/unattended-agent/test/platform.test.mjs"
 )
 MISSING=()
 for path in "${EXPECTED[@]}"; do
-  grep -q "^\./${path}$" <<< "$(tar tzf "$OUT")" || MISSING+=("$path")
+  grep -qx "\./${path}" <<< "$LISTING" || MISSING+=("$path")
 done
 if [ "${#MISSING[@]}" -gt 0 ]; then
   echo "ERROR — expected paths missing from archive:" >&2
@@ -297,7 +313,7 @@ FORBIDDEN=(
 )
 LEAKS=()
 for path in "${FORBIDDEN[@]}"; do
-  tar tzf "$OUT" | grep -q "^\./${path}\$" && LEAKS+=("$path")
+  if grep -qx "\./${path}" <<< "$LISTING"; then LEAKS+=("$path"); fi
 done
 if [ "${#LEAKS[@]}" -gt 0 ]; then
   echo "ERROR — foreign Agents-101 material leaked into AE101 tarball:" >&2

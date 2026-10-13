@@ -6,10 +6,14 @@ import { checkTrace } from './check-trace.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const args = process.argv.slice(2)
+const flag = name => {
+  const index = args.indexOf(name)
+  return index >= 0 ? args[index + 1] : undefined
+}
 const scenarioPath = args[0]
-const workerName = args[args.indexOf('--worker') + 1] || 'stub'
-const outArg = args[args.indexOf('--out') + 1]
-if (!scenarioPath || !outArg) {
+const workerName = flag('--worker') || 'stub'
+const outArg = flag('--out')
+if (!scenarioPath || scenarioPath.startsWith('--') || !outArg || outArg.startsWith('--') || !['stub', 'real'].includes(workerName)) {
   console.error('usage: npm run run -- <scenario.json> --worker stub|real --out <directory>')
   process.exit(2)
 }

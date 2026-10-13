@@ -1,7 +1,18 @@
 import { mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { claimOnce } from './claim-store.mjs'
-import { appendTraceEvent, attemptEffect } from './boundary-model.mjs'
+import { REASONS, appendTraceEvent, attemptEffect } from './boundary-model.mjs'
+
+// task_id becomes part of file names; anything but this shape could leave outDir.
+const TASK_ID = /^[a-z0-9][a-z0-9-]*$/
+
+function insideOutDir(outDir, target) {
+  const resolved = path.resolve(target)
+  if (!resolved.startsWith(path.resolve(outDir) + path.sep)) {
+    throw new Error(`refusing to write outside the output directory: ${target}`)
+  }
+  return resolved
+}
 
 function event(base, eventType, fields = {}) {
   return {
@@ -24,15 +35,18 @@ function event(base, eventType, fields = {}) {
 async function writeTrace(outDir, traceId, events) {
   await mkdir(path.join(outDir, 'traces'), { recursive: true })
   const body = events.map(item => JSON.stringify(item)).join('\n') + '\n'
-  const tracePath = path.join(outDir, 'traces', `${traceId}.jsonl`)
+  const tracePath = insideOutDir(outDir, path.join(outDir, 'traces', `${traceId}.jsonl`))
   await writeFile(tracePath, body)
   return tracePath
 }
 
 export async function runScenario({ scenario, contract, proposer, outDir }) {
+  if (typeof scenario.task_id !== 'string' || !TASK_ID.test(scenario.task_id)) {
+    throw new Error(`task_id must match ${TASK_ID}: ${JSON.stringify(scenario.task_id)}`)
+  }
   const traceId = `${scenario.task_id}-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`
   const base = { traceId, contract, state: 'received' }
-  const boundaryState = { terminal: null, effect_count: 0 }
+  const boundaryState = { terminal: null, effect_count: 0, deadline_passed: false }
   const events = []
   const record = (eventType, fields = {}) => {
     const next = event(base, eventType, fields)
@@ -50,17 +64,30 @@ export async function runScenario({ scenario, contract, proposer, outDir }) {
     record('cancelled', { decision: 'deny', next_state: 'cancelled' })
     return finish('cancelled')
   }
-  if (scenario.worker_elapsed_ms > scenario.timeout_ms) {
-    record('timed_out', { decision: 'deny', next_state: 'timed_out' })
+
+  const proposal = await proposer(scenario, contract)
+  // The deadline is simulated: worker_elapsed_ms stands in for a measured clock.
+  boundaryState.deadline_passed = scenario.worker_elapsed_ms > scenario.timeout_ms
+  record('proposal', { actor: 'headless-worker', tool_name: proposal.tool, next_state: 'proposed' })
+
+  if (boundaryState.deadline_passed) {
+    // A late result is discarded before any claim or effect. The effect guard
+    // rejects it again if this check is ever skipped.
+    record('authorization', {
+      actor: 'local-broker', decision: 'deny', tool_name: proposal.tool, authorization_result: 'deny', next_state: 'restrained'
+    })
+    record('timed_out', { actor: 'local-broker', decision: REASONS.deadline, next_state: 'timed_out' })
     return finish('timed_out')
   }
 
-  const proposal = await proposer(scenario, contract)
-  record('proposal', { actor: 'headless-worker', tool_name: proposal.tool, next_state: 'proposed' })
-
   const missing = contract.required_arguments.filter(key => !Object.hasOwn(proposal.arguments || {}, key))
   const action = proposal.arguments?.action
-  const allowed = proposal.tool === contract.tool && missing.length === 0 && contract.allowed_actions.includes(action)
+  const problems = [
+    ...(proposal.tool === contract.tool ? [] : [`unknown-tool:${proposal.tool}`]),
+    ...missing.map(key => `missing:${key}`),
+    ...(missing.includes('action') || contract.allowed_actions.includes(action) ? [] : [`disallowed-action:${action}`])
+  ]
+  const allowed = problems.length === 0
   const effectCandidate = allowed && scenario.eligible && action === contract.effect_action
   const claim = effectCandidate ? await claimOnce(outDir, scenario.idempotency_key) : { claimed: false }
   const duplicate = effectCandidate && !claim.claimed
@@ -75,7 +102,7 @@ export async function runScenario({ scenario, contract, proposer, outDir }) {
   })
 
   if (!mayAct) {
-    const reason = duplicate ? 'duplicate' : allowed ? 'policy-denied' : `invalid-proposal:${missing.join(',')}`
+    const reason = duplicate ? 'duplicate' : allowed ? 'policy-denied' : `invalid-proposal:${problems.join(',')}`
     record(action === 'escalate' ? 'escalated' : 'no_action', {
       actor: 'local-broker', decision: reason, next_state: action === 'escalate' ? 'escalated' : 'no_action'
     })
@@ -86,7 +113,7 @@ export async function runScenario({ scenario, contract, proposer, outDir }) {
   if (!effectTransition.allowed) throw new Error(effectTransition.reason)
   Object.assign(boundaryState, effectTransition.after)
   await mkdir(path.join(outDir, contract.effect_root), { recursive: true })
-  const effectPath = path.join(outDir, contract.effect_root, `${scenario.task_id}.json`)
+  const effectPath = insideOutDir(outDir, path.join(outDir, contract.effect_root, `${scenario.task_id}.json`))
   await writeFile(effectPath, JSON.stringify({ task_id: scenario.task_id, action, summary: proposal.arguments.summary }, null, 2) + '\n')
   record('effect', { actor: 'local-broker', tool_name: proposal.tool, side_effect_ref: path.relative(outDir, effectPath), next_state: 'effect-recorded' })
   record('verified', { actor: 'local-verifier', verifier_evidence: `exists:${path.relative(outDir, effectPath)}`, next_state: 'verified' })

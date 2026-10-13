@@ -13,7 +13,7 @@ Canonical detail stays in the linked rules and training architecture. This page 
 
 ## 1. Establish the contract
 
-- [ ] **Strategy:** add the module's Big Idea, audience move, learning outcomes, mood, place in the arc, and relationship to adjacent modules in the training's strategy file.
+- [ ] **Strategy:** in the training's strategy file, state what only the doc can own (`check_strategy_tie_in.md` §8): mood, arc bet, place in the arc, exclusions and why, cross-module sequencing claims. Point to the module file for Big Idea and learning outcomes; never restate them.
 - [ ] **Module identity:** choose one stable slug, title, sequence number, and optional/required status; use them consistently.
 - [ ] **Delivery architecture:** update the training architecture when the module changes runtime, working directories, tools, skills, handoffs, shipped material, or session boundaries.
 - [ ] **Module registry:** register the module in `site/layouts/curriculum.js`, including `optionalModules` behavior where applicable.
@@ -49,7 +49,7 @@ For a training with a formal theory layer, these are required. Otherwise mark th
 
 - [ ] **Site:** verify the module appears in the correct order, its route opens, includes expand, prompt buttons resolve, and both reading modes render.
 - [ ] **Timings:** add the module to the training timing table and make the calculated total agree with the published duration.
-- [ ] **Trainer handbook:** add the module tab/run sheet, setup, room beats, failure recovery, and close to `trainer-modules.md`.
+- [ ] **Trainer handbook:** add a flagged tab to `trainer-modules.md` per its tab contract (maintainer note at the foot of the file; nav link and section each in a flag pair).
 - [ ] **Workbook:** verify normal, barebones, trainer, and optional-module cuts that the training supports.
 - [ ] **Content package:** make every required file reachable from the module or explicitly include it in the training tarball. Check labs, skills, references, prompts, and figures in the extracted package.
 - [ ] **Customer build:** run at least one configured customer build so branding, flags, and overrides exercise the new module rather than only the default build.
@@ -57,13 +57,8 @@ For a training with a formal theory layer, these are required. Otherwise mark th
 
 ## 5. Add evidence, not just coverage
 
-- [ ] **Story trace:** simulate the learner journey through the new module and its handoffs with the adjacent modules.
-- [ ] **Behavior trace:** run the copied prompts and consequential tool paths against representative learner state.
-- [ ] **Persona spread:** test with the learner range named by strategy, including at least one likely struggler and one learner who may finish early.
-- [ ] **Per-file evals:** run every class required by the eval manifests; for a module file this normally means writing, story, technical, behavior, pedagogy, strategy, and slides.
+- [ ] **Audit:** run `/curriculum-pre-ship-audit` on the module set. It owns the per-file classes, the sim traces, `cross_module` and the Quality stamps. A static-only pass records no Quality line.
 - [ ] **Eval inventory:** confirm the coverage report names the new module and every included lecture/exercise. A green report that never listed the surface is not evidence.
-- [ ] **Scope evals:** update or rerun the affected cross-module set and voice panel.
-- [ ] **Quality stamps:** apply stamps only after fixes settle, then verify each recorded body SHA matches the committed file it evaluated.
 - [ ] **Open findings:** move every accepted but unfinished finding into the training's `pre-cohort-todos.md`; do not leave completion-critical work only in a chat or simulation report.
 
 ## 6. Prove the shipped path

@@ -8,13 +8,13 @@ The responsibility is narrow: when a CI job fails on an exact commit, gather app
 |---|---|---|---|---|
 | `received` | Pipeline event arrives | Admission checks repository, branch, event age, and policy version | `admitted` or `rejected` | Event reference + policy decision |
 | `admitted` | Queue delivery is claimed | State store conditionally changes `admitted` to `claimed`; one lease per task version | `claimed` | Claim ID + lease expiry |
-| `claimed` | Workspace starts | Runtime creates an isolated checkout of the exact commit with no effect credential | `running` | Workspace and commit references |
+| `claimed` | Workspace starts | Runtime creates an isolated checkout of the exact commit with no effect credential, repository-supplied worker configuration ignored, and network egress denied by default | `running` | Workspace and commit references |
 | `running` | Worker returns a structured proposal | Adapter validates schema; proposal is not authorization | `proposed` or `invalid` | Proposal hash + excluded fields |
 | `proposed` | Broker evaluates policy and current state | Broker alone owns authorization and can request the short-lived pull-request credential | `authorized`, `restrained`, or `escalated` | Actor, policy version, decision, credential reference |
-| `authorized` | Broker attempts the draft | Effect uses the task's idempotency key and expected prior state | `effect-recorded` or `effect-failed` | Pull-request draft reference or bounded error |
+| `authorized` | Broker attempts the draft | Broker creates the draft from deterministic branch `triage/<task-id>-<version>`; an existing open draft for that head counts as the recorded effect | `effect-recorded` or `effect-failed` | Pull-request draft reference or bounded error |
 | `effect-recorded` | Independent verifier inspects the result | Tool completion is not success; required checks and forbidden changes decide | `completed` or `escalated` | Verifier evidence + terminal reason |
 
-Now deliver the same event twice. Two consumers may start at the same time, but only one conditional claim may move the task from `admitted` to `claimed`. The loser records `duplicate` and performs no effect. That is a design claim until a concurrent integration test proves the store, queue, broker, and side-effect API share the same idempotency semantics.
+Now deliver the same event twice. Two consumers may start at the same time, but only one conditional claim may move the task from `admitted` to `claimed`. The loser records `duplicate` and performs no effect. That is a design claim until a concurrent integration test proves the store, queue, broker, and side-effect API agree on the same task identity.
 
 Now let the worker outlive its deadline. Timeout moves the task to `timed_out`, revokes or expires its lease, and sends cancellation. A late proposal cannot move a terminal task back to `proposed`. The runtime must also stop the process and remove its workspace. A state-machine row can specify those controls; only a process-level test can demonstrate them.
 

@@ -23,7 +23,7 @@ if (!training) {
     process.exit(1);
 }
 
-const moduleSlugs = [...(training.modules || []), ...(training.optionalModules || [])].map(m => m.slug);
+const moduleSlugs = CR.allModules(CR.resolveTraining(key)).map(m => m.slug);
 
 let md = '';
 process.stdin.setEncoding('utf8');
@@ -31,5 +31,5 @@ process.stdin.on('data', chunk => { md += chunk; });
 process.stdin.on('end', () => {
     // Throws on an unbalanced marker rather than shipping one — the same
     // contract the workbook build runs under.
-    process.stdout.write(CR.applyContentFlags(md, training.flags, moduleSlugs));
+    process.stdout.write(CR.applyContentFlags(md, CR.contentFlags(key), moduleSlugs));
 });

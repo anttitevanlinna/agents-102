@@ -24,14 +24,13 @@ One platform can host them only if its authorization and data controls preserve 
 ## Minimize the observation layer too
 <!--tier:1-->
 
-Observability does not sit outside the data boundary. Store raw payload only when the reconstruction need defeats a safer reference, classification, mask, or bounded excerpt.
+Observability does not sit outside the data boundary. Store raw payload only when a reference, classification, mask, or bounded excerpt cannot meet the reconstruction need.
 
 The useful question is not “can we log it?” It is “what is the least data that still proves what happened?”
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-28 (writing@2fe73ede story@2fe73ede technical@2fe73ede pedagogy@2fe73ede strategy@2fe73ede slides@2fe73ede)
-- judges @2fe73ede: writing PASS, story PASS, technical PASS, behavior N/A (no-prompt-blocks), pedagogy PASS, strategy PASS, slides PASS
+**Review status:** static review only (2026-10-13 PR review), real audit pending. No judge run has scored this file.
 
 **Time:** 7 minutes.
 
@@ -48,9 +47,9 @@ Claims
 - `minimize-observability` · detail · "Observability does not sit outside the data boundary." ← gdpr-principles, langfuse-masking
 
 Sources
-- gdpr-profiling `[checked:2026-09-27 result:OK due:none]` https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0679 — [primary law] GDPR definitions and provisions concerning profiling and personal data. fallback: describe derived preferences as system data and leave the legal classification to counsel.
+- gdpr-profiling `[checked:2026-09-27 result:OK due:cohort]` https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0679 — [primary law] GDPR definitions and provisions concerning profiling and personal data. Not durable while the Digital Omnibus proposal (Nov 2025) would amend the personal-data definition and Art 22, so re-check at each cohort. fallback: describe derived preferences as system data and leave the legal classification to counsel.
 - gdpr-principles `[checked:2026-09-27 result:OK due:none]` https://www.edpb.europa.eu/topics/key-gdpr-concepts/basic-principles_en — [regulator guidance] Purpose limitation, data minimization, storage limitation, integrity, and accountability principles. fallback: teach the engineering minimization questions without a legal conclusion.
-- langfuse-masking `[checked:2026-09-27 result:OK due:cohort]` https://langfuse.com/docs/observability/features/masking — [vendor primary documentation] Masking of trace inputs, outputs, and metadata. fallback: teach trace-field exclusion and masking without product detail.
+- langfuse-masking `[checked:2026-09-27 result:OK due:cohort]` https://langfuse.com/docs/observability/features/masking — [vendor documentation] Masking of trace inputs, outputs, and metadata. fallback: teach trace-field exclusion and masking without product detail.
 
 Frameworks
 - Every copy · [borrow:privacy engineering] · law:none · ← gdpr-principles

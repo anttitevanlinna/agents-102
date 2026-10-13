@@ -191,7 +191,7 @@ Two durable anchors + the map, **not** six per-module anchors. Thin-slice = **M2
 M7 and M8 sit outside the six-module core, so they do not add phases to the Field Map. They put a production boundary around the loop:
 
 - **M7 wraps every phase in controlled transitions.** A state change is acceptable only when action authority, justifying evidence, and a stop or recovery path are explicit. Its durable anchor is `a-trace-is-an-argument.md` § *The pattern is a controlled transition*, after the failure tour and incident review have made the need felt.
-- **M8 overlays the data lifecycle on those same transitions.** Each one gains the data used, purpose, decision owner, and retention or deletion rule. Its durable anchor is `legality-needs-an-evidence-package.md` § *Extend the controlled transition*, after the two cases have exposed the hidden copies and inferences.
+- **M8 overlays the data lifecycle on those same transitions.** Each one gains the data used, purpose, decision owner, and retention or deletion rule. Its durable anchor is `the-transition-carries-its-data.md` § *Extend the controlled transition*, after the two cases have exposed the hidden copies and inferences.
 
 The pair-wide schema is **controlled transition**. Its mechanism is that unattended work is a chain of state changes: controlling only the worker or model call leaves the consequential arrows unowned. Its map position is the boundary around every Field Map phase, not a seventh phase. Its governor is: **who may cause this change, what data may it use and retain for this purpose, what bounded evidence would justify it, and how can it be stopped or reversed?**
 

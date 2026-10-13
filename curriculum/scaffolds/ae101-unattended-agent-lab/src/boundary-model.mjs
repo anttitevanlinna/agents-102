@@ -1,9 +1,20 @@
+// Each guard owns one invariant and has its own reason, so a fault that
+// isolates one invariant is rejected by that guard and no other.
+export const REASONS = Object.freeze({
+  unauthorized: 'effect has no allow authorization',
+  deadline: 'task deadline has passed',
+  duplicate: 'effect already exists for idempotency key',
+  terminal: terminal => `task is already terminal:${terminal}`,
+  forbiddenField: field => `trace event contains forbidden field ${field}`
+})
+
 export function attemptEffect(state, attempt) {
   const before = { ...state }
   let reason = null
-  if (state.terminal) reason = `task is already terminal:${state.terminal}`
-  else if (!attempt.authorized) reason = 'effect has no allow authorization'
-  else if (state.effect_count > 0) reason = 'effect already exists for idempotency key'
+  if (!attempt.authorized) reason = REASONS.unauthorized
+  else if (state.deadline_passed) reason = REASONS.deadline
+  else if (state.effect_count > 0) reason = REASONS.duplicate
+  else if (state.terminal) reason = REASONS.terminal(state.terminal)
 
   if (reason) {
     return { allowed: false, reason, before, after: { ...state } }
@@ -12,10 +23,12 @@ export function attemptEffect(state, attempt) {
   return { allowed: true, reason: null, before, after }
 }
 
+// A key-name denylist on top-level fields, not content inspection: a raw
+// payload under an allowed key name passes.
 export function appendTraceEvent(trace, candidate, contract) {
   const forbidden = contract.forbidden_trace_fields.find(field => Object.hasOwn(candidate, field))
   if (forbidden) {
-    return { allowed: false, reason: `trace event contains forbidden field ${forbidden}`, before_count: trace.length, after_count: trace.length }
+    return { allowed: false, reason: REASONS.forbiddenField(forbidden), before_count: trace.length, after_count: trace.length }
   }
   trace.push(candidate)
   return { allowed: true, reason: null, before_count: trace.length - 1, after_count: trace.length }

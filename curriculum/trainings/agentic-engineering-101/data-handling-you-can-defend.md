@@ -4,7 +4,7 @@
 An agent's data boundary is every copy, inference, tool call, trace, reviewer view, backup, and deletion path, not only the model request.
 
 ## Prework
-Start a new session in the Module 5 worktree at `../<repo-name>-m5`, which now contains Module 7's `docs/agent-platform/architecture.md` and `proof.md`. If you did not run Module 7, open the checkout path the trainer provides with the example evidence set.
+Start a new session in the Module 5 worktree at `../<repo-name>-m5`. This module revises the `docs/agent-platform/` files you committed in Module 7, so it needs Module 7 done first. If you missed Module 7, run a short pass of [Build and test an unattended agent boundary](exercises/build-and-prove-agent-platform.md) in that worktree now, enough to commit its `architecture.md` and `proof.md`. You will trail the room; finish this module as homework.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -19,9 +19,11 @@ The boundary model exposed what it catches and the design exposed what it still 
 
 [The model call is not the data flow](lectures/the-model-call-is-not-the-data-flow.md)
 
+[Legality needs an evidence package](lectures/legality-needs-an-evidence-package.md)
+
 [Exercise: Decide the agent data boundary](exercises/decide-agent-data-boundary.md)
 
-[Legality needs an evidence package](lectures/legality-needs-an-evidence-package.md)
+[The transition carries its data](lectures/the-transition-carries-its-data.md)
 
 ## Key Concepts
 
@@ -38,17 +40,16 @@ The architecture is no longer an abstract agent platform. It now carries explici
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-09-28 (writing@2fe73ede story@2fe73ede technical@2fe73ede pedagogy@2fe73ede strategy@2fe73ede slides@2fe73ede)
-- judges @2fe73ede: writing PASS, story PASS, technical PASS, behavior N/A (no-prompt-blocks), pedagogy PASS, strategy PASS, slides PASS
-- cross_module @fcc4dfe6: PASS — set=[build-your-agent-platform,data-handling-you-can-defend]
+**Review status:** static review only (2026-10-13 PR review), real audit pending. No judge run has scored this module or its set.
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Pacing:** Runtime is computed with `node scripts/calculate-time.js data-handling-you-can-defend`. Do not let legal debate consume the mapping phases; unresolved calls are valid outputs when they have an owner and the missing facts are named.
 - **Transitions:** opening 5 @start · debrief 10 @after:decide-agent-data-boundary · bridge 5 @end
-- **Mood target:** sober agency. The room can narrow a system responsibly without pretending engineers can self-issue a legal verdict.
-- **Delivery:** Optional two-hour production extension. No customer data, cloud account, or legal advice is required. Both cases are fixed simulations against the student's tested Module 7 design.
-- **Trainer prep:** Have one complete Module 7 example evidence set available. Name the roles participants should use for privacy/legal, product, operations, security, and engineering decisions in the mock organization.
+- **Mood target:** defensible judgement. The room can narrow a system responsibly without pretending engineers can self-issue a legal verdict.
+- **Delivery:** Optional two-hour production extension. No customer data, cloud account, or legal advice is required. Both cases are fixed simulations against the student's tested Module 7 design. Each case is mapped as a possible second responsibility on the M7 platform, whose first responsibility is CI triage; for the recommender, only offline offer and profile refresh would run on the platform, and serving-time ranking stays outside it.
+- **Prerequisite (maintainer 2026-10-13):** M8 requires M7's committed `docs/agent-platform/`. No example evidence set ships (`check_pedagogy.md` §65). Rescue per §65(b): a student who missed M7 runs M7's exercise compressed in their own M5 worktree, trails the room, and finishes M8 as homework.
+- **Trainer prep:** The map prompts fix the owner roles as Privacy/Legal, Product, Operations, Security, and Engineering. Use the same five in the debrief.
 
 **Leap test:**
 - The engineer can point to a copy of personal data that was absent from the original architecture and add a control or remove the copy.

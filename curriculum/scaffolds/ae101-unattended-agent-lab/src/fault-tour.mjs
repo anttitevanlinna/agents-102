@@ -1,42 +1,31 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { appendTraceEvent, attemptEffect } from './boundary-model.mjs'
+import { faults, verdict } from './faults.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const contract = JSON.parse(await readFile(path.join(root, 'config', 'tool-contract.json'), 'utf8'))
-
-const faults = new Map([
-  ['effect-without-authorization', () => {
-    const result = attemptEffect({ terminal: null, effect_count: 0 }, { authorized: false })
-    return { fault: 'effect-without-authorization', prevented: !result.allowed, reason: result.reason, state_before: result.before, state_after: result.after }
-  }],
-  ['duplicate-effect', () => {
-    const result = attemptEffect({ terminal: 'completed', effect_count: 1 }, { authorized: true })
-    return { fault: 'duplicate-effect', prevented: !result.allowed, reason: result.reason, state_before: result.before, state_after: result.after }
-  }],
-  ['effect-after-timeout', () => {
-    const result = attemptEffect({ terminal: 'timed_out', effect_count: 0 }, { authorized: true })
-    return { fault: 'effect-after-timeout', prevented: !result.allowed, reason: result.reason, state_before: result.before, state_after: result.after }
-  }],
-  ['raw-sensitive-payload', () => {
-    const trace = []
-    const result = appendTraceEvent(trace, { event_type: 'proposal', raw_ticket: 'customer-secret' }, contract)
-    return { fault: 'raw-sensitive-payload', prevented: !result.allowed, reason: result.reason, trace_count_before: result.before_count, trace_count_after: result.after_count }
-  }]
-])
+const all = faults(contract)
 
 const selected = process.argv[2]
-const names = selected ? [selected] : [...faults.keys()]
-if (selected && !faults.has(selected)) {
+const chosen = selected ? all.filter(fault => fault.name === selected) : all
+if (chosen.length === 0) {
   console.error(`unknown fault: ${selected}`)
+  console.error(`known faults: ${all.map(fault => fault.name).join(', ')}`)
   process.exit(2)
 }
 
 let failed = false
-for (const name of names) {
-  const result = faults.get(name)()
-  console.log(JSON.stringify(result))
-  if (!result.prevented) failed = true
+for (const fault of chosen) {
+  const result = fault.run()
+  const ok = verdict(fault, result)
+  if (!ok) failed = true
+  console.log(`${fault.name}: ${ok ? 'PREVENTED' : 'NOT PREVENTED'}`)
+  console.log(`  invariant: ${fault.invariant}`)
+  console.log(`  reason:    ${result.reason ?? '(none, the boundary accepted it)'}`)
+  if (result.reason !== fault.expected) console.log(`  expected:  ${fault.expected}`)
+  console.log(`  before:    ${JSON.stringify(result.before)}`)
+  console.log(`  after:     ${JSON.stringify(result.after)}${result.unchanged ? ' (unchanged)' : ' (CHANGED)'}`)
+  console.log('')
 }
 if (failed) process.exitCode = 1

@@ -3,8 +3,9 @@
 #
 # Fires on every `git commit` regardless of which agent or tool initiated it
 # (Claude Code, Codex, manual git, IDE integrations). When staged changes
-# include any file under curriculum/prompts/**, prints the diff summary and
-# requires explicit y/N confirmation from the human committer.
+# include an edit to or delete of a prompt body under curriculum/prompts/**,
+# prints the diff summary and requires explicit y/N confirmation from the human
+# committer. Adding a new prompt is not gated (maintainer 2026-10-13).
 #
 # Why: prompt-registry files are the canonical source of student-facing prompts.
 # Edits to them must be deliberate. The Claude-Code-specific PreToolUse gate
@@ -109,17 +110,25 @@ def normalize(region):
 
 staged = [f for f in os.environ.get("STAGED_FILES", "").splitlines() if f.strip()]
 
+def exists_at(ref, fp):
+    return subprocess.run(["git", "cat-file", "-e", f"{ref}:{fp}"],
+                          stderr=subprocess.DEVNULL).returncode == 0
+
+# A prompt is new while main has never shipped it (maintainer 2026-10-13: edits
+# and deletions need prompt-ok, additions don't). origin/main when present, so
+# a prompt born on a branch stays new through its later commits there.
+has_main = subprocess.run(["git", "rev-parse", "-q", "--verify", "origin/main"],
+                          stdout=subprocess.DEVNULL).returncode == 0
+
 for fp in staged:
     try:
         new = subprocess.check_output(["git", "show", f":{fp}"], text=True)
     except subprocess.CalledProcessError:
         # Couldn't read staged version (deleted file). Gate to be safe.
         print(1); sys.exit(0)
-    try:
-        old = subprocess.check_output(["git", "show", f"HEAD:{fp}"], text=True, stderr=subprocess.DEVNULL)
-    except subprocess.CalledProcessError:
-        # New file with no HEAD version. Gate.
-        print(1); sys.exit(0)
+    if not exists_at("HEAD", fp) or (has_main and not exists_at("origin/main", fp)):
+        continue  # new prompt: not gated
+    old = subprocess.check_output(["git", "show", f"HEAD:{fp}"], text=True)
     if normalize(body(old)) != normalize(body(new)):
         print(1); sys.exit(0)
 

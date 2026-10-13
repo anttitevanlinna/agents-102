@@ -33,6 +33,22 @@ if commit "$r"; then bad 'a plain delete slipped through'; else ok 'a delete is 
 r=$(repo); printf -- '---\nkey: a\n---\nPaste that.\n' > "$r/curriculum/prompts/a.md"; git -C "$r" add -A
 if commit "$r"; then bad 'a body edit slipped through'; else ok 'a body edit is still gated'; fi
 
+# New prompts need no y/N; edits and deletes do (maintainer 2026-10-13). "New"
+# means main has never shipped it, so a branch-born prompt stays new.
+r=$(repo); printf -- '---\nkey: b\n---\nPaste this too.\n' > "$r/curriculum/prompts/b.md"; git -C "$r" add -A
+if commit "$r"; then ok 'a new prompt needs no y/N'; else bad 'a new prompt was gated'; fi
+
+r=$(repo); printf -- '---\nkey: b\n---\nPaste this too.\n' > "$r/curriculum/prompts/b.md"
+printf -- '---\nkey: a\n---\nPaste that.\n' > "$r/curriculum/prompts/a.md"; git -C "$r" add -A
+if commit "$r"; then bad 'an edit rode in beside a new prompt'; else ok 'a new prompt beside an edit is still gated'; fi
+
+r=$(repo); git -C "$r" update-ref refs/remotes/origin/main HEAD
+printf -- '---\nkey: b\n---\nPaste this too.\n' > "$r/curriculum/prompts/b.md"; git -C "$r" add -A; commit "$r"
+printf -- '---\nkey: b\n---\nPaste this, revised.\n' > "$r/curriculum/prompts/b.md"; git -C "$r" add -A
+if commit "$r"; then ok 'revising a prompt main has not shipped needs no y/N'; else bad 'a branch-born prompt revision was gated'; fi
+printf -- '---\nkey: a\n---\nPaste that.\n' > "$r/curriculum/prompts/a.md"; git -C "$r" add -A
+if commit "$r"; then bad 'an edit to a prompt on main slipped through'; else ok 'an edit to a prompt on main is still gated'; fi
+
 # Simulation trainings (maintainer 2026-09-30): a prompt whose origin training has
 # `simulation: true` commits without a y/N; the maintainer reads it at promotion.
 simrepo() {
@@ -47,7 +63,7 @@ r=$(simrepo); printf -- '---\nkey: s\norigin: sim/m1\n---\nPaste this.\n' > "$r/
 if commit "$r"; then ok 'a new simulation prompt needs no y/N'; else bad 'a simulation prompt was gated'; fi
 
 r=$(simrepo); printf -- '---\nkey: s\norigin: live/m1\n---\nPaste this.\n' > "$r/curriculum/prompts/s.md"; git -C "$r" add -A
-if commit "$r"; then bad 'a new taught prompt slipped through'; else ok 'a new taught prompt is still gated'; fi
+if commit "$r"; then ok 'a new taught prompt needs no y/N'; else bad 'a new taught prompt was gated'; fi
 
 r=$(simrepo); printf -- '---\nkey: s\norigin: sim/m1\n---\nPaste this.\n' > "$r/curriculum/prompts/s.md"
 printf -- '---\nkey: a\n---\nPaste that.\n' > "$r/curriculum/prompts/a.md"; git -C "$r" add -A

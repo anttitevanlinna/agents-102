@@ -115,13 +115,16 @@ Warns on:
 
 ## Editing rules
 
-Prompt edits are gated by `check_prompts.md` rule 22 (maintainer approval).
+Edits to and deletions of a prompt main has shipped are gated by
+`check_prompts.md` rule 22 (maintainer approval). A new prompt is not gated:
+until it first lands on main (absent from `origin/main`), it can be written and
+revised freely on its branch. Both hooks below let it through.
 
 Two layers of enforcement protect this directory:
 
 1. **Claude Code `PreToolUse` hook** (`.claude/hooks/prompt-edit-gate.sh`).
-   Denies any `Edit`/`Write`/`MultiEdit` against `curriculum/prompts/**.md`
-   inside Claude Code unless the human's message directly after a card naming
+   Denies a body `Edit`/`Write`/`MultiEdit` against a shipped prompt in
+   `curriculum/prompts/**.md` inside Claude Code unless the human's message directly after a card naming
    `<key>` contains the token `prompt-ok` (case-insensitive; other text may
    accompany it — it is the only accepted signal), or the session is running
    with `SKIP_PROMPT_GATE=1`.
@@ -129,8 +132,8 @@ Two layers of enforcement protect this directory:
 2. **Tool-agnostic git pre-commit hook** (`.githooks/pre-commit`). Fires on
    every `git commit` regardless of which agent or tool initiated it
    (Claude Code, Codex, manual git, IDE integrations). When staged changes
-   include any file under `curriculum/prompts/`, prints the diff summary
-   and asks for `y/N` confirmation from the committer.
+   edit or delete a shipped prompt body under `curriculum/prompts/`, prints
+   the diff summary and asks for `y/N` confirmation from the committer.
 
 ### Setup (one time per clone)
 

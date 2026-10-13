@@ -62,6 +62,7 @@ Card ONLY **student-facing body text + prompt bodies students copy** (`check_pro
 - mechanical swap leaving claim/voice/ask untouched — page geometry → reading order, dead anchor, stale locator;
 - any edit whose wording the maintainer just supplied or whose direction they just called — carding it asks them to approve their own sentence;
 - anything in a `simulation: true` training (generated test run, never taught; maintainer 2026-09-30): pages and prompts land uncarded, the gates let its prompts through (`scripts/prompt-sim-exempt.js`), the maintainer reads it all when the flag comes off;
+- a new prompt (absent from `origin/main`; maintainer 2026-10-13): written + revised freely on its branch, both hooks pass it. Edit or delete of a shipped prompt body stays gated;
 - any body edit to a supplementary OR reference page (Antti widened 2026-08-29, mid-card on `reference/multi-session-git.md`; prompt fences on those pages included, Antti 2026-08-30) — the training index's quieter rows, optional reading, never projected in a room. Modules, exercises, lectures stay gated.
 
 → apply, report as landed work; genuine open question = note beside it, not a gate. Test: *could you write BEFORE/AFTER and be certain of the call yourself?* → not a card.

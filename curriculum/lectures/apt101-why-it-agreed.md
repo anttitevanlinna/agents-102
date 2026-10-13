@@ -16,8 +16,8 @@
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@4b5bc4b7 story@4b5bc4b7 technical@4b5bc4b7 pedagogy@4b5bc4b7 strategy@4b5bc4b7 slides@4b5bc4b7)
-- judges @4b5bc4b7: writing PASS, story PASS, technical PASS, behavior N/A, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-10-13 (writing@a8524ca5 story@a8524ca5 technical@4b5bc4b7 pedagogy@a8524ca5 strategy@4b5bc4b7 slides@a8524ca5)
+- judges @a8524ca5: writing PASS, story PASS, technical PASS, behavior N/A, pedagogy PASS, strategy PASS, slides PASS
 
 - **Time:** 13 minutes.
 - **Learning:** control — the team traces the agreement to its question and its instructions, and holds the insight the analysis cannot supply.

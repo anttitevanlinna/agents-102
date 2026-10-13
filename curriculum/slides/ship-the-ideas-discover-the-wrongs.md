@@ -13,8 +13,8 @@ When the digest agrees with you, that is the moment to go looking for your wrong
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@8b8f4070 technical@8b8f4070 slides@8b8f4070)
-- judges @8b8f4070: writing PASS, technical PASS, slides PASS
+**Quality:** compendium-audited 2026-10-13 (writing@a8524ca5 technical@a8524ca5 slides@a8524ca5)
+- judges @a8524ca5: writing PASS, technical PASS, slides PASS
 
 **STATUS:** first-person guide passage at Day 2's turn (§ Why it agreed), slide 3 of 3. Every line is the maintainer's own wording from his public posts, quoted verbatim (maintainer's direction 2026-10-13: public newsletter and blog posts, not the unpublished essays). Not taught (simulation training).
 

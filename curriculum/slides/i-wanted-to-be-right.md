@@ -7,8 +7,8 @@ I've tried telling the future a few times. 5 years ago I was wrong. I was thinki
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@7412ff6d technical@7412ff6d slides@7412ff6d)
-- judges @7412ff6d: writing PASS, technical PASS, slides PASS
+**Quality:** compendium-audited 2026-10-13 (writing@a8524ca5 technical@a8524ca5 slides@a8524ca5)
+- judges @a8524ca5: writing PASS, technical PASS, slides PASS
 
 **STATUS:** first-person guide passage at Day 2's turn (§ Why it agreed), slide 1 of 3. Every line is the maintainer's own wording from his public posts, quoted verbatim (maintainer's direction 2026-10-13: public newsletter and blog posts, not the unpublished essays). Not taught (simulation training).
 

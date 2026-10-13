@@ -1,31 +1,30 @@
-## About the future, all was blurry
+## I don't often know what is right and wrong
 <!--slide:all-was-blurry-->
 
-Then came a year inside an AI transformation. Most weeks I could not tell which of our bets would turn out right.
+I have tried things. I have built things. Most have not gone anywhere. The failures are more common than successes.
 
-I don't understand often what is happening. I don't see. About the future, all was blurry.
+This new field just throws my old skills off. I don't often know what is right and wrong. What is hype and what is real.
 
-It gave me anxiety, and a feeling of insufficiency.
+You just don't know. Nobody knows.
 
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-10-08 (writing@87285049 technical@87285049 slides@87285049)
 - judges @87285049: writing PASS, technical PASS, slides PASS
 
-**STATUS:** first-person guide passage at Day 2's turn (§ Why it agreed), slide 2 of 3. Maintainer-commissioned 2026-10-07: "write the failure based on the essay on not knowing what will be the real outcome. The feelings of uncertainty and not knowing what is right"; split into three slides on his call. Composed from the year-one essays. Not taught (simulation training). Owes the maintainer's read and a judging round.
+**STATUS:** first-person guide passage at Day 2's turn (§ Why it agreed), slide 2 of 3. Every line is the maintainer's own wording from his public posts, quoted verbatim (maintainer's direction 2026-10-13: public newsletter and blog posts, not the unpublished essays). Not taught (simulation training).
 
-**Guard (maintainer to confirm):** The joins "Then came a year inside an AI transformation" and "Most weeks I could not tell which of our bets would turn out right" are composed; the rest is the essays' wording. If a join is untrue, cut it rather than reword it.
+**Guard:** quote only; a line that reads wrong is cut, never reworded. Paragraphs one and three are from *For innovators*, paragraph two from *Skating where the puck is going*.
 
 <!-- backing -->
 
 **Claims**
-- `could-not-tell` · vision · "Most weeks I could not tell which of our bets would turn out right." ← none-owed — composed join, maintainer to confirm.
-- `dont-see` · detail · "I don't understand often what is happening. I don't see." ← essay-expect-to-be-wrong
-- `blurry` · detail · "About the future, all was blurry." ← essay-expect-to-be-wrong — essay: "About the future: all is blurry most of the time."
-- `anxiety` · detail · "It gave me anxiety, and a feeling of insufficiency." ← essay-failing-and-succeeding — essay: "It gives you anxiety. It gives you a feeling of insufficiency."
+- `most-not-gone-anywhere` · detail · "I have built things. Most have not gone anywhere. The failures are more common than successes." ← post-for-innovators
+- `old-skills-off` · detail · "This new field just throws my old skills off. I don't often know what is right and wrong. What is hype and what is real." ← post-skating
+- `nobody-knows` · detail · "You just don't know. Nobody knows." ← post-for-innovators
 
 **Sources**
-- essay-expect-to-be-wrong `[checked:2025-05-09 result:ATTESTED due:none]` attested:Antti 2025-05-09 year-one-essays — [practitioner direct, maintainer-attested] Antti Tevanlinna, *Expect to Be Wrong with the Vision and Ideas*, 2025-05-09, Drive, bosser strategy folder, year-one practitioner essays, § 2025-05-09. fallback: none.
-- essay-failing-and-succeeding `[checked:2025-12-05 result:ATTESTED due:none]` attested:Antti 2025-12-05 year-one-essays — [practitioner direct, maintainer-attested] Antti Tevanlinna, *Failing and Succeeding at the Same Time*, 2025-12-05, Drive, bosser strategy folder, year-one practitioner essays, § 2025-12-05. fallback: none.
+- post-for-innovators `[checked:2026-10-13 result:OK due:none]` https://anttitevanlinna.github.io/bosser/articles/for-innovators.html — [practitioner direct] Antti Tevanlinna, *For innovators*, 2026-02-22, public post, live 2026-10-13. fallback: none.
+- post-skating `[checked:2026-10-13 result:OK due:none]` https://anttitevanlinna.github.io/bosser/articles/skating-where-the-puck-is-going.html — [practitioner direct] Antti Tevanlinna, *Skating where the puck is going*, 2024-12-28, public post, live 2026-10-13. fallback: none.
 
 <!-- /backing -->

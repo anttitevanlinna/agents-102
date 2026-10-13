@@ -1,26 +1,27 @@
-## I wanted to be right
+## Five years ago I was wrong
 <!--slide:i-wanted-to-be-right-->
 
-For most of my working life I wanted to be right. Being right equated to creating value. Being right was progress.
+I used to think I should convince people on the goals and make progress. That is what I thought is the right thing to do.
 
-I used to think of being wrong as failure.
+I've tried telling the future a few times. 5 years ago I was wrong. I was thinking product thinking would be a super-big movement. It was just another trend.
 
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-10-08 (writing@7412ff6d technical@7412ff6d slides@7412ff6d)
 - judges @7412ff6d: writing PASS, technical PASS, slides PASS
 
-**STATUS:** first-person guide passage at Day 2's turn (§ Why it agreed), slide 1 of 3. Maintainer-commissioned 2026-10-07: "write the failure based on the essay on not knowing what will be the real outcome. The feelings of uncertainty and not knowing what is right"; split into three slides on his call. Composed from the year-one essays. Not taught (simulation training). Owes the maintainer's read and a judging round.
+**STATUS:** first-person guide passage at Day 2's turn (§ Why it agreed), slide 1 of 3. Every line is the maintainer's own wording from his public posts, quoted verbatim (maintainer's direction 2026-10-13: public newsletter and blog posts, not the unpublished essays). Not taught (simulation training).
 
-**Guard (maintainer to confirm):** The essay's own wording, apart from the composed join "For most of my working life". If a join is untrue, cut it rather than reword it.
+**Guard:** quote only; a line that reads wrong is cut, never reworded. The two paragraphs come from two posts.
 
 <!-- backing -->
 
 **Claims**
-- `wanted-to-be-right` · detail · "Being right equated to creating value. Being right was progress." ← essay-expect-to-be-wrong
-- `wrong-as-failure` · detail · "I used to think of being wrong as failure." ← essay-expect-to-be-wrong
+- `convince-people` · detail · "I used to think I should convince people on the goals and make progress. That is what I thought is the right thing to do." ← post-checking-assumptions
+- `five-years-ago-wrong` · detail · "5 years ago I was wrong. I was thinking product thinking would be a super-big movement. It was just another trend." ← post-for-innovators
 
 **Sources**
-- essay-expect-to-be-wrong `[checked:2025-05-09 result:ATTESTED due:none]` attested:Antti 2025-05-09 year-one-essays — [practitioner direct, maintainer-attested] Antti Tevanlinna, *Expect to Be Wrong with the Vision and Ideas*, 2025-05-09, Drive, bosser strategy folder, year-one practitioner essays, § 2025-05-09. fallback: none.
+- post-checking-assumptions `[checked:2026-10-13 result:OK due:none]` https://anttitevanlinna.github.io/bosser/articles/checking-assumptions.html — [practitioner direct] Antti Tevanlinna, *Checking Assumptions: Knowing more over being right*, 2025-08-31, public post, live 2026-10-13. Also on LinkedIn. fallback: none.
+- post-for-innovators `[checked:2026-10-13 result:OK due:none]` https://anttitevanlinna.github.io/bosser/articles/for-innovators.html — [practitioner direct] Antti Tevanlinna, *For innovators*, 2026-02-22, public post, live 2026-10-13. fallback: none.
 
 <!-- /backing -->

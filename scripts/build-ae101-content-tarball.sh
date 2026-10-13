@@ -262,9 +262,13 @@ EXPECTED=(
   "content/skills/security-tools/SKILL.md"
   "content/skills/security-tools/check.sh"
 )
+# List once and grep a string: `tar | grep -q` under pipefail fails whenever
+# grep quits early and tar takes SIGPIPE (GNU tar on Linux), which reads a
+# present path as missing and a leaked one as absent.
+LISTING=$(tar tzf "$OUT")
 MISSING=()
 for path in "${EXPECTED[@]}"; do
-  tar tzf "$OUT" | grep -q "^\./${path}\$" || MISSING+=("$path")
+  grep -q "^\./${path}\$" <<<"$LISTING" || MISSING+=("$path")
 done
 if [ "${#MISSING[@]}" -gt 0 ]; then
   echo "ERROR — expected paths missing from archive:" >&2
@@ -281,7 +285,7 @@ FORBIDDEN=(
 )
 LEAKS=()
 for path in "${FORBIDDEN[@]}"; do
-  tar tzf "$OUT" | grep -q "^\./${path}\$" && LEAKS+=("$path")
+  grep -q "^\./${path}\$" <<<"$LISTING" && LEAKS+=("$path")
 done
 if [ "${#LEAKS[@]}" -gt 0 ]; then
   echo "ERROR — foreign Agents-101 material leaked into AE101 tarball:" >&2

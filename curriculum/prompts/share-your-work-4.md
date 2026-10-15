@@ -5,7 +5,7 @@ runtime: any
 origin: exercises/design-the-sharing-plan
 requires:
   - id: m7-jtbd
-    source: prompt:share-your-work-1
+    source: artifact:m7-jtbd
   - id: m7-branch
     source: external
   - id: m7-bottleneck

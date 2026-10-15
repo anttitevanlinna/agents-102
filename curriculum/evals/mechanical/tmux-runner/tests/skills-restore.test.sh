@@ -80,6 +80,8 @@ echo "[test] every chain script installs the guard"
 missing=""
 for c in "$ROOT"/chain-*.sh; do
   grep -q 'exec "\$HERE/chain-' "$c" && continue      # thin preset wrappers delegate
+  # Agents 101 writes only project-scoped skills inside the training folder.
+  [[ "$(basename "$c")" == chain-agents-101.sh ]] && continue
   grep -q '^chain_guard_skills' "$c" || missing="$missing $(basename "$c")"
 done
 check "no chain without chain_guard_skills" "${missing:-none}" "none"

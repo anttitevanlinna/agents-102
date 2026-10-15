@@ -10,16 +10,16 @@ Hire three agents to search. Three more to decide. The filesystem is the meeting
 ## What You'll Learn
 After this module, you will be able to:
 - **Design** a multi-agent setup in two shapes: independent agents finding sources into shared files and helper agents returning different views to one lead task
-- **Build** three source-finding agents, each speaking its own source's dialect, and a synthesizer that coordinates three <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> personas
+- **Build** three source-finding agents, each speaking its own source's dialect, and a synthesizer that coordinates three helper-agent personas
 - **Analyze** handoff failure modes (where conflicts get papered over, dialects clash, the synthesizer averages to beige)
 - **Create** a framework-guided answer to a real strategic question about your own challenge
 - **Evaluate** when splitting earns its keep, when independent tasks beat forked helpers, and when one good agent with a good prompt wins
 
 ## Start here
 
-Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at `~/Documents/agents-101/`.
+Start a fresh session or task at `~/Documents/agents-101/`.
 
-Module 3 writes its working outputs under `module-3/` and sharpens the root `./CLAUDE.md` in the Debrief, building on what Module 2 created at the training-directory root (`./CLAUDE.md`, `memory/`, `sources/`, `agents/`).
+Module 3 writes its working outputs under `module-3/` and sharpens the root instructions file in the Debrief, building on what Module 2 created at the training-directory root: instructions, `memory/`, `sources/`, and `agents/`.
 
 Last module you were the librarian. You searched Confluence, pulled from OneDrive, chased down practitioner articles (by hand). Today you hire three agents to do that search, and three more to decide what it means. What do you expect will get lost between them?
 
@@ -39,18 +39,18 @@ First, a small boundary shift. Most of this training's working artifacts are tex
 
 ## Debrief
 
-Five minutes. Claude reviews the session and sharpens the rules that govern how your agents divide the work. The evidence is the four agent prompts, the retrieval files, the synthesizer's briefing, and the conversation. Claude reviews them, rewrites the training-dir root rules file (`./CLAUDE.md`) in place, reports what changed. You push back on anything that's off.
+Five minutes. The agent reviews the session and sharpens the rules that govern how your agents divide the work. The evidence is the four agent prompts, the retrieval files, the synthesizer's briefing, and the conversation. The agent reviews them, rewrites the training-directory root instructions file in place, and reports what changed. You push back on anything that's off.
 
 {{prompt:a101-m3-debrief-handoff-rules}}
 
 
 ## Nothing here checks any of it
 
-Notice what this prompt insists on: harsh audit, two seams minimum, specific evidence (file, pass, what was lost). That last clause is the work. Without it, Claude's review settles into the diplomatic shape it likes: three things went well, one mild wobble, here's the cleaner version. Diplomatic is the failure mode at a handoff seam. The place where things actually go wrong is exactly where the model rounds the corner. The harder ask forces a real audit. You'll get fewer comfortable summaries and more uncomfortable specifics, which is what you want when the rules file has to govern next session's agents. The audit reads how your agents handed work to each other. Nothing in it reads the briefing and tells you whether it is true.
+Notice what this prompt insists on: harsh audit, two seams minimum, specific evidence (file, pass, what was lost). That last clause is the work. Without it, the LLM's review settles into the diplomatic shape it likes: three things went well, one mild wobble, here's the cleaner version. Diplomatic is the failure mode at a handoff seam. The place where things actually go wrong is exactly where the model rounds the corner. The harder ask forces a real audit. You'll get fewer comfortable summaries and more uncomfortable specifics, which is what you want when the rules file has to govern next session's agents. The audit reads how your agents handed work to each other. Nothing in it reads the briefing and tells you whether it is true.
 
 ## Push back on the summary
 
-Read Claude's summary. Push back where it's wrong. *"No, the planner and the reframer really did need to be separate."* *"You missed where the Confluence retriever kept normalising before writing."*
+Read the agent's summary. Push back where it's wrong. *"No, the planner and the reframer really did need to be separate."* *"You missed where the Confluence retriever kept normalising before writing."*
 
 ## The doubt stays. Hold it.
 
@@ -76,7 +76,7 @@ Memory is a working artefact, sharpened by what it bumps into.
 
 [Before Module 4](lectures/module-4-prework.md)
 
-Once the optional check and pre-reads are handled, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 4 starts fresh at `~/Documents/agents-101/`.
+Once the optional check and pre-reads are handled, end this module's session or task. Module 4 starts fresh at `~/Documents/agents-101/`.
 
 ## Bring to Module 4: what's the worst thing it could do with that access?
 

@@ -77,7 +77,7 @@ The room now knows something it didn't know when the exercise began: which disag
 
 {{prompt:joint-double-diamond-6}}
 
-From this point forward, every agent prompt begins by reading `midway-instructions.md`. The instruction file lives in the shared folder; it is not a participant-authored `CLAUDE.md` update.
+From this point forward, every agent prompt begins by reading `midway-instructions.md`. The instruction file lives in the shared folder; it is not a participant-authored root instructions update.
 
 ## Phase 7: Criticize and propose better ideas
 

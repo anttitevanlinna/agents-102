@@ -4,11 +4,9 @@
 
 **Session** *(new, "Module 1 - Getting going")*
 
-<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
+Start a new session or task at your training-directory root.
 
-```
-/rename m1-getting-going
-```
+Name it `m1-getting-going` if your runtime supports session names.
 
 **What you do:**
 
@@ -23,12 +21,12 @@ The baseline is boring on purpose. You need it boring so you can feel how much t
 Three small steps:
 
 1. **Open your LinkedIn profile in your browser.** The page with your photo, headline, About, Experience, Education, the lot. Your own profile, not someone else's.
-2. **Select all and copy.** Cmd+A then Cmd+C on Mac, Ctrl+A then Ctrl+C on Windows. Yes, the whole page (headers, navigation, the recommendations sidebar, all of it). It will look like a wall of text. That's fine. Claude reads through it.
+2. **Select all and copy.** Cmd+A then Cmd+C on Mac, Ctrl+A then Ctrl+C on Windows. Yes, the whole page (headers, navigation, the recommendations sidebar, all of it). It will look like a wall of text. That's fine. The agent reads through it.
 3. **Drop your LinkedIn text into the prompt below, after the colon. Send as one message.**
 
 {{prompt:personal-site-with-guardrails-1}}
 
-The mess is the point. Claude sorts the signal from the page chrome. If you over-curate the input now, you'll never feel how much the *later* context changes the output.
+The mess is the point. The agent sorts the signal from the page chrome. If you over-curate the input now, you'll never feel how much the *later* context changes the output.
 
 Watch the result. It works. It looks okay. It's also generic. The site a competent LLM produces from a résumé when it doesn't know what matters. Every later phase overwrites `module-1/site.html`, so the latest version always lives at that path.
 
@@ -42,7 +40,7 @@ The goal of this site isn't to sell anything. It's the opposite: when a colleagu
 
 Donald Miller's **StoryBrand** is the obvious framework for *"what kind of help is this person to others."* Half of LinkedIn uses it, and it shows, badly, because most consultants run StoryBrand straight as a sales pitch. We'll invoke it explicitly AND **tune** it: the hero isn't you, it's the colleague. Skip the sales-funnel beats (Stakes, Call-to-Action). What's left is the part that actually says *"I'm the greatest colleague ever; let's work more together."*
 
-Notice the move you're about to make: **name the framework, tune it, ask Claude to run it.** The model already knows StoryBrand. You don't have to reproduce the questions. Same trick for Toyota Kata, SWOT, Roger Martin's strategic-choices, Jobs-to-be-Done. *"Hey Claude, apply X to Y, but tune for Z."* That's the move. Module 1 starts here; you'll use it everywhere.
+Notice the move you're about to make: **name the framework, tune it, ask the agent to run it.** The LLM already knows StoryBrand. You don't have to reproduce the questions. Same trick for Toyota Kata, SWOT, Roger Martin's strategic-choices, Jobs-to-be-Done. *"Apply X to Y, but tune for Z."* That's the move. Module 1 starts here; you'll use it everywhere.
 
 ## Keep yourself the protagonist, then run the beats
 
@@ -50,19 +48,19 @@ One trap to name first. StoryBrand puts the customer in the hero slot. If you le
 
 One liners and short answers usually give enough clue. Make it quick and iterate.
 
-Ask Claude to apply tuned StoryBrand to the help section, one beat at a time.
+Ask the agent to apply tuned StoryBrand to the help section, one beat at a time.
 
 {{prompt:personal-site-with-guardrails-2}}
 
-Claude walks you through the five tuned beats. Answer each in your own words; don't polish. After the last answer, Claude regenerates. Read the new version. Same framework half of LinkedIn uses, retuned for *"let's work more together,"* with you still the subject of the page.
+The agent walks you through the five tuned beats. Answer each in your own words; don't polish. After the last answer, the agent regenerates. Read the new version. Same framework half of LinkedIn uses, retuned for *"let's work more together,"* with you still the subject of the page.
 
 ## Phase 3: Strengths
 
 *8 min*
 
-Your strengths shape how the whole site sounds. List 3-5 in one line each, Claude takes the rest from there.
+Your strengths shape how the whole site sounds. List 3-5 in one line each; the agent takes the rest from there.
 
-Tell Claude your strengths and have it regenerate the site.
+Tell the agent your strengths and have it regenerate the site.
 
 {{prompt:personal-site-with-guardrails-3}}
 
@@ -75,13 +73,13 @@ Read the regenerated site. Same StoryBrand spine, sharper because the site now s
 
 Complaining is easier than praising. Most people can list what drives them mad at work in thirty seconds; the same people will stall for five minutes if asked what they're great at. The fix isn't to try harder on the praise; it's to **invert the easy thing**. **Anti-branding.** Adam Grant calls a version of this the *energy audit*; Patagonia famously did *"Don't Buy This Jacket"*; Taleb calls it *via negativa*. Same move: define what you're for by inverting what you're against. Then make the inverted version the spine.
 
-Same agentic pattern again: **name the framework, tune it, ask Claude to run it.** Second time you're using it in this exercise; at this point it's a move you own.
+Same agentic pattern again: **name the framework, tune it, ask the agent to run it.** Second time you're using it in this exercise; at this point it's a move you own.
 
 ## List what you hate, then invert it
 
-Give Claude a few specific things you hate about work. Not categories ("bureaucracy," "vague strategy") but the actual things ("meetings where nobody disagrees," "decks where every page says 'iterating'"). Rough beats polished. The vaguer the input, the more the output drifts back to statistical-default you.
+Give the agent a few specific things you hate about work. Not categories ("bureaucracy," "vague strategy") but the actual things ("meetings where nobody disagrees," "decks where every page says 'iterating'"). Rough beats polished. The vaguer the input, the more the output drifts back to statistical-default you.
 
-Ask Claude to apply anti-branding using your hate list.
+Ask the agent to apply anti-branding using your hate list.
 
 {{prompt:personal-site-with-guardrails-4}}
 
@@ -94,14 +92,14 @@ Read the new version. The site gets sharper. Two frameworks now layered: StoryBr
 
 Reading the old version yourself would take ten minutes and probably reveal nothing. You wrote it, so you'll skim past what's missing.
 
-Ask Claude to compare versions and name three generic claims.
+Ask the agent to compare versions and name three generic claims.
 
 {{prompt:personal-site-with-guardrails-5}}
 
-One thing to know: Claude is reading its own work in the chat where it just wrote it. That's a warm-session self-audit, and the LLM tends to be lovely about its own prior output. If the three picks come back soft (*"could be a touch more specific,"* not *"this whole line is wrong"*), ask Claude to over-flag with no charity and run it again. Or open a fresh task, paste just the Phase 1 site cold, and run the same prompt without the rest of the context riding along. Cold reads catch sharper picks.
+One thing to know: the agent is reading its own work in the chat where it just wrote it. That's a warm-session self-audit, and the LLM tends to be lovely about its own prior output. If the three picks come back soft (*"could be a touch more specific,"* not *"this whole line is wrong"*), ask the agent to over-flag with no charity and run it again. Or open a fresh task, paste just the Phase 1 site cold, and run the same prompt without the rest of the context riding along. Cold reads catch sharper picks.
 
 
-Read Claude's three answers. Those are the LLM filling in gaps with generic guesses: what most LinkedIn profiles of people like you look like, not what's actually true of you. Not a bug. It's what happens when context is thin. Context fixed it. You'll meet this mechanism again in Module 5 when the stakes are higher.
+Read the agent's three answers. Those are the LLM filling in gaps with generic guesses: what most LinkedIn profiles of people like you look like, not what's actually true of you. Not a bug. It's what happens when context is thin. Context fixed it. You'll meet this mechanism again in Module 5 when the stakes are higher.
 
 No regeneration in this phase. Just observation.
 
@@ -113,20 +111,20 @@ Now make it yours. Color, layout, tone, a quote at the top, a section that shoul
 
 Open prompts. You drive.
 
-**Tip: steal a look and feel by naming the site.** Claude knows the design DNA of famous sites by name. *"Make it look like Stripe's design language"* / *"use Linear's typography and spacing"* / *"make it feel like Anthropic.com"* / *"go full Patagonia (earthy, no-nonsense, lots of white space)"* / *"channel Craigslist if Craigslist had taste"*. All valid one-line moves. You don't need to know CSS; you need to know the site whose feel you'd happily borrow. Same agentic move as the frameworks: name the reference, ask Claude to apply it. *"Hey Claude, restyle `module-1/site.html` to feel like X."* Try two or three, keep the one that lands.
+**Tip: steal a look and feel by naming the site.** The LLM knows the design DNA of famous sites by name. *"Make it look like Stripe's design language"* / *"use Linear's typography and spacing"* / *"make it feel like Anthropic.com"* / *"go full Patagonia (earthy, no-nonsense, lots of white space)"* / *"channel Craigslist if Craigslist had taste"*. All valid one-line moves. You don't need to know CSS; you need to know the site whose feel you'd happily borrow. Same agentic move as the frameworks: name the reference, ask the agent to apply it. *"Restyle `module-1/site.html` to feel like X."* Try two or three, keep the one that lands.
 
 ## Phase 7: Close, package what you learned
 
 *4 min*
 
-The site is done. The agent behavior is not. What's left is to *capture the move* so you can do it again on someone else's bio next week, without re-explaining everything to a fresh Claude. You'll write the first version of a generation rules file from what you just did. The retro (in the Debrief that follows) will sharpen it. Two passes; the second is where the file starts compounding.
+The site is done. The agent behavior is not. What's left is to *capture the move* so you can do it again on someone else's bio next week, without re-explaining everything to a fresh agent. You'll write the first version of a generation rules file from what you just did. The retro (in the Debrief that follows) will sharpen it. Two passes; the second is where the file starts compounding.
 
-Ask Claude to write your first generation rules file.
+Ask the agent to write your first generation rules file.
 
 {{prompt:personal-site-with-guardrails-6}}
 
 
-Claude writes the file and summarises in chat. Read the summary, then open `module-1/personal-brand-generation.md` and inspect the first two or three rules end to end. The chat summary rounds corners; the file is the thing that travels. Push back on anything in the file that doesn't match what you actually did. That's your first packaged agent behavior: text the model can re-read at the start of any future personal-brand task. Different name from CLAUDE.md (you'll meet that in Module 2), same fundamental mechanism: instructions in a file.
+The agent writes the file and summarises in chat. Read the summary, then open `module-1/personal-brand-generation.md` and inspect the first two or three rules end to end. The chat summary rounds corners; the file is the thing that travels. Push back on anything in the file that doesn't match what you actually did. That's your first packaged agent behavior: text the model can re-read at the start of any future personal-brand task. Different scope from the root instructions file you'll meet in Module 2, same fundamental mechanism: instructions in a file.
 
 ## See the mechanism repeat in every phase
 

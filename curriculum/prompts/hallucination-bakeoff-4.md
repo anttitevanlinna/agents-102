@@ -1,7 +1,7 @@
 ---
 key: hallucination-bakeoff-4
 dest: Claude Code
-runtime: any
+runtime: cowork
 origin: exercises/hallucination-bakeoff
 requires:
   - id: m5-briefing

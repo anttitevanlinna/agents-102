@@ -18,7 +18,7 @@ Pick one. Not all three. Something you'd actually read tomorrow morning.
 
 *8 min*
 
-For the morning-plan job, you'll want your calendar connected. Open Claude Code desktop. Click the **+** next to the prompt box (or go to **Settings → Connectors**). Enable Google Calendar or Microsoft Outlook Calendar. Sign in with your work account.
+For the morning-plan job, you'll want your calendar connected. Open the connector settings in your agent runtime. Enable Google Calendar or Microsoft Outlook Calendar, then sign in with your work account. If your runtime has no calendar connector, use a calendar screenshot or exported agenda as the input.
 
 For the risk-scan and next-move jobs, no connector needed, the agent reads your memory and that's enough.
 
@@ -28,23 +28,23 @@ For the risk-scan and next-move jobs, no connector needed, the agent reads your 
 
 Your daily output shouldn't read like a terminal dump. Steal the look and feel from your company's website (colours, typography, headers, the voice) and store it as a pattern the agent reuses forever. Same lesson as the memory: text on disk, referenced by name.
 
-Remember Module 1's `module-1/site.html`, and the prework `prework/snake.html` before it? Claude writes HTML files. You're about to give those files a house style.
+Remember Module 1's `module-1/site.html`, and the prework `prework/snake.html` before it? The agent writes HTML files. You're about to give those files a house style.
 
-Ask Claude to extract the visual pattern from your company website and write it as a plain-language style file the agent reuses forever.
+Ask the agent to extract the visual pattern from your company website and write it as a plain-language style file the agent reuses forever.
 
 {{prompt:personal-agent-homework-1}}
 
-Give Claude the URL or paste a key page. It extracts, writes `./style.md`, appends the `./CLAUDE.md` rule. Read both. Edit `./style.md` where Claude missed something, if your brand has a hard rule ("never pure black," "always serif headings"), put it in. The rule you just added to `./CLAUDE.md` means every agent you build from here on will use this style when it produces HTML.
+Give the agent the URL or paste a key page. It extracts the pattern, writes `./style.md`, and appends the rule to the root instructions file. Read both. Edit `./style.md` where the agent missed something. If your brand has a hard rule ("never pure black," "always serif headings"), put it in. The rule you just added means every agent you build from here on will use this style when it produces HTML.
 
 ## Phase 3: Write the agent's instructions
 
 *10 min*
 
-In your training directory, create `module-2/morning-agent/`. Ask Claude to interview you on the job, the output shape, and the hard boundary, then write the agent's instruction file.
+In your training directory, create `module-2/morning-agent/`. Ask the agent to interview you on the job, the output shape, and the hard boundary, then write the new agent's instruction file.
 
 {{prompt:personal-agent-homework-2}}
 
-Claude asks, you answer, the file lands. Read it. Edit anything that doesn't sound like you.
+The agent asks, you answer, the file lands. Read it. Edit anything that doesn't sound like you.
 
 ## Phase 4: Schedule it
 
@@ -56,7 +56,7 @@ In the desktop app, open the **Schedule** sidebar. Click **New task → New loca
 - **Frequency:** Daily at the time you actually want it to fire, 7:00 AM for most people
 - **Prompt:** the scheduling prompt on this slide.
 
-Ask Claude to read the morning brief, follow the rules, and write the daily output to `latest.html`.
+Ask the agent to read the morning brief, follow the rules, and write the daily output to `latest.html`.
 
 {{prompt:personal-agent-homework-3}}
 
@@ -78,7 +78,7 @@ The memory is alive now. What the agent misses today is a prompt to sharpen the 
 
 **What happened:**
 
-Your memory stops being a snapshot and starts being a system. Every morning the agent reads it, pushes something back at you, in your own house style, not Claude's, and gives you one more piece of evidence about what's sharp and what's soft. A week of this and the memory has more edge. The HTML belongs to the company, not Claude.
+Your memory stops being a snapshot and starts being a system. Every morning the agent reads it, pushes something back at you in your own house style, and gives you one more piece of evidence about what's sharp and what's soft. A week of this and the memory has more edge. The HTML belongs to the company, not the agent provider.
 
 **The point:**
 

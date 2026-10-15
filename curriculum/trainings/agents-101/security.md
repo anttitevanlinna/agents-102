@@ -18,9 +18,9 @@ After this module, you will be able to:
 
 ## Start here
 
-Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at `~/Documents/agents-101/`.
+Start a fresh session or task at `~/Documents/agents-101/`.
 
-Module 4 reads the Module 3 system, the root `./CLAUDE.md`, and the policy reference files under `module-4/policies/`. It writes reports under `outputs/` and compounds security operating rules back into `./CLAUDE.md`.
+Module 4 reads the Module 3 system, the root instructions file, and the policy reference files under `module-4/policies/`. It writes reports under `outputs/` and compounds security operating rules back into the root instructions file.
 
 You've had three agents search your company and three more decide. What doesn't sit right about that, from a risk angle? Name the thing you'd want to check before letting this near a real stakeholder.
 
@@ -34,13 +34,13 @@ You've had three agents search your company and three more decide. What doesn't 
 
 ## Debrief
 
-Five minutes. Claude reviews the audit session and compounds one to five rules into the root `CLAUDE.md` for future sessions. The evidence is what the audit produced: the raw policy report, the packaged policy report, the security report with its residual decision, the "I can't tell" rows, and the mitigation you applied. Claude updates `CLAUDE.md` and reports what changed. You push back on anything that's off.
+Five minutes. The agent reviews the audit session and compounds one to five rules into the root instructions file for future sessions. The evidence is what the audit produced: the raw policy report, the packaged policy report, the security report with its residual decision, the "I can't tell" rows, and the mitigation you applied. The agent updates the instructions and reports what changed. You push back on anything that's off.
 
 {{prompt:a101-m4-debrief-security-rules}}
 
-Read Claude's summary. Push back where it's wrong. *"That rule wasn't ambiguous, I just didn't have the evidence"* / *"that residual is too vague, name the file or behaviour."* The artifacts are the security report and the operating rules in `./CLAUDE.md`: evidence plus future behaviour. The unease stays. Nothing today resolves it. That's the curriculum.
+Read the agent's summary. Push back where it's wrong. *"That rule wasn't ambiguous, I just didn't have the evidence"* / *"that residual is too vague, name the file or behaviour."* The artifacts are the security report and the operating rules in the root instructions file: evidence plus future behaviour. The unease stays. Nothing today resolves it. That's the curriculum.
 
-Two things travel: the reusable check exists, and `./CLAUDE.md` now tells future sessions how to behave around the risk you found. Point the check at the other agents you've built. You'll find different "I can't tell" rows everywhere you look. The next agent you build will have a stricter starting line because of this one.
+Two things travel: the reusable check exists, and the root instructions file now tells future sessions how to behave around the risk you found. Point the check at the other agents you've built. You'll find different "I can't tell" rows everywhere you look. The next agent you build will have a stricter starting line because of this one.
 
 ## Build More Skills For Recurring How
 
@@ -68,7 +68,7 @@ Read Mata v. Avianca (S.D.N.Y. 2023) and the Deloitte Australia / DEWR welfare-c
 
 [The Missing Check](lectures/module-5-prework.md)
 
-Once the two sentences are saved, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 5 starts fresh at `~/Documents/agents-101/`.
+Once the two sentences are saved, end this module's session or task. Module 5 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
 The agent is scoped, the residual risk is named. But the output *inside* the scope. Can you trust what it actually says?
@@ -102,7 +102,7 @@ The agent is scoped, the residual risk is named. But the output *inside* the sco
 | Module 4 policy references | `module-4/policies/*.md` | Prework starter; customer prep | M4 raw policy run and reusable security check |
 | Reusable security check | personal security skill in the active runtime | M4 author-security-skill exercise | M4 audit; M7 skill-sharing preview; post-training reuse |
 | Module 4 security outputs | `outputs/policy-report-raw.md`, `outputs/policy-report.md`, `outputs/security-report.md` | M4 policy run and agent audit | M4 Debrief; M5-M8 operating-rule context |
-| Root security rules | `./CLAUDE.md` security operating rules | M4 Debrief | M5-M8 fresh sessions as risk memory |
+| Root security rules | security operating rules in the active runtime's root instructions file | M4 Debrief | M5-M8 fresh sessions as risk memory |
 
 **Plug Points (trainer):**
 
@@ -122,10 +122,11 @@ The agent is scoped, the residual risk is named. But the output *inside* the sco
 - Belief — name what you don't know — lands implicitly in the "I can't tell" column. Not announced; earned by the student writing one themselves.
 - Belief — practice beats external proof — anchors the lecture's core message. Named in maintainer-space, experienced in body.
 
-**Runtime verification:** Claude Code's personal-skill path and automatic or direct invocation are documentation-backed below. The [M4 run sheet](trainer-modules.md#m4-glance) owns the remaining pre-delivery Cowork authoring/load rehearsal and the fallback if packaging fails.
+**Runtime verification:** Claude Code and GitHub Copilot skill paths and invocation are documentation-backed below. The [M4 run sheet](trainer-modules.md#m4-glance) owns the remaining pre-delivery runtime rehearsal and the fallback if packaging fails.
 
 **Sources:**
 - `[checked:2026-08-23 result:OK due:cohort]` https://code.claude.com/docs/en/skills — [vendor docs, capability] personal skills live at `~/.claude/skills/<skill-name>/SKILL.md`; Claude can invoke a matching skill automatically or the user can invoke it directly. fallback: follow the documentation index at https://code.claude.com/docs/llms.txt to the current Skills page.
+- `[checked:2026-10-08 result:OK due:cohort]` https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills — [vendor docs, capability] project skills can live at `.agents/skills/<skill-name>/SKILL.md`; GitHub Copilot can load a matching skill automatically or invoke it with `/skill-name`. fallback: open the current GitHub Copilot customization documentation and locate Agent skills.
 
 **Customer prep (sold separately):**
 - Customer-policy reference distillation — 0.5–1 day of Antti's time per customer. Inputs: data-usage policy, security policy, AI-use policy (optional), sector rules. Output: `module-4/policies/*.md` reference files the student runs raw and then packages. The reusable check the student authors during Module 4 is also theirs to keep; it travels with them after training.

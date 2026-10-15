@@ -82,9 +82,9 @@ Do not start with your biggest process. Start with one repeatable seam in real w
 
 ## Prompt
 
-Ask Claude to turn the habit into your own trigger list:
+Ask the agent to turn the habit into your own trigger list:
 
-**Prompt** *(Claude Code)*
+**Prompt**
 
 ```
 Help me create my personal agent trigger list.

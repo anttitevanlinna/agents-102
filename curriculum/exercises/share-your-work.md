@@ -4,11 +4,9 @@
 
 **Session** *(new, "Module 7 - Personal to team")*
 
-<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
+Start a new session or task at your training-directory root.
 
-```
-/rename m7-personal-to-team
-```
+Name it `m7-personal-to-team` if your runtime supports session names.
 
 Your memory has been working for you for days now. It catches things you'd have missed, keeps a tone you taught it, and produces something you check before meetings. The question arrives on its own: *could this help someone else?*
 
@@ -20,7 +18,7 @@ The starting question is theirs, not yours: *what job is my teammate trying to g
 
 ## Interview for the job
 
-This is a heavy read across the working set, and a shallow confident finish is as risky as over-reading. If Claude ranges too wide, interrupt with *"tell me what you've found so far, narrow to the files that bear on this teammate, then continue."* If it declares the job after a thin pass, say *"there's more here. Keep reading before you settle the hypothesis."*
+This is a heavy read across the working set, and a shallow confident finish is as risky as over-reading. If the agent ranges too wide, interrupt with *"tell me what you've found so far, narrow to the files that bear on this teammate, then continue."* If it declares the job after a thin pass, say *"there's more here. Keep reading before you settle the hypothesis."*
 
 <div class="rt-code">
 
@@ -37,11 +35,11 @@ Read `module-7/jtbd.md`. The test is specificity: does it name one teammate, the
 
 ## Pick against the outcome
 
-Claude then compares candidates from `patterns/personal-to-team-patterns.md` against that outcome and writes your choice to `module-7/branch.md`.
+The agent then compares candidates from `patterns/personal-to-team-patterns.md` against that outcome and writes your choice to `module-7/branch.md`.
 
 The four sharing strategies are:
 
-1. **Share the context.** Your `memory/`, `sources/`, `CLAUDE.md`, and `style.md` travel. Teammates build on top.
+1. **Share the context.** Your `memory/`, `sources/`, root instructions, and `style.md` travel. Teammates build on top.
 2. **Share a skill.** Extract one scoped capability. Teammates plug it in.
 3. **Share the output (push).** Schedule the agent. Output lands where the team looks.
 4. **Share an interface (pull).** Wrap the agent. Teammates invoke it through a bot, mention, form, or endpoint.

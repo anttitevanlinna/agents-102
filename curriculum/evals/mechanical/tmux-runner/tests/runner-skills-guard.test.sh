@@ -69,6 +69,9 @@ miss=""
 # Every run*.sh, not a list: a hand-kept list is how the generic run.sh sat
 # unguarded and unnoticed until 2026-09-26.
 for r in "$ROOT"/run*.sh; do
+  # Agents 101 installs into the selected runtime's project-scoped skills
+  # directory inside the training folder, never into ~/.claude/skills.
+  [[ "$(basename "$r")" == run-a101.sh ]] && continue
   grep -q '^runner_guard_skills ' "$r" || miss="$miss $(basename "$r"):guard"
   awk '/^cleanup\(\) \{/{on=1} on&&/runner_restore_skills/{f=1} on&&/^\}/{on=0} END{exit !f}' "$r" || miss="$miss $(basename "$r"):restore"
 done

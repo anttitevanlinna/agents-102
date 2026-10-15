@@ -22,11 +22,11 @@ Not every useful agent has all five at full strength. A small agent may only rea
 
 Picture a Slack bot running in AWS.
 
-Someone asks it a work question in a channel. The bot sends the request into a small backend service. That service uses the Claude Code SDK as the runtime: the layer that lets the agent read the right files, follow the project rules, call tools, write an answer, and return it to Slack.
+Someone asks it a work question in a channel. The bot sends the request into a small backend service. That service uses an agent SDK as the runtime: the layer that lets the agent read the right files, follow the project rules, call tools, write an answer, and return it to Slack.
 
 In effect, the agent is not "the Slack bot." The Slack bot is the interface.
 
-The agent is the whole arrangement: Claude as the LLM, the context it can read, the tools it may call, the goal it is trying to complete, the checks it runs, the AWS service that keeps it alive, and the Slack surface where people meet it.
+The agent is the whole arrangement: the LLM, the context it can read, the tools it may call, the goal it is trying to complete, the checks it runs, the AWS service that keeps it alive, and the Slack surface where people meet it.
 
 That is why the word agent can feel slippery. Sometimes people use it to mean the LLM. Sometimes they mean the bot. Sometimes they mean the backend service. For useful work, it helps to see the full shape.
 
@@ -44,17 +44,17 @@ An agent is not one thing. It is a few pieces arranged around the LLM.
 
 **The loop** is how the agent keeps going: plan, act, observe what happened, revise, continue. A weak loop drifts. A strong loop leaves artifacts you can inspect.
 
-**The checks** decide whether the work is good enough to trust or continue. They can be simple source checks, rules in `./CLAUDE.md`, tests, judges, evals, or human review.
+**The checks** decide whether the work is good enough to trust or continue. They can be simple source checks, rules in the root instructions file, tests, judges, evals, or human review.
 
 **The boundary** says what the agent may read, change, propose, or do. It also says when the agent must stop and hand the decision back to you.
 
-**The interface** is where you meet the agent: a chat, a scheduled run, a Cowork task, a Claude Code session, a workflow button, a shared document, or an output someone reads.
+**The interface** is where you meet the agent: a chat, a scheduled run, an agent session, a workflow button, a shared document, or an output someone reads.
 
 Most failures happen because one part is missing or vague. No context: generic output. No tools: trapped in chat. No goal: busy answer, no outcome. No checks: plausible but wrong. No boundary: unsafe action. No interface: useful work nobody sees.
 
 ## LLM vs chat
 
-You've chatted with ChatGPT, Claude, or Copilot. A single conversation: you type a prompt, it replies, you type again, it replies. The conversation ends when you close the chat window.
+You've chatted with an LLM. A single conversation: you type a prompt, it replies, you type again, it replies. The conversation ends when you close the chat window.
 
 That's the LLM doing its core thing: reading a pile of text (the conversation so far) and predicting the next bit of text that fits. No magic. Good pattern matching, at enormous scale.
 
@@ -64,7 +64,7 @@ Two ideas worth separating, because most people collapse them and then get confu
 
 **The chat** is what surrounds the model. Your messages plus its replies, held in a single running window, fed back in every time you hit send. That's why it can "remember" earlier in the conversation: not because it has memory, but because the whole conversation is re-read on every turn. The illusion of memory is a trick of the interface.
 
-Close the chat window. That conversation ends. Start a new one. The model has amnesia from turn one. This is important. It means "how do I make Claude remember?" is the wrong question. The right question is: *what context do I arrange for it to re-read?*
+Close the chat window. That conversation ends. Start a new one. The model has amnesia from turn one. This is important. It means "how do I make the LLM remember?" is the wrong question. The right question is: *what context do I arrange for it to re-read?*
 
 ## What changes when you build a system
 
@@ -74,7 +74,7 @@ If you write instructions into a file the model reads at the start of every conv
 
 If you add **connectors, actions, and tools**, the things the model can call to fetch data from your work apps, do things in them, write files, run code, or talk to other agents, it stops being a chatbot and starts being an agent. A chatbot has words. An agent has words and hands. That's the step-change.
 
-The three names cover roughly the same surface area, just from different angles. **Connectors** are the wires into your work apps (calendar, email, files). That's the word you'll see in Claude's settings. **Actions** are the verbs an agent can perform with effects in the world (send the email, create the ticket, file the document). That's the word Power Automate, Zapier, and most low-code platforms use. **Tools** is the umbrella term agent-builders use for *anything* the model can call. You don't need to memorise the distinction; you'll meet each as you go.
+The three names cover roughly the same surface area, just from different angles. **Connectors** are the wires into your work apps (calendar, email, files). **Actions** are the verbs an agent can perform with effects in the world (send the email, create the ticket, file the document). That's the word Power Automate, Zapier, and most low-code platforms use. **Tools** is the umbrella term agent-builders use for *anything* the model can call. You don't need to memorise the distinction; you'll meet each as you go.
 
 If the agent runs on a schedule, chains to another agent, or decides what to do next based on what it finds, now it's operating without you sitting there. That's the leap this training is about. You already use email filters and calendar reminders. An agent is the same basic shape, just capable of a much wider set of tasks. And a much wider set of failure modes.
 
@@ -82,7 +82,7 @@ If the agent runs on a schedule, chains to another agent, or decides what to do 
 
 Each module adds the next part of the answer:
 
-- **Module 1:** Context is the mechanism. You already have a taste from the prework. The snake game and the meetings summary both happened because Claude read your input and produced output shaped by it.
+- **Module 1:** Context is the mechanism. You already have a taste from the prework. The snake game and the meetings summary both happened because the agent read your input and produced output shaped by it.
 - **Module 2:** Context in a file, growing over time (the "memory"). Where chat's amnesia gets cured.
 - **Module 3:** Multiple agents doing different jobs, passing work between them.
 - **Module 4:** Tools with boundaries: skills.

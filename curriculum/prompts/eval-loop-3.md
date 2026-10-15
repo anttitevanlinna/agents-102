@@ -7,4 +7,4 @@ requires:
   - id: m6-run-artifacts
     source: prompt:eval-loop-2
 ---
-Claude: can we scale this by adding more generation tracks to try more options faster?
+Can we scale this by adding more generation tracks to try more options faster?

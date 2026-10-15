@@ -6,15 +6,15 @@ origin: exercises/author-security-skill
 requires:
   - id: working-tree-scaffold
     source: prompt:a101-prework-extract-tarball
-  - id: root-claude-md
+  - id: root-instructions
     source: prompt:a101-m2-debrief-claude-md
   - id: m3-agent-work
-    source: prompt:three-minds-one-synthesis-1
+    source: artifact:m3-agent-work
 produces:
   - id: policy-report-raw
     location: outputs/policy-report-raw.md
 ---
-Read everything in module-4/policies/. Use those policy references to audit the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.
+Read everything in module-4/policies/. Use those policy references to audit the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root {{artifact:root-instructions}}, and the multi-agent runs in module-3/stances/.
 
 For each rule you can derive from the policy files, produce one row in a report: rule name, one-line description, verdict (compliant / violating / "I can't tell"), and one line of evidence from my actual files for that verdict. If you can't tell, say what evidence you'd need to decide.
 

@@ -1,7 +1,7 @@
 ---
 key: three-minds-one-synthesis-2
 dest: Claude Code
-runtime: any
+runtime: cowork
 origin: exercises/three-minds-one-synthesis
 requires:
   - id: crux-md

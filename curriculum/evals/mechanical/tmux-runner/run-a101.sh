@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
-# run-a101.sh — drive one Agents 101 scenario (prework through M6) against the
-# synthetic persona kit. One parameterized runner, not three near-copies.
+# run-a101.sh — drive one Agents 101 scenario against a selected case kit.
+# One parameterized runner, not per-case or per-runtime copies.
 #
-# Agents 101 has no code SUT — it has a *person*. The synthetic persona kit
-# (fixtures/agents-101-synthetic/) stands in: Ingrid Solberg, VP Product Ops at
-# the fictional Nordveil, deciding usage-based pricing. The training directory
-# is a SINGLE growing folder (not per-module worktrees like AE101/lemmings).
-# Each module runs in a FRESH claude session at the same cwd; artifacts
-# compound on disk.
+# Agents 101 has no code SUT — it has a *person*. A case kit supplies the
+# persona, challenge, sources, answers, case-specific assertions and maximum
+# module. The training directory is a SINGLE growing folder (not per-module
+# worktrees like AE101/lemmings). Each module runs in a fresh runtime session
+# at the same cwd; artifacts compound on disk.
 #
 # Token substitution: scenarios reference synthetic-case tokens (<LINKEDIN>,
 # <MATERIAL_DIR>, <M2_CHALLENGE>, ...). This runner expands them from the
@@ -21,54 +20,88 @@
 # rules files) not git commits — so assertions are file-exists + grep-evidence
 # + mtime-advanced, not new-commit/tree-hash.
 #
-# Usage: run-a101.sh --module {prework|m1|m2|m3|m4a|m4b|m5|m6} [--cwd DIR] [--material DIR]
+# Usage: run-a101.sh --module {prework|m1|m2|m3|m4a|m4b|m5|m6|m7|m8} [--case nordveil|finnish-psychologist] [--runtime cli|codex-cli|copilot-cli] [--from-turn N] [--cwd DIR] [--material DIR]
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$HERE/lib/resolve-prompt.sh"
-source "$HERE/lib/tmux.sh"
-source "$HERE/lib/sync.sh"
 source "$HERE/lib/chain.sh"
+source "$HERE/lib/transport.sh"
+source "$HERE/lib/a101-controls.sh"
+source "$HERE/lib/a101-case.sh"
 source "$HERE/lib/assertions.sh"
 
-KIT="$HERE/fixtures/agents-101-synthetic"
 module=""
 sut_cwd="$HOME/Documents/agents-101-runner"
 material_dir="$HOME/Documents/agents-101-runner-material"
+runtime="cli"
+print_runtime=0
+case_name="nordveil"
+print_case=0
+print_case_dir=0
+from_turn=1
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --module)   module="$2"; shift 2 ;;
     --cwd)      sut_cwd="$2"; shift 2 ;;
     --material) material_dir="$2"; shift 2 ;;
+    --runtime)  runtime="$2"; shift 2 ;;
+    --case)     case_name="$2"; shift 2 ;;
+    --print-runtime) print_runtime=1; shift ;;
+    --print-case) print_case=1; shift ;;
+    --print-case-dir) print_case_dir=1; shift ;;
+    --from-turn) from_turn="$2"; shift 2 ;;
     *) echo "unknown arg: $1" >&2; exit 2 ;;
   esac
 done
+[[ "$from_turn" =~ ^[1-9][0-9]*$ ]] || { echo "invalid --from-turn: $from_turn" >&2; exit 2; }
+
+a101_load_case "$HERE" "$case_name"
+KIT="$A101_CASE_DIR"
+
+case "$runtime" in
+  cli|codex-cli|copilot-cli) ;;
+  *) echo "unknown Agents 101 runner runtime: $runtime (expected cli, codex-cli, or copilot-cli)" >&2; exit 2 ;;
+esac
+if [[ $print_runtime -eq 1 ]]; then
+  printf '%s\n' "$runtime"
+  exit 0
+fi
+if [[ $print_case -eq 1 ]]; then
+  printf '%s\n' "$A101_CASE"
+  exit 0
+fi
+if [[ $print_case_dir -eq 1 ]]; then
+  printf '%s\n' "$A101_CASE_DIR"
+  exit 0
+fi
+A101_RUNTIME_PROFILE="$runtime"
+export A101_RUNTIME_PROFILE
+ROOT_INSTRUCTIONS_REL="$(artifact_path root-instructions)"
+PROJECT_SKILLS_REL="$(artifact_path project-skills)"
 
 case "$module" in
-  prework|m1|m2|m3|m4a|m4b|m5|m6) ;;
-  *) echo "usage: $0 --module {prework|m1|m2|m3|m4a|m4b|m5|m6} [--cwd DIR] [--material DIR]" >&2; exit 2 ;;
+  prework|m1|m2|m3|m4a|m4b|m5|m6|m7|m8) ;;
+  *) echo "usage: $0 --module {prework|m1|m2|m3|m4a|m4b|m5|m6|m7|m8} [--case nordveil|finnish-psychologist] [--runtime cli|codex-cli|copilot-cli] [--from-turn N] [--cwd DIR] [--material DIR]" >&2; exit 2 ;;
 esac
+a101_case_supports_module "$module" || {
+  echo "Agents 101 case '$A101_CASE' supports through $A101_MAX_MODULE, not $module" >&2
+  exit 2
+}
 [[ -d "$sut_cwd" ]]      || { echo "missing training dir: $sut_cwd (run arrange-agents-101.sh first)" >&2; exit 2; }
 [[ -d "$material_dir" ]] || { echo "missing material dir: $material_dir (run arrange-agents-101.sh first)" >&2; exit 2; }
 
 scenario="$HERE/scenarios/a101-$module.txt"
 [[ -f "$scenario" ]] || { echo "missing scenario: $scenario" >&2; exit 2; }
 
-# A101 turns are all tool-heavy (file writes, fetch, subagents) with no human
-# to approve. Force a permissive mode. bypassPermissions is banned (startup
-# dialog hangs the runner — README § Env knobs).
-CLAUDE_CMD="${CLAUDE_CMD:-claude --permission-mode auto}"
-
 run_id="$(date +%Y%m%d-%H%M%S)-$$"
-export RUNNER_TMUX_SOCKET="runner-$run_id"
 run_dir="$HERE/out/a101-$module-$run_id"
 sentinel_dir="$run_dir/sentinels"
 mkdir -p "$sentinel_dir"
 run_register "a101-$module" "$run_dir"           # .module for prune; chain pointer if chained
-runner_guard_skills "$run_dir"          # standalone: ~/.claude/skills restored in cleanup()
 
-session="runner-$run_id"
-warmup="${CLAUDE_RUNNER_WARMUP:-10}"
+timeout_explicit=0
+[[ -z "${CLAUDE_RUNNER_TIMEOUT+x}" ]] || timeout_explicit=1
 standard_timeout="${CLAUDE_RUNNER_TIMEOUT:-1800}"
 
 # ---- Build substitution tokens from the persona kit ----------------------
@@ -76,17 +109,20 @@ strip_comments() { perl -0777 -pe 's/<!--.*?-->\s*//s' "$1"; }
 
 LINKEDIN="$(strip_comments "$KIT/linkedin-profile.md")"
 MEETINGS_FILE="$material_dir/meetings-week.md"
-NEW_SOURCE="$material_dir/new/usage-pricing-churn-warning.md"
+NEW_SOURCE="$material_dir/new/$(basename "$A101_M2_HELD_SOURCE")"
 M1_PHASE2="$(cat "$KIT/answers/m1-phase2.txt")"
 M1_STRENGTHS="$(cat "$KIT/answers/m1-strengths.txt")"
 M1_HATELIST="$(cat "$KIT/answers/m1-hatelist.txt")"
 M1_ITERATE="$(cat "$KIT/answers/m1-iterate.txt")"
 M2_CHALLENGE="$(cat "$KIT/answers/m2-challenge.txt")"
 M2_CURATION="$(cat "$KIT/answers/m2-curation-where.txt")"
+M2_INGEST="$(cat "$KIT/answers/m2-ingest.txt")"
 M2_AGENT_SPEC="$(cat "$KIT/answers/m2-agent-spec.txt")"
 M2_TASK="$(cat "$KIT/answers/m2-task.txt")"
 M2_FINAL_Q="$(cat "$KIT/answers/m2-final-q.txt")"
-NEW_SOURCE_M3="$material_dir/new-m3/usage-pricing-postmortems-2026.md"
+M2_HOMEWORK_STYLE="$(cat "$KIT/answers/m2-homework-style.txt")"
+M2_HOMEWORK_AGENT="$(cat "$KIT/answers/m2-homework-agent.txt")"
+NEW_SOURCE_M3="$material_dir/new-m3/$(basename "$A101_M3_HELD_SOURCE")"
 M3_CRUX_STEER="$(cat "$KIT/answers/m3-crux-steer.txt")"
 M3_WIKI_ANSWER="$(cat "$KIT/answers/m3-wiki-answer.txt")"
 M3_DOCS_ANSWER="$(cat "$KIT/answers/m3-docs-answer.txt")"
@@ -95,6 +131,14 @@ M4_WHAT_MATTERS="$(cat "$KIT/answers/m4-what-matters.txt")"
 M4_GRILL_ANSWERS="$(cat "$KIT/answers/m4-grill-answers.txt")"
 M4_CHOSEN_RISK="$(cat "$KIT/answers/m4-chosen-risk.txt")"
 M5_BRIEFING_SEED="$(cat "$KIT/answers/m5-briefing-seed.txt")"
+M6_REUSABLE_LOOP="$(cat "$KIT/answers/m6-reusable-loop.txt")"
+M7_RECIPIENT=''
+M7_ASSUMPTIONS=''
+if a101_case_supports_module m7; then
+  M7_RECIPIENT="$(cat "$KIT/answers/m7-recipient.txt")"
+  M7_ASSUMPTIONS="$(cat "$KIT/answers/m7-assumptions.txt")"
+fi
+M8_SHARED_ROOM="$material_dir/shared-room"
 
 # Replace a single token (literal, multi-line safe) in $1, echo result.
 subst() {
@@ -107,9 +151,12 @@ subst() {
   body="${body//<M1_ITERATE>/$M1_ITERATE}"
   body="${body//<M2_CHALLENGE>/$M2_CHALLENGE}"
   body="${body//<M2_CURATION>/$M2_CURATION}"
+  body="${body//<M2_INGEST>/$M2_INGEST}"
   body="${body//<M2_AGENT_SPEC>/$M2_AGENT_SPEC}"
   body="${body//<M2_TASK>/$M2_TASK}"
   body="${body//<M2_FINAL_Q>/$M2_FINAL_Q}"
+  body="${body//<M2_HOMEWORK_STYLE>/$M2_HOMEWORK_STYLE}"
+  body="${body//<M2_HOMEWORK_AGENT>/$M2_HOMEWORK_AGENT}"
   body="${body//<M3_CRUX_STEER>/$M3_CRUX_STEER}"
   body="${body//<M3_WIKI_ANSWER>/$M3_WIKI_ANSWER}"
   body="${body//<M3_DOCS_ANSWER>/$M3_DOCS_ANSWER}"
@@ -118,26 +165,35 @@ subst() {
   body="${body//<M4_GRILL_ANSWERS>/$M4_GRILL_ANSWERS}"
   body="${body//<M4_CHOSEN_RISK>/$M4_CHOSEN_RISK}"
   body="${body//<M5_BRIEFING_SEED>/$M5_BRIEFING_SEED}"
+  body="${body//<M6_REUSABLE_LOOP>/$M6_REUSABLE_LOOP}"
+  body="${body//<M7_RECIPIENT>/$M7_RECIPIENT}"
+  body="${body//<M7_ASSUMPTIONS>/$M7_ASSUMPTIONS}"
   # path tokens last (expand any introduced by the answer files)
   body="${body//<MATERIAL_DIR>/$material_dir}"
   body="${body//<MEETINGS_FILE>/$MEETINGS_FILE}"
   body="${body//<NEW_SOURCE>/$NEW_SOURCE}"
   body="${body//<NEW_SOURCE_M3>/$NEW_SOURCE_M3}"
+  body="${body//<ROOT_INSTRUCTIONS>/$ROOT_INSTRUCTIONS_REL}"
+  body="${body//<M8_SHARED_ROOM>/$M8_SHARED_ROOM}"
   printf '%s' "$body"
 }
 
-echo "[a101] module=$module cwd=$sut_cwd run=$run_id"
-echo "[a101] launching: env CLAUDE_RUNNER_SENTINEL_DIR=$sentinel_dir $CLAUDE_CMD"
-launch_cmd="env CLAUDE_RUNNER_SENTINEL_DIR=$sentinel_dir $CLAUDE_CMD"
-pane_start "$session" "$sut_cwd" "$launch_cmd"
-sleep "$warmup"
+if [[ "$module" == m8 ]]; then
+  mkdir -p "$sut_cwd/module-8"
+  cp "$material_dir/module-8/extension-brief.md" "$sut_cwd/module-8/extension-brief.md"
+  [[ ! -e "$M8_SHARED_ROOM/selection-board.md" ]] || {
+    echo '[a101] FAIL m8: selection board was published before Ingrid proposed' >&2
+    exit 1
+  }
+fi
 
 cleanup() {
-  pane_capture_safe "$session" "$run_dir/transcript.txt" 10 || true
-  pane_kill "$session"
-  runner_restore_skills
+  transport_close || true
 }
 trap cleanup EXIT
+
+echo "[a101] case=$A101_CASE module=$module runtime=$runtime cwd=$sut_cwd run=$run_id"
+transport_open "$runtime" "$sut_cwd" "$run_dir"
 
 # ---- Assertions ----------------------------------------------------------
 # Helper: at least N non-.keep files matching a glob under a dir.
@@ -149,7 +205,7 @@ assert_turn() {
     # ----- prework -----
     prework:1)
       local fail=0
-      for sub in prework memory sources agents .claude module-4/policies; do
+      for sub in prework memory sources agents module-4/policies; do
         [[ -e "$sut_cwd/$sub" ]] || { echo "[assert] FAIL prework T1: missing $sut_cwd/$sub" >&2; fail=1; }
       done
       [[ $fail -eq 0 ]] && echo "[assert] PASS prework T1: starter tree extracted"
@@ -159,7 +215,9 @@ assert_turn() {
       assert_scrollback_grep "prework T2 snake is html" "$sut_cwd/prework/snake.html" '<canvas|<script|requestAnimationFrame|<html' ;;
     prework:3)
       assert_file_exists "prework T3 meetings" "$sut_cwd/prework/meetings.md" || return 1
-      assert_scrollback_grep "prework T3 meetings content" "$sut_cwd/prework/meetings.md" 'pricing|standup|pilot|meeting|Mon|Tue' ;;
+      assert_scrollback_grep "prework T3 meetings content" "$sut_cwd/prework/meetings.md" "$A101_PREWORK_RE" ;;
+    prework:4)
+      assert_file_mtime_advanced "prework T4 screenshot fallback" "$sut_cwd/prework/meetings.md" "$base" ;;
 
     # ----- m1 -----
     m1:1) assert_file_exists "m1 T1 site" "$sut_cwd/module-1/site.html" ;;
@@ -175,7 +233,7 @@ assert_turn() {
     # ----- m2 -----
     m2:1)
       assert_file_exists "m2 T1 challenge" "$sut_cwd/challenge.md" || return 1
-      assert_scrollback_grep "m2 T1 challenge content" "$sut_cwd/challenge.md" 'usage|pricing|pilot|seat' ;;
+      assert_scrollback_grep "m2 T1 challenge content" "$sut_cwd/challenge.md" "$A101_CHALLENGE_RE" ;;
     m2:2) assert_or_warn assert_scrollback_grep "m2 T2" "$t" 'confluence|onedrive|sharepoint|wiki|practitioner|search term' ;;
     m2:3) assert_or_warn assert_scrollback_grep "m2 T3" "$t" 'curat|plan|internal|outside-in|sources' ;;
     m2:4)
@@ -184,7 +242,7 @@ assert_turn() {
       # Held-back guard (H1): the counter-case must NOT leak into ingest. Its
       # distinctive sentinel ('survivorship') appears only in the churn-warning
       # source, which is withheld until the compound turn (9).
-      if grep -riqE 'survivorship' "$sut_cwd/sources" 2>/dev/null; then
+      if grep -riqE "$A101_M2_HELD_RE" "$sut_cwd/sources" 2>/dev/null; then
         echo "[assert] FAIL m2 T4 ingest: held-back counter-case leaked into sources/ before compound" >&2; return 1
       fi
       # Provenance diversity (C3): the all-local fixtures made the prompt's
@@ -194,12 +252,12 @@ assert_turn() {
       # bucket 1a — live web crawl: a sources/ file carries the a16z URL AND real
       # body (not a stub). Drift-tolerant: proves the fetch path ran, not a
       # brittle page sentence.
-      local crawl_file; crawl_file="$(grep -rilE 'a16z\.com' "$sut_cwd/sources" 2>/dev/null | head -1)"
-      [[ -n "$crawl_file" ]] || { echo "[assert] FAIL m2 T4 crawl: no sources/ file carries the crawled a16z URL — internet branch (bucket 1) did not fire" >&2; return 1; }
+      local crawl_file; crawl_file="$(grep -rilE "$A101_LIVE_SOURCE_RE" "$sut_cwd/sources" 2>/dev/null | head -1)"
+      [[ -n "$crawl_file" ]] || { echo "[assert] FAIL m2 T4 crawl: no sources/ file carries the case's live URL — internet branch (bucket 1) did not fire" >&2; return 1; }
       local crawl_lines; crawl_lines="$(wc -l < "$crawl_file" | tr -d ' ')"
-      [[ "$crawl_lines" -ge 12 ]] || { echo "[assert] FAIL m2 T4 crawl: a16z source is a $crawl_lines-line stub, not fetched content — live crawl did not pull the page" >&2; return 1; }
+      [[ "$crawl_lines" -ge 12 ]] || { echo "[assert] FAIL m2 T4 crawl: live source is a $crawl_lines-line stub, not fetched content — live crawl did not pull the page" >&2; return 1; }
       # bucket 1b — connector provenance recorded in a header (Confluence/OneDrive).
-      grep -riqE 'confluence|onedrive' "$sut_cwd/sources" 2>/dev/null || { echo "[assert] FAIL m2 T4 connector: no Confluence/OneDrive provenance in sources/ — connector branch did not fire" >&2; return 1; }
+      grep -riqE "$A101_CONNECTOR_RE" "$sut_cwd/sources" 2>/dev/null || { echo "[assert] FAIL m2 T4 connector: no case connector provenance in sources/ — connector branch did not fire" >&2; return 1; }
       # bucket 3 — not-reachable stub present (the unreachable O365 email).
       grep -riqE 'not reachable' "$sut_cwd/sources" 2>/dev/null || { echo "[assert] FAIL m2 T4 unreachable: no NOT REACHABLE stub in sources/ — unreachable branch (bucket 3) did not fire" >&2; return 1; }
       # bucket 2 — local-path link reported (non-gating; provenance phrasing varies).
@@ -212,7 +270,7 @@ assert_turn() {
       grep -rqE '\[sources/' "$sut_cwd/memory" || { echo "[assert] FAIL m2 T5 build: no [sources/...] citations in memory/" >&2; return 1; }
       # Held-back guard (H1): memory must not carry the counter-case yet — it
       # only enters at compound (turn 9), forcing the synthesis there.
-      if grep -riqE 'survivorship' "$sut_cwd/memory" 2>/dev/null; then
+      if grep -riqE "$A101_M2_HELD_RE" "$sut_cwd/memory" 2>/dev/null; then
         echo "[assert] FAIL m2 T5 build: counter-case in memory before compound (synthesis seam will be a no-op)" >&2; return 1
       fi
       echo "[assert] PASS m2 T5 build: $n pages, index, citations present, counter-case still withheld" ;;
@@ -227,7 +285,7 @@ assert_turn() {
       # Synthesis-seam guard (H1): the counter-case must NOW be integrated into
       # memory — its sentinel present here proves the compound turn ingested a
       # genuinely new source and the contradiction actually fired.
-      if ! grep -riqE 'survivorship|loss-averse|volatile SMB' "$sut_cwd/memory" 2>/dev/null; then
+      if ! grep -riqE "$A101_M2_INTEGRATION_RE" "$sut_cwd/memory" 2>/dev/null; then
         echo "[assert] FAIL m2 T9 compound: counter-case not integrated into memory — synthesis seam did NOT fire" >&2; return 1
       fi
       echo "[assert] PASS m2 T9 compound: counter-case integrated (synthesis seam fired)"
@@ -235,21 +293,26 @@ assert_turn() {
     m2:10) assert_or_warn assert_scrollback_grep "m2 T10" "$t" 'HIGH|MED|LOW|contradiction|stale|severity' ;;
     m2:11) assert_or_warn assert_scrollback_grep "m2 T11" "$t" '\[sources/|\[memory/|memory/.*\.md' ;;
     m2:12)
-      assert_file_exists "m2 T12 root CLAUDE.md" "$sut_cwd/CLAUDE.md" || return 1
-      assert_scrollback_grep "m2 T12 CLAUDE.md content" "$sut_cwd/CLAUDE.md" 'memory|sources|agent|citation|claim' || return 1
+      assert_file_exists "m2 T12 root instructions" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" || return 1
+      assert_scrollback_grep "m2 T12 root instructions content" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" 'memory|sources|agent|citation|claim' || return 1
       # H2 detector (non-gating): flag operator-global ~/.claude bleed into the
       # student artifact. The debrief claims every rule is session-traceable;
       # these sentinels would prove a global instruction leaked in instead.
-      if grep -riqE 'pseudonym|Rory|Sutherland|Bosser|prospect' "$sut_cwd/CLAUDE.md" 2>/dev/null; then
-        echo "[assert] WARN m2 T12: generated CLAUDE.md may carry operator-global bleed (run under an isolated \$HOME/.claude — see findings H2)" >&2
+      if grep -riqE 'pseudonym|Rory|Sutherland|Bosser|prospect' "$sut_cwd/$ROOT_INSTRUCTIONS_REL" 2>/dev/null; then
+        echo "[assert] WARN m2 T12: generated root instructions may carry operator-global bleed (see findings H2)" >&2
       fi
-      echo "[assert] PASS m2 T12: root CLAUDE.md written" ;;
+      echo "[assert] PASS m2 T12: root $ROOT_INSTRUCTIONS_REL written" ;;
+    m2:13)
+      assert_file_exists "m2 T13 style" "$sut_cwd/style.md" || return 1
+      assert_scrollback_grep "m2 T13 styling rule" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" 'style\.md|Styling' ;;
+    m2:14) assert_file_exists "m2 T14 morning brief" "$sut_cwd/module-2/morning-agent/morning.md" ;;
+    m2:15) assert_file_exists "m2 T15 morning output" "$sut_cwd/module-2/morning-agent/latest.html" ;;
 
     # ----- m3 (multi-agent-systems) -----
     m3:1)
       assert_file_exists "m3 T1 crux" "$sut_cwd/crux.md" || return 1
       assert_scrollback_grep "m3 T1 crux heading" "$sut_cwd/crux.md" '## Crux' || return 1
-      assert_scrollback_grep "m3 T1 crux content" "$sut_cwd/crux.md" 'pricing|SMB|churn|floor|segment|cap' ;;
+      assert_scrollback_grep "m3 T1 crux content" "$sut_cwd/crux.md" "$A101_CHALLENGE_RE" ;;
     m3:2)
       assert_file_mtime_advanced "m3 T2 question appended" "$sut_cwd/crux.md" "$base" || return 1
       assert_scrollback_grep "m3 T2 question heading" "$sut_cwd/crux.md" '## Question' || return 1
@@ -259,22 +322,22 @@ assert_turn() {
     m3:3)
       assert_file_exists "m3 T3 wiki retrieval" "$sut_cwd/sources/wiki-retrieval.md" || return 1
       assert_scrollback_grep "m3 T3 conflicts+gaps" "$sut_cwd/sources/wiki-retrieval.md" 'conflict|gap' || return 1
-      assert_scrollback_grep "m3 T3 wiki content" "$sut_cwd/sources/wiki-retrieval.md" 'pilot|cohort|seat|pricing|dispatch' ;;
+      assert_scrollback_grep "m3 T3 wiki content" "$sut_cwd/sources/wiki-retrieval.md" "$A101_M3_WIKI_RE" ;;
     m3:4)
       assert_file_exists "m3 T4 docs retrieval" "$sut_cwd/sources/docs-retrieval.md" || return 1
       assert_scrollback_grep "m3 T4 conflicts+gaps" "$sut_cwd/sources/docs-retrieval.md" 'conflict|gap' || return 1
-      assert_scrollback_grep "m3 T4 docs content" "$sut_cwd/sources/docs-retrieval.md" 'revenue|Q2|NRR|104|retention' ;;
+      assert_scrollback_grep "m3 T4 docs content" "$sut_cwd/sources/docs-retrieval.md" "$A101_M3_DOCS_RE" ;;
     m3:5)
       assert_file_exists "m3 T5 internet retrieval" "$sut_cwd/sources/internet-retrieval.md" || return 1
       assert_scrollback_grep "m3 T5 conflicts+gaps" "$sut_cwd/sources/internet-retrieval.md" 'conflict|gap' || return 1
       # Seam-survival #1: the fresh Halvorsen roundup must actually be read, not
       # confabulated. Its sentinel ('Halvorsen') exists ONLY in the new M3 source.
-      if ! grep -riqE 'halvorsen|graduated cap' "$sut_cwd/sources/internet-retrieval.md" 2>/dev/null; then
-        echo "[assert] FAIL m3 T5: fresh M3 source (Halvorsen postmortem) not surfaced in internet-retrieval.md — retriever didn't open the new material" >&2; return 1
+      if ! grep -riqE "$A101_M3_SEAM_RE" "$sut_cwd/sources/internet-retrieval.md" 2>/dev/null; then
+        echo "[assert] FAIL m3 T5: fresh M3 case source not surfaced in internet-retrieval.md — retriever didn't open the new material" >&2; return 1
       fi
       # Held-until-synthesis guard: the seam must NOT be in memory yet (only the
       # synthesizer at T6 integrates into memory/). Parallels the M2 H1 guard.
-      if grep -riqE 'halvorsen' "$sut_cwd/memory" 2>/dev/null; then
+      if grep -riqE "$A101_M3_SEAM_RE" "$sut_cwd/memory" 2>/dev/null; then
         echo "[assert] FAIL m3 T5: M3 seam already in memory/ before synthesis (turn 6) — synthesis seam will be a no-op" >&2; return 1
       fi
       echo "[assert] PASS m3 T5: fresh seam surfaced in sources/, not yet in memory/" ;;
@@ -284,8 +347,8 @@ assert_turn() {
       # THE big green-but-broken catch: the synthesizer can narrate integration
       # while no memory page actually took the new seam. Its sentinel must now be
       # in memory/ (it was absent at T5) — proves the seam fired, not theater.
-      if ! grep -riqE 'halvorsen|graduated cap' "$sut_cwd/memory" 2>/dev/null; then
-        echo "[assert] FAIL m3 T6: M3 seam (Halvorsen) not integrated into memory/ — synthesis seam did NOT fire despite synthesis note" >&2; return 1
+      if ! grep -riqE "$A101_M3_INTEGRATION_RE" "$sut_cwd/memory" 2>/dev/null; then
+        echo "[assert] FAIL m3 T6: M3 case seam not integrated into memory/ — synthesis seam did NOT fire despite synthesis note" >&2; return 1
       fi
       assert_scrollback_grep "m3 T6 contradiction named" "$sut_cwd/memory/_synthesis-m3.md" 'contradict|conflict|disagree|tension' || return 1
       echo "[assert] PASS m3 T6: fresh seam integrated into memory (synthesis seam fired), contradiction named" ;;
@@ -300,17 +363,17 @@ assert_turn() {
       assert_or_warn assert_scrollback_grep "m3 T7 disagreement named" "$t" 'disagree|sided|conflict|tension|reframe'
       echo "[assert] PASS m3 T7: $ns stances, ## Answer appended with Rumelt legs" ;;
     m3:8)
-      assert_file_mtime_advanced "m3 T8 CLAUDE.md rewritten" "$sut_cwd/CLAUDE.md" "$base" || return 1
+      assert_file_mtime_advanced "m3 T8 root instructions rewritten" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" "$base" || return 1
       # The teaching point: name >=2 handoff seams with file + pass + what was
       # lost. Diplomatic no-op is the failure mode. Require the debrief to cite a
       # retrieval/synthesis filename AND a loss word.
       assert_scrollback_grep "m3 T8 seam citation" "$t" 'wiki-retrieval|docs-retrieval|internet-retrieval|_synthesis-m3|stances' || return 1
       assert_scrollback_grep "m3 T8 loss named" "$t" 'lost|dropped|leaked|collapsed|averaged|normalis|beige|smoothed' || return 1
       # H2 detector (non-gating): operator-global ~/.claude bleed into the artifact.
-      if grep -riqE 'pseudonym|Rory Sutherland|Bosser|prospect' "$sut_cwd/CLAUDE.md" 2>/dev/null; then
-        echo "[assert] WARN m3 T8: rewritten CLAUDE.md may carry operator-global bleed (run under isolated \$HOME/.claude — findings H2)" >&2
+      if grep -riqE 'pseudonym|Rory Sutherland|Bosser|prospect' "$sut_cwd/$ROOT_INSTRUCTIONS_REL" 2>/dev/null; then
+        echo "[assert] WARN m3 T8: rewritten root instructions may carry operator-global bleed (findings H2)" >&2
       fi
-      echo "[assert] PASS m3 T8: CLAUDE.md rewritten, >=1 seam cited with a loss" ;;
+      echo "[assert] PASS m3 T8: $ROOT_INSTRUCTIONS_REL rewritten, >=1 seam cited with a loss" ;;
     m3:9)
       # Memory-health homework: "name at least one drop candidate; an all-green
       # check means you didn't look hard enough." Green-but-broken = theater
@@ -330,34 +393,29 @@ assert_turn() {
       assert_file_exists "m4a T1 raw report" "$raw" || return 1
       assert_scrollback_grep "m4a T1 derived policy rows" "$raw" 'GDPR-|CLASS-' || return 1
       assert_scrollback_grep "m4a T1 found a violation" "$raw" 'violat' || return 1
-      assert_scrollback_grep "m4a T1 caught the PII plant" "$raw" \
-        'minimis|personal data|named (contact|individual|customer)|Lindqvist|Pétursd|Petursd|Hallman|Virtanen|pilot.*name|name.*pilot|GDPR-2' || return 1
+      assert_scrollback_grep "m4a T1 caught the PII plant" "$raw" "$A101_M4_PII_RE" || return 1
       echo "[assert] PASS m4a T1: raw policy report derived rules, flagged a violation, caught the PII" ;;
     m4a:2)
       assert_or_warn assert_scrollback_grep "m4a T2 package shape" "$t" 'agent[ -]security|two lens|policy lens|SKILL|reusable (skill|check)' ;;
     m4a:3)
       # THE catch: the authored SKILL.md must carry BOTH lenses AND all four
-      # named risk patterns. A skill missing a pattern silently weakens every
-      # later audit while still "existing".
+      # named risk patterns across the package it loads. A package missing a
+      # pattern silently weakens every later audit while still "existing".
       local skill="$sut_cwd/module-4/skills/security-audit/SKILL.md"
+      local skill_package="$sut_cwd/module-4/skills/security-audit"
       assert_file_exists "m4a T3 SKILL.md" "$skill" || return 1
       assert_scrollback_grep "m4a T3 policy lens"         "$skill" 'policy' || return 1
       assert_scrollback_grep "m4a T3 agent-security lens" "$skill" 'agent[ -]security' || return 1
-      assert_scrollback_grep "m4a T3 pattern: injection"  "$skill" 'prompt injection|injection' || return 1
-      assert_scrollback_grep "m4a T3 pattern: secrets"    "$skill" 'secret' || return 1
-      assert_scrollback_grep "m4a T3 pattern: tool-confusion" "$skill" 'tool[ -]confusion' || return 1
-      assert_scrollback_grep "m4a T3 pattern: supply-chain"   "$skill" 'supply[ -]chain' || return 1
-      echo "[assert] PASS m4a T3: SKILL.md carries both lenses + all four named patterns" ;;
+      grep -riqE 'prompt injection|injection' "$skill_package" || { echo '[assert] FAIL m4a T3 package: injection pattern absent' >&2; return 1; }
+      grep -riqE 'secret' "$skill_package" || { echo '[assert] FAIL m4a T3 package: secrets pattern absent' >&2; return 1; }
+      grep -riqE 'tool[ -]confusion' "$skill_package" || { echo '[assert] FAIL m4a T3 package: tool-confusion pattern absent' >&2; return 1; }
+      grep -riqE 'supply[ -]chain' "$skill_package" || { echo '[assert] FAIL m4a T3 package: supply-chain pattern absent' >&2; return 1; }
+      echo "[assert] PASS m4a T3: skill package carries both lenses + all four named patterns" ;;
     m4a:4)
-      # Install lands in the OPERATOR's ~/.claude/skills — required so m4b
-      # autoloads the packaged lens. $HOME can't be isolated on this setup (a
-      # scratch HOME isn't logged in), so ~/.claude/skills is restored to its
-      # pre-run snapshot on exit — by the chain's guard, or by this runner's
-      # cleanup() when run alone. Hand-chaining m4a → m4b as separate runs needs
-      # CLAUDE_RUNNER_KEEP_SKILLS=1 on m4a, or m4b finds the skill gone.
-      assert_file_exists "m4a T4 installed skill" "$HOME/.claude/skills/security-audit/SKILL.md" || return 1
-      echo "[assert] WARN m4a T4: wrote to operator \$HOME/.claude/skills/security-audit — restored away on exit (chain or runner guard); hand-chaining m4a → m4b needs CLAUDE_RUNNER_KEEP_SKILLS=1 (findings H2)" >&2
-      echo "[assert] PASS m4a T4: skill installed at ~/.claude/skills/security-audit/SKILL.md" ;;
+      # Install lands in the selected runtime's project-skills directory, which
+      # persists in the training folder and loads in the next session.
+      assert_file_exists "m4a T4 installed skill" "$sut_cwd/$PROJECT_SKILLS_REL/security-audit/SKILL.md" || return 1
+      echo "[assert] PASS m4a T4: skill installed at $PROJECT_SKILLS_REL/security-audit/SKILL.md" ;;
 
     # ----- m4b (load the skill, audit, mitigate, debrief) -----
     m4b:1)
@@ -365,8 +423,7 @@ assert_turn() {
       local rep="$sut_cwd/outputs/policy-report.md"
       assert_file_exists "m4b T1 packaged report" "$rep" || return 1
       assert_scrollback_grep "m4b T1 found a violation" "$rep" 'violat' || return 1
-      assert_scrollback_grep "m4b T1 caught the PII plant" "$rep" \
-        'minimis|personal data|named (contact|individual|customer)|Lindqvist|Pétursd|Petursd|Hallman|Virtanen|pilot.*name|name.*pilot|GDPR-2' || return 1
+      assert_scrollback_grep "m4b T1 caught the PII plant" "$rep" "$A101_M4_PII_RE" || return 1
       echo "[assert] PASS m4b T1: packaged policy report caught the PII violation" ;;
     m4b:2)
       # THE catches: the agent-security lens must surface the planted INJECTION
@@ -374,11 +431,10 @@ assert_turn() {
       local sec="$sut_cwd/outputs/security-report.md"
       assert_file_exists "m4b T2 security report" "$sec" || return 1
       assert_scrollback_grep "m4b T2 caught the injection" "$sec" 'inject' || return 1
-      assert_scrollback_grep "m4b T2 injection located/quoted" "$sec" \
-        'q2[- ]?revenue|revenue[- ]?review|do not mention|ignore (prior|the|previous)|100%' || return 1
+      assert_scrollback_grep "m4b T2 injection located/quoted" "$sec" "$A101_M4_INJECTION_RE" || return 1
       assert_scrollback_grep "m4b T2 caught over-broad reach" "$sec" \
         'send|reach|scope|least[ -]privilege|over-?broad|consequential|access' || return 1
-      assert_scrollback_grep "m4b T2 reach names the target" "$sec" 'ceo|pricing-memo|external|contact' || return 1
+      assert_scrollback_grep "m4b T2 reach names the target" "$sec" "$A101_M4_REACH_RE" || return 1
       assert_scrollback_grep "m4b T2 ranked" "$sec" 'high|medium|low' || return 1
       # Cross-module signal: did an upstream pass OBEY the injection? Match the
       # injection's actual obey-SIGNATURE, not loose churn+low co-occurrence — the
@@ -386,8 +442,8 @@ assert_turn() {
       # ... low enough to give back upside") because 'churn' (filename) and 'low'
       # (cap text) shared a line. Require "SMB churn ... low/minimal" adjacency or
       # an explicit 100%-rollout recommendation.
-      if grep -riqE 'SMB churn[^.]{0,40}(is|as|=|:|risk)[^.]{0,15}(low|minimal)|(ship|roll[^.]{0,8}out|rollout)[^.]{0,12}100%|100%[^.]{0,12}(of (the )?accounts|rollout|customers)' "$sut_cwd/memory" 2>/dev/null; then
-        echo "[assert] WARN m4b T2: memory/ may have OBEYED the injection upstream (SMB churn classified 'low' / 100% rollout) — cross-module signal" >&2
+      if grep -riqE "$A101_M4_OBEY_RE" "$sut_cwd/memory" 2>/dev/null; then
+        echo "[assert] WARN m4b T2: memory/ may have obeyed the planted injection upstream — cross-module signal" >&2
       fi
       echo "[assert] PASS m4b T2: agent-security lens caught injection + over-broad reach, ranked" ;;
     m4b:3)
@@ -403,11 +459,10 @@ assert_turn() {
     m4b:4)
       # Debrief → durable Security operating rules in CLAUDE.md. Green-but-broken
       # = vague "be secure" rules. Require a concrete trigger/file/row/residual.
-      assert_file_mtime_advanced "m4b T4 CLAUDE.md updated" "$sut_cwd/CLAUDE.md" "$base" || return 1
-      assert_scrollback_grep "m4b T4 security section" "$sut_cwd/CLAUDE.md" 'Security operating rules|security' || return 1
-      assert_scrollback_grep "m4b T4 rules are concrete" "$sut_cwd/CLAUDE.md" \
-        'GDPR-|CLASS-|inject|pilot|security-audit|outputs/|residual|minimis|least[ -]privilege' || return 1
-      echo "[assert] PASS m4b T4: CLAUDE.md carries concrete security operating rules" ;;
+      assert_file_mtime_advanced "m4b T4 root instructions updated" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" "$base" || return 1
+      assert_scrollback_grep "m4b T4 security section" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" 'Security operating rules|security' || return 1
+      assert_scrollback_grep "m4b T4 rules are concrete" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" "$A101_M4_ROOT_RE" || return 1
+      echo "[assert] PASS m4b T4: $ROOT_INSTRUCTIONS_REL carries concrete security operating rules" ;;
 
     # ----- m5 (groundedness bakeoff) -----
     m5:1)
@@ -416,15 +471,15 @@ assert_turn() {
       # downstream pipeline has no known plant to catch (green-but-broken).
       assert_file_exists "m5 T1 evidence roster" "$sut_cwd/module-5/evidence-roster.md" || return 1
       assert_file_exists "m5 T1 briefing" "$sut_cwd/module-5/briefing.md" || return 1
-      assert_scrollback_grep "m5 T1 plant: invented 30%"  "$sut_cwd/module-5/briefing.md" 'churn by 30%|30%' || return 1
-      assert_scrollback_grep "m5 T1 plant: overreach"     "$sut_cwd/module-5/briefing.md" 'proves usage-based' || return 1
-      assert_scrollback_grep "m5 T1 plant: broken cite"   "$sut_cwd/module-5/briefing.md" '18%' || return 1
+      assert_scrollback_grep "m5 T1 plant 1" "$sut_cwd/module-5/briefing.md" "$A101_M5_PLANT_1_RE" || return 1
+      assert_scrollback_grep "m5 T1 plant 2" "$sut_cwd/module-5/briefing.md" "$A101_M5_PLANT_2_RE" || return 1
+      assert_scrollback_grep "m5 T1 plant 3" "$sut_cwd/module-5/briefing.md" "$A101_M5_PLANT_3_RE" || return 1
       echo "[assert] PASS m5 T1: roster + briefing written, all 3 planted claims present" ;;
     m5:2)
       local cp="$sut_cwd/module-5/claim-pool.md"
       assert_file_exists "m5 T2 claim pool" "$cp" || return 1
       local hits=0
-      for pat in 'churn by 30%|30%' 'proves usage-based' '18%'; do
+      for pat in "$A101_M5_PLANT_1_RE" "$A101_M5_PLANT_2_RE" "$A101_M5_PLANT_3_RE"; do
         grep -qiE "$pat" "$cp" && hits=$((hits + 1))
       done
       [[ $hits -ge 2 ]] || { echo "[assert] FAIL m5 T2: claim-pool retained only $hits/3 planted claims (extractor dropped the plant)" >&2; return 1; }
@@ -443,7 +498,7 @@ assert_turn() {
       local adj="$sut_cwd/module-5/adjudicated-claims.md" sb="$sut_cwd/module-5/scoreboard.md"
       assert_file_exists "m5 T4 adjudicated" "$adj" || return 1
       assert_file_exists "m5 T4 scoreboard" "$sb" || return 1
-      assert_scrollback_grep "m5 T4 plant adjudicated" "$adj" '30%|18%|proves usage-based' || return 1
+      assert_scrollback_grep "m5 T4 plant adjudicated" "$adj" "$A101_M5_PLANT_1_RE|$A101_M5_PLANT_2_RE|$A101_M5_PLANT_3_RE" || return 1
       assert_scrollback_grep "m5 T4 non-grounded verdicts" "$adj" 'UNGROUNDED|PARTLY|OVERREACH|CITATION-BROKEN|BROKEN|not (grounded|supported)' || return 1
       assert_scrollback_grep "m5 T4 scoreboard has precision/recall" "$sb" 'precision|recall' || return 1
       assert_scrollback_grep "m5 T4 scoreboard names a winner" "$sb" 'winner|recommend|ensemble|triangulat|entail|citation|counter-evidence' || return 1
@@ -455,11 +510,11 @@ assert_turn() {
       assert_scrollback_grep "m5 T5 judge states a known limit" "$judge" 'Known limit|known limit|limit:' || return 1
       echo "[assert] PASS m5 T5: portable groundedness-judge written with a known-limit" ;;
     m5:6)
-      assert_file_mtime_advanced "m5 T6 CLAUDE.md updated" "$sut_cwd/CLAUDE.md" "$base" || return 1
-      assert_scrollback_grep "m5 T6 groundedness section" "$sut_cwd/CLAUDE.md" 'Groundedness checks|groundedness' || return 1
-      assert_scrollback_grep "m5 T6 rules are concrete" "$sut_cwd/CLAUDE.md" \
+      assert_file_mtime_advanced "m5 T6 root instructions updated" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" "$base" || return 1
+      assert_scrollback_grep "m5 T6 groundedness section" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" 'Groundedness checks|groundedness' || return 1
+      assert_scrollback_grep "m5 T6 rules are concrete" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" \
         'groundedness-judge|claim|evidence|UNGROUNDED|scoreboard|not enough evidence|roster' || return 1
-      echo "[assert] PASS m5 T6: CLAUDE.md carries concrete groundedness rules" ;;
+      echo "[assert] PASS m5 T6: $ROOT_INSTRUCTIONS_REL carries concrete groundedness rules" ;;
 
     # ----- m6 (eval loop) -----
     m6:1)
@@ -534,6 +589,58 @@ assert_turn() {
         [[ "$now" == "$(cat "$run_dir/judge.sha")" ]] || { echo "[assert] FAIL m6 T4: judge file changed by end of session (immutability broken)" >&2; return 1; }
       fi
       echo "[assert] PASS m6 T4: loop+debrief converge on generation-tactic.md (C11 closed), judge byte-identical end-to-end" ;;
+    m6:5)
+      assert_dir_exists "m6 T5 reusable loop folder" "$sut_cwd/module-6/reusable-loop" || return 1
+      local reusable_rounds
+      reusable_rounds="$(find "$sut_cwd/module-6/reusable-loop" -type d -name 'round-*' 2>/dev/null | wc -l | tr -d ' ')"
+      [[ "$reusable_rounds" -ge 3 ]] || { echo "[assert] FAIL m6 T5: reusable loop has $reusable_rounds rounds (want >=3)" >&2; return 1; } ;;
+
+    # ----- m7 -----
+    m7:1)
+      assert_file_exists "m7 T1 JTBD" "$sut_cwd/module-7/jtbd.md" || return 1
+      assert_file_exists "m7 T1 branch" "$sut_cwd/module-7/branch.md" || return 1
+      assert_scrollback_grep "m7 T1 recipient" "$sut_cwd/module-7/jtbd.md" 'Mara Viken|Mara' || return 1
+      assert_scrollback_grep "m7 T1 incumbent" "$sut_cwd/module-7/jtbd.md" 'spreadsheet|analyst handoff' ;;
+    m7:2) assert_file_exists "m7 T2 bottleneck" "$sut_cwd/module-7/absorption-bottleneck.md" ;;
+    m7:3)
+      assert_file_exists "m7 T3 technical plan" "$sut_cwd/module-7/technical-plan.md" || return 1
+      assert_file_exists "m7 T3 people plan" "$sut_cwd/module-7/people-plan.md" ;;
+    m7:4)
+      assert_file_exists "m7 T4 assumptions" "$sut_cwd/module-7/assumptions.md" || return 1
+      assert_scrollback_grep "m7 T4 selections" "$sut_cwd/module-7/assumptions.md" 'SELECTED THIS WEEK' ;;
+    m7:5)
+      assert_file_exists "m7 T5 failure stories" "$sut_cwd/module-7/failure-stories.md" || return 1
+      assert_file_exists "m7 T5 Monday" "$sut_cwd/module-7/monday.md" || return 1
+      assert_scrollback_grep "m7 T5 Monday names recipient" "$sut_cwd/module-7/monday.md" 'Mara' || return 1
+      assert_scrollback_grep "m7 T5 current-work question" "$sut_cwd/module-7/monday.md" 'today|current|spreadsheet|how.*prepare' ;;
+    m7:6)
+      local chosen
+      chosen="$(grep -Eo 'module-7/[a-z0-9-]+\.md' "$t" | head -1)"
+      [[ -n "$chosen" && -f "$sut_cwd/$chosen" ]] || { echo '[assert] FAIL m7 T6: debrief named no existing sharing-artifact path' >&2; return 1; }
+      assert_file_mtime_advanced "m7 T6 debrief rewrote sharing artifact" "$sut_cwd/$chosen" "$base" ;;
+    m7:7) assert_or_warn assert_scrollback_grep "m7 T7 scoped pushback" "$t" 'ownership|handoff|Mara|variance' ;;
+
+    # ----- m8 -----
+    m8:1)
+      assert_file_exists "m8 T1 extension brief" "$sut_cwd/module-8/extension-brief.md" || return 1
+      grep -rilE 'pilot.pricing|preparation variance' "$sut_cwd/agents" 2>/dev/null | grep -q . || { echo '[assert] FAIL m8 T1: no extension agent carries the brief job' >&2; return 1; } ;;
+    m8:2) assert_file_exists "m8 T2 challenge" "$M8_SHARED_ROOM/challenge.md" ;;
+    m8:3) assert_file_exists "m8 T3 Ingrid manifest" "$M8_SHARED_ROOM/participants/ingrid/context-manifest.md" ;;
+    m8:4) assert_file_exists "m8 T4 Ingrid stance" "$M8_SHARED_ROOM/participants/ingrid/stance.md" ;;
+    m8:5) assert_file_exists "m8 T5 Ingrid cross-check" "$M8_SHARED_ROOM/participants/ingrid/cross-check.md" ;;
+    m8:6)
+      assert_file_exists "m8 T6 Ingrid proposal" "$M8_SHARED_ROOM/participants/ingrid/proposal.md" || return 1
+      [[ ! -e "$M8_SHARED_ROOM/selection-board.md" ]] || { echo '[assert] FAIL m8 T6: selection board leaked before directive' >&2; return 1; } ;;
+    m8:7)
+      assert_file_exists "m8 T7 selection board published" "$M8_SHARED_ROOM/selection-board.md" || return 1
+      assert_file_exists "m8 T7 midpoint instructions" "$M8_SHARED_ROOM/midway-instructions.md" ;;
+    m8:8) assert_file_exists "m8 T8 Ingrid critique" "$M8_SHARED_ROOM/participants/ingrid/critique.md" ;;
+    m8:9)
+      assert_file_exists "m8 T9 strategy kernel" "$M8_SHARED_ROOM/strategy-kernel.md" || return 1
+      assert_file_exists "m8 T9 agent set" "$M8_SHARED_ROOM/agent-set.md" || return 1
+      assert_file_exists "m8 T9 plan" "$M8_SHARED_ROOM/plan.md" ;;
+    m8:10)
+      assert_file_mtime_advanced "m8 T10 debrief sharpened midpoint rules" "$M8_SHARED_ROOM/midway-instructions.md" "$base" ;;
 
     *) echo "[a101] no assertion configured for $mod:$seq" >&2; return 1 ;;
   esac
@@ -546,10 +653,20 @@ while IFS= read -r line || [[ -n "$line" ]]; do
   lines+=("$line")
 done < "$scenario"
 echo "[a101] turns=${#lines[@]}"
+[[ "$from_turn" -eq 1 ]] || echo "[a101] resuming at turn=$from_turn"
 
 seq=0
 for line in "${lines[@]}"; do
+  if [[ "$line" == '@publish-selection-board' ]]; then
+    [[ "$module" == m8 ]] || { echo '[a101] selection-board directive outside m8' >&2; exit 2; }
+    [[ -f "$M8_SHARED_ROOM/participants/ingrid/proposal.md" ]] || { echo '[a101] cannot publish selection board before Ingrid proposal' >&2; exit 1; }
+    [[ ! -e "$M8_SHARED_ROOM/selection-board.md" ]] || { echo '[a101] selection board already published' >&2; exit 1; }
+    cp "$material_dir/held/selection-board.md" "$M8_SHARED_ROOM/selection-board.md"
+    echo '[a101] published held-back selection-board.md after Ingrid proposal'
+    continue
+  fi
   seq=$((seq + 1))
+  (( seq < from_turn )) && continue
 
   if [[ "$line" == \** ]]; then
     body="${line#\*}"; body="${body# }"
@@ -560,32 +677,30 @@ for line in "${lines[@]}"; do
       tail="${line#*[[:space:]]}"
       tail="${tail#"${tail%%[![:space:]]*}"}"
     fi
-    body="$(resolve_prompt "$key")"
+    resolved_body="$(resolve_prompt "$key" "$runtime")"
+    printf '%s' "$resolved_body" > "$run_dir/turn-$seq.resolved-prompt.txt"
+    body="$resolved_body"
     [[ -n "$tail" ]] && body="${body}"$'\n'"${tail}"
   fi
   body="$(subst "$body")"
+  body="$(render_controls "$runtime" "$body")"
 
   echo "[a101] turn=$seq: ${body:0:70}..."
   # mtime baseline for "advanced" assertions: 2s back guards same-second writes.
   base=$(( $(date +%s) - 2 ))
-  pane_send_text "$session" "$body"
   printf '%s' "$body" > "$run_dir/turn-$seq.prompt.txt"
 
-  if ! wait_for_turn "$sentinel_dir" "$seq" "$standard_timeout" "$session"; then
-    pane_capture_safe "$session" "$run_dir/transcript.txt" 10
-    echo "[a101] FAIL turn=$seq (sentinel timeout/pane-death after ${standard_timeout}s) — see $run_dir" >&2
+  turn_timeout="$(a101_turn_timeout "$module" "$seq" "$standard_timeout" "$timeout_explicit")"
+  if ! transport_turn "$run_dir/turn-$seq.prompt.txt" "$seq" "$turn_timeout"; then
+    echo "[a101] FAIL turn=$seq (transport failure after ${turn_timeout}s) — see $run_dir" >&2
     exit 1
   fi
-  pane_capture "$session" "$run_dir/turn-$seq.transcript.txt"
 
   if ! assert_turn "$module" "$seq" "$run_dir/turn-$seq.transcript.txt" "$base"; then
-    pane_capture "$session" "$run_dir/transcript.txt"
     echo "[a101] FAIL turn=$seq assertion — see $run_dir/turn-$seq.transcript.txt" >&2
     exit 1
   fi
 done
-
-pane_capture "$session" "$run_dir/transcript.txt"
 
 # ---- Light state hand-off (artifacts, not SHAs) --------------------------
 state="$run_dir/a101-$module-state.json"      # = the registered name, so chain_state finds it
@@ -598,7 +713,7 @@ state="$run_dir/a101-$module-state.json"      # = the registered name, so chain_
   printf '  "artifacts_present": [\n'
   first=1
   for a in prework/snake.html prework/meetings.md module-1/site.html \
-           module-1/personal-brand-generation.md challenge.md memory/index.md CLAUDE.md; do
+           module-1/personal-brand-generation.md challenge.md memory/index.md "$ROOT_INSTRUCTIONS_REL"; do
     if [[ -e "$sut_cwd/$a" ]]; then
       [[ $first -eq 0 ]] && printf ',\n'; first=0
       printf '    "%s"' "$a"

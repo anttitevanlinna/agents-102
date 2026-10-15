@@ -22,8 +22,9 @@ const git = (cwd, ...a) => execFileSync('git', a, { cwd, stdio: ['ignore', 'pipe
 function repo() {
   const r = fs.mkdtempSync(path.join(os.tmpdir(), 'genreg-'))
   git(r, 'init', '-q'); git(r, 'config', 'user.email', 't@t'); git(r, 'config', 'user.name', 't')
-  for (const d of ['scripts', 'curriculum/prompts', 'curriculum/figures', 'site']) fs.mkdirSync(path.join(r, d), { recursive: true })
+  for (const d of ['scripts', 'curriculum/prompts', 'curriculum/figures', 'site/layouts']) fs.mkdirSync(path.join(r, d), { recursive: true })
   for (const f of ['compile-prompts.js', 'compile-figures.js', 'write-if-changed.js', 'check-generated-registries.js']) fs.copyFileSync(path.join(REPO, 'scripts', f), path.join(r, 'scripts', f))
+  fs.copyFileSync(path.join(REPO, 'site/layouts/a101-runtimes.js'), path.join(r, 'site/layouts/a101-runtimes.js'))
   fs.symlinkSync(path.join(REPO, 'node_modules'), path.join(r, 'node_modules'))
   fs.writeFileSync(path.join(r, 'curriculum/prompts/p.md'), '---\nkey: p\nnote: one\n---\nPaste this.\n')
   fs.writeFileSync(path.join(r, 'curriculum/figures/f.md'), '<figure class="diagram">F</figure>\n')

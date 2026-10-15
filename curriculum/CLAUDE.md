@@ -108,7 +108,7 @@ Strategy and module file change in the same edit. Drift = process bug.
 
 `check_platform_and_boundaries.md` autoloads on platform-claim surface.
 
-1. **Platform claims must be current.** Runtime contracts: `curriculum/trainings/agents-101/training-architecture.md` (CLI + Desktop + Cowork); `curriculum/trainings/agentic-engineering-101/training-architecture.md` (CLI + Desktop today; no Cowork; Gemini CLI planned, §Future TODO).
+1. **Platform claims must be current.** Runtime contracts: `curriculum/trainings/agents-101/training-architecture.md` (profiles named there); `curriculum/trainings/agentic-engineering-101/training-architecture.md` (CLI + Desktop today; no Cowork; Gemini CLI planned, §Future TODO).
 2. **Skill invocation backed by shipped capability.** Otherwise inline the method.
 3. **Delivery architecture training-specific.** Don't encode one training's starter / working-dir / artifact rules here.
 

@@ -24,7 +24,7 @@ for f in "$SCEN"/*.txt; do
   missing=""
   while IFS= read -r line || [[ -n "$line" ]]; do
     # skip blanks, comments, and literal turns (leading *)
-    case "$line" in ''|\#*|\**) continue ;; esac
+    case "$line" in ''|\#*|\**|@*) continue ;; esac
     key="${line%%[[:space:]]*}"
     [[ -z "$key" ]] && continue
     [[ -f "$REG/$key.md" ]] || missing="$missing $key"

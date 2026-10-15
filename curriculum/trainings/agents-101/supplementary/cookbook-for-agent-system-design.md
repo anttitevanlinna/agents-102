@@ -112,7 +112,7 @@ Eight moves to compose, not eight steps to follow. Reach for the one the dish ne
 
 ## Worked Dish 1, The Program Manager Agent
 
-This illustrative composite follows a program manager at a multi-team Nordic software organisation building with Claude Code Desktop on macOS. The problem is not that she lacks visibility. She has meetings, Jira, Confluence, Slack, and a good memory. The problem is that commitments live in different rooms. A promise made in a leadership meeting becomes a Jira ticket two days later, gets softened in a team sync, then disappears into a plan page nobody re-reads until the date has passed.
+This illustrative composite follows a program manager at a multi-team Nordic software organisation building with a desktop agent runtime. The problem is not that she lacks visibility. She has meetings, Jira, Confluence, Slack, and a good memory. The problem is that commitments live in different rooms. A promise made in a leadership meeting becomes a Jira ticket two days later, gets softened in a team sync, then disappears into a plan page nobody re-reads until the date has passed.
 
 The agent's job was simple: keep the live programme state accurate, then draft the smallest useful nudge before a commitment slipped too far.
 
@@ -164,7 +164,7 @@ The durable artifact was not the morning output. It was the memory plus rules th
 
 ## Worked Dish 2, The Shared-Inbox Triage Agent
 
-This illustrative composite follows a customer-support team at a B2B SaaS company using Claude Code with scheduled execution on macOS. Their shared inbox mixes outage reports, billing questions, named-customer escalations, vague procurement threads, security reports, and marketing messages dressed up as urgency.
+This illustrative composite follows a customer-support team at a B2B SaaS company using an agent runtime with scheduled execution. Their shared inbox mixes outage reports, billing questions, named-customer escalations, vague procurement threads, security reports, and marketing messages dressed up as urgency.
 
 The old process was human scanning. It worked because experienced people could read between lines. It failed because the inbox never stopped, the cues were uneven, and the most important messages were not always the cleanest ones.
 
@@ -278,7 +278,7 @@ Build agents that name their own ambiguity. They are more useful than agents tha
 
 Eleven named items the recipes lean on: seven pieces and four closed-set lists. Each is small enough to hold in head; each is referenced by name from the Index of agent shapes on this page. Many of the smaller bits live inside the recipes, `wonder.md`, the personal skill, `challenge.md`, and earn their names there rather than here.
 
-**The three layers.** Raw sources (the originals, untouched), the memory (maintained by the agent, sharpens over time), and the rules file (`./CLAUDE.md` that keeps the shape consistent). The architectural stack of every compounding system. Most agent failures look like bugs and are layer confusion: a rule written into memory, a source written into rules, the system stops behaving like a system. From R2.
+**The three layers.** Raw sources (the originals, untouched), the memory (maintained by the agent, sharpens over time), and the root instructions file that keeps the shape consistent. The architectural stack of every compounding system. Most agent failures look like bugs and are layer confusion: a rule written into memory, a source written into rules, the system stops behaving like a system. From R2.
 
 **The cite-back rule.** Every claim in agent output points to the source file or URL it came from. Without it, agents smoothly hallucinate each other's memory. With it, the pushback rounds have something to push back at. Used everywhere from R2 onward.
 
@@ -308,7 +308,7 @@ The four named lists the recipes lean on:
 
 ## Data sources
 
-Eighteen sources in five families. Names, access mode, what each is good for. Reach for what's wired into your environment first; ask Claude to suggest the second stop.
+Eighteen sources in five families. Names, access mode, what each is good for. Reach for what's wired into your environment first; ask the agent to suggest the second stop.
 
 ### Internal knowledge, files
 

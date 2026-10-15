@@ -1,0 +1,72 @@
+/* Agents 101-only runtime-profile extension. The shared curriculum runtime and
+   stylesheet remain unchanged for every other training. */
+
+.runtime-switcher {
+    flex-wrap: wrap;
+}
+
+.rt-profile {
+    display: none;
+}
+
+body.runtime-cowork .rt-profile-cowork,
+body.runtime-desktop .rt-profile-desktop,
+body.runtime-cli .rt-profile-cli,
+body.runtime-codex-desktop .rt-profile-codex-desktop,
+body.runtime-codex-cli .rt-profile-codex-cli,
+body.runtime-copilot-app .rt-profile-copilot-app,
+body.runtime-copilot-cli .rt-profile-copilot-cli {
+    display: block;
+}
+
+/* Existing authored surface forks stay surface-shaped. Codex CLI sees CLI
+   passages; Codex Desktop sees Desktop passages. The runtime-copy audit catches
+   provider names inside those visible passages before release. */
+body.runtime-codex-cli .rt-desktop,
+body.runtime-codex-cli .rt-cowork {
+    display: none;
+}
+
+body.runtime-codex-desktop .rt-cli,
+body.runtime-codex-desktop .rt-cowork {
+    display: none;
+}
+
+body.runtime-copilot-cli .rt-desktop,
+body.runtime-copilot-cli .rt-cowork {
+    display: none;
+}
+
+body.runtime-copilot-app .rt-cli,
+body.runtime-copilot-app .rt-cowork {
+    display: none;
+}
+
+/* Family forks carry provider-specific UI names and file paths. */
+body.runtime-cowork .rt-codex,
+body.runtime-cowork .rt-copilot,
+body.runtime-desktop .rt-codex,
+body.runtime-desktop .rt-copilot,
+body.runtime-cli .rt-codex,
+body.runtime-cli .rt-copilot,
+body.runtime-codex-desktop .rt-claude,
+body.runtime-codex-desktop .rt-copilot,
+body.runtime-codex-cli .rt-claude,
+body.runtime-codex-cli .rt-copilot,
+body.runtime-copilot-app .rt-claude,
+body.runtime-copilot-app .rt-codex,
+body.runtime-copilot-cli .rt-claude,
+body.runtime-copilot-cli .rt-codex {
+    display: none;
+}
+
+/* Mechanic forks are shared by runtimes with the same artifact convention. */
+body.runtime-cowork .rt-agent-skills,
+body.runtime-desktop .rt-agent-skills,
+body.runtime-cli .rt-agent-skills,
+body.runtime-codex-desktop .rt-claude-skills,
+body.runtime-codex-cli .rt-claude-skills,
+body.runtime-copilot-app .rt-claude-skills,
+body.runtime-copilot-cli .rt-claude-skills {
+    display: none;
+}

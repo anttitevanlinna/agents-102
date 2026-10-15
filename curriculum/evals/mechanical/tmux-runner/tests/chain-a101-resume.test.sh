@@ -18,9 +18,10 @@ bad() { fail=$((fail+1)); echo "  FAIL - $1" >&2; }
 
 SB="$(mktemp -d)"; [[ -n "${KEEP:-}" ]] && echo "SB=$SB" || trap 'rm -rf "$SB"' EXIT
 export TRACE="$SB/trace"
-mkdir -p "$SB/tr/lib" "$SB/tr/out" "$SB/bin" "$SB/old" "$SB/home/.claude/skills"
+mkdir -p "$SB/tr/lib" "$SB/tr/out" "$SB/tr/fixtures/agents-101-synthetic" "$SB/bin" "$SB/old" "$SB/home/.claude/skills"
 cp "$ROOT/chain-agents-101.sh" "$SB/tr/"
 cp "$ROOT"/lib/*.sh "$SB/tr/lib/"
+cp "$ROOT/fixtures/agents-101-synthetic/case.sh" "$SB/tr/fixtures/agents-101-synthetic/"
 
 cat > "$SB/tr/run-a101.sh" <<'EOF'
 #!/usr/bin/env bash

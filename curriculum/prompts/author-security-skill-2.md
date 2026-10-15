@@ -6,11 +6,13 @@ origin: exercises/author-security-skill
 requires:
   - id: policy-report-raw
     source: prompt:author-security-skill-1
+  - id: root-instructions
+    source: prompt:a101-m2-debrief-claude-md
 produces:
   - id: security-package-plan
     location: scrollback
 ---
-I want to turn the useful parts of outputs/policy-report-raw.md into reusable security expertise for the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.
+I want to turn the useful parts of outputs/policy-report-raw.md into reusable security expertise for the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root {{artifact:root-instructions}}, and the multi-agent runs in module-3/stances/.
 
 Before you read or write any package files, ask me for 3-5 lines about what matters from my own head: the data, policy rule, customer, source, workflow, or failure mode I most want this reusable check to catch. Wait for my answer.
 

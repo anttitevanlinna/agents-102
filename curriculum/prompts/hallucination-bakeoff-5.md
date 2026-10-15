@@ -11,7 +11,7 @@ requires:
   - id: m5-claim-pool
     source: prompt:hallucination-bakeoff-2
   - id: m5-detector-outputs
-    source: prompt:hallucination-bakeoff-3
+    source: artifact:m5-detector-outputs
 produces:
   - id: m5-adjudication
     location: module-5/adjudicated-claims.md

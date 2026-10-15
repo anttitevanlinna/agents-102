@@ -4,7 +4,7 @@ Before the security loop, look at the agent loop without polish.
 
 The raw loop takes three plain questions. No special setup. No hidden vocabulary. Just the model explaining what it can see and do in its current environment.
 
-Ask Claude which tools it can use right now.
+Ask the agent which tools it can use right now.
 
 {{prompt:agent-loop-raw-1}}
 

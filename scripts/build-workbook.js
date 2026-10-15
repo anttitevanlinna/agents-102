@@ -39,6 +39,7 @@ const ROOT = path.resolve(__dirname, '..');
 const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
 const { readCurriculumMd } = require('./read-curriculum.js');
 const { scopedRuntime } = require('./workbook-runtime.js');
+const A101Runtimes = require(path.join(ROOT, 'site/layouts/a101-runtimes.js'));
 const CT = require(path.join(ROOT, 'scripts/calculate-time.js'));
 const { loadRegistry, writeRegistry, OUT_FILE: PROMPTS_JSON } = require('./compile-prompts.js');
 
@@ -114,7 +115,7 @@ const KNOWN_DESTS = new Set([
   'central synthesizer',
   'buyer/sponsor agent'
 ]);
-const KNOWN_RUNTIMES = new Set(['any', 'cli', 'desktop', 'cowork']);
+const KNOWN_RUNTIMES = new Set(['any', 'code', 'cli', 'desktop', 'cowork']);
 (function auditRegistryValues() {
   const odd = { dest: [], runtime: [] };
   for (const [key, entry] of Object.entries(PROMPT_REGISTRY)) {
@@ -126,7 +127,7 @@ const KNOWN_RUNTIMES = new Set(['any', 'cli', 'desktop', 'cowork']);
     odd.dest.forEach(s => console.warn('    ' + s));
   }
   if (odd.runtime.length) {
-    console.warn('  [warn] unknown runtime values (expected: any|cli|desktop|cowork):');
+    console.warn('  [warn] unknown runtime values (expected: any|code|cli|desktop|cowork):');
     odd.runtime.forEach(s => console.warn('    ' + s));
   }
 })();
@@ -284,14 +285,24 @@ const THEORY_HANDBOOK_MANIFEST = {
   ],
 };
 
-function readMd(absPath) {
+function promptExpanderFor(trainingKey) {
+  if (trainingKey === 'agents-101') {
+    return (md, options) => A101Runtimes.expandPrompts(md, PROMPT_REGISTRY, {
+      strict: options && options.strict,
+      renderPromptBlock: CR.renderPromptBlock
+    });
+  }
+  return (md, options) => CR.expandPrompts(md, PROMPT_REGISTRY, options);
+}
+
+function readMd(absPath, trainingKey) {
   if (!fs.existsSync(absPath)) return null;
   const raw = readCurriculumMd(absPath);
   const stripped = CR.stripMaintainerTail(raw);
   // Strict mode: any unresolved {{prompt:<key>}} marker fails the build,
   // pointing at the offending file via the path included in the error.
   try {
-    const expanded = CR.expandPrompts(stripped, PROMPT_REGISTRY, { strict: true });
+    const expanded = promptExpanderFor(trainingKey)(stripped, { strict: true });
     return CR.expandTiers(CR.expandFigures(expanded, FIGURE_REGISTRY, { strict: true }));
   } catch (e) {
     throw new Error(`${path.relative(ROOT, absPath)}: ${e.message}`);
@@ -355,11 +366,11 @@ function plainDisplayText(value) {
 // Replace standalone-paragraph include links with the included file's body
 // wrapped in HTML comment markers; postProcessIncludes turns the markers into
 // <section class="phase phase--<kind>"> after marked.parse.
-function inlineIncludes(md, seen = new Set()) {
+function inlineIncludes(md, seen = new Set(), trainingKey) {
   return md.replace(CR.INCLUDE_LINK_RE, (full, title, kindSlug, slideId) => {
     const [kind, slug] = kindSlug.split('/');
     const incPath = cur(kind, slug + '.md');
-    let inc = readMd(incPath);
+    let inc = readMd(incPath, trainingKey);
     if (inc === null) return full;
     // `#<id>` = one slide; wrapper id `<kind>-<slug>--<id>` never collides with
     // the whole-file wrapper. An unresolved id fails the build.
@@ -370,7 +381,7 @@ function inlineIncludes(md, seen = new Set()) {
     const key = slideId ? `${kind}/${slug}#${slideId}` : `${kind}/${slug}`;
     if (seen.has(key)) return full; // prevent loops
     seen.add(key);
-    const body = inlineIncludes(inc, seen);
+    const body = inlineIncludes(inc, seen, trainingKey);
     const wrapSlug = slideId ? `${slug}--${slideId.split(',')[0]}` : slug;
     return `\n\n<!--INC:${kind}:${wrapSlug}:${CR.esc(title)}-->\n\n${body}\n\n<!--/INC-->\n\n`;
   });
@@ -388,9 +399,9 @@ function postProcessIncludes(html) {
 
 function renderModuleMd(trainingKey, slug, contentUrl, flags, moduleSlugs) {
   const modPath = cur('trainings', trainingKey, slug + '.md');
-  let md = readMd(modPath);
+  let md = readMd(modPath, trainingKey);
   if (md === null) throw new Error(`Module not found: ${modPath}`);
-  md = inlineIncludes(md);
+  md = inlineIncludes(md, new Set(), trainingKey);
   md = CR.applyContentFlags(md, flags, moduleSlugs);
   md = rewriteCrossDocLinksToAnchors(md);
   md = escapeTildes(md);
@@ -420,7 +431,7 @@ function buildToc(contentKey, t) {
   function bigIdeaFor(slug) {
     if (slug in bigIdeaCache) return bigIdeaCache[slug];
     const modPath = cur('trainings', contentKey, slug + '.md');
-    const md = readMd(modPath) || '';
+    const md = readMd(modPath, contentKey) || '';
     return (bigIdeaCache[slug] = CR.extractBigIdea(md));
   }
   return CR.buildTocSections(t, {
@@ -464,12 +475,16 @@ function buildBody(trainingKey, customer, contentUrl) {
   const t = raw.contentKey ? Object.assign({}, CR.TRAININGS[contentKey], raw) : raw;
 
   const topNav = buildTopNav(trainingKey, t, customer);
+  const runtimeSwitcher = trainingKey === 'agents-101'
+    ? '<div id="runtime-switcher" class="runtime-switcher"></div>'
+    : '';
 
   const cover = `
 <header class="workbook-cover" id="top">
   ${BRAND.logo(customer)}<p class="eyebrow">${CR.esc(BRAND.name(customer))} workbook</p>
   <h1 class="cover-title">${CR.esc(t.label)}</h1>
   <p class="lede">${CR.esc(plainDisplayText(t.lede))}</p>
+  ${runtimeSwitcher}
 </header>
 
 <nav class="workbook-toc">
@@ -508,7 +523,7 @@ ${buildToc(contentKey, t)}
   // Files live under curriculum/trainings/<training>/<kind>/<slug>.md.
   function renderStandalone(kind, slug) {
     const docPath = cur('trainings', contentKey, kind, slug + '.md');
-    let md = readMd(docPath);
+    let md = readMd(docPath, contentKey);
     // A registry slug with no backing file is always a dead nav link: the index
     // (built from the registry) links to #<kind>-<slug>, but no section renders.
     // Abort instead of silently shipping N-1 sections (unlike modules, there is
@@ -569,6 +584,8 @@ const SPA_JS_SRC = fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.js')
 // The runtime a page inlines carries the registry entry of the training it was
 // built for and no other (scripts/workbook-runtime.js).
 const spaJs = trainingKey => (ANATOMY ? `window.__ANATOMY = ${JSON.stringify(ANATOMY).replace(/<\//g, '<\\/')};\n` : '') + scopedRuntime(SPA_JS_SRC, CR.TRAININGS, trainingKey);
+const A101_RUNTIME_CSS = fs.readFileSync(path.join(ROOT, 'site/layouts/a101-runtimes.css'), 'utf8');
+const A101_RUNTIME_JS = fs.readFileSync(path.join(ROOT, 'site/layouts/a101-runtimes.js'), 'utf8');
 // The slide viewer (Long-read ⇄ Slides). Inlined so the handbook keeps working
 // offline; inert until the reader toggles Slides.
 const SLIDES_CSS = fs.readFileSync(path.join(ROOT, 'site/layouts/slides.css'), 'utf8');
@@ -622,9 +639,15 @@ const BRAND = (() => {
 // against its module-body container and doesn't need active-section.
 const WORKBOOK_INIT_JS = `
 (function () {
+  var trainingKey = document.body.getAttribute('data-training');
+  if (trainingKey === 'agents-101' && window.A101Runtimes) {
+    var runtimeSwitcher = document.getElementById('runtime-switcher');
+    A101Runtimes.mountSwitcher(runtimeSwitcher);
+    A101Runtimes.wireRuntimeSwitcher(runtimeSwitcher);
+    A101Runtimes.applyRuntime(A101Runtimes.getRuntime());
+  }
   if (window.CurriculumRuntime) {
     // Numbered hero per module (lifts H1 + Big Idea into module-hero block).
-    var trainingKey = document.body.getAttribute('data-training');
     document.querySelectorAll('main > section.module').forEach(function (mod) {
       var num = CurriculumRuntime.moduleNumber(trainingKey, mod.id);
       CurriculumRuntime.buildModuleHero(mod, num);
@@ -736,7 +759,7 @@ const WORKBOOK_INIT_JS = `
 // top-to-bottom.
 function buildTrainerGuide(customer, trainingKey) {
   const guidePath = cur('trainings', trainingKey, 'trainer-guide.md');
-  let md = readMd(guidePath);
+  let md = readMd(guidePath, trainingKey);
   if (md === null) return null;
   md = escapeTildes(md);
   // Rewrite cross-doc links to absolute customer-workbook anchors so the trainer
@@ -906,7 +929,7 @@ function buildTrainerModules(customer, trainingKey) {
   const contentKey = raw.contentKey || trainingKey;
   const t = raw.contentKey ? Object.assign({}, CR.TRAININGS[contentKey], raw) : raw;
   const srcPath = cur('trainings', contentKey, 'trainer-modules.md');
-  let md = readMd(srcPath);
+  let md = readMd(srcPath, contentKey);
   if (md === null) return null;
   md = CR.applyContentFlags(md, raw.flags, (t.modules || []).map(m => m.slug));
   // Runtime maps are computed, never stored. Expanded BEFORE escapeTildes so the
@@ -1051,7 +1074,7 @@ function renderTheoryEntry(trainingKey, entry) {
     if (!fs.existsSync(srcPath)) {
       throw new Error(`Theory manifest entry missing: ${path.relative(ROOT, srcPath)}`);
     }
-    let md = inlineIncludes(`[${slug}](lectures/${slug}.md)`);
+    let md = inlineIncludes(`[${slug}](lectures/${slug}.md)`, new Set(), trainingKey);
     if (md.indexOf('<!--INC:') === -1) {
       throw new Error(`Theory manifest entry did not expand as an include: ${entry}`);
     }
@@ -1065,7 +1088,7 @@ function renderTheoryEntry(trainingKey, entry) {
 
   if (kind === 'supplementary') {
     const docPath = cur('trainings', trainingKey, 'supplementary', slug + '.md');
-    let md = readMd(docPath);
+    let md = readMd(docPath, trainingKey);
     if (md === null) {
       throw new Error(`Theory manifest entry missing: ${path.relative(ROOT, docPath)}`);
     }
@@ -1201,12 +1224,12 @@ function exerciseSlugsForModule(trainingKey, moduleSlug) {
   return slugs;
 }
 
-function renderExerciseEntry(slug) {
+function renderExerciseEntry(trainingKey, slug) {
   const srcPath = cur('exercises', slug + '.md');
   if (!fs.existsSync(srcPath)) {
     throw new Error(`Exercise missing: ${path.relative(ROOT, srcPath)}`);
   }
-  let md = inlineIncludes(`[${slug}](exercises/${slug}.md)`);
+  let md = inlineIncludes(`[${slug}](exercises/${slug}.md)`, new Set(), trainingKey);
   if (md.indexOf('<!--INC:') === -1) {
     throw new Error(`Exercise did not expand as an include: ${slug}`);
   }
@@ -1228,7 +1251,7 @@ function buildExercisesBody(customer, trainingKey) {
       return true;
     });
     if (slugs.length === 0) return '';
-    const inner = slugs.map(renderExerciseEntry).join('\n\n');
+    const inner = slugs.map(slug => renderExerciseEntry(trainingKey, slug)).join('\n\n');
     const label = `M${i + 1} — ${mod.title}`;
     return `<section class="module" id="exercises-m${i + 1}">\n<h1>${CR.esc(label)}</h1>\n${inner}\n</section>`;
   }).filter(Boolean).join('\n\n');
@@ -1274,7 +1297,10 @@ function buildExercisesWorkbook(customer, trainingKey) {
 
 function template(title, content, trainingKey) {
   const training = CR.TRAININGS[trainingKey] || {};
-  const runtime = training.runtime || 'cli';
+  const isA101 = trainingKey === 'agents-101';
+  const runtime = isA101 ? A101Runtimes.DEFAULT_PROFILE : (training.runtime || 'cli');
+  const a101RuntimeStyle = isA101 ? `<style>${A101_RUNTIME_CSS}</style>` : '';
+  const a101RuntimeScript = isA101 ? `<script>${A101_RUNTIME_JS}</script>` : '';
   // `deck: 'barebones'` on the registry entry is an EDITION, not a build flag:
   // the workbook is otherwise identical, so the choice belongs beside the
   // variant's module list, where the next person reading the registry sees it.
@@ -1287,11 +1313,13 @@ function template(title, content, trainingKey) {
 <title>${CR.esc(title)}</title>
 <style>${SPA_CSS}</style>
 <style data-student-handbook-print>${STUDENT_HANDBOOK_PRINT_CSS}</style>
+${a101RuntimeStyle}
 <style>${SLIDES_CSS}</style>${BRAND.style(1)}
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook student-handbook" data-training="${trainingKey}"${deck}>
 ${content}
 <script>${spaJs(trainingKey)}</script>
+${a101RuntimeScript}
 <script>${SLIDES_JS}</script>
 <script>${WORKBOOK_INIT_JS}</script>
 </body>

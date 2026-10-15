@@ -6,6 +6,9 @@
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@b7dbd0a0 story@b7dbd0a0 technical@b7dbd0a0 pedagogy@b7dbd0a0 strategy@b7dbd0a0 slides@b7dbd0a0)
+- judges @b7dbd0a0: writing PASS, story PASS, technical PASS, behavior N/A, pedagogy PASS, strategy PASS, slides PASS
+
 - **Time:** 5 minutes.
 - **Learning:** team — the trio writes the customer's promise first and keeps it as the reference every agent is measured against
 

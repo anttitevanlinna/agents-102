@@ -9,6 +9,9 @@ With agents, three rough solutions cost an afternoon. Knowing which opportunity 
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@b59a7134 technical@b59a7134 slides@b59a7134)
+- judges @b59a7134: writing PASS, technical PASS, slides PASS
+
 **STATUS:** rebuilt from the APT101 squint (2026-10-07), Day 2 § Widen before you choose. APT101 gap G5, from `apt101-source-pack.md` §1. Not taught (simulation training). Owes judging rounds.
 
 **Fidelity guards:** opportunity = Torres's own definition, verbatim. The disguise test and the go-out-to-eat example are hers. Torres prefers a product outcome at the root, not a business metric; if a later edit names the root, keep it a product outcome. "Three rough solutions cost an afternoon" is framing, not a measurement. The header does not say agents jump to solutions; nothing here backs that.

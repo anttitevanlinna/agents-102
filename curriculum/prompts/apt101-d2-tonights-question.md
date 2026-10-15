@@ -17,7 +17,7 @@ produces:
 ---
 Edit module-2/morning-agent/morning.md for tonight's run:
 - It reads chosen-bet.md and premortem.md from our team folder, by the full path team/ points to. A scheduled run starts fresh, so write the full path, not team/.
-- It reports the evidence for the bet and the evidence against it, with how many customers said each.
+- It reports the evidence for the bet and the evidence against it, with how many customers said each. Rewrite any line that asks only for evidence for the bet; don't leave it beside this one.
 - It watches for the early warning signs in premortem.md.
 - It runs judges/groundedness-judge.md on its own digest before writing it.
 

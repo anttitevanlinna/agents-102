@@ -9,7 +9,7 @@
 // held builds of 4. Its PREVIEW list omitted `earn-the-trust` — which the real
 // preview ships — and carried a `prework` slug the real table does not list, so
 // the tool rendered one cut that ships and one that does not exist. The
-// northwind team track (`flags: { payload: false }`) was modelled nowhere, and
+// cut declaring `flags: { payload: false }` was modelled nowhere, and
 // the script passed `{}` for flags on every call, so no payload-stripped cut
 // could be rendered at all.
 //
@@ -31,7 +31,7 @@ test('every shipped AE101 variant is modelled, none invented', () => {
     .sort()
   assert.deepStrictEqual(got, want,
     'the cut list is derived from TRAININGS, so a new variant is covered the day it ships')
-  assert.ok(got.length >= 4, `expected the four shipped AE101 cuts, got ${got.length}`)
+  assert.ok(got.length > 1, `expected the parent and its cuts, got ${got.length}`)
 })
 
 test('each variant carries the slugs and flags the build actually uses', () => {
@@ -42,10 +42,6 @@ test('each variant carries the slugs and flags the build actually uses', () => {
     'the shipped preview is getting-going / plan-mode-done-right / earn-the-trust — the old hardcoded list dropped the third')
   assert.ok(!preview.slugs.includes('prework'),
     'prework is not a module slug in any variant table; the old list invented it')
-
-  const northwind = byName['agentic-engineering-101-northwind']
-  assert.strictEqual(northwind.flags.payload, false,
-    'northwind strips payload blocks; passing {} for flags made that cut unrenderable')
 })
 
 test('a payload-stripped cut really drops the payload block', () => {
@@ -61,9 +57,9 @@ test('a payload-stripped cut really drops the payload block', () => {
 test('a module-flagged block follows its variant', () => {
   const body = 'A task,<!--flag:module:earn-the-trust--> then the feature,<!--/flag:module:earn-the-trust--> then done.\n'
   const inPreview = renderVariant(body, { flags: {}, slugs: ['getting-going', 'plan-mode-done-right', 'earn-the-trust'] })
-  const inNorthwind = renderVariant(body, { flags: {}, slugs: ['getting-going', 'plan-mode-done-right', 'run-the-first-experiment'] })
+  const inGapCut = renderVariant(body, { flags: {}, slugs: ['getting-going', 'plan-mode-done-right', 'run-the-first-experiment'] })
   assert.ok(inPreview.includes('then the feature'), 'the cut that ships earn-the-trust keeps its block')
-  assert.ok(!inNorthwind.includes('then the feature'), 'the cut that does not, drops it')
+  assert.ok(!inGapCut.includes('then the feature'), 'the cut that does not, drops it')
 })
 
 test('a non-AE101 path resolves its own training, not AE101 by default', () => {

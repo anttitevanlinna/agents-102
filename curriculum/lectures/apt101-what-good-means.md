@@ -10,6 +10,9 @@
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@49e12612 story@49e12612 technical@49e12612 pedagogy@49e12612 strategy@49e12612 slides@49e12612)
+- judges @49e12612: writing PASS, story PASS, technical PASS, behavior N/A, pedagogy PASS, strategy PASS, slides PASS
+
 - **Time:** 10 minutes.
 - **Learning:** control | transfer — the team writes down what good means so the agents can apply it, then learns what a pass and a scoring agent can and cannot tell it before trusting the work.
 

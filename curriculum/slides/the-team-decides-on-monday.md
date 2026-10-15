@@ -9,6 +9,9 @@ Bring it to the team on Monday and expect them to change it. Their changes are h
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@fdf541ef technical@fdf541ef slides@fdf541ef)
+- judges @fdf541ef: writing PASS, technical PASS, slides PASS
+
 **STATUS:** composed from the squint (2026-10-07), new APT101 slide (✱ style title in `apt101-squint.md`), closes `apt101-from-us-to-the-team`. Carries in compressed form the ideas of `three-walls` (rewrite of `where-is-this-all-going` § Three walls past the laptop) and `a-missing-name-is-a-finding` (rewrite of `access-is-not-absorption` § The people plan stalls on names), which this lecture does not include. Strategy appendix step 5: the team leaves with a proposal, not a decision. Not taught (simulation training). Owes judging rounds.
 
 <!-- backing -->

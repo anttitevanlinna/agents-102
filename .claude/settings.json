@@ -8,7 +8,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${AGENTS_CORE_DIR:-$CLAUDE_PROJECT_DIR/../agents-102-core}\"/project-claude/hooks/session-start.sh"
+            "command": "\"${AGENTS_CORE_DIR:-${CLAUDE_PROJECT_DIR:-$PWD}/../agents-102-core}\"/project-claude/hooks/session-start.sh"
           }
         ]
       }
@@ -18,7 +18,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${AGENTS_CORE_DIR:-$CLAUDE_PROJECT_DIR/../agents-102-core}\"/project-claude/hooks/surface-detector.sh"
+            "command": "\"${AGENTS_CORE_DIR:-${CLAUDE_PROJECT_DIR:-$PWD}/../agents-102-core}\"/project-claude/hooks/surface-detector.sh"
+          },
+          {
+            "type": "command",
+            "command": "python3 \"${AGENTS_CORE_DIR:-${CLAUDE_PROJECT_DIR:-$PWD}/../agents-102-core}\"/project-claude/hooks/prompt-approval-recorder.py"
           }
         ]
       }
@@ -29,11 +33,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${AGENTS_CORE_DIR:-$CLAUDE_PROJECT_DIR/../agents-102-core}\"/project-claude/hooks/prompt-edit-gate.sh"
+            "command": "\"${AGENTS_CORE_DIR:-${CLAUDE_PROJECT_DIR:-$PWD}/../agents-102-core}\"/project-claude/hooks/prompt-edit-gate.sh"
           },
           {
             "type": "command",
-            "command": "\"${AGENTS_CORE_DIR:-$CLAUDE_PROJECT_DIR/../agents-102-core}\"/project-claude/hooks/built-artifact-gate.sh"
+            "command": "\"${AGENTS_CORE_DIR:-${CLAUDE_PROJECT_DIR:-$PWD}/../agents-102-core}\"/project-claude/hooks/built-artifact-gate.sh"
           }
         ]
       }
@@ -44,11 +48,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${AGENTS_CORE_DIR:-$CLAUDE_PROJECT_DIR/../agents-102-core}\"/project-claude/hooks/post-write-reminder.sh"
+            "command": "\"${AGENTS_CORE_DIR:-${CLAUDE_PROJECT_DIR:-$PWD}/../agents-102-core}\"/project-claude/hooks/post-write-reminder.sh"
           },
           {
             "type": "command",
-            "command": "\"${AGENTS_CORE_DIR:-$CLAUDE_PROJECT_DIR/../agents-102-core}\"/project-claude/hooks/eval-class-router.sh"
+            "command": "\"${AGENTS_CORE_DIR:-${CLAUDE_PROJECT_DIR:-$PWD}/../agents-102-core}\"/project-claude/hooks/eval-class-router.sh"
           }
         ]
       }
@@ -58,11 +62,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${AGENTS_CORE_DIR:-$CLAUDE_PROJECT_DIR/../agents-102-core}\"/project-claude/hooks/stop-compound-nudge.sh"
-          },
-          {
-            "type": "command",
-            "command": "\"${AGENTS_CORE_DIR:-$CLAUDE_PROJECT_DIR/../agents-102-core}\"/project-claude/hooks/core-autocommit.sh"
+            "command": "\"${AGENTS_CORE_DIR:-${CLAUDE_PROJECT_DIR:-$PWD}/../agents-102-core}\"/project-claude/hooks/stop-compound-nudge.sh"
           }
         ]
       }

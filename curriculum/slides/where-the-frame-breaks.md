@@ -11,6 +11,9 @@ What would change this training's mind: agents that start deciding well, choosin
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@68da919b technical@68da919b slides@68da919b)
+- judges @68da919b: writing PASS, technical PASS, slides PASS
+
 **STATUS:** composed from the squint (2026-10-07), APT101 narrator slide: the frame names where it breaks (`story-depth-rubric.md` § Storytelling, Frame 100 rung). Opens `apt101-where-you-go-from-here`; the lecture closes on the stance question in `what-will-your-insight-be`. Quotes only the author's own sentences; the essay's Grimm & Smith definition and the Wardley talk stay off the slide. Not taught (simulation training). Owes judging rounds.
 
 <!-- backing -->

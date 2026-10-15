@@ -15,7 +15,7 @@ Same words. Different answer. The first exchange became part of context, and the
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-06 (writing@b58bcc4c technical@b58bcc4c slides@b58bcc4c)
-- judges @b58bcc4c: writing PASS, technical PASS, slides PASS
+**Quality:** compendium-audited 2026-10-08 (writing@8b8f4070 technical@8b8f4070 slides@b58bcc4c)
+- judges @8b8f4070: writing PASS, technical PASS, slides PASS
 
 **Guess before reveal** `same-question-two-answers` (Antti, 2026-10-06): the guess cue sits above the Finnish answer and asks the reader to guess *before you read on*, so the beat survives a text read with no live demo (`check_slides.md §4`; Claude Basics borrows it as self-study). Keep the reveal below the cue.

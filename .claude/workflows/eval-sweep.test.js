@@ -175,6 +175,15 @@ test('the default dispatch carries every mechanic the hillclimb validated', asyn
   assert.doesNotMatch(p, /grep -c '"evidence": \*null'/, 'the raw grep counts healthy N/A rows and means nothing now');
 });
 
+test('every judge keeps its scratch files apart from its siblings', async () => {
+  for (const cls of ['writing', 'behavior']) {
+    const p = await promptForClass(cls, {});
+    assert.match(p, /scratch file you write is named after `ae101--exercise--e\.\w+`/,
+      `${cls}: sibling judges share one scratchpad; a generic gen.js was run by the wrong judge and overwrote another instance`);
+    assert.match(p, /never run a script you did not write in this session/, cls);
+  }
+});
+
 test('behavior skips rule-ledger machinery it does not own', async () => {
   const p = await promptFor({});
   assert.doesNotMatch(p, /derive-class-brief\.js/);

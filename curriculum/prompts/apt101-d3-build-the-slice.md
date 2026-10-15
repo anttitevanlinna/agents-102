@@ -17,6 +17,6 @@ produces:
 ---
 Read the chosen first slice in team/story-map.md, the designer's Day 2 prototype in team/<designer's name>/, and team/product-box.html.
 
-Build the first slice as clickable HTML in team/slice-1/. Every backbone step is present and works, end to end. Where the slice says thin, keep it thin; where it says skip, put a plain placeholder page. Use the box's look and words.
+Build the first slice as clickable HTML in team/slice-1/. Every backbone step is present and works, end to end. Where the slice is thin at a step, keep it thin; where it leaves a step out, put a plain placeholder page. Use the box's look and words.
 
 When it's done, open the start page and tell me which steps are thin.

@@ -9,6 +9,9 @@ Then the team writes down what it now believes instead, and places the next bet 
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@b59a7134 technical@b59a7134 slides@b59a7134)
+- judges @b59a7134: writing PASS, technical PASS, slides PASS
+
 **STATUS:** composed from the squint (2026-10-07), closes `apt101-bet-meets-five-users`. APT101 gap G:read-the-signal from `apt101-source-pack-2.md` §6 (Ries). Header is the squint's retitle; the opening line is the claim. Ries's wording is "pivot or persevere"; stopping is the slide's own addition, in its own sentence, attributed to no one. O'Reilly's signal-before-the-test is taught on `write-the-bet-so-it-can-lose` and is not re-credited here. Not taught (simulation training).
 
 <!-- backing -->

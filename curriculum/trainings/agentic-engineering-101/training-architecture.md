@@ -120,35 +120,6 @@ Every module's exercises must produce artefacts deterministically enough to repl
 
 The student's repo lives wherever the team's code actually lives. If the repo is on a synced folder (OneDrive, Dropbox, Google Drive), the repo's `CLAUDE.md` opens with a one-line runtime-naming rule per `check_platform_and_boundaries.md` §7a, *"You are working in a OneDrive-synced folder. Assume eventual consistency on cross-folder reads."* Most engineering repos live on local disk; the rule fires when they don't.
 
-## Variant: Northwind Team Track
-
-`agentic-engineering-101-northwind` (`site/layouts/curriculum.js`) is a `contentKey`-aliased cut:
-same module files as everything above, four sittings instead of six, getting-going,
-plan-mode-done-right, run-the-first-experiment, learn-from-the-test (stock M1/M2/M4/M5). M3
-(`earn-the-trust`) and M6 (`spot-gaps-build-the-loop`) are absent; a customer-authored workshop
-stands in for both.
-
-**Everything this cut changes is stated where the thing itself is defined**, not restated here:
-the tarball and the curated skills in §Material distribution and §Skills, the single worktree fork
-in §Rule files, the four-beat reading arc in §Reading contract, the sitting shape in
-§Delivery-shape variants. Read those sections as written; each names what a cut without M3 or M6
-does instead. Standing facts:
-
-- **A customer-authored workshop is the customer's IPR and never enters this repository.** The two
-  workshops of this cut live in the customer's own repository. No file here, and no commit in this
-  history, holds them or text taken from them.
-- **The supplementaries were checked for dropped-module references only** (not for whether
-  their sequencing assumptions survive a four-sitting arc), and as of 2026-08 no live delivery
-  had run against this cut — every cost in it was derived from the text.
-
-**Mechanically validated, not just read off source.**
-`curriculum/evals/mechanical/tmux-runner/chain-ae101.sh --cut northwind` drives M1→M2→M4→M5 on the
-lemmings SUT with M3/M6 absent from the topology (M4 positions from M2's ending SHA instead of
-M3's now-nonexistent ADR commit). Full PASS, 2026-07-28: M4's audit turn carries no hard dependency
-on M3's ADR or the `test-strategy-lemmings` skill; M5's `verify-by-hand-judge` correctly stands down
-("nothing to judge") when that skill is absent from disk, rather than erroring. Full account:
-`curriculum/evals/mechanical/tmux-runner/lemmings-chain-runbook.md` § *Northwind variant*.
-
 ## Delivery-shape variants (six-module, 2-day)
 
 Both shapes below are six-module. A four-sitting cut runs one module per weekly sitting in registry order; `timings.md` holds the caps per shape.

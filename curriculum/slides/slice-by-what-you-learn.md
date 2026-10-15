@@ -7,6 +7,9 @@ Cheap also tempts you to build one part well and leave the rest. Cut across the 
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@0f922c3b technical@0f922c3b slides@0f922c3b)
+- judges @0f922c3b: writing PASS, technical PASS, slides PASS
+
 **STATUS:** composed from the squint (2026-10-07), Agentic Product Teams 101 gap slide G11, from `apt101-source-pack.md` §3. Header is the squint's retitle; the opening line is the claim, Patton the citation. Not taught (simulation training).
 
 **Fidelity guards:** "backbone" is Patton's term credited by him to Dan Rawsthorne; "walking skeleton" (not used here) is Cockburn's. Patton slices across the backbone and names slices by outcome; do not reduce it to slicing by size. The opening paragraph is our agentic extension, not Patton's claim.

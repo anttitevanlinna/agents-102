@@ -9,6 +9,9 @@ Agents can build a working piece of the bet the same day, and a thing that works
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@a0295413 technical@a0295413 slides@a0295413)
+- judges @a0295413: writing PASS, technical PASS, slides PASS
+
 **STATUS:** rebuilt from the APT101 squint (2026-10-07), Day 2 § Imagine it already failed, the lecture after `apt101-imagine-it-failed`, so it names a pre-mortem the trio has just run. APT101 gap G10, from `apt101-source-pack.md` §4. Not taught (simulation training). Owes judging rounds.
 
 **Fidelity guard (zombie-stat):** the 1989 Mitchell, Russo and Pennington study measured the number of reasons generated, not their correctness. Klein's own article says "correctly identify reasons … by 30%", which overstates it. Keep "about thirty percent more reasons"; never "thirty percent more accurate". The study itself was not opened (403); the reading rests on Collins.

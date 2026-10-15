@@ -60,12 +60,12 @@ Next, each of you builds your memory through that door.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74 pedagogy@dd242fd9)
-- judges @dd242fd9: behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-what-goes-in.pedagogy.json)
+**Quality:** compendium-audited 2026-10-08 (writing@843767c4 story@a09e9456 technical@a16b0c55 behavior@dd243e74 pedagogy@843767c4 strategy@1fd93c06 slides@ccbff4e7)
+- judges @a16b0c55: writing PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-what-goes-in.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Role in Day 1:** beat 5; the one plain data beat in APT101 (no governance, no legal). Day 2's beat sheet owes this: "the team agrees what may go into the agents before anything goes in."
 
-**Reuse:** shape of Agents 101 `name-your-challenge` (interview → brief, then scouting), rewritten as `apt101-d1-pin-the-bet` and `apt101-d1-scout-the-material` so the prompts speak of the bet and the trio's own sources (removes the "Claude's prompt calls it your challenge" seam). The file stays `./challenge.md`: the reused `build-your-challenge-memory-*` prompts read it. The scouting list stays in scrollback, where `build-your-challenge-memory-1` picks it up. New: `apt101-d1-the-door`.
+**Reuse:** shape of Agents 101 `name-your-challenge` (interview → brief, then scouting), rewritten as `apt101-d1-pin-the-bet` and `apt101-d1-scout-the-material` so the prompts speak of the bet and the trio's own sources. The file stays `./challenge.md`: the reused `build-your-challenge-memory-*` prompts read it. The scouting list stays in scrollback, where `build-your-challenge-memory-1` picks it up. New: `apt101-d1-the-door`.
 
 **Frameworks:** none named; the door is the data-minimisation move ("the door you don't open") taught by the lecture *Send it off* before beat 7, so the exercise produces it and the lecture names it.
 

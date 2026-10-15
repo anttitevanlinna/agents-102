@@ -9,6 +9,9 @@ Ideally, she says, the team fills a one-page snapshot right after each interview
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@0f922c3b technical@0f922c3b slides@0f922c3b)
+- judges @0f922c3b: writing PASS, technical PASS, slides PASS
+
 **STATUS:** rebuilt from the APT101 squint (2026-10-07), Day 2 § Go back to your customers. APT101 gap G:talk-to-customers-every-week from `apt101-source-pack-2.md` §1. Not taught (simulation training). Owes judging rounds.
 
 **Fidelity guard:** the header is the slide's reading of Torres's line, not her wording. Her quote, verbatim: "I often see teams who are great at research, but don't meet their outcomes. Some don't even ship a product. That's because their research isn't in service of a desired outcome." The deck quotes her continuous-discovery definition once, on `the-product-trio` (Day 1); this slide paraphrases all four clauses, unquoted, with "desired product outcome". "Ideally" is hers: the snapshot is her recommendation, not a reported practice. Cagan's four risks and Torres's five assumption categories stay off this slide (pack Drift 3). "Those snapshots are what your agents read next" is the training's mechanic, not Torres.

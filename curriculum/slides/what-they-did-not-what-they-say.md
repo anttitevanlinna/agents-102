@@ -9,6 +9,9 @@ What you want are facts about what people do and why, not fluff, opinions or com
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@68da919b technical@68da919b slides@68da919b)
+- judges @68da919b: writing PASS (2 findings see instances/shared--slide--what-they-did-not-what-they-say.writing.json), technical PASS, slides PASS
+
 **STATUS:** rebuilt from the APT101 squint (2026-10-07), Day 2 § Go back to your customers. APT101 gap G:what-they-did-not-what-they-say from `apt101-source-pack-3.md` §1. Not taught (simulation training). Owes judging rounds.
 
 **Fidelity guard:** all three rules, the third included (pack Drift 1). "Worthless" is his word, not "noise" (Drift 2). The sort is his: compliments, fluff and opinions against facts. Commitment and advancement (his sales-chapter signals, scoped to "once there is something to sell") are off this slide for length; if they return, keep that scope. No evidence ladder on this slide: grading evidence on a ladder is the training's frame, not his (Drift 3). The rules' wording rests on reader-submitted transcriptions of the book; recheck when his second edition ships (Drift 4). The opening line is the slide's agent angle, scoped to "can"; the closing line reads the method through the training's frame and is not his.

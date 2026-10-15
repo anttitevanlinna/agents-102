@@ -9,6 +9,9 @@ Point the scrutiny at the work, and speaking up stays safe. Producing work got c
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@fc1c9aa3 technical@fc1c9aa3 slides@fc1c9aa3)
+- judges @fc1c9aa3: writing PASS, technical PASS, slides PASS
+
 **STATUS:** rebuilt from the APT101 squint (2026-10-07), Day 2 § Safe to say it's wrong. APT101 gap G8, from `apt101-source-pack.md` §8; carries an adopted positioning line from the strategy. The sentence "the agent got this wrong" and who must be able to say it live on `the-agent-got-this-wrong`, next in the lecture. Not taught (simulation training). Owes judging rounds.
 
 **Fidelity guards:** Edmondson's definition stays close to verbatim. Project Aristotle (Google, 180 teams, psychological safety first of five) is off the slide: a Nordic team lead read the stat as conference hype. If it returns: Google's own report, not peer-reviewed; "in order of importance", never "far and away".

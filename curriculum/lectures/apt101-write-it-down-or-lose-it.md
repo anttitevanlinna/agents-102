@@ -8,6 +8,9 @@
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@b7dbd0a0 story@b7dbd0a0 technical@b7dbd0a0 pedagogy@b7dbd0a0 strategy@b7dbd0a0 slides@b7dbd0a0)
+- judges @b7dbd0a0: writing PASS, story PASS, technical PASS, behavior N/A, pedagogy PASS, strategy PASS, slides PASS
+
 - **Time:** 8 minutes.
 - **Learning:** transfer — what the team learns from the agents' misses and good work goes back into their instructions, on recurrence.
 

@@ -9,6 +9,9 @@ The answers come out different for each kind of work: draft only; post after one
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@a0295413 technical@a0295413 slides@a0295413)
+- judges @a0295413: writing PASS, technical PASS, slides PASS
+
 **STATUS:** round 3 fixes applied (2026-10-06), APT101 rewrite of `new-human-role-in-the-loop` § Would you let it send the mail? and § The human moves one level up. The internal mail becomes the team's weekly update; no goal-nudger, steering eval or module recap. The ladder of answers is the home's, minus the judge vocabulary. Not taught (simulation training).
 
 <!-- backing -->

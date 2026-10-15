@@ -13,6 +13,12 @@ test('resolve: AGENTS_CORE_DIR default is what a fresh clone gets', () => {
     '/r/../agents-102-core/project-claude/hooks/x.sh')
 })
 
+test('resolve: cross-runtime nested default and interpreter expand', () => {
+  assert.equal(
+    resolve('python3 "${AGENTS_CORE_DIR:-${CLAUDE_PROJECT_DIR:-$PWD}/../agents-102-core}"/project-claude/hooks/x.py', '/r'),
+    '/r/../agents-102-core/project-claude/hooks/x.py')
+})
+
 test('resolve: home path stays visible as ~ so the check can refuse it', () => {
   assert.equal(resolve('~/.claude/hooks/y.sh', '/r'), '~/.claude/hooks/y.sh')
 })

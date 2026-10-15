@@ -9,6 +9,9 @@ With agents, the finished look got cheap. Picking the one question a prototype s
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@b59a7134 technical@b59a7134 slides@b59a7134)
+- judges @b59a7134: writing PASS, technical PASS, slides PASS
+
 **STATUS:** rebuilt from the APT101 squint (2026-10-07), Day 2 § Each of you makes something. APT101 gap G:prototype-to-learn from `apt101-source-pack-3.md` §2. Not taught (simulation training). Owes judging rounds.
 
 **Fidelity guard:** four kinds, integration included (pack Drift 1). "Role" stays their word, not "value" (Drift 4). No "polish tests nothing": their claim is that refinement "does not necessarily correspond to the solidity of the design" (Drift 3), here "says little about". The hi-fi/lo-fi labels and fidelity-depends-on-audience (Drift 2) are off this slide for length; if they return, keep the audience half. "People new to prototypes" paraphrases "inexperienced audiences". The three dimensions are not stages; the slide lists them without an order of work. The closing line is the training's frame, not theirs. "One question" in the header is the designer's move on the day, not Houde and Hill's rule: an integration prototype answers several.

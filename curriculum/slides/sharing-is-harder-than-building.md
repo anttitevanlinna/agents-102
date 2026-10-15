@@ -9,6 +9,9 @@ What the three of you worked out reaches your team only when you plan that step 
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@8b8f4070 technical@8b8f4070 slides@8b8f4070)
+- judges @8b8f4070: writing PASS (1 finding see instances/shared--slide--sharing-is-harder-than-building.writing.json), technical PASS, slides PASS
+
 **STATUS:** composed from the squint (2026-10-07), APT101 narrator slide, opens `apt101-from-us-to-the-team`. Header is the squint's narrator title (essay wording). The body is the essay paragraph verbatim, its bold lead-in included as plain text, narrated rather than block-quoted, one byline, one bridge sentence; same shape as the Day 1 narrator slide `the-installer-nobody-needed`. *What I Know Now That I Didn't Know Then* carries no date in the source file; it closes the collection (2025-04 to 2026-03), so the byline says 2026 and no day. No employer or colleague named. Not taught (simulation training). Owes judging rounds.
 
 <!-- backing -->

@@ -12,7 +12,7 @@ The team lead runs the benchmark on their laptop, in the <span class="rt-code">s
 
 *Designer and product owner, while phases 1 to 3 run*
 
-Pick the summary you will check in phase 5: the overnight digest, your curator's synthesis note, or a research summary from your team's drive that someone is about to put in front of a priority call. Read it where you know the material best. Then ask Claude to get it ready, and say which claim you would bet is unsupported before any judge exists.
+Pick the summary you will check in phase 5: the overnight digest, your curator's synthesis note, or a research summary from your team's drive that someone is about to put in front of a priority call. Read it where you know the material best. Then ask Claude to get it ready. Drop the summary after the colon, with the claim you would bet is unsupported, before any judge exists.
 
 {{prompt:apt101-d2-ready-a-real-summary}}
 
@@ -26,7 +26,7 @@ Ask Claude to pick a bounded set of evidence, write an overreaching briefing in 
 
 {{prompt:hallucination-bakeoff-1}}
 
-Aim for roughly one claim in ten made up or stretched. Claude cannot hit that number exactly. It is enough for the checks to have work to do.
+Aim for roughly one claim in ten made up or stretched. It is enough for the checks to have work to do.
 
 **Don't open the briefing.** Your main session stays blind, so it cannot quietly help the checks along.
 
@@ -38,9 +38,9 @@ Ask Claude to turn the briefing into a pool of claims the checks can score.
 
 *7 min, team lead*
 
-Four checks, four methods, the same claim pool, each in its own <span class="rt-code">subagent</span><span class="rt-cowork">agent</span>, each writing to its own file.
+Each check is a different method on the same claim pool, run in its own <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> and writing to its own file.
 
-Four of them fanning out at once over the evidence. If one starts reading far beyond it, stop it, steer narrower, then say *"continue"*.
+All four run at once. If one starts reading far beyond the evidence, stop it, steer it narrower, then say *"continue"*. If one comes back fast with almost nothing flagged, tell it there is more here and send it back.
 
 <div class="rt-code">
 
@@ -107,8 +107,8 @@ Four checks ran, a scorer measured them, and the one that won on your own eviden
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@3d7fd713 pedagogy@20018100)
-- judges @20018100: behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-catch-it-making-things-up.pedagogy.json)
+**Quality:** compendium-audited 2026-10-08 (writing@9669d4c1 story@9669d4c1 technical@a16b0c55 behavior@6d12f3e4 pedagogy@9669d4c1 strategy@8f78989b slides@9669d4c1)
+- judges @a16b0c55: writing PASS (8 findings see instances/agentic-product-teams-101--exercise--apt101-catch-it-making-things-up.writing.json), story PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-catch-it-making-things-up.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Role in Day 2:** beat 6, the trust centre of the day. Produces the groundedness judge every later beat leans on, and the first real catch. *Safe to say it's wrong* and *Fluent is not true* sit after: the first names the norm the phase 5 share just used ("the agent got this wrong", said about a real summary), the second names what the trio caught (stretch, smooth, the made-up quote).
 

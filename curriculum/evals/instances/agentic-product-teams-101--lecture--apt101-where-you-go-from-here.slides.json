@@ -1,0 +1,208 @@
+{
+  "class": "slides",
+  "file": "curriculum/lectures/apt101-where-you-go-from-here.md",
+  "training": "agentic-product-teams-101",
+  "verdict": "PASS",
+  "body_sha": "70da557eba9577fa37bdcef500d546cb4baa776fddf1528584844ad1abfa629a",
+  "shape_hash": "9512607a659aa887",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "Where you go from here",
+      "lines": "1-1"
+    },
+    {
+      "index": 1,
+      "heading": "Cheap building helps your rivals too",
+      "lines": "3-13 (expanded)"
+    },
+    {
+      "index": 2,
+      "heading": "I still make mistakes. I make them faster now.",
+      "lines": "16-24 (expanded)"
+    },
+    {
+      "index": 3,
+      "heading": "The models will analyse wider, deeper and faster. What will your insight be?",
+      "lines": "27-33 (expanded)"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "evidence": "chunk 1 line 11 (expanded): \"This is where \\\"building got cheap, deciding didn't\\\" stops being an edge\" - quoted thesis phrase names itself, is the training's own spine claim (also in apt101-building-is-cheap.md, earlier in module arc), and the quote above supplies the 'rivals' frame; chunk 3 'your rivals' models' resolves to chunk 1 header. Harm (unresolvable referent) absent.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "evidence": "No positional pointer to another file in any chunk; closest: chunk 3 'your rivals' models too' points back inside the same file (sequential callback, allowed). grep for 'lecture|earlier|opening' in body slides: none.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "PASS",
+      "evidence": "Closest: chunk 1 'what would change this training's mind' - forward-looking, not an event they did; 'building got cheap, deciding didn't' is the training's thesis phrase that exists in apt101-building-is-cheap.md. No 'the X you did/saw' reference.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no live-demo or guess-before-reveal beat in any chunk",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "evidence": "Each chunk carries a self-standing claim: chunk 2 line 24 'your team's next wrong bet can show itself in days'; chunk 3 line 33 'models ... are your rivals' models too'. Closest to thin: chunk 3 (two sentences) but it holds a claim and an ask.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "evidence": "Closest: chunk 3 header is a question; body line 33 answers the premise (models shared) and hands the question over, so header does not contradict content. Chunk 1 header 'Cheap building helps your rivals too' matches line 11 'When rivals build as cheaply, speed is the entry price'.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "evidence": "No 'Not X. Not Y. Z.', no triples, no superlatives, no number+retraction, no abstraction stacks, no verb triplets. Closest: chunk 1 line 13 'choosing the outcome and reading a no as clearly as a yes' - a pair, concrete.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "evidence": "grep of body view: banned_words/ritual/session_biography all CLEAN 0. Closest: chunk 3 'stance' appears only in maintainer block (line 12), not on a slide. 'training' in line 13 is ordinary room word.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "evidence": "grep '\\*\\*' on expanded slides: 0 bold elements; budget 0 <= 1.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "evidence": "Expanded view (expand-md.js) shows all three slide-files inlined under the lecture; each is a standalone-paragraph include link at raw lines 3, 5, 7, so all reach the deck.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/lectures/apt101-where-you-go-from-here.md -> 'OK - 1 files, Phase/Step numbering consistent.' No hand-numbered headers.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/lectures/apt101-where-you-go-from-here.md -> 'OK - 1 files, no page-geometry pointers across the slide cut.'",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no in-body links; only structural include links (raw lines 3,5,7)",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-size.js --file on each of the three slide files -> '✓ every slide is within limits' x3.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "evidence": "Lecture headings should be claims: chunk 1 'Cheap building helps your rivals too' (claim), chunk 2 quote claim. Closest: chunk 3 header is a question (line 28 'What will your insight be?'). Rule binds law/consolidation slides; this closer deliberately hands the open question over and the header carries the squint title, so a claim header would waste the question. Within the rule's orientation/closer allowance.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "Closest: chunk 3 line 33 'The question stays open, and it is yours to answer on your own product.' - partly restates the header question, but adds the move (answer it on your own product), not a pure kicker. Chunk 2 line 24 adds a consequence (days, time to place a better bet) beyond the quote.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "git log on the three slide files shows composition commits that wrote header and body together (b758b28b, 13a3f580); each body answers its current header (line 11, 24, 33). No inherited old-header bullets.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    }
+  ],
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "Slide files judged for wording/backing in their own files. Accept-note: STATUS line (simulation: true, not taught) in maintainer block; no rule-specific accept-note touches slides."
+}

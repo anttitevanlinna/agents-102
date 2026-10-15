@@ -9,6 +9,9 @@ Merging the pile now takes an agent seconds. Choosing which idea survives it tak
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@b59a7134 technical@b59a7134 slides@b59a7134)
+- judges @b59a7134: writing PASS, technical PASS, slides PASS
+
 **STATUS:** rebuilt from the APT101 squint (2026-10-07), Day 2 § Widen before you choose. APT101 gap G:one-two-four-all from `apt101-source-pack-2.md` §12. Not taught (simulation training). Owes judging rounds.
 
 **Fidelity guard:** the one minute alone is the live page's (intro 1, alone 1, pairs 2, fours 5, all 7; about fifteen minutes in all); later steps carry no minutes on the slide, so the 2021 page's 1/2/4/5 cannot creep in (pack Drift 1: the numbers are group sizes). The "All" step is "a few people share something everyone should hear", not every group reporting back. For a team of three or four, the fours step is the whole team; the slide does not adapt the structure, it states it. The opening line and the closing line are the training's reading of it, not Liberating Structures' claim; `the-branch-one-of-you-found` in the same lecture carries why the lone idea matters.

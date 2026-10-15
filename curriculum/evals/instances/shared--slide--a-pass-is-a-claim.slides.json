@@ -1,0 +1,193 @@
+{
+  "class": "slides",
+  "file": "curriculum/slides/a-pass-is-a-claim.md",
+  "training": "shared",
+  "verdict": "PASS",
+  "body_sha": "7c8d02e6607318750a6e3bbeaaf0f69e67c566eb38c69e9b1929cfac7fbbda7d",
+  "shape_hash": "9ce192677d67a3a9",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "A pass is a claim about a check nobody has tested",
+      "lines": "1-9"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "evidence": "chunk 0 line 6: \"its verdicts\" / \"put your calls next to its verdicts\" is closest; \"the check\" is named in the header and line 4, so \"its\" resolves in-chunk. Line 8 \"the same agent\" resolves to \"the agent's check\" (line 4). Harm (stranded referent) absent.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "evidence": "chunk 0: no pointer at another file or slide by position; closest is line 6 \"exactly this\", which points at the compare-and-add-reason loop in the same sentence.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "PASS",
+      "evidence": "chunk 0: no \"the X you did/saw/caught\"; closest is line 6 \"Take a handful of real cases\", an instruction, not a recap.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no guess-before-reveal or demo beat on the slide",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "evidence": "chunk 0: lines 4-8 carry a self-standing claim (a pass means nothing seen wrong, calibrate against your own calls) plus a move; nearest to thin is line 8, still a complete claim.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "evidence": "line 1 header \"A pass is a claim about a check nobody has tested\"; body line 4 \"Until you compare the check's verdicts with your own, you do not know\" is the untested-check claim, so header is true of the chunk.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "evidence": "chunk 0: no Not X/Not Y/Z (line 4 \"It does not mean the work is good\" is one negation answering one claim, no third leg); no triple; no superlative; line 6 \"better than ninety percent\" has no retraction; no abstraction stack; no verb triplet.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "evidence": "grep of body for compendium/forcing function/beat/mood/firing/surface: none. Closest line 6 \"the check's instructions\" is ordinary engineer wording.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "evidence": "grep -c '\\*\\*' on body lines 1-9 -> 0; no bold.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "evidence": "file is a slide file (<!--slide:a-pass-is-a-claim--> at line 2) with a ## heading at line 1; slide_count=1 in the body view, so the chunk is a deck slide; no module wrapper concerns for a slide file.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/slides/a-pass-is-a-claim.md -> OK, exit 0; no hand-numbered header.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/slides/a-pass-is-a-claim.md -> OK, no page-geometry pointers, exit 0.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no links in body (has_urls false)",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/slides/a-pass-is-a-claim.md -> slides: 1, oversized: 0, exit 0.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "evidence": "line 1 \"A pass is a claim about a check nobody has tested\" is a declarative claim, as a lecture heading should be.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "closest is line 8 \"Asking the same agent twice in the same conversation is not a second opinion.\" It adds a move (do not self-verify with the same agent) that neither header nor lines 4-6 hold, so not an aphorism kicker restating the header.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "header promises: a pass is an untested claim. Body line 4 states that, line 6 gives the test, line 8 closes off the same-agent shortcut; no bullet answers an older header. git log shows no header-only change.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    }
+  ],
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "Single-chunk slide file. Accept-notes present are the STATUS line and Husain source stamp; none needed. Husain figure is scoped to one product and 2024 in body (research class owns the claim)."
+}

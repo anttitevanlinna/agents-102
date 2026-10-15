@@ -9,6 +9,9 @@ Alex Osterwalder's Test Card (Strategyzer, 2015) makes four things explicit: wha
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@fdf541ef technical@fdf541ef slides@fdf541ef)
+- judges @fdf541ef: writing PASS (1 finding see instances/shared--slide--the-test-that-could-kill-it.writing.json), technical PASS, slides PASS
+
 **STATUS:** rebuilt from the APT101 squint (2026-10-07), Day 2 § Each of you makes something. APT101 gap G:the-test-that-could-kill-it from `apt101-source-pack-3.md` §3. Not taught (simulation training). Owes judging rounds.
 
 **Fidelity guard:** the Test Card is credited to Osterwalder and Strategyzer (2015), the book to Bland and Osterwalder (2019), per pack Drift 3. Experiments appear only by the book index's names (Concierge, Wizard of Oz, Simple Landing Page); their pages were not read, so the slide does not describe them. No "fake door" and no "smoke test" (Drift 1). "Over forty" because the cover says 44 and Strategyzer's page says 43 (Drift 2). "Below it, the hypothesis fails" and "the cheapest test that could prove the bet wrong" are the slide's reading of the threshold, not Osterwalder's words. "In an afternoon" is framing, not a measurement. Assumptions mapping (which assumption to test first) is Day 1's `riskiest-assumption-first` and stays off this slide.

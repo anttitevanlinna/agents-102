@@ -11,6 +11,9 @@ Each answer is one person's first draft. The team writes the real one together.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@0ba99eb1 technical@0ba99eb1 slides@0ba99eb1)
+- judges @0ba99eb1: writing PASS (1 finding see instances/shared--slide--what-each-of-us-is-for.writing.json), technical PASS, slides PASS
+
 **STATUS:** round 3 fixes applied (2026-10-06), Agentic Product Teams 101 gap slide G13 (`apt101-slide-reuse-map.md`): pays off the training's spine question (`theory-plan.md` § Story spine). Not taught (simulation training).
 
 **Guard:** the three role lines are the training's proposal, not a claim about the roles everywhere; the last line keeps them a draft. Refers to the three pieces of Day 2 beat 8 (v9); in a deck without that beat, the first paragraph is the only setup.

@@ -7,6 +7,9 @@ So a team that does not talk with its customers every week should start there, b
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@87285049 technical@87285049 slides@87285049)
+- judges @87285049: writing PASS, technical PASS, slides PASS
+
 **STATUS:** first cut (2026-10-07), APT101 stance slide, first in `apt101-go-back-to-your-customers`. The training's own position held against its own sale, in the training's voice, no narrator and no citation. Mechanism: cheap building plus no fresh customer evidence means agents build the team's guesses faster, and the team ships them; the header keeps the verb build so the shipping decision stays with the team. Distinct job from `a-faster-feature-factory` (Day 2 § Why it agreed), which says what amplification does to both kinds of team; this slide says where a team without customer contact starts. "Every week" is the cadence `talk-to-customers-every-week` takes from Torres, held here as the training's own call, not attributed. No incident, no statistic. Not taught (simulation training). Owes judging rounds.
 
 <!-- backing -->

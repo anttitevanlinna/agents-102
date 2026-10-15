@@ -15,6 +15,6 @@ Read team/chosen-bet.md and the interview quotes it carries.
 
 Ask me two things, one at a time: which one question this prototype should answer, and the job our customer hires the product for here.
 
-Then build a clickable rough prototype as one HTML file at team/<my-name>/prototype.html. Rough is right: grey boxes, real words. Every screen carries the customer quote it was built from, and that quote's source.
+Then build a clickable rough prototype as one HTML file at team/<my-name>/prototype.html. Rough is right: grey boxes, real words. Every screen carries the customer quote it was built from, word for word, with the interview file it came from. If you can't find a quote in the interview files, leave that screen's quote blank rather than writing one.
 
 At the end of the page, list what the prototype does not answer.

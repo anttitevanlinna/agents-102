@@ -14,7 +14,7 @@ So you start from their job, not from what you built. This is the Jobs-to-be-Don
 
 *5 min*
 
-Open `team/five-users.md` at the call you made. The product owner writes two post-its at the head of the *Way of working* frame on your team's Miro board: persevere, pivot or stop, and the one sentence you now believe, held or changed. Everything below them answers to those two.
+Open `team/five-users.md` at the call you made. The product owner writes two post-its at the head of the *Way of working* frame on your team's Miro board: persevere, pivot or stop, and the one sentence you now believe, held or changed. Everything else in the frame answers to those two.
 
 Then three columns: what the agents do, what stays with people, where the old way still wins. The team lead starts from the draft made on Day 2; the designer and the product owner add what the five users showed you. One post-it per thing, no discussion yet.
 
@@ -92,12 +92,12 @@ Then the board again. Stand at the frame and read it as your wider team will see
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@3d7fd713)
-- judges @3d7fd713: behavior PASS
+**Quality:** compendium-audited 2026-10-08 (writing@843767c4 story@a09e9456 technical@843767c4 behavior@3d7fd713 pedagogy@761a20a3 strategy@1fd93c06 slides@843767c4)
+- judges @a09e9456: writing PASS (4 findings see instances/agentic-product-teams-101--exercise--apt101-take-it-to-the-team.writing.json), story PASS, technical PASS (2 findings see instances/agentic-product-teams-101--exercise--apt101-take-it-to-the-team.technical.json), behavior PASS, pedagogy PASS (verify-refuted), strategy PASS, slides PASS
 
 **Role in Day 3:** Transfer: the trio's way of working becomes a proposal the wider team decides on, with a named first move per role in `team/monday.md`.
 
-**Reuse:** the beat order of Agents 101's `share-your-work` (job, bottleneck, two plans, what would have to be true, failure story), rewritten as named APT101 prompts for a trio proposing to its wider team: the Agents 101 keys speak of one teammate and one candidate, and the five users' call has to reach the job interview. Same `module-7/` paths, so § Sharpen the proposal finds the files. Agents 101 runs these over 70 min across three exercises; here 55 min in one, by putting one driver on all of them. Phase 2 (hand over one file) is new: the lecture after names "an agent's instructions are not the agent", so the room runs a stranger's instruction file before the slide says it (recognition before naming, `curriculum/story-craft.md`); the body does not name the result: the designer writes what they expect before the run, then names the line that went generic, what their own memory would have said there, and one thing that stayed on the sender's laptop (r3, judges 1 and 2). 7 min, two taken from phase 4. Failure stories cut to one: Day 2 ran *imagine it failed*. New: `apt101-d3-run-their-file`, `apt101-d3-the-job-your-team-hires`, `apt101-d3-bottleneck-and-plans`, `apt101-d3-test-the-switch`, `apt101-d3-team-monday`.
+**Reuse:** the beat order of Agents 101's `share-your-work` (job, bottleneck, two plans, what would have to be true, failure story), rewritten as named APT101 prompts for a trio proposing to its wider team: the Agents 101 keys speak of one teammate and one candidate, and the five users' call has to reach the job interview. Same `module-7/` paths, so § Sharpen the proposal finds the files. Agents 101 runs these over 70 min across three exercises; here 55 min in one, by putting one driver on all of them. Phase 2 (hand over one file) is new: the lecture after names "an agent's instructions are not the agent", so the room runs a stranger's instruction file before the slide says it (recognition before naming, `curriculum/story-craft.md`); the body does not name the result: the designer writes what they expect before the run, then names the line that went generic, what their own memory would have said there, and one thing that stayed on the sender's laptop. 7 min. One failure story, not several: Day 2 ran *imagine it failed*. New: `apt101-d3-run-their-file`, `apt101-d3-the-job-your-team-hires`, `apt101-d3-bottleneck-and-plans`, `apt101-d3-test-the-switch`, `apt101-d3-team-monday`.
 
 **Frameworks:**
 - Jobs to be Done (Christensen and collaborators): the frame is named once in the body, the authors only here.
@@ -116,5 +116,9 @@ Then the board again. Stand at the frame and read it as your wider team will see
 
 **Open:**
 - § Sharpen the proposal reuses `a101-m7-debrief-sharing-artifact`, whose registry `requires:` names `share-your-work-6`; with the named prompts here the chain resolves only once their bodies land with `produces:` for the same `module-7/` ids. The prompt-body pass settles it.
+
+**Failure modes:** phase 1, the call written as a hope (ask for persevere, pivot or stop and the sentence held or changed); phase 2, the receiving trio fixes the file before running it (run it as written; the generic line is the finding); phase 3, the job written in the trio's words (ask how the wider team would say it); phase 4, every obstacle technical (ask who would stop using it and why); phase 5, assumptions with no test this week (ask for one); phase 6, a part with no name (it stays visibly empty). A participant who arrives without the Day 1 and Day 2 files works from the team folder's copies.
+
+**Leap test:** on Monday the trio (1) opens with the door as the wider team's first decision; (2) brings a proposal with a name or an open slot on every part; (3) can say which line of their agent file went generic in another trio's hands.
 
 **View summary:** The three of you interview for the job your wider team is trying to get done, find what would stop them taking up your way of working, and imagine it failing six months on. The artefact is `team/monday.md`: a proposal the team decides, with each role's first move.

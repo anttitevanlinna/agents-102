@@ -9,6 +9,9 @@ The person who can catch it is the one who sat in the interviews. So every quote
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@fc1c9aa3 technical@fc1c9aa3 slides@fc1c9aa3)
+- judges @fc1c9aa3: writing PASS, technical PASS, slides PASS
+
 **STATUS:** rebuilt from the APT101 squint (2026-10-07), Day 2 § Fluent is not true. APT101 gap slide G7 (`apt101-slide-reuse-map.md`): the product-team kind of fabrication. Not taught (simulation training). Owes judging rounds.
 
 **Guard:** "most dangerous" is the slide's stance about product work, not a measured ranking; keep it scoped to product work. The invented quote is the Day 2 planted-claim exercise's subject (`apt101-day-2-beats.md` beat 6).

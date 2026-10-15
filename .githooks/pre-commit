@@ -7,9 +7,9 @@
 # requires explicit y/N confirmation from the human committer.
 #
 # Why: prompt-registry files are the canonical source of student-facing prompts.
-# Edits to them must be deliberate. The Claude-Code-specific PreToolUse gate
-# (.claude/hooks/prompt-edit-gate.sh) catches at write time within Claude
-# Code; this hook is the second-line defence catching commits from any tool.
+# Edits to them must be deliberate. The runtime PreToolUse gate
+# (provided by the sibling core's prompt-edit-gate.sh) catches supported agent
+# writes; this hook is the second-line defence catching commits from any tool.
 #
 # Setup (run once per clone):
 #   git config core.hooksPath .githooks
@@ -143,9 +143,9 @@ git diff --cached --shortstat -- 'curriculum/prompts/**'
 echo
 
 # Card-approval bridge (added 2026-05-21): when the maintainer types
-# `approve <prompt-key>` during a Claude Code card flow, Claude writes a
-# marker at `.claude/prompt-approvals/<key>.confirmed`. The marker records
-# the human's approval token in a durable form. If ALL staged prompt keys
+# `prompt-ok` during a card flow, the runtime's prompt-submit hook promotes
+# `.claude/prompt-approvals/<key>.pending` to `<key>.confirmed`. The marker
+# records the human's approval token in a durable form. If ALL staged prompt keys
 # have fresh markers (< 1 hour old), skip the interactive confirm and
 # consume the markers (one-shot). The card approval IS the gate clear;
 # no separate y/N needed.
@@ -199,7 +199,7 @@ echo "────────────────────────�
 # (GUI clients / IDEs that disconnect stdin but keep the controlling
 # terminal). Git disconnects stdin for hooks (sets it to /dev/null), so
 # `echo y | git commit ...` does NOT work. /dev/tty is the only interactive
-# channel — when unconnected (Claude Code, headless CI), abort with a clear
+# channel — when unconnected (agent runtimes, headless CI), abort with a clear
 # message; the card-approval bridge above is the supported headless path.
 #
 # Probe /dev/tty in a subshell so the shell-level "Device not configured"
@@ -216,7 +216,7 @@ if ! IFS= read -r reply; then
     echo
     echo "No confirmation channel available." >&2
     echo "Either run from a terminal with /dev/tty connected, or approve" >&2
-    echo "each prompt via the Claude Code card flow (writes a marker to" >&2
+    echo "each prompt via the runtime card flow (writes a marker to" >&2
     echo "  $APPROVAL_DIR/<key>.confirmed)" >&2
     exit 1
 fi

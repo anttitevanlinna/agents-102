@@ -3,8 +3,8 @@
  "file": "curriculum/exercises/apt101-catch-it-making-things-up.md",
  "training": "agentic-product-teams-101",
  "verdict": "PASS",
- "body_sha": "d812dc8976d1c73ac7f303377a3dc034ddb96466e20137fc3a7dfa5daf9f042c",
- "trace_status": "partial_regen",
+ "body_sha": "8e0109417831383689dac39540243e9f78857ba39f68b09cfc7bf30fba66baf6",
+ "trace_status": "cached",
  "prompts_evaluated": 10,
  "prompts_findings": [
   {
@@ -23,8 +23,9 @@
     {
      "pattern_id": "niceness-tax",
      "confidence": "low",
-     "evidence": "Prompt asks Claude to plant fabrications; RLHF softening could under-plant. 'Where the sources do not cover something, blend in general knowledge. Do not hedge.' plus body: 'Claude cannot hit that number exactly. It is enough for the checks to have work to do.' (line 29)",
-     "fix_hint": "none owed; carve-out applied: body-callout mitigation"
+     "evidence": "Prompt asks Claude to plant fabrications; RLHF softening could under-plant. In the prompt: 'You cannot make that number precise. Treat it as a direction, not a target metric.' and 'Where the sources do not cover something, blend in general knowledge. Do not hedge.'; body line 29: 'It is enough for the checks to have work to do.'",
+     "carve_out": "in-prompt direction-not-target framing plus 'Do not hedge' (no named catalog carve-out)",
+     "fix_hint": "none owed; carve-out applied"
     }
    ]
   },
@@ -79,8 +80,9 @@
     {
      "pattern_id": "self-audit-charity",
      "confidence": "low",
-     "evidence": "Known limit could be generic or charitable to the judge. Prompt anchors it: 'based on what lost the benchmark'; body (line 86) names the failure ('quality is hard') and the pushback move.",
-     "fix_hint": "none owed; carve-out applied: self-report-inflation and self-audit-charity - evidence-backed Debrief carve-out"
+     "evidence": "Known limit could be generic or charitable to the judge. Prompt anchors it: 'based on what lost the benchmark'; body (line 88) names the failure ('quality is hard') and the pushback move.",
+     "carve_out": "self-report-inflation and self-audit-charity - evidence-backed Debrief carve-out",
+     "fix_hint": "none owed; carve-out applied"
     }
    ]
   },
@@ -93,8 +95,9 @@
     {
      "pattern_id": "citation-cargo-cult",
      "confidence": "low",
-     "evidence": "\"quote the sentence from the source that supports it exactly, with its file path, or write \\\"not found\\\"\" (line 98 fence)",
-     "fix_hint": "none owed; exact quote plus path plus \"not found\" escape make a fabricated citation checkable"
+     "carve_out": "in-prompt exact-quote-with-path-or-\"not found\" escape (no named catalog carve-out)",
+     "evidence": "\"quote the sentence from the source that supports it exactly, with its file path, or write \\\"not found\\\"\"",
+     "fix_hint": "none owed; carve-out applied"
     }
    ]
   }
@@ -102,5 +105,5 @@
  "suggestions": [],
  "blocking_findings_count": 0,
  "nonblocking_findings_count": 0,
- "notes": "No maintainer accept-notes (maintainer block carries none dated). Prompts 1-9 trace entries reused (sha match); prompt 10 regenerated after the exact-quote edit (prior suggestion taken, now low). Carve-outs applied: body-callout (prompt 2), evidence-backed Debrief (prompt 9). Cross-class, not judged here: the rt-cowork fork (raw line 50, hallucination-bakeoff-4) renders with a '(Claude Code)' dest label; prompt 10 says 'the summary file I name below' but the fence has nothing below the instructions; prompt 8 asks Claude to 'ask me' for one sentence while the body has three people answer through the team lead. If the real summary comes back clean, prompt 10's 'End with the one flagged claim' has no exit, so Claude might invent a flag; low base rate, unmarked here, maintainer watch-for already says clean is a result. Scorer (prompt 6) and detectors are mitigated in-prompt (forced pick, strict substring)."
+ "notes": "All 10 prompt_sha values match the expanded fences (recomputed). Diff since 3d7fd713 touches only surrounding prose (line 29 trimmed, line 41 reworded, line 43 added stop-and-steer callout), no prompt body; the new callout strengthens the heavy-run mitigation. Trace evidence line ref for prompt 9 updated 86 -> 88. No dated accept-notes in the maintainer block."
 }

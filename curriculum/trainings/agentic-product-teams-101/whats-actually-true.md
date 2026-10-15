@@ -82,17 +82,15 @@ Laptops shut:
 - Read the digest where you know the most; the line you trust least is where checking starts.
 - The digest found what its brief asked it to look for. Ask the other way round too.
 - Sketch alone before anything gets merged, and keep the name on every branch.
-- The outcome at the root is what lets a merge choose instead of average.
 - A judge is kept because it won on your own evidence, and it says what it can't see.
 - "The agent got this wrong" costs nobody face, so say it early.
-- Each of you made a piece of the bet in your own craft; together they test one thing.
 - A mistake becomes a rule when it comes back, and examples of good sit beside the don'ts.
 
 ## Bring to Day 3
 
 **Leave the next digest unopened until the room.** You read it together against the chosen bet when Day 3 opens, and a digest read alone is a digest read where you know least.
 
-**Five people who do the job your product serves, or one close to it, use your first slice on Day 3.** The trainer books them for the five-users beat; nobody from another trio stands in.
+**Five people who do the job your product serves, or one close to it, use your first slice on Day 3.** The trainer books them for Day 3; nobody from another trio stands in.
 
 ## Next
 
@@ -100,8 +98,9 @@ Tonight the agent reads your chosen bet and looks for what argues against it. On
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (pedagogy@20018100)
-- judges @20018100: behavior N/A, pedagogy PASS (1 finding see instances/agentic-product-teams-101--module--whats-actually-true.pedagogy.json)
+**Quality:** compendium-audited 2026-10-08 (writing@03787e69 story@6d12f3e4 technical@a16b0c55 pedagogy@03787e69 strategy@03787e69 slides@bb791683)
+- judges @a16b0c55: writing PASS, story PASS (1 finding see instances/agentic-product-teams-101--module--whats-actually-true.story.json), technical PASS, behavior N/A, pedagogy PASS (1 finding see instances/agentic-product-teams-101--module--whats-actually-true.pedagogy.json), strategy PASS, slides PASS
+- cross_module @4d040c7c: PASS — set=[our-product-our-system,whats-actually-true,learn-faster-than-the-market]; 2 pairs, 0 blocking; see instances/agentic-product-teams-101--module-set--full-arc.cross_module.json
 
 **STATUS:** built from the build plan (`curriculum/module-design/apt101-build-plan.md`) and the Day 2 beat sheet (`apt101-day-2-beats.md` v10), 2026-10-07. `simulation: true` training: pages and prompt lines land uncarded. New prompts are named lines; bodies come in the prompt-body pass. Big Idea = an adopted positioning line (strategy, 2026-10-05).
 

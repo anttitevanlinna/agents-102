@@ -24,11 +24,8 @@ bad() { fail=$((fail+1)); echo "  FAIL - $1" >&2; }
 CASES=(
   "lemmings-full-from-prework|chain-lemmings.sh --from prework|chain-ae101.sh --sut-kit lemmings --from prework"
   "lemmings-full|chain-lemmings.sh|chain-ae101.sh --sut-kit lemmings"
-  "lemmings-northwind|chain-northwind.sh --sut-kit lemmings --from prework|chain-ae101.sh --sut-kit lemmings --cut northwind --from prework"
   "picoshare-full|chain-picoshare.sh|chain-ae101.sh --sut-kit picoshare"
-  "picoshare-northwind|chain-northwind.sh --sut-kit picoshare|chain-ae101.sh --sut-kit picoshare --cut northwind"
   "codesearch-full|chain-codesearch.sh --m2-sha m2override|chain-ae101.sh --sut-kit codesearch --m2-sha m2override"
-  "codesearch-northwind-from-m4|chain-northwind.sh --sut-kit codesearch --from m4|chain-ae101.sh --sut-kit codesearch --cut northwind --from m4"
   # Resume points (no old driver): a --from either resolves declared prior
   # state or fails before touching the SUT.
   "lemmings-full-from-m4-no-state|-|chain-ae101.sh --sut-kit lemmings --from m4"

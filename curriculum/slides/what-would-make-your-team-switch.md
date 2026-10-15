@@ -7,6 +7,9 @@ So ask the question the other way round. Not *how do we get the team to adopt th
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@68da919b technical@68da919b slides@68da919b)
+- judges @68da919b: writing PASS, technical PASS, slides PASS
+
 **STATUS:** composed from the squint (2026-10-07), APT101 rewrite of Agents 101 home slide `what-would-have-to-be-true` (`access-is-not-absorption` § What would have to be true for them to switch?), retitled to the squint's "your team" and rewritten for the trio's proposal. The home slide is untouched. Fourth in `apt101-from-us-to-the-team`. The question runs unattributed, as at home; it is Roger Martin's, credited at home in Agents 101 `personal-to-team.md` § Key Concepts. Not taught (simulation training). Owes judging rounds.
 
 <!-- backing -->

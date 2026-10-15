@@ -1,6 +1,6 @@
 # Copyright Notice — `content/`
 
-Copyright (c) 2026 **Bosser Oy** (sole proprietor: Antti Tevanlinna). All rights reserved.
+Copyright (c) 2026 **Bosser Oy**. All rights reserved.
 
 All content in this directory — the skills the trainings ship to students — is proprietary to Bosser Oy. Any new file added under `content/` is automatically covered by this notice.
 

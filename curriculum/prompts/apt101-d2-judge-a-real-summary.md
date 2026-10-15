@@ -13,7 +13,7 @@ produces:
     location: "team/<my-name>/judge-run.md"
     note: "read by apt101-d2-team-rules"
 ---
-Run judges/groundedness-judge.md on my real summary, against its sources. The summary and its sources are in team/<my-name>/real-summary.md if I readied one. If not, use the summary file I name below and the files it cites or was built from.
+Run judges/groundedness-judge.md on my real summary, against its sources. The summary and its sources are in team/<my-name>/real-summary.md if I readied one. If not, ask me for the summary file, and use it and the files it cites or was built from.
 
 For each claim the judge flags, quote the sentence from the source that supports it exactly, with its file path, or write "not found".
 

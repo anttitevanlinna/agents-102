@@ -9,6 +9,9 @@ Ask for the shape you can use. A ranked list of what changed, with the source of
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@3d335826 technical@3d335826 slides@3d335826)
+- judges @3d335826: writing PASS (2 findings see instances/shared--slide--you-cannot-read-it-all.writing.json), technical PASS, slides PASS
+
 **STATUS:** round 3 fixes applied (2026-10-06), Agentic Product Teams 101 gap slide G4 (`apt101-slide-reuse-map.md`). Rewrites for product people the ideas of AE101 `the-machine-you-just-met` § Ask for a ranked list and `the-loop-half-filled` § Reading was never the control. Carries no mechanism for why a digest says what it says: it sits between the read and *Why it agreed*, where the trio's own look-for line is the cause, so the preference-tuning point stays out. Not taught (simulation training).
 
 <!-- backing -->

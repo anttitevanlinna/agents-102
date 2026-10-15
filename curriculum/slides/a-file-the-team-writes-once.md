@@ -9,6 +9,9 @@ Each of you sees the product from a different seat. The product owner knows the 
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@fc1c9aa3 technical@fc1c9aa3 slides@fc1c9aa3)
+- judges @fc1c9aa3: writing PASS (2 findings see instances/shared--slide--a-file-the-team-writes-once.writing.json), technical PASS, slides PASS
+
 **STATUS:** round 3 fixes applied (2026-10-06), APT101 rewrite of `context-is-king` § A file it reads every time. Id differs from the map's `R:a-file-it-reads-every-time`: that file name is the Agents 101 slide itself, so this rewrite takes its own name. Not taught (simulation training).
 
 <!-- backing -->

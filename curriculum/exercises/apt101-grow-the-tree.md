@@ -4,7 +4,7 @@
 
 **What you do:**
 
-Grow an opportunity solution tree for the outcome you agreed in *Pick the outcome*. Teresa Torres draws it with the outcome at the root, the customer needs, pains and wishes under it as opportunities, and the ideas that might address each one hanging below. Each of you sketches alone first, on the team's Miro board. Then Claude merges the three sketches, keeping every name on every branch. Then each of you questions the merged tree from your own role.
+Grow an opportunity solution tree for the outcome you agreed in *Pick the outcome*. Teresa Torres draws it with the outcome at the root, the customer needs, pains and wishes under it as opportunities, and under each one the ideas that might address it. Each of you sketches alone first, on the team's Miro board. Then Claude merges the three sketches, keeping every name on every branch. Then each of you questions the merged tree from your own role.
 
 The trainer has set up a frame for the tree on your team board. If your company has not enabled the Miro connector, a screenshot or export of the frame goes into the chat instead.
 
@@ -24,7 +24,7 @@ Put down the opportunity only you would think of. The ones all three of you saw 
 
 The designer drives at the shared screen: the designer sat closest to what customers actually said. While Claude merges, the product owner checks each merged branch against the outcome at the root, and the team lead marks on the board every branch only one person found, so none of them goes missing in the merge.
 
-Ask Claude to merge the three sketches into one tree against the outcome, keeping whose each branch was.
+Ask Claude to merge the three sketches into one tree against the outcome, keeping each branch's names.
 
 {{prompt:apt101-d2-merge-the-tree}}
 
@@ -36,7 +36,7 @@ Push back on a merge that reads like the average of the three of you. If your si
 
 Each of you, on your own laptop, back in your first <span class="rt-code">session</span><span class="rt-cowork">task</span>. Ask Claude to send three minds through your memory, each from a different angle, and write back what they find.
 
-Three subagents fanning out at once. If one starts reading the world, stop it, steer narrower, then say *"continue"*.
+Three subagents fanning out at once. If one starts reading the world, stop it, steer narrower, then say *"continue"*. If one comes back fast with almost nothing, tell it there is more here and send it back.
 
 <div class="rt-code">
 
@@ -69,7 +69,7 @@ If the answer comes back with a longer list of issues than you have time for, ha
 
 Back to the board. Each of you adds your challenges to the merged tree on stickies in your colour, from the stance you kept: the product owner on the branch whose assumptions are thinnest, the designer on the branch that is really a solution or misread the customer, the team lead on the branch the team could not carry.
 
-Then the designer asks Claude to record the challenges in the tree file, with whose each one was.
+Then the designer asks Claude to record the challenges in the tree file, each with its author's name.
 
 {{prompt:apt101-d2-add-the-challenges}}
 
@@ -77,8 +77,8 @@ The tree is not finished, and it should not be. You choose from it in *Choose th
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@21214fc5 pedagogy@20018100)
-- judges @20018100: behavior PASS, pedagogy PASS (3 findings see instances/agentic-product-teams-101--exercise--apt101-grow-the-tree.pedagogy.json)
+**Quality:** compendium-audited 2026-10-08 (writing@9669d4c1 story@5494bb26 technical@a16b0c55 behavior@21214fc5 pedagogy@9669d4c1 strategy@ed634491 slides@9669d4c1)
+- judges @a16b0c55: writing PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-grow-the-tree.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Role in Day 2:** beat 4. Produces the team's opportunity solution tree, attributed per branch, and each person's three-stance read of the evidence. Placed after *Go back to your customers*; *Widen before you choose* names afterwards what the trio just did (alone first, merge keeps the single-name branch, the outcome makes the merge choose).
 

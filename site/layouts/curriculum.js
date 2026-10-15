@@ -118,60 +118,6 @@
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
             ]
         },
-        // Team-track variant of Agentic Engineering 101: four sittings, running
-        // AE101 modules 1, 2, 4 and 5 unmodified. AE101 M3 (`earn-the-trust`) is
-        // dropped and M6 (`spot-gaps-build-the-loop`) becomes a customer-authored
-        // workshop; workshops slot between the sittings and are not ours. Same
-        // `contentKey` mechanism as the preview cut above — file resolution points
-        // at the canonical AE101 content dir, so prework, supplementaries and
-        // references are inherited one copy each and a fix to a shared artefact
-        // reaches every variant. Only the module list, label and lede are its own.
-        //
-        // No `prework:` override, and none needed: AE101's own prework page is now
-        // module-count-neutral, and the payload flag below takes the download,
-        // extract and skill-install steps with it. What remains true for both cuts
-        // is stated once, in one file, rather than forked per variant.
-        //
-        // The gaps inventory beside the module files in
-        // `curriculum/trainings/agentic-engineering-101/` lists what plain AE101
-        // still does not fit about this cut, and the seams a customer-authored
-        // workshop has to be written against. Read it before changing anything here.
-        //
-        // Build student-facing:
-        // node scripts/build-workbook.js northwind agentic-engineering-101-northwind --no-trainer-docs
-        //
-        // Drop the flag to also build the trainer handbook. It trims itself to the
-        // module list below — M3 and M6 tabs gone, and the six-module two-day
-        // schedule replaced by the one-module-per-sitting line — so the cut's
-        // trainers read only delivery that happens in their rooms. The M3 security
-        // spoiler that keeps the flag on for other cuts cannot leak here: this cut
-        // drops M3, so the tab carrying it is not built.
-        'agentic-engineering-101-northwind': {
-            contentKey: 'agentic-engineering-101',
-            // No content tarball. Its only hard consumers were the two M3
-            // security exercises, and M3 is the module this cut drops; reference
-            // and supplementary material renders in the workbook regardless. So
-            // the payload would be equipment issued for a module nobody sits.
-            // Drops the prework's download + extract steps with it (the shared
-            // source carries them behind `<!--flag:payload-->`), which is also
-            // what keeps the student's first instruction from pointing at a URL
-            // this variant never publishes.
-            flags: { payload: false },
-            label: 'Agentic Engineering 101 — Team Track',
-            // The nav and the cards number from the parent, so the row reads
-            // M1 M2 M4 M5 and the skip is visible. The lede does not explain the
-            // skip, count the modules, or describe what surrounds them. What
-            // fills the other slots is the customer's programme, not Bosser
-            // material, and it belongs on the customer's own start page. What is
-            // left is what this material is for, which is all a lede owes.
-            lede: 'For software engineers. Learn the new loop on your own repo.',
-            modules: [
-                { slug: 'getting-going',             title: 'Getting going + context' },
-                { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
-                { slug: 'run-the-first-experiment',  title: 'Run the first experiment' },
-                { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' }
-            ]
-        },
         'claude-basics': {
             label: 'Claude Basics',
             status: 'draft',          // gates report, not block (scripts/gates.js)
@@ -215,27 +161,32 @@
     // Legal footer — single source for SPA + workbook. SPA fills its empty
     // <footer class="curriculum-footer"> at boot via innerHTML; workbook
     // emits the wrapped form via renderFooter() at build time.
+    //
+    // It states ownership and points at the licence the reader already holds.
+    // It grants nothing itself: one page is read under a personal licence and
+    // the next under a company's training licence, and the same sentence has
+    // to be true for both.
     var FOOTER_INNER = '<p>' +
         '<strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. ' +
-        'Agents 102 is proprietary training material. As an enrolled student you have a personal usage license &mdash; ' +
-        'you may learn from this, run the exercises, own what you build, and apply it at your own workplace. ' +
-        'You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training. ' +
-        'See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" target="_blank" rel="noopener">full license terms</a> ' +
-        '&middot; <a href="https://bosser.consulting" target="_blank" rel="noopener">bosser.consulting</a>' +
+        'This is proprietary training material. Using, copying or passing it on is ' +
+        'governed by the licence under which you received it. ' +
+        '<a href="https://bosser.consulting" target="_blank" rel="noopener">bosser.consulting</a>' +
         '</p>';
 
     function renderFooter() {
         return '<footer class="curriculum-footer">' + FOOTER_INNER + '</footer>';
     }
 
-    // Persistent bottom-right mark — same license, shortest legible form.
+    // Persistent bottom-right mark, shortest legible form of the same notice.
     // Long-read: fixed overlay so the full footer below doesn't need a scroll
-    // to be seen. Slides: rendered into the deck bar by slides.js, same string.
+    // to be seen. Slides: rendered into the deck bar by slides.js, same string
+    // and same link.
     var COPYRIGHT_MARK = '&copy; Bosser 2026';
+    var COPYRIGHT_LINK = { href: 'https://bosser.consulting', title: 'Proprietary training material of Bosser Oy' };
 
     function renderCopyrightBadge() {
         return '<div class="copyright-badge">' +
-            '<a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" title="Agents 102 is proprietary training material — full license terms" target="_blank" rel="noopener">' +
+            '<a href="' + COPYRIGHT_LINK.href + '" title="' + COPYRIGHT_LINK.title + '" target="_blank" rel="noopener">' +
             COPYRIGHT_MARK + '</a></div>';
     }
 
@@ -594,7 +545,7 @@
     // source file. A cut variant (different module list) is still a `contentKey`
     // entry, not a flag; flags are for when two variants read the SAME file and
     // one of them genuinely does not have the thing the passage describes. The
-    // motivating case: the Northwind team track ships no content tarball, so the
+    // motivating case: a team-track cut that ships no content tarball, so the
     // prework steps that download and extract it describe equipment that variant
     // does not issue.
     //
@@ -1531,6 +1482,7 @@
         FOOTER_INNER: FOOTER_INNER,
         renderFooter: renderFooter,
         COPYRIGHT_MARK: COPYRIGHT_MARK,
+        COPYRIGHT_LINK: COPYRIGHT_LINK,
         renderCopyrightBadge: renderCopyrightBadge,
 
         // Pure (Node-safe)

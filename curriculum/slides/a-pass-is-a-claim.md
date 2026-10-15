@@ -9,6 +9,9 @@ Asking the same agent twice in the same conversation is not a second opinion.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@fc1c9aa3 technical@fc1c9aa3 slides@fc1c9aa3)
+- judges @fc1c9aa3: writing PASS, technical PASS, slides PASS
+
 **STATUS:** composed from the squint (2026-10-07), the squint's merge of two Agentic Product Teams 101 rewrites of AE101 `the-gate-is-a-claim`: § Passing is not proof (this file) and § The judge needs calibrating against your own judgement (`check-the-checker-against-your-calls`, whose comparison loop and Husain figure this slide carries). No gates, sessions or judges vocabulary. Not taught (simulation training).
 
 **Guard:** Husain's figure is one product, 2024, his own report; keep it dated and scoped to "on one product". Do not generalise to a typical agreement rate.

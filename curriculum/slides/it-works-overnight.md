@@ -7,6 +7,9 @@ Day 2 opens on what it wrote.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@a0295413 technical@a0295413 slides@a0295413)
+- judges @a0295413: writing PASS (verify-refuted), technical PASS, slides PASS
+
 **STATUS:** APT101 new slide (2026-10-07), composed from `apt101-squint.md` Day 1, the Day 1 send-off. The header only sends the agent off. Not taught (simulation training). Owes judging rounds.
 
 **Guard:** data stays one plain door ("only what the team agreed may go in"); no GDPR, no governance. Nothing here says the digest will be wrong, or that it finds what its brief asks for: the trio finds both on Day 2, in its own look-for lines.

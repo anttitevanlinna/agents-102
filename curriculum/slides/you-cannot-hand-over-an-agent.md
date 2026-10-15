@@ -9,6 +9,9 @@ So a proposal to the wider team cannot promise "everyone gets our agent". It nam
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@3d335826 technical@3d335826 slides@3d335826)
+- judges @3d335826: writing PASS (1 finding see instances/shared--slide--you-cannot-hand-over-an-agent.writing.json), technical PASS, slides PASS
+
 **STATUS:** round 3 fixes applied (2026-10-06), APT101 rewrite of `access-is-not-absorption` § You cannot share an agent. "Agent file" becomes the agent's instructions; the four sharing shapes are not carried (no referent in this deck). Not taught (simulation training).
 
 <!-- backing -->

@@ -11,6 +11,9 @@ Let the agent rewrite a source and you lose the evidence a claim was built on. K
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@8b8f4070 technical@8b8f4070 slides@8b8f4070)
+- judges @8b8f4070: writing PASS (1 finding see instances/shared--slide--sharpen-insights-not-sources.writing.json), technical PASS, slides PASS
+
 **STATUS:** first cut (2026-10-07), APT101 rewrite of Agents 101 `compounding` § Three layers, one folder (home slide `three-layers-one-folder`, left untouched), retitled for the trio from `apt101-squint.md` Day 1. Not taught (simulation training). Owes judging rounds.
 
 **Guard:** "insight pages" matches `new-sources-sharpen-old`; the rules file is the one `a-file-the-team-writes-once` describes. Bold marks the three layer names only (slides §9).

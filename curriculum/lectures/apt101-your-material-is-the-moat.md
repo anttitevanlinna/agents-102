@@ -10,6 +10,9 @@
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@53052a3e story@53052a3e technical@53052a3e pedagogy@53052a3e strategy@53052a3e slides@53052a3e)
+- judges @53052a3e: writing PASS, story PASS, technical PASS, behavior N/A, pedagogy PASS, strategy PASS, slides PASS
+
 - **Time:** 10 minutes.
 - **Learning:** transfer — the team's interviews, tickets and judgement go into a memory every agent reads, which is what makes the answers theirs
 

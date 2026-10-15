@@ -11,6 +11,9 @@ For each line a decision rests on, ask how much its source actually says.
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@fdf541ef technical@fdf541ef slides@fdf541ef)
+- judges @fdf541ef: writing PASS (1 finding see instances/shared--slide--the-source-says-less.writing.json), technical PASS, slides PASS
+
 **STATUS:** rebuilt from the APT101 squint (2026-10-07), Day 2 § Fluent is not true. APT101 rewrite of `module-5-prework` § Why grounding fails even when the facts are in context (Agents 101). Not taught (simulation training). Owes judging rounds.
 
 **Carried from home:** the second and third mechanisms (the source says less than the answer wants; conflict gets smoothed), in interview and ticket register. The first mechanism (present but not load-bearing) and the prework's take-home stay out. "Often" scopes the header's claim; the slide does not say every summary reads better.

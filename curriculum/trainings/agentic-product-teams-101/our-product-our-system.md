@@ -30,10 +30,10 @@ After this day, you will be able to:
 
 ## How we work in this room
 
-- The three of you are one team. Room beats name who drives at the shared screen; the other two work the board, answer and argue.
+- The three of you are one team. When you work together, one of you drives at the shared screen; the other two work the board, answer and argue.
 - Each of you runs Claude on your own laptop. In the team folder, write only to your own folder; the driver writes the team's files at the root.
 - Group work lives on your team's Miro board. What the agents keep reading lives in files.
-- Exercises over lectures. Cut depth where you need to; every beat copes with a missing detail from the one before.
+- Exercises over lectures. Cut depth where you need to.
 
 ## Start here
 
@@ -89,16 +89,17 @@ Read the open questions out loud. Agree on nothing yet. Each person's own file s
 
 ## Bring to Day 2
 
-**Your laptop, with the overnight digest scheduled and the laptop plugged in.** Day 2 opens on what came back. A digest that didn't run means you start the day reading someone else's.
+**Your laptop,** with the overnight digest scheduled, plugged in, lid open. Day 2 opens on what came back. A digest that didn't run means you start the day reading someone else's.
 
 ## Next
 
-Before Day 2, three agents read three memories against one bet, and write to you in your own company's look. On Day 2 the three of you read them, and decide what is actually true.
+Before Day 2, three agents each read their own memory with the team's bet in hand, and write to you in your own company's look. On Day 2 the three of you read them, and decide what is actually true.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74 pedagogy@dd242fd9)
-- judges @dd242fd9: behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--module--our-product-our-system.pedagogy.json)
+**Quality:** compendium-audited 2026-10-08 (writing@03787e69 story@6d12f3e4 technical@a16b0c55 behavior@dd243e74 pedagogy@03787e69 strategy@8f78989b slides@bb791683)
+- judges @a16b0c55: writing PASS (2 findings see instances/agentic-product-teams-101--module--our-product-our-system.writing.json), story PASS (verify-refuted), technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agentic-product-teams-101--module--our-product-our-system.pedagogy.json), strategy PASS, slides PASS
+- cross_module @4d040c7c: PASS — set=[our-product-our-system,whats-actually-true,learn-faster-than-the-market]; 2 pairs, 0 blocking; see instances/agentic-product-teams-101--module-set--full-arc.cross_module.json
 
 **STATUS:** built from the build plan (`curriculum/module-design/apt101-build-plan.md` § Day 1), 2026-10-07, for the `simulation: true` training Agentic Product Teams 101. Not taught. Big Idea = the adopted positioning line (strategy, 2026-10-05), kept as the Day 1 module's; the day's story heading in the squint and build plan is *You were right all along*, and the H1 stays the registered module title (`site/layouts/curriculum.js`) so nav and file agree.
 

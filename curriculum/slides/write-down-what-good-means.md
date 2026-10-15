@@ -9,6 +9,9 @@ Hold your overnight digest against those lines, and you can see where it said mo
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@3d335826 technical@3d335826 slides@3d335826)
+- judges @3d335826: writing PASS, technical PASS, slides PASS
+
 **STATUS:** composed from the squint (2026-10-07), APT101 rewrite of `evals-as-steering` § Module 5 turned judgment into a judge, with the lecture preamble ("Evals are how you write down what good means…"). No eval, judge or module vocabulary; the research summary is the product-register example. Carries the digest thread's Day 3 beat (`story-craft.md` § Depth: the digest is caught by your own criteria). Not taught (simulation training).
 
 <!-- backing -->

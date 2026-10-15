@@ -16,11 +16,11 @@ The empty `sources/`, `memory/` and `agents/` folders are already in your traini
 
 *25 min*
 
-A memory is only as good as what goes into it. The temptation is to shovel in whatever is nearest. Three beats: Claude helps you curate a plan, then pulls the content into `sources/`, then builds `memory/` from what is on disk.
+A memory is only as good as what goes into it. The temptation is to shovel in whatever is nearest. Three steps: Claude helps you curate a plan, then pulls the content into `sources/`, then builds `memory/` from what is on disk.
 
-**Keep the heavy reads under control.** Several prompts read all of `sources/` or `memory/` at once. If one starts reading the world, stop it, steer narrower, then say *"continue"*. A hard cap helps: *"ten sources at most."*
+Several prompts read all of `sources/` or `memory/` at once. If one starts reading the world, stop it, steer narrower, then say *"continue"*. A hard cap helps: *"ten sources at most."*
 
-### Curate the source plan
+## Curate the source plan
 
 Ask Claude to survey what it can reach and ask about your world, then propose a curation plan.
 
@@ -28,9 +28,9 @@ Ask Claude to survey what it can reach and ask about your world, then propose a 
 
 Answer for your own seat. Push back, sharpen, add what's missing. Hold each item against the door: if it isn't on the *in* list, it isn't in the plan.
 
-### Ingest the sources
+## Ingest the sources
 
-**A note on what Claude reads.** <span class="rt-cli">Claude Code CLI reads any path you name. For sources outside the training folder, give Claude the absolute path; it reads the file directly.</span><span class="rt-desktop">Claude Code Desktop reads files you attach via the **+** button at the prompt. For sources outside the training folder, attach them with **+** before sending the prompt.</span><span class="rt-cowork">Cowork reads files in the working folders you've selected for this task. Add another folder (your downloads, a notes directory) via the **+** button. To attach a single file for one message, also **+**.</span>
+<span class="rt-cli">Claude Code CLI reads any path you name. For sources outside the training folder, give Claude the absolute path; it reads the file directly.</span><span class="rt-desktop">Claude Code Desktop reads files you attach via the **+** button at the prompt. For sources outside the training folder, attach them with **+** before sending the prompt.</span><span class="rt-cowork">Cowork reads files in the working folders you've selected for this task. Add another folder (your downloads, a notes directory) via the **+** button. To attach a single file for one message, also **+**.</span>
 
 Ask Claude to create one file in `sources/` for every source in the plan.
 
@@ -38,7 +38,7 @@ Ask Claude to create one file in `sources/` for every source in the plan.
 
 Look at Claude's three lists. Anything not reachable stays a reference unless you share the file. Never type or paste content yourself; that's the agent's job. Aim for eight to ten items with real content. Stripping is the one edit you make yourself, in your own editor, before Claude sees the file. Strip what the door says to strip before you share it: names, phone numbers, the customer's company.
 
-### Build the memory under a plan
+## Build the memory under a plan
 
 <span class="rt-code">Turn on plan mode first. Tell Claude *"Enable plan mode."* (Or pick *Plan* from the mode dropdown, or press Shift+Tab to cycle.) Claude writes what it is about to do before touching files, and nothing is written until you say go.</span><span class="rt-cowork">Ask Claude to write a plan first. It writes what it is about to do before touching files, so you can steer before anything is written.</span>
 
@@ -98,12 +98,12 @@ The memory sits still until something reads it. Next, each of you gives it a job
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-07 (behavior@dd243e74 pedagogy@dd242fd9)
-- judges @dd242fd9: behavior PASS, pedagogy PASS (verify-refuted)
+**Quality:** compendium-audited 2026-10-08 (writing@03787e69 story@6d12f3e4 technical@a16b0c55 behavior@dd243e74 pedagogy@03787e69 strategy@8f78989b slides@bb791683)
+- judges @a16b0c55: writing PASS (4 findings see instances/agentic-product-teams-101--exercise--apt101-build-your-product-memory.writing.json), story PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-build-your-product-memory.story.json), technical PASS (1 finding see instances/agentic-product-teams-101--exercise--apt101-build-your-product-memory.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Role in Day 1:** beat 6, after lunch; each person's own material becomes a memory pointed at the bet. Day 2's overnight digest and every Day 2 prompt read it.
 
-**Reuse:** keys `build-your-challenge-memory-1`, `-2`, `-3`, `-4`, `-7`, `-8` (per the reuse map; `-5`, `-6` move to `apt101-send-it-off`, `-9` is dropped). Framing in prose: "challenge" = the bet seen from this person's seat; the "revisit after Module 4" line in `-1` is overridden by the door.
+**Reuse:** keys `build-your-challenge-memory-1`, `-2`, `-3`, `-4`, `-7`, `-8` (`-5` and `-6` are used in `apt101-send-it-off`; `-9` is not used in this training). Framing in prose: "challenge" = the bet seen from this person's seat; the "revisit after Module 4" line in `-1` is overridden by the door.
 
 **Frameworks:** none named in body; the three layers (sources, memory, rules file) and "sharper, not longer" are named by *Your material is the moat* after, so the take-stock section stops at what each person saw.
 

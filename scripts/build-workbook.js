@@ -38,6 +38,7 @@ const { marked } = require('marked');
 const ROOT = path.resolve(__dirname, '..');
 const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
 const { readCurriculumMd } = require('./read-curriculum.js');
+const { scopedRuntime } = require('./workbook-runtime.js');
 const A101Runtimes = require(path.join(ROOT, 'site/layouts/a101-runtimes.js'));
 const CT = require(path.join(ROOT, 'scripts/calculate-time.js'));
 const { loadRegistry, writeRegistry, OUT_FILE: PROMPTS_JSON } = require('./compile-prompts.js');
@@ -556,7 +557,7 @@ ${buildToc(contentKey, t)}
   const allBody = standaloneHtml ? modulesHtml + '\n\n' + standaloneHtml : modulesHtml;
 
   // Footer markup lives in CR.renderFooter (shared with SPA — single source).
-  return topNav + '\n<main>\n' + cover + '\n' + allBody + '\n</main>\n' + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
+  return topNav + '\n<main>\n' + cover + '\n' + allBody + '\n</main>\n' + pageFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
 // ── Inline assets ───────────────────────────────────────────────────────────
@@ -572,7 +573,17 @@ const STUDENT_HANDBOOK_PRINT_CSS = fs.readFileSync(
 const ANATOMY = Object.values(PROMPT_REGISTRY).some(e => e && e.anchors && e.anchors.length)
   ? require('./compile-anatomy.js').entries() : null;
 if (ANATOMY) require('./write-if-changed.js').writeIfChanged(path.join(ROOT, 'site/anatomy.json'), JSON.stringify(ANATOMY, null, 2) + '\n');
-const SPA_JS = (ANATOMY ? `window.__ANATOMY = ${JSON.stringify(ANATOMY).replace(/<\//g, '<\\/')};\n` : '') + fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.js'), 'utf8');
+// Every built page ends with the legal footer and, folded under it, the
+// third-party notices: a licence that asks for its notice "in all copies" is
+// answered by the page carrying it, wherever the page is hosted.
+const NOTICES_HTML = '<details class="third-party-notices"><summary>Third-party notices</summary>\n'
+  + marked.parse(fs.readFileSync(path.join(ROOT, 'content/THIRD-PARTY-NOTICES.md'), 'utf8').replace(/^# .*\n/, ''))
+  + '</details>';
+const pageFooter = () => CR.renderFooter() + '\n' + NOTICES_HTML;
+const SPA_JS_SRC = fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.js'), 'utf8');
+// The runtime a page inlines carries the registry entry of the training it was
+// built for and no other (scripts/workbook-runtime.js).
+const spaJs = trainingKey => (ANATOMY ? `window.__ANATOMY = ${JSON.stringify(ANATOMY).replace(/<\//g, '<\\/')};\n` : '') + scopedRuntime(SPA_JS_SRC, CR.TRAININGS, trainingKey);
 const A101_RUNTIME_CSS = fs.readFileSync(path.join(ROOT, 'site/layouts/a101-runtimes.css'), 'utf8');
 const A101_RUNTIME_JS = fs.readFileSync(path.join(ROOT, 'site/layouts/a101-runtimes.js'), 'utf8');
 // The slide viewer (Long-read ⇄ Slides). Inlined so the handbook keeps working
@@ -767,7 +778,7 @@ function buildTrainerGuide(customer, trainingKey) {
 </header>
 `;
   const main = '<main>\n' + cover + '\n<section class="module" id="trainer-guide">\n' + bodyHtml + '\n</section>\n</main>\n';
-  return main + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
+  return main + pageFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
 const TRAINER_GUIDE_INIT_JS = `
@@ -789,7 +800,7 @@ const TRAINER_GUIDE_INIT_JS = `
 // templates so the workbook's .module keeps its narrower projected measure.
 const TRAINER_WIDTH_CSS = `.module { max-width: 56em; }`;
 
-function trainerGuideTemplate(customer, content) {
+function trainerGuideTemplate(customer, trainingKey, content) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -801,7 +812,7 @@ ${TRAINER_WIDTH_CSS}</style>${BRAND.style(1)}
 </head>
 <body class="runtime-cli workbook">
 ${content}
-<script>${SPA_JS}</script>
+<script>${spaJs(trainingKey)}</script>
 <script>${TRAINER_GUIDE_INIT_JS}</script>
 </body>
 </html>
@@ -941,10 +952,10 @@ function buildTrainerModules(customer, trainingKey) {
 </header>
 `;
   const main = '<main>\n' + cover + '\n<section class="module" id="trainer-modules">\n' + bodyHtml + '\n</section>\n</main>\n';
-  return main + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
+  return main + pageFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
-function trainerModulesTemplate(customer, content) {
+function trainerModulesTemplate(customer, trainingKey, content) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -957,7 +968,7 @@ ${TRAINER_MODULES_TABS_CSS}</style>${BRAND.style(1)}
 </head>
 <body class="runtime-cli workbook">
 ${content}
-<script>${SPA_JS}</script>
+<script>${spaJs(trainingKey)}</script>
 <script>${TRAINER_GUIDE_INIT_JS}</script>
 <script>${TRAINER_MODULES_TAB_JS}</script>
 </body>
@@ -1153,7 +1164,7 @@ function buildTheoryBody(customer, trainingKey, recipient) {
   <p class="cover-blurb">${CR.esc(blurb)}</p>
 </header>
 `;
-  return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
+  return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + pageFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
 function theoryHandbookTemplate(customer, trainingKey, content, recipient) {
@@ -1176,7 +1187,7 @@ function theoryHandbookTemplate(customer, trainingKey, content, recipient) {
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook theory-handbook" data-training="${trainingKey}">
 ${content}
-<script>${SPA_JS}</script>
+<script>${spaJs(trainingKey)}</script>
 <script data-theory-handbook>${THEORY_HANDBOOK_JS}</script>
 <script>${TRAINER_GUIDE_INIT_JS}</script>
 </body>
@@ -1251,7 +1262,7 @@ function buildExercisesBody(customer, trainingKey) {
   <h1 class="cover-title">Exercises workbook</h1>
 </header>
 `;
-  return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
+  return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + pageFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
 function exercisesWorkbookTemplate(customer, trainingKey, content) {
@@ -1267,7 +1278,7 @@ function exercisesWorkbookTemplate(customer, trainingKey, content) {
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook" data-training="${trainingKey}">
 ${content}
-<script>${SPA_JS}</script>
+<script>${spaJs(trainingKey)}</script>
 <script>${TRAINER_GUIDE_INIT_JS}</script>
 </body>
 </html>
@@ -1307,7 +1318,7 @@ ${a101RuntimeStyle}
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook student-handbook" data-training="${trainingKey}"${deck}>
 ${content}
-<script>${SPA_JS}</script>
+<script>${spaJs(trainingKey)}</script>
 ${a101RuntimeScript}
 <script>${SLIDES_JS}</script>
 <script>${WORKBOOK_INIT_JS}</script>
@@ -1445,7 +1456,7 @@ function buildTraining(customer, trainingKey, opts = {}) {
   // resolve into that workbook.
   const guideBody = buildTrainerGuide(customer, trainingKey);
   if (guideBody !== null) {
-    const guideHtml = trainerGuideTemplate(customer, guideBody);
+    const guideHtml = trainerGuideTemplate(customer, trainingKey, guideBody);
     const guideFile = path.join(outDir, 'trainer-guide.html');
     fs.writeFileSync(guideFile, guideHtml);
     const guideKB = (fs.statSync(guideFile).size / 1024).toFixed(0);
@@ -1456,7 +1467,7 @@ function buildTraining(customer, trainingKey, opts = {}) {
   // resolve into this workbook the same way the trainer guide's do.
   const modulesBody = buildTrainerModules(customer, trainingKey);
   if (modulesBody !== null) {
-    const modulesHtml = trainerModulesTemplate(customer, modulesBody);
+    const modulesHtml = trainerModulesTemplate(customer, trainingKey, modulesBody);
     const modulesFile = path.join(outDir, 'trainer-modules.html');
     fs.writeFileSync(modulesFile, modulesHtml);
     const modulesKB = (fs.statSync(modulesFile).size / 1024).toFixed(0);
@@ -1609,7 +1620,7 @@ function guardPersonalisedOutput(customer) {
     console.error(`Build aborted: --for would write a named copy into ${rel}, which git does NOT ignore.`);
     console.error('  A personalised handbook carries the recipient\'s name in the HTML; committing it leaks that name.');
     console.error('  Use a gitignored customer slug (convention: vip-<pseudonym>), e.g.:');
-    console.error('    node scripts/build-workbook.js vip-northwind agentic-engineering-101 --theory --for "<Name>"');
+    console.error('    node scripts/build-workbook.js vip-<pseudonym> agentic-engineering-101 --theory --for "<Name>"');
     process.exit(1);
   }
 }

@@ -9,6 +9,9 @@ You hold what it hasn't got: you know this product. Where the draft matches what
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-10-08 (writing@3d335826 technical@3d335826 slides@3d335826)
+- judges @3d335826: writing PASS (1 finding see instances/shared--slide--you-are-the-check.writing.json), technical PASS, slides PASS
+
 **STATUS:** round 3 fixes applied (2026-10-06), APT101 rewrite of `what-just-happened` § The report is a hypothesis, not a result + § You were the only check in the room. Not taught (simulation training).
 
 <!-- backing -->

@@ -1694,12 +1694,14 @@ if (theoryMode) {
 })();
 
 // Build emits to site/clients/<cust>/. Customer deploy lives in the sibling
-// ai-training-internal repo (private, materials.arcticrex.com); run
+// ai-training-internal repo (private; icre materials site, base URL in
+// MATERIALS_SITE_URL); run
 // `scripts/deploy-customer.sh <cust>` there to ship.
 console.log(`Built to ${shown(path.join(CLIENTS_ROOT, customer))}/.`);
 console.log('Deploy via: ai-training-internal/scripts/deploy-customer.sh ' + customer);
+const materialsUrl = process.env.MATERIALS_SITE_URL || '<materials-site-url>';
 console.log('Live URLs after Pages publishes:');
-console.log(`  https://materials.arcticrex.com/content/${customer}/`);
+console.log(`  ${materialsUrl}/content/${customer}/`);
 trainings.forEach(trainingKey => {
-  console.log(`  https://materials.arcticrex.com/content/${customer}/${trainingKey}/`);
+  console.log(`  ${materialsUrl}/content/${customer}/${trainingKey}/`);
 });

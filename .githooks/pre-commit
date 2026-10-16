@@ -28,6 +28,24 @@ if [ -f scripts/check-generated-registries.js ] && \
     node scripts/check-generated-registries.js --staged || exit 1
 fi
 
+# Customer names: neither this repo nor the core names customers or partners
+# (codenames only). Scans staged files against a denylist kept outside both
+# repos; skipped with a notice where no denylist exists (customer copies).
+NAME_SCAN="${AGENTS_CORE_DIR:-../agents-102-core}/forge-kit/name-scan.py"
+NAME_DENYLIST="${CUSTOMER_NAME_DENYLIST:-$HOME/Projects/bosser/policies/customer-name-denylist.txt}"
+if [ -f "$NAME_SCAN" ] && [ -s "$NAME_DENYLIST" ]; then
+    staged_files=$(git diff --cached --name-only --diff-filter=ACMR)
+    if [ -n "$staged_files" ]; then
+        # shellcheck disable=SC2086
+        python3 "$NAME_SCAN" $staged_files --denylist "$NAME_DENYLIST" >&2 || {
+            echo "Commit blocked: a real customer or partner name is staged. Use the codename." >&2
+            exit 1
+        }
+    fi
+elif [ -f "$NAME_SCAN" ]; then
+    echo "name-scan: no denylist at $NAME_DENYLIST, customer-name check skipped." >&2
+fi
+
 # Bypass
 if [ "${SKIP_PROMPT_GATE:-0}" = "1" ]; then
     exit 0

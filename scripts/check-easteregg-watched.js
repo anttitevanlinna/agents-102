@@ -10,7 +10,7 @@
 // `curriculum/exercises/threat-model-with-stride.md`). The whole point is that
 // the student is LOOKING at that window when it fires.
 //
-// The 2026-05-27 arcticrex run surfaced the collision: the body told the student
+// The 2026-05-27 icre run surfaced the collision: the body told the student
 // to flip to the m3-quality window the instant STRIDE kicked off — so the punch
 // line landed on a screen nobody was watching. The easter egg (refined
 // 2026-05-21) post-dated the concurrency design and the two were never

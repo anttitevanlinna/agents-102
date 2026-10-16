@@ -98,7 +98,7 @@ Module 7 ships four sharing strategies: share the context, share a skill, share 
 
 The design question isn't "which strategy is best" — it's "which tacit asset does this team need me to hand over?" If the curation is the value, share context. If one capability is the value, share a skill. If the artifact is the value, share the output. If the conversational access is the value, share an interface.
 
-This is a practitioner taxonomy (the four shapes have shown up across the cohorts that have run this), not a research-convergent pattern. No platform yet has a canonical promotion path. Teach it as design, not field consensus.
+This is a practitioner taxonomy, not a research-convergent pattern. No platform yet has a canonical promotion path. Teach it as design, not field consensus.
 
 ## Why "share the whole agent" is a vendor pitch, not a strategy
 

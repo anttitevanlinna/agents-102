@@ -2,7 +2,7 @@
  * acme-gate — Cloudflare Worker: HTTP Basic Auth in front of the acme beta
  * workbook served from GitHub Pages via agents102.bosser.consulting.
  *
- * The ai-training-internal materials site (materials.arcticrex.com) gates each
+ * The ai-training-internal materials site (icre) gates each
  * customer with a CloudFront viewer-request Function that checks a per-customer
  * password. agents102.bosser.consulting is GitHub Pages, which cannot do that —
  * but the bosser.consulting zone is proxied through Cloudflare (Pages is the

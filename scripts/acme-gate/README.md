@@ -3,7 +3,7 @@
 GitHub Pages can't do HTTP Basic Auth. But `agents102.bosser.consulting` is
 proxied through Cloudflare (Pages is the origin), so this Worker gates the acme
 path at the edge — the same role the CloudFront Function plays for
-`materials.arcticrex.com` in `ai-training-internal`.
+the icre materials site in `ai-training-internal`.
 
 - **Scope:** route `agents102.bosser.consulting/clients/acme/*` only. Every
   other customer and the rest of the site are untouched.

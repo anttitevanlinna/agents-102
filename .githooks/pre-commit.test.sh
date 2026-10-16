@@ -85,5 +85,16 @@ if commit "$r"; then bad 'a prompt commit without its rebuilt prompts.json slipp
 (cd "$r" && node -e "const c=require('./scripts/compile-prompts.js');c.writeRegistry(c.loadRegistry())"); git -C "$r" add site/prompts.json
 if commit "$r"; then ok 'the same commit with the rebuilt prompts.json goes through'; else bad 'a consistent prompt commit was refused'; fi
 
+# Customer names: a staged real name is refused; a codename goes through.
+CORE_FOR_TEST="${AGENTS_CORE_DIR:-$(cd "$(dirname "$HOOK")/../.." && pwd)/agents-102-core}"
+if [ -f "$CORE_FOR_TEST/forge-kit/name-scan.py" ]; then
+  deny=$(mktemp); echo 'Realco' > "$deny"
+  r=$(repo); echo 'met Realco today' > "$r/notes.md"; git -C "$r" add notes.md
+  if AGENTS_CORE_DIR="$CORE_FOR_TEST" CUSTOMER_NAME_DENYLIST="$deny" commit "$r"; then bad 'a real customer name slipped through'; else ok 'a staged customer name is refused'; fi
+  r=$(repo); echo 'met icre today' > "$r/notes.md"; git -C "$r" add notes.md
+  if AGENTS_CORE_DIR="$CORE_FOR_TEST" CUSTOMER_NAME_DENYLIST="$deny" commit "$r"; then ok 'a codename goes through'; else bad 'a codename was refused'; fi
+  rm -f "$deny"
+fi
+
 echo "pre-commit.test.sh: $pass passed, $fail failed"
 [ "$fail" -eq 0 ]

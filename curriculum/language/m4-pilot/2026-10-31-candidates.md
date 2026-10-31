@@ -176,9 +176,9 @@ Options:
 - CUT
 - The policy files are the source. The check is what you keep.
 
-## 10. exercises/author-security-skill.md (caveat: permission beat)
+## 10. exercises/author-security-skill.md#phase-3-author-both-lenses (caveat: permission beat)
 
-This looks like a permission beat before a hard ask. `tier-rubric.md` T1 and the gold pair tn-permission-testing say those read as padding but are not. Batch 1 call 3b settles it. The grill warning itself ("The grill is wide on purpose") is in the dead-air list but has no options here.#phase-3-author-both-lenses
+This looks like a permission beat before a hard ask. `tier-rubric.md` T1 and the gold pair tn-permission-testing say those read as padding but are not. Batch 1 call 3b settles it. The grill warning itself ("The grill is wide on purpose") is in the dead-air list but has no options here.
 
 **Now:** You'll get a lot of questions.
 

@@ -13,6 +13,9 @@
 //        [--mode reader|rules] [--model <m>] [--jobs 6] [--limit N]
 //   reader = a student's read only (enjoyment, felt learning)
 //   rules  = the same, plus curriculum/writing-style.md in the prompt
+//   taste  = the same, plus curriculum/taste-notes.md in the prompt
+//   [--examples <jsonl of {kept, rejected, why}>] past calls shown first (hold them out of --pairs)
+//   [--ids <file>] judge only these pair ids
 // Output rows: {id, pick: "a"|"b"|null, first, second, reasons}
 
 const fs = require('fs');
@@ -29,9 +32,14 @@ Below are two versions of the same slide, X and Y. They differ only in some word
 
 Shorter is not automatically better, and a change is not automatically an improvement. Pick the version a good, demanding editor of this course would keep.`;
 
-function prompt(mode, x, y) {
+function prompt(mode, x, y, examples = []) {
   let p = READER;
   if (mode === 'rules') p += '\n\nThe course writing style, for reference:\n\n' + fs.readFileSync(path.join(ROOT, 'curriculum/writing-style.md'), 'utf8');
+  if (mode === 'taste') p += '\n\nThe course editor\'s own taste notes, from past decisions:\n\n' + fs.readFileSync(path.join(ROOT, 'curriculum/taste-notes.md'), 'utf8');
+  if (examples.length) {
+    p += '\n\nPast calls by the course editor on other slides, with the reason:';
+    examples.forEach((e, i) => { p += `\n\n--- Example ${i + 1}: KEPT ---\n${e.kept}\n--- Example ${i + 1}: REJECTED ---\n${e.rejected}\nWhy: ${e.why}`; });
+  }
   return `${p}\n\n=== VERSION X ===\n${x}\n\n=== VERSION Y ===\n${y}\n\nAnswer with one line of JSON only: {"pick":"X" or "Y","why":"<one sentence>"}`;
 }
 
@@ -52,8 +60,8 @@ function ask(text, model) {
   });
 }
 
-async function reviewPair(pair, mode, model) {
-  const [r1, r2] = await Promise.all([ask(prompt(mode, pair.a, pair.b), model), ask(prompt(mode, pair.b, pair.a), model)]);
+async function reviewPair(pair, mode, model, examples) {
+  const [r1, r2] = await Promise.all([ask(prompt(mode, pair.a, pair.b, examples), model), ask(prompt(mode, pair.b, pair.a, examples), model)]);
   const first = r1.pick === 'X' ? 'a' : r1.pick === 'Y' ? 'b' : null;
   const second = r2.pick === 'X' ? 'b' : r2.pick === 'Y' ? 'a' : null;
   return { id: pair.id, pick: first && first === second ? first : null, first, second, reasons: [r1.why, r2.why] };
@@ -62,7 +70,11 @@ async function reviewPair(pair, mode, model) {
 async function main() {
   const argv = process.argv.slice(2);
   const val = (n, d) => { const i = argv.indexOf('--' + n); return i >= 0 ? argv[i + 1] : d; };
-  const pairs = fs.readFileSync(val('pairs'), 'utf8').trim().split('\n').map(JSON.parse).slice(0, Number(val('limit', 1e9)));
+  const readJsonl = f => fs.readFileSync(f, 'utf8').trim().split('\n').map(JSON.parse);
+  const only = val('ids') ? new Set(fs.readFileSync(val('ids'), 'utf8').split(/\s+/).filter(Boolean)) : null;
+  const pairs = readJsonl(val('pairs')).filter(p => !only || only.has(p.id)).slice(0, Number(val('limit', 1e9)));
+  // --examples: jsonl of {kept, rejected, why}; never pass a pair that is also being judged
+  const examples = val('examples') ? readJsonl(val('examples')) : [];
   const mode = val('mode', 'reader');
   const model = val('model', null);
   const jobs = Number(val('jobs', 6));
@@ -71,7 +83,7 @@ async function main() {
   async function worker() {
     while (next < pairs.length) {
       const p = pairs[next++];
-      const r = await reviewPair(p, mode, model);
+      const r = await reviewPair(p, mode, model, examples);
       out.push(r);
       process.stderr.write(`${out.length}/${pairs.length} ${r.id} ${r.pick || 'flip'}\n`);
     }

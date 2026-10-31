@@ -30,6 +30,20 @@ function classify(b) {
   return 'flat';
 }
 
+// A sentence the file's own maintainer block quotes was put there on purpose
+// (a mood-contract line, a ruled wording). It is reported but never offered
+// for rewrite: carding it would ask the maintainer to defend it again.
+function isProtected(file, text, curDir) {
+  const { normalise } = require('./sentence-ledger.js');
+  const abs = path.join(curDir || path.resolve(__dirname, '../curriculum'), file);
+  if (!fs.existsSync(abs)) return false;
+  const md = fs.readFileSync(abs, 'utf8');
+  const i = md.indexOf('<!-- maintainer -->');
+  if (i < 0) return false;
+  const needle = normalise(text).replace(/[.!?"']+$/, '');
+  return needle.split(' ').length >= 3 && normalise(md.slice(i)).includes(needle);
+}
+
 function stepFromLogs(logs, ledger) {
   const by = new Map();
   const unresolved = [];
@@ -47,7 +61,7 @@ function stepFromLogs(logs, ledger) {
       if (kind !== 'flat') e.notes.push(`${log.persona} (${b.tag}): ${b.got}`);
     }
   }
-  const rows = [...by.values()].map(e => ({ ...e, personas: [...e.personas].sort() }));
+  const rows = [...by.values()].map(e => ({ ...e, personas: [...e.personas].sort(), protected: isProtected(e.file, e.text) }));
   return { rows, unresolved };
 }
 
@@ -87,7 +101,7 @@ function askClaude(text) {
   try { return JSON.parse(m[0]); } catch { return { diagnosis: 'no parse', options: [] }; }
 }
 
-module.exports = { classify, stepFromLogs, optionsPrompt };
+module.exports = { classify, stepFromLogs, optionsPrompt, isProtected };
 
 if (require.main === module) {
   const argv = process.argv.slice(2);
@@ -100,7 +114,7 @@ if (require.main === module) {
   const { rows, unresolved } = stepFromLogs(logs, ledger);
   if (val('options')) {
     const n = Number(val('options'));
-    const top = rows.filter(r => r.dead >= 2 && r.dead > r.lift).sort((a, b) => (b.personas.length - a.personas.length) || (b.dead - a.dead)).slice(0, n);
+    const top = rows.filter(r => r.dead >= 2 && r.dead > r.lift && !r.protected).sort((a, b) => (b.personas.length - a.personas.length) || (b.dead - a.dead)).slice(0, n);
     const out = top.map(r => {
       const slideText = ledger.rows.filter(x => x.file === r.file && x.slide === r.slide).map(x => (x.kind === 'heading' ? '## ' : '') + x.text).join('\n');
       const o = askClaude(optionsPrompt(r, slideText));
@@ -116,7 +130,7 @@ if (require.main === module) {
   console.log(`# Sentence step\n\n${logs.length} logs on page ${page || '(any)'}. ${rows.length} trigger sentences resolved, ${unresolved.length} not found in the current text.\n`);
   console.log(`## Dead air (${dead.length})\n`);
   for (const r of dead) {
-    console.log(`- **${r.dead} dead / ${r.lift} lift**, ${r.personas.length} personas · ${r.file}${r.slide ? '#' + r.slide : ''}:${r.line} · ${r.id}\n  "${r.text}"`);
+    console.log(`- **${r.dead} dead / ${r.lift} lift**${r.protected ? ' (protected: quoted in its maintainer block)' : ''}, ${r.personas.length} personas · ${r.file}${r.slide ? '#' + r.slide : ''}:${r.line} · ${r.id}\n  "${r.text}"`);
     for (const n of r.notes.slice(0, 3)) console.log(`  - ${n}`);
   }
   console.log(`\n## Lift, never dead (${lift.length})\n`);

@@ -1,6 +1,6 @@
 # M4 rewrite candidates, 2026-10-31
 
-Source: persona-student M4 pilot, original page 88b4d019 (12 logs, 3 personas, live and page-only). Ranked by how many personas went dead on the sentence. Options are proposals: no pair reviewer agrees with the maintainer well enough to pick (see `../pair-review/`). Candidates go to the batched calibration list; nothing here is applied.
+Source: persona-student M4 pilot, original page 88b4d019 (12 logs, 3 personas, live and page-only). Ranked by how many personas went dead on the sentence. Options are proposals: no pair reviewer agrees with the maintainer well enough to pick (see `../pair-review/`). Candidates go to the batched calibration list; nothing here is applied. Several surviving candidates may still be lines past calls kept (permission lines such as the grill warning); whether sim-driven rewrites reach the maintainer at all waits on the rubric batch, section 1.
 
 ## 1. trainings/agents-101/security.md#prework
 
@@ -78,7 +78,9 @@ Options:
 - CUT
 - The story works because classical software repeats itself: same input, same output.
 
-## 5. lectures/practice-of-risk.md#the-discipline-is-what-carries
+## 5. lectures/practice-of-risk.md#the-discipline-is-what-carries (WITHDRAWN: protected)
+
+Withdrawn. The file's maintainer block records this line as the Module 4 mood contract, taken from the content strategy on purpose. The step now skips sentences a maintainer block quotes. Kept below for the record only.
 
 **Now:** Damn, this is complex stuff.
 

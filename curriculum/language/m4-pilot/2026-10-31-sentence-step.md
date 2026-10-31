@@ -24,7 +24,7 @@
   - cto-builder (boredom): nothing new, determinism vs not
   - cto-builder (boredom): nothing new. deterministic software vs agents is old news for my engineers
   - ingrid (boredom): nothing new, I know old security was deterministic
-- **3 dead / 0 lift**, 3 personas · lectures/practice-of-risk.md#the-discipline-is-what-carries:43 · s-7087670716
+- **3 dead / 0 lift** (protected: quoted in its maintainer block), 3 personas · lectures/practice-of-risk.md#the-discipline-is-what-carries:43 · s-7087670716
   "Damn, this is complex stuff."
   - cfo-sceptic (frustration): Nothing new. It is rhetoric, with no figure attached.
   - cfo-sceptic (frustration): nothing new. It's a pep talk, and still no figure for what this costs.

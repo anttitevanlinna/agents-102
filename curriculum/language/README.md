@@ -35,4 +35,6 @@ The simulated student is designed in the rubric work, not here. When it logs a m
 
 ## Calibration calls
 
-No record of past maintainer calls survives, so calibration builds that record going forward. Each round takes 10 to 15 sentence pairs from the loop's test step. The pairs are weighted toward close results and toward cases where the simulated students disagreed. The maintainer sees each pair blind, with no scores and no order hint, and picks one or rules both out. Agreement between the maintainer and the simulated-student majority is the instrument's calibration number. Below the agreed bar, fix the personas or prompts before trusting the loop. Every call is kept: accepted wording becomes a lock, and a refused variant is recorded so the loop never offers it again.
+The maintainer's past calls are the first calibration set: blind slide pairs rebuilt from recorded rulings in git and `taste-notes.md` (`curriculum/evals/calibration/antti-pairs/`). `scripts/sentence-pair-review.js` runs the test-step reviewer over such a set. It judges each pair twice with the sides swapped, keeps a pick only when both orders agree, and writes picks that the set's `score.py` scores. Below the set's bar (about 80% overall, no kind under 65%), fix the reviewer before trusting the loop.
+
+New calls are asked only for gaps the set does not cover. Candidate pairs go to the rubric work, which sends the maintainer one batched list. Every call is kept: accepted wording becomes a lock, and a refused variant is recorded so the loop never offers it again.

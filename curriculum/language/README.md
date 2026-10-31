@@ -27,7 +27,7 @@ The simulated student is designed in the rubric work, not here. When it logs a m
 
 ## The loop this serves
 
-1. Baseline: the simulated student scores enjoyment and felt learning per slide, and names turning sentences.
+1. Baseline: the simulated student reads each slide, names the sentences that turned it (trigger quotes), and writes its take-homes. The signal is in those words: which take-homes survive and which sentences it calls filler. Its 1–7 enjoyment mean barely moves even when a beat is damaged, so it is not the loop's signal.
 2. Options: write variants of the flagged sentences only. A variant passes the writing rules, respects locks, and is no longer than the original.
 3. Test: the simulated students compare the original and the variant blind, side by side.
 4. Keep or drop: every winner goes to the maintainer as a before/after card (calibration phase). Locks record the maintainer's accepted wording.

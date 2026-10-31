@@ -80,3 +80,9 @@ test('agents-101 ledger builds and indexes shared slide files once', () => {
   const slideRows = L.rows.filter(r => r.file.startsWith('slides/'));
   assert.ok(slideRows.length > 0 && slideRows.every(r => Array.isArray(r.usedBy) && r.slide));
 });
+
+test('findQuote: a logged fragment or a multi-sentence quote resolves to its sentence', () => {
+  const rows = [R('s.md', 'The Module 4 prework adds two reads: one and two.', 'x'), R('s.md', 'Avoidance beats reduction.', 'y')];
+  assert.strictEqual(findQuote(rows, 'The Module 4 prework adds two reads').match, 'contained');
+  assert.strictEqual(findQuote(rows, 'Avoidance beats reduction. Scope beats patch.').rows[0].slide, 'y');
+});

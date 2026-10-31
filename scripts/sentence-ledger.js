@@ -232,6 +232,18 @@ function findQuote(rows, quote, slide) {
   const scope = slide ? rows.filter(r => r.slide === slide) : rows;
   const exact = scope.filter(r => r.id === id);
   if (exact.length) return { match: 'exact', score: 1, rows: exact };
+  // A quote that is part of one sentence (a logged fragment) resolves to it.
+  const nq = normalise(quote).replace(/[.!?…"']+$/, '');
+  if (words(nq).length >= 3) {
+    const inside = scope.filter(r => normalise(r.text).includes(nq));
+    if (inside.length) return { match: 'contained', score: 1, rows: inside };
+  }
+  // A quote spanning several sentences resolves to its first.
+  const parts = splitSentences(quote);
+  if (parts.length > 1) {
+    const first = findQuote(rows, parts[0], slide);
+    if (first.match !== 'none') return first;
+  }
   const q = new Set(words(quote));
   let best = null;
   for (const r of scope) {

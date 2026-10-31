@@ -45,3 +45,7 @@ AE101's first cohort (real people) reported overload: *"too much material, too l
 2. **475 `memory/compounded/` entries** in core. Each has `example_from_session` (what Claude did) and `counter_example` (Antti's redirect). About 85 on reader surfaces quote wording. Most are structural (placement, dosage), so they fit damaged-copy generators better than sentence pairs.
 3. **Session transcripts on Antti's machine** (`~/.claude/projects/*.jsonl`): every card with his reply, including the refusals that never reached git. `self-review-mining.md` already describes the miner. This needs Remote Control on his machine and would probably outyield 1 and 2 together.
 4. 8,463 sentence-level edits across all curriculum commits. Most were judge-driven and only implicitly approved. Kept out on purpose: labelling with them would train the reader to agree with the judges.
+
+## Candidates for Antti's next calls
+
+`candidates.a101.jsonl` (built by `build_candidates.py` from `candidates_spec.py`) holds 8 Agents 101 slide pairs with no label yet. Each applies one of the clusters where every persona reader disagreed with Antti on the gold set: forward-pointer (3), permission line (2), trainer voice (2), added explanation (1). `original` names the side that ships today. When Antti calls a pair, move it into the gold set. If he keeps the original, its kind is `refused-edit`.

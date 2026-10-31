@@ -12,7 +12,7 @@ def shorter(i):
 tot=collections.Counter(); hit=collections.Counter(); base=collections.Counter()
 for i,k in key.items():
     if i not in picks: continue
-    for g in ('all','kind:'+k['kind'],'dim:'+k['dim']):
+    for g in ('all','tier:'+k.get('tier','gold'),'kind:'+k['kind'],'dim:'+k['dim']):
         tot[g]+=1; hit[g]+=picks[i]==k['answer']; base[g]+=shorter(i)==k['answer']
 print(f"answered {tot['all']}/{len(key)}")
 for g in sorted(tot,key=lambda x:(x!='all',x)):

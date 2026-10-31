@@ -1,6 +1,7 @@
 import json,subprocess,re,random,hashlib,sys,os
 sys.path.insert(0,os.path.dirname(__file__))
 from taste_spec import T
+from notes_spec import N, EMPH
 R=os.path.abspath(os.path.join(os.path.dirname(__file__),'../../../..'))
 def g(*a): return subprocess.run(['git','-C',R,*a],capture_output=True,text=True,errors='replace').stdout
 def body(t):
@@ -60,13 +61,43 @@ for t in T:
     if not c or t['keep'] not in c: print('miss',t['id']); continue
     alt=c.replace(t['keep'],t['alt'],1)
     pairs.append(dict(id=t['id'],source='taste-notes',file=t['file'],training='shared',kind=t['kind'],dim=t['dim'],why=t['why'],preferred=c,other=alt))
+
+def gone_commit(file,needle):
+    for h in g('log','-G'+re.escape(needle),'--format=%H','--',file).split():
+        old=g('show',f'{h}^:{file}'); new=g('show',f'{h}:{file}')
+        if needle in body(old) and needle not in body(new): return h,old,new
+    return None
+for n in N:
+    r=gone_commit(n['file'],n['gone'])
+    if not r: print('nogone',n['id']); continue
+    h,old,new=r
+    cb=find_chunk(old,n['gone'])
+    hd=cb.split('\n',1)[0] if cb.startswith('## ') else None
+    ca=next((c for c in chunks(new) if hd and c.split('\n',1)[0]==hd),None)
+    if ca is None:
+        oc=chunks(old); nc=chunks(new); k=oc.index(cb)
+        ca=nc[k] if len(nc)==len(oc) else None
+    if not ca or ca==cb: print('noafter',n['id']); continue
+    pairs.append(dict(id=n['id'],source='maintainer-note',sha=h[:8],file=n['file'],training='shared',kind=n['kind'],dim=n['dim'],tier=n['tier'],why=n['why'],preferred=ca,other=cb))
+ne=0
+for c in EMPH['commits']:
+    h=g('rev-parse',c).strip()
+    for f in g('show','--name-only','--format=',h).split():
+        if ne>=EMPH['max_pairs'] or not f.endswith('.md') or 'curriculum/' not in f: continue
+        oc=chunks(g('show',f'{h}^:{f}')); nc=chunks(g('show',f'{h}:{f}'))
+        if len(oc)!=len(nc): continue
+        for a,b in zip(oc,nc):
+            if a!=b and a.replace('**','')==b.replace('**','') and a.count('**')-b.count('**')>=4 and len(a.split())<260:
+                pairs.append(dict(id=f"emph-{c}-{ne}",source='maintainer-note',sha=c,file=f,training='shared',kind=EMPH['kind'],dim=EMPH['dim'],tier=EMPH['tier'],why=EMPH['why'],preferred=b,other=a))
+                ne+=1; break
+
 rnd=random.Random(20261031)
 blind=[];key=[]
 for p in pairs:
     flip=rnd.random()<0.5
     a,b=(p['other'],p['preferred']) if flip else (p['preferred'],p['other'])
     blind.append(dict(id=p['id'],file=p['file'],a=a,b=b))
-    key.append(dict(id=p['id'],answer='b' if flip else 'a',source=p['source'],kind=p['kind'],dim=p['dim'],file=p['file'],date=p.get('date'),why=p['why'],
+    key.append(dict(id=p['id'],answer='b' if flip else 'a',source=p['source'],kind=p['kind'],dim=p['dim'],file=p['file'],date=p.get('date'),why=p['why'],tier=p.get('tier','gold'),
         preferred_len=len(p['preferred'].split()),other_len=len(p['other'].split())))
 out=sys.argv[1]
 import os; os.makedirs(out,exist_ok=True)

@@ -221,7 +221,10 @@ assert_turn() {
       assert_file_exists "prework T3 meetings" "$sut_cwd/prework/meetings.md" || return 1
       assert_scrollback_grep "prework T3 meetings content" "$sut_cwd/prework/meetings.md" "$A101_PREWORK_RE" ;;
     prework:4)
-      assert_file_mtime_advanced "prework T4 screenshot fallback" "$sut_cwd/prework/meetings.md" "$base" ;;
+      # Same export as T3, so an agent may rightly keep the identical file; that
+      # passes when it says so instead of rewriting.
+      assert_file_mtime_advanced "prework T4 screenshot fallback" "$sut_cwd/prework/meetings.md" "$base" \
+        || assert_scrollback_grep "prework T4 kept identical summary" "$t" "still (correct|matches)|didn.t rewrite|did not rewrite|unchanged|hasn.t changed|left it as is|same (as before|as last|calendar|export)" ;;
 
     # ----- m1 -----
     m1:1) assert_file_exists "m1 T1 site" "$sut_cwd/module-1/site.html" ;;

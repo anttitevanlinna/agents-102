@@ -23,6 +23,46 @@ Append-only stream of editorial calls made on real curriculum text. **Newest at 
 
 ---
 
+## 2026-11-01 — Antti's AE101 cut sessions, read as pairs
+
+Three sessions where Antti cut AE101 himself: the 2026-08-05 line-read (about 50 one-change commits in under two hours), the 2026-08-25 Antti-called cuts, and the 2026-08-29 compaction pass (its calls and counterweights are in the 2026-08-29 entry below). 150 slide pairs, 74 of them gold: `curriculum/evals/mechanical/persona-student/runs/2026-11-01-ae101-history-cuts/`.
+
+### What he cut
+
+**Coined words, swapped for plain ones.** "Governor" became "question" in one heading and "concerns" in another. "Where an existing boundary fires" became "what catches problems". "Rails" became "guardrails". The "infinite chameleon" callback became "mirror". The heading "The three-pattern" became "Reference and plan". A word the training invented has to be learned before it can carry anything; the plain word carries from the first read.
+
+**The aphorism after the point.** *"The plan is an artifact, not a feeling."* *"Never let the agent say everything."* *"That is the whole obligation."* Each closed a bullet that had already made its point, and each went. The metaphor *"the whole point of packaging is that you can leave the room"* became the literal *"the session can continue without you at the keyboard"*.
+
+**Duty framing, swapped for permission.** *"You owe the experiment a result you can read"* became *"A result you can read is enough; you do not need a completed artifact."* *"You need to read the result and know what to change for the next session. That is the whole obligation."* became *"Read the result and decide what to change next."*
+
+**A count, swapped for a frame the student controls.** *"The machine you just met has three behaviors that look like quirks and are not"* became *"The machine you just met can be steered. What you bring, what you build, and what you ask for all change the work."* The heading went from "One machine, three behaviors" to "The machine is steerable". The numeral was not doing memory work; the frame does stance work.
+
+**The student's failings as examples.** *"It flatters you; it calls unfinished work progress"* left the M1 opener. Same direction as "explain the future, don't put down the current".
+
+**Hyperbole.** "The cheapest gate you will ever run" became "a high-leverage gate". "Worth exactly as much as the gate behind it, and the gate is a claim too" became "only as trustworthy as the check that produced it". "Three shapes the verifier takes" became "can take". "Shows you what no benchmark can" became "shows how the agent handled your task and codebase".
+
+**The slide that talks about the course.** "Every move hangs on a location" (a curriculum-meta slide), "On the map, they live in the Work phase", "Who this is for" ("answered a question nobody in the room asks"), the Antti-narrator lede and the rule-count snapshot in the build story. Each was the author's interest, not the room's.
+
+**The third example.** The cardiologist session in the wizard demo restated what the two fact sessions already showed. Two is the dose.
+
+**Open on the do-move.** When-a-plan-is-good now opens on the prompt the student runs; the mechanism sentence and the output preview it replaced both restated what the prompt's answer shows.
+
+### What he added
+
+**A clause that makes the claim true.** *"The re-send can run for hours"* gained *"If you've specified a large enough task well"*. Plan review gained *"One correction can redirect every step that follows."* About one pair in six kept the longer side, and most of those were accuracy or a named actor.
+
+**The actor, named.** "It answers in essays" became "The LLM answers in essays". "An LLM judge is another untested component" replaced "A judge is a claim that its bar and your bar agree."
+
+### Drift, for calibration
+
+On 2026-07-09 he kept *"Material with a location is material you can find again later"* ("plain English here"). On 2026-08-05 he cut the slide that held it. Same shape as `tn-wall`: when an old keep and a newer cut disagree, the newer call is the taste.
+
+### What the judges made of it
+
+On these pairs always-shorter scores 78%, and the rules+examples judge matches it (78%). On the 08-05 line-read, which is mostly rewords, the judge scores 83% against always-shorter's 66%. The two-step gate fired 43 times and was right 3 times: inside his own cut sessions he cut orientation repeats, numerals and objection-answers freely. Counterweights are exceptions he grants on a specific line, not a class of text to protect. LLM noise is about ±5 points.
+
+---
+
 ## 2026-11-01 — teach-back: seventeen inferred rules, marked
 
 Antti marked seventeen rules the Taste Studio inferred from his calls: 14 agree, 3 depends, 0 wrong. The refinements he added are the part to keep.

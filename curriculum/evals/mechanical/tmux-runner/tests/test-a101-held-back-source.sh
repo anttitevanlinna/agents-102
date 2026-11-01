@@ -61,5 +61,17 @@ fi
 /usr/bin/grep -q 'A101_M2_HELD_RE' "$runner" && /usr/bin/grep -q 'survivorship' "$config" || {
   echo "FAIL: held-back-source guard is not split between generic runner and Nordveil case sentinel"; fail=1; }
 
+# 4. The held-back and integration sentinels must not occur in any source ingest copies verbatim
+#    (wiki/ + docs/). 'volatile SMB' sat in pilot-cohort-notes.md, so a faithful
+#    ingest tripped "leaked" on the 2026-11-01 Sonnet chain.
+for var in A101_M2_HELD_RE A101_M2_INTEGRATION_RE; do
+held_re="$(/usr/bin/sed -n "s/^$var='\(.*\)'$/\1/p" "$config")"
+for src in "$root"/fixtures/agents-101-synthetic/sources/wiki/*.md "$root"/fixtures/agents-101-synthetic/sources/docs/*.md; do
+  if /usr/bin/grep -qiE "$held_re" "$src"; then
+    echo "FAIL: $var /$held_re/ occurs in ingested source $(basename "$src")"; fail=1
+  fi
+done
+done
+
 [[ $fail -eq 0 ]] && echo "PASS: held-back counter-case is scoped out of curate/ingest and guarded in the runner"
 exit $fail

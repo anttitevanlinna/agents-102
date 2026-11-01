@@ -71,7 +71,7 @@ function report(key, cmp) {
   return { key, cmp, p90, byModule };
 }
 
-module.exports = { report };
+module.exports = { report, moduleOf };
 
 if (require.main === module) {
   const argv = process.argv.slice(2);

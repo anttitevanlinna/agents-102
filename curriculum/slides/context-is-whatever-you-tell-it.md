@@ -1,13 +1,11 @@
 ## Context is whatever you tell it
 <!--slide:context-is-whatever-you-tell-it-->
 
-One more window. The first prompt: *"I'm a cardiologist preparing dinner for my patients."*
+One more window. First prompt: *"I'm a cardiologist preparing dinner for my patients."* Then the same dinner prompt.
 
-Then the same second prompt about dinner.
+The suggestion shifts: heart-healthy, low-sodium, vegetable-forward. You told it who you are.
 
-The suggestion shifts again. Heart-healthy. Low-sodium. Vegetable-forward. Not because Claude knows medicine better than Italian cooking. You told it who you are, and every answer after took that into account.
-
-Context is whatever you tell it. A fact. A role. A preference. A constraint. All of it colors what comes next.
+Context is whatever you tell it: a fact, a role, a preference.
 
 <!-- maintainer -->
 

@@ -1,90 +1,80 @@
 # Exercise: Paint by agent with guardrails
 
-**Time:** 45 minutes. Banter expected.
+**Time:** 45 minutes.
 
 **Session** *(new, "Module 1 - Getting going")*
 
-Start a new session or task at your training-directory root.
+Start a new session at your training-directory root, named `m1-getting-going` if your runtime supports names.
 
-Name it `m1-getting-going` if your runtime supports session names.
-
-**What you do:**
-
-The site is the canvas. The real move is iterate and learn: change the context, watch the agent's output shift, then package what you learned so the next session starts smarter.
+Change the context, watch the agent's output shift, then package what you learned for the next session.
 
 ## Phase 1: The boring baseline
 
 *5 min*
 
-The baseline is boring on purpose. You need it boring so you can feel how much the later phases change.
+The baseline is boring on purpose, so you can feel how much later phases change.
 
-Three small steps:
-
-1. **Open your LinkedIn profile in your browser.** The page with your photo, headline, About, Experience, Education, the lot. Your own profile, not someone else's.
-2. **Select all and copy.** Cmd+A then Cmd+C on Mac, Ctrl+A then Ctrl+C on Windows. Yes, the whole page (headers, navigation, the recommendations sidebar, all of it). It will look like a wall of text. That's fine.
+1. **Open your own LinkedIn profile in your browser.**
+2. **Select all and copy.** Cmd+A then Cmd+C on Mac, Ctrl+A then Ctrl+C on Windows. Take the whole page, headers and sidebar included. It will look messy. That's fine.
 3. **Drop your LinkedIn text into the prompt below, after the colon. Send as one message.**
 
 {{prompt:personal-site-with-guardrails-1}}
 
-The mess is the point. The agent sorts the signal from the page chrome. If you over-curate the input now, you'll never feel how much the *later* context changes the output.
+The mess is the point. If you over-curate the input now, you'll never feel how much the *later* context changes the output.
 
-Watch the result. It works. It looks okay. It's also generic. The site a competent LLM produces from a résumé when it doesn't know what matters. Every later phase overwrites `module-1/site.html`, so the latest version always lives at that path.
+It works, but it's generic. Every later phase overwrites `module-1/site.html`.
 
 ## Phase 2: Apply a framework you know
 
 *8 min*
 
-The goal of this site isn't to sell anything. It's the opposite: when a colleague (yours, or a peer outside the company you'd happily work with) lands on it, they should think *"this is the person I want to work with more, on the things they're great at."* Not *"I should book a discovery call."* A colleague relationship, not a sales funnel.
+The site isn't there to sell. A colleague who lands on it should think *"this is the person I want to work with more, on the things they're great at,"* not *"I should book a discovery call."*
 
 ## Name the framework and tune it
 
-Donald Miller's **StoryBrand** is the obvious framework for *"what kind of help is this person to others."* Half of LinkedIn uses it, and it shows, badly, because most consultants run StoryBrand straight as a sales pitch. We'll invoke it explicitly AND **tune** it: the hero isn't you, it's the colleague. Skip the sales-funnel beats (Stakes, Call-to-Action). What's left is the part that actually says *"I'm the greatest colleague ever; let's work more together."*
+Donald Miller's **StoryBrand** fits *"what kind of help is this person to others."* Tune it: the hero is the colleague, not you. Skip the sales-funnel beats (Stakes, Call-to-Action).
 
-Notice the move you're about to make: **name the framework, tune it, ask the agent to run it.** The LLM already knows StoryBrand. You don't have to reproduce the questions. Same trick for Toyota Kata, SWOT, Roger Martin's strategic-choices, Jobs-to-be-Done. *"Apply X to Y, but tune for Z."* That's the move.
+The move: **name the framework, tune it, ask the agent to run it.** The LLM already knows StoryBrand, so you don't reproduce the questions. Same for Toyota Kata, SWOT, Roger Martin's strategic-choices, Jobs-to-be-Done: *"Apply X to Y, but tune for Z."*
 
 ## Keep yourself the protagonist, then run the beats
 
-One trap to name first. StoryBrand puts the customer in the hero slot. If you let it take over the *whole site*, the colleague becomes the protagonist of the page, and you get a service site with your name in the footer. Wrong shape. **The site stays a personal site; you stay the protagonist of the page.** StoryBrand shapes the *colleague-help section*, not the architecture. Your name in the headline; your actual current work front and centre; the StoryBrand tune is the texture of how you describe the help, not the page's spine.
-
-One liners and short answers usually give enough clue. Make it quick and iterate.
+StoryBrand puts the customer in the hero slot. On the whole site, the colleague becomes the protagonist: a service site with your name in the footer. **The site stays a personal site; you stay the protagonist of the page.** Your name is in the headline and your current work front and centre. StoryBrand shapes only the colleague-help section.
 
 Ask the agent to apply tuned StoryBrand to the help section, one beat at a time.
 
 {{prompt:personal-site-with-guardrails-2}}
 
-The agent walks you through the five tuned beats. Answer each in your own words; don't polish. After the last answer, the agent regenerates. Read the new version. Same framework half of LinkedIn uses, retuned for *"let's work more together,"* with you still the subject of the page.
+The agent walks you through the five tuned beats. Answer each in your own words, briefly; don't polish. The agent then regenerates; read the new version.
 
 ## Phase 3: Strengths
 
 *8 min*
 
-Your strengths shape how the whole site sounds. List 3-5 in one line each; the agent takes the rest from there.
+Your strengths shape how the whole site sounds. List 3-5 strengths, one line each.
 
-Tell the agent your strengths and have it regenerate the site.
+Give the agent your strengths to regenerate the site.
 
 {{prompt:personal-site-with-guardrails-3}}
 
-
-Read the regenerated site. Same StoryBrand spine, sharper because the site now sounds like someone with your specific strengths.
+Read the regenerated site.
 
 ## Phase 4: Anti-branding, the mirror
 
 *8 min*
 
-Complaining is easier than praising. Most people can list what drives them mad at work in thirty seconds; the same people will stall for five minutes if asked what they're great at. The fix isn't to try harder on the praise; it's to **invert the easy thing**. **Anti-branding.** Adam Grant calls a version of this the *energy audit*; Patagonia famously did *"Don't Buy This Jacket"*; Taleb calls it *via negativa*. Same move: define what you're for by inverting what you're against. Then make the inverted version the spine.
+Most people can list what drives them mad at work in thirty seconds, but stall for five minutes on what they're great at. **Invert the easy thing.** Define what you're for by inverting what you're against, then make the inverted version the spine. Adam Grant calls a version of this the *energy audit*; Taleb calls it *via negativa*.
 
-Same agentic pattern again: **name the framework, tune it, ask the agent to run it.** Second time you're using it in this exercise; at this point it's a move you own.
+Same pattern again: **name the framework, tune it, ask the agent to run it.**
 
 ## List what you hate, then invert it
 
-Give the agent a few specific things you hate about work. Not categories ("bureaucracy," "vague strategy") but the actual things ("meetings where nobody disagrees," "decks where every page says 'iterating'"). Rough beats polished. The vaguer the input, the more the output drifts back to statistical-default you.
+Give the agent a few specific things you hate about work. Not categories ("bureaucracy") but actual things ("meetings where nobody disagrees," "decks where every page says 'iterating'"). Vague input drifts back to the statistical-default you.
 
 Ask the agent to apply anti-branding using your hate list.
 
 {{prompt:personal-site-with-guardrails-4}}
 
-
-Read the new version. The site gets sharper. Two frameworks now layered: StoryBrand for the help relationship, anti-branding for the voice. Plus your strengths shaping how the whole site sounds. That's the move.
+Read the new version.
 
 ## Phase 5: Look back
 
@@ -96,51 +86,45 @@ Ask the agent to compare versions and name three generic claims.
 
 {{prompt:personal-site-with-guardrails-5}}
 
-One thing to know: the agent is reading its own work in the chat where it just wrote it. That's a warm-session self-audit, and the LLM tends to be lovely about its own prior output. If the three picks come back soft (*"could be a touch more specific,"* not *"this whole line is wrong"*), ask the agent to over-flag with no charity and run it again. Or open a fresh task, paste just the Phase 1 site cold, and run the same prompt without the rest of the context riding along. Cold reads catch sharper picks.
+The agent is reading its own work where it wrote it, and LLMs go easy on their own output. If the three picks come back soft, ask the agent to over-flag with no charity and run it again. Or open a fresh task, paste just the Phase 1 site, and run the same prompt cold.
 
+The three answers are generic guesses the LLM made to fill gaps: what most LinkedIn profiles of people like you say, not what is true of you.
 
-Read the agent's three answers. Those are the LLM filling in gaps with generic guesses: what most LinkedIn profiles of people like you look like, not what's actually true of you. Not a bug. It's what happens when context is thin. Context fixed it. You'll meet this mechanism again in Module 5 when the stakes are higher.
-
-No regeneration in this phase. Just observation.
+Observe only; do not regenerate.
 
 ## Phase 6: Free iteration
 
 *6 min*
 
-Now make it yours. Color, layout, tone, a quote at the top, a section that shouldn't exist on most sites but does on yours because the rest of you doesn't fit a template either. Iterate until looking at the screen makes you say *"yes, this is me."*
+Now make it yours. Change color, layout, tone, add a quote at the top, or a section that shouldn't exist on most sites. Iterate until you say *"yes, this is me."*
 
 Open prompts. You drive.
 
-**Tip: steal a look and feel by naming the site.** The LLM knows the design DNA of famous sites by name. *"Make it look like Stripe's design language"* / *"use Linear's typography and spacing"* / *"make it feel like Anthropic.com"* / *"go full Patagonia (earthy, no-nonsense, lots of white space)"* / *"channel Craigslist if Craigslist had taste"*. All valid one-line moves. You don't need to know CSS; you need to know the site whose feel you'd happily borrow. Same agentic move as the frameworks: name the reference, ask the agent to apply it. *"Restyle `module-1/site.html` to feel like X."* Try two or three, keep the one that lands.
+**Tip: steal a look and feel by naming the site.** The LLM knows the design of famous sites by name. *"Make it look like Stripe's design language"* / *"use Linear's typography and spacing"* / *"go full Patagonia"*. Try *"Restyle `module-1/site.html` to feel like X"* with two or three sites and keep the one you like.
 
 ## Phase 7: Close, package what you learned
 
 *4 min*
 
-The site is done. The agent behavior is not. What's left is to *capture the move* so you can do it again on someone else's bio next week, without re-explaining everything to a fresh agent. You'll write the first version of a generation rules file from what you just did. The retro (in the Debrief that follows) will sharpen it.
-
-Ask the agent to write your first generation rules file.
+The site is done. Now capture the move, so a fresh agent can repeat it on someone else's bio without you re-explaining. Ask the agent to write your first generation rules file from what you just did.
 
 {{prompt:personal-site-with-guardrails-6}}
 
-
-The agent writes the file and summarises in chat. Read the summary, then open `module-1/personal-brand-generation.md` and inspect the first two or three rules end to end. The chat summary rounds corners; the file is the thing that travels. Push back on anything in the file that doesn't match what you actually did. That's your first packaged agent behavior: text the model can re-read at the start of any future personal-brand task.
+Open `module-1/personal-brand-generation.md` and read the first two or three rules end to end. The chat summary rounds corners; the file is what travels and what the agent re-reads in any future personal-brand task. Push back on anything that doesn't match what you did.
 
 ## See the mechanism repeat in every phase
 
 **What happened:**
 
-Phase 1 is fine. Phase 6 is yours. The mechanism is the same every phase. The agent's output is shaped by what you put in the context ahead of the task. Your LinkedIn was context. Your colleague-guide frame was context. Your strengths were context. Your mirror-list was context. The more specific the context, the more genuinely "you" the output.
-
-That's the whole of Module 1's big idea, proven with your own name on it.
+The agent's output is shaped by the context you put ahead of the task. Your LinkedIn, colleague-guide frame, strengths and mirror-list were all context. The more specific the context, the more the output is yours.
 
 ## Take the context move past this site
 
 **The point:**
 
-Generic output comes from generic context. The LLM didn't get better between Phase 1 and Phase 6. You did. You became better at feeding it what it needs to produce YOUR output instead of everyone-else's. The same mechanism scales: business proposals, competitor analysis, compliance reviews, product strategy. Anything where output quality depends on "is this genuinely ours or just fine?"
+Generic output comes from generic context. The LLM didn't get better between Phase 1 and Phase 6. You got better at feeding it the context that produces YOUR output. The same mechanism scales to business proposals, competitor analysis, compliance reviews and product strategy: anywhere the question is "is this genuinely ours or just fine?"
 
-You just ran **Recipe 1** end-to-end: baseline without context, colleague-as-buyer frame, anti-branding mirror, free iteration loop, portable guardrails file at the close. After Agents 101, when the next personal-shaped output asks for the same move, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) is where the moves and components live without the training scaffolding.
+This was **Recipe 1**. When the next personal-shaped output needs the same move, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) holds the moves and components.
 
 <!-- maintainer -->
 

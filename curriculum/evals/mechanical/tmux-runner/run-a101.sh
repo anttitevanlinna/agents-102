@@ -627,7 +627,7 @@ assert_turn() {
       assert_scrollback_grep "m7 T5 current-work question" "$sut_cwd/module-7/monday.md" 'today|current|spreadsheet|how.*prepare' ;;
     m7:6)
       local chosen
-      chosen="$(grep -Eo 'module-7/[a-z0-9-]+\.md' "$t" | head -1)"
+      chosen="$(a101_rewritten_path "$t" module-7)"
       [[ -n "$chosen" && -f "$sut_cwd/$chosen" ]] || { echo '[assert] FAIL m7 T6: debrief named no existing sharing-artifact path' >&2; return 1; }
       assert_file_mtime_advanced "m7 T6 debrief rewrote sharing artifact" "$sut_cwd/$chosen" "$base" ;;
     m7:7) assert_or_warn assert_scrollback_grep "m7 T7 scoped pushback" "$t" 'ownership|handoff|Mara|variance' ;;

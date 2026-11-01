@@ -306,3 +306,13 @@ assert_skill_not_shadowed() {        # $1=label $2=transcript $3=skill name
   echo "[assert] PASS $label: no namespaced $name load in transcript"
   return 0
 }
+
+a101_rewritten_path() {              # $1=transcript $2=dir prefix (e.g. module-7)
+  # The file the agent says it rewrote/overwrote, else the last Write/Update/Edit
+  # tool target, else the first path. tests/rewritten-path.test.sh
+  local t="$1" d="$2" p
+  p="$(grep -Ei "(rewrote|overwrote|rewritten)[^.]*${d}/" "$t" | grep -Eo "${d}/[A-Za-z0-9_-]+\.md" | tail -1)"
+  [[ -n "$p" ]] || p="$(grep -E "(Write|Update|Edit)\(${d}/" "$t" | grep -Eo "${d}/[A-Za-z0-9_-]+\.md" | tail -1)"
+  [[ -n "$p" ]] || p="$(grep -Eo "${d}/[A-Za-z0-9_-]+\.md" "$t" | head -1)"
+  printf '%s\n' "$p"
+}

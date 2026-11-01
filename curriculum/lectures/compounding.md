@@ -37,9 +37,9 @@ The point is simple: the simplest possible setup beats the fancy ones, because i
 
 ## What this unlocks
 
-Your memory is specific to your challenge. The question you just ran through it came back with claims cited to your files, reasoning shaped by your context, a voice that isn't a generic industry take. The answer belongs to the memory you built, not to the LLM behind it. That's the point the whole training turns on: *generic AI becomes your AI when you shape the context that surrounds it.* Guardrails did this at the prompt level in Module 1. A memory does it at the knowledge level now. The mechanism is the same; only the shelf life changed.
+Your memory is specific to your challenge. The question you ran through it came back with claims cited to your files, reasoning shaped by your context, a voice that isn't a generic industry take. The answer belongs to the memory you built, not to the LLM behind it. That's the point the whole training turns on: *generic AI becomes your AI when you shape the context that surrounds it.* Guardrails did this at the prompt level in Module 1. A memory does it at the knowledge level now. The mechanism is the same; only the shelf life changed.
 
-Every module after this leans on the memory you just built. Multi-agent systems reads from it. Security reviews it. Quality evals run against it. The flywheel in Module 8 feeds it. You didn't build a training exercise. You built the material the rest of the training runs on.
+Every module after this leans on that memory. Multi-agent systems reads from it. Security reviews it. Quality evals run against it. The flywheel in Module 8 feeds it. You didn't build a training exercise. You built the material the rest of the training runs on.
 
 ## Could a competitor claim this?
 

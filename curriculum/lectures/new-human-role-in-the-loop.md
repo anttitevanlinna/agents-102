@@ -6,8 +6,6 @@ The agent wrote a snake game. Then it wrote a page that sounded more like you af
 
 Most of that did not feel like dramatic tool use. It looked like files appearing on disk.
 
-That was the point.
-
 Files are the handles. Connectors bring material in. Agents read and write. Judges hold a line. Loops make the next session sharper.
 
 Small pieces. Big shift.

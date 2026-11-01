@@ -52,7 +52,7 @@ Notice what this prompt insists on: name the file before rewriting, quote the be
 
 This is a self-audit of a live agent round. Convenient, not neutral. If the summary sounds too clean, ask the harsher read: *"Name one critique raised in the session that did not change the rewritten file. Quote the critique and the unchanged line."*
 
-Read the agent's summary. Push back where it's wrong. Some of what didn't resolve shouldn't resolve. It's the live edge of the work. The flywheel that sharpened the file just now is the one that will sharpen it again after Agents 101, on the next problem, on the one after that, on the one you don't yet know you have. You just watched it compound.
+Read the agent's summary. Push back where it's wrong. Some of what didn't resolve shouldn't resolve. It's the live edge of the work. The flywheel that sharpened the file just now is the one that will sharpen it again after Agents 101, on the next problem, on the one after that, on the one you don't yet know you have.
 
 ## Key Concepts
 - Each cycle sharpens the next: cross-check before publishing, critique before selection.

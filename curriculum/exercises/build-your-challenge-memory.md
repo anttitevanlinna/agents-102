@@ -88,7 +88,7 @@ Now use it. Fresh message.
 {{prompt:build-your-challenge-memory-6}}
 
 
-Answer with a real task from your challenge. The agent reads its instruction file, reads the memory, cites sources, and stays inside its rules. The citations tell you whether the memory earned its keep or whether the LLM filled in from training data. Quietly, you just made a reusable capability. Same agent, next week's task.
+Answer with a real task from your challenge. The agent reads its instruction file, reads the memory, cites sources, and stays inside its rules. The citations tell you whether the memory earned its keep or whether the LLM filled in from training data. That is a reusable capability. Same agent, next week's task.
 
 ## Phase 3: Compound
 
@@ -137,9 +137,7 @@ Four phases, one system. You curated. You loaded it. You put it to work. You add
 
 Two things combined make a system: *persistence* (it remembers) and *automation* (it runs). Either alone is a toy. Together they compound. Each cycle smarter than the last, because the thing learning is the same thing you trust to do the next task. Your challenge is buried in wiki pages, email threads, documents nobody re-reads. Once it lives in a memory an agent can read and improve, the economics change.
 
-Every module after this one uses the memory you just built.
-
-You just ran **Recipe 2** end-to-end: the three layers (sources, memory, rules file), curate-then-ingest-then-build, plan-first review on the multi-file write, memory that audits itself. After Agents 101, when the next challenge wants the same shape, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) is where the moves and components live without the training scaffolding.
+This was **Recipe 2** end-to-end: the three layers (sources, memory, rules file), curate-then-ingest-then-build, plan-first review on the multi-file write, memory that audits itself. After Agents 101, when the next challenge wants the same shape, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) is where the moves and components live without the training scaffolding.
 
 <!-- maintainer -->
 

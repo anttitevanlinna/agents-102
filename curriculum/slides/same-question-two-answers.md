@@ -7,7 +7,7 @@ In one, the first prompt is *"What is the capital of Italy?"* Claude answers *Ro
 
 In the other window, the first prompt is *"What is the largest lake in Finland?"* Claude answers *Saimaa.* Then the same second prompt as before.
 
-Before you read on, take a guess. What will it suggest? Your guess reveals what you already know about how this works, and what you're about to learn.
+Before you read on, take a guess. What will it suggest?
 
 Claude suggests something Finnish: salmon, rye bread, meatballs.
 

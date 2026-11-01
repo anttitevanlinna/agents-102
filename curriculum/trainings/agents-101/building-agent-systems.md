@@ -22,7 +22,7 @@ Module 2 turns to your real challenge. The empty `memory/`, `sources/`, and `age
 
 Module 1 was the rehearsal. A site, a voice sharpened, fabrication caught by the only person in the room who could catch it. Now the training turns to work. The rest of it builds on the challenge you actually get paid to move, because that's where the system has to stand up.
 
-You saw Karpathy's LLM Wiki post in the prework. What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you? You'll build one shortly.
+Karpathy's LLM Wiki post was in the prework. What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you? You'll build one shortly.
 
 ## Name the challenge you're carrying
 

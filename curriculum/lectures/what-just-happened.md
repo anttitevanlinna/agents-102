@@ -1,12 +1,12 @@
 # Iterate and Learn
 
-## You felt context move
+## Context became something you can point at
 
-Think back an hour. *Context* was a word someone might put on a slide. You had a vague sense it mattered. Now it's something you can point at, the bit you added that turned a generic About page into a site your neighbour recognised as yours. You felt it move.
+Think back an hour. *Context* was a word someone might put on a slide. You had a vague sense it mattered. Now it's something you can point at, the bit you added that turned a generic About page into a site your neighbour recognised as yours.
 
 That's a small thing. It's also the whole thing.
 
-The rest of the training is seven more instances of the same move. Iterate, learn, encode. Change something, notice what shifted, adjust, build again. You just did a round of it; you'll do a lot more.
+The rest of the training is seven more instances of the same move. Iterate, learn, encode. Change something, notice what shifted, adjust, build again.
 
 The site was the visible surface. The durable thing is the behavior you can now package: what context the agent needs, what generic looks like, what a stronger pass does differently, and which rule should survive into the next session.
 
@@ -43,7 +43,7 @@ Now: five minutes with the agent. The debrief.
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
-**Story blend, M1 closer (2026-09-23).** Five slides per `module-design/a101-story-proposals/blend.md` § Titles, M1: `You felt context move`, `Why the look-back was kind to you`, `The report is a hypothesis, not a result`, `You were the only check in the room`, `You act on the future to know what's real`. The mental-models beat ends on the felt-experience sentence; anything after it restates the beat above. The closer carries no forward promise about the remaining modules, which is the module file's job. The McKinsey beat stays verbatim.
+**Story blend, M1 closer (2026-09-23).** Five slides per `module-design/a101-story-proposals/blend.md` § Titles, M1: `Context became something you can point at`, `Why the look-back was kind to you`, `The report is a hypothesis, not a result`, `You were the only check in the room`, `You act on the future to know what's real`. The mental-models beat ends on the felt-experience sentence; anything after it restates the beat above. The closer carries no forward promise about the remaining modules, which is the module file's job. The McKinsey beat stays verbatim.
 
 **Header reads `look-back`, not `retro`.** This lecture sits before `## Debrief` in `getting-going.md`, so the retro has not run when the slide is projected; the exercise's Phase 5 look-back has. The blend's string was `Why the retro was kind to you`. The mechanism under the header is the blend's: agreeable answers won the round the model was tuned on, so the self-report is the same kind of output. Moving this lecture after the Debrief would make `retro` the right word.
 

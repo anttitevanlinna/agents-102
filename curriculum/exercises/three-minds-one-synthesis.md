@@ -52,7 +52,7 @@ Optional: ask the agent to recap the three retrievals' core claims next to your 
 
 You can't tell yet. Three retrievers read plainly, three stances pushed, a framework held the synthesis together, and still, the answer sits at that uneasy distance where you'd stake your reputation on some of it and not all of it, and you can't yet say which is which. That feeling is correct.
 
-Everything you just did is the move this training teaches, run properly. It still handed you something you cannot vouch for.
+That was the training's move, run properly. You still cannot vouch for what it produced.
 
 Hold the doubt. Name it to yourself. Don't fix it here.
 

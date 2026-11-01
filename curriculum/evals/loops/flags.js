@@ -24,11 +24,14 @@ const prose = rows.filter((r) => r.kind !== 'heading');
 const flags = flagRows(rows);
 const counts = slideCounts(rows);
 const p90 = quantile([...slideCounts(buildLedger('agentic-engineering-101').rows).values()], 0.9);
+const wps = (rs) => { const m = new Map(); for (const r of rs) if (r.kind !== 'heading') m.set(`${r.file}#${r.slide || ''}`, (m.get(`${r.file}#${r.slide || ''}`) || 0) + r.words); return quantile([...m.values()], 0.5); };
 const has = (k) => flags.filter((f) => f.reasons.some((r) => r.startsWith(k)));
 const out = {
   sentences: prose.length,
   words: prose.reduce((s, r) => s + r.words, 0),
   median_sentences_per_slide: quantile([...counts.values()], 0.5),
+  median_words_per_slide: wps(rows),
+  ae101_median_words_per_slide: wps(buildLedger('agentic-engineering-101').rows),
   narrator: has('narrator').length,
   narrator_per_1000: Math.round(1000 * prose.filter((r) => NARRATOR.test(r.text)).length / prose.length),
   put_down: has('put-down').length,

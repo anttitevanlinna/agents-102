@@ -50,7 +50,9 @@ L.push('', '## Sentence flags', '', '| page | sentences | words | sentences/slid
 for (const p of order.filter((x) => x !== 'damaged')) { const f = J(`flags/${p}.json`); if (f) L.push(`| ${p} | ${f.sentences} | ${f.words} | ${f.median_sentences_per_slide} | ${f.narrator_per_1000} | ${f.put_down} | ${f.loaded} | ${f.dense_slides} |`); }
 
 // Ranking. Language weighs at least as much as story (maintainer 2026-11-01: language was the
-// biggest problem in calibration). language = mean(register, taste win share, narrator score);
+// biggest problem in calibration; 15:40 slides must be glanceable, AE101 was compacted again and
+// again). language = mean(register, taste win share, narrator score, density score), where
+// density = 100 x AE101 median words per slide / this page's (capped at 100);
 // overall = mean(language, story mean4). Words and sentences/slide are shown, not scored.
 const win = {};
 for (const k of key) { const vb = b[k.id] === k.variant_is, vs = sw[k.id] && sw[k.id] !== k.variant_is; (win[k.variant] ||= []).push(vb && vs ? 1 : !vb && !vs ? 0 : 0.5); }
@@ -59,10 +61,11 @@ for (const p of order.filter((x) => x !== 'damaged')) {
   const st = J(`story/${p}.json`), f = J(`flags/${p}.json`); if (!st || !f) continue;
   const taste = p === 'v0' ? 50 : win[p] ? Math.round(100 * win[p].reduce((s, x) => s + x, 0) / win[p].length) : 50;
   const narr = Math.max(0, 100 - 3 * f.narrator_per_1000);
-  const lang = Math.round((st.median.register + taste + narr) / 3);
-  rows.push({ p, lang, story: st.median.mean4, overall: Math.round((lang + st.median.mean4) / 2), taste, narr, reg: st.median.register });
+  const dens = f.median_words_per_slide ? Math.min(100, Math.round(100 * f.ae101_median_words_per_slide / f.median_words_per_slide)) : 50;
+  const lang = Math.round((st.median.register + taste + narr + dens) / 4);
+  rows.push({ p, lang, dens, wps: f.median_words_per_slide, story: st.median.mean4, overall: Math.round((lang + st.median.mean4) / 2), taste, narr, reg: st.median.register });
 }
 rows.sort((x, y) => y.overall - x.overall);
-L.push('', '## Ranking (language weighed equal to story)', '', '| rank | page | overall | language | story mean4 | register | taste win % vs v0 | narrator score |', '|---|---|---|---|---|---|---|---|');
-rows.forEach((r, i) => L.push(`| ${i + 1} | ${r.p} | ${r.overall} | ${r.lang} | ${r.story} | ${r.reg} | ${r.taste} | ${r.narr} |`));
+L.push('', '## Ranking (language weighed equal to story)', '', '| rank | page | overall | language | story mean4 | register | taste win % vs v0 | narrator score | words/slide | density |', '|---|---|---|---|---|---|---|---|---|---|');
+rows.forEach((r, i) => L.push(`| ${i + 1} | ${r.p} | ${r.overall} | ${r.lang} | ${r.story} | ${r.reg} | ${r.taste} | ${r.narr} | ${r.wps} | ${r.dens} |`));
 console.log(L.join('\n'));

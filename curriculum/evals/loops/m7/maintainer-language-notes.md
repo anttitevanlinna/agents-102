@@ -20,3 +20,4 @@ Patterns the maintainer named while answering blind pairs and sentence cards. Ea
 16. Scar story 1 closes: "Companies, even when they go agentic, work first and foremost on the human principle. Today, at least. Who knows about the future."
 
 Overall rating 2026-11-01: Agents 101 language about 3 of 5, with bad language well outside the pairs shown.
+17. Glanceable. The main training UX is Claude Code plus the prompts; the handbook is a secondary map of what to do next. Valid writing is still too wordy: compact, then compact again, as AE101 was. Yardstick: AE101 exercise slides median 66 words of prose (Agents 101: 109).

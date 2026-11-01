@@ -124,6 +124,12 @@ if variant in ("v6", "v7", "v8", "v9"):  # regenerated from strategy + rules, ex
     for rel, part in ((MOD, "module"), (LEC, "lecture")):
         p = root / rel; t = p.read_text(); i = t.index("<!-- maintainer -->")
         p.write_text((here / f"{variant}-{part}.md").read_text() + "\n" + t[i:])
+if variant in ("v10", "v11"):  # compaction pass over a regenerated variant (compact.py), all five files
+    here = pathlib.Path(__file__).parent / "regen"
+    for part, rel in (("module", MOD), ("lecture", LEC), ("ex1", "exercises/share-your-work.md"),
+                      ("ex2", "exercises/design-the-sharing-plan.md"), ("ex3", "exercises/test-the-sharing-plan.md")):
+        p = root / rel; t = p.read_text(); i = t.find("<!-- maintainer -->")
+        p.write_text((here / f"{variant}-{part}.md").read_text() + ("\n" + t[i:] if i >= 0 else ""))
 if variant in ("v4", "v5"): run(V4_ORDER)
 if variant == "v5": run(V5_CUT)
 print(f"[apply] {variant} ok")

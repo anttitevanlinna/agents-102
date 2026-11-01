@@ -23,6 +23,19 @@ Append-only stream of editorial calls made on real curriculum text. **Newest at 
 
 ---
 
+## 2026-11-01 — the second scar story: being ahead of time
+
+A sparring session from 2026-10-28, now in the project files as `agents-101-taste/2026-10-28-being-ahead-of-time.md`. Antti offered it as a smaller second scar story, and possibly the leading one, because it carries the feeling of being in the future before others rather than outcomes. His own lines, in order:
+
+- *"I approach all my work with agents, compounding, outcomes and broad analysis. Pretty much everyone still approaches problems by writing confluence pages. And having meetings. Drawing diagrams. I feel I've lost common language."*
+- Three colleagues started deploying an agent factory in AWS. *"I'm like: what's the capabilities you are building at? They say: we have few problems to solve."*
+- A colleague named his way of working *"steering without reading all text"*. *"The volume of text is not the problem for me. agents write a lot. Still the final output can be fully precise."*
+- *"I have always held the prototyping approach. 10 iterations is totally fine. They get better. Some say: if the spec is anyhow wrong, then the final output will be wrong."*
+- *"It sometimes feels too inefficient and tedious to take part in the slowness of humans speccing and speculating in chats and meetings."*
+- He accepted the framing that his thinking is an innovator's while his ten transformations give him early-adopter standing inside the system (Rogers, Moore).
+
+Register note for any student-facing use: rule r14 and the frames above apply. The tedium is his feeling to own; the story must not put down people who spec and meet. The spar itself offered the fair reading: meetings are their way of iterating, and they build a sense that the outcome is theirs.
+
 ## 2026-11-01 — the scar story, dictated
 
 The first-person incident the point-of-view score was missing. It was dictated in four parts; the raw transcript is in the project files as `agents-101-taste/scar-story-raw.md`. The facts, in Antti's order: at the start of 2026 he set out to redesign a whole value stream with agents, aiming for tangible business results. The slice chosen with senior leadership was the one that takes the company's flagship product to its millions of customers, a flow that runs through many teams. He built a multi-user, multi-agent system for it, the Workflow Architect. About 15 contributors mapped their own part and uploaded their own documents. A central synthesizer agent ran value stream mapping across all of it. Day one of the workshop: 12 people refined the current state. *"Everybody had fun. People bit by bit, like, learned how it works."* Day two: a smaller group reimagined the flow and reached a plausible proposal with the analysis ready for an investment decision. At the leadership meeting *"the urgency of the need and then the change had pretty much vanished. New priorities had come up… the proposal, as good as it was, got a non-decision, that it was neither yes or no."*

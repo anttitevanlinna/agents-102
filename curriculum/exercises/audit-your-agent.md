@@ -94,11 +94,11 @@ We did this for a single mitigation. Risk control is one of the things that sepa
 
 **What happened:**
 
-The Module 3 system has two packaged-lens reports against it now, plus the raw policy report that came before packaging. One mitigation applied; one residual decision recorded in the security report. If judgment is still unclear, you know what to show a human expert.
+The Module 3 system has two packaged-lens reports against it now, plus the raw policy report that came before packaging. One mitigation applied; one residual decision recorded in the security report. If judgment is still unclear, you know what to show a human expert. The reusable check and the loop carry to the next agent.
 
 **The point:**
 
-Absolute certainty is not on offer. The discipline is. Raw policy files first, packaged lenses second, one mitigation, one named residual. The report carries the evidence and the decisions. The unease that remains is what the loop is supposed to produce, not what it failed to remove.
+Absolute certainty is not on offer. The discipline is. Raw policy files first, packaged lenses second, one mitigation, one named residual. The reusable check is the expert in the room. The report carries the evidence and the decisions. The unease that remains is what the loop is supposed to produce, not what it failed to remove.
 
 This was **Recipe 4** end-to-end, on your real system: the two-lens audit, the five named agent-risk patterns, the five mitigations (scope, split, filter, gate, review), the "I can't tell" verdict earning a row of its own. After Agents 101, when the next agent needs the same audit, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) names the moves and components without the training scaffolding.
 

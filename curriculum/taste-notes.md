@@ -23,6 +23,27 @@ Append-only stream of editorial calls made on real curriculum text. **Newest at 
 
 ---
 
+## 2026-11-01 — teach-back: seventeen inferred rules, marked
+
+Antti marked seventeen rules the Taste Studio inferred from his calls: 14 agree, 3 depends, 0 wrong. The refinements he added are the part to keep.
+
+- **Shorter by default, simple with deep theory.** *"Students anyhow need to read a lot from Claude code. Looks like simple is better. But simple with deep theory."*
+- **First-person roughness, used sparingly.**
+- **Depends: duplication.** It is not needed for simple routine. Repetition earns its place when it steers toward a new mindset: *"ae101 module 4 does plenty of repetition to steer to new mindset."*
+- **Depends: famous names.** Use one only if most students know the term.
+- **Concrete beats framework because action beats talk.** *"Cagan fails actionability… not something you can apply on next day."*
+- **Verb precision.** *"'Read' implies 'read all'. Same with 'check'. Would be better to say: spot-check."*
+- **Unease may stay open, but is never declared.** *"Un-ease is totally fine. But let's not declare it like that."*
+- **A verdict fragment** defines the output and the shortest precondition before acting.
+- **Narrate a tool only when the feature is less known.** *"claude code transcripts need explanation. Compaction not."*
+- **The point line carries the why.** He calls this *"just stylistic thing in that slide format"*.
+- **Handing over the discovery** is *"often speculation"*.
+- **Depends: no ranking of which moments are most valuable.** The general rule: *"all modules should aim to get hands-on right asap. Most heavier theory after."*
+- **Students are adults.** *"They are professional. We assume they are self-motivated. (those who are not... we don't try save/motivate)"*
+- **No put-downs.** *"Putting something or someone down is the same as telling them they did something deliberately wrong. We assume they have tried their best by now."*
+- **Vocabulary runs 3–6 months ahead, and is famous enough.** *"now we couldn't say hillclimb without explaining. Now we can say 'loop'."* Also: *"We teach kind of 3-6 months ahead. We curate the stuff the best are just getting repeatedly working. Plus a few staples."*
+- **Neutral register.** *"Especially the LLM-invented highlights need to go."*
+
 ## 2026-11-01 — the second scar story: being ahead of time
 
 A sparring session from 2026-10-28, now in the project files as `agents-101-taste/2026-10-28-being-ahead-of-time.md`. Antti offered it as a smaller second scar story, and possibly the leading one, because it carries the feeling of being in the future before others rather than outcomes. His own lines, in order:

@@ -1,0 +1,154 @@
+<title>Agents 101 Calls</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+/* Layout: one reading column; each call is a sheet with the slide text set like a projected slide. */
+:root {
+  --bg: #f3f4f6; --sheet: #ffffff; --ink: #1d2430; --muted: #5d6675; --line: #d9dde3;
+  --accent: #2f5d8a; --accent-soft: #e4edf6; --done: #2e7d4f; --done-soft: #e3f2e8; --slide: #fafbfc;
+  --f-read: "Newsreader", Georgia, serif; --f-ui: "IBM Plex Sans", system-ui, sans-serif; --f-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #12161c; --sheet: #1a2028; --ink: #e6e9ee; --muted: #9aa3b1; --line: #2c3440;
+  --accent: #8db6e0; --accent-soft: #1f2d3c; --done: #7cc79a; --done-soft: #1b2d23; --slide: #161b22; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #12161c; --sheet: #1a2028; --ink: #e6e9ee; --muted: #9aa3b1; --line: #2c3440;
+  --accent: #8db6e0; --accent-soft: #1f2d3c; --done: #7cc79a; --done-soft: #1b2d23; --slide: #161b22; color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-ui); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 820px; margin: 0 auto; padding-block: 28px 80px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 20px; }
+h1 { font-family: var(--f-read); font-weight: 600; font-size: 2rem; margin: 0; text-wrap: balance; }
+.lede { color: var(--muted); margin: 0; max-width: 62ch; }
+.bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.tab { font: 500 0.85rem var(--f-ui); border: 1px solid var(--line); background: var(--sheet); color: var(--ink); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.tab[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--sheet); }
+.tab:focus-visible, button:focus-visible, textarea:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.count { margin-left: auto; font: 0.85rem var(--f-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.note { font-size: 0.85rem; color: var(--muted); border-left: 3px solid var(--line); padding-left: 10px; }
+.card { background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 12px; min-width: 0; }
+.card.answered { border-color: var(--done); }
+.top { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.group { font: 600 0.72rem var(--f-ui); letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+.where { font-size: 0.85rem; color: var(--muted); }
+.pill { margin-left: auto; font: 600 0.72rem var(--f-ui); padding: 2px 8px; border-radius: 999px; background: var(--done-soft); color: var(--done); }
+.ask { margin: 0; font-weight: 500; }
+.said { margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.88rem; }
+.slide { background: var(--slide); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; font-family: var(--f-read); font-size: 1.05rem; line-height: 1.55; min-width: 0; overflow-wrap: anywhere; }
+.slide h3 { font-size: 1.12rem; margin: 0 0 6px; font-weight: 600; }
+.slide p { margin: 0 0 8px; } .slide p:last-child { margin-bottom: 0; }
+.slide code { font-family: var(--f-mono); font-size: 0.85em; }
+.slide.empty { color: var(--muted); font-style: italic; }
+.label { font: 600 0.75rem var(--f-ui); color: var(--muted); margin-bottom: 4px; letter-spacing: 0.04em; }
+.ab { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.ab > div { min-width: 0; }
+@media (max-width: 640px) { .ab { grid-template-columns: 1fr; } }
+details summary { cursor: pointer; font-size: 0.85rem; color: var(--muted); }
+details .slide { margin-top: 8px; font-size: 0.95rem; opacity: 0.85; }
+.opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.opt { display: flex; gap: 6px; align-items: center; border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; cursor: pointer; font-size: 0.9rem; background: var(--sheet); }
+.opt:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+textarea { width: 100%; box-sizing: border-box; min-height: 64px; font: 0.95rem var(--f-ui); color: var(--ink); background: var(--slide); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; resize: vertical; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.save { font: 600 0.9rem var(--f-ui); background: var(--accent); color: var(--sheet); border: 0; border-radius: 8px; padding: 8px 16px; cursor: pointer; }
+.save:disabled { opacity: 0.5; cursor: default; }
+.status { font-size: 0.85rem; color: var(--muted); }
+.extra a { color: var(--accent); }
+@media (prefers-reduced-motion: no-preference) { .card { transition: border-color 0.2s; } }
+</style>
+
+<div class="wrap">
+  <header style="display:grid;gap:8px">
+    <h1>Agents 101 calls</h1>
+    <p class="lede">Every open call in one place. Pick an option, or write a steer in your own words, and press Save. A steer alone is a full answer. Pairs are blind: the labels A and B say nothing about which version is new.</p>
+  </header>
+  <div class="bar" id="tabs" role="toolbar" aria-label="Filter calls"></div>
+  <p class="note" id="dbnote" hidden></p>
+  <div id="cards" style="display:grid;gap:16px"></div>
+  <p class="note extra">Rules you have not confirmed yet (r01 to r17) are in the <a href="https://claude.ai/artifact/8QVvcCt9UmwTTCGsmLtraT" target="_blank" rel="noopener">Taste Studio</a>, tab "Check my rules".</p>
+</div>
+
+<script id="cards-data" type="application/json">__CARDS__</script>
+<script>
+const CARDS = JSON.parse(document.getElementById('cards-data').textContent);
+const answers = {};
+let db = null, filter = 'All';
+
+const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+function md(text) {
+  if (!text) return '';
+  return text.split(/\n{2,}/).map((blk) => {
+    let t = esc(blk.trim())
+      .replace(/<!--[\s\S]*?--&gt;/g, '').replace(/&lt;!--[\s\S]*?--&gt;/g, '')
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, '<em>[$1]</em>')
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+      .replace(/`([^`]+)`/g, '<code>$1</code>');
+    if (!t) return '';
+    if (/^#{1,3} /.test(t)) return `<h3>${t.replace(/^#{1,3} /, '')}</h3>`;
+    return `<p>${t.replace(/\n/g, '<br>')}</p>`;
+  }).join('');
+}
+const slide = (text, emptyMsg) => text ? `<div class="slide">${md(text)}</div>` : `<div class="slide empty">${emptyMsg}</div>`;
+
+function cardHtml(c) {
+  const a = answers[c.id] || {};
+  const opts = c.kind === 'pair' ? ['A', 'B', 'Both fine', 'Neither'] : c.options;
+  let mid = '';
+  if (c.kind === 'pair') {
+    mid = `${c.before ? `<details><summary>Slide before</summary>${slide(c.before)}</details>` : ''}
+      <div class="ab"><div><div class="label">A</div>${slide(c.a, 'No slide here in this version.')}</div>
+      <div><div class="label">B</div>${slide(c.b, 'No slide here in this version.')}</div></div>
+      ${c.after ? `<details><summary>Slide after</summary>${slide(c.after)}</details>` : ''}`;
+  } else {
+    mid = `${c.said ? `<ul class="said">${c.said.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>` : ''}
+      <div><div class="label">${c.alt ? 'NOW' : 'TEXT'}</div>${slide(c.text)}</div>
+      ${c.alt ? `<div><div class="label">NEUTRAL VERSION</div>${slide(c.alt)}</div>` : ''}`;
+  }
+  return `<article class="card${a.choice || a.steer ? ' answered' : ''}" id="card-${c.id}">
+    <div class="top"><span class="group">${esc(c.group)}</span><span class="where">${esc(c.where)}</span>${a.choice || a.steer ? '<span class="pill">Answered</span>' : ''}</div>
+    <p class="ask">${esc(c.ask)}</p>${mid}
+    <div class="opts" role="radiogroup">${opts.map((o, i) => `<label class="opt"><input type="radio" name="o-${c.id}" id="o-${c.id}-${i}" value="${esc(o)}" ${a.choice === o ? 'checked' : ''}>${esc(o)}</label>`).join('')}</div>
+    <textarea id="s-${c.id}" placeholder="Steer, in your own words (optional)">${esc(a.steer || '')}</textarea>
+    <div class="row"><button class="save" data-id="${c.id}">Save</button><span class="status" id="st-${c.id}">${a.at ? 'Saved ' + new Date(a.at).toLocaleString() : ''}</span></div>
+  </article>`;
+}
+
+const groups = ['All', ...new Set(CARDS.map((c) => c.group))];
+function renderTabs() {
+  const done = CARDS.filter((c) => answers[c.id] && (answers[c.id].choice || answers[c.id].steer)).length;
+  document.getElementById('tabs').innerHTML = groups.map((g) => `<button class="tab" aria-pressed="${g === filter}" data-g="${esc(g)}">${esc(g)}</button>`).join('') +
+    `<span class="count">${done} of ${CARDS.length} answered</span>`;
+}
+function render() {
+  renderTabs();
+  document.getElementById('cards').innerHTML = CARDS.filter((c) => filter === 'All' || c.group === filter).map(cardHtml).join('');
+}
+document.getElementById('tabs').addEventListener('click', (e) => { const g = e.target.closest('.tab'); if (g) { filter = g.dataset.g; render(); } });
+document.getElementById('cards').addEventListener('click', async (e) => {
+  const b = e.target.closest('.save'); if (!b) return;
+  const id = b.dataset.id, st = document.getElementById('st-' + id);
+  const picked = document.querySelector(`input[name="o-${id}"]:checked`);
+  const doc = { choice: picked ? picked.value : '', steer: document.getElementById('s-' + id).value.trim(), at: new Date().toISOString() };
+  if (!doc.choice && !doc.steer) { st.textContent = 'Pick an option or write a steer first.'; return; }
+  try { localStorage.setItem('calls-' + id, JSON.stringify(doc)); } catch (_) {}
+  if (!db) { answers[id] = doc; st.textContent = 'Kept in this browser only. Saving to the shared record is not available here.'; renderTabs(); return; }
+  b.disabled = true; st.textContent = 'Saving…';
+  try { await db.doc('calls/' + id).set(doc); answers[id] = doc; render(); document.getElementById('st-' + id).textContent = 'Saved'; }
+  catch (err) { st.textContent = 'Could not save: ' + (err && err.message || err) + '. Your text is still in the box.'; b.disabled = false; }
+});
+
+for (const c of CARDS) { try { const v = localStorage.getItem('calls-' + c.id); if (v) answers[c.id] = JSON.parse(v); } catch (_) {} }
+render();
+
+(async () => {
+  const note = document.getElementById('dbnote');
+  db = window.claude ? await window.claude.use('db') : null;
+  if (!db) { note.hidden = false; note.textContent = 'The shared record is not reachable in this view, so answers stay in this browser. Open the page signed in on claude.ai to save them.'; return; }
+  const timer = setTimeout(() => { note.hidden = false; note.textContent = 'Still loading saved answers…'; }, 10000);
+  db.collection('calls').onSnapshot((snap) => {
+    clearTimeout(timer); note.hidden = true;
+    for (const d of snap.docs) answers[d.id] = d.data();
+    render();
+  }, () => { clearTimeout(timer); note.hidden = false; note.textContent = 'Saved answers could not be loaded. New saves may still work.'; });
+})();
+</script>

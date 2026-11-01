@@ -1,0 +1,55 @@
+# Module 7 quality loop: baseline, three rewrites, scored, blind calls
+
+One pass of the improvement loop on Agents 101 Module 7 (*From Personal to Team*: module page, three exercises, lecture *Access is not absorption*). Student text in `curriculum/` is untouched; variants live as `variants/<v>.diff` and are rebuilt by `apply.py`. Which variant ships is the maintainer's call on the calls page.
+
+## Variants
+
+| | What changed | Words (M7 prose) | Sentences/slide (median) |
+|---|---|---|---|
+| v0 | shipped text | 2363 | 6 |
+| v1 | light cut under the taste rules: narrator lines ("You felt this an hour ago"), cartography, the explained prompt, "worth being plain about why"; merged "the one piece you don't decide" | 2026 | 5 |
+| v2 | v1 + scar story 1 in the open lecture slot, as drafted by the taste thread (closes on the cause line) | 2198 | 6 |
+| v3 | v2 + deeper cuts (interface piece, Polanyi, third outcome, "shopping vs design" line) + scar closes on the maintainer's own "human principle" line | 2092 | 5 |
+
+## Scores
+
+| | Story judge (frame / narrative / POV / stance, median of 3 opus) | mean4 | Register | Taste judge vs v0 (variant / original / flip) | Students: enjoyment · tell-a-colleague · recommend · learning hits (of 6) |
+|---|---|---|---|---|---|
+| damaged copy | not judged | | | | 4.4 · 4.7 · 5.8 · 3.0 |
+| v0 | 74 / 55 / 38 / 76 | 61 | 64 | | 4.3 · 5.3 · 5.8 · 3.7 |
+| v1 | 78 / 60 / 42 / 80 | 65 | 68 | 6 / 0 / 3 | 4.3 · 7.0 · 6.2 · 3.5 |
+| v2 | 78 / 62 / 72 / 81 | 73 | 71 | 7 / 1 / 3 | 4.4 · 7.3 · 6.2 · 3.2 |
+| v3 | 80 / 66 / 78 / 82 | 77 | 70 | 9 / 0 / 3 | 4.4 · 6.8 · 6.5 · 3.2 |
+
+Taste judge head to head v2 vs v3: v3 wins 5 of 6 slides; the scar closer (cause line vs human-principle line) flips with order.
+
+Module-scoped story judge, not comparable to the training-wide rubric's 78.
+
+## Read
+
+- **The scar story is the only change every instrument sees.** POV 38 → 72/78 on the story judge. On the persona panel it is the peak beat: 12 of 12 runs tag it surprise or unease, enjoyment 6–7, and every run would tell a colleague. Ingrid maps it onto her own proposal ("That could happen to my pricing proposal").
+- **Cuts move the judges, not the students.** v1 lifts the story judge 4 points and the taste judge prefers it slide by slide. Student numbers do not move.
+- **The student numbers fail the blind check on M7.** The damaged copy (four lecture beats removed, generic padding added) scores the same enjoyment as v0 (4.4 vs 4.3) and loses under one learning hit. This matches the M4 pilot: the 1–7 mean is not a signal. Use the words (peak beats, take-homes) instead.
+- **The module's namesake law does not land.** "Access is not absorption" shows up in 2 of 6 take-homes in every variant, the damaged copy included. The missing-name and switch-test learnings land 5–6 of 6. Next loop target: the absorption beats, not more cuts.
+- **Sentence checks** (`flags.js`): narrator 15 → 5–6 per 1000 sentences, which beats AE101's 8. 2 of 3 flags on v0 are false positives ("you just", "you already" in a quoted push-back and a general claim). No put-downs in M7.
+- **Taste judge bias holds.** It picks the shorter side whenever the two sides differ. The three slides where it flips with order are the useful ones for the maintainer's calls.
+
+## Calls page (blind cards)
+
+`calls/`: Antti's single answer page, https://claude.ai/artifact/PncztnydEUWRz8WXkWAFVr. 25 cards: 9 blind M7 pairs (6 v2 vs v3, 3 judge-split v0 vs v1), scar story 1 and 2 placement, the 5 flagged loaded lines, the 9 open M4 sentence candidates. `cards.key.json` holds each pair's hidden key and the judge's prediction (`v3` or `split`). Answers land in the page's db collection `calls`, one doc per card id `{choice, steer, at}`. Read them with `ArtifactData list --collection calls`. Agreement with the taste judge = the share of `pair` cards where Antti's pick matches `judge` (splits excluded). The bar is near his 83% self-agreement.
+
+Rebuild: `python3 calls/build-cards.py <lab> calls /mnt/project-files/language/m4-rewrite-candidates.md && python3 calls/build-page.py`, then republish `calls/calls.html`.
+
+## Reproduce
+
+Lab = a checkout of main plus `curriculum/evals/mechanical/persona-student/` from branch `claude/project-thread-0bz5uq` (not on main yet), with `modules/personal-to-team.json` copied in from here. `damage.js` there needs one line to read `mod.damage.pad`. Its built-in padding is about AI security, which would make the M7 damaged copy too easy to spot.
+
+1. `cp -a lab lab-vN && python3 apply.py lab-vN vN` for v1–v3.
+2. `page.sh personal-to-team pages-vN.md`; `damage.js` on v0 for the blind copy.
+3. `run-students.sh <lab> <page> <label> <out>`: ingrid, cfo-sceptic, cto-builder, 2 repeats each, page-only (no live tmux in the cloud sandbox).
+4. `score.js --module personal-to-team --match` over all logs.
+5. `story-judge.js <page> <out> 3`.
+6. `build-pairs.py <labdir> <out> [base] [variants]`, then `pairs.js --rules taste-rules-v1.md` on the blind and swapped files.
+7. `flags.js <lab>` per variant.
+
+Known limit: when `pairs.js` runs a batch of 6 it sometimes returns 0 picks. `PAIRS_BATCH=2` works.

@@ -7,7 +7,7 @@
 //   node pairs.js --blind pairs.blind.jsonl --out picks.jsonl \
 //        [--persona-dir DIR --persona ID]   (omit for the plain-judge reader)
 //        [--rules taste.md]                 (maintainer's stated taste, prepended)
-//        [--examples taste-examples.md]     (maintainer's past calls with reasons + reference frames)
+//        [--examples taste-examples.md[,more.md]] (maintainer's past calls with reasons + reference frames; comma-separated)
 const fs = require('fs');
 const { loadPersona, askJson } = require('./lib');
 
@@ -15,7 +15,7 @@ const a = Object.fromEntries(process.argv.slice(2).reduce((acc, v, i, arr) =>
   (v.startsWith('--') ? acc.concat([[v.slice(2), arr[i + 1]]]) : acc), []));
 const pairs = fs.readFileSync(a.blind, 'utf8').trim().split('\n').map(JSON.parse);
 const persona = a.persona ? loadPersona(a['persona-dir'], a.persona) : null;
-const examples = a.examples ? `\n\n${fs.readFileSync(a.examples, 'utf8')}` : '';
+const examples = a.examples ? a.examples.split(',').map((f) => `\n\n${fs.readFileSync(f, 'utf8')}`).join('') : '';
 const rules = a.rules ? `\n\nThe course author's taste, in their own words. Apply it:\n${fs.readFileSync(a.rules, 'utf8')}` : '';
 const BATCH = Number(process.env.PAIRS_BATCH || 12);
 

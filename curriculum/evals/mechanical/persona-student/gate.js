@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 'use strict';
+// RETIRED 2026-11-01: on 150 of Antti's own AE101 cuts it fired 43 times and was right 3
+// (runs/2026-11-01-ae101-history-cuts). The three jobs stay as notes in taste-rules.md, not an override.
 // gate.js — step one of the two-step taste judge. For each pair, decide only whether the LONGER
 // version's extra text does one of three jobs the maintainer keeps longer text for. Output
 // {id, gate:"keep_longer"|"fall_through", longer:"a"|"b", why}. Step two (pairs.js) decides the rest;

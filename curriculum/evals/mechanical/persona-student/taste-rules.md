@@ -1,6 +1,6 @@
-# Maintainer taste rules (v2, 2026-11-01)
+# Maintainer taste rules (v3, 2026-11-01)
 
-Source: Taste Studio answers (past-call rationales, blind picks, triads, teach-back) and curriculum/taste-notes.md. Use with `pairs.js --rules taste-rules.md`. Frames and point of view are from AE101, the calibrated reference.
+Source: Taste Studio answers (past-call rationales, blind picks, triads, teach-back), curriculum/taste-notes.md, and the author's own AE101 cut sessions (2026-08-05, 08-25, 08-29). Use with `pairs.js --rules taste-rules.md`. Frames and point of view are from AE101, the calibrated reference.
 
 ## Stance
 - Students are adult, self-motivated professionals. Never make them helpless or passive: no sentence where things happen to them, where they must wait, or where someone has to hand them something.
@@ -15,7 +15,7 @@ Source: Taste Studio answers (past-call rationales, blind picks, triads, teach-b
 
 ## Length
 - Fewer words read faster. Agents 101 runs long on sentences per slide, not on sentence length, so cut whole low-value sentences: forward hints, closers, restatements. Simple, but with deep theory underneath.
-- Longer wins only when the extra words carry the author's own rough first-person voice (used sparingly), a permission or experiment framing that lands twice with its why, orientation at a window switch, or repetition that steers toward a new mindset. Not for routine steps.
+- Default: the shorter version wins when the difference is a removed sentence or clause. The author cuts orientation repeats, counts and objection-answers freely; he keeps one only on a specific line, for a reason he states (an M1 opener, a permission line, his own rough first-person voice). Do not protect a sentence just because it orients, counts or reassures.
 
 ## Words
 - Verb precision: "read" implies reading all of it, and so does "check"; prefer "spot-check" where that is the act.
@@ -28,3 +28,18 @@ Source: Taste Studio answers (past-call rationales, blind picks, triads, teach-b
 - Teach 3–6 months ahead: what the best practitioners are just getting repeatedly working, plus a few staples. Offer the advanced option on basic steps.
 - Hands-on as soon as possible; heavier theory after.
 - No untrue or always-true-only-sometimes claims.
+
+## Cuts the author makes himself
+- Invented terms become plain words: a word the training coined ("governor", "a boundary fires", "rails", "the three-pattern") loses to the everyday word that says what happens ("question", "what catches problems").
+- The clever line after the point goes: an aphorism, kicker or slogan that closes a bullet already made ("X is an artifact, not a feeling").
+- A metaphor for a literal act becomes the literal act ("leave the room" becomes "continue without you at the keyboard").
+- Duty framing becomes permission: "you owe", "you need to", "the whole obligation" become "is enough", "you do not need", or a plain imperative.
+- A count becomes a frame the student controls when the number does no memory work ("three behaviors" becomes "the machine can be steered").
+- Hyperbole and superlatives give way to the precise claim ("the cheapest gate you will ever run", "what no benchmark can").
+- A slide or sentence about the course itself goes: where a move sits on the map, who the training is for, what is coming next, how the training was built.
+- The third example goes when two already show the mechanism.
+- Open on what the student does (the prompt, the demo), not on a description of it.
+
+## Additions the author makes
+- A clause that makes a claim true wins over the shorter overclaim ("can run for hours" with its condition beats "runs for hours").
+- Name the actor: "The LLM answers in essays" beats "It answers in essays"; a concrete subject beats an abstract one.

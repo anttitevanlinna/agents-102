@@ -47,3 +47,30 @@ python3 score_history.py history.key.jsonl history.blind.jsonl \
 ```
 
 `rules+ex` is `pairs.js --rules taste-rules.md --examples taste-examples.md`. None of these pairs are in the examples file, so the set stays a test set; keep it out of `taste-examples.md`.
+
+## v3: the judge learns the cut patterns (holdout)
+
+`taste-rules.md` v3 adds two sections, "Cuts the author makes himself" and "Additions the author makes". Its Length section now says the shorter version wins by default, and that orientation repeats, counts and objection-answers get no protection as a class. `taste-examples-cuts.md` holds 17 of his cuts, all taken from the train half (`build_cut_examples.py`). `split.py` splits the 150 pairs per session by md5 order into 74 train and 76 holdout. Three holdout pairs (`holdout-leaked.json`) contain a phrase that the v3 rules quote; the "clean" row leaves them out. The gate is retired; see the header of `gate.js`.
+
+Both orders; noise is about ±5, and n=76 adds about ±5 of sampling error.
+
+| holdout group | n | always-shorter | v2 rules+examples | v3 |
+|---|---|---|---|---|
+| ALL | 76 | 79% | 79% | **87%** |
+| clean (leaked 3 removed) | 73 | | 78% | 86% |
+| gold | 37 | 78% | 85% | 89% |
+| silver | 39 | 79% | 73% | 85% |
+| 07-09 voice pass | 13 | 85% | 85% | 88% |
+| 08-05 line-read | 19 | 63% | 89% | 89% |
+| 08-12–14 sweeps | 18 | 89% | 67% | 89% |
+| 08-18–25 trims | 8 | 50% | 69% | 69% |
+| 08-25 called cuts | 6 | 100% | 75% | 92% |
+| 08-29 compaction | 12 | 92% | 83% | 88% |
+| kept side longer | 10 | 0% | 55% | 50% |
+
+What changed:
+
+- v3 beats always-shorter by 8 points overall. Most of the gain is on the cut sessions, where v2 had been keeping longer text that he cut (08-12–14: 67% to 89%; 08-25: 75% to 92%).
+- When he kept the longer side, v3 is still a coin flip (5 of 10).
+- On the old 45-pair holdout, where he often refused a cut, v3 scores 61%, the same as v2. The "shorter by default" line did not cost the refusals.
+- The AE101 anchor scores 35 and 36 of 36 (99%) and is stable, against 96% before.

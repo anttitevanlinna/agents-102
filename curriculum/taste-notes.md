@@ -23,6 +23,14 @@ Append-only stream of editorial calls made on real curriculum text. **Newest at 
 
 ---
 
+## 2026-11-01 — the scar story, dictated
+
+The first-person incident the point-of-view score was missing. It was dictated in four parts; the raw transcript is in the project files as `agents-101-taste/scar-story-raw.md`. The facts, in Antti's order: at the start of 2026 he set out to redesign a whole value stream with agents, aiming for tangible business results. The slice chosen with senior leadership was the one that takes the company's flagship product to its millions of customers, a flow that runs through many teams. He built a multi-user, multi-agent system for it, the Workflow Architect. About 15 contributors mapped their own part and uploaded their own documents. A central synthesizer agent ran value stream mapping across all of it. Day one of the workshop: 12 people refined the current state. *"Everybody had fun. People bit by bit, like, learned how it works."* Day two: a smaller group reimagined the flow and reached a plausible proposal with the analysis ready for an investment decision. At the leadership meeting *"the urgency of the need and then the change had pretty much vanished. New priorities had come up… the proposal, as good as it was, got a non-decision, that it was neither yes or no."*
+
+What he takes from it: *"I know how easy it is to analyze without the commitment to act."* Too much work in flight leaves no room to react *"when good stuff happens"*. The analysis was done by people the leadership trusted, *"but still it was not their own analysis."* *"Companies, even when we are going agentic, they work first and foremost with the human principle."*
+
+Fit: the Module 7 fallback scar slot in `access-is-not-absorption.md` (a thing the narrator built, given to people with reason to want it, that went unused), not the Module 4 door-shaped slot.
+
 ## 2026-11-01 — Taste Studio, the reasons behind fourteen past calls
 
 Fourteen past calls where every simulated reader picked the other side. Antti wrote the reason for each one. Raw answers: `curriculum/evals/mechanical/persona-student/taste-studio/answers-2026-11-01/`.

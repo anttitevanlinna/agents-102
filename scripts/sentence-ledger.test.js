@@ -103,3 +103,13 @@ test('narrator flag: the page telling the student what they felt', () => {
   const n = flagRows(rows).filter(f => f.reasons.some(r => r.startsWith('narrator'))).map(f => f.text);
   assert.deepStrictEqual(n, ['You felt context move.', 'The unease you feel is normal, and your gut agrees.']);
 });
+
+test('voice lock: banned words fire on the maintainer calls, not on literal uses', () => {
+  const { BANNED } = require('./check-new-sentences.js');
+  const hit = s => BANNED.filter(([re]) => re.test(s)).map(([, n]) => n);
+  assert.deepStrictEqual(hit('Module 1 lands the muscle.'), ['muscle', 'lands (metaphor)']);
+  assert.deepStrictEqual(hit('Hand them the agent file.'), ['agent file (invented concept)']);
+  assert.deepStrictEqual(hit('Push back until you will actually read it on Monday.'), ['actually read', 'Monday']);
+  assert.deepStrictEqual(hit('The file lands in the module-1 folder.'), []);
+  assert.deepStrictEqual(hit('The agent reads the file at session start.'), []);
+});

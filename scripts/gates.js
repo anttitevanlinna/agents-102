@@ -34,6 +34,7 @@ const GATES = [
   'scripts/check-owner-paths.js',
   'scripts/lint-prompts.js',
   'scripts/check-locked-sentences.js',
+  'scripts/check-new-sentences.js',     // voice lock: new sentences vs curriculum/language/sentence-index.json
   'scripts/check-generated-registries.js --ref HEAD',   // the last commit's prompts.json / figures.json match its sources (pre-commit checks the index)
   `${EVALS}/check-instance-names.js`,
   `${EVALS}/check-trace-names.js --quiet`,

@@ -21,3 +21,7 @@ Patterns the maintainer named while answering blind pairs and sentence cards. Ea
 
 Overall rating 2026-11-01: Agents 101 language about 3 of 5, with bad language well outside the pairs shown.
 17. Glanceable. The main training UX is Claude Code plus the prompts; the handbook is a secondary map of what to do next. Valid writing is still too wordy: compact, then compact again, as AE101 was. Yardstick: AE101 exercise slides median 66 words of prose (Agents 101: 109).
+18. A closing sentence that adds little once the point is made goes.
+19. No human verbs for what people grant agents ("Agents don't 'earn' autonomy").
+20. A metaphor must fit its noun: "map is not a place to hang nor a container. Map is map."
+21. A card without enough context gets "Neither": calls need the surrounding slide, not just the changed span.

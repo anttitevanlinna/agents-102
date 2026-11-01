@@ -38,6 +38,9 @@ Source: Taste Studio answers (past-call rationales, blind picks, triads, teach-b
 - Hyperbole and superlatives give way to the precise claim ("the cheapest gate you will ever run", "what no benchmark can").
 - A slide or sentence about the course itself goes: where a move sits on the map, who the training is for, what is coming next, how the training was built.
 - The third example goes when two already show the mechanism.
+- A closing sentence that adds little once the point is made goes, even when it is not clever (calls page 2026-11-01).
+- No human verbs for what people grant agents: agents do not "earn" autonomy; the person gives it.
+- A metaphor must fit its noun or go: a map is a map, not a "container" or a "place to hang moves". If no word fits, use the plain noun.
 - Open on what the student does (the prompt, the demo), not on a description of it.
 
 ## Additions the author makes

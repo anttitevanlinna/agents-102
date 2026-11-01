@@ -38,6 +38,20 @@ for i, (rel, h, judge) in enumerate([
 for i, (rel, h) in enumerate([(MOD, "Debrief"), (LEC, "(opening)"), (LEC, "The one piece you don't decide")]):
     pair(f"m7-pair-{i+7}", rel, h, "v0", "v1", ASK_23 + " The judges split on this one.", "split")
 
+# Round 2: the regenerated variant v7 (from strategy input + rules, exercises fixed) lands
+# "access is not absorption" best; the taste judge splits on it. Whole lecture v4 vs v7, then
+# the slides where the judge split, original (v0) vs v7.
+if (lab / "v7").exists():
+    lec = lambda v: (lab / v / "curriculum" / LEC).read_text().split("<!-- maintainer -->")[0].strip()
+    flip = rng.random() < 0.5
+    cards.append({"id": "m7-r2-lecture", "kind": "pair", "group": "Module 7 round 2", "where": "Lecture: Access is not absorption · whole lecture",
+      "ask": "Two whole closing lectures. One is your current lecture after edits; the other was regenerated from your strategy input and the rules, with the exercises fixed. Which one goes in front of the room?",
+      "before": "", "after": "", "a": lec("v7") if flip else lec("v4"), "b": lec("v4") if flip else lec("v7")})
+    key["m7-r2-lecture"] = {"variant": "v7", "base": "v4", "variant_is": "a" if flip else "b", "judge": "story: v4 76 vs v7 75; students carry the law 3/6 vs 6/6"}
+    for i, (rel, h) in enumerate([(MOD, "Big Idea"), (MOD, "Debrief"), (MOD, "Bring to Module 8"), (LEC, "(opening)"), (LEC, "Each strategy puts absorption somewhere else")]):
+        pair(f"m7-r2-{i+1}", rel, h, "v0", "v7", ASK_23 + " The taste judge split on this one.", "split")
+        cards[-1]["group"] = "Module 7 round 2"
+
 SCAR = body("v2", LEC, "The analysis was ready. The decision never came.")
 cards.append({"id": "scar-1-placement", "kind": "choice", "group": "Scar stories",
   "where": "Lecture: Access is not absorption · after \"This is the interface piece\"",

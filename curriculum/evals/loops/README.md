@@ -23,4 +23,4 @@ Needs `curriculum/evals/mechanical/persona-student/modules/<module>.json` (mood 
 
 Read the damaged row first. If it does not score clearly worse than v0 on the word columns, that instrument is blind on this module and its numbers should not rank anything.
 
-The only module run so far is `m7/`: variants, results, and the maintainer's calls page.
+Runs so far: `m7/` (variants, results, the maintainer's calls page) and `language-sweep/` (before and after the sentence sweep on three modules).

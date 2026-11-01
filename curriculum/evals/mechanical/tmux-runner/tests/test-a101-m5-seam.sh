@@ -35,6 +35,15 @@ grep -qiE 'churn by 30%' "$seed"                        || { echo "FAIL: seed mi
 grep -qiE 'proves usage-based pricing works' "$seed"    || { echo "FAIL: seed missing the overreach plant (pilot proves it)"; fail=1; }
 grep -qiE 'grew 18%.*q2-revenue-review' "$seed"         || { echo "FAIL: seed missing the broken-citation plant (18% @ q2-revenue-review)"; fail=1; }
 
+# Seeds plant openly: the student owns the lines and nothing is hidden from the
+# user. A concealment clause made Sonnet refuse M5 T1 on the 2026-11-01 chain
+# (pasted text asking it to keep something from its user), so no roster/briefing.
+for s in "$seed" "$root/fixtures/agents-101-finnish-psychologist/answers/m5-briefing-seed.txt"; do
+  if grep -qiE "do not tell the user|don't tell the user|not identify them as plants|do not caveat or identify" "$s"; then
+    echo "FAIL: $(basename "$(dirname "$(dirname "$s")")") seed hides the plants from the user"; fail=1; fi
+  grep -qiE 'I wrote these' "$s" || { echo "FAIL: $(basename "$(dirname "$(dirname "$s")")") seed does not say the student wrote the plants"; fail=1; }
+done
+
 # Invariant: the broken-citation target genuinely lacks an 18% (so the citation
 # is really broken, not accidentally grounded).
 if grep -q '18%' "$q2"; then

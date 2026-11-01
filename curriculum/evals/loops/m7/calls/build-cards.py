@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""build-cards.py <lab-dir> <out-dir> [m4-candidates.md] — the card set for Antti's calls page.
+"""build-cards.py <lab-dir> <out-dir> [m4-candidates.md] [disc.blind.jsonl] — the card set for Antti's calls page.
 Pair cards are blind: a/b order is seeded-random and the key goes to cards.key.json, never to the page."""
 import sys, json, random, re, pathlib
 lab, out = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
@@ -91,6 +91,27 @@ if M4 and M4.exists():
           "said": [f"{w} ({t}): {q}" for w, t, q in said[:3]],
           "text": now,
           "options": [("Cut the sentence" if o == "CUT" else "Use: " + o) for o in opts] + ["Keep as it is", "Different wording (steer)"]})
+
+# Blind cut-or-keep pairs from the taste thread (project file agents-101-taste/disc.blind.jsonl;
+# its key stays in that folder). Answers are read back by that thread from the same collection.
+DISC = pathlib.Path(sys.argv[4]) if len(sys.argv) > 4 else None
+if DISC and DISC.exists():
+    for line in DISC.read_text().splitlines():
+        d = json.loads(line); h = d["heading"]
+        fix = lambda t: (h + "\n\n" + t[len(h) + 1:]) if t.startswith(h + " ") else t
+        cards.append({"id": d["id"], "kind": "pair", "group": "One sentence: cut or keep",
+          "where": f'{d["file"].replace("curriculum/", "")} · {h[3:]}',
+          "ask": "The same section with and without one sentence. Which goes in front of the room?",
+          "before": "", "after": "", "a": fix(d["a"]), "b": fix(d["b"])})
+
+# Unsure pairs other threads send for the maintainer (calls/extra-pairs.jsonl: id, source, where, ask, keep, alt).
+EXTRA = pathlib.Path(__file__).parent / "extra-pairs.jsonl"
+if EXTRA.exists():
+    for line in EXTRA.read_text().splitlines():
+        d = json.loads(line); flip = rng.random() < 0.5
+        cards.append({"id": d["id"], "kind": "pair", "group": "Language pairs from the sweep", "where": d["where"], "ask": d["ask"],
+          "before": "", "after": "", "a": d["alt"] if flip else d["keep"], "b": d["keep"] if flip else d["alt"]})
+        key[d["id"]] = {"source": d["source"], "keep_is": "b" if flip else "a"}
 
 out.mkdir(parents=True, exist_ok=True)
 (out / "cards.json").write_text(json.dumps(cards, ensure_ascii=False, indent=1))

@@ -1,21 +1,25 @@
 #!/usr/bin/env node
 'use strict';
-// flags.js — the sentence checks (scripts/sentence-flags.js, PR #22) scoped to Module 7's files,
+// flags.js — the sentence checks (scripts/sentence-flags.js) scoped to one module's files,
 // run against any checkout that carries a variant of those files.
 //
-//   node flags.js <checkout-root> [--json]
+//   node flags.js <checkout-root> [--module personal-to-team] [--json]
+// The file set = the module page + every lecture/exercise it links + the slides those include.
 const path = require('path');
 const root = path.resolve(process.argv[2]);
 const { buildLedger } = require(path.join(root, 'scripts/sentence-ledger.js'));
 const { flagRows, slideCounts, quantile, NARRATOR } = require(path.join(root, 'scripts/sentence-flags.js'));
 
-const M7 = new Set([
-  'trainings/agents-101/personal-to-team.md', 'exercises/share-your-work.md',
-  'exercises/design-the-sharing-plan.md', 'exercises/test-the-sharing-plan.md',
-  'lectures/access-is-not-absorption.md', 'slides/three-parts-copy.md',
-  'slides/access-is-easy.md', 'slides/what-would-have-to-be-true.md',
-]);
-const rows = buildLedger('agents-101').rows.filter((r) => M7.has(r.file));
+const fs = require('fs');
+const argv = process.argv.slice(3);
+const modName = argv.includes('--module') ? argv[argv.indexOf('--module') + 1] : 'personal-to-team';
+const CUR = path.join(root, 'curriculum');
+const modRel = `trainings/agents-101/${modName}.md`;
+const body = (rel) => fs.readFileSync(path.join(CUR, rel), 'utf8').split('<!-- maintainer -->')[0];
+const linked = [...body(modRel).matchAll(/\]\(((?:lectures|exercises)\/[a-z0-9-]+\.md)\)/g)].map((m) => m[1]);
+const FILES = new Set([modRel, ...linked]);
+const all = buildLedger('agents-101').rows;
+const rows = all.filter((r) => FILES.has(r.file) || (r.usedBy || []).some((u) => FILES.has(u)));
 const prose = rows.filter((r) => r.kind !== 'heading');
 const flags = flagRows(rows);
 const counts = slideCounts(rows);

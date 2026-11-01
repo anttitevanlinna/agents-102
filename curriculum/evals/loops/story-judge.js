@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 'use strict';
-// story-judge.js <page.md> <out.json> [n=3] — module-scoped storytelling judge, n independent opus calls.
+// story-judge.js <page.md> <out.json> [n=3] — module-scoped storytelling judge (same anchors as story-depth-rubric.md), n independent opus calls, medians.
 const fs = require('fs'); const path = require('path'); const { spawn } = require('child_process');
 const [page, out, n = 3] = process.argv.slice(2);
-const prompt = fs.readFileSync(path.join(__dirname, 'story-judge.md'), 'utf8') + fs.readFileSync(page, 'utf8');
+const pageText = fs.readFileSync(page, 'utf8');
+const title = (pageText.match(/^# (.+)$/m) || [, 'this module'])[1];
+const prompt = fs.readFileSync(path.join(__dirname, 'story-judge.md'), 'utf8').replace('{{module}}', title) + pageText;
 const call = () => new Promise((res, rej) => {
   const p = spawn('claude', ['-p', '--model', process.env.JUDGE_MODEL || 'opus', '--output-format', 'text']);
   let o = ''; p.stdout.on('data', (d) => (o += d)); p.on('close', (c) => (c ? rej(new Error('exit ' + c)) : res(o)));

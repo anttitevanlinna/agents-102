@@ -46,6 +46,8 @@ details summary { cursor: pointer; font-size: 0.85rem; color: var(--muted); }
 details .slide { margin-top: 8px; font-size: 0.95rem; opacity: 0.85; }
 .opts { display: flex; flex-wrap: wrap; gap: 8px; }
 .opt { display: flex; gap: 6px; align-items: center; border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; cursor: pointer; font-size: 0.9rem; background: var(--sheet); }
+mark { background: var(--accent-soft); color: inherit; border-bottom: 2px solid var(--accent); padding: 0 1px; }
+.conf .opt { font-size: 0.82rem; padding: 4px 9px; }
 .opt:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
 textarea { width: 100%; box-sizing: border-box; min-height: 64px; font: 0.95rem var(--f-ui); color: var(--ink); background: var(--slide); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; resize: vertical; }
 .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
@@ -59,7 +61,7 @@ textarea { width: 100%; box-sizing: border-box; min-height: 64px; font: 0.95rem 
 <div class="wrap">
   <header style="display:grid;gap:8px">
     <h1>Agents 101 calls</h1>
-    <p class="lede">Every open call in one place. Pick an option, or write a steer in your own words, and press Save. A steer alone is a full answer. Pairs are blind: the labels A and B say nothing about which version is new.</p>
+    <p class="lede">Every open call in one place. Pick an option, or write a steer in your own words, and press Save. A steer alone is a full answer. Pairs are blind: the labels A and B say nothing about which version is new. Highlighted words are the only difference.</p>
   </header>
   <div class="bar" id="tabs" role="toolbar" aria-label="Filter calls"></div>
   <p class="note" id="dbnote" hidden></p>
@@ -82,11 +84,27 @@ function md(text) {
       .replace(/\[([^\]]+)\]\([^)]+\)/g, '<em>[$1]</em>')
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
       .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-      .replace(/`([^`]+)`/g, '<code>$1</code>');
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      .replace(/\u27E6/g, '<mark>').replace(/\u27E7/g, '</mark>').replace(/<\/mark>(\s*)<mark>/g, '$1');
     if (!t) return '';
     if (/^#{1,3} /.test(t)) return `<h3>${t.replace(/^#{1,3} /, '')}</h3>`;
     return `<p>${t.replace(/\n/g, '<br>')}</p>`;
   }).join('');
+}
+function diffMark(a, b) {
+  // Word-level LCS; returns [aHtml-ready text with ⟦ ⟧ marks, same for b].
+  const A = a.split(/(\s+)/), B = b.split(/(\s+)/);
+  if (A.length * B.length > 4e6) return [a, b];
+  const n = A.length, m = B.length, L = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
+  for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--) L[i][j] = A[i] === B[j] ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
+  let i = 0, j = 0, ra = '', rb = '';
+  const wrap = (t) => (/^\s+$/.test(t) ? t : `⟦${t}⟧`);
+  while (i < n && j < m) {
+    if (A[i] === B[j]) { ra += A[i]; rb += B[j]; i++; j++; }
+    else if (L[i + 1][j] >= L[i][j + 1]) ra += wrap(A[i++]); else rb += wrap(B[j++]);
+  }
+  while (i < n) ra += wrap(A[i++]); while (j < m) rb += wrap(B[j++]);
+  return [ra, rb];
 }
 const slide = (text, emptyMsg) => text ? `<div class="slide">${md(text)}</div>` : `<div class="slide empty">${emptyMsg}</div>`;
 
@@ -95,9 +113,10 @@ function cardHtml(c) {
   const opts = c.kind === 'pair' ? ['A', 'B', 'Both fine', 'Neither'] : c.options;
   let mid = '';
   if (c.kind === 'pair') {
+    const [da, db] = c.a && c.b ? diffMark(c.a, c.b) : [c.a, c.b];
     mid = `${c.before ? `<details><summary>Slide before</summary>${slide(c.before)}</details>` : ''}
-      <div class="ab"><div><div class="label">A</div>${slide(c.a, 'No slide here in this version.')}</div>
-      <div><div class="label">B</div>${slide(c.b, 'No slide here in this version.')}</div></div>
+      <div class="ab"><div><div class="label">A</div>${slide(da, 'No slide here in this version.')}</div>
+      <div><div class="label">B</div>${slide(db, 'No slide here in this version.')}</div></div>
       ${c.after ? `<details><summary>Slide after</summary>${slide(c.after)}</details>` : ''}`;
   } else {
     mid = `${c.said ? `<ul class="said">${c.said.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>` : ''}
@@ -108,7 +127,8 @@ function cardHtml(c) {
     <div class="top"><span class="group">${esc(c.group)}</span><span class="where">${esc(c.where)}</span>${a.choice || a.steer ? '<span class="pill">Answered</span>' : ''}</div>
     <p class="ask">${esc(c.ask)}</p>${mid}
     <div class="opts" role="radiogroup">${opts.map((o, i) => `<label class="opt"><input type="radio" name="o-${c.id}" id="o-${c.id}-${i}" value="${esc(o)}" ${a.choice === o ? 'checked' : ''}>${esc(o)}</label>`).join('')}</div>
-    <textarea id="s-${c.id}" placeholder="Steer, in your own words (optional)">${esc(a.steer || '')}</textarea>
+    ${c.kind === 'pair' ? `<div class="opts conf" role="radiogroup" aria-label="How sure">${['sure', 'leaning', 'coin flip'].map((o, i) => `<label class="opt"><input type="radio" name="c-${c.id}" id="c-${c.id}-${i}" value="${o}" ${a.conf === o ? 'checked' : ''}>${o}</label>`).join('')}</div>` : ''}
+    <textarea id="s-${c.id}" placeholder="${c.kind === 'pair' ? 'Why, in one line (optional)' : 'Steer, in your own words (optional)'}">${esc(a.steer || '')}</textarea>
     <div class="row"><button class="save" data-id="${c.id}">Save</button><span class="status" id="st-${c.id}">${a.at ? 'Saved ' + new Date(a.at).toLocaleString() : ''}</span></div>
   </article>`;
 }
@@ -128,7 +148,8 @@ document.getElementById('cards').addEventListener('click', async (e) => {
   const b = e.target.closest('.save'); if (!b) return;
   const id = b.dataset.id, st = document.getElementById('st-' + id);
   const picked = document.querySelector(`input[name="o-${id}"]:checked`);
-  const doc = { choice: picked ? picked.value : '', steer: document.getElementById('s-' + id).value.trim(), at: new Date().toISOString() };
+  const conf = document.querySelector(`input[name="c-${id}"]:checked`);
+  const doc = { choice: picked ? picked.value : '', conf: conf ? conf.value : '', steer: document.getElementById('s-' + id).value.trim(), at: new Date().toISOString() };
   if (!doc.choice && !doc.steer) { st.textContent = 'Pick an option or write a steer first.'; return; }
   try { localStorage.setItem('calls-' + id, JSON.stringify(doc)); } catch (_) {}
   if (!db) { answers[id] = doc; st.textContent = 'Kept in this browser only. Saving to the shared record is not available here.'; renderTabs(); return; }

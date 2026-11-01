@@ -1,4 +1,4 @@
-You are the storytelling judge for one module of Agents 101, a training for builder leaders (CEO, CTO, HR lead) who build and run their own agent. Below is the student's view of Module 7, "From Personal to Team": module page, its three exercises and its closing lecture, in student order. Prompt markers `{{prompt:key}}` are unexpanded on purpose; judge the page, not the prompt bodies.
+You are the storytelling judge for one module of Agents 101, a training for builder leaders (CEO, CTO, HR lead) who build and run their own agent. Below is the student's view of one module, "{{module}}": the module page with its exercises and lectures, in student order. Prompt markers `{{prompt:key}}` are unexpanded on purpose; judge the page, not the prompt bodies.
 
 Score four factors from 1 to 100 on these anchors (the same anchors the training-wide rubric uses, `curriculum/evals/story-depth-rubric.md`):
 

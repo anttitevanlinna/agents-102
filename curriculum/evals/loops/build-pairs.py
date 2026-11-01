@@ -11,6 +11,11 @@ MODULE = sys.argv[5] if len(sys.argv) > 5 else "personal-to-team"
 _mod = f"trainings/agents-101/{MODULE}.md"
 _body = (lab / BASE / "curriculum" / _mod).read_text().split("<!-- maintainer -->")[0]
 FILES = [_mod] + re.findall(r"\]\(((?:lectures|exercises)/[a-z0-9-]+\.md)\)", _body)
+# Slides the module's files include are part of what the room sees; pair them too.
+for _f in list(FILES[1:]):
+    _p = lab / BASE / "curriculum" / _f
+    if _p.exists():
+        FILES += [f"slides/{x}.md" for x in re.findall(r"\]\(slides/([a-z0-9-]+)\.md\)", _p.read_text().split("<!-- maintainer -->")[0]) if f"slides/{x}.md" not in FILES]
 def chunks(v, rel):
     t = (lab / v / "curriculum" / rel).read_text().split("<!-- maintainer -->")[0]
     parts = re.split(r"(?m)^(?=## )", t)

@@ -13,6 +13,8 @@
 # persona students (PERSONAS, REPEATS), learning match, word signal, story judge (STORY_N opus
 # calls), taste judge pairs vs v0 in both orders, sentence flags. Writes <out-dir>/report.md.
 # Student text in this checkout is never touched; variants live in <out-dir>/lab/<v>.
+# BASE_REV=<rev> makes v0 the text at that revision (instruments always come from this checkout);
+# with rev-apply.py, variants named after revisions compare two points in history.
 set -uo pipefail
 MOD="$1"; APPLY="$2"; VARS="$3"; OUT="$(mkdir -p "$4" && cd "$4" && pwd)"
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"; ROOT="$(cd "$HERE" && git rev-parse --show-toplevel)"
@@ -24,7 +26,7 @@ log() { echo "[loop] $*" >&2; }
 log "lab: $OUT/lab"
 mkdir -p "$OUT"/{lab,pages,students,story,taste,flags}
 if [ ! -d "$OUT/lab/v0" ]; then
-  git -C "$ROOT" worktree add -f --detach "$OUT/lab/v0" HEAD >/dev/null 2>&1 || { log "worktree failed"; exit 1; }
+  git -C "$ROOT" worktree add -f --detach "$OUT/lab/v0" "${BASE_REV:-HEAD}" >/dev/null 2>&1 || { log "worktree failed"; exit 1; }
   # Uncommitted instrument edits in this checkout ride along, so the lab measures what you see.
   cp -a "$ROOT/curriculum/evals/mechanical/persona-student/." "$OUT/lab/v0/curriculum/evals/mechanical/persona-student/"
 fi
@@ -55,6 +57,7 @@ if [ ${#VS[@]} -gt 0 ]; then
   done
 fi
 wait
+[ ${#VS[@]} -gt 0 ] && python3 "$HERE/taste-retry.py" "$OUT/taste" "$PS/pairs.js" "$PS/taste-rules.md" >&2
 
 log "scoring"
 LOGS="$(ls "$OUT"/students/*.json | paste -sd, -)"

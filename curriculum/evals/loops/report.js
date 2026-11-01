@@ -19,7 +19,11 @@ for (const p of order) {
   const ws = w && w.summary[hashOf[p]] || {}, ss = s && s.summary[hashOf[p]] || {};
   L.push(`| ${p} | ${ws.complaints ?? ''} | ${ws.c_filler || 0} | ${ws.c_repetition || 0} | ${ws.c_missing || 0} | ${ws.specific_praise ?? ''} | ${ws.skipped ?? ''} | ${ws.tells ?? ''} | ${ws.law_hits ?? ''} | ${ss.enjoyment ?? ''} | ${ss.learn_hits ?? ''} |`);
 }
-L.push('', 'Damaged-copy check: the damaged row must be clearly worse than v0 on the word columns, or the word signal is blind on this module.', '');
+const modCfg = JSON.parse(fs.readFileSync(path.join(__dirname, '../mechanical/persona-student/modules', `${mod}.json`), 'utf8'));
+const pads = ((modCfg.damage || {}).pad || []).map((t) => t.split('. ')[0].slice(0, 40));
+const dlogs = fs.readdirSync(path.join(out, 'students')).filter((f) => f.startsWith('damaged-') && f.endsWith('.json')).map((f) => J(`students/${f}`));
+const caught = dlogs.filter((d) => (d.beats || []).some((b) => pads.some((p) => (b.trigger || '').includes(p.slice(0, 25)))) || /filler|boilerplate|padding|generic/i.test(d.one_line || '')).length;
+L.push('', `Damaged-copy check: the damaged row must be clearly worse than v0 on the word columns. Added padding caught (a padding sentence quoted as the cause of a reaction, or the verdict calls it filler): ${caught} of ${dlogs.length} damaged runs.`, '');
 const intended = JSON.parse(fs.readFileSync(path.join(__dirname, '../mechanical/persona-student/modules', `${mod}.json`), 'utf8')).intended_learnings.map((x) => x.id);
 L.push('### Which learnings land (runs carrying each, from the word signal)', '', `| page | ${intended.join(' | ')} |`, `|---|${intended.map(() => '---').join('|')}|`);
 for (const p of order) { const laws = (w && w.summary[hashOf[p]] || {}).laws || {}; L.push(`| ${p} | ${intended.map((id) => laws[id] || 0).join(' | ')} |`); }

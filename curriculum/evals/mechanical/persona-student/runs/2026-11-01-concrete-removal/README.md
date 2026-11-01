@@ -13,3 +13,7 @@ The damaged-module check had scored this kind of damage at 88%. That number was 
 Antti's own history argues against a blunt rule. In the 150 history pairs, 17 cuts removed a sentence this detector calls concrete, and Antti chose the shorter side in 13 of them: the cardiologist example, the plan filename, the migration-errors example, a Dex Horthy quote. A "concrete stays" rule would buy about 12 points here and cost agreement with his calls. The narrow wording ("keep the last concrete instance") moves nothing.
 
 Decision: no rule; `taste-rules.md` stays v3. The open question is the label. Antti has not said whether deleting these sentences is damage. Eight of these pairs are sent to the calls page as judge-unsure cards; his answers decide whether this becomes an alert. Until then `check-judge.sh` reports it as a watch, alerting only below 40%. The AE101 anchor keeps its 90% alert.
+
+## Antti's call (2026-11-01 18:19)
+
+On `cc-getting-going-2`, with the full slide shown, he picked neither: *"depends. A is removing callout of prework. B is too wordy."* Read: keep the action, and say it shorter. All 24 pairs in this set are therefore labelled "depends", not "original wins" (`resolutions.json`). The check stays a watch in `check-judge.sh`, alerting only below 40%. It is not damage by default, and it never becomes a hard alert. The writing guidance is in `curriculum/evals/loops/m7/maintainer-language-notes.md` note 22.

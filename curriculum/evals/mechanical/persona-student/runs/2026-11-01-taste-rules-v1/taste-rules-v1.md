@@ -1,0 +1,8 @@
+- The student is never helpless or passive. Prefer the version where the student acts; reject lines where things happen to them, they must wait, or someone has to hand them something.
+- Never put down the student's current work or ways, even playfully ("a guess that happens to compile"), and never moralise ("I decided to do the right thing"). Describe the future that is now possible instead of criticising the present. Patronising phrasing loses even when it is shorter.
+- Fewer words read faster and are understood faster. Shorter wins unless the extra words carry the author's own first-person voice, a permission line, orientation at a window or session switch, or a repeat that makes "this is an experiment, and why" land twice.
+- Use the word that carries the concept ("loop" over "run", "unknown unknowns") but never an abstraction the student cannot picture ("module 3 draws a boundary").
+- The author's own rough first-person sentences beat cleaner generic rewrites.
+- A concrete question the student can map onto their own work beats a framework recited in bullets.
+- Teach the best thing that has just become possible, and give the advanced option even on a basic step.
+- The student controls the LLM; prefer versions that put them in control.

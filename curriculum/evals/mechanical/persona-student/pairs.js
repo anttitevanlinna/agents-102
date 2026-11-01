@@ -6,6 +6,7 @@
 //
 //   node pairs.js --blind pairs.blind.jsonl --out picks.jsonl \
 //        [--persona-dir DIR --persona ID]   (omit for the plain-judge reader)
+//        [--rules taste.md]                 (maintainer's stated taste, prepended)
 const fs = require('fs');
 const { loadPersona, askJson } = require('./lib');
 
@@ -13,6 +14,7 @@ const a = Object.fromEntries(process.argv.slice(2).reduce((acc, v, i, arr) =>
   (v.startsWith('--') ? acc.concat([[v.slice(2), arr[i + 1]]]) : acc), []));
 const pairs = fs.readFileSync(a.blind, 'utf8').trim().split('\n').map(JSON.parse);
 const persona = a.persona ? loadPersona(a['persona-dir'], a.persona) : null;
+const rules = a.rules ? `\n\nThe course author's taste, in their own words. Apply it:\n${fs.readFileSync(a.rules, 'utf8')}` : '';
 const BATCH = Number(process.env.PAIRS_BATCH || 12);
 
 const who = persona
@@ -26,9 +28,9 @@ const picks = [];
 for (let i = 0; i < pairs.length; i += BATCH) {
   const chunk = pairs.slice(i, i + BATCH);
   const body = chunk.map((p) => `### PAIR ${p.id}\n--- A ---\n${p.a}\n--- B ---\n${p.b}`).join('\n\n');
-  const out = askJson(`${who}\n\n${ask}\nThe two versions differ only in part of the text; find the difference first.\n\n${body}\n\nAnswer with one json block: {"picks":[{"id","pick":"a"|"b","why":"one short line"}...one per pair]}`);
+  const out = askJson(`${who}${rules}\n\n${ask}\nThe two versions differ only in part of the text; find the difference first.\n\n${body}\n\nAnswer with one json block: {"picks":[{"id","pick":"a"|"b","why":"one short line"}...one per pair]}`);
   for (const p of out.picks || []) if (chunk.some((c) => c.id === p.id)) picks.push(p);
   process.stderr.write(`[pairs] ${Math.min(i + BATCH, pairs.length)}/${pairs.length}\n`);
 }
-fs.writeFileSync(a.out, picks.map((p) => JSON.stringify({ reader: persona ? `${persona.id}@${persona.hash}` : 'plain-judge', ...p })).join('\n') + '\n');
+fs.writeFileSync(a.out, picks.map((p) => JSON.stringify({ reader: (persona ? `${persona.id}@${persona.hash}` : 'plain-judge') + (a.rules ? '+rules' : ''), ...p })).join('\n') + '\n');
 console.log(`[pairs] ${picks.length}/${pairs.length} picks → ${a.out}`);

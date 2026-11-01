@@ -15,7 +15,7 @@ const a = Object.fromEntries(process.argv.slice(2).reduce((acc, v, i, arr) =>
 const mod = JSON.parse(fs.readFileSync(path.join(__dirname, 'modules', `${a.module}.json`), 'utf8'));
 const { remove = [], pad_after = [] } = mod.damage || {};
 
-const PAD = [
+const PAD = (mod.damage && mod.damage.pad) || [
   'AI security is a rapidly evolving field, and organisations of every size are working out how best to approach it. It is important to stay informed, to follow best practices, and to involve the right stakeholders early. Many frameworks exist, and each has its strengths. The key is to find the approach that works for your organisation and to keep iterating as the landscape changes.',
   'Industry analysts expect agent adoption to accelerate significantly over the coming years, which makes it all the more important to think about governance now. Leading companies are investing in responsible AI programmes, cross-functional working groups and training. By taking a proactive stance today, you position your organisation to capture the benefits of AI while managing its risks.',
   'Remember that security is everyone\'s responsibility. A strong security culture, clear policies and regular awareness training remain the foundation, and agents are simply one more area where those principles apply.',

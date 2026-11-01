@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """apply.py <checkout> <variant> — rewrite Module 7's five student files into a variant.
-Each edit is an exact (old, new) pair; a miss fails loudly. Variants stack: v2 = v1 + scar, v3 = deep cut + scar."""
+Each edit is an exact (old, new) pair; a miss fails loudly. Variants stack: v2 = v1 + scar, v3 = deep cut + scar, v4 = v3 + story-then-law order, v5 = v4 minus "the one piece"."""
 import sys, pathlib
 root = pathlib.Path(sys.argv[1]) / "curriculum"; variant = sys.argv[2]
 MOD = "trainings/agents-101/personal-to-team.md"; EX1 = "exercises/share-your-work.md"
@@ -72,15 +72,58 @@ Context you chose. Boundaries you set. Checks you wrote. The interface is the fi
  (EX3, """Before designing a solution, interview for the outcome. Pick the candidate against that outcome. Draft the technical and people plans together. Test the switch, not the solution. A candidate picked because it fits the infrastructure is shopping. A candidate picked because it moves the outcome is design.""", """Interview for the outcome. Pick the candidate against it. Draft the technical and people plans together. Test the switch, not the solution."""),
 ]
 
+
+# v4: the story becomes the evidence for the law. Access-is-easy and "people absorb" move to
+# right after the scar story; the interface piece moves up beside "you cannot share an agent".
+V4_ORDER = [
+ (LEC, """[Access is easy; absorption is scarce](slides/access-is-easy.md)
+
+## People absorb what they already half know
+
+People take up what they already half know. Anyone recognises a new thing by what it resembles in their own work. If it resembles nothing, there is nowhere to put it.
+
+Michael Polanyi, a philosopher of science, had the line for it: *we know more than we can tell.* Your agent runs on the part of your work you never wrote down. Your teammate has their own version, about their own work, and that is where your thing has to land.
+
+""", ""),
+ (LEC, """Antti Tevanlinna
+
+[What would have to be true""", """Antti Tevanlinna
+
+[Access is easy; absorption is scarce](slides/access-is-easy.md)
+
+## People absorb what they already half know
+
+People take up what they already half know. Anyone recognises a new thing by what it resembles in their own work. If it resembles nothing, there is nowhere to put it.
+
+Michael Polanyi, a philosopher of science, had the line for it: *we know more than we can tell.* Your agent runs on the part of your work you never wrote down. Your teammate has their own version, about their own work, and that is where your thing has to land.
+
+[What would have to be true"""),
+]
+# v5: v4 + the abstract "one piece you don't decide" slide goes; the lecture runs switch → names.
+V5_CUT = [
+ (LEC, """## The one piece you don't decide
+
+You can hand someone the context, the skill, the output, the interface. Whether they pick it up is their decision, made for their own reasons, on a Tuesday you will not be in the room for. What you learned getting here is not one of the four things.
+
+""", ""),
+]
+
 def run(edits):
     for rel, old, new in edits:
         p = root / rel; t = p.read_text()
         assert t.count(old) == 1, f"{variant}: edit not found once in {rel}: {old[:60]!r}"
         p.write_text(t.replace(old, new))
 
-if variant in ("v1", "v2", "v3"): run(V1)
-if variant == "v3": run(V3_DEEP)
-if variant in ("v2", "v3"):
+if variant in ("v1", "v2", "v3", "v4", "v5"): run(V1)
+if variant in ("v3", "v4", "v5"): run(V3_DEEP)
+if variant in ("v2", "v3", "v4", "v5"):
     close = CLOSE_CAUSE if variant == "v2" else CLOSE_HUMAN
     run([(LEC, SCAR_SLOT, SCAR_SLOT + SCAR.replace("{close}", close))])
+if variant in ("v6", "v7"):  # regenerated from strategy + rules, exercises fixed (regen.py)
+    here = pathlib.Path(__file__).parent / "regen"
+    for rel, part in ((MOD, "module"), (LEC, "lecture")):
+        p = root / rel; t = p.read_text(); i = t.index("<!-- maintainer -->")
+        p.write_text((here / f"{variant}-{part}.md").read_text() + "\n" + t[i:])
+if variant in ("v4", "v5"): run(V4_ORDER)
+if variant == "v5": run(V5_CUT)
 print(f"[apply] {variant} ok")

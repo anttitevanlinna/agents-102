@@ -31,7 +31,7 @@ Module-scoped story judge, not comparable to the training-wide rubric's 78.
 - **Cuts move the judges, not the students.** v1 lifts the story judge 4 points and the taste judge prefers it slide by slide. Student numbers do not move.
 - **The student numbers fail the blind check on M7.** The damaged copy (four lecture beats removed, generic padding added) scores the same enjoyment as v0 (4.4 vs 4.3) and loses under one learning hit. This matches the M4 pilot: the 1–7 mean is not a signal. Use the words (peak beats, take-homes) instead.
 - **The module's namesake law does not land.** "Access is not absorption" shows up in 2 of 6 take-homes in every variant, the damaged copy included. The missing-name and switch-test learnings land 5–6 of 6. Next loop target: the absorption beats, not more cuts.
-- **Sentence checks** (`flags.js`): narrator 15 → 5–6 per 1000 sentences, which beats AE101's 8. 2 of 3 flags on v0 are false positives ("you just", "you already" in a quoted push-back and a general claim). No put-downs in M7.
+- **Sentence checks** (`../flags.js`): narrator 15 → 5–6 per 1000 sentences, which beats AE101's 8. 2 of 3 flags on v0 are false positives ("you just", "you already" in a quoted push-back and a general claim). No put-downs in M7.
 - **Taste judge bias holds.** It picks the shorter side whenever the two sides differ. The three slides where it flips with order are the useful ones for the maintainer's calls.
 
 ## Calls page (blind cards)
@@ -42,14 +42,4 @@ Rebuild: `python3 calls/build-cards.py <lab> calls /mnt/project-files/language/m
 
 ## Reproduce
 
-Lab = a checkout of main plus `curriculum/evals/mechanical/persona-student/` from branch `claude/project-thread-0bz5uq` (not on main yet), with `modules/personal-to-team.json` copied in from here. `damage.js` there needs one line to read `mod.damage.pad`. Its built-in padding is about AI security, which would make the M7 damaged copy too easy to spot.
-
-1. `cp -a lab lab-vN && python3 apply.py lab-vN vN` for v1–v3.
-2. `page.sh personal-to-team pages-vN.md`; `damage.js` on v0 for the blind copy.
-3. `run-students.sh <lab> <page> <label> <out>`: ingrid, cfo-sceptic, cto-builder, 2 repeats each, page-only (no live tmux in the cloud sandbox).
-4. `score.js --module personal-to-team --match` over all logs.
-5. `story-judge.js <page> <out> 3`.
-6. `build-pairs.py <labdir> <out> [base] [variants]`, then `pairs.js --rules taste-rules-v1.md` on the blind and swapped files.
-7. `flags.js <lab>` per variant.
-
-Known limit: when `pairs.js` runs a batch of 6 it sometimes returns 0 picks. `PAIRS_BATCH=2` works.
+One command from the repo root: `curriculum/evals/loops/loop.sh personal-to-team curriculum/evals/loops/m7/apply.py v1,v2,v3,v4,v5,v6,v7 <out-dir>`. It builds each variant in `<out-dir>/lab`, runs every instrument, and writes `<out-dir>/report.md`. See `curriculum/evals/loops/README.md`.

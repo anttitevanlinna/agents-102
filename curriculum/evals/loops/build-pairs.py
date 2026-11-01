@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""build-pairs.py <lab-dir> <out-dir> [base=v0] [variants=v1,v2,v3] — blind slide-level pairs, base vs each variant.
+"""build-pairs.py <lab-dir> <out-dir> [base=v0] [variants=v1,v2,v3] [module=personal-to-team] — blind slide-level pairs, base vs each variant.
 A chunk is a `##` section of a Module 7 student file (maintainer block stripped). A new chunk
 (the scar insert) is paired as "previous chunk alone" vs "previous chunk + insert".
 Writes pairs.blind.jsonl (a/b shuffled), pairs.swapped.jsonl (a/b flipped) and pairs.key.jsonl."""
@@ -7,9 +7,10 @@ import sys, json, random, pathlib, re
 lab, out = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2]); out.mkdir(parents=True, exist_ok=True)
 BASE = sys.argv[3] if len(sys.argv) > 3 else "v0"
 VARIANTS = (sys.argv[4] if len(sys.argv) > 4 else "v1,v2,v3").split(",")
-FILES = ["trainings/agents-101/personal-to-team.md", "exercises/share-your-work.md",
-         "exercises/design-the-sharing-plan.md", "exercises/test-the-sharing-plan.md",
-         "lectures/access-is-not-absorption.md"]
+MODULE = sys.argv[5] if len(sys.argv) > 5 else "personal-to-team"
+_mod = f"trainings/agents-101/{MODULE}.md"
+_body = (lab / BASE / "curriculum" / _mod).read_text().split("<!-- maintainer -->")[0]
+FILES = [_mod] + re.findall(r"\]\(((?:lectures|exercises)/[a-z0-9-]+\.md)\)", _body)
 def chunks(v, rel):
     t = (lab / v / "curriculum" / rel).read_text().split("<!-- maintainer -->")[0]
     parts = re.split(r"(?m)^(?=## )", t)

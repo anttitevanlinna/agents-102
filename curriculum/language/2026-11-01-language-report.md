@@ -9,13 +9,9 @@ Worst slides per module by the sentence checks. Score: put-down 3, narrator 2, l
 - **1** trainings/agents-101/prework.md#2-connect-your-work-apps-5-min · 10 sentences
   - duplicate: "If your runtime offers connectors, open its connector settings."
 
-## getting-going (score 54 across 41 slides)
+## getting-going (score 47 across 41 slides)
 
 - **11** exercises/personal-site-with-guardrails.md#phase-1-the-boring-baseline · 24 sentences (11 over)
-- **6** slides/same-question-two-answers.md#same-question-two-answers · 15 sentences (2 over)
-  - loaded: "Two Claude chat windows."
-  - loaded: "What will it suggest?"
-  - narrator: "Your guess reveals what you already know about how this works, and what you're about to learn."
 - **5** lectures/what-just-happened.md#you-act-on-the-future-to-know-what-s-real · 14 sentences (1 over)
   - narrator: "Two beats worth naming, because the mechanism you just used is older than AI."
   - narrator: "Reading a McKinsey report on the agentic enterprise is not the same category of activity as what you just did."
@@ -23,61 +19,56 @@ Worst slides per module by the sentence checks. Score: put-down 3, narrator 2, l
 - **4** exercises/personal-site-with-guardrails.md#phase-7-close-package-what-you-learned · 14 sentences (1 over)
   - narrator: "You'll write the first version of a generation rules file from what you just did."
   - duplicate: "Two passes; the second is where the file starts compounding."
-- **4** lectures/what-just-happened.md#you-felt-context-move · 13 sentences
-  - narrator: "You felt it move."
-  - narrator: "You just did a round of it; you'll do a lot more."
+- **3** slides/same-question-two-answers.md#same-question-two-answers · 14 sentences (1 over)
+  - loaded: "Two Claude chat windows."
+  - loaded: "What will it suggest?"
+- **3** trainings/agents-101/getting-going.md#debrief · 10 sentences
+  - narrator: "You wrote the first version of `module-1/personal-brand-generation.md` at the close of the exercise, capturing what you noticed *while doing the work*."
+  - duplicate: "Two passes; the second is where the file starts compounding."
 
-## building-agent-systems (score 71 across 44 slides)
+## building-agent-systems (score 58 across 44 slides)
 
-- **13** exercises/build-your-challenge-memory.md#take-stock-of-the-system-you-built · 19 sentences (6 over)
-  - put-down: "Either alone is a toy."
-  - narrator: "Every module after this one uses the memory you just built."
-  - narrator: "You just ran **Recipe 2** end-to-end: the three layers (sources, memory, rules file), curate-then-ingest-then-build, plan-first review on the multi-file write, memory that audits itself."
 - **10** lectures/compounding.md#a-folder-of-text-and-that-is-the-point · 21 sentences (8 over)
   - narrator: "And the agent you just built, the one sitting in `agents/`, is also a markdown file."
-- **7** exercises/build-your-challenge-memory.md#phase-2-your-first-custom-agent · 18 sentences (5 over)
-  - narrator: "Quietly, you just made a reusable capability."
+- **8** exercises/build-your-challenge-memory.md#take-stock-of-the-system-you-built · 18 sentences (5 over)
+  - put-down: "Either alone is a toy."
 - **6** exercises/module-3-prework.md# · 69 sentences
   - duplicate: "Neither asks you to build anything."
   - put-down: "Not toy demos."
   - narrator: "Module 3 runs on the memory you already built in Module 2."
-- **5** lectures/compounding.md#what-this-unlocks · 14 sentences (1 over)
-  - narrator: "The question you just ran through it came back with claims cited to your files, reasoning shaped by your context, a voice that isn't a generic industry take."
-  - narrator: "Every module after this leans on the memory you just built."
-- **4** trainings/agents-101/building-agent-systems.md#start-here · 14 sentences (1 over)
-  - duplicate: "Start a fresh session or task at `~/Documents/agents-101/`."
-  - narrator: "You saw Karpathy's LLM Wiki post in the prework."
+- **5** exercises/build-your-challenge-memory.md#phase-2-your-first-custom-agent · 18 sentences (5 over)
+- **4** lectures/compounding.md#two-words-held-together · 14 sentences (1 over)
+  - put-down: "Either one alone is a toy."
+- **3** exercises/personal-agent-homework.md#phase-2-capture-the-look · 14 sentences (1 over)
+  - narrator: "The rule you just added means every agent you build from here on will use this style when it produces HTML."
 
-## multi-agent-systems (score 40 across 32 slides)
+## multi-agent-systems (score 31 across 32 slides)
 
 - **11** lectures/debugging-stuck-agents.md#sources-processing-boundary · 23 sentences (10 over)
   - loaded: "Then use the answer."
-- **5** exercises/three-minds-one-synthesis.md# · 43 sentences
-  - narrator: "Everything you just did is the move this training teaches, run properly."
-  - put-down: "It still handed you something you cannot vouch for."
-- **3** exercises/three-retrievers-one-curator.md# · 71 sentences
-  - duplicate: "If you want something simple, give a hard cap: *"10 sources max, or even fewer"*."
-  - narrator: "You just ran **Recipe 3**'s parallel-retrieval shape: three retrievers fanning out into `sources/` while a synthesizer integrates into `memory/`."
 - **3** slides/split-when-they-cant-be-one.md#split-when-they-cant-be-one · 16 sentences (3 over)
-- **3** trainings/agents-101/multi-agent-systems.md#start-here · 10 sentences
-  - duplicate: "Start a fresh session or task at `~/Documents/agents-101/`."
-  - narrator: "Last module you were the librarian."
 - **2** lectures/module-4-prework.md# · 100 sentences
   - duplicate: "Neither asks you to build anything."
   - loaded: "*What agent systems add to the risk picture.*"
+- **2** lectures/when-to-split-an-agent.md#a-framework-makes-it-pick · 7 sentences
+  - narrator: "With the strategy kernel you just handed it, diagnosis, guiding policy, coherent actions, it has to commit to one diagnosis and drop what does not serve it."
+- **2** lectures/when-to-split-an-agent.md# · 5 sentences
+  - narrator: "You just split an agent two ways."
+- **2** trainings/agents-101/multi-agent-systems.md#the-doubt-stays-hold-it · 3 sentences
+  - narrator: "The unease you feel about the synthesized briefing is not something to close today."
 
-## security (score 92 across 37 slides)
+## security (score 90 across 37 slides)
 
 - **12** lectures/practice-of-risk.md#three-ways-agents-break-the-old-story · 24 sentences (11 over)
   - loaded: "Agent systems break the story in three places."
 - **8** exercises/audit-your-agent.md#phase-4-mitigate-one-risk-reassess-the-residual · 19 sentences (6 over)
   - narrator: "Your gut is data here."
 - **7** slides/reassess-the-residual.md#reassess-the-residual · 20 sentences (7 over)
-- **7** exercises/audit-your-agent.md#take-stock-of-the-loop-you-ran · 17 sentences (4 over)
-  - duplicate: "The reusable check is the expert in the room."
-  - narrator: "You just ran **Recipe 4** end-to-end on your real system: the two-lens audit, the five named agent-risk patterns, the five mitigations (scope, split, filter, gate, review), the "I can't tell" verdict earning a row of its own."
 - **6** lectures/practice-of-risk.md#assess-then-mitigate · 19 sentences (6 over)
 - **6** slides/door-you-dont-open.md#door-you-dont-open · 19 sentences (6 over)
+- **6** lectures/module-5-prework.md#why-grounding-fails-even-when-the-facts-are-in-context · 17 sentences (4 over)
+  - loaded: "**What to bring to class.**"
+  - loaded: "One thing."
 
 ## output-quality (score 29 across 32 slides)
 
@@ -89,7 +80,7 @@ Worst slides per module by the sentence checks. Score: put-down 3, narrator 2, l
 - **2** lectures/grounded.md#you-have-done-this-before · 15 sentences (2 over)
 - **2** slides/mostly-right-ten-times.md#mostly-right-ten-times · 15 sentences (2 over)
 
-## evaluations (score 98 across 36 slides)
+## evaluations (score 97 across 36 slides)
 
 - **17** slides/steering-raises-the-ceiling.md#steering-raises-the-ceiling · 27 sentences (14 over)
   - loaded: "Imagine two internal mails."
@@ -106,11 +97,10 @@ Worst slides per module by the sentence checks. Score: put-down 3, narrator 2, l
   - loaded: "One exercise."
   - loaded: "You walk away."
   - duplicate: "A yardstick you rewrite is not a yardstick."
-- **5** lectures/new-human-role-in-the-loop.md# · 27 sentences
-  - loaded: "That was the point."
+- **5** lectures/new-human-role-in-the-loop.md#two-evals-two-different-jobs · 18 sentences (5 over)
+- **4** lectures/new-human-role-in-the-loop.md# · 26 sentences
   - narrator: "At the start, you were inside every loop."
   - narrator: "You noticed what was wrong."
-- **5** lectures/new-human-role-in-the-loop.md#two-evals-two-different-jobs · 18 sentences (5 over)
 
 ## personal-to-team (score 17 across 31 slides)
 
@@ -128,22 +118,21 @@ Worst slides per module by the sentence checks. Score: put-down 3, narrator 2, l
 - **1** exercises/share-your-work.md# · 17 sentences
   - duplicate: "Start a new session or task at your training-directory root."
 
-## agents-building-agents (score 25 across 37 slides)
+## agents-building-agents (score 21 across 37 slides)
 
-- **5** exercises/extend-your-system.md#take-stock-of-the-compound · 16 sentences (3 over)
-  - narrator: "You just ran the meta-tool move at the heart of **Recipe 8**: agent generates agent, in 25 minutes, on a real gap."
 - **3** exercises/extend-your-system.md# · 22 sentences
   - duplicate: "Start a new session or task at your training-directory root."
   - narrator: "An agent that reads from somewhere your current system doesn't: a second wiki, a folder of PDFs, a connector you just enabled, a different team's `memory/`."
 - **3** exercises/extend-your-system.md#phase-1-describe · 16 sentences (3 over)
+- **3** exercises/extend-your-system.md#take-stock-of-the-compound · 16 sentences (3 over)
 - **3** trainings/agents-101/agents-building-agents.md#debrief · 13 sentences
   - duplicate: "You push back on anything that's off."
   - duplicate: "When you push back on the rewrite, the agent should edit the section you flagged, not rewrite the whole file."
   - duplicate: "If the agent reaches for a full rewrite anyway, push back: *"Edit just the section I named."*"
 - **2** trainings/agents-101/agents-building-agents.md#start-here · 14 sentences (1 over)
   - duplicate: "Start a fresh session or task at `~/Documents/agents-101/`."
-- **2** trainings/agents-101/agents-building-agents.md#push-back-on-the-summary · 10 sentences
-  - narrator: "You just watched it compound."
+- **2** trainings/agents-101/agents-building-agents.md#next · 6 sentences
+  - narrator: "The plan you just produced is a set of assumptions dressed as work: label them, start the concurrent pieces, and design experiments for the uncertain ones."
 
 ## supplementary (score 473 across 29 slides)
 

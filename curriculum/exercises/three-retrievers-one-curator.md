@@ -2,9 +2,7 @@
 
 **Time:** ~28 minutes.
 
-Three retrievers fetch raw material on your challenge into `sources/`; a fourth session curates it into `memory/` while they run. All read `./crux.md`.
-
-Separate sessions share files, each with its own context and connectors. Skip any retriever you can't run today; two or one still works.
+Three retrievers fetch raw material on your challenge into `sources/`; a fourth session curates it into `memory/`. All read `./crux.md`. Each session has its own context and connectors. Skip any retriever you can't run today.
 
 <div class="rt-code">
 
@@ -17,31 +15,29 @@ Separate sessions share files, each with its own context and connectors. Skip an
 
 </div>
 
-Paste each retriever prompt and confirm its short list quickly. Then paste the synthesizer prompt in Session 4.
+Paste each retriever prompt and confirm its short list. If an agent starts reading the world, stop it, steer narrower, then say *"continue"*.
 
-If an agent starts reading the world, stop it, steer narrower, then say *"continue"*.
-
-Session 1: wiki retriever, streaming to `sources/wiki-retrieval.md`.
+Session 1, wiki: `sources/wiki-retrieval.md`.
 
 {{prompt:three-retrievers-one-curator-1}}
 
-Session 2: docs retriever, streaming to `sources/docs-retrieval.md`.
+Session 2, docs: `sources/docs-retrieval.md`.
 
 {{prompt:three-retrievers-one-curator-2}}
 
-Session 3: internet retriever, streaming to `sources/internet-retrieval.md`.
+Session 3, internet: `sources/internet-retrieval.md`.
 
 {{prompt:three-retrievers-one-curator-3}}
 
-Retrievers wrap up early. If a file feels thin, paste this to push another round.
+If a file is thin, paste this for another round.
 
 {{prompt:three-retrievers-one-curator-4}}
 
-Session 4: synthesizer, integrating into `memory/`.
+Session 4, synthesizer: `memory/`.
 
 {{prompt:three-retrievers-one-curator-5}}
 
-Done when `memory/_synthesis-m3.md` names what changed. Next: *Three minds, one synthesis*, in Session 4.
+Done when `memory/_synthesis-m3.md` names what changed.
 
 <!-- maintainer -->
 

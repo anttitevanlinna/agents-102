@@ -5,25 +5,21 @@ Hire three agents to search. Three more to decide. The filesystem is the meeting
 
 ## Prework
 
-[Schedule your personal agent](exercises/personal-agent-homework.md) to read your challenge memory for a week. [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) covers tools, memory and context. [Before Module 3](exercises/module-3-prework.md) adds a primer on helper agents.
+[Schedule your personal agent](exercises/personal-agent-homework.md) to read your challenge memory for a week. [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) covers tools, memory and context. [Helper agents primer](exercises/module-3-prework.md) before Module 3.
 
 ## What You'll Learn
 You will:
 - **Design** a multi-agent setup: independent agents sharing files, or helpers serving one lead task
-- **Build** three source-finding agents, each in its source's dialect, and a helper-persona synthesizer
+- **Build** three source-finding agents, each in its source's dialect, and a synthesizer
 - **Analyze** handoff failures: hidden conflicts, clashing dialects, beige averaging
 - **Create** a framework-guided answer to a strategic question about your challenge
-- **Evaluate** when splitting pays off, independent tasks beat forked helpers, or one agent wins
+- **Evaluate** when splitting pays off and when one agent wins
 
 ## Start here
 
-Start a fresh session or task at `~/Documents/agents-101/`.
+Start a fresh session or task at `~/Documents/agents-101/`. Save outputs under `module-3/`.
 
-Module 3 writes outputs under `module-3/` and sharpens the root instructions file in the Debrief.
-
-In Module 2 you searched Confluence, OneDrive and practitioner articles by hand. Now three agents do that search, and three more decide what it means. What do you expect will get lost between them?
-
-Text is also where action starts: before another system obeys a Slack post, ticket update or command, the agent has produced words.
+Three agents search Confluence, OneDrive and practitioner articles, and three more decide what it means.
 
 [Demo: Agent that takes action](lectures/agent-that-takes-action.md)
 
@@ -39,34 +35,33 @@ Text is also where action starts: before another system obeys a Slack post, tick
 
 ## Debrief
 
-Five minutes. The agent reviews the four agent prompts, the retrieval files, the synthesizer's briefing and the conversation, then rewrites the root instructions file in place and reports what changed. Push back on anything that's off.
+Five minutes. The agent reviews the four prompts, the retrieval files, the synthesizer's briefing and the conversation, then rewrites CLAUDE.md in place and reports what changed. Push back on anything off.
 
 {{prompt:a101-m3-debrief-handoff-rules}}
 
 ## Nothing here checks any of it
 
-The prompt insists on a harsh audit, two seams minimum, and specific evidence (file, pass, what was lost). Without the evidence clause, the review turns diplomatic: three things went well, one mild wobble. Handoff seams are where work goes wrong, so a harder ask gives you specifics the rules file can govern next session's agents with. The audit reads how your agents handed work to each other; it does not check whether the briefing is true.
+The prompt asks for a harsh audit: two seams minimum, with evidence (file, pass, what was lost). Without the evidence clause, the review turns diplomatic.
+
+The audit reads how your agents handed work to each other. It does not check whether the briefing is true.
 
 ## Push back on the summary
 
-Read the agent's summary. Push back where it's wrong: *"The planner and the reframer needed to be separate."* *"The Confluence retriever kept normalising before writing."*
+Push back where the summary is wrong: *"The planner and the reframer needed to be separate."* *"The Confluence retriever kept normalising before writing."*
 
 ## The doubt stays. Hold it.
 
-Keep the unease about the synthesized briefing as an open question. Do not fix it today.
+The synthesized briefing's correctness stays an open question today.
 
 ## Optional memory check before Module 4
 
-**Optional move: pressure-test the memory.** If you've added much to `sources/` this module, run this between modules. New evidence tests the memory's structure. Skip if the memory still serves you.
+**Optional move: pressure-test the memory.** After adding much to `sources/`, run this between modules. New evidence tests the memory's structure.
 
 {{prompt:a101-m3-homework-memory-health}}
-
-Memory is a working artefact, sharpened by what it bumps into.
 
 ## Key Concepts
 - Sessions on shared files, or subagents under one lead.
 - Split only where agents can't be one: access, dialect, stance.
-- Three stances beat one summarizer.
 
 ## Pre-reads before Module 4
 
@@ -74,14 +69,14 @@ Memory is a working artefact, sharpened by what it bumps into.
 
 [Before Module 4](lectures/module-4-prework.md)
 
-Once the optional check and pre-reads are done, end this session. Module 4 starts fresh at `~/Documents/agents-101/`.
+After the optional check and pre-reads, end this session. Module 4 starts fresh at `~/Documents/agents-101/`.
 
 ## Bring to Module 4: what's the worst thing it could do with that access?
 
 An agent that works across connected systems has access to those systems.
 
 ## Next
-Until Module 4, keep working on your real problem. You're close to an agent system that cracks your crux. Add an agent for a critical dependency, or a plan visualisation. Build.
+Until Module 4, keep working on your real problem: add an agent for a critical dependency, or a plan visualisation.
 
 <!-- maintainer -->
 

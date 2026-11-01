@@ -5,7 +5,7 @@ const fs = require('fs'); const path = require('path');
 const [out, mod] = process.argv.slice(2);
 const J = (f) => { try { return JSON.parse(fs.readFileSync(path.join(out, f), 'utf8')); } catch (_) { return null; } };
 const pages = fs.readdirSync(path.join(out, 'pages')).map((f) => f.replace(/\.md$/, ''));
-const order = ['damaged', 'v0', ...pages.filter((p) => /^v\d/.test(p) && p !== 'v0').sort()].filter((p) => pages.includes(p));
+const order = ['damaged', 'v0', ...pages.filter((p) => p !== 'v0' && p !== 'damaged').sort()].filter((p) => pages.includes(p));
 const hashOf = {};
 for (const f of fs.readdirSync(path.join(out, 'students')).filter((x) => x.endsWith('.json'))) {
   const d = J(`students/${f}`); hashOf[f.split('-')[0]] = d.page_hash;

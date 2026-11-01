@@ -1,6 +1,6 @@
 # Compounding
 
-The thing a chat can't do is **Phase 3**. You dropped new sources into the folder, asked the agent to update the memory, and three topic pages *got sharper instead of longer*. The second batch made the first batch better. That is compounding.
+The thing a chat can't do is **Phase 3**: new sources made the existing topic pages *sharper instead of longer*. The second batch made the first batch better. That is compounding.
 
 ## Two words, held together
 
@@ -9,13 +9,11 @@ A system is two things stacked:
 - **Persistence.** Files on disk the agent reads again, not a thread that resets.
 - **Automation.** The instructions sit in a file the agent reads at session start.
 
-A saved document with no agent is just a document. An agent with no files is a chat. Put together, the system *keeps getting better the more you feed it*.
+A saved document with no agent is just a document. An agent with no files is a chat. Together, the system *keeps getting better the more you feed it*.
 
 ## Why the sharpening happens
 
-When you added the second batch, the agent read the existing topic pages first, as context, then the new sources, then integrated. The existing memory was part of the prompt for updating the memory, so old and new claims met and the ones that couldn't survive got cut.
-
-This is the Module 1 mechanism, context shapes output, run at system scale.
+The agent read the existing topic pages first, as context, then the new sources, then integrated. Old and new claims met, and the ones that couldn't survive got cut. Context shapes output, at system scale.
 
 ## It gets better by being edited
 
@@ -25,25 +23,23 @@ Keep the rules small and boring. Apply them consistently across thousands of sma
 
 The memory is a folder of markdown files. No database, special tool or paid tier is needed.
 
-The agent in `agents/` is also a markdown file: instructions a session reads when you point it there. Knowledge, capability and the guardrail from Module 1 share one plain-text form, so the agent's markdown file also travels: any agent runtime can read it.
+The agent in `agents/` is also markdown: instructions a session reads when you point it there. Any agent runtime can read it.
 
-Language models are strongest at reading and writing text. When you store knowledge as text, reading it is reading, and updating it is writing. The simplest setup wins because it matches what the model does best.
+Language models are strongest at reading and writing text. Stored as text, knowledge is read by reading and updated by writing.
 
 [Three layers, one folder](slides/three-layers-one-folder.md)
 
 ## What this unlocks
 
-The agent's answers cite your files and carry a voice that isn't a generic industry take, so they belong to the memory you built, not the LLM behind it. *Generic AI becomes your AI when you build the memory it reads.* Guardrails did this at the prompt level in Module 1; a memory does it at the knowledge level.
+The agent's answers cite your files and carry a voice that isn't a generic industry take. *Generic AI becomes your AI when you build the memory it reads.*
 
 ## Could a competitor claim this?
 
-If a competitor could claim a page, the memory is growing but not compounding.
-
-Spot what's still generic and sharpen it.
+If a competitor could claim a page, the memory is growing but not compounding. Spot what's still generic and sharpen it.
 
 {{prompt:compounding-1}}
 
-The agent comes back with three pointed requests. Answer one and let it update the page. You steer; the agent maintains the memory.
+The agent comes back with three pointed requests. Answer one and let it update the page.
 
 [It can only use what someone wrote down](slides/only-what-someone-wrote-down.md)
 

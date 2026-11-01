@@ -1,10 +1,10 @@
 # Demo: Agent that takes action
 
-In Module 2, the scheduled agent read context and wrote an output inside the training folder. Now it runs again with one new permission: post one message to a demo Slack channel.
+The scheduled agent runs with one new permission: post one message to a demo Slack channel.
 
-The action is deliberately small. The channel is a demo channel. The message contains no customer data, no private names, no commitments, and no decision. The agent writes the exact message first and sends only after approval. If the channel is missing or the message needs judgment, the agent stops.
+The message holds no customer data, private names, commitments or decisions. The agent writes the message first and sends only after approval. If the channel is missing or the message needs judgment, the agent stops.
 
-Writing a file changes your folder. Sending to Slack changes another system. Same agent, same files, same schedule, one new boundary.
+Writing a file changes your folder. Slack changes another system.
 
 <!-- maintainer -->
 

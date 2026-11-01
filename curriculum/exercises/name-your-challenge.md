@@ -4,15 +4,13 @@
 
 **Session** *(new, "Module 2 - Building agent systems")*
 
-Start a new session at your training-directory root, named `m2-building-agent-systems` if your runtime supports names.
-
 **What you do:**
 
 Pin one real problem before building. The memory you build is a folder of notes and sources the agent reads before answering.
 
 **Pick your next big challenge.**
 
-An initiative you own and will work on in these weeks, where work ships from it (memo, plan, decision, brief, campaign, rollout).
+An initiative you own and work on in these weeks, one that produces work (memo, plan, decision, brief, campaign, rollout).
 
 Good: *The Q2 pricing redesign: usage-based vs. seats, pilot cohort, sales briefing.*
 
@@ -20,7 +18,7 @@ Not a fit: *last year's re-org*, *becoming a better leader*, *understanding AI*.
 
 **Write the brief.**
 
-Ask the agent to interview you with three questions, one at a time, and write `./challenge.md`, where later modules read it.
+The agent interviews you with three questions, one at a time, and writes `./challenge.md`.
 
 {{prompt:name-your-challenge-1}}
 

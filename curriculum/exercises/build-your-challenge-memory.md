@@ -4,7 +4,7 @@
 
 **What you do:**
 
-Build a memory around your next big challenge at work, pinned in `./challenge.md`: the board paper due in three weeks, the re-org you're shaping, the vendor decision on your desk. Keep it narrow enough that 5–8 topic pages cover it.
+Build a memory around your next big challenge at work, pinned in `./challenge.md`: the board paper due in three weeks, the re-org you're shaping. Keep it narrow enough that 5–8 topic pages cover it.
 
 The empty `sources/`, `memory/`, and `agents/` folders are in place from prework. Keep the same session running.
 
@@ -12,15 +12,17 @@ The empty `sources/`, `memory/`, and `agents/` folders are in place from prework
 
 *20 min*
 
-A memory is only as good as what goes into it. Three beats: the agent helps you curate a plan, pulls in (or points at) the content for `sources/`, then builds `memory/` from what's on disk.
+Three beats: the agent helps you curate a plan, pulls in (or points at) the content for `sources/`, then builds `memory/` from what's on disk.
 
-**Always comply with your company's AI policy.** Its rules on what can go through an LLM (enterprise agreement, data classification, regulated data) hold here. If in doubt, check before uploading.
+**Always comply with your company's AI policy.** Its rules on what can go through an LLM hold here. If in doubt, check before uploading.
 
-**Ease yourself in.** Bring only what you'd share with a smart assistant without a second thought. If an email thread, deck, or doc feels sensitive, skip it. Module 4 covers classification and data boundaries.
+**Ease yourself in.** Bring only what you'd share with a smart assistant without a second thought. If a thread, deck or doc feels sensitive, skip it.
 
 ## Keep the heavy reads under control
 
-Several phases re-read `sources/` or `memory/` and rewrite multiple files. Ask for a plan first. If the agent starts reading before showing it, stop it, steer narrower, say *"continue"*. For something simple, cap it: *"10 sources max"*.
+Several phases re-read `sources/` or `memory/` and rewrite multiple files. Ask for a plan first.
+
+If the agent starts reading before showing the plan, stop it, steer narrower, say *"continue"*. For something simple, cap it: *"10 sources max"*.
 
 ---
 
@@ -34,49 +36,47 @@ Push back, sharpen, add what's missing.
 
 ## Ingest the sources
 
-**Beat 2. Ingest.** The agent pulls in the content for `sources/`. You don't copy-paste.
+**Beat 2. Ingest.** The agent pulls in the content for `sources/`.
 
 **What the agent reads.** <span class="rt-cli">The CLI agent reads any path you name; use absolute paths outside the training folder.</span><span class="rt-desktop">The desktop agent reads files you attach; attach outside sources before sending.</span><span class="rt-cowork">The agent reads your selected working folders; add a folder or attach a file for one message.</span>
 
 {{prompt:build-your-challenge-memory-2}}
 
-List (3), the NOT REACHABLE pile, stays a reference file unless you share it with the agent to save into `sources/`. Aim for 8–10 items with real content or local-path links across lists (1) and (2); list (3) is usually empty.
+Aim for 8–10 items with real content or local-path links across lists (1) and (2). List (3), NOT REACHABLE, is usually empty; it stays a reference file unless you share its items with the agent to save into `sources/`.
 
 ## Build the memory under a plan
 
 **Beat 3. Build memory.** Ask the agent to write a plan first and wait for your approval before it touches files.
 
-Read the plan before saying go. If the topic split looks right, tell the agent to proceed. If two topics should merge or something is missing, give one sentence of feedback and ask for a revised plan. Your runtime may phrase the approval choices differently, so choose by meaning.
-
 {{prompt:build-your-challenge-memory-3}}
+
+Your runtime may phrase the approval choices differently; choose by meaning.
 
 ## Review the plan, then have the memory audit itself
 
-Read the plan. If two topics should be one, or something is missing, say so. Approve.
+Read the plan. If two topics should merge or something is missing, give one sentence of feedback and ask for a revised plan. Otherwise approve.
 
-Now ask the agent to audit itself:
+Then ask the agent to audit itself:
 
 {{prompt:build-your-challenge-memory-4}}
 
 That list is your first quality check.
 
-Rule of thumb: ask for a plan on anything that touches many files or compounds over steps; skip it when one focused prompt will do.
+Ask for a plan on anything that touches many files or compounds over steps; skip it when one focused prompt will do.
 
 ## Phase 2: Your first custom agent
 
 *10 min*
 
-A custom agent is a markdown file of instructions: its purpose and rules. Same plain text as the memory and the Module 1 guardrail.
+A custom agent is a markdown file of instructions: its purpose and rules.
 
 {{prompt:build-your-challenge-memory-5}}
 
-The instruction file is saved in `agents/`.
-
-Now use it. Fresh message.
+The instruction file is saved in `agents/`. Now use the custom agent in a fresh message.
 
 {{prompt:build-your-challenge-memory-6}}
 
-Give it a real task from your challenge. It should read the memory, cite sources, and follow its rules. Citations show whether the agent read the memory or the LLM filled in from training data.
+Give the agent a real task from your challenge. It should read the memory, cite sources, and follow its rules. Citations show whether the agent read the memory or the LLM filled in from training data.
 
 ## Phase 3: Compound
 
@@ -84,11 +84,11 @@ Give it a real task from your challenge. It should read the memory, cite sources
 
 A good knowledge base sharpens: pages get tighter as new sources arrive, not longer.
 
-Pick one source that fills a gap (an article, a skipped doc, an email thread, a local file). Tell the agent to integrate it into the memory, then paste the link or path after the `New source:` line.
+Pick one source that fills a gap (an article, a skipped doc, a local file). Paste its link or path after the `New source:` line.
 
 {{prompt:build-your-challenge-memory-7}}
 
-Push back if a claim "got sharper" but the top didn't change. Chat cannot do this.
+Push back if a claim "got sharper" but the top didn't change.
 
 ## Phase 4: Let it maintain itself
 
@@ -96,7 +96,7 @@ Push back if a claim "got sharper" but the top didn't change. Chat cannot do thi
 
 {{prompt:build-your-challenge-memory-8}}
 
-Go through the agent's proposals. Reject the ones that miss; the agent applies the ones you approve.
+Reject proposals that miss; the agent applies the ones you approve.
 
 ## Phase 5: Close, put it to work
 
@@ -104,21 +104,21 @@ Go through the agent's proposals. Reject the ones that miss; the agent applies t
 
 Ask your memory the hardest open question on your challenge, not *"summarize the sources."* For example: *"What's the strongest argument for option A over option B?"* *"Where does our current plan break if the market shifts?"*
 
-Run it through the agent you built in Phase 2, which reads the memory and cites sources.
+Run the question through the agent you built in Phase 2.
 
 {{prompt:build-your-challenge-memory-9}}
 
-If the answer is specific and every claim has a citation, the memory works. If it is generic or leans on uncited knowledge, that shows where the memory is still thin.
+If the answer is specific and every claim has a citation, the memory works. Generic or uncited answers show where the memory is still thin.
 
 ## Take stock of the system you built
 
 **What happened:**
 
-A memory is *files you keep*, not a thread you close. Chat doesn't do this.
+A memory is *files you keep*, not a thread you close.
 
 **The point:**
 
-A system is *persistence* (files it reads again) plus *automation* (it runs). Together they compound: each cycle starts from what the last one left, so the system keeps getting better the more you feed it.
+A system is *persistence* (files it reads again) plus *automation* (it runs). Together they compound: each cycle starts from what the last one left.
 
 This was **Recipe 2**: sources, memory, rules file. For your next challenge, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) holds the same moves.
 

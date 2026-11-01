@@ -4,13 +4,13 @@
 
 **What you do:**
 
-Two reads. Both prime moves the Module 3 exercise leans on. Neither asks you to build anything. Just to arrive with your eyes calibrated.
+Two reads. Both prime moves the Module 3 exercise leans on. Neither asks you to build anything.
 
 **Reading 1. Five practitioners, automating their work.**
 
-Before you build multi-agent, see what a single well-shaped agent already does in the wild. Not toy demos. Working practitioners who've folded coding agents into daily research, writing, and shipping.
+See what a single agent already does for working practitioners who've folded coding agents into daily research, writing, and shipping.
 
-Five people worth knowing. **Pick three. Read one piece each.**
+**Pick three. Read one piece each.**
 
 1. **Simon Willison.** Browse his current [coding-agent field notes](https://simonwillison.net/tags/claude-code/). Pick one worked example where he shows the prompt, artifact, test, or correction rather than only announcing a feature.
 2. **Edward Harker.** Read his [coding-agent operating notes](https://edwardharker.com/2026/05/16/how-i-use-claude-code/) (16 May 2026). Look for the operating routine around the agent, not a magic prompt.
@@ -18,13 +18,13 @@ Five people worth knowing. **Pick three. Read one piece each.**
 4. **Thariq Shihipar.** Read [The unreasonable effectiveness of HTML](https://claude.com/blog/using-claude-code-the-unreasonable-effectiveness-of-html) (20 May 2026). Track why changing the review artifact changes how closely the human stays in the work.
 5. **Daniel Bilsborough.** Read [The Practitioner's Guide to Coding Agents](https://partner.danielbilsborough.com/claude-code) (updated 6 August 2026). Look for the plain-text memory and the boundary where consequential work still needs a person.
 
-For each one you pick, note one thing in plain language: *what is this person automating that they used to do by hand, and what's the move that made it work?* Three bullets, one per practitioner. Keep the note somewhere you'll see on training day.
+For each pick, note in plain language: *what is this person automating that they used to do by hand, and what's the move that made it work?* Three bullets, one per practitioner. Keep the note somewhere you'll see on training day.
 
-This isn't about copying their setups. It's about calibrating the ceiling: how much one agent, well-shaped, can already do. So that when Module 3 adds three more, you know what the added coordination is buying you.
+The aim is to calibrate how much one agent can already do, so you know what coordinating three more buys you.
 
 **Reading 2. Helper agents, in plain language.**
 
-Module 3 Phase 2 spawns three helper agents in one session or task. Ten minutes of orientation saves you from learning the mechanic cold in the room.
+Module 3 Phase 2 spawns three helper agents in one session or task.
 
 *What it is.* A helper agent is one the lead agent dispatches to do one focused job. It gets:
 
@@ -32,17 +32,17 @@ Module 3 Phase 2 spawns three helper agents in one session or task. Ten minutes 
 - its own **context window** (a clean slate, so its work doesn't clutter yours);
 - access to the same **filesystem** (it reads and writes in your working directory, same as the lead session or task).
 
-When the job is done, it returns a single result to the main agent and disappears. You can dispatch several in parallel.
+When the job is done, the helper returns a single result to the lead agent and disappears. Several can run in parallel.
 
-*How to launch one.* You don't type a special command. You ask the lead agent, in plain language, to use one. *"Launch a helper agent to review the three retrieval files and write its take to `module-3/stances/planner.md`."* The lead agent dispatches it. To run several at once: *"Launch these three helper agents in parallel,"* and list them. The lead agent fires them together, waits for all three to return, then continues.
+*How to launch one.* Ask the lead agent in plain language: *"Launch a helper agent to review the three retrieval files and write its take to `module-3/stances/planner.md`."* For several at once: *"Launch these three helper agents in parallel,"* and list them. The lead agent waits for all three to return, then continues.
 
-*What you'll see.* While a helper agent is working, your runtime shows a running task or agent entry with a short description. It runs its own conversation separately. When it finishes, the lead session or task receives the result and continues. In the Phase 2 exercise, three helpers run side by side, each one writing a stance file to `module-3/stances/` as it completes.
+*What you'll see.* Your runtime shows a running task or agent entry with a short description for each helper. In Phase 2, each helper writes a stance file to `module-3/stances/` as it completes.
 
-*What you don't need.* You don't need to write an agent definition file for Module 3 or learn a special command. Defining your own reusable helpers is a later move; launching ones that the lead session or task describes on the fly is what Phase 2 uses, and plain-language prompting is enough.
+*What you don't need.* No agent definition file and no special command. Plain-language prompting is enough for Phase 2.
 
 For the full reference, <span class="rt-claude rt-code">open the [Claude Code helper-agent documentation](https://code.claude.com/docs/en/sub-agents)</span><span class="rt-codex rt-code">open the [Codex helper-agent documentation](https://learn.chatgpt.com/docs/agent-configuration/subagents)</span><span class="rt-copilot rt-code">open the [GitHub Copilot subagent documentation](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-custom-agents)</span><span class="rt-cowork">open the in-app help and search for *agents*</span>. You're after the shape: *helper with instructions, own context, returns a result. You summon it by asking.*
 
-**What to bring to class:** the three one-line practitioner takeaways. That's it. Module 3 runs on the memory you already built in Module 2.
+**What to bring to class:** the three one-line practitioner takeaways.
 
 <!-- maintainer -->
 

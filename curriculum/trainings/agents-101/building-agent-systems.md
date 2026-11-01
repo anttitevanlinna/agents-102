@@ -16,15 +16,15 @@ After this module, you can:
 - **Evaluate** whether memory is compounding or growing
 
 ## Start here
-Start a fresh session or task at `~/Documents/agents-101/`. The fresh start keeps Module 1's personal-site scrollback out of the way.
+Start a fresh session or task at `~/Documents/agents-101/`, so Module 1's scrollback stays out of the way.
 
-The empty `memory/`, `sources/`, and `agents/` folders are already there from prework. Your Module 1 generation-rules file stays scoped to `module-1/`; neither it nor `module-1/site.html` is an input to this build. The root instructions file doesn't exist yet. You'll write its first version at the end of this module (Debrief), grounded in what happens during the exercise.
+The empty `memory/`, `sources/`, and `agents/` folders are there from prework. Neither the Module 1 generation-rules file (scoped to `module-1/`) nor `module-1/site.html` is an input to this build. You write the root instructions file in the Debrief.
 
 What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you?
 
 ## Name the challenge you're carrying
 
-Then the real one: what challenge are you carrying that isn't solved yet? Not a task. Hold it; you'll build a memory around it.
+What challenge are you carrying that isn't solved yet? Not a task. You'll build a memory around it.
 
 If everything you've read and drafted on that challenge moved into a memory an agent could read and sharpen, what changes at work?
 
@@ -42,13 +42,13 @@ Keep the same session running; the agent has your challenge in scrollback.
 
 ## Debrief
 
-Five minutes. A retro, **and the first root instructions file in this directory.** The memory flow ran end to end. The agent writes the rules file from the session: what worked, what rubbed, what got repeated. You push back on anything off.
+Five minutes. A retro, **and the first root instructions file in this directory.** The agent writes the rules file from the session: what worked, what rubbed, what got repeated.
 
 {{prompt:a101-m2-debrief-claude-md}}
 
 ## Push back on the summary
 
-Read the agent's summary and push back on anything that doesn't match your sense of the work. *"No, that rule's too strict."* *"You missed the bit where we had to regenerate three times because of X."*
+Push back on anything in the agent's summary that doesn't match your sense of the work. *"No, that rule's too strict."* *"You missed the bit where we had to regenerate three times because of X."*
 
 What the agent leaves out is often the signal. A summary that names three rules and skips the messy fourth, where you re-prompted twice, is the tell.
 
@@ -56,11 +56,11 @@ What the agent leaves out is often the signal. A summary that names three rules 
 
 > Your agent is "right" when it works. Every miss is context the agent still lacks. Sharpen the memory, tighten a rule, rewrite the prompt. You spot the next mistakes by running the system and watching where it bends.
 
-Watching where it bends is continuous improvement, done by hand. Every miss turns into a line of context that stops the next miss.
+Watching where it bends is continuous improvement, done by hand.
 
 ## The model will change under this
 
-The model will change under this. The memory will not.
+The model will change. Your memory will not.
 
 Your folder holds your challenge, your sources and your rules. A better model reads your folder better. It does not write it for you.
 
@@ -71,11 +71,9 @@ Your folder holds your challenge, your sources and your rules. A better model re
 
 ## Bring to Module 3
 
-**A daily agent, scheduled, with a week of observation behind it.** It reads your challenge memory. Module 3 splits work against that week of runs; without it the split is guesswork.
+**A daily agent, scheduled, with a week of observation behind it.** It reads your challenge memory. Module 3 splits work against that week of runs.
 
 [Schedule your personal agent](exercises/personal-agent-homework.md)
-
-Arrive without the week of runs and you'll rebuild that evidence during the opening exercise. Your call.
 
 ## Pre-reads before Module 3
 
@@ -86,7 +84,7 @@ Arrive without the week of runs and you'll rebuild that evidence during the open
 Save the run, then end this session.
 
 ## Next
-Before the next module, build a few more agents you actually need. Pick by pain: a task you keep doing manually. Meeting prep, calendar triage, competitive watching, and draft-reply triage are fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system. Go build.
+Before the next module, build a few more agents you need. Pick by pain: a task you keep doing manually. Meeting prep and calendar triage are fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system.
 
 <!-- maintainer -->
 

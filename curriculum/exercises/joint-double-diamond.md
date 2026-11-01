@@ -4,11 +4,11 @@
 
 **What you do:**
 
-The buyer or sponsor seeds a live company challenge. The room's agents form a proposal forum around it: each takes an initial stance, cross-checks with the others, publishes proposals in the shared folder, criticizes the emerging selections, and one or two central synthesizers keep choosing the best ideas.
+The buyer or sponsor seeds a live company challenge. The room's agents form a proposal forum around it: each takes a stance, cross-checks with the others, publishes proposals in the shared folder and criticizes the emerging selections. One or two central synthesizers keep choosing the best ideas.
 
-The deliverable: your Rumelt-style strategy kernel (diagnosis, guiding policy, near-term experiments, ranked risks), selected from the strongest claims your agents can defend against each other, then turned into a suggested agent set and execution plan.
+The deliverable: your Rumelt-style strategy kernel (diagnosis, guiding policy, near-term experiments, ranked risks), then a suggested agent set and execution plan.
 
-Agents start privately enough to have a point of view, ask you for missing judgment when useful, then publish in the shared proposal folder. The synthesizers keep publishing selections, and the other agents keep criticizing and improving them. The steps are the launch order; agents keep reading and revising while later steps begin.
+The steps are the launch order. Agents keep reading and revising while later steps begin.
 
 **The six-line shape:**
 
@@ -23,9 +23,9 @@ Agents start privately enough to have a point of view, ask you for missing judgm
 
 *10 min*
 
-Twenty agents publish into the shared deliberation folder. Each agent publishes what it has and what it doesn't have before another agent weighs its proposal. Every claim points at the file it came from.
+Each agent publishes what it has and what it doesn't have before another agent weighs its proposal. Every claim points at the file it came from.
 
-Before you publish your context-manifest, redact customer names, partner-NDA material, M&A speculation and salary references. Other agents in the room read the manifest, so treat it like a published document.
+Before you publish your context-manifest, redact customer names, partner-NDA material, M&A speculation and salary references. Other agents in the room read the manifest.
 
 The trainer posts the shared folder path or name in chat at the start of Module 8. Use that exact folder for every shared-folder instruction. It is separate from your local training directory.
 
@@ -33,13 +33,13 @@ The trainer posts the shared folder path or name in chat at the start of Module 
 
 {{prompt:joint-double-diamond-2}}
 
-Every claim in every later round cites the file it came from. The room or central synthesizer calls out an agent that can't cite.
+The room or central synthesizer calls out an agent that can't cite.
 
 ## Phase 2: Initial stance
 
 *8 min*
 
-Read the sponsor challenge and write your agent's opening stance. Do not read other participants' stances yet: different context, sources, and judgment make the first round useful. Your agent may ask you one or two clarifying questions first.
+Read the sponsor challenge and write your agent's opening stance. Don't read other stances yet: different context, sources and judgment make the first round useful. Your agent may ask you one or two clarifying questions first.
 
 {{prompt:joint-double-diamond-3}}
 
@@ -47,7 +47,7 @@ Read the sponsor challenge and write your agent's opening stance. Do not read ot
 
 *8 min*
 
-Once everyone's `stance.md` is published, each agent reads three to five neighbouring stances. The trainer assigns neighbours, or you pick the folders to your left and right. Find what your stance missed.
+Once every `stance.md` is published, your agent reads three to five neighbouring stances, assigned by the trainer or the folders to your left and right. Find what your stance missed.
 
 {{prompt:joint-double-diamond-4}}
 
@@ -63,7 +63,7 @@ Every agent publishes a proposal in the shared folder. The file history shows wh
 
 *8 min*
 
-The synthesizer reads proposals and chooses. With two, A picks the strongest ideas and B names objections, evidence gaps, and unsafe assumptions. The sponsor pushes back; the synthesizer rewrites.
+The synthesizer reads proposals and chooses. With two, A picks the strongest ideas and B names objections, evidence gaps and unsafe assumptions. The sponsor pushes back; the synthesizer rewrites.
 
 Central synthesizer prompt: *"Read challenge.md and every participant subfolder in the shared folder from chat, using each stance.md, cross-check.md, and proposal.md. Do not average the room. Write selection-board.md at the shared folder root: best crux, guiding policy move, two-week experiment, objection, dangerous evidence gap, unresolved disagreement. Cite each source file and why it beats the alternatives. Mark it provisional."*
 
@@ -71,7 +71,7 @@ Central synthesizer prompt: *"Read challenge.md and every participant subfolder 
 
 *5 min*
 
-The central synthesizer publishes operating instructions in the shared folder. Your agents read that instruction file in the next step, so you do not prompt the cross-pollination yourself.
+The central synthesizer publishes operating instructions in the shared folder. Your agents read them in the next step.
 
 {{prompt:joint-double-diamond-6}}
 
@@ -81,7 +81,7 @@ From here on, every agent prompt begins by reading `midway-instructions.md` from
 
 *9 min*
 
-The selection board is the candidate, not final. Every agent criticizes the selection and proposes a better idea if it can.
+The selection board is a candidate. Every agent criticizes it and proposes a better idea if it can.
 
 {{prompt:joint-double-diamond-7}}
 
@@ -89,11 +89,9 @@ The selection board is the candidate, not final. Every agent criticizes the sele
 
 *5 min*
 
-The central synthesizer reads every critique, updates the selection board, then writes the strategy kernel, the suggested agent set, and the plan.
+The central synthesizer reads every critique, updates the selection board, then writes the strategy kernel, the agent set and the plan. Any participant can publish a correction as `pushback.md` in their named subfolder; the synthesizer rewrites the conclusion.
 
-Any participant can publish a correction as `pushback.md` in their named subfolder; the synthesizer rewrites the conclusion.
-
-The CTO, buyer, or sponsor picks the two or three assumptions to test next. The human picks. Without the sponsor, the room picks by show of hands and names the decision provisional.
+The CTO, buyer or sponsor picks the two or three assumptions to test next. Without the sponsor, the room picks by show of hands and names the decision provisional.
 
 ## Phase 9: Agent set, plan, and read-out
 
@@ -128,9 +126,7 @@ Close the session with three files at the shared folder root:
 
 **What happened:**
 
-The agents took stances, cross-checked, published proposals and criticized each other's selections. Crux found the main obstacle, cross-checks exposed blind spots, and critiques tested the synthesizer's selections. The synthesizer turned the proposals into a Rumelt kernel, a buildable agent set, and a two-week plan that cites its evidence and keeps the rejected alternatives.
-
-The forum didn't converge on the first try. Pushback rounds were the work. The same flywheel will sharpen the kernel again on the next problem.
+The synthesizer turned the proposals into a Rumelt kernel, a buildable agent set, and a two-week plan that cites its evidence and keeps the rejected alternatives. Pushback rounds were the work.
 
 **The point:**
 

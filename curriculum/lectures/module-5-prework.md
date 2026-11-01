@@ -2,21 +2,17 @@
 
 **What you do:**
 
-Two cases. Both in public court/government records. They do more than a list of ten fail-tweets ever could.
-
-Everyone knows agents are failing left and right. What's harder to find is failures where the **organisational decisions that led to the failure** are on the record too, not just the symptom. These two are that rare thing: a judge and a government auditor have both documented what the LLM produced AND what the people around it did and didn't do.
+Two cases from public court and government records. In both, a judge or a government auditor documented what the LLM produced and the **organisational decisions that led to the failure**.
 
 Read them with one question in mind: *what was the organisation's missing check?*
 
 **Case 1, Mata v. Avianca (S.D.N.Y., 2023).**
 
-A passenger sued Avianca for a personal-injury claim. His attorneys were Peter LoDuca and Steven Schwartz of the New York firm Levidow, Levidow & Oberman. LoDuca filed an affirmation in opposition that Schwartz had researched and written. It cited cases to support their legal position.
+A passenger sued Avianca for personal injury. His attorneys, Peter LoDuca and Steven Schwartz of Levidow, Levidow & Oberman, filed an opposition citing cases. Six of them did not exist.
 
-Six of them did not exist.
+Schwartz had used ChatGPT to find precedent, including *Varghese v. China Southern Airlines*. He asked ChatGPT, *"Is Varghese a real case"*. ChatGPT said yes. He did not check the cases in a legal research database.
 
-Schwartz had used ChatGPT to find supporting precedent. It produced cases with specific names, docket numbers, and paragraphs of plausible reasoning: *Varghese v. China Southern Airlines*, *Martinez v. Delta Airlines*, *Shaboon v. EgyptAir*, and three others. Schwartz later asked ChatGPT directly, *"Is Varghese a real case"*. ChatGPT said yes, and that it could be found on Westlaw and LexisNexis. He did not verify the cited cases in a real legal research database before relying on them.
-
-Opposing counsel couldn't find the cases because they weren't there. Judge P. Kevin Castel issued a sanctions order on **June 22, 2023**: a $5,000 sanction imposed jointly on both attorneys and the firm. The order is blunt about what went wrong - not the existence of ChatGPT, but the absence of verification. It says technological assistance is not inherently improper, but lawyers still have a gatekeeping duty to check filings for accuracy.
+Judge P. Kevin Castel's sanctions order of **June 22, 2023** imposed $5,000 jointly on both attorneys and the firm. The order blames the missing verification, not ChatGPT: lawyers keep a gatekeeping duty to check filings for accuracy.
 
 Read:
 - The sanctions opinion itself (readable, and it quotes Schwartz's affidavit directly): [law.justia.com, Mata v. Avianca, Opinion and Order of June 22, 2023](https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/)
@@ -24,15 +20,11 @@ Read:
 
 **Case 2, Deloitte Australia / DEWR welfare-compliance report (2025).**
 
-The Australian government's Department of Employment and Workplace Relations commissioned Deloitte for A$439,000 to review the department's welfare-compliance automation system, an independent assurance review of systems that already use automated decision-making on real Australian citizens.
+Australia's Department of Employment and Workplace Relations paid Deloitte A$439,000 to review its welfare-compliance automation system. The report was dated 4 July 2025. By August, University of Sydney academic Dr. Christopher Rudge had flagged references that did not exist and a quote falsely attributed to a federal court judge. Later reporting counted up to 20 fabricated references.
 
-The final report was dated 4 July 2025. By August, Dr. Christopher Rudge, a health-and-welfare-law academic at the University of Sydney, had raised concerns about references that did not exist and a quote attributed to a federal court judge who had never said it. Subsequent reporting counted up to 20 fabricated references.
+The revised version, published **3 October 2025**, disclosed use of **Azure OpenAI GPT-4o**. Freedom-of-information records show Deloitte also used generative-AI tools to complete and format citations. The government then announced Deloitte would refund the final contract installment.
 
-On **3 October 2025**, the department published Deloitte's revised version. It disclosed use of **Azure OpenAI GPT-4o** in the review. Freedom-of-information records add an important distinction: a department-hosted toolchain supported code analysis, while Deloitte also used generative-AI tools to complete and format citations. Three days after publication, the government announced Deloitte would refund the final contract installment.
-
-The second-order detail is the one that matters most: Rudge reviewed the revised version too and reported that some false references had been replaced with new false references. The department then replaced that September version again on **3 February 2026** to address further identified corrections. Whatever the first fix was, the same failure shape survived inside the corrective response.
-
-The fact that the revision repeated the failure tells you the verification step still wasn't built in. What that step would have been is the sentence you bring to class.
+Rudge found that the revision had replaced some false references with new false references. The department replaced the report again on **3 February 2026**. The verification step still wasn't built in. What that step would have been is the sentence you bring to class.
 
 Read:
 - The department's current report page and correction history: [DEWR, Targeted Compliance Framework Assurance Review – Final Report](https://www.dewr.gov.au/assuring-integrity-targeted-compliance-framework/resources/targeted-compliance-framework-assurance-review-final-report)
@@ -44,17 +36,13 @@ Read:
 
 ## Why grounding fails even when the facts are in context
 
-- **The fact is present but not load-bearing.** Putting a source in the context window does not force the model to use it. Buried under drafts, notes and instructions, the model may answer from the broader pattern the topic evokes; the citation sits beside the claim without supporting it.
-- **The source says less than the answer wants.** A file says one customer complained; the answer says customers are unhappy. The model used the source and stretched it past what it can bear.
-- **Conflict gets smoothed.** When two sources disagree, the model often produces a clean synthesis instead of preserving the tension. The synthesis sounds more useful than the messy evidence and hides the thing a human needed to see: this is not settled. Grounded work keeps the conflict visible.
+- **The fact is present but not load-bearing.** A source in the context window does not force the model to use it. Buried under drafts and notes, the model may answer from the pattern the topic evokes, and the citation sits beside the claim without supporting it.
+- **The source says less than the answer wants.** A file says one customer complained; the answer says customers are unhappy.
+- **Conflict gets smoothed.** When two sources disagree, the model often writes a clean synthesis that hides what a human needed to see: this is not settled. Grounded work keeps the conflict visible.
 
 **What to bring to class.**
 
-One thing.
-
-One sentence per case, on paper or in a note you'll open Monday: *"The organisational check that would have caught this was X."*
-
-No reading list. Two cases, close-read, with the missing check named in your own words.
+One sentence per case: *"The organisational check that would have caught this was X."*
 
 <!-- maintainer -->
 

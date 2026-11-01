@@ -1,48 +1,38 @@
 # Exercise: Hallucination benchmark
 
-**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.
+**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8, Phase 3 ~20, Phase 4 ~10, Phase 5 close ~5.
 
 **Session** *(new, "Module 5 - Hallucination benchmark")*
 
-Start a new session at your training-directory root. Name it `m5-hallucination-benchmark` if your runtime supports session names.
-
 **What you do:**
 
-You set up a benchmark: a 30-claim pool, four detection methods, and a scorer that checks each claim against the evidence. Run all four on your own output and keep the one that caught what mattered. If the ensemble scores best, keep that.
-
-The winner becomes a judge file you carry into Module 6.
-
-The claim extractor, the four detectors, and the scorer do the work. You set up the benchmark, start the run, and watch the scoreboard fill in.
+You set up a benchmark: a 30-claim pool, four detection methods, and a scorer that checks each claim against the evidence. Run all four on your own output and keep the one that scores best, or the ensemble if it does. The winner becomes a judge file.
 
 ## Phase 1: The target and the benchmark
 
 *12 min*
 
-Your test corpus is the Module 3 briefing: your sources, retrievals, stances and real question. It already sits near the edge of ungrounded, which makes it a good test.
+Your test corpus is the Module 3 briefing: your sources, retrievals, stances and real question.
 
-Produce a fresh briefing first, so every detector sees the same output. Aim for roughly 10% fabrication or misrepresentation: enough wrongness for the detectors to have a job, not nonsense.
-
-Ask the agent to choose a bounded evidence roster, generate the overreaching briefing in a separate worker, and save both without previewing the briefing.
-
-Roster first: it fixes the evidence the judgment may stand on.
+Produce a fresh briefing so every detector sees the same output, with roughly 10% fabrication or misrepresentation. The agent chooses a bounded evidence roster first, since the roster fixes the evidence the judgment may stand on. A separate worker then generates the briefing, and both are saved without previewing.
 
 {{prompt:hallucination-bakeoff-1}}
 
 ## Keep the main session blind
 
-Why a separate worker? It runs in its own context, so your main session never sees what was fabricated.
+A separate worker runs in its own context, so your main session never sees what was fabricated.
 
 <div class="rt-cowork">
 
-Cowork shows every file the agent reads as if your main session read it. The dispatched agents do the work; the main session orchestrates.
+Cowork shows every file the agent reads as if your main session read it.
 
 </div>
 
-Save it. **Don't open it yet.** Keep the main session blind until the extractor has turned the briefing into claims.
+Save the briefing. **Don't open it yet.** The main session stays blind until the extractor has turned the briefing into claims.
 
 ## Extract the claim pool
 
-The agent scans the briefing and extracts a varied pool of 30 claims for the detectors. Thirty is not statistical, but enough to start seeing the pattern.
+The agent extracts a varied pool of 30 claims from the briefing. Thirty is enough to start seeing the pattern.
 
 {{prompt:hallucination-bakeoff-2}}
 
@@ -50,7 +40,7 @@ The agent scans the briefing and extracts a varied pool of 30 claims for the det
 
 *8 min*
 
-Four helper agents run in parallel on the same claim pool, each with its own detection method and its own output file. You read the files in Phase 3, when the scorer does.
+Four helper agents run in parallel on the same claim pool, each with its own detection method and output file.
 
 In your main session:
 
@@ -69,19 +59,23 @@ In your main session:
 
 *20 min*
 
-A fifth agent (the scorer) reads the claim pool and all four detector files, adjudicates the 30 claims, and produces a scoreboard. It measures precision (of what the detector flagged, how much was ungrounded?), recall (of what the scorer adjudicated as ungrounded, how much did the detector catch?), and coverage (did the detector look at the claim pool?).
+A fifth agent, the scorer, scores the four detector files against the 30 claims:
+
+- precision: of what the detector flagged, how much was ungrounded?
+- recall: of the ungrounded claims, how many did the detector catch?
+- coverage: did the detector look at the claim pool?
 
 {{prompt:hallucination-bakeoff-5}}
 
-Ask the agent to explain Precision and Recall using your own rows.
+Ask the agent to explain both using your own rows.
 
 {{prompt:hallucination-bakeoff-6}}
 
 ## Read the scoreboard and name the surprise
 
-Four detectors read the same claim pool. One caught more of what the scorer adjudicated as ungrounded. Another caught less but with higher precision. A third caught something the others missed, such as a broken citation or a claim only the counter-evidence search surfaced. The scoreboard IS the explanation. You can point at a row and say *this is why I'm keeping this one*.
+One detector catches more of the ungrounded claims. Another catches less, with higher precision. A third catches what the others missed, such as a broken citation.
 
-Before Phase 4, ask the agent to contrast what you just did with the classic way. Then name one thing that surprised you in the scoreboard.
+Point at a row: *this is why I'm keeping this one*. Ask the agent to contrast this with the classic way.
 
 {{prompt:hallucination-bakeoff-7}}
 
@@ -95,23 +89,21 @@ Keep the winner, or the two-method ensemble. Save it as a judge file: a named, r
 
 {{prompt:hallucination-bakeoff-8}}
 
-Open `judges/groundedness-judge.md`. This is your first judge, named after what it does. Narrow on purpose. The "known limit" line names what you measured and decided not to chase.
+Open `judges/groundedness-judge.md`. It is narrow on purpose: the "known limit" line names what you measured and decided not to chase.
 
 ## Phase 5: Close, name the rescue
 
 *5 min*
 
-Four methods ran on the same 30 claims. A scorer adjudicated the claims and measured each detector against that reference set. The winner was saved as `judges/groundedness-judge.md`. You chose by measurement, not by reputation.
-
-Your benchmark had 30 claims. A production judge wants hundreds. The method is the same; only the scale differs.
+The winner is saved as `judges/groundedness-judge.md`. A production judge uses hundreds of claims instead of 30.
 
 ## Carry the benchmark pattern forward
 
 **The point:**
 
-You pick a quality check by running candidates on your own output and scoring them against your own reference. The scoreboard is the explanation. The winner becomes a judge you can defend. The pattern (candidates → benchmark → scorer → winner) works for any quality judgment you automate.
+You pick a quality check by running candidates on your own output and scoring them against your own reference. The winner becomes a judge you can defend. The pattern (candidates → benchmark → scorer → winner) works for any quality judgment you automate.
 
-This was **Recipe 5**. The [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) holds the moves and components without the training scaffolding.
+This was **Recipe 5**. The [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) holds the moves and components.
 
 <!-- maintainer -->
 

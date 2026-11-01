@@ -13,15 +13,13 @@ Write one sentence per case: "the missing organisational check was X."
 After this module, you will be able to:
 - **Test** detection methods on a 30-claim benchmark and pick the winner
 - **Build** a reusable judge file from the winning method that names what it catches and where it stops
-- **Identify** what a judge can reach: narrow and working beats broad and pretending
+- **Identify** what a judge can reach: narrow and working beats broad
 
 ## Start here
 
-Start a fresh session or task at `~/Documents/agents-101/`.
+Start a fresh session at `~/Documents/agents-101/`.
 
-In Module 3 the synthesized answer sat at an uneasy distance: you'd stake your reputation on some of it without knowing which. Your Module 3 doubt and Module 4 residuals stay named, not solved.
-
-This module measures one kind of output, naming the limits the judge can't reach. Four detectors run on the same claim pool, a scorer adjudicates 30 claims against the sources, and you walk out with the first judge you can defend.
+Four detectors run on one claim pool. A scorer checks 30 claims against the sources.
 
 [Lecture: Grounded, and four candidates to measure](lectures/grounded.md)
 
@@ -29,44 +27,46 @@ This module measures one kind of output, naming the limits the judge can't reach
 
 ## Debrief
 
-Five minutes. The agent reviews the benchmark and updates the root instructions file with rules for when future sessions run a groundedness check before trusting an output. The evidence is the scoreboard: evidence roster, claim pool, adjudicated claims, detector outputs, and your saved judge. Push back on anything that's off.
+Five minutes. The agent reviews the benchmark and adds rules to CLAUDE.md so future sessions run a groundedness check before trusting output. Evidence: the roster, claim pool, adjudicated claims, detector outputs and your saved judge.
 
 {{prompt:a101-m5-debrief-groundedness-rules}}
 
 ## Notice what the prompt insists on
 
-This prompt does two things the model wouldn't volunteer. First, it names the boundary: touch only the Groundedness checks section, preserve every other section verbatim. Left alone, the agent treats the root instructions file as a clean canvas, so a small edit becomes a full rewrite and your earlier rules drift. Second, it checks the work: re-read the Groundedness checks section in the file and confirm each rule is there. The agent's report describes what it intended, not what is in the file.
+The prompt does two things the model wouldn't volunteer. It names the boundary: touch only the Groundedness checks section, preserve every other section verbatim. Otherwise a small edit becomes a full rewrite and earlier rules drift.
+
+It checks the work: re-read the Groundedness checks section and confirm each rule is there. The agent's report describes what it intended, not what is in the file.
 
 ## Push back on the summary
 
-Read the agent's summary. Push back where it's wrong: *"that rule is too vague; name the evidence roster"* / *"this should say when to stop and ask for sources."*
+Push back where the agent's summary is wrong: *"that rule is too vague; name the evidence roster"* / *"this should say when to stop and ask for sources."*
 
-> Start with the repeatable, high-cost misses: numbers in external notes, customer names in account summaries, policy claims in internal advice, source citations in briefings. If a future session should never trust that shape of output without a check, write the trigger into the root instructions file.
+> Start with the repeatable, high-cost misses: numbers in external notes, customer names in account summaries, policy claims in internal advice, source citations in briefings. Put the trigger in the root instructions file for any output a future session should not trust without a check.
 
 ## Propose, double-check, apply
 
-Apply the same to agent actions that matter: the agent proposes the action, you quality-check the proposal against the judge or the source, then it applies. Propose, double-check, apply.
+For agent actions that matter, the agent proposes, you check the proposal against the judge or the source, then the agent applies it.
 
 ## Which rung has this action earned?
 
-Read [What is an Agent, The autonomy ladder](trainings/agents-101/supplementary/what-is-an-agent.md#the-autonomy-ladder-what-may-the-agent-do) before you decide what the agent may do next. Ask which rung this action has earned.
+Read [What is an Agent, The autonomy ladder](trainings/agents-101/supplementary/what-is-an-agent.md#the-autonomy-ladder-what-may-the-agent-do) before you decide what the agent may do next.
 
-This is also the place for a human-in-the-loop check. The expert reviews the proposed action, the evidence behind it, and the known limit of the check that passed it.
+In a human-in-the-loop check, the expert reviews the proposed action, its evidence, and the known limit of the check that passed it.
 
 ## Key Concepts
 - Grounded means traceable to a source; accurate is harder.
 - Run candidates, read the scoreboard.
 - The winner names its own limit.
-- Portable pattern: candidates, benchmark, scorer, winner.
+- Reusable pattern: candidates, benchmark, scorer, winner.
 
 ## Pre-reads before Module 6
 
 Ethan Mollick, "Garbage Can and Bitter Lesson."
 
-Once the judge and pre-read are ready, end this session. Module 6 starts fresh at `~/Documents/agents-101/`.
+Once the judge and pre-read are ready, end this session. Start fresh at `~/Documents/agents-101/`.
 
 ## Next
-The benchmark ran once: thirty claims, four detectors, one judge. Evals scale it to three hundred claims, run the judge on every build, and feed its feedback into generation between rounds.
+Evals scale the benchmark to three hundred claims, run the judge on every build, and feed its feedback into generation.
 
 <!-- maintainer -->
 

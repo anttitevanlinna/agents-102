@@ -1,8 +1,8 @@
 # Reading: Before Module 4
 
-**Reading 1. Personal skills.** A skill is a `SKILL.md` plus supporting files (policy text, templates). The `SKILL.md` says what the skill is for, when to use it, and how; the agent loads it when a task matches.
+**Reading 1. Personal skills.** A skill is a `SKILL.md` plus supporting files (policy text, templates). The `SKILL.md` says what the skill is for, when to use it, and how. The agent loads it when a task matches. In Module 4 you run your policy files raw, package the check with a policy lens and an agent-risk lens, then run it on your Module 2-3 system.
 
-**Reading 2. Agent risk sits on top of normal security.** Network controls, access rights and audit logs still apply. Agents add non-deterministic behaviour, prompt injection (direct or in retrieved text), emergent capability you can only bound, secrets in context, tool confusion and skill supply-chain.
+**Reading 2. Agent risk sits on top of normal security.** Network controls, access rights and audit logs still apply. Agents add non-deterministic behaviour, prompt injection (direct, or inside retrieved text) and emergent capability you can only bound. Also watch secrets in context, tool confusion and skill supply-chain.
 
 **Before class:** jot three to five lines on what matters about your company's data, e.g. "Sales never lets unredacted CRM exports leave the building."
 

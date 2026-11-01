@@ -1,11 +1,11 @@
 # Security
 
 ## Big Idea
-You can't tell if your agent is safe from its output. You need a check. Run it; don't wait for certainty.
+You can't tell if your agent is safe from its output. Run a check; don't wait for certainty.
 
 ## Prework
 
-Read the [Agent Trigger List, After Module 3](trainings/agents-101/supplementary/agent-trigger-list.md#after-module-3-notice-when-one-agent-is-not-enough), the multi-agent sections of [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md), and [Before Module 4](lectures/module-4-prework.md). Prework covers personal skills and agent risk layered on normal security.
+Read the [Agent Trigger List, After Module 3](trainings/agents-101/supplementary/agent-trigger-list.md#after-module-3-notice-when-one-agent-is-not-enough), the multi-agent sections of [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md), and [Before Module 4](lectures/module-4-prework.md).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -34,21 +34,21 @@ Name what you'd want to check before letting this near a real stakeholder.
 
 ## Debrief
 
-Five minutes. The agent reviews the audit session and adds one to five rules to the root instructions file for future sessions. Its evidence: the raw and packaged policy reports, the security report with its residual decision, the "I can't tell" rows, and the mitigation you applied.
+Five minutes. The agent adds one to five rules to the root instructions file. Its evidence: the raw and packaged policy reports, the security report with its residual decision, the "I can't tell" rows, and your mitigation.
 
 {{prompt:a101-m4-debrief-security-rules}}
 
-Read the agent's summary and push back where it's wrong: *"That rule wasn't ambiguous, I just didn't have the evidence"* / *"that residual is too vague, name the file or behaviour."*
+Push back where the summary is wrong: *"That rule wasn't ambiguous, I just didn't have the evidence"* / *"that residual is too vague, name the file or behaviour."*
 
-The unease stays. Two things travel: the reusable check, and the root instructions file's rules for the risk you found. Point the check at the other agents you've built.
+Point the check at the other agents you've built.
 
 ## Build More Skills For Recurring How
 
-A skill packages the *how* of a recurring judgment or workflow, so the agent repeats the method without you rebuilding it each time. The security check was one example. Others: reviewing customer data use, preparing a weekly briefing, checking source quality, drafting in a house style, triaging a queue.
+A skill packages the *how* of a recurring judgment or workflow, so the agent repeats the method without you rebuilding it. Other examples: reviewing customer data use, preparing a weekly briefing, triaging a queue.
 
-A skill is not tied to one session, project or agent. You apply it across projects and agents, then sharpen it where the method proves thin.
+A skill works across projects and agents. Sharpen it where the method proves thin.
 
-To share, give a teammate the skill and install it in their runtime. Their agent loads the same method by name without your prompt history. A skill is not a deployed service and does not settle ownership. Module 7 compares this with three other ways to share: shared context, shared output, and an interface.
+To share, install the skill in a teammate's runtime. Their agent loads the same method by name, without your prompt history. A skill is not a deployed service and does not settle ownership.
 
 ## Key Concepts
 - No certainty: assess, mitigate, reassess the residual, decide.
@@ -58,20 +58,18 @@ To share, give a teammate the skill and install it in their runtime. Their agent
 
 ## Bring to Module 5
 
-**Write one sentence per case: "the missing organisational check was X."** Both cases are in the pre-reads that follow. Module 5 opens by checking each sentence against what a check would have caught.
-
-Without the two sentences, you'll be writing them while the rest of the room is already comparing detectors. Your call.
+**Write one sentence per case: "the missing organisational check was X."** Both cases are in the pre-reads below.
 
 ## Pre-reads before Module 5
 
-Read Mata v. Avianca (2023) and Deloitte Australia / DEWR report (2025) in the lecture. What check was missing around the agent's output?
+Read Mata v. Avianca (2023) and the Deloitte Australia / DEWR report (2025) in the lecture.
 
 [The Missing Check](lectures/module-5-prework.md)
 
 Once the files are saved to disk, end this session. Module 5 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
-The agent is scoped and the residual risk is named. Can you trust what it says inside that scope?
+Can you trust what the agent says inside its scope?
 
 <!-- maintainer -->
 

@@ -1,24 +1,18 @@
 # Lecture: Where is this all going?
 
-The room ran on its own for an hour: agents read each other's files, published, and something at the centre chose. Four observations and two questions follow.
-
 ## You described it; something else built it
 
-You wrote down what an agent should do and you did not build it. The agent read your files and handed it back running.
-
-The parts did not change: context, a goal, tools, checks, a boundary, a loop. You still decide each one. What changed is who assembles them, and specifying well is the harder half.
+The parts of an agent did not change: context, a goal, tools, checks, a boundary, a loop. You still decide each one. What changed is who assembles them, and specifying well is the harder half.
 
 ## Count the folders the kernel cites
 
-Everyone in the room had access to every other folder. Nobody was blocked.
-
-Open the kernel and count how many folders it cites.
+Everyone in the room had access to every other folder. Open the kernel and count how many folders it cites.
 
 That ratio is your rollout in miniature. Access was instant and complete. What the room took up from each other is the smaller number. Know it before you promise a board a percentage.
 
 ## Agents reading agents must cite
 
-Every agent in the forum published what it read, what it could not find, and what it inferred without a source. Every claim in a proposal names its source file. Without that rule, agents reading agents invent each other's sources, and the citations are what let you count the folders.
+Every claim in a proposal names its source file. Without that rule, agents reading agents invent each other's sources. The citations are what let you count the folders.
 
 ## Three walls past the laptop
 
@@ -28,9 +22,7 @@ The plan names the wall your company hits first: data access, runtime platform, 
 
 ## Which half of this is obsolete next year?
 
-Some of what you built here will be obsolete within a year. Every piece sits on a model that gets replaced.
-
-Which half? The judge you wrote, or the thing it judges? The memory, or the work of curating it? Nobody in this room knows yet, and the people running this training do not know either.
+Every piece you built here sits on a model that gets replaced. Which half goes first? The judge you wrote, or the thing it judges? The memory, or the work of curating it? Nobody in this room knows yet, including the people running this training.
 
 A plan that survives a model release is written knowing one is coming.
 
@@ -38,19 +30,15 @@ A plan that survives a model release is written knowing one is coming.
 
 ## What would change our mind?
 
-You ran three disciplines in the forum. The fourth keeps a plan true after the room empties.
-
-Ask it of your kernel: *What would have to show up for us to drop this?*
+A fourth discipline keeps a plan true after the room empties. Ask it of your kernel: *What would have to show up for us to drop this?*
 
 If nobody can answer, you have a belief with a schedule attached.
 
 ## A flywheel, not a graduation
 
-Nothing here closed. Your memory folder is still short, and the judge is still yours, unchecked in the places you have not looked. The kernel came out of the same move as your first briefing: agents read, agents argued, something chose, and nothing in the room checked it. Hold that doubt as you did then.
+Your memory folder is still short, and the judge is still unchecked in the places you have not looked. The kernel came out of the same move as your first briefing: agents read, agents argued, something chose, and nothing in the room checked it. Hold that doubt.
 
 What you leave with is a system that got sharper because you used it, and gets sharper again on the next problem.
-
-That is the first turn.
 
 <!-- maintainer -->
 **Laws moved in from Key Concepts (2026-09-24, Antti-directed).** `## Agents reading agents must cite` and `## Three walls past the laptop` carry what `agents-building-agents.md` § Key Concepts used to state.

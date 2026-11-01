@@ -5,9 +5,7 @@ The tool that builds tools compounds.
 
 ## Prework
 
-Run `module-7/monday.md`: test one assumption, ask for one name, talk to one person.
-
-Revisit the crux, what would have to be true, pre-mortem.
+Run `module-7/monday.md`: test one assumption, ask for one name, talk to one person. Revisit the crux, what would have to be true, pre-mortem.
 
 ## What You'll Learn
 After this module, you can:
@@ -20,13 +18,13 @@ After this module, you can:
 
 Start a fresh session at `~/Documents/agents-101/`. The agent reads the agent system and `module-7/monday.md`. The room-scale exercise uses a separate shared deliberation folder, so participant files stay out of your local stack.
 
-At the start, the shared folder is nearly empty: each participant gets one folder named after them, the buyer/sponsor seeds `challenge.md`, and one or two central synthesizer agents write the selection, agent-set, and plan files at the shared root.
+The shared folder starts nearly empty: one folder per participant, `challenge.md` seeded by the buyer/sponsor, and one or two central synthesizer agents writing the selection, agent-set, and plan files at the shared root.
 
 The question to carry through: where is all this going?
 
 ## Watch an agent build an agent
 
-**Agent generates agent.** You watch one agent build another on real input. That's the whole lecture.
+**Agent generates agent.** You watch one agent build another on real input.
 
 [Exercise: Extend your system](exercises/extend-your-system.md)
 
@@ -38,19 +36,17 @@ Module 7's three disciplines run again at room scale on the sponsor challenge. F
 
 ## Debrief
 
-Five minutes. The agent reviews the session, rewrites the most load-bearing file in place (synthesizer rules, strategy kernel, agent set, plan, or argument rules), and reports what changed. It reads everything you produced. You push back on anything that's off.
+Five minutes. The agent reviews the session, rewrites the most load-bearing file in place (synthesizer rules, strategy kernel, agent set, plan, or argument rules), and reports what changed. You push back on anything that's off.
 
 {{prompt:a101-m8-debrief-flywheel-sharpen}}
 
-> **Watch for slowness.** When you push back, the agent should edit the section you flagged, not rewrite the whole file. Kernel and agent-set files run large, so full rewrites drag. If it reaches for one, push back: *"Edit just the section I named."*
-
-The prompt names the file before rewriting, quotes before-and-after for every claim, and surfaces stalls. Precision compounds. So does blur.
+> **Watch for slowness.** When you push back, the agent should edit the section you flagged, not rewrite the whole file. Kernel and agent-set files run large, so full rewrites drag. If the agent reaches for one, push back: *"Edit just the section I named."*
 
 ## Push back on the summary
 
 The agent audits itself, so the summary is not neutral. If it sounds too clean, ask: *"Name one critique raised in the session that did not change the rewritten file. Quote the critique and the unchanged line."*
 
-Push back where the summary is wrong. Some unresolved items should stay unresolved. The flywheel will sharpen the file again on your next problem.
+Push back where the summary is wrong. Some unresolved items should stay unresolved.
 
 ## Key Concepts
 - Cross-check before publishing; critique before selection.
@@ -62,9 +58,7 @@ Push back where the summary is wrong. Some unresolved items should stay unresolv
 
 Your plan is a set of assumptions: label them, start the concurrent pieces, and design experiments for the uncertain ones.
 
-The agent that matters in six months is one nobody in this room has thought of. You leave able to build it. That is slower and harder to put on a slide, and the only part worth anything after the model changes.
-
-You leave with a flywheel, not a graduation.
+The agent that matters in six months is one nobody in this room has thought of. You leave able to build it.
 
 <!-- maintainer -->
 

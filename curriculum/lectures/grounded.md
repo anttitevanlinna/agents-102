@@ -6,65 +6,55 @@
 
 ## A test-and-fix loop collapses the error rate
 
-Say your briefing is 10% fabricated: ten ungrounded claims per hundred. A first pass often comes close to that; treat it as a working prior, not a measurement. Say the detector catches 90% of them. You fix what it flagged, then test again.
+Say your briefing is 10% fabricated. Say the detector catches 90% of those claims. Fix what it flagged, test again.
 
 Round 1: 10% fabricated → 1% after fix.
 Round 2: 1% → 0.1% after fix.
 Round 3: 0.1% → 0.01%.
 
-Compounding that destroys single-pass reliability builds loop reliability. Next, benchmark to find the detector that works on your output.
+Compounding that destroys single-pass reliability builds loop reliability.
 
 ["Are you sure?" is another fluent answer](slides/are-you-sure.md)
 
 ## Don't pick a method. Run the candidates.
 
-Somebody tells you *"have the agent read your files before it answers,"* or *"do a consistency check,"* or *"prompt it to cite sources."* You catch some things, miss others, and never know what you missed.
+Somebody tells you *"have the agent read your files before it answers"* or *"do a consistency check."* Each misses things, and you never know which.
 
-The move is empirical. You don't know which detection method catches what matters on *your* output, on *your* strategic question. Run several candidate methods in parallel and measure which one catches what your benchmark says it should.
+Run several methods in parallel on *your* output and *your* strategic question. Measure which one catches what your benchmark says it should.
 
 ## Four candidates that fail differently
 
-Four candidates that fail in different directions, so the scoreboard shows real spread:
+These four fail in different directions.
 
-**1. Source triangulation.** For every specific claim, does it appear in at least one file on disk? Catches *invention*: claims with no source.
+**1. Source triangulation.** Does each specific claim appear in at least one file on disk? Catches *invention*: claims with no source.
 
-**2. Entailment.** Does the briefing say more than the sources actually support? Catches *overreach*.
+**2. Entailment.** Does the briefing say more than the sources support? Catches *overreach*.
 
-**3. Citation integrity.** When the briefing cites a source, does the source contain the claim? Catches *citation cargo-cult*.
+**3. Citation integrity.** Does each cited source contain the claim? Catches *citation cargo-cult*.
 
 **4. Counter-evidence search.** Look for sources that contradict each claim. Catches claims that crumble under disconfirmation.
 
 ## You have done this before
 
-You make more candidates than you need, then pick on evidence.
+Pick on evidence. The four run as parallel agents on the same 30-claim pool, each writing its own findings file. A scorer measures each: precision, recall, coverage.
 
-The four run as parallel agents on the same 30-claim pool, each writing findings to its own file. A scorer measures each detector: precision, recall, coverage.
-
-Against the Mata v. Avianca pre-read, source triangulation caught an unsourced "small firm" descriptor and an unsupported "ten minutes" estimate. Entailment caught a too-clean Schwartz timeline. Citation integrity caught a quote absent from the linked sanctions order. Counter-evidence caught CNBC blurring the $5,000 sanction.
+On the Mata v. Avianca pre-read, source triangulation caught an unsourced "small firm" and an unsupported "ten minutes" estimate. Entailment caught a too-clean Schwartz timeline. Citation integrity caught a quote absent from the sanctions order. Counter-evidence caught CNBC blurring the $5,000 sanction.
 
 ## The judge names its own limit
 
-The winner, or an ensemble of the top two, becomes a judge file you carry forward. It names the detector that won on your material, why it won, and what it misses.
-
-Grounded output names what it doesn't know. A grounded judge names what it can't catch.
+The winner, or an ensemble of the top two, becomes a reusable judge file. The judge file names the detector that won, why it won, and what it misses.
 
 ## In the full agent picture, this is the check
 
-An agent with context, tools, goals, and boundaries can still produce fluent, unsupported output. A check makes your standard repeatable.
-
-Grounding is the discipline; fabrication is the failure: invented case law, invented medications, confident numbers nobody can source.
+An agent with context, tools, goals and boundaries can still produce fluent, unsupported output: invented case law, invented medications, confident numbers nobody can source.
 
 ## A drift signal, never proof
 
-Run the same briefing prompt twice from the same sources, in two sessions: what stays stable, and what drifts?
+Run the same briefing prompt twice from the same sources, in two sessions. What stays stable, and what drifts? Stable claims can still be unsupported; drift is a warning signal, not proof of fabrication.
 
-Stable claims can still be unsupported; drift is a warning signal, not proof of fabrication.
+Two runs is a demo. The signal firms up at five to ten runs; production wants twenty or thirty.
 
-Two runs is a demo, not a measurement. It firms up at five to ten runs; production wants twenty or thirty.
-
-Now you run the benchmark: four detectors, a claim pool, and a scorer. Agents do the work; you watch the scoreboard fill in. The winner becomes a judge file you keep.
-
-Create a fresh briefing and extract a 30-claim pool. Keep the main session from reading the claim files until the claims exist.
+Create a fresh briefing and extract a 30-claim pool. The main session does not read the claim files until the claims exist.
 
 <!-- maintainer -->
 

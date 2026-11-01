@@ -1,6 +1,6 @@
 # Lecture: The discipline of risk
 
-You built something that works. Would you bet your job on it being safe? That *I'd like to know and I don't* feeling stays, whatever the testing, policy or certification. Agent systems do not offer certainty.
+You built something that works. Would you bet your job on it being safe? Testing, policy and certification do not give agent systems certainty.
 
 ## Classical security manages risk on predictable software
 
@@ -8,25 +8,21 @@ Classical software security is a risk-based practice, and the software it protec
 
 ## Three ways agents break the old story
 
-Agent systems break the story in three places.
-
 The behaviour is non-deterministic. Same prompt, same files, same tools, different session, different answer. One passing test is one sample.
 
-The attack surface is the instruction set. The dangerous move is getting your agent to *decide* to do something harmful with access it has, through well-formed English in a document it reads.
+The attack surface is the instruction set. Well-formed English in a document your agent reads can make it *decide* to do something harmful with access it has.
 
-Capability is emergent. You can't fully predict the combination. You can only bound it.
+Capability is emergent. You can't fully predict the combination, only bound it.
 
-Together, you get *safe enough, under these conditions, within these limits, for now.*
-
-What may the agent read? What may it change? What must come back to a human?
+The result: *safe enough, under these conditions, within these limits, for now.* What may the agent read? What may it change? What must come back to a human?
 
 ## Assess, then mitigate
 
-The work is the loop. You don't get certainty, you get four steps, plain and repeatable.
+The work is a loop of four plain, repeatable steps.
 
 **Assess.** Run your company's rules against your agent, then package that policy check to rerun. The agent-risk lens asks what the agent can reach, leak, and be misled into by ordinary text. Read the reports with judgment.
 
-**Mitigate.** Pick one risk and apply the smallest change that reduces it. Agent mitigations are shaped differently than firewalls. Scope (give the agent less). Split (two agents, different trust levels). Filter (post-process output). Gate (human approves). Review (a second agent judges).
+**Mitigate.** Pick one risk and apply the smallest change that reduces it: scope (give the agent less), split (two agents, different trust levels), filter (post-process output), gate (human approves) or review (a second agent judges).
 
 [Reassess the residual, then decide](slides/reassess-the-residual.md)
 
@@ -36,9 +32,7 @@ The work is the loop. You don't get certainty, you get four steps, plain and rep
 
 ## The discipline is what carries
 
-Some of your agents will be wrong in ways you won't catch. The organisations that handle this well run the loop openly, name residual risks plainly, and close doors they don't need to open.
-
-You can't buy certainty. You can run a loop. Damn, this is complex stuff. It will still be complex when the next agent gets built. The discipline is what carries.
+Some of your agents will be wrong in ways you won't catch. The organisations that handle this well run the loop openly, name residual risks plainly, and close doors they don't need to open. Damn, this is complex stuff.
 
 Read the reports. Pick a risk. Apply a mitigation. Name what's left. Decide.
 

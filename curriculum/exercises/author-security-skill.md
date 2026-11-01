@@ -8,29 +8,29 @@
 
 Name it `m4-security-skill` if your runtime supports session names.
 
-**What you do:** Run the policy files raw against the system you built in modules 2-3. Then package the useful move into one skill with two lenses. Stop when the skill exists.
+**What you do:** Run the policy files raw against your system from modules 2-3, then package the useful move into one skill with two lenses. Stop when the skill exists.
 
-A **skill** packages an expertise (rules, checklists, the moves an agent runs) into something the agent loads when the work matches. Prompts, files and rules steer an agent; a skill is a reusable check you run again instead of re-prompting from memory.
+A **skill** packages an expertise (rules, checklists, the moves an agent runs) into something the agent loads when the work matches. You run it again instead of re-prompting from memory.
 
 ## Phase 1: Run the policies raw
 
 *10 min*
 
-Policies live in `module-4/policies/` (your company's distilled policies, or the Nordic-baseline reference). Run those files against the system, with no skill yet.
+Policies live in `module-4/policies/` (your company's distilled policies, or the Nordic-baseline reference). Run them against the system, with no skill yet.
 
 {{prompt:author-security-skill-1}}
 
-Read the first few rows: they show which rules files can check and which need judgment, context, or a standing evidence check.
+The first few rows show which rules files can check and which need judgment, context, or a standing evidence check.
 
 ## Phase 2: Dictate what matters
 
 *8 min*
 
-Skip studying the policy files first. Tell the agent what matters about your company's policies and the agent system you built in modules 2-3.
+Skip studying the policy files first. Tell the agent what matters about your company's policies and your agent system.
 
 {{prompt:author-security-skill-2}}
 
-Type three to five specific lines in plain language: the data your agent touches that would be a problem if it leaked, the rule your legal team cares about most, the customer your CEO would not want named in a transcript. The class of input you would not paste into a public model.
+Type three to five specific lines in plain language: the data your agent touches that would be a problem if it leaked, the rule your legal team cares about most, the customer your CEO would not want named in a transcript.
 
 The agent then reads the raw report and `module-4/policies/` and proposes the package. Push back on anything that sounds like a generic GDPR brochure.
 
@@ -38,21 +38,21 @@ The agent then reads the raw report and `module-4/policies/` and proposes the pa
 
 *22 min*
 
-The reusable check is one skill with two lenses: company policy, and agent risk (what the agent can reach, what it might leak, what a misleading prompt or source might make it do). It is a `SKILL.md` plus any reference files.
+The skill is a `SKILL.md` plus any reference files, with two lenses: company policy, and agent risk (what the agent can reach, what it might leak, what a misleading prompt or source might make it do).
 
-Ask the agent to author both lenses and name the risk patterns the agent-security lens covers. Expect many questions; the agent keeps probing both lenses over several rounds.
+Ask the agent to author both lenses and name the risk patterns the agent-security lens covers. Expect many questions over several rounds.
 
 {{prompt:author-security-skill-3}}
 
 ## Answer the grill, then sharpen the lenses
 
-The agent grills you first. Answer what you can briefly, then hand back the rest: *"You choose. Optimise for what I can't steer."*
+Answer the agent's questions briefly, then hand back the rest: *"You choose. Optimise for what I can't steer."*
 
-Check the agent's package-complete list; if any of the four named risk patterns is missing from the agent-security lens, ask for it. Make the rules sound like your company's policy, not a generic GDPR template. Keep the report narrow enough to read.
+Check the agent's package-complete list. If any of the four named risk patterns is missing from the agent-security lens, ask for it. Make the rules sound like your company's policy, and keep the report narrow enough to read.
 
 ## Save the authored source as a skill
 
-Save the authored source as a personal skill before you leave. The save mechanic differs by runtime.
+Save the authored source as a personal skill. The save mechanic differs by runtime.
 
 <div class="rt-code">
 
@@ -60,15 +60,15 @@ Ask the agent to install the authored source.
 
 {{prompt:author-security-skill-4}}
 
-<span class="rt-claude-skills">Run `ls .claude/skills/agent-audit/` to confirm.</span><span class="rt-agent-skills">Run `ls .agents/skills/agent-audit/` to confirm.</span> The skill loads in your next session in this training directory.
+<span class="rt-claude-skills">Run `ls .claude/skills/security-audit/` to confirm.</span><span class="rt-agent-skills">Run `ls .agents/skills/security-audit/` to confirm.</span> The skill loads in your next session in this training directory.
 
 </div>
 
 <div class="rt-cowork">
 
-Skip the menu: skill-creator can draft the personal skill from this session, where the authored source is on disk.
+Skip the menu: skill-creator drafts the personal skill from this session, where the authored source is on disk.
 
-This task interface can't write into your runtime's personal directories. When skill-creator finishes drafting, it surfaces a Save button. Press Save to create the personal skill.
+This task interface can't write into your runtime's personal directories, so press Save when skill-creator finishes drafting.
 
 {{prompt:author-security-skill-6}}
 
@@ -78,11 +78,11 @@ This task interface can't write into your runtime's personal directories. When s
 
 **What happened:**
 
-The reusable check now covers two lenses and four named risk patterns. It is saved in your runtime's skill library. Module 4's audit exercise loads it and runs it against the same system.
+Module 4's audit exercise loads the skill and runs it against the same system.
 
 **The point:**
 
-The policy files are source material. The reusable check carries the judgment about what matters in this system, with all four risk patterns built in as mandatory checks. Agent mitigations sit on top of normal company controls, not in place of them. The first loaded use should be the real audit.
+The policy files are source material. The skill carries the judgment about what matters in this system, with all four risk patterns as mandatory checks. Agent mitigations sit on top of normal company controls, not in place of them. The first loaded use should be the real audit.
 
 <!-- maintainer -->
 

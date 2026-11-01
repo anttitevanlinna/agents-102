@@ -1,18 +1,12 @@
 # Exercise: Extend your system
 
-**Time:** 25 minutes. If you finish early, ship a second one.
+**Time:** 25 minutes. If you finish early, build a second one.
 
 **Session** *(new, "Module 8 - Agents building agents")*
 
-Start a new session at your training-directory root.
-
-Name it `m8-agents-building-agents` if sessions can be named.
-
 **What you do:**
 
-You describe an agent; the coding agent builds it.
-
-Pick one extension you'd use from Tuesday onward:
+You describe an agent; the coding agent builds it. Pick one extension you'd use:
 
 - **New data source.** Reads from somewhere your system doesn't: a second wiki, a folder of PDFs, a new connector, another team's `memory/`.
 - **New output.** Produces a format you lack: a one-page brief, a weekly digest, a pre-meeting prep note.
@@ -42,24 +36,24 @@ Over five minutes? Narrow the gap.
 
 *5 min*
 
-Read the output for its weakness. Push back in chat:
+Spot-check the output for its weakness. Push back in the session:
 - *"Cite the memory file for the second claim."*
 - *"You used training data on line 4. Replace it or remove it."*
 - *"The tone drifted from my other agents. Sharpen to match."*
 
-One or two rounds. The artifact: a new agent in `agents/` you trust to run again on Tuesday.
+One or two rounds. The artifact: a new agent in `agents/` you trust to run again.
 
 ## Take stock of the compound
 
 **What happened:**
 
-You described, the tool built, you judged. The cycle took 25 minutes. The second agent next week takes ten, because your vocabulary for what you want is sharper. That is the compound.
+The second agent takes ten minutes, because your vocabulary for what you want is sharper. That is the compound.
 
 **The point:**
 
-You describe; the agent builds. Monday's new gap gets a new agent in 25 minutes, not a new sprint.
+The next gap gets a new agent in 25 minutes, not a new sprint.
 
-This is **Recipe 8**: agent generates agent, on a real gap. When the next gap wants the same option, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) holds the moves, plus the rest of Recipe 8 for bigger moves than one agent.
+This is **Recipe 8**: agent generates agent, on a real gap. The [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) holds the moves for the next gap, plus the rest of Recipe 8 for bigger moves than one agent.
 
 <!-- maintainer -->
 

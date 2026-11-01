@@ -120,12 +120,11 @@ if DISC and DISC.exists():
 
 # Pairs the taste judge (v3 rules + examples) cannot call, from history (taste thread; key with
 # Antti's August call stays in agents-101-taste/unsure-history.key.jsonl, scored by that thread).
-UNSURE = pathlib.Path("/mnt/project-files/agents-101-taste/unsure-history.blind.jsonl")
-if UNSURE.exists():
+for UNSURE in sorted(pathlib.Path("/mnt/project-files/agents-101-taste/").glob("unsure-*.blind.jsonl")):
     for line in UNSURE.read_text().splitlines():
         d = json.loads(line)
         cards.append({"id": d["id"], "kind": "pair", "group": "Judge unsure: which version goes in front of the room",
-          "where": d["file"].replace("curriculum/", ""), "ask": "Two versions of the same section. The judge cannot call this one. Which is better?",
+          "where": d["file"].replace("curriculum/", ""), "ask": ("The same slide with and without one concrete sentence (an example, number, file or command). Is losing it damage? Pick the version for the room." if "concrete" in UNSURE.name else "Two versions of the same section. The judge cannot call this one. Which is better?"),
           "before": "", "after": "", "a": d["a"], "b": d["b"]})
 
 # Unsure pairs other threads send for the maintainer (calls/extra-pairs.jsonl: id, source, where, ask, keep, alt).

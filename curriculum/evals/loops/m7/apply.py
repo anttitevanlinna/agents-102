@@ -119,7 +119,7 @@ if variant in ("v3", "v4", "v5"): run(V3_DEEP)
 if variant in ("v2", "v3", "v4", "v5"):
     close = CLOSE_CAUSE if variant == "v2" else CLOSE_HUMAN
     run([(LEC, SCAR_SLOT, SCAR_SLOT + SCAR.replace("{close}", close))])
-if variant in ("v6", "v7"):  # regenerated from strategy + rules, exercises fixed (regen.py)
+if variant in ("v6", "v7", "v8", "v9"):  # regenerated from strategy + rules, exercises fixed (regen.py)
     here = pathlib.Path(__file__).parent / "regen"
     for rel, part in ((MOD, "module"), (LEC, "lecture")):
         p = root / rel; t = p.read_text(); i = t.index("<!-- maintainer -->")

@@ -16,7 +16,7 @@ def section(title):
     return "\n".join(strategy[i:j])
 idx = lambda s: (CORE / "memory/_index" / ("diamond.md" if s == "diamond" else f"{s}.leads.md")).read_text()
 scar = re.search(r"(## The analysis was ready\..*?Antti Tevanlinna)", (HERE / "apply.py").read_text(), re.S).group(1)
-close = "The leadership had not done the analysis. People they trusted had. Companies, even when they go agentic, work first and foremost on the human principle."
+close = "The leadership had not done the analysis. People they trusted had. Companies, even when they go agentic, work first and foremost on the human principle." + (" Today, at least. Who knows about the future." if V not in ("v6", "v7") else "")
 scar = scar.replace("{close}", close)
 ex = "\n\n".join(f"--- {f} (FIXED, do not rewrite)\n{body(CUR / f)}" for f in
     ["exercises/share-your-work.md", "exercises/design-the-sharing-plan.md", "exercises/test-the-sharing-plan.md"])
@@ -42,6 +42,8 @@ prompt = f"""You are writing two student-facing files for Agents 101, a training
 # The maintainer's taste, confirmed rule by rule
 {(CUR / "evals/mechanical/persona-student/taste-rules.md").read_text()}
 
+{"# The maintainer's language notes from his blind calls (override anything above that conflicts)" + chr(10) + (HERE / "maintainer-language-notes.md").read_text() if V not in ("v6", "v7") else ""}
+
 # Point-of-view reference: an AE101 lecture the maintainer considers right
 {body(CUR / "lectures/story-of-module-6.md")}
 
@@ -60,7 +62,7 @@ prompt = f"""You are writing two student-facing files for Agents 101, a training
 [Exercise: Design the sharing plan](exercises/design-the-sharing-plan.md)
 [Exercise: Test the sharing plan](exercises/test-the-sharing-plan.md)
 [Lecture: Access is not absorption](lectures/access-is-not-absorption.md)
-then `## Debrief` containing the line {{{{prompt:a101-m7-debrief-sharing-artifact}}}} on its own line, `## Key Concepts`, `## Bring to Module 8`, `## Next`. `## Start here` tells the student to start a fresh session at `~/Documents/agents-101/` and that `module-7/` will hold the sharing plan and `module-7/monday.md` the next move.
+then `## Debrief` containing the line {{{{prompt:a101-m7-debrief-sharing-artifact}}}} on its own line, `## Key Concepts`, `## Bring to Module 8`, `## Next`. `## Start here` is framing prose plus the opening question; no session sentence (the exercise opens the session with the Session widget). It may say that `module-7/` will hold the sharing plan and `module-7/monday.md` the next move.
 2. The lecture body, `# Lecture: Access is not absorption` first. About 8 minutes in the room, `##` slides of at most 6 sentences. It closes the module after the exercises: it names the law the exercises made the student meet. The idea that must land and be carried home: access is a switch someone flips; absorption happens in other people's weeks, at their pace, for their reasons. Link the three shared slides where they fit. End on one name and one small move.
 
 Write fewer sentences, not shorter ones. No em dashes. Never tell the student what they felt or just did. Never put down the student or current practice. No off-hand witty one-liners.

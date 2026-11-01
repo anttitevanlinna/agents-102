@@ -204,6 +204,18 @@ wait_for_turn() {
   settle_background_agents "$dir" "$seq" "$session" "$left"
 }
 
+waiting_unresolved() {
+  # $1=pane snap. 0 iff a "Waiting for N background agent(s)" line is present
+  # and fewer than N 'Agent "…" finished' notices follow it. The Waiting line can
+  # stay the last status line after its agent finished (M5 T1, 2026-11-01).
+  printf '%s\n' "$1" | awk '
+    /Waiting for [0-9]+ background agents? to finish/ {
+      for (i = 1; i <= NF; i++) if ($i == "for") { n = $(i + 1) + 0; break }
+      done = 0; seen = 1; next }
+    seen && /^⏺ Agent ".*" finished/ { done++ }
+    END { exit !(seen && done < n) }'
+}
+
 panel_agent_running() {
   # $1=pane snap. Claude Code 2.1.29x shows no "Waiting for" line: a running
   # background agent appears only as an agents-panel row with a live token
@@ -220,7 +232,7 @@ bg_agents_pending() {
   panel_agent_running "$1" && return 0
   local last
   last="$(printf '%s\n' "$1" | grep -E '^✻ ' | tail -1)"
-  [[ "$last" =~ Waiting\ for\ [0-9]+\ background\ agents?\ to\ finish ]]
+  [[ "$last" =~ Waiting\ for\ [0-9]+\ background\ agents?\ to\ finish ]] && waiting_unresolved "$1"
 }
 
 pane_busy() {
@@ -234,7 +246,7 @@ pane_busy() {
   last="$(printf '%s\n' "$1" | grep -E '^(·|✢|✳|✶|✻|✽|\*) ' | tail -1)"
   [[ -z "$last" ]] && return 1
   [[ "$last" =~ ^[^[:space:]]+\ [^[:space:]]+… ]] && return 0
-  [[ "$last" =~ Waiting\ for\ [0-9]+\ background\ agents?\ to\ finish ]]
+  [[ "$last" =~ Waiting\ for\ [0-9]+\ background\ agents?\ to\ finish ]] && waiting_unresolved "$1"
 }
 
 turn_landed() {

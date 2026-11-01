@@ -54,7 +54,23 @@ panel_only_snap='✻ Crunched for 48s · done 10:20 PM
   ⏺ main
   ◯ general-purpose  Round 2 generator                    4s · ↓ 42.8k tokens'
 
+# The Waiting line can stay the LAST status line after the agent finished: no
+# later done-status, just the finished notice. Lifted from
+# out/a101-m5-20261101-214106-37294/turn-1.transcript.txt (pane held 1783s).
+stale_wait_snap='⏺ The subagent is running. I will confirm the two files exist when it finishes.
+✻ Waiting for 1 background agent to finish
+› Message from @general-purpose (ctrl+o to expand)
+⏺ Both files exist: module-5/evidence-roster.md and module-5/briefing.md.
+⏺ Agent "Build benchmark briefing fixture" finished · 42s
+────────────────────────────────
+❯ '
+two_wait_one_done='✻ Waiting for 2 background agents to finish
+⏺ Agent "A" finished · 10s'
+
 echo "[test] bg_agents_pending reads the LAST status line"
+check "Waiting line with its agent finished after it is not pending" "$(yes_no bg_agents_pending "$stale_wait_snap")" "no"
+check "stale Waiting line = idle" "$(yes_no pane_busy "$stale_wait_snap")" "no"
+check "Waiting for 2 with one finished is still pending" "$(yes_no bg_agents_pending "$two_wait_one_done")" "yes"
 check "panel-only running agent is pending" "$(yes_no bg_agents_pending "$panel_only_snap")" "yes"
 check "pending while last status is Waiting" "$(yes_no bg_agents_pending "$pending_snap")" "yes"
 check "clear once a later done-status replaces it" "$(yes_no bg_agents_pending "$finished_snap")" "no"

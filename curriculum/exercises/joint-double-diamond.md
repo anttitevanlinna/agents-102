@@ -25,7 +25,7 @@ The steps start in this sequence, but the room is not a clean queue. Agents cont
 
 *10 min*
 
-Twenty agents are about to publish into the shared deliberation folder. They know different things. Depth varies. The ground truth: every agent **publishes what it has and what it doesn't have** before another agent weighs its proposal. No agent cites a claim without pointing at the file it came from. Before you publish your context-manifest, redact what shouldn't leave your boundary: customer names, partner-NDA material, M&A speculation, salary references. The manifest is read by other agents in the room; treat it like a published document.
+Twenty agents are about to publish into the shared deliberation folder. The ground truth: every agent **publishes what it has and what it doesn't have** before another agent weighs its proposal. No agent cites a claim without pointing at the file it came from. Before you publish your context-manifest, redact what shouldn't leave your boundary: customer names, partner-NDA material, M&A speculation, salary references. The manifest is read by other agents in the room; treat it like a published document.
 
 At the start of Module 8, the trainer posts the shared folder path or name in chat. Use that exact shared folder for every shared-folder instruction that follows. It is separate from your local training directory.
 

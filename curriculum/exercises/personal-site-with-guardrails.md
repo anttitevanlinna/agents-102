@@ -21,7 +21,7 @@ The baseline is boring on purpose. You need it boring so you can feel how much t
 Three small steps:
 
 1. **Open your LinkedIn profile in your browser.** The page with your photo, headline, About, Experience, Education, the lot. Your own profile, not someone else's.
-2. **Select all and copy.** Cmd+A then Cmd+C on Mac, Ctrl+A then Ctrl+C on Windows. Yes, the whole page (headers, navigation, the recommendations sidebar, all of it). It will look like a wall of text. That's fine. The agent reads through it.
+2. **Select all and copy.** Cmd+A then Cmd+C on Mac, Ctrl+A then Ctrl+C on Windows. Yes, the whole page (headers, navigation, the recommendations sidebar, all of it). It will look like a wall of text. That's fine.
 3. **Drop your LinkedIn text into the prompt below, after the colon. Send as one message.**
 
 {{prompt:personal-site-with-guardrails-1}}
@@ -90,7 +90,7 @@ Read the new version. The site gets sharper. Two frameworks now layered: StoryBr
 
 *6 min*
 
-Reading the old version yourself would take ten minutes and probably reveal nothing. You wrote it, so you'll skim past what's missing.
+You wrote it, so you'll skim past what's missing.
 
 Ask the agent to compare versions and name three generic claims.
 
@@ -117,14 +117,14 @@ Open prompts. You drive.
 
 *4 min*
 
-The site is done. The agent behavior is not. What's left is to *capture the move* so you can do it again on someone else's bio next week, without re-explaining everything to a fresh agent. You'll write the first version of a generation rules file from what you just did. The retro (in the Debrief that follows) will sharpen it. Two passes; the second is where the file starts compounding.
+The site is done. The agent behavior is not. What's left is to *capture the move* so you can do it again on someone else's bio next week, without re-explaining everything to a fresh agent. You'll write the first version of a generation rules file from what you just did. The retro (in the Debrief that follows) will sharpen it.
 
 Ask the agent to write your first generation rules file.
 
 {{prompt:personal-site-with-guardrails-6}}
 
 
-The agent writes the file and summarises in chat. Read the summary, then open `module-1/personal-brand-generation.md` and inspect the first two or three rules end to end. The chat summary rounds corners; the file is the thing that travels. Push back on anything in the file that doesn't match what you actually did. That's your first packaged agent behavior: text the model can re-read at the start of any future personal-brand task. Different scope from the root instructions file you'll meet in Module 2, same fundamental mechanism: instructions in a file.
+The agent writes the file and summarises in chat. Read the summary, then open `module-1/personal-brand-generation.md` and inspect the first two or three rules end to end. The chat summary rounds corners; the file is the thing that travels. Push back on anything in the file that doesn't match what you actually did. That's your first packaged agent behavior: text the model can re-read at the start of any future personal-brand task.
 
 ## See the mechanism repeat in every phase
 

@@ -65,7 +65,7 @@ This is the agent auditing a tactic it helped sharpen. That is acceptable here b
 
 Come to Module 7 without five real agent calls and you'll be inventing a handoff while the sharing exercise is already underway. Your call.
 
-The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) is an optional practitioner reference after this module. Eight recipes map to the modules you ran. Three canonical dishes show recipe composition in production. When the next Monday-shaped problem lands, this is where the moves live without the training scaffolding around them.
+The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) is an optional practitioner reference after this module. Eight recipes map to the modules you ran.
 
 Keep [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) as an optional lookup. Its words now point at things you have actually built: context, memory, tools, other agents, boundaries, judges, loops, and autonomy rungs. Neither document is Module 7 prework; the single access-without-use example is the whole load.
 

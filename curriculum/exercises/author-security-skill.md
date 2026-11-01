@@ -30,7 +30,7 @@ Read the first few rows. The raw run shows which rules can be checked from files
 
 *8 min*
 
-Now add judgment. Do not go study the policy files before this step. The reusable check is supposed to carry what matters in your system, not generic GDPR. The way to make that true is to lead with what is in your head, then let the agent read the files and the raw report.
+Do not go study the policy files before this step. The reusable check is supposed to carry what matters in your system, not generic GDPR. The way to make that true is to lead with what is in your head, then let the agent read the files and the raw report.
 
 Tell the agent what matters about your company's policies and the agent system you built in modules 2-3. Three to five lines, your own voice.
 

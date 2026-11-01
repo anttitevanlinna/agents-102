@@ -66,9 +66,9 @@ Now ask the agent to audit itself:
 {{prompt:build-your-challenge-memory-4}}
 
 
-That list is your first quality check. You'll sharpen those pages in Phase 3.
+That list is your first quality check.
 
-**What planning first just did for you.** The memory build wrote 5–8 files in one shot. That's the kind of multi-file, multi-step work where catching a wrong topic split in a bullet list is ten times cheaper than catching it in seven written files. Planning first gives you one review point before extensive output. Rule of thumb going forward: ask for a plan on anything that touches many files or compounds over steps; skip it when a single focused prompt will do.
+**What planning first just did for you.** The memory build wrote 5–8 files in one shot. Rule of thumb going forward: ask for a plan on anything that touches many files or compounds over steps; skip it when a single focused prompt will do.
 
 ## Phase 2: Your first custom agent
 
@@ -88,7 +88,7 @@ Now use it. Fresh message.
 {{prompt:build-your-challenge-memory-6}}
 
 
-Answer with a real task from your challenge. The agent reads its instruction file, reads the memory, cites sources, and stays inside its rules. The citations tell you whether the memory earned its keep or whether the LLM filled in from training data. That is a reusable capability. Same agent, next week's task.
+Answer with a real task from your challenge. The agent reads its instruction file, reads the memory, cites sources, and stays inside its rules. The citations tell you whether the memory earned its keep or whether the LLM filled in from training data. Same agent, next week's task.
 
 ## Phase 3: Compound
 
@@ -125,13 +125,13 @@ Run it through the agent you built in Phase 2. That's the one that reads the mem
 
 Then the question.
 
-Read the answer. If it's specific and every claim has a citation, the memory earned its keep; you leave with the first piece of real work it's done. If it's generic, hand-wavy, or leans on uncited knowledge, you know exactly where the memory is still thin. Either way, it's the move you'll repeat at your desk on Monday, and every Monday after.
+If it's specific and every claim has a citation, the memory earned its keep; you leave with the first piece of real work it's done. If it's generic, hand-wavy, or leans on uncited knowledge, you know exactly where the memory is still thin. Either way, it's the move you'll repeat at your desk on Monday, and every Monday after.
 
 ## Take stock of the system you built
 
 **What happened:**
 
-Four phases, one system. You curated. You loaded it. You put it to work. You added more and watched pages sharpen instead of bloat. You let it find its own gaps. Chat doesn't do any of this. A memory is *files you keep*, not a thread you close.
+Chat doesn't do any of this. A memory is *files you keep*, not a thread you close.
 
 **The point:**
 

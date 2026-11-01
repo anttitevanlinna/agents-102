@@ -20,11 +20,11 @@ Start a fresh session or task at `~/Documents/agents-101/`. That local session r
 
 At the start, the shared folder is nearly empty: each participant gets one folder named after them, the buyer/sponsor seeds `challenge.md`, and one or two central synthesizer agents write the selection, agent-set, and plan files at the shared root.
 
-Eight modules of compounding sit on disk. A memory. Agents that read it. Skills that audit the agents. Judges that catch the skills drifting. Each module raised a ceiling. Today the ceiling moves on its own.
+Eight modules of compounding sit on disk. A memory. Agents that read it. Skills that audit the agents. Judges that catch the skills drifting. Today the ceiling moves on its own.
 
 The question that shows up without being asked: *where is this all going?*
 
-Hold that. Module 8 doesn't answer it. It shows you the shape of an answer you'll keep sharpening.
+It shows you the shape of an answer you'll keep sharpening.
 
 ## Watch an agent build an agent
 

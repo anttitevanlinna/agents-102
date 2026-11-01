@@ -20,8 +20,6 @@ The better story is stranger: the human moves one level up.
 
 ## Would you let it send the mail?
 
-Here is the concrete question.
-
 Would you allow your agent to send an internal mail related to what you do?
 
 Not a customer mail. Not a legal filing. Not a press release. Just an internal note: a project update, a decision summary, a risk note, a stakeholder nudge. Something you might send without much fuss, except that people will act on it.
@@ -32,7 +30,7 @@ It would need to sound like it came from your world. That was Module 1.
 
 It would need the relevant sources, the current facts, the open questions, the things your team already knows. That was Module 2.
 
-It would need the right perspectives before it writes. Not one flat summary. The right searches and the right stances. That was Module 3.
+It would need the right perspectives before it writes. The right searches and the right stances. That was Module 3.
 
 It would need boundaries. What can it read? What should it never say? Which risks are still "I can't tell"? That was Module 4.
 
@@ -44,13 +42,11 @@ And if the mail is not merely supposed to be true, but actually useful, it needs
 
 Groundedness protects the floor. Steering raises the ceiling.
 
-A groundedness eval says: do not invent, overreach, or imply more than the evidence supports. Do not lose contact with the ground.
+A groundedness eval says: do not invent, overreach, or imply more than the evidence supports.
 
 A steering eval says: overperform on this dimension. Be more executive-readable. More commercially sharp. More specific. More useful to the person who has to make a decision. More like the standard this team wants to be known for.
 
-Those are different jobs. Do not collapse them.
-
-If the agent sends an internal mail that is ungrounded, you have a trust problem. If it sends one that is grounded but vague, forgettable, or politically tone-deaf, you have a usefulness problem. Both matter. One protects truth. One pushes excellence.
+If the agent sends an internal mail that is ungrounded, you have a trust problem. If it sends one that is grounded but vague, forgettable, or politically tone-deaf, you have a usefulness problem. One protects truth. One pushes excellence.
 
 ## Variety in, selection out, memory keeps
 
@@ -62,9 +58,7 @@ So the two evals are not two instruments on a shelf. They are one mechanism seen
 
 ## The human moves one level up
 
-The old role is easy to picture. You sit between the agent and the world. Everything passes through you. The agent drafts; you inspect. The agent revises; you inspect again. The agent proposes; you decide whether it is safe.
-
-That works for one mail.
+The old role is easy to picture. You sit between the agent and the world. The agent drafts; you inspect. The agent proposes; you decide whether it is safe.
 
 It does not work for a system.
 
@@ -75,8 +69,6 @@ Sometimes the right answer is draft only. Sometimes it is send after review. Som
 That is not an AI policy slide. That is operational judgment.
 
 The question is no longer: can the agent write the mail?
-
-Of course it can write the mail.
 
 The question is: have you designed the loop that would make sending it responsible?
 

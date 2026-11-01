@@ -20,9 +20,9 @@ Start a fresh session or task at `~/Documents/agents-101/`. The fresh start keep
 
 Module 2 turns to your real challenge. The empty `memory/`, `sources/`, and `agents/` folders are already there from prework, ready to fill. Your Module 1 generation-rules file stays scoped to `module-1/`; neither it nor `module-1/site.html` is an input to this build. The wider root instructions file doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
 
-Module 1 was the rehearsal. A site, a voice sharpened, fabrication caught by the only person in the room who could catch it. Now the training turns to work. The rest of it builds on the challenge you actually get paid to move, because that's where the system has to stand up.
+A site, a voice sharpened, fabrication caught by the only person in the room who could catch it. Now the training turns to work. The rest of it builds on the challenge you actually get paid to move, because that's where the system has to stand up.
 
-Karpathy's LLM Wiki post was in the prework. What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you? You'll build one shortly.
+Karpathy's LLM Wiki post was in the prework. What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you?
 
 ## Name the challenge you're carrying
 

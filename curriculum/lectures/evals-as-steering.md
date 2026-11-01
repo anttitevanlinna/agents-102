@@ -40,8 +40,6 @@ That is the first kind of eval.
 
 ## A yardstick you rewrite is not a yardstick
 
-One exercise.
-
 You take the judge from Module 5 and put it into a loop. The judge stays fixed. The generator changes.
 
 Round 1 produces a briefing. The judge scores it and writes per-claim feedback. The main session reads the feedback and rewrites `./generation-tactic.md`. Round 2 runs under the same judge, with the sharper tactic. Then Round 3.
@@ -50,7 +48,7 @@ You walk away.
 
 When you come back, the notes tell you what changed: which claims were flagged, which tactic rules were added, whether the score improved, and whether the judge file stayed byte-identical.
 
-That last line matters. If the judge moved, the score means nothing. A yardstick you rewrite is not a yardstick.
+If the judge moved, the score means nothing. A yardstick you rewrite is not a yardstick.
 
 If the generator improved under the same judge, the loop worked.
 

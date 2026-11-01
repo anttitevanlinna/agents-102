@@ -44,7 +44,7 @@ If the brief takes more than five minutes, your gap is too big. Narrow it.
 
 *5 min*
 
-The lead agent ran your new agent. Look at the output. Don't read it to admire it. Read it to find the weakness.
+Look at the output. Don't read it to admire it. Read it to find the weakness.
 
 Push back in chat:
 - *"Cite the memory file for the second claim. That felt generic."*
@@ -61,7 +61,7 @@ You described. The tool built. You judged. The cycle took 25 minutes. The second
 
 **The point:**
 
-The seven modules taught you to be a builder. Module 8's first move is watching the builder disappear. You become the describer; the agent becomes the builder. Monday's new gap gets a new agent in 25 minutes, not a new sprint. The ceiling you raised just climbed again.
+The seven modules taught you to be a builder. Module 8's first move is watching the builder disappear. You become the describer; the agent becomes the builder. Monday's new gap gets a new agent in 25 minutes, not a new sprint.
 
 This is the meta-tool move at the heart of **Recipe 8**: agent generates agent, in 25 minutes, on a real gap. After Agents 101, when the next gap wants the same shape, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) is where the moves live, plus the rest of Recipe 8 (three thinking disciplines, strategy kernel, domain-readiness 3-test) for when the next move is bigger than one agent.
 

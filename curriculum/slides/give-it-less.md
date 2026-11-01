@@ -5,4 +5,4 @@ Everything you have built so far gave the agent more. More context. A memory tha
 
 Both moves are right, and the difference is what happens when the agent is wrong. More context makes a good answer likelier. Less access makes a bad answer smaller.
 
-Every door you close is a source you won't read. The tool you take away was a capability. The split you make leaves two agents each knowing half of what one agent knew. Scope it down far enough and the system is safe and useless. Nobody hands you the number. You pick it, you write down what is left, and you sign for it.
+Every door you close is a source you won't read. The tool you take away was a capability. The split you make leaves two agents each knowing half of what one agent knew. Scope it down far enough and the system is safe and useless. You pick it, you write down what is left, and you sign for it.

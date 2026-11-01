@@ -12,9 +12,9 @@ Round 1: 10% fabricated → 1% after fix.
 Round 2: 1% → 0.1% after fix.
 Round 3: 0.1% → 0.01%.
 
-The same compounding that destroys single-pass reliability *builds* loop-based reliability. One generation pass is a trap; a test-and-fix loop is the escape. Three rounds of the illustration land at parts-per-ten-thousand, a place you don't reach by making one pass better. You reach it by looping.
+The same compounding that destroys single-pass reliability *builds* loop-based reliability. One generation pass is a trap; a test-and-fix loop is the escape. Three rounds of the illustration land at parts-per-ten-thousand, a place you don't reach by making one pass better.
 
-Now you'll run the test side: a benchmark to find the detector that works on *your* output. The compounding-error math is the problem; the compounding-check math is the answer.
+Now you'll run the test side: a benchmark to find the detector that works on *your* output.
 
 ["Are you sure?" is another fluent answer](slides/are-you-sure.md)
 
@@ -36,15 +36,15 @@ Four candidates, chosen because they fail in different directions, so the scoreb
 
 **3. Citation integrity.** When the briefing cites a source, does the source actually contain the claim? A citation that doesn't hold is worse than no citation; it manufactures false authority. Catches *citation cargo-cult*: citations that look load-bearing but aren't.
 
-**4. Counter-evidence search.** Instead of looking for sources that support each claim, look for sources that contradict it. One contradiction kills the claim; a hundred supporting files don't prove it. Catches claims that *look* grounded under confirmation but crumble under disconfirmation.
+**4. Counter-evidence search.** Instead of looking for sources that support each claim, look for sources that contradict it. Catches claims that *look* grounded under confirmation but crumble under disconfirmation.
 
 ## You have done this before
 
-Three stances, one framework. Four detectors, one scoreboard. You make more candidates than you need, and then something picks between them on evidence rather than on whichever one sounded best.
+Three stances, one framework. You make more candidates than you need, and then something picks between them on evidence rather than on whichever one sounded best.
 
-Four candidates, four different failure modes. In the exercise, they run as four parallel agents on the same 30-claim pool, each writing findings to its own file. A scorer adjudicates the claims against the evidence and measures the detectors: precision, recall, coverage. The scoreboard is the mechanism. You don't argue with it; you read it.
+Four candidates, four different failure modes. In the exercise, they run as four parallel agents on the same 30-claim pool, each writing findings to its own file. A scorer adjudicates the claims against the evidence and measures the detectors: precision, recall, coverage. You don't argue with it; you read it.
 
-The four detection techniques reveal different failure shapes. Against the Mata v. Avianca pre-read, source triangulation caught an unsourced "small firm" descriptor and an unsupported "ten minutes" estimate. Entailment caught the story making Schwartz's timeline too clean. Citation integrity caught a direct quote that did not appear in the linked sanctions order. Counter-evidence found a source conflict where CNBC blurred the $5,000 sanction and the court order was more precise. Even a careful teaching case benefits from the check.
+The four detection techniques reveal different failure shapes. Against the Mata v. Avianca pre-read, source triangulation caught an unsourced "small firm" descriptor and an unsupported "ten minutes" estimate. Entailment caught the story making Schwartz's timeline too clean. Citation integrity caught a direct quote that did not appear in the linked sanctions order. Counter-evidence found a source conflict where CNBC blurred the $5,000 sanction and the court order was more precise.
 
 ## The judge names its own limit
 
@@ -64,13 +64,13 @@ The positive discipline is grounding. The failure mode is fabrication. The failu
 
 Run the same briefing twice from the same sources and you can ask a different question: what stays stable, and what drifts?
 
-That is worth knowing, and it is not the check you are about to build. A claim can be stable and still unsupported, if both runs repeat the same assumption. A claim can be grounded and still come out phrased differently each time. Drift is a warning signal, never proof of fabrication.
+A claim can be stable and still unsupported, if both runs repeat the same assumption. A claim can be grounded and still come out phrased differently each time. Drift is a warning signal, never proof of fabrication.
 
 Two runs is a demo, not a measurement. With two, a claim that appears in both could be the model's pull toward a popular framing, and a claim that drifts could be an edge case in the next sample. The signal firms up somewhere around five to ten runs. A production check wants twenty or thirty.
 
 Now you run the benchmark. Well, not by hand. You set up four detectors, a claim pool, and a scorer. The agents do the work. You watch the scoreboard fill in. The winner becomes a judge file you keep.
 
-Next, you create a fresh briefing and extract a 30-claim pool from it. That pool is the benchmark input the rest of the exercise turns on. Keep the main session blind until the claims exist.
+Next, you create a fresh briefing and extract a 30-claim pool from it. Keep the main session blind until the claims exist.
 
 <!-- maintainer -->
 

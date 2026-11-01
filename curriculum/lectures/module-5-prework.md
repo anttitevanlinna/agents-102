@@ -54,7 +54,7 @@ One thing.
 
 One sentence per case, on paper or in a note you'll open Monday: *"The organisational check that would have caught this was X."*
 
-That's it. No reading list. No ten-bullet rundown of every headline agent failure of 2024–25. Two cases, close-read, with the missing check named in your own words.
+No reading list. Two cases, close-read, with the missing check named in your own words.
 
 <!-- maintainer -->
 

@@ -46,7 +46,7 @@ Cowork doesn't always engage `/security-audit` from pasted prompt text alone. If
 
 While the report runs, stay with it. The report is more useful when you read it cold. Expect the reusable check to find things you did not think about, and to leave things "I can't tell" you thought were settled.
 
-Read the agent's three lists. Then open `outputs/policy-report.md` and find the rows it flagged. You are reading with a hypothesis, not row-by-row from scratch. Notice which of the agent's surprises match yours and which do not. That mismatch is data.
+Read the agent's three lists. Then open `outputs/policy-report.md` and find the rows it flagged. You are reading with a hypothesis, not row-by-row from scratch. Notice which of the agent's surprises match yours and which do not.
 
 ## Phase 3: Run the agent-risk audit
 
@@ -72,9 +72,9 @@ Tell the agent the risk in one sentence, then paste the prompt. You are steering
 
 {{prompt:audit-your-agent-3}}
 
-The agent applies the mitigation and walks you through what changed. If the shape does not fit, tell the agent and iterate. Re-run the check. Read the residual section in `outputs/security-report.md`.
+If the shape does not fit, tell the agent and iterate. Re-run the check. Read the residual section in `outputs/security-report.md`.
 
-The risk did not go away. That is expected. A mitigation reduces, it does not eliminate. The residual section is part of the report. Name it, accept it on record, and stop there.
+The risk did not go away. That is expected. A mitigation reduces, it does not eliminate. Name it, accept it on record, and stop there.
 
 ## Escalate to a person when judgment runs out
 
@@ -94,11 +94,11 @@ We did this for a single mitigation. Risk control is one of the things that sepa
 
 **What happened:**
 
-The Module 3 system has two packaged-lens reports against it now, plus the raw policy report that came before packaging. One policy lens. One agent-risk lens with four named patterns. One mitigation applied; one residual decision recorded in the security report. If judgment is still unclear, you know what to show a human expert. The loop ran once. The reusable check and the loop carry to the next agent.
+The Module 3 system has two packaged-lens reports against it now, plus the raw policy report that came before packaging. One mitigation applied; one residual decision recorded in the security report. If judgment is still unclear, you know what to show a human expert.
 
 **The point:**
 
-Absolute certainty is not on offer. The discipline is. Raw policy files first, packaged lenses second, one mitigation, one named residual. The reusable check is the expert in the room. The report carries the evidence and the decisions. The unease that remains is what the loop is supposed to produce, not what it failed to remove.
+Absolute certainty is not on offer. The discipline is. Raw policy files first, packaged lenses second, one mitigation, one named residual. The report carries the evidence and the decisions. The unease that remains is what the loop is supposed to produce, not what it failed to remove.
 
 This was **Recipe 4** end-to-end, on your real system: the two-lens audit, the five named agent-risk patterns, the five mitigations (scope, split, filter, gate, review), the "I can't tell" verdict earning a row of its own. After Agents 101, when the next agent needs the same audit, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) names the moves and components without the training scaffolding.
 

@@ -6,11 +6,11 @@ It is tempting to read that as "the work is done." That is not what happened.
 
 ## A flat score is information about the judge
 
-The judge measures one thing. You built it in Module 5 to catch claims that float free of the evidence. It is very good at that one job and blind to everything else. Once the generator stopped floating claims, the judge ran out of things to say. The score went flat because the judge had nothing left to flag, not because the work had nothing left to improve.
+The judge measures one thing. You built it in Module 5 to catch claims that float free of the evidence. It is very good at that one job and blind to everything else. The score went flat because the judge had nothing left to flag, not because the work had nothing left to improve.
 
 The work kept getting better in a direction the judge was never built to see. Sharper framing. A recommendation that actually commits. A briefing someone would read to the end. None of that is groundedness, so none of it moves the score. A grounded claim can still be vague, obvious, or useless, and this judge will pass it every time.
 
-This is the thing to carry out of the module. A flat score is real information, but only about the frame the judge can see. The moment the number stops moving is not the moment to walk away. It is the moment the easy signal runs out and your judgment comes back in.
+A flat score is real information, but only about the frame the judge can see. The moment the number stops moving is not the moment to walk away. It is the moment the easy signal runs out and your judgment comes back in.
 
 ## You haven't checked the judge yet
 

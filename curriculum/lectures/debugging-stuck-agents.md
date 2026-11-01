@@ -14,8 +14,6 @@ This is rather long. Make your own variant. The important move is not the wordin
 
 ## Sources, processing, boundary
 
-Then use the answer.
-
 1. **If it is the sources, fix the sources.** Add the missing file. Remove the stale one. Split contradictory material so the agent can see the conflict instead of smoothing it. Do not write a cleverer prompt to compensate for bad ground.
 
 2. **If it is the processing, fix the processing.** Rewrite the prompt, the role, the handoff, or the output shape. If one agent was doing two jobs, split it. If three agents were pretending to be different, collapse them.
@@ -26,7 +24,7 @@ Then use the answer.
 
 5. **Write down the lesson.** If the same failure could happen again, add a rule to the root instructions file: what to read first, what not to smooth over, what file shape the next agent must produce, or when to stop and ask.
 
-Start with diagnosis before repair. That's the habit.
+Start with diagnosis before repair.
 
 The agent is part of the debugging loop too.
 

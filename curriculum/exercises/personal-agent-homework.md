@@ -28,7 +28,7 @@ For the risk-scan and next-move jobs, no connector needed, the agent reads your 
 
 Your daily output shouldn't read like a terminal dump. Steal the look and feel from your company's website (colours, typography, headers, the voice) and store it as a pattern the agent reuses forever. Same lesson as the memory: text on disk, referenced by name.
 
-Remember Module 1's `module-1/site.html`, and the prework `prework/snake.html` before it? The agent writes HTML files. You're about to give those files a house style.
+The agent writes HTML files. You're about to give those files a house style.
 
 Ask the agent to extract the visual pattern from your company website and write it as a plain-language style file the agent reuses forever.
 

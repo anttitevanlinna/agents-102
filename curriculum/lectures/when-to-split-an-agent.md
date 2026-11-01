@@ -14,7 +14,7 @@ Within one workflow, when does splitting into multiple agents pay?
 
 ## More agents is not more rigour
 
-Split for a reason, not because "three is more thorough": more agents means more prompts to tune, more noise, more coordination cost. More input does not fix a beige answer either. It had three stances in front of it and could not choose.
+Split for a reason, not because "three is more thorough": more agents means more prompts to tune, more noise, more coordination cost. More input does not fix a beige answer either. The synthesizer had three stances in front of it and could not choose.
 
 ## A framework makes it pick
 
@@ -26,11 +26,11 @@ Hand it the strategy kernel (diagnosis, guiding policy, coherent actions). It th
 
 Could one prompt produce the same quality of output? If yes, write that one prompt. Single-agent is the default; split only when one prompt cannot.
 
-## Two shapes, each with its own territory
+## Two options, each with its own territory
 
 Pick an option once you split.
 
-**Separate sessions (the Phase 1 move).** Pick this when each agent needs its own persistent context, tools and clock. Separate windows let you see each agent work and intervene in one without confusing the others.
+**Separate sessions (the Phase 1 move).** Pick this when each agent needs its own context, tools and clock. Separate windows let you see each agent work and intervene in one without confusing the others.
 
 **Helper agents in one session (the Phase 2 move).** Pick this when the main session wants quick parallel thinking and a bounded return. The three stances each had a single job, a clean instruction and no long-lived state; they reported back as files and disappeared. The main session stays in charge.
 

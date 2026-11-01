@@ -36,7 +36,7 @@ Ask the lead agent to run the loop. Generation and judging run in separate helpe
 
 {{prompt:eval-loop-2}}
 
-Now step away. Come back to a generator tightened by a judge you did not move.
+Now step away. Come back to a tactic tightened by a judge you did not move.
 
 While the loop runs, ask about parallel search:
 
@@ -70,7 +70,7 @@ And you weren't there.
 
 **The point:**
 
-In Module 5 you were the eval. Now the judge is a fixed, separate yardstick, and the generator learns to pass it. You do not inspect every output; you design the loop and own the yardstick.
+In Module 5 you were the eval. Now the judge is a fixed, separate yardstick, and the tactic on disk is rewritten until the generator passes it. You do not inspect every output; you design the loop and own the yardstick.
 
 PDCA at the eval layer: Plan (generation tactic), Do (generate), Check (judge), Act (rewrite tactic). The next run, on any topic, starts from the tighter tactic on disk.
 

@@ -14,7 +14,7 @@ Agreeable answers won the round the model was tuned on. Grading its own work is 
 
 ## The report is a hypothesis, not a result
 
-Read what comes back as a claim about the work, not a verdict on it. It will still round the corners.
+Read what comes back as a claim about the work, not a verdict on it. The agent will still round the corners.
 
 You were in the room while the work happened. Where the account matches what you remember, you have two reads agreeing. Where it doesn't, yours counts.
 

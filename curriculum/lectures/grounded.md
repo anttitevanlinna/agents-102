@@ -6,7 +6,7 @@
 
 ## A test-and-fix loop collapses the error rate
 
-Say your briefing is 10% fabricated: ten ungrounded claims per hundred. A first pass often lands close to that; treat it as a working prior, not a measurement. Say the detector catches 90% of them. You fix what it flagged, then test again.
+Say your briefing is 10% fabricated: ten ungrounded claims per hundred. A first pass often comes close to that; treat it as a working prior, not a measurement. Say the detector catches 90% of them. You fix what it flagged, then test again.
 
 Round 1: 10% fabricated → 1% after fix.
 Round 2: 1% → 0.1% after fix.
@@ -56,7 +56,7 @@ Grounding is the discipline; fabrication is the failure: invented case law, inve
 
 ## A drift signal, never proof
 
-Run the same briefing twice from the same sources and ask a different question: what stays stable, and what drifts?
+Run the same briefing prompt twice from the same sources, in two sessions: what stays stable, and what drifts?
 
 Stable claims can still be unsupported; drift is a warning signal, not proof of fabrication.
 
@@ -64,7 +64,7 @@ Two runs is a demo, not a measurement. It firms up at five to ten runs; producti
 
 Now you run the benchmark: four detectors, a claim pool, and a scorer. Agents do the work; you watch the scoreboard fill in. The winner becomes a judge file you keep.
 
-Create a fresh briefing and extract a 30-claim pool. Keep the main session blind until the claims exist.
+Create a fresh briefing and extract a 30-claim pool. Keep the main session from reading the claim files until the claims exist.
 
 <!-- maintainer -->
 

@@ -30,7 +30,7 @@ The final report was dated 4 July 2025. By August, Dr. Christopher Rudge, a heal
 
 On **3 October 2025**, the department published Deloitte's revised version. It disclosed use of **Azure OpenAI GPT-4o** in the review. Freedom-of-information records add an important distinction: a department-hosted toolchain supported code analysis, while Deloitte also used generative-AI tools to complete and format citations. Three days after publication, the government announced Deloitte would refund the final contract installment.
 
-The second-order detail is the one that lands hardest: Rudge reviewed the revised version too and reported that some false references had been replaced with new false references. The department then replaced that September version again on **3 February 2026** to address further identified corrections. Whatever the first fix was, the same failure shape survived inside the corrective response.
+The second-order detail is the one that matters most: Rudge reviewed the revised version too and reported that some false references had been replaced with new false references. The department then replaced that September version again on **3 February 2026** to address further identified corrections. Whatever the first fix was, the same failure shape survived inside the corrective response.
 
 The fact that the revision repeated the failure tells you the verification step still wasn't built in. What that step would have been is the sentence you bring to class.
 

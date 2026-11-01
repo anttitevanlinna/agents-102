@@ -4,7 +4,7 @@
 
 **Session** *(new, "Module 4 - Security audit")*
 
-Start a new session at your training-directory root. Your Exercise 1 skill loads in this project.
+Start a new session at your training-directory root. Your Exercise 1 skill is available in this project.
 
 Name it `m4-security-audit` if supported.
 
@@ -18,9 +18,9 @@ Bring the policy raw report (baseline), the check (expert), your Module 3 system
 
 *3 min*
 
-Open this exercise in a fresh session at your training-directory root, after saving the Exercise 1 skill, which loads at session start.
+Open this exercise in a fresh session at your training-directory root, after saving the Exercise 1 skill, so the session can find it.
 
-Type `/` and look for `/security-audit` in the autocomplete list. That means the skill loaded. The audit prompts in the phases that follow tell it which of its two lenses to apply.
+Type `/` and look for `/security-audit` in the autocomplete list. That means the skill is available. The audit prompts in the phases that follow tell it which of its two lenses to apply.
 
 <div class="rt-cowork">
 

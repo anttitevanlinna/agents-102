@@ -6,8 +6,8 @@ The thing a chat can't do is **Phase 3**. You dropped new sources into the folde
 
 A system is two things stacked:
 
-- **Persistence.** It remembers. Files on disk, not a thread that resets.
-- **Automation.** It runs on its own. The instructions are in a file the agent reads every time.
+- **Persistence.** Files on disk the agent reads again, not a thread that resets.
+- **Automation.** The instructions sit in a file the agent reads at session start.
 
 A saved document with no agent is just a document. An agent with no files is a chat. Put together, the system *keeps getting better the more you feed it*.
 
@@ -25,7 +25,7 @@ Keep the rules small and boring. Apply them consistently across thousands of sma
 
 The memory is a folder of markdown files. No database, special tool or paid tier is needed.
 
-The agent in `agents/` is also a markdown file: instructions the model reads at the start of every session. Knowledge, capability and the guardrail from Module 1 share one plain-text form, so the agent's markdown file also travels: paste it into any LLM tool and it works.
+The agent in `agents/` is also a markdown file: instructions a session reads when you point it there. Knowledge, capability and the guardrail from Module 1 share one plain-text form, so the agent's markdown file also travels: any agent runtime can read it.
 
 Language models are strongest at reading and writing text. When you store knowledge as text, reading it is reading, and updating it is writing. The simplest setup wins because it matches what the model does best.
 
@@ -33,9 +33,7 @@ Language models are strongest at reading and writing text. When you store knowle
 
 ## What this unlocks
 
-Its answers cite your files and carry a voice that isn't a generic industry take, so they belong to the memory you built, not the LLM behind it. *Generic AI becomes your AI when you shape the context that surrounds it.* Guardrails did this at the prompt level in Module 1; a memory does it at the knowledge level.
-
-Every module after this leans on that memory. Multi-agent systems, Security, Quality evals and the Module 8 flywheel all use it.
+The agent's answers cite your files and carry a voice that isn't a generic industry take, so they belong to the memory you built, not the LLM behind it. *Generic AI becomes your AI when you build the memory it reads.* Guardrails did this at the prompt level in Module 1; a memory does it at the knowledge level.
 
 ## Could a competitor claim this?
 

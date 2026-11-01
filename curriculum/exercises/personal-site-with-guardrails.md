@@ -110,7 +110,7 @@ The site is done. Now capture the move, so a fresh agent can repeat it on someon
 
 {{prompt:personal-site-with-guardrails-6}}
 
-Open `module-1/personal-brand-generation.md` and read the first two or three rules end to end. The chat summary rounds corners; the file is what travels and what the agent re-reads in any future personal-brand task. Push back on anything that doesn't match what you did.
+Open `module-1/personal-brand-generation.md` and read the first two or three rules end to end. The chat summary rounds corners; the file is what travels and what the agent reads when a future personal-brand task points to it. Push back on anything that doesn't match what you did.
 
 ## See the mechanism repeat in every phase
 

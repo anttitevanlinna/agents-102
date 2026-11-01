@@ -1,9 +1,9 @@
 ## A file it reads every time
 <!--slide:a-file-it-reads-every-time-->
 
-So far, the context was one message you typed, gone when you close the chat window.
+So far, the context was one message you typed, gone when the session closes.
 
-You can put the context in a file the agent reads at the start of every conversation. You write it once, and it shapes every answer.
+You can put the context in a file the agent reads at the start of every session. You write it once, and it shapes every answer.
 
 That's a guardrail. That's your turn.
 

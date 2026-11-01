@@ -18,7 +18,11 @@ Does this sentence help the student execute the learning on their own? (maintain
 - Threat-of-next-module or gap motivation. Describe the possible future, never the student's deficit.
 - Teaching mechanics a professional already has (how to type, how to open a file). Maintainer: "WHY are we teaching people how to type?"
 
+- A closing sentence that adds little once the point is made.
+
 ## Rewrite
+- No human verbs for what people grant agents (agents do not "earn" autonomy or trust; people grant access).
+- A metaphor must fit its noun: a map is a map, not a "container" or a "place to hang moves".
 - Name the thing instead of "it"/"this"/"that" when the referent is not in the same sentence. Maintainer: "I have been removing the use of 'it' quite a lot."
 - Short paragraphs a reader can take in at a glance: 1-3 sentences. Maintainer: "A has too long a paragraph to easily glance", "Both way too long paragraphs."
 - Slide openers state the point plainly. Maintainer: "A has unclear first sentence."

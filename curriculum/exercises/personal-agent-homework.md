@@ -54,7 +54,7 @@ Open the **Schedule** sidebar in the desktop app and click **New task → New lo
 
 {{prompt:personal-agent-homework-3}}
 
-Save, then click **Run now** once. Double-click `module-2/morning-agent/latest.html` to open it in your browser. To fix anything, edit `module-2/morning-agent/morning.md` or `./style.md`. The task reads both every session, so tomorrow picks up the change.
+Save, then click **Run now** once. Double-click `module-2/morning-agent/latest.html` to open it in your browser. To fix anything, edit `module-2/morning-agent/morning.md` or `./style.md`. The scheduling prompt names both files, so the task reads them every session and tomorrow picks up the change.
 
 ## Phase 5: Let it run for a week
 
@@ -76,7 +76,7 @@ Every morning the agent reads your memory and writes output in your house style.
 
 **The point:**
 
-A memory that sits there is a document. A memory an agent reads on a schedule, producing output you respond to, is the start of a loop. Every HTML agent you build looks native to your organisation, because `./style.md` is the file every agent reads.
+A memory that sits there is a document. A memory an agent reads on a schedule, producing output you respond to, is the start of a loop. Every HTML agent you build looks native to your organisation, because the root instructions file points each agent to `./style.md`.
 
 <!-- maintainer -->
 

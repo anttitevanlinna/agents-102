@@ -18,7 +18,7 @@ After this module, you can:
 
 ## Start here
 
-Start a fresh session at `~/Documents/agents-101/`. It reads the full agent system and `module-7/monday.md`. The room-scale exercise uses a separate shared deliberation folder, so participant files stay out of your local stack.
+Start a fresh session at `~/Documents/agents-101/`. The agent reads the agent system and `module-7/monday.md`. The room-scale exercise uses a separate shared deliberation folder, so participant files stay out of your local stack.
 
 At the start, the shared folder is nearly empty: each participant gets one folder named after them, the buyer/sponsor seeds `challenge.md`, and one or two central synthesizer agents write the selection, agent-set, and plan files at the shared root.
 
@@ -54,7 +54,7 @@ Push back where the summary is wrong. Some unresolved items should stay unresolv
 
 ## Key Concepts
 - Cross-check before publishing; critique before selection.
-- Agents must cite each other, or they invent memory.
+- Agents must cite each other's files, or they invent what they never read.
 - Past the laptop: data access, runtime platform, discoverability.
 - Parts hold; the model rotates.
 
@@ -62,7 +62,7 @@ Push back where the summary is wrong. Some unresolved items should stay unresolv
 
 Your plan is a set of assumptions: label them, start the concurrent pieces, and design experiments for the uncertain ones.
 
-The agent that matters in six months is one nobody in this room has thought of, built by somebody who is not you. You take out the ability to build it. That is slower and harder to put on a slide, and the only part worth anything after the model changes.
+The agent that matters in six months is one nobody in this room has thought of. You leave able to build it. That is slower and harder to put on a slide, and the only part worth anything after the model changes.
 
 You leave with a flywheel, not a graduation.
 

@@ -16,7 +16,7 @@ Iterate; save when good enough.
 
 The crux is the obstacle. Name the decision the crux blocks: the call you'd stay late to make.
 
-Ask the agent to name the sharpest decision the crux blocks and append it to the same file.
+Ask the agent to name the sharpest decision the crux blocks and append it to the file where you saved the crux.
 
 {{prompt:name-your-crux-2}}
 

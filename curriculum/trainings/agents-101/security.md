@@ -46,9 +46,9 @@ The unease stays. Two things travel: the reusable check, and the root instructio
 
 A skill packages the *how* of a recurring judgment or workflow, so the agent repeats the method without you rebuilding it each time. The security check was one example. Others: reviewing customer data use, preparing a weekly briefing, checking source quality, drafting in a house style, triaging a queue.
 
-A skill is not tied to one chat, project or agent. You apply it across projects and agents, then sharpen it where the method proves thin.
+A skill is not tied to one session, project or agent. You apply it across projects and agents, then sharpen it where the method proves thin.
 
-To share, give a teammate the skill and install it in their runtime. They call the same method without your prompt history. A skill is not a deployed service and does not settle ownership. Module 7 compares this with three other ways to share: shared context, shared output, and an interface.
+To share, give a teammate the skill and install it in their runtime. Their agent loads the same method by name without your prompt history. A skill is not a deployed service and does not settle ownership. Module 7 compares this with three other ways to share: shared context, shared output, and an interface.
 
 ## Key Concepts
 - No certainty: assess, mitigate, reassess the residual, decide.
@@ -68,7 +68,7 @@ Read Mata v. Avianca (2023) and Deloitte Australia / DEWR report (2025) in the l
 
 [The Missing Check](lectures/module-5-prework.md)
 
-Once saved, end this session. Module 5 starts fresh at `~/Documents/agents-101/`.
+Once the files are saved to disk, end this session. Module 5 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
 The agent is scoped and the residual risk is named. Can you trust what it says inside that scope?

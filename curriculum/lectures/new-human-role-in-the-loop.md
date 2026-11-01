@@ -64,7 +64,7 @@ Two judges now sit on disk: one keeps the work grounded, one steers it toward yo
 
 ## The better it gets, the less you watch
 
-Every clean week is evidence the loop works, and it erodes your ability to tell when it stops. Design the loop and never run one yourself, and you lose the eye that made you worth putting in charge of it.
+Every clean week is evidence the loop works, and each one erodes your ability to tell when the loop stops. Design the loop and never run one yourself, and you lose the eye that made you worth putting in charge of it.
 
 ## When did you last read one yourself?
 

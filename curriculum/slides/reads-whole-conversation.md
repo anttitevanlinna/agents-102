@@ -1,7 +1,7 @@
 ## It reads the whole conversation every time
 <!--slide:reads-whole-conversation-->
 
-Claude reads the whole conversation every time and generates the next response from all of it. Your first prompt and its answer are part of the input to the second prompt. Change the front, change the back.
+The LLM reads the whole conversation every time and generates the next response from all of it. Your first prompt and its answer are part of the input to the second prompt. Change the front, change the back.
 
 That is context. You steer your agent with context.
 

@@ -30,7 +30,7 @@ Roster first: it fixes the evidence the judgment may stand on.
 
 ## Keep the main session blind
 
-Why a separate worker? Your main session stays blind to what was fabricated, so it cannot taint the benchmark.
+Why a separate worker? It runs in its own context, so your main session never sees what was fabricated.
 
 <div class="rt-cowork">
 

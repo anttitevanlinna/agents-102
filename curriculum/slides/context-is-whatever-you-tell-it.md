@@ -3,7 +3,7 @@
 
 One more window. First prompt: *"I'm a cardiologist preparing dinner for my patients."* Then the same dinner prompt.
 
-The suggestion shifts: heart-healthy, low-sodium, vegetable-forward. You told it who you are.
+The suggestion shifts: heart-healthy, low-sodium, vegetable-forward. You told the LLM who you are.
 
 Context is whatever you tell it: a fact, a role, a preference.
 

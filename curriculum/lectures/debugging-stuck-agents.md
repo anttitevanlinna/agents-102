@@ -14,7 +14,7 @@ This prompt is long. Make your own variant.
 
 1. **Sources:** add the missing file, remove the stale one, split contradictory material so the agent sees the conflict.
 
-2. **Processing:** rewrite the prompt, role, handoff, or output shape. Split an agent doing two jobs. Collapse agents pretending to be different.
+2. **Processing:** rewrite the prompt, role, handoff, or output shape. Split an agent doing two jobs. Merge agents whose instructions are really the same.
 
 3. **Boundary:** narrow the agent's job, remove the tool, add a human gate, move the risky step from "do" to "propose."
 

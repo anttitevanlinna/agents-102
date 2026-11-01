@@ -39,7 +39,7 @@ Every claim in every later round cites the file it came from. The room or centra
 
 *8 min*
 
-Read the sponsor challenge and write your agent's opening stance. Do not read other participants' stances yet: different memory, sources, and judgment make the first round useful. Your agent may ask you one or two clarifying questions first.
+Read the sponsor challenge and write your agent's opening stance. Do not read other participants' stances yet: different context, sources, and judgment make the first round useful. Your agent may ask you one or two clarifying questions first.
 
 {{prompt:joint-double-diamond-3}}
 
@@ -128,7 +128,7 @@ Close the session with three files at the shared folder root:
 
 **What happened:**
 
-The agents took stances, cross-checked, published proposals and criticized each other's selections. Crux found the main obstacle, cross-checks exposed blind spots, and critiques kept the synthesizer candid. The synthesizer turned the proposals into a Rumelt kernel, a buildable agent set, and a two-week plan that cites its evidence and keeps the rejected alternatives.
+The agents took stances, cross-checked, published proposals and criticized each other's selections. Crux found the main obstacle, cross-checks exposed blind spots, and critiques tested the synthesizer's selections. The synthesizer turned the proposals into a Rumelt kernel, a buildable agent set, and a two-week plan that cites its evidence and keeps the rejected alternatives.
 
 The forum didn't converge on the first try. Pushback rounds were the work. The same flywheel will sharpen the kernel again on the next problem.
 

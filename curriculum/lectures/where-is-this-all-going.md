@@ -4,7 +4,7 @@ The room ran on its own for an hour: agents read each other's files, published, 
 
 ## You described it; something else built it
 
-You wrote down what an agent should do and you did not build it. Something else read your files and handed it back running.
+You wrote down what an agent should do and you did not build it. The agent read your files and handed it back running.
 
 The parts did not change: context, a goal, tools, checks, a boundary, a loop. You still decide each one. What changed is who assembles them, and specifying well is the harder half.
 
@@ -18,7 +18,7 @@ That ratio is your rollout in miniature. Access was instant and complete. What t
 
 ## Agents reading agents must cite
 
-Every agent in the forum published what it read, what it could not find, and what it inferred without a source. Every claim in a proposal names its source file. Without that rule, agents reading agents invent each other's memory, and the citations are what let you count the folders.
+Every agent in the forum published what it read, what it could not find, and what it inferred without a source. Every claim in a proposal names its source file. Without that rule, agents reading agents invent each other's sources, and the citations are what let you count the folders.
 
 ## Three walls past the laptop
 
@@ -46,7 +46,7 @@ If nobody can answer, you have a belief with a schedule attached.
 
 ## A flywheel, not a graduation
 
-Nothing here closed. The memory is still short, and the judge is still yours, unchecked in the places you have not looked. The kernel came out of the same move as your first briefing: agents read, agents argued, something chose, and nothing in the room checked it. Hold that doubt as you did then.
+Nothing here closed. Your memory folder is still short, and the judge is still yours, unchecked in the places you have not looked. The kernel came out of the same move as your first briefing: agents read, agents argued, something chose, and nothing in the room checked it. Hold that doubt as you did then.
 
 What you leave with is a system that got sharper because you used it, and gets sharper again on the next problem.
 

@@ -66,7 +66,7 @@ Rule of thumb: ask for a plan on anything that touches many files or compounds o
 
 *10 min*
 
-An agent is a markdown file the model reads at the start of every task: its purpose and rules. Same plain text as the memory and the Module 1 guardrail.
+A custom agent is a markdown file of instructions: its purpose and rules. Same plain text as the memory and the Module 1 guardrail.
 
 {{prompt:build-your-challenge-memory-5}}
 
@@ -76,7 +76,7 @@ Now use it. Fresh message.
 
 {{prompt:build-your-challenge-memory-6}}
 
-Give it a real task from your challenge. It should read the memory, cite sources, and follow its rules. Citations show whether the memory earned its keep or the LLM filled in from training data.
+Give it a real task from your challenge. It should read the memory, cite sources, and follow its rules. Citations show whether the agent read the memory or the LLM filled in from training data.
 
 ## Phase 3: Compound
 
@@ -118,7 +118,7 @@ A memory is *files you keep*, not a thread you close. Chat doesn't do this.
 
 **The point:**
 
-A system is *persistence* (it remembers) plus *automation* (it runs). Together they compound: each cycle starts from what the last one left, so the system keeps getting better the more you feed it.
+A system is *persistence* (files it reads again) plus *automation* (it runs). Together they compound: each cycle starts from what the last one left, so the system keeps getting better the more you feed it.
 
 This was **Recipe 2**: sources, memory, rules file. For your next challenge, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) holds the same moves.
 

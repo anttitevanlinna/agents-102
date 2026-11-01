@@ -43,6 +43,8 @@ Fourteen past calls where every simulated reader picked the other side. Antti wr
 
 **Counterweight: a constructed metaphor stays.** Antti, the same day: *"I'm totally OK with few really well done metaphors. for instance the ae101 has \"painting with LLM\". But that is then really constructed. Not just off-hand single sentence witty remark."* The line runs between a metaphor the training builds and returns to across beats (paint by agent) and a one-sentence witty aside. The aside goes; the constructed metaphor stays, and there are only a few.
 
+**Frame and point of view drift is the recurring correction.** Antti: *"I so remember doing language work that frame, point of view and similar were recurring corrections. The LLM strays into writing from wrong perspective at times. ae101 is quite right quite consistently."* AE101 is the reference corpus for perspective. When Agents 101 reads off, compare its frame against the matching AE101 beat before reaching for a style rule. This fits the 2026-10-31 rubric baseline, where point of view (55) was the weakest score.
+
 ## 2026-10-07 — rights pass before licensing (AE101, Agents 101)
 
 **Counterweight: a famous name stays.** An audit flagged the student page that says to build "a small Lemmings game" as a trademark risk and proposed a generic "guide-the-creatures game". Antti: *"come on. Lemmings is a famous enough thing. Like pacman. Keep."* The name is the instruction: it tells the participant in one word what to build and how it should feel. A generic description would need a paragraph and still be vaguer.

@@ -14,7 +14,7 @@ Baseline is the measure thread's n=24 on pages before the rollout. Some cells ha
 
 | module | baseline | rolled version | n | to main |
 |---|---|---|---|---|
-| M1 getting-going | 75 | c2: 67 | 18 | pending M1 rewrite (c4) check |
+| M1 getting-going | 75 | c2: 67 (rewrite c4: 50, n=24) | 18 | c2; module-2-prework kept at M2's version |
 | M2 building-agent-systems | 21 | c1: 30 | 23 | yes |
 | M3 multi-agent-systems | 17 | c2: 22 | 18 | yes (compaction only) |
 | M4 security | 83 | c1: 96 | 24 | yes; audit-your-agent kept at v0 (locked sentences) |
@@ -23,3 +23,5 @@ Baseline is the measure thread's n=24 on pages before the rollout. Some cells ha
 | M8 agents-building-agents | 4 | c1: 4 | 24 | yes (compaction only; re-aim waits for a spar) |
 
 None drops. Compaction alone does not move M3, M5 or M8: their pages teach a different idea than the strategy line, which is the spar question.
+
+M1 rewrite (c4, `regen-module.py` from the whole strategy file and Antti's paint Big Idea): best loop score (83 overall vs c2 80, v0 61) but Big Idea stated 50 of 100 at n=24 against 75 baseline; 5 of 24 students left with "the agent grades its own work too gently" (the cold-critic debrief). Not on main; c2 went instead.

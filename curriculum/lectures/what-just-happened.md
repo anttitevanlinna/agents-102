@@ -2,35 +2,33 @@
 
 ## Context became something you can point at
 
-*Context* is the bit you added that turned a generic About page into a site your neighbour recognised as yours. The move: change something, notice what shifted, adjust, build again.
+*Context* is the bit you added that turned a generic About page into a site your neighbour recognised as yours.
 
-The durable result is what you can now package: what context the agent needs, what generic looks like, what a stronger pass does differently, and which rule should survive into the next session.
+What to package: what context the agent needs, what generic looks like, what a stronger pass does differently, and which rule should survive into the next session.
 
 ## Why the look-back was kind to you
 
-In the look-back phase, the agent's picks of three generic claims in its own site came back gentle.
+The agent's picks of three generic claims in its own site came back gentle.
 
-Agreeable answers won the round the model was tuned on. Grading its own work is another chance to be helpful: the self-report is the same kind of output as the thing reported on.
+Grading its own work is another chance to be helpful: the self-report is the same kind of output as the thing reported on.
 
 ## The report is a hypothesis, not a result
 
-Read what comes back as a claim about the work, not a verdict on it. The agent will still round the corners.
+Read what comes back as a claim about the work, not a verdict on it.
 
-You were in the room while the work happened. Where the account matches what you remember, you have two reads agreeing. Where it doesn't, yours counts.
+Where the account matches the session as you remember it, two reads agree. Where it doesn't, yours counts.
 
 ## The agent generated, you decided
 
-The site reads as yours because your own knowledge of the subject stood between the generic draft and the page.
-
-Only you could catch a wrong line about you, which is why your own profile is the place to start.
+Your own knowledge of the subject stood between the generic draft and the page, which is why the site reads as yours. Only you could catch a wrong line about you, so start with your own profile.
 
 ## You act on the future to know what's real
 
-**You act on the future to know what's real.** Nobody knows where agents are going, not Anthropic, not your board. The people who figure it out first are the ones running the experiment. Reading a McKinsey report on the agentic enterprise gives you opinions about a future. Running the experiment gives you experience of it.
+**You act on the future to know what's real.** Nobody knows where agents are going, not Anthropic, not your board. The people who figure it out first run the experiment.
 
-**Mental models only come from doing.** Before today, you had a vocabulary. Now you have a little piece of felt experience.
+**Mental models only come from doing.**
 
-Now: five minutes with the agent. The debrief.
+Five minutes with the agent: the debrief.
 
 <!-- maintainer -->
 

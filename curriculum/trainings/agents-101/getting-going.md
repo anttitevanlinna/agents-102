@@ -5,20 +5,20 @@ With the right guardrails, you create output that's genuinely yours, not generic
 
 ## Prework
 
-Set up your agent runtime. Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read [What is an Agent, LLM vs chat](trainings/agents-101/supplementary/what-is-an-agent.md#llm-vs-chat).
+Set up your agent runtime. Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read [LLM vs chat](trainings/agents-101/supplementary/what-is-an-agent.md#llm-vs-chat).
 
 ## What You'll Learn
-After this module, you can:
+You can:
 - **Generate** an HTML one-pager
 - **Apply** guardrails and compare outputs
 - **Evaluate** output against your domain knowledge
-- **Package** the guardrails as reusable rules
+- **Package** guardrails as reusable rules
 
 ## Start here
 
-Start a fresh session at `~/Documents/agents-101/`; outputs go in `module-1/`.
+Outputs go in `module-1/`.
 
-**The question, to you:** where did LLM output on your own work come out generic, and what made it feel like yours?
+**The question, to you:** where did LLM output on your work come out generic, and what made it yours?
 
 [Opening: Context is King](lectures/context-is-king.md)
 
@@ -28,19 +28,19 @@ Start a fresh session at `~/Documents/agents-101/`; outputs go in `module-1/`.
 
 ## Debrief
 
-Five minutes. The retro is the second pass on `module-1/personal-brand-generation.md`. You wrote the first version while doing the work. Now the agent reads the file against the actual session: what worked, what fell flat, what to keep, what to drop. The second pass is where the file starts compounding.
+Five minutes. The retro is a second pass on `module-1/personal-brand-generation.md`: the agent reads the file against the session for what worked, what fell flat, what to keep, what to drop.
 
 Ask the agent to retro your rules file.
 
 {{prompt:a101-m1-debrief-rules-retro}}
 
-The agent updates the file and summarises the changes in chat. Expect the generation rules to change a lot. The first pass is rarely right.
+The agent updates the file and summarises the changes. Expect the generation rules to change a lot.
 
 ## Push back on what the retro missed
 
-The LLM is generous to a rules file it just helped write. *"Mostly worked, small sharpens"* is the agent grading its own work charitably.
+The LLM is generous to a rules file it just helped write. Push back on anything that doesn't match your sense of the work.
 
-Push back on anything that doesn't match your sense of the work. Each round sharpens the file: **compound interest on a rule file.** Repeat on every rules file: do the work → capture → reflect → sharpen.
+Each round sharpens the file: do the work → capture → reflect → sharpen. Repeat on every rules file.
 
 ## Get a cold read
 
@@ -48,9 +48,7 @@ Push back on anything that doesn't match your sense of the work. Each round shar
 
 {{prompt:a101-m1-debrief-cold-critic}}
 
-Asked the most-uniquely-you line first, the LLM warms into appreciation and goes soft on the generic-line call. Your gut on what is uniquely you carries more weight than the agent's.
-
-Where the critic sees generic, your context is thin; add one sharp detail, then regenerate the site. Where its *"uniquely you"* pick matches your gut: solid ground.
+Where the critic sees generic, your context is thin: add one sharp detail, then regenerate the site. Where its *"uniquely you"* pick matches your own read, you're on solid ground. Your read outweighs the agent's.
 
 ## Key Concepts
 - Guardrails are structured context, not a checklist.
@@ -59,20 +57,18 @@ Where the critic sees generic, your context is thin; add one sharp detail, then 
 
 ## Bring to Module 2
 
-Bring a live challenge and working access to Confluence and OneDrive. Module 2 builds on a real problem.
-
-Complete the linked Module 2 prework before you come.
+Bring a live challenge and working access to Confluence and OneDrive. Complete the linked Module 2 prework before you come.
 
 ## Pre-reads before Module 2
 
-Karpathy's LLM Wiki post; Lindenberg's memory-architecture piece, optional.
+Optional: Karpathy's LLM Wiki post; Lindenberg's memory-architecture piece.
 
 [Module 2 prework](lectures/module-2-prework.md)
 
 Save the prework, end this session, then start Module 2 fresh at `~/Documents/agents-101/`.
 
 ## Next
-The output now travels with a file the agent re-reads next time. Module 2 builds on this through memory, agents, and room rules.
+The agent re-reads the output file next time.
 
 <!-- maintainer -->
 

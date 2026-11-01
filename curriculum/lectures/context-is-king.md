@@ -1,6 +1,18 @@
 # Context is King
 <!--slide:cover-->
 
+## Ten versions, no spec
+
+I approach almost all my work with agents now: broad analysis, a first version early, and far more text than I read line by line. Ten iterations is fine.
+
+This autumn three colleagues started building an agent factory. I asked which capabilities they were building. They said they had a few problems to solve.
+
+A colleague has a name for how I work: steering without reading all the text. For a while I felt I had lost a common language with people who write the spec first and meet to agree on it. Their meetings are how they iterate. Mine happen with the agent.
+
+Antti Tevanlinna
+
+## What makes the difference?
+
 The same question. Two answers. What makes the difference?
 
 [Same question, two answers](slides/same-question-two-answers.md)

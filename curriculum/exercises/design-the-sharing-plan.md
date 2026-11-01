@@ -2,7 +2,7 @@
 
 **Time:** 23 minutes.
 
-`module-7/jtbd.md` names the job. `module-7/branch.md` names the candidate. Now find the obstacle that decides whether the teammate can actually absorb it, then draft both halves of the plan.
+`module-7/jtbd.md` names the job. `module-7/branch.md` names the candidate. Find the obstacle that decides whether the teammate can absorb it, then draft both halves of the plan.
 
 ## Find the absorption bottleneck
 
@@ -12,17 +12,17 @@ The obstacle is usually not the first technical limitation a builder sees. The a
 
 {{prompt:share-your-work-3}}
 
-Read `module-7/absorption-bottleneck.md`. A good bottleneck explains why several other obstacles stay hard. If removing it would solve only itself, ask the agent to cluster the obstacles again.
+Spot-check `module-7/absorption-bottleneck.md`. A good bottleneck explains why several other obstacles stay hard. If removing it would solve only itself, ask the agent to cluster the obstacles again.
 
 ## Draft both plans
 
 *18 min*
 
-The technical plan and people plan carry equal weight. Missing names remain visible as `UNASSIGNED — Monday's question`; the agent does not invent them.
+The technical plan and people plan carry equal weight.
 
 {{prompt:share-your-work-4}}
 
-Read the two files side by side. `module-7/technical-plan.md` should name what moves the outcome and the first real test. `module-7/people-plan.md` should name who owns, governs, operates, judges, and propagates it. A polished technical file beside a people file full of unnamed roles is the finding, not a finished rollout.
+Compare the two files side by side. `module-7/technical-plan.md` should name what moves the outcome and the first real test. `module-7/people-plan.md` should name who owns, governs, operates, judges, and propagates it. A polished technical file beside a people file full of unnamed roles is the finding, not a finished rollout.
 
 ## Carry the plan forward
 

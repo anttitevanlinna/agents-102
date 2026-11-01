@@ -1,33 +1,27 @@
 # From Personal to Team
 
 ## Big Idea
-You can't really share an agent. You can share context, a skill, the output, or an interface. The hard part is not access; it is absorption.
+
+You can't really share an agent. You can share the context, a skill, the output, or an interface, and choosing between them is a strategy decision.
 
 ## Prework
 
-No new reading packet. Walk in with one example where people had access to a tool or process but real use did not follow.
+**Bring one example from your own organisation where people got access to a tool and did not use it.** A licence rollout, a portal, or a shared drive works.
 
 ## What You'll Learn
+
 After this module, you will be able to:
-- **Interview** for your teammate's job-to-be-done using the agentic Jobs-to-be-Done pattern (Clayton Christensen and collaborators), and write the outcome statement as the design contract
-- **Select** the smallest shareable form (share context / share a skill / share the output / share an interface) for the outcome the teammate wants moved
-- **Redesign** for shared use: technical plan + people plan (ownership, governance, operating, accountability, propagation)
-- **Test** the switch the teammate would make and surface the assumptions they'd need to absorb
-- **Name** the likely adoption failure before it happens, including the social failure that's hardest to see
+
+- **Interview** for a teammate's job before choosing what to share
+- **Pick** one of four sharing strategies against the outcome that job needs
+- **Find** the absorption bottleneck and draft the technical plan and the people plan together
+- **Test** the switch assumptions and name one person and one test to take out of the room
 
 ## Start here
 
-Start a fresh session or task at `~/Documents/agents-101/`.
+What would you want a teammate to have: your `memory/` folder, one of your skills, the morning output, or a way to ask the agent a question in Slack? And why that one?
 
-You start with the agent system you built across Modules 2-6. By the end, `module-7/` holds the sharing plan and `module-7/monday.md` holds the next move.
-
-The stack on disk: a memory, synthesis across three source zones, skills that audit the system, a fixed judge, and a generation tactic that got sharper under it. Somewhere in it is a thing that produces output worth checking before a meeting.
-
-The question that shows up on its own: *could this help someone else?*
-
-Hold that feeling. It's not a governance question yet. It's a generous one. At Module 7 it becomes a plan, plainly and against real friction.
-
-Two questions to warm up: who's the one person who came to mind just now? And what makes you hesitate about actually handing this to them?
+The agent writes the sharing plan into `module-7/`. `module-7/monday.md` holds the next move: one person, one question, one test.
 
 [Exercise: Interview for the job and pick a candidate](exercises/share-your-work.md)
 
@@ -39,35 +33,25 @@ Two questions to warm up: who's the one person who came to mind just now? And wh
 
 ## Debrief
 
-Five minutes. The agent reviews the sharing deliverable and sharpens whichever sharing-artifact file you produced (a skill file, an interface description, an output schedule, a context export). The evidence is what's in your Module 7 folder: your JTBD outcome statement, the patterns you picked, the technical plan, the people plan, assumptions, and failure stories. The agent reviews, rewrites the sharing artifact in place, and reports what changed. You push back on anything that's off.
+Who gets your context, who gets a skill, who wants only the output, and who would use an @mention? It is rarely the same person across all four.
 
 {{prompt:a101-m7-debrief-sharing-artifact}}
 
-> **Watch for slowness.** When you push back on the rewrite, the agent should edit the section you flagged, not rewrite the whole file. The prompt above tells it to. If the agent reaches for a full rewrite anyway, push back: *"Edit just the section I named."*
-
-Notice what this prompt insists on: name the path, overwrite in place, quote the before-and-after for every claim. When you're sharpening something for another person to use, "what got sharpened" without the actual lines is a draft pretending to be a finished thing. The before-and-after quote is how you know the sharpening reached the file, not just the summary.
-
-## Push back on the summary
-
-Push back where the agent's summary is wrong. *"The teammate's job wasn't vague, you just didn't see it"* / *"you pulled too much out of the skill, put the edge cases back."* The artifact: the sharpened sharing file itself, plus one line in your Module 7 next-step file naming the first move. Save the conversation. It's the bridge to when work resumes.
-
 ## Key Concepts
-- The job comes first, the candidate second; the outcome sentence is the contract.
-- Access is easy; absorption is scarce.
-- Four ways to share: the context, a skill, the output (push), an interface (pull). Never the whole agent.
-- What would have to be true for them to switch?
+
+- Start with the teammate's job, not with what you built.
+- The four sharing strategies are share the context, share a skill, share the output (push), and share an interface (pull).
+- Pick the candidate against the outcome. Infrastructure is a constraint, not a reason.
+- The absorption bottleneck is the obstacle that keeps several others hard.
+- Write the technical plan and the people plan together.
+- Test what would have to be true for the teammate to switch.
+- Access is a switch someone flips. Absorption happens in other people's weeks.
 
 ## Bring to Module 8
 
-**Run `module-7/monday.md`.** Test one assumption. Ask for one name. Talk to one person. Module 8 works from what happened when the sharing plan touched the real organisation, so it needs a plan that has touched one.
-
-Come to Module 8 without one tested assumption or named person and you'll be reconstructing the contact while the opening exercise is already using the evidence. Your call.
-
-Once the evidence is written down, end this module's session or task. Module 8 starts fresh at `~/Documents/agents-101/`.
+**Bring `module-7/monday.md` and what the named person said.** Their answer is the evidence. The plan is still the hypothesis.
 
 ## Next
-
-The sharing plan leaves the room and meets the organisation. What comes back from that contact is Module 8's raw material.
 
 <!-- maintainer -->
 

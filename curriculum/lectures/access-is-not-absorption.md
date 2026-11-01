@@ -1,50 +1,38 @@
 # Lecture: Access is not absorption
 
-You have a plan now. A shape picked, an owner named or marked unassigned, an assumption you would test first. The rest of this is about the person on the other end of it.
+[Access is easy; absorption is scarce](slides/access-is-easy.md)
 
-## The job comes first, the candidate second
+## The analysis was ready. The decision never came.
 
-You started from the teammate's job, not from your agent, and the agent did most of that reading: what the person is trying to get done, what they use for it today, what a better week would look like. The outcome sentence you wrote is the contract: minimize or increase something, while doing that job. A candidate that does not move it is not a candidate.
+At the start of 2026 I set out to redesign a whole value stream with agents. We picked the slice that takes a company's flagship product to its millions of customers. Many teams touch it.
 
-The interview earned its keep when it found a third outcome past speed and quality: a dependency removed, an anxiety gone, a scope widened. Speed and quality alone means it went shallow.
+We built a multi-agent system for the work. About fifteen people across those teams mapped their own part and uploaded their own documents. A central agent pulled it all into one map of how the work flows today.
 
-## You cannot share an agent
+On the first workshop day, most of them refined that map together. People had fun, and bit by bit they learned how it works. On the second day a smaller group redesigned the flow. We left with a plausible proposal and the analysis to decide on it.
 
-Four shapes are on the list. Share the context. Share a skill. Share the output (push). Share an interface (pull). *Share the whole agent* is not on the list, and it is worth being plain about why.
+We had chosen this topic with the senior leadership before we started. By the decision meeting, the urgency had gone. New priorities had come up, and fires were burning elsewhere. The proposal got neither a yes nor a no.
 
-The agent file is a page of instructions. It is not where the work lives. The work lives in the memory you curated, in the corrections you made every time a summary rounded a corner, in the judgement you brought to output that looked fine and was not. Hand someone the agent file and you have handed them the shell of a thing whose contents are still on your disk and in your head. They run it, get a generic answer, and quietly stop.
+The leadership had not done the analysis. People they trusted had. Companies, even when they go agentic, work first and foremost on the human principle. Today, at least. Who knows about the future.
+
+Antti Tevanlinna
 
 [Three parts copy, one does not](slides/three-parts-copy.md)
 
-[Access is easy; absorption is scarce](slides/access-is-easy.md)
+## Each strategy asks something different of the people receiving it
 
-## People absorb what they already half know
+Share the context, and teammates have to trust your curation enough to build on it. Share a skill, and it has to fit into an agent they already run.
 
-People take up what they already half know. That is not a statement about willingness. It is the plain shape of how anyone absorbs anything: you recognise the new thing by what it resembles in the work you already do, and if it resembles nothing, you have nowhere to put it.
+Share the output, and it has to appear where they already look, often enough to become a habit. Share an interface, and someone has to keep it running and answer for it when it is wrong.
 
-Michael Polanyi, a philosopher of science, had the line for it: *we know more than we can tell.* Your agent runs on the part of your work you could never have written down. The teammate you are handing it to has their own version of that, about their own work, and it is the only place your thing can land.
-
-## This is the interface piece
-
-In the full agent picture, this is the interface piece. It is the first one that has another person on the other side of it.
-
-Context you chose. Boundaries you set. Checks you wrote. Each of those was a decision you could make and remake on your own. The interface is the first piece whose shape depends on somebody whose calendar you do not control.
+Pick the one your teammate's week can take in.
 
 [What would have to be true for them to switch?](slides/what-would-have-to-be-true.md)
 
-## The one piece you don't decide
+## One name, one small move
 
-Every piece so far was yours to decide. This one is not. You can hand someone the context, the skill, the output, the interface. Whether they pick it up is their decision, made for their own reasons, on a Tuesday you will not be in the room for.
+You cannot schedule absorption from your side. It starts with one person and one conversation about how they do the job today.
 
-The thing you would most like to hand over is the one thing that will not go. You cannot hand over what you learned getting here. You can hand over four things, and none of them is what you learned.
-
-## The people plan stalls on names
-
-You felt this an hour ago. The technical plan filled quickly. The people plan stalled on names.
-
-That was not the exercise being hard. That was the exercise being accurate. A missing name is a finding: it marks the part of this that is not built yet, and it is the part that decides whether any of the rest gets used.
-
-So the move stays small. One name. One person whose week this would change, who would tell you plainly if it did not.
+`module-7/monday.md` holds that name, that question and the first test. Have the conversation before you build anything more. Their answer tells you which plan to keep.
 
 <!-- maintainer -->
 **Laws moved in from Key Concepts (2026-09-24, Antti-directed).** `## The job comes first, the candidate second` carries the outcome-first, design-contract and third-outcome bullets `personal-to-team.md` § Key Concepts used to state; the replacement test already lived on `## What would have to be true for them to switch?`.
@@ -57,7 +45,7 @@ So the move stays small. One name. One person whose week this would change, who 
 
 **Placement:** After `share-your-work.md`, `design-the-sharing-plan.md` and `test-the-sharing-plan.md`, before Debrief. The lecture depends on the student having met the four shapes and having stalled on the people plan; moved earlier, both openers lose their referent.
 
-**Scar slot (fallback home, unfilled).** `braid-the-anatomy.md` § 3 places the point-of-view incident at M4 in `practice-of-risk.md`; `control-and-creativity.md` § 3 places it here, against *the people plan stalls on names* — a thing the narrator built, gave to real people who had reason to want it, and that went unused. If Antti chooses M7 over M4, the incident lands between *This is the interface piece* and *What would have to be true for them to switch?*, 12 to 18 lines, first person, one number, no recovery arc and no lesson line at the end. Nothing ships in the body until he writes it: no placeholder, no stand-in incident.
+**Scar slot (filled).** Antti's value-stream story sits in the body as its own slide, signed, closing on his human-principle line with "Today, at least. Who knows about the future." Placement and closer are his calls on the calls page (2026-11-01). The M4 home in `practice-of-risk.md` stays empty.
 
 **Roger Martin's replacement test** is credited student-side in `personal-to-team.md` § Key Concepts. The lecture runs the question unattributed to hold `check_writing.md §11` at one body mention per module; *what would have to be true?* is also house vocabulary by M8.
 

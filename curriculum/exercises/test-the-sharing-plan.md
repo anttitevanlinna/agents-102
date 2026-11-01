@@ -2,7 +2,7 @@
 
 **Time:** 22 minutes.
 
-The technical and people plans are hypotheses. This exercise tests the switch they assume, names the failure that could hide behind a clean technical build, and turns one assumption into a conversation.
+The technical and people plans are hypotheses.
 
 ## Test the switch assumptions
 
@@ -12,17 +12,15 @@ Use Roger Martin's question: *what would have to be true for this teammate, doin
 
 {{prompt:share-your-work-5}}
 
-`module-7/assumptions.md` now records the two or three tests you selected for this week.
+`module-7/assumptions.md` records the two or three tests you selected for this week.
 
 ## Name the likely failure and Monday move
 
 *12 min*
 
-Six months from now, the teammate went back to the incumbent. The agent writes three failure stories, then turns the strongest evidence into one named conversation and one test.
+Six months from now, the teammate went back to the incumbent. The agent writes three failure stories, then carries the strongest into `module-7/monday.md`: one person, one question about how they do the job today, and one selected assumption with its test.
 
 {{prompt:share-your-work-6}}
-
-The agent carries the strongest failure pressure into `module-7/monday.md`: one person, one question about how they do the job today, and one selected assumption with its test.
 
 ## Take the transferable move with you
 

@@ -4,21 +4,11 @@
 
 **Session** *(new, "Module 7 - Personal to team")*
 
-Start a new session or task at your training-directory root.
-
-Name it `m7-personal-to-team` if your runtime supports session names.
-
-Your memory has been working for you for days now. It catches things you'd have missed, keeps a tone you taught it, and produces something you check before meetings. The question arrives on its own: *could this help someone else?*
-
-Hold the impulse. Then start with the teammate's work.
-
-You are not going to ask *"what should I share with my teammate?"* That question is builder-centered and skips the one thing that decides whether sharing works: **the job** your teammate is trying to get done. This is the Jobs-to-be-Done frame from Clayton Christensen and collaborators. Your teammate doesn't want your agent. They want a job done. Your agent, your skill, your output, your interface: any of those is a candidate for hire. Does it do the job better than what they currently use?
-
-The starting question is theirs, not yours: *what job is my teammate trying to get done, and which sharing shape does it?*
+Start with the teammate's work, not with *"what should I share with my teammate?"* What decides whether sharing works is **the job** your teammate is trying to get done. This is the Jobs-to-be-Done frame from Clayton Christensen and collaborators. Your agent, skill, output or interface is a candidate for hire: does it do the job better than what they currently use?
 
 ## Interview for the job
 
-This is a heavy read across the working set, and a shallow confident finish is as risky as over-reading. If the agent ranges too wide, interrupt with *"tell me what you've found so far, narrow to the files that bear on this teammate, then continue."* If it declares the job after a thin pass, say *"there's more here. Keep reading before you settle the hypothesis."*
+This is a heavy read across the working set. If the agent ranges too wide, interrupt with *"tell me what you've found so far, narrow to the files that bear on this teammate, then continue."* If it declares the job after a thin pass, say *"there's more here. Keep reading before you settle the hypothesis."*
 
 <div class="rt-code">
 
@@ -31,26 +21,24 @@ This is a heavy read across the working set, and a shallow confident finish is a
 
 </div>
 
-Read `module-7/jtbd.md`. The test is specificity: does it name one teammate, their current way of doing the job, and an outcome you could observe? If it could describe anyone in the room, point to the generic line and ask the agent to try that part again.
+Read `module-7/jtbd.md`. Does it name one teammate, their current way of doing the job, and an outcome you could observe? If it could describe anyone in the room, point to the generic line and ask the agent to try that part again.
 
 ## Pick against the outcome
 
-The agent then compares candidates from `patterns/personal-to-team-patterns.md` against that outcome and writes your choice to `module-7/branch.md`.
-
-The four sharing strategies are:
+The agent compares candidates from `patterns/personal-to-team-patterns.md` against that outcome and writes your choice to `module-7/branch.md`. The four sharing strategies:
 
 1. **Share the context.** Your `memory/`, `sources/`, root instructions, and `style.md` travel. Teammates build on top.
 2. **Share a skill.** Extract one scoped capability. Teammates plug it in.
 3. **Share the output (push).** Schedule the agent. Output lands where the team looks.
 4. **Share an interface (pull).** Wrap the agent. Teammates invoke it through a bot, mention, form, or endpoint.
 
-*"Share the whole agent"* is a vendor pitch and is NOT on the list.
+*"Share the whole agent"* is not on the list.
 
-Read `module-7/branch.md`. Every picked candidate should name how it moves the teammate's outcome; infrastructure should appear only as a constraint. If the reason is merely *"we already have the platform,"* send it back.
+Read `module-7/branch.md`. Every picked candidate should name how it moves the teammate's outcome, with infrastructure only as a constraint. If the reason is *"we already have the platform,"* send it back.
 
 ## Carry the two files forward
 
-You now have the teammate's job and a candidate selected against it. [Design the sharing plan](design-the-sharing-plan.md) finds what would stop that candidate from being absorbed and turns it into a technical plan plus a people plan.
+[Design the sharing plan](design-the-sharing-plan.md) finds what would stop that candidate from being absorbed and turns it into a technical plan plus a people plan.
 
 <!-- maintainer -->
 

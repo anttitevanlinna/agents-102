@@ -23,6 +23,72 @@ Append-only stream of editorial calls made on real curriculum text. **Newest at 
 
 ---
 
+## 2026-11-01 — teach-back: seventeen inferred rules, marked
+
+Antti marked seventeen rules the Taste Studio inferred from his calls: 14 agree, 3 depends, 0 wrong. The refinements he added are the part to keep.
+
+- **Shorter by default, simple with deep theory.** *"Students anyhow need to read a lot from Claude code. Looks like simple is better. But simple with deep theory."*
+- **First-person roughness, used sparingly.**
+- **Depends: duplication.** It is not needed for simple routine. Repetition earns its place when it steers toward a new mindset: *"ae101 module 4 does plenty of repetition to steer to new mindset."*
+- **Depends: famous names.** Use one only if most students know the term.
+- **Concrete beats framework because action beats talk.** *"Cagan fails actionability… not something you can apply on next day."*
+- **Verb precision.** *"'Read' implies 'read all'. Same with 'check'. Would be better to say: spot-check."*
+- **Unease may stay open, but is never declared.** *"Un-ease is totally fine. But let's not declare it like that."*
+- **A verdict fragment** defines the output and the shortest precondition before acting.
+- **Narrate a tool only when the feature is less known.** *"claude code transcripts need explanation. Compaction not."*
+- **The point line carries the why.** He calls this *"just stylistic thing in that slide format"*.
+- **Handing over the discovery** is *"often speculation"*.
+- **Depends: no ranking of which moments are most valuable.** The general rule: *"all modules should aim to get hands-on right asap. Most heavier theory after."*
+- **Students are adults.** *"They are professional. We assume they are self-motivated. (those who are not... we don't try save/motivate)"*
+- **No put-downs.** *"Putting something or someone down is the same as telling them they did something deliberately wrong. We assume they have tried their best by now."*
+- **Vocabulary runs 3–6 months ahead, and is famous enough.** *"now we couldn't say hillclimb without explaining. Now we can say 'loop'."* Also: *"We teach kind of 3-6 months ahead. We curate the stuff the best are just getting repeatedly working. Plus a few staples."*
+- **Neutral register.** *"Especially the LLM-invented highlights need to go."*
+
+## 2026-11-01 — the second scar story: being ahead of time
+
+A sparring session from 2026-10-28, now in the project files as `agents-101-taste/2026-10-28-being-ahead-of-time.md`. Antti offered it as a smaller second scar story, and possibly the leading one, because it carries the feeling of being in the future before others rather than outcomes. His own lines, in order:
+
+- *"I approach all my work with agents, compounding, outcomes and broad analysis. Pretty much everyone still approaches problems by writing confluence pages. And having meetings. Drawing diagrams. I feel I've lost common language."*
+- Three colleagues started deploying an agent factory in AWS. *"I'm like: what's the capabilities you are building at? They say: we have few problems to solve."*
+- A colleague named his way of working *"steering without reading all text"*. *"The volume of text is not the problem for me. agents write a lot. Still the final output can be fully precise."*
+- *"I have always held the prototyping approach. 10 iterations is totally fine. They get better. Some say: if the spec is anyhow wrong, then the final output will be wrong."*
+- *"It sometimes feels too inefficient and tedious to take part in the slowness of humans speccing and speculating in chats and meetings."*
+- He accepted the framing that his thinking is an innovator's while his ten transformations give him early-adopter standing inside the system (Rogers, Moore).
+
+Register note for any student-facing use: rule r14 and the frames above apply. The tedium is his feeling to own; the story must not put down people who spec and meet. The spar itself offered the fair reading: meetings are their way of iterating, and they build a sense that the outcome is theirs.
+
+## 2026-11-01 — the scar story, dictated
+
+The first-person incident the point-of-view score was missing. It was dictated in four parts; the raw transcript is in the project files as `agents-101-taste/scar-story-raw.md`. The facts, in Antti's order: at the start of 2026 he set out to redesign a whole value stream with agents, aiming for tangible business results. The slice chosen with senior leadership was the one that takes the company's flagship product to its millions of customers, a flow that runs through many teams. He built a multi-user, multi-agent system for it, the Workflow Architect. About 15 contributors mapped their own part and uploaded their own documents. A central synthesizer agent ran value stream mapping across all of it. Day one of the workshop: 12 people refined the current state. *"Everybody had fun. People bit by bit, like, learned how it works."* Day two: a smaller group reimagined the flow and reached a plausible proposal with the analysis ready for an investment decision. At the leadership meeting *"the urgency of the need and then the change had pretty much vanished. New priorities had come up… the proposal, as good as it was, got a non-decision, that it was neither yes or no."*
+
+What he takes from it: *"I know how easy it is to analyze without the commitment to act."* Too much work in flight leaves no room to react *"when good stuff happens"*. The analysis was done by people the leadership trusted, *"but still it was not their own analysis."* *"Companies, even when we are going agentic, they work first and foremost with the human principle."*
+
+Fit: the Module 7 fallback scar slot in `access-is-not-absorption.md` (a thing the narrator built, given to people with reason to want it, that went unused), not the Module 4 door-shaped slot.
+
+## 2026-11-01 — Taste Studio, the reasons behind fourteen past calls
+
+Fourteen past calls where every simulated reader picked the other side. Antti wrote the reason for each one. Raw answers: `curriculum/evals/mechanical/persona-student/taste-studio/answers-2026-11-01/`.
+
+**The student is never put down and never left passive.** Five of the fourteen. "A guess that happens to compile" went, because *"nobody wants to hear their work is guesses."* "I decided to do the right thing" went as *"indirectly patronizing… I did not really do such a choice knowingly. Everybody struggles to see the choices."* "Nobody can hand you…" and "a gift you haven't given yet" went as patronising and passive. *"Student should never be helpless."* The root, in his words: *"The leadership I wish to have is to try explain the future. Not to put down the current. I know I hate current ways. Still: putting those down usually does not help experiment for the future."* None of the readers carry this, and the compendiums do not name it.
+
+**Counterweight: duplication that makes the experiment land.** A repeated permission-to-test line stayed: *"gives twice the chances the student really realises this is an experiment. It also gives the why."*
+
+**The word that carries the concept.** "Loop" beat "run": *"Looping > run in terms of what it means."* A line naming unknown unknowns stayed though longer. The limit is abstraction the student cannot picture: *"'module 3 draws a boundary' is just un-understandable and bad abstraction."*
+
+**Fewer words, read faster.** *"Word counts I found directly correlate with reading speed and comprehension speed."*
+
+**Teach the just-now-possible best.** Statusline over the /context command: *"We teach the just-now-possible and best stuff. Not just what claude code happens to have available."* The basic tickbox stays, with the advanced option beside it.
+
+**Not a taste call.** One pair: *"both versions clearly generated by LLM. Both fine if they give the output the exercise needs."* It leaves the gold set.
+
+**Odd one out, six triads of Agents 101 slides.** What sets the odd slide apart is always its register, never its structure. Each time, the odd one was the slide with a loaded line, and Antti preferred the neutral pair. The lines he singled out: a rhetorical question; calling what the student builds a "toy"; *"Certainty is a fantasy you inherited"* (*"both fantasy and inherited give me the biggest creeps. Think of student who would hear this."*); a lecture that *"puts down the historical sensible practise. It also misrepresents that to make a point."*; *"You were the only check in the room"* (*"twists human into some weird mold. I think student would never call themselves check."*). The one time the odd slide won, it was the neutral one: *"Good and neutral handling of feeling and uncertainty."* His overall read: *"all slides having too much claude speak and too long sentences. The whole style is too wordy compared to ae101."* Measured that day: sentence length is the same in both trainings (about 12.5 words). Agents 101 has a longer median slide (99 words against 83) and a third more words in total. The wordiness is more sentences and clever lines, not longer sentences.
+
+**Counterweight: a constructed metaphor stays.** Antti, the same day: *"I'm totally OK with few really well done metaphors. for instance the ae101 has \"painting with LLM\". But that is then really constructed. Not just off-hand single sentence witty remark."* The line runs between a metaphor the training builds and returns to across beats (paint by agent) and a one-sentence witty aside. The aside goes; the constructed metaphor stays, and there are only a few.
+
+**Frame and point of view drift is the recurring correction.** Antti: *"I so remember doing language work that frame, point of view and similar were recurring corrections. The LLM strays into writing from wrong perspective at times. ae101 is quite right quite consistently."* AE101 is the reference corpus for perspective. When Agents 101 reads off, compare its frame against the matching AE101 beat before reaching for a style rule. This fits the 2026-10-31 rubric baseline, where point of view (55) was the weakest score.
+
+**The AE101 frames, Antti's draft:** *"you look ahead at where this is going", "it is your work", "this is how the machine works", and "this is the theory".* A read of AE101 slides supports all four (Two frontiers, Read the diff and push back, Eval, Change on recurrence) and adds a fifth: the trainer speaking to the room about pace and choice (*"Your call."*, *Freedom to choose*). In every frame the agent does the work, the student judges it, and the sentence makes a claim or gives an instruction. The drift in Agents 101 is a sixth frame AE101 almost never uses: a narrator telling the student what they just did or felt (*"You felt context move"*, *"The unease you feel…"*, *"You were the only check in the room"*). Counted the same day, sentences that narrate the student's own experience run at 18 per 1000 in Agents 101 against 8 per 1000 in AE101.
+
 ## 2026-10-07 — rights pass before licensing (AE101, Agents 101)
 
 **Counterweight: a famous name stays.** An audit flagged the student page that says to build "a small Lemmings game" as a trademark risk and proposed a generic "guide-the-creatures game". Antti: *"come on. Lemmings is a famous enough thing. Like pacman. Keep."* The name is the instruction: it tells the participant in one word what to build and how it should feel. A generic description would need a paragraph and still be vaguer.

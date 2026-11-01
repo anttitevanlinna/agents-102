@@ -1,0 +1,412 @@
+<title>Taste Studio</title>
+<style>
+:root{--bg:#f7f5f0;--panel:#fffdf8;--ink:#1f1d1a;--muted:#6b665d;--line:#e2ddd2;--accent:#2f5d50;--accent-ink:#fff;--del:#f6d5cf;--del-ink:#7a2618;--ins:#d3ead9;--ins-ink:#1d5130;--chip:#efeae0;--warn:#8a5a00;
+--serif:"Source Serif 4",Georgia,serif;--sans:"Inter",system-ui,-apple-system,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171614;--panel:#201f1c;--ink:#ece8df;--muted:#a59f93;--line:#35322d;--accent:#7fbfa9;--accent-ink:#10201b;--del:#4a2620;--del-ink:#f3b8ab;--ins:#1f3d2a;--ins-ink:#aee0bd;--chip:#2b2925;--warn:#e0b25a}}
+:root[data-theme="dark"]{--bg:#171614;--panel:#201f1c;--ink:#ece8df;--muted:#a59f93;--line:#35322d;--accent:#7fbfa9;--accent-ink:#10201b;--del:#4a2620;--del-ink:#f3b8ab;--ins:#1f3d2a;--ins-ink:#aee0bd;--chip:#2b2925;--warn:#e0b25a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans)}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 80px}
+header h1{font:600 26px/1.2 var(--serif);margin:4px 0 6px}
+header p{margin:0;color:var(--muted);max-width:760px}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin:18px 0 14px;position:sticky;top:0;background:var(--bg);padding:8px 0;z-index:2;border-bottom:1px solid var(--line)}
+nav button{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:6px 12px;font:500 14px var(--sans);cursor:pointer}
+nav button[aria-selected="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+nav .n{opacity:.75;margin-left:4px;font-variant-numeric:tabular-nums}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
+.meta{color:var(--muted);font-size:13px;margin-bottom:10px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:760px){.pair{grid-template-columns:1fr}}
+.side{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--bg);min-width:0}
+.side h3{margin:0 0 6px;font:600 13px var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.side.chosen{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+.txt{font:15.5px/1.6 var(--serif);white-space:pre-wrap;overflow-wrap:anywhere;max-height:440px;overflow:auto}
+.txt.full{max-height:none}
+del{background:var(--del);color:var(--del-ink);text-decoration:none;border-radius:3px}
+ins{background:var(--ins);color:var(--ins-ink);text-decoration:none;border-radius:3px}
+.same{color:var(--muted)}
+.fold{color:var(--muted);font-style:italic}
+label{display:block;font-weight:600;margin:14px 0 6px}
+.hint{font-weight:400;color:var(--muted);font-size:14px}
+textarea{width:100%;min-height:72px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);padding:10px;font:15px/1.5 var(--sans);resize:vertical}
+textarea.big{min-height:160px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:8px 14px;font:500 15px var(--sans);cursor:pointer}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn:disabled{opacity:.5;cursor:default}
+.chip{background:var(--chip);border-radius:999px;padding:2px 9px;font-size:12.5px}
+.ladder{border-left:3px solid var(--accent);padding:6px 12px;margin-top:12px;background:var(--bg);border-radius:0 8px 8px 0}
+.ladder q{font-style:italic;quotes:none}
+.readers{margin-top:12px;font-size:14px;color:var(--muted)}
+.readers li{margin:3px 0}
+.pager{display:flex;justify-content:space-between;align-items:center;margin-top:16px;gap:8px;flex-wrap:wrap}
+.status{font-size:13px;color:var(--muted)}
+.status.err{color:var(--warn)}
+.dots{display:flex;gap:4px;flex-wrap:wrap}
+.dot{width:22px;height:22px;border-radius:6px;border:1px solid var(--line);background:var(--panel);font:600 11px var(--sans);color:var(--muted);cursor:pointer;padding:0}
+.dot.done{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.dot.cur{outline:2px solid var(--ink);outline-offset:1px}
+.triad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:900px){.triad{grid-template-columns:1fr}}
+.triad .side{cursor:pointer}
+.triad .side.odd{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+.intro{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-top:12px}
+.intro .card h3{margin:0 0 4px;font:600 17px var(--serif)}
+.intro .card p{margin:0 0 8px;color:var(--muted);font-size:14.5px}
+.intro .card .src{font-size:12.5px;color:var(--muted)}
+.rule{border-top:1px solid var(--line);padding:14px 0}
+.rule:first-child{border-top:0}
+.rule p.r{font:16px/1.5 var(--serif);margin:0 0 8px}
+.ro{padding:10px 12px;border:1px dashed var(--line);border-radius:8px;color:var(--muted);margin-bottom:12px}
+</style>
+
+<div class="wrap">
+<header>
+<p class="hint">Agents 101 quality calibration</p>
+<h1>Taste Studio</h1>
+<p>Five short exercises that get your judgement out of your head and into a form the simulated readers can learn from. Do them in any order, a few items at a time. Everything saves as you go, and I read it back from here.</p>
+</header>
+<nav id="tabs" role="tablist"></nav>
+<div id="ro" class="ro" hidden></div>
+<main id="view"></main>
+</div>
+
+<script type="application/json" id="seed">__DATA__</script>
+<script>
+(function(){
+const DATA = JSON.parse(document.getElementById('seed').textContent);
+const MODES = [
+  {id:'start', label:'Start here'},
+  {id:'why', label:'Your past calls', items: DATA.why.length},
+  {id:'blind', label:'Blind picks', items: DATA.blind.length},
+  {id:'triad', label:'Odd one out', items: DATA.triads.length},
+  {id:'story', label:'The story', items: 1},
+  {id:'rules', label:'Check my rules'}
+];
+const READER = {'plain-judge':'Plain judge','cfo-sceptic':'Sceptical CFO','cto-builder':'Builder CTO','ingrid':'Ingrid (case persona)'};
+
+let db = null, sample = null, canWrite = true;
+const answers = {};          // docId -> data
+let rules = [];              // from db rules/
+let tab = 'start';
+const pos = {why:0, blind:0, triad:0};
+try { const t = localStorage.getItem('ts-tab'); if (t) tab = t; const p = JSON.parse(localStorage.getItem('ts-pos')||'{}'); Object.assign(pos,p); } catch(e){}
+
+const $ = (s,el=document)=>el.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function savePos(){ try{ localStorage.setItem('ts-tab',tab); localStorage.setItem('ts-pos',JSON.stringify(pos)); }catch(e){} }
+function draftKey(k){ return 'ts-draft-'+k; }
+function getDraft(k){ try{ return JSON.parse(localStorage.getItem(draftKey(k))||'null'); }catch(e){ return null; } }
+function setDraft(k,v){ try{ localStorage.setItem(draftKey(k),JSON.stringify(v)); }catch(e){} }
+function clearDraft(k){ try{ localStorage.removeItem(draftKey(k)); }catch(e){} }
+
+/* ---------- word diff ---------- */
+function tok(s){ return s.match(/\s+|[^\s]+/g) || []; }
+function diff(a,b){
+  const A=tok(a), B=tok(b), n=A.length, m=B.length;
+  // trim common prefix/suffix for speed
+  let p=0; while(p<n&&p<m&&A[p]===B[p]) p++;
+  let s=0; while(s<n-p&&s<m-p&&A[n-1-s]===B[m-1-s]) s++;
+  const a2=A.slice(p,n-s), b2=B.slice(p,m-s), N=a2.length, M=b2.length;
+  const L=Array.from({length:N+1},()=>new Uint16Array(M+1));
+  for(let i=N-1;i>=0;i--) for(let j=M-1;j>=0;j--) L[i][j]= a2[i]===b2[j] ? L[i+1][j+1]+1 : Math.max(L[i+1][j],L[i][j+1]);
+  const ops=[]; if(p) ops.push(['=',A.slice(0,p).join('')]);
+  let i=0,j=0;
+  while(i<N||j<M){
+    if(i<N&&j<M&&a2[i]===b2[j]){ops.push(['=',a2[i]]);i++;j++;}
+    else if(j<M&&(i===N||L[i][j+1]>=L[i+1][j])){ops.push(['+',b2[j]]);j++;}
+    else {ops.push(['-',a2[i]]);i++;}
+  }
+  if(s) ops.push(['=',A.slice(n-s).join('')]);
+  const out=[]; for(const o of ops){ const l=out[out.length-1]; if(l&&l[0]===o[0]) l[1]+=o[1]; else out.push([o[0],o[1]]); }
+  return out;
+}
+// render one side: '-' parts shown on A, '+' on B; long unchanged runs folded
+function renderSide(ops, side){
+  const keep = side==='a' ? '-' : '+';
+  let h='';
+  ops.forEach((o,idx)=>{
+    if(o[0]==='='){
+      const t=o[1];
+      if(t.length>700 && idx>0 && idx<ops.length-1){ h+=`<span class="same">${esc(t.slice(0,260))}</span><span class="fold"> […same text…] </span><span class="same">${esc(t.slice(-260))}</span>`; }
+      else if(t.length>500 && idx===0){ h+=`<span class="same">${esc(t.slice(0,180))}</span><span class="fold"> […same text…] </span><span class="same">${esc(t.slice(-280))}</span>`; }
+      else if(t.length>500 && idx===ops.length-1){ h+=`<span class="same">${esc(t.slice(0,280))}</span><span class="fold"> […same text…]</span>`; }
+      else h+=`<span class="same">${esc(t)}</span>`;
+    } else if(o[0]===keep){ h+= keep==='-' ? `<del>${esc(o[1])}</del>` : `<ins>${esc(o[1])}</ins>`; }
+  });
+  return h;
+}
+function changedText(ops){
+  const del=ops.filter(o=>o[0]==='-').map(o=>o[1].trim()).filter(Boolean).join(' … ');
+  const add=ops.filter(o=>o[0]==='+').map(o=>o[1].trim()).filter(Boolean).join(' … ');
+  return {del:del.slice(0,900), add:add.slice(0,900)};
+}
+
+/* ---------- storage ---------- */
+function status(msg, err){ const el=$('#st'); if(el){ el.textContent=msg; el.className='status'+(err?' err':''); } }
+async function save(id, data){
+  const body = {...data, at: new Date().toISOString()};
+  answers[id] = body;
+  if(!db){ setDraft('saved-'+id, body); status('Saved on this device only (shared storage not connected).', true); return; }
+  try { await db.doc('answers/'+id).set(body); status('Saved.'); }
+  catch(e){
+    if(e && e.code==='invalid_argument'){ canWrite=false; showRO(); }
+    status('Could not save: '+(e&&e.code||'error')+'. Your text is kept on this device.', true);
+    setDraft('saved-'+id, body);
+  }
+}
+function showRO(){ const r=$('#ro'); r.hidden=false; r.textContent='You can look around, but this view cannot save answers. Antti fills this in.'; }
+function done(id){ return !!answers[id]; }
+
+/* ---------- ladder ---------- */
+const STATIC_LADDER = 'Why does that matter for the people in the room? What would go wrong for them with the other version?';
+async function ladderQ(context, reason, outEl){
+  if(!sample){ outEl.textContent = STATIC_LADDER; return STATIC_LADDER; }
+  outEl.textContent = 'Thinking of a follow-up…';
+  const prompt = `You are a knowledge-elicitation interviewer using the laddering technique with an expert trainer. The expert judges training slides for a course on AI agents for business people.
+${context}
+The expert's reason, in their words: "${reason}"
+
+Ask ONE follow-up question, at most 22 words, that goes one level deeper. Choose whichever is more useful:
+- what this protects for the participant in the room (the value behind the reason), or
+- where this reason stops applying (a case where they'd choose the other way).
+Do not suggest an answer, do not praise, no preamble. Output only the question.`;
+  try{
+    const r = await sample(prompt, {modelTier:'quick', onText:({text})=>{ outEl.textContent=text; }});
+    const q = (r.text||'').trim() || STATIC_LADDER; outEl.textContent=q; return q;
+  }catch(e){ outEl.textContent = STATIC_LADDER; return STATIC_LADDER; }
+}
+
+/* ---------- views ---------- */
+function renderTabs(){
+  const n = m => {
+    if(m.id==='why') return DATA.why.filter(x=>done('why-'+x.id)).length+'/'+m.items;
+    if(m.id==='blind') return DATA.blind.filter(x=>done('blind-'+x.id)).length+'/'+m.items;
+    if(m.id==='triad') return DATA.triads.filter((t,i)=>done('triad-'+i)).length+'/'+m.items;
+    if(m.id==='story') return done('story-1')?'✓':'';
+    if(m.id==='rules') return rules.length? rules.filter(r=>done('rule-'+r.id)).length+'/'+rules.length : '';
+    return '';
+  };
+  $('#tabs').innerHTML = MODES.map(m=>`<button role="tab" aria-selected="${m.id===tab}" data-t="${m.id}">${m.label}<span class="n">${n(m)}</span></button>`).join('');
+  $('#tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{ tab=b.dataset.t; savePos(); render(); window.scrollTo(0,0); });
+}
+function dots(mode, list, idOf){
+  return `<div class="dots">${list.map((x,i)=>`<button class="dot ${done(idOf(x,i))?'done':''} ${pos[mode]===i?'cur':''}" data-i="${i}" aria-label="Item ${i+1}">${i+1}</button>`).join('')}</div>`;
+}
+function wireDots(mode){ document.querySelectorAll('.dot').forEach(d=>d.onclick=()=>{ pos[mode]=+d.dataset.i; savePos(); render(); }); }
+function pager(mode, len){
+  return `<div class="pager"><button class="btn" id="prev" ${pos[mode]===0?'disabled':''}>← Back</button><span id="st" class="status"></span><button class="btn" id="next" ${pos[mode]>=len-1?'disabled':''}>Skip →</button></div>`;
+}
+function wirePager(mode,len){
+  $('#prev').onclick=()=>{ pos[mode]=Math.max(0,pos[mode]-1); savePos(); render(); };
+  $('#next').onclick=()=>{ pos[mode]=Math.min(len-1,pos[mode]+1); savePos(); render(); };
+}
+function advance(mode,len){ if(pos[mode]<len-1){ pos[mode]++; savePos(); setTimeout(()=>{ render(); window.scrollTo(0,0); }, 350); } else { render(); } }
+function bindDraft(key, fields){
+  const d = getDraft(key)||{};
+  fields.forEach(f=>{ const el=$('#'+f); if(!el) return; if(d[f]!=null && !el.value) el.value=d[f]; el.addEventListener('input',()=>{ const v=getDraft(key)||{}; v[f]=el.value; setDraft(key,v); }); });
+}
+
+function viewStart(){
+  return `<div class="card"><p style="margin-top:0">Professional calibration does not ask experts to write down their rules. People cannot report their own tacit judgement accurately; when asked, they give the textbook version. So the field gets at it sideways. Each tab here is one of those methods, pointed at Agents 101 material.</p>
+<p>Why this matters now: on 59 of your past calls, every simulated reader scores below "always pick the shorter version". They miss exactly where you kept a longer line on purpose: your own voice, permission lines, a bit of orientation. The readers can only learn that from your reasons, not from more of your verdicts.</p></div>
+<div class="intro">
+<div class="card"><h3>Your past calls</h3><p>14 calls you made where all four simulated readers picked the other side. You see which one you chose and say why. Then one follow-up "why" goes a level deeper.</p><p class="src">Rationale capture with laddering (Reynolds and Gutman). About 2 minutes each.</p></div>
+<div class="card"><h3>Blind picks</h3><p>14 pairs, sides hidden. 8 are new Agents 101 candidates, 6 are your own past calls, there to check that today's you agrees with past you. Pick, say how sure, one line why.</p><p class="src">Paired comparison with a test-retest check, the way sensory panels and annotation teams qualify a judge. About 1 minute each.</p></div>
+<div class="card"><h3>Odd one out</h3><p>Three Agents 101 slides. Which one differs from the other two in a way that matters for the room, and what is that difference called in your words? This builds your own vocabulary for quality, instead of mine.</p><p class="src">Repertory grid triads (Kelly). About 2 minutes each.</p></div>
+<div class="card"><h3>The story</h3><p>Your "right agentic analysis did not become organisation action" story, walked through in four passes: straight through, the timeline, the moment it turned, what you would say in the room.</p><p class="src">Critical Decision Method (Klein), the standard interview for expert incidents. About 15 minutes; dictating is fine.</p></div>
+<div class="card"><h3>Check my rules</h3><p>Rules I think you follow, stated plainly. Mark each agree, wrong, or "depends", and say where it stops applying. I add new ones here as your answers come in.</p><p class="src">Teach-back, the closing step of every elicitation round. About 30 seconds each.</p></div>
+</div>
+<div class="card" style="margin-top:12px"><p style="margin:0"><b>What I do with it.</b> Your reasons become the few-shot material and rubric lines for the taste judge. Blind picks join the held-out set. Triad words become the lexicon the judges score with. The bar for the instrument: the taste judge agrees with you on at least 80% of held-out pairs, in both orders, and at least 65% on voice.</p></div>`;
+}
+
+function viewWhy(){
+  const i=pos.why, it=DATA.why[i], id='why-'+it.id, a=answers[id];
+  const ops=diff(it.a,it.b);
+  const sideHtml = s => `<div class="side ${it.chose===s?'chosen':''}"><h3><span>Version ${s.toUpperCase()}</span>${it.chose===s?'<span class="chip">you chose this</span>':''}</h3><div class="txt">${renderSide(ops,s)}</div></div>`;
+  return `<div class="row" style="justify-content:space-between;margin-bottom:10px">${dots('why',DATA.why,x=>'why-'+x.id)}</div>
+<div class="card"><div class="meta"><span>${i+1} of ${DATA.why.length}</span><span class="chip">${esc(it.file.replace('curriculum/',''))}</span><span>Red = only in A, green = only in B.</span></div>
+<div class="pair">${sideHtml('a')}${sideHtml('b')}</div>
+<details class="readers"><summary>All four simulated readers picked ${it.chose==='a'?'B':'A'}. Their reasons</summary><ul>${it.readers.map(r=>`<li><b>${READER[r.r]||r.r}:</b> ${esc(r.why)}</li>`).join('')}</ul></details>
+<label for="reason">What did ${it.chose==='a'?'B':'A'} get wrong for the room? <span class="hint">One or two lines. Plain words are best.</span></label>
+<textarea id="reason">${esc(a?.reason||'')}</textarea>
+<div class="row" style="margin-top:8px"><button class="btn" id="ask">Ask me one deeper "why"</button></div>
+<div class="ladder" id="lad" ${a?.ladder_q?'':'hidden'}><q id="ladq">${esc(a?.ladder_q||'')}</q>
+<textarea id="deeper" style="margin-top:8px">${esc(a?.deeper||'')}</textarea></div>
+<div class="row" style="margin-top:12px"><button class="btn primary" id="save">Save and next</button></div>
+${pager('why',DATA.why.length)}</div>`;
+}
+function wireWhy(){
+  const it=DATA.why[pos.why], id='why-'+it.id;
+  bindDraft(id,['reason','deeper']); wireDots('why'); wirePager('why',DATA.why.length);
+  const ops=diff(it.a,it.b), ch=changedText(ops);
+  let lq = answers[id]?.ladder_q || getDraft(id)?.ladder_q || '';
+  if(lq){ $('#lad').hidden=false; $('#ladq').textContent=lq; }
+  $('#ask').onclick=async()=>{
+    const reason=$('#reason').value.trim(); if(!reason){ status('Write the first reason, then ask.', true); return; }
+    $('#lad').hidden=false; $('#ask').disabled=true;
+    const ctx=`Two versions of a slide differ. Text only in version A: "${ch.del}". Text only in version B: "${ch.add}". The expert chose version ${it.chose.toUpperCase()}.`;
+    lq = await ladderQ(ctx, reason, $('#ladq'));
+    const d=getDraft(id)||{}; d.ladder_q=lq; setDraft(id,d); $('#ask').disabled=false; $('#deeper').focus();
+  };
+  $('#save').onclick=async()=>{
+    const reason=$('#reason').value.trim(); if(!reason){ status('Add a reason first, or skip this one.', true); return; }
+    await save(id,{mode:'why',item:it.id,chose:it.chose,reason,ladder_q:lq,deeper:$('#deeper').value.trim()});
+    clearDraft(id); advance('why',DATA.why.length);
+  };
+}
+
+function viewBlind(){
+  const i=pos.blind, it=DATA.blind[i], id='blind-'+it.id, a=answers[id];
+  const d=getDraft(id)||{}; const pick=a?.pick||d.pick||''; const conf=a?.conf||d.conf||'';
+  const ops=diff(it.a,it.b);
+  const sideHtml = s => `<div class="side ${pick===s?'chosen':''}"><h3><span>Version ${s.toUpperCase()}</span></h3><div class="txt">${renderSide(ops,s)}</div></div>`;
+  let reveal='';
+  if(a){
+    const agreeR = it.readers.filter(r=>r.pick===a.pick).length;
+    reveal = `<div class="ladder">${it.past?`Your past call on this one: <b>${it.past.toUpperCase()}</b>. ${it.past===a.pick?'Same as today.':'Different from today. Worth a sentence below on what changed, if you know.'}`:'This is a new Agents 101 pair, so there is no past call.'}
+${it.readers.length?` ${agreeR} of ${it.readers.length} simulated readers picked the same as you.`:''}</div>`;
+  }
+  return `<div class="row" style="justify-content:space-between;margin-bottom:10px">${dots('blind',DATA.blind,x=>'blind-'+x.id)}</div>
+<div class="card"><div class="meta"><span>${i+1} of ${DATA.blind.length}</span><span class="chip">${esc(it.file.replace('curriculum/',''))}</span><span>Red = only in A, green = only in B.</span></div>
+<div class="pair">${sideHtml('a')}${sideHtml('b')}</div>
+<label>Which goes on the screen?</label>
+<div class="row" id="picks"><button class="btn" data-p="a" aria-pressed="${pick==='a'}">A</button><button class="btn" data-p="b" aria-pressed="${pick==='b'}">B</button></div>
+<label>How sure?</label>
+<div class="row" id="confs">${['sure','leaning','coin flip'].map(c=>`<button class="btn" data-c="${c}" aria-pressed="${conf===c}">${c}</button>`).join('')}</div>
+<label for="why">Why, in one line <span class="hint">optional when it's a coin flip</span></label>
+<textarea id="why">${esc(a?.why||'')}</textarea>
+${a&&it.past&&it.past!==a.pick?`<label for="changed">What changed since then? <span class="hint">optional</span></label><textarea id="changed">${esc(a?.changed||'')}</textarea>`:''}
+${reveal}
+<div class="row" style="margin-top:12px"><button class="btn primary" id="save">${a?'Update':'Save and see how others picked'}</button>${a?'<button class="btn" id="go">Next →</button>':''}</div>
+${pager('blind',DATA.blind.length)}</div>`;
+}
+function wireBlind(){
+  const it=DATA.blind[pos.blind], id='blind-'+it.id;
+  bindDraft(id,['why','changed']); wireDots('blind'); wirePager('blind',DATA.blind.length);
+  const st={pick:answers[id]?.pick||getDraft(id)?.pick||'', conf:answers[id]?.conf||getDraft(id)?.conf||''};
+  const keep=()=>{ const d=getDraft(id)||{}; Object.assign(d,st); setDraft(id,d); };
+  document.querySelectorAll('#picks .btn').forEach(b=>b.onclick=()=>{ st.pick=b.dataset.p; keep(); document.querySelectorAll('#picks .btn').forEach(x=>x.setAttribute('aria-pressed',x===b)); document.querySelectorAll('.pair .side').forEach((s,k)=>s.classList.toggle('chosen',(k===0?'a':'b')===st.pick)); });
+  document.querySelectorAll('#confs .btn').forEach(b=>b.onclick=()=>{ st.conf=b.dataset.c; keep(); document.querySelectorAll('#confs .btn').forEach(x=>x.setAttribute('aria-pressed',x===b)); });
+  $('#save').onclick=async()=>{
+    if(!st.pick||!st.conf){ status('Pick a side and how sure you are.', true); return; }
+    const first=!answers[id];
+    await save(id,{mode:'blind',item:it.id,pick:st.pick,conf:st.conf,why:$('#why').value.trim(),changed:($('#changed')?.value||'').trim()});
+    clearDraft(id); render(); if(first) status('Saved. Here is how it compares.');
+  };
+  const go=$('#go'); if(go) go.onclick=()=>advance('blind',DATA.blind.length);
+}
+
+function viewTriad(){
+  const i=pos.triad, t=DATA.triads[i], id='triad-'+i, a=answers[id];
+  const d=getDraft(id)||{}; const odd=a?.odd||d.odd||'';
+  const sl=t.map(s=>DATA.slides.find(x=>x.id===s));
+  return `<div class="row" style="justify-content:space-between;margin-bottom:10px">${dots('triad',DATA.triads,(x,k)=>'triad-'+k)}</div>
+<div class="card"><div class="meta"><span>${i+1} of ${DATA.triads.length}</span><span>Three slides from Agents 101 as students see them. Tap the one that is different from the other two in a way that matters for the room.</span></div>
+<div class="triad">${sl.map(s=>`<div class="side ${odd===s.id?'odd':''}" data-s="${s.id}" tabindex="0" role="button" aria-pressed="${odd===s.id}"><h3><span>Slide ${s.id.slice(1)}</span>${odd===s.id?'<span class="chip">odd one out</span>':''}</h3><div class="txt full">${esc(s.text)}</div></div>`).join('')}</div>
+<label for="alike">What do the other two share? <span class="hint">A few words, your own vocabulary. "They both…"</span></label>
+<textarea id="alike">${esc(a?.alike||'')}</textarea>
+<label for="differs">And the odd one, by contrast? <span class="hint">"This one instead…"</span></label>
+<textarea id="differs">${esc(a?.differs||'')}</textarea>
+<label>Which side is better for the room?</label>
+<div class="row" id="better">${[['pair','the two'],['odd','the odd one'],['depends','depends']].map(([v,l])=>`<button class="btn" data-b="${v}" aria-pressed="${(a?.better||d.better)===v}">${l}</button>`).join('')}</div>
+<label for="when">If "depends": on what? <span class="hint">optional</span></label>
+<textarea id="when">${esc(a?.when||'')}</textarea>
+<div class="row" style="margin-top:12px"><button class="btn primary" id="save">Save and next</button></div>
+${pager('triad',DATA.triads.length)}</div>`;
+}
+function wireTriad(){
+  const i=pos.triad, id='triad-'+i;
+  bindDraft(id,['alike','differs','when']); wireDots('triad'); wirePager('triad',DATA.triads.length);
+  const st={odd:answers[id]?.odd||getDraft(id)?.odd||'', better:answers[id]?.better||getDraft(id)?.better||''};
+  const keep=()=>{ const d=getDraft(id)||{}; Object.assign(d,st); setDraft(id,d); };
+  document.querySelectorAll('.triad .side').forEach(el=>{
+    const pickIt=()=>{ st.odd=el.dataset.s; keep(); document.querySelectorAll('.triad .side').forEach(x=>{ const on=x===el; x.classList.toggle('odd',on); x.setAttribute('aria-pressed',on); const c=x.querySelector('h3 .chip'); if(c) c.remove(); if(on) x.querySelector('h3').insertAdjacentHTML('beforeend','<span class="chip">odd one out</span>'); }); };
+    el.onclick=pickIt; el.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); pickIt(); } };
+  });
+  document.querySelectorAll('#better .btn').forEach(b=>b.onclick=()=>{ st.better=b.dataset.b; keep(); document.querySelectorAll('#better .btn').forEach(x=>x.setAttribute('aria-pressed',x===b)); });
+  $('#save').onclick=async()=>{
+    if(!st.odd){ status('Tap the odd one out first.', true); return; }
+    if(!$('#alike').value.trim()&&!$('#differs').value.trim()){ status('Name the difference in a few words.', true); return; }
+    await save(id,{mode:'triad',item:i,slides:DATA.triads[i],odd:st.odd,alike:$('#alike').value.trim(),differs:$('#differs').value.trim(),better:st.better,when:$('#when').value.trim()});
+    clearDraft(id); advance('triad',DATA.triads.length);
+  };
+}
+
+const STORY = [
+  {f:'straight', q:'Tell it straight through, start to finish.', h:'Where you were, who was in the room, what the analysis said, what happened next. Two or three minutes of talking is the right length. Rough is fine.'},
+  {f:'timeline', q:'Now the timeline. What were the key moments, in order?', h:'One line each. Mark the moment where you first sensed the analysis would not turn into action.'},
+  {f:'turn', q:'At that turning moment: what did you notice, what did you expect to happen, and what did you do?', h:'The cues matter most here: a sentence someone said, who was silent, what was missing from the room.'},
+  {f:'novice', q:'What would someone less experienced have done at that moment? What would it have cost them?', h:'This is usually where the lesson hides.'},
+  {f:'room', q:'If you told this in an Agents 101 room, which sentence would you want them to leave with?', h:'And where in the training it belongs, if you have a view.'}
+];
+function viewStory(){
+  const a=answers['story-1']||{};
+  return `<div class="card"><div class="meta"><span>The "right agentic analysis is not organisation action" story</span><span class="chip">Critical Decision Method</span></div>
+<p style="margin-top:0">This is the first-person scar story the point-of-view score is missing. Four passes over the same event, each from a different angle, because the second and third pass are where the details that make it teachable come out. Fill what you can; the first box alone is already useful. Your phone's dictation works fine in these boxes.</p>
+${STORY.map(s=>`<label for="${s.f}">${s.q} <span class="hint">${s.h}</span></label><textarea class="${s.f==='straight'?'big':''}" id="${s.f}">${esc(a[s.f]||'')}</textarea>`).join('')}
+<div class="row" style="margin-top:12px"><button class="btn primary" id="save">Save</button><span id="st" class="status"></span></div></div>`;
+}
+function wireStory(){
+  bindDraft('story-1', STORY.map(s=>s.f));
+  $('#save').onclick=async()=>{
+    const body={mode:'story'}; let any=false; STORY.forEach(s=>{ body[s.f]=$('#'+s.f).value.trim(); if(body[s.f]) any=true; });
+    if(!any){ status('Write at least the first part.', true); return; }
+    await save('story-1',body); clearDraft('story-1'); renderTabs();
+  };
+}
+
+function viewRules(){
+  if(!rules.length) return `<div class="card"><p style="margin:0">${db?'Loading rules…':'The rules list lives in shared storage, which this view could not reach.'}</p></div>`;
+  return `<div class="card"><div class="meta"><span>Rules I infer from your past calls. Each is a guess until you mark it.</span><span id="st" class="status"></span></div>
+${rules.map(r=>{ const id='rule-'+r.id, a=answers[id]||{}, d=getDraft(id)||{}; const v=a.verdict||d.verdict||'';
+return `<div class="rule" data-id="${esc(r.id)}"><p class="r">${esc(r.text)}</p>${r.from?`<div class="meta">${esc(r.from)}</div>`:''}
+<div class="row">${[['agree','Agree'],['depends','Depends'],['wrong','Wrong']].map(([k,l])=>`<button class="btn" data-v="${k}" aria-pressed="${v===k}">${l}</button>`).join('')}</div>
+<label>Where does it stop applying, or how would you say it? <span class="hint">optional</span></label><textarea data-f="note">${esc(a.note||d.note||'')}</textarea>
+<div class="row" style="margin-top:6px"><button class="btn primary" data-save>${a.verdict?'Update':'Save'}</button>${a.verdict?'<span class="chip">saved</span>':''}</div></div>`;}).join('')}</div>`;
+}
+function wireRules(){
+  document.querySelectorAll('.rule').forEach(el=>{
+    const rid=el.dataset.id, id='rule-'+rid; let v=answers[id]?.verdict||getDraft(id)?.verdict||'';
+    const ta=el.querySelector('textarea');
+    ta.addEventListener('input',()=>{ const d=getDraft(id)||{}; d.note=ta.value; setDraft(id,d); });
+    el.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{ v=b.dataset.v; const d=getDraft(id)||{}; d.verdict=v; setDraft(id,d); el.querySelectorAll('[data-v]').forEach(x=>x.setAttribute('aria-pressed',x===b)); });
+    el.querySelector('[data-save]').onclick=async()=>{
+      if(!v){ status('Pick agree, depends or wrong.', true); return; }
+      const r=rules.find(x=>x.id===rid);
+      await save(id,{mode:'rule',item:rid,rule_text:r?.text||'',verdict:v,note:ta.value.trim()}); clearDraft(id); render();
+    };
+  });
+}
+
+function render(){
+  renderTabs();
+  const V={start:[viewStart,()=>{}],why:[viewWhy,wireWhy],blind:[viewBlind,wireBlind],triad:[viewTriad,wireTriad],story:[viewStory,wireStory],rules:[viewRules,wireRules]};
+  const [v,w]=V[tab]||V.start; $('#view').innerHTML=v(); w();
+}
+render();
+
+/* ---------- capabilities light up ---------- */
+(async()=>{
+  try{
+    const c = window.claude;
+    if(!c || !c.use) return;
+    const [d, s, u] = await Promise.all([c.use('db'), c.use('sample'), c.use('user')]);
+    sample = s || null;
+    if(u){ try{ const w = await u.can('data.write'); if(w===false){ canWrite=false; showRO(); } }catch(e){} }
+    if(!d) { render(); return; }
+    db = d;
+    db.collection('answers').onSnapshot(snap=>{
+      snap.docs.forEach(doc=>{ answers[doc.id]=doc.data(); });
+      const typing = document.activeElement && document.activeElement.tagName==='TEXTAREA';
+      if(typing) renderTabs(); else render();
+    }, e=>status('Lost the live connection to saved answers. Reload to reconnect.', true));
+    db.collection('rules').orderBy('order').onSnapshot(snap=>{
+      rules = snap.docs.map(x=>({id:x.id,...x.data()})).filter(r=>!r.retired);
+      if(tab==='rules' && !(document.activeElement && document.activeElement.tagName==='TEXTAREA')) render(); else renderTabs();
+    }, ()=>{});
+  }catch(e){ /* page works without */ }
+})();
+})();
+</script>

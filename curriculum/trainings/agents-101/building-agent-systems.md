@@ -53,7 +53,7 @@ Five minutes. A retro, **and the first root instructions file in this directory.
 
 Read the agent's summary. Push back on anything that doesn't match your sense of the work. *"No, that rule's too strict."* *"You missed the bit where we had to regenerate three times because of X."* Same move Module 1 landed on your guardrails file: do the work, let the agent capture the rules, push back where the agent got it wrong. Module 2 lands your first wider root instructions file, the one every subsequent module extends.
 
-What the agent leaves out is often the signal. A clean summary that names three rules and skips the messy fourth, the one where the work bent and you re-prompted twice, is the tell. Compounding rules files are not tidy.
+What the agent leaves out is often the signal. A clean summary that names three rules and skips the messy fourth, the one where the work bent and you re-prompted twice, is the tell.
 
 ## Fix the output, then fix the rule
 

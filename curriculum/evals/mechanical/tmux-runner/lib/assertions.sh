@@ -87,7 +87,7 @@ assert_file_mtime_advanced() {
     return 1
   fi
   local cur
-  cur="$(stat -f %m "$path" 2>/dev/null || stat -c %Y "$path")"
+  cur="$(stat -c %Y "$path" 2>/dev/null || stat -f %m "$path")"
   if [[ "$cur" -gt "$baseline" ]]; then
     echo "[assert] PASS $label: mtime advanced ($baseline -> $cur)"
     return 0
@@ -99,7 +99,7 @@ assert_file_mtime_advanced() {
 mtime_of() {
   local path="$1"
   if [[ -f "$path" ]]; then
-    stat -f %m "$path" 2>/dev/null || stat -c %Y "$path"
+    stat -c %Y "$path" 2>/dev/null || stat -f %m "$path"
   else
     echo 0
   fi

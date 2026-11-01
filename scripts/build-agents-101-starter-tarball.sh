@@ -167,8 +167,11 @@ echo "Built $OUT"
 echo "Top-level entries:"
 tar tzf "$OUT" | awk -F/ 'NF>1 && $2 != "" {print $2}' | sort -u | sed 's|^|  |'
 echo
+# List once: grep -q exits on first match, and under pipefail the SIGPIPE it
+# sends tar would read as "missing" on fast Linux pipes.
+listing="$(tar tzf "$OUT")"
 for path in prework module-4/policies/gdpr-essentials.md module-4/policies/data-classification.md module-4/policies/ai-use-baseline.md module-4/policies/sector-rules-placeholder.md patterns/personal-to-team-patterns.md memory sources agents agents-101-handbook.html; do
-  if ! tar tzf "$OUT" | grep -qE "^\./?${path}(/|\$)"; then
+  if ! grep -qE "^\./?${path}(/|\$)" <<<"$listing"; then
     echo "WARNING — expected path missing: $path" >&2
     exit 1
   fi

@@ -107,36 +107,40 @@ standard_timeout="${CLAUDE_RUNNER_TIMEOUT:-1800}"
 # ---- Build substitution tokens from the persona kit ----------------------
 strip_comments() { perl -0777 -pe 's/<!--.*?-->\s*//s' "$1"; }
 
+# A101_ANSWERS_DIR: student answers written by a live persona (persona-student/)
+# instead of the kit's canned ones. Same file names; facts stay the kit's.
+ANSWERS="${A101_ANSWERS_DIR:-$KIT/answers}"
+
 LINKEDIN="$(strip_comments "$KIT/linkedin-profile.md")"
 MEETINGS_FILE="$material_dir/meetings-week.md"
 NEW_SOURCE="$material_dir/new/$(basename "$A101_M2_HELD_SOURCE")"
-M1_PHASE2="$(cat "$KIT/answers/m1-phase2.txt")"
-M1_STRENGTHS="$(cat "$KIT/answers/m1-strengths.txt")"
-M1_HATELIST="$(cat "$KIT/answers/m1-hatelist.txt")"
-M1_ITERATE="$(cat "$KIT/answers/m1-iterate.txt")"
-M2_CHALLENGE="$(cat "$KIT/answers/m2-challenge.txt")"
-M2_CURATION="$(cat "$KIT/answers/m2-curation-where.txt")"
-M2_INGEST="$(cat "$KIT/answers/m2-ingest.txt")"
-M2_AGENT_SPEC="$(cat "$KIT/answers/m2-agent-spec.txt")"
-M2_TASK="$(cat "$KIT/answers/m2-task.txt")"
-M2_FINAL_Q="$(cat "$KIT/answers/m2-final-q.txt")"
-M2_HOMEWORK_STYLE="$(cat "$KIT/answers/m2-homework-style.txt")"
-M2_HOMEWORK_AGENT="$(cat "$KIT/answers/m2-homework-agent.txt")"
+M1_PHASE2="$(cat "$ANSWERS/m1-phase2.txt")"
+M1_STRENGTHS="$(cat "$ANSWERS/m1-strengths.txt")"
+M1_HATELIST="$(cat "$ANSWERS/m1-hatelist.txt")"
+M1_ITERATE="$(cat "$ANSWERS/m1-iterate.txt")"
+M2_CHALLENGE="$(cat "$ANSWERS/m2-challenge.txt")"
+M2_CURATION="$(cat "$ANSWERS/m2-curation-where.txt")"
+M2_INGEST="$(cat "$ANSWERS/m2-ingest.txt")"
+M2_AGENT_SPEC="$(cat "$ANSWERS/m2-agent-spec.txt")"
+M2_TASK="$(cat "$ANSWERS/m2-task.txt")"
+M2_FINAL_Q="$(cat "$ANSWERS/m2-final-q.txt")"
+M2_HOMEWORK_STYLE="$(cat "$ANSWERS/m2-homework-style.txt")"
+M2_HOMEWORK_AGENT="$(cat "$ANSWERS/m2-homework-agent.txt")"
 NEW_SOURCE_M3="$material_dir/new-m3/$(basename "$A101_M3_HELD_SOURCE")"
-M3_CRUX_STEER="$(cat "$KIT/answers/m3-crux-steer.txt")"
-M3_WIKI_ANSWER="$(cat "$KIT/answers/m3-wiki-answer.txt")"
-M3_DOCS_ANSWER="$(cat "$KIT/answers/m3-docs-answer.txt")"
-M3_NET_ANSWER="$(cat "$KIT/answers/m3-net-answer.txt")"
-M4_WHAT_MATTERS="$(cat "$KIT/answers/m4-what-matters.txt")"
-M4_GRILL_ANSWERS="$(cat "$KIT/answers/m4-grill-answers.txt")"
-M4_CHOSEN_RISK="$(cat "$KIT/answers/m4-chosen-risk.txt")"
-M5_BRIEFING_SEED="$(cat "$KIT/answers/m5-briefing-seed.txt")"
-M6_REUSABLE_LOOP="$(cat "$KIT/answers/m6-reusable-loop.txt")"
+M3_CRUX_STEER="$(cat "$ANSWERS/m3-crux-steer.txt")"
+M3_WIKI_ANSWER="$(cat "$ANSWERS/m3-wiki-answer.txt")"
+M3_DOCS_ANSWER="$(cat "$ANSWERS/m3-docs-answer.txt")"
+M3_NET_ANSWER="$(cat "$ANSWERS/m3-net-answer.txt")"
+M4_WHAT_MATTERS="$(cat "$ANSWERS/m4-what-matters.txt")"
+M4_GRILL_ANSWERS="$(cat "$ANSWERS/m4-grill-answers.txt")"
+M4_CHOSEN_RISK="$(cat "$ANSWERS/m4-chosen-risk.txt")"
+M5_BRIEFING_SEED="$(cat "$ANSWERS/m5-briefing-seed.txt")"
+M6_REUSABLE_LOOP="$(cat "$ANSWERS/m6-reusable-loop.txt")"
 M7_RECIPIENT=''
 M7_ASSUMPTIONS=''
 if a101_case_supports_module m7; then
-  M7_RECIPIENT="$(cat "$KIT/answers/m7-recipient.txt")"
-  M7_ASSUMPTIONS="$(cat "$KIT/answers/m7-assumptions.txt")"
+  M7_RECIPIENT="$(cat "$ANSWERS/m7-recipient.txt")"
+  M7_ASSUMPTIONS="$(cat "$ANSWERS/m7-assumptions.txt")"
 fi
 M8_SHARED_ROOM="$material_dir/shared-room"
 
@@ -217,7 +221,10 @@ assert_turn() {
       assert_file_exists "prework T3 meetings" "$sut_cwd/prework/meetings.md" || return 1
       assert_scrollback_grep "prework T3 meetings content" "$sut_cwd/prework/meetings.md" "$A101_PREWORK_RE" ;;
     prework:4)
-      assert_file_mtime_advanced "prework T4 screenshot fallback" "$sut_cwd/prework/meetings.md" "$base" ;;
+      # Same export as T3, so an agent may rightly keep the identical file; that
+      # passes when it says so instead of rewriting.
+      assert_file_mtime_advanced "prework T4 screenshot fallback" "$sut_cwd/prework/meetings.md" "$base" \
+        || assert_scrollback_grep "prework T4 kept identical summary" "$t" "still (correct|matches)|didn.t rewrite|did not rewrite|unchanged|hasn.t changed|left it as is|same (as before|as last|calendar|export)" ;;
 
     # ----- m1 -----
     m1:1) assert_file_exists "m1 T1 site" "$sut_cwd/module-1/site.html" ;;

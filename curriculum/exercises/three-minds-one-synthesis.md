@@ -56,7 +56,7 @@ Everything you just did is the move this training teaches, run properly. It stil
 
 Hold the doubt. Name it to yourself. Don't fix it here.
 
-**Module 5 builds the tools to name what's off systematically.** For now, let it stew.
+For now, let it stew.
 
 <!-- maintainer -->
 

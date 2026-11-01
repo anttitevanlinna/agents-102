@@ -40,7 +40,7 @@ The goal of this site isn't to sell anything. It's the opposite: when a colleagu
 
 Donald Miller's **StoryBrand** is the obvious framework for *"what kind of help is this person to others."* Half of LinkedIn uses it, and it shows, badly, because most consultants run StoryBrand straight as a sales pitch. We'll invoke it explicitly AND **tune** it: the hero isn't you, it's the colleague. Skip the sales-funnel beats (Stakes, Call-to-Action). What's left is the part that actually says *"I'm the greatest colleague ever; let's work more together."*
 
-Notice the move you're about to make: **name the framework, tune it, ask the agent to run it.** The LLM already knows StoryBrand. You don't have to reproduce the questions. Same trick for Toyota Kata, SWOT, Roger Martin's strategic-choices, Jobs-to-be-Done. *"Apply X to Y, but tune for Z."* That's the move. Module 1 starts here; you'll use it everywhere.
+Notice the move you're about to make: **name the framework, tune it, ask the agent to run it.** The LLM already knows StoryBrand. You don't have to reproduce the questions. Same trick for Toyota Kata, SWOT, Roger Martin's strategic-choices, Jobs-to-be-Done. *"Apply X to Y, but tune for Z."* That's the move.
 
 ## Keep yourself the protagonist, then run the beats
 

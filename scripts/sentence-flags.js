@@ -39,7 +39,7 @@ const IMPERATIVE = /^(start|ask|add|open|run|type|save|create|read|check|spot|re
 // Narrator voice: the page telling the student what they just did or felt.
 // AE101's frames look ahead, own the work, explain the machine, or speak as
 // the trainer; Agents 101 drifts into narrating the student back to them.
-const NARRATOR = /\byou (felt|feel|were|noticed|watched|saw|just|already|probably|may have|might have|likely)\b|\byour (unease|doubt|instinct|gut|feeling)\b/i;
+const NARRATOR = /\byou (felt|feel|were|noticed|watched|saw|just|already(?! (have|use|rely|know how|own))|probably|may have|might have|likely)\b|\byour (unease|doubt|instinct|gut|feeling)\b/i;
 
 function flagRows(rows) {
   const out = [];

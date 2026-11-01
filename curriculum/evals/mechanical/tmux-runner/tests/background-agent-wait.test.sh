@@ -38,7 +38,24 @@ finished_snap='✻ Waiting for 1 background agent to finish
 ────────────────────────────────
 ❯ '
 
+# Claude Code 2.1.29x drops the "Waiting for" line: the main agent yields with
+# prose and the running agent shows only in the agents panel. Lifted from
+# out/a101-m6-20261101-221448-60382/turn-2.transcript.txt (M6 round-2 generator).
+panel_only_snap='✻ Crunched for 48s · done 10:20 PM
+⏺ Agent(Round 2 generator)
+  ⎿  Backgrounded agent (↓ to manage · ctrl+o to expand)
+⏺ Tactic rewritten for round 2, and the round 2 generator is running.
+────────────────────────────────
+❯
+────────────────────────────────
+  Model: Sonnet 5.5 | Ctx: 72.8k | ⎇ no git | (no git)
+  ⏵⏵ auto mode on (shift+tab to cycle) · /tasks to see subagents · ← for agents
+
+  ⏺ main
+  ◯ general-purpose  Round 2 generator                    4s · ↓ 42.8k tokens'
+
 echo "[test] bg_agents_pending reads the LAST status line"
+check "panel-only running agent is pending" "$(yes_no bg_agents_pending "$panel_only_snap")" "yes"
 check "pending while last status is Waiting" "$(yes_no bg_agents_pending "$pending_snap")" "yes"
 check "clear once a later done-status replaces it" "$(yes_no bg_agents_pending "$finished_snap")" "no"
 check "plural form counts" "$(yes_no bg_agents_pending '✻ Waiting for 3 background agents to finish')" "yes"
@@ -50,6 +67,8 @@ check "spinner mid-turn" "$(yes_no pane_busy '✳ Marinating… (1m 2s · ↓ 3.
 check "bare spinner" "$(yes_no pane_busy '· Transmuting…')" "yes"
 check "blocked Stop: hooks running" "$(yes_no pane_busy '✳ Noodling… (running Stop hooks… 1/3 · 4s · ↓ 1.2k tokens)')" "yes"
 check "background agents pending" "$(yes_no pane_busy "$pending_snap")" "yes"
+check "panel-only running agent = busy" "$(yes_no pane_busy "$panel_only_snap")" "yes"
+check "main-only panel is idle" "$(yes_no pane_busy "$(printf '✻ Worked for 3s · done\n  ⏺ main')")" "no"
 check "done-status after a spinner" "$(yes_no pane_busy "$(printf '✳ Noodling…\n✻ Cogitated for 39s · done 11:40 AM\n❯ ')")" "no"
 check "agent output with an ellipsis is not a spinner" "$(yes_no pane_busy "$(printf '✻ Brewed for 5s · done\n  ⎿  … +12 lines (ctrl+o to expand)')")" "no"
 check "no status line" "$(yes_no pane_busy '❯ ')" "no"

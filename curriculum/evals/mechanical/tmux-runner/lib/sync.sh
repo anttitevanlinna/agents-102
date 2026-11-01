@@ -204,10 +204,20 @@ wait_for_turn() {
   settle_background_agents "$dir" "$seq" "$session" "$left"
 }
 
+panel_agent_running() {
+  # $1=pane snap. Claude Code 2.1.29x shows no "Waiting for" line: a running
+  # background agent appears only as an agents-panel row with a live token
+  # counter ("◯ general-purpose  Round 2 generator   4s · ↓ 42.8k tokens").
+  # The row is gone once the agent finishes. tests/background-agent-wait.test.sh
+  printf '%s\n' "$1" | grep -Eq '^[[:space:]]*◯ .*· (↓|↑) [0-9.]+k? tokens'
+}
+
 bg_agents_pending() {
   # $1=pane snap. Pending iff the LAST ✻ status line is "Waiting for N
   # background agent(s) to finish" — a later "✻ Cooked/Worked … · done"
-  # means the re-invoked main agent has since finished its own turn.
+  # means the re-invoked main agent has since finished its own turn — or the
+  # agents panel still lists a running agent.
+  panel_agent_running "$1" && return 0
   local last
   last="$(printf '%s\n' "$1" | grep -E '^✻ ' | tail -1)"
   [[ "$last" =~ Waiting\ for\ [0-9]+\ background\ agents?\ to\ finish ]]
@@ -217,6 +227,7 @@ pane_busy() {
   # $1=pane snap. Busy iff the LAST status line (glyph-led) is a live spinner
   # ("✳ Noodling… (running Stop hooks…)", "· Transmuting…") or says background
   # agents are pending. A finished turn ends "✻ <Verb> for Ns · done".
+  panel_agent_running "$1" && return 0
   local last
   # alternation, not a bracket: a bracket of multibyte glyphs matches one
   # BYTE where the locale isn't UTF-8

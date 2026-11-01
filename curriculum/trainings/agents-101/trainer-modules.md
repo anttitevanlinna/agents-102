@@ -177,7 +177,7 @@ The one trainer document for Agents 101. Read **Start here** before your first c
 
 **Watch-fors and recovery.** Customer policy material must already be readable under `module-4/policies/`; never improvise policy content in the room. Runtime-specific skill creation must follow the verified route for the cohort. If skill packaging fails, keep the raw audit evidence, repair the packaging route, and complete the audit with the authored method only after its files exist. This is the one module with an attested 105-minute cap; protect transitions.
 
-**Starting state.** Full M3 system; root rules; policy reference files; verified skill-creation path for the selected runtime; no prebuilt `security-audit` skill shipped to the student.
+**Starting state.** Full M3 system; root rules; policy reference files; verified skill-creation path for the selected runtime; no prebuilt `agent-audit` skill shipped to the student.
 
 **Runtime map.**
 

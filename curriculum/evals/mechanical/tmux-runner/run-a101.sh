@@ -408,8 +408,8 @@ assert_turn() {
       # THE catch: the authored SKILL.md must carry BOTH lenses AND all four
       # named risk patterns across the package it loads. A package missing a
       # pattern silently weakens every later audit while still "existing".
-      local skill="$sut_cwd/module-4/skills/security-audit/SKILL.md"
-      local skill_package="$sut_cwd/module-4/skills/security-audit"
+      local skill="$sut_cwd/module-4/skills/agent-audit/SKILL.md"
+      local skill_package="$sut_cwd/module-4/skills/agent-audit"
       assert_file_exists "m4a T3 SKILL.md" "$skill" || return 1
       assert_scrollback_grep "m4a T3 policy lens"         "$skill" 'policy' || return 1
       assert_scrollback_grep "m4a T3 agent-security lens" "$skill" 'agent[ -]security' || return 1
@@ -421,14 +421,19 @@ assert_turn() {
     m4a:4)
       # Install lands in the selected runtime's project-skills directory, which
       # persists in the training folder and loads in the next session.
-      assert_file_exists "m4a T4 installed skill" "$sut_cwd/$PROJECT_SKILLS_REL/security-audit/SKILL.md" || return 1
-      echo "[assert] PASS m4a T4: skill installed at $PROJECT_SKILLS_REL/security-audit/SKILL.md" ;;
+      assert_file_exists "m4a T4 installed skill" "$sut_cwd/$PROJECT_SKILLS_REL/agent-audit/SKILL.md" || return 1
+      echo "[assert] PASS m4a T4: skill installed at $PROJECT_SKILLS_REL/agent-audit/SKILL.md" ;;
 
     # ----- m4b (load the skill, audit, mitigate, debrief) -----
     m4b:1)
       # Packaged policy lens must ALSO catch the PII — else packaging lost the lens.
-      local rep="$sut_cwd/outputs/policy-report.md"
+      local rep="$sut_cwd/outputs/policy-report.md" shadow
       assert_file_exists "m4b T1 packaged report" "$rep" || return 1
+      # A same-name personal/synced skill carries the course's own body, so the
+      # content greps below pass whichever copy fired. tests/skill-shadow.test.sh
+      shadow="$(a101_shadow_skills agent-audit)"
+      [[ -z "$shadow" ]] || echo "[assert] WARN m4b T1: same-name skill outside the project: $shadow" >&2
+      assert_skill_not_shadowed "m4b T1 project skill fired" "$t" agent-audit || return 1
       assert_scrollback_grep "m4b T1 found a violation" "$rep" 'violat' || return 1
       assert_scrollback_grep "m4b T1 caught the PII plant" "$rep" "$A101_M4_PII_RE" || return 1
       echo "[assert] PASS m4b T1: packaged policy report caught the PII violation" ;;

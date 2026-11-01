@@ -137,4 +137,4 @@ The agent is scoped and the residual risk is named. Can you trust what it says i
 3. Distill only rules the source supports into `module-4/policies/*.md`, preserving the source pointer and the evidence needed to classify compliant / violating / `I can't tell`.
 4. Remove customer secrets and personal data that the exercise does not need. Confirm the cohort runtime and connector permissions can read the remaining files.
 5. Peer-review the distilled set against the originals, then run the raw-policy prompt once before delivery. Keep the report as trainer evidence, not as a student-shipped answer.
-6. Replace the Nordic baseline files for the in-company build; never ship a pre-authored `security-audit` skill. Students still author the reusable check themselves.
+6. Replace the Nordic baseline files for the in-company build; never ship a pre-authored `agent-audit` skill. Students still author the reusable check themselves.

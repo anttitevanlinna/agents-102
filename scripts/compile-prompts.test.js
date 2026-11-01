@@ -147,24 +147,24 @@ test('Agents 101 security skill installs once at the selected project-skills pat
   const author = registry['author-security-skill-3'];
   const install = registry['author-security-skill-4'];
 
-  assert.match(author.runtimeVariants.cli.text, /\.claude\/skills\/security-audit\/SKILL\.md/);
-  assert.match(author.runtimeVariants['codex-cli'].text, /\.agents\/skills\/security-audit\/SKILL\.md/);
-  assert.match(author.runtimeVariants['copilot-cli'].text, /\.agents\/skills\/security-audit\/SKILL\.md/);
+  assert.match(author.runtimeVariants.cli.text, /\.claude\/skills\/agent-audit\/SKILL\.md/);
+  assert.match(author.runtimeVariants['codex-cli'].text, /\.agents\/skills\/agent-audit\/SKILL\.md/);
+  assert.match(author.runtimeVariants['copilot-cli'].text, /\.agents\/skills\/agent-audit\/SKILL\.md/);
   assert.doesNotMatch(author.runtimeVariants['codex-cli'].text, /Claude|~\/\.claude/);
   assert.deepEqual(Object.keys(install.runtimeVariants), [
     'desktop', 'cli', 'codex-desktop', 'codex-cli', 'copilot-app', 'copilot-cli'
   ]);
   assert.equal(
     install.runtimeVariants.cli.produces[0].location,
-    '.claude/skills/security-audit/SKILL.md'
+    '.claude/skills/agent-audit/SKILL.md'
   );
   assert.equal(
     install.runtimeVariants['codex-cli'].produces[0].location,
-    '.agents/skills/security-audit/SKILL.md'
+    '.agents/skills/agent-audit/SKILL.md'
   );
   assert.equal(
     install.runtimeVariants['copilot-cli'].produces[0].location,
-    '.agents/skills/security-audit/SKILL.md'
+    '.agents/skills/agent-audit/SKILL.md'
   );
   assert.equal(registry['author-security-skill-5'], undefined);
 });
@@ -173,12 +173,12 @@ test('Agents 101 invokes the installed security skill with runtime-native syntax
   const registry = compile.loadRegistry();
   const prompt = registry['audit-your-agent-1'];
 
-  assert.match(prompt.runtimeVariants.cli.text, /^\s*\/security-audit — load the skill/);
-  assert.doesNotMatch(prompt.runtimeVariants.cli.text, /^\$security-audit/m);
-  assert.match(prompt.runtimeVariants['codex-cli'].text, /^\s*\$security-audit — load the skill/);
-  assert.doesNotMatch(prompt.runtimeVariants['codex-cli'].text, /^\/security-audit/m);
-  assert.match(prompt.runtimeVariants['copilot-cli'].text, /^\s*\/security-audit — load the skill/);
-  assert.doesNotMatch(prompt.runtimeVariants['copilot-cli'].text, /^\$security-audit/m);
+  assert.match(prompt.runtimeVariants.cli.text, /^\s*\/agent-audit — load the skill/);
+  assert.doesNotMatch(prompt.runtimeVariants.cli.text, /^\$agent-audit/m);
+  assert.match(prompt.runtimeVariants['codex-cli'].text, /^\s*\$agent-audit — load the skill/);
+  assert.doesNotMatch(prompt.runtimeVariants['codex-cli'].text, /^\/agent-audit/m);
+  assert.match(prompt.runtimeVariants['copilot-cli'].text, /^\s*\/agent-audit — load the skill/);
+  assert.doesNotMatch(prompt.runtimeVariants['copilot-cli'].text, /^\$agent-audit/m);
 });
 
 test('capability blocks keep matching mechanics and remove non-matching mechanics', (t) => {

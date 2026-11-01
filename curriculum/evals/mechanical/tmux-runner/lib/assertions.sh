@@ -285,3 +285,24 @@ eval_trajectory_verdict() {
   if [[ "$work" -eq 1 ]]; then echo "FLOOR-UNCOUNTED"; return 0; fi
   echo "THEATER round-1 flagged 0 and loop did no real work (no prompt evolution)"; return 1
 }
+
+# --- skill-name shadowing (M4 collision, 2026-11-01) -----------------------
+# A personal claude.ai skill syncs into ~/.claude/skills/synced/<bucket>/<name>/
+# and loads as `anthropic-skills:<name>`. Same body as the student's project
+# skill → content greps can't tell which copy fired. tests/skill-shadow.test.sh
+a101_shadow_skills() {               # $1=skill name, $2=skills dir (default user scope)
+  local name="$1" dir="${2:-${CLAUDE_RUNNER_SKILLS_DIR:-$HOME/.claude/skills}}" d
+  [[ -d "$dir/$name" ]] && echo "$dir/$name"
+  for d in "$dir"/synced/*/"$name"; do [[ -d "$d" ]] && echo "$d"; done
+  return 0
+}
+
+assert_skill_not_shadowed() {        # $1=label $2=transcript $3=skill name
+  local label="$1" transcript="$2" name="$3"
+  if grep -Eq "Skill\([A-Za-z0-9_.-]+:${name}\)" "$transcript" 2>/dev/null; then
+    echo "[assert] FAIL $label: a namespaced $name loaded, not the student's project skill" >&2
+    return 1
+  fi
+  echo "[assert] PASS $label: no namespaced $name load in transcript"
+  return 0
+}

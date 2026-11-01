@@ -6,7 +6,7 @@
 
 Start a new session at your training-directory root. Your Exercise 1 skill is available in this project.
 
-Name it `m4-security-audit` if supported.
+Name it `m4-agent-audit` if supported.
 
 **What you do:**
 
@@ -20,11 +20,11 @@ Bring the policy raw report (baseline), the check (expert), your Module 3 system
 
 Open this exercise in a fresh session at your training-directory root, after saving the Exercise 1 skill, so the session can find it.
 
-Type `/` and look for `/security-audit` in the autocomplete list. That means the skill is available. The audit prompts in the phases that follow tell it which of its two lenses to apply.
+Type `/` and look for `/agent-audit` in the autocomplete list. That means the skill is available. The audit prompts in the phases that follow tell it which of its two lenses to apply.
 
 <div class="rt-cowork">
 
-If `/security-audit` doesn't appear, go back to Exercise 1, save the skill, then open a new session.
+If `/agent-audit` doesn't appear, go back to Exercise 1, save the skill, then open a new session.
 
 </div>
 
@@ -36,7 +36,7 @@ Ask the agent to apply the packaged policy lens to your full module-3 system and
 
 <div class="rt-cowork">
 
-If the audit doesn't fire, expand `/security-audit` from the autocomplete in the prompt dialog.
+If the audit doesn't fire, expand `/agent-audit` from the autocomplete in the prompt dialog.
 
 </div>
 
@@ -107,7 +107,7 @@ This was **Recipe 4**: the two-lens audit, five agent-risk patterns, five mitiga
 
 **TODO (Claude Code Desktop edition review 2026-04-29):**
 - Desktop skill-install step is body-only, not a prompt block, so `scripts/extract-training-prompts.js --training agents-101 --flavor desktop` under-represents the Desktop load path. Decide whether to label the Desktop install as a prompt or teach the extractor to capture install-instruction blocks.
-- Desktop install to `~/.claude/skills/security-audit/` is probably the highest-friction moment for chat-oriented business people on Desktop. Before first delivery, dry-run this with a non-terminal user and decide whether the body needs more Desktop-native scaffolding. Prompt edits remain gated.
+- Desktop install to `~/.claude/skills/agent-audit/` is probably the highest-friction moment for chat-oriented business people on Desktop. Before first delivery, dry-run this with a non-terminal user and decide whether the body needs more Desktop-native scaffolding. Prompt edits remain gated.
 
 **Cohort-facilitator audit (2026-04-25):** APPROVE without TODOs. The exercise is cohort-ready. One stylistic note for next pass: *"The uncomfortable feeling is the evidence."* (Phase 2 close) reads as a slogan when projected silently to 12 SVPs; consider moving to lecture closer or cutting on next polish.
 

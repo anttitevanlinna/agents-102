@@ -8,6 +8,6 @@ requires:
     source: prompt:author-security-skill-3
 produces:
   - id: installed-security-skill
-    location: "{{artifact:project-skills}}/security-audit/SKILL.md"
+    location: "{{artifact:project-skills}}/agent-audit/SKILL.md"
 ---
-Install the authored skill at module-4/skills/security-audit/ as a project skill at {{artifact:project-skills}}/security-audit/. Confirm the installed path so I can verify it.
+Install the authored skill at module-4/skills/agent-audit/ as a project skill at {{artifact:project-skills}}/agent-audit/. Confirm the installed path so I can verify it.

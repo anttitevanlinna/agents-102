@@ -10,4 +10,4 @@ produces:
   - id: installed-security-skill
     location: personal Cowork skill library
 ---
-Use your skill-creator skill to turn the authored source at module-4/skills/security-audit/ into a personal skill named security-audit. Draft it, then surface the save action so I can save it.
+Use your skill-creator skill to turn the authored source at module-4/skills/agent-audit/ into a personal skill named agent-audit. Draft it, then surface the save action so I can save it.

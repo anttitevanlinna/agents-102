@@ -138,7 +138,7 @@ Some prompts end with implicit approval gates: *"Show me the diff before you com
 
 ## Slash-command turns
 
-Pure slash commands (`/context`, `/clear`, `/memory`) render client-side — no LLM call, no Stop hook, no sentinel. The runner's `is_slash_only` helper (in `lib/sync.sh`) detects this shape and bridges with `fake_sentinel_after_render` (sleep + touch). Slash commands with arguments (`/security-audit — load the skill`) DO fire the model and the Stop hook; they don't need special handling.
+Pure slash commands (`/context`, `/clear`, `/memory`) render client-side — no LLM call, no Stop hook, no sentinel. The runner's `is_slash_only` helper (in `lib/sync.sh`) detects this shape and bridges with `fake_sentinel_after_render` (sleep + touch). Slash commands with arguments (`/agent-audit — load the skill`) DO fire the model and the Stop hook; they don't need special handling.
 
 ## Scenario-design discipline
 

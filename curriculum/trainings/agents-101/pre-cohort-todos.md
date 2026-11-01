@@ -22,9 +22,9 @@ Run the Agents 101 sim set after the current polish pass settles. Use the same s
 ## 2. Capability dry-runs
 
 - **Cowork security permissions.** Bind Module 4 security guidance to Cowork as well as Claude Code: permission choices, folder access, skill creation, connector reach, and what a business participant can actually approve or deny in the UI.
-- **Module 4 security skill package + load.** Verify Cowork personal-skill creation through *Customize → Skills → New → Create with Claude*, Desktop/CLI standalone skill install into `~/.claude/skills/security-audit/`, plain-language invocation, and loaded-skill visibility.
+- **Module 4 security skill package + load.** Verify Cowork personal-skill creation through *Customize → Skills → New → Create with Claude*, Desktop/CLI standalone skill install into `~/.claude/skills/agent-audit/`, plain-language invocation, and loaded-skill visibility.
 - **Module 4 facilitator dry-run.** Run the 90-minute dry-run named in the module: Cowork personal-skill creation, one Cowork participant, one CLI participant, and one freezing-SVP persona.
-- **GitHub Copilot cohort preflight.** Confirm the customer's Copilot policy enables the CLI or app, Copilot Memory is disabled for participants, root `AGENTS.md` loads, `.agents/skills/security-audit/SKILL.md` appears, `/security-audit` invokes the skill, and subagents return results to the lead session.
+- **GitHub Copilot cohort preflight.** Confirm the customer's Copilot policy enables the CLI or app, Copilot Memory is disabled for participants, root `AGENTS.md` loads, `.agents/skills/agent-audit/SKILL.md` appears, `/agent-audit` invokes the skill, and subagents return results to the lead session.
 - **GitHub Copilot CLI live chain.** Run the Finnish psychologist M1-M6 scenario with `--runtime copilot-cli` once a licensed account is available. Verify the saved session ID resumes every turn, the organization policy permits CLI inference, project skills load in prompt mode, and the existing artifact assertions pass unchanged.
 - **Module 5 four-detector benchmark.** Dry-run four parallel detector agents, scorer stability, precision/recall table, and `judges/groundedness-judge.md` handoff.
 - **Module 6 eval loop.** Dry-run generation/judging agent separation, file-write reliability, judge immutability, and `./generation-tactic.md` rewrite reliability.

@@ -22,6 +22,9 @@ Does this sentence help the student execute the learning on their own? (maintain
 
 ## Rewrite
 - No human verbs for what people grant agents (agents do not "earn" autonomy or trust; people grant access).
+- Keep a concrete action, but say it in the fewest words.
+- Split a long sentence at its comma when the halves are separate claims.
+- No "ship" framing for the student's work: the work gets better on main all the time.
 - A metaphor must fit its noun: a map is a map, not a "container" or a "place to hang moves".
 - Name the thing instead of "it"/"this"/"that" when the referent is not in the same sentence. Maintainer: "I have been removing the use of 'it' quite a lot."
 - Short paragraphs a reader can take in at a glance: 1-3 sentences. Maintainer: "A has too long a paragraph to easily glance", "Both way too long paragraphs."

@@ -6,40 +6,36 @@
 
 Bring one live challenge, check what the agent can read about it, use a plan-first control, and leave yourself a three-line readiness note.
 
-Module 1 was a contained creation. Module 2 turns toward work that already has history: meetings, notes, decisions, half-written documents, wiki pages, people, constraints. The point is not to prepare a perfect brief. The point is to arrive with enough real material that the memory can start from your world instead of generic internet shape.
+Module 2 works on real history: meetings, notes, decisions, half-written documents. Arrive with enough real material that the memory starts from your world, not generic output.
 
 ## Bring one live challenge
 
-Module 2 builds a **memory**: a folder of notes and source material the agent reads before answering. For that to work, the challenge has to be real. Bring a decision you're making, a bet you're placing, or a piece of work where the shape is still unclear.
+Module 2 builds a **memory**: a folder of notes and source material the agent reads before answering. Bring a real challenge: a decision you're making, a bet you're placing, or work whose direction is still unclear.
 
-Do not write the brief yet. Module 2 pins it down in class, with the agent asking three questions and turning your rough challenge into a short brief. For now, just know the challenge you want to use. Good candidates are open enough to need thought, narrow enough that 5-8 topic pages could cover them, and present enough that your calendar or recent files already contain clues.
+Don't write the brief yet; the agent drafts it in class from three questions. Pick one open enough to need thought, narrow enough for 5-8 topic pages.
 
-If nothing comes to mind, scan the next two weeks of your calendar. The biggest unresolved thing on it is usually the challenge.
+If stuck, scan your next two weeks of calendar; the biggest unresolved item is usually your challenge.
 
 ## Check what the agent can read
 
-Module 2 works best when the agent can read at least one source connected to your challenge: a calendar, a document store, a wiki, or a shared drive. You already checked Microsoft 365 or Google Workspace in the main prework. Now check whether your company wiki or document system is available too.
+Module 2 works best when the agent can read a source connected to your challenge: a calendar, document store, wiki, or shared drive. You already checked Microsoft 365 or Google Workspace in the main prework. Now check your company wiki or document system.
 
-**Connectors** are connections to places where your work lives, Microsoft 365, Google Workspace, Confluence, SharePoint, OneDrive, Google Drive, or whatever your company actually uses.
+**Connectors** link the agent to places where your work lives: Confluence, SharePoint, OneDrive, Google Drive, or whatever your company uses. Open your runtime's connector settings and look for them.
 
-If your runtime offers connectors, open its connector settings. Look for Microsoft 365, Google Workspace, Confluence, SharePoint, OneDrive, Google Drive, or the system your company actually uses.
-
-If a connector asks for admin approval, tell the training coordinator. Keep going even if it is not ready. A connector makes Module 2 richer, but the memory can still start from files, pasted excerpts, and the sources you bring into the training directory.
+If a connector needs admin approval, tell the training coordinator and keep going. The memory can also start from files and pasted excerpts in your training directory.
 
 ## Put a plan before action
 
-Module 2 asks the agent to create and update multiple files. Before it does that, you want to see the shape of the work.
+Module 2 has the agent create and update multiple files. Before it writes anything, ask it for a plan and approve or revise it first. Runtimes offer this as a mode or via the prompt.
 
-Before the agent touches files, ask it to write a plan and wait for your approval. Some runtimes expose that control as a mode; in others, the prompt supplies it. The control point is the same: approve or revise the proposed work before it runs.
+Use it when the next step may write several files, edit anything you care about, or compound over several steps. Skip it for quick one-turn work.
 
-Reach for this when the next step may write several files, edit anything you care about, or compound its output over multiple steps. Skip it for quick one-turn work where you would simply re-run the prompt.
-
-Pick one route through the primer:
+Pick one:
 
 - **Ask** the agent which planning control your runtime offers, then try it on a harmless file change.
-- **Watch** Matt Pocock's [video about planning before execution](https://www.youtube.com/watch?v=WNx-s-RxVxk) on YouTube. A working practitioner showing how it feels in the hands, not a doc page.
+- **Watch** Matt Pocock's [video about planning before execution](https://www.youtube.com/watch?v=WNx-s-RxVxk).
 
-Either way: know what the control looks like in your runtime and why you'd reach for it.
+Either way, know the control and why you'd use it.
 
 ---
 
@@ -48,22 +44,22 @@ Either way: know what the control looks like in your runtime and why you'd reach
 Create `prework/module-2-start.md` in your training directory. Add:
 
 - the live challenge you are bringing;
-- the first source the agent can read about it, or the fallback you will use (identify it here; Module 2 handles the content);
+- the first source the agent can read about it, or your fallback (name it here; Module 2 handles the content);
 - the planning control you will use before the agent writes files.
 
-This file is the first handoff into your system. Module 2 will build `./challenge.md` from the challenge line, start its memory from the source line, and use the planning-control line before its first multi-file write. The note is not a spare checklist: each line has a named consumer, and the file stays behind as the record of where the system started.
+Module 2 builds `./challenge.md` from the challenge line, starts its memory from the source line, and uses the planning-control line before its first multi-file write.
 
-If one line is still blank, you now know exactly what to resolve before class. Do not fill the gap with a plausible answer. Name the fallback instead.
+If a line is blank, name a fallback; do not fill it with a plausible answer.
 
 ---
 
 ## Read the memory frame
 
-Karpathy's [LLM Wiki gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) is short. Read it for the mental model: the useful system is not a single answer, but a living pile of text the agent can read, maintain, and improve.
+Read Karpathy's [LLM Wiki gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) for the mental model: a useful system is a living pile of text the agent can read, maintain, and improve.
 
-Module 2 takes that idea and applies it to your challenge. The memory will be smaller than a wiki and more personal than a knowledge base. It starts as plain text because plain text is the easiest thing for the agent to read and rewrite.
+Module 2 applies that idea to your challenge. The memory starts as plain text, which the agent reads and rewrites easily.
 
-**Bring to Module 2:** `prework/module-2-start.md` and Karpathy's memory frame in your head. You have not built the brief or memory early; you have created the small artifact both of them will consume.
+**Bring to Module 2:** `prework/module-2-start.md`.
 
 <!-- maintainer -->
 

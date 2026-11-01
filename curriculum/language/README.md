@@ -42,3 +42,12 @@ New calls are asked only for gaps the set does not cover. Candidate pairs go to 
 ## Register flags
 
 `node scripts/sentence-flags.js` reports, without gating, four patterns from the maintainer's 2026-11-01 calls: put-down or passive wording, a narrator telling the student what they just did or felt, loaded one-line remarks on lectures and slides, and slides with more sentences than AE101's 90th percentile. Agents 101 slides run a median of 9 sentences against AE101's 7, at the same sentence length, so the move is cutting whole sentences. A constructed metaphor the training returns to across beats is not a loaded remark, and neither is a deliberate permission line. That is why this reports and never fails.
+
+## Voice lock
+
+`curriculum/language/sentence-index.json` lists the id of every sentence on the Agents 101 reading path as accepted on main. `scripts/check-new-sentences.js` (a blocking gate) checks only sentences that are not in the index, so accepted text is never re-flagged:
+
+- block: put-down wording, narrator voice, the maintainer's banned words (`BANNED` in the script: muscle, lands as a metaphor, agent file, agents earning autonomy, actually read, on Monday, ship framing, plus check_writing §1), em-dashes
+- warn: loaded one-liners, "It" opening a slide
+
+When a reviewed pass or a maintainer-approved module lands, refresh the index in the same commit: `node scripts/check-new-sentences.js --update`. Locked sentences (`locked-sentences.json`, `check-locked-sentences.js`) stay as the second half of the lock: those must not change at all.

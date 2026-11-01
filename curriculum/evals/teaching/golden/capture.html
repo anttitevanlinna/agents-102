@@ -1,0 +1,145 @@
+<title>Cold Answers Log</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+/* Layout: one narrow column, a trainer's notebook. Entry form on top, the log below, one card per learner. */
+:root{
+  --bg:#f6f7f4; --panel:#ffffff; --fg:#1d2420; --muted:#5d6a63; --line:#d8ddd7;
+  --accent:#2f6b4f; --accent-fg:#ffffff; --yes:#2f6b4f; --no:#a3402c; --unsure:#8a6d1c;
+  --display:"Fraunces",Georgia,serif; --body:"Atkinson Hyperlegible",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141916; --panel:#1c231f; --fg:#e6ebe7; --muted:#9aa8a0; --line:#2f3934;
+  --accent:#7cc19e; --accent-fg:#0f1512; --yes:#7cc19e; --no:#e58c76; --unsure:#d9b95c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141916; --panel:#1c231f; --fg:#e6ebe7; --muted:#9aa8a0; --line:#2f3934;
+  --accent:#7cc19e; --accent-fg:#0f1512; --yes:#7cc19e; --no:#e58c76; --unsure:#d9b95c; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:16px/1.5 var(--body)}
+.wrap{max-width:44rem;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:24px}
+h1{font:600 1.9rem/1.15 var(--display);margin:0;text-wrap:balance}
+h2{font:600 1.15rem/1.3 var(--display);margin:0}
+p{margin:0} .muted{color:var(--muted)} small{font-size:.85rem}
+.q{border-left:3px solid var(--accent);padding:6px 0 6px 14px;font-style:italic}
+form,.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px;display:grid;gap:12px}
+.row{display:flex;flex-wrap:wrap;gap:12px} .row>*{flex:1 1 9rem;min-width:0}
+label{display:grid;gap:4px;font-weight:700;font-size:.9rem}
+input,select,textarea{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px 10px;width:100%;box-sizing:border-box}
+textarea{min-height:4.5rem;resize:vertical}
+button{font:inherit;font-weight:700;border-radius:6px;padding:8px 14px;cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:var(--accent-fg)}
+button.ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.ans{display:grid;gap:6px;padding-top:10px;border-top:1px solid var(--line)}
+.ans:first-of-type{border-top:0;padding-top:0}
+.tag{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.lab{display:flex;flex-wrap:wrap;gap:6px}
+.lab button{padding:4px 10px;font-size:.85rem;background:transparent;color:var(--fg);border-color:var(--line)}
+.lab button[aria-pressed="true"].y{background:var(--yes);border-color:var(--yes);color:var(--bg)}
+.lab button[aria-pressed="true"].n{background:var(--no);border-color:var(--no);color:var(--bg)}
+.lab button[aria-pressed="true"].u{background:var(--unsure);border-color:var(--unsure);color:var(--bg)}
+.target{font-size:.9rem;color:var(--muted)}
+#status{min-height:1.5em}
+</style>
+
+<div class="wrap">
+  <header style="display:grid;gap:10px">
+    <h1>Cold answers: real learners</h1>
+    <p class="muted">For the trainer. Ask each learner the question below with the material closed, once at the end of the module and once 2 to 3 days later. Type or paste what they said, word for word.</p>
+    <p class="q">A colleague missed this module. In one or two sentences, what is the one idea from it they should not miss?</p>
+  </header>
+
+  <form id="f">
+    <h2>Add an answer</h2>
+    <div class="row">
+      <label for="learner">Learner code<input id="learner" placeholder="L1" required maxlength="12"></label>
+      <label for="module">Module<select id="module"></select></label>
+      <label for="when">When<select id="when"><option value="end">End of module</option><option value="later">2 to 3 days later</option></select></label>
+    </div>
+    <label for="answer">Their answer, in their words<textarea id="answer" required></textarea></label>
+    <label for="moment">One moment that stuck (optional)<input id="moment"></label>
+    <div class="bar"><button type="submit">Save answer</button><span id="status" class="muted" role="status"></span></div>
+  </form>
+
+  <section style="display:grid;gap:12px">
+    <div class="bar">
+      <h2>Log</h2>
+      <div class="row" style="flex:0 1 auto"><button class="ghost" id="dl" type="button" hidden>Download JSONL</button></div>
+    </div>
+    <p class="muted"><small>After both rounds, mark each answer: does it state the module's target? Only you see these marks; they are the gold the scorer is checked against.</small></p>
+    <div id="log"><p class="muted">No answers yet. Saved answers appear here, grouped by learner.</p></div>
+  </section>
+</div>
+
+<script>
+const TARGETS = {
+  "getting-going":"Give the agent your own guardrails (a framework you know, your own facts and taste) and the output becomes recognizably yours instead of generic.",
+  "building-agent-systems":"A system of files the agent reads and updates, plus automation, remembers and keeps getting better; a chat forgets every time.",
+  "multi-agent-systems":"Several agents can split the work and coordinate through shared files: the filesystem is their meeting room.",
+  "security":"You cannot tell from the agent's output whether it is safe; run a repeatable check (assess, mitigate, reassess what is left, decide) instead of waiting for certainty.",
+  "output-quality":"Do not pick a quality check on faith: run several on your own output, score them against a benchmark, and keep the one that wins.",
+  "evaluations":"Keep the judge fixed and separate from what generates the work; then the score means something and the loop can improve the work without you in every round.",
+  "personal-to-team":"You cannot really share an agent; you share its context, a skill, its output or an interface, and choosing which one is a decision about your team.",
+  "agents-building-agents":"The tool that builds tools compounds: your agent can build new agents that extend your own system."
+};
+const NAMES = {"getting-going":"M1 Getting going","building-agent-systems":"M2 Building agent systems","multi-agent-systems":"M3 Multi-agent systems","security":"M4 Security","output-quality":"M5 Output quality","evaluations":"M6 Evaluations","personal-to-team":"M7 From personal to team","agents-building-agents":"M8 Agents building agents"};
+const $ = (id) => document.getElementById(id);
+for (const [k, v] of Object.entries(NAMES)) $("module").add(new Option(v, k));
+let rows = [], db = null;
+const status = (t) => { $("status").textContent = t; };
+
+function render() {
+  const log = $("log"); log.textContent = "";
+  $("dl").hidden = !rows.length;
+  if (!rows.length) { const p = document.createElement("p"); p.className = "muted"; p.textContent = "No answers yet. Saved answers appear here, grouped by learner."; log.append(p); return; }
+  const by = {};
+  for (const r of rows) (by[r.learner + " · " + r.module] ||= []).push(r);
+  for (const [k, rs] of Object.entries(by).sort()) {
+    const c = document.createElement("div"); c.className = "card"; c.style.marginBottom = "12px";
+    const h = document.createElement("h2"); h.textContent = rs[0].learner + " · " + (NAMES[rs[0].module] || rs[0].module); c.append(h);
+    const t = document.createElement("p"); t.className = "target"; t.textContent = "Target: " + (TARGETS[rs[0].module] || ""); c.append(t);
+    for (const r of rs.sort((a, b) => (a.when > b.when ? 1 : -1))) {
+      const a = document.createElement("div"); a.className = "ans";
+      const tag = document.createElement("span"); tag.className = "tag"; tag.textContent = r.when === "end" ? "End of module" : "2 to 3 days later"; a.append(tag);
+      const p = document.createElement("p"); p.textContent = r.answer; a.append(p);
+      if (r.moment) { const m = document.createElement("p"); m.className = "muted"; m.textContent = "Stuck: " + r.moment; a.append(m); }
+      const lab = document.createElement("div"); lab.className = "lab";
+      for (const [v, cls, txt] of [["yes", "y", "States the target"], ["no", "n", "Does not"], ["unsure", "u", "Unsure"]]) {
+        const b = document.createElement("button"); b.type = "button"; b.className = cls; b.textContent = txt;
+        b.setAttribute("aria-pressed", String(r.label === v));
+        b.onclick = async () => { try { await db.collection("answers").doc(r.id).update({ label: r.label === v ? null : v }); } catch (e) { status("Could not save the mark: " + (e.message || e.code)); } };
+        lab.append(b);
+      }
+      a.append(lab); c.append(a);
+    }
+    log.append(c);
+  }
+}
+
+$("f").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  if (!db) { status("Saving is not available in this view. Open the page signed in as its owner."); return; }
+  const learner = $("learner").value.trim().toUpperCase(), module = $("module").value, when = $("when").value;
+  const id = `${learner}-${module}-${when}`.replace(/[^A-Za-z0-9-]/g, "");
+  try {
+    await db.collection("answers").doc(id).set({ learner, module, when, answer: $("answer").value.trim(), moment: $("moment").value.trim(), at: new Date().toISOString(), label: (rows.find((r) => r.id === id) || {}).label || null });
+    status(`Saved ${learner}, ${when === "end" ? "end of module" : "later"}.`); $("answer").value = ""; $("moment").value = "";
+  } catch (err) { status("Could not save: " + (err.message || err.code) + ". Only the page owner can add answers."); }
+});
+
+$("dl").onclick = async () => {
+  const d = await claude.use("downloads");
+  const text = rows.map((r) => JSON.stringify({ id: r.id, module: r.module, group: "real-" + r.when, persona: r.learner, answer: r.answer, moment: r.moment, label: r.label })).join("\n") + "\n";
+  if (!d) { status("Download is not available here. Ask Claude to read the answers instead."); return; }
+  try { await d.save({ filename: "cold-answers.jsonl", data: text }); } catch (e) { /* viewer declined */ }
+};
+
+(async () => {
+  db = await claude.use("db");
+  if (!db) { status("Answers cannot be loaded in this view."); return; }
+  const timer = setTimeout(() => status("The answer store is not reachable yet; showing what is loaded."), 10000);
+  db.collection("answers").onSnapshot((snap) => {
+    if (!snap.fromCache) { clearTimeout(timer); if (/not reachable/.test($("status").textContent)) status(""); }
+    rows = snap.docs.map((d) => ({ id: d.id, ...d.data() })); render();
+  }, (err) => { clearTimeout(timer); status("Could not load answers: " + (err.message || err.code)); });
+})();
+</script>

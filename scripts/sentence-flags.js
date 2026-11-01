@@ -11,6 +11,9 @@
 //   put-down   wording that belittles the student or the current way, or
 //              leaves the student waiting to be handed something.
 //              ("toy", "a guess that happens to compile", "nobody can hand you")
+//   narrator   the page telling the student what they just did or felt
+//              ("You felt context move", "The unease you feel"). Counted per
+//              1000 sentences against the comparison training.
 //   dense      slides with more sentences than the comparison training's
 //              90th percentile. The wordiness is sentence count, not length,
 //              so the move is cutting whole sentences.
@@ -33,6 +36,11 @@ const PUT_DOWN = [
 const TOLD = /^(lectures|slides)\/|\/supplementary\//;
 const IMPERATIVE = /^(start|ask|add|open|run|type|save|create|read|check|spot|revise|pick|do|don't|use|paste|look|write|try|keep|make|tell|name|push|go|let|give|take|copy|install|load|set|find|end|close|repeat|compare|move|share|wait)\b/i;
 
+// Narrator voice: the page telling the student what they just did or felt.
+// AE101's frames look ahead, own the work, explain the machine, or speak as
+// the trainer; Agents 101 drifts into narrating the student back to them.
+const NARRATOR = /\byou (felt|feel|were|noticed|watched|saw|just|already|probably|may have|might have|likely)\b|\byour (unease|doubt|instinct|gut|feeling)\b/i;
+
 function flagRows(rows) {
   const out = [];
   const bySlide = new Map();
@@ -54,6 +62,7 @@ function flagRows(rows) {
       const qsOnLine = prose.filter(x => x.line === r.line && x.text.trim().endsWith('?')).length;
       if (told && r.kind === 'prose' && r.text.trim().endsWith('?') && r.words <= 10 && !questionSlide && qsOnLine === 1) reasons.push('loaded: rhetorical question on a statement slide');
       for (const re of PUT_DOWN) if (re.test(r.text)) { reasons.push(`put-down: "${r.text.match(re)[0]}"`); break; }
+      if (NARRATOR.test(r.text)) reasons.push(`narrator: "${r.text.match(NARRATOR)[0]}"`);
       if (reasons.length) out.push({ ...r, reasons });
     }
   }
@@ -75,7 +84,7 @@ function quantile(xs, q) {
   return s.length ? s[Math.min(s.length - 1, Math.floor(q * s.length))] : 0;
 }
 
-module.exports = { flagRows, slideCounts, quantile, PUT_DOWN };
+module.exports = { flagRows, slideCounts, quantile, PUT_DOWN, NARRATOR };
 
 if (require.main === module) {
   const argv = process.argv.slice(2);
@@ -91,10 +100,13 @@ if (require.main === module) {
   if (argv.includes('--json')) { console.log(JSON.stringify({ flags, dense, p90 }, null, 1)); process.exit(0); }
   const loaded = flags.filter(f => f.reasons.some(r => r.startsWith('loaded')));
   const put = flags.filter(f => f.reasons.some(r => r.startsWith('put-down')));
+  const narr = flags.filter(f => f.reasons.some(r => r.startsWith('narrator')));
+  const per1k = rows => { const p = rows.filter(r => r.kind !== 'heading'); return (1000 * p.filter(r => NARRATOR.test(r.text)).length / p.length).toFixed(0); };
   console.log(`# Register flags: ${key}\n\nReport only. Each flag is a candidate for a cut, not a verdict.\n`);
   console.log(`Sentences per slide: ${key} median ${quantile([...mine.values()], 0.5)}, ${cmp} median ${quantile([...theirs.values()], 0.5)} (p90 ${p90}).\n`);
   const show = f => `- ${f.file}${f.slide ? '#' + f.slide : ''}:${f.line} · "${f.text}" · ${f.reasons.join('; ')}`;
   console.log(`## Put-down or passive (${put.length})\n`); put.forEach(f => console.log(show(f)));
+  console.log(`\n## Narrator voice (${narr.length}; ${per1k(L.rows)} per 1000 sentences, ${cmp} ${per1k(buildLedger(cmp).rows)})\n`); narr.forEach(f => console.log(show(f)));
   console.log(`\n## Loaded one-liners (${loaded.length})\n`); loaded.forEach(f => console.log(show(f)));
   console.log(`\n## Dense slides, more sentences than ${cmp}'s p90 (${dense.length})\n`);
   dense.forEach(([k, n]) => console.log(`- ${k}: ${n} sentences`));

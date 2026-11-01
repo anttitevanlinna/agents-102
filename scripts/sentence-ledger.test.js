@@ -96,3 +96,10 @@ test('register flags: a lone remark and a put-down on a told surface; instructio
   assert.ok(flagRows(rows).find(f => f.text === 'Either alone is a toy.').reasons.some(r => r.startsWith('put-down')));
   assert.strictEqual(flagRows(parseFile('That is the work.\n', 'exercises/x.md', null)).length, 0);
 });
+
+test('narrator flag: the page telling the student what they felt', () => {
+  const { flagRows } = require('./sentence-flags.js');
+  const rows = parseFile('You felt context move. The unease you feel is normal, and your gut agrees. The agent reads the file.\n', 'exercises/x.md', null);
+  const n = flagRows(rows).filter(f => f.reasons.some(r => r.startsWith('narrator'))).map(f => f.text);
+  assert.deepStrictEqual(n, ['You felt context move.', 'The unease you feel is normal, and your gut agrees.']);
+});

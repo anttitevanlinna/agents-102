@@ -38,3 +38,7 @@ The simulated student is designed in the rubric work, not here. When it logs a m
 The maintainer's past calls are the first calibration set: blind slide pairs rebuilt from recorded rulings in git and `taste-notes.md` (`curriculum/evals/calibration/antti-pairs/`). `scripts/sentence-pair-review.js` runs the test-step reviewer over such a set. It judges each pair twice with the sides swapped, keeps a pick only when both orders agree, and writes picks that the set's `score.py` scores. Below the set's bar (about 80% overall, no kind under 65%), fix the reviewer before trusting the loop.
 
 New calls are asked only for gaps the set does not cover. Candidate pairs go to the rubric work, which sends the maintainer one batched list. Every call is kept: accepted wording becomes a lock, and a refused variant is recorded so the loop never offers it again.
+
+## Register flags
+
+`node scripts/sentence-flags.js` reports, without gating, three patterns from the maintainer's 2026-11-01 calls: put-down or passive wording, loaded one-line remarks on lectures and slides, and slides with more sentences than AE101's 90th percentile. Agents 101 slides run a median of 9 sentences against AE101's 7, at the same sentence length, so the move is cutting whole sentences. A constructed metaphor the training returns to across beats is not a loaded remark, and neither is a deliberate permission line. That is why this reports and never fails.

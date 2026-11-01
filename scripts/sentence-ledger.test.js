@@ -86,3 +86,13 @@ test('findQuote: a logged fragment or a multi-sentence quote resolves to its sen
   assert.strictEqual(findQuote(rows, 'The Module 4 prework adds two reads').match, 'contained');
   assert.strictEqual(findQuote(rows, 'Avoidance beats reduction. Scope beats patch.').rows[0].slide, 'y');
 });
+
+test('register flags: a lone remark and a put-down on a told surface; instructions and question lists pass', () => {
+  const { flagRows } = require('./sentence-flags.js');
+  const md = ['## A slide', '<!--slide:a-->', '', 'The loop runs on your own files every night.', '', 'That is the work.', '', 'Either alone is a toy.', '', 'Run the check now.', '', 'What can it read? What may it change?', ''].join('\n');
+  const rows = parseFile(md, 'slides/a.md', 'a');
+  const got = Object.fromEntries(flagRows(rows).map(f => [f.text, f.reasons[0].split(':')[0]]));
+  assert.deepStrictEqual(got, { 'That is the work.': 'loaded', 'Either alone is a toy.': 'loaded' });
+  assert.ok(flagRows(rows).find(f => f.text === 'Either alone is a toy.').reasons.some(r => r.startsWith('put-down')));
+  assert.strictEqual(flagRows(parseFile('That is the work.\n', 'exercises/x.md', null)).length, 0);
+});

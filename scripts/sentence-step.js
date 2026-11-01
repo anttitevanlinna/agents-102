@@ -74,7 +74,7 @@ function optionsPrompt(row, slideText) {
   const taste = fs.readFileSync(path.join(ROOT, 'curriculum/taste-notes.md'), 'utf8');
   return `You edit an agents course for people who already use LLMs at work. Simulated students went dead on one sentence. Propose fixes for that sentence only.
 
-Rules: keep the author's claim and voice. Each option is shorter than the original or the same length, never longer. CUT is a valid option when the slide works without the sentence. Plain words, no em dashes.
+Rules: keep the author's claim and voice. Cutting the whole sentence is the first option to weigh: the course is wordy because slides carry too many sentences, not because sentences are long. A rewrite is shorter than the original or the same length, never longer. Neutral register: no one-line witty remarks, no rhetorical questions, no loaded words. Never put the student or the current way of working down, and never leave the student waiting to be handed something. Plain words, no em dashes.
 
 Course writing style:
 ${style}

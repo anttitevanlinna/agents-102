@@ -26,7 +26,8 @@ bad=0
 for name,key,p1,p2,bar in (('AE101 anchor',K,'anchor','anchor-sw',90),('concrete-sentence removal (watch)',f'{O}/cc.key.jsonl','cc','cc-sw',40)):
     k=rd(key); a=rd(f'{O}/{p1}.jsonl'); b=rd(f'{O}/{p2}.jsonl')
     c=sum(a.get(i,{}).get('pick')==k[i]['answer'] for i in k)+sum(fl.get(b.get(i,{}).get('pick'))==k[i]['answer'] for i in k)
+    miss=sum(i not in a for i in k)+sum(i not in b for i in k)
     pct=100*c/(2*len(k)); ok=pct>=bar; bad+=not ok
-    print(f"{name}: {pct:.0f}% ({c}/{2*len(k)}), bar {bar}% -> {'OK' if ok else 'ALERT'}  (noise ±5)")
+    print(f"{name}: {pct:.0f}% ({c}/{2*len(k)}), bar {bar}% -> {'OK' if ok else 'ALERT'}  (noise ±5)" + (f"; {miss} picks missing (pairs.js dropped a batch; rerun those before reading an ALERT)" if miss else ""))
 sys.exit(1 if bad else 0)
 PY

@@ -74,3 +74,14 @@ What changed:
 - When he kept the longer side, v3 is still a coin flip (5 of 10).
 - On the old 45-pair holdout, where he often refused a cut, v3 scores 61%, the same as v2. The "shorter by default" line did not cost the refusals.
 - The AE101 anchor scores 35 and 36 of 36 (99%) and is stable, against 96% before.
+
+## Antti's answers on the judge-unsure representatives (2026-11-01 17:30)
+
+`resolve.py` writes `history.key.resolved.jsonl`; `resolutions.json` gives the reason for each change. Use the resolved key from here on.
+
+- Named actor (`ad58dca3-2`) and low-value closing sentence (`35e7889b-139`): he agreed with his August call. Six order-flip cuts of the same kind are confirmed by pattern.
+- `a90c9ec2-58` is relabelled to the other side ("Agents don't 'earn' autonomy"). This is drift; his current call wins.
+- He answered "neither" on the keep-longer lens wording (`488cf42a-10`) and on "container" vs "place to hang moves" (`a90c9ec2-62`). Both are dropped from scoring, along with one same-text lookalike (`488cf42a-12`).
+- The concrete-sentence card got "not enough context". It has been re-asked with the full slide (`cc-getting-going-2`).
+
+With the resolved key, using the v3 picks from before the three rules added at 61cea88a: 147 pairs, v3 85% against always-shorter 80%. On kept-longer it is 55% (n=21). Noise is about ±5.

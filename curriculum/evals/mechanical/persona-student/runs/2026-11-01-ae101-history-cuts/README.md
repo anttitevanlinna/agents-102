@@ -86,4 +86,4 @@ What changed:
 
 With the resolved key, using the v3 picks from before the three rules added at 61cea88a: 147 pairs, v3 85% against always-shorter 80%. On kept-longer it is 55% (n=21). Noise is about ±5.
 
-Rerun after the three rules added at 61cea88a (low-value closer, no "earn" for agents, metaphor must fit its noun), picks in `v3r-61cea88a*.jsonl`: resolved key, 147 pairs, 86% against always-shorter 80% (was 85%); kept-longer 57% (n=21). The rules cost nothing here.
+Rerun after the three rules added at 61cea88a (low-value closer, no "earn" for agents, metaphor must fit its noun), picks in `v3r-61cea88a*.jsonl`: resolved key, 147 pairs, 86% against always-shorter 80% (was 85%); kept-longer 57% (n=21). On the 74-pair holdout half alone: 83%, against 88% for v3 before the rules and 81% always-shorter. That is a 5-point drop, at the edge of the ±5 run noise; rerun once more before reading it as a cost.

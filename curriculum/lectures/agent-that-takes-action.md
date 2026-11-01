@@ -1,16 +1,10 @@
 # Demo: Agent that takes action
 
-Same agent, second boundary.
-
 In Module 2, the scheduled agent read context and wrote an output inside the training folder. Now it runs again with one new permission: post one message to a demo Slack channel.
 
-This is still text work. The prompt is text. The guardrail is text. The proposed Slack message is text. The difference is that this text can now leave the folder and make another system do something.
+The action is deliberately small. The channel is a demo channel. The message contains no customer data, no private names, no commitments, and no decision. The agent writes the exact message first and sends only after approval. If the channel is missing or the message needs judgment, the agent stops.
 
-The action is deliberately small. The channel is a demo channel. The message contains no customer data, no private names, no commitments, and no decision. The agent writes the exact message first. It only sends after approval. If the channel is missing or the message needs judgment, the agent stops.
-
-That is the difference between an output and an action. Writing a file changes your folder. Sending to Slack changes another system. Same agent, same context, same schedule, one new boundary.
-
-Module 3 now asks the next question: if one agent can act, what changes when several agents split the work?
+Writing a file changes your folder. Sending to Slack changes another system. Same agent, same context, same schedule, one new boundary.
 
 <!-- maintainer -->
 

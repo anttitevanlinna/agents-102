@@ -2,61 +2,34 @@
 
 **Time:** ~22 minutes (15 min synthesis + 7 min Close).
 
-**What you do:**
+**What you do:** Spawn three helper agents with different stances on your curated memory. The main session synthesizes their notes into `./crux.md`.
 
-Spawn three helper agents inside one session. Each holds a different stance against your curated memory. The main session reads them back, applies a strategy framework, and writes the answer back into your `./crux.md` as a third section.
+Stay in the session that wrote `./crux.md`; close the retriever sessions. Wait for `memory/_synthesis-m3.md` to be written.
 
-**The point:**
-
-Multi-agent's second shape: helper agents inside one session. Each runs in its own context, returns and disappears. Quick parallel thinking, bounded return, without juggling four windows.
-
-The previous exercise left you with a curated `memory/` (the synthesizer's output) and the same `./crux.md` you've been building since the opening.
-
-Stay in the session that wrote `./crux.md`, the same one you've used since *Name your crux*. In the previous exercise this session was relabelled Session 4 (the synthesizer) while three retriever sessions ran alongside it. The retriever sessions can close now; this one stays open as your main session for the synthesis below.
-
-Wait for the synthesizer's loop to finish, its last move was writing `memory/_synthesis-m3.md` naming what changed. Memory is sharper than it was an hour ago.
-
-Now spawn three helper agents inside *this* session and synthesize their stances inline. Each runs with its own context window, works in parallel, and hands back what it produced. Same shape as the agent files you built in Module 2, but spawned inside this session instead of saved as files.
-
-Three stances in parallel; the main session reads them, applies a framework, and writes the answer back into `./crux.md` as a third section. One prompt does the whole job.
-
-Three helper agents fanning out at once. Lighter than the four-session retriever run, but if one starts reading the world, stop it, steer narrower, then say *"continue"*.
+If a helper starts reading the world, stop it, steer narrower, then say *"continue"*.
 
 <div class="rt-code">
 
-Ask the lead agent to spawn three helper agents with different stances, then apply Rumelt's kernel to synthesize their notes back into `./crux.md`.
+Ask the agent to spawn three helpers with different stances, then apply Rumelt's kernel to synthesize their notes into `./crux.md`.
 
 {{prompt:three-minds-one-synthesis-1}}
 
 </div>
 <div class="rt-cowork">
 
-Ask the agent to spawn three helpers with different stances, then apply Rumelt's kernel to synthesize their notes back into `./crux.md`.
+Ask the agent to spawn three helpers with different stances, then apply Rumelt's kernel to synthesize their notes into `./crux.md`.
 
 {{prompt:three-minds-one-synthesis-2}}
 
 </div>
 
-
-Heads-up: the answer often comes back with a longer issue list than feels comfortable, disagreements named, gaps flagged. That's the prompt working as designed; it looks scarier than it is. If the volume is in the way, delegate triage back to the agent.
-
-If the volume is in the way, ask the agent to choose the fixes that aim for optimal function in the next session.
+The answer often comes with a long issue list. If the volume is in the way, ask the agent to choose the fixes that aim for optimal function in the next session.
 
 {{prompt:three-minds-one-synthesis-3}}
 
-**What happened:** Three voices, three short notes. The main session read them side by side, applied Rumelt's strategy kernel (diagnosis, guiding policy, coherent actions) inline, wrote the synthesis. A single artifact carried the full strategic frame: crux + question + answer.
-
 **Close. Does this feel right?**
 
-Optional: ask the agent to recap the three retrievals' core claims next to your `## Answer`. Then ask yourself a question you won't be able to avoid asking anyway: *is this actually right?*
-
-You can't tell yet. Three retrievers read plainly, three stances pushed, a framework held the synthesis together, and still, the answer sits at that uneasy distance where you'd stake your reputation on some of it and not all of it, and you can't yet say which is which. That feeling is correct.
-
-That was the training's move, run properly. You still cannot vouch for what it produced.
-
-Hold the doubt. Name it to yourself. Don't fix it here.
-
-For now, let it stew.
+Optional: ask the agent to recap the three retrievals' core claims next to your `## Answer`. You can't yet tell if it is right; that is expected. Hold the doubt, name it, don't fix it here.
 
 <!-- maintainer -->
 

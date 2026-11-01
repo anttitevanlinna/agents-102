@@ -5,38 +5,36 @@ A system remembers, grows, and compounds. Chat doesn't. Your next big challenge 
 
 ## Prework
 
-[Module 2 prework](lectures/module-2-prework.md). (1) Bring a live challenge on your mind. The challenge gets pinned down in class. (2) Verify your Confluence and OneDrive connectors. (3) <span class="rt-code">Plan-mode primer.</span><span class="rt-cowork">Plan-first primer.</span> (4) Karpathy's LLM Wiki post. (5) The candidate Lindenberg memory-architecture piece from the same prework page, if you had room.
+[Module 2 prework](lectures/module-2-prework.md). (1) Bring a live challenge. (2) Verify your Confluence and OneDrive connectors. (3) <span class="rt-code">Plan-mode primer.</span><span class="rt-cowork">Plan-first primer.</span> (4) Karpathy's LLM Wiki post. (5) Optional: Lindenberg memory-architecture piece.
 
 ## What You'll Learn
-After this module, you will be able to:
-- **Build** an LLM memory on your next big challenge, curated from internal wikis, recent work, and practitioner methods
-- **Build** your first custom agent (a markdown file of instructions) and run it on your memory against the challenge
-- **Review** a proposed plan before the agent takes multi-step action
-- **See** the three layers of the system, raw sources, memory, rules file, and why plain text beats a database here
-- **Evaluate** whether the memory is compounding or merely growing
+After this module, you can:
+- **Build** an LLM memory on your next big challenge
+- **Build** a custom agent (markdown instructions) and run it on your memory
+- **Review** a plan before the agent acts
+- **See** the three layers (raw sources, memory, rules file) and why plain text
+- **Evaluate** whether memory is compounding or growing
 
 ## Start here
 Start a fresh session or task at `~/Documents/agents-101/`. The fresh start keeps Module 1's personal-site scrollback out of the way.
 
-Module 2 turns to your real challenge. The empty `memory/`, `sources/`, and `agents/` folders are already there from prework, ready to fill. Your Module 1 generation-rules file stays scoped to `module-1/`; neither it nor `module-1/site.html` is an input to this build. The wider root instructions file doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
+The empty `memory/`, `sources/`, and `agents/` folders are already there from prework. Your Module 1 generation-rules file stays scoped to `module-1/`; neither it nor `module-1/site.html` is an input to this build. The root instructions file doesn't exist yet. You'll write its first version at the end of this module (Debrief), grounded in what happens during the exercise.
 
-A site, a voice sharpened, fabrication caught by the only person in the room who could catch it. Now the training turns to work. The rest of it builds on the challenge you actually get paid to move, because that's where the system has to stand up.
-
-Karpathy's LLM Wiki post was in the prework. What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you?
+What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you?
 
 ## Name the challenge you're carrying
 
-Then the real one: what's the challenge you're carrying right now that isn't solved yet? The thing that's been open in your head for weeks, maybe longer. Not a task. A challenge. Hold it. You're going to build a memory around it.
+Then the real one: what challenge are you carrying that isn't solved yet? Not a task. Hold it; you'll build a memory around it.
 
-And one more: if everything you've read, drafted, and half-figured-out on that challenge moved into a memory an agent could read and sharpen, what changes back at work?
+If everything you've read and drafted on that challenge moved into a memory an agent could read and sharpen, what changes at work?
 
-Connectors let the agent combine clues that normally live apart: a wiki page, a document, a meeting note, an email thread, and a useful source from the open web. The useful answer is often between systems.
+Connectors let the agent combine clues that live apart, like a wiki page and an email thread.
 
 [Demo: 1st scheduled agent](lectures/first-scheduled-agent.md)
 
 [Exercise: Name your next big challenge](exercises/name-your-challenge.md)
 
-Keep the same session or task running for the next exercise. The agent already has your challenge in scrollback; no need to re-read.
+Keep the same session running; the agent has your challenge in scrollback.
 
 [Exercise: Build your challenge memory](exercises/build-your-challenge-memory.md)
 
@@ -44,54 +42,51 @@ Keep the same session or task running for the next exercise. The agent already h
 
 ## Debrief
 
-Five minutes. A retro, **and the first root instructions file in this directory.** Module 2 opened on an empty training-dir root: no rules file. The memory flow ran end to end (curate → ingest → build → update → maintain), and the rules that actually matter for YOUR agent are now visible, visible in what worked, what rubbed, what got repeated. The agent writes the rules file from the session. You push back on anything off.
+Five minutes. A retro, **and the first root instructions file in this directory.** The memory flow ran end to end. The agent writes the rules file from the session: what worked, what rubbed, what got repeated. You push back on anything off.
 
 {{prompt:a101-m2-debrief-claude-md}}
 
-
 ## Push back on the summary
 
-Read the agent's summary. Push back on anything that doesn't match your sense of the work. *"No, that rule's too strict."* *"You missed the bit where we had to regenerate three times because of X."* Same move Module 1 landed on your guardrails file: do the work, let the agent capture the rules, push back where the agent got it wrong. Module 2 lands your first wider root instructions file, the one every subsequent module extends.
+Read the agent's summary and push back on anything that doesn't match your sense of the work. *"No, that rule's too strict."* *"You missed the bit where we had to regenerate three times because of X."*
 
-What the agent leaves out is often the signal. A clean summary that names three rules and skips the messy fourth, the one where the work bent and you re-prompted twice, is the tell.
+What the agent leaves out is often the signal. A summary that names three rules and skips the messy fourth, where you re-prompted twice, is the tell.
 
 ## Fix the output, then fix the rule
 
-> Your agent is "right" when it works. Every miss is context you haven't written yet. Sharpen the memory, tighten a rule, rewrite the prompt. You won't spot the next mistakes by re-reading the files you already have. You spot them by running the system and watching where it bends.
+> Your agent is "right" when it works. Every miss is context the agent still lacks. Sharpen the memory, tighten a rule, rewrite the prompt. You spot the next mistakes by running the system and watching where it bends.
 
-Watching where it bends is continuous improvement, done by hand. Every miss turns into a line of context that stops the next miss. Later in the training you'll learn the move that bends the curve: the agent spots its own misses and proposes its own fixes. You stop being the only pair of eyes.
+Watching where it bends is continuous improvement, done by hand. Every miss turns into a line of context that stops the next miss.
 
 ## The model will change under this
 
-One thing to hold as you close the session. The model will change under this. The memory will not.
+The model will change under this. The memory will not.
 
-What you built is a folder of your own text: your challenge, your sources, the rules you just wrote. A better model reads it better. It doesn't write it for you, and it doesn't leave with it.
+Your folder holds your challenge, your sources and your rules. A better model reads your folder better. It does not write it for you.
 
 ## Key Concepts
-- Persistence plus automation makes a system; either alone is a toy.
-- Three layers: raw sources untouched, a memory the agent sharpens, a rules file that keeps the shape.
-- Plain text, because reading and writing text is what the model does best.
+- Persistence plus automation: a system.
+- Three layers: untouched raw sources, a memory the agent sharpens, a rules file.
+- Plain text: models read and write text best.
 
 ## Bring to Module 3
 
-**A daily agent, scheduled, with a week of observation behind it.** It reads your challenge memory. A week of watching it run is the evidence Module 3 splits work against; without it the split is guesswork.
+**A daily agent, scheduled, with a week of observation behind it.** It reads your challenge memory. Module 3 splits work against that week of runs; without it the split is guesswork.
 
 [Schedule your personal agent](exercises/personal-agent-homework.md)
 
-Come to Module 3 without a week of agent runs and you'll be reconstructing that evidence while the opening exercise is already underway. Your call.
+Arrive without the week of runs and you'll rebuild that evidence during the opening exercise. Your call.
 
 ## Pre-reads before Module 3
 
-[Agent Trigger List, After Module 2](trainings/agents-101/supplementary/agent-trigger-list.md#after-module-2-start-noticing-trigger-moments), for noticing when real work should call the agent. Then selected sections from [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) on tools, memory, and context.
+[Agent Trigger List, After Module 2](trainings/agents-101/supplementary/agent-trigger-list.md#after-module-2-start-noticing-trigger-moments), for noticing when work should call the agent. [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md): tools, memory, context.
 
 [Before Module 3](exercises/module-3-prework.md)
 
-Once the scheduled run and prework are saved, end this module's session or task. Module 3 starts fresh at `~/Documents/agents-101/`.
+Save the run, then end this session.
 
 ## Next
-You have an agent doing real work on your challenge. But the job is getting too big for one agent. What do you split?
-
-Before the next module, try making a few more agents you actually need. Pick by pain, not ambition: the task you keep doing manually that would feel lighter if someone else did it. Meeting prep, calendar triage, competitive watching, and draft-reply triage are all fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system. You only learn by doing. Go build.
+Before the next module, build a few more agents you actually need. Pick by pain: a task you keep doing manually. Meeting prep, calendar triage, competitive watching, and draft-reply triage are fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system. Go build.
 
 <!-- maintainer -->
 

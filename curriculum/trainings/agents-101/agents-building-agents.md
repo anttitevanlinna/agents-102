@@ -5,66 +5,64 @@ The tool that builds tools compounds.
 
 ## Prework
 
-Run `module-7/monday.md`, test one assumption, ask for one name, and talk to one person. Then revisit the three thinking disciplines you used there: find the crux, ask what would have to be true, and run a pre-mortem.
+Run `module-7/monday.md`: test one assumption, ask for one name, talk to one person.
+
+Revisit the crux, what would have to be true, pre-mortem.
 
 ## What You'll Learn
-After this module, you will be able to:
+After this module, you can:
 - **Use** your agent runtime to generate a new agent that extends your system
-- **Orchestrate** three thinking disciplines at room scale against a real company question
-- **Produce** a strategy kernel, suggested agent set, and two-week plan grounded in your actual files
-- **Explain** how the deliberation cycle sharpens the strategy kernel and the next agent set
+- **Orchestrate** three thinking disciplines against a real company question
+- **Produce** a strategy kernel, suggested agent set, and two-week plan from your files
+- **Explain** how deliberation sharpens the kernel and the next agent set
 
 ## Start here
 
-Start a fresh session or task at `~/Documents/agents-101/`. That local session reads the full agent system and `module-7/monday.md`; the room-scale exercise uses a separate shared deliberation folder so participant files do not blur into the local stack.
+Start a fresh session at `~/Documents/agents-101/`. It reads the full agent system and `module-7/monday.md`. The room-scale exercise uses a separate shared deliberation folder, so participant files stay out of your local stack.
 
 At the start, the shared folder is nearly empty: each participant gets one folder named after them, the buyer/sponsor seeds `challenge.md`, and one or two central synthesizer agents write the selection, agent-set, and plan files at the shared root.
 
-Eight modules of compounding sit on disk. A memory. Agents that read it. Skills that audit the agents. Judges that catch the skills drifting. Today the ceiling moves on its own.
-
-The question that shows up without being asked: *where is this all going?*
-
-It shows you the shape of an answer you'll keep sharpening.
+The question to carry through: where is all this going?
 
 ## Watch an agent build an agent
 
-**Agent generates agent.** The meta-tool in action. Sets up the Extend exercise. You watch one agent build another, end-to-end, on real input. That's the whole lecture.
+**Agent generates agent.** You watch one agent build another on real input. That's the whole lecture.
 
 [Exercise: Extend your system](exercises/extend-your-system.md)
 
 [Exercise: Agent Proposal Forum (diagnose and guide)](exercises/joint-double-diamond.md)
 
-The three thinking disciplines you applied in Module 7 on your own sharing problem run again here at room scale on the sponsor challenge. Finding the *crux* shapes each initial stance. Cross-checks force agents to notice rival evidence before they publish proposals. *What would have to be true?* and *pre-mortem* appear when agents criticize the synthesizer's choices and propose better ideas. Same disciplines, named inline in the prompts. Bigger instrument.
+Module 7's three disciplines run again at room scale on the sponsor challenge. Finding the *crux* shapes each initial stance. Cross-checks make agents notice rival evidence before publishing. *What would have to be true?* and *pre-mortem* appear when agents criticize the synthesizer's choices.
 
 [Lecture: Where is this all going?](lectures/where-is-this-all-going.md)
 
 ## Debrief
 
-Five minutes. The agent reviews the session and sharpens whichever file carried the load: the central synthesizer's rules, the strategy kernel, the agent set, the plan, or the rules that governed how the agents argued. The evidence is what you produced: the context manifests, stances, cross-checks, proposals, selection board, synthesizer-injected midpoint instructions, critiques, pushbacks, kernel, agent set, and plan. The agent reviews, rewrites the most load-bearing file in place, and reports what changed. You push back on anything that's off.
+Five minutes. The agent reviews the session, rewrites the most load-bearing file in place (synthesizer rules, strategy kernel, agent set, plan, or argument rules), and reports what changed. It reads everything you produced. You push back on anything that's off.
 
 {{prompt:a101-m8-debrief-flywheel-sharpen}}
 
-> **Watch for slowness.** When you push back on the rewrite, the agent should edit the section you flagged, not rewrite the whole file. Kernel and agent-set files run large; full-file rewrites per pushback turn drag. If the agent reaches for a full rewrite anyway, push back: *"Edit just the section I named."*
+> **Watch for slowness.** When you push back, the agent should edit the section you flagged, not rewrite the whole file. Kernel and agent-set files run large, so full rewrites drag. If it reaches for one, push back: *"Edit just the section I named."*
 
-Notice what this prompt insists on: name the file before rewriting, quote the before-and-after for every claim, surface stalls even if the round felt smooth. The flywheel amplifies specificity the same way it amplifies everything else. Precision compounds. So does blur.
+The prompt names the file before rewriting, quotes before-and-after for every claim, and surfaces stalls. Precision compounds. So does blur.
 
 ## Push back on the summary
 
-This is a self-audit of a live agent round. Convenient, not neutral. If the summary sounds too clean, ask the harsher read: *"Name one critique raised in the session that did not change the rewritten file. Quote the critique and the unchanged line."*
+The agent audits itself, so the summary is not neutral. If it sounds too clean, ask: *"Name one critique raised in the session that did not change the rewritten file. Quote the critique and the unchanged line."*
 
-Read the agent's summary. Push back where it's wrong. Some of what didn't resolve shouldn't resolve. It's the live edge of the work. The flywheel that sharpened the file just now is the one that will sharpen it again after Agents 101, on the next problem, on the one after that, on the one you don't yet know you have.
+Push back where the summary is wrong. Some unresolved items should stay unresolved. The flywheel will sharpen the file again on your next problem.
 
 ## Key Concepts
-- Each cycle sharpens the next: cross-check before publishing, critique before selection.
-- Agents reading agents must cite, or they invent each other's memory.
-- Three walls past the laptop: data access, runtime platform, discoverability.
-- The parts hold; the model rotates. Will your organisation learn faster?
+- Cross-check before publishing; critique before selection.
+- Agents must cite each other, or they invent memory.
+- Past the laptop: data access, runtime platform, discoverability.
+- Parts hold; the model rotates.
 
 ## Next
 
-The plan you just produced is a set of assumptions dressed as work: label them, start the concurrent pieces, and design experiments for the uncertain ones.
+Your plan is a set of assumptions: label them, start the concurrent pieces, and design experiments for the uncertain ones.
 
-We could have spent today building you one impressive agent to show on Friday. It would have demoed well and it would have been the wrong thing to sell you, because the agent that matters in six months is one nobody in this room has thought of yet, built by somebody who is not you. What you take out of here is the ability to build the one you have not thought of. That is slower, it is harder to put on a slide, and it is the only part that is still worth anything after the model changes.
+The agent that matters in six months is one nobody in this room has thought of, built by somebody who is not you. You take out the ability to build it. That is slower and harder to put on a slide, and the only part worth anything after the model changes.
 
 You leave with a flywheel, not a graduation.
 

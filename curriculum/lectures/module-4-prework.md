@@ -1,53 +1,12 @@
 # Reading: Before Module 4
 
-**What you do:**
+Two reads.
 
-Two reads. Neither asks you to build anything. Module 4 has you run policy files directly, package the useful check as reusable expertise, then run it against the system you built in Modules 2-3. These reads calibrate your eyes for what personal skills are and why agent risk is layered on top of the company controls you already rely on.
+**Reading 1. Personal skills.** A skill is a `SKILL.md` plus supporting files (policy text, templates). The `SKILL.md` says what the skill is for, when to use it, and how; the agent loads it when a task matches. In Module 4 you run your policy files raw, package the check with a policy lens and an agent-risk lens, then run it on your Module 2-3 system.
 
-**Reading 1. Personal skills, in plain language.**
+**Reading 2. Agent risk sits on top of normal security.** Network controls, access rights and audit logs still apply. Agents add non-deterministic behaviour, prompt injection (direct, or inside retrieved text) and emergent capability you can only bound. Also watch secrets in context, tool confusion and skill supply-chain.
 
-You have spent three modules shaping agents with prompts, files, and rules. Personal skills are the next layer: a small, named bundle of expertise the agent loads when it is relevant. Not magic. A reusable "how" you can bring into future work.
-
-*What a skill is.* A `SKILL.md` plus any supporting files the skill needs. The `SKILL.md` declares what the skill is for, when to use it, and how. Supporting files hold the content (policy text, reference lists, templates, whatever the skill reads from). When a task matches a skill's purpose, the agent loads it and behaves differently.
-
-*What a personal skill is.* Your own reusable skill, saved in your agent environment. Module 4's first exercise walks you through authoring one in your runtime.
-
-*What it is not.* You author one in your runtime, and it loads when the same kind of work appears again.
-
-*Why skills matter for Module 4.* Until now, you have added expertise by writing prompts or dropping material into `sources/` or `memory/`. That works, but everything lives in one pile. Skills scope expertise. In Module 4 you will first run your company's policy files raw, then package the useful check with two lenses: a policy lens (your company's rules) and an agent-risk lens (what the agent can reach, what it might leak, and how ordinary text can mislead it). You will not need to be a policy expert or a security specialist; the reusable check will be. **The check carries the expertise you fed it, and you author it.**
-
-*The Module 4 shape.* Two exercises. The first runs the policy files raw and packages the useful check. The second loads the package in your runtime, runs the packaged lenses against the agent system you built in Modules 2-3, and mitigates one risk. Splitting the move into two exercises means authoring gets real time. First-time packaging is not a throwaway warmup.
-
-One thing to think about before class: *what is one expertise you would want your agent to borrow, if you could point at a skill and say "use that way of working"?* Not a lecture topic. A concrete move. Retention rules. Brand voice. Your CFO's favourite metric framing. Three words in a note.
-
-**Reading 2. Agent risk is layered on normal security, not a replacement for it.**
-
-Classical software security is a mature discipline. It has network controls, access rights, audit trails, third-party security review, accepted-risk decisions, and named owners. Agent security inherits this. Everything below is what agent systems add ON TOP, not what they replace.
-
-*What agent systems add to the risk picture.*
-
-- **Non-deterministic behaviour.** The same prompt, the same files, the same tools can produce different outputs on different runs. A test that passed yesterday says nothing about today. Classical residual-risk reasoning still applies, but the residual fluctuates rather than settling. *"Safe enough, most of the time, within named limits"* is the new shape.
-- **Ordinary text can become the risk.** In classical software, you defend against code executing on your system. In agent systems, the most powerful attack is getting the agent to *decide* to do something harmful with access it legitimately has. The payload is well-formed English, not malformed input, so normal technical filters may not see it. **Prompt injection** is the name for this surface. Direct prompt injection arrives in the user's input. Indirect prompt injection arrives in a source the agent retrieves and reads: a customer ticket, a scraped page, a partner's PDF. Both turn ordinary text into instructions the agent might follow.
-- **Capability is emergent.** Classical software does what it was coded to do. An agent with tool access does what the combination of its instructions, context, and the user's prompt *implies* it should do. Capability emerges from composition. You cannot fully predict it. You can only bound it.
-
-*What normal security still owns and you still need.* Network boundaries. Access rights. Audit logging. Secrets management. Third-party security review. Patch hygiene on the systems the agent runs on. The parts of your system that are ordinary software still need ordinary software security. The leader who concludes *"agent mitigations replace network controls"* ships a breach. The floor stays.
-
-*What agent security adds on top.* New named risk patterns the lens has to cover by name: prompt injection (direct + indirect), secrets in context and scrollback (credentials, customer data, partner-NDA material persisting in transcripts and the agent's working memory), tool confusion (the agent calling the wrong tool, or the right tool with the wrong scope, because the prompt or context misframes the work), skill supply-chain (who authored the skill the agent loads, who reviewed it, what it can do). And new mitigation shapes layered above the normal controls: scope (give the agent less), split (break one agent into two with different trust levels), filter (post-process outputs before they leave the system), gate (a human checks before a sensitive action), review (another agent judges the first's output).
-
-*And one plain note.* Absolute certainty was never available in classical security either; what is new is that the residual moves while you watch. Classical security gave you a residual you signed off on quarterly. Agent security gives you a residual you re-assess per loop iteration. The discipline is the same; the cadence is faster. If that feels uncomfortable, it should. Running the loop *is* the work.
-
-**Before you arrive: five lines, in your own voice.**
-
-Module 4's first exercise asks you to type three to five lines about what matters about your company's data and your agent system after you run the policy files raw. Not a quiz; raw judgment. Have a few specifics warm in your head when class starts, or jot them somewhere you can paste from. Examples of the shape:
-
-- *"We process customer call recordings; voice data has to stay in-region."*
-- *"Sales never lets unredacted CRM exports leave the building."*
-- *"Our sharper rule beyond GDPR is the export-control list: these named jurisdictions cannot see model output."*
-- *"The data my Module 3 system retrieves includes one partner-NDA source I have not pre-scoped."*
-
-Three to five lines, plain language, the things you would not want a generic policy template to gloss. Thinking now is what makes packaging feel like authoring rather than answering questions.
-
-**What to bring to class:** the five lines above plus knowing (a) what shape a personal skill has, and (b) that agent security is layered on top of normal company controls: same residual-risk vocabulary, faster cadence, four new risk patterns by name. The Module 4 lecture picks up both.
+**Before class:** jot three to five lines on what matters about your company's data, e.g. "Sales never lets unredacted CRM exports leave the building."
 
 <!-- maintainer -->
 

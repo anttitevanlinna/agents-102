@@ -1,58 +1,56 @@
 # Lecture: Where is this all going?
 
-The room just ran on its own for an hour. Agents read each other's files, argued, published, and something at the centre chose. Before the folder closes, four things about what you saw, and two questions you take with you.
+The room ran on its own for an hour: agents read each other's files, published, and something at the centre chose. Four observations and two questions follow.
 
 ## You described it; something else built it
 
 You wrote down what an agent should do and you did not build it. Something else read your files and handed it back running.
 
-The parts did not change. Context, a goal, tools, checks, a boundary, a loop. Every one of them is still a piece you can name and still a piece you decide. What changed is who assembles them.
-
-That is the whole shift, and it is smaller than it feels. You did not lose a job. You moved from writing the assembly to specifying it, and specifying it well is the harder half.
+The parts did not change: context, a goal, tools, checks, a boundary, a loop. You still decide each one. What changed is who assembles them, and specifying well is the harder half.
 
 ## Count the folders the kernel cites
 
-Everyone in the room had access to every other folder. Nobody was blocked from anything, and it took about a minute to set up.
+Everyone in the room had access to every other folder. Nobody was blocked.
 
-Now open the kernel and count how many folders it actually cites.
+Open the kernel and count how many folders it cites.
 
-That ratio is your rollout, in miniature, with the politics removed. Access was instant and complete. What the room took up from each other is the smaller number. Nothing about that is a failure of the room. It is the shape of the thing at every scale you will meet it, and it is worth knowing the shape before you promise a board a percentage.
+That ratio is your rollout in miniature. Access was instant and complete. What the room took up from each other is the smaller number. Know it before you promise a board a percentage.
 
 ## Agents reading agents must cite
 
-Every agent in the forum published what it read, what it could not find, and what it inferred without a source, and every claim in a proposal names the file it came from. That rule was not politeness. Without it, agents reading agents invent each other's memory, smoothly, and the kernel comes out confident and unsourced. The citations are what let you count the folders at all.
+Every agent in the forum published what it read, what it could not find, and what it inferred without a source. Every claim in a proposal names its source file. Without that rule, agents reading agents invent each other's memory, and the citations are what let you count the folders.
 
 ## Three walls past the laptop
 
-The plan names which wall your company hits first, and there are three: data access, the runtime platform, and discoverability. Seeing one of them named is the sign the kernel worked on something real. A plan with no wall in it was written about a laptop.
+The plan names the wall your company hits first: data access, runtime platform, or discoverability. A named wall means the kernel worked on something real.
 
 [The parts hold; the model rotates](slides/parts-hold-model-rotates.md)
 
 ## Which half of this is obsolete next year?
 
-Some of what you built here will be obsolete within a year. That is not a warning, it is arithmetic: every piece sits on a model that gets replaced.
+Some of what you built here will be obsolete within a year. Every piece sits on a model that gets replaced.
 
-The interesting question is which half. The judge you wrote, or the thing it judges? The memory, or the work of curating it? Nobody in this room knows yet, and the people running this training do not know either.
+Which half? The judge you wrote, or the thing it judges? The memory, or the work of curating it? Nobody in this room knows yet, and the people running this training do not know either.
 
-Hold the question rather than the answer. A plan that survives a model release is one that was written knowing a model release was coming.
+A plan that survives a model release is written knowing one is coming.
 
 [Will your organisation learn faster than the model changes underneath it?](slides/learn-faster-than-the-model.md)
 
 ## What would change our mind?
 
-You ran three disciplines in the forum: find the crux, ask what would have to be true, run a pre-mortem. Here is the fourth, and it is the one that keeps a plan true after the room empties.
+You ran three disciplines in the forum. The fourth keeps a plan true after the room empties.
 
-Ask it of the kernel your room just produced. *What would have to show up for us to drop this?*
+Ask it of your kernel: *What would have to show up for us to drop this?*
 
-If nobody can answer, what you have is a belief with a schedule attached. You will find that out eventually. Finding it out now costs a sentence.
+If nobody can answer, you have a belief with a schedule attached.
 
 ## A flywheel, not a graduation
 
-Nothing here closed. The memory is still short. The judge is still yours, and still unchecked in the places you have not looked. The kernel came out of the same move as your first briefing: agents read, agents argued, something chose, and nothing in the room checked it. Hold that doubt the way you held it then. The agent set your room produced has a first item, not a last one.
+Nothing here closed. The memory is still short, and the judge is still yours, unchecked in the places you have not looked. The kernel came out of the same move as your first briefing: agents read, agents argued, something chose, and nothing in the room checked it. Hold that doubt as you did then.
 
-What you leave with is the turning: a system that got sharper because you used it, and gets sharper again on the next problem, and on the one you do not yet know you have.
+What you leave with is a system that got sharper because you used it, and gets sharper again on the next problem.
 
-That is not a graduation. It is the first turn.
+That is the first turn.
 
 <!-- maintainer -->
 **Laws moved in from Key Concepts (2026-09-24, Antti-directed).** `## Agents reading agents must cite` and `## Three walls past the laptop` carry what `agents-building-agents.md` § Key Concepts used to state.

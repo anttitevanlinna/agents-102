@@ -5,25 +5,25 @@ Hire three agents to search. Three more to decide. The filesystem is the meeting
 
 ## Prework
 
-[Schedule your personal agent](exercises/personal-agent-homework.md). The scheduled agent has been reading your challenge memory for one week of observation. Selected sections from [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) covered tools, memory, and context. [Before Module 3](exercises/module-3-prework.md) added three practitioner pieces and a plain-language primer on helper agents: what they are, how to start one, what you'll see.
+[Schedule your personal agent](exercises/personal-agent-homework.md) to read your challenge memory for a week. [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) covers tools, memory and context. [Before Module 3](exercises/module-3-prework.md) adds a primer on helper agents.
 
 ## What You'll Learn
-After this module, you will be able to:
-- **Design** a multi-agent setup in two shapes: independent agents finding sources into shared files and helper agents returning different views to one lead task
-- **Build** three source-finding agents, each speaking its own source's dialect, and a synthesizer that coordinates three helper-agent personas
-- **Analyze** handoff failure modes (where conflicts get papered over, dialects clash, the synthesizer averages to beige)
-- **Create** a framework-guided answer to a real strategic question about your own challenge
-- **Evaluate** when splitting earns its keep, when independent tasks beat forked helpers, and when one good agent with a good prompt wins
+You will:
+- **Design** a multi-agent setup: independent agents sharing files, or helpers serving one lead task
+- **Build** three source-finding agents, each in its source's dialect, and a helper-persona synthesizer
+- **Analyze** handoff failures: hidden conflicts, clashing dialects, beige averaging
+- **Create** a framework-guided answer to a strategic question about your challenge
+- **Evaluate** when splitting pays off, independent tasks beat forked helpers, or one agent wins
 
 ## Start here
 
 Start a fresh session or task at `~/Documents/agents-101/`.
 
-Module 3 writes its working outputs under `module-3/` and sharpens the root instructions file in the Debrief, building on what Module 2 created at the training-directory root: instructions, `memory/`, `sources/`, and `agents/`.
+Module 3 writes outputs under `module-3/` and sharpens the root instructions file in the Debrief.
 
-In Module 2 you did the searching. You searched Confluence, pulled from OneDrive, chased down practitioner articles (by hand). Today you hire three agents to do that search, and three more to decide what it means. What do you expect will get lost between them?
+In Module 2 you searched Confluence, OneDrive and practitioner articles by hand. Now three agents do that search, and three more decide what it means. What do you expect will get lost between them?
 
-First, a small boundary shift. Most of this training's working artifacts are text: prompts, notes, memory files, source briefs, rules. But text is also where action starts. A Slack post, a ticket update, a calendar note, a command: before another system obeys it, the agent has produced words.
+Text is also where action starts: before another system obeys a Slack post, ticket update or command, the agent has produced words.
 
 [Demo: Agent that takes action](lectures/agent-that-takes-action.md)
 
@@ -39,51 +39,49 @@ First, a small boundary shift. Most of this training's working artifacts are tex
 
 ## Debrief
 
-Five minutes. The agent reviews the session and sharpens the rules that govern how your agents divide the work. The evidence is the four agent prompts, the retrieval files, the synthesizer's briefing, and the conversation. The agent reviews them, rewrites the training-directory root instructions file in place, and reports what changed. You push back on anything that's off.
+Five minutes. The agent reviews the four agent prompts, the retrieval files, the synthesizer's briefing and the conversation, then rewrites the root instructions file in place and reports what changed. Push back on anything that's off.
 
 {{prompt:a101-m3-debrief-handoff-rules}}
 
-
 ## Nothing here checks any of it
 
-Notice what this prompt insists on: harsh audit, two seams minimum, specific evidence (file, pass, what was lost). That last clause is the work. Without it, the LLM's review settles into the diplomatic shape it likes: three things went well, one mild wobble, here's the cleaner version. Diplomatic is the failure mode at a handoff seam. The place where things actually go wrong is exactly where the model rounds the corner. The harder ask forces a real audit. You'll get fewer comfortable summaries and more uncomfortable specifics, which is what you want when the rules file has to govern next session's agents. The audit reads how your agents handed work to each other. Nothing in it reads the briefing and tells you whether it is true.
+The prompt insists on a harsh audit, two seams minimum, and specific evidence (file, pass, what was lost). Without the evidence clause, the review turns diplomatic: three things went well, one mild wobble. Handoff seams are where work goes wrong, so a harder ask gives you specifics the rules file can govern next session's agents with. The audit reads how your agents handed work to each other; it does not check whether the briefing is true.
 
 ## Push back on the summary
 
-Read the agent's summary. Push back where it's wrong. *"No, the planner and the reframer really did need to be separate."* *"You missed where the Confluence retriever kept normalising before writing."*
+Read the agent's summary. Push back where it's wrong: *"The planner and the reframer needed to be separate."* *"The Confluence retriever kept normalising before writing."*
 
 ## The doubt stays. Hold it.
 
-The unease you feel about the synthesized briefing is not something to close today. It stays. Hold it as a question, not a fix.
+Keep the unease about the synthesized briefing as an open question. Do not fix it today.
 
 ## Optional memory check before Module 4
 
-**Optional move: pressure-test the memory.** If you've added much to `sources/` this module, run this between modules to let the new evidence pressure-test the memory's shape. Skip if memory's still serving you.
+**Optional move: pressure-test the memory.** If you've added much to `sources/` this module, run this between modules. New evidence tests the memory's structure. Skip if the memory still serves you.
 
 {{prompt:a101-m3-homework-memory-health}}
 
 Memory is a working artefact, sharpened by what it bumps into.
 
 ## Key Concepts
-- Two shapes: separate sessions on shared files, or subagents returning to one lead task.
-- Split only where the agents can't be one: access, dialect, stance.
-- Three stances beat one summarizer; a framework makes it pick.
-- Seams are where it fails.
+- Sessions on shared files, or subagents under one lead.
+- Split only where agents can't be one: access, dialect, stance.
+- Three stances beat one summarizer.
 
 ## Pre-reads before Module 4
 
-[Agent Trigger List, After Module 3](trainings/agents-101/supplementary/agent-trigger-list.md#after-module-3-notice-when-one-agent-is-not-enough), then selected sections from [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) on multi-agent coordination.
+[Agent Trigger List, After Module 3](trainings/agents-101/supplementary/agent-trigger-list.md#after-module-3-notice-when-one-agent-is-not-enough) and the multi-agent sections of [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md).
 
 [Before Module 4](lectures/module-4-prework.md)
 
-Once the optional check and pre-reads are handled, end this module's session or task. Module 4 starts fresh at `~/Documents/agents-101/`.
+Once the optional check and pre-reads are done, end this session. Module 4 starts fresh at `~/Documents/agents-101/`.
 
 ## Bring to Module 4: what's the worst thing it could do with that access?
 
-You just built something that works across the systems you connected. Which means it gained access to those systems.
+An agent that works across connected systems has access to those systems.
 
 ## Next
-Between now and Module 4, keep working on your real problem. You're close to an agent system that can actually crack your crux. Add an agent to solve a critical dependency? Add a visualisation of the plan? Prompt for what you need. Build.
+Until Module 4, keep working on your real problem. You're close to an agent system that cracks your crux. Add an agent for a critical dependency, or a plan visualisation. Build.
 
 <!-- maintainer -->
 

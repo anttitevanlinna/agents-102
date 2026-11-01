@@ -4,85 +4,79 @@
 
 **What you do:**
 
-You built a memory today. One live challenge, curated sources, a compiled set of claims. Now give it a pulse. This homework puts a scheduled agent in front of your memory so it reads the thing every morning and tells you something useful before you've had coffee.
+Put a scheduled agent in front of your memory. Each morning it reads the memory and tells you something useful.
 
-**Pick one of three jobs.** Choose whichever fits your week:
+**Pick one of three jobs:**
 
-- **Morning plan informed by the challenge**, reads the memory and your calendar, produces a 5-line plan that names which of today's meetings actually move the challenge forward and which are noise
-- **Daily risk scan**, reads the memory and flags the one assumption in it most likely to be wrong, or the one open question that's gone unanswered longest
-- **Draft today's next move**, reads the memory and drafts a single concrete next action for the challenge: a message to send, a question to ask someone, a small decision to make before end of day
+- **Morning plan**: reads memory and calendar, writes a 5-line plan naming which meetings move the challenge and which are noise
+- **Daily risk scan**: reads memory, flags the assumption most likely wrong or the question open longest
+- **Next move**: reads memory, drafts one action: a message, a question, or a small decision for today
 
-Pick one. Not all three. Something you'd actually read tomorrow morning.
+Pick the one you would read tomorrow morning.
 
 ## Phase 1: Connect any data the job needs
 
 *8 min*
 
-For the morning-plan job, you'll want your calendar connected. Open the connector settings in your agent runtime. Enable Google Calendar or Microsoft Outlook Calendar, then sign in with your work account. If your runtime has no calendar connector, use a calendar screenshot or exported agenda as the input.
+For the morning-plan job, connect your calendar: enable Google Calendar or Microsoft Outlook Calendar in your agent runtime's connector settings and sign in with your work account. Without a calendar connector, use a calendar screenshot or exported agenda.
 
-For the risk-scan and next-move jobs, no connector needed, the agent reads your memory and that's enough.
+The other two jobs need no connector.
 
 ## Phase 2: Capture the look
 
 *7 min*
 
-Your daily output shouldn't read like a terminal dump. Steal the look and feel from your company's website (colours, typography, headers, the voice) and store it as a pattern the agent reuses forever. Same lesson as the memory: text on disk, referenced by name.
+Give your daily output the look and feel of your company's website (colours, typography, headers, voice). Store it as a style file the agent reuses by name, like the memory: text on disk.
 
-The agent writes HTML files. You're about to give those files a house style.
-
-Ask the agent to extract the visual pattern from your company website and write it as a plain-language style file the agent reuses forever.
+Ask the agent to extract the visual pattern from your company website and write it as a plain-language style file.
 
 {{prompt:personal-agent-homework-1}}
 
-Give the agent the URL or paste a key page. It extracts the pattern, writes `./style.md`, and appends the rule to the root instructions file. Read both. Edit `./style.md` where the agent missed something. If your brand has a hard rule ("never pure black," "always serif headings"), put it in. The rule you just added means every agent you build from here on will use this style when it produces HTML.
+Give the agent the URL or paste a key page. It writes `./style.md` and appends the rule to the root instructions file. Read both and edit `./style.md` where the agent missed something. If your brand has a hard rule ("never pure black," "always serif headings"), put it in. Every agent you build from here on will use this style when it produces HTML.
 
 ## Phase 3: Write the agent's instructions
 
 *10 min*
 
-In your training directory, create `module-2/morning-agent/`. Ask the agent to interview you on the job, the output shape, and the hard boundary, then write the new agent's instruction file.
+Create `module-2/morning-agent/`. Have the agent interview you on the job, output shape and hard boundary, then write its instruction file. Edit what doesn't sound like you.
 
 {{prompt:personal-agent-homework-2}}
-
-The agent asks, you answer, the file lands. Read it. Edit anything that doesn't sound like you.
 
 ## Phase 4: Schedule it
 
 *6 min*
 
-In the desktop app, open the **Schedule** sidebar. Click **New task → New local task**. Fill in:
+Open the **Schedule** sidebar in the desktop app and click **New task → New local task**:
 
-- **Name:** `Morning memory` (or whatever you want to see)
-- **Frequency:** Daily at the time you actually want it to fire, 7:00 AM for most people
-- **Prompt:** the scheduling prompt on this slide.
-
-Ask the agent to read the morning brief, follow the rules, and write the daily output to `latest.html`.
+- **Name:** `Morning memory`
+- **Frequency:** Daily at 7:00 AM, or the time you want it to fire
+- **Prompt:** the scheduling prompt below, which has the agent read the morning brief, follow the rules, and write the daily output to `latest.html`.
 
 {{prompt:personal-agent-homework-3}}
 
-Save. Click **Run now** once. Double-click `module-2/morning-agent/latest.html` in your file browser, it opens in your browser and should look like it came off your company site. Fix anything off by editing `module-2/morning-agent/morning.md` or `./style.md`, the scheduled task reads both every session, so tomorrow picks up the change.
+Save, then click **Run now** once. Double-click `module-2/morning-agent/latest.html` to open it in your browser. To fix anything, edit `module-2/morning-agent/morning.md` or `./style.md`. The task reads both every session, so tomorrow picks up the change.
 
 ## Phase 5: Let it run for a week
 
 *4 min*
 
-Don't retune for the first three days. Watch what it produces as-is. Every morning, open `module-2/morning-agent/latest.html`. Watch for:
-- Days when the output is genuinely useful, what made it work?
-- Days when the output is comical or wrong, what was missing from the memory that would have saved it?
-- Claims the agent made that you, the domain expert, know are off, those are your next memory edits.
-- Styling drift, is `module-2/morning-agent/latest.html` still looking like your company site, or has it slowly gone generic? That's a signal to sharpen `./style.md`.
+For the first three days, don't retune. Open `module-2/morning-agent/latest.html` each morning and watch for:
+- Useful days: what made them work?
+- Comical or wrong days: what was missing from the memory?
+- Claims you, the domain expert, know are off: these are your next memory edits.
+- Styling drift away from your company site: sharpen `./style.md`.
 
-The memory is alive now. What the agent misses today is a prompt to sharpen the memory tomorrow, and the HTML you open with your coffee is a system, not a document.
+What the agent misses today tells you what to sharpen in the memory tomorrow.
 
 ## Turn the memory into a running loop
 
 **What happened:**
 
-Your memory stops being a snapshot and starts being a system. Every morning the agent reads it, pushes something back at you in your own house style, and gives you one more piece of evidence about what's sharp and what's soft. A week of this and the memory has more edge. The HTML belongs to the company, not the agent provider.
+Every morning the agent reads your memory and writes output in your house style. Each output shows what is sharp and what is soft; after a week the memory has more edge.
 
 **The point:**
 
-A memory that sits there is a document. A memory that gets read by an agent on a schedule, producing output that looks like it belongs to your company and that you actually respond to, is the start of a loop. Module 2 built the memory; this homework builds the loop. Every subsequent module compounds on it, and `./style.md` travels with you. Every agent you build from here on that produces HTML will look native to the organisation, because the rule is in the file every agent reads.
+A memory that sits there is a document. A memory an agent reads on a schedule, producing output you respond to, is the start of a loop. Every HTML agent you build looks native to your organisation, because `./style.md` is the file every agent reads.
 
 <!-- maintainer -->
 

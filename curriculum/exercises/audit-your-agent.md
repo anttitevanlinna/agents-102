@@ -4,49 +4,47 @@
 
 **Session** *(new, "Module 4 - Security audit")*
 
-Start a new session or task at your training-directory root. The personal skill you saved in Exercise 1 loads in this project.
+Start a new session at your training-directory root. Your Exercise 1 skill loads in this project.
 
-Name it `m4-security-audit` if your runtime supports session names.
+Name it `m4-security-audit` if supported.
 
 **What you do:**
 
-Load the reusable security check you authored in the previous exercise, then run it against the system you built in modules 2-3. Two reusable-lens reports: the same skill, two different checks. One mitigation. One residual-risk decision added to the report; residual risk means what remains after mitigation. The goal is not a clean bill of health. The goal is to run the loop (assess, mitigate, reassess residual) on the system you actually built.
+Run your Exercise 1 security check against the system you built in modules 2-3. Add one mitigation and one residual-risk decision (what remains after mitigation). The goal is the loop (assess, mitigate, reassess residual), not a clean bill of health.
 
-Four phases. Bring the policy raw report from the previous exercise; that is the baseline. Bring the reusable check you just authored; that is the expert. Bring your Module 3 system; that is the target.
+Bring the policy raw report (baseline), the check (expert), your Module 3 system (target).
 
 ## Phase 1: Load the reusable check
 
 *3 min*
 
-Open this exercise in a fresh session at your training-directory root. The personal skill saved at the end of Exercise 1 autoloads at session start, so a session opened after the save is required.
+Open this exercise in a fresh session at your training-directory root, after saving the Exercise 1 skill, which loads at session start.
 
-Type `/` in the prompt and look for `/security-audit` in the autocomplete list. That means the skill loaded. The two lenses live inside the same skill; the audit prompts in the phases that follow tell the skill which lens to apply.
+Type `/` and look for `/security-audit` in the autocomplete list. That means the skill loaded. The audit prompts in the phases that follow tell it which of its two lenses to apply.
 
 <div class="rt-cowork">
 
-If `/security-audit` doesn't appear, you may have skipped pressing the Save button in Exercise 1. Go back, save the skill, then open a new session.
+If `/security-audit` doesn't appear, go back to Exercise 1, save the skill, then open a new session.
 
 </div>
-
-Do not run a toy verification on one file. The first loaded use is the real audit.
 
 ## Phase 2: Run the policy audit
 
 *12 min*
 
-Ask the agent to apply the packaged policy lens to your full module-3 system and produce one report. This is not the same as the raw run. The raw report came straight from `module-4/policies/`; this report comes through the reusable lens you shaped.
+Ask the agent to apply the packaged policy lens to your full module-3 system and produce one report. Unlike the raw report from `module-4/policies/`, this one comes through the reusable lens you shaped.
 
 <div class="rt-cowork">
 
-Cowork doesn't always engage `/security-audit` from pasted prompt text alone. If the audit doesn't fire after sending, click into the prompt dialog and expand `/security-audit` from the autocomplete to engage the skill.
+If the audit doesn't fire, expand `/security-audit` from the autocomplete in the prompt dialog.
 
 </div>
 
 {{prompt:audit-your-agent-1}}
 
-While the report runs, stay with it. The report is more useful when you read it cold. Expect the reusable check to find things you did not think about, and to leave things "I can't tell" you thought were settled.
+Expect the reusable check to find things you did not think about, and to leave things "I can't tell" you thought were settled.
 
-Read the agent's three lists. Then open `outputs/policy-report.md` and find the rows it flagged. You are reading with a hypothesis, not row-by-row from scratch. Notice which of the agent's surprises match yours and which do not.
+Read the agent's three lists. Then open `outputs/policy-report.md` and find the rows it flagged.
 
 ## Phase 3: Run the agent-risk audit
 
@@ -56,51 +54,51 @@ In the same session, ask the agent to apply the agent-security lens and write th
 
 {{prompt:audit-your-agent-2}}
 
-Now work the risks. List them, have the agent explain each, what it means in this system, why the rank landed where it did, what the failure would actually look like, and prepare to pick one. No prompt for this; you drive the conversation.
+List the risks and have the agent explain each: what it means in this system, why it ranks where it does, and what the failure would look like. Then pick one. No prompt for this; you drive.
 
-Feel free to glance at the reports and compare. Two different lenses; some risks will overlap, some will not. That is correct.
+The two lenses overlap on some risks and not on others. That is expected.
 
-You now have the assessment half of the loop. The uncomfortable feeling is the evidence.
+The uncomfortable feeling is the evidence.
 
 ## Phase 4: Mitigate one risk, reassess the residual
 
 *10 min*
 
-Look at the two reports. Pick one risk to mitigate. Not the easiest, not the scariest. The one that bugs you on the second skim. Your gut is data here. This is about running the loop once, not solving the worst problem on your list.
+Pick one risk from the two reports: the one that bugs you on the second skim. Your gut is data here.
 
-Tell the agent the risk in one sentence, then paste the prompt. You are steering by judgment, not by technical detail. The agent picks the mitigation shape, applies the change, and walks you through what landed and why.
+Tell the agent the risk in one sentence, then paste the prompt. The agent picks and applies the mitigation.
 
 {{prompt:audit-your-agent-3}}
 
-If the shape does not fit, tell the agent and iterate. Re-run the check. Read the residual section in `outputs/security-report.md`.
+If the option does not fit, tell the agent and iterate. Re-run the check, then read the residual section in `outputs/security-report.md`.
 
-The risk did not go away. That is expected. A mitigation reduces, it does not eliminate. Name it, accept it on record, and stop there.
+The risk remains. That is expected. Name it, accept it on record, and stop there.
 
 ## Escalate to a person when judgment runs out
 
 **Still not sure? Ask a person.**
 
-Sometimes the correct next step is not another prompt. If the policy report still has a serious "I can't tell", or the security report names a risk you do not know how to accept, show the evidence to someone who owns that area: legal, security, IT, compliance, or the business owner. Bring the report, the files it quotes, the mitigation you applied, and the residual that remains.
+Sometimes the right next step is not another prompt. If the policy report still has a serious "I can't tell", or the security report names a risk you do not know how to accept, show the evidence to someone who owns that area: legal, security, IT, compliance, or the business owner. Bring the report, the files it quotes, the mitigation you applied, and the residual that remains.
 
-The instinct here is to skip the expert and resolve it yourself, or to escalate the whole tangle and hand them the problem cold. Both miss what you just produced. You ran the lens, you have the rows, you applied a mitigation, you have the residual on record. The narrow question the expert can actually answer is sitting in the report. Walk in with that.
+The narrow question the expert can answer is sitting in the report. Walk in with that.
 
 ## Separate prototype from production
 
 **Prototype vs production.**
 
-We did this for a single mitigation. Risk control is one of the things that separates a prototype from a real production agent. You must do the work.
+We did this for one risk. Risk control, done for every risk you found, separates a prototype from a production agent. You must do the work.
 
 ## Take stock of the loop you ran
 
 **What happened:**
 
-The Module 3 system has two packaged-lens reports against it now, plus the raw policy report that came before packaging. One mitigation applied; one residual decision recorded in the security report. If judgment is still unclear, you know what to show a human expert. The reusable check and the loop carry to the next agent.
+The Module 3 system has two packaged-lens reports and the earlier raw policy report. You applied one mitigation and recorded one residual decision in the security report. When judgment is unclear, show a human expert.
 
 **The point:**
 
-Absolute certainty is not on offer. The discipline is. Raw policy files first, packaged lenses second, one mitigation, one named residual. The reusable check is the expert in the room. The report carries the evidence and the decisions. The unease that remains is what the loop is supposed to produce, not what it failed to remove.
+Certainty is not on offer. The discipline is the loop: assess, mitigate, reassess the residual, decide. The reusable check is the expert in the room, and it carries to the next agent. The report carries the evidence and decisions.
 
-This was **Recipe 4** end-to-end, on your real system: the two-lens audit, the five named agent-risk patterns, the five mitigations (scope, split, filter, gate, review), the "I can't tell" verdict earning a row of its own. After Agents 101, when the next agent needs the same audit, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) names the moves and components without the training scaffolding.
+This was **Recipe 4**: the two-lens audit, five agent-risk patterns, five mitigations (scope, split, filter, gate, review), and "I can't tell" as a verdict. For the next agent, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) names the moves and components.
 
 <!-- maintainer -->
 

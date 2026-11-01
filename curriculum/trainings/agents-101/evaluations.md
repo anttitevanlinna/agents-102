@@ -1,36 +1,33 @@
 # Evaluations
 
 ## Big Idea
-The eval that ran once in Module 5 now runs on every output, and the work tightens under it. The judge stays fixed; that's the integrity of the loop. The generator sharpens against feedback the same judge keeps applying. You walk away. You come back to a sharper generator the same yardstick can't fault.
+The Module 5 eval now runs on every output. The judge stays fixed; that keeps the loop's score meaningful. The generator sharpens against that feedback while you walk away.
 
 ## Prework
 
-[Ethan Mollick, *The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage). Walk in with the judge you saved at the close of Module 5. That's Module 6's starting point.
+[Ethan Mollick, *The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage). Start with the judge you saved at the close of Module 5.
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Build** a self-improving eval loop: main session runs it, generation and judging happen in separate agents, the Module 5 judge scores each round unchanged
-- **Read** how the generator's tactic sharpens across rounds in the tactic changes and final eval notes
-- **Create** eval infrastructure that holds the judge fixed and tightens the work under it: on disk, re-runnable, sharper outputs each cycle
-- **Distinguish** the one-off Module 5 judge from one that runs on every output, the fixed yardstick the work tightens against
+- **Build** a self-improving eval loop: separate agents generate and judge, the Module 5 judge scores each round unchanged
+- **Read** how the generator's tactic sharpens across rounds in the final eval notes
+- **Distinguish** the one-off Module 5 judge from one that runs on every output
 
 ## Start here
 
 Start a fresh session or task at `~/Documents/agents-101/`.
 
-Did you read Ethan Mollick's [*The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage)?
+Read Ethan Mollick's [*The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage).
 
-His question is the right opener for Module 6: will the bitter lesson apply inside your company? Can agents get better if you define the outcome and let them find the path, or does the organisational mess still matter too much?
-
-Module 5 ended with a winner out of four detectors: the judge that now sits in the judges folder. What gets fed to that judge is the thing that changes at Module 6.
+His question opens Module 6: will the bitter lesson apply inside your company? Can agents improve if you define the outcome and let them find the path, or does organisational mess still matter too much?
 
 ## Run the loop without you in it
 
-The question shifts at Module 6. What if the work kept getting sharper, not because you edited it, but because the same judge kept catching what slipped past and the system kept absorbing the catches? What if *you weren't in the room* while that happened?
+The work gets sharper without your edits: the same judge keeps catching what slipped past, and the system absorbs the catches without you.
 
 [Lecture: Evals as steering](lectures/evals-as-steering.md)
 
-> Text is easy to inspect, so this module uses it again. The same pattern applies to actions. An agent action starts as text: a proposed mail, a ticket update, a CRM change, a query, a command. Check the proposal before it becomes the action.
+> The same pattern applies to actions. An agent action starts as text: a proposed mail, ticket update, CRM change or command. Check the proposal before it becomes the action.
 
 [Exercise: The eval loop runs itself](exercises/eval-loop.md)
 
@@ -40,39 +37,34 @@ The question shifts at Module 6. What if the work kept getting sharper, not beca
 
 ## Debrief
 
-Five minutes. The agent reviews the eval loop's run and sharpens the generator's tactic file one more time. The evidence is the round-by-round trail: what changed in the tactic, what the judge kept catching, what the tactic never absorbed. The agent reviews, rewrites the tactic in place, and reports what changed. The judge file stays untouched. That's the integrity of the loop. You push back on anything that's off.
-
-Ask the agent to read the round trail and sharpen the generator's tactic beyond what the loop reached.
+Five minutes. Ask the agent to read the round-by-round trail and rewrite the generator's tactic file in place, sharpening it beyond what the loop reached, then report what changed. The judge file stays untouched: that's the integrity of the loop. Push back on anything that's off.
 
 {{prompt:a101-m6-debrief-tactic-sharpen}}
 
-
 ## Push back on the summary
 
-Read the agent's summary. Push back where it's wrong. *"That rule is too vague, make it observable"* / *"you added a rule the tactic already had after round 2."* The artifact: the sharpened `./generation-tactic.md` plus one line added to the Module 6 eval-notes file naming the first always-on eval you'll run when work resumes. This is the module's thesis made literal. The work got sharper across rounds because the same judge kept catching the same kinds of misses and the tactic kept absorbing them.
+Read the agent's summary and push back: *"That rule is too vague, make it observable"* / *"you added a rule the tactic already had after round 2."*
 
-This is the agent auditing a tactic it helped sharpen. That is acceptable here because the round files and judge notes are the evidence. If the summary sounds too kind, ask the sharper follow-up: *"Which rule did you claim to remove but actually kept under another name? Quote both lines."*
+The artifact: the sharpened `./generation-tactic.md` plus one line in the Module 6 eval-notes naming the first always-on eval you'll run next. The same judge kept catching the same misses.
+
+If it sounds too kind, ask: *"Which rule did you claim to remove but keep under another name? Quote both lines."*
 
 ## Key Concepts
 - Groundedness protects the floor; steering raises the ceiling.
-- The judge stays fixed and separate from the generator; that is why the score means anything.
+- The judge stays fixed and separate from the generator, so the score means something.
 - A flat score is information about the judge, not the work.
-- You design the loop; you no longer sit inside it.
+- You design the loop and own the yardstick.
 
 ## Bring to Module 7
 
-**Monday's first five agent calls, written down**, using [Agent Trigger List](../../trainings/agents-101/supplementary/agent-trigger-list.md). Pick one call that should run through the eval loop before anyone relies on it, and write the trigger into your working notes. Module 7 is about handing work to other people, and it needs real calls to hand over.
+**Monday's first five agent calls, written down**, using [Agent Trigger List](../../trainings/agents-101/supplementary/agent-trigger-list.md). Pick one call that should run through the eval loop before anyone relies on it, and write the trigger into your working notes. Module 7 is about handing work to other people and needs real calls to hand over.
 
-Come to Module 7 without five real agent calls and you'll be inventing a handoff while the sharing exercise is already underway. Your call.
-
-The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) is an optional practitioner reference after this module. Eight recipes map to the modules you ran.
-
-Keep [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) as an optional lookup. Its words now point at things you have actually built: context, memory, tools, other agents, boundaries, judges, loops, and autonomy rungs. Neither document is Module 7 prework; the single access-without-use example is the whole load.
+The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) and [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) are optional references. Neither is Module 7 prework.
 
 Once the trigger is written, end this module's session or task. Module 7 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
-You just built an eval that improves itself. The system can now keep pressure on its own output when you are not watching every step. The close is not "trust the agent." The close is "trust the loop you can inspect."
+The judge stays fixed, so the loop keeps pressure on the generator while you are away. Trust the loop you can inspect.
 
 <!-- maintainer -->
 

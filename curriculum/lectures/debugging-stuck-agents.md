@@ -1,32 +1,26 @@
 # Debugging Stuck Agents
 
-Agents get stuck. They use the wrong source. They average three views into mush. They write the file you asked for, but not the one the next agent needed. They sound confident right before the handoff fails.
+Agents get stuck: wrong source, three views averaged into mush, the wrong file written, confident right before a failed handoff.
 
 ## Diagnose before repair
 
-Do not start by tracing everything by hand.
-
-Start by prompting your own stuck system to find the root cause.
+Start by prompting your own stuck system to diagnose whether the bug lives in the sources, the processing, or the boundary between agents.
 
 {{prompt:debugging-stuck-agents-1}}
 
-This is rather long. Make your own variant. The important move is not the wording; it is asking the agent to diagnose whether the bug lives in the sources, the processing, or the boundary before you start fixing things.
+This prompt is long. Make your own variant.
 
 ## Sources, processing, boundary
 
-1. **If it is the sources, fix the sources.** Add the missing file. Remove the stale one. Split contradictory material so the agent can see the conflict instead of smoothing it. Do not write a cleverer prompt to compensate for bad ground.
+1. **Sources:** add the missing file, remove the stale one, split contradictory material so the agent sees the conflict.
 
-2. **If it is the processing, fix the processing.** Rewrite the prompt, the role, the handoff, or the output shape. If one agent was doing two jobs, split it. If three agents were pretending to be different, collapse them.
+2. **Processing:** rewrite the prompt, role, handoff, or output shape. Split an agent doing two jobs. Collapse agents pretending to be different.
 
-3. **If it is the boundary, fix the boundary.** Narrow the agent's job. Remove the tool. Add a human gate. Move the risky step from "do" to "propose."
+3. **Boundary:** narrow the agent's job, remove the tool, add a human gate, move the risky step from "do" to "propose."
 
-4. **Shrink the rerun.** Do not rerun the whole system first. Rerun the smallest step that should now behave differently: one retriever, one stance, one synthesis, one file.
+4. **Shrink the rerun:** rerun only the smallest step that should now differ, such as one retriever.
 
-5. **Write down the lesson.** If the same failure could happen again, add a rule to the root instructions file: what to read first, what not to smooth over, what file shape the next agent must produce, or when to stop and ask.
-
-Start with diagnosis before repair.
-
-The agent is part of the debugging loop too.
+5. **Write down the lesson:** add a rule to the root instructions file: what to read first, what not to smooth over, which file shape to produce, when to stop and ask.
 
 <!-- maintainer -->
 

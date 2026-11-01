@@ -1,10 +1,8 @@
 # Demo: 1st scheduled agent
 
-The demo is small on purpose. One scheduled agent reads a bit of work context, follows one hard guardrail, and takes one safe action: it writes an output you can inspect.
+The demo is small on purpose. One scheduled agent reads work context, follows one hard guardrail, and writes an output you can inspect.
 
-The context might be a calendar, a short note, or a file in the training folder. The guardrail is simple: propose or draft only, do not send, edit, book, or change anything. The schedule gives the agent a pulse: it runs again without a fresh prompt and writes the next result in the same place.
-
-That is the first system boundary. Context tells the agent what world it is in. The guardrail tells it what not to do. The schedule makes it come back. Module 2 uses the same three ingredients for your challenge memory.
+The context might be a calendar, a short note, or a file in the training folder. The guardrail: propose or draft only, do not send, edit, book, or change anything. The schedule makes the agent run again without a fresh prompt and write the next result in the same place.
 
 <!-- maintainer -->
 

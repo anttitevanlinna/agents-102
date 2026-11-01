@@ -2,79 +2,46 @@
 
 **Time:** ~28 minutes.
 
-**What you do:**
+Three retrievers fetch raw material on your challenge into `sources/`; a fourth session curates it into `memory/` while they run. All read `./crux.md`.
 
-Hire three agents to fetch raw material on your challenge, wiki, docs, the open web. Hire a fourth to curate the findings into your memory in real time, while the retrievers are still running.
-
-**The point:**
-
-Multi-agent's first shape: separate sessions on shared files. Each agent runs in its own context, sees the others' work via the filesystem, has its own connectors and history. The feeling, files materialising in two folders at once, four windows churning on one question, is the lesson.
-
-The crux and the decision question both live in `./crux.md` from the opening exercise. Retrievers and the synthesizer all read it.
-
-Open your training directory in up to four sessions or tasks. Three retrievers fetch raw material into `sources/`; a fourth concurrent session synthesizes the retrievals into your `memory/` as they arrive. Three retrievers is the default; if you can't get one running today (no wiki connector, no doc store reachable, network locked), skip it and proceed with what you have. The lesson works with two retrievers, even one. Each session reads the same root instructions and writes into the same folder tree. They don't talk to each other. They work side by side.
-
-Four sessions for one question is more than the work strictly needs, two retrievers plus you reading them would produce the same files with less choreography. The four is for the feeling. Agent heavy-lifting goes sequential by default, and sequential gets slow fast on real work; better to know the parallel option early than discover it under deadline.
-
-The retrievers go live, connectors and the open web. The synthesizer is the one curatorial act here: it reads `sources/` as files appear and integrates findings into `memory/`, the curated layer that's been compounding since Module 2. Two layers fill at the same time: raw retrievals in `sources/`, sharper memory in `memory/`.
+Separate sessions share files, each with its own context and connectors. Skip any retriever you can't run today; two or one still works.
 
 <div class="rt-code">
 
-*Keep your existing crux session open. That becomes Session 4, the synthesizer and your lead session through the next exercise. Open three more sessions or tasks in the training directory: Session 1 (wiki retriever), Session 2 (docs retriever), Session 3 (internet retriever). Desktop users open three app sessions alongside the existing one. CLI users open three more terminal sessions from the training directory.*
+*Keep your crux session as Session 4 (synthesizer). Open three more: 1 wiki, 2 docs, 3 internet.*
 
 </div>
 <div class="rt-cowork">
 
-*Keep your existing crux task open, that becomes Task 4 (synthesizer; also your main task through the next exercise). In the desktop app's *Cowork* tab, start three more tasks pointed at your training directory: Task 1 (wiki retriever), Task 2 (docs retriever), Task 3 (internet retriever). You'll have four tabs (or four windows, whichever your desktop layout prefers) running side by side. They share the filesystem; they don't share scrollback, so each one is its own conversation.*
+*In *Cowork*, keep your crux task as Task 4 and start three more: 1 wiki, 2 docs, 3 internet.*
 
 </div>
 
-**The rhythm:**
+Paste each retriever prompt and confirm its short list quickly. Then paste the synthesizer prompt in Session 4.
 
-1. **Sessions 1, 2, 3, retrievers.** Paste each retriever prompt into its session. Each one returns a short list (6–8 search terms for wiki, 2–3 clues for docs, 4–6 authors for internet) and asks you to keep, swap, or sharpen. Confirm inline, quickly, don't polish. Then the retrievers run.
-2. **Session 4, synthesizer.** Paste the synthesizer prompt. It waits for the first retrieval to land, then starts curating into `memory/`.
-3. **All four running.** Switch between sessions. Watch files appear in `sources/` and `memory/` sharpen at the same time.
+If an agent starts reading the world, stop it, steer narrower, then say *"continue"*.
 
-Heavy run ahead. Each retriever fans out across your wiki, docs, or the web; the synthesizer keeps going as findings stream in. If an agent starts reading the world, stop it, steer narrower (what to skip, where to focus), then say *"continue"*. If you want something simple, give a hard cap: *"10 sources max, or even fewer"*.
-
-In Session 1, tell this session to act as your wiki retriever and stream findings into `sources/wiki-retrieval.md`.
+Session 1: wiki retriever, streaming to `sources/wiki-retrieval.md`.
 
 {{prompt:three-retrievers-one-curator-1}}
 
-If the agent asks for ten search terms or a broad wiki tour, narrow it: *"Use the 6-8 terms you proposed, search only the wiki I named, and append findings as you go."*
-
-
-In Session 2, tell this session to act as your docs retriever and stream findings into `sources/docs-retrieval.md`.
+Session 2: docs retriever, streaming to `sources/docs-retrieval.md`.
 
 {{prompt:three-retrievers-one-curator-2}}
 
-If the agent asks for vague clues, give one person, one document title, and one drive/site. If it starts smoothing disagreement, push back: *"Quote the contradiction raw before you interpret it."*
-
-
-In Session 3, tell this session to act as your internet retriever and stream practitioner findings into `sources/internet-retrieval.md`.
+Session 3: internet retriever, streaming to `sources/internet-retrieval.md`.
 
 {{prompt:three-retrievers-one-curator-3}}
 
-If the agent rubber-stamps a weak author list, push back before fetching: *"Replace second-hand architecture summaries with dated first-person accounts from people running the work."*
-
-
-Heads-up: retrievers tend to wrap up early. A clean-looking *Conflicts and gaps* section reads like the work is done; usually it isn't. If the file feels thinner than the question deserves, the prompt below is your nudge to keep them chugging.
-
-Once a retriever returns its first pass, wiki, docs, or internet, paste this back into that session to push another round.
+Retrievers wrap up early. If a file feels thin, paste this to push another round.
 
 {{prompt:three-retrievers-one-curator-4}}
 
-
-In Session 4, tell this session to act as the synthesizer and integrate the streaming retrievals into `memory/`.
+Session 4: synthesizer, integrating into `memory/`.
 
 {{prompt:three-retrievers-one-curator-5}}
 
-
-Answer each retriever's questions as they come in. Let them run. Switch between sessions if you want. Four agents are now working for you at once, three fetching, one curating. Watch the files appear in `sources/` and `memory/` sharpen as the synthesizer integrates. Something you do at work alone is being done in parallel in front of you. **The feeling is the lesson.**
-
-When the synthesizer's last move lands, `memory/_synthesis-m3.md` naming what changed, Phase 1 is done. Hand off to *Three minds, one synthesis* (next exercise), which keeps Session 4 open as the main session.
-
-This was **Recipe 3**'s parallel-retrieval shape: three retrievers fanning out into `sources/` while a synthesizer integrates into `memory/`. After Agents 101, when the next strategic question needs three reads at once, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) names the fan-in move and what composes with it.
+Done when `memory/_synthesis-m3.md` names what changed. Next: *Three minds, one synthesis*, in Session 4.
 
 <!-- maintainer -->
 

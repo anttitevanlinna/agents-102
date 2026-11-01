@@ -1,34 +1,32 @@
 # Lecture: The discipline of risk
 
-You built something. It works. Would you bet your job on it being safe? Probably not. And that feeling, that specific, uncomfortable, *I'd like to know and I don't* feeling, is the most plain thing in the room today.
+You built something that works. Would you bet your job on it being safe? That *I'd like to know and I don't* feeling stays, whatever the testing, policy or certification. Agent systems do not offer certainty.
 
-Here's the hard part. The feeling doesn't go away. Not with more testing, not with a better policy, not with a certification. Agent systems don't hand you certainty. You can wait for it, or you can get to work.
+## Classical security manages risk on predictable software
 
-## Certainty is a fantasy you inherited
-
-Software security, done well, sells you a clean story. Perimeter. Access control. Patch the bug, sign off the build, the system is secure. You've probably worked with people who live inside that story and mostly do a good job of it. The story works because classical software is deterministic (same input, same output). You can find the bug, prove you fixed it, and sleep.
+Classical software security is a risk-based practice, and the software it protects is deterministic: same input, same output. You find the bug, fix it, and check that the fix holds. That is why perimeter, access control and patching work.
 
 ## Three ways agents break the old story
 
 Agent systems break the story in three places.
 
-The behaviour is non-deterministic. Same prompt, same files, same tools, different session, different answer. A test that passed before doesn't prove the system passes today.
+The behaviour is non-deterministic. Same prompt, same files, same tools, different session, different answer. One passing test is one sample.
 
-The attack surface is the instruction set. The dangerous move isn't breaking into your server. It's getting your agent to *decide* to do something harmful with access it legitimately has. Well-formed English, arriving through a document the agent reads. Your firewall doesn't see it because your firewall has never had to worry about persuasion. The prework gave this its field name: prompt injection.
+The attack surface is the instruction set. The dangerous move is getting your agent to *decide* to do something harmful with access it has, through well-formed English in a document it reads.
 
-Capability is emergent. The agent does what its instructions, its context, and the user's ask imply it should do, combined. You can't fully predict the combination. You can only bound it.
+Capability is emergent. You can't fully predict the combination. You can only bound it.
 
-Put the three together. You don't get *secure / not secure.* You get *safe enough, under these conditions, within these limits, for now.* If that sounds less like engineering and more like medicine, it is.
+Together, you get *safe enough, under these conditions, within these limits, for now.*
 
-In the full agent picture, this is the boundary piece. What may the agent read? What may it change? What must come back to a human? More capability without boundaries is not progress. It is just more blast radius.
+What may the agent read? What may it change? What must come back to a human?
 
 ## Assess, then mitigate
 
 The work is the loop. You don't get certainty, you get four steps, plain and repeatable.
 
-**Assess.** Point a lens at the system and see what it reveals. Today starts with your company's actual rules, raw, against your actual agent. Then you package that policy check so it can run again. The agent-risk lens asks what the agent can reach, what it might leak, and how ordinary text could mislead it. Neither lens makes you an expert. The reusable check is the expert. The job is reading the reports with judgment.
+**Assess.** Run your company's rules against your agent, then package that policy check to rerun. The agent-risk lens asks what the agent can reach, leak, and be misled into by ordinary text. Read the reports with judgment.
 
-**Mitigate.** Pick one risk. Apply the smallest change that reduces it. Agent mitigations are shaped differently than firewalls. Scope (give the agent less). Split (break it into two agents with different trust levels). Filter (post-process the output before it leaves). Gate (a human approves before a sensitive action). Review (a second agent judges the first's output). None of these are perimeter. All of them are loop design.
+**Mitigate.** Pick one risk and apply the smallest change that reduces it. Agent mitigations are shaped differently than firewalls. Scope (give the agent less). Split (two agents, different trust levels). Filter (post-process output). Gate (human approves). Review (a second agent judges).
 
 [Reassess the residual, then decide](slides/reassess-the-residual.md)
 
@@ -38,13 +36,11 @@ The work is the loop. You don't get certainty, you get four steps, plain and rep
 
 ## The discipline is what carries
 
-Some of your agents are going to be wrong, in ways you won't catch, and ship output you won't love. That's true for every agent in production anywhere in the world right now. The organisations that handle this well aren't the ones with the best technology. They're the ones that run the loop openly, name residual risks plainly, and close doors they don't need to open.
+Some of your agents will be wrong in ways you won't catch. The organisations that handle this well run the loop openly, name residual risks plainly, and close doors they don't need to open.
 
-You can't buy certainty. You can run a loop. Today the loop runs once, on your own system, first with the policy files raw and then with two reusable lenses doing the expert work. Damn, this is complex stuff. It will still be complex when the next agent gets built. The discipline is what carries.
+You can't buy certainty. You can run a loop. Damn, this is complex stuff. It will still be complex when the next agent gets built. The discipline is what carries.
 
 Read the reports. Pick a risk. Apply a mitigation. Name what's left. Decide.
-
-That's the work.
 
 <!-- maintainer -->
 

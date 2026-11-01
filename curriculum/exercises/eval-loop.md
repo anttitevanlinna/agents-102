@@ -1,58 +1,48 @@
 # Exercise: The eval loop runs itself
 
-**Time:** 45 min. Phase 1 manual run ~5 min, Phase 2 kickoff plus the walk-away window ~30 min, Phase 3 return and read notes ~10 min.
+**Time:** 45 min: manual run ~5, walk-away ~30, return and read notes ~10.
 
 **Session** *(new, "Module 6 - Evaluations")*
 
-Start a new session or task at your training-directory root.
-
-Name it `m6-evaluations` if your runtime supports session names.
+Start a new session at your training-directory root, named `m6-evaluations` if supported.
 
 **What you do:**
 
-In Module 5 you ran a benchmark on four detectors and picked the one that caught the most fabrication. The winner got saved as `judges/groundedness-judge.md`. That judge is now yours.
+Stop running `judges/groundedness-judge.md` by hand.
 
-Now you stop running it by hand.
+**Eval as infrastructure:** the judge is a fixed yardstick; the generator changes under it. A generator writes a briefing from its tactic, the judge scores it with per-claim feedback, and the main session rewrites the tactic. Run at least three rounds, then continue until improvement stops. A yardstick you rewrite is not a yardstick.
 
-**Eval as infrastructure:** the judge is a fixed yardstick. It doesn't move. What moves is the thing being measured. You set up a loop where a generator produces a briefing from its tactic, the judge scores it and writes per-claim feedback, and the main session rewrites the tactic for the next round. Run at least three rounds under the same judge, then continue until the next round no longer improves meaningfully. The score goes up because the generation tactic learns what the yardstick punishes. The measuring stick never shifts. A yardstick you rewrite is not a yardstick.
+**Helper agents** are isolated workers, each with fresh context for its own job.
 
-**Helper agents** are isolated workers inside the same project. Each gets fresh context for its own job, with no cross-contamination.
+First write the tactic and run the judge once by hand on the first briefing. Then ask the lead agent to run the loop: separate helpers generate and judge; the lead session rewrites the tactic between rounds.
 
-First, write the generation tactic and run the judge once by hand on its first briefing. See what it catches. Then ask the lead agent to run the loop: generation and judging happen in separate helpers; the lead session owns the tactic rewrite between rounds.
-
-You will come back to a short run note: *round 1 flagged 11 claims, round 2 flagged 6 after the generation tactic tightened numeric sourcing, round 3 flagged 3 after probability-plus-timeline claims got banned.* The generation tactic you left with is sharper than the one you started with, under the exact same judge you started with.
+Example run note: *round 1 flagged 11 claims, round 2 flagged 6, round 3 flagged 3.*
 
 ## Phase 1: Run the judge once
 
 *5 min*
 
-One move before you automate. See what your judge does on a fresh output, end to end, with no loop in the middle.
-
-Ask the agent to generate one briefing and score it with the judge from Module 5.
+Before automating, run the judge once by hand: ask the agent to generate one briefing and score it with the judge from Module 5.
 
 {{prompt:eval-loop-1}}
 
-That's the manual version. Your judge ran once. You saw what it catches and what the generation tactic will need to learn.
-
-Now make that happen three times without you feeding the output back by hand.
+Note what the judge catches; the tactic must learn that. Next, the loop runs three times without you feeding output back.
 
 ## Phase 2: Start the loop, then walk away
 
 *30 min*
 
-Ask the lead agent to run the loop. Generation and judging should happen in separate helpers; the lead session reads the judgment and rewrites `./generation-tactic.md` between rounds.
+Ask the lead agent to run the loop. Generation and judging run in separate helpers; the lead reads the judgment and rewrites `./generation-tactic.md` between rounds.
 
 {{prompt:eval-loop-2}}
 
-Now step away. The point is not to watch the agent type. The point is to come back to a generator that has been tightened by a judge you did not move.
+Now step away. Come back to a generator tightened by a judge you did not move.
 
-**Bonus prompts while the loop runs.**
-
-If the loop is underway and you want to understand the shape of the leverage, ask about parallel search:
+While the loop runs, ask about parallel search:
 
 {{prompt:eval-loop-3}}
 
-Then ask for the model-training analogy in small pieces:
+Then the model-training analogy, in small pieces:
 
 {{prompt:eval-loop-4}}
 
@@ -60,21 +50,19 @@ Then ask for the model-training analogy in small pieces:
 
 *10 min*
 
-Ask the agent to show the loop result and the final generation tactic.
+Ask for the loop result and final generation tactic.
 
 {{prompt:eval-loop-5}}
 
-Read the answer. Push back where it is too neat. If round 3 still failed on numbers, the generation tactic does not yet know how to handle numbers. If the judge marked weak claims as grounded, the judge has a blind spot. If the score got worse, that is data: the prompt absorbed the wrong lesson or the generator ignored it.
+Failed numbers in round 3 mean the tactic cannot handle numbers yet; weak claims marked grounded mean the judge has a blind spot.
 
-**Integrity check.** The score trajectory only means something if the yardstick stayed still. A SHA match in `module-6/eval-notes.md` is the run's proof claim. If the judge file moved, the exercise failed. If only `./generation-tactic.md` moved, the loop worked.
+**Integrity check.** The score means something only if the judge stayed still: the SHA in `module-6/eval-notes.md` must match. If the judge file moved, the exercise failed; if only `./generation-tactic.md` moved, the loop worked.
 
 ## Trace what each round changed
 
 **What happened:**
 
-Round 1 is the floor. Your generator runs with the tactic you wrote in Phase 1 and the judge catches whatever it catches. Round 2 is where the mechanism kicks in. The main session read round 1's per-claim feedback, absorbed it into `./generation-tactic.md`, and the next generator read the tighter tactic. Round 3 runs on the even tighter tactic.
-
-The transcript is the proof. You can point at every tactic change and name the feedback that produced it. No black box. No "it got better." You watched, from the outside, a generator learn to pass a fixed test.
+Round 1 is the floor: your generator runs with the tactic you wrote in Phase 1, and the judge catches what it catches. In round 2, the main session read round 1's per-claim feedback and absorbed it into `./generation-tactic.md`; the next generator read the tighter tactic. Round 3 runs on a tighter one still.
 
 And you weren't there.
 
@@ -82,21 +70,19 @@ And you weren't there.
 
 **The point:**
 
-In Module 5 you were the eval. In Module 6 the eval is fixed infrastructure, and the thing being evaluated learns to pass it. The judge has moved from object to yardstick. You do not inspect every output; you define the pressure that shapes the next output.
+In Module 5 you were the eval. Now the judge is a fixed, separate yardstick, and the generator learns to pass it. You do not inspect every output; you design the loop and own the yardstick.
 
-This is what "we can automate the loop" actually means. Not a scheduled script. A PDCA loop at the eval layer: Plan (generation tactic), Do (generate), Check (judge), Act (rewrite tactic). Each round, the Plan gets sharper under Check pressure. The next run on a different topic starts from the tighter tactic; the learning stuck on disk.
+PDCA at the eval layer: Plan (generation tactic), Do (generate), Check (judge), Act (rewrite tactic). The next run, on any topic, starts from the tighter tactic on disk.
 
 ## Put another judge in the same loop
 
 **Take-home: put any judge in a loop that improves the thing it scores.**
 
-Any judge you own becomes infrastructure the moment you stop editing it and start improving what it scores.
-
 Ask the agent to set up the loop around a different judge:
 
 {{prompt:eval-loop-6}}
 
-Convergence was the floor in Module 5. Eval-as-yardstick is the ceiling here. The next natural question (*who else on my team would want this?*) is Module 7's problem.
+Convergence was the floor in Module 5. Eval-as-yardstick is the ceiling here.
 
 <!-- maintainer -->
 

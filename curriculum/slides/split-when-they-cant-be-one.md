@@ -1,8 +1,8 @@
 ## Split when they can't be one
 <!--slide:split-when-they-cant-be-one-->
 
-Three tests. If any hold, splitting pays. If none do, a single prompt probably beats you.
+Split into several agents when any of three tests holds. If none does, a single prompt is probably better.
 
-- **Different access.** Each agent needs different data, different tools, different credentials. A Confluence retriever (an agent that searches and returns matches from Confluence) can't pretend to be a web search. A legal-policy agent shouldn't also have customer-data access.
-- **Different dialect.** The material in each source speaks a different language: internal jargon vs. public tone vs. email shorthand. Three agents each native to their source keep the signal.
-- **Different stance.** The agents should actively disagree with each other. A backward planner and a reframer (an agent that reframes the material from a different stance) thinking *in the same voice* is one agent pretending to be three.
+- **Different access.** Each agent needs different data, tools or credentials. A legal-policy agent shouldn't have customer-data access.
+- **Different dialect.** Each source speaks its own language: internal jargon, public tone, email shorthand.
+- **Different stance.** Agents should disagree. A backward planner and a reframer in the same voice is one agent pretending to be three.

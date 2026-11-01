@@ -1,30 +1,27 @@
 # Grounded Output
 
 ## Big Idea
-You don't pick a quality check because someone said so. You run several on your own output, score them against a 30-claim benchmark, and keep the winner.
-
+Run several quality checks on your own output. Score them against a 30-claim benchmark and keep the winner.
 
 ## Prework
 
-Carry forward Module 4's risk discipline, then read [The Missing Check](lectures/module-5-prework.md): two public-record cases with documented organisational root causes.
+Read [The Missing Check](lectures/module-5-prework.md): two public-record cases with documented organisational root causes.
 
-Walk in with one sentence per case: "the missing organisational check was X."
+Write one sentence per case: "the missing organisational check was X."
 
 ## What You'll Learn
 After this module, you will be able to:
 - **Test** detection methods on a 30-claim benchmark and pick the winner
 - **Build** a reusable judge file from the winning method that names what it catches and where it stops
-- **Identify** what a judge can reach and what it can't, narrow and working beats broad and pretending
+- **Identify** what a judge can reach: narrow and working beats broad and pretending
 
 ## Start here
 
 Start a fresh session or task at `~/Documents/agents-101/`.
 
-In Module 3 the synthesized answer sat at an uneasy distance: you'd stake your reputation on some of it without knowing which. Your Module 4 residuals stay named, not solved; that is a different axis.
+In Module 3 the synthesized answer sat at an uneasy distance: you'd stake your reputation on some of it without knowing which. Your Module 3 doubt and Module 4 residuals stay named, not solved.
 
-This module is the rescue. Not full closure: your Module 3 doubt and your Module 4 residuals stay where they are. One shape of output, measured, with the limits the judge can't reach named on its face. Module 6 turns the benchmark you build here into a check that runs on every build.
-
-Module 3 named text as the place where action starts. This module measures what the system actually says inside its scope. Four detectors run on the same claim pool, a scorer adjudicates 30 claims against the sources, and you walk out with the first judge you can defend.
+This module measures one kind of output, naming the limits the judge can't reach. Four detectors run on the same claim pool, a scorer adjudicates 30 claims against the sources, and you walk out with the first judge you can defend.
 
 [Lecture: Grounded, and four candidates to measure](lectures/grounded.md)
 
@@ -32,47 +29,44 @@ Module 3 named text as the place where action starts. This module measures what 
 
 ## Debrief
 
-Five minutes. The agent reviews the benchmark and compounds the useful part into the root instructions file: when future sessions should run a groundedness check before trusting or using an output. The evidence is what the scoreboard produced: the evidence roster, claim pool, adjudicated claims, detector outputs, scoreboard, and the judge you saved. The agent updates the operating rules, reports what changed, and you push back on anything that's off.
-
-Ask the agent to review the session and update the root instructions file with groundedness operating rules.
+Five minutes. The agent reviews the benchmark and updates the root instructions file with rules for when future sessions run a groundedness check before trusting an output. The evidence is the scoreboard: evidence roster, claim pool, adjudicated claims, detector outputs, and your saved judge. Push back on anything that's off.
 
 {{prompt:a101-m5-debrief-groundedness-rules}}
 
-
 ## Notice what the prompt insists on
 
-Notice what this prompt insists on: touch only the Groundedness checks section, preserve every other section verbatim, then read back what you wrote and confirm each rule landed. Both moves do work the model wouldn't volunteer. Left to itself, the agent treats the root instructions file as a clean canvas. A small edit becomes a full rewrite, your earlier rules quietly drift, and the diff is uglier than it needed to be. Reading back the section against the file is a separate problem: the report the agent writes describes what it intended, not what landed. The verify-at-artifact step closes the gap. Two different patterns from the same family. Name the boundary, then check the work. Once you have them, you'll start seeing where to apply them in every prompt that asks an agent to edit a file you care about.
+This prompt does two things the model wouldn't volunteer. First, it names the boundary: touch only the Groundedness checks section, preserve every other section verbatim. Left alone, the agent treats the root instructions file as a clean canvas, so a small edit becomes a full rewrite and your earlier rules drift. Second, it checks the work: re-read the Groundedness checks section in the file and confirm each rule is there. The agent's report describes what it intended, not what is in the file.
 
 ## Push back on the summary
 
-Read the agent's summary. Push back where it's wrong: *"run the check only for external-facing claims, not every note"* / *"that rule is too vague; name the evidence roster"* / *"this should say when to stop and ask for sources."* Two things now travel: the reusable judge file exists, and the root instructions file tells future sessions when groundedness checking is required.
+Read the agent's summary. Push back where it's wrong: *"that rule is too vague; name the evidence roster"* / *"this should say when to stop and ask for sources."*
 
-> Consider automating some of these checks. Not everything. Start with the repeatable, high-cost misses: numbers in external notes, customer names in account summaries, policy claims in internal advice, source citations in briefings. If a future session should never trust that shape of output without a check, write the trigger into the root instructions file now. Module 6 turns that trigger into a loop.
+> Start with the repeatable, high-cost misses: numbers in external notes, customer names in account summaries, policy claims in internal advice, source citations in briefings. If a future session should never trust that shape of output without a check, write the trigger into the root instructions file.
 
 ## Propose, double-check, apply
 
-Same for agent actions. When the action matters, do not let the agent jump straight from thought to tool. Have it propose the action first, quality-check the proposal against the judge or the relevant source, and only then apply it. Propose, double-check, apply. That is output quality becoming operational safety.
+Apply the same to agent actions that matter: the agent proposes the action, you quality-check the proposal against the judge or the source, then it applies. Propose, double-check, apply.
 
 ## Which rung has this action earned?
 
-Read [What is an Agent, The autonomy ladder](trainings/agents-101/supplementary/what-is-an-agent.md#the-autonomy-ladder-what-may-the-agent-do) before you decide what the agent may do next. The question is not "do I trust the agent?" The question is which rung this action has earned.
+Read [What is an Agent, The autonomy ladder](trainings/agents-101/supplementary/what-is-an-agent.md#the-autonomy-ladder-what-may-the-agent-do) before you decide what the agent may do next. Ask which rung this action has earned.
 
-Having added the checking step before acting, this is also the suitable place to introduce a human-in-the-loop check. You have both the agent-created action proposal at hand and the report on output quality. That means the expert is not reviewing a blank page or a vague concern; they are reviewing the proposed action, the evidence behind it, and the known limit of the check that passed it.
+This is also the place for a human-in-the-loop check. The expert reviews the proposed action, the evidence behind it, and the known limit of the check that passed it.
 
 ## Key Concepts
-- Grounded means traceable to a source; accurate is a harder question.
-- Don't pick a method; run the candidates and read the scoreboard.
-- The winner is a judge that names its own limit.
-- The pattern is portable: candidates, benchmark, scorer, winner.
+- Grounded means traceable to a source; accurate is harder.
+- Run candidates, read the scoreboard.
+- The winner names its own limit.
+- Portable pattern: candidates, benchmark, scorer, winner.
 
 ## Pre-reads before Module 6
 
 Ethan Mollick, "Garbage Can and Bitter Lesson."
 
-Once the judge and pre-read are ready, end this module's session or task. Module 6 starts fresh at `~/Documents/agents-101/`.
+Once the judge and pre-read are ready, end this session. Module 6 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
-The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine the benchmark has three hundred claims, the judge runs on every build, and the generation tactic absorbs the judge's feedback between rounds. That's evals.
+The benchmark ran once: thirty claims, four detectors, one judge. Evals scale it to three hundred claims, run the judge on every build, and feed its feedback into generation between rounds.
 
 <!-- maintainer -->
 

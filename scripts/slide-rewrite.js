@@ -37,6 +37,8 @@ const FROZEN_LINE = [
   /\*\*Session\*\*/,                    // session widget
   /\{\{prompt:[^}]+\}\}/,               // registry prompt
   /^\s*\|/,                             // table rows
+  /class="rt-/,                         // runtime-specific spans
+  /^\s*([-*]|\d+\.)\s.*https?:\/\//,     // source bullets with a URL
   /^\s*\*[^*]*\d+\s*min[^*]*\*\s*$/i,   // timing labels
 ];
 

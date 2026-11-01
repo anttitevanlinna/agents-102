@@ -4,34 +4,32 @@
 
 **Session** *(new, "Module 8 - Agents building agents")*
 
-Start a new session or task at your training-directory root.
+Start a new session at your training-directory root.
 
-Name it `m8-agents-building-agents` if your runtime supports session names.
+Name it `m8-agents-building-agents` if sessions can be named.
 
 **What you do:**
 
-You've been building agents for seven modules. Today you don't build one. You describe one, and the coding agent builds it. The tool that builds tools. The move stops being linear the moment you see it land.
+You describe an agent; the coding agent builds it.
 
-Pick one extension to your system. Something you'd actually use from Tuesday onward. Not a demo. A real gap.
+Pick one extension you'd use from Tuesday onward:
 
-Three shapes to choose from (pick one):
-
-- **New data source.** An agent that reads from somewhere your current system doesn't: a second wiki, a folder of PDFs, a connector you just enabled, a different team's `memory/`.
-- **New output.** An agent that produces a shape you don't have yet: a one-page brief, a weekly digest, a pre-meeting prep note, a Slack-ready summary of something you usually write long-form.
-- **New perspective.** An agent that reads the same memory but argues with it: a skeptic, a devil's advocate, a persona-agent that holds the view your own voice suppresses.
+- **New data source.** Reads from somewhere your system doesn't: a second wiki, a folder of PDFs, a new connector, another team's `memory/`.
+- **New output.** Produces a format you lack: a one-page brief, a weekly digest, a pre-meeting prep note.
+- **New perspective.** Reads the same memory but argues with it: a skeptic, a devil's advocate, a persona holding the view your voice suppresses.
 
 ## Phase 1: Describe
 
 *5 min*
 
-Open `module-8/extension-brief.md`. Write four lines, no more:
+Open `module-8/extension-brief.md`; write four lines:
 
-- The gap. One sentence. *"I don't have anything that does X."*
-- The job it gets done. One sentence. *"On Mondays I need to Y; today I Z by hand."*
-- What it reads. Which files, which `memory/` pages, which sources. For PDFs or slide exports, how it checks that body text was actually extracted.
-- What it writes. One file, named (or an output shape, described).
+- The gap: *"I don't have anything that does X."*
+- The job: *"On Mondays I need to Y; today I Z by hand."*
+- What it reads: files, `memory/` pages, sources. For PDFs, how it checks text extracted.
+- What it writes: one named file.
 
-If the brief takes more than five minutes, your gap is too big. Narrow it.
+Over five minutes? Narrow the gap.
 
 ## Phase 2: Generate
 
@@ -44,26 +42,24 @@ If the brief takes more than five minutes, your gap is too big. Narrow it.
 
 *5 min*
 
-Look at the output. Don't read it to admire it. Read it to find the weakness.
-
-Push back in chat:
-- *"Cite the memory file for the second claim. That felt generic."*
+Read the output for its weakness. Push back in chat:
+- *"Cite the memory file for the second claim."*
 - *"You used training data on line 4. Replace it or remove it."*
 - *"The tone drifted from my other agents. Sharpen to match."*
 
-One or two rounds of push-back. The artifact: a new agent in `agents/` that you trust enough to run again on Tuesday.
+One or two rounds. The artifact: a new agent in `agents/` you trust to run again on Tuesday.
 
 ## Take stock of the compound
 
 **What happened:**
 
-You described. The tool built. You judged. The cycle took 25 minutes. The second agent next week will take ten. Same tool, less describing, because your vocabulary for what you want is sharper. That's the compound.
+You described, the tool built, you judged. The cycle took 25 minutes. The second agent next week takes ten, because your vocabulary for what you want is sharper. That is the compound.
 
 **The point:**
 
-The seven modules taught you to be a builder. Module 8's first move is watching the builder disappear. You become the describer; the agent becomes the builder. Monday's new gap gets a new agent in 25 minutes, not a new sprint.
+You describe; the agent builds. Monday's new gap gets a new agent in 25 minutes, not a new sprint.
 
-This is the meta-tool move at the heart of **Recipe 8**: agent generates agent, in 25 minutes, on a real gap. After Agents 101, when the next gap wants the same shape, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) is where the moves live, plus the rest of Recipe 8 (three thinking disciplines, strategy kernel, domain-readiness 3-test) for when the next move is bigger than one agent.
+This is **Recipe 8**: agent generates agent, on a real gap. When the next gap wants the same option, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) holds the moves, plus the rest of Recipe 8 for bigger moves than one agent.
 
 <!-- maintainer -->
 

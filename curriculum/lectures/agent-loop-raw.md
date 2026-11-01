@@ -1,26 +1,20 @@
 # Demo: Agent loop, raw
 
-Before the security loop, look at the agent loop without polish.
-
-The raw loop takes three plain questions. No special setup. No hidden vocabulary. Just the model explaining what it can see and do in its current environment.
-
-Ask the agent which tools it can use right now.
+Ask the agent three questions in your own session. Ask which tools it can use right now.
 
 {{prompt:agent-loop-raw-1}}
 
-Then ask how it chooses among those tools.
+Ask how it chooses among those tools.
 
 {{prompt:agent-loop-raw-2}}
 
-Finally, ask how its text becomes an action.
+Ask how its text becomes an action.
 
 {{prompt:agent-loop-raw-3}}
 
-Read the answers as mechanism, not magic. The model has a tool list. Each tool comes with a name, description, and input shape. The prompt and context make one description look relevant. The model writes a structured request. The runtime turns that text into a real tool call. Another system reads the call and does the work.
+Read the answers as mechanism. Each tool has a name, a description and an input format. The context makes one description look relevant, and the model writes a structured request. The runtime turns that text into a real tool call, and another system does the work.
 
-That is why Module 4 cares about boundaries. A tool call is not a new species of work. It is text crossing a boundary into action. If the tool description is vague, the context is misleading, or the request is pointed at the wrong system, the action inherits the problem.
-
-You can try the same three prompts in your own session. The goal is not to memorize the exact answer. The goal is to see the loop in the open: context, tool choice, textual command, runtime action, result back to the agent.
+A tool call is text crossing a boundary into action. If the tool description is vague, the context misleading or the request aimed at the wrong system, the action inherits the problem. That is why Module 4 cares about boundaries.
 
 <!-- maintainer -->
 

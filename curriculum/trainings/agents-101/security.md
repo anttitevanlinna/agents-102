@@ -1,28 +1,28 @@
 # Security
 
 ## Big Idea
-You can't tell if your agent is safe by looking at its output. You need a way to check. The discipline is running the check, not waiting for certainty.
+You can't tell if your agent is safe from its output. You need a check. Run it; don't wait for certainty.
 
 ## Prework
 
-Read [Agent Trigger List, After Module 3](trainings/agents-101/supplementary/agent-trigger-list.md#after-module-3-notice-when-one-agent-is-not-enough), selected sections from [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) on multi-agent coordination, and [Before Module 4](lectures/module-4-prework.md). The Module 4 prework adds two reads: (1) personal skills as the package format that carries expertise into your agent, (2) agent risk layered on top of normal security work.
+Read the [Agent Trigger List, After Module 3](trainings/agents-101/supplementary/agent-trigger-list.md#after-module-3-notice-when-one-agent-is-not-enough), the multi-agent sections of [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md), and [Before Module 4](lectures/module-4-prework.md). Prework covers personal skills and agent risk layered on normal security.
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Run** distilled policy files directly, then package the useful check into your runtime
-- **Author** a small security check with two lenses (policy + agent-risk) and load it in your runtime
-- **Apply** named agent risk patterns (prompt injection direct and indirect, secrets-in-context, tool-confusion, skill supply-chain) to a working agent system, plus a plain access review
-- **Distinguish** compliant / violating / "I can't tell" for each rule
-- **Apply** an agent mitigation (scope, split, filter, gate, review) on top of normal company controls and see how residual risk shifts
-- **Evaluate** residual risk: what's left after mitigation, and what future sessions need before they touch the system
+- **Run** distilled policy files directly, then package the useful check as a skill
+- **Author** a security check with two lenses: policy and agent risk
+- **Apply** named agent risk patterns (direct and indirect prompt injection, secrets in context, tool confusion, skill supply chain) and a plain access review
+- **Distinguish** compliant, violating and "I can't tell" for each rule
+- **Apply** a mitigation (scope, split, filter, gate, review) on top of company controls
+- **Evaluate** residual risk: what is left, and what future sessions need before touching the system
 
 ## Start here
 
 Start a fresh session or task at `~/Documents/agents-101/`.
 
-Module 4 reads the Module 3 system, the root instructions file, and the policy reference files under `module-4/policies/`. It writes reports under `outputs/` and compounds security operating rules back into the root instructions file.
+The agent reads the Module 3 system, the root instructions file, and the policy files under `module-4/policies/`. Reports go to `outputs/`.
 
-You've had three agents search your company and three more decide. What doesn't sit right about that, from a risk angle? Name the thing you'd want to check before letting this near a real stakeholder.
+Name what you'd want to check before letting this near a real stakeholder.
 
 [Demo: Agent loop, raw](lectures/agent-loop-raw.md)
 
@@ -34,44 +34,44 @@ You've had three agents search your company and three more decide. What doesn't 
 
 ## Debrief
 
-Five minutes. The agent reviews the audit session and compounds one to five rules into the root instructions file for future sessions. The evidence is what the audit produced: the raw policy report, the packaged policy report, the security report with its residual decision, the "I can't tell" rows, and the mitigation you applied. The agent updates the instructions and reports what changed. You push back on anything that's off.
+Five minutes. The agent reviews the audit session and adds one to five rules to the root instructions file for future sessions. Its evidence: the raw and packaged policy reports, the security report with its residual decision, the "I can't tell" rows, and the mitigation you applied.
 
 {{prompt:a101-m4-debrief-security-rules}}
 
-Read the agent's summary. Push back where it's wrong. *"That rule wasn't ambiguous, I just didn't have the evidence"* / *"that residual is too vague, name the file or behaviour."* The artifacts are the security report and the operating rules in the root instructions file: evidence plus future behaviour. The unease stays. Nothing today resolves it. That's the curriculum.
+Read the agent's summary and push back where it's wrong: *"That rule wasn't ambiguous, I just didn't have the evidence"* / *"that residual is too vague, name the file or behaviour."*
 
-Two things travel: the reusable check exists, and the root instructions file now tells future sessions how to behave around the risk you found. Point the check at the other agents you've built. You'll find different "I can't tell" rows everywhere you look. The next agent you build will have a stricter starting line because of this one.
+The unease stays. Two things travel: the reusable check, and the root instructions file's rules for the risk you found. Point the check at the other agents you've built.
 
 ## Build More Skills For Recurring How
 
-A skill is close to the *how* of doing something. You can think of it as a process: everything the agent needs to do X repeatedly, without you rebuilding the method from scratch each time. The security check was one example. The same shape works for any recurring judgment or workflow: reviewing customer data use, preparing a weekly briefing, checking source quality, drafting in a house style, triaging a queue.
+A skill packages the *how* of a recurring judgment or workflow, so the agent repeats the method without you rebuilding it each time. The security check was one example. Others: reviewing customer data use, preparing a weekly briefing, checking source quality, drafting in a house style, triaging a queue.
 
-That is why skills travel. A good skill is not tied to one chat, one project, or one agent. It packages the repeatable method so you can apply it across projects and agents, then sharpen it when reality shows where the method was thin.
+A skill is not tied to one chat, project or agent. You apply it across projects and agents, then sharpen it where the method proves thin.
 
-It is also the simplest sharing move you have built so far. Give a teammate the skill, install it in their runtime, and they can call the same method without reconstructing your prompt history. That does not make it a deployed service or solve ownership. Module 7 compares this skill-shaped handoff with three other sharing shapes: shared context, shared output, and an interface.
+To share, give a teammate the skill and install it in their runtime. They call the same method without your prompt history. A skill is not a deployed service and does not settle ownership. Module 7 compares this with three other ways to share: shared context, shared output, and an interface.
 
 ## Key Concepts
-- Certainty is not on offer; the loop is: assess, mitigate, reassess the residual, decide.
-- Well-formed English is the attack surface, direct or through a source the agent reads.
-- "I can't tell" is a real answer; closing it takes evidence.
-- Agent mitigations sit on top of normal security controls, never in place of them.
+- No certainty: assess, mitigate, reassess the residual, decide.
+- Well-formed English is the attack surface, even via sources.
+- "I can't tell" is a real answer.
+- Mitigations add to security controls, never replace them.
 
 ## Bring to Module 5
 
-**One sentence per case: "the missing organisational check was X."** Both cases are named in the pre-reads that follow. Module 5 opens on what a check would have caught, and the sentence is what you check it against.
+**Write one sentence per case: "the missing organisational check was X."** Both cases are in the pre-reads that follow. Module 5 opens by checking each sentence against what a check would have caught.
 
-Come to Module 5 without the two missing-check sentences and you'll be reconstructing them while the benchmark is already comparing detectors. Your call.
+Without the two sentences, you'll be writing them while the rest of the room is already comparing detectors. Your call.
 
 ## Pre-reads before Module 5
 
-Read Mata v. Avianca (S.D.N.Y. 2023) and the Deloitte Australia / DEWR welfare-compliance report (2025), both in the lecture that follows. Carry the risk discipline from this module into both cases: what check was missing around the agent's output?
+Read Mata v. Avianca (2023) and Deloitte Australia / DEWR report (2025) in the lecture. What check was missing around the agent's output?
 
 [The Missing Check](lectures/module-5-prework.md)
 
-Once the two sentences are saved, end this module's session or task. Module 5 starts fresh at `~/Documents/agents-101/`.
+Once saved, end this session. Module 5 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
-The agent is scoped, the residual risk is named. But the output *inside* the scope. Can you trust what it actually says?
+The agent is scoped and the residual risk is named. Can you trust what it says inside that scope?
 
 <!-- maintainer -->
 

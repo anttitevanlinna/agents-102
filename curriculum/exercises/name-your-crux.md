@@ -4,31 +4,23 @@
 
 **Session** *(new, "Module 3 - Multi-agent systems")*
 
-Start a new session or task at your training-directory root.
-
-Name it `m3-multi-agent-systems` if your runtime supports session names.
+Start a new session at your training-directory root. Name it `m3-multi-agent-systems` if your runtime supports session names.
 
 **What you do:**
 
-Module 2 produced a memory full of what you've gathered about your challenge. Module 3 turns it into an answer you can act on, starting with the question worth answering. Richard Rumelt calls it the **crux**: the one thing that, if solved, releases pressure on everything else.
-
-Module 3 opens cold. Module 2's `memory/` is on disk; this exercise reads from it. The retrievers in the next exercise go to connectors and the open web, Module 2's curation becomes the thing you'll compare their fresh findings against during synthesis.
-
-Ask the agent to read the memory and name the crux. Push back hard when the first answer is a problem restatement.
+Module 2's `memory/` holds what you gathered about your challenge. Ask the agent to read it and name the **crux**, Richard Rumelt's term for the one thing that, if solved, releases pressure on everything else. Push back hard when the first answer restates the problem.
 
 {{prompt:name-your-crux-1}}
 
+Iterate; save when good enough.
 
-Revise by iterating; save when good enough.
-
-The crux is the obstacle. Now name the decision the crux blocks, the call you'd stay late to make. Cruxes describe; decisions act.
+The crux is the obstacle. Name the decision the crux blocks: the call you'd stay late to make.
 
 Ask the agent to name the sharpest decision the crux blocks and append it to the same file.
 
 {{prompt:name-your-crux-2}}
 
-
-Same move: iterate if it's a topic restatement instead of a real call; save when good enough.
+Same move: iterate past a topic restatement; save when good enough.
 
 <!-- maintainer -->
 

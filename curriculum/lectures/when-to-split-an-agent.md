@@ -1,12 +1,12 @@
 # Lecture: When to split an agent (and how)
 
-You just split an agent two ways. Three retrievers in separate windows. Three stances inside one session. Both worked; both felt different. The next question (the one your team will ask you the first Monday you try this on real work) is *when do I split, and how?*
+You split an agent two ways: three retrievers in separate windows, three stances inside one session. Your team will ask: *when do I split, and how?*
 
 ## The unit is the recurring workflow
 
-Build one agent per recurring workflow, a single `.md` file, guardrailed for the job that workflow does. Don't try to make a mega-agent that does everything (*the company brain*); it ages badly, drifts in scope, nobody can tell what it's responsible for. Don't go the other way and proliferate a hundred tiny agents either; coordination cost eats the win. The right number is *one per piece of work that recurs in your week.*
+Build one agent per recurring workflow: a single `.md` file, guardrailed for that job. A mega-agent that does everything drifts in scope, and nobody can tell what it is responsible for. A hundred tiny agents cost more to coordinate than they save.
 
-That's the across-workflow answer. The question this lecture answers is the within-workflow one: when, inside a single workflow, does splitting into multiple agents pay?
+Within one workflow, when does splitting into multiple agents pay?
 
 [Start with don't](slides/start-with-dont.md)
 
@@ -14,47 +14,43 @@ That's the across-workflow answer. The question this lecture answers is the with
 
 ## More agents is not more rigour
 
-Note what's not on the list: *"because three is more thorough."* More agents is more prompts to tune, more noise in the synthesis, more coordination tax. Split for a reason.
-
-And more input is not the fix either. The beige answer was not short of context. It had three stances in front of it and could not choose between them.
+Split for a reason, not because "three is more thorough": more agents means more prompts to tune, more noise, more coordination cost. More input does not fix a beige answer either. It had three stances in front of it and could not choose.
 
 ## A framework makes it pick
 
-Three stances beat one summarizer because one head in one pass gives you one flat take. Three voices give you a spread. A spread is still not an answer.
+Three stances give you a spread of views, and a spread is not an answer. Without a spine, the synthesizer summarises: three views, evenly weighted, nobody chose.
 
-Without a spine the synthesizer summarises: three views, evenly weighted, nobody chose. With the strategy kernel you just handed it, diagnosis, guiding policy, coherent actions, it has to commit to one diagnosis and drop what does not serve it. The variety comes from the stances. The choice comes from the frame you hand it.
+Hand it the strategy kernel (diagnosis, guiding policy, coherent actions). It then commits to one diagnosis and drops what does not serve it. The stances bring the variety. The frame brings the choice.
 
 ## The test that catches the bluff
 
-Ask yourself: *can I write one prompt that produces the same quality of output?* If yes, you didn't need to split. Write the one prompt. Keep your life small.
-
-The test is unkind on purpose. Business people who have just seen multi-agent work want to split everything. Resist it. Single-agent is the plain default.
+Could one prompt produce the same quality of output? If yes, write that one prompt. Single-agent is the default; split only when one prompt cannot.
 
 ## Two shapes, each with its own territory
 
-Once you've decided to split, pick the shape.
+Pick an option once you split.
 
-**Separate sessions (the Phase 1 move).** Pick this when each agent needs its own persistent context, its own tools, its own clock. The three retrievers had their own connectors, their own search history, their own conversation threads. Long-running, independent, visible. Separate windows let you *see* each one working; you can intervene in one without confusing the others. Good for retrieval across systems, parallel deep dives, anything where you want to watch each agent as it runs.
+**Separate sessions (the Phase 1 move).** Pick this when each agent needs its own persistent context, tools and clock. Separate windows let you see each agent work and intervene in one without confusing the others.
 
-**Helper agents in one session (the Phase 2 move).** Pick this when the main session wants quick parallel thinking and a bounded return. The three stances had a single job each, a clean instruction, no long-lived state, and they reported back as files and disappeared. Good for parallel framing of the same material, multi-perspective analysis, bursts of bounded work. The main session stays in charge; the helpers are temps.
+**Helper agents in one session (the Phase 2 move).** Pick this when the main session wants quick parallel thinking and a bounded return. The three stances each had a single job, a clean instruction and no long-lived state; they reported back as files and disappeared. The main session stays in charge.
 
 ## Other agents are part of the tool surface
 
-In the full agent picture, other agents are part of the tool surface. They let one agent call a different stance, a different source zone, or a different working style without stuffing every job into one prompt.
+Other agents are part of the tool surface: one agent can call a different stance, source zone, or working style.
 
-**The shape test.** Sessions when you want each agent to stay alive for a while. Helper agents when you want them in and out. Sessions when you want concurrency visible; helper agents when you want it invisible. Sessions when they have different tools; helper agents when they share.
+**Pick:** Sessions when you want each agent to stay alive for a while. Helper agents when you want them in and out. Different tools: sessions; shared tools: helper agents.
 
 ## Seams are where it fails
 
-Once you have split, the work has handoffs, and the handoff is where it goes wrong. A retriever finds two numbers and the curator writes down one. A source's internal shorthand gets rewritten in public tone and the meaning goes with it. Three stances land on the synthesizer's desk and come out as one beige paragraph.
+Splitting creates handoffs, and handoffs are where work goes wrong. A retriever finds two numbers and the curator keeps one. A source's internal shorthand is rewritten in public tone and loses its meaning. Three stances reach the synthesizer and come out as one beige paragraph.
 
-None of that shows up inside an agent. It shows up between them. Where the pieces meet is the place to look.
+Check where the pieces meet.
 
 ## Three agents is not three times as good
 
-You cannot hire three agents and expect the output to be three times as good. You hire three agents to get *three different views of the same thing,* and you pay for the privilege with coordination cost. If you don't need three different views (if one well-prompted agent can give you what you need), please, for the sake of your sanity, write the one prompt.
+Multiple agents give you *three different views of the same thing*, and cost coordination. If one well-prompted agent gives you what you need, write the one prompt.
 
-A whole module just showed you multi-agent works. Next Monday, you will be tempted to apply it to everything. Don't.
+A whole module showed multi-agent works. Don't apply it to everything.
 
 <!-- maintainer -->
 

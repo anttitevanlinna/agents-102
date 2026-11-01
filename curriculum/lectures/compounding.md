@@ -1,55 +1,51 @@
 # Compounding
 
-You just did something a chat can't do.
-
-Not the ingestion, a long enough prompt ingests. Not the task, a good prompt does tasks. The thing you did that a chat can't do is **Phase 3**. You dropped new sources into the folder, asked the agent to update the memory, and three topic pages *got sharper instead of longer*. The second batch made the first batch better. That's compounding. And you can't picture it from a description, you had to see it.
+The thing a chat can't do is **Phase 3**. You dropped new sources into the folder, asked the agent to update the memory, and three topic pages *got sharper instead of longer*. The second batch made the first batch better. That is compounding.
 
 ## Two words, held together
 
 A system is two things stacked:
 
 - **Persistence.** It remembers. Files on disk, not a thread that resets.
-- **Automation.** It runs on its own. Not because you retyped the prompt. The instructions are in a file the agent reads every time.
+- **Automation.** It runs on its own. The instructions are in a file the agent reads every time.
 
-Either one alone is a toy. A saved document with no agent is just a document. An agent with no files is a chat. Put them together and you get something that *keeps getting better the more you feed it*. That's the whole claim.
-
-In the full agent picture, Module 2 adds shelf life. Context stops being something trapped in one conversation. It becomes memory the agent can re-read, update, and carry into the next session.
+A saved document with no agent is just a document. An agent with no files is a chat. Put together, the system *keeps getting better the more you feed it*.
 
 ## Why the sharpening happens
 
-When you added the second batch, the agent didn't start over. It read the existing topic pages first, as *context*, then read the new sources, then integrated. The existing memory was part of the prompt for updating the memory. That's why pages got sharper: the old claims and the new claims met each other, and the ones that couldn't survive the meeting got cut.
+When you added the second batch, the agent read the existing topic pages first, as context, then the new sources, then integrated. The existing memory was part of the prompt for updating the memory, so old and new claims met and the ones that couldn't survive got cut.
 
-This is the same mechanism from Module 1: context shapes output, run at system scale. The context for this work is what the previous work produced. The context for the next session will be what this work produced. The loop is the product.
+This is the Module 1 mechanism, context shapes output, run at system scale.
 
 ## It gets better by being edited
 
-Keep the rules small, keep them boring, and let the compounding do the work. Not "clever prompts." Plain rules, applied consistently across thousands of small updates. The discipline is in refusing to get fancy.
+Keep the rules small and boring. Apply them consistently across thousands of small updates, and let the compounding do the work.
 
 ## A folder of text, and that is the point
 
-The memory is a folder of markdown files. No database. No special tool. No paid tier. No setup. And the agent you just built, the one sitting in `agents/`, is also a markdown file. Instructions the model reads at the start of every session. Same plain-text form for the knowledge, same plain-text form for the capability, same plain-text form as the guardrail you wrote in Module 1. One kind of object, three jobs. Which means it also travels, paste the agent file into any LLM tool and it still works.
+The memory is a folder of markdown files. No database, special tool or paid tier is needed.
 
-That might look like a limitation. It isn't. Language models are strongest at reading and writing text, that is what they do. When you store knowledge as text, reading it is reading, and updating it is writing. Nothing sits between the model and what it's best at.
+The agent in `agents/` is also a markdown file: instructions the model reads at the start of every session. Knowledge, capability and the guardrail from Module 1 share one plain-text form, so the agent's markdown file also travels: paste it into any LLM tool and it works.
 
-The point is simple: the simplest possible setup beats the fancy ones, because it respects what the model actually does well. But *text that an agent can read and write* isn't going anywhere.
+Language models are strongest at reading and writing text. When you store knowledge as text, reading it is reading, and updating it is writing. The simplest setup wins because it matches what the model does best.
 
 [Three layers, one folder](slides/three-layers-one-folder.md)
 
 ## What this unlocks
 
-Your memory is specific to your challenge. The question you ran through it came back with claims cited to your files, reasoning shaped by your context, a voice that isn't a generic industry take. The answer belongs to the memory you built, not to the LLM behind it. That's the point the whole training turns on: *generic AI becomes your AI when you shape the context that surrounds it.* Guardrails did this at the prompt level in Module 1. A memory does it at the knowledge level now. The mechanism is the same; only the shelf life changed.
+Its answers cite your files and carry a voice that isn't a generic industry take, so they belong to the memory you built, not the LLM behind it. *Generic AI becomes your AI when you shape the context that surrounds it.* Guardrails did this at the prompt level in Module 1; a memory does it at the knowledge level.
 
-Every module after this leans on that memory. Multi-agent systems reads from it. Security reviews it. Quality evals run against it. The flywheel in Module 8 feeds it. You didn't build a training exercise. You built the material the rest of the training runs on.
+Every module after this leans on that memory. Multi-agent systems, Security, Quality evals and the Module 8 flywheel all use it.
 
 ## Could a competitor claim this?
 
-Back in Phase 1 you asked the agent to flag pages a competitor could write about themselves. Phase 3 sharpened them. That's the discipline: if the answer to *"could a competitor claim this?"* is ever yes, the memory is growing but not compounding.
+If a competitor could claim a page, the memory is growing but not compounding.
 
 Spot what's still generic and sharpen it.
 
 {{prompt:compounding-1}}
 
-The agent comes back with three pointed requests. Answer one. Let it update the page. The memory just got a fourth round of compounding. You steer; the system maintains; the loop runs.
+The agent comes back with three pointed requests. Answer one and let it update the page. You steer; the agent maintains the memory.
 
 [It can only use what someone wrote down](slides/only-what-someone-wrote-down.md)
 

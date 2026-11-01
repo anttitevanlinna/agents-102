@@ -2,117 +2,83 @@
 
 Think back to the first thing you made in this training.
 
-The agent wrote a snake game. Then it wrote a page that sounded more like you after you gave it better context. In Module 2, it read sources and wrote memory files. In Module 3, four sessions worked through the same folder, and three agents wrote different stances into files. In Module 5, a benchmark produced a judge. In Module 6, that judge started running inside a loop.
-
-Most of that did not feel like dramatic tool use. It looked like files appearing on disk.
+The agent wrote a snake game. In Module 2, it read sources and wrote memory files. In Module 5, a benchmark produced a judge. In Module 6, that judge started running inside a loop.
 
 Files are the handles. Connectors bring material in. Agents read and write. Judges hold a line. Loops make the next session sharper.
 
-Small pieces. Big shift.
+At the start, you sat inside every loop, reading the output and fixing the prompt.
 
-At the start, you were inside every loop. You read the output. You noticed what was wrong. You fixed the prompt. You tried again.
-
-That was necessary. It is not the destination.
-
-The destination is not "the human disappears." That is the lazy story.
-
-The better story is stranger: the human moves one level up.
+The destination is not "the human disappears." You move one level up: you design the loop and own the yardstick.
 
 ## Would you let it send the mail?
 
 Would you allow your agent to send an internal mail related to what you do?
 
-Not a customer mail. Not a legal filing. Not a press release. Just an internal note: a project update, a decision summary, a risk note, a stakeholder nudge. Something you might send without much fuss, except that people will act on it.
+An internal note: a project update, a decision summary, a risk note, a stakeholder nudge.
 
 What would have to be true before you let the agent hit send?
 
-It would need to sound like it came from your world. That was Module 1.
-
-It would need the relevant sources, the current facts, the open questions, the things your team already knows. That was Module 2.
-
-It would need the right perspectives before it writes. The right searches and the right stances. That was Module 3.
-
-It would need boundaries. What can it read? What should it never say? Which risks are still "I can't tell"? That was Module 4.
-
-It would need a groundedness judge. Are the names, numbers, claims, and recommendations attached to evidence? That was Module 5.
+- Sounds like it came from your world (Module 1).
+- The sources, current facts and open questions (Module 2).
+- The right searches and stances before it writes (Module 3).
+- Boundaries: what it can read, what it never says, which risks it can't tell (Module 4).
+- A groundedness judge ties names, numbers, claims and recommendations to evidence (Module 5).
 
 ## Two evals, two different jobs
 
-And if the mail is not merely supposed to be true, but actually useful, it needs one more thing: a steering eval.
+A useful mail needs one more eval: a steering eval.
 
 Groundedness protects the floor. Steering raises the ceiling.
 
 A groundedness eval says: do not invent, overreach, or imply more than the evidence supports.
 
-A steering eval says: overperform on this dimension. Be more executive-readable. More commercially sharp. More specific. More useful to the person who has to make a decision. More like the standard this team wants to be known for.
+A steering eval says: overperform on one dimension. Be more executive-readable, commercially sharp, specific, and useful to the decision-maker.
 
-If the agent sends an internal mail that is ungrounded, you have a trust problem. If it sends one that is grounded but vague, forgettable, or politically tone-deaf, you have a usefulness problem. One protects truth. One pushes excellence.
+An ungrounded mail is a trust problem. A grounded but vague or tone-deaf mail is a usefulness problem.
 
 ## Variety in, selection out, memory keeps
 
-You have run this twice now without calling it anything. Something makes more than one candidate. Something else picks. What wins gets written down.
+You have run this twice: something makes several candidates, something else picks, and what wins gets written down.
 
-The three stances and the four detectors were the generating half. The floor eval and the ceiling eval are the picking half. The loop runs all three stages while you are out of the room: the generator makes more than you need, the judge throws most of it away, the tactic file keeps what survived.
+The three stances and four detectors are the generating half. The floor and ceiling evals are the picking half.
 
-So the two evals are not two instruments on a shelf. They are one mechanism seen at two zoom levels, and the floor is a stage inside it rather than a tool beside it.
+While you are away, the generator makes more than you need, the judge discards most of it, and the tactic file keeps what survived.
 
 ## The human moves one level up
 
-The old role is easy to picture. You sit between the agent and the world. The agent drafts; you inspect. The agent proposes; you decide whether it is safe.
+The old role sits between agent and world: the agent drafts, you inspect. That does not work for a system.
 
-It does not work for a system.
+The new role is to design the loop: what the agent can reach, what it writes down, what stays fixed, what may change, what gets checked every time, what "better" means, where the human still belongs.
 
-The new role is to decide the shape of the loop. What can the agent reach? What does it write down? What stays fixed? What is allowed to change? What gets checked every time? What does "better" mean here? Where does the human still belong?
+The answer may be draft only, review first, send to yourself first, or automatic when the groundedness judge passes and the goal-nudger scores high. Some categories never go without a human.
 
-Sometimes the right answer is draft only. Sometimes it is send after review. Sometimes it is send to yourself first. Sometimes it is send automatically if the groundedness judge passes and the goal-nudger scores high. Sometimes the rule is simple: never send this category without a human.
-
-That is not an AI policy slide. That is operational judgment.
-
-The question is no longer: can the agent write the mail?
-
-The question is: have you designed the loop that would make sending it responsible?
+Ask whether you have designed the loop that makes sending responsible.
 
 ## Make the goal-nudger
 
-Before you close Module 6, create one steering eval for the kind of internal mail you might actually want an agent to help with.
-
-This one is yours to run. Ask the agent to build it with you:
+Create one steering eval for internal mail an agent could help with. Ask the agent to build it with you:
 
 {{prompt:new-human-role-in-the-loop-1}}
 
-You now have two kinds of judgment on disk.
-
-One keeps the work attached to the ground.
-
-One nudges it toward the standard you actually want.
+Two judges now sit on disk: one keeps the work grounded, one steers it toward your standard.
 
 ## The better it gets, the less you watch
 
-Here is the part that does not resolve.
-
-Every clean week is real evidence the loop is working, and real erosion of your ability to tell when it stops working. Those are the same weeks. Design the loop and never run one yourself, and you lose the eye that made you worth putting in charge of it, slowly enough that nothing announces it.
+Every clean week is evidence the loop works, and it erodes your ability to tell when it stops. Design the loop and never run one yourself, and you lose the eye that made you worth putting in charge of it.
 
 ## When did you last read one yourself?
 
-There is no instrument for this one. There is a question, and it has a date on it: when did you last read one of these yourself, start to finish, without the agent summarising it first?
+This check has no instrument, only a date: when did you last read one of these start to finish, without the agent summarising it first?
 
-If the answer is a month, put one in your calendar. Not a review of the loop. One piece of the work the loop produced, read the way the person receiving it will read it.
+If the answer is a month, put one in your calendar. Read one piece of the work the loop produced, the way the person receiving it will.
 
 ## The full picture, and what it is made of
 
-At this point the full picture is visible: model, context, tools, goal, loop, checks, boundary, interface. None of those pieces is mysterious on its own. The power comes from arranging them so the system can do real work without losing contact with your intent.
+You now have the full picture: model, context, tools, goal, loop, checks, boundary, interface. Each was one decision about what you give the agent and what you keep back.
 
 {{figure:agent-picture}}
 
-You added those parts one at a time, and each one was a single decision: what you give it, and what you keep back.
-
-That is the new human role in the loop.
-
-Not doing every pass.
-
-Not trusting the machine blindly.
-
-Designing the conditions under which the system earns more autonomy, one loop at a time.
+Your role in the loop is to design the conditions under which the system earns more autonomy, one loop at a time.
 
 <!-- maintainer -->
 

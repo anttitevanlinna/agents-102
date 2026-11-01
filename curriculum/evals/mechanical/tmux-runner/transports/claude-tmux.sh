@@ -13,7 +13,7 @@ claude_open() {
   CLAUDE_SESSION="runner-$(basename "$run_dir")"
   mkdir -p "$CLAUDE_SENTINEL_DIR"
   export RUNNER_TMUX_SOCKET="runner-$(basename "$run_dir")"
-  local command="${CLAUDE_CMD:-claude --permission-mode auto}"
+  local command="${CLAUDE_CMD:-claude --model sonnet --permission-mode auto}"
   local launch_cmd="env CLAUDE_RUNNER_SENTINEL_DIR=$CLAUDE_SENTINEL_DIR $command"
   pane_start "$CLAUDE_SESSION" "$cwd" "$launch_cmd"
   sleep "${CLAUDE_RUNNER_WARMUP:-10}"

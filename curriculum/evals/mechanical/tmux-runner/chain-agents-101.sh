@@ -85,7 +85,7 @@ if [[ -n "$prior" ]]; then               # declared prior state, or stop
 fi
 if [[ "$runtime" == cli ]]; then
   source "$HERE/lib/tmux.sh"
-  claude_cli_preflight "${CLAUDE_CMD:-claude --permission-mode auto}" || exit 2
+  claude_cli_preflight "${CLAUDE_CMD:-claude --model sonnet --permission-mode auto}" || exit 2
 fi
 if [[ $do_arrange -eq 1 ]]; then
   echo "[chain] arranging…"

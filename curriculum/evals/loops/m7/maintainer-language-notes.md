@@ -25,3 +25,6 @@ Overall rating 2026-11-01: Agents 101 language about 3 of 5, with bad language w
 19. No human verbs for what people grant agents ("Agents don't 'earn' autonomy").
 20. A metaphor must fit its noun: "map is not a place to hang nor a container. Map is map."
 21. A card without enough context gets "Neither": calls need the surrounding slide, not just the changed span.
+22. Concrete sentences (2026-11-01, settled as "depends"): removing a concrete action can delete a real step ("A is removing callout of prework"), and keeping it at full length is too wordy ("B is too wordy"). Keep the action, say it in the fewest words. Not a hard alert on the judge.
+23. Split a long sentence at its comma when the two halves are separate claims.
+24. Stop saying "ship": "There is no shipping. We just have all the time better main."

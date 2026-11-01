@@ -4,7 +4,7 @@ Goal: 5 real learners, one module, their own words to the cold question. It answ
 
 ## Module
 
-**Module 1, Getting going.** It needs no earlier module, so anyone with Claude Code can take it cold. Simulated students state its target in only 1 of 6 runs (they take home "don't trust the agent's self-review" instead), so real learners settle whether that is the module or the simulation.
+**Module 1, Getting going.** It needs no earlier module, so anyone with Claude Code can take it cold. Its Big Idea was just reset in the maintainer's own words (context paints the output), and simulated students state it 75% of the time, so real learners show whether the simulation reads a real room or flatters it.
 
 ## Learners
 
@@ -19,7 +19,7 @@ Collect the answers any way that suits the room (paper, chat, voice note). Copy 
 
 ## Capture
 
-Trainer's page: https://claude.ai/artifact/Twon4CZwhamdzGmDHn6Pdz (private to the owner; learners never open it). Per answer: learner code (L1 to L5), module, end or later, the answer, the optional moment. After both rounds, mark each answer *states the target / does not / unsure*. The target sentence is shown next to each card.
+Trainer's page: https://claude.ai/artifact/Twon4CZwhamdzGmDHn6Pdz (private to the owner; learners never open it). Per answer: learner code (L1 to L5), module, end or later, the answer, the optional moment. After both rounds, mark each answer *states the Big Idea / does not / unsure*. The module's Big Idea from the strategy file is shown next to each card.
 
 ## Scoring
 

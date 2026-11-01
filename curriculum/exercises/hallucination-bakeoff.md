@@ -118,7 +118,7 @@ Open `judges/groundedness-judge.md`. Read it. This is your first real judge. Nam
 
 Four methods ran on the same input. A scorer adjudicated 30 claims, measured the detectors against that reference set, and promoted the winner to a reusable judge file. No intuition. No "I heard this method is good." Measurement.
 
-One thing the benchmark can't reach: yours was 30 claims. A real production judge wants hundreds. The method is the same; the scale is the difference. That's next module.
+One thing the benchmark can't reach: yours was 30 claims. A real production judge wants hundreds. The method is the same; the scale is the difference.
 
 **What happened:**
 

@@ -4,23 +4,23 @@ Agents get stuck: wrong source, three views averaged into mush, the wrong file w
 
 ## Diagnose before repair
 
-Start by prompting your own stuck system to diagnose whether the bug lives in the sources, the processing, or the boundary between agents.
+Prompt your stuck system to diagnose whether the bug lives in the sources, the processing, or the boundary between agents.
 
 {{prompt:debugging-stuck-agents-1}}
 
-This prompt is long. Make your own variant.
+Make your own variant.
 
 ## Sources, processing, boundary
 
 1. **Sources:** add the missing file, remove the stale one, split contradictory material so the agent sees the conflict.
 
-2. **Processing:** rewrite the prompt, role, handoff, or output shape. Split an agent doing two jobs. Merge agents whose instructions are really the same.
+2. **Processing:** rewrite the prompt, role, handoff, or output format. Split an agent doing two jobs.
 
 3. **Boundary:** narrow the agent's job, remove the tool, add a human gate, move the risky step from "do" to "propose."
 
-4. **Shrink the rerun:** rerun only the smallest step that should now differ, such as one retriever.
+4. **Shrink the rerun:** rerun only the smallest step that should now differ.
 
-5. **Write down the lesson:** add a rule to the root instructions file: what to read first, what not to smooth over, which file shape to produce, when to stop and ask.
+5. **Write down the lesson:** add a rule to CLAUDE.md: what to read first, what not to smooth over, which output format to produce, when to stop and ask.
 
 <!-- maintainer -->
 

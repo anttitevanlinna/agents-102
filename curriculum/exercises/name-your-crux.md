@@ -4,23 +4,19 @@
 
 **Session** *(new, "Module 3 - Multi-agent systems")*
 
-Start a new session at your training-directory root. Name it `m3-multi-agent-systems` if your runtime supports session names.
-
 **What you do:**
 
-Module 2's `memory/` holds what you gathered about your challenge. Ask the agent to read it and name the **crux**, Richard Rumelt's term for the one thing that, if solved, releases pressure on everything else. Push back hard when the first answer restates the problem.
+Ask the agent to read Module 2's `memory/` and name the **crux**, Richard Rumelt's term for the one thing that, if solved, releases pressure on everything else. Push back when the first answer restates the problem.
 
 {{prompt:name-your-crux-1}}
 
 Iterate; save when good enough.
 
-The crux is the obstacle. Name the decision the crux blocks: the call you'd stay late to make.
-
-Ask the agent to name the sharpest decision the crux blocks and append it to the file where you saved the crux.
+The crux is the obstacle. Ask the agent to name the sharpest decision it blocks, the call you'd stay late to make, and append it to the crux file.
 
 {{prompt:name-your-crux-2}}
 
-Same move: iterate past a topic restatement; save when good enough.
+Iterate past a topic restatement; save when good enough.
 
 <!-- maintainer -->
 

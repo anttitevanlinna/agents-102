@@ -1,28 +1,22 @@
 # When the score stops moving
 
-By the last round, the count went quiet: flagged claims dropped toward zero and stayed there. The judge had stopped finding things. That does not mean the work is done.
+When flagged claims drop toward zero and stay there, the judge has stopped finding things. That does not mean the work is done.
 
-## A flat score is information about the judge
+## A flat score is information about the judge or the work
 
-The judge measures one thing: whether claims stay tied to the evidence. The score went flat because the judge had nothing left to flag, not because the work had nothing left to improve.
+A flat score is information about the judge or the work. Check both. The judge measures one thing: whether claims stay tied to the evidence. A grounded claim can still be vague or obvious, and this judge passes it.
 
-The work kept improving in directions the judge cannot see: sharper framing, a recommendation that commits, a briefing someone reads to the end. A grounded claim can still be vague or obvious, and this judge passes it.
-
-A flat score is information about the judge, not the work. When the number stops moving, your judgment comes back in.
+Sharper framing, a recommendation that commits, a briefing someone reads to the end: the judge cannot see these. When the number stops moving, your judgment comes back in.
 
 ## You haven't checked the judge yet
 
-Nothing scores the judge. Take a handful of outputs, score them by hand, and put your verdicts beside the judge's. Where it passed something you would have sent back, the judge and you do not agree as often as the number suggests.
+Nothing scores the judge. Take a handful of outputs, score them by hand, and put your verdicts beside the judge's. Where the judge passed something you would have sent back, you agree less often than the number suggests.
 
-That is an afternoon, not a project, and you do it once per judge you intend to trust.
-
-The judge was a separate agent from the generator all along, and that separation is the only reason the score meant anything. A generator that grades itself passes itself.
+That is an afternoon, once per judge you intend to trust. The score means something only because the judge is a separate agent from the generator.
 
 ## If the model stops fabricating, what is your judge for?
 
-Your judge catches claims that float free of the evidence. Every model release makes that floor cheaper to hold. No release so far has told anyone what good means in your company.
-
-If the fabrication your judge was built for mostly stops arriving, what is left for it to check?
+Your judge catches claims that float free of the evidence. Every model release makes that check cheaper. No release so far has told anyone what good means in your company.
 
 The rest is yours to name.
 

@@ -39,9 +39,8 @@ Who gets your context, who gets a skill, who wants only the output, and who woul
 
 ## Key Concepts
 
-- Start with the teammate's job, not with what you built.
+- Start with the teammate's job, not with what you built. Pick the candidate against that outcome. Infrastructure is a constraint, not a reason.
 - The four sharing strategies are share the context, share a skill, share the output (push), and share an interface (pull).
-- Pick the candidate against the outcome. Infrastructure is a constraint, not a reason.
 - The absorption bottleneck is the obstacle that keeps several others hard.
 - Write the technical plan and the people plan together.
 - Test what would have to be true for the teammate to switch.

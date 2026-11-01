@@ -10,10 +10,10 @@
 const fs = require('fs');
 const path = require('path');
 const { beats } = require('../mechanical/persona-student/lib');
-const { askAsync, args } = require('./lib');
+const { askAsync, args, targets } = require('./lib');
 
 const a = args();
-const t = JSON.parse(fs.readFileSync(path.join(__dirname, 'targets.json'), 'utf8')).modules.find((m) => m.module === a.module);
+const t = targets().modules.find((m) => m.module === a.module);
 const bs = beats(fs.readFileSync(a.page, 'utf8'));
 const cache = a.carriers || `${a.out}.carriers.json`;
 const PAD = [

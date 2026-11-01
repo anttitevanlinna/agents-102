@@ -1,22 +1,14 @@
 # Evals as Steering
 
-Ethan Mollick's *The Bitter Lesson versus The Garbage Can* asks a question.
+Ethan Mollick's *The Bitter Lesson versus The Garbage Can* asks a question. The bitter lesson may apply to companies: define the outcome, give the agent examples and feedback, and let it find its own path. Or the garbage can wins, and the path carries the organisation.
 
-The bitter lesson may apply to companies: define the outcome, give the agent examples and feedback, and let it find its own path.
-
-Or the garbage can wins, and the path carries the organisation.
-
-Humans will not cope with all the detail for long. You can stay inside one loop. You cannot stay inside all of them.
-
-Evals write down what good means so the system keeps applying it when you are not in the chair.
+You can stay inside one loop. You cannot stay inside all of them. Evals write down what good means so the system keeps applying it when you are not in the chair.
 
 Evals turn checks into a loop: the model generates, the judge checks, the tactic changes, the next session starts sharper.
 
 ## Module 5 turned judgment into a judge
 
-You set up a benchmark: one briefing, thirty claims, four detectors, one scorer. The same claim pool went through the same evidence, and the scoreboard named which method caught the misses.
-
-You saved the winner as `judges/groundedness-judge.md`: measured judgment, made runnable. That is the first kind of eval.
+One briefing, thirty claims, four detectors, one scorer: the scoreboard named which method caught the misses. The winner is saved as `judges/groundedness-judge.md`, measured judgment made runnable. That is the first kind of eval.
 
 [Groundedness protects the floor](slides/groundedness-protects-the-floor.md)
 
@@ -24,11 +16,11 @@ You saved the winner as `judges/groundedness-judge.md`: measured judgment, made 
 
 ## A yardstick you rewrite is not a yardstick
 
-You put the judge from Module 5 into a loop. The judge stays fixed. The generator changes.
+The Module 5 judge goes into a loop. The judge stays fixed. The generator changes.
 
-Round 1 produces a briefing. The judge scores it and writes per-claim feedback. The main session reads the feedback and rewrites `./generation-tactic.md`. Rounds 2 and 3 run under the same judge with the sharper tactic.
+Round 1 produces a briefing. The judge scores it and writes per-claim feedback. The main session rewrites `./generation-tactic.md` from the feedback. Rounds 2 and 3 run under the same judge with the sharper tactic.
 
-You walk away. When you come back, the notes list which claims were flagged, which tactic rules were added, whether the score improved, and whether the judge file stayed byte-identical.
+Walk away. On return, the notes list flagged claims, added tactic rules, whether the score improved, and whether the judge file stayed byte-identical.
 
 If the judge moved, the score means nothing. If the generator improved under the same judge, the loop worked.
 
@@ -36,11 +28,7 @@ If the judge moved, the score means nothing. If the generator improved under the
 
 **What would have to be true for this eval to be the right one?**
 
-The answer is never "the eval passed."
-
-The eval checks the thing that matters, at the moment where the mistake would hurt, against a standard you would defend.
-
-You decide which details the system must never miss.
+The eval checks the thing that matters, at the moment where the mistake would hurt, against a standard you would defend. You decide which details the system must never miss.
 
 <!-- maintainer -->
 

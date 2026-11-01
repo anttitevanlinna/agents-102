@@ -1,12 +1,10 @@
 # Exercise: Three minds, one synthesis
 
-**Time:** ~22 minutes (15 min synthesis + 7 min Close).
+**Time:** ~22 minutes.
 
-**What you do:** Spawn three helper agents with different stances on your curated memory. The main session synthesizes their notes into `./crux.md`.
+**What you do:** Spawn three helpers with different stances on your curated memory.
 
-Stay in the session that wrote `./crux.md`; close the retriever sessions. Wait for `memory/_synthesis-m3.md` to be written.
-
-If a helper starts reading the world, stop it, steer narrower, then say *"continue"*.
+Stay in the session that wrote `./crux.md`, close the retriever sessions, and wait for `memory/_synthesis-m3.md`. If a helper reads too widely, stop it, steer narrower, then say *"continue"*.
 
 <div class="rt-code">
 
@@ -23,13 +21,13 @@ Ask the agent to spawn three helpers with different stances, then apply Rumelt's
 
 </div>
 
-The answer often comes with a long issue list. If the volume is in the way, ask the agent to choose the fixes that aim for optimal function in the next session.
+If the issue list is long, ask the agent to pick the fixes that aim for optimal function in the next session.
 
 {{prompt:three-minds-one-synthesis-3}}
 
 **Close. Does this feel right?**
 
-Optional: ask the agent to recap the three retrievals' core claims next to your `## Answer`. You can't yet tell if it is right; that is expected. Hold the doubt, name it, don't fix it here.
+Optional: ask the agent to recap the three retrievals' core claims next to your `## Answer`. You can't yet tell if the answer is right. That is expected. Name the doubt; don't fix it here.
 
 <!-- maintainer -->
 

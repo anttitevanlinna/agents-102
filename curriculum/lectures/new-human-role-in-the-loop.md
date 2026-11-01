@@ -1,20 +1,12 @@
 # The New Human Role in the Loop
 
-Think back to the first thing you made in this training.
-
-The agent wrote a snake game. In Module 2, it read sources and wrote memory files. In Module 5, a benchmark produced a judge. In Module 6, that judge started running inside a loop.
-
 Files are the handles. Connectors bring material in. Agents read and write. Judges hold a line. Loops make the next session sharper.
-
-At the start, you sat inside every loop, reading the output and fixing the prompt.
 
 The destination is not "the human disappears." You move one level up: you design the loop and own the yardstick.
 
 ## Would you let it send the mail?
 
-Would you allow your agent to send an internal mail related to what you do?
-
-An internal note: a project update, a decision summary, a risk note, a stakeholder nudge.
+Would you allow your agent to send an internal mail related to what you do: a project update, a decision summary, a risk note, a stakeholder nudge?
 
 What would have to be true before you let the agent hit send?
 
@@ -26,21 +18,15 @@ What would have to be true before you let the agent hit send?
 
 ## Two evals, two different jobs
 
-A useful mail needs one more eval: a steering eval.
-
-Groundedness protects the floor. Steering raises the ceiling.
+A useful mail needs one more eval: a steering eval. Groundedness protects the floor. Steering raises the ceiling.
 
 A groundedness eval says: do not invent, overreach, or imply more than the evidence supports.
 
 A steering eval says: overperform on one dimension. Be more executive-readable, commercially sharp, specific, and useful to the decision-maker.
 
-An ungrounded mail is a trust problem. A grounded but vague or tone-deaf mail is a usefulness problem.
-
 ## Variety in, selection out, memory keeps
 
-You have run this twice: something makes several candidates, something else picks, and what wins gets written down.
-
-The three stances and four detectors are the generating half. The floor and ceiling evals are the picking half.
+Something makes several candidates, something else picks, and what wins gets written down. The three stances and four detectors are the generating half. The floor and ceiling evals are the picking half.
 
 While you are away, the generator makes more than you need, the judge discards most of it, and the tactic file keeps what survived.
 
@@ -52,15 +38,11 @@ The new role is to design the loop: what the agent can reach, what it writes dow
 
 The answer may be draft only, review first, send to yourself first, or automatic when the groundedness judge passes and the goal-nudger scores high. Some categories never go without a human.
 
-Ask whether you have designed the loop that makes sending responsible.
-
 ## Make the goal-nudger
 
 Create one steering eval for internal mail an agent could help with. Ask the agent to build it with you:
 
 {{prompt:new-human-role-in-the-loop-1}}
-
-Two judges now sit on disk: one keeps the work grounded, one steers it toward your standard.
 
 ## The better it gets, the less you watch
 
@@ -74,11 +56,11 @@ If the answer is a month, put one in your calendar. Read one piece of the work t
 
 ## The full picture, and what it is made of
 
-You now have the full picture: model, context, tools, goal, loop, checks, boundary, interface. Each was one decision about what you give the agent and what you keep back.
+The full picture: model, context, tools, goal, loop, checks, boundary, interface. Each was one decision about what you give the agent and what you keep back.
 
 {{figure:agent-picture}}
 
-Your role in the loop is to design the conditions under which the system earns more autonomy, one loop at a time.
+Your role in the loop is to design the conditions for giving the system more autonomy, one loop at a time.
 
 <!-- maintainer -->
 

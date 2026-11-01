@@ -6,36 +6,34 @@
 
 Bring one live challenge, check what the agent can read about it, use a plan-first control, and leave yourself a three-line readiness note.
 
-Module 2 works on real history: meetings, notes, decisions, half-written documents. Arrive with enough real material that the memory starts from your world, not generic output.
+Module 2 works on real history: meetings, notes, decisions, half-written documents.
 
 ## Bring one live challenge
 
 Module 2 builds a **memory**: a folder of notes and source material the agent reads before answering. Bring a real challenge: a decision you're making, a bet you're placing, or work whose direction is still unclear.
 
-Don't write the brief yet; the agent drafts it in class from three questions. Pick one open enough to need thought, narrow enough for 5-8 topic pages.
+Pick one open enough to need thought, narrow enough for 5-8 topic pages. The agent drafts the brief in class.
 
 If stuck, scan your next two weeks of calendar; the biggest unresolved item is usually your challenge.
 
 ## Check what the agent can read
 
-Module 2 works best when the agent can read a source connected to your challenge: a calendar, document store, wiki, or shared drive. You already checked Microsoft 365 or Google Workspace in the main prework. Now check your company wiki or document system.
+Module 2 works best when the agent can read a source connected to your challenge. You already checked Microsoft 365 or Google Workspace in the main prework. Now check your company wiki or document system.
 
-**Connectors** link the agent to places where your work lives: Confluence, SharePoint, OneDrive, Google Drive, or whatever your company uses. Open your runtime's connector settings and look for them.
+**Connectors** link the agent to places where your work lives: Confluence, SharePoint, OneDrive, Google Drive, or whatever your company uses. Look for them in your runtime's connector settings.
 
 If a connector needs admin approval, tell the training coordinator and keep going. The memory can also start from files and pasted excerpts in your training directory.
 
 ## Put a plan before action
 
-Module 2 has the agent create and update multiple files. Before it writes anything, ask it for a plan and approve or revise it first. Runtimes offer this as a mode or via the prompt.
+Module 2 has the agent create and update multiple files. Ask it for a plan first, then approve or revise it. Runtimes offer this as a mode or via the prompt.
 
-Use it when the next step may write several files, edit anything you care about, or compound over several steps. Skip it for quick one-turn work.
+Use it when the next step may write several files or edit anything you care about. Skip it for quick one-turn work.
 
 Pick one:
 
 - **Ask** the agent which planning control your runtime offers, then try it on a harmless file change.
 - **Watch** Matt Pocock's [video about planning before execution](https://www.youtube.com/watch?v=WNx-s-RxVxk).
-
-Either way, know the control and why you'd use it.
 
 ---
 
@@ -44,20 +42,16 @@ Either way, know the control and why you'd use it.
 Create `prework/module-2-start.md` in your training directory. Add:
 
 - the live challenge you are bringing;
-- the first source the agent can read about it, or your fallback (name it here; Module 2 handles the content);
+- the first source the agent can read about it, or your fallback;
 - the planning control you will use before the agent writes files.
 
-Module 2 builds `./challenge.md` from the challenge line, starts its memory from the source line, and uses the planning-control line before its first multi-file write.
-
-If a line is blank, name a fallback; do not fill it with a plausible answer.
+Module 2 builds `./challenge.md` from these lines. If a line is blank, name a fallback; do not fill it with a plausible answer.
 
 ---
 
 ## Read the memory frame
 
-Read Karpathy's [LLM Wiki gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) for the mental model: a useful system is a living pile of text the agent can read, maintain, and improve.
-
-Module 2 applies that idea to your challenge. The memory starts as plain text, which the agent reads and rewrites easily.
+Read Karpathy's [LLM Wiki gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) for the mental model: a useful system is a living pile of text the agent can read, maintain, and improve. Your memory starts as plain text, which the agent reads and rewrites easily.
 
 **Bring to Module 2:** `prework/module-2-start.md`.
 

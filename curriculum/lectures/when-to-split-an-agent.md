@@ -1,12 +1,12 @@
 # Lecture: When to split an agent (and how)
 
-You split an agent two ways: three retrievers in separate windows, three stances inside one session. Your team will ask: *when do I split, and how?*
+Two ways to split an agent: three retrievers in separate windows, three stances inside one session. When do you split, and how?
 
 ## The unit is the recurring workflow
 
-Build one agent per recurring workflow: a single `.md` file, guardrailed for that job. A mega-agent that does everything drifts in scope, and nobody can tell what it is responsible for. A hundred tiny agents cost more to coordinate than they save.
+Build one agent per recurring workflow: a single `.md` file, guardrailed for that job. A mega-agent that does everything drifts in scope. A hundred tiny agents cost more to coordinate than they save.
 
-Within one workflow, when does splitting into multiple agents pay?
+Within one workflow, when does splitting pay?
 
 [Start with don't](slides/start-with-dont.md)
 
@@ -14,43 +14,39 @@ Within one workflow, when does splitting into multiple agents pay?
 
 ## More agents is not more rigour
 
-Split for a reason, not because "three is more thorough": more agents means more prompts to tune, more noise, more coordination cost. More input does not fix a beige answer either. The synthesizer had three stances in front of it and could not choose.
+Split for a reason, not because "three is more thorough". More agents means more prompts to tune, more noise and more coordination cost. More input does not fix a beige answer.
 
 ## A framework makes it pick
 
-Three stances give you a spread of views, and a spread is not an answer. Without a spine, the synthesizer summarises: three views, evenly weighted, nobody chose.
+Without a framework, the synthesizer summarises three views, evenly weighted.
 
-Hand it the strategy kernel (diagnosis, guiding policy, coherent actions). It then commits to one diagnosis and drops what does not serve it. The stances bring the variety. The frame brings the choice.
+Hand the synthesizer the strategy kernel (diagnosis, guiding policy, coherent actions). The synthesizer then commits to one diagnosis and drops what does not serve it.
 
 ## The test that catches the bluff
 
-Could one prompt produce the same quality of output? If yes, write that one prompt. Single-agent is the default; split only when one prompt cannot.
+Could one prompt produce the same quality of output? If yes, write that one prompt. Single-agent is the default.
 
 ## Two options, each with its own territory
 
-Pick an option once you split.
+**Separate sessions (the Phase 1 move).** Pick this when each agent needs its own context, tools and clock. You see each agent work and can step into one without confusing the others.
 
-**Separate sessions (the Phase 1 move).** Pick this when each agent needs its own context, tools and clock. Separate windows let you see each agent work and intervene in one without confusing the others.
-
-**Helper agents in one session (the Phase 2 move).** Pick this when the main session wants quick parallel thinking and a bounded return. The three stances each had a single job, a clean instruction and no long-lived state; they reported back as files and disappeared. The main session stays in charge.
+**Helper agents in one session (the Phase 2 move).** Pick this for quick parallel thinking with a bounded return. Each helper gets one job, reports back as a file and disappears. The main session stays in charge.
 
 ## Other agents are part of the tool surface
 
-Other agents are part of the tool surface: one agent can call a different stance, source zone, or working style.
+One agent can call another for a different stance, source zone, or working style.
 
-**Pick:** Sessions when you want each agent to stay alive for a while. Helper agents when you want them in and out. Different tools: sessions; shared tools: helper agents.
+**Pick:** Sessions for agents that stay alive; helper agents for in and out. Different tools: sessions. Shared tools: helper agents.
 
 ## Seams are where it fails
 
-Splitting creates handoffs, and handoffs are where work goes wrong. A retriever finds two numbers and the curator keeps one. A source's internal shorthand is rewritten in public tone and loses its meaning. Three stances reach the synthesizer and come out as one beige paragraph.
+Splitting creates handoffs, and handoffs are where work goes wrong. A retriever finds two numbers and the curator keeps one. A source's internal shorthand is rewritten in public tone and loses its meaning.
 
 Check where the pieces meet.
 
 ## Three agents is not three times as good
 
-Multiple agents give you *three different views of the same thing*, and cost coordination. If one well-prompted agent gives you what you need, write the one prompt.
-
-A whole module showed multi-agent works. Don't apply it to everything.
+Multiple agents give *three different views of the same thing*, and cost coordination. If one well-prompted agent does the job, write that prompt.
 
 <!-- maintainer -->
 

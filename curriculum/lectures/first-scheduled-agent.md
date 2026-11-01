@@ -1,8 +1,8 @@
 # Demo: 1st scheduled agent
 
-The demo is small on purpose. One scheduled agent reads work context, follows one hard guardrail, and writes an output you can inspect.
+One scheduled agent reads work context, follows one hard guardrail, and writes an output you can inspect. The context might be a calendar, a short note, or a file in the training folder.
 
-The context might be a calendar, a short note, or a file in the training folder. The guardrail: propose or draft only, do not send, edit, book, or change anything. The schedule makes the agent run again without a fresh prompt and write the next result in the same place.
+The guardrail: propose or draft only, do not send, edit, book, or change anything. The schedule makes the agent run again without a fresh prompt and write the next result in the same place.
 
 <!-- maintainer -->
 

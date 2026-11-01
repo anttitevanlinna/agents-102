@@ -18,21 +18,17 @@ Pick the one you would read tomorrow morning.
 
 *8 min*
 
-For the morning-plan job, connect your calendar: enable Google Calendar or Microsoft Outlook Calendar in your agent runtime's connector settings and sign in with your work account. Without a calendar connector, use a calendar screenshot or exported agenda.
-
-The other two jobs need no connector.
+For the morning-plan job, enable Google Calendar or Microsoft Outlook Calendar in your agent runtime's connector settings and sign in with your work account. Without a connector, use a calendar screenshot or exported agenda. The other two jobs need no connector.
 
 ## Phase 2: Capture the look
 
 *7 min*
 
-Give your daily output the look and feel of your company's website (colours, typography, headers, voice). Store it as a style file the agent reuses by name, like the memory: text on disk.
-
-Ask the agent to extract the visual pattern from your company website and write it as a plain-language style file.
+Give your daily output your company website's look: colours, typography, headers, voice. The agent extracts the pattern into a plain-language style file on disk and reuses it by name, like the memory.
 
 {{prompt:personal-agent-homework-1}}
 
-Give the agent the URL or paste a key page. It writes `./style.md` and appends the rule to the root instructions file. Read both and edit `./style.md` where the agent missed something. If your brand has a hard rule ("never pure black," "always serif headings"), put it in. Every agent you build from here on will use this style when it produces HTML.
+Give the agent the URL or paste a key page. The agent writes `./style.md` and appends the rule to the root instructions file. Spot-check both. Add any hard brand rule the agent missed ("never pure black," "always serif headings") to `./style.md`.
 
 ## Phase 3: Write the agent's instructions
 
@@ -50,11 +46,11 @@ Open the **Schedule** sidebar in the desktop app and click **New task → New lo
 
 - **Name:** `Morning memory`
 - **Frequency:** Daily at 7:00 AM, or the time you want it to fire
-- **Prompt:** the scheduling prompt below, which has the agent read the morning brief, follow the rules, and write the daily output to `latest.html`.
+- **Prompt:** the scheduling prompt below. It writes the daily output to `latest.html`.
 
 {{prompt:personal-agent-homework-3}}
 
-Save, then click **Run now** once. Double-click `module-2/morning-agent/latest.html` to open it in your browser. To fix anything, edit `module-2/morning-agent/morning.md` or `./style.md`. The scheduling prompt names both files, so the task reads them every session and tomorrow picks up the change.
+Save, then click **Run now** once. Double-click `module-2/morning-agent/latest.html` to open it in your browser. To fix anything, edit `module-2/morning-agent/morning.md` or `./style.md`. The scheduling prompt names both files, so tomorrow's run picks up the change.
 
 ## Phase 5: Let it run for a week
 
@@ -63,20 +59,18 @@ Save, then click **Run now** once. Double-click `module-2/morning-agent/latest.h
 For the first three days, don't retune. Open `module-2/morning-agent/latest.html` each morning and watch for:
 - Useful days: what made them work?
 - Comical or wrong days: what was missing from the memory?
-- Claims you, the domain expert, know are off: these are your next memory edits.
-- Styling drift away from your company site: sharpen `./style.md`.
-
-What the agent misses today tells you what to sharpen in the memory tomorrow.
+- Claims you, the domain expert, know are off: your next memory edits.
+- Styling drift from your company site: sharpen `./style.md`.
 
 ## Turn the memory into a running loop
 
 **What happened:**
 
-Every morning the agent reads your memory and writes output in your house style. Each output shows what is sharp and what is soft; after a week the memory has more edge.
+Each morning's output shows what is sharp and what is soft in your memory.
 
 **The point:**
 
-A memory that sits there is a document. A memory an agent reads on a schedule, producing output you respond to, is the start of a loop. Every HTML agent you build looks native to your organisation, because the root instructions file points each agent to `./style.md`.
+A memory an agent reads on a schedule, producing output you respond to, is the start of a loop. Every HTML agent you build looks native to your organisation, because the root instructions file points each agent to `./style.md`.
 
 <!-- maintainer -->
 

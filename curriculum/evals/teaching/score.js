@@ -6,7 +6,9 @@
 // Each input line: {"id", "module", "answer"} (answer = the student's own words to the cold question).
 // The judge never sees the module. Step 1, with no targets in view, turns the answer into the claim a
 // colleague could act on, or NO CLAIM. Step 2 matches that claim (not the answer) against all eight
-// targets in a shuffled order, plus "none". Two shuffles; a HIT needs both to pick this module's target. Output adds {picks, hit, half}. Summary per module on stdout.
+// targets in a shuffled order, plus "none". TEACH_K restatements (default 4) x 2 shuffles per answer.
+// stated = mean share of those judgements landing on this module's Big Idea, 0-100. A borderline answer
+// scores in between instead of flipping between 0 and 1, which is what made repeat runs swing. Output adds {claims, picks, score, hit (all agree), half (any)}. Summary per module on stdout.
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
@@ -55,20 +57,31 @@ Answer with one json block: {"pick": "A".."H" or "NONE", "why": "one short line"
 }
 
 (async () => {
-const out = await pool(rows, async (r) => {
-  const c = await restate(r.answer);
-  const claim = String(c.claim || '').trim();
-  if (!claim || /^NO CLAIM/i.test(claim)) return { ...r, claim: 'NO CLAIM', picks: ['none', 'none'], why: [c.why], hit: false, half: false };
-  const [p1, p2] = await Promise.all([pick(claim, `${r.id}#1`), pick(claim, `${r.id}#2`)]);
-  const picks = [p1.module, p2.module];
-  return { ...r, claim, picks, why: [p1.why, p2.why], hit: picks.every((m) => m === r.module), half: picks.some((m) => m === r.module) };
-});
+const K = Number(process.env.TEACH_K || 4); // independent claim restatements per answer, each matched in 2 shuffles
+const all = await pool(rows, async (r) => { try {
+  const claims = [], picks = [], why = [];
+  await Promise.all(Array.from({ length: K }, async (_, k) => {
+    const c = await restate(r.answer);
+    const claim = String(c.claim || '').trim();
+    if (!claim || /^NO CLAIM/i.test(claim)) { claims.push('NO CLAIM'); picks.push('none', 'none'); why.push(c.why); return; }
+    claims.push(claim);
+    const ps = await Promise.all([pick(claim, `${r.id}#${k}a`), pick(claim, `${r.id}#${k}b`)]);
+    for (const p of ps) { picks.push(p.module); why.push(p.why); }
+  }));
+  const score = picks.filter((m) => m === r.module).length / picks.length;
+  // score: share of the 2K judgements that land on this module's Big Idea (the number to rank on).
+  // hit: every judgement agrees (strict, kept for the trainer-agreement check).
+  return { ...r, claims, picks, why, score, hit: score === 1, half: score > 0 };
+} catch (e) { return { ...r, failed: String(e.message || e).slice(0, 200) }; } });
+const out = all.filter((r) => !r.failed);
+for (const r of all.filter((x) => x.failed)) console.error(`[score] FAILED ${r.id}: ${r.failed}`);
+process.exitCode = all.length === out.length ? 0 : 3; // a dropped answer must not pass silently
 if (a.out) fs.writeFileSync(a.out, out.map((r) => JSON.stringify(r)).join('\n') + '\n');
 const by = {};
 for (const r of out) { const k = `${r.module}${r.group ? ' · ' + r.group : ''}`; (by[k] ||= []).push(r); }
 console.table(Object.fromEntries(Object.entries(by).map(([k, rs]) => [k, {
-  n: rs.length, target_stated: `${Math.round(100 * rs.filter((r) => r.hit).length / rs.length)}%`,
-  one_of_two: rs.filter((r) => r.half).length,
+  n: rs.length, stated: Math.round(100 * rs.reduce((t, r) => t + r.score, 0) / rs.length),
+  strict: `${rs.filter((r) => r.hit).length}/${rs.length}`, any: rs.filter((r) => r.half).length,
 }])));
 const gold = out.filter((r) => r.label === 'yes' || r.label === 'no');
 if (gold.length) { // real learners marked by the trainer: does the scorer agree with the gold?

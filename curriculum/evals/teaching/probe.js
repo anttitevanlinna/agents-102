@@ -33,10 +33,14 @@ What you said at the coffee machine: ${l.one_line || '(nothing)'}
 Now: ${Q}
 Answer as this person would, honestly, in one or two sentences. If nothing stuck, say so.
 Answer with one json block: {"answer": "..."}`;
-    const r = await askAsync(prompt, MODEL);
+    let r;
+    try { r = await askAsync(prompt, MODEL); } catch (e) { return { failed: f, error: String(e.message || e).slice(0, 200) }; }
     return { id: path.basename(f, '.json'), module: l.module, group: a.group || l.page_hash, persona: l.persona, page_hash: l.page_hash, answer: r.answer };
   });
   fs.mkdirSync(path.dirname(a.out), { recursive: true });
-  fs.appendFileSync(a.out, rows.map((r) => JSON.stringify(r)).join('\n') + '\n');
-  console.log(`[probe] ${rows.length} answers → ${a.out}`);
+  const ok = rows.filter((r) => !r.failed), bad = rows.filter((r) => r.failed);
+  if (ok.length) fs.appendFileSync(a.out, ok.map((r) => JSON.stringify(r)).join('\n') + '\n');
+  console.log(`[probe] ${ok.length}/${rows.length} answers → ${a.out}`);
+  // A missing student changes the persona mix and can move the number by itself: fail loudly.
+  if (bad.length) { for (const b of bad) console.error(`[probe] FAILED ${b.failed}: ${b.error}`); process.exit(3); }
 })();

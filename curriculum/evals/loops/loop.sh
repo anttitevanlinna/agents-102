@@ -43,10 +43,13 @@ if node -e "process.exit((require('$PS/modules/$MOD.json').damage||{}).remove?0:
 fi
 
 log "students, story judge, flags (parallel)"
-for v in "${ALL[@]}" $DMG; do
+rm -f "$OUT/students/INCOMPLETE"
+# One page at a time (each capped at STUDENT_JOBS): parallel pages hit rate limits and drop students.
+( for v in "${ALL[@]}" $DMG; do
   lab="$OUT/lab/${v/damaged/v0}"
-  "$HERE/run-students.sh" "$lab" "$OUT/pages/$v.md" "$v" "$OUT/students" "$MOD" >"$OUT/students/$v.log" 2>&1 &
-done
+  "$HERE/run-students.sh" "$lab" "$OUT/pages/$v.md" "$v" "$OUT/students" "$MOD" >"$OUT/students/$v.log" 2>&1 \
+    || echo "$v" >> "$OUT/students/INCOMPLETE"
+done ) &
 for v in "${ALL[@]}"; do
   [ -s "$OUT/story/$v.json" ] || node "$HERE/story-judge.js" "$OUT/pages/$v.md" "$OUT/story/$v.json" "${STORY_N:-3}" >"$OUT/story/$v.log" 2>&1 &
   node "$HERE/flags.js" "$OUT/lab/$v" --module "$MOD" --json >"$OUT/flags/$v.json" 2>/dev/null
@@ -72,6 +75,8 @@ for v in "${ALL[@]}" $DMG; do
   node "$T/probe.js" --logs "$L" --group "$v" --out "$OUT/teach/$v.answers.jsonl" >>"$OUT/teach/probe.log" 2>&1
   cat "$OUT/teach/$v.answers.jsonl" >> "$OUT/teach/answers.jsonl"
 done
-node "$T/score.js" --in "$OUT/teach/answers.jsonl" --out "$OUT/teach/scored.jsonl" >"$OUT/teach/summary.txt" 2>&1
+node "$T/score.js" --in "$OUT/teach/answers.jsonl" --out "$OUT/teach/scored.jsonl" >"$OUT/teach/summary.txt" 2>&1 || echo "score" >> "$OUT/students/INCOMPLETE"
+grep -q FAILED "$OUT/teach/probe.log" 2>/dev/null && echo "probe" >> "$OUT/students/INCOMPLETE"
 node "$HERE/report.js" "$OUT" "$MOD" > "$OUT/report.md"
 log "done → $OUT/report.md"
+[ -s "$OUT/students/INCOMPLETE" ] && { log "INCOMPLETE: $(paste -sd, "$OUT/students/INCOMPLETE") — rerun the same command; finished runs are reused"; exit 3; }

@@ -15,9 +15,12 @@ const L = [`# Loop report: ${mod}`, '', `Run dir: \`${out}\``, ''];
 // Teaching measure first: share of students stating the module's Big Idea cold (blind scorer).
 try {
   const rows = fs.readFileSync(path.join(out, 'teach/scored.jsonl'), 'utf8').trim().split('\n').map((l) => JSON.parse(l));
-  L.push('## Big Idea stated cold (first-ranked)', '', '| page | stated | n | % |', '|---|---|---|---|');
-  for (const p of order) { const r = rows.filter((x) => x.group === p); if (r.length) { const h = r.filter((x) => x.hit).length; L.push(`| ${p} | ${h} | ${r.length} | ${Math.round(100 * h / r.length)} |`); } }
-  L.push('', 'At n=24 a gap under ~25 points is noise; at n=6 only a 3-of-6 gap counts.', '');
+  L.push('## Big Idea stated cold (first-ranked)', '', '| page | stated (0-100) | strict (all judgements agree) | n |', '|---|---|---|---|');
+  for (const p of order) { const r = rows.filter((x) => x.group === p); if (r.length) {
+    const sc = r.map((x) => (typeof x.score === 'number' ? x.score : x.hit ? 1 : 0));
+    L.push(`| ${p} | ${Math.round(100 * sc.reduce((t, v) => t + v, 0) / r.length)} | ${r.filter((x) => x.hit).length} | ${r.length} |`); } }
+  L.push('', 'Rank on "stated" at n=24 per page; see teaching/README.md for the gap that counts. A page with n under 24 is incomplete: rerun.', '');
+  if (fs.existsSync(path.join(out, 'students/INCOMPLETE'))) L.push('**INCOMPLETE RUN:** ' + fs.readFileSync(path.join(out, 'students/INCOMPLETE'), 'utf8').trim().split('\n').join(', ') + '. Do not rank on it.', '');
 } catch (_) { /* no teaching run */ }
 
 L.push('## Students: words (the signal) and numbers (context only)', '',

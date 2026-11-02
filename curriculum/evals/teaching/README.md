@@ -4,7 +4,7 @@
 
 - **Target** per module = its Big Idea, read verbatim from the maintainer's strategy file (`agents-102-core/strategy/content-strategy.md`, the `**Big idea:**` line under each module's section). That file is the single source of truth; `targets.json` only maps modules to sections. Wording changes come from the maintainer, never from this side.
 - **Cold question**, same for every module and every student, never names the idea: *"A colleague missed this module. In one or two sentences, what is the one idea from it they should not miss?"*
-- **Scorer** `score.js`, never told which module the student took. Step 1, with no targets in view, turns the answer into the claim a colleague could act on, or NO CLAIM. Step 2 matches that claim (not the answer's words) against all eight Big Ideas in a shuffled order, plus none. Two shuffles; a hit needs both to pick this module's Big Idea. A wrong module, a generic line, a string of keywords or a different idea from the same module all score zero.
+- **Scorer** `score.js`, never told which module the student took. Step 1, with no targets in view, turns the answer into the claim a colleague could act on, or NO CLAIM. Step 2 matches that claim (not the answer's words) against all eight Big Ideas in a shuffled order, plus none. Four independent restatements, each matched in two shuffles: an answer's score is the share of those 8 judgements that land on this module's Big Idea, and **stated** (0-100) is the mean over students. A wrong module, a generic line, a string of keywords or a different idea from the same module score zero; a borderline answer scores in between instead of flipping. (Until 2026-11-02 an answer was a 0/1 hit; results below that date use that rule.)
 - Only words count. No 1-7 ratings anywhere.
 
 ## Pieces
@@ -59,7 +59,20 @@ Read with care: M1 rose from 17% when its Big Idea moved to the maintainer's wor
 
 ## Noise and limits
 
-- At 24 per cell, one student is 4 points. A cell's own noise is about ±10 points, so call a variant better on a gap of about 25 points (6 students); smaller gaps need a second 24.
+**Repeat-run noise, measured 2026-11-02** (`results/2026-11-02-noise/`). The same M3 page (main, hash e566cff6), 3 full runs of 24 students plus one re-probe of run 1, each scored twice:
+
+| | run 1 | run 2 | run 3 | run 1 re-probed |
+|---|---|---|---|---|
+| stated, scoring A | 23 | 19 | 23 | 25 |
+| stated, scoring B | 16 | 28 | 19 | 24 |
+| both scorings pooled (= the default 4 restatements) | 19.5 | 23.5 | 21 | 24.5 |
+| old 0/1 rule, two scorings | 2, 3 of 24 | 0, 3 | 2, 2 | 3, 0 |
+
+- **The scorer was most of the noise, not the students.** The same answers rescored moved up to 9 points at 2 restatements. Pooled to 4 restatements, the spread across runs is 19.5 to 24.5 (SD about 2.5).
+- **The old 0/1 rule could not read M3 at all.** Its answers ("start with one agent, split only when needed") sit on the edge of the Big Idea, so each one flipped between hit and miss. That gave 0 to 3 of 24 on a full panel.
+- **Dropouts moved it further.** Students under parallel loops dropped out on rate limits (the rollout's cells have 18 or 19 of 24). Personas differ a lot on M3: cto-builder and ingrid score about 35, veteran-director and ops-director about 12. So losing 6 students from the low end alone moves the number by about 20 points. That explains 22 / 25 / 4 on unchanged text.
+- **Protocol now:** students run at most 8 at a time (`STUDENT_JOBS`), one page at a time, and each failed run is retried twice. A page with fewer than 24 students, or a failed probe or score, fails the loop with `INCOMPLETE` (rerun the same command; finished runs are reused) and the report says "do not rank on it". The scorer uses 4 restatements by default (`TEACH_K`).
+- **Gap that counts:** with this protocol, call two pages different at a gap of **10 points or more** in "stated" at n=24 each. Under 10, run a second 24 per page and pool them. Numbers from the old 0/1 rule or from incomplete cells are not comparable to new ones: rescore them (`score.js` on the same answers) before comparing.
 - Simulated students are not calibrated against real ones. `golden/protocol.md` is the check: 5 real learners on M1.
 - Keyword strings still pass 3 of 16 times. The trainer's marks in the golden set will show if real answers do this.
 - The cold probe reads the student's own notes, written with the page in view. It measures what the student wrote down as they went, not recall after a week.

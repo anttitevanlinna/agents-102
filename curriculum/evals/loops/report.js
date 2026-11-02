@@ -12,6 +12,14 @@ for (const f of fs.readdirSync(path.join(out, 'students')).filter((x) => x.endsW
 }
 const L = [`# Loop report: ${mod}`, '', `Run dir: \`${out}\``, ''];
 
+// Teaching measure first: share of students stating the module's Big Idea cold (blind scorer).
+try {
+  const rows = fs.readFileSync(path.join(out, 'teach/scored.jsonl'), 'utf8').trim().split('\n').map((l) => JSON.parse(l));
+  L.push('## Big Idea stated cold (first-ranked)', '', '| page | stated | n | % |', '|---|---|---|---|');
+  for (const p of order) { const r = rows.filter((x) => x.group === p); if (r.length) { const h = r.filter((x) => x.hit).length; L.push(`| ${p} | ${h} | ${r.length} | ${Math.round(100 * h / r.length)} |`); } }
+  L.push('', 'At n=24 a gap under ~25 points is noise; at n=6 only a 3-of-6 gap counts.', '');
+} catch (_) { /* no teaching run */ }
+
 L.push('## Students: words (the signal) and numbers (context only)', '',
   '| page | complaints/run | filler | repetition | missing | specific praise/run | skipped beats/run | tells/run | law hits/run | enjoyment (1-7, not a signal) | learning hits (match) |', '|---|---|---|---|---|---|---|---|---|---|---|');
 const w = J('words.json'), s = J('students-score.json');

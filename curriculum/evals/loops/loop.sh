@@ -11,7 +11,8 @@
 #            calibration run).
 # Builds v0 (shipped) plus each variant and a damaged copy of v0, then runs every instrument:
 # persona students (PERSONAS, REPEATS), learning match, word signal, story judge (STORY_N opus
-# calls), taste judge pairs vs v0 in both orders, sentence flags. Writes <out-dir>/report.md.
+# calls), taste judge pairs vs v0 in both orders, sentence flags, and the teaching measure
+# (Big Idea stated cold, ranked first). Writes <out-dir>/report.md.
 # Student text in this checkout is never touched; variants live in <out-dir>/lab/<v>.
 # BASE_REV=<rev> makes v0 the text at that revision (instruments always come from this checkout);
 # with rev-apply.py, variants named after revisions compare two points in history.
@@ -63,5 +64,14 @@ log "scoring"
 LOGS="$(ls "$OUT"/students/*.json | paste -sd, -)"
 node "$PS/score.js" --module "$MOD" --logs "$LOGS" --match --out "$OUT/students-score.json" >/dev/null 2>&1
 node "$HERE/words.js" --module-json "$PS/modules/$MOD.json" --logs "$LOGS" --out "$OUT/words.json" >/dev/null 2>&1
+# Teaching measure (first-ranked): each student states the module's Big Idea cold; blind scorer.
+# For a ranking use the n=24 panel: PERSONAS="ingrid cfo-sceptic cto-builder hr-svp ops-director veteran-director" REPEATS=4.
+T="$ROOT/curriculum/evals/teaching"; mkdir -p "$OUT/teach"; : > "$OUT/teach/answers.jsonl"
+for v in "${ALL[@]}" $DMG; do
+  L="$(ls "$OUT"/students/$v-*.json 2>/dev/null | paste -sd, -)"; [ -n "$L" ] || continue
+  node "$T/probe.js" --logs "$L" --group "$v" --out "$OUT/teach/$v.answers.jsonl" >>"$OUT/teach/probe.log" 2>&1
+  cat "$OUT/teach/$v.answers.jsonl" >> "$OUT/teach/answers.jsonl"
+done
+node "$T/score.js" --in "$OUT/teach/answers.jsonl" --out "$OUT/teach/scored.jsonl" >"$OUT/teach/summary.txt" 2>&1
 node "$HERE/report.js" "$OUT" "$MOD" > "$OUT/report.md"
 log "done → $OUT/report.md"

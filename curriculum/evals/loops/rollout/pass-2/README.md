@@ -10,3 +10,5 @@ Rubric before: run a101-full-r3, mean 80 (POV 73, weakest). n=24 panels througho
 - M8 `joint-double-diamond`: count your own cited files before the sponsor's line. Flat, and the taste judge preferred v0 (0%). Dropped.
 
 **Noise:** the same M3 page scored 22, 25 and 4 in three n=24 runs on the same day. Treat single-run gaps under ~25 points with suspicion and replicate before deciding.
+
+**M5 grounding comparison, rescored with the graded scorer (b97eaf18)**, two full n=24 runs per page: today's page 13 and 14; grounding draft 43 and 51. The gap is about 33 points against a 10-point threshold, and it replicates. Files in `m5-rescore/`.

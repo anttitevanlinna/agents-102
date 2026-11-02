@@ -15,7 +15,7 @@ function loadPersona(dir, id) {
 }
 
 // One headless Claude call. Prompt goes in on stdin; the reply's last ```json block is parsed.
-function ask(prompt, { model = process.env.PERSONA_MODEL || 'sonnet', timeoutMs = 20 * 60e3 } = {}) {
+function ask(prompt, { model = process.env.PERSONA_MODEL || 'sonnet', timeoutMs = (Number(process.env.PERSONA_TIMEOUT_MIN) || 20) * 60e3 } = {}) {
   const r = spawnSync('claude', ['-p', '--model', model, '--output-format', 'text'], {
     input: prompt, encoding: 'utf8', timeout: timeoutMs, maxBuffer: 64 * 1024 * 1024,
   });

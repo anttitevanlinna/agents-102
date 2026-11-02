@@ -95,7 +95,7 @@ Open `judges/groundedness-judge.md`. It is narrow on purpose: the "known limit" 
 
 *5 min*
 
-The winner is saved as `judges/groundedness-judge.md`. A production judge uses hundreds of claims instead of 30.
+The winner is saved as `judges/groundedness-judge.md`. Ask the agent to run it once on your `./crux.md` answer, the one Module 3 left you doubting. Write one line in `./crux.md`: what the judge caught, or what it could not check.
 
 ## Carry the benchmark pattern forward
 

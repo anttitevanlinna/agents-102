@@ -1,0 +1,12 @@
+# Pass 2 (2026-11-02)
+
+Rubric before: run a101-full-r3, mean 80 (POV 73, weakest). n=24 panels throughout.
+
+**Spar drafts** (`spar-*.md`): today's page (v0) vs pages and lectures regenerated from the whole strategy file (s1), exercises unchanged. Big Idea stated: M3 25 → 38, M5 4 → 33, M8 0 → 0. None on main: each changes what the module teaches and waits for the maintainer's spar. The M5 replication run is in progress.
+
+**Judge-agreed exercise fixes** (`edits-*.md` and `edits-*.json`):
+- M5 `hallucination-bakeoff` Phase 5: run the new judge on the M3 doubt. Big Idea stated 17 → 17, learnings flat, taste preferred the variant. **On main.**
+- M3 `three-retrievers-one-curator`: find one seam. Big Idea stated 4 → 4, "dialects" learning 17 → 11. Held.
+- M8 `joint-double-diamond`: count your own cited files before the sponsor's line. Flat, and the taste judge preferred v0 (0%). Dropped.
+
+**Noise:** the same M3 page scored 22, 25 and 4 in three n=24 runs on the same day. Treat single-run gaps under ~25 points with suspicion and replicate before deciding.

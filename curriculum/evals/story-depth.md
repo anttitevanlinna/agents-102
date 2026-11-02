@@ -3,6 +3,22 @@
 Rubric: `story-depth-rubric.md`. Goal spec: `trainings/agents-101/story-depth.md`. One `## Run`
 section per run, newest first; per-judge reports under `story-depth/`.
 
+## Run `a101-full-r4`, 2026-11-02: after pass 2 (M4 hands-on first, M5 rescue lived, M6 judge-input fixes)
+
+Build 988a776a. Same prompt and protocol as r3.
+
+| Factor | AE101 (j1/j2/j3) | Agents 101 (j1/j2/j3) | median | r3 |
+|---|---|---|---|---|
+| Frame | 94/93/95 | 83/82/81 | 82 | 80 |
+| Narrative | 93/93/93 | 84/83/82 | 83 | 80 |
+| Point of view | 95/95/95 | 72/74/74 | 74 | 73 |
+| Stance | 91/92/92 | 86/87/86 | 86 | 86 |
+| Depth | 92/90/86 | 82/82/76 | 82 | 83 |
+
+Mean 81 (r3 80). Frame and narrative gain from the lived M5 rescue. POV stays the weakest factor until the maintainer's sprawl and overreach stories land mid-arc.
+
+**Moves the judges converge on:** (1) M3 `three-retrievers-one-curator`: find one seam (3/3, second run in a row). (2) M8 `joint-double-diamond`: identity close from a count instead of the scripted sponsor line (3/3; the strategy keeps the sponsor line, so this is the maintainer's call). (3) A signed sprawl or overreach passage mid-arc (3/3; the maintainer's to dictate). (4) M3 and M5 Big Ideas match what the lectures teach (2/3; spar). (5) M7: the student names the absorption bottleneck of their own prework example before the agent does (2/3). (6) M6: spot-check the judge by hand in Phase 3 (1/3). (7) M2: seed "who else would read this" (1/3).
+
 ## Run `a101-full-r3`, 2026-11-02: after the eight-module compaction
 
 Build bf52e005 (all eight modules compacted, both scar stories placed). Three Opus judges, `story-depth/full-bench-prompt.a101.md` unchanged, AE101 read first.

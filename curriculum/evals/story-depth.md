@@ -3,6 +3,22 @@
 Rubric: `story-depth-rubric.md`. Goal spec: `trainings/agents-101/story-depth.md`. One `## Run`
 section per run, newest first; per-judge reports under `story-depth/`.
 
+## Run `a101-full-r3`, 2026-11-02: after the eight-module compaction
+
+Build bf52e005 (all eight modules compacted, both scar stories placed). Three Opus judges, `story-depth/full-bench-prompt.a101.md` unchanged, AE101 read first.
+
+| Factor | AE101 (j1/j2/j3) | Agents 101 (j1/j2/j3) | median | r2 (10-31) |
+|---|---|---|---|---|
+| Frame | 95/95/93 | 80/78/80 | 80 | 80 |
+| Narrative | 93/93/94 | 80/80/80 | 80 | 82 |
+| Point of view | 95/95/95 | 74/73/72 | 73 | 55 |
+| Stance | 92/92/92 | 86/86/86 | 86 | 88 |
+| Depth | 86/92/92 | 84/83/81 | 83 | 87 |
+
+Mean 80 (r2 78). POV gains 18 and is still the weakest factor. All three judges give one reason: the narrator speaks in M1 and M7 and is absent from M2 to M6, and his one failure on the page is the organisation's, not one with an agent.
+
+**Moves the judges converge on:** (1) `three-retrievers-one-curator`: the student finds one seam (a dropped or smoothed number) before the split lecture names it (3/3). (2) `hallucination-bakeoff` Phase 5: run the new judge on the M3 doubt, so the rescue is lived (3/3). (3) Align the M5 Big Idea with grounding (2/3) and the M3 Big Idea with "split only when needed" (1/3); both wait for the maintainer's spar. (4) A first-person agent-failure line in M4 or M5 (2/3); needs the maintainer's own story. (5) `joint-double-diamond`: counted rather than scripted identity close (2/3); the strategy keeps the sponsor's sentence, so the count goes before it.
+
 
 
 

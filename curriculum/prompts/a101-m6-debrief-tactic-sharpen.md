@@ -17,7 +17,7 @@ produces:
 ---
 Start by reading the files. No plan or preamble.
 
-Review this session and sharpen the generator's tactic beyond what the loop reached. Read ./generation-tactic.md in its current state, then scan module-6/runs/ and module-6/eval-notes.md. The judge file at judges/groundedness-judge.md did not move; that is the integrity of the loop. Look back over the session: which tactic change helped, which one did not help and should be removed or rewritten, what specific boundary case did the loop never test, where did the generator keep missing the same thing across multiple rounds, and what did the judge flag that the tactic never absorbed?
+Review this session and sharpen the generator's tactic beyond what the loop reached. Read ./generation-tactic.md in its current state, then scan module-6/runs/ and module-6/eval-notes.md. The judge file at judges/groundedness-judge.md did not move; that is the integrity of the loop. Check that no judge subagent got rules beyond that file. If the flag counts stayed in single digits, say whether the changes between rounds are bigger than noise before crediting any tactic change. Then look back over the session: which tactic change helped, which one did not help and should be removed or rewritten, what specific boundary case did the loop never test, where did the generator keep missing the same thing across multiple rounds, and what did the judge flag that the tactic never absorbed?
 
 Be harsher than feels comfortable. If a rule is vague, say so by name. If a rule fired on the wrong thing, name what it fired on.
 

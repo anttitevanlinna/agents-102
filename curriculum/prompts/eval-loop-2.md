@@ -34,14 +34,14 @@ Run at least 3 rounds. After round 3, keep going until there is no longer signif
 For each round:
 1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:
    - briefing.md in that round's folder
-2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round. It writes the judgment for that round:
+2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:
    - judgment.md in that round's folder
    Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.
 3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.
 4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.
 
 When the loop stops:
-- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, one thing the judge still cannot see, and one human decision still needed.
+- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.
 - In chat, show me the same summary in under 12 lines.
 
 Do not stop for confirmation between rounds.

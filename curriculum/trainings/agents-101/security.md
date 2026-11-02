@@ -26,11 +26,11 @@ Name what you'd want to check before letting this near a real stakeholder.
 
 [Demo: Agent loop, raw](lectures/agent-loop-raw.md)
 
-[Lecture: The discipline of risk](lectures/practice-of-risk.md)
-
 [Exercise: Run and package a security skill](exercises/author-security-skill.md)
 
 [Exercise: Audit your agent](exercises/audit-your-agent.md)
+
+[Lecture: The discipline of risk](lectures/practice-of-risk.md)
 
 ## Debrief
 

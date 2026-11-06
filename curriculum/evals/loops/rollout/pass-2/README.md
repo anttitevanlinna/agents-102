@@ -16,3 +16,5 @@ Rubric before: run a101-full-r3, mean 80 (POV 73, weakest). n=24 panels througho
 **M4 hands-on first** (`edits-security.*`): "The discipline of risk" lecture moved after both exercises (Antti's rule: hands-on as soon as possible, heavier theory after). n=24 graded: Big Idea stated 95 → 96; learnings flat within noise (non-determinism 4 → 9, escalate 18 → 14). **On main.**
 
 **M3 seam beat, rerun under the graded scorer** (`edits-multi-agent-systems-rerun.md`): Big Idea stated 17 → 21, learnings flat (the earlier "dialects" dip was noise: 10 → 12 this run). Rubric judges asked for it 3/3 in two runs. **On main.**
+
+**M7: name what stopped your prework example** (`edits-personal-to-team.*`): before the agent finds the absorption bottleneck, the student writes one line on what stopped people using the tool in their own prework example. n=24 graded: Big Idea stated 63 → 70, learnings flat. **On main.**

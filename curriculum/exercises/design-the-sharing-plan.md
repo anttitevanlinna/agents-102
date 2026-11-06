@@ -10,6 +10,8 @@
 
 The obstacle is usually not the first technical limitation a builder sees. The agent compares the technical, social, political, habitual, governance, and trust obstacles and writes the load-bearing one.
 
+Before it runs, look at your prework example: the tool people got and did not use. In one line, what stopped them?
+
 {{prompt:share-your-work-3}}
 
 Spot-check `module-7/absorption-bottleneck.md`. A good bottleneck explains why several other obstacles stay hard. If removing it would solve only itself, ask the agent to cluster the obstacles again.

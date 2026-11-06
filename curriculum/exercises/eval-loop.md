@@ -52,6 +52,8 @@ Failed numbers in round 3 mean the tactic cannot handle numbers yet; weak claims
 
 **Integrity check.** The score means something only if the judge stayed still: the SHA in `module-6/eval-notes.md` must match. If the judge file moved, the exercise failed; if only `./generation-tactic.md` moved, the loop worked.
 
+**Spot-check the judge.** Mark three claims from the last round yourself before you read its verdicts. Where you disagree, the judge has a blind spot the loop cannot see.
+
 ## Trace what each round changed
 
 **What happened:**

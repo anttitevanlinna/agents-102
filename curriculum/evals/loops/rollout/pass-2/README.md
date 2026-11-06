@@ -18,3 +18,5 @@ Rubric before: run a101-full-r3, mean 80 (POV 73, weakest). n=24 panels througho
 **M3 seam beat, rerun under the graded scorer** (`edits-multi-agent-systems-rerun.md`): Big Idea stated 17 → 21, learnings flat (the earlier "dialects" dip was noise: 10 → 12 this run). Rubric judges asked for it 3/3 in two runs. **On main.**
 
 **M7: name what stopped your prework example** (`edits-personal-to-team.*`): before the agent finds the absorption bottleneck, the student writes one line on what stopped people using the tool in their own prework example. n=24 graded: Big Idea stated 63 → 70, learnings flat. **On main.**
+
+**M6: spot-check the judge by hand** (`edits-evaluations.*`): after the integrity check, the student marks three claims before reading the judge's verdicts. n=24 graded: Big Idea stated 99 → 98; learnings within noise (each 1–3 students lower). Matches the live-run finding that the judge's inputs drift unseen. **On main.**

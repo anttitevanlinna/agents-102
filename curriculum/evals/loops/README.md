@@ -13,7 +13,7 @@ Needs `curriculum/evals/mechanical/persona-student/modules/<module>.json` (mood 
 | Step | Tool | Signal |
 |---|---|---|
 | Student view | `persona-student/page.sh`, `damage.js` | v0, variants, damaged copy |
-| Persona students | `run-students.sh` → `persona-student/experience.js` | panel `PERSONAS` (default ingrid, cfo-sceptic, cto-builder) × `REPEATS` (default 2) |
+| Persona students | `run-students.sh` → `persona-student/experience.js` | panel `PERSONAS` (default ingrid, cfo-sceptic, cto-builder, hr-svp, ops-director, veteran-director) × `REPEATS` (default 2) = 12 per page |
 | Learning match | `persona-student/score.js --match` | take-homes vs intended learnings |
 | Word signal | `words.js` | complaints (filler, repetition, missing, tone, confusing), specific praise, skipped beats, tells, learnings carried. Replaces the 1–7 enjoyment mean, which scored the damaged Module 7 copy the same as the original |
 | Story judge | `story-judge.js` (+ `story-judge.md`) | frame, narrative, point of view, stance, register; module-scoped, `STORY_N` opus calls, medians |

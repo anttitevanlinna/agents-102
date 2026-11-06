@@ -18,12 +18,11 @@
 | `classifier-check.jsonl` | 40 hand-written answers: per module a plain right answer, a messy right answer, a different idea from the same module, a generic line, a word salad of the target's terms |
 | `golden/` | Real-learner protocol and the trainer's capture page |
 
-Simulated students come from `mechanical/persona-student/experience.js` via `loops/run-students.sh`. **Panel for any ranking: 24 per module and version** = `PERSONAS="ingrid cfo-sceptic cto-builder hr-svp ops-director veteran-director" REPEATS=4`.
+Simulated students come from `mechanical/persona-student/experience.js` via `loops/run-students.sh`. **Panel: 12 per module and version** (maintainer, 2026-11-06) = six personas × 2 repeats, the default of `run-students.sh`. A second 12 (`REPEATS=4`, which reuses the first 12) only for a 10 to 15 point gap on a strategy-level call.
 
 ```
 bash curriculum/evals/mechanical/persona-student/page.sh security /tmp/m4.md
-PERSONAS="ingrid cfo-sceptic cto-builder hr-svp ops-director veteran-director" REPEATS=4 \
-  bash curriculum/evals/loops/run-students.sh $PWD /tmp/m4.md v0 /tmp/m4 security
+bash curriculum/evals/loops/run-students.sh $PWD /tmp/m4.md v0 /tmp/m4 security
 node curriculum/evals/teaching/probe.js --logs $(ls /tmp/m4/v0-*.json | paste -sd,) --group v0 --out /tmp/m4/answers.jsonl
 node curriculum/evals/teaching/score.js --in /tmp/m4/answers.jsonl
 ```
@@ -71,8 +70,9 @@ Read with care: M1 rose from 17% when its Big Idea moved to the maintainer's wor
 - **The scorer was most of the noise, not the students.** The same answers rescored moved up to 9 points at 2 restatements. Pooled to 4 restatements, the spread across runs is 19.5 to 24.5 (SD about 2.5).
 - **The old 0/1 rule could not read M3 at all.** Its answers ("start with one agent, split only when needed") sit on the edge of the Big Idea, so each one flipped between hit and miss. That gave 0 to 3 of 24 on a full panel.
 - **Dropouts moved it further.** Students under parallel loops dropped out on rate limits (the rollout's cells have 18 or 19 of 24). Personas differ a lot on M3: cto-builder and ingrid score about 35, veteran-director and ops-director about 12. So losing 6 students from the low end alone moves the number by about 20 points. That explains 22 / 25 / 4 on unchanged text.
-- **Protocol now:** students run at most 8 at a time (`STUDENT_JOBS`), one page at a time, and each failed run is retried twice. A page with fewer than 24 students, or a failed probe or score, fails the loop with `INCOMPLETE` (rerun the same command; finished runs are reused) and the report says "do not rank on it". The scorer uses 4 restatements by default (`TEACH_K`).
-- **Gap that counts:** with this protocol, call two pages different at a gap of **10 points or more** in "stated" at n=24 each. Under 10, run a second 24 per page and pool them. Numbers from the old 0/1 rule or from incomplete cells are not comparable to new ones: rescore them (`score.js` on the same answers) before comparing.
+- **Protocol now:** students run at most 8 at a time (`STUDENT_JOBS`), one page at a time, and each failed run is retried twice. A page with fewer students than the panel, or a failed probe or score, fails the loop with `INCOMPLETE` (rerun the same command; finished runs are reused) and the report says "do not rank on it". The scorer uses 4 restatements by default (`TEACH_K`).
+- **Gap that counts, n=12 per page (default since 2026-11-06).** Splitting the four M3 runs into sixteen 12-student halves (six personas × 2) gives 12.5 to 30.2 around a mean of 22, SD 5.1. Two pages then differ by chance with SD about 7, so **a gap over 15 points counts**. For 10 to 15 points on a strategy-level call, add a second 12 per page and pool (n=24: SD 2.4, a 10-point gap counts). Under 10 is noise. M3 is a mid-range, borderline module, so this is the worst case; pages scoring near 0 or 100 are tighter. A ±3.5 band at n=12 understates the noise: one page's number moves about ±5 (SD), ±10 over repeat runs.
+- Numbers from the old 0/1 rule or from incomplete cells are not comparable to new ones: rescore them (`score.js` on the same answers) before comparing.
 - Simulated students are not calibrated against real ones. `golden/protocol.md` is the check: 5 real learners on M1.
 - Keyword strings still pass 3 of 16 times. The trainer's marks in the golden set will show if real answers do this.
 - The cold probe reads the student's own notes, written with the page in view. It measures what the student wrote down as they went, not recall after a week.

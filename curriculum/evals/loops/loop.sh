@@ -68,7 +68,7 @@ LOGS="$(ls "$OUT"/students/*.json | paste -sd, -)"
 node "$PS/score.js" --module "$MOD" --logs "$LOGS" --match --out "$OUT/students-score.json" >/dev/null 2>&1
 node "$HERE/words.js" --module-json "$PS/modules/$MOD.json" --logs "$LOGS" --out "$OUT/words.json" >/dev/null 2>&1
 # Teaching measure (first-ranked): each student states the module's Big Idea cold; blind scorer.
-# For a ranking use the n=24 panel: PERSONAS="ingrid cfo-sceptic cto-builder hr-svp ops-director veteran-director" REPEATS=4.
+# Default panel = 12 students (six personas x 2). Gap over 15 counts; 10-15 on a strategy-level call: add a second 12 (REPEATS=4 reuses the first 12).
 T="$ROOT/curriculum/evals/teaching"; mkdir -p "$OUT/teach"; : > "$OUT/teach/answers.jsonl"
 for v in "${ALL[@]}" $DMG; do
   L="$(ls "$OUT"/students/$v-*.json 2>/dev/null | paste -sd, -)"; [ -n "$L" ] || continue

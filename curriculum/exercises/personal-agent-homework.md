@@ -61,6 +61,7 @@ For the first three days, don't retune. Open `module-2/morning-agent/latest.html
 - Comical or wrong days: what was missing from the memory?
 - Claims you, the domain expert, know are off: your next memory edits.
 - Styling drift from your company site: sharpen `./style.md`.
+- Who else would read this output, and what would make them open it?
 
 ## Turn the memory into a running loop
 

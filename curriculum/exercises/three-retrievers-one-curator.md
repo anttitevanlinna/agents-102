@@ -37,6 +37,8 @@ Session 4, synthesizer: `memory/`.
 
 {{prompt:three-retrievers-one-curator-5}}
 
+Open one retriever's file. Find one number or phrase that the synthesizer dropped or smoothed in `memory/`. Should it have survived?
+
 Done when `memory/_synthesis-m3.md` names what changed.
 
 <!-- maintainer -->

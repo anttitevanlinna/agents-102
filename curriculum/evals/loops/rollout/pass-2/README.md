@@ -14,3 +14,5 @@ Rubric before: run a101-full-r3, mean 80 (POV 73, weakest). n=24 panels througho
 **M5 grounding comparison, rescored with the graded scorer (b97eaf18)**, two full n=24 runs per page: today's page 13 and 14; grounding draft 43 and 51. The gap is about 33 points against a 10-point threshold, and it replicates. Files in `m5-rescore/`.
 
 **M4 hands-on first** (`edits-security.*`): "The discipline of risk" lecture moved after both exercises (Antti's rule: hands-on as soon as possible, heavier theory after). n=24 graded: Big Idea stated 95 → 96; learnings flat within noise (non-determinism 4 → 9, escalate 18 → 14). **On main.**
+
+**M3 seam beat, rerun under the graded scorer** (`edits-multi-agent-systems-rerun.md`): Big Idea stated 17 → 21, learnings flat (the earlier "dialects" dip was noise: 10 → 12 this run). Rubric judges asked for it 3/3 in two runs. **On main.**

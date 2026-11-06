@@ -1,7 +1,7 @@
-# Grounded Output
+# Catching Hallucinations
 
 ## Big Idea
-Run several quality checks on your own output. Score them against a 30-claim benchmark and keep the winner.
+There is truth out there, and your agent's job is to stay connected to it. Where it cannot reach a source, it fills the gap: confident, plausible, wrong. Grounding, and checks you test on your own output, make the gap visible.
 
 ## Prework
 
@@ -11,15 +11,17 @@ Write one sentence per case: "the missing organisational check was X."
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Test** detection methods on a 30-claim benchmark and pick the winner
-- **Build** a reusable judge file from the winning method that names what it catches and where it stops
-- **Identify** what a judge can reach: narrow and working beats broad
+- **Test** four detection methods on a 30-claim benchmark and pick the winner
+- **Build** a reusable judge file that names what it catches and where it stops
+- **Identify** what grounding reaches and what it does not: wrong sources, tilted framing, strategic judgment
 
 ## Start here
 
-Start a fresh session at `~/Documents/agents-101/`.
+**Session** *(new, "Module 5 - Catching hallucinations")*
 
-Four detectors run on one claim pool. A scorer checks 30 claims against the sources.
+Working folder: `~/Documents/agents-101/`.
+
+**The question, to you:** which line in your Module 3 briefing reads almost right? Point at it.
 
 [Lecture: Grounded, and four candidates to measure](lectures/grounded.md)
 
@@ -27,47 +29,49 @@ Four detectors run on one claim pool. A scorer checks 30 claims against the sour
 
 ## Debrief
 
-Five minutes. The agent reviews the benchmark and adds rules to CLAUDE.md so future sessions run a groundedness check before trusting output. Evidence: the roster, claim pool, adjudicated claims, detector outputs and your saved judge.
+Five minutes. The agent reviews the benchmark and adds rules to CLAUDE.md so future sessions check groundedness before trusting output. Evidence: the roster, claim pool, adjudicated claims, detector outputs and your saved judge.
 
 {{prompt:a101-m5-debrief-groundedness-rules}}
 
 ## Notice what the prompt insists on
 
-The prompt does two things the model wouldn't volunteer. It names the boundary: touch only the Groundedness checks section, preserve every other section verbatim. Otherwise a small edit becomes a full rewrite and earlier rules drift.
+The prompt names the boundary: touch only the Groundedness checks section, keep every other section verbatim. Without it, a small edit becomes a rewrite and earlier rules drift.
 
-It checks the work: re-read the Groundedness checks section and confirm each rule is there. The agent's report describes what it intended, not what is in the file.
+The prompt also makes the agent re-read the section and confirm each rule is there. The agent's report says what it intended, the file says what happened.
 
 ## Push back on the summary
 
-Push back where the agent's summary is wrong: *"that rule is too vague; name the evidence roster"* / *"this should say when to stop and ask for sources."*
+Correct the agent where a rule is vague: *"name the evidence roster"*, *"say when to stop and ask for sources."*
 
-> Start with the repeatable, high-cost misses: numbers in external notes, customer names in account summaries, policy claims in internal advice, source citations in briefings. Put the trigger in the root instructions file for any output a future session should not trust without a check.
+> Start with the costly, repeatable misses: numbers in external notes, customer names in account summaries, policy claims in internal advice, citations in briefings. Put the trigger in the root instructions file.
 
 ## Propose, double-check, apply
 
-For agent actions that matter, the agent proposes, you check the proposal against the judge or the source, then the agent applies it.
+An agent action starts as text: a mail, a ticket update, a CRM change. Wrong text becomes a wrong action.
+
+For actions that matter, the agent proposes, you check the proposal against the judge or the source, then the agent applies it.
 
 ## Which rung has this action earned?
 
 Read [What is an Agent, The autonomy ladder](trainings/agents-101/supplementary/what-is-an-agent.md#the-autonomy-ladder-what-may-the-agent-do) before you decide what the agent may do next.
 
-In a human-in-the-loop check, the expert reviews the proposed action, its evidence, and the known limit of the check that passed it.
+In a human-in-the-loop check, the expert reviews the proposed action, its evidence, and the known limit of the judge that passed it.
 
 ## Key Concepts
-- Grounded means traceable to a source; accurate is harder.
-- Run candidates, read the scoreboard.
-- The winner names its own limit.
+- Grounded means traceable to a specific file, number or quote. Stay connected to the source.
+- Asking the agent "are you sure?" returns another fluent answer. A check has to touch the source.
+- Run candidate detectors on your own output and read the scoreboard.
+- The winning judge names its own limit. Wrong sources, framing and strategic choices stay outside it.
 - Reusable pattern: candidates, benchmark, scorer, winner.
 
 ## Pre-reads before Module 6
 
 Ethan Mollick, "Garbage Can and Bitter Lesson."
 
-Once the judge and pre-read are ready, end this session. Start fresh at `~/Documents/agents-101/`.
+End this session once the judge is saved. Module 6 starts fresh in `~/Documents/agents-101/`.
 
 ## Next
-Evals scale the benchmark to three hundred claims, run the judge on every build, and feed its feedback into generation.
-
+You can spot ungrounded output with a judge. Next, the judge runs without you at the keyboard: it stays fixed while the generation improves under its feedback.
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-08-25 (writing@19381896 story@19381896 technical@725101ec behavior@725101ec pedagogy@19381896 strategy@19381896 slides@19381896)

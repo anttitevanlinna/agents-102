@@ -6,56 +6,60 @@
 
 ## A test-and-fix loop collapses the error rate
 
-Say your briefing is 10% fabricated. Say the detector catches 90% of those claims. Fix what it flagged, test again.
+Say your briefing is 10% fabricated, and a detector catches 90% of those claims. Fix what it flags, then test again.
 
-Round 1: 10% fabricated → 1% after fix.
-Round 2: 1% → 0.1% after fix.
+Round 1: 10% → 1%.
+Round 2: 1% → 0.1%.
 Round 3: 0.1% → 0.01%.
 
-Compounding that destroys single-pass reliability builds loop reliability.
+The numbers are illustrative. They show that compounding breaks a single pass but helps you once each round checks against the sources.
 
 ["Are you sure?" is another fluent answer](slides/are-you-sure.md)
 
 ## Don't pick a method. Run the candidates.
 
-Somebody tells you *"have the agent read your files before it answers"* or *"do a consistency check."* Each misses things, and you never know which.
+Every grounding check misses something. Advice won't tell you what it misses on your material.
 
-Run several methods in parallel on *your* output and *your* strategic question. Measure which one catches what your benchmark says it should.
+Run several checks in parallel on your own output. Four agents check the same 30 claims. A scorer measures each one for precision, recall and coverage.
 
 ## Four candidates that fail differently
 
-These four fail in different directions.
+Each method tests a different link between a claim and its source.
 
-**1. Source triangulation.** Does each specific claim appear in at least one file on disk? Catches *invention*: claims with no source.
+**1. Source triangulation.** Does the claim appear in at least one source file? Catches invention.
 
-**2. Entailment.** Does the briefing say more than the sources support? Catches *overreach*.
+**2. Entailment.** Do the sources support everything the claim says? Catches overreach.
 
-**3. Citation integrity.** Does each cited source contain the claim? Catches *citation cargo-cult*.
+**3. Citation integrity.** Does the cited source contain the claim? Catches citations that point at nothing.
 
-**4. Counter-evidence search.** Look for sources that contradict each claim. Catches claims that crumble under disconfirmation.
+**4. Counter-evidence search.** Does any source contradict the claim? Catches claims that fail when someone tests them against the evidence.
 
 ## You have done this before
 
-Pick on evidence. The four run as parallel agents on the same 30-claim pool, each writing its own findings file. A scorer measures each: precision, recall, coverage.
+On the Mata v. Avianca pre-read, each method found a different gap:
 
-On the Mata v. Avianca pre-read, source triangulation caught an unsourced "small firm" and an unsupported "ten minutes" estimate. Entailment caught a too-clean Schwartz timeline. Citation integrity caught a quote absent from the sanctions order. Counter-evidence caught CNBC blurring the $5,000 sanction.
+- Source triangulation: an unsourced "small firm" and an unsupported "ten minutes" estimate.
+- Entailment: a too-clean Schwartz timeline.
+- Citation integrity: a quote absent from the sanctions order.
+- Counter-evidence: CNBC blurring the $5,000 sanction.
 
 ## The judge names its own limit
 
-The winner, or an ensemble of the top two, becomes a reusable judge file. The judge file names the detector that won, why it won, and what it misses.
+The winner, or the top two together, becomes a reusable judge file. The file names the method, why it won, and what it misses.
+
+A groundedness judge catches invented content. It does not catch a wrong source, framing that tilts, what was left out, or a strategic call.
 
 ## In the full agent picture, this is the check
 
-An agent with context, tools, goals and boundaries can still produce fluent, unsupported output: invented case law, invented medications, confident numbers nobody can source.
+An agent action starts as text: a mail, a ticket update, a CRM change. Unsupported text becomes an unsupported action.
+
+Have the agent propose. Check the proposal against sources or a judge. Then apply.
 
 ## A drift signal, never proof
 
-Run the same briefing prompt twice from the same sources, in two sessions. What stays stable, and what drifts? Stable claims can still be unsupported; drift is a warning signal, not proof of fabrication.
+Run the same briefing prompt twice from the same sources, in two sessions. Compare what stays and what changes.
 
-Two runs is a demo. The signal firms up at five to ten runs; production wants twenty or thirty.
-
-Create a fresh briefing and extract a 30-claim pool. The main session does not read the claim files until the claims exist.
-
+A stable claim can still be unsupported. Drift is a warning, not proof of fabrication. Two sessions give you a demo; the signal firms up at five to ten.
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@4d9c4af2 technical@ab36a5e6 behavior@5fc7188 pedagogy@ab36a5e6 strategy@5fc7188 slides@4d9c4af2)

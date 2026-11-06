@@ -52,6 +52,8 @@ Who gets your context, who gets a skill, who wants only the output, and who woul
 
 ## Next
 
+You can build agents, secure them, evaluate them and share them four ways. What if you didn't have to build each one by hand?
+
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-08-25 (writing@19381896 story@19381896 technical@725101ec behavior@725101ec pedagogy@19381896 strategy@19381896 slides@19381896)

@@ -91,3 +91,4 @@ grep -q FAILED "$OUT/teach/probe.log" 2>/dev/null && echo "probe" >> "$OUT/stude
 node "$HERE/report.js" "$OUT" "$MOD" > "$OUT/report.md"
 log "done → $OUT/report.md ($(cat "$EVAL_BUDGET_FILE" 2>/dev/null || echo 0) of $EVAL_BUDGET budgeted calls)"
 [ -s "$OUT/students/INCOMPLETE" ] && { log "INCOMPLETE: $(paste -sd, "$OUT/students/INCOMPLETE") — rerun the same command; finished runs are reused"; exit 3; }
+exit 0

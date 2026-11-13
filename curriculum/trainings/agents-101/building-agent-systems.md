@@ -63,7 +63,7 @@ Watching where it bends is continuous improvement, done by hand.
 
 The model will change. Your memory will not.
 
-Your folder holds your challenge, your sources and your rules. A better model reads your folder better. It does not write it for you.
+Your folder holds your challenge, your sources and your rules. A better model reads your folder better.
 
 ## Key Concepts
 - A system compounds around your challenge: each new source sharpens what is already there. A chat starts from zero.

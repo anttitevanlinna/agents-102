@@ -18,6 +18,8 @@ After this module, you will be able to:
 
 ## Start here
 
+**The agent-made analysis, today:** The agents take over checking their own reach against policy and named risks. Left with you: choosing which risk to close.
+
 Start a fresh session or task at `~/Documents/agents-101/`.
 
 The agent reads the Module 3 system, the root instructions file, and the policy files under `module-4/policies/`. Reports go to `outputs/`.
@@ -29,6 +31,16 @@ Name what you'd want to check before letting this near a real stakeholder.
 [Exercise: Run and package a security skill](exercises/author-security-skill.md)
 
 [Exercise: Audit your agent](exercises/audit-your-agent.md)
+
+## Boundaries move all four ideas on
+
+**Context:** Anything in the context can instruct the agent, including a source it reads.
+
+**Compounding:** A skill is method that travels to every agent you build.
+
+**Control:** Boundaries: what the agent can reach, and what you cannot tell.
+
+**Agents building agents:** The agent drafted the skill from your steering.
 
 [Lecture: The discipline of risk](lectures/practice-of-risk.md)
 
@@ -68,10 +80,16 @@ Read Mata v. Avianca (2023) and the Deloitte Australia / DEWR report (2025) in t
 
 Once the files are saved to disk, end this session. Module 5 starts fresh at `~/Documents/agents-101/`.
 
+## Your own agent
+
+Module 3: you decided whether the job needs more than one agent. Now have your agent run the security skill on itself.
+
 ## Next
 Can you trust what the agent says inside its scope?
 
 <!-- maintainer -->
+
+**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the `**The agent-made analysis, today:**` opener in § Start here (which part of the job the agents take over), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@194c81b0 strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

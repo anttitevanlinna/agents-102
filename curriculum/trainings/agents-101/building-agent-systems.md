@@ -16,6 +16,9 @@ After this module, you can:
 - **Evaluate** whether memory is compounding or growing
 
 ## Start here
+
+**The agent-made analysis, today:** From today the agents make one analysis of your challenge, and each module hands them one more part of the job. Today they take over gathering and remembering: sources go into a memory the agent keeps current. Left with you: naming the challenge and approving the plan.
+
 Start a fresh session or task at `~/Documents/agents-101/`, so Module 1's scrollback stays out of the way.
 
 The empty `memory/`, `sources/`, and `agents/` folders are there from prework. Neither the Module 1 generation-rules file (scoped to `module-1/`) nor `module-1/site.html` is an input to this build. You write the root instructions file in the Debrief.
@@ -37,6 +40,16 @@ Connectors let the agent combine clues that live apart, like a wiki page and an 
 Keep the same session running; the agent has your challenge in scrollback.
 
 [Exercise: Build your challenge memory](exercises/build-your-challenge-memory.md)
+
+## The memory moves all four ideas on
+
+**Context:** Memory is context that persists. Next session the agent starts from the folder, not from a blank chat.
+
+**Compounding:** Each new source sharpens what is there. A system compounds; a chat starts from zero.
+
+**Control:** The agent planned first and acted on your approval.
+
+**Agents building agents:** The agent built your first agent: the memory and the scheduled run. You named the challenge.
 
 [Lecture: Compounding](lectures/compounding.md)
 
@@ -83,10 +96,16 @@ Your folder holds your challenge, your sources and your rules. A better model re
 
 Save the run, then end this session.
 
+## Your own agent
+
+Module 1: you picked the job. Now give your agent a memory and a schedule. The scheduled personal agent above is this step.
+
 ## Next
 Before the next module, build a few more agents you need. Pick by pain: a task you keep doing manually. Meeting prep and calendar triage are fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system.
 
 <!-- maintainer -->
+
+**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the `**The agent-made analysis, today:**` opener in § Start here (which part of the job the agents take over), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@194c81b0 strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

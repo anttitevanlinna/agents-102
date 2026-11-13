@@ -16,6 +16,8 @@ After this module, you can:
 
 ## Start here
 
+**The agent-made analysis, today:** The agents take over building and improving the agents themselves. Left with you: describing the next one.
+
 Your agent works in `~/Documents/agents-101/` and reads your agent system plus `module-7/monday.md`. The room's forum runs in a separate shared folder, so your own files stay local.
 
 The shared folder starts nearly empty: one subfolder per participant, `challenge.md` from the buyer or sponsor, and one or two central synthesizers writing at the shared root.
@@ -33,6 +35,16 @@ The builder and the agents it builds share the same parts, so each one you descr
 [Exercise: Agent Proposal Forum (diagnose and guide)](exercises/joint-double-diamond.md)
 
 The three moves run again at room scale on the sponsor challenge. The crux shapes each opening stance. Cross-checks surface rival evidence before an agent publishes. *What would have to be true?* and the pre-mortem test the synthesizer's choices.
+
+## All four ideas, harvested
+
+**Context:** The builder reads your context to build the next agent.
+
+**Compounding:** What compounds is how fast you and your organisation learn.
+
+**Control:** Each new agent is checked like the first: boundaries, grounding, a fixed judge.
+
+**Agents building agents:** Named at last, though the agent has built for you since Module 2: your agent can improve your agent.
 
 [Lecture: Where is this all going?](lectures/where-is-this-all-going.md)
 
@@ -57,6 +69,10 @@ Some unresolved items should stay unresolved.
 - What multiplies your work is how fast you learn, not how many agents you own.
 - Parts hold; the model rotates.
 
+## Your own agent
+
+Module 7: you decided who gets what from your agent. Now have your agent improve it. Then show it doing the job end to end: one real task, one thing it learned, one check it passes.
+
 ## Next
 
 Your plan is a set of assumptions: label them, start the concurrent pieces, and design experiments for the uncertain ones.
@@ -66,6 +82,8 @@ Every improvement your agents make is learning that compounds. How far this goes
 We could have spent today building you one impressive agent. It would have demoed well and been the wrong thing to sell you. Everyone wants their hundred agents; the one that matters in six months is one nobody in this room has thought of yet. What you take out of here is the ability to build it.
 
 <!-- maintainer -->
+
+**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the `**The agent-made analysis, today:**` opener in § Start here (which part of the job the agents take over), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
 
 **Against-interest line in § Next (2026-11-13).** "We could have spent today building you one impressive agent… the wrong thing to sell you" is the stance beat; present before compaction 149d513c. Big Idea stated cold unchanged with it (n=12).
 

@@ -17,6 +17,8 @@ You will:
 
 ## Start here
 
+**The agent-made analysis, today:** The agents take over searching and deciding: retrievers search, stances argue, and an answer comes out. Left with you: starting it and reading the answer.
+
 Start a fresh session or task at `~/Documents/agents-101/`. Save outputs under `module-3/`.
 
 Three agents search Confluence, OneDrive and practitioner articles, and three more decide what it means.
@@ -28,6 +30,16 @@ Three agents search Confluence, OneDrive and practitioner articles, and three mo
 [Exercise: Three retrievers, one curator](exercises/three-retrievers-one-curator.md)
 
 [Exercise: Three minds, one synthesis](exercises/three-minds-one-synthesis.md)
+
+## Six agents move all four ideas on
+
+**Context:** Each agent has its own context, and work gets lost between contexts.
+
+**Compounding:** The handoff rules go to disk, so the next run hands off better.
+
+**Control:** Nothing checked what happened between the agents. The doubt points at the missing control.
+
+**Agents building agents:** The agent started its own helpers. You named the split; it ran them.
 
 [Lecture: How agents work together](lectures/when-to-split-an-agent.md)
 
@@ -77,10 +89,16 @@ After the optional check and pre-reads, end this session. Module 4 starts fresh 
 
 An agent that works across connected systems has access to those systems.
 
+## Your own agent
+
+Module 2: your agent got a memory and a schedule. Now decide whether its job needs more than one agent. Default: it does not.
+
 ## Next
 Until Module 4, keep working on your real problem: add an agent for a critical dependency, or a plan visualisation.
 
 <!-- maintainer -->
+
+**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the `**The agent-made analysis, today:**` opener in § Start here (which part of the job the agents take over), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@4d9c4af2 technical@725101ec behavior@725101ec pedagogy@4d9c4af2 strategy@4d9c4af2 slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -16,6 +16,8 @@ You can:
 
 ## Start here
 
+**The agent-made analysis, today:** Not started. You paint by context, turn by turn, and learn what the agents will be given later. Everything stays with you.
+
 Outputs go in `module-1/`.
 
 **The question, to you:** where did LLM output on your work come out generic, and what made it yours?
@@ -23,6 +25,16 @@ Outputs go in `module-1/`.
 [Opening: Context is King](lectures/context-is-king.md)
 
 [Exercise: Paint by agent with guardrails](exercises/personal-site-with-guardrails.md)
+
+## Four ideas start here and run all course
+
+**Context:** Context paints the output. What you gave the agent is what made the site yours.
+
+**Compounding:** Your first correction went into a rules file, not the chat. The next session starts from it.
+
+**Control:** You are the evaluator who cannot be fooled on your own material.
+
+**Agents building agents:** You described, the agent made. That split holds for the rest of the course.
 
 [Closing: Iterate and learn](lectures/what-just-happened.md)
 
@@ -68,10 +80,16 @@ Optional: Karpathy's LLM Wiki post; Lindenberg's memory-architecture piece.
 
 Save the prework, end this session, then start Module 2 fresh at `~/Documents/agents-101/`.
 
+## Your own agent
+
+Pick the job: one recurring piece of work where output came out generic. Each module from here hands one more part of that job to your agent.
+
 ## Next
 The agent re-reads the output file next time.
 
 <!-- maintainer -->
+
+**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the `**The agent-made analysis, today:**` opener in § Start here (which part of the job the agents take over), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
 
 **Big Idea back to the strategy line (2026-11-13, Antti: "M1 is really context and painting with LLM").** The page had drifted to guardrails; Big Idea, the Apply LO and Key Concepts now lead with context as the brush, guardrails as reusable context. Big Idea stated cold 54 -> 63 (n=12, inside noise, direction right).
 

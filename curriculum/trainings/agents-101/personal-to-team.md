@@ -19,6 +19,8 @@ After this module, you will be able to:
 
 ## Start here
 
+**The agent-made analysis, today:** The agents take over delivering the work to another person. Left with you: choosing who gets what.
+
 What would you want a teammate to have: your `memory/` folder, one of your skills, the morning output, or a way to ask the agent a question in Slack? And why that one?
 
 The agent writes the sharing plan into `module-7/`. `module-7/monday.md` holds the next move: one person, one question, one test.
@@ -28,6 +30,16 @@ The agent writes the sharing plan into `module-7/`. `module-7/monday.md` holds t
 [Exercise: Design the sharing plan](exercises/design-the-sharing-plan.md)
 
 [Exercise: Test the sharing plan](exercises/test-the-sharing-plan.md)
+
+## Sharing moves all four ideas on
+
+**Context:** Context is the first thing you can share.
+
+**Compounding:** Across people, compounding is absorption. Access alone does not compound.
+
+**Control:** Once it leaves your hands, someone owns it and someone uses it. Name both.
+
+**Agents building agents:** The agent interviewed for the job and drafted the plan.
 
 [Lecture: Access is not absorption](lectures/access-is-not-absorption.md)
 
@@ -50,11 +62,17 @@ Who gets your context, who gets a skill, who wants only the output, and who woul
 
 **Bring `module-7/monday.md` and what the named person said.** Their answer is the evidence. The plan is still the hypothesis.
 
+## Your own agent
+
+Module 6: a fixed judge watches your agent's output. Now decide who else gets its context, a skill, its output, or an interface.
+
 ## Next
 
 You can build agents, secure them, evaluate them and share them four ways. What if you didn't have to build each one by hand?
 
 <!-- maintainer -->
+
+**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the `**The agent-made analysis, today:**` opener in § Start here (which part of the job the agents take over), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
 
 **Quality:** compendium-audited 2026-08-25 (writing@19381896 story@19381896 technical@725101ec behavior@725101ec pedagogy@19381896 strategy@19381896 slides@19381896)
 - judges @19381896: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

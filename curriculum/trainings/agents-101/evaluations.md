@@ -15,6 +15,8 @@ After this module, you will be able to:
 
 ## Start here
 
+**The agent-made analysis, today:** The agents take over improving their own work: generate, judge, rewrite, repeat. Left with you: owning the yardstick. You walk away while it runs.
+
 Start a fresh session or task at `~/Documents/agents-101/`.
 
 Read Ethan Mollick's [*The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage).
@@ -30,6 +32,16 @@ The same judge keeps catching what slipped past, and the system absorbs the catc
 > The same pattern applies to actions. An agent action starts as text: a proposed mail, ticket update, CRM change or command. Check the proposal before it becomes the action.
 
 [Exercise: The eval loop runs itself](exercises/eval-loop.md)
+
+## The loop moves all four ideas on
+
+**Context:** The tactic file is context the loop rewrites every round.
+
+**Compounding:** The loop compounds while you are away.
+
+**Control:** You own the yardstick. Would you let it act on its own?
+
+**Agents building agents:** The agent built the loop that improves its own work.
 
 [Lecture: When the score stops moving](lectures/when-the-score-stops-moving.md)
 
@@ -63,10 +75,16 @@ The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/
 
 Once the trigger is written, end this module's session or task. Module 7 starts fresh at `~/Documents/agents-101/`.
 
+## Your own agent
+
+Module 5: your agent checks its own claims against a source. Now put a fixed judge on its output and let it improve under it.
+
 ## Next
 The judge stays fixed, so the loop keeps pressure on the generator while you are away.
 
 <!-- maintainer -->
+
+**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the `**The agent-made analysis, today:**` opener in § Start here (which part of the job the agents take over), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@4d9c4af2 slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

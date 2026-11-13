@@ -17,6 +17,8 @@ After this module, you will be able to:
 
 ## Start here
 
+**The agent-made analysis, today:** The agents take over checking their own claims against the sources. Left with you: reading the scoreboard and keeping the judge.
+
 **Session** *(new, "Module 5 - Catching hallucinations")*
 
 Working folder: `~/Documents/agents-101/`.
@@ -26,6 +28,16 @@ Working folder: `~/Documents/agents-101/`.
 [Lecture: Grounded, and four candidates to measure](lectures/grounded.md)
 
 [Exercise: Hallucination benchmark](exercises/hallucination-bakeoff.md)
+
+## The judge moves all four ideas on
+
+**Context:** Output is only as true as the context the agent can reach.
+
+**Compounding:** A judge is your judgment written down, with its limit named.
+
+**Control:** A check has to touch the source. Asking "are you sure?" does not.
+
+**Agents building agents:** The agent set up the detectors and the judge. You adjudicated the claims.
 
 ## Debrief
 
@@ -70,9 +82,15 @@ Ethan Mollick, "Garbage Can and Bitter Lesson."
 
 End this session once the judge is saved. Module 6 starts fresh in `~/Documents/agents-101/`.
 
+## Your own agent
+
+Module 4: your agent ran the security skill on itself. Now have it check its own claims against a source.
+
 ## Next
 You can spot ungrounded output with a judge. Next, the judge runs without you at the keyboard: it stays fixed while the generation improves under its feedback.
 <!-- maintainer -->
+
+**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the `**The agent-made analysis, today:**` opener in § Start here (which part of the job the agents take over), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
 
 **Quality:** compendium-audited 2026-08-25 (writing@19381896 story@19381896 technical@725101ec behavior@725101ec pedagogy@19381896 strategy@19381896 slides@19381896)
 - judges @19381896: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -12,6 +12,8 @@ The behaviour is non-deterministic. Same prompt, same files, same tools, differe
 
 The attack surface is the instruction set. Well-formed English in a document your agent reads can make it *decide* to do something harmful with access it has.
 
+{{figure:agent-picture-reach}}
+
 Capability is emergent. You can't fully predict the combination, only bound it.
 
 The result: *safe enough, under these conditions, within these limits, for now.* What may the agent read? What may it change? What must come back to a human?

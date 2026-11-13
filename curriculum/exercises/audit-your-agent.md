@@ -74,6 +74,8 @@ If the option does not fit, tell the agent and iterate. Re-run the check, then r
 
 The risk remains. That is expected. Name it, accept it on record, and stop there.
 
+{{figure:agent-picture-boundary}}
+
 ## Escalate to a person when judgment runs out
 
 **Still not sure? Ask a person.**

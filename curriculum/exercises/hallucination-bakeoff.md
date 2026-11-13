@@ -12,7 +12,7 @@ You set up a benchmark: a 30-claim pool, four detection methods, and a scorer th
 
 *12 min*
 
-Your test corpus is the Module 3 briefing, still unchecked: your sources, retrievals, stances and real question.
+Your test corpus is the Module 3 briefing: your sources, retrievals, stances and real question.
 
 Produce a fresh briefing so every detector sees the same output, with roughly 10% fabrication or misrepresentation. The agent chooses a bounded evidence roster first, since the roster fixes the evidence the judgment may stand on. A separate worker then generates the briefing, and both are saved without previewing.
 

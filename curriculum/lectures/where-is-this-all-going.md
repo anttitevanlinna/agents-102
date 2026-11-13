@@ -4,21 +4,21 @@
 
 The eval loop rewrote a generation tactic from judge feedback while the judge stayed fixed. Point the same loop at one of your agents: its instructions, its skill, its checks.
 
-The agent doing the improving is your coding agent. The same loop can improve the agent that improves your agents.
+The same loop can improve the agent that improves your agents, as long as the judge stays out of its reach. The SHA check in Module 6 was that rule.
 
 ## You described it; something else built it
 
-The parts of an agent stay the same: context, a goal, tools, checks, a boundary, a loop. You decide each one. Your coding agent assembles them from your description.
+The parts of an agent stay the same: context, a goal, tools, checks, a boundary, a loop. You decide each one. Your agent assembles them from your description.
 
-Your coding agent is itself an agent, so the builder sharpens its own tools. The tool that builds tools compounds.
+Your agent is an agent too, so it sharpens its own tools. The tool that builds tools compounds.
 
 [The parts hold; the model rotates](slides/parts-hold-model-rotates.md)
 
 ## Every improvement is learning that compounds
 
-Each fix an agent makes to another agent stays on disk. The next agent starts from it, and so does the next model.
+A fix one agent makes to another stays on disk once a check has measured it. The next agent starts from it, and so does the next model.
 
-What multiplies your work is how fast you and your organisation learn. Agents that improve agents speed up that learning.
+What multiplies your work is how fast you and your organisation learn. Agents that improve agents speed up that learning as far as a check measures it.
 
 [Will your organisation learn faster than the model changes underneath it?](slides/learn-faster-than-the-model.md)
 
@@ -26,7 +26,7 @@ What multiplies your work is how fast you and your organisation learn. Agents th
 
 Everyone wants their 100 agents. From here, a hundred agents is a matter of describing them, one gap at a time, each checked like the first.
 
-Name your next gap. Describe the agent for it. Your coding agent builds it, and your agent improves it.
+Name your next gap. Describe the agent for it. Your agent builds it; you test it on your own work before it reaches anyone else's.
 
 <!-- maintainer -->
 **Decision note 2026-11-13 (Antti yes, after the teaching scores).** One thread: your agent improves your agent, each fix stays on disk, leverage = learning rate. Cut: `## Agents reading agents must cite`, `## Three walls past the laptop`, `## Which half of this is obsolete next year?`, `## What would change our mind?`. Students took those home instead of the Big Idea: stated cold 16 → 28 (lean scorer, n=24 each); putting the obsolete-next-year slide back fell to 19 (n=12). Citation stays taught in `joint-double-diamond.md`. Cost: story judge POV 38 → 28. Evidence: agents-102 `curriculum/evals/loops/rollout/pass-2/`.

@@ -51,7 +51,7 @@ Push back where the summary is wrong: *"The planner and the reframer needed to b
 
 ## The doubt stays. Hold it.
 
-The synthesized briefing's correctness stays an open question today.
+Nothing checks the briefing yet, so its correctness stays open until Module 5 measures this same briefing.
 
 ## Optional memory check before Module 4
 
@@ -60,9 +60,9 @@ The synthesized briefing's correctness stays an open question today.
 {{prompt:a101-m3-homework-memory-health}}
 
 ## Key Concepts
-- Agents work together through shared files: one writes, the next reads.
+- Agents work together through shared files: what one writes is the next one's context.
 - Split where the parts differ, run them in parallel, bring them back to one place that decides.
-- Sessions on shared files, or helper agents under one lead.
+- Sessions on shared files, or helpers the main session starts and discards.
 - Handoffs are where work gets lost: open the files where one agent handed to the next.
 
 ## Pre-reads before Module 4
@@ -78,7 +78,7 @@ After the optional check and pre-reads, end this session. Module 4 starts fresh 
 An agent that works across connected systems has access to those systems.
 
 ## Next
-Until Module 4, keep working on your real problem: add an agent for a critical dependency, or a plan visualisation.
+Until Module 4, keep working on your real problem: ask your agent to add an agent for a critical dependency, or a plan visualisation.
 
 <!-- maintainer -->
 

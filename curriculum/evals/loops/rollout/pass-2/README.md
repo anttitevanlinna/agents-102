@@ -22,3 +22,7 @@ Rubric before: run a101-full-r3, mean 80 (POV 73, weakest). n=24 panels througho
 **M6: spot-check the judge by hand** (`edits-evaluations.*`): after the integrity check, the student marks three claims before reading the judge's verdicts. n=24 graded: Big Idea stated 99 → 98; learnings within noise (each 1–3 students lower). Matches the live-run finding that the judge's inputs drift unseen. **On main.**
 
 **M2: who else would read the output** (`edits-building-agent-systems.*`): one review question seeds M7's absorption idea. n=24 graded: Big Idea stated 37 → 44 (noise), learnings flat. **On main** (rubric judge r4).
+
+## M8 on main, 2026-11-13 (Antti yes)
+
+Lecture `where-is-this-all-going` cut to one thread: your agent improves your agent, each fix stays on disk, learning rate multiplies the work. Citation, three walls, obsolete-next-year and what-would-change-our-mind slides out; extend-your-system gains Phase 0 (improve an agent you already have, 5 min; Phase 2 down to 10 min). Big Idea stated cold, lean scorer: today's page 16, draft 2 28 (n=24 each), draft 3 (draft 2 + obsolete slide) 19 (n=12). Old split scorer on the same answers: 24 vs 38. Draft 1 (citation and walls kept): no gain over today's page. Story judge POV 38 → 28: the trainer's own voice went with the obsolete slide. Strategy Big Idea line now matches the page (core 86981b1).

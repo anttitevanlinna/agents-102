@@ -1,71 +1,56 @@
 # Lecture: Where is this all going?
 
+## Your agent can improve your agent
+
+The eval loop rewrote a generation tactic from judge feedback while the judge stayed fixed. Point the same loop at one of your agents: its instructions, its skill, its checks.
+
+The agent doing the improving is Claude Code. The same loop can improve the agent that improves your agents.
+
 ## You described it; something else built it
 
-The parts of an agent did not change: context, a goal, tools, checks, a boundary, a loop. You still decide each one. What changed is who assembles them, and specifying well is the harder half.
+The parts of an agent stay the same: context, a goal, tools, checks, a boundary, a loop. You decide each one. Claude Code assembles them from your description.
 
-## Count the folders the kernel cites
-
-Everyone in the room had access to every other folder. Open the kernel and count how many folders it cites.
-
-That ratio is your rollout in miniature. Access was instant and complete. What the room took up from each other is the smaller number. Know it before you promise a board a percentage.
-
-## Agents reading agents must cite
-
-Every claim in a proposal names its source file. Without that rule, agents reading agents invent each other's sources. The citations are what let you count the folders.
-
-## Three walls past the laptop
-
-The plan names the wall your company hits first: data access, runtime platform, or discoverability. A named wall means the kernel worked on something real.
+Claude Code is itself an agent, so the builder sharpens its own tools. The tool that builds tools compounds.
 
 [The parts hold; the model rotates](slides/parts-hold-model-rotates.md)
 
-## Which half of this is obsolete next year?
+## Every improvement is learning that compounds
 
-Every piece you built here sits on a model that gets replaced. Which half goes first? The judge you wrote, or the thing it judges? The memory, or the work of curating it? Nobody in this room knows yet, including the people running this training.
+Each fix an agent makes to another agent stays on disk. The next agent starts from it, and so does the next model.
 
-A plan that survives a model release is written knowing one is coming.
+What multiplies your work is how fast you and your organisation learn. Agents that improve agents speed up that learning.
 
 [Will your organisation learn faster than the model changes underneath it?](slides/learn-faster-than-the-model.md)
 
-## What would change our mind?
-
-A fourth discipline keeps a plan true after the room empties. Ask it of your kernel: *What would have to show up for us to drop this?*
-
-If nobody can answer, you have a belief with a schedule attached.
-
 ## A flywheel, not a graduation
 
-Your memory folder is still short, and the judge is still unchecked in the places you have not looked. The kernel came out of the same move as your first briefing: agents read, agents argued, something chose, and nothing in the room checked it. Hold that doubt.
+Everyone wants their 100 agents. From here, a hundred agents is a matter of describing them, one gap at a time, each checked like the first.
 
-What you leave with is a system that got sharper because you used it, and gets sharper again on the next problem.
+Name your next gap. Describe the agent for it. Claude Code builds it, and your agent improves it.
 
 <!-- maintainer -->
-**Laws moved in from Key Concepts (2026-09-24, Antti-directed).** `## Agents reading agents must cite` and `## Three walls past the laptop` carry what `agents-building-agents.md` § Key Concepts used to state.
-
-**2026-09-23, iteration 2:** the closing slide echoes the M3 turn once (the kernel came out of the same move as the first briefing, unchecked) so the last word admits the room's own synthesis loop cannot verify itself; two of three iteration-1 storytelling judges asked for it.
+**Decision note 2026-11-13 (Antti yes, after the teaching scores).** One thread: your agent improves your agent, each fix stays on disk, leverage = learning rate. Cut: `## Agents reading agents must cite`, `## Three walls past the laptop`, `## Which half of this is obsolete next year?`, `## What would change our mind?`. Students took those home instead of the Big Idea: stated cold 16 → 28 (lean scorer, n=24 each); putting the obsolete-next-year slide back fell to 19 (n=12). Citation stays taught in `joint-double-diamond.md`. Cost: story judge POV 38 → 28. Evidence: agents-102 `curriculum/evals/loops/rollout/pass-2/`.
 
 **Meta:**
-- **Time:** 6 minutes.
-- **Role:** closer for Agents 101 Module 8 and for the training, after the proposal forum and before Debrief. Names what the room just watched, then hands over two questions it declines to answer.
-- **Mood target:** awe and forward hunger, never a tidy graduation. The two questions stay open; the flywheel beat is a turn, not a summary. No identity line, no certificate register (that beat is the sponsor's, spoken, per `agents-building-agents.md`).
-- **Voice:** Boris-flat on what the room did; Sutherland reframe on the access-versus-absorption ratio; Risto-forward on the closing questions.
+- **Time:** 4 minutes.
+- **Role:** closer for Agents 101 Module 8 and for the training, after the proposal forum and before Debrief. Turns what the room just watched into the meta loop (your agent improves your agent) and leaves the door open to a hundred agents.
+- **Mood target:** awe and forward hunger, never a tidy graduation. The flywheel beat is a turn, not a summary. No identity line, no certificate register (that beat is the sponsor's, spoken, per `agents-building-agents.md`).
+- **Voice:** Boris-flat on what the room did; Risto-forward on the leverage and the hundred agents.
 
-**Placement:** After `extend-your-system.md` and `joint-double-diamond.md`, before Debrief. *Count the folders the kernel cites* and *What would change our mind?* both reference the kernel the forum produces; run earlier, neither has a referent.
+**Placement:** After `extend-your-system.md` and `joint-double-diamond.md`, before Debrief.
 
-**Decision note 2026-09-23.** New lecture, executing `a101-story-proposals/blend.md` § M8: the seven merged headers, the refrain's last turn, learning D's absorption callback, braid Break 3 under *The parts hold; the model rotates*, learning E's counter-voice, and the two closing questions. The against-interest paragraph is NOT here: the blend puts one instance only, in `agents-building-agents.md` § Next, replacing the five-step product-ladder clause. Braid's *"changed twice"* count is not carried (a count drifts and nothing measured it); the claim ships as the stable-parts / moving-model contrast instead. Module-range phrasing from both proposals (*"in these eight modules"*) is dropped for `check_lectures.md §3`.
+**Origin 2026-09-23:** new lecture from `a101-story-proposals/blend.md` § M8; slide set replaced 2026-11-13 (note above).
 
 <!-- backing -->
 
 Claims
-- `you-described-it-something-else-built-it` · vision · "You wrote down what an agent should do and you did not build it." ← none-owed
-- `access-was-instant-absorption-was-not` · vision · "Access was instant and complete. What the room took up from each other is the smaller number." ← none-owed
-- `the-parts-hold-the-model-rotates` · vision · "The list of parts is stable. … What the model can do with each part is not." ← none-owed
-- `half-of-this-is-obsolete` · vision · "Some of what you built here will be obsolete within a year." ← none-owed
+- `your-agent-can-improve-your-agent` · vision · "Point the same loop at one of your agents: its instructions, its skill, its checks." ← none-owed
+- `the-parts-hold-the-model-rotates` · vision · "The parts are stable … What the model can do with each part moves on the vendor's release schedule." ← none-owed
+- `learning-rate-multiplies` · vision · "What multiplies your work is how fast you and your organisation learn." ← none-owed
 - `two-curves` · vision · "The model gets better on its own … What your company knows about its own work gets better only when somebody writes it down and somebody else picks it up." ← none-owed
 
 Sources
-- none owed. Every claim on this page is a design stance of the training's own, and the two closing beats are questions rather than assertions. The bitter-lesson question the module inherits is cited where it is taught, in `evals-as-steering.md`.
+- none owed. Every claim on this page is a design stance of the training's own. The bitter-lesson question the module inherits is cited where it is taught, in `evals-as-steering.md`.
 
 Frameworks
 - Crux · what would have to be true · pre-mortem · [borrow:strategy] · law:none · ← cultural-vocab — named as portable moves in the module's Key Concepts; the lecture adds the fourth question and does not re-credit

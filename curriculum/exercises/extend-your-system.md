@@ -12,6 +12,14 @@ You describe an agent; the coding agent builds it. Pick one extension you'd use:
 - **New output.** Produces a format you lack: a one-page brief, a weekly digest, a pre-meeting prep note.
 - **New perspective.** Reads the same memory but argues with it: a skeptic, a devil's advocate, a persona holding the view your voice suppresses.
 
+## Phase 0: Improve an agent you already have
+
+*5 min*
+
+Pick one agent from an earlier module: the Module 2 morning agent or the Module 6 generation tactic. Ask your agent to read it, its last output and what you found off, then improve it. Run the old and the new version once and compare.
+
+Your agent just improved your agent. Now build a new one.
+
 ## Phase 1: Describe
 
 *5 min*
@@ -27,7 +35,7 @@ Over five minutes? Narrow the gap.
 
 ## Phase 2: Generate
 
-*15 min*
+*10 min*
 
 {{prompt:extend-your-system-1}}
 

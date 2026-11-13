@@ -1,64 +1,69 @@
 # Agents Building Agents (The Flywheel)
 
 ## Big Idea
-The tool that builds tools compounds.
+The tool that builds tools compounds. Your agent can improve your agent, and from there a hundred agents is a matter of describing them.
 
 ## Prework
 
-Run `module-7/monday.md`: test one assumption, ask for one name, talk to one person. Revisit the crux, what would have to be true, pre-mortem.
+Run `module-7/monday.md`: test one assumption, ask for one name, talk to one person. Revisit three moves: find the crux, ask what would have to be true, run a pre-mortem.
 
 ## What You'll Learn
 After this module, you can:
-- **Use** your agent runtime to generate a new agent that extends your system
-- **Orchestrate** three thinking disciplines against a real company question
-- **Produce** a strategy kernel, suggested agent set, and two-week plan from your files
-- **Explain** how deliberation sharpens the kernel and the next agent set
+- **Describe** a new agent and have your coding agent build it into your system
+- **Improve** an existing agent by having your agent edit it from session evidence
+- **Orchestrate** crux, assumption-test and pre-mortem across the room's agents on a real company question
+- **Produce** a strategy kernel, suggested agent set, and two-week plan from shared files
 
 ## Start here
 
-Start a fresh session at `~/Documents/agents-101/`. The agent reads the agent system and `module-7/monday.md`. The room-scale exercise uses a separate shared deliberation folder, so participant files stay out of your local stack.
+Your agent works in `~/Documents/agents-101/` and reads your agent system plus `module-7/monday.md`. The room's forum runs in a separate shared folder, so your own files stay local.
 
-The shared folder starts nearly empty: one folder per participant, `challenge.md` seeded by the buyer/sponsor, and one or two central synthesizer agents writing the selection, agent-set, and plan files at the shared root.
+The shared folder starts nearly empty: one subfolder per participant, `challenge.md` from the buyer or sponsor, and one or two central synthesizers writing at the shared root.
 
 The question to carry through: where is all this going?
 
 ## Watch an agent build an agent
 
-**Agent generates agent.** You watch one agent build another on real input.
+Your coding agent is itself an agent. Describe the agent you want: the gap, what it reads, what it writes. The coding agent writes the instructions, runs the new agent, and fixes it when you push back.
+
+The builder and the agents it builds share the same parts, so each one you describe makes the next description sharper.
 
 [Exercise: Extend your system](exercises/extend-your-system.md)
 
 [Exercise: Agent Proposal Forum (diagnose and guide)](exercises/joint-double-diamond.md)
 
-Module 7's three disciplines run again at room scale on the sponsor challenge. Finding the *crux* shapes each initial stance. Cross-checks make agents notice rival evidence before publishing. *What would have to be true?* and *pre-mortem* appear when agents criticize the synthesizer's choices.
+The three moves run again at room scale on the sponsor challenge. The crux shapes each opening stance. Cross-checks surface rival evidence before an agent publishes. *What would have to be true?* and the pre-mortem test the synthesizer's choices.
 
 [Lecture: Where is this all going?](lectures/where-is-this-all-going.md)
 
 ## Debrief
 
-Five minutes. The agent reviews the session, rewrites the most load-bearing file in place (synthesizer rules, strategy kernel, agent set, plan, or argument rules), and reports what changed. You push back on anything that's off.
+Five minutes. Your agent improves your agent. It reviews the session, rewrites the most load-bearing file in place (synthesizer rules, strategy kernel, agent set, plan, or argument rules), and reports what changed. Push back on anything that's off.
 
 {{prompt:a101-m8-debrief-flywheel-sharpen}}
 
-> **Watch for slowness.** When you push back, the agent should edit the section you flagged, not rewrite the whole file. Kernel and agent-set files run large, so full rewrites drag. If the agent reaches for one, push back: *"Edit just the section I named."*
+> **Watch for slowness.** Kernel and agent-set files run large, so full rewrites drag. If the agent rewrites a whole file, push back: *"Edit just the section I named."*
 
 ## Push back on the summary
 
-The agent audits itself, so the summary is not neutral. If it sounds too clean, ask: *"Name one critique raised in the session that did not change the rewritten file. Quote the critique and the unchanged line."*
+The agent is auditing its own work. If the summary sounds too clean, ask: *"Name one critique raised in the session that did not change the rewritten file. Quote the critique and the unchanged line."*
 
-Push back where the summary is wrong. Some unresolved items should stay unresolved.
+Some unresolved items should stay unresolved.
 
 ## Key Concepts
-- Cross-check before publishing; critique before selection.
-- Agents must cite each other's files, or they invent what they never read.
-- Past the laptop: data access, runtime platform, discoverability.
+- Describe the agent; the coding agent builds it.
+- Your agent can improve your agent: the fixed-judge loop, now pointed at the system itself.
+- Every improvement stays on disk; the next agent starts from it.
+- What multiplies your work is how fast you learn, not how many agents you own.
 - Parts hold; the model rotates.
 
 ## Next
 
 Your plan is a set of assumptions: label them, start the concurrent pieces, and design experiments for the uncertain ones.
 
-The agent that matters in six months is one nobody in this room has thought of. You leave able to build it.
+Every improvement your agents make is learning that compounds. How far this goes depends on how fast you and your organisation learn.
+
+Everyone wants their hundred agents. The one that matters in six months is one nobody in this room has thought of yet. You can build it.
 
 <!-- maintainer -->
 

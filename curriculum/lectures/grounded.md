@@ -55,7 +55,7 @@ The winner, or the top two together, becomes a reusable judge file. The file nam
 
 A groundedness judge catches invented content. It does not catch a wrong source, framing that tilts, what was left out, or a strategic call.
 
-## In the full agent picture, this is the check
+## Check the text before it becomes an action
 
 An agent action starts as text: a mail, a ticket update, a CRM change. Unsupported text becomes an unsupported action.
 

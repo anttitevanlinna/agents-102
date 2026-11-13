@@ -27,7 +27,7 @@ If the issue list is long, ask the agent to pick the fixes that aim for optimal 
 
 **Close. Does this feel right?**
 
-Optional: ask the agent to recap the three retrievals' core claims next to your `## Answer`. You can't yet tell if the answer is right. That is expected. Name the doubt; don't fix it here.
+Optional: ask the agent to recap the three retrievals' core claims next to your `## Answer`. You can't yet tell if the answer is right: nothing in this system checks it. Name the doubt; don't fix it here.
 
 <!-- maintainer -->
 

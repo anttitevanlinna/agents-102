@@ -46,14 +46,14 @@ Point the check at the other agents you've built.
 
 A skill packages the *how* of a recurring judgment or workflow, so the agent repeats the method without you rebuilding it. Other examples: reviewing customer data use, preparing a weekly briefing, triaging a queue.
 
-A skill works across projects and agents. Sharpen it where the method proves thin.
+A skill works across projects and agents. Where runs keep showing the method thin, the agent sharpens it and you re-run the same system to compare.
 
-To share, install the skill in a teammate's runtime. Their agent loads the same method by name, without your prompt history. A skill is not a deployed service and does not settle ownership.
+To share, you install the skill in a teammate's runtime once it has held up on your own agents. Their agent loads the same method by name, without your prompt history. A skill is not a deployed service and does not settle ownership.
 
 ## Key Concepts
 - No certainty: assess, mitigate, reassess the residual, decide.
-- Well-formed English is the attack surface, even via sources.
-- "I can't tell" is a real answer.
+- Anything the agent reads can instruct it, a source included.
+- "I can't tell" marks a row no check can settle yet.
 - Mitigations add to security controls, never replace them.
 
 ## Bring to Module 5

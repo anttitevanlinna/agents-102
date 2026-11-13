@@ -18,7 +18,7 @@ Three agents searched in parallel. Three argued from different seats. One sessio
 
 **Separate sessions.** Each agent keeps its own context, tools and clock. You see each one work and can step into one without confusing the others.
 
-**Helper agents in one session.** Quick parallel thinking with a bounded return. Each helper gets one job, reports back as a file and disappears. The main session stays in charge.
+**Helper agents in one session.** Quick parallel thinking with a bounded return. The main session starts each helper, gives it one job, and discards it when its file comes back.
 
 ## A framework makes it pick
 
@@ -30,7 +30,7 @@ Hand the synthesizer the strategy kernel (diagnosis, guiding policy, coherent ac
 
 Every split creates a handoff, and handoffs are where work goes wrong. A retriever finds two numbers and the curator keeps one. A source's internal shorthand is rewritten in public tone and loses its meaning.
 
-Open the files where one agent handed to the next. That is where to look.
+Open the files where one agent handed to the next. An error made there stacks through the steps after it.
 
 ## Split for a reason
 

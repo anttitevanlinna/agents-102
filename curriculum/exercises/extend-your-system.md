@@ -6,7 +6,7 @@
 
 **What you do:**
 
-You describe an agent; the coding agent builds it. Pick one extension you'd use:
+You describe an agent; your agent builds it. Pick one extension you'd use:
 
 - **New data source.** Reads from somewhere your system doesn't: a second wiki, a folder of PDFs, a new connector, another team's `memory/`.
 - **New output.** Produces a format you lack: a one-page brief, a weekly digest, a pre-meeting prep note.
@@ -16,7 +16,7 @@ You describe an agent; the coding agent builds it. Pick one extension you'd use:
 
 *5 min*
 
-Pick one agent from an earlier module: the Module 2 morning agent or the Module 6 generation tactic. Ask your agent to read it, its last output and what you found off, then improve it. Run the old and the new version once and compare.
+Pick one agent from an earlier module: the Module 6 generation tactic, whose judge the agent cannot reach, or the Module 2 morning agent. Ask your agent to read it, its last output and what you found off, then improve it. Run the old and the new version once and compare.
 
 Your agent just improved your agent. Now build a new one.
 
@@ -44,7 +44,7 @@ Over five minutes? Narrow the gap.
 
 *5 min*
 
-Spot-check the output for its weakness. Push back in the session:
+Run your Module 5 judge on the new agent's output. Push back in the session:
 - *"Cite the memory file for the second claim."*
 - *"You used training data on line 4. Replace it or remove it."*
 - *"The tone drifted from my other agents. Sharpen to match."*

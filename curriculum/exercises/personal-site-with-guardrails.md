@@ -88,7 +88,7 @@ Capture the move so a fresh agent can repeat it on someone else's bio.
 
 {{prompt:personal-site-with-guardrails-6}}
 
-Open `module-1/personal-brand-generation.md` and read the first two or three rules. The next agent on a personal-brand task reads the file and starts from what it holds. Push back on anything that doesn't match what you did.
+Open `module-1/personal-brand-generation.md` and read the first two or three rules. The agent reads the file when a future personal-brand task points to it. Push back on anything that doesn't match what you did.
 
 ## See the mechanism repeat in every phase
 

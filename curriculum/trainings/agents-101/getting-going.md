@@ -53,7 +53,7 @@ Where the critic sees generic, your context is thin: add one sharp detail, then 
 ## Key Concepts
 - Context is the brush: what you give the agent shapes the output.
 - Output got specific because the context did.
-- Guardrails are context the agent reuses on the next run.
+- Guardrails are context you can reuse.
 - Your domain expertise is the test.
 
 ## Bring to Module 2

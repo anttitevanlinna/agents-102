@@ -44,7 +44,7 @@ Over five minutes? Narrow the gap.
 
 *5 min*
 
-Spot-check the output for its weakness. Push back in the session:
+Run your Module 5 judge on the new agent's output. Push back in the session:
 - *"Cite the memory file for the second claim."*
 - *"You used training data on line 4. Replace it or remove it."*
 - *"The tone drifted from my other agents. Sharpen to match."*

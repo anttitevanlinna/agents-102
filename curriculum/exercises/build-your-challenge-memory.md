@@ -18,7 +18,7 @@ Three beats: the agent helps you curate a plan, pulls in (or points at) the cont
 
 **Ease yourself in.** Bring only what you'd share with a smart assistant without a second thought. If a thread, deck or doc feels sensitive, skip it.
 
-## Keep the heavy reads under control
+## Approve the plan before the files change
 
 Several phases re-read `sources/` or `memory/` and rewrite multiple files. Ask for a plan first.
 
@@ -96,7 +96,7 @@ Push back if a claim "got sharper" but the top didn't change.
 
 {{prompt:build-your-challenge-memory-8}}
 
-Reject proposals that miss; the agent applies the ones you approve.
+The agent proposes, you check, and it applies only what you approve.
 
 ## Phase 5: Close, put it to work
 

@@ -19,7 +19,7 @@ After this module, you will be able to:
 
 ## Start here
 
-**The agent-made analysis, today:** The agents take over delivering the work to another person. Left with you: choosing who gets what.
+**The agent-made analysis, today:** The agents take over delivering the work to another person. You still choose who gets what.
 
 What would you want a teammate to have: your `memory/` folder, one of your skills, the morning output, or a way to ask the agent a question in Slack? And why that one?
 

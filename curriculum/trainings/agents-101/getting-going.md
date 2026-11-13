@@ -16,7 +16,7 @@ You can:
 
 ## Start here
 
-**The agent-made analysis, today:** Not started. You paint by context, turn by turn, and learn what the agents will be given later. Everything stays with you.
+**The agent-made analysis, today:** Not started. Today you paint by context, turn by turn, and what you learn here is what the agents get later.
 
 Outputs go in `module-1/`.
 
@@ -30,11 +30,11 @@ Outputs go in `module-1/`.
 
 **Context:** Context paints the output. What you gave the agent is what made the site yours.
 
-**Compounding:** Your first correction went into a rules file, not the chat. The next session starts from it.
+**Compounding:** A correction goes into a rules file, not the chat. The next session starts from it.
 
 **Control:** You are the evaluator who cannot be fooled on your own material.
 
-**Agents building agents:** You described, the agent made. That split holds for the rest of the course.
+**Agents building agents:** You describe, the agent makes. That split holds for the rest of the course.
 
 [Closing: Iterate and learn](lectures/what-just-happened.md)
 

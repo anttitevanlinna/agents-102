@@ -16,7 +16,7 @@ After this module, you can:
 
 ## Start here
 
-**The agent-made analysis, today:** The agents take over building and improving the agents themselves. Left with you: describing the next one.
+**The agent-made analysis, today:** The agents take over building and improving the agents themselves. You still describe the next one.
 
 Your agent works in `~/Documents/agents-101/` and reads your agent system plus `module-7/monday.md`. The room's forum runs in a separate shared folder, so your own files stay local.
 
@@ -28,7 +28,7 @@ The question to carry through: where is all this going?
 
 Your coding agent is itself an agent. Describe the agent you want: the gap, what it reads, what it writes. The coding agent writes the instructions, runs the new agent, and fixes it when you push back.
 
-The builder and the agents it builds share the same parts, so each one you describe makes the next description sharper.
+The builder and the agents it builds share the same parts, so each one you describe makes the next description sharper. This is the last part of the job to change hands: agents now build and improve the agents that make the analysis.
 
 [Exercise: Extend your system](exercises/extend-your-system.md)
 
@@ -38,19 +38,19 @@ The three moves run again at room scale on the sponsor challenge. The crux shape
 
 ## All four ideas, harvested
 
-**Context:** The builder reads your context to build the next agent.
+**Context:** The builder reads your context to build the next agent: the memory, rules, skills and judges from seven modules. The deeper that context, the better the agent it builds.
 
 **Compounding:** What compounds is how fast you and your organisation learn.
 
-**Control:** Each new agent is checked like the first: boundaries, grounding, a fixed judge.
+**Control:** An agent that an agent built gets no extra trust. Each one is checked like your first: its boundaries, its grounding, a fixed judge on its output.
 
-**Agents building agents:** Named at last, though the agent has built for you since Module 2: your agent can improve your agent.
+**Agents building agents:** Your agent can improve your agent. It has built for you since Module 2; now it works on itself.
 
 [Lecture: Where is this all going?](lectures/where-is-this-all-going.md)
 
 ## Debrief
 
-Five minutes. Your agent improves your agent. It reviews the session, rewrites the most load-bearing file in place (synthesizer rules, strategy kernel, agent set, plan, or argument rules), and reports what changed. Push back on anything that's off.
+Five minutes. Your agent improves your agent. That is the last handover in the job: the agents build and improve the agents, and what stays with you is describing the next one. It reviews the session, rewrites the most load-bearing file in place (synthesizer rules, strategy kernel, agent set, plan, or argument rules), and reports what changed. Push back on anything that's off.
 
 {{prompt:a101-m8-debrief-flywheel-sharpen}}
 

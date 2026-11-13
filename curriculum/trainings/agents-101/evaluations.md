@@ -15,7 +15,7 @@ After this module, you will be able to:
 
 ## Start here
 
-**The agent-made analysis, today:** The agents take over improving their own work: generate, judge, rewrite, repeat. Left with you: owning the yardstick. You walk away while it runs.
+**The agent-made analysis, today:** The agents take over improving their own work: generate, judge, rewrite, repeat. You still own the yardstick, and you walk away while it runs.
 
 Start a fresh session or task at `~/Documents/agents-101/`.
 

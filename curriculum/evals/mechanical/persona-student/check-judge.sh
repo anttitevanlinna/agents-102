@@ -5,6 +5,7 @@
 #      WATCH, not alert: baseline about 50% with v3; Antti's own history cuts such sentences 13 of 17 times, so
 #      'original wins' is not yet his call (runs/2026-11-01-concrete-removal/README.md). Alert if it falls below 40%.
 # Usage (from persona-student/): ./check-judge.sh OUTDIR [examples-list]
+# Under loops/bin/claude, run with EVAL_LEAN=0: the anchor was calibrated on full calls (lean: 83%, full: 100%, 2026-11-13).
 set -euo pipefail
 OUT=${1:?outdir}; EX=${2:-taste-examples.md,taste-examples-cuts.md}; RULES=${RULES:-taste-rules.md}; mkdir -p "$OUT"
 A=runs/2026-11-01-ae101-anchor; D=runs/2026-11-01-concrete-removal

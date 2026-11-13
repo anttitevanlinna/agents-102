@@ -17,7 +17,7 @@ You will:
 
 ## Start here
 
-**The agent-made analysis, today:** The agents take over searching and deciding: retrievers search, stances argue, and an answer comes out. Left with you: starting it and reading the answer.
+**The agent-made analysis, today:** The agents take over searching and deciding: retrievers search, stances argue, and an answer comes out. You still start it and read the answer.
 
 Start a fresh session or task at `~/Documents/agents-101/`. Save outputs under `module-3/`.
 
@@ -37,9 +37,9 @@ Three agents search Confluence, OneDrive and practitioner articles, and three mo
 
 **Compounding:** The handoff rules go to disk, so the next run hands off better.
 
-**Control:** Nothing checked what happened between the agents. The doubt points at the missing control.
+**Control:** Nothing checks what happens between the agents. That gap is the missing control.
 
-**Agents building agents:** The agent started its own helpers. You named the split; it ran them.
+**Agents building agents:** The agent starts its own helpers and runs them.
 
 [Lecture: How agents work together](lectures/when-to-split-an-agent.md)
 

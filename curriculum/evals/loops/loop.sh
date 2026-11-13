@@ -30,7 +30,7 @@ PS="$ROOT/curriculum/evals/mechanical/persona-student"
 [ -f "$PS/modules/$MOD.json" ] || { echo "missing $PS/modules/$MOD.json" >&2; exit 2; }
 IFS=, read -ra VS <<< "$VARS"; ALL=(v0 "${VS[@]}")
 log() { echo "[loop] $*" >&2; }
-NP=$(( ${#ALL[@]} + 1 ))  # pages incl. the damaged copy
+NP=$(( ${#ALL[@]} + ( ${NO_DAMAGE:-0} == 1 ? 0 : 1 ) ))  # pages incl. the damaged copy (NO_DAMAGE=1 skips it: guard-rail reruns)
 export PATH="$HERE/bin:$PATH" EVAL_BUDGET="${EVAL_BUDGET:-$(( NP * ( ${TEACH_ONLY:-0} == 1 ? 60 : 120 ) * ${REPEATS:-2} / 2 + ( ${THREAD:-0} == 1 ? 44 * ${#ALL[@]} : 0 ) ))}" EVAL_BUDGET_FILE="$OUT/budget.count"
 mkdir -p "$OUT"; rm -f "$EVAL_BUDGET_FILE" "$EVAL_BUDGET_FILE.exhausted"
 log "budget: $EVAL_BUDGET calls (counted in $EVAL_BUDGET_FILE)"
@@ -49,7 +49,7 @@ for v in "${ALL[@]}"; do
   (cd "$OUT/lab/$v/curriculum/evals/mechanical/persona-student" && bash page.sh "$MOD" "$OUT/pages/$v.md" >&2) || { log "page failed for $v"; exit 1; }
 done
 DMG=""
-if node -e "process.exit((require('$PS/modules/$MOD.json').damage||{}).remove?0:1)"; then
+if [ "${NO_DAMAGE:-0}" != 1 ] && node -e "process.exit((require('$PS/modules/$MOD.json').damage||{}).remove?0:1)"; then
   node "$PS/damage.js" --module "$MOD" --page "$OUT/pages/v0.md" --out "$OUT/pages/damaged.md" >&2 && DMG=damaged
 fi
 
@@ -69,11 +69,11 @@ done
 if [ ${#VS[@]} -gt 0 ] && [ "${TEACH_ONLY:-0}" != 1 ]; then
   python3 "$HERE/build-pairs.py" "$OUT/lab" "$OUT/taste" v0 "$VARS" "$MOD" >&2
   for o in blind swapped; do
-    [ -s "$OUT/taste/picks-$o.jsonl" ] || PAIRS_BATCH=2 node "$PS/pairs.js" --blind "$OUT/taste/pairs.$o.jsonl" --rules "$PS/taste-rules.md" --examples "$PS/taste-examples.md,$PS/taste-examples-cuts.md" --out "$OUT/taste/picks-$o.jsonl" >"$OUT/taste/$o.log" 2>&1 &
+    [ -s "$OUT/taste/picks-$o.jsonl" ] || EVAL_LEAN=0 PAIRS_BATCH=2 node "$PS/pairs.js" --blind "$OUT/taste/pairs.$o.jsonl" --rules "$PS/taste-rules.md" --examples "$PS/taste-examples.md,$PS/taste-examples-cuts.md" --out "$OUT/taste/picks-$o.jsonl" >"$OUT/taste/$o.log" 2>&1 &
   done
 fi
 wait
-[ ${#VS[@]} -gt 0 ] && [ "${TEACH_ONLY:-0}" != 1 ] && [ ! -e "$EVAL_BUDGET_FILE.exhausted" ] && python3 "$HERE/taste-retry.py" "$OUT/taste" "$PS/pairs.js" "$PS/taste-rules.md" "$PS/taste-examples.md,$PS/taste-examples-cuts.md" >&2
+[ ${#VS[@]} -gt 0 ] && [ "${TEACH_ONLY:-0}" != 1 ] && [ ! -e "$EVAL_BUDGET_FILE.exhausted" ] && EVAL_LEAN=0 python3 "$HERE/taste-retry.py" "$OUT/taste" "$PS/pairs.js" "$PS/taste-rules.md" "$PS/taste-examples.md,$PS/taste-examples-cuts.md" >&2
 
 log "scoring"
 LOGS="$(ls "$OUT"/students/*.json | paste -sd, -)"

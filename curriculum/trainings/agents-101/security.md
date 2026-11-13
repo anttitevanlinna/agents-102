@@ -18,7 +18,7 @@ After this module, you will be able to:
 
 ## Start here
 
-**The agent-made analysis, today:** The agents take over checking their own reach against policy and named risks. Left with you: choosing which risk to close.
+**The agent-made analysis, today:** The agents take over checking their own reach against policy and named risks. You still choose which risk to close.
 
 Start a fresh session or task at `~/Documents/agents-101/`.
 
@@ -34,11 +34,11 @@ Name what you'd want to check before letting this near a real stakeholder.
 
 ## Boundaries move all four ideas on
 
-**Context:** Anything in the context can instruct the agent, including a source it reads.
+**Context:** Anything in the context can instruct the agent, including a source it reads, so a clean output tells you nothing.
 
 **Compounding:** A skill is method that travels to every agent you build.
 
-**Control:** Boundaries: what the agent can reach, and what you cannot tell.
+**Control:** You can't tell a safe agent from its output. Set what it can reach, run the check, and write down what is left.
 
 **Agents building agents:** The agent drafted the skill from your steering.
 

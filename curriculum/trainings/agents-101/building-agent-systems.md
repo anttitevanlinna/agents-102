@@ -17,7 +17,7 @@ After this module, you can:
 
 ## Start here
 
-**The agent-made analysis, today:** From today the agents make one analysis of your challenge, and each module hands them one more part of the job. Today they take over gathering and remembering: sources go into a memory the agent keeps current. Left with you: naming the challenge and approving the plan.
+**The agent-made analysis, today:** From today the agents make one analysis of your challenge, and each module hands them one more part of the job. Today they take over gathering and remembering: sources go into a memory the agent keeps current. You still name the challenge and approve the plan.
 
 Start a fresh session or task at `~/Documents/agents-101/`, so Module 1's scrollback stays out of the way.
 
@@ -45,11 +45,11 @@ Keep the same session running; the agent has your challenge in scrollback.
 
 **Context:** Memory is context that persists. Next session the agent starts from the folder, not from a blank chat.
 
-**Compounding:** Each new source sharpens what is there. A system compounds; a chat starts from zero.
+**Compounding:** Each new source sharpens what is already there, so the system compounds.
 
-**Control:** The agent planned first and acted on your approval.
+**Control:** The agent plans first and acts on your approval.
 
-**Agents building agents:** The agent built your first agent: the memory and the scheduled run. You named the challenge.
+**Agents building agents:** The agent builds your first agent: the memory and the scheduled run.
 
 [Lecture: Compounding](lectures/compounding.md)
 
@@ -98,7 +98,7 @@ Save the run, then end this session.
 
 ## Your own agent
 
-Module 1: you picked the job. Now give your agent a memory and a schedule. The scheduled personal agent above is this step.
+For the job you picked in Module 1, give your agent a memory and a schedule: the scheduled personal agent above.
 
 ## Next
 Before the next module, build a few more agents you need. Pick by pain: a task you keep doing manually. Meeting prep and calendar triage are fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system.

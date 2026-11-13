@@ -5,6 +5,7 @@
 #    session. A default call from inside the repo loads ~56k tokens of CLAUDE.md, rules and tool
 #    schemas; this one ~6k (measured 2026-11-13).
 # 2. Model: sonnet unless the caller names one (story judge and rubric name opus on purpose).
+# 1b. EVAL_LEAN=0 skips step 1 for judges calibrated on full calls (taste pairs).
 # 3. Budget: EVAL_BUDGET calls per EVAL_BUDGET_FILE (loop.sh: one file per run). Over budget = exit 75,
 #    no API call, so retries fail fast instead of burning quota.
 set -uo pipefail
@@ -24,6 +25,9 @@ if [ -n "${EVAL_BUDGET:-}" ]; then
     touch "$f.exhausted"; exit 75
   fi
 fi
+# EVAL_LEAN=0: count and budget the call, but run it as the caller would (taste judge: calibrated that way;
+# lean calls dropped its AE101 anchor from 100% to 83%, 2026-11-13).
+if [ "${EVAL_LEAN:-1}" = 0 ]; then exec "$real" "${args[@]}"; fi
 lean=(--tools "" --strict-mcp-config --no-session-persistence --setting-sources "" --disable-slash-commands)
 case " $* " in *" --system-prompt "*) ;; *) lean+=(--system-prompt "${EVAL_SYSTEM_PROMPT:-Follow the instructions in the user message exactly and answer in the format it asks for.}") ;; esac
 dir="$(mktemp -d)"; trap 'rm -rf "$dir"' EXIT

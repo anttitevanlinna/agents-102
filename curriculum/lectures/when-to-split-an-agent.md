@@ -16,15 +16,15 @@ Three agents searched in parallel. Three argued from different seats. One sessio
 
 ## Two ways to run a team
 
-**Separate sessions (the Phase 1 move).** Each agent keeps its own context, tools and clock. You see each one work and can step into one without confusing the others.
+**Separate sessions.** Each agent keeps its own context, tools and clock. You see each one work and can step into one without confusing the others.
 
-**Helper agents in one session (the Phase 2 move).** Quick parallel thinking with a bounded return. Each helper gets one job, reports back as a file and disappears. The main session stays in charge.
+**Helper agents in one session.** Quick parallel thinking with a bounded return. Each helper gets one job, reports back as a file and disappears. The main session stays in charge.
 
 ## A framework makes it pick
 
 Without a framework, the synthesizer summarises three views, evenly weighted.
 
-Hand the synthesizer the strategy kernel (diagnosis, guiding policy, coherent actions). It then commits to one diagnosis and drops what does not serve it.
+Hand the synthesizer the strategy kernel (diagnosis, guiding policy, coherent actions). The synthesizer then commits to one diagnosis and drops what does not serve it.
 
 ## Handoffs are where work gets lost
 

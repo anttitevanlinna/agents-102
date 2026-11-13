@@ -17,7 +17,7 @@ After this module, you will be able to:
 
 ## Start here
 
-**The agent-made analysis, today:** The agents take over checking their own claims against the sources. Left with you: reading the scoreboard and keeping the judge.
+**The agent-made analysis, today:** The agents take over checking their own claims against the sources. You still read the scoreboard and keep the judge.
 
 **Session** *(new, "Module 5 - Catching hallucinations")*
 
@@ -37,7 +37,7 @@ Working folder: `~/Documents/agents-101/`.
 
 **Control:** A check has to touch the source. Asking "are you sure?" does not.
 
-**Agents building agents:** The agent set up the detectors and the judge. You adjudicated the claims.
+**Agents building agents:** The agent sets up the detectors and the judge.
 
 ## Debrief
 

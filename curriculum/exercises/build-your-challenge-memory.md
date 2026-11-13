@@ -96,7 +96,7 @@ Push back if a claim "got sharper" but the top didn't change.
 
 {{prompt:build-your-challenge-memory-8}}
 
-The agent proposes, you check, and it applies only what you approve.
+Reject proposals that miss; the agent applies the ones you approve.
 
 ## Phase 5: Close, put it to work
 

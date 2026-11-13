@@ -43,7 +43,7 @@ Keep the same session running; the agent has your challenge in scrollback.
 
 ## Debrief
 
-Five minutes. A retro, **and the first root instructions file in this directory.** The agent writes the rules every agent here reads, each traced to a session moment: what worked, what rubbed, what got repeated.
+Five minutes. A retro, **and the first root instructions file in this directory.** The agent writes the rules every agent here reads: what worked, what rubbed, what got repeated.
 
 {{prompt:a101-m2-debrief-claude-md}}
 
@@ -55,7 +55,7 @@ What the agent leaves out is often the signal. A summary that names three rules 
 
 ## Fix the output, then fix the rule
 
-> Your agent is "right" when it works. Have the agent rerun a miss before anyone fixes it. A miss that comes back every run is context the agent still lacks: sharpen the memory, tighten a rule, rewrite the prompt. You spot the next mistakes by running the system and watching where it bends.
+> Your agent is "right" when it works. A miss that comes back on a rerun is context the agent still lacks: sharpen the memory, tighten a rule, rewrite the prompt. You spot the next mistakes by running the system and watching where it bends.
 
 Watching where it bends is continuous improvement, done by hand.
 

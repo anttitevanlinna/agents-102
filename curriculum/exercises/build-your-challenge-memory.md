@@ -68,7 +68,7 @@ Ask for a plan on anything that touches many files or compounds over steps; skip
 
 *10 min*
 
-A custom agent is a markdown file of instructions, written by the agent from your answers: its purpose and rules.
+A custom agent is a markdown file of instructions: its purpose and rules.
 
 {{prompt:build-your-challenge-memory-5}}
 

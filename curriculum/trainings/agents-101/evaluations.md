@@ -37,7 +37,7 @@ The same judge keeps catching what slipped past, and the system absorbs the catc
 
 ## Debrief
 
-Five minutes. The agent reads the round-by-round trail and rewrites the generator's tactic file in place: it adds a rule the loop never reached, cuts one that fired on the wrong thing, credits no change smaller than noise, and reports what changed. The judge file stays untouched; the matching SHA shows the loop never changed it.
+Five minutes. The agent reads the round-by-round trail, sharpens the generator's tactic file in place and reports what changed. The judge file stays untouched.
 
 {{prompt:a101-m6-debrief-tactic-sharpen}}
 

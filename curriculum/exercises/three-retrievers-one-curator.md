@@ -52,7 +52,7 @@ Done when `memory/_synthesis-m3.md` names what changed.
 
 **Frameworks riffed on:**
 - One-agent-per-recurring-workflow (Bosser stance) — across workflows you build many; within a single workflow, splitting earns its keep only when access, dialect, or stance forces it. The 3 retrievers are one of those rare within-workflow cases (different access, different dialect).
-- **Owned synthesis:** "The filesystem is the meeting room" names the file-based coordination students experience here and in the bridging lecture.
+- **Owned synthesis:** agents hand off through shared files; that is the coordination students experience here and in the bridging lecture (Antti 2026-11-13: no "meeting room", no "hire").
 
 **Plug points:**
 - The three source zones — wiki / docs / internet. Prompt language is permissive (student names their wiki and doc store inline — Confluence / Notion / SharePoint wiki / Guru; OneDrive / SharePoint / Google Drive). No swap needed; the retrievers ask.
@@ -76,4 +76,4 @@ Done when `memory/_synthesis-m3.md` names what changed.
 - Decision points: if a cohort is uniformly short on internal wiki access, collapse Session 1 and Session 2 into one retriever that reads whatever they have, and spend the time saved on the next exercise; the multi-agent-shape lesson survives with two retrievers.
 - Time budget: ~28 min total. Four sessions started, prompts pasted, retrievers + synthesizer run concurrently, student watches & answers + nudges. Over 35 = retrievers sprawled; under 20 = the felt moment of concurrency didn't actually land.
 
-**View summary:** You hire three agents to fetch raw material on your challenge from wiki, documents and the open web, and a fourth to curate their findings into your memory while they run. The artifact is a memory filled by four sessions on shared files.
+**View summary:** Three agents fetch raw material on your challenge from wiki, documents and the open web, and a fourth curates their findings into your memory while they run. The artifact is a memory filled by four sessions on shared files.

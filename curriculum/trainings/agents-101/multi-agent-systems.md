@@ -1,7 +1,7 @@
 # Multi-Agent Systems
 
 ## Big Idea
-Hire three agents to search. Three more to decide. The filesystem is the meeting room.
+Several agents can work on one problem together. Split the work, run the agents in parallel, and let them hand off through shared files. Three agents search, three more decide. Handoffs are where work gets lost, so check them.
 
 ## Prework
 
@@ -29,7 +29,7 @@ Three agents search Confluence, OneDrive and practitioner articles, and three mo
 
 [Exercise: Three minds, one synthesis](exercises/three-minds-one-synthesis.md)
 
-[Lecture: When to split an agent (and how)](lectures/when-to-split-an-agent.md)
+[Lecture: How agents work together](lectures/when-to-split-an-agent.md)
 
 [Lecture: Debugging stuck agents](lectures/debugging-stuck-agents.md)
 
@@ -60,8 +60,10 @@ The synthesized briefing's correctness stays an open question today.
 {{prompt:a101-m3-homework-memory-health}}
 
 ## Key Concepts
-- Sessions on shared files, or subagents under one lead.
-- Split only where agents can't be one: access, dialect, stance.
+- Agents work together through shared files: one writes, the next reads.
+- Split where the parts differ, run them in parallel, bring them back to one place that decides.
+- Sessions on shared files, or helper agents under one lead.
+- Handoffs are where work gets lost: open the files where one agent handed to the next.
 
 ## Pre-reads before Module 4
 

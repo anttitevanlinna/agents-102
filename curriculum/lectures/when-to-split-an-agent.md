@@ -1,75 +1,61 @@
-# Lecture: When to split an agent (and how)
+# Lecture: How agents work together
 
-Two ways to split an agent: three retrievers in separate windows, three stances inside one session. When do you split, and how?
+Six agents worked on one question in this module. Three searched, three decided. None of them talked to each other. They handed off through shared files.
 
-## The unit is the recurring workflow
+## Agents hand off through shared files
 
-Build one agent per recurring workflow: a single `.md` file, guardrailed for that job. A mega-agent that does everything drifts in scope. A hundred tiny agents cost more to coordinate than they save.
+Each agent writes what it found to a file. The next agent reads the file, not the other agent's mind: `sources/` held the search, `module-3/stances/` held the three takes, `crux.md` holds the answer.
 
-Within one workflow, when does splitting pay?
+A file can be read later: by you, by another agent, by next week's run. A conversation between agents cannot.
 
-[Start with don't](slides/start-with-dont.md)
+## Split the work, run it in parallel
 
-[Split when they can't be one](slides/split-when-they-cant-be-one.md)
+Split the problem where its parts differ: a different source, a different dialect, a different stance. Give each part its own agent. Bring the parts back to one place that decides.
 
-## More agents is not more rigour
+Three agents searched in parallel. Three argued from different seats. One session applied the kernel and committed.
 
-Split for a reason, not because "three is more thorough". More agents means more prompts to tune, more noise and more coordination cost. More input does not fix a beige answer.
+## Two ways to run a team
+
+**Separate sessions (the Phase 1 move).** Each agent keeps its own context, tools and clock. You see each one work and can step into one without confusing the others.
+
+**Helper agents in one session (the Phase 2 move).** Quick parallel thinking with a bounded return. Each helper gets one job, reports back as a file and disappears. The main session stays in charge.
 
 ## A framework makes it pick
 
 Without a framework, the synthesizer summarises three views, evenly weighted.
 
-Hand the synthesizer the strategy kernel (diagnosis, guiding policy, coherent actions). The synthesizer then commits to one diagnosis and drops what does not serve it.
+Hand the synthesizer the strategy kernel (diagnosis, guiding policy, coherent actions). It then commits to one diagnosis and drops what does not serve it.
 
-## The test that catches the bluff
+## Handoffs are where work gets lost
 
-Could one prompt produce the same quality of output? If yes, write that one prompt. Single-agent is the default.
+Every split creates a handoff, and handoffs are where work goes wrong. A retriever finds two numbers and the curator keeps one. A source's internal shorthand is rewritten in public tone and loses its meaning.
 
-## Two options, each with its own territory
+Open the files where one agent handed to the next. That is where to look.
 
-**Separate sessions (the Phase 1 move).** Pick this when each agent needs its own context, tools and clock. You see each agent work and can step into one without confusing the others.
+## Split for a reason
 
-**Helper agents in one session (the Phase 2 move).** Pick this for quick parallel thinking with a bounded return. Each helper gets one job, reports back as a file and disappears. The main session stays in charge.
+Not every job needs a team. Could one prompt produce the same quality? Then write that one prompt.
 
-## Other agents are part of the tool surface
-
-One agent can call another for a different stance, source zone, or working style.
-
-**Pick:** Sessions for agents that stay alive; helper agents for in and out. Different tools: sessions. Shared tools: helper agents.
-
-## Seams are where it fails
-
-Splitting creates handoffs, and handoffs are where work goes wrong. A retriever finds two numbers and the curator keeps one. A source's internal shorthand is rewritten in public tone and loses its meaning.
-
-Check where the pieces meet.
-
-## Three agents is not three times as good
-
-Multiple agents give *three different views of the same thing*, and cost coordination. If one well-prompted agent does the job, write that prompt.
+Split where the parts cannot be one agent: different access, a different dialect, a different stance. One agent per recurring workflow; a team only where the workflow divides.
 
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
 
-**Laws moved in from Key Concepts (2026-09-24, Antti-directed).** `## A framework makes it pick` and `## Seams are where it fails` carry what `multi-agent-systems.md` § Key Concepts used to state; the module list is now four handles that point here.
+**Decision note 2026-11-13 (Antti: M3's real aims are how multiple agents work together, divide and conquer, plus a home for goals that fit nowhere else).** Lecture retitled *How agents work together*; slides: shared-file handoffs, split and run in parallel, two ways to run a team, a framework makes it pick, handoffs are where work gets lost, split for a reason. Start-with-don't and the three split criteria are now one caveat slide (`## Split for a reason`); the slide files `start-with-dont` and `split-when-they-cant-be-one` are no longer included here. Wording calls: no "hire", no "meeting room"; agent terms. Big Idea stated cold against the new strategy line: 60 → 74 (lean scorer, n=24 each).
 
-**Time:** 10 minutes.
+**Time:** 8 minutes.
 
-**Slides (2026-09-23, blend § Titles M3):** Eight `##` slides carry the lecture, including the blend's two named additions, `## More agents is not more rigour` and `## Other agents are part of the tool surface`. Learning A's beige counter-voice sits under the first of those. The merged skeleton's three other M3 headers (`## Three stances beat one summarizer`, `## Left alone, it averages to beige`, `## A framework makes it pick`) belong to `multi-agent-systems.md` § Key Concepts, which is where those lines are; a header for them here would sit over nothing (`check_lectures.md §4` truth clause).
-
-**Placement in module:** After the exercise, before the Debrief. The exercise proves both shapes work; the lecture names them and draws the boundary. Per the no-telling-precedes-doing rule, the "start with don't" default is safer delivered after the exercise — pre-exercise it sounds like a disclaimer, post-exercise it lands.
+**Placement in module:** After the exercises, before the Debrief. The exercises run both shapes; the lecture names how they worked together and where the handoffs break.
 
 <!-- backing -->
 
 Claims
 - `the-unit-is-the-recurring-workflow` · vision · "The unit is the recurring workflow." ← none-owed
-- `inside-a-workflow-start-with-dont` · vision · "Inside a workflow, start with don't." ← none-owed
-- `split-on-different-access` · vision · "Each agent needs different data, different tools, different credentials." ← none-owed
-- `split-on-different-dialect` · vision · "The material in each source speaks a different language" ← none-owed
-- `split-on-different-stance` · vision · "The agents should actively disagree with each other." ← none-owed
-- `sessions-versus-subagents` · vision · "Sessions when you want each agent to stay alive for a while. Subagents when you want them in and out." ← none-owed
+- `agents-hand-off-through-shared-files` · vision · "The next agent reads the file, not the other agent's mind" ← none-owed
+- `split-where-parts-cannot-be-one` · vision · "Split where the parts cannot be one agent: different access, a different dialect, a different stance." ← none-owed
+- `handoffs-are-where-work-gets-lost` · vision · "Every split creates a handoff, and handoffs are where work goes wrong." ← none-owed
 
 Sources
 (none. Every claim is a Bosser design stance about how many agents a workflow wants. No practitioner count, no measured result, and none should be invented for it.)

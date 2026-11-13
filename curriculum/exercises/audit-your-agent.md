@@ -86,7 +86,7 @@ The narrow question the expert can answer is sitting in the report. Walk in with
 
 **Prototype vs production.**
 
-We did this for one risk. Risk control, done for every risk you found, separates a prototype from a production agent. You must do the work.
+We did this for one risk. A production agent has a check or a closed door wherever its actions cannot be undone, and only a light check where redo is cheap. You must do the work.
 
 ## Take stock of the loop you ran
 

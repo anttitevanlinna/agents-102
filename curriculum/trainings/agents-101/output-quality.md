@@ -49,19 +49,19 @@ Correct the agent where a rule is vague: *"name the evidence roster"*, *"say whe
 
 An agent action starts as text: a mail, a ticket update, a CRM change. Wrong text becomes a wrong action.
 
-For actions that matter, the agent proposes, you check the proposal against the judge or the source, then the agent applies it.
+For actions that matter, the agent proposes, the judge or a lookup in the source checks the proposal, and the agent applies only what passes.
 
-## Which rung has this action earned?
+## Which check would let this action go without you?
 
 Read [What is an Agent, The autonomy ladder](trainings/agents-101/supplementary/what-is-an-agent.md#the-autonomy-ladder-what-may-the-agent-do) before you decide what the agent may do next.
 
-In a human-in-the-loop check, the expert reviews the proposed action, its evidence, and the known limit of the judge that passed it.
+A judge you have tested clears what can be redone; where an action cannot be undone, the expert also reviews the proposal, its evidence, and the judge's known limit.
 
 ## Key Concepts
-- Grounded means traceable to a specific file, number or quote. Stay connected to the source.
+- Grounded means traceable to a specific file, number or quote. Where the sources end, the agent keeps writing in the same voice.
 - Asking the agent "are you sure?" returns another fluent answer. A check has to touch the source.
-- Run candidate detectors on your own output and read the scoreboard.
-- The winning judge names its own limit. Wrong sources, framing and strategic choices stay outside it.
+- The agent runs candidate detectors on your own output; you read the scoreboard and keep the winner.
+- The judge passed one benchmark. It names its own limit: wrong sources, framing and strategic choices stay outside it.
 - Reusable pattern: candidates, benchmark, scorer, winner.
 
 ## Pre-reads before Module 6

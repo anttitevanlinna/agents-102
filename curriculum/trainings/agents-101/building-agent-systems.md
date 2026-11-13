@@ -21,7 +21,7 @@ Start a fresh session or task at `~/Documents/agents-101/`. Module 1's scrollbac
 
 Your `memory/`, `sources/` and `agents/` folders are empty from prework. Module 1's files stay out of this build. The root instructions file comes in the Debrief.
 
-What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you?
+What's the difference between asking an agent a question and having an agent keep a knowledge base that every later agent reads?
 
 ## Name the challenge you're carrying
 
@@ -43,19 +43,19 @@ Keep the same session running; the agent has your challenge in scrollback.
 
 ## Debrief
 
-Five minutes. A retro, **and the first root instructions file in this directory.** The agent writes the rules file from the session: what worked, what rubbed, what got repeated.
+Five minutes. A retro, **and the first root instructions file in this directory.** The agent writes the rules every agent here reads, each traced to a session moment: what worked, what rubbed, what got repeated.
 
 {{prompt:a101-m2-debrief-claude-md}}
 
 ## Push back on the summary
 
-Push back on anything in the agent's summary that doesn't match your sense of the work. *"No, that rule's too strict."* *"You missed the bit where we had to regenerate three times because of X."*
+Push back on anything in the agent's summary that doesn't match your sense of the work. *"Keep the draft I accepted as an example, beside the fixes."* *"You missed the bit where we had to regenerate three times because of X."*
 
 What the agent leaves out is often the signal. A summary that names three rules and skips the messy fourth, where you re-prompted twice, is the tell.
 
 ## Fix the output, then fix the rule
 
-> Your agent is "right" when it works. Every miss is context the agent still lacks. Sharpen the memory, tighten a rule, rewrite the prompt. You spot the next mistakes by running the system and watching where it bends.
+> Your agent is "right" when it works. Have the agent rerun a miss before anyone fixes it. A miss that comes back every run is context the agent still lacks: sharpen the memory, tighten a rule, rewrite the prompt. You spot the next mistakes by running the system and watching where it bends.
 
 Watching where it bends is continuous improvement, done by hand.
 
@@ -85,7 +85,7 @@ Your folder holds your challenge, your sources and your rules. A better model re
 Save the run, then end this session.
 
 ## Next
-Before the next module, build a few more agents you need. Pick by pain: a task you keep doing manually. Meeting prep and calendar triage are fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system.
+Before the next module, have the agent build a few more agents you need. Pick by pain: a task you keep doing manually. Meeting prep and calendar triage are fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system.
 
 <!-- maintainer -->
 

@@ -18,7 +18,7 @@ Example run note: *round 1 flagged 11 claims, round 2 flagged 6, round 3 flagged
 
 *5 min*
 
-Ask the agent to generate one briefing and score it with the judge from Module 5.
+Ask the agent to generate a fresh briefing on the question in ./crux.md and score it with the judge from Module 5.
 
 {{prompt:eval-loop-1}}
 

@@ -37,7 +37,7 @@ The same judge keeps catching what slipped past, and the system absorbs the catc
 
 ## Debrief
 
-Five minutes. The agent reads the round-by-round trail, sharpens the generator's tactic file in place and reports what changed. The judge file stays untouched.
+Five minutes. The agent reads the round-by-round trail and rewrites the generator's tactic file in place: it adds a rule the loop never reached, cuts one that fired on the wrong thing, credits no change smaller than noise, and reports what changed. The judge file stays untouched.
 
 {{prompt:a101-m6-debrief-tactic-sharpen}}
 
@@ -57,7 +57,7 @@ The artifact: the sharpened `./generation-tactic.md` plus one line in the Module
 
 ## Bring to Module 7
 
-**Monday's first five agent calls, written down**, using [Agent Trigger List](../../trainings/agents-101/supplementary/agent-trigger-list.md). Pick one call that should run through the eval loop before anyone relies on it, and write the trigger into your working notes.
+**Your first five agent calls at work, written down**, using [Agent Trigger List](../../trainings/agents-101/supplementary/agent-trigger-list.md). Pick one call the eval loop's checks could let run without you, and write the trigger into your working notes.
 
 The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) and [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) are optional references.
 

@@ -1,5 +1,7 @@
 # Compounding yarn in Agents 101
 
+**Superseded as the concept by `yarn-theory.md` (v3): compounding is the outer loop that selects and cuts. This file keeps the AE101 source list, the M2/M6 page log and the passages sent to other page holders.**
+
 Read with `README.md` (rules, fixer brief, checks). Supersedes the 2026-11-13 18:58 version, whose spine ("the next run starts from what the last one left") was persistence, not compounding (Antti: "what is compounding?", "this is not kiddie stuff. think agentic").
 
 ## 1. The concept, read agentically
@@ -33,3 +35,19 @@ Shape changes every module (add, place, sharpen, fill, encode, subtract, automat
 ## 5. Reject list for the critic
 
 Shallow: saving, keeping, persistence, "starts from", files "staying". Additive: any new sentence, label, recap, callout. Not agentic: the student writing or polishing rules by hand; "you build", "you sharpen" where the agent does it. Same size twice: a module repeating the previous module's target.
+
+## 6. M2 and M6 page log (this thread holds both pages, all four yarns)
+
+Applied 2026-11-13, each passed a fresh critic that read only AE101 + `yarn-theory.md` (`critic-compounding.js`), wording finalised by the holder:
+- M2 Start here: an agent that keeps "a knowledge base that every later agent reads" (context, ABA).
+- M2 Debrief: "the rules every agent here reads, each traced to a session moment" (context; evidence over taste).
+- M2 push-back: "Keep the draft I accepted as an example, beside the fixes." (good examples beside corrections).
+- M2 Fix the output slide: "Have the agent rerun a miss before anyone fixes it. A miss that comes back every run is context the agent still lacks" (recurrence, not noise; the agent reruns).
+- M2 Next: "have the agent build a few more agents" (ABA).
+- M2 slide only-what-someone-wrote-down: context writer's figure `agent-picture-memory` (chat context gone at close, files read again).
+- M6 Debrief: adds a rule, cuts one that fired on the wrong thing, credits no change smaller than noise, reports (outer loop; true to `a101-m6-debrief-tactic-sharpen`).
+- M6 eval-loop Phase 1: fresh briefing "on the question in ./crux.md" (closes the M3 open run under the M5 sensor).
+- M6 evals-as-steering: "Rounds 2 and 3 keep the judge; the generator reads the sharper tactic." (context writer: feedback is context).
+- M6 Bring to Module 7: "Pick one call the eval loop's checks could let run without you" (control: which check licenses it); "Monday" removed.
+Dropped: M2 "model will change" expiry line (nothing in M2 retires a rule; claim unsupported).
+Open, needs prompt-ok: no debrief prompt asks "fire, help, or hurt?" except M6's remove step; M5 debrief should set the judge running, not add reminder rules (brief section 4).

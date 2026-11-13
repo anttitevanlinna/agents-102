@@ -18,7 +18,7 @@ One briefing, thirty claims, four detectors, one scorer: the scoreboard named wh
 
 The Module 5 judge goes into a loop. The judge stays fixed. The generator changes.
 
-Round 1 produces a briefing. The judge scores it and writes per-claim feedback. The main session rewrites `./generation-tactic.md` from the feedback. Rounds 2 and 3 run under the same judge with the sharper tactic.
+Round 1 produces a briefing. The judge scores it and writes per-claim feedback. The main session rewrites `./generation-tactic.md` from the feedback. Rounds 2 and 3 keep the judge; the generator reads the sharper tactic.
 
 Walk away. On return, the notes list flagged claims, added tactic rules, whether the score improved, and whether the judge file stayed byte-identical.
 

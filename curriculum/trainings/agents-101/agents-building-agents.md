@@ -63,9 +63,11 @@ Your plan is a set of assumptions: label them, start the concurrent pieces, and 
 
 Every improvement your agents make is learning that compounds. How far this goes depends on how fast you and your organisation learn.
 
-Everyone wants their hundred agents. The one that matters in six months is one nobody in this room has thought of yet. You can build it.
+We could have spent today building you one impressive agent. It would have demoed well and been the wrong thing to sell you. Everyone wants their hundred agents; the one that matters in six months is one nobody in this room has thought of yet. What you take out of here is the ability to build it.
 
 <!-- maintainer -->
+
+**Against-interest line in § Next (2026-11-13).** "We could have spent today building you one impressive agent… the wrong thing to sell you" is the stance beat; present before compaction 149d513c. Big Idea stated cold unchanged with it (n=12).
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@194c81b0 strategy@4d9c4af2 slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

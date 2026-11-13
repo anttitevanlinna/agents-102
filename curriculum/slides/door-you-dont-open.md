@@ -7,4 +7,4 @@ Should the agent have write access to that system? If not, scope down before you
 
 Every door you don't open is a residual risk you don't have to name, mitigate or re-test.
 
-Expect it to cost you a feature.
+Expect it to cost you a feature. It costs whoever sells you agents too, this training included: an agent that reaches less is a smaller thing to sell, and it is still the right call.

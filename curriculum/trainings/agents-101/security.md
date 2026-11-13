@@ -53,7 +53,7 @@ To share, install the skill in a teammate's runtime. Their agent loads the same 
 ## Key Concepts
 - No certainty: assess, mitigate, reassess the residual, decide.
 - Anything the agent reads can instruct it, a source included.
-- "I can't tell" marks a row no check can settle yet.
+- "I can't tell" is a real answer.
 - Mitigations add to security controls, never replace them.
 
 ## Bring to Module 5

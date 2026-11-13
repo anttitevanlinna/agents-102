@@ -8,9 +8,9 @@ The same loop can improve the agent that improves your agents, as long as the ju
 
 ## You described it; something else built it
 
-The parts of an agent stay the same: context, a goal, tools, checks, a boundary, a loop. You decide each one. Your agent assembles them from your description.
+The parts of an agent stay the same: context, a goal, tools, checks, a boundary, a loop. You decide each one. Your coding agent assembles them from your description.
 
-Your agent is an agent too, so it sharpens its own tools. The tool that builds tools compounds.
+Your coding agent is itself an agent, so the builder sharpens its own tools. The tool that builds tools compounds.
 
 [The parts hold; the model rotates](slides/parts-hold-model-rotates.md)
 

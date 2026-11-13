@@ -46,14 +46,14 @@ Five minutes. Your agent improves your agent. It reviews the session, rewrites t
 
 ## Push back on the summary
 
-The agent is auditing its own work, so the judge sits inside what it judges. If the summary sounds too clean, ask: *"Name one critique raised in the session that did not change the rewritten file. Quote the critique and the unchanged line."*
+The agent is auditing its own work. If the summary sounds too clean, ask: *"Name one critique raised in the session that did not change the rewritten file. Quote the critique and the unchanged line."*
 
 Some unresolved items should stay unresolved.
 
 ## Key Concepts
-- Your agent builds what you can describe and test.
-- Your agent improves your other agents while the judge stays out of reach of the agent it judges.
-- Improvements a check has measured stay on disk; the next agent starts from them.
+- Describe the agent; the coding agent builds it.
+- Your agent can improve your agent: the fixed-judge loop, now pointed at the system itself.
+- Every improvement stays on disk; the next agent starts from it.
 - What multiplies your work is how fast you learn, not how many agents you own.
 - Parts hold; the model rotates.
 
@@ -61,9 +61,9 @@ Some unresolved items should stay unresolved.
 
 Your plan is a set of assumptions: label them, start the concurrent pieces, and test the uncertain ones on your own work before the team's.
 
-An improvement your agents make counts as learning once a check they cannot touch has measured it. How far this goes depends on how fast you and your organisation learn.
+Every improvement your agents make is learning that compounds. How far this goes depends on how fast you and your organisation learn.
 
-We could have spent today building you one impressive agent. It would have demoed well and been the wrong thing to sell you. Everyone wants their hundred agents; the one that matters in six months is one nobody in this room has thought of yet. What you take out of here is the ability to describe it and test it.
+We could have spent today building you one impressive agent. It would have demoed well and been the wrong thing to sell you. Everyone wants their hundred agents; the one that matters in six months is one nobody in this room has thought of yet. What you take out of here is the ability to build it.
 
 <!-- maintainer -->
 

@@ -68,7 +68,7 @@ Ask for a plan on anything that touches many files or compounds over steps; skip
 
 *10 min*
 
-A custom agent is a markdown file of instructions, written by the agent from your answers: its purpose and rules.
+A custom agent is a markdown file of instructions: its purpose and rules.
 
 {{prompt:build-your-challenge-memory-5}}
 
@@ -96,7 +96,7 @@ Push back if a claim "got sharper" but the top didn't change.
 
 {{prompt:build-your-challenge-memory-8}}
 
-The agent proposes, you check, and it applies only what you approve.
+Reject proposals that miss; the agent applies the ones you approve.
 
 ## Phase 5: Close, put it to work
 

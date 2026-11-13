@@ -3,6 +3,22 @@
 Rubric: `story-depth-rubric.md`. Goal spec: `trainings/agents-101/story-depth.md`. One `## Run`
 section per run, newest first; per-judge reports under `story-depth/`.
 
+## Agents 101, run r5 and the Oct 8 course rescored, 2026-11-13
+
+Same prompt (`story-depth/full-bench-prompt.a101.md`), 3 Opus judges each, paired with AE101. The Oct 8 course is commit 3fe1ac36, the text behind the first full-training 86; under today's prompt it reads 79, so the 86 does not compare with later runs.
+
+| Factor | Oct 8 rescored (j1/j2/j3) | median | r4 (Oct 31) | r5 today (j1/j2/j3) | median |
+|---|---|---|---|---|---|
+| Frame | 83/84/86 | 84 | 82 | 82/80/84 | 82 |
+| Narrative | 85/84/84 | 84 | 83 | 83/82/85 | 83 |
+| Point of view | 58/55/50 | 55 | 74 | 80/84/83 | 83 |
+| Stance | 89/88/90 | 89 | 86 | 84/83/86 | 84 |
+| Depth | 88/83/84 | 84 | 82 | 81/82/89 | 82 |
+
+Point of view rose with Antti's own voice placed in M2, M5, M6 (spar notes, bosser articles, AE101 story-of-module-6) and is no longer the weakest factor. Stance is where the Oct 8 text still wins: judges quote its two against-interest lines (M4 door-you-dont-open, M8 § Next), both lost in compaction.
+
+Judge files: `story-depth/a101-full-r5.judge-{1,2,3}.md`, `story-depth/a101-oct8-rescored.judge-{1,2,3}.md`.
+
 ## Run `a101-full-r4`, 2026-11-02: after pass 2 (M4 hands-on first, M5 rescue lived, M6 judge-input fixes)
 
 Build 988a776a. Same prompt and protocol as r3.

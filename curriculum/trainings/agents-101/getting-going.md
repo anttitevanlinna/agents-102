@@ -40,7 +40,7 @@ The agent updates the file and summarises the changes. Expect the generation rul
 
 The LLM is generous to a rules file it just helped write. Push back on anything that doesn't match your sense of the work.
 
-Each round sharpens the file: do the work → capture → reflect → sharpen. Repeat on every rules file.
+Each round the agent turns the work into sharper rules and drops what the work disproved: do the work → capture → reflect → sharpen. Repeat on every rules file.
 
 ## Get a cold read
 
@@ -53,7 +53,7 @@ Where the critic sees generic, your context is thin: add one sharp detail, then 
 ## Key Concepts
 - Context is the brush: what you give the agent shapes the output.
 - Output got specific because the context did.
-- Guardrails are context you can reuse.
+- Guardrails are context the agent reuses on the next run.
 - Your domain expertise is the test.
 
 ## Bring to Module 2

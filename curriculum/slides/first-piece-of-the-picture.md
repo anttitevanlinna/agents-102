@@ -1,7 +1,9 @@
 ## The first piece of the picture
 <!--slide:first-piece-of-the-picture-->
 
-Context is the first piece of the agent. Tools, goals, checks, boundaries, and loops come later and depend on it.
+Context is the first piece of the agent. Tools, goals, checks, boundaries and loops come later and run on it.
+
+{{figure:agent-picture-context}}
 
 <!-- maintainer -->
 

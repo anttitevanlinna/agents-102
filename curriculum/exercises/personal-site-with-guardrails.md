@@ -70,7 +70,7 @@ Ask the agent to compare versions and name three generic claims.
 
 LLMs go easy on their own output. If picks come back soft, ask the agent to over-flag with no charity. Or open a fresh task, paste just the Phase 1 site, and run the same prompt cold.
 
-The three answers are the LLM's guesses to fill gaps: what most LinkedIn profiles of people like you say. Observe only.
+The three answers show where the context ended and the LLM filled in what most LinkedIn profiles like yours say. Observe only.
 
 ## Phase 6: Free iteration
 
@@ -88,13 +88,13 @@ Capture the move so a fresh agent can repeat it on someone else's bio.
 
 {{prompt:personal-site-with-guardrails-6}}
 
-Open `module-1/personal-brand-generation.md` and read the first two or three rules. The agent reads the file when a future personal-brand task points to it. Push back on anything that doesn't match what you did.
+Open `module-1/personal-brand-generation.md` and read the first two or three rules. The next agent on a personal-brand task reads the file and starts from what it holds. Push back on anything that doesn't match what you did.
 
 ## See the mechanism repeat in every phase
 
 **What happened:**
 
-The agent reads the context you put ahead of the task. Your LinkedIn, colleague-guide frame, strengths and mirror-list were all context. The more specific the context, the more the output is yours.
+The agent reads everything in the session: your LinkedIn, the colleague-guide frame, strengths, the mirror-list and the site it wrote last. The more specific the context, the more the output is yours.
 
 ## Take the context move past this site
 

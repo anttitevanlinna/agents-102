@@ -1,5 +1,5 @@
 <figure class="diagram">
-<svg viewBox="0 0 1200 560" role="img" aria-label="The agent picture with only one piece drawn: context. Everything so far goes up to the model every turn: your messages. The rest of the picture, the model's tools, the boundary, the goal and the loop, is still faint." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
+<svg viewBox="0 0 1200 560" role="img" aria-label="The agent picture with only its context drawn: your messages, and the tool results appended after each step, such as the page it just wrote. Everything so far goes up to the model every turn, and what the agent did comes back into the same context. The model, the loop, the tools and the boundary are still faint." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
 <defs><marker id="a101-hpc-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f6b6b"/></marker><marker id="a101-hpc-ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f6b6b"/></marker></defs>
 <rect x="0.5" y="0.5" width="1199" height="559" rx="7" fill="#efe6d2"/>
 <rect x="12" y="12" width="1176" height="536" fill="none" stroke="#d6c8a3" stroke-width="1"/>
@@ -55,8 +55,6 @@
 <path d="M 706 349 L 900 349" fill="none" stroke="#2f6b6b" stroke-width="2" marker-end="url(#a101-hpc-ah2)"/>
 <path d="M 866 340 L 866 358 M 874 340 L 874 358" fill="none" stroke="#1f1a13" stroke-width="2"/>
 <text x="870" y="333" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="9" letter-spacing="1" fill="#1f1a13">ALLOWED?</text>
-<path d="M 964 396 L 964 478 L 296 478" fill="none" stroke="#2f6b6b" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a101-hpc-ah2)"/>
-<text x="630" y="473" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="9.5" fill="#786c56" paint-order="stroke" stroke="#efe6d2" stroke-width="4">the result, appended to the conversation</text>
 <text x="922" y="212" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12" letter-spacing="2.5" fill="#1f1a13">TOOLS</text>
 <text x="922" y="228" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">what it can call</text>
 <rect x="912" y="244" width="104" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
@@ -78,13 +76,6 @@
 <text x="1104" y="491" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#a05a2c">private notes</text>
 <rect x="120" y="330" width="166" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
 <text x="203" y="349" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">instructions, rules</text>
-<rect x="120" y="406" width="166" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
-<text x="203" y="425" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">tool results</text>
-<g stroke="#2f6b6b" stroke-width="1.3" fill="#efe6d2">
-<rect x="196" y="448" width="34" height="12" rx="1.5"/><path d="M 202 452 h 22 M 202 456 h 12" stroke="#786c56" stroke-width="1"/>
-<rect x="191" y="458" width="34" height="12" rx="1.5"/><path d="M 197 462 h 22 M 197 466 h 12" stroke="#786c56" stroke-width="1"/>
-<rect x="186" y="468" width="34" height="12" rx="1.5"/><path d="M 192 472 h 22 M 192 476 h 12" stroke="#786c56" stroke-width="1"/>
-</g>
 <text x="140" y="60" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12.5" letter-spacing="3" fill="#a05a2c">YOU, ONE LEVEL UP</text>
 <text x="140" y="78" font-family="Inter,-apple-system,sans-serif" font-size="10.5" fill="#4a4234">you draw the wall: what you give it, what you keep back</text>
 <circle cx="205" cy="104" r="8" fill="none" stroke="#a05a2c" stroke-width="1.8"/>
@@ -99,10 +90,14 @@
 <text x="172" y="243" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">your message: what it works toward</text>
 <text x="600" y="547" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="11" font-style="italic" fill="#2f6b6b">Inside the wall is what you give it. Outside is what you keep back.</text>
 </g>
+<path d="M 964 396 L 964 478 L 324 478 C 302 478 296 458 292 440" fill="none" stroke="#2f6b6b" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a101-hpc-ah2)"/>
+<text x="630" y="473" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="9.5" fill="#786c56" paint-order="stroke" stroke="#efe6d2" stroke-width="4">the result, appended to the conversation</text>
 <path d="M 288 400 C 350 380 430 310 492 262" fill="none" stroke="#2f6b6b" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a101-hpc-ah2)"/>
 <text x="120" y="300" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12" letter-spacing="2.5" fill="#1f1a13">CONTEXT</text>
 <text x="120" y="316" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">the conversation so far</text>
 <rect x="120" y="368" width="166" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
 <text x="203" y="387" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">your messages</text>
+<rect x="120" y="406" width="166" height="30" rx="4" fill="#efe6d2" stroke="#2f6b6b" stroke-width="1.6"/>
+<text x="203" y="425" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10.5" fill="#1f1a13">tool results</text>
 </svg>
 </figure>

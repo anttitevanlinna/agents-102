@@ -1,4 +1,4 @@
-// critique.js <slides.json> <out.json> — one Sonnet call: writing + taste critique of each "after" text.
+// critique.js <slides.json> <out.json>  (THEME=... overrides the theme line) — one Sonnet call: writing + taste critique of each "after" text.
 const fs=require('fs'),{spawnSync}=require('child_process');
 const R=require('path').resolve(__dirname,'../../../..'), C=process.env.AGENTS_CORE_DIR?process.env.AGENTS_CORE_DIR+'/memory':require('path').resolve(R,'../agents-102-core/memory'), P=R+'/curriculum/evals/mechanical/persona-student';
 const slides=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
@@ -17,7 +17,7 @@ ${rd(P+'/taste-examples-cuts.md')}
 VOICE TARGET (AE101 lecture, the author's best):
 ${ae}
 
-THE TASK THE EDITS SERVE: align existing slides on one common theme, the agents taking over the making of one analysis of the student's challenge, part by part, with context, compounding, control and agents building agents as recurring ideas. Say it in different ways. Add no content: an "after" may not be longer than its "before" in sentences, and must not talk about the course itself, point "above"/"below", or narrate what the student did.
+THE TASK THE EDITS SERVE: align existing slides on one common theme: ${process.env.THEME||"the agents taking over the making of one analysis of the student's challenge, part by part, with context, compounding, control and agents building agents as recurring ideas"}. Say it in different ways. Add no content: an "after" may not be longer than its "before" in sentences, and must not talk about the course itself, point "above"/"below", or narrate what the student did.
 
 SLIDES (before = current text, after = proposed):
 ${JSON.stringify(slides,null,1)}

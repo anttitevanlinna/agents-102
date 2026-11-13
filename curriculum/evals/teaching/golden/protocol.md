@@ -1,5 +1,7 @@
 # Real-learner golden set: protocol
 
+> **Dropped 2026-11-13 (maintainer: real learners are out of scope for this project).** Kept for the record; nothing waits on it. The teaching number stays a simulated-student measure, guarded by the damaged-copy check and the persona calibration (`../../personas/calibrate.py`).
+
 Goal: 5 real learners, one module, their own words to the cold question. It answers two things the simulation cannot: do simulated students state the target more or less often than real ones, and does the scorer agree with the trainer on real answers.
 
 ## Module

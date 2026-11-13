@@ -16,7 +16,7 @@
 | `score.js --in answers.jsonl` | Target stated per module and group; with `expect` fields it runs the scorer self-check; with trainer `label` fields it reports agreement |
 | `damage-target.js` | Sanity copy: a judge lists every beat that states or practises the target (cached in `carriers`), those beats become generic padding, headings included |
 | `classifier-check.jsonl` | 40 hand-written answers: per module a plain right answer, a messy right answer, a different idea from the same module, a generic line, a word salad of the target's terms |
-| `golden/` | Real-learner protocol and the trainer's capture page |
+| `golden/` | Real-learner protocol and capture page (dropped 2026-11-13, kept for the record) |
 
 Simulated students come from `mechanical/persona-student/experience.js` via `loops/run-students.sh`. **Panel: 12 per module and version** (maintainer, 2026-11-06) = six personas × 2 repeats, the default of `run-students.sh`. A second 12 (`REPEATS=4`, which reuses the first 12) only for a 10 to 15 point gap on a strategy-level call.
 
@@ -83,8 +83,8 @@ One week's quota went in two days (11-06 to 11-07): about 33,000 headless calls.
 - **Protocol now:** students run at most 8 at a time (`STUDENT_JOBS`), one page at a time, and each failed run is retried twice. A page with fewer students than the panel, or a failed probe or score, fails the loop with `INCOMPLETE` (rerun the same command; finished runs are reused) and the report says "do not rank on it". The scorer uses 4 restatements by default (`TEACH_K`).
 - **Gap that counts, n=12 per page (default since 2026-11-06).** Splitting the four M3 runs into sixteen 12-student halves (six personas × 2) gives 12.5 to 30.2 around a mean of 22, SD 5.1. Two pages then differ by chance with SD about 7, so **a gap over 15 points counts**. For 10 to 15 points on a strategy-level call, add a second 12 per page and pool (n=24: SD 2.4, a 10-point gap counts). Under 10 is noise. M3 is a mid-range, borderline module, so this is the worst case; pages scoring near 0 or 100 are tighter. A ±3.5 band at n=12 understates the noise: one page's number moves about ±5 (SD), ±10 over repeat runs.
 - Numbers from the old 0/1 rule or from incomplete cells are not comparable to new ones: rescore them (`score.js` on the same answers) before comparing.
-- Simulated students are not calibrated against real ones. `golden/protocol.md` is the check: 5 real learners on M1.
-- Keyword strings still pass 3 of 16 times. The trainer's marks in the golden set will show if real answers do this.
+- Simulated students are not calibrated against real ones, and will not be: the real-learner protocol (`golden/`) was dropped on 2026-11-13. The guards are the damaged-copy check and the persona calibration (`../personas/calibrate.py`).
+- Keyword strings still pass 3 of 16 times.
 - The cold probe reads the student's own notes, written with the page in view. It measures what the student wrote down as they went, not recall after a week.
 - The capture page keeps a copy of the Big Ideas for display; republish it after the strategy file changes.
 

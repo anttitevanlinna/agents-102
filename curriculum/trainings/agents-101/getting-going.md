@@ -82,7 +82,7 @@ Save the prework, end this session, then start Module 2 fresh at `~/Documents/ag
 
 ## Your own agent
 
-Pick the job: one recurring piece of work where output came out generic. Each module from here hands one more part of that job to your agent.
+Pick one job you do every week where LLM output comes out generic. That job becomes your own agent's.
 
 ## Next
 The agent re-reads the output file next time.

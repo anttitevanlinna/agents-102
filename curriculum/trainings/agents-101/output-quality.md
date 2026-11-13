@@ -84,7 +84,7 @@ End this session once the judge is saved. Module 6 starts fresh in `~/Documents/
 
 ## Your own agent
 
-Module 4: your agent ran the security skill on itself. Now have it check its own claims against a source.
+Your own agent passed its security check. Now make it check its own claims against one source.
 
 ## Next
 You can spot ungrounded output with a judge. Next, the judge runs without you at the keyboard: it stays fixed while the generation improves under its feedback.

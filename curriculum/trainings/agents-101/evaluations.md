@@ -77,7 +77,7 @@ Once the trigger is written, end this module's session or task. Module 7 starts 
 
 ## Your own agent
 
-Module 5: your agent checks its own claims against a source. Now put a fixed judge on its output and let it improve under it.
+Your own agent checks its claims. Put a fixed judge on its output and let it improve under it.
 
 ## Next
 The judge stays fixed, so the loop keeps pressure on the generator while you are away.

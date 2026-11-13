@@ -82,7 +82,7 @@ Once the files are saved to disk, end this session. Module 5 starts fresh at `~/
 
 ## Your own agent
 
-Module 3: you decided whether the job needs more than one agent. Now have your agent run the security skill on itself.
+Your own agent has a memory, a schedule, maybe a helper. Point the security skill at it.
 
 ## Next
 Can you trust what the agent says inside its scope?

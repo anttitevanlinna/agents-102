@@ -64,7 +64,7 @@ Who gets your context, who gets a skill, who wants only the output, and who woul
 
 ## Your own agent
 
-Module 6: a fixed judge watches your agent's output. Now decide who else gets its context, a skill, its output, or an interface.
+Your own agent improves under a fixed judge. Who else gets its context, a skill, its output, or a way to ask it?
 
 ## Next
 

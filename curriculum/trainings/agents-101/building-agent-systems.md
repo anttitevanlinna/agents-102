@@ -98,7 +98,7 @@ Save the run, then end this session.
 
 ## Your own agent
 
-For the job you picked in Module 1, give your agent a memory and a schedule: the scheduled personal agent above.
+Give the job you picked in Module 1 a memory and a schedule, the way today's agent got one.
 
 ## Next
 Before the next module, build a few more agents you need. Pick by pain: a task you keep doing manually. Meeting prep and calendar triage are fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system.

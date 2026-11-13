@@ -71,7 +71,7 @@ Some unresolved items should stay unresolved.
 
 ## Your own agent
 
-Module 7: you decided who gets what from your agent. Now have your agent improve it. Then show it doing the job end to end: one real task, one thing it learned, one check it passes.
+Have your coding agent improve your own agent. Then show it doing the job end to end: one real task, one thing it learned, one check it passes.
 
 ## Next
 

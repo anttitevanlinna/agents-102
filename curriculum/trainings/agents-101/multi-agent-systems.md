@@ -89,7 +89,7 @@ An agent that works across connected systems has access to those systems.
 
 ## Your own agent
 
-Module 2: your agent got a memory and a schedule. Now decide whether its job needs more than one agent. Default: it does not.
+Your own agent has a memory and a schedule. Does its job need a second agent? Usually not. Split only where the parts differ.
 
 ## Next
 Until Module 4, keep working on your real problem: add an agent for a critical dependency, or a plan visualisation.

@@ -3,7 +3,7 @@ const fs=require('fs'),{spawnSync}=require('child_process');
 const R=require('path').resolve(__dirname,'../../../..'), C=process.env.AGENTS_CORE_DIR?process.env.AGENTS_CORE_DIR+'/memory':require('path').resolve(R,'../agents-102-core/memory'), P=R+'/curriculum/evals/mechanical/persona-student';
 const slides=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
 const rd=f=>fs.readFileSync(f,'utf8');
-const ae=rd(R+'/curriculum/lectures/painting-the-picture-with-the-llm.md').split('<!-- maintainer -->')[0]+'\n\nHOW THE AUTHOR'S BEST COURSE RUNS A RED YARN (verification in AE101):\n'+rd(__dirname+'/ae101-yarn.md');
+const ae=rd(R+'/curriculum/lectures/painting-the-picture-with-the-llm.md').split('<!-- maintainer -->')[0]+'\n\nHOW THE AUTHOR’S BEST COURSE RUNS A RED YARN (verification in AE101):\n'+rd(__dirname+'/ae101-yarn.md');
 const prompt=`You are a hard editor for a training course. The author wants prose as compact and to the point as his best course (AE101 sample below). Assume the writer cannot write well. Find every problem.
 
 WRITING RULES (house compendium):

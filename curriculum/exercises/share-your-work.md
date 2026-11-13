@@ -27,7 +27,7 @@ Read `module-7/jtbd.md`. Does it name one teammate, their current way of doing t
 
 The agent compares candidates from `patterns/personal-to-team-patterns.md` against that outcome and writes your choice to `module-7/branch.md`. The four sharing strategies:
 
-1. **Share the context.** Your `memory/`, `sources/`, root instructions, and `style.md` travel. Teammates build on top.
+1. **Share the context.** Your `memory/`, `sources/`, root instructions, and `style.md` travel. Teammates' agents build on top.
 2. **Share a skill.** Extract one scoped capability. Teammates plug it in.
 3. **Share the output (push).** Schedule the agent. Output lands where the team looks.
 4. **Share an interface (pull).** Wrap the agent. Teammates invoke it through a bot, mention, form, or endpoint.

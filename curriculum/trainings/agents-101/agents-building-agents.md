@@ -83,8 +83,8 @@ We could have spent today building you one impressive agent. It would have demoe
 
 **Push-back moves / Watch-fors / Decision points:** [M8 run sheet](trainer-modules.md#m8-glance) owns the live cues, recovery paths, protected beats, and cut order.
 
-**Identity-naming close (trainer):**
-- In-room only. The sponsor who sat alongside the room for all eight modules may name what happened in one sentence: *"You are now agent builders. You built agents that do real work on company data. You can do it again on the next problem."* Keep it spoken, not student-facing body copy. No certificate. No graduation.
+**Close (trainer):**
+- In-room only. The sponsor who sat alongside the room asks one question: *"What is going to be the next hard part about agents?"* (Antti 2026-11-13: both earlier closes, "You are now agent builders" and the counting line, were cheesy.) Spoken, not body copy. No certificate. No graduation.
 
 **Meta (trainer):**
 - **Transitions:** demo 5 @start "Agent generates agent demo" · debrief 5 @end "Debrief" · identity close 5 @end "Identity-naming close"

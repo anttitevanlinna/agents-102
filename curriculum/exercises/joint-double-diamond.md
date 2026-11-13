@@ -118,9 +118,9 @@ Close the session with three files at the shared folder root:
 
 **In-room:** a participant who wasn't the loudest voice reads the kernel aloud, not the sponsor.
 
-**Identity-naming close (5 min).**
+**Close (5 min).**
 
-**In-room:** the sponsor says, in one sentence: *"You are now agent builders. You have built agents that do real work on your company's data. You can do it again tomorrow on a new problem. That's what you carry out of this room."*
+**In-room:** the sponsor asks the room one question: *"What is going to be the next hard part about agents?"*
 
 ## Take stock of what the forum produced
 

@@ -2,6 +2,21 @@
 
 Yarn = controlling your agent. Strategy grid cells (core `strategy/content-strategy.md` § The four yarns). Model = AE101 verification: `ae101-yarn.md` (words) + structure (slide chains, exercise check steps, one growing figure, fixed phrases, a hole one module leaves for a later one).
 
+## The concept, at AE101 depth (deep read 2026-11-13, supersedes the "handle + phrases" framing below as the core)
+AE101's verification is not "check the output". It is a theory of delegation: **what you can check sets how much you can hand off.** Two axes (`figures/delegation-frontier.md`): reach = how much you handed off, distance between checks; calibration = trust earned by a check you have verified. Reach past calibration = "you have not delegated more. You are checking less." Laws it builds on, each turned against the previous layer: self-report is a hypothesis (M1) → a check must be able to fail, plan read is the cheapest calibration (M2) → control is interrogation, not reading; the branch is the permission, control is exercised at the merge (M3) → unwatched work: checking becomes a job; trust and vigilance move in opposite directions (M4, Bainbridge) → the gate is a claim too; independence; gates decay (Goodhart); one session is a sample (M5) → pass rate, not a pass (M6). Bitter lesson: every gate is temporary.
+
+**For Agents 101 this couples control to the main thread.** Each module hands the agents one more part of the job (strategy table "What the agents take over"). Control is what licenses that handover: the part the agents take over today is exactly as big as the check you have for it.
+| M | Handed over | Its check (calibration) | Frontier state |
+|---|---|---|---|
+| M1 | nothing | you, on your own material; self-report is a claim | chat-shaped, you read everything |
+| M2 | gathering, remembering | plan approval before files change; citations | controlled assistance |
+| M3 | searching, deciding | none on the answer, only on handoffs | reach past calibration → the doubt IS this (reckless autonomy, felt) |
+| M4 | acting across connected systems | boundary: shrink reach to what you can check; "I can't tell" names uncalibrated reach | reach cut back |
+| M5 | checking claims | a judge that touches the source, benchmarked, known limit (the gate is a claim) | calibration built |
+| M6 | improving its own work | fixed judge, you own the yardstick, you check the judge ("when did you last read one yourself?" = Bainbridge) | calibrated agency; would you let it send = the frontier question |
+| M7 | delivering to another person | the check + a named person must travel with the copy | someone else's reach on your calibration |
+| M8 | building agents | each new agent checked like the first; the frontier moves only as fast as the checks | |
+
 ## State (map 2026-11-13)
 Control already appears in every module, in five vocabularies that never call each other: cold read (M1), plan/approve (M2), doubt (M3), residual / "I can't tell" (M4), judge / "touch the source" / known limit (M5), yardstick (M6), "somebody who answers for it" (M7), "checked like the first" (M8). Handle by count: **check** (noun) is the only word in all eight modules (1, 10, 8, 29, 42, 21, 4, 19). Push back = the gesture. Thin: M1 page, M2 framing (plan-first taught as cost control), M7 (control absent from page), M8 (control only in prompts + one late sentence).
 

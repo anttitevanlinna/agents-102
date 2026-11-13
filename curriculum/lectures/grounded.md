@@ -16,6 +16,12 @@ The numbers are illustrative. They show that compounding breaks a single pass bu
 
 ["Are you sure?" is another fluent answer](slides/are-you-sure.md)
 
+## Steering without reading every line
+
+I stopped reading full documents at work some time ago. I read to steer on a high level. Much of the text is for the LLM itself.
+
+Grounding is what makes that safe. A line on my CV is a claim. You would check it against my work contract, not my LinkedIn profile. A check that goes to the ground lets you steer text you do not read.
+
 ## Don't pick a method. Run the candidates.
 
 Every grounding check misses something. Advice won't tell you what it misses on your material.
@@ -61,6 +67,8 @@ Run the same briefing prompt twice from the same sources, in two sessions. Compa
 
 A stable claim can still be unsupported. Drift is a warning, not proof of fabrication. Two sessions give you a demo; the signal firms up at five to ten.
 <!-- maintainer -->
+**Decision note 2026-11-13 (point-of-view pass).** `## Steering without reading every line` condenses Antti's article *Steering Without Reading All Text* (bosser, 2026-10-28): he stopped reading full documents; grounding (CV claim vs work contract) makes that safe. Big Idea stated cold 83 vs 82 (lean scorer, n=24 each): no cost.
+
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@4d9c4af2 technical@ab36a5e6 behavior@5fc7188 pedagogy@ab36a5e6 strategy@5fc7188 slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

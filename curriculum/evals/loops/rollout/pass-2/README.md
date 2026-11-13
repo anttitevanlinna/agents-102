@@ -34,3 +34,4 @@ Rubric r4: POV 74, weakest; judges: Antti absent M2-M6. Beats added only from hi
 - M6: "I drifted too" in new-human-role-in-the-loop: 79 → 92.
 - M5: "Steering without reading every line" (his article) in grounded: 96 → 83 at n=12, answers still on grounding; second 12 pending before main.
 - M3 (Antti's aims, 2026-11-13): new strategy line (core e8e76d4), lecture rebuilt as *How agents work together*, key concepts on shared-file handoffs, split-and-parallel, handoffs where work gets lost. Against the new line: today's page 60, new page 74 (lean scorer, n=24 each). First wording (with "hire", "meeting room") scored 83 vs 48 on n=12; Antti struck both words.
+- M5: "Steering without reading every line" on main after a second 12: 83 vs 82 (n=24 each), no cost.

@@ -17,8 +17,6 @@ After this module, you will be able to:
 
 ## Start here
 
-You walk in with a briefing the agents wrote. Today they check its claims against the sources. You read the scoreboard and keep the judge.
-
 **Session** *(new, "Module 5 - Catching hallucinations")*
 
 Working folder: `~/Documents/agents-101/`.
@@ -28,16 +26,6 @@ Working folder: `~/Documents/agents-101/`.
 [Lecture: Grounded, and four candidates to measure](lectures/grounded.md)
 
 [Exercise: Hallucination benchmark](exercises/hallucination-bakeoff.md)
-
-## The judge moves all four ideas on
-
-**Context:** Output is only as true as the context the agent can reach.
-
-**Compounding:** A judge is your judgment written down, with its limit named.
-
-**Control:** A check has to touch the source. Asking "are you sure?" does not.
-
-**Agents building agents:** The agent sets up the detectors and the judge.
 
 ## Debrief
 
@@ -82,15 +70,11 @@ Ethan Mollick, "Garbage Can and Bitter Lesson."
 
 End this session once the judge is saved. Module 6 starts fresh in `~/Documents/agents-101/`.
 
-## Your own agent
-
-Your own agent passed its security check. Now make it check its own claims against one source.
-
 ## Next
 You can spot ungrounded output with a judge. Next, the judge runs without you at the keyboard: it stays fixed while the generation improves under its feedback.
 <!-- maintainer -->
 
-**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the opener in § Start here (AE101 shape, Antti 2026-11-13: "see ae101 for how to write": what the student walks in with, which part of the job the agents take over today, what stays theirs; the bold label was rejected as "even worse"), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
+**Red thread (2026-11-13, Antti).** "It is not to add sentences. It is to align on common theme. Say it in different ways without adding more content." Added openers, four-ideas slides and own-agent callouts were tried and removed the same evening. Align existing lines; add none.
 
 **Quality:** compendium-audited 2026-08-25 (writing@19381896 story@19381896 technical@725101ec behavior@725101ec pedagogy@19381896 strategy@19381896 slides@19381896)
 - judges @19381896: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

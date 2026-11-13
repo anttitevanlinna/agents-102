@@ -15,8 +15,6 @@ After this module, you will be able to:
 
 ## Start here
 
-You walk in with a saved judge. Today the agents rewrite their own work under it, round after round, while you are away. The yardstick stays yours.
-
 Start a fresh session or task at `~/Documents/agents-101/`.
 
 Read Ethan Mollick's [*The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage).
@@ -32,16 +30,6 @@ The same judge keeps catching what slipped past, and the system absorbs the catc
 > The same pattern applies to actions. An agent action starts as text: a proposed mail, ticket update, CRM change or command. Check the proposal before it becomes the action.
 
 [Exercise: The eval loop runs itself](exercises/eval-loop.md)
-
-## The loop moves all four ideas on
-
-**Context:** The tactic file is context the loop rewrites every round.
-
-**Compounding:** The loop compounds while you are away.
-
-**Control:** You own the yardstick. Would you let it act on its own?
-
-**Agents building agents:** The agent built the loop that improves its own work.
 
 [Lecture: When the score stops moving](lectures/when-the-score-stops-moving.md)
 
@@ -75,16 +63,12 @@ The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/
 
 Once the trigger is written, end this module's session or task. Module 7 starts fresh at `~/Documents/agents-101/`.
 
-## Your own agent
-
-Your own agent checks its claims. Put a fixed judge on its output and let it improve under it.
-
 ## Next
 The judge stays fixed, so the loop keeps pressure on the generator while you are away.
 
 <!-- maintainer -->
 
-**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the opener in § Start here (AE101 shape, Antti 2026-11-13: "see ae101 for how to write": what the student walks in with, which part of the job the agents take over today, what stays theirs; the bold label was rejected as "even worse"), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
+**Red thread (2026-11-13, Antti).** "It is not to add sentences. It is to align on common theme. Say it in different ways without adding more content." Added openers, four-ideas slides and own-agent callouts were tried and removed the same evening. Align existing lines; add none.
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@4d9c4af2 slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

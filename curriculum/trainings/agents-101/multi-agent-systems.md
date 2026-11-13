@@ -17,9 +17,9 @@ You will:
 
 ## Start here
 
-You walk in with a memory and a week of runs. Today three agents search Confluence, OneDrive and practitioner articles, three more decide what it means, and an answer comes out. You start them and read the answer.
-
 Start a fresh session or task at `~/Documents/agents-101/`. Save outputs under `module-3/`.
+
+Three agents search Confluence, OneDrive and practitioner articles, and three more decide what it means.
 
 [Demo: Agent that takes action](lectures/agent-that-takes-action.md)
 
@@ -28,16 +28,6 @@ Start a fresh session or task at `~/Documents/agents-101/`. Save outputs under `
 [Exercise: Three retrievers, one curator](exercises/three-retrievers-one-curator.md)
 
 [Exercise: Three minds, one synthesis](exercises/three-minds-one-synthesis.md)
-
-## Six agents move all four ideas on
-
-**Context:** Each agent has its own context, and work gets lost between contexts.
-
-**Compounding:** The handoff rules go to disk, so the next run hands off better.
-
-**Control:** Nothing checks what happens between the agents. That gap is the missing control.
-
-**Agents building agents:** The agent starts its own helpers and runs them.
 
 [Lecture: How agents work together](lectures/when-to-split-an-agent.md)
 
@@ -87,16 +77,12 @@ After the optional check and pre-reads, end this session. Module 4 starts fresh 
 
 An agent that works across connected systems has access to those systems.
 
-## Your own agent
-
-Your own agent has a memory and a schedule. Does its job need a second agent? Usually not. Split only where the parts differ.
-
 ## Next
 Until Module 4, keep working on your real problem: add an agent for a critical dependency, or a plan visualisation.
 
 <!-- maintainer -->
 
-**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the opener in § Start here (AE101 shape, Antti 2026-11-13: "see ae101 for how to write": what the student walks in with, which part of the job the agents take over today, what stays theirs; the bold label was rejected as "even worse"), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
+**Red thread (2026-11-13, Antti).** "It is not to add sentences. It is to align on common theme. Say it in different ways without adding more content." Added openers, four-ideas slides and own-agent callouts were tried and removed the same evening. Align existing lines; add none.
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@4d9c4af2 technical@725101ec behavior@725101ec pedagogy@4d9c4af2 strategy@4d9c4af2 slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

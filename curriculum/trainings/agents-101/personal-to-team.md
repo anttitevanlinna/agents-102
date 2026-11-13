@@ -19,8 +19,6 @@ After this module, you will be able to:
 
 ## Start here
 
-You walk in with a system that works for you. Today it reaches one other person. Who gets what stays yours.
-
 What would you want a teammate to have: your `memory/` folder, one of your skills, the morning output, or a way to ask the agent a question in Slack? And why that one?
 
 The agent writes the sharing plan into `module-7/`. `module-7/monday.md` holds the next move: one person, one question, one test.
@@ -30,16 +28,6 @@ The agent writes the sharing plan into `module-7/`. `module-7/monday.md` holds t
 [Exercise: Design the sharing plan](exercises/design-the-sharing-plan.md)
 
 [Exercise: Test the sharing plan](exercises/test-the-sharing-plan.md)
-
-## Sharing moves all four ideas on
-
-**Context:** Context is the first thing you can share.
-
-**Compounding:** Across people, compounding is absorption. Access alone does not compound.
-
-**Control:** Once it leaves your hands, someone owns it and someone uses it. Name both.
-
-**Agents building agents:** The agent interviewed for the job and drafted the plan.
 
 [Lecture: Access is not absorption](lectures/access-is-not-absorption.md)
 
@@ -62,17 +50,13 @@ Who gets your context, who gets a skill, who wants only the output, and who woul
 
 **Bring `module-7/monday.md` and what the named person said.** Their answer is the evidence. The plan is still the hypothesis.
 
-## Your own agent
-
-Your own agent improves under a fixed judge. Who else gets its context, a skill, its output, or a way to ask it?
-
 ## Next
 
 You can build agents, secure them, evaluate them and share them four ways. What if you didn't have to build each one by hand?
 
 <!-- maintainer -->
 
-**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the opener in § Start here (AE101 shape, Antti 2026-11-13: "see ae101 for how to write": what the student walks in with, which part of the job the agents take over today, what stays theirs; the bold label was rejected as "even worse"), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
+**Red thread (2026-11-13, Antti).** "It is not to add sentences. It is to align on common theme. Say it in different ways without adding more content." Added openers, four-ideas slides and own-agent callouts were tried and removed the same evening. Align existing lines; add none.
 
 **Quality:** compendium-audited 2026-08-25 (writing@19381896 story@19381896 technical@725101ec behavior@725101ec pedagogy@19381896 strategy@19381896 slides@19381896)
 - judges @19381896: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

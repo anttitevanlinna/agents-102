@@ -16,8 +16,6 @@ After this module, you can:
 
 ## Start here
 
-You walk in with the parts of seven modules: memory, agents, skills, judges, a loop. Today your agent builds and improves agents from them. You describe the next one.
-
 Your agent works in `~/Documents/agents-101/` and reads your agent system plus `module-7/monday.md`. The room's forum runs in a separate shared folder, so your own files stay local.
 
 The shared folder starts nearly empty: one subfolder per participant, `challenge.md` from the buyer or sponsor, and one or two central synthesizers writing at the shared root.
@@ -28,7 +26,7 @@ The question to carry through: where is all this going?
 
 Your coding agent is itself an agent. Describe the agent you want: the gap, what it reads, what it writes. The coding agent writes the instructions, runs the new agent, and fixes it when you push back.
 
-The builder and the agents it builds share the same parts, so each one you describe makes the next description sharper. This is the last part of the job to change hands: agents now build and improve the agents that make the analysis.
+The builder and the agents it builds share the same parts, so each one you describe makes the next description sharper.
 
 [Exercise: Extend your system](exercises/extend-your-system.md)
 
@@ -36,21 +34,11 @@ The builder and the agents it builds share the same parts, so each one you descr
 
 The three moves run again at room scale on the sponsor challenge. The crux shapes each opening stance. Cross-checks surface rival evidence before an agent publishes. *What would have to be true?* and the pre-mortem test the synthesizer's choices.
 
-## All four ideas, harvested
-
-**Context:** The builder reads your context to build the next agent: the memory, rules, skills and judges from seven modules. The deeper that context, the better the agent it builds.
-
-**Compounding:** What compounds is how fast you and your organisation learn.
-
-**Control:** An agent that an agent built gets no extra trust. Each one is checked like your first: its boundaries, its grounding, a fixed judge on its output.
-
-**Agents building agents:** Your agent can improve your agent. It has built for you since Module 2; now it works on itself.
-
 [Lecture: Where is this all going?](lectures/where-is-this-all-going.md)
 
 ## Debrief
 
-Five minutes. Your agent improves your agent. That is the last handover in the job: the agents build and improve the agents, and what stays with you is describing the next one. It reviews the session, rewrites the most load-bearing file in place (synthesizer rules, strategy kernel, agent set, plan, or argument rules), and reports what changed. Push back on anything that's off.
+Five minutes. Your agent improves your agent. It reviews the session, rewrites the most load-bearing file in place (synthesizer rules, strategy kernel, agent set, plan, or argument rules), and reports what changed. Push back on anything that's off.
 
 {{prompt:a101-m8-debrief-flywheel-sharpen}}
 
@@ -69,10 +57,6 @@ Some unresolved items should stay unresolved.
 - What multiplies your work is how fast you learn, not how many agents you own.
 - Parts hold; the model rotates.
 
-## Your own agent
-
-Have your coding agent improve your own agent. Then show it doing the job end to end: one real task, one thing it learned, one check it passes.
-
 ## Next
 
 Your plan is a set of assumptions: label them, start the concurrent pieces, and design experiments for the uncertain ones.
@@ -83,7 +67,7 @@ We could have spent today building you one impressive agent. It would have demoe
 
 <!-- maintainer -->
 
-**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the opener in § Start here (AE101 shape, Antti 2026-11-13: "see ae101 for how to write": what the student walks in with, which part of the job the agents take over today, what stays theirs; the bold label was rejected as "even worse"), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
+**Red thread (2026-11-13, Antti).** "It is not to add sentences. It is to align on common theme. Say it in different ways without adding more content." Added openers, four-ideas slides and own-agent callouts were tried and removed the same evening. Align existing lines; add none.
 
 **Against-interest line in § Next (2026-11-13).** "We could have spent today building you one impressive agent… the wrong thing to sell you" is the stance beat; present before compaction 149d513c. Big Idea stated cold unchanged with it (n=12).
 

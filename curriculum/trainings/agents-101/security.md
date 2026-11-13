@@ -18,8 +18,6 @@ After this module, you will be able to:
 
 ## Start here
 
-You walk in with a system that reaches Confluence, OneDrive and the web. Today it checks its own reach against policy and named risks. Which risk to close stays yours.
-
 Start a fresh session or task at `~/Documents/agents-101/`.
 
 The agent reads the Module 3 system, the root instructions file, and the policy files under `module-4/policies/`. Reports go to `outputs/`.
@@ -31,16 +29,6 @@ Name what you'd want to check before letting this near a real stakeholder.
 [Exercise: Run and package a security skill](exercises/author-security-skill.md)
 
 [Exercise: Audit your agent](exercises/audit-your-agent.md)
-
-## Boundaries move all four ideas on
-
-**Context:** Anything in the context can instruct the agent, including a source it reads, so a clean output tells you nothing.
-
-**Compounding:** A skill is method that travels to every agent you build.
-
-**Control:** You can't tell a safe agent from its output. Set what it can reach, run the check, and write down what is left.
-
-**Agents building agents:** The agent drafted the skill from your steering.
 
 [Lecture: The discipline of risk](lectures/practice-of-risk.md)
 
@@ -80,16 +68,12 @@ Read Mata v. Avianca (2023) and the Deloitte Australia / DEWR report (2025) in t
 
 Once the files are saved to disk, end this session. Module 5 starts fresh at `~/Documents/agents-101/`.
 
-## Your own agent
-
-Your own agent has a memory, a schedule, maybe a helper. Point the security skill at it.
-
 ## Next
 Can you trust what the agent says inside its scope?
 
 <!-- maintainer -->
 
-**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the opener in § Start here (AE101 shape, Antti 2026-11-13: "see ae101 for how to write": what the student walks in with, which part of the job the agents take over today, what stays theirs; the bold label was rejected as "even worse"), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
+**Red thread (2026-11-13, Antti).** "It is not to add sentences. It is to align on common theme. Say it in different ways without adding more content." Added openers, four-ideas slides and own-agent callouts were tried and removed the same evening. Align existing lines; add none.
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@194c81b0 strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

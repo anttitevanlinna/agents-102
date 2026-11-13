@@ -17,8 +17,6 @@ After this module, you can:
 
 ## Start here
 
-You walk in with a challenge and an empty folder. By the end of today, agents gather your sources and keep a memory of them. Naming the challenge and approving the plan stay yours.
-
 Start a fresh session or task at `~/Documents/agents-101/`. Module 1's scrollback stays behind.
 
 Your `memory/`, `sources/` and `agents/` folders are empty from prework. Module 1's files stay out of this build. The root instructions file comes in the Debrief.
@@ -40,16 +38,6 @@ Connectors let the agent combine clues that live apart, like a wiki page and an 
 Keep the same session running; the agent has your challenge in scrollback.
 
 [Exercise: Build your challenge memory](exercises/build-your-challenge-memory.md)
-
-## The memory moves all four ideas on
-
-**Context:** Memory is context that persists. Next session the agent starts from the folder, not from a blank chat.
-
-**Compounding:** Each new source sharpens what is already there, so the system compounds.
-
-**Control:** The agent plans first and acts on your approval.
-
-**Agents building agents:** The agent builds your first agent: the memory and the scheduled run.
 
 [Lecture: Compounding](lectures/compounding.md)
 
@@ -96,16 +84,12 @@ Your folder holds your challenge, your sources and your rules. A better model re
 
 Save the run, then end this session.
 
-## Your own agent
-
-Give the job you picked in Module 1 a memory and a schedule, the way today's agent got one.
-
 ## Next
 Before the next module, build a few more agents you need. Pick by pain: a task you keep doing manually. Meeting prep and calendar triage are fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system.
 
 <!-- maintainer -->
 
-**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the opener in § Start here (AE101 shape, Antti 2026-11-13: "see ae101 for how to write": what the student walks in with, which part of the job the agents take over today, what stays theirs; the bold label was rejected as "even worse"), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
+**Red thread (2026-11-13, Antti).** "It is not to add sentences. It is to align on common theme. Say it in different ways without adding more content." Added openers, four-ideas slides and own-agent callouts were tried and removed the same evening. Align existing lines; add none.
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@194c81b0 strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -16,8 +16,6 @@ You can:
 
 ## Start here
 
-Nothing goes to an agent yet. Today you paint by context, turn by turn.
-
 Outputs go in `module-1/`.
 
 **The question, to you:** where did LLM output on your work come out generic, and what made it yours?
@@ -25,16 +23,6 @@ Outputs go in `module-1/`.
 [Opening: Context is King](lectures/context-is-king.md)
 
 [Exercise: Paint by agent with guardrails](exercises/personal-site-with-guardrails.md)
-
-## Four ideas start here and run all course
-
-**Context:** Context paints the output. What you gave the agent is what made the site yours.
-
-**Compounding:** A correction goes into a rules file, not the chat. The next session starts from it.
-
-**Control:** You are the evaluator who cannot be fooled on your own material.
-
-**Agents building agents:** You describe, the agent makes. That split holds for the rest of the course.
 
 [Closing: Iterate and learn](lectures/what-just-happened.md)
 
@@ -80,16 +68,12 @@ Optional: Karpathy's LLM Wiki post; Lindenberg's memory-architecture piece.
 
 Save the prework, end this session, then start Module 2 fresh at `~/Documents/agents-101/`.
 
-## Your own agent
-
-Pick one job you do every week where LLM output comes out generic. That job becomes your own agent's.
-
 ## Next
 The agent re-reads the output file next time.
 
 <!-- maintainer -->
 
-**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the opener in § Start here (AE101 shape, Antti 2026-11-13: "see ae101 for how to write": what the student walks in with, which part of the job the agents take over today, what stays theirs; the bold label was rejected as "even worse"), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
+**Red thread (2026-11-13, Antti).** "It is not to add sentences. It is to align on common theme. Say it in different ways without adding more content." Added openers, four-ideas slides and own-agent callouts were tried and removed the same evening. Align existing lines; add none.
 
 **Big Idea back to the strategy line (2026-11-13, Antti: "M1 is really context and painting with LLM").** The page had drifted to guardrails; Big Idea, the Apply LO and Key Concepts now lead with context as the brush, guardrails as reusable context. Big Idea stated cold 54 -> 63 (n=12, inside noise, direction right).
 

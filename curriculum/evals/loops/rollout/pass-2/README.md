@@ -26,3 +26,10 @@ Rubric before: run a101-full-r3, mean 80 (POV 73, weakest). n=24 panels througho
 ## M8 on main, 2026-11-13 (Antti yes)
 
 Lecture `where-is-this-all-going` cut to one thread: your agent improves your agent, each fix stays on disk, learning rate multiplies the work. Citation, three walls, obsolete-next-year and what-would-change-our-mind slides out; extend-your-system gains Phase 0 (improve an agent you already have, 5 min; Phase 2 down to 10 min). Big Idea stated cold, lean scorer: today's page 16, draft 2 28 (n=24 each), draft 3 (draft 2 + obsolete slide) 19 (n=12). Old split scorer on the same answers: 24 vs 38. Draft 1 (citation and walls kept): no gain over today's page. Story judge POV 38 → 28: the trainer's own voice went with the obsolete slide. Strategy Big Idea line now matches the page (core 86981b1).
+
+## Point-of-view pass, 2026-11-13
+
+Rubric r4: POV 74, weakest; judges: Antti absent M2-M6. Beats added only from his own words (spar notes, bosser articles, AE101 story-of-module-6). Teaching-only guard (lean scorer, n=12 per page):
+- M2: page Big Idea aligned to the strategy line, key concept leads with compounding, compounding lecture gains his agent-factory moment and "Stop chatting. Build a system.": 50 → 63.
+- M6: "I drifted too" in new-human-role-in-the-loop: 79 → 92.
+- M5: "Steering without reading every line" (his article) in grounded: 96 → 83 at n=12, answers still on grounding; second 12 pending before main.

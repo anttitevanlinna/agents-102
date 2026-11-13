@@ -1,7 +1,7 @@
 # Building Agent Systems
 
 ## Big Idea
-A system remembers, grows, and compounds. Chat doesn't. Your next big challenge is the foundation.
+A system remembers, grows, and compounds around the one thing you need to make progress on. Chat can't.
 
 ## Prework
 
@@ -65,9 +65,9 @@ The model will change. Your memory will not.
 Your folder holds your challenge, your sources and your rules. A better model reads your folder better. It does not write it for you.
 
 ## Key Concepts
+- A system compounds around your challenge: each new source sharpens what is already there. A chat starts from zero.
 - Persistence plus automation: a system.
-- Three layers: untouched raw sources, a memory the agent sharpens, a rules file.
-- Plain text: models read and write text best.
+- Three layers in plain text: untouched raw sources, a memory the agent sharpens, a rules file.
 
 ## Bring to Module 3
 

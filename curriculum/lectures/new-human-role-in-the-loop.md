@@ -44,6 +44,12 @@ Create one steering eval for internal mail an agent could help with. Ask the age
 
 {{prompt:new-human-role-in-the-loop-1}}
 
+## I drifted too
+
+When I built a module of this course with Claude, the rules sat in its context the whole time. In one session: five reversals from me on Claude's confident recommendations, four leaks of a banned word across three helper agents, and several times a "done" that was not done.
+
+A check loop caught what the helpers missed. I caught what the loop missed. That is why the loop still has a person in it.
+
 ## The better it gets, the less you watch
 
 Every clean week is evidence the loop works, and each one erodes your ability to tell when the loop stops. Design the loop and never run one yourself, and you lose the eye that made you worth putting in charge of it.
@@ -63,6 +69,8 @@ The full picture: model, context, tools, goal, loop, checks, boundary, interface
 Your role in the loop is to design the conditions for giving the system more autonomy, one loop at a time.
 
 <!-- maintainer -->
+**Decision note 2026-11-13 (point-of-view pass).** `## I drifted too` condenses Antti's signed AE101 `story-of-module-6.md` § The numbers (five reversals, four banned-word leaks across three helpers, premature "done"); his facts, not new ones. Big Idea stated cold 79 → 92 (lean scorer, n=12 each).
+
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

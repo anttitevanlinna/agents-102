@@ -2,6 +2,16 @@
 
 The thing a chat can't do is **Phase 3**: new sources made the existing topic pages *sharper instead of longer*. The second batch made the first batch better. That is compounding.
 
+## A few problems, or a capability?
+
+We started building an agent factory. Three people went off and deployed agents, fast. I asked what capabilities they were building. They said: we have a few problems to solve.
+
+Solve a problem and close it, and problem four costs what problem one did. Keep what each one taught in files the next run reads, and problem four starts ahead. That is the difference between a chat and a system.
+
+## Stop chatting. Build a system.
+
+I keep repeating this. In a chat you handhold the agent, take a few actions, and at the end nothing is saved. Your performance is about the next hundred sessions, not this one.
+
 ## Two words, held together
 
 A system is two things stacked:
@@ -44,6 +54,8 @@ The agent comes back with three pointed requests. Answer one and let it update t
 [It can only use what someone wrote down](slides/only-what-someone-wrote-down.md)
 
 <!-- maintainer -->
+**Decision note 2026-11-13 (point-of-view pass; Antti allowed his spar notes and bosser articles as his voice).** `## A few problems, or a capability?` = his agent-factory moment (spar 2026-10-28, project files agents-101-taste/2026-10-28-being-ahead-of-time.md). `## Stop chatting. Build a system.` = condensed from his article *Stop Chatting. Build a System* (bosser, 2026-08-10). Big Idea stated cold 50 → 63 with the module page aligned to the strategy line (lean scorer, n=12 each).
+
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -1,6 +1,6 @@
 # Whole-slide rewrite rules (Agents 101)
 
-Prompt input for `scripts/slide-rewrite.js`. Sources: maintainer's calls-page answers 2026-11-01 (verbatim steers quoted), `persona-student/taste-rules.md` v2, AE101 point-of-view frames, writing + student_facing rule leads. The maintainer rates current text 3/5; target 4+.
+Prompt input for `scripts/slide-rewrite.js`. Sources: maintainer's calls-page answers 2026-11-01 (verbatim steers quoted), `curriculum/evals/mechanical/persona-student/taste-rules.md` v2, AE101 point-of-view frames, writing + student_facing rule leads. The maintainer rates current text 3/5; target 4+.
 
 ## Glance budget
 The handbook is a map the student glances at between Claude Code sessions; the main training happens in Claude Code and the prompts. Maintainer 2026-11-01: "the information / word count is quite wordy still. ae101 has been compacted, compacted. This is quite important as training slides need to be able to be glanced." Density over polish. Each unit gets a word budget (prompt states it); meet it by cutting whole sentences and merging, never by dropping an instruction the student needs to run the step. A slide carries one idea.

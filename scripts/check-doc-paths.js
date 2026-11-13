@@ -26,9 +26,10 @@ const MEMORY = require('../curriculum/evals/scripts/compendium-drift.js').MEM;
 // own root, has its own review skill, and is the one public tree here. Bringing
 // it in wants a second resolution convention, not a wider glob. Story-depth
 // judge records (curriculum/evals/story-depth/) are dated reads of a training;
-// they quote the student's working tree (team/bet.md, module-7/...) as evidence.
+// they quote the student's working tree (team/bet.md, module-7/...) as evidence. Loop regen drafts
+// (curriculum/evals/loops/m7/regen/) and teaching result pages are the same kind of dated record.
 const SKIP_TREE =
-  /^curriculum\/evals\/story-depth\/|^docs\/archive\/|^docs\/superpowers\/(?:plans|specs)\/|playgrounds\/|fixtures\/|^node_modules\/|^continuous-research\//;
+  /^curriculum\/evals\/story-depth\/|^curriculum\/evals\/loops\/m7\/regen\/|^curriculum\/evals\/teaching\/results\/|^docs\/archive\/|^docs\/superpowers\/(?:plans|specs)\/|playgrounds\/|fixtures\/|^node_modules\/|^continuous-research\//;
 const isSkippedTree = file => SKIP_TREE.test(file);
 
 const EXT = String.raw`md|js|sh|json|html|css|yaml|yml`;

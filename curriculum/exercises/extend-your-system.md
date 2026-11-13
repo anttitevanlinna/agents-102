@@ -12,7 +12,7 @@ You describe an agent; the coding agent builds it. Pick one extension you'd use:
 - **New output.** Produces a format you lack: a one-page brief, a weekly digest, a pre-meeting prep note.
 - **New perspective.** Reads the same memory but argues with it: a skeptic, a devil's advocate, a persona holding the view your voice suppresses.
 
-## Phase 0: Improve an agent you already have
+## Phase 1: Improve an agent you already have
 
 *5 min*
 
@@ -20,7 +20,7 @@ Pick one agent from an earlier module: the Module 2 morning agent or the Module 
 
 Your agent just improved your agent. Now build a new one.
 
-## Phase 1: Describe
+## Phase 2: Describe
 
 *5 min*
 
@@ -33,14 +33,14 @@ Open `module-8/extension-brief.md`; write four lines:
 
 Over five minutes? Narrow the gap.
 
-## Phase 2: Generate
+## Phase 3: Generate
 
 *10 min*
 
 {{prompt:extend-your-system-1}}
 
 
-## Phase 3: Run and judge
+## Phase 4: Run and judge
 
 *5 min*
 
@@ -81,7 +81,7 @@ This is **Recipe 8**: agent generates agent, on a real gap. The [Cookbook for Ag
 - Self-study: if the student has no real gap in mind, Teacher Claude offers three gaps drawn from their `memory/` — *"I notice you don't have anything that does X, Y, or Z. Pick one."*
 
 **Facilitator notes:**
-- **Phase 1 discipline.** If the brief runs past five minutes, the student is designing the second agent, not the first. Redirect: *"Ship a small one. Ship a second one after."*
+- **Phase 2 discipline.** If the brief runs past five minutes, the student is designing the second agent, not the first. Redirect: *"Ship a small one. Ship a second one after."*
 - **Watch for 'demo agent' trap.** Students will reach for the impressive extension (multi-step, multi-tool, spectacular). Nudge them toward the mundane one they'd actually use Tuesday.
 - **The compound beat.** End-of-exercise, ask aloud (in-room) or surface via Teacher Claude (self-study): *"How long did it take to describe vs. build? What would the second agent take?"* The answer makes the thesis land.
 - **Agent-file rules inheritance.** Students sometimes start the new agent from scratch. Nudge: *"You already have agents whose rules work. Inherit them. Add what's new. Don't rediscover."*

@@ -58,7 +58,7 @@ To share, install the skill in a teammate's runtime. Their agent loads the same 
 
 ## Bring to Module 5
 
-**Write one sentence per case: "the missing organisational check was X."** Both cases are in the pre-reads below.
+**Write one sentence per case: "the missing organisational check was X."** Both cases are in the pre-reads that follow.
 
 ## Pre-reads before Module 5
 

@@ -45,3 +45,20 @@ A card's `fits_kits` names the tmux case kits it can work in. Nordveil hosts sev
 ## Calibration (next step)
 
 Run each persona twice on one module. Pass: repeat runs agree within a small spread, and `cfo-sceptic` scores clearly below `ingrid`. Antti's calibration calls are designed from that run's output.
+
+## Calibration
+
+`python3 calibrate.py` reads every persona-student result already in `curriculum/evals/` (no model calls) and checks the step-4 bar. 2026-11-13, 516 runs across all eight modules:
+
+| id | runs | enjoyment (1-7) | recommend (1-10) | beats bored or confused |
+| --- | --- | --- | --- | --- |
+| `ingrid` | 112 | 4.47 | 6.74 | 14% |
+| `hr-svp` | 60 | 4.28 | 5.87 | 20% |
+| `cto-builder` | 112 | 4.25 | 6.30 | 17% |
+| `veteran-director` | 60 | 4.02 | 5.55 | 18% |
+| `cfo-sceptic` | 112 | 3.90 | 4.93 | 20% |
+| `ops-director` | 60 | 3.29 | 3.82 | 39% |
+
+Both checks pass: `cfo-sceptic` reads below `ingrid` on enjoyment and recommend, and `ops-director` is bored or confused on 39% of beats. The personas separate; the panel is not a room that enjoys everything.
+
+The teaching panel (`../loops/run-students.sh`, six personas x 2) reads pages, not tmux kits, so it needs no Nordveil challenge seeds. `legal-lead`, `public-head`, `sales-vp` and `founder-small` have no runs yet: they are the bench for a baseline run of all ten, and the seeds are only needed if one of them joins a live tmux chain.

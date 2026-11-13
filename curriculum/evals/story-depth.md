@@ -58,6 +58,29 @@ Mean 80 (r2 78). POV gains 18 and is still the weakest factor. All three judges 
 
 
 
+## Agents 101 baseline before the rubric upgrade: run `a101-full-r2`, 2026-10-31
+
+Build 90463be. Three Opus judges, prompt `story-depth/full-bench-prompt.a101.md` unchanged, each reading AE101 first and then Agents 101 whole through `scripts/read-training.js`. Judge files: `story-depth/a101-full-r2.judge-{1,2,3}.md`.
+
+| Factor | AE101 (j1/j2/j3) | median | r1 | Agents 101 (j1/j2/j3) | median | r1 |
+|---|---|---|---|---|---|---|
+| Frame | 91/93/92 | 92 | 95 | 82/80/78 | 80 | 91 |
+| Narrative | 92/90/93 | 92 | 93 | 86/80/82 | 82 | 90 |
+| Point of view | 93/90/93 | 93 | 95 | 58/52/55 | 55 | 72 |
+| Stance | 90/88/90 | 90 | 92 | 87/90/88 | 88 | 94 |
+| Depth | 91/90/88 | 90 | 91 | 89/85/87 | 87 | 85 |
+
+**Reading.**
+- The Agents 101 pages barely changed since r1, and AE101 reads two to three points lower on the same prompt. Part of the Agents 101 drop is judge drift; the paired gap is the steadier number. That gap widened on frame (4 → 12), narrative (3 → 10) and point of view (23 → 38), held on stance and depth.
+- Point of view is the low factor again, 55. All three judges give the r1 reason: the narrator holds opinions and has no stated miss of its own.
+
+**Moves the judges converge on:**
+1. `security`: `practice-of-risk` lands after `audit-your-agent`, so "Certainty is a fantasy you inherited" names the unease the audit produced (j2, j3; r1 j1, j2).
+2. `output-quality` *Start here*: cut "This module is the rescue" (j2, j3; r1 j1, j2).
+3. `hallucination-bakeoff` Phase 3: the student marks claims by hand before the scorer's board lands (j1, j3).
+4. One first-person passage where the narrator's own agent shipped something wrong and what caught it, in `practice-of-risk`, `where-is-this-all-going` or `new-human-role-in-the-loop` (3/3).
+5. `joint-double-diamond`: replace the scripted "You are now agent builders" with each participant naming an agent from their own `agents/` folder (j2; r1 3/3).
+
 ## Three trainings on one scale: runs `apt101-full-r5` and `a101-full-r1`, 2026-10-08
 
 Build ba5ffcaa, after the full eval sweep of APT101. Two paired sets of three Opus judges, each reading AE101 first and then one other training whole through `scripts/read-training.js`. The prompts are `story-depth/full-bench-prompt.apt101.md` (the prompt of rounds r1 to r4) and `story-depth/full-bench-prompt.a101.md` (same prompt; audience, intended shape and progression row swapped). Judge files: `story-depth/apt101-full-r5.judge-{1,2,3}.md`, `story-depth/a101-full-r1.judge-{1,2,3}.md`.

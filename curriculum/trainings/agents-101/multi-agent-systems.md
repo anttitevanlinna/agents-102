@@ -35,7 +35,7 @@ Three agents search Confluence, OneDrive and practitioner articles, and three mo
 
 ## Debrief
 
-Five minutes. The agent reviews the four prompts, the retrieval files, the synthesizer's briefing and the conversation, then rewrites CLAUDE.md in place and reports what changed. Push back on anything off.
+Five minutes. The agent reviews the four prompts, the retrieval files, the synthesizer's briefing and the conversation, then rewrites the root instructions file in place and reports what changed. Push back on anything off.
 
 {{prompt:a101-m3-debrief-handoff-rules}}
 

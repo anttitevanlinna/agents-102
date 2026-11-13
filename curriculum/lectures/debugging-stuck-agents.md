@@ -20,7 +20,7 @@ Make your own variant.
 
 4. **Shrink the rerun:** rerun only the smallest step that should now differ.
 
-5. **Write down the lesson:** add a rule to CLAUDE.md: what to read first, what not to smooth over, which output format to produce, when to stop and ask.
+5. **Write down the lesson:** add a rule to the root instructions file: what to read first, what not to smooth over, which output format to produce, when to stop and ask.
 
 <!-- maintainer -->
 

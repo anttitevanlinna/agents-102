@@ -46,7 +46,7 @@ Create one steering eval for internal mail an agent could help with. Ask the age
 
 ## I drifted too
 
-When I built a module of this course with Claude, the rules sat in its context the whole time. In one session: five reversals from me on Claude's confident recommendations, four leaks of a banned word across three helper agents, and several times a "done" that was not done.
+When I built a module of this course with an agent, the rules sat in its context the whole time. In one session: five reversals from me on the agent's confident recommendations, four leaks of a banned word across three helper agents, and several times a "done" that was not done.
 
 A check loop caught what the helpers missed. I caught what the loop missed. That is why the loop still has a person in it.
 

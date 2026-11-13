@@ -58,7 +58,6 @@ Read the reports. Pick a risk. Apply a mitigation. Name what's left. Decide.
 <!-- backing -->
 
 Claims
-- `certainty-is-a-fantasy-you-inherited` · vision · "Certainty is a fantasy you inherited." ← none-owed
 - `behaviour-is-non-deterministic` · vision · "Same prompt, same files, same tools, different session, different answer." ← none-owed
 - `attack-surface-is-the-instruction-set` · borrowed · "The attack surface is the instruction set." ← cultural-vocab
 - `capability-is-emergent` · vision · "Capability is emergent. … You can't fully predict the combination. You can only bound it." ← none-owed
@@ -99,7 +98,7 @@ OODA
 - None specific to the lecture. Capability checks for the exercises are in the exercise files.
 
 **Watch-fors (deferred to facilitator notes pass):**
-- Security-literate student challenges the "certainty is a fantasy" frame. Coach: *"The point isn't that classical security is wrong. It's that agents add three properties — non-determinism, instruction-set attacks, emergent capability — that the classical story doesn't cover. STRIDE still works; the categories mean different things."*
+- Security-literate student challenges the "no certainty" frame. Coach: *"The point isn't that classical security is wrong. It's that agents add three properties — non-determinism, instruction-set attacks, emergent capability — that the classical story doesn't cover. STRIDE still works; the categories mean different things."*
 - Business-audience student retreats from "threat modelling." Coach: *"The skill does the threat modelling. Your job is to read the report with judgment — that's business judgment, not security expertise."*
 - Student asks for the "right" answer to how much risk to accept. Coach: *"That's a business decision, not a technical one. The loop gives you the information; your role decides the threshold. Naming that distinction out loud is the Nordic-compliance move most orgs skip."*
 - Variant note: Mid-Management variant can extend the "decide" beat to discuss signing off residual risks as a leadership discipline — who owns the residual, how it gets logged, how the organisation absorbs a residual as operational reality.

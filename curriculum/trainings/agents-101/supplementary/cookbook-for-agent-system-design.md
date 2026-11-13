@@ -58,7 +58,7 @@ Eight moves to compose, not eight steps to follow. Reach for the one the dish ne
 
 **Test:** the report contains at least one residual you cannot flatten, and the next session knows what to check.
 
-**Why:** certainty about agent safety is a fantasy. The discipline is running the check, not waiting for the check to come back clean. A scoped agent isn't one with no risk; it's one whose residual risk is named, owned, and visible to the next session.
+**Why:** you can't be certain an agent is safe. The discipline is running the check, not waiting for the check to come back clean. A scoped agent isn't one with no risk; it's one whose residual risk is named, owned, and visible to the next session.
 
 ### R5, Earn a judge by benchmarking
 

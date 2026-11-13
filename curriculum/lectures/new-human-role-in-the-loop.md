@@ -4,7 +4,7 @@ Files are the handles. Connectors bring material in. Agents read and write. Judg
 
 The destination is not "the human disappears." You move one level up: you design the loop and own the yardstick.
 
-## Would you let it send the mail?
+## Which check would let it send the mail without you?
 
 Would you allow your agent to send an internal mail related to what you do: a project update, a decision summary, a risk note, a stakeholder nudge?
 

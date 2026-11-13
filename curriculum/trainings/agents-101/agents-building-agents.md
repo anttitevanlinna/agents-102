@@ -16,7 +16,7 @@ After this module, you can:
 
 ## Start here
 
-**The agent-made analysis, today:** The agents take over building and improving the agents themselves. You still describe the next one.
+You walk in with the parts of seven modules: memory, agents, skills, judges, a loop. Today your agent builds and improves agents from them. You describe the next one.
 
 Your agent works in `~/Documents/agents-101/` and reads your agent system plus `module-7/monday.md`. The room's forum runs in a separate shared folder, so your own files stay local.
 
@@ -83,7 +83,7 @@ We could have spent today building you one impressive agent. It would have demoe
 
 <!-- maintainer -->
 
-**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the `**The agent-made analysis, today:**` opener in § Start here (which part of the job the agents take over), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
+**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the opener in § Start here (AE101 shape, Antti 2026-11-13: "see ae101 for how to write": what the student walks in with, which part of the job the agents take over today, what stays theirs; the bold label was rejected as "even worse"), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
 
 **Against-interest line in § Next (2026-11-13).** "We could have spent today building you one impressive agent… the wrong thing to sell you" is the stance beat; present before compaction 149d513c. Big Idea stated cold unchanged with it (n=12).
 

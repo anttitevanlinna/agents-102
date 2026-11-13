@@ -17,11 +17,11 @@ After this module, you can:
 
 ## Start here
 
-**The agent-made analysis, today:** From today the agents make one analysis of your challenge, and each module hands them one more part of the job. Today they take over gathering and remembering: sources go into a memory the agent keeps current. You still name the challenge and approve the plan.
+You walk in with a challenge and an empty folder. By the end of today, agents gather your sources and keep a memory of them. Naming the challenge and approving the plan stay yours.
 
-Start a fresh session or task at `~/Documents/agents-101/`, so Module 1's scrollback stays out of the way.
+Start a fresh session or task at `~/Documents/agents-101/`. Module 1's scrollback stays behind.
 
-The empty `memory/`, `sources/`, and `agents/` folders are there from prework. Neither the Module 1 generation-rules file (scoped to `module-1/`) nor `module-1/site.html` is an input to this build. You write the root instructions file in the Debrief.
+Your `memory/`, `sources/` and `agents/` folders are empty from prework. Module 1's files stay out of this build. The root instructions file comes in the Debrief.
 
 What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you?
 
@@ -105,7 +105,7 @@ Before the next module, build a few more agents you need. Pick by pain: a task y
 
 <!-- maintainer -->
 
-**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the `**The agent-made analysis, today:**` opener in § Start here (which part of the job the agents take over), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
+**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the opener in § Start here (AE101 shape, Antti 2026-11-13: "see ae101 for how to write": what the student walks in with, which part of the job the agents take over today, what stays theirs; the bold label was rejected as "even worse"), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@194c81b0 strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

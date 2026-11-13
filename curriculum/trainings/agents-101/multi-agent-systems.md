@@ -17,11 +17,9 @@ You will:
 
 ## Start here
 
-**The agent-made analysis, today:** The agents take over searching and deciding: retrievers search, stances argue, and an answer comes out. You still start it and read the answer.
+You walk in with a memory and a week of runs. Today three agents search Confluence, OneDrive and practitioner articles, three more decide what it means, and an answer comes out. You start them and read the answer.
 
 Start a fresh session or task at `~/Documents/agents-101/`. Save outputs under `module-3/`.
-
-Three agents search Confluence, OneDrive and practitioner articles, and three more decide what it means.
 
 [Demo: Agent that takes action](lectures/agent-that-takes-action.md)
 
@@ -98,7 +96,7 @@ Until Module 4, keep working on your real problem: add an agent for a critical d
 
 <!-- maintainer -->
 
-**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the `**The agent-made analysis, today:**` opener in § Start here (which part of the job the agents take over), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
+**Red thread and four ideas (2026-11-13, Antti "you make it right").** Strategy § The red thread and § The four yarns. Three fixed pieces, same words every module: the opener in § Start here (AE101 shape, Antti 2026-11-13: "see ae101 for how to write": what the student walks in with, which part of the job the agents take over today, what stays theirs; the bold label was rejected as "even worse"), one slide of four bold-labelled ideas right after the exercise that shows them (each line the module's grid cell), and `## Your own agent` above `## Next` (callout step, naming the previous one). Check: `curriculum/evals/teaching/thread.js`.
 
 **Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@4d9c4af2 technical@725101ec behavior@725101ec pedagogy@4d9c4af2 strategy@4d9c4af2 slides@4d9c4af2)
 - judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

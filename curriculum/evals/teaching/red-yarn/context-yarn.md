@@ -13,7 +13,7 @@ Parent `figures/agent-picture.md` (full picture, M6 close, `new-human-role-in-th
 | M | Copy | On | State change |
 |---|---|---|---|
 | M1 | `agent-picture-context` | `slides/first-piece-of-the-picture.md` | context row: your messages only; "everything so far goes up" arrow |
-| M2 | `agent-picture-memory` | `slides/only-what-someone-wrote-down.md` | messages dashed "gone at close"; files on disk "read again" feed instructions/rules + tool results |
+| M2 | `agent-picture-memory` (out: taste judge picked the slide without it, 3 runs, ed30a9cd; a home in place of a sentence is open) | `slides/only-what-someone-wrote-down.md` | messages dashed "gone at close"; files on disk "read again" feed instructions/rules + tool results |
 | M4 | `agent-picture-reach` | `lectures/practice-of-risk.md`, under "The attack surface is the instruction set" | tool results row marked, result-appended arrow lit |
 | M6 | parent | `new-human-role-in-the-loop.md` | veil off |
 | M8 | parent, echo | `lectures/where-is-this-all-going.md`, under "The parts of an agent stay the same" | same picture, now the builder's parts list |

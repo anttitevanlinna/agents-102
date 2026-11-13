@@ -1,7 +1,7 @@
 # Getting Going
 
 ## Big Idea
-With the right guardrails, you create output that's genuinely yours, not generic.
+Context is how you paint by LLM. What you give the agent shapes what comes back, and you can go very deep with it: your profile, your rules, your judgement on the result.
 
 ## Prework
 
@@ -10,7 +10,7 @@ Set up your agent runtime. Build a snake game as HTML. Connect your calendar (M3
 ## What You'll Learn
 You can:
 - **Generate** an HTML one-pager
-- **Apply** guardrails and compare outputs
+- **Apply** context in layers and compare outputs
 - **Evaluate** output against your domain knowledge
 - **Package** guardrails as reusable rules
 
@@ -51,9 +51,10 @@ Each round sharpens the file: do the work → capture → reflect → sharpen. R
 Where the critic sees generic, your context is thin: add one sharp detail, then regenerate the site. Where its *"uniquely you"* pick matches your own read, you're on solid ground. Your read outweighs the agent's.
 
 ## Key Concepts
-- Guardrails are structured context, not a checklist.
-- Your domain expertise is the test.
+- Context is the brush: what you give the agent shapes the output.
 - Output got specific because the context did.
+- Guardrails are context you can reuse.
+- Your domain expertise is the test.
 
 ## Bring to Module 2
 
@@ -71,6 +72,8 @@ Save the prework, end this session, then start Module 2 fresh at `~/Documents/ag
 The agent re-reads the output file next time.
 
 <!-- maintainer -->
+
+**Big Idea back to the strategy line (2026-11-13, Antti: "M1 is really context and painting with LLM").** The page had drifted to guardrails; Big Idea, the Apply LO and Key Concepts now lead with context as the brush, guardrails as reusable context. Big Idea stated cold 54 -> 63 (n=12, inside noise, direction right).
 
 **Quality:** compendium-audited 2026-08-25 (writing@19381896 story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@194c81b0 slides@19381896)
 - judges @19381896: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

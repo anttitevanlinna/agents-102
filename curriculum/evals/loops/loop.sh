@@ -21,6 +21,8 @@
 # (default 60 per page, 120 with all judges); over it the call fails without reaching the API and the
 # run stops INCOMPLETE. TEACH_ONLY=1 runs students + the Big Idea score only (no story, taste, words,
 # match). Probe answers and scores are cached in <out-dir>/teach, so a rerun pays only for what is new.
+# THREAD=1 adds the cross-module red-thread check (teaching/thread.js, 8 calls per page) to the report:
+# the per-module measure cannot see a thread that runs between modules.
 set -uo pipefail
 MOD="$1"; APPLY="$2"; VARS="$3"; OUT="$(mkdir -p "$4" && cd "$4" && pwd)"
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"; ROOT="$(cd "$HERE" && git rev-parse --show-toplevel)"
@@ -29,7 +31,7 @@ PS="$ROOT/curriculum/evals/mechanical/persona-student"
 IFS=, read -ra VS <<< "$VARS"; ALL=(v0 "${VS[@]}")
 log() { echo "[loop] $*" >&2; }
 NP=$(( ${#ALL[@]} + 1 ))  # pages incl. the damaged copy
-export PATH="$HERE/bin:$PATH" EVAL_BUDGET="${EVAL_BUDGET:-$(( NP * ( ${TEACH_ONLY:-0} == 1 ? 60 : 120 ) * ${REPEATS:-2} / 2 ))}" EVAL_BUDGET_FILE="$OUT/budget.count"
+export PATH="$HERE/bin:$PATH" EVAL_BUDGET="${EVAL_BUDGET:-$(( NP * ( ${TEACH_ONLY:-0} == 1 ? 60 : 120 ) * ${REPEATS:-2} / 2 + ( ${THREAD:-0} == 1 ? 8 * ${#ALL[@]} : 0 ) ))}" EVAL_BUDGET_FILE="$OUT/budget.count"
 mkdir -p "$OUT"; rm -f "$EVAL_BUDGET_FILE" "$EVAL_BUDGET_FILE.exhausted"
 log "budget: $EVAL_BUDGET calls (counted in $EVAL_BUDGET_FILE)"
 
@@ -89,6 +91,13 @@ node "$T/score.js" --in "$OUT/teach/answers.jsonl" --cache "$OUT/teach/score-cac
 grep -q FAILED "$OUT/teach/probe.log" 2>/dev/null && echo "probe" >> "$OUT/students/INCOMPLETE"
 [ -e "$EVAL_BUDGET_FILE.exhausted" ] && echo "budget ($EVAL_BUDGET calls)" >> "$OUT/students/INCOMPLETE"
 node "$HERE/report.js" "$OUT" "$MOD" > "$OUT/report.md"
+if [ "${THREAD:-0}" = 1 ]; then
+  mkdir -p "$OUT/thread"
+  for v in "${ALL[@]}"; do
+    [ -s "$OUT/thread/$v.json" ] || node "$T/thread.js" --root "$OUT/lab/$v" --out "$OUT/thread/$v.json" > "$OUT/thread/$v.md" 2>&1 || echo "thread $v" >> "$OUT/students/INCOMPLETE"
+    { echo; echo "### $v"; cat "$OUT/thread/$v.md"; } >> "$OUT/report.md"
+  done
+fi
 log "done → $OUT/report.md ($(cat "$EVAL_BUDGET_FILE" 2>/dev/null || echo 0) of $EVAL_BUDGET budgeted calls)"
 [ -s "$OUT/students/INCOMPLETE" ] && { log "INCOMPLETE: $(paste -sd, "$OUT/students/INCOMPLETE") — rerun the same command; finished runs are reused"; exit 3; }
 exit 0

@@ -87,3 +87,11 @@ One week's quota went in two days (11-06 to 11-07): about 33,000 headless calls.
 - Keyword strings still pass 3 of 16 times. The trainer's marks in the golden set will show if real answers do this.
 - The cold probe reads the student's own notes, written with the page in view. It measures what the student wrote down as they went, not recall after a week.
 - The capture page keeps a copy of the Big Ideas for display; republish it after the strategy file changes.
+
+## Red thread, cross-module (2026-11-13)
+
+`thread.js` checks the strategy's § The red thread across all eight module pages: from M2 on, the page points early at the student's one piece of work in its current state (matching the section's first table), every module carries the fixed own-agent callout with its step (second table), the callout names the previous step, and every page uses the same name. One Sonnet call per module returns quotes; code drops any quote the page does not contain and scores the share of checks passed (0-100). The per-module Big Idea measure cannot see this; run both.
+
+- By hand: `node curriculum/evals/teaching/thread.js [--out f.json]` (8 calls, budget 12 by default).
+- In the loop: `THREAD=1 loop.sh …` appends one table per page to the report (8 calls per page).
+- Calibration 2026-11-13: main before the rollout scored 0 of 29; a lab copy with the thread on M2 and M3 scored 8 of 8 on those two.

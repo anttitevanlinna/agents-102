@@ -51,7 +51,7 @@ Push back where the summary is wrong: *"The planner and the reframer needed to b
 
 ## The doubt stays. Hold it.
 
-Nothing checks the briefing yet, so its correctness stays open until Module 5 measures this same briefing.
+Nothing checks the briefing yet, so its correctness stays open.
 
 ## Optional memory check before Module 4
 
@@ -78,7 +78,7 @@ After the optional check and pre-reads, end this session. Module 4 starts fresh 
 An agent that works across connected systems has access to those systems.
 
 ## Next
-Until Module 4, keep working on your real problem: ask your agent to add an agent for a critical dependency, or a plan visualisation.
+Until Module 4, keep working on your real problem: add an agent for a critical dependency, or a plan visualisation.
 
 <!-- maintainer -->
 

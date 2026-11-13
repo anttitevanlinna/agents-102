@@ -16,7 +16,7 @@ You describe an agent; your agent builds it. Pick one extension you'd use:
 
 *5 min*
 
-Pick one agent from an earlier module: the Module 6 generation tactic, whose judge the agent cannot reach, or the Module 2 morning agent. Ask your agent to read it, its last output and what you found off, then improve it. Run the old and the new version once and compare.
+Pick one agent from an earlier module: the Module 2 morning agent or the Module 6 generation tactic. Ask your agent to read it, its last output and what you found off, then improve it. Run the old and the new version once and compare.
 
 Your agent just improved your agent. Now build a new one.
 

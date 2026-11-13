@@ -46,14 +46,14 @@ Five minutes. Your agent improves your agent. It reviews the session, rewrites t
 
 ## Push back on the summary
 
-The agent is auditing its own work, so the judge sits inside what it judges. If the summary sounds too clean, ask: *"Name one critique raised in the session that did not change the rewritten file. Quote the critique and the unchanged line."*
+The agent is auditing its own work. If the summary sounds too clean, ask: *"Name one critique raised in the session that did not change the rewritten file. Quote the critique and the unchanged line."*
 
 Some unresolved items should stay unresolved.
 
 ## Key Concepts
-- Your agent builds what you can describe and test.
-- Your agent improves your other agents while the judge stays out of reach of the agent it judges.
-- Improvements a check has measured stay on disk; the next agent starts from them.
+- Describe the agent; your agent builds it.
+- Your agent can improve your agent: the fixed-judge loop, now pointed at the system itself.
+- Every improvement stays on disk; the next agent starts from it.
 - What multiplies your work is how fast you learn, not how many agents you own.
 - Parts hold; the model rotates.
 

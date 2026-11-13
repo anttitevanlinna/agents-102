@@ -2,10 +2,10 @@
 """compact-module.py <module> <checkout> <out-dir> — one compaction pass over any Agents 101 module:
 the module page plus every lecture and exercise it links. Keeps headings, links, prompt/figure lines,
 Session widgets, code fences, paths and bold take-homes verbatim; cuts prose toward a glanceable map
-at AE101 density, using m7/maintainer-language-notes.md and the taste rules. One opus call per file,
+at AE101 density, using m7/maintainer-language-notes.md and the taste rules. One call (GEN_MODEL, default sonnet) per file,
 in parallel. Writes <out-dir>/<path under curriculum/> (student body only; apply-compact.py swaps it
 in above each file's maintainer block). Prints words before → after and any structure drift."""
-import sys, re, pathlib, subprocess, concurrent.futures as cf
+import os, sys, re, pathlib, subprocess, concurrent.futures as cf
 MOD, SRC, OUT = sys.argv[1], pathlib.Path(sys.argv[2]) / "curriculum", pathlib.Path(sys.argv[3])
 HERE = pathlib.Path(__file__).parent
 notes = (HERE / "m7/maintainer-language-notes.md").read_text()
@@ -45,7 +45,7 @@ Cut prose: whole sentences that do not help the student do the work on their own
 
 Answer with one fenced block ```md ... ``` holding the compacted file and nothing else."""
     for attempt in range(2):
-        out = subprocess.run(["claude", "-p", "--model", "opus", "--output-format", "text"], input=prompt, capture_output=True, text=True, timeout=1800).stdout
+        out = subprocess.run(["claude", "-p", "--model", os.environ.get("GEN_MODEL", "sonnet"), "--output-format", "text"], input=prompt, capture_output=True, text=True, timeout=1800).stdout
         m = re.search(r"```md\n(.*)\n```", out, re.S)
         if m: break
     if not m: return rel, len(body.split()), 0, "no block returned"

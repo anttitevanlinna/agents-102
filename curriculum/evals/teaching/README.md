@@ -56,6 +56,16 @@ M4 holds at 50% because the idea is spread through the module: "write down what 
 
 Read with care: M1 rose from 17% when its Big Idea moved to the maintainer's wording (context paints the output), because that is what the module teaches. M6 rose to 96% on the industry definition of evals. M5's page and the strategy file state different Big Ideas.
 
+## Cost guard and lean scorer (2026-11-13)
+
+One week's quota went in two days (11-06 to 11-07): about 33,000 headless calls. Three causes, each now closed:
+
+- **Every call carried the repo.** A `claude -p` started inside the checkout loaded CLAUDE.md, the rules, tool schemas and MCP: 55.7k input tokens for a two-line question. `loops/bin/claude` (on PATH in `loop.sh`; `source loops/guard.sh` by hand) runs each eval call from an empty directory with a one-line system prompt, no tools, MCP, settings, skills or saved session: 6.0k tokens. It adds `--model sonnet` unless the caller names a model (the story judge and the full rubric name opus on purpose).
+- **Reruns repaid finished work.** `probe.js` appended every answer again on each rerun and `score.js` scored the duplicates (one M8 run: 216 scored rows for 48 answers). Now probe skips students already answered, score dedups by (group, id) and keeps a per-answer cache (`--cache`, keyed on method, model, K, the eight targets and the answer).
+- **No ceiling.** `EVAL_BUDGET` caps the calls of one `loop.sh` invocation (default 60 per page teaching-only, 120 with all judges); a call past it exits 75 without reaching the API, nothing retries it, and the run ends INCOMPLETE with "budget". Outer retry loops around `loop.sh` are not used; a failed student is retried once.
+
+**Lean scorer: 2 calls per answer, was 12.** One blind call writes the K=4 restatements together; one call matches all of them against the eight targets in a shuffled order. `TEACH_SPLIT=1` keeps the old method. Check on the 40 M8 answers of `m8g1` (old scores from the split method): v0 24 → 17, g2 38 → 34; per-answer correlation 0.74, mean absolute difference 0.15. The lean scorer reads about 5 points stricter and keeps the gap between pages. **Numbers from before 2026-11-13 are not comparable with lean-scorer numbers without rescoring**; a loop run always rescores its own v0, so within-run gaps stay valid. `TEACH_ONLY=1` runs students and this score only.
+
 ## Noise and limits
 
 **Repeat-run noise, measured 2026-11-02** (`results/2026-11-02-noise/`). The same M3 page (main, hash e566cff6), 3 full runs of 24 students plus one re-probe of run 1, each scored twice:

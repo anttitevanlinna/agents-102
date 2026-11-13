@@ -22,6 +22,7 @@ try {
   L.push('', 'Rank on "stated" at n=24 per page; see teaching/README.md for the gap that counts. A page with n under 24 is incomplete: rerun.', '');
   if (fs.existsSync(path.join(out, 'students/INCOMPLETE'))) L.push('**INCOMPLETE RUN:** ' + fs.readFileSync(path.join(out, 'students/INCOMPLETE'), 'utf8').trim().split('\n').join(', ') + '. Do not rank on it.', '');
 } catch (_) { /* no teaching run */ }
+if (process.env.TEACH_ONLY === '1') { L.push('Teaching-only run (TEACH_ONLY=1): story, taste, words and flags judges were skipped.'); console.log(L.join('\n')); process.exit(0); }
 
 L.push('## Students: words (the signal) and numbers (context only)', '',
   '| page | complaints/run | filler | repetition | missing | specific praise/run | skipped beats/run | tells/run | law hits/run | enjoyment (1-7, not a signal) | learning hits (match) |', '|---|---|---|---|---|---|---|---|---|---|---|');
@@ -42,7 +43,7 @@ for (const p of order) { const laws = (w && w.summary[hashOf[p]] || {}).laws || 
 L.push('', '## Story judge (module-scoped; medians)', '', '| page | frame | narrative | POV | stance | mean4 | register |', '|---|---|---|---|---|---|---|');
 for (const p of order) { const d = J(`story/${p}.json`); if (d) { const m = d.median; L.push(`| ${p} | ${m.frame} | ${m.narrative} | ${m.pov} | ${m.stance} | ${m.mean4} | ${m.register} |`); } }
 
-const key = fs.existsSync(path.join(out, 'taste/pairs.key.jsonl')) ? fs.readFileSync(path.join(out, 'taste/pairs.key.jsonl'), 'utf8').trim().split('\n').map(JSON.parse) : [];
+const key = fs.existsSync(path.join(out, 'taste/pairs.key.jsonl')) ? fs.readFileSync(path.join(out, 'taste/pairs.key.jsonl'), 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : [];
 const pk = (f) => Object.fromEntries((fs.existsSync(path.join(out, f)) ? fs.readFileSync(path.join(out, f), 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : []).map((r) => [r.id, r.pick]));
 const b = pk('taste/picks-blind.jsonl'), sw = pk('taste/picks-swapped.jsonl');
 if (key.length) {

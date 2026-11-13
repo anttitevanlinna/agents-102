@@ -15,7 +15,10 @@ const a = args();
 const Q = JSON.parse(fs.readFileSync(path.join(__dirname, 'targets.json'), 'utf8')).cold_question;
 const PD = a['persona-dir'] || path.join(__dirname, '..', 'personas', 'agents-101');
 const MODEL = a.model || process.env.PERSONA_MODEL || 'sonnet';
-const files = a.logs.split(',').filter(Boolean);
+// Cache: a student already answered in --out is not asked again (a rerun used to re-ask everyone
+// and append duplicates, which the scorer then paid for again).
+const have = new Set(fs.existsSync(a.out) ? fs.readFileSync(a.out, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l).id) : []);
+const files = a.logs.split(',').filter(Boolean).filter((f) => !have.has(path.basename(f, '.json')));
 
 (async () => {
   const rows = await pool(files, async (f) => {
@@ -40,7 +43,7 @@ Answer with one json block: {"answer": "..."}`;
   fs.mkdirSync(path.dirname(a.out), { recursive: true });
   const ok = rows.filter((r) => !r.failed), bad = rows.filter((r) => r.failed);
   if (ok.length) fs.appendFileSync(a.out, ok.map((r) => JSON.stringify(r)).join('\n') + '\n');
-  console.log(`[probe] ${ok.length}/${rows.length} answers → ${a.out}`);
+  console.log(`[probe] ${ok.length}/${rows.length} new answers (${have.size} cached) → ${a.out}`);
   // A missing student changes the persona mix and can move the number by itself: fail loudly.
   if (bad.length) { for (const b of bad) console.error(`[probe] FAILED ${b.failed}: ${b.error}`); process.exit(3); }
 })();

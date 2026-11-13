@@ -16,6 +16,11 @@
 # Student text in this checkout is never touched; variants live in <out-dir>/lab/<v>.
 # BASE_REV=<rev> makes v0 the text at that revision (instruments always come from this checkout);
 # with rev-apply.py, variants named after revisions compare two points in history.
+# Quota guard (2026-11-13, after one week's quota went in two days): every claude -p goes through
+# bin/claude (lean call, sonnet unless named, counted). EVAL_BUDGET = max calls for this invocation
+# (default 60 per page, 120 with all judges); over it the call fails without reaching the API and the
+# run stops INCOMPLETE. TEACH_ONLY=1 runs students + the Big Idea score only (no story, taste, words,
+# match). Probe answers and scores are cached in <out-dir>/teach, so a rerun pays only for what is new.
 set -uo pipefail
 MOD="$1"; APPLY="$2"; VARS="$3"; OUT="$(mkdir -p "$4" && cd "$4" && pwd)"
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"; ROOT="$(cd "$HERE" && git rev-parse --show-toplevel)"
@@ -23,6 +28,10 @@ PS="$ROOT/curriculum/evals/mechanical/persona-student"
 [ -f "$PS/modules/$MOD.json" ] || { echo "missing $PS/modules/$MOD.json" >&2; exit 2; }
 IFS=, read -ra VS <<< "$VARS"; ALL=(v0 "${VS[@]}")
 log() { echo "[loop] $*" >&2; }
+NP=$(( ${#ALL[@]} + 1 ))  # pages incl. the damaged copy
+export PATH="$HERE/bin:$PATH" EVAL_BUDGET="${EVAL_BUDGET:-$(( NP * ( ${TEACH_ONLY:-0} == 1 ? 60 : 120 ) * ${REPEATS:-2} / 2 ))}" EVAL_BUDGET_FILE="$OUT/budget.count"
+mkdir -p "$OUT"; rm -f "$EVAL_BUDGET_FILE" "$EVAL_BUDGET_FILE.exhausted"
+log "budget: $EVAL_BUDGET calls (counted in $EVAL_BUDGET_FILE)"
 
 log "lab: $OUT/lab"
 mkdir -p "$OUT"/{lab,pages,students,story,taste,flags}
@@ -51,22 +60,23 @@ rm -f "$OUT/students/INCOMPLETE"
     || echo "$v" >> "$OUT/students/INCOMPLETE"
 done ) &
 for v in "${ALL[@]}"; do
+  [ "${TEACH_ONLY:-0}" = 1 ] && continue
   [ -s "$OUT/story/$v.json" ] || node "$HERE/story-judge.js" "$OUT/pages/$v.md" "$OUT/story/$v.json" "${STORY_N:-3}" >"$OUT/story/$v.log" 2>&1 &
   node "$HERE/flags.js" "$OUT/lab/$v" --module "$MOD" --json >"$OUT/flags/$v.json" 2>/dev/null
 done
-if [ ${#VS[@]} -gt 0 ]; then
+if [ ${#VS[@]} -gt 0 ] && [ "${TEACH_ONLY:-0}" != 1 ]; then
   python3 "$HERE/build-pairs.py" "$OUT/lab" "$OUT/taste" v0 "$VARS" "$MOD" >&2
   for o in blind swapped; do
     [ -s "$OUT/taste/picks-$o.jsonl" ] || PAIRS_BATCH=2 node "$PS/pairs.js" --blind "$OUT/taste/pairs.$o.jsonl" --rules "$PS/taste-rules.md" --examples "$PS/taste-examples.md,$PS/taste-examples-cuts.md" --out "$OUT/taste/picks-$o.jsonl" >"$OUT/taste/$o.log" 2>&1 &
   done
 fi
 wait
-[ ${#VS[@]} -gt 0 ] && python3 "$HERE/taste-retry.py" "$OUT/taste" "$PS/pairs.js" "$PS/taste-rules.md" "$PS/taste-examples.md,$PS/taste-examples-cuts.md" >&2
+[ ${#VS[@]} -gt 0 ] && [ "${TEACH_ONLY:-0}" != 1 ] && [ ! -e "$EVAL_BUDGET_FILE.exhausted" ] && python3 "$HERE/taste-retry.py" "$OUT/taste" "$PS/pairs.js" "$PS/taste-rules.md" "$PS/taste-examples.md,$PS/taste-examples-cuts.md" >&2
 
 log "scoring"
 LOGS="$(ls "$OUT"/students/*.json | paste -sd, -)"
-node "$PS/score.js" --module "$MOD" --logs "$LOGS" --match --out "$OUT/students-score.json" >/dev/null 2>&1
-node "$HERE/words.js" --module-json "$PS/modules/$MOD.json" --logs "$LOGS" --out "$OUT/words.json" >/dev/null 2>&1
+[ "${TEACH_ONLY:-0}" = 1 ] || node "$PS/score.js" --module "$MOD" --logs "$LOGS" --match --out "$OUT/students-score.json" >/dev/null 2>&1
+[ "${TEACH_ONLY:-0}" = 1 ] || node "$HERE/words.js" --module-json "$PS/modules/$MOD.json" --logs "$LOGS" --out "$OUT/words.json" >/dev/null 2>&1
 # Teaching measure (first-ranked): each student states the module's Big Idea cold; blind scorer.
 # Default panel = 12 students (six personas x 2). Gap over 15 counts; 10-15 on a strategy-level call: add a second 12 (REPEATS=4 reuses the first 12).
 T="$ROOT/curriculum/evals/teaching"; mkdir -p "$OUT/teach"; : > "$OUT/teach/answers.jsonl"
@@ -75,8 +85,9 @@ for v in "${ALL[@]}" $DMG; do
   node "$T/probe.js" --logs "$L" --group "$v" --out "$OUT/teach/$v.answers.jsonl" >>"$OUT/teach/probe.log" 2>&1
   cat "$OUT/teach/$v.answers.jsonl" >> "$OUT/teach/answers.jsonl"
 done
-node "$T/score.js" --in "$OUT/teach/answers.jsonl" --out "$OUT/teach/scored.jsonl" >"$OUT/teach/summary.txt" 2>&1 || echo "score" >> "$OUT/students/INCOMPLETE"
+node "$T/score.js" --in "$OUT/teach/answers.jsonl" --cache "$OUT/teach/score-cache.jsonl" --out "$OUT/teach/scored.jsonl" >"$OUT/teach/summary.txt" 2>&1 || echo "score" >> "$OUT/students/INCOMPLETE"
 grep -q FAILED "$OUT/teach/probe.log" 2>/dev/null && echo "probe" >> "$OUT/students/INCOMPLETE"
+[ -e "$EVAL_BUDGET_FILE.exhausted" ] && echo "budget ($EVAL_BUDGET calls)" >> "$OUT/students/INCOMPLETE"
 node "$HERE/report.js" "$OUT" "$MOD" > "$OUT/report.md"
-log "done → $OUT/report.md"
+log "done → $OUT/report.md ($(cat "$EVAL_BUDGET_FILE" 2>/dev/null || echo 0) of $EVAL_BUDGET budgeted calls)"
 [ -s "$OUT/students/INCOMPLETE" ] && { log "INCOMPLETE: $(paste -sd, "$OUT/students/INCOMPLETE") — rerun the same command; finished runs are reused"; exit 3; }

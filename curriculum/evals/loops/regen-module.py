@@ -4,10 +4,10 @@ Regenerate an Agents 101 module page and its linked lectures (student bodies onl
 section, the rule leads, the maintainer's language notes and taste rules. Exercises and slides stay
 as they are in <base-dir> (a curriculum/-relative tree, e.g. a compaction c2, falling back to the repo).
 --big-idea overrides the strategy's Big Idea (the maintainer's newest call). --story places a signed
-first-person story verbatim as the opening lecture's first slide. One opus call per file, in parallel.
+first-person story verbatim as the opening lecture's first slide. One call (GEN_MODEL, default sonnet) per file, in parallel.
 Writes <out-dir>/<path under curriculum/>; also copies the base exercises/slides so <out-dir> is a
 complete variant for apply-compact.py."""
-import sys, re, pathlib, subprocess, shutil, argparse, concurrent.futures as cf
+import os, sys, re, pathlib, subprocess, shutil, argparse, concurrent.futures as cf
 ap = argparse.ArgumentParser(); ap.add_argument("module"); ap.add_argument("section"); ap.add_argument("base"); ap.add_argument("out")
 ap.add_argument("--big-idea"); ap.add_argument("--story"); a = ap.parse_args()
 HERE = pathlib.Path(__file__).parent; CUR = HERE.parents[1]; CORE = CUR.parents[1] / "agents-102-core"
@@ -75,7 +75,7 @@ Rewrite this file so the module lands its Big Idea: a student asked cold afterwa
 
 Answer with one fenced block ```md ... ``` holding the whole file and nothing else."""
     for _ in range(2):
-        out = subprocess.run(["claude", "-p", "--model", "opus", "--output-format", "text"], input=ask, capture_output=True, text=True, timeout=1800).stdout
+        out = subprocess.run(["claude", "-p", "--model", os.environ.get("GEN_MODEL", "sonnet"), "--output-format", "text"], input=ask, capture_output=True, text=True, timeout=1800).stdout
         m = re.search(r"```md\n(.*)\n```", out, re.S)
         if m: break
     if not m: return rel, "FAILED"

@@ -3,12 +3,13 @@
 const { spawn } = require('child_process');
 const { lastJson } = require('../mechanical/persona-student/lib');
 
-function askAsync(prompt, model, tries = 3) {
+function askAsync(prompt, model, tries = 2) {
   return new Promise((res, rej) => {
     const c = spawn('claude', ['-p', '--model', model, '--output-format', 'text']);
     let out = '', err = '';
     c.stdout.on('data', (d) => (out += d)); c.stderr.on('data', (d) => (err += d));
     c.on('close', (code) => {
+      if (code === 75) return rej(new Error('eval budget exhausted')); // loops/bin/claude: no retry
       try { if (code) throw new Error(err.slice(0, 300)); res(lastJson(out)); }
       catch (e) { tries > 1 ? setTimeout(() => askAsync(prompt, model, tries - 1).then(res, rej), (4 - tries) * 15e3) : rej(e); } // back off: rate limits
     });

@@ -2,8 +2,8 @@
 """compact.py <src-variant> <out-variant> — one compaction pass over Module 7's student files as
 they stand in lab <src-variant> (module page, lecture, three exercises). Keeps every heading,
 link, prompt line, widget, code fence and file path; cuts prose to a glanceable map at AE101
-density. One opus call per file, in parallel; writes regen/<out>-<part>.md, swapped in by apply.py."""
-import sys, re, pathlib, subprocess, concurrent.futures as cf
+density. One call (GEN_MODEL, default sonnet) per file, in parallel; writes regen/<out>-<part>.md, swapped in by apply.py."""
+import os, sys, re, pathlib, subprocess, concurrent.futures as cf
 SRC, OUT = sys.argv[1], sys.argv[2]
 LAB = pathlib.Path(sys.argv[3]); HERE = pathlib.Path(__file__).parent
 PARTS = {"module": "trainings/agents-101/personal-to-team.md", "lecture": "lectures/access-is-not-absorption.md",
@@ -32,7 +32,7 @@ Cut prose: whole sentences that do not help the student do the work on their own
 {body}
 
 Answer with one fenced block ```md ... ``` holding the compacted file and nothing else."""
-    out = subprocess.run(["claude", "-p", "--model", "opus", "--output-format", "text"], input=prompt, capture_output=True, text=True, timeout=1800).stdout
+    out = subprocess.run(["claude", "-p", "--model", os.environ.get("GEN_MODEL", "sonnet"), "--output-format", "text"], input=prompt, capture_output=True, text=True, timeout=1800).stdout
     m = re.search(r"```md\n(.*)\n```", out, re.S); assert m, f"{part}: no block\n{out[-1500:]}"
     (HERE / "regen" / f"{OUT}-{part}.md").write_text(m.group(1).strip() + "\n")
     return part, len(body.split()), len(m.group(1).split())

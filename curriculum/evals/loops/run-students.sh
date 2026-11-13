@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # run-students.sh <lab-checkout> <page.md> <label> <outdir> [module] — personas x repeats.
 # PERSONAS (default the six-persona panel) and REPEATS (default 2) set the panel: 12 students per page.
-# At most STUDENT_JOBS (default 8) run at once; each failed run is retried twice with a back-off.
+# At most STUDENT_JOBS (default 8) run at once; a failed run is retried once, never past the eval budget.
 # Exits 3 if any student is still missing: a dropout changes the persona mix, and that alone
 # moved the teaching number by ~20 points on unchanged text (2026-11-02).
 set -uo pipefail
@@ -10,8 +10,9 @@ P="$LAB/curriculum/evals/mechanical/persona-student"; PD="$LAB/curriculum/evals/
 mkdir -p "$OUT"
 one() {
   local f="$OUT/$LABEL-$1-r$2.json" t
-  for t in 1 2 3; do
+  for t in 1 2; do
     [ -s "$f" ] && return 0
+    [ -n "${EVAL_BUDGET_FILE:-}" ] && [ -e "$EVAL_BUDGET_FILE.exhausted" ] && return 1
     node "$P/experience.js" --persona-dir "$PD" --persona "$1" --module "$MOD" --page "$PAGE" --out "$f" \
       || echo "[students] $LABEL $1 r$2 try $t failed" >&2
     [ -s "$f" ] || sleep $((t * 30))

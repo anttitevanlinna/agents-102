@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Eval-call guard: every `claude -p` an eval script spawns goes through here once loops/bin is on PATH
+# (loop.sh puts it there; `source loops/guard.sh` does it for a hand-run script).
+# 1. Lean call: empty working dir, short system prompt, no tools, MCP, settings, skills or saved
+#    session. A default call from inside the repo loads ~56k tokens of CLAUDE.md, rules and tool
+#    schemas; this one ~6k (measured 2026-11-13).
+# 2. Model: sonnet unless the caller names one (story judge and rubric name opus on purpose).
+# 3. Budget: EVAL_BUDGET calls per EVAL_BUDGET_FILE (loop.sh: one file per run). Over budget = exit 75,
+#    no API call, so retries fail fast instead of burning quota.
+set -uo pipefail
+self="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+real="${EVAL_REAL_CLAUDE:-}"
+if [ -z "$real" ]; then
+  real="$(PATH="$(echo "$PATH" | tr ':' '\n' | grep -vxF "$self" | paste -sd:)" command -v claude)" || { echo "[guard] real claude not found" >&2; exit 127; }
+fi
+args=("$@")
+case " $* " in *" -p "*|*" --print "*) ;; *) exec "$real" "${args[@]}" ;; esac  # interactive use: untouched
+case " $* " in *" --model "*) ;; *) args=(--model sonnet "${args[@]}") ;; esac
+if [ -n "${EVAL_BUDGET:-}" ]; then
+  f="${EVAL_BUDGET_FILE:-${TMPDIR:-/tmp}/eval-budget.count}"
+  n=$( (flock 9; c=$(( $(cat "$f" 2>/dev/null || echo 0) + 1 )); echo "$c" > "$f"; echo "$c") 9>"$f.lock")
+  if [ "$n" -gt "$EVAL_BUDGET" ]; then
+    echo "[guard] BUDGET EXHAUSTED: call $n of $EVAL_BUDGET ($f). No API call made." >&2
+    touch "$f.exhausted"; exit 75
+  fi
+fi
+lean=(--tools "" --strict-mcp-config --no-session-persistence --setting-sources "" --disable-slash-commands)
+case " $* " in *" --system-prompt "*) ;; *) lean+=(--system-prompt "${EVAL_SYSTEM_PROMPT:-Follow the instructions in the user message exactly and answer in the format it asks for.}") ;; esac
+dir="$(mktemp -d)"; trap 'rm -rf "$dir"' EXIT
+cd "$dir" && "$real" "${args[@]}" "${lean[@]}"

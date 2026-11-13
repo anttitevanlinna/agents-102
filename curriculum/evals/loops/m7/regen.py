@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """regen.py <variant> — regenerate Module 7's module page and lecture (student bodies only) from the
 strategy input and the rule indices, with the three exercises held fixed (they are the maintainer's
-selections). One opus call; writes regen/<variant>-module.md and regen/<variant>-lecture.md, which
+selections). One call (GEN_MODEL, default sonnet); writes regen/<variant>-module.md and regen/<variant>-lecture.md, which
 apply.py swaps in above each file's maintainer block. Paths resolve from the agents-102 checkout
 and its sibling agents-102-core."""
-import sys, re, pathlib, subprocess
+import os, sys, re, pathlib, subprocess
 V = sys.argv[1]
 HERE = pathlib.Path(__file__).parent
 REPO = HERE.parents[3]; CUR = REPO / "curriculum"; CORE = REPO.parent / "agents-102-core"
@@ -75,7 +75,7 @@ Answer with exactly two fenced blocks and nothing else:
 ...lecture...
 ```"""
 (HERE / "regen" / f"{V}-prompt.md").write_text(prompt)
-out = subprocess.run(["claude", "-p", "--model", "opus", "--output-format", "text"], input=prompt, capture_output=True, text=True, timeout=1800).stdout
+out = subprocess.run(["claude", "-p", "--model", os.environ.get("GEN_MODEL", "sonnet"), "--output-format", "text"], input=prompt, capture_output=True, text=True, timeout=1800).stdout
 m = re.search(r"```module\n(.*?)\n```", out, re.S); l = re.search(r"```lecture\n(.*?)\n```", out, re.S)
 assert m and l, "regen: missing blocks\n" + out[-2000:]
 (HERE / "regen" / f"{V}-module.md").write_text(m.group(1).strip() + "\n")

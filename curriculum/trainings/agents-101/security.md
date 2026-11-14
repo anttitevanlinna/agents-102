@@ -34,7 +34,7 @@ Name what you'd want to check before letting this near a real stakeholder.
 
 ## Debrief
 
-Five minutes. The agent adds one to five rules to the root instructions file. Its evidence: the raw and packaged policy reports, the security report with its residual decision, the "I can't tell" rows, and your mitigation.
+Five minutes. The agent reviews the policy and security reports, writes a rule only where no check or mitigation stands, and cuts any earlier rule your mitigation now covers.
 
 {{prompt:a101-m4-debrief-security-rules}}
 

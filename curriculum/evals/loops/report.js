@@ -46,12 +46,19 @@ for (const p of order) { const d = J(`story/${p}.json`); if (d) { const m = d.me
 const key = fs.existsSync(path.join(out, 'taste/pairs.key.jsonl')) ? fs.readFileSync(path.join(out, 'taste/pairs.key.jsonl'), 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : [];
 const pk = (f) => Object.fromEntries((fs.existsSync(path.join(out, f)) ? fs.readFileSync(path.join(out, f), 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : []).map((r) => [r.id, r.pick]));
 const b = pk('taste/picks-blind.jsonl'), sw = pk('taste/picks-swapped.jsonl');
+// Verdict per slide over both orders. "same" (PAIRS_TIE=1) in either order = no real difference, never a loss:
+// forced a/b kept the original on 10 of 28 neutral rewrites (persona-student/judge-bias/README.md).
+function tasteVerdict(k) {
+  if (!(k.id in b) || !(k.id in sw)) return 'missing';
+  if (b[k.id] === 'same' || sw[k.id] === 'same') return 'same';
+  const vb = b[k.id] === k.variant_is, vs = sw[k.id] !== k.variant_is;
+  return vb && vs ? 'variant' : !vb && !vs ? 'original' : 'split';
+}
 if (key.length) {
   L.push('', '## Taste judge vs v0 (both orders)', '', '| slide | verdict |', '|---|---|');
   const tally = {};
   for (const k of key) {
-    const vb = b[k.id] === k.variant_is, vs = sw[k.id] && sw[k.id] !== k.variant_is;
-    const r = !(k.id in b) || !(k.id in sw) ? 'missing' : vb && vs ? 'variant' : !vb && !vs ? 'original' : 'split';
+    const r = tasteVerdict(k);
     (tally[k.variant] ||= {})[r] = ((tally[k.variant] || {})[r] || 0) + 1;
     L.push(`| ${k.id} | ${r} |`);
   }
@@ -67,7 +74,7 @@ for (const p of order.filter((x) => x !== 'damaged')) { const f = J(`flags/${p}.
 // density = 100 x AE101 median words per slide / this page's (capped at 100);
 // overall = mean(language, story mean4). Words and sentences/slide are shown, not scored.
 const win = {};
-for (const k of key) { const vb = b[k.id] === k.variant_is, vs = sw[k.id] && sw[k.id] !== k.variant_is; (win[k.variant] ||= []).push(vb && vs ? 1 : !vb && !vs ? 0 : 0.5); }
+for (const k of key) { const r = tasteVerdict(k); if (r !== 'missing') (win[k.variant] ||= []).push(r === 'variant' ? 1 : r === 'original' ? 0 : 0.5); }
 const rows = [];
 for (const p of order.filter((x) => x !== 'damaged')) {
   const st = J(`story/${p}.json`), f = J(`flags/${p}.json`); if (!st || !f) continue;

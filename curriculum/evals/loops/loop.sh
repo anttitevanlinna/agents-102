@@ -69,11 +69,11 @@ done
 if [ ${#VS[@]} -gt 0 ] && [ "${TEACH_ONLY:-0}" != 1 ]; then
   python3 "$HERE/build-pairs.py" "$OUT/lab" "$OUT/taste" v0 "$VARS" "$MOD" >&2
   for o in blind swapped; do
-    [ -s "$OUT/taste/picks-$o.jsonl" ] || EVAL_LEAN=0 PAIRS_BATCH=2 node "$PS/pairs.js" --blind "$OUT/taste/pairs.$o.jsonl" --rules "$PS/taste-rules.md" --examples "$PS/taste-examples.md,$PS/taste-examples-cuts.md" --out "$OUT/taste/picks-$o.jsonl" >"$OUT/taste/$o.log" 2>&1 &
+    [ -s "$OUT/taste/picks-$o.jsonl" ] || EVAL_LEAN=0 PAIRS_BATCH=2 PAIRS_TIE=1 node "$PS/pairs.js" --blind "$OUT/taste/pairs.$o.jsonl" --rules "$PS/taste-rules.md" --examples "$PS/taste-examples.md,$PS/taste-examples-cuts.md" --out "$OUT/taste/picks-$o.jsonl" >"$OUT/taste/$o.log" 2>&1 &
   done
 fi
 wait
-[ ${#VS[@]} -gt 0 ] && [ "${TEACH_ONLY:-0}" != 1 ] && [ ! -e "$EVAL_BUDGET_FILE.exhausted" ] && EVAL_LEAN=0 python3 "$HERE/taste-retry.py" "$OUT/taste" "$PS/pairs.js" "$PS/taste-rules.md" "$PS/taste-examples.md,$PS/taste-examples-cuts.md" >&2
+[ ${#VS[@]} -gt 0 ] && [ "${TEACH_ONLY:-0}" != 1 ] && [ ! -e "$EVAL_BUDGET_FILE.exhausted" ] && EVAL_LEAN=0 PAIRS_TIE=1 python3 "$HERE/taste-retry.py" "$OUT/taste" "$PS/pairs.js" "$PS/taste-rules.md" "$PS/taste-examples.md,$PS/taste-examples-cuts.md" >&2
 
 log "scoring"
 LOGS="$(ls "$OUT"/students/*.json | paste -sd, -)"

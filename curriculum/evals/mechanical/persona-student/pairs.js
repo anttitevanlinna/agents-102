@@ -18,6 +18,11 @@ const persona = a.persona ? loadPersona(a['persona-dir'], a.persona) : null;
 const examples = a.examples ? a.examples.split(',').map((f) => `\n\n${fs.readFileSync(f, 'utf8')}`).join('') : '';
 const rules = a.rules ? `\n\nThe course author's taste, in their own words. Apply it:\n${fs.readFileSync(a.rules, 'utf8')}` : '';
 const BATCH = Number(process.env.PAIRS_BATCH || 12);
+// PAIRS_TIE=1: the judge may answer "same". Forced a/b made it name a winner between equal versions:
+// on neutral rewrites it kept the original in both orders 10 of 28 times (judge-bias/README.md, 2026-11-14),
+// and a loop read that as "the edit lost". Calibration sets that expect a/b (check-judge.sh) leave it off.
+const TIE = process.env.PAIRS_TIE === '1';
+const tieAsk = TIE ? '\nIf neither version is clearly better for the room, answer "same". Clearly better means you can name the rule or past call above that it follows and the other breaks; wording you merely find more familiar, smoother or closer to the rest of the slide is "same". The two versions are in random order; neither is the original.' : '';
 
 const who = persona
   ? `${persona.text}\n\n---\nYou are this person, in the room. A trainer shows you one slide. There are two versions of it.`
@@ -30,7 +35,7 @@ const picks = [];
 for (let i = 0; i < pairs.length; i += BATCH) {
   const chunk = pairs.slice(i, i + BATCH);
   const body = chunk.map((p) => `### PAIR ${p.id}\n--- A ---\n${p.a}\n--- B ---\n${p.b}`).join('\n\n');
-  const out = askJson(`${who}${rules}${examples}\n\n${ask}\nThe two versions differ only in part of the text; find the difference first.\n\n${body}\n\nAnswer with one json block: {"picks":[{"id","pick":"a"|"b","why":"one short line"}...one per pair]}`);
+  const out = askJson(`${who}${rules}${examples}\n\n${ask}\nThe two versions differ only in part of the text; find the difference first.${tieAsk}\n\n${body}\n\nAnswer with one json block: {"picks":[{"id","pick":"a"|"b"${TIE ? '|"same"' : ''},"why":"one short line${TIE ? ' naming the rule or past call' : ''}"}...one per pair]}`);
   for (const p of out.picks || []) if (chunk.some((c) => c.id === p.id)) picks.push(p);
   process.stderr.write(`[pairs] ${Math.min(i + BATCH, pairs.length)}/${pairs.length}\n`);
 }

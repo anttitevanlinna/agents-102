@@ -26,8 +26,9 @@ job, to fire their current hire and use my candidate?
 List the top five assumptions the switch depends on. For each:
 - State it as a declarative sentence.
 - Rate confidence (high / medium / low) based on what I've told you.
-- Name one concrete way I could test it this week — one conversation, one
-  small experiment, one quick check.
+- Name one concrete way I could test it this week. Watch what the teammate
+  does with it, as my neighbour did with my files in module-7/handover.md.
+  Count what they do, not what they say they would do.
 
 Order from most load-bearing to least. Save to module-7/assumptions.md.
 Let the assumption-test change the confidence in the plans — don't just append

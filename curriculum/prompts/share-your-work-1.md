@@ -4,6 +4,8 @@ dest: Builder Claude
 runtime: code
 origin: exercises/share-your-work
 requires:
+  - id: m7-handover
+    source: prompt:share-your-work-handover
   - id: challenge-sources
     source: prompt:build-your-challenge-memory-2
   - id: m3-curated-memory
@@ -18,7 +20,7 @@ produces:
   - id: m7-branch
     location: module-7/branch.md
 ---
-Read my memory/, sources/, module-3/, module-5/, and module-6/.
+Read module-7/handover.md first: what broke and what worked when my neighbour ran my skill and my agent on their system. Then read my memory/, sources/, module-3/, module-5/, and module-6/.
 
 Based only on what you find there, draft a Jobs-to-be-Done hypothesis for a
 sharing decision I'm working on. Cover four things:

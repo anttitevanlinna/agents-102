@@ -41,6 +41,12 @@ In your main session:
 
 </div>
 
+## Mark five claims yourself
+
+Before any agent adjudicates, you mark five claims. The scoreboard then shows how often the scorer agrees with you.
+
+{{prompt:hallucination-bakeoff-marks}}
+
 ## Phase 3: Scorer runs the benchmark
 
 *20 min*

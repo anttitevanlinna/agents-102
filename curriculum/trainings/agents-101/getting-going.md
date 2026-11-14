@@ -28,7 +28,7 @@ Outputs go in `module-1/`.
 
 ## Debrief
 
-Five minutes. The retro is a second pass on `module-1/personal-brand-generation.md`: the agent reads the file against the session for what worked, what fell flat, what to keep, what to drop.
+Five minutes. The retro is a second pass on `module-1/personal-brand-generation.md`: the agent reads the file against the session and `module-1/context-trace.md` for what worked, what fell flat, what to keep, what to drop.
 
 Ask the agent to retro your rules file.
 

@@ -70,7 +70,7 @@ Ask the agent to compare versions: three generic claims from the first site, and
 
 LLMs go easy on their own output. If picks come back soft, ask the agent to over-flag with no charity. Or open a fresh task, paste just the Phase 1 site, and run the same prompt cold.
 
-The three claims show where the context ended and the LLM filled in what most LinkedIn profiles like yours say. The three lines show where your context took over. Add one line of your own to the trace: what you gave it that changed the page most.
+The three claims show where the context ended and the LLM filled in what most LinkedIn profiles like yours say. The three lines show where your context took over. Before it saves, the agent asks you what you gave it that changed the page most, and writes your answer, in your words, as the trace's last line.
 
 ## Phase 6: Free iteration
 

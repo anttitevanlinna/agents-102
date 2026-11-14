@@ -6,15 +6,17 @@ origin: exercises/joint-double-diamond
 requires:
   - id: m8-selection-board
     source: external
+  - id: m8-midway-instructions
+    source: prompt:joint-double-diamond-6
 produces:
   - id: m8-critiques
     location: shared-folder/<participant>/critique.md
 ---
-Read selection-board.md at the shared folder root.
+Read midway-instructions.md and selection-board.md at the shared folder root. Follow the injected instructions before writing.
 
 Write `critique.md` in the exact participant subfolder where you wrote `context-manifest.md`.
 
-First read at least two participant folders whose proposals differ from mine, and name which files changed my critique.
+If midway-instructions.md tells me to cross-pollinate, first read the required participant folders and name which files changed my critique.
 
 First, criticize the current selection:
 - What did the synthesizer choose well?

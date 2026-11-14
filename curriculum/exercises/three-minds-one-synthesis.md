@@ -27,7 +27,7 @@ If the issue list is long, ask the agent to pick the fixes that aim for optimal 
 
 **Close. Freeze the briefing.**
 
-You can't yet tell if the answer is right. Nothing checks it yet. Pick the line of `## Answer` you trust least and freeze the briefing with that line beside it. Don't fix it. Module 5 checks this exact file and shows whether your doubt was right.
+You can't yet tell if the answer is right. Nothing checks it yet. Pick the line of `## Answer` you trust least and freeze the briefing with that line beside it. Don't fix it. Module 5 checks this exact file, doubted line included.
 
 {{prompt:three-minds-one-synthesis-4}}
 

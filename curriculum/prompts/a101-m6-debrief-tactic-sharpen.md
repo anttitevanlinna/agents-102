@@ -14,6 +14,8 @@ produces:
   - id: generation-tactic
     location: ./generation-tactic.md (overwrite in place)
     note: integrates the tactic rule the loop never reached; judge file untouched
+  - id: root-instructions
+    location: "./{{artifact:root-instructions}} (one line: later briefings go through the tactic and the judge)"
 ---
 Start by reading the files. No plan or preamble.
 
@@ -22,5 +24,7 @@ Review this session and sharpen the generator's tactic beyond what the loop reac
 Be harsher than feels comfortable. If a rule is vague, say so by name. If a rule fired on the wrong thing, name what it fired on.
 
 Then overwrite ./generation-tactic.md in place. Do not create a new version. Integrate, don't append. Add the tactic rule the loop never reached, sharpen a rule that stayed too vague, remove a rule that fired on the wrong thing. A removal means the rule is gone from the file, not renamed or scoped; if you scoped it instead, say so and why. The tactic file is infrastructure now. Every rule should name the failure class it pre-empts. Don't add a "retro notes" section; rewrite the file as the better version.
+
+Last, add one line to the root instructions file: every briefing asked for in this folder is written from ./generation-tactic.md and scored by judges/groundedness-judge.md before it reaches me. If such a line exists, keep it as one line.
 
 When you're done, tell me in 3-5 lines: what you added, what you sharpened, what you removed, and why, grounded in specific rounds. Name one boundary case the next run should test.

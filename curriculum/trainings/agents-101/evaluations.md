@@ -37,7 +37,7 @@ The same judge keeps catching what slipped past, and the system absorbs the catc
 
 ## Debrief
 
-Five minutes. The agent reads the round-by-round trail, sharpens the generator's tactic file in place and reports what changed. The judge file stays untouched.
+Five minutes. The agent reads the round-by-round trail, sharpens the generator's tactic file in place and points your root instructions at it, so every briefing you ask for from now on is written from that tactic and checked by the same judge. The judge file stays untouched.
 
 {{prompt:a101-m6-debrief-tactic-sharpen}}
 
@@ -47,7 +47,7 @@ Read the agent's summary and push back: *"That rule is too vague, make it observ
 
 If it sounds too kind, ask: *"Which rule did you claim to remove but keep under another name? Quote both lines."*
 
-The artifact: the sharpened `./generation-tactic.md` plus one line in the Module 6 eval-notes naming the first always-on eval you'll run next.
+The artifact: the sharpened `./generation-tactic.md`, the line in your root instructions that sends every later briefing through it, and one line in the Module 6 eval-notes naming the first always-on eval you'll run next.
 
 ## Key Concepts
 - Groundedness protects the floor; steering raises the ceiling.

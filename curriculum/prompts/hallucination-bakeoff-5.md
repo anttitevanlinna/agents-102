@@ -46,4 +46,6 @@ After the table, name ONE winner. Do not return "all four are useful" — force 
 
 At the bottom, add a one-line recommendation naming the detector or ensemble and the reason it won for output of this shape.
 
+If `module-5/my-marks.md` exists, replace each `judge: -` there with your adjudication label, and add one line under the scoreboard table: on how many of those claims your adjudication agrees with my mark, and which ones differ.
+
 Show me the full scoreboard table in chat after saving the file.

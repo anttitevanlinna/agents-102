@@ -31,7 +31,7 @@ Over five minutes? Narrow the gap.
 
 *8 min*
 
-Don't edit the new agent yourself. The judge finds what fails; the agent that built it rebuilds it.
+Don't edit the new agent yourself. The judge checks the output against the files the new agent read, finds what fails, and the agent that built it rebuilds it.
 
 {{prompt:extend-your-system-2}}
 

@@ -9,6 +9,10 @@ Goal: an editing session changes a module and, in about 3 minutes, learns what s
 | `guard.js` | Slogan check: how many more sentences echo the Big Idea's own wording. Holdout personas for the gate. |
 | `calib-set.js` | Edits with a known answer. Graded damage (⅓, ⅔ or all of the Big Idea carrier beats padded) and placebos (pad, swap or paraphrase a non-carrier beat). |
 | `calibrate.js` | Bootstrap over a calibration run: placebo false-alarm rate and graded-damage detection, per panel size and band. |
+| `evidence.js` | A module's evidence page from stored students: per step, how many did it, skipped it, and what each wrote there; take-homes stating the Big Idea; what students took home instead; attention drops. |
+| `chain.js` | The cross-module question, "What happened to the briefing you made in Module 3?": walk Modules 3, 5, 6 with notes carried forward, judge three links (made, checked, improved). |
+| `damage-chain.js` | Copies of Modules 3, 5, 6 with the briefing chain cut, for the chain instrument's damage test. |
+| `course.js` | One run of the whole course: each student walks Modules 1 to 8 in order carrying take-homes (full notes for 3 and 5), cold question after each module, chain question at the end. |
 
 ```
 node curriculum/evals/fastloop/cycle.js --module agents-building-agents --page /tmp/m8.md --out /tmp/c1 --band 25
@@ -44,3 +48,9 @@ So the number steers only large moves (full damage, or a gain of 20 or more poin
 - The brief's slide-level attribution is a hypothesis from the notes. Six to twelve students cannot prove which slide moved a number.
 - Not run in a cycle: taste judge, story judge, voice gates, holdout personas. They are owed before main, through `loop.sh` and the checks it already runs.
 - Same model reads and proposes. The slogan check and the holdout personas are the guard. Ideas that compete with the Big Idea should be made to serve it, never deleted.
+
+## Step 0 and the course run, 2026-11-14 (`results/2026-11-14/`)
+
+- `baselines/`: pooled baselines, pages at c1b64188, 40 to 48 students per module (paused at 13:35). Cold: M1 64, M2 76, M3 77, M4 65, M5 82, M6 81, M7 24, M8 39.
+- `chain/`: chain question on the same old pages, 24 students per set. Intact 37, chain cut 22, paired gap -15 (se 5): the "checked" link fell 44 to 6. Under the 20-point bar.
+- `course/`: whole course on main b22b74d3 (all eight plan drafts), 12 students, 390 s. Cold per module: 46, 63, 85, 75, 77, 79, 73, 48. Chain 37 (made 42, checked 71, improved 0). The course run carries notes forward, so its cold numbers are near the baselines' scale, not identical to it.

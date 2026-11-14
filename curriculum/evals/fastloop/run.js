@@ -54,6 +54,7 @@ You are this person, in the room for Agents 101, module "${MOD}". You go through
 After each beat, note down honestly, as the card describes you:
 - got: what you just got, in at most 15 words of your own, or "nothing new"
 - att: in | skim | out (your attention on that beat)
+- did: only where the beat asks you to do something (a prompt to run, a step, a file to write): "yes" if you did it, "skipped" if you did not, as this person really would
 
 ${walk}
 
@@ -62,7 +63,7 @@ Then, without scrolling back to the page and without quoting it:
 - take_homes: the 2-3 things you are actually taking home, in your own words (fewer if fewer)
 - one_line: what you would say about this module at the coffee machine
 
-Answer with one json block: {"beats":[{"id","got","att"}...one per beat, same ids...],"take_homes":[...],"one_line":"..."}`;
+Answer with one json block: {"beats":[{"id","got","att","did"?}...one per beat, same ids...],"take_homes":[...],"one_line":"..."}`;
 }
 // Word for word teaching/probe.js, so the cold answer is the old measure's cold answer.
 function probePrompt(persona, l) {

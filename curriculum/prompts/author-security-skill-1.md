@@ -10,6 +10,8 @@ requires:
     source: prompt:a101-m2-debrief-claude-md
   - id: m3-agent-work
     source: artifact:m3-agent-work
+  - id: m4-guess
+    source: prompt:author-security-skill-guess
 produces:
   - id: policy-report-raw
     location: outputs/policy-report-raw.md
@@ -17,6 +19,8 @@ produces:
 Read everything in module-4/policies/. Use those policy references to audit the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root {{artifact:root-instructions}}, and the multi-agent runs in module-3/stances/.
 
 For each rule you can derive from the policy files, produce one row in a report: rule name, one-line description, verdict (compliant / violating / "I can't tell"), and one line of evidence from my actual files for that verdict. If you can't tell, say what evidence you'd need to decide.
+
+If module-4/guess.md exists, put my guess at the top of the report, word for word. At the end, list the violating and "I can't tell" rows under my guess. Do not judge the guess; I compare.
 
 Write the raw report to outputs/policy-report-raw.md. Be specific. Be plain. An "I can't tell" is a better answer than a confident guess.
 

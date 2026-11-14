@@ -29,7 +29,7 @@ Working folder: `~/Documents/agents-101/`.
 
 ## Debrief
 
-Five minutes. The agent reviews the benchmark and adds rules to the root instructions file so future sessions check groundedness before trusting output. Evidence: the roster, claim pool, adjudicated claims, detector outputs and your saved judge.
+Five minutes. The agent reviews the benchmark, points future sessions at the saved judge, writes a rule only where the judge cannot check, and cuts any earlier rule the judge covers.
 
 {{prompt:a101-m5-debrief-groundedness-rules}}
 

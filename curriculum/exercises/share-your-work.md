@@ -1,10 +1,22 @@
 # Exercise: Interview for the job and pick a candidate
 
-**Time:** 25 minutes.
+**Time:** 25 minutes. 10 for the handover, 15 for the interview and the pick.
 
 **Session** *(new, "Module 7 - Personal to team")*
 
-Start with the teammate's work, not with *"what should I share with my teammate?"* What decides whether sharing works is **the job** your teammate is trying to get done. This is the Jobs-to-be-Done frame from Clayton Christensen and collaborators. Your agent, skill, output or interface is a candidate for hire: does it do the job better than what they currently use?
+Start with the teammate's work, not with *"what should I share with my teammate?"* What decides whether sharing works is **the job** your teammate is trying to get done. This is the Jobs-to-be-Done frame from Clayton Christensen and collaborators. Your agent, skill, output or interface is a candidate: does it do the job better than what they use today?
+
+## Hand your agent to a neighbour
+
+*10 min*
+
+Pair up. Copy two files into your neighbour's `handover-in/` folder: the `agent-audit` skill from Module 4, and your Module 2 agent from `agents/`. Do not edit either. Only those files travel. Your `memory/` and `sources/` stay with you.
+
+Your neighbour pastes this prompt. Their agent runs both files on their own system and writes a report for you.
+
+{{prompt:share-your-work-handover}}
+
+Save the report as `module-7/handover.md` and read it together. The skill usually works on their system. It brings everything it needs. Your agent goes generic or fails, because it reads a memory your neighbour does not have. You gave them your agent, and it did not work for them. The skill did. Four things can travel: the context, a skill, the output, or a way to ask it. Which one you hand over is a strategy decision. The interview starts from `module-7/handover.md`.
 
 ## Interview for the job
 

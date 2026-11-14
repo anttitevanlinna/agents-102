@@ -1,24 +1,26 @@
 # Exercise: Extend your system
 
-**Time:** 25 minutes. If you finish early, build a second one.
+**Time:** 25 minutes.
 
 **Session** *(new, "Module 8 - Agents building agents")*
 
 **What you do:**
 
-You describe an agent; an agent builds it. Pick one extension you'd use:
+Your agent improves your Module 2 agent from what broke at your neighbour's in Module 7. Then you describe a new agent; an agent builds it. Pick one extension you'd use:
 
 - **New data source.** Reads from somewhere your system doesn't: a second wiki, a folder of PDFs, a new connector, another team's `memory/`.
 - **New output.** Produces a format you lack: a one-page brief, a weekly digest, a pre-meeting prep note.
 - **New perspective.** Reads the same memory but argues with it: a skeptic, a devil's advocate, a persona holding the view your voice suppresses.
 
-## Phase 1: Improve an agent you already have
+## Phase 1: Improve the agent your neighbour ran
 
-*5 min*
+*7 min*
 
-Pick one agent from an earlier module: the Module 2 morning agent or the Module 6 generation tactic. Ask your agent to read it, its last output and what you found off, then improve it. Run the old and the new version once and compare.
+`module-7/handover.md` says where your Module 2 agent broke on someone else's system.
 
-Your agent just improved your agent. Now build a new one.
+{{prompt:extend-your-system-2}}
+
+Your agent improved your agent. Now it builds a new one.
 
 ## Phase 2: Describe
 
@@ -27,7 +29,7 @@ Your agent just improved your agent. Now build a new one.
 Open `module-8/extension-brief.md`; write four lines:
 
 - The gap: *"I don't have anything that does X."*
-- The job: *"On Mondays I need to Y; today I Z by hand."*
+- The job: *"Each week I need to Y; today I Z by hand."*
 - What it reads: files, `memory/` pages, sources. For PDFs, how it checks text extracted.
 - What it writes: one named file.
 
@@ -35,12 +37,12 @@ Over five minutes? Narrow the gap.
 
 ## Phase 3: Generate
 
-*10 min*
+*8 min*
 
 {{prompt:extend-your-system-1}}
 
 
-## Phase 4: Run and judge
+## Phase 4: Run, judge, keep the fix
 
 *5 min*
 
@@ -49,17 +51,19 @@ Run your Module 5 judge on the new agent's output. Push back in the session:
 - *"You used training data on line 4. Replace it or remove it."*
 - *"The tone drifted from my other agents. Sharpen to match."*
 
-One or two rounds. The artifact: a new agent in `agents/` you trust to run again.
+Then keep what you pushed back on:
+
+{{prompt:extend-your-system-3}}
 
 ## Take stock of the compound
 
 **What happened:**
 
-The second agent takes ten minutes, because your vocabulary for what you want is sharper. That is the compound.
+An agent fixed the agent that failed your neighbour, then built a new one. What you pushed back on went into the rules the next agent starts from.
 
 **The point:**
 
-The next gap gets a new agent in 25 minutes, not a new sprint.
+Each agent your agent builds starts from what the last one learned. In the forum, the room's agents improve each other's work.
 
 This is **Recipe 8**: agent generates agent, on a real gap. The [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) holds the moves for the next gap, plus the rest of Recipe 8 for bigger moves than one agent.
 

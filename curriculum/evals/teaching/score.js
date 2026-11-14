@@ -20,8 +20,9 @@ const { askAsync, pool, targets } = require('./lib');
 const a = Object.fromEntries(process.argv.slice(2).reduce((acc, v, i, arr) =>
   (v.startsWith('--') ? acc.concat([[v.slice(2), arr[i + 1]]]) : acc), []));
 const T = targets().modules;
-const rows = [...new Map(fs.readFileSync(a.in, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l))
-  .map((r) => [`${r.group || ''}|${r.id}`, r])).values()];
+const MAIN = require.main === module;
+const rows = MAIN ? [...new Map(fs.readFileSync(a.in, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l))
+  .map((r) => [`${r.group || ''}|${r.id}`, r])).values()] : [];
 const MODEL = a.model || process.env.TEACH_MODEL || 'sonnet';
 const LETTERS = 'ABCDEFGH';
 
@@ -93,7 +94,16 @@ Answer with one json block: {"picks": ["A".."H" or "NONE", one per claim in orde
   return { picks: ps.map((p) => { const i = LETTERS.indexOf(String(p || '').trim().toUpperCase()); return i >= 0 && String(p).trim().length === 1 ? o[i].module : 'none'; }), why: r.why };
 }
 
-(async () => {
+// fast.js scores each student the moment they finish, with the same two lean calls.
+async function scoreOne(r, K = Number(process.env.TEACH_K || 4)) {
+  const st = await restateK(r.answer, K);
+  const live = st.claims.map((c, i) => [c, i]).filter(([c]) => c && !/^NO CLAIM/i.test(c));
+  const pk = live.length ? await pickAll(live.map(([c]) => c), `${r.id}#lean`) : { picks: [], why: '' };
+  const picks = st.claims.map(() => 'none'); live.forEach(([, i], j) => { picks[i] = pk.picks[j]; });
+  return { claims: st.claims, picks, score: picks.filter((m) => m === r.module).length / picks.length };
+}
+module.exports = { scoreOne, targets: T };
+if (MAIN) (async () => {
 const K = Number(process.env.TEACH_K || 4); // claim restatements per answer
 const SPLIT = process.env.TEACH_SPLIT === '1';
 const TH = crypto.createHash('sha256').update(T.map((t) => t.module + t.target).join('|')).digest('hex').slice(0, 12);

@@ -1,7 +1,7 @@
 # Agents Building Agents (The Flywheel)
 
 ## Big Idea
-The tool that builds tools compounds. Your agent can improve your agent, and from there a hundred agents is a matter of describing them.
+Agents building agents is how you and your organisation learn faster. Your agent can improve your agent, and from there a hundred agents is a matter of describing them.
 
 ## Prework
 

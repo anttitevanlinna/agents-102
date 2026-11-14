@@ -64,13 +64,13 @@ List a few specific things you hate about work. Name actual things ("meetings wh
 
 *6 min*
 
-Ask the agent to compare versions and name three generic claims.
+Ask the agent to compare versions: three generic claims from the first site, and three lines of the current site traced to the context that produced each. It writes both to `module-1/context-trace.md`.
 
 {{prompt:personal-site-with-guardrails-5}}
 
 LLMs go easy on their own output. If picks come back soft, ask the agent to over-flag with no charity. Or open a fresh task, paste just the Phase 1 site, and run the same prompt cold.
 
-The three answers show where the context ended and the LLM filled in what most LinkedIn profiles like yours say. Observe only.
+The three claims show where the context ended and the LLM filled in what most LinkedIn profiles like yours say. The three lines show where your context took over. Add one line of your own to the trace: what you gave it that changed the page most.
 
 ## Phase 6: Free iteration
 

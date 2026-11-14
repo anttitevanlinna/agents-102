@@ -66,7 +66,7 @@ Ask the agent to install the authored source.
 
 {{prompt:author-security-skill-4}}
 
-<span class="rt-claude-skills">Run `ls .claude/skills/security-audit/` to confirm.</span><span class="rt-agent-skills">Run `ls .agents/skills/security-audit/` to confirm.</span> The skill loads in your next session in this training directory.
+<span class="rt-claude-skills">Run `ls .claude/skills/agent-audit/` to confirm.</span><span class="rt-agent-skills">Run `ls .agents/skills/agent-audit/` to confirm.</span> The skill loads in your next session in this training directory.
 
 </div>
 

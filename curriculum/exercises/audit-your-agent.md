@@ -98,7 +98,7 @@ The Module 3 system has two packaged-lens reports and the earlier raw policy rep
 
 Certainty is not on offer. The discipline is the loop: assess, mitigate, reassess the residual, decide. The reusable check is the expert in the room, and it carries to the next agent. The report carries the evidence and decisions.
 
-This was **Recipe 4**: the two-lens audit, five agent-risk patterns, five mitigations (scope, split, filter, gate, review), and "I can't tell" as a verdict. For the next agent, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) names the moves and components.
+This was **Recipe 4**: the two-lens audit, four agent-risk patterns, five mitigations (scope, split, filter, gate, review), and "I can't tell" as a verdict. For the next agent, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) names the moves and components.
 
 <!-- maintainer -->
 

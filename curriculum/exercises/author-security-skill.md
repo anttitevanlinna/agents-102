@@ -12,6 +12,12 @@ Name it `m4-security-skill` if your runtime supports session names.
 
 A **skill** packages an expertise (rules, checklists, the moves an agent runs) into something the agent loads when the work matches. You run it again instead of re-prompting from memory.
 
+## Guess first
+
+Before any check runs, decide whether your system is safe, judged from what it has produced. The guess goes in a file, and the first report sets it beside what the check finds.
+
+{{prompt:author-security-skill-guess}}
+
 ## Phase 1: Run the policies raw
 
 *10 min*
@@ -20,7 +26,7 @@ Policies live in `module-4/policies/` (your company's distilled policies, or the
 
 {{prompt:author-security-skill-1}}
 
-The first few rows show which rules files can check and which need judgment, context, or a standing evidence check.
+The report opens with your guess. Below it are the rows your guess could not see: violations, and "I can't tell" rows that need judgment, context, or a standing evidence check.
 
 ## Phase 2: Dictate what matters
 

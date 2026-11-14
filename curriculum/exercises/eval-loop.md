@@ -12,13 +12,13 @@ Stop running `judges/groundedness-judge.md` by hand.
 
 **Helper agents** are isolated workers, each with fresh context for its own job.
 
-Example run note: *round 1 flagged 11 claims, round 2 flagged 6, round 3 flagged 3.*
+Example run note: *round 0, the Module 3 briefing, flagged 11 claims; round 1 flagged 7, round 2 flagged 7, round 3 flagged 4.*
 
-## Phase 1: Run the judge once
+## Phase 1: Score your Module 3 briefing
 
 *5 min*
 
-Ask the agent to generate a fresh briefing on the question in ./crux.md and score it with the judge from Module 5.
+Ask the agent to score your Module 3 briefing with the judge from Module 5, then write the first generation tactic from what the judge flagged.
 
 {{prompt:eval-loop-1}}
 
@@ -44,7 +44,7 @@ Then the model-training analogy, in small pieces:
 
 *10 min*
 
-Ask for the loop result and final generation tactic.
+Ask whether the last round beat your Module 3 briefing under the same judge, by more than the judge's own noise, and which rule's miss kept coming back. The Debrief cuts that rule.
 
 {{prompt:eval-loop-5}}
 
@@ -58,7 +58,7 @@ Failed numbers in round 3 mean the tactic cannot handle numbers yet; weak claims
 
 **What happened:**
 
-Round 1 runs on the tactic you wrote in Phase 1. Before round 2, the main session absorbed round 1's per-claim feedback into `./generation-tactic.md`. Each later generator reads a tighter tactic.
+Round 1 runs on the tactic your agent wrote from the Module 3 briefing's misses. Before round 2, the main session absorbed round 1's per-claim feedback into `./generation-tactic.md`. Each later generator reads a tighter tactic.
 
 ## Take the judge from object to yardstick
 

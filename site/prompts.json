@@ -17077,7 +17077,7 @@
     "requires": [
       {
         "id": "m6-run-artifacts",
-        "source": "prompt:eval-loop-2"
+        "source": "prompt:apt101-eval-loop-2"
       },
       {
         "id": "caught",
@@ -17106,7 +17106,7 @@
         "requires": [
           {
             "id": "m6-run-artifacts",
-            "source": "prompt:eval-loop-2"
+            "source": "prompt:apt101-eval-loop-2"
           },
           {
             "id": "caught",
@@ -17135,7 +17135,7 @@
         "requires": [
           {
             "id": "m6-run-artifacts",
-            "source": "prompt:eval-loop-2"
+            "source": "prompt:apt101-eval-loop-2"
           },
           {
             "id": "caught",
@@ -17164,7 +17164,7 @@
         "requires": [
           {
             "id": "m6-run-artifacts",
-            "source": "prompt:eval-loop-2"
+            "source": "prompt:apt101-eval-loop-2"
           },
           {
             "id": "caught",
@@ -17193,7 +17193,7 @@
         "requires": [
           {
             "id": "m6-run-artifacts",
-            "source": "prompt:eval-loop-2"
+            "source": "prompt:apt101-eval-loop-2"
           },
           {
             "id": "caught",
@@ -17222,7 +17222,7 @@
         "requires": [
           {
             "id": "m6-run-artifacts",
-            "source": "prompt:eval-loop-2"
+            "source": "prompt:apt101-eval-loop-2"
           },
           {
             "id": "caught",
@@ -17251,7 +17251,7 @@
         "requires": [
           {
             "id": "m6-run-artifacts",
-            "source": "prompt:eval-loop-2"
+            "source": "prompt:apt101-eval-loop-2"
           },
           {
             "id": "caught",
@@ -17280,7 +17280,7 @@
         "requires": [
           {
             "id": "m6-run-artifacts",
-            "source": "prompt:eval-loop-2"
+            "source": "prompt:apt101-eval-loop-2"
           },
           {
             "id": "caught",
@@ -17296,6 +17296,700 @@
             "id": "what-it-missed",
             "location": "team/<my-name>/what-it-missed.md",
             "note": "read at the close"
+          }
+        ]
+      }
+    }
+  },
+  "apt101-eval-loop-1": {
+    "key": "apt101-eval-loop-1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/apt101-write-what-good-means",
+    "text": "Three things, in sequence:\n\n1. Write ./generation-tactic.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.\n\n2. Run ./generation-tactic.md once and save the briefing to module-6/fresh-briefing.md.\n\n3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:\n- the claim\n- the judge's verdict\n- one sentence naming the grounding problem, if any\n- one generation-tactic rule that would prevent this kind of miss in the next briefing\n\nThen summarize in three lines: what the judge caught, the one generation-tactic rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.\n\nDo not update ./generation-tactic.md from this feedback yet. Phase 0 is calibration; the loop rewrites the tactic later.",
+    "requires": [
+      {
+        "id": "crux-md",
+        "source": "prompt:name-your-crux-2"
+      },
+      {
+        "id": "m3-curated-memory",
+        "source": "prompt:three-retrievers-one-curator-5"
+      },
+      {
+        "id": "groundedness-judge",
+        "source": "prompt:hallucination-bakeoff-8"
+      }
+    ],
+    "produces": [
+      {
+        "id": "generation-tactic",
+        "location": "./generation-tactic.md"
+      },
+      {
+        "id": "m6-calibration-briefing",
+        "location": "module-6/fresh-briefing.md"
+      }
+    ],
+    "runtimeVariants": {
+      "cowork": {
+        "key": "apt101-eval-loop-1",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Three things, in sequence:\n\n1. Write ./generation-tactic.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.\n\n2. Run ./generation-tactic.md once and save the briefing to module-6/fresh-briefing.md.\n\n3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:\n- the claim\n- the judge's verdict\n- one sentence naming the grounding problem, if any\n- one generation-tactic rule that would prevent this kind of miss in the next briefing\n\nThen summarize in three lines: what the judge caught, the one generation-tactic rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.\n\nDo not update ./generation-tactic.md from this feedback yet. Phase 0 is calibration; the loop rewrites the tactic later.",
+        "requires": [
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          }
+        ],
+        "produces": [
+          {
+            "id": "generation-tactic",
+            "location": "./generation-tactic.md"
+          },
+          {
+            "id": "m6-calibration-briefing",
+            "location": "module-6/fresh-briefing.md"
+          }
+        ]
+      },
+      "desktop": {
+        "key": "apt101-eval-loop-1",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Three things, in sequence:\n\n1. Write ./generation-tactic.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.\n\n2. Run ./generation-tactic.md once and save the briefing to module-6/fresh-briefing.md.\n\n3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:\n- the claim\n- the judge's verdict\n- one sentence naming the grounding problem, if any\n- one generation-tactic rule that would prevent this kind of miss in the next briefing\n\nThen summarize in three lines: what the judge caught, the one generation-tactic rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.\n\nDo not update ./generation-tactic.md from this feedback yet. Phase 0 is calibration; the loop rewrites the tactic later.",
+        "requires": [
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          }
+        ],
+        "produces": [
+          {
+            "id": "generation-tactic",
+            "location": "./generation-tactic.md"
+          },
+          {
+            "id": "m6-calibration-briefing",
+            "location": "module-6/fresh-briefing.md"
+          }
+        ]
+      },
+      "cli": {
+        "key": "apt101-eval-loop-1",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Three things, in sequence:\n\n1. Write ./generation-tactic.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.\n\n2. Run ./generation-tactic.md once and save the briefing to module-6/fresh-briefing.md.\n\n3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:\n- the claim\n- the judge's verdict\n- one sentence naming the grounding problem, if any\n- one generation-tactic rule that would prevent this kind of miss in the next briefing\n\nThen summarize in three lines: what the judge caught, the one generation-tactic rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.\n\nDo not update ./generation-tactic.md from this feedback yet. Phase 0 is calibration; the loop rewrites the tactic later.",
+        "requires": [
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          }
+        ],
+        "produces": [
+          {
+            "id": "generation-tactic",
+            "location": "./generation-tactic.md"
+          },
+          {
+            "id": "m6-calibration-briefing",
+            "location": "module-6/fresh-briefing.md"
+          }
+        ]
+      },
+      "codex-desktop": {
+        "key": "apt101-eval-loop-1",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Three things, in sequence:\n\n1. Write ./generation-tactic.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.\n\n2. Run ./generation-tactic.md once and save the briefing to module-6/fresh-briefing.md.\n\n3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:\n- the claim\n- the judge's verdict\n- one sentence naming the grounding problem, if any\n- one generation-tactic rule that would prevent this kind of miss in the next briefing\n\nThen summarize in three lines: what the judge caught, the one generation-tactic rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.\n\nDo not update ./generation-tactic.md from this feedback yet. Phase 0 is calibration; the loop rewrites the tactic later.",
+        "requires": [
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          }
+        ],
+        "produces": [
+          {
+            "id": "generation-tactic",
+            "location": "./generation-tactic.md"
+          },
+          {
+            "id": "m6-calibration-briefing",
+            "location": "module-6/fresh-briefing.md"
+          }
+        ]
+      },
+      "codex-cli": {
+        "key": "apt101-eval-loop-1",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Three things, in sequence:\n\n1. Write ./generation-tactic.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.\n\n2. Run ./generation-tactic.md once and save the briefing to module-6/fresh-briefing.md.\n\n3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:\n- the claim\n- the judge's verdict\n- one sentence naming the grounding problem, if any\n- one generation-tactic rule that would prevent this kind of miss in the next briefing\n\nThen summarize in three lines: what the judge caught, the one generation-tactic rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.\n\nDo not update ./generation-tactic.md from this feedback yet. Phase 0 is calibration; the loop rewrites the tactic later.",
+        "requires": [
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          }
+        ],
+        "produces": [
+          {
+            "id": "generation-tactic",
+            "location": "./generation-tactic.md"
+          },
+          {
+            "id": "m6-calibration-briefing",
+            "location": "module-6/fresh-briefing.md"
+          }
+        ]
+      },
+      "copilot-app": {
+        "key": "apt101-eval-loop-1",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Three things, in sequence:\n\n1. Write ./generation-tactic.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.\n\n2. Run ./generation-tactic.md once and save the briefing to module-6/fresh-briefing.md.\n\n3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:\n- the claim\n- the judge's verdict\n- one sentence naming the grounding problem, if any\n- one generation-tactic rule that would prevent this kind of miss in the next briefing\n\nThen summarize in three lines: what the judge caught, the one generation-tactic rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.\n\nDo not update ./generation-tactic.md from this feedback yet. Phase 0 is calibration; the loop rewrites the tactic later.",
+        "requires": [
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          }
+        ],
+        "produces": [
+          {
+            "id": "generation-tactic",
+            "location": "./generation-tactic.md"
+          },
+          {
+            "id": "m6-calibration-briefing",
+            "location": "module-6/fresh-briefing.md"
+          }
+        ]
+      },
+      "copilot-cli": {
+        "key": "apt101-eval-loop-1",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Three things, in sequence:\n\n1. Write ./generation-tactic.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.\n\n2. Run ./generation-tactic.md once and save the briefing to module-6/fresh-briefing.md.\n\n3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:\n- the claim\n- the judge's verdict\n- one sentence naming the grounding problem, if any\n- one generation-tactic rule that would prevent this kind of miss in the next briefing\n\nThen summarize in three lines: what the judge caught, the one generation-tactic rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.\n\nDo not update ./generation-tactic.md from this feedback yet. Phase 0 is calibration; the loop rewrites the tactic later.",
+        "requires": [
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          }
+        ],
+        "produces": [
+          {
+            "id": "generation-tactic",
+            "location": "./generation-tactic.md"
+          },
+          {
+            "id": "m6-calibration-briefing",
+            "location": "module-6/fresh-briefing.md"
+          }
+        ]
+      }
+    }
+  },
+  "apt101-eval-loop-2": {
+    "key": "apt101-eval-loop-2",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/apt101-write-what-good-means",
+    "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
+    "requires": [
+      {
+        "id": "generation-tactic",
+        "source": "prompt:apt101-eval-loop-1"
+      },
+      {
+        "id": "groundedness-judge",
+        "source": "prompt:hallucination-bakeoff-8"
+      },
+      {
+        "id": "crux-md",
+        "source": "prompt:name-your-crux-2"
+      },
+      {
+        "id": "m3-curated-memory",
+        "source": "prompt:three-retrievers-one-curator-5"
+      }
+    ],
+    "produces": [
+      {
+        "id": "m6-run-artifacts",
+        "location": "module-6/eval-notes.md, module-6/runs/round-1/"
+      },
+      {
+        "id": "generation-tactic",
+        "location": "./generation-tactic.md"
+      }
+    ],
+    "runtimeVariants": {
+      "cowork": {
+        "key": "apt101-eval-loop-2",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
+        "requires": [
+          {
+            "id": "generation-tactic",
+            "source": "prompt:apt101-eval-loop-1"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
+          }
+        ],
+        "produces": [
+          {
+            "id": "m6-run-artifacts",
+            "location": "module-6/eval-notes.md, module-6/runs/round-1/"
+          },
+          {
+            "id": "generation-tactic",
+            "location": "./generation-tactic.md"
+          }
+        ]
+      },
+      "desktop": {
+        "key": "apt101-eval-loop-2",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
+        "requires": [
+          {
+            "id": "generation-tactic",
+            "source": "prompt:apt101-eval-loop-1"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
+          }
+        ],
+        "produces": [
+          {
+            "id": "m6-run-artifacts",
+            "location": "module-6/eval-notes.md, module-6/runs/round-1/"
+          },
+          {
+            "id": "generation-tactic",
+            "location": "./generation-tactic.md"
+          }
+        ]
+      },
+      "cli": {
+        "key": "apt101-eval-loop-2",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
+        "requires": [
+          {
+            "id": "generation-tactic",
+            "source": "prompt:apt101-eval-loop-1"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
+          }
+        ],
+        "produces": [
+          {
+            "id": "m6-run-artifacts",
+            "location": "module-6/eval-notes.md, module-6/runs/round-1/"
+          },
+          {
+            "id": "generation-tactic",
+            "location": "./generation-tactic.md"
+          }
+        ]
+      },
+      "codex-desktop": {
+        "key": "apt101-eval-loop-2",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
+        "requires": [
+          {
+            "id": "generation-tactic",
+            "source": "prompt:apt101-eval-loop-1"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
+          }
+        ],
+        "produces": [
+          {
+            "id": "m6-run-artifacts",
+            "location": "module-6/eval-notes.md, module-6/runs/round-1/"
+          },
+          {
+            "id": "generation-tactic",
+            "location": "./generation-tactic.md"
+          }
+        ]
+      },
+      "codex-cli": {
+        "key": "apt101-eval-loop-2",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
+        "requires": [
+          {
+            "id": "generation-tactic",
+            "source": "prompt:apt101-eval-loop-1"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
+          }
+        ],
+        "produces": [
+          {
+            "id": "m6-run-artifacts",
+            "location": "module-6/eval-notes.md, module-6/runs/round-1/"
+          },
+          {
+            "id": "generation-tactic",
+            "location": "./generation-tactic.md"
+          }
+        ]
+      },
+      "copilot-app": {
+        "key": "apt101-eval-loop-2",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
+        "requires": [
+          {
+            "id": "generation-tactic",
+            "source": "prompt:apt101-eval-loop-1"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
+          }
+        ],
+        "produces": [
+          {
+            "id": "m6-run-artifacts",
+            "location": "module-6/eval-notes.md, module-6/runs/round-1/"
+          },
+          {
+            "id": "generation-tactic",
+            "location": "./generation-tactic.md"
+          }
+        ]
+      },
+      "copilot-cli": {
+        "key": "apt101-eval-loop-2",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
+        "requires": [
+          {
+            "id": "generation-tactic",
+            "source": "prompt:apt101-eval-loop-1"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
+          }
+        ],
+        "produces": [
+          {
+            "id": "m6-run-artifacts",
+            "location": "module-6/eval-notes.md, module-6/runs/round-1/"
+          },
+          {
+            "id": "generation-tactic",
+            "location": "./generation-tactic.md"
+          }
+        ]
+      }
+    }
+  },
+  "apt101-eval-loop-5": {
+    "key": "apt101-eval-loop-5",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/apt101-write-what-good-means",
+    "text": "Show me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What was the score trajectory?\n- Which generation-tactic change most clearly improved the next round?\n- Which failure did the generation tactic still not absorb?\n- What would you test in the next run?",
+    "requires": [
+      {
+        "id": "m6-run-artifacts",
+        "source": "prompt:apt101-eval-loop-2"
+      },
+      {
+        "id": "generation-tactic",
+        "source": "prompt:apt101-eval-loop-2"
+      }
+    ],
+    "runtimeVariants": {
+      "cowork": {
+        "key": "apt101-eval-loop-5",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Show me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What was the score trajectory?\n- Which generation-tactic change most clearly improved the next round?\n- Which failure did the generation tactic still not absorb?\n- What would you test in the next run?",
+        "requires": [
+          {
+            "id": "m6-run-artifacts",
+            "source": "prompt:apt101-eval-loop-2"
+          },
+          {
+            "id": "generation-tactic",
+            "source": "prompt:apt101-eval-loop-2"
+          }
+        ]
+      },
+      "desktop": {
+        "key": "apt101-eval-loop-5",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Show me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What was the score trajectory?\n- Which generation-tactic change most clearly improved the next round?\n- Which failure did the generation tactic still not absorb?\n- What would you test in the next run?",
+        "requires": [
+          {
+            "id": "m6-run-artifacts",
+            "source": "prompt:apt101-eval-loop-2"
+          },
+          {
+            "id": "generation-tactic",
+            "source": "prompt:apt101-eval-loop-2"
+          }
+        ]
+      },
+      "cli": {
+        "key": "apt101-eval-loop-5",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Show me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What was the score trajectory?\n- Which generation-tactic change most clearly improved the next round?\n- Which failure did the generation tactic still not absorb?\n- What would you test in the next run?",
+        "requires": [
+          {
+            "id": "m6-run-artifacts",
+            "source": "prompt:apt101-eval-loop-2"
+          },
+          {
+            "id": "generation-tactic",
+            "source": "prompt:apt101-eval-loop-2"
+          }
+        ]
+      },
+      "codex-desktop": {
+        "key": "apt101-eval-loop-5",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Show me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What was the score trajectory?\n- Which generation-tactic change most clearly improved the next round?\n- Which failure did the generation tactic still not absorb?\n- What would you test in the next run?",
+        "requires": [
+          {
+            "id": "m6-run-artifacts",
+            "source": "prompt:apt101-eval-loop-2"
+          },
+          {
+            "id": "generation-tactic",
+            "source": "prompt:apt101-eval-loop-2"
+          }
+        ]
+      },
+      "codex-cli": {
+        "key": "apt101-eval-loop-5",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Show me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What was the score trajectory?\n- Which generation-tactic change most clearly improved the next round?\n- Which failure did the generation tactic still not absorb?\n- What would you test in the next run?",
+        "requires": [
+          {
+            "id": "m6-run-artifacts",
+            "source": "prompt:apt101-eval-loop-2"
+          },
+          {
+            "id": "generation-tactic",
+            "source": "prompt:apt101-eval-loop-2"
+          }
+        ]
+      },
+      "copilot-app": {
+        "key": "apt101-eval-loop-5",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Show me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What was the score trajectory?\n- Which generation-tactic change most clearly improved the next round?\n- Which failure did the generation tactic still not absorb?\n- What would you test in the next run?",
+        "requires": [
+          {
+            "id": "m6-run-artifacts",
+            "source": "prompt:apt101-eval-loop-2"
+          },
+          {
+            "id": "generation-tactic",
+            "source": "prompt:apt101-eval-loop-2"
+          }
+        ]
+      },
+      "copilot-cli": {
+        "key": "apt101-eval-loop-5",
+        "dest": "Claude Code",
+        "context": "",
+        "runtime": "any",
+        "origin": "exercises/apt101-write-what-good-means",
+        "text": "Show me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What was the score trajectory?\n- Which generation-tactic change most clearly improved the next round?\n- Which failure did the generation tactic still not absorb?\n- What would you test in the next run?",
+        "requires": [
+          {
+            "id": "m6-run-artifacts",
+            "source": "prompt:apt101-eval-loop-2"
+          },
+          {
+            "id": "generation-tactic",
+            "source": "prompt:apt101-eval-loop-2"
           }
         ]
       }
@@ -24191,7 +24885,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/eval-loop",
-    "text": "Three things, in sequence:\n\n1. Write ./generation-tactic.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.\n\n2. Run ./generation-tactic.md once and save the briefing to module-6/fresh-briefing.md.\n\n3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:\n- the claim\n- the judge's verdict\n- one sentence naming the grounding problem, if any\n- one generation-tactic rule that would prevent this kind of miss in the next briefing\n\nThen summarize in three lines: what the judge caught, the one generation-tactic rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.\n\nDo not update ./generation-tactic.md from this feedback yet. Phase 0 is calibration; the loop rewrites the tactic later.",
+    "text": "Three things, in sequence:\n\n1. Dispatch a judge subagent, as the loop will. It reads judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the ## Answer section of module-3/briefing-baseline.md, your Module 3 briefing as you froze it, and nothing else. It writes module-6/runs/round-0/judgment.md, with claims judged and claims flagged on the top line.\n\n2. If module-5/baseline-score.md exists, put its \"Claims judged: N. Claims flagged: F.\" line beside today's count. Any difference on the same briefing is a first read of the judge's own noise; say how big it is.\n\n3. Write ./generation-tactic.md from that judgment, as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, from ./crux.md without its ## Answer section and from memory/. One rule for each kind of miss the judge flagged, each rule naming the miss it prevents. Keep it short enough that a generator will follow it.\n\nThen tell me in five lines: claims judged and flagged in the Module 3 briefing, the Module 5 count beside it, whether the line I doubted in Module 3 was flagged, the rule the judgment most clearly asks for, and one claim the judge could not check from the files.",
     "requires": [
       {
         "id": "crux-md",
@@ -24204,6 +24898,14 @@
       {
         "id": "groundedness-judge",
         "source": "prompt:hallucination-bakeoff-8"
+      },
+      {
+        "id": "m3-briefing-baseline",
+        "source": "prompt:three-minds-one-synthesis-4"
+      },
+      {
+        "id": "m5-baseline-score",
+        "source": "prompt:hallucination-bakeoff-9"
       }
     ],
     "produces": [
@@ -24212,8 +24914,8 @@
         "location": "./generation-tactic.md"
       },
       {
-        "id": "m6-calibration-briefing",
-        "location": "module-6/fresh-briefing.md"
+        "id": "m6-round-0",
+        "location": "module-6/runs/round-0/judgment.md"
       }
     ],
     "runtimeVariants": {
@@ -24223,7 +24925,7 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Three things, in sequence:\n\n1. Write ./generation-tactic.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.\n\n2. Run ./generation-tactic.md once and save the briefing to module-6/fresh-briefing.md.\n\n3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:\n- the claim\n- the judge's verdict\n- one sentence naming the grounding problem, if any\n- one generation-tactic rule that would prevent this kind of miss in the next briefing\n\nThen summarize in three lines: what the judge caught, the one generation-tactic rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.\n\nDo not update ./generation-tactic.md from this feedback yet. Phase 0 is calibration; the loop rewrites the tactic later.",
+        "text": "Three things, in sequence:\n\n1. Dispatch a judge subagent, as the loop will. It reads judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the ## Answer section of module-3/briefing-baseline.md, your Module 3 briefing as you froze it, and nothing else. It writes module-6/runs/round-0/judgment.md, with claims judged and claims flagged on the top line.\n\n2. If module-5/baseline-score.md exists, put its \"Claims judged: N. Claims flagged: F.\" line beside today's count. Any difference on the same briefing is a first read of the judge's own noise; say how big it is.\n\n3. Write ./generation-tactic.md from that judgment, as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, from ./crux.md without its ## Answer section and from memory/. One rule for each kind of miss the judge flagged, each rule naming the miss it prevents. Keep it short enough that a generator will follow it.\n\nThen tell me in five lines: claims judged and flagged in the Module 3 briefing, the Module 5 count beside it, whether the line I doubted in Module 3 was flagged, the rule the judgment most clearly asks for, and one claim the judge could not check from the files.",
         "requires": [
           {
             "id": "crux-md",
@@ -24236,6 +24938,14 @@
           {
             "id": "groundedness-judge",
             "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "m3-briefing-baseline",
+            "source": "prompt:three-minds-one-synthesis-4"
+          },
+          {
+            "id": "m5-baseline-score",
+            "source": "prompt:hallucination-bakeoff-9"
           }
         ],
         "produces": [
@@ -24244,8 +24954,8 @@
             "location": "./generation-tactic.md"
           },
           {
-            "id": "m6-calibration-briefing",
-            "location": "module-6/fresh-briefing.md"
+            "id": "m6-round-0",
+            "location": "module-6/runs/round-0/judgment.md"
           }
         ]
       },
@@ -24255,7 +24965,7 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Three things, in sequence:\n\n1. Write ./generation-tactic.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.\n\n2. Run ./generation-tactic.md once and save the briefing to module-6/fresh-briefing.md.\n\n3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:\n- the claim\n- the judge's verdict\n- one sentence naming the grounding problem, if any\n- one generation-tactic rule that would prevent this kind of miss in the next briefing\n\nThen summarize in three lines: what the judge caught, the one generation-tactic rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.\n\nDo not update ./generation-tactic.md from this feedback yet. Phase 0 is calibration; the loop rewrites the tactic later.",
+        "text": "Three things, in sequence:\n\n1. Dispatch a judge subagent, as the loop will. It reads judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the ## Answer section of module-3/briefing-baseline.md, your Module 3 briefing as you froze it, and nothing else. It writes module-6/runs/round-0/judgment.md, with claims judged and claims flagged on the top line.\n\n2. If module-5/baseline-score.md exists, put its \"Claims judged: N. Claims flagged: F.\" line beside today's count. Any difference on the same briefing is a first read of the judge's own noise; say how big it is.\n\n3. Write ./generation-tactic.md from that judgment, as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, from ./crux.md without its ## Answer section and from memory/. One rule for each kind of miss the judge flagged, each rule naming the miss it prevents. Keep it short enough that a generator will follow it.\n\nThen tell me in five lines: claims judged and flagged in the Module 3 briefing, the Module 5 count beside it, whether the line I doubted in Module 3 was flagged, the rule the judgment most clearly asks for, and one claim the judge could not check from the files.",
         "requires": [
           {
             "id": "crux-md",
@@ -24268,6 +24978,14 @@
           {
             "id": "groundedness-judge",
             "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "m3-briefing-baseline",
+            "source": "prompt:three-minds-one-synthesis-4"
+          },
+          {
+            "id": "m5-baseline-score",
+            "source": "prompt:hallucination-bakeoff-9"
           }
         ],
         "produces": [
@@ -24276,8 +24994,8 @@
             "location": "./generation-tactic.md"
           },
           {
-            "id": "m6-calibration-briefing",
-            "location": "module-6/fresh-briefing.md"
+            "id": "m6-round-0",
+            "location": "module-6/runs/round-0/judgment.md"
           }
         ]
       },
@@ -24287,7 +25005,7 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Three things, in sequence:\n\n1. Write ./generation-tactic.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.\n\n2. Run ./generation-tactic.md once and save the briefing to module-6/fresh-briefing.md.\n\n3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:\n- the claim\n- the judge's verdict\n- one sentence naming the grounding problem, if any\n- one generation-tactic rule that would prevent this kind of miss in the next briefing\n\nThen summarize in three lines: what the judge caught, the one generation-tactic rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.\n\nDo not update ./generation-tactic.md from this feedback yet. Phase 0 is calibration; the loop rewrites the tactic later.",
+        "text": "Three things, in sequence:\n\n1. Dispatch a judge subagent, as the loop will. It reads judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the ## Answer section of module-3/briefing-baseline.md, your Module 3 briefing as you froze it, and nothing else. It writes module-6/runs/round-0/judgment.md, with claims judged and claims flagged on the top line.\n\n2. If module-5/baseline-score.md exists, put its \"Claims judged: N. Claims flagged: F.\" line beside today's count. Any difference on the same briefing is a first read of the judge's own noise; say how big it is.\n\n3. Write ./generation-tactic.md from that judgment, as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, from ./crux.md without its ## Answer section and from memory/. One rule for each kind of miss the judge flagged, each rule naming the miss it prevents. Keep it short enough that a generator will follow it.\n\nThen tell me in five lines: claims judged and flagged in the Module 3 briefing, the Module 5 count beside it, whether the line I doubted in Module 3 was flagged, the rule the judgment most clearly asks for, and one claim the judge could not check from the files.",
         "requires": [
           {
             "id": "crux-md",
@@ -24300,6 +25018,14 @@
           {
             "id": "groundedness-judge",
             "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "m3-briefing-baseline",
+            "source": "prompt:three-minds-one-synthesis-4"
+          },
+          {
+            "id": "m5-baseline-score",
+            "source": "prompt:hallucination-bakeoff-9"
           }
         ],
         "produces": [
@@ -24308,8 +25034,8 @@
             "location": "./generation-tactic.md"
           },
           {
-            "id": "m6-calibration-briefing",
-            "location": "module-6/fresh-briefing.md"
+            "id": "m6-round-0",
+            "location": "module-6/runs/round-0/judgment.md"
           }
         ]
       },
@@ -24319,7 +25045,7 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Three things, in sequence:\n\n1. Write ./generation-tactic.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.\n\n2. Run ./generation-tactic.md once and save the briefing to module-6/fresh-briefing.md.\n\n3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:\n- the claim\n- the judge's verdict\n- one sentence naming the grounding problem, if any\n- one generation-tactic rule that would prevent this kind of miss in the next briefing\n\nThen summarize in three lines: what the judge caught, the one generation-tactic rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.\n\nDo not update ./generation-tactic.md from this feedback yet. Phase 0 is calibration; the loop rewrites the tactic later.",
+        "text": "Three things, in sequence:\n\n1. Dispatch a judge subagent, as the loop will. It reads judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the ## Answer section of module-3/briefing-baseline.md, your Module 3 briefing as you froze it, and nothing else. It writes module-6/runs/round-0/judgment.md, with claims judged and claims flagged on the top line.\n\n2. If module-5/baseline-score.md exists, put its \"Claims judged: N. Claims flagged: F.\" line beside today's count. Any difference on the same briefing is a first read of the judge's own noise; say how big it is.\n\n3. Write ./generation-tactic.md from that judgment, as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, from ./crux.md without its ## Answer section and from memory/. One rule for each kind of miss the judge flagged, each rule naming the miss it prevents. Keep it short enough that a generator will follow it.\n\nThen tell me in five lines: claims judged and flagged in the Module 3 briefing, the Module 5 count beside it, whether the line I doubted in Module 3 was flagged, the rule the judgment most clearly asks for, and one claim the judge could not check from the files.",
         "requires": [
           {
             "id": "crux-md",
@@ -24332,6 +25058,14 @@
           {
             "id": "groundedness-judge",
             "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "m3-briefing-baseline",
+            "source": "prompt:three-minds-one-synthesis-4"
+          },
+          {
+            "id": "m5-baseline-score",
+            "source": "prompt:hallucination-bakeoff-9"
           }
         ],
         "produces": [
@@ -24340,8 +25074,8 @@
             "location": "./generation-tactic.md"
           },
           {
-            "id": "m6-calibration-briefing",
-            "location": "module-6/fresh-briefing.md"
+            "id": "m6-round-0",
+            "location": "module-6/runs/round-0/judgment.md"
           }
         ]
       },
@@ -24351,7 +25085,7 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Three things, in sequence:\n\n1. Write ./generation-tactic.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.\n\n2. Run ./generation-tactic.md once and save the briefing to module-6/fresh-briefing.md.\n\n3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:\n- the claim\n- the judge's verdict\n- one sentence naming the grounding problem, if any\n- one generation-tactic rule that would prevent this kind of miss in the next briefing\n\nThen summarize in three lines: what the judge caught, the one generation-tactic rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.\n\nDo not update ./generation-tactic.md from this feedback yet. Phase 0 is calibration; the loop rewrites the tactic later.",
+        "text": "Three things, in sequence:\n\n1. Dispatch a judge subagent, as the loop will. It reads judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the ## Answer section of module-3/briefing-baseline.md, your Module 3 briefing as you froze it, and nothing else. It writes module-6/runs/round-0/judgment.md, with claims judged and claims flagged on the top line.\n\n2. If module-5/baseline-score.md exists, put its \"Claims judged: N. Claims flagged: F.\" line beside today's count. Any difference on the same briefing is a first read of the judge's own noise; say how big it is.\n\n3. Write ./generation-tactic.md from that judgment, as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, from ./crux.md without its ## Answer section and from memory/. One rule for each kind of miss the judge flagged, each rule naming the miss it prevents. Keep it short enough that a generator will follow it.\n\nThen tell me in five lines: claims judged and flagged in the Module 3 briefing, the Module 5 count beside it, whether the line I doubted in Module 3 was flagged, the rule the judgment most clearly asks for, and one claim the judge could not check from the files.",
         "requires": [
           {
             "id": "crux-md",
@@ -24364,6 +25098,14 @@
           {
             "id": "groundedness-judge",
             "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "m3-briefing-baseline",
+            "source": "prompt:three-minds-one-synthesis-4"
+          },
+          {
+            "id": "m5-baseline-score",
+            "source": "prompt:hallucination-bakeoff-9"
           }
         ],
         "produces": [
@@ -24372,8 +25114,8 @@
             "location": "./generation-tactic.md"
           },
           {
-            "id": "m6-calibration-briefing",
-            "location": "module-6/fresh-briefing.md"
+            "id": "m6-round-0",
+            "location": "module-6/runs/round-0/judgment.md"
           }
         ]
       },
@@ -24383,7 +25125,7 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Three things, in sequence:\n\n1. Write ./generation-tactic.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.\n\n2. Run ./generation-tactic.md once and save the briefing to module-6/fresh-briefing.md.\n\n3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:\n- the claim\n- the judge's verdict\n- one sentence naming the grounding problem, if any\n- one generation-tactic rule that would prevent this kind of miss in the next briefing\n\nThen summarize in three lines: what the judge caught, the one generation-tactic rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.\n\nDo not update ./generation-tactic.md from this feedback yet. Phase 0 is calibration; the loop rewrites the tactic later.",
+        "text": "Three things, in sequence:\n\n1. Dispatch a judge subagent, as the loop will. It reads judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the ## Answer section of module-3/briefing-baseline.md, your Module 3 briefing as you froze it, and nothing else. It writes module-6/runs/round-0/judgment.md, with claims judged and claims flagged on the top line.\n\n2. If module-5/baseline-score.md exists, put its \"Claims judged: N. Claims flagged: F.\" line beside today's count. Any difference on the same briefing is a first read of the judge's own noise; say how big it is.\n\n3. Write ./generation-tactic.md from that judgment, as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, from ./crux.md without its ## Answer section and from memory/. One rule for each kind of miss the judge flagged, each rule naming the miss it prevents. Keep it short enough that a generator will follow it.\n\nThen tell me in five lines: claims judged and flagged in the Module 3 briefing, the Module 5 count beside it, whether the line I doubted in Module 3 was flagged, the rule the judgment most clearly asks for, and one claim the judge could not check from the files.",
         "requires": [
           {
             "id": "crux-md",
@@ -24396,6 +25138,14 @@
           {
             "id": "groundedness-judge",
             "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "m3-briefing-baseline",
+            "source": "prompt:three-minds-one-synthesis-4"
+          },
+          {
+            "id": "m5-baseline-score",
+            "source": "prompt:hallucination-bakeoff-9"
           }
         ],
         "produces": [
@@ -24404,8 +25154,8 @@
             "location": "./generation-tactic.md"
           },
           {
-            "id": "m6-calibration-briefing",
-            "location": "module-6/fresh-briefing.md"
+            "id": "m6-round-0",
+            "location": "module-6/runs/round-0/judgment.md"
           }
         ]
       },
@@ -24415,7 +25165,7 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Three things, in sequence:\n\n1. Write ./generation-tactic.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.\n\n2. Run ./generation-tactic.md once and save the briefing to module-6/fresh-briefing.md.\n\n3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:\n- the claim\n- the judge's verdict\n- one sentence naming the grounding problem, if any\n- one generation-tactic rule that would prevent this kind of miss in the next briefing\n\nThen summarize in three lines: what the judge caught, the one generation-tactic rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.\n\nDo not update ./generation-tactic.md from this feedback yet. Phase 0 is calibration; the loop rewrites the tactic later.",
+        "text": "Three things, in sequence:\n\n1. Dispatch a judge subagent, as the loop will. It reads judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the ## Answer section of module-3/briefing-baseline.md, your Module 3 briefing as you froze it, and nothing else. It writes module-6/runs/round-0/judgment.md, with claims judged and claims flagged on the top line.\n\n2. If module-5/baseline-score.md exists, put its \"Claims judged: N. Claims flagged: F.\" line beside today's count. Any difference on the same briefing is a first read of the judge's own noise; say how big it is.\n\n3. Write ./generation-tactic.md from that judgment, as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, from ./crux.md without its ## Answer section and from memory/. One rule for each kind of miss the judge flagged, each rule naming the miss it prevents. Keep it short enough that a generator will follow it.\n\nThen tell me in five lines: claims judged and flagged in the Module 3 briefing, the Module 5 count beside it, whether the line I doubted in Module 3 was flagged, the rule the judgment most clearly asks for, and one claim the judge could not check from the files.",
         "requires": [
           {
             "id": "crux-md",
@@ -24428,6 +25178,14 @@
           {
             "id": "groundedness-judge",
             "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "m3-briefing-baseline",
+            "source": "prompt:three-minds-one-synthesis-4"
+          },
+          {
+            "id": "m5-baseline-score",
+            "source": "prompt:hallucination-bakeoff-9"
           }
         ],
         "produces": [
@@ -24436,8 +25194,8 @@
             "location": "./generation-tactic.md"
           },
           {
-            "id": "m6-calibration-briefing",
-            "location": "module-6/fresh-briefing.md"
+            "id": "m6-round-0",
+            "location": "module-6/runs/round-0/judgment.md"
           }
         ]
       }
@@ -24449,8 +25207,12 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/eval-loop",
-    "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
+    "text": "---\nkey: eval-loop-2\ndest: Claude Code\nruntime: any\norigin: exercises/eval-loop\nrequires:\n  - id: generation-tactic\n    source: prompt:eval-loop-1\n  - id: groundedness-judge\n    source: prompt:hallucination-bakeoff-8\n  - id: crux-md\n    source: prompt:name-your-crux-2\n  - id: m3-curated-memory\n    source: prompt:three-retrievers-one-curator-5\nproduces:\n  - id: m6-run-artifacts\n    location: module-6/eval-notes.md, module-6/runs/round-1/\n  - id: generation-tactic\n    location: ./generation-tactic.md\n---\nRun an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md and module-6/runs/round-0/judgment.md from round 0. If either is missing, stop and tell me round 0 has not run.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md without its ## Answer section, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means a drop in flagged claims larger than the judge noise read in round 0, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with a table of claims flagged out of claims judged, round 0 (the Module 3 briefing) first and then each loop round, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
     "requires": [
+      {
+        "id": "m6-round-0",
+        "source": "prompt:eval-loop-1"
+      },
       {
         "id": "generation-tactic",
         "source": "prompt:eval-loop-1"
@@ -24485,8 +25247,12 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
+        "text": "---\nkey: eval-loop-2\ndest: Claude Code\nruntime: any\norigin: exercises/eval-loop\nrequires:\n  - id: generation-tactic\n    source: prompt:eval-loop-1\n  - id: groundedness-judge\n    source: prompt:hallucination-bakeoff-8\n  - id: crux-md\n    source: prompt:name-your-crux-2\n  - id: m3-curated-memory\n    source: prompt:three-retrievers-one-curator-5\nproduces:\n  - id: m6-run-artifacts\n    location: module-6/eval-notes.md, module-6/runs/round-1/\n  - id: generation-tactic\n    location: ./generation-tactic.md\n---\nRun an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md and module-6/runs/round-0/judgment.md from round 0. If either is missing, stop and tell me round 0 has not run.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md without its ## Answer section, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means a drop in flagged claims larger than the judge noise read in round 0, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with a table of claims flagged out of claims judged, round 0 (the Module 3 briefing) first and then each loop round, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
         "requires": [
+          {
+            "id": "m6-round-0",
+            "source": "prompt:eval-loop-1"
+          },
           {
             "id": "generation-tactic",
             "source": "prompt:eval-loop-1"
@@ -24521,8 +25287,12 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
+        "text": "---\nkey: eval-loop-2\ndest: Claude Code\nruntime: any\norigin: exercises/eval-loop\nrequires:\n  - id: generation-tactic\n    source: prompt:eval-loop-1\n  - id: groundedness-judge\n    source: prompt:hallucination-bakeoff-8\n  - id: crux-md\n    source: prompt:name-your-crux-2\n  - id: m3-curated-memory\n    source: prompt:three-retrievers-one-curator-5\nproduces:\n  - id: m6-run-artifacts\n    location: module-6/eval-notes.md, module-6/runs/round-1/\n  - id: generation-tactic\n    location: ./generation-tactic.md\n---\nRun an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md and module-6/runs/round-0/judgment.md from round 0. If either is missing, stop and tell me round 0 has not run.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md without its ## Answer section, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means a drop in flagged claims larger than the judge noise read in round 0, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with a table of claims flagged out of claims judged, round 0 (the Module 3 briefing) first and then each loop round, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
         "requires": [
+          {
+            "id": "m6-round-0",
+            "source": "prompt:eval-loop-1"
+          },
           {
             "id": "generation-tactic",
             "source": "prompt:eval-loop-1"
@@ -24557,8 +25327,12 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
+        "text": "---\nkey: eval-loop-2\ndest: Claude Code\nruntime: any\norigin: exercises/eval-loop\nrequires:\n  - id: generation-tactic\n    source: prompt:eval-loop-1\n  - id: groundedness-judge\n    source: prompt:hallucination-bakeoff-8\n  - id: crux-md\n    source: prompt:name-your-crux-2\n  - id: m3-curated-memory\n    source: prompt:three-retrievers-one-curator-5\nproduces:\n  - id: m6-run-artifacts\n    location: module-6/eval-notes.md, module-6/runs/round-1/\n  - id: generation-tactic\n    location: ./generation-tactic.md\n---\nRun an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md and module-6/runs/round-0/judgment.md from round 0. If either is missing, stop and tell me round 0 has not run.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md without its ## Answer section, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means a drop in flagged claims larger than the judge noise read in round 0, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with a table of claims flagged out of claims judged, round 0 (the Module 3 briefing) first and then each loop round, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
         "requires": [
+          {
+            "id": "m6-round-0",
+            "source": "prompt:eval-loop-1"
+          },
           {
             "id": "generation-tactic",
             "source": "prompt:eval-loop-1"
@@ -24593,8 +25367,12 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
+        "text": "---\nkey: eval-loop-2\ndest: Claude Code\nruntime: any\norigin: exercises/eval-loop\nrequires:\n  - id: generation-tactic\n    source: prompt:eval-loop-1\n  - id: groundedness-judge\n    source: prompt:hallucination-bakeoff-8\n  - id: crux-md\n    source: prompt:name-your-crux-2\n  - id: m3-curated-memory\n    source: prompt:three-retrievers-one-curator-5\nproduces:\n  - id: m6-run-artifacts\n    location: module-6/eval-notes.md, module-6/runs/round-1/\n  - id: generation-tactic\n    location: ./generation-tactic.md\n---\nRun an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md and module-6/runs/round-0/judgment.md from round 0. If either is missing, stop and tell me round 0 has not run.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md without its ## Answer section, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means a drop in flagged claims larger than the judge noise read in round 0, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with a table of claims flagged out of claims judged, round 0 (the Module 3 briefing) first and then each loop round, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
         "requires": [
+          {
+            "id": "m6-round-0",
+            "source": "prompt:eval-loop-1"
+          },
           {
             "id": "generation-tactic",
             "source": "prompt:eval-loop-1"
@@ -24629,8 +25407,12 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
+        "text": "---\nkey: eval-loop-2\ndest: Claude Code\nruntime: any\norigin: exercises/eval-loop\nrequires:\n  - id: generation-tactic\n    source: prompt:eval-loop-1\n  - id: groundedness-judge\n    source: prompt:hallucination-bakeoff-8\n  - id: crux-md\n    source: prompt:name-your-crux-2\n  - id: m3-curated-memory\n    source: prompt:three-retrievers-one-curator-5\nproduces:\n  - id: m6-run-artifacts\n    location: module-6/eval-notes.md, module-6/runs/round-1/\n  - id: generation-tactic\n    location: ./generation-tactic.md\n---\nRun an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md and module-6/runs/round-0/judgment.md from round 0. If either is missing, stop and tell me round 0 has not run.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md without its ## Answer section, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means a drop in flagged claims larger than the judge noise read in round 0, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with a table of claims flagged out of claims judged, round 0 (the Module 3 briefing) first and then each loop round, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
         "requires": [
+          {
+            "id": "m6-round-0",
+            "source": "prompt:eval-loop-1"
+          },
           {
             "id": "generation-tactic",
             "source": "prompt:eval-loop-1"
@@ -24665,8 +25447,12 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
+        "text": "---\nkey: eval-loop-2\ndest: Claude Code\nruntime: any\norigin: exercises/eval-loop\nrequires:\n  - id: generation-tactic\n    source: prompt:eval-loop-1\n  - id: groundedness-judge\n    source: prompt:hallucination-bakeoff-8\n  - id: crux-md\n    source: prompt:name-your-crux-2\n  - id: m3-curated-memory\n    source: prompt:three-retrievers-one-curator-5\nproduces:\n  - id: m6-run-artifacts\n    location: module-6/eval-notes.md, module-6/runs/round-1/\n  - id: generation-tactic\n    location: ./generation-tactic.md\n---\nRun an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md and module-6/runs/round-0/judgment.md from round 0. If either is missing, stop and tell me round 0 has not run.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md without its ## Answer section, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means a drop in flagged claims larger than the judge noise read in round 0, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with a table of claims flagged out of claims judged, round 0 (the Module 3 briefing) first and then each loop round, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
         "requires": [
+          {
+            "id": "m6-round-0",
+            "source": "prompt:eval-loop-1"
+          },
           {
             "id": "generation-tactic",
             "source": "prompt:eval-loop-1"
@@ -24701,8 +25487,12 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
+        "text": "---\nkey: eval-loop-2\ndest: Claude Code\nruntime: any\norigin: exercises/eval-loop\nrequires:\n  - id: generation-tactic\n    source: prompt:eval-loop-1\n  - id: groundedness-judge\n    source: prompt:hallucination-bakeoff-8\n  - id: crux-md\n    source: prompt:name-your-crux-2\n  - id: m3-curated-memory\n    source: prompt:three-retrievers-one-curator-5\nproduces:\n  - id: m6-run-artifacts\n    location: module-6/eval-notes.md, module-6/runs/round-1/\n  - id: generation-tactic\n    location: ./generation-tactic.md\n---\nRun an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md and module-6/runs/round-0/judgment.md from round 0. If either is missing, stop and tell me round 0 has not run.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md without its ## Answer section, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means a drop in flagged claims larger than the judge noise read in round 0, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with a table of claims flagged out of claims judged, round 0 (the Module 3 briefing) first and then each loop round, the generation-tactic change after each round, why the loop stopped, the judge SHA check, whether any judge subagent got instructions beyond the judge file, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.\n\nNo preamble. Start by computing and recording the judge's starting SHA, then run round 1.",
         "requires": [
+          {
+            "id": "m6-round-0",
+            "source": "prompt:eval-loop-1"
+          },
           {
             "id": "generation-tactic",
             "source": "prompt:eval-loop-1"
@@ -24919,7 +25709,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/eval-loop",
-    "text": "Show me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What was the score trajectory?\n- Which generation-tactic change most clearly improved the next round?\n- Which failure did the generation tactic still not absorb?\n- What would you test in the next run?",
+    "text": "---\nkey: eval-loop-5\ndest: Claude Code\nruntime: any\norigin: exercises/eval-loop\nrequires:\n  - id: m6-run-artifacts\n    source: prompt:eval-loop-2\n  - id: generation-tactic\n    source: prompt:eval-loop-2\n---\nShow me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What happened to the Module 3 briefing: flagged claims in round 0 against the last round, and is the drop bigger than the judge noise from round 0?\n- Which generation-tactic change most clearly improved the next round?\n- Which rule's named miss kept coming back in later rounds, or was followed by a new kind of miss? Write it into module-6/eval-notes.md with the rounds that show it, as the rule to cut. If no rule qualifies, say so.\n- What would you test in the next run?",
     "requires": [
       {
         "id": "m6-run-artifacts",
@@ -24937,7 +25727,7 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Show me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What was the score trajectory?\n- Which generation-tactic change most clearly improved the next round?\n- Which failure did the generation tactic still not absorb?\n- What would you test in the next run?",
+        "text": "---\nkey: eval-loop-5\ndest: Claude Code\nruntime: any\norigin: exercises/eval-loop\nrequires:\n  - id: m6-run-artifacts\n    source: prompt:eval-loop-2\n  - id: generation-tactic\n    source: prompt:eval-loop-2\n---\nShow me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What happened to the Module 3 briefing: flagged claims in round 0 against the last round, and is the drop bigger than the judge noise from round 0?\n- Which generation-tactic change most clearly improved the next round?\n- Which rule's named miss kept coming back in later rounds, or was followed by a new kind of miss? Write it into module-6/eval-notes.md with the rounds that show it, as the rule to cut. If no rule qualifies, say so.\n- What would you test in the next run?",
         "requires": [
           {
             "id": "m6-run-artifacts",
@@ -24955,7 +25745,7 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Show me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What was the score trajectory?\n- Which generation-tactic change most clearly improved the next round?\n- Which failure did the generation tactic still not absorb?\n- What would you test in the next run?",
+        "text": "---\nkey: eval-loop-5\ndest: Claude Code\nruntime: any\norigin: exercises/eval-loop\nrequires:\n  - id: m6-run-artifacts\n    source: prompt:eval-loop-2\n  - id: generation-tactic\n    source: prompt:eval-loop-2\n---\nShow me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What happened to the Module 3 briefing: flagged claims in round 0 against the last round, and is the drop bigger than the judge noise from round 0?\n- Which generation-tactic change most clearly improved the next round?\n- Which rule's named miss kept coming back in later rounds, or was followed by a new kind of miss? Write it into module-6/eval-notes.md with the rounds that show it, as the rule to cut. If no rule qualifies, say so.\n- What would you test in the next run?",
         "requires": [
           {
             "id": "m6-run-artifacts",
@@ -24973,7 +25763,7 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Show me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What was the score trajectory?\n- Which generation-tactic change most clearly improved the next round?\n- Which failure did the generation tactic still not absorb?\n- What would you test in the next run?",
+        "text": "---\nkey: eval-loop-5\ndest: Claude Code\nruntime: any\norigin: exercises/eval-loop\nrequires:\n  - id: m6-run-artifacts\n    source: prompt:eval-loop-2\n  - id: generation-tactic\n    source: prompt:eval-loop-2\n---\nShow me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What happened to the Module 3 briefing: flagged claims in round 0 against the last round, and is the drop bigger than the judge noise from round 0?\n- Which generation-tactic change most clearly improved the next round?\n- Which rule's named miss kept coming back in later rounds, or was followed by a new kind of miss? Write it into module-6/eval-notes.md with the rounds that show it, as the rule to cut. If no rule qualifies, say so.\n- What would you test in the next run?",
         "requires": [
           {
             "id": "m6-run-artifacts",
@@ -24991,7 +25781,7 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Show me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What was the score trajectory?\n- Which generation-tactic change most clearly improved the next round?\n- Which failure did the generation tactic still not absorb?\n- What would you test in the next run?",
+        "text": "---\nkey: eval-loop-5\ndest: Claude Code\nruntime: any\norigin: exercises/eval-loop\nrequires:\n  - id: m6-run-artifacts\n    source: prompt:eval-loop-2\n  - id: generation-tactic\n    source: prompt:eval-loop-2\n---\nShow me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What happened to the Module 3 briefing: flagged claims in round 0 against the last round, and is the drop bigger than the judge noise from round 0?\n- Which generation-tactic change most clearly improved the next round?\n- Which rule's named miss kept coming back in later rounds, or was followed by a new kind of miss? Write it into module-6/eval-notes.md with the rounds that show it, as the rule to cut. If no rule qualifies, say so.\n- What would you test in the next run?",
         "requires": [
           {
             "id": "m6-run-artifacts",
@@ -25009,7 +25799,7 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Show me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What was the score trajectory?\n- Which generation-tactic change most clearly improved the next round?\n- Which failure did the generation tactic still not absorb?\n- What would you test in the next run?",
+        "text": "---\nkey: eval-loop-5\ndest: Claude Code\nruntime: any\norigin: exercises/eval-loop\nrequires:\n  - id: m6-run-artifacts\n    source: prompt:eval-loop-2\n  - id: generation-tactic\n    source: prompt:eval-loop-2\n---\nShow me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What happened to the Module 3 briefing: flagged claims in round 0 against the last round, and is the drop bigger than the judge noise from round 0?\n- Which generation-tactic change most clearly improved the next round?\n- Which rule's named miss kept coming back in later rounds, or was followed by a new kind of miss? Write it into module-6/eval-notes.md with the rounds that show it, as the rule to cut. If no rule qualifies, say so.\n- What would you test in the next run?",
         "requires": [
           {
             "id": "m6-run-artifacts",
@@ -25027,7 +25817,7 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Show me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What was the score trajectory?\n- Which generation-tactic change most clearly improved the next round?\n- Which failure did the generation tactic still not absorb?\n- What would you test in the next run?",
+        "text": "---\nkey: eval-loop-5\ndest: Claude Code\nruntime: any\norigin: exercises/eval-loop\nrequires:\n  - id: m6-run-artifacts\n    source: prompt:eval-loop-2\n  - id: generation-tactic\n    source: prompt:eval-loop-2\n---\nShow me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What happened to the Module 3 briefing: flagged claims in round 0 against the last round, and is the drop bigger than the judge noise from round 0?\n- Which generation-tactic change most clearly improved the next round?\n- Which rule's named miss kept coming back in later rounds, or was followed by a new kind of miss? Write it into module-6/eval-notes.md with the rounds that show it, as the rule to cut. If no rule qualifies, say so.\n- What would you test in the next run?",
         "requires": [
           {
             "id": "m6-run-artifacts",
@@ -25045,7 +25835,7 @@
         "context": "",
         "runtime": "any",
         "origin": "exercises/eval-loop",
-        "text": "Show me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What was the score trajectory?\n- Which generation-tactic change most clearly improved the next round?\n- Which failure did the generation tactic still not absorb?\n- What would you test in the next run?",
+        "text": "---\nkey: eval-loop-5\ndest: Claude Code\nruntime: any\norigin: exercises/eval-loop\nrequires:\n  - id: m6-run-artifacts\n    source: prompt:eval-loop-2\n  - id: generation-tactic\n    source: prompt:eval-loop-2\n---\nShow me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What happened to the Module 3 briefing: flagged claims in round 0 against the last round, and is the drop bigger than the judge noise from round 0?\n- Which generation-tactic change most clearly improved the next round?\n- Which rule's named miss kept coming back in later rounds, or was followed by a new kind of miss? Write it into module-6/eval-notes.md with the rounds that show it, as the rule to cut. If no rule qualifies, say so.\n- What would you test in the next run?",
         "requires": [
           {
             "id": "m6-run-artifacts",

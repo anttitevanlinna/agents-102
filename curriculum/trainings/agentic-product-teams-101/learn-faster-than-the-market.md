@@ -108,7 +108,7 @@ The bet is still open, and the next slice is yours to place.
 | Story map | *Story map* frame, `team/story-map.md` | map the story | five users; take it to the team |
 | First slice | `team/slice-1/` | map the story | five users |
 | What good means | `team/what-good-means.md`, `team/<name>/what-it-missed.md` | write what good means | later runs of the judge (outside this day) |
-| Eval run | `./generation-tactic.md`, `module-6/runs/`, `module-6/eval-notes.md` | write what good means (`eval-loop-1/2/5`) | write what good means (`apt101-d3-what-it-missed` reads `module-6/runs/`) |
+| Eval run | `./generation-tactic.md`, `module-6/runs/`, `module-6/eval-notes.md` | write what good means (`apt101-eval-loop-1/2/5`) | write what good means (`apt101-d3-what-it-missed` reads `module-6/runs/`) |
 | Least-trusted line | `team/<name>/doubts.md` | Day 2 read the digest (`apt101-d2-mark-the-doubt`) | write what good means (`apt101-d3-what-it-missed`, beside the judge's passes) |
 | Each Day 1 hypothesis | `team/bet.md` | Day 1 write the bet | five users (`apt101-d3-read-the-sessions`, phase 4) |
 | Five users | *Five users* frame, `team/five-users.md` (call, each author's touched line and whether it held or broke, the sentence now believed) | five users | take it to the team (phase 1, `apt101-d3-the-job-your-team-hires`, `apt101-d3-team-monday`) |

@@ -5,7 +5,7 @@ runtime: any
 origin: agentic-product-teams-101/apt101-write-what-good-means
 requires:
   - id: m6-run-artifacts
-    source: prompt:eval-loop-2
+    source: prompt:apt101-eval-loop-2
   - id: caught
     source: prompt:apt101-d3-caught
   - id: doubts-md

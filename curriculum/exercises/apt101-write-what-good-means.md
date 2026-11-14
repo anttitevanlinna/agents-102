@@ -38,13 +38,13 @@ Back to your own laptop. First one run by hand, so you see what the fixed judge 
 
 Ask Claude to write a fresh digest on the outcome you picked on Day 2 in `./crux.md`, and score it with your judge.
 
-{{prompt:eval-loop-1}}
+{{prompt:apt101-eval-loop-1}}
 
 Then ask Claude to run the loop. Generation and judging run separately, so neither grades its own work. The main session rewrites `./generation-tactic.md` between rounds. The judge never moves.
 
 A heavy run: a writer and a judge per round, three rounds or more. If it starts reading far beyond your memory, stop it, steer narrower, then say *"continue"*. If it stops after one round and calls it done, send it on.
 
-{{prompt:eval-loop-2}}
+{{prompt:apt101-eval-loop-2}}
 
 While the loop runs, each of you writes one post-it: the ceiling line in `team/what-good-means.md` you predict the looped digest will fail.
 
@@ -54,7 +54,7 @@ While the loop runs, each of you writes one post-it: the ceiling line in `team/w
 
 Ask Claude to show the loop result and the final generation tactic.
 
-{{prompt:eval-loop-5}}
+{{prompt:apt101-eval-loop-5}}
 
 Push back where the answer is too neat. If the score dropped and the digest still reads thin, the judge passed work you would have sent back. If the judge file moved, the loop did not hold: `module-6/eval-notes.md` records whether it changed.
 
@@ -71,7 +71,7 @@ Hold your post-it against what you found. Each of you says your missing line out
 
 **Role in Day 3:** The digest from Day 1 gets caught by the team's own standard: the fixed judge holds the floor, the team's written lines are the ceiling, and the gap between them is what the criteria missed.
 
-**Reuse:** `eval-loop` keys `eval-loop-1`, `eval-loop-2`, `eval-loop-5`, unchanged. The briefing is framed as the digest regenerated against `./crux.md` (Day 2's outcome). Bonus prompts `eval-loop-3/4` dropped for time. New: `apt101-d3-what-good-means`, `apt101-d3-caught`, `apt101-d3-what-it-missed`.
+**Reuse:** Agents 101 `eval-loop-1/2/5` bodies as forked before Module 6 round 0 (2026-11-14): `apt101-eval-loop-1`, `apt101-eval-loop-2`, `apt101-eval-loop-5`, since the APT101 chain has no frozen Module 3 briefing. The briefing is framed as the digest regenerated against `./crux.md` (Day 2's outcome). Bonus prompts `eval-loop-3/4` dropped for time. New: `apt101-d3-what-good-means`, `apt101-d3-caught`, `apt101-d3-what-it-missed`.
 
 **Frameworks:**
 - LLM-as-judge with a fixed yardstick; the generator learns to pass it (Agents 101 M6).
@@ -85,7 +85,7 @@ Hold your post-it against what you found. Each of you says your missing line out
 
 **Design note:** the judge is not rewritten with the team's lines. The reused keys fix it, and the lesson is the fixed yardstick. The team's ceiling lines are what a person holds the passing digest against; they go into the judge only in a later run, outside this loop.
 
-**Failure modes:** phase 1, a line rewritten smoother (the prompt records it word for word; push back); phase 2, the loop declares done after the first pass or the judge gets edited (the judge never moves; send the loop on); phase 3, every passed claim waved through (put the least-trusted line first, as the prompt does). **Protected:** phase 3. **Cut first:** the post-it prediction (the module's overrun line). The hand run in phase 2 stays: `eval-loop-2` stops without the `./generation-tactic.md` it writes.
+**Failure modes:** phase 1, a line rewritten smoother (the prompt records it word for word; push back); phase 2, the loop declares done after the first pass or the judge gets edited (the judge never moves; send the loop on); phase 3, every passed claim waved through (put the least-trusted line first, as the prompt does). **Protected:** phase 3. **Cut first:** the post-it prediction (the module's overrun line). The hand run in phase 2 stays: `apt101-eval-loop-2` stops without the `./generation-tactic.md` it writes.
 
 **Leap test:** on Monday each person (1) has a ceiling line the judge can't check; (2) can name a claim the judge passed that they would send back; (3) reruns the judge on the next digest before reading it.
 

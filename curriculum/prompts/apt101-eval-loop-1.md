@@ -1,0 +1,33 @@
+---
+key: apt101-eval-loop-1
+dest: Claude Code
+runtime: any
+origin: exercises/apt101-write-what-good-means
+requires:
+  - id: crux-md
+    source: prompt:name-your-crux-2
+  - id: m3-curated-memory
+    source: prompt:three-retrievers-one-curator-5
+  - id: groundedness-judge
+    source: prompt:hallucination-bakeoff-8
+produces:
+  - id: generation-tactic
+    location: ./generation-tactic.md
+  - id: m6-calibration-briefing
+    location: module-6/fresh-briefing.md
+---
+Three things, in sequence:
+
+1. Write ./generation-tactic.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.
+
+2. Run ./generation-tactic.md once and save the briefing to module-6/fresh-briefing.md.
+
+3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:
+- the claim
+- the judge's verdict
+- one sentence naming the grounding problem, if any
+- one generation-tactic rule that would prevent this kind of miss in the next briefing
+
+Then summarize in three lines: what the judge caught, the one generation-tactic rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.
+
+Do not update ./generation-tactic.md from this feedback yet. Phase 0 is calibration; the loop rewrites the tactic later.

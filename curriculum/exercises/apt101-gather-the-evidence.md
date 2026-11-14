@@ -87,7 +87,7 @@ Three sources read at once, three memories curated from the same evidence, and a
 
 **Reuse:** Agents 101 `three-retrievers-one-curator`, keys `three-retrievers-one-curator-1` to `-5`, unchanged. New: `apt101-d2-carry-the-doubt`, said after the search terms are confirmed, carries the door (`team/what-goes-in.md`; the team lead's wiki retriever otherwise pulls back pages the door kept out) and the chosen doubt (`## Doubt` in `./crux.md`, from pick the outcome), and requires at least one finding against the bet. Priced inside phase 1's 15 minutes: said at the confirm step. Role mapping is APT101's: team lead wiki, designer docs, product owner internet; each person runs the curator in a further session.
 
-**Topology (deviates from Agents 101's one filesystem):** retrievers run on three laptops, so retrieval files travel by copy through `team/<name>/` into every `sources/`. Each person runs the curator over the same three retrievals, so every laptop holds the curated memory (`m3-curated-memory`) that `three-minds-one-synthesis-1/2`, `hallucination-bakeoff-1` and `eval-loop-1/2` require.
+**Topology (deviates from Agents 101's one filesystem):** retrievers run on three laptops, so retrieval files travel by copy through `team/<name>/` into every `sources/`. Each person runs the curator over the same three retrievals, so every laptop holds the curated memory (`m3-curated-memory`) that `three-minds-one-synthesis-1/2`, `hallucination-bakeoff-1` and `apt101-eval-loop-1/2` require.
 
 **Frameworks:** none named in body. Multi-agent fan-out is the felt move; the disagreement read is the pedagogical payload.
 

@@ -1,6 +1,6 @@
 # Red yarn: method for aligning Agents 101 on a yarn
 
-Start here for any yarn thread (context, compounding, control, agents building agents). Strategy source: `agents-102-core/strategy/content-strategy.md`, sections "The red thread" and "The four yarns" (per-module grid). Read the whole strategy file first.
+Start here for any yarn thread (context, compounding, control, agents building agents). Strategy source: `../agents-102-core/strategy/content-strategy.md`, sections "The red thread" and "The four yarns" (per-module grid). Read the whole strategy file first.
 
 ## Antti's rules (2026-11-13, verbatim)
 - "It is not to add sentences. IT IS TO ALIGN on common theme."

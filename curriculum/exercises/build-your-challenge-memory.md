@@ -1,6 +1,6 @@
 # Exercise: Build your challenge *memory*
 
-**Time:** 45 minutes.
+**Time:** 47 minutes.
 
 **What you do:**
 
@@ -100,15 +100,15 @@ Reject proposals that miss; the agent applies the ones you approve.
 
 ## Phase 5: Close, put it to work
 
-*4 min*
+*6 min*
 
 Ask your memory the hardest open question on your challenge, not *"summarize the sources."* For example: *"What's the strongest argument for option A over option B?"* *"Where does our current plan break if the market shifts?"*
 
-Run the question through the agent you built in Phase 2.
+Ask it twice, once to a helper agent in an empty folder, the way a chat answers, and once through the agent you built in Phase 2; both answers go side by side into `module-2/close.md`.
 
 {{prompt:build-your-challenge-memory-9}}
 
-If the answer is specific and every claim has a citation, the memory works. Generic or uncited answers show where the memory is still thin.
+Where the system answers from your sources, each claim cited, and the bare one cannot, your memory and rules did that; a line built on the Phase 3 source is the memory already growing. Where both go generic, the memory is thin there, and the agent writes that gap into the memory's open questions.
 
 ## Take stock of the system you built
 

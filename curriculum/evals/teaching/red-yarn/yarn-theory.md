@@ -125,7 +125,7 @@ The page holder aligns all four yarns on that page from this brief. The other th
 BEFORE: "The agent reviews the benchmark and adds rules to the root instructions file so future sessions check groundedness before trusting output."
 Why it is shallow: the benchmark just produced a tested sensor, and the debrief turns it back into a reminder. "A rule in context is not a rule in the output." It only adds.
 AFTER (direction, not final wording): "The agent reviews the benchmark and sets the winning detector to run on every briefing. It writes a rule only where no check can stand, and it names one earlier rule the check now makes unnecessary."
-Artefact: `judges/groundedness-judge.md`. Next run: M6's loop regenerates the briefing and the judge reads it, with nobody remembering to. The change reaches the debrief prompt, so it needs Antti's "prompt-ok" before it goes in.
+Artefact: the saved groundedness judge in the student's judges folder. Next run: M6's loop regenerates the briefing and the judge reads it, with nobody remembering to. The change reaches the debrief prompt, so it needs Antti's "prompt-ok" before it goes in.
 
 **Then the standing rules.**
 - Align, do not add. Reword what a slide, example, Big Idea, Key Concept or debrief already says. Remove recap slides and labels. Big Idea wording is Antti's.

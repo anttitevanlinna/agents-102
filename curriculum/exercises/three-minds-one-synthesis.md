@@ -25,9 +25,11 @@ If the issue list is long, ask the agent to pick the fixes that aim for optimal 
 
 {{prompt:three-minds-one-synthesis-3}}
 
-**Close. Does this feel right?**
+**Close. Freeze the briefing.**
 
-Optional: ask the agent to recap the three retrievals' core claims next to your `## Answer`. You can't yet tell if the answer is right. That is expected. Name the doubt; don't fix it here.
+You can't yet tell if the answer is right. Nothing checks it yet. Pick the line of `## Answer` you trust least and freeze the briefing with that line beside it. Don't fix it. Module 5 checks this exact file, doubted line included.
+
+{{prompt:three-minds-one-synthesis-4}}
 
 <!-- maintainer -->
 

@@ -1,65 +1,57 @@
 # Exercise: Extend your system
 
-**Time:** 25 minutes. If you finish early, build a second one.
+**Time:** 25 minutes.
 
 **Session** *(new, "Module 8 - Agents building agents")*
 
 **What you do:**
 
-You describe an agent; an agent builds it. Pick one extension you'd use:
+In Module 7 your neighbour could not use your agent. Describe an agent for what they needed; an agent builds it, judges it and rebuilds it.
 
-- **New data source.** Reads from somewhere your system doesn't: a second wiki, a folder of PDFs, a new connector, another team's `memory/`.
-- **New output.** Produces a format you lack: a one-page brief, a weekly digest, a pre-meeting prep note.
-- **New perspective.** Reads the same memory but argues with it: a skeptic, a devil's advocate, a persona holding the view your voice suppresses.
-
-## Phase 1: Improve an agent you already have
+## Phase 1: Describe the gap your neighbour hit
 
 *5 min*
 
-Pick one agent from an earlier module: the Module 2 morning agent or the Module 6 generation tactic. Ask your agent to read it, its last output and what you found off, then improve it. Run the old and the new version once and compare.
+Open `module-7/handover.md`. It says what your neighbour needed and what broke without your files. Write four lines in `module-8/extension-brief.md`:
 
-Your agent just improved your agent. Now build a new one.
-
-## Phase 2: Describe
-
-*5 min*
-
-Open `module-8/extension-brief.md`; write four lines:
-
-- The gap: *"I don't have anything that does X."*
-- The job: *"On Mondays I need to Y; today I Z by hand."*
-- What it reads: files, `memory/` pages, sources. For PDFs, how it checks text extracted.
+- The gap: what your neighbour needed and could not get.
+- The job: what the agent does, on your neighbour's system.
+- What it reads: files your neighbour has. Nothing from your own folders.
 - What it writes: one named file.
 
 Over five minutes? Narrow the gap.
 
-## Phase 3: Generate
+## Phase 2: An agent builds it
 
 *10 min*
 
 {{prompt:extend-your-system-1}}
 
+## Phase 3: Judge it, and the agent rebuilds it
 
-## Phase 4: Run and judge
+*8 min*
 
-*5 min*
+Don't edit the new agent yourself. The judge finds what fails; the agent that built it rebuilds it.
 
-Run your Module 5 judge on the new agent's output. Push back in the session:
-- *"Cite the memory file for the second claim."*
-- *"You used training data on line 4. Replace it or remove it."*
-- *"The tone drifted from my other agents. Sharpen to match."*
+{{prompt:extend-your-system-2}}
 
-One or two rounds. The artifact: a new agent in `agents/` you trust to run again.
+Your agent built an agent, then rebuilt it from what the judge found.
+
+## Phase 4: Hand it over
+
+*2 min*
+
+Send the built agent to your neighbour. Their agent runs it on their system.
 
 ## Take stock of the compound
 
 **What happened:**
 
-The second agent takes ten minutes, because your vocabulary for what you want is sharper. That is the compound.
+In under half an hour an agent built an agent for a gap your colleague hit, and rebuilt it until the judge passed it.
 
 **The point:**
 
-The next gap gets a new agent in 25 minutes, not a new sprint.
+Each agent you describe is built faster than the last. When agents build agents for each other's gaps, the organisation learns faster.
 
 This is **Recipe 8**: agent generates agent, on a real gap. The [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) holds the moves for the next gap, plus the rest of Recipe 8 for bigger moves than one agent.
 
@@ -86,4 +78,4 @@ This is **Recipe 8**: agent generates agent, on a real gap. The [Cookbook for Ag
 - **The compound beat.** End-of-exercise, ask aloud (in-room) or surface via Teacher Claude (self-study): *"How long did it take to describe vs. build? What would the second agent take?"* The answer makes the thesis land.
 - **Agent-file rules inheritance.** Students sometimes start the new agent from scratch. Nudge: *"You already have agents whose rules work. Inherit them. Add what's new. Don't rediscover."*
 
-**View summary:** Until now you built agents by hand. Now you describe one and the coding agent builds it, in twenty-five minutes, against a gap you named on Monday. The artifact is a new working agent in your system, built while the builder role left your desk.
+**View summary:** The gap comes from Module 7: what your neighbour needed and could not use. You describe an agent for it; an agent builds it, the Module 5 judge finds what fails, the builder rebuilds it, and `module-8/built-agent.md` records before, after and the minutes it took.

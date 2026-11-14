@@ -1,6 +1,6 @@
 # Exercise: Hallucination benchmark
 
-**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8, Phase 3 ~20, Phase 4 ~10, Phase 5 close ~5.
+**Time:** 55 minutes. Phase 1 ~8, Phase 2 ~8, Phase 3 ~20, Phase 4 ~10, Phase 5 close ~9.
 
 **Session** *(new, "Module 5 - Hallucination benchmark")*
 
@@ -10,25 +10,11 @@ You set up a benchmark: a 30-claim pool, four detection methods, and a scorer th
 
 ## Phase 1: The target and the benchmark
 
-*12 min*
+*8 min*
 
-Your test corpus is the Module 3 briefing: your sources, retrievals, stances and real question.
+The target is the Module 3 briefing, copied as it stands. A separate worker chooses a bounded evidence roster from the question alone, since the roster fixes the evidence the judgment may stand on.
 
-Produce a fresh briefing so every detector sees the same output, with roughly 10% fabrication or misrepresentation. The agent chooses a bounded evidence roster first, since the roster fixes the evidence the judgment may stand on. A separate worker then generates the briefing, and both are saved without previewing.
-
-{{prompt:hallucination-bakeoff-1}}
-
-## Keep the main session blind
-
-A separate worker runs in its own context, so your main session never sees what was fabricated.
-
-<div class="rt-cowork">
-
-Cowork shows every file the agent reads as if your main session read it.
-
-</div>
-
-Save the briefing. **Don't open it yet.** The main session stays blind until the extractor has turned the briefing into claims.
+{{prompt:hallucination-bakeoff-1-frozen}}
 
 ## Extract the claim pool
 
@@ -93,9 +79,13 @@ Open `judges/groundedness-judge.md`. It is narrow on purpose: the "known limit" 
 
 ## Phase 5: Close, name the rescue
 
-*5 min*
+*9 min*
 
-The winner is saved as `judges/groundedness-judge.md`. Ask the agent to run it once on your `./crux.md` answer, the one Module 3 left you doubting. Write one line in `./crux.md`: what the judge caught, or what it could not check.
+In Module 3 you marked one line of the briefing you doubted. The judge now reads the whole briefing, and you see its verdict on that line beside the evidence. You decide whether the doubt was right and whether the judge caught it.
+
+{{prompt:hallucination-bakeoff-9}}
+
+`module-5/baseline-score.md` is the number Module 6 starts from.
 
 ## Carry the benchmark pattern forward
 

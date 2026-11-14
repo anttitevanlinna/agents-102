@@ -8,9 +8,9 @@ The same loop can improve the agent that improves your agents, as long as the ju
 
 ## You described it; something else built it
 
-The parts of an agent stay the same: context, a goal, tools, checks, a boundary, a loop. You decide each one. Your coding agent assembles them from your description.
+The parts of an agent stay the same: context, a goal, tools, checks, a boundary, a loop. You decide each one. An agent assembles them from your description.
 
-Your coding agent is itself an agent, so the builder sharpens its own tools. The tool that builds tools compounds.
+The agent that assembles them is itself an agent, so it can sharpen its own tools. The tool that builds tools compounds.
 
 [The parts hold; the model rotates](slides/parts-hold-model-rotates.md)
 
@@ -26,7 +26,7 @@ What multiplies your work is how fast you and your organisation learn. Agents th
 
 Everyone wants their 100 agents. From here, a hundred agents is a matter of describing them, one gap at a time, each checked like the first.
 
-Name your next gap. Describe the agent for it. Your agent builds it; you test it on your own work before it reaches anyone else's.
+Name your next gap. Describe the agent for it. An agent builds it; you test it on your own work before it reaches anyone else's.
 
 <!-- maintainer -->
 **Decision note 2026-11-13 (Antti yes, after the teaching scores).** One thread: your agent improves your agent, each fix stays on disk, leverage = learning rate. Cut: `## Agents reading agents must cite`, `## Three walls past the laptop`, `## Which half of this is obsolete next year?`, `## What would change our mind?`. Students took those home instead of the Big Idea: stated cold 16 → 28 (lean scorer, n=24 each); putting the obsolete-next-year slide back fell to 19 (n=12). Citation stays taught in `joint-double-diamond.md`. Cost: story judge POV 38 → 28. Evidence: agents-102 `curriculum/evals/loops/rollout/pass-2/`.

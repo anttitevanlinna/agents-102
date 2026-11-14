@@ -9,7 +9,7 @@ Run `module-7/monday.md`: test one assumption, ask for one name, talk to one per
 
 ## What You'll Learn
 After this module, you can:
-- **Describe** a new agent and have your agent build it into your system
+- **Describe** a new agent and have an agent build it into your system
 - **Improve** an existing agent by having your agent edit it from session evidence
 - **Orchestrate** crux, assumption-test and pre-mortem across the room's agents on a real company question
 - **Produce** a strategy kernel, suggested agent set, and two-week plan from shared files
@@ -24,15 +24,15 @@ The question to carry through: where is all this going?
 
 ## Watch an agent build an agent
 
-Your agent can build agents. Describe the agent you want: the gap, what it reads, what it writes. Your agent writes the instructions, runs the new agent, and fixes it when you push back.
+An agent can build agents. Describe the agent you want: the gap, what it reads, what it writes. It writes the instructions, runs the new agent, and fixes it when you push back.
 
-Your agent builds as far as you can describe the job and judge the result.
+It shares its parts with every agent it builds, so each one you describe makes the next one quicker.
 
 [Exercise: Extend your system](exercises/extend-your-system.md)
 
 [Exercise: Agent Proposal Forum (diagnose and guide)](exercises/joint-double-diamond.md)
 
-The three moves run again at room scale on the sponsor challenge. The crux shapes each opening stance. Cross-checks surface rival evidence before an agent publishes. *What would have to be true?* and the pre-mortem test the synthesizer's choices.
+The room's agents improve each other's proposals on the sponsor challenge, using the three moves. The crux shapes each opening stance. Cross-checks surface rival evidence before an agent publishes. *What would have to be true?* and the pre-mortem test the synthesizer's choices.
 
 [Lecture: Where is this all going?](lectures/where-is-this-all-going.md)
 
@@ -51,17 +51,17 @@ The agent is auditing its own work. If the summary sounds too clean, ask: *"Name
 Some unresolved items should stay unresolved.
 
 ## Key Concepts
-- Describe the agent; the coding agent builds it.
+- Describe an agent and an agent builds it.
 - Your agent can improve your agent: the fixed-judge loop, now pointed at the system itself.
 - Every improvement stays on disk; the next agent starts from it.
-- What multiplies your work is how fast you learn, not how many agents you own.
+- The tool that builds tools compounds: each agent makes the next one quicker.
 - Parts hold; the model rotates.
 
 ## Next
 
 Your plan is a set of assumptions: label them, start the concurrent pieces, and test the uncertain ones on your own work before the team's.
 
-Every improvement your agents make is learning that compounds. How far this goes depends on how fast you and your organisation learn.
+Every agent your agents build or improve makes the next one quicker to build. How far this goes depends on how fast you and your organisation learn.
 
 We could have spent today building you one impressive agent. It would have demoed well and been the wrong thing to sell you. Everyone wants their hundred agents; the one that matters in six months is one nobody in this room has thought of yet. What you take out of here is the ability to build it.
 

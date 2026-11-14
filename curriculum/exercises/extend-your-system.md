@@ -6,7 +6,7 @@
 
 **What you do:**
 
-You describe an agent; your agent builds it. Pick one extension you'd use:
+You describe an agent; an agent builds it. Pick one extension you'd use:
 
 - **New data source.** Reads from somewhere your system doesn't: a second wiki, a folder of PDFs, a new connector, another team's `memory/`.
 - **New output.** Produces a format you lack: a one-page brief, a weekly digest, a pre-meeting prep note.

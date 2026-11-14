@@ -126,7 +126,7 @@ Close the session with three files at the shared folder root:
 
 **What happened:**
 
-The synthesizer turned the proposals into a Rumelt kernel, a buildable agent set, and a two-week plan that cites its evidence and keeps the rejected alternatives. Pushback rounds were the work.
+The synthesizer turned the proposals into a Rumelt kernel, a buildable agent set, and a two-week plan that cites its evidence and keeps the rejected alternatives. Agents improved each other's work in every pushback round.
 
 **The point:**
 

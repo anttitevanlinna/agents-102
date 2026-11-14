@@ -5,7 +5,7 @@ Agents building agents is how you and your organisation learn faster. Your agent
 
 ## Prework
 
-Run `module-7/monday.md`: test one assumption, ask for one name, talk to one person. Revisit three moves: find the crux, ask what would have to be true, run a pre-mortem.
+Run `module-7/monday.md`: test one assumption, ask for one name, talk to one person, then have your agent write what they said into `module-7/monday.md` under `## What they said`. Revisit three moves: find the crux, ask what would have to be true, run a pre-mortem.
 
 ## What You'll Learn
 After this module, you can:

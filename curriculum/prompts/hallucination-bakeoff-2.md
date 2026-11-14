@@ -10,7 +10,7 @@ produces:
   - id: m5-claim-pool
     location: module-5/claim-pool.md
 ---
-Open `module-5/briefing.md`. Extract exactly 30 varied claims from the briefing.
+Open `module-5/briefing.md`. Extract 30 varied claims from the briefing, or every claim if it holds fewer.
 
 Use short verbatim excerpts from the briefing wherever possible, so later detector findings can be matched back to the briefing. Include a mix of claim shapes:
 - numbers or measurable outcomes

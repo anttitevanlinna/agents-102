@@ -17,6 +17,9 @@ produces:
     location: module-5/adjudicated-claims.md
   - id: m5-scoreboard
     location: module-5/scoreboard.md
+  - id: m5-baseline-score
+    location: module-5/baseline-score.md
+    note: claim counts for the frozen Module 3 briefing; Module 6 round 0 reads it
 ---
 You are the scorer for a four-way detector benchmark. Your inputs:
 
@@ -30,7 +33,7 @@ You are the scorer for a four-way detector benchmark. Your inputs:
 
 Your job: adjudicate the 30 claims, score each detector against that adjudication, produce a scoreboard, name a winner.
 
-First, create the reference adjudication. For every claim in `module-5/claim-pool.md`, label it GROUNDED, UNGROUNDED, or PARTLY GROUNDED. Quote the evidence line or file that supports the label. If you cannot find support in the rostered evidence, say so plainly. Save this reference set to `module-5/adjudicated-claims.md`.
+First, create the reference adjudication. For every claim in `module-5/claim-pool.md`, label it GROUNDED, UNGROUNDED, or PARTLY GROUNDED. Quote the evidence line or file that supports the label. If you cannot find support in the rostered evidence, say so plainly. Save this reference set to `module-5/adjudicated-claims.md`. Then write `module-5/baseline-score.md` with a heading `## Module 3 briefing` and one line: how many claims are GROUNDED, PARTLY GROUNDED and UNGROUNDED, out of how many.
 
 For each detector:
 1. Match detector findings to claim-pool claims by strict substring match. If you can't find the exact claim-pool phrase in the detector's output, count as MISS. Do not reason about semantic similarity, do not paraphrase-match, do not accept "close enough."

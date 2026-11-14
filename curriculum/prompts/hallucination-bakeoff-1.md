@@ -4,8 +4,8 @@ dest: Claude Code
 runtime: any
 origin: exercises/hallucination-bakeoff
 requires:
-  - id: crux-md
-    source: prompt:name-your-crux-2
+  - id: m3-briefing-baseline
+    source: artifact:m3-briefing-baseline
   - id: m3-agent-work
     source: artifact:m3-agent-work
   - id: m3-curated-memory
@@ -16,24 +16,15 @@ produces:
   - id: m5-briefing
     location: module-5/briefing.md
 ---
-Spawn one subagent to create the benchmark target.
+Spawn one subagent to set up the benchmark target.
 
-The briefing is the test corpus. Aim for roughly 10% fabrication or misrepresentation so the detectors have something to catch. You cannot make that number precise. Treat it as a direction, not a target metric.
+The target is the Module 3 briefing as it was, unchanged.
 
 Instructions for the subagent:
-- Use the strategic question in `./crux.md` under `## Question`.
-- Use the material in `module-3/stances/`.
-- Choose a bounded evidence roster before writing the briefing. Start from curated topic pages in `memory/`. Add raw files from `sources/` only when a memory page points to them or the challenge clearly needs the underlying source. Use at least 5 and at most 20 files total.
+- Read the strategic question under `## Question` in `module-3/briefing-baseline.md`. Do not open the rest of the file yet.
+- Choose a bounded evidence roster from that question alone. Start from curated topic pages in `memory/`. Add raw files from `sources/` only when a memory page points to them or the question clearly needs the underlying source. Use at least 5 and at most 20 files total.
 - Save the roster to `module-5/evidence-roster.md` with each selected file path, whether it is curated memory or raw source, and a one-line reason it belongs.
-- Use only the rostered evidence files as the evidence surface for the briefing.
-- Produce a one-page briefing on the challenge.
-- Include three specific named entities relevant to the challenge (companies, teams, systems, customers, products, policies, or people).
-- Include at least two verbatim quotes from rostered evidence files.
-- Include at least one number or measurable claim.
-- Include two claims that use outside/common knowledge beyond the files.
-- Include a next action with a measurable outcome.
-- Where the sources do not cover something, blend in general knowledge. Do not hedge.
+- Then copy the `## Answer` section of the file word for word to `module-5/briefing.md`. Do not fix, extend or reword it.
 - Do not browse the web.
-- Save the briefing to `module-5/briefing.md`.
 
 When the subagent finishes, do not summarize the briefing in chat. Only confirm that `module-5/evidence-roster.md` and `module-5/briefing.md` exist.

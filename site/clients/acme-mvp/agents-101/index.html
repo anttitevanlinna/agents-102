@@ -2829,7 +2829,7 @@ Do not run an exercise, regenerate any output, or create or edit root instructio
 <p>Make sure you can access the agent runtime you selected. Then create an empty folder at <code>~/Documents/agents-101/</code> (right-click in Finder or File Explorer → <em>New Folder</em>). This is your training directory; everything you produce over the eight modules lands here.</p>
 <p><span class="rt-copilot">In GitHub, open <em>Copilot settings</em>. Under <em>Features</em>, set <em>Copilot Memory</em> to <em>Disabled</em> for the training. You turn it back on after the course if you want it.</span></p>
 <p><strong>Session</strong> <em>(new, &quot;Prework&quot;)</em></p>
-<p><span class="rt-code">Open your code agent in the interface you selected. Start a new session at <code>~/Documents/agents-101/</code>.</span><span class="rt-cowork">Open the <em>Cowork</em> tab next to <em>Chat</em> in your desktop app. Click <em>New task</em> and select <code>~/Documents/agents-101/</code> as the working folder. No terminal required.</span></p>
+<p><span class="rt-code">Open your code agent in the interface you selected. Start a new session at <code>~/Documents/agents-101/</code>.</span><span class="rt-cowork">In your desktop app, open the <em>Chat</em> tab and start a new chat. Click the folder button under the message box, choose <em>Add folder</em>, and select <code>~/Documents/agents-101/</code>. When Claude asks to change files there, click <em>Allow</em>. No terminal required.</span></p>
 <p>Name it <code>agents-101-prework</code> if your runtime supports session names.</p>
 <h2 id="2-connect-your-work-apps-5-min">2. Connect your work apps (5 min)</h2>
 <p>Connect either Microsoft 365 or Google Workspace before the first module if your company allows it. Calendar access is enough for the prework. Email, Google Drive, and OneDrive access are useful too, but not required.</p>
@@ -2838,13 +2838,16 @@ Do not run an exercise, regenerate any output, or create or edit root instructio
 <p>If your IT admin has not approved the connector yet, keep going. The calendar screenshot path in section 5, Path B gives you the same teaching moment with less automation.</p>
 <h2 id="3-install-the-training-folder-3-min">3. Install the training folder (3 min)</h2>
 <p>Get the starter file set into your training directory. The starter file set ships the folders and reference material used later in the training: <code>memory/</code>, <code>sources/</code>, <code>agents/</code>, the Module 4 policy files, a library of the prompts the training uses, and the personal-to-team patterns for a later module.</p>
-<p><a href="https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz" target="_blank" rel="noopener">Download the starter file set</a> and save it directly into <code>~/Documents/agents-101/</code>. You should see <code>agents-101-starter.tar.gz</code> land there in Finder or File Explorer. Then ask the agent to unpack it.</p>
+<p>Ask the agent to fetch the starter file set and unpack it.</p>
 <div class="rt-profile rt-profile-cowork">
 
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Extract the starter tarball in the working folder. Use the shell:
+<pre><code>Download the starter tarball into the working folder and extract it. Use the shell:
 
+  curl -fLO https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz
   tar xzf agents-101-starter.tar.gz
+
+If `agents-101-starter.tar.gz` is already in the folder, skip the download. If curl gets a 401, ask me for the username and password and retry. If curl cannot reach the internet, say so in one line and wait: I will download it in my browser and drag it into this folder.
 
 (Leave `agents-101-starter.tar.gz` behind after extraction. It is harmless.)
 
@@ -2862,9 +2865,12 @@ End your reply with [Build a snake game](https://agents102.bosser.consulting/cli
 <div class="rt-profile rt-profile-desktop">
 
 <p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
-<pre><code>Extract the starter tarball in the working folder. Use the shell:
+<pre><code>Download the starter tarball into the working folder and extract it. Use the shell:
 
+  curl -fLO https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz
   tar xzf agents-101-starter.tar.gz
+
+If `agents-101-starter.tar.gz` is already in the folder, skip the download. If curl gets a 401, ask me for the username and password and retry. If curl cannot reach the internet, say so in one line and wait: I will download it in my browser and drag it into this folder.
 
 (Leave `agents-101-starter.tar.gz` behind after extraction. It is harmless.)
 
@@ -2882,9 +2888,12 @@ End your reply with [Build a snake game](https://agents102.bosser.consulting/cli
 <div class="rt-profile rt-profile-cli">
 
 <p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
-<pre><code>Extract the starter tarball in the working folder. Use the shell:
+<pre><code>Download the starter tarball into the working folder and extract it. Use the shell:
 
+  curl -fLO https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz
   tar xzf agents-101-starter.tar.gz
+
+If `agents-101-starter.tar.gz` is already in the folder, skip the download. If curl gets a 401, ask me for the username and password and retry. If curl cannot reach the internet, say so in one line and wait: I will download it in my browser and drag it into this folder.
 
 (Leave `agents-101-starter.tar.gz` behind after extraction. It is harmless.)
 
@@ -2902,9 +2911,12 @@ End your reply with [Build a snake game](https://agents102.bosser.consulting/cli
 <div class="rt-profile rt-profile-codex-desktop">
 
 <p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
-<pre><code>Extract the starter tarball in the working folder. Use the shell:
+<pre><code>Download the starter tarball into the working folder and extract it. Use the shell:
 
+  curl -fLO https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz
   tar xzf agents-101-starter.tar.gz
+
+If `agents-101-starter.tar.gz` is already in the folder, skip the download. If curl gets a 401, ask me for the username and password and retry. If curl cannot reach the internet, say so in one line and wait: I will download it in my browser and drag it into this folder.
 
 (Leave `agents-101-starter.tar.gz` behind after extraction. It is harmless.)
 
@@ -2922,9 +2934,12 @@ End your reply with [Build a snake game](https://agents102.bosser.consulting/cli
 <div class="rt-profile rt-profile-codex-cli">
 
 <p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
-<pre><code>Extract the starter tarball in the working folder. Use the shell:
+<pre><code>Download the starter tarball into the working folder and extract it. Use the shell:
 
+  curl -fLO https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz
   tar xzf agents-101-starter.tar.gz
+
+If `agents-101-starter.tar.gz` is already in the folder, skip the download. If curl gets a 401, ask me for the username and password and retry. If curl cannot reach the internet, say so in one line and wait: I will download it in my browser and drag it into this folder.
 
 (Leave `agents-101-starter.tar.gz` behind after extraction. It is harmless.)
 
@@ -2942,9 +2957,12 @@ End your reply with [Build a snake game](https://agents102.bosser.consulting/cli
 <div class="rt-profile rt-profile-copilot-app">
 
 <p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
-<pre><code>Extract the starter tarball in the working folder. Use the shell:
+<pre><code>Download the starter tarball into the working folder and extract it. Use the shell:
 
+  curl -fLO https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz
   tar xzf agents-101-starter.tar.gz
+
+If `agents-101-starter.tar.gz` is already in the folder, skip the download. If curl gets a 401, ask me for the username and password and retry. If curl cannot reach the internet, say so in one line and wait: I will download it in my browser and drag it into this folder.
 
 (Leave `agents-101-starter.tar.gz` behind after extraction. It is harmless.)
 
@@ -2962,9 +2980,12 @@ End your reply with [Build a snake game](https://agents102.bosser.consulting/cli
 <div class="rt-profile rt-profile-copilot-cli">
 
 <p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
-<pre><code>Extract the starter tarball in the working folder. Use the shell:
+<pre><code>Download the starter tarball into the working folder and extract it. Use the shell:
 
+  curl -fLO https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz
   tar xzf agents-101-starter.tar.gz
+
+If `agents-101-starter.tar.gz` is already in the folder, skip the download. If curl gets a 401, ask me for the username and password and retry. If curl cannot reach the internet, say so in one line and wait: I will download it in my browser and drag it into this folder.
 
 (Leave `agents-101-starter.tar.gz` behind after extraction. It is harmless.)
 
@@ -2980,7 +3001,8 @@ End your reply with [Build a snake game](https://agents102.bosser.consulting/cli
 </code></pre>
 </div>
 
-<p><em>Proof: you placed the file; the agent unpacked it. Two visible steps, no magic.</em></p>
+<p>If the agent says it cannot reach the internet, <a href="https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz" target="_blank" rel="noopener">download the starter file set</a> in your browser and drag <code>agents-101-starter.tar.gz</code> from Downloads into <code>~/Documents/agents-101/</code>. Then tell the agent it is there.</p>
+<p><em>Proof: the agent fetched a file and unpacked it in your folder.</em></p>
 <h2 id="4-build-a-snake-game-10-min">4. Build a snake game (10 min)</h2>
 <p>Why a snake game? Because you can tell if it works. No ambiguity (either the snake moves or it doesn&#39;t). Also: a working snake game is a small, permanent, perfectly useless thing to own, which makes it more interesting than most of what you produce at work.</p>
 <div class="rt-profile rt-profile-cowork">

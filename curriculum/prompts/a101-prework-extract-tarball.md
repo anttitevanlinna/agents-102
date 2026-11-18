@@ -15,9 +15,12 @@ produces:
       - module:multi-agent-systems
       - module:security
 ---
-Extract the starter tarball in the working folder. Use the shell:
+Download the starter tarball into the working folder and extract it. Use the shell:
 
+  curl -fLO <CONTENT_URL>
   tar xzf agents-101-starter.tar.gz
+
+If `agents-101-starter.tar.gz` is already in the folder, skip the download. If curl gets a 401, ask me for the username and password and retry. If curl cannot reach the internet, say so in one line and wait: I will download it in my browser and drag it into this folder.
 
 (Leave `agents-101-starter.tar.gz` behind after extraction. It is harmless.)
 

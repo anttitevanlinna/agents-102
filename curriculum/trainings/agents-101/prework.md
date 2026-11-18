@@ -10,7 +10,7 @@ Make sure you can access the agent runtime you selected. Then create an empty fo
 
 **Session** *(new, "Prework")*
 
-<span class="rt-code">Open your code agent in the interface you selected. Start a new session at `~/Documents/agents-101/`.</span><span class="rt-cowork">Open the *Cowork* tab next to *Chat* in your desktop app. Click *New task* and select `~/Documents/agents-101/` as the working folder. No terminal required.</span>
+<span class="rt-code">Open your code agent in the interface you selected. Start a new session at `~/Documents/agents-101/`.</span><span class="rt-cowork">In your desktop app, open the *Chat* tab and start a new chat. Click the folder button under the message box, choose *Add folder*, and select `~/Documents/agents-101/`. When Claude asks to change files there, click *Allow*. No terminal required.</span>
 
 Name it `agents-101-prework` if your runtime supports session names.
 
@@ -28,11 +28,13 @@ If your IT admin has not approved the connector yet, keep going. The calendar sc
 
 Get the starter file set into your training directory. The starter file set ships the folders and reference material used later in the training: `memory/`, `sources/`, `agents/`, the Module 4 policy files, a library of the prompts the training uses, and the personal-to-team patterns for a later module.
 
-[Download the starter file set](<CONTENT_URL>) and save it directly into `~/Documents/agents-101/`. You should see `agents-101-starter.tar.gz` land there in Finder or File Explorer. Then ask the agent to unpack it.
+Ask the agent to fetch the starter file set and unpack it.
 
 {{prompt:a101-prework-extract-tarball}}
 
-*Proof: you placed the file; the agent unpacked it. Two visible steps, no magic.*
+If the agent says it cannot reach the internet, [download the starter file set](<CONTENT_URL>) in your browser and drag `agents-101-starter.tar.gz` from Downloads into `~/Documents/agents-101/`. Then tell the agent it is there.
+
+*Proof: the agent fetched a file and unpacked it in your folder.*
 
 ## 4. Build a snake game (10 min)
 

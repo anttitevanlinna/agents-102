@@ -72,7 +72,7 @@ Your folder holds your challenge, your sources and your rules. A better model re
 
 ## Bring to Module 3
 
-**A daily agent, scheduled, with a week of observation behind it.** It reads your challenge memory. Module 3 splits work against that week of runs.
+**A daily agent, scheduled, with a week of observation behind it.** It reads your challenge memory. In Module 3, several agents work on that same memory.
 
 [Schedule your personal agent](exercises/personal-agent-homework.md)
 

@@ -57,7 +57,7 @@ The artifact: the sharpened `./generation-tactic.md`, the line in your root inst
 
 ## Bring to Module 7
 
-**Your first five agent calls at work, written down**, using [Agent Trigger List](../../trainings/agents-101/supplementary/agent-trigger-list.md). Pick one call the eval loop's checks could let run without you, and write the trigger into your working notes.
+**Your first five agent calls at work, written down**, using [Agent Trigger List](../../trainings/agents-101/supplementary/agent-trigger-list.md). Pick one call the eval loop's checks could let run without you, and write the trigger into `module-6/trigger.md`.
 
 The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) and [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) are optional references.
 

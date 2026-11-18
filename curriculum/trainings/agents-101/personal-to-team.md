@@ -12,11 +12,10 @@ You can't really share an agent. You can share the context, a skill, the output,
 
 After this module, you will be able to:
 
-- **Hand** a skill and an agent to a neighbour
-- **Find** the job before you share
-- **Pick** what to share against that job
+- **Choose** what to share: context, a skill, the output or an interface
+- **Find** the teammate's job first
 - **Plan** the tech and the people together
-- **Name** the person and the first test
+- **Test** the plan on a real person
 
 ## Start here
 

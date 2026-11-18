@@ -9,10 +9,9 @@ Run `module-7/monday.md`: test one assumption, ask for one name, talk to one per
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Have** an agent build an agent
-- **Have** an agent improve an agent
-- **Run** many agents on one question
-- **Write** an agent strategy for your organisation
+- **Have** agents build agents
+- **Improve** an agent with an agent
+- **Write** an agent strategy
 
 ## Start here
 

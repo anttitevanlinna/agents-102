@@ -11,10 +11,9 @@ Set up your agent runtime. Build a snake game as HTML. Connect your calendar (M3
 
 After this module, you will be able to:
 
-- **Shape** output with context
-- **Go** deep by layering context
-- **Judge** the output yourself
-- **Reuse** guardrails as rules
+- **Engineer** context
+- **Write** rules for an agent
+- **Judge** agent output
 
 ## Start here
 

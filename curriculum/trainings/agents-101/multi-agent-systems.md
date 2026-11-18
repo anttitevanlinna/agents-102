@@ -9,10 +9,9 @@ Several agents can work on one problem together. Split the work, run the agents 
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Make** agents work together
+- **Orchestrate** multiple agents
 - **Split** work across agents
-- **Check** the handoffs
-- **Decide** when to split
+- **Debug** agent handoffs
 
 ## Start here
 

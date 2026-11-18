@@ -6,12 +6,27 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 const { execFileSync } = require('node:child_process');
+const { createHash } = require('node:crypto');
 const { JSDOM, VirtualConsole } = require('jsdom');
-const { WORKBOOK_URL, stripExternalFonts, applyLoaderFraming, insertCoworkFolderInstruction } = require('./build-a101-mvp.js');
+const { WORKBOOK_URL, stripExternalFonts, applyLoaderFraming, insertCoworkFolderInstruction, versionStarterDownload } = require('./build-a101-mvp.js');
 const { renderCourseNavigation, COURSE_READING_CUE, EXTRACTION_BOOTSTRAP } = require('./a101-mvp-navigation.js');
 
 const ROOT = path.resolve(__dirname, '..');
 const DELIVERY = path.join(ROOT, 'curriculum/delivery/agents-101-mvp');
+
+test('starter URL version comes only from archive bytes and leaves copied prompts unchanged', () => {
+  const href = `href="${WORKBOOK_URL}agents-101-starter.tar.gz"`;
+  const prompt = '<pre><code>Extract the starter tarball in the working folder.\n  tar xzf agents-101-starter.tar.gz\n</code></pre>';
+  const html = `<a ${href}>Download</a>${prompt}`;
+  const archive = Buffer.from('the same public course archive');
+  const version = createHash('sha256').update(archive).digest('hex').slice(0, 16);
+  const expected = `<a href="${WORKBOOK_URL}agents-101-starter.tar.gz?v=${version}">Download</a>${prompt}`;
+  assert.equal(versionStarterDownload(html, archive), expected);
+  assert.equal(versionStarterDownload(html, archive), expected, 'same course bytes give every learner the same query');
+  assert.notEqual(versionStarterDownload(html, Buffer.from('changed course archive')), expected);
+  assert.throws(() => versionStarterDownload(prompt, archive), /received 0/);
+  assert.throws(() => versionStarterDownload(html + `<a ${href}>Duplicate</a>`, archive), /received 2/);
+});
 
 test('folder instruction inserts once at extraction proof and fails if the insertion point drifts', () => {
   const proof = '<p><em>Proof: you placed the file; the agent unpacked it. Two visible steps, no magic.</em></p>';
@@ -183,7 +198,14 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     const archiveLinks = [...document.querySelectorAll('a[href]')]
       .map(anchor => anchor.getAttribute('href')).filter(href => href.includes('agents-101-starter.tar.gz'));
     assert.ok(archiveLinks.length);
-    for (const href of archiveLinks) assert.equal(new URL(href, WORKBOOK_URL).href, `${WORKBOOK_URL}agents-101-starter.tar.gz`);
+    const starterVersion = createHash('sha256').update(fs.readFileSync(path.join(trainingDir, 'agents-101-starter.tar.gz'))).digest('hex').slice(0, 16);
+    for (const href of archiveLinks) {
+      const url = new URL(href, WORKBOOK_URL);
+      assert.equal(url.origin + url.pathname, `${WORKBOOK_URL}agents-101-starter.tar.gz`);
+      assert.deepEqual([...url.searchParams.keys()], ['v']);
+      assert.equal(url.searchParams.get('v'), starterVersion);
+      assert.match(url.searchParams.get('v'), /^[a-f0-9]{16}$/);
+    }
     for (const element of document.querySelectorAll('style, link[href]')) assert.doesNotMatch(element.outerHTML, /fonts\.(?:googleapis|gstatic)\.com/);
     assert.ok(!fs.existsSync(path.join(trainingDir, 'trainer-guide.html')));
     assert.ok(!fs.existsSync(path.join(trainingDir, 'trainer-modules.html')));
@@ -230,6 +252,9 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     const second = path.join(stage, 'second');
     run(second);
     assert.deepEqual(fs.readFileSync(path.join(second, 'acme-mvp/agents-101/agents-101-starter.tar.gz')), fs.readFileSync(archive), 'unchanged inputs produce identical starter bytes');
+    const secondDom = new JSDOM(fs.readFileSync(path.join(second, 'acme-mvp/agents-101/index.html'), 'utf8'));
+    try { assert.equal(secondDom.window.document.querySelector('a[href*="agents-101-starter.tar.gz"]').getAttribute('href'), archiveLinks[0], 'the version query is constant for the release, not a learner identifier'); }
+    finally { secondDom.window.close(); }
     for (const [relative, bytes] of before) assert.deepEqual(fs.readFileSync(path.join(ROOT, relative)), bytes, `shared input or existing customer artifact unchanged: ${relative}`);
   } finally {
     if (dom) dom.window.close();

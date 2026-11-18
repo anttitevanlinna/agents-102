@@ -38,6 +38,8 @@ The cold-critic checkpoint remains explicitly `not-run`: its fresh-subagent beha
 
 The latest report identifies the source/build fingerprints, outcome IDs, scenario IDs, runtime/model, statuses and links to raw evidence. Fingerprint the onboarding source, navigation map, checkpoint mappings, helper/build code, outcome contract, generated workbook and archive used. A stored result applies to those inputs. The user-visible conclusion states what was actually inspected and executed.
 
+[Release verification](release-verification.json) records the download cache version, artifact hashes and exact input comparisons for the published build. It preserves the model report's original fingerprints and states which checks were rerun.
+
 ## Scenarios
 
 | Case | Setup and action | Observable acceptance |

@@ -7,6 +7,7 @@ const os = require('node:os');
 const path = require('node:path');
 const { execFileSync } = require('node:child_process');
 const { gzipSync } = require('node:zlib');
+const { createHash } = require('node:crypto');
 const { marked } = require('marked');
 const { createNavigationOverlay, renderCourseNavigation } = require('./a101-mvp-navigation.js');
 require('../site/layouts/curriculum.js').configureMarked(marked);
@@ -15,6 +16,15 @@ const ROOT = path.resolve(__dirname, '..');
 const EDITION = 'acme-mvp';
 const WORKBOOK_URL = `https://agents102.bosser.consulting/clients/${EDITION}/agents-101/`;
 const DELIVERY = path.join(ROOT, 'curriculum/delivery/agents-101-mvp');
+
+function versionStarterDownload(html, archiveBytes) {
+  const url = WORKBOOK_URL + 'agents-101-starter.tar.gz';
+  const before = `href="${url}"`;
+  const count = html.split(before).length - 1;
+  if (count !== 1) throw new Error(`Starter download version expected one anchor, received ${count}`);
+  const version = createHash('sha256').update(archiveBytes).digest('hex').slice(0, 16);
+  return html.replace(before, `href="${url}?v=${version}"`);
+}
 const LOADER_FRAMING = [
   ['The root instructions file comes in the Debrief.', 'You develop your working rules in the Debrief. The existing root file only loads course navigation.'],
   ['Five minutes. A retro, <strong>and the first root instructions file in this directory.</strong>', 'Five minutes. A retro, <strong>and your own working rules for this directory.</strong>'],
@@ -164,11 +174,12 @@ body.slides-active .a101-onboarding { display: none; }
   reveal();
 })();
 </script>\n</body>`);
-    fs.writeFileSync(workbookFile, stripExternalFonts(html));
 
     // The edition hub has one destination. Existing customer hubs are untouched.
     fs.writeFileSync(path.join(customerDir, 'index.html'), '<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agents 101 — ACME</title><meta http-equiv="refresh" content="0; url=./agents-101/#start-learning"></head><body><p><a href="./agents-101/#start-learning">Start Agents 101</a></p></body></html>\n');
-    repackStarter(path.join(trainingDir, 'agents-101-starter.tar.gz'), stage, navigationFile);
+    const archiveFile = path.join(trainingDir, 'agents-101-starter.tar.gz');
+    repackStarter(archiveFile, stage, navigationFile);
+    fs.writeFileSync(workbookFile, versionStarterDownload(stripExternalFonts(html), fs.readFileSync(archiveFile)));
     // Remove only known trainer output for this edition if it was built before.
     for (const name of ['trainer-guide.html', 'trainer-modules.html']) fs.rmSync(path.join(trainingDir, name), { force: true });
     return { workbookFile, trainingDir, workbookUrl: WORKBOOK_URL };
@@ -189,4 +200,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { buildEdition, stripExternalFonts, applyLoaderFraming, insertCoworkFolderInstruction, WORKBOOK_URL };
+module.exports = { buildEdition, stripExternalFonts, applyLoaderFraming, insertCoworkFolderInstruction, versionStarterDownload, WORKBOOK_URL };

@@ -3,6 +3,24 @@
 Rubric: `story-depth-rubric.md`. Goal spec: `trainings/agents-101/story-depth.md`. One `## Run`
 section per run, newest first; per-judge reports under `story-depth/`.
 
+## Agents 101, run r6, 2026-11-18: after the plan-to-done steps and the Module 6 re-weight
+
+Build eb1a49b3. Same prompt, paired with AE101, one Opus judge (the lean close; r5 medians are from three).
+
+| Factor | AE101 | Agents 101 r6 | r5 median |
+|---|---|---|---|
+| Frame | 95 | 86 | 82 |
+| Narrative | 93 | 86 | 83 |
+| Point of view | 93 | 80 | 83 |
+| Stance | 92 | 90 | 84 |
+| Depth | 92 | 88 | 82 |
+
+Mean 86 (r5 83). One judge moves a factor by 3 to 5 points between reads, so only Stance and Depth read as gains. The judge names the three-step briefing chain (M3 frozen, M5 scored, M6 round 0) and the M7 handover paid in M8 as the two carried threads.
+
+**Smallest moves named:** (1) M6 exercise and lecture name the rise before the student reads it in their own round notes. (2) M8: the neighbour runs the built agent against the handover gap and writes whether it closed. (3) M5: the method names come before the scoreboard surprise. (4) M8 lecture cites a Module 6 SHA check that the Module 6 page does not show. (5) M2 agent-factory story lacks the narrator's own miss.
+
+Judge file: `story-depth/a101-full-r6.judge-1.md`.
+
 ## Agents 101, run r5 and the Oct 8 course rescored, 2026-11-13
 
 Same prompt (`story-depth/full-bench-prompt.a101.md`), 3 Opus judges each, paired with AE101. The Oct 8 course is commit 3fe1ac36, the text behind the first full-training 86; under today's prompt it reads 79, so the 86 does not compare with later runs.

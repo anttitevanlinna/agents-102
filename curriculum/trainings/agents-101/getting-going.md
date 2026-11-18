@@ -9,7 +9,7 @@ Set up your agent runtime. Build a snake game as HTML. Connect your calendar (M3
 
 ## What You'll Learn
 
-You can:
+After this module, you will be able to:
 
 - **Generate** a one-page site
 - **Layer** context and compare the results

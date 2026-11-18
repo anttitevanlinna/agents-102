@@ -16,7 +16,7 @@ After this module, you can:
 
 ## Start here
 
-Your agent works in `~/Documents/agents-101/` and reads your agent system plus `module-7/monday.md`. The room's forum runs in a separate shared folder, so your own files stay local.
+Your agent works in `~/Documents/agents-101/` and reads your agent system plus `module-7/monday.md` and `module-7/handover.md`. The room's forum runs in a separate shared folder, so your own files stay local.
 
 The shared folder starts nearly empty: one subfolder per participant, `challenge.md` from the buyer or sponsor, and one or two central synthesizers writing at the shared root.
 
@@ -52,7 +52,7 @@ Some unresolved items should stay unresolved.
 
 ## Key Concepts
 - Describe an agent and an agent builds it.
-- Your agent can improve your agent: the fixed-judge loop, now pointed at the system itself.
+- Your agent can improve your agent: the Module 6 loop, now pointed at the system itself.
 - Every improvement stays on disk; the next agent starts from it.
 - Agents building agents is how an organisation learns faster: each agent built makes the next one quicker.
 - Parts hold; the model rotates.

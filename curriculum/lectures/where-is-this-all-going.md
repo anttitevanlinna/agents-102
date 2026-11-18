@@ -4,7 +4,7 @@
 
 The eval loop rewrote a generation tactic from judge feedback while the judge stayed fixed. Point the same loop at one of your agents: its instructions, its skill, its checks.
 
-The same loop can improve the agent that improves your agents, as long as the judge stays out of its reach. The SHA check in Module 6 was that rule.
+The same loop can improve the agent that improves your agents, as long as the judge stays out of its reach. In Module 6 the loop never touched the judge file.
 
 ## You described it; something else built it
 

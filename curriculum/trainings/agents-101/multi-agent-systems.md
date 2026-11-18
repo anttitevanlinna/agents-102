@@ -8,12 +8,12 @@ Several agents can work on one problem together. Split the work, run the agents 
 [Schedule your personal agent](exercises/personal-agent-homework.md) to read your challenge memory for a week. [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) covers tools, memory and context. [Helper agents primer](exercises/module-3-prework.md) before Module 3.
 
 ## What You'll Learn
-You will:
-- **Design** a multi-agent setup: independent agents sharing files, or helpers serving one lead task
-- **Build** three source-finding agents, each in its source's dialect, and a synthesizer
-- **Analyze** handoff failures: hidden conflicts, clashing dialects, beige averaging
-- **Create** a framework-guided answer to a strategic question about your challenge
-- **Evaluate** when splitting pays off and when one agent wins
+You can:
+- **Set** up agents that share files
+- **Split** one question across three agents
+- **Check** the handoffs
+- **Get** one answer from three stances
+- **Know** when not to split
 
 ## Start here
 

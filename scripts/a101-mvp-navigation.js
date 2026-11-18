@@ -5,6 +5,10 @@ const path = require('node:path');
 
 const ANCHOR = /^[a-z0-9][a-z0-9_-]*$/i;
 const KEY = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const COURSE_READING_CUE = 'Read prework/course-navigation.md before helping with Agents 101 work.';
+const EXTRACTION_KEY = 'a101-prework-extract-tarball';
+const EXTRACTION_BOOTSTRAP = 'For course navigation, add this line to the training-folder `CLAUDE.md` if it is not already there: '
+  + COURSE_READING_CUE + ' Preserve any existing instructions. Then read that navigation file.';
 
 function absoluteUrl(value, { fragment = true } = {}) {
   if (typeof value !== 'string' || /[\s\x00-\x1f<>`()[\]]/.test(value)) {
@@ -36,11 +40,14 @@ function anchor(value) {
 }
 
 // Keep the normal request first and the learner's trailing input hook last.
-function injectCheckpoint(src, { currentUrl, nextUrl, nextLabel }) {
+function injectCheckpoint(src, { currentUrl, nextUrl, nextLabel, key }) {
   if (typeof src !== 'string' || !src.trim()) throw new Error('Empty prompt source');
   absoluteUrl(currentUrl);
   absoluteUrl(nextUrl);
   label(nextLabel);
+  // Only installation bootstraps the course context. All later learner work
+  // requests remain byte-identical to their canonical prompt sources.
+  if (key !== EXTRACTION_KEY) return src;
   const newline = src.includes('\r\n') ? '\r\n' : '\n';
   const frontmatter = src.match(/^---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/);
   const prefix = frontmatter ? frontmatter[0] : '';
@@ -51,13 +58,7 @@ function injectCheckpoint(src, { currentUrl, nextUrl, nextLabel }) {
   const trimmed = body.trimEnd();
   if (!trimmed.trim()) throw new Error('Empty prompt body');
 
-  const cue = [
-    'When this request is complete, update `prework/learning-position.md` with these workbook links. Preserve any unfinished work and revision notes in that file.',
-    `Current: ${currentUrl}`,
-    `Next: ${nextUrl}`,
-    '',
-    `End your reply with [${nextLabel}](${nextUrl}). Keep working here if I ask for revisions. Wait for me to choose the next activity; do not start it automatically.`
-  ].join(newline);
+  const cue = EXTRACTION_BOOTSTRAP;
 
   let insertion = trimmed.length;
   // A final colon paragraph is the open hook for text pasted by the learner.
@@ -115,6 +116,7 @@ function createNavigationOverlay({ root, overlayDir, workbookUrl, checkpoints })
       throw new Error('Overlay prompt destination must not be a symlink');
     }
     const text = injectCheckpoint(fs.readFileSync(source, 'utf8'), {
+      key,
       currentUrl: workbookUrl + '#' + anchor(currentAnchor),
       nextUrl: workbookUrl + '#' + anchor(nextAnchor),
       nextLabel
@@ -126,4 +128,27 @@ function createNavigationOverlay({ root, overlayDir, workbookUrl, checkpoints })
   return files.map(file => file.destination);
 }
 
-module.exports = { createNavigationOverlay, injectCheckpoint };
+function renderCourseNavigation(template, { workbookUrl, checkpoints }) {
+  if (typeof template !== 'string' || !template.trim()) throw new Error('Navigation guide template is required');
+  if (/^## Workbook returns\s*$/m.test(template)) throw new Error('Navigation guide template already contains a generated return table');
+  absoluteUrl(workbookUrl, { fragment: false });
+  if (!Array.isArray(checkpoints)) throw new Error('checkpoints must be an array');
+  const seenKeys = new Set(), seenReturns = new Set(), rows = [];
+  const cell = value => value.replace(/\|/g, '\\|');
+  for (const checkpoint of checkpoints) {
+    const { key, currentAnchor, nextAnchor, nextLabel, task } = checkpoint;
+    if (!KEY.test(key || '') || seenKeys.has(key)) throw new Error('Invalid or duplicate prompt key');
+    seenKeys.add(key);
+    label(task);
+    label(nextLabel);
+    const currentUrl = absoluteUrl(`${workbookUrl}#${anchor(currentAnchor)}`);
+    const nextUrl = absoluteUrl(`${workbookUrl}#${anchor(nextAnchor)}`);
+    const identity = JSON.stringify([task, currentUrl, nextUrl]);
+    if (seenReturns.has(identity)) continue;
+    seenReturns.add(identity);
+    rows.push(`| ${cell(task)} | [Current section](${currentUrl}) | [${cell(nextLabel)}](${nextUrl}) |`);
+  }
+  return template.trimEnd() + '\n\n## Workbook returns\n\n| Completed request | Current section | Return after request |\n| --- | --- | --- |\n' + rows.join('\n') + '\n';
+}
+
+module.exports = { createNavigationOverlay, injectCheckpoint, renderCourseNavigation, COURSE_READING_CUE, EXTRACTION_BOOTSTRAP };

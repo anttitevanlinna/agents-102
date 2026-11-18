@@ -8,12 +8,34 @@ const path = require('node:path');
 const { execFileSync } = require('node:child_process');
 const { gzipSync } = require('node:zlib');
 const { marked } = require('marked');
+const { createNavigationOverlay, renderCourseNavigation } = require('./a101-mvp-navigation.js');
 require('../site/layouts/curriculum.js').configureMarked(marked);
 
 const ROOT = path.resolve(__dirname, '..');
 const EDITION = 'acme-mvp';
 const WORKBOOK_URL = `https://agents102.bosser.consulting/clients/${EDITION}/agents-101/`;
 const DELIVERY = path.join(ROOT, 'curriculum/delivery/agents-101-mvp');
+const LOADER_FRAMING = [
+  ['The root instructions file comes in the Debrief.', 'You develop your working rules in the Debrief. The existing root file only loads course navigation.'],
+  ['Five minutes. A retro, <strong>and the first root instructions file in this directory.</strong>', 'Five minutes. A retro, <strong>and your own working rules for this directory.</strong>'],
+];
+
+function applyLoaderFraming(html, { required = true } = {}) {
+  for (const [before, after] of LOADER_FRAMING) {
+    const count = html.split(before).length - 1;
+    if ((required && count !== 1) || count > 1) throw new Error(`Edition loader framing expected ${required ? 'one' : 'at most one'} match, received ${count}: ${before}`);
+    if (count) html = html.replace(before, after);
+  }
+  return html;
+}
+
+function insertCoworkFolderInstruction(html) {
+  const proof = '<p><em>Proof: you placed the file; the agent unpacked it. Two visible steps, no magic.</em></p>';
+  const count = html.split(proof).length - 1;
+  if (count !== 1) throw new Error(`Cowork folder instruction expected one extraction proof, received ${count}`);
+  const instruction = '<p class="rt-profile rt-profile-cowork a101-folder-instruction">Set the instructions for your Cowork training folder to: <code>Read CLAUDE.md before working in this folder.</code> This keeps course navigation available when you start a fresh task.</p>';
+  return html.replace(proof, instruction + '\n' + proof);
+}
 
 function renderOnboarding(markdown) {
   let html = marked.parse(markdown);
@@ -59,7 +81,7 @@ function repackStarter(archive, stage, mapFile) {
   }
   fs.copyFileSync(mapFile, path.join(unpacked, 'prework/course-navigation.md'));
   const handbook = path.join(unpacked, 'agents-101-handbook.html');
-  fs.writeFileSync(handbook, stripExternalFonts(fs.readFileSync(handbook, 'utf8')));
+  fs.writeFileSync(handbook, stripExternalFonts(applyLoaderFraming(fs.readFileSync(handbook, 'utf8'), { required: false })));
 
   // A sorted, nonrecursive file list keeps tar output independent of creation
   // order; fixed mtimes and gzip without a filename preserve repeatable bytes.
@@ -86,7 +108,11 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
     fs.mkdirSync(brandDir);
     fs.writeFileSync(path.join(brandDir, 'customer.json'), JSON.stringify({ name: 'ACME', hubHeading: 'ACME' }) + '\n');
     const checkpoints = JSON.parse(fs.readFileSync(path.join(DELIVERY, 'checkpoints.json'), 'utf8'));
-    require('./a101-mvp-navigation.js').createNavigationOverlay({ root: ROOT, overlayDir, workbookUrl: WORKBOOK_URL, checkpoints });
+    createNavigationOverlay({ root: ROOT, overlayDir, workbookUrl: WORKBOOK_URL, checkpoints });
+    const navigationFile = path.join(stage, 'course-navigation.md');
+    fs.writeFileSync(navigationFile, renderCourseNavigation(fs.readFileSync(path.join(DELIVERY, 'course-navigation.md'), 'utf8'), {
+      workbookUrl: WORKBOOK_URL, checkpoints,
+    }));
 
     execFileSync(process.execPath, [path.join(ROOT, 'scripts/build-workbook.js'), EDITION, 'agents-101', '--no-trainer-docs'], {
       cwd: ROOT,
@@ -97,7 +123,7 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
     const customerDir = path.join(path.resolve(outputDir), EDITION);
     const trainingDir = path.join(customerDir, 'agents-101');
     const workbookFile = path.join(trainingDir, 'index.html');
-    let html = fs.readFileSync(workbookFile, 'utf8');
+    let html = insertCoworkFolderInstruction(applyLoaderFraming(fs.readFileSync(workbookFile, 'utf8')));
     const onboarding = renderOnboarding(fs.readFileSync(path.join(DELIVERY, 'onboarding.md'), 'utf8'));
     const toc = '<nav class="workbook-toc">';
     if (!html.includes(toc)) throw new Error('Workbook contents insertion point is missing');
@@ -142,7 +168,7 @@ body.slides-active .a101-onboarding { display: none; }
 
     // The edition hub has one destination. Existing customer hubs are untouched.
     fs.writeFileSync(path.join(customerDir, 'index.html'), '<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agents 101 — ACME</title><meta http-equiv="refresh" content="0; url=./agents-101/#start-learning"></head><body><p><a href="./agents-101/#start-learning">Start Agents 101</a></p></body></html>\n');
-    repackStarter(path.join(trainingDir, 'agents-101-starter.tar.gz'), stage, path.join(DELIVERY, 'course-navigation.md'));
+    repackStarter(path.join(trainingDir, 'agents-101-starter.tar.gz'), stage, navigationFile);
     // Remove only known trainer output for this edition if it was built before.
     for (const name of ['trainer-guide.html', 'trainer-modules.html']) fs.rmSync(path.join(trainingDir, name), { force: true });
     return { workbookFile, trainingDir, workbookUrl: WORKBOOK_URL };
@@ -163,4 +189,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { buildEdition, stripExternalFonts, WORKBOOK_URL };
+module.exports = { buildEdition, stripExternalFonts, applyLoaderFraming, insertCoworkFolderInstruction, WORKBOOK_URL };

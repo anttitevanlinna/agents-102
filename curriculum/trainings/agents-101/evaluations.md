@@ -9,9 +9,9 @@ Put the Module 5 judge in a loop and the work improves by itself. The generator 
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Put** the judge in a loop
-- **Steer** it with remarks while it runs
-- **Read** what each round changed
+- **Put** a judge in a loop
+- **Let** the loop improve the work
+- **Steer** the loop with remarks
 
 ## Start here
 

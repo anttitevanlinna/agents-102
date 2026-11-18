@@ -9,11 +9,10 @@ Read the [Agent Trigger List, After Module 3](trainings/agents-101/supplementary
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Guess**, then run the check
-- **Package** the check as a skill
-- **Sort** each rule: compliant, violating, can't tell
+- **Run** a security check on your agent
+- **Package** a check as a skill
 - **Mitigate** a risk
-- **Decide** on what is left
+- **Decide** on the risk that is left
 
 ## Start here
 

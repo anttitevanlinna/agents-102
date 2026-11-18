@@ -9,11 +9,10 @@ A system remembers, grows, and compounds around the one thing you need to make p
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Build** a memory for your challenge
-- **Have** the agent write your first agent
-- **Approve** the plan before the agent acts
-- **Check** that the memory sharpens, not only grows
-- **Ask** a bare chat and your system the same question
+- **Create** agent memory
+- **Create** your first agent
+- **Approve** a plan before the agent acts
+- **Build** a system that compounds
 
 ## Start here
 

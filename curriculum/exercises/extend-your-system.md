@@ -78,4 +78,4 @@ This is **Recipe 8**: agent generates agent, on a real gap. The [Cookbook for Ag
 - **The compound beat.** End-of-exercise, ask aloud (in-room) or surface via Teacher Claude (self-study): *"How long did it take to describe vs. build? What would the second agent take?"* The answer makes the thesis land.
 - **Agent-file rules inheritance.** Students sometimes start the new agent from scratch. Nudge: *"You already have agents whose rules work. Inherit them. Add what's new. Don't rediscover."*
 
-**View summary:** The gap comes from Module 7: what your neighbour needed and could not use. You describe an agent for it; an agent builds it, the Module 5 judge finds what fails, the builder rebuilds it, and `module-8/built-agent.md` records before, after and the minutes it took.
+**View summary:** The gap comes from Module 7: what your neighbour needed and could not use. You describe an agent for it; an agent builds it, the Module 5 judge finds what fails, the builder rebuilds it, and `module-8/built-agent.md` records before, after and the minutes.

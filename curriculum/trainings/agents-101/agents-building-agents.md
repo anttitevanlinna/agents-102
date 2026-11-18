@@ -8,15 +8,15 @@ Agents building agents is how you and your organisation learn faster. Your agent
 Run `module-7/monday.md`: test one assumption, ask for one name, talk to one person, then have your agent write what they said into `module-7/monday.md` under `## What they said`. Revisit three moves: find the crux, ask what would have to be true, run a pre-mortem.
 
 ## What You'll Learn
-After this module, you can:
-- **Describe** a new agent and have an agent build it into your system
-- **Improve** an existing agent by having your agent edit it from session evidence
-- **Orchestrate** crux, assumption-test and pre-mortem across the room's agents on a real company question
-- **Produce** a strategy kernel, suggested agent set, and two-week plan from shared files
+After this module, you will be able to:
+- **Describe** a gap and have an agent build the agent
+- **Let** the judge check it and the agent rebuild it
+- **Run** the room's agents on one company question
+- **Write** a strategy kernel, an agent set and a plan
 
 ## Start here
 
-Your agent works in `~/Documents/agents-101/` and reads your agent system plus `module-7/monday.md`. The room's forum runs in a separate shared folder, so your own files stay local.
+Your agent works in `~/Documents/agents-101/` and reads your agent system plus `module-7/monday.md` and `module-7/handover.md`. The room's forum runs in a separate shared folder, so your own files stay local.
 
 The shared folder starts nearly empty: one subfolder per participant, `challenge.md` from the buyer or sponsor, and one or two central synthesizers writing at the shared root.
 
@@ -52,7 +52,7 @@ Some unresolved items should stay unresolved.
 
 ## Key Concepts
 - Describe an agent and an agent builds it.
-- Your agent can improve your agent: the fixed-judge loop, now pointed at the system itself.
+- Your agent can improve your agent: the Module 6 loop, now pointed at the system itself.
 - Every improvement stays on disk; the next agent starts from it.
 - Agents building agents is how an organisation learns faster: each agent built makes the next one quicker.
 - Parts hold; the model rotates.

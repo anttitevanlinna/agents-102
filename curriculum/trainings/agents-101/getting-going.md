@@ -8,11 +8,13 @@ Context is how you paint by LLM. What you give the agent shapes what comes back,
 Set up your agent runtime. Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read [LLM vs chat](trainings/agents-101/supplementary/what-is-an-agent.md#llm-vs-chat).
 
 ## What You'll Learn
-You can:
-- **Generate** an HTML one-pager
-- **Apply** context in layers and compare outputs
-- **Evaluate** output against your domain knowledge
-- **Package** guardrails as reusable rules
+
+After this module, you will be able to:
+
+- **Generate** a one-page site
+- **Layer** context and compare the results
+- **Check** the output against what you know
+- **Save** your guardrails as rules
 
 ## Start here
 

@@ -12,10 +12,11 @@ You can't really share an agent. You can share the context, a skill, the output,
 
 After this module, you will be able to:
 
-- **Interview** for a teammate's job before choosing what to share
-- **Pick** one of four sharing strategies against the outcome that job needs
-- **Find** the absorption bottleneck and draft the technical plan and the people plan together
-- **Test** the switch assumptions and name one person and one test to take out of the room
+- **Hand** a skill and an agent to a neighbour
+- **Find** the job before you share
+- **Pick** what to share against that job
+- **Plan** the tech and the people together
+- **Name** the person and the first test
 
 ## Start here
 
@@ -40,7 +41,7 @@ Who gets your context, who gets a skill, who wants only the output, and who woul
 ## Key Concepts
 
 - Start with the teammate's job, not with what you built. Pick the candidate against that outcome. Infrastructure is a constraint, not a reason.
-- The four sharing strategies are share the context, share a skill, share the output (push), and share an interface (pull).
+- Share the context, a skill, the output (push) or an interface (pull). The handover showed which travels: the skill did, the agent without its memory did not.
 - The absorption bottleneck is the obstacle that keeps several others hard.
 - Write the technical plan and the people plan together.
 - Test what would have to be true for the teammate to switch.
@@ -48,11 +49,11 @@ Who gets your context, who gets a skill, who wants only the output, and who woul
 
 ## Bring to Module 8
 
-**Bring `module-7/monday.md` and what the named person said.** Their answer is the evidence. The plan is still the hypothesis.
+**Bring `module-7/monday.md`, `module-7/handover.md` and what the named person said.** Their answer is the evidence. The plan is still the hypothesis.
 
 ## Next
 
-You can build agents, secure them, evaluate them and share them four ways. What if you didn't have to build each one by hand?
+You can build agents, secure them, evaluate them and share them four ways. What if an agent built the next one, for a gap someone else hit?
 
 <!-- maintainer -->
 

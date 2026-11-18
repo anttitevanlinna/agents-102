@@ -9,12 +9,11 @@ Read the [Agent Trigger List, After Module 3](trainings/agents-101/supplementary
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Run** distilled policy files directly, then package the useful check as a skill
-- **Author** a security check with two lenses: policy and agent risk
-- **Apply** named agent risk patterns (direct and indirect prompt injection, secrets in context, tool confusion, skill supply chain) and a plain access review
-- **Distinguish** compliant, violating and "I can't tell" for each rule
-- **Apply** a mitigation (scope, split, filter, gate, review) on top of company controls
-- **Evaluate** residual risk: what is left, and what future sessions need before touching the system
+- **Guess**, then run the check
+- **Package** the check as a skill
+- **Sort** each rule: compliant, violating, can't tell
+- **Mitigate** a risk
+- **Decide** on what is left
 
 ## Start here
 

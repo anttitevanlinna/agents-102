@@ -8,12 +8,12 @@ A system remembers, grows, and compounds around the one thing you need to make p
 [Module 2 prework](lectures/module-2-prework.md). (1) Bring a live challenge. (2) Verify your Confluence and OneDrive connectors. (3) <span class="rt-code">Plan-mode primer.</span><span class="rt-cowork">Plan-first primer.</span> (4) Karpathy's LLM Wiki post. (5) Optional: Lindenberg memory-architecture piece.
 
 ## What You'll Learn
-After this module, you can:
-- **Build** an LLM memory on your next big challenge
-- **Build** a custom agent (markdown instructions) and run it on your memory
-- **Review** a plan before the agent acts
-- **See** the three layers (raw sources, memory, rules file) and why plain text
-- **Evaluate** whether memory is compounding or growing
+After this module, you will be able to:
+- **Build** a memory for your challenge
+- **Have** the agent write your first agent
+- **Approve** the plan before the agent acts
+- **Check** that the memory sharpens, not only grows
+- **Ask** a bare chat and your system the same question
 
 ## Start here
 
@@ -72,7 +72,7 @@ Your folder holds your challenge, your sources and your rules. A better model re
 
 ## Bring to Module 3
 
-**A daily agent, scheduled, with a week of observation behind it.** It reads your challenge memory. Module 3 splits work against that week of runs.
+**A daily agent, scheduled, with a week of observation behind it.** It reads your challenge memory. In Module 3, several agents work on that same memory.
 
 [Schedule your personal agent](exercises/personal-agent-homework.md)
 

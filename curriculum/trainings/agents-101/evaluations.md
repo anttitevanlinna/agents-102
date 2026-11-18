@@ -9,9 +9,9 @@ Put the Module 5 judge in a loop and the work improves by itself. The generator 
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Build** a self-improving eval loop: separate agents generate and judge, and the work improves round after round
-- **Read** how the generator's tactic sharpens across rounds in the final eval notes
-- **Distinguish** the one-off Module 5 judge from one that runs on every output
+- **Put** the judge in a loop
+- **Steer** it with remarks while it runs
+- **Read** what each round changed
 
 ## Start here
 
@@ -57,7 +57,7 @@ The artifact: the sharpened `./generation-tactic.md`, the line in your root inst
 
 ## Bring to Module 7
 
-**Your first five agent calls at work, written down**, using [Agent Trigger List](../../trainings/agents-101/supplementary/agent-trigger-list.md). Pick one call the eval loop's checks could let run without you, and write the trigger into your working notes.
+**Your first five agent calls at work, written down**, using [Agent Trigger List](../../trainings/agents-101/supplementary/agent-trigger-list.md). Pick one call the eval loop's checks could let run without you, and write the trigger into `module-6/trigger.md`.
 
 The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) and [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) are optional references.
 

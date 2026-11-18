@@ -71,7 +71,7 @@ Ethan Mollick, "Garbage Can and Bitter Lesson."
 End this session once the judge is saved. Module 6 starts fresh in `~/Documents/agents-101/`.
 
 ## Next
-You can spot ungrounded output with a judge. Next, the judge runs without you at the keyboard: it stays fixed while the generation improves under its feedback.
+You can spot ungrounded output with a judge. Next, the judge goes into a loop, and the work improves under its feedback without you at the keyboard.
 <!-- maintainer -->
 
 **Red thread (2026-11-13, Antti).** "It is not to add sentences. It is to align on common theme. Say it in different ways without adding more content." Added openers, four-ideas slides and own-agent callouts were tried and removed the same evening. Align existing lines; add none.

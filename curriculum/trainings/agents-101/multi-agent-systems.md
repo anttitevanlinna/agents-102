@@ -8,12 +8,13 @@ Several agents can work on one problem together. Split the work, run the agents 
 [Schedule your personal agent](exercises/personal-agent-homework.md) to read your challenge memory for a week. [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) covers tools, memory and context. [Helper agents primer](exercises/module-3-prework.md) before Module 3.
 
 ## What You'll Learn
-You can:
+After this module, you will be able to:
 - **Set** up agents that share files
-- **Split** one question across three agents
+- **Split** one question across agents, one per source
 - **Check** the handoffs
-- **Get** one answer from three stances
-- **Know** when not to split
+- **Get** one committed answer from opposing stances
+- **Freeze** the answer with the line you doubt
+- **Decide** when to split and when not to
 
 ## Start here
 

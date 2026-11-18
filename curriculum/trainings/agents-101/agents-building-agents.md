@@ -8,11 +8,11 @@ Agents building agents is how you and your organisation learn faster. Your agent
 Run `module-7/monday.md`: test one assumption, ask for one name, talk to one person, then have your agent write what they said into `module-7/monday.md` under `## What they said`. Revisit three moves: find the crux, ask what would have to be true, run a pre-mortem.
 
 ## What You'll Learn
-You can:
+After this module, you will be able to:
 - **Describe** a gap and have an agent build the agent
 - **Let** the judge check it and the agent rebuild it
 - **Run** the room's agents on one company question
-- **Leave** with a kernel, an agent set and a plan
+- **Write** a strategy kernel, an agent set and a plan
 
 ## Start here
 

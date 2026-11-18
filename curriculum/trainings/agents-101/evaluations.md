@@ -8,10 +8,10 @@ Put the Module 5 judge in a loop and the work improves by itself. The generator 
 [Ethan Mollick, *The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage). Start with the judge you saved at the close of Module 5.
 
 ## What You'll Learn
-After this module, you will be able to:
-- **Build** a self-improving eval loop: separate agents generate and judge, and the work improves round after round
-- **Read** how the generator's tactic sharpens across rounds in the final eval notes
-- **Distinguish** the one-off Module 5 judge from one that runs on every output
+You can:
+- **Put** the judge in a loop
+- **Steer** it with remarks while it runs
+- **Read** what each round changed
 
 ## Start here
 

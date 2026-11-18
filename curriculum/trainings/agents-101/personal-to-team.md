@@ -40,7 +40,7 @@ Who gets your context, who gets a skill, who wants only the output, and who woul
 ## Key Concepts
 
 - Start with the teammate's job, not with what you built. Pick the candidate against that outcome. Infrastructure is a constraint, not a reason.
-- The four sharing strategies are share the context, share a skill, share the output (push), and share an interface (pull).
+- Share the context, a skill, the output (push) or an interface (pull). The handover showed which travels: the skill did, the agent without its memory did not.
 - The absorption bottleneck is the obstacle that keeps several others hard.
 - Write the technical plan and the people plan together.
 - Test what would have to be true for the teammate to switch.
@@ -52,7 +52,7 @@ Who gets your context, who gets a skill, who wants only the output, and who woul
 
 ## Next
 
-You can build agents, secure them, evaluate them and share them four ways. What if you didn't have to build each one by hand?
+You can build agents, secure them, evaluate them and share them four ways. What if an agent built the next one, for a gap someone else hit?
 
 <!-- maintainer -->
 

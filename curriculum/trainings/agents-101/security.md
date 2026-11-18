@@ -8,11 +8,11 @@ You can't tell if your agent is safe from its output. Run a check; don't wait fo
 Read the [Agent Trigger List, After Module 3](trainings/agents-101/supplementary/agent-trigger-list.md#after-module-3-notice-when-one-agent-is-not-enough), the multi-agent sections of [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md), and [Before Module 4](lectures/module-4-prework.md).
 
 ## What You'll Learn
-You can:
+After this module, you will be able to:
 - **Guess**, then run the check
 - **Package** the check as a skill
 - **Sort** each rule: compliant, violating, can't tell
-- **Mitigate** one risk
+- **Mitigate** a risk
 - **Decide** on what is left
 
 ## Start here

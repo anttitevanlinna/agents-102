@@ -10,11 +10,10 @@ Read [The Missing Check](lectures/module-5-prework.md): two public-record cases 
 Write one sentence per case: "the missing organisational check was X."
 
 ## What You'll Learn
-You can:
-- **Test** four detectors on your own briefing
-- **Mark** five claims yourself
-- **Save** the winner as a judge
-- **Know** where the judge stops
+After this module, you will be able to:
+- **Test** detectors on your own briefing
+- **Mark** claims yourself before the judge does
+- **Save** the winner as a judge that names its limit
 
 ## Start here
 

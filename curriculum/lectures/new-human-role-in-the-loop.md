@@ -16,14 +16,6 @@ What would have to be true before you let the agent hit send?
 - Boundaries: what it can read, what it never says, which risks it can't tell (Module 4).
 - A groundedness judge ties names, numbers, claims and recommendations to evidence (Module 5).
 
-## Two evals, two different jobs
-
-A useful mail needs one more eval: a steering eval. Groundedness protects the floor. Steering raises the ceiling.
-
-A groundedness eval says: do not invent, overreach, or imply more than the evidence supports.
-
-A steering eval says: overperform on one dimension. Be more executive-readable, commercially sharp, specific, and useful to the decision-maker.
-
 ## Variety in, selection out, memory keeps
 
 Something makes several candidates, something else picks, and what wins gets written down. The three stances and four detectors are the generating half. The floor and ceiling evals are the picking half.

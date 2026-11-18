@@ -6,9 +6,9 @@
 
 **What you do:**
 
-Stop running `judges/groundedness-judge.md` by hand.
+Watch your Module 3 briefing get better round after round, with nobody editing it.
 
-**Eval as infrastructure:** the judge is a fixed yardstick; the generator changes under it. A generator writes a briefing from its tactic, the judge scores it with per-claim feedback, and the main session rewrites the tactic. Run at least three rounds, then continue until improvement stops.
+**Eval as infrastructure:** a generator writes a briefing from its tactic, the judge scores it with per-claim feedback, and the main session rewrites the tactic. The judge stays fixed, so a rising score is the work getting better. Run at least three rounds, then continue until improvement stops.
 
 **Helper agents** are isolated workers, each with fresh context for its own job.
 
@@ -32,7 +32,9 @@ Generation and judging run in separate helpers; the lead reads the judgment and 
 
 {{prompt:eval-loop-2}}
 
-Step away. While the loop runs, ask about parallel search:
+While the loop runs, watch round 1's score land with nothing from you. Then open the latest round's briefing in `module-6/runs/` and read it as the person receiving it would. Write two or three remarks in plain words into `./remarks.md` (*"too hedged"*, *"this number is not ours"*, *"lead with the decision"*) without stopping the loop. The remaining rounds absorb them into the tactic, beside the judge's flags; the judge never sees them.
+
+Then ask about parallel search:
 
 {{prompt:eval-loop-3}}
 
@@ -50,23 +52,21 @@ Ask whether the last round beat your Module 3 briefing under the same judge, by 
 
 Failed numbers in round 3 mean the tactic cannot handle numbers yet; weak claims marked grounded mean the judge has a blind spot.
 
-**Integrity check.** The score means something only if the judge stayed still: the SHA in `module-6/eval-notes.md` must match. If the judge file moved, the exercise failed; if only `./generation-tactic.md` moved, the loop worked.
-
-**Spot-check the judge.** Mark three claims from the last round yourself before you read its verdicts; they go beside your five marks from Module 5. Where you disagree, the judge has a blind spot the loop cannot see.
-
-{{prompt:eval-loop-spot-check}}
-
 ## Trace what each round changed
 
 **What happened:**
 
-Round 1 runs on the tactic your agent wrote from the Module 3 briefing's misses. Before round 2, the main session absorbed round 1's per-claim feedback into `./generation-tactic.md`. Each later generator reads a tighter tactic.
+Read first against last: round 0, your Module 3 briefing, then each round's score and the tactic rule that changed before it, with your remarks named where they became a rule. Round 1 ran on the tactic your agent wrote from the Module 3 briefing's misses; each later generator read a tighter one. You edited none of it.
 
-## Take the judge from object to yardstick
+## The loop improved it, not you
 
 **The point:**
 
-The judge is a fixed, separate yardstick, and the tactic on disk is rewritten until the generator passes it. You do not inspect every output; you design the loop and own the yardstick.
+The tactic on disk is rewritten until the generator passes the judge, and the score rises without you. The judge is fixed and separate, which is why the rise can be believed.
+
+**Spot-check the judge.** Mark three claims from the last round yourself before you read its verdicts; they go beside your five marks from Module 5. Where you disagree, the judge has a blind spot the loop cannot see.
+
+{{prompt:eval-loop-spot-check}}
 
 PDCA at the eval layer: Plan (generation tactic), Do (generate), Check (judge), Act (rewrite tactic). The next run, on any topic, starts from the tighter tactic on disk.
 
@@ -83,7 +83,7 @@ Ask the agent to set up the loop around a different judge:
 **Quality:** compendium-audited 2026-08-25 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
 - judges @4d9c4af2: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
-**Central concept — eval as fixed yardstick. The thing being measured learns to pass it.**
+**Central concept: the loop improves the work by itself, round after round. The fixed judge is why the rise can be believed.**
 
 This exercise is one of the three Agents 101 magic beats (M3, M6, M8). M5 picks the judge; M6 makes the judge infrastructure (untouchable, trusted) and the generator the student's object of improvement; M8 goes meta one more turn. If this exercise doesn't land, the curriculum's "50% magic" rule fails at M6.
 

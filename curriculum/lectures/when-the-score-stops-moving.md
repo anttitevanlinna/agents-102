@@ -10,9 +10,7 @@ Sharper framing, a recommendation that commits, a briefing someone reads to the 
 
 ## You haven't checked the judge yet
 
-Nothing scores the judge. Take a handful of outputs, score them by hand, and put your verdicts beside the judge's. Where the judge passed something you would have sent back, you agree less often than the number suggests.
-
-That is an afternoon, once per judge you intend to trust. The score means something only because the judge is a separate agent from the generator.
+You marked claims against the judge in Module 5. Do that once for every judge you intend to trust: where it passed something you would have sent back, you agree less often than the number suggests.
 
 ## If the model stops fabricating, what is your judge for?
 

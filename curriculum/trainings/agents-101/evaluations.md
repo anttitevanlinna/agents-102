@@ -1,7 +1,7 @@
 # Evaluations
 
 ## Big Idea
-The Module 5 eval now runs on every output. The judge stays fixed, so the loop's score means something. The generator sharpens against that feedback while you walk away.
+Put the Module 5 judge in a loop and the work improves by itself. The generator sharpens against the judge's feedback, round after round, while you walk away.
 
 ## Prework
 
@@ -9,7 +9,7 @@ The Module 5 eval now runs on every output. The judge stays fixed, so the loop's
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Build** a self-improving eval loop: separate agents generate and judge, the Module 5 judge scores each round unchanged
+- **Build** a self-improving eval loop: separate agents generate and judge, and the work improves round after round
 - **Read** how the generator's tactic sharpens across rounds in the final eval notes
 - **Distinguish** the one-off Module 5 judge from one that runs on every output
 
@@ -50,8 +50,8 @@ If it sounds too kind, ask: *"Which rule did you claim to remove but keep under 
 The artifact: the sharpened `./generation-tactic.md`, the line in your root instructions that sends every later briefing through it, and one line in the Module 6 eval-notes naming the first always-on eval you'll run next.
 
 ## Key Concepts
+- The loop improves the output round after round with nobody editing; the fixed judge is why the rise is real.
 - Groundedness protects the floor; steering raises the ceiling.
-- The judge stays fixed and separate from the generator, so the score means something.
 - A flat score is information about the judge or the work. Check both.
 - You design the loop and own the yardstick.
 
@@ -64,7 +64,7 @@ The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/
 Once the trigger is written, end this module's session or task. Module 7 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
-The judge stays fixed, so the loop keeps pressure on the generator while you are away.
+The loop keeps pressure on the generator while you are away.
 
 <!-- maintainer -->
 

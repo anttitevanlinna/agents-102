@@ -14,15 +14,13 @@ One briefing, thirty claims, four detectors, one scorer: the scoreboard named wh
 
 [Steering raises the ceiling](slides/steering-raises-the-ceiling.md)
 
-## A yardstick you rewrite is not a yardstick
+## Three rounds, nobody editing
 
-The Module 5 judge goes into a loop. The judge stays fixed. The generator changes.
+The Module 5 judge goes into a loop.
 
-Round 1 produces a briefing. The judge scores it and writes per-claim feedback. The main session rewrites `./generation-tactic.md` from the feedback. Rounds 2 and 3 run under the same judge with the sharper tactic.
+Round 1 produces a briefing. The judge scores it and writes per-claim feedback. The main session rewrites `./generation-tactic.md` from the feedback. Rounds 2 and 3 run with the sharper tactic, and the score rises with nobody editing.
 
-Walk away. On return, the notes list flagged claims, added tactic rules, whether the score improved, and whether the judge file stayed byte-identical.
-
-If the judge moved, the score means nothing. If the generator improved under the same judge, the loop worked.
+Walk away. On return, the notes show each round's score and what changed. The judge stayed fixed, so the rise is the work getting better.
 
 ## The answer is never "the eval passed"
 

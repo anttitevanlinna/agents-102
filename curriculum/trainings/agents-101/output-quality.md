@@ -12,7 +12,7 @@ Write one sentence per case: "the missing organisational check was X."
 ## What You'll Learn
 After this module, you will be able to:
 - **Detect** hallucinations
-- **Ground** output in sources
+- **Benchmark** AI checks
 - **Build** a judge
 
 ## Start here

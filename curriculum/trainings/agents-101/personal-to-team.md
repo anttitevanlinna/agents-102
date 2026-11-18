@@ -48,7 +48,7 @@ Who gets your context, who gets a skill, who wants only the output, and who woul
 
 ## Bring to Module 8
 
-**Bring `module-7/monday.md` and what the named person said.** Their answer is the evidence. The plan is still the hypothesis.
+**Bring `module-7/monday.md`, `module-7/handover.md` and what the named person said.** Their answer is the evidence. The plan is still the hypothesis.
 
 ## Next
 

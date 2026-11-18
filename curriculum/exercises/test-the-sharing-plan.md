@@ -8,13 +8,13 @@ The technical and people plans are hypotheses.
 
 *10 min*
 
-Use Roger Martin's question: *what would have to be true for this teammate, doing this job, to fire their current hire and use my candidate?*
+Use Roger Martin's question: *what would have to be true for this teammate, doing this job, to drop what they use today and switch to my candidate?*
 
 {{prompt:share-your-work-5}}
 
 `module-7/assumptions.md` records the two or three tests you selected for this week.
 
-## Name the likely failure and Monday move
+## Name the likely failure and the next move
 
 *12 min*
 

@@ -9,9 +9,8 @@ Put the Module 5 judge in a loop and the work improves by itself. The generator 
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Put** the judge in a loop
-- **Steer** it with remarks while it runs
-- **Read** what each round changed
+- **Run** an eval loop
+- **Steer** agents with feedback
 
 ## Start here
 

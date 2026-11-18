@@ -11,9 +11,9 @@ Write one sentence per case: "the missing organisational check was X."
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Test** detectors on your own briefing
-- **Mark** claims yourself before the judge does
-- **Save** the winner as a judge that names its limit
+- **Detect** hallucinations
+- **Benchmark** AI checks
+- **Build** a judge
 
 ## Start here
 

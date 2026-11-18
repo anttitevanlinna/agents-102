@@ -9,10 +9,9 @@ Run `module-7/monday.md`: test one assumption, ask for one name, talk to one per
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Describe** a gap and have an agent build the agent
-- **Let** the judge check it and the agent rebuild it
-- **Run** the room's agents on one company question
-- **Write** a strategy kernel, an agent set and a plan
+- **Have** agents build agents
+- **Improve** an agent with an agent
+- **Write** an agent strategy
 
 ## Start here
 

@@ -9,12 +9,9 @@ Several agents can work on one problem together. Split the work, run the agents 
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Set** up agents that share files
-- **Split** one question across agents, one per source
-- **Check** the handoffs
-- **Get** one committed answer from opposing stances
-- **Freeze** the answer with the line you doubt
-- **Decide** when to split and when not to
+- **Orchestrate** multiple agents
+- **Split** work across agents
+- **Debug** agent handoffs
 
 ## Start here
 

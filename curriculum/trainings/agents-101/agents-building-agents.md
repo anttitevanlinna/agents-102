@@ -54,7 +54,7 @@ Some unresolved items should stay unresolved.
 - Describe an agent and an agent builds it.
 - Your agent can improve your agent: the fixed-judge loop, now pointed at the system itself.
 - Every improvement stays on disk; the next agent starts from it.
-- The tool that builds tools compounds: each agent makes the next one quicker.
+- Agents building agents is how an organisation learns faster: each agent built makes the next one quicker.
 - Parts hold; the model rotates.
 
 ## Next

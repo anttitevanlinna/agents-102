@@ -10,12 +10,13 @@ You can't really share an agent. You can share the context, a skill, the output,
 
 ## What You'll Learn
 
-After this module, you will be able to:
+You can:
 
-- **Interview** for a teammate's job before choosing what to share
-- **Pick** one of four sharing strategies against the outcome that job needs
-- **Find** the absorption bottleneck and draft the technical plan and the people plan together
-- **Test** the switch assumptions and name one person and one test to take out of the room
+- **Hand** your agent to a neighbour
+- **Find** the job before you share
+- **Pick** one of four ways to share
+- **Plan** the tech and the people together
+- **Name** one person and one test
 
 ## Start here
 

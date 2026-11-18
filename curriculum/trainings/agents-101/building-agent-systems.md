@@ -10,9 +10,9 @@ A system remembers, grows, and compounds around the one thing you need to make p
 ## What You'll Learn
 After this module, you will be able to:
 - **Create** agent memory
-- **Create** your first agent
-- **Approve** a plan before the agent acts
-- **Build** a system that compounds
+- **Create** an agent
+- **Schedule** an agent
+- **Review** an agent's plan
 
 ## Start here
 

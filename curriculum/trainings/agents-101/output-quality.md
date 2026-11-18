@@ -11,9 +11,9 @@ Write one sentence per case: "the missing organisational check was X."
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Catch** ungrounded claims
-- **Benchmark** checks on your own output
-- **Create** a judge
+- **Detect** hallucinations
+- **Ground** output in sources
+- **Build** a judge
 
 ## Start here
 

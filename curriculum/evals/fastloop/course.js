@@ -9,7 +9,8 @@
 // modules: their take-homes from each, plus their full notes from Modules 3 and 5, where the briefing is made and
 // checked. After each module, the cold question from that module's notes only (run.js probe, score.js scorer), so
 // per-module numbers sit on the same scale as the pooled baselines. After Module 8, chain.js's question and judge:
-// "What happened to the briefing you made in Module 3?" scored on made / checked / improved.
+// the maker question (how would a new briefing get made and checked today) scored on made / checked / improved.
+// The older document question lives in chain.js; it reads improved 0 because the Module 3 briefing is frozen by design.
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
@@ -25,7 +26,7 @@ const REPS = Number(a.reps || 2); const JOBS = Number(a.jobs || 6);
 const MODS = ['getting-going', 'building-agent-systems', 'multi-agent-systems', 'security', 'output-quality', 'evaluations', 'personal-to-team', 'agents-building-agents'];
 const KEEP = new Set([2, 4]); // full notes carried forward from Modules 3 and 5
 const Q = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'teaching', 'targets.json'), 'utf8')).cold_question;
-const CQ = 'What happened to the briefing you made in Module 3?';
+const CQ = 'You made a briefing with agents in Module 3. If you needed a new one today, how would it get made and checked, and what is different from Module 3?';
 const page = Object.fromEntries(MODS.map((m) => [m, fs.readFileSync(path.join(a.pages, `${m}.md`), 'utf8')]));
 const VERSION = crypto.createHash('sha256').update(fs.readFileSync(__filename, 'utf8')).digest('hex').slice(0, 8);
 const sha = (s) => crypto.createHash('sha256').update(s).digest('hex').slice(0, 16);
@@ -85,10 +86,10 @@ Answer with one json block: {"answer": "..."}`;
 const judgePrompt = (answer) => `A participant in an AI training was asked, weeks later: "${CQ}"
 Their answer: "${answer}"
 
-In the training, one document travelled across three modules. Mark each link true ONLY if the answer itself says it (in any words); do not infer, do not reward vague mentions.
-- made: the briefing was produced by their own agents or agent system from real sources on a real question.
-- checked: the briefing (or one made the same way) was later tested for fabrication, hallucination or grounding, claim by claim against sources, or a judge/checker for that was built from it.
-- improved: a judge or score was then run on new briefings again and again, and the way briefings get generated was changed from that feedback, so they got better.
+Mark each link true ONLY if the answer itself says it (in any words); do not infer, do not reward vague mentions.
+- made: the briefing is produced by their own agents or agent system from real sources.
+- checked: the briefing is tested for fabrication, hallucination or grounding, claim by claim against sources, by a saved judge or checker.
+- improved: the briefing goes through a loop where the judge's score or flags, or the reader's remarks, feed back into how it gets generated, so it comes out better round after round without hand editing.
 
 Answer with one json block: {"made": true|false, "checked": true|false, "improved": true|false}`;
 

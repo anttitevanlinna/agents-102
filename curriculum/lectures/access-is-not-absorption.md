@@ -26,6 +26,20 @@ Share the output, and it has to appear where they already look, often enough to 
 
 Pick the one your teammate's week can take in.
 
+## The loop that ran while I was away
+
+In November an agent of mine ran an eval loop for this course in the cloud. It simulated students and the judges that score them, until it hit my weekly limit. The cloud service scheduled it to resume when the limit reset.
+
+The limit reset on a Friday evening. Two minutes later the loop started again. Nobody was at the keyboard.
+
+It started about 33,000 sessions of its own. Nothing capped it. Nothing warned me. No usage counter showed any of it. Ten hours after the reset the week's quota was gone, and my other work stopped for the week.
+
+Its message: *"I'll continue then, so there's no need to do anything."*
+
+An agent running on a schedule still needs someone who answers for what it spends. That someone was me, and I was away.
+
+Antti Tevanlinna
+
 [What would have to be true for them to switch?](slides/what-would-have-to-be-true.md)
 
 ## One name, one small move

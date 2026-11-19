@@ -29,7 +29,7 @@ const SETUP_SCRIPT = `(function () {
   try { selected = localStorage.getItem(key); } catch (_) {}
   if (selected !== 'mac' && selected !== 'windows') {
     var platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || navigator.userAgent;
-    selected = /win/i.test(platform) ? 'windows' : 'mac';
+    selected = /win(?:32|64|dows)/i.test(platform) ? 'windows' : 'mac';
   }
   function apply(value) {
     selected = value;
@@ -81,6 +81,16 @@ function preworkSection(html) {
     if (sections.length !== 1) throw new Error(`Edition workbook expected one Prework section, received ${sections.length}`);
     return sections[0].outerHTML;
   } finally { dom.window.close(); }
+}
+
+function moveContentsAfterPrework(html) {
+  const toc = '<nav class="workbook-toc">';
+  const moduleOne = '<section class="module" id="getting-going">';
+  if (html.split(toc).length !== 2 || html.split(moduleOne).length !== 2) throw new Error('Expected one Contents and one Module 1');
+  const start = html.indexOf(toc), closing = html.indexOf('</nav>', start), end = closing + '</nav>'.length;
+  if (closing < 0 || start > html.indexOf('<section class="module" id="prework">') || end > html.indexOf(moduleOne)) throw new Error('Unexpected Contents/Prework order');
+  const contents = html.slice(start, end);
+  return (html.slice(0, start) + html.slice(end)).replace(moduleOne, contents + '\n\n' + moduleOne);
 }
 
 function prependOfflinePrework(html, prework) {
@@ -202,12 +212,29 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
     // Keep typography inside a module div so the slide chunker, which consumes
     // direct section.module children, never mistakes onboarding for a module.
     html = html.replace(toc, `<section class="a101-onboarding"><div class="module">\n${onboarding}\n</div></section>\n\n${toc}`);
+    html = moveContentsAfterPrework(html);
     const nav = '<ol class="workbook-topnav__modules">';
     if (!html.includes(nav)) throw new Error('Workbook navigation insertion point is missing');
     html = html.replace(nav, `${nav}\n      <li><a href="#start-learning" data-target="start-learning">Start</a></li>`);
     html = html.replace('</head>', `<style data-a101-onboarding>
 .a101-onboarding { width: 100%; max-width: 40em; margin: 2rem auto; padding: 0; }
 .a101-onboarding > .module { max-width: none; }
+.a101-onboarding > .module > h1 { margin-top: 0; margin-bottom: 1rem; }
+.a101-first-look { display: flex; align-items: center; gap: 1.5rem; margin: 1.5rem 0; }
+.a101-first-look p { margin-bottom: .6rem; }
+.a101-first-look .a101-first-look__title { font-family: var(--font-serif); font-size: 1.6rem; line-height: 1.25; color: var(--fg); }
+.a101-first-look__next { color: var(--fg-2); font-size: .95rem; }
+.a101-snake-preview { position: relative; flex: 0 0 126px; height: 126px; border-radius: .5rem; background-color: #202b22; background-image: linear-gradient(#ffffff0a 1px, transparent 1px), linear-gradient(90deg, #ffffff0a 1px, transparent 1px); background-size: 18px 18px; }
+.a101-snake-preview__body { position: absolute; width: 18px; height: 18px; left: 36px; top: 72px; background: #a6c974; box-shadow: 18px 0 #a6c974, 36px 0 #a6c974, 36px -18px #a6c974, 36px -36px #a6c974; border-radius: 3px; }
+.a101-snake-preview__food { position: absolute; width: 12px; height: 12px; left: 39px; top: 21px; border-radius: 50%; background: #e77756; }
+.a101-onboarding .module a.a101-start-link { display: inline-block; padding: .65rem 1.1rem; border-radius: .35rem; background: var(--fg); color: var(--bg); border: 1px solid var(--fg); text-decoration: none; }
+.a101-start-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+body.workbook .workbook-cover { padding-top: 1rem; padding-bottom: 1.5rem; margin-bottom: 1rem; }
+body.workbook > main > section#prework { padding-top: 0; }
+section#prework, section#prework .module-hero-title { scroll-margin-top: 5rem; }
+section#prework > .module-hero { margin-bottom: 1.5rem; padding-top: 1rem; padding-bottom: 1rem; }
+section#prework > h2 { margin-top: 2rem; padding-top: 1rem; }
+@media (max-width: 480px) { .a101-first-look { align-items: flex-start; gap: 1rem; } .a101-snake-preview { flex-basis: 90px; height: 108px; background-size: 18px 18px; } .a101-first-look .a101-first-look__title { font-size: 1.3rem; } }
 .a101-onboarding [id] { scroll-margin-top: 5rem; }
 .a101-onboarding__optional { margin: 1rem 0; border-top: 1px solid var(--line); padding-top: 1rem; }
 .a101-onboarding__optional > summary { cursor: pointer; }
@@ -263,4 +290,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };
+module.exports = { buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };

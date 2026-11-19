@@ -2742,6 +2742,22 @@ body.slides-active { overflow: hidden; }
 <style data-a101-onboarding>
 .a101-onboarding { width: 100%; max-width: 40em; margin: 2rem auto; padding: 0; }
 .a101-onboarding > .module { max-width: none; }
+.a101-onboarding > .module > h1 { margin-top: 0; margin-bottom: 1rem; }
+.a101-first-look { display: flex; align-items: center; gap: 1.5rem; margin: 1.5rem 0; }
+.a101-first-look p { margin-bottom: .6rem; }
+.a101-first-look .a101-first-look__title { font-family: var(--font-serif); font-size: 1.6rem; line-height: 1.25; color: var(--fg); }
+.a101-first-look__next { color: var(--fg-2); font-size: .95rem; }
+.a101-snake-preview { position: relative; flex: 0 0 126px; height: 126px; border-radius: .5rem; background-color: #202b22; background-image: linear-gradient(#ffffff0a 1px, transparent 1px), linear-gradient(90deg, #ffffff0a 1px, transparent 1px); background-size: 18px 18px; }
+.a101-snake-preview__body { position: absolute; width: 18px; height: 18px; left: 36px; top: 72px; background: #a6c974; box-shadow: 18px 0 #a6c974, 36px 0 #a6c974, 36px -18px #a6c974, 36px -36px #a6c974; border-radius: 3px; }
+.a101-snake-preview__food { position: absolute; width: 12px; height: 12px; left: 39px; top: 21px; border-radius: 50%; background: #e77756; }
+.a101-onboarding .module a.a101-start-link { display: inline-block; padding: .65rem 1.1rem; border-radius: .35rem; background: var(--fg); color: var(--bg); border: 1px solid var(--fg); text-decoration: none; }
+.a101-start-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+body.workbook .workbook-cover { padding-top: 1rem; padding-bottom: 1.5rem; margin-bottom: 1rem; }
+body.workbook > main > section#prework { padding-top: 0; }
+section#prework, section#prework .module-hero-title { scroll-margin-top: 5rem; }
+section#prework > .module-hero { margin-bottom: 1.5rem; padding-top: 1rem; padding-bottom: 1rem; }
+section#prework > h2 { margin-top: 2rem; padding-top: 1rem; }
+@media (max-width: 480px) { .a101-first-look { align-items: flex-start; gap: 1rem; } .a101-snake-preview { flex-basis: 90px; height: 108px; background-size: 18px 18px; } .a101-first-look .a101-first-look__title { font-size: 1.3rem; } }
 .a101-onboarding [id] { scroll-margin-top: 5rem; }
 .a101-onboarding__optional { margin: 1rem 0; border-top: 1px solid var(--line); padding-top: 1rem; }
 .a101-onboarding__optional > summary { cursor: pointer; }
@@ -2783,11 +2799,16 @@ body.slides-active .a101-onboarding { display: none; }
 </header>
 
 <section class="a101-onboarding"><div class="module">
-<h1 id="start-learning">Start learning</h1>
-<p>Keep this workbook open beside Cowork. Copy each request into Cowork, then return here when the work is ready.</p>
-<h2 id="start-once">Start once</h2>
-<p><a href="#prework">Begin with Prework</a>: choose an empty training folder and make a snake game. Keep the same folder throughout the course. Start a fresh task where the workbook asks for one.</p>
-<p><a href="#prework">Start Prework</a></p>
+<h1 id="start-learning">Welcome to Agents 101</h1>
+
+<p>You’ll learn to give an AI agent a job, try what it makes, and steer it when you want a different result. Keep this workbook open next to Claude Desktop. It tells you what to do in Cowork and where to pick up when you come back.</p>
+<div class="a101-first-look" id="start-once">
+<div class="a101-snake-preview" role="img" aria-label="Example snake game: a green snake and a red apple on a square board"><span class="a101-snake-preview__body" aria-hidden="true"></span><span class="a101-snake-preview__food" aria-hidden="true"></span></div>
+<div><p class="a101-first-look__title">First, make a Snake game.</p><p>Send one request, play the game in your browser, and ask for a change of your own.</p><p class="a101-first-look__next">Then give your agent a screenshot of your calendar and get a five-line summary of your week.</p></div>
+</div>
+
+<p><a class="a101-start-link" href="#prework">Make my first game</a></p>
+
 <details class="a101-onboarding__optional"><summary><h2 id="pause-learning">Pause learning</h2></summary>
 
 <p>After installing the starter in Prework, ask the agent to save where you stopped before closing a task. Your position note stays in your training folder.</p>
@@ -2810,26 +2831,26 @@ Read `prework/course-navigation.md` and help me find my place in the workbook.
 
 </div></section>
 
-<nav class="workbook-toc">
-  <h2>Contents</h2>
-<ol class="module-list index-prework"><li data-slug="prework"><a href="#prework"><span class="module-n">00</span><span class="module-body"><span class="module-title">Prework — do this before Module 1</span><span class="module-big" data-big-idea>&nbsp;</span></span><span class="module-arrow">→</span></a></li></ol><ol class="module-list index-modules"><li data-slug="getting-going"><a href="#getting-going"><span class="module-n">01</span><span class="module-body"><span class="module-title">Getting Going</span><span class="module-big">Context is how you paint by LLM. What you give the agent shapes what comes back, and you can go very deep with it: your profile, your rules, your judgement on the result.</span></span><span class="module-arrow">→</span></a></li><li data-slug="building-agent-systems"><a href="#building-agent-systems"><span class="module-n">02</span><span class="module-body"><span class="module-title">Building Agent Systems</span><span class="module-big">A system remembers, grows, and compounds around the one thing you need to make progress on. Chat can&#39;t.</span></span><span class="module-arrow">→</span></a></li><li data-slug="multi-agent-systems"><a href="#multi-agent-systems"><span class="module-n">03</span><span class="module-body"><span class="module-title">Multi-Agent Systems</span><span class="module-big">Several agents can work on one problem together. Split the work, run the agents in parallel, and let them hand off through shared files. Three agents search, three more decide. Handoffs are where work gets lost, so check them.</span></span><span class="module-arrow">→</span></a></li><li data-slug="security"><a href="#security"><span class="module-n">04</span><span class="module-body"><span class="module-title">Security</span><span class="module-big">You can&#39;t tell if your agent is safe from its output. Run a check; don&#39;t wait for certainty.</span></span><span class="module-arrow">→</span></a></li><li data-slug="output-quality"><a href="#output-quality"><span class="module-n">05</span><span class="module-body"><span class="module-title">Grounded Output</span><span class="module-big">There is truth out there, and your agent&#39;s job is to stay connected to it. Where it cannot reach a source, it fills the gap: confident, plausible, wrong. Grounding, and checks you test on your own output, make the gap visible.</span></span><span class="module-arrow">→</span></a></li><li data-slug="evaluations"><a href="#evaluations"><span class="module-n">06</span><span class="module-body"><span class="module-title">Evaluations</span><span class="module-big">Put the Module 5 judge in a loop and the work improves by itself. The generator sharpens against the judge&#39;s feedback, round after round, while you walk away.</span></span><span class="module-arrow">→</span></a></li><li data-slug="personal-to-team"><a href="#personal-to-team"><span class="module-n">07</span><span class="module-body"><span class="module-title">From Personal to Team</span><span class="module-big">You can&#39;t really share an agent. You can share the context, a skill, the output, or an interface, and choosing between them is a strategy decision.</span></span><span class="module-arrow">→</span></a></li><li data-slug="agents-building-agents"><a href="#agents-building-agents"><span class="module-n">08</span><span class="module-body"><span class="module-title">Agents Building Agents (The Flywheel)</span><span class="module-big">Agents building agents is how you and your organisation learn faster. Your agent can improve your agent, and from there a hundred agents is a matter of describing them.</span></span><span class="module-arrow">→</span></a></li></ol><h3 class="index-heading">Supplementary</h3><ol class="module-list index-supplementaries"><li><a href="#supplementary-what-is-an-agent" target="_blank" rel="noopener"><span class="supp-kind">Reference</span><span class="supp-title">What is an Agent</span><span class="module-arrow">→</span></a></li><li><a href="#supplementary-agent-trigger-list" target="_blank" rel="noopener"><span class="supp-kind">Reference</span><span class="supp-title">Agent Trigger List</span><span class="module-arrow">→</span></a></li><li><a href="#supplementary-building-guardrails" target="_blank" rel="noopener"><span class="supp-kind">Reference</span><span class="supp-title">Building Guardrails (and Skills)</span><span class="module-arrow">→</span></a></li><li><a href="#supplementary-learning-and-compounding-systems" target="_blank" rel="noopener"><span class="supp-kind">Reference</span><span class="supp-title">Learning and Compounding Systems</span><span class="module-arrow">→</span></a></li><li><a href="#supplementary-cookbook-for-agent-system-design" target="_blank" rel="noopener"><span class="supp-kind">Reference</span><span class="supp-title">Cookbook for Agent System Design</span><span class="module-arrow">→</span></a></li></ol>
-</nav>
+
 
 <section class="module" id="prework">
 <h1 id="prework">Prework</h1>
-<p>Make a game you can play, then set up the files you will use throughout the course.</p>
+<p>Keep everything you make in one folder on your computer. Start by making a game in it.</p>
 <div class="a101-os-picker" role="group" aria-label="Setup for your computer">Setup for: <button type="button" data-a101-os="mac" aria-pressed="false">Mac</button> <button type="button" data-a101-os="windows" aria-pressed="false">Windows</button></div>
 
-<h2 id="1-choose-your-training-folder">1. Choose your training folder</h2>
-<p><span id="1-set-up-your-agent-runtime-5-min"></span></p>
-<p><span data-a101-os-only="mac">On Mac, open Documents in Finder.</span> <span data-a101-os-only="windows">On Windows, open Documents in File Explorer.</span> Create a new folder named <code>agents-101</code>. This is your training folder. Keep it for everything you build in the course.</p>
-<div class="a101-video-placeholder rt-profile rt-profile-cowork">Assume there is a <span data-a101-os-only="mac">Mac</span><span data-a101-os-only="windows">Windows</span> video here showing how to create the training folder in Documents and start a Cowork task with it.</div>
+<h2 id="1-create-a-folder-called-agents-101">1. Create a folder called agents-101</h2>
+<p><span id="1-set-up-your-agent-runtime-5-min"></span>
+<span id="1-choose-your-training-folder"></span></p>
+<div class="a101-video-placeholder rt-profile rt-profile-cowork">Assume there is a short <span data-a101-os-only="mac">Mac</span><span data-a101-os-only="windows">Windows</span> video here: create the training folder in Documents, select it in a new Cowork task, paste the game request below, and open the finished game in a browser.</div>
 
+<p><span data-a101-os-only="mac">In Finder, open Documents.</span> <span data-a101-os-only="windows">In File Explorer, open Documents.</span> Inside Documents, create an empty folder called <code>agents-101</code>.</p>
 <p><strong>Session</strong> <em>(new, &quot;Prework&quot;)</em></p>
-<p><span class="rt-cowork">In Cowork, click <strong>New task</strong> and select the <code>agents-101</code> folder you just created.</span><span class="rt-code">Start a new session in your selected interface with the <code>agents-101</code> folder you created in Documents as the working folder.</span></p>
+<p><span class="rt-cowork">Open <strong>Claude Desktop</strong> and start a new conversation. If you see a choice between Chat and Cowork, pick <strong>Cowork</strong>. From the message box, add a folder and select <code>agents-101</code> in Documents.</span><span class="rt-code">Start a new session in your selected interface with the <code>agents-101</code> folder you created in Documents as the working folder.</span></p>
+<p class="rt-profile rt-profile-cowork">Once you see <code>agents-101</code> attached, you’re ready to send the game request. If Claude asks for approval, check that it’s asking to make the game in that folder.</p>
+
 <h2 id="2-build-a-snake-game">2. Build a snake game</h2>
 <p><span id="4-build-a-snake-game-10-min"></span></p>
-<p>A snake game gives you something you can try yourself. Copy this request into your task:</p>
+<p>Click <strong>Copy</strong>, paste the request into your task, and send it. The agent will make the <code>prework</code> folder and save the game inside it.</p>
 <div class="rt-profile rt-profile-cowork">
 
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
@@ -2873,11 +2894,12 @@ Read `prework/course-navigation.md` and help me find my place in the workbook.
 </code></pre>
 </div>
 
-<p>The agent creates a <code>prework</code> folder inside your training folder and saves <code>snake.html</code> there. When it finishes, open your training folder, open <code>prework</code>, then double-click <code>snake.html</code> to play in your browser. You can ask for changes and try it again. Keep the file. It&#39;s yours.</p>
-<p>Return to this workbook when you are ready to continue.</p>
-<h2 id="3-install-the-starter-and-set-the-folder-instruction">3. Install the starter and set the folder instruction</h2>
-<p><span id="3-install-the-training-folder-3-min"></span></p>
-<p><a href="https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=bfa92509fde4f90b" target="_blank" rel="noopener">Download the starter file set</a>, then move <code>agents-101-starter.tar.gz</code> into your <code>agents-101</code> training folder, beside the <code>prework</code> folder your game created. Stay in the same task and ask the agent to unpack it:</p>
+<p>When the agent says the game is saved, open <code>agents-101</code>, then <code>prework</code>. Double-click <code>snake.html</code> to play in your browser.</p>
+<p>Try a change of your own: ask for different colours, a slower snake, or whatever would make it more fun. Play again, then return here. Keep this task open for the next step.</p>
+<h2 id="3-add-the-course-files">3. Add the course files</h2>
+<p><span id="3-install-the-training-folder-3-min"></span>
+<span id="3-install-the-starter-and-set-the-folder-instruction"></span></p>
+<p>Once you’ve played your game, <a href="https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=fc84016c1b6563a0" target="_blank" rel="noopener">download the course files</a>. Move <code>agents-101-starter.tar.gz</code> into <code>agents-101</code>, next to the <code>prework</code> folder. Copy and send this request in the same task to unpack the download.</p>
 <div class="rt-profile rt-profile-cowork">
 
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
@@ -2991,10 +3013,9 @@ For course navigation, add this line to the training-folder `CLAUDE.md` if it is
 </code></pre>
 </div>
 
-<p>Installation adds reference material and course navigation. The training-folder <code>CLAUDE.md</code> points the agent to that navigation file so it can save your place and link you back to the workbook.</p>
 <div class="a101-video-placeholder rt-profile rt-profile-cowork">Assume there is a <span data-a101-os-only="mac">Mac</span><span data-a101-os-only="windows">Windows</span> video here showing how to download the starter into the training folder and where to add the folder reading instruction below.</div>
 
-<p class="rt-profile rt-profile-cowork a101-folder-instruction">Set the instructions for your Cowork training folder to: <code>Read CLAUDE.md before working in this folder.</code> Use this same folder when you start a fresh task.</p>
+<p class="rt-profile rt-profile-cowork a101-folder-instruction">To help a new task pick up where you left off, open <strong>Customize</strong> in Claude Desktop. Add <code>Read CLAUDE.md before working in this folder.</code> to the folder instructions for <code>agents-101</code>. Select that same folder when you start a new task.</p>
 
 <p>You can now use <a href="#pause-learning">Pause learning</a> and <a href="#resume-learning">Resume learning</a> to save and find your place. Keep revising the current work for as long as you want before continuing.</p>
 <h2 id="4-summarize-your-week-in-meetings">4. Summarize your week in meetings</h2>
@@ -3110,14 +3131,20 @@ For course navigation, add this line to the training-folder `CLAUDE.md` if it is
 <p>Connecting work apps is optional. If you want to set one up, use the connector settings in your selected interface and your company&#39;s access policy. You can continue with the screenshot without setting up a connector.</p>
 </details>
 
-<h2 id="5-read-the-mental-frame">5. Read the mental frame</h2>
-<p><span id="6-read-the-mental-frame-10-min"></span></p>
+<h2 id="5-see-what-makes-this-an-agent">5. See what makes this an agent</h2>
+<p><span id="6-read-the-mental-frame-10-min"></span>
+<span id="5-read-the-mental-frame"></span></p>
 <p>Read <a href="#llm-vs-chat">What is an Agent, LLM vs chat</a>. It explains what changes when your agent can work with files and tools instead of only answering in a chat.</p>
 <h2 id="continue-to-module-1">Continue to Module 1</h2>
 <p><span id="bring-to-module-1"></span></p>
 <p>Keep your snake game, meetings summary, and installed starter in the training folder. End this task when you are ready. Module 1 starts with a fresh task in the same <code>agents-101</code> folder.</p>
 
 </section>
+
+<nav class="workbook-toc">
+  <h2>Contents</h2>
+<ol class="module-list index-prework"><li data-slug="prework"><a href="#prework"><span class="module-n">00</span><span class="module-body"><span class="module-title">Prework — do this before Module 1</span><span class="module-big" data-big-idea>&nbsp;</span></span><span class="module-arrow">→</span></a></li></ol><ol class="module-list index-modules"><li data-slug="getting-going"><a href="#getting-going"><span class="module-n">01</span><span class="module-body"><span class="module-title">Getting Going</span><span class="module-big">Context is how you paint by LLM. What you give the agent shapes what comes back, and you can go very deep with it: your profile, your rules, your judgement on the result.</span></span><span class="module-arrow">→</span></a></li><li data-slug="building-agent-systems"><a href="#building-agent-systems"><span class="module-n">02</span><span class="module-body"><span class="module-title">Building Agent Systems</span><span class="module-big">A system remembers, grows, and compounds around the one thing you need to make progress on. Chat can&#39;t.</span></span><span class="module-arrow">→</span></a></li><li data-slug="multi-agent-systems"><a href="#multi-agent-systems"><span class="module-n">03</span><span class="module-body"><span class="module-title">Multi-Agent Systems</span><span class="module-big">Several agents can work on one problem together. Split the work, run the agents in parallel, and let them hand off through shared files. Three agents search, three more decide. Handoffs are where work gets lost, so check them.</span></span><span class="module-arrow">→</span></a></li><li data-slug="security"><a href="#security"><span class="module-n">04</span><span class="module-body"><span class="module-title">Security</span><span class="module-big">You can&#39;t tell if your agent is safe from its output. Run a check; don&#39;t wait for certainty.</span></span><span class="module-arrow">→</span></a></li><li data-slug="output-quality"><a href="#output-quality"><span class="module-n">05</span><span class="module-body"><span class="module-title">Grounded Output</span><span class="module-big">There is truth out there, and your agent&#39;s job is to stay connected to it. Where it cannot reach a source, it fills the gap: confident, plausible, wrong. Grounding, and checks you test on your own output, make the gap visible.</span></span><span class="module-arrow">→</span></a></li><li data-slug="evaluations"><a href="#evaluations"><span class="module-n">06</span><span class="module-body"><span class="module-title">Evaluations</span><span class="module-big">Put the Module 5 judge in a loop and the work improves by itself. The generator sharpens against the judge&#39;s feedback, round after round, while you walk away.</span></span><span class="module-arrow">→</span></a></li><li data-slug="personal-to-team"><a href="#personal-to-team"><span class="module-n">07</span><span class="module-body"><span class="module-title">From Personal to Team</span><span class="module-big">You can&#39;t really share an agent. You can share the context, a skill, the output, or an interface, and choosing between them is a strategy decision.</span></span><span class="module-arrow">→</span></a></li><li data-slug="agents-building-agents"><a href="#agents-building-agents"><span class="module-n">08</span><span class="module-body"><span class="module-title">Agents Building Agents (The Flywheel)</span><span class="module-big">Agents building agents is how you and your organisation learn faster. Your agent can improve your agent, and from there a hundred agents is a matter of describing them.</span></span><span class="module-arrow">→</span></a></li></ol><h3 class="index-heading">Supplementary</h3><ol class="module-list index-supplementaries"><li><a href="#supplementary-what-is-an-agent" target="_blank" rel="noopener"><span class="supp-kind">Reference</span><span class="supp-title">What is an Agent</span><span class="module-arrow">→</span></a></li><li><a href="#supplementary-agent-trigger-list" target="_blank" rel="noopener"><span class="supp-kind">Reference</span><span class="supp-title">Agent Trigger List</span><span class="module-arrow">→</span></a></li><li><a href="#supplementary-building-guardrails" target="_blank" rel="noopener"><span class="supp-kind">Reference</span><span class="supp-title">Building Guardrails (and Skills)</span><span class="module-arrow">→</span></a></li><li><a href="#supplementary-learning-and-compounding-systems" target="_blank" rel="noopener"><span class="supp-kind">Reference</span><span class="supp-title">Learning and Compounding Systems</span><span class="module-arrow">→</span></a></li><li><a href="#supplementary-cookbook-for-agent-system-design" target="_blank" rel="noopener"><span class="supp-kind">Reference</span><span class="supp-title">Cookbook for Agent System Design</span><span class="module-arrow">→</span></a></li></ol>
+</nav>
 
 <section class="module" id="getting-going">
 <h1 id="getting-going">Getting Going</h1>
@@ -17143,7 +17170,7 @@ SOFTWARE.
   try { selected = localStorage.getItem(key); } catch (_) {}
   if (selected !== 'mac' && selected !== 'windows') {
     var platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || navigator.userAgent;
-    selected = /win/i.test(platform) ? 'windows' : 'mac';
+    selected = /win(?:32|64|dows)/i.test(platform) ? 'windows' : 'mac';
   }
   function apply(value) {
     selected = value;

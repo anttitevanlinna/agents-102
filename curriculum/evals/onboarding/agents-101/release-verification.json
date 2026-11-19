@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
-  "verified_at": "2026-11-19T17:20:49.761Z",
-  "release_workbook_sha256": "4da9e6fdd513ca84f9c4c7b127841e25669d5eb20417d240379800a485c4190f",
-  "starter_sha256": "bfa92509fde4f90b3dbba1f07bcd3104327054a74a43b95c658f501f61bdb410",
-  "download_url": "https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=bfa92509fde4f90b",
-  "contracts_evidence": "curriculum/evals/onboarding/agents-101/out/release-afd55e0c-d1e2-437b-a12b-9a59757f2ef9",
+  "verified_at": "2026-11-19T17:44:03.416Z",
+  "release_workbook_sha256": "1deb9dac9b6ca26b7819213641c51af2476c2f11e760d1c701a7b4d8c2e7508e",
+  "starter_sha256": "fc84016c1b6563a0df3677424ee9d940c34dc1c1f14aed4360e9dec26af5c5de",
+  "download_url": "https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=fc84016c1b6563a0",
+  "contracts_evidence": "curriculum/evals/onboarding/agents-101/out/release-415e916a-df0f-4d09-accc-e304aafade26",
   "contracts": [
     {
       "outcome": "ONB-01",
@@ -56,16 +56,15 @@
     "version_matches_archive": true,
     "contract_checks_pass": true,
     "automated_tests": {
-      "passed": 48,
+      "passed": 49,
       "failed": 0,
       "command": "node --test scripts/a101-mvp-navigation.test.js scripts/build-a101-mvp.test.js curriculum/evals/onboarding/agents-101/run.test.js"
     },
     "browser_setup": {
-      "mac_detected": true,
-      "windows_override": true,
-      "folder_directions_and_both_video_captions_change": true,
-      "override_survives_reload": true,
-      "cowork_remains_selected": true
+      "welcome_visible": true,
+      "calendar_preview_visible": true,
+      "first_game_link_opens_prework": true,
+      "prework_names_folder_to_create": true
     }
   },
   "model_smokes": {
@@ -88,16 +87,28 @@
     }
   },
   "persona_reads": {
-    "evidence_directory": "curriculum/evals/onboarding/agents-101/out/html-ratings-cb6c76dd-a60f-4f25-aae1-c4ccd910ae2b",
-    "mean_stars": 4,
+    "evidence_directory": "curriculum/evals/onboarding/agents-101/out/decimal-welcome-500ebbbf-d8de-4b58-90d3-2a8900ee7ee4",
+    "source_sha256": "1deb9dac9b6ca26b7819213641c51af2476c2f11e760d1c701a7b4d8c2e7508e",
+    "excerpt_sha256": {
+      "mac": "6f75876e2329f9f62f83bb3a99c99ddd95777d9689d5af92b9b687d3a0e0ccbe",
+      "windows": "a836742c2e1be3a895fe71bc76210740926d60ee1f0c9e964c871516f48a5554"
+    },
+    "condition": "Welcome, course purpose and first-result preview, followed by named actions in Prework",
     "calls": 30,
-    "source_sha256": "6cef4e4687ca4265836a4a0978062330b883cb8b58baca658065eab3b8aeaa8f",
-    "condition": "Game first, plain folder/file directions, described videos assumed available",
-    "subsequent_changes": "The Mac/Windows setup picker and removal of the hidden CLI tilde path were added after these reads. They have DOM/browser checks, not a new persona rating. These scores bind to source_sha256 above, not to final release bytes."
+    "mean_stars": 4.353333333333334,
+    "model_names": [
+      "claude-sonnet-5-5"
+    ],
+    "histogram": {
+      "4.4": 15,
+      "4.3": 12,
+      "4.6": 1,
+      "4.2": 2
+    }
   },
   "prior_full_model_run": {
     "evidence_directory": "curriculum/evals/onboarding/agents-101/out/62261d7d-7326-4524-b161-b6de1a2a7d35",
     "coverage": "Historical only. Its recorded workbook, starter, reading material and old installation return differ from this release; do not report the 43-invocation suite as a current pass."
   },
-  "limits": "No native Cowork startup, automatic instruction loading, permissions flow, human completion, elapsed start time or game play observed. Video files remain placeholders. Persona ratings are conditional on assumed videos and precede the OS picker."
+  "limits": "The welcome and Prework link were observed in a browser. The model ratings assume the placeholder demonstrations are available. Native Cowork start, folder permissions, automatic instruction loading, human completion, elapsed time and game play remain unobserved in this release."
 }

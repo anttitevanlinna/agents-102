@@ -10,7 +10,7 @@ node scripts/build-a101-mvp.js
 
 Output: `site/clients/acme-mvp/`. Workbook URL: https://agents102.bosser.consulting/clients/acme-mvp/agents-101/
 
-`onboarding.md` owns the Start/Pause/Resume section. `prework.md` owns this edition's startup order: choose a folder and task, build and play the game, install the starter and folder instruction, summarize meetings, then read the mental frame. The meetings task defaults to a screenshot; its connector alternative is optional. The public workbook and packaged handbook share this Prework. Legacy section anchors remain available for saved links.
+`onboarding.md` owns the Start/Pause/Resume section, a static game example and a short preview of the calendar summary. One primary action leads to Prework. `prework.md` owns this edition's startup order: choose a folder and task, build and play the game, install the starter and folder instruction, summarize meetings, then read the mental frame. The full course index follows Prework, before Module 1. The meetings task defaults to a screenshot; its connector alternative is optional. The public workbook and packaged handbook share this Prework. Legacy section anchors remain available for saved links.
 
 A Mac/Windows setup picker appears before the first folder step. It detects the OS, allows an override and keeps that preference in browser-local storage. It selects the matching folder directions and video captions without changing the runtime. The offline companion carries the same control.
 

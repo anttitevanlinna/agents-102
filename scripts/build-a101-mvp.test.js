@@ -8,7 +8,7 @@ const path = require('node:path');
 const { execFileSync } = require('node:child_process');
 const { createHash } = require('node:crypto');
 const { JSDOM, VirtualConsole } = require('jsdom');
-const { WORKBOOK_URL, stripExternalFonts, applyLoaderFraming, preworkSection, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT } = require('./build-a101-mvp.js');
+const { WORKBOOK_URL, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT } = require('./build-a101-mvp.js');
 const { renderCourseNavigation, COURSE_READING_CUE, EXTRACTION_BOOTSTRAP } = require('./a101-mvp-navigation.js');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -56,6 +56,16 @@ test('edition loader framing patches exactly two claims and fails on upstream dr
   assert.equal(applyLoaderFraming(`<p>${first}</p>`, { required: false }), '<p>You develop your working rules in the Debrief. The existing root file only loads course navigation.</p>');
 });
 
+test('Contents moves behind the first start without copying or cutting any content', () => {
+  const toc = '<nav class="workbook-toc"><a href="#getting-going">Module 1</a></nav>';
+  const prework = '<section class="module" id="prework"><h2>First game</h2></section>';
+  const moduleOne = '<section class="module" id="getting-going"><p>The first module.</p></section>';
+  assert.equal(moveContentsAfterPrework(toc + prework + moduleOne), prework + toc + '\n\n' + moduleOne);
+  assert.throws(() => moveContentsAfterPrework(prework + moduleOne), /Expected one Contents/);
+  assert.throws(() => moveContentsAfterPrework(toc + toc + prework + moduleOne), /Expected one Contents/);
+  assert.throws(() => moveContentsAfterPrework(prework + toc + moduleOne), /Unexpected Contents/);
+});
+
 test('font removal consumes the complete Google import with variation semicolons', () => {
   const css = fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.css'), 'utf8');
   const importLine = css.split('\n').find(line => line.startsWith('@import'));
@@ -75,7 +85,7 @@ test('setup picker detects the OS, keeps an override locally, and works without 
   for (const [platform, saved, expected, blocked] of [
     ['Win32', null, 'windows', false], ['MacIntel', null, 'mac', false],
     ['Win32', 'mac', 'mac', false], ['MacIntel', 'invalid', 'mac', false],
-    ['Win32', null, 'windows', true],
+    ['Win32', null, 'windows', true], ['Darwin', null, 'mac', false],
   ]) {
     const picker = new JSDOM(markup, { url: WORKBOOK_URL, runScripts: 'outside-only' });
     try {
@@ -157,13 +167,20 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     assert.ok(start.querySelector(':scope > .module'), 'onboarding reuses module typography');
     assert.ok(!document.querySelector('main > section.module.a101-onboarding'), 'slide chunker must not include onboarding');
     assert.ok(start.previousElementSibling.classList.contains('workbook-cover'));
-    assert.ok(start.nextElementSibling.classList.contains('workbook-toc'));
+    assert.equal(start.nextElementSibling.id, 'prework', 'first-time reader reaches the first task before the course index');
+    assert.ok(document.querySelector('main > .workbook-toc').previousElementSibling.matches('section#prework'));
+    assert.ok(document.querySelector('main > .workbook-toc').nextElementSibling.matches('section#getting-going'));
     assert.equal(document.querySelector('.workbook-topnav__modules a').getAttribute('href'), '#start-learning');
     for (const id of ['start-learning', 'pause-learning', 'resume-learning']) assert.equal(document.querySelectorAll(`[id="${id}"]`).length, 1);
     assert.ok(document.body.classList.contains('runtime-cowork'), 'fresh learner defaults to Cowork');
     assert.equal(start.querySelectorAll('details:not([open])').length, 2);
-    const begin = [...start.querySelectorAll('a[href="#prework"]')].find(anchor => anchor.textContent === 'Start Prework');
+    const begin = start.querySelector('a.a101-start-link[href="#prework"]');
     assert.ok(begin, 'onboarding has a clear Prework entry');
+    assert.equal(begin.textContent, 'Make my first game');
+    assert.equal(start.querySelectorAll('a[href="#prework"]').length, 1, 'one primary action leads to the game');
+    assert.ok(start.querySelector('.a101-snake-preview[role="img"][aria-label]'), 'game preview has an accessible example label');
+    assert.equal(start.querySelector('#start-learning').textContent, 'Welcome to Agents 101');
+    assert.match(start.querySelector('.a101-first-look__next').textContent, /screenshot of your calendar.*five-line summary/);
     assert.equal(begin.closest('details'), null, 'first-time entry must remain visible outside pause/resume details');
     dom.window.location.hash = '#resume-learning';
     dom.window.dispatchEvent(new dom.window.HashChangeEvent('hashchange'));
@@ -217,7 +234,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     assert.ok(copied.at(-1).includes(EXTRACTION_BOOTSTRAP), 'extraction alone installs the course context loader');
     const folderInstruction = document.querySelector('.a101-folder-instruction');
     assert.equal(document.querySelectorAll('.a101-folder-instruction').length, 1);
-    assert.equal(folderInstruction.querySelector('code').textContent, 'Read CLAUDE.md before working in this folder.');
+    assert.ok([...folderInstruction.querySelectorAll('code')].some(node => node.textContent === 'Read CLAUDE.md before working in this folder.'));
     assert.ok(extractionBlock.compareDocumentPosition(folderInstruction) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING);
     assert.ok(snakeBlock.compareDocumentPosition(folderInstruction) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING, 'folder instruction follows the first game and starter');
     assert.equal(dom.window.getComputedStyle(folderInstruction).display, 'block', 'Cowork sees the folder reading step after extraction');

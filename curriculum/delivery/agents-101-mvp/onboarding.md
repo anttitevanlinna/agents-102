@@ -1,12 +1,13 @@
-# Start learning
+<h1 id="start-learning">Welcome to Agents 101</h1>
 
-Keep this workbook open beside Cowork. Copy each request into Cowork, then return here when the work is ready.
+You’ll learn to give an AI agent a job, try what it makes, and steer it when you want a different result. Keep this workbook open next to Claude Desktop. It tells you what to do in Cowork and where to pick up when you come back.
 
-## Start once
+<div class="a101-first-look" id="start-once">
+<div class="a101-snake-preview" role="img" aria-label="Example snake game: a green snake and a red apple on a square board"><span class="a101-snake-preview__body" aria-hidden="true"></span><span class="a101-snake-preview__food" aria-hidden="true"></span></div>
+<div><p class="a101-first-look__title">First, make a Snake game.</p><p>Send one request, play the game in your browser, and ask for a change of your own.</p><p class="a101-first-look__next">Then give your agent a screenshot of your calendar and get a five-line summary of your week.</p></div>
+</div>
 
-[Begin with Prework](#prework): choose an empty training folder and make a snake game. Keep the same folder throughout the course. Start a fresh task where the workbook asks for one.
-
-[Start Prework](#prework)
+<p><a class="a101-start-link" href="#prework">Make my first game</a></p>
 
 ## Pause learning
 

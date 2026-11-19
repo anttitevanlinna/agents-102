@@ -1,46 +1,48 @@
 # Prework
 
-Make a game you can play, then set up the files you will use throughout the course.
+Keep everything you make in one folder on your computer. Start by making a game in it.
 
 <div class="a101-os-picker" role="group" aria-label="Setup for your computer">Setup for: <button type="button" data-a101-os="mac" aria-pressed="false">Mac</button> <button type="button" data-a101-os="windows" aria-pressed="false">Windows</button></div>
 
-## 1. Choose your training folder
+## 1. Create a folder called agents-101
 
 <span id="1-set-up-your-agent-runtime-5-min"></span>
+<span id="1-choose-your-training-folder"></span>
 
-<span data-a101-os-only="mac">On Mac, open Documents in Finder.</span> <span data-a101-os-only="windows">On Windows, open Documents in File Explorer.</span> Create a new folder named `agents-101`. This is your training folder. Keep it for everything you build in the course.
+<div class="a101-video-placeholder rt-profile rt-profile-cowork">Assume there is a short <span data-a101-os-only="mac">Mac</span><span data-a101-os-only="windows">Windows</span> video here: create the training folder in Documents, select it in a new Cowork task, paste the game request below, and open the finished game in a browser.</div>
 
-<div class="a101-video-placeholder rt-profile rt-profile-cowork">Assume there is a <span data-a101-os-only="mac">Mac</span><span data-a101-os-only="windows">Windows</span> video here showing how to create the training folder in Documents and start a Cowork task with it.</div>
+<span data-a101-os-only="mac">In Finder, open Documents.</span> <span data-a101-os-only="windows">In File Explorer, open Documents.</span> Inside Documents, create an empty folder called `agents-101`.
 
 **Session** *(new, "Prework")*
 
-<span class="rt-cowork">In Cowork, click **New task** and select the `agents-101` folder you just created.</span><span class="rt-code">Start a new session in your selected interface with the `agents-101` folder you created in Documents as the working folder.</span>
+<span class="rt-cowork">Open **Claude Desktop** and start a new conversation. If you see a choice between Chat and Cowork, pick **Cowork**. From the message box, add a folder and select `agents-101` in Documents.</span><span class="rt-code">Start a new session in your selected interface with the `agents-101` folder you created in Documents as the working folder.</span>
+
+<p class="rt-profile rt-profile-cowork">Once you see <code>agents-101</code> attached, you’re ready to send the game request. If Claude asks for approval, check that it’s asking to make the game in that folder.</p>
 
 ## 2. Build a snake game
 
 <span id="4-build-a-snake-game-10-min"></span>
 
-A snake game gives you something you can try yourself. Copy this request into your task:
+Click **Copy**, paste the request into your task, and send it. The agent will make the `prework` folder and save the game inside it.
 
 {{prompt:a101-prework-snake-game}}
 
-The agent creates a `prework` folder inside your training folder and saves `snake.html` there. When it finishes, open your training folder, open `prework`, then double-click `snake.html` to play in your browser. You can ask for changes and try it again. Keep the file. It's yours.
+When the agent says the game is saved, open `agents-101`, then `prework`. Double-click `snake.html` to play in your browser.
 
-Return to this workbook when you are ready to continue.
+Try a change of your own: ask for different colours, a slower snake, or whatever would make it more fun. Play again, then return here. Keep this task open for the next step.
 
-## 3. Install the starter and set the folder instruction
+## 3. Add the course files
 
 <span id="3-install-the-training-folder-3-min"></span>
+<span id="3-install-the-starter-and-set-the-folder-instruction"></span>
 
-[Download the starter file set](<CONTENT_URL>), then move `agents-101-starter.tar.gz` into your `agents-101` training folder, beside the `prework` folder your game created. Stay in the same task and ask the agent to unpack it:
+Once you’ve played your game, [download the course files](<CONTENT_URL>). Move `agents-101-starter.tar.gz` into `agents-101`, next to the `prework` folder. Copy and send this request in the same task to unpack the download.
 
 {{prompt:a101-prework-extract-tarball}}
 
-Installation adds reference material and course navigation. The training-folder `CLAUDE.md` points the agent to that navigation file so it can save your place and link you back to the workbook.
-
 <div class="a101-video-placeholder rt-profile rt-profile-cowork">Assume there is a <span data-a101-os-only="mac">Mac</span><span data-a101-os-only="windows">Windows</span> video here showing how to download the starter into the training folder and where to add the folder reading instruction below.</div>
 
-<p class="rt-profile rt-profile-cowork a101-folder-instruction">Set the instructions for your Cowork training folder to: <code>Read CLAUDE.md before working in this folder.</code> Use this same folder when you start a fresh task.</p>
+<p class="rt-profile rt-profile-cowork a101-folder-instruction">To help a new task pick up where you left off, open <strong>Customize</strong> in Claude Desktop. Add <code>Read CLAUDE.md before working in this folder.</code> to the folder instructions for <code>agents-101</code>. Select that same folder when you start a new task.</p>
 
 You can now use [Pause learning](#pause-learning) and [Resume learning](#resume-learning) to save and find your place. Keep revising the current work for as long as you want before continuing.
 
@@ -86,9 +88,10 @@ Connecting work apps is optional. If you want to set one up, use the connector s
 
 </details>
 
-## 5. Read the mental frame
+## 5. See what makes this an agent
 
 <span id="6-read-the-mental-frame-10-min"></span>
+<span id="5-read-the-mental-frame"></span>
 
 Read [What is an Agent, LLM vs chat](trainings/agents-101/supplementary/what-is-an-agent.md#llm-vs-chat). It explains what changes when your agent can work with files and tools instead of only answering in a chat.
 
@@ -97,3 +100,11 @@ Read [What is an Agent, LLM vs chat](trainings/agents-101/supplementary/what-is-
 <span id="bring-to-module-1"></span>
 
 Keep your snake game, meetings summary, and installed starter in the training folder. End this task when you are ready. Module 1 starts with a fresh task in the same `agents-101` folder.
+
+<!-- maintainer -->
+
+## Source verification
+
+- `[checked:2026-11-19 result:OK due:cohort]` https://academy.claude.com/tutorials/get-started-in-claude-cowork-in-three-steps — [official product tutorial] Desktop conversation/mode selection; add a local folder from the message box. fallback: verify the current desktop entry and folder picker before delivery.
+- `[checked:2026-11-19 result:OK due:cohort]` https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork — [official product documentation] Approval behaviour varies by mode and organization; learner reviews the actual request. fallback: verify the approval flow without prescribing a mode or blanket permission.
+- `[checked:2026-11-19 result:OK due:cohort]` https://claude.com/resources/guides/claude-cowork-product-guide/getting-started — [official product guide] Folder instructions live in Customize in Claude Desktop. fallback: verify the current location for the folder instruction before delivery.

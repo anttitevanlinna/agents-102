@@ -77,8 +77,9 @@ func allowed(_ raw: String) -> Bool {
   let t = normalise(raw)
   if t.isEmpty { return true }
   if exact.contains(t) { return true }
-  // tolerate one leading icon letter: "d documents" -> "documents"
-  if let sp = t.firstIndex(of: " "), t.distance(from: t.startIndex, to: sp) <= 2, exact.contains(String(t[t.index(after: sp)...])) { return true }
+  // a leading icon read as 1-2 chars ("d documents", "c7 addl folder"): judge the rest with every rule below too
+  if let sp = t.firstIndex(of: " "), t.distance(from: t.startIndex, to: sp) <= 2 {
+    let rest = String(t[t.index(after: sp)...]); if rest.count >= 3 && allowed(rest) { return true } }
   let r = NSRange(t.startIndex..., in: t)
   if regexes.contains(where: { $0.firstMatch(in: t, range: r) != nil }) { return true }
   // OCR noise around a known label can never be a private name, so it stays sharp:

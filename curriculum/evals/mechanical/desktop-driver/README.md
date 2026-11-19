@@ -17,6 +17,7 @@ cd curriculum/evals/mechanical/desktop-driver
 bash takes/a101-prework-add-folder.sh dry          # rehearse: runs to the last step before anything changes, cancels out
 ./clip.sh a101-prework-add-folder                  # record + redact + leak check + contact sheet -> out/<take>.mp4
 ./clip.sh a101-prework-add-folder --redact         # re-redact the existing recording after tuning
+./clip.sh a101-prework-add-folder --cut            # re-cut the hint clips only (seconds, no OCR pass)
 ```
 
 `clip.sh` builds the helpers on first use. Run with bash, not zsh. `out/` is gitignored: the raw `.mov` shows the operator's whole screen and never leaves the machine; only the `.mp4` that printed `CLEAN` does.
@@ -24,6 +25,20 @@ bash takes/a101-prework-add-folder.sh dry          # rehearse: runs to the last 
 ## New take
 
 Copy `takes/a101-prework-add-folder.sh`. Keep the shape: guard against leftovers → `reset.sh` → start recording → `click_text` / `expect_text` pairs → `dry` branch that stops before the first change on disk. Declare redaction in one comment line, `# redact: --crop … --trim … --blur x,y,w,h@from-to`. Dry-run until it passes, then `clip.sh`.
+
+## Hint chains — cut to the hint, not the screen
+
+What ships is not the take but a **chain of hint clips**: 2–6 s each, one key moment, cropped to the place where it happens (the chip and its menu, the name dialog, the Allow card, the result). Maintainer, 2026-11-19: it shows the student only the hint they need, none of the clutter, and it keeps the redaction need close to zero. One take records the whole flow once; each hint is one line in the take:
+
+```
+# cut[3-name-it]: 13.3-19.4 crop=638:300:1037:600 src=raw round=24
+```
+
+- **Crop to the element's own edges.** Measure them in pixels (white panel on dimmed screen: scan outward from inside it), never eyeball. A margin shows slivers of the screen behind.
+- **`round=R`** masks a dialog's rounded corners to white; measure R the same way (the first white pixel per row from the corner).
+- **End on the pointer arriving, not on the press.** Find the click frame by OCR-probing at 0.1 s for when the label goes missing; end there. The pressed button misreads and would blur.
+- **`src=raw`** cuts from the unredacted take at native resolution, for crops that show only app text. Redaction blurs a hovered button (the highlight breaks OCR), so a raw cut keeps the hint sharp. The guard: a raw cut must contain **only allowlisted text**; anything else fails it. That is stricter than the name check, because a raw crop has no blur to fall back on.
+- Otherwise cuts come from the redacted video. Redact at native width (`--width` = crop width) so hint crops stay crisp.
 
 ## Redaction (`bin/redact`)
 

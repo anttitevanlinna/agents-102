@@ -33,31 +33,50 @@ fi
 [[ -f "$MP4" ]] || { echo "no redacted video $MP4" >&2; exit 1; }
 
 # ---- cuts
-cut_one() {  # name, segments, [crop], [src: redacted|raw]
-  local name="$1" segs="$2" crop="${3:-}" src="${4:-redacted}" out="$D/out/$TAKE-$1.mp4" vf="" n=0 f="" prev="" off=0 len
+cut_one() {  # name, segments, [crop], [src: redacted|raw], [round radius px]
+  local name="$1" segs="$2" crop="${3:-}" src="${4:-redacted}" round="${5:-}" out="$D/out/$TAKE-$1.mp4" vf="" n=0 f="" prev="" off=0 len
   local in="$MP4"; [[ "$src" == raw ]] && in="$RAW"   # raw = native resolution; only for crops with nothing private in them (leak check still runs)
   IFS=',' read -r -a S <<< "$segs"
   for s in "${S[@]}"; do
     f+="[0:v]trim=${s%-*}:${s#*-},setpts=PTS-STARTPTS${crop:+,$crop}[s$n];"; n=$((n+1))
   done
-  if (( n == 1 )); then f+="[s0]null[v]"; else
+  if (( n == 1 )); then f+="[s0]null[v0];"; else
     prev="s0"; off=0
     for ((k=1; k<n; k++)); do
       len="$(echo "${S[$((k-1))]#*-} - ${S[$((k-1))]%-*}" | bc -l)"; off="$(echo "$off + $len - 0.3" | bc -l)"
       f+="[$prev][s$k]xfade=transition=fade:duration=0.3:offset=$off[x$k];"; prev="x$k"
     done
-    f+="[$prev]null[v]"
+    f+="[$prev]null[v0];"
+  fi
+  if [[ -n "$round" && -n "$crop" ]]; then
+    # a dialog's rounded corners show the dimmed screen behind it: mask them to white so the clip is just the panel
+    local cw ch R="$round"; IFS=':' read -r cw ch _ <<< "${crop#crop=}"
+    f+="[v0]format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*lte(hypot(max(0,max($R-X,X-(W-1-$R))),max(0,max($R-Y,Y-(H-1-$R)))),$R)'[rv];"
+    f+="color=c=white:s=${cw}x${ch}:r=60[bg];[bg][rv]overlay=shortest=1,format=yuv420p[v]"
+  else
+    f+="[v0]null[v]"
   fi
   ffmpeg -nostdin -v error -y -i "$in" -filter_complex "$f" -map "[v]" -an -c:v libx264 -pix_fmt yuv420p -crf 20 -movflags +faststart "$out"
   echo "  cut $name -> $out ($(ffprobe -v error -show_entries format=duration -of csv=p=0 "$out")s)"
 }
-CLIPS=("$MP4")
+CLIPS=("$MP4") RAWCUTS=()
 while IFS= read -r line; do
   name="$(sed -E 's/^# cut\[([^]]+)\]: .*/\1/' <<< "$line")"; rest="$(sed -E 's/^# cut\[[^]]+\]: //' <<< "$line")"
-  read -r segs opts <<< "$rest"; crop="" src="redacted"
-  for o in $opts; do case "$o" in crop=*) crop="$o";; src=*) src="${o#src=}";; esac; done
-  cut_one "$name" "$segs" "$crop" "$src"; CLIPS+=("$D/out/$TAKE-$name.mp4")
+  read -r segs opts <<< "$rest"; crop="" src="redacted" round=""
+  for o in $opts; do case "$o" in crop=*) crop="$o";; src=*) src="${o#src=}";; round=*) round="${o#round=}";; esac; done
+  cut_one "$name" "$segs" "$crop" "$src" "$round"; CLIPS+=("$D/out/$TAKE-$name.mp4")
+  [[ "$src" == raw ]] && RAWCUTS+=("$D/out/$TAKE-$name.mp4")
 done < <(grep -E '^# cut\[[^]]+\]: ' "$T" || true)
+
+# ---- raw cuts skip redaction, so they must hold ONLY allowlisted text (stricter than the name check below):
+# any text the allowlist does not cover, anyone's or not, fails the cut.
+for c in "${RAWCUTS[@]+"${RAWCUTS[@]}"}"; do
+  extra="$("$D/bin/redact" "$c" /dev/null "$D/redact-allow.txt" --report-only --fps 15 2>/dev/null | cut -f2 | sort -u)"
+  if [[ -n "$extra" ]]; then
+    echo "RAW CUT NOT CLEAN: $c shows text off the allowlist —" >&2; printf '  %s\n' "$extra" >&2
+    echo "fix: tighten its crop, or cut it from the redacted video (drop src=raw)" >&2; exit 2
+  fi
+done
 
 # ---- leak check, every output
 echo "== leak check (OCR of each clip against this Mac's real names; nothing written to disk)"

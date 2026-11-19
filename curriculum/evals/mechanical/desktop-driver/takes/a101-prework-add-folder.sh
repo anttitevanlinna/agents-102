@@ -6,9 +6,14 @@
 set -euo pipefail
 source "$(cd "$(dirname "$0")/.." && pwd)/steps.sh"
 MODE="${1:-dry}" MOV="${2:-$OUT/a101-prework-add-folder.mov}"
-# redact: --crop 556,0,2154,1502 --width 1280 --trim 31 --blur 990,1110,1360,350@0-6.3 --blur 990,1170,1360,290@6.3-24 --blur 990,1110,1360,350@24-99
-# cut[name-dialog]: 13.3-19.4 crop=638:300:1037:600 src=raw
-# cut[attach-folder]: 0-12.4,20.3-31
+# redact: --crop 556,0,2154,1502 --width 2154 --trim 31 --blur 990,1110,1360,350@0-6.3 --blur 990,1170,1360,290@6.3-24 --blur 990,1110,1360,350@24-99
+# Hint chain: one short clip per key moment, cropped to where it happens (coords = redacted video px).
+# cut[1-add-folder]: 3.0-5.75 crop=600:220:990:750 src=raw
+# cut[2-new-folder]: 9.0-12.15 crop=760:750:4:420
+# cut[3-name-it]: 13.3-19.4 crop=638:300:1037:600 src=raw round=24
+# cut[4-open]: 20.4-22.85 crop=1710:880:4:300
+# cut[5-allow]: 24.1-26.75 crop=794:272:958:615 src=raw round=24
+# cut[6-attached]: 27.3-30.8 crop=1340:430:444:540
 PICK="335 1135 170 630"                               # picker bounds, screen points
 
 [[ ! -e "$HOME/Documents/agents-101" ]] || die "~/Documents/agents-101 already exists"

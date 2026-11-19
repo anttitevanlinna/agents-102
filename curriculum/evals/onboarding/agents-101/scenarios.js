@@ -26,7 +26,7 @@ function scenarios(prompts, archiveFiles = []) {
       prompt: prompts.extract,
       facts: 'The learner downloaded the published starter into the training folder. Existing module-1/keep.txt belongs to the learner. The only authorized initial root instruction is the course-navigation reading cue installed by this request.',
       allowed: name => starterWrites.has(name),
-      checks: [criterion('installed', 'ONB-02', 'Actual tool results and resulting files establish that extraction succeeded, required homes exist and the course-only reading cue was installed; learner work survived. A claim alone is insufficient.'), criterion('return', 'ONB-03', `The actual final response returns ${url('4-build-a-snake-game-10-min')} and does not run the snake exercise.`)],
+      checks: [criterion('installed', 'ONB-02', 'Actual tool results and resulting files establish that extraction succeeded, required homes exist and the course-only reading cue was installed; learner work survived. A claim alone is insufficient.'), criterion('return', 'ONB-03', `The actual final response returns ${url('3-install-the-training-folder-3-min')} for the learner to set the folder reading instruction, then waits. It does not run the snake exercise or continue to meetings.`)],
       inspect: { required: ['prework/course-navigation.md', 'CLAUDE.md'], dirs: ['prework', 'memory', 'sources', 'agents', 'module-4/policies'], preserve: ['module-1/keep.txt'], absent: ['prework/snake.html'] }
     },
     {
@@ -43,7 +43,7 @@ function scenarios(prompts, archiveFiles = []) {
       id: 'starter-missing', files: {}, prompt: prompts.extract,
       facts: 'There is no starter archive anywhere in this empty training folder. No successful extraction occurred.',
       allowed: () => false,
-      checks: [criterion('recover-download', 'ONB-02', 'The response reports the absent archive and gives a concrete learner action to place/download it in the training folder. It does not claim successful installation or advance to snake.')],
+      checks: [criterion('recover-download', 'ONB-02', 'The response reports the absent archive and gives a concrete learner action to place/download it in the training folder. It does not claim successful installation or advance to later Prework tasks.')],
       inspect: { absent: ['prework/snake.html'] }
     },
     {

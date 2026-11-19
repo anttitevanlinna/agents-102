@@ -1,22 +1,18 @@
 # Start learning
 
-Keep this workbook open beside Cowork. Read the next step here, copy its prompt into Cowork, and return here when the work is ready. The workbook holds the instructions; you supply your own material and judge the results.
+Keep this workbook open beside Cowork. Copy each request into Cowork, then return here when the work is ready.
 
 ## Start once
 
-[Begin with Prework](#prework). It walks you through creating your training folder, downloading the starter, and making your first working files. Cowork is selected by default in the runtime picker above. Keep the same folder throughout the course.
-
-The starter installation adds a reading cue to your training-folder `CLAUDE.md`. It points to a small navigation file that saves your place and links you back here. You can keep revising the current work before moving on.
-
-Use the same Cowork task within a module. Start a fresh task where the workbook asks for one. Your files carry the work forward.
-
-Your position note stays in your training folder. There is no course account to create. Modules 1 to 6 form the core course; Modules 7 and 8 extend it. The Module 8 proposal forum is a group activity.
+[Begin with Prework](#prework): choose an empty training folder and make a snake game. Keep the same folder throughout the course. Start a fresh task where the workbook asks for one.
 
 [Start Prework](#prework)
 
 ## Pause learning
 
-Before closing a task, ask the agent to save where you stopped.
+After installing the starter in Prework, ask the agent to save where you stopped before closing a task. Your position note stays in your training folder.
+
+Before that setup is finished, bookmark your current workbook section and return to it manually. Finish the starter setup to enable saved-position navigation.
 
 **Prompt** Cowork
 
@@ -28,7 +24,7 @@ Use `prework/course-navigation.md` to save my place before we stop.
 
 ## Resume learning
 
-Open a Cowork task with your existing training folder. Copy this request to find your place in the workbook.
+After starter setup, open a Cowork task with your existing training folder. Copy this request to find your place in the workbook. If you paused before setup, return to your bookmarked section instead.
 
 **Prompt** Cowork
 

@@ -9,6 +9,7 @@ const { execFileSync } = require('node:child_process');
 const { gzipSync } = require('node:zlib');
 const { createHash } = require('node:crypto');
 const { marked } = require('marked');
+const { JSDOM } = require('jsdom');
 const { createNavigationOverlay, renderCourseNavigation } = require('./a101-mvp-navigation.js');
 require('../site/layouts/curriculum.js').configureMarked(marked);
 
@@ -16,6 +17,40 @@ const ROOT = path.resolve(__dirname, '..');
 const EDITION = 'acme-mvp';
 const WORKBOOK_URL = `https://agents102.bosser.consulting/clients/${EDITION}/agents-101/`;
 const DELIVERY = path.join(ROOT, 'curriculum/delivery/agents-101-mvp');
+const SETUP_CSS = `
+.a101-video-placeholder { margin: 1.25rem 0; padding: 1rem 1.25rem; border: 1px solid var(--line); border-radius: 0.35rem; background: var(--bg); color: var(--fg-2); }
+.a101-os-picker { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: 1.25rem 0; font-size: .9rem; color: var(--fg-2); }
+.a101-os-picker button { font: inherit; color: var(--fg); background: transparent; border: 1px solid var(--line); border-radius: .35rem; padding: .35rem .8rem; cursor: pointer; }
+.a101-os-picker button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+[data-a101-os-only][hidden] { display: none !important; }
+`;
+const SETUP_SCRIPT = `(function () {
+  var key = 'a101-setup-os', selected;
+  try { selected = localStorage.getItem(key); } catch (_) {}
+  if (selected !== 'mac' && selected !== 'windows') {
+    var platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || navigator.userAgent;
+    selected = /win/i.test(platform) ? 'windows' : 'mac';
+  }
+  function apply(value) {
+    selected = value;
+    document.querySelectorAll('[data-a101-os]').forEach(function (button) {
+      button.setAttribute('aria-pressed', String(button.getAttribute('data-a101-os') === selected));
+    });
+    document.querySelectorAll('[data-a101-os-only]').forEach(function (node) {
+      node.hidden = node.getAttribute('data-a101-os-only') !== selected;
+    });
+  }
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('[data-a101-os]');
+    if (!button) return;
+    var value = button.getAttribute('data-a101-os');
+    if (value !== 'mac' && value !== 'windows') return;
+    apply(value);
+    try { localStorage.setItem(key, value); } catch (_) {}
+  });
+  apply(selected);
+})();`;
+
 
 function versionStarterDownload(html, archiveBytes) {
   const url = WORKBOOK_URL + 'agents-101-starter.tar.gz';
@@ -39,12 +74,33 @@ function applyLoaderFraming(html, { required = true } = {}) {
   return html;
 }
 
-function insertCoworkFolderInstruction(html) {
-  const proof = '<p><em>Proof: you placed the file; the agent unpacked it. Two visible steps, no magic.</em></p>';
-  const count = html.split(proof).length - 1;
-  if (count !== 1) throw new Error(`Cowork folder instruction expected one extraction proof, received ${count}`);
-  const instruction = '<p class="rt-profile rt-profile-cowork a101-folder-instruction">Set the instructions for your Cowork training folder to: <code>Read CLAUDE.md before working in this folder.</code> This keeps course navigation available when you start a fresh task.</p>';
-  return html.replace(proof, instruction + '\n' + proof);
+function preworkSection(html) {
+  const dom = new JSDOM(html);
+  try {
+    const sections = dom.window.document.querySelectorAll('section.module#prework');
+    if (sections.length !== 1) throw new Error(`Edition workbook expected one Prework section, received ${sections.length}`);
+    return sections[0].outerHTML;
+  } finally { dom.window.close(); }
+}
+
+function prependOfflinePrework(html, prework) {
+  const target = '<section class="module" id="theory-m1">';
+  if (html.includes('id="prework"')) throw new Error('Offline handbook already contains Prework');
+  const count = html.split(target).length - 1;
+  if (count !== 1) throw new Error(`Offline handbook expected one M1 insertion point, received ${count}`);
+  const theory = new JSDOM(html), route = new JSDOM(prework);
+  let offlinePrework;
+  try {
+    const local = new Set([...theory.window.document.querySelectorAll('[id]'), ...route.window.document.querySelectorAll('[id]')].map(node => node.id));
+    for (const link of route.window.document.querySelectorAll('a[href^="#"]')) {
+      const fragment = link.getAttribute('href');
+      if (!local.has(fragment.slice(1))) link.setAttribute('href', WORKBOOK_URL + fragment);
+    }
+    offlinePrework = route.window.document.getElementById('prework').outerHTML;
+  } finally { theory.window.close(); route.window.close(); }
+  return html.replace(target, offlinePrework + '\n\n' + target)
+    .replace('</head>', `<style data-a101-setup>${SETUP_CSS}</style>\n</head>`)
+    .replace('</body>', `<script data-a101-setup>${SETUP_SCRIPT}</script>\n</body>`);
 }
 
 function renderOnboarding(markdown) {
@@ -76,7 +132,7 @@ function walkFiles(dir, prefix = '') {
     });
 }
 
-function repackStarter(archive, stage, mapFile) {
+function repackStarter(archive, stage, mapFile, prework) {
   const unpacked = path.join(stage, 'starter');
   fs.mkdirSync(unpacked);
   execFileSync('tar', ['xzf', archive, '-C', unpacked], { env: { ...process.env, LC_ALL: 'C' } });
@@ -91,7 +147,7 @@ function repackStarter(archive, stage, mapFile) {
   }
   fs.copyFileSync(mapFile, path.join(unpacked, 'prework/course-navigation.md'));
   const handbook = path.join(unpacked, 'agents-101-handbook.html');
-  fs.writeFileSync(handbook, stripExternalFonts(applyLoaderFraming(fs.readFileSync(handbook, 'utf8'), { required: false })));
+  fs.writeFileSync(handbook, stripExternalFonts(prependOfflinePrework(applyLoaderFraming(fs.readFileSync(handbook, 'utf8'), { required: false }), prework)));
 
   // A sorted, nonrecursive file list keeps tar output independent of creation
   // order; fixed mtimes and gzip without a filename preserve repeatable bytes.
@@ -116,6 +172,9 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
     // overlays must never become part of its public learner download.
     fs.mkdirSync(overlayDir);
     fs.mkdirSync(brandDir);
+    const preworkOverlay = path.join(overlayDir, 'trainings/agents-101/prework.md');
+    fs.mkdirSync(path.dirname(preworkOverlay), { recursive: true });
+    fs.copyFileSync(path.join(DELIVERY, 'prework.md'), preworkOverlay);
     fs.writeFileSync(path.join(brandDir, 'customer.json'), JSON.stringify({ name: 'ACME', hubHeading: 'ACME' }) + '\n');
     const checkpoints = JSON.parse(fs.readFileSync(path.join(DELIVERY, 'checkpoints.json'), 'utf8'));
     createNavigationOverlay({ root: ROOT, overlayDir, workbookUrl: WORKBOOK_URL, checkpoints });
@@ -133,7 +192,10 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
     const customerDir = path.join(path.resolve(outputDir), EDITION);
     const trainingDir = path.join(customerDir, 'agents-101');
     const workbookFile = path.join(trainingDir, 'index.html');
-    let html = insertCoworkFolderInstruction(applyLoaderFraming(fs.readFileSync(workbookFile, 'utf8')));
+    let html = applyLoaderFraming(fs.readFileSync(workbookFile, 'utf8'));
+    // The theory manifest omits setup. Carry the exact rendered edition route
+    // into its offline companion instead of authoring a second instruction set.
+    const offlinePrework = preworkSection(html);
     const onboarding = renderOnboarding(fs.readFileSync(path.join(DELIVERY, 'onboarding.md'), 'utf8'));
     const toc = '<nav class="workbook-toc">';
     if (!html.includes(toc)) throw new Error('Workbook contents insertion point is missing');
@@ -152,8 +214,9 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
 .a101-onboarding__optional > summary h2 { display: inline; font-size: 1.15rem; margin: 0; padding: 0; }
 .a101-onboarding__optional > summary h2::before { display: none; }
 body.slides-active .a101-onboarding { display: none; }
+${SETUP_CSS}
 </style>\n</head>`);
-    html = html.replace('</body>', `<script data-a101-onboarding>
+    html = html.replace('</body>', `<script data-a101-setup>${SETUP_SCRIPT}</script>\n<script data-a101-onboarding>
 (function () {
   function showRead() {
     var read = document.querySelector('.workbook-layout-toggle [data-mode="read"]');
@@ -178,7 +241,7 @@ body.slides-active .a101-onboarding { display: none; }
     // The edition hub has one destination. Existing customer hubs are untouched.
     fs.writeFileSync(path.join(customerDir, 'index.html'), '<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agents 101 — ACME</title><meta http-equiv="refresh" content="0; url=./agents-101/#start-learning"></head><body><p><a href="./agents-101/#start-learning">Start Agents 101</a></p></body></html>\n');
     const archiveFile = path.join(trainingDir, 'agents-101-starter.tar.gz');
-    repackStarter(archiveFile, stage, navigationFile);
+    repackStarter(archiveFile, stage, navigationFile, offlinePrework);
     fs.writeFileSync(workbookFile, versionStarterDownload(stripExternalFonts(html), fs.readFileSync(archiveFile)));
     // Remove only known trainer output for this edition if it was built before.
     for (const name of ['trainer-guide.html', 'trainer-modules.html']) fs.rmSync(path.join(trainingDir, name), { force: true });
@@ -200,4 +263,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { buildEdition, stripExternalFonts, applyLoaderFraming, insertCoworkFolderInstruction, versionStarterDownload, WORKBOOK_URL };
+module.exports = { buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };

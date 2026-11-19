@@ -2748,6 +2748,13 @@ body.slides-active { overflow: hidden; }
 .a101-onboarding__optional > summary h2 { display: inline; font-size: 1.15rem; margin: 0; padding: 0; }
 .a101-onboarding__optional > summary h2::before { display: none; }
 body.slides-active .a101-onboarding { display: none; }
+
+.a101-video-placeholder { margin: 1.25rem 0; padding: 1rem 1.25rem; border: 1px solid var(--line); border-radius: 0.35rem; background: var(--bg); color: var(--fg-2); }
+.a101-os-picker { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: 1.25rem 0; font-size: .9rem; color: var(--fg-2); }
+.a101-os-picker button { font: inherit; color: var(--fg); background: transparent; border: 1px solid var(--line); border-radius: .35rem; padding: .35rem .8rem; cursor: pointer; }
+.a101-os-picker button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+[data-a101-os-only][hidden] { display: none !important; }
+
 </style>
 </head>
 <body class="runtime-cowork workbook student-handbook" data-training="agents-101">
@@ -2777,16 +2784,14 @@ body.slides-active .a101-onboarding { display: none; }
 
 <section class="a101-onboarding"><div class="module">
 <h1 id="start-learning">Start learning</h1>
-<p>Keep this workbook open beside Cowork. Read the next step here, copy its prompt into Cowork, and return here when the work is ready. The workbook holds the instructions; you supply your own material and judge the results.</p>
+<p>Keep this workbook open beside Cowork. Copy each request into Cowork, then return here when the work is ready.</p>
 <h2 id="start-once">Start once</h2>
-<p><a href="#prework">Begin with Prework</a>. It walks you through creating your training folder, downloading the starter, and making your first working files. Cowork is selected by default in the runtime picker above. Keep the same folder throughout the course.</p>
-<p>The starter installation adds a reading cue to your training-folder <code>CLAUDE.md</code>. It points to a small navigation file that saves your place and links you back here. You can keep revising the current work before moving on.</p>
-<p>Use the same Cowork task within a module. Start a fresh task where the workbook asks for one. Your files carry the work forward.</p>
-<p>Your position note stays in your training folder. There is no course account to create. Modules 1 to 6 form the core course; Modules 7 and 8 extend it. The Module 8 proposal forum is a group activity.</p>
+<p><a href="#prework">Begin with Prework</a>: choose an empty training folder and make a snake game. Keep the same folder throughout the course. Start a fresh task where the workbook asks for one.</p>
 <p><a href="#prework">Start Prework</a></p>
 <details class="a101-onboarding__optional"><summary><h2 id="pause-learning">Pause learning</h2></summary>
 
-<p>Before closing a task, ask the agent to save where you stopped.</p>
+<p>After installing the starter in Prework, ask the agent to save where you stopped before closing a task. Your position note stays in your training folder.</p>
+<p>Before that setup is finished, bookmark your current workbook section and return to it manually. Finish the starter setup to enable saved-position navigation.</p>
 <p><strong>Prompt</strong> Cowork</p>
 <pre><code class="language-text">Help me pause Agents 101 so I can resume later.
 
@@ -2795,7 +2800,7 @@ Use `prework/course-navigation.md` to save my place before we stop.
 </details>
 <details class="a101-onboarding__optional"><summary><h2 id="resume-learning">Resume learning</h2></summary>
 
-<p>Open a Cowork task with your existing training folder. Copy this request to find your place in the workbook.</p>
+<p>After starter setup, open a Cowork task with your existing training folder. Copy this request to find your place in the workbook. If you paused before setup, return to your bookmarked section instead.</p>
 <p><strong>Prompt</strong> Cowork</p>
 <pre><code class="language-text">Help me resume Agents 101.
 
@@ -2812,21 +2817,67 @@ Read `prework/course-navigation.md` and help me find my place in the workbook.
 
 <section class="module" id="prework">
 <h1 id="prework">Prework</h1>
-<p>Land at Module 1 with your agent runtime working, your work calendar connected or ready as a screenshot, a snake game, a meetings summary, and a 2-page read. About 50 minutes.</p>
-<h2 id="1-set-up-your-agent-runtime-5-min">1. Set up your agent runtime (5 min)</h2>
-<p>Make sure you can access the agent runtime you selected. Then create an empty folder at <code>~/Documents/agents-101/</code> (right-click in Finder or File Explorer → <em>New Folder</em>). This is your training directory; everything you produce over the eight modules lands here.</p>
-<p><span class="rt-copilot">In GitHub, open <em>Copilot settings</em>. Under <em>Features</em>, set <em>Copilot Memory</em> to <em>Disabled</em> for the training. You turn it back on after the course if you want it.</span></p>
+<p>Make a game you can play, then set up the files you will use throughout the course.</p>
+<div class="a101-os-picker" role="group" aria-label="Setup for your computer">Setup for: <button type="button" data-a101-os="mac" aria-pressed="false">Mac</button> <button type="button" data-a101-os="windows" aria-pressed="false">Windows</button></div>
+
+<h2 id="1-choose-your-training-folder">1. Choose your training folder</h2>
+<p><span id="1-set-up-your-agent-runtime-5-min"></span></p>
+<p><span data-a101-os-only="mac">On Mac, open Documents in Finder.</span> <span data-a101-os-only="windows">On Windows, open Documents in File Explorer.</span> Create a new folder named <code>agents-101</code>. This is your training folder. Keep it for everything you build in the course.</p>
+<div class="a101-video-placeholder rt-profile rt-profile-cowork">Assume there is a <span data-a101-os-only="mac">Mac</span><span data-a101-os-only="windows">Windows</span> video here showing how to create the training folder in Documents and start a Cowork task with it.</div>
+
 <p><strong>Session</strong> <em>(new, &quot;Prework&quot;)</em></p>
-<p><span class="rt-code">Open your code agent in the interface you selected. Start a new session at <code>~/Documents/agents-101/</code>.</span><span class="rt-cowork">Open the <em>Cowork</em> tab next to <em>Chat</em> in your desktop app. Click <em>New task</em> and select <code>~/Documents/agents-101/</code> as the working folder. No terminal required.</span></p>
-<p>Name it <code>agents-101-prework</code> if your runtime supports session names.</p>
-<h2 id="2-connect-your-work-apps-5-min">2. Connect your work apps (5 min)</h2>
-<p>Connect either Microsoft 365 or Google Workspace before the first module if your company allows it. Calendar access is enough for the prework. Email, Google Drive, and OneDrive access are useful too, but not required.</p>
-<p>Other connectors are optional. If your company uses a wiki, Confluence, Jira, Linear, SharePoint, Google Drive, or a similar shared knowledge base, connect it if you already have access. Those sources become useful later when your agent starts reading company material instead of only the files in the training directory.</p>
-<p>If your runtime offers connectors, open its connector settings. Sign in with your work account and enable Microsoft 365 or Google Workspace if it appears.</p>
-<p>If your IT admin has not approved the connector yet, keep going. The calendar screenshot path in section 5, Path B gives you the same teaching moment with less automation.</p>
-<h2 id="3-install-the-training-folder-3-min">3. Install the training folder (3 min)</h2>
-<p>Get the starter file set into your training directory. The starter file set ships the folders and reference material used later in the training: <code>memory/</code>, <code>sources/</code>, <code>agents/</code>, the Module 4 policy files, a library of the prompts the training uses, and the personal-to-team patterns for a later module.</p>
-<p><a href="https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=8b8035554c235af2" target="_blank" rel="noopener">Download the starter file set</a> and save it directly into <code>~/Documents/agents-101/</code>. You should see <code>agents-101-starter.tar.gz</code> land there in Finder or File Explorer. Then ask the agent to unpack it.</p>
+<p><span class="rt-cowork">In Cowork, click <strong>New task</strong> and select the <code>agents-101</code> folder you just created.</span><span class="rt-code">Start a new session in your selected interface with the <code>agents-101</code> folder you created in Documents as the working folder.</span></p>
+<h2 id="2-build-a-snake-game">2. Build a snake game</h2>
+<p><span id="4-build-a-snake-game-10-min"></span></p>
+<p>A snake game gives you something you can try yourself. Copy this request into your task:</p>
+<div class="rt-profile rt-profile-cowork">
+
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Build me a snake game as a single HTML file. Save it as `prework/snake.html`.
+</code></pre>
+</div>
+<div class="rt-profile rt-profile-desktop">
+
+<p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
+<pre><code>Build me a snake game as a single HTML file. Save it as `prework/snake.html`.
+</code></pre>
+</div>
+<div class="rt-profile rt-profile-cli">
+
+<p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
+<pre><code>Build me a snake game as a single HTML file. Save it as `prework/snake.html`.
+</code></pre>
+</div>
+<div class="rt-profile rt-profile-codex-desktop">
+
+<p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
+<pre><code>Build me a snake game as a single HTML file. Save it as `prework/snake.html`.
+</code></pre>
+</div>
+<div class="rt-profile rt-profile-codex-cli">
+
+<p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
+<pre><code>Build me a snake game as a single HTML file. Save it as `prework/snake.html`.
+</code></pre>
+</div>
+<div class="rt-profile rt-profile-copilot-app">
+
+<p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
+<pre><code>Build me a snake game as a single HTML file. Save it as `prework/snake.html`.
+</code></pre>
+</div>
+<div class="rt-profile rt-profile-copilot-cli">
+
+<p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
+<pre><code>Build me a snake game as a single HTML file. Save it as `prework/snake.html`.
+</code></pre>
+</div>
+
+<p>The agent creates a <code>prework</code> folder inside your training folder and saves <code>snake.html</code> there. When it finishes, open your training folder, open <code>prework</code>, then double-click <code>snake.html</code> to play in your browser. You can ask for changes and try it again. Keep the file. It&#39;s yours.</p>
+<p>Return to this workbook when you are ready to continue.</p>
+<h2 id="3-install-the-starter-and-set-the-folder-instruction">3. Install the starter and set the folder instruction</h2>
+<p><span id="3-install-the-training-folder-3-min"></span></p>
+<p><a href="https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=bfa92509fde4f90b" target="_blank" rel="noopener">Download the starter file set</a>, then move <code>agents-101-starter.tar.gz</code> into your <code>agents-101</code> training folder, beside the <code>prework</code> folder your game created. Stay in the same task and ask the agent to unpack it:</p>
 <div class="rt-profile rt-profile-cowork">
 
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
@@ -2940,107 +2991,19 @@ For course navigation, add this line to the training-folder `CLAUDE.md` if it is
 </code></pre>
 </div>
 
-<p class="rt-profile rt-profile-cowork a101-folder-instruction">Set the instructions for your Cowork training folder to: <code>Read CLAUDE.md before working in this folder.</code> This keeps course navigation available when you start a fresh task.</p>
-<p><em>Proof: you placed the file; the agent unpacked it. Two visible steps, no magic.</em></p>
-<h2 id="4-build-a-snake-game-10-min">4. Build a snake game (10 min)</h2>
-<p>Why a snake game? Because you can tell if it works. No ambiguity (either the snake moves or it doesn&#39;t). Also: a working snake game is a small, permanent, perfectly useless thing to own, which makes it more interesting than most of what you produce at work.</p>
-<div class="rt-profile rt-profile-cowork">
+<p>Installation adds reference material and course navigation. The training-folder <code>CLAUDE.md</code> points the agent to that navigation file so it can save your place and link you back to the workbook.</p>
+<div class="a101-video-placeholder rt-profile rt-profile-cowork">Assume there is a <span data-a101-os-only="mac">Mac</span><span data-a101-os-only="windows">Windows</span> video here showing how to download the starter into the training folder and where to add the folder reading instruction below.</div>
 
-<p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Build me a snake game as a single HTML file. Save it as `prework/snake.html`.
-</code></pre>
-</div>
-<div class="rt-profile rt-profile-desktop">
+<p class="rt-profile rt-profile-cowork a101-folder-instruction">Set the instructions for your Cowork training folder to: <code>Read CLAUDE.md before working in this folder.</code> Use this same folder when you start a fresh task.</p>
 
-<p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
-<pre><code>Build me a snake game as a single HTML file. Save it as `prework/snake.html`.
-</code></pre>
-</div>
-<div class="rt-profile rt-profile-cli">
-
-<p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
-<pre><code>Build me a snake game as a single HTML file. Save it as `prework/snake.html`.
-</code></pre>
-</div>
-<div class="rt-profile rt-profile-codex-desktop">
-
-<p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
-<pre><code>Build me a snake game as a single HTML file. Save it as `prework/snake.html`.
-</code></pre>
-</div>
-<div class="rt-profile rt-profile-codex-cli">
-
-<p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
-<pre><code>Build me a snake game as a single HTML file. Save it as `prework/snake.html`.
-</code></pre>
-</div>
-<div class="rt-profile rt-profile-copilot-app">
-
-<p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
-<pre><code>Build me a snake game as a single HTML file. Save it as `prework/snake.html`.
-</code></pre>
-</div>
-<div class="rt-profile rt-profile-copilot-cli">
-
-<p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
-<pre><code>Build me a snake game as a single HTML file. Save it as `prework/snake.html`.
-</code></pre>
-</div>
-
-<p>The agent writes the file. Open <code>prework/snake.html</code> in your browser. On macOS, double-click it in Finder; on Windows, right-click → Open with → your browser. Play.</p>
-<p>Keep the file. It&#39;s yours.</p>
-<p><em>Proof: the agent can create a working file and save it on your machine.</em></p>
-<h2 id="5-summarize-your-week-in-meetings-10-min">5. Summarize your week in meetings (10 min)</h2>
-<p>Quick concept first. <strong>A <em>connector</em> is a way for the agent to talk directly to one of your work apps (your calendar, your email, your files).</strong> When a connector is on, the agent can fetch your real data (&quot;list my meetings this week&quot;) instead of you having to copy-paste it.</p>
-<p>Two paths. Pick the one that matches what you saw.</p>
-<p><strong>Path A. You have a calendar connector enabled</strong> (Microsoft 365 or Google Workspace).</p>
-<div class="rt-profile rt-profile-cowork">
-
-<p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
-</code></pre>
-</div>
-<div class="rt-profile rt-profile-desktop">
-
-<p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
-<pre><code>List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
-</code></pre>
-</div>
-<div class="rt-profile rt-profile-cli">
-
-<p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
-<pre><code>List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
-</code></pre>
-</div>
-<div class="rt-profile rt-profile-codex-desktop">
-
-<p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
-<pre><code>List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
-</code></pre>
-</div>
-<div class="rt-profile rt-profile-codex-cli">
-
-<p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
-<pre><code>List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
-</code></pre>
-</div>
-<div class="rt-profile rt-profile-copilot-app">
-
-<p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
-<pre><code>List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
-</code></pre>
-</div>
-<div class="rt-profile rt-profile-copilot-cli">
-
-<p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
-<pre><code>List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
-</code></pre>
-</div>
-
-<p><strong>Path B (no connector, or you&#39;re not sure).</strong> Default to this one if in doubt.</p>
-<p>Take a screenshot of your calendar week view, then:</p>
+<p>You can now use <a href="#pause-learning">Pause learning</a> and <a href="#resume-learning">Resume learning</a> to save and find your place. Keep revising the current work for as long as you want before continuing.</p>
+<h2 id="4-summarize-your-week-in-meetings">4. Summarize your week in meetings</h2>
+<p><span id="2-connect-your-work-apps-5-min"></span>
+<span id="5-summarize-your-week-in-meetings-10-min"></span></p>
+<p>Take a screenshot of your calendar week view.</p>
 <div class="rt-cli">
 
+<p>Save it in the training folder, then copy this request:</p>
 <div class="rt-profile rt-profile-cli">
 
 <p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
@@ -3063,6 +3026,7 @@ For course navigation, add this line to the training-folder `CLAUDE.md` if it is
 </div>
 <div class="rt-desktop">
 
+<p>Attach it to your task, then copy this request:</p>
 <div class="rt-profile rt-profile-desktop">
 
 <p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
@@ -3085,6 +3049,7 @@ For course navigation, add this line to the training-folder `CLAUDE.md` if it is
 </div>
 <div class="rt-cowork">
 
+<p>Attach it to your task, then copy this request:</p>
 <div class="rt-profile rt-profile-cowork">
 
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
@@ -3094,15 +3059,63 @@ For course navigation, add this line to the training-folder `CLAUDE.md` if it is
 
 </div>
 
-<p><em>Proof: the agent can read your real work data and save a useful summary on your machine.</em></p>
-<p>Stuck on the connector or want specific click-paths? Ask the agent to look up the current steps.</p>
-<h2 id="6-read-the-mental-frame-10-min">6. Read the mental frame (10 min)</h2>
-<p>If you only do one thing from this prework, do this. The rest builds on it.</p>
-<p>Open <a href="#llm-vs-chat">What is an Agent, LLM vs chat</a>. Two pages on LLM vs chat (what changes when you start building systems instead of having conversations). You&#39;ll meet the rest of that document section by section as the training goes.</p>
-<p><em>Proof: you arrive with a rough mental frame, not a blank one.</em></p>
-<h2 id="bring-to-module-1">Bring to Module 1</h2>
-<p>You walk into Module 1 with your agent runtime working, calendar access checked, a snake game, a meetings summary, and a 2-page read. Five things. Not nothing. Module 1 just gets going.</p>
-<p>Once those five things are ready, end the prework session or task. Module 1 starts fresh at <code>~/Documents/agents-101/</code>.</p>
+<p>The summary is saved as <code>prework/meetings.md</code>. Ask for any changes you want, then return here.</p>
+<details>
+<summary>Use a calendar connector instead (optional)</summary>
+
+<p>A connector lets the agent read a work app directly. If you already have a Microsoft 365 or Google Workspace calendar connector enabled, use this request instead of the screenshot:</p>
+<div class="rt-profile rt-profile-cowork">
+
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
+</code></pre>
+</div>
+<div class="rt-profile rt-profile-desktop">
+
+<p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
+<pre><code>List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
+</code></pre>
+</div>
+<div class="rt-profile rt-profile-cli">
+
+<p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
+<pre><code>List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
+</code></pre>
+</div>
+<div class="rt-profile rt-profile-codex-desktop">
+
+<p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
+<pre><code>List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
+</code></pre>
+</div>
+<div class="rt-profile rt-profile-codex-cli">
+
+<p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
+<pre><code>List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
+</code></pre>
+</div>
+<div class="rt-profile rt-profile-copilot-app">
+
+<p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
+<pre><code>List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
+</code></pre>
+</div>
+<div class="rt-profile rt-profile-copilot-cli">
+
+<p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
+<pre><code>List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
+</code></pre>
+</div>
+
+<p>Connecting work apps is optional. If you want to set one up, use the connector settings in your selected interface and your company&#39;s access policy. You can continue with the screenshot without setting up a connector.</p>
+</details>
+
+<h2 id="5-read-the-mental-frame">5. Read the mental frame</h2>
+<p><span id="6-read-the-mental-frame-10-min"></span></p>
+<p>Read <a href="#llm-vs-chat">What is an Agent, LLM vs chat</a>. It explains what changes when your agent can work with files and tools instead of only answering in a chat.</p>
+<h2 id="continue-to-module-1">Continue to Module 1</h2>
+<p><span id="bring-to-module-1"></span></p>
+<p>Keep your snake game, meetings summary, and installed starter in the training folder. End this task when you are ready. Module 1 starts with a fresh task in the same <code>agents-101</code> folder.</p>
 
 </section>
 
@@ -17125,6 +17138,32 @@ SOFTWARE.
   });
 })();
 </script>
+<script data-a101-setup>(function () {
+  var key = 'a101-setup-os', selected;
+  try { selected = localStorage.getItem(key); } catch (_) {}
+  if (selected !== 'mac' && selected !== 'windows') {
+    var platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || navigator.userAgent;
+    selected = /win/i.test(platform) ? 'windows' : 'mac';
+  }
+  function apply(value) {
+    selected = value;
+    document.querySelectorAll('[data-a101-os]').forEach(function (button) {
+      button.setAttribute('aria-pressed', String(button.getAttribute('data-a101-os') === selected));
+    });
+    document.querySelectorAll('[data-a101-os-only]').forEach(function (node) {
+      node.hidden = node.getAttribute('data-a101-os-only') !== selected;
+    });
+  }
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('[data-a101-os]');
+    if (!button) return;
+    var value = button.getAttribute('data-a101-os');
+    if (value !== 'mac' && value !== 'windows') return;
+    apply(value);
+    try { localStorage.setItem(key, value); } catch (_) {}
+  });
+  apply(selected);
+})();</script>
 <script data-a101-onboarding>
 (function () {
   function showRead() {

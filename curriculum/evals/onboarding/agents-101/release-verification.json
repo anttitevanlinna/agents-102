@@ -1,22 +1,10 @@
 {
-  "schema_version": 1,
-  "verified_at": "2026-11-18T18:52:55.348Z",
-  "reason": "Cloudflare retained the unversioned starter for four hours; the content-hash query retrieves the matching release without changing learner filenames.",
-  "model_run": "curriculum/evals/onboarding/agents-101/out/62261d7d-7326-4524-b161-b6de1a2a7d35",
-  "model_run_revision": "5f47fe203e43ad97f3cd369443c1cd3076883c62",
-  "model_workbook_sha256": "a130bd52f086924a6720dc75b49021cc3d5cd563d763b766c2bdb5121b364b41",
-  "release_workbook_sha256": "3264801c72d0428e04050f09662857e7394eb91b92d7c93cadd137daf3d889ad",
-  "starter_sha256": "8b8035554c235af272f087f7d1c8d1615fd99638c8b125b6647bfca83f4e5adf",
-  "download_url": "https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=8b8035554c235af2",
-  "checks": {
-    "version_matches_archive": true,
-    "archive_identical_to_model_run": true,
-    "all_actor_copy_payloads_identical": true,
-    "workbook_identical_except_download_query": true,
-    "reader_material_identical_except_download_query": true,
-    "contract_checks_pass": true,
-    "only_builder_and_test_source_changed": true
-  },
+  "schema_version": 2,
+  "verified_at": "2026-11-19T17:20:49.761Z",
+  "release_workbook_sha256": "4da9e6fdd513ca84f9c4c7b127841e25669d5eb20417d240379800a485c4190f",
+  "starter_sha256": "bfa92509fde4f90b3dbba1f07bcd3104327054a74a43b95c658f501f61bdb410",
+  "download_url": "https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=bfa92509fde4f90b",
+  "contracts_evidence": "curriculum/evals/onboarding/agents-101/out/release-afd55e0c-d1e2-437b-a12b-9a59757f2ef9",
   "contracts": [
     {
       "outcome": "ONB-01",
@@ -64,9 +52,52 @@
       "status": "pass"
     }
   ],
-  "changed_sources": [
-    "scripts/build-a101-mvp.js",
-    "scripts/build-a101-mvp.test.js"
-  ],
-  "limits": "The 43-invocation model run remains bound to its recorded inputs. Actors receive byte-identical copied prompts and starter contents. The only subsequent workbook change is the fixed download-version query; persona readers were not rerun for that transport-only change. Native Cowork startup and the cold critic remain unrun."
+  "checks": {
+    "version_matches_archive": true,
+    "contract_checks_pass": true,
+    "automated_tests": {
+      "passed": 48,
+      "failed": 0,
+      "command": "node --test scripts/a101-mvp-navigation.test.js scripts/build-a101-mvp.test.js curriculum/evals/onboarding/agents-101/run.test.js"
+    },
+    "browser_setup": {
+      "mac_detected": true,
+      "windows_override": true,
+      "folder_directions_and_both_video_captions_change": true,
+      "override_survives_reload": true,
+      "cowork_remains_selected": true
+    }
+  },
+  "model_smokes": {
+    "empty_folder_game": {
+      "evidence_directory": "curriculum/evals/onboarding/agents-101/out/game-first-7af3dd79-fe5c-48d9-83ac-630afee2b10e",
+      "model": "claude-sonnet-5-5",
+      "generated_html_bytes": 4290,
+      "no_root_or_guide": true,
+      "browser_play_tested": false
+    },
+    "install_after_game": {
+      "evidence_directory": "curriculum/evals/onboarding/agents-101/out/reorder-checks-fcf5195a-730c-45d6-9875-a6f506bad2be",
+      "model": "claude-sonnet-5-5",
+      "game_preserved": true,
+      "guide_read": "pass",
+      "guide_sha256": "beb059cd830e6bf28209bde890e9106088858baf35ae99e86f27966085531b3f",
+      "guide_identical_to_release": true,
+      "returns_install_section": true,
+      "scope": "Same extraction request and navigation guide as release. Companion HTML subsequently changed in wording and OS UI; full current archive installation was checked mechanically, not rerun through the model."
+    }
+  },
+  "persona_reads": {
+    "evidence_directory": "curriculum/evals/onboarding/agents-101/out/html-ratings-cb6c76dd-a60f-4f25-aae1-c4ccd910ae2b",
+    "mean_stars": 4,
+    "calls": 30,
+    "source_sha256": "6cef4e4687ca4265836a4a0978062330b883cb8b58baca658065eab3b8aeaa8f",
+    "condition": "Game first, plain folder/file directions, described videos assumed available",
+    "subsequent_changes": "The Mac/Windows setup picker and removal of the hidden CLI tilde path were added after these reads. They have DOM/browser checks, not a new persona rating. These scores bind to source_sha256 above, not to final release bytes."
+  },
+  "prior_full_model_run": {
+    "evidence_directory": "curriculum/evals/onboarding/agents-101/out/62261d7d-7326-4524-b161-b6de1a2a7d35",
+    "coverage": "Historical only. Its recorded workbook, starter, reading material and old installation return differ from this release; do not report the 43-invocation suite as a current pass."
+  },
+  "limits": "No native Cowork startup, automatic instruction loading, permissions flow, human completion, elapsed start time or game play observed. Video files remain placeholders. Persona ratings are conditional on assumed videos and precede the OS picker."
 }

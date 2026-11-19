@@ -8,7 +8,7 @@ const path = require('node:path');
 const { execFileSync } = require('node:child_process');
 const { createHash } = require('node:crypto');
 const { JSDOM, VirtualConsole } = require('jsdom');
-const { WORKBOOK_URL, stripExternalFonts, applyLoaderFraming, insertCoworkFolderInstruction, versionStarterDownload } = require('./build-a101-mvp.js');
+const { WORKBOOK_URL, stripExternalFonts, applyLoaderFraming, preworkSection, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT } = require('./build-a101-mvp.js');
 const { renderCourseNavigation, COURSE_READING_CUE, EXTRACTION_BOOTSTRAP } = require('./a101-mvp-navigation.js');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -28,13 +28,20 @@ test('starter URL version comes only from archive bytes and leaves copied prompt
   assert.throws(() => versionStarterDownload(html + `<a ${href}>Duplicate</a>`, archive), /received 2/);
 });
 
-test('folder instruction inserts once at extraction proof and fails if the insertion point drifts', () => {
-  const proof = '<p><em>Proof: you placed the file; the agent unpacked it. Two visible steps, no magic.</em></p>';
-  const html = insertCoworkFolderInstruction('<p>Extract first.</p>' + proof + '<h2>Snake next.</h2>');
-  assert.match(html, /class="rt-profile rt-profile-cowork a101-folder-instruction"/);
-  assert.ok(html.indexOf('Read CLAUDE.md before working in this folder.') < html.indexOf(proof));
-  assert.throws(() => insertCoworkFolderInstruction('<p>Changed proof.</p>'), /received 0/);
-  assert.throws(() => insertCoworkFolderInstruction(proof + proof), /received 2/);
+test('offline prework is copied from the rendered edition and fails on missing or duplicate sections', () => {
+  const source = '<section class="module" id="prework"><h2>Game first</h2><a href="#prework">Local</a><a href="#resume-learning">Online resume</a><div><section>Nested content</section></div></section>';
+  const rendered = preworkSection(source);
+  assert.equal(rendered, source);
+  const theory = '<html><head></head><body><section class="module" id="theory-m1"><h1>M1</h1></section></body></html>';
+  const joined = prependOfflinePrework(theory, rendered);
+  assert.ok(joined.indexOf('id="prework"') < joined.indexOf('id="theory-m1"'));
+  assert.match(joined, /data-a101-setup/);
+  assert.match(joined, /href="#prework"/);
+  assert.ok(joined.includes(`href="${WORKBOOK_URL}#resume-learning"`), 'absent companion sections resolve to the public workbook');
+  assert.throws(() => preworkSection('<p>No Prework.</p>'), /received 0/);
+  assert.throws(() => preworkSection(source + source), /received 2/);
+  assert.throws(() => prependOfflinePrework(source + theory, rendered), /already contains Prework/);
+  assert.throws(() => prependOfflinePrework('<main>No M1</main>', rendered), /received 0/);
 });
 
 test('edition loader framing patches exactly two claims and fails on upstream drift', () => {
@@ -63,6 +70,35 @@ test('font removal consumes the complete Google import with variation semicolons
   } finally { dom.window.close(); }
 });
 
+test('setup picker detects the OS, keeps an override locally, and works without storage', () => {
+  const markup = '<div role="group"><button data-a101-os="mac">Mac</button><button data-a101-os="windows">Windows</button></div><span data-a101-os-only="mac">Finder</span><span data-a101-os-only="windows">File Explorer</span>';
+  for (const [platform, saved, expected, blocked] of [
+    ['Win32', null, 'windows', false], ['MacIntel', null, 'mac', false],
+    ['Win32', 'mac', 'mac', false], ['MacIntel', 'invalid', 'mac', false],
+    ['Win32', null, 'windows', true],
+  ]) {
+    const picker = new JSDOM(markup, { url: WORKBOOK_URL, runScripts: 'outside-only' });
+    try {
+      const { window } = picker;
+      Object.defineProperty(window.navigator, 'platform', { value: platform });
+      if (saved) window.localStorage.setItem('a101-setup-os', saved);
+      if (blocked) Object.defineProperty(window, 'localStorage', { get() { throw new Error('Storage unavailable'); } });
+      window.eval(SETUP_SCRIPT);
+      const assertSelection = value => {
+        assert.equal(window.document.querySelector('[aria-pressed="true"]').getAttribute('data-a101-os'), value);
+        for (const node of window.document.querySelectorAll('[data-a101-os-only]')) {
+          assert.equal(node.hidden, node.getAttribute('data-a101-os-only') !== value);
+        }
+      };
+      assertSelection(expected);
+      const other = expected === 'mac' ? 'windows' : 'mac';
+      window.document.querySelector('[data-a101-os="' + other + '"]').click();
+      assertSelection(other);
+      if (!blocked) assert.equal(window.localStorage.getItem('a101-setup-os'), other);
+    } finally { picker.window.close(); }
+  }
+});
+
 test('ACME edition builds a complete learner route with edition-local downloads and copied checkpoints', { timeout: 120000 }, async () => {
   const stage = fs.mkdtempSync(path.join(os.tmpdir(), 'a101-mvp-test-'));
   let dom;
@@ -73,6 +109,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
       'site/clients/acme/agents-101/index.html',
       'site/clients/acme/agents-101/agents-101-starter.tar.gz',
       'curriculum/trainings/agents-101/building-agent-systems.md',
+      'curriculum/trainings/agents-101/prework.md',
       ...checkpoints.map(({ key }) => `curriculum/prompts/${key}.md`),
     ];
     const before = new Map(unchangedPaths.map(relative => [relative, fs.readFileSync(path.join(ROOT, relative))]));
@@ -146,6 +183,34 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     assert.doesNotMatch(baselineCopy, /https?:\/\/|Current:|Next:|learning-position\.md|course-navigation\.md/);
     const extractionBlock = [...document.querySelectorAll('.prompt-block')].find(block => block.querySelector('code').textContent.startsWith('Extract the starter tarball'));
     assert.ok(extractionBlock);
+    const prework = document.getElementById('prework');
+    const snakeBlock = [...prework.querySelectorAll('.prompt-block')].find(block => block.querySelector('code').textContent.startsWith('Build me a snake game'));
+    assert.ok(snakeBlock, 'the first game remains an executable copied request');
+    assert.ok(snakeBlock.compareDocumentPosition(extractionBlock) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING, 'first game precedes starter installation');
+    const downloadLink = prework.querySelector('a[href*="agents-101-starter.tar.gz"]');
+    assert.ok(snakeBlock.compareDocumentPosition(downloadLink) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING, 'first game precedes archive download');
+    const snakeCanonical = fs.readFileSync(path.join(ROOT, 'curriculum/prompts/a101-prework-snake-game.md'), 'utf8').replace(/^---\n[\s\S]*?\n---\n/, '').split('<!-- maintainer -->')[0].trimEnd();
+    snakeBlock.querySelector('.copy-btn').click();
+    await Promise.resolve();
+    assert.equal(copied.at(-1), snakeCanonical);
+    assert.match(snakeCanonical, /Save it as `prework\/snake\.html`/);
+    assert.match(prework.textContent, /agents-101.*folder you created in Documents/, 'CLI setup uses the same established training root');
+    assert.doesNotMatch(prework.textContent, /~\/Documents/);
+    assert.equal(prework.querySelectorAll('.a101-os-picker').length, 1);
+    assert.ok(prework.querySelector('.a101-os-picker').compareDocumentPosition(snakeBlock) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING);
+    const videos = [...prework.querySelectorAll('.a101-video-placeholder')];
+    assert.equal(videos.length, 2);
+    document.querySelector('[data-a101-os="windows"]').click();
+    assert.ok(document.body.classList.contains('runtime-cowork'), 'OS choice leaves the selected runtime alone');
+    assert.ok(videos.every(video => video.querySelector('[data-a101-os-only="mac"]').hidden));
+    assert.ok(videos.every(video => !video.querySelector('[data-a101-os-only="windows"]').hidden));
+    assert.ok(videos.every(video => /video/i.test(video.textContent) && video.textContent.trim().length > 20));
+    assert.ok(videos.every(video => !video.querySelector('video,iframe,button,audio,source')), 'video placeholders are captions, not fake media controls');
+    const oldPreworkAnchors = ['1-set-up-your-agent-runtime-5-min', '2-connect-your-work-apps-5-min', '3-install-the-training-folder-3-min', '4-build-a-snake-game-10-min', '5-summarize-your-week-in-meetings-10-min', '6-read-the-mental-frame-10-min', 'bring-to-module-1'];
+    for (const id of oldPreworkAnchors) assert.equal(prework.querySelectorAll(`[id="${id}"]`).length, 1, `old Prework anchor remains unique: ${id}`);
+    const moduleSlugs = require('../site/layouts/curriculum.js').TRAININGS['agents-101'].modules.map(module => module.slug);
+    assert.equal(moduleSlugs.length, 8);
+    for (const id of moduleSlugs) assert.ok(document.querySelector(`main > section.module[id="${id}"]`), `full course module stays available: ${id}`);
     extractionBlock.querySelector('.copy-btn').click();
     await Promise.resolve();
     assert.equal(copied.at(-1), extractionBlock.querySelector('code').textContent.trimEnd());
@@ -153,9 +218,8 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     const folderInstruction = document.querySelector('.a101-folder-instruction');
     assert.equal(document.querySelectorAll('.a101-folder-instruction').length, 1);
     assert.equal(folderInstruction.querySelector('code').textContent, 'Read CLAUDE.md before working in this folder.');
-    assert.equal(folderInstruction.nextElementSibling.textContent, 'Proof: you placed the file; the agent unpacked it. Two visible steps, no magic.');
     assert.ok(extractionBlock.compareDocumentPosition(folderInstruction) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING);
-    assert.ok(folderInstruction.compareDocumentPosition(document.getElementById('4-build-a-snake-game-10-min')) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING);
+    assert.ok(snakeBlock.compareDocumentPosition(folderInstruction) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING, 'folder instruction follows the first game and starter');
     assert.equal(dom.window.getComputedStyle(folderInstruction).display, 'block', 'Cowork sees the folder reading step after extraction');
     dom.window.A101Runtimes.applyRuntime('cli');
     assert.equal(dom.window.getComputedStyle(folderInstruction).display, 'none', 'CLI does not see Cowork folder UI instructions');
@@ -167,6 +231,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     assert.ok(copied.at(-1).startsWith('Help me resume Agents 101.'));
     const deck = dom.window.CurriculumSlides.buildDeckModel(document.querySelector('main').cloneNode(true));
     assert.ok(!deck.slides.some(slide => slide.el.querySelector('#start-learning, #pause-learning, #resume-learning')), 'actual slide model excludes all onboarding instructions');
+    for (const id of oldPreworkAnchors) assert.ok(Number.isInteger(deck.anchors[id]), `old link has a Slides target: ${id}`);
     document.querySelector('.workbook-layout-toggle [data-mode="slides"]').click();
     assert.deepEqual(exceptions, [], 'opening Slides should execute without exceptions');
     assert.ok(document.body.classList.contains('slides-active'));
@@ -213,11 +278,15 @@ test('ACME edition builds a complete learner route with edition-local downloads 
 
     const unpacked = path.join(stage, 'unpacked');
     fs.mkdirSync(unpacked);
+    fs.mkdirSync(path.join(unpacked, 'prework'));
+    const firstGame = '<!doctype html><title>Learner first game</title><canvas id="learner-game"></canvas>';
+    fs.writeFileSync(path.join(unpacked, 'prework/snake.html'), firstGame);
     const archive = path.join(trainingDir, 'agents-101-starter.tar.gz');
     const listing = execFileSync('tar', ['tzf', archive], { encoding: 'utf8', env });
     assert.doesNotMatch(listing, /(?:^|\/)\.(?:claude|agents)(?:\/|$)/m);
     assert.doesNotMatch(listing, /^\.\/(?:CLAUDE|AGENTS)\.md$/m);
     execFileSync('tar', ['xzf', archive, '-C', unpacked], { env });
+    assert.equal(fs.readFileSync(path.join(unpacked, 'prework/snake.html'), 'utf8'), firstGame, 'later starter extraction preserves the game already built');
     const baselineFileBody = fs.readFileSync(path.join(unpacked, 'prompts/personal-site-with-guardrails-1.md'), 'utf8').replace(/^---\n[\s\S]*?\n---\n/, '').trimEnd();
     assert.equal(baselineCopy, baselineFileBody, 'rendered Copy and local starter carry the identical checkpoint prompt body');
     const guide = fs.readFileSync(path.join(unpacked, 'prework/course-navigation.md'), 'utf8');
@@ -235,6 +304,27 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     } finally { guideDom.window.close(); }
     assert.doesNotMatch(fs.readFileSync(path.join(unpacked, 'agents-101-handbook.html'), 'utf8'), /fonts\.(?:googleapis|gstatic)\.com/);
     assert.doesNotMatch(fs.readFileSync(path.join(unpacked, 'agents-101-handbook.html'), 'utf8'), /The root instructions file comes in the Debrief\.|and the first root instructions file in this directory\./);
+    const offlineHtml = fs.readFileSync(path.join(unpacked, 'agents-101-handbook.html'), 'utf8');
+    const offline = new JSDOM(offlineHtml);
+    try {
+      const offlinePrework = offline.window.document.getElementById('prework');
+      assert.ok(offlinePrework, 'the offline handbook includes the same first-game route');
+      const publicPrework = preworkSection(html).replace(`agents-101-starter.tar.gz?v=${starterVersion}`, 'agents-101-starter.tar.gz');
+      const expectedPrework = new JSDOM(publicPrework);
+      try {
+        for (const link of expectedPrework.window.document.querySelectorAll('a[href^="#"]')) {
+          if (!offline.window.document.getElementById(link.getAttribute('href').slice(1))) link.setAttribute('href', WORKBOOK_URL + link.getAttribute('href'));
+        }
+        assert.equal(offlinePrework.outerHTML, expectedPrework.window.document.getElementById('prework').outerHTML, 'offline setup uses the same renderer output; only links to missing companion sections point online');
+      } finally { expectedPrework.window.close(); }
+      for (const link of offlinePrework.querySelectorAll('a[href^="#"]')) assert.ok(offline.window.document.getElementById(link.getAttribute('href').slice(1)), `offline local link resolves: ${link.getAttribute('href')}`);
+      assert.ok(offlineHtml.indexOf('Build me a snake game') < offlineHtml.indexOf('Extract the starter tarball'));
+      assert.ok(offlinePrework.compareDocumentPosition(offline.window.document.getElementById('theory-m1')) & offline.window.Node.DOCUMENT_POSITION_FOLLOWING);
+      assert.equal(offlinePrework.querySelectorAll('.a101-video-placeholder').length, 2);
+      const setupScript = offline.window.document.querySelector('script[data-a101-setup]');
+      assert.equal(setupScript.textContent, SETUP_SCRIPT, 'offline companion uses the same OS picker behavior');
+      for (const id of oldPreworkAnchors) assert.equal(offlinePrework.querySelectorAll(`[id="${id}"]`).length, 1);
+    } finally { offline.window.close(); }
     for (const checkpoint of checkpoints) {
       const prompt = fs.readFileSync(path.join(unpacked, 'prompts', `${checkpoint.key}.md`), 'utf8');
       if (checkpoint.key === 'a101-prework-extract-tarball') assert.ok(prompt.includes(EXTRACTION_BOOTSTRAP));

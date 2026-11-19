@@ -227,6 +227,24 @@ test('per-call provenance records actual model, CLI, status and evidence-root-re
   assert.equal(callRecord({ outputDir, tag: 'failed' }, out, null, new Error('CLI failed')).status, 'blocked');
 });
 
+test('starter return stays at installation for the learner folder instruction after extraction', () => {
+  const checkpoints = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../../delivery/agents-101-mvp/checkpoints.json'), 'utf8'));
+  const extraction = checkpoints.find(item => item.key === 'a101-prework-extract-tarball');
+  assert.equal(extraction.currentAnchor, '#3-install-the-training-folder-3-min');
+  assert.equal(extraction.nextAnchor, extraction.currentAnchor);
+  assert.equal(extraction.nextLabel, 'Set the folder reading instruction, then continue Prework');
+  const cases = scenarios({ extract: 'Extract', baseline: 'Build', pause: 'Pause', resume: 'Resume' });
+  const installed = cases.find(item => item.id === 'starter-present');
+  const requirement = installed.checks.find(item => item.id === 'return').requirement;
+  assert.ok(requirement.includes(BASE + extraction.nextAnchor));
+  assert.match(requirement, /learner to set the folder reading instruction, then waits/);
+  assert.doesNotMatch(requirement, /#4-build-a-snake-game/);
+  assert.match(requirement, /does not run the snake exercise or continue to meetings/);
+  assert.ok(installed.inspect.absent.includes('prework/snake.html'));
+  const missing = cases.find(item => item.id === 'starter-missing');
+  assert.match(missing.checks[0].requirement, /does not claim successful installation or advance to later Prework tasks/);
+});
+
 test('human-stage fixtures keep identical artifacts but distinguish pending inspection from explicit completion', () => {
   const cases = scenarios({ extract: 'Extract', baseline: 'Build', pause: 'Pause', resume: 'Resume' });
   const pending = cases.find(item => item.id === 'resume-unfinished');

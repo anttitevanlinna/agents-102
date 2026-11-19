@@ -1,62 +1,60 @@
 # Agents 101 first-start impressions
 
-**Simulated verdict: 3/5 stars.** 29 of 30 reads gave 3 stars; 1 gave 4; none gave 5. Descriptive mean: 3.0/5.
+**Simulated verdict: 4/5 stars.** All 30 reads gave 4 stars and predicted getting going. None gave 5. This is a content-reading judgement, not a learner completion rate.
 
-Ten personas, three independent cold model calls each. Each call receives the same selected HTML and question, without previous answers. Cowork access and Claude Desktop installation are assumed. Scope is the imagined route to the first game, not the whole prework or training. No app actions, file generation, game play or human timings were observed.
+Ten personas, three independent cold calls each. Claude Desktop installation and Cowork access are assumed. Readers also assume the described video demonstrations are available, as requested. The release currently has text placeholders for those videos.
+
+| Condition | Mean stars | Distribution |
+| --- | --- | --- |
+| Original order | 3.03/5 | 29 × 3, 1 × 4 |
+| Game first, assumed videos | 3.80/5 | 6 × 3, 24 × 4 |
+| Game first, plain folder/file directions, assumed videos | 4.00/5 | 30 × 4 |
+
+Order, wording and the video assumption change together. The comparison does not isolate which caused the score difference.
 
 | Persona | Attempt 1 | Attempt 2 | Attempt 3 | Predicted getting going |
 | --- | --- | --- | --- | --- |
-| Novice business leader | 3 | 3 | 3 | yes / yes / yes |
-| Product operations leader | 3 | 3 | 3 | yes / yes / yes |
-| Technical builder | 3 | 3 | 4 | yes / yes / yes |
-| Cautious HR leader | 3 | 3 | 3 | yes / yes / yes |
-| Skeptical finance leader | 3 | 3 | 3 | yes / yes / yes |
-| Solo consultant | 3 | 3 | 3 | yes / yes / yes |
-| Browser-first marketing user | 3 | 3 | 3 | yes / yes / yes |
-| Regular Cowork user | 3 | 3 | 3 | yes / yes / yes |
-| Windows office user | 3 | 3 | 3 | yes / uncertain / yes |
-| Impatient ten-minute skimmer | 3 | 3 | 3 | yes / yes / yes |
+| Novice business leader | 4 | 4 | 4 | yes / yes / yes |
+| Product operations leader | 4 | 4 | 4 | yes / yes / yes |
+| Technical builder | 4 | 4 | 4 | yes / yes / yes |
+| Cautious HR leader | 4 | 4 | 4 | yes / yes / yes |
+| Skeptical finance leader | 4 | 4 | 4 | yes / yes / yes |
+| Solo consultant | 4 | 4 | 4 | yes / yes / yes |
+| Browser-first marketing user | 4 | 4 | 4 | yes / yes / yes |
+| Regular Cowork user | 4 | 4 | 4 | yes / yes / yes |
+| Windows office user | 4 | 4 | 4 | yes / yes / yes |
+| Impatient ten-minute skimmer | 4 | 4 | 4 | yes / yes / yes |
 
 Scale: 1 cannot start; 2 needs substantial help; 3 gets going with detours; 4 clear with minor hesitation; 5 quick and obvious throughout.
 
-## What the readers keep noticing
+## What the readers notice
 
-- Copy-ready prompts and a concrete game make starting feel possible.
-- The first visible result comes after folder setup, connector decisions, a download, extraction and configuration. Readers repeatedly ask to reach the game earlier.
-- The Cowork folder-instructions step names what to enter but gives no location for the setting. Readers describe hunting, guessing or skipping it.
-- Shell, tarball and CLAUDE.md language makes several nontechnical readers wonder whether they are doing the setup correctly.
+The route to the first result is short: create the training folder, start a Cowork task, paste one request, open and play the game. Downloading the starter, setting the reading cue and using a calendar come afterward.
 
-These are reported perceptions. Connectors have a real keep-going fallback; readers sometimes overlook it or describe the step as compulsory. The shell command is for the agent. The CLAUDE.md cue and Cowork folder setting serve different purposes even when readers perceive duplication. A suggested game-first route would still need to create its output folder.
+Remaining hesitation centres on finding New task, choosing a folder in Cowork, knowing what completion looks like, and opening the saved HTML file. Several readers rely on the assumed demonstrations. The later archive and folder-instruction step still looks technical. Native click paths and permission behaviour remain unobserved.
 
 ## Reactions
 
-**Novice business leader, attempt 1 (3/5):**
+**Novice business leader, attempt 1 (4/5):**
 
-> I'd get going, but not feel snappy. The game is a nice, concrete goal, yet I'd be stuck behind a folder path, a tarball download, a shell command and a CLAUDE.md instruction I don't understand before I get to it. I'd keep wondering whether I was doing it right.
+> I think I'd get my game fairly quickly. The path is short, the prompt is copyable, and the double-click payoff is concrete. The one place I'd slow down is the Cowork step, since I've never done it and a single sentence is all I get. If the video really covers it, I'm fine. If not, I'd poke around the app for a bit. I wouldn't give up, though.
 
-**Technical builder, attempt 1 (3/5):**
+**Windows office user, attempt 1 (4/5):**
 
-> The route is clear and linear, so I would get going without help. But it's not snappy. I am a fast builder and want the snake game in about two minutes, and instead I do admin first: connectors, a download, a tarball, and a settings step I have to find myself. I'd likely jump ahead to step 4 and come back to the setup later.
+> Pretty straightforward. Folder, task, paste, play. I felt I could get the game going without help. The main friction was small things: Mac wording, not knowing exactly where 'New task' is, and the scary Unix material right below the game step. Not quite snappy-and-obvious, but close.
 
-**Windows office user, attempt 2 (3/5):**
+**Impatient ten-minute skimmer, attempt 1 (4/5):**
 
-> I'd probably get there, but it wouldn't feel snappy. The tilde path and the tar/shell wording make me feel this wasn't written for me, and the snake game is buried behind setup I don't understand. I'd be anxious about breaking something.
+> Pretty good. The route is short: one folder, one task, one paste, then I'm playing snake. I'd get there inside ten minutes. The only friction is the setup before the first prompt and not knowing exactly what 'beside' means. I'd keep going because the payoff looks close.
 
-**Impatient ten-minute skimmer, attempt 1 (3/5):**
+## Evidence and limits
 
-> I'd probably start, since the steps are concrete and the copy buttons help. But the setup chores keep pushing the fun bit away, and I'd hit the CLAUDE.md and folder-instructions jargon with no idea where to click. It feels fine, not snappy.
+All calls use claude-sonnet-5-5. Numeric variation is zero in the latest batch; narratives vary. These are synthetic personas from one model family, not 30 independent humans. No app actions, game play or elapsed start times were observed in these reads. The question explicitly requests hesitation, so it is a critical reading rather than a neutral satisfaction survey.
 
+The selected HTML retains navigation, cover, Start and Prework in the Cowork visibility state. Hidden runtime alternatives and initially closed panel bodies are omitted. Linked later readings exist outside the excerpt. This tests the startup content, not its painted visual discoverability.
 
-Predicted willingness: 29 yes, 0 no, 1 uncertain. This is self-report from simulated readers. The skimmer predicts starting while also saying the ten-minute limit could prevent reaching the game. The Windows reader gives 3 stars while one attempt is uncertain about starting. Preserve these tensions; do not turn them into a learner completion rate.
+The Mac/Windows picker was added after the 4-star reads. Its detection, local override, persistence and captions have automated and browser checks. It has no separate persona rating.
 
-## Variation and evidence
+Rated HTML SHA-256: 6cef4e4687ca4265836a4a0978062330b883cb8b58baca658065eab3b8aeaa8f. Selected HTML SHA-256: 8c30f20ec549a0d56f7d259177b78ef0218ab738fc966f454dd1f347d89a973c.
 
-Nine personas give 3/3/3. The technical builder gives 3/3/4. Repeating the question changes wording more than scores in this batch. All calls use the same model family, so agreement does not establish independent human agreement or a success probability. The request explicitly asks about hesitation, so this is a critical reading rather than a neutral satisfaction survey.
-
-Model: claude-sonnet-5-5. Source revision: e59d9b70c4446a15f9e09e8edfa285d71fae7505. Source HTML SHA-256: 3264801c72d0428e04050f09662857e7394eb91b92d7c93cadd137daf3d889ad. Selected HTML SHA-256: 5171bc1f1ddffb4cb7bab4f1f4e79ae2645d07b50123f9233ce06521997e96b9.
-
-Raw evidence: curriculum/evals/onboarding/agents-101/out/html-ratings-56837357-b4ad-4d0c-ad52-84c1fb9d438c. It contains startup.html, question.txt, personas.json, all 30 input prompts/replies and CLI receipts. [Structured results](latest-starts.json) preserve each judgement.
-
-The HTML selection retains navigation, cover, Start and Prework, applies the Cowork visibility state, and withholds initially closed Pause/Resume contents. Linked later reading remains outside the excerpt. This tests reading the startup material, not painted visual discoverability.
-
-An earlier 30-read batch is retained at curriculum/evals/onboarding/agents-101/out/html-ratings-f5ad99e0-c528-4256-8de4-df2eaec79aa2. Its JSON format example contained a numeric 3-star score. This report uses a fresh batch with that example removed; the HTML, personas, scale and substantive question stay the same.
+Raw evidence: curriculum/evals/onboarding/agents-101/out/html-ratings-cb6c76dd-a60f-4f25-aae1-c4ccd910ae2b. Each condition retains startup.html, question.txt, personas.json, prompts, replies and CLI receipts under its evidence directory. [Structured results](latest-starts.json) retain all 30 current judgements, source hashes and earlier condition locations.

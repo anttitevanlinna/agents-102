@@ -27,9 +27,12 @@ Copy `takes/a101-prework-add-folder.sh`. Keep the shape: guard against leftovers
 
 ## Redaction (`bin/redact`)
 
-- **Allowlist, not denylist.** Every text line OCR finds in every frame is blurred unless it is in `redact-allow.txt` (the app's own labels, the course's own names). Unknown text — anyone's folder, project, file or person names — is blurred by default, wherever it moves. Near-misses of an allowed label (glued chevron, cut-off prefix, one misread letter) stay sharp.
-- **Held ±8 frames**, so dialogs sliding in or out stay covered. **`--blur` regions** cover private pixels OCR cannot read (artifact thumbnails); `@from-to` limits one to a time window (e.g. step it below a dialog while the dialog is up).
-- **Leak check** (in `clip.sh`): OCRs the finished clip against this Mac's real names (`~/Documents`, `~/Desktop`, username, first name), built at run time, never written. Any hit fails the clip. Proven fail-closed: the same check on the raw take finds hundreds of hits.
+- **Allowlist, not denylist.** Every text line OCR finds in every frame is blurred unless it is in `redact-allow.txt` (the app's own labels, the course's own names). Unknown text — anyone's folder, project, file or person names — is blurred by default, wherever it moves. Near-misses of an allowed label (glued chevron, cut-off prefix, misread letters: 1 on short labels, 2 on 8+ chars, which covers labels fading in and out) stay sharp. The Claude welcome line (greeting + first name) is allowed: the maintainer wants it shown.
+- **Big, still patches, not many small blinking ones.** Boxes snap to a 32 px grid and become tracks; a track is lit 2 frames before its first sighting to 2 after its last, bridging OCR dropouts up to 10 frames. Tracks lit together merge when stacked in one column, so a list is one block; nothing chains sideways. `redact` prints how many frames change blur shape — a calm clip changes only at scene changes (take 1: under a tenth of its frames). Mask edges are feathered.
+- **Holding boxes across a time window (±N frames) looked safe and was wrong:** it mixed scenes, a dialog's boxes merged with the previous screen's, and the whole frame went soft.
+- **`--blur` regions** cover private pixels OCR cannot read (artifact thumbnails); `@from-to` limits one to a time window (e.g. step it below a dialog while the dialog is up).
+- **Leak check** (in `clip.sh`): OCRs the finished clip against this Mac's real names (`~/Documents`, `~/Desktop`, username), built at run time, never written. Entries that are also app words ("Auto") are skipped — they cannot be told apart from the UI. Any hit fails the clip. Proven fail-closed: the same check on the raw take finds hundreds of hits.
+- **Known soft spots:** half-second fades (menu closing, dialog dismissing) can blur a label for a frame or two.
 - Adding to the allowlist: only the app's wording, never a name a user chose.
 
 ## Setup (once per Mac)

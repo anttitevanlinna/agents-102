@@ -24,8 +24,11 @@ read -r -a OPTS <<< "$(sed -n 's/^# redact: //p' "$T")"
 "$D/bin/redact" "$RAW" "$MP4" "$D/redact-allow.txt" "${OPTS[@]}"
 
 echo "== leak check (OCR of the clip against this Mac's real names; nothing written to disk)"
-deny="$( { ls ~/Documents ~/Desktop 2>/dev/null; id -un; id -F 2>/dev/null | awk '{print $1}'; } \
-  | sed 's/\.[A-Za-z0-9]*$//' | awk 'length($0) >= 4' | grep -v -x -i -E 'agents-101|documents|desktop' | sort -u)"
+# A name that is also a word of the app's own labels ("Auto", "Open") cannot be told apart from the UI: skip it.
+uiwords="$(grep -v -E '^(#|re:|$)' "$D/redact-allow.txt" | tr ' ' '\n' | tr -d '",:?' | awk 'length($0) >= 3' | sort -u)"
+deny="$( { ls ~/Documents ~/Desktop 2>/dev/null; id -un; } \
+  | sed 's/\.[A-Za-z0-9]*$//' | awk 'length($0) >= 4' | grep -v -x -i -E 'agents-101|documents|desktop' \
+  | grep -v -x -i -F -f <(printf '%s\n' "$uiwords") | sort -u)"
 hits="$("$D/bin/redact" "$MP4" /dev/null "$D/redact-allow.txt" --report-only --fps 15 2>/dev/null \
   | grep -i -F -f <(printf '%s\n' "$deny") || true)"
 ffmpeg -v error -y -i "$MP4" -vf "fps=1/2,scale=420:-1,tile=4x4" -frames:v 1 "$D/out/$TAKE.sheet.png"

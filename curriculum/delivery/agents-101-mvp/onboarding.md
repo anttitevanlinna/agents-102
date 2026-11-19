@@ -7,9 +7,9 @@ Want to see what Claude can make? Start with two things you can try for yourself
 <div><p class="a101-first-look__title">Make a Snake game you can play.</p><p>Try it in your browser, then ask Claude to change something.</p><p class="a101-first-look__next">Next, give Claude a screenshot of your calendar and get a five-line summary of your week.</p></div>
 </div>
 
-You’ll make one folder for everything you build. When Claude saves your game or your summary, you’ll know where to find it. Keep this workbook open so you can come back for the next step.
+You’ll make one folder where Claude can save your game and meeting summary. Keep this workbook open so you can come back for the next step.
 
-<p><a class="a101-start-link" href="#prework">Make my first game</a></p>
+<p><a class="a101-start-link" href="#open-cowork-and-add-a-folder">Make my first game</a></p>
 
 ## Pause learning
 

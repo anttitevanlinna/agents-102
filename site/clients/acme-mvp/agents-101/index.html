@@ -2754,6 +2754,8 @@ body.slides-active { overflow: hidden; }
 .a101-start-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 body.workbook .workbook-cover { padding-top: 1rem; padding-bottom: 1.5rem; margin-bottom: 1rem; }
 body.workbook > main > section#prework { padding-top: 0; }
+.a101-tool-picker { margin-top: 1rem; text-align: start; }
+.a101-tool-picker > summary { cursor: pointer; font-size: .9rem; }
 section#prework, section#prework .module-hero-title, section#prework > h2 { scroll-margin-top: 5rem; }
 section#prework > .module-hero { margin-bottom: 1.5rem; padding-top: 1rem; padding-bottom: 1rem; }
 section#prework > h2 { margin-top: 2rem; padding-top: 1rem; }
@@ -2795,7 +2797,7 @@ body.slides-active .a101-onboarding { display: none; }
   <p class="eyebrow">ACME workbook</p>
   <h1 class="cover-title">Agents 101</h1>
   <p class="lede">Eight modules. The chat-to-systems leap. Build real agents on your own company content.</p>
-  <div id="runtime-switcher" class="runtime-switcher"></div>
+  <details class="a101-tool-picker"><summary>Choose a tool</summary><div id="runtime-switcher" class="runtime-switcher"></div></details>
 </header>
 
 <section class="a101-onboarding"><div class="module">
@@ -2807,8 +2809,8 @@ body.slides-active .a101-onboarding { display: none; }
 <div><p class="a101-first-look__title">Make a Snake game you can play.</p><p>Try it in your browser, then ask Claude to change something.</p><p class="a101-first-look__next">Next, give Claude a screenshot of your calendar and get a five-line summary of your week.</p></div>
 </div>
 
-<p>You’ll make one folder for everything you build. When Claude saves your game or your summary, you’ll know where to find it. Keep this workbook open so you can come back for the next step.</p>
-<p><a class="a101-start-link" href="#prework">Make my first game</a></p>
+<p>You’ll make one folder where Claude can save your game and meeting summary. Keep this workbook open so you can come back for the next step.</p>
+<p><a class="a101-start-link" href="#open-cowork-and-add-a-folder">Make my first game</a></p>
 
 
 </div></section>
@@ -2817,26 +2819,38 @@ body.slides-active .a101-onboarding { display: none; }
 
 <section class="module" id="prework">
 <h1 id="prework">Prework</h1>
-<p>Claude will save your game and your calendar summary as files. Give it a place to save them so you can open them again.</p>
-<div class="a101-os-picker" role="group" aria-label="Setup for your computer">Setup for: <button type="button" data-a101-os="mac" aria-pressed="false">Mac</button> <button type="button" data-a101-os="windows" aria-pressed="false">Windows</button></div>
+<p>You’ll play the game before you download any course files.</p>
+<h2 id="open-cowork-and-add-a-folder">1. Give Claude a folder for your game</h2>
 
-<h2 id="1-create-a-folder-called-agents-101">1. Create a folder called agents-101</h2>
 <p><span id="1-set-up-your-agent-runtime-5-min"></span>
-<span id="1-choose-your-training-folder"></span></p>
-<div class="a101-video-placeholder rt-profile rt-profile-cowork">Assume there is a short <span data-a101-os-only="mac">Mac</span><span data-a101-os-only="windows">Windows</span> video here showing how to create <code>agents-101</code> and where to look for its name in Claude Desktop once you’ve added it.</div>
+<span id="1-choose-your-training-folder"></span>
+<span id="1-create-a-folder-called-agents-101"></span></p>
+<div class="a101-os-picker" role="group" aria-label="Setup for your computer">Your computer <button type="button" data-a101-os="mac" aria-pressed="false">Mac</button> <button type="button" data-a101-os="windows" aria-pressed="false">Windows</button></div>
 
-<p><span data-a101-os-only="mac">In Finder, open <strong>Documents</strong>. In the menu bar, click <strong>File</strong>, then <strong>New Folder</strong>.</span> <span data-a101-os-only="windows">In File Explorer, open <strong>Documents</strong>. Click <strong>New</strong>, then <strong>Folder</strong>.</span> Name it <code>agents-101</code>.</p>
-<p><strong>Session</strong> <em>(new, &quot;Prework&quot;)</em></p>
-<p><span class="rt-cowork">Open <strong>Claude Desktop</strong> and start a new conversation. If you see a choice between Chat and Cowork, pick <strong>Cowork</strong>.</span><span class="rt-code">Start a new session in your selected interface with the <code>agents-101</code> folder you created in Documents as the working folder.</span></p>
-<ol class="rt-profile rt-profile-cowork">
-<li>Below the box where you type, click <strong>Project or folder</strong>, then <strong>Add folder</strong>. If you see a <strong>+</strong> button instead, click it and choose <strong>Add folder</strong>.</li>
-<li>In the window that opens, go to <strong>Documents</strong> and select <code>agents-101</code>. <span data-a101-os-only="mac">Click <strong>Open</strong>.</span><span data-a101-os-only="windows">Confirm your selection.</span> If Claude asks to change files in that folder, check that it names <code>agents-101</code> and click <strong>Allow</strong>.</li>
-<li>Look for <code>agents-101</code> next to the message box. When you see it, you can send the game request.</li>
+<div class="rt-cowork">
+<ol>
+<li data-a101-os-only="windows">In File Explorer, open <strong>Documents</strong>. Click <strong>New</strong>, then <strong>Folder</strong>. Name it <code>agents-101</code>.</li>
+<li>Open <strong>Claude Desktop</strong>. Click <strong>New</strong>. If you see a choice between modes, choose <strong>Cowork</strong>.</li>
+<li>Below the message box, click <strong>Project or folder</strong>, then <strong>Add folder</strong>. You can also find <strong>Add folder</strong> under <strong>+</strong>.</li>
+<li data-a101-os-only="mac">In the window that opens, click <strong>Documents</strong>, then <strong>New Folder</strong>. Name it <code>agents-101</code>, click <strong>Create</strong>, then <strong>Open</strong>. If the folder already exists, select it and click <strong>Open</strong>.</li>
+<li data-a101-os-only="windows">In the window that opens, go to <strong>Documents</strong>, select <code>agents-101</code>, and confirm your selection.</li>
+<li>If Claude asks for permission, check that the dialog names <code>agents-101</code> and click <strong>Allow</strong>.</li>
 </ol>
+</div>
 
-<h2 id="2-build-a-snake-game">2. Build a snake game</h2>
-<p><span id="4-build-a-snake-game-10-min"></span></p>
-<p>Click <strong>Copy</strong> below. Paste the request into your conversation and send it. Claude will make a folder called <code>prework</code> inside <code>agents-101</code> and save the game there.</p>
+<div class="rt-code">
+<p><span data-a101-os-only="mac">In Finder, open <strong>Documents</strong> and click <strong>File</strong>, then <strong>New Folder</strong>.</span><span data-a101-os-only="windows">In File Explorer, open <strong>Documents</strong> and click <strong>New</strong>, then <strong>Folder</strong>.</span> Name it <code>agents-101</code>. Start a new session with the <code>agents-101</code> folder you created in Documents as the working folder.</p>
+</div>
+
+<div class="a101-video-placeholder rt-profile rt-profile-cowork">Assume there is a short <span data-a101-os-only="mac">Mac</span><span data-a101-os-only="windows">Windows</span> video here showing where to click and where <code>agents-101</code> appears in Claude.</div>
+
+<h2 id="2-make-the-game">2. Make the game</h2>
+<p><span id="4-build-a-snake-game-10-min"></span>
+<span id="2-build-a-snake-game"></span></p>
+<p class="rt-cowork">See <code>agents-101</code> below the message box? Click <strong>Copy</strong> below, paste into that box, and click <strong>Send</strong>.</p>
+
+<p class="rt-code">Click <strong>Copy</strong> below, paste into the session you just opened, and send the request.</p>
+
 <div class="rt-profile rt-profile-cowork">
 
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
@@ -2880,14 +2894,16 @@ body.slides-active .a101-onboarding { display: none; }
 </code></pre>
 </div>
 
-<p>When the agent says the game is saved, open <code>agents-101</code>, then <code>prework</code>. Double-click <code>snake.html</code> to play in your browser.</p>
+<h2 id="3-play-your-game">3. Play your game</h2>
+<p>When Claude says it saved the game, open <code>Documents → agents-101 → prework</code> and double-click <code>snake.html</code> to play. If it opens in an editor, right-click <code>snake.html</code>, select <strong>Open With</strong>, and choose your browser.</p>
 <p>Ask for one change you’d like, such as a slower snake. Open the game again to try it. Keep the conversation open and come back here.</p>
-<h2 id="3-download-the-course-files">3. Download the course files</h2>
+<h2 id="4-download-the-course-files">4. Download the course files</h2>
 <p><span id="3-install-the-training-folder-3-min"></span>
 <span id="3-install-the-starter-and-set-the-folder-instruction"></span>
-<span id="3-add-the-course-files"></span></p>
+<span id="3-add-the-course-files"></span>
+<span id="3-download-the-course-files"></span></p>
 <p>The course files include a copy of the handbook and let Claude help you find your place when you come back.</p>
-<p><a href="https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=a8993b2c9b561f17" target="_blank" rel="noopener">Download the course files</a>. Find <code>agents-101-starter.tar.gz</code> in your browser’s downloads and move it into <code>agents-101</code> alongside the <code>prework</code> folder. Claude will unpack it when you copy and send the request below in the same conversation.</p>
+<p><a href="https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=9f2043176ee81621" target="_blank" rel="noopener">Download the course files</a>. Find <code>agents-101-starter.tar.gz</code> in your browser’s downloads and move it into <code>agents-101</code> alongside the <code>prework</code> folder. Claude will unpack it when you copy and send the request below in the same conversation.</p>
 <div class="rt-profile rt-profile-cowork">
 
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
@@ -3004,9 +3020,10 @@ For course navigation, add this line to the training-folder `CLAUDE.md` if it is
 <div class="a101-video-placeholder rt-profile rt-profile-cowork">Assume there is a <span data-a101-os-only="mac">Mac</span><span data-a101-os-only="windows">Windows</span> video here showing how to move the download into <code>agents-101</code> and ask Claude to unpack it.</div>
 
 <p>When Claude says the files are ready, keep this conversation open for the calendar exercise.</p>
-<h2 id="4-summarize-your-week-in-meetings">4. Summarize your week in meetings</h2>
+<h2 id="5-summarize-your-week-in-meetings">5. Summarize your week in meetings</h2>
 <p><span id="2-connect-your-work-apps-5-min"></span>
-<span id="5-summarize-your-week-in-meetings-10-min"></span></p>
+<span id="5-summarize-your-week-in-meetings-10-min"></span>
+<span id="4-summarize-your-week-in-meetings"></span></p>
 <p>Open your calendar in week view and take a screenshot of the week you want Claude to summarize.</p>
 <div class="rt-cli">
 
@@ -3117,37 +3134,16 @@ For course navigation, add this line to the training-folder `CLAUDE.md` if it is
 <p>The screenshot works without connecting your calendar.</p>
 </details>
 
-<h2 id="5-see-what-makes-this-an-agent">5. See what makes this an agent</h2>
+<h2 id="6-see-what-makes-this-an-agent">6. See what makes this an agent</h2>
 <p><span id="6-read-the-mental-frame-10-min"></span>
-<span id="5-read-the-mental-frame"></span></p>
+<span id="5-read-the-mental-frame"></span>
+<span id="5-see-what-makes-this-an-agent"></span></p>
 <p>Read <a href="#llm-vs-chat">What is an Agent, LLM vs chat</a>. It explains what changes when your agent can work with files and tools instead of only answering in a chat.</p>
 <h2 id="continue-to-module-1">Continue to Module 1</h2>
 <p><span id="bring-to-module-1"></span></p>
 <p>Go to <a href="#getting-going">Module 1: Getting Going</a>. Start a new conversation for it and select the same <code>agents-101</code> folder. Your game and meeting summary stay there.</p>
 
 </section>
-
-<section class="a101-onboarding a101-learning-controls" aria-label="Pause or resume learning"><div class="module">
-<details class="a101-onboarding__optional"><summary><h2 id="pause-learning">Pause learning</h2></summary>
-
-<p>If you’ve added the course files, copy and send the request below before you close Claude. Claude saves your place in the <code>agents-101</code> folder. If you haven’t added the course files yet, bookmark the section you’re on.</p>
-<p><strong>Prompt</strong> Cowork</p>
-<pre><code class="language-text">Help me pause Agents 101 so I can resume later.
-
-Use `prework/course-navigation.md` to save my place before we stop.
-</code></pre>
-</details>
-<details class="a101-onboarding__optional"><summary><h2 id="resume-learning">Resume learning</h2></summary>
-
-<p>If Claude saved your place, open a new conversation in Claude Desktop and select your <code>agents-101</code> folder again. Copy and send the request below. If you bookmarked a section, open that bookmark.</p>
-<p><strong>Prompt</strong> Cowork</p>
-<pre><code class="language-text">Help me resume Agents 101.
-
-Read `prework/course-navigation.md` and help me find my place in the workbook.
-</code></pre>
-</details>
-
-</div></section>
 
 <nav class="workbook-toc">
   <h2>Contents</h2>
@@ -14584,6 +14580,28 @@ Keep it practical enough that I can use it on Monday.
 <p>Add a recipe when the move is reliable enough that a working practitioner would recommend it to another without caveats. Not before.</p>
 
 </section>
+<section class="a101-onboarding a101-learning-controls" aria-label="Pause or resume learning"><div class="module">
+<details class="a101-onboarding__optional"><summary><h2 id="pause-learning">Pause learning</h2></summary>
+
+<p>If you’ve added the course files, copy and send the request below before you close Claude. Claude saves your place in the <code>agents-101</code> folder. If you haven’t added the course files yet, bookmark the section you’re on.</p>
+<p><strong>Prompt</strong> Cowork</p>
+<pre><code class="language-text">Help me pause Agents 101 so I can resume later.
+
+Use `prework/course-navigation.md` to save my place before we stop.
+</code></pre>
+</details>
+<details class="a101-onboarding__optional"><summary><h2 id="resume-learning">Resume learning</h2></summary>
+
+<p>If Claude saved your place, open a new conversation in Claude Desktop and select your <code>agents-101</code> folder again. Copy and send the request below. If you bookmarked a section, open that bookmark.</p>
+<p><strong>Prompt</strong> Cowork</p>
+<pre><code class="language-text">Help me resume Agents 101.
+
+Read `prework/course-navigation.md` and help me find my place in the workbook.
+</code></pre>
+</details>
+
+</div></section>
+
 </main>
 <footer class="curriculum-footer"><p><strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. This is proprietary training material. Using, copying or passing it on is governed by the licence under which you received it. <a href="https://bosser.consulting" target="_blank" rel="noopener">bosser.consulting</a></p></footer>
 <details class="third-party-notices"><summary>Third-party notices</summary>

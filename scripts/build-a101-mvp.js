@@ -217,7 +217,11 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
     // direct section.module children, never mistakes onboarding for a module.
     html = html.replace(toc, `<section class="a101-onboarding"><div class="module">\n${welcome}\n</div></section>\n\n${toc}`);
     html = moveContentsAfterPrework(html);
-    html = html.replace(toc, `<section class="a101-onboarding a101-learning-controls" aria-label="Pause or resume learning"><div class="module">\n${controls}\n</div></section>\n\n${toc}`);
+    const runtimePicker = '<div id="runtime-switcher" class="runtime-switcher"></div>';
+    if (!html.includes(runtimePicker)) throw new Error('Workbook runtime picker is missing');
+    html = html.replace(runtimePicker, `<details class="a101-tool-picker"><summary>Choose a tool</summary>${runtimePicker}</details>`);
+    if (!html.includes('</main>')) throw new Error('Workbook footer insertion point is missing');
+    html = html.replace('</main>', `<section class="a101-onboarding a101-learning-controls" aria-label="Pause or resume learning"><div class="module">\n${controls}\n</div></section>\n\n</main>`);
     const nav = '<ol class="workbook-topnav__modules">';
     if (!html.includes(nav)) throw new Error('Workbook navigation insertion point is missing');
     html = html.replace(nav, `${nav}\n      <li><a href="#start-learning" data-target="start-learning">Start</a></li>`);
@@ -236,6 +240,8 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
 .a101-start-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 body.workbook .workbook-cover { padding-top: 1rem; padding-bottom: 1.5rem; margin-bottom: 1rem; }
 body.workbook > main > section#prework { padding-top: 0; }
+.a101-tool-picker { margin-top: 1rem; text-align: start; }
+.a101-tool-picker > summary { cursor: pointer; font-size: .9rem; }
 section#prework, section#prework .module-hero-title, section#prework > h2 { scroll-margin-top: 5rem; }
 section#prework > .module-hero { margin-bottom: 1.5rem; padding-top: 1rem; padding-bottom: 1rem; }
 section#prework > h2 { margin-top: 2rem; padding-top: 1rem; }

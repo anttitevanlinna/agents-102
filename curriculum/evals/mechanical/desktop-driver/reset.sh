@@ -20,5 +20,5 @@ click_text "New" exact 300 0 300 0 200
 expect_text "How can I help you today" contains 6 300 1412
 expect_text "Project or folder" contains 3 300 1412 400 650 \
   || die "the chip shows a folder, not 'Project or folder'; remove it from the chip by hand"
-"$BIN/click" 900 650 0                                # park the pointer on empty page
+"$BIN/scroll" 1300 300 0                              # park the pointer: MOVE only, never click (cards below the chip open docs)
 echo "STATE-OK"

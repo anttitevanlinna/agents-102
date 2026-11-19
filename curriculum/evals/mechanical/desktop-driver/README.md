@@ -32,6 +32,7 @@ Run with bash, not zsh (`BASH_SOURCE`). Captures land in `out/` (gitignored): th
 - **This session lives in the same window.** Code tab = the operator's transcript. Switching to Chat moves them off it, and their glance can flip it back mid-take: hands off during a take. Quiet first seconds (OCR checks) look like a hang; they are not.
 - **Esc only when a dialog is confirmed on screen.** In the Code tab, Esc reaches the chat input.
 - **OCR quirks:** chevrons read as a trailing `v` (`Project or folder v`), sidebar icons as a leading glyph, badges join the label (`Dispatch Beta`). Match `contains` for those.
+- **Park the pointer by moving, never clicking.** A "park" click at an empty-looking spot opened a *Recent artifacts* card (a doc, in edit mode). `bin/scroll x y 0` moves without clicking.
 - **Scroll glides past the event.** Clicking `New` mid-glide hit `Artifacts`.
 - **Cowork facts:** Cowork = the Chat tab (no separate tab). Folder chip → `Add folder` opens the picker *Add folders to this session* (has its own `New Folder`). It **adds**; an already-attached default stays (`… +1`). Opening a folder asks *Allow Claude to change files in "…"?* (Cancel / Always allow / Allow). The picker remembers its last location. Cowork's shell reaches the internet (`curl` HTTP 200).
 - **System Events `click at` does nothing on the Electron web view;** real HID events (`bin/click`, CGEvent) do. The AX tree is exposed only intermittently (`AXManualAccessibility`), so OCR is the locator.

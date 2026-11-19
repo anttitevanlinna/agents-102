@@ -20,7 +20,7 @@ click_text "Project or folder" contains 700 300 1412 400 650
 expect_text "Add folder" contains 4 300 1412 350 560
 click_text "Add folder" contains 600 300 1412 350 560
 expect_text "Add folders to this session" contains 6
-click_text "Documents" exact 700 335 480 170 630
+click_text "Documents" contains 700 335 480 170 630   # OCR: "D Documents" (icon read as a letter)
 sleep 1
 click_text "New Folder" contains 700 $PICK
 expect_text "Name of new folder" contains 4

@@ -7,6 +7,8 @@ set -euo pipefail
 source "$(cd "$(dirname "$0")/.." && pwd)/steps.sh"
 MODE="${1:-dry}" MOV="${2:-$OUT/a101-prework-add-folder.mov}"
 # redact: --crop 556,0,2154,1502 --width 1280 --trim 31 --blur 990,1110,1360,350@0-6.3 --blur 990,1170,1360,290@6.3-24 --blur 990,1110,1360,350@24-99
+# cut[name-dialog]: 13.3-19.4 crop=638:300:1037:600 src=raw
+# cut[attach-folder]: 0-12.4,20.3-31
 PICK="335 1135 170 630"                               # picker bounds, screen points
 
 [[ ! -e "$HOME/Documents/agents-101" ]] || die "~/Documents/agents-101 already exists"

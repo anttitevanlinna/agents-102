@@ -1,0 +1,986 @@
+{
+  "generated_at": "2026-11-19T16:57:37.120Z",
+  "mode": "cold-html-persona-reads",
+  "source_revision": "e59d9b70c4446a15f9e09e8edfa285d71fae7505",
+  "source_file": "site/clients/acme-mvp/agents-101/index.html",
+  "source_sha256": "3264801c72d0428e04050f09662857e7394eb91b92d7c93cadd137daf3d889ad",
+  "excerpt_sha256": "5171bc1f1ddffb4cb7bab4f1f4e79ae2645d07b50123f9233ce06521997e96b9",
+  "scope": "30 cold independent HTML-reading judgements, same question and HTML; 10 personas x3 attempts; account/runtime available; no observed user success or time",
+  "prior_batch": "curriculum/evals/onboarding/agents-101/out/html-ratings-f5ad99e0-c528-4256-8de4-df2eaec79aa2",
+  "question_change": "Numeric example score removed from JSON format instruction to avoid response anchoring; HTML, persona descriptions, star definitions and substantive question unchanged.",
+  "evidence_directory": "curriculum/evals/onboarding/agents-101/out/html-ratings-56837357-b4ad-4d0c-ad52-84c1fb9d438c",
+  "question": "Claude Desktop is already installed and your account has Cowork access. No course folder or previous course conversation exists. There is no trainer. You are trying this on your own.\n\nBelow is actual HTML from the published handbook: navigation, cover, Start and Prework. Cowork is selected; other runtime content is hidden and omitted. Pause/Resume panels are initially closed, so only their labels are shown here. The rest of the handbook, including linked reading destinations, exists beyond this excerpt. Assess the start, not omitted later material. This is an HTML-reading simulation, not actual app execution or a visual screenshot test.\n\nImagine your first start. What would you actually do, in order? Would you get going? Would it feel 'really snappy and obvious'? Where would you hesitate, detour, ask for help or stop? Do not invent app behaviour or claim you actually executed anything. Do not be polite for the author.\n\nGive 1–5 stars for how quick and obvious the start feels: 1=cannot get going; 2=need substantial help; 3=can get going with detours; 4=clear with minor hesitation; 5=snappy and obvious throughout. Rate the route to the first visible result (the game), not full prework completion or course quality. Report getting going separately from smoothness. Quote the exact instruction behind your most important hesitation, and name the ONE change that would improve the start most.\n\nUnder 250 words. Return a JSON object with these fields: stars (integer from 1 to 5), wouldGetGoing (yes, no, or uncertain), firstActions (array), hesitations (array), evidenceQuote (exact instruction text), feeling (in your own voice), biggestImprovement (text).",
+  "star_scale": {
+    "1": "Cannot get going",
+    "2": "Need substantial help",
+    "3": "Can get going with detours",
+    "4": "Clear with minor hesitation",
+    "5": "Snappy and obvious throughout"
+  },
+  "model_names": [
+    "claude-sonnet-5-5"
+  ],
+  "calls": 30,
+  "mean_stars": 3.033333333333333,
+  "histogram": {
+    "1": 0,
+    "2": 0,
+    "3": 29,
+    "4": 1,
+    "5": 0
+  },
+  "predicted_getting_going": {
+    "yes": 29,
+    "no": 0,
+    "uncertain": 1
+  },
+  "personas": [
+    {
+      "id": "novice-leader",
+      "label": "Novice business leader",
+      "description": "A motivated business leader who uses chat AI weekly. Never used Cowork or picked a working folder. Can use Finder and a browser, but tilde paths and tarballs are unfamiliar.",
+      "prompt_sha256": "f7e5cce05baa5bc88665c4b67612a8f05972be883e0a117e122518727d765937",
+      "scores": [
+        3,
+        3,
+        3
+      ],
+      "judgements": [
+        {
+          "attempt": 1,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Click 'Start Prework' and skim the intro",
+            "Create ~/Documents/agents-101/ in Finder, working out what the tilde means (probably Documents > new folder)",
+            "In Cowork, click New task and choose that folder as the working folder",
+            "Skip or half-attempt connectors; the 'if in doubt' Path B is a fallback",
+            "Download the tar.gz, find where it saved, and move it into the folder",
+            "Copy the extract prompt into Cowork and run it",
+            "Maybe set the folder instructions field (unclear where it is)",
+            "Copy the snake prompt, wait, then double-click prework/snake.html"
+          ],
+          "hesitations": [
+            "'~/Documents/agents-101/' is unfamiliar notation; I would guess it means Documents in my home folder",
+            "The starter tarball is required before the snake game, though the snake prompt needs only a folder. A .tar.gz is unfamiliar, and a browser may auto-save it to Downloads, so I would have to move it by hand.",
+            "The extract prompt contains a shell command and conditional 'if tar is not available' language, which feels technical and scary",
+            "The prompt also edits CLAUDE.md, and a separate paragraph says to set folder instructions. I don't know what CLAUDE.md is or where the folder instructions live, and it is unclear whether both are required.",
+            "Section 2 (connectors) comes before the first result and is mostly irrelevant to the game",
+            "Start page and Prework repeat each other; the Prework intro promises 5 things in 50 minutes, which feels heavy",
+            "Not clear that Cowork's 'No terminal required' means the shell step in the prompt is fine"
+          ],
+          "evidenceQuote": "Download the starter file set</a> and save it directly into ~/Documents/agents-101/. You should see agents-101-starter.tar.gz land there in Finder or File Explorer. Then ask the agent to unpack it.",
+          "feeling": "I'd get going, but not feel snappy. The game is a nice, concrete goal, yet I'd be stuck behind a folder path, a tarball download, a shell command and a CLAUDE.md instruction I don't understand before I get to it. I'd keep wondering whether I was doing it right.",
+          "biggestImprovement": "Put the snake game first: create the folder, open a Cowork task in it, paste the one-line snake prompt and open the result. Move the tarball, CLAUDE.md and connectors steps after that first win, and explain the path in plain words ('a new folder called agents-101 inside your Documents folder').",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "novice-leader-1.response.txt",
+          "status": "novice-leader-1.status.json"
+        },
+        {
+          "attempt": 2,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Click 'Start Prework' and read the intro",
+            "Open Finder, go to Documents, create folder agents-101 (the ~ path is odd, but I'd guess Documents)",
+            "In Claude Desktop, open the Cowork tab, click New task, pick that folder as working folder",
+            "Skip connectors or try them briefly; they're optional-ish",
+            "Click the download link and hope it lands in agents-101 (browser may default to Downloads)",
+            "Copy the tar prompt into Cowork and run it",
+            "Copy the snake prompt into Cowork, then double-click snake.html in Finder to play"
+          ],
+          "hesitations": [
+            "'~/Documents/agents-101/' is unfamiliar notation; I'd have to guess it means Documents in my home folder.",
+            "Section 2 (connectors) comes before any result and is vague ('open its connector settings'), so I'd worry about stalling there.",
+            "Download must be saved 'directly into' the folder, but the browser probably saves to Downloads, and I'd have to move it by hand. A tarball is unfamiliar, and a .tar.gz might auto-extract or be renamed.",
+            "The snake game does not need the starter, but it sits behind steps 2 and 3, so the first visible result is delayed.",
+            "Two competing folder/CLAUDE.md instructions appear: the prompt edits CLAUDE.md, and a separate line says to set Cowork folder instructions to 'Read CLAUDE.md...'. I don't know where to set that, or whether it's required.",
+            "The prompt says 'Use the shell: tar xzf' with a code block, which looks like something I should type in a terminal, despite 'No terminal required'.",
+            "Step 1 says 'Make sure you can access the agent runtime you selected' with no guidance if it fails."
+          ],
+          "evidenceQuote": "Download the starter file set</a> and save it directly into ~/Documents/agents-101/. You should see agents-101-starter.tar.gz land there in Finder or File Explorer. Then ask the agent to unpack it.",
+          "feeling": "I'd get there, but it's not snappy. The folder and Cowork steps are fine, but before I see anything move I have to deal with connectors, a download-and-move step, a tarball, and a folder-instructions setting I can't find. Snake is a nice, quick payoff, but it's buried behind setup it doesn't need.",
+          "biggestImprovement": "Put the snake game first: create the folder, open a Cowork task in it, paste the one-line snake prompt, and play it. Move the connector setup and the starter download/extract after that first win. Explain '~/Documents' in plain words (Documents folder > agents-101).",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "novice-leader-2.response.txt",
+          "status": "novice-leader-2.status.json"
+        },
+        {
+          "attempt": 3,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Click 'Start Prework' from the Start section",
+            "Make sure Claude Desktop/Cowork is accessible, then create ~/Documents/agents-101/ in Finder (right-click > New Folder), guessing at the tilde path (Documents > agents-101)",
+            "Open Cowork tab, click New task, select the folder as the working folder",
+            "Skip or quickly try connectors (section 2), unsure whether my company allows it",
+            "Download the starter tar.gz, save it into the folder, copy the extraction prompt into Cowork",
+            "Paste the snake prompt, open prework/snake.html in the browser and play"
+          ],
+          "hesitations": [
+            "'~/Documents/agents-101/' is unfamiliar; I'd have to work out that it means Documents > agents-101 in Finder.",
+            "Section 2 (connectors) comes before anything visible. It's ambiguous whether I can skip it, and the wording 'if your company allows it' makes me stall.",
+            "The starter download is a .tar.gz and the prompt includes a shell command (tar xzf). It's jargon, and I'm unsure whether Cowork will unpack it or whether the browser will auto-extract it.",
+            "There are two overlapping instructions about CLAUDE.md: one inside the prompt and another about setting folder instructions. It's unclear where 'instructions for your Cowork training folder' lives in the UI, and it's not clear if it's required.",
+            "The snake game, the first visible result, sits behind about 3 setup steps, and the tarball step isn't needed for it. Nothing says it's safe to skip."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.`",
+          "feeling": "I'd probably get there, but it wouldn't feel snappy. The snake prompt is trivial; the setup before it (tilde path, tarball, shell command, folder-instructions setting I can't locate) is where I'd slow down and wonder if I'm doing it wrong. I'd be slightly nervous about the folder instructions step.",
+          "biggestImprovement": "Move the snake game right after creating the folder and starting the Cowork task, so the first visible result comes in about 5 minutes. Defer the tarball, CLAUDE.md and connector steps until afterward, and label them 'skip if stuck'. Also replace the tilde path with plain Finder wording: 'In Documents, create a folder called agents-101'.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "novice-leader-3.response.txt",
+          "status": "novice-leader-3.status.json"
+        }
+      ]
+    },
+    {
+      "id": "product-ops",
+      "label": "Product operations leader",
+      "description": "A busy product operations leader who uses chat AI daily, is comfortable with files, and wants something tangible quickly. New to this course and Cowork folder setup.",
+      "prompt_sha256": "eb842a8cb306153e12b0aa9a25e701b02d0b11655c93ce38a870870b562437e5",
+      "scores": [
+        3,
+        3,
+        3
+      ],
+      "judgements": [
+        {
+          "attempt": 1,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Click 'Start Prework' from the Start page; skim the intro",
+            "Create ~/Documents/agents-101/ in Finder",
+            "Open Cowork tab, New task, pick that folder, name it agents-101-prework",
+            "Skip or glance at connector setup (section 2), since calendar isn't needed for the game",
+            "Download the starter tarball into the folder and paste the extract prompt into Cowork",
+            "Hit the extra 'Set the instructions for your Cowork training folder' step, unsure where that lives",
+            "Paste the snake prompt, open prework/snake.html in a browser, play"
+          ],
+          "hesitations": [
+            "The game is section 4, behind connector setup, a tarball download, extraction, a CLAUDE.md edit, and a folder-instructions step. The first visible result feels far away for something promised as quick.",
+            "The folder-instructions step is a bare sentence with no location in the Cowork UI. I don't know where 'instructions' lives and would hunt for it.",
+            "The tarball and the CLAUDE.md edit aren't needed for the snake, and the prompt mixes extraction, folder checks and a CLAUDE.md edit in one block, so a failure there blocks me for no visible gain.",
+            "The 'Download' link goes to an external domain I don't know, and saving into the folder, then asking the agent to untar, feels technical.",
+            "Section 2 comes before anything fun and implies connectors may need IT approval, so I'd worry about that early."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: Read CLAUDE.md before working in this folder.",
+          "feeling": "I'd get there, but it feels like admin before payoff. The steps are clear individually, but I'm doing setup I don't understand while the snake game, the one thing I want, waits in section 4. A busy person would be tempted to skip ahead, and that wouldn't feel snappy.",
+          "biggestImprovement": "Move the snake game to the very first step, right after creating the folder and opening the Cowork task. Defer connectors, the starter tarball, CLAUDE.md and folder-instructions until after the first visible win.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "product-ops-1.response.txt",
+          "status": "product-ops-1.status.json"
+        },
+        {
+          "attempt": 2,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Click 'Start Prework' (Start page is short; I skim it and jump)",
+            "Create ~/Documents/agents-101/ in Finder",
+            "Open Cowork tab, New task, pick that folder",
+            "Download the starter tarball into the folder",
+            "Copy the extract prompt into Cowork and run it",
+            "Set the folder instructions field to 'Read CLAUDE.md before working in this folder.'",
+            "Copy the snake prompt, open prework/snake.html in browser, play"
+          ],
+          "hesitations": [
+            "The snake game, the first visible result, sits behind folder creation, app connectors, and a tarball download/extract. Nothing in that chain is needed to build the game.",
+            "Section 2 (connectors) comes before the game and says 'keep going' if IT hasn't approved. I'd likely wonder whether to stop and sort that out.",
+            "The tarball prompt mixes extraction, a folder check, and a CLAUDE.md edit. The separate 'folder instructions' step arrives after it with no clear location for that setting, so I'd hunt for it.",
+            "Unclear whether the CLAUDE.md edit has to happen before the snake step. 'Name it if your runtime supports session names' adds more doubt.",
+            "The Start page repeats itself and says 'Keep this workbook open beside Cowork', but gives no sign of how long the first result will take."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: Read CLAUDE.md before working in this folder.",
+          "feeling": "I'd get there, but it feels like admin before play. I want the snake on screen in five minutes, and instead I'm doing downloads, tar commands, and hunting for a folder-instructions setting I can't locate from this text. It's not blocking, just slower and fussier than 'snappy'.",
+          "biggestImprovement": "Move the snake game to right after folder creation and Cowork task setup (new step 2), and defer connectors and the starter tarball and folder-instructions setup until after the first visible result. If the instructions setting must stay, say exactly where to click.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "product-ops-2.response.txt",
+          "status": "product-ops-2.status.json"
+        },
+        {
+          "attempt": 3,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Click 'Start Prework' from the Start page; skim the cover and Start text.",
+            "Create ~/Documents/agents-101/ in Finder.",
+            "Open Cowork tab, click New task, pick that folder, name it agents-101-prework.",
+            "Skip or quickly try connectors (section 2), since the calendar screenshot path is the fallback.",
+            "Download the starter tarball into the folder, copy the extraction prompt into Cowork, paste and run it.",
+            "Copy the snake prompt into Cowork, then open prework/snake.html in the browser and play."
+          ],
+          "hesitations": [
+            "The game is section 4, but I must first do folder creation, connectors, and a tarball download plus extraction. The first visible result sits behind about 10+ minutes of setup.",
+            "Section 3 mixes a CLAUDE.md edit with a separate 'Set the instructions for your Cowork training folder' step. I don't know where that setting lives in Cowork, and it isn't clear whether it's required for the snake game.",
+            "The tarball extraction prompt also tells the agent to edit CLAUDE.md and read a navigation file. That's more than the 'unpack' step I was told about, and it's confusing for a newcomer.",
+            "Section 2 (connectors) comes before the game with no clear 'skip for now'. The instruction to ask the agent to look up click-paths is vague.",
+            "The snake prompt doesn't depend on the starter at all, so the download is an unnecessary detour before the first win."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: Read CLAUDE.md before working in this folder.",
+          "feeling": "I'd get going, but not snappily. The first three steps are clear, then I hit connectors and a tarball, and the folder-instructions line leaves me guessing where to click. I just want the snake game, and it's stuck behind admin I don't yet see the point of.",
+          "biggestImprovement": "Move the snake game to the very first step, right after creating the folder and starting the Cowork task. Defer connectors, the starter download, and the CLAUDE.md and folder-instruction setup until after the first visible result.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "product-ops-3.response.txt",
+          "status": "product-ops-3.status.json"
+        }
+      ]
+    },
+    {
+      "id": "technical-builder",
+      "label": "Technical builder",
+      "description": "A fast technical builder who uses coding agents and working folders. Will skim things already known, but wants to do the course solo. Rate your own start, not hypothetical colleagues.",
+      "prompt_sha256": "097896640dd6fd206874c7bf22c499964a6633b6f1c0640e632813585cc1463b",
+      "scores": [
+        3,
+        3,
+        4
+      ],
+      "judgements": [
+        {
+          "attempt": 1,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Skim the Start page and click 'Start Prework'",
+            "Create ~/Documents/agents-101/ in Finder",
+            "Open the Cowork tab, click New task, and select that folder",
+            "Skim the connectors step; probably skip it or detour to the settings",
+            "Download the tarball, find it in Downloads, and move it into the folder",
+            "Copy the extract prompt into Cowork and run it",
+            "Hunt for where to set the folder instructions",
+            "Paste the snake prompt, open prework/snake.html, and play"
+          ],
+          "hesitations": [
+            "The snake game, the first visible result, sits behind connector setup, a download-and-move step and folder-instruction plumbing, none of which it needs.",
+            "'Save it directly into' the folder is awkward because the link opens in a new tab and the file probably lands in Downloads.",
+            "The folder-instruction step has no click path and I can't tell whether it is required. It also overlaps with the CLAUDE.md line in the extract prompt.",
+            "Step 2 does not say it can be skipped for the game. It only says to 'keep going' if IT blocks it.",
+            "The tarball comes from an external domain, which gives me a small trust pause."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: Read CLAUDE.md before working in this folder.",
+          "feeling": "The route is clear and linear, so I would get going without help. But it's not snappy. I am a fast builder and want the snake game in about two minutes, and instead I do admin first: connectors, a download, a tarball, and a settings step I have to find myself. I'd likely jump ahead to step 4 and come back to the setup later.",
+          "biggestImprovement": "Put the snake game first: create the folder, open a Cowork task, paste one prompt, and play it. Then move the connectors, starter download and folder-instruction setup after that first win. Give the folder-instruction step a click path or remove it.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "technical-builder-1.response.txt",
+          "status": "technical-builder-1.status.json"
+        },
+        {
+          "attempt": 2,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Click 'Begin with Prework' from Start",
+            "Create ~/Documents/agents-101/ in Finder",
+            "Open the Cowork tab, click New task, and pick that folder as the working folder",
+            "Skim the connectors step, probably deferring it since it's optional",
+            "Download the starter tarball, probably from ~/Downloads, move it into the folder, and paste the extract prompt",
+            "Try to set the folder instructions",
+            "Paste the snake prompt, then open prework/snake.html in a browser"
+          ],
+          "hesitations": [
+            "The game is step 4. Before it I pass a connector step, a download-and-move step, and a CLAUDE.md edit, none of which I need to see a snake move.",
+            "I don't know where the Cowork folder instructions field is, and the text never says.",
+            "'Save it directly into' the folder assumes my browser will let me choose a location. I'd probably have to find the file in Downloads and move it.",
+            "The extract prompt also edits CLAUDE.md and reads a navigation file, so it does more than the 'extract' it advertises. I'd wonder whether that was safe.",
+            "'Name it ... if your runtime supports session names' leaves me unsure whether Cowork can name a task."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: Read CLAUDE.md before working in this folder.",
+          "feeling": "The start is clear until I hit the folder-instructions line. I can't tell where that setting lives, and I'd waste a minute hunting for it or skip it and wonder if I broke something. The snake prompt itself is trivial and satisfying. I want that win first, not after setup chores.",
+          "biggestImprovement": "Make the snake game the first step after creating the folder and opening the task. Move connectors, the starter install and the folder-instructions line after it, and give a click path for the instructions setting.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "technical-builder-2.response.txt",
+          "status": "technical-builder-2.status.json"
+        },
+        {
+          "attempt": 3,
+          "stars": 4,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Click 'Start Prework' on the Start page; Cowork is already selected",
+            "Create ~/Documents/agents-101/ in Finder",
+            "Open the Cowork tab, click New task, pick that folder, name it agents-101-prework",
+            "Skim the connector step and skip it, since the snake game doesn't need it",
+            "Download the starter tarball into the folder, then paste the extract prompt into Cowork",
+            "Paste the snake prompt into Cowork, open prework/snake.html in the browser and play"
+          ],
+          "hesitations": [
+            "The snake game, the first visible result, sits behind steps 2 and 3. Step 2 (connectors) is not needed for it, and a fast builder will skip ahead after wondering whether that's allowed.",
+            "The extract prompt also edits CLAUDE.md. Right after it there's a separate instruction to set the folder instructions to 'Read CLAUDE.md before working in this folder.' It doesn't say where in the Cowork UI to set this, or whether it must happen before the prompt. I'd guess and go on.",
+            "The tarball comes from an external domain and gets unpacked by the agent. That's fine for me, but I'd pause briefly over a third-party download.",
+            "The download-then-extract step relies on the browser saving into the right folder. If it lands in ~/Downloads I'd have to move it myself.",
+            "It's unclear whether the prework is one task or several, and the 'Start Prework' link appears twice."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.` This keeps course navigation available when you start a fresh task.",
+          "feeling": "Mostly smooth. Cowork is preselected, the prompts are copy-paste, and the snake game is a quick payoff. But I'm pushing through setup I don't need yet before I see anything run. The folder-instructions line is vague about where to click, so I'd stall there for a minute and then just move on, assuming it isn't blocking.",
+          "biggestImprovement": "Put the snake game first, right after creating the folder and the Cowork task, so the first result comes within about 3 minutes. Move the connectors and starter install after it. Also say exactly where the Cowork folder instructions field is, or fold it into the prompt.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "technical-builder-3.response.txt",
+          "status": "technical-builder-3.status.json"
+        }
+      ]
+    },
+    {
+      "id": "hr-leader",
+      "label": "Cautious HR leader",
+      "description": "An HR leader who uses chat AI for drafting but is cautious about connecting work apps or uploading company data. Wants to participate without waiting for IT or a trainer. Comfortable with ordinary office software.",
+      "prompt_sha256": "ad73f1dabe5c188f27897cdc84cdda7a38d0543ff5a9a3528aa461e9ab51ca40",
+      "scores": [
+        3,
+        3,
+        3
+      ],
+      "judgements": [
+        {
+          "attempt": 1,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Click 'Start Prework' from the Start page",
+            "Create ~/Documents/agents-101/ in Finder/Explorer",
+            "Open the Cowork tab, click New task, pick that folder",
+            "Download the starter tarball into the folder",
+            "Copy the extraction prompt into Cowork and run it",
+            "Set the folder instructions field (separate step)",
+            "Copy the snake prompt into Cowork, open prework/snake.html in a browser and play"
+          ],
+          "hesitations": [
+            "Section 2 pushes me to connect Microsoft 365/Google Workspace, which I'm wary of. 'If your company allows it' and a Path B fallback help, but I'd stop and wonder whether I should ask IT before even looking.",
+            "Section 3 comes before the first visible result. I have to download an archive, run a shell tar command, and let the agent edit CLAUDE.md. As a non-technical person I'm unsure what 'tarball' or 'shell' means and whether I'm allowed to run it.",
+            "Two separate instructions touch CLAUDE.md (the prompt and the folder-instruction line). It's unclear whether I do both, or where the 'instructions' setting lives.",
+            "The snake game is step 4 of 6, after about 8 minutes of setup, so the first win is delayed.",
+            "The page asks me to trust a download from an external domain I don't recognise."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.`",
+          "feeling": "I could get going, but it doesn't feel snappy. The page is friendly and the prompts are copy-paste, so I'd probably get the snake game running. Along the way I'd pause at the connector push, the unfamiliar download and tar command, and a folder-instructions step with no pointer to where that setting is. Nothing makes me quit, but I'd be a little uneasy about what I'm letting it touch.",
+          "biggestImprovement": "Put the snake game first, right after creating the folder and opening the Cowork task, since it needs no starter archive, connector or CLAUDE.md setup. Then move the starter download, tar extraction and folder-instructions into a later 'set up for the course' step, with a plain-language note on what they do. Mark connectors as fully optional so cautious users don't feel pressed.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "hr-leader-1.response.txt",
+          "status": "hr-leader-1.status.json"
+        },
+        {
+          "attempt": 2,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Click 'Start Prework' from the Start page",
+            "Create ~/Documents/agents-101/ in Finder/Explorer",
+            "Open the Cowork tab, click New task, choose that folder",
+            "Download the starter tarball into the folder, then paste the extract prompt into Cowork",
+            "Probably set the folder instructions line, then paste the snake game prompt, and open snake.html in a browser"
+          ],
+          "hesitations": [
+            "The snake game, the first visible result, sits behind steps 2 and 3. Step 2 asks me to connect work apps, which I'm wary of, and I'd stop to decide whether to skip it.",
+            "Step 3 is the biggest detour: download a tar.gz from an external domain, then have the agent run a shell command. For a non-technical HR person that feels unfamiliar and a bit risky. The game doesn't need it.",
+            "The CLAUDE.md edit and the 'set the instructions for your Cowork training folder' line are unexplained. I don't know where that setting lives, and it's unclear whether it's required.",
+            "'Name it if your runtime supports session names' is vague.",
+            "The handbook says 'Keep this workbook open beside Cowork' but doesn't say how. I'd have to work out the window layout myself.",
+            "Section 2 'if your company allows it' leaves me unsure whether I may proceed, and the skip reassurance is buried further down in the section."
+          ],
+          "evidenceQuote": "Connect either Microsoft 365 or Google Workspace before the first module if your company allows it.",
+          "feeling": "I'd get there, but it wouldn't feel snappy. The page nudges me to connect work apps and run a shell command from a downloaded archive before I've seen anything work. That's exactly what makes me cautious. The snake prompt itself is delightfully simple. I just wish I could reach it in two minutes.",
+          "biggestImprovement": "Put the snake game first: create the folder, open a Cowork task, paste one prompt, play. Then move the connector and starter download after that, and label the connector step 'optional, skip if unsure'.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "hr-leader-2.response.txt",
+          "status": "hr-leader-2.status.json"
+        },
+        {
+          "attempt": 3,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Click 'Start Prework' from the Start page",
+            "Create ~/Documents/agents-101/ in Finder/Explorer",
+            "Open the Cowork tab, click New task, pick that folder, name it agents-101-prework",
+            "Skim section 2 (connectors), likely skip it and plan for Path B later",
+            "Download the starter tarball, save it into the folder, paste the extract prompt into Cowork",
+            "Paste the snake game prompt, wait, open prework/snake.html in a browser and play"
+          ],
+          "hesitations": [
+            "Section 2 asks me to connect work apps and sign in with my work account before anything works. As someone cautious about company data, I'd stall here, unsure whether it's required. It says 'if your company allows it' and 'keep going', but it still sits ahead of the game.",
+            "The starter download comes from an external domain (bosser.consulting) and has to be unpacked via a shell command. A tar prompt with a CLAUDE.md edit feels technical and slightly risky to a non-technical HR person, and I'd wonder whether I need it for the game.",
+            "A separate instruction asks me to set Cowork folder instructions to 'Read CLAUDE.md...', but no location or click path is given. I'd be unsure where that setting lives.",
+            "Sections 1-3 come before the visible payoff, and the game depends on prework/ existing, so skipping the starter is unclear.",
+            "'Name it ... if your runtime supports session names' is vague."
+          ],
+          "evidenceQuote": "Connect either Microsoft 365 or Google Workspace before the first module if your company allows it.",
+          "feeling": "I'd get going, but not snappily. The first step is clear, and the game prompt is one line, which is great. But I have to clear a connector decision, a download from an outside site, and a terminal-flavoured unpack before I see anything. I'd feel mildly nervous and wonder if I'm doing it right.",
+          "biggestImprovement": "Move the snake game to the very first step, right after creating the folder and starting the Cowork task. Make it a one-prompt win with no starter download, and have it create the prework folder itself. Then move the connector and starter steps after it, labelled optional or later, with a clear note that no company data is needed to get the first result.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "hr-leader-3.response.txt",
+          "status": "hr-leader-3.status.json"
+        }
+      ]
+    },
+    {
+      "id": "finance-sceptic",
+      "label": "Skeptical finance leader",
+      "description": "A skeptical finance leader willing to try the free course, with little patience for setup or playful demos unless their purpose is clear. Comfortable with spreadsheets and ordinary files, new to agents.",
+      "prompt_sha256": "4392b7a7dfdb378d3c01fb0d239405f436a91d2c53f3befcb578c367593b7c18",
+      "scores": [
+        3,
+        3,
+        3
+      ],
+      "judgements": [
+        {
+          "attempt": 1,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Read the Start page and click 'Start Prework'",
+            "Skim the Prework intro and the 50-minute estimate",
+            "Confirm Cowork is selected and create ~/Documents/agents-101/",
+            "Open Cowork tab, click New task, select the folder",
+            "Skip or try connector setup (step 2) and move on",
+            "Download the starter tarball into the folder",
+            "Copy the extract prompt into Cowork and run it",
+            "Paste the snake prompt, open prework/snake.html in a browser, play"
+          ],
+          "hesitations": [
+            "Three setup steps (folder, connectors, tarball) come before any visible result; I'd be impatient for the game.",
+            "Step 2 'Connect your work apps' is optional-ish but sits in the way, and the 'if your company allows it' wording makes me wonder whether I'm allowed or should ask IT.",
+            "The tarball download comes from an external domain (agents102.bosser.consulting), and as a finance person I'd pause before downloading and having an agent unpack it, with no explanation of why.",
+            "The extract prompt also edits CLAUDE.md, which is confusing for a newcomer.",
+            "Then there is a separate instruction to set Cowork folder instructions, with no explanation of where that setting lives.",
+            "The starter isn't needed for the snake game, yet the order implies it is. The 'why a snake game' pitch is playful, and its purpose is only vaguely stated."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.`",
+          "feeling": "I'd probably get there, but it doesn't feel snappy. Several steps I can't judge, like CLAUDE.md, folder instructions and an external tarball, come before the payoff. I'd do them on trust, slightly annoyed. The game prompt itself is trivially easy.",
+          "biggestImprovement": "Put the snake game first, right after creating the folder and opening the Cowork task, and move the connector, tarball and CLAUDE.md/folder-instruction setup after it, with one line on why each is needed.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "finance-sceptic-1.response.txt",
+          "status": "finance-sceptic-1.status.json"
+        },
+        {
+          "attempt": 2,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Read the Start page and click 'Start Prework'",
+            "Skim the 50-minute promise, then make ~/Documents/agents-101/ in Finder",
+            "Open Cowork tab, click New task, pick that folder",
+            "Skip or skim the connector step (5 min) and go to section 3",
+            "Download the starter tarball into the folder",
+            "Copy the extract prompt into Cowork and wait for the file listing",
+            "Set the folder instructions in Cowork to 'Read CLAUDE.md before working in this folder.'",
+            "Copy the snake prompt, then double-click prework/snake.html and play"
+          ],
+          "hesitations": [
+            "The snake game sits behind connectors, a download from an unfamiliar third-party domain (bosser.consulting), a tarball and a CLAUDE.md edit. As a skeptic, I'd wonder why I need all that to get a game.",
+            "Section 3 prompt mixes three jobs: extract, verify folders, and edit CLAUDE.md. Then a separate paragraph asks for folder instructions. I don't know where Cowork 'folder instructions' live, or if it's needed to proceed.",
+            "Section 2 comes before the game and may lead me into IT-approval limbo, though it says 'keep going'.",
+            "Technical terms (tarball, shell, CLAUDE.md) are unexplained for someone new to agents.",
+            "'Name it if your runtime supports session names' is vague.",
+            "Snake purpose is explained flippantly ('perfectly useless'), which doesn't answer why I should care."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.`",
+          "feeling": "I'd probably push through, but I'd be irritated. It's clear enough what to click, yet the first result is buried under admin I can't yet see the value of, and I'd feel I was being asked to trust a download and config edits first.",
+          "biggestImprovement": "Move the snake game to right after creating the folder and starting the Cowork task, so the first result takes about 5 minutes. Defer connectors, the starter download, and the CLAUDE.md and folder-instruction setup until after the win. Explain each in one line of purpose when it appears.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "finance-sceptic-2.response.txt",
+          "status": "finance-sceptic-2.status.json"
+        },
+        {
+          "attempt": 3,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Read the Start page and click 'Start Prework'",
+            "Check that Cowork is selected, then create ~/Documents/agents-101/",
+            "Open the Cowork tab, click New task, pick the folder",
+            "Skim the connectors step, probably skip it or check with IT",
+            "Download the starter tarball into the folder",
+            "Copy the extraction prompt into Cowork and run it",
+            "Copy the snake prompt, run it, open snake.html in a browser"
+          ],
+          "hesitations": [
+            "Steps 2 and 3 sit between me and the first visible result. Connectors and the tarball aren't needed for the snake game, which is just a one-line prompt. I'd be impatient and suspicious of the detour.",
+            "The extraction prompt does more than extract. It edits CLAUDE.md and reads a navigation file, and I don't know why. A separate instruction then tells me to set the folder instructions to 'Read CLAUDE.md…'. It's unclear whether that is a Cowork setting or a prompt, where to find it, or whether it's required.",
+            "Downloading a tar.gz from an external domain and having the agent run shell commands on it makes me cautious. The page doesn't say what the file contains or whether it's safe.",
+            "The snake game is justified as 'perfectly useless', and I'd want its purpose stated: a check that the agent can write files to my machine.",
+            "'Name it if your runtime supports session names' is vague for a Cowork-only reader."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.` This keeps course navigation available when you start a fresh task.",
+          "feeling": "I'd get there, but not snappily. The path is mostly clear, but the sequence delays the one quick win behind admin work I don't yet understand. The unexplained CLAUDE.md and folder-instruction step is where I'd stop and wonder whether I'd done it right.",
+          "biggestImprovement": "Put the snake game first, right after creating the folder and starting the task, so the first visible result comes within minutes. Then move the connector, starter install and CLAUDE.md steps after it, with one line on why each is needed and exactly where the folder-instructions setting is.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "finance-sceptic-3.response.txt",
+          "status": "finance-sceptic-3.status.json"
+        }
+      ]
+    },
+    {
+      "id": "solo-consultant",
+      "label": "Solo consultant",
+      "description": "A motivated independent consultant who uses chat AI daily and wants practical personal capability. Comfortable downloading files and choosing folders, new to Cowork. No company IT admin is available.",
+      "prompt_sha256": "dedc668cec50a3425f8d2fc31a30e076a000beac737a58da9378cba454a9165e",
+      "scores": [
+        3,
+        3,
+        3
+      ],
+      "judgements": [
+        {
+          "attempt": 1,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Read Start learning, click 'Begin with Prework'",
+            "Create ~/Documents/agents-101/ in Finder",
+            "In Cowork tab click New task, choose that folder",
+            "Skim connectors section (likely skip, no IT admin)",
+            "Download the starter tarball into the folder",
+            "Copy the extract prompt into Cowork and run it",
+            "Copy the snake prompt into Cowork, then open prework/snake.html in browser"
+          ],
+          "hesitations": [
+            "The snake game, the only first visible result, sits behind connector setup and the tarball download/extract, so it arrives well after the first click.",
+            "Section 2 is framed as 'before the first module' and sounds required, which pulls me into connector settings with no IT admin.",
+            "The extract prompt also edits CLAUDE.md and reads a navigation file, which is unexplained clutter on a first run.",
+            "A separate instruction says to set the Cowork folder instructions to 'Read CLAUDE.md before working in this folder.' with no location for that setting.",
+            "Cowork may or may not be able to run the shell tar command; the handbook doesn't say what I'd see if it fails.",
+            "'Open Cowork tab next to Chat' assumes I can find it; there is no fallback."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.` This keeps course navigation available when you start a fresh task.",
+          "feeling": "I'd get there, but it feels like admin before play. Each step is clear in isolation, but the snake game is pushed behind setup I don't yet understand, and I'm unsure whether I'm meant to do all of it first. I'd skim and guess a few times rather than feel confident.",
+          "biggestImprovement": "Move the snake game up front: create the folder, open a Cowork task on it, paste the snake prompt, and play. Defer connectors, the starter tarball, CLAUDE.md edits and folder-instruction setup until after the first visible result.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "solo-consultant-1.response.txt",
+          "status": "solo-consultant-1.status.json"
+        },
+        {
+          "attempt": 2,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Read the Start page and click 'Begin with Prework'",
+            "Create ~/Documents/agents-101/ in Finder",
+            "Open Cowork tab, click New task, select that folder",
+            "Download the starter tarball and save it into the folder",
+            "Copy the extraction prompt into Cowork and run it",
+            "Paste the snake game prompt, then open prework/snake.html in the browser"
+          ],
+          "hesitations": [
+            "The snake game is step 4, behind folder creation, a connector step I may not be able to do, a tarball download, and an extraction prompt. The first visible result is about 15+ minutes away.",
+            "Step 3 mixes an agent prompt with a separate folder-instruction line, and it's unclear whether that line goes in Cowork settings or in the prompt. I'd have to guess where 'instructions for your Cowork training folder' lives.",
+            "The extraction prompt also edits CLAUDE.md and reads a navigation file. That is extra, unexplained complexity before any payoff.",
+            "Step 2 says 'if your company allows it', and I have no IT admin. I'm unsure whether to skip it or stall on it.",
+            "The tarball is not needed for the snake game, yet it stands in the way. The page says 'Keep this workbook open beside Cowork', but copying prompts between windows is not explained.",
+            "The download link points to an external domain I don't recognize, so I'd pause briefly to trust it."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.`",
+          "feeling": "I could get there on my own, but it feels like setup chores before play. The snake game is the payoff, and it's buried behind admin I don't yet understand. I'd be mildly irritated, not blocked.",
+          "biggestImprovement": "Move the snake game ahead of the connector and tarball steps, directly after creating the folder and starting the Cowork task. That gives a first visible win in about 5 minutes. Defer the starter install and CLAUDE.md wiring until afterwards, and say exactly where the folder instruction is set.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "solo-consultant-2.response.txt",
+          "status": "solo-consultant-2.status.json"
+        },
+        {
+          "attempt": 3,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Read the Start page, click 'Start Prework'",
+            "Create ~/Documents/agents-101/ in Finder",
+            "Open Cowork tab, New task, pick that folder",
+            "Download the starter tarball into the folder and paste the extraction prompt into Cowork",
+            "Paste the snake prompt, then open prework/snake.html in a browser"
+          ],
+          "hesitations": [
+            "The snake game is step 4, but the route to it passes through connector setup (step 2) and a tarball install (step 3) that the game does not need. Two detours before the first visible result.",
+            "Step 3 gives two overlapping instructions: a prompt that edits CLAUDE.md, and a separate 'Set the instructions for your Cowork training folder' line with no click path. I would not know where folder instructions live and would wonder if I'd done it wrong.",
+            "The tar prompt tells Cowork to use the shell and mentions tar errors, which sounds technical despite 'No terminal required'.",
+            "The download may land in Downloads, not the folder, and I'd have to move it myself. The prompt also asks for the CLAUDE.md edit and reading the navigation file inside the extraction request, which is a lot for a first prompt.",
+            "Step 2 says to connect work apps 'if your company allows it', but I have no IT admin and don't know if I'm allowed. Path B helps, but the wording is hedgy.",
+            "Step 1 says 'Make sure you can access the agent runtime' without saying how, and the task-name instruction is conditional ('if your runtime supports session names')."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.`",
+          "feeling": "I'd get there, but it wouldn't feel snappy. The order makes me do admin (connectors, tarball, config) before the fun thing I was promised. The folder-instructions line is where I'd stall: it names a setting but never says where it is, and I can't tell whether it's required for the game. I'd probably skip ahead to the snake prompt, which is short and clear, and hope that was fine.",
+          "biggestImprovement": "Put the snake game first, right after creating the folder and opening the Cowork task, and move the connector, tarball and CLAUDE.md or folder-instruction setup after that first visible win. Mark the folder-instructions step as optional or give it exact click steps.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "solo-consultant-3.response.txt",
+          "status": "solo-consultant-3.status.json"
+        }
+      ]
+    },
+    {
+      "id": "marketing-browser-user",
+      "label": "Browser-first marketing user",
+      "description": "A marketing manager who normally uses AI in browser tabs and uploads attachments. Desktop apps are familiar, but persistent working folders and instruction files are new. Keen to make something.",
+      "prompt_sha256": "d02e329f5f8e51eacf3ca17d1fd42a356314dd989271526d098e3843d30f0273",
+      "scores": [
+        3,
+        3,
+        3
+      ],
+      "judgements": [
+        {
+          "attempt": 1,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Click 'Start Prework' and skim the intro",
+            "Create ~/Documents/agents-101/ in Finder",
+            "Open Cowork tab, click New task, select that folder",
+            "Skip connectors, or try them and hit IT approval",
+            "Download the starter tarball into the folder, paste the extract prompt into Cowork",
+            "Set folder instructions to 'Read CLAUDE.md before working in this folder.'",
+            "Paste the snake prompt, open prework/snake.html in browser and play"
+          ],
+          "hesitations": [
+            "The first visible result (snake) sits behind steps 1–3: folder creation, connectors, tarball download and extraction, a CLAUDE.md edit and a folder-instructions setting. That's a lot of unfamiliar machinery before anything fun happens.",
+            "Step 3 mixes a shell command (tar), a CLAUDE.md edit and a separate folder-instructions field. As a marketer I don't know what CLAUDE.md or 'instructions' are, or why I'm doing both, and the page doesn't say where the instructions field is.",
+            "Connectors in step 2 invite a detour and a possible IT blocker, even though they aren't needed for the game.",
+            "The snake prompt doesn't depend on the starter, yet it comes after it. Nothing says I could skip ahead.",
+            "The 'Pause/Resume' and the position note, navigation file and 'keep workbook beside Cowork' add concepts I don't yet need.",
+            "The 50-minute total and the five deliverables make it feel like homework, not 'make something'."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.` This keeps course navigation available when you start a fresh task.",
+          "feeling": "I'd probably get there, and the copy-paste prompts are reassuring. But I'm keen to make something, and instead I'm downloading archives and editing config files I don't understand. It's doable, not snappy. I'd feel a bit of 'am I doing this right?' at the instructions step in particular.",
+          "biggestImprovement": "Put the snake game first: create the folder, open a Cowork task, paste the one-line snake prompt and play it. Move the starter download, CLAUDE.md edit, folder instructions and connectors after that first win, with a one-line explanation of why they matter.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "marketing-browser-user-1.response.txt",
+          "status": "marketing-browser-user-1.status.json"
+        },
+        {
+          "attempt": 2,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Read the Start page, click 'Start Prework'",
+            "Create ~/Documents/agents-101/ in Finder",
+            "Open Cowork tab, New task, pick that folder, name it agents-101-prework",
+            "Skim connectors (step 2), probably skip or try quickly",
+            "Download the starter tarball into the folder",
+            "Paste the extraction prompt into Cowork, then set the folder instructions",
+            "Paste the snake prompt, open prework/snake.html in browser, play"
+          ],
+          "hesitations": [
+            "The snake game is step 4 of 6, after connectors, a download and a tarball extraction. The first visible result is buried behind about 15+ minutes of admin I don't yet understand.",
+            "Step 2 asks me to connect work apps with vague guidance ('if your runtime offers connectors', 'ask the agent to look up the current steps'). I'd worry about IT approval and may stall or skip.",
+            "The tarball/tar/shell prompt is intimidating for a marketer. It also says 'Use the shell' despite the 'No terminal required' claim.",
+            "The CLAUDE.md line is confusing: I've never heard of the file, and there are two overlapping mechanisms (the prompt edits CLAUDE.md, then separate folder instructions point at CLAUDE.md). It's unclear where 'folder instructions' live in the app UI.",
+            "Snake itself doesn't need the starter, so the dependency is unnecessary. There is also no hint of what happens if the file doesn't open or the game doesn't work.",
+            "The prompt includes an unexplained 'Then read that navigation file', and I can't tell whether things worked."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.`",
+          "feeling": "I'm keen and I'd probably get there, but it doesn't feel snappy. I expected to make something quickly and instead I'm downloading archives and editing files I don't understand. The snake prompt itself is lovely and simple. I just want it first. The folder-instructions step is where I'd actually stop and wonder if I'm doing it right, since the handbook doesn't say where that setting is.",
+          "biggestImprovement": "Move the snake game to the very first step right after creating the folder and starting the Cowork task, so the first result arrives in about 5 minutes. Defer the connectors, tarball and CLAUDE.md or folder-instruction setup until after that win, and give the folder-instructions step exact click-path wording.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "marketing-browser-user-2.response.txt",
+          "status": "marketing-browser-user-2.status.json"
+        },
+        {
+          "attempt": 3,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Click 'Start Prework' and skim the intro",
+            "Create ~/Documents/agents-101/ in Finder",
+            "Open Cowork tab, click New task, pick that folder",
+            "Skip connectors (or try them briefly), then download the starter tarball into the folder",
+            "Paste the extract prompt into Cowork",
+            "Paste the snake prompt, then double-click prework/snake.html to play"
+          ],
+          "hesitations": [
+            "Prework lists five deliverables and ~50 minutes, yet the first visible result (snake) sits behind steps 1–3 including connectors and a tarball, which feels like admin before play",
+            "Step 2 (connectors) is placed before the game and is optional/IT-dependent; I'd wonder whether to do it now",
+            "The extract prompt bundles tar, folder checks, a CLAUDE.md edit and reading a nav file, which is a lot for a first prompt and the CLAUDE.md concept is unexplained",
+            "Separate instruction to 'Set the instructions for your Cowork training folder' has no where-to-click path; I'd hunt through Cowork settings, unsure if it's required",
+            "Snake prompt works without the starter, but nothing says I can skip ahead",
+            "Vague 'Make sure you can access the agent runtime' and 'if your runtime supports session names' sound written for other tools",
+            "Two-window workbook-beside-Cowork setup assumed; tarball download via a link on an external domain feels slightly suspicious for a non-technical user"
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.` This keeps course navigation available when you start a fresh task.",
+          "feeling": "I'd get there, and the snake step itself is delightfully simple. But I'd feel I'm doing setup chores for a while first, and the folder-instructions line is where I'd stall: it names no menu or button, and I don't know what CLAUDE.md is. Not snappy, just workable.",
+          "biggestImprovement": "Move the snake game to the very first step (right after creating the folder and opening the Cowork task) so the first result arrives in minutes. Defer the tarball, CLAUDE.md, folder instructions and connectors until after, and give click-by-click guidance for the folder-instructions setting.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "marketing-browser-user-3.response.txt",
+          "status": "marketing-browser-user-3.status.json"
+        }
+      ]
+    },
+    {
+      "id": "cowork-regular",
+      "label": "Regular Cowork user",
+      "description": "A regular Cowork user comfortable with selecting folders, files and app settings. You want the shortest clear route to the first training result and will skip explanations you already know.",
+      "prompt_sha256": "c27f192476c6773b47d8a4594fb81ddb05ee64fc52538051e0791ba592ac136a",
+      "scores": [
+        3,
+        3,
+        3
+      ],
+      "judgements": [
+        {
+          "attempt": 1,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Click 'Start Prework' (the Start page tells me to begin there).",
+            "Create ~/Documents/agents-101/ in Finder/Explorer.",
+            "Open Cowork tab, click New task, select that folder (name it agents-101-prework if possible).",
+            "Skip connectors (5 min) since the snake game doesn't need them.",
+            "Download the starter tarball into the folder, then paste the extract prompt into Cowork.",
+            "Paste the snake prompt, then open prework/snake.html in a browser and play."
+          ],
+          "hesitations": [
+            "The route to the game runs through step 2 (connectors) and step 3 (download and extract tarball, edit CLAUDE.md). The first visible result doesn't need either, so I'd be unsure whether I can skip them.",
+            "The extract prompt bundles tar, folder verification, a CLAUDE.md edit and reading a navigation file. That's a lot of unrequested work before the snake game.",
+            "After the prompt there's a separate instruction to set folder instructions for the Cowork training folder. It doesn't say where in the app to find that setting, and it's easy to miss or skip. I'd stop and wonder whether it's required now.",
+            "'Name it ... if your runtime supports session names' is vague for Cowork, which is already selected.",
+            "Section 3 says 'Proof: you placed the file; the agent unpacked it' but nothing says what a successful result looks like or what to do if the download lands elsewhere (e.g. ~/Downloads)."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.` This keeps course navigation available when you start a fresh task.",
+          "feeling": "I can get there without help, since the prompts are copy-paste and the folder step is clear. But it doesn't feel snappy: I'm being asked to do setup, a download and an unexplained settings change before I see a snake move, and I'd have to guess which parts I can skip.",
+          "biggestImprovement": "Move the snake game to step 1, right after creating the folder and starting the Cowork task. Defer the connector, starter install, and folder-instructions setting until after the first visible result, and say explicitly where in Cowork the folder instructions live.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "cowork-regular-1.response.txt",
+          "status": "cowork-regular-1.status.json"
+        },
+        {
+          "attempt": 2,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Click 'Start Prework' (or Begin with Prework) and skip the explanatory paragraphs.",
+            "Create ~/Documents/agents-101/ in Finder.",
+            "Open Cowork tab, click New task, select that folder, name it agents-101-prework.",
+            "Skip connectors (section 2) since the game doesn't need them.",
+            "Download the starter tarball into the folder, paste the extract prompt into Cowork.",
+            "Set the folder instructions to 'Read CLAUDE.md before working in this folder.'",
+            "Paste the snake prompt, open prework/snake.html in browser, play."
+          ],
+          "hesitations": [
+            "The game is section 4, but I must pass connectors (section 2) and the tarball install (section 3) first. Nothing says the game doesn't depend on them, so I'd have to guess I can skip ahead.",
+            "Section 3 has two overlapping steps: a prompt that edits CLAUDE.md, plus a separate folder-instruction setting. It's unclear where that setting lives in Cowork, and whether the order matters.",
+            "The tar prompt says 'Use the shell' and 'If tar is not available', which sounds like terminal work after 'No terminal required'.",
+            "prework/ must exist before the snake prompt saves there, and that depends on the tarball extraction succeeding. A failure there blocks the game.",
+            "The section 1 'Make sure you can access the agent runtime' is vague, and the Pause/Resume panels add noise."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.`",
+          "feeling": "I'd get there, but it's not snappy. I want a game in 5 minutes, and I'm routed through connectors and a tarball install first. The folder-instructions step is the one I'd stall on, because I don't know where that setting is.",
+          "biggestImprovement": "Put the snake game first, right after creating the folder and starting the task, with a prompt that works in an empty folder. Move connectors, the starter install and folder-instruction setup after the first visible result, and give the click path for the folder instruction setting.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "cowork-regular-2.response.txt",
+          "status": "cowork-regular-2.status.json"
+        },
+        {
+          "attempt": 3,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Click 'Start Prework' and skim the intro.",
+            "Create ~/Documents/agents-101/ in Finder.",
+            "Open Cowork tab, click New task, select that folder.",
+            "Download the starter tarball, save it into the folder, and paste the extract prompt into Cowork.",
+            "Set the folder instructions to 'Read CLAUDE.md before working in this folder.'",
+            "Paste the snake prompt into Cowork, then open prework/snake.html in the browser."
+          ],
+          "hesitations": [
+            "The snake game is step 4, but steps 2 (connectors) and 3 (tarball, CLAUDE.md edit, folder instructions) come first. The shortest route to the game is only a folder, a task and one prompt, yet the page puts about 13 minutes of unrelated setup in front of it.",
+            "The tarball is not needed for the snake prompt. The download-and-extract detour includes a shell command and a 'tar not available' fallback, and I'd be unsure whether it blocks me.",
+            "The folder-instructions line sits after the prompt and is not marked as a Cowork settings step. I'd have to guess where to find that setting, and whether to do it before or after the unpack.",
+            "Step 1 starts 'Make sure you can access the agent runtime' and then adds 'if your runtime supports session names', which is generic wording after I've already chosen Cowork.",
+            "The connectors section sends me to settings with no click path, only 'ask the agent to look up the current steps'."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.` This keeps course navigation available when you start a fresh task.",
+          "feeling": "I'd get there without help, but it wouldn't feel snappy. I want the snake game, and instead I walk through connectors, a download and a CLAUDE.md edit first. I'd probably skip ahead to step 4 and hope nothing breaks.",
+          "biggestImprovement": "Put the snake game first: create the folder, start the Cowork task, paste the one prompt and open the file. Move connectors, the starter install and the folder-instruction setup to after the first result.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "cowork-regular-3.response.txt",
+          "status": "cowork-regular-3.status.json"
+        }
+      ]
+    },
+    {
+      "id": "windows-office-user",
+      "label": "Windows office user",
+      "description": "A nontechnical operations manager on Windows, comfortable with File Explorer and office software. Downloads normally go to Downloads. New to Cowork; Unix-style paths and shell commands are unfamiliar.",
+      "prompt_sha256": "229f935a95e36eba82e4ff8cd3f5a01c8255992d154782d9be19067ce41f84cc",
+      "scores": [
+        3,
+        3,
+        3
+      ],
+      "judgements": [
+        {
+          "attempt": 1,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Read the Start page and click 'Start Prework'",
+            "Create a folder at ~/Documents/agents-101/ via File Explorer, wondering where '~' is on Windows",
+            "Open Cowork tab, click New task, pick that folder",
+            "Download the starter tarball (.tar.gz) into the folder and wonder what it is",
+            "Copy the extract prompt into Cowork and paste it",
+            "Copy the snake game prompt, wait, then right-click snake.html and open with a browser"
+          ],
+          "hesitations": [
+            "'~/Documents/agents-101/' is a Unix path; I'd guess at C:\\Users\\me\\Documents but I'm not certain.",
+            "The snake game is step 4, behind the tarball download, the tar shell command, a CLAUDE.md edit and the folder-instructions step. The first visible result is delayed by setup I don't understand.",
+            "The prompt contains 'tar xzf ...' and 'Use the shell', which looks scary and makes me wonder if I should type it myself.",
+            "The CLAUDE.md edit and the instruction 'Set the instructions for your Cowork training folder to...' are unexplained: where are folder instructions in Cowork?",
+            "Section 2 (connectors) comes before the game and suggests a possible IT detour, though it says to keep going.",
+            "Mac-first wording ('Finder') appears in places, and 'if tar is not available' makes me worry it might fail on Windows."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.`",
+          "feeling": "I'd probably get there, but it would feel like a setup chore rather than snappy. I'd be unsure about paths and the tar command, and I wouldn't know where to set folder instructions. A snake game is the fun part, and it's buried.",
+          "biggestImprovement": "Put the snake game first, with only the folder and Cowork task needed (using a Windows-friendly path like Documents\\agents-101), and move the tarball, CLAUDE.md and folder-instructions setup to after the first visible result, with exact click-by-click steps for folder instructions.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "windows-office-user-1.response.txt",
+          "status": "windows-office-user-1.status.json"
+        },
+        {
+          "attempt": 2,
+          "stars": 3,
+          "wouldGetGoing": "uncertain",
+          "firstActions": [
+            "Click 'Start Prework' and skim the intro",
+            "Try to make ~/Documents/agents-101/ on Windows, probably creating 'agents-101' in Documents and guessing what '~' means",
+            "Open Cowork tab, click New task, pick the folder",
+            "Download the starter .tar.gz into the folder",
+            "Copy the tar prompt into Cowork",
+            "Set the folder instructions, unsure where that setting is",
+            "Copy the snake prompt, run it, then right-click prework/snake.html > Open with browser"
+          ],
+          "hesitations": [
+            "'~/Documents/agents-101/' is Unix notation; I would have to guess it means C:\\Users\\me\\Documents\\agents-101, and the text says 'Finder or File Explorer', which is confusing.",
+            "The starter step shows 'tar xzf' and 'Use the shell'. A .tar.gz is unfamiliar, and Windows may save it elsewhere or rename it. Failure here would stop me, though it isn't needed for the snake game.",
+            "The folder-instructions step has no location for the setting.",
+            "The snake game is step 4, behind folder setup, connectors, and a starter install I don't need for it. Connectors come before any result, with a vague 'if your company allows it'.",
+            "The 'prework/' folder may not exist if the extract fails, so the snake save path is uncertain.",
+            "Unclear whether to leave the workbook beside Cowork and which items are required."
+          ],
+          "evidenceQuote": "Then create an empty folder at `~/Documents/agents-101/` (right-click in Finder or File Explorer → New Folder).",
+          "feeling": "I'd probably get there, but it wouldn't feel snappy. The tilde path and the tar/shell wording make me feel this wasn't written for me, and the snake game is buried behind setup I don't understand. I'd be anxious about breaking something.",
+          "biggestImprovement": "Put the game first: give Windows-friendly instructions (create 'agents-101' inside Documents, no tilde or tar talk), then immediately offer the snake prompt. Move the connector, starter install, and folder-instruction steps after the first visible result.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "windows-office-user-2.response.txt",
+          "status": "windows-office-user-2.status.json"
+        },
+        {
+          "attempt": 3,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Read the Start page and click 'Start Prework'",
+            "Open Claude Desktop, find the Cowork tab, and create a Documents\\agents-101 folder in File Explorer (translating the '~/Documents/' path)",
+            "Click New task, select the folder, and name it agents-101-prework",
+            "Skip the connector step (or poke around briefly), then download the starter .tar.gz into the folder",
+            "Copy the extraction prompt into Cowork and paste it",
+            "Copy the snake prompt, wait, then open prework/snake.html in a browser"
+          ],
+          "hesitations": [
+            "'~/Documents/agents-101/' is a Unix path; I'd have to guess it means Documents\\agents-101 on Windows, and the sentence mentions Finder first.",
+            "The connectors step is vague and may cause a detour or stall with IT approval before I get any result.",
+            "The starter step uses a .tar.gz, a 'tar xzf' shell command and 'Use the shell', which feels technical and risks failure on my machine; the fallback only says to 'tell me what error you got'.",
+            "Two overlapping instructions about CLAUDE.md and 'Set the instructions for your Cowork training folder' are unexplained, and I don't know where that setting lives.",
+            "The snake game doesn't need the starter or connectors, yet it comes after them, so the first visible result is delayed.",
+            "The result path 'prework/snake.html' is a forward-slash path; I'd have to find the prework folder in Explorer."
+          ],
+          "evidenceQuote": "Then create an empty folder at `~/Documents/agents-101/` (right-click in Finder or File Explorer → New Folder).",
+          "feeling": "I'd probably get there, but it wouldn't feel snappy. I'm reassured by 'No terminal required', then I hit a shell command, a tarball and a folder-instruction setting I don't understand. I'd keep going on trust, but I'd be nervous about whether I'd broken something.",
+          "biggestImprovement": "Put the snake game first, straight after creating the folder and starting the Cowork task, with the Windows path spelled out (Documents\\agents-101). Move the connector, starter and CLAUDE.md steps after that first visible win, and make the starter a plain download with no tar/shell instructions.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "windows-office-user-3.response.txt",
+          "status": "windows-office-user-3.status.json"
+        }
+      ]
+    },
+    {
+      "id": "impatient-skimmer",
+      "label": "Impatient ten-minute skimmer",
+      "description": "A curious general manager who skims instructions and has ten minutes before the next meeting. Uses chat AI casually, handles normal files, new to Cowork. Will stop if the first payoff seems too far away.",
+      "prompt_sha256": "366652a4cf9d5ad182f423071483ed551f73c18dd7163fdf2d0b5b76305191da",
+      "scores": [
+        3,
+        3,
+        3
+      ],
+      "judgements": [
+        {
+          "attempt": 1,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Skim the Start page and click 'Start Prework' (or 'Begin with Prework'); two links to the same place, fine.",
+            "Make an empty folder ~/Documents/agents-101/ in Finder.",
+            "Open Cowork tab, click New task, pick that folder, maybe name it agents-101-prework.",
+            "Skip or half-do connectors (section 2) since IT approval is uncertain.",
+            "Download the starter tarball, save it into the folder, paste the long Extract prompt into Cowork.",
+            "Probably set the folder instructions line, though I'd be unsure where that lives.",
+            "Paste the snake prompt, open prework/snake.html in a browser, play."
+          ],
+          "hesitations": [
+            "The snake game, the first payoff, sits behind folder creation, connector setup and a tarball download/extract, roughly 13+ minutes of reading and chores. With ten minutes to spare I may stop before seeing it.",
+            "Snake does not depend on the starter or connectors, but the order makes it look like it does. Nothing says 'skip to 4 for a quick win'.",
+            "The extract prompt is long and mixes tar, folder checks, a CLAUDE.md edit and reading a navigation file. It's a lot of confusing jargon for a casual user.",
+            "The instruction 'Set the instructions for your Cowork training folder' doesn't say where to click in Cowork.",
+            "The 'Start learning' page has several paragraphs about CLAUDE.md, position notes and tasks that I'd skim past without understanding.",
+            "The prework title promises 50 minutes, which feels heavy up front."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.` This keeps course navigation available when you start a fresh task.",
+          "feeling": "I'd probably start, since the steps are concrete and the copy buttons help. But the setup chores keep pushing the fun bit away, and I'd hit the CLAUDE.md and folder-instructions jargon with no idea where to click. It feels fine, not snappy.",
+          "biggestImprovement": "Put the snake game first: create the folder, open a Cowork task, paste the one-line snake prompt, and play within about 3 minutes. Move connectors, the starter download and the CLAUDE.md/folder-instruction setup after that first win.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "impatient-skimmer-1.response.txt",
+          "status": "impatient-skimmer-1.status.json"
+        },
+        {
+          "attempt": 2,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Skim the cover and click 'Start Prework' (the Start page is mostly orientation text, and the link appears twice).",
+            "Create ~/Documents/agents-101/ in Finder.",
+            "Open Cowork tab, click New task, pick the folder.",
+            "Download the tarball, save it into the folder, copy the extraction prompt into Cowork.",
+            "Notice the separate instruction about setting folder instructions and do it.",
+            "Copy the snake prompt, wait, then open snake.html in a browser and play."
+          ],
+          "hesitations": [
+            "The first visible payoff (snake) is behind folder creation, a work-app connector section, a download and a tar prompt. Sections 2 and 3 come before it, and I'd be tempted to skip ahead.",
+            "Section 2 says to connect work apps before anything fun, and that could stall me on IT approval, though it says 'keep going'.",
+            "The tarball/shell/CLAUDE.md prompt is jargon-heavy for a GM. The extraction prompt also bundles a CLAUDE.md edit, and then a separate 'set the instructions' step follows that I'd have to interpret. I'm unsure where Cowork instructions are set.",
+            "The snake game doesn't need the starter, yet it's placed after it.",
+            "The Start page text on position notes, tasks and forums is skimmable filler before the first action.",
+            "'Name it if your runtime supports session names' is vague for Cowork."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.` This keeps course navigation available when you start a fresh task.",
+          "feeling": "I'd probably get going, but I'd be impatient. It's roughly 15 minutes of setup, connectors and tar commands before I see anything run, and I only have ten. I'd be tempted to jump straight to the snake prompt.",
+          "biggestImprovement": "Put the snake game first, right after creating the folder and opening a Cowork task, so the first payoff comes in about 3 minutes. Move connectors, the starter install and the folder-instructions step to after it.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "impatient-skimmer-2.response.txt",
+          "status": "impatient-skimmer-2.status.json"
+        },
+        {
+          "attempt": 3,
+          "stars": 3,
+          "wouldGetGoing": "yes",
+          "firstActions": [
+            "Skim the Start page and click 'Start Prework' (the Start page repeats the same link twice, so it is a slight detour).",
+            "Create ~/Documents/agents-101/ in Finder.",
+            "Open Cowork tab, click New task, pick the folder.",
+            "Download the starter tarball, then paste the extraction prompt into Cowork.",
+            "Paste the snake game prompt, then open prework/snake.html in the browser and play."
+          ],
+          "hesitations": [
+            "The snake game, the first visible payoff, only comes after folder creation, a 'make sure you can access' runtime check, connector setup, a download, and tar extraction. That is roughly 13+ minutes of setup, and the game is step 4 of 6.",
+            "Section 2 (connectors) sits before the game and invites a detour into IT approval and sign-in, even though it is not needed for the game.",
+            "The extraction prompt is long and includes a CLAUDE.md edit and a navigation-file read. It is not needed for the game and looks technical, so I would worry about breaking something.",
+            "A separate instruction asks me to set 'instructions for your Cowork training folder' but doesn't say where in the UI that is, which is unclear for a new user.",
+            "The snake prompt works without the starter, but nothing says the starter can be skipped for now.",
+            "The Start page is mostly explanation (the position note, the reading cue, Pause/Resume) when I just want to try something."
+          ],
+          "evidenceQuote": "Set the instructions for your Cowork training folder to: `Read CLAUDE.md before working in this folder.`",
+          "feeling": "I'd probably go on, because the steps are short and explicit. But it feels like homework before fun. I'd be annoyed that the snake game, the one fun thing, is behind a download, tar, and a config step I can't locate. If I had to leave for my meeting, I'd stop before seeing anything run.",
+          "biggestImprovement": "Move the snake game to the very first step: create the folder, open a Cowork task, paste one prompt, and play. Put the connector, starter install, and folder-instruction setup after that first win.",
+          "model": "claude-sonnet-5-5",
+          "raw_response": "impatient-skimmer-3.response.txt",
+          "status": "impatient-skimmer-3.status.json"
+        }
+      ]
+    }
+  ]
+}

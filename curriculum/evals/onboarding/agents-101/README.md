@@ -21,6 +21,12 @@ node scripts/run-a101-onboarding-sim.js --mode live
 
 Evidence belongs under ignored `out/`, with a stable latest report for this scope, overwritten on rerun. Keep raw model replies, tool traces and relevant before/after files beside it. Use synthetic learner content. Do not commit raw transcripts or copy actual learner/company data into fixtures.
 
+## First-start impressions
+
+[First-start ratings](latest-starts.md) record ten personas reading the actual Start/Prework HTML three times each in independent cold model calls. Each receives the same question: would you get going, would it feel quick and obvious, where would you hesitate, and what one change would help most? Keep HTML, question, persona descriptions and raw replies under ignored `out/`; repeat a persona with the same prompt and no prior answers.
+
+Stars rate the imagined route to the first game: 1 cannot get going; 2 needs substantial help; 3 gets going with detours; 4 clear with minor hesitation; 5 quick and obvious throughout. Record predicted willingness separately from smoothness. Show all three scores per persona and recurring friction, including contradictory reactions. These are HTML-reading judgements with Cowork access assumed; they establish neither native execution nor real learner speed or completion rates.
+
 ## Evidence contract
 
 | Label | What it establishes | Limit |

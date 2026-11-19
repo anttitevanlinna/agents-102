@@ -13,13 +13,24 @@ Drives the Claude desktop app (Chat/Cowork + Code tabs) from a script, verifying
 ## Use
 
 ```bash
-curriculum/evals/mechanical/desktop-driver/build.sh          # once: compiles bin/click, bin/scroll, bin/ocr
-bash curriculum/evals/mechanical/desktop-driver/reset.sh     # standard state, prints STATE-OK
-bash curriculum/evals/mechanical/desktop-driver/takes/a101-prework-add-folder.sh dry
-bash curriculum/evals/mechanical/desktop-driver/takes/a101-prework-add-folder.sh record
+cd curriculum/evals/mechanical/desktop-driver
+bash takes/a101-prework-add-folder.sh dry          # rehearse: runs to the last step before anything changes, cancels out
+./clip.sh a101-prework-add-folder                  # record + redact + leak check + contact sheet -> out/<take>.mp4
+./clip.sh a101-prework-add-folder --redact         # re-redact the existing recording after tuning
 ```
 
-Run with bash, not zsh (`BASH_SOURCE`). Captures land in `out/` (gitignored): they show the operator's screen, never commit them; blur folder and project names before anything leaves the machine.
+`clip.sh` builds the helpers on first use. Run with bash, not zsh. `out/` is gitignored: the raw `.mov` shows the operator's whole screen and never leaves the machine; only the `.mp4` that printed `CLEAN` does.
+
+## New take
+
+Copy `takes/a101-prework-add-folder.sh`. Keep the shape: guard against leftovers → `reset.sh` → start recording → `click_text` / `expect_text` pairs → `dry` branch that stops before the first change on disk. Declare redaction in one comment line, `# redact: --crop … --trim … --blur x,y,w,h@from-to`. Dry-run until it passes, then `clip.sh`.
+
+## Redaction (`bin/redact`)
+
+- **Allowlist, not denylist.** Every text line OCR finds in every frame is blurred unless it is in `redact-allow.txt` (the app's own labels, the course's own names). Unknown text — anyone's folder, project, file or person names — is blurred by default, wherever it moves. Near-misses of an allowed label (glued chevron, cut-off prefix, one misread letter) stay sharp.
+- **Held ±8 frames**, so dialogs sliding in or out stay covered. **`--blur` regions** cover private pixels OCR cannot read (artifact thumbnails); `@from-to` limits one to a time window (e.g. step it below a dialog while the dialog is up).
+- **Leak check** (in `clip.sh`): OCRs the finished clip against this Mac's real names (`~/Documents`, `~/Desktop`, username, first name), built at run time, never written. Any hit fails the clip. Proven fail-closed: the same check on the raw take finds hundreds of hits.
+- Adding to the allowlist: only the app's wording, never a name a user chose.
 
 ## Setup (once per Mac)
 

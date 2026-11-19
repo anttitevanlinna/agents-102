@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
-  "verified_at": "2026-11-19T17:44:03.416Z",
-  "release_workbook_sha256": "1deb9dac9b6ca26b7819213641c51af2476c2f11e760d1c701a7b4d8c2e7508e",
-  "starter_sha256": "fc84016c1b6563a0df3677424ee9d940c34dc1c1f14aed4360e9dec26af5c5de",
-  "download_url": "https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=fc84016c1b6563a0",
-  "contracts_evidence": "curriculum/evals/onboarding/agents-101/out/release-415e916a-df0f-4d09-accc-e304aafade26",
+  "verified_at": "2026-11-19T18:02:56.895Z",
+  "release_workbook_sha256": "bd14e3102935e4104e7e9159d09ff1d0e82bb049bc6f0838a2e1fd3a3ef40fc3",
+  "starter_sha256": "a8993b2c9b561f17c170018e0bead9012343f4f11221d31e4a197c9462652774",
+  "download_url": "https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=a8993b2c9b561f17",
+  "contracts_evidence": "curriculum/evals/onboarding/agents-101/out/release-59ffdd7c-6216-4aa0-889e-37742a2d7ccf",
   "contracts": [
     {
       "outcome": "ONB-01",
@@ -59,12 +59,6 @@
       "passed": 49,
       "failed": 0,
       "command": "node --test scripts/a101-mvp-navigation.test.js scripts/build-a101-mvp.test.js curriculum/evals/onboarding/agents-101/run.test.js"
-    },
-    "browser_setup": {
-      "welcome_visible": true,
-      "calendar_preview_visible": true,
-      "first_game_link_opens_prework": true,
-      "prework_names_folder_to_create": true
     }
   },
   "model_smokes": {
@@ -75,18 +69,46 @@
       "no_root_or_guide": true,
       "browser_play_tested": false
     },
-    "install_after_game": {
-      "evidence_directory": "curriculum/evals/onboarding/agents-101/out/reorder-checks-fcf5195a-730c-45d6-9875-a6f506bad2be",
+    "explicit_pause_and_resume": {
+      "evidence_directory": "curriculum/evals/onboarding/agents-101/out/release-5314a5d4-9a63-432b-ad25-80c9c754e6d7",
       "model": "claude-sonnet-5-5",
-      "game_preserved": true,
-      "guide_read": "pass",
-      "guide_sha256": "beb059cd830e6bf28209bde890e9106088858baf35ae99e86f27966085531b3f",
-      "guide_identical_to_release": true,
-      "returns_install_section": true,
-      "scope": "Same extraction request and navigation guide as release. Companion HTML subsequently changed in wording and OS UI; full current archive installation was checked mechanically, not rerun through the model."
+      "scope": "CLI unpack, explicit Pause with prior conversation replay, and Resume in a fresh process. The final layout preserves all three Copy payloads and the guide. The offline HTML removes an early Pause link.",
+      "extract_read": {
+        "id": "guide-read",
+        "outcome": "ONB-02",
+        "status": "not-run",
+        "reason": "No successful paired Read or bounded cat result returned the complete actual navigation guide; a request or success claim alone is insufficient."
+      },
+      "pause_read": {
+        "id": "guide-read",
+        "outcome": "ONB-05",
+        "status": "pass",
+        "reason": "A successful paired tool result returned the complete actual guide.",
+        "tool_use_id": "toolu_01GjFEcP13s1US6RNzYexoYp",
+        "tool": "Read",
+        "file": "prework/course-navigation.md",
+        "guide_sha256": "790c7378313f0e20602e516ddb947f4aa8bb7160f4f697b067679a4aa7ea9088"
+      },
+      "resume_read": {
+        "id": "guide-read",
+        "outcome": "ONB-06",
+        "status": "pass",
+        "reason": "A successful paired tool result returned the complete actual guide.",
+        "tool_use_id": "toolu_0117m1PpDVYWMR4rfGmryqTy",
+        "tool": "Read",
+        "file": "prework/course-navigation.md",
+        "guide_sha256": "790c7378313f0e20602e516ddb947f4aa8bb7160f4f697b067679a4aa7ea9088"
+      },
+      "preserves_game": true,
+      "exact_root_cue": true,
+      "calendar_link": true,
+      "resume_calendar_link": true,
+      "no_calendar_output": true,
+      "resume_changes": [],
+      "extract_observation": "The combined shell result returned the full guide along with a sandbox warning. The standalone-read check did not certify the extraction read."
     }
   },
-  "persona_reads": {
+  "prior_persona_reads": {
     "evidence_directory": "curriculum/evals/onboarding/agents-101/out/decimal-welcome-500ebbbf-d8de-4b58-90d3-2a8900ee7ee4",
     "source_sha256": "1deb9dac9b6ca26b7819213641c51af2476c2f11e760d1c701a7b4d8c2e7508e",
     "excerpt_sha256": {
@@ -104,11 +126,8 @@
       "4.3": 12,
       "4.6": 1,
       "4.2": 2
-    }
+    },
+    "scope": "Rated the previous welcome build."
   },
-  "prior_full_model_run": {
-    "evidence_directory": "curriculum/evals/onboarding/agents-101/out/62261d7d-7326-4524-b161-b6de1a2a7d35",
-    "coverage": "Historical only. Its recorded workbook, starter, reading material and old installation return differ from this release; do not report the 43-invocation suite as a current pass."
-  },
-  "limits": "The welcome and Prework link were observed in a browser. The model ratings assume the placeholder demonstrations are available. Native Cowork start, folder permissions, automatic instruction loading, human completion, elapsed time and game play remain unobserved in this release."
+  "limits": "Explicit Pause and Resume returned to the calendar exercise in the CLI. Automatic position saving during unpacking varied across runs. Native Cowork automatic loading and learner completion require observation. Videos remain placeholders."
 }

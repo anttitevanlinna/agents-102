@@ -115,12 +115,16 @@ function prependOfflinePrework(html, prework) {
 
 function renderOnboarding(markdown) {
   let html = marked.parse(markdown);
+  const pauseAt = html.indexOf('<h2 id="pause-learning">');
+  if (pauseAt < 0) throw new Error('Missing Pause learning heading');
+  const welcome = html.slice(0, pauseAt);
+  html = html.slice(pauseAt);
   for (const id of ['pause-learning', 'resume-learning']) {
     const heading = new RegExp(`(<h2 id="${id}">[\\s\\S]*?<\\/h2>)([\\s\\S]*?)(?=<h[12]\\b|$)`);
     if (!heading.test(html)) throw new Error(`Missing onboarding heading: ${id}`);
     html = html.replace(heading, '<details class="a101-onboarding__optional"><summary>$1</summary>\n$2</details>\n');
   }
-  return html;
+  return { welcome, controls: html };
 }
 
 function stripExternalFonts(html) {
@@ -206,13 +210,14 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
     // The theory manifest omits setup. Carry the exact rendered edition route
     // into its offline companion instead of authoring a second instruction set.
     const offlinePrework = preworkSection(html);
-    const onboarding = renderOnboarding(fs.readFileSync(path.join(DELIVERY, 'onboarding.md'), 'utf8'));
+    const { welcome, controls } = renderOnboarding(fs.readFileSync(path.join(DELIVERY, 'onboarding.md'), 'utf8'));
     const toc = '<nav class="workbook-toc">';
     if (!html.includes(toc)) throw new Error('Workbook contents insertion point is missing');
     // Keep typography inside a module div so the slide chunker, which consumes
     // direct section.module children, never mistakes onboarding for a module.
-    html = html.replace(toc, `<section class="a101-onboarding"><div class="module">\n${onboarding}\n</div></section>\n\n${toc}`);
+    html = html.replace(toc, `<section class="a101-onboarding"><div class="module">\n${welcome}\n</div></section>\n\n${toc}`);
     html = moveContentsAfterPrework(html);
+    html = html.replace(toc, `<section class="a101-onboarding a101-learning-controls" aria-label="Pause or resume learning"><div class="module">\n${controls}\n</div></section>\n\n${toc}`);
     const nav = '<ol class="workbook-topnav__modules">';
     if (!html.includes(nav)) throw new Error('Workbook navigation insertion point is missing');
     html = html.replace(nav, `${nav}\n      <li><a href="#start-learning" data-target="start-learning">Start</a></li>`);
@@ -231,7 +236,7 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
 .a101-start-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 body.workbook .workbook-cover { padding-top: 1rem; padding-bottom: 1.5rem; margin-bottom: 1rem; }
 body.workbook > main > section#prework { padding-top: 0; }
-section#prework, section#prework .module-hero-title { scroll-margin-top: 5rem; }
+section#prework, section#prework .module-hero-title, section#prework > h2 { scroll-margin-top: 5rem; }
 section#prework > .module-hero { margin-bottom: 1.5rem; padding-top: 1rem; padding-bottom: 1rem; }
 section#prework > h2 { margin-top: 2rem; padding-top: 1rem; }
 @media (max-width: 480px) { .a101-first-look { align-items: flex-start; gap: 1rem; } .a101-snake-preview { flex-basis: 90px; height: 108px; background-size: 18px 18px; } .a101-first-look .a101-first-look__title { font-size: 1.3rem; } }

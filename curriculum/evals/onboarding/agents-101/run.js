@@ -141,7 +141,10 @@ function material(html) {
     pause: find('Help me pause Agents 101'), resume: find('Help me resume Agents 101'),
     snake: find('Build me a snake game'), package: find('Write a generation rules file'), critic: find('Launch a fresh subagent')
   };
-  const readerText = [doc.querySelector('.a101-onboarding'), doc.querySelector('section#prework')]
+  const readerSections = [doc.querySelector('.a101-onboarding'), doc.querySelector('section#prework')];
+  const controls = doc.querySelector('.a101-learning-controls');
+  if (controls) readerSections.push(controls);
+  const readerText = readerSections
     .map(node => { if (!node) throw new Error('Missing learner workbook section'); return visibleText(node); }).join('\n\n').replace(/\n{3,}/g, '\n\n').trim();
   const anchors = [...doc.querySelectorAll('[id]')].map(el => el.id);
   const externalAssets = [...doc.querySelectorAll('script[src],img[src],iframe[src],link[href]')]

@@ -8,6 +8,8 @@ Use this file for navigation and local progress. The workbook holds the teaching
 
 After completing a request that matches a row below, save its current and return links at `prework/learning-position.md`. Record what the request produced and any unfinished learner action. Preserve existing revision notes. A written file does not establish that the learner played, compared, inspected, or accepted it.
 
+Adding the course files is complete once the archive is unpacked, the reading cue is in place, and you have read this guide. Record that step as complete and save the calendar exercise as the next link.
+
 End the reply with the row's return link and its readable label. Keep helping with revisions when asked. Wait for the learner to choose the next activity.
 
 The training-folder `CLAUDE.md` starts with a course-navigation reading cue. Preserve it when the learner develops their own working rules in the Module 2 debrief. Navigation supplies no personal context or generation rules. Do not add those on the learner's behalf.
@@ -20,7 +22,7 @@ Keep this note local and limited to navigation and work status. Exclude names, c
 
 ## Resuming
 
-Read the position note if it exists. Check only the exercise files it names. Briefly describe the recorded progress and next action. Give one workbook destination. When work remains, give only the saved current link and omit later-section links, including conditional previews.
+Read the position note if it exists. Check only the exercise files it names. Files outside the note do not create a conflict. Briefly describe the recorded progress and next action. Give one workbook destination. When work remains, give only the saved current link and omit later-section links, including conditional previews.
 
 - Work remains: give the saved current link.
 - Current activity explicitly complete: give the saved next link.

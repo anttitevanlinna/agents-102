@@ -26,7 +26,7 @@ function scenarios(prompts, archiveFiles = []) {
       prompt: prompts.extract,
       facts: 'The learner downloaded the published starter into the training folder. Existing module-1/keep.txt belongs to the learner. The only authorized initial root instruction is the course-navigation reading cue installed by this request.',
       allowed: name => starterWrites.has(name),
-      checks: [criterion('installed', 'ONB-02', 'Actual tool results and resulting files establish that extraction succeeded, required homes exist and the course-only reading cue was installed; learner work survived. A claim alone is insufficient.'), criterion('return', 'ONB-03', `The actual final response returns ${url('3-install-the-training-folder-3-min')} for the learner to set the folder reading instruction, then waits. It does not run the snake exercise or continue to meetings.`)],
+      checks: [criterion('installed', 'ONB-02', 'Actual tool results and resulting files establish that extraction succeeded, required homes exist and the course-only reading cue was installed; learner work survived. A claim alone is insufficient.'), criterion('return', 'ONB-03', `The actual final response links to ${url('4-summarize-your-week-in-meetings')} and waits for the learner to bring a calendar screenshot or choose the connector option. It does not start either exercise or ask the learner to configure folder instructions.`)],
       inspect: { required: ['prework/course-navigation.md', 'CLAUDE.md'], dirs: ['prework', 'memory', 'sources', 'agents', 'module-4/policies'], preserve: ['module-1/keep.txt'], absent: ['prework/snake.html'] }
     },
     {

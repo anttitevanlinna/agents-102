@@ -58,4 +58,13 @@ The walkthrough uses crops from a fresh Mac conversation. It shows **New**, the 
 
 The live score is **4.61/5**. The visual trials use the same HTML-reading rubric. Their scores describe the imagined route to the learner’s own game.
 
+## Desktop handoff trials
+
+| Candidate | Mean stars | Predicted starts |
+| --- | ---: | ---: |
+| Open Claude and copy the request in one click | 4.59 | 30 of 30 |
+| Open Claude with visible manual recovery | 4.59 | 30 of 30 |
+
+The first version linked to a new Cowork conversation with the request prefilled and copied the same request for manual recovery. The second made the manual steps visible beside the link and spelled out how to send the request and open the game. The Windows persona rated both versions 4.4 in all three attempts. Those reads consistently raised uncertainty about whether the browser would open Claude. Automated checks verified the link payload and clipboard behavior. The native launch remains unverified.
+
 The [structured results](latest-starts.json) include every judgement and the scored HTML hashes. The [release verification](release-verification.json) records the artifact checks.

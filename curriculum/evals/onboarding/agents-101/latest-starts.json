@@ -1,22 +1,25 @@
 {
-  "generated_at": "2026-11-20T15:11:56.081Z",
+  "generated_at": "2026-11-20T17:15:28.467Z",
   "mode": "cold-html-persona-reads",
   "source_file": "site/clients/acme-mvp/agents-101/index.html",
-  "evidence_directory": "curriculum/evals/onboarding/agents-101/out/decimal-read-48223945-2c15-4907-9e10-e0136bd2e312",
-  "condition": "Welcome and first game share a screen. Copy first, play in Claude, platform choices when saving.",
-  "source_sha256": "4fde7ad204d6e241dadcd56acc4f3e277326df025dd26dd4d4a663e578cd1392",
+  "evidence_directory": "curriculum/evals/onboarding/agents-101/out/decimal-read-20a0f28b-5cc6-4efa-a83a-4af3db868e67",
+  "condition": "The actual ACME build uses one Open in Claude action, a real Send screenshot, and a manual Copy panel that opens on click. The existing folder and course-file steps follow play.",
+  "source_sha256": "27ff250c60d4fcbe3925457bac3de6956e19e1a477db96ddf568a9027c86ca3e",
   "excerpt_sha256": {
-    "mac": "f20f581d4e647f781e50843d2e2f8554a0c412ac9203192346c3ac97202b464b",
-    "windows": "7b381b145f8c9c531491603ed40380056ec5fabc1ddb71cee64ed9289d19b3bc"
+    "mac": "ab12a82db9b3e9e6237944bb2ba2dd27feb164743c6433d03f801a6bdc6339fe",
+    "windows": "ca5577b35b9b44c0cc0c6887639c11ed764aeb6a89d1cc7cb29c7fef4af748fa"
   },
   "calls": 30,
-  "mean_stars": 4.61,
+  "mean_stars": 4.596666666666667,
   "model_names": [
     "claude-sonnet-5-5"
   ],
   "histogram": {
-    "4.6": 27,
-    "4.7": 3
+    "4.4": 4,
+    "4.6": 16,
+    "4.7": 4,
+    "4.5": 3,
+    "4.8": 3
   },
   "predicted_getting_going": {
     "yes": 30,
@@ -1626,6 +1629,32 @@
         "no": 0,
         "uncertain": 0
       }
+    },
+    {
+      "label": "Copy and open in Claude with the Send screenshot",
+      "condition": "The strongest Send screenshot remains. A single clearly-labelled click pre-fills Claude and copies the same request. The manual fallback opens and reports Copy only after success.",
+      "source_sha256": "2e26d0a075b9009d095a0b3880317d3e749de3b441b806c1c6d2215fc1ca0e3e",
+      "excerpt_sha256": {
+        "mac": "e87d195788f4827413392ac490ca2208db4bbffe68f112558a3352c3f52ccdf1",
+        "windows": "634d55ad24fc6ef19a1cf93200bedba0d39242be1a5b7cef1235b6836ec4ea65"
+      },
+      "evidence_directory": "curriculum/evals/onboarding/agents-101/out/decimal-read-718e20ce-2d94-44ef-92b0-60fdf25b76b6",
+      "calls": 30,
+      "mean_stars": 4.613333333333333,
+      "model_names": [
+        "claude-sonnet-5-5"
+      ],
+      "histogram": {
+        "4.6": 22,
+        "4.7": 4,
+        "4.8": 2,
+        "4.4": 2
+      },
+      "predicted_getting_going": {
+        "yes": 30,
+        "no": 0,
+        "uncertain": 0
+      }
     }
   ],
   "historical_decimal_baseline": {
@@ -1686,7 +1715,7 @@
       "evidence_directory": "curriculum/evals/onboarding/agents-101/out/html-ratings-cb6c76dd-a60f-4f25-aae1-c4ccd910ae2b"
     }
   ],
-  "limits": "The score measures perceived clarity from rendered HTML. The browser check verified that Copy and its feedback were visible on the selected build. The earlier native Mac test used the same game and save requests. Windows was represented in the HTML simulations.",
+  "limits": "The score measures perceived first-start clarity from rendered HTML. The launch payload and Copy fallback were verified in HTML. Native launch was not observed. Earlier Mac runs used the same game and save requests. Windows was represented in HTML simulations.",
   "personas": [
     {
       "id": "novice-leader",
@@ -1710,72 +1739,66 @@
           "stars": 4.6,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the one-line welcome: make a game in Claude, then save it with the weekly summary folder.",
-            "Go to section 1, 'Make and play Snake'. Click Copy the game request.",
-            "Open Claude Desktop and click New.",
-            "If there's a Chat/Cowork switch, choose Cowork. Otherwise paste into the single message box.",
-            "Paste the prompt ('Build me a snake game as a single HTML file and show it in the preview beside this conversation so I can play.') and press Send.",
-            "When the board appears beside the chat, click Play. If it doesn't, open the game card in Claude's reply, and I'd check the 'If the preview doesn't open' panel if that failed too."
+            "Read the welcome line: make a game in Claude, then save it in the folder used later.",
+            "Click the 'Open in Claude' link under 'Make and play Snake'. Choose Open if my browser asks.",
+            "In Claude Desktop, check that the Snake request is in the message box, matching the screenshot, and click the Send arrow.",
+            "When the Snake board appears beside the conversation, click Start or Play and try the game.",
+            "If it didn't open, I'd look for a Snake game card to click, or open the 'Claude stayed closed?' and 'If the preview doesn't open' panels."
           ],
           "hesitations": [
-            "Slight pause on whether I'm in the right place: 'New' and the Chat/Cowork switch are described conditionally, so I have to look at my screen to match.",
-            "I can't see what's inside 'If the preview doesn't open', so if the board stays closed I'd be relying on the one-line fallback ('open the game card in Claude's reply').",
-            "I'd wonder whether the game needs a folder first. It doesn't: the folder comes in section 2, after I've played, so that's reassuring."
+            "The browser may show a prompt about opening Claude. The text says to choose Open, so this is a minor pause.",
+            "The two fallback panels are closed, and I can't see what they say. If the link failed I'd rely on them, and I can't judge how clear they are.",
+            "Step 1 has the screenshot but no preview of the board opening, so I'd have a brief moment of waiting without knowing what to expect. The example image and the 'Snake game card' line help a lot."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "Pretty confident. The first step is one copy button and one send, and the example picture shows me what to expect. No folders, tilde paths or tarballs get in the way before I see the game. The only wobble is matching 'New' and the Chat/Cowork switch to my screen. The later folder and tarball steps look fussier, but they come after I've played, so they don't block me.",
-          "biggestImprovement": "Add a short note under the first step saying exactly where to find the Cowork switch or the New button, or a screenshot of Claude Desktop's opening screen with them marked.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "novice-leader-1.rating.json"
+          "evidenceQuote": "When you see this message box in Claude Desktop, click the Send arrow. Claude starts making snake.html.",
+          "feeling": "This felt close to effortless. One link, one click on Send, and then I'm playing. I didn't need a folder, a path or any setup first, which is what I'd feared from something called Cowork. I'd only slow down if the link did nothing, and even then there's a visible fallback. I'm fairly confident I'd be playing within a couple of minutes.",
+          "biggestImprovement": "Show the fallback copy-paste request in plain view, or say right beside the link what to do if Claude Desktop doesn't open, so a failed link doesn't depend on a closed panel."
         },
         {
           "attempt": 2,
           "stars": 4.6,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the welcome line: make a game in Claude, then save it with the weekly summary.",
-            "Under step 1, click the Copy button on the Snake prompt.",
-            "Open Claude Desktop, click New, paste the request and press Send.",
-            "Check whether a Chat/Cowork switch appears. If so, choose Cowork; if there's only one message box, paste there.",
-            "Wait for the board to appear beside the chat, then click Play or follow the on-board controls.",
-            "If the board doesn't appear, open the game card in Claude's reply (or the closed 'If the preview doesn't open' panel)."
+            "Read the welcome line: make a game in Claude, then save it in a folder.",
+            "Click the 'Open in Claude' link under 'Make and play Snake'. If my browser asks, choose Open.",
+            "Claude Desktop opens with the Snake request already in the message box. I match it to the screenshot and click the Send arrow.",
+            "Wait for Claude to build snake.html. When the board opens beside the conversation, click Start or Play.",
+            "If only a Snake card appears, click it to open the board."
           ],
           "hesitations": [
-            "'Click New' is slightly ambiguous: I'd guess it means a new conversation, but it doesn't say where New is.",
-            "The Chat/Cowork switch sentence makes me pause briefly to check which mode I'm in, though the instruction is clear once I find it.",
-            "I'm not told how long to wait for the preview, so I might wonder if nothing is happening. The fallback panel is closed, but the main text already covers opening the game card.",
-            "The folder, tarball and tilde-path material comes after the game. I wouldn't need it to reach the first game, so it doesn't block me."
+            "I'd briefly wonder whether the link would open Claude Desktop properly. The 'If your browser asks, choose Open' note and the closed fallback panel ('Claude stayed closed? Copy the request here') reassure me.",
+            "I'm not sure whether the preview will appear automatically, though the card and 'If the preview doesn't open' hints cover this.",
+            "The screenshot reads as small, but its caption says exactly what to click.",
+            "Later steps, like the tar.gz and the 'shell' prompt, look unfamiliar. They come after the game, so they don't block me."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "The game is the very first action: one prompt, one copy button, then play. I feel confident I'd reach a playable game within a couple of minutes. I'd only briefly hesitate over where 'New' is and whether I'm in Cowork. The example image showing the Play button tells me what to look for. Nothing here asks me to pick a folder or touch a tarball before I see the game, which is what I hoped for.",
-          "biggestImprovement": "Say exactly where New is (e.g. 'New chat button at the top of the left sidebar') and fold the Cowork choice into the main step, so there's one unambiguous path.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "novice-leader-2.rating.json"
+          "evidenceQuote": "When you see this message box in Claude Desktop, click the Send arrow. Claude starts making snake.html.",
+          "feeling": "I'd be playing Snake within a few minutes. It's one link, one Send click, then Play, and the page even shows what the finished game looks like. I'd have a quick second of 'will this really open the app?', but the fallbacks calm that. The folder and tarball parts look more intimidating, yet I'd already have my win by then.",
+          "biggestImprovement": "Add a short line stating that the link starts a Cowork conversation, and that the game should appear within about a minute, so I know what to expect before and after clicking Send."
         },
         {
           "attempt": 3,
           "stars": 4.6,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the welcome line: make a game in Claude, then save it in the folder I'll use later.",
-            "Under step 1, click Copy the game request.",
-            "Open Claude Desktop and click New.",
-            "If I see a Chat/Cowork switch, choose Cowork; if there is only one message box, paste there.",
-            "Paste the Snake request and press Send.",
-            "Wait for the board to appear beside the chat, then click Play or follow the on-board controls.",
-            "If the board doesn't show, open the game card in Claude's reply, or open the 'If the preview doesn't open' panel."
+            "Read the welcome line: make a game in Claude, then save it in the same folder used for the week summary.",
+            "Click the 'Open in Claude' link under 'Make and play Snake'. If my browser asks, choose Open, as the text says.",
+            "See Claude Desktop open with the Snake request already in the message box. Compare it with the screenshot and click the Send up-arrow.",
+            "Wait for the board to open beside the conversation, then click Start or Play and try the game."
           ],
           "hesitations": [
-            "A small moment of doubt about whether I'm in the right mode, but the Chat/Cowork line covers it, including the single-box case.",
-            "I can't see what's in the 'If the preview doesn't open' panel, but the main text already gives one fallback (open the game card).",
-            "Folder, tarball and tilde-style steps come after the game, so they don't block the first result."
+            "I'd briefly wonder whether the link would work. I'm relieved the exact request text is printed below it and a 'Claude stayed closed?' fallback exists, though I wouldn't need to open it unless the link failed.",
+            "The 'preview beside this conversation' wording is a little vague. The Snake game card tip and the 'If the preview doesn't open' panel cover this, so it's a minor worry.",
+            "The example game image shows a green Play button but doesn't say whether it's what I should expect in my own preview. It's fine as a visual cue."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "This felt easy. The game is the very first step, with a copy button and a picture of what to expect. I don't have to choose a folder or touch anything technical before I see something working. The mode switch line stops me worrying whether I'm in the right place. It's quick and obvious, and I'd be playing within a few minutes.",
-          "biggestImprovement": "Put the preview fallback (open the game card in Claude's reply) in the same sentence as the Play instruction, and say in one line that a short wait after Send is normal, so I'm not left wondering whether anything is happening.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "novice-leader-3.rating.json"
+          "evidenceQuote": "Claude Desktop opens a new conversation with this request ready to send. If your browser asks, choose Open.",
+          "feeling": "This felt quick and obvious. One link, one Send click, then play. I wasn't asked for a folder, a terminal or a tarball before seeing the game, which is what I'd been dreading. There's a small moment of trust when the browser asks to open Claude, but the text prepares me for it. I'd have a game in a couple of minutes without help.",
+          "biggestImprovement": "Add one line right after the Send step saying what I'll see while Claude works (for example, 'Claude will write for a moment, then the game appears in a panel to the right'), so I know the wait is normal."
         }
+      ],
+      "previous_public_scores": [
+        4.6,
+        4.6,
+        4.6
       ]
     },
     {
@@ -1790,84 +1813,79 @@
         4.6
       ],
       "scores": [
-        4.6,
-        4.6,
-        4.6
+        4.4,
+        4.4,
+        4.5
       ],
       "judgements": [
         {
           "attempt": 1,
-          "stars": 4.6,
+          "stars": 4.4,
           "wouldGetGoing": "yes",
           "firstActions": [
             "Read the welcome line: make a game in Claude, then save it in the folder used for the weekly summary.",
-            "Click the Copy button on the Snake prompt in Prework step 1.",
-            "Open Claude Desktop, click New, and check for a Chat/Cowork switch. If there is one, choose Cowork; if there is a single message box, paste there.",
-            "Paste the prompt and press Send.",
-            "Wait for the board to appear beside the chat, then click Play. If it stays closed, open the game card in Claude's reply (or try the collapsed 'If the preview doesn't open' panel).",
-            "Play the game, which is the first visible result. Saving it to agents-101 comes afterward."
+            "Click the 'Open in Claude' link in section 1 and choose Open if the browser asks.",
+            "See the message box in Claude Desktop with the Snake request already filled in and click the Send arrow, matching the screenshot.",
+            "Wait for Claude to make snake.html and for the board to open beside the conversation (or click the Snake game card if one appears).",
+            "Click Start or Play and try the game."
           ],
           "hesitations": [
-            "The handbook gives no estimate of how long Claude takes to build the game, so I might wonder whether it's stuck.",
-            "'Click New' is slightly ambiguous if the app shows a different layout, but the Chat/Cowork line covers the likely cases.",
-            "The Mac/Windows picker sits in step 2, after the game, so it doesn't affect the first game.",
-            "If the preview fails, the fix is hidden in a closed panel I haven't read yet, though the visible text already offers the game-card fallback."
+            "I'm new to Cowork, so I'd briefly wonder whether Open in Claude lands me in a Cowork conversation or an ordinary chat. The handbook never says which.",
+            "The 'Claude stayed closed?' fallback and 'If the preview doesn't open' panels are collapsed. I'd only open them if the link or preview failed, and I can't see what they say.",
+            "The page asks for 'Start or Play', but the example image shows only a 'Play' button, which is a very minor mismatch.",
+            "Section 2 comes right after the game and starts with a folder setup, which could feel like a detour. It doesn't block the first game, though."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "The game comes first and takes one copy-and-paste. There's no folder setup or file handling before I see something, and that suits me. The example screenshot shows what I should expect, and the 'board stays closed' fallback is reassuring. I'd have the game running in a couple of minutes and feel confident going into the folder step.",
-          "biggestImprovement": "Add a line that says roughly how long the game takes to appear, plus the one-line fix for a missing preview visible in the main text instead of a closed panel.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "product-ops-1.rating.json"
+          "evidenceQuote": "When you see this message box in Claude Desktop, click the Send arrow. Claude starts making snake.html.",
+          "feeling": "This is quick and mostly obvious. One link puts a ready-made request in front of me, I click send, and a game I can play shows up. The text is clear and I wouldn't need help. My only real worry is what happens if the link or preview doesn't work. The fixes are tucked away in closed panels, and I don't know whether they'd solve it. I'd still expect to be playing within a few minutes.",
+          "biggestImprovement": "Add a one-line note next to the link saying it opens a Cowork conversation, and show the preview-fallback steps in plain view rather than in a closed panel."
         },
         {
           "attempt": 2,
-          "stars": 4.6,
+          "stars": 4.4,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the welcome line: make a game in Claude, then save it in the folder used later for the weekly summary.",
-            "Click the 'Copy the game request' button in step 1.",
-            "Open Claude Desktop, click New, and paste the request.",
-            "If a Chat/Cowork switch appears, choose Cowork; otherwise paste into the single message box.",
-            "Press Send.",
-            "When the board appears beside the chat, click Play or follow the on-board controls. If it stays closed, open the game card in Claude's reply.",
-            "Play the first game, which is the end of my route. Step 2 (folder and saving) comes afterward."
+            "Read the welcome line: make a game, play it, then save it in a folder.",
+            "Click the 'Open in Claude' link under 'Make and play Snake'. If the browser asks, choose Open.",
+            "Claude Desktop opens a new conversation with the Snake request already in the message box.",
+            "Compare my screen with the screenshot, then click the Send arrow.",
+            "Wait for the Snake board to open beside the conversation, or click the Snake game card if Claude shows one.",
+            "Click Start or Play and try the game."
           ],
           "hesitations": [
-            "The instruction 'click New' is slightly ambiguous: new conversation or new something else? I would assume a new conversation.",
-            "The 'If the preview doesn't open' panel is collapsed, so I would have only the one-line fallback ('open the game card in Claude's reply') if the preview failed. I can't tell what the card looks like.",
-            "The Chat/Cowork switch is conditional. I'm unsure whether I'd see it, but the fallback of pasting into the single box covers that.",
-            "A minor cosmetic worry: the example image shows a game with a green Play button, which sets a clear expectation of success."
+            "I would briefly wonder whether the link will open Claude Desktop and whether the browser prompt is normal. The page does say to choose Open if asked.",
+            "The Send step is a screenshot caption, not step text. It is easy to follow, but a skimmer might miss it.",
+            "The fallback and 'If the preview doesn't open' panels are closed. Their contents aren't visible to me, so I can't tell how well they would rescue me if the link or preview fails.",
+            "The game card and the Start/Play button are slightly vague. I would still guess correctly."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "Fast and low-friction. The game is the first thing I do, with one copy button and one paste, so I get something tangible in a couple of minutes. The preview example image reassures me about what success looks like. My only pause is 'New' being vague, and if the preview didn't open I'd be relying on one short sentence. I wouldn't need help.",
-          "biggestImprovement": "Say 'click New chat (or New task)' or otherwise name exactly what New creates, and put the one-line fix for a preview that doesn't open next to the Play instruction instead of in a collapsed panel.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "product-ops-2.rating.json"
+          "evidenceQuote": "When the Snake board opens beside the conversation, click Start or Play.",
+          "feeling": "This felt quick. The first step is a single link that pre-fills the request, so I don't need a folder, setup or prompt copying before I see a result. I felt a little unsure whether the link would work, but the copy-paste fallback and the 'Claude stayed closed?' note reassured me. I'd have a playable game within a couple of minutes.",
+          "biggestImprovement": "Make 'click Send' a plain numbered text step beside the link, with a one-line note about what you'll see if Claude doesn't open."
         },
         {
           "attempt": 3,
-          "stars": 4.6,
+          "stars": 4.5,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Skim the Welcome line, then go to Prework step 1 'Make and play Snake'.",
-            "Click 'Copy the game request' (the prompt button).",
-            "Open Claude Desktop and click New.",
-            "If a Chat/Cowork switch appears, choose Cowork; otherwise paste into the single message box.",
-            "Paste the request and press Send.",
-            "When the board appears beside the chat, click Play or use the on-board controls. If it stays closed, open the game card in Claude's reply."
+            "Read the welcome line: make a game in Claude, then save it in the folder used for the weekly summary.",
+            "Click the \"Open in Claude\" link under section 1 and choose Open if my browser asks.",
+            "Check that Claude Desktop shows a new conversation with the Snake request ready in the message box.",
+            "Click the Send arrow, as the screenshot caption says.",
+            "Wait for the Snake board to open beside the conversation, then click Start or Play and try the game."
           ],
           "hesitations": [
-            "The Cowork vs Chat switch is conditional ('If you see...'), so I'd briefly wonder which mode I'm in, but the fallback 'With one message box, paste there' covers it.",
-            "The 'If the preview doesn't open' panel is closed; I'd open it only if the board failed to appear, and I can't see what it says.",
-            "The prompt block says 'Cowork' as its destination, and the instruction doesn't say whether a folder needs to be chosen before the game; it doesn't seem to, so I'd proceed without one.",
-            "The cover and nav (Long-read/Slides, M1-M8) are noise, but the Start line points clearly to step 1."
+            "I might wonder briefly whether the link will launch Claude Desktop and prefill the message. The handbook says it should, and it shows a screenshot of the expected state, so this is minor.",
+            "The \"Claude stayed closed?\" and \"If the preview doesn't open\" panels are collapsed. I assume I'd open them only if something went wrong, and I can't judge their contents.",
+            "The ordered list begins with a screenshot rather than a plain imperative sentence. This is a small oddity, but the caption does carry the instruction."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "That felt quick. One copy button, one paste, one send, and the example image shows what I should expect to see. I'd be playing Snake within a couple of minutes. The only pause is the Chat/Cowork conditional, and even that has a clear fallback. The folder setup comes after the game, so it doesn't block me.",
-          "biggestImprovement": "Add a line saying what to do if the game card or preview doesn't appear, visible in the main text rather than in a closed panel, and state that no folder is needed for this first step.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "product-ops-3.rating.json"
+          "evidenceQuote": "When you see this message box in Claude Desktop, click the Send arrow. Claude starts making snake.html.",
+          "feeling": "I got a playable game with almost no setup. One click, one Send, and then Play. I didn't need a folder, the Mac/Windows toggle or the downloads first, which is what I wanted as a busy person. The fallbacks are sensible if the link fails. I'd feel a little uncertain only if the deep link didn't open, and even then the visible request text and the fallback panel give me a way forward.",
+          "biggestImprovement": "Put the first-send instruction in the step's own text, not only in the screenshot caption, and say plainly that the Snake game appears beside the conversation after Send."
         }
+      ],
+      "previous_public_scores": [
+        4.6,
+        4.6,
+        4.6
       ]
     },
     {
@@ -1882,77 +1900,77 @@
         4.6
       ],
       "scores": [
-        4.6,
-        4.6,
-        4.6
+        4.7,
+        4.7,
+        4.7
       ],
       "judgements": [
         {
           "attempt": 1,
-          "stars": 4.6,
+          "stars": 4.7,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the one-line welcome: make a game in Claude, then save it in the folder used for the weekly summary.",
-            "Go to step 1 and click Copy the game request.",
-            "Open Claude Desktop, click New, and paste the prompt.",
-            "If a Chat/Cowork switch appears, choose Cowork. Press Send.",
-            "Wait for the board to appear beside the chat, then click Play. If the board stays closed, open the game card in Claude's reply."
+            "Skim the cover and Start line (\"Make a game in Claude\"), then go to Prework step 1, \"Make and play Snake\".",
+            "Click the \"Open in Claude\" link; accept the browser prompt to open Claude Desktop if one appears.",
+            "Check the new conversation has the Snake request prefilled. If it does, click the Send arrow, matching the screenshot caption.",
+            "Wait for the Snake board to open beside the conversation, then click Start or Play.",
+            "If the link didn't open Claude, expand \"Claude stayed closed? Copy the request here.\" and paste the visible request into Claude Desktop."
           ],
           "hesitations": [
-            "The prompt block's destination label says Cowork, but the Chat/Cowork switch instruction sits below it, so I might paste before choosing Cowork. The text does cover this, so it is a small slip.",
-            "The preview-failure help is in a closed 'If the preview doesn't open' panel. I couldn't see its contents. I'd open it only if the game card didn't appear.",
-            "The page doesn't say whether to use a folder or project at this stage. Step 2 comes after the game, so the order feels sensible, but I wondered briefly whether I should set up the folder first."
+            "Tiny: I'd have to check whether Cowork's new-task view is where the link lands, since the page says only \"Claude Desktop opens a new conversation\". The caption image shows the message box, so this is minor.",
+            "The fallback panel is closed and I can't see its contents, but the same request text is shown on the page, so I could paste it myself without opening it.",
+            "Prework step 2 (folder) comes right after the game, but it is after the first result, so it doesn't block me."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "As a fast builder, I'd be playing within a couple of minutes. There is one copy button, one prompt and one action, so I wouldn't look elsewhere. The fallbacks are right there, and the example image shows what to expect. The only thing that slowed me was the Cowork switch coming after the prompt. I'd also rather see the Cowork check before the paste step. Beyond that, nothing blocks the first game.",
-          "biggestImprovement": "Put the 'If you see a Chat and Cowork switch, choose Cowork' line before the copy-and-paste instruction, so the mode is picked before pasting.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "technical-builder-1.rating.json"
+          "evidenceQuote": "When you see this message box in Claude Desktop, click the Send arrow. Claude starts making snake.html.",
+          "feeling": "This felt like a one-click start: a link, a Send press, then a playable board. I'd move through it fast and solo. My only pause would be if the deep link didn't fire, and even then the request is printed on the page for copy and paste. I'd get to the game within a couple of minutes.",
+          "biggestImprovement": "none"
         },
         {
           "attempt": 2,
-          "stars": 4.6,
+          "stars": 4.7,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the one-line welcome: make a game in Claude, then save it into the folder used later.",
-            "Click the Copy button on the Snake prompt, which names Claude Desktop.",
-            "Open Claude Desktop, click New, and paste the prompt.",
-            "Check for a Chat/Cowork switch, choose Cowork, and press Send.",
-            "Wait for the board to appear beside the chat, then click Play or follow the on-board controls. If it stays closed, open the game card in Claude's reply."
+            "Read the welcome line: make a game in Claude, then save it in a folder.",
+            "Scroll to section 1 'Make and play Snake' and click the 'Open in Claude' link.",
+            "If my browser asks, choose Open. Claude Desktop opens a new conversation with the Snake request prefilled.",
+            "Compare the message box with the screenshot, then click the Send arrow.",
+            "When the Snake board opens beside the conversation, click Start or Play and try the first game."
           ],
           "hesitations": [
-            "The first game step needs no folder, which is good, but I'd briefly wonder whether I should set up the folder first. The welcome line explains that saving comes after playing, so this is minor.",
-            "I'd briefly wonder what to do if the preview doesn't appear. The instruction to open the game card helps, and the closed 'If the preview doesn't open' panel is there if needed.",
-            "The 'Chat and Cowork switch' line makes me check the UI, but it is clear and the handbook is already set to Cowork."
+            "The link is a claude:// deep link. If the browser blocks it, I would open the 'Claude stayed closed?' fallback and copy the visible request. I would expect that to work, but I haven't seen its contents.",
+            "I might briefly wonder whether Cowork needs a folder before the game works. The page says the folder comes after, so this is minor.",
+            "The preview could fail to open. The page names a game card to click and an 'If the preview doesn't open' panel, so I would have a recovery path."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "That was fast. It's one prompt, one paste, and I'm playing Snake. I'd skim the later steps, but this start is clear enough that I wouldn't need a trainer. I only paused to check the Cowork switch and to see what happens if the preview doesn't open. The example image also shows me what the result should look like.",
-          "biggestImprovement": "Add one short line right after the Send instruction saying roughly how long to wait, or what Claude's reply will look like, before the board appears. That would remove the remaining small doubt.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "technical-builder-2.rating.json"
+          "evidenceQuote": "When the Snake board opens beside the conversation, click Start or Play.",
+          "feeling": "Pretty snappy. The first action sits right at the top of Prework and the request is prefilled, so I'm one click and one Send from a game. I'm quick with tools, so I'd skip the later folder and calendar steps for now and come back to them. The only real risk is the deep link not launching, and there's a visible copy-paste fallback for that.",
+          "biggestImprovement": "Show the fallback request text and a one-line 'no folder needed yet' note in plain view, rather than only inside a closed panel."
         },
         {
           "attempt": 3,
-          "stars": 4.6,
+          "stars": 4.7,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the one-line welcome: make a game in Claude, then save it in the folder used later.",
-            "Click the Copy the game request button in Prework step 1.",
-            "Open Claude Desktop, click New, paste the request and press Send.",
-            "If a Chat/Cowork switch shows, choose Cowork; otherwise paste in the single message box.",
-            "Wait for the board to appear beside the chat, then click Play (or open the game card in Claude's reply if the board stays closed) and try the snake game."
+            "Skip the nav and cover, land on Start, then Prework step 1 'Make and play Snake'.",
+            "Click the 'Open in Claude' link; Claude Desktop opens a new conversation with the Snake request prefilled.",
+            "If the browser asks, choose Open.",
+            "Check the screenshot cue: when the message box shows the request, click the Send arrow.",
+            "Wait for Claude to build snake.html and open the board beside the conversation.",
+            "Click Start or Play and play the first game."
           ],
           "hesitations": [
-            "Minor: the instruction says 'click New' but doesn't say whether that means a new task or a new chat; I would assume a new conversation.",
-            "Minor: the preview-failure fallback is in a closed 'If the preview doesn't open' panel. I would open it only if the board didn't appear.",
-            "Minor: the Cowork prompt is aimed at a preview 'beside this conversation', and I can't confirm from the HTML that Cowork shows it. The handbook's wording suggests it does, and a fallback exists, so I would continue."
+            "Minor: I'd wonder briefly whether the link will actually launch Desktop and prefill the prompt, but the text says what will happen, and the visible fallback (copy the request) is right there.",
+            "Minor: The 'Open' browser dialog and the closed fallback panels are unexplained until I need them. I'd only open them if the link failed.",
+            "Minor: The 'Start or Play' wording is slightly vague, but the example image shows a green Play button."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "I'd be playing in about a minute. The first step is a single copy, paste and send, and the example image shows what I should expect. I'd skim the welcome and the folder story, and I wouldn't need a trainer. The folder setup comes after the game, so it doesn't slow me down. My only pause would be the vague 'New', and I'd just try it.",
-          "biggestImprovement": "Say what 'New' means, for example 'click New (a new conversation)', and show the fallback for a missing preview next to the step rather than in a closed panel.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "technical-builder-3.rating.json"
+          "evidenceQuote": "Claude Desktop opens a new conversation with this request ready to send. If your browser asks, choose Open.",
+          "feeling": "This felt fast. One link, one Send click, and I'm playing. I don't need a trainer. I'd only slow down if the claude:// link didn't fire, and even then the exact request is printed on the page for pasting. Saving to a folder comes after the game, so it doesn't block me.",
+          "biggestImprovement": "none"
         }
+      ],
+      "previous_public_scores": [
+        4.6,
+        4.6,
+        4.6
       ]
     },
     {
@@ -1967,81 +1985,78 @@
         4.6
       ],
       "scores": [
+        4.5,
         4.6,
-        4.6,
-        4.6
+        4.4
       ],
       "judgements": [
         {
           "attempt": 1,
-          "stars": 4.6,
+          "stars": 4.5,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the welcome line: make a game in Claude, play it, then save it. No setup is required before the game.",
-            "Click Copy the game request in the Prework step 1 prompt block.",
-            "In Claude Desktop, click New, paste the request and press Send.",
-            "If I see a Chat/Cowork switch, choose Cowork. If there is only one message box, paste there.",
-            "Wait for the board to appear beside the chat, then click Play. If it stays closed, open the game card in Claude's reply.",
-            "If the preview doesn't open, open the closed 'If the preview doesn't open' panel."
+            "Read the welcome line: make a game in Claude, then save it and later use the same folder for summarizing my week.",
+            "Go to section 1 and click the 'Open in Claude' link; if my browser asks, choose Open.",
+            "See Claude Desktop open with the Snake request already in the message box, matching the screenshot.",
+            "Click the Send arrow, as the caption says.",
+            "When the Snake board opens beside the conversation, click Start or Play and try the game."
           ],
           "hesitations": [
-            "The prompt is labelled with a 'Cowork' destination, while the instruction says to click New. I'd have to infer that New starts a Cowork conversation, since the Chat/Cowork switch is only mentioned conditionally.",
-            "The troubleshooting panel is closed, and I can't see its contents. If the board doesn't appear I'd rely on the 'open the game card' line, which is brief.",
-            "The game step needs no folder or work data, which suits my caution. Later steps (folder access, a calendar screenshot) would need a conscious decision, but they don't block the game."
+            "The link is a claude:// deep link and I am cautious, so I would pause briefly to check the browser prompt. The page explains it ('If your browser asks, choose Open'), so I would go ahead.",
+            "I am unsure whether the new conversation opens in Cowork or ordinary chat. The page does not say, though it says Cowork is selected.",
+            "I do not see a folder requirement before the game. That is reassuring, because I do not have to upload or connect any company data.",
+            "If the link does nothing, I would open the closed 'Claude stayed closed? Copy the request here' panel and paste the request myself. I cannot see the panel contents, but its label tells me where to go."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "Pretty quick. The first thing is a game, with no connectors, uploads or folders, which is exactly what I'd want as someone wary of linking work apps. The copy button and the example picture of the finished game show me what to expect. My only small pause is the Cowork vs Chat wording, but the handbook covers it with one sentence. I'd be playing Snake within a couple of minutes without asking anyone.",
-          "biggestImprovement": "State plainly that New opens a conversation in Cowork (or tell me exactly where to find the Cowork switch), and show the 'If the preview doesn't open' fix inline rather than closed.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "hr-leader-1.rating.json"
+          "evidenceQuote": "When you see this message box in Claude Desktop, click the Send arrow. Claude starts making snake.html.",
+          "feeling": "This felt quick and obvious. One click opens Claude with the request ready, one click sends it, and then I play. I did not need IT or a trainer, and I was not asked to connect work apps or upload company files. The fallback panel and the preview troubleshooting are labelled clearly, which would reassure me if something failed. My only small worry is trusting a link that opens an app, but the page explains it.",
+          "biggestImprovement": "Add one line saying that the link opens Claude Desktop in Cowork, that nothing about my work is shared at this step, and what to do if the browser Open prompt does not appear."
         },
         {
           "attempt": 2,
           "stars": 4.6,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the welcome line: make a game in Claude, nothing about connecting apps or uploading company data.",
-            "Click Copy the game request under step 1, which is the Snake prompt.",
-            "In Claude Desktop, click New and paste the request.",
-            "If a Chat/Cowork switch appears, choose Cowork; otherwise paste into the single box.",
-            "Press Send.",
-            "Wait for the board to appear beside the chat, then click Play or follow the on-board controls.",
-            "If the board doesn't show, open the game card in Claude's reply, or open the closed 'If the preview doesn't open' panel."
+            "Read the welcome line: make a game in Claude, then save it in a folder.",
+            "In Section 1, click the 'Open in Claude' link and choose Open if my browser asks.",
+            "See Claude Desktop open with the Snake request already in the message box (the visible request text is shown too).",
+            "Click the Send arrow, as the screenshot caption says.",
+            "Wait for the Snake board to appear beside the conversation, then click Start or Play."
           ],
           "hesitations": [
-            "I can't see the contents of the closed 'If the preview doesn't open' panel, so I'm not sure what it says. The in-line fallback (open the game card) probably covers me.",
-            "The prompt block's destination label says 'Cowork', which could briefly make me wonder whether I need a separate Cowork area. The sentence about the Chat/Cowork switch settles it.",
-            "Nothing asks for a folder, a connector or company data before the game, which is what I wanted. Folder setup and the calendar screenshot come only after the game, and the calendar step could make me pause later. That is outside this route."
+            "The link opens a desktop app from my browser. As a cautious person I might pause at the 'Open' prompt, but the handbook tells me to expect it.",
+            "The request is pre-filled and shown in plain text, so I can see exactly what I'm sending and nothing about my company data is involved. The Send step is therefore low-risk.",
+            "The handbook doesn't say how long the game takes to appear. I'd assume a short wait is normal. If the preview didn't open, there are fallback sections (copy the request, 'If the preview doesn't open'), though I can't see their contents."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "Pretty relaxed. The first step is one copy, one paste and one send, with no setup first. I wasn't asked to connect anything or hand over work data, which matters to me. I'd expect to be playing in a couple of minutes. The only small unknown is what happens if the preview doesn't open, but the text tells me to open the game card.",
-          "biggestImprovement": "Put the key fallback in plain view next to the Play instruction, for example one line saying what to do if no board appears, so I don't have to open the closed panel.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "hr-leader-2.rating.json"
+          "evidenceQuote": "When you see this message box in Claude Desktop, click the Send arrow. Claude starts making snake.html.",
+          "feeling": "This felt quick and obvious. One link, one click on Send, and I'm playing. I liked seeing the exact request in plain text, and that no folder, upload or work-app connection was needed before the first result. I'd expect to get to the game within a couple of minutes without asking anyone.",
+          "biggestImprovement": "none"
         },
         {
           "attempt": 3,
-          "stars": 4.6,
+          "stars": 4.4,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the one-line welcome: make a game in Claude, then save it in the folder used later.",
-            "Under step 1, click Copy the game request on the prompt block.",
-            "In Claude Desktop, click New, paste the request, and press Send.",
-            "If a Chat/Cowork switch appears, choose Cowork; if there is one message box, paste there.",
-            "Wait for the board to appear beside the chat, then click Play (or open the game card in Claude's reply if the board stays closed)."
+            "Read the welcome line: make a game in Claude, then save it in a folder.",
+            "Click the 'Open in Claude' link under 'Make and play Snake'. If my browser asks, choose Open.",
+            "Check that Claude Desktop shows a new conversation with the Snake request already in the message box. The same request is printed on the page if the link doesn't work.",
+            "Click the Send arrow, as the screenshot caption says.",
+            "Wait for the Snake board to open beside the conversation, then click Start or Play and try the game."
           ],
           "hesitations": [
-            "I'd wonder briefly whether 'New' means a new conversation or a new project, but the following sentence makes it clear enough.",
-            "I can't tell whether the game gets built in the folder-less state; the folder isn't needed until step 2, which is reassuring, and the order (game first) is good for a cautious person.",
-            "The fallback 'If the preview doesn't open' is closed, but the main text already gives a short alternative (open the game card), so I'd only open it if that failed.",
-            "Nothing asks me to connect work apps or upload company data before the game; the later calendar screenshot is a separate step, so I'm not alarmed."
+            "I'd briefly wonder whether the claude:// link will work from my browser, since I'm cautious about unfamiliar prompts. The page does say what to expect: 'If your browser asks, choose Open.' It also shows the exact request text, and a fallback is available under 'Claude stayed closed? Copy the request here.'",
+            "The game is built in a Cowork conversation, and I don't know whether it will ask for folder access. At this stage, nothing in the excerpt asks me to connect a work app or upload company data. That reassures me.",
+            "The Snake game needs no folder, but the page sends me to the folder step afterwards. That step comes after the game, so it doesn't block me.",
+            "I can't verify that the preview opens beside the conversation. The page covers this with a 'Snake game card' tip and an 'If the preview doesn't open' panel, though I haven't seen what's inside the panel."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "Pretty confident. It's a single copy, paste, send, and the reference image shows what to expect, so I could do this alone in a couple of minutes without waiting for IT. My only small pause is the phrase 'click New', which I'd just interpret as a new chat. I wouldn't need a trainer to see my first game.",
-          "biggestImprovement": "Say 'New conversation' (or 'New chat') instead of just 'New' so there is no doubt about which button to click.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "hr-leader-3.rating.json"
+          "evidenceQuote": "When you see this message box in Claude Desktop, click the Send arrow. Claude starts making snake.html.",
+          "feeling": "This felt quick and low-risk. One link, one Send click, and then I play. The pre-filled request means I don't have to write a prompt, and I can see the exact text before I send it. The privacy-cautious part of me appreciates that the first task is a harmless game and not a work-data task. I'd only pause for a second at the link opening Claude Desktop, but the instructions anticipate that. I expect to be playing within a couple of minutes.",
+          "biggestImprovement": "Add one line right before the Send step saying that this first game uses no company data, no connected apps and no folder access, so cautious users can send it without worry."
         }
+      ],
+      "previous_public_scores": [
+        4.6,
+        4.6,
+        4.6
       ]
     },
     {
@@ -2056,81 +2071,75 @@
         4.4
       ],
       "scores": [
-        4.6,
+        4.7,
         4.6,
         4.6
       ],
       "judgements": [
         {
           "attempt": 1,
-          "stars": 4.6,
+          "stars": 4.7,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the one-line welcome: make a game, play it, then save it in the folder used for the weekly summary. The purpose is stated, so I proceed.",
-            "Under 'Make and play Snake', click Copy on the game request.",
-            "Open Claude Desktop, click New, and paste the request.",
-            "If a Chat/Cowork switch appears, choose Cowork. Otherwise I paste into the single message box.",
-            "Press Send.",
-            "Watch for the board beside the chat and click Play. If it doesn't appear, open the game card in Claude's reply, and the closed 'If the preview doesn't open' panel is there as a fallback."
+            "Read the one-line welcome, which says I'll make a game, play it, then save it in the folder I'll use for the week summary. The purpose is stated, so I'm not put off.",
+            "Go to section 1, 'Make and play Snake', and click the 'Open in Claude' link. Claude Desktop is already installed. If my browser asks, I choose Open.",
+            "See the new Cowork conversation with the request already in the message box. The screenshot helps me confirm I'm on the right screen. I click the Send arrow.",
+            "Wait for Claude to make snake.html. When the board opens beside the conversation, click Start or Play, and the first game is open."
           ],
           "hesitations": [
-            "The Cowork switch instruction is conditional ('If you see...'), so I have to check my own screen. It is clear enough but costs a moment.",
-            "The 'If the preview doesn't open' panel is closed, so I can't judge its content. The inline fallback (open the game card) covers the common failure.",
-            "The Mac/Windows picker sits below the game step. It does not affect the first game, so that is fine.",
-            "The page shows a lot of material (nav, 8 modules, contents), but the first step is near the top and easy to find."
+            "The browser may block the claude:// link, or Claude may not open. The handbook covers this with the 'If your browser asks, choose Open' note and the closed 'Claude stayed closed? Copy the request here' panel, so I'd likely recover without help.",
+            "The handbook says to click Start or Play, but the example image only shows a green Play button. It's a small wording mismatch and not a real obstacle.",
+            "As a skeptic I'd briefly wonder why I'm building a Snake game. The one-line welcome partly answers that, but the finance relevance is thin at this point."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "Pleasantly direct. The game comes first, before any folder setup or downloads, and the stated purpose (it ends up in the same folder as my weekly summary) is enough for me to bother. I'd have the game running in about two minutes. My only slight friction is checking whether a Chat/Cowork switch exists, and I'd want some reassurance on what to do if the preview just doesn't appear.",
-          "biggestImprovement": "Show the preview-failure fallback inline rather than in a closed panel, so someone whose board doesn't open can see the fix without hunting.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "finance-sceptic-1.rating.json"
+          "evidenceQuote": "When the Snake board opens beside the conversation, click Start or Play.",
+          "feeling": "Pleasantly short. One link, one Send click, and I'm playing. I didn't have to set up a folder or install anything before seeing a result. The game is a bit silly for a finance person, but the Welcome explains it leads to saving files and summarizing my week, so I'd go along with it. I'd trust the fallback panels if the link failed.",
+          "biggestImprovement": "Add one sentence before the link saying what the game demonstrates, for example 'Claude builds and previews a working file from one sentence, which is the same skill you'll use on your own work files'."
         },
         {
           "attempt": 2,
           "stars": 4.6,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the one-line welcome: make a game, play it, then save it in the folder used later for the weekly summary. The purpose is stated up front.",
-            "Under step 1, click Copy the game request.",
-            "Open Claude Desktop, click New, paste the request and press Send.",
-            "Check for a Chat/Cowork switch and choose Cowork if it is there; otherwise paste into the single message box.",
-            "Wait for the board to appear beside the chat, then click Play. If the board stays closed, open the game card in Claude's reply."
+            "Read the one-line welcome: make a game, play it, then save it in the same folder used for summarizing my week. The purpose is stated, so I'm not put off.",
+            "Click the 'Open in Claude' link in section 1 and choose Open if my browser asks.",
+            "Look at the screenshot of the message box with the request already filled in, and click the Send arrow.",
+            "Wait for Snake to appear in the preview beside the conversation, then click Start or Play."
           ],
           "hesitations": [
-            "I would briefly wonder whether to set up the folder first, because the Cowork/folder setup sits in step 2. The order is clear, though: the game comes first and the folder second.",
-            "The Chat/Cowork switch instruction is conditional. A new user may not know which of the two applies, but the 'one message box' fallback covers it.",
-            "The 'If the preview doesn't open' panel is closed. I would only open it if the board never appeared, and I can't tell what it contains.",
-            "A skeptical finance reader may see a Snake game as a toy. The stated link to saving into the same folder used for the weekly meeting summary gives it enough purpose to continue."
+            "I'd briefly wonder whether the browser-to-Claude Desktop handoff will work. The fallback is collapsed ('Claude stayed closed? Copy the request here') but clearly labelled, and the plain request text is also visible on the page.",
+            "A skeptical reader might pause at 'Snake' as a demo, but the intro explains that the game is saved to the same folder used for the real work, and that's enough for me.",
+            "The link is a claude:// deep link, and I can't tell whether it lands in Cowork specifically. The wording 'a new conversation with this request ready to send' suggests it does."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "That's quick. I have one prompt, one paste, and I'm playing. Since the game is tied to my real folder and a weekly meeting summary, I'm willing to spend ten minutes on it. I'd only slow down at the Chat/Cowork switch and if the board didn't open, and both have a stated fallback.",
-          "biggestImprovement": "Add one line under the Chat/Cowork instruction saying what Cowork looks like, or that you can tell it's selected when it is highlighted, so a new user can be sure they're in the right mode before sending.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "finance-sceptic-2.rating.json"
+          "evidenceQuote": "When you see this message box in Claude Desktop, click the Send arrow. Claude starts making snake.html.",
+          "feeling": "This is a short, direct route. One link, one Send click, then play. I'm told what the game is for, and the page says what I should see before the next step, so I'm not guessing. The only doubt is whether the link opens Desktop properly, and there's a visible fallback if it doesn't. I wouldn't need help.",
+          "biggestImprovement": "State outright that the link opens Claude Desktop in Cowork mode, and show the plain request text before the link rather than after, so the fallback is obvious if the link fails."
         },
         {
           "attempt": 3,
           "stars": 4.6,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Skim the cover and the one-line Start promise: make a game, play it, then save it in the folder I'll use for the week summary.",
-            "Go to Prework step 1 and click 'Copy the game request'.",
-            "Open Claude Desktop, click New, paste the request and press Send.",
-            "If a Chat/Cowork switch appears, choose Cowork; otherwise paste into the single message box.",
-            "When the board appears beside the chat, click Play or follow the on-board controls. If it stays closed, open the game card in Claude's reply (the 'If the preview doesn't open' panel is there as a fallback)."
+            "Read the one-line welcome and see that step 1 is 'Make and play Snake'; accept that the game is the first thing to do.",
+            "Click the 'Open in Claude' link; if my browser asks, choose Open.",
+            "Check that Claude Desktop opens with the Snake request already in the message box, as the screenshot shows.",
+            "Click the Send arrow, as the caption instructs.",
+            "When the Snake board opens beside the conversation, click Start or Play."
           ],
           "hesitations": [
-            "A skeptic like me wonders briefly why a snake game is the first task. The Start line does explain it (the game gets saved in the same folder as the week summary), which helps a little.",
-            "'Click New' is slightly ambiguous in a new app, but it is bold and the next sentences cover the Cowork switch and the single-box case, so I would not stall.",
-            "I can't see what the fallback panel says because it is closed, so if the preview failed I'd have to open it and hope it helps.",
-            "The folder, download and calendar steps come after the game and don't block it, so I can ignore them to reach the first result."
+            "I'm not sure why I'm building a game. The page says it is saved in the same folder I'll use for the weekly summary, which gives it a little purpose, but I'd like one more sentence on what this demonstrates.",
+            "The link opens a desktop app from the browser, so I'd be briefly unsure it worked. The copy-the-request fallback is closed, but its label ('Claude stayed closed?') is easy to spot.",
+            "The page doesn't say how long the game takes or what the first screen looks like. The example image does show a green Play button, which helps.",
+            "Nothing says whether this needs a Cowork conversation or a plain chat, but the link opens straight into cowork, so I wouldn't need to decide."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "That was quick. One copy button, one paste, and the game shows up beside the chat. It asked for no setup before the first result, which is what I wanted. I'm still a little unsure why I'm doing this, but the Start line gave a reason and the cost is small, so I'd go ahead.",
-          "biggestImprovement": "Add one line stating what to expect and roughly how long it takes (for example, 'about a minute, and a playable board appears on the right'), so I can tell it's working before I decide whether the preview failed.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "finance-sceptic-3.rating.json"
+          "evidenceQuote": "When you see this message box in Claude Desktop, click the Send arrow. Claude starts making snake.html.",
+          "feeling": "As a skeptic, I was ready to stop at any sign of setup. There was almost none: one click, one Send, one Play. I'd get to a running game in a couple of minutes. Nothing explains why a game matters, but it is quick and my patience would hold. The folder and file steps come after the game, so they don't slow me down.",
+          "biggestImprovement": "Add one plain sentence before the link saying why the game comes first, for example that it shows Claude building and running a real file from a one-line request."
         }
+      ],
+      "previous_public_scores": [
+        4.6,
+        4.6,
+        4.6
       ]
     },
     {
@@ -2155,71 +2164,67 @@
           "stars": 4.6,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the Start line: make a game in Claude, then save it in the folder used later.",
-            "In Section 1, click the Copy the game request button.",
-            "Open Claude Desktop, click New, paste the request and press Send.",
-            "Check for a Chat/Cowork switch and choose Cowork if it is there; otherwise paste into the single message box.",
-            "When the board appears beside the chat, click Play or follow the on-board controls. If the board stays closed, open the game card in Claude's reply.",
-            "If the preview doesn't open, expand the closed 'If the preview doesn't open' panel (contents not visible in this excerpt)."
+            "Read the Start line: 'Make a game in Claude.' Then go to section 1, 'Make and play Snake'.",
+            "Click the 'Open in Claude' link, choosing Open if my browser asks.",
+            "Check that Claude Desktop shows a new conversation with the Snake request ready, matching the screenshot of the message box.",
+            "Click the Send arrow.",
+            "Wait for the Snake board to open beside the conversation, then click Start or Play."
           ],
           "hesitations": [
-            "The Mac/Windows picker sits in Section 2, after the game, so it doesn't affect the first game. Section 2 (saving) comes after the game is playable and is not needed to reach it.",
-            "The preview-fallback help is hidden in a closed panel, and I can't see what it says. If the board didn't open, I'd have to rely on the one line about the game card.",
-            "The cover and nav (eight modules, 'systems leap') are noise, but the Start section is short and points quickly to Section 1."
+            "I'd briefly wonder whether the link would work. The fallback is a closed panel, 'Claude stayed closed? Copy the request here.', and the request text is also shown on the page, so I'd have a way forward.",
+            "The page doesn't say what to do if the Send arrow is missing, or how long the game takes to appear. The 'If the preview doesn't open' panel and the 'Snake game card' note do cover the most likely failures.",
+            "I'm unsure whether the handbook expects me to be in Cowork mode before clicking. The link seems to handle that, but the page doesn't say so."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "I'd be playing within a couple of minutes. The first step is one copy, one paste, one send, with the preview and fallback stated right there. The Chat/Cowork line is a small pause, but it tells me exactly what to pick. I'd only worry if the board never appeared, since the extra help is behind a closed panel I'd have to open.",
-          "biggestImprovement": "Show the first fallback step for a board that doesn't open directly beneath the Play instruction, not only inside the closed panel.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "solo-consultant-1.rating.json"
+          "evidenceQuote": "When the Snake board opens beside the conversation, click Start or Play.",
+          "feeling": "The first game feels quick and obvious. There's one link, one screenshot showing where to click Send, and then one Play click. I'd expect to be playing in a couple of minutes with no help. The folder and download steps come afterwards, so they don't slow me down. I'd only hesitate if the link failed to launch Claude, and even then there's a copy-the-request fallback.",
+          "biggestImprovement": "Add one line saying what the first Send does and roughly how long to wait, for example 'Claude will write the game; the board appears in about a minute.' Also state the fallback outcome directly in the main text."
         },
         {
           "attempt": 2,
           "stars": 4.6,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the welcome line: make a game in Claude, play it, then save it in the folder used later.",
-            "Open Claude Desktop, click New.",
-            "Click 'Copy the game request' and paste the Snake prompt, then press Send.",
-            "If I see a Chat/Cowork switch, choose Cowork; if there is only one message box, paste there.",
-            "When the board appears beside the chat, click Play or follow the on-board controls; if it stays closed, open the game card in Claude's reply.",
-            "Compare what I see with the example image of a green Play button."
+            "Read the Start line: make a game in Claude, then save it in the folder I'll reuse.",
+            "In Prework step 1, click the 'Open in Claude' link, choosing Open if my browser asks.",
+            "See Claude Desktop open with the Snake request already in the message box, matching the screenshot.",
+            "Click the Send arrow, as the caption says.",
+            "Wait for the Snake board to open beside the conversation, then click Start or Play and try the first game."
           ],
           "hesitations": [
-            "Minor: the game request is a single copy button and one short prompt, but I'm briefly unsure whether 'New' means a new Cowork task or a plain chat. The Chat/Cowork switch line mostly settles it.",
-            "Minor: the 'If the preview doesn't open' panel is closed and I can't see its contents, so I'd rely on the one-line fallback about the game card.",
-            "The folder step is placed after the game, so it doesn't block the first game. Saving depends on a folder picker, but that is beyond the first result."
+            "The browser's 'Open' prompt is only half-explained: 'If your browser asks, choose Open'. I'd pause briefly if it looked unfamiliar.",
+            "If Claude doesn't open or the preview fails, the fallbacks ('Claude stayed closed?' and 'If the preview doesn't open') are collapsed. I'd have to open them, and I can't tell what they contain. That is a small detour, not a blocker.",
+            "The text says Claude 'starts making snake.html' but gives no hint of how long it takes. I'd wonder briefly whether it was working.",
+            "The folder isn't added before the game is made. That is fine here, because the game comes first and saving follows."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "Pretty snappy. The first step is just copy, paste and send, with an example picture to check against, and a fallback if the board doesn't show. I'd have a playable game within a couple of minutes. My only pause is whether 'New' means a Cowork conversation, but the next line tells me to pick Cowork if I see the switch.",
-          "biggestImprovement": "State explicitly what 'New' creates (e.g., 'a new Cowork task'), and what the board looks like when it opens, so there's no doubt before pasting.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "solo-consultant-2.rating.json"
+          "evidenceQuote": "When the Snake board opens beside the conversation, click Start or Play.",
+          "feeling": "This felt quick and obvious. One link, one Send click, then the game appears. The copyable request and the screenshot of the ready message box mean I never have to guess what to type or press. The folder and download steps come after the game, so they don't get in my way. I'd only hesitate if the link didn't launch Claude, and even then the fallbacks are right there, although closed.",
+          "biggestImprovement": "Show the collapsed fallback ('Claude stayed closed? Copy the request here') openly, or at least add one line saying what to do if the link doesn't open Claude, so a first-time user who hits a snag isn't left guessing."
         },
         {
           "attempt": 3,
           "stars": 4.6,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the welcome line: make a game in Claude, then save it in the folder used later for the weekly summary.",
-            "Go to section 1 and click the Copy the game request button.",
-            "Open Claude Desktop, click New, paste the request and press Send.",
-            "If a Chat/Cowork switch is visible, choose Cowork; if there is only one message box, paste there.",
-            "Wait for the board to appear beside the chat, then click Play or follow the on-board controls.",
-            "If the board doesn't appear, open the game card in Claude's reply, or open the closed 'If the preview doesn't open' panel."
+            "Read the one-line welcome: make a game in Claude, play it, then save it.",
+            "Click the prominent 'Open in Claude' link under 'Make and play Snake'; choose Open if the browser asks.",
+            "See the Snake request pre-filled in Claude Desktop, matching the screenshot of the message box.",
+            "Click the Send arrow, as the caption says.",
+            "Wait for the board to open beside the conversation, then click Start or Play to try the first game."
           ],
           "hesitations": [
-            "I can't see the contents of the closed 'If the preview doesn't open' panel, so if the board doesn't show I'd rely on the 'open the game card' line and then open that panel.",
-            "The copy button's confirmation message is not visible in the HTML, so I would trust that the copy worked and might paste again to check.",
-            "The Chat/Cowork line says 'If you see' a switch, which leaves a small question about which interface I have. It's resolved by 'With one message box, paste there.'",
-            "The first prompt asks for a preview beside the conversation, but I don't know whether my setup supports it. That uncertainty is covered by the fallback line."
+            "A brief pause over whether the browser's 'Open' prompt and the claude:// link will work, since I can't see what happens. The page tells me to expect the prompt.",
+            "The Cowork/Claude Desktop wording is slightly unclear: the cover says Claude and the section is Cowork. It doesn't block me.",
+            "If the link did nothing, I'd open the closed 'Claude stayed closed? Copy the request here.' panel. I assume it has the request text, but I can't see it."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "The route to the game felt quick and obvious. It's the first thing on the page: one copy button, one paste, one send. I only hesitated slightly over the Chat/Cowork switch and over what to do if the board doesn't show up. I expect to be playing in a couple of minutes without help.",
-          "biggestImprovement": "Show the fallback for a missing preview right beside the game step, rather than behind a closed panel, so I'd know the exact next click without opening anything.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "solo-consultant-3.rating.json"
+          "evidenceQuote": "When the Snake board opens beside the conversation, click Start or Play.",
+          "feeling": "This felt quick and obvious. There's one link, one Send click, and one Play click, and the page tells me what each step should look like. The visible request text and the fallback panels reassure me that I'd have a route if the link failed. I'd expect to be playing in a couple of minutes. My only doubt is what I can't verify from the HTML: whether the deep link actually launches.",
+          "biggestImprovement": "Show the fallback request text and a one-line 'if nothing opens' hint next to the Open in Claude button instead of inside a closed panel. The request is already visible below the link, so this is a small improvement."
         }
+      ],
+      "previous_public_scores": [
+        4.6,
+        4.6,
+        4.6
       ]
     },
     {
@@ -2244,23 +2249,22 @@
           "stars": 4.6,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the welcome line: make a game in Claude, play it, then save it in a folder.",
-            "Open Claude Desktop and click New.",
-            "Click 'Copy the game request' and paste the Snake prompt into the message box.",
-            "If I see a Chat/Cowork switch, choose Cowork. If there is one message box, paste there.",
-            "Press Send.",
-            "When the board appears beside the chat, click Play. If it stays closed, open the game card in Claude's reply."
+            "Read the welcome line: make a game in Claude, then save it in the folder used later.",
+            "Under '1. Make and play Snake', click the 'Open in Claude' link and choose Open if my browser asks.",
+            "See Claude Desktop open a new conversation with the Snake request already in the message box.",
+            "Compare it with the screenshot and click the Send arrow.",
+            "Wait for the Snake board to open beside the conversation, then click Start or Play.",
+            "If the game card or preview doesn't appear, open the closed fallback panels ('Claude stayed closed?' / 'If the preview doesn't open')."
           ],
           "hesitations": [
-            "The 'Chat and Cowork switch' wording is conditional. I would pause briefly to check whether I see one, but the fallback covers me.",
-            "I'm not sure what 'the game card in Claude's reply' looks like, so I might hunt for it. The closed 'If the preview doesn't open' panel might help, but I can't see its contents.",
-            "The prompt's destination label says Cowork, which slightly reinforces choosing Cowork, so this is a minor point."
+            "The link is a claude:// deep link. I'd briefly wonder whether it will work, but the sentence about choosing Open if the browser asks reassures me, and a copyable fallback exists.",
+            "The fallback panels are closed, and I can't tell what they contain. If the link failed, I'd have to guess to open them, though their labels are fairly clear.",
+            "The instructions say the preview opens beside the conversation but also mention a 'Snake game card' to click. I might be unsure which I'll see, though the text covers both cases.",
+            "I wouldn't know it's Cowork-specific, but nothing asks me to choose a mode, so this causes no problem."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "I'd get to a playable game quickly. It's one copy, one paste, one send, and the example image shows what I'm aiming for. The only wobble is whether the preview opens on its own and what the 'game card' looks like if it doesn't. The folder setup comes after the game, so it doesn't slow me down. I feel encouraged and confident.",
-          "biggestImprovement": "Add a short line, or a visible fallback, describing what the game card looks like (for example, a clickable tile titled 'snake' in Claude's reply) so I know what to click if the preview doesn't open by itself.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "marketing-browser-user-1.rating.json"
+          "evidenceQuote": "When you see this message box in Claude Desktop, click the Send arrow. Claude starts making snake.html.",
+          "feeling": "This felt quick and friendly. One click to open Claude with the request already written, one click to send, then play. I'm a browser-tab person, so not having to type or set anything up is a relief. The folder and instruction-file ideas are saved for after the game, which is the right order. I'd get going in a couple of minutes, with only a small flicker of doubt about the link opening the app.",
+          "biggestImprovement": "Show the fallback ('Claude stayed closed? Copy the request here') open by default, or add a visible one-line pointer right after the Open in Claude link saying what to do if nothing opens."
         },
         {
           "attempt": 2,
@@ -2268,49 +2272,47 @@
           "wouldGetGoing": "yes",
           "firstActions": [
             "Read the welcome line: make a game in Claude, then save it in the folder I'll use later.",
-            "Go to section 1 and click the 'Copy the game request' button.",
-            "Open Claude Desktop, click New, paste the request and press Send.",
-            "If I see a Chat/Cowork switch, choose Cowork; with only one message box, paste there.",
-            "Wait for the board to appear beside the chat, then click Play. If the board stays closed, open the game card in Claude's reply.",
-            "Compare what I see with the example image of the game with a green Play button."
+            "Click the 'Open in Claude' link in Prework step 1.",
+            "If my browser asks, choose Open, and let Claude Desktop launch with the Snake request already in the message box.",
+            "Compare my screen with the screenshot, then click the Send arrow.",
+            "Wait for the Snake board to open beside the conversation and click Start or Play.",
+            "If no board appears, look for a Snake game card in the reply and click it, or open the 'If the preview doesn't open' panel."
           ],
           "hesitations": [
-            "'Click New' is a little vague. I might wonder whether it means a new chat or a new task, but the Chat/Cowork line helps.",
-            "The 'If the preview doesn't open' panel is closed. I'd open it only if the board failed to appear, and I can't tell what it says.",
-            "I might pause briefly over whether a permission prompt or a different layout would show up, since the handbook doesn't describe one for the game step.",
-            "Section 2 (the folder) is after the game, so it doesn't block me. The game step is short and needs no setup."
+            "I'm unsure whether the link will open Cowork or a different kind of conversation, since the handbook says only 'a new conversation'. The Cowork URL and the screenshot reassure me, though.",
+            "The request is auto-filled but not auto-sent, so I'd pause briefly until I saw the screenshot cue telling me to click Send.",
+            "The 'If the preview doesn't open' and fallback panels are closed, so I'd have to open them if the link failed. The visible text points me to them, though.",
+            "The next step, saving to a folder, is clearly separate from the first game, so it doesn't block me."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "I'd get to a playable game fast. There's one copy button, three simple actions, and a picture of what I should see, so it felt easy and low-risk. The only wobble is wording like 'New' and 'beside this conversation', and I'd have to hunt through the closed fallback panel if the preview didn't open. Otherwise it was friendly, and I was keen to see the snake move.",
-          "biggestImprovement": "Make the first step more specific about what 'New' means (for example, 'New task' or 'New chat') and show the fallback for a preview that doesn't open right under that step instead of in a closed panel.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "marketing-browser-user-2.rating.json"
+          "evidenceQuote": "When you see this message box in Claude Desktop, click the Send arrow. Claude starts making snake.html.",
+          "feeling": "I feel confident. One link, one Send click, one Play click, with a screenshot to check against. It's quick and obvious, and I'd get a visible game in a few minutes without any folder setup. I'd only wobble slightly if the app link did nothing.",
+          "biggestImprovement": "Say right in the visible text that the link opens Cowork specifically, and that I need to click Send myself because nothing sends automatically."
         },
         {
           "attempt": 3,
           "stars": 4.6,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the Start line: make a game in Claude, then save it in the same folder used later for the week summary.",
-            "Go to section 1, 'Make and play Snake'.",
-            "Click the 'Copy the game request' button.",
-            "Open Claude Desktop, click New, paste the request and press Send.",
-            "Choose Cowork if I see a Chat/Cowork switch; otherwise paste into the single message box.",
-            "Wait for the board to appear beside the chat, then click Play or follow the on-board controls.",
-            "If the board stays closed, open the game card in Claude's reply, or open the 'If the preview doesn't open' panel."
+            "Read the welcome line: make a game, play it, then save it in the same folder used for the week summary.",
+            "Click the 'Open in Claude' link in section 1 (Make and play Snake). If my browser asks, choose Open.",
+            "See Claude Desktop with the Snake request already in the message box, matching the screenshot.",
+            "Click the Send arrow, as the caption says.",
+            "When the Snake board opens beside the conversation, click Start or Play and try the game."
           ],
           "hesitations": [
-            "Slight uncertainty about whether a 'New' button exists exactly as named, and whether the preview appears automatically. The handbook anticipates this with the Chat/Cowork note and the fallback, but I can't see what the fallback panel says.",
-            "The Mac/Windows picker sits in section 2, after the game, so it doesn't affect the first game. The game itself needs no OS choice.",
-            "Mild pull to jump ahead to the folder steps before playing. The 'After you play' framing keeps me on the game first.",
-            "The explanation that Cowork is a mode is brief. If my app showed something different, I'd be unsure which option to pick."
+            "I'd briefly wonder whether the link would work. The page covers this: the browser may ask me to choose Open, and a closed fallback says 'Claude stayed closed? Copy the request here.'",
+            "The text doesn't say whether to use Cowork or a regular chat, or whether the link opens in Cowork. Since I'm told Cowork is available and the link says 'cowork/new', I'd assume it's fine.",
+            "I'd be unsure where the game appears. The page says 'beside the conversation' and gives a fallback for a Snake game card, plus a closed 'If the preview doesn't open' panel. That helps, but I'd still look around briefly."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "This felt quick and friendly. One copy button, one paste, and a screenshot showing what I should expect. Because I've pasted prompts into browser chats before, nothing here is unfamiliar. Folders and instruction files don't come up until after I've seen a result, which is a relief. I'd expect to be playing Snake within a few minutes. The only small wobble is not knowing what happens if the preview doesn't show, since that panel is closed, though the visible fallback line helps.",
-          "biggestImprovement": "State in the visible text what to do if there is no board after Send (for example, 'wait a few seconds, then click the game card'), so I don't need to open the collapsed panel.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "marketing-browser-user-3.rating.json"
+          "evidenceQuote": "When you see this message box in Claude Desktop, click the Send arrow. Claude starts making snake.html.",
+          "feeling": "This felt quick and friendly. One link, one click on Send, then play, with no setup or folder needed first. The screenshot of the ready-to-send box reassured me. My only worry is the link not launching or the preview not appearing, but fallbacks are signposted. I'd expect to be playing within a couple of minutes without help.",
+          "biggestImprovement": "Add one plain sentence before the link saying this opens in Claude Desktop's Cowork area, with an expected result such as 'you'll see a new conversation with the request already typed in.' This would remove the small doubt about whether the link is working."
         }
+      ],
+      "previous_public_scores": [
+        4.6,
+        4.6,
+        4.6
       ]
     },
     {
@@ -2325,78 +2327,72 @@
         4.6
       ],
       "scores": [
-        4.7,
-        4.7,
-        4.7
+        4.8,
+        4.8,
+        4.8
       ],
       "judgements": [
         {
           "attempt": 1,
-          "stars": 4.7,
+          "stars": 4.8,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Skim the welcome line: make a game in Claude, play it, then save it.",
-            "Under 1. Make and play Snake, click 'Copy the game request' on the prompt block.",
-            "In Claude Desktop, click New, paste the request, and press Send.",
-            "If a Chat/Cowork switch appears, choose Cowork. If there is only one message box, paste there.",
-            "When the board appears beside the chat, click Play or follow the on-board controls. If it stays closed, open the game card in Claude's reply."
+            "Read the one-line welcome: make a game in Claude, then save it.",
+            "Click the 'Open in Claude' link under 1. Make and play Snake, and choose Open if my browser asks.",
+            "See the Snake request already in Claude Desktop's message box and click the Send arrow, as the screenshot caption says.",
+            "When the Snake board opens beside the conversation, click Start or Play and try the game."
           ],
           "hesitations": [
-            "Minor: the Chat/Cowork switch instruction is conditional, so I have to check which of the two cases I'm in. It's a one-second check.",
-            "Minor: the 'If the preview doesn't open' panel is closed, so I can't see the fallback until I open it. The inline line 'open the game card in Claude's reply' covers the most likely case.",
-            "The Mac/Windows picker sits in step 2, after the game. Step 1 doesn't depend on it, so it doesn't block me."
+            "Tiny: the browser may show a prompt about opening Claude, but the page says to choose Open.",
+            "Tiny: if Claude only replies with a Snake game card or the preview doesn't open, I'd need to click the card or open the closed 'If the preview doesn't open' panel. I can't see that panel's content, so I can't judge it.",
+            "Very small: it assumes the claude:// link works on my machine. The same request is shown as text, with a closed copy-it-here fallback, so I could paste it manually."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "That's about as short as it gets. The copy button, New, paste and Send take me straight to a game I can play, and the instruction is plain enough that I didn't need to think about it. The only pause is checking whether I have a Chat/Cowork switch. The folder and saving steps come after the game, so they don't slow me down. I didn't need help and had no reason to stop. This is about the first result only, since I haven't read the later steps in detail.",
-          "biggestImprovement": "none",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "cowork-regular-1.rating.json"
+          "evidenceQuote": "When the Snake board opens beside the conversation, click Start or Play.",
+          "feeling": "That was about as short as it gets. One link, one Send click, one Play click, and I never had to read background material or set up a folder first. I felt confident, and the example image shows what I should see. The only wobble is the unknown of what happens if the preview doesn't appear, because that help is tucked in a closed panel I can't read here.",
+          "biggestImprovement": "none"
         },
         {
           "attempt": 2,
-          "stars": 4.7,
+          "stars": 4.8,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Skim the welcome line: make a game in Claude, then save it.",
-            "In Step 1, click the Copy the game request button on the prompt block.",
-            "In Claude Desktop, click New and paste the request.",
-            "If a Chat/Cowork switch shows, choose Cowork; with only one message box, paste there. Press Send.",
-            "Wait for the board to appear beside the chat and click Play. If it stays closed, open the game card in Claude's reply."
+            "Scroll past the cover and Start to Prework step 1, 'Make and play Snake'.",
+            "Click the 'Open in Claude' link; if my browser asks, choose Open.",
+            "Claude Desktop opens with the Snake request already in the message box. I click the Send arrow, as the screenshot caption says.",
+            "When the Snake board opens beside the conversation, I click Start or Play and play the first game."
           ],
           "hesitations": [
-            "Minor: the prompt's destination label says Cowork, while the text also says 'if you see a Chat and Cowork switch', so I pause briefly to check which mode I'm in.",
-            "Minor: if the preview doesn't open, the fix is in a closed 'If the preview doesn't open' panel; I'd only open it if the inline 'open the game card' hint failed.",
-            "No stopping point before the game: no folder, download or setup is needed first. The folder step comes after I've played."
+            "Minor: the link depends on my browser handing off to Claude Desktop. The fallback ('Claude stayed closed? Copy the request here.') is collapsed, but the request text is also printed in plain view, so I could paste it myself.",
+            "Minor: if no board appears, the instruction points to a collapsed 'If the preview doesn't open' panel. I would open it only if I needed it.",
+            "Very minor: step 1 has no explicit Cowork mode instruction, but I already have Cowork access and the link opens a new conversation. I don't expect this to block me."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "That was quick. The first thing I see is a copy button and three short actions, and I don't have to set up a folder or download anything first. The Chat/Cowork line is the only place I stop to think. Everything else is clear, and the example image shows me what to expect. I'd be playing Snake within a couple of minutes without needing help.",
-          "biggestImprovement": "Fold the mode check into the main instruction, for example 'choose Cowork if you see the switch', so the whole route sits in one sentence before the paste step.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "cowork-regular-2.rating.json"
+          "evidenceQuote": "When the Snake board opens beside the conversation, click Start or Play.",
+          "feeling": "This is about as short as it gets. One link, one Send click, and I'm playing Snake. I didn't need to configure anything or read any background first. The only risk is the browser-to-app handoff, and the visible copyable request covers that. I'd expect to be playing within a minute or two.",
+          "biggestImprovement": "Show the fallback request text and the 'If the preview doesn't open' steps outside collapsed panels, or add a one-line pointer saying the request above can be pasted into a new Cowork conversation if the link does nothing."
         },
         {
           "attempt": 3,
-          "stars": 4.7,
+          "stars": 4.8,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Skip the cover and contents and go to Prework step 1, \"Make and play Snake\".",
-            "Click \"Copy the game request\" on the prompt block.",
-            "Open Claude Desktop, click New, paste the request and press Send.",
-            "If a Chat/Cowork switch is visible, choose Cowork. If there is only one message box, paste there.",
-            "When the board appears beside the chat, click Play or follow the on-board controls. If it stays closed, open the game card in Claude's reply."
+            "Skim the short Welcome line, then go to section 1, 'Make and play Snake'.",
+            "Click the 'Open in Claude' link and choose Open if my browser asks.",
+            "Check that Claude Desktop shows the Snake request ready in the message box, then click the Send arrow.",
+            "Wait for the Snake board to open beside the conversation, then click Start or Play and try the game."
           ],
           "hesitations": [
-            "The prompt block is labelled \"Prompt → Cowork\", and the surrounding text says to pick Cowork only if a switch is shown. This is a very small pause.",
-            "Step 1 does not say what happens if Claude asks for a folder or permission first. I would assume it won't and carry on.",
-            "The \"If the preview doesn't open\" panel is closed. I would only open it if the board failed to appear, and I can't see what it says.",
-            "The Mac/Windows picker sits at step 2, after the game. It doesn't affect getting to the game."
+            "Tiny: I'd be unsure for a moment whether the link really opened the app, but the 'Claude stayed closed?' fallback and the printed request cover that.",
+            "Tiny: the game might show as a card rather than the beside-the-chat preview, but the page says to click the card, and there is an 'If the preview doesn't open' panel."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "That was quick. Step 1 is one copy, one paste and one Send, with no setup ahead of it, and I can see the first result within a minute or two. The screenshot of a finished game shows me what to expect. The fallback instruction (\"open the game card in Claude's reply\") covers the main thing that could go wrong. I didn't need any explanation I'd already know. The folder setup comes after the game, so it doesn't delay anything.",
-          "biggestImprovement": "Add a short line in step 1, such as \"No folder needed yet\", so it is clear the game doesn't depend on the folder setup that follows.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "cowork-regular-3.rating.json"
+          "evidenceQuote": "When the Snake board opens beside the conversation, click Start or Play.",
+          "feeling": "That was about as short as a route gets. The first thing on the page is a single link, with the exact request printed under it in case the link fails, plus a screenshot of the Send button. Everything after the game (folder, course files, calendar) comes later, so it doesn't slow me down. I'd be playing Snake in a couple of minutes without needing help or a trainer.",
+          "biggestImprovement": "none"
         }
+      ],
+      "previous_public_scores": [
+        4.7,
+        4.7,
+        4.7
       ]
     },
     {
@@ -2411,82 +2407,77 @@
         4.6
       ],
       "scores": [
+        4.4,
         4.6,
-        4.6,
-        4.6
+        4.5
       ],
       "judgements": [
         {
           "attempt": 1,
-          "stars": 4.6,
+          "stars": 4.4,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the welcome line: make a game in Claude, then save it.",
-            "Click the 'Copy the game request' button in the Prompt block.",
-            "Open Claude Desktop and click New.",
-            "If I see a Chat/Cowork switch, choose Cowork; otherwise paste into the single message box.",
-            "Paste the request and press Send.",
-            "Wait for the board to appear beside the chat, then click Play or follow the board's controls.",
-            "If the board doesn't appear, open the game card in Claude's reply, or open the closed 'If the preview doesn't open' panel."
+            "Read the Start line: make a game in Claude, then save it.",
+            "Click the 'Open in Claude' link at the top of section 1. If my browser asks, choose Open.",
+            "See Claude Desktop open with the Snake request already in the message box.",
+            "Click the Send arrow, as the screenshot caption says.",
+            "Wait for the Snake board to open beside the conversation, then click Start or Play."
           ],
           "hesitations": [
-            "I'd briefly wonder whether Cowork vs Chat matters, but the sentence under the prompt settles it.",
-            "I can't see what the closed 'If the preview doesn't open' panel says, so I'd only trust it as a fallback, though the main text already gives one fallback (open the game card).",
-            "If nothing appeared at all, I'd have little else to try beyond that panel."
+            "I'd wonder briefly whether the link will really open Claude and whether the browser prompt is safe, though the page tells me to choose Open.",
+            "The request text shown below the link makes me wonder if I should copy it, but the numbered steps make clear I only need to click Send.",
+            "I can't tell from the page whether it matters that the game must open in Cowork, not a regular chat. The link goes to a cowork address, so I'd trust it.",
+            "If nothing opened, I'd have to open the two collapsed fallbacks ('Claude stayed closed?' and 'If the preview doesn't open'). I can't see their contents, so I'd be guessing there."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "This felt easy. The game is the very first step, with one copy button and plain words, so I'd have something to play in a couple of minutes without touching a folder or a command. The example image shows me what I'm aiming for. I'd only worry slightly if the preview didn't open, since I can't see the help panel's contents.",
-          "biggestImprovement": "Put one short line in the visible text saying what to do if the board still doesn't appear (for example, send a follow-up message asking Claude to show it again), so I don't have to depend on the closed panel.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "windows-office-user-1.rating.json"
+          "evidenceQuote": "When you see this message box in Claude Desktop, click the Send arrow. Claude starts making snake.html.",
+          "feeling": "The route to the game felt quick and clear. One link, one Send click, then Play. The screenshot showing exactly what the message box looks like reassured me. I only felt a little nervous about the browser prompt and about what to do if nothing opened, since the fallback help is hidden in closed panels. Nothing here needs a command or a path.",
+          "biggestImprovement": "Tell me right beside the Open in Claude link, in one plain sentence, what to do if Claude doesn't open (for example, 'No luck? Open Claude, start a new Cowork task and paste the request below'), rather than leaving it in a collapsed panel."
         },
         {
           "attempt": 2,
           "stars": 4.6,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the Start line: make a game in Claude, then save it.",
-            "Click Copy the game request in Prework step 1.",
-            "Open Claude Desktop, click New, paste the request, and press Send.",
-            "If I see a Chat/Cowork switch, choose Cowork; otherwise paste into the single message box.",
-            "Wait for the board to appear beside the chat, then click Play or use the on-board controls.",
-            "If the board stays closed, open the game card in Claude's reply."
+            "Read the welcome line: make a game in Claude, then save it.",
+            "Click the 'Open in Claude' link at the top of section 1; if my browser asks, choose Open.",
+            "See the new Claude Desktop conversation with the Snake request already in the message box and compare it to the screenshot.",
+            "Click the Send arrow.",
+            "When the Snake board opens beside the conversation, click Start or Play and try the game."
           ],
           "hesitations": [
-            "I'd briefly wonder whether Chat or Cowork matters, but the instruction covers both cases.",
-            "The prompt asks for a preview 'beside this conversation'. If that doesn't appear, I'd have to open the closed 'If the preview doesn't open' panel, whose contents I can't see here.",
-            "Later steps use unfamiliar terms (tarball, shell, tar xzf). They come after the game, so they don't block the first result."
+            "The link depends on my browser handing off to Claude Desktop. The 'Claude stayed closed? Copy the request here' fallback is a closed panel, but its label is clear and the request text is also visible on the page, so I could paste it myself.",
+            "If the board doesn't appear, I'd have to open 'If the preview doesn't open', which is collapsed. The page also points me to a Snake game card to click, so I'd probably manage.",
+            "The example image's Play button and the instruction 'Start or Play' are slightly different, but this is a trivial point."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "I'd feel confident. The first step is one copy, one paste, one send, and the Cowork choice is explained in plain words. I'd see a game quickly. The jargon appears only after I've already played, so it wouldn't put me off at the start. My only worry is if the preview doesn't open and I have to rely on the closed fallback panel.",
-          "biggestImprovement": "Put one short line about the fallback right after the 'board stays closed' sentence (for example, 'Still no game? Open the panel below'), so I don't have to hunt for the closed troubleshooting panel.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "windows-office-user-2.rating.json"
+          "evidenceQuote": "When the Snake board opens beside the conversation, click Start or Play.",
+          "feeling": "This felt quick and friendly. One link, one Send click, and I'm playing. Nothing asked for terminals or Unix paths on the way to the game. The folder, tarball and tar steps come later, and I'd only worry about those once the game was working. The one real risk is the claude:// link not launching, but there's a visible fallback and the request text sits right there on the page.",
+          "biggestImprovement": "Put a short visible line directly under the Open in Claude link saying what to do if nothing happens (open Claude Desktop yourself, start a new Cowork conversation, and paste the request below), instead of leaving that only in a closed panel."
         },
         {
           "attempt": 3,
-          "stars": 4.6,
+          "stars": 4.5,
           "wouldGetGoing": "yes",
           "firstActions": [
             "Read the welcome line: make a game in Claude, then save it.",
-            "Click the 'Copy the game request' button in the Prompt block.",
-            "Open Claude Desktop, click New, paste the request, and press Send.",
-            "Check for a Chat/Cowork switch and choose Cowork if I see one; otherwise paste into the single message box.",
-            "When the board appears beside the chat, click Play or follow the controls on the board.",
-            "If the board doesn't appear, open the game card in Claude's reply, or open the 'If the preview doesn't open' panel."
+            "In section 1, click the 'Open in Claude' link under Make and play Snake.",
+            "If my browser asks, choose Open. Claude Desktop opens with the Snake request already in the message box.",
+            "Compare my screen to the screenshot, then click the Send arrow.",
+            "When the Snake board appears beside the conversation, click Start or Play and try the game."
           ],
           "hesitations": [
-            "Slight pause on whether 'New' means a new chat or something else, but the instruction is short and the Chat/Cowork line helps.",
-            "Unsure what 'the board' is until I notice the example image with the green Play button.",
-            "The 'If the preview doesn't open' panel is closed, so I can't see what it says before I need it. The fallback line above it ('open the game card in Claude's reply') still gives me a first thing to try.",
-            "I can't confirm the preview actually opens, since that depends on the app."
+            "I'd briefly wonder whether the claude:// link will work from my browser. The text says 'If your browser asks, choose Open', and there is a copy-the-request fallback, but I can't see inside it.",
+            "The numbered steps start with the screenshot, so I might wonder if I missed a step before it, though the link and the sentence under it make the order clear.",
+            "The page offers a game card and an 'If the preview doesn't open' panel, but I can't see their contents. I'd only need them if the board didn't appear."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "The first step is right at the top, in plain words, with a copy button. I didn't need a command line or any file paths to get to the game, and the example picture shows me what I'm aiming for. The rest of the page, with the folder and the tar file, comes after the game, so it doesn't get in the way. I felt fairly confident, with only a small worry about what happens if the preview doesn't show.",
-          "biggestImprovement": "Show a one-line fallback in plain sight, such as 'No board? Click the game card in Claude's reply', instead of leaving it only in a closed panel.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "windows-office-user-3.rating.json"
+          "evidenceQuote": "When the Snake board opens beside the conversation, click Start or Play.",
+          "feeling": "This felt quick and obvious. There's a single button to click, a plain-language explanation of what happens next, and a screenshot showing exactly where Send is. I never had to touch a terminal or a path. I'd expect to be playing within a couple of minutes. My only small worry is whether the link opens the app correctly, and the page covers that with a fallback.",
+          "biggestImprovement": "Put the fallback (copy the request and paste it into Claude) in plain view next to the Open in Claude link, instead of in a closed panel, so a link that doesn't work doesn't leave me guessing."
         }
+      ],
+      "previous_public_scores": [
+        4.6,
+        4.6,
+        4.6
       ]
     },
     {
@@ -2511,24 +2502,20 @@
           "stars": 4.6,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the welcome line: make a game, play it, then save it in the folder.",
-            "In section 1, click the Copy the game request button next to the Snake prompt.",
-            "Open Claude Desktop, click New, and paste the request.",
-            "If a Chat/Cowork switch shows, choose Cowork; otherwise paste into the single message box.",
-            "Press Send.",
-            "When the board appears beside the chat, click Play, or open the game card in Claude's reply if the board stays closed."
+            "Skim the cover and the Start line: \"Make a game in Claude.\" Payoff is clear right away.",
+            "Scroll to section 1, \"Make and play Snake\", and see the \"Open in Claude\" link at the top.",
+            "Click \"Open in Claude\"; if my browser asks, choose Open, as the text says.",
+            "Claude Desktop opens with the request already in the message box. I match it to the screenshot and click the up-arrow Send.",
+            "Wait for Claude to make snake.html, then click Start or Play on the board beside the conversation."
           ],
           "hesitations": [
-            "I'm not sure whether 'New' means a new chat or a new task, but the next sentence about the Chat/Cowork switch mostly covers it.",
-            "The Cowork destination label on the prompt could momentarily make me wonder if I need to be in Cowork first; the Chat/Cowork line clears that up.",
-            "If the preview doesn't open, the troubleshooting is in a closed panel and I'd have to open it. The sentence about opening the game card in Claude's reply should rescue most cases.",
-            "The Mac/Windows picker sits below the game step, so I'd never need it before the first game."
+            "The Open in Claude link is a claude:// link. If my browser blocks it or Claude doesn't come to the front, I'd have to open the closed \"Claude stayed closed? Copy the request here.\" panel. It is clearly labelled, but it would cost me a minute.",
+            "I'm not told which Claude Desktop mode or tab to be in. The link seems to handle this, so I wouldn't worry unless it failed.",
+            "There's an example game image below the steps and a card or preview fallback, which adds a bit of reading, but the numbered steps are short so I can ignore the rest."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "The payoff is right at the top. One copy button, one paste, one Send, and I'm playing Snake, all well inside my ten minutes. The example image shows me what to expect. The folder, download and calendar steps come later, so they don't slow me down. I'd feel confident and keep going.",
-          "biggestImprovement": "Add a few words to the first step saying what 'New' is, such as 'New conversation (top left)', so I know exactly where to click before pasting.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "impatient-skimmer-1.rating.json"
+          "evidenceQuote": "When the Snake board opens beside the conversation, click Start or Play.",
+          "feeling": "I'd have a game in a couple of minutes. One link, one Send click, then Play, and I'd skip the rest. I wasn't asked to install or configure anything first. The only way I'd stall is if the link did nothing. I'd then have to find the closed fallback panel and copy the request myself, which is a small detour, not a stopping point.",
+          "biggestImprovement": "Put the fallback (copy the request and paste it into Claude) in plain view right under the Open in Claude link, instead of in a closed panel, so a blocked link doesn't leave me hunting."
         },
         {
           "attempt": 2,
@@ -2536,60 +2523,62 @@
           "wouldGetGoing": "yes",
           "firstActions": [
             "Read the one-line welcome: make a game in Claude, play it, then save it.",
-            "Under 'Make and play Snake', click the Copy the game request button.",
-            "Open Claude Desktop and click New.",
-            "If a Chat/Cowork switch shows, choose Cowork; otherwise paste into the single message box.",
-            "Paste the request and press Send.",
-            "Wait for the board to appear beside the chat, then click Play (or open the game card in Claude's reply if the board stays closed)."
+            "Click the prominent 'Open in Claude' link in section 1 (Make and play Snake).",
+            "If my browser asks, choose Open, as the page says; Claude Desktop opens a new conversation with the Snake request already in the message box.",
+            "Compare my screen with the screenshot of the message box and click the up-arrow Send button.",
+            "Wait for the Snake board to open beside the conversation, then click Start or Play."
           ],
           "hesitations": [
-            "Minor: 'Claude Desktop' is assumed to be open and the instruction doesn't say how to find it. That's fine since it's installed.",
-            "Minor: the prompt label says 'Cowork' as a destination and the Chat/Cowork switch is conditional ('If you see...'), so I'd pause briefly to check which mode I'm in.",
-            "Minor: the example image shows a green Play button, which helps, but I don't know how long generation takes. I'd wait without a progress cue.",
-            "The preview fallback is in a closed 'If the preview doesn't open' panel. I'd only open it if the board stayed closed, and the main text already gives a first fix (open the game card)."
+            "Minor: I'm not sure whether 'Open in Claude' lands in the Cowork area or ordinary chat. The page says only that it opens a new conversation.",
+            "Minor: the intro says 'Make a game in Claude', and the page then says 'Claude Desktop' and 'Cowork' without explaining them, so I would have to guess I'm in the right place.",
+            "Minor: the link, a repeated copyable request and a fallback panel are all close together. I'd skip them and click the link, but the fallback and 'If the preview doesn't open' panels are closed, so I'd have to open them if the link or preview failed.",
+            "Minor: the page doesn't say how long it takes for the game to appear after Send."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "Pretty good. The game is the very first thing, with a single copy button and about four clicks, so I'd get a payoff in a couple of minutes without reading further. The folder, tarball and calendar steps come only after I've played, which is the right order for me. I only slowed down a little to make sure I'd picked Cowork, and I'd keep going.",
-          "biggestImprovement": "Add a short line saying roughly how long the game takes to appear (e.g. 'about a minute') so I know to wait and not think it's stuck.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "impatient-skimmer-2.rating.json"
+          "evidenceQuote": "When you see this message box in Claude Desktop, click the Send arrow. Claude starts making snake.html.",
+          "feeling": "That was quick. One link, one Send click, then I'm playing Snake, all before the folder and download steps, which I'd put off for later. I'd probably get to the game inside my ten minutes. The only things that slowed me were wondering if I'd landed in the right Claude screen and noticing that the troubleshooting is tucked away. If the link did nothing, I'd open the fallback panel and paste the request myself.",
+          "biggestImprovement": "Add one line right after the link saying what to expect, such as 'The game should appear beside the chat in under a minute,' and confirming that this opens in the right Claude screen for the course."
         },
         {
           "attempt": 3,
           "stars": 4.6,
           "wouldGetGoing": "yes",
           "firstActions": [
-            "Read the one-line welcome: make a game in Claude, play it, then save it.",
-            "Go to section 1 and click Copy the game request on the Snake prompt.",
-            "Open Claude Desktop, click New, and paste the request.",
-            "If a Chat/Cowork switch appears, choose Cowork; otherwise paste in the single message box.",
-            "Press Send.",
-            "When the board appears beside the chat, click Play or follow the on-board controls. If it stays closed, open the game card in Claude's reply."
+            "Skim the cover and Welcome line: 'Make a game in Claude.' Clear promise of a quick payoff.",
+            "Under 'Make and play Snake', click the 'Open in Claude' link at the top of the section.",
+            "If my browser asks, choose Open; Claude Desktop opens a new conversation with the request already filled in.",
+            "Match the screenshot of the message box and click the Send arrow.",
+            "When the Snake board appears beside the conversation, click Start or Play."
           ],
           "hesitations": [
-            "The instruction says to click New, but it does not say where that is, so I would look around Claude Desktop for a moment.",
-            "The Chat/Cowork switch conditional makes me stop and check what I see before pasting.",
-            "If no board appears, I would open the collapsed 'If the preview doesn't open' panel. Its contents are not shown, so I can't tell how well it would help.",
-            "The page asks for no folder or setup before the game, which suits me, though the large Contents and later sections sit below."
+            "I might pause briefly at the browser's 'Open' prompt, though the handbook warns me about it.",
+            "The page doesn't say how long Claude takes to build the game, so I might wonder if it's working while I wait.",
+            "A small risk: the link opens Claude, but I'm not told to check that it's the Cowork tab; the handbook later says 'select the same folder' and 'Cowork' so I may be uneasy about mode.",
+            "Fallbacks (copy the request, 'If the preview doesn't open') are collapsed, so if the link fails I'd have to find and open them."
           ],
-          "evidenceQuote": "Copy the request below. In Claude Desktop, click New, paste the request, and press Send.",
-          "feeling": "Pretty good. The game is the first thing I'm asked to do. There's one copy button, a short prompt and a screenshot showing what I should expect, so the payoff feels close. I'd probably pause once to find New and check for the Cowork switch, but I wouldn't need help or give up. I'd keep going, because I'd soon be playing a game.",
-          "biggestImprovement": "Add a few words saying where New is in Claude Desktop (for example, 'top-left'), or point it out in the example image, so the first click is unambiguous.",
-          "model": "claude-sonnet-5-5",
-          "raw_result": "impatient-skimmer-3.rating.json"
+          "evidenceQuote": "When you see this message box in Claude Desktop, click the Send arrow. Claude starts making snake.html.",
+          "feeling": "That was quick. One click on 'Open in Claude', one click on Send, and I'm playing Snake. It's the very first thing on the page, so I'd never hit a reason to quit. I'd only slow down if the link didn't open Claude, and even then the fallback is a single dropdown away. The folder setup and tarball come after I've already got my win, so they don't scare me off early.",
+          "biggestImprovement": "Show a visible line right after Send, such as 'Claude may take about a minute to build the game; the board will appear beside the chat', to reassure me during the wait."
         }
+      ],
+      "previous_public_scores": [
+        4.6,
+        4.6,
+        4.6
       ]
     }
   ],
-  "publication_status": "release",
+  "publication_status": "intermediate-release",
   "checks": {
-    "automated_tests": 49,
+    "automated_tests": {
+      "passed": 62,
+      "failed": 0,
+      "command": "node --test scripts/build-a101-mvp.test.js scripts/a101-mvp-navigation.test.js curriculum/evals/onboarding/agents-101/*.test.js"
+    },
     "contract_checks": 9,
-    "contracts_evidence": "curriculum/evals/onboarding/agents-101/out/release-a79ff340-3fd6-4d30-924e-ebb70fa0ee3a",
-    "browser_copy_feedback": true,
-    "copy_visible_desktop_and_narrow": true,
-    "fresh_native_play_and_save": "prior-run-same-prompts",
-    "native_evidence": "curriculum/evals/onboarding/agents-101/out/native-play-first-afb396d0-2bc1-4bd1-b711-d05b942f0684"
+    "contracts_evidence": "curriculum/evals/onboarding/agents-101/out/release-2ee18f7f-4373-4554-b4ef-8a84e22825ff",
+    "launch_payload_and_copy_recovery": "verified in rendered HTML",
+    "native_launch": "unverified",
+    "earlier_native_play_and_save_evidence": "curriculum/evals/onboarding/agents-101/out/native-play-first-afb396d0-2bc1-4bd1-b711-d05b942f0684"
   },
   "followup_native_evidence": {
     "unchanged_request": "curriculum/evals/onboarding/agents-101/out/native-game-timing-60ef146f-2784-4106-9023-b06c6e30ec3b/timing.json",
@@ -2648,5 +2637,28 @@
     "game_identical": true,
     "learner_note_unchanged": true,
     "scope": "Isolated model runtime with the published archive already downloaded and the played preview bytes supplied as a local fixture."
+  },
+  "previous_public_release": {
+    "condition": "Welcome and first game share a screen. Copy first, play in Claude, platform choices when saving.",
+    "source_sha256": "4fde7ad204d6e241dadcd56acc4f3e277326df025dd26dd4d4a663e578cd1392",
+    "excerpt_sha256": {
+      "mac": "f20f581d4e647f781e50843d2e2f8554a0c412ac9203192346c3ac97202b464b",
+      "windows": "7b381b145f8c9c531491603ed40380056ec5fabc1ddb71cee64ed9289d19b3bc"
+    },
+    "evidence_directory": "curriculum/evals/onboarding/agents-101/out/decimal-read-48223945-2c15-4907-9e10-e0136bd2e312",
+    "calls": 30,
+    "mean_stars": 4.61,
+    "model_names": [
+      "claude-sonnet-5-5"
+    ],
+    "histogram": {
+      "4.6": 27,
+      "4.7": 3
+    },
+    "predicted_getting_going": {
+      "yes": 30,
+      "no": 0,
+      "uncertain": 0
+    }
   }
 }

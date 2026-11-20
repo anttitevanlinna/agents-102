@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
-  "verified_at": "2026-11-20T15:11:56.081Z",
-  "release_workbook_sha256": "4fde7ad204d6e241dadcd56acc4f3e277326df025dd26dd4d4a663e578cd1392",
-  "starter_sha256": "9c2a73d0f8382e3441df7b7f9af6db190519c474f5b1cda00b3bcf10d9182c0c",
-  "download_url": "https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=9c2a73d0f8382e34",
-  "contracts_evidence": "curriculum/evals/onboarding/agents-101/out/release-a79ff340-3fd6-4d30-924e-ebb70fa0ee3a",
+  "verified_at": "2026-11-20T17:15:28.467Z",
+  "release_workbook_sha256": "27ff250c60d4fcbe3925457bac3de6956e19e1a477db96ddf568a9027c86ca3e",
+  "starter_sha256": "daa45b606058e62c69b08cee7a2e6460289ead4057332da18163731bec6fc531",
+  "download_url": "https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=daa45b606058e62c",
+  "contracts_evidence": "curriculum/evals/onboarding/agents-101/out/release-2ee18f7f-4373-4554-b4ef-8a84e22825ff",
   "contracts": [
     {
       "outcome": "ONB-01",
@@ -56,17 +56,15 @@
     "version_matches_archive": true,
     "contract_checks_pass": true,
     "automated_tests": {
-      "passed": 49,
+      "passed": 62,
       "failed": 0,
-      "command": "node --test scripts/a101-mvp-navigation.test.js scripts/build-a101-mvp.test.js curriculum/evals/onboarding/agents-101/run.test.js"
+      "command": "node --test scripts/build-a101-mvp.test.js scripts/a101-mvp-navigation.test.js curriculum/evals/onboarding/agents-101/*.test.js"
     },
-    "browser_navigation": {
-      "copy_visible_desktop": true,
-      "copy_visible_narrow": true,
-      "copy_feedback": true,
-      "play_precedes_save": true,
-      "pause_and_resume_at_end": true
-    }
+    "launch_url_matches_request": true,
+    "launch_click_reveals_copy_recovery": true,
+    "manual_copy_matches_request": true,
+    "send_image_embedded_offline": true,
+    "native_launch_verified": false
   },
   "model_smokes": {
     "empty_folder_game": {
@@ -142,23 +140,26 @@
     "target_reached": true,
     "scope": "Ten synthetic personas × three independent HTML reads for each version. Each used the same question, model and OS assignments. Readers assumed access to Cowork and the demonstrations described in captions."
   },
-  "limits": "The score measures perceived clarity from rendered HTML. The browser check verified that Copy and its feedback were visible on the selected build. The earlier native Mac test used the same game and save requests. Windows was represented in the HTML simulations.",
+  "limits": "The score measures perceived first-start clarity from rendered HTML. The launch payload and Copy fallback were verified in HTML. Native launch was not observed. Earlier Mac runs used the same game and save requests. Windows was represented in HTML simulations.",
   "persona_reads": {
-    "condition": "Welcome and first game share a screen. Copy first, play in Claude, platform choices when saving.",
-    "source_sha256": "4fde7ad204d6e241dadcd56acc4f3e277326df025dd26dd4d4a663e578cd1392",
+    "condition": "The actual ACME build uses one Open in Claude action, a real Send screenshot, and a manual Copy panel that opens on click. The existing folder and course-file steps follow play.",
+    "source_sha256": "27ff250c60d4fcbe3925457bac3de6956e19e1a477db96ddf568a9027c86ca3e",
     "excerpt_sha256": {
-      "mac": "f20f581d4e647f781e50843d2e2f8554a0c412ac9203192346c3ac97202b464b",
-      "windows": "7b381b145f8c9c531491603ed40380056ec5fabc1ddb71cee64ed9289d19b3bc"
+      "mac": "ab12a82db9b3e9e6237944bb2ba2dd27feb164743c6433d03f801a6bdc6339fe",
+      "windows": "ca5577b35b9b44c0cc0c6887639c11ed764aeb6a89d1cc7cb29c7fef4af748fa"
     },
-    "evidence_directory": "curriculum/evals/onboarding/agents-101/out/decimal-read-48223945-2c15-4907-9e10-e0136bd2e312",
+    "evidence_directory": "curriculum/evals/onboarding/agents-101/out/decimal-read-20a0f28b-5cc6-4efa-a83a-4af3db868e67",
     "calls": 30,
-    "mean_stars": 4.61,
+    "mean_stars": 4.596666666666667,
     "model_names": [
       "claude-sonnet-5-5"
     ],
     "histogram": {
-      "4.6": 27,
-      "4.7": 3
+      "4.4": 4,
+      "4.6": 16,
+      "4.7": 4,
+      "4.5": 3,
+      "4.8": 3
     },
     "predicted_getting_going": {
       "yes": 30,
@@ -205,6 +206,37 @@
       "game_bytes": 8344,
       "scope": "Fresh Claude Desktop chat using synthetic game content and an empty, disposable folder named agents-101 selected after play. The preview ran to Game over. The folder was attached from the existing conversation’s plus menu. Session-only access was allowed after sending the save request. The original preview download was saved outside the attached folder and compared with the locally saved file. No persistent folder access was selected. The test did not exercise Windows.",
       "evidence_directory": "curriculum/evals/onboarding/agents-101/out/native-play-first-afb396d0-2bc1-4bd1-b711-d05b942f0684"
+    }
+  },
+  "previous_public_release": {
+    "workbook_sha256": "4fde7ad204d6e241dadcd56acc4f3e277326df025dd26dd4d4a663e578cd1392",
+    "starter_sha256": "9c2a73d0f8382e3441df7b7f9af6db190519c474f5b1cda00b3bcf10d9182c0c",
+    "download_url": "https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=9c2a73d0f8382e34",
+    "persona_reads": {
+      "condition": "Welcome and first game share a screen. Copy first, play in Claude, platform choices when saving.",
+      "source_sha256": "4fde7ad204d6e241dadcd56acc4f3e277326df025dd26dd4d4a663e578cd1392",
+      "excerpt_sha256": {
+        "mac": "f20f581d4e647f781e50843d2e2f8554a0c412ac9203192346c3ac97202b464b",
+        "windows": "7b381b145f8c9c531491603ed40380056ec5fabc1ddb71cee64ed9289d19b3bc"
+      },
+      "evidence_directory": "curriculum/evals/onboarding/agents-101/out/decimal-read-48223945-2c15-4907-9e10-e0136bd2e312",
+      "calls": 30,
+      "mean_stars": 4.61,
+      "model_names": [
+        "claude-sonnet-5-5"
+      ],
+      "histogram": {
+        "4.6": 27,
+        "4.7": 3
+      },
+      "predicted_getting_going": {
+        "yes": 30,
+        "no": 0,
+        "uncertain": 0
+      },
+      "target_mean_stars": 4.7,
+      "target_reached": false,
+      "scope": "Ten synthetic personas × three independent HTML reads for each version. Each used the same question, model and OS assignments. Readers assumed access to Cowork and the demonstrations described in captions."
     }
   }
 }

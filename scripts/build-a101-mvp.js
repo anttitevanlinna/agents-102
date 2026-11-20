@@ -26,11 +26,18 @@ const SETUP_CSS = `
 .a101-game-start { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 12rem); align-items: start; gap: 1.25rem; }
 .a101-game-start .a101-game-example { margin: 0; }
 .a101-game-example img { display: block; width: 100%; height: auto; border-radius: .4rem; }
-.a101-game-example figcaption, .a101-game-mode, .a101-copy-status { font-size: .9rem; color: var(--fg-2); }
+.a101-game-example figcaption, .a101-copy-status { font-size: .9rem; color: var(--fg-2); }
 .a101-game-example figcaption { margin-top: .4rem; }
 .a101-copy-status:empty { margin: 0; }
+.a101-game-start a.a101-open-claude { display: inline-block; padding: .55rem .85rem; border-radius: .3rem; background: #24583b; color: #fff; text-decoration: none; }
+.a101-launch-request code { white-space: normal; }
+.a101-first-send-cue { margin: .5rem 0 .75rem; }
+.a101-first-send-cue img { display: block; width: 100%; height: auto; }
+.a101-first-send-cue figcaption { margin-top: .35rem; }
+.a101-open-claude-fallback { margin-block: .75rem; }
+.a101-open-claude-fallback > summary { cursor: pointer; }
 .a101-game-start [data-copy-label] .copy-btn { color: #fff; background: #24583b; padding: .5rem .8rem; }
-.a101-game-start .copy-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.a101-game-start :is(.copy-btn, .a101-open-claude):focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 @media (max-width: 580px) { .a101-game-start { grid-template-columns: 1fr; } .a101-game-example { max-width: 11rem; } }
 `;
 const SETUP_SCRIPT = `(function () {
@@ -56,6 +63,10 @@ const SETUP_SCRIPT = `(function () {
     if (value !== 'mac' && value !== 'windows') return;
     apply(value);
     try { localStorage.setItem(key, value); } catch (_) {}
+  });
+  var launch = document.querySelector('.a101-open-claude');
+  if (launch) launch.addEventListener('click', function () {
+    launch.closest('.a101-game-start').querySelector('.a101-open-claude-fallback').open = true;
   });
   apply(selected);
 })();`;
@@ -198,10 +209,25 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
     const preworkOverlay = path.join(overlayDir, 'trainings/agents-101/prework.md');
     fs.mkdirSync(path.dirname(preworkOverlay), { recursive: true });
     const prework = fs.readFileSync(path.join(DELIVERY, 'prework.md'), 'utf8');
-    const still = fs.readFileSync(path.join(DELIVERY, 'snake-preview.jpg')).toString('base64');
-    const stillMarker = 'src="ACME_SNAKE_PREVIEW"';
-    if (prework.split(stillMarker).length !== 2) throw new Error('Expected one Snake preview image');
-    fs.writeFileSync(preworkOverlay, prework.replace(stillMarker, `src="data:image/jpeg;base64,${still}"`));
+    const request = JSDOM.fragment(marked.parse(prework))
+      .querySelector('.a101-open-claude-fallback [data-copy-label] pre code')?.textContent.trimEnd();
+    if (!request) throw new Error('Expected a first game request');
+    const requestCode = JSDOM.fragment('<code></code>').firstChild;
+    requestCode.textContent = request;
+    const snakeStill = fs.readFileSync(path.join(DELIVERY, 'snake-preview.jpg')).toString('base64');
+    const sendStill = fs.readFileSync(path.join(DELIVERY, 'claude-send.jpg')).toString('base64');
+    const assets = [
+      ['src="ACME_SNAKE_PREVIEW"', `src="data:image/jpeg;base64,${snakeStill}"`],
+      ['src="ACME_CLAUDE_SEND"', `src="data:image/jpeg;base64,${sendStill}"`],
+      ['href="ACME_FIRST_GAME_LAUNCH"', `href="claude://cowork/new?q=${encodeURIComponent(request)}"`],
+      ['<code>ACME_FIRST_GAME_REQUEST</code>', requestCode.outerHTML],
+    ];
+    let firstGame = prework;
+    for (const [marker, value] of assets) {
+      if (firstGame.split(marker).length !== 2) throw new Error(`Expected one first game marker: ${marker}`);
+      firstGame = firstGame.replace(marker, () => value);
+    }
+    fs.writeFileSync(preworkOverlay, firstGame);
     fs.writeFileSync(path.join(brandDir, 'customer.json'), JSON.stringify({ name: 'ACME', hubHeading: 'ACME' }) + '\n');
     const checkpoints = JSON.parse(fs.readFileSync(path.join(DELIVERY, 'checkpoints.json'), 'utf8'));
     createNavigationOverlay({ root: ROOT, overlayDir, workbookUrl: WORKBOOK_URL, checkpoints });

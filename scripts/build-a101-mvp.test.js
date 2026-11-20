@@ -207,12 +207,25 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     assert.ok(snakeBlock.compareDocumentPosition(downloadLink) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING, 'first game precedes archive download');
     const snakeCanonical = fs.readFileSync(path.join(ROOT, 'curriculum/prompts/a101-prework-snake-game.md'), 'utf8').replace(/^---\n[\s\S]*?\n---\n/, '').split('<!-- maintainer -->')[0].trimEnd();
     const gameCopy = snakeBlock.querySelector('.copy-btn');
+    const launch = prework.querySelector('a.a101-open-claude');
+    const launchUrl = new URL(launch.href);
+    const visibleRequest = prework.querySelector('.a101-launch-request code').textContent;
+    assert.equal(launchUrl.protocol + '//' + launchUrl.host + launchUrl.pathname, 'claude://cowork/new');
+    assert.deepEqual([...launchUrl.searchParams], [['q', visibleRequest]]);
+    const recovery = prework.querySelector('details.a101-open-claude-fallback');
+    assert.equal(recovery.open, false);
+    // Exercise the web fallback without invoking an operating-system handler.
+    launch.addEventListener('click', event => event.preventDefault());
+    launch.click();
+    assert.equal(recovery.open, true);
     assert.equal(gameCopy.textContent, 'Copy the game request');
     gameCopy.click();
     await Promise.resolve();
+    assert.equal(copied.at(-1), visibleRequest);
     assert.equal(copied.at(-1), 'Build me a snake game as a single HTML file and show it in the preview beside this conversation so I can play.');
     assert.equal(prework.querySelector('[data-copy-status]').textContent, 'Copied. Paste into the new Claude conversation and press Send.');
     const example = prework.querySelector('.a101-game-example img');
+    assert.ok(prework.querySelector('.a101-first-send-cue img').getAttribute('src').startsWith('data:image/jpeg;base64,'), 'Send screenshot ships offline');
     assert.ok(example.getAttribute('src').startsWith('data:image/jpeg;base64,'), 'game screenshot ships offline');
     assert.match(example.alt, /green Play button/);
     assert.ok(snakeBlock.closest('.rt-cowork'), 'the preview request is Cowork-only');

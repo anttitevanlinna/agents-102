@@ -9,9 +9,28 @@
 <div class="rt-cowork">
 <div class="a101-game-start">
 <div>
+
+<p><a class="a101-open-claude" href="ACME_FIRST_GAME_LAUNCH">Open in Claude</a></p>
+
+Claude Desktop opens a new conversation with this request ready to send. If your browser asks, choose **Open**.
+
+<p class="a101-launch-request"><code>ACME_FIRST_GAME_REQUEST</code></p>
+
+<ol>
+<li>
+<figure class="a101-first-send-cue">
+<img src="ACME_CLAUDE_SEND" alt="Claude Desktop with the Snake request ready in the message box and the up-arrow Send button on the right" width="670" height="113">
+<figcaption>When you see this message box in Claude Desktop, click the <strong>Send</strong> arrow. Claude starts making <code>snake.html</code>.</figcaption>
+</figure>
+</li>
+<li>When the Snake board opens beside the conversation, click <strong>Start</strong> or <strong>Play</strong>. Then come back here to <a href="#open-cowork-and-add-a-folder">save your game</a>.</li>
+</ol>
+
+<details class="a101-open-claude-fallback">
+<summary>Claude stayed closed? Copy the request here.</summary>
 <div data-copy-label="Copy the game request">
 
-Copy the request below. In **Claude Desktop**, click **New**, paste the request, and press **Send**.
+Copy the request below. In **Claude Desktop**, click **New** in the left sidebar. If the message box shows **Chat** and **Cowork**, choose **Cowork**. Paste the request and press **Send**.
 
 **Prompt** Cowork
 
@@ -21,10 +40,9 @@ Build me a snake game as a single HTML file and show it in the preview beside th
 
 <p class="a101-copy-status" data-copy-status role="status" data-copy-message="Copied. Paste into the new Claude conversation and press Send."></p>
 </div>
+</details>
 
-<p class="a101-game-mode">If you see a <strong>Chat</strong> and <strong>Cowork</strong> switch, choose <strong>Cowork</strong>. With one message box, paste there.</p>
-
-When the board appears beside the chat, click **Play** or follow the controls on the board. If the board stays closed, open the game card in Claude’s reply.
+If Claude replies with a **Snake** game card, click it to open the board. If you still can’t see the game, open **If the preview doesn’t open** below.
 </div>
 <figure class="a101-game-example">
 <img src="ACME_SNAKE_PREVIEW" alt="Example Snake game with a green Play button" width="488" height="488">

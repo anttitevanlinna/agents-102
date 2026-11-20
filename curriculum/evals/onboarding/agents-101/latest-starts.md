@@ -1,6 +1,14 @@
 # Agents 101 first-start impressions
 
-The single-screen ACME workbook averaged **4.61/5** over 30 simulated starts, up from **4.54/5**. The target is **4.70/5**. All 30 readers expected to play the game.
+The intermediate ACME workbook uses **Open in Claude**, a real Send screenshot, and a manual Copy fallback. It scored **4.597/5** across 30 simulated starts, and all 30 readers expected to play. The earlier Copy-first release scored **4.61/5**. The strongest full prototype scored **4.667/5**. The **4.70/5** goal is paused.
+
+## Overview
+
+- Moving folder setup after the first game raised the earlier play-first workbook to **4.54**. Putting Copy and a real game still on the welcome screen raised the released version to **4.61**.
+- Separate launch, copy, video, screenshot, and progress cues generally scored near **4.6**. The best prototype combined a prefilled Claude launch, the exact Send screenshot, and a shorter path after play.
+- Rock-paper-scissors was playable in **36 seconds** in one native Mac run. The strongest HTML prototype still used Snake.
+- Moving Pause and Resume behind **Coming back later** scored **4.63**. Keeping them accessible by direct link scored **4.62**.
+- The intermediate build passed **62 automated tests** and **nine workbook checks**. They verified the prefilled request and manual recovery in HTML. The launch into the native app remains unverified.
 
 Each of ten synthetic personas read the actual workbook HTML three times. Versions used the same question, score anchors, and Mac or Windows assignments. Cowork access and the demonstrations described in captions were assumed.
 
@@ -8,7 +16,7 @@ Each of ten synthetic personas read the actual workbook HTML three times. Versio
 | --- | ---: |
 | Prior workbook, play first | 4.54 |
 | Initial one-screen layout | 4.58 |
-| Copy-first opening with the real game still (release) | 4.61 |
+| Copy-first opening with the real game still (previous release) | 4.61 |
 | Open Claude with the request filled in | 4.62 |
 | Open Claude with visible Copy fallback | 4.58 |
 | Copy first with the request tucked away | 4.27 |
@@ -27,7 +35,7 @@ Each of ten synthetic personas read the actual workbook HTML three times. Versio
 | Windows office user | 4.6 / 4.6 / 4.6 | 4.6 / 4.6 / 4.6 |
 | Impatient ten-minute skimmer | 4.4 / 4.5 / 4.4 | 4.6 / 4.6 / 4.6 |
 
-The welcome, game request, and example board appear together. Copy displays the instruction to paste and send in Claude. The OS picker appears when the learner saves the game. The desktop launch link and the Copy-first release scored within 0.01 of each other. The release uses the verified browser Copy action.
+The welcome, game request, and example board appear together. Copy displays the instruction to paste and send in Claude. The OS picker appears when the learner saves the game. The desktop launch link and the Copy-first release scored within 0.01 of each other. That release used the verified browser Copy action.
 
 The score measures perceived clarity from rendered HTML. The browser check verified that Copy and its feedback were visible on the selected build. The earlier native Mac test used the same game and save requests. Windows was represented in the HTML simulations.
 
@@ -56,7 +64,7 @@ In a fresh Mac run, Claude showed **Creating snake.html** after 32 seconds and t
 
 The walkthrough uses crops from a fresh Mac conversation. It shows **New**, the pasted request with the **Send** arrow, and a finished Snake board beside the reply. In that run the preview was visible by 46 seconds. The tiny-game request produced a playable preview in a separate Mac run, with an instruction to press any key. The browser example played inside a sandbox. None of the 30 action sequences for that version used the example as their first game.
 
-The live score is **4.61/5**. The visual trials use the same HTML-reading rubric. Their scores describe the imagined route to the learner’s own game.
+The earlier Copy-first release scored **4.61/5**. The visual trials use the same HTML-reading rubric. Their scores describe the imagined route to the learner’s own game.
 
 ## Desktop handoff trials
 
@@ -88,7 +96,7 @@ Claude documents both a combined message box and a version with separate Chat an
 
 A disposable Mac conversation produced rock-paper-scissors by 36 seconds. One click played a round. After play, Claude saved the exact HTML in an empty course folder in the same conversation. The downloaded preview and the saved file matched byte for byte. The two earlier Snake runs showed playable previews by 46 and 48 seconds. These timings are individual observations.
 
-All three Windows reads rated the numbered Copy-first route 4.7. That route named the location of New and placed the Cowork choice before Send. Its overall mean was 4.607, compared with 4.61 for the release.
+All three Windows reads rated the numbered Copy-first route 4.7. That route named the location of New and placed the Cowork choice before Send. Its overall mean was 4.607, compared with 4.61 for the earlier Copy-first release.
 
 ## First-game demo
 
@@ -118,7 +126,7 @@ In one disposable Mac conversation, Claude fetched the released archive, unpacke
 
 Both candidates kept the first game and the calendar hint in the welcome. The first put Pause and Resume inside one closed footer disclosure. The second kept them out of the default page view. Both existing direct anchors opened their instructions in the HTML check.
 
-The best Copy-first prototype scored 4.643. It gives three visible actions after Copy and describes the progress and playable result observed in Claude Desktop. The verified public workbook is the 4.61 release.
+The best Copy-first prototype scored 4.643. It gives three visible actions after Copy and describes the progress and playable result observed in Claude Desktop. The earlier public Copy-first workbook scored 4.61.
 
 ## First-play view
 
@@ -181,7 +189,7 @@ The 4.667 mean is 140.0 total stars over 30 simulated starts. The target of 4.70
 
 The built workbook used the launch and Send screenshot with the existing save and course-file steps. All 62 build and navigation tests passed, including exact prompt parity, opening the recovery panel, copying the request, and embedding the image offline. The native launch remains unverified. A separate HTML prototype folded the later instructions and verified that existing links still opened the right section.
 
-The 4.667 result belongs to its exact prototype, which also used a different welcome and combined save and setup. The built trial supplies a separate score for the existing workbook flow.
+The 4.667 result belongs to its exact prototype, which also used a different welcome and combined save and setup. The built trial supplies the 4.597 score for the intermediate release.
 
 ## One request after play
 
@@ -198,6 +206,7 @@ Both prototypes kept the launch and Send screenshot. They used one request to sa
 | --- | ---: | ---: |
 | Explicit draft-and-send cue | 4.607 | 30 of 30 |
 | Reply, game card and playable board together | 4.657 | 30 of 30 |
+| Copy and open in Claude with the Send screenshot | 4.613 | 30 of 30 |
 
 The draft version said who sends the request and revealed the next action on click. The second showed the actual Claude reply, Snake card, and Start button at the play step. The HTML check verified the added cue and the Copy recovery panel. Both kept the exact launch request. The 4.667 prototype with the Send screenshot remains the highest score.
 

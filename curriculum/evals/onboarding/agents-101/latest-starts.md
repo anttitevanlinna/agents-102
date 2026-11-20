@@ -183,4 +183,13 @@ The built workbook used the launch and Send screenshot with the existing save an
 
 The 4.667 result belongs to its exact prototype, which also used a different welcome and combined save and setup. The built trial supplies a separate score for the existing workbook flow.
 
+## One request after play
+
+| Candidate | Mean stars | Predicted starts |
+| --- | ---: | ---: |
+| One save-and-setup request with the next step in the handbook | 4.637 | 30 of 30 |
+| One save-and-setup request with the Cowork destination labelled | 4.577 | 30 of 30 |
+
+Both prototypes kept the launch and Send screenshot. They used one request to save the game and add the course files. The handbook linked to the calendar exercise. The isolated model test supplied the original game and the already downloaded archive. It reproduced the game byte for byte, matched all 107 archive files, and left an unrelated learner note intact. The Mac was locked during this trial, so a fresh desktop test of the new wording is outstanding.
+
 The [structured results](latest-starts.json) include every judgement and the scored HTML hashes. The [release verification](release-verification.json) records the artifact checks.

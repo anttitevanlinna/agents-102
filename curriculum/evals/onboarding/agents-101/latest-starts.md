@@ -120,4 +120,13 @@ Both candidates kept the first game and the calendar hint in the welcome. The fi
 
 The best prototype scored 4.643. It gives three visible actions after Copy and describes the progress and playable result observed in Claude Desktop. The verified public workbook is the 4.61 release.
 
+## First-play view
+
+| Candidate | Mean stars | Predicted starts |
+| --- | ---: | ---: |
+| Opening view dedicated to the first game | 4.617 | 30 of 30 |
+| Built workbook with first-game progress and play cues | 4.613 | 30 of 30 |
+
+The dedicated view showed the welcome, game request, expected Claude actions, and a link to save the game. Browser testing confirmed that Copy displayed its next-step cue and that the save link revealed the full workbook. The built-workbook trial kept the normal view and added the cues for opening Claude, sending the request, watching progress, and playing. Its build and navigation suites passed 62 tests. Both scores were below the 4.643 prototype.
+
 The [structured results](latest-starts.json) include every judgement and the scored HTML hashes. The [release verification](release-verification.json) records the artifact checks.

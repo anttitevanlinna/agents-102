@@ -36,7 +36,9 @@ What ships is not the take but a **chain of hint clips**: 2–6 s each, one key 
 
 - **Crop to the element's own edges.** Measure them in pixels (white panel on dimmed screen: scan outward from inside it), never eyeball. A margin shows slivers of the screen behind.
 - **`round=R`** masks a dialog's rounded corners to white; measure R the same way (the first white pixel per row from the corner).
-- **End on the pointer arriving, not on the press.** Find the click frame by OCR-probing at 0.1 s for when the label goes missing; end there. The pressed button misreads and would blur.
+- **One action per hint, ending on the press ring.** The recording draws a ring at each click (`screencapture -k`); end a raw cut ~0.1 s after it, so the hint says *click*, not just *go here*. Find it with a 10 fps tile strip of the crop (`ffmpeg … fps=10,crop=…,drawtext=%{pts},tile`). Redacted cuts end on arrival: a pressed button misreads and blurs. Every hint freezes its last frame `hold=` s (default 0.8) — it loops, the eye needs a beat on the target.
+- **A thin strip is a fine crop.** The picker's button bar alone (New Folder · Cancel · Open) carries two hints with nothing private in it.
+- **The pointer glides, and lands late.** Start a cut early enough for it to enter the crop; check the landing frame, never the script's click time — hint 2 v1 cut before the pointer arrived and pointed at nothing.
 - **`src=raw`** cuts from the unredacted take at native resolution, for crops that show only app text. Redaction blurs a hovered button (the highlight breaks OCR), so a raw cut keeps the hint sharp. The guard: a raw cut must contain **only allowlisted text**; anything else fails it. That is stricter than the name check, because a raw crop has no blur to fall back on.
 - Otherwise cuts come from the redacted video. Redact at native width (`--width` = crop width) so hint crops stay crisp.
 

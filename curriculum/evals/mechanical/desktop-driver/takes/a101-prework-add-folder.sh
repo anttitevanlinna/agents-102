@@ -7,13 +7,15 @@ set -euo pipefail
 source "$(cd "$(dirname "$0")/.." && pwd)/steps.sh"
 MODE="${1:-dry}" MOV="${2:-$OUT/a101-prework-add-folder.mov}"
 # redact: --crop 556,0,2154,1502 --width 2154 --trim 31 --blur 990,1110,1360,350@0-6.3 --blur 990,1170,1360,290@6.3-24 --blur 990,1110,1360,350@24-99
-# Hint chain: one short clip per key moment, cropped to where it happens (coords = redacted video px).
-# cut[1-add-folder]: 3.0-5.75 crop=600:220:990:750 src=raw
-# cut[2-new-folder]: 9.0-12.15 crop=760:750:4:420
-# cut[3-name-it]: 13.3-19.4 crop=638:300:1037:600 src=raw round=24
-# cut[4-open]: 20.4-22.85 crop=1710:880:4:300
-# cut[5-allow]: 24.1-26.75 crop=794:272:958:615 src=raw round=24
-# cut[6-attached]: 27.3-30.8 crop=1340:430:444:540
+# Hint chain: one short clip per key moment, cropped to where it happens. Crop coords are px of the cut's source
+# (src=raw: the raw take; otherwise the redacted video = raw x - 556). Raw cuts end just after the press ring.
+# cut[1-add-folder]: 3.0-6.05 crop=600:220:990:750 src=raw
+# cut[2-documents]: 8.6-9.75 crop=286:330:560:315 src=raw
+# cut[3-new-folder]: 11.6-12.5 crop=1292:103:848:1085 src=raw
+# cut[4-name-it]: 13.3-19.95 crop=638:300:1037:600 src=raw round=24
+# cut[5-open]: 21.9-23.3 crop=1292:103:848:1085 src=raw
+# cut[6-allow]: 24.1-26.7 crop=794:272:958:615 src=raw round=24
+# cut[7-attached]: 26.8-30.3 crop=1340:300:410:660
 PICK="335 1135 170 630"                               # picker bounds, screen points
 
 [[ ! -e "$HOME/Documents/agents-101" ]] || die "~/Documents/agents-101 already exists"

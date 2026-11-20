@@ -118,7 +118,7 @@ In one disposable Mac conversation, Claude fetched the released archive, unpacke
 
 Both candidates kept the first game and the calendar hint in the welcome. The first put Pause and Resume inside one closed footer disclosure. The second kept them out of the default page view. Both existing direct anchors opened their instructions in the HTML check.
 
-The best prototype scored 4.643. It gives three visible actions after Copy and describes the progress and playable result observed in Claude Desktop. The verified public workbook is the 4.61 release.
+The best Copy-first prototype scored 4.643. It gives three visible actions after Copy and describes the progress and playable result observed in Claude Desktop. The verified public workbook is the 4.61 release.
 
 ## First-play view
 
@@ -146,5 +146,16 @@ The Copy prototype kept the written first-play route visible. The real composer 
 | Identify the Claude window and the New button | 4.537 | 30 of 30 |
 
 The first version moved the OS picker to the game and showed the matching search and paste shortcuts. The HTML check verified both defaults and switching between them. The second used a real Mac crop of New and explained how to recognise the Claude view and the empty message box. Readers still raised the Chat and Cowork choice, and both versions scored below the shorter first-game route. Windows was represented in the HTML reads. [Apple Spotlight shortcuts](https://support.apple.com/en-ie/guide/mac-help/mh26783/mac) · [Microsoft Start menu documentation](https://support.microsoft.com/en-us/windows/experience/personalization/customize-the-windows-start-menu)
+
+## Open in Claude with automatic recovery
+
+| Candidate | Mean stars | Predicted starts |
+| --- | ---: | ---: |
+| Open in Claude with recovery revealed on click | 4.65 | 30 of 30 |
+| Open in Claude with the ready cue and nearby recovery | 4.593 | 30 of 30 |
+
+The 4.65 version showed one launch action and the exact request. It kept the manual steps inside a panel that opened on the same click. The follow-up made the Cowork ready cue and recovery more prominent. That version scored lower.
+
+The HTML check verified that the URL carried the exact request, the click opened the panel, and its Copy button wrote the request to the clipboard. The installed Mac app advertises the Claude URL scheme. The native launch itself remains unverified. [Claude Desktop link documentation](https://support.claude.com/en/articles/14729294-open-claude-desktop-with-a-link)
 
 The [structured results](latest-starts.json) include every judgement and the scored HTML hashes. The [release verification](release-verification.json) records the artifact checks.

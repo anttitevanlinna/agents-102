@@ -50,6 +50,38 @@ deny="$( { ls ~/Documents ~/Desktop 2>/dev/null; id -un; } \
   | grep -v -x -i -F -f <(printf '%s\n' "$uiwords") | sort -u)"
 [[ -f ~/.config/desktop-driver/deny.txt ]] && deny="$(printf '%s\n%s\n' "$deny" "$(grep -v '^#' ~/.config/desktop-driver/deny.txt)" | awk 'length($0) >= 4' | sort -u)"
 
+# ---- annotate: the screen recorder draws the cursor unreliably for posted events, so when the take logged its pointer
+# (out/<take>.clicks.tsv + .t0, written by rec_start), draw it: a cursor along every glide and a ring on every press.
+# Cuts and redaction then read the annotated video. REC_LAG = recorder spin-up (s) between REC_T0 and frame 0.
+CLICKS="$D/out/$TAKE.clicks.tsv" T0F="$D/out/$TAKE.t0" ANN="$D/out/$TAKE.ann.mov" ORIG="$RAW"
+if [[ -s "$CLICKS" && -f "$T0F" && -f "$RAW" ]]; then
+  if [[ ! -f "$ANN" || "$ANN" -ot "$RAW" || "$ANN" -ot "$CLICKS" || "$ANN" -ot "$0" ]]; then
+    echo "== annotating the pointer from $(wc -l < "$CLICKS" | tr -d ' ') logged events"
+    CMD="$D/out/$TAKE.cursor.cmd"
+    RINGS="$(python3 - "$CLICKS" "$T0F" "${REC_LAG:-0.3}" "$CMD" <<'PY'
+import sys
+clicks, t0f, lag, cmd = sys.argv[1], sys.argv[2], float(sys.argv[3]), sys.argv[4]
+t0, wx, wy = (float(v) for v in open(t0f).read().split())
+ev = [l.rstrip("\n").split("\t") for l in open(clicks) if l.strip()]
+out, rings = [], []
+for e, x, y, k in ev:
+    t = float(e) - t0 - lag
+    if t < 0: t = 0
+    X, Y = round((float(x) - wx) * 2), round((float(y) - wy) * 2)
+    out.append(f"{t:.3f} overlay@cur x {X - 4}, overlay@cur y {Y - 4};")
+    if k == "down":
+        out.append(f"{t:.3f} overlay@ring x {X - 40}, overlay@ring y {Y - 40};"); rings.append(t)
+open(cmd, "w").write("\n".join(out) + "\n")
+print("+".join(f"between(t,{r:.3f},{r + 0.45:.3f})" for r in rings) or "0")
+PY
+)"
+    ffmpeg -nostdin -v error -y -i "$RAW" -loop 1 -i "$D/bin/cursor.png" -loop 1 -i "$D/bin/ring.png" -filter_complex \
+      "[0:v]sendcmd=f='$CMD'[s];[s][2:v]overlay@ring=x=-200:y=-200:shortest=1:enable='$RINGS'[r];[r][1:v]overlay@cur=x=-200:y=-200:shortest=1[v]" \
+      -map "[v]" -an -c:v libx264 -crf 12 -preset veryfast -pix_fmt yuv420p "$ANN"
+  fi
+  RAW="$ANN"
+fi
+
 if [[ "$MODE" != --cut ]]; then
   [[ -f "$RAW" ]] || { echo "no recording $RAW" >&2; exit 1; }
   echo "== redacting"
@@ -63,19 +95,30 @@ if [[ "$MODE" != --cut ]]; then
 fi
 [[ -f "$MP4" ]] || { echo "no redacted video $MP4" >&2; exit 1; }
 
+# ---- hints -> cut lines, timed from the logs. `# hint[step]: <cut options> [end=press|done] [pad=S] [skip=A-B]`: the
+# step's clip starts at the step's start (minus pad, default 0.2) and ends on its last press (+0.03 s; end=press) or when
+# the step finished (end=done). skip=A-B drops a span (s into the clip). Times from out/<take>.steps.tsv + .clicks.tsv.
+HINTCUTS=""
+if grep -qE '^# hint\[' "$T" && [[ -f "$D/out/$TAKE.steps.tsv" && -f "$T0F" ]]; then
+  HINTCUTS="$(python3 "$D/src/hints.py" "$T" "$D/out/$TAKE.steps.tsv" "$CLICKS" "$T0F" "${REC_LAG:-0.3}")" || { echo "hint timing failed" >&2; exit 1; }
+  echo "$HINTCUTS" > "$D/out/$TAKE.cuts"; echo "== $(grep -c . <<< "$HINTCUTS") hint cuts timed from the logs (out/$TAKE.cuts)"
+fi
+
 # ---- cuts. Outputs of an earlier cut list go first, so a renamed or dropped cut, or a failed run, never leaves a stale clip.
-CUTNAMES="$(sed -nE 's/^# cut\[([^]]+)\]: .*/\1/p' "$T")"
+CUTLINES="$( { grep -E '^# cut\[[^]]+\]: ' "$T" || true; [[ -n "$HINTCUTS" ]] && echo "$HINTCUTS"; } )"
+CUTNAMES="$(sed -nE 's/^# cut\[([^]]+)\]: .*/\1/p' <<< "$CUTLINES")"
 for o in "$D/out/$TAKE"-*.mp4; do
   [[ -e "$o" ]] || continue; n="${o#"$D/out/$TAKE"-}"; n="${n%.mp4}"
   grep -qxF "$n" <<< "$CUTNAMES" || { rm -f "$o" "${o%.mp4}.sheet.png"; echo "  removed stale $(basename "$o")"; }
 done
 rm -f "$D/out/$TAKE-chain.mp4"
-cut_one() {  # name, segments, [crop], [src: redacted|raw], [round radius px], [end hold s], [lead s]
-  local name="$1" segs="$2" crop="${3:-}" src="${4:-redacted}" round="${5:-}" hold="${6:-0.8}" lead="${7:-0}" out="$D/out/$TAKE-$1.mp4" vf="" n=0 f="" prev="" off=0 len
-  local in="$MP4"; [[ "$src" == raw ]] && in="$RAW"   # raw = native resolution; only for crops with nothing private in them (leak check still runs)
+cut_one() {  # name, segments, [crop], [src: redacted|raw], [round radius px], [end hold s], [lead s], [mark filter: last segment only]
+  local name="$1" segs="$2" crop="${3:-}" src="${4:-redacted}" round="${5:-}" hold="${6:-0.8}" lead="${7:-0}" markf="${8:-}" out="$D/out/$TAKE-$1.mp4" vf="" n=0 f="" prev="" off=0 len
+  local in="$MP4"; [[ "$src" == raw ]] && in="${CUT_SRC:-$RAW}"; [[ -n "${CUT_OUT:-}" ]] && out="$CUT_OUT"   # raw = native resolution; only for crops with nothing private in them (leak check still runs)
   IFS=',' read -r -a S <<< "$segs"
   for s in "${S[@]}"; do
-    f+="[0:v]trim=${s%-*}:${s#*-},setpts=PTS-STARTPTS${crop:+,$crop}[s$n];"; n=$((n+1))
+    local mk=""; (( n == ${#S[@]} - 1 )) && mk="$markf"
+    f+="[0:v]trim=${s%-*}:${s#*-},setpts=PTS-STARTPTS${crop:+,$crop}$mk[s$n];"; n=$((n+1))
   done
   if (( n == 1 )); then f+="[s0]null[v0];"; else
     prev="s0"; off=0
@@ -102,11 +145,15 @@ while IFS= read -r line; do
   read -r segs opts <<< "$rest"; crop="" src="redacted" round="" hold="" scale="" mask="" mark="" lead=""
   for o in $opts; do case "$o" in crop=*) crop="$o";; src=*) src="${o#src=}";; round=*) round="${o#round=}";; hold=*) hold="${o#hold=}";; scale=*) scale="${o#scale=}";; mask=*) mask="${o#mask=}";; mark=*) mark="${o#mark=}";; lead=*) lead="${o#lead=}";; esac; done
   if [[ -n "$mask" && -n "$crop" ]]; then IFS=: read -r mx my mw mh mc <<< "$mask"; crop+=",format=rgb24,drawbox=x=$mx:y=$my:w=$mw:h=$mh:color=0x$mc:t=fill"; fi
-  if [[ -n "$mark" && -n "$crop" ]]; then IFS=: read -r kx ky kw kh kt <<< "$mark"; crop+=",drawbox=x=$kx:y=$ky:w=$kw:h=$kh:color=0xD97757:t=5:enable='gte(t,$kt)'"; fi
-  [[ -n "$scale" && -n "$crop" ]] && crop+=",scale=trunc(iw*$scale/2)*2:-2"
-  cut_one "$name" "$segs" "$crop" "$src" "$round" "$hold" "$lead"; CLIPS+=("$D/out/$TAKE-$name.mp4")
-  [[ "$src" == raw ]] && RAWCUTS+=("$D/out/$TAKE-$name.mp4")
-done < <(grep -E '^# cut\[[^]]+\]: ' "$T" || true)
+  markf=""; if [[ -n "$mark" && -n "$crop" ]]; then IFS=: read -r kx ky kw kh kt <<< "$mark"; markf=",drawbox=x=$kx:y=$ky:w=$kw:h=$kh:color=0xD97757:t=5:enable='gte(t,$kt)'"; fi
+  gcrop="$crop"   # the raw guard reads native size: OCR misreads scaled-down text
+  [[ -n "$scale" && -n "$crop" ]] && crop+=",scale=trunc(iw*$scale/2)*2:-2" && [[ -n "$markf" ]] && { echo "cut[$name]: mark= with scale= is not supported" >&2; exit 1; }
+  cut_one "$name" "$segs" "$crop" "$src" "$round" "$hold" "$lead" "$markf"; CLIPS+=("$D/out/$TAKE-$name.mp4")
+  if [[ "$src" == raw ]]; then   # the guard checks the same cut from the UN-annotated recording: screen content, not our cursor
+    mkdir -p "$D/out/guard"; g="$D/out/guard/$TAKE-$name.mp4"
+    CUT_SRC="$ORIG" CUT_OUT="$g" cut_one "$name" "$segs" "$gcrop" "$src" "$round" 0 0 "" >/dev/null; RAWCUTS+=("$g")
+  fi
+done < <(grep -E '^# cut\[[^]]+\]: ' <<< "$CUTLINES" || true)
 
 # ---- raw cuts skip redaction, so they must hold ONLY allowlisted text (stricter than the name check below):
 # any text the allowlist does not cover, anyone's or not, fails the cut.

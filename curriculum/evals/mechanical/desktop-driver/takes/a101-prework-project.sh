@@ -14,28 +14,29 @@ MODE="${1:-list}"
 # allow: re:^a(g(e(n(t(s(-(1(0(1)?)?)?)?)?)?)?)?)?$
 # allow: re:^agents-101 th.{1,3} computer
 # review-text: Make an agents-101 project. Every task you start in it has your course folder attached.
-# review-text: 1. In the left sidebar, click **Projects**, then **New project**.
+# review-text: 1. In the left sidebar, click **Projects**, then **New project** (top right).
 # review-text: 2. Under **Name**, type `agents-101`.
 # review-text: 3. Next to **Context**, click **+**, then **Link local folder**.
 # review-text: 4. In the picker, click **Documents**, then **New Folder**. Name it `agents-101`, click **Create**, then **Add folder**.
-# review-text: 5. Click **Create project**. Under **Context**, **Files** now lists `agents-101` as **Default**.
+# review-text: 5. Click **Create project**, then the **Context** tab. Under **Files**, `agents-101` is listed as **Default**.
 # review-fixed: The workbook text above is a draft written for this review; judge the video against it.
 # review-fixed: Claude greets the student on the new project page; the video skips that and goes to the Context tab.
 # review-fixed: In the Create project clip the folder's location (the Mac's name) is blurred on purpose.
-# redact: --width 2710 --trim 92
-# Cuts: raw px (window x2). Times from out/a101-prework-project.steps.tsv + strip.sh; each ends on the press (ring or
-# pressed state) and holds it. Cut 8 ends on Create: a frame later the dialog fades onto the private folder list.
-# cut[1-projects]: 3.0-4.22 crop=480:520:0:120 src=raw lead=1.0 hold=1.0
-# cut[2-new-project]: 7.8-8.82 crop=420:130:2290:195 src=raw hold=1.0
-# cut[3-name]: 10.8-15.4 crop=1020:240:856:310 src=raw hold=1.0
-# cut[4-context-plus]: 17.8-18.99 crop=1020:370:856:860 src=raw hold=0.6
-# cut[5-link]: 19.0-21.48 crop=1020:370:856:860 src=raw hold=1.0
-# cut[6-documents]: 23.6-25.3 crop=286:330:560:315 src=raw hold=0.8
-# cut[7-new-folder]: 26.2-27.12 crop=1292:103:848:1085 src=raw hold=1.0
-# cut[8-name-folder]: 27.6-34.33 crop=638:300:1037:600 src=raw round=24 hold=1.0
-# cut[9-add-folder]: 37.2-38.35 crop=1292:103:848:1085 src=raw hold=1.0
-# cut[10-create]: 39.0-41.8 crop=1020:370:856:860 hold=1.0
-# cut[11-context]: 43.6-49.0 crop=1104:620:1606:10 src=raw mark=216:487:500:48:2.0 hold=1.5
+# redact: --width 2710 --trim 95
+# Hints: what each clip shows; WHEN comes from the take's own logs (clip.sh times them: step start -> its last press, or
+# end=done). Crops are raw px (window x2). name-folder ends on Create: a frame later the dialog fades onto the private
+# folder list. context skips the "Files 0" flash just after the click; its outline marks the linked folder.
+# hint[projects]: crop=480:520:0:120 src=raw lead=1.0 hold=1.0
+# hint[new-project]: crop=2050:200:660:110 src=raw scale=0.6 hold=1.0
+# hint[name]: crop=1020:240:856:310 src=raw end=done hold=1.0
+# hint[context-menu]: crop=1020:370:856:860 src=raw hold=0.6
+# hint[link]: crop=1020:370:856:860 src=raw hold=1.0
+# hint[documents]: crop=286:330:560:315 src=raw hold=0.8
+# hint[new-folder]: crop=1292:103:848:1085 src=raw hold=1.0
+# hint[name-folder]: crop=638:300:1037:600 src=raw round=24 hold=1.0
+# hint[add-folder]: crop=1292:103:848:1085 src=raw hold=1.0
+# hint[create]: crop=1020:370:856:860 hold=1.0
+# hint[context]: crop=1104:620:1606:10 src=raw end=done skip=2.0-2.5 mark=216:487:500:48:0.3 hold=1.5
 DLG="480 1180 170 640"    # the New project dialog
 PICK="335 1135 170 630"   # the folder picker
 
@@ -113,7 +114,7 @@ case "$MODE" in
           echo "DRY: reached the name dialog; undoing"; undo; back_to_operator; echo "DRY-OK" ;;
   record) [[ ! -e "$HOME/Documents/agents-101" ]] || die "~/Documents/agents-101 exists"
           MOV="${2:-$OUT/a101-prework-project.mov}"
-          run home; rec_start "$MOV" 90
+          run home; rec_start "$MOV" 95
           for s in "${STEPS[@]:1}"; do run "$s"; done
           echo "step log: ${MOV%.mov}.steps.tsv"; cat "${MOV%.mov}.steps.tsv"
           rec_stop; back_to_operator; echo "TAKE-OK $MOV" ;;

@@ -42,4 +42,19 @@ is "step log end is after start"             "$(python3 -c "print($en - $st >= 0
 is "a small popup listed first does not win"  "$(_largest "75, 38, 57, 25" "52, 20, 1355, 751")"  "57,25,1355,751"
 is "a single window"                          "$(_largest "57, 25" "1355, 751")"                  "57,25,1355,751"
 
+# hints.py: hint lines -> cut lines timed from the logs (t0 = 1000; lag 0.3)
+H="$(mktemp -d)"
+printf '# hint[pick]: crop=10:10:0:0 src=raw hold=1.0\n# hint[type]: crop=20:20:0:0 end=done pad=0\n# hint[skip]: crop=5:5:0:0 skip=1.0-1.5\n' > "$H/take.sh"
+printf 'pick\t2.00\t5.00\ntype\t5.10\t9.00\nskip\t9.10\t14.00\n' > "$H/steps.tsv"
+printf '1000 57 25\n' > "$H/t0"
+printf '1004.000\t1\t1\tmove\n1004.500\t1\t1\tdown\n1004.560\t1\t1\tup\n1006.000\t1\t1\tdown\n1013.000\t1\t1\tdown\n' > "$H/clicks.tsv"
+HC="$(python3 "$D/src/hints.py" "$H/take.sh" "$H/steps.tsv" "$H/clicks.tsv" "$H/t0" 0.3)"
+is "end=press: ends on the step's last press (+0.03), starts at step start - pad - lag" "$(sed -n 1p <<< "$HC")" "# cut[01-pick]: 1.50-4.23 crop=10:10:0:0 src=raw hold=1.0"
+is "end=done: ends when the step finished"   "$(sed -n 2p <<< "$HC")" "# cut[02-type]: 4.80-8.70 crop=20:20:0:0"
+is "skip drops a span inside the clip"       "$(sed -n 3p <<< "$HC")" "# cut[03-skip]: 8.60-9.60,10.10-12.73 crop=5:5:0:0"
+printf '# hint[nope]: crop=1:1:0:0\n' > "$H/take.sh"
+python3 "$D/src/hints.py" "$H/take.sh" "$H/steps.tsv" "$H/clicks.tsv" "$H/t0" 0.3 >/dev/null 2>&1
+is "an unknown step fails loudly"            "$?" "1"
+rm -rf "$H"
+
 (( fail == 0 )) && echo "ALL OK" || { echo "FAILED"; exit 1; }

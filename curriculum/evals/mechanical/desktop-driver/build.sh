@@ -3,4 +3,5 @@
 set -euo pipefail
 D="$(cd "$(dirname "$0")" && pwd)"
 mkdir -p "$D/bin"
-for s in click scroll ocr redact; do swiftc -O "$D/src/$s.swift" -o "$D/bin/$s"; echo "built bin/$s"; done
+for s in click scroll ocr redact sprites; do swiftc -O "$D/src/$s.swift" -o "$D/bin/$s"; echo "built bin/$s"; done
+"$D/bin/sprites" "$D/bin"

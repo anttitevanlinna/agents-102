@@ -99,8 +99,9 @@ start_state() {
 # rec_start OUT.mov SECONDS / rec_stop: record the standard window for a fixed length (clicks drawn as press rings),
 # hands off in between; rec_stop waits for the recording to end. Trim the tail with the take's --trim.
 rec_start() { REC_OUT="$1"; rm -f "$1"; STEPLOG="${1%.mov}.steps.tsv"; : > "$STEPLOG"
-  screencapture -v -k -x -V "${2:-40}" -R"$WIN_X,$WIN_Y,$WIN_W,$WIN_H" "$1" & REC_PID=$!
-  REC_T0="$(_now)"; sleep 2.5; }
+  export CLICK_LOG="${1%.mov}.clicks.tsv"; : > "$CLICK_LOG"     # bin/click + bin/scroll log every move and press here
+  screencapture -v -x -V "${2:-40}" -R"$WIN_X,$WIN_Y,$WIN_W,$WIN_H" "$1" & REC_PID=$!
+  REC_T0="$(_now)"; echo "$REC_T0 $WIN_X $WIN_Y" > "${1%.mov}.t0"; sleep 2.5; }
 _now() { python3 -c 'import time; print(f"{time.time():.3f}")'; }
 rec_stop()  { [[ -n "${REC_PID:-}" ]] || return 0; wait "$REC_PID" 2>/dev/null || true; REC_PID=""; }
 

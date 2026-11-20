@@ -100,7 +100,7 @@ func allowed(_ raw: String) -> Bool {
   // OCR noise around a known label can never be a private name, so it stays sharp:
   // a chevron or cursor glued to the end ("agents-101v"), a label cut off by the frame or a
   // dialog edge ("Previous 7"), or a one-letter misread ("Openl", "New Fplder").
-  if let last = t.last, "vil|~.".contains(last), t.count > 3, allowed(String(t.dropLast())) { return true }
+  if let last = t.last, "vil|~.,!".contains(last), t.count > 3, allowed(String(t.dropLast())) { return true }
   // labels fading in or out misread worse: 2 letters of slack on long labels, 1 on short ones
   if t.count >= 4 && exact.contains(where: { $0.hasPrefix(t) || lev(t, $0) <= ($0.count >= 8 ? 2 : 1) }) { return true }
   return false

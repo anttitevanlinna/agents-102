@@ -165,3 +165,16 @@ click_plus() {
   local p; p="$(find_text "Opus 5.5" contains 300 1412 680 790)"; [[ -n "$p" ]] || die "no model row under the box"
   "$BIN/click" "$PLUS_X" "${p#* }" "${1:-700}"; echo "  clicked: + @ $PLUS_X ${p#* }"
 }
+
+# _snapf ALLOWFILE: OCR lines on stdin -> allowlisted text with positions; everything else only counted. Pure.
+# snap [x0 x1 y0 y1]: the screen (or a region), safe to print into a transcript. Use it to map a new screen.
+_snapf() {
+  awk -F'\t' -v af="$1" '
+    BEGIN { while ((getline l < af) > 0) { if (l ~ /^#/ || l == "") continue
+              if (l ~ /^re:/) re[++n] = tolower(substr(l, 4)); else ok[tolower(l)] = 1 } }
+    { t = $3; if (t != "+") gsub(/^[^A-Za-z0-9~"]+/, "", t); t = tolower(t); sub(/ v$/, "", t)
+      hit = (t in ok); for (i = 1; i <= n && !hit; i++) if (t ~ re[i]) hit = 1
+      if (hit) printf "  %4d %4d  %s\n", $1, $2, $3; else priv++ }
+    END { printf "  -- %d line(s) of other text not shown\n", priv }'
+}
+snap() { _ocr "$(_region "${1:-0}" "${2:-99999}" "${3:-0}" "${4:-99999}")" | _snapf "${SNAP_ALLOW:-$DRIVER/redact-allow.txt}"; }

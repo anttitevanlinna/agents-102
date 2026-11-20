@@ -21,4 +21,13 @@ is "region inside the window, with margin"  "$(_region 300 900 680 790)"   "292,
 is "open bounds = the whole window"         "$(_region 0 99999 0 99999)"   "57,25,1355,751"
 is "bounds past the right edge are clamped" "$(_region 300 1412 300 760)"  "292,292,1120,476"
 
+# _snapf ALLOWFILE: OCR lines on stdin -> allowlisted labels with positions; any other text only counted
+AF="$(mktemp)"; printf 'New project\nre:^add folders?\n' > "$AF"
+SNAP="$(printf '10\t20\tNew project\n30\t40\tPrivate Client Deal\n50\t60\tAdd folder\n70\t80\t+ New project v\n' | _snapf "$AF")"; rm -f "$AF"
+is "snap shows an allowed label with its position"  "$(grep -c '10   20  New project' <<< "$SNAP")"  "1"
+is "snap shows a regex-allowed label"                "$(grep -c 'Add folder' <<< "$SNAP")"           "1"
+is "snap strips icon glyph and chevron to match"     "$(grep -c '+ New project v' <<< "$SNAP")"      "1"
+is "snap never prints other text"                    "$(grep -c 'Private' <<< "$SNAP")"              "0"
+is "snap counts the other text"                      "$(tail -1 <<< "$SNAP")"                        "  -- 1 line(s) of other text not shown"
+
 (( fail == 0 )) && echo "ALL OK" || { echo "FAILED"; exit 1; }

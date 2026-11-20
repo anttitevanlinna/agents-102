@@ -43,4 +43,19 @@ The score measures perceived clarity from rendered HTML. The browser check verif
 
 In a fresh Mac run, Claude showed **Creating snake.html** after 32 seconds and the playable board was visible by 48 seconds. The live request produced **Start** in that run and **Play** in an earlier run. A separate prototype request explicitly asked for **Play**. Claude provided that button and the game ran, while the prototype’s HTML score was lower. These are observations from individual runs.
 
+## Visual and interactive trials
+
+| Candidate | Mean stars |
+| --- | ---: |
+| Expandable Claude screenshots | 4.58 |
+| Screenshots with the Cowork choice before paste | 4.56 |
+| Direct Claude launch with the screenshot walkthrough | 4.61 |
+| Screenshots as the main instructions | 4.55 |
+| Prototype request for a tiny Snake game | 4.57 |
+| Optional playable example | 4.60 |
+
+The walkthrough uses crops from a fresh Mac conversation. It shows **New**, the pasted request with the **Send** arrow, and a finished Snake board beside the reply. In that run the preview was visible by 46 seconds. The tiny-game request produced a playable preview in a separate Mac run, with an instruction to press any key. The browser example played inside a sandbox. None of the 30 action sequences for that version used the example as their first game.
+
+The live score is **4.61/5**. The visual trials use the same HTML-reading rubric. Their scores describe the imagined route to the learner’s own game.
+
 The [structured results](latest-starts.json) include every judgement and the scored HTML hashes. The [release verification](release-verification.json) records the artifact checks.

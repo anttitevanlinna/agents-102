@@ -8,14 +8,16 @@ source "$(cd "$(dirname "$0")/.." && pwd)/steps.sh"
 MODE="${1:-dry}" MOV="${2:-$OUT/a101-prework-add-folder.mov}"
 # redact: --crop 556,0,2154,1502 --width 2154 --trim 31 --blur 990,1110,1360,350@0-6.3 --blur 990,1170,1360,290@6.3-24 --blur 990,1110,1360,350@24-99
 # Hint chain: one short clip per key moment, cropped to where it happens. Crop coords are px of the cut's source
-# (src=raw: the raw take; otherwise the redacted video = raw x - 556). Raw cuts end just after the press ring.
-# cut[1-add-folder]: 3.0-6.05 crop=600:220:990:750 src=raw
-# cut[2-documents]: 8.6-9.75 crop=286:330:560:315 src=raw
-# cut[3-new-folder]: 11.6-12.5 crop=1292:103:848:1085 src=raw
+# (src=raw: the raw take; otherwise the redacted video = raw x - 556). Raw cuts end ON the press-ring frame (hold freezes it).
+# cut[1a-chip]: 2.9-3.94 crop=1340:300:966:660 src=raw mask=30:30:800:70:fcfcfc lead=1.6
+# cut[1b-add-folder]: 3.94-6.05 crop=600:220:990:750 src=raw
+# cut[2-documents]: 8.6-9.64 crop=286:330:560:315 src=raw hold=1.0
+# cut[3-new-folder]: 11.6-12.45 crop=1292:103:848:1085 src=raw hold=1.0
 # cut[4-name-it]: 13.3-19.95 crop=638:300:1037:600 src=raw round=24
-# cut[5-open]: 21.9-23.3 crop=1292:103:848:1085 src=raw
+# cut[5a-in-agents-101]: 21.9-22.6 crop=878:150:1262:300 src=raw hold=1.8 mark=26:86:426:52:0.3
+# cut[5b-open]: 22.6-23.22 crop=1292:103:848:1085 src=raw hold=1.0
 # cut[6-allow]: 24.1-26.7 crop=794:272:958:615 src=raw round=24
-# cut[7-attached]: 26.8-30.3 crop=1340:300:410:660
+# cut[7-attached]: 26.8-30.3 crop=1340:300:410:660 mark=16:234:228:66:0.6
 PICK="335 1135 170 630"                               # picker bounds, screen points
 
 [[ ! -e "$HOME/Documents/agents-101" ]] || die "~/Documents/agents-101 already exists"

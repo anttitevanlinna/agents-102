@@ -158,4 +158,16 @@ The 4.65 version showed one launch action and the exact request. It kept the man
 
 The HTML check verified that the URL carried the exact request, the click opened the panel, and its Copy button wrote the request to the clipboard. The installed Mac app advertises the Claude URL scheme. The native launch itself remains unverified. [Claude Desktop link documentation](https://support.claude.com/en/articles/14729294-open-claude-desktop-with-a-link)
 
+## Recognising the message in Claude
+
+| Candidate | Mean stars | Predicted starts |
+| --- | ---: | ---: |
+| Open in Claude with the exact Send screenshot | 4.667 | 30 of 30 |
+| Dedicated first-play view with Open in Claude | 4.517 | 30 of 30 |
+| Open in Claude with the Send screenshot and direct Copy fallback | 4.60 | 30 of 30 |
+
+The best version put a real crop of the exact request and Send arrow beside the launch sequence. The isolated opening also hid the later workbook controls until learners followed the save or contents link. The inline Copy version offered an immediately usable backup beside the launch. Its clipboard action and feedback worked in the browser.
+
+The 4.667 mean is 140.0 total stars over 30 simulated starts. The target of 4.70 would require 141.0 stars. The launch URL and fallback behaviour were checked in HTML. Native launch remains unverified.
+
 The [structured results](latest-starts.json) include every judgement and the scored HTML hashes. The [release verification](release-verification.json) records the artifact checks.

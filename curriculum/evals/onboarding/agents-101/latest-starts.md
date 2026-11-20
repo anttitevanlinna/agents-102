@@ -170,4 +170,17 @@ The best version put a real crop of the exact request and Send arrow beside the 
 
 The 4.667 mean is 140.0 total stars over 30 simulated starts. The target of 4.70 would require 141.0 stars. The launch URL and fallback behaviour were checked in HTML. Native launch remains unverified.
 
+## Timing, welcome and workbook integration
+
+| Candidate | Mean stars | Predicted starts |
+| --- | ---: | ---: |
+| Open in Claude with the observed preview wait | 4.657 | 30 of 30 |
+| Open in Claude with the one-message welcome | 4.59 | 30 of 30 |
+| Built workbook with Open in Claude and the Send screenshot | 4.597 | 30 of 30 |
+| Built workbook with later folder and download details folded | 4.577 | 30 of 30 |
+
+The built workbook used the launch and Send screenshot with the existing save and course-file steps. All 62 build and navigation tests passed, including exact prompt parity, opening the recovery panel, copying the request, and embedding the image offline. The native launch remains unverified. A separate HTML prototype folded the later instructions and verified that existing links still opened the right section.
+
+The 4.667 result belongs to its exact prototype, which also used a different welcome and combined save and setup. The built trial supplies a separate score for the existing workbook flow.
+
 The [structured results](latest-starts.json) include every judgement and the scored HTML hashes. The [release verification](release-verification.json) records the artifact checks.

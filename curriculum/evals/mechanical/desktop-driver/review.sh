@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Student-reviewer round for a take's chain: frames at 2 fps (timestamp burned in) + a reviewer brief.
-#   review.sh <take>   -> prints the brief's path; hand it to a FRESH subagent ("Read <brief> and do what it says"),
+#   review.sh <take> [chain]   -> prints the brief's path; hand it to a FRESH subagent ("Read <brief> and do what it says"),
 #                         fix what it lists, clip.sh <take> --cut, run again. Done = the reviewer writes `great and clear`.
 # The take declares what the student reads beside the video and what the reviewer must not ask for:
 #   # review-text: <one line of the workbook text>        (repeat; in reading order)
@@ -8,10 +8,10 @@
 # Each round gets its own folder and a fresh reviewer: never resume an earlier one (it anchors on its own notes).
 set -euo pipefail
 D="$(cd "$(dirname "$0")" && pwd)"
-TAKE="${1:?usage: review.sh <take>}" T="$D/takes/$1.sh" CH="$D/out/$1-chain.mp4"
+TAKE="${1:?usage: review.sh <take> [chain]}" T="$D/takes/$1.sh" CH="$D/out/$1-chain${2:+-$2}.mp4"
 [[ -f "$T" && -f "$CH" ]] || { echo "need takes/$TAKE.sh and out/$TAKE-chain.mp4 (clip.sh $TAKE --cut)" >&2; exit 1; }
-n=1; while [[ -e "$D/out/review/$TAKE-$n" ]]; do n=$((n+1)); done
-R="$D/out/review/$TAKE-$n"; mkdir -p "$R"
+RN="$TAKE${2:+-$2}"; n=1; while [[ -e "$D/out/review/$RN-$n" ]]; do n=$((n+1)); done
+R="$D/out/review/$RN-$n"; mkdir -p "$R"
 ffmpeg -nostdin -v error -i "$CH" -vf "fps=2,drawtext=text='t=%{pts\:hms}':x=10:y=10:fontsize=24:fontcolor=red" "$R/f_%03d.png"
 frames="$(ls "$R" | grep -c '^f_')" dur="$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$CH" | cut -d. -f1)"
 text="$(sed -n 's/^# review-text: //p' "$T")"; fixed="$(sed -n 's/^# review-fixed: /- /p' "$T")"

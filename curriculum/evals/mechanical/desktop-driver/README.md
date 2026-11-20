@@ -35,6 +35,17 @@ Copy `takes/a101-prework-add-folder.sh`. Keep the shape: header names start and 
 
 Then: dry-run until it passes → `clip.sh` → `review.sh` loop until `great and clear`. Plan of the Prework takes: `PREWORK-TAKES.md`.
 
+## Build in bits, test fast
+
+A take is a list of named steps (`STEPS=(…)`, one `step_<name>` function each): pre-check the screen, act, post-check. One step's post-check is the next one's pre-check.
+
+- `take.sh list` · `take.sh step <name>` runs ONE step against the live screen. Fix the step that fails, re-run only it, then the next. Never re-run the whole take to probe its next step (each rerun redoes the setup and leaves debris).
+- `take.sh dry` = every step up to the first change on disk, then `undo` (what each step registered with `on_abort`: Esc a dialog, clear a caption). `take.sh record` = every step, recorded.
+- Before scripting a new start state, map it: it differs from the last one more than it looks (a started chat has no folder chip; folders come in under +; its picker says "Add a folder to this session").
+- Start from what exists (an existing chat via sidebar Search); never manufacture setup.
+- Bug → an offline test first. `test-steps.sh` (OCR matching and region geometry against synthetic OCR lines, under a second); `test.sh` (privacy path fails closed, no GUI, a few minutes).
+- Speed, measured 2026-11-20: a screen read is 1.3 s for the whole window and 0.5 s for a step's region (`find_text` reads only its bounds). Redaction costs about 0.17 s per raw frame: `DRAFT=1` redacts at 10 fps while iterating. A check passed on the same bytes is cached (`out/.clean/`), so a re-cut takes 26 s, not 134 s.
+
 ## Any Cowork scene
 
 A take is a bash script of verified steps; the same verbs record any training scene in Cowork:

@@ -8,7 +8,7 @@ source "$(cd "$(dirname "$0")/.." && pwd)/steps.sh"
 osascript -e 'tell application "Claude" to activate'; sleep 0.5
 
 # A picker, permission dialog or menu left by a broken take: Esc only when one is on screen.
-for t in "Name of new folder" "Add folders to this session" "Allow Claude to change files" "Search projects"; do
+for t in "Name of new folder" "to this session" "Allow Claude to change files" "Search projects"; do
   if [[ -n "$(find_text "$t" contains)" ]]; then press_esc; echo "  closed: $t"; fi
 done
 

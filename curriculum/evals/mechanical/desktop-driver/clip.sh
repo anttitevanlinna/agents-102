@@ -3,6 +3,8 @@
 #   clip.sh <take>            record the take, redact it, cut the clips, leak-check each, contact sheets
 #   clip.sh <take> --redact   re-redact an existing recording (after editing the allowlist or the take's # redact: line)
 #   clip.sh <take> --cut      re-cut from the existing redacted video (after editing # cut[...] lines; seconds, no OCR)
+#   DRAFT=1 clip.sh <take> …  while iterating: redact at 10 fps (about 3x faster; raw cuts stay full rate). Every output is
+#                             still leak-checked. Publish only from a run without DRAFT.
 # Then: review.sh <take> (student-reviewer frames + brief).
 # <take> = file name under takes/ without .sh. Outputs in out/: <take>.mov (raw, never publish), <take>.mp4 (redacted
 # whole take), <take>-<name>.mp4 per cut, <take>-chain.mp4 (all cuts in order, crossfaded), *.sheet.png. The take declares, in comment lines:
@@ -16,6 +18,7 @@
 #   # cut[name]: 0-12.4,20.3-31                                       (several segments, joined with a 0.3 s crossfade)
 #   # cut[name]: 13.3-19.4 crop=670:330:1020:588 src=raw              (native-resolution crop of the raw take; only where
 #                                                                      nothing private is inside the crop)
+#   # chain[name]: cutA cutB                                         (optional, repeat: one video per scene)
 #   options: round=R (mask a dialog's rounded corners white), hold=S (freeze the last frame S s; default 0.8),
 #            scale=F (shrink a tall crop, e.g. 0.6; not with round=), mask=x:y:w:h:RRGGBB (paint a crop-px box flat,
 #            e.g. a sliver of a private list at the crop edge; applied before scale), mark=x:y:w:h:T (orange outline
@@ -52,8 +55,11 @@ if [[ "$MODE" != --cut ]]; then
   echo "== redacting"
   read -r -a OPTS <<< "$(sed -n 's/^# redact: //p' "$T")"
   while read -r sh; do [[ -n "$sh" ]] && OPTS+=(--show "$sh"); done < <(sed -n 's/^# show: //p' "$T")
+  [[ -n "${DRAFT:-}" ]] && OPTS+=(--fps 10) && echo "   (draft: 10 fps)"
   [[ " ${OPTS[*]} " == *" --show "* ]] && OPTS+=(--deny <(printf '%s\n' "$deny"))
+  rm -f "$D/out/$TAKE.draft"
   "$D/bin/redact" "$RAW" "$MP4" "$ALLOW" "${OPTS[@]}"
+  [[ -n "${DRAFT:-}" ]] && : > "$D/out/$TAKE.draft"
 fi
 [[ -f "$MP4" ]] || { echo "no redacted video $MP4" >&2; exit 1; }
 
@@ -104,24 +110,32 @@ done < <(grep -E '^# cut\[[^]]+\]: ' "$T" || true)
 
 # ---- raw cuts skip redaction, so they must hold ONLY allowlisted text (stricter than the name check below):
 # any text the allowlist does not cover, anyone's or not, fails the cut.
+# A check passed once is not re-run on the same bytes: out/.clean/<kind>-<hash of clip + allowlist + deny list>.
+# Change any of the three and the clip is checked again. The marker holds no text, only the hash in its name.
+mkdir -p "$D/out/.clean"
+KEYS="$( { shasum -a 256 "$ALLOW" | cut -c1-64; printf '%s\n' "$deny" | shasum -a 256 | cut -c1-64; } | tr -d '\n')"
+passed() { [[ -e "$D/out/.clean/$1-$( { shasum -a 256 "$2" | cut -c1-64; echo "$KEYS"; } | shasum -a 256 | cut -c1-16)" ]]; }
+mark()   { : > "$D/out/.clean/$1-$( { shasum -a 256 "$2" | cut -c1-64; echo "$KEYS"; } | shasum -a 256 | cut -c1-16)"; }
 for c in "${RAWCUTS[@]+"${RAWCUTS[@]}"}"; do
+  passed raw "$c" && continue
   extra="$("$D/bin/redact" "$c" /dev/null "$ALLOW" --report-only --fps 15 2>/dev/null | cut -f2 | sort -u)"
   if [[ -n "$extra" ]]; then
     echo "RAW CUT NOT CLEAN: $c shows text off the allowlist —" >&2; printf '  %s\n' "$extra" >&2
     echo "fix: tighten its crop, or cut it from the redacted video (drop src=raw)" >&2; exit 2
   fi
+  mark raw "$c"
 done
 
-# ---- the chain: every cut in order, one video, each hint centred on a white canvas, 0.35 s crossfades
-CUTS=("${CLIPS[@]:1}")
-if (( ${#CUTS[@]} > 1 )); then
-  CH="$D/out/$TAKE-chain.mp4" W=0 H=0 f="" off=0 prev="" i=0
+# ---- chains: one video per scene. `# chain[name]: cutA cutB ...` -> <take>-chain-<name>.mp4; without chain lines, every
+# cut in order -> <take>-chain.mp4. Each hint centred on a white canvas, 0.35 s crossfades.
+build_chain() {  # out, cut files...
+  local CH="$1"; shift; local CUTS=("$@") W=0 H=0 f="" off=0 prev="" i=0 c w h len ins=()
+  (( ${#CUTS[@]} > 1 )) || return 0
   for c in "${CUTS[@]}"; do
     IFS=x read -r w h <<< "$(ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 "$c")"
     (( w > W )) && W=$w; (( h > H )) && H=$h
   done
   W=$(( (W + 80 + 1) / 2 * 2 )) H=$(( (H + 80 + 1) / 2 * 2 ))   # 40 px margin, even for x264
-  ins=()
   for c in "${CUTS[@]}"; do
     ins+=(-i "$c")
     f+="[$i:v]fps=60,format=yuv420p,pad=$W:$H:(ow-iw)/2:(oh-ih)/2:white,setsar=1,settb=1/60[p$i];"; i=$((i+1))
@@ -136,19 +150,33 @@ if (( ${#CUTS[@]} > 1 )); then
   ffmpeg -nostdin -v error -y "${ins[@]}" -filter_complex "$f" -map "[v]" -an -c:v libx264 -pix_fmt yuv420p -crf 20 -movflags +faststart "$CH"
   echo "  chain -> $CH (${W}x${H}, $(ffprobe -v error -show_entries format=duration -of csv=p=0 "$CH")s)"
   CLIPS+=("$CH")
+}
+if grep -qE '^# chain\[[^]]+\]: ' "$T"; then
+  while IFS= read -r line; do
+    cn="$(sed -E 's/^# chain\[([^]]+)\]: .*/\1/' <<< "$line")"; members=()
+    for m in $(sed -E 's/^# chain\[[^]]+\]: //' <<< "$line"); do
+      [[ -f "$D/out/$TAKE-$m.mp4" ]] || { echo "chain[$cn] names cut '$m', which has no cut line" >&2; exit 1; }
+      members+=("$D/out/$TAKE-$m.mp4")
+    done
+    build_chain "$D/out/$TAKE-chain-$cn.mp4" "${members[@]}"
+  done < <(grep -E '^# chain\[[^]]+\]: ' "$T")
+else
+  build_chain "$D/out/$TAKE-chain.mp4" "${CLIPS[@]:1}"
 fi
 
 # ---- leak check, every output
 echo "== leak check (OCR of each clip against this Mac's real names; nothing written to disk)"
 bad=0
 for c in "${CLIPS[@]}"; do
+  if passed leak "$c"; then echo "CLEAN $c (unchanged, checked before)"; continue; fi
   hits="$("$D/bin/redact" "$c" /dev/null "$ALLOW" --report-only --fps 15 2>/dev/null \
     | grep -i -F -f <(printf '%s\n' "$deny") || true)"
   ffmpeg -nostdin -v error -y -i "$c" -vf "fps=1/2,scale=420:-1,tile=4x4" -frames:v 1 "${c%.mp4}.sheet.png"
   if [[ -n "$hits" ]]; then
     echo "LEAK in $c —" >&2; printf '%s\n' "$hits" | cut -f2 | sort | uniq -c >&2; bad=1
   else
-    echo "CLEAN $c ($(ffprobe -v error -show_entries format=duration -of csv=p=0 "$c")s)"
+    echo "CLEAN $c ($(ffprobe -v error -show_entries format=duration -of csv=p=0 "$c")s)"; mark leak "$c"
   fi
 done
+[[ -e "$D/out/$TAKE.draft" ]] && echo "DRAFT redaction (10 fps): for iterating only; re-run clip.sh $TAKE --redact before publishing"
 (( bad == 0 )) || { echo "fix: add a --blur region to the take's # redact: line, or raise --sigma; then clip.sh $TAKE --redact" >&2; exit 2; }

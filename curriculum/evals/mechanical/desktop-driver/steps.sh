@@ -5,21 +5,53 @@ DRIVER="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BIN="$DRIVER/bin" OUT="$DRIVER/out"
 WIN_X=57 WIN_Y=25 WIN_W=1355 WIN_H=751                # every crop in every take is px of THIS window: start_state enforces it
 APP="Claude" CHAT_TAB="276 46" CODE_TAB="310 47"        # tab icons have no text to OCR: screen points
+PLUS_X=368                                              # + under a started conversation's box (OCR drops it once the box has text)
 [[ -x "$BIN/ocr" && -x "$BIN/click" && -x "$BIN/scroll" ]] || { echo "run $DRIVER/build.sh first" >&2; exit 1; }
 mkdir -p "$OUT"
 
-_ocr() { screencapture -x -R"$WIN_X,$WIN_Y,$WIN_W,$WIN_H" "$OUT/_ocr.png" && "$BIN/ocr" "$OUT/_ocr.png" "$WIN_X" "$WIN_Y" "$WIN_W"; }
+# front_guard: the capture rectangle shows whatever window is on top. Another app in front (Codex re-raises itself while
+# it works) = wrong screen for OCR, and in a recording a private window in the raw take. Re-activate; while recording, abort.
+front_guard() {
+  local f; f="$(osascript -e 'tell application "System Events" to get name of first process whose frontmost is true' 2>/dev/null)"
+  [[ "$f" == "$APP" ]] && return 0
+  [[ -n "${REC_PID:-}" ]] && { kill "$REC_PID" 2>/dev/null; rm -f "${REC_OUT:-}"; die "'$f' came in front during recording: take discarded (move or quit it, then re-run)"; }
+  osascript -e "tell application \"$APP\" to activate" >/dev/null; sleep 0.6; echo "  (re-activated $APP over '$f')" >&2
+}
+_ocr() {   # [x,y,w,h] (default: the whole window) -> OCR lines in screen points
+  local r="${1:-$WIN_X,$WIN_Y,$WIN_W,$WIN_H}" x y w
+  IFS=, read -r x y w _ <<< "$r"
+  front_guard; screencapture -x -R"$r" "$OUT/_ocr.png" && "$BIN/ocr" "$OUT/_ocr.png" "$x" "$y" "$w"
+}
 
 # find_text TEXT [exact|contains] [xmin xmax ymin ymax] -> "x y" of the first match, screen points
-find_text() {
+# _match TEXT [mode] [bounds...]: OCR lines on stdin -> "x y" of the first match. Pure (no screen): test-steps.sh covers it.
+_match() {
   local text="$1" mode="${2:-exact}" x0="${3:-0}" x1="${4:-99999}" y0="${5:-0}" y1="${6:-99999}"
-  _ocr | awk -F'\t' -v t="$text" -v m="$mode" -v x0="$x0" -v x1="$x1" -v y0="$y0" -v y1="$y1" '
-    { s=$3; gsub(/^[^A-Za-z0-9~]+/, "", s) }   # sidebar icons OCR as a stray leading glyph
+  awk -F'\t' -v t="$text" -v m="$mode" -v x0="$x0" -v x1="$x1" -v y0="$y0" -v y1="$y1" '
+    { s=$3; if (s != "+") gsub(/^[^A-Za-z0-9~]+/, "", s) }   # icons OCR as a stray leading glyph; a bare + is a button
     $1>=x0 && $1<=x1 && $2>=y0 && $2<=y1 && ((m=="exact" && s==t) || (m=="contains" && index($3,t)>0)) { print $1, $2; exit }'
+}
+# _region x0 x1 y0 y1 -> "x,y,w,h": a step's bounds clamped to the standard window, 8 pt margin (OCR misses edge text).
+_region() {
+  local m=8 L=$WIN_X T=$WIN_Y R=$((WIN_X + WIN_W)) B=$((WIN_Y + WIN_H)) x0 x1 y0 y1
+  x0=$(( $1 - m )); x1=$(( $2 + m )); y0=$(( $3 - m )); y1=$(( $4 + m ))
+  (( x0 < L )) && x0=$L; (( x1 > R )) && x1=$R; (( y0 < T )) && y0=$T; (( y1 > B )) && y1=$B
+  echo "$x0,$y0,$((x1 - x0)),$((y1 - y0))"
+}
+# find_text TEXT [mode] [xmin xmax ymin ymax]: reads only the step's region (about 2.5x faster than the whole window).
+find_text() {
+  local r; r="$(_region "${3:-0}" "${4:-99999}" "${5:-0}" "${6:-99999}")"
+  _ocr "$r" | _match "$@"
 }
 
 # die: Esc closes whatever dialog the take opened; only call after a dialog/menu may be up
-die() { echo "ABORT: $*" >&2; exit 1; }
+# on_abort CMD: a step registers how to undo what it opened (Esc a dialog, clear a typed caption). undo runs them newest
+# first, best-effort; die calls it, so dry/record never leave debris. In `take.sh step NAME` the list starts empty:
+# a failed single step leaves the screen as it is, for inspection.
+ON_ABORT=()
+on_abort() { ON_ABORT+=("$1"); }
+undo() { local i; for ((i=${#ON_ABORT[@]}-1; i>=0; i--)); do ( eval "${ON_ABORT[$i]}" ) >/dev/null 2>&1 || true; done; ON_ABORT=(); }
+die() { echo "ABORT: $*" >&2; undo; exit 1; }
 
 # expect_text TEXT [mode] [timeout] [bounds...]
 expect_text() {
@@ -56,8 +88,8 @@ type_slow() { local s="$1" i; for ((i=0;i<${#s};i++)); do osascript -e "tell app
 # A take starts from exactly one; a later take may instead start from an earlier take's end state (say so in its header).
 start_state() {
   local f="$DRIVER/states/$1.sh"; [[ -f "$f" ]] || die "no start state $1 (states/$1.sh)"
-  osascript -e "tell application \"$APP\" to activate" -e "tell application \"System Events\" to tell process \"$APP\" to set {position, size} of window 1 to {{$WIN_X, $WIN_Y}, {$WIN_W, $WIN_H}}" >/dev/null
-  sleep 0.5
+  osascript -e "tell application \"$APP\" to activate" >/dev/null || die "cannot activate $APP"
+  sleep 0.8   # macOS refuses scripted resizing of this window (-10003): verify only; the operator sizes it once
   local g; g="$(osascript -e "tell application \"System Events\" to get {position, size} of window 1 of process \"$APP\"" | tr -d ' ')"
   [[ "$g" == "$WIN_X,$WIN_Y,$WIN_W,$WIN_H" ]] || die "window is $g, not $WIN_X,$WIN_Y,$WIN_W,$WIN_H: crops would not match"
   bash "$f"
@@ -65,7 +97,7 @@ start_state() {
 
 # rec_start OUT.mov SECONDS / rec_stop: record the standard window for a fixed length (clicks drawn as press rings),
 # hands off in between; rec_stop waits for the recording to end. Trim the tail with the take's --trim.
-rec_start() { rm -f "$1"; screencapture -v -k -x -V "${2:-40}" -R"$WIN_X,$WIN_Y,$WIN_W,$WIN_H" "$1" & REC_PID=$!; sleep 2.5; }
+rec_start() { REC_OUT="$1"; rm -f "$1"; screencapture -v -k -x -V "${2:-40}" -R"$WIN_X,$WIN_Y,$WIN_W,$WIN_H" "$1" & REC_PID=$!; sleep 2.5; }
 rec_stop()  { [[ -n "${REC_PID:-}" ]] || return 0; wait "$REC_PID" 2>/dev/null || true; REC_PID=""; }
 
 # back_to_operator: the Code tab holds the operator's own transcript; every take ends there.
@@ -96,7 +128,7 @@ wait_settled() {
   local t="${1:-180}"; shift 2>/dev/null || true
   local end=$((SECONDS + t)) prev="" same=0 cur
   while (( SECONDS <= end )); do
-    cur="$(_ocr | awk -F'\t' -v x0="${1:-0}" -v x1="${2:-99999}" -v y0="${3:-0}" -v y1="${4:-99999}" '$1>=x0&&$1<=x1&&$2>=y0&&$2<=y1{print $3}' | md5)"
+    cur="$(_ocr "$(_region "${1:-0}" "${2:-99999}" "${3:-0}" "${4:-99999}")" | awk -F'\t' -v x0="${1:-0}" -v x1="${2:-99999}" -v y0="${3:-0}" -v y1="${4:-99999}" '$1>=x0&&$1<=x1&&$2>=y0&&$2<=y1{print $3}' | md5)"
     if [[ "$cur" == "$prev" ]]; then same=$((same+1)); (( same >= 2 )) && { echo "  settled"; return 0; }; else same=0; fi
     prev="$cur"; sleep 1
   done
@@ -126,3 +158,10 @@ say_in_box() {
   expect_text "${s:0:24}" contains 4; sleep "${SAY_HOLD:-1.5}"
 }
 clear_box() { key 0 command; sleep 0.2; key 51; sleep 0.4; }   # Cmd-A, Delete
+
+# click_plus: the + under the message box of a started conversation. Icon: x fixed in the standard window, y = the row
+# OCR does read ("Opus 5.5 …" model picker beside it).
+click_plus() {
+  local p; p="$(find_text "Opus 5.5" contains 300 1412 680 790)"; [[ -n "$p" ]] || die "no model row under the box"
+  "$BIN/click" "$PLUS_X" "${p#* }" "${1:-700}"; echo "  clicked: + @ $PLUS_X ${p#* }"
+}

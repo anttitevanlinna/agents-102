@@ -1,15 +1,7 @@
 <h1 id="start-learning">Welcome to Agents 101</h1>
 
-Want to see what Claude can make? Start with two things you can try for yourself.
 
-<div class="a101-first-look" id="start-once">
-<div class="a101-snake-preview" role="img" aria-label="Example snake game: a green snake and a red apple on a square board"><span class="a101-snake-preview__body" aria-hidden="true"></span><span class="a101-snake-preview__food" aria-hidden="true"></span></div>
-<div><p class="a101-first-look__title">Make a Snake game you can play.</p><p>Play it, then ask Claude to change something.</p><p class="a101-first-look__next">Next, give Claude a screenshot of your calendar and get a five-line summary of your week.</p></div>
-</div>
-
-Start by playing a game Claude makes for you. Then you’ll give it one folder where it can save the game and the work you do next. Keep this workbook open as you go.
-
-<p><a class="a101-start-link" href="#make-my-first-game">Make my first game</a></p>
+Make a game in Claude. After you play, you’ll save it in the same folder you’ll use to summarize your week.
 
 ## Pause learning
 

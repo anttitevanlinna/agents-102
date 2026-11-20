@@ -2743,15 +2743,13 @@ body.slides-active { overflow: hidden; }
 .a101-onboarding { width: 100%; max-width: 40em; margin: 2rem auto; padding: 0; }
 .a101-onboarding > .module { max-width: none; }
 .a101-onboarding > .module > h1 { margin-top: 0; margin-bottom: 1rem; }
-.a101-first-look { display: flex; align-items: center; gap: 1.5rem; margin: 1.5rem 0; }
-.a101-first-look p { margin-bottom: .6rem; }
-.a101-first-look .a101-first-look__title { font-family: var(--font-serif); font-size: 1.6rem; line-height: 1.25; color: var(--fg); }
-.a101-first-look__next { color: var(--fg-2); font-size: .95rem; }
-.a101-snake-preview { position: relative; flex: 0 0 126px; height: 126px; border-radius: .5rem; background-color: #202b22; background-image: linear-gradient(#ffffff0a 1px, transparent 1px), linear-gradient(90deg, #ffffff0a 1px, transparent 1px); background-size: 18px 18px; }
-.a101-snake-preview__body { position: absolute; width: 18px; height: 18px; left: 36px; top: 72px; background: #a6c974; box-shadow: 18px 0 #a6c974, 36px 0 #a6c974, 36px -18px #a6c974, 36px -36px #a6c974; border-radius: 3px; }
-.a101-snake-preview__food { position: absolute; width: 12px; height: 12px; left: 39px; top: 21px; border-radius: 50%; background: #e77756; }
-.a101-onboarding .module a.a101-start-link { display: inline-block; padding: .65rem 1.1rem; border-radius: .35rem; background: var(--fg); color: var(--bg); border: 1px solid var(--fg); text-decoration: none; }
-.a101-start-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.a101-onboarding:not(.a101-learning-controls) { margin-bottom: .3rem; }
+.a101-onboarding #start-learning { font-size: clamp(2.15rem, 5vw, 3.5rem); max-width: none; line-height: 1.05; }
+.a101-onboarding #start-learning::after { display: none; }
+.a101-onboarding #start-learning + p::first-letter { float: none; font: inherit; color: inherit; margin: 0; padding: 0; }
+body.workbook:not(.slides-active) .a101-onboarding + section#prework { margin-top: 1rem; }
+body.workbook:not(.slides-active) .a101-onboarding + section#prework > .module-hero { display: none; }
+body.workbook:not(.slides-active) .a101-onboarding + section#prework > h2#make-my-first-game { margin-top: 0; padding-top: 0; }
 body.workbook .workbook-cover { padding-top: 1rem; padding-bottom: 1.5rem; margin-bottom: 1rem; }
 body.workbook > main > section#prework { padding-top: 0; }
 .a101-tool-picker { margin-top: 1rem; text-align: start; }
@@ -2759,7 +2757,6 @@ body.workbook > main > section#prework { padding-top: 0; }
 section#prework, section#prework .module-hero-title, section#prework > h2 { scroll-margin-top: 5rem; }
 section#prework > .module-hero { margin-bottom: 1.5rem; padding-top: 1rem; padding-bottom: 1rem; }
 section#prework > h2 { margin-top: 2rem; padding-top: 1rem; }
-@media (max-width: 480px) { .a101-first-look { align-items: flex-start; gap: 1rem; } .a101-snake-preview { flex-basis: 90px; height: 108px; background-size: 18px 18px; } .a101-first-look .a101-first-look__title { font-size: 1.3rem; } }
 .a101-onboarding [id] { scroll-margin-top: 5rem; }
 .a101-onboarding__optional { margin: 1rem 0; border-top: 1px solid var(--line); padding-top: 1rem; }
 .a101-onboarding__optional > summary { cursor: pointer; }
@@ -2772,6 +2769,15 @@ body.slides-active .a101-onboarding { display: none; }
 .a101-os-picker button { font: inherit; color: var(--fg); background: transparent; border: 1px solid var(--line); border-radius: .35rem; padding: .35rem .8rem; cursor: pointer; }
 .a101-os-picker button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 [data-a101-os-only][hidden] { display: none !important; }
+.a101-game-start { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 12rem); align-items: start; gap: 1.25rem; }
+.a101-game-start .a101-game-example { margin: 0; }
+.a101-game-example img { display: block; width: 100%; height: auto; border-radius: .4rem; }
+.a101-game-example figcaption, .a101-game-mode, .a101-copy-status { font-size: .9rem; color: var(--fg-2); }
+.a101-game-example figcaption { margin-top: .4rem; }
+.a101-copy-status:empty { margin: 0; }
+.a101-game-start [data-copy-label] .copy-btn { color: #fff; background: #24583b; padding: .5rem .8rem; }
+.a101-game-start .copy-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+@media (max-width: 580px) { .a101-game-start { grid-template-columns: 1fr; } .a101-game-example { max-width: 11rem; } }
 
 </style>
 </head>
@@ -2802,15 +2808,8 @@ body.slides-active .a101-onboarding { display: none; }
 <section class="a101-onboarding"><div class="module">
 <h1 id="start-learning">Welcome to Agents 101</h1>
 
-<p>Want to see what Claude can make? Start with two things you can try for yourself.</p>
-<div class="a101-first-look" id="start-once">
-<div class="a101-snake-preview" role="img" aria-label="Example snake game: a green snake and a red apple on a square board"><span class="a101-snake-preview__body" aria-hidden="true"></span><span class="a101-snake-preview__food" aria-hidden="true"></span></div>
-<div><p class="a101-first-look__title">Make a Snake game you can play.</p><p>Play it, then ask Claude to change something.</p><p class="a101-first-look__next">Next, give Claude a screenshot of your calendar and get a five-line summary of your week.</p></div>
-</div>
 
-<p>Start by playing a game Claude makes for you. Then you’ll give it one folder where it can save the game and the work you do next. Keep this workbook open as you go.</p>
-<p><a class="a101-start-link" href="#make-my-first-game">Make my first game</a></p>
-
+<p>Make a game in Claude. After you play, you’ll save it in the same folder you’ll use to summarize your week.</p>
 
 </div></section>
 
@@ -2818,20 +2817,33 @@ body.slides-active .a101-onboarding { display: none; }
 
 <section class="module" id="prework">
 <h1 id="first-steps">First steps</h1>
-<div class="a101-os-picker" role="group" aria-label="Setup for your computer">Your computer <button type="button" data-a101-os="mac" aria-pressed="false">Mac</button> <button type="button" data-a101-os="windows" aria-pressed="false">Windows</button></div>
-
 <h2 id="make-my-first-game">1. Make and play Snake</h2>
 
 <p><span id="4-build-a-snake-game-10-min"></span>
 <span id="2-build-a-snake-game"></span>
 <span id="2-make-the-game"></span></p>
 <div class="rt-cowork">
+<div class="a101-game-start">
+<div>
+<div data-copy-label="Copy the game request">
 
-<p>Open <strong>Claude Desktop</strong> and click <strong>New</strong>. If the message box has <strong>Chat</strong> and <strong>Cowork</strong> options, choose <strong>Cowork</strong>. Click <strong>Copy</strong> below, paste into that message box, and press <strong>Send</strong>.</p>
+<p>Copy the request below. In <strong>Claude Desktop</strong>, click <strong>New</strong>, paste the request, and press <strong>Send</strong>.</p>
 <p><strong>Prompt</strong> Cowork</p>
 <pre><code class="language-text">Build me a snake game as a single HTML file and show it in the preview beside this conversation so I can play.
 </code></pre>
-<p>When the game appears beside the conversation, click inside it and follow the controls on screen. If you see the finished HTML file in the reply, click it to open the preview.</p>
+<p class="a101-copy-status" data-copy-status role="status" data-copy-message="Copied. Paste into the new Claude conversation and press Send."></p>
+</div>
+
+<p class="a101-game-mode">If you see a <strong>Chat</strong> and <strong>Cowork</strong> switch, choose <strong>Cowork</strong>. With one message box, paste there.</p>
+
+<p>When the board appears beside the chat, click <strong>Play</strong> or follow the controls on the board. If the board stays closed, open the game card in Claude’s reply.</p>
+</div>
+<figure class="a101-game-example">
+<img src="data:image/jpeg;base64,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" alt="Example Snake game with a green Play button" width="488" height="488">
+<figcaption>Example game made with Claude</figcaption>
+</figure>
+</div>
+
 <details>
 <summary>If the preview doesn’t open</summary>
 <p>If the reply contains the finished HTML file, download it and double-click it to play in your browser. Keep the Claude conversation open so you can still save the game in step 2.</p>
@@ -2937,6 +2949,8 @@ body.slides-active .a101-onboarding { display: none; }
 <p><span id="3-play-your-game"></span></p>
 <h2 id="open-cowork-and-add-a-folder">2. Save the game in an agents-101 folder</h2>
 
+<div class="a101-os-picker" role="group" aria-label="Setup for your computer">Your computer <button type="button" data-a101-os="mac" aria-pressed="false">Mac</button> <button type="button" data-a101-os="windows" aria-pressed="false">Windows</button></div>
+
 <p><span id="1-set-up-your-agent-runtime-5-min"></span>
 <span id="1-choose-your-training-folder"></span>
 <span id="1-create-a-folder-called-agents-101"></span></p>
@@ -2971,7 +2985,7 @@ body.slides-active .a101-onboarding { display: none; }
 <span id="3-add-the-course-files"></span>
 <span id="4-download-the-course-files"></span></p>
 <p>The course files include a copy of the handbook and let Claude help you find your place when you come back.</p>
-<p><a href="https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=ee121b73c5d5258d" target="_blank" rel="noopener">Download the course files</a>. Find <code>agents-101-starter.tar.gz</code> in your browser’s downloads and move it into <code>agents-101</code> alongside the <code>prework</code> folder. Claude will unpack it when you copy and send the request below in the same conversation.</p>
+<p><a href="https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=9c2a73d0f8382e34" target="_blank" rel="noopener">Download the course files</a>. Find <code>agents-101-starter.tar.gz</code> in your browser’s downloads and move it into <code>agents-101</code> alongside the <code>prework</code> folder. Claude will unpack it when you copy and send the request below in the same conversation.</p>
 <div class="rt-profile rt-profile-cowork">
 
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
@@ -15483,8 +15497,11 @@ SOFTWARE.
         var btn = document.createElement('button');
         btn.className = host ? 'copy-btn copy-btn--in-header' : 'copy-btn';
         btn.type = 'button';
-        btn.setAttribute('aria-label', 'Copy to clipboard');
-        btn.textContent = 'Copy';
+        var options = pre.closest('[data-copy-label]');
+        var label = options ? options.dataset.copyLabel : 'Copy';
+        var status = options && options.querySelector('[data-copy-status]');
+        btn.setAttribute('aria-label', options ? label : 'Copy to clipboard');
+        btn.textContent = label;
         btn.addEventListener('click', function (ev) {
             ev.preventDefault();
             var code = pre.querySelector('code') || pre;
@@ -15503,8 +15520,9 @@ SOFTWARE.
             var done = function () {
                 btn.textContent = 'Copied';
                 btn.classList.add('copy-btn--copied');
+                if (status) status.textContent = status.dataset.copyMessage;
                 setTimeout(function () {
-                    btn.textContent = 'Copy';
+                    btn.textContent = label;
                     btn.classList.remove('copy-btn--copied');
                 }, 1400);
             };
@@ -15552,8 +15570,14 @@ SOFTWARE.
                 ta.style.opacity = '0';
                 document.body.appendChild(ta);
                 ta.select();
-                try { document.execCommand('copy'); done(); }
-                catch (e) { btn.textContent = 'Copy failed'; setTimeout(function () { btn.textContent = 'Copy'; }, 1400); }
+                try {
+                    if (!document.execCommand('copy')) throw new Error('Clipboard unavailable');
+                    done();
+                } catch (e) {
+                    btn.textContent = 'Copy failed';
+                    if (status) status.textContent = 'Select the request and copy it to continue.';
+                    setTimeout(function () { btn.textContent = label; }, 1400);
+                }
                 document.body.removeChild(ta);
             }
         });

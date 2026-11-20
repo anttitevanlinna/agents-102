@@ -23,6 +23,15 @@ const SETUP_CSS = `
 .a101-os-picker button { font: inherit; color: var(--fg); background: transparent; border: 1px solid var(--line); border-radius: .35rem; padding: .35rem .8rem; cursor: pointer; }
 .a101-os-picker button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 [data-a101-os-only][hidden] { display: none !important; }
+.a101-game-start { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 12rem); align-items: start; gap: 1.25rem; }
+.a101-game-start .a101-game-example { margin: 0; }
+.a101-game-example img { display: block; width: 100%; height: auto; border-radius: .4rem; }
+.a101-game-example figcaption, .a101-game-mode, .a101-copy-status { font-size: .9rem; color: var(--fg-2); }
+.a101-game-example figcaption { margin-top: .4rem; }
+.a101-copy-status:empty { margin: 0; }
+.a101-game-start [data-copy-label] .copy-btn { color: #fff; background: #24583b; padding: .5rem .8rem; }
+.a101-game-start .copy-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+@media (max-width: 580px) { .a101-game-start { grid-template-columns: 1fr; } .a101-game-example { max-width: 11rem; } }
 `;
 const SETUP_SCRIPT = `(function () {
   var key = 'a101-setup-os', selected;
@@ -188,7 +197,11 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
     fs.mkdirSync(brandDir);
     const preworkOverlay = path.join(overlayDir, 'trainings/agents-101/prework.md');
     fs.mkdirSync(path.dirname(preworkOverlay), { recursive: true });
-    fs.copyFileSync(path.join(DELIVERY, 'prework.md'), preworkOverlay);
+    const prework = fs.readFileSync(path.join(DELIVERY, 'prework.md'), 'utf8');
+    const still = fs.readFileSync(path.join(DELIVERY, 'snake-preview.jpg')).toString('base64');
+    const stillMarker = 'src="ACME_SNAKE_PREVIEW"';
+    if (prework.split(stillMarker).length !== 2) throw new Error('Expected one Snake preview image');
+    fs.writeFileSync(preworkOverlay, prework.replace(stillMarker, `src="data:image/jpeg;base64,${still}"`));
     fs.writeFileSync(path.join(brandDir, 'customer.json'), JSON.stringify({ name: 'ACME', hubHeading: 'ACME' }) + '\n');
     const checkpoints = JSON.parse(fs.readFileSync(path.join(DELIVERY, 'checkpoints.json'), 'utf8'));
     createNavigationOverlay({ root: ROOT, overlayDir, workbookUrl: WORKBOOK_URL, checkpoints });
@@ -230,15 +243,13 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
 .a101-onboarding { width: 100%; max-width: 40em; margin: 2rem auto; padding: 0; }
 .a101-onboarding > .module { max-width: none; }
 .a101-onboarding > .module > h1 { margin-top: 0; margin-bottom: 1rem; }
-.a101-first-look { display: flex; align-items: center; gap: 1.5rem; margin: 1.5rem 0; }
-.a101-first-look p { margin-bottom: .6rem; }
-.a101-first-look .a101-first-look__title { font-family: var(--font-serif); font-size: 1.6rem; line-height: 1.25; color: var(--fg); }
-.a101-first-look__next { color: var(--fg-2); font-size: .95rem; }
-.a101-snake-preview { position: relative; flex: 0 0 126px; height: 126px; border-radius: .5rem; background-color: #202b22; background-image: linear-gradient(#ffffff0a 1px, transparent 1px), linear-gradient(90deg, #ffffff0a 1px, transparent 1px); background-size: 18px 18px; }
-.a101-snake-preview__body { position: absolute; width: 18px; height: 18px; left: 36px; top: 72px; background: #a6c974; box-shadow: 18px 0 #a6c974, 36px 0 #a6c974, 36px -18px #a6c974, 36px -36px #a6c974; border-radius: 3px; }
-.a101-snake-preview__food { position: absolute; width: 12px; height: 12px; left: 39px; top: 21px; border-radius: 50%; background: #e77756; }
-.a101-onboarding .module a.a101-start-link { display: inline-block; padding: .65rem 1.1rem; border-radius: .35rem; background: var(--fg); color: var(--bg); border: 1px solid var(--fg); text-decoration: none; }
-.a101-start-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.a101-onboarding:not(.a101-learning-controls) { margin-bottom: .3rem; }
+.a101-onboarding #start-learning { font-size: clamp(2.15rem, 5vw, 3.5rem); max-width: none; line-height: 1.05; }
+.a101-onboarding #start-learning::after { display: none; }
+.a101-onboarding #start-learning + p::first-letter { float: none; font: inherit; color: inherit; margin: 0; padding: 0; }
+body.workbook:not(.slides-active) .a101-onboarding + section#prework { margin-top: 1rem; }
+body.workbook:not(.slides-active) .a101-onboarding + section#prework > .module-hero { display: none; }
+body.workbook:not(.slides-active) .a101-onboarding + section#prework > h2#make-my-first-game { margin-top: 0; padding-top: 0; }
 body.workbook .workbook-cover { padding-top: 1rem; padding-bottom: 1.5rem; margin-bottom: 1rem; }
 body.workbook > main > section#prework { padding-top: 0; }
 .a101-tool-picker { margin-top: 1rem; text-align: start; }
@@ -246,7 +257,6 @@ body.workbook > main > section#prework { padding-top: 0; }
 section#prework, section#prework .module-hero-title, section#prework > h2 { scroll-margin-top: 5rem; }
 section#prework > .module-hero { margin-bottom: 1.5rem; padding-top: 1rem; padding-bottom: 1rem; }
 section#prework > h2 { margin-top: 2rem; padding-top: 1rem; }
-@media (max-width: 480px) { .a101-first-look { align-items: flex-start; gap: 1rem; } .a101-snake-preview { flex-basis: 90px; height: 108px; background-size: 18px 18px; } .a101-first-look .a101-first-look__title { font-size: 1.3rem; } }
 .a101-onboarding [id] { scroll-margin-top: 5rem; }
 .a101-onboarding__optional { margin: 1rem 0; border-top: 1px solid var(--line); padding-top: 1rem; }
 .a101-onboarding__optional > summary { cursor: pointer; }

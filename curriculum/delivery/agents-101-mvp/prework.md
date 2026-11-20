@@ -1,7 +1,5 @@
 # First steps
 
-<div class="a101-os-picker" role="group" aria-label="Setup for your computer">Your computer <button type="button" data-a101-os="mac" aria-pressed="false">Mac</button> <button type="button" data-a101-os="windows" aria-pressed="false">Windows</button></div>
-
 <h2 id="make-my-first-game">1. Make and play Snake</h2>
 
 <span id="4-build-a-snake-game-10-min"></span>
@@ -9,8 +7,11 @@
 <span id="2-make-the-game"></span>
 
 <div class="rt-cowork">
+<div class="a101-game-start">
+<div>
+<div data-copy-label="Copy the game request">
 
-Open **Claude Desktop** and click **New**. If the message box has **Chat** and **Cowork** options, choose **Cowork**. Click **Copy** below, paste into that message box, and press **Send**.
+Copy the request below. In **Claude Desktop**, click **New**, paste the request, and press **Send**.
 
 **Prompt** Cowork
 
@@ -18,7 +19,18 @@ Open **Claude Desktop** and click **New**. If the message box has **Chat** and *
 Build me a snake game as a single HTML file and show it in the preview beside this conversation so I can play.
 ```
 
-When the game appears beside the conversation, click inside it and follow the controls on screen. If you see the finished HTML file in the reply, click it to open the preview.
+<p class="a101-copy-status" data-copy-status role="status" data-copy-message="Copied. Paste into the new Claude conversation and press Send."></p>
+</div>
+
+<p class="a101-game-mode">If you see a <strong>Chat</strong> and <strong>Cowork</strong> switch, choose <strong>Cowork</strong>. With one message box, paste there.</p>
+
+When the board appears beside the chat, click **Play** or follow the controls on the board. If the board stays closed, open the game card in Claude’s reply.
+</div>
+<figure class="a101-game-example">
+<img src="ACME_SNAKE_PREVIEW" alt="Example Snake game with a green Play button" width="488" height="488">
+<figcaption>Example game made with Claude</figcaption>
+</figure>
+</div>
 
 <details>
 <summary>If the preview doesn’t open</summary>
@@ -47,6 +59,8 @@ Double-click `prework/snake.html` inside your folder to play in your browser.
 <span id="3-play-your-game"></span>
 
 <h2 id="open-cowork-and-add-a-folder">2. Save the game in an agents-101 folder</h2>
+
+<div class="a101-os-picker" role="group" aria-label="Setup for your computer">Your computer <button type="button" data-a101-os="mac" aria-pressed="false">Mac</button> <button type="button" data-a101-os="windows" aria-pressed="false">Windows</button></div>
 
 <span id="1-set-up-your-agent-runtime-5-min"></span>
 <span id="1-choose-your-training-folder"></span>

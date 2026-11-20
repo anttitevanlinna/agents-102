@@ -839,8 +839,11 @@
         var btn = document.createElement('button');
         btn.className = host ? 'copy-btn copy-btn--in-header' : 'copy-btn';
         btn.type = 'button';
-        btn.setAttribute('aria-label', 'Copy to clipboard');
-        btn.textContent = 'Copy';
+        var options = pre.closest('[data-copy-label]');
+        var label = options ? options.dataset.copyLabel : 'Copy';
+        var status = options && options.querySelector('[data-copy-status]');
+        btn.setAttribute('aria-label', options ? label : 'Copy to clipboard');
+        btn.textContent = label;
         btn.addEventListener('click', function (ev) {
             ev.preventDefault();
             var code = pre.querySelector('code') || pre;
@@ -859,8 +862,9 @@
             var done = function () {
                 btn.textContent = 'Copied';
                 btn.classList.add('copy-btn--copied');
+                if (status) status.textContent = status.dataset.copyMessage;
                 setTimeout(function () {
-                    btn.textContent = 'Copy';
+                    btn.textContent = label;
                     btn.classList.remove('copy-btn--copied');
                 }, 1400);
             };
@@ -908,8 +912,14 @@
                 ta.style.opacity = '0';
                 document.body.appendChild(ta);
                 ta.select();
-                try { document.execCommand('copy'); done(); }
-                catch (e) { btn.textContent = 'Copy failed'; setTimeout(function () { btn.textContent = 'Copy'; }, 1400); }
+                try {
+                    if (!document.execCommand('copy')) throw new Error('Clipboard unavailable');
+                    done();
+                } catch (e) {
+                    btn.textContent = 'Copy failed';
+                    if (status) status.textContent = 'Select the request and copy it to continue.';
+                    setTimeout(function () { btn.textContent = label; }, 1400);
+                }
                 document.body.removeChild(ta);
             }
         });

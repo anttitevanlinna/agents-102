@@ -4,7 +4,7 @@
 #   clip.sh <take> --redact   re-redact an existing recording (after editing the allowlist or the take's # redact: line)
 #   clip.sh <take> --cut      re-cut from the existing redacted video (after editing # cut[...] lines; seconds, no OCR)
 # <take> = file name under takes/ without .sh. Outputs in out/: <take>.mov (raw, never publish), <take>.mp4 (redacted
-# whole take), <take>-<name>.mp4 per cut, *.sheet.png. The take declares, in comment lines:
+# whole take), <take>-<name>.mp4 per cut, <take>-chain.mp4 (all cuts in order, crossfaded), *.sheet.png. The take declares, in comment lines:
 #   # redact: --crop ... --trim ... --blur x,y,w,h@from-to          (once; see bin/redact)
 #   # cut[name]: 12.5-20.3 crop=640:400:160:255                       (one segment, optional crop of the redacted video)
 #   # cut[name]: 0-12.4,20.3-31                                       (several segments, joined with a 0.3 s crossfade)
@@ -78,6 +78,32 @@ for c in "${RAWCUTS[@]+"${RAWCUTS[@]}"}"; do
     echo "fix: tighten its crop, or cut it from the redacted video (drop src=raw)" >&2; exit 2
   fi
 done
+
+# ---- the chain: every cut in order, one video, each hint centred on a white canvas, 0.35 s crossfades
+CUTS=("${CLIPS[@]:1}")
+if (( ${#CUTS[@]} > 1 )); then
+  CH="$D/out/$TAKE-chain.mp4" W=0 H=0 f="" off=0 prev="" i=0
+  for c in "${CUTS[@]}"; do
+    IFS=x read -r w h <<< "$(ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 "$c")"
+    (( w > W )) && W=$w; (( h > H )) && H=$h
+  done
+  W=$(( (W + 80 + 1) / 2 * 2 )) H=$(( (H + 80 + 1) / 2 * 2 ))   # 40 px margin, even for x264
+  ins=()
+  for c in "${CUTS[@]}"; do
+    ins+=(-i "$c")
+    f+="[$i:v]fps=60,format=yuv420p,pad=$W:$H:(ow-iw)/2:(oh-ih)/2:white,setsar=1,settb=1/60[p$i];"; i=$((i+1))
+  done
+  prev="p0"
+  for ((k=1; k<i; k++)); do
+    len="$(ffprobe -v error -show_entries format=duration -of csv=p=0 "${CUTS[$((k-1))]}")"
+    off="$(printf '%.3f' "$(echo "$off + $len - 0.35" | bc -l)")"
+    f+="[$prev][p$k]xfade=transition=fade:duration=0.35:offset=$off[c$k];"; prev="c$k"
+  done
+  f+="[$prev]null[v]"
+  ffmpeg -nostdin -v error -y "${ins[@]}" -filter_complex "$f" -map "[v]" -an -c:v libx264 -pix_fmt yuv420p -crf 20 -movflags +faststart "$CH"
+  echo "  chain -> $CH (${W}x${H}, $(ffprobe -v error -show_entries format=duration -of csv=p=0 "$CH")s)"
+  CLIPS+=("$CH")
+fi
 
 # ---- leak check, every output
 echo "== leak check (OCR of each clip against this Mac's real names; nothing written to disk)"

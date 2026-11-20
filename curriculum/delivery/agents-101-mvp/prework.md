@@ -1,52 +1,88 @@
 # First steps
 
-Make a folder, send one request, and open your game. You’ll add the course files after you’ve played.
+<div class="a101-os-picker" role="group" aria-label="Setup for your computer">Your computer <button type="button" data-a101-os="mac" aria-pressed="false">Mac</button> <button type="button" data-a101-os="windows" aria-pressed="false">Windows</button></div>
 
-<h2 id="open-cowork-and-add-a-folder">1. Make the agents-101 folder</h2>
+<h2 id="make-my-first-game">1. Make and play Snake</h2>
+
+<span id="4-build-a-snake-game-10-min"></span>
+<span id="2-build-a-snake-game"></span>
+<span id="2-make-the-game"></span>
+
+<div class="rt-cowork">
+
+Open **Claude Desktop** and click **New**. If the message box has **Chat** and **Cowork** options, choose **Cowork**. Click **Copy** below, paste into that message box, and press **Send**.
+
+**Prompt** Cowork
+
+```text
+Build me a snake game as a single HTML file and show it in the preview beside this conversation so I can play.
+```
+
+When the game appears beside the conversation, click inside it and follow the controls on screen. If you see the finished HTML file in the reply, click it to open the preview.
+
+<details>
+<summary>If the preview doesn’t open</summary>
+<p>If the reply contains the finished HTML file, download it and double-click it to play in your browser. Keep the Claude conversation open so you can still save the game in step 2.</p>
+
+If there’s no playable file in the reply, [make and add your course folder](#open-cowork-and-add-a-folder). Then copy and send this request in the conversation with that folder.
+
+{{prompt:a101-prework-snake-game}}
+
+Open `prework/snake.html` inside your course folder to play. You can then [add the course files](#3-download-the-course-files).
+
+</details>
+
+</div>
+
+<div class="rt-code">
+
+[Make a folder for your game](#open-cowork-and-add-a-folder), then send the request below in a session using that folder.
+
+{{prompt:a101-prework-snake-game}}
+
+Double-click `prework/snake.html` inside your folder to play in your browser.
+
+</div>
+
+<span id="3-play-your-game"></span>
+
+<h2 id="open-cowork-and-add-a-folder">2. Save the game in an agents-101 folder</h2>
 
 <span id="1-set-up-your-agent-runtime-5-min"></span>
 <span id="1-choose-your-training-folder"></span>
 <span id="1-create-a-folder-called-agents-101"></span>
 
-<div class="a101-os-picker" role="group" aria-label="Setup for your computer">Your computer <button type="button" data-a101-os="mac" aria-pressed="false">Mac</button> <button type="button" data-a101-os="windows" aria-pressed="false">Windows</button></div>
+<div class="rt-cowork">
+
+Make one folder so you can keep the game you just made. The same folder will hold your work for the rest of the course.
 
 <div class="a101-video-placeholder rt-profile rt-profile-cowork">Assume there is a short <span data-a101-os-only="mac">Mac</span><span data-a101-os-only="windows">Windows</span> video here showing the clicks from <strong>Add folder</strong> until you see <code>agents-101</code> below the message box.</div>
 
-<div class="rt-cowork">
 <ol>
 <li data-a101-os-only="windows">In File Explorer, open <strong>Documents</strong>. Click <strong>New</strong>, then <strong>Folder</strong>. Name it <code>agents-101</code>.</li>
-<li>Open <strong>Claude Desktop</strong>. Click <strong>New</strong> in the sidebar. If the message box shows both <strong>Chat</strong> and <strong>Cowork</strong>, click <strong>Cowork</strong>. If there’s just a message box, continue there.</li>
 <li>Below the message box, click <strong>Project or folder</strong>, then <strong>Add folder</strong>. You can also find <strong>Add folder</strong> under <strong>+</strong>.</li>
 <li data-a101-os-only="mac">In the picker, click <strong>Documents</strong> in the sidebar, then <strong>New Folder</strong>. Name it <code>agents-101</code> and click <strong>Create</strong>, then <strong>Open</strong>. If you have the folder already, select it and click <strong>Open</strong>.</li>
 <li data-a101-os-only="windows">In the picker, open <strong>Documents</strong>, select <code>agents-101</code>, and confirm your selection.</li>
 </ol>
-<p>If Claude asks for permission here or after you send the request, check that it names <code>agents-101</code> and click <strong>Allow</strong>.</p>
-<p>When you see <strong>agents-101</strong> below the message box, you’re ready to make the game. If it’s missing, go back to <strong>Add folder</strong> and select it again.</p>
+
+If Claude asks for permission, click **Allow** after checking that it names `agents-101`. When **agents-101** appears below the message box, copy and send this in the same conversation.
+
+**Prompt** Cowork
+
+```text
+Save the game we just made as `prework/snake.html` in the folder I added.
+```
+
+Wait for Claude to say it saved the game. **Documents → agents-101 → prework** is where you can find it again.
+
 </div>
 
 <div class="rt-code">
 <p><span data-a101-os-only="mac">In Finder, open <strong>Documents</strong> and click <strong>File</strong>, then <strong>New Folder</strong>.</span><span data-a101-os-only="windows">In File Explorer, open <strong>Documents</strong> and click <strong>New</strong>, then <strong>Folder</strong>.</span> Name it <code>agents-101</code>. Start a new session with the <code>agents-101</code> folder you created in Documents as the working folder.</p>
 </div>
 
-## 2. Make and play Snake
 
-<span id="4-build-a-snake-game-10-min"></span>
-<span id="2-build-a-snake-game"></span>
-<span id="2-make-the-game"></span>
-
-<p class="rt-cowork">Click <strong>Copy</strong> below. Paste into the same message box in Claude and click <strong>Send</strong>.</p>
-
-<p class="rt-code">Click <strong>Copy</strong> below, paste into the session you just opened, and send the request.</p>
-
-{{prompt:a101-prework-snake-game}}
-
-<span id="3-play-your-game"></span>
-
-Wait for Claude to say it saved the game in `prework/snake.html`. Claude makes the `prework` folder for you.
-
-<p><span data-a101-os-only="mac">In Finder,</span><span data-a101-os-only="windows">In File Explorer,</span> open <strong>Documents → agents-101 → prework</strong>. Double-click <strong>snake.html</strong>. The game opens in your browser. If it opens in an editor, right-click the file and use <strong>Open With</strong> to choose your browser.</p>
-
-After you’ve played, ask Claude for one change, such as a slower snake. Try it, then come back here for the next step. Keep the conversation open.
+Ask Claude for one change, such as a slower snake. Try it, then come back here for the next step. Keep the conversation open.
 
 ## 3. Download the course files
 

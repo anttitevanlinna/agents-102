@@ -130,7 +130,9 @@ function material(html) {
     if (tag === 'BR') return '\n';
     return /^(P|DIV|SECTION|HEADER|NAV|LI|SUMMARY)$/.test(tag) ? '\n' + inner.trim() + '\n' : inner;
   }
-  const bodies = [...doc.querySelectorAll('.prompt-block pre code')].filter(el => !hidden(el)).map(el => el.textContent.trimEnd());
+  const codeBlocks = [...doc.querySelectorAll('.prompt-block pre code')];
+  const bodies = codeBlocks.filter(el => !hidden(el)).map(el => el.textContent.trimEnd());
+  const cliSnake = codeBlocks.find(el => el.closest('.rt-profile-cli') && el.textContent.startsWith('Build me a snake game'));
   const find = prefix => {
     const found = bodies.find(body => body.startsWith(prefix));
     if (!found) throw new Error(`Rendered prompt missing: ${prefix}`);
@@ -139,7 +141,7 @@ function material(html) {
   const prompts = {
     extract: find('Extract the starter tarball'), baseline: find('Build me a personal HTML one-pager'),
     pause: find('Help me pause Agents 101'), resume: find('Help me resume Agents 101'),
-    snake: find('Build me a snake game'), package: find('Write a generation rules file'), critic: find('Launch a fresh subagent')
+    snake: cliSnake?.textContent.trimEnd() || find('Build me a snake game'), package: find('Write a generation rules file'), critic: find('Launch a fresh subagent')
   };
   const readerSections = [doc.querySelector('.a101-onboarding'), doc.querySelector('section#prework')];
   const controls = doc.querySelector('.a101-learning-controls');

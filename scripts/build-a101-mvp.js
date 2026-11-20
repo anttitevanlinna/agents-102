@@ -219,9 +219,10 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
     html = moveContentsAfterPrework(html);
     const runtimePicker = '<div id="runtime-switcher" class="runtime-switcher"></div>';
     if (!html.includes(runtimePicker)) throw new Error('Workbook runtime picker is missing');
-    html = html.replace(runtimePicker, `<details class="a101-tool-picker"><summary>Choose a tool</summary>${runtimePicker}</details>`);
+    html = html.replace(`  ${runtimePicker}\n`, '');
     if (!html.includes('</main>')) throw new Error('Workbook footer insertion point is missing');
-    html = html.replace('</main>', `<section class="a101-onboarding a101-learning-controls" aria-label="Pause or resume learning"><div class="module">\n${controls}\n</div></section>\n\n</main>`);
+    html = html.replace('</main>', `<section class="a101-onboarding a101-learning-controls" aria-label="Workbook options"><div class="module">\n${controls}\n<details class="a101-tool-picker"><summary id="workbook-tools">Tools for Claude Code and other runtimes</summary>${runtimePicker}</details>\n</div></section>\n\n</main>`);
+    html = html.replace(toc, `${toc}\n<p><a href="#workbook-tools">Use this workbook with another tool</a></p>`);
     const nav = '<ol class="workbook-topnav__modules">';
     if (!html.includes(nav)) throw new Error('Workbook navigation insertion point is missing');
     html = html.replace(nav, `${nav}\n      <li><a href="#start-learning" data-target="start-learning">Start</a></li>`);

@@ -210,7 +210,9 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     const gameCopy = snakeBlock.querySelector('.copy-btn');
     assert.equal(prework.querySelector('a[href^="claude:"]'), null);
     const firstVideo = prework.querySelector('.a101-game-start .a101-video-placeholder');
-    assert.match(firstVideo.textContent, /New → Cowork.*message box.*Send.*apple/);
+    assert.match(firstVideo.textContent, /New.*message box.*Send.*Cowork.*board/);
+    assert.match(prework.querySelector('.a101-game-start').textContent, /Choose Cowork if you see it, paste into the empty message box/);
+    assert.equal(firstVideo.querySelector('img').src, 'data:image/jpeg;base64,' + fs.readFileSync(path.join(ROOT, 'curriculum/delivery/agents-101-mvp/claude-send.jpg')).toString('base64'));
     const visibleRequest = snakeBlock.querySelector('code');
     const fullRequest = visibleRequest.textContent.trimEnd();
     assert.match(fullRequest, /first 30 seconds, steer the snake for me so I can’t lose/);

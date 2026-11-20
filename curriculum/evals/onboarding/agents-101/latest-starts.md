@@ -1,6 +1,6 @@
 # Agents 101 first-start impressions
 
-The current ACME workbook scored **4.627/5** across 30 simulated desktop starts. All 30 expected to reach their own game. The learner now copies the request into Cowork. An opening video placeholder describes the demonstration from pasting the prompt to dropping the first apple. The previous desktop-launch version scored the same. The highest full prototype score remains **4.667/5** against the **4.70/5** target.
+The current copy-first ACME workbook scored **4.593/5** across 30 simulated desktop starts. All 30 expected to reach their own game. The first click now starts the protected round. The initial video-led release scored **4.627/5**. The highest full prototype score remains **4.667/5** against the **4.70/5** target.
 
 ## Overview
 
@@ -241,3 +241,7 @@ Each row used the existing ten personas, three fresh reads per persona and the s
 ## Copy the request into Cowork
 
 The first video-led candidate scored **4.627/5** across 30 simulated starts. All 30 expected to play. The simulation assumed the demonstration described in the placeholder was available. The page also gives the complete written route. The workbook and offline handbook no longer launch Claude. The evidence batch is `decimal-read-53618e59-2624-4ab3-99b7-e572fcd2d348`.
+
+The release with a learner-started clock and optional message-box still scored **4.593/5**, with 30 of 30 expecting to play (batch `decimal-read-b1ab8b83-4951-4439-bb32-ed145bd70600`). It covers both the combined message box and the separate Chat/Cowork selector. One Claude-generated file made from the exact release request stayed asleep for 90 seconds in a browser simulation. The first click started its full 30-second countdown, an apple was eaten, and the game reached its arrow-key handoff.
+
+The same fixed benchmark scored the click-to-wake version with the selector assumed at 4.623, the first combined-layout directions at 4.603, and a permanently visible message-box still at 4.550. Four-reader design probes were used for screening only.

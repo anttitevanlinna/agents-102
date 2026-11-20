@@ -9,43 +9,32 @@
 <div class="rt-cowork">
 <div class="a101-game-start">
 
-Click **Copy request** below. In Claude Desktop, click **New**, then **Cowork**. Paste into the empty message box and click the **Send** arrow on its right.
+Click **Copy request** below. In Claude Desktop, click **New**. Choose **Cowork** if you see it, paste into the empty message box and click the **Send** arrow on its right.
 
-<div class="a101-video-placeholder">Assume there is a short video here. In Claude Desktop, watch someone choose <strong>New → Cowork</strong>, click the message box, paste “Build me a snake game” and press <strong>Send</strong>. The video cuts to the finished board and shows the first click dropping an apple.</div>
+<div class="a101-video-placeholder">Assume there is a short video here. Watch someone click <strong>New</strong> in Claude Desktop, paste the request into the message box and press <strong>Send</strong>. On screens with a Chat/Cowork switch, the video shows where to choose <strong>Cowork</strong>. It cuts to the finished board and the first click dropping an apple.
+<details><summary>See the message box and Send arrow</summary><img src="ACME_COWORK_MESSAGE_BOX" width="670" height="113" style="max-width:100%;height:auto" alt="A Snake request pasted in the Claude Desktop message box. The Send arrow is at its lower right."></details>
+</div>
 
 <div data-copy-label="Copy request">
 
 **Prompt** Cowork
 
 ```text
-Build me a snake game as one HTML file I can play here. Let me click an empty square to drop an apple. For the first 30 seconds, steer the snake for me so I can’t lose. Chase each apple I drop. Show “Click to drop an apple” on the board from the start.
+Build me a snake game as one HTML file I can play here. Start with a sleeping snake and the words “Click to drop an apple.” My first click drops the apple and wakes the snake. For the first 30 seconds, steer the snake for me so I can’t lose. Chase the apples I drop. Then let me try the arrow keys.
 
-Then offer me the arrow keys if I want to steer. Keep a [back to the handbook](https://agents102.bosser.consulting/clients/acme-mvp/agents-101/#open-cowork-and-add-a-folder) link on the board and in your reply.
+Put a link [back to the handbook](https://agents102.bosser.consulting/clients/acme-mvp/agents-101/#open-cowork-and-add-a-folder) on the board and in your reply.
 ```
 
 <p class="a101-copy-status" data-copy-status role="status" data-copy-message="Copied. Paste into Cowork and press Send."></p>
 </div>
 
-Give Claude about a minute. When the board says **Click to drop an apple**, click an empty square. Watch your snake turn toward it. Drop another apple wherever you like.
+Claude builds the game from your message in about a minute. Your snake waits for you. When the board beside Claude’s reply says **Click to drop an apple**, click an empty square. Watch the snake chase your apple. Drop another.
 
-Only see Claude’s reply? Click the Snake game in the reply. If it downloads, double-click the HTML file to play.
+**Only see a reply?** Click the Snake game in that reply. If there’s no game to click, tell Claude *“Give me the playable HTML file.”* Double-click the file in Downloads to play.
 
-Want to change a rule? Tell Claude. When you’re ready to keep your game, choose **Back to the handbook** on the board.
+Want a different rule? Tell Claude. When you’re ready to keep your game, choose **Back to the handbook** on the board.
 
 </div>
-
-<details>
-<summary>If the preview doesn’t open</summary>
-<p>If the reply contains the finished HTML file, download it and double-click it to play in your browser. Keep the Claude conversation open so you can still save the game in step 2.</p>
-
-If there’s no playable file in the reply, [make and add your course folder](#open-cowork-and-add-a-folder). Then copy and send this request in the conversation with that folder.
-
-{{prompt:a101-prework-snake-game}}
-
-Open `prework/snake.html` inside your course folder to play. You can then [add the course files](#3-download-the-course-files).
-
-</details>
-
 </div>
 
 <div class="rt-code">
@@ -177,6 +166,8 @@ Go to [Module 1: Getting Going](#getting-going). Start a new conversation for it
 <!-- maintainer -->
 
 ## Source verification
+
+- `[checked:2026-11-20 result:OK due:cohort]` https://support.claude.com/en/articles/15520349-use-claude-cowork-on-web-desktop-and-mobile — Desktop uses one message box. Choose Cowork when the Chat/Cowork selector is present. In the unified interface the task goes straight into the new conversation. Fallback: verify both layouts before filming.
 
 - `[checked:2026-11-19 result:OK due:cohort]` https://academy.claude.com/tutorials/get-started-in-claude-cowork-in-three-steps — [official product tutorial] Desktop conversation/mode selection; add a local folder from the message box. fallback: verify the current desktop entry and folder picker before delivery.
 - `[checked:2026-11-19 result:OK due:cohort]` https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork — [official product documentation] Approval behaviour varies by mode and organization; learner reviews the actual request. fallback: verify the approval flow without prescribing a mode or blanket permission.

@@ -192,7 +192,9 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
     fs.mkdirSync(brandDir);
     const preworkOverlay = path.join(overlayDir, 'trainings/agents-101/prework.md');
     fs.mkdirSync(path.dirname(preworkOverlay), { recursive: true });
-    fs.copyFileSync(path.join(DELIVERY, 'prework.md'), preworkOverlay);
+    const prework = fs.readFileSync(path.join(DELIVERY, 'prework.md'), 'utf8');
+    const sendStill = fs.readFileSync(path.join(DELIVERY, 'claude-send.jpg')).toString('base64');
+    fs.writeFileSync(preworkOverlay, prework.replace('src="ACME_COWORK_MESSAGE_BOX"', `src="data:image/jpeg;base64,${sendStill}"`));
     fs.writeFileSync(path.join(brandDir, 'customer.json'), JSON.stringify({ name: 'ACME', hubHeading: 'ACME' }) + '\n');
     const checkpoints = JSON.parse(fs.readFileSync(path.join(DELIVERY, 'checkpoints.json'), 'utf8'));
     createNavigationOverlay({ root: ROOT, overlayDir, workbookUrl: WORKBOOK_URL, checkpoints });

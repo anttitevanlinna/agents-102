@@ -9,11 +9,11 @@
 <div class="rt-cowork">
 <div class="a101-game-start">
 
-<ol>
-<li><a class="a101-open-claude" href="ACME_FIRST_GAME_LAUNCH">Open in Claude Desktop</a>. If your browser asks, choose <strong>Open</strong>.</li>
-<li>In the new <strong>Cowork</strong> conversation, the Snake request is already in the message box. Click the <strong>Send</strong> arrow beside it.</li>
-<li>Give Claude about a minute. A board opens beside the conversation with the snake already moving. Watch the first 30 seconds. When the board says <strong>Your turn</strong>, click it and press <strong>→</strong>.</li>
-</ol>
+<p><a class="a101-open-claude" href="ACME_FIRST_GAME_LAUNCH">Open in Claude Desktop</a>. Choose <strong>Open</strong> if your browser asks.</p>
+
+Your request will be waiting in a new **Cowork** conversation. Click the **Send** arrow on the right of the message box. Give Claude about a minute to build your game.
+
+As soon as you see the board, **click an empty square to drop an apple**. Watch the snake turn toward it. Click somewhere else. You’re already playing.
 
 <p class="a101-after-launch" role="status" hidden>Back from a round? <a href="#open-cowork-and-add-a-folder">Keep my game</a>.</p>
 
@@ -22,9 +22,9 @@
 **Prompt** Cowork
 
 ```text
-Build me a snake game as one HTML file I can play beside this conversation. For the first 30 seconds, steer the snake for me so I can’t lose. Put “I’ll drive first” on the board. Then pause with “Your turn. Click the board and press →.”
+Build me a snake game as one HTML file I can play here. Let me click an empty square to drop an apple. For the first 30 seconds, steer the snake for me so I can’t lose. Chase each apple I drop. Show “Click to drop an apple” on the board from the start.
 
-When a round ends, let me play again or go [back to the handbook](https://agents102.bosser.consulting/clients/acme-mvp/agents-101/#open-cowork-and-add-a-folder). Leave that link in your reply too.
+Then offer me the arrow keys if I want to steer. Keep a [back to the handbook](https://agents102.bosser.consulting/clients/acme-mvp/agents-101/#open-cowork-and-add-a-folder) link on the board and in your reply.
 ```
 
 <p class="a101-copy-status" data-copy-status role="status" data-copy-message="Copied. Paste into Cowork and press Send."></p>
@@ -32,9 +32,9 @@ When a round ends, let me play again or go [back to the handbook](https://agents
 
 Claude stayed closed? Click **Copy request** above. Open Claude Desktop, choose **New** in the left sidebar, then **Cowork**. Paste and press **Send**.
 
-**No board yet?** Click **Snake** in Claude’s reply. If Claude gives you an HTML file, download it and double-click it to play.
+**Only see a reply?** Click the Snake game in Claude’s reply. If it downloads, double-click the HTML file to play.
 
-Too fast? Tell Claude while you’re there. When you’ve played enough, choose **Back to the handbook** in the game or in Claude’s reply.
+After 30 seconds you can try steering. Want to change a rule? Tell Claude. Choose **Back to the handbook** on the board whenever you want to keep your game.
 
 </div>
 

@@ -1,6 +1,6 @@
 # Agents 101 first-start impressions
 
-The intermediate ACME workbook uses **Open in Claude**, a real Send screenshot, and a manual Copy fallback. It scored **4.597/5** across 30 simulated starts, and all 30 readers expected to play. The earlier Copy-first release scored **4.61/5**. The strongest full prototype scored **4.667/5**. The target is **4.70/5**.
+The current ACME workbook scored **4.627/5** across 30 simulated desktop starts. All 30 expected to reach their own game. In the opening round, the learner can click to drop an apple while the snake steers itself. The previous public workbook scored the same. The highest full prototype score remains **4.667/5** against the **4.70/5** target.
 
 ## Overview
 
@@ -225,3 +225,15 @@ Reader batches: `decimal-read-6d9a98c1-d48a-4164-9484-7b1f03016ff6` and `decimal
 The 30-second self-steering build scored **4.57/5** on the fixed 30-start benchmark (batch `decimal-read-a54557b9-9488-4f52-b6fa-d035d86ba3b3`). In a separate headless generation, the resulting game moved autonomously for 300 ticks of 100 ms without a loss, paused at the handoff, accepted the right-arrow key, showed the handbook link at game over and reset on replay. Headless Chrome also displayed the handoff after advancing its clock by 31 seconds. This is one generated game.
 
 The board-cue version scored **4.627/5** on the generated workbook (30/30 predicted first play, batch `decimal-read-b01d19df-4ea2-4878-a456-391a33c16d4d`). One generated game displayed “I’ll drive first” during autonomous movement, then “Your turn. Click the board and press →.” at the pause. The game accepted the arrow after the board was clicked. The reply and game shared the same return destination.
+
+## Playing from the first click
+
+| Candidate | Mean stars | Expected to play |
+| --- | ---: | ---: |
+| Launch and Copy together | 4.633 | 30/30 |
+| Open a file named Play Snake | 4.533 | 30/30 |
+| Automatic help and a named backup file | 4.413 | 30/30 |
+| Choose the food before sending | 4.567 | 30/30 |
+| Drop an apple during autopilot | 4.627 | 30/30 |
+
+Each row used the existing ten personas, three fresh reads per persona and the same desktop-start question. In a separate file-generating run, the first click placed an apple, the snake ate it, the game reached the 30-second handoff safely, and pressing an arrow transferred steering to the learner. The board linked directly to the save step. The file ran with a simulated browser clock. The native launch was not exercised in this round.

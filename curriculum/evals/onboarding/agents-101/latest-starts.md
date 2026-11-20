@@ -78,4 +78,16 @@ The walkthrough showed the request in a real Claude message box next to the Send
 
 Claude documents both a combined message box and a version with separate Chat and Cowork choices. Its web app can resume the same conversation, but local file access in a regular Cowork task requires starting that task in the desktop app. The course uses one desktop conversation from the game through saving it to the learner’s folder. [Claude Cowork help](https://support.claude.com/en/articles/15520349-use-claude-cowork-on-web-desktop-and-mobile)
 
+## One-click game trials
+
+| Candidate | Mean stars | Predicted starts |
+| --- | ---: | ---: |
+| Rock-paper-scissors with simple Copy-first directions | 4.587 | 30 of 30 |
+| Rock-paper-scissors with New and Cowork before Send | 4.607 | 30 of 30 |
+| Rock-paper-scissors with a ready cue and recovery link | 4.573 | 30 of 30 |
+
+A disposable Mac conversation produced rock-paper-scissors by 36 seconds. One click played a round. After play, Claude saved the exact HTML in an empty course folder in the same conversation. The downloaded preview and the saved file matched byte for byte. The two earlier Snake runs showed playable previews by 46 and 48 seconds. These timings are individual observations.
+
+All three Windows reads rated the numbered Copy-first route 4.7. That route named the location of New and placed the Cowork choice before Send. Its overall mean was 4.607, compared with 4.61 for the release.
+
 The [structured results](latest-starts.json) include every judgement and the scored HTML hashes. The [release verification](release-verification.json) records the artifact checks.

@@ -96,4 +96,17 @@ The 16-second demo beside Copy scored **4.537/5**. All 30 readers expected to st
 
 The first-start rubric ends at play. It gives no rating for attaching the folder, placing or unpacking the download, or finding the next workbook step in a fresh Cowork task. Native smokes verified play and saving the same file. The separate [onboarding outcomes](README.md) cover the return and recovery behaviors, with evidence from isolated model-runtime cases. The full native journey is still unverified.
 
+## Keep what you made
+
+| Candidate | Mean stars | Predicted starts |
+| --- | ---: | ---: |
+| One save and setup step, Copy first | 4.64 | 30 of 30 |
+| One save and setup step, prefilled Claude launch | 4.63 | 30 of 30 |
+
+The first task is to make and play the game. After play, the learner attaches a folder in the same conversation and sends one request to save the game and add the course files. Claude returns a link to the calendar exercise. These first-start reads end at play, before the folder step. The prefilled variant was checked for its link payload. Native launch remains unverified.
+
+In one disposable Mac conversation, Claude fetched the released archive, unpacked all 107 files byte for byte, preserved the already saved rock-paper-scissors game, installed the reading cue, and linked to the calendar exercise. A fresh conversation with only the same folder and “Help me resume Agents 101.” returned the exact same link. All 110 file hashes matched before and after resume.
+
+The 4.64 prototype is the highest first-start mean recorded. The verified public workbook is the 4.61 release.
+
 The [structured results](latest-starts.json) include every judgement and the scored HTML hashes. The [release verification](release-verification.json) records the artifact checks.

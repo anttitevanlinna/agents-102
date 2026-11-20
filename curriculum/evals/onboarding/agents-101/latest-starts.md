@@ -1,6 +1,6 @@
 # Agents 101 first-start impressions
 
-The current ACME workbook scored **4.627/5** across 30 simulated desktop starts. All 30 expected to reach their own game. In the opening round, the learner can click to drop an apple while the snake steers itself. The previous public workbook scored the same. The highest full prototype score remains **4.667/5** against the **4.70/5** target.
+The current ACME workbook scored **4.627/5** across 30 simulated desktop starts. All 30 expected to reach their own game. The learner now copies the request into Cowork. An opening video placeholder describes the demonstration from pasting the prompt to dropping the first apple. The previous desktop-launch version scored the same. The highest full prototype score remains **4.667/5** against the **4.70/5** target.
 
 ## Overview
 
@@ -237,3 +237,7 @@ The board-cue version scored **4.627/5** on the generated workbook (30/30 predic
 | Drop an apple during autopilot | 4.627 | 30/30 |
 
 Each row used the existing ten personas, three fresh reads per persona and the same desktop-start question. In a separate file-generating run, the first click placed an apple, the snake ate it, the game reached the 30-second handoff safely, and pressing an arrow transferred steering to the learner. The board linked directly to the save step. The file ran with a simulated browser clock. The native launch was not exercised in this round.
+
+## Copy the request into Cowork
+
+The first video-led candidate scored **4.627/5** across 30 simulated starts. All 30 expected to play. The simulation assumed the demonstration described in the placeholder was available. The page also gives the complete written route. The workbook and offline handbook no longer launch Claude. The evidence batch is `decimal-read-53618e59-2624-4ab3-99b7-e572fcd2d348`.

@@ -25,9 +25,8 @@ const SETUP_CSS = `
 [data-a101-os-only][hidden] { display: none !important; }
 .a101-copy-status { font-size: .9rem; color: var(--fg-2); }
 .a101-copy-status:empty { margin: 0; }
-.a101-game-start a.a101-open-claude { display: inline-block; padding: .55rem .85rem; border-radius: .3rem; background: #24583b; color: #fff; text-decoration: none; }
 .a101-game-start [data-copy-label] .copy-btn { color: #fff; background: #24583b; padding: .5rem .8rem; }
-.a101-game-start :is(.copy-btn, .a101-open-claude):focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.a101-game-start .copy-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 `;
 const SETUP_SCRIPT = `(function () {
   var key = 'a101-setup-os', selected;
@@ -52,10 +51,6 @@ const SETUP_SCRIPT = `(function () {
     if (value !== 'mac' && value !== 'windows') return;
     apply(value);
     try { localStorage.setItem(key, value); } catch (_) {}
-  });
-  var launch = document.querySelector('.a101-open-claude');
-  if (launch) launch.addEventListener('click', function () {
-    launch.closest('.a101-game-start').querySelector('.a101-after-launch').hidden = false;
   });
   apply(selected);
 })();`;
@@ -197,13 +192,7 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
     fs.mkdirSync(brandDir);
     const preworkOverlay = path.join(overlayDir, 'trainings/agents-101/prework.md');
     fs.mkdirSync(path.dirname(preworkOverlay), { recursive: true });
-    const prework = fs.readFileSync(path.join(DELIVERY, 'prework.md'), 'utf8');
-    const request = JSDOM.fragment(marked.parse(prework))
-      .querySelector('.a101-game-start [data-copy-label] pre code')?.textContent.trimEnd();
-    if (!request) throw new Error('Expected a first game request');
-    const marker = 'href="ACME_FIRST_GAME_LAUNCH"';
-    if (prework.split(marker).length !== 2) throw new Error('Expected one first-game launch link');
-    fs.writeFileSync(preworkOverlay, prework.replace(marker, () => `href="claude://cowork/new?q=${encodeURIComponent(request)}"`));
+    fs.copyFileSync(path.join(DELIVERY, 'prework.md'), preworkOverlay);
     fs.writeFileSync(path.join(brandDir, 'customer.json'), JSON.stringify({ name: 'ACME', hubHeading: 'ACME' }) + '\n');
     const checkpoints = JSON.parse(fs.readFileSync(path.join(DELIVERY, 'checkpoints.json'), 'utf8'));
     createNavigationOverlay({ root: ROOT, overlayDir, workbookUrl: WORKBOOK_URL, checkpoints });

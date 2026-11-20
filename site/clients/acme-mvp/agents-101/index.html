@@ -2771,9 +2771,8 @@ body.slides-active .a101-onboarding { display: none; }
 [data-a101-os-only][hidden] { display: none !important; }
 .a101-copy-status { font-size: .9rem; color: var(--fg-2); }
 .a101-copy-status:empty { margin: 0; }
-.a101-game-start a.a101-open-claude { display: inline-block; padding: .55rem .85rem; border-radius: .3rem; background: #24583b; color: #fff; text-decoration: none; }
 .a101-game-start [data-copy-label] .copy-btn { color: #fff; background: #24583b; padding: .5rem .8rem; }
-.a101-game-start :is(.copy-btn, .a101-open-claude):focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.a101-game-start .copy-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 
 </style>
 </head>
@@ -2821,11 +2820,8 @@ body.slides-active .a101-onboarding { display: none; }
 <div class="rt-cowork">
 <div class="a101-game-start">
 
-<p><a class="a101-open-claude" href="claude://cowork/new?q=Build%20me%20a%20snake%20game%20as%20one%20HTML%20file%20I%20can%20play%20here.%20Let%20me%20click%20an%20empty%20square%20to%20drop%20an%20apple.%20For%20the%20first%2030%20seconds%2C%20steer%20the%20snake%20for%20me%20so%20I%20can%E2%80%99t%20lose.%20Chase%20each%20apple%20I%20drop.%20Show%20%E2%80%9CClick%20to%20drop%20an%20apple%E2%80%9D%20on%20the%20board%20from%20the%20start.%0A%0AThen%20offer%20me%20the%20arrow%20keys%20if%20I%20want%20to%20steer.%20Keep%20a%20%5Bback%20to%20the%20handbook%5D(https%3A%2F%2Fagents102.bosser.consulting%2Fclients%2Facme-mvp%2Fagents-101%2F%23open-cowork-and-add-a-folder)%20link%20on%20the%20board%20and%20in%20your%20reply.">Open in Claude Desktop</a>. Choose <strong>Open</strong> if your browser asks.</p>
-
-<p>Your request will be waiting in a new <strong>Cowork</strong> conversation. Click the <strong>Send</strong> arrow on the right of the message box. Give Claude about a minute to build your game.</p>
-<p>As soon as you see the board, <strong>click an empty square to drop an apple</strong>. Watch the snake turn toward it. Click somewhere else. You’re already playing.</p>
-<p class="a101-after-launch" role="status" hidden>Back from a round? <a href="#open-cowork-and-add-a-folder">Keep my game</a>.</p>
+<p>Click <strong>Copy request</strong> below. In Claude Desktop, click <strong>New</strong>, then <strong>Cowork</strong>. Paste into the empty message box and click the <strong>Send</strong> arrow on its right.</p>
+<div class="a101-video-placeholder">Assume there is a short video here. In Claude Desktop, watch someone choose <strong>New → Cowork</strong>, click the message box, paste “Build me a snake game” and press <strong>Send</strong>. The video cuts to the finished board and shows the first click dropping an apple.</div>
 
 <div data-copy-label="Copy request">
 
@@ -2837,9 +2833,9 @@ Then offer me the arrow keys if I want to steer. Keep a <span hidden>[</span><a 
 <p class="a101-copy-status" data-copy-status role="status" data-copy-message="Copied. Paste into Cowork and press Send."></p>
 </div>
 
-<p>Claude stayed closed? Click <strong>Copy request</strong> above. Open Claude Desktop, choose <strong>New</strong> in the left sidebar, then <strong>Cowork</strong>. Paste and press <strong>Send</strong>.</p>
-<p><strong>Only see a reply?</strong> Click the Snake game in Claude’s reply. If it downloads, double-click the HTML file to play.</p>
-<p>After 30 seconds you can try steering. Want to change a rule? Tell Claude. Choose <strong>Back to the handbook</strong> on the board whenever you want to keep your game.</p>
+<p>Give Claude about a minute. When the board says <strong>Click to drop an apple</strong>, click an empty square. Watch your snake turn toward it. Drop another apple wherever you like.</p>
+<p>Only see Claude’s reply? Click the Snake game in the reply. If it downloads, double-click the HTML file to play.</p>
+<p>Want to change a rule? Tell Claude. When you’re ready to keep your game, choose <strong>Back to the handbook</strong> on the board.</p>
 </div>
 
 <details>
@@ -2984,7 +2980,7 @@ Then offer me the arrow keys if I want to steer. Keep a <span hidden>[</span><a 
 <span id="3-add-the-course-files"></span>
 <span id="4-download-the-course-files"></span></p>
 <p>The course files include a copy of the handbook and let Claude help you find your place when you come back.</p>
-<p><a href="https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=1ffa55220758066f" target="_blank" rel="noopener">Download the course files</a>. Find <code>agents-101-starter.tar.gz</code> in your browser’s downloads and move it into <code>agents-101</code> alongside the <code>prework</code> folder. Claude will unpack it when you copy and send the request below in the same conversation.</p>
+<p><a href="https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=3854363fcb10aaa5" target="_blank" rel="noopener">Download the course files</a>. Find <code>agents-101-starter.tar.gz</code> in your browser’s downloads and move it into <code>agents-101</code> alongside the <code>prework</code> folder. Claude will unpack it when you copy and send the request below in the same conversation.</p>
 <div class="rt-profile rt-profile-cowork">
 
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
@@ -17307,10 +17303,6 @@ SOFTWARE.
     if (value !== 'mac' && value !== 'windows') return;
     apply(value);
     try { localStorage.setItem(key, value); } catch (_) {}
-  });
-  var launch = document.querySelector('.a101-open-claude');
-  if (launch) launch.addEventListener('click', function () {
-    launch.closest('.a101-game-start').querySelector('.a101-after-launch').hidden = false;
   });
   apply(selected);
 })();</script>

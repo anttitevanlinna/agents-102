@@ -9,13 +9,9 @@
 <div class="rt-cowork">
 <div class="a101-game-start">
 
-<p><a class="a101-open-claude" href="ACME_FIRST_GAME_LAUNCH">Open in Claude Desktop</a>. Choose <strong>Open</strong> if your browser asks.</p>
+Click **Copy request** below. In Claude Desktop, click **New**, then **Cowork**. Paste into the empty message box and click the **Send** arrow on its right.
 
-Your request will be waiting in a new **Cowork** conversation. Click the **Send** arrow on the right of the message box. Give Claude about a minute to build your game.
-
-As soon as you see the board, **click an empty square to drop an apple**. Watch the snake turn toward it. Click somewhere else. You’re already playing.
-
-<p class="a101-after-launch" role="status" hidden>Back from a round? <a href="#open-cowork-and-add-a-folder">Keep my game</a>.</p>
+<div class="a101-video-placeholder">Assume there is a short video here. In Claude Desktop, watch someone choose <strong>New → Cowork</strong>, click the message box, paste “Build me a snake game” and press <strong>Send</strong>. The video cuts to the finished board and shows the first click dropping an apple.</div>
 
 <div data-copy-label="Copy request">
 
@@ -30,11 +26,11 @@ Then offer me the arrow keys if I want to steer. Keep a [back to the handbook](h
 <p class="a101-copy-status" data-copy-status role="status" data-copy-message="Copied. Paste into Cowork and press Send."></p>
 </div>
 
-Claude stayed closed? Click **Copy request** above. Open Claude Desktop, choose **New** in the left sidebar, then **Cowork**. Paste and press **Send**.
+Give Claude about a minute. When the board says **Click to drop an apple**, click an empty square. Watch your snake turn toward it. Drop another apple wherever you like.
 
-**Only see a reply?** Click the Snake game in Claude’s reply. If it downloads, double-click the HTML file to play.
+Only see Claude’s reply? Click the Snake game in the reply. If it downloads, double-click the HTML file to play.
 
-After 30 seconds you can try steering. Want to change a rule? Tell Claude. Choose **Back to the handbook** on the board whenever you want to keep your game.
+Want to change a rule? Tell Claude. When you’re ready to keep your game, choose **Back to the handbook** on the board.
 
 </div>
 

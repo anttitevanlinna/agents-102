@@ -129,4 +129,13 @@ The best prototype scored 4.643. It gives three visible actions after Copy and d
 
 The dedicated view showed the welcome, game request, expected Claude actions, and a link to save the game. Browser testing confirmed that Copy displayed its next-step cue and that the save link revealed the full workbook. The built-workbook trial kept the normal view and added the cues for opening Claude, sending the request, watching progress, and playing. Its build and navigation suites passed 62 tests. Both scores were below the 4.643 prototype.
 
+## Composer and game cues
+
+| Candidate | Mean stars | Predicted starts |
+| --- | ---: | ---: |
+| Show the Claude composer cue after Copy | 4.617 | 30 of 30 |
+| Show the game Claude made in the welcome | 4.607 | 30 of 30 |
+
+The Copy prototype kept the written first-play route visible. The real composer crop appeared after the browser confirmed a successful clipboard write. The HTML test checked the copied text and verified that the cue stayed hidden when clipboard access failed. The second prototype showed the actual game in the welcome before the learner saw the request. The most frequent request for clearer directions in these reads concerned the Claude mode choice.
+
 The [structured results](latest-starts.json) include every judgement and the scored HTML hashes. The [release verification](release-verification.json) records the artifact checks.

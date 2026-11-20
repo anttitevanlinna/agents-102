@@ -10,7 +10,7 @@ node scripts/build-a101-mvp.js
 
 Output: `site/clients/acme-mvp/`. Workbook URL: https://agents102.bosser.consulting/clients/acme-mvp/agents-101/
 
-`onboarding.md` owns the welcome, game and calendar previews, and Pause/Resume. It explains that the folder holds the files the learner will make. `prework.md` walks through creating and selecting the folder, building and playing the game, adding the course files, summarizing meetings and reading the agent introduction. Pause and Resume appear at the end of Prework, followed by the course index and Module 1. The calendar exercise defaults to a screenshot. The public workbook and packaged handbook share this Prework. Saved links still resolve.
+`onboarding.md` owns the welcome, game and calendar previews, and Pause/Resume. It explains that the folder holds the files the learner will make. `prework.md` walks through playing the game, creating a folder to save it, adding the course files, summarizing meetings and reading the agent introduction. The course index follows Prework. Pause, Resume and alternate tools appear at the end of the workbook. The calendar exercise defaults to a screenshot. The public workbook and packaged handbook share this Prework. Saved links still resolve.
 
 A Mac/Windows setup picker appears before the first folder step. It detects the OS, allows an override and keeps that preference in browser-local storage. It selects the matching folder directions and video captions without changing the runtime. The offline companion carries the same control.
 
@@ -18,7 +18,7 @@ Two text-only video placeholders cover folder selection and adding the course fi
 
 `course-navigation.md` ships at `prework/course-navigation.md`; the builder appends six return rows derived from the nine prompt keys in `checkpoints.json`. The four calendar variants share one return row. The guide owns navigation, completion distinctions and local position recovery. Canonical exercise prompts remain unchanged except for the edition's starter-extraction overlay.
 
-The first game starts in an empty training folder, before course context is installed. Its canonical request writes `prework/snake.html`. Until starter setup is complete, the learner bookmarks their workbook section to resume manually. Extracting the starter preserves the game.
+In Cowork, the learner plays in the conversation preview before attaching a folder, then saves the same game to `prework/snake.html` in that conversation. The workbook offers a browser fallback and keeps the canonical local-file request for CLI and other local runtimes. Until starter setup is complete, the learner bookmarks their workbook section to resume manually. Extracting the starter preserves the game.
 
 After extraction, the request adds the course-only reading cue `Read prework/course-navigation.md before helping with Agents 101 work.` to `CLAUDE.md`, preserving existing instructions. It reads the guide and returns the learner to the calendar exercise. Pause and Resume explicitly name the guide once it is available.
 

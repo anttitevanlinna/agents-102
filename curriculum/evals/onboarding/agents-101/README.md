@@ -4,7 +4,7 @@
 
 Scope: public full workbook, starter, course-navigation guide and local position note through Prework/M1. The workbook owns the teaching. The guide contains six return rows generated from nine canonical prompt keys. Canonical exercise prompts remain unchanged except for the edition's starter-extraction overlay. A separate Teacher and report sink are outside this delivery.
 
-The first game uses the canonical snake request in an empty training folder. Its handbook instructions handle the return. Once the course files are in place, Pause and Resume explicitly name the guide. Bookmarking covers an earlier stop. The installed-context Snake case below exercises a later navigation checkpoint.
+In Cowork, the learner plays the first game in the preview, attaches the course folder, and saves the same game there. The CLI uses the canonical local-file request. The workbook retains a browser fallback and instructions for returning after play. Once the course files are in place, Pause and Resume explicitly name the guide. Bookmarking covers an earlier stop. The installed-context Snake case below exercises a later navigation checkpoint.
 
 The archive has no root `CLAUDE.md`. Installation creates or augments it with the reading cue `Read prework/course-navigation.md before helping with Agents 101 work.`, preserves existing instructions, and reads the guide. After extraction the guide points to the calendar exercise. The learner authors working rules in the Module 2 debrief and preserves the navigation cue.
 

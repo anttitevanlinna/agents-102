@@ -30,4 +30,16 @@ is "snap strips icon glyph and chevron to match"     "$(grep -c '+ New project v
 is "snap never prints other text"                    "$(grep -c 'Private' <<< "$SNAP")"              "0"
 is "snap counts the other text"                      "$(tail -1 <<< "$SNAP")"                        "  -- 1 line(s) of other text not shown"
 
+# run_step: while recording, each step logs "name<TAB>start<TAB>end" (s since rec_start) for the cut lines
+step_demo() { sleep 0.3; }
+STEPLOG="$(mktemp)"; REC_T0="$(python3 -c 'import time;print(time.time()-1.0)')"; run_step demo >/dev/null
+IFS=$'\t' read -r sn st en < "$STEPLOG"; rm -f "$STEPLOG"; unset REC_T0 STEPLOG
+is "step log names the step"                 "$sn" "demo"
+is "step log start is about 1 s into the take" "$(python3 -c "print(0.9 <= $st <= 1.3)")" "True"
+is "step log end is after start"             "$(python3 -c "print($en - $st >= 0.25)")" "True"
+
+# _largest POSITIONS SIZES (AppleScript lists for every window, as it prints them) -> the main window as x,y,w,h
+is "a small popup listed first does not win"  "$(_largest "75, 38, 57, 25" "52, 20, 1355, 751")"  "57,25,1355,751"
+is "a single window"                          "$(_largest "57, 25" "1355, 751")"                  "57,25,1355,751"
+
 (( fail == 0 )) && echo "ALL OK" || { echo "FAILED"; exit 1; }

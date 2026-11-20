@@ -90,14 +90,18 @@ start_state() {
   local f="$DRIVER/states/$1.sh"; [[ -f "$f" ]] || die "no start state $1 (states/$1.sh)"
   osascript -e "tell application \"$APP\" to activate" >/dev/null || die "cannot activate $APP"
   sleep 0.8   # macOS refuses scripted resizing of this window (-10003): verify only; the operator sizes it once
-  local g; g="$(osascript -e "tell application \"System Events\" to get {position, size} of window 1 of process \"$APP\"" | tr -d ' ')"
+  local g; g="$(_largest "$(osascript -e "tell application \"System Events\" to get position of every window of process \"$APP\"")" \
+                         "$(osascript -e "tell application \"System Events\" to get size of every window of process \"$APP\"")")"
   [[ "$g" == "$WIN_X,$WIN_Y,$WIN_W,$WIN_H" ]] || die "window is $g, not $WIN_X,$WIN_Y,$WIN_W,$WIN_H: crops would not match"
   bash "$f"
 }
 
 # rec_start OUT.mov SECONDS / rec_stop: record the standard window for a fixed length (clicks drawn as press rings),
 # hands off in between; rec_stop waits for the recording to end. Trim the tail with the take's --trim.
-rec_start() { REC_OUT="$1"; rm -f "$1"; screencapture -v -k -x -V "${2:-40}" -R"$WIN_X,$WIN_Y,$WIN_W,$WIN_H" "$1" & REC_PID=$!; sleep 2.5; }
+rec_start() { REC_OUT="$1"; rm -f "$1"; STEPLOG="${1%.mov}.steps.tsv"; : > "$STEPLOG"
+  screencapture -v -k -x -V "${2:-40}" -R"$WIN_X,$WIN_Y,$WIN_W,$WIN_H" "$1" & REC_PID=$!
+  REC_T0="$(_now)"; sleep 2.5; }
+_now() { python3 -c 'import time; print(f"{time.time():.3f}")'; }
 rec_stop()  { [[ -n "${REC_PID:-}" ]] || return 0; wait "$REC_PID" 2>/dev/null || true; REC_PID=""; }
 
 # back_to_operator: the Code tab holds the operator's own transcript; every take ends there.
@@ -178,3 +182,18 @@ _snapf() {
     END { printf "  -- %d line(s) of other text not shown\n", priv }'
 }
 snap() { _ocr "$(_region "${1:-0}" "${2:-99999}" "${3:-0}" "${4:-99999}")" | _snapf "${SNAP_ALLOW:-$DRIVER/redact-allow.txt}"; }
+
+# run_step NAME: run step_NAME; while recording, log "name<TAB>start<TAB>end" (s since rec_start) to STEPLOG, so cut
+# lines come from the log, not from scanning the video. Recording starts ~0.3 s after REC_T0 (screencapture spin-up).
+run_step() {
+  echo "== $1"; local a; a="$(_now)"
+  "step_$1"
+  [[ -n "${REC_T0:-}" && -n "${STEPLOG:-}" ]] && python3 -c "print(f'$1\t{$a-$REC_T0:.2f}\t{$(_now)-$REC_T0:.2f}')" >> "$STEPLOG"
+  return 0
+}
+
+# _largest "x, y, w, h, ...": the app's main window among all its windows (a popup can be window 1). Pure.
+_largest() {
+  paste -d, <(tr -d ' ' <<< "$1" | tr ',' '\n' | paste -d, - -) <(tr -d ' ' <<< "$2" | tr ',' '\n' | paste -d, - -) \
+    | awk -F, '$3*$4 > a { a = $3*$4; m = $0 } END { print m }'
+}

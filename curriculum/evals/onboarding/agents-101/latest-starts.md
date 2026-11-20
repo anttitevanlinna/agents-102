@@ -138,4 +138,13 @@ The dedicated view showed the welcome, game request, expected Claude actions, an
 
 The Copy prototype kept the written first-play route visible. The real composer crop appeared after the browser confirmed a successful clipboard write. The HTML test checked the copied text and verified that the cue stayed hidden when clipboard access failed. The second prototype showed the actual game in the welcome before the learner saw the request. The most frequent request for clearer directions in these reads concerned the Claude mode choice.
 
+## Opening Claude
+
+| Candidate | Mean stars | Predicted starts |
+| --- | ---: | ---: |
+| Mac and Windows launcher instructions before play | 4.56 | 30 of 30 |
+| Identify the Claude window and the New button | 4.537 | 30 of 30 |
+
+The first version moved the OS picker to the game and showed the matching search and paste shortcuts. The HTML check verified both defaults and switching between them. The second used a real Mac crop of New and explained how to recognise the Claude view and the empty message box. Readers still raised the Chat and Cowork choice, and both versions scored below the shorter first-game route. Windows was represented in the HTML reads. [Apple Spotlight shortcuts](https://support.apple.com/en-ie/guide/mac-help/mh26783/mac) · [Microsoft Start menu documentation](https://support.microsoft.com/en-us/windows/experience/personalization/customize-the-windows-start-menu)
+
 The [structured results](latest-starts.json) include every judgement and the scored HTML hashes. The [release verification](release-verification.json) records the artifact checks.

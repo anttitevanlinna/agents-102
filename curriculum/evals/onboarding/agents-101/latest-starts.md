@@ -31,4 +31,16 @@ The welcome, game request, and example board appear together. Copy displays the 
 
 The score measures perceived clarity from rendered HTML. The browser check verified that Copy and its feedback were visible on the selected build. The earlier native Mac test used the same game and save requests. Windows was represented in the HTML simulations.
 
+## Follow-up trials
+
+| Candidate | Mean stars |
+| --- | ---: |
+| Focused Start with an explicit return link | 4.49 |
+| Observed progress cues and visible browser fallback | 4.51 |
+| Prototype request with an explicit Play button | 4.53 |
+| Brief instructions with legacy mode help tucked away | 4.43 |
+| Progress and Play cues beside the example | 4.61 |
+
+In a fresh Mac run, Claude showed **Creating snake.html** after 32 seconds and the playable board was visible by 48 seconds. The live request produced **Start** in that run and **Play** in an earlier run. A separate prototype request explicitly asked for **Play**. Claude provided that button and the game ran, while the prototype’s HTML score was lower. These are observations from individual runs.
+
 The [structured results](latest-starts.json) include every judgement and the scored HTML hashes. The [release verification](release-verification.json) records the artifact checks.

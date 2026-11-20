@@ -192,4 +192,13 @@ The 4.667 result belongs to its exact prototype, which also used a different wel
 
 Both prototypes kept the launch and Send screenshot. They used one request to save the game and add the course files. The handbook linked to the calendar exercise. The isolated model test supplied the original game and the already downloaded archive. It reproduced the game byte for byte, matched all 107 archive files, and left an unrelated learner note intact. The Mac was locked during this trial, so a fresh desktop test of the new wording is outstanding.
 
+## The draft and the finished game
+
+| Candidate | Mean stars | Predicted starts |
+| --- | ---: | ---: |
+| Explicit draft-and-send cue | 4.607 | 30 of 30 |
+| Reply, game card and playable board together | 4.657 | 30 of 30 |
+
+The draft version said who sends the request and revealed the next action on click. The second showed the actual Claude reply, Snake card, and Start button at the play step. The HTML check verified the added cue and the Copy recovery panel. Both kept the exact launch request. The 4.667 prototype with the Send screenshot remains the highest score.
+
 The [structured results](latest-starts.json) include every judgement and the scored HTML hashes. The [release verification](release-verification.json) records the artifact checks.

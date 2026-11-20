@@ -67,4 +67,15 @@ The live score is **4.61/5**. The visual trials use the same HTML-reading rubric
 
 The first version linked to a new Cowork conversation with the request prefilled and copied the same request for manual recovery. The second made the manual steps visible beside the link and spelled out how to send the request and open the game. The Windows persona rated both versions 4.4 in all three attempts. Those reads consistently raised uncertainty about whether the browser would open Claude. Automated checks verified the link payload and clipboard behavior. The native launch remains unverified.
 
+## Claude conversation walkthrough trials
+
+| Candidate | Mean stars | Predicted starts |
+| --- | ---: | ---: |
+| Copy inside the Claude walkthrough | 4.51 | 30 of 30 |
+| Explicit instructions for both Claude layouts | 4.48 | 30 of 30 |
+
+The walkthrough showed the request in a real Claude message box next to the Send arrow. Readers still wanted to know what to do if the Cowork switch was absent. The second version showed both message boxes as explicit branches and made board, card, and file recovery visible. Several readers wanted one default route and a clear success cue when Claude finished.
+
+Claude documents both a combined message box and a version with separate Chat and Cowork choices. Its web app can resume the same conversation, but local file access in a regular Cowork task requires starting that task in the desktop app. The course uses one desktop conversation from the game through saving it to the learner’s folder. [Claude Cowork help](https://support.claude.com/en/articles/15520349-use-claude-cowork-on-web-desktop-and-mobile)
+
 The [structured results](latest-starts.json) include every judgement and the scored HTML hashes. The [release verification](release-verification.json) records the artifact checks.

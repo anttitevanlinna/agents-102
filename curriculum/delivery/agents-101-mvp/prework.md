@@ -8,46 +8,32 @@
 
 <div class="rt-cowork">
 <div class="a101-game-start">
-<div>
 
-<p><a class="a101-open-claude" href="ACME_FIRST_GAME_LAUNCH">Open in Claude</a></p>
+<p><a class="a101-open-claude" href="ACME_FIRST_GAME_LAUNCH">Open in Claude Desktop</a></p>
 
-Claude Desktop opens a new conversation with this request ready to send. If your browser asks, choose **Open**.
+This opens a new **Cowork** conversation in Claude Desktop with the request below already typed. Choose **Open** if your browser asks. In Claude, click the **Send** arrow.
 
-<p class="a101-launch-request"><code>ACME_FIRST_GAME_REQUEST</code></p>
+<p class="a101-after-launch" role="status" hidden>Back from a round? <a href="#open-cowork-and-add-a-folder">Keep my game</a>.</p>
 
-<ol>
-<li>
-<figure class="a101-first-send-cue">
-<img src="ACME_CLAUDE_SEND" alt="Claude Desktop with the Snake request ready in the message box and the up-arrow Send button on the right" width="670" height="113">
-<figcaption>When you see this message box in Claude Desktop, click the <strong>Send</strong> arrow. Claude starts making <code>snake.html</code>.</figcaption>
-</figure>
-</li>
-<li>When the Snake board opens beside the conversation, click <strong>Start</strong> or <strong>Play</strong>. Then come back here to <a href="#open-cowork-and-add-a-folder">save your game</a>.</li>
-</ol>
-
-<details class="a101-open-claude-fallback">
-<summary>Claude stayed closed? Copy the request here.</summary>
-<div data-copy-label="Copy the game request">
-
-Copy the request below. In **Claude Desktop**, click **New** in the left sidebar. If the message box shows **Chat** and **Cowork**, choose **Cowork**. Paste the request and press **Send**.
+<div data-copy-label="Copy request">
 
 **Prompt** Cowork
 
 ```text
-Build me a snake game as a single HTML file and show it in the preview beside this conversation so I can play.
+Build me a snake game as one HTML file I can play beside this conversation. For the first 30 seconds, steer the snake for me so I can’t lose. Then wait for my first arrow key to take over.
+
+When a round ends, let me play again or go [back to the handbook](https://agents102.bosser.consulting/clients/acme-mvp/agents-101/#open-cowork-and-add-a-folder). Leave that link in your reply too.
 ```
 
-<p class="a101-copy-status" data-copy-status role="status" data-copy-message="Copied. Paste into the new Claude conversation and press Send."></p>
+<p class="a101-copy-status" data-copy-status role="status" data-copy-message="Copied. Paste into Cowork and press Send."></p>
 </div>
-</details>
 
-If Claude replies with a **Snake** game card, click it to open the board. If you still can’t see the game, open **If the preview doesn’t open** below.
-</div>
-<figure class="a101-game-example">
-<img src="ACME_SNAKE_PREVIEW" alt="Example Snake game with a green Play button" width="488" height="488">
-<figcaption>Example game made with Claude</figcaption>
-</figure>
+Claude stayed closed? Click **Copy request** above. Open Claude Desktop, choose **New** in the left sidebar, then **Cowork**. Paste and press **Send**.
+
+Give Claude about a minute. When you see the snake moving beside the conversation, that’s your game. It plays the first 30 seconds for you. When it stops, click the board and press **→** to take over. If you see a **Snake** card, click it to open the board. If Claude gives you a file, download it and double-click it.
+
+Play a round. Too fast? Tell Claude. When you’ve had enough, choose **Back to the handbook** on the game-over screen or in Claude’s reply.
+
 </div>
 
 <details>
@@ -76,7 +62,7 @@ Double-click `prework/snake.html` inside your folder to play in your browser.
 
 <span id="3-play-your-game"></span>
 
-<h2 id="open-cowork-and-add-a-folder">2. Save the game in an agents-101 folder</h2>
+<h2 id="open-cowork-and-add-a-folder">2. Keep the version you made</h2>
 
 <div class="a101-os-picker" role="group" aria-label="Setup for your computer">Your computer <button type="button" data-a101-os="mac" aria-pressed="false">Mac</button> <button type="button" data-a101-os="windows" aria-pressed="false">Windows</button></div>
 
@@ -86,7 +72,7 @@ Double-click `prework/snake.html` inside your folder to play in your browser.
 
 <div class="rt-cowork">
 
-Make one folder so you can keep the game you just made. The same folder will hold your work for the rest of the course.
+Right now your game is in the conversation. Give it a home on your computer so you can open it again. The folder will hold the work you do here, including your calendar briefing.
 
 <div class="a101-video-placeholder rt-profile rt-profile-cowork">Assume there is a short <span data-a101-os-only="mac">Mac</span><span data-a101-os-only="windows">Windows</span> video here showing the clicks from <strong>Add folder</strong> until you see <code>agents-101</code> below the message box.</div>
 
@@ -114,7 +100,7 @@ Wait for Claude to say it saved the game. **Documents → agents-101 → prework
 </div>
 
 
-Ask Claude for one change, such as a slower snake. Try it, then come back here for the next step. Keep the conversation open.
+<div class="rt-code">Ask Claude for a change you’d like to try. Play another round.</div>
 
 ## 3. Download the course files
 

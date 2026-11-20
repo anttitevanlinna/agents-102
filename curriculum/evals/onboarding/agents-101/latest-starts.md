@@ -1,6 +1,6 @@
 # Agents 101 first-start impressions
 
-The intermediate ACME workbook uses **Open in Claude**, a real Send screenshot, and a manual Copy fallback. It scored **4.597/5** across 30 simulated starts, and all 30 readers expected to play. The earlier Copy-first release scored **4.61/5**. The strongest full prototype scored **4.667/5**. The **4.70/5** goal is paused.
+The intermediate ACME workbook uses **Open in Claude**, a real Send screenshot, and a manual Copy fallback. It scored **4.597/5** across 30 simulated starts, and all 30 readers expected to play. The earlier Copy-first release scored **4.61/5**. The strongest full prototype scored **4.667/5**. The target is **4.70/5**.
 
 ## Overview
 
@@ -211,3 +211,15 @@ Both prototypes kept the launch and Send screenshot. They used one request to sa
 The draft version said who sends the request and revealed the next action on click. The second showed the actual Claude reply, Snake card, and Start button at the play step. The HTML check verified the added cue and the Copy recovery panel. Both kept the exact launch request. The 4.667 prototype with the Send screenshot remains the highest score.
 
 The [structured results](latest-starts.json) include every judgement and the scored HTML hashes. The [release verification](release-verification.json) records the artifact checks.
+
+## Local game-return prototype
+
+One visible game request supports Open in Claude Desktop and Copy. It asks Snake to wait for the first arrow key and to offer **Play again** and **Back to the handbook** at the end of a round. The same handbook link goes in the conversation reply. It points to **Keep the version you made**.
+
+The one-request prototype scored **4.647/5** across 30 cold desktop starts. All 30 predicted they could play. The generated edition has the same first-game text, link destinations and copy payload on Mac and Windows. An earlier version that displayed only part of the request scored **4.517/5**. The readers rated the route to first play. A separate headless Claude generation produced a game and reply with the correct return link. Exercising that game verified the waiting state, movement on the right arrow, the game-over choices and replay. Returning from a live Cowork preview remains unverified.
+
+Reader batches: `decimal-read-6d9a98c1-d48a-4164-9484-7b1f03016ff6` and `decimal-read-4fdd7736-33df-45c3-9c1b-910583cf27d4` under `out/`.
+
+### Safe first round
+
+The 30-second self-steering build scored **4.57/5** on the fixed 30-start benchmark (batch `decimal-read-a54557b9-9488-4f52-b6fa-d035d86ba3b3`). In a separate headless generation, the resulting game moved autonomously for 300 ticks of 100 ms without a loss, paused at the handoff, accepted the right-arrow key, showed the handbook link at game over and reset on replay. Headless Chrome also displayed the handoff after advancing its clock by 31 seconds. This is one generated game.

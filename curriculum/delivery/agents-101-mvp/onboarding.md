@@ -1,7 +1,7 @@
 <h1 id="start-learning">Welcome to Agents 101</h1>
 
 
-Make a game in Claude. After you play, you’ll save it in the same folder you’ll use to summarize your week.
+Want to see what Claude can make? First, a game you can play. Later, a briefing from your calendar. All you need for the game is Claude Desktop.
 
 ## Pause learning
 

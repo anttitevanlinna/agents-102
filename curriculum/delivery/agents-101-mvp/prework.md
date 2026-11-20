@@ -1,6 +1,6 @@
 # First steps
 
-<h2 id="make-my-first-game">1. Make and play Snake</h2>
+<h2 id="make-my-first-game">1. Ask Claude to make a game</h2>
 
 <span id="4-build-a-snake-game-10-min"></span>
 <span id="2-build-a-snake-game"></span>
@@ -9,10 +9,10 @@
 <div class="rt-cowork">
 <div class="a101-game-start">
 
-Click **Copy request** below. In Claude Desktop, click **New**. Choose **Cowork** if you see it, paste into the empty message box and click the **Send** arrow on its right.
+Leave this handbook open. Open Claude Desktop and start a new Cowork conversation. Click **Copy request** below, paste it into the message box and send it.
 
-<div class="a101-video-placeholder">Assume there is a short video here. Watch someone click <strong>New</strong> in Claude Desktop, paste the request into the message box and press <strong>Send</strong>. On screens with a Chat/Cowork switch, the video shows where to choose <strong>Cowork</strong>. It cuts to the finished board and the first click dropping an apple.
-<details><summary>See the message box and Send arrow</summary><img src="ACME_COWORK_MESSAGE_BOX" width="670" height="113" style="max-width:100%;height:auto" alt="A Snake request pasted in the Claude Desktop message box. The Send arrow is at its lower right."></details>
+<div class="a101-video-placeholder">Assume there is a short video here. The teacher clicks <strong>New</strong> in Claude Desktop, pastes the request into the message box and clicks <strong>Send</strong>. If the message box has a Chat/Cowork switch, the teacher chooses <strong>Cowork</strong>. A single message box is ready as it is. The clip ends when <strong>snake.html</strong> appears in the reply.
+<details><summary>See the message box and Send arrow</summary><img src="ACME_COWORK_MESSAGE_BOX" width="670" height="113" style="max-width:100%;height:auto" alt="A pasted request in Claude Desktop, with the Send arrow at the lower right."></details>
 </div>
 
 <div data-copy-label="Copy request">
@@ -20,19 +20,17 @@ Click **Copy request** below. In Claude Desktop, click **New**. Choose **Cowork*
 **Prompt** Cowork
 
 ```text
-Build me a snake game as one HTML file I can play here. Start with a sleeping snake and the words “Click to drop an apple.” My first click drops the apple and wakes the snake. For the first 30 seconds, steer the snake for me so I can’t lose. Chase the apples I drop. Then let me try the arrow keys.
+Build me a snake game in a file called snake.html. My first click starts the game. For the first 30 seconds, steer the snake for me so I can’t lose.
 
-Put a link [back to the handbook](https://agents102.bosser.consulting/clients/acme-mvp/agents-101/#open-cowork-and-add-a-folder) on the board and in your reply.
+Send me the finished file and remind me to go [back to the handbook](https://agents102.bosser.consulting/clients/acme-mvp/agents-101/#open-cowork-and-add-a-folder).
 ```
 
 <p class="a101-copy-status" data-copy-status role="status" data-copy-message="Copied. Paste into Cowork and press Send."></p>
 </div>
 
-Claude builds the game from your message in about a minute. Your snake waits for you. When the board beside Claude’s reply says **Click to drop an apple**, click an empty square. Watch the snake chase your apple. Drop another.
+When Claude finishes, look in the reply you just received. **snake.html** is your game, made from the message you sent. It may also appear as a board beside the reply. If you get a description without the file, ask *“Can I have snake.html?”*
 
-**Only see a reply?** Click the Snake game in that reply. If there’s no game to click, tell Claude *“Give me the playable HTML file.”* Double-click the file in Downloads to play.
-
-Want a different rule? Tell Claude. When you’re ready to keep your game, choose **Back to the handbook** on the board.
+Try it if you’re curious. When you want to continue, switch back to this tab and go to [2. Keep the version you made](#open-cowork-and-add-a-folder). Claude’s reply also has a link back here. Next you’ll give the game a folder so you can keep it.
 
 </div>
 </div>

@@ -1,6 +1,8 @@
-# Agents 101 first-start impressions
+# Agents 101 first-play impressions (historical)
 
-The current copy-first ACME workbook scored **4.593/5** across 30 simulated desktop starts. All 30 expected to reach their own game. The first click now starts the protected round. The initial video-led release scored **4.627/5**. The highest full prototype score remains **4.667/5** against the **4.70/5** target.
+The current instrument scores recognizing the learner’s own result. [First-result journey results](journey-results.md)
+
+The prior copy-first ACME workbook scored **4.593/5** across 30 simulated desktop starts. All 30 expected to reach their own game. The first click now starts the protected round. The initial video-led release scored **4.627/5**. The highest full prototype score remains **4.667/5** against the **4.70/5** target.
 
 ## Overview
 

@@ -1,7 +1,7 @@
 <h1 id="start-learning">Welcome to Agents 101</h1>
 
 
-Want to see what Claude can make? First, a game you can play with a click. You put down an apple. Your snake goes after it. Later, a briefing from your calendar. Your first round needs only Claude Desktop. Your work files can wait.
+You can ask Claude a question. You can also ask it to make a file you can use. Let’s try that with something small before we bring any work into it. First, a game. Later, a briefing from your calendar.
 
 ## Pause learning
 

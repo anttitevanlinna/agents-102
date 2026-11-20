@@ -179,7 +179,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     assert.equal(start.querySelectorAll('details').length, 0, 'the welcome leads to the first result without stop controls');
     assert.equal(controls.querySelectorAll('details:not([open])').length, 3);
     assert.equal(start.querySelector('#start-learning').textContent, 'Welcome to Agents 101');
-    assert.match(start.textContent, /game you can play/i);
+    assert.match(start.textContent, /make a file you can use/i);
     assert.match(start.textContent, /calendar/i);
     assert.ok(!start.querySelector('a[href="#make-my-first-game"]'), 'the opening reaches the copy control without a jump link');
     dom.window.location.hash = '#resume-learning';
@@ -210,8 +210,8 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     const gameCopy = snakeBlock.querySelector('.copy-btn');
     assert.equal(prework.querySelector('a[href^="claude:"]'), null);
     const firstVideo = prework.querySelector('.a101-game-start .a101-video-placeholder');
-    assert.match(firstVideo.textContent, /New.*message box.*Send.*Cowork.*board/);
-    assert.match(prework.querySelector('.a101-game-start').textContent, /Choose Cowork if you see it, paste into the empty message box/);
+    assert.match(firstVideo.textContent, /New.*message box.*Send.*Cowork.*snake.html/);
+    assert.match(prework.querySelector('.a101-game-start').textContent, /single message box is ready as it is/);
     assert.equal(firstVideo.querySelector('img').src, 'data:image/jpeg;base64,' + fs.readFileSync(path.join(ROOT, 'curriculum/delivery/agents-101-mvp/claude-send.jpg')).toString('base64'));
     const visibleRequest = snakeBlock.querySelector('code');
     const fullRequest = visibleRequest.textContent.trimEnd();
@@ -257,7 +257,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     assert.ok(copied.at(-1).includes(EXTRACTION_BOOTSTRAP), 'extraction alone installs the course context loader');
     assert.doesNotMatch(prework.textContent, /Customize|Read CLAUDE\.md before working in this folder/);
     const attachSteps = [...prework.querySelectorAll('.rt-cowork ol')].find(list => list.textContent.includes('Add folder'));
-    assert.ok(attachSteps && snakeBlock.compareDocumentPosition(attachSteps) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING, 'Cowork learners play the game before they attach the folder');
+    assert.ok(attachSteps && snakeBlock.compareDocumentPosition(attachSteps) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING, 'Cowork learners make the game before they attach the folder');
     dom.window.A101Runtimes.applyRuntime('cli');
     assert.equal(dom.window.getComputedStyle(attachSteps.closest('.rt-cowork')).display, 'none', 'CLI does not see Cowork attachment controls');
     assert.equal(dom.window.getComputedStyle(snakeBlock.closest('.rt-cowork')).display, 'none', 'CLI does not get the preview request');

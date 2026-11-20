@@ -4,7 +4,7 @@
 
 Scope: public full workbook, starter, course-navigation guide and local position note through Prework/M1. The workbook owns the teaching. The guide contains six return rows generated from nine canonical prompt keys. Canonical exercise prompts remain unchanged except for the edition's starter-extraction overlay. A separate Teacher and report sink are outside this delivery.
 
-In Cowork, the learner plays the first game in the preview, attaches the course folder, and saves the same game there. The CLI uses the canonical local-file request. The workbook retains a browser fallback and instructions for returning after play. Once the course files are in place, Pause and Resume explicitly name the guide. Bookmarking covers an earlier stop. The installed-context Snake case below exercises a later navigation checkpoint.
+In Cowork, the learner receives the first game, can try it in the preview, then attaches the course folder, and saves the same game there. The CLI uses the canonical local-file request. The workbook retains a browser fallback and instructions for returning after play. Once the course files are in place, Pause and Resume explicitly name the guide. Bookmarking covers an earlier stop. The installed-context Snake case below exercises a later navigation checkpoint.
 
 The archive has no root `CLAUDE.md`. Installation creates or augments it with the reading cue `Read prework/course-navigation.md before helping with Agents 101 work.`, preserves existing instructions, and reads the guide. After extraction the guide points to the calendar exercise. The learner authors working rules in the Module 2 debrief and preserves the navigation cue.
 
@@ -23,7 +23,25 @@ node scripts/run-a101-onboarding-sim.js --mode live
 
 Evidence belongs under ignored `out/`, with a stable latest report for this scope, overwritten on rerun. Keep raw model replies, tool traces and relevant before/after files beside it. Use synthetic learner content. Do not commit raw transcripts or copy actual learner/company data into fixtures.
 
-## First-start impressions
+## First-result journey
+
+[Current baseline, release and control scores](journey-results.md)
+
+| Learner moment | Observable sign |
+| --- | --- |
+| Arrive | The learner knows what giving Claude a work request could produce. |
+| Ask | The learner can take their own request from the handbook to Cowork. |
+| Recognize | The learner can identify what Claude made in response. The primary rating ends here. |
+| Choose | They may explore, ask for a change, or continue immediately. |
+| Continue | From Cowork they can find the next handbook activity and understand why a folder is useful now. |
+
+The first outcome is recognizing something Claude made from the learner’s request. Choosing to play, change or save it is optional. The second outcome is knowing how to get from Cowork back to the next handbook activity. Score the first in stars and the second separately as clear, uncertain or missing. A learner may name a plausible return route and still be unsure about it. Keep the reported uncertainty. The HTML read predicts both outcomes. A separate file-producing run checks whether a game was actually made.
+
+Run `node curriculum/evals/onboarding/agents-101/journey-read.js --controls`, then pass the built workbook path instead of `--controls`. Use trusted local workbook HTML. Keep the question and ten persona profiles fixed across versions. Use three cold attempts per persona and retain every response. Run the current public workbook first to establish the baseline under this instrument. Never compare its mean directly with the historical play-through scale.
+
+Before looking at release scores, check four small control lessons with three matched personas. The instructor-only example should produce no predicted recognition successes and a lower mean than the create-your-own lesson. All three readers should recognize their own result in the creation control. Adding optional interaction or a return route should change the primary mean by no more than 0.3 stars in either direction. The explicit return route should be clear to all three readers and the lesson without one should yield no clear returns. If these checks fail, report the failure and investigate before using release scores. Report the arithmetic mean over all 30 responses, all three scores per persona, and the return distribution. A release reaches the goal at an unrounded mean of at least 4.70. The target and control expectations are hidden from readers. The simulation substitutes “This lesson includes a short…” for the placeholder lead-in and retains the caption. This implements the assumed-video condition without crediting unseen content. Results describe ten equally weighted profiles judged by one model. The matched profiles use nine Mac views and one Windows view; the mean is not a population or platform estimate.
+
+## Historical first-play impressions
 
 [First-start ratings](latest-starts.md) record ten personas reading the actual startup HTML three times each in independent cold model calls. Each receives the same neutral question: what would you do, would you get going, how quick and obvious would it feel, and what change would help, if any? No hesitation or improvement is required. Keep HTML, question, persona descriptions and raw replies under ignored `out/`; repeat a persona with the same prompt and no prior answers. Show no target score, earlier score or proposed fix to the reader.
 

@@ -90,4 +90,10 @@ A disposable Mac conversation produced rock-paper-scissors by 36 seconds. One cl
 
 All three Windows reads rated the numbered Copy-first route 4.7. That route named the location of New and placed the Cowork choice before Send. Its overall mean was 4.607, compared with 4.61 for the release.
 
+## First-game demo
+
+The 16-second demo beside Copy scored **4.537/5**. All 30 readers expected to start. The demo used three crops from a native Mac run showing New, the Send arrow, and the game preview. Readers saw the caption and assumed the demo was available.
+
+The first-start rubric ends at play. It gives no rating for attaching the folder, placing or unpacking the download, or finding the next workbook step in a fresh Cowork task. Native smokes verified play and saving the same file. The separate [onboarding outcomes](README.md) cover the return and recovery behaviors, with evidence from isolated model-runtime cases. The full native journey is still unverified.
+
 The [structured results](latest-starts.json) include every judgement and the scored HTML hashes. The [release verification](release-verification.json) records the artifact checks.

@@ -9,9 +9,11 @@
 <div class="rt-cowork">
 <div class="a101-game-start">
 
-<p><a class="a101-open-claude" href="ACME_FIRST_GAME_LAUNCH">Open in Claude Desktop</a></p>
-
-This opens a new **Cowork** conversation in Claude Desktop with the request below already typed. Choose **Open** if your browser asks. In Claude, click the **Send** arrow.
+<ol>
+<li><a class="a101-open-claude" href="ACME_FIRST_GAME_LAUNCH">Open in Claude Desktop</a>. If your browser asks, choose <strong>Open</strong>.</li>
+<li>In the new <strong>Cowork</strong> conversation, the Snake request is already in the message box. Click the <strong>Send</strong> arrow beside it.</li>
+<li>Give Claude about a minute. A board opens beside the conversation with the snake already moving. Watch the first 30 seconds. When the board says <strong>Your turn</strong>, click it and press <strong>→</strong>.</li>
+</ol>
 
 <p class="a101-after-launch" role="status" hidden>Back from a round? <a href="#open-cowork-and-add-a-folder">Keep my game</a>.</p>
 
@@ -20,7 +22,7 @@ This opens a new **Cowork** conversation in Claude Desktop with the request belo
 **Prompt** Cowork
 
 ```text
-Build me a snake game as one HTML file I can play beside this conversation. For the first 30 seconds, steer the snake for me so I can’t lose. Then wait for my first arrow key to take over.
+Build me a snake game as one HTML file I can play beside this conversation. For the first 30 seconds, steer the snake for me so I can’t lose. Put “I’ll drive first” on the board. Then pause with “Your turn. Click the board and press →.”
 
 When a round ends, let me play again or go [back to the handbook](https://agents102.bosser.consulting/clients/acme-mvp/agents-101/#open-cowork-and-add-a-folder). Leave that link in your reply too.
 ```
@@ -30,9 +32,9 @@ When a round ends, let me play again or go [back to the handbook](https://agents
 
 Claude stayed closed? Click **Copy request** above. Open Claude Desktop, choose **New** in the left sidebar, then **Cowork**. Paste and press **Send**.
 
-Give Claude about a minute. When you see the snake moving beside the conversation, that’s your game. It plays the first 30 seconds for you. When it stops, click the board and press **→** to take over. If you see a **Snake** card, click it to open the board. If Claude gives you a file, download it and double-click it.
+**No board yet?** Click **Snake** in Claude’s reply. If Claude gives you an HTML file, download it and double-click it to play.
 
-Play a round. Too fast? Tell Claude. When you’ve had enough, choose **Back to the handbook** on the game-over screen or in Claude’s reply.
+Too fast? Tell Claude while you’re there. When you’ve played enough, choose **Back to the handbook** in the game or in Claude’s reply.
 
 </div>
 

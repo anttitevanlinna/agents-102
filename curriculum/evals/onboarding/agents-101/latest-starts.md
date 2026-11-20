@@ -223,3 +223,5 @@ Reader batches: `decimal-read-6d9a98c1-d48a-4164-9484-7b1f03016ff6` and `decimal
 ### Safe first round
 
 The 30-second self-steering build scored **4.57/5** on the fixed 30-start benchmark (batch `decimal-read-a54557b9-9488-4f52-b6fa-d035d86ba3b3`). In a separate headless generation, the resulting game moved autonomously for 300 ticks of 100 ms without a loss, paused at the handoff, accepted the right-arrow key, showed the handbook link at game over and reset on replay. Headless Chrome also displayed the handoff after advancing its clock by 31 seconds. This is one generated game.
+
+The board-cue version scored **4.627/5** on the generated workbook (30/30 predicted first play, batch `decimal-read-b01d19df-4ea2-4878-a456-391a33c16d4d`). One generated game displayed “I’ll drive first” during autonomous movement, then “Your turn. Click the board and press →.” at the pause. The game accepted the arrow after the board was clicked. The reply and game shared the same return destination.

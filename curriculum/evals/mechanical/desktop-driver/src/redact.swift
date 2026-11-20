@@ -2,6 +2,9 @@
 //
 // usage: redact <in.mov> <out.mp4> <allow.txt> [--crop x,y,w,h] [--width 1280] [--fps 30]
 //               [--trim seconds] [--pad 14] [--spread 30] [--sigma 28] [--blur x,y,w,h[@from-to]]... [--report-only]
+//               [--show x,y,w,h[@from-to]]... [--deny file]
+// --show: inside the region, text off the allowlist stays sharp (a conversation: the prompt, Claude's reply) UNLESS it
+// contains a --deny entry (this Mac's real names). Outside every --show region the allowlist alone decides.
 //
 // Fail-safe by design: text OCR cannot match to the allowlist (unknown names, misreads) is blurred.
 // Pass 1 OCRs every output frame; pass 2 blurs each frame with the tracks lit at that frame (see shaping),
@@ -22,7 +25,7 @@ var args = Array(CommandLine.arguments.dropFirst())
 guard args.count >= 3 else { fail("usage: redact in.mov out.mp4 allow.txt [--crop x,y,w,h] [--width N] [--fps N] [--trim S] [--pad N] [--spread N] [--report-only]") }
 let inURL = URL(fileURLWithPath: args[0]), outURL = URL(fileURLWithPath: args[1]), allowPath = args[2]
 var crop: CGRect? = nil, outW = 1280, fps = 30.0, trim: Double? = nil, pad: CGFloat = 14, spread = 30, reportOnly = false, sigma = 28.0
-var fixed: [(CGRect, Double, Double)] = []   // --blur x,y,w,h[@from-to] (input px, top-left; seconds): blurred regardless of OCR, for private pixels OCR cannot read (thumbnails)
+var fixed: [(CGRect, Double, Double)] = [], shows: [(CGRect, Double, Double)] = [], deny: [String] = []   // --blur x,y,w,h[@from-to] (input px, top-left; seconds): blurred regardless of OCR, for private pixels OCR cannot read (thumbnails)
 var i = 3
 while i < args.count {
   switch args[i] {
@@ -37,11 +40,23 @@ while i < args.count {
     var a = 0.0, b = Double.infinity
     if parts.count > 1 { let w = parts[1].split(separator: "-").compactMap { Double($0) }; a = w[0]; b = w[1] }
     fixed.append((CGRect(x: p[0], y: p[1], width: p[2], height: p[3]), a, b)); i += 2
+  case "--show":
+    let parts = args[i+1].split(separator: "@"); let p = parts[0].split(separator: ",").compactMap { Double($0) }
+    var a = 0.0, b = Double.infinity
+    if parts.count > 1 { let w = parts[1].split(separator: "-").compactMap { Double($0) }; a = w[0]; b = w[1] }
+    shows.append((CGRect(x: p[0], y: p[1], width: p[2], height: p[3]), a, b)); i += 2
+  case "--deny":
+    deny = String(decoding: FileHandle(forReadingAtPath: args[i+1])?.readDataToEndOfFile() ?? Data(), as: UTF8.self).split(separator: "\n")   // FileHandle: also reads <(...) pipes, so the list never touches disk
+      .map { $0.trimmingCharacters(in: .whitespaces).lowercased() }.filter { $0.count >= 4 }
+    if deny.isEmpty { fail("--deny file empty or unreadable: --show without a deny list would show anything") }
+    i += 2
   case "--sigma": sigma = Double(args[i+1])!; i += 2
   case "--report-only": reportOnly = true; i += 1
   default: fail("unknown option \(args[i])")
   }
 }
+
+if !shows.isEmpty && deny.isEmpty { fail("--show needs --deny: a show region without this Mac's real names would show anything") }
 
 // ---- allowlist
 let allowLines = (try? String(contentsOfFile: allowPath, encoding: .utf8))?.split(separator: "\n").map(String.init) ?? []
@@ -123,6 +138,10 @@ eachFrame { idx, t, pb in
     guard let s = o.topCandidates(1).first?.string, !allowed(s) else { continue }
     if reportOnly && nearAllowed(s) { continue }
     let b = o.boundingBox
+    if !shows.isEmpty {   // inside a --show region (input px, top-left) at this time, and no real name in it: stays sharp
+      let mid = CGPoint(x: b.midX * srcW, y: (1 - b.midY) * srcH), low = s.lowercased()
+      if shows.contains(where: { $0.0.contains(mid) && t >= $0.1 && t <= $0.2 }) && !deny.contains(where: { low.contains($0) }) { continue }
+    }
     let r = CGRect(x: b.minX * srcW, y: b.minY * srcH, width: b.width * srcW, height: b.height * srcH).insetBy(dx: -pad, dy: -pad)
     bs.append(r)
     if reportOnly { print(String(format: "%.2f\t%@", t, s)) }

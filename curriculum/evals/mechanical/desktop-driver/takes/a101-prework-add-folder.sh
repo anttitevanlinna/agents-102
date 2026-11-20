@@ -1,11 +1,21 @@
 #!/usr/bin/env bash
-# A101 Prework step 1 (Cowork): standard state -> Project or folder -> Add folder -> Documents
+# A101 Prework step 1 (Cowork). Start state: cowork-new-chat. End state: chip reads agents-101.
+# Project or folder -> Add folder -> Documents
 # -> New Folder -> agents-101 -> Create -> Open -> Allow.
 # usage: a101-prework-add-folder.sh dry          no recording; stops at the New Folder dialog, cancels out
 #        a101-prework-add-folder.sh record [out]  records the window to out (default out/a101-prework-add-folder.mov)
 set -euo pipefail
 source "$(cd "$(dirname "$0")/.." && pwd)/steps.sh"
 MODE="${1:-dry}" MOV="${2:-$OUT/a101-prework-add-folder.mov}"
+# allow: agents-101
+# allow: re:^agents-1?0?1?$
+# allow: re:^a(g(e(n(t(s(-(1(0(1)?)?)?)?)?)?)?)?)?$
+# review-text: Make one folder so you can keep the game you just made. The same folder will hold your work for the rest of the course.
+# review-text: 1. Below the message box, click **Project or folder**, then **Add folder**.
+# review-text: 2. In the picker, click **Documents** in the sidebar, then **New Folder**. Name it `agents-101` and click **Create**, then **Open**. If you have the folder already, select it and click **Open**.
+# review-text: If Claude asks for permission, click **Allow** after checking that it names `agents-101`.
+# review-fixed: Opening the Chat tab and starting a new chat is carried by the text; the video starts at the empty message box.
+# review-fixed: Tried and cut: a whole-picker overview (its blur patches confused more than it oriented). Do not ask for it back.
 # redact: --crop 556,0,2154,1502 --width 2154 --trim 31 --blur 990,1110,1360,350@0-6.3 --blur 990,1170,1360,290@6.3-24 --blur 990,1110,1360,350@24-99
 # Hint chain: one short clip per key moment, cropped to where it happens. Crop coords are px of the cut's source
 # (src=raw: the raw take; otherwise the redacted video = raw x - 556). Raw cuts end ON the press-ring frame (hold freezes it).
@@ -21,11 +31,10 @@ MODE="${1:-dry}" MOV="${2:-$OUT/a101-prework-add-folder.mov}"
 PICK="335 1135 170 630"                               # picker bounds, screen points
 
 [[ ! -e "$HOME/Documents/agents-101" ]] || die "~/Documents/agents-101 already exists"
-bash "$DRIVER/reset.sh"
+start_state cowork-new-chat
 
 if [[ "$MODE" == record ]]; then
-  rm -f "$MOV"; screencapture -v -k -x -V 40 -R"$WIN_X,$WIN_Y,$WIN_W,$WIN_H" "$MOV" & REC=$!
-  sleep 2.5
+  rec_start "$MOV" 40
 fi
 
 click_text "Project or folder" contains 700 300 1412 400 650
@@ -41,7 +50,7 @@ if [[ "$MODE" == dry ]]; then
   echo "DRY: reached the New Folder dialog; cancelling out"
   press_esc; expect_text "Add folders to this session" contains 3
   press_esc
-  bash "$DRIVER/reset.sh" >/dev/null && echo "DRY-OK"
+  start_state cowork-new-chat >/dev/null && echo "DRY-OK"
   exit 0
 fi
 
@@ -54,5 +63,5 @@ expect_text "Allow Claude to change files" contains 6
 click_text "Allow" exact 600 300 1412 300 600
 expect_text "agents-101" contains 6 300 1412 400 650   # the chip now names the folder
 sleep 3
-wait "${REC:-}" 2>/dev/null || true
+rec_stop
 echo "TAKE-OK $MOV"

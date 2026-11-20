@@ -3,9 +3,15 @@
 #   clip.sh <take>            record the take, redact it, cut the clips, leak-check each, contact sheets
 #   clip.sh <take> --redact   re-redact an existing recording (after editing the allowlist or the take's # redact: line)
 #   clip.sh <take> --cut      re-cut from the existing redacted video (after editing # cut[...] lines; seconds, no OCR)
+# Then: review.sh <take> (student-reviewer frames + brief).
 # <take> = file name under takes/ without .sh. Outputs in out/: <take>.mov (raw, never publish), <take>.mp4 (redacted
 # whole take), <take>-<name>.mp4 per cut, <take>-chain.mp4 (all cuts in order, crossfaded), *.sheet.png. The take declares, in comment lines:
+#   # allow: agents-101                                               (text this take may show sharp, on top of the app
+#                                                                      labels in redact-allow.txt; course names only, never a
+#                                                                      name a user chose; "re:" = regex; one per line)
 #   # redact: --crop ... --trim ... --blur x,y,w,h@from-to          (once; see bin/redact)
+#   # show: x,y,w,h@from-to                                           (raw px; the conversation pane while it matters: text
+#                                                                      there stays sharp unless it holds a real name below)
 #   # cut[name]: 12.5-20.3 crop=640:400:160:255                       (one segment, optional crop of the redacted video)
 #   # cut[name]: 0-12.4,20.3-31                                       (several segments, joined with a 0.3 s crossfade)
 #   # cut[name]: 13.3-19.4 crop=670:330:1020:588 src=raw              (native-resolution crop of the raw take; only where
@@ -23,21 +29,41 @@ T="$D/takes/$TAKE.sh" RAW="$D/out/$TAKE.mov" MP4="$D/out/$TAKE.mp4"
 [[ -f "$T" ]] || { echo "no take $T" >&2; exit 1; }
 for b in click scroll ocr redact; do [[ -x "$D/bin/$b" ]] || "$D/build.sh"; done
 mkdir -p "$D/out"
+# The take's allowlist = the app labels (redact-allow.txt) + its own # allow: lines (course names live with the take).
+ALLOW="$D/out/$TAKE.allow.txt"
+{ cat "$D/redact-allow.txt"; echo; echo "# from takes/$TAKE.sh"; sed -n 's/^# allow: //p' "$T"; } > "$ALLOW"
 
 if [[ -z "$MODE" ]]; then
   echo "== recording $TAKE (hands off)"
   bash "$T" record "$RAW"
-  "$D/bin/click" 310 47 0                      # back to the Code tab: the operator's transcript
+  ( source "$D/steps.sh"; back_to_operator )
 fi
+# This Mac's real names, built at run time and never written to disk: folders in ~/Documents and ~/Desktop, the
+# username, plus the operator's own private words in ~/.config/desktop-driver/deny.txt (people, companies; outside
+# the repo). A name that is also a word of the take's allowlist ("Auto", "Open") cannot be told from the UI: skipped.
+uiwords="$(grep -v -E '^(#|re:|$)' "$ALLOW" | tr ' ' '\n' | tr -d '",:?' | awk 'length($0) >= 3' | sort -u)"
+deny="$( { ls ~/Documents ~/Desktop 2>/dev/null; id -un; } \
+  | sed 's/\.[A-Za-z0-9]*$//' | awk 'length($0) >= 4' \
+  | grep -v -x -i -F -f <(printf '%s\n' "$uiwords") | sort -u)"
+[[ -f ~/.config/desktop-driver/deny.txt ]] && deny="$(printf '%s\n%s\n' "$deny" "$(grep -v '^#' ~/.config/desktop-driver/deny.txt)" | awk 'length($0) >= 4' | sort -u)"
+
 if [[ "$MODE" != --cut ]]; then
   [[ -f "$RAW" ]] || { echo "no recording $RAW" >&2; exit 1; }
   echo "== redacting"
   read -r -a OPTS <<< "$(sed -n 's/^# redact: //p' "$T")"
-  "$D/bin/redact" "$RAW" "$MP4" "$D/redact-allow.txt" "${OPTS[@]}"
+  while read -r sh; do [[ -n "$sh" ]] && OPTS+=(--show "$sh"); done < <(sed -n 's/^# show: //p' "$T")
+  [[ " ${OPTS[*]} " == *" --show "* ]] && OPTS+=(--deny <(printf '%s\n' "$deny"))
+  "$D/bin/redact" "$RAW" "$MP4" "$ALLOW" "${OPTS[@]}"
 fi
 [[ -f "$MP4" ]] || { echo "no redacted video $MP4" >&2; exit 1; }
 
-# ---- cuts
+# ---- cuts. Outputs of an earlier cut list go first, so a renamed or dropped cut, or a failed run, never leaves a stale clip.
+CUTNAMES="$(sed -nE 's/^# cut\[([^]]+)\]: .*/\1/p' "$T")"
+for o in "$D/out/$TAKE"-*.mp4; do
+  [[ -e "$o" ]] || continue; n="${o#"$D/out/$TAKE"-}"; n="${n%.mp4}"
+  grep -qxF "$n" <<< "$CUTNAMES" || { rm -f "$o" "${o%.mp4}.sheet.png"; echo "  removed stale $(basename "$o")"; }
+done
+rm -f "$D/out/$TAKE-chain.mp4"
 cut_one() {  # name, segments, [crop], [src: redacted|raw], [round radius px], [end hold s], [lead s]
   local name="$1" segs="$2" crop="${3:-}" src="${4:-redacted}" round="${5:-}" hold="${6:-0.8}" lead="${7:-0}" out="$D/out/$TAKE-$1.mp4" vf="" n=0 f="" prev="" off=0 len
   local in="$MP4"; [[ "$src" == raw ]] && in="$RAW"   # raw = native resolution; only for crops with nothing private in them (leak check still runs)
@@ -79,7 +105,7 @@ done < <(grep -E '^# cut\[[^]]+\]: ' "$T" || true)
 # ---- raw cuts skip redaction, so they must hold ONLY allowlisted text (stricter than the name check below):
 # any text the allowlist does not cover, anyone's or not, fails the cut.
 for c in "${RAWCUTS[@]+"${RAWCUTS[@]}"}"; do
-  extra="$("$D/bin/redact" "$c" /dev/null "$D/redact-allow.txt" --report-only --fps 15 2>/dev/null | cut -f2 | sort -u)"
+  extra="$("$D/bin/redact" "$c" /dev/null "$ALLOW" --report-only --fps 15 2>/dev/null | cut -f2 | sort -u)"
   if [[ -n "$extra" ]]; then
     echo "RAW CUT NOT CLEAN: $c shows text off the allowlist —" >&2; printf '  %s\n' "$extra" >&2
     echo "fix: tighten its crop, or cut it from the redacted video (drop src=raw)" >&2; exit 2
@@ -114,14 +140,9 @@ fi
 
 # ---- leak check, every output
 echo "== leak check (OCR of each clip against this Mac's real names; nothing written to disk)"
-# A name that is also a word of the app's own labels ("Auto", "Open") cannot be told apart from the UI: skip it.
-uiwords="$(grep -v -E '^(#|re:|$)' "$D/redact-allow.txt" | tr ' ' '\n' | tr -d '",:?' | awk 'length($0) >= 3' | sort -u)"
-deny="$( { ls ~/Documents ~/Desktop 2>/dev/null; id -un; } \
-  | sed 's/\.[A-Za-z0-9]*$//' | awk 'length($0) >= 4' | grep -v -x -i -E 'agents-101|documents|desktop' \
-  | grep -v -x -i -F -f <(printf '%s\n' "$uiwords") | sort -u)"
 bad=0
 for c in "${CLIPS[@]}"; do
-  hits="$("$D/bin/redact" "$c" /dev/null "$D/redact-allow.txt" --report-only --fps 15 2>/dev/null \
+  hits="$("$D/bin/redact" "$c" /dev/null "$ALLOW" --report-only --fps 15 2>/dev/null \
     | grep -i -F -f <(printf '%s\n' "$deny") || true)"
   ffmpeg -nostdin -v error -y -i "$c" -vf "fps=1/2,scale=420:-1,tile=4x4" -frames:v 1 "${c%.mp4}.sheet.png"
   if [[ -n "$hits" ]]; then

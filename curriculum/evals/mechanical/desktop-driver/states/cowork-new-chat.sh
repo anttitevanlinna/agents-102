@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Reset the Claude window to the STANDARD COWORK STATE, verifying each step:
+# Start state "cowork-new-chat" (run via start_state in steps.sh), verifying each step:
 # Chat tab, sidebar at top, a new empty chat, chip reads "Project or folder", nothing open on top.
 # Never removes a folder from the chip: if one is attached, it stops and says so.
 set -euo pipefail
-source "$(cd "$(dirname "$0")" && pwd)/steps.sh"
+source "$(cd "$(dirname "$0")/.." && pwd)/steps.sh"
 
 osascript -e 'tell application "Claude" to activate'; sleep 0.5
 
@@ -12,7 +12,7 @@ for t in "Name of new folder" "Add folders to this session" "Allow Claude to cha
   if [[ -n "$(find_text "$t" contains)" ]]; then press_esc; echo "  closed: $t"; fi
 done
 
-"$BIN/click" 276 46 0                                 # Chat tab icon (no text to find)
+"$BIN/click" $CHAT_TAB 0                             # Chat tab icon (no text to find)
 expect_text "Dispatch" contains 5 0 300               # chat-only sidebar item
 "$BIN/scroll" 150 400 40                              # sidebar to the top
 settle "New" exact 0 300 0 200

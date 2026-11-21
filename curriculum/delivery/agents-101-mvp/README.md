@@ -18,7 +18,7 @@ Two text-only video placeholders cover folder selection and adding the course fi
 
 `course-navigation.md` ships at `prework/course-navigation.md`; the builder appends six return rows derived from the nine prompt keys in `checkpoints.json`. The four calendar variants share one return row. The guide owns navigation, completion distinctions and local position recovery. Canonical exercise prompts remain unchanged except for the edition's starter-extraction overlay.
 
-In Cowork, the learner plays in the conversation preview before attaching a folder, then saves the same game to `prework/snake.html` in that conversation. The workbook offers a browser fallback and keeps the canonical local-file request for CLI and other local runtimes. Until starter setup is complete, the learner bookmarks their workbook section to resume manually. Extracting the starter preserves the game.
+In Cowork, the learner receives the game in the conversation. The request puts a link to the game first and the handbook link below it. The next activity saves the same game to `prework/snake.html` in the learner’s folder. CLI and other local runtimes use the canonical local-file request. Until starter setup is complete, the learner bookmarks their workbook section to resume manually. Extracting the starter preserves the game.
 
 After extraction, the request adds the course-only reading cue `Read prework/course-navigation.md before helping with Agents 101 work.` to `CLAUDE.md`, preserving existing instructions. It reads the guide and returns the learner to the calendar exercise. Pause and Resume explicitly name the guide once it is available.
 

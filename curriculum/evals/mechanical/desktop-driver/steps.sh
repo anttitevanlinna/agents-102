@@ -14,7 +14,7 @@ mkdir -p "$OUT"
 front_guard() {
   local f; f="$(osascript -e 'tell application "System Events" to get name of first process whose frontmost is true' 2>/dev/null)"
   [[ "$f" == "$APP" ]] && return 0
-  [[ -n "${REC_PID:-}" ]] && { kill "$REC_PID" 2>/dev/null; rm -f "${REC_OUT:-}"; die "'$f' came in front during recording: take discarded (move or quit it, then re-run)"; }
+  [[ -n "${REC_PID:-}" ]] && { kill "$REC_PID" ${NC_PID:-} 2>/dev/null; rm -f "${REC_OUT:-}"; die "'$f' came in front during recording: take discarded (move or quit it, then re-run)"; }
   osascript -e "tell application \"$APP\" to activate" >/dev/null; sleep 0.6; echo "  (re-activated $APP over '$f')" >&2
 }
 _ocr() {   # [x,y,w,h] (default: the whole window) -> OCR lines in screen points
@@ -100,10 +100,13 @@ start_state() {
 # hands off in between; rec_stop waits for the recording to end. Trim the tail with the take's --trim.
 rec_start() { REC_OUT="$1"; rm -f "$1"; STEPLOG="${1%.mov}.steps.tsv"; : > "$STEPLOG"
   export CLICK_LOG="${1%.mov}.clicks.tsv"; : > "$CLICK_LOG"     # bin/click + bin/scroll log every move and press here
+  # the system cursor is hidden for the take: the recorder draws it late, doubling the pointer clip.sh draws from CLICK_LOG
+  "$BIN/nocursor" $(( ${2:-40} + 5 )) & NC_PID=$!; on_abort "kill $NC_PID"
   screencapture -v -x -V "${2:-40}" -R"$WIN_X,$WIN_Y,$WIN_W,$WIN_H" "$1" & REC_PID=$!
   REC_T0="$(_now)"; echo "$REC_T0 $WIN_X $WIN_Y" > "${1%.mov}.t0"; sleep 2.5; }
 _now() { python3 -c 'import time; print(f"{time.time():.3f}")'; }
-rec_stop()  { [[ -n "${REC_PID:-}" ]] || return 0; wait "$REC_PID" 2>/dev/null || true; REC_PID=""; }
+rec_stop()  { [[ -n "${REC_PID:-}" ]] || return 0; wait "$REC_PID" 2>/dev/null || true; REC_PID=""
+  [[ -n "${NC_PID:-}" ]] && { kill "$NC_PID" 2>/dev/null || true; NC_PID=""; }; }   # the cursor returns when nocursor exits
 
 # back_to_operator: the Code tab holds the operator's own transcript; every take ends there.
 back_to_operator() { "$BIN/click" $CODE_TAB 0; }

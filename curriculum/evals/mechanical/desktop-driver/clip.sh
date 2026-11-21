@@ -66,6 +66,7 @@ t0, wx, wy = (float(v) for v in open(t0f).read().split())
 ev = [l.rstrip("\n").split("\t") for l in open(clicks) if l.strip()]
 out, rings = [], []
 for e, x, y, k in ev:
+    if k == "key": continue   # keystrokes are logged for lint.py; they move no pointer
     t = float(e) - t0 - lag
     if t < 0: t = 0
     X, Y = round((float(x) - wx) * 2), round((float(y) - wy) * 2)
@@ -191,9 +192,11 @@ build_chain() {  # out, cut files...
     ins+=(-i "$c")
     f+="[$i:v]fps=60,format=yuv420p,pad=$W:$H:(ow-iw)/2:(oh-ih)/2:white,setsar=1,settb=1/60[p$i];"; i=$((i+1))
   done
-  prev="p0"
-  for ((k=1; k<i; k++)); do
+  prev="p0"; : > "${CH%.mp4}.map"   # <chain>.map: clip name, start, end in chain seconds (review.sh hands it to reviewers)
+  for ((k=1; k<=i; k++)); do
     len="$(ffprobe -v error -show_entries format=duration -of csv=p=0 "${CUTS[$((k-1))]}")"
+    c="$(basename "${CUTS[$((k-1))]}" .mp4)"; printf '%s\t%.2f\t%.2f\n' "${c#"$TAKE"-}" "$off" "$(echo "$off + $len" | bc -l)" >> "${CH%.mp4}.map"
+    (( k < i )) || break
     off="$(printf '%.3f' "$(echo "$off + $len - 0.35" | bc -l)")"
     f+="[$prev][p$k]xfade=transition=fade:duration=0.35:offset=$off[c$k];"; prev="c$k"
   done

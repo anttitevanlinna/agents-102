@@ -18,6 +18,8 @@ bash takes/a101-prework-add-folder.sh dry          # rehearse: runs to the last 
 ./clip.sh a101-prework-add-folder                  # record + redact + leak check + contact sheet -> out/<take>.mp4
 ./clip.sh a101-prework-add-folder --redact         # re-redact the existing recording after tuning
 ./clip.sh a101-prework-add-folder --cut            # re-cut the hint clips only (seconds, no OCR pass)
+python3 src/lint.py a101-prework-project          # craft lints: dead starts, still tails, edge bands/notches, text size, scale jumps
+./review.sh --hunt a101-prework-project            # defect hunt: an editor with a craft checklist (lint findings handed in)
 ./review.sh a101-prework-add-folder                # student-reviewer round: frames + brief for a fresh subagent
 bash test.sh                                       # privacy path fails closed; stale clips pruned (no GUI)
 ```
@@ -33,7 +35,7 @@ Copy `takes/a101-prework-add-folder.sh`. Keep the shape: header names start and 
 - `# cut[name]: …`, one per hint (below).
 - `# review-text:` the workbook text the student reads beside the video; `# review-fixed:` constraints and fixes already tried and cut, so a reviewer does not ask for them again.
 
-Then: dry-run until it passes → `clip.sh` → `review.sh` loop until `great and clear`. Plan of the Prework takes: `PREWORK-TAKES.md`.
+Then: dry-run until it passes → `clip.sh` → `lint.py` clean → `review.sh --hunt` until it finds only polish → `review.sh` until `great and clear`. Plan of the Prework takes: `PREWORK-TAKES.md`.
 
 ## Build in bits, test fast
 
@@ -75,7 +77,9 @@ What ships is not the take but a **chain of hint clips**: 2–6 s each, one key 
 - **`round=R`** masks a dialog's rounded corners to white; measure R the same way (the first white pixel per row from the corner).
 - **One action per hint, ending on the press ring.** The recording draws a ring at each click (`screencapture -k`); the ring lasts ~1 frame, so end a raw cut ON the ring frame and let `hold=` freeze it — the hint says *click*, not just *go here*. Find it with a 20–30 fps tile strip of the crop (`ffmpeg … fps=10,crop=…,drawtext=%{pts},tile`). Redacted cuts end on arrival: a pressed button misreads and blurs. Every hint freezes its last frame `hold=` s (default 0.8) — it loops, the eye needs a beat on the target.
 - **Orient, then check.** `lead=S` freezes a hint's first frame (time to find the target on one's own screen); `mark=x:y:w:h:T` draws an orange outline for *check this* (the folder now named, the finished chip) — black ring = click, orange = look. A whole-window overview with blur patches confuses more than it orients: cut it. `mask=` paints a private sliver at a crop edge flat; `scale=` shrinks a tall crop (small text loses — prefer two strips).
-- **Done = a fresh student-reviewer says `great and clear`.** `review.sh <take>` writes the frames and the brief; a NEW subagent each round reads it. Reviewers disagree across rounds (one asked for the picker overview, a later one found it the only confusing shot): record a rejected fix as `# review-fixed:` so the next round does not re-ask. The add-folder chain took six rounds.
+- **Three gates, cheapest first: lints, hunt, student.** A student round asks "can I follow it?" and passed the project chain (round 3, `great and clear`) with 27 craft defects still in it — a hunt the same morning found them; it had seen several and filed them "harmless". Comprehension is the last gate, never the only one. `lint.py` sees what a script can (dead starts, still tails, backdrop bands, notches, small or jumping text); `review.sh --hunt` hands its findings to an editor who assumes defects exist and works a checklist (legibility, framing, dead time, pointer, transitions, context, continuity, text). Defects that recur across takes are machinery bugs, not take bugs: fix the default (clip start at the first in-crop move, hold caps, transitions between different screens, crops from element bounds), then re-lint.
+- **A test that passes on a crash is not a test.** Expected values are never empty strings: print `clean` for no findings.
+- **Done = a fresh student-reviewer says `great and clear`** — after the hunt finds only polish. `review.sh <take>` writes the frames and the brief; a NEW subagent each round reads it. Reviewers disagree across rounds (one asked for the picker overview, a later one found it the only confusing shot): record a rejected fix as `# review-fixed:` so the next round does not re-ask. The add-folder chain took six rounds.
 - **A thin strip is a fine crop.** The picker's button bar alone (New Folder · Cancel · Open) carries two hints with nothing private in it.
 - **The pointer glides, and lands late.** Start a cut early enough for it to enter the crop; check the landing frame, never the script's click time — hint 2 v1 cut before the pointer arrived and pointed at nothing.
 - **`src=raw`** cuts from the unredacted take at native resolution, for crops that show only app text. Redaction blurs a hovered button (the highlight breaks OCR), so a raw cut keeps the hint sharp. The guard: a raw cut must contain **only allowlisted text**; anything else fails it. That is stricter than the name check, because a raw crop has no blur to fall back on.

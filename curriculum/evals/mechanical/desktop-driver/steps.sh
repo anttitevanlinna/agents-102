@@ -80,7 +80,8 @@ click_text() {
 }
 
 press_esc() { osascript -e 'tell application "System Events" to key code 53'; sleep 0.8; }
-type_slow() { local s="$1" i; for ((i=0;i<${#s};i++)); do osascript -e "tell application \"System Events\" to keystroke \"${s:$i:1}\""; sleep 0.09; done; }
+type_slow() { local s="$1" i; for ((i=0;i<${#s};i++)); do osascript -e "tell application \"System Events\" to keystroke \"${s:$i:1}\""
+  [[ -n "${CLICK_LOG:-}" ]] && printf '%s\t-1\t-1\tkey\n' "$(_now)" >> "$CLICK_LOG"; sleep 0.09; done; }   # key: lint.py counts typing as action
 
 # ---- take scaffolding
 

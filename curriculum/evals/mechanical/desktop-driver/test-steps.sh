@@ -59,4 +59,20 @@ python3 "$D/src/hints.py" "$H/take.sh" "$H/steps.tsv" "$H/clicks.tsv" "$H/t0" 0.
 is "an unknown step fails loudly"            "$?" "1"
 rm -rf "$H"
 
+# lint.py timing: dead start and still tail, from logged events inside the crop (video seconds, raw px)
+LT() { python3 -c "import sys; sys.path.insert(0,'$D/src'); import lint
+ev=[(10.0,50,50,'move'),(10.5,50,50,'down'),(11.0,500,500,'move')]
+f=lint.timing('c', [$1], {'crop':'100:100:0:0', $2}, ev, $3); print(';'.join(l for l,_ in f) or 'clean')"; }
+is "lint: pointer moving 0.5 s in -> clean"            "$(LT '(9.5,11.0)' "'hold':'0.5'" False)" "clean"
+is "lint: 2 s before the first in-crop move -> dead"   "$(LT '(8.0,11.0)' "'hold':'0.5'" False)" "dead-start"
+is "lint: a move outside the crop does not count"      "$(LT '(9.5,13.0)' "'hold':'0.5'" False)" "still-tail"
+LK() { python3 - "$D/src" <<'PY'
+import sys; sys.path.insert(0, sys.argv[1]); import lint
+f = lint.timing('c', [(8.0, 11.0)], {'crop': '100:100:0:0', 'hold': '0.5'}, [(8.3, -2, -2, 'key'), (10.5, 50, 50, 'down')], False)
+print('clean' if not f else ';'.join(l for l, _ in f))
+PY
+}
+is "lint: a keystroke counts as action wherever it lands" "$(LK)" "clean"
+is "lint: last clip may hold longer"                   "$(LT '(9.5,12.0)' "'hold':'1.0'" True)" "clean"
+
 (( fail == 0 )) && echo "ALL OK" || { echo "FAILED"; exit 1; }

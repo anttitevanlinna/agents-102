@@ -9,28 +9,28 @@
 <div class="rt-cowork">
 <div class="a101-game-start">
 
-Open Claude Desktop. Start a new Cowork conversation, paste the request below and press **Send**. Leave this tab open.
+**Here in the handbook** · Click **Copy request**. It includes a link so you can find your way back.
 
 <div data-copy-label="Copy request">
 
 **Prompt** Cowork
 
 ```text
-Build me a snake game as snake.html. For the first 30 seconds, steer the snake for me so I can’t lose.
-
-At the top of your reply, link to the game file you made. Under it, link [back to the handbook](https://agents102.bosser.consulting/clients/acme-mvp/agents-101/#open-cowork-and-add-a-folder).
+Make me a game of Snake. Let it play itself for the first 30 seconds so I can watch. In your reply, link me to the finished snake.html and [back to the handbook](https://agents102.bosser.consulting/clients/acme-mvp/agents-101/#open-cowork-and-add-a-folder).
 ```
 
 <p class="a101-copy-status" data-copy-status role="status" data-copy-message="Copied. Paste into Cowork and press Send."></p>
 </div>
 
-<div class="a101-video-placeholder">Assume there is a short video here. The teacher clicks <strong>New</strong> in Claude Desktop, pastes the request into the message box and clicks <strong>Send</strong>. If the message box has a Chat/Cowork switch, the teacher chooses <strong>Cowork</strong>. A single message box is ready as it is. The clip ends when <strong>snake.html</strong> appears in the reply.
+**In Claude Desktop** · Click **New**. If the message box offers Chat or Cowork, pick **Cowork**. Paste the request and press **Send**.
+
+<div class="a101-video-placeholder">Assume there is a short video here. In one shot, the teacher clicks <strong>Copy request</strong> on this page, opens Claude Desktop and clicks <strong>New</strong>. We see the request pasted into the message box before the teacher clicks <strong>Send</strong>. On a layout with a Chat/Cowork switch the teacher selects <strong>Cowork</strong> before sending. With a single message box, they paste and send directly. The camera stays on that same conversation as Claude makes the game. Below the teacher’s sent message, we see the <strong>snake.html</strong> file in Claude’s reply. The teacher follows <strong>Back to the handbook</strong> beneath it and lands on <strong>Keep the version you made</strong>.
 <details><summary>See the message box and Send arrow</summary><img src="ACME_COWORK_MESSAGE_BOX" width="670" height="113" style="max-width:100%;height:auto" alt="A pasted request in Claude Desktop, with the Send arrow at the lower right."></details>
 </div>
 
-In about a minute, look at the top of **Claude’s reply to you**. The first link, **snake.html**, is the file it made. Seeing it there is enough. If the reply only describes the game, ask *“Attach the finished snake.html file here.”*
+When **snake.html** appears in the reply, you have your game. It may open as a board beside the conversation. Only got a description? Ask Claude to send you the file.
 
-Open the game if you want a round. To go on with the training, click **Back to the handbook** just below your file, or return to this tab and choose [Keep the version you made](#open-cowork-and-add-a-folder). Next you’ll give your work a folder.
+You can play a round or follow **Back to the handbook** in Claude’s reply. It takes you to [Keep the version you made](#open-cowork-and-add-a-folder), where you’ll give the game a folder.
 
 </div>
 </div>

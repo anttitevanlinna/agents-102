@@ -179,7 +179,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     assert.equal(start.querySelectorAll('details').length, 0, 'the welcome leads to the first result without stop controls');
     assert.equal(controls.querySelectorAll('details:not([open])').length, 3);
     assert.equal(start.querySelector('#start-learning').textContent, 'Welcome to Agents 101');
-    assert.match(start.textContent, /make a file you can use/i);
+    assert.match(start.textContent, /game of Snake that you can open/i);
     assert.match(start.textContent, /calendar/i);
     assert.ok(!start.querySelector('a[href="#make-my-first-game"]'), 'the opening reaches the copy control without a jump link');
     dom.window.location.hash = '#resume-learning';
@@ -201,7 +201,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     const extractionBlock = [...document.querySelectorAll('.prompt-block')].find(block => block.querySelector('code').textContent.startsWith('Extract the starter tarball'));
     assert.ok(extractionBlock);
     const prework = document.getElementById('prework');
-    const snakeBlock = [...prework.querySelectorAll('.prompt-block')].find(block => block.querySelector('code').textContent.startsWith('Build me a snake game'));
+    const snakeBlock = prework.querySelector('.a101-game-start .prompt-block');
     assert.ok(snakeBlock, 'the first game remains an executable copied request');
     assert.ok(snakeBlock.compareDocumentPosition(extractionBlock) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING, 'first game precedes starter installation');
     const downloadLink = prework.querySelector('a[href*="agents-101-starter.tar.gz"]');
@@ -210,12 +210,12 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     const gameCopy = snakeBlock.querySelector('.copy-btn');
     assert.equal(prework.querySelector('a[href^="claude:"]'), null);
     const firstVideo = prework.querySelector('.a101-game-start .a101-video-placeholder');
-    assert.match(firstVideo.textContent, /New.*message box.*Send.*Cowork.*snake.html/);
-    assert.match(prework.querySelector('.a101-game-start').textContent, /single message box is ready as it is/);
+    assert.match(firstVideo.textContent, /Copy request.*New.*message box.*Send.*Cowork.*snake\.html.*Back to the handbook/);
+    assert.match(prework.querySelector('.a101-game-start').textContent, /single message box.*paste and send directly/);
     assert.equal(firstVideo.querySelector('img').src, 'data:image/jpeg;base64,' + fs.readFileSync(path.join(ROOT, 'curriculum/delivery/agents-101-mvp/claude-send.jpg')).toString('base64'));
     const visibleRequest = snakeBlock.querySelector('code');
     const fullRequest = visibleRequest.textContent.trimEnd();
-    assert.match(fullRequest, /first 30 seconds, steer the snake for me so I can’t lose/);
+    assert.match(fullRequest, /Make me a game of Snake.*play itself for the first 30 seconds/);
     assert.equal(gameCopy.textContent, 'Copy request');
     gameCopy.click();
     await Promise.resolve();
@@ -361,7 +361,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
         assert.equal(offlinePrework.outerHTML, expectedPrework.window.document.getElementById('prework').outerHTML, 'offline setup uses the same renderer output; only links to missing companion sections point online');
       } finally { expectedPrework.window.close(); }
       for (const link of offlinePrework.querySelectorAll('a[href^="#"]')) assert.ok(offline.window.document.getElementById(link.getAttribute('href').slice(1)), `offline local link resolves: ${link.getAttribute('href')}`);
-      assert.ok(offlineHtml.indexOf('Build me a snake game') < offlineHtml.indexOf('Extract the starter tarball'));
+      assert.ok(offlineHtml.includes('Make me a game of Snake') && offlineHtml.indexOf('Make me a game of Snake') < offlineHtml.indexOf('Extract the starter tarball'));
       assert.ok(offlinePrework.compareDocumentPosition(offline.window.document.getElementById('theory-m1')) & offline.window.Node.DOCUMENT_POSITION_FOLLOWING);
       assert.equal(offlinePrework.querySelectorAll('.a101-video-placeholder').length, 3);
       const setupScript = offline.window.document.querySelector('script[data-a101-setup]');

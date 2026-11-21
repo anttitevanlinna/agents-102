@@ -1,7 +1,7 @@
 <h1 id="start-learning">Welcome to Agents 101</h1>
 
 
-You can ask Claude a question. You can also ask it to make a file you can use. Let’s try that with something small before we bring any work into it. First, a game. Later, a briefing from your calendar.
+Want to see what Claude can make? Give it a minute and a message. You’ll have a game of Snake that you can open. Later, you’ll ask it to turn your calendar into a briefing.
 
 ## Pause learning
 

@@ -8,32 +8,14 @@
 
 <div class="rt-cowork">
 <div class="a101-game-start">
-
-**Here in the handbook** · Click **Copy request**. It includes a link so you can find your way back.
-
-<div data-copy-label="Copy request">
-
-**Prompt** Cowork
-
-```text
-Make me a game of Snake. Let it play itself for the first 30 seconds so I can watch. In your reply, link me to the finished snake.html and [back to the handbook](https://agents102.bosser.consulting/clients/acme-mvp/agents-101/#open-cowork-and-add-a-folder).
-```
-
-<p class="a101-copy-status" data-copy-status role="status" data-copy-message="Copied. Paste into Cowork and press Send."></p>
-</div>
-
-**In Claude Desktop** · Click **New**. If the message box offers Chat or Cowork, pick **Cowork**. Paste the request and press **Send**.
-
-<div class="a101-video-placeholder">Assume there is a short video here. In one shot, the teacher clicks <strong>Copy request</strong> on this page, opens Claude Desktop and clicks <strong>New</strong>. We see the request pasted into the message box before the teacher clicks <strong>Send</strong>. On a layout with a Chat/Cowork switch the teacher selects <strong>Cowork</strong> before sending. With a single message box, they paste and send directly. The camera stays on that same conversation as Claude makes the game. Below the teacher’s sent message, we see the <strong>snake.html</strong> file in Claude’s reply. The teacher follows <strong>Back to the handbook</strong> beneath it and lands on <strong>Keep the version you made</strong>.
+<p>Leave this handbook open. Open Claude Desktop and click <strong>New</strong>. If you see a Chat/Cowork switch, choose <strong>Cowork</strong>. Type this into the message box and press <strong>Send</strong>.</p>
+<blockquote>Make me a Snake game and link to the file here.</blockquote>
+<p>Look in the reply under your message. The link to the Snake game is the file Claude made for you. Sometimes Claude opens the game board beside the reply as well. If you only get a description, ask <em>“Can you attach the game?”</em></p>
+<div class="a101-video-placeholder">Assume there is a short video here. The teacher leaves the handbook open, opens Claude Desktop, clicks <strong>New</strong>, types the sentence above and clicks <strong>Send</strong>. With a Chat/Cowork switch, the teacher selects Cowork before typing. A single message box is ready as it is. In the same shot, Claude replies with the game file and the board appears beside it. The teacher switches back to the open handbook and clicks <strong>Keep my game</strong>.
 <details><summary>See the message box and Send arrow</summary><img src="ACME_COWORK_MESSAGE_BOX" width="670" height="113" style="max-width:100%;height:auto" alt="A pasted request in Claude Desktop, with the Send arrow at the lower right."></details>
 </div>
-
-When **snake.html** appears in the reply, you have your game. It may open as a board beside the conversation. Only got a description? Ask Claude to send you the file.
-
-You can play a round or follow **Back to the handbook** in Claude’s reply. It takes you to [Keep the version you made](#open-cowork-and-add-a-folder), where you’ll give the game a folder.
-
-</div>
-</div>
+<p>When your game arrives, you can keep it. Switch back from Claude to your browser <span data-a101-os-only="mac">with <strong>⌘ Tab</strong></span><span data-a101-os-only="windows">with <strong>Alt + Tab</strong></span>, then click <a href="#open-cowork-and-add-a-folder">Keep my game</a>. Look for the <strong>Agents 101 handbook</strong> tab. The same link is in its opening map. You’ll give your game a folder on your computer.</p>
+</div></div>
 
 <div class="rt-code">
 
@@ -47,7 +29,7 @@ Double-click `prework/snake.html` inside your folder to play in your browser.
 
 <span id="3-play-your-game"></span>
 
-<h2 id="open-cowork-and-add-a-folder">2. Keep the version you made</h2>
+<h2 id="open-cowork-and-add-a-folder">2. Keep my game</h2>
 
 <div class="a101-os-picker" role="group" aria-label="Setup for your computer">Your computer <button type="button" data-a101-os="mac" aria-pressed="false">Mac</button> <button type="button" data-a101-os="windows" aria-pressed="false">Windows</button></div>
 

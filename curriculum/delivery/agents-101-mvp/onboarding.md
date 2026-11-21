@@ -1,7 +1,8 @@
 <h1 id="start-learning">Welcome to Agents 101</h1>
 
 
-Want to see what Claude can make? Give it a minute and a message. You’ll have a game of Snake that you can open. Later, you’ll ask it to turn your calendar into a briefing.
+<p>Want to see what Claude can make? Start with a file you’ll recognize as soon as you see it. Snake needs one message and none of your work files. Later you’ll make a briefing for your working week.</p>
+<nav aria-label="Your first session"><a href="#make-my-first-game">Make a game</a> &nbsp;→&nbsp; <a href="#open-cowork-and-add-a-folder">Keep my game</a> &nbsp;→&nbsp; <a href="#4-summarize-your-week-in-meetings">Make your calendar briefing</a></nav>
 
 ## Pause learning
 

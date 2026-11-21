@@ -23,10 +23,6 @@ const SETUP_CSS = `
 .a101-os-picker button { font: inherit; color: var(--fg); background: transparent; border: 1px solid var(--line); border-radius: .35rem; padding: .35rem .8rem; cursor: pointer; }
 .a101-os-picker button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 [data-a101-os-only][hidden] { display: none !important; }
-.a101-copy-status { font-size: .9rem; color: var(--fg-2); }
-.a101-copy-status:empty { margin: 0; }
-.a101-game-start [data-copy-label] .copy-btn { color: #fff; background: #24583b; padding: .5rem .8rem; }
-.a101-game-start .copy-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 `;
 const SETUP_SCRIPT = `(function () {
   var key = 'a101-setup-os', selected;
@@ -213,11 +209,8 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
     const trainingDir = path.join(customerDir, 'agents-101');
     const workbookFile = path.join(trainingDir, 'index.html');
     let html = applyLoaderFraming(fs.readFileSync(workbookFile, 'utf8'));
-    // Show a readable link while preserving the exact Markdown in code.textContent for Copy.
-    const returnUrl = WORKBOOK_URL + '#open-cowork-and-add-a-folder';
-    const returnMarkdown = `[back to the handbook](${returnUrl})`;
-    if (html.split(returnMarkdown).length !== 2) throw new Error('Expected one game request with the handbook link');
-    html = html.replace(returnMarkdown, `<span hidden>[</span><a href="${returnUrl}">back to the handbook</a><span hidden>](${returnUrl})</span>`);
+    html = html.replace('<title>Agents 101 — ACME</title>', '<title>Agents 101 handbook — ACME</title>')
+      .replace('data-target="prework">Prework</a>', 'data-target="prework">First steps</a>');
     // The theory manifest omits setup. Carry the exact rendered edition route
     // into its offline companion instead of authoring a second instruction set.
     const offlinePrework = preworkSection(html);

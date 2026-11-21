@@ -31,26 +31,59 @@ The first rating ends when the learner can recognize a file or preview Claude ma
 | Ask for two links in separate sentences | 4.487 | 30/30 | 30 | 0 | 0 |
 | Pause alongside the teacher | 4.507 | 30/30 | 30 | 0 | 0 |
 | Listen while switching windows | 4.567 | 30/30 | 30 | 0 | 0 |
-| Ask for both links in one sentence (current release) | 4.607 | 30/30 | 30 | 0 | 0 |
+| Ask for both links in one sentence (previous release) | 4.607 | 30/30 | 30 | 0 | 0 |
+| Type the request and ask for a file link (current release) | 4.710 | 30/30 | 29 | 1 | 0 |
 
 Each workbook received 30 fresh reads, three per persona. All used the same question, model, personas, OS assignments and video assumption. Each condition used a fresh copy of the rendered first-session HTML. Stars describe simulated ease. These reads do not establish human completion rates or elapsed time. The earlier 4.593 rating for the prior public workbook measured a different endpoint, opening and trying the game.
 
 The ordered-link prototype scored 4.593. The integrated release scored 4.550 and all 30 readers identified the next activity in both batches. The previous release also scored 4.550, with 29 clear returns. The agenda prototype kept the same handoff and changed the first artifact to a work document. It scored 4.547. These comparisons give little reason to expect a different artifact alone to move the mean to 4.70.
 
+## Returning from a one-sentence request
+
+| Reading prototype | Mean stars | Recognized | Clear / uncertain / missing return | Batch |
+| --- | ---: | ---: | --- | --- |
+| Type one sentence and return to the open tab | 4.640 | 30/30 | 24 / 6 / 0 | `journey-093eba4e-bfcb-47d9-be53-d91c36b4d75a` |
+| Watch the game, rewind, and send the request | 4.410 | 30/30 | 28 / 2 / 0 | `journey-c6ff0bf4-ed80-4638-9fa9-6c8afd04813d` |
+| Reveal the sending instructions after copying | 4.437 | 30/30 | 30 / 0 / 0 | `journey-03e79245-7ada-4fbf-a654-fd88faf5dc1f` |
+| Copy a shorter file request | 4.480 | 30/30 | 30 / 0 / 0 | `journey-4b083f0e-a876-46cd-ac6b-637acab1d17f` |
+| Ask for a reminder naming the browser tab | 4.537 | 30/30 | 26 / 4 / 0 | `journey-048da2bc-3d8e-4d07-b493-edbe1c1ebcec` |
+| Type with the handbook beside Claude | 4.600 | 30/30 | 20 / 10 / 0 | `journey-8fe4aaa1-49f7-463c-9bd7-02d6e6616b07` |
+| Disclose the appended course link under the request | 4.497 | 30/30 | 29 / 1 / 0 | `journey-57b01969-e067-4913-9b42-f6a755ce082a` |
+| Give the requested game a visible signature | 4.550 | 30/30 | 29 / 1 / 0 | `journey-d5c4a1c4-740d-409c-a73f-7072fc2684b7` |
+| Diagnostic exercise assuming instructor-prepared windows | 4.367 | 30/30 | 29 / 1 / 0 | `journey-48ae8dd6-f84c-4088-81d2-d00184deacda` |
+| Identify the selector by its corner of the message box | 4.553 | 30/30 | 29 / 1 / 0 | `journey-36241c1c-5f93-481d-80bf-f3b13557c8ed` |
+| Name the save link and show the handbook beside the task | 4.543 | 30/30 | 30 / 0 / 0 | `journey-508c796c-f8e3-4921-813b-14a10676ba91` |
+| Type the request with a three-step course map | 4.643 | 30/30 | 27 / 3 / 0 | `journey-ca9c9f18-e034-4c32-8909-4579680b2e89` |
+| Copy the request with the same course map | 4.553 | 30/30 | 30 / 0 / 0 | `journey-d8bf1ce4-4912-44e5-a2f4-214b642afbf2` |
+| Explain why the first task uses Snake | 4.633 | 30/30 | 30 / 0 / 0 | `journey-72752b22-c30f-4fd3-830e-69092e9b19ee` |
+| Type first with an optional copied return link | 4.637 | 30/30 | 28 / 2 / 0 | `journey-1571c435-0591-46f0-b897-606d04660a11` |
+| Name the same next activity at each return point | 4.720 | 30/30 | 27 / 3 / 0 | `journey-3503a041-076a-4da2-ab54-eba921c79998` |
+| Short copied request for two links | 4.477 | 30/30 | 30 / 0 / 0 | `journey-b1204f19-f5fb-41f6-a3c1-a6db8f3b2915` |
+| Repeat read of the identical published build | 4.600 | 30/30 | 30 / 0 / 0 | `journey-9bfbea3f-bb73-4dee-b3b1-922b75fa7cef` |
+| Build check of the welcome explaining Snake | 4.593 | 30/30 | 28 / 2 / 0 | `journey-8dae9394-c45d-44ac-a666-b61ba5b8855c` |
+| Integrated first typed request | 4.660 | 30/30 | 27 / 3 / 0 | `journey-291b155a-a3b0-4036-828d-21a3f3376c5e` |
+| Ask for the game link in the reply | 4.717 | 30/30 | 30 / 0 / 0 | `journey-69d70c65-1380-491f-af42-7050e1d49c23` |
+| Recognize the observed native game card | 4.660 | 30/30 | 29 / 1 / 0 | `journey-b23caa93-6987-4f15-a84e-eaa16baa66b6` |
+| Match the message-box label and file card to the app | 4.570 | 30/30 | 28 / 2 / 0 | `journey-82cb7b9a-b57d-4e7a-b36b-00f6eaa4421d` |
+
+Typing one sentence scored 4.640, with 24 clear returns. All 30 readers of the 4.607 release found the next activity. The prepared-workstation diagnostic assumed an instructor had opened both windows. Readers explicitly questioned that assumption when taking the course alone. Its score cannot establish the upper end of the scale.
+
+The shipped one-sentence request explicitly asks for a link to the file. Its prototype scored 4.717 and the packaged release scored 4.710. On the packaged release all 30 readers recognized their result and 29 found a clear return. The remaining reader identified the open-tab route and wondered how to find the handbook again after closing the browser. The previous release scored 4.607, with 30 clear returns. A fresh batch on that identical previous release scored 4.600.
+
 ## Three scores per persona
 
 | Persona | Previous release | Current release |
 | --- | --- | --- |
-| novice-leader | 4.6 / 4.4 / 4.6 | 4.7 / 4.6 / 4.7 |
-| product-ops | 4.7 / 4.6 / 4.6 | 4.7 / 4.6 / 4.7 |
-| technical-builder | 4.6 / 4.7 / 4.7 | 4.8 / 4.7 / 4.6 |
-| hr-leader | 4.6 / 4.6 / 4.6 | 4.6 / 4.6 / 4.6 |
-| finance-sceptic | 4.5 / 4.3 / 4.4 | 4.5 / 4.5 / 4.4 |
-| solo-consultant | 4.5 / 4.5 / 4.4 | 4.5 / 4.5 / 4.6 |
-| marketing-browser-user | 4.7 / 4.4 / 4.6 | 4.7 / 4.6 / 4.6 |
-| cowork-regular | 4.6 / 4.4 / 4.7 | 4.8 / 4.8 / 4.6 |
-| windows-office-user | 4.6 / 4.5 / 4.4 | 4.6 / 4.6 / 4.6 |
-| impatient-skimmer | 4.6 / 4.5 / 4.6 | 4.6 / 4.4 / 4.4 |
+| novice-leader | 4.7 / 4.6 / 4.7 | 4.8 / 4.8 / 4.7 |
+| product-ops | 4.7 / 4.6 / 4.7 | 4.7 / 4.8 / 4.7 |
+| technical-builder | 4.8 / 4.7 / 4.6 | 4.8 / 4.8 / 4.8 |
+| hr-leader | 4.6 / 4.6 / 4.6 | 4.6 / 4.7 / 4.8 |
+| finance-sceptic | 4.5 / 4.5 / 4.4 | 4.5 / 4.6 / 4.6 |
+| solo-consultant | 4.5 / 4.5 / 4.6 | 4.6 / 4.8 / 4.6 |
+| marketing-browser-user | 4.7 / 4.6 / 4.6 | 4.7 / 4.5 / 4.8 |
+| cowork-regular | 4.8 / 4.8 / 4.6 | 4.8 / 4.8 / 4.8 |
+| windows-office-user | 4.6 / 4.6 / 4.6 | 4.6 / 4.8 / 4.7 |
+| impatient-skimmer | 4.6 / 4.4 / 4.4 | 4.6 / 4.7 / 4.8 |
 
 ## Rubric checks
 
@@ -68,7 +101,7 @@ During calibration, an early return fixture mentioned saving a file but gave an 
 
 ## Evidence
 
-Model `claude-sonnet-5-5`. Question SHA-256 `53cd726f74ed3a820281d098c531d373a49e2b342318c9e74e2f528baa5a05e7`. Release workbook SHA-256 `26ea5441bd267f3691e1c0b28c0e1706bfbda8d3893483969d9b2ba427d4d59a`. The controls and per-reader responses are under the ignored `out/` directory.
+Model `claude-sonnet-5-5`. Question SHA-256 `53cd726f74ed3a820281d098c531d373a49e2b342318c9e74e2f528baa5a05e7`. Release workbook SHA-256 `1e4951ba49c23b93700fd85e1aa40c3bbd8b0dea83605d26dd9e7e5f5ef7f6d8`. The controls and per-reader responses are under the ignored `out/` directory.
 
 - Prior public workbook — `journey-58bbbbbf-e63d-43c0-bcd8-d991ac1c5c2b`
 - Offer to rename the game — `journey-c491520a-bee7-4ed1-a994-2b7772eb166f`
@@ -98,6 +131,7 @@ Model `claude-sonnet-5-5`. Question SHA-256 `53cd726f74ed3a820281d098c531d373a49
 - Pause alongside the teacher — `journey-8a78e763-8aad-4a37-acb0-006506becc57`
 - Listen while switching windows — `journey-270f00a7-75dd-4c4d-a6b4-64d2a5cf1c09`
 - Ask for both links in one sentence — `journey-3e98a14d-bcc6-4c37-9437-2dd1dba19849`
+- Integrated typed request for the file link — `journey-15e77397-ac7c-4032-b3d9-6bd37186a164`
 - Control checks — `journey-7de2653b-4191-41c8-ba61-20017f128dcf`
 
-The first integrated two-window draft asked for a file with a handbook link. An isolated Claude run wrote the file and placed the link inside the game. Its final reply omitted a clickable game link. The release asks for both links in the reply. A separate Claude run used the copied release request. It wrote `snake.html`, linked to the file, and supplied the link to the handbook’s save section beneath it. The first walkthrough uses a video placeholder. The calendar-before-folder candidate was a reading prototype. Its later file operations were outside that test.
+In a fresh native Claude Desktop conversation, the earlier typed request “Make me a Snake game I can open as a file” produced a response identifying `snake.html` and a “Download Snake” button. The final request also asks Claude to link to the file. A separate isolated Claude run used the exact final sentence, wrote the HTML game and linked it in the reply. The opening walkthrough remains a video placeholder and all simulation scores use its stated caption.

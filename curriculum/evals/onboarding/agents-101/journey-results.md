@@ -21,8 +21,11 @@ The first rating ends when the learner can recognize a file or preview Claude ma
 | Give the link a learner-facing game title | 4.577 | 30/30 | 29 | 1 | 0 |
 | Choose between classic and space Snake | 4.533 | 30/30 | 29 | 1 | 0 |
 | Release build after source integration (current release) | 4.550 | 30/30 | 30 | 0 | 0 |
+| Make a meeting agenda instead of a game (diagnostic) | 4.547 | 30/30 | 30 | 0 | 0 |
 
 Each workbook received 30 fresh reads, three per persona. All used the same question, model, personas, OS assignments and video assumption. Each condition used a fresh copy of the rendered first-session HTML. Stars describe simulated ease. These reads do not establish human completion rates or elapsed time. The earlier 4.593 rating for the prior public workbook measured a different endpoint, opening and trying the game.
+
+The ordered-link prototype scored 4.593. The integrated release scored 4.550 and all 30 readers identified the next activity in both batches. The previous release also scored 4.550, with 29 clear returns. The agenda prototype kept the same handoff and changed the first artifact to a work document. It scored 4.547. These comparisons give little reason to expect a different artifact alone to move the mean to 4.70.
 
 ## Three scores per persona
 
@@ -74,6 +77,7 @@ Model `claude-sonnet-5-5`. Question SHA-256 `53cd726f74ed3a820281d098c531d373a49
 - Give the link a learner-facing game title — `journey-d3e33076-f333-4adc-899a-5e129361dda8`
 - Choose between classic and space Snake — `journey-21bbc8b6-900b-40d6-af76-db82183628e9`
 - Release build after source integration — `journey-736362a0-26ac-47ad-b970-c8d608124ca8`
+- Meeting agenda diagnostic — `journey-40323117-28b3-40e5-abc6-385fc813ea4f`
 - Control checks — `journey-7de2653b-4191-41c8-ba61-20017f128dcf`
 
 A separate Claude run used the copied release request. It wrote `snake.html`, linked to the file, and supplied the link to the handbook’s save section beneath it. The first walkthrough uses a video placeholder. The calendar-before-folder candidate was a reading prototype. Its later file operations were outside that test.

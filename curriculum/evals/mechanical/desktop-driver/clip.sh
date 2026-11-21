@@ -15,7 +15,8 @@
 #   # show: x,y,w,h@from-to                                           (raw px; the conversation pane while it matters: text
 #                                                                      there stays sharp unless it holds a real name below)
 #   # cut[name]: 12.5-20.3 crop=640:400:160:255                       (one segment, optional crop of the redacted video)
-#   # cut[name]: 0-12.4,20.3-31                                       (several segments, joined with a 0.3 s crossfade)
+#   # cut[name]: 0-12.4,20.3-31                                       (several segments, joined with a 0.3 s crossfade;
+#                                                                      join=cut: a hard cut, for skipping a flash)
 #   # cut[name]: 13.3-19.4 crop=670:330:1020:588 src=raw              (native-resolution crop of the raw take; only where
 #                                                                      nothing private is inside the crop)
 #   # chain[name]: cutA cutB                                         (optional, repeat: one video per scene)
@@ -120,7 +121,10 @@ cut_one() {  # name, segments, [crop], [src: redacted|raw], [round radius px], [
     local mk=""; (( n == ${#S[@]} - 1 )) && mk="$markf"
     f+="[0:v]trim=${s%-*}:${s#*-},setpts=PTS-STARTPTS${crop:+,$crop}$mk[s$n];"; n=$((n+1))
   done
-  if (( n == 1 )); then f+="[s0]null[v0];"; else
+  if (( n == 1 )); then f+="[s0]null[v0];"
+  elif [[ "${JOIN:-fade}" == cut ]]; then   # hard cut: a fade over a skipped flash ghosts both screens into each other
+    for ((k=0; k<n; k++)); do f+="[s$k]"; done; f+="concat=n=$n:v=1:a=0[v0];"
+  else
     prev="s0"; off=0
     for ((k=1; k<n; k++)); do
       len="$(echo "${S[$((k-1))]#*-} - ${S[$((k-1))]%-*}" | bc -l)"; off="$(echo "$off + $len - 0.3" | bc -l)"
@@ -142,8 +146,8 @@ cut_one() {  # name, segments, [crop], [src: redacted|raw], [round radius px], [
 CLIPS=("$MP4") RAWCUTS=()
 while IFS= read -r line; do
   name="$(sed -E 's/^# cut\[([^]]+)\]: .*/\1/' <<< "$line")"; rest="$(sed -E 's/^# cut\[[^]]+\]: //' <<< "$line")"
-  read -r segs opts <<< "$rest"; crop="" src="redacted" round="" hold="" scale="" mask="" mark="" lead=""
-  for o in $opts; do case "$o" in crop=*) crop="$o";; src=*) src="${o#src=}";; round=*) round="${o#round=}";; hold=*) hold="${o#hold=}";; scale=*) scale="${o#scale=}";; mask=*) mask="${o#mask=}";; mark=*) mark="${o#mark=}";; lead=*) lead="${o#lead=}";; esac; done
+  read -r segs opts <<< "$rest"; JOIN=fade crop="" src="redacted" round="" hold="" scale="" mask="" mark="" lead=""
+  for o in $opts; do case "$o" in crop=*) crop="$o";; src=*) src="${o#src=}";; round=*) round="${o#round=}";; hold=*) hold="${o#hold=}";; scale=*) scale="${o#scale=}";; mask=*) mask="${o#mask=}";; mark=*) mark="${o#mark=}";; lead=*) lead="${o#lead=}";; join=*) JOIN="${o#join=}";; esac; done
   if [[ -n "$mask" && -n "$crop" ]]; then IFS=: read -r mx my mw mh mc <<< "$mask"; crop+=",format=rgb24,drawbox=x=$mx:y=$my:w=$mw:h=$mh:color=0x$mc:t=fill"; fi
   markf=""; if [[ -n "$mark" && -n "$crop" ]]; then IFS=: read -r kx ky kw kh kt <<< "$mark"; markf=",drawbox=x=$kx:y=$ky:w=$kw:h=$kh:color=0xD97757:t=5:enable='gte(t,$kt)'"; fi
   gcrop="$crop"   # the raw guard reads native size: OCR misreads scaled-down text

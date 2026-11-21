@@ -15,14 +15,14 @@ except FileNotFoundError: pass
 for i, line in enumerate(re.findall(r"^# hint\[([^\]]+)\]: (.*)$", open(take).read(), re.M)):
     name, opts = line; o = dict(x.split("=", 1) for x in opts.split() if "=" in x)
     if name not in steps: sys.exit(f"hint[{name}]: no such step in the step log")
-    a, b = steps[name]; pad = float(o.pop("pad", "0.2")); end = o.pop("end", "press"); skip = o.pop("skip", "")
-    if end == "press":
-        d = [t for t in downs if a <= t <= b]
-        if not d: sys.exit(f"hint[{name}]: no press logged inside the step")
-        e = d[-1] + 0.03
-    else: e = b
+    a, b = steps[name]; pad = float(o.pop("pad", "0.2")); end = o.pop("end", "press"); after = float(o.pop("after", "0.15")); skip = o.pop("skip", "")
+    d = [t for t in downs if a <= t <= b]
+    if (end == "press" or "p" in skip) and not d: sys.exit(f"hint[{name}]: no press logged inside the step")
+    e = d[-1] + after if end == "press" else b   # default after 0.15: the press ring and pressed state show before the cut
     s0, e0 = max(0, a - pad - lag), e - lag
     segs = f"{s0:.2f}-{e0:.2f}"
     if skip:
-        k0, k1 = (float(v) for v in skip.split("-")); segs = f"{s0:.2f}-{s0 + k0:.2f},{s0 + k1:.2f}-{e0:.2f}"
+        # skip=A-B: seconds from the clip start; skip=pA-pB: from the step's last press (holds across re-takes)
+        k0, k1 = (d[-1] - lag + float(v[1:]) if v.startswith("p") else s0 + float(v) for v in skip.split("-"))
+        segs = f"{s0:.2f}-{k0:.2f},{k1:.2f}-{e0:.2f}"
     print(f"# cut[{i + 1:02d}-{name}]: {segs} " + " ".join(f"{k}={v}" for k, v in o.items()))

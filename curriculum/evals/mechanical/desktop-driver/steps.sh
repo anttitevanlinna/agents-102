@@ -108,6 +108,9 @@ _now() { python3 -c 'import time; print(f"{time.time():.3f}")'; }
 rec_stop()  { [[ -n "${REC_PID:-}" ]] || return 0; wait "$REC_PID" 2>/dev/null || true; REC_PID=""
   [[ -n "${NC_PID:-}" ]] && { kill "$NC_PID" 2>/dev/null || true; NC_PID=""; }; }   # the cursor returns when nocursor exits
 
+# park X Y: glide the pointer there without clicking (off text being typed; logged, so the drawn pointer follows)
+park() { "$BIN/click" "$1" "$2" 350 move; }
+
 # back_to_operator: the Code tab holds the operator's own transcript; every take ends there.
 back_to_operator() { "$BIN/click" $CODE_TAB 0; }
 

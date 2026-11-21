@@ -1,4 +1,4 @@
-// usage: click <x> <y> [glideMs]   (screen points; glides the cursor there, then left-clicks)
+// usage: click <x> <y> [glideMs] [move]   (screen points; glides the cursor there, then left-clicks; `move` = glide only)
 // CLICK_LOG=<file>: append "epoch<TAB>x<TAB>y<TAB>move|down|up" per event, so the recording's cursor and press rings can
 // be drawn afterwards (the screen recorder draws the cursor unreliably for posted events).
 import CoreGraphics
@@ -25,6 +25,7 @@ for i in 1...steps {  // eased glide so the viewer can follow the pointer
   log(p, "move")
   if glide > 0 { usleep(10_000) }
 }
+if a.count > 4 && a[4] == "move" { exit(0) }
 usleep(120_000)
 CGEvent(mouseEventSource: src, mouseType: .leftMouseDown, mouseCursorPosition: target, mouseButton: .left)?.post(tap: .cghidEventTap)
 log(target, "down")

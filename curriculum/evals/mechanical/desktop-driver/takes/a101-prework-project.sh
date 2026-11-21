@@ -33,10 +33,10 @@ MODE="${1:-list}"
 # hint[link]: crop=1020:370:856:860 src=raw hold=1.0
 # hint[documents]: crop=286:330:560:315 src=raw hold=0.8
 # hint[new-folder]: crop=1292:103:848:1085 src=raw hold=1.0
-# hint[name-folder]: crop=638:300:1037:600 src=raw round=24 hold=1.0
+# hint[name-folder]: crop=638:300:1037:600 src=raw round=24 after=0.03 hold=1.0
 # hint[add-folder]: crop=1292:103:848:1085 src=raw hold=1.0
 # hint[create]: crop=1020:370:856:860 hold=1.0
-# hint[context]: crop=1104:620:1606:10 src=raw end=done skip=2.0-2.5 mark=216:487:500:48:0.3 hold=1.5
+# hint[context]: crop=1104:620:1606:10 src=raw end=done skip=p0.25-p0.65 join=cut mark=216:487:500:48:0.3 hold=1.5
 DLG="480 1180 170 640"    # the New project dialog
 PICK="335 1135 170 630"   # the folder picker
 
@@ -58,7 +58,9 @@ step_new-project() {     # Projects page -> New project dialog, empty
 }
 step_name() {            # dialog -> name typed
   expect_text "API performance" contains 3 $DLG
+  local p; p="$(find_text "API performance" contains $DLG)"
   click_text "API performance" contains 500 $DLG
+  park "${p% *}" $(( ${p#* } + 50 ))        # the pointer leaves the field: the typed name stays readable
   type_slow "agents-101"; sleep 0.6
   expect_text "agents-101" contains 3 $DLG
 }

@@ -65,15 +65,22 @@ h1 { font: 700 clamp(30px, 4.6vw, 48px)/1.05 var(--font-body); letter-spacing: -
 /* The question */
 .ask { margin-top: 28px; }
 .ask label { display: block; font: 700 clamp(24px, 3.4vw, 34px)/1.1 var(--font-body); letter-spacing: -.04em; margin-bottom: 10px; color: var(--ink); }
-.field { display: flex; gap: 12px; align-items: flex-end; border-bottom: 4px solid var(--orange); }
-.field textarea { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font: 500 clamp(19px, 2.6vw, 26px)/1.3 var(--font-body); letter-spacing: -.02em; padding: 10px 0; resize: none; overflow: hidden; field-sizing: content; min-height: 1.3em; }
+/* The input looks like one: a white box with a border, a cursor, a clear button. Its bottom-left corner is square so the orange line runs on from it. */
+.field { display: flex; gap: 8px; align-items: center; border: 3px solid var(--orange); border-radius: 10px 10px 10px 0; background: var(--paper); padding: 6px 6px 6px 16px; cursor: text; box-shadow: inset 0 2px 4px rgba(0, 0, 0, .06); transition: box-shadow .15s; }
+.field:hover { box-shadow: inset 0 2px 4px rgba(0, 0, 0, .06), 0 0 0 4px color-mix(in srgb, var(--orange) 14%, transparent); }
+.field:focus-within { box-shadow: inset 0 2px 4px rgba(0, 0, 0, .06), 0 0 0 5px color-mix(in srgb, var(--orange) 30%, transparent); }
+.field textarea { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); caret-color: var(--orange); font: 500 clamp(19px, 2.6vw, 26px)/1.3 var(--font-body); letter-spacing: -.02em; padding: 8px 0; resize: none; overflow: hidden; field-sizing: content; min-height: 1.3em; }
 .field textarea::placeholder { color: var(--ph); }
-.field button { font: 600 16px/1 var(--font-body); background: var(--orange); color: #111; border: 0; border-radius: 4px 4px 0 0; padding: 14px 18px; cursor: pointer; white-space: nowrap; }
+.field textarea::selection { background: color-mix(in srgb, var(--orange) 32%, transparent); color: var(--ink); }
+.field .clear { flex: none; width: 32px; height: 32px; border: 0; border-radius: 50%; background: var(--bg-3); color: var(--fg-2); font: 400 20px/1 var(--font-body); cursor: pointer; }
+.field .clear:hover { background: var(--line); color: var(--ink); }
+.field .clear[hidden] { display: none; }
+.field button[type="submit"] { font: 600 16px/1 var(--font-body); background: var(--orange); color: #111; border: 0; border-radius: 6px; padding: 14px 18px; cursor: pointer; white-space: nowrap; }
 .field button[disabled] { opacity: .6; cursor: default; }
 .priv { margin: 0; }
 /* One orange line: the input's underline turns down the left edge and branches into every module row. */
 .try, .plan { border-left: 3px solid var(--orange); padding-left: 18px; }
-@media (max-width: 560px) { .try, .plan { padding-left: 12px; } .field .wide { display: none; } }
+@media (max-width: 560px) { .try, .plan { padding-left: 12px; } .field .wide { display: none; } .field { padding-left: 12px; } }
 .try { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 0; padding-top: 12px; font-size: 13px; color: var(--fg-3); }
 .try button { font: inherit; color: var(--ink); background: var(--bg-2); border: 1px solid var(--line); border-radius: 99px; padding: 4px 11px; cursor: pointer; text-align: left; }
 .try button:hover { border-color: var(--orange); }
@@ -175,6 +182,7 @@ footer p { margin: 0; max-width: 46em; }
       <label for="stuck">So, what's stuck at work?</label>
       <div class="field">
         <textarea id="stuck" name="challenge" rows="1" autocomplete="off" maxlength="120" placeholder="Type it here, in a few words">we keep losing deals to a cheaper competitor</textarea>
+        <button class="clear" id="clear" type="button" aria-label="Clear and type your own">×</button>
         <button id="send" type="submit">Rewrite<span class="wide"> my course</span></button>
       </div>
       <div class="try" id="try"><span>Or try:</span>
@@ -433,13 +441,18 @@ footer p { margin: 0; max-width: 46em; }
   function showExample(n) {
     var ex = EXAMPLES[n]; if (!ex) return;
     if (ctl) { ctl.abort(); ctl = null; list.classList.remove('wait'); send.disabled = false; }
-    inp.value = ex.challenge; fit(); press(n); reveal();
+    inp.value = ex.challenge; fit(); syncClear(); press(n); reveal();
     statusEl.textContent = EXAMPLE_NOTE; cascade(ex.challenge, ex.rows);
   }
   for (var k = 0; k < chips.length; k++) chips[k].addEventListener('click', function () { var n = Number(this.getAttribute('data-ex')); showExample(n); count('example'); });
   function fit() { if (!window.CSS || !CSS.supports('field-sizing', 'content')) { inp.style.height = 'auto'; inp.style.height = inp.scrollHeight + 'px'; } }
   inp.addEventListener('input', fit); window.addEventListener('resize', fit); fit();
   inp.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); if (form.requestSubmit) form.requestSubmit(); else send.click(); } });
+  var clearBtn = document.getElementById('clear');
+  function syncClear() { clearBtn.hidden = !inp.value; }
+  inp.addEventListener('input', syncClear); syncClear();
+  clearBtn.addEventListener('click', function () { inp.value = ''; fit(); syncClear(); press(-1); inp.focus(); });
+  field.addEventListener('click', function (e) { if (e.target === field) inp.focus(); });
   inp.addEventListener('focus', function () { for (var i = 0; i < EXAMPLES.length; i++) if (inp.value === EXAMPLES[i].challenge) { inp.select(); return; } });
   var NOTES = {
     live: 'Written for you just now by Claude, from the course pages.',
@@ -479,6 +492,10 @@ footer p { margin: 0; max-width: 46em; }
     cascade(c, answer).then(function () { if (mine === ctl) { ctl = null; send.disabled = false; } });
   });
 
+  /* On a desktop, the cursor starts in the box with the example selected: type and it is replaced. */
+  if (window.matchMedia && window.matchMedia('(pointer: fine)').matches && window.scrollY < 40) {
+    try { inp.focus({ preventScroll: true }); inp.select(); } catch (e) {}
+  }
   /* Once, shortly after load, if the visitor has not scrolled, clicked or typed yet:
      the page plays one example so the link is seen before anyone types. Any
      scroll, touch or key cancels it for good. Not with reduced motion. */

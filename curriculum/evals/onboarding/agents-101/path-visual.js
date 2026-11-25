@@ -153,7 +153,12 @@ function critic(out, shots, failures, hasHome) {
         const text = JSON.parse(so).result; fs.writeFileSync(path.join(out, 'critic.txt'), text);
         const t = text.slice(text.indexOf('{'), text.lastIndexOf('}') + 1); const v = JSON.parse(t);
         fs.writeFileSync(path.join(out, 'critic.json'), JSON.stringify(v, null, 2));
-        console.log(JSON.stringify({ scores: v.scores, total: v.total, verdict: failures.length ? `${v.verdict} (gates fail)` : v.verdict }));
+        // Grade from the fixed rubric, not from the critic's own label.
+        const vals = Object.values(v.scores), total = vals.reduce((a, b) => a + b, 0), min = Math.min(...vals);
+        v.total = total; v.criticVerdict = v.verdict;
+        v.verdict = failures.length ? 'gates fail' : total >= 23 && min >= 3 ? 'AAA' : total >= 20 ? 'AA' : total >= 16 ? 'A' : 'below A';
+        fs.writeFileSync(path.join(out, 'critic.json'), JSON.stringify(v, null, 2));
+        console.log(JSON.stringify({ scores: v.scores, total, verdict: v.verdict, criticSaid: v.criticVerdict }));
         resolve(v);
       } catch (e) { reject(Error('Critic reply unreadable: ' + so.slice(0, 300))); }
     });

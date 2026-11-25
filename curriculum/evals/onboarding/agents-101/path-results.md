@@ -2,6 +2,10 @@
 
 Newest first. Rubric and method in [path-rubric.md](path-rubric.md). All reads Sonnet, 20 per row (10 personas × 2) unless noted. Raw reads stay under ignored `out/`. None of these scores says anything about the quality of the language.
 
+## 2026-11-25: visual re-score on main fe9a013
+
+**18/24, grade A, all gates pass.** Route to Module 1 rose to 3 (plain contents list, empty panels hidden). The critic labelled it AA; the rubric needs 20 for AA, so `path-visual.js` now computes the grade itself. Left: home promise and chart; licence line easy to skim; the step 1 still shows a different request (media asset, passed to the videos owner); the course files prompt is long shell text (Card 1 pending); Module 1 Start here below the first viewport (Card 3 pending).
+
 ## 2026-11-25: re-score on main 0184e87 (handbook shell fixes)
 
 Sim: reach 65 (setup 80, briefing 98, Module 1 80); the path text did not change since 78, so the drop is noise. Visual: **17/24, grade A, all gates pass.** Action rose to 3 (the "In Claude's reply" card). Still deducted: the contents descriptions under Continue to Module 1 are still underlined italic in the built page; the "Where to type and send" screenshot shows a different request ("Build me a snake game as a single HTML file…") from the one to type; the course files walkthrough panel is empty; Module 1 Start here is below the first viewport with no single first action (Card 3 pending); the home chart and its empty column.

@@ -68,7 +68,19 @@
     const title = phase && phase.querySelector('h1')?.textContent.trim().replace(/^Exercise:\s*/i, '');
     const chapter = active.link.hasAttribute('data-target') && active.section.getBoundingClientRect().bottom > top ? active.section : null;
     updateOutline(chapter, phase);
-    place.textContent = title || (chapter || !active.link.hasAttribute('data-target') ? active.title : 'Reference');
+    const text = title || (chapter || !active.link.hasAttribute('data-target') ? active.title : 'Reference');
+    // First steps show where the learner is in the five; narrow screens show only that.
+    const step = active.link.hasAttribute('data-step') && active.link.querySelector('.step-index');
+    if (step) {
+      const total = menu.querySelectorAll('[data-step]').length;
+      const count = document.createElement('span');
+      count.className = 'place-step';
+      count.textContent = 'Step ' + step.textContent.trim() + ' of ' + total;
+      const name = document.createElement('span');
+      name.className = 'place-title';
+      name.textContent = ' · ' + text;
+      place.replaceChildren(count, name);
+    } else place.textContent = text;
   }
   function schedule() {
     if (!frame) frame = (window.requestAnimationFrame || (fn => setTimeout(fn, 16)))(locate);

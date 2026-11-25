@@ -115,7 +115,9 @@ async function run(opts) {
       const invisible = [];
       for (let i = 0; i < 10; i++) {
         await page.keyboard.press('Tab');
-        const v = await page.evaluate(() => { const e = document.activeElement; if (!e || e === document.body) return null; const s = getComputedStyle(e); return (s.outlineStyle !== 'none' && parseFloat(s.outlineWidth) > 0) || s.boxShadow !== 'none' ? true : `${e.tagName.toLowerCase()} "${e.textContent.trim().slice(0, 30)}"`; });
+        const v = await page.evaluate(() => { const e = document.activeElement; if (!e || e === document.body) return null;
+          // Tab inside a player's native controls leaves activeElement on the video; the browser draws that ring.
+          if (e.tagName === 'VIDEO' && e.controls && !e.matches(':focus-visible')) return true; const s = getComputedStyle(e); return (s.outlineStyle !== 'none' && parseFloat(s.outlineWidth) > 0) || s.boxShadow !== 'none' ? true : `${e.tagName.toLowerCase()} "${e.textContent.trim().slice(0, 30)}"`; });
         if (v && v !== true) invisible.push(v);
       }
       gates[`handbook-${vw}`] = { copy, focusVisible: invisible.length ? invisible.join('; ') : true, pageErrors: errors.length ? errors.slice(0, 3).join('; ') : true };

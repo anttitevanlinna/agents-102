@@ -1295,7 +1295,23 @@ function buildExercisesWorkbook(customer, trainingKey) {
   console.log(`Built ${shown(outFile)} (${sizeKB} KB)`);
 }
 
-function template(title, content, trainingKey) {
+// Behavioural tracking (Umami) for public outputs only. site/analytics.json
+// lists the "<customer>/<training>" outputs that carry it; a customer workbook
+// is never tracked unless someone adds it there on purpose.
+const ANALYTICS = (() => {
+  try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'site/analytics.json'), 'utf8')) } catch { return {} }
+})()
+const TRACK_JS = fs.readFileSync(path.join(ROOT, 'site/layouts/track.js'), 'utf8')
+const FEEDBACK_JS = fs.readFileSync(path.join(ROOT, 'site/layouts/feedback.js'), 'utf8')
+function trackingTag(customer, trainingKey) {
+  if (!(ANALYTICS.outputs || []).includes(`${customer}/${trainingKey}`)) return ''
+  const inline = (name, conf, js) => `<script>window.${name} = ${JSON.stringify(conf).replace(/</g, '\\u003c')};</script>\n<script>${js}</script>\n`
+  const release = ANALYTICS.release || ''
+  return (ANALYTICS.websiteId ? inline('A101_TRACK', { websiteId: ANALYTICS.websiteId, domains: ANALYTICS.domains || '', site: 'handbook', release }, TRACK_JS) : '')
+    + (ANALYTICS.feedbackUrl ? inline('A101_FEEDBACK', { url: ANALYTICS.feedbackUrl, release }, FEEDBACK_JS) : '')
+}
+
+function template(title, content, trainingKey, customer) {
   const training = CR.TRAININGS[trainingKey] || {};
   const isA101 = trainingKey === 'agents-101';
   const runtime = isA101 ? A101Runtimes.DEFAULT_PROFILE : (training.runtime || 'cli');
@@ -1322,7 +1338,7 @@ ${content}
 ${a101RuntimeScript}
 <script>${SLIDES_JS}</script>
 <script>${WORKBOOK_INIT_JS}</script>
-</body>
+${trackingTag(customer, trainingKey)}</body>
 </html>
 `;
 }
@@ -1434,7 +1450,7 @@ function buildTraining(customer, trainingKey, opts = {}) {
     console.log(`  (no payload: ${trainingKey} ships no content tarball)`);
   }
   const body = buildBody(trainingKey, customer, contentUrl);
-  const html = template(`${CR.TRAININGS[trainingKey].label} — ${BRAND.name(customer)}`, body, trainingKey);
+  const html = template(`${CR.TRAININGS[trainingKey].label} — ${BRAND.name(customer)}`, body, trainingKey, customer);
   const outFile = path.join(outDir, 'index.html');
   fs.writeFileSync(outFile, html);
 

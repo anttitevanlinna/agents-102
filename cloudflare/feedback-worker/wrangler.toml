@@ -1,0 +1,24 @@
+# Anonymous feedback sink for the Agents 101 self-study site.
+# Deploy: see README.md in this folder.
+name = "a101-feedback"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+
+# Pages that may post. Comma separated origins.
+[vars]
+ALLOWED_ORIGINS = "https://agents102.bosser.consulting"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "a101-feedback"
+database_id = "REPLACE_WITH_ID_FROM_wrangler_d1_create"
+
+# Abuse guard: 20 posts a minute per connection. Counters live in memory at
+# the edge and are never stored with the rows.
+[[unsafe.bindings]]
+name = "LIMITER"
+type = "ratelimit"
+namespace_id = "1001"
+simple = { limit = 20, period = 60 }
+
+# READ_TOKEN is a secret: wrangler secret put READ_TOKEN

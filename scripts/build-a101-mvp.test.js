@@ -113,7 +113,8 @@ test('ACME edition builds a complete learner route with edition-local downloads 
   const stage = fs.mkdtempSync(path.join(os.tmpdir(), 'a101-mvp-test-'));
   let dom;
   try {
-    const checkpoints = JSON.parse(fs.readFileSync(path.join(DELIVERY, 'checkpoints.json'), 'utf8'));
+    const { editionCheckpoints, editionModules, EDITIONS } = require('./build-a101-mvp.js');
+    const checkpoints = editionCheckpoints(JSON.parse(fs.readFileSync(path.join(DELIVERY, 'checkpoints.json'), 'utf8')), editionModules(EDITIONS['acme-mvp']));
     const unchangedPaths = [
       'site/prompts.json', 'site/figures.json',
       'site/clients/acme/agents-101/index.html',
@@ -390,7 +391,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
   }
 });
 
-test('open edition: Modules 1 to 6 at its own address, licence line, module times, no team-only material', () => {
+test('open edition: Modules 1 to 6 plus the solo module at its own address, licence line, module times, no team-only material', () => {
   const { buildEdition, editionModules, EDITIONS } = require('./build-a101-mvp.js');
   const out = fs.mkdtempSync(path.join(os.tmpdir(), 'a101-open-test-'));
   try {
@@ -407,7 +408,7 @@ test('open edition: Modules 1 to 6 at its own address, licence line, module time
         assert.ok(doc.getElementById(slug), `module present: ${slug}`);
         assert.match(doc.getElementById(slug).querySelector('.a101-module-time').textContent, /^About \d+ minutes\./);
       }
-      for (const slug of ['personal-to-team', 'agents-building-agents']) assert.equal(doc.getElementById(slug), null, `team module left out: ${slug}`);
+      for (const slug of ['personal-to-team', 'agents-building-agents']) assert.equal(doc.querySelector(`section.module[id="${slug}"]`), null, `team module left out: ${slug}`);
       assert.deepEqual([...doc.querySelectorAll('.workbook-topnav__modules a')].map(a => a.getAttribute('href')), slugs.map(s => '#' + s));
       assert.equal(doc.querySelectorAll('.curriculum-footer .a101-licence').length, 1);
       assert.match(doc.getElementById('getting-going').querySelector('.a101-module-time').textContent, /paid Claude plan/);

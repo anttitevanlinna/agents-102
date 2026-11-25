@@ -112,13 +112,13 @@ Eight moves to compose, not eight steps to follow. Reach for the one the dish ne
 
 ## Worked Dish 1, The Program Manager Agent
 
-This illustrative composite follows a program manager at a multi-team Nordic software organisation building with a desktop agent runtime. The problem is not that she lacks visibility. She has meetings, Jira, Confluence, Slack, and a good memory. The problem is that commitments live in different rooms. A promise made in a leadership meeting becomes a Jira ticket two days later, gets softened in a team sync, then disappears into a plan page nobody re-reads until the date has passed.
+This illustrative composite follows a program manager at a multi-team Nordic software organisation building with a desktop agent runtime. The problem is not that she lacks visibility. She has meetings, Jira, a wiki, Slack, and a good memory. The problem is that commitments live in different rooms. A promise made in a leadership meeting becomes a Jira ticket two days later, gets softened in a team sync, then disappears into a plan page nobody re-reads until the date has passed.
 
 The agent's job was simple: keep the live programme state accurate, then draft the smallest useful nudge before a commitment slipped too far.
 
 ### The Stack
 
-Three source zones fed the system. Meeting transcripts landed as text files in `sources/transcripts/`. Jira came in through the connector. Active plan files came from Confluence. The raw material stayed raw. The memory at `memory/program-state.md` held the maintained picture: what's moving, what's stuck, what's promised, what's slipping. Every claim pointed back to the meeting, ticket, or plan file it came from.
+Three source zones fed the system. Meeting transcripts landed as text files in `sources/transcripts/`. Jira came in through the connector. Active plan files came from the team wiki. The raw material stayed raw. The memory at `memory/program-state.md` held the maintained picture: what's moving, what's stuck, what's promised, what's slipping. Every claim pointed back to the meeting, ticket, or plan file it came from.
 
 The custom agent lived at `agents/program-manager.md`. Its rules were narrow:
 
@@ -312,7 +312,7 @@ Eighteen sources in five families. Names, access mode, what each is good for. Re
 
 ### Internal knowledge, files
 
-**Wiki.** Confluence, Notion, internal-Wiki. The institutional long-form: strategy, runbooks, RFCs, architecture. Read via connector or local export. Authored by people who often have left; usually 18 months out of date and full of truth.
+**Wiki.** Notion or an internal wiki. The institutional long-form: strategy, runbooks, RFCs, architecture. Read via connector or local export. Authored by people who often have left; usually 18 months out of date and full of truth.
 
 **Document store.** SharePoint, OneDrive, Google Drive, Box. Decks, spreadsheets, contracts, signed PDFs. Read via connector or local export. The drawer everyone owns; nobody curates.
 

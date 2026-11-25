@@ -15,9 +15,9 @@ After this module, you will be able to:
 
 ## Start here
 
-Start a fresh session or task at `~/Documents/agents-101/`. Save outputs under `module-3/`.
+Start a fresh session or task at `~/Documents/agents-101/`.
 
-Three agents search Confluence, OneDrive and practitioner articles, and three more decide what it means.
+Three agents search your wiki, your documents and practitioner articles, and three more decide what it means.
 
 [Demo: Agent that takes action](lectures/agent-that-takes-action.md)
 
@@ -45,7 +45,7 @@ The audit reads how your agents handed work to each other. It does not check whe
 
 ## Push back on the summary
 
-Push back where the summary is wrong: *"The planner and the reframer needed to be separate."* *"The Confluence retriever kept normalising before writing."*
+Push back where the summary is wrong: *"The planner and the reframer needed to be separate."* *"The wiki retriever kept normalising before writing."*
 
 ## The doubt stays. Hold it.
 

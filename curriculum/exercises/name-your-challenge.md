@@ -26,7 +26,7 @@ Edit the brief if it doesn't sound like what keeps you up.
 
 **Preview your sources.**
 
-Ask the agent where to scout for raw material: Confluence, Office365, practitioner articles.
+Ask the agent where to scout for raw material: your wiki, your documents, practitioner articles.
 
 {{prompt:name-your-challenge-2}}
 

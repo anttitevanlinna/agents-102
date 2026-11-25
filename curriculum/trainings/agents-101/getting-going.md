@@ -17,8 +17,6 @@ After this module, you will be able to:
 
 ## Start here
 
-Outputs go in `module-1/`.
-
 **The question, to you:** where did LLM output on your work come out generic, and what made it yours?
 
 [Opening: Context is King](lectures/context-is-king.md)

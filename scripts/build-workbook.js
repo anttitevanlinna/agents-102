@@ -680,11 +680,36 @@ const WORKBOOK_INIT_JS = `
     var edition = document.body.getAttribute('data-deck') === 'barebones';
     var TKEY = 'curriculumMaxTier' + (edition ? ':barebones' : '');
     var mode = (function () { try { return localStorage.getItem(KEY) === 'slides' ? 'slides' : 'read'; } catch (e) { return 'read'; } })();
+    var viewParam = new URLSearchParams(location.search).get('view');
+    if (viewParam === 'slides' || viewParam === 'read') mode = viewParam;
     var maxTier = (function () {
       var v; try { v = localStorage.getItem(TKEY); } catch (e) { v = null; }
       return edition ? (v === '3' ? 3 : 1) : (v === '1' ? 1 : 3);
     })();
     var ctl = null, toggle = null;
+    // Printed headings such as "Prework" recur. Attach an identity to the actual
+    // source node before cloning so a switch always stays in the right chapter.
+    // Slides clones these figures; delegate their controls so both copies work.
+    main.querySelectorAll('figure.diagram').forEach(function (figure) {
+      var svg = figure.querySelector(':scope > svg');
+      if (!svg) return;
+      var context = figure.previousElementSibling?.previousElementSibling?.id === 'the-first-piece-of-the-picture';
+      if (context) {
+        figure.classList.add('context-figure');
+        svg.style.removeProperty('display');
+        var detail = document.createElement('div');
+        detail.className = 'context-detail';
+        detail.innerHTML = '<div class="context-inputs"><span>Your messages</span><span>Tool results</span></div><div class="context-join" aria-hidden="true"></div><div class="context-output"><strong>Context</strong><span>The conversation so far</span></div>';
+        figure.prepend(detail);
+      }
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'inspect-figure';
+      button.textContent = context ? 'Open full agent diagram' : 'Enlarge diagram';
+      figure.append(button);
+    });
+    var readingStops = Array.from(main.querySelectorAll('section.module, .phase[id], h1[id], h2[id], h3[id]'));
+    readingStops.forEach(function (el, i) { el.dataset.readKey = 'read-node-' + i; });
     // The arrival fragment, consumed by the first mount only. A second tab
     // opened on an exercise link (#exercises-<slug>) lands on the cover
     // otherwise. A later toggle from long-read must not carry it, or the reader
@@ -703,7 +728,33 @@ const WORKBOOK_INIT_JS = `
         });
       } else if (ctl) { ctl.close(); ctl = null; }
     }
-    function set(m) { mode = m; try { localStorage.setItem(KEY, m); } catch (e) {} if (toggle && toggle._paint) toggle._paint(m); apply(); }
+    function set(m) {
+      if (m === 'slides' && mode === 'read') {
+        var here = readingStops.filter(function (el) {
+          return el.getClientRects().length && el.getBoundingClientRect().top <= 115;
+        }).pop();
+        arrival = here ? here.dataset.readKey : '';
+      }
+      if (m === 'read' && ctl) {
+        var key = ctl.readingKey();
+        var destination = readingStops.find(function (el) { return el.dataset.readKey === key; }) || document.getElementById('start-learning');
+      }
+      mode = m;
+      try { localStorage.setItem(KEY, m); } catch (e) {}
+      if (toggle) toggle._paint(m);
+      apply();
+      arrival = '';
+      if (destination) {
+        destination.scrollIntoView({block:'start', behavior:'instant'});
+        toggle.querySelector('[data-mode="slides"]').focus({preventScroll:true});
+      }
+      if (viewParam) {
+        var url = new URL(location.href);
+        url.searchParams.set('view', m);
+        if (destination && document.getElementById(destination.id) === destination) url.hash = destination.id;
+        history.replaceState(null, '', url);
+      }
+    }
     // Rebuild rather than hide: the filter renumbers slides and remaps in-deck
     // anchors, so it has to run through the model. Carry the reader's place
     // across on the source index.
@@ -714,7 +765,7 @@ const WORKBOOK_INIT_JS = `
       if (ctl) { ctl.close(); ctl = null; }
       apply(at);
     }
-    var host = document.querySelector('.workbook-topnav') || document.body;
+    var host = document.querySelector('.view-switch') || document.querySelector('.workbook-topnav') || document.body;
     toggle = CurriculumSlides.buildToggle(mode, set);
     toggle.classList.add('workbook-layout-toggle');
     host.appendChild(toggle);

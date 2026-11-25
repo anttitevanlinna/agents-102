@@ -172,7 +172,8 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     assert.equal(controls, document.querySelector('main').lastElementChild, 'Pause and Resume live at the end of the workbook');
     assert.ok(document.querySelector('main > .workbook-toc').previousElementSibling.matches('section#prework'));
     assert.ok(document.querySelector('main > .workbook-toc').nextElementSibling.matches('section#getting-going'));
-    assert.equal(document.querySelector('.workbook-topnav__modules a').getAttribute('href'), '#start-learning');
+    assert.equal(document.querySelector('.rail-brand').getAttribute('href'), '#start-learning');
+    assert.equal(document.querySelector('.workbook-topnav__modules a').getAttribute('href'), '#getting-going');
     for (const id of ['start-learning', 'pause-learning', 'resume-learning']) assert.equal(document.querySelectorAll(`[id="${id}"]`).length, 1);
     assert.ok(document.body.classList.contains('runtime-cowork'), 'fresh learner defaults to Cowork');
     assert.ok(controls.querySelector('details:not([open]) #runtime-switcher'), 'alternate tools are available after the first-run route');
@@ -180,10 +181,10 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     assert.equal(controls.querySelectorAll('details:not([open])').length, 3);
     assert.equal(start.querySelector('#start-learning').textContent, 'Welcome to Agents 101');
     assert.match(start.textContent, /Snake needs one message/i);
-    assert.match(start.textContent, /calendar/i);
-    const map = start.querySelector('nav[aria-label="Your first session"]');
-    assert.deepEqual([...map.querySelectorAll('a')].map(link => link.textContent), ['Make a game', 'Keep my game', 'Make your calendar briefing']);
-    for (const link of map.querySelectorAll('a')) assert.ok(document.getElementById(link.hash.slice(1)));
+    assert.match(start.textContent, /briefing for your working week/i);
+    const steps = [...document.querySelectorAll('.rail-map a[data-step]')];
+    assert.deepEqual(steps.map(link => link.lastChild.textContent), ['Make a game', 'Keep my game', 'Download course files', 'Calendar briefing', 'What makes an agent?']);
+    for (const link of steps) assert.ok(document.getElementById(link.hash.slice(1)));
     dom.window.location.hash = '#resume-learning';
     dom.window.dispatchEvent(new dom.window.HashChangeEvent('hashchange'));
     assert.ok(document.getElementById('resume-learning').closest('details').open, 'direct resume link opens its collapsed instructions');
@@ -210,13 +211,14 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     assert.ok(snakeBlock.compareDocumentPosition(downloadLink) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING, 'first game precedes archive download');
     const snakeCanonical = fs.readFileSync(path.join(ROOT, 'curriculum/prompts/a101-prework-snake-game.md'), 'utf8').replace(/^---\n[\s\S]*?\n---\n/, '').split('<!-- maintainer -->')[0].trimEnd();
     assert.equal(prework.querySelector('a[href^="claude:"]'), null);
-    const firstVideo = prework.querySelector('.a101-game-start .a101-video-placeholder');
-    assert.match(firstVideo.textContent, /New.*types.*Send.*Cowork.*game file.*Keep my game/);
-    assert.match(prework.querySelector('.a101-game-start').textContent, /single message box is ready/);
+    const firstVideo = prework.querySelector('.a101-game-start figure.walkthrough-media');
+    assert.match(firstVideo.textContent, /Where to type and send.*send the request.*game.*return to this handbook/s);
+    assert.equal(prework.querySelector('.a101-game-start .request-text span').textContent, 'Type in Claude Desktop');
+    assert.match(prework.querySelector('.a101-game-start .result-lead').textContent, /In Claude’s reply/);
     assert.equal(firstVideo.querySelector('img').src, 'data:image/jpeg;base64,' + fs.readFileSync(path.join(ROOT, 'curriculum/delivery/agents-101-mvp/claude-send.jpg')).toString('base64'));
     const keepGame = prework.querySelector('.a101-game-start a[href="#open-cowork-and-add-a-folder"]');
     assert.equal(keepGame.textContent, 'Keep my game');
-    assert.equal(document.getElementById(keepGame.hash.slice(1)).textContent, '2. Keep my game');
+    assert.equal(document.getElementById(keepGame.hash.slice(1)).textContent, '2 Keep my game');
     assert.ok(snakeBlock.closest('.rt-cowork'), 'the preview request is Cowork-only');
     const saveGame = [...prework.querySelectorAll('.rt-cowork .prompt-block')].find(block => block.querySelector('code').textContent.startsWith('Save the game we just made'));
     assert.ok(saveGame, 'Cowork learners have a separate request to save the game they played');
@@ -229,14 +231,16 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     assert.doesNotMatch(prework.textContent, /~\/Documents/);
     assert.equal(prework.querySelectorAll('.a101-os-picker').length, 1);
     assert.ok(snakeBlock.compareDocumentPosition(prework.querySelector('.a101-os-picker')) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING, 'the OS choice appears when learners save the game');
-    const videos = [...prework.querySelectorAll('.a101-video-placeholder')].filter(video => video !== firstVideo);
-    assert.equal(videos.length, 2);
+    const folderMedia = prework.querySelector('#open-cowork-and-add-a-folder ~ .rt-cowork .walkthrough-media');
+    const filesMedia = [...prework.querySelectorAll('div.walkthrough-media')].find(media => /Course files walkthrough/.test(media.textContent));
+    assert.ok(folderMedia && filesMedia);
     document.querySelector('[data-a101-os="windows"]').click();
     assert.ok(document.body.classList.contains('runtime-cowork'), 'OS choice leaves the selected runtime alone');
-    assert.ok(videos.every(video => video.querySelector('[data-a101-os-only="mac"]').hidden));
-    assert.ok(videos.every(video => !video.querySelector('[data-a101-os-only="windows"]').hidden));
-    assert.ok(videos.every(video => /video/i.test(video.textContent) && video.textContent.trim().length > 20));
-    assert.ok(videos.every(video => !video.querySelector('video,iframe,button,audio,source')), 'video placeholders are captions, not fake media controls');
+    assert.ok(folderMedia.querySelector('[data-a101-os-only="mac"]').hidden);
+    assert.ok(!folderMedia.querySelector('[data-a101-os-only="windows"]').hidden);
+    assert.match(folderMedia.querySelector('[data-a101-os-only="windows"]').textContent, /Video coming here/);
+    assert.match(folderMedia.querySelector('video source').getAttribute('src'), /^data:video\/mp4;base64,/, 'the Mac folder video travels inside the single-file handbook');
+    assert.ok(!filesMedia.querySelector('video,iframe,button,audio,source'), 'a missing video is a caption, not a fake media control');
     const oldPreworkAnchors = ['1-set-up-your-agent-runtime-5-min', '2-connect-your-work-apps-5-min', '3-install-the-training-folder-3-min', '4-build-a-snake-game-10-min', '5-summarize-your-week-in-meetings-10-min', '6-read-the-mental-frame-10-min', 'bring-to-module-1'];
     for (const id of oldPreworkAnchors) assert.equal(prework.querySelectorAll(`[id="${id}"]`).length, 1, `old Prework anchor remains unique: ${id}`);
     const moduleSlugs = require('../site/layouts/curriculum.js').TRAININGS['agents-101'].modules.map(module => module.slug);
@@ -269,7 +273,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     document.querySelector('.workbook-layout-toggle [data-mode="slides"]').click();
     assert.deepEqual(exceptions, [], 'opening Slides should execute without exceptions');
     assert.ok(document.body.classList.contains('slides-active'));
-    document.querySelector('.workbook-topnav__modules a[href="#start-learning"]').click();
+    document.querySelector('.rail-brand').click();
     assert.ok(!document.body.classList.contains('slides-active'), 'Start exits Slides before navigating to onboarding');
 
     const resumed = new JSDOM(html, {
@@ -354,7 +358,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
       for (const link of offlinePrework.querySelectorAll('a[href^="#"]')) assert.ok(offline.window.document.getElementById(link.getAttribute('href').slice(1)), `offline local link resolves: ${link.getAttribute('href')}`);
       assert.ok(offlineHtml.includes('Make me a Snake game and link to the file here.') && offlineHtml.indexOf('Make me a Snake game and link to the file here.') < offlineHtml.indexOf('Download the starter tarball'));
       assert.ok(offlinePrework.compareDocumentPosition(offline.window.document.getElementById('theory-m1')) & offline.window.Node.DOCUMENT_POSITION_FOLLOWING);
-      assert.equal(offlinePrework.querySelectorAll('.a101-video-placeholder').length, 3);
+      assert.equal(offlinePrework.querySelectorAll('.walkthrough-media').length, 3);
       const setupScript = offline.window.document.querySelector('script[data-a101-setup]');
       assert.equal(setupScript.textContent, SETUP_SCRIPT, 'offline companion uses the same OS picker behavior');
       for (const id of oldPreworkAnchors) assert.equal(offlinePrework.querySelectorAll(`[id="${id}"]`).length, 1);

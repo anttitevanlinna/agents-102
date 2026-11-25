@@ -4,16 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Agents 101 · Free self-study course</title>
-<meta name="description" content="Agents 101 is a free self-study course. Build working agents in Claude Desktop on your own files, from a first game to agents that build agents.">
+<meta name="description" content="Agents 101 is a free self-study course for people who lead and decide. Build one system of agents around a real challenge from your work, in Claude Desktop, on your own files.">
 <link rel="canonical" href="https://agents102.bosser.consulting/">
 <meta property="og:title" content="Agents 101 · Free self-study course">
-<meta property="og:description" content="Build working agents in Claude Desktop on your own files. Free to take on your own.">
+<meta property="og:description" content="Bring one challenge from your work. Build the agents that work on it, one module at a time.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://agents102.bosser.consulting/">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 1h5L9 15H4z' fill='%23ff6b35'/%3E%3C/svg%3E">
 <script defer src="/layouts/track.js" data-site="home"></script>
 <style>
+/* Layout: handbook brand bar, one hero with the hand-over ramp beside it, then the course as that same ramp in full. */
 :root {
   --paper: #fff;
   --ink: #111;
@@ -53,8 +54,8 @@ body {
 }
 a { color: inherit; }
 :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 2px; }
-.wrap { max-width: var(--column); margin: 0 auto; padding: 0 24px; }
-@media (max-width: 520px) { .wrap { padding: 0 16px; } }
+.wrap { max-width: var(--column); margin: 0 auto; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+@media (max-width: 520px) { .wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); } }
 
 /* Header: same brand bar as the handbook */
 .top { position: sticky; top: 0; z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line); }
@@ -69,9 +70,9 @@ a { color: inherit; }
 @media (max-width: 640px) { .edition, .nav .nav-hide { display: none; } }
 
 /* Hero */
-.hero { padding-block: 76px 64px; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 48px; align-items: center; }
-h1 { font: 700 clamp(44px, 7vw, 76px)/1.02 var(--font-body); letter-spacing: -.05em; margin: 0 0 24px; color: var(--ink); text-wrap: balance; }
-.lede { font-size: 19px; line-height: 1.55; color: var(--fg-2); max-width: 34em; margin: 0 0 32px; }
+.hero { padding-block: 72px 64px; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+h1 { font: 700 clamp(40px, 6vw, 66px)/1.04 var(--font-body); letter-spacing: -.05em; margin: 0 0 24px; color: var(--ink); text-wrap: balance; }
+.lede { font-size: 19px; line-height: 1.55; color: var(--fg-2); max-width: 32em; margin: 0 0 32px; }
 .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
 .btn {
   display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
@@ -81,42 +82,44 @@ h1 { font: 700 clamp(44px, 7vw, 76px)/1.02 var(--font-body); letter-spacing: -.0
 .btn::after { content: '→'; transition: transform .15s; }
 .btn:hover::after { transform: translateX(3px); }
 .cta-note { font-size: 14px; color: var(--fg-3); }
-.folder { margin: 0; justify-self: end; width: 100%; max-width: 380px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); font: 14px/1.4 var(--font-body); }
-.folder-bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--line); color: var(--fg-2); font-size: 13px; }
-.folder-bar::before { content: ''; width: 14px; height: 11px; border-radius: 2px; background: var(--orange); }
-.folder ul { list-style: none; margin: 0; padding: 6px 0; }
-.folder li { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1px; padding: 9px 14px 9px 38px; position: relative; }
-.folder li::before { content: ''; position: absolute; left: 16px; top: 12px; width: 10px; height: 13px; border: 1.5px solid var(--fg-3); border-radius: 1px 4px 1px 1px; }
-.folder li.dir::before { left: 15px; top: 14px; width: 14px; height: 10px; border: 0; border-radius: 1px 3px 2px 2px; background: var(--fg-3); box-shadow: -1px -3px 0 -1px var(--fg-3); }
-.folder b { font-weight: 600; color: var(--ink); overflow-wrap: anywhere; }
-.folder span { color: var(--fg-3); font-size: 13px; }
-.folder li.new { background: var(--bg-2); }
-.folder li.new::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--orange); }
+
+/* Ramp: who does the work, module by module */
+.ramp { margin: 0; min-width: 0; }
+.ramp figcaption { font-size: 13px; font-weight: 600; color: var(--fg-2); margin: 0 0 14px; display: flex; justify-content: space-between; gap: 12px; }
+.ramp figcaption .key { font-weight: 400; display: flex; gap: 14px; }
+.ramp figcaption .key i { display: inline-block; width: 10px; height: 10px; margin-right: 5px; vertical-align: -1px; }
+.k-agents { background: var(--orange); }
+.k-you { background: var(--bg-3); border: 1px solid var(--line); }
+.ramp ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+.ramp li { display: grid; grid-template-columns: 9.5em minmax(0, 1fr); align-items: center; gap: 12px; font-size: 13px; color: var(--fg-2); }
+.ramp .bar { height: 14px; background: var(--bg-3); border: 1px solid var(--line); border-radius: 2px; overflow: hidden; }
+.ramp .bar span { display: block; height: 100%; background: var(--orange); }
 @media (max-width: 760px) {
-  .hero { grid-template-columns: 1fr; padding-block: 44px 48px; gap: 32px; }
-  .folder { justify-self: stretch; max-width: none; }
+  .hero { grid-template-columns: 1fr; padding-block: 44px 48px; gap: 40px; }
 }
 
 /* Sections */
-section { border-top: 1px solid var(--line); padding: 64px 0; }
-h2 { font: 700 clamp(28px, 4vw, 38px)/1.12 var(--font-body); letter-spacing: -.035em; margin: 0 0 14px; color: var(--ink); }
+section { border-top: 1px solid var(--line); padding-block: 64px; }
+h2 { font: 700 clamp(28px, 4vw, 38px)/1.12 var(--font-body); letter-spacing: -.035em; margin: 0 0 14px; color: var(--ink); text-wrap: balance; }
 .sub { color: var(--fg-2); max-width: 38em; margin: 0 0 36px; }
 .kicker { font-size: 13px; font-weight: 600; letter-spacing: .02em; color: var(--warm); margin: 0 0 10px; }
 
+/* Start: three openers */
+.starts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.starts h3 { font-size: 19px; letter-spacing: -.02em; margin: 0 0 8px; color: var(--ink); line-height: 1.3; }
+.starts p { margin: 0; color: var(--fg-2); font-size: 16px; }
+.starts .when { display: block; font-size: 13px; font-weight: 600; color: var(--warm); margin-bottom: 8px; }
+@media (max-width: 760px) { .starts { grid-template-columns: 1fr; gap: 28px; } }
+
 /* How it works */
 .how { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
-.steps { list-style: none; margin: 0; padding: 0; counter-reset: s; display: grid; gap: 22px; }
-.steps li { counter-increment: s; display: grid; grid-template-columns: 28px 1fr; gap: 4px 12px; }
-.steps li::before { content: counter(s); color: var(--warm); font-weight: 600; font-size: 15px; padding-top: 2px; }
-.steps b { display: block; color: var(--ink); }
-.steps span { color: var(--fg-2); font-size: 16px; }
+.how .sub { margin-bottom: 0; }
 .demo { display: grid; gap: 18px; }
 .card-type { background: var(--bg-2); border-left: 4px solid var(--orange); padding: 18px 24px 20px; }
 .card-label { font-size: 13px; font-weight: 600; color: var(--fg-2); margin: 0 0 6px; }
-.card-type p.say { font: 400 clamp(21px, 2.6vw, 26px)/1.3 var(--font-serif); color: var(--ink); margin: 0; }
+.card-type p.say { font: 400 clamp(19px, 2.3vw, 23px)/1.35 var(--font-serif); color: var(--ink); margin: 0; }
 .card-reply .card-label { color: var(--ink); }
 .card-reply p { margin: 0; color: var(--fg); font-size: 16px; }
-.card-reply em { font-family: var(--font-serif); font-size: 17px; }
 @media (max-width: 760px) { .how { grid-template-columns: 1fr; gap: 32px; } }
 
 /* Modules */
@@ -125,16 +128,19 @@ h2 { font: 700 clamp(28px, 4vw, 38px)/1.12 var(--font-body); letter-spacing: -.0
 .mod a { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 4px 18px; padding: 22px 4px; text-decoration: none; }
 .mod a:hover { background: var(--bg-2); }
 .mod .n { font-size: 15px; font-weight: 600; color: var(--warm); padding-top: 3px; }
-.mod h3 { margin: 0; font-size: 21px; letter-spacing: -.02em; color: var(--ink); line-height: 1.25; }
-.mod p { margin: 4px 0 10px; color: var(--fg-2); font-size: 16px; max-width: 40em; }
+.mod h3 { margin: 0 0 6px; font-size: 21px; letter-spacing: -.02em; color: var(--ink); line-height: 1.25; }
+.mod dl { margin: 0 0 12px; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 2px 14px; font-size: 16px; max-width: 44em; }
+.mod dt { color: var(--fg-3); font-size: 14px; padding-top: 1px; }
+.mod dd { margin: 0; color: var(--fg); }
 .mod .t { font-size: 14px; color: var(--fg-3); white-space: nowrap; padding-top: 4px; }
 .skills { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .skills li { font-size: 13px; background: var(--bg-3); color: var(--fg); padding: 3px 10px; border-radius: 99px; }
-.mod.pre .n { color: var(--orange); }
 @media (max-width: 560px) {
   .mod a { grid-template-columns: 30px minmax(0, 1fr); }
-  .mod .t { grid-column: 2; grid-row: 1; padding: 0; order: -1; }
+  .mod .t { grid-column: 2; grid-row: 1; padding: 0; }
   .mod .body { grid-column: 2; }
+  .mod dl { grid-template-columns: 1fr; }
+  .mod dd + dt { margin-top: 6px; }
 }
 .mods-foot { margin: 24px 0 0; color: var(--fg-3); font-size: 15px; }
 
@@ -144,6 +150,7 @@ h2 { font: 700 clamp(28px, 4vw, 38px)/1.12 var(--font-body); letter-spacing: -.0
 .two ul { margin: 0; padding-left: 1.1em; color: var(--fg-2); }
 .two li { margin: 0 0 8px; }
 .two li strong { color: var(--fg); }
+.two p { margin: 0 0 10px; color: var(--fg-2); }
 @media (max-width: 760px) { .two { grid-template-columns: 1fr; gap: 36px; } }
 
 /* Teams */
@@ -157,9 +164,9 @@ h2 { font: 700 clamp(28px, 4vw, 38px)/1.12 var(--font-body); letter-spacing: -.0
 @media (max-width: 760px) { .teams-grid { grid-template-columns: 1fr; gap: 28px; } }
 
 /* Final call + footer */
-.again { padding: 72px 0; }
+.again { padding-block: 72px; }
 .again h2 { margin-bottom: 24px; }
-footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 14px; color: var(--fg-3); }
+footer { border-top: 1px solid var(--line); padding-block: 28px 40px; font-size: 14px; color: var(--fg-3); }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 32px; }
 footer p { margin: 0; max-width: 46em; }
 </style>
@@ -181,47 +188,36 @@ footer p { margin: 0; max-width: 46em; }
 <main>
   <div class="wrap hero">
     <div>
-      <h1>Build agents that do real work for you</h1>
-      <p class="lede">Agents 101 is a free course you take on your own, in Claude Desktop, on your own files. Your first message makes a game. Seven modules later you have agents that remember, check their own work and improve other agents.</p>
+      <h1>Bring one challenge from your work. Build the agents that take it on.</h1>
+      <p class="lede">Agents 101 is for people who lead and decide, not only for engineers. You build one system of agents around a real challenge you carry. Each module hands the agents one more part of the job, until they produce an analysis of it while you are away from the desk.</p>
       <div class="cta">
         <a class="btn" href="/agents-101/#start-learning" data-umami-event="start-prework" data-umami-event-from="hero">Start with prework</a>
         <span class="cta-note">About 50 minutes. You need a paid Claude plan.</span>
       </div>
     </div>
-    <figure class="folder" aria-label="Your course folder after the course">
-      <div class="folder-bar">agents-101</div>
-      <ul>
-        <li><b>snake-game.html</b><span>Made from your first message</span></li>
-        <li><b>week-in-meetings.md</b><span>Your week, read from your calendar</span></li>
-        <li class="dir"><b>memory</b><span>What your agent remembers about your work</span></li>
-        <li class="dir"><b>sources</b><span>Where its answers come from</span></li>
-        <li class="dir"><b>agents</b><span>Agents that run on a schedule, checked by a judge</span></li>
-        <li class="dir new"><b>agents-building-agents</b><span>An agent that improves your agents</span></li>
-      </ul>
+    <figure class="ramp" aria-label="How much of the job the agents do, module by module">
+      <figcaption>Who does the work <span class="key"><span><i class="k-agents"></i>Agents</span><span><i class="k-you"></i>You</span></span></figcaption>
+      <ol>
+        <li>Getting Going<div class="bar"><span style="width:4%"></span></div></li>
+        <li>Agent Systems<div class="bar"><span style="width:28%"></span></div></li>
+        <li>Multi-Agent<div class="bar"><span style="width:46%"></span></div></li>
+        <li>Security<div class="bar"><span style="width:58%"></span></div></li>
+        <li>Hallucinations<div class="bar"><span style="width:70%"></span></div></li>
+        <li>Evaluations<div class="bar"><span style="width:86%"></span></div></li>
+        <li>Agents building agents<div class="bar"><span style="width:94%"></span></div></li>
+      </ol>
     </figure>
   </div>
 
-  <section id="how">
-    <div class="wrap how">
-      <div>
-        <p class="kicker">How it works</p>
-        <h2>Keep the handbook open beside Claude</h2>
-        <p class="sub">You learn by doing the work, one short step at a time.</p>
-        <ol class="steps">
-          <li><div><b>Read the step</b><span>Each step says what you are about to make and why it matters.</span></div></li>
-          <li><div><b>Type what the card says</b><span>Copy the message into Claude and press Send. No code.</span></div></li>
-          <li><div><b>Check the reply</b><span>The handbook tells you what to look for, and what to ask when it is missing.</span></div></li>
-        </ol>
-      </div>
-      <div class="demo">
-        <div class="card-type">
-          <p class="card-label">Type in Claude Desktop</p>
-          <p class="say">Make me a Snake game and link to the file here.</p>
-        </div>
-        <div class="card-reply">
-          <p class="card-label">In Claude's reply</p>
-          <p>Look under your message. The link to the Snake game is the file Claude made for you. If you only get a description, ask <em>"Can you attach the game?"</em></p>
-        </div>
+  <section id="start">
+    <div class="wrap">
+      <p class="kicker">Where it starts</p>
+      <h2>First something that is unmistakably you</h2>
+      <p class="sub">You learn what an agent can do on work you know better than anyone. Then you turn it on your real challenge.</p>
+      <div class="starts">
+        <div><span class="when">Prework</span><h3>A game and your week</h3><p>One message makes a game on your computer. Then Claude reads your calendar and sums up your week in meetings.</p></div>
+        <div><span class="when">Getting Going</span><h3>A personal site that is you</h3><p>Claude writes a page about you. You catch what it made up, because you know the truth. Then you give it the context that makes the page yours.</p></div>
+        <div><span class="when">Building Agent Systems</span><h3>A memory around your challenge</h3><p>Name the challenge you are carrying at work. The agents gather your sources into a memory they keep current. Every later module works on it.</p></div>
       </div>
     </div>
   </section>
@@ -229,50 +225,73 @@ footer p { margin: 0; max-width: 46em; }
   <section id="course">
     <div class="wrap">
       <p class="kicker">The course</p>
-      <h2>Prework and seven modules</h2>
-      <p class="sub">Each module builds on what you made in the one before. Take a module a week, or a few in a weekend.</p>
+      <h2>Each module hands the agents one more part of the job</h2>
+      <p class="sub">The same system grows from module to module. Take one a week, or a few in a weekend.</p>
       <ol class="mods">
-        <li class="mod pre"><a href="/agents-101/#prework" data-umami-event="start-prework" data-umami-event-from="course-list">
-          <span class="n">0</span>
-          <div class="body"><h3>Prework</h3><p>Make a game from one message, keep it in a folder, then get a summary of your week in meetings.</p></div>
-          <span class="t">50 min</span></a></li>
         <li class="mod"><a href="/agents-101/#getting-going">
           <span class="n">1</span>
-          <div class="body"><h3>Getting Going</h3><p>What you give the agent shapes what comes back: your profile, your rules, your judgement on the result.</p>
+          <div class="body"><h3>Getting Going</h3>
+          <dl><dt>Agents take</dt><dd>Nothing yet. You learn what to give them.</dd><dt>You keep</dt><dd>Everything.</dd></dl>
           <ul class="skills"><li>Engineer context</li><li>Write rules for an agent</li><li>Judge agent output</li></ul></div>
           <span class="t">80 min</span></a></li>
         <li class="mod"><a href="/agents-101/#building-agent-systems">
           <span class="n">2</span>
-          <div class="body"><h3>Building Agent Systems</h3><p>A system remembers and grows around the one thing you need to make progress on. Chat can't.</p>
+          <div class="body"><h3>Building Agent Systems</h3>
+          <dl><dt>Agents take</dt><dd>Gathering your sources and remembering them. One agent runs on a schedule.</dd><dt>You keep</dt><dd>Naming the challenge, approving the plan.</dd></dl>
           <ul class="skills"><li>Create agent memory</li><li>Create an agent</li><li>Schedule an agent</li><li>Review an agent's plan</li></ul></div>
           <span class="t">90 min</span></a></li>
         <li class="mod"><a href="/agents-101/#multi-agent-systems">
           <span class="n">3</span>
-          <div class="body"><h3>Multi-Agent Systems</h3><p>Several agents split one problem, work in parallel and hand off through shared files.</p>
+          <div class="body"><h3>Multi-Agent Systems</h3>
+          <dl><dt>Agents take</dt><dd>Searching and deciding. Three agents search, three more argue, an answer comes out.</dd><dt>You keep</dt><dd>Starting it and reading the answer.</dd></dl>
           <ul class="skills"><li>Orchestrate multiple agents</li><li>Split work across agents</li><li>Debug agent handoffs</li></ul></div>
           <span class="t">95 min</span></a></li>
         <li class="mod"><a href="/agents-101/#security">
           <span class="n">4</span>
-          <div class="body"><h3>Security</h3><p>You can't tell if your agent is safe from its output. Run a check instead of waiting for certainty.</p>
+          <div class="body"><h3>Security</h3>
+          <dl><dt>Agents take</dt><dd>Checking what they can reach against your policies and known risks.</dd><dt>You keep</dt><dd>Choosing which risk to close.</dd></dl>
           <ul class="skills"><li>Audit an agent for security</li><li>Write a skill</li><li>Mitigate agent risk</li></ul></div>
           <span class="t">105 min</span></a></li>
         <li class="mod"><a href="/agents-101/#output-quality">
           <span class="n">5</span>
-          <div class="body"><h3>Catching Hallucinations</h3><p>Where your agent can't reach a source, it fills the gap: confident, plausible, wrong. You make the gap visible.</p>
+          <div class="body"><h3>Catching Hallucinations</h3>
+          <dl><dt>Agents take</dt><dd>Checking their own claims against the sources. Four methods compete and the best one becomes your judge.</dd><dt>You keep</dt><dd>Reading the scoreboard, keeping the judge.</dd></dl>
           <ul class="skills"><li>Detect hallucinations</li><li>Benchmark AI checks</li><li>Build a judge</li></ul></div>
           <span class="t">95 min</span></a></li>
         <li class="mod"><a href="/agents-101/#evaluations">
           <span class="n">6</span>
-          <div class="body"><h3>Evaluations</h3><p>Put your judge in a loop and the work improves round after round, while you do something else.</p>
+          <div class="body"><h3>Evaluations</h3>
+          <dl><dt>Agents take</dt><dd>Improving their own work. Write, judge, rewrite, round after round.</dd><dt>You keep</dt><dd>Deciding what better means. Then you walk away.</dd></dl>
           <ul class="skills"><li>Run an eval loop</li><li>Steer agents with feedback</li></ul></div>
           <span class="t">85 min</span></a></li>
         <li class="mod"><a href="/agents-101/#agents-building-agents">
           <span class="n">7</span>
-          <div class="body"><h3>Agents Building Agents</h3><p>Your agent can improve your agent. That is how you learn faster than the tools change.</p>
+          <div class="body"><h3>Agents Building Agents</h3>
+          <dl><dt>Agents take</dt><dd>Building the next agent, and improving it under your judge.</dd><dt>You keep</dt><dd>Describing what it should do.</dd></dl>
           <ul class="skills"><li>Have agents build agents</li><li>Improve an agent with an agent</li></ul></div>
           <span class="t">60 min</span></a></li>
       </ol>
-      <p class="mods-foot">About 11 hours in all, prework included.</p>
+      <p class="mods-foot">About 11 hours in all, with the 50-minute prework.</p>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap how">
+      <div>
+        <p class="kicker">How it works</p>
+        <h2>Keep the handbook open beside Claude</h2>
+        <p class="sub">Each step says what you are about to make. You type a plain sentence into Claude, and the handbook tells you what to look for in the reply. No coding.</p>
+      </div>
+      <div class="demo">
+        <div class="card-type">
+          <p class="card-label">Type in Claude Desktop</p>
+          <p class="say">List my main meetings this week. Summarize the shape of the week in 5 lines.</p>
+        </div>
+        <div class="card-reply">
+          <p class="card-label">In Claude's reply</p>
+          <p>Your own meetings, read from your calendar or from a screenshot of it, and five lines on what kind of week it is.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -283,17 +302,14 @@ footer p { margin: 0; max-width: 46em; }
         <ul>
           <li><strong>A paid Claude plan.</strong> Pro, the lowest paid tier, is enough.</li>
           <li><strong>Claude Desktop</strong> on a Mac or Windows computer.</li>
-          <li><strong>A folder of your own.</strong> The prework shows you how to make it.</li>
-          <li><strong>Your work calendar, if you can.</strong> A screenshot of your week works too.</li>
-          <li><strong>No coding.</strong> You write plain sentences.</li>
+          <li><strong>A challenge you carry at work</strong> that isn't solved yet. Not a task.</li>
+          <li><strong>Your work calendar and files, if you can connect them.</strong> Screenshots and saved files work too.</li>
         </ul>
       </div>
       <div>
         <h3>What you keep</h3>
-        <ul>
-          <li>Everything you build stays in that folder on your computer: your agent memory, your agents, your skills and your checks.</li>
-          <li>The work they do on your files is yours too.</li>
-        </ul>
+        <p>The system stays in a folder on your computer: the memory of your challenge, your agents, your security skill, your judge and the loop that improves the work.</p>
+        <p>Next week starts from it, not from zero.</p>
       </div>
     </div>
   </section>
@@ -308,7 +324,7 @@ footer p { margin: 0; max-width: 46em; }
       </div>
       <ul>
         <li><b>The right to teach it</b> inside your company.</li>
-        <li><b>Two team modules:</b> From Personal to Team, and Agents Building Agents with the group forum.</li>
+        <li><b>Two team modules:</b> From Personal to Team, and Agents Building Agents with the whole room's agents working on one strategy.</li>
         <li><b>The trainer kit:</b> slides, trainer notes and the group exercises.</li>
         <li><b>Your own edition</b> with your examples, your policies and your logo.</li>
         <li><b>A cohort with Bosser,</b> where the sponsor learns alongside the team.</li>
@@ -330,6 +346,5 @@ footer p { margin: 0; max-width: 46em; }
     <p>© 2026 Bosser Oy</p>
   </div>
 </footer>
-
 </body>
 </html>

@@ -308,7 +308,7 @@ function dropTeamModules(html, unpacked) {
 
 // "Video coming here" notes stay hidden on the public page until each video exists.
 function hideVideoPlaceholders(html) {
-  return html.replace('</head>', '<style data-a101-video>.a101-video-placeholder, .walkthrough-media .video-coming { display: none; }</style>\n</head>')
+  return html.replace('</head>', '<style data-a101-video>.a101-video-placeholder, body.workbook main .walkthrough-media.walkthrough-media:not(:has(video, img)), body.workbook main .walkthrough-media [data-a101-os-only]:not(:has(video, img)) { display: none !important; }</style>\n</head>')
     .replace(/<p>Video coming here[^<]*(?:<code>[^<]*<\/code>[^<]*)*<\/p>/g, '');
 }
 
@@ -468,8 +468,6 @@ body.workbook > main > section#prework { padding-top: 0; }
 .workbook-toc h2 { color: var(--fg-2); }
 .a101-toc-tools { margin: 0 0 1rem; font-size: .9rem; }
 .a101-pause-pointer { margin-top: 2rem; font-size: .9rem; color: var(--fg-2); }
-.workbook-toc .module-list a { text-decoration: none; }
-.workbook-toc .module-big { font-style: normal; font-family: var(--font-body); font-size: .9rem; color: var(--fg-2); }
 video:focus-visible { outline: 3px solid var(--fg); outline-offset: 3px; }
 .a101-tool-picker { margin-top: 1rem; text-align: start; }
 .a101-tool-picker > summary { cursor: pointer; font-size: .9rem; }

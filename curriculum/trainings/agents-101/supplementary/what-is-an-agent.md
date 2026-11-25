@@ -87,8 +87,13 @@ Each module adds the next part of the answer:
 - **Module 3:** Multiple agents doing different jobs, passing work between them.
 - **Module 4:** Tools with boundaries: skills.
 - **Module 5–6:** How do you know the output is actually good?
+<!--flag:module:personal-to-team-->
 - **Module 7:** When your agent becomes your team's agent.
 - **Module 8:** Agents that build other agents.
+<!--/flag:module:personal-to-team-->
+<!--flag:module:agents-building-agents-solo-->
+- **Module 7:** Agents that build agents for the people around you.
+<!--/flag:module:agents-building-agents-solo-->
 
 Don't skim ahead. Each module earns the next, and reading ahead mostly replaces the feeling with a vocabulary. That is exactly what this training is trying to avoid. Close this file. See you in the room.
 

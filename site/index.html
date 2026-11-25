@@ -485,7 +485,7 @@ footer p { margin: 0; max-width: 46em; }
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, status: r.status, body: j }; }); })
       .then(function (res) {
         if (res.ok && valid(res.body)) return done('live', res.body.rows);
-        return done(res.status === 429 ? 'busy' : 'fallback');
+        return done(res.status === 429 ? 'busy' : res.status === 503 ? 'off' : 'fallback');
       }, function () { return done('fallback'); });
   }
   form.addEventListener('submit', function (e) {

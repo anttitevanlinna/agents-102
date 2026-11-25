@@ -13,7 +13,7 @@ produces:
     location: "./{{artifact:root-instructions}} (Styling section)"
     note: adds the style.md HTML rule in place
 ---
-Look at my company's website. I'll give you a URL or paste a key page when you ask. Extract the visual pattern — primary and accent colours (with hex codes), font families, header shape, spacing, overall tone of voice. Write it to ./style.md at the training-directory root, in plain language (not a CSS file). Short and practical: a designer reading ./style.md should be able to produce something that looks like our site without visiting it.
+Look at my company's website, or another site I name. I'll give you a URL or paste a key page when you ask. Extract the visual pattern: primary and accent colours (with hex codes), font families, header shape, spacing, overall tone of voice. Write it to ./style.md at the training-directory root, in plain language (not a CSS file). Short and practical: a designer reading ./style.md should be able to produce something that looks like our site without visiting it.
 
 Then append one line to my root {{artifact:root-instructions}} under a new "Styling" heading: "When producing HTML output, follow style.md."
 

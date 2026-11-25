@@ -95,8 +95,9 @@ The course files include a copy of the handbook and let Claude help you find you
 
 When Claude says the files are ready, keep this conversation open for the calendar exercise.
 
-<h2 id="4-summarize-your-week-in-meetings"><span class="heading-step">4</span> Make your calendar briefing</h2>
+<h2 id="make-your-calendar-briefing"><span class="heading-step">4</span> Make your calendar briefing</h2>
 
+<span id="4-summarize-your-week-in-meetings"></span>
 <span id="2-connect-your-work-apps-5-min"></span>
 <span id="5-summarize-your-week-in-meetings-10-min"></span>
 <span id="5-summarize-your-week-in-meetings"></span>
@@ -144,7 +145,7 @@ The screenshot works without connecting your calendar.
 <span id="5-read-the-mental-frame"></span>
 <span id="6-see-what-makes-this-an-agent"></span>
 
-Read [What is an Agent, LLM vs chat](trainings/agents-101/supplementary/what-is-an-agent.md#llm-vs-chat). It explains what changes when your agent can work with files and tools instead of only answering in a chat.
+Your game and your meeting summary were agent work. The agent took your request, used tools and saved files in your folder. [What is an Agent](trainings/agents-101/supplementary/what-is-an-agent.md#the-short-version) names the five parts behind that in its short version.
 
 ## Continue to Module 1
 

@@ -12,7 +12,7 @@ Newest first. Rubric and method in [path-rubric.md](path-rubric.md). All reads S
 | Draft B, not on main: Draft A without the username and password line, plain CLAUDE.md sentence in the body | 80 | 93 | 100 | 88 | 3.64 | 3.43 |
 | Draft C, not on main: Draft B plus one line in Module 1 Start here naming the opening and the exercise | 80 | 83 | 100 | 98 | 3.59 | 3.69 |
 
-The step 5 fix is the one move past the 20-point bar: briefing 60 to 98, reach 53 to 78. In Draft A, 9 of 10 sampled readers stopped on "If curl gets a 401, ask me for the username and password", since the open edition gives no credentials. Draft B's setup gain (85 to 93) and Draft C's Module 1 gain (85 to 98, the first action named) are inside the noise and shown by the quotes, not by the number. Drafts B and C wait for Antti's prompt-ok. The promise scorer gave 0.5 to answers it scored 1 on earlier runs (98 to 58 on unchanged home text), so it is not usable as a measure yet.
+The step 5 fix is the one move past the 20-point bar: briefing 60 to 98, reach 53 to 78. In Draft A, 8 of the first 10 readers named "If curl gets a 401, ask me for the username and password", since the open edition gives no credentials. Draft B's setup gain (85 to 93) and Draft C's Module 1 gain (85 to 98, the first action named) are inside the noise and shown by the quotes, not by the number. Drafts B and C wait for Antti's prompt-ok. The promise scorer gave 0.5 to answers it scored 1 on earlier runs (98 to 58 on unchanged home text), so it is not usable as a measure yet.
 
 ## 2026-11-25: re-score after the home page fixes (main af58829)
 

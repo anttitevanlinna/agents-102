@@ -5,18 +5,19 @@
 <meta name="robots" content="noindex">
 <title>Moved</title>
 <script>
-// The marketing pages moved 1:1 to bosser.consulting/training/. Customer
-// workbooks under /clients/ stay here and never redirect.
+// The old marketing pages moved 1:1 to bosser.consulting/training/. The home
+// page, the open course under /agents-101/ and customer workbooks under
+// /clients/ stay here and never redirect.
 function target(p, q) {
-  var MOVED = /^\/(index\.html|article\.html|privacy\.html|wardley-saas\.html|(check|readiness|curriculum|covers)\/.*)?$/;
-  if (/^\/clients(\/|$)/.test(p)) return null;
-  return 'https://bosser.consulting/training' + (MOVED.test(p) ? (p === '/' ? '/' : p) + q : '/');
+  var MOVED = /^\/(article\.html|privacy\.html|wardley-saas\.html|(check|readiness|curriculum|covers)\/.*)?$/;
+  if (/^\/(clients|agents-101|layouts)(\/|$)/.test(p)) return null;
+  return 'https://bosser.consulting/training' + (MOVED.test(p) ? p + q : '/');
 }
 var t = target(location.pathname, location.search + location.hash);
 if (t) location.replace(t);
 </script>
 </head>
 <body>
-<p>Page not found. <a href="https://bosser.consulting/training/">Bosser training</a></p>
+<p>Page not found. <a href="/">Agents 101 home</a> · <a href="https://bosser.consulting/training/">Bosser training</a></p>
 </body>
 </html>

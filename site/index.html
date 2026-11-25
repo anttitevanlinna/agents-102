@@ -2,12 +2,344 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex">
-<title>Moved to bosser.consulting</title>
-<link rel="canonical" href="https://bosser.consulting/training/">
-<meta http-equiv="refresh" content="0; url=https://bosser.consulting/training/">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agents 101 · Free self-study course</title>
+<meta name="description" content="Agents 101 is a free self-study course. Build working agents in Claude Desktop on your own files, from a first game to agents that build agents.">
+<link rel="canonical" href="https://agents102.bosser.consulting/">
+<meta property="og:title" content="Agents 101 · Free self-study course">
+<meta property="og:description" content="Build working agents in Claude Desktop on your own files. Eight modules, free to take on your own.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://agents102.bosser.consulting/">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 1h5L9 15H4z' fill='%23ff6b35'/%3E%3C/svg%3E">
+<script defer src="/layouts/track.js" data-site="home"></script>
+<style>
+:root {
+  --paper: #fff;
+  --ink: #111;
+  --fg: #171716;
+  --fg-2: #474743;
+  --fg-3: #5c5c56;
+  --bg-2: #f5f4f0;
+  --bg-3: #efefea;
+  --line: #d8d8d2;
+  --orange: #ff6b35;
+  --warm: #9a370e;
+  --btn-fg: #fff;
+  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif: Charter, 'Bitstream Charter', Georgia, serif;
+  --column: 1080px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #141413; --ink: #f2f1ec; --fg: #eceae4; --fg-2: #bdbbb3; --fg-3: #a19f97;
+    --bg-2: #1e1e1c; --bg-3: #262624; --line: #393935; --warm: #ff8a5c; --btn-fg: #141413;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #141413; --ink: #f2f1ec; --fg: #eceae4; --fg-2: #bdbbb3; --fg-3: #a19f97;
+  --bg-2: #1e1e1c; --bg-3: #262624; --line: #393935; --warm: #ff8a5c; --btn-fg: #141413;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--paper); color: var(--fg);
+  font: 17px/1.6 var(--font-body); -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 2px; }
+.wrap { max-width: var(--column); margin: 0 auto; padding: 0 24px; }
+@media (max-width: 520px) { .wrap { padding: 0 16px; } }
+
+/* Header: same brand bar as the handbook */
+.top { position: sticky; top: 0; z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line); }
+.top .wrap { height: 60px; display: flex; align-items: center; gap: 18px; }
+.brand { font: 700 21px/1 var(--font-body); letter-spacing: -.045em; text-decoration: none; white-space: nowrap; color: var(--ink); }
+.brand::before { content: ''; display: inline-block; width: 7px; height: 17px; background: var(--orange); transform: skewX(-13deg); margin-right: 9px; }
+.edition { font-size: 13px; color: var(--fg-2); border-left: 1px solid var(--line); padding-left: 17px; white-space: nowrap; }
+.nav { margin-left: auto; display: flex; align-items: center; gap: 22px; font-size: 14px; }
+.nav a { text-decoration: none; color: var(--fg-2); }
+.nav a:hover { color: var(--ink); }
+.nav .nav-start { color: var(--ink); font-weight: 600; }
+@media (max-width: 640px) { .edition, .nav .nav-hide { display: none; } }
+
+/* Hero */
+.hero { padding-block: 76px 64px; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+h1 { font: 700 clamp(44px, 7vw, 76px)/1.02 var(--font-body); letter-spacing: -.05em; margin: 0 0 24px; color: var(--ink); text-wrap: balance; }
+.lede { font-size: 19px; line-height: 1.55; color: var(--fg-2); max-width: 34em; margin: 0 0 32px; }
+.cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
+  background: var(--ink); color: var(--btn-fg); font-weight: 600; font-size: 17px;
+  padding: 15px 24px; border-radius: 4px; border: 0;
+}
+.btn::after { content: '→'; transition: transform .15s; }
+.btn:hover::after { transform: translateX(3px); }
+.cta-note { font-size: 14px; color: var(--fg-3); }
+.board { display: grid; grid-template-columns: repeat(16, 1fr); gap: 3px; aspect-ratio: 16 / 9; max-width: 340px; justify-self: end; width: 100%; }
+.board i { display: block; border-radius: 50%; background: var(--line); transform: scale(.22); }
+.board i.s { background: var(--ink); border-radius: 1px; transform: none; }
+.board i.f { background: var(--orange); border-radius: 1px; transform: scale(.85); }
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; padding-block: 44px 48px; gap: 32px; }
+  .board { justify-self: start; max-width: 260px; order: -1; }
+}
+
+/* Sections */
+section { border-top: 1px solid var(--line); padding: 64px 0; }
+h2 { font: 700 clamp(28px, 4vw, 38px)/1.12 var(--font-body); letter-spacing: -.035em; margin: 0 0 14px; color: var(--ink); }
+.sub { color: var(--fg-2); max-width: 38em; margin: 0 0 36px; }
+.kicker { font-size: 13px; font-weight: 600; letter-spacing: .02em; color: var(--warm); margin: 0 0 10px; }
+
+/* How it works */
+.how { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: s; display: grid; gap: 22px; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 28px 1fr; gap: 4px 12px; }
+.steps li::before { content: counter(s); color: var(--warm); font-weight: 600; font-size: 15px; padding-top: 2px; }
+.steps b { display: block; color: var(--ink); }
+.steps span { color: var(--fg-2); font-size: 16px; }
+.demo { display: grid; gap: 18px; }
+.card-type { background: var(--bg-2); border-left: 4px solid var(--orange); padding: 18px 24px 20px; }
+.card-label { font-size: 13px; font-weight: 600; color: var(--fg-2); margin: 0 0 6px; }
+.card-type p.say { font: 400 clamp(21px, 2.6vw, 26px)/1.3 var(--font-serif); color: var(--ink); margin: 0; }
+.card-reply .card-label { color: var(--ink); }
+.card-reply p { margin: 0; color: var(--fg); font-size: 16px; }
+.card-reply em { font-family: var(--font-serif); font-size: 17px; }
+@media (max-width: 760px) { .how { grid-template-columns: 1fr; gap: 32px; } }
+
+/* Modules */
+.mods { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.mod { border-bottom: 1px solid var(--line); }
+.mod a { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 4px 18px; padding: 22px 4px; text-decoration: none; }
+.mod a:hover { background: var(--bg-2); }
+.mod .n { font-size: 15px; font-weight: 600; color: var(--warm); padding-top: 3px; }
+.mod h3 { margin: 0; font-size: 21px; letter-spacing: -.02em; color: var(--ink); line-height: 1.25; }
+.mod p { margin: 4px 0 10px; color: var(--fg-2); font-size: 16px; max-width: 40em; }
+.mod .t { font-size: 14px; color: var(--fg-3); white-space: nowrap; padding-top: 4px; }
+.skills { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.skills li { font-size: 13px; background: var(--bg-3); color: var(--fg); padding: 3px 10px; border-radius: 99px; }
+.mod.pre .n { color: var(--orange); }
+@media (max-width: 560px) {
+  .mod a { grid-template-columns: 30px minmax(0, 1fr); }
+  .mod .t { grid-column: 2; grid-row: 1; padding: 0; order: -1; }
+  .mod .body { grid-column: 2; }
+}
+.mods-foot { margin: 24px 0 0; color: var(--fg-3); font-size: 15px; }
+
+/* Need / keep */
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.two h3 { font-size: 21px; letter-spacing: -.02em; margin: 0 0 12px; color: var(--ink); }
+.two ul { margin: 0; padding-left: 1.1em; color: var(--fg-2); }
+.two li { margin: 0 0 8px; }
+.two li strong { color: var(--fg); }
+@media (max-width: 760px) { .two { grid-template-columns: 1fr; gap: 36px; } }
+
+/* Teams */
+.teams { background: var(--bg-2); border-top: 0; }
+.teams-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+.teams ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.teams li { padding-left: 22px; position: relative; color: var(--fg-2); }
+.teams li::before { content: ''; position: absolute; left: 0; top: .5em; width: 8px; height: 8px; background: var(--orange); transform: skewX(-13deg); }
+.teams li b { color: var(--ink); }
+.link { font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+@media (max-width: 760px) { .teams-grid { grid-template-columns: 1fr; gap: 28px; } }
+
+/* Final call + footer */
+.again { padding: 72px 0; }
+.again h2 { margin-bottom: 24px; }
+footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 14px; color: var(--fg-3); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 32px; }
+footer p { margin: 0; max-width: 46em; }
+</style>
 </head>
 <body>
-<p>Moved to <a href="https://bosser.consulting/training/">bosser.consulting/training</a>.</p>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/">Agents 101</a>
+    <span class="edition">Free self-study course</span>
+    <nav class="nav" aria-label="Page">
+      <a class="nav-hide" href="#course">Course</a>
+      <a class="nav-hide" href="#teams">For teams</a>
+      <a class="nav-start" href="/agents-101/#start-learning" data-umami-event="start-prework" data-umami-event-from="header">Start</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <h1>Build agents that do real work for you</h1>
+      <p class="lede">Agents 101 is a free course you take on your own, in Claude Desktop, on your own files. Your first message makes a game. Eight modules later you have agents that remember, check their own work and improve other agents.</p>
+      <div class="cta">
+        <a class="btn" href="/agents-101/#start-learning" data-umami-event="start-prework" data-umami-event-from="hero">Start with prework</a>
+        <span class="cta-note">About 50 minutes. No sign-up.</span>
+      </div>
+    </div>
+    <div class="board" id="board" aria-hidden="true"></div>
+  </div>
+
+  <section id="how">
+    <div class="wrap how">
+      <div>
+        <p class="kicker">How it works</p>
+        <h2>Keep the handbook open beside Claude</h2>
+        <p class="sub">You learn by doing the work, one short step at a time.</p>
+        <ol class="steps">
+          <li><div><b>Read the step</b><span>Each step says what you are about to make and why it matters.</span></div></li>
+          <li><div><b>Type what the card says</b><span>Copy the message into Claude and press Send. No code.</span></div></li>
+          <li><div><b>Check the reply</b><span>The handbook tells you what to look for, and what to ask when it is missing.</span></div></li>
+        </ol>
+      </div>
+      <div class="demo">
+        <div class="card-type">
+          <p class="card-label">Type in Claude Desktop</p>
+          <p class="say">Make me a Snake game and link to the file here.</p>
+        </div>
+        <div class="card-reply">
+          <p class="card-label">In Claude's reply</p>
+          <p>Look under your message. The link to the Snake game is the file Claude made for you. If you only get a description, ask <em>"Can you attach the game?"</em></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="course">
+    <div class="wrap">
+      <p class="kicker">The course</p>
+      <h2>Prework and eight modules</h2>
+      <p class="sub">Each module builds on what you made in the one before. Take a module a week, or a few in a weekend.</p>
+      <ol class="mods">
+        <li class="mod pre"><a href="/agents-101/#prework" data-umami-event="start-prework" data-umami-event-from="course-list">
+          <span class="n">0</span>
+          <div class="body"><h3>Prework</h3><p>Make a game from one message, keep it in a folder, then get a summary of your week in meetings.</p></div>
+          <span class="t">50 min</span></a></li>
+        <li class="mod"><a href="/agents-101/#getting-going">
+          <span class="n">1</span>
+          <div class="body"><h3>Getting Going</h3><p>What you give the agent shapes what comes back: your profile, your rules, your judgement on the result.</p>
+          <ul class="skills"><li>Engineer context</li><li>Write rules for an agent</li><li>Judge agent output</li></ul></div>
+          <span class="t">80 min</span></a></li>
+        <li class="mod"><a href="/agents-101/#building-agent-systems">
+          <span class="n">2</span>
+          <div class="body"><h3>Building Agent Systems</h3><p>A system remembers and grows around the one thing you need to make progress on. Chat can't.</p>
+          <ul class="skills"><li>Create agent memory</li><li>Create an agent</li><li>Schedule an agent</li><li>Review an agent's plan</li></ul></div>
+          <span class="t">90 min</span></a></li>
+        <li class="mod"><a href="/agents-101/#multi-agent-systems">
+          <span class="n">3</span>
+          <div class="body"><h3>Multi-Agent Systems</h3><p>Several agents split one problem, work in parallel and hand off through shared files.</p>
+          <ul class="skills"><li>Orchestrate multiple agents</li><li>Split work across agents</li><li>Debug agent handoffs</li></ul></div>
+          <span class="t">95 min</span></a></li>
+        <li class="mod"><a href="/agents-101/#security">
+          <span class="n">4</span>
+          <div class="body"><h3>Security</h3><p>You can't tell if your agent is safe from its output. Run a check instead of waiting for certainty.</p>
+          <ul class="skills"><li>Audit an agent for security</li><li>Write a skill</li><li>Mitigate agent risk</li></ul></div>
+          <span class="t">105 min</span></a></li>
+        <li class="mod"><a href="/agents-101/#output-quality">
+          <span class="n">5</span>
+          <div class="body"><h3>Catching Hallucinations</h3><p>Where your agent can't reach a source, it fills the gap: confident, plausible, wrong. You make the gap visible.</p>
+          <ul class="skills"><li>Detect hallucinations</li><li>Benchmark AI checks</li><li>Build a judge</li></ul></div>
+          <span class="t">95 min</span></a></li>
+        <li class="mod"><a href="/agents-101/#evaluations">
+          <span class="n">6</span>
+          <div class="body"><h3>Evaluations</h3><p>Put your judge in a loop and the work improves round after round, while you do something else.</p>
+          <ul class="skills"><li>Run an eval loop</li><li>Steer agents with feedback</li></ul></div>
+          <span class="t">85 min</span></a></li>
+        <li class="mod"><a href="/agents-101/#personal-to-team">
+          <span class="n">7</span>
+          <div class="body"><h3>From Personal to Team</h3><p>You can't really share an agent. You choose what to share: the context, a skill, the output or an interface.</p>
+          <ul class="skills"><li>Share agent work with a team</li><li>Interview for the job to be done</li><li>Plan adoption</li></ul></div>
+          <span class="t">90 min</span></a></li>
+        <li class="mod"><a href="/agents-101/#agents-building-agents">
+          <span class="n">8</span>
+          <div class="body"><h3>Agents Building Agents</h3><p>Your agent can improve your agent. That is how you, and the people you work with, learn faster.</p>
+          <ul class="skills"><li>Have agents build agents</li><li>Improve an agent with an agent</li><li>Write an agent strategy</li></ul></div>
+          <span class="t">110 min</span></a></li>
+      </ol>
+      <p class="mods-foot">About 13 hours in all, prework included.</p>
+    </div>
+  </section>
+
+  <section id="need">
+    <div class="wrap two">
+      <div>
+        <h3>What you need</h3>
+        <ul>
+          <li><strong>Claude Desktop</strong> on a Mac or Windows computer, with Cowork. Cowork needs a paid Claude plan.</li>
+          <li><strong>A folder of your own.</strong> The prework shows you how to make it.</li>
+          <li><strong>Your work calendar, if you can.</strong> A screenshot of your week works too.</li>
+          <li><strong>No coding.</strong> You write plain sentences.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>What you keep</h3>
+        <ul>
+          <li>Everything you build stays in that folder on your computer: your agent memory, your agents, your skills and your checks.</li>
+          <li>The work they do on your files is yours too.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="teams" class="teams">
+    <div class="wrap teams-grid">
+      <div>
+        <p class="kicker">For teams</p>
+        <h2>Running it for your people?</h2>
+        <p class="sub">The course is free to take on your own. Teaching it to others needs a licence from Bosser.</p>
+        <a class="link" href="https://bosser.consulting/training/" data-umami-event="licence-interest">Talk to Bosser about the team edition</a>
+      </div>
+      <ul>
+        <li><b>The right to teach it</b> inside your company.</li>
+        <li><b>The trainer kit:</b> slides, trainer notes and the group exercises.</li>
+        <li><b>Your own edition</b> with your examples, your policies and your logo.</li>
+        <li><b>A cohort with Bosser,</b> where the sponsor learns alongside the team.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="again">
+    <div class="wrap">
+      <h2>Your first step takes one message</h2>
+      <a class="btn" href="/agents-101/#start-learning" data-umami-event="start-prework" data-umami-event-from="footer-cta">Start with prework</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Free to take for your own learning and work. What you build is yours. Running this as a training needs a licence from <a href="https://bosser.consulting/training/" data-umami-event="licence-interest">Bosser</a>.</p>
+    <p>© 2026 Bosser Oy</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var board = document.getElementById('board');
+  if (!board) return;
+  var W = 16, H = 9, cells = [];
+  for (var i = 0; i < W * H; i++) { var c = document.createElement('i'); board.appendChild(c); cells.push(c); }
+  // A fixed loop the snake follows around the board.
+  var path = [];
+  for (var x = 1; x <= 14; x++) path.push([x, 1]);
+  for (var y = 2; y <= 7; y++) path.push([14, y]);
+  for (x = 13; x >= 1; x--) path.push([x, 7]);
+  for (y = 6; y >= 2; y--) path.push([1, y]);
+  var len = 9, head = 12, food = [9, 4];
+  function idx(p) { return p[1] * W + p[0]; }
+  function draw() {
+    cells.forEach(function (c) { c.className = ''; });
+    for (var k = 0; k < len; k++) cells[idx(path[(head - k + path.length) % path.length])].className = 's';
+    cells[idx(food)].className = 'f';
+  }
+  draw();
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  setInterval(function () { head = (head + 1) % path.length; draw(); }, 220);
+})();
+</script>
 </body>
 </html>

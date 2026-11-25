@@ -6,7 +6,7 @@ An agent can build the agent someone else needs. That is how you and the people 
 
 ## Prework
 
-**Have your Module 2 agent and your Module 5 judge in place.** The judge checks what an agent builds here, and the Module 2 agent gets rewritten at the end.
+**Bring `module-6/trigger.md`, your Module 2 agent and your Module 5 judge.** The trigger helps you name a person, the judge checks what an agent builds, and the Module 2 agent gets rewritten at the end.
 
 ## What You'll Learn
 
@@ -31,7 +31,7 @@ Five minutes. Your agent improves your agent. It compares your Module 2 agent wi
 
 ## Give it to them
 
-After this sitting, show your person what the new agent makes, or ask them the question in `module-7/monday.md`. Their answer tells you which agent to build next.
+After this module, show your person what the new agent makes, or ask them the question in `module-7/person.md`. Their answer tells you which agent to build next.
 
 ## Key Concepts
 
@@ -48,13 +48,15 @@ Every agent your agents build or improve makes the next one quicker to build. Ho
 
 We could have spent this course building you one impressive agent. It would have demoed well and been the wrong thing to give you. Everyone wants their hundred agents; the one that matters in six months is one nobody has thought of yet. What you take out of here is the ability to build it.
 
+Sharing agents across a team and building a strategy with everyone's agents together is the team edition of this course.
+
 One question to carry out of the course: what is going to be the next hard part about agents?
 
 <!-- maintainer -->
 
 **Edition:** free open edition only (`agents-101-open`: M1 to M6 plus this module), replacing M7 + M8. The licensed team edition runs `personal-to-team.md` and `agents-building-agents.md` with a neighbour, a forum and a sponsor. Antti 2026-11-25 picked this split on a decision card; plan https://claude.ai/artifact/MEhqeBGvmTXXAoTqdwCf5P.
 
-**Red thread:** the M8 row (an agent builds the next agent for a gap someone else has). Files keep the M7/M8 names (`module-7/monday.md`, `module-8/extension-brief.md`, `module-8/built-agent.md`) so the shared lecture and the `extend-your-system-*` prompts run unchanged.
+**Red thread:** the M8 row (an agent builds the next agent for a gap someone else has). All files live in `module-7/` (`person.md`, `brief.md`, `built-agent.md`); the build prompts are module-7 copies of `extend-your-system-1`/`-2`. Prompts pick-one-person, build-for-the-gap-1/-2 and a101-solo-debrief-works-without-me are new, prompt-ok Antti 2026-11-25 ("prompt-ok for any new prompts").
 
 **No handover step (sim 2026-11-25, Sonnet, fastloop run.js, 12 students per page, M8 Big Idea stated cold).** Team M8 read 44. A solo draft with an empty-folder handover (fresh session outside the training folder running the learner's agent) read 0, then 6, 8, 13 and 2 across five orders, including handover after the build. Every student wrote "the agent went generic without my memory" at that step and took it home instead of the M8 idea. It is the M7 Big Idea and it wins wherever it sits. Without the handover: 17; with team M8's § Next stance paragraph: 27, inside the 20-point floor. The M7 idea is left to the team edition. Do not re-add a handover beat here without a measured reason.
 
@@ -72,7 +74,7 @@ One question to carry out of the course: what is going to be the next hard part 
 **Artefact contracts**
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
-| One person, one question | `module-7/monday.md` | `pick-one-person` | Build exercise brief; § Give it to them |
-| Extension brief | `module-8/extension-brief.md` | student, build exercise | `extend-your-system-1` |
-| Built agent record | `module-8/built-agent.md` | `extend-your-system-2` | Debrief |
+| One person, one question | `module-7/person.md` | `pick-one-person` | Build exercise brief; § Give it to them |
+| Brief | `module-7/brief.md` | student, build exercise | `build-for-the-gap-1` |
+| Built agent record | `module-7/built-agent.md` | `build-for-the-gap-2` | Debrief |
 | Rewritten Module 2 agent | `agents/<module-2 agent>.md` | `a101-solo-debrief-works-without-me` | Every later run |

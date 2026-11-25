@@ -18,7 +18,7 @@ Your system works for you because it reads your memory. Pick one real person, de
 
 *5 min*
 
-Open `module-7/monday.md`. Write four lines in `module-8/extension-brief.md`:
+Open `module-7/person.md`. Write four lines in `module-7/brief.md`:
 
 - The gap: what your person needs and cannot get from your agent, because your agent reads your memory.
 - The job: what the new agent does, without your memory.
@@ -31,7 +31,7 @@ Over five minutes? Narrow the gap.
 
 *10 min*
 
-{{prompt:extend-your-system-1}}
+{{prompt:build-for-the-gap-1}}
 
 ## Judge it, and the agent rebuilds it
 
@@ -39,9 +39,9 @@ Over five minutes? Narrow the gap.
 
 Don't edit the new agent yourself. The judge checks the output against the files the new agent read, finds what fails, and the agent that built it rebuilds it.
 
-{{prompt:extend-your-system-2}}
+{{prompt:build-for-the-gap-2}}
 
-Your agent built an agent, then rebuilt it from what the judge found. `module-8/built-agent.md` holds the minutes it took.
+Your agent built an agent, then rebuilt it from what the judge found. `module-7/built-agent.md` holds the minutes it took.
 
 ## Take stock of the compound
 
@@ -53,14 +53,14 @@ In under half an hour an agent built an agent for a gap a real person has, and r
 
 Each agent you describe is built faster than the last. When agents build agents for the gaps people around you hit, you and they learn faster.
 
-This is **Recipe 8**: agent generates agent, on a real gap. The [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) holds the moves for the next gap.
+The [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) holds the moves for the next gap, under "agent generates agent".
 
 <!-- maintainer -->
 
-**Purpose:** the M8 build step (`extend-your-system.md`) for a learner with no neighbour. `extend-your-system-1` and `-2` run unchanged. The gap comes from one real person, picked by `pick-one-person` (compresses the M7 interview, pick and next-step prompts).
+**Purpose:** the M8 build step (`extend-your-system.md`) for a learner with no neighbour. `build-for-the-gap-1` and `-2` are `extend-your-system-1` and `-2` with module-7 paths and no "hired". The gap comes from one real person, picked by `pick-one-person` (compresses the M7 interview, pick and next-step prompts).
 
 **Sim 2026-11-25:** an empty-folder handover beat beside this exercise took every take-home (M7 idea); see the module maintainer block. The module runs this exercise alone.
 
 **Plug points:** if the learner names nobody, the gap is "what a colleague without my memory could not get from my agent".
 
-**View summary:** Name one real person and what they get. Four lines describe their gap. An agent builds the agent, the Module 5 judge finds what fails, the builder rebuilds it, and `module-8/built-agent.md` records before, after and the minutes.
+**View summary:** Name one real person and what they get. Four lines describe their gap. An agent builds the agent, the Module 5 judge finds what fails, the builder rebuilds it, and `module-7/built-agent.md` records before, after and the minutes.

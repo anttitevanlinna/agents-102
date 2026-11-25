@@ -312,6 +312,26 @@ function hideVideoPlaceholders(html) {
     .replace(/<p>Video coming here[^<]*(?:<code>[^<]*<\/code>[^<]*)*<\/p>/g, '');
 }
 
+// Pause and Resume live at the end of the page; each part ends with a pointer.
+const PAUSE_POINTER = '<p class="a101-pause-pointer">Stopping here? <a href="#pause-learning">Pause learning</a> saves your place. <a href="#resume-learning">Resume learning</a> brings you back.</p>';
+function addPausePointers(html, slugs) {
+  for (const slug of slugs) {
+    const open = `<section class="module" id="${slug}">`;
+    const at = html.indexOf(open);
+    if (at < 0) throw new Error(`Pause pointer: section missing: ${slug}`);
+    let depth = 0, i = at;
+    const re = /<section\b|<\/section>/g;
+    re.lastIndex = at;
+    let m;
+    while ((m = re.exec(html))) {
+      depth += m[0] === '</section>' ? -1 : 1;
+      if (!depth) { i = m.index; break; }
+    }
+    html = html.slice(0, i) + PAUSE_POINTER + '\n' + html.slice(i);
+  }
+  return html;
+}
+
 function addLicenceLine(html) {
   // The page also carries the footer source in its runtime script; match the rendered element.
   const footer = '<footer class="curriculum-footer"><p>';
@@ -398,9 +418,6 @@ function buildEdition({ edition: editionKey = 'acme-mvp', outputDir, publicDir, 
     html = html.split(`${SITE}/clients/${edition.slug}/agents-101/`).join(workbookUrl);
     html = html.replace(`<title>Agents 101 — ${edition.brand}</title>`, `<title>${edition.title}</title>`)
       .replace('data-target="prework">Prework</a>', 'data-target="prework">First steps</a>');
-    // The theory manifest omits setup. Carry the exact rendered edition route
-    // into its offline companion instead of authoring a second instruction set.
-    const offlinePrework = preworkSection(html);
     const { welcome, controls } = renderOnboarding(fs.readFileSync(path.join(DELIVERY, 'onboarding.md'), 'utf8'));
     const toc = '<nav class="workbook-toc">';
     if (!html.includes(toc)) throw new Error('Workbook contents insertion point is missing');
@@ -415,12 +432,17 @@ function buildEdition({ edition: editionKey = 'acme-mvp', outputDir, publicDir, 
     if (!html.includes('</main>')) throw new Error('Workbook footer insertion point is missing');
     html = html.replace('</main>', `<section class="a101-onboarding a101-learning-controls" aria-label="Workbook options"><div class="module">\n${controls}\n<details class="a101-tool-picker"><summary id="workbook-tools">Tools for Claude Code and other runtimes</summary>${runtimePicker}</details>\n</div></section>\n\n</main>`);
     // After Prework the contents list is the route onward: drop the Prework row
-    // (the learner just did it) and put the other-tool link after the modules.
+    // (the learner just did it). The other-tool link sits above the first step.
     const preworkRow = /<ol class="module-list index-prework">[\s\S]*?<\/ol>/;
     if (!preworkRow.test(html)) throw new Error('Contents Prework row is missing');
     html = html.replace(preworkRow, '');
-    const tocEnd = html.indexOf('</nav>', html.indexOf(toc));
-    html = html.slice(0, tocEnd) + '<p class="a101-toc-tools"><a href="#workbook-tools">Use this workbook with another tool</a></p>\n' + html.slice(tocEnd);
+    const firstStep = '<h2 id="make-my-first-game">';
+    if (html.split(firstStep).length !== 2) throw new Error('Prework first step is missing');
+    html = html.replace(firstStep, '<p class="a101-toc-tools"><a href="#workbook-tools">Using Claude Code or another tool? Switch the handbook to it</a></p>\n' + firstStep);
+    html = addPausePointers(html, ['prework', ...modules.map(m => m.slug)]);
+    // The theory manifest omits setup. Carry the exact rendered edition route
+    // into its offline companion instead of authoring a second instruction set.
+    const offlinePrework = preworkSection(html);
     // The handbook header: course map (first steps + modules), current place, view switch.
     const navStart = html.indexOf('<nav class="workbook-topnav"');
     const navEnd = html.indexOf('</nav>', navStart);
@@ -444,7 +466,10 @@ body.workbook:not(.slides-active) .a101-onboarding + section#prework > h2#make-m
 body.workbook .workbook-cover { padding-top: 1rem; padding-bottom: 1.5rem; margin-bottom: 1rem; }
 body.workbook > main > section#prework { padding-top: 0; }
 .workbook-toc h2 { color: var(--fg-2); }
-.a101-toc-tools { margin-top: 1rem; font-size: .9rem; }
+.a101-toc-tools { margin: 0 0 1rem; font-size: .9rem; }
+.a101-pause-pointer { margin-top: 2rem; font-size: .9rem; color: var(--fg-2); }
+.workbook-toc .module-list a { text-decoration: none; }
+.workbook-toc .module-big { font-style: normal; font-family: var(--font-body); font-size: .9rem; color: var(--fg-2); }
 video:focus-visible { outline: 3px solid var(--fg); outline-offset: 3px; }
 .a101-tool-picker { margin-top: 1rem; text-align: start; }
 .a101-tool-picker > summary { cursor: pointer; font-size: .9rem; }
@@ -465,8 +490,8 @@ ${SETUP_CSS}
     var read = document.querySelector('.workbook-layout-toggle [data-mode="read"]');
     if (document.body.classList.contains('slides-active') && read) read.click();
   }
-  function reveal() {
-    var id; try { id = decodeURIComponent(location.hash.slice(1)); } catch (_) { return; }
+  function reveal(hash) {
+    var id; try { id = decodeURIComponent((typeof hash === 'string' ? hash : location.hash).slice(1)); } catch (_) { return; }
     var target = document.getElementById(id);
     if (!target || !target.closest('.a101-onboarding')) return;
     showRead();
@@ -476,7 +501,19 @@ ${SETUP_CSS}
   }
   var start = document.querySelector('.rail-brand');
   if (start) start.addEventListener('click', showRead);
-  window.addEventListener('hashchange', reveal);
+  window.addEventListener('hashchange', function () { reveal(); });
+  // Other page scripts may handle in-page links themselves, so a link into the
+  // options at the end of the page opens its section on click, not on hashchange.
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest && event.target.closest('a[href^="#"]');
+    if (!link) return;
+    var hash = link.getAttribute('href');
+    var target = document.getElementById(hash.slice(1));
+    if (!target || !target.closest('.a101-onboarding')) return;
+    event.preventDefault();
+    try { history.pushState(null, '', hash); } catch (_) {}
+    reveal(hash);
+  }, true);
   reveal();
 })();
 </script>\n${shell('figure-reader.html')}<script data-a101-handbook>\n${shell('deskpad.js')}\n</script>\n</body>`);

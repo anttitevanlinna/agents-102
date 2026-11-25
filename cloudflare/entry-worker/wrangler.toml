@@ -1,0 +1,28 @@
+# Relay for the "what's stuck at work?" prompt on the Agents 101 home page.
+# Deploy: see README.md in this folder.
+name = "a101-entry"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+
+# No request logs: the visitor's words must never be stored.
+[observability]
+enabled = false
+
+[vars]
+ALLOWED_ORIGINS = "https://agents102.bosser.consulting"
+MODEL = "claude-haiku-5-5"
+DAILY_CAP = "500"
+
+# Bare count of answers per day, so the daily cap holds. No text is kept.
+[[kv_namespaces]]
+binding = "COUNTS"
+id = "REPLACE_WITH_ID_FROM_wrangler_kv_namespace_create"
+
+# 5 answers a minute per connection. Counters live in memory at the edge.
+[[unsafe.bindings]]
+name = "LIMITER"
+type = "ratelimit"
+namespace_id = "1002"
+simple = { limit = 5, period = 60 }
+
+# ANTHROPIC_API_KEY is a secret: wrangler secret put ANTHROPIC_API_KEY

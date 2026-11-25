@@ -23,6 +23,10 @@ node scripts/run-a101-onboarding-sim.js --mode live
 
 Evidence belongs under ignored `out/`, with a stable latest report for this scope, overwritten on rerun. Keep raw model replies, tool traces and relevant before/after files beside it. Use synthetic learner content. Do not commit raw transcripts or copy actual learner/company data into fixtures.
 
+## Home page to Module 1
+
+[Rubric and simulations](path-rubric.md) for the whole first stretch: home page, first game, folder and course files, meeting summary, start of Module 1. `path-read.js` is the solo-learner simulation, `path-visual.js` the screenshot gates and critic. Results in [path-results.md](path-results.md).
+
 ## First-result journey
 
 [Current baseline, release and control scores](journey-results.md)

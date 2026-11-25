@@ -392,7 +392,13 @@ function buildEdition({ edition: editionKey = 'acme-mvp', outputDir, publicDir, 
     html = html.replace(`  ${runtimePicker}\n`, '');
     if (!html.includes('</main>')) throw new Error('Workbook footer insertion point is missing');
     html = html.replace('</main>', `<section class="a101-onboarding a101-learning-controls" aria-label="Workbook options"><div class="module">\n${controls}\n<details class="a101-tool-picker"><summary id="workbook-tools">Tools for Claude Code and other runtimes</summary>${runtimePicker}</details>\n</div></section>\n\n</main>`);
-    html = html.replace(toc, `${toc}\n<p><a href="#workbook-tools">Use this workbook with another tool</a></p>`);
+    // After Prework the contents list is the route onward: drop the Prework row
+    // (the learner just did it) and put the other-tool link after the modules.
+    const preworkRow = /<ol class="module-list index-prework">[\s\S]*?<\/ol>/;
+    if (!preworkRow.test(html)) throw new Error('Contents Prework row is missing');
+    html = html.replace(preworkRow, '');
+    const tocEnd = html.indexOf('</nav>', html.indexOf(toc));
+    html = html.slice(0, tocEnd) + '<p class="a101-toc-tools"><a href="#workbook-tools">Use this workbook with another tool</a></p>\n' + html.slice(tocEnd);
     // The handbook header: course map (first steps + modules), current place, view switch.
     const navStart = html.indexOf('<nav class="workbook-topnav"');
     const navEnd = html.indexOf('</nav>', navStart);
@@ -415,6 +421,9 @@ body.workbook:not(.slides-active) .a101-onboarding + section#prework > .module-h
 body.workbook:not(.slides-active) .a101-onboarding + section#prework > h2#make-my-first-game { margin-top: 0; padding-top: 0; }
 body.workbook .workbook-cover { padding-top: 1rem; padding-bottom: 1.5rem; margin-bottom: 1rem; }
 body.workbook > main > section#prework { padding-top: 0; }
+.workbook-toc h2 { color: var(--fg-2); }
+.a101-toc-tools { margin-top: 1rem; font-size: .9rem; }
+video:focus-visible { outline: 3px solid var(--fg); outline-offset: 3px; }
 .a101-tool-picker { margin-top: 1rem; text-align: start; }
 .a101-tool-picker > summary { cursor: pointer; font-size: .9rem; }
 section#prework, section#prework .module-hero-title, section#prework > h2 { scroll-margin-top: 5rem; }

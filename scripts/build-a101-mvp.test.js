@@ -200,7 +200,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     const canonicalBaseline = fs.readFileSync(path.join(ROOT, 'curriculum/prompts/personal-site-with-guardrails-1.md'), 'utf8').replace(/^---\n[\s\S]*?\n---\n/, '').split('<!-- maintainer -->')[0].trimEnd();
     assert.equal(baselineCopy, canonicalBaseline, 'ordinary copied work request stays canonical');
     assert.doesNotMatch(baselineCopy, /https?:\/\/|Current:|Next:|learning-position\.md|course-navigation\.md/);
-    const extractionBlock = [...document.querySelectorAll('.prompt-block')].find(block => block.querySelector('code').textContent.startsWith('Extract the starter tarball'));
+    const extractionBlock = [...document.querySelectorAll('.prompt-block')].find(block => block.querySelector('code').textContent.startsWith('Download the starter tarball'));
     assert.ok(extractionBlock);
     const prework = document.getElementById('prework');
     const snakeBlock = prework.querySelector('.a101-game-start blockquote');
@@ -293,7 +293,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     }
     const bootstraps = promptTexts.filter(text => text.includes(COURSE_READING_CUE));
     assert.ok(bootstraps.length > 0);
-    assert.ok(bootstraps.every(text => text.startsWith('Extract the starter tarball') && text.split(COURSE_READING_CUE).length === 2), 'only extraction runtime variants carry one course bootstrap each');
+    assert.ok(bootstraps.every(text => text.startsWith('Download the starter tarball') && text.split(COURSE_READING_CUE).length === 2), 'only extraction runtime variants carry one course bootstrap each');
     const archiveLinks = [...document.querySelectorAll('a[href]')]
       .map(anchor => anchor.getAttribute('href')).filter(href => href.includes('agents-101-starter.tar.gz'));
     assert.ok(archiveLinks.length);
@@ -352,7 +352,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
         assert.equal(offlinePrework.outerHTML, expectedPrework.window.document.getElementById('prework').outerHTML, 'offline setup uses the same renderer output; only links to missing companion sections point online');
       } finally { expectedPrework.window.close(); }
       for (const link of offlinePrework.querySelectorAll('a[href^="#"]')) assert.ok(offline.window.document.getElementById(link.getAttribute('href').slice(1)), `offline local link resolves: ${link.getAttribute('href')}`);
-      assert.ok(offlineHtml.includes('Make me a Snake game and link to the file here.') && offlineHtml.indexOf('Make me a Snake game and link to the file here.') < offlineHtml.indexOf('Extract the starter tarball'));
+      assert.ok(offlineHtml.includes('Make me a Snake game and link to the file here.') && offlineHtml.indexOf('Make me a Snake game and link to the file here.') < offlineHtml.indexOf('Download the starter tarball'));
       assert.ok(offlinePrework.compareDocumentPosition(offline.window.document.getElementById('theory-m1')) & offline.window.Node.DOCUMENT_POSITION_FOLLOWING);
       assert.equal(offlinePrework.querySelectorAll('.a101-video-placeholder').length, 3);
       const setupScript = offline.window.document.querySelector('script[data-a101-setup]');

@@ -50,6 +50,7 @@ test('training.json sets label, lede and modules, nothing else', () => {
   assert.deepEqual(load(tree({ 'trainings/t1/training.json': JSON.stringify({ modules }) }), root).labels.t1, { modules })
   assert.throws(() => load(tree({ 'trainings/t1/training.json': '{"modules":[]}' }), root), /modules must be a non-empty list/)
   assert.throws(() => load(tree({ 'trainings/t1/training.json': '{"modules":[{"slug":"m1"}]}' }), root), /modules must be a non-empty list/)
+  assert.deepEqual(load(tree({ 'trainings/t1/training.json': '{"supplementaries":[]}' }), root).labels.t1, { supplementaries: [] })
   assert.throws(() => load(tree({ 'trainings/t1/training.json': '{"prework":null}' }), root), /training\.json: unknown key "prework"/)
 })
 

@@ -4,8 +4,8 @@
 // path, and a file with no vendor twin is the customer's own (a new lecture, a
 // new reference page). prompts/<key>.md and figures/<key>.md join the prompt
 // and figure registries the same way. trainings/<key>/training.json overrides
-// the registry's label, lede and module list, the parts of a training that are
-// not files. A module list lets an edition drop modules or add its own.
+// the registry's label, lede, module and supplementary lists, the parts of a
+// training that are not files. A list lets an edition drop pages or add its own.
 //
 // A shadow is a fork of the vendor file. overlay.lock.json records, per shadow,
 // the vendor file's content hash and commit when the fork was first built; a
@@ -21,7 +21,7 @@ const path = require('node:path')
 const { execFileSync } = require('node:child_process')
 
 const LOCK = 'overlay.lock.json'
-const TRAINING_JSON_KEYS = new Set(['label', 'lede', 'modules'])
+const TRAINING_JSON_KEYS = new Set(['label', 'lede', 'modules', 'supplementaries'])
 const sha = buf => crypto.createHash('sha256').update(buf).digest('hex')
 
 function walk(dir, rel = '') {
@@ -49,9 +49,11 @@ function loadOverlay(dir, { root, trainings }) {
       if (parts.length === 3 && parts[2] === 'training.json') {
         const spec = JSON.parse(fs.readFileSync(path.join(dir, rel), 'utf8'))
         for (const k of Object.keys(spec)) if (!TRAINING_JSON_KEYS.has(k)) throw new Error(`overlay: ${rel}: training.json: unknown key "${k}"`)
-        if ('modules' in spec) {
-          const ok = Array.isArray(spec.modules) && spec.modules.length && spec.modules.every(m => m && typeof m.slug === 'string' && /^[a-z0-9-]+$/.test(m.slug) && typeof m.title === 'string' && m.title.trim() && Object.keys(m).length === 2)
-          if (!ok) throw new Error(`overlay: ${rel}: training.json: modules must be a non-empty list of { slug, title }`)
+        for (const k of ['modules', 'supplementaries']) {
+          if (!(k in spec)) continue
+          const list = spec[k]
+          const ok = Array.isArray(list) && (list.length || k === 'supplementaries') && list.every(m => m && typeof m.slug === 'string' && /^[a-z0-9-]+$/.test(m.slug) && typeof m.title === 'string' && m.title.trim() && Object.keys(m).length === 2)
+          if (!ok) throw new Error(`overlay: ${rel}: training.json: ${k} must be a ${k === 'modules' ? 'non-empty ' : ''}list of { slug, title }`)
         }
         labels[parts[1]] = spec
         continue

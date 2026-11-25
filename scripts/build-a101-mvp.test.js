@@ -411,6 +411,10 @@ test('open edition: Modules 1 to 6 plus the solo module at its own address, lice
       for (const slug of ['personal-to-team', 'agents-building-agents']) assert.equal(doc.querySelector(`section.module[id="${slug}"]`), null, `team module left out: ${slug}`);
       assert.deepEqual([...doc.querySelectorAll('.workbook-topnav__modules a')].map(a => a.getAttribute('href')), slugs.map(s => '#' + s));
       assert.equal(doc.querySelectorAll('.curriculum-footer .a101-licence').length, 1);
+      assert.doesNotMatch(doc.querySelector('.curriculum-footer').textContent, /proprietary/, 'one licence voice in the footer');
+      for (const slug of ['building-guardrails', 'learning-and-compounding-systems']) assert.equal(doc.getElementById('supplementary-' + slug), null, `outline-only page left out: ${slug}`);
+      assert.doesNotMatch(html, /<p>Video coming here|<em>\(Builder Claude/);
+      assert.doesNotMatch(doc.title, /\u2014/);
       assert.match(doc.getElementById('getting-going').querySelector('.a101-module-time').textContent, /paid Claude plan/);
       for (const slug of ['multi-agent-systems', 'output-quality', 'evaluations']) assert.match(doc.getElementById(slug).querySelector('.a101-module-time').textContent, /usage limit/);
       assert.equal(doc.querySelector('a[href*="agents-101-starter.tar.gz"]').getAttribute('href').split('?')[0], url + 'agents-101-starter.tar.gz');

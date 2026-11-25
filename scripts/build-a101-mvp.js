@@ -127,6 +127,16 @@ function moveContentsAfterPrework(html) {
   return (html.slice(0, start) + html.slice(end)).replace(moduleOne, contents + '\n\n' + moduleOne);
 }
 
+// The edition's First steps page replaces Module 1's own Prework list, which
+// still names the cohort setup. Drop it so Module 1 opens on its Start here.
+function dropModuleOnePrework(html) {
+  const moduleOne = html.indexOf('<section class="module" id="getting-going">');
+  const start = html.indexOf('<h2 id="prework">', moduleOne);
+  const end = html.indexOf('<h2', start + 1);
+  if (moduleOne < 0 || start < 0 || end < 0 || html.indexOf('</section>', moduleOne) < start) throw new Error('Module 1 Prework block is missing');
+  return html.slice(0, start) + html.slice(end);
+}
+
 function prependOfflinePrework(html, prework, workbookUrl = WORKBOOK_URL) {
   const target = '<section class="module" id="theory-m1">';
   if (html.includes('id="prework"')) throw new Error('Offline handbook already contains Prework');
@@ -398,6 +408,7 @@ function buildEdition({ edition: editionKey = 'acme-mvp', outputDir, publicDir, 
     // direct section.module children, never mistakes onboarding for a module.
     html = html.replace(toc, `<section class="a101-onboarding">${shell('cover-game.html')}<div class="module">\n${welcome}\n</div></section>\n\n${toc}`);
     html = moveContentsAfterPrework(html);
+    html = dropModuleOnePrework(html);
     const runtimePicker = '<div id="runtime-switcher" class="runtime-switcher"></div>';
     if (!html.includes(runtimePicker)) throw new Error('Workbook runtime picker is missing');
     html = html.replace(`  ${runtimePicker}\n`, '');
@@ -509,4 +520,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { hideVideoPlaceholders, EDITIONS, editionModules, editionCheckpoints, headerModules, addLicenceLine, addModuleTimes, buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };
+module.exports = { dropModuleOnePrework, hideVideoPlaceholders, EDITIONS, editionModules, editionCheckpoints, headerModules, addLicenceLine, addModuleTimes, buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };

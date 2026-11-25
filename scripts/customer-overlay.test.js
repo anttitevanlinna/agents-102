@@ -42,11 +42,15 @@ test('a customer file shadows its vendor twin; a new file is the customer\'s own
   assert.equal(o.resolve('lectures/why.md'), path.join(root, 'curriculum/lectures/why.md'))
 })
 
-test('training.json sets label and lede, nothing else', () => {
+test('training.json sets label, lede and modules, nothing else', () => {
   const root = vendor()
   const o = load(tree({ 'trainings/t1/training.json': JSON.stringify({ label: 'T1: Tundra', lede: 'Customer lede.' }) }), root)
   assert.deepEqual(o.labels.t1, { label: 'T1: Tundra', lede: 'Customer lede.' })
-  assert.throws(() => load(tree({ 'trainings/t1/training.json': '{"modules":[]}' }), root), /training\.json: unknown key "modules"/)
+  const modules = [{ slug: 'm1', title: 'One' }]
+  assert.deepEqual(load(tree({ 'trainings/t1/training.json': JSON.stringify({ modules }) }), root).labels.t1, { modules })
+  assert.throws(() => load(tree({ 'trainings/t1/training.json': '{"modules":[]}' }), root), /modules must be a non-empty list/)
+  assert.throws(() => load(tree({ 'trainings/t1/training.json': '{"modules":[{"slug":"m1"}]}' }), root), /modules must be a non-empty list/)
+  assert.throws(() => load(tree({ 'trainings/t1/training.json': '{"prework":null}' }), root), /training\.json: unknown key "prework"/)
 })
 
 test('prompts/ and figures/ shadow or extend the registries', () => {

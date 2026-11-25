@@ -58,7 +58,7 @@ a { color: inherit; }
 @media (max-width: 640px) { .edition, .nav .nav-hide { display: none; } .nav { gap: 16px; } }
 
 /* Note */
-.intro { padding-top: 56px; }
+.intro { padding-top: 56px; position: relative; }
 h1 { font: 700 clamp(36px, 6.4vw, 64px)/1.03 var(--font-body); letter-spacing: -.05em; margin: 0 0 18px; color: var(--ink); text-wrap: balance; }
 .one { font-size: clamp(19px, 2.4vw, 23px); line-height: 1.35; letter-spacing: -.015em; color: var(--fg-2); margin: 0; max-width: 30em; }
 
@@ -104,6 +104,14 @@ h1 { font: 700 clamp(36px, 6.4vw, 64px)/1.03 var(--font-body); letter-spacing: -
 @keyframes fresh { from { background: color-mix(in srgb, var(--orange) 28%, transparent); } to { background: transparent; } }
 .rows .fresh { animation: fresh 1.4s ease-out both; }
 @media (prefers-reduced-motion: reduce) { .rows .fresh { animation-duration: .01s; } }
+/* The travelling arrow: runs down the orange line from the answer, and each row rewrites as it arrives. */
+.pulse { position: absolute; top: 0; width: 3px; height: 40px; background: linear-gradient(to bottom, transparent, var(--ink)); pointer-events: none; opacity: 0; transition: opacity .25s; z-index: 2; }
+.pulse.on { opacity: 1; }
+.pulse::after { content: ''; position: absolute; left: -4px; bottom: -8px; border-left: 5.5px solid transparent; border-right: 5.5px solid transparent; border-top: 9px solid var(--ink); }
+@keyframes branch { from { transform: scaleX(0); border-color: var(--ink); } 60% { border-color: var(--ink); } }
+@keyframes tip { from { opacity: 0; transform: translateX(-10px); } }
+.hit::before { transform-origin: left center; animation: branch .45s ease-out; }
+.hit::after { animation: tip .45s ease-out; }
 .bar { height: 10px; background: var(--bg-3); border: 1px solid var(--line); }
 .bar span { display: block; height: 100%; background: var(--orange); }
 @media (max-width: 560px) { .rows li { grid-template-columns: 22px minmax(0, 1fr); } .rows .bar { display: none; } }
@@ -190,6 +198,7 @@ footer p { margin: 0; max-width: 46em; }
       <p class="priv">What you type goes to Claude to rewrite the modules below. This site keeps no copy.</p>
     </form>
 
+    <div class="pulse" id="pulse" aria-hidden="true"></div>
     <div class="plan" aria-live="polite">
       <p class="plan-head" id="planhead">Your course, rewritten for <span class="x">we keep losing deals to a cheaper competitor</span></p>
       <p class="plan-sub">Seven modules. In each one the agents take on more of this challenge.</p>
@@ -383,18 +392,62 @@ footer p { margin: 0; max-width: 46em; }
   }
   var EXAMPLES = [{ challenge: inp.value, rows: first }];
   try { EXAMPLES = EXAMPLES.concat(JSON.parse(document.getElementById('examples').textContent)); } catch (e) {}
-  function fill(rows) {
-    for (var i = 0; i < items.length; i++) {
-      var ag = items[i].querySelector('.ag'), end = items[i].querySelector('.end span');
-      ag.textContent = String(rows[i].agents).slice(0, 200);
-      end.textContent = String(rows[i].end).slice(0, 90).replace(/\.$/, '');
-      flash(ag, i); flash(items[i].querySelector('.end'), i);
-    }
+  function setRow(i, row) {
+    var ag = items[i].querySelector('.ag'), end = items[i].querySelector('.end');
+    ag.textContent = String(row.agents).slice(0, 200);
+    end.querySelector('span').textContent = String(row.end).slice(0, 90).replace(/\.$/, '');
+    restart(ag, 'fresh'); restart(end, 'fresh');
   }
-  /* Each row lights up in turn, top to bottom, so the change reads as the course rewriting itself. */
-  function flash(el, i) {
-    el.classList.remove('fresh'); el.style.animationDelay = reduce ? '0s' : (i * 90) + 'ms';
-    void el.offsetWidth; el.classList.add('fresh');
+  function restart(el, cls) { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
+  function fill(rows) { for (var i = 0; i < items.length; i++) setRow(i, rows[i]); }
+
+  /* Answer -> arrow -> rows change. The arrow leaves the input, stops at the heading
+     (and waits there while Claude writes), then runs down the line; each row
+     rewrites the moment the arrow reaches its branch. */
+  var intro = form.parentNode, pulse = document.getElementById('pulse'), field = form.querySelector('.field'), runId = 0, bob = null;
+  function yOf(el, dy) { return el.getBoundingClientRect().top - intro.getBoundingClientRect().top + dy; }
+  function at(y) { pulse.style.transform = 'translateY(' + (y - 48) + 'px)'; }
+  function move(to, ms) {
+    var from = pulse._y == null ? to : pulse._y; pulse._y = to;
+    if (!pulse.animate) { at(to); return new Promise(function (r) { setTimeout(r, ms); }); }
+    var a = pulse.animate([{ transform: 'translateY(' + (from - 48) + 'px)' }, { transform: 'translateY(' + (to - 48) + 'px)' }], { duration: ms, easing: 'ease-in-out', fill: 'forwards' });
+    return a.finished.then(function () { at(to); });
+  }
+  function stopBob() { if (bob) { bob.cancel(); bob = null; } }
+  // rowsReady: rows now, or a promise of rows (null = keep the standard lines).
+  function cascade(text, rowsReady) {
+    var id = ++runId;
+    stopBob();
+    if (reduce || !pulse.animate) {
+      title(text);
+      return Promise.resolve(rowsReady).then(function (rows) { if (id === runId) fill(rows || STANDARD); });
+    }
+    pulse.style.left = (head.getBoundingClientRect().left - intro.getBoundingClientRect().left - 21) + 'px';
+    pulse._y = null; move(yOf(field, field.offsetHeight), 0);
+    pulse.classList.add('on');
+    var headY = yOf(head, 12);
+    return move(headY, 450).then(function () {
+      if (id !== runId) return;
+      title(text); restart(head, 'hit');
+      if (rowsReady && typeof rowsReady.then === 'function') {
+        bob = pulse.animate([{ transform: 'translateY(' + (headY - 48) + 'px)' }, { transform: 'translateY(' + (headY - 40) + 'px)' }], { duration: 600, direction: 'alternate', iterations: Infinity, easing: 'ease-in-out' });
+      }
+      return Promise.resolve(rowsReady);
+    }).then(function (rows) {
+      if (id !== runId) return;
+      stopBob(); rows = rows || STANDARD;
+      var i = 0;
+      function next() {
+        if (id !== runId) return;
+        if (i >= items.length) { pulse.classList.remove('on'); return; }
+        return move(yOf(items[i], 25), i === 0 ? 260 : 200).then(function () {
+          if (id !== runId) return;
+          setRow(i, rows[i]); restart(items[i], 'hit'); i++;
+          return next();
+        });
+      }
+      return next();
+    });
   }
   function title(text) {
     head.textContent = 'Your course, rewritten for ';
@@ -414,34 +467,76 @@ footer p { margin: 0; max-width: 46em; }
   function showExample(n) {
     var ex = EXAMPLES[n]; if (!ex) return;
     if (ctl) { ctl.abort(); ctl = null; list.classList.remove('wait'); send.disabled = false; }
-    inp.value = ex.challenge; title(ex.challenge); fill(ex.rows); press(n);
-    statusEl.textContent = EXAMPLE_NOTE; reveal();
+    inp.value = ex.challenge; press(n); reveal();
+    statusEl.textContent = EXAMPLE_NOTE; cascade(ex.challenge, ex.rows);
   }
   for (var k = 0; k < chips.length; k++) chips[k].addEventListener('click', function () { var n = Number(this.getAttribute('data-ex')); showExample(n); count('example'); });
   inp.addEventListener('focus', function () { for (var i = 0; i < EXAMPLES.length; i++) if (inp.value === EXAMPLES[i].challenge) { inp.select(); return; } });
+  var NOTES = {
+    live: 'Written for you just now by Claude, from the course pages.',
+    off: 'Live answers are not on yet, so these are the standard lines for any challenge.',
+    busy: 'Live answers are busy right now, so these are the standard lines. Try again later.',
+    fallback: 'Claude could not answer this time, so these are the standard lines.'
+  };
+  // Resolves {result, rows}; rows null means the standard lines. Never rejects.
+  function ask(c, signal) {
+    var done = function (result, rows) { return { result: result, rows: rows || null }; };
+    if (window.__entryPreview) return window.__entryPreview(c, signal).then(function (r) { return r && r.rows ? done('live', r.rows) : done(r && r.off ? 'off' : 'fallback'); }, function () { return done('fallback'); });
+    if (!endpoint || !window.fetch) return Promise.resolve(done('off'));
+    return fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ challenge: c }), signal: signal })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, status: r.status, body: j }; }); })
+      .then(function (res) {
+        if (res.ok && valid(res.body)) return done('live', res.body.rows);
+        return done(res.status === 429 ? 'busy' : 'fallback');
+      }, function () { return done('fallback'); });
+  }
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    stopDemo();
     var c = inp.value.replace(/\s+/g, ' ').trim().slice(0, 120);
     if (!c) { inp.focus(); return; }
     for (var i = 0; i < EXAMPLES.length; i++) if (c === EXAMPLES[i].challenge) { showExample(i); return; }
-    press(-1); title(c); reveal();
-    if (!endpoint || !window.fetch) { fill(STANDARD); statusEl.textContent = 'Live answers are not on yet, so these are the standard lines for any challenge.'; count('off'); return; }
+    press(-1); reveal();
     if (ctl) ctl.abort();
     var mine = ctl = window.AbortController ? new AbortController() : null;
-    list.classList.add('wait'); send.disabled = true;
+    send.disabled = true;
     statusEl.textContent = 'Claude is rewriting the seven modules for your challenge…';
     var timer = setTimeout(function () { if (mine) mine.abort(); }, 20000);
-    fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ challenge: c }), signal: mine ? mine.signal : undefined })
-      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, status: r.status, body: j }; }); })
-      .then(function (res) {
-        if (mine !== ctl) return;
-        if (res.ok && valid(res.body)) { fill(res.body.rows); statusEl.textContent = 'Written for you just now by Claude, from the course pages.'; count('live'); }
-        else if (res.status === 429) { fill(STANDARD); statusEl.textContent = 'Live answers are busy right now, so these are the standard lines. Try again later.'; count('busy'); }
-        else { fill(STANDARD); statusEl.textContent = 'Claude could not answer this time, so these are the standard lines.'; count('fallback'); }
-      })
-      .catch(function () { if (mine === ctl) { fill(STANDARD); statusEl.textContent = 'Claude could not answer this time, so these are the standard lines.'; count('fallback'); } })
-      .then(function () { clearTimeout(timer); if (mine === ctl) { ctl = null; list.classList.remove('wait'); send.disabled = false; } });
+    var answer = ask(c, mine ? mine.signal : undefined).then(function (res) {
+      clearTimeout(timer);
+      if (mine === ctl) { statusEl.textContent = NOTES[res.result]; count(res.result); }
+      return res.rows;
+    });
+    cascade(c, answer).then(function () { if (mine === ctl) { ctl = null; send.disabled = false; } });
   });
+
+  /* Once per visit, when the rows first come into view and nobody has touched the
+     question yet, the page types an example and plays the arrow, so the link is
+     seen before anyone types. Any touch stops it. Not with reduced motion. */
+  var demoTimer = null, demoDone = false, demoStopped = false;
+  function stopDemo() {
+    if (demoStopped) return; demoStopped = demoDone = true; clearTimeout(demoTimer);
+    if (typing) { typing = false; inp.value = ''; }
+  }
+  var typing = false;
+  ['pointerdown', 'keydown', 'focusin'].forEach(function (t) { form.addEventListener(t, stopDemo); });
+  function playDemo() {
+    if (demoDone) return; demoDone = true;
+    var n = 1, text = EXAMPLES[n] && EXAMPLES[n].challenge, k = 0;
+    if (!text) return;
+    inp.value = ''; typing = true;
+    (function type() {
+      if (demoStopped) return;
+      if (k < text.length) { inp.value = text.slice(0, ++k); demoTimer = setTimeout(type, 38); return; }
+      typing = false; press(n); statusEl.textContent = EXAMPLE_NOTE; cascade(text, EXAMPLES[n].rows);
+    })();
+  }
+  if (!reduce && window.IntersectionObserver && pulse.animate) {
+    var seen = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting && !demoDone) { seen.disconnect(); demoTimer = setTimeout(playDemo, 900); }
+    }, { threshold: 0.35 });
+    seen.observe(list);
+  }
 })();
 </script>
 </body>

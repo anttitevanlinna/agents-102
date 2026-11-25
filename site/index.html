@@ -81,13 +81,20 @@ h1 { font: 700 clamp(44px, 7vw, 76px)/1.02 var(--font-body); letter-spacing: -.0
 .btn::after { content: '→'; transition: transform .15s; }
 .btn:hover::after { transform: translateX(3px); }
 .cta-note { font-size: 14px; color: var(--fg-3); }
-.board { display: grid; grid-template-columns: repeat(16, 1fr); gap: 3px; aspect-ratio: 16 / 9; max-width: 340px; justify-self: end; width: 100%; }
-.board i { display: block; border-radius: 50%; background: var(--line); transform: scale(.22); }
-.board i.s { background: var(--ink); border-radius: 1px; transform: none; }
-.board i.f { background: var(--orange); border-radius: 1px; transform: scale(.85); }
+.folder { margin: 0; justify-self: end; width: 100%; max-width: 380px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); font: 14px/1.4 var(--font-body); }
+.folder-bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--line); color: var(--fg-2); font-size: 13px; }
+.folder-bar::before { content: ''; width: 14px; height: 11px; border-radius: 2px; background: var(--orange); }
+.folder ul { list-style: none; margin: 0; padding: 6px 0; }
+.folder li { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1px; padding: 9px 14px 9px 38px; position: relative; }
+.folder li::before { content: ''; position: absolute; left: 16px; top: 12px; width: 10px; height: 13px; border: 1.5px solid var(--fg-3); border-radius: 1px 4px 1px 1px; }
+.folder li.dir::before { left: 15px; top: 14px; width: 14px; height: 10px; border: 0; border-radius: 1px 3px 2px 2px; background: var(--fg-3); box-shadow: -1px -3px 0 -1px var(--fg-3); }
+.folder b { font-weight: 600; color: var(--ink); overflow-wrap: anywhere; }
+.folder span { color: var(--fg-3); font-size: 13px; }
+.folder li.new { background: var(--bg-2); }
+.folder li.new::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--orange); }
 @media (max-width: 760px) {
   .hero { grid-template-columns: 1fr; padding-block: 44px 48px; gap: 32px; }
-  .board { justify-self: start; max-width: 260px; order: -1; }
+  .folder { justify-self: stretch; max-width: none; }
 }
 
 /* Sections */
@@ -181,7 +188,17 @@ footer p { margin: 0; max-width: 46em; }
         <span class="cta-note">About 50 minutes. You need a paid Claude plan.</span>
       </div>
     </div>
-    <div class="board" id="board" aria-hidden="true"></div>
+    <figure class="folder" aria-label="Your course folder after the course">
+      <div class="folder-bar">agents-101</div>
+      <ul>
+        <li><b>snake-game.html</b><span>Made from your first message</span></li>
+        <li><b>week-in-meetings.md</b><span>Your week, read from your calendar</span></li>
+        <li class="dir"><b>memory</b><span>What your agent remembers about your work</span></li>
+        <li class="dir"><b>sources</b><span>Where its answers come from</span></li>
+        <li class="dir"><b>agents</b><span>Agents that run on a schedule, checked by a judge</span></li>
+        <li class="dir new"><b>agents-building-agents</b><span>An agent that improves your agents</span></li>
+      </ul>
+    </figure>
   </div>
 
   <section id="how">
@@ -314,29 +331,5 @@ footer p { margin: 0; max-width: 46em; }
   </div>
 </footer>
 
-<script>
-(function () {
-  var board = document.getElementById('board');
-  if (!board) return;
-  var W = 16, H = 9, cells = [];
-  for (var i = 0; i < W * H; i++) { var c = document.createElement('i'); board.appendChild(c); cells.push(c); }
-  // A fixed loop the snake follows around the board.
-  var path = [];
-  for (var x = 1; x <= 14; x++) path.push([x, 1]);
-  for (var y = 2; y <= 7; y++) path.push([14, y]);
-  for (x = 13; x >= 1; x--) path.push([x, 7]);
-  for (y = 6; y >= 2; y--) path.push([1, y]);
-  var len = 9, head = 12, food = [9, 4];
-  function idx(p) { return p[1] * W + p[0]; }
-  function draw() {
-    cells.forEach(function (c) { c.className = ''; });
-    for (var k = 0; k < len; k++) cells[idx(path[(head - k + path.length) % path.length])].className = 's';
-    cells[idx(food)].className = 'f';
-  }
-  draw();
-  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  setInterval(function () { head = (head + 1) % path.length; draw(); }, 220);
-})();
-</script>
 </body>
 </html>

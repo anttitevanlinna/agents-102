@@ -310,7 +310,7 @@ const roundMinutes = n => Math.max(5, Math.round(n / 5) * 5);
 // Pro plan may reach its usage limit.
 function addModuleTimes(html, modules) {
   for (const [i, m] of modules.entries()) {
-    const minutes = m.slug === SOLO_MODULE.slug ? 60 : CT.computeModule('agents-101', m.slug).total.hi;
+    const minutes = m.slug === SOLO_MODULE.slug ? 45 : CT.computeModule('agents-101', m.slug).total.hi;
     if (!minutes) throw new Error(`No computed time for ${m.slug}`);
     const limit = PRO_LIMIT_MODULES.has(m.slug)
       ? ' On a Pro plan this module may reach your usage limit. If it does, pause and pick up when the limit resets.' : '';

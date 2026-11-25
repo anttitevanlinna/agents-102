@@ -23,20 +23,23 @@ MODE="${1:-list}"
 # review-fixed: Claude greets the student on the new project page; the video skips that and goes to the Context tab.
 # review-fixed: In the Create project clip the folder's location (the Mac's name) is blurred on purpose.
 # redact: --width 2710 --trim 95
-# Hints: what each clip shows; WHEN comes from the take's own logs (clip.sh times them: step start -> its last press, or
-# end=done). Crops are raw px (window x2). name-folder ends on Create: a frame later the dialog fades onto the private
-# folder list. context skips the "Files 0" flash just after the click; its outline marks the linked folder.
-# hint[projects]: crop=480:520:0:120 src=raw lead=1.0 hold=1.0
-# hint[new-project]: crop=2050:200:660:110 src=raw scale=0.6 hold=1.0
-# hint[name]: crop=1020:240:856:310 src=raw end=done hold=1.0
-# hint[context-menu]: crop=1020:370:856:860 src=raw hold=0.6
-# hint[link]: crop=1020:370:856:860 src=raw hold=1.0
-# hint[documents]: crop=286:330:560:315 src=raw hold=0.8
+# Hints: what each clip shows; WHEN comes from the take's own logs (src/hints.py: first action in the crop -> last press,
+# or end=done). Crops are raw px (window x2), measured inside the dialog (835-1874 x 305-1196): its edges and the dimmed
+# backdrop stay out. The + menu overhangs the dialog: masks paint the backdrop beside and below it white. documents and
+# add-folder show the whole picker (redacted: the Documents list is private) so the student sees where they are and
+# that agents-101 is selected; the "Projects" favourite is this Mac's, masked. name-folder ends on Create: a frame
+# later the dialog fades onto the private folder list. context skips the "Files 0" flash just after the click.
+# hint[projects]: crop=480:470:0:170 src=raw hold=1.0
+# hint[new-project]: crop=1100:200:1610:110 src=raw hold=1.0
+# hint[name]: crop=978:240:866:310 src=raw end=done hold=1.0
+# hint[context-menu]: crop=978:400:866:860 src=raw mask=0:336:504:64:FFFFFF mask=952:336:26:64:FFFFFF mask=504:390:448:10:FFFFFF hold=0.6
+# hint[link]: crop=978:400:866:860 src=raw mask=0:336:504:64:FFFFFF mask=952:336:26:64:FFFFFF mask=504:390:448:10:FFFFFF hold=1.0
+# hint[documents]: crop=1580:900:566:300 mask=0:240:280:50:D8D8D8 scale=0.75 hold=1.0
 # hint[new-folder]: crop=1292:103:848:1085 src=raw hold=1.0
 # hint[name-folder]: crop=638:300:1037:600 src=raw round=24 after=0.03 hold=1.0
-# hint[add-folder]: crop=1292:103:848:1085 src=raw hold=1.0
-# hint[create]: crop=1020:370:856:860 hold=1.0
-# hint[context]: crop=1104:620:1606:10 src=raw end=done skip=p0.25-p0.65 join=cut mark=216:487:500:48:0.3 hold=1.5
+# hint[add-folder]: crop=1580:900:566:300 mask=0:240:280:50:D8D8D8 scale=0.75 hold=1.0
+# hint[create]: crop=978:330:866:860 hold=1.0
+# hint[context]: crop=950:620:1746:10 src=raw end=done skip=p0.35-p0.65 join=cut mark=76:487:500:48:0.3 hold=1.6
 DLG="480 1180 170 640"    # the New project dialog
 PICK="335 1135 170 630"   # the folder picker
 
@@ -58,10 +61,10 @@ step_new-project() {     # Projects page -> New project dialog, empty
 }
 step_name() {            # dialog -> name typed
   expect_text "API performance" contains 3 $DLG
-  local p; p="$(find_text "API performance" contains $DLG)"
-  click_text "API performance" contains 500 $DLG
-  park "${p% *}" $(( ${p#* } + 50 ))        # the pointer leaves the field: the typed name stays readable
-  type_slow "agents-101"; sleep 0.6
+  type_slow "agents-101"; sleep 0.6         # the Name field has focus when the dialog opens: no click to show
+  if [[ -z "$(find_text "agents-101" contains $DLG)" ]]; then
+    echo "  (Name had no focus: clicking it)"; clear_box; click_text "API performance" contains 500 $DLG; type_slow "agents-101"; sleep 0.6
+  fi
   expect_text "agents-101" contains 3 $DLG
 }
 step_context-menu() {    # name typed -> Context + menu
@@ -70,7 +73,9 @@ step_context-menu() {    # name typed -> Context + menu
   expect_text "Link local folder" contains 3 $DLG
 }
 step_link() {            # Context menu -> folder picker (Link local folder)
-  click_text "Link local folder" contains 600 $DLG
+  local p; p="$(find_text "Link local folder" contains $DLG)"; [[ -n "$p" ]] || die "no Link local folder"
+  park 975 "${p#* }"                          # down the menu's right edge (it ends at x 963 pt): only the target row lights up
+  click_text "Link local folder" contains 400 $DLG
   expect_text "trusted for Claude Code" contains 5
   on_abort 'press_esc'
 }
@@ -101,10 +106,12 @@ step_create() {          # dialog filled -> the agents-101 project page (Claude 
   expect_text "agents-101" contains 3 300 900 30 70
 }
 step_context() {         # project page -> Context tab: the folder linked as the project's default
-  click_text "Context" exact 700 900 1100 30 70
+  local p; p="$(find_text "Context" contains 900 1200 30 70)"
+  click_text "Context" contains 700 900 1200 30 70
+  park $(( ${p% *} + 110 )) "${p#* }"        # off the tab label for the end hold
   expect_text "This computer" contains 4 860 1412 260 310
   expect_text "Default" contains 2 860 1412 260 310
-  sleep 2.5
+  sleep 1.0
 }
 
 run() { run_step "$1"; }
@@ -125,7 +132,7 @@ case "$MODE" in
           click_text "Projects" contains 500 0 300 140 180; sleep 1.5
           click_text "agents-101" exact 500 300 1412 190 760   # exact: never "agents-101 upgrade" or the like
           expect_text "Threads" exact 5 900 1412 30 70
-          click_text "Context" exact 400 900 1100 30 70
+          click_text "Context" contains 400 900 1200 30 70   # contains: OCR may read the tab icon into the label
           expect_text "This computer" contains 4 860 1412 260 310   # the folder this take links, as Default
           expect_text "Default" contains 2 860 1412 260 310
           "$BIN/click" 473 49 400; expect_text "Delete" exact 3 450 560 300 340   # the project's header menu

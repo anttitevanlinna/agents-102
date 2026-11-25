@@ -21,7 +21,7 @@
 #                                                                      nothing private is inside the crop)
 #   # chain[name]: cutA cutB                                         (optional, repeat: one video per scene)
 #   options: round=R (mask a dialog's rounded corners white), hold=S (freeze the last frame S s; default 0.8),
-#            scale=F (shrink a tall crop, e.g. 0.6; not with round=), mask=x:y:w:h:RRGGBB (paint a crop-px box flat,
+#            scale=F (shrink a tall crop, e.g. 0.6; not with round=), mask=x:y:w:h:RRGGBB (repeatable; paint a crop-px box flat,
 #            e.g. a sliver of a private list at the crop edge; applied before scale), mark=x:y:w:h:T (orange outline
 #            on the result from T s: points at the success state), lead=S (freeze the first frame S s: time to find the target). End a click cut ON the press-ring frame: the ring
 #            lasts ~1 frame, the hold then freezes it.
@@ -148,8 +148,9 @@ CLIPS=("$MP4") RAWCUTS=()
 while IFS= read -r line; do
   name="$(sed -E 's/^# cut\[([^]]+)\]: .*/\1/' <<< "$line")"; rest="$(sed -E 's/^# cut\[[^]]+\]: //' <<< "$line")"
   read -r segs opts <<< "$rest"; JOIN=fade crop="" src="redacted" round="" hold="" scale="" mask="" mark="" lead=""
-  for o in $opts; do case "$o" in crop=*) crop="$o";; src=*) src="${o#src=}";; round=*) round="${o#round=}";; hold=*) hold="${o#hold=}";; scale=*) scale="${o#scale=}";; mask=*) mask="${o#mask=}";; mark=*) mark="${o#mark=}";; lead=*) lead="${o#lead=}";; join=*) JOIN="${o#join=}";; esac; done
-  if [[ -n "$mask" && -n "$crop" ]]; then IFS=: read -r mx my mw mh mc <<< "$mask"; crop+=",format=rgb24,drawbox=x=$mx:y=$my:w=$mw:h=$mh:color=0x$mc:t=fill"; fi
+  for o in $opts; do case "$o" in crop=*) crop="$o";; src=*) src="${o#src=}";; round=*) round="${o#round=}";; hold=*) hold="${o#hold=}";; scale=*) scale="${o#scale=}";; mask=*) mask+="${mask:+;}${o#mask=}";; mark=*) mark="${o#mark=}";; lead=*) lead="${o#lead=}";; join=*) JOIN="${o#join=}";; esac; done
+  if [[ -n "$mask" && -n "$crop" ]]; then crop+=",format=rgb24"; IFS=';' read -r -a MK <<< "$mask"   # repeatable
+    for m in "${MK[@]}"; do IFS=: read -r mx my mw mh mc <<< "$m"; crop+=",drawbox=x=$mx:y=$my:w=$mw:h=$mh:color=0x$mc:t=fill"; done; fi
   markf=""; if [[ -n "$mark" && -n "$crop" ]]; then IFS=: read -r kx ky kw kh kt <<< "$mark"; markf=",drawbox=x=$kx:y=$ky:w=$kw:h=$kh:color=0xD97757:t=5:enable='gte(t,$kt)'"; fi
   gcrop="$crop"   # the raw guard reads native size: OCR misreads scaled-down text
   [[ -n "$scale" && -n "$crop" ]] && crop+=",scale=trunc(iw*$scale/2)*2:-2" && [[ -n "$markf" ]] && { echo "cut[$name]: mark= with scale= is not supported" >&2; exit 1; }
@@ -179,7 +180,7 @@ for c in "${RAWCUTS[@]+"${RAWCUTS[@]}"}"; do
 done
 
 # ---- chains: one video per scene. `# chain[name]: cutA cutB ...` -> <take>-chain-<name>.mp4; without chain lines, every
-# cut in order -> <take>-chain.mp4. Each hint centred on a white canvas, 0.35 s crossfades.
+# cut in order -> <take>-chain.mp4. Each hint centred on a white canvas, joined by a 0.35 s fade THROUGH white (a crossfade ghosts two different screens over each other).
 build_chain() {  # out, cut files...
   local CH="$1"; shift; local CUTS=("$@") W=0 H=0 f="" off=0 prev="" i=0 c w h len ins=()
   (( ${#CUTS[@]} > 1 )) || return 0
@@ -198,7 +199,7 @@ build_chain() {  # out, cut files...
     c="$(basename "${CUTS[$((k-1))]}" .mp4)"; printf '%s\t%.2f\t%.2f\n' "${c#"$TAKE"-}" "$off" "$(echo "$off + $len" | bc -l)" >> "${CH%.mp4}.map"
     (( k < i )) || break
     off="$(printf '%.3f' "$(echo "$off + $len - 0.35" | bc -l)")"
-    f+="[$prev][p$k]xfade=transition=fade:duration=0.35:offset=$off[c$k];"; prev="c$k"
+    f+="[$prev][p$k]xfade=transition=fadewhite:duration=0.35:offset=$off[c$k];"; prev="c$k"
   done
   f+="[$prev]null[v]"
   ffmpeg -nostdin -v error -y "${ins[@]}" -filter_complex "$f" -map "[v]" -an -c:v libx264 -pix_fmt yuv420p -crf 20 -movflags +faststart "$CH"

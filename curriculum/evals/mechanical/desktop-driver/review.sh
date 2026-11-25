@@ -28,7 +28,7 @@ lints="$(python3 "$D/src/lint.py" "$TAKE" 2>&1 | sed 's/^/- /' || true)"
 cat > "$R/brief.md" <<EOF
 You are the editor doing quality control on a short silent how-to video before it ships to students (non-technical professionals, working alone, watching on a laptop beside written steps). Your job is a DEFECT HUNT, not a pass/fail. Assume defects exist: a previous reviewer called this video clear while it still had many visible mistakes. Find every one. Nothing is "harmless": a flaw that does not stop a student still goes on the list, marked polish.
 
-The video: $CH (about $dur s, short clips joined by 0.35 s crossfades, each cropped to one part of the app's window and centred on a white canvas). Frames at 2 fps with the time burned in red top-left (the red text is NOT part of the video): $R/f_001.png … f_$(printf '%03d' "$frames").png. Read every frame. Extract finer frames (ffmpeg -nostdin, from that .mp4 only, into $R) around every clip boundary and every click. Open nothing else under $D/out: the other files show private screen content.
+The video: $CH (about $dur s, short clips joined by 0.35 s fades through white, each cropped to one part of the app's window and centred on a white canvas). Frames at 2 fps with the time burned in red top-left (the red text is NOT part of the video): $R/f_001.png … f_$(printf '%03d' "$frames").png. Read every frame. Extract finer frames (ffmpeg -nostdin, from that .mp4 only, into $R) around every clip boundary and every click. Open nothing else under $D/out: the other files show private screen content.
 
 Clips (chain seconds):
 $clipmap
@@ -63,7 +63,7 @@ fi
 cat > "$R/brief.md" <<EOF
 You are reviewing a short silent how-to video for a non-technical professional working through an AI training on their own, with no trainer. Judge whether a first-time student would understand it and be able to follow it.
 
-The video: $CH (about $dur s, short clips with crossfades, each cropped to one part of the screen, centred on a white canvas). Frames at 2 fps, timestamp burned in red top-left (the red text is NOT part of the video): $R/f_001.png … f_$(printf '%03d' "$frames").png. Read them all, in order. For finer timing, extract more frames from that .mp4 only (ffmpeg -nostdin) into $R. Open nothing else under $D/out: the other files there show private screen content.
+The video: $CH (about $dur s, short clips joined by fades through white, each cropped to one part of the screen, centred on a white canvas). Frames at 2 fps, timestamp burned in red top-left (the red text is NOT part of the video): $R/f_001.png … f_$(printf '%03d' "$frames").png. Read them all, in order. For finer timing, extract more frames from that .mp4 only (ffmpeg -nostdin) into $R. Open nothing else under $D/out: the other files there show private screen content.
 
 Fixed constraints, not defects:
 - The operator's private names (folders, chats, files) are never shown; crops show only the app's own labels.

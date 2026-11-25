@@ -59,6 +59,19 @@ python3 "$D/src/hints.py" "$H/take.sh" "$H/steps.tsv" "$H/clicks.tsv" "$H/t0" 0.
 is "an unknown step fails loudly"            "$?" "1"
 rm -rf "$H"
 
+# hints.py start/tail: a clip starts 0.4 s before the first action INSIDE its crop (pointer move, press, keystroke), not at
+# the step's start; end=done ends 0.8 s after the last action, not when the step's checks finish (t0 = 1000 at 57,25; lag 0.3)
+H="$(mktemp -d)"
+printf '# hint[act]: crop=100:100:0:0\n# hint[wait]: crop=100:100:0:0 end=done\n# hint[act]: crop=100:100:0:0 start=step\n' > "$H/take.sh"
+printf 'act\t20.00\t26.00\nwait\t30.00\t40.00\n' > "$H/steps.tsv"
+printf '1000 57 25\n' > "$H/t0"
+printf '1022.000\t500\t500\tmove\n1023.000\t80\t50\tmove\n1023.500\t80\t50\tdown\n1031.000\t-1\t-1\tkey\n1032.000\t80\t50\tdown\n' > "$H/clicks.tsv"
+HC="$(python3 "$D/src/hints.py" "$H/take.sh" "$H/steps.tsv" "$H/clicks.tsv" "$H/t0" 0.3 2>&1)"
+is "start: 0.4 s before the first in-crop action (a move outside the crop does not count)" "$(sed -n 1p <<< "$HC")" "# cut[01-act]: 22.30-23.35 crop=100:100:0:0"
+is "end=done: 0.8 s after the last action, a keystroke counts" "$(sed -n 2p <<< "$HC")" "# cut[02-wait]: 30.30-32.50 crop=100:100:0:0"
+is "start=step: the old rule (step start - pad)" "$(sed -n 3p <<< "$HC")" "# cut[03-act]: 19.50-23.35 crop=100:100:0:0"
+rm -rf "$H"
+
 # lint.py timing: dead start and still tail, from logged events inside the crop (video seconds, raw px)
 LT() { python3 -c "import sys; sys.path.insert(0,'$D/src'); import lint
 ev=[(10.0,50,50,'move'),(10.5,50,50,'down'),(11.0,500,500,'move')]

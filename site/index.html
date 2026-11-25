@@ -4,150 +4,139 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Agents 101 · Free self-study course</title>
-<meta name="description" content="Agents 101 is a free self-study course for people who lead and decide. Build one system of agents around a real challenge from your work, in Claude Desktop, on your own files.">
+<meta name="description" content="Agents 101 is a free self-study course for people who lead and decide. Bring one challenge from your work and build the agents that take it on, module by module, in Claude on your own computer.">
 <link rel="canonical" href="https://agents102.bosser.consulting/">
 <meta property="og:title" content="Agents 101 · Free self-study course">
-<meta property="og:description" content="Bring one challenge from your work. Build the agents that work on it, one module at a time.">
+<meta property="og:description" content="What's stuck at work? See what agents would do with it, module by module.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://agents102.bosser.consulting/">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 1h5L9 15H4z' fill='%23ff6b35'/%3E%3C/svg%3E">
 <script defer src="/layouts/track.js" data-site="home"></script>
 <style>
-/* Layout: handbook brand bar, one hero with the hand-over ramp beside it, then the course as that same ramp in full. */
+/* Layout: a short note, one question, the seven modules rewritten around the answer, then the first step. */
 :root {
-  --paper: #fff;
-  --ink: #111;
-  --fg: #171716;
-  --fg-2: #474743;
-  --fg-3: #5c5c56;
-  --bg-2: #f5f4f0;
-  --bg-3: #efefea;
-  --line: #d8d8d2;
-  --orange: #ff6b35;
-  --warm: #9a370e;
-  --btn-fg: #fff;
+  --paper: #fff; --ink: #111; --fg: #171716; --fg-2: #474743; --fg-3: #5c5c56; --ph: #9b9b94;
+  --bg-2: #f5f4f0; --bg-3: #efefea; --line: #d8d8d2;
+  --orange: #ff6b35; --warm: #9a370e; --btn-fg: #fff;
   --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-serif: Charter, 'Bitstream Charter', Georgia, serif;
-  --column: 948px;
+  --column: 860px;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #141413; --ink: #f2f1ec; --fg: #eceae4; --fg-2: #bdbbb3; --fg-3: #a19f97;
+    --paper: #141413; --ink: #f2f1ec; --fg: #eceae4; --fg-2: #bdbbb3; --fg-3: #a19f97; --ph: #6f6e68;
     --bg-2: #1e1e1c; --bg-3: #262624; --line: #393935; --warm: #ff8a5c; --btn-fg: #141413;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --paper: #141413; --ink: #f2f1ec; --fg: #eceae4; --fg-2: #bdbbb3; --fg-3: #a19f97;
+  --paper: #141413; --ink: #f2f1ec; --fg: #eceae4; --fg-2: #bdbbb3; --fg-3: #a19f97; --ph: #6f6e68;
   --bg-2: #1e1e1c; --bg-3: #262624; --line: #393935; --warm: #ff8a5c; --btn-fg: #141413;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+html { scroll-behavior: smooth; scroll-padding-top: 16px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body {
-  margin: 0; background: var(--paper); color: var(--fg);
-  font: 17px/1.6 var(--font-body); -webkit-font-smoothing: antialiased;
-  overflow-x: clip;
-}
+body { margin: 0; background: var(--paper); color: var(--fg); font: 17px/1.6 var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: clip; }
 a { color: inherit; }
 :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 2px; }
 .wrap { max-width: var(--column); margin: 0 auto; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
 @media (max-width: 520px) { .wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); } }
 
 /* Header: same brand bar as the handbook */
-.top { position: sticky; top: 0; z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line); }
-.top .wrap { max-width: 1188px; height: 60px; display: flex; align-items: center; gap: 18px; }
+.top { background: var(--paper); }
+.top .wrap { height: 76px; display: flex; align-items: center; gap: 16px; }
+.bosser { display: block; line-height: 0; }
+.bosser svg { display: block; }
 .brand { font: 700 21px/1 var(--font-body); letter-spacing: -.045em; text-decoration: none; white-space: nowrap; color: var(--ink); }
 .brand::before { content: ''; display: inline-block; width: 7px; height: 17px; background: var(--orange); transform: skewX(-13deg); margin-right: 9px; }
-.edition { font-size: 13px; color: var(--fg-2); border-left: 1px solid var(--line); padding-left: 17px; white-space: nowrap; }
-.nav { margin-left: auto; display: flex; align-items: center; gap: 22px; font-size: 14px; }
-.nav a { text-decoration: none; color: var(--fg-2); }
-.nav a:hover { color: var(--ink); }
-.nav .nav-start { color: var(--ink); font-weight: 600; }
-@media (max-width: 640px) { .edition, .nav .nav-hide { display: none; } .nav { gap: 16px; } }
 
-/* Hero */
-.hero { padding-block: 56px 64px; display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); gap: 48px; align-items: start; }
-h1 { font: 650 clamp(40px, 6vw, 64px)/1 var(--font-body); letter-spacing: -.052em; margin: 0 0 24px; color: var(--ink); text-wrap: balance; }
-.lede { font-size: 19px; line-height: 1.55; color: var(--fg-2); max-width: 32em; margin: 0 0 32px; }
-.cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
-.btn {
-  display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
-  background: var(--ink); color: var(--btn-fg); font-weight: 600; font-size: 17px;
-  padding: 15px 24px; border-radius: 4px; border: 0;
-}
+/* Note */
+.intro { padding-top: 32px; position: relative; }
+h1 { font: 700 clamp(30px, 4.6vw, 48px)/1.05 var(--font-body); letter-spacing: -.045em; margin: 0 0 12px; color: var(--ink); text-wrap: balance; }
+.one { font-size: clamp(17px, 2vw, 20px); line-height: 1.35; letter-spacing: -.015em; color: var(--fg-2); margin: 0; max-width: 30em; }
+
+/* The question */
+.ask { margin-top: 28px; }
+.ask label { display: block; font: 700 clamp(24px, 3.4vw, 34px)/1.1 var(--font-body); letter-spacing: -.04em; margin-bottom: 10px; color: var(--ink); }
+/* The input looks like one: a white box with a border, a cursor, a clear button. Its bottom-left corner is square so the orange line runs on from it. */
+.field { display: flex; gap: 8px; align-items: center; border: 3px solid var(--orange); border-radius: 10px 10px 10px 0; background: var(--paper); padding: 6px 6px 6px 16px; cursor: text; box-shadow: inset 0 2px 4px rgba(0, 0, 0, .06); transition: box-shadow .15s; }
+.field:hover { box-shadow: inset 0 2px 4px rgba(0, 0, 0, .06), 0 0 0 4px color-mix(in srgb, var(--orange) 14%, transparent); }
+.field:focus-within { box-shadow: inset 0 2px 4px rgba(0, 0, 0, .06), 0 0 0 5px color-mix(in srgb, var(--orange) 30%, transparent); }
+.field textarea { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); caret-color: var(--orange); font: 500 clamp(19px, 2.6vw, 26px)/1.3 var(--font-body); letter-spacing: -.02em; padding: 8px 0; resize: none; overflow: hidden; field-sizing: content; min-height: 1.3em; }
+.field textarea::placeholder { color: var(--ph); }
+.field textarea::selection { background: color-mix(in srgb, var(--orange) 32%, transparent); color: var(--ink); }
+.field .clear { flex: none; width: 32px; height: 32px; border: 0; border-radius: 50%; background: var(--bg-3); color: var(--fg-2); font: 400 20px/1 var(--font-body); cursor: pointer; }
+.field .clear:hover { background: var(--line); color: var(--ink); }
+.field .clear[hidden] { display: none; }
+.field button[type="submit"] { font: 600 16px/1 var(--font-body); background: var(--orange); color: #111; border: 0; border-radius: 6px; padding: 14px 18px; cursor: pointer; white-space: nowrap; }
+.field button[disabled] { opacity: .6; cursor: default; }
+.priv { margin: 0; }
+/* One orange line: the input's underline turns down the left edge and branches into every module row. */
+.try, .plan { border-left: 3px solid var(--orange); padding-left: 18px; }
+@media (max-width: 560px) { .try, .plan { padding-left: 12px; } .field .wide { display: none; } .field { padding-left: 12px; } }
+.try { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin: 0; padding-top: 12px; font-size: 13px; color: var(--fg-3); }
+.try button { font: inherit; color: var(--fg-2); background: none; border: 0; padding: 0; cursor: pointer; text-align: left; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+.try button:hover, .try button[aria-pressed="true"] { color: var(--ink); text-decoration-color: var(--orange); }
+
+/* The part that moves: seven modules around the visitor's challenge */
+.plan { margin-top: 0; padding-top: 20px; }
+.plan-head, .rows li { position: relative; }
+.plan-head::before, .rows li::before { content: ''; position: absolute; left: -18px; top: .7em; width: 12px; border-top: 3px solid var(--ink); opacity: 0; transform-origin: left center; }
+.rows li::before { top: 24px; }
+@media (max-width: 560px) { .plan-head::before, .rows li::before { left: -12px; width: 8px; } }
+.plan-head { font: 600 15px/1.4 var(--font-body); color: var(--fg-2); margin: 0 0 10px; }
+.plan-head .x { color: var(--ink); overflow-wrap: anywhere; }
+.rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.rows li { display: grid; grid-template-columns: 24px minmax(0, 1fr) 84px; gap: 4px 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.rows .n { font: 700 18px/1.3 var(--font-body); color: var(--warm); font-variant-numeric: tabular-nums; align-self: start; }
+.rows .d { min-width: 0; }
+.rows .d p { margin: 0; transition: opacity .16s ease-out; }
+.rows .d p.out, .plan-head.out { opacity: 0; }
+.plan-head { transition: opacity .16s ease-out; }
+.rows .mn { margin: 0 0 3px; font: 700 18px/1.3 var(--font-body); letter-spacing: -.015em; color: var(--ink); }
+.rows .mn a { text-decoration: none; }
+.rows .mn a:hover { text-decoration: underline; text-decoration-color: var(--orange); text-underline-offset: 3px; }
+.rows .ag { color: var(--fg); }
+.rows .end { font-size: 15px; color: var(--fg-2); margin: 2px 0 3px !important; }
+.rows .end b { color: var(--warm); font-weight: 600; }
+.rows small { display: block; color: var(--fg-3); font-size: 13px; }
+.rows small a { text-underline-offset: 3px; text-decoration-color: var(--line); }
+.rows.wait .ag, .rows.wait .end { opacity: .4; }
+@keyframes fresh { 0% { background: transparent; } 15% { background: color-mix(in srgb, var(--orange) 22%, transparent); } 100% { background: transparent; } }
+.rows .fresh { animation: fresh 1.6s ease-out both; }
+@media (prefers-reduced-motion: reduce) { .rows .fresh { animation-duration: .01s; } }
+/* The travelling arrow: runs down the orange line from the answer, and each row rewrites as it arrives. */
+.pulse { position: absolute; top: 0; width: 3px; height: 48px; background: linear-gradient(to bottom, transparent, var(--ink)); pointer-events: none; opacity: 0; transition: opacity .3s ease-out; z-index: 2; will-change: transform; }
+.pulse.on { opacity: 1; }
+.pulse::after { content: ''; position: absolute; left: -6.5px; bottom: -12px; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 13px solid var(--ink); }
+@keyframes branch { 0% { opacity: 1; transform: scaleX(0); } 30% { opacity: 1; transform: scaleX(1); } 100% { opacity: 0; transform: scaleX(1); } }
+.hit::before { animation: branch .9s ease-out; }
+.bar { height: 10px; background: var(--bg-3); border: 1px solid var(--line); }
+.bar span { display: block; height: 100%; background: var(--orange); }
+@media (max-width: 560px) { .rows li { grid-template-columns: 22px minmax(0, 1fr); } .rows .bar { display: none; } }
+.plan-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; font-size: 13px; color: var(--fg-3); margin: 10px 0 0; }
+.status { min-height: 1.5em; margin: 0; }
+
+/* First step */
+.go { margin-top: 48px; padding-bottom: 64px; }
+.go h2 { margin-bottom: 18px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; background: var(--ink); color: var(--btn-fg); font-weight: 600; font-size: 17px; padding: 15px 24px; border-radius: 4px; border: 0; }
 .btn::after { content: '→'; transition: transform .15s; }
 .btn:hover::after { transform: translateX(3px); }
-.cta-note { font-size: 14px; color: var(--fg-3); }
-.licence-note { margin: 16px 0 0; font-size: 15px; color: var(--fg); max-width: 34em; }
-.licence-note a { font-weight: 600; text-underline-offset: 3px; }
-.ramp-note { margin: 12px 0 0; font-size: 12px; color: var(--fg-3); }
-
-/* Ramp: who does the work, module by module */
-.ramp { margin: 28px 0 0; min-width: 0; }
-.ramp figcaption { font-size: 13px; font-weight: 600; color: var(--fg-2); margin: 0 0 14px; display: flex; justify-content: space-between; gap: 12px; }
-.ramp figcaption .key { font-weight: 400; display: flex; gap: 14px; }
-.ramp figcaption .key i { display: inline-block; width: 10px; height: 10px; margin-right: 5px; vertical-align: -1px; }
-.k-agents { background: var(--orange); }
-.k-you { background: var(--bg-3); border: 1px solid var(--line); }
-.ramp ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
-.ramp li { display: grid; grid-template-columns: 1.2em minmax(0, 1fr); align-items: center; gap: 12px; font-size: 13px; color: var(--fg-2); }
-.ramp .bar { height: 14px; background: var(--bg-3); border: 1px solid var(--line); border-radius: 2px; overflow: hidden; }
-.ramp .bar span { display: block; height: 100%; background: var(--orange); }
-@media (max-width: 760px) {
-  .hero { grid-template-columns: 1fr; padding-block: 44px 48px; gap: 40px; }
-}
+.note { font-size: 15px; color: var(--fg-2); margin: 14px 0 0; max-width: 38em; }
+.note a { font-weight: 600; text-underline-offset: 3px; }
+.licence-note { color: var(--fg); }
+.sig { margin: 36px 0 0; font-size: 15px; color: var(--fg-2); max-width: 34em; }
+.sig b { color: var(--ink); }
 
 /* Sections */
 section { border-top: 1px solid var(--line); padding-block: 64px; }
-h2 { font: 700 clamp(28px, 4vw, 38px)/1.12 var(--font-body); letter-spacing: -.035em; margin: 0 0 14px; color: var(--ink); text-wrap: balance; }
-.sub { color: var(--fg-2); max-width: 38em; margin: 0 0 36px; }
+h2 { font: 700 clamp(26px, 4vw, 38px)/1.12 var(--font-body); letter-spacing: -.035em; margin: 0 0 14px; color: var(--ink); text-wrap: balance; }
+.sub { color: var(--fg-2); max-width: 38em; margin: 0 0 32px; }
 .kicker { font-size: 13px; font-weight: 600; letter-spacing: .02em; color: var(--warm); margin: 0 0 10px; }
-
-/* Start: three openers */
-.starts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
-.starts h3 { font-size: 19px; letter-spacing: -.02em; margin: 0 0 8px; color: var(--ink); line-height: 1.3; }
-.starts p { margin: 0; color: var(--fg-2); font-size: 16px; }
-.starts .when { display: block; font-size: 13px; font-weight: 600; color: var(--warm); margin-bottom: 8px; }
-@media (max-width: 760px) { .starts { grid-template-columns: 1fr; gap: 28px; } }
-
-/* How it works */
-.how { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
-.how .sub { margin-bottom: 0; }
-.demo { display: grid; gap: 18px; }
-.card-type { background: var(--bg-2); border-left: 4px solid var(--orange); padding: 18px 24px 20px; }
-.card-label { font-size: 13px; font-weight: 600; color: var(--fg-2); margin: 0 0 6px; }
-.card-type p.say { font: 400 clamp(19px, 2.3vw, 23px)/1.35 var(--font-serif); color: var(--ink); margin: 0; }
-.card-reply .card-label { color: var(--ink); }
-.card-reply p { margin: 0; color: var(--fg); font-size: 16px; }
-@media (max-width: 760px) { .how { grid-template-columns: 1fr; gap: 32px; } }
-
-/* Modules */
-.mods { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-.mod { border-bottom: 1px solid var(--line); }
-.mod a { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 4px 18px; padding: 22px 4px; text-decoration: none; }
-.mod a:hover { background: var(--bg-2); }
-.mod .n { font-size: 15px; font-weight: 600; color: var(--warm); padding-top: 3px; }
-.mod h3 { margin: 0 0 6px; font-size: 21px; letter-spacing: -.02em; color: var(--ink); line-height: 1.25; }
-.mod dl { margin: 0 0 12px; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 2px 14px; font-size: 16px; max-width: 44em; }
-.mod dt { color: var(--fg-3); font-size: 14px; padding-top: 1px; }
-.mod dd { margin: 0; color: var(--fg); }
-.mod .t { font-size: 14px; color: var(--fg-3); white-space: nowrap; padding-top: 4px; }
-.skills { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
-.skills li { font-size: 13px; background: var(--bg-3); color: var(--fg); padding: 3px 10px; border-radius: 99px; }
-@media (max-width: 560px) {
-  .mod a { grid-template-columns: 30px minmax(0, 1fr); }
-  .mod .t { grid-column: 2; grid-row: 1; padding: 0; }
-  .mod .body { grid-column: 2; }
-  .mod dl { grid-template-columns: 1fr; }
-  .mod dd + dt { margin-top: 6px; }
-}
-.mods-foot { margin: 24px 0 0; color: var(--fg-3); font-size: 15px; }
-
-/* Need / keep */
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
 .two h3 { font-size: 21px; letter-spacing: -.02em; margin: 0 0 12px; color: var(--ink); }
 .two ul { margin: 0; padding-left: 1.1em; color: var(--fg-2); }
@@ -155,9 +144,7 @@ h2 { font: 700 clamp(28px, 4vw, 38px)/1.12 var(--font-body); letter-spacing: -.0
 .two li strong { color: var(--fg); }
 .two li a { color: var(--fg); text-underline-offset: 3px; }
 .two p { margin: 0 0 10px; color: var(--fg-2); }
-@media (max-width: 760px) { .two { grid-template-columns: 1fr; gap: 36px; } }
-
-/* Teams */
+@media (max-width: 760px) { .two { grid-template-columns: 1fr; gap: 32px; } }
 .teams { background: var(--bg-2); border-top: 0; }
 .teams-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
 .teams ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
@@ -166,147 +153,131 @@ h2 { font: 700 clamp(28px, 4vw, 38px)/1.12 var(--font-body); letter-spacing: -.0
 .teams li b { color: var(--ink); }
 .link { font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 @media (max-width: 760px) { .teams-grid { grid-template-columns: 1fr; gap: 28px; } }
-
-/* Final call + footer */
-.again { padding-block: 72px; }
-.again h2 { margin-bottom: 24px; }
+.again { padding-block: 56px; }
 footer { border-top: 1px solid var(--line); padding-block: 28px 40px; font-size: 14px; color: var(--fg-3); }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 32px; }
 footer p { margin: 0; max-width: 46em; }
 </style>
 </head>
 <body>
-
 <header class="top">
   <div class="wrap">
+    <a class="bosser" href="https://bosser.consulting/" aria-label="Bosser"><svg viewBox="0 0 100 100" width="44" height="44" aria-hidden="true"><rect width="100" height="100" fill="#000"/><g fill="#fff" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="700" font-size="25" text-anchor="middle"><text x="27" y="47">B</text><text x="50" y="47">O</text><text x="73" y="47">S</text><text x="27" y="74">S</text><text x="50" y="74">E</text><text x="73" y="74">R</text></g></svg></a>
     <a class="brand" href="/">Agents 101</a>
-    <span class="edition">Self-study edition</span>
-    <nav class="nav" aria-label="Page">
-      <a class="nav-hide" href="#course">Course</a>
-      <a href="#teams">For teams</a>
-      <a class="nav-start" href="/agents-101/#make-my-first-game" data-umami-event="start-prework" data-umami-event-from="header">Start</a>
-    </nav>
   </div>
 </header>
 
 <main>
-  <div class="wrap hero">
-    <div>
-      <h1>Build agents that take on a real challenge from your work</h1>
-      <p class="lede">For people who lead and decide, not only engineers. Bring one challenge you carry. Each module hands your agents one more part of the job, until they produce an analysis of it while you are away from the desk.</p>
-      <div class="cta">
-        <a class="btn" href="/agents-101/#make-my-first-game" data-umami-event="start-prework" data-umami-event-from="hero">Start with prework</a>
-        <span class="cta-note">About 50 minutes at your computer. You need Claude Pro or a higher paid plan.</span>
-      </div>
-      <p class="licence-note">Free to take on your own. Teaching it to others needs a licence. <a href="https://bosser.consulting/training/" data-umami-event="licence-interest" data-umami-event-from="hero">Ask Bosser about a team licence</a></p>
-    </div>
-    <figure class="ramp" aria-label="How much of the job the agents do, module by module">
-      <figcaption>Who does the work <span class="key"><span><i class="k-agents"></i>Agents</span><span><i class="k-you"></i>You</span></span></figcaption>
-      <ol>
-        <li>1<div class="bar"><span style="width:4%"></span></div></li>
-        <li>2<div class="bar"><span style="width:28%"></span></div></li>
-        <li>3<div class="bar"><span style="width:46%"></span></div></li>
-        <li>4<div class="bar"><span style="width:58%"></span></div></li>
-        <li>5<div class="bar"><span style="width:70%"></span></div></li>
-        <li>6<div class="bar"><span style="width:86%"></span></div></li>
-        <li>7<div class="bar"><span style="width:94%"></span></div></li>
-      </ol>
-      <p class="ramp-note">How much of the job your agents do, module by module. A sketch, not a measurement.</p>
-    </figure>
-  </div>
+  <div class="wrap intro">
+    <h1>You believe smart action beats another round of analysis. So do I.</h1>
+    <p class="one">This is the course I run inside companies. Take it on your own, free.</p>
 
-  <section id="start">
-    <div class="wrap">
-      <p class="kicker">Where it starts</p>
-      <h2>First something that is unmistakably you</h2>
-      <p class="sub">You learn what an agent can do on work you know better than anyone. Then you turn it on your real challenge.</p>
-      <div class="starts">
-        <div><span class="when">Prework</span><h3>A game and your week</h3><p>One message makes a game on your computer. Then Claude reads your calendar and sums up your week in meetings.</p></div>
-        <div><span class="when">Getting Going</span><h3>A personal site that is you</h3><p>Claude writes a page about you. You catch what it made up, because you know the truth. Then you give it the context that makes the page yours.</p></div>
-        <div><span class="when">Building Agent Systems</span><h3>A memory around your challenge</h3><p>Name the challenge you are carrying at work. The agents gather your sources into a memory they keep current. Every later module works on it.</p></div>
+    <form class="ask" id="ask" data-endpoint="https://a101-entry.tevanlin.workers.dev/plan">
+      <label for="stuck">So, what's stuck at work?</label>
+      <div class="field">
+        <textarea id="stuck" name="challenge" rows="1" autocomplete="off" maxlength="120" placeholder="Type it here, in a few words">we keep losing deals to a cheaper competitor</textarea>
+        <button class="clear" id="clear" type="button" aria-label="Clear and type your own">×</button>
+        <button id="send" type="submit">Rewrite<span class="wide"> my course</span></button>
       </div>
-    </div>
-  </section>
+      <div class="try" id="try"><span>or try</span>
+        <button type="button" data-ex="1" aria-pressed="false">our board wants an AI plan by March</button>
+        <button type="button" data-ex="2" aria-pressed="false">month-end close takes two weeks</button>
+      </div>
+    </form>
 
-  <section id="course">
-    <div class="wrap">
-      <p class="kicker">The course</p>
-      <h2>Each module hands the agents one more part of the job</h2>
-      <p class="sub">The same system grows from module to module. Take one a week. On Pro, a long module can reach the usage limit; then you pause and carry on when it resets.</p>
-      <ol class="mods">
-        <li class="mod"><a href="/agents-101/#getting-going">
+    <div class="pulse" id="pulse" aria-hidden="true"></div>
+    <div class="plan" aria-live="polite">
+      <p class="plan-head" id="planhead">Your course, rewritten for <span class="x">“we keep losing deals to a cheaper competitor”</span></p>
+      <ol class="rows" id="rows">
+        <li data-module="getting-going" data-title="Getting Going" data-min="80"
+            data-std-agents="An agent writes a page about you, and you catch what it made up."
+            data-keep="Everything. You learn what to give an agent."
+            data-std-end="A page that is you, and rules for an agent">
           <span class="n">1</span>
-          <div class="body"><h3>Getting Going</h3>
-          <dl><dt>Agents take</dt><dd>Nothing yet. You learn what to give them.</dd><dt>You keep</dt><dd>Everything.</dd></dl>
-          <ul class="skills"><li>Engineer context</li><li>Write rules for an agent</li><li>Judge agent output</li></ul></div>
-          <span class="t">80 min</span></a></li>
-        <li class="mod"><a href="/agents-101/#building-agent-systems">
+          <div class="d"><h3 class="mn"><a href="/agents-101/#getting-going">Getting Going</a></h3>
+          <p class="ag">Before it sees your deals, an agent writes about you, and you catch what it made up.</p>
+          <p class="end"><b>You end with</b> <span>rules for an agent, ready for the deal work</span></p>
+          <small>Exercise: Paint by agent with guardrails · 80 min</small></div>
+          <div class="bar" aria-hidden="true"><span style="width:4%"></span></div></li>
+        <li data-module="building-agent-systems" data-title="Building Agent Systems" data-min="90"
+            data-std-agents="Agents gather your sources on the challenge and remember them. One runs on a schedule."
+            data-keep="Naming the challenge, approving the plan."
+            data-std-end="A memory of your challenge that stays current">
           <span class="n">2</span>
-          <div class="body"><h3>Building Agent Systems</h3>
-          <dl><dt>Agents take</dt><dd>Gathering your sources and remembering them. One agent runs on a schedule.</dd><dt>You keep</dt><dd>Naming the challenge, approving the plan.</dd></dl>
-          <ul class="skills"><li>Create agent memory</li><li>Create an agent</li><li>Schedule an agent</li><li>Review an agent's plan</li></ul></div>
-          <span class="t">90 min</span></a></li>
-        <li class="mod"><a href="/agents-101/#multi-agent-systems">
+          <div class="d"><h3 class="mn"><a href="/agents-101/#building-agent-systems">Building Agent Systems</a></h3>
+          <p class="ag">Agents gather your lost-deal notes, price lists and customer emails into one memory, and keep it current.</p>
+          <p class="end"><b>You end with</b> <span>a memory of why deals are lost</span></p>
+          <small>Exercise: Build your challenge memory · 90 min</small></div>
+          <div class="bar" aria-hidden="true"><span style="width:28%"></span></div></li>
+        <li data-module="multi-agent-systems" data-title="Multi-Agent Systems" data-min="90"
+            data-std-agents="Three agents search, three more argue, and an answer comes out."
+            data-keep="Starting it and reading the answer."
+            data-std-end="A briefing on your challenge">
           <span class="n">3</span>
-          <div class="body"><h3>Multi-Agent Systems</h3>
-          <dl><dt>Agents take</dt><dd>Searching and deciding. Three agents search, three more argue, an answer comes out.</dd><dt>You keep</dt><dd>Starting it and reading the answer.</dd></dl>
-          <ul class="skills"><li>Orchestrate multiple agents</li><li>Split work across agents</li><li>Debug agent handoffs</li></ul></div>
-          <span class="t">90 min</span></a></li>
-        <li class="mod"><a href="/agents-101/#security">
+          <div class="d"><h3 class="mn"><a href="/agents-101/#multi-agent-systems">Multi-Agent Systems</a></h3>
+          <p class="ag">Three agents search your deal notes, files and outside articles. Three more argue why buyers pick the cheaper offer.</p>
+          <p class="end"><b>You end with</b> <span>a briefing on why you lose on price</span></p>
+          <small>Exercise: Three retrievers, one curator · 90 min</small></div>
+          <div class="bar" aria-hidden="true"><span style="width:46%"></span></div></li>
+        <li data-module="security" data-title="Security" data-min="105"
+            data-std-agents="Agents check what they can reach against your company's rules, and what a bad document could make them do."
+            data-keep="Choosing which risk to close."
+            data-std-end="An audit of your agents and one risk closed">
           <span class="n">4</span>
-          <div class="body"><h3>Security</h3>
-          <dl><dt>Agents take</dt><dd>Checking what they can reach against your policies and known risks.</dd><dt>You keep</dt><dd>Choosing which risk to close.</dd></dl>
-          <ul class="skills"><li>Audit an agent for security</li><li>Write a skill</li><li>Mitigate agent risk</li></ul></div>
-          <span class="t">105 min</span></a></li>
-        <li class="mod"><a href="/agents-101/#output-quality">
+          <div class="d"><h3 class="mn"><a href="/agents-101/#security">Security</a></h3>
+          <p class="ag">Agents check what they can open in your pricing and deal files, and what a planted line in a document could make them do.</p>
+          <p class="end"><b>You end with</b> <span>an audit of your agents and one risk closed</span></p>
+          <small>Exercise: Audit your agent · 105 min</small></div>
+          <div class="bar" aria-hidden="true"><span style="width:58%"></span></div></li>
+        <li data-module="output-quality" data-title="Catching Hallucinations" data-min="85"
+            data-std-agents="Agents check their own claims against the sources. The best check becomes your judge."
+            data-keep="Reading the scoreboard, keeping the judge."
+            data-std-end="A saved judge that catches made-up claims">
           <span class="n">5</span>
-          <div class="body"><h3>Catching Hallucinations</h3>
-          <dl><dt>Agents take</dt><dd>Checking their own claims against the sources. Four methods compete and the best one becomes your judge.</dd><dt>You keep</dt><dd>Reading the scoreboard, keeping the judge.</dd></dl>
-          <ul class="skills"><li>Detect hallucinations</li><li>Benchmark AI checks</li><li>Build a judge</li></ul></div>
-          <span class="t">85 min</span></a></li>
-        <li class="mod"><a href="/agents-101/#evaluations">
+          <div class="d"><h3 class="mn"><a href="/agents-101/#output-quality">Catching Hallucinations</a></h3>
+          <p class="ag">Agents check every claim about the rival's prices against your sources and flag the ones they made up.</p>
+          <p class="end"><b>You end with</b> <span>a saved judge that catches made-up claims</span></p>
+          <small>Exercise: Hallucination benchmark · 85 min</small></div>
+          <div class="bar" aria-hidden="true"><span style="width:70%"></span></div></li>
+        <li data-module="evaluations" data-title="Evaluations" data-min="90"
+            data-std-agents="Agents rewrite their work round after round against your judge while you are away."
+            data-keep="Deciding what better means. Then you walk away."
+            data-std-end="A briefing that got better with nobody editing">
           <span class="n">6</span>
-          <div class="body"><h3>Evaluations</h3>
-          <dl><dt>Agents take</dt><dd>Improving their own work. Write, judge, rewrite, round after round.</dd><dt>You keep</dt><dd>Deciding what better means. Then you walk away.</dd></dl>
-          <ul class="skills"><li>Run an eval loop</li><li>Steer agents with feedback</li></ul></div>
-          <span class="t">90 min</span></a></li>
-        <li class="mod"><a href="/agents-101/#agents-building-agents-solo">
+          <div class="d"><h3 class="mn"><a href="/agents-101/#evaluations">Evaluations</a></h3>
+          <p class="ag">Agents rewrite the price briefing round after round against the same judge while you are away.</p>
+          <p class="end"><b>You end with</b> <span>a sharper briefing, and the scores that show it</span></p>
+          <small>Exercise: The eval loop runs itself · 90 min</small></div>
+          <div class="bar" aria-hidden="true"><span style="width:86%"></span></div></li>
+        <li data-module="agents-building-agents-solo" data-title="Agents Building Agents" data-min="45"
+            data-std-agents="An agent builds the agent someone else needs, and your judge checks it."
+            data-keep="Describing what it should do."
+            data-std-end="An agent for someone else, built by your agents">
           <span class="n">7</span>
-          <div class="body"><h3>Agents Building Agents</h3>
-          <dl><dt>Agents take</dt><dd>Building the agent someone else needs, checked by your judge. Then improving your own.</dd><dt>You keep</dt><dd>Describing what it should do.</dd></dl>
-          <ul class="skills"><li>Have agents build agents</li><li>Improve an agent with an agent</li></ul></div>
-          <span class="t">45 min</span></a></li>
+          <div class="d"><h3 class="mn"><a href="/agents-101/#agents-building-agents-solo">Agents Building Agents</a></h3>
+          <p class="ag">An agent builds an agent for a sales lead who needs the price story before each deal, and your judge checks it.</p>
+          <p class="end"><b>You end with</b> <span>an agent for the sales lead, built by your agents</span></p>
+          <small>Exercise: Build an agent for someone else · 45 min</small></div>
+          <div class="bar" aria-hidden="true"><span style="width:94%"></span></div></li>
       </ol>
-      <p class="mods-foot">About 11 hours in all, with the 50-minute prework.</p>
+      <div class="plan-foot"><p class="status" id="status" role="status">An example answer Claude wrote from the course pages. Type your own challenge to get yours.</p><span>Orange bar: how much of the job the agents do. A sketch.</span></div>
+      <p class="plan-foot priv">What you type goes to Claude to rewrite the modules. This site keeps no copy.</p>
     </div>
-  </section>
 
-  <section id="how">
-    <div class="wrap how">
-      <div>
-        <p class="kicker">How it works</p>
-        <h2>Keep the handbook open beside Claude</h2>
-        <p class="sub">Each step says what you are about to make. You type a plain sentence into Claude, and the handbook tells you what to look for in the reply. No coding.</p>
-      </div>
-      <div class="demo">
-        <div class="card-type">
-          <p class="card-label">Type in Claude Desktop</p>
-          <p class="say">List my main meetings this week. Summarize the shape of the week in 5 lines.</p>
-        </div>
-        <div class="card-reply">
-          <p class="card-label">In Claude's reply</p>
-          <p>Your own meetings, read from your calendar or from a screenshot of it, and five lines on what kind of week it is.</p>
-        </div>
-      </div>
+    <div class="go">
+      <h2>Your first step takes one message.</h2>
+      <a class="btn" href="/agents-101/#make-my-first-game" data-umami-event="start-prework" data-umami-event-from="plan">Start with prework</a>
+      <p class="note">About 50 minutes at your computer. One message makes a game, then Claude sums up your week. You need Claude Pro or a higher paid plan.</p>
+      <p class="note licence-note">Free to take on your own. Teaching it to others needs a licence. <a href="https://bosser.consulting/training/" data-umami-event="licence-interest" data-umami-event-from="plan">Ask Bosser about a team licence</a></p>
     </div>
-  </section>
+  </div>
 
   <section id="need">
     <div class="wrap two">
       <div>
         <h3>What you need</h3>
         <ul>
-          <li><strong>Claude Pro or a higher paid plan.</strong> Pro is the minimum. The free plan is not enough. <a href="https://claude.com/pricing">See Claude plans</a></li>
+          <li><strong>Claude Pro or a higher paid plan.</strong> Pro is the minimum. The free plan is not enough. On Pro, a long module can reach the usage limit; then you pause and carry on when it resets. <a href="https://claude.com/pricing">See Claude plans</a></li>
           <li><strong>A computer.</strong> The handbook is written for <a href="https://claude.ai/download">Claude Desktop</a> on Mac or Windows. It also has versions for Claude Code in a terminal, Codex and GitHub Copilot.</li>
           <li><strong>A challenge you carry at work</strong> that isn't solved yet. Not a task.</li>
           <li><strong>Connecting work apps is optional.</strong> Your calendar and files help, but the course works with screenshots and saved files instead.</li>
@@ -326,7 +297,7 @@ footer p { margin: 0; max-width: 46em; }
         <p class="kicker">For teams</p>
         <h2>Running it for your people?</h2>
         <p class="sub">The course is free to take on your own. Teaching it to others needs a licence from Bosser.</p>
-        <a class="link" href="https://bosser.consulting/training/" data-umami-event="licence-interest">Talk to Bosser about the team edition</a>
+        <a class="link" href="https://bosser.consulting/training/" data-umami-event="licence-interest" data-umami-event-from="teams">Talk to Bosser about the team edition</a>
       </div>
       <ul>
         <li><b>The right to teach it</b> inside your company.</li>
@@ -340,17 +311,220 @@ footer p { margin: 0; max-width: 46em; }
 
   <section class="again">
     <div class="wrap">
-      <h2>Your first step takes one message</h2>
       <a class="btn" href="/agents-101/#make-my-first-game" data-umami-event="start-prework" data-umami-event-from="footer-cta">Start with prework</a>
+      <p class="sig"><b>Antti Tevanlinna</b>, Bosser, Helsinki<br>I don't know exactly where this is going. Nobody does. The skill is learning to move through it.</p>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <p>Free to take for your own learning and work. What you build is yours. Running this as a training needs a licence from <a href="https://bosser.consulting/training/" data-umami-event="licence-interest">Bosser</a>.</p>
+    <p>Free to take for your own learning and work. What you build is yours. Running this as a training needs a licence from <a href="https://bosser.consulting/training/" data-umami-event="licence-interest" data-umami-event-from="footer">Bosser</a>.</p>
     <p>© 2026 Bosser Oy</p>
   </div>
 </footer>
+
+<script type="application/json" id="examples">[
+{"challenge": "our board wants an AI plan by March", "rows": [
+ {"agents": "Before it drafts the plan, an agent writes about you, and you catch what it made up.", "end": "rules for an agent, ready for the plan"},
+ {"agents": "Agents gather board minutes, strategy papers and what your teams already try with AI into one memory.", "end": "A memory of everything behind the AI plan"},
+ {"agents": "Three agents search your files, your wiki and outside articles. Three more argue for a bold, a careful and a cost-first plan.", "end": "A briefing the board plan can start from"},
+ {"agents": "Agents check what they can open in board papers and strategy files, and what a planted line in a document could make them do.", "end": "An audit of your agents and one risk closed"},
+ {"agents": "Agents check every claim in the plan draft against your sources and flag the ones they made up.", "end": "A saved judge that catches made-up claims"},
+ {"agents": "Agents rewrite the plan draft round after round against the same judge while you are away.", "end": "A sharper plan draft, and the scores that show it"},
+ {"agents": "An agent builds an agent for your CFO that answers board questions on the plan, and your judge checks it.", "end": "An agent for the CFO, built by your agents"}]},
+{"challenge": "month-end close takes two weeks", "rows": [
+ {"agents": "Before it sees your close, an agent writes about you, and you catch what it made up.", "end": "rules for an agent, ready for the close"},
+ {"agents": "Agents gather the close checklist, past close timelines and the email threads where it stalls into one memory.", "end": "A memory of where the close slows down"},
+ {"agents": "Three agents search your files, the finance wiki and outside articles. Three more argue where the days go.", "end": "A briefing on why the close takes two weeks"},
+ {"agents": "Agents check what they can open in ledgers and finance folders, and what a planted line in a document could make them do.", "end": "An audit of your agents and one risk closed"},
+ {"agents": "Agents check each claim about delays and owners against your sources and flag the ones they made up.", "end": "A saved judge that catches made-up claims"},
+ {"agents": "Agents rewrite the close briefing round after round against the same judge while you are away.", "end": "A sharper briefing, and the scores that show it"},
+ {"agents": "An agent builds an agent for your controller that flags late items each close, and your judge checks it.", "end": "An agent for the controller, built by your agents"}]}
+]</script>
+<script>
+/* The part that moves. The visitor's words go to the relay, which holds the
+   fixed prompt and the course facts and answers seven rows of JSON. Text from
+   the relay is set with textContent only. Any failure shows the standard lines.
+   Umami gets a count and an outcome, never the text. */
+(function () {
+  'use strict';
+  var form = document.getElementById('ask'), inp = document.getElementById('stuck'), send = document.getElementById('send');
+  var list = document.getElementById('rows'), statusEl = document.getElementById('status'), head = document.getElementById('planhead');
+  var plan = list.parentNode, chips = document.querySelectorAll('#try button[data-ex]');
+  var items = list.querySelectorAll('li[data-module]');
+  var endpoint = (form.getAttribute('data-endpoint') || '').trim();
+  var ctl = null;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var EXAMPLE_NOTE = 'An example answer Claude wrote from the course pages. Type your own challenge to get yours.';
+  function read(i) { return { agents: items[i].querySelector('.ag').textContent, end: items[i].querySelector('.end span').textContent }; }
+  var STANDARD = [], first = [];
+  for (var i = 0; i < items.length; i++) {
+    first.push(read(i));
+    STANDARD.push({ agents: items[i].getAttribute('data-std-agents'), end: items[i].getAttribute('data-std-end') });
+  }
+  var EXAMPLES = [{ challenge: inp.value, rows: first }];
+  try { EXAMPLES = EXAMPLES.concat(JSON.parse(document.getElementById('examples').textContent)); } catch (e) {}
+  function rowText(i, row) {
+    items[i].querySelector('.ag').textContent = String(row.agents).slice(0, 200);
+    items[i].querySelector('.end span').textContent = lc(String(row.end).slice(0, 90).replace(/\.$/, ''));
+  }
+  // Crossfade: the old line fades out, the new one fades in with a soft tint.
+  function setRow(i, row, soft) {
+    var ps = [items[i].querySelector('.ag'), items[i].querySelector('.end')];
+    if (!soft) { rowText(i, row); ps.forEach(function (p) { restart(p, 'fresh'); }); return; }
+    ps.forEach(function (p) { p.classList.add('out'); });
+    setTimeout(function () { rowText(i, row); ps.forEach(function (p) { p.classList.remove('out'); restart(p, 'fresh'); }); }, 170);
+  }
+  function lc(t) { return t.length > 1 && t[1] !== t[1].toUpperCase() ? t[0].toLowerCase() + t.slice(1) : t; }
+  function restart(el, cls) { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
+  function fill(rows) { for (var i = 0; i < items.length; i++) setRow(i, rows[i]); }
+
+  /* Answer -> arrow -> rows change. One requestAnimationFrame loop drives the
+     arrow: it glides from the input to the heading, hovers there while Claude
+     writes, then glides down in one continuous move. Each row rewrites as the
+     arrow passes its branch; positions are measured every frame, so rows that
+     change height never throw the arrow off. */
+  var intro = form.parentNode, pulse = document.getElementById('pulse'), field = form.querySelector('.field'), runId = 0;
+  function yOf(el, dy) { return el.getBoundingClientRect().top - intro.getBoundingClientRect().top + dy; }
+  function at(y) { pulse.style.transform = 'translate3d(0,' + (y - 60).toFixed(1) + 'px,0)'; }
+  var raf = window.requestAnimationFrame ? window.requestAnimationFrame.bind(window) : null;
+  function ease(t) { return -(Math.cos(Math.PI * t) - 1) / 2; }
+  // Glide from y0 to a target measured live; speed in px per ms, with eased start and stop.
+  function glide(id, y0, target, speed, onStep) {
+    return new Promise(function (done) {
+      var t0 = null, dist0 = Math.max(1, target() - y0), dur = Math.max(260, dist0 / speed);
+      (function frame(now) {
+        if (id !== runId) return done(false);
+        if (t0 === null) t0 = now;
+        var k = Math.min(1, (now - t0) / dur), y = y0 + (target() - y0) * ease(k);
+        at(y); if (onStep) onStep(y);
+        if (k < 1) raf(frame); else done(true);
+      })(performance.now());
+    });
+  }
+  function cascade(text, rowsReady) {
+    var id = ++runId;
+    if (reduce || !raf) {
+      title(text);
+      return Promise.resolve(rowsReady).then(function (rows) { if (id === runId) fill(rows || STANDARD); });
+    }
+    pulse.style.left = (head.getBoundingClientRect().left - intro.getBoundingClientRect().left - 21) + 'px';
+    var y0 = yOf(field, field.offsetHeight), headY = function () { return yOf(head, 12); };
+    at(y0); pulse.classList.add('on');
+    var waiting = rowsReady && typeof rowsReady.then === 'function', got = waiting ? null : (rowsReady || STANDARD);
+    if (waiting) Promise.resolve(rowsReady).then(function (r) { got = r || STANDARD; });
+    return glide(id, y0, headY, 0.6).then(function (ok) {
+      if (!ok) return;
+      head.classList.add('out');
+      setTimeout(function () { if (id !== runId) return; title(text); head.classList.remove('out'); restart(head, 'hit'); }, 170);
+      // Hover at the heading until the rows are ready.
+      return new Promise(function (go) {
+        var t0 = performance.now();
+        (function hover(now) {
+          if (id !== runId) return go(false);
+          if (got) { at(headY()); return go(true); }
+          at(headY() + 4 * Math.sin((now - t0) / 260)); raf(hover);
+        })(t0);
+      });
+    }).then(function (ok) {
+      if (!ok) return;
+      var rows = got, next = 0, last = function () { return yOf(items[items.length - 1], 24); };
+      return glide(id, headY(), last, 0.55, function (y) {
+        while (next < items.length && y >= yOf(items[next], 24) - 2) { setRow(next, rows[next], true); restart(items[next], 'hit'); next++; }
+      }).then(function (ok2) {
+        if (!ok2) return;
+        while (next < items.length) { setRow(next, rows[next], true); next++; }
+        setTimeout(function () { if (id === runId) pulse.classList.remove('on'); }, 250);
+      });
+    });
+  }
+  function title(text) {
+    head.textContent = 'Your course, rewritten for ';
+    var x = document.createElement('span'); x.className = 'x'; x.textContent = '“' + text + '”'; head.appendChild(x);
+  }
+  /* Keep the question and the first rows in view together, so cause and effect sit on one screen. */
+  function reveal() {
+    if (head.getBoundingClientRect().top > window.innerHeight * 0.7) form.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  }
+  function press(n) { for (var i = 0; i < chips.length; i++) chips[i].setAttribute('aria-pressed', String(Number(chips[i].getAttribute('data-ex')) === n)); }
+  function count(result) { try { if (window.umami && window.umami.track) window.umami.track('entry-ask', { result: result }); } catch (e) {} }
+  function valid(out) {
+    return out && Array.isArray(out.rows) && out.rows.length === items.length && out.rows.every(function (r) {
+      return r && typeof r.agents === 'string' && typeof r.end === 'string' && r.agents && r.end;
+    });
+  }
+  function showExample(n) {
+    var ex = EXAMPLES[n]; if (!ex) return;
+    if (ctl) { ctl.abort(); ctl = null; list.classList.remove('wait'); send.disabled = false; }
+    inp.value = ex.challenge; fit(); syncClear(); press(n); reveal();
+    statusEl.textContent = EXAMPLE_NOTE; cascade(ex.challenge, ex.rows);
+  }
+  for (var k = 0; k < chips.length; k++) chips[k].addEventListener('click', function () { var n = Number(this.getAttribute('data-ex')); showExample(n); count('example'); });
+  function fit() { if (!window.CSS || !CSS.supports('field-sizing', 'content')) { inp.style.height = 'auto'; inp.style.height = inp.scrollHeight + 'px'; } }
+  inp.addEventListener('input', fit); window.addEventListener('resize', fit); fit();
+  inp.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); if (form.requestSubmit) form.requestSubmit(); else send.click(); } });
+  var clearBtn = document.getElementById('clear');
+  function syncClear() { clearBtn.hidden = !inp.value; }
+  inp.addEventListener('input', syncClear); syncClear();
+  clearBtn.addEventListener('click', function () { inp.value = ''; fit(); syncClear(); press(-1); inp.focus(); });
+  field.addEventListener('click', function (e) { if (e.target === field) inp.focus(); });
+  inp.addEventListener('focus', function () { for (var i = 0; i < EXAMPLES.length; i++) if (inp.value === EXAMPLES[i].challenge) { inp.select(); return; } });
+  var NOTES = {
+    live: 'Written for you just now by Claude, from the course pages.',
+    off: 'Live answers are not on yet, so these are the standard lines for any challenge.',
+    busy: 'Live answers are busy right now, so these are the standard lines. Try again later.',
+    fallback: 'Claude could not answer this time, so these are the standard lines.'
+  };
+  // Resolves {result, rows}; rows null means the standard lines. Never rejects.
+  function ask(c, signal) {
+    var done = function (result, rows) { return { result: result, rows: rows || null }; };
+    if (window.__entryPreview) return window.__entryPreview(c, signal).then(function (r) { return r && r.rows ? done('live', r.rows) : done(r && r.off ? 'off' : 'fallback'); }, function () { return done('fallback'); });
+    if (!endpoint || !window.fetch) return Promise.resolve(done('off'));
+    return fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ challenge: c }), signal: signal })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, status: r.status, body: j }; }); })
+      .then(function (res) {
+        if (res.ok && valid(res.body)) return done('live', res.body.rows);
+        return done(res.status === 429 ? 'busy' : res.status === 503 ? 'off' : 'fallback');
+      }, function () { return done('fallback'); });
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    stopDemo();
+    var c = inp.value.replace(/\s+/g, ' ').trim().slice(0, 120);
+    if (!c) { inp.focus(); return; }
+    for (var i = 0; i < EXAMPLES.length; i++) if (c === EXAMPLES[i].challenge) { showExample(i); return; }
+    press(-1); reveal();
+    if (ctl) ctl.abort();
+    var mine = ctl = window.AbortController ? new AbortController() : null;
+    send.disabled = true;
+    statusEl.textContent = 'Claude is rewriting the seven modules for your challenge…';
+    var timer = setTimeout(function () { if (mine) mine.abort(); }, 20000);
+    var answer = ask(c, mine ? mine.signal : undefined).then(function (res) {
+      clearTimeout(timer);
+      if (mine === ctl) { statusEl.textContent = NOTES[res.result]; count(res.result); }
+      return res.rows;
+    });
+    cascade(c, answer).then(function () { if (mine === ctl) { ctl = null; send.disabled = false; } });
+  });
+
+  /* On a desktop, the cursor starts in the box with the example selected: type and it is replaced. */
+  if (window.matchMedia && window.matchMedia('(pointer: fine)').matches && window.scrollY < 40) {
+    try { inp.focus({ preventScroll: true }); inp.select(); } catch (e) {}
+  }
+  /* Once, shortly after load, if the visitor has not scrolled, clicked or typed yet:
+     the page plays one example so the link is seen before anyone types. Any
+     scroll, touch or key cancels it for good. Not with reduced motion. */
+  var demoTimer = null;
+  function stopDemo() {
+    clearTimeout(demoTimer); demoTimer = null;
+    ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (t) { window.removeEventListener(t, stopDemo, true); });
+  }
+  if (!reduce && pulse.animate && EXAMPLES[1] && window.scrollY < 40 && head.getBoundingClientRect().top < window.innerHeight) {
+    ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (t) { window.addEventListener(t, stopDemo, { capture: true, passive: true }); });
+    demoTimer = setTimeout(function () { stopDemo(); showExample(1); }, 1600);
+  }
+})();
+</script>
 </body>
 </html>

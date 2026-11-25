@@ -2,6 +2,17 @@
 
 Newest first. Rubric and method in [path-rubric.md](path-rubric.md). All reads Sonnet, 20 per row (10 personas × 2) unless noted. Raw reads stay under ignored `out/`. None of these scores says anything about the quality of the language.
 
+## 2026-11-25: live-prompt entry (branch claude/project-thread-pb7ywr e70e248)
+
+| Version | Reach | arrive | start | first result | setup | briefing | Module 1 | promise | licence |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Old home (main 21adf75), same handbook | 73 | 100 | 100 | 100 | 88 | 98 | 75 | 100 | 100 |
+| New entry: "what's stuck at work?" with the seven rows | 68 | 100 | 100 | 100 | 83 | 100 | 75 | 100 | 100 |
+| After the design review (187bad9): rows above the fold, How it works cut, travelling arrow | 70 | 100 | 100 | 100 | 90 | 100 | 78 | 100 | 100 |
+| Header is the brand only, real input box, quiet examples (66c993e) | 80 | 100 | 100 | 100 | 85 | 98 | 90 | 100 | 100 |
+
+No drop past the 20-point bar. Every stage the home page drives scores the same; the 5-point gap sits in the handbook's setup stage, which both runs read from the same file.
+
 ## 2026-11-25: cards 1 to 3 on main 6aca3ce
 
 Sim: reach 68 (setup 80, briefing 100, Module 1 75). Visual: **18/24, grade A, all gates pass** (licence 4). Across five reads of near-identical builds since 45cd329, reach sat between 65 and 80, which is this instrument's noise; the release goal of 85 is not met. What still holds readers: the course-files prompt looks technical (curl, tar, CLAUDE.md), and in Module 1 readers want a concrete action that sits in the exercise, past where the reading stops. The second is partly the instrument's cut at the first activity's title. Cards 4 (admin line) and 5 (policy and quiet-week line) were not applied: Antti called these known issues.

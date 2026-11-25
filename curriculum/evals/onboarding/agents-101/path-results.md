@@ -2,6 +2,10 @@
 
 Newest first. Rubric and method in [path-rubric.md](path-rubric.md). All reads Sonnet, 20 per row (10 personas × 2) unless noted. Raw reads stay under ignored `out/`. None of these scores says anything about the quality of the language.
 
+## 2026-11-25: cards 1 to 3 on main 6aca3ce
+
+Sim: reach 68 (setup 80, briefing 100, Module 1 75). Visual: **18/24, grade A, all gates pass** (licence 4). Across five reads of near-identical builds since 45cd329, reach sat between 65 and 80, which is this instrument's noise; the release goal of 85 is not met. What still holds readers: the course-files prompt looks technical (curl, tar, CLAUDE.md), and in Module 1 readers want a concrete action that sits in the exercise, past where the reading stops. The second is partly the instrument's cut at the first activity's title. Cards 4 (admin line) and 5 (policy and quiet-week line) were not applied: Antti called these known issues.
+
 ## 2026-11-25: visual re-score on main fe9a013
 
 **18/24, grade A, all gates pass.** Route to Module 1 rose to 3 (plain contents list, empty panels hidden). The critic labelled it AA; the rubric needs 20 for AA, so `path-visual.js` now computes the grade itself. Left: home promise and chart; licence line easy to skim; the step 1 still shows a different request (media asset, passed to the videos owner); the course files prompt is long shell text (Card 1 pending); Module 1 Start here below the first viewport (Card 3 pending).

@@ -70,11 +70,17 @@ h1 { font: 700 clamp(36px, 6.4vw, 64px)/1.03 var(--font-body); letter-spacing: -
 .field input::placeholder { color: var(--ph); }
 .field button { font: 600 16px/1 var(--font-body); background: var(--orange); color: #111; border: 0; border-radius: 4px 4px 0 0; padding: 14px 18px; cursor: pointer; white-space: nowrap; }
 .field button[disabled] { opacity: .6; cursor: default; }
-.priv { font-size: 13px; color: var(--fg-3); margin: 12px 0 0; }
+.priv { font-size: 13px; color: var(--fg-3); margin: 10px 0 0; }
+.try { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 14px 0 0; font-size: 14px; color: var(--fg-3); }
+.try button { font: inherit; color: var(--ink); background: var(--bg-2); border: 1px solid var(--line); border-radius: 99px; padding: 5px 12px; cursor: pointer; text-align: left; }
+.try button:hover { border-color: var(--orange); }
+.try button[aria-pressed="true"] { background: var(--orange); border-color: var(--orange); color: #111; }
 
 /* The part that moves: seven modules around the visitor's challenge */
-.plan { margin-top: 36px; }
-.plan-head { font: 700 15px/1.4 var(--font-body); color: var(--warm); margin: 0 0 10px; }
+.plan { margin-top: 28px; border-left: 4px solid var(--orange); padding-left: 18px; }
+@media (max-width: 560px) { .plan { padding-left: 12px; } }
+.plan-head { font: 700 17px/1.4 var(--font-body); color: var(--ink); margin: 0 0 4px; }
+.plan-sub { font-size: 14px; color: var(--fg-3); margin: 0 0 12px; }
 .plan-head .x { color: #111; background: var(--orange); padding: 0 .35em; overflow-wrap: anywhere; }
 .rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
 .rows li { display: grid; grid-template-columns: 24px minmax(0, 1fr) 84px; gap: 4px 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
@@ -87,6 +93,9 @@ h1 { font: 700 clamp(36px, 6.4vw, 64px)/1.03 var(--font-body); letter-spacing: -
 .rows small { display: block; color: var(--fg-3); font-size: 13px; }
 .rows small a { text-underline-offset: 3px; text-decoration-color: var(--line); }
 .rows.wait .ag, .rows.wait .end { opacity: .4; }
+@keyframes fresh { from { background: color-mix(in srgb, var(--orange) 28%, transparent); } to { background: transparent; } }
+.rows .fresh { animation: fresh 1.4s ease-out both; }
+@media (prefers-reduced-motion: reduce) { .rows .fresh { animation-duration: .01s; } }
 .bar { height: 10px; background: var(--bg-3); border: 1px solid var(--line); }
 .bar span { display: block; height: 100%; background: var(--orange); }
 @media (max-width: 560px) { .rows li { grid-template-columns: 22px minmax(0, 1fr); } .rows .bar { display: none; } }
@@ -163,13 +172,19 @@ footer p { margin: 0; max-width: 46em; }
       <label for="stuck">So, what's stuck at work?</label>
       <div class="field">
         <input id="stuck" name="challenge" type="text" autocomplete="off" maxlength="120" placeholder="Type it here, in a few words" value="we keep losing deals to a cheaper competitor">
-        <button id="send" type="submit">Show me</button>
+        <button id="send" type="submit">Rewrite my course</button>
       </div>
-      <p class="priv">What you type goes to Claude to write the plan below. This site keeps no copy.</p>
+      <div class="try" id="try"><span>Or try:</span>
+        <button type="button" data-ex="0" aria-pressed="true">we keep losing deals to a cheaper competitor</button>
+        <button type="button" data-ex="1" aria-pressed="false">our board wants an AI plan by March</button>
+        <button type="button" data-ex="2" aria-pressed="false">month-end close takes two weeks</button>
+      </div>
+      <p class="priv">What you type goes to Claude to rewrite the modules below. This site keeps no copy.</p>
     </form>
 
     <div class="plan" aria-live="polite">
-      <p class="plan-head" id="planhead">What agents do with <span class="x">we keep losing deals to a cheaper competitor</span></p>
+      <p class="plan-head" id="planhead">Your course, rewritten for <span class="x">we keep losing deals to a cheaper competitor</span></p>
+      <p class="plan-sub">Seven modules. In each one the agents take on more of this challenge.</p>
       <ol class="rows" id="rows">
         <li data-module="getting-going" data-title="Getting Going" data-min="80"
             data-std-agents="An agent writes a page about you, and you catch what it made up."
@@ -319,6 +334,24 @@ footer p { margin: 0; max-width: 46em; }
   </div>
 </footer>
 
+<script type="application/json" id="examples">[
+{"challenge": "our board wants an AI plan by March", "rows": [
+ {"agents": "An agent writes a page about you. You catch what it made up, and learn what to give it before it drafts the plan.", "end": "A page that is you, and rules for an agent"},
+ {"agents": "Agents gather board minutes, strategy papers and what your teams already try with AI into one memory.", "end": "A memory of everything behind the AI plan"},
+ {"agents": "Three agents search your files, your wiki and outside articles. Three more argue for a bold, a careful and a cost-first plan.", "end": "A briefing the board plan can start from"},
+ {"agents": "Agents check what they can open in board papers and strategy files, and what a planted line in a document could make them do.", "end": "An audit of your agents and one risk closed"},
+ {"agents": "Agents check every claim in the plan draft against your sources and flag the ones they made up.", "end": "A saved judge that catches made-up claims"},
+ {"agents": "Agents rewrite the plan draft round after round against the same judge while you are away.", "end": "A sharper plan draft, and the scores that show it"},
+ {"agents": "An agent builds an agent for your CFO that answers board questions on the plan, and your judge checks it.", "end": "An agent for the CFO, built by your agents"}]},
+{"challenge": "month-end close takes two weeks", "rows": [
+ {"agents": "An agent writes a page about you. You catch what it made up, and learn what to give it before it sees your close.", "end": "A page that is you, and rules for an agent"},
+ {"agents": "Agents gather the close checklist, past close timelines and the email threads where it stalls into one memory.", "end": "A memory of where the close slows down"},
+ {"agents": "Three agents search your files, the finance wiki and outside articles. Three more argue where the days go.", "end": "A briefing on why the close takes two weeks"},
+ {"agents": "Agents check what they can open in ledgers and finance folders, and what a planted line in a document could make them do.", "end": "An audit of your agents and one risk closed"},
+ {"agents": "Agents check each claim about delays and owners against your sources and flag the ones they made up.", "end": "A saved judge that catches made-up claims"},
+ {"agents": "Agents rewrite the close briefing round after round against the same judge while you are away.", "end": "A sharper briefing, and the scores that show it"},
+ {"agents": "An agent builds an agent for your controller that flags late items each close, and your judge checks it.", "end": "An agent for the controller, built by your agents"}]}
+]</script>
 <script>
 /* The part that moves. The visitor's words go to the relay, which holds the
    fixed prompt and the course facts and answers seven rows of JSON. Text from
@@ -328,55 +361,78 @@ footer p { margin: 0; max-width: 46em; }
   'use strict';
   var form = document.getElementById('ask'), inp = document.getElementById('stuck'), send = document.getElementById('send');
   var list = document.getElementById('rows'), statusEl = document.getElementById('status'), head = document.getElementById('planhead');
+  var plan = list.parentNode, chips = document.querySelectorAll('#try button[data-ex]');
   var items = list.querySelectorAll('li[data-module]');
   var endpoint = (form.getAttribute('data-endpoint') || '').trim();
-  var FIRST = inp.value, ctl = null;
+  var ctl = null;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var EXAMPLE_NOTE = 'An example answer Claude wrote from the course pages. Type your own challenge to get yours.';
   function read(i) { return { agents: items[i].querySelector('.ag').textContent, end: items[i].querySelector('.end span').textContent }; }
-  var EXAMPLE = [], STANDARD = [];
+  var STANDARD = [], first = [];
   for (var i = 0; i < items.length; i++) {
-    EXAMPLE.push(read(i));
+    first.push(read(i));
     STANDARD.push({ agents: items[i].getAttribute('data-std-agents'), end: items[i].getAttribute('data-std-end') });
   }
+  var EXAMPLES = [{ challenge: inp.value, rows: first }];
+  try { EXAMPLES = EXAMPLES.concat(JSON.parse(document.getElementById('examples').textContent)); } catch (e) {}
   function fill(rows) {
     for (var i = 0; i < items.length; i++) {
-      items[i].querySelector('.ag').textContent = String(rows[i].agents).slice(0, 200);
-      items[i].querySelector('.end span').textContent = String(rows[i].end).slice(0, 90).replace(/\.$/, '');
+      var ag = items[i].querySelector('.ag'), end = items[i].querySelector('.end span');
+      ag.textContent = String(rows[i].agents).slice(0, 200);
+      end.textContent = String(rows[i].end).slice(0, 90).replace(/\.$/, '');
+      flash(ag, i); flash(items[i].querySelector('.end'), i);
     }
   }
+  /* Each row lights up in turn, top to bottom, so the change reads as the course rewriting itself. */
+  function flash(el, i) {
+    el.classList.remove('fresh'); el.style.animationDelay = reduce ? '0s' : (i * 90) + 'ms';
+    void el.offsetWidth; el.classList.add('fresh');
+  }
   function title(text) {
-    head.textContent = 'What agents do with ';
+    head.textContent = 'Your course, rewritten for ';
     var x = document.createElement('span'); x.className = 'x'; x.textContent = text; head.appendChild(x);
   }
+  /* Keep the question and the first rows in view together, so cause and effect sit on one screen. */
+  function reveal() {
+    if (head.getBoundingClientRect().top > window.innerHeight * 0.7) form.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  }
+  function press(n) { for (var i = 0; i < chips.length; i++) chips[i].setAttribute('aria-pressed', String(i === n)); }
   function count(result) { try { if (window.umami && window.umami.track) window.umami.track('entry-ask', { result: result }); } catch (e) {} }
   function valid(out) {
     return out && Array.isArray(out.rows) && out.rows.length === items.length && out.rows.every(function (r) {
       return r && typeof r.agents === 'string' && typeof r.end === 'string' && r.agents && r.end;
     });
   }
-  inp.addEventListener('focus', function () { if (inp.value === FIRST) inp.select(); });
+  function showExample(n) {
+    var ex = EXAMPLES[n]; if (!ex) return;
+    if (ctl) { ctl.abort(); ctl = null; list.classList.remove('wait'); send.disabled = false; }
+    inp.value = ex.challenge; title(ex.challenge); fill(ex.rows); press(n);
+    statusEl.textContent = EXAMPLE_NOTE; reveal();
+  }
+  for (var k = 0; k < chips.length; k++) chips[k].addEventListener('click', function () { var n = Number(this.getAttribute('data-ex')); showExample(n); count('example'); });
+  inp.addEventListener('focus', function () { for (var i = 0; i < EXAMPLES.length; i++) if (inp.value === EXAMPLES[i].challenge) { inp.select(); return; } });
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var c = inp.value.replace(/\s+/g, ' ').trim().slice(0, 120);
     if (!c) { inp.focus(); return; }
-    title(c);
-    if (c === FIRST) { fill(EXAMPLE); statusEl.textContent = 'An example answer Claude wrote from the course pages. Type your own challenge to get yours.'; return; }
-    fill(STANDARD);
-    if (!endpoint || !window.fetch) { statusEl.textContent = 'Live answers are not on yet, so these are the standard lines for any challenge.'; count('off'); return; }
+    for (var i = 0; i < EXAMPLES.length; i++) if (c === EXAMPLES[i].challenge) { showExample(i); return; }
+    press(-1); title(c); reveal();
+    if (!endpoint || !window.fetch) { fill(STANDARD); statusEl.textContent = 'Live answers are not on yet, so these are the standard lines for any challenge.'; count('off'); return; }
     if (ctl) ctl.abort();
     var mine = ctl = window.AbortController ? new AbortController() : null;
     list.classList.add('wait'); send.disabled = true;
-    statusEl.textContent = 'Claude is reading the course pages for you…';
+    statusEl.textContent = 'Claude is rewriting the seven modules for your challenge…';
     var timer = setTimeout(function () { if (mine) mine.abort(); }, 20000);
     fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ challenge: c }), signal: mine ? mine.signal : undefined })
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, status: r.status, body: j }; }); })
       .then(function (res) {
         if (mine !== ctl) return;
         if (res.ok && valid(res.body)) { fill(res.body.rows); statusEl.textContent = 'Written for you just now by Claude, from the course pages.'; count('live'); }
-        else if (res.status === 429) { statusEl.textContent = 'Live answers are busy right now, so these are the standard lines. Try again later.'; count('busy'); }
-        else { statusEl.textContent = 'Claude could not answer this time, so these are the standard lines.'; count('fallback'); }
+        else if (res.status === 429) { fill(STANDARD); statusEl.textContent = 'Live answers are busy right now, so these are the standard lines. Try again later.'; count('busy'); }
+        else { fill(STANDARD); statusEl.textContent = 'Claude could not answer this time, so these are the standard lines.'; count('fallback'); }
       })
-      .catch(function () { if (mine === ctl) { statusEl.textContent = 'Claude could not answer this time, so these are the standard lines.'; count('fallback'); } })
-      .then(function () { clearTimeout(timer); if (mine === ctl) { list.classList.remove('wait'); send.disabled = false; } });
+      .catch(function () { if (mine === ctl) { fill(STANDARD); statusEl.textContent = 'Claude could not answer this time, so these are the standard lines.'; count('fallback'); } })
+      .then(function () { clearTimeout(timer); if (mine === ctl) { ctl = null; list.classList.remove('wait'); send.disabled = false; } });
   });
 })();
 </script>

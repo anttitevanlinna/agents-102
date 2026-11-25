@@ -37,7 +37,7 @@
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+html { scroll-behavior: smooth; scroll-padding-top: 16px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body { margin: 0; background: var(--paper); color: var(--fg); font: 17px/1.6 var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: clip; }
 a { color: inherit; }
@@ -46,16 +46,10 @@ a { color: inherit; }
 @media (max-width: 520px) { .wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); } }
 
 /* Header: same brand bar as the handbook */
-.top { position: sticky; top: 0; z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line); }
+.top { background: var(--paper); }
 .top .wrap { max-width: 1188px; height: 60px; display: flex; align-items: center; gap: 18px; }
 .brand { font: 700 21px/1 var(--font-body); letter-spacing: -.045em; text-decoration: none; white-space: nowrap; color: var(--ink); }
 .brand::before { content: ''; display: inline-block; width: 7px; height: 17px; background: var(--orange); transform: skewX(-13deg); margin-right: 9px; }
-.edition { font-size: 13px; color: var(--fg-2); border-left: 1px solid var(--line); padding-left: 17px; white-space: nowrap; }
-.nav { margin-left: auto; display: flex; align-items: center; gap: 22px; font-size: 14px; }
-.nav a { text-decoration: none; color: var(--fg-2); }
-.nav a:hover { color: var(--ink); }
-.nav .nav-start { color: var(--ink); font-weight: 600; }
-@media (max-width: 640px) { .edition, .nav .nav-hide { display: none; } .nav { gap: 16px; } }
 
 /* Note */
 .intro { padding-top: 32px; position: relative; }
@@ -162,12 +156,6 @@ footer p { margin: 0; max-width: 46em; }
 <header class="top">
   <div class="wrap">
     <a class="brand" href="/">Agents 101</a>
-    <span class="edition">Free self-study, on your computer</span>
-    <nav class="nav" aria-label="Page">
-      <a class="nav-hide" href="#need">What you need</a>
-      <a href="#teams">For teams</a>
-      <a class="nav-start" href="/agents-101/#make-my-first-game" data-umami-event="start-prework" data-umami-event-from="header">Start</a>
-    </nav>
   </div>
 </header>
 

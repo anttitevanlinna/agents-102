@@ -59,7 +59,7 @@ a { color: inherit; }
 
 /* Header: same brand bar as the handbook */
 .top { position: sticky; top: 0; z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line); }
-.top .wrap { height: 60px; display: flex; align-items: center; gap: 18px; }
+.top .wrap { max-width: 1188px; height: 60px; display: flex; align-items: center; gap: 18px; }
 .brand { font: 700 21px/1 var(--font-body); letter-spacing: -.045em; text-decoration: none; white-space: nowrap; color: var(--ink); }
 .brand::before { content: ''; display: inline-block; width: 7px; height: 17px; background: var(--orange); transform: skewX(-13deg); margin-right: 9px; }
 .edition { font-size: 13px; color: var(--fg-2); border-left: 1px solid var(--line); padding-left: 17px; white-space: nowrap; }
@@ -67,7 +67,7 @@ a { color: inherit; }
 .nav a { text-decoration: none; color: var(--fg-2); }
 .nav a:hover { color: var(--ink); }
 .nav .nav-start { color: var(--ink); font-weight: 600; }
-@media (max-width: 640px) { .edition, .nav .nav-hide { display: none; } }
+@media (max-width: 640px) { .edition, .nav .nav-hide { display: none; } .nav { gap: 16px; } }
 
 /* Hero */
 .hero { padding-block: 72px 64px; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 56px; align-items: center; }
@@ -82,6 +82,9 @@ h1 { font: 700 clamp(40px, 6vw, 66px)/1.04 var(--font-body); letter-spacing: -.0
 .btn::after { content: '→'; transition: transform .15s; }
 .btn:hover::after { transform: translateX(3px); }
 .cta-note { font-size: 14px; color: var(--fg-3); }
+.licence-note { margin: 22px 0 0; font-size: 14px; color: var(--fg-2); max-width: 34em; }
+.licence-note a { font-weight: 600; text-underline-offset: 3px; }
+.ramp-note { margin: 12px 0 0; font-size: 12px; color: var(--fg-3); }
 
 /* Ramp: who does the work, module by module */
 .ramp { margin: 0; min-width: 0; }
@@ -176,11 +179,11 @@ footer p { margin: 0; max-width: 46em; }
 <header class="top">
   <div class="wrap">
     <a class="brand" href="/">Agents 101</a>
-    <span class="edition">Free self-study course</span>
+    <span class="edition">Self-study edition</span>
     <nav class="nav" aria-label="Page">
       <a class="nav-hide" href="#course">Course</a>
-      <a class="nav-hide" href="#teams">For teams</a>
-      <a class="nav-start" href="/agents-101/#start-learning" data-umami-event="start-prework" data-umami-event-from="header">Start</a>
+      <a href="#teams">For teams</a>
+      <a class="nav-start" href="/agents-101/#make-my-first-game" data-umami-event="start-prework" data-umami-event-from="header">Start</a>
     </nav>
   </div>
 </header>
@@ -191,9 +194,10 @@ footer p { margin: 0; max-width: 46em; }
       <h1>Bring one challenge from your work. Build the agents that take it on.</h1>
       <p class="lede">Agents 101 is for people who lead and decide, not only for engineers. You build one system of agents around a real challenge you carry. Each module hands the agents one more part of the job, until they produce an analysis of it while you are away from the desk.</p>
       <div class="cta">
-        <a class="btn" href="/agents-101/#start-learning" data-umami-event="start-prework" data-umami-event-from="hero">Start with prework</a>
-        <span class="cta-note">About 50 minutes. You need a paid Claude plan.</span>
+        <a class="btn" href="/agents-101/#make-my-first-game" data-umami-event="start-prework" data-umami-event-from="hero">Start with prework</a>
+        <span class="cta-note">About 50 minutes. You need Claude Pro or a higher paid plan.</span>
       </div>
+      <p class="licence-note">Free to take on your own. Teaching it to others needs a licence: <a href="#teams" data-umami-event="licence-interest" data-umami-event-from="hero">see the team edition</a>.</p>
     </div>
     <figure class="ramp" aria-label="How much of the job the agents do, module by module">
       <figcaption>Who does the work <span class="key"><span><i class="k-agents"></i>Agents</span><span><i class="k-you"></i>You</span></span></figcaption>
@@ -206,6 +210,7 @@ footer p { margin: 0; max-width: 46em; }
         <li>Evaluations<div class="bar"><span style="width:86%"></span></div></li>
         <li>Agents building agents<div class="bar"><span style="width:94%"></span></div></li>
       </ol>
+      <p class="ramp-note">How much of the job the agents do in each module. A sketch, not a measurement.</p>
     </figure>
   </div>
 
@@ -300,10 +305,10 @@ footer p { margin: 0; max-width: 46em; }
       <div>
         <h3>What you need</h3>
         <ul>
-          <li><strong>A paid Claude plan.</strong> Pro, the lowest paid tier, is enough.</li>
+          <li><strong>Claude Pro or a higher paid plan.</strong> Pro is the minimum. The free plan is not enough.</li>
           <li><strong>Claude Desktop</strong> on a Mac or Windows computer.</li>
           <li><strong>A challenge you carry at work</strong> that isn't solved yet. Not a task.</li>
-          <li><strong>Your work calendar and files, if you can connect them.</strong> Screenshots and saved files work too.</li>
+          <li><strong>Connecting work apps is optional.</strong> Your calendar and files help, but the course works with screenshots and saved files instead.</li>
         </ul>
       </div>
       <div>
@@ -335,7 +340,7 @@ footer p { margin: 0; max-width: 46em; }
   <section class="again">
     <div class="wrap">
       <h2>Your first step takes one message</h2>
-      <a class="btn" href="/agents-101/#start-learning" data-umami-event="start-prework" data-umami-event-from="footer-cta">Start with prework</a>
+      <a class="btn" href="/agents-101/#make-my-first-game" data-umami-event="start-prework" data-umami-event-from="footer-cta">Start with prework</a>
     </div>
   </section>
 </main>

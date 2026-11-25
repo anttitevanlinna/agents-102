@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agents 101 handbook — self-study</title>
+<title>Agents 101 self-study handbook</title>
 <style>/* Curriculum viewer — Editorial theme.
    Warm-ink dark header + cream paper body.
    Roboto Slab (display, light) + Inter (body) + EB Garamond (italic accents).
@@ -3215,8 +3215,9 @@ body.slides-active .a101-onboarding { display: none; }
 body.workbook #prework .walkthrough-media p, .deck .slide .slide__body .walkthrough-media p { margin: 8px 0 0; font: 400 15px/1.45 var(--font-body); }
 
 </style>
-<style data-a101-licence>.a101-licence { margin: 0 0 .5rem; }</style>
+<style data-a101-licence>.a101-licence { margin: 0 0 .5rem; } .curriculum-footer a { color: inherit; text-decoration: underline; }</style>
 <style data-a101-times>.a101-module-time { color: var(--fg-2); font-size: .95rem; }</style>
+<style data-a101-video>.a101-video-placeholder, .walkthrough-media .video-coming { display: none; }</style>
 </head>
 <body class="runtime-cowork workbook student-handbook" data-training="agents-101">
 <nav class="workbook-topnav field-header" aria-label="Handbook navigation">
@@ -3229,7 +3230,7 @@ body.workbook #prework .walkthrough-media p, .deck .slide .slide__body .walkthro
       <li><a href="#building-agent-systems" data-target="building-agent-systems"><span>M2</span> Building agent systems</a></li>
       <li><a href="#multi-agent-systems" data-target="multi-agent-systems"><span>M3</span> Multi-agent systems</a></li>
       <li><a href="#security" data-target="security"><span>M4</span> Security</a></li>
-      <li><a href="#output-quality" data-target="output-quality"><span>M5</span> Output quality</a></li>
+      <li><a href="#output-quality" data-target="output-quality"><span>M5</span> Catching hallucinations</a></li>
       <li><a href="#evaluations" data-target="evaluations"><span>M6</span> Evaluations</a></li>
       <li><a href="#agents-building-agents-solo" data-target="agents-building-agents-solo"><span>M7</span> Agents building agents</a></li>
   </ol></div>
@@ -3270,7 +3271,7 @@ body.workbook #prework .walkthrough-media p, .deck .slide .slide__body .walkthro
 <div class="request-text"><span>Type in Claude Desktop</span><blockquote>Make me a Snake game and link to the file here.</blockquote></div></div>
 <p><strong class="result-lead">In Claude’s reply</strong> Look under your message. The link to the Snake game is the file Claude made for you. Sometimes Claude opens the game board beside the reply as well. If you only get a description, ask <em>“Can you attach the game?”</em></p>
 <figure class="walkthrough-media"><figcaption>Where to type and send</figcaption><img src="data:image/jpeg;base64,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" width="670" height="113" style="max-width:100%;height:auto" alt="A pasted request in Claude Desktop, with the Send arrow at the lower right.">
-<p>Video coming here: send the request, find the game in Claude’s reply, then return to this handbook.</p></figure>
+</figure>
 <p>Once you see the game, come back to this tab and choose <a href="#open-cowork-and-add-a-folder">Keep my game</a> to save it to your computer.</p>
 </div></div>
 
@@ -3342,7 +3343,7 @@ body.workbook #prework .walkthrough-media p, .deck .slide .slide__body .walkthro
 <video controls playsinline preload="none" poster="media/mac-folder-picker.jpg" aria-label="Create the agents-101 folder in Documents on Mac"><source src="media/mac-folder-picker.mp4" type="video/mp4"></video>
 <p>Choose Documents, create <code>agents-101</code>, then click Open.</p></figure></div>
 <div data-a101-os-only="windows"><strong>Windows folder walkthrough</strong>
-<p>Video coming here. The steps below show how to choose the folder.</p></div></div>
+</div></div>
 
 <ol>
 <li data-a101-os-only="windows">In File Explorer, open <strong>Documents</strong>. Click <strong>New</strong>, then <strong>Folder</strong>. Name it <code>agents-101</code>.</li>
@@ -3373,7 +3374,7 @@ body.workbook #prework .walkthrough-media p, .deck .slide .slide__body .walkthro
 <span id="3-add-the-course-files"></span>
 <span id="4-download-the-course-files"></span></p>
 <p>The course files include a copy of the handbook and let Claude help you find your place when you come back.</p>
-<p><a href="https://agents102.bosser.consulting/agents-101/agents-101-starter.tar.gz?v=2f24ea830d369880" target="_blank" rel="noopener">Download the course files</a>. Find <code>agents-101-starter.tar.gz</code> in your browser’s downloads and move it into <code>agents-101</code> alongside the <code>prework</code> folder. Claude will unpack it when you copy and send the request below in the same conversation.</p>
+<p><a href="https://agents102.bosser.consulting/agents-101/agents-101-starter.tar.gz?v=d3b0ddff16c2b539" target="_blank" rel="noopener">Download the course files</a>. Find <code>agents-101-starter.tar.gz</code> in your browser’s downloads and move it into <code>agents-101</code> alongside the <code>prework</code> folder. Claude will unpack it when you copy and send the request below in the same conversation.</p>
 <div class="rt-profile rt-profile-cowork">
 
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
@@ -3488,7 +3489,7 @@ For course navigation, add this line to the training-folder `CLAUDE.md` if it is
 </div>
 
 <div class="walkthrough-media rt-profile rt-profile-cowork"><strong>Course files walkthrough</strong>
-<p>Video coming here: move the download into <code>agents-101</code> and ask Claude to unpack it.</p></div>
+</div>
 
 <p>When Claude says the files are ready, keep this conversation open for the calendar exercise.</p>
 <h2 id="make-your-calendar-briefing"><span class="heading-step">4</span> Make your calendar briefing</h2>
@@ -3621,7 +3622,7 @@ For course navigation, add this line to the training-folder `CLAUDE.md` if it is
 
 <nav class="workbook-toc">
   <h2>Contents</h2>
-<ol class="module-list index-modules"><li data-slug="getting-going"><a href="#getting-going"><span class="module-n">01</span><span class="module-body"><span class="module-title">Getting Going</span><span class="module-big">Context is how you paint by LLM. What you give the agent shapes what comes back, and you can go very deep with it: your profile, your rules, your judgement on the result.</span></span><span class="module-arrow">→</span></a></li><li data-slug="building-agent-systems"><a href="#building-agent-systems"><span class="module-n">02</span><span class="module-body"><span class="module-title">Building Agent Systems</span><span class="module-big">A system remembers, grows, and compounds around the one thing you need to make progress on. Chat can&#39;t.</span></span><span class="module-arrow">→</span></a></li><li data-slug="multi-agent-systems"><a href="#multi-agent-systems"><span class="module-n">03</span><span class="module-body"><span class="module-title">Multi-Agent Systems</span><span class="module-big">Several agents can work on one problem together. Split the work, run the agents in parallel, and let them hand off through shared files. Three agents search, three more decide. Handoffs are where work gets lost, so check them.</span></span><span class="module-arrow">→</span></a></li><li data-slug="security"><a href="#security"><span class="module-n">04</span><span class="module-body"><span class="module-title">Security</span><span class="module-big">You can&#39;t tell if your agent is safe from its output. Run a check; don&#39;t wait for certainty.</span></span><span class="module-arrow">→</span></a></li><li data-slug="output-quality"><a href="#output-quality"><span class="module-n">05</span><span class="module-body"><span class="module-title">Grounded Output</span><span class="module-big">There is truth out there, and your agent&#39;s job is to stay connected to it. Where it cannot reach a source, it fills the gap: confident, plausible, wrong. Grounding, and checks you test on your own output, make the gap visible.</span></span><span class="module-arrow">→</span></a></li><li data-slug="evaluations"><a href="#evaluations"><span class="module-n">06</span><span class="module-body"><span class="module-title">Evaluations</span><span class="module-big">Put the Module 5 judge in a loop and the work improves by itself. The generator sharpens against the judge&#39;s feedback, round after round, while you walk away.</span></span><span class="module-arrow">→</span></a></li><li data-slug="agents-building-agents-solo"><a href="#agents-building-agents-solo"><span class="module-n">07</span><span class="module-body"><span class="module-title">Agents Building Agents</span><span class="module-big">An agent can build the agent someone else needs. That is how you and the people around you learn faster.</span></span><span class="module-arrow">→</span></a></li></ol><h3 class="index-heading">Supplementary</h3><ol class="module-list index-supplementaries"><li><a href="#supplementary-what-is-an-agent" target="_blank" rel="noopener"><span class="supp-kind">Reference</span><span class="supp-title">What is an Agent</span><span class="module-arrow">→</span></a></li><li><a href="#supplementary-agent-trigger-list" target="_blank" rel="noopener"><span class="supp-kind">Reference</span><span class="supp-title">Agent Trigger List</span><span class="module-arrow">→</span></a></li><li><a href="#supplementary-building-guardrails" target="_blank" rel="noopener"><span class="supp-kind">Reference</span><span class="supp-title">Building Guardrails (and Skills)</span><span class="module-arrow">→</span></a></li><li><a href="#supplementary-learning-and-compounding-systems" target="_blank" rel="noopener"><span class="supp-kind">Reference</span><span class="supp-title">Learning and Compounding Systems</span><span class="module-arrow">→</span></a></li><li><a href="#supplementary-cookbook-for-agent-system-design" target="_blank" rel="noopener"><span class="supp-kind">Reference</span><span class="supp-title">Cookbook for Agent System Design</span><span class="module-arrow">→</span></a></li></ol>
+<ol class="module-list index-modules"><li data-slug="getting-going"><a href="#getting-going"><span class="module-n">01</span><span class="module-body"><span class="module-title">Getting Going</span><span class="module-big">Context is how you paint by LLM. What you give the agent shapes what comes back, and you can go very deep with it: your profile, your rules, your judgement on the result.</span></span><span class="module-arrow">→</span></a></li><li data-slug="building-agent-systems"><a href="#building-agent-systems"><span class="module-n">02</span><span class="module-body"><span class="module-title">Building Agent Systems</span><span class="module-big">A system remembers, grows, and compounds around the one thing you need to make progress on. Chat can&#39;t.</span></span><span class="module-arrow">→</span></a></li><li data-slug="multi-agent-systems"><a href="#multi-agent-systems"><span class="module-n">03</span><span class="module-body"><span class="module-title">Multi-Agent Systems</span><span class="module-big">Several agents can work on one problem together. Split the work, run the agents in parallel, and let them hand off through shared files. Three agents search, three more decide. Handoffs are where work gets lost, so check them.</span></span><span class="module-arrow">→</span></a></li><li data-slug="security"><a href="#security"><span class="module-n">04</span><span class="module-body"><span class="module-title">Security</span><span class="module-big">You can&#39;t tell if your agent is safe from its output. Run a check; don&#39;t wait for certainty.</span></span><span class="module-arrow">→</span></a></li><li data-slug="output-quality"><a href="#output-quality"><span class="module-n">05</span><span class="module-body"><span class="module-title">Catching Hallucinations</span><span class="module-big">There is truth out there, and your agent&#39;s job is to stay connected to it. Where it cannot reach a source, it fills the gap: confident, plausible, wrong. Grounding, and checks you test on your own output, make the gap visible.</span></span><span class="module-arrow">→</span></a></li><li data-slug="evaluations"><a href="#evaluations"><span class="module-n">06</span><span class="module-body"><span class="module-title">Evaluations</span><span class="module-big">Put the Module 5 judge in a loop and the work improves by itself. The generator sharpens against the judge&#39;s feedback, round after round, while you walk away.</span></span><span class="module-arrow">→</span></a></li><li data-slug="agents-building-agents-solo"><a href="#agents-building-agents-solo"><span class="module-n">07</span><span class="module-body"><span class="module-title">Agents Building Agents</span><span class="module-big">An agent can build the agent someone else needs. That is how you and the people around you learn faster.</span></span><span class="module-arrow">→</span></a></li></ol><h3 class="index-heading">Supplementary</h3><ol class="module-list index-supplementaries"><li><a href="#supplementary-what-is-an-agent" target="_blank" rel="noopener"><span class="supp-kind">Reference</span><span class="supp-title">What is an Agent</span><span class="module-arrow">→</span></a></li><li><a href="#supplementary-agent-trigger-list" target="_blank" rel="noopener"><span class="supp-kind">Reference</span><span class="supp-title">Agent Trigger List</span><span class="module-arrow">→</span></a></li><li><a href="#supplementary-cookbook-for-agent-system-design" target="_blank" rel="noopener"><span class="supp-kind">Reference</span><span class="supp-title">Cookbook for Agent System Design</span><span class="module-arrow">→</span></a></li></ol>
 <p class="a101-toc-tools"><a href="#workbook-tools">Use this workbook with another tool</a></p>
 </nav>
 
@@ -10930,7 +10931,7 @@ Then append my three marks to module-5/my-marks.md in its line format, with sour
 <p>Ask the agent to set up the loop around a different judge:</p>
 <div class="rt-profile rt-profile-cowork">
 
-<p><strong>Prompt</strong> <em>(Builder Claude)</em></p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <pre><code>Set up a fixed-judge loop for one of my outputs.
 
 Run the loop end to end:
@@ -10948,7 +10949,7 @@ Use these inputs; no preamble, start by writing the first generation tactic file
 </div>
 <div class="rt-profile rt-profile-desktop">
 
-<p><strong>Prompt</strong> <em>(Builder Claude)</em></p>
+<p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
 <pre><code>Set up a fixed-judge loop for one of my outputs.
 
 Run the loop end to end:
@@ -10966,7 +10967,7 @@ Use these inputs; no preamble, start by writing the first generation tactic file
 </div>
 <div class="rt-profile rt-profile-cli">
 
-<p><strong>Prompt</strong> <em>(Builder Claude)</em></p>
+<p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
 <pre><code>Set up a fixed-judge loop for one of my outputs.
 
 Run the loop end to end:
@@ -10984,7 +10985,7 @@ Use these inputs; no preamble, start by writing the first generation tactic file
 </div>
 <div class="rt-profile rt-profile-codex-desktop">
 
-<p><strong>Prompt</strong> <em>(Builder Codex)</em></p>
+<p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
 <pre><code>Set up a fixed-judge loop for one of my outputs.
 
 Run the loop end to end:
@@ -11002,7 +11003,7 @@ Use these inputs; no preamble, start by writing the first generation tactic file
 </div>
 <div class="rt-profile rt-profile-codex-cli">
 
-<p><strong>Prompt</strong> <em>(Builder Codex)</em></p>
+<p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
 <pre><code>Set up a fixed-judge loop for one of my outputs.
 
 Run the loop end to end:
@@ -11020,7 +11021,7 @@ Use these inputs; no preamble, start by writing the first generation tactic file
 </div>
 <div class="rt-profile rt-profile-copilot-app">
 
-<p><strong>Prompt</strong> <em>(Builder Copilot)</em></p>
+<p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
 <pre><code>Set up a fixed-judge loop for one of my outputs.
 
 Run the loop end to end:
@@ -11038,7 +11039,7 @@ Use these inputs; no preamble, start by writing the first generation tactic file
 </div>
 <div class="rt-profile rt-profile-copilot-cli">
 
-<p><strong>Prompt</strong> <em>(Builder Copilot)</em></p>
+<p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
 <pre><code>Set up a fixed-judge loop for one of my outputs.
 
 Run the loop end to end:
@@ -11608,7 +11609,7 @@ When you&#39;re done, tell me in 3-5 lines: what you added, what you sharpened, 
 <p><em>5 min</em></p>
 <div class="rt-profile rt-profile-cowork">
 
-<p><strong>Prompt</strong> <em>(Builder Claude)</em></p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <pre><code>Read module-6/trigger.md if it exists. Then ask me two questions, one at a time, and wait for each answer. First: who is one real person I work with who could use what my system makes? Second: how do they do that job today?
 
 From my answers, pick what they get: the context, a skill, the output, or a way to ask it. Pick it for their job, not for what is easiest to build.
@@ -11623,7 +11624,7 @@ Show me the file before saving.
 </div>
 <div class="rt-profile rt-profile-desktop">
 
-<p><strong>Prompt</strong> <em>(Builder Claude)</em></p>
+<p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
 <pre><code>Read module-6/trigger.md if it exists. Then ask me two questions, one at a time, and wait for each answer. First: who is one real person I work with who could use what my system makes? Second: how do they do that job today?
 
 From my answers, pick what they get: the context, a skill, the output, or a way to ask it. Pick it for their job, not for what is easiest to build.
@@ -11638,7 +11639,7 @@ Show me the file before saving.
 </div>
 <div class="rt-profile rt-profile-cli">
 
-<p><strong>Prompt</strong> <em>(Builder Claude)</em></p>
+<p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
 <pre><code>Read module-6/trigger.md if it exists. Then ask me two questions, one at a time, and wait for each answer. First: who is one real person I work with who could use what my system makes? Second: how do they do that job today?
 
 From my answers, pick what they get: the context, a skill, the output, or a way to ask it. Pick it for their job, not for what is easiest to build.
@@ -11653,7 +11654,7 @@ Show me the file before saving.
 </div>
 <div class="rt-profile rt-profile-codex-desktop">
 
-<p><strong>Prompt</strong> <em>(Builder Codex)</em></p>
+<p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
 <pre><code>Read module-6/trigger.md if it exists. Then ask me two questions, one at a time, and wait for each answer. First: who is one real person I work with who could use what my system makes? Second: how do they do that job today?
 
 From my answers, pick what they get: the context, a skill, the output, or a way to ask it. Pick it for their job, not for what is easiest to build.
@@ -11668,7 +11669,7 @@ Show me the file before saving.
 </div>
 <div class="rt-profile rt-profile-codex-cli">
 
-<p><strong>Prompt</strong> <em>(Builder Codex)</em></p>
+<p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
 <pre><code>Read module-6/trigger.md if it exists. Then ask me two questions, one at a time, and wait for each answer. First: who is one real person I work with who could use what my system makes? Second: how do they do that job today?
 
 From my answers, pick what they get: the context, a skill, the output, or a way to ask it. Pick it for their job, not for what is easiest to build.
@@ -11683,7 +11684,7 @@ Show me the file before saving.
 </div>
 <div class="rt-profile rt-profile-copilot-app">
 
-<p><strong>Prompt</strong> <em>(Builder Copilot)</em></p>
+<p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
 <pre><code>Read module-6/trigger.md if it exists. Then ask me two questions, one at a time, and wait for each answer. First: who is one real person I work with who could use what my system makes? Second: how do they do that job today?
 
 From my answers, pick what they get: the context, a skill, the output, or a way to ask it. Pick it for their job, not for what is easiest to build.
@@ -11698,7 +11699,7 @@ Show me the file before saving.
 </div>
 <div class="rt-profile rt-profile-copilot-cli">
 
-<p><strong>Prompt</strong> <em>(Builder Copilot)</em></p>
+<p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
 <pre><code>Read module-6/trigger.md if it exists. Then ask me two questions, one at a time, and wait for each answer. First: who is one real person I work with who could use what my system makes? Second: how do they do that job today?
 
 From my answers, pick what they get: the context, a skill, the output, or a way to ask it. Pick it for their job, not for what is easiest to build.
@@ -11726,7 +11727,7 @@ Show me the file before saving.
 <p><em>10 min</em></p>
 <div class="rt-profile rt-profile-cowork">
 
-<p><strong>Prompt</strong> <em>(Builder Claude)</em></p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <pre><code>Read module-7/brief.md. Build the agent described in it. Choose a lowercase hyphenated filename from the job, not the technology. State the exact path under `agents/`, then draft the agent file at that path.
 
 The agent file must include:
@@ -11741,7 +11742,7 @@ Show me the file before saving. After I approve, save it to the exact path you s
 </div>
 <div class="rt-profile rt-profile-desktop">
 
-<p><strong>Prompt</strong> <em>(Builder Claude)</em></p>
+<p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
 <pre><code>Read module-7/brief.md. Build the agent described in it. Choose a lowercase hyphenated filename from the job, not the technology. State the exact path under `agents/`, then draft the agent file at that path.
 
 The agent file must include:
@@ -11756,7 +11757,7 @@ Show me the file before saving. After I approve, save it to the exact path you s
 </div>
 <div class="rt-profile rt-profile-cli">
 
-<p><strong>Prompt</strong> <em>(Builder Claude)</em></p>
+<p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
 <pre><code>Read module-7/brief.md. Build the agent described in it. Choose a lowercase hyphenated filename from the job, not the technology. State the exact path under `agents/`, then draft the agent file at that path.
 
 The agent file must include:
@@ -11771,7 +11772,7 @@ Show me the file before saving. After I approve, save it to the exact path you s
 </div>
 <div class="rt-profile rt-profile-codex-desktop">
 
-<p><strong>Prompt</strong> <em>(Builder Codex)</em></p>
+<p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
 <pre><code>Read module-7/brief.md. Build the agent described in it. Choose a lowercase hyphenated filename from the job, not the technology. State the exact path under `agents/`, then draft the agent file at that path.
 
 The agent file must include:
@@ -11786,7 +11787,7 @@ Show me the file before saving. After I approve, save it to the exact path you s
 </div>
 <div class="rt-profile rt-profile-codex-cli">
 
-<p><strong>Prompt</strong> <em>(Builder Codex)</em></p>
+<p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
 <pre><code>Read module-7/brief.md. Build the agent described in it. Choose a lowercase hyphenated filename from the job, not the technology. State the exact path under `agents/`, then draft the agent file at that path.
 
 The agent file must include:
@@ -11801,7 +11802,7 @@ Show me the file before saving. After I approve, save it to the exact path you s
 </div>
 <div class="rt-profile rt-profile-copilot-app">
 
-<p><strong>Prompt</strong> <em>(Builder Copilot)</em></p>
+<p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
 <pre><code>Read module-7/brief.md. Build the agent described in it. Choose a lowercase hyphenated filename from the job, not the technology. State the exact path under `agents/`, then draft the agent file at that path.
 
 The agent file must include:
@@ -11816,7 +11817,7 @@ Show me the file before saving. After I approve, save it to the exact path you s
 </div>
 <div class="rt-profile rt-profile-copilot-cli">
 
-<p><strong>Prompt</strong> <em>(Builder Copilot)</em></p>
+<p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
 <pre><code>Read module-7/brief.md. Build the agent described in it. Choose a lowercase hyphenated filename from the job, not the technology. State the exact path under `agents/`, then draft the agent file at that path.
 
 The agent file must include:
@@ -11835,43 +11836,43 @@ Show me the file before saving. After I approve, save it to the exact path you s
 <p>Don&#39;t edit the new agent yourself. The judge checks the output against the files the new agent read, finds what fails, and the agent that built it rebuilds it.</p>
 <div class="rt-profile rt-profile-cowork">
 
-<p><strong>Prompt</strong> <em>(Builder Claude)</em></p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <pre><code>Run my Module 5 judge, `judges/groundedness-judge.md`, on the new agent&#39;s output, with the files the new agent read as its evidence and nothing else. Do not change the judge. Where the output fails, rebuild the agent you built so it passes, then run it and judge it again. Write `module-7/built-agent.md`: my four-line description, the judge result before and after the rebuild, what you changed in the agent, and the minutes from description to a passing agent.
 </code></pre>
 </div>
 <div class="rt-profile rt-profile-desktop">
 
-<p><strong>Prompt</strong> <em>(Builder Claude)</em></p>
+<p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
 <pre><code>Run my Module 5 judge, `judges/groundedness-judge.md`, on the new agent&#39;s output, with the files the new agent read as its evidence and nothing else. Do not change the judge. Where the output fails, rebuild the agent you built so it passes, then run it and judge it again. Write `module-7/built-agent.md`: my four-line description, the judge result before and after the rebuild, what you changed in the agent, and the minutes from description to a passing agent.
 </code></pre>
 </div>
 <div class="rt-profile rt-profile-cli">
 
-<p><strong>Prompt</strong> <em>(Builder Claude)</em></p>
+<p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
 <pre><code>Run my Module 5 judge, `judges/groundedness-judge.md`, on the new agent&#39;s output, with the files the new agent read as its evidence and nothing else. Do not change the judge. Where the output fails, rebuild the agent you built so it passes, then run it and judge it again. Write `module-7/built-agent.md`: my four-line description, the judge result before and after the rebuild, what you changed in the agent, and the minutes from description to a passing agent.
 </code></pre>
 </div>
 <div class="rt-profile rt-profile-codex-desktop">
 
-<p><strong>Prompt</strong> <em>(Builder Codex)</em></p>
+<p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
 <pre><code>Run my Module 5 judge, `judges/groundedness-judge.md`, on the new agent&#39;s output, with the files the new agent read as its evidence and nothing else. Do not change the judge. Where the output fails, rebuild the agent you built so it passes, then run it and judge it again. Write `module-7/built-agent.md`: my four-line description, the judge result before and after the rebuild, what you changed in the agent, and the minutes from description to a passing agent.
 </code></pre>
 </div>
 <div class="rt-profile rt-profile-codex-cli">
 
-<p><strong>Prompt</strong> <em>(Builder Codex)</em></p>
+<p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
 <pre><code>Run my Module 5 judge, `judges/groundedness-judge.md`, on the new agent&#39;s output, with the files the new agent read as its evidence and nothing else. Do not change the judge. Where the output fails, rebuild the agent you built so it passes, then run it and judge it again. Write `module-7/built-agent.md`: my four-line description, the judge result before and after the rebuild, what you changed in the agent, and the minutes from description to a passing agent.
 </code></pre>
 </div>
 <div class="rt-profile rt-profile-copilot-app">
 
-<p><strong>Prompt</strong> <em>(Builder Copilot)</em></p>
+<p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
 <pre><code>Run my Module 5 judge, `judges/groundedness-judge.md`, on the new agent&#39;s output, with the files the new agent read as its evidence and nothing else. Do not change the judge. Where the output fails, rebuild the agent you built so it passes, then run it and judge it again. Write `module-7/built-agent.md`: my four-line description, the judge result before and after the rebuild, what you changed in the agent, and the minutes from description to a passing agent.
 </code></pre>
 </div>
 <div class="rt-profile rt-profile-copilot-cli">
 
-<p><strong>Prompt</strong> <em>(Builder Copilot)</em></p>
+<p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
 <pre><code>Run my Module 5 judge, `judges/groundedness-judge.md`, on the new agent&#39;s output, with the files the new agent read as its evidence and nothing else. Do not change the judge. Where the output fails, rebuild the agent you built so it passes, then run it and judge it again. Write `module-7/built-agent.md`: my four-line description, the judge result before and after the rebuild, what you changed in the agent, and the minutes from description to a passing agent.
 </code></pre>
 </div>
@@ -11923,7 +11924,7 @@ Show me the file before saving. After I approve, save it to the exact path you s
 <p>Five minutes. Your agent improves your agent. It compares your Module 2 agent with the one it built today, rewrites the Module 2 agent in place so it would work for someone without your memory, and reports what changed.</p>
 <div class="rt-profile rt-profile-cowork">
 
-<p><strong>Prompt</strong> <em>(Builder Claude)</em></p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <pre><code>Start with the file path. No plan or preamble.
 
 Review this session and rewrite my Module 2 challenge agent in agents/ so it would work for someone without my memory. Read it beside the agent you built today and module-7/built-agent.md. Look back: which lines in my Module 2 agent assume my memory, how the built agent names what it reads instead, and what the judge caught.
@@ -11935,7 +11936,7 @@ Tell me in 3-5 lines what you added, sharpened and removed, quoting the before a
 </div>
 <div class="rt-profile rt-profile-desktop">
 
-<p><strong>Prompt</strong> <em>(Builder Claude)</em></p>
+<p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
 <pre><code>Start with the file path. No plan or preamble.
 
 Review this session and rewrite my Module 2 challenge agent in agents/ so it would work for someone without my memory. Read it beside the agent you built today and module-7/built-agent.md. Look back: which lines in my Module 2 agent assume my memory, how the built agent names what it reads instead, and what the judge caught.
@@ -11947,7 +11948,7 @@ Tell me in 3-5 lines what you added, sharpened and removed, quoting the before a
 </div>
 <div class="rt-profile rt-profile-cli">
 
-<p><strong>Prompt</strong> <em>(Builder Claude)</em></p>
+<p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
 <pre><code>Start with the file path. No plan or preamble.
 
 Review this session and rewrite my Module 2 challenge agent in agents/ so it would work for someone without my memory. Read it beside the agent you built today and module-7/built-agent.md. Look back: which lines in my Module 2 agent assume my memory, how the built agent names what it reads instead, and what the judge caught.
@@ -11959,7 +11960,7 @@ Tell me in 3-5 lines what you added, sharpened and removed, quoting the before a
 </div>
 <div class="rt-profile rt-profile-codex-desktop">
 
-<p><strong>Prompt</strong> <em>(Builder Codex)</em></p>
+<p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
 <pre><code>Start with the file path. No plan or preamble.
 
 Review this session and rewrite my Module 2 challenge agent in agents/ so it would work for someone without my memory. Read it beside the agent you built today and module-7/built-agent.md. Look back: which lines in my Module 2 agent assume my memory, how the built agent names what it reads instead, and what the judge caught.
@@ -11971,7 +11972,7 @@ Tell me in 3-5 lines what you added, sharpened and removed, quoting the before a
 </div>
 <div class="rt-profile rt-profile-codex-cli">
 
-<p><strong>Prompt</strong> <em>(Builder Codex)</em></p>
+<p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
 <pre><code>Start with the file path. No plan or preamble.
 
 Review this session and rewrite my Module 2 challenge agent in agents/ so it would work for someone without my memory. Read it beside the agent you built today and module-7/built-agent.md. Look back: which lines in my Module 2 agent assume my memory, how the built agent names what it reads instead, and what the judge caught.
@@ -11983,7 +11984,7 @@ Tell me in 3-5 lines what you added, sharpened and removed, quoting the before a
 </div>
 <div class="rt-profile rt-profile-copilot-app">
 
-<p><strong>Prompt</strong> <em>(Builder Copilot)</em></p>
+<p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
 <pre><code>Start with the file path. No plan or preamble.
 
 Review this session and rewrite my Module 2 challenge agent in agents/ so it would work for someone without my memory. Read it beside the agent you built today and module-7/built-agent.md. Look back: which lines in my Module 2 agent assume my memory, how the built agent names what it reads instead, and what the judge caught.
@@ -11995,7 +11996,7 @@ Tell me in 3-5 lines what you added, sharpened and removed, quoting the before a
 </div>
 <div class="rt-profile rt-profile-copilot-cli">
 
-<p><strong>Prompt</strong> <em>(Builder Copilot)</em></p>
+<p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
 <pre><code>Start with the file path. No plan or preamble.
 
 Review this session and rewrite my Module 2 challenge agent in agents/ so it would work for someone without my memory. Read it beside the agent you built today and module-7/built-agent.md. Look back: which lines in my Module 2 agent assume my memory, how the built agent names what it reads instead, and what the judge caught.
@@ -12226,40 +12227,6 @@ Keep it practical enough that I can use it on Monday.
 </ul>
 <p>That is the habit: not &quot;use AI more.&quot;</p>
 <p>Use the agent at the moment where context, judgment, repetition, or safe action starts to produce useful force.</p>
-
-</section>
-
-<section class="module" id="supplementary-building-guardrails">
-<div class="phase-kicker">Supplementary</div>
-<h1 id="building-guardrails-and-skills">Building Guardrails (and Skills)</h1>
-<p>A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. &quot;Guardrails&quot; isn&#39;t one thing. It&#39;s the same pattern scaled up across modules.</p>
-<p><strong>Status:</strong> outline only. Sections fill in as each module is written.</p>
-<hr>
-<h2 id="planned-progression">Planned progression</h2>
-<ul>
-<li><strong>Module 1, Guardrails as structured context.</strong> The <code>CLAUDE.md</code> file the model reads at the start of every conversation. <em>Section to write when Module 1 is polished.</em></li>
-<li><strong>Module 2, The schema layer of the LLM memory.</strong> Guardrails for knowledge: what the memory is allowed to claim, what it must cite, how it self-lints. <em>Section to write.</em></li>
-<li><strong>Module 4, Skills as scoped guardrails.</strong> Trust boundaries. What the agent can access vs. what it should access. <em>Section to write.</em></li>
-<li><strong>Module 5, Generation rules as guardrails.</strong> Citations, claim restrictions, fabrication-tightening rules. <em>Section to write.</em></li>
-</ul>
-<hr>
-
-</section>
-
-<section class="module" id="supplementary-learning-and-compounding-systems">
-<div class="phase-kicker">Supplementary</div>
-<h1 id="learning-and-compounding-systems">Learning and Compounding Systems</h1>
-<p>A reference document that grows across the training. Each module that adds a layer of the system-that-improves discipline adds the next section.</p>
-<p><strong>Status:</strong> outline only. Sections fill in as each module is written.</p>
-<hr>
-<h2 id="planned-progression">Planned progression</h2>
-<ul>
-<li><strong>Module 2, The LLM memory.</strong> Compounding as the core pattern: raw sources → compiled knowledge → schema. Why markdown files beat databases here. <em>Section to write.</em></li>
-<li><strong>Module 5, The quality loop.</strong> Generate → evaluate → adjust → regenerate. Continuous discipline, not one-shot fix. <em>Section to write.</em></li>
-<li><strong>Module 6, The eval-iteration loop.</strong> The eval is also an assumption. How to iterate the criterion as much as the output. <em>Section to write.</em></li>
-<li><strong>Module 7, Agents building agents.</strong> Self-improvement as a design choice. Meta-compounding, systems that make systems that make more systems. <em>Section to write.</em></li>
-</ul>
-<hr>
 
 </section>
 
@@ -12520,7 +12487,7 @@ Read `prework/course-navigation.md` and help me find my place in the workbook.
 </div></section>
 
 </main>
-<footer class="curriculum-footer"><p class="a101-licence">Free to take for your own learning and your own work. What you build is yours. Running this course as a training, inside your company or outside it, needs a training licence from Bosser. <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md#personal-use-license" target="_blank" rel="noopener">Licence terms</a></p><p><strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. This is proprietary training material. Using, copying or passing it on is governed by the licence under which you received it. <a href="https://bosser.consulting" target="_blank" rel="noopener">bosser.consulting</a></p></footer>
+<footer class="curriculum-footer"><p class="a101-licence">Free to take for your own learning and your own work. What you build is yours. Running this course as a training, inside your company or outside it, needs a training licence from Bosser. <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md#personal-use-license" target="_blank" rel="noopener">Licence terms</a></p><p><strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. <a href="https://bosser.consulting" target="_blank" rel="noopener">bosser.consulting</a></p></footer>
 <details class="third-party-notices"><summary>Third-party notices</summary>
 <p>Bosser Oy training material is original work, except for the third-party material listed here. Each item is used under its own licence or as attributed quotation, and stays the property of its owner.</p>
 <h2 id="mattpocockskills-mit">mattpocock/skills (MIT)</h2>
@@ -12606,7 +12573,7 @@ SOFTWARE.
                 },
                 {
                     "slug": "output-quality",
-                    "title": "Grounded Output"
+                    "title": "Catching Hallucinations"
                 },
                 {
                     "slug": "evaluations",
@@ -12625,14 +12592,6 @@ SOFTWARE.
                 {
                     "slug": "agent-trigger-list",
                     "title": "Agent Trigger List"
-                },
-                {
-                    "slug": "building-guardrails",
-                    "title": "Building Guardrails (and Skills)"
-                },
-                {
-                    "slug": "learning-and-compounding-systems",
-                    "title": "Learning and Compounding Systems"
                 },
                 {
                     "slug": "cookbook-for-agent-system-design",
@@ -14148,9 +14107,10 @@ SOFTWARE.
         var profile = getProfile(profileKey);
         var displayed = Object.assign({}, entry);
         if (displayed.dest === 'Claude Code') displayed.dest = profile.label;
-        if (displayed.dest === 'Builder Claude' && profile.family !== 'claude') {
-            displayed.dest = profile.family === 'codex' ? 'Builder Codex' : 'Builder Copilot';
-        }
+        // "Builder" named the second window of the retired two-window self-study
+        // setup. In the one-window handbook the learner types where they type
+        // every other prompt.
+        if (displayed.dest === 'Builder Claude') displayed.dest = profile.label;
         return displayed;
     }
 
@@ -15225,6 +15185,302 @@ SOFTWARE.
     var sec = document.getElementById(slug);
     if (sec) io.observe(sec);
   });
+})();
+</script>
+<script>window.A101_TRACK = {"websiteId":"e7541ca0-f7cb-4adb-ac15-b2f0f8b3a4b9","domains":"agents102.bosser.consulting","site":"handbook","release":"2026-11-25"};</script>
+<script>/* Behavioural tracking for the public Agents 101 self-study site (Umami).
+ *
+ * Loads Umami itself and sends a small set of named events. Cookieless: no
+ * cookie, no localStorage, no user id; dedupe is per page load only.
+ *
+ * Config, from the first that exists:
+ *   window.A101_TRACK = { websiteId, domains, site, release }   (inlined builds)
+ *   data-website-id / data-domains / data-site / data-release on this <script>
+ *   site/analytics.json, fetched from beside layouts/ (hand-written pages)
+ *
+ * Relies only on markup the handbook build keeps across redesigns:
+ *   section.module[id]       a module, prework or supplementary page
+ *   section.phase[id]        a lecture or exercise step inside a module
+ *   .copy-btn                every copy button (prompt blocks and plain <pre>)
+ *   video                    walkthrough videos
+ *   a[href*=".tar.gz"]       starter payload download
+ *   [data-a101-os]           Mac / Windows picker
+ *   [data-runtime]           Cowork / Desktop / CLI ... switcher
+ *   .layout-toggle__btn[data-mode], .deck__exit, .deck__count   Long-read / Slides
+ *   [data-umami-event]       hand-placed buttons (home page), handled by Umami itself
+ *
+ * Events (names fixed so Umami funnels can use them as steps):
+ *   prework-start  prework-done  M1-start  M1-done ... M8-start  M8-done
+ *   <slug>-start / <slug>-done   for unnumbered pages (supplementary, reference)
+ *   step            {module, step}
+ *   copy-prompt     {module, step, n, kind}      copy-failed {module, step}
+ *   video-play / video-half / video-end    {video, module}
+ *   download-starter {file, module}
+ *   os-pick {os}   runtime-pick {runtime}   view-switch {to}
+ *   outbound {host, module}   contact-click {module}
+ * Every event also carries {site, view} (view = read | slides).
+ */
+(function () {
+    'use strict';
+    if (typeof window === 'undefined' || window.__a101Track) return;
+    window.__a101Track = true;
+
+    var me = document.currentScript;
+    var cfg = window.A101_TRACK || {};
+    function opt(k, attr) {
+        if (cfg[k] != null && cfg[k] !== '') return String(cfg[k]);
+        return me && me.getAttribute(attr) ? me.getAttribute(attr) : '';
+    }
+    var WEBSITE_ID = opt('websiteId', 'data-website-id');
+    var DOMAINS = opt('domains', 'data-domains');
+    var SITE = opt('site', 'data-site') || 'handbook';
+    var RELEASE = opt('release', 'data-release');
+    var DWELL_MS = cfg.dwellMs != null ? cfg.dwellMs : 3000;
+
+    // ── Umami loader + queue ────────────────────────────────────────────
+    function loadUmami(id, domains, release) {
+        if (!id || document.querySelector('script[data-website-id]')) return;
+        var u = document.createElement('script');
+        u.defer = true;
+        u.src = cfg.src || 'https://cloud.umami.is/script.js';
+        u.setAttribute('data-website-id', id);
+        if (domains) u.setAttribute('data-domains', domains);
+        if (release) u.setAttribute('data-tag', release);
+        (document.head || document.documentElement).appendChild(u);
+    }
+    if (WEBSITE_ID) loadUmami(WEBSITE_ID, DOMAINS, RELEASE);
+    else if (me && me.src && window.fetch) {
+        // Hand-written pages (home) load this file by URL: read the one
+        // config the build uses, site/analytics.json, from beside layouts/.
+        fetch(me.src.replace(/layouts\/track\.js.*$/, 'analytics.json'), { credentials: 'omit' })
+            .then(function (r) { return r.ok ? r.json() : {}; })
+            .then(function (a) {
+                RELEASE = RELEASE || a.release || '';
+                loadUmami(a.websiteId, DOMAINS || a.domains, RELEASE);
+            })
+            .catch(function () {});
+    }
+    var queue = [];
+    var sent = Object.create(null);
+    function view() {
+        return document.body && document.body.classList.contains('slides-active') ? 'slides' : 'read';
+    }
+    function flush() {
+        if (!window.umami || typeof window.umami.track !== 'function') return false;
+        while (queue.length) {
+            var q = queue.shift();
+            try { window.umami.track(q[0], q[1]); } catch (e) { /* never break the page */ }
+        }
+        return true;
+    }
+    function send(name, data, onceKey) {
+        if (onceKey) {
+            if (sent[onceKey]) return;
+            sent[onceKey] = 1;
+        }
+        var d = { site: SITE, view: view() };
+        for (var k in data) if (Object.prototype.hasOwnProperty.call(data, k)) d[k] = data[k];
+        queue.push([name.slice(0, 50), d]);
+        flush();
+    }
+    var tries = 0;
+    // Umami loads deferred; hold events until it is there (max 60 s).
+    var timer = setInterval(function () {
+        if (flush() || ++tries > 120) clearInterval(timer);
+    }, 500);
+    window.A101Track = { send: send, _queue: queue };
+
+    // ── Module labels ───────────────────────────────────────────────────
+    var labels = Object.create(null);
+    function labelFor(section) {
+        if (!section || !section.id) return 'top';
+        if (labels[section.id]) return labels[section.id];
+        var id = section.id, label = id;
+        if (id === 'prework') label = 'prework';
+        else {
+            var sel = 'a[href="#' + (window.CSS && CSS.escape ? CSS.escape(id) : id) + '"] .module-n';
+            var n = document.querySelector(sel);
+            var num = n ? parseInt(n.textContent, 10) : NaN;
+            if (!isNaN(num) && num > 0) label = 'M' + num;
+        }
+        labels[id] = label;
+        return label;
+    }
+    function where(el) {
+        var mod = el && el.closest ? el.closest('section.module') : null;
+        var step = el && el.closest ? el.closest('section.phase') : null;
+        return {
+            module: mod ? labelFor(mod) : (el && el.closest && el.closest('section[id]') ? el.closest('section[id]').id : 'top'),
+            step: step ? step.id : ''
+        };
+    }
+
+    // ── Reading progress (long-read) ────────────────────────────────────
+    function startObservers() {
+        if (!('IntersectionObserver' in window)) return;
+        var timers = new Map();
+        function dwell(fire) {
+            return function (entries) {
+                entries.forEach(function (en) {
+                    var t = en.target;
+                    if (en.isIntersecting) {
+                        if (!timers.has(t)) timers.set(t, setTimeout(function () { fire(t); }, DWELL_MS));
+                    } else if (timers.has(t)) {
+                        clearTimeout(timers.get(t));
+                        timers.delete(t);
+                    }
+                });
+            };
+        }
+        // A section counts as reached when it holds the upper half of the
+        // screen for DWELL_MS: a fast scroll past does not count.
+        var upper = { rootMargin: '0px 0px -50% 0px' };
+        var modIO = new IntersectionObserver(dwell(function (t) {
+            var l = labelFor(t);
+            send(l + '-start', { module: l }, 'start:' + l);
+        }), upper);
+        var stepIO = new IntersectionObserver(dwell(function (t) {
+            var w = where(t);
+            send('step', { module: w.module, step: t.id }, 'step:' + t.id);
+        }), upper);
+        var endIO = new IntersectionObserver(dwell(function (t) {
+            var l = t.getAttribute('data-a101-end');
+            send(l + '-done', { module: l }, 'done:' + l);
+            send(l + '-start', { module: l }, 'start:' + l); // a done implies a start
+        }), { threshold: 0 });
+        document.querySelectorAll('section.module[id]').forEach(function (m) {
+            modIO.observe(m);
+            var s = document.createElement('div');
+            s.setAttribute('data-a101-end', labelFor(m));
+            s.setAttribute('aria-hidden', 'true');
+            s.style.cssText = 'height:1px;margin:0;padding:0;';
+            m.appendChild(s);
+            endIO.observe(s);
+        });
+        document.querySelectorAll('section.phase[id]').forEach(function (p) { stepIO.observe(p); });
+    }
+
+    // ── Reading progress (slides) ───────────────────────────────────────
+    // The deck hides the long-read; its counter reads "M1·3 — 12 / 140".
+    var lastCode = null, lastSlide = 0;
+    function codeToLabel(code) {
+        if (!code) return null;
+        if (code === 'P') return 'prework';
+        if (/^M\d+$/.test(code)) return code;
+        return null;
+    }
+    function onDeckCount(txt) {
+        var m = /^(?:([A-Z]+\d*)(?:·\d+)?\s+—\s+)?(\d+)\s*\/\s*(\d+)/.exec(txt || '');
+        if (!m) return;
+        var label = codeToLabel(m[1]);
+        var n = parseInt(m[2], 10), total = parseInt(m[3], 10);
+        if (label) {
+            send(label + '-start', { module: label }, 'start:' + label);
+            if (lastCode && lastCode !== label && n === lastSlide + 1) {
+                send(lastCode + '-done', { module: lastCode }, 'done:' + lastCode);
+            }
+            if (n === total) send(label + '-done', { module: label }, 'done:' + label);
+            lastCode = label;
+        }
+        lastSlide = n;
+    }
+    function watchDeck() {
+        if (!('MutationObserver' in window)) return;
+        var pending = false;
+        new MutationObserver(function () {
+            if (pending) return;
+            pending = true;
+            setTimeout(function () {
+                pending = false;
+                var c = document.querySelector('.deck__count');
+                if (c && document.body.classList.contains('slides-active')) onDeckCount(c.textContent);
+            }, 250);
+        }).observe(document.body, { subtree: true, childList: true, characterData: true });
+    }
+
+    // ── Clicks ──────────────────────────────────────────────────────────
+    document.addEventListener('click', function (ev) {
+        var t = ev.target;
+        if (!t || !t.closest) return;
+
+        var copy = t.closest('.copy-btn');
+        if (copy) {
+            var w = where(copy);
+            var host = copy.closest('.prompt-block') || copy.parentNode;
+            var scope = copy.closest('section.phase') || copy.closest('section[id]') || document.body;
+            var all = Array.prototype.slice.call(scope.querySelectorAll('.copy-btn'));
+            var n = all.indexOf(copy) + 1;
+            var kind = host && host.classList && host.classList.contains('prompt-block') ? 'prompt' : 'code';
+            send('copy-prompt', { module: w.module, step: w.step, n: n, kind: kind });
+            // The button repaints to "Copy failed" when the clipboard refuses.
+            setTimeout(function () {
+                if (/fail/i.test(copy.textContent)) send('copy-failed', { module: w.module, step: w.step });
+            }, 600);
+            return;
+        }
+
+        var os = t.closest('[data-a101-os]');
+        if (os) { send('os-pick', { os: os.getAttribute('data-a101-os') }); return; }
+
+        var rt = t.closest('[data-runtime]');
+        if (rt && rt.closest('#runtime-switcher, .runtime-switcher')) {
+            send('runtime-pick', { runtime: rt.getAttribute('data-runtime') });
+            return;
+        }
+
+        var lt = t.closest('.layout-toggle__btn[data-mode]');
+        if (lt) { send('view-switch', { to: lt.getAttribute('data-mode') }); return; }
+        if (t.closest('.deck__exit')) { send('view-switch', { to: 'read' }); return; }
+
+        var a = t.closest('a[href]');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var w2 = where(a);
+        if (/\.tar\.gz(\?|#|$)/.test(href)) {
+            send('download-starter', { file: href.split('/').pop().split('?')[0], module: w2.module });
+            return;
+        }
+        if (/^mailto:/i.test(href)) { send('contact-click', { module: w2.module }); return; }
+        if (a.hasAttribute('data-umami-event')) return; // Umami sends these itself
+        var url;
+        try { url = new URL(href, location.href); } catch (e) { return; }
+        if (url.host && url.host !== location.host && /^https?:$/.test(url.protocol)) {
+            send('outbound', { host: url.host, module: w2.module });
+        }
+    }, true);
+
+    // ── Video ───────────────────────────────────────────────────────────
+    function vname(v) {
+        var label = v.getAttribute('data-name') || v.getAttribute('aria-label');
+        var s = v.currentSrc || v.getAttribute('src') || (v.querySelector('source') || {}).src || '';
+        if (label || /^(data|blob):/.test(s)) return (label || 'video').slice(0, 80);
+        return (s.split('/').pop() || 'video').split('?')[0];
+    }
+    document.addEventListener('play', function (ev) {
+        var v = ev.target;
+        if (!v || v.tagName !== 'VIDEO') return;
+        var w = where(v);
+        send('video-play', { video: vname(v), module: w.module }, 'vplay:' + vname(v));
+    }, true);
+    document.addEventListener('timeupdate', function (ev) {
+        var v = ev.target;
+        if (!v || v.tagName !== 'VIDEO' || !v.duration) return;
+        if (v.currentTime / v.duration >= 0.5) {
+            send('video-half', { video: vname(v), module: where(v).module }, 'vhalf:' + vname(v));
+        }
+    }, true);
+    document.addEventListener('ended', function (ev) {
+        var v = ev.target;
+        if (!v || v.tagName !== 'VIDEO') return;
+        send('video-end', { video: vname(v), module: where(v).module }, 'vend:' + vname(v));
+    }, true);
+
+    function boot() {
+        // Let the handbook runtime render first (prompt blocks, toc numbers).
+        setTimeout(function () { startObservers(); watchDeck(); }, 0);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
 })();
 </script>
 <script data-a101-setup>(function () {

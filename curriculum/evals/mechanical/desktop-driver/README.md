@@ -1,0 +1,112 @@
+# desktop-driver
+
+Drives the Claude desktop app (Chat/Cowork + Code tabs) from a script, verifying every step, and records takes as screen video. Uses: course setup videos, live simulation of Cowork-path prompts, UI drift checks when the app changes. Sibling of `tmux-runner` (CLI path); this is the GUI path.
+
+## Contract
+
+1. **A named start state** before every take: `start_state <name>` sets the standard window (every crop is px of it), then runs `states/<name>.sh`, which reaches the state and verifies it, or stops. `cowork-new-chat` = Chat tab, sidebar at top, a new empty chat, chip reads `Project or folder`, nothing open on top. A take that continues another take's end state says so in its header.
+2. **Click text, never remembered coordinates.** `click_text` OCRs the window (macOS Vision) and clicks the centre of the match. Only exception: the Chat/Code tab icons (no text), `276,46` / `310,47`.
+3. **Expect before the next step.** Every click is followed by `expect_text` for the screen it should open. First surprise = abort. Typing only after its target field is confirmed on screen.
+4. **`settle` after anything that moves** (scroll, animation): same OCR position twice, 0.5 s apart, then click.
+5. **Dry first.** A take's `dry` mode runs to the last step before any change on disk, cancels out, resets.
+
+## Use
+
+```bash
+cd curriculum/evals/mechanical/desktop-driver
+bash takes/a101-prework-add-folder.sh dry          # rehearse: runs to the last step before anything changes, cancels out
+./clip.sh a101-prework-add-folder                  # record + redact + leak check + contact sheet -> out/<take>.mp4
+./clip.sh a101-prework-add-folder --redact         # re-redact the existing recording after tuning
+./clip.sh a101-prework-add-folder --cut            # re-cut the hint clips only (seconds, no OCR pass)
+python3 src/lint.py a101-prework-project          # craft lints: dead starts, still tails, edge bands/notches, text size, scale jumps
+./review.sh --hunt a101-prework-project            # defect hunt: an editor with a craft checklist (lint findings handed in)
+./review.sh a101-prework-add-folder                # student-reviewer round: frames + brief for a fresh subagent
+bash test.sh                                       # privacy path fails closed; stale clips pruned (no GUI)
+```
+
+`clip.sh` builds the helpers on first use. Run with bash, not zsh. `out/` is gitignored: the raw `.mov` shows the operator's whole screen and never leaves the machine; only the `.mp4` that printed `CLEAN` does.
+
+## New take
+
+Copy `takes/a101-prework-add-folder.sh`. Keep the shape: header names start and end state → guard against leftovers → `start_state` → `rec_start` → `click_text` / `expect_text` pairs → `dry` branch that stops before the first change on disk → `rec_stop`. Everything else is comment lines in the take, and the shared scripts never change per take:
+
+- `# allow:` text this take may show sharp on top of the app labels in `redact-allow.txt` — course names only (`agents-101`, the starter's folders), never a name a user chose.
+- `# redact: --crop … --trim … --blur x,y,w,h@from-to`, once.
+- `# cut[name]: …`, one per hint (below).
+- `# review-text:` the workbook text the student reads beside the video; `# review-fixed:` constraints and fixes already tried and cut, so a reviewer does not ask for them again.
+
+Then: dry-run until it passes → `clip.sh` → `lint.py` clean → `review.sh --hunt` until it finds only polish → `review.sh` until `great and clear`. Plan of the Prework takes: `PREWORK-TAKES.md`.
+
+## Build in bits, test fast
+
+A take is a list of named steps (`STEPS=(…)`, one `step_<name>` function each): pre-check the screen, act, post-check. One step's post-check is the next one's pre-check.
+
+- `take.sh list` · `take.sh step <name>` runs ONE step against the live screen. Fix the step that fails, re-run only it, then the next. Never re-run the whole take to probe its next step (each rerun redoes the setup and leaves debris).
+- `take.sh dry` = every step up to the first change on disk, then `undo` (what each step registered with `on_abort`: Esc a dialog, clear a caption). `take.sh record` = every step, recorded.
+- Before scripting a new start state, map it: it differs from the last one more than it looks (a started chat has no folder chip; folders come in under +; its picker says "Add a folder to this session").
+- Start from what exists (an existing chat via sidebar Search); never manufacture setup.
+- Bug → an offline test first. `test-steps.sh` (OCR matching and region geometry against synthetic OCR lines, under a second); `test.sh` (privacy path fails closed, no GUI, a few minutes).
+- Speed, measured 2026-11-20: a screen read is 1.3 s for the whole window and 0.5 s for a step's region (`find_text` reads only its bounds). Redaction costs about 0.17 s per raw frame: `DRAFT=1` redacts at 10 fps while iterating. A check passed on the same bytes is cached (`out/.clean/`), so a re-cut takes 26 s, not 134 s.
+
+## Any Cowork scene
+
+A take is a bash script of verified steps; the same verbs record any training scene in Cowork:
+
+| Verb | Does |
+|---|---|
+| `start_state cowork-new-chat` / `cowork-course-chat` | empty new chat / new chat with `~/Documents/agents-101` attached (most scenes start here) |
+| `click_text` / `expect_text` / `settle` | click text found by OCR / wait for it / wait until it stops moving |
+| `send_prompt "…"` | paste a prompt the way a student does, check it landed, send; restores the operator's clipboard |
+| `wait_settled [s]` | wait until Claude stops writing (window text unchanged 3 checks in a row) |
+| `picker_go PATH` | jump any macOS file picker to a path: the operator's folder list is never browsed |
+| `say_in_box "…"` / `clear_box` | a caption typed into Claude's own message box, never sent, while the pointer moves to its subject; declare it `# allow:`; one line; clear it before the take ends |
+| `allow_if_asked` | answer Cowork's folder-permission card only when it is on screen |
+| `key` / `type_slow` / `press_esc` | a key press / visible typing / Esc (only with a dialog confirmed up) |
+
+**Conversation text: `# show:` regions.** The allowlist only knows app labels, so a prompt and Claude's reply would blur to fog. `# show: x,y,w,h@from-to` (raw px) keeps text sharp inside that region, unless it contains one of this Mac's real names (`~/Documents`, `~/Desktop`, username, and `~/.config/desktop-driver/deny.txt` for people and companies — kept outside the repo). Scope it to the conversation pane, never the sidebar: chat titles in Recents are not on any deny list. A show region needs a course-folder fixture with synthetic content, and Claude's memory can surface the operator's facts in a reply: watch the review frames for them. `--show` without a deny list is refused.
+
+## Hint chains — cut to the hint, not the screen
+
+What ships is not the take but a **chain of hint clips**: 2–6 s each, one key moment, cropped to the place where it happens (the chip and its menu, the name dialog, the Allow card, the result). Maintainer, 2026-11-19: it shows the student only the hint they need, none of the clutter, and it keeps the redaction need close to zero. One take records the whole flow once; each hint is one line in the take:
+
+```
+# cut[3-name-it]: 13.3-19.4 crop=638:300:1037:600 src=raw round=24
+```
+
+- **Crop to the element's own edges.** Measure them in pixels (white panel on dimmed screen: scan outward from inside it), never eyeball. A margin shows slivers of the screen behind.
+- **`round=R`** masks a dialog's rounded corners to white; measure R the same way (the first white pixel per row from the corner).
+- **One action per hint, ending on the press ring.** The recording draws a ring at each click (`screencapture -k`); the ring lasts ~1 frame, so end a raw cut ON the ring frame and let `hold=` freeze it — the hint says *click*, not just *go here*. Find it with a 20–30 fps tile strip of the crop (`ffmpeg … fps=10,crop=…,drawtext=%{pts},tile`). Redacted cuts end on arrival: a pressed button misreads and blurs. Every hint freezes its last frame `hold=` s (default 0.8) — it loops, the eye needs a beat on the target.
+- **Orient, then check.** `lead=S` freezes a hint's first frame (time to find the target on one's own screen); `mark=x:y:w:h:T` draws an orange outline for *check this* (the folder now named, the finished chip) — black ring = click, orange = look. A whole-window overview with blur patches confuses more than it orients: cut it. `mask=` paints a private sliver at a crop edge flat; `scale=` shrinks a tall crop (small text loses — prefer two strips).
+- **Three gates, cheapest first: lints, hunt, student.** A student round asks "can I follow it?" and passed the project chain (round 3, `great and clear`) with 27 craft defects still in it — a hunt the same morning found them; it had seen several and filed them "harmless". Comprehension is the last gate, never the only one. `lint.py` sees what a script can (dead starts, still tails, backdrop bands, notches, small or jumping text); `review.sh --hunt` hands its findings to an editor who assumes defects exist and works a checklist (legibility, framing, dead time, pointer, transitions, context, continuity, text). Defects that recur across takes are machinery bugs, not take bugs: fix the default (clip start at the first in-crop move, hold caps, transitions between different screens, crops from element bounds), then re-lint.
+- **A test that passes on a crash is not a test.** Expected values are never empty strings: print `clean` for no findings.
+- **Done = a fresh student-reviewer says `great and clear`** — after the hunt finds only polish. `review.sh <take>` writes the frames and the brief; a NEW subagent each round reads it. Reviewers disagree across rounds (one asked for the picker overview, a later one found it the only confusing shot): record a rejected fix as `# review-fixed:` so the next round does not re-ask. The add-folder chain took six rounds.
+- **A thin strip is a fine crop.** The picker's button bar alone (New Folder · Cancel · Open) carries two hints with nothing private in it.
+- **The pointer glides, and lands late.** Start a cut early enough for it to enter the crop; check the landing frame, never the script's click time — hint 2 v1 cut before the pointer arrived and pointed at nothing.
+- **`src=raw`** cuts from the unredacted take at native resolution, for crops that show only app text. Redaction blurs a hovered button (the highlight breaks OCR), so a raw cut keeps the hint sharp. The guard: a raw cut must contain **only allowlisted text**; anything else fails it. That is stricter than the name check, because a raw crop has no blur to fall back on.
+- Otherwise cuts come from the redacted video. Redact at native width (`--width` = crop width) so hint crops stay crisp.
+
+## Redaction (`bin/redact`)
+
+- **Allowlist, not denylist.** Every text line OCR finds in every frame is blurred unless it is in `redact-allow.txt` (the app's own labels, the course's own names). Unknown text — anyone's folder, project, file or person names — is blurred by default, wherever it moves. Near-misses of an allowed label (glued chevron, cut-off prefix, misread letters: 1 on short labels, 2 on 8+ chars, which covers labels fading in and out) stay sharp. The Claude welcome line (greeting + first name) is allowed: the maintainer wants it shown.
+- **Big, still patches, not many small blinking ones.** Boxes snap to a 32 px grid and become tracks; a track is lit 2 frames before its first sighting to 2 after its last, bridging OCR dropouts up to 10 frames. Tracks lit together merge when stacked in one column, so a list is one block; nothing chains sideways. `redact` prints how many frames change blur shape — a calm clip changes only at scene changes (take 1: under a tenth of its frames). Mask edges are feathered.
+- **Holding boxes across a time window (±N frames) looked safe and was wrong:** it mixed scenes, a dialog's boxes merged with the previous screen's, and the whole frame went soft.
+- **`--blur` regions** cover private pixels OCR cannot read (artifact thumbnails); `@from-to` limits one to a time window (e.g. step it below a dialog while the dialog is up).
+- **Leak check** (in `clip.sh`): OCRs the finished clip against this Mac's real names (`~/Documents`, `~/Desktop`, username), built at run time, never written. Entries that are also app words ("Auto") are skipped — they cannot be told apart from the UI. Any hit fails the clip. Proven fail-closed: the same check on the raw take finds hundreds of hits.
+- **Known soft spots:** half-second fades (menu closing, dialog dismissing) can blur a label for a frame or two.
+- Adding to the allowlist: only the app's wording, never a name a user chose.
+
+## Setup (once per Mac)
+
+- System Settings → Privacy & Security → **Accessibility** and **Screen & System Audio Recording**: Claude on. Each applies only after Claude is relaunched. Without Screen Recording, captures show only the wallpaper.
+- Geometry in `steps.sh` (`WIN_X/Y/W/H`) is the operator's window; check with `osascript -e 'tell application "System Events" to get {position, size} of window 1 of process "Claude"'`.
+
+## Learned (2026-11-18)
+
+- **The app reopens whatever was last viewed.** ⌘N in the Chat tab is unreliable; a blind take opened a doc in edit mode and typed into it. Hence the standard state.
+- **This session lives in the same window.** Code tab = the operator's transcript. Switching to Chat moves them off it, and their glance can flip it back mid-take: hands off during a take. Quiet first seconds (OCR checks) look like a hang; they are not.
+- **Esc only when a dialog is confirmed on screen.** In the Code tab, Esc reaches the chat input.
+- **OCR quirks:** chevrons read as a trailing `v` (`Project or folder v`), sidebar icons as a leading glyph, badges join the label (`Dispatch Beta`). Match `contains` for those.
+- **Park the pointer by moving, never clicking.** A "park" click at an empty-looking spot opened a *Recent artifacts* card (a doc, in edit mode). `bin/scroll x y 0` moves without clicking.
+- **Scroll glides past the event.** Clicking `New` mid-glide hit `Artifacts`.
+- **Cowork facts:** Cowork = the Chat tab (no separate tab). Folder chip → `Add folder` opens the picker *Add folders to this session* (has its own `New Folder`). It **adds**; an already-attached default stays (`… +1`). Opening a folder asks *Allow Claude to change files in "…"?* (Cancel / Always allow / Allow). The picker remembers its last location. Cowork's shell reaches the internet (`curl` HTTP 200).
+- **System Events `click at` does nothing on the Electron web view;** real HID events (`bin/click`, CGEvent) do. The AX tree is exposed only intermittently (`AXManualAccessibility`), so OCR is the locator.

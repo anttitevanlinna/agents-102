@@ -42,7 +42,7 @@ When the job is done, the helper returns a single result to the lead agent and d
 
 For the full reference, <span class="rt-claude rt-code">open the [Claude Code helper-agent documentation](https://code.claude.com/docs/en/sub-agents)</span><span class="rt-codex rt-code">open the [Codex helper-agent documentation](https://learn.chatgpt.com/docs/agent-configuration/subagents)</span><span class="rt-copilot rt-code">open the [GitHub Copilot subagent documentation](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-custom-agents)</span><span class="rt-cowork">open the in-app help and search for *agents*</span>. You're after the shape: *helper with instructions, own context, returns a result. You summon it by asking.*
 
-**What to bring to class:** the three one-line practitioner takeaways.
+**What to bring to Module 3:** the three one-line practitioner takeaways.
 
 <!-- maintainer -->
 

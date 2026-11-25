@@ -12,17 +12,17 @@ Module 2 works on real history: meetings, notes, decisions, half-written documen
 
 Module 2 builds a **memory**: a folder of notes and source material the agent reads before answering. Bring a real challenge: a decision you're making, a bet you're placing, or work whose direction is still unclear.
 
-Pick one open enough to need thought, narrow enough for 5-8 topic pages. The agent drafts the brief in class.
+Pick one open enough to need thought, narrow enough for 5-8 topic pages.
 
 If stuck, scan your next two weeks of calendar; the biggest unresolved item is usually your challenge.
 
 ## Check what the agent can read
 
-Module 2 works best when the agent can read a source connected to your challenge. You already checked Microsoft 365 or Google Workspace in the main prework. Now check your company wiki or document system.
+Module 2 works best when the agent can read a source connected to your challenge. If your work lives in a wiki or document system, check that the agent can reach it. Your own files work too.
 
-**Connectors** link the agent to places where your work lives: Confluence, SharePoint, OneDrive, Google Drive, or whatever your company uses. Look for them in your runtime's connector settings.
+**Connectors** link the agent to places where your work lives: Confluence, SharePoint, OneDrive, Google Drive, or whatever you use. Look for them in your runtime's connector settings.
 
-If a connector needs admin approval, tell the training coordinator and keep going. The memory can also start from files and pasted excerpts in your training directory.
+Without a connector, the memory can start from files and pasted excerpts in your training directory.
 
 ## Put a plan before action
 

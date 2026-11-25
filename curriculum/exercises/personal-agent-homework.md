@@ -24,7 +24,7 @@ For the morning-plan job, enable Google Calendar or Microsoft Outlook Calendar i
 
 *7 min*
 
-Give your daily output your company website's look: colours, typography, headers, voice. The agent extracts the pattern into a plain-language style file on disk and reuses it by name, like the memory.
+Give your daily output the look of your company's website, or any site you like: colours, typography, headers, voice. The agent extracts the pattern into a plain-language style file on disk and reuses it by name, like the memory.
 
 {{prompt:personal-agent-homework-1}}
 

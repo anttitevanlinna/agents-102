@@ -4,7 +4,7 @@
 
 **Reading 2. Agent risk sits on top of normal security.** Network controls, access rights and audit logs still apply. Agents add non-deterministic behaviour, prompt injection (direct, or inside retrieved text) and emergent capability you can only bound. Also watch secrets in context, tool confusion and skill supply-chain.
 
-**Before class:** jot three to five lines on what matters about your company's data, e.g. "Sales never lets unredacted CRM exports leave the building."
+**Before Module 4:** jot three to five lines on what matters about the data you work with, e.g. "Sales never lets unredacted CRM exports leave the building."
 
 <!-- maintainer -->
 

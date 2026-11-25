@@ -95,7 +95,7 @@ Each module adds the next part of the answer:
 - **Module 7:** Agents that build agents for the people around you.
 <!--/flag:module:agents-building-agents-solo-->
 
-Don't skim ahead. Each module earns the next, and reading ahead mostly replaces the feeling with a vocabulary. That is exactly what this training is trying to avoid. Close this file. See you in the room.
+Don't skim ahead. Each module earns the next, and reading ahead mostly replaces the feeling with a vocabulary. That is exactly what this training is trying to avoid. Close this file.
 
 ## The autonomy ladder: what may the agent do?
 

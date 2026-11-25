@@ -59,7 +59,7 @@ Where the critic sees generic, your context is thin: add one sharp detail, then 
 
 ## Bring to Module 2
 
-Bring a live challenge and working access to Confluence and OneDrive. Complete the linked Module 2 prework before you come.
+Bring a live challenge. Do the linked Module 2 prework first.
 
 ## Pre-reads before Module 2
 
@@ -70,7 +70,7 @@ Optional: Karpathy's LLM Wiki post; Lindenberg's memory-architecture piece.
 Save the prework, end this session, then start Module 2 fresh at `~/Documents/agents-101/`.
 
 ## Next
-The agent re-reads the output file next time.
+Your rules file already carries what you learned into the next session. Module 2 grows that into a memory for one real challenge.
 
 <!-- maintainer -->
 

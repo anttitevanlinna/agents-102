@@ -14,8 +14,41 @@ const { createNavigationOverlay, renderCourseNavigation } = require('./a101-mvp-
 require('../site/layouts/curriculum.js').configureMarked(marked);
 
 const ROOT = path.resolve(__dirname, '..');
-const EDITION = 'acme-mvp';
-const WORKBOOK_URL = `https://agents102.bosser.consulting/clients/${EDITION}/agents-101/`;
+const SITE = 'https://agents102.bosser.consulting';
+const CR = require('../site/layouts/curriculum.js');
+const CT = require('./calculate-time.js');
+
+// Two editions share one pipeline. ACME is the password-gated customer
+// workbook. The open edition is the free public self-study course at
+// site/agents-101/: Modules 1 to 6 plus the solo Agents building agents module
+// (the team modules 7 and 8 stay in the licensed team edition), a licence line
+// in the footer, and minutes per module with Pro plan limit notes.
+const SOLO_MODULE = { slug: 'agents-building-agents-solo', title: 'Agents Building Agents', short: 'Agents building agents' };
+const SHORT_TITLES = {
+  'getting-going': 'Getting going', 'building-agent-systems': 'Building agent systems', 'multi-agent-systems': 'Multi-agent systems',
+  security: 'Security', 'output-quality': 'Output quality', evaluations: 'Evaluations', 'personal-to-team': 'Personal to team',
+  'agents-building-agents': 'Agents building agents',
+};
+const EDITIONS = {
+  'acme-mvp': {
+    slug: 'acme-mvp', workbookUrl: `${SITE}/clients/acme-mvp/agents-101/`, brand: 'ACME',
+    label: 'ACME handbook', title: 'Agents 101 handbook — ACME', hub: true, open: false,
+  },
+  open: {
+    slug: 'open', workbookUrl: `${SITE}/agents-101/`, brand: 'Self-study',
+    label: 'Self-study edition', title: 'Agents 101 handbook — self-study', hub: false, open: true,
+    publicDir: path.join(ROOT, 'site/agents-101'),
+  },
+};
+const EDITION = EDITIONS['acme-mvp'].slug;
+const WORKBOOK_URL = EDITIONS['acme-mvp'].workbookUrl;
+const NUMBER_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'];
+// Modules where a Pro plan's usage limit is likely within one sitting.
+const PRO_LIMIT_MODULES = new Set(['multi-agent-systems', 'output-quality', 'evaluations']);
+const LICENCE_TERMS = 'https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md#personal-use-license';
+const LICENCE_LINE = '<p class="a101-licence">Free to take for your own learning and your own work. What you build is yours. '
+  + 'Running this course as a training, inside your company or outside it, needs a training licence from Bosser. '
+  + `<a href="${LICENCE_TERMS}" target="_blank" rel="noopener">Licence terms</a></p>`;
 const DELIVERY = path.join(ROOT, 'curriculum/delivery/agents-101-mvp');
 const SETUP_CSS = `
 .a101-video-placeholder { margin: 1.25rem 0; padding: 1rem 1.25rem; border: 1px solid var(--line); border-radius: 0.35rem; background: var(--bg); color: var(--fg-2); }
@@ -52,8 +85,8 @@ const SETUP_SCRIPT = `(function () {
 })();`;
 
 
-function versionStarterDownload(html, archiveBytes) {
-  const url = WORKBOOK_URL + 'agents-101-starter.tar.gz';
+function versionStarterDownload(html, archiveBytes, workbookUrl = WORKBOOK_URL) {
+  const url = workbookUrl + 'agents-101-starter.tar.gz';
   const before = `href="${url}"`;
   const count = html.split(before).length - 1;
   if (count !== 1) throw new Error(`Starter download version expected one anchor, received ${count}`);
@@ -93,7 +126,7 @@ function moveContentsAfterPrework(html) {
   return (html.slice(0, start) + html.slice(end)).replace(moduleOne, contents + '\n\n' + moduleOne);
 }
 
-function prependOfflinePrework(html, prework) {
+function prependOfflinePrework(html, prework, workbookUrl = WORKBOOK_URL) {
   const target = '<section class="module" id="theory-m1">';
   if (html.includes('id="prework"')) throw new Error('Offline handbook already contains Prework');
   const count = html.split(target).length - 1;
@@ -104,7 +137,7 @@ function prependOfflinePrework(html, prework) {
     const local = new Set([...theory.window.document.querySelectorAll('[id]'), ...route.window.document.querySelectorAll('[id]')].map(node => node.id));
     for (const link of route.window.document.querySelectorAll('a[href^="#"]')) {
       const fragment = link.getAttribute('href');
-      if (!local.has(fragment.slice(1))) link.setAttribute('href', WORKBOOK_URL + fragment);
+      if (!local.has(fragment.slice(1))) link.setAttribute('href', workbookUrl + fragment);
     }
     offlinePrework = route.window.document.getElementById('prework').outerHTML;
   } finally { theory.window.close(); route.window.close(); }
@@ -146,7 +179,7 @@ function walkFiles(dir, prefix = '') {
     });
 }
 
-function repackStarter(archive, stage, mapFile, prework) {
+function repackStarter(archive, stage, mapFile, prework, edition = EDITIONS['acme-mvp']) {
   const unpacked = path.join(stage, 'starter');
   fs.mkdirSync(unpacked);
   execFileSync('tar', ['xzf', archive, '-C', unpacked], { env: { ...process.env, LC_ALL: 'C' } });
@@ -161,7 +194,9 @@ function repackStarter(archive, stage, mapFile, prework) {
   }
   fs.copyFileSync(mapFile, path.join(unpacked, 'prework/course-navigation.md'));
   const handbook = path.join(unpacked, 'agents-101-handbook.html');
-  fs.writeFileSync(handbook, stripExternalFonts(prependOfflinePrework(applyLoaderFraming(fs.readFileSync(handbook, 'utf8'), { required: false }), prework)));
+  let offline = prependOfflinePrework(applyLoaderFraming(fs.readFileSync(handbook, 'utf8'), { required: false }), prework, edition.workbookUrl);
+  if (edition.open) offline = addLicenceLine(dropTeamModules(offline, unpacked));
+  fs.writeFileSync(handbook, stripExternalFonts(offline));
 
   // A sorted, nonrecursive file list keeps tar output independent of creation
   // order; fixed mtimes and gzip without a filename preserve repeatable bytes.
@@ -178,9 +213,128 @@ function repackStarter(archive, stage, mapFile, prework) {
 }
 
 const shell = name => fs.readFileSync(path.join(DELIVERY, 'shell', name), 'utf8');
+const MEDIA = ['mac-folder-picker.jpg', 'mac-folder-picker.mp4'];
+const media = name => fs.readFileSync(path.join(DELIVERY, 'media', name)).toString('base64');
+function inlineMedia(html) {
+  return html.replace('poster="media/mac-folder-picker.jpg"', `poster="data:image/jpeg;base64,${media('mac-folder-picker.jpg')}"`)
+    .replace('src="media/mac-folder-picker.mp4"', `src="data:video/mp4;base64,${media('mac-folder-picker.mp4')}"`);
+}
 
-function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(ROOT, 'site/clients'), quiet = false } = {}) {
+// The modules an edition runs. The open edition adds the solo module once its
+// file exists, so the build works before and after it is written.
+function editionModules(edition) {
+  const all = CR.TRAININGS['agents-101'].modules;
+  if (!edition.open) return all;
+  const solo = fs.existsSync(path.join(ROOT, 'curriculum/trainings/agents-101', SOLO_MODULE.slug + '.md'))
+    ? [{ slug: SOLO_MODULE.slug, title: SOLO_MODULE.title }] : [];
+  return [...all.filter(m => m.slug !== 'personal-to-team' && m.slug !== 'agents-building-agents'), ...solo];
+}
+
+// Return rows for the modules this edition runs. A row tagged with a module
+// the edition leaves out is dropped; the last row's next link stays inside
+// the edition.
+function editionCheckpoints(checkpoints, modules) {
+  const slugs = modules.map(m => m.slug);
+  const rows = checkpoints.filter(c => !c.module || slugs.includes(c.module)).map(c => ({ ...c }));
+  for (const row of rows) {
+    if (!row.module || slugs.includes(row.nextAnchor.slice(1))) continue;
+    const i = slugs.indexOf(row.module), next = modules[i + 1];
+    row.nextAnchor = '#' + (next ? next.slug : row.module);
+    row.nextLabel = next ? `Start Module ${i + 2}: ${SHORT_TITLES[next.slug] || SOLO_MODULE.short}` : `Finish Module ${i + 1} and the course`;
+  }
+  return rows;
+}
+
+// The header's course map lists exactly the modules this edition runs.
+function headerModules(html, modules) {
+  const start = '<ol class="workbook-topnav__modules">';
+  const at = html.indexOf(start), end = html.indexOf('</ol>', at);
+  if (at < 0 || end < 0) throw new Error('Header module list is missing');
+  const items = modules.map((m, i) => {
+    const short = SHORT_TITLES[m.slug] || (m.slug === SOLO_MODULE.slug ? SOLO_MODULE.short : m.title);
+    return `      <li><a href="#${m.slug}" data-target="${m.slug}"><span>M${i + 1}</span> ${short}</a></li>`;
+  });
+  return html.slice(0, at) + start + '\n' + items.join('\n') + '\n  ' + html.slice(end);
+}
+
+// The team modules (7 and 8) belong to the licensed team edition. The open
+// starter leaves out their offline theory, their pattern file and the prompts
+// no open module uses.
+function teamOnlyPrompts(modules) {
+  const keys = slug => {
+    const file = path.join(ROOT, 'curriculum/trainings/agents-101', slug + '.md');
+    if (!fs.existsSync(file)) return new Set();
+    const text = fs.readFileSync(file, 'utf8'), out = new Set();
+    const add = t => { for (const k of t.matchAll(/\{\{prompt:([^}]+)\}\}/g)) out.add(k[1]); };
+    add(text);
+    for (const r of text.matchAll(/\]\(((?:exercises|lectures)\/[^)#]+)/g)) {
+      const leaf = path.join(ROOT, 'curriculum', r[1]);
+      if (fs.existsSync(leaf)) add(fs.readFileSync(leaf, 'utf8'));
+    }
+    return out;
+  };
+  const keep = new Set(modules.flatMap(m => [...keys(m.slug)]));
+  return [...new Set(['personal-to-team', 'agents-building-agents'].flatMap(s => [...keys(s)]))].filter(k => !keep.has(k));
+}
+
+function dropTeamModules(html, unpacked) {
+  for (const key of teamOnlyPrompts(editionModules(EDITIONS.open))) fs.rmSync(path.join(unpacked, 'prompts', key + '.md'), { force: true });
+  fs.rmSync(path.join(unpacked, 'patterns/personal-to-team-patterns.md'), { force: true });
+  const patterns = path.join(unpacked, 'patterns');
+  if (fs.existsSync(patterns) && !fs.readdirSync(patterns).length) fs.rmdirSync(patterns);
+  const dom = new JSDOM(html);
+  try {
+    const doc = dom.window.document;
+    for (const id of ['theory-m7', 'theory-m8']) {
+      const section = doc.getElementById(id);
+      if (!section) throw new Error(`Offline handbook is missing ${id}`);
+      section.remove();
+      for (const link of doc.querySelectorAll(`a[href="#${id}"]`)) (link.closest('li') || link).remove();
+    }
+    return dom.serialize();
+  } finally { dom.window.close(); }
+}
+
+function addLicenceLine(html) {
+  // The page also carries the footer source in its runtime script; match the rendered element.
+  const footer = '<footer class="curriculum-footer"><p>';
+  const count = html.split(footer).length - 1;
+  if (count !== 1) throw new Error(`Licence line expected one footer, received ${count}`);
+  return html.replace(footer, '<footer class="curriculum-footer">' + LICENCE_LINE + '<p>')
+    .replace('</head>', '<style data-a101-licence>.a101-licence { margin: 0 0 .5rem; }</style>\n</head>');
+}
+
+const roundMinutes = n => Math.max(5, Math.round(n / 5) * 5);
+
+// One line under each module heading: how long it takes alone, and where a
+// Pro plan may reach its usage limit.
+function addModuleTimes(html, modules) {
+  for (const [i, m] of modules.entries()) {
+    const minutes = m.slug === SOLO_MODULE.slug ? 60 : CT.computeModule('agents-101', m.slug).total.hi;
+    if (!minutes) throw new Error(`No computed time for ${m.slug}`);
+    const limit = PRO_LIMIT_MODULES.has(m.slug)
+      ? ' On a Pro plan this module may reach your usage limit. If it does, pause and pick up when the limit resets.' : '';
+    const plan = i === 0 ? ' The course needs a paid Claude plan. Pro, the lowest paid plan, is enough.' : '';
+    const note = `<p class="a101-module-time">About ${roundMinutes(minutes)} minutes.${plan}${limit}</p>`;
+    const open = `<section class="module" id="${m.slug}">`;
+    const at = html.indexOf(open);
+    if (at < 0) throw new Error(`Module section missing: ${m.slug}`);
+    const h1 = html.indexOf('</h1>', at);
+    const next = html.indexOf('<section class="module"', at + open.length);
+    if (h1 < 0 || (next >= 0 && h1 > next)) throw new Error(`Module heading missing: ${m.slug}`);
+    html = html.slice(0, h1 + 5) + '\n' + note + html.slice(h1 + 5);
+  }
+  return html.replace('</head>', '<style data-a101-times>.a101-module-time { color: var(--fg-2); font-size: .95rem; }</style>\n</head>');
+}
+
+function buildEdition({ edition: editionKey = 'acme-mvp', outputDir, publicDir, quiet = false } = {}) {
+  if (!EDITIONS[editionKey]) throw new Error(`Unknown edition: ${editionKey}. Known: ${Object.keys(EDITIONS).join(', ')}`);
+  const edition = publicDir ? { ...EDITIONS[editionKey], publicDir } : EDITIONS[editionKey];
   const stage = fs.mkdtempSync(path.join(os.tmpdir(), 'a101-mvp-build-'));
+  // The open edition builds in the stage and is copied to its public folder.
+  if (!outputDir) outputDir = edition.publicDir ? path.join(stage, 'out') : (process.env.AGENTS_OUTPUT_DIR || path.join(ROOT, 'site/clients'));
+  const workbookUrl = edition.workbookUrl;
+  const modules = editionModules(edition);
   try {
     const overlayDir = path.join(stage, 'overlay');
     const brandDir = path.join(stage, 'brand');
@@ -192,30 +346,36 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
     fs.mkdirSync(path.dirname(preworkOverlay), { recursive: true });
     const prework = fs.readFileSync(path.join(DELIVERY, 'prework.md'), 'utf8');
     const sendStill = fs.readFileSync(path.join(DELIVERY, 'claude-send.jpg')).toString('base64');
-    const media = name => fs.readFileSync(path.join(DELIVERY, 'media', name)).toString('base64');
-    // One self-contained file: the offline handbook in the starter carries the same media.
-    fs.writeFileSync(preworkOverlay, prework.replace('src="ACME_COWORK_MESSAGE_BOX"', `src="data:image/jpeg;base64,${sendStill}"`)
-      .replace('poster="media/mac-folder-picker.jpg"', `poster="data:image/jpeg;base64,${media('mac-folder-picker.jpg')}"`)
-      .replace('src="media/mac-folder-picker.mp4"', `src="data:video/mp4;base64,${media('mac-folder-picker.mp4')}"`));
-    fs.writeFileSync(path.join(brandDir, 'customer.json'), JSON.stringify({ name: 'ACME', hubHeading: 'ACME' }) + '\n');
-    const checkpoints = JSON.parse(fs.readFileSync(path.join(DELIVERY, 'checkpoints.json'), 'utf8'));
-    createNavigationOverlay({ root: ROOT, overlayDir, workbookUrl: WORKBOOK_URL, checkpoints });
+    // ACME stays one self-contained file. The open edition serves the video as
+    // files beside the page (preload="none"); its offline handbook inlines them.
+    const stillPrework = prework.replace('src="ACME_COWORK_MESSAGE_BOX"', `src="data:image/jpeg;base64,${sendStill}"`);
+    fs.writeFileSync(preworkOverlay, edition.publicDir ? stillPrework : inlineMedia(stillPrework));
+    fs.writeFileSync(path.join(brandDir, 'customer.json'), JSON.stringify({ name: edition.brand, hubHeading: edition.brand }) + '\n');
+    if (edition.open) {
+      const lede = CR.TRAININGS['agents-101'].lede.replace(/^Eight modules\./, `${NUMBER_WORDS[modules.length]} modules.`);
+      fs.writeFileSync(path.join(overlayDir, 'trainings/agents-101/training.json'), JSON.stringify({ lede, modules }) + '\n');
+    }
+    const checkpoints = editionCheckpoints(JSON.parse(fs.readFileSync(path.join(DELIVERY, 'checkpoints.json'), 'utf8')), modules);
+    createNavigationOverlay({ root: ROOT, overlayDir, workbookUrl, checkpoints });
     const navigationFile = path.join(stage, 'course-navigation.md');
-    fs.writeFileSync(navigationFile, renderCourseNavigation(fs.readFileSync(path.join(DELIVERY, 'course-navigation.md'), 'utf8'), {
-      workbookUrl: WORKBOOK_URL, checkpoints,
+    const navigationTemplate = fs.readFileSync(path.join(DELIVERY, 'course-navigation.md'), 'utf8').split(WORKBOOK_URL).join(workbookUrl);
+    fs.writeFileSync(navigationFile, renderCourseNavigation(navigationTemplate, {
+      workbookUrl, checkpoints,
     }));
 
-    execFileSync(process.execPath, [path.join(ROOT, 'scripts/build-workbook.js'), EDITION, 'agents-101', '--no-trainer-docs'], {
+    execFileSync(process.execPath, [path.join(ROOT, 'scripts/build-workbook.js'), edition.slug, 'agents-101', '--no-trainer-docs'], {
       cwd: ROOT,
       env: { ...process.env, LC_ALL: 'C', AGENTS_OVERLAY_DIR: overlayDir, AGENTS_BRAND_DIR: brandDir, AGENTS_OUTPUT_DIR: path.resolve(outputDir) },
       stdio: quiet ? 'pipe' : 'inherit', maxBuffer: 32 * 1024 * 1024,
     });
 
-    const customerDir = path.join(path.resolve(outputDir), EDITION);
+    const customerDir = path.join(path.resolve(outputDir), edition.slug);
     const trainingDir = path.join(customerDir, 'agents-101');
     const workbookFile = path.join(trainingDir, 'index.html');
     let html = applyLoaderFraming(fs.readFileSync(workbookFile, 'utf8'));
-    html = html.replace('<title>Agents 101 — ACME</title>', '<title>Agents 101 handbook — ACME</title>')
+    // The open edition is served from its own folder, not under clients/.
+    html = html.split(`${SITE}/clients/${edition.slug}/agents-101/`).join(workbookUrl);
+    html = html.replace(`<title>Agents 101 — ${edition.brand}</title>`, `<title>${edition.title}</title>`)
       .replace('data-target="prework">Prework</a>', 'data-target="prework">First steps</a>');
     // The theory manifest omits setup. Carry the exact rendered edition route
     // into its offline companion instead of authoring a second instruction set.
@@ -237,7 +397,7 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
     const navStart = html.indexOf('<nav class="workbook-topnav"');
     const navEnd = html.indexOf('</nav>', navStart);
     if (navStart < 0 || navEnd < 0) throw new Error('Workbook navigation insertion point is missing');
-    html = html.slice(0, navStart) + shell('header.html').replace('EDITION_LABEL', 'ACME handbook')
+    html = html.slice(0, navStart) + headerModules(shell('header.html').replace('EDITION_LABEL', edition.label), modules)
       + '<nav class="chapter-outline" aria-label="In this module" hidden></nav>' + html.slice(navEnd + '</nav>'.length);
     const cover = '<header class="workbook-cover" id="top">';
     if (!html.includes(cover)) throw new Error('Workbook cover is missing');
@@ -290,14 +450,21 @@ ${SETUP_CSS}
 })();
 </script>\n${shell('figure-reader.html')}<script data-a101-handbook>\n${shell('deskpad.js')}\n</script>\n</body>`);
 
+    if (edition.open) html = addModuleTimes(addLicenceLine(html), modules);
+
     // The edition hub has one destination. Existing customer hubs are untouched.
-    fs.writeFileSync(path.join(customerDir, 'index.html'), '<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agents 101 — ACME</title><meta http-equiv="refresh" content="0; url=./agents-101/#start-learning"></head><body><p><a href="./agents-101/#start-learning">Start Agents 101</a></p></body></html>\n');
+    if (edition.hub) fs.writeFileSync(path.join(customerDir, 'index.html'), `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agents 101 — ${edition.brand}</title><meta http-equiv="refresh" content="0; url=./agents-101/#start-learning"></head><body><p><a href="./agents-101/#start-learning">Start Agents 101</a></p></body></html>\n`);
     const archiveFile = path.join(trainingDir, 'agents-101-starter.tar.gz');
-    repackStarter(archiveFile, stage, navigationFile, offlinePrework);
-    fs.writeFileSync(workbookFile, versionStarterDownload(stripExternalFonts(html), fs.readFileSync(archiveFile)));
+    repackStarter(archiveFile, stage, navigationFile, inlineMedia(offlinePrework), edition);
+    fs.writeFileSync(workbookFile, versionStarterDownload(stripExternalFonts(html), fs.readFileSync(archiveFile), workbookUrl));
     // Remove only known trainer output for this edition if it was built before.
     for (const name of ['trainer-guide.html', 'trainer-modules.html']) fs.rmSync(path.join(trainingDir, name), { force: true });
-    return { workbookFile, trainingDir, workbookUrl: WORKBOOK_URL };
+    if (!edition.publicDir) return { workbookFile, trainingDir, workbookUrl };
+    fs.mkdirSync(edition.publicDir, { recursive: true });
+    for (const name of ['index.html', 'agents-101-starter.tar.gz']) fs.copyFileSync(path.join(trainingDir, name), path.join(edition.publicDir, name));
+    fs.mkdirSync(path.join(edition.publicDir, 'media'), { recursive: true });
+    for (const name of MEDIA) fs.copyFileSync(path.join(DELIVERY, 'media', name), path.join(edition.publicDir, 'media', name));
+    return { workbookFile: path.join(edition.publicDir, 'index.html'), trainingDir: edition.publicDir, workbookUrl };
   } finally {
     fs.rmSync(stage, { recursive: true, force: true });
   }
@@ -306,13 +473,20 @@ ${SETUP_CSS}
 if (require.main === module) {
   try {
     const args = process.argv.slice(2);
-    if (args.length && (args.length !== 2 || args[0] !== '--out' || !args[1])) throw new Error('Usage: node scripts/build-a101-mvp.js [--out <clients-output-directory>]');
-    const result = buildEdition(args.length ? { outputDir: args[1] } : {});
-    console.log(`Built ACME learner edition: ${result.workbookFile}`);
+    const usage = 'Usage: node scripts/build-a101-mvp.js [--edition acme-mvp|open] [--out <clients-output-directory>]';
+    const options = {};
+    for (let i = 0; i < args.length; i += 2) {
+      if (!args[i + 1]) throw new Error(usage);
+      if (args[i] === '--out') options.outputDir = args[i + 1];
+      else if (args[i] === '--edition') options.edition = args[i + 1];
+      else throw new Error(usage);
+    }
+    const result = buildEdition(options);
+    console.log(`Built ${options.edition || 'acme-mvp'} learner edition: ${result.workbookFile}`);
   } catch (error) {
     console.error(error.message);
     process.exitCode = 1;
   }
 }
 
-module.exports = { buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };
+module.exports = { EDITIONS, editionModules, editionCheckpoints, headerModules, addLicenceLine, addModuleTimes, buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };

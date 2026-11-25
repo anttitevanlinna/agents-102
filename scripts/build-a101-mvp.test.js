@@ -331,7 +331,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     const template = fs.readFileSync(path.join(DELIVERY, 'course-navigation.md'), 'utf8');
     assert.equal(guide, renderCourseNavigation(template, { workbookUrl: WORKBOOK_URL, checkpoints }));
     assert.ok(guide.startsWith(template.trimEnd() + '\n\n## Workbook returns\n'));
-    assert.equal(guide.split('\n').filter(line => line.startsWith('| ') && !line.startsWith('| Completed request') && !line.startsWith('| ---')).length, 6, 'four meeting variants share one of six human task returns');
+    assert.equal(guide.split('\n').filter(line => line.startsWith('| ') && !line.startsWith('| Completed request') && !line.startsWith('| ---')).length, 13, 'four meeting variants share one return; Modules 2 to 8 each end on their debrief return');
     const guideDom = new JSDOM(require('marked').marked.parse(guide));
     try {
       for (const link of guideDom.window.document.querySelectorAll('a[href]')) {
@@ -388,4 +388,46 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     if (dom) dom.window.close();
     fs.rmSync(stage, { recursive: true, force: true });
   }
+});
+
+test('open edition: Modules 1 to 6 at its own address, licence line, module times, no team-only material', () => {
+  const { buildEdition, editionModules, EDITIONS } = require('./build-a101-mvp.js');
+  const out = fs.mkdtempSync(path.join(os.tmpdir(), 'a101-open-test-'));
+  try {
+    const result = buildEdition({ edition: 'open', publicDir: out, quiet: true });
+    const url = EDITIONS.open.workbookUrl;
+    assert.equal(result.workbookUrl, url);
+    const html = fs.readFileSync(path.join(out, 'index.html'), 'utf8');
+    const dom = new JSDOM(html);
+    try {
+      const doc = dom.window.document;
+      const slugs = editionModules(EDITIONS.open).map(m => m.slug);
+      assert.ok(!slugs.includes('personal-to-team') && !slugs.includes('agents-building-agents'));
+      for (const slug of slugs) {
+        assert.ok(doc.getElementById(slug), `module present: ${slug}`);
+        assert.match(doc.getElementById(slug).querySelector('.a101-module-time').textContent, /^About \d+ minutes\./);
+      }
+      for (const slug of ['personal-to-team', 'agents-building-agents']) assert.equal(doc.getElementById(slug), null, `team module left out: ${slug}`);
+      assert.deepEqual([...doc.querySelectorAll('.workbook-topnav__modules a')].map(a => a.getAttribute('href')), slugs.map(s => '#' + s));
+      assert.equal(doc.querySelectorAll('.curriculum-footer .a101-licence').length, 1);
+      assert.match(doc.getElementById('getting-going').querySelector('.a101-module-time').textContent, /paid Claude plan/);
+      for (const slug of ['multi-agent-systems', 'output-quality', 'evaluations']) assert.match(doc.getElementById(slug).querySelector('.a101-module-time').textContent, /usage limit/);
+      assert.equal(doc.querySelector('a[href*="agents-101-starter.tar.gz"]').getAttribute('href').split('?')[0], url + 'agents-101-starter.tar.gz');
+      assert.ok(doc.querySelector('video source[src="media/mac-folder-picker.mp4"]'), 'video served beside the page');
+    } finally { dom.window.close(); }
+    assert.doesNotMatch(html, /clients\/(?:open|acme-mvp)\/|ACME/);
+    for (const name of ['mac-folder-picker.mp4', 'mac-folder-picker.jpg']) assert.ok(fs.existsSync(path.join(out, 'media', name)));
+    const unpacked = path.join(out, 'unpacked');
+    fs.mkdirSync(unpacked);
+    execFileSync('tar', ['xzf', path.join(out, 'agents-101-starter.tar.gz'), '-C', unpacked]);
+    const offline = fs.readFileSync(path.join(unpacked, 'agents-101-handbook.html'), 'utf8');
+    assert.doesNotMatch(offline, /id="theory-m[78]"/);
+    assert.match(offline, /class="a101-licence"/);
+    assert.match(offline, /data:video\/mp4;base64,/, 'offline handbook carries the video inline');
+    for (const key of ['share-your-work-1', 'joint-double-diamond-1', 'a101-m7-debrief-sharing-artifact']) assert.ok(!fs.existsSync(path.join(unpacked, 'prompts', key + '.md')), `team prompt left out: ${key}`);
+    assert.ok(!fs.existsSync(path.join(unpacked, 'patterns/personal-to-team-patterns.md')));
+    const guide = fs.readFileSync(path.join(unpacked, 'prework/course-navigation.md'), 'utf8');
+    assert.ok(guide.includes(`Workbook: ${url}`));
+    assert.doesNotMatch(guide, /acme-mvp|#personal-to-team|#agents-building-agents(?![-\w])/);
+  } finally { fs.rmSync(out, { recursive: true, force: true }); }
 });

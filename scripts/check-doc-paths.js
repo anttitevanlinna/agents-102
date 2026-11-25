@@ -81,8 +81,10 @@ const ALLOW = new Map(Object.entries(require('./check-doc-paths.allow.json')));
 // docs/adr/, observations/ — which cannot resolve here and are not meant to.
 const FOREIGN_TREE = /^curriculum\/evals\/mechanical\//;
 
+// Delivery editions (curriculum/delivery/<edition>/) are handbook pages and their
+// build notes; they name the learner's folder (`prework/snake.html`) the same way.
 const STUDENT_SURFACE =
-  /^curriculum\/(trainings|exercises|lectures|prompts|scaffolds|skills)\//;
+  /^curriculum\/(trainings|exercises|lectures|prompts|scaffolds|skills|delivery)\//;
 // `memory/` and `.claude/` are deliberately absent: both name a real directory
 // in THIS repo and a directory the student creates in their own project, and on
 // a student surface the second reading is the intended one.

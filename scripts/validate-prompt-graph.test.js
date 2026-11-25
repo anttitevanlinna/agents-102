@@ -157,9 +157,9 @@ for (const profileKey of A101Runtimes.PROFILE_ORDER) {
     ).length;
     const result = validate('agents-101', { profileKey });
     assert.equal(result.profile, profileKey);
-    assert.equal(result.orderCount, 90);
+    assert.equal(result.orderCount, 96);
     assert.equal(result.activeCount, expectedActive);
-    assert.equal(result.activeCount, 84);
+    assert.equal(result.activeCount, 90);
     assert.deepEqual(
       result.findings.filter((finding) => finding.severity === 'error'),
       []

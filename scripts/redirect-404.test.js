@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-// site/404.html + site/index.html send old marketing paths to bosser.consulting/training/
-// (moved there 1:1); /clients/* never redirects — a mistyped workbook link is a plain 404.
+// site/404.html sends old marketing paths to bosser.consulting/training/ (moved there 1:1);
+// /index.html is the Agents 101 home now, so a stray hit lands on the training root.
+// /clients/*, /agents-101/*, /layouts/* never redirect — a mistyped workbook link is a plain 404.
 'use strict'
 const assert = require('node:assert')
 const fs = require('node:fs')
@@ -13,7 +14,7 @@ const target = new Function(`${m[0]}; return target`)()
 const T = 'https://bosser.consulting/training'
 const cases = [
   ['/', '', `${T}/`],
-  ['/index.html', '', `${T}/index.html`],
+  ['/index.html', '', `${T}/`],
   ['/article.html', '?slug=spillover', `${T}/article.html?slug=spillover`],
   ['/check/', '', `${T}/check/`],
   ['/readiness/', '?x=1', `${T}/readiness/?x=1`],
@@ -22,10 +23,11 @@ const cases = [
   ['/some/unknown/page', '', `${T}/`],
   ['/clients/acme/typo.html', '', null],
   ['/clients/', '', null],
+  ['/agents-101/typo.html', '', null],
 ]
 for (const [p, q, want] of cases) assert.strictEqual(target(p, q), want, `${p}${q}`)
 const idx = fs.readFileSync(path.join(site, 'index.html'), 'utf8')
-assert.match(idx, /bosser\.consulting\/training\//, 'index.html redirects to the training area')
+assert.match(idx, /bosser\.consulting\/training\//, 'index.html links to the training area')
 for (const gone of ['article.html', 'style.css', 'check', 'readiness', 'copy.md', 'animation.js'])
   assert.ok(!fs.existsSync(path.join(site, gone)), `${gone} moved out of site/`)
 console.log(`redirect-404: ${cases.length + 2} passed`)

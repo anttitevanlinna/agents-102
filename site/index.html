@@ -81,10 +81,9 @@ h1 { font: 700 clamp(30px, 4.6vw, 48px)/1.05 var(--font-body); letter-spacing: -
 /* One orange line: the input's underline turns down the left edge and branches into every module row. */
 .try, .plan { border-left: 3px solid var(--orange); padding-left: 18px; }
 @media (max-width: 560px) { .try, .plan { padding-left: 12px; } .field .wide { display: none; } .field { padding-left: 12px; } }
-.try { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 0; padding-top: 12px; font-size: 13px; color: var(--fg-3); }
-.try button { font: inherit; color: var(--ink); background: var(--bg-2); border: 1px solid var(--line); border-radius: 99px; padding: 4px 11px; cursor: pointer; text-align: left; }
-.try button:hover { border-color: var(--orange); }
-.try button[aria-pressed="true"] { background: var(--orange); border-color: var(--orange); color: #111; }
+.try { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin: 0; padding-top: 12px; font-size: 13px; color: var(--fg-3); }
+.try button { font: inherit; color: var(--fg-2); background: none; border: 0; padding: 0; cursor: pointer; text-align: left; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+.try button:hover, .try button[aria-pressed="true"] { color: var(--ink); text-decoration-color: var(--orange); }
 
 /* The part that moves: seven modules around the visitor's challenge */
 .plan { margin-top: 0; padding-top: 20px; }
@@ -92,9 +91,8 @@ h1 { font: 700 clamp(30px, 4.6vw, 48px)/1.05 var(--font-body); letter-spacing: -
 .plan-head::before, .rows li::before { content: ''; position: absolute; left: -18px; top: .7em; width: 12px; border-top: 3px solid var(--ink); opacity: 0; transform-origin: left center; }
 .rows li::before { top: 24px; }
 @media (max-width: 560px) { .plan-head::before, .rows li::before { left: -12px; width: 8px; } }
-.plan-head { font: 700 17px/1.4 var(--font-body); color: var(--ink); margin: 0 0 4px; }
-.plan-sub { font-size: 14px; color: var(--fg-3); margin: 0 0 12px; }
-.plan-head .x { color: #111; background: var(--orange); padding: 0 .35em; overflow-wrap: anywhere; }
+.plan-head { font: 600 15px/1.4 var(--font-body); color: var(--fg-2); margin: 0 0 10px; }
+.plan-head .x { color: var(--ink); overflow-wrap: anywhere; }
 .rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
 .rows li { display: grid; grid-template-columns: 24px minmax(0, 1fr) 84px; gap: 4px 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
 .rows .n { font-weight: 700; color: var(--warm); font-variant-numeric: tabular-nums; align-self: start; padding-top: 1px; }
@@ -185,7 +183,7 @@ footer p { margin: 0; max-width: 46em; }
         <button class="clear" id="clear" type="button" aria-label="Clear and type your own">×</button>
         <button id="send" type="submit">Rewrite<span class="wide"> my course</span></button>
       </div>
-      <div class="try" id="try"><span>Or try:</span>
+      <div class="try" id="try"><span>or try</span>
         <button type="button" data-ex="1" aria-pressed="false">our board wants an AI plan by March</button>
         <button type="button" data-ex="2" aria-pressed="false">month-end close takes two weeks</button>
       </div>
@@ -193,8 +191,7 @@ footer p { margin: 0; max-width: 46em; }
 
     <div class="pulse" id="pulse" aria-hidden="true"></div>
     <div class="plan" aria-live="polite">
-      <p class="plan-head" id="planhead">Your course, rewritten for <span class="x">we keep losing deals to a cheaper competitor</span></p>
-      <p class="plan-sub">Seven modules. In each one the agents take on more of this challenge.</p>
+      <p class="plan-head" id="planhead">Your course, rewritten for <span class="x">“we keep losing deals to a cheaper competitor”</span></p>
       <ol class="rows" id="rows">
         <li data-module="getting-going" data-title="Getting Going" data-min="80"
             data-std-agents="An agent writes a page about you, and you catch what it made up."
@@ -425,7 +422,7 @@ footer p { margin: 0; max-width: 46em; }
   }
   function title(text) {
     head.textContent = 'Your course, rewritten for ';
-    var x = document.createElement('span'); x.className = 'x'; x.textContent = text; head.appendChild(x);
+    var x = document.createElement('span'); x.className = 'x'; x.textContent = '“' + text + '”'; head.appendChild(x);
   }
   /* Keep the question and the first rows in view together, so cause and effect sit on one screen. */
   function reveal() {

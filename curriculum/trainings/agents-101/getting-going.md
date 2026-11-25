@@ -19,6 +19,8 @@ After this module, you will be able to:
 
 **The question, to you:** where did LLM output on your work come out generic, and what made it yours?
 
+Keep that question in mind. Read the opening, Context is King, then do the exercise, Paint by agent with guardrails.
+
 [Opening: Context is King](lectures/context-is-king.md)
 
 [Exercise: Paint by agent with guardrails](exercises/personal-site-with-guardrails.md)

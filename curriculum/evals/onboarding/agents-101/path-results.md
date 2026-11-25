@@ -2,6 +2,15 @@
 
 Newest first. Rubric and method in [path-rubric.md](path-rubric.md). All reads Sonnet, 20 per row (10 personas × 2) unless noted. Raw reads stay under ignored `out/`. None of these scores says anything about the quality of the language.
 
+## 2026-11-25: live-prompt entry (branch claude/project-thread-pb7ywr e70e248)
+
+| Version | Reach | arrive | start | first result | setup | briefing | Module 1 | promise | licence |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Old home (main 21adf75), same handbook | 73 | 100 | 100 | 100 | 88 | 98 | 75 | 100 | 100 |
+| New entry: "what's stuck at work?" with the seven rows | 68 | 100 | 100 | 100 | 83 | 100 | 75 | 100 | 100 |
+
+No drop past the 20-point bar. Every stage the home page drives scores the same; the 5-point gap sits in the handbook's setup stage, which both runs read from the same file.
+
 ## 2026-11-25: visual re-score on main c720e63
 
 **17/24, grade A, all gates pass.** Promise 3, licence 4, start 3, action and result 2, route to Module 1 2, layout 3. The video focus gate was a false alarm: Tab moves into the player's own controls, which draw the browser's ring while `document.activeElement` stays on the video; `path-visual.js` now passes that case. Contents heading contrast passes after c26e40d. Deductions left: no "step N of 5" marker and a truncated section name at 421 px; "In Claude's reply" is a small label on plain text; the course files walkthrough shows a title with no media; Continue to Module 1 competes with a contents list in underlined italic; Module 1 "Start here" is below the first viewport at both widths; the home chart's ramp has no module names.

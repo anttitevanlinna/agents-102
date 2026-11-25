@@ -2,6 +2,14 @@
 
 Newest first. Rubric and method in [path-rubric.md](path-rubric.md). All reads Sonnet, 20 per row (10 personas × 2) unless noted. Raw reads stay under ignored `out/`. None of these scores says anything about the quality of the language.
 
+## 2026-11-25: re-score after the home page fixes (main af58829)
+
+| Version | Reach Module 1 | arrive | start | first result | setup | briefing | Module 1 | Licence | Module 1 step |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Home fixes, same handbook | **53** | 100 | 100 | 100 | 90 | 60 | 85 | 100 | 100 |
+
+Home stages stay at 100; start stars 4.25 to 4.45 (the Start button now lands on step 1). Reach 58 to 53 is noise: the handbook did not change. Visual: **17/24** (licence 1 to 3), same two handbook gate failures, so no grade until they are fixed. Remaining home deductions: the headline says what to bring, not what you can do afterwards; at 421 px the licence line is cut at the bottom of the first viewport, small and grey, and "see the team edition" does not read as a way to ask; home hero and handbook welcome still differ in scale.
+
 ## 2026-11-25: first run on main (new home page 0653e8a, open edition site/agents-101/)
 
 | Version | Reach Module 1 | arrive | start | first result | setup | briefing | Module 1 | Licence | Module 1 step |

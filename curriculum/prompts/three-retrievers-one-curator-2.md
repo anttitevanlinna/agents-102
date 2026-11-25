@@ -18,8 +18,8 @@ Then:
 3. Append each finding to sources/docs-retrieval.md as soon as you have it, what documents and threads show, who said what, what's recent, what's decided, what's still open. Never overwrite earlier findings. Name where sources disagree; don't smooth over contradictions.
 4. End the file with "Conflicts and gaps": disagreements between sources, things that should exist but don't, names conspicuously missing.
 
-Write each finding as soon as you have it; don't batch until the end. The synthesizer in another session reads `sources/` continuously — streaming writes keep it busy.
+Write each finding as soon as you have it; don't batch until the end. The synthesizer in another session reads `sources/` continuously, so streaming writes keep it busy.
 
-No need to update `memory/` — another session is handling curation. Just write to `sources/`.
+No need to update `memory/`; another session is handling curation. Just write to `sources/`.
 
 Sources first. Every finding cites the specific document name (and path or URL) or email thread you actually opened. If you can't find a source for a claim, write "[NOT FOUND]", do not fill from prior knowledge. If a connector returns empty, say so; don't invent document titles.

@@ -100,6 +100,8 @@ async function askClaude(env, challenge, fetchImpl) {
     body: JSON.stringify({
       model: env.MODEL || DEFAULT_MODEL,
       max_tokens: 900,
+      // Haiku 5.5 thinks by default; thinking would spend the whole budget and leave no text.
+      thinking: { type: 'disabled' },
       messages: [{ role: 'user', content: buildPrompt(challenge) }],
     }),
   });

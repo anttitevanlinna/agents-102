@@ -17,7 +17,7 @@ After this module, you will be able to:
 
 Start a fresh session or task at `~/Documents/agents-101/`.
 
-The agent reads the Module 3 system, the root instructions file, and the policy files under `module-4/policies/`. Reports go to `outputs/`.
+The agent reads the Module 3 system, the root instructions file, and the policy files under `module-4/policies/`.
 
 Name what you'd want to check before letting this near a real stakeholder.
 

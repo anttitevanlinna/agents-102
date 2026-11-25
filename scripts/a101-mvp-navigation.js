@@ -7,7 +7,7 @@ const ANCHOR = /^[a-z0-9][a-z0-9_-]*$/i;
 const KEY = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const COURSE_READING_CUE = 'Read prework/course-navigation.md before helping with Agents 101 work.';
 const EXTRACTION_KEY = 'a101-prework-extract-tarball';
-const EXTRACTION_BOOTSTRAP = 'For course navigation, add this line to the training-folder `CLAUDE.md` if it is not already there: '
+const EXTRACTION_BOOTSTRAP = 'For course navigation, add this line to the `CLAUDE.md` file in this folder if it is not already there: '
   + COURSE_READING_CUE + ' Preserve any existing instructions. Then read that navigation file.';
 
 function absoluteUrl(value, { fragment = true } = {}) {

@@ -13,6 +13,18 @@ Newest first. Rubric and method in [path-rubric.md](path-rubric.md). All reads S
 
 No drop past the 20-point bar. Every stage the home page drives scores the same; the 5-point gap sits in the handbook's setup stage, which both runs read from the same file.
 
+## 2026-11-25: cards 1 to 3 on main 6aca3ce
+
+Sim: reach 68 (setup 80, briefing 100, Module 1 75). Visual: **18/24, grade A, all gates pass** (licence 4). Across five reads of near-identical builds since 45cd329, reach sat between 65 and 80, which is this instrument's noise; the release goal of 85 is not met. What still holds readers: the course-files prompt looks technical (curl, tar, CLAUDE.md), and in Module 1 readers want a concrete action that sits in the exercise, past where the reading stops. The second is partly the instrument's cut at the first activity's title. Cards 4 (admin line) and 5 (policy and quiet-week line) were not applied: Antti called these known issues.
+
+## 2026-11-25: visual re-score on main fe9a013
+
+**18/24, grade A, all gates pass.** Route to Module 1 rose to 3 (plain contents list, empty panels hidden). The critic labelled it AA; the rubric needs 20 for AA, so `path-visual.js` now computes the grade itself. Left: home promise and chart; licence line easy to skim; the step 1 still shows a different request (media asset, passed to the videos owner); the course files prompt is long shell text (Card 1 pending); Module 1 Start here below the first viewport (Card 3 pending).
+
+## 2026-11-25: re-score on main 0184e87 (handbook shell fixes)
+
+Sim: reach 65 (setup 80, briefing 98, Module 1 80); the path text did not change since 78, so the drop is noise. Visual: **17/24, grade A, all gates pass.** Action rose to 3 (the "In Claude's reply" card). Still deducted: the contents descriptions under Continue to Module 1 are still underlined italic in the built page; the "Where to type and send" screenshot shows a different request ("Build me a snake game as a single HTML file…") from the one to type; the course files walkthrough panel is empty; Module 1 Start here is below the first viewport with no single first action (Card 3 pending); the home chart and its empty column.
+
 ## 2026-11-25: visual re-score on main c720e63
 
 **17/24, grade A, all gates pass.** Promise 3, licence 4, start 3, action and result 2, route to Module 1 2, layout 3. The video focus gate was a false alarm: Tab moves into the player's own controls, which draw the browser's ring while `document.activeElement` stays on the video; `path-visual.js` now passes that case. Contents heading contrast passes after c26e40d. Deductions left: no "step N of 5" marker and a truncated section name at 421 px; "In Claude's reply" is a small label on plain text; the course files walkthrough shows a title with no media; Continue to Module 1 competes with a contents list in underlined italic; Module 1 "Start here" is below the first viewport at both widths; the home chart's ramp has no module names.

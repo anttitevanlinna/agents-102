@@ -20,7 +20,7 @@ If stuck, scan your next two weeks of calendar; the biggest unresolved item is u
 
 Module 2 works best when the agent can read a source connected to your challenge. If your work lives in a wiki or document system, check that the agent can reach it. Your own files work too.
 
-**Connectors** link the agent to places where your work lives: Confluence, SharePoint, OneDrive, Google Drive, or whatever you use. Look for them in your runtime's connector settings.
+**Connectors** link the agent to places where your work lives: a wiki, a shared drive, or whatever you use. Look for them in your runtime's connector settings.
 
 Without a connector, the memory can start from files and pasted excerpts in your training directory.
 

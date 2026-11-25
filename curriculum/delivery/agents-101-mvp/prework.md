@@ -84,14 +84,14 @@ Wait for Claude to say it saved the game. **Documents → agents-101 → prework
 <span id="3-add-the-course-files"></span>
 <span id="4-download-the-course-files"></span>
 
-The course files include a copy of the handbook and let Claude help you find your place when you come back.
-
-[Download the course files](<CONTENT_URL>). Find `agents-101-starter.tar.gz` in your browser’s downloads and move it into `agents-101` alongside the `prework` folder. Claude will unpack it when you copy and send the request below in the same conversation.
+The course files hold a copy of the handbook and the folders you fill in later modules. Copy the request below and send it in the same conversation. The agent downloads the files into `agents-101` and unpacks them. It also adds one line to `CLAUDE.md`, the file in `agents-101` that Claude reads at the start of every conversation there, so it can find your place when you come back.
 
 {{prompt:a101-prework-extract-tarball}}
 
+If the agent says the download failed, [download the course files](<CONTENT_URL>) in your browser, drag the file into `agents-101`, and tell the agent it is there.
+
 <div class="walkthrough-media rt-profile rt-profile-cowork"><strong>Course files walkthrough</strong>
-<p>Video coming here: move the download into <code>agents-101</code> and ask Claude to unpack it.</p></div>
+<p>Video coming here: send the request and watch the course folders appear in <code>agents-101</code>.</p></div>
 
 When Claude says the files are ready, keep this conversation open for the calendar exercise.
 

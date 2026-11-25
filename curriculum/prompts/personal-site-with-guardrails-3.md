@@ -11,7 +11,7 @@ produces:
     location: module-1/site.html
     note: strengths-shaped revision in place
 ---
-Use the strengths below as voice-shaping context for the site — letting them change what the page CLAIMS and how it sounds, not as a new bullet list. Keep me as the protagonist of the page. Keep the StoryBrand-tuned help section from before. Keep the edge; don't soften the strengths into virtues.
+Use the strengths below as voice-shaping context for the site, letting them change what the page CLAIMS and how it sounds, not as a new bullet list. Keep me as the protagonist of the page. Keep the StoryBrand-tuned help section from before. Keep the edge; don't soften the strengths into virtues.
 
 Then regenerate `module-1/site.html`.
 

@@ -33,7 +33,7 @@ export function buildPrompt(challenge) {
     'Using only the COURSE FACTS above, write what happens in each of the 7 modules for THIS challenge.\n\n' +
     'Return a JSON array of exactly 7 objects, in module order, each {"agents": "...", "end": "..."}.\n' +
     '- "agents": one or two short sentences, at most 22 words, saying what the agents do in that module. Be concrete to the challenge: name the kind of sources, people, stances, risks or claims that fit it.\n' +
-    '- Module 1 is about the visitor, not the challenge: an agent writes a page about them and they catch what it made up. Say that, then name in a few words what they learn to give an agent before it touches this challenge.\n' +
+    '- Module 1 is about the visitor, not the challenge yet. Open with the part that fits this challenge, then the fixed part, in this shape: "Before it sees your <the material of this challenge, in 1 to 3 words>, an agent writes about you, and you catch what it made up." Its "end" is "rules for an agent, ready for <this challenge in 2 to 4 words>".\n' +
     '- Module 4: say the risks in plain words (what the agents can open, what a planted line in a document could make them do, a password left in a file). Never write "prompt injection".\n' +
     '- Module 7: name one person around the visitor who would use an agent built from this work, and what it does for them.\n' +
     '- "end": at most 9 words naming what the visitor has at the end of that module, for this challenge. Module 7 "end" is the agent built for that person.\n' +

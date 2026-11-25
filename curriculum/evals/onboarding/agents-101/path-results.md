@@ -9,6 +9,7 @@ Newest first. Rubric and method in [path-rubric.md](path-rubric.md). All reads S
 | Old home (main 21adf75), same handbook | 73 | 100 | 100 | 100 | 88 | 98 | 75 | 100 | 100 |
 | New entry: "what's stuck at work?" with the seven rows | 68 | 100 | 100 | 100 | 83 | 100 | 75 | 100 | 100 |
 | After the design review (187bad9): rows above the fold, How it works cut, travelling arrow | 70 | 100 | 100 | 100 | 90 | 100 | 78 | 100 | 100 |
+| Header is the brand only, real input box, quiet examples (66c993e) | 80 | 100 | 100 | 100 | 85 | 98 | 90 | 100 | 100 |
 
 No drop past the 20-point bar. Every stage the home page drives scores the same; the 5-point gap sits in the handbook's setup stage, which both runs read from the same file.
 

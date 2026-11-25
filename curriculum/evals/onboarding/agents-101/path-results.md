@@ -2,6 +2,22 @@
 
 Newest first. Rubric and method in [path-rubric.md](path-rubric.md). All reads Sonnet, 20 per row (10 personas × 2) unless noted. Raw reads stay under ignored `out/`. None of these scores says anything about the quality of the language.
 
+## 2026-11-25: visual re-score on main c720e63
+
+**17/24, grade A, all gates pass.** Promise 3, licence 4, start 3, action and result 2, route to Module 1 2, layout 3. The video focus gate was a false alarm: Tab moves into the player's own controls, which draw the browser's ring while `document.activeElement` stays on the video; `path-visual.js` now passes that case. Contents heading contrast passes after c26e40d. Deductions left: no "step N of 5" marker and a truncated section name at 421 px; "In Claude's reply" is a small label on plain text; the course files walkthrough shows a title with no media; Continue to Module 1 competes with a contents list in underlined italic; Module 1 "Start here" is below the first viewport at both widths; the home chart's ramp has no module names.
+
+## 2026-11-25: content fixes in the first steps
+
+| Version | Reach | setup | briefing | Module 1 | setup stars | Module 1 stars |
+|---|---:|---:|---:|---:|---:|---:|
+| Before (af58829) | 53 | 90 | 60 | 85 | 3.52 | 3.48 |
+| **On main 45cd329:** step 5 links the short version of What is an Agent; Module 1 opens on Start here (its old Prework list dropped in the editions) | **78** | 85 | 98 | 85 | 3.45 | 3.42 |
+| Draft A, not on main: the agent downloads the course files (Antti's curl prompt of 11-18 as written) | 65 | 75 | 100 | 80 | 3.32 | 3.33 |
+| Draft B, not on main: Draft A without the username and password line, plain CLAUDE.md sentence in the body | 80 | 93 | 100 | 88 | 3.64 | 3.43 |
+| Draft C, not on main: Draft B plus one line in Module 1 Start here naming the opening and the exercise | 80 | 83 | 100 | 98 | 3.59 | 3.69 |
+
+The step 5 fix is the one move past the 20-point bar: briefing 60 to 98, reach 53 to 78. In Draft A, 8 of the first 10 readers named "If curl gets a 401, ask me for the username and password", since the open edition gives no credentials. Draft B's setup gain (85 to 93) and Draft C's Module 1 gain (85 to 98, the first action named) are inside the noise and shown by the quotes, not by the number. Drafts B and C wait for Antti's prompt-ok. The promise scorer gave 0.5 to answers it scored 1 on earlier runs (98 to 58 on unchanged home text), so it is not usable as a measure yet.
+
 ## 2026-11-25: re-score after the home page fixes (main af58829)
 
 | Version | Reach Module 1 | arrive | start | first result | setup | briefing | Module 1 | Licence | Module 1 step |

@@ -26,7 +26,7 @@ const CT = require('./calculate-time.js');
 const SOLO_MODULE = { slug: 'agents-building-agents-solo', title: 'Agents Building Agents', short: 'Agents building agents' };
 const SHORT_TITLES = {
   'getting-going': 'Getting going', 'building-agent-systems': 'Building agent systems', 'multi-agent-systems': 'Multi-agent systems',
-  security: 'Security', 'output-quality': 'Output quality', evaluations: 'Evaluations', 'personal-to-team': 'Personal to team',
+  security: 'Security', 'output-quality': 'Catching hallucinations', evaluations: 'Evaluations', 'personal-to-team': 'Personal to team',
   'agents-building-agents': 'Agents building agents',
 };
 const EDITIONS = {
@@ -36,12 +36,13 @@ const EDITIONS = {
   },
   open: {
     slug: 'open', workbookUrl: `${SITE}/agents-101/`, brand: 'Self-study',
-    label: 'Self-study edition', title: 'Agents 101 handbook — self-study', hub: false, open: true,
+    label: 'Self-study edition', title: 'Agents 101 self-study handbook', hub: false, open: true,
     publicDir: path.join(ROOT, 'site/agents-101'),
   },
 };
 const EDITION = EDITIONS['acme-mvp'].slug;
 const WORKBOOK_URL = EDITIONS['acme-mvp'].workbookUrl;
+const UNFINISHED_SUPPLEMENTARIES = new Set(['building-guardrails', 'learning-and-compounding-systems']);
 const NUMBER_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'];
 // Modules where a Pro plan's usage limit is likely within one sitting.
 const PRO_LIMIT_MODULES = new Set(['multi-agent-systems', 'output-quality', 'evaluations']);
@@ -305,13 +306,20 @@ function dropTeamModules(html, unpacked) {
   } finally { dom.window.close(); }
 }
 
+// "Video coming here" notes stay hidden on the public page until each video exists.
+function hideVideoPlaceholders(html) {
+  return html.replace('</head>', '<style data-a101-video>.a101-video-placeholder, .walkthrough-media .video-coming { display: none; }</style>\n</head>')
+    .replace(/<p>Video coming here[^<]*(?:<code>[^<]*<\/code>[^<]*)*<\/p>/g, '');
+}
+
 function addLicenceLine(html) {
   // The page also carries the footer source in its runtime script; match the rendered element.
   const footer = '<footer class="curriculum-footer"><p>';
   const count = html.split(footer).length - 1;
   if (count !== 1) throw new Error(`Licence line expected one footer, received ${count}`);
-  return html.replace(footer, '<footer class="curriculum-footer">' + LICENCE_LINE + '<p>')
-    .replace('</head>', '<style data-a101-licence>.a101-licence { margin: 0 0 .5rem; }</style>\n</head>');
+  const proprietary = 'This is proprietary training material. Using, copying or passing it on is governed by the licence under which you received it. ';
+  return html.replace(footer, '<footer class="curriculum-footer">' + LICENCE_LINE + '<p>').replace(proprietary, '')
+    .replace('</head>', '<style data-a101-licence>.a101-licence { margin: 0 0 .5rem; } .curriculum-footer a { color: inherit; text-decoration: underline; }</style>\n</head>');
 }
 
 const roundMinutes = n => Math.max(5, Math.round(n / 5) * 5);
@@ -363,7 +371,10 @@ function buildEdition({ edition: editionKey = 'acme-mvp', outputDir, publicDir, 
     fs.writeFileSync(path.join(brandDir, 'customer.json'), JSON.stringify({ name: edition.brand, hubHeading: edition.brand }) + '\n');
     if (edition.open) {
       const lede = CR.TRAININGS['agents-101'].lede.replace(/^Eight modules\./, `${NUMBER_WORDS[modules.length]} modules.`);
-      fs.writeFileSync(path.join(overlayDir, 'trainings/agents-101/training.json'), JSON.stringify({ lede, modules }) + '\n');
+      // Outline-only supplementaries stay out of the public edition until written.
+      const supplementaries = CR.TRAININGS['agents-101'].supplementaries.filter(s => !UNFINISHED_SUPPLEMENTARIES.has(s.slug));
+      const named = modules.map(m => (m.slug === 'output-quality' ? { ...m, title: 'Catching Hallucinations' } : m));
+      fs.writeFileSync(path.join(overlayDir, 'trainings/agents-101/training.json'), JSON.stringify({ lede, modules: named, supplementaries }) + '\n');
     }
     const checkpoints = editionCheckpoints(JSON.parse(fs.readFileSync(path.join(DELIVERY, 'checkpoints.json'), 'utf8')), modules);
     createNavigationOverlay({ root: ROOT, overlayDir, workbookUrl, checkpoints });
@@ -470,7 +481,7 @@ ${SETUP_CSS}
 })();
 </script>\n${shell('figure-reader.html')}<script data-a101-handbook>\n${shell('deskpad.js')}\n</script>\n</body>`);
 
-    if (edition.open) html = addModuleTimes(addLicenceLine(html), modules);
+    if (edition.open) html = hideVideoPlaceholders(addModuleTimes(addLicenceLine(html), modules));
 
     // The edition hub has one destination. Existing customer hubs are untouched.
     if (edition.hub) fs.writeFileSync(path.join(customerDir, 'index.html'), `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agents 101 — ${edition.brand}</title><meta http-equiv="refresh" content="0; url=./agents-101/#start-learning"></head><body><p><a href="./agents-101/#start-learning">Start Agents 101</a></p></body></html>\n`);
@@ -509,4 +520,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { dropModuleOnePrework, EDITIONS, editionModules, editionCheckpoints, headerModules, addLicenceLine, addModuleTimes, buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };
+module.exports = { dropModuleOnePrework, hideVideoPlaceholders, EDITIONS, editionModules, editionCheckpoints, headerModules, addLicenceLine, addModuleTimes, buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };

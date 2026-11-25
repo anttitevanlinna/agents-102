@@ -90,7 +90,8 @@ function loadSourceRegistry(promptsDir) {
     if (key !== file.replace(/\.md$/, '')) {
       throw new Error(`${file}: filename must match key (expected ${key}.md)`);
     }
-    const text = parsed.body.replace(/^\n+/, '').replace(/\n+$/, '');
+    // A maintainer tail is for authors; the learner copies only what sits above it.
+    const text = parsed.body.split('<!-- maintainer -->')[0].replace(/^\n+/, '').replace(/\n+$/, '');
     if (!text) throw new Error(`${file}: prompt body is empty`);
     const entry = {
       key: key,

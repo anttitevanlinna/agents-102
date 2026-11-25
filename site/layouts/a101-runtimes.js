@@ -114,9 +114,10 @@
         var profile = getProfile(profileKey);
         var displayed = Object.assign({}, entry);
         if (displayed.dest === 'Claude Code') displayed.dest = profile.label;
-        if (displayed.dest === 'Builder Claude' && profile.family !== 'claude') {
-            displayed.dest = profile.family === 'codex' ? 'Builder Codex' : 'Builder Copilot';
-        }
+        // "Builder" named the second window of the retired two-window self-study
+        // setup. In the one-window handbook the learner types where they type
+        // every other prompt.
+        if (displayed.dest === 'Builder Claude') displayed.dest = profile.label;
         return displayed;
     }
 

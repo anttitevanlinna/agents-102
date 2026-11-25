@@ -177,6 +177,8 @@ function repackStarter(archive, stage, mapFile, prework) {
   fs.writeFileSync(archive, gzipSync(tar));
 }
 
+const shell = name => fs.readFileSync(path.join(DELIVERY, 'shell', name), 'utf8');
+
 function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(ROOT, 'site/clients'), quiet = false } = {}) {
   const stage = fs.mkdtempSync(path.join(os.tmpdir(), 'a101-mvp-build-'));
   try {
@@ -190,7 +192,11 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
     fs.mkdirSync(path.dirname(preworkOverlay), { recursive: true });
     const prework = fs.readFileSync(path.join(DELIVERY, 'prework.md'), 'utf8');
     const sendStill = fs.readFileSync(path.join(DELIVERY, 'claude-send.jpg')).toString('base64');
-    fs.writeFileSync(preworkOverlay, prework.replace('src="ACME_COWORK_MESSAGE_BOX"', `src="data:image/jpeg;base64,${sendStill}"`));
+    const media = name => fs.readFileSync(path.join(DELIVERY, 'media', name)).toString('base64');
+    // One self-contained file: the offline handbook in the starter carries the same media.
+    fs.writeFileSync(preworkOverlay, prework.replace('src="ACME_COWORK_MESSAGE_BOX"', `src="data:image/jpeg;base64,${sendStill}"`)
+      .replace('poster="media/mac-folder-picker.jpg"', `poster="data:image/jpeg;base64,${media('mac-folder-picker.jpg')}"`)
+      .replace('src="media/mac-folder-picker.mp4"', `src="data:video/mp4;base64,${media('mac-folder-picker.mp4')}"`));
     fs.writeFileSync(path.join(brandDir, 'customer.json'), JSON.stringify({ name: 'ACME', hubHeading: 'ACME' }) + '\n');
     const checkpoints = JSON.parse(fs.readFileSync(path.join(DELIVERY, 'checkpoints.json'), 'utf8'));
     createNavigationOverlay({ root: ROOT, overlayDir, workbookUrl: WORKBOOK_URL, checkpoints });
@@ -219,7 +225,7 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
     if (!html.includes(toc)) throw new Error('Workbook contents insertion point is missing');
     // Keep typography inside a module div so the slide chunker, which consumes
     // direct section.module children, never mistakes onboarding for a module.
-    html = html.replace(toc, `<section class="a101-onboarding"><div class="module">\n${welcome}\n</div></section>\n\n${toc}`);
+    html = html.replace(toc, `<section class="a101-onboarding">${shell('cover-game.html')}<div class="module">\n${welcome}\n</div></section>\n\n${toc}`);
     html = moveContentsAfterPrework(html);
     const runtimePicker = '<div id="runtime-switcher" class="runtime-switcher"></div>';
     if (!html.includes(runtimePicker)) throw new Error('Workbook runtime picker is missing');
@@ -227,9 +233,15 @@ function buildEdition({ outputDir = process.env.AGENTS_OUTPUT_DIR || path.join(R
     if (!html.includes('</main>')) throw new Error('Workbook footer insertion point is missing');
     html = html.replace('</main>', `<section class="a101-onboarding a101-learning-controls" aria-label="Workbook options"><div class="module">\n${controls}\n<details class="a101-tool-picker"><summary id="workbook-tools">Tools for Claude Code and other runtimes</summary>${runtimePicker}</details>\n</div></section>\n\n</main>`);
     html = html.replace(toc, `${toc}\n<p><a href="#workbook-tools">Use this workbook with another tool</a></p>`);
-    const nav = '<ol class="workbook-topnav__modules">';
-    if (!html.includes(nav)) throw new Error('Workbook navigation insertion point is missing');
-    html = html.replace(nav, `${nav}\n      <li><a href="#start-learning" data-target="start-learning">Start</a></li>`);
+    // The handbook header: course map (first steps + modules), current place, view switch.
+    const navStart = html.indexOf('<nav class="workbook-topnav"');
+    const navEnd = html.indexOf('</nav>', navStart);
+    if (navStart < 0 || navEnd < 0) throw new Error('Workbook navigation insertion point is missing');
+    html = html.slice(0, navStart) + shell('header.html').replace('EDITION_LABEL', 'ACME handbook')
+      + '<nav class="chapter-outline" aria-label="In this module" hidden></nav>' + html.slice(navEnd + '</nav>'.length);
+    const cover = '<header class="workbook-cover" id="top">';
+    if (!html.includes(cover)) throw new Error('Workbook cover is missing');
+    html = html.replace(cover, '<span id="top"></span><header class="workbook-cover">');
     html = html.replace('</head>', `<style data-a101-onboarding>
 .a101-onboarding { width: 100%; max-width: 40em; margin: 2rem auto; padding: 0; }
 .a101-onboarding > .module { max-width: none; }
@@ -255,7 +267,7 @@ section#prework > h2 { margin-top: 2rem; padding-top: 1rem; }
 .a101-onboarding__optional > summary h2::before { display: none; }
 body.slides-active .a101-onboarding { display: none; }
 ${SETUP_CSS}
-</style>\n</head>`);
+</style>\n<style data-a101-handbook>\n${shell('deskpad.css')}\n${shell('reading-views.css')}\n</style>\n</head>`);
     html = html.replace('</body>', `<script data-a101-setup>${SETUP_SCRIPT}</script>\n<script data-a101-onboarding>
 (function () {
   function showRead() {
@@ -271,12 +283,12 @@ ${SETUP_CSS}
     if (details) details.open = true;
     if (target.scrollIntoView) target.scrollIntoView({ block: 'start' });
   }
-  var start = document.querySelector('.workbook-topnav__modules a[href="#start-learning"]');
+  var start = document.querySelector('.rail-brand');
   if (start) start.addEventListener('click', showRead);
   window.addEventListener('hashchange', reveal);
   reveal();
 })();
-</script>\n</body>`);
+</script>\n${shell('figure-reader.html')}<script data-a101-handbook>\n${shell('deskpad.js')}\n</script>\n</body>`);
 
     // The edition hub has one destination. Existing customer hubs are untouched.
     fs.writeFileSync(path.join(customerDir, 'index.html'), '<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agents 101 — ACME</title><meta http-equiv="refresh" content="0; url=./agents-101/#start-learning"></head><body><p><a href="./agents-101/#start-learning">Start Agents 101</a></p></body></html>\n');

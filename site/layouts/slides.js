@@ -186,6 +186,7 @@
         var m = h2 && PHASE_RE.exec(textOf(h2));
         if (m) {
           var pd = makeDivider('Phase ' + m[1], m[2].trim(), null, o.dark);
+          pd.dividerReadKey = h2.dataset.readKey;
           pd.phaseNum = +m[1];
           pd.docId = docId;
           out.push(pd);
@@ -298,7 +299,11 @@
           if (isNaN(mNo)) mNo = moduleSeq + 1;
           moduleSeq = mNo;
           code = 'M' + mNo;
-          slides.push(makeDivider('Module ' + mNo, moduleTitleOf(moduleEl), 'slide--module', false, moduleBigIdeaOf(moduleEl)));
+          var opener = makeDivider('Module ' + mNo, moduleTitleOf(moduleEl), 'slide--module', false, moduleBigIdeaOf(moduleEl));
+          opener.readKey = moduleEl.dataset.readKey;
+          var heroHeading = moduleEl.querySelector('.module-hero-title');
+          if (heroHeading) claimAnchor(anchors, heroHeading.dataset.readKey, slides.length);
+          slides.push(opener);
           // Walk the module in document order so the deck mirrors the long-read:
           // the hero became the opener above; every OTHER block — Start here /
           // Connections, What You'll Learn, Key Concepts, the Debrief move and its
@@ -321,7 +326,10 @@
               // is the include target, and the wrapper is dropped on the way in
               claimAnchor(anchors, child.id, slides.length);
               // the first (cover) slide of each doc reads as a section title in the rail
-              buildSingleDoc(child, { dark: isEx }).slides.forEach(function (s) { slides.push(s); });
+              buildSingleDoc(child, { dark: isEx }).slides.forEach(function (s, index) {
+                if (!index) s.readKey = child.dataset.readKey;
+                slides.push(s);
+              });
             } else if (child.classList && child.classList.contains('module-hero')) {
               /* hero (title + Big Idea) already became the module opener */
             } else if (child.tagName === 'H1') {
@@ -339,7 +347,9 @@
             kindTallies[initial] = (kindTallies[initial] || 0) + 1;
             code = initial + kindTallies[initial];
           }
-          slides.push(makeDivider(kind, moduleTitleOf(moduleEl), 'slide--module', false, moduleBigIdeaOf(moduleEl)));
+          var divider = makeDivider(kind, moduleTitleOf(moduleEl), 'slide--module', false, moduleBigIdeaOf(moduleEl));
+          divider.readKey = moduleEl.dataset.readKey;
+          slides.push(divider);
           buildSingleDoc(moduleEl, { dark: false }).slides.forEach(function (s) { slides.push(s); });
         }
         var num = 0;
@@ -369,6 +379,12 @@
     // Claimed here it gets remapped to the nearest survivor like any other.
     slides.forEach(function (s, k) {
       s.srcIndex = k;
+      var first = s.el.querySelector('[data-read-key]');
+      s.readKey = s.readKey || (first && first.dataset.readKey);
+      if (s.readKey) claimAnchor(anchors, s.readKey, k);
+      s.el.querySelectorAll('[data-read-key]').forEach(function (el) {
+        claimAnchor(anchors, el.dataset.readKey, k);
+      });
       Array.prototype.forEach.call(s.el.querySelectorAll('[id]'), function (n) { claimAnchor(anchors, n.id, k); });
     });
     var maxTier = opts.maxTier == null ? 3 : +opts.maxTier;
@@ -481,11 +497,17 @@
       btn.addEventListener('click', function (ev) {
         ev.stopPropagation();
         var text = pre.innerText.replace(/\n?Copy(\s*failed)?$/,'').replace(/^Copy\n?/,'');
-        text = pre.querySelector('code') ? pre.querySelector('code').innerText : pre.innerText;
-        try {
-          navigator.clipboard.writeText(text);
-          var old = btn.textContent; btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = old; }, 1200);
-        } catch (e) {}
+        text = pre.querySelector('code') ? pre.querySelector('code').textContent : pre.textContent;
+        function feedback(label) {
+          btn.textContent = label;
+          clearTimeout(btn._feedbackTimer);
+          btn._feedbackTimer = setTimeout(function () { btn.textContent = 'Copy'; }, 1200);
+        }
+        navigator.clipboard.writeText(text).then(function () { feedback('Copied'); }, function () {
+          feedback('Copy failed');
+          var details = pre.closest('details');
+          if (details) details.open = true;
+        });
       });
     });
   }
@@ -516,6 +538,21 @@
     slides.forEach(function (s) { viewport.appendChild(s.el); });
     var edgePrev = edge('prev'), edgeNext = edge('next');
     viewport.append(edgePrev, edgeNext);
+    viewport.querySelectorAll('.prompt-block').forEach(function (block) {
+      var pre = block.querySelector('pre');
+      if (!pre) return;
+      var text = pre.textContent.trim();
+      if (text.length < 450 && text.split('\n').length < 9) return;
+      var excerpt = text.split(/\n\s*\n/)[0];
+      if (excerpt.length > 185) excerpt = excerpt.slice(0, 185).replace(/\s+\S*$/, '') + '…';
+      var preview = el('p', 'prompt-preview');
+      preview.textContent = excerpt;
+      var details = el('details', 'prompt-inspect');
+      var summary = el('summary');
+      summary.textContent = 'Read full prompt';
+      pre.before(preview, details);
+      details.append(summary, pre);
+    });
     rewireCopy(viewport);
     // Same cloning problem as the copy buttons: a workbook diagram is a data:
     // URI, so its "Open in new tab" link carries href="#" and relies on a click
@@ -563,16 +600,16 @@
       var rawLabel = s.navLabel || s.title;
       label.textContent = (s.isDivider || s.isCover) ? rawLabel : rawLabel.replace(/^\d+[.)]\s+/, '');
       btn.append(num, label);
-      btn.addEventListener('click', function () { go(k); collapseRail(); });
+      btn.addEventListener('click', function () { go(k); closeContents(); btnRail.focus(); });
       li.appendChild(btn); railList.appendChild(li); return btn;
     });
     rail.append(handle, railHead, railList);
-    rail.addEventListener('mouseenter', openRail);
-    rail.addEventListener('mouseleave', collapseRail);
+    rail.setAttribute('aria-label', 'Slide contents');
+    rail.inert = true;
 
     // bar
     var bar = el('div', 'deck__bar');
-    var title = el('div', 'deck__title'); title.textContent = model.title || '';
+    var title = el('div', 'deck__title'); var brand = document.querySelector('.rail-brand'); title.textContent = brand ? brand.textContent.trim() : (model.title || '');
     var spacer = el('div', 'deck__spacer');
     var exit = el('button', 'deck__exit'); exit.innerHTML = readIcon() + '<span>Long-read</span>';
     var nav = el('div', 'deck__nav');
@@ -584,7 +621,9 @@
     btnPrev.addEventListener('click', function () { go(i - 1); });
     btnNext.addEventListener('click', function () { go(i + 1); });
     exit.addEventListener('click', function () { if (opts.onExit) opts.onExit(); });
-    nav.append(btnRail, btnPrev, count, btnNext);
+    nav.append(btnPrev, count, btnNext);
+    btnRail.setAttribute('aria-expanded', 'false');
+    btnRail.appendChild(document.createTextNode('Contents'));
     // Same short string and link as the long-read badge and full footer: one
     // source (CurriculumRuntime.COPYRIGHT_MARK / COPYRIGHT_LINK, curriculum.js).
     var link = (global.CurriculumRuntime && global.CurriculumRuntime.COPYRIGHT_LINK)
@@ -613,16 +652,30 @@
 
     bar.append(title, spacer);
     if (modeBtn) bar.appendChild(modeBtn);
-    bar.append(exit, nav, mark);
+    bar.append(exit, btnRail);
+    var foot = el('div', 'deck-foot');
+    var locationLabel = el('div', 'deck-location');
+    foot.append(locationLabel, nav, mark);
 
-    deck.append(progress, rail, viewport, bar);
+    deck.append(bar, progress, rail, viewport, foot);
     document.body.appendChild(deck);
     document.body.classList.add('slides-active');
     sourceEl.style.display = 'none';
 
-    function openRail() { deck.classList.add('is-railopen'); }
-    function collapseRail() { if (!pinned) deck.classList.remove('is-railopen'); }
-    function togglePin() { pinned = !pinned; deck.classList.toggle('is-railpinned', pinned); if (pinned) openRail(); else deck.classList.remove('is-railopen'); }
+    function closeContents() {
+      pinned = false;
+      rail.inert = true;
+      deck.classList.remove('is-railopen', 'is-railpinned');
+      btnRail.setAttribute('aria-expanded', 'false');
+    }
+    function togglePin() {
+      if (pinned) { closeContents(); return; }
+      pinned = true;
+      rail.inert = false;
+      deck.classList.add('is-railopen', 'is-railpinned');
+      btnRail.setAttribute('aria-expanded', 'true');
+      if (railItems[i]) railItems[i].focus({preventScroll:true});
+    }
 
     function go(n) {
       n = Math.max(0, Math.min(slides.length - 1, n));
@@ -638,6 +691,12 @@
       var s = slides[n];
       var ref = s.secCode ? s.secCode + (s.secNum != null ? '·' + s.secNum : '') : '';
       count.textContent = (ref ? ref + ' — ' : '') + (n + 1) + ' / ' + slides.length;
+      var chapter = model.slides.slice(0, n + 1).reverse().find(function (entry) {
+        return entry.isDivider && entry.el.classList.contains('slide--module');
+      });
+      locationLabel.textContent = chapter ? chapter.title + ' · ' + chapter.navLabel : model.title;
+      btnPrev.disabled = n === 0;
+      btnNext.disabled = n === slides.length - 1;
       edgePrev.disabled = n === 0; edgeNext.disabled = n === slides.length - 1;
     }
 
@@ -660,7 +719,8 @@
     });
 
     keyHandler = function (e) {
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (document.querySelector('.figure-reader[open]')) return;
+      if (e.metaKey || e.ctrlKey || e.altKey || (e.key === ' ' && e.target.closest('button, summary, a'))) return;
       switch (e.key) {
         case 'ArrowRight': case 'PageDown': case ' ': case 'l': case 'j': e.preventDefault(); go(i + 1); break;
         case 'ArrowLeft': case 'PageUp': case 'h': case 'k': e.preventDefault(); go(i - 1); break;
@@ -668,7 +728,7 @@
         case 'End': e.preventDefault(); go(slides.length - 1); break;
         case 'o': case 'O': e.preventDefault(); togglePin(); break;
         case 'b': case 'B': if (opts.onMaxTier) { e.preventDefault(); opts.onMaxTier(model.maxTier < 3 ? 3 : 1); } break;
-        case 'Escape': if (deck.classList.contains('is-railpinned') || deck.classList.contains('is-railopen')) { pinned = false; deck.classList.remove('is-railpinned', 'is-railopen'); } else if (opts.onExit) opts.onExit(); break;
+        case 'Escape': if (deck.classList.contains('is-railpinned') || deck.classList.contains('is-railopen')) { closeContents(); btnRail.focus(); } else if (opts.onExit) opts.onExit(); break;
         case 'f': case 'F': if (!document.fullscreenElement) { (document.documentElement.requestFullscreen || function () {}).call(document.documentElement); } else document.exitFullscreen(); break;
         default: if (/^[0-9]$/.test(e.key)) { var t = e.key === '0' ? 9 : (+e.key - 1); if (t < slides.length) go(t); }
       }
@@ -695,6 +755,7 @@
       if (Object.prototype.hasOwnProperty.call(model.anchors, arrival)) startAt = model.anchors[arrival];
     }
     go(startAt);
+    exit.focus({preventScroll:true});
 
     function edge(dir) {
       var b = el('button', 'deck__edge deck__edge--' + dir, { 'aria-label': dir === 'prev' ? 'Previous' : 'Next' });
@@ -712,7 +773,8 @@
         sourceEl.style.display = '';
       },
       go: go,
-      srcIndex: function () { return slides[i] ? slides[i].srcIndex : 0; }
+      srcIndex: function () { return slides[i] ? slides[i].srcIndex : 0; },
+      readingKey: function () { return slides[i].readKey || slides[i].dividerReadKey; }
     };
   }
 
@@ -724,7 +786,7 @@
     var slides = el('button', 'layout-toggle__btn', { 'data-mode': 'slides', type: 'button' });
     slides.innerHTML = listIcon() + '<span>Slides</span>';
     wrap.append(read, slides);
-    function paint(m) { read.classList.toggle('is-on', m === 'read'); slides.classList.toggle('is-on', m === 'slides'); }
+    function paint(m) { read.setAttribute('aria-pressed', String(m === 'read')); slides.setAttribute('aria-pressed', String(m === 'slides')); read.classList.toggle('is-on', m === 'read'); slides.classList.toggle('is-on', m === 'slides'); }
     read.addEventListener('click', function () { onChange('read'); });
     slides.addEventListener('click', function () { onChange('slides'); });
     paint(mode);

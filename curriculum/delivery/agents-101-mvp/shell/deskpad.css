@@ -1,0 +1,193 @@
+/* Bosser desktop handbook */
+@media screen {
+  body.workbook {
+    --paper: #fff;
+    --ink: #111;
+    --fg: #171716;
+    --fg-2: #474743;
+    --fg-3: #5c5c56;
+    --accent: #181817;
+    --accent-2: #242423;
+    --warm: #9a370e;
+    --orange: #ff6b35;
+    --bg: #fff;
+    --bg-2: #f5f4f0;
+    --bg-3: #efefea;
+    --line: #d8d8d2;
+    --line-2: #cecec7;
+    --code-bg: #f0efeb;
+    --font-body: 'Helvetica Neue', Arial, sans-serif;
+    --font-display: var(--font-body);
+    --font-serif: Charter, Georgia, serif;
+    padding: 0;
+    color: var(--fg);
+    background: var(--paper);
+  }
+  body.workbook:not(.slides-active) main {
+    --column: 900px;
+    display: block;
+    padding: 0 max(24px, calc((100% - var(--column)) / 2)) 6rem;
+  }
+  body.workbook main::before, body.workbook:not(.slides-active) .workbook-cover,
+  .slides-active .field-header { display: none; }
+  body.workbook:not(.slides-active) main > :is(section.module, .a101-onboarding, .workbook-toc) {
+    width: 100%; max-width: none; padding-inline: 0; margin-inline: 0;
+  }
+  .field-header.workbook-topnav {
+    position: sticky; inset: 0 0 auto;
+    display: block; padding: 0 24px; height: auto; max-height: none;
+    background: var(--paper); border: 0; border-bottom: 1px solid var(--line);
+    color: var(--ink); overflow: visible; backdrop-filter: none;
+  }
+  .field-header__inner {
+    max-width: 1140px; height: 60px; margin: auto; display: flex;
+    align-items: center; gap: 18px; position: relative;
+  }
+  .field-header a { color: inherit; text-decoration: none; border: none; }
+  .rail-brand { flex: none; white-space: nowrap; font: 700 21px/1 var(--font-body); letter-spacing: -.045em; }
+  .rail-brand::before {
+    content: ''; display: inline-block; width: 7px; height: 17px;
+    background: var(--orange); transform: skewX(-13deg); margin-right: 9px;
+  }
+  .field-edition, .field-place { font: 400 13px/1.3 var(--font-body); color: var(--fg-2); }
+  .field-edition { border-left: 1px solid var(--line); padding-left: 17px; }
+  .field-place { margin-left: auto; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .field-menu { flex: none; }
+  .field-menu > summary {
+    list-style: none; display: flex; align-items: center; cursor: pointer;
+    gap: 10px; font: 600 14px/1 var(--font-body); padding: 10px 0 10px 6px;
+  }
+  .field-menu > summary::-webkit-details-marker { display: none; }
+  .field-menu > summary::after {
+    content: ''; width: 6px; height: 6px; border: solid currentColor;
+    border-width: 0 1.5px 1.5px 0; transform: translateY(-2px) rotate(45deg);
+  }
+  .field-menu[open] > summary::after { transform: translateY(2px) rotate(225deg); }
+  .map-panel {
+    position: absolute; right: 0; top: 100%; width: min(570px,100%);
+    display: grid; grid-template-columns: 1fr 1.22fr; gap: 20px 24px;
+    padding: 25px; background: white; color: var(--ink);
+    border: 1px solid var(--line); box-shadow: 0 10px 30px #15150e12;
+    max-height: calc(100dvh - 70px); overflow-y: auto;
+  }
+  .rail-section { font-size: 14px; font-weight: 650; }
+  .field-menu ol, .field-menu .workbook-topnav__modules {
+    display: block; list-style: none; margin: 9px 0 0; padding: 0; overflow: visible;
+  }
+  .field-menu li { margin: 0; }
+  .field-menu ol a { display: flex; align-items: baseline; gap: 9px; padding: 5px 3px; font-size: 14px; line-height: 1.35; white-space: normal; }
+  .field-menu ol a span { min-width: 18px; color: var(--fg-3); font-size: 12px; }
+  .field-menu a[aria-current] { font-weight: bold; color: #8d300b; }
+  .field-menu a:hover { text-decoration: underline; }
+  .map-format { grid-column: 1 / -1; padding-top: 12px; border-top: 1px solid var(--line); }
+  .map-format .layout-toggle { margin: 0; border-color: var(--line); background: var(--bg-2); }
+  .map-format .layout-toggle__btn { color: var(--fg-2); }
+  .map-format .layout-toggle__btn.is-on { color: white; background: var(--ink); }
+  body.workbook:not(.slides-active) main [id] { scroll-margin-top: 84px; }
+  body.workbook:not(.slides-active) main #start-learning { scroll-margin-top: 110px; }
+  body.workbook:not(.slides-active) .a101-onboarding {
+    display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center;
+    gap: 6%; padding-block: clamp(36px,4.5vw,66px) clamp(30px,3.5vw,52px);
+    margin-block: 0;
+  }
+  .a101-onboarding > .module { grid-area: 1 / 1; padding: 0; }
+  .a101-onboarding #start-learning {
+    max-width: 12ch; font: 650 clamp(44px,5vw,70px)/.99 var(--font-display);
+    letter-spacing: -.052em; text-wrap: balance; margin: 0 0 18px;
+  }
+  .a101-onboarding #start-learning + p {
+    font: 400 18px/1.5 var(--font-body); max-width: 48ch; color: var(--fg-2); margin: 0; text-wrap: pretty;
+  }
+  .field-game { grid-area: 1 / 2; padding-inline: 1rem; }
+  .pixel-board {
+    --cell: clamp(10px,1.12vw,17px); position: relative;
+    width: calc(16 * var(--cell)); height: calc(8 * var(--cell));
+    background: radial-gradient(circle, #ccccc4 1px, transparent 1.3px) 50% 50% / var(--cell) var(--cell);
+  }
+  .pixel-board > * { position: absolute; left: calc(var(--x) * var(--cell)); top: calc(var(--y) * var(--cell)); width: calc(var(--cell) - 1px); height: calc(var(--cell) - 1px); background: var(--ink); }
+  .pixel-board .snake-head::after { content: ''; position: absolute; right: 18%; top: 18%; width: 18%; height: 18%; background: white; }
+  .pixel-board b { background: var(--orange); }
+  body.workbook:not(.slides-active) main .a101-onboarding + section#prework { margin-top: 0; }
+  body.workbook:not(.slides-active) #prework > h2[id],
+  body.workbook:not(.slides-active) main .a101-onboarding + section#prework > h2#make-my-first-game {
+    margin: 55px 0 19px; padding: 25px 0 0;
+    border-top: 1px solid var(--line); scroll-margin-top: 61px;
+    font: 620 clamp(27px,2.5vw,37px)/1.13 var(--font-display); letter-spacing: -.037em;
+  }
+  body.workbook:not(.slides-active) main .a101-onboarding + section#prework > h2#make-my-first-game { margin-top: 0; }
+  #prework > h2::before { display: none; }
+  .heading-step { font: 500 .46em/1 var(--font-body); letter-spacing: 0; color: #87300f; vertical-align: .28em; padding-right: .45em; }
+  #prework p, #prework li { font: 400 17px/1.53 var(--font-body); color: var(--fg); }
+  #prework p { max-width: 68ch; margin: 12px 0; text-wrap: pretty; }
+  #prework em { color: inherit; }
+  #prework p:has(> span[id]:first-child:empty):not(:has(a)) { margin: 0; }
+  .request-sheet, body.workbook:not(.slides-active) main .prompt-block {
+    background: #f5f4f0; color: var(--ink); border: 0; border-left: 3px solid var(--orange); border-radius: 0;
+    --prompt-bg: #f5f4f0; --prompt-header-bg: #f5f4f0; --prompt-fg: #191917;
+    --prompt-label-fg: #585852; --prompt-header-fg: #43433f;
+  }
+  .request-sheet { padding: 16px 23px 19px; margin: 21px 0; }
+  .request-text > span, .result-lead { display: block; font: 650 13px/1.4 var(--font-body); color: var(--fg-2); }
+  #prework .request-text blockquote { font: 400 clamp(23px,2.2vw,31px)/1.25 var(--font-serif); letter-spacing: -.018em; text-wrap: pretty; margin: 5px 0 0; border: 0; padding: 0; color: var(--ink); }
+  #prework .demo-note { margin: 13px 0; }
+  .demo-note summary { width: fit-content; font-size: 14px; font-weight: 550; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+  .demo-note img { max-width: 100%; height: auto; }
+  .folder-intro { display: grid; grid-template-columns: minmax(0,1fr) minmax(170px, .43fr); gap: 7%; align-items: center; }
+  .folder-path { margin: 0; width: max-content; padding: 6px 0 6px 18px; border-left: 1px solid var(--line); font: 14px/1.65 var(--font-mono); color: var(--fg-2); }
+  .folder-path figcaption { display: flex; align-items: center; gap: 7px; font: 600 14px/1.65 var(--font-body); color: var(--ink); }
+  .folder-path figcaption::before { content: ''; display: inline-block; width: 17px; height: 13px; background: var(--orange); clip-path: polygon(0 0,42% 0,55% 20%,100% 20%,100% 100%,0 100%); }
+  .folder-path span { display: block; margin-left: 1em; }
+  .folder-path span::before { content: '└ '; color: #74746c; }
+  .folder-path span:nth-child(3) { margin-left: 2em; }
+  .folder-path span:last-child { margin-left: 3em; font-weight: 650; color: var(--ink); }
+  .a101-os-picker { margin: 21px 0 12px; gap: 4px; color: var(--fg-2); font-size: 14px; }
+  .a101-os-picker button { padding: 4px 12px; background: white; color: var(--ink); border-color: var(--line-2); border-radius: 4px; }
+  .a101-os-picker button:first-of-type { margin-left: 7px; }
+  .a101-os-picker button[aria-pressed=true] { color: white; background: var(--ink); border-color: var(--ink); }
+  #prework ol { max-width: 70ch; padding-left: 1.55rem; }
+  #prework ol li { padding: 0 0 .45rem .25rem; }
+  #prework code:not(pre code) { white-space: nowrap; background: var(--bg-2); color: var(--ink); overflow-wrap: anywhere; }
+  .module strong, .module p > strong:first-child { color: inherit; }
+  body.workbook:not(.slides-active) main a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #888880; border: none; }
+  body.workbook:not(.slides-active) main .phase {
+    width: 100%; margin: 4rem 0; padding: 2.5rem 0; border: 0; border-top: 1px solid var(--ink);
+    background: var(--paper); color: var(--fg);
+    --ink: #fff; --ink-text: #171716; --ink-text-2: #333330; --ink-muted: #55554f; --ink-line: #d0d0ca; --warm: #88330d;
+  }
+  main .phase :is(p, ul, ol, blockquote) { max-width: 67ch; }
+  main .phase--exercise :is(h1,h2) em { background: none; -webkit-text-fill-color: currentColor; color: inherit; }
+  body.workbook:not(.slides-active) main .phase h2 { font-weight: 600; letter-spacing: -.035em; }
+  main .phase h2::before { background: var(--orange); }
+  body.workbook:not(.slides-active) main > section.module + section.module::before { width: 100%; height: 1px; margin: 0 0 30px; background: var(--ink); border: none; }
+  body.workbook:not(.slides-active) main > section.module > .module-hero { background: white; }
+  body.workbook:not(.slides-active) main .prompt-block__header { padding: 10px 17px 4px; border: 0; }
+  body.workbook:not(.slides-active) main .prompt-block__pre { padding: 8px 18px 19px; }
+  body.workbook:not(.slides-active) main .prompt-block__pre code { background: none; color: inherit; }
+  body.workbook:not(.slides-active) main .prompt-block .copy-btn { background: white; border: 1px solid #878780; color: #191917; padding: 5px 12px; border-radius: 4px; font-size: 13px; text-transform: none; letter-spacing: 0; }
+  body.workbook:not(.slides-active) main .prompt-block .copy-btn--copied { color: white; background: #282824; }
+  body.workbook :focus-visible { outline: 2px solid #95390f; outline-offset: 3px; }
+  body.workbook .copyright-badge { position: static; margin: 0; padding: 12px 24px; border: 0; border-radius: 0; background: #111; opacity: 1; text-align: center; }
+  body.workbook .copyright-badge a { color: #deded8; }
+  body.workbook .reading-progress { background: var(--orange); }
+}
+@media screen and (max-width: 720px) {
+  .field-header.workbook-topnav { padding-inline: 18px; }
+  .field-header__inner { height: 49px; gap: 12px; }
+  .field-edition { display: none; }
+  .rail-brand { font-size: 18px; }
+  .field-place { font-size: 12px; }
+  .map-panel { width: min(460px,100%); padding: 17px; gap: 14px; }
+  body.workbook:not(.slides-active) main { padding-inline: 20px; }
+  body.workbook:not(.slides-active) .a101-onboarding { display: block; position: relative; padding-block: 30px 24px; }
+  .a101-onboarding #start-learning { max-width: 70%; min-height: 2em; font-size: clamp(35px,7.3vw,48px); letter-spacing: -.045em; margin-bottom: 12px; }
+  .field-game { position: absolute; right: 0; top: 40px; padding: 0; }
+  .pixel-board { --cell: clamp(5px,1.45vw,10px); }
+  .a101-onboarding #start-learning + p { font-size: 16px; }
+  #prework p, #prework li { font-size: 16px; }
+  body.workbook:not(.slides-active) #prework > h2[id] { scroll-margin-top: 51px; }
+  .folder-intro { display: block; }
+  .folder-path { margin: 14px 0; padding: 0 0 0 10px; }
+  .request-sheet { padding: 14px 16px; }
+  .field-menu ol a { font-size: 13px; }
+}
+@media print { .field-header, .field-game { display: none; } }

@@ -5,7 +5,7 @@ A system remembers, grows, and compounds around the one thing you need to make p
 
 ## Prework
 
-[Module 2 prework](lectures/module-2-prework.md). (1) Bring a live challenge. (2) Verify your Confluence and OneDrive connectors. (3) <span class="rt-code">Plan-mode primer.</span><span class="rt-cowork">Plan-first primer.</span> (4) Karpathy's LLM Wiki post. (5) Optional: Lindenberg memory-architecture piece.
+[Module 2 prework](lectures/module-2-prework.md). (1) Bring a live challenge. (2) Optional: connect your work wiki or document store. (3) <span class="rt-code">Plan-mode primer.</span><span class="rt-cowork">Plan-first primer.</span> (4) Karpathy's LLM Wiki post. (5) Optional: Lindenberg memory-architecture piece.
 
 ## What You'll Learn
 After this module, you will be able to:

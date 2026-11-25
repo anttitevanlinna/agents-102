@@ -63,7 +63,7 @@ The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/
 Once the trigger is written, end this module's session or task. Module 7 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
-The loop keeps pressure on the generator while you are away.
+Your system now improves its own output. Next, it starts working for someone besides you.
 
 <!-- maintainer -->
 

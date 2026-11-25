@@ -91,20 +91,25 @@ h1 { font: 700 clamp(30px, 4.6vw, 48px)/1.05 var(--font-body); letter-spacing: -
 .plan-head .x { color: var(--ink); overflow-wrap: anywhere; }
 .rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
 .rows li { display: grid; grid-template-columns: 24px minmax(0, 1fr) 84px; gap: 4px 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
-.rows .n { font-weight: 700; color: var(--warm); font-variant-numeric: tabular-nums; align-self: start; padding-top: 1px; }
+.rows .n { font: 700 18px/1.3 var(--font-body); color: var(--warm); font-variant-numeric: tabular-nums; align-self: start; }
 .rows .d { min-width: 0; }
-.rows .d p { margin: 0; transition: opacity .3s; }
-.rows .ag { color: var(--ink); }
+.rows .d p { margin: 0; transition: opacity .16s ease-out; }
+.rows .d p.out, .plan-head.out { opacity: 0; }
+.plan-head { transition: opacity .16s ease-out; }
+.rows .mn { margin: 0 0 3px; font: 700 18px/1.3 var(--font-body); letter-spacing: -.015em; color: var(--ink); }
+.rows .mn a { text-decoration: none; }
+.rows .mn a:hover { text-decoration: underline; text-decoration-color: var(--orange); text-underline-offset: 3px; }
+.rows .ag { color: var(--fg); }
 .rows .end { font-size: 15px; color: var(--fg-2); margin: 2px 0 3px !important; }
 .rows .end b { color: var(--warm); font-weight: 600; }
 .rows small { display: block; color: var(--fg-3); font-size: 13px; }
 .rows small a { text-underline-offset: 3px; text-decoration-color: var(--line); }
 .rows.wait .ag, .rows.wait .end { opacity: .4; }
-@keyframes fresh { from { background: color-mix(in srgb, var(--orange) 28%, transparent); } to { background: transparent; } }
-.rows .fresh { animation: fresh 1.4s ease-out both; }
+@keyframes fresh { 0% { background: transparent; } 15% { background: color-mix(in srgb, var(--orange) 22%, transparent); } 100% { background: transparent; } }
+.rows .fresh { animation: fresh 1.6s ease-out both; }
 @media (prefers-reduced-motion: reduce) { .rows .fresh { animation-duration: .01s; } }
 /* The travelling arrow: runs down the orange line from the answer, and each row rewrites as it arrives. */
-.pulse { position: absolute; top: 0; width: 3px; height: 48px; background: linear-gradient(to bottom, transparent, var(--ink)); pointer-events: none; opacity: 0; transition: opacity .25s; z-index: 2; }
+.pulse { position: absolute; top: 0; width: 3px; height: 48px; background: linear-gradient(to bottom, transparent, var(--ink)); pointer-events: none; opacity: 0; transition: opacity .3s ease-out; z-index: 2; will-change: transform; }
 .pulse.on { opacity: 1; }
 .pulse::after { content: ''; position: absolute; left: -6.5px; bottom: -12px; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 13px solid var(--ink); }
 @keyframes branch { 0% { opacity: 1; transform: scaleX(0); } 30% { opacity: 1; transform: scaleX(1); } 100% { opacity: 0; transform: scaleX(1); } }
@@ -189,63 +194,70 @@ footer p { margin: 0; max-width: 46em; }
             data-keep="Everything. You learn what to give an agent."
             data-std-end="A page that is you, and rules for an agent">
           <span class="n">1</span>
-          <div class="d"><p class="ag">Before it sees your deals, an agent writes about you, and you catch what it made up.</p>
+          <div class="d"><h3 class="mn"><a href="/agents-101/#getting-going">Getting Going</a></h3>
+          <p class="ag">Before it sees your deals, an agent writes about you, and you catch what it made up.</p>
           <p class="end"><b>You end with</b> <span>rules for an agent, ready for the deal work</span></p>
-          <small><a href="/agents-101/#getting-going">Getting Going</a> · Exercise: Paint by agent with guardrails · 80 min</small></div>
+          <small>Exercise: Paint by agent with guardrails · 80 min</small></div>
           <div class="bar" aria-hidden="true"><span style="width:4%"></span></div></li>
         <li data-module="building-agent-systems" data-title="Building Agent Systems" data-min="90"
             data-std-agents="Agents gather your sources on the challenge and remember them. One runs on a schedule."
             data-keep="Naming the challenge, approving the plan."
             data-std-end="A memory of your challenge that stays current">
           <span class="n">2</span>
-          <div class="d"><p class="ag">Agents gather your lost-deal notes, price lists and customer emails into one memory, and keep it current.</p>
+          <div class="d"><h3 class="mn"><a href="/agents-101/#building-agent-systems">Building Agent Systems</a></h3>
+          <p class="ag">Agents gather your lost-deal notes, price lists and customer emails into one memory, and keep it current.</p>
           <p class="end"><b>You end with</b> <span>a memory of why deals are lost</span></p>
-          <small><a href="/agents-101/#building-agent-systems">Building Agent Systems</a> · Exercise: Build your challenge memory · 90 min</small></div>
+          <small>Exercise: Build your challenge memory · 90 min</small></div>
           <div class="bar" aria-hidden="true"><span style="width:28%"></span></div></li>
         <li data-module="multi-agent-systems" data-title="Multi-Agent Systems" data-min="90"
             data-std-agents="Three agents search, three more argue, and an answer comes out."
             data-keep="Starting it and reading the answer."
             data-std-end="A briefing on your challenge">
           <span class="n">3</span>
-          <div class="d"><p class="ag">Three agents search your deal notes, files and outside articles. Three more argue why buyers pick the cheaper offer.</p>
+          <div class="d"><h3 class="mn"><a href="/agents-101/#multi-agent-systems">Multi-Agent Systems</a></h3>
+          <p class="ag">Three agents search your deal notes, files and outside articles. Three more argue why buyers pick the cheaper offer.</p>
           <p class="end"><b>You end with</b> <span>a briefing on why you lose on price</span></p>
-          <small><a href="/agents-101/#multi-agent-systems">Multi-Agent Systems</a> · Exercise: Three retrievers, one curator · 90 min</small></div>
+          <small>Exercise: Three retrievers, one curator · 90 min</small></div>
           <div class="bar" aria-hidden="true"><span style="width:46%"></span></div></li>
         <li data-module="security" data-title="Security" data-min="105"
             data-std-agents="Agents check what they can reach against your company's rules, and what a bad document could make them do."
             data-keep="Choosing which risk to close."
             data-std-end="An audit of your agents and one risk closed">
           <span class="n">4</span>
-          <div class="d"><p class="ag">Agents check what they can open in your pricing and deal files, and what a planted line in a document could make them do.</p>
+          <div class="d"><h3 class="mn"><a href="/agents-101/#security">Security</a></h3>
+          <p class="ag">Agents check what they can open in your pricing and deal files, and what a planted line in a document could make them do.</p>
           <p class="end"><b>You end with</b> <span>an audit of your agents and one risk closed</span></p>
-          <small><a href="/agents-101/#security">Security</a> · Exercise: Audit your agent · 105 min</small></div>
+          <small>Exercise: Audit your agent · 105 min</small></div>
           <div class="bar" aria-hidden="true"><span style="width:58%"></span></div></li>
         <li data-module="output-quality" data-title="Catching Hallucinations" data-min="85"
             data-std-agents="Agents check their own claims against the sources. The best check becomes your judge."
             data-keep="Reading the scoreboard, keeping the judge."
             data-std-end="A saved judge that catches made-up claims">
           <span class="n">5</span>
-          <div class="d"><p class="ag">Agents check every claim about the rival's prices against your sources and flag the ones they made up.</p>
+          <div class="d"><h3 class="mn"><a href="/agents-101/#output-quality">Catching Hallucinations</a></h3>
+          <p class="ag">Agents check every claim about the rival's prices against your sources and flag the ones they made up.</p>
           <p class="end"><b>You end with</b> <span>a saved judge that catches made-up claims</span></p>
-          <small><a href="/agents-101/#output-quality">Catching Hallucinations</a> · Exercise: Hallucination benchmark · 85 min</small></div>
+          <small>Exercise: Hallucination benchmark · 85 min</small></div>
           <div class="bar" aria-hidden="true"><span style="width:70%"></span></div></li>
         <li data-module="evaluations" data-title="Evaluations" data-min="90"
             data-std-agents="Agents rewrite their work round after round against your judge while you are away."
             data-keep="Deciding what better means. Then you walk away."
             data-std-end="A briefing that got better with nobody editing">
           <span class="n">6</span>
-          <div class="d"><p class="ag">Agents rewrite the price briefing round after round against the same judge while you are away.</p>
+          <div class="d"><h3 class="mn"><a href="/agents-101/#evaluations">Evaluations</a></h3>
+          <p class="ag">Agents rewrite the price briefing round after round against the same judge while you are away.</p>
           <p class="end"><b>You end with</b> <span>a sharper briefing, and the scores that show it</span></p>
-          <small><a href="/agents-101/#evaluations">Evaluations</a> · Exercise: The eval loop runs itself · 90 min</small></div>
+          <small>Exercise: The eval loop runs itself · 90 min</small></div>
           <div class="bar" aria-hidden="true"><span style="width:86%"></span></div></li>
         <li data-module="agents-building-agents-solo" data-title="Agents Building Agents" data-min="45"
             data-std-agents="An agent builds the agent someone else needs, and your judge checks it."
             data-keep="Describing what it should do."
             data-std-end="An agent for someone else, built by your agents">
           <span class="n">7</span>
-          <div class="d"><p class="ag">An agent builds an agent for a sales lead who needs the price story before each deal, and your judge checks it.</p>
+          <div class="d"><h3 class="mn"><a href="/agents-101/#agents-building-agents-solo">Agents Building Agents</a></h3>
+          <p class="ag">An agent builds an agent for a sales lead who needs the price story before each deal, and your judge checks it.</p>
           <p class="end"><b>You end with</b> <span>an agent for the sales lead, built by your agents</span></p>
-          <small><a href="/agents-101/#agents-building-agents-solo">Agents Building Agents</a> · Exercise: Build an agent for someone else · 45 min</small></div>
+          <small>Exercise: Build an agent for someone else · 45 min</small></div>
           <div class="bar" aria-hidden="true"><span style="width:94%"></span></div></li>
       </ol>
       <div class="plan-foot"><p class="status" id="status" role="status">An example answer Claude wrote from the course pages. Type your own challenge to get yours.</p><span>Orange bar: how much of the job the agents do. A sketch.</span></div>
@@ -353,62 +365,78 @@ footer p { margin: 0; max-width: 46em; }
   }
   var EXAMPLES = [{ challenge: inp.value, rows: first }];
   try { EXAMPLES = EXAMPLES.concat(JSON.parse(document.getElementById('examples').textContent)); } catch (e) {}
-  function setRow(i, row) {
-    var ag = items[i].querySelector('.ag'), end = items[i].querySelector('.end');
-    ag.textContent = String(row.agents).slice(0, 200);
-    end.querySelector('span').textContent = lc(String(row.end).slice(0, 90).replace(/\.$/, ''));
-    restart(ag, 'fresh'); restart(end, 'fresh');
+  function rowText(i, row) {
+    items[i].querySelector('.ag').textContent = String(row.agents).slice(0, 200);
+    items[i].querySelector('.end span').textContent = lc(String(row.end).slice(0, 90).replace(/\.$/, ''));
+  }
+  // Crossfade: the old line fades out, the new one fades in with a soft tint.
+  function setRow(i, row, soft) {
+    var ps = [items[i].querySelector('.ag'), items[i].querySelector('.end')];
+    if (!soft) { rowText(i, row); ps.forEach(function (p) { restart(p, 'fresh'); }); return; }
+    ps.forEach(function (p) { p.classList.add('out'); });
+    setTimeout(function () { rowText(i, row); ps.forEach(function (p) { p.classList.remove('out'); restart(p, 'fresh'); }); }, 170);
   }
   function lc(t) { return t.length > 1 && t[1] !== t[1].toUpperCase() ? t[0].toLowerCase() + t.slice(1) : t; }
   function restart(el, cls) { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
   function fill(rows) { for (var i = 0; i < items.length; i++) setRow(i, rows[i]); }
 
-  /* Answer -> arrow -> rows change. The arrow leaves the input, stops at the heading
-     (and waits there while Claude writes), then runs down the line; each row
-     rewrites the moment the arrow reaches its branch. */
-  var intro = form.parentNode, pulse = document.getElementById('pulse'), field = form.querySelector('.field'), runId = 0, bob = null;
+  /* Answer -> arrow -> rows change. One requestAnimationFrame loop drives the
+     arrow: it glides from the input to the heading, hovers there while Claude
+     writes, then glides down in one continuous move. Each row rewrites as the
+     arrow passes its branch; positions are measured every frame, so rows that
+     change height never throw the arrow off. */
+  var intro = form.parentNode, pulse = document.getElementById('pulse'), field = form.querySelector('.field'), runId = 0;
   function yOf(el, dy) { return el.getBoundingClientRect().top - intro.getBoundingClientRect().top + dy; }
-  function at(y) { pulse.style.transform = 'translateY(' + (y - 60) + 'px)'; }
-  function move(to, ms) {
-    var from = pulse._y == null ? to : pulse._y; pulse._y = to;
-    if (!pulse.animate) { at(to); return new Promise(function (r) { setTimeout(r, ms); }); }
-    var a = pulse.animate([{ transform: 'translateY(' + (from - 60) + 'px)' }, { transform: 'translateY(' + (to - 60) + 'px)' }], { duration: ms, easing: 'ease-in-out', fill: 'forwards' });
-    return a.finished.then(function () { at(to); });
+  function at(y) { pulse.style.transform = 'translate3d(0,' + (y - 60).toFixed(1) + 'px,0)'; }
+  var raf = window.requestAnimationFrame ? window.requestAnimationFrame.bind(window) : null;
+  function ease(t) { return -(Math.cos(Math.PI * t) - 1) / 2; }
+  // Glide from y0 to a target measured live; speed in px per ms, with eased start and stop.
+  function glide(id, y0, target, speed, onStep) {
+    return new Promise(function (done) {
+      var t0 = null, dist0 = Math.max(1, target() - y0), dur = Math.max(260, dist0 / speed);
+      (function frame(now) {
+        if (id !== runId) return done(false);
+        if (t0 === null) t0 = now;
+        var k = Math.min(1, (now - t0) / dur), y = y0 + (target() - y0) * ease(k);
+        at(y); if (onStep) onStep(y);
+        if (k < 1) raf(frame); else done(true);
+      })(performance.now());
+    });
   }
-  function stopBob() { if (bob) { bob.cancel(); bob = null; } }
-  // rowsReady: rows now, or a promise of rows (null = keep the standard lines).
   function cascade(text, rowsReady) {
     var id = ++runId;
-    stopBob();
-    if (reduce || !pulse.animate) {
+    if (reduce || !raf) {
       title(text);
       return Promise.resolve(rowsReady).then(function (rows) { if (id === runId) fill(rows || STANDARD); });
     }
     pulse.style.left = (head.getBoundingClientRect().left - intro.getBoundingClientRect().left - 21) + 'px';
-    pulse._y = null; move(yOf(field, field.offsetHeight), 0);
-    pulse.classList.add('on');
-    var headY = yOf(head, 12);
-    return move(headY, 450).then(function () {
-      if (id !== runId) return;
-      title(text); restart(head, 'hit');
-      if (rowsReady && typeof rowsReady.then === 'function') {
-        bob = pulse.animate([{ transform: 'translateY(' + (headY - 60) + 'px)' }, { transform: 'translateY(' + (headY - 52) + 'px)' }], { duration: 600, direction: 'alternate', iterations: Infinity, easing: 'ease-in-out' });
-      }
-      return Promise.resolve(rowsReady);
-    }).then(function (rows) {
-      if (id !== runId) return;
-      stopBob(); rows = rows || STANDARD;
-      var i = 0;
-      function next() {
-        if (id !== runId) return;
-        if (i >= items.length) { pulse.classList.remove('on'); return; }
-        return move(yOf(items[i], 25), i === 0 ? 260 : 200).then(function () {
-          if (id !== runId) return;
-          setRow(i, rows[i]); restart(items[i], 'hit'); i++;
-          return next();
-        });
-      }
-      return next();
+    var y0 = yOf(field, field.offsetHeight), headY = function () { return yOf(head, 12); };
+    at(y0); pulse.classList.add('on');
+    var waiting = rowsReady && typeof rowsReady.then === 'function', got = waiting ? null : (rowsReady || STANDARD);
+    if (waiting) Promise.resolve(rowsReady).then(function (r) { got = r || STANDARD; });
+    return glide(id, y0, headY, 0.6).then(function (ok) {
+      if (!ok) return;
+      head.classList.add('out');
+      setTimeout(function () { if (id !== runId) return; title(text); head.classList.remove('out'); restart(head, 'hit'); }, 170);
+      // Hover at the heading until the rows are ready.
+      return new Promise(function (go) {
+        var t0 = performance.now();
+        (function hover(now) {
+          if (id !== runId) return go(false);
+          if (got) { at(headY()); return go(true); }
+          at(headY() + 4 * Math.sin((now - t0) / 260)); raf(hover);
+        })(t0);
+      });
+    }).then(function (ok) {
+      if (!ok) return;
+      var rows = got, next = 0, last = function () { return yOf(items[items.length - 1], 24); };
+      return glide(id, headY(), last, 0.55, function (y) {
+        while (next < items.length && y >= yOf(items[next], 24) - 2) { setRow(next, rows[next], true); restart(items[next], 'hit'); next++; }
+      }).then(function (ok2) {
+        if (!ok2) return;
+        while (next < items.length) { setRow(next, rows[next], true); next++; }
+        setTimeout(function () { if (id === runId) pulse.classList.remove('on'); }, 250);
+      });
     });
   }
   function title(text) {

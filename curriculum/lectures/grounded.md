@@ -68,8 +68,8 @@ Run the same briefing prompt twice from the same sources, in two sessions. Compa
 A stable claim can still be unsupported. Drift is a warning, not proof of fabrication. Two sessions give you a demo; the signal firms up at five to ten.
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 behavior@5fc7188 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
-- judges @78d17fc9: writing PASS (3 findings see instances/agents-101--lecture--grounded.writing.json), story PASS (1 finding see instances/agents-101--lecture--grounded.story.json), technical REVISE (1/1 see instances/agents-101--lecture--grounded.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (writing@cf4fd816 story@cf4fd816 technical@cf4fd816 behavior@5fc7188 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @cf4fd816: writing PASS (2 findings see instances/agents-101--lecture--grounded.writing.json), story PASS (1 finding see instances/agents-101--lecture--grounded.story.json), technical PASS (1 finding see instances/agents-101--lecture--grounded.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Decision note 2026-11-13 (point-of-view pass).** `## Steering without reading every line` condenses Antti's article *Steering Without Reading All Text* (bosser, 2026-10-28): he stopped reading full documents; grounding (CV claim vs work contract) makes that safe. Big Idea stated cold 83 vs 82 (lean scorer, n=24 each): no cost.
 

@@ -3,73 +3,73 @@
   "file": "curriculum/exercises/personal-site-with-guardrails.md",
   "training": "agents-101",
   "verdict": "PASS",
-  "body_sha": "9523caff4d1bd8268c574b6a5ee2143e6e59e285ef5d2136781bb872ab5819c4",
-  "shape_hash": "ee0c88a2fb4d0bce",
+  "body_sha": "b59971488bab8e0a52c85c897f7e7599542ed4deba31da8f4507625104bd371d",
+  "shape_hash": "3900d6d1d5ffa981",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "Exercise: Paint by agent with guardrails (lede)",
-      "lines": "1-7"
+      "heading": "Exercise: Paint by agent with guardrails (title + lede)",
+      "lines": "1-8"
     },
     {
       "index": 1,
       "heading": "Phase 1: The boring baseline",
-      "lines": "9-19"
+      "lines": "9-20"
     },
     {
       "index": 2,
       "heading": "Phase 2: Apply a framework you know",
-      "lines": "21-25"
+      "lines": "21-26"
     },
     {
       "index": 3,
       "heading": "Name the framework and tune it",
-      "lines": "27-31"
+      "lines": "27-32"
     },
     {
       "index": 4,
       "heading": "Keep yourself the protagonist, then run the beats",
-      "lines": "33-39"
+      "lines": "33-40"
     },
     {
       "index": 5,
       "heading": "Phase 3: Strengths",
-      "lines": "41-47"
+      "lines": "41-48"
     },
     {
       "index": 6,
       "heading": "Phase 4: Anti-branding, the mirror",
-      "lines": "49-55"
+      "lines": "49-56"
     },
     {
       "index": 7,
       "heading": "List what you hate, then invert it",
-      "lines": "57-61"
+      "lines": "57-62"
     },
     {
       "index": 8,
       "heading": "Phase 5: Look back",
-      "lines": "63-73"
+      "lines": "63-74"
     },
     {
       "index": 9,
       "heading": "Phase 6: Free iteration",
-      "lines": "75-81"
+      "lines": "75-82"
     },
     {
       "index": 10,
       "heading": "Phase 7: Close, package what you learned",
-      "lines": "83-91"
+      "lines": "83-92"
     },
     {
       "index": 11,
       "heading": "See the mechanism repeat in every phase",
-      "lines": "93-97"
+      "lines": "93-98"
     },
     {
       "index": 12,
       "heading": "Take the context move past this site",
-      "lines": "99-105"
+      "lines": "99-106"
     }
   ],
   "rules_evaluated": [
@@ -78,10 +78,10 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "evidence": "chunk 11 \"See the mechanism repeat in every phase\": line 97: \"the colleague-guide frame\" is the closest call (Phase 2 names it \"colleague-help section\"); it sits in a **What happened:** recap, session-artifact carve-out applies, and \"StoryBrand\" + \"colleague\" are named on chunks 3-4. Line 35 \"StoryBrand shapes only the colleague-help section\" resolves to line 29. No bare pronoun lacks an antecedent.",
+      "evidence": "chunk 11 \"See the mechanism repeat in every phase\": line 97: \"your LinkedIn, the colleague-guide frame, strengths, the mirror-list and the site it wrote last\" is the closest call: Phase 2 names it \"colleague-help section\" and StoryBrand (lines 25-35), so a deck reader resolves \"frame\" to it, and the line sits in a **What happened:** recap where the session-artifact carve-out applies. \"the mirror-list\" resolves through chunk 6 header \"the mirror\" + chunk 7 \"List what you hate, then invert it\". Line 105 \"Recipe 1\" is the cookbook's R1 (\"Make the output genuinely yours\"), named in the link on the same line. Line 19 \"The mess\" binds to line 14 \"Messy is fine\" in-chunk. Harm (a projected pronoun/noun with no antecedent) not present.",
       "na_reason": null,
       "fix_hint": null,
-      "blocking": false,
+      "blocking": true,
       "chunks_flagged": []
     },
     {
@@ -89,7 +89,7 @@
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "evidence": "line 105: \"the [Cookbook for Agent System Design](../trainings/...)\" names its target by title; line 105 \"Recipe 1\" resolves (cookbook has a Recipe catalogue, 8 recipes). No \"the opening lecture\"/\"module X said\" pointers.",
+      "evidence": "line 105: \"the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md)\" names its target by title; no \"the opening lecture said\" / \"module X\" pointers (grep body for opening lecture|earlier module|last module: 0).",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true,
@@ -100,7 +100,7 @@
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
-      "evidence": "line 103: \"between Phase 1 and Phase 6\" and line 71 \"module-1/context-trace.md\" resolve to chunk 1 / chunk 9 and the Phase 5 prompt; line 97 \"the site it wrote last\" is a session artifact. No \"the X you did/caught\" with a missing beat.",
+      "evidence": "line 103: \"between Phase 1 and Phase 6\" resolve to chunks 1 and 9; line 97 \"the site it wrote last\" is a session artifact (Phases 1-4 each write module-1/site.html); line 71 \"module-1/context-trace.md\" is written by the Phase 5 prompt on the same slide. No \"the X you did/caught\" with a missing beat.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true,
@@ -111,7 +111,7 @@
       "rule_index": 4,
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "PASS",
-      "evidence": "line 67: \"Run this one. The debrief starts from the file it writes, and the agent waits for one answer from you.\" closest to a muted-read cue, but \"this one\" binds to the prompt on the same slide and the setup is verbed; no guess/predict instruction anywhere (grep guess|predict in body: none).",
+      "evidence": "line 67: \"Run this one. The debrief starts from the file it writes, and the agent waits for one answer from you.\" is the closest to a muted-read cue; \"this one\" binds to the prompt block on the same slide and the setup is verbed. grep -ciE \"guess|predict\" body → 0: no guess-before-reveal beat exists.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true,
@@ -122,7 +122,7 @@
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "evidence": "chunk 2 \"Phase 2: Apply a framework you know\" (lines 21-25) is the thinnest: one self-carrying claim at line 25 (\"The site isn't there to sell. A colleague who visits it should think ...\"), not a wait-state.",
+      "evidence": "chunk 2 \"Phase 2: Apply a framework you know\" (lines 21-25) is the thinnest: line 25 \"The site isn't there to sell. A colleague who visits it should think ...\" is a self-carrying claim, not a wait-state. Every other chunk carries a step, prompt or claim.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -133,7 +133,7 @@
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "evidence": "chunk 11 line 93 header \"See the mechanism repeat in every phase\" vs line 97 body naming each phase's context (LinkedIn, frame, strengths, mirror-list): body supports the header.",
+      "evidence": "chunk 11 line 93 header \"See the mechanism repeat in every phase\" vs line 97 naming each phase's context (LinkedIn, frame, strengths, mirror-list): body supports the header. chunk 6 header \"the mirror\" is a label whose gloss arrives on the next slide; not contradicted by its body.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -144,7 +144,7 @@
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "evidence": "line 103: \"The LLM didn't get better between Phase 1 and Phase 6. The context did.\" is a two-part contrast, not \"Not X. Not Y. Z.\"; no triple anaphora, no self-grading superlative (grep \"most useful|best|powerful\" none), no number-plus-retraction.",
+      "evidence": "line 103: \"The LLM didn't get better between Phase 1 and Phase 6. The context did.\" is a two-part contrast, not \"Not X. Not Y. Z.\"; line 71 two parallel sentences, not a triple. The one \"Not buying a service. Not booking a call. A colleague relationship.\" sits inside the Phase 2 prompt fence (expanded view), fenced and exempt. grep -ciE \"most useful|best|powerful|most important\" body → 0 (no self-grading superlative). Line 31/55 \"Name the framework, tune it, ...\" is an imperative triplet with three concrete legs.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true,
@@ -155,7 +155,7 @@
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "evidence": "lines 29, 33, 39 use \"beats\" (Stakes, Call-to-Action; \"run the beats\"; \"five tuned beats\"): StoryBrand framework vocabulary the student meets in the prompt, ordinary story-structure usage, communicating not displaying. Closest to firing; no \"surface/compendium/forcing function/mood/firing\" in body (grep 0).",
+      "evidence": "lines 29, 33, 39 \"beats\" (Stakes, Call-to-Action; \"run the beats\"; \"five tuned beats\"): StoryBrand's own vocabulary, communicating not displaying, and the student meets the five beats in the prompt. Closest to firing. grep -nE \"\\b(surface|compendium|forcing function|mood|firing)\\b\" on body lines 1-106 → 0 hits (one hit for \"below\" is rule 12, not dialect).",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true,
@@ -166,14 +166,16 @@
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "REVISE",
-      "evidence": "chunk 1 \"Phase 1: The boring baseline\": line 15: \"**Drop your LinkedIn text into the prompt below, after the colon. Send as one message.**\" and line 13 \"**Open your own LinkedIn profile in your browser.**\" bold whole lead sentences (monoculture shape, 3 bolded leads on one slide); chunk 3 \"Name the framework and tune it\": line 31 \"**Name the framework, tune it, have the agent run it.**\" bolded sentence plus line 29 \"**StoryBrand**\" = 2; chunk 6 \"Phase 4\": line 53 \"**Invert the easy thing.**\" plus line 55 \"**Name the framework, tune it, ask the agent to run it.**\" = 2, line 55 is an orphan bold sentence. Harm (bold stops marking handles, slides read as menus) present: a whole-sentence bold is not a handle. No accept-note, no §34 or LO-template exception applies. Non-blocking polish.",
+      "evidence": "chunk 1 \"Phase 1: The boring baseline\": line 13 \"**Open your own LinkedIn profile in your browser.**\", line 14 \"**Select all and copy.**\", line 15 \"**Drop your LinkedIn text into the prompt below, after the colon. Send as one message.**\": every item opens with a bolded sentence, the rule's named monoculture shape (3 bolds, no §34/LO/menu exception applies). chunk 3 \"Name the framework and tune it\": line 29 \"**StoryBrand**\" + line 31 \"**Name the framework, tune it, have the agent run it.**\" = 2 on one slide, the second an 8-word sentence. chunk 4 \"Keep yourself the protagonist, then run the beats\": line 35 \"**The site stays a personal site; you stay the protagonist of the page.**\" bolds a whole narrative sentence. chunk 6 \"Phase 4\": line 53 \"**Invert the easy thing.**\" + line 55 \"**Name the framework, tune it, ask the agent to run it.**\" = 2. chunk 9 \"Phase 6\": line 81 \"**Tip: steal a look and feel by naming a site.**\" bolds a whole lead sentence. Harm (bold stops marking handles; slides read as menus) present. Sibling test: 9 of 59 exercise files open step 1 with a bolded sentence, so it is not corpus house style. No accept-note in the maintainer block. Line 95/101 \"**What happened:**\" / \"**The point:**\" are widget labels, not counted.",
       "na_reason": null,
-      "fix_hint": "Bold the handle only: 'Open' step names, 'Send as one message'; keep one bold per slide (the repeated name-tune-run line is the handle on chunk 3, plain on chunk 6).",
+      "fix_hint": "Bold the handle only (Open / Select all / Send as one message; StoryBrand; Invert the easy thing); plain prose elsewhere; at most one bold per slide.",
       "blocking": false,
       "chunks_flagged": [
         1,
         3,
-        6
+        4,
+        6,
+        9
       ]
     },
     {
@@ -181,7 +183,7 @@
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-size.js --file → slides: 12; grep \"^## \" body = 12 headings (lines 9,21,27,33,41,49,57,63,75,83,93,99); every `##` is under the exercise wrapper so all 12 reach the deck.",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/personal-site-with-guardrails.md → \"slides: 12 ... oversized: 0\"; grep -c \"^## \" body → 12 (lines 9,21,27,33,41,49,57,63,75,83,93,99). Exercise file inlined under a .phase--exercise wrapper, so all 12 reach the deck.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true,
@@ -192,7 +194,7 @@
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-numbering.js --file curriculum/exercises/personal-site-with-guardrails.md → \"OK — 1 files, Phase/Step numbering consistent.\" Phases 1-7 consecutive; refs at line 103 \"Phase 1\"/\"Phase 6\" resolve.",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/exercises/personal-site-with-guardrails.md → \"OK — 1 files, Phase/Step numbering consistent.\" Phase headers 1-7 consecutive (lines 9,21,41,49,63,75,83); line 103 \"Phase 1\"/\"Phase 6\" resolve in-file.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -203,7 +205,7 @@
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-deixis.js --file ... → \"OK — 1 files, no page-geometry pointers across the slide cut.\" Line 15 \"the prompt below\" has its paste block in the same chunk (line 17).",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/exercises/personal-site-with-guardrails.md → \"OK — 1 files, no page-geometry pointers across the slide cut.\" Line 15 \"the prompt below\" has its paste block in the same chunk (line 17), same-chunk use passes.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true,
@@ -214,7 +216,7 @@
       "rule_index": 13,
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "PASS",
-      "evidence": "one in-body link, line 105 \"[Cookbook for Agent System Design](...)\": names the document in link text so the sentence works stripped; no geometry location. Review surface, never a gate.",
+      "evidence": "one in-body link, line 105 \"[Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md)\": document named in the link text so the sentence works stripped, target file exists (ls), no page-geometry location. Review surface, never a gate.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -225,7 +227,7 @@
       "rule_index": 14,
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-size.js --file ... → \"slides: 12 limits: 210 words / 6 bullets oversized: 0 ✓ every slide is within limits\".",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/personal-site-with-guardrails.md → \"slides: 12 limits: 210 words / 6 bullets oversized: 0 ✓ every slide is within limits\".",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -236,7 +238,7 @@
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
-      "evidence": "exercise `##` headings are phase labels (lines 9, 21, 41, 49, 63, 75, 83) or imperatives (\"Name the framework and tune it\" 27, \"Keep yourself the protagonist, then run the beats\" 33, \"List what you hate, then invert it\" 57, \"See the mechanism repeat in every phase\" 93, \"Take the context move past this site\" 99); none is a mis-voiced declarative.",
+      "evidence": "exercise ## headings are phase labels (lines 9, 21, 41, 49, 63, 75, 83) or imperatives (\"Name the framework and tune it\" 27, \"Keep yourself the protagonist, then run the beats\" 33, \"List what you hate, then invert it\" 57, \"See the mechanism repeat in every phase\" 93, \"Take the context move past this site\" 99). No declarative that dilutes the mood switch; none is owed (rule requires claims only on law/consolidation slides).",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -247,7 +249,7 @@
       "rule_index": 16,
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
-      "evidence": "line 103: \"The LLM didn't get better between Phase 1 and Phase 6. The context did.\" sits under **The point:** and is that line itself, not a kicker restating a header; line 73 \"LLMs go easy on their own output.\" gives the reason for the over-flag move (adds an object). No doctrine restatement or design commentary.",
+      "evidence": "line 55: \"**Name the framework, tune it, ask the agent to run it.**\" is the closest to class (a) doctrine restatement: it re-announces line 31 with no new content on the slide. It stays PASS because on a phase slide it signals that Phase 4 repeats the Phase 2 move (the repetition the chunk 11 recap then names), so it adds a pointer; see suggestion. Line 103 sits under **The point:** and is that line, not a kicker; line 73 gives the reason for the over-flag move.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -258,7 +260,7 @@
       "rule_index": 17,
       "rule_lead": "A retitled slide re-earns its bullets against the new header.",
       "verdict": "PASS",
-      "evidence": "git diff 4d9c4af2..HEAD -- file | grep -E \"^[-+]##\" → no output: no `##` header changed since the pin, so no retitled slide to re-earn.",
+      "evidence": "git diff 78d17fc9..HEAD -- curriculum/exercises/personal-site-with-guardrails.md | grep -E \"^[-+]##\" | wc -l → 0: no ## header changed since the pin (diff touches the maintainer block only), so no retitled slide.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -266,6 +268,12 @@
     }
   ],
   "suggestions": [
+    {
+      "rule": "check_slides.md §16",
+      "line": 55,
+      "now": "**Name the framework, tune it, ask the agent to run it.**",
+      "proposed": "Same move as Phase 2: name the framework, tune it, ask the agent to run it."
+    },
     {
       "rule": "check_slides.md §1",
       "line": 97,
@@ -275,5 +283,5 @@
   ],
   "blocking_findings_count": 0,
   "nonblocking_findings_count": 1,
-  "notes": "Brief built (17 rules, prefill parked 0: shape changed). Cross-class: maintainer View summary says 'six rounds' while the body has seven phases (writing/story). Rule 9 REVISE is non-blocking per template partition; top-level verdict computed from blocking count = PASS. Lines 13/15 bold-lead step shape may be the exercise-step convention; flagged for maintainer read, not a gate."
+  "notes": "Prefill parked 0 rows (shape changed), all 17 rows written by judge. Diff 78d17fc9..HEAD touches only the maintainer block (Quality row, judges row, Source verification). Cross-class: maintainer View summary says 'six rounds' but body has seven phases; Grant attribution has a SOURCE NEEDED note (writing/technical). Rule 9 is non-blocking so top-level verdict is PASS. Header 'the mirror' (line 49) reuses a word the A101 opener uses for the agreeable-LLM mirror; unglossed on its own slide, left to story/pedagogy."
 }

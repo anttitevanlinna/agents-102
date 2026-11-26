@@ -150,5 +150,5 @@ The important move is: **make the standard visible enough that an agent can help
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@725101ec pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
-- judges @78d17fc9: writing PASS (2 findings see instances/agents-101--supplementary--what-is-an-agent.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@725101ec pedagogy@78d17fc9 strategy@78d17fc9 slides@cf4fd816)
+- judges @cf4fd816: writing PASS (2 findings see instances/agents-101--supplementary--what-is-an-agent.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (3 findings see instances/agents-101--supplementary--what-is-an-agent.slides.json)

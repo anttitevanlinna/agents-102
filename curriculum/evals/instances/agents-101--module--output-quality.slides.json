@@ -3,8 +3,8 @@
   "file": "curriculum/trainings/agents-101/output-quality.md",
   "training": "agents-101",
   "verdict": "PASS",
-  "body_sha": "3a883a072689ecd8a0d729d683c1871009f6b89b27845dea9d2e812b75cc6bd3",
-  "shape_hash": "8e1393a5b64c77bb",
+  "body_sha": "4cd15532ff3267a8572f26f2e1e126a78a058dc8ba14a145c3aea3c0c28cb286",
+  "shape_hash": "87172d7612b0c946",
   "chunk_map": [
     {
       "index": 0,
@@ -78,7 +78,8 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "evidence": "chunk 8 line 50 \"An agent action starts as text: a mail, a ticket update, a CRM change.\" and chunk 9 line 58 \"the judge's known limit\" come closest; both resolve: the examples are listed in-sentence, and 'the judge' is named at chunk 5 line 32 (\"the saved judge\"). Line 24 \"your Module 3 briefing\" is named, and Module 3 precedes this module (arc-earned). Harm (unresolved referent on the wall) absent.",
+      "evidence": "Closest: chunk 8 \"Propose, double-check, apply\" L52 \"the judge or a lookup in the source checks the proposal\" - 'the judge' first named on chunk 5 \"Debrief\" L32 (\"points future sessions at the saved judge\") and in L8/L26 module links; chunk 9 L58 \"A judge you have tested\" resolves the same way. L24 \"your Module 3 briefing\" is named by module and the briefing exists (exercises/hallucination-bakeoff.md L15 'the target is the Module 3 briefing'). Harm (unresolvable pronoun on the wall) absent.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -88,7 +89,8 @@
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "evidence": "line 24 \"your Module 3 briefing\" names its source by module and artefact, not by position; line 56 points at a named document with a link. No 'the opening lecture said' shape. grep for positional callbacks: none.",
+      "evidence": "Closest: L24 \"your Module 3 briefing\" and L56 link text \"What is an Agent, The autonomy ladder\" - both name source by title/module, not by position; L74 \"Next, the judge goes into a loop\" is a forward Next, not a positional callback.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -98,7 +100,8 @@
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
-      "evidence": "line 24 \"which line in your Module 3 briefing\" resolves: maintainer Materials (line 94) says the Module 3 synthesized briefing is the test corpus. line 32 \"the saved judge\" resolves to the exercise's judges/groundedness-judge.md (artefact contract line 141). Line 56 anchor #the-autonomy-ladder-what-may-the-agent-do matches heading 'The autonomy ladder: what may the agent do?' at supplementary/what-is-an-agent.md:100. Linked lecture grounded.md and exercise hallucination-bakeoff.md exist under curriculum/.",
+      "evidence": "L24 \"which line in your Module 3 briefing reads almost right?\" resolves: multi-agent-systems.md L36/L44 produce the briefing; grounded.md L90 'In Module 3 you marked one line of the briefing you doubted'. L56 anchor #the-autonomy-ladder-what-may-the-agent-do resolves to what-is-an-agent.md L100 '## The autonomy ladder: what may the agent do?'. Link targets lectures/grounded.md, exercises/hallucination-bakeoff.md, lectures/module-5-prework.md all exist (ls).",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -108,7 +111,8 @@
       "rule_index": 4,
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "PASS",
-      "evidence": "line 24 \"The question, to you: which line in your Module 3 briefing reads almost right? Point at it.\" is the nearest: a verbed question with the object named (a line in the briefing), no outcome narrated before or after it on the slide, and 'it' binds to 'line'. Muted read has a scene. No guess-cue aimed at a terminal.",
+      "evidence": "Closest: chunk 4 \"Start here\" L24 \"The question, to you: which line in your Module 3 briefing reads almost right? Point at it.\" - a verbed, complete question with no reveal on the slide; the reveal is in the lecture. No verbless scene-setting or terminal-pointing cue (muted read clean).",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -118,7 +122,8 @@
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "evidence": "chunk 11 \"Pre-reads before Module 6\" (lines 67-71) is the thinnest: a named pre-read plus the session-close line; header plus a titled reading carry a claim standalone. chunk 12 Next carries two full sentences.",
+      "evidence": "Smallest slides: chunk 11 \"Pre-reads before Module 6\" L69-71 carries a named link plus a session instruction; chunk 12 \"Next\" L74 carries two claims. Each holds a self-carrying claim.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -128,7 +133,8 @@
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "evidence": "chunk 9 header \"Which check would let this action go without you?\" (line 54): body says a tested judge clears what can be redone and an irreversible action also gets expert review (line 58), which answers the question. chunk 6 header \"Notice what the prompt insists on\" is matched by the two paragraphs naming the boundary and the read-back. No contradiction.",
+      "evidence": "Closest: chunk 9 \"Which check would let this action go without you?\" L54-58 - L58 \"A judge you have tested clears what can be redone; where an action cannot be undone, the expert also reviews...\" answers the header; chunk 6 \"Notice what the prompt insists on\" L38-40 names two insistences, matching the header.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -138,7 +144,8 @@
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "evidence": "grep -niE 'not [a-z ]+\\. not ' on body: 0; grep 'most useful|one of the': 0. Nearest: line 52 \"the agent proposes, the judge or a lookup in the source checks the proposal, and the agent applies only what passes\" is a three-verb sequence but every verb is concrete and non-empty. line 4 \"confident, plausible, wrong\" is an adjective triplet in the mandated Big Idea, each leg distinct. No number-plus-retraction, no abstraction-noun stack.",
+      "evidence": "No not-X-not-Y-Z, no triple anaphora, no self-grading superlative, no number+retraction, no empty verb triplet. Closest: chunk 6 L40 \"The agent's report says what it intended, the file says what happened.\" - a concrete pair, not a tic. Closest triplet-like: L50 \"a mail, a ticket update, a CRM change\" - an enumeration of concrete objects.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -148,7 +155,8 @@
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "evidence": "grep for compendium|firing|forcing function|beat|mood|ritual|surface in body: 0 hits (run on body lines 1-74). 'Debrief', 'Big Idea', 'Key Concepts' are canonical section names; 'Session' is a widget label; 'root instructions file' (line 46) is plain engineering vocabulary. 'Red thread' appears only in the maintainer block (line 77).",
+      "evidence": "Closest: chunk 7 L44 \"evidence roster\" and \"root instructions file\" - these are file/artefact names the student meets in the exercise (module-5/evidence-roster.md), engineer-register vocabulary, not repo-maintainer dialect. View grep banned_words CLEAN (0 hits); no compendium/forcing function/beat/mood in body.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -156,9 +164,10 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "evidence": "bold grep on body: lines 14-16 (What You'll Learn verb handles, exempt per the LO-template clause), line 20 '**Session**' (widget label, not authorial emphasis), line 24 '**The question, to you:**' (label, 4 words, handle cap held). Chunk 4 carries two bold spans but one is the Session widget syntax every module opener carries; no whole lead sentence is bold. Nearest to violating: chunk 4 count of 2; the widget is template-mandated.",
+      "evidence": "Closest: chunk 4 \"Start here\" L20 \"**Session**\" + L24 \"**The question, to you:**\" - two bolds. L20 is the Session widget label (template-mandated); L24 is a 4-word label, a sub-span handle, not a bolded lead sentence. Chunk 3 L14-16 bolded LO verbs are template-mandated (module-shape.md), N/A per rule. Debrief L36 \"**Prompt**\" widget label.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -166,9 +175,10 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "evidence": "scripts/check-slide-size.js --file curriculum/trainings/agents-101/output-quality.md → 'slides: 12 ... oversized: 0', so the renderer's own chunking resolves 12 slides from this module file; every `##` section lives under the module wrapper. No layout or renderer change in the diff.",
+      "evidence": "Module file: all 12 `##` sections sit under the module's own top-level section; check-slide-size.js --file reports 'slides: 12' = the 12 `##` headings in the body (L3,6,12,18,30,36,42,48,54,60,67,73). No phase-less prose section outside the module. Both layouts not rendered here (unverified).",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -176,9 +186,10 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-numbering.js --file curriculum/trainings/agents-101/output-quality.md → 'OK — 1 files, Phase/Step numbering consistent.' (exit 0). No Phase N or Step N headers in the file.",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/trainings/agents-101/output-quality.md -> 'OK \u2014 1 files, Phase/Step numbering consistent.' exit 0; no Phase/Step headers or refs in body.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -188,7 +199,8 @@
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-deixis.js --file curriculum/trainings/agents-101/output-quality.md → 'OK — 1 files, no page-geometry pointers across the slide cut.' (exit 0). grep -niE 'below|above|further down|at the top|see below' on body: 0.",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/trainings/agents-101/output-quality.md -> 'OK \u2014 1 files, no page-geometry pointers across the slide cut.' exit 0.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -198,7 +210,8 @@
       "rule_index": 13,
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "PASS",
-      "evidence": "Review surface, never a gate. Inline link at line 56 names its document in the text ('What is an Agent, The autonomy ladder') and does not locate it by geometry; line 8 names 'The Missing Check'. Structural include-links at lines 26 and 28 are out of scope.",
+      "evidence": "node scripts/check-slide-deixis.js --file ... --links: 2 in-body cross-doc links (L8 \"The Missing Check\", L56 \"What is an Agent, The autonomy ladder\"); both name the document in link text so the sentence works with the link stripped. Review surface, no rule.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -206,9 +219,10 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
-      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-size.js --file curriculum/trainings/agents-101/output-quality.md → 'slides: 12  limits: 210 words / 6 bullets  oversized: 0', exit 0.",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/trainings/agents-101/output-quality.md -> 'slides: 12 ... oversized: 0', exit 0.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -219,7 +233,7 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "module file: the rule governs exercise and lecture headings; module section names are architecture-mandated",
+      "na_reason": "module file, not an exercise or lecture; headings are canonical module-section names, orientation labels or questions",
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -227,9 +241,10 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 16,
-      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
-      "evidence": "Nearest: chunk 11 line 71 \"End this session once the judge is saved. Module 6 starts fresh in `~/Documents/agents-101/`.\" is housekeeping, but it is not a doctrine restatement, design commentary or aphorism kicker (the three classes). Key Concepts lines 61-65 repeat the lecture's laws, covered by the maintainer accept-note 'Key Concepts minimal (2026-09-24)' (line 83). No koan under any header; chunk 6 explains what the prompt does, not that the student is inside a pedagogy.",
+      "evidence": "Closest: chunk 11 L71 \"End this session once the judge is saved. Module 6 starts fresh in `~/Documents/agents-101/`.\" - housekeeping adjacent to the Next-slide ban list, but it sits in a forward-pointing pre-reads section and tells the student when to close the session, which is a move; see suggestion. L40 \"The agent's report says what it intended, the file says what happened.\" adds a move (verify the file), not doctrine restatement. No self-referential design commentary or koan kicker.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -239,7 +254,8 @@
       "rule_index": 17,
       "rule_lead": "A retitled slide re-earns its bullets against the new header.",
       "verdict": "PASS",
-      "evidence": "chunk 9 header \"Which check would let this action go without you?\" (line 54, renamed from 'Agent Actions' per the diff): cover the body, the header promises which check lets an action go unattended; lines 56-58 answer it, and the old 'which rung has this action earned' question is gone from the body. No bullets inherited from the old header. chunk 8 header 'Propose, double-check, apply' (line 48) matches its body.",
+      "evidence": "Header at L54 \"Which check would let this action go without you?\" (retitled in 76528a6c, pre-pin). Cover-the-body read: header promises which check clears an action; L58 answers it (judge clears what can be redone; expert reviews irreversible). Closest: L56 'Read [...autonomy ladder] before you decide what the agent may do next.' is a pointer to the rung ladder, the old job, but it feeds the new question (what may the agent do without you) rather than duplicating a neighbour; no neighbouring slide states the rung job.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -247,13 +263,13 @@
   ],
   "suggestions": [
     {
-      "rule": "check_slides.md §Next-closer (forward-pointing sections inherit the housekeeping ban)",
+      "rule": "check_slides.md \u00a716",
       "line": 71,
       "now": "End this session once the judge is saved. Module 6 starts fresh in `~/Documents/agents-101/`.",
-      "proposed": "(cut the line; the next exercise's Session widget already says the working folder and that the session is new)"
+      "proposed": "End this session once the judge is saved."
     }
   ],
   "blocking_findings_count": 0,
   "nonblocking_findings_count": 0,
-  "notes": "Accept-notes read: L77 Red thread (2026-11-13), L79 Quality stamp, L83 Key Concepts minimal (2026-09-24), L108 Story blend M5 (2026-09-23). Cross-class (not scored here): maintainer line 108 names the slide `## Which rung has this action earned?` but the body header is 'Which check would let this action go without you?' (stale locator, check_writing territory). Pin 19381896 diff read in full; the module was rewritten to the red-thread alignment since then. Prefill parked 0 rows (shape changed) so all 17 rows are written here."
+  "notes": "Accept-notes found: Red thread 2026-11-13 (L82), Key Concepts minimal 2026-09-24 (L84), Story blend M5 2026-09-23 (L109), Quality 2026-11-26 (L77). Cross-class (not scored here): maintainer L109 names slide '## Which rung has this action earned?' but the body header is '## Which check would let this action go without you?' (stale maintainer note, check_writing \u00a73). Rules 1-17 all in brief; no rules dropped by prefill. Diff 78d17fc9..HEAD changed only the Mollick pre-read link and the maintainer Quality/red-thread block."
 }

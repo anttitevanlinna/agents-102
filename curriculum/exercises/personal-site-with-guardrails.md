@@ -106,8 +106,8 @@ This was **Recipe 1**. When the next output needs the same move, the [Cookbook f
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-11-26 (story@78d17fc9 behavior@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
-- judges @78d17fc9: writing REVISE (1/9 see instances/agents-101--exercise--personal-site-with-guardrails.writing.json), story PASS, technical REVISE (1/0 see instances/agents-101--exercise--personal-site-with-guardrails.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS (1 finding see instances/agents-101--exercise--personal-site-with-guardrails.slides.json)
+**Quality:** compendium-audited 2026-11-26 (story@78d17fc9 behavior@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@cf4fd816)
+- judges @cf4fd816: writing REVISE (1/9 see instances/agents-101--exercise--personal-site-with-guardrails.writing.json), story PASS, technical REVISE (1/0 see instances/agents-101--exercise--personal-site-with-guardrails.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS (1 finding see instances/agents-101--exercise--personal-site-with-guardrails.slides.json)
 
 **Source verification:**
 - `[checked:2026-11-26 result:NEEDED due:asap]` claim:grant-energy-audit — [SOURCE NEEDED] Adam Grant credited with *energy audit* (body L53 + prompt personal-site-with-guardrails-4); no KB record. fallback: say "an energy audit" without the name (card).

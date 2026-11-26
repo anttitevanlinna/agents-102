@@ -2,10 +2,750 @@
  "class": "technical",
  "file": "curriculum/lectures/grounded.md",
  "training": "agents-101",
- "verdict": "REVISE",
- "body_sha": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+ "verdict": "PASS",
+ "body_sha": "04cd26d45ea3a8e74458d03e6bfc503116ce9dca8ccddc6a64b74b3cb8bc2ae2",
  "shape_hash": "0c6af23ac5748c13",
  "rules_evaluated": [
+  {
+   "compendium": "check_platform_and_boundaries.md",
+   "rule_index": "4",
+   "rule_lead": "Verify capabilities BEFORE asserting, not after.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no Claude Code / platform capability or platform-term assertion in body (grep of body_numbered for Claude Code|skill|plan mode|MCP|/ commands: none)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_platform_and_boundaries.md",
+   "rule_index": "38",
+   "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism — no judge catches it, because no artefact contradicts it.",
+   "verdict": "PASS",
+   "evidence": "L62: \"Have the agent propose. Check the proposal against sources or a judge. Then apply.\" Closest forward-looking automation beat; each clause states what TRIGGERS/LANDS (propose, check against sources, apply) with no retrieval-metaphor, foreign lifecycle noun or unsourced cadence. Harm (invented mechanism prose) absent. L66 \"five to ten\" is a sample count in a drift beat, not a cadence.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_research_claims.md",
+   "rule_index": "1",
+   "rule_lead": "Source URL + type label — mandatory.",
+   "verdict": "PASS",
+   "evidence": "Body has no URLs or [label] tags (signals.has_urls=false); labels/URLs live in maintainer stamps L99-101 (mata-court-order [primary court record, historical] Justia URL; mata-press-account [general press, historical] CNBC URL), which is where the rule scopes them. Closest: L45 Mata v. Avianca named in body, backed by stamps.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_research_claims.md",
+   "rule_index": "2",
+   "rule_lead": "Freshness rule — 6 months.",
+   "verdict": "PASS",
+   "evidence": "L45 \"Mata v. Avianca\" is a 2023 historical case; stamps L99-100 dated checked:2026-08-23 [historical], due:none scoped to a completed event (2a). No capability/benchmark/adoption claim in body. Closest: L68 \"five to ten\" is advice, not a dated finding.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_research_claims.md",
+   "rule_index": "3",
+   "rule_lead": "Zombie stat guard.",
+   "verdict": "PASS",
+   "evidence": "No failure-rate statistic cited as evidence. Closest: L9 \"10% fabricated... catches 90%\" and L15 \"The numbers are illustrative\"; slide mostly-right-ten-times \"85%... (an illustrative number)\", \"about 20% end-to-end\" = 0.85^10=0.197 arithmetic (stamp L97 ATTESTED). Not in zombie list (95/85/80 failure rates); labeled illustrative, harm absent.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_research_claims.md",
+   "rule_index": "7",
+   "rule_lead": "Vision × Detail split.",
+   "verdict": "PASS",
+   "evidence": "node scripts/validate-backing.js curriculum/lectures/grounded.md -> \"summary: 0 error · 0 warn · 10 info\" (10 infos are theory-plan LAW-UNREACHED, not this file). Prior ANCHOR-DRIFT errors resolved: L87-94 claim quotes now match body (L15, L11, L45, L27, L35-41). Detail claims (10%/90% prior, Mata gaps) have backing; Vision claims carry none-owed.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_research_claims.md",
+   "rule_index": "10",
+   "rule_lead": "No \"What research says\" callout boxes.",
+   "verdict": "PASS",
+   "evidence": "grep -ci \"what research says\" in body_numbered -> 0; no callout boxes; citations in builder voice (L45, L21).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_research_claims.md",
+   "rule_index": "13",
+   "rule_lead": "Inference beyond source — absence licenses only absence.",
+   "verdict": "REVISE",
+   "evidence": "L47-50 assigns Mata gaps to detectors: entailment -> \"a too-clean Schwartz timeline\" (L48), citation integrity -> \"a quote absent from the sanctions order\" (L49). Delegate module-5-prework.md L67-68 records the removals (small firm, ten minutes, Castel quote unsupported; timeline stays soft per fn.3) but no sentence assigns timeline to entailment or quote to citation integrity; only L69 (2026-08-03 re-run) is per-detector and it names neither. Stamp L101 says \"the delegate carries the per-detector record\" and lists three findings, not four. Harm: low (findings themselves are real and dated; mapping is the lecture's framing), but the stamp overstates what the delegate records.",
+   "na_reason": null,
+   "fix_hint": "Either add one per-detector line to module-5-prework.md (entailment: timeline overclaim; citation integrity: unsupported Castel quote) or narrow the L101 stamp to what the delegate names.",
+   "blocking": false
+  },
+  {
+   "compendium": "check_research_claims.md",
+   "rule_index": "14",
+   "rule_lead": "A green check must measure the fact, not a proxy that co-varies with it.",
+   "verdict": "PASS",
+   "evidence": "Instrument run: validate-backing.js reports 0 errors; what it measures = claim quote present in body + source stamps well-formed, NOT that the claim is true. Truth of Mata items was checked separately against delegate L67-69 (rule 13). Closest to violating: stamp results \"OK\" dates L99-101 are annotations; mata stamps cite a primary order and were not independently re-fetched this run (unverified, noted).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "1",
+   "rule_lead": "Walk-away test (M2+).",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "2",
+   "rule_lead": "50% magic rule (M3–M8).",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "3",
+   "rule_lead": "Trust the agentic design — no human backstops.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "4",
+   "rule_lead": "Quality ladder.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "6",
+   "rule_lead": "One exercise = one bounded activity.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "7",
+   "rule_lead": "Modules composable across variants.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "8",
+   "rule_lead": "Three-level completeness.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "9",
+   "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "9b",
+   "rule_lead": "Progression-with-variations is the spine.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "10",
+   "rule_lead": "Student agency — adults decide.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "11",
+   "rule_lead": "Delegation — student brings, Claude screens.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "12",
+   "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "13",
+   "rule_lead": "Artifact-realism check.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "14",
+   "rule_lead": "Teach principle + technique — default.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "15",
+   "rule_lead": "Auto-fire sim+eval after significant rewrite.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "17",
+   "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "18",
+   "rule_lead": "Personal-first, team promotion via human conversation.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "19",
+   "rule_lead": "Measure silent failure, not just friction.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "20",
+   "rule_lead": "Don't pre-set categories before experiment runs.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "21",
+   "rule_lead": "Verification layers sample DIFFERENT error distributions — not belt-and-braces.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "21b",
+   "rule_lead": "Cheap-before-expensive verification ordering.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "24",
+   "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "25",
+   "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "26",
+   "rule_lead": "Reflection beats: in-chat over file-write.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "27",
+   "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "29",
+   "rule_lead": "Eval = fixed yardstick; thing measured learns.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "30",
+   "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "31",
+   "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "32",
+   "rule_lead": "Offered structures need forced-engagement mechanic.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "33",
+   "rule_lead": "Source-type blindness on ingestion.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "34",
+   "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "34b",
+   "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "35",
+   "rule_lead": "Audience tier determines authoring substrate.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "36",
+   "rule_lead": "Verification machinery needs smoke-test before trust.",
+   "verdict": "PASS",
+   "evidence": "L29 \"Four agents check the same 30 claims. A scorer measures each one for precision, recall and coverage.\" plus L54-56 judge file \"names ... what it misses\": the verification machinery is smoke-tested by measurement before being trusted; L56 states the known limit. Closest to violating: L54 \"becomes a reusable judge file\" before shipped, but benchmark step precedes it.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "39",
+   "rule_lead": "Removals are strategic — ask before cutting.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "41",
+   "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "42",
+   "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "43",
+   "rule_lead": "Eval architecture — partition by evidence source, not criterion count.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "44",
+   "rule_lead": "Plug points + UX.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "45",
+   "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "47",
+   "rule_lead": "Per-phase failure mode + escape hatch.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "48",
+   "rule_lead": "Heavy fan-out prompts get body recovery callout.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "49",
+   "rule_lead": "Save belongs with authoring, not loading.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "50",
+   "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "51",
+   "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "52",
+   "rule_lead": "Session widget — `**Session",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "52b",
+   "rule_lead": "Widgets carry semantics, not just emphasis — match the widget to MEANING, never to how loud it renders.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "52a",
+   "rule_lead": "Module prose carrying a `**Session**` widget or a `{{prompt:}}` fence is an exercise that has not been extracted.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "52c",
+   "rule_lead": "Exercise lead-in trio — three slots, three tenses. A slot filled past its label is this corpus's most common defect.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "52d",
+   "rule_lead": "Finding the point — four moves, learned writing M1's set 2026-08-12.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "53",
+   "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test (widened 2026-08-12).",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "56",
+   "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "57",
+   "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "58",
+   "rule_lead": "`/clear` = tool, not ceremony.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "59",
+   "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "60",
+   "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "61",
+   "rule_lead": "Verify mechanism before proposing surgery.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "61a",
+   "rule_lead": "Acting on a flagged item (punchlist entry / audit finding / eval BLOCK) — verify before fixing; its prescribed fix is a hypothesis, not an instruction.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "61b",
+   "rule_lead": "An audit's card-shaped findings are discharged by CARDS, not by notes about them.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "62",
+   "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "63",
+   "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "64",
+   "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "65",
+   "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "66",
+   "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "67",
+   "rule_lead": "Story and depth are judged per big learning that develops, never per feature that recurs.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "pedagogy-judge-owned; outside technical subset (16,22,23,36,37)",
+   "fix_hint": null,
+   "blocking": false
+  },
   {
    "compendium": "check_platform_and_boundaries.md",
    "rule_index": 1,
@@ -13,8 +753,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "lecture names no Claude surface or feature",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -23,8 +765,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -33,18 +777,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_platform_and_boundaries.md",
-   "rule_index": 4,
-   "rule_lead": "Verify capabilities BEFORE asserting, not after.",
-   "verdict": "PASS",
-   "evidence": "L62 'An agent action starts as text: a mail, a ticket update, a CRM change.' (L61) is the closest; it asserts no Claude Code/Desktop feature, command or file behaviour. Harm (stale platform claim taught as fact) absent: 0 platform-term assertions in body.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -53,8 +789,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -63,8 +801,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -73,8 +813,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -83,8 +825,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -93,8 +837,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -103,8 +849,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -113,8 +861,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -123,8 +873,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -133,8 +885,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -143,8 +897,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -153,8 +909,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -163,8 +921,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -173,8 +933,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -183,8 +945,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -193,8 +957,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -203,8 +969,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -213,8 +981,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -223,8 +993,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -233,8 +1005,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -243,8 +1017,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -253,8 +1029,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -263,8 +1041,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -273,8 +1053,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -283,8 +1065,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -293,8 +1077,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -303,8 +1089,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -313,8 +1101,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -323,8 +1113,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -333,8 +1125,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -343,8 +1137,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -353,8 +1149,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -363,8 +1161,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -373,8 +1173,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -383,8 +1185,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -393,8 +1197,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -403,8 +1209,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -413,8 +1221,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -423,8 +1233,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -433,8 +1245,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -443,8 +1257,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -453,8 +1269,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -463,8 +1281,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -473,8 +1293,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -483,8 +1305,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -493,8 +1317,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -503,8 +1329,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -513,8 +1341,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -523,8 +1353,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -533,8 +1365,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -543,8 +1377,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -553,18 +1389,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_platform_and_boundaries.md",
-   "rule_index": 38,
-   "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism — no judge catches it, because no artefact contradicts it.",
-   "verdict": "PASS",
-   "evidence": "L62 'Have the agent propose. Check the proposal against sources or a judge. Then apply.' is the nearest forward-looking automation beat; each clause states what TRIGGERS/LANDS (propose, check, apply), no mechanism metaphor, no lifecycle noun from another stage, no cadence. 'against sources' is the student's own check, run for real by the exercise's source-triangulation detector, not an invented retrieval mechanism.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -573,8 +1401,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -583,8 +1413,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -593,8 +1425,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -603,8 +1437,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -613,8 +1449,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -623,8 +1461,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -633,8 +1473,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -643,8 +1485,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -653,8 +1497,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -663,8 +1509,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -673,8 +1521,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -683,8 +1533,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -693,8 +1545,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_platform_and_boundaries.md",
@@ -703,18 +1557,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring/tooling/runtime-infrastructure rule; lecture states no such mechanic",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_research_claims.md",
-   "rule_index": 1,
-   "rule_lead": "Source URL + type label — mandatory.",
-   "verdict": "PASS",
-   "evidence": "grep url body_hits=0 (view greps, CLEAN). Scope clause: labels live in maintainer block; L104-107 stamps carry URL+label ([primary court record, historical] L102, [general press, historical] L103, [house canonical]); no body census/vocabulary claim ('each method found a different gap' L44 counts four own detectors, not the field).",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_research_claims.md",
@@ -723,28 +1569,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no research-handling step, OODA output, convergence count or adoption number in this lecture",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_research_claims.md",
-   "rule_index": 2,
-   "rule_lead": "Freshness rule — 6 months.",
-   "verdict": "PASS",
-   "evidence": "L45-48 Mata items are historical (2023 case); stamps read 'historical' and are checked 2026-08-23 / 2026-08-03, inside 6 months of 2026-11-26. Closest: L44 'On the Mata v. Avianca pre-read' is undated in body, but it points at the pre-read, which carries the dates.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_research_claims.md",
-   "rule_index": 3,
-   "rule_lead": "Zombie stat guard.",
-   "verdict": "PASS",
-   "evidence": "L8-17 85%/10%/90% are stipulations ('Say your briefing is 10% fabricated', L8) and L15 'The numbers are illustrative'; no field failure rate cited. Closest: L8 round numbers, stays inside because it is arithmetic framed as illustration, not an AI-failure stat.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_research_claims.md",
@@ -753,8 +1581,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no research-handling step, OODA output, convergence count or adoption number in this lecture",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_research_claims.md",
@@ -763,8 +1593,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no research-handling step, OODA output, convergence count or adoption number in this lecture",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_research_claims.md",
@@ -773,18 +1605,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no research-handling step, OODA output, convergence count or adoption number in this lecture",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_research_claims.md",
-   "rule_index": 7,
-   "rule_lead": "Vision × Detail split.",
-   "verdict": "REVISE",
-   "evidence": "node scripts/validate-backing.js curriculum/lectures/grounded.md -> 'ERROR (10) ... [ANCHOR-DRIFT]' on L110-120: single-pass-compound-decay, first-pass-prior, loop-collapses-the-error-rate, mata-detector-first-pass, short-chain-example, the-word-is-grounded, source-triangulation, entailment, citation-integrity, counter-evidence-search each quote a phrase absent from the body (body was rewritten to slides). Harm present: detail claims (85% chain, 10%->1% loop, per-detector Mata findings) have no live claim-to-text binding, so a future wording change or judge cannot tell backed from unbacked.",
-   "na_reason": null,
-   "fix_hint": "Re-anchor each claim quote to current body wording (e.g. L11 'Round 1: 10% → 1%.'; L28 'Every grounding check misses something.'; L35-42 detector one-liners; L47 'Source triangulation: an unsourced \"small firm\" and an unsupported \"ten minutes\" estimate.'); claims whose text lives only in slides/*.md (compound decay, short chain, grounded definition) move to those slide files; add claim rows for the entailment/citation-integrity/counter-evidence Mata attributions L48-50.",
-   "blocking": true
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_research_claims.md",
@@ -793,8 +1617,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no research-handling step, OODA output, convergence count or adoption number in this lecture",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_research_claims.md",
@@ -803,18 +1629,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no research-handling step, OODA output, convergence count or adoption number in this lecture",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_research_claims.md",
-   "rule_index": 10,
-   "rule_lead": "No \"What research says\" callout boxes.",
-   "verdict": "PASS",
-   "evidence": "grep -c 'What research says' curriculum/lectures/grounded.md -> 0",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_research_claims.md",
@@ -823,8 +1641,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no named-practitioner citation in body; Mata sources carry dated freshness stamps",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_research_claims.md",
@@ -833,28 +1653,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no research-handling step, OODA output, convergence count or adoption number in this lecture",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_research_claims.md",
-   "rule_index": 13,
-   "rule_lead": "Inference beyond source — absence licenses only absence.",
-   "verdict": "REVISE",
-   "evidence": "L47-50 attribute each Mata gap to one detector (entailment -> 'too-clean Schwartz timeline', citation integrity -> 'a quote absent from the sanctions order'). module-5-prework.md L67-69 records the removals ('small firm', 'ten minutes', Castel quote, soft timeline) but names no sentence assigning timeline or quote to a detector; L104 stamp's 'the delegate carries the per-detector record' is false for 3 of 4. Harm: students learn what each method catches from an attribution no record states.",
-   "na_reason": null,
-   "fix_hint": "Produce the record: add a per-detector line to the delegate (or re-run the four detectors and log it), then correct the L104 stamp; softening is last resort.",
-   "blocking": false
-  },
-  {
-   "compendium": "check_research_claims.md",
-   "rule_index": 14,
-   "rule_lead": "A green check must measure the fact, not a proxy that co-varies with it.",
-   "verdict": "PASS",
-   "evidence": "Stamp L100 'labeled a prior in body' vs body L8-15: body labels the pair 'illustrative', not 'prior'; the qualifier still parses (illustrative = not measured), so no half-updated stamp contradiction; the dead-anchor defect is filed under 7, not here.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_research_claims.md",
@@ -863,8 +1665,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no research-handling step, OODA output, convergence count or adoption number in this lecture",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_research_claims.md",
@@ -873,8 +1677,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no research-handling step, OODA output, convergence count or adoption number in this lecture",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_research_claims.md",
@@ -883,8 +1689,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no research-handling step, OODA output, convergence count or adoption number in this lecture",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -893,8 +1701,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt or forcing-function move in lecture",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -903,8 +1713,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no rule written to memory",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -913,18 +1725,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no pushback/done-claim beat",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 36,
-   "rule_lead": "Verification machinery needs smoke-test before trust.",
-   "verdict": "PASS",
-   "evidence": "L29 'A scorer measures each one for precision, recall and coverage.' - the verification machinery (four detectors) is smoke-tested by the scorer on a 30-claim pool; closest to violating: lecture only names it, exercise runs it.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -933,8 +1737,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no context-loading tier taught",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -943,8 +1749,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -953,8 +1761,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -963,8 +1773,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -973,8 +1785,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -983,8 +1797,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -993,8 +1809,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1003,8 +1821,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1013,8 +1833,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1023,8 +1845,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1033,8 +1857,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1043,8 +1869,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1053,8 +1881,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1063,8 +1893,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1073,8 +1905,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1083,8 +1917,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1093,8 +1929,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1103,8 +1941,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1113,8 +1953,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1123,8 +1965,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1133,8 +1977,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1143,8 +1989,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1153,8 +2001,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1163,8 +2013,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1173,8 +2025,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1183,8 +2037,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1193,8 +2049,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1203,8 +2061,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1213,8 +2073,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1223,8 +2085,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1233,8 +2097,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1243,8 +2109,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1253,8 +2121,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1263,8 +2133,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1273,8 +2145,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1283,8 +2157,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1293,8 +2169,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1303,8 +2181,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1313,8 +2193,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1323,8 +2205,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1333,8 +2217,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1343,8 +2229,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1353,8 +2241,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1363,8 +2253,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1373,8 +2265,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1383,8 +2277,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1393,8 +2289,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1403,8 +2301,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1413,8 +2313,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   },
   {
    "compendium": "check_prompts.md",
@@ -1423,58 +2325,34 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no prompt blocks (has_prompt_blocks=false)",
-   "fix_hint": null,
-   "blocking": false
-  }
- ],
- "platform_claims_checked": [
-  {
-   "claim": "Have the agent propose. Check the proposal against sources or a judge. Then apply.",
-   "line": 62,
-   "verdict": "PASS",
-   "source": "inferred"
-  }
- ],
- "citations_checked": [
-  {
-   "line": 47,
-   "claim": "Mata detector findings (small firm, ten minutes)",
-   "label_present": true,
-   "url_present": true,
-   "url_alive": null,
-   "evidence_level_honest": true
-  },
-  {
-   "line": 48,
-   "claim": "Mata per-detector attribution (timeline, quote, CNBC $5,000)",
-   "label_present": true,
-   "url_present": true,
-   "url_alive": null,
-   "evidence_level_honest": false
-  }
- ],
- "skills_referenced": [],
- "urls_sampled": [
-  {
-   "url": "https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/",
-   "alive": null,
-   "status_code": null
-  },
-  {
-   "url": "https://www.cnbc.com/2023/06/22/judge-sanctions-lawyers-whose-ai-written-filing-contained-fake-citations.html",
-   "alive": null,
-   "status_code": null
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "ae5e7a83027b3f89ae377e44a731035d691ec62c35e6766ac97e298bf348a614",
+   "carried_shape": "0c6af23ac5748c13"
   }
  ],
  "suggestions": [
   {
    "rule": "check_research_claims.md §13",
-   "line": 68,
-   "now": "Two sessions give you a demo; the signal firms up at five to ten.",
-   "proposed": "Two sessions give you a demo. As a rule of thumb, the signal firms up somewhere around five to ten runs."
+   "line": 101,
+   "now": "the delegate carries the per-detector record",
+   "proposed": "the delegate records the four findings; which detector caught which is this lecture's framing"
   }
  ],
- "blocking_findings_count": 1,
+ "blocking_findings_count": 0,
  "nonblocking_findings_count": 1,
- "notes": "Brief built (206 rules). Line numbers cited against RAW source. URL liveness unverified: curl through the agent proxy returned 000 for both sampled URLs, so url_alive is null (stamped OK 2026-08-23 in backing). Slide-file wording (there-is-truth-out-there, mostly-right-ten-times, are-you-sure) not judged here. 5 pedagogy technical sub-rules only. Non-owned: check_slide-size passes (11 slides, 0 oversized)."
+ "platform_claims_checked": [],
+ "citations_checked": [
+  {
+   "line": 45,
+   "claim": "Mata v. Avianca detector gaps",
+   "label_present": true,
+   "url_present": true,
+   "url_alive": null,
+   "evidence_level_honest": true
+  }
+ ],
+ "skills_referenced": [],
+ "urls_sampled": [],
+ "notes": "No Claude Code claims, skills or body URLs. Mata court-order and CNBC URLs live in maintainer stamps (checked 2026-08-23 by stamps; not re-fetched here: unverified). Slide files (there-is-truth-out-there, mostly-right-ten-times, are-you-sure) read inlined: no platform claims; 85%/20% labeled illustrative. Prior ANCHOR-DRIFT REVISE on rule 7 resolved."
 }

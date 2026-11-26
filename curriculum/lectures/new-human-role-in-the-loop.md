@@ -62,8 +62,8 @@ Your role in the loop is to design the conditions for giving the system more aut
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
-- judges @78d17fc9: writing PASS (2 findings see instances/agents-101--lecture--new-human-role-in-the-loop.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@cf4fd816 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @cf4fd816: writing PASS (2 findings see instances/agents-101--lecture--new-human-role-in-the-loop.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Decision note 2026-11-13 (point-of-view pass).** `## I drifted too` condenses Antti's signed AE101 `story-of-module-6.md` § The numbers (five reversals, four banned-word leaks across three helpers, premature "done"); his facts, not new ones. Big Idea stated cold 79 → 92 (lean scorer, n=12 each).
 

@@ -3,7 +3,7 @@
   "file": "curriculum/trainings/agents-101/prework.md",
   "training": "agents-101",
   "verdict": "PASS",
-  "body_sha": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+  "body_sha": "92d83b325b539048abeeb881b930ed4f3fd0741d2112afa5722258241dac8b96",
   "shape_hash": "3cc37273fc57a00b",
   "chunk_map": [
     {
@@ -19,27 +19,27 @@
     {
       "index": 2,
       "heading": "2. Connect your work apps (5 min)",
-      "lines": "17-25"
+      "lines": "17-23"
     },
     {
       "index": 3,
       "heading": "3. Install the training folder (3 min)",
-      "lines": "27-35"
+      "lines": "25-33"
     },
     {
       "index": 4,
       "heading": "4. Build a snake game (10 min)",
-      "lines": "37-47"
+      "lines": "35-45"
     },
     {
       "index": 5,
       "heading": "5. Summarize your week in meetings (10 min)",
-      "lines": "49-81"
+      "lines": "47-79"
     },
     {
       "index": 6,
       "heading": "6. Read the mental frame (10 min)",
-      "lines": "83-89"
+      "lines": "81-89"
     },
     {
       "index": 7,
@@ -53,7 +53,7 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "evidence": "chunk 2 \"2. Connect your work apps\": line 25: \"The calendar screenshot path in section 5, Path B gives you the same teaching moment\" is the closest: a forward pointer, but it names the section number and Path label that exist at lines 49/59, so it resolves by name in both layouts. Line 7 \"the agent runtime you selected\" binds to the student's own pre-course choice, not a missing slide. Pronouns checked: line 21 \"Those sources\", line 15 \"Name it\" (Session widget line 11), line 87 \"that document\" (named in same sentence).",
+      "evidence": "chunk 2 \"2. Connect your work apps\": line 23: \"The calendar screenshot path in section 5, Path B gives you the same teaching moment\" is the closest: a forward pointer, but it names a section number and Path label that exist at lines 49 and 59, so it resolves by name. Line 21 \"Those sources\" binds to the wiki/Jira list in the same paragraph; line 53 \"what you saw\" binds to the connector settings of chunk 2.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -64,7 +64,7 @@
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "evidence": "chunk 6 \"6. Read the mental frame\": line 87: \"Open [What is an Agent, LLM vs chat](trainings/agents-101/supplementary/what-is-an-agent.md#llm-vs-chat)\" names the document by title in link text, not by position; line 95 \"Module 1 starts fresh\" is a named navigational pointer.",
+      "evidence": "chunk 6 \"6. Read the mental frame\": line 85: link text \"What is an Agent, LLM vs chat\" names the document by title, not position; line 93 \"Module 1 starts fresh\" is a named navigational pointer.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -75,19 +75,8 @@
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
-      "evidence": "chunk 5 \"5. Summarize your week in meetings\": line 53: \"Pick the one that matches what you saw\" resolves to the connector settings in chunk 2 (line 23 \"enable Microsoft 365 or Google Workspace if it appears\"). Line 25 \"Task 4\" was re-anchored to \"section 5, Path B\" in the diff and that target exists (line 59).",
+      "evidence": "chunk 5 line 53: \"Pick the one that matches what you saw\" resolves to the connector sign-in in chunk 2 (line 22 \"enable Microsoft 365 or Google Workspace if it appears\"); \"section 5, Path B\" (line 23) exists at line 59. No dead beat.",
       "na_reason": null,
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "no guess-before-reveal or demo beat in the file; every task is a do-it instruction",
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -97,7 +86,7 @@
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "evidence": "chunk 7 \"Bring to Module 1\": lines 93-95 is the smallest chunk and still carries a self-contained claim: five named artefacts to carry and the instruction to end the prework session. Chunk 6 (lines 85-89) carries the read task and its proof.",
+      "evidence": "chunk 7 \"Bring to Module 1\" lines 91-95 is the smallest chunk and still self-carries: five named artefacts to bring and the instruction to end the prework session.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -108,7 +97,7 @@
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "evidence": "chunk 1 \"1. Set up your agent runtime (5 min)\": renamed in the diff; body lines 7-15 are runtime access, training folder, Copilot Memory, new session, all setup of the runtime. Closest: the Copilot Memory span at line 9 is runtime configuration, so the header stays true.",
+      "evidence": "chunk 1 \"1. Set up your agent runtime (5 min)\": line 9 Copilot Memory setting is the closest to off-header content, but it is runtime configuration, so the header stays true. Chunk 5 header \"Summarize your week in meetings\" matches both paths.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -119,7 +108,7 @@
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "evidence": "chunk 7 line 93: \"Five things. Not nothing. Module 1 just gets going.\" is the closest: a single negation, not the \"Not X. Not Y. Z.\" construction, no anaphora triple, no superlative about the training, no number retraction (five things are the five listed). Line 39 \"perfectly useless thing\" is a concrete joke, not a self-grading superlative. grep view: em_dash 0, banned_words 0, leverage_verb 0 (all CLEAN, planted-proof).",
+      "evidence": "chunk 7 line 93: \"Five things. Not nothing. Module 1 just gets going.\" is closest: a single litotes, not the \"Not X. Not Y. Z.\" construction; no anaphora triple, no self-grading superlative, no number retraction (five matches the five listed). Line 39 \"perfectly useless thing\" is a concrete joke. View greps em_dash 0, banned_words 0, leverage_verb 0 (CLEAN).",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -130,7 +119,7 @@
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "evidence": "grep view: ritual_ceremony 0, the_student 0, author_we 0 (CLEAN). Closest: \"agent runtime\" (lines 3, 5, 7, 93) is ordinary engineering vocabulary for the tool the student runs, not repo-internal dialect like compendium or surface-as-noun.",
+      "evidence": "View greps ritual_ceremony 0, the_student 0, author_we 0 (CLEAN). Closest: \"agent runtime\" (lines 3, 5, 7) is ordinary vocabulary for the tool the student runs, not repo dialect. Maintainer-block terms (Packaging, Artefact contracts) are below the cut.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -141,9 +130,9 @@
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "REVISE",
-      "evidence": "chunk 5 \"5. Summarize your week in meetings\": line 51: \"**A *connector* is a way for the agent to talk directly to one of your work apps (your calendar, your email, your files).**\" bolds a whole 30-word lead sentence; the handle is the coined term \"connector\" (1 word, cap is about 5). Chunk 5 also bolds Path A (line 55) and Path B (line 59) leads. Path labels fall under the menu waiver if only the mode word is bold; line 59 bolds \"(no connector, or you're not sure)\" too. Harm (emphasis dilution on a slide that already has 3 bold elements plus 4 prompt widgets) is present, though mild.",
+      "evidence": "chunk 5 \"5. Summarize your week in meetings\": line 51: \"**A *connector* is a way for the agent to talk directly to one of your work apps (your calendar, your email, your files).**\" bolds a whole ~30-word lead sentence; the handle is the coined term \"connector\" (cap ~5 words). Same chunk also bolds line 55 \"Path A. You have a calendar connector enabled\" and line 59 \"Path B (no connector, or you're not sure).\" = 3 bolded elements on one slide, over the <=1 budget; not a menu/lookup slide (it is a do-this walk) and no section 34 task-size callout. Harm (emphasis dilution so the one coined term stops standing out) is present.",
       "na_reason": null,
-      "fix_hint": "Bold only the coined term (**connector**) in line 51 and leave the definition plain; bold only \"Path A\" / \"Path B\" at lines 55/59.",
+      "fix_hint": "Bold only the coined term \"connector\"; drop bold on the Path A / Path B lead sentences (keep at most the mode word).",
       "blocking": false,
       "chunks_flagged": [
         5
@@ -154,7 +143,7 @@
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "evidence": "scripts/check-slide-size.js --file output: \"slides: 7 ... oversized: 0\" so the renderer-derived chunking enumerates all 7 `##` sections including Bring to Module 1. Composed-deck render itself not run by me (unverified beyond the checker).",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/trainings/agents-101/prework.md -> \"slides: 7 ... oversized: 0\"; renderer-derived chunking enumerates all 7 ## sections incl. Bring to Module 1. Composed-deck render not run by me (unverified beyond the checker).",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -165,7 +154,7 @@
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-numbering.js --file curriculum/trainings/agents-101/prework.md -> \"OK — 1 files, Phase/Step numbering consistent.\" Headers 1-6 are consecutive; line 25 \"section 5, Path B\" resolves to the in-file header at line 49.",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/trainings/agents-101/prework.md -> \"OK — 1 files, Phase/Step numbering consistent.\" Headers 1-6 consecutive; line 23 \"section 5, Path B\" resolves in-file.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -176,7 +165,7 @@
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-deixis.js --file curriculum/trainings/agents-101/prework.md -> \"OK — 1 files, no page-geometry pointers across the slide cut.\" Line 61 \"Take a screenshot ..., then:\" points at prompts in the same chunk (lines 63-77).",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/trainings/agents-101/prework.md -> \"OK — 1 files, no page-geometry pointers across the slide cut.\" Line 61 \"then:\" points at prompts inside the same chunk.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -187,7 +176,7 @@
       "rule_index": 13,
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "PASS",
-      "evidence": "Rule states no gate. Only in-body link outside the starter download is line 87, whose link text \"What is an Agent, LLM vs chat\" names the document so the sentence works with the link stripped. The removal of the quick-reference link at the old line 25/81 left no dangling reference (line 81 now says \"Ask the agent to look up the current steps\").",
+      "evidence": "Rule is a review aid, no gate. Only in-body link besides the starter download is line 85 whose link text names the document, so the sentence works with the link stripped.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -209,7 +198,7 @@
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
-      "evidence": "Headings are numbered imperative/phase labels (\"1. Set up your agent runtime\", \"4. Build a snake game\", \"6. Read the mental frame\") plus the logistics label \"Bring to Module 1\" (line 91); prework is exercise-shaped, so no declarative owed. Closest: \"5. Summarize your week in meetings\" is still an imperative.",
+      "evidence": "Headings are numbered imperative labels (\"4. Build a snake game\", \"6. Read the mental frame\") plus logistics label \"Bring to Module 1\" (line 91); prework is exercise-shaped, no declarative owed. Closest: \"5. Summarize your week in meetings\" is still an imperative.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -220,7 +209,7 @@
       "rule_index": 16,
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
-      "evidence": "chunk 7 line 93: \"Five things. Not nothing.\" is the closest to a class (c) kicker, but the count is checkable against the five listed items and the section is logistics, not a law slide; offered as a suggestion, not owed. No doctrine restatement or design commentary in the body (grep for 'by design', 'the training' in body 0 hits on design-commentary phrasing).",
+      "evidence": "chunk 7 line 93: \"Five things. Not nothing.\" is the closest to a class (c) kicker, but the count is checkable against the five listed items and the section is logistics; offered as a suggestion, not owed. Lines 35/47/79/89 \"Proof:\" lines state what the step demonstrated, not the header restated as koan; line 41 \"Keep the file. It's yours.\" is an instruction.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
@@ -231,11 +220,23 @@
       "rule_index": 17,
       "rule_lead": "A retitled slide re-earns its bullets against the new header.",
       "verdict": "PASS",
-      "evidence": "diff 4d9c4af2..HEAD: chunk 1 header changed from \"Set up Claude Code/Cowork\" to \"Set up your agent runtime (5 min)\" and its bullets were rewritten in the same commit (lines 7-15), so no old-job bullets remain. Covering the body: header promises runtime setup; every bullet (access, folder, Copilot Memory, session, session name) answers it.",
+      "evidence": "git diff 78d17fc9..HEAD on the file changes only the Quality/judges lines in the maintainer block; no ## line changed, so no retitled slide owes a re-earn.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no guess-before-reveal or demo beat in the file; every task is a do-it instruction",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     }
   ],
   "suggestions": [
@@ -243,10 +244,16 @@
       "rule": "check_slides.md §16",
       "line": 93,
       "now": "Five things. Not nothing. Module 1 just gets going.",
-      "proposed": "Module 1 gets going from there."
+      "proposed": "Five things. Module 1 gets going from there."
+    },
+    {
+      "rule": "check_slides.md §9",
+      "line": 51,
+      "now": "**A *connector* is a way for the agent to talk directly to one of your work apps (your calendar, your email, your files).**",
+      "proposed": "A **connector** is a way for the agent to talk directly to one of your work apps (your calendar, your email, your files)."
     }
   ],
-  "notes": "Accept-notes in maintainer block: none for slides (only the dated Quality stamp L99 and the TODO header L115, extracted by the view). Cross-class, not rows: (1) body line 7 says \"over the eight modules\" and the maintainer artefact table says M1-M8, while Antti's request for this run was the 7-module public version, not the 8-module one; technical/story/cross_module should decide if the count is right for this edition. (2) Maintainer TODO at L115 describes Cowork wording in Prompt 1 that the expanded prompt no longer contains (writing §3: states a past diff). (3) Expanded prompt blocks are all tagged *(Claude Code)* while the body prose was neutralised to 'the agent'; technical class. Rule 10 composed-deck render not run. Prefill parked 0 rows; all 17 rules were in the brief.",
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 1
+  "nonblocking_findings_count": 1,
+  "notes": "Accept-notes: none for slides (view extracted only the dated Quality stamp L99 and the TODO header L116). Diff 78d17fc9..HEAD touches only maintainer Quality lines. Cross-class, not rows: maintainer TODO at L116 describes Cowork wording that may no longer be in the expanded prompt (writing section 3 states a past diff). Rule 10 composed-deck render not run. Prefill parked 1 row (rule 4); brief held 16 rules."
 }

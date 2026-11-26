@@ -46,8 +46,8 @@ For the full reference, <span class="rt-claude rt-code">open the [Claude Code he
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 behavior@725101ec pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
-- judges @78d17fc9: writing PASS (5 findings see instances/agents-101--exercise--module-3-prework.writing.json), story PASS, technical REVISE (1/0 see instances/agents-101--exercise--module-3-prework.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (writing@cf4fd816 story@78d17fc9 technical@cf4fd816 behavior@725101ec pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @cf4fd816: writing PASS (5 findings see instances/agents-101--exercise--module-3-prework.writing.json), story PASS, technical PASS (verify-refuted, 1 finding see instances/agents-101--exercise--module-3-prework.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 - **Atomic — no phase markers.** Two readings and a takeaway note, read alone between sittings; line 3 already carries the 25 / 10 / 5 split and phase slides would chunk a reading list into a deck nobody projects. Line 3 is authored, not generated.
 

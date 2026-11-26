@@ -103,8 +103,8 @@ This was **Recipe 5**. The [Cookbook for Agent System Design](../trainings/agent
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
-- judges @78d17fc9: writing PASS (verify-refuted, 6 findings see instances/agents-101--exercise--hallucination-bakeoff.writing.json), story PASS, technical PASS (3 findings see instances/agents-101--exercise--hallucination-bakeoff.technical.json), behavior PASS, pedagogy REVISE (2/1 see instances/agents-101--exercise--hallucination-bakeoff.pedagogy.json), strategy PASS, slides PASS (verify-refuted, 1 finding see instances/agents-101--exercise--hallucination-bakeoff.slides.json)
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@cf4fd816 behavior@cf4fd816 strategy@78d17fc9 slides@78d17fc9)
+- judges @cf4fd816: writing PASS (verify-refuted), story PASS, technical PASS (3 findings see instances/agents-101--exercise--hallucination-bakeoff.technical.json), behavior PASS, pedagogy REVISE (2/1 see instances/agents-101--exercise--hallucination-bakeoff.pedagogy.json), strategy PASS, slides PASS (verify-refuted)
 
 **TODO (Cowork edition review 2026-04-29):**
 - Phase 1 prompt still says "Spawn one subagent" / "Instructions for the subagent" / "When the subagent finishes" in the Cowork edition. Later detector prompt is already runtime-forked correctly. Prompt-block change is gated: propose before/after before editing.

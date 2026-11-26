@@ -3,7 +3,7 @@
  "file": "curriculum/trainings/agents-101/agents-building-agents-solo.md",
  "training": "agents-101",
  "verdict": "PASS",
- "body_sha": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+ "body_sha": "976bc74494cd5ff691bb84eb78b42d79be1fa3cdb8a752a73c72be0e9b1ad9e0",
  "shape_hash": "950af40171bf7acf",
  "rules_evaluated": [
   {
@@ -11,7 +11,228 @@
    "rule_index": 1,
    "rule_lead": "Walk-away test (M2+).",
    "verdict": "PASS",
-   "evidence": "L26-28: Debrief is one prompt run after the build, student leaves chair while agent rewrites; nothing asks the student to read every reply and paste back. Closest: L29 \"reports what changed\" (3-5 lines), a summary not a replies loop.",
+   "evidence": "L30-32: Debrief is one prompt; the student leaves the chair while the agent rewrites. Closest: L30 \"reports what changed\", a 3-5 line summary, not a read-and-paste-back loop.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 3,
+   "rule_lead": "Trust the agentic design — no human backstops.",
+   "verdict": "PASS",
+   "evidence": "L32 prompt names agent authority (\"Integrate, don't append... Keep every rule the session did not contradict\"). Closest: L22 question is the student's own choice of person, not a backstop.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 6,
+   "rule_lead": "One exercise = one bounded activity.",
+   "verdict": "PASS",
+   "evidence": "L24 includes one exercise (build-for-the-gap, 30 min, sub-phases inside its own file); L28-32 Debrief is the module slot, not a numbered sub-exercise. Closest: Debrief follows the lecture L26, but is not numbered.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 8,
+   "rule_lead": "Three-level completeness.",
+   "verdict": "PASS",
+   "evidence": "Artefact contracts table L80-86 chains person.md -> brief.md -> built-agent.md -> rewritten Module 2 agent; L36 consumes person.md. Closest: L9 prework trigger.md is produced in M6, outside this file, and named by path.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 10,
+   "rule_lead": "Student agency — adults decide.",
+   "verdict": "PASS",
+   "evidence": "L28 \"Five minutes.\" is a duration, no forced pacing; L36 \"show your person ... or ask them\" offers a choice. Closest: L20 \"Start a fresh session\" is a setup step, not compulsion; skipping it creates a dead end.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 11,
+   "rule_lead": "Delegation — student brings, Claude screens.",
+   "verdict": "PASS",
+   "evidence": "L22 student picks the person (their judgement); L32 prompt asks Claude to compare two local files and rewrite, both accessible in the session. Closest: L30 Claude reads module-7/built-agent.md, which the student's own build step wrote.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 13,
+   "rule_lead": "Artifact-realism check.",
+   "verdict": "PASS",
+   "evidence": "Ran: ls curriculum/exercises/build-for-the-gap.md lectures/where-is-this-all-going.md prompts/{build-your-challenge-memory-5,build-for-the-gap-2,pick-one-person}.md -> all exist. Closest: agents/<module-2 agent> and module-6/trigger.md come from earlier modules via prework L9.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 14,
+   "rule_lead": "Teach principle + technique — default.",
+   "verdict": "PASS",
+   "evidence": "L30 names what the rewrite does (names what it reads, says what to do when missing) and L40-43 Key Concepts give the why. Closest: the judge (L9) is the student's own M5 build, nothing unexplained is invoked.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 16,
+   "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+   "verdict": "PASS",
+   "evidence": "L32 forcing function (rewrite in place, integrate not append, name file + missing-file behaviour) sits in the fence. Closest: L30 body names the activity only; L22 question is a framing ask, and \"3-5 lines\" is in the fence.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 18,
+   "rule_lead": "Personal-first, team promotion via human conversation.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no shared-infra change; the rewrite targets the student's own agents/ file and team sharing is deferred to the team edition (L53)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 26,
+   "rule_lead": "Reflection beats: in-chat over file-write.",
+   "verdict": "PASS",
+   "evidence": "module-7/person.md is read at L36 and by build exercise; built-agent.md is read by the Debrief prompt (L32); the Debrief reflection itself prints in chat. Closest: person.md also serves L36, a student reader, which is a real downstream read.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 27,
+   "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+   "verdict": "PASS",
+   "evidence": "grep for pair/discuss/room/share cues in body L1-55: only L36 (\"show your person\") and L53 (team edition), both about the student's work with a real person or a product boundary, not cohort management. Closest: L36.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 30,
+   "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
+   "verdict": "PASS",
+   "evidence": "No step asks the student to read for correctness; L30-32 has Claude compare and rewrite, and L47 \"you test it on your own work\" is a run, not a read. Closest: the 3-5 line report L32 is read for what changed, not audited.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 31,
+   "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
+   "verdict": "PASS",
+   "evidence": "L32 \"quoting the before and after line for each\" makes the self-report checkable against the file; the rewritten agent is the artifact, consumed by every later run (L86). Closest: no explicit \"which did NOT change\" push-back and no instruction to open the file; the quote requirement carries the mitigation.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 32,
+   "rule_lead": "Offered structures need forced-engagement mechanic.",
+   "verdict": "PASS",
+   "evidence": "No default structure or plan offered: L32 asks Claude to rewrite from the student's own agent; L28-35 contains no plan-mode approval. Closest: L22 question gives no list to accept.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "34b",
+   "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
+   "verdict": "PASS",
+   "evidence": "L69 Known weak spot (\"reached about 3 of 12 simulated students\"): remove the hedge and L49 body still claims only that a whole team does it together, so the section stays defensible. The hedge is a reach measure, not a section premise.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 36,
+   "rule_lead": "Verification machinery needs smoke-test before trust.",
+   "verdict": "PASS",
+   "evidence": "No new verification machinery built here; the judge is the student's M5 judge (L9), and the built agent is run on real work (L47). Closest: build-for-the-gap-2 judge run lives in the exercise file, judged there.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 42,
+   "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
+   "verdict": "PASS",
+   "evidence": "grep 'if your environment|doesn.t support|instead' in body -> no fallback; module uses files only. Closest: L20 fresh session or task, an either/or at the runtime layer, both of which deliver the same thing.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 47,
+   "rule_lead": "Per-phase failure mode + escape hatch.",
+   "verdict": "REVISE",
+   "evidence": "L57-86 maintainer block carries sim, weak-spot and contracts but no Debrief failure mode plus recovery: the Debrief forcing function (L32 rewrite in place) can fail by appending a retro section or leaving memory references unnamed, and nothing names the catch. L69 Known weak spot is about Big Idea reach, not a phase failure. Harm: a trainer or self-study student has no lookup when the rewrite goes wrong; the harm is present.",
+   "na_reason": "Add one line to the maintainer block naming the Debrief failure mode (appended retro section, memory reference left unnamed) and its recovery move (re-run with the rule restated). Applied by orchestrator.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "52a",
+   "rule_lead": "Module prose carrying a `**Session**` widget or a `{{prompt:}}` fence is an exercise that has not been extracted.",
+   "verdict": "PASS",
+   "evidence": "L32 single {{prompt:a101-solo-debrief-works-without-me}} under the Debrief heading, sanctioned module slot (Transitions L76 \"debrief 5 @end\"); the build exercise is extracted at L24. Closest: L32 is the one prompt fence in module prose.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 53,
+   "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test (widened 2026-08-12).",
+   "verdict": "PASS",
+   "evidence": "L30 lead-in names activity, artifact and constraint (\"rewrites the Module 2 agent in place so it would work for someone without your memory\") and does not preview what the prompt will reveal. Closest: \"reports what changed\" restates the prompt's own output format (L32).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 64,
+   "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
+   "verdict": "PASS",
+   "evidence": "L57-86 keeps file-unique content (edition decision, sim result, red thread, contracts); no delivery-mechanics paraphrase. Closest: L63 edition note names the licensed edition's files, unique to this split.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": null,
+   "judge_owned": true,
+   "rule_lead": "Look-lines name the object and the tell (template-owned criterion, sibling of §9)",
+   "verdict": "PASS",
+   "evidence": "Body asks the student to read nothing for inspection: L22 asks them to name a person, L36 asks them to show or ask. Closest: L30-32 \"reports what changed\" is a report the student sees, unframed; cross-check of the maintainer block L57-86 found no per-phase failure rows or leap tests to move into body (that absence is the §47 row).",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -23,18 +244,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 3,
-   "rule_lead": "Trust the agentic design — no human backstops.",
-   "verdict": "PASS",
-   "evidence": "L29-34 prompt names agent authority (\"Integrate, don't append... Keep every rule the session did not contradict\"); no human backstop. Closest: L21 \"Start here\" question is the student's own, not a backstop.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -43,18 +256,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 6,
-   "rule_lead": "One exercise = one bounded activity.",
-   "verdict": "PASS",
-   "evidence": "L19-22 two includes plus one Debrief prompt; no sub-numbering; the build is one exercise (exercises/build-for-the-gap.md, Time 30 minutes via grep).",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -63,18 +268,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 8,
-   "rule_lead": "Three-level completeness.",
-   "verdict": "PASS",
-   "evidence": "Artefact contracts table (maintainer): person.md -> brief.md -> built-agent.md -> rewritten Module 2 agent, each with producer and consumer; Debrief prompt reads built-agent.md. Chain reads back to Big Idea L4.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -83,8 +280,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -93,28 +292,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 10,
-   "rule_lead": "Student agency — adults decide.",
-   "verdict": "PASS",
-   "evidence": "L27 \"Give it to them: show your person ... or ask them the question\" is offered as either/or, not a forced pace. Closest: L26 \"Five minutes\" is a duration label, not a pacing prescription.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 11,
-   "rule_lead": "Delegation — student brings, Claude screens.",
-   "verdict": "PASS",
-   "evidence": "Debrief prompt asks Claude to read the session, agents/ file and module-7/built-agent.md, all local and produced earlier; picking the person (student judgement) sits in L21 as the student's question, not delegated.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -123,28 +304,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 13,
-   "rule_lead": "Artifact-realism check.",
-   "verdict": "PASS",
-   "evidence": "Prework L9 names module-6/trigger.md, Module 2 agent, Module 5 judge; module-7/built-agent.md is produced by build-for-the-gap-2 per the contracts table. No uninstalled tool named.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 14,
-   "rule_lead": "Teach principle + technique — default.",
-   "verdict": "PASS",
-   "evidence": "L19-22 the student runs the build and a lecture; no unexplained black-box tool invoked. Closest: the judge agent (L9) was built in Module 5 by the student, not an import.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -153,18 +316,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 16,
-   "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-   "verdict": "PASS",
-   "evidence": "L31-37 the one forcing function (rewrite in place, integrate not append, name file + missing-file behaviour) is in the fence; body L26 only names the activity. No count-scripts; closest is \"3-5 lines\" inside the fence.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -173,18 +328,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 18,
-   "rule_lead": "Personal-first, team promotion via human conversation.",
-   "verdict": "PASS",
-   "evidence": "L35 rewrite touches the student's own agents/ file; L40 sharing with the person is the student's decision; no auto-promote.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -193,8 +340,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -203,8 +352,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -213,8 +364,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -223,8 +376,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -233,8 +388,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -243,8 +400,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -253,8 +412,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -263,28 +424,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 26,
-   "rule_lead": "Reflection beats: in-chat over file-write.",
-   "verdict": "PASS",
-   "evidence": "Only write is module-7/built-agent.md, read by the Debrief prompt (contracts table); rewritten Module 2 agent is read by every later run. No proof-of-reflection file.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 27,
-   "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
-   "verdict": "PASS",
-   "evidence": "L40 Give it to them is about the work (show the agent output, ask the question). Closest to room-management: L61 body \"the people around you\" in Big Idea/Next is a learning claim, not a trainer cue; no pair/group beat authored.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -293,38 +436,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 30,
-   "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
-   "verdict": "PASS",
-   "evidence": "L29 asks the agent to quote before/after lines; student is not asked to read Claude output for correctness. Closest: L40 \"show your person what the new agent makes\", a human-recipient test, not reading-burden verification.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 31,
-   "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
-   "verdict": "PASS",
-   "evidence": "Debrief prompt L37 \"quoting the before and after line for each\" makes the self-report checkable at the artifact. Closest: no explicit \"which did NOT change\" push-back; the quote requirement carries the mitigation.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 32,
-   "rule_lead": "Offered structures need forced-engagement mechanic.",
-   "verdict": "PASS",
-   "evidence": "No offered default structure; the prompt asks Claude to produce a rewrite from the student's own agent, nothing to accept verbatim.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -333,8 +448,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -343,18 +460,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": "34b",
-   "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
-   "verdict": "PASS",
-   "evidence": "Known weak spot (L63) hedge: removing it, body Next L48 still claims only that a whole team does it together, so section stays defensible; the body already carries the narrower claim.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -363,18 +472,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 36,
-   "rule_lead": "Verification machinery needs smoke-test before trust.",
-   "verdict": "PASS",
-   "evidence": "Judge from Module 5 is reused, built agent is tested on own work (Next L52 \"you test it on your own work before it reaches anyone else's\"); no new verification machinery built here.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -383,8 +484,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -393,8 +496,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -403,18 +508,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 42,
-   "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
-   "verdict": "PASS",
-   "evidence": "No load-bearing platform feature with fallback; module uses files only.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -423,8 +520,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -433,8 +532,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -443,18 +544,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "Rule scopes exercise maintainer blocks; module block carries none and leap tests live in the exercise file.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 47,
-   "rule_lead": "Per-phase failure mode + escape hatch.",
-   "verdict": "REVISE",
-   "evidence": "Maintainer block (L55-70) records design, sim and weak spots but no per-phase failure mode plus escape hatch for the Debrief forcing function (the rewrite prompt): e.g. agent appends a retro section or leaves memory references unnamed, and what recovers it. \"Known weak spot\" is about the Big Idea reach, not a phase failure.",
-   "na_reason": null,
-   "fix_hint": "Add one line to the maintainer block naming the Debrief phase failure mode and the recovery move.",
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -463,8 +556,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -473,8 +568,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -483,8 +580,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -493,8 +592,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -503,8 +604,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -513,18 +616,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": "52a",
-   "rule_lead": "Module prose carrying a `",
-   "verdict": "PASS",
-   "evidence": "Single Debrief prompt in L26-37 is the sanctioned module Debrief slot (Transitions \"debrief 5 @end\"); the build exercise is extracted to exercises/build-for-the-gap.md.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -533,8 +628,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -543,18 +640,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 53,
-   "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test (widened 2026-08-12).",
-   "verdict": "PASS",
-   "evidence": "L26 lead-in names activity and constraint (\"rewrites the Module 2 agent in place so it would work for someone without your memory\") and the artifact; it does not announce what the prompt surfaces. Closest: \"reports what changed\" restates the prompt's own ask, no payoff previewed.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -563,8 +652,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -573,8 +664,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "No new mechanic shipped as packaging.",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -583,8 +676,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -593,8 +688,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -603,8 +700,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -613,8 +712,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -623,8 +724,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -633,8 +736,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -643,8 +748,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "No callout beside a prompt in the body.",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -653,18 +760,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 64,
-   "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
-   "verdict": "PASS",
-   "evidence": "Maintainer block L57-70 keeps only file-unique content (edition decision, sim result, contracts table); delivery mechanics not paraphrased. Closest: L61 sim numbers are file-unique evidence, not a canonical-home restatement.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -673,8 +772,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "Rule scopes send-off artefact handover (M4 to M5, M5 to M6); this module takes a prework bring-list, not a send-off run.",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -683,8 +784,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -693,8 +796,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "authoring-process or exercise/lecture/eval-machinery rule with no surface in this module body",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_workshop.md",
@@ -703,8 +808,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no group beat: module is individual work, only a passing \"people around you\" learning claim",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_workshop.md",
@@ -713,8 +820,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no group beat: module is individual work, only a passing \"people around you\" learning claim",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_workshop.md",
@@ -723,8 +832,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no group beat: module is individual work, only a passing \"people around you\" learning claim",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_workshop.md",
@@ -733,8 +844,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no group beat: module is individual work, only a passing \"people around you\" learning claim",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_workshop.md",
@@ -743,8 +856,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no group beat: module is individual work, only a passing \"people around you\" learning claim",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_workshop.md",
@@ -753,8 +868,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no group beat: module is individual work, only a passing \"people around you\" learning claim",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_workshop.md",
@@ -763,8 +880,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no group beat: module is individual work, only a passing \"people around you\" learning claim",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_workshop.md",
@@ -773,8 +892,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no group beat: module is individual work, only a passing \"people around you\" learning claim",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_workshop.md",
@@ -783,8 +904,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no group beat: module is individual work, only a passing \"people around you\" learning claim",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_workshop.md",
@@ -793,8 +916,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no group beat: module is individual work, only a passing \"people around you\" learning claim",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_workshop.md",
@@ -803,8 +928,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no group beat: module is individual work, only a passing \"people around you\" learning claim",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_workshop.md",
@@ -813,8 +940,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no group beat: module is individual work, only a passing \"people around you\" learning claim",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_workshop.md",
@@ -823,8 +952,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no group beat: module is individual work, only a passing \"people around you\" learning claim",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_workshop.md",
@@ -833,8 +964,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no group beat: module is individual work, only a passing \"people around you\" learning claim",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_workshop.md",
@@ -843,8 +976,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no group beat: module is individual work, only a passing \"people around you\" learning claim",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   },
   {
    "compendium": "check_workshop.md",
@@ -853,23 +988,14 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "no group beat: module is individual work, only a passing \"people around you\" learning claim",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": null,
-   "judge_owned": true,
-   "rule_lead": "Look-lines name the object and the tell",
-   "verdict": "PASS",
-   "evidence": "L26 Debrief names the object (which Module 2 lines assume memory, via prompt L33) and asks for quoted before/after lines as the tell; L21 Start here is a question, not a look-line. Closest: L40 \"show your person what the new agent makes\" names the object and their answer as the tell.",
-   "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+   "carried_shape": "950af40171bf7acf"
   }
  ],
  "suggestions": [],
  "blocking_findings_count": 0,
  "nonblocking_findings_count": 1,
- "notes": "check_pedagogy 69 owed (7 moved-stubs excluded by brief); check_workshop 16. Cross-class: none. Per-phase failure row (section 47) is nonblocking; verdict PASS per template (REVISE only on blocking)."
+ "notes": "Pinned diff 78d17fc9..HEAD adds only L20 'Start here' setup line and the Quality stamp lines (L59-61); no pedagogy-relevant body change. Accept-notes: none dated in the maintainer block beyond Antti 2026-11-25 prompt-ok, 2026-11-25 edition decision and 2026-11-13 close. Section 47 row is non-blocking, so top-level verdict is PASS per template. Brief built normally."
 }

@@ -3,18 +3,8 @@
   "file": "curriculum/exercises/name-your-challenge.md",
   "training": "agents-101",
   "verdict": "PASS",
-  "body_sha": "14ad2855ce06132a94789f569b95b4d1a31cd82404d7d67d84a43201505f8031",
-  "suggestions": [
-    {
-      "rule": "question-dump",
-      "line": 25,
-      "now": "Edit the brief if it doesn't sound like what keeps you up.",
-      "proposed": "If Claude shows all three questions at once, ask for one at a time. Edit the brief if it doesn't sound like what keeps you up."
-    }
-  ],
-  "blocking_findings_count": 0,
-  "nonblocking_findings_count": 2,
-  "trace_status": "full_regen",
+  "body_sha": "3ae0ce71a179cabc869f71e15153a0cc5d94adca9848b560b86b2f4492a3513c",
+  "trace_status": "cached",
   "prompts_evaluated": 2,
   "prompts_findings": [
     {
@@ -23,31 +13,34 @@
       "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
-        {
-          "pattern_id": "question-dump",
-          "confidence": "med",
-          "blocking": false,
-          "evidence": "Ask me these in turn: 1. ... 2. ... 3. ...; line 21 says 'one at a time' but no pushback move after the prompt",
-          "fix_hint": "Re-add one-line pushback callout near line 25 (the earlier body had it; the rewrite dropped it). Single med risk, so PASS."
-        }
+        {"pattern_id": "question-dump", "confidence": "med", "evidence": "Ask me these in turn: 1. ... 2. ... 3. ...; body line 21 says 'one at a time' but gives no pushback move. Single med risk on a load-bearing prompt: below the REVISE threshold (needs high, or two med). Harm (shallow third answer) is real but mild, and 'in turn' plus 'When I've answered all three' sequence the exchange.", "fix_hint": "Add a pushback sentence after the prompt: if Claude shows all three at once, ask for one at a time."}
       ]
     },
     {
       "prompt_index": 2,
-      "prompt_sha_note": "",
       "prompt_lead": "Based on the challenge brief you just wrote, suggest where I'd go looking for ra",
       "verdict": "PASS",
       "load_bearing": false,
       "risks_fired": [
-        {
-          "pattern_id": "citation-cargo-cult",
-          "confidence": "med",
-          "blocking": false,
-          "evidence": "2 to 3 practitioners (named people: writers, operators, researchers) worth reading on this challenge",
-          "fix_hint": "Ask for names Claude is confident exist; not load-bearing, scouting list only."
-        }
+        {"pattern_id": "citation-cargo-cult", "confidence": "med", "evidence": "2 to 3 practitioners (named people: writers, operators, researchers) worth reading on this challenge. Non-load-bearing scouting list; harm is wasted search time, not a wrong decision.", "fix_hint": "Ask for names only where Claude is confident the person exists."}
       ]
     }
   ],
-  "notes": "Diff 725101ec..HEAD rewrote body (shortened; dropped the 'push back if all three at once' callout and the 'circle two or three' step). Prompt shas both changed so full regen. Only accept-note: L37 Quality line (not an authorisation). Prior niceness-tax low on 'Keep it short' dropped: no carve-out nameable and no deliberate edge. The user's '7-module vs 8-module' remark does not map to anything in this file's judging; not acted on."
+  "suggestions": [
+    {
+      "rule": "question-dump",
+      "line": 23,
+      "now": "The agent interviews you with three questions, one at a time, and writes `./challenge.md`.",
+      "proposed": "The agent interviews you with three questions, one at a time, and writes `./challenge.md`. If it shows all three at once, ask for one at a time."
+    },
+    {
+      "rule": "citation-cargo-cult",
+      "line": 31,
+      "now": "2 to 3 practitioners (named people: writers, operators, researchers) worth reading on this challenge",
+      "proposed": "2 to 3 practitioners (named people: writers, operators, researchers) worth reading on this challenge, only ones you are confident exist"
+    }
+  ],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 2,
+  "notes": "Trace reused: content sha matched current body; no prompt edits since. Maintainer accept-notes: the only dated line is the Quality stamp (2026-11-26); no accept-note covers either prompt. Diff since 725101ec: body slimmed (prose cut, session rename block removed, question-dump pushback sentence removed); prompts unchanged in registry. No carve-out applies to prompt 1: body states the one-at-a-time design but not the pushback move the carve-out requires. Suggestion line 31 targets the registry prompt body (curriculum/prompts/name-your-challenge-2.md), shown at the marker."
 }

@@ -3,7 +3,7 @@
   "file": "curriculum/trainings/agents-101/prework.md",
   "training": "agents-101",
   "verdict": "PASS",
-  "body_sha": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+  "body_sha": "92d83b325b539048abeeb881b930ed4f3fd0741d2112afa5722258241dac8b96",
   "shape_hash": "3cc37273fc57a00b",
   "rules_evaluated": [
     {
@@ -11,8 +11,7 @@
       "rule_index": 1,
       "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": "greps banned_words (honest/delve/importantly/crucial/substrate/synergize/paradigm shift) body_hits 0, leverage_verb 0, em_dash 0; all CLEAN with planted proof",
-      "na_reason": null,
+      "evidence": "em_dash 0, banned_words 0, leverage_verb 0 body hits, all CLEAN with planted proof in the body view; grep -ciE for landscape not applicable (no verb use)",
       "fix_hint": null,
       "blocking": true
     },
@@ -21,8 +20,7 @@
       "rule_index": 2,
       "rule_lead": "Ritual / ceremony — hard ban",
       "verdict": "PASS",
-      "evidence": "grep ritual_ceremony body_hits 0 (CLEAN); grep -ciE 'practice' on body view = 0, so the Agents 101 practice(n) ban holds",
-      "na_reason": null,
+      "evidence": "ritual_ceremony body_hits 0 (CLEAN); grep -ciE practice on body view = 0, so the Agents 101 absolute practice(n) ban holds",
       "fix_hint": null,
       "blocking": true
     },
@@ -31,9 +29,8 @@
       "rule_index": 3,
       "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
       "verdict": "REVISE",
-      "evidence": "115-116: **TODO (Claude Code Desktop edition review 2026-04-29):** Prompt 1 includes Cowork-specific wording: \"Leave `agents-101-starter.tar.gz` behind; Cowork's sandbox can't always delete host-dropped files.\" The registry prompt a101-prework-extract-tarball now reads \"(Leave `agents-101-starter.tar.gz` behind after unpacking. It is harmless.)\"; the quoted Cowork wording no longer exists, so the note is a stale dated marker about a closed item",
-      "na_reason": null,
-      "fix_hint": "Delete the TODO block (closed item; the date and review name are session biography); history is git.",
+      "evidence": "116-117: **TODO (Claude Code Desktop edition review 2026-04-29):** Prompt 1 includes Cowork-specific wording: \"Leave `agents-101-starter.tar.gz` behind; Cowork's sandbox can't always delete host-dropped files.\" The registry prompt a101-prework-extract-tarball now reads \"(Leave `agents-101-starter.tar.gz` behind after unpacking. It is harmless.)\", so the quoted wording no longer exists and the note is a dated marker on a closed item. Harm the rule prevents: a stale marker that makes the next reader chase a defect that is gone; the harm is present. Not a dated provenance header (no standing constraint it anchors). Body region clean: session_biography and dated_line greps 0.",
+      "fix_hint": "Delete the TODO block (lines 116-117); history is git.",
       "blocking": false
     },
     {
@@ -41,9 +38,323 @@
       "rule_index": 4,
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "39: \"Why a snake game? Because you can tell if it works.\" is concrete and warm, the closest to preening, and stays inside Agents 101 voice (Godin/Sutherland/Siilasmaa); 93: \"Five things. Not nothing.\" short declaratives, no stylized phrase-pair",
-      "na_reason": null,
+      "evidence": "39: \"a working snake game is a small, permanent, perfectly useless thing to own\" is the nearest to preening and stays in the Godin/Sutherland register of the Agents 101 voice trio; 93: \"Five things. Not nothing.\" plain declaratives, no stylized phrase-pair; grep Remember|Hold onto|Keep in mind|Never forget on body = 0; no atmospheric imagery, no we-refuse callout",
       "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 7,
+      "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
+      "verdict": "PASS",
+      "evidence": "greps the_student 0, author_we 0 (CLEAN); 3: \"Land at Module 1 with your agent runtime working\" is second person throughout; no trainer delivery mechanics in body",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 8,
+      "rule_lead": "Don't smuggle terms of art from maintainer into body.",
+      "verdict": "PASS",
+      "evidence": "29: \"the personal-to-team patterns for a later module\" is the nearest candidate; it names a shipped folder of files and the module exists in the registry (From Personal to Team), on the Prework signposting page; \"connector\" is used in plain apposition at 19-21 and defined at 51",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 9,
+      "rule_lead": "Over-hedge detector.",
+      "verdict": "PASS",
+      "evidence": "25: \"The calendar screenshot path in section 5, Path B gives you the same teaching moment with less automation.\" is reassurance-shaped (a not-a-downgrade clause) but the sentence also routes to the Path B fork, a real operational branch; filed under rule 18 for the ordinal and as a suggestion here since the rule is a detector with no stated gate; no no-penalty / fine-way-to / it's-OK-if phrases in body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 12,
+      "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
+      "verdict": "PASS",
+      "evidence": "39: \"Why a snake game? Because you can tell if it works.\" is a rationale with its reason in the same paragraph, no slogan that overstates cadence and owes a downstream carve-out",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 13,
+      "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
+      "verdict": "PASS",
+      "evidence": "grep vendor|marketing|real practitioners|not theoretical on body view = 0; closest 85: \"If you only do one thing from this prework, do this.\" is a priority instruction, not positioning",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 14,
+      "rule_lead": "Watch out for planting jargon too early.",
+      "verdict": "PASS",
+      "evidence": "nearest 29: \"personal-to-team patterns\" is a file inventory in prose on the Prework page, not a lead-in, prompt body or bold callout; grep token|embedding|schema|frontmatter|orchestrat on body = 0; \"connector\" in plain apposition at 19-21 before its definition at 51",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 17,
+      "rule_lead": "No combative verbs about the agent in body prose.",
+      "verdict": "PASS",
+      "evidence": "grep bark|order|command|whip|force|drag|boss|shout|scold|lecture on body view = 0; verbs toward the agent: \"ask the agent to unpack it\" (31), \"Ask the agent to look up the current steps\" (81)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 18,
+      "rule_lead": "Headers must be literally true about the mechanism.",
+      "verdict": "PASS",
+      "evidence": "83: \"## 6. Read the mental frame (10 min)\" reads literally true against its two-page read; 17: \"## 2. Connect your work apps\" matches the section; no spatial metaphor, no other-X header",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 19,
+      "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
+      "verdict": "PASS",
+      "evidence": "closest 35: \"Two visible steps, no magic.\" negates a real reader prior (agent work as opaque) once, in the Proof italic voice; 93: \"Not nothing.\" answers the reader's sense that five items is light; no deictic drumroll (85 \"do this\" points at the next sentence), no bold-label echo (51 opens on the claim)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 20,
+      "rule_lead": "Don't state a count the adjacent list already holds.",
+      "verdict": "REVISE",
+      "evidence": "93: \"a snake game, a meetings summary, and a 2-page read. Five things. Not nothing.\" and 95: \"Once those five things are ready\" restate the count of the list one sentence above. The items are visible in the same paragraph, so the numeral is not a handle carried away from the list; it is a second copy that drifts when the list changes (the same list recurs at 3). Harm present.",
+      "fix_hint": "Drop the numerals: 93 keeps \"Not nothing.\"; 95 becomes \"Once those are ready\".",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 22,
+      "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
+      "verdict": "PASS",
+      "evidence": "no <!-- backing --> block in this file (signals.has_backing_block false), so no claim ledger quotes a body line; 7: \"over the eight modules\" agrees with the artefact table 110 \"M1-M8\"; grep '\\u2190' source-id pointers not applicable",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 26,
+      "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
+      "verdict": "PASS",
+      "evidence": "35: \"Proof: you placed the file; the agent unpacked it.\" and 47: \"Proof: the agent can create a working file and save it on your machine.\" name observable outcomes (a file exists, a game plays); nearest 89: \"Proof: you arrive with a rough mental frame\" is a state claim, not a self-witnessing instrument",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 27,
+      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
+      "verdict": "PASS",
+      "evidence": "closest 93 restating the 3 list: a recap section whose job is the send-off, one concrete list and no third sentence on one idea; 29 vs 31 do not restate the adjacent prompt; style rule, not a gate",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 28,
+      "rule_lead": "Body prose stands without the trainer — no cue-card prose.",
+      "verdict": "PASS",
+      "evidence": "93: \"Five things. Not nothing.\" is a fragment pair after a verbed sentence naming the set (enumeration carve-out); 43: \"Play.\" has a verb and resolves to the game named one sentence up; no screen deictic (Take a guess, on the screen, ^Go\\., Your turn) in body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 1,
+      "rule_lead": "Aspirational destination, never corrective gap.",
+      "verdict": "PASS",
+      "evidence": "39: \"a small, permanent, perfectly useless thing to own, which makes it more interesting than most of what you produce at work\" is warm, no corrective gap or tier; 85: \"If you only do one thing from this prework, do this.\" names a destination; no \"the difference is whether\" criterion",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 2,
+      "rule_lead": "Earn every technical term on first use.",
+      "verdict": "PASS",
+      "evidence": "3: \"agent runtime\" is tied at 7 to \"the runtime you selected\" and named operationally at 13; \"connector\" first appears at 21 in apposition to the connect-your-apps header and the listed apps, and 51 gives the one-breath definition before Path A/B; \"session\" named operationally at 13; tarball appears only inside filenames",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 3,
+      "rule_lead": "Business-audience word ban (Agents 101 default).",
+      "verdict": "PASS",
+      "evidence": "no entry for runtime or connector in curriculum/evals/lints/jargon-ban.md banned list (list read: embeddings, vector, RAG, retrieval, pipeline, orchestration, schema, architecture, subagent, frontmatter); grep for those words on body view = 0",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 5,
+      "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
+      "verdict": "PASS",
+      "evidence": "25: \"If your IT admin has not approved the connector yet, keep going.\" is a plausible failure with a one-line non-obvious rescue and stays in body; 81: \"Stuck on the connector or want specific click-paths? Ask the agent to look up the current steps.\" is one tight line, not an FAQ",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 12,
+      "rule_lead": "Student moves stay in conversation with agent.",
+      "verdict": "PASS",
+      "evidence": "7: \"right-click in Finder or File Explorer\" and 43 are file-manager moves, but they create the working folder and open the artefact before an agent exists in it; the forcing function (agent unpacks, agent writes, agent summarises) stays in chat",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 14,
+      "rule_lead": "No em-dashes. Simple sentences.",
+      "verdict": "PASS",
+      "evidence": "em_dash body_hits 0 (CLEAN); longest 39 uses a true parenthetical \"(either the snake moves or it doesn't)\"; sentences split short elsewhere",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 17,
+      "rule_lead": "Section headers use command verbs when section is about doing something.",
+      "verdict": "PASS",
+      "evidence": "headers open on command verbs: \"Set up your agent runtime\", \"Connect your work apps\", \"Install the training folder\", \"Build a snake game\", \"Summarize your week in meetings\", \"Read the mental frame\", \"Bring to Module 1\"; none carry Claude as subject",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 18,
+      "rule_lead": "Inline links use target's title, never filename.",
+      "verdict": "REVISE",
+      "evidence": "25: \"The calendar screenshot path in section 5, Path B\" points at a section by its ordinal. Harm the ordinal clause prevents: inserting or reordering a section silently repoints the reference; present, since the prework headers are numbered and a section added upstream breaks it. Link text elsewhere is correct: 87 uses the target title \"What is an Agent, LLM vs chat\" and the target exists (path trainings/agents-101/supplementary/what-is-an-agent.md).",
+      "fix_hint": "Refer by name or direction: \"Path B in the meetings step below\".",
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 21,
+      "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
+      "verdict": "PASS",
+      "evidence": "body uses \"the agent\" for acting (7, 31, 43, 51, 81); grep -c Claude on body view = 0; no thinking/drift sense of LLM needed on this page",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "21b",
+      "rule_lead": "Session / task / run split (all trainings).",
+      "verdict": "PASS",
+      "evidence": "13: \"Start a new session\" and 95: \"end the prework session or task\" use session/task per the split; grep -iE \"\\brun(s)?\\b\" on body view = 0, so no noun-run for the agent sitting",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 22,
+      "rule_lead": "No time-of-day anchors in body prose.",
+      "verdict": "PASS",
+      "evidence": "grep -ciE \"tomorrow|overnight|tonight|yesterday|morning|last night\" on body view = 0",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 25,
+      "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
+      "verdict": "PASS",
+      "evidence": "43: the snake game is .html (native format, rule exemption); the .md meetings summary is set in registry prompts (prework/meetings.md); grep -ciE \"\\.txt|\\.docx\" on body view = 0",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 26,
+      "rule_lead": "Cut NVA: true but not moving student forward.",
+      "verdict": "PASS",
+      "evidence": "closest 93: the recap restates the 3 list, but it is the send-off the student acts on (end the session, start fresh at the folder); 39 rationale changes why the student does the step; 87 \"You'll meet the rest of that document section by section\" is the one mild positional line, kept as Prework signposting",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 27,
+      "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
+      "verdict": "PASS",
+      "evidence": "79 and 81: no read-it / look-at-it after a chat print; 43: \"Play.\" directs an act on a file, not narration of a chat print",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 32,
+      "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
+      "verdict": "PASS",
+      "evidence": "closest 43: \"On macOS, double-click it in Finder; on Windows, right-click \\u2192 Open with \\u2192 your browser.\" is a file-manager step for a builder-leader audience, not an install or auth recipe; 7 likewise; the agent cannot do either step before the folder exists",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 33,
+      "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
+      "verdict": "PASS",
+      "evidence": "29: \"used later in the training\" and \"for a later module\", and 7: \"over the eight modules\" are arc-positioning, but this is the Prework page, the signposting surface the rule exempts; 29 describes what the starter file set contains, a subject about the student's folder",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 39,
+      "rule_lead": "Self-study is invisible in the training flow.",
+      "verdict": "PASS",
+      "evidence": "grep -cE \"self-study|Teacher Claude\" on body view = 0",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": "lead-ins: 31 \"Then ask the agent to unpack it.\" (7 words, command verb); 61 \"Take a screenshot of your calendar week view, then:\" covers the three screenshot forks; 41 and 57 sit under the verb-object header \"Build a snake game\" / \"Summarize your week in meetings\" (2c) and are one- and three-line prompts that are their own skim-cue (2a)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "PASS",
+      "evidence": "63-77: three-way .rt-cli/.rt-desktop/.rt-cowork pairing for the screenshot prompt is justified because invocation differs within Code (find the latest screenshot on disk vs. attached image) and at the Cowork seam; one shared lead-in at 61; forks differ only in the attach/find mechanic",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "PASS",
+      "evidence": "grep -c \"{{prompt:\" on body view = 6 (33, 41, 57, 65, 70, 75), each on its own line; grep -c \"\\*\\*Prompt\\*\\*\" = 0, no inline prompt block; all six keys resolve to curriculum/prompts/a101-prework-*.md (ls: extract-tarball, meetings-connector, meetings-screenshot-cli/cowork/desktop, snake-game)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 38,
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "REVISE",
+      "evidence": "31 vs registry a101-prework-extract-tarball: body lead-in \"Then ask the agent to unpack it.\" while the prompt (changed 6aca3ce0) opens \"Download the course files into this folder and unpack them.\" and runs curl; body 31 and 35 still tell the student to download and place the file by hand (\"Proof: you placed the file; the agent unpacked it.\"). The prompt tolerates the manual path (\"If ... is already in the folder, skip the download\") so nothing breaks, but the lead-in shares only the verb unpack and not the download move. Rhymes elsewhere: 41 header \"Build a snake game\" vs prompt \"Build me a snake game\"; 61 vs 65 \"screenshot of my calendar week view\". Harm present: drafting drift after a prompt-card application.",
+      "fix_hint": "Maintainer call: either mirror the prompt (lead-in names download and unpack) and drop the manual-download paragraph, or keep the manual path as the stated fallback and say so; body edit is gated.",
       "blocking": false
     },
     {
@@ -53,8 +364,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "curriculum prework page, not an article rough cut",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_writing.md",
@@ -63,38 +376,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no named technique or practitioner paraphrased in body; no creator names",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 7,
-      "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
-      "verdict": "PASS",
-      "evidence": "greps the_student 0, author_we 0 (CLEAN); 3: \"Land at Module 1 with your agent runtime working\" is second person throughout; no delivery mechanics in body",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 8,
-      "rule_lead": "Don't smuggle terms of art from maintainer into body.",
-      "verdict": "PASS",
-      "evidence": "29: \"the personal-to-team patterns for a later module\" is the closest maintainer-vocabulary candidate, but it names a shipped folder of files plainly and is inside the prework signposting; 'connector' is earned at 51 before Path A/B",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 9,
-      "rule_lead": "Over-hedge detector.",
-      "verdict": "PASS",
-      "evidence": "25: \"If your IT admin has not approved the connector yet, keep going.\" is the closest reassurance-shaped line, but it routes to the Path B fork (a real operational branch), not an absolution appended to a delegation sentence",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_writing.md",
@@ -103,8 +388,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "not a reference artefact capturing a verbatim user frame",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_writing.md",
@@ -113,38 +400,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no practitioner attribution in body",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 12,
-      "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
-      "verdict": "PASS",
-      "evidence": "39: \"Why a snake game? Because you can tell if it works.\" is a rationale, no slogan reframe that owes a downstream carve-out; the carve-out is in the same paragraph",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 13,
-      "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
-      "verdict": "PASS",
-      "evidence": "grep vendor in body view = 0; no 'not marketing' / 'real practitioners' defence phrases; closest 85: \"If you only do one thing from this prework, do this.\" is a priority instruction, not positioning",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 14,
-      "rule_lead": "Watch out for planting jargon too early.",
-      "verdict": "PASS",
-      "evidence": "21: \"Confluence, Jira, Linear, SharePoint\" are named products the student uses; 'connector' earned at 51; 'tarball' appears only inside filenames; no LLM-internal vocabulary (token, embedding, schema) in body",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_writing.md",
@@ -153,8 +412,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no forcing function moved from body into a fenced prompt in this pass",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_writing.md",
@@ -163,48 +424,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no What happened block; prework is not an exercise",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 17,
-      "rule_lead": "No combative verbs about the agent in body prose.",
-      "verdict": "PASS",
-      "evidence": "no combative verbs: 31 \"ask the agent to unpack it\", 81 \"Ask the agent to look up the current steps\"; verbs are ask/open/connect/play",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 18,
-      "rule_lead": "Headers must be literally true about the mechanism.",
-      "verdict": "PASS",
-      "evidence": "83: \"## 6. Read the mental frame\" and 17: \"## 2. Connect your work apps\" read literally true against their sections; no spatial metaphor, no 'other X' without a primary",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 19,
-      "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
-      "verdict": "PASS",
-      "evidence": "closest 35: \"Two visible steps, no magic.\" negates a reader prior (the agent as magic) in the Proof italic voice, once; no deictic drumroll, no bold-label echo (51 bold definition opens on the claim)",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 20,
-      "rule_lead": "Don't state a count the adjacent list already holds.",
-      "verdict": "REVISE",
-      "evidence": "93: \"a snake game, a meetings summary, and a 2-page read. Five things. Not nothing.\" and 95: \"Once those five things are ready\" restate the count of the list in 93 one sentence earlier; the items are visible, so the numeral is a second copy that drifts when the list changes (the same list recurs at 3)",
-      "na_reason": null,
-      "fix_hint": "Drop the numerals: \"Not nothing.\" stays; 95 becomes \"Once those are ready\".",
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_writing.md",
@@ -213,18 +436,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no slogan stated as punchy framing; 'Not nothing' is a true litotes",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 22,
-      "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
-      "verdict": "PASS",
-      "evidence": "7: \"over the eight modules\" agrees with the artefact table 109: \"M1-M8\" and the cross_module set (prework plus eight modules); no second body states a different count",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_writing.md",
@@ -233,8 +448,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "sweep-process rule, not a body-prose property",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_writing.md",
@@ -243,8 +460,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "learner-facing page, not a scarce-attention trainer or exec artefact",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_writing.md",
@@ -253,68 +472,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "not trainer-facing text",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 26,
-      "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
-      "verdict": "PASS",
-      "evidence": "35: \"Proof: you placed the file; the agent unpacked it.\" and 47: \"Proof: the agent can create a working file and save it on your machine.\" name observable outcomes (a file exists in the folder); 89: \"Proof: you arrive with a rough mental frame\" is the nearest self-witnessing claim but is not an 'X tells you whether Y' clause",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 27,
-      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
-      "verdict": "PASS",
-      "evidence": "closest 39: rationale paragraph; one concrete reason plus one generalising clause, then stop; style rule, no gate",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 28,
-      "rule_lead": "Body prose stands without the trainer — no cue-card prose.",
-      "verdict": "PASS",
-      "evidence": "93: \"Five things. Not nothing. Module 1 just gets going.\" follows a verbed sentence naming the set (enumeration carve-out); no screen deictic ('Take a guess', 'on the screen', 'Go.') in body",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 1,
-      "rule_lead": "Aspirational destination, never corrective gap.",
-      "verdict": "PASS",
-      "evidence": "39: \"a small, permanent, perfectly useless thing to own, which makes it more interesting than most of what you produce at work\" is warm, no corrective gap or tier assumption; 85: \"If you only do one thing from this prework, do this.\" names a destination, not a deficit",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 2,
-      "rule_lead": "Earn every technical term on first use.",
-      "verdict": "PASS",
-      "evidence": "3 and 7: \"agent runtime\" lands cold at first use but 7 ties it to \"the runtime you selected\" (the student's own earlier choice) and 13 names it operationally (code agent, Cowork); 51 earns 'connector' in one breath before Path A/B",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 3,
-      "rule_lead": "Business-audience word ban (Agents 101 default).",
-      "verdict": "PASS",
-      "evidence": "no entry for runtime/connector/session in curriculum/evals/lints/jargon-ban.md (grep returned nothing); closest 3 'agent runtime' passes since it names the student's selected tool; see suggestion",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -323,18 +484,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student-facing rule about a surface this page lacks (no module Debrief, exercise, lecture or CLAUDE.md layer)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 5,
-      "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
-      "verdict": "PASS",
-      "evidence": "81: \"Stuck on the connector or want specific click-paths? Ask the agent to look up the current steps.\" is one tight recovery line at the risk, not an FAQ; 25 is the sanctioned Path B fork",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -343,8 +496,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no prompt prose in body; prompts live in the registry",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -353,8 +508,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student-facing rule about a surface this page lacks (no module Debrief, exercise, lecture or CLAUDE.md layer)",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -363,8 +520,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student-facing rule about a surface this page lacks (no module Debrief, exercise, lecture or CLAUDE.md layer)",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -373,8 +532,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student-facing rule about a surface this page lacks (no module Debrief, exercise, lecture or CLAUDE.md layer)",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -383,8 +544,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student-facing rule about a surface this page lacks (no module Debrief, exercise, lecture or CLAUDE.md layer)",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -393,18 +556,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student-facing rule about a surface this page lacks (no module Debrief, exercise, lecture or CLAUDE.md layer)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 12,
-      "rule_lead": "Student moves stay in conversation with agent.",
-      "verdict": "PASS",
-      "evidence": "7: \"right-click in Finder or File Explorer → New Folder\" and 43 are file-manager moves, but they set up the working folder and open the artefact; the forcing function (agent writes, agent unpacks) stays in conversation",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -413,38 +568,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student-facing rule about a surface this page lacks (no module Debrief, exercise, lecture or CLAUDE.md layer)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 14,
-      "rule_lead": "No em-dashes. Simple sentences.",
-      "verdict": "PASS",
-      "evidence": "grep em_dash body_hits 0 (CLEAN); 39 is the longest sentence and uses a parenthetical true aside \"(either the snake moves or it doesn't)\"",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 17,
-      "rule_lead": "Section headers use command verbs when section is about doing something.",
-      "verdict": "PASS",
-      "evidence": "headers 5-6 open on command verbs: \"Set up your agent runtime\", \"Connect your work apps\", \"Install the training folder\", \"Build a snake game\", \"Summarize your week in meetings\", \"Read the mental frame\", \"Bring to Module 1\"; none carry Claude as subject",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 18,
-      "rule_lead": "Inline links use target's title, never filename.",
-      "verdict": "PASS",
-      "evidence": "87: link text \"What is an Agent, LLM vs chat\" is title plus section title, not a filename; target trainings/agents-101/supplementary/what-is-an-agent.md exists and has ## LLM vs chat (verified)",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -453,38 +580,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student authors nothing contested here; the only authored files are snake.html and meetings.md",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 21,
-      "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
-      "verdict": "PASS",
-      "evidence": "body uses \"the agent\" for acting (7, 31, 43, 51, 81) and no Claude product name appears in body; prefix test per active-stance rule holds",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "21b",
-      "rule_lead": "Session / task / run split (all trainings).",
-      "verdict": "PASS",
-      "evidence": "13: \"Start a new session\" and 95: \"end the prework session or task\" use session/task per the split; grep run as a noun for the agent sitting = 0",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 22,
-      "rule_lead": "No time-of-day anchors in body prose.",
-      "verdict": "PASS",
-      "evidence": "grep -iE 'tomorrow|overnight|tonight|yesterday|morning' on body view = 0",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -493,8 +592,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student-facing rule about a surface this page lacks (no module Debrief, exercise, lecture or CLAUDE.md layer)",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -503,38 +604,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student-facing rule about a surface this page lacks (no module Debrief, exercise, lecture or CLAUDE.md layer)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 25,
-      "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
-      "verdict": "PASS",
-      "evidence": "43: snake game is .html (native format); the .md meetings summary is set in the registry prompt, which is outside the body view",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 26,
-      "rule_lead": "Cut NVA: true but not moving student forward.",
-      "verdict": "PASS",
-      "evidence": "closest 39: \"Why a snake game?\" rationale paragraph is the only non-action beat; it changes why the student does the step and survives the working-engineer-obvious screen",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 27,
-      "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
-      "verdict": "PASS",
-      "evidence": "79 and 81: no \"read it / look at it\" after a chat print; 43 \"Play.\" directs the next act on a file, not a chat print",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -543,8 +616,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student-facing rule about a surface this page lacks (no module Debrief, exercise, lecture or CLAUDE.md layer)",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -553,8 +628,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student-facing rule about a surface this page lacks (no module Debrief, exercise, lecture or CLAUDE.md layer)",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -563,8 +640,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student-facing rule about a surface this page lacks (no module Debrief, exercise, lecture or CLAUDE.md layer)",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -573,28 +652,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student-facing rule about a surface this page lacks (no module Debrief, exercise, lecture or CLAUDE.md layer)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 32,
-      "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
-      "verdict": "PASS",
-      "evidence": "closest 43: \"On macOS, double-click it in Finder; on Windows, right-click → Open with → your browser.\" Rule 32 is written for engineers logging into CLIs; Agents 101 prework readers are business-side and this is a file-manager step, not an install or auth recipe",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 33,
-      "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
-      "verdict": "PASS",
-      "evidence": "87: \"You'll meet the rest of that document section by section as the training goes.\" and 29: \"for a later module\" are arc-positioning, but this file is the Prework page, the signposting surface the boundary clause exempts",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -603,8 +664,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student-facing rule about a surface this page lacks (no module Debrief, exercise, lecture or CLAUDE.md layer)",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -613,8 +676,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student-facing rule about a surface this page lacks (no module Debrief, exercise, lecture or CLAUDE.md layer)",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -623,8 +688,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student-facing rule about a surface this page lacks (no module Debrief, exercise, lecture or CLAUDE.md layer)",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -633,8 +700,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student-facing rule about a surface this page lacks (no module Debrief, exercise, lecture or CLAUDE.md layer)",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_student_facing.md",
@@ -643,18 +712,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "student-facing rule about a surface this page lacks (no module Debrief, exercise, lecture or CLAUDE.md layer)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 39,
-      "rule_lead": "Self-study is invisible in the training flow.",
-      "verdict": "PASS",
-      "evidence": "grep -cE 'self-study|Teacher Claude' on body view = 0; the starter-file list at 29 no longer names a self-study companion",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -663,18 +724,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 2,
-      "rule_lead": "Every prompt block: one-sentence action lead-in.",
-      "verdict": "PASS",
-      "evidence": "31: \"Then ask the agent to unpack it.\" is the lead-in at {{prompt:a101-prework-extract-tarball}}; the snake and meetings fences sit under command-verb headers (4: \"Build a snake game\", 5: \"Summarize your week in meetings\") which discharge the lead-in per 2c",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -683,8 +736,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "canonical fence shape is built by the marker expander from the registry; body carries only markers",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -693,8 +748,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -703,8 +760,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -713,8 +772,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -723,8 +784,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -733,8 +796,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -743,18 +808,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 10,
-      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
-      "verdict": "PASS",
-      "evidence": "63-77: three screenshot forks use paired rt-cli / rt-desktop / rt-cowork divs, each wrapping a single marker; Path A and the other prompts are shared (runtime: any)",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -763,8 +820,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -773,8 +832,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -783,8 +844,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -793,8 +856,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -803,8 +868,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -813,8 +880,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -823,8 +892,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -833,8 +904,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -843,8 +916,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -853,8 +928,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -863,8 +940,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -873,8 +952,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -883,8 +964,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -893,8 +976,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -903,8 +988,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -913,8 +1000,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -923,8 +1012,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -933,8 +1024,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -943,8 +1036,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -953,18 +1048,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 31,
-      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
-      "verdict": "PASS",
-      "evidence": "markers on own line at 33, 41, 57, 65, 70, 75; all six keys resolve to curriculum/prompts/a101-prework-*.md (ls verified); zero inline Prompt blocks",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -973,8 +1060,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -983,8 +1072,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -993,8 +1084,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -1003,8 +1096,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -1013,8 +1108,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -1023,18 +1120,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 38,
-      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
-      "verdict": "REVISE",
-      "evidence": "31 vs registry a101-prework-extract-tarball: body lead-in \"Then ask the agent to unpack it.\" while the prompt opens \"Download the course files into this folder and unpack them.\" and runs curl; body 31/35 still tell the student to download and place the file by hand (\"Proof: you placed the file; the agent unpacked it\"). The prompt changed in 6aca3ce0 and the body did not get its paired update",
-      "na_reason": null,
-      "fix_hint": "Mirror the prompt's opening: lead-in names download and unpack; decide whether the manual-download paragraph stays as the fallback the prompt names (maintainer call, body edit is gated).",
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -1043,8 +1132,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -1053,8 +1144,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -1063,8 +1156,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -1073,8 +1168,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -1083,8 +1180,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -1093,8 +1192,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -1103,8 +1204,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -1113,8 +1216,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -1123,8 +1228,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -1133,8 +1240,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_prompts.md",
@@ -1143,8 +1252,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "prompt-body rule; prompt text lives in the registry and the body carries markers only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1153,8 +1264,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "sales-copy rule; this is student-facing prework, not buyer copy",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1163,8 +1276,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "sales-copy rule; this is student-facing prework, not buyer copy",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1173,8 +1288,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "sales-copy rule; this is student-facing prework, not buyer copy",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1183,8 +1300,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "sales-copy rule; this is student-facing prework, not buyer copy",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1193,8 +1312,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "sales-copy rule; this is student-facing prework, not buyer copy",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1203,8 +1324,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "sales-copy rule; this is student-facing prework, not buyer copy",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1213,8 +1336,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "sales-copy rule; this is student-facing prework, not buyer copy",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1223,8 +1348,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "sales-copy rule; this is student-facing prework, not buyer copy",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1233,8 +1360,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "sales-copy rule; this is student-facing prework, not buyer copy",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1243,8 +1372,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "sales-copy rule; this is student-facing prework, not buyer copy",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1253,8 +1384,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "sales-copy rule; this is student-facing prework, not buyer copy",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1263,8 +1396,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "sales-copy rule; this is student-facing prework, not buyer copy",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1273,8 +1408,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "sales-copy rule; this is student-facing prework, not buyer copy",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1283,8 +1420,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "sales-copy rule; this is student-facing prework, not buyer copy",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1293,8 +1432,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "strategy tie-in rule about Big Idea / Key Concepts / mood sections; prework has none",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1303,8 +1444,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "strategy tie-in rule about Big Idea / Key Concepts / mood sections; prework has none",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1313,8 +1456,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "strategy tie-in rule about Big Idea / Key Concepts / mood sections; prework has none",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1323,8 +1468,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "strategy tie-in rule about Big Idea / Key Concepts / mood sections; prework has none",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1333,8 +1480,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "strategy tie-in rule about Big Idea / Key Concepts / mood sections; prework has none",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1343,8 +1492,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "strategy tie-in rule about Big Idea / Key Concepts / mood sections; prework has none",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1353,8 +1504,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "strategy tie-in rule about Big Idea / Key Concepts / mood sections; prework has none",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1363,19 +1516,33 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "strategy tie-in rule about Big Idea / Key Concepts / mood sections; prework has none",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "66d70fe900ad4e4d2839ccdbfe8fd4a558ad2abeb24b1f3171a426c26f6d0bdd",
+      "carried_shape": "3cc37273fc57a00b"
     }
   ],
   "suggestions": [
     {
-      "rule": "check_student_facing.md §2",
-      "line": 3,
-      "now": "Land at Module 1 with your agent runtime working",
-      "proposed": "Land at Module 1 with the agent tool you selected working"
+      "rule": "check_writing.md §20",
+      "line": 93,
+      "now": "Five things. Not nothing.",
+      "proposed": "Not nothing."
+    },
+    {
+      "rule": "check_writing.md §20",
+      "line": 95,
+      "now": "Once those five things are ready, end the prework session or task.",
+      "proposed": "Once those are ready, end the prework session or task."
+    },
+    {
+      "rule": "check_writing.md §9",
+      "line": 25,
+      "now": "If your IT admin has not approved the connector yet, keep going. The calendar screenshot path in section 5, Path B gives you the same teaching moment with less automation.",
+      "proposed": "If your IT admin has not approved the connector yet, keep going and use Path B in the meetings step below."
     }
   ],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 3,
-  "notes": "MAINTAINER_CUT=97, no fences, body 1-96. Rulebook built from the class brief (136 rules, none dropped by prefill). Request asked for the 7-module public version; this file and curriculum/delivery/agents-101-mvp both carry eight modules and no 7-module variant exists in the repo, so the assigned file was judged as given. Cross-class: the extract-tarball prompt now curls the course files (6aca3ce0) while body step 3 and its Proof line still describe a manual download, a behavior/technical concern as well as the rule 38 row."
+  "nonblocking_findings_count": 4,
+  "notes": "Read-only judge. MAINTAINER_CUT=97, no fences, body 1-96. Rulebook from the class brief (39 rules); 97 rules parked by prefill and spliced by --merge. Diff 78d17fc9..HEAD touches only the maintainer Quality block, so body verdicts carry from the prior pass and were re-read against the live body; the three prior findings (rule 3 stale TODO, rule 20 five-things count, prompts 38 lead-in drift) still stand. Accept-notes: none in the maintainer block (the extracted dated lines are the Quality stamp and a TODO, not authorisations). Cross-class, unverified: line 3 says \"About 50 minutes\" while section times sum to 43; the Copilot runtime has an rt-copilot span at 9 but the screenshot prompts carry only cli/desktop/cowork forks (behavior/technical); line 7 and the artefact table say eight modules while the latest cross_module set lists prework plus seven (technical/cross_module)."
 }

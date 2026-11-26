@@ -11,8 +11,8 @@ The number doesn't tell you what will go wrong, only that something will. Design
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 technical@78d17fc9 slides@78d17fc9)
-- judges @78d17fc9: writing PASS, technical PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 technical@cf4fd816 slides@78d17fc9)
+- judges @cf4fd816: writing PASS, technical PASS, slides PASS
 
 <!-- backing -->
 

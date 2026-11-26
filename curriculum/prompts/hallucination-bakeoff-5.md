@@ -5,9 +5,9 @@ runtime: any
 origin: exercises/hallucination-bakeoff
 requires:
   - id: m5-briefing
-    source: prompt:hallucination-bakeoff-1
+    source: prompt:hallucination-bakeoff-1-frozen
   - id: m5-evidence-roster
-    source: prompt:hallucination-bakeoff-1
+    source: prompt:hallucination-bakeoff-1-frozen
   - id: m5-claim-pool
     source: prompt:hallucination-bakeoff-2
   - id: m5-detector-outputs

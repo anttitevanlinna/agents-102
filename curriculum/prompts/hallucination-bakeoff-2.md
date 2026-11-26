@@ -5,7 +5,7 @@ runtime: any
 origin: exercises/hallucination-bakeoff
 requires:
   - id: m5-briefing
-    source: prompt:hallucination-bakeoff-1
+    source: prompt:hallucination-bakeoff-1-frozen
 produces:
   - id: m5-claim-pool
     location: module-5/claim-pool.md

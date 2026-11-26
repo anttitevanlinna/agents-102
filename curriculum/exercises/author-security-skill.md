@@ -54,7 +54,7 @@ Ask the agent to author both lenses and name the risk patterns the agent-securit
 
 Answer the agent's questions briefly, then hand back the rest: *"You choose. Optimise for what I can't steer."*
 
-Check the agent's package-complete list. If any of the four named risk patterns is missing from the agent-security lens, ask for it. Make the rules sound like your company's policy, and keep the report narrow enough to read.
+Ask the agent to show you where the skill covers each of the four named risk patterns. Ask for any that is missing. Make the rules sound like your company's policy, and keep the report narrow enough to read.
 
 ## Save the authored source as a skill
 

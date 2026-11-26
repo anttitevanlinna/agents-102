@@ -38,7 +38,6 @@ For each round:
    - briefing.md in that round's folder
 2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the briefing for that round, and nothing else. Give it no extra rules, checks or instructions beyond the judge file. It writes the judgment for that round:
    - judgment.md in that round's folder
-   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.
 3. The main session, not a subagent, reads the judgment for that round and any new lines in ./remarks.md, and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes. Remarks are my reading as the person receiving the briefing; they go into the tactic only, never to the judge. With no remarks, the loop runs the same.
 4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means a drop in flagged claims larger than the judge noise read in round 0, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.
 

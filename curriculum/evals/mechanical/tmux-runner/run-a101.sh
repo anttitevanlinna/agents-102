@@ -184,6 +184,9 @@ subst() {
   body="${body//<NEW_SOURCE_M3>/$NEW_SOURCE_M3}"
   body="${body//<ROOT_INSTRUCTIONS>/$ROOT_INSTRUCTIONS_REL}"
   body="${body//<M8_SHARED_ROOM>/$M8_SHARED_ROOM}"
+  # The build fills <CONTENT_URL>; arrange already staged the tarball, so the
+  # prompt's skip branch fires and nothing is fetched.
+  body="${body//<CONTENT_URL>/${A101_CONTENT_URL:-https://agents102.bosser.consulting/agents-101/agents-101-starter.tar.gz}}"
   printf '%s' "$body"
 }
 

@@ -56,7 +56,7 @@ Most people can list what drives them mad at work in thirty seconds, but stall o
 
 ## List what you hate, then invert it
 
-List a few specific things you hate about work. Name actual things ("meetings where nobody disagrees," "decks where every page says 'iterating'"), not categories ("bureaucracy"). Vague input drifts back to the statistical-default you.
+List a few specific things you hate about work. Name actual things ("meetings where nobody disagrees," "decks where every page says 'iterating'"), not categories ("bureaucracy"). Vague input drifts back to the generic you.
 
 {{prompt:personal-site-with-guardrails-4}}
 

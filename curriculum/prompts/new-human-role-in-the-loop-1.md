@@ -8,7 +8,7 @@ Help me create a steering eval for internal mail I might let an agent draft or s
 
 The eval is not a groundedness check. Assume groundedness is handled by `judges/groundedness-judge.md`. This eval should create positive pressure to overperform on one dimension that matters for my work.
 
-Ask me at most three questions at a time, wait for my answers, and do not show a longer hidden list. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if the dimension is still not judgeable, propose the narrowest observable version and mark the remaining uncertainty. Start by offering examples I can choose from or adapt:
+Ask me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if the dimension is still not judgeable, propose the narrowest observable version and mark the remaining uncertainty. Start by offering examples I can choose from or adapt:
 
 - executive crispness
 - commercial sharpness

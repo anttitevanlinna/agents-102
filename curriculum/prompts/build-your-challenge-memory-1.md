@@ -17,7 +17,7 @@ I'm building a knowledge memory for one specific challenge I'm working on. Do th
 
 1. Check what connectors are enabled right now. Name the ones you can reach (wiki, docs, storage, chat, email) and the ones that would be useful but aren't connected.
 
-2. Then ask me where my work material actually lives. Ask what's in my world: my team's wiki (whatever the tool), my shared drives and docs, email threads, chat channels, personal notes, favourite practitioner blogs. Get specific: tool names, the 2–3 most relevant spaces/folders, the people I've been exchanging on this challenge.
+2. Then ask me where my work material actually lives. Ask what's in my world: my team's wiki (whatever the tool), my shared drives and docs, email threads, chat channels, personal notes, favourite practitioner blogs. Get specific: tool names, the 2–3 most relevant spaces/folders, the people I've been talking to about this challenge.
    Ask one question at a time. Wait for my answer before asking the next. Do not show me the question list.
 
 3. Then propose a curation plan covering three kinds of material: (a) internal knowledge: which searches in which tools, (b) recent work: which threads, folders, decks, (c) outside-in: 2–3 working practitioners or specific articles worth reading (not vendor blogs).

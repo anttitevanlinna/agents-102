@@ -25,7 +25,7 @@ Apply the policy lens to the agent system: the memory in memory/, the sources in
 
 For each rule the policy lens carries, produce one row in a report: rule name, one-line description, verdict (compliant / violating / "I can't tell"), and one line of evidence from my actual files for that verdict. If you can't tell, say what evidence you'd need to decide.
 
-Write the packaged-lens report to outputs/policy-report.md. If outputs/policy-report-raw.md exists, briefly note one way the packaged report is sharper, narrower, or more specific than the raw run. Be specific. Be plain. An "I can't tell" is a better answer than a confident guess.
+Write the packaged-lens report to outputs/policy-report.md. If outputs/policy-report-raw.md exists, briefly note one way the packaged report is sharper, narrower, or more specific than the raw run. An "I can't tell" is a better answer than a confident guess.
 
 Read the memory and agent files properly - don't skim. Quote the specific lines or files that support each verdict.
 

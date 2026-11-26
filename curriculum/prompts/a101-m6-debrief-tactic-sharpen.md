@@ -19,12 +19,12 @@ produces:
 ---
 Start by reading the files. No plan or preamble.
 
-Review this session and sharpen the generator's tactic beyond what the loop reached. Read ./generation-tactic.md in its current state, then scan module-6/runs/ and module-6/eval-notes.md. The judge file at judges/groundedness-judge.md did not move; that is the integrity of the loop. Check that no judge subagent got rules beyond that file. If the flag counts stayed in single digits, say whether the changes between rounds are bigger than noise before crediting any tactic change. Then look back over the session: which tactic change helped, which one did not help and should be removed or rewritten, what specific boundary case did the loop never test, where did the generator keep missing the same thing across multiple rounds, and what did the judge flag that the tactic never absorbed?
+Read ./generation-tactic.md, then module-6/runs/ and module-6/eval-notes.md. The judge file at judges/groundedness-judge.md did not change during the loop; check that no judge subagent was given rules beyond it. If the flag counts stayed in single digits, say whether the changes between rounds are bigger than the judge's noise before you credit any tactic change.
 
-Be harsher than feels comfortable. If a rule is vague, say so by name. If a rule fired on the wrong thing, name what it fired on.
+Then go through the rounds: which tactic change helped, which did not, what the generator kept missing round after round, what the judge flagged that the tactic never took in, and which case the loop never tested.
 
-Then overwrite ./generation-tactic.md in place. Do not create a new version. Integrate, don't append. Add the tactic rule the loop never reached, sharpen a rule that stayed too vague, remove the rule module-6/eval-notes.md names as the rule to cut, or say why it stays, and remove a rule that fired on the wrong thing. A removal means the rule is gone from the file, not renamed or scoped; if you scoped it instead, say so and why. The tactic file is infrastructure now. Every rule should name the failure class it pre-empts. Don't add a "retro notes" section; rewrite the file as the better version.
+Rewrite ./generation-tactic.md in place. Add the rule the loop never reached, sharpen the rules that stayed vague, and remove the rule module-6/eval-notes.md names as the rule to cut, or say why it stays. Remove any rule that fired on the wrong thing too. Removed means gone from the file. Each rule names the kind of miss it prevents.
 
 Last, add one line to the root instructions file: every briefing asked for in this folder is written from ./generation-tactic.md and scored by judges/groundedness-judge.md before it reaches me. If such a line exists, keep it as one line.
 
-When you're done, tell me in 3-5 lines: what you added, what you sharpened, what you removed, and why, grounded in specific rounds. Name one boundary case the next run should test.
+When you're done, tell me in 3-5 lines what you added, sharpened and removed, and the round that showed each. Name one case the next run should test.

@@ -13,10 +13,10 @@ produces:
     location: outputs/policy-report-raw.md, outputs/policy-report.md, outputs/security-report.md
     note: completes the set by appending "Mitigation applied and residual" to the security report
 ---
-Apply a mitigation to my system for the risk I'm about to name. Pick the shape from the five (scope, split, filter, gate, review), make the file or instruction changes, and walk me through what you did and why. If the shape doesn't fit, I'll tell you and we'll iterate.
+Mitigate the risk I name below. Pick the shape that fits it (scope, split, filter, gate or review), make the changes, and tell me what you did and why.
 
-Then re-run the check the reusable lens performed for this specific risk (re-apply the relevant lens, not the whole audit). Report the new verdict. Is the risk reduced, eliminated, or shifted somewhere else?
+Then run the same check again for this one risk and tell me the new verdict: is the risk reduced, gone, or moved somewhere else?
 
-Then append a short section to outputs/security-report.md named "Mitigation applied and residual". Name what changed, what the new verdict is, and what's still true after the mitigation. Do not rewrite the earlier report. Not what we fixed. What's left. Be specific.
+Add a section "Mitigation applied and residual" to the end of outputs/security-report.md: what changed, the new verdict, and what is still at risk.
 
 The risk:

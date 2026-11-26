@@ -41,7 +41,7 @@ grep -qiE 'publish.*social|send.*newsletter' "$kit/answers/m2-agent-spec.txt" ||
   echo 'FAIL: M4 over-broad publishing reach missing'; fail=1; }
 
 # M5 plants stay unsupported by the evidence corpus.
-grep -q '42%' "$kit/answers/m5-briefing-seed.txt" || { echo 'FAIL: M5 broken-citation plant missing'; fail=1; }
+grep -q '42%' "$kit/answers/m5-plants.txt" || { echo 'FAIL: M5 broken-citation plant missing'; fail=1; }
 if grep -rq '42%' "$kit/sources" "$kit/sources-m3"; then
   echo 'FAIL: M5 broken-citation number appears in evidence'; fail=1
 fi

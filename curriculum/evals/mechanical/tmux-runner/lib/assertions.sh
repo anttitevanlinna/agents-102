@@ -341,3 +341,20 @@ a101_rewritten_prior_agent() {       # $1=agents dir $2=list from before $3=epoc
   done < "$2"
   return 0
 }
+
+a101_student_plants_answer() {       # $1=file with ## Answer $2=plant text file
+  # The student writes test lines into the ## Answer of their own frozen copy
+  # (M5 plants; tests/a101-freeze-chain.test.sh). Once, at the end of the section.
+  local f="$1" p="$2" first
+  [[ -f "$f" && -f "$p" ]] || { echo "[a101] plant: missing $f or $p" >&2; return 1; }
+  grep -q '^## Answer' "$f" || { echo "[a101] plant: no ## Answer in $f" >&2; return 1; }
+  first="$(head -1 "$p")"
+  grep -qF "$first" "$f" && { echo "[a101] plant: already planted in $f" >&2; return 1; }
+  awk -v pf="$p" '
+    function plant(){ while ((getline l < pf) > 0) print l; print ""; done=1 }
+    /^## Answer/ { inans=1; print; next }
+    inans && /^## / && !done { plant(); inans=0 }
+    { print }
+    END { if (inans && !done) { print ""; plant() } }' "$f" > "$f.plant.$$" && mv "$f.plant.$$" "$f"
+  echo "[a101] student planted $(wc -l < "$p" | tr -d ' ') line(s) into ## Answer of ${f##*/}"
+}

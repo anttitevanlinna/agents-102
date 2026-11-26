@@ -135,8 +135,12 @@ M3_NET_ANSWER="$(cat "$ANSWERS/m3-net-answer.txt")"
 M4_WHAT_MATTERS="$(cat "$ANSWERS/m4-what-matters.txt")"
 M4_GRILL_ANSWERS="$(cat "$ANSWERS/m4-grill-answers.txt")"
 M4_CHOSEN_RISK="$(cat "$ANSWERS/m4-chosen-risk.txt")"
-M5_BRIEFING_SEED="$(cat "$ANSWERS/m5-briefing-seed.txt")"
 M6_REUSABLE_LOOP="$(cat "$ANSWERS/m6-reusable-loop.txt")"
+M3_DOUBTED_LINE="$(cat "$ANSWERS/m3-doubted-line.txt")"
+M4_GUESS="$(cat "$ANSWERS/m4-guess.txt")"
+M5_MARKS="$(cat "$ANSWERS/m5-marks.txt")"
+M5_DOUBT_ANSWER="$(cat "$ANSWERS/m5-doubt-answer.txt")"
+M6_SPOT_MARKS="$(cat "$ANSWERS/m6-spot-marks.txt")"
 M7_RECIPIENT=''
 M7_ASSUMPTIONS=''
 if a101_case_supports_module m7; then
@@ -172,8 +176,12 @@ subst() {
   body="${body//<M4_WHAT_MATTERS>/$M4_WHAT_MATTERS}"
   body="${body//<M4_GRILL_ANSWERS>/$M4_GRILL_ANSWERS}"
   body="${body//<M4_CHOSEN_RISK>/$M4_CHOSEN_RISK}"
-  body="${body//<M5_BRIEFING_SEED>/$M5_BRIEFING_SEED}"
   body="${body//<M6_REUSABLE_LOOP>/$M6_REUSABLE_LOOP}"
+  body="${body//<M3_DOUBTED_LINE>/$M3_DOUBTED_LINE}"
+  body="${body//<M4_GUESS>/$M4_GUESS}"
+  body="${body//<M5_MARKS>/$M5_MARKS}"
+  body="${body//<M5_DOUBT_ANSWER>/$M5_DOUBT_ANSWER}"
+  body="${body//<M6_SPOT_MARKS>/$M6_SPOT_MARKS}"
   body="${body//<M7_RECIPIENT>/$M7_RECIPIENT}"
   body="${body//<M7_ASSUMPTIONS>/$M7_ASSUMPTIONS}"
   body="${body//<SOLO_PERSON>/$SOLO_PERSON}"
@@ -387,59 +395,68 @@ assert_turn() {
       assert_or_warn assert_scrollback_grep "m3 T7 disagreement named" "$t" 'disagree|sided|conflict|tension|reframe'
       echo "[assert] PASS m3 T7: $ns stances, ## Answer appended with Rumelt legs" ;;
     m3:8)
-      assert_file_mtime_advanced "m3 T8 root instructions rewritten" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" "$base" || return 1
+      assert_file_exists "m3 T8 frozen briefing" "$sut_cwd/module-3/briefing-baseline.md" || return 1
+      assert_scrollback_grep "m3 T8 answer frozen" "$sut_cwd/module-3/briefing-baseline.md" '^## Answer' || return 1
+      assert_scrollback_grep "m3 T8 doubted line" "$sut_cwd/module-3/briefing-baseline.md" '^## Doubted line' || return 1
+      grep -q '^## Doubted line' "$sut_cwd/crux.md" && { echo '[assert] FAIL m3 T8: ## Doubted line written into ./crux.md ("Leave ./crux.md as it is")' >&2; return 1; }
+      echo "[assert] PASS m3 T8: briefing frozen with its doubted line, crux.md untouched" ;;
+    m3:9)
+      assert_file_mtime_advanced "m3 T9 root instructions rewritten" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" "$base" || return 1
       # The teaching point: name >=2 handoff seams with file + pass + what was
       # lost. Diplomatic no-op is the failure mode. Require the debrief to cite a
       # retrieval/synthesis filename AND a loss word.
-      assert_scrollback_grep "m3 T8 seam citation" "$t" 'wiki-retrieval|docs-retrieval|internet-retrieval|_synthesis-m3|stances' || return 1
-      assert_scrollback_grep "m3 T8 loss named" "$t" 'lost|dropped|leaked|collapsed|averaged|normalis|beige|smoothed' || return 1
+      assert_scrollback_grep "m3 T9 seam citation" "$t" 'wiki-retrieval|docs-retrieval|internet-retrieval|_synthesis-m3|stances' || return 1
+      assert_scrollback_grep "m3 T9 loss named" "$t" 'lost|dropped|leaked|collapsed|averaged|normalis|beige|smoothed' || return 1
       # H2 detector (non-gating): operator-global ~/.claude bleed into the artifact.
       if grep -riqE 'pseudonym|Rory Sutherland|Bosser|prospect' "$sut_cwd/$ROOT_INSTRUCTIONS_REL" 2>/dev/null; then
-        echo "[assert] WARN m3 T8: rewritten root instructions may carry operator-global bleed (findings H2)" >&2
+        echo "[assert] WARN m3 T9: rewritten root instructions may carry operator-global bleed (findings H2)" >&2
       fi
-      echo "[assert] PASS m3 T8: $ROOT_INSTRUCTIONS_REL rewritten, >=1 seam cited with a loss" ;;
-    m3:9)
+      echo "[assert] PASS m3 T9: $ROOT_INSTRUCTIONS_REL rewritten, >=1 seam cited with a loss" ;;
+    m3:10)
       # Memory-health homework: "name at least one drop candidate; an all-green
       # check means you didn't look hard enough." Green-but-broken = theater
       # audit that touches nothing and names nothing. Require a concrete
       # drop/merge/split target named by file reference in the transcript.
-      assert_scrollback_grep "m3 T9 drop candidate named" "$t" 'drop|merge|split|stale|supersed|consolidat|orphan' || return 1
-      assert_scrollback_grep "m3 T9 names a file" "$t" 'memory/|sources/|\.md' || return 1
-      echo "[assert] PASS m3 T9: memory-health audit named a concrete restructure target" ;;
+      assert_scrollback_grep "m3 T10 drop candidate named" "$t" 'drop|merge|split|stale|supersed|consolidat|orphan' || return 1
+      assert_scrollback_grep "m3 T10 names a file" "$t" 'memory/|sources/|\.md' || return 1
+      echo "[assert] PASS m3 T10: memory-health audit named a concrete restructure target" ;;
 
     # ----- m4a (author + package + install the security skill) -----
     m4a:1)
+      assert_file_exists "m4a T1 guess" "$sut_cwd/module-4/guess.md" || return 1
+      assert_scrollback_grep "m4a T1 guess in the student's words" "$sut_cwd/module-4/guess.md" 'safe|worr' ;;
+    m4a:2)
       # Raw policy run. Green-but-broken = a report that is all "compliant" /
       # "I can't tell" — the audit "ran" but caught nothing. Require it to derive
       # rules from the shipped policies, find >=1 violation, AND specifically
       # catch the planted PII (data-minimisation / named contacts).
       local raw="$sut_cwd/outputs/policy-report-raw.md"
-      assert_file_exists "m4a T1 raw report" "$raw" || return 1
-      assert_scrollback_grep "m4a T1 derived policy rows" "$raw" 'GDPR-|CLASS-' || return 1
-      assert_scrollback_grep "m4a T1 found a violation" "$raw" 'violat' || return 1
-      assert_scrollback_grep "m4a T1 caught the PII plant" "$raw" "$A101_M4_PII_RE" || return 1
-      echo "[assert] PASS m4a T1: raw policy report derived rules, flagged a violation, caught the PII" ;;
-    m4a:2)
-      assert_or_warn assert_scrollback_grep "m4a T2 package shape" "$t" 'agent[ -]security|two lens|policy lens|SKILL|reusable (skill|check)' ;;
+      assert_file_exists "m4a T2 raw report" "$raw" || return 1
+      assert_scrollback_grep "m4a T2 derived policy rows" "$raw" 'GDPR-|CLASS-' || return 1
+      assert_scrollback_grep "m4a T2 found a violation" "$raw" 'violat' || return 1
+      assert_scrollback_grep "m4a T2 caught the PII plant" "$raw" "$A101_M4_PII_RE" || return 1
+      echo "[assert] PASS m4a T2: raw policy report derived rules, flagged a violation, caught the PII" ;;
     m4a:3)
+      assert_or_warn assert_scrollback_grep "m4a T3 package shape" "$t" 'agent[ -]security|two lens|policy lens|SKILL|reusable (skill|check)' ;;
+    m4a:4)
       # THE catch: the authored SKILL.md must carry BOTH lenses AND all four
       # named risk patterns across the package it loads. A package missing a
       # pattern silently weakens every later audit while still "existing".
       local skill="$sut_cwd/module-4/skills/agent-audit/SKILL.md"
       local skill_package="$sut_cwd/module-4/skills/agent-audit"
-      assert_file_exists "m4a T3 SKILL.md" "$skill" || return 1
-      assert_scrollback_grep "m4a T3 policy lens"         "$skill" 'policy' || return 1
-      assert_scrollback_grep "m4a T3 agent-security lens" "$skill" 'agent[ -]security' || return 1
-      grep -riqE 'prompt injection|injection' "$skill_package" || { echo '[assert] FAIL m4a T3 package: injection pattern absent' >&2; return 1; }
-      grep -riqE 'secret' "$skill_package" || { echo '[assert] FAIL m4a T3 package: secrets pattern absent' >&2; return 1; }
-      grep -riqE 'tool[ -]confusion' "$skill_package" || { echo '[assert] FAIL m4a T3 package: tool-confusion pattern absent' >&2; return 1; }
-      grep -riqE 'supply[ -]chain' "$skill_package" || { echo '[assert] FAIL m4a T3 package: supply-chain pattern absent' >&2; return 1; }
-      echo "[assert] PASS m4a T3: skill package carries both lenses + all four named patterns" ;;
-    m4a:4)
+      assert_file_exists "m4a T4 SKILL.md" "$skill" || return 1
+      assert_scrollback_grep "m4a T4 policy lens"         "$skill" 'policy' || return 1
+      assert_scrollback_grep "m4a T4 agent-security lens" "$skill" 'agent[ -]security' || return 1
+      grep -riqE 'prompt injection|injection' "$skill_package" || { echo '[assert] FAIL m4a T4 package: injection pattern absent' >&2; return 1; }
+      grep -riqE 'secret' "$skill_package" || { echo '[assert] FAIL m4a T4 package: secrets pattern absent' >&2; return 1; }
+      grep -riqE 'tool[ -]confusion' "$skill_package" || { echo '[assert] FAIL m4a T4 package: tool-confusion pattern absent' >&2; return 1; }
+      grep -riqE 'supply[ -]chain' "$skill_package" || { echo '[assert] FAIL m4a T4 package: supply-chain pattern absent' >&2; return 1; }
+      echo "[assert] PASS m4a T4: skill package carries both lenses + all four named patterns" ;;
+    m4a:5)
       # Install lands in the selected runtime's project-skills directory, which
       # persists in the training folder and loads in the next session.
-      assert_file_exists "m4a T4 installed skill" "$sut_cwd/$PROJECT_SKILLS_REL/agent-audit/SKILL.md" || return 1
-      echo "[assert] PASS m4a T4: skill installed at $PROJECT_SKILLS_REL/agent-audit/SKILL.md" ;;
+      assert_file_exists "m4a T5 installed skill" "$sut_cwd/$PROJECT_SKILLS_REL/agent-audit/SKILL.md" || return 1
+      echo "[assert] PASS m4a T5: skill installed at $PROJECT_SKILLS_REL/agent-audit/SKILL.md" ;;
 
     # ----- m4b (load the skill, audit, mitigate, debrief) -----
     m4b:1)
@@ -521,41 +538,52 @@ assert_turn() {
       assert_file_exists "m5 T3 citation-integrity"   "$dd/citation-integrity.md" || return 1
       echo "[assert] PASS m5 T3: four detector outputs written" ;;
     m5:4)
+      assert_file_exists "m5 T4 my marks" "$sut_cwd/module-5/my-marks.md" || return 1
+      local nm; nm="$(grep -cE '^- module-5 #[0-9]+ \|' "$sut_cwd/module-5/my-marks.md")"
+      [[ "$nm" -ge 5 ]] || { echo "[assert] FAIL m5 T4: $nm mark lines in my-marks.md (want 5 in the '- module-5 #N |' form)" >&2; return 1; }
+      echo "[assert] PASS m5 T4: five marks in the prompt's line form" ;;
+    m5:5)
       # The scorer must adjudicate AND actually catch the plants. Green-but-broken
       # = an adjudication that labels everything GROUNDED. Require a planted phrase
       # to co-occur with a non-grounded verdict, plus a real scoreboard.
       local adj="$sut_cwd/module-5/adjudicated-claims.md" sb="$sut_cwd/module-5/scoreboard.md"
-      assert_file_exists "m5 T4 adjudicated" "$adj" || return 1
-      assert_file_exists "m5 T4 scoreboard" "$sb" || return 1
-      assert_scrollback_grep "m5 T4 plant adjudicated" "$adj" "$A101_M5_PLANT_1_RE|$A101_M5_PLANT_2_RE|$A101_M5_PLANT_3_RE" || return 1
-      assert_scrollback_grep "m5 T4 non-grounded verdicts" "$adj" 'UNGROUNDED|PARTLY|OVERREACH|CITATION-BROKEN|BROKEN|not (grounded|supported)' || return 1
-      assert_scrollback_grep "m5 T4 scoreboard has precision/recall" "$sb" 'precision|recall' || return 1
-      assert_scrollback_grep "m5 T4 scoreboard names a winner" "$sb" 'winner|recommend|ensemble|triangulat|entail|citation|counter-evidence' || return 1
-      echo "[assert] PASS m5 T4: adjudication caught a plant, scoreboard scored + named a winner" ;;
-    m5:5)
-      local judge="$sut_cwd/judges/groundedness-judge.md"
-      assert_file_exists "m5 T5 judge" "$judge" || return 1
-      assert_scrollback_grep "m5 T5 judge names a method" "$judge" 'ground|triangulat|entail|citation|overreach' || return 1
-      assert_scrollback_grep "m5 T5 judge states a known limit" "$judge" 'Known limit|known limit|limit:' || return 1
-      echo "[assert] PASS m5 T5: portable groundedness-judge written with a known-limit" ;;
+      assert_file_exists "m5 T5 adjudicated" "$adj" || return 1
+      assert_file_exists "m5 T5 scoreboard" "$sb" || return 1
+      assert_scrollback_grep "m5 T5 plant adjudicated" "$adj" "$A101_M5_PLANT_1_RE|$A101_M5_PLANT_2_RE|$A101_M5_PLANT_3_RE" || return 1
+      assert_scrollback_grep "m5 T5 non-grounded verdicts" "$adj" 'UNGROUNDED|PARTLY|OVERREACH|CITATION-BROKEN|BROKEN|not (grounded|supported)' || return 1
+      assert_scrollback_grep "m5 T5 scoreboard has precision/recall" "$sb" 'precision|recall' || return 1
+      assert_scrollback_grep "m5 T5 scoreboard names a winner" "$sb" 'winner|recommend|ensemble|triangulat|entail|citation|counter-evidence' || return 1
+      echo "[assert] PASS m5 T5: adjudication caught a plant, scoreboard scored + named a winner" ;;
     m5:6)
-      assert_file_mtime_advanced "m5 T6 root instructions updated" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" "$base" || return 1
-      assert_scrollback_grep "m5 T6 groundedness section" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" 'Groundedness checks|groundedness' || return 1
-      assert_scrollback_grep "m5 T6 rules are concrete" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" \
+      local judge="$sut_cwd/judges/groundedness-judge.md"
+      assert_file_exists "m5 T6 judge" "$judge" || return 1
+      assert_scrollback_grep "m5 T6 judge names a method" "$judge" 'ground|triangulat|entail|citation|overreach' || return 1
+      assert_scrollback_grep "m5 T6 judge states a known limit" "$judge" 'Known limit|known limit|limit:' || return 1
+      echo "[assert] PASS m5 T6: portable groundedness-judge written with a known-limit" ;;
+    m5:7)
+      local bs="$sut_cwd/module-5/baseline-score.md"
+      assert_file_exists "m5 T7 baseline score" "$bs" || return 1
+      assert_scrollback_grep "m5 T7 adjudicated counts" "$bs" '^## Module 3 briefing' || return 1
+      assert_scrollback_grep "m5 T7 judge count" "$bs" '^## Judge on the Module 3 briefing' || return 1
+      assert_scrollback_grep "m5 T7 doubted line answered" "$bs" '^## Doubted line' ;;
+    m5:8)
+      assert_file_mtime_advanced "m5 T8 root instructions updated" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" "$base" || return 1
+      assert_scrollback_grep "m5 T8 groundedness section" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" 'Groundedness checks|groundedness' || return 1
+      assert_scrollback_grep "m5 T8 rules are concrete" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" \
         'groundedness-judge|claim|evidence|UNGROUNDED|scoreboard|not enough evidence|roster' || return 1
-      echo "[assert] PASS m5 T6: $ROOT_INSTRUCTIONS_REL carries concrete groundedness rules" ;;
+      echo "[assert] PASS m5 T8: $ROOT_INSTRUCTIONS_REL carries concrete groundedness rules" ;;
 
     # ----- m6 (eval loop) -----
     m6:1)
-      # Calibration: generation tactic + one briefing + judge run in chat. Stash
-      # the judge SHA now so later turns can prove it never moved (SHA, not mtime —
-      # a no-op rewrite changes mtime but not bytes).
-      assert_file_exists "m6 T1 generation tactic" "$sut_cwd/generation-tactic.md" || return 1
-      assert_file_exists "m6 T1 fresh briefing" "$sut_cwd/module-6/fresh-briefing.md" || return 1
+      # Calibration: the judge on the frozen M3 briefing (round 0), then the
+      # generation tactic. Stash the judge SHA now so later turns can prove it
+      # never moved (SHA, not mtime — a no-op rewrite changes mtime but not bytes).
       assert_file_exists "m6 T1 judge present" "$sut_cwd/judges/groundedness-judge.md" || return 1
       shasum "$sut_cwd/judges/groundedness-judge.md" | awk '{print $1}' > "$run_dir/judge.sha"
-      assert_or_warn assert_scrollback_grep "m6 T1 judge ran" "$t" 'verdict|UNGROUNDED|grounded|claim'
-      echo "[assert] PASS m6 T1: generation-tactic + fresh-briefing written, judge SHA stashed" ;;
+      assert_file_exists "m6 T1 round-0 judgment" "$sut_cwd/module-6/runs/round-0/judgment.md" || return 1
+      assert_file_exists "m6 T1 generation tactic" "$sut_cwd/generation-tactic.md" || return 1
+      assert_or_warn assert_scrollback_grep "m6 T1 M5 count beside today's" "$t" 'baseline-score|Module 5|noise'
+      echo "[assert] PASS m6 T1: round-0 judgment of the frozen briefing + generation tactic, judge SHA stashed" ;;
     m6:2)
       # THE catches: a real loop (>=3 rounds, each with briefing+judgment), the
       # prompt rewritten, the judge byte-identical, and a non-flat trajectory
@@ -602,27 +630,31 @@ assert_turn() {
       assert_or_warn assert_scrollback_grep "m6 T3 readout: judge integrity" "$t" 'byte-identical|identical|unchanged|same SHA|did not (move|change)'
       assert_or_warn assert_scrollback_grep "m6 T3 readout: trajectory" "$t" 'trajector|flag|round|improv' ;;
     m6:4)
+      local nm; nm="$(grep -cE 'round-[0-9]+' "$sut_cwd/module-5/my-marks.md" 2>/dev/null)"
+      [[ "$nm" -ge 3 ]] || { echo "[assert] FAIL m6 T4: $nm spot-check marks with a source round appended to module-5/my-marks.md (want 3)" >&2; return 1; }
+      echo "[assert] PASS m6 T4: three spot-check marks appended" ;;
+    m6:5)
       # C11 CLOSED: the loop and the debrief now converge on ./generation-tactic.md.
       # The debrief re-sharpens the SAME file the loop wrote (T1) and rewrote (T2),
       # so assert it exists, its mtime advanced this turn (debrief touched it, not a
       # fresh orphan), tactic changes are named, no orphan generation-prompt.md was
       # left behind, and the judge STILL never moved.
-      assert_file_exists "m6 T4 generation-tactic present" "$sut_cwd/generation-tactic.md" || return 1
-      assert_file_mtime_advanced "m6 T4 debrief re-sharpened loop's tactic" "$sut_cwd/generation-tactic.md" "$base" || return 1
-      assert_scrollback_grep "m6 T4 tactic changes named" "$t" 'add|sharpen|remov|tactic|rule' || return 1
+      assert_file_exists "m6 T5 generation-tactic present" "$sut_cwd/generation-tactic.md" || return 1
+      assert_file_mtime_advanced "m6 T5 debrief re-sharpened loop's tactic" "$sut_cwd/generation-tactic.md" "$base" || return 1
+      assert_scrollback_grep "m6 T5 tactic changes named" "$t" 'add|sharpen|remov|tactic|rule' || return 1
       if [[ -e "$sut_cwd/generation-prompt.md" ]]; then
-        echo "[assert] WARN m6 T4: an orphan ./generation-prompt.md exists — C11 expects the loop and debrief to use ./generation-tactic.md only" >&2
+        echo "[assert] WARN m6 T5: an orphan ./generation-prompt.md exists — C11 expects the loop and debrief to use ./generation-tactic.md only" >&2
       fi
       if [[ -f "$run_dir/judge.sha" ]]; then
         local now; now=$(shasum "$sut_cwd/judges/groundedness-judge.md" | awk '{print $1}')
-        [[ "$now" == "$(cat "$run_dir/judge.sha")" ]] || { echo "[assert] FAIL m6 T4: judge file changed by end of session (immutability broken)" >&2; return 1; }
+        [[ "$now" == "$(cat "$run_dir/judge.sha")" ]] || { echo "[assert] FAIL m6 T5: judge file changed by end of session (immutability broken)" >&2; return 1; }
       fi
-      echo "[assert] PASS m6 T4: loop+debrief converge on generation-tactic.md (C11 closed), judge byte-identical end-to-end" ;;
-    m6:5)
-      assert_dir_exists "m6 T5 reusable loop folder" "$sut_cwd/module-6/reusable-loop" || return 1
+      echo "[assert] PASS m6 T5: loop+debrief converge on generation-tactic.md (C11 closed), judge byte-identical end-to-end" ;;
+    m6:6)
+      assert_dir_exists "m6 T6 reusable loop folder" "$sut_cwd/module-6/reusable-loop" || return 1
       local reusable_rounds
       reusable_rounds="$(find "$sut_cwd/module-6/reusable-loop" -type d -name 'round-*' 2>/dev/null | wc -l | tr -d ' ')"
-      [[ "$reusable_rounds" -ge 3 ]] || { echo "[assert] FAIL m6 T5: reusable loop has $reusable_rounds rounds (want >=3)" >&2; return 1; } ;;
+      [[ "$reusable_rounds" -ge 3 ]] || { echo "[assert] FAIL m6 T6: reusable loop has $reusable_rounds rounds (want >=3)" >&2; return 1; } ;;
 
     # ----- m7 -----
     m7:1)
@@ -725,6 +757,12 @@ for line in "${lines[@]}"; do
     [[ ! -e "$M8_SHARED_ROOM/selection-board.md" ]] || { echo '[a101] selection board already published' >&2; exit 1; }
     cp "$material_dir/held/selection-board.md" "$M8_SHARED_ROOM/selection-board.md"
     echo '[a101] published held-back selection-board.md after Ingrid proposal'
+    continue
+  fi
+  if [[ "$line" == '@student-plants-answer '* ]]; then
+    (( seq + 1 < from_turn )) && continue
+    read -r _ sp_file sp_src <<< "$line"
+    a101_student_plants_answer "$sut_cwd/$sp_file" "$KIT/$sp_src" || exit 1
     continue
   fi
   if [[ "$line" == '@student-writes '* ]]; then

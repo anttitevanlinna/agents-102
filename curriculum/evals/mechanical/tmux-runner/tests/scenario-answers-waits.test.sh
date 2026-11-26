@@ -11,7 +11,7 @@ set -uo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REG="$HERE/../../../../prompts"
 SCEN="$HERE/../scenarios"
-WAIT_RE='wait for (my|each|the) (answer|reply)|ask me (one|two|three|a few|some)? ?questions?|ask me what'
+WAIT_RE='wait for (my|each|the) (answer|reply|marks?)|wait for my|ask me (one|two|three|a few|some)? ?questions?|ask me (what|which|whether)|^I compare and answer|for each, I answer|I answer (grounded|in one)'
 pass=0 fail=0
 for f in "$SCEN"/a101-*.txt; do
   while IFS= read -r line || [[ -n "$line" ]]; do

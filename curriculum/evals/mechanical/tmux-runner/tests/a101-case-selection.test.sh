@@ -41,7 +41,7 @@ required_answers=(
   m2-task.txt m2-final-q.txt m2-homework-style.txt m2-homework-agent.txt
   m3-crux-steer.txt m3-wiki-answer.txt m3-docs-answer.txt m3-net-answer.txt
   m4-what-matters.txt m4-grill-answers.txt m4-chosen-risk.txt
-  m5-briefing-seed.txt m6-reusable-loop.txt
+  m5-plants.txt m3-doubted-line.txt m4-guess.txt m5-marks.txt m5-doubt-answer.txt m6-spot-marks.txt m6-reusable-loop.txt
 )
 
 for case_name in nordveil finnish-psychologist; do

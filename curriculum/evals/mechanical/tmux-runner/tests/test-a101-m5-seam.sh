@@ -3,7 +3,7 @@
 # bakeoff briefing (hallucination-bakeoff-1) is fabricated NON-deterministically
 # by design (~10% fabrication, the subagent's choice), so there is nothing stable
 # to assert on. The seam plants THREE deterministic ungrounded claims via
-# answers/m5-briefing-seed.txt, each aimed at a DIFFERENT detector, so the run can
+# answers/m5-plants.txt, each aimed at a DIFFERENT detector, so the run can
 # prove the pipeline caught a known plant rather than just "ran":
 #   1. invented number  → "...cut SMB churn by 30%..."  (source-triangulation UNGROUNDED:
 #      30% appears in no rostered evidence file)
@@ -23,7 +23,7 @@ set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 root="$HERE/.."
 kit="$root/fixtures/agents-101-synthetic"
-seed="$kit/answers/m5-briefing-seed.txt"
+seed="$kit/answers/m5-plants.txt"
 q2="$kit/sources/docs/q2-revenue-review.md"
 runner="$root/run-a101.sh"
 config="$kit/case.sh"
@@ -35,14 +35,12 @@ grep -qiE 'churn by 30%' "$seed"                        || { echo "FAIL: seed mi
 grep -qiE 'proves usage-based pricing works' "$seed"    || { echo "FAIL: seed missing the overreach plant (pilot proves it)"; fail=1; }
 grep -qiE 'grew 18%.*q2-revenue-review' "$seed"         || { echo "FAIL: seed missing the broken-citation plant (18% @ q2-revenue-review)"; fail=1; }
 
-# Seeds plant openly: the student owns the lines and nothing is hidden from the
-# user. A concealment clause made Sonnet refuse M5 T1 on the 2026-11-01 chain
-# (pasted text asking it to keep something from its user), so no roster/briefing.
-for s in "$seed" "$root/fixtures/agents-101-finnish-psychologist/answers/m5-briefing-seed.txt"; do
-  if grep -qiE "do not tell the user|don't tell the user|not identify them as plants|do not caveat or identify" "$s"; then
-    echo "FAIL: $(basename "$(dirname "$(dirname "$s")")") seed hides the plants from the user"; fail=1; fi
-  grep -qiE 'I wrote these' "$s" || { echo "FAIL: $(basename "$(dirname "$(dirname "$s")")") seed does not say the student wrote the plants"; fail=1; }
-done
+# The student writes the plants into the ## Answer of their own frozen M3 copy
+# before M5 (scenario @student-plants-answer). No pasted instruction asks the
+# session to hide anything: a concealment clause made Sonnet refuse M5 T1 on the
+# 2026-11-01 chain.
+grep -q '^@student-plants-answer module-3/briefing-baseline.md answers/m5-plants.txt$' "$root/scenarios/a101-m5.txt" \
+  || { echo "FAIL: a101-m5.txt does not plant into the frozen briefing"; fail=1; }
 
 # Invariant: the broken-citation target genuinely lacks an 18% (so the citation
 # is really broken, not accidentally grounded).
@@ -55,7 +53,7 @@ if grep -rq '30%' "$kit/sources"; then
 fi
 
 # Wiring: runner carries the M5 seam token + the plant guards.
-grep -q 'M5_BRIEFING_SEED' "$runner" || { echo "FAIL: runner missing M5_BRIEFING_SEED token"; fail=1; }
+grep -q 'a101_student_plants_answer' "$runner" || { echo "FAIL: runner does not run the plant directive"; fail=1; }
 grep -q 'A101_M5_PLANT_1_RE' "$runner" && grep -q '30%' "$config" || {
   echo "FAIL: M5 plant guard is not split between generic runner and Nordveil case sentinel"; fail=1; }
 

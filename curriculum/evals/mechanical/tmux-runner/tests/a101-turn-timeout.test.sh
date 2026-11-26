@@ -16,8 +16,8 @@ assert_timeout() {
 }
 
 assert_timeout 1800 m1 1 1800 0
-assert_timeout 1800 m6 4 1800 0
-assert_timeout 3600 m6 5 1800 0
-assert_timeout 900 m6 5 900 1
+assert_timeout 1800 m6 5 1800 0
+assert_timeout 3600 m6 6 1800 0
+assert_timeout 900 m6 6 900 1
 
 echo 'PASS: the reusable M6 loop gets a longer default without overriding an explicit timeout'

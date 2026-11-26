@@ -17,7 +17,7 @@ const ROOT = path.resolve(__dirname, '../../..');
 const args = process.argv.slice(2);
 const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : d; };
 const OUT = path.resolve(opt('--out', '/mnt/project-files/agents-101-review'));
-const FINDINGS = opt('--findings', path.join(OUT, 'findings.json'));
+const FINDINGS = opt('--findings', '/mnt/project-files/agents-101-review/findings.json');
 
 const html = fs.readFileSync(path.join(ROOT, 'site/agents-101/index.html'), 'utf8');
 const dom = new JSDOM(html);
@@ -81,6 +81,41 @@ d.querySelectorAll('pre').forEach((pre) => {
   pchips++;
 });
 
+// 3b. Calls panel: open cards (R = rules eval, T = live run) at the top, each with a jump link.
+const CARDS = opt('--cards', '/mnt/project-files/quality-suite-2026-11-26');
+const secOf = {};
+d.querySelectorAll('section.module[id], section.phase[id]').forEach((sec) => { const p = sourceFor(sec.id); if (p && !secOf[p]) secOf[p] = sec; });
+const cardSec = {};
+for (const [src, list] of Object.entries(findings)) for (const f of list) {
+  const m = /Card ([RT]\d+)/.exec(f.text || ''); if (m && f.sev !== 'note') cardSec[m[1]] = secOf[src];
+}
+const md = (t) => esc(t).replace(/\*\*([^*]+)\*\*/g, '<mark>$1</mark>').replace(/`([^`]+)`/g, '<code>$1</code>');
+const cards = [];
+if (fs.existsSync(path.join(CARDS, 'cards.md'))) {
+  for (const blk of fs.readFileSync(path.join(CARDS, 'cards.md'), 'utf8').split(/\n(?=## )/)) {
+    const h = /^## (R\d+) (.+?)(?: — (.+))?\n/.exec(blk); if (!h || /applied directly/.test(blk)) continue;
+    const field = (k) => [...blk.matchAll(new RegExp(`^${k}[^:]*: (.+)$`, 'gm'))].map((x) => x[1]);
+    cards.push({ id: h[1], title: h[2], before: field('BEFORE'), after: field('AFTER'), why: field('WHY').join(' ') });
+  }
+}
+if (fs.existsSync(path.join(CARDS, 'tmux-cards.md'))) {
+  for (const line of fs.readFileSync(path.join(CARDS, 'tmux-cards.md'), 'utf8').split('\n')) {
+    const m = /^(\d+) (\S+) ([^:]*?)\s*(\(C-\d+\))?: (.+)$/.exec(line); if (!m) continue;
+    const [change, ev] = m[5].split(/ Evidence: /);
+    cards.push({ id: `T${m[1]}`, title: `${m[2]} ${m[3]}`.trim(), after: [change], why: ev ? `Seen in the live run: ${ev}` : '' });
+  }
+}
+let panel = null;
+if (cards.length) {
+  panel = d.createElement('div');
+  panel.className = 'rv-calls';
+  panel.id = 'calls';
+  const where = (c) => { const sec = cardSec[c.id]; if (!sec) return ''; const t = sec.querySelector('h1,h2'); return ` <a href="#${sec.id}">${esc(t ? t.textContent.trim() : sec.id)} &rarr;</a>`; };
+  panel.innerHTML = `<h2>Your calls: ${cards.length} proposed fixes</h2>
+<p>Read each card. Highlight its title, comment <b>prompt-ok</b> to take it, <b>no</b> to drop it, or write your own wording, then press <b>Send to Claude</b>. One comment can cover several cards, like "prompt-ok R1 to R6". Red and orange boxes inside the course show the same findings in place. Green ones are already fixed.</p>
+<ol>${cards.map((c) => `<li><h3>${c.id}. ${esc(c.title)}${where(c)}</h3>${(c.before || []).map((b) => `<p class="b">Now: ${md(b)}</p>`).join('')}${(c.after || []).map((a) => `<p class="a">Change: ${md(a)}</p>`).join('')}${c.why ? `<p class="w">${md(c.why)}</p>` : ''}</li>`).join('')}</ol>`;
+}
+
 // 4. Home page (site/index.html) as the first block, its CSS scoped to .rv-home
 // so neither page's styles reach the other.
 const home = new JSDOM(fs.readFileSync(path.join(ROOT, 'site/index.html'), 'utf8')).window.document;
@@ -133,6 +168,13 @@ style.textContent = `
 .rv-find b{text-transform:uppercase;font-size:11px;letter-spacing:.06em;margin-right:4px}
 .rv-divider{font:600 12px/1 Inter,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;text-align:center;color:#f4ecdb;background:#8a3a2a;padding:10px 16px}
 .rv-src--home{padding:8px max(16px,env(safe-area-inset-left,0px));margin:0}
+.rv-calls{background:#fff8ee;color:#1f1a13;font:15px/1.5 Inter,system-ui,sans-serif;padding-block:20px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));border-bottom:3px solid #8a3a2a}
+.rv-calls>*{max-width:760px;margin-left:auto;margin-right:auto}
+.rv-calls h2{font-size:22px;margin:0 auto 6px}.rv-calls ol{list-style:none;padding:0;display:grid;gap:12px}
+.rv-calls li{background:#fff;border:1px solid #e6dcc4;border-radius:6px;padding:10px 14px;min-width:0}
+.rv-calls h3{font-size:15px;margin:0 0 6px}.rv-calls h3 a{font-weight:400;font-size:13px;color:#8a3a2a;margin-left:6px}
+.rv-calls li p{margin:4px 0}.rv-calls>p{margin:0 auto 8px}.rv-calls .b{color:#4a4234}.rv-calls .w{color:#786c56;font-size:13px}
+.rv-calls mark{background:#ffe3c4;color:inherit;padding:0 2px}.rv-calls code{font-size:13px;overflow-wrap:anywhere}
 .rv-prompt{font:11px/1.3 ui-monospace,Menlo,monospace;color:#786c56;margin:8px 0 -4px}`;
 d.head.appendChild(style);
 const t = d.querySelector('title');
@@ -143,6 +185,7 @@ const when = new Date().toISOString().slice(0, 16).replace('T', ' ');
 banner.innerHTML = `<b>Review copy.</b> Select any text, add a comment, then press <b>Send to Claude</b>. Claude fixes it on main, replies on the comment with what changed, and republishes this page. Prompt edits wait for your <b>prompt-ok</b> in a reply.`
   + `<small>Self-study edition built from main ${esc(sha)}, ${when} UTC. ${fcount ? `${fcount} quality findings shown inline.` : 'Quality findings appear inline once the suite run finishes.'}</small>`;
 homeBox.before(banner);
+if (panel) banner.after(panel);
 // The home page demo scrolls itself on load; in the review copy, open at the top.
 const top = d.createElement('script');
 top.textContent = "(function(){if(location.hash)return;var moved=false;addEventListener('wheel',function(){moved=true},{once:true});addEventListener('touchstart',function(){moved=true},{once:true});[300,1200,2500].forEach(function(t){setTimeout(function(){if(!moved)scrollTo(0,0)},t)})})();";

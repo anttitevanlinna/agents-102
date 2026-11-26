@@ -26,7 +26,7 @@ The agent extracts a varied pool of 30 claims from the briefing. Thirty is enoug
 
 *8 min*
 
-Four helper agents run in parallel on the same claim pool, each with its own detection method and output file.
+Four helper agents run in parallel on the same claim pool, each with its own detection method and output file. This is a heavy run. If a helper agent reads far past its roster, stop it and steer it narrower. If a helper checked only some of the 30 claims, ask it to cover the rest.
 
 In your main session:
 

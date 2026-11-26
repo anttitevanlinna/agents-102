@@ -10,4 +10,9 @@ Rebuild after fixes on main:
 
 Findings: `<out>/findings.json` = `{ "<source path>": [{ "sev": "block|warn|note", "check": "...", "text": "..." }] }`, source paths as listed in `<out>/sources.json`.
 
-Loop per comment sent to Claude: read thread, map the quoted text to the source chip above it, fix on main (student-facing prompt bodies wait for prompt-ok), reply with what changed and the commit, resolve, rebuild, republish.
+Loop per comment sent to Claude:
+1. Read the thread; map the quoted text to the source chip above it.
+2. Load rules before rewording: `_index/writing.leads.md` always; `sales_copy.leads.md` + `memory/copy-taste.md` for site/index.html; `student_facing.leads.md` for handbook pages.
+3. Run the taste judge on old vs new, both orders: `PAIRS_TIE=1 node pairs.js --blind <pair> --rules taste-rules.md --examples taste-examples.md,taste-examples-cuts.md` (in `mechanical/persona-student/`). A loss in both orders = rewrite shorter. Hint only, never a gate (bias test 2026-11-14).
+4. Fix on main (student-facing prompt bodies wait for prompt-ok), reply with what changed + commit, resolve, rebuild, republish.
+5. Compound: a comment that names a class of fault (DRY, means nothing, wrong number) becomes a compendium line via /compound.

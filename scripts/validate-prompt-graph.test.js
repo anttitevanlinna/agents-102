@@ -121,7 +121,7 @@ test('live Agents 101 graph declares the load-bearing prompt handoffs', () => {
     ['three-retrievers-one-curator-1', 'crux-md', 'prompt:name-your-crux-2'],
     ['author-security-skill-2', 'policy-report-raw', 'prompt:author-security-skill-1'],
     ['audit-your-agent-3', 'security-report', 'prompt:audit-your-agent-2'],
-    ['hallucination-bakeoff-2', 'm5-briefing', 'prompt:hallucination-bakeoff-1'],
+    ['hallucination-bakeoff-2', 'm5-briefing', 'prompt:hallucination-bakeoff-1-frozen'],
     ['hallucination-bakeoff-5', 'm5-detector-outputs', 'artifact:m5-detector-outputs'],
     ['eval-loop-2', 'generation-tactic', 'prompt:eval-loop-1'],
     ['share-your-work-3', 'm7-jtbd', 'artifact:m7-jtbd'],

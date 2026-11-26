@@ -3,8 +3,12 @@
   "file": "curriculum/exercises/hallucination-bakeoff.md",
   "training": "agents-101",
   "verdict": "PASS",
-  "body_sha": "e97dfbb234f98d6a1ae1c317125d239c26398a1b0c1645a7ae7fc009f8373c84",
-  "trace_status": "reused",
+  "body_sha": "5a0e1e06610664d17f9fd22072569392b2ea6d598c373af300664c0d080ed4ad",
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "Diff cf4fd816..HEAD (diff-region): added two Phase 2 body sentences (heavy-run stop/steer and cover-the-rest). They are body-callout mitigation for heavy-run risk on prompts 3/4, which strengthens the PASS. Prompts 1 and 10 shas differed from cache (registry text moved); regenerated, no risks. Prompts 2-9 reused. Maintainer accept-notes: none dated; TODO about Phase 1 subagent wording in Cowork edition is gated, not a behavior finding.",
+  "trace_status": "partial_regen",
   "prompts_evaluated": 10,
   "prompts_findings": [
     {
@@ -93,16 +97,5 @@
       "load_bearing": true,
       "risks_fired": []
     }
-  ],
-  "suggestions": [
-    {
-      "rule": "uncatalogued: missing wait-gate (prompt 9)",
-      "line": 92,
-      "now": "I compare and answer in one line. Append a section `## Doubted line` to `module-5/baseline-score.md` with the line, the judge's verdict, and my answer word for word.",
-      "proposed": "Stop after showing me those three things and wait for my one-line answer. Then append a section `## Doubted line` to `module-5/baseline-score.md` with the line, the judge's verdict, and my answer word for word."
-    }
-  ],
-  "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0,
-  "notes": "Diff 78d17fc9..HEAD touches only the maintainer block (Quality stamp, mood-contract wording, two coach rows, mood-check lines); all 10 prompt_sha values match the cached trace, so every entry reused. Accept-notes: L106 Quality line 2026-11-26; L109 Cowork edition TODO 2026-04-29 (Phase 1 prompt says subagent; gated, not filed). Risks: self-audit-charity low on prompt 6 (scorer) and prompt 9 (judge Known limit), both under evidence-backed Debrief carve-out (scoreboard, quoted evidence lines, student marks agreement line). Prompt 10 has no wait-gate before the append of the student's answer; recorded as a suggestion (uncatalogued), not a gate, since Do not tell me whether my doubt was right plus 'I compare and answer in one line' signals the pause. Technical-lane observations not filed: prompt 4 labelled Claude Code inside rt-cowork; marks prompt asks for claim numbers but prompt 2 never numbers claims; detector 1 says any file on disk while detectors read a bounded roster."
+  ]
 }

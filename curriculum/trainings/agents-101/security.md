@@ -73,7 +73,7 @@ Can you trust what the agent says inside its scope?
 **Quality:** compendium-audited 2026-11-26 (writing@cf4fd816 story@78d17fc9 technical@78d17fc9 behavior@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
 - judges @cf4fd816: writing PASS (4 findings see instances/agents-101--module--security.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (verify-refuted)
 - cross_module @12bf0d81: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
-- cross_module @cf4fd816: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,agents-building-agents-solo]; 7 pairs, 2 blocking; see instances/agents-101--module-set--agents-101-open-edition.cross_module.json
+- cross_module @42b9610a: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,agents-building-agents-solo]; 7 pairs, 0 blocking; see instances/agents-101--module-set--agents-101-open-edition.cross_module.json
 
 **Red thread (2026-11-13, Antti).** "It is not to add sentences. It is to align on common theme. Say it in different ways without adding more content." Added openers, four-ideas slides and own-agent callouts were tried and removed the same evening. Align existing lines; add none.
 

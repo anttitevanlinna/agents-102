@@ -3,102 +3,12 @@
   "file": "curriculum/exercises/personal-site-with-guardrails.md",
   "training": "agents-101",
   "verdict": "PASS",
-  "body_sha": "9523caff4d1bd8268c574b6a5ee2143e6e59e285ef5d2136781bb872ab5819c4",
-  "trace_status": "full_regen",
+  "body_sha": "e5e203816e0a6c898a23106e2101586ca375efe7c3268ee70c5665d3b485a1b9",
+  "trace_status": "partial_regen",
   "prompts_evaluated": 6,
-  "prompts_findings": [
-    {
-      "prompt_index": 1,
-      "prompt_sha": "75e9c4c326b70e6a14e55e335a7ebaa8b3c6b3da3372a960c9ab16a7bfd0a0f5",
-      "prompt_lead": "Build me a personal HTML one-pager site from the LinkedIn profile below. Save it",
-      "verdict": "PASS",
-      "load_bearing": false,
-      "risks_fired": []
-    },
-    {
-      "prompt_index": 2,
-      "prompt_sha": "6d48b3641b3601ff9384c654e345d6f172fee6a8070f4b8d1dbc82788e7e51ef",
-      "prompt_lead": "Apply Donald Miller's StoryBrand framework to the COLLEAGUE-HELP SECTION of my p",
-      "verdict": "PASS",
-      "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "overwrite-anxiety",
-          "confidence": "low",
-          "evidence": "regenerate `module-1/site.html`; body L19 'Every later phase overwrites `module-1/site.html`' plus personal site",
-          "carve_out": "integrate-verb personal-scope carve-out"
-        },
-        {
-          "pattern_id": "question-dump",
-          "confidence": "low",
-          "evidence": "'Ask one beat, wait for my answer, then ask the next. Do not show me the remaining beats.' structural in-prompt guard",
-          "carve_out": "in-prompt structural one-at-a-time"
-        }
-      ]
-    },
-    {
-      "prompt_index": 3,
-      "prompt_sha": "53790b14839948204c38b1d5ebc56ba656ff1a584213cf44c737ca6cdf25b0fd",
-      "prompt_lead": "Use the strengths below as voice-shaping context for the site, letting them chan",
-      "verdict": "PASS",
-      "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "overwrite-anxiety",
-          "confidence": "low",
-          "evidence": "'Then regenerate `module-1/site.html`.'; personal artifact, L19 overwrite statement",
-          "carve_out": "integrate-verb personal-scope carve-out"
-        }
-      ]
-    },
-    {
-      "prompt_index": 4,
-      "prompt_sha": "85c1563f7ceab9e8eefb2f1f86636707c56f248ca1d94f8930a4304fd8e6d753",
-      "prompt_lead": "Apply anti-branding (Adam Grant's energy audit version) to my personal site. I'l",
-      "verdict": "PASS",
-      "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "overwrite-anxiety",
-          "confidence": "low",
-          "evidence": "'regenerate `module-1/site.html`'; L19 overwrite statement",
-          "carve_out": "integrate-verb personal-scope carve-out"
-        }
-      ]
-    },
-    {
-      "prompt_index": 5,
-      "prompt_sha": "3787ce8a27ceadde24a5ecd4a81fcb66ef1abe4abd8defe4acd6e3862aa0c53d",
-      "prompt_lead": "Look at the very first site you generated from just my LinkedIn profile, before ",
-      "verdict": "PASS",
-      "load_bearing": false,
-      "risks_fired": [
-        {
-          "pattern_id": "self-audit-charity",
-          "confidence": "low",
-          "evidence": "'Find three specific claims you made ... generic, empty, or wrong'; L119 body callout 'LLMs go easy on their own output ... over-flag with no charity'; evidence surfaces named (first site, context sources)",
-          "carve_out": "evidence-backed Debrief carve-out"
-        }
-      ]
-    },
-    {
-      "prompt_index": 6,
-      "prompt_sha": "6ca9e52836b514c1df6d3929d245e011e249c9d19472709f334551edbcb52063",
-      "prompt_lead": "Write a generation rules file at `module-1/personal-brand-generation.md`: a port",
-      "verdict": "PASS",
-      "load_bearing": false,
-      "risks_fired": [
-        {
-          "pattern_id": "self-report-inflation",
-          "confidence": "low",
-          "evidence": "'summarize in 4-6 lines ... anything you weren't sure about'; body L141 sends student to open the file and push back",
-          "carve_out": "evidence-backed Debrief carve-out"
-        }
-      ]
-    }
-  ],
+  "prompts_findings": [],
   "suggestions": [],
   "blocking_findings_count": 0,
   "nonblocking_findings_count": 0,
-  "notes": "Prior trace stale (prompt shas changed; 'Hey Claude' lead removed from prompts 2 and 4). Accept-note: none dated in maintainer block beyond Quality row. Observation: prompt 5 asks Claude to recall the first site, which later phases overwrite on disk (L19); it works only from same-session transcript, which the exercise keeps unbroken. Not a catalog pattern; no finding."
+  "notes": "Diff 78d17fc9..HEAD changed body prose only (Grant reference removed, 'statistical-default' -> 'generic'); prompts 4 and 5 SHA-stale and regenerated, 1-3 and 6 reused. No accept-notes in maintainer block. All fired risks are low with carve-outs (integrate-verb personal-scope; in-prompt one-at-a-time; evidence-backed Debrief) and are recorded in the trace."
 }

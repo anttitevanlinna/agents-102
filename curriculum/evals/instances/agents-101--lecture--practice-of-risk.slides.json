@@ -2,13 +2,13 @@
  "class": "slides",
  "file": "curriculum/lectures/practice-of-risk.md",
  "training": "agents-101",
- "verdict": "REVISE",
- "body_sha": "260fc84f9ab896d2585cf63352311062fef1f57a8c93ec4cd436139afbc1f1c9",
+ "verdict": "PASS",
+ "body_sha": "8b93258576db2fbb71c19db9dd08272d11ccc8dee64f718bec227391bb96c30f",
  "shape_hash": "1a44bcc401cbcee2",
  "chunk_map": [
   {
    "index": 0,
-   "heading": "# Lecture: The discipline of risk",
+   "heading": "The discipline of risk (H1 + lede)",
    "lines": "1-3"
   },
   {
@@ -28,17 +28,17 @@
   },
   {
    "index": 4,
-   "heading": "Reassess the residual, then decide (slides/reassess-the-residual.md)",
+   "heading": "Reassess the residual, then decide (slides/reassess-the-residual.md, L29)",
    "lines": "29"
   },
   {
    "index": 5,
-   "heading": "Now the move is to give it less (slides/give-it-less.md)",
+   "heading": "Now the move is to give it less (slides/give-it-less.md, L31)",
    "lines": "31"
   },
   {
    "index": 6,
-   "heading": "The best mitigation is the door you don't open (slides/door-you-dont-open.md)",
+   "heading": "The best mitigation is the door you don't open (slides/door-you-dont-open.md, L33)",
    "lines": "33"
   },
   {
@@ -52,24 +52,20 @@
    "compendium": "check_slides.md",
    "rule_index": 1,
    "rule_lead": "Referent resolution under a sequential deck read.",
-   "verdict": "REVISE",
-   "evidence": "Harm: a referent the room cannot resolve stalls the slide. Present: chunk 2 \"Three ways agents break the old story\": line 17: \"You can't fully predict the combination, only bound it.\" The combination of what is never named; the long-read sentence that named it (instructions, context and the user's ask combined) was cut in the re-chunk, so the antecedent is stranded. Closest passes: line 9 \"the old story\" resolves to chunk 1's header; line 25 \"the agent-risk lens\" and \"the reports\" are definite nouns first met here (see suggestions).",
-   "na_reason": null,
-   "fix_hint": "Name what combines: what the instructions, context and tools add up to.",
+   "verdict": "PASS",
+   "evidence": "Harm: a projected slide leans on a referent the room never saw. Closest: L25 'Read the reports with judgment' and 'The agent-risk lens' (chunk 3 'Assess, then mitigate'): 'the reports' and 'the lens' are named nowhere in the file, but security.md L25-31 includes both exercises ahead of this lecture, so they are the student's just-produced artifacts (module-arc carve-out, include order checked). L17 'its instructions' binds to 'your agent' (L13), same chunk.",
+   "fix_hint": null,
    "blocking": true,
-   "chunks_flagged": [
-    2
-   ]
+   "chunks_flagged": []
   },
   {
    "compendium": "check_slides.md",
    "rule_index": 2,
    "rule_lead": "Cross-file and positional callbacks.",
    "verdict": "PASS",
-   "evidence": "Closest: line 9 \"the old story\" points at chunk 1 of the same file by claim, not at another file by position. grep for opening lecture/earlier lecture/prework in body: none.",
-   "na_reason": null,
+   "evidence": "grep for 'opening lecture|earlier lecture|last lecture|the previous' in body -> none. Closest: L1 title lede 'You built something that works' points at the module's own work, not another file by position.",
    "fix_hint": null,
-   "blocking": false,
+   "blocking": true,
    "chunks_flagged": []
   },
   {
@@ -77,21 +73,20 @@
    "rule_index": 3,
    "rule_lead": "Every backward reference points at a beat that exists.",
    "verdict": "PASS",
-   "evidence": "Closest: line 3 \"You built something that works.\" The referent is the student's own build from earlier modules, the module-arc beat the rule-1 carve-out names; no \"the X you did/saw\" pointing at a missing beat.",
-   "na_reason": null,
+   "evidence": "Closest: L3 'You built something that works' and L25 'Run your company's rules against your agent'. Both resolve against security.md's included exercises (author-security-skill.md, audit-your-agent.md). No 'the X you did/saw/caught' beat is dead.",
    "fix_hint": null,
-   "blocking": false,
+   "blocking": true,
    "chunks_flagged": []
   },
   {
    "compendium": "check_slides.md",
    "rule_index": 4,
    "rule_lead": "Live-demo beats survive a text read.",
-   "verdict": "PASS",
-   "evidence": "Closest: line 11 \"Same prompt, same files, same tools, different session, different answer.\" It is a verbless stack, but it follows the verbed claim \"The behaviour is non-deterministic.\" and enumerates conditions, not a live demo scene or terminal guess-cue; the muted read loses nothing. No guess-before-reveal beat in the body.",
-   "na_reason": null,
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no guess-before-reveal or live-demo beat in the file",
    "fix_hint": null,
-   "blocking": false,
+   "blocking": true,
    "chunks_flagged": []
   },
   {
@@ -99,8 +94,7 @@
    "rule_index": 5,
    "rule_lead": "No orphan slides.",
    "verdict": "PASS",
-   "evidence": "Closest: chunk 0 line 3 \"Testing, policy and certification do not give agent systems certainty.\" carries a standalone claim; every ## chunk holds its own claim.",
-   "na_reason": null,
+   "evidence": "Closest: chunk 1 'Classical security manages risk on predictable software' L7 is one paragraph but self-carries the claim (deterministic, so perimeter and patching work). Chunk 0 L3 is the title lede with its own claim. The three include slides each carry a claim (check-slide-size lists 7 slides).",
    "fix_hint": null,
    "blocking": false,
    "chunks_flagged": []
@@ -110,8 +104,7 @@
    "rule_index": 6,
    "rule_lead": "Header self-carries at projection distance.",
    "verdict": "PASS",
-   "evidence": "Closest: line 9 \"Three ways agents break the old story\" over three claims (non-deterministic, instruction-set attack, emergent) plus the figure; line 21 \"Assess, then mitigate\" over Assess. and Mitigate. Headers are true summaries.",
-   "na_reason": null,
+   "evidence": "Closest: chunk 2 'Three ways agents break the old story' L11-17: the chunk delivers exactly three (non-determinism L11, instruction-set surface L13, emergent capability L17) plus the L19 result. chunk 3 'Assess, then mitigate' carries Assess and Mitigate, Reassess and Decide sit on the next slide the header does not claim.",
    "fix_hint": null,
    "blocking": false,
    "chunks_flagged": []
@@ -121,10 +114,9 @@
    "rule_index": 7,
    "rule_lead": "LLM-cadence caps.",
    "verdict": "PASS",
-   "evidence": "Closest: line 19 \"What may the agent read? What may it change? What must come back to a human?\" is an anaphora triple whose third leg carries new content (the human gate); line 11 \"Same prompt, same files, same tools\" third leg new (tools). No Not-X-Not-Y-Z, no self-grading superlative, no number+retraction, no empty verb leg in body. Line 37 \"Damn, this is complex stuff.\" is mood-contract attested at maintainer L112.",
-   "na_reason": null,
+   "evidence": "Closest: L39 'Read the reports. Pick a risk. Apply a mitigation. Name what's left. Decide.' Five imperatives, each concrete (a step the student does), no empty leg, not an anaphora triple. L25 'reach, leak, and be misled into' triplet: each leg is a distinct exposure. 'Damn, this is complex stuff.' (L37) is mood-attested at L112. No Not-X-Not-Y-Z, no self-grading superlative, no number+retraction.",
    "fix_hint": null,
-   "blocking": false,
+   "blocking": true,
    "chunks_flagged": []
   },
   {
@@ -132,19 +124,17 @@
    "rule_index": 8,
    "rule_lead": "Internal dialect never lands on a slide.",
    "verdict": "PASS",
-   "evidence": "Closest: line 25 \"agent-risk lens\" is the module's own student vocabulary, not repo dialect; grep beat|compendium|forcing function|surface|firing in body: none. Line 37 \"Damn, this is complex stuff.\" attested at maintainer L112.",
-   "na_reason": null,
+   "evidence": "Closest: L25 'agent-risk lens' and L27 'residual'. 'lens' is ordinary engineer vocabulary, 'residual' is ISO 31000 vocabulary the lecture teaches (backing L66). No surface-as-noun, firing, compendium, beat or mood on any body line.",
    "fix_hint": null,
-   "blocking": false,
+   "blocking": true,
    "chunks_flagged": []
   },
   {
    "compendium": "check_slides.md",
    "rule_index": 9,
-   "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
+   "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
    "verdict": "PASS",
-   "evidence": "Closest: line 25 and 27 carry **Assess.** and **Mitigate.**, two one-word handles naming checklist steps, sub-span not whole lead sentence; no narrative bold. Borrowed slide reassess-the-residual carries its own bolds, judged at home.",
-   "na_reason": null,
+   "evidence": "Closest: chunk 3 L25/L27 bolds '**Assess.**' and '**Mitigate.**' (two). Each is a one-word loop-step handle, the checklist-item-name class the rule admits; its sibling slide Reassess the residual carries the same shape (three handles), so the sibling is the answer. Chunks 0-2 and 7 bold nothing.",
    "fix_hint": null,
    "blocking": false,
    "chunks_flagged": []
@@ -152,23 +142,11 @@
   {
    "compendium": "check_slides.md",
    "rule_index": 10,
-   "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
+   "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
    "verdict": "PASS",
-   "evidence": "node scripts/check-slide-size.js --file curriculum/lectures/practice-of-risk.md -> slides: 7, oversized: 0. The three include lines (29, 31, 33) stand alone, so the composed deck carries all seven ## slides; maintainer L52 says seven.",
-   "na_reason": null,
+   "evidence": "node scripts/check-slide-size.js --file curriculum/lectures/practice-of-risk.md -> 'slides: 7 ... oversized: 0': the 4 body chunks plus the 3 slide-file includes (L29,31,33) all resolve into the composed deck. Content is plain ## sections under a lecture, no phase-less prose.",
    "fix_hint": null,
-   "blocking": false,
-   "chunks_flagged": []
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 11,
-   "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "no Phase/Step headers; node scripts/check-slide-numbering.js --file -> OK",
-   "fix_hint": null,
-   "blocking": false,
+   "blocking": true,
    "chunks_flagged": []
   },
   {
@@ -176,30 +154,17 @@
    "rule_index": 12,
    "rule_lead": "Page geometry dies at the cut; reading order survives.",
    "verdict": "PASS",
-   "evidence": "node scripts/check-slide-deixis.js --file curriculum/lectures/practice-of-risk.md -> OK \u2014 1 files, no page-geometry pointers across the slide cut (exit 0).",
-   "na_reason": null,
+   "evidence": "node scripts/check-slide-deixis.js --file curriculum/lectures/practice-of-risk.md -> OK, no page-geometry pointers. Manual closest: L39 and L25 use named things, no above/below.",
    "fix_hint": null,
-   "blocking": false,
-   "chunks_flagged": []
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 13,
-   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "only structural include links on their own lines; review surface, never a gate",
-   "fix_hint": null,
-   "blocking": false,
+   "blocking": true,
    "chunks_flagged": []
   },
   {
    "compendium": "check_slides.md",
    "rule_index": 14,
-   "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
+   "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
    "verdict": "PASS",
-   "evidence": "node scripts/check-slide-size.js --file curriculum/lectures/practice-of-risk.md -> slides: 7, limits 210/6, oversized: 0 (exit 0).",
-   "na_reason": null,
+   "evidence": "node scripts/check-slide-size.js --file curriculum/lectures/practice-of-risk.md -> 'oversized: 0', 7 slides within 210 words / 6 bullets.",
    "fix_hint": null,
    "blocking": false,
    "chunks_flagged": []
@@ -209,8 +174,7 @@
    "rule_index": 15,
    "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
    "verdict": "PASS",
-   "evidence": "Closest: line 21 \"Assess, then mitigate\" and line 35 \"The discipline is what carries\"; lecture headings are claims, and the loop-step label is a section label inside a walk, which the rule exempts.",
-   "na_reason": null,
+   "evidence": "Lecture headings are claims: 'Classical security manages risk on predictable software' (L5), 'Three ways agents break the old story' (L9), 'The discipline is what carries' (L35). Closest to a label: 'Assess, then mitigate' (L21), a phase label inside the loop walk, which the rule exempts.",
    "fix_hint": null,
    "blocking": false,
    "chunks_flagged": []
@@ -218,10 +182,9 @@
   {
    "compendium": "check_slides.md",
    "rule_index": 16,
-   "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
+   "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
    "verdict": "PASS",
-   "evidence": "Closest: line 39 \"Read the reports. Pick a risk. Apply a mitigation. Name what's left. Decide.\" recaps the loop, but it is the closer's job (rule 2) and issues the room's actions rather than re-announcing a doctrine; no design commentary, no koan restating its header.",
-   "na_reason": null,
+   "evidence": "Closest: L39 'Read the reports. Pick a risk. Apply a mitigation. Name what's left. Decide.' restates the loop a third time after L25-27 and the Reassess slide. Stays inside: it is the deck-closer converting the loop into the student's marching orders (a move, not a re-announced law), placed under 'The discipline is what carries' and mood-attested in the Pass 3 notes (L112). Maintainer cut-rate on class (a) is high, so this is the first bullet to cut if the closer needs trimming.",
    "fix_hint": null,
    "blocking": false,
    "chunks_flagged": []
@@ -231,22 +194,38 @@
    "rule_index": 17,
    "rule_lead": "A retitled slide re-earns its bullets against the new header.",
    "verdict": "PASS",
-   "evidence": "diff 4d9c4af2..HEAD rewrote the whole body with its headers. Covered-body read: line 5 header promises classical security manages risk, line 7 delivers it; line 9 promises three breaks, lines 11-17 deliver; line 21 promises assess and mitigate, lines 25-27 deliver. No inherited bullets answer an old header.",
-   "na_reason": null,
+   "evidence": "git log -p on the file: the only ## rename is 'Certainty is a fantasy you inherited' -> 'Classical security manages risk on predictable software'; the body L7 (deterministic software, perimeter/patching work) answers the new header and no bullet answers the old one. 'Assess, then mitigate' and 'Reassess the residual, then decide' bodies answer their headers.",
    "fix_hint": null,
    "blocking": false,
    "chunks_flagged": []
-  }
- ],
- "suggestions": [
+  },
   {
-   "rule": "check_slides.md \u00a71",
-   "line": 25,
-   "now": "The agent-risk lens asks what the agent can reach, leak, and be misled into by ordinary text. Read the reports with judgment.",
-   "proposed": "An agent-risk check asks what the agent can reach, leak, and be misled into by ordinary text. Read what it reports with judgment."
+   "compendium": "check_slides.md",
+   "rule_index": 11,
+   "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no Phase/Step headers; node scripts/check-slide-numbering.js --file -> OK",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "260fc84f9ab896d2585cf63352311062fef1f57a8c93ec4cd436139afbc1f1c9",
+   "carried_shape": "1a44bcc401cbcee2"
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 13,
+   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "only structural include links on their own lines; review surface, never a gate",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "260fc84f9ab896d2585cf63352311062fef1f57a8c93ec4cd436139afbc1f1c9",
+   "carried_shape": "1a44bcc401cbcee2"
   }
  ],
- "blocking_findings_count": 1,
+ "suggestions": [],
+ "blocking_findings_count": 0,
  "nonblocking_findings_count": 0,
- "notes": "Accept-notes found: L46 (law moved in, Antti 2026-09-24), L48 (iteration 2, 2026-09-23), L52 (slides 2026-09-23), L54 (scar slot 2026-09-23), L112 (mood contract, Damn line). Cross-class: maintainer L54 locates the scar slot after 'The work is the loop', a header that no longer exists (now 'Assess, then mitigate'); stale locator, writing class. Borrowed slide door-you-dont-open: 'that system', 'that mailbox' lack an in-slide antecedent; judge at home. Brief built (17 rules, prefill parked 0: shape changed). Chunks 4-6 are slide files, judged for fit only."
+ "notes": "Class brief built normally. Slide-file includes judged for fit only. Maintainer L54 names the scar-slot placement after 'The work is the loop', a header that no longer exists (now 'Assess, then mitigate'); maintainer-prose staleness, not a slides rule. L52 says 'Seven ## slides' while body has 4 ## plus 3 includes (7 composed); consistent. security.md lists the exercises before this lecture while L50/L58 say lecture precedes exercises; carve-out relied on include order in security.md."
 }

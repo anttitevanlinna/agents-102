@@ -99,7 +99,7 @@ Once those five things are ready, end the prework session or task. Module 1 star
 **Quality:** compendium-audited 2026-11-26 (writing@cf4fd816 story@cf4fd816 technical@78d17fc9 behavior@78d17fc9 pedagogy@cf4fd816 strategy@78d17fc9 slides@cf4fd816)
 - judges @cf4fd816: writing PASS (4 findings see instances/agents-101--module--prework.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agents-101--module--prework.pedagogy.json), strategy PASS, slides PASS (1 finding see instances/agents-101--module--prework.slides.json)
 - cross_module @12bf0d81: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
-- cross_module @cf4fd816: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,agents-building-agents-solo]; 7 pairs, 2 blocking; see instances/agents-101--module-set--agents-101-open-edition.cross_module.json
+- cross_module @42b9610a: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,agents-building-agents-solo]; 7 pairs, 0 blocking; see instances/agents-101--module-set--agents-101-open-edition.cross_module.json
 
 **Packaging:**
 - `<CONTENT_URL>` is build-time substituted by `scripts/build-workbook.js` per customer. Example rendered URL: `https://agents102.bosser.consulting/clients/acme/agents-101/agents-101-starter.tar.gz`. Source markdown carries the placeholder so substitution is auditable; rendered workbooks never show it.

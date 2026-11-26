@@ -27,8 +27,8 @@ The same question. Two answers. What makes the difference?
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@725101ec pedagogy@78d17fc9 strategy@78d17fc9)
-- judges @78d17fc9: writing PASS (verify-refuted, 2 findings see instances/agents-101--lecture--context-is-king.writing.json), story PASS (1 finding see instances/agents-101--lecture--context-is-king.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides REVISE (1/1 see instances/agents-101--lecture--context-is-king.slides.json)
+**Quality:** compendium-audited 2026-11-26 (writing@42b9610a story@42b9610a technical@78d17fc9 behavior@725101ec pedagogy@78d17fc9 strategy@78d17fc9 slides@42b9610a)
+- judges @42b9610a: writing PASS (verify-refuted, 1 finding see instances/agents-101--lecture--context-is-king.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Accept (Antti 2026-11-26):** "The same question. Two answers. What makes the difference?" stays as written; the verbed rewrite was neither better nor shorter. `check_slides.md §4` muted-read finding does not apply to this line.
 

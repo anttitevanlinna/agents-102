@@ -421,8 +421,8 @@ Add a recipe when the move is reliable enough that a working practitioner would 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-11-26 (technical@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9)
-- judges @cf4fd816: writing grandfathered, story grandfathered, technical PASS, behavior grandfathered, pedagogy PASS, strategy PASS, slides REVISE (1/3 see instances/agents-101--supplementary--cookbook-for-agent-system-design.slides.json)
+**Quality:** compendium-audited 2026-11-26 (technical@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@42b9610a)
+- judges @42b9610a: writing grandfathered, story grandfathered, technical PASS, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
 
 **Status:** Pass 3.6 — provenance correction. Dishes 1 and 2 are explicitly labelled illustrative composites; Dish 3 is the house-built continuous-research system. Eight short recipes each carry a Why, with three full worked dishes, 11 named components, 18 data sources, and 20 indexed dishes. Recipe coverage in worked dishes: R2 (Dish 1), R3 + R6 (Dish 3), R4 (Dish 2). R5 / R7 / R8 still owe worked dishes.
 

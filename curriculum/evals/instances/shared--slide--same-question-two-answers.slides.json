@@ -3,7 +3,7 @@
  "file": "curriculum/slides/same-question-two-answers.md",
  "training": "shared",
  "verdict": "PASS",
- "body_sha": "6731d04ae3a55441ca5e3a79f2697ac7e9f9f20e42d3698bcc45f1369d399a45",
+ "body_sha": "b596acc4d71a07fb345943a412cb3cadb559e89ea783a1c10769de591a6e8642",
  "shape_hash": "3cc30efdf0c43abc",
  "chunk_map": [
   {
@@ -18,10 +18,10 @@
    "rule_index": 1,
    "rule_lead": "Referent resolution under a sequential deck read.",
    "verdict": "PASS",
-   "evidence": "chunk 0 \"Same question, two answers\": L6 \"In the other, ... Same dinner question.\" and L10 \"The first exchange became context.\" come closest; 'the other' resolves to 'one session' (L4), 'dinner question' to L4 quote, 'first exchange' to the capital/lake exchange in each session. Harm (unresolved referent) absent.",
+   "evidence": "Closest: chunk 0 line 6 'guess what it suggests' - 'it' binds to the other session's Claude, named by 'In the other' (line 6) after 'In one session' (line 4); line 10 'The first exchange' binds to the Italy exchange on line 4. Harm (unresolvable referent) absent.",
    "na_reason": null,
    "fix_hint": null,
-   "blocking": true,
+   "blocking": false,
    "chunks_flagged": []
   },
   {
@@ -29,10 +29,10 @@
    "rule_index": 2,
    "rule_lead": "Cross-file and positional callbacks.",
    "verdict": "PASS",
-   "evidence": "grep of body_numbered for opening/lecture/earlier-file pointers: none; closest L4 \"In one session\" is in-chunk setup. Harm (callback by position to another file) absent.",
+   "evidence": "grep for cross-file pointers in body lines 1-11: none; every reference is within the single chunk.",
    "na_reason": null,
    "fix_hint": null,
-   "blocking": true,
+   "blocking": false,
    "chunks_flagged": []
   },
   {
@@ -40,10 +40,10 @@
    "rule_index": 4,
    "rule_lead": "Live-demo beats survive a text read.",
    "verdict": "PASS",
-   "evidence": "L4-L10: no guess cue remains in body (diff removed 'take a guess'), so no reveal precedes a guess; scene is verbed (L4 \"you ask\", L6 \"In the other, ...\"), closest muted-read risk L8 \"Finnish: salmon, rye bread.\" is an enumeration following verbed sentences naming the set. Harm (reveal before guess / scene only in trainer's mouth) absent. Note: maintainer accept-note L17 still describes a guess cue the body no longer has.",
+   "evidence": "Line 6 guess cue 'Before you read on, guess what it suggests.' precedes reveal line 8 'Finnish: salmon, rye bread.'; line 6 'Same dinner question.' is a fragment but follows a verbed sentence naming the set; cue is aimed at the reader, not the terminal. Maintainer guess-before-reveal note attests.",
    "na_reason": null,
    "fix_hint": null,
-   "blocking": true,
+   "blocking": false,
    "chunks_flagged": []
   },
   {
@@ -51,7 +51,7 @@
    "rule_index": 5,
    "rule_lead": "No orphan slides.",
    "verdict": "PASS",
-   "evidence": "L10 \"The first exchange became context.\" with L4-L8 gives a self-carrying claim; slide is one coherent chunk.",
+   "evidence": "Single slide carries setup, cue, reveal, and line 10 'The first exchange became context.' - self-carrying.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false,
@@ -62,7 +62,7 @@
    "rule_index": 6,
    "rule_lead": "Header self-carries at projection distance.",
    "verdict": "PASS",
-   "evidence": "Header L1 \"Same question, two answers\" vs L4/L6/L8: same dinner question yields Italian vs Finnish; true. Closest: L10 adds mechanism, does not contradict.",
+   "evidence": "Header 'Same question, two answers' (line 1) matches content: same dinner question, Italian vs Finnish answers (lines 4-8).",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false,
@@ -73,7 +73,7 @@
    "rule_index": 7,
    "rule_lead": "LLM-cadence caps.",
    "verdict": "PASS",
-   "evidence": "No 'Not X. Not Y. Z.', no triple anaphora, no superlative, no number+retraction, no abstraction-noun stack; closest L4/L6/L8 parallel openings 'In one'/'In the other'/'Finnish:' are a pair plus concrete answer, not a tic.",
+   "evidence": "Closest: lines 4-8 repeat the dinner question twice, which is the demo's contrast, not a triple; no 'Not X. Not Y. Z.', no superlative, no number retraction, no noun stack, no verb triplet.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false,
@@ -84,10 +84,10 @@
    "rule_index": 8,
    "rule_lead": "Internal dialect never lands on a slide.",
    "verdict": "PASS",
-   "evidence": "Body L1-L10 vocabulary: session, exchange, context, question; all ordinary engineer terms; no surface/beat/firing/compendium.",
+   "evidence": "Body lines 1-11 contain no surface/firing/compendium/beat/mood vocabulary; 'context' is ordinary engineering term.",
    "na_reason": null,
    "fix_hint": null,
-   "blocking": true,
+   "blocking": false,
    "chunks_flagged": []
   },
   {
@@ -95,7 +95,7 @@
    "rule_index": 9,
    "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
    "verdict": "PASS",
-   "evidence": "grep -c '\\*\\*' on body L1-L11 -> 0; italics only for quoted prompts.",
+   "evidence": "grep -c '\\*\\*' body lines 1-11 -> 0 bold elements.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false,
@@ -106,10 +106,10 @@
    "rule_index": 12,
    "rule_lead": "Page geometry dies at the cut; reading order survives.",
    "verdict": "PASS",
-   "evidence": "node scripts/check-slide-deixis.js --file curriculum/slides/same-question-two-answers.md -> 'OK — 1 files, no page-geometry pointers', rc=0",
+   "evidence": "node scripts/check-slide-deixis.js --file ... -> 'OK - 1 files, no page-geometry pointers' exit 0; 'read on' (line 6) is reading order.",
    "na_reason": null,
    "fix_hint": null,
-   "blocking": true,
+   "blocking": false,
    "chunks_flagged": []
   },
   {
@@ -117,7 +117,7 @@
    "rule_index": 14,
    "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
    "verdict": "PASS",
-   "evidence": "node scripts/check-slide-size.js --file curriculum/slides/same-question-two-answers.md -> oversized: 0, rc=0",
+   "evidence": "node scripts/check-slide-size.js --file ... -> slides: 1, oversized: 0, exit 0.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false,
@@ -128,7 +128,7 @@
    "rule_index": 16,
    "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
    "verdict": "PASS",
-   "evidence": "L10 \"The first exchange became context.\" is the closest to class (c) kicker, but it states the mechanism the header does not (header names the phenomenon, L10 names the cause) and no exercise point line restates it; no doctrine restatement or design commentary.",
+   "evidence": "Closest: line 10 'The first exchange became context.' - a kicker, but it names the lesson the header only implies (earlier exchange shapes the later answer) rather than restating the header; not doctrine restatement or design commentary.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false,
@@ -143,7 +143,7 @@
    "na_reason": "slide file transcluded by lectures (context-is-king.md L18) so it rides the lecture phase wrapper into the deck",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "447e58dd96fcbac187af86927bec77973e211653d6267c61fb95aa4a8640e1e4",
+   "carried_from": "6731d04ae3a55441ca5e3a79f2697ac7e9f9f20e42d3698bcc45f1369d399a45",
    "carried_shape": "3cc30efdf0c43abc"
   },
   {
@@ -155,7 +155,7 @@
    "na_reason": "no 'the X you did/saw' backward reference in body",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "447e58dd96fcbac187af86927bec77973e211653d6267c61fb95aa4a8640e1e4",
+   "carried_from": "6731d04ae3a55441ca5e3a79f2697ac7e9f9f20e42d3698bcc45f1369d399a45",
    "carried_shape": "3cc30efdf0c43abc"
   },
   {
@@ -167,7 +167,7 @@
    "na_reason": "no Phase/Step ordinals; node scripts/check-slide-numbering.js → OK — 59 files, Phase/Step numbering consistent",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "447e58dd96fcbac187af86927bec77973e211653d6267c61fb95aa4a8640e1e4",
+   "carried_from": "6731d04ae3a55441ca5e3a79f2697ac7e9f9f20e42d3698bcc45f1369d399a45",
    "carried_shape": "3cc30efdf0c43abc"
   },
   {
@@ -179,7 +179,7 @@
    "na_reason": "no links in body (has_urls false, no in-body links)",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "447e58dd96fcbac187af86927bec77973e211653d6267c61fb95aa4a8640e1e4",
+   "carried_from": "6731d04ae3a55441ca5e3a79f2697ac7e9f9f20e42d3698bcc45f1369d399a45",
    "carried_shape": "3cc30efdf0c43abc"
   },
   {
@@ -191,7 +191,7 @@
    "na_reason": "lecture-slide heading; header is a descriptive label, rule binds exercise headings and law/consolidation slides, and this is a demo setup slide, not a law slide",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "447e58dd96fcbac187af86927bec77973e211653d6267c61fb95aa4a8640e1e4",
+   "carried_from": "6731d04ae3a55441ca5e3a79f2697ac7e9f9f20e42d3698bcc45f1369d399a45",
    "carried_shape": "3cc30efdf0c43abc"
   },
   {
@@ -203,12 +203,12 @@
    "na_reason": "no retitle: slide file created in one commit c6634687, header and body together",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "447e58dd96fcbac187af86927bec77973e211653d6267c61fb95aa4a8640e1e4",
+   "carried_from": "6731d04ae3a55441ca5e3a79f2697ac7e9f9f20e42d3698bcc45f1369d399a45",
    "carried_shape": "3cc30efdf0c43abc"
   }
  ],
  "suggestions": [],
  "blocking_findings_count": 0,
  "nonblocking_findings_count": 0,
- "notes": "Brief built normally. Cross-class: maintainer block L17 'Guess before reveal' accept-note describes a guess cue ('before you read on') that the body no longer contains (removed since pin b58bcc4c); stale maintainer note belongs to writing class check_writing §3 / orchestrator. Also L15 Quality row records slides REVISE (1/0), predating this body."
+ "notes": "Accept-note: L17 guess-before-reveal (Antti 2026-10-06). Diff cf4fd816..HEAD touched only the added guess cue (line 6) and the Quality stamp."
 }

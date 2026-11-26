@@ -40,8 +40,8 @@ Read the reports. Pick a risk. Apply a mitigation. Name what's left. Decide.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@5fc7188 pedagogy@78d17fc9 strategy@78d17fc9)
-- judges @78d17fc9: writing PASS (3 findings see instances/agents-101--lecture--practice-of-risk.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides REVISE (1/0 see instances/agents-101--lecture--practice-of-risk.slides.json)
+**Quality:** compendium-audited 2026-11-26 (writing@42b9610a story@78d17fc9 technical@78d17fc9 behavior@5fc7188 pedagogy@78d17fc9 strategy@78d17fc9 slides@42b9610a)
+- judges @42b9610a: writing PASS (2 findings see instances/agents-101--lecture--practice-of-risk.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Law moved in from Key Concepts (2026-09-24, Antti-directed).** The *"I can't tell"* paragraph on `## Reassess the residual, then decide` carries what `security.md` § Key Concepts used to state.
 

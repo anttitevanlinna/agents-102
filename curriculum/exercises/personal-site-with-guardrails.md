@@ -106,8 +106,8 @@ This was **Recipe 1**. When the next output needs the same move, the [Cookbook f
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-11-26 (story@78d17fc9 behavior@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@cf4fd816)
-- judges @cf4fd816: writing REVISE (1/9 see instances/agents-101--exercise--personal-site-with-guardrails.writing.json), story PASS, technical REVISE (1/0 see instances/agents-101--exercise--personal-site-with-guardrails.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS (1 finding see instances/agents-101--exercise--personal-site-with-guardrails.slides.json)
+**Quality:** compendium-audited 2026-11-26 (story@78d17fc9 technical@42b9610a behavior@42b9610a pedagogy@78d17fc9 strategy@78d17fc9 slides@42b9610a)
+- judges @42b9610a: writing REVISE (1/10 see instances/agents-101--exercise--personal-site-with-guardrails.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (1 finding see instances/agents-101--exercise--personal-site-with-guardrails.slides.json)
 
 **Leap test — three observable outcomes a participant should be able to point at by Monday:**
 1. A `module-1/site.html` they would happily forward to a colleague without flinching.

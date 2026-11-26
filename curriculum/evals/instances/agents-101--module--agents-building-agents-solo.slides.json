@@ -3,7 +3,7 @@
   "file": "curriculum/trainings/agents-101/agents-building-agents-solo.md",
   "training": "agents-101",
   "verdict": "PASS",
-  "body_sha": "976bc74494cd5ff691bb84eb78b42d79be1fa3cdb8a752a73c72be0e9b1ad9e0",
+  "body_sha": "ccd619c7d6408e9f0df108525f7c8cc9b182658b499ffd558edd076c38116868",
   "shape_hash": "950af40171bf7acf",
   "chunk_map": [
     {
@@ -58,7 +58,8 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "evidence": "Closest: chunk 5 \"Give it to them\" line 36: \"show your person what the new agent makes\" - 'your person' resolves to chunk 4 \"Start here\" line 22 \"Who is one person who could use what it makes\"; 'the new agent' is the exercise product linked at line 24. 'the judge' line 9 is named in Prework (\"your Module 5 judge\"). Harm (unresolvable referent) absent.",
+      "evidence": "Closest: chunk 3 \"Start here\" L22 \"Your system works for you because it reads your memory\" - 'your system' is the arc-earned spine artefact built in M3-M6 (carve-out arc-earned vocabulary); chunk 5 \"Debrief\" L30 \"the one it built today\" resolves to the build exercise included at L24 (module-arc beat). Harm (unresolvable referent) absent.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -68,7 +69,8 @@
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "evidence": "Closest: line 30 \"your Module 2 agent\" and line 9 \"your Module 5 judge\" name sources by module and artefact, not by position ('the opening lecture'). No positional file callback.",
+      "evidence": "Closest: L9 \"your Module 2 agent and your Module 5 judge\" - names artefacts by module and role the student holds (navigational, named not located), not a positional 'the opening lecture'. No 'earlier lecture/previous file' pointers.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -78,7 +80,131 @@
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
-      "evidence": "Closest: line 9 \"your Module 5 judge\"; line 8 of evaluations.md (grep) names 'the judge you saved at the close of Module 5', so the beat exists. line 40 \"what the judge finds\" resolves to it. No 'the X you did/caught' orphan.",
+      "evidence": "Closest: L9 \"module-6/trigger.md\" - grep -rln finds it in evaluations.md (M6); \"Module 5 judge\" saved at M5 close per evaluations.md L8; L30/L32 prompt a101-solo-debrief-works-without-me exists at curriculum/prompts/a101-solo-debrief-works-without-me.md; module-7/person.md produced by pick-one-person per artefact table L83.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "evidence": "Closest: chunk 2 \"Prework\" L9 is one bolded sentence plus one explanatory sentence, self-carrying (what to bring and why). Every chunk holds a claim.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "evidence": "Closest: chunk 7 \"Next\" L45-55 - header is the module-shape canonical closer; content names the next gap and the course close, not contradicted. Other headers match bodies (Debrief L28-32 rewrites the agent).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "evidence": "Read all 8 chunks: no 'Not X. Not Y. Z.', no anaphora triple, no self-grading superlative, no number+retraction, no abstraction-noun stack, no verb triplet. Closest: L51 \"Everyone wants their hundred agents; the one that matters in six months is one nobody has thought of yet\" - one contrast, concrete, not a tic (the diff cut the preceding 'It would have demoed well' sentence, which removes the nearest candidate).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "evidence": "grep -nE '\\b(compendium|forcing function|beat|mood|firing)\\b' on body L1-56 -> 0 hits. 'judge' (L9) is student-facing artefact vocabulary from M5.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "REVISE",
+      "evidence": "chunk 2 \"Prework\": line 9: \"**Bring `module-6/trigger.md`, your Module 2 agent and your Module 5 judge.**\" - whole lead sentence (~14 words) bolded, over the <=5-word handle cap. Harm (bold monoculture/no handle) is present: it is a logistics sentence, not a named handle. Neither §34 task-size exception nor the LO-template exception applies (no floor/ceiling). Sibling check: evaluations.md, output-quality.md, security.md Prework carry no bold. Chunk 4 L15-16 LO verbs bold: template-mandated, N/A.",
+      "na_reason": "Unbold L9 (sibling Prework slides are plain), or bold only the filename handle.",
+      "fix_hint": false,
+      "blocking": [
+        2
+      ],
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "evidence": "view signals slide_count=8 equals the 8 body `##` headings (Big Idea, Prework, What You'll Learn, Start here, Debrief, Give it to them, Key Concepts, Next); module file, top-level section.module reaches the deck. Not rendered here; structural count only.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/trainings/agents-101/agents-building-agents-solo.md -> 'OK — 1 files, Phase/Step numbering consistent.' exit 0; no hand-numbered headers.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-deixis.js --file ... -> 'OK — 1 files, no page-geometry pointers across the slide cut.' exit 0; grep for below/above/further down in body L1-56 -> 0 hits.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-size.js --file ... -> 'slides: 8 limits: 210 words / 6 bullets oversized: 0' exit 0.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "Closest: chunk 6 \"Key Concepts\" L43 \"Each agent built makes the next one quicker. That is how you and the people around you learn faster.\" restates Big Idea L5 (class a). Stays inside: Key Concepts is the module-shape mandated recap slide, and L49 adds the new organisation step rather than re-announcing. Next (L45-55) runs five paragraphs against the unnumbered '## Next is two plain sentences' ban; harm (a closer stealing the next module's slide) is absent as there is no next module, and the maintainer block L71 attests the closing paragraph and last line as deliberate (Antti 2026-11-13, team M8). Rule question for maintainer: the Next two-sentence rule says nothing about a final-module closer with no successor.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "git diff cf4fd816..HEAD touches one body paragraph in `## Next` (deleted 'We could have spent this course...'); no `##` line changed, so no retitle trigger; no provenance note 'header his' in the maintainer block.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -89,123 +215,11 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": null,
+      "na_reason": "no guess-before-reveal or live-demo beat in the body",
+      "fix_hint": "",
       "blocking": false,
-      "chunks_flagged": [],
-      "na_reason": "no guess-before-reveal or live-demo beat in the body"
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 5,
-      "rule_lead": "No orphan slides.",
-      "verdict": "PASS",
-      "evidence": "Thinnest: chunk 1 \"Big Idea\" lines 5: \"An agent can build the agent someone else needs. That is how you and the people around you learn faster.\" - self-carrying claim, not a wait-state.",
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 6,
-      "rule_lead": "Header self-carries at projection distance.",
-      "verdict": "PASS",
-      "evidence": "Closest: chunk 4 \"Start here\" lines 20-24 holds the session start, the question and the two links; chunk 6 \"Give it to them\" line 36 delivers exactly that action. Headers do not contradict content.",
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 7,
-      "rule_lead": "LLM-cadence caps.",
-      "verdict": "PASS",
-      "evidence": "grep body for 'Not X. Not Y.', anaphora triples, superlatives, number+retraction: none. Closest: line 47 \"Name your next gap. Describe the agent for it. An agent builds it;\" - sequential instructions with distinct verbs/subjects, each concrete, not anaphora or an empty-leg triplet; line 51 \"It would have demoed well and been the wrong thing to give you.\" is one declarative, not a Not-X-Not-Y.",
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 8,
-      "rule_lead": "Internal dialect never lands on a slide.",
-      "verdict": "PASS",
-      "evidence": "Body scan for surface/firing/compendium/beat/mood: zero. Closest: line 28 \"## Debrief\" is a canonical module-section name, exempt.",
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
-      "verdict": "REVISE",
-      "evidence": "chunk 2 \"Prework\": line 9: \"**Bring `module-6/trigger.md`, your Module 2 agent and your Module 5 judge.**\" - a whole 15-word lead sentence bolded, over the ~5-word handle cap. Harm (bold-everything monoculture) is present in miniature. Not a task-size callout (names artefacts, no floor/ceiling), so the 34 exception does not reach it; sibling Prework slides (getting-going, security, output-quality, evaluations) carry no bold, and the sibling is the answer. What You'll Learn bolds (lines 15-16) are template-mandated, N/A.",
-      "fix_hint": false,
-      "blocking": [
-        2
-      ],
-      "chunks_flagged": [],
-      "na_reason": "Plain sentence, or bold only the handle (e.g. 'Bring' list) in Prework."
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "PASS",
-      "evidence": "node scripts/slides.test.js -> '# cancelled 0 / # skipped 0', no failures; every section here is a top-level module `##` (Big Idea, Prework, ..., Next), the module-section shape the renderer includes. Per-layout render diff not run; unverified.",
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "PASS",
-      "evidence": "node scripts/check-slide-numbering.js --file <target> -> 'OK — 1 files, Phase/Step numbering consistent.' exit 0; no hand-numbered headers.",
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 12,
-      "rule_lead": "Page geometry dies at the cut; reading order survives.",
-      "verdict": "PASS",
-      "evidence": "node scripts/check-slide-deixis.js --file <target> -> 'OK — 1 files, no page-geometry pointers across the slide cut.' exit 0.",
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 14,
-      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
-      "verdict": "PASS",
-      "evidence": "node scripts/check-slide-size.js --file <target> -> 'slides: 8 ... oversized: 0' exit 0.",
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 16,
-      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
-      "verdict": "PASS",
-      "evidence": "Closest: chunk 7 \"Key Concepts\" line 43 \"Each agent built makes the next one quicker. That is how you and the people around you learn faster.\" re-states the Big Idea (line 5) and chunk 8 line 49 repeats it again, a third recitation (class a). Stays inside: Key Concepts is a template-mandated consolidation slide and the Next stance paragraph is attested by the maintainer Close/Known-weak-spot notes (lines 69-71); not filed. See suggestion.",
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 17,
-      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
-      "verdict": "PASS",
-      "evidence": "git diff 78d17fc9..HEAD: only added line 20 under \"Start here\" and the Quality block; no `##` line changed, so no retitle trigger. Closest: \"Start here\" line 22 still matches its header.",
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
+      "carried_from": "976bc74494cd5ff691bb84eb78b42d79be1fa3cdb8a752a73c72be0e9b1ad9e0",
+      "carried_shape": "950af40171bf7acf"
     },
     {
       "compendium": "check_slides.md",
@@ -216,7 +230,7 @@
       "na_reason": "only structural include-links (lines 22, 24); rule states review surface, no gate",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+      "carried_from": "976bc74494cd5ff691bb84eb78b42d79be1fa3cdb8a752a73c72be0e9b1ad9e0",
       "carried_shape": "950af40171bf7acf"
     },
     {
@@ -228,19 +242,19 @@
       "na_reason": "module file; headings are the module-shape canonical sections, not exercise or lecture headings",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "f8f3fdb65ebc7f140215d7935c8ca723990ab843062856e1cb8643d475c7868d",
+      "carried_from": "976bc74494cd5ff691bb84eb78b42d79be1fa3cdb8a752a73c72be0e9b1ad9e0",
       "carried_shape": "950af40171bf7acf"
     }
   ],
   "suggestions": [
     {
-      "rule": "check_slides.md §16",
-      "line": 49,
-      "now": "Every agent your agents build or improve makes the next one quicker to build. How far this goes depends on how fast you and the people around you learn.",
-      "proposed": "How far this goes depends on how fast you and the people around you learn."
+      "rule": "check_slides.md §9",
+      "line": 9,
+      "now": "**Bring `module-6/trigger.md`, your Module 2 agent and your Module 5 judge.** The trigger helps you name a person, the judge checks what an agent builds, and the Module 2 agent gets rewritten at the end.",
+      "proposed": "Bring `module-6/trigger.md`, your Module 2 agent and your Module 5 judge. The trigger helps you name a person, the judge checks what an agent builds, and the Module 2 agent gets rewritten at the end."
     }
   ],
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0,
-  "notes": "Chunk indices: Prework is chunk 2 (the REVISE row cites it). Maintainer accept-notes found: Quality stamp L59, Edition L63, Red thread L65, No handover step L67, Close L71 (none cover Prework bold). Brief built normally. Slide deck coverage in both layouts not render-diffed."
+  "nonblocking_findings_count": 1,
+  "notes": "Pin cf4fd816 diff-region: only change in body is cut sentence in ## Next. Accept-notes found: L59 Quality, L63 Edition, L65 Red thread, L67 No handover step, L71 Close (L69 Known weak spot also). None names slide-size/deixis acceptances. Chunk indices in chunks_flagged use chunk_map (Prework=2). Brief built normally."
 }

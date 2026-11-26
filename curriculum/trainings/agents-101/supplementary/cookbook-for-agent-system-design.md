@@ -276,7 +276,7 @@ Build agents that name their own ambiguity. They are more useful than agents tha
 
 ## Components
 
-Eleven named items the recipes lean on: seven pieces and four closed-set lists. Each is small enough to hold in head; each is referenced by name from the Index of agent shapes on this page. Many of the smaller bits live inside the recipes, `wonder.md`, the personal skill, `challenge.md`, and earn their names there rather than here.
+Eleven named items the recipes lean on: seven pieces and four closed-set lists. Each is small enough to hold in head; each is referenced by name from the Index of agent shapes on this page. Many of the smaller bits live inside the recipes and `challenge.md`, and earn their names there rather than here.
 
 **The three layers.** Raw sources (the originals, untouched), the memory (maintained by the agent, sharpens over time), and the root instructions file that keeps the shape consistent. The architectural stack of every compounding system. Most agent failures look like bugs and are layer confusion: a rule written into memory, a source written into rules, the system stops behaving like a system. From R2.
 

@@ -118,6 +118,7 @@ M1_PHASE2="$(cat "$ANSWERS/m1-phase2.txt")"
 M1_STRENGTHS="$(cat "$ANSWERS/m1-strengths.txt")"
 M1_HATELIST="$(cat "$ANSWERS/m1-hatelist.txt")"
 M1_ITERATE="$(cat "$ANSWERS/m1-iterate.txt")"
+M1_CHANGED_MOST="$(cat "$ANSWERS/m1-changed-most.txt")"
 M2_CHALLENGE="$(cat "$ANSWERS/m2-challenge.txt")"
 M2_CURATION="$(cat "$ANSWERS/m2-curation-where.txt")"
 M2_INGEST="$(cat "$ANSWERS/m2-ingest.txt")"
@@ -155,6 +156,7 @@ subst() {
   body="${body//<M1_STRENGTHS>/$M1_STRENGTHS}"
   body="${body//<M1_HATELIST>/$M1_HATELIST}"
   body="${body//<M1_ITERATE>/$M1_ITERATE}"
+  body="${body//<M1_CHANGED_MOST>/$M1_CHANGED_MOST}"
   body="${body//<M2_CHALLENGE>/$M2_CHALLENGE}"
   body="${body//<M2_CURATION>/$M2_CURATION}"
   body="${body//<M2_INGEST>/$M2_INGEST}"
@@ -241,7 +243,9 @@ assert_turn() {
     m1:2) assert_file_mtime_advanced "m1 T2 site regen (StoryBrand)" "$sut_cwd/module-1/site.html" "$base" ;;
     m1:3) assert_file_mtime_advanced "m1 T3 site regen (strengths)" "$sut_cwd/module-1/site.html" "$base" ;;
     m1:4) assert_file_mtime_advanced "m1 T4 site regen (anti-branding)" "$sut_cwd/module-1/site.html" "$base" ;;
-    m1:5) assert_or_warn assert_scrollback_grep "m1 T5" "$t" 'generic|statistical|default|could (apply|appear)|anyone' ;;
+    m1:5)
+      assert_file_exists "m1 T5 context trace" "$sut_cwd/module-1/context-trace.md" || return 1
+      assert_or_warn assert_scrollback_grep "m1 T5" "$t" 'generic|statistical|default|could (apply|appear)|anyone' ;;
     m1:6) assert_file_mtime_advanced "m1 T6 free-iteration restyle" "$sut_cwd/module-1/site.html" "$base" ;;
     m1:7) assert_file_exists "m1 T7 generation rules" "$sut_cwd/module-1/personal-brand-generation.md" ;;
     m1:8) assert_file_mtime_advanced "m1 T8 rules-retro rewrite" "$sut_cwd/module-1/personal-brand-generation.md" "$base" ;;

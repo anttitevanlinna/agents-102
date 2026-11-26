@@ -2,14 +2,14 @@
   "class": "slides",
   "file": "curriculum/slides/context-is-whatever-you-tell-it.md",
   "training": "shared",
-  "verdict": "PASS",
-  "body_sha": "428634a5a72d2642e2d6b2aaea4be79f00f38cd6086683b70facc55f6884ca66",
-  "shape_hash": "006a06e380558a37",
+  "verdict": "REVISE",
+  "body_sha": "6a2031a297cd0dfb1b7870a4318fc6ad2fcf8b0d3d84ffac0c4b7c6e72acdd91",
+  "shape_hash": "faca2d92fd504941",
   "chunk_map": [
     {
       "index": 0,
       "heading": "Context is whatever you tell it",
-      "lines": "1-10"
+      "lines": "1-9"
     }
   ],
   "rules_evaluated": [
@@ -18,7 +18,8 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "evidence": "line 6 \"Then the same second prompt about dinner.\" (closest): antecedent is named on the immediately preceding deck slide same-question-two-answers (\"What should we have for dinner?\"), host include order context-is-king.md lines 6-10 puts it two slides back, and \"dinner\" plus \"the first prompt\" at line 4 let the chunk stand on its own; line 8 \"Claude\" names the system for every \"it\". Harm (referent never named) absent.",
+      "evidence": "L4 \"Then the same dinner prompt.\" comes closest: 'dinner prompt' is named in sibling slide same-question-two-answers (\"What should we have for dinner?\"), not in this file; it is the immediate continuation of the preceding demo, and every host (context-is-king.md L18-22, claude-basics include) places that slide two before this one.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -28,7 +29,8 @@
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "evidence": "line 4 \"One more window.\" (closest): points at the earlier window by continuation of the preceding slide subject (rule 1 NOT-violation \"one more session\"), not at another file by position; no \"the opening lecture\" style callback in 10 lines.",
+      "evidence": "grep of body_numbered for 'earlier|opening|lecture|module' returns nothing; L4 'One more window' is a same-demo continuation, not a positional pointer.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -38,7 +40,8 @@
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
-      "evidence": "line 8 \"The suggestion shifts again.\" (closest backward ref): \"again\" resolves to the shift in same-question-two-answers, which exists in the host lecture include order (context-is-king.md line 6). No \"the X you did/saw\" in body.",
+      "evidence": "L4 'the same dinner prompt' resolves: lectures/context-is-king.md L18 includes same-question-two-answers, whose dinner question is the beat.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -47,18 +50,22 @@
       "compendium": "check_slides.md",
       "rule_index": 4,
       "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "PASS",
-      "evidence": "line 6 \"Then the same second prompt about dinner.\" (closest, verbless setup): muted read still yields a scene because line 4 quotes the first prompt and line 8 carries the verbed reveal; no guess cue anywhere (grep \"guess|before it runs|Take a guess\" -> 0), so no reveal-before-guess inversion. Harm (beat with no scene) not present; see suggestions.",
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
+      "verdict": "REVISE",
+      "evidence": "chunk 0 \"Context is whatever you tell it\": L4: \"One more window. First prompt: ... Then the same dinner prompt.\" Muted read: three verbless fragments set the scene (no one types, asks or opens anything), same shape as the rule's 'The same question, two answers.' example. Harm (beat has no scene without the trainer) is present. Reveal at L6 correctly follows, so ordering is fine; the 2026-10-06 version had verbed sentences ('The suggestion shifts again... You told it'). No accept-note.",
+      "na_reason": null,
+      "fix_hint": "Give L4 a verbed scene: 'In a new window you open with ...; then you ask the same dinner question.'",
+      "blocking": true,
+      "chunks_flagged": [
+        0
+      ]
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "evidence": "chunk 0 line 10 \"Context is whatever you tell it. A fact. A role...\" carries a self-standing claim plus an example (lines 4-8); not a wait-state.",
+      "evidence": "L8 carries the claim 'Context is whatever you tell it: a fact, a role, a preference.'; slide stands alone as the definition.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -68,7 +75,8 @@
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "evidence": "line 1 header \"Context is whatever you tell it\" vs line 10 which states the same claim and lines 8 which demonstrate it; nothing in the chunk contradicts the header.",
+      "evidence": "Header L1 'Context is whatever you tell it' is repeated as the claim at L8 and L6 shows the cardiologist example; nothing contradicts it.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -78,7 +86,8 @@
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "evidence": "line 8 \"Not because Claude knows medicine better than Italian cooking.\" (closest): single \"Not X\" clause followed by a full declarative (\"You told it who you are...\"), not the Not X. Not Y. Z. triple; line 10 \"A fact. A role. A preference. A constraint.\" is a four-item enumeration of new concrete content after a verbed sentence, not repeated-verb anaphora; no superlatives, no number+retraction, no abstraction-noun stacks, no empty verb triplet.",
+      "evidence": "No 'Not X. Not Y.'; L8 'a fact, a role, a preference' is a noun list with concrete members, not anaphora or verb triplet; no superlative, no number+retraction, no abstraction-noun stack.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -88,7 +97,8 @@
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "evidence": "grep for firing|compendium|forcing function|beat|mood|surface|Connections over body -> 0 hits (manual, 11 lines); vocabulary is plain.",
+      "evidence": "grep for compendium|surface|firing|beat|mood|forcing function in body_numbered: 0; 'window' and 'prompt' are ordinary engineer vocabulary.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -98,7 +108,8 @@
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "evidence": "grep \"\\*\\*\" over body -> 0 bold spans (italics only at lines 4); budget <=1 met.",
+      "evidence": "grep '\\*\\*' in body_numbered: 0 bold elements (italic on the quoted prompt only).",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -108,7 +119,8 @@
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "evidence": "Slide file is inlined by lectures/context-is-king.md line 10 (and claude-basics personal-site-with-guardrails by id); the include line is a standalone-paragraph link, the renderer-supported shape. Not a phase-less prose section.",
+      "evidence": "Included as a standalone include line at curriculum/lectures/context-is-king.md L22 and via #id borrow in claude-basics/personal-site-with-guardrails.md L28, so it reaches the deck; slide file is a single ## chunk.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -117,9 +129,9 @@
       "compendium": "check_slides.md",
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "no Phase/Step headers or ordinals in the chunk",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-numbering.js --file <target> -> 'OK — 1 files, Phase/Step numbering consistent.'",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -129,7 +141,8 @@
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-deixis.js -> \"OK — 59 files, no page-geometry pointers across the slide cut.\"",
+      "evidence": "node scripts/check-slide-deixis.js --file <target> -> 'OK — 1 files, no page-geometry pointers across the slide cut.'",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -140,7 +153,7 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "no in-body links (grep \"](\" -> 0); rule has no verdict surface here",
+      "na_reason": "no links in body (signals.has_urls false, no [..](..) in body)",
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -150,7 +163,8 @@
       "rule_index": 14,
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-size.js --file curriculum/slides/context-is-whatever-you-tell-it.md -> \"oversized: 0\", 1 slide, limits 210 words / 6 bullets (file is about 80 words, 0 bullets).",
+      "evidence": "node scripts/check-slide-size.js --file <target> -> 'oversized: 0 ... every slide is within limits'",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -160,7 +174,8 @@
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
-      "evidence": "line 1 \"Context is whatever you tell it\" is a claim heading in a lecture slide, matching the lecture-claim grammar.",
+      "evidence": "Lecture-borrowed slide; L1 'Context is whatever you tell it' is a claim, as lecture headings should be.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -170,7 +185,8 @@
       "rule_index": 16,
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
-      "evidence": "line 10 \"Context is whatever you tell it. ... All of it colors what comes next.\" (closest, class (c) kicker): it restates the header, but it is the slide payoff that adds the four kinds of context (fact, role, preference, constraint) and the \"colors what comes next\" mechanism the example alone does not name; not a koan under a separate point line. Lines 4-8 are the example, not doctrine restatement or design commentary.",
+      "evidence": "L8 comes closest to class (c) by echoing the L1 header, but it adds the enumeration 'a fact, a role, a preference' and is the term's definition on the slide where the term is earned; L6 'You told the LLM who you are' states the mechanism, not design commentary.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -179,9 +195,9 @@
       "compendium": "check_slides.md",
       "rule_index": 17,
       "rule_lead": "A retitled slide re-earns its bullets against the new header.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "git log shows one commit for the file (the pilot cut); no header rename over inherited bullets",
+      "verdict": "PASS",
+      "evidence": "git diff b58bcc4c..HEAD: the '## Context is whatever you tell it' line is unchanged; body was rewritten against the same header.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -191,11 +207,16 @@
     {
       "rule": "check_slides.md §4",
       "line": 4,
-      "now": "One more window. The first prompt: *\"I'm a cardiologist preparing dinner for my patients.\"*\n\nThen the same second prompt about dinner.",
-      "proposed": "In one more window, the first prompt is *\"I'm a cardiologist preparing dinner for my patients.\"* Then comes the same second prompt about dinner."
+      "now": "One more window. First prompt: *\"I'm a cardiologist preparing dinner for my patients.\"* Then the same dinner prompt.",
+      "proposed": "In one more window you open with *\"I'm a cardiologist preparing dinner for my patients.\"* Then you ask the same dinner question."
     }
   ],
-  "blocking_findings_count": 0,
+  "blocking_findings_count": 1,
   "nonblocking_findings_count": 0,
-  "notes": "No maintainer block in this slide file (accept_notes empty). Slide file judged for fit in host lecture context-is-king.md (include order lines 6-10: same-question-two-answers, reads-whole-conversation, this slide). Lines 4 and 6 are verbless scene-setting fragments (check_writing.md §28 face, owned by writing class); slide still reads on a muted read, so suggestion only. Claude Basics includes the same four slides by id so the referents hold there too."
+  "notes": "Accept-notes in maintainer block: only the Quality line (2026-10-06); no accept-note covers the L4 verbless setup. Host dinner question lives in slides/same-question-two-answers.md.",
+  "resolution": {
+    "settled": "refuted",
+    "at": "2026-11-26",
+    "note": "Both refuters killed every blocking finding, so the row stamps PASS:verify-refuted and this REVISE stays as the record. slides §4 (second failure, muted read; check_writing §28) line 4: harm: The rule match is real, but the finding does not hold up as BLOCKING. Checked: the file, `check_slides.md §4`, `check_writing.md §28`, the instance JSON, the host lecture and git history.\n\nFacts the judge got right:\n- L4 has three verbless fragments: \"One more window.\" / \"First prompt: *...*\" / \"Then the same dinner prompt.\"\n- The reveal at L6 follows the setup.\n- The maintainer block has no accept-note.\n\n(a) Harm is tidiness, not a broken beat.\n- Nothing is left to the trainer's finger. There is no screen deictic and no \"take a guess before it runs\".\n- The setup quotes the exact prompt: *\"I'm a cardiologist preparing dinner for my patients.\"* \"The same dinner prompt\" resolves on the preceding slide, `same-question-two-answers`, which uses \"What should we have for dinner?\" and \"Same dinner question\".\n- A self-study reader in `claude-basics` gets all of this in text. The include order is cover, same-question, reads-whole, this slide, so the referent is on the page.\n- This is not the canonical failure (\"The same question, two answers. Two Claude Code sessions.\"), where the scene itself is missing.\n\n(d) Another line carries the meaning. L6 (\"The suggestion shifts: heart-healthy... You told the LLM who you are.\") restates the whole scenario. L8 closes the beat. A reader loses nothing if L4 stays as is.\n\n(e) The judge's baseline is partly wrong.\n- It says the 2026-10-06 version \"had verbed sentences\". That is true only of the reveal paragraph.\n- By `git show`, the 2026-10-06 setup was \"One more window. The first prompt: *...*\" plus \"Then the same second prompt about dinner.\", which is verbless in the same way.\n- That version passed the slides judge at @b58bcc4c under the same §4, which carries the \"Second failure (2026-09-13)\" clause. Under the same rule text, the shape passed before and is now BLOCKING.\n- The only change to the setup was commit 25c825e3, a deliberate language compaction pass that merged the two fragments. It did not introduce a new defect class.\n\n(c) The fix has a cost. It re-expands a passage that the maintainer's compaction pass deliberately tightened. It is small, but it works against that direction for no reader benefit. The same pass also gave L6 its \"LLM\" wording.\n\nBLOCKING severity is unwarranted for a slide whose scene a reader can fully reconstruct."
+  }
 }

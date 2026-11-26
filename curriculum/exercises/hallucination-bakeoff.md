@@ -103,21 +103,21 @@ This was **Recipe 5**. The [Cookbook for Agent System Design](../trainings/agent
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing PASS (verify-refuted, 6 findings see instances/agents-101--exercise--hallucination-bakeoff.writing.json), story PASS, technical PASS (3 findings see instances/agents-101--exercise--hallucination-bakeoff.technical.json), behavior PASS, pedagogy REVISE (2/1 see instances/agents-101--exercise--hallucination-bakeoff.pedagogy.json), strategy PASS, slides PASS (verify-refuted, 1 finding see instances/agents-101--exercise--hallucination-bakeoff.slides.json)
 
 **TODO (Cowork edition review 2026-04-29):**
 - Phase 1 prompt still says "Spawn one subagent" / "Instructions for the subagent" / "When the subagent finishes" in the Cowork edition. Later detector prompt is already runtime-forked correctly. Prompt-block change is gated: propose before/after before editing.
 
 **Pattern: benchmarking.** One of the three designated magic beats in M3–M8 (alongside M3 multi-retriever + multi-stance and M8 agents-building-agents). The student operates as the scorer setup-and-observer, not as the classifier. Claude audits Claude; the student reads the scoreboard and saves the winner.
 
-**Mood contract — mechanical rescue.** The student leaves M3/M4 uneasy. M5's rescue is watching the benchmark name the winner measurably — *"ahh, this is actually fixable."* Key: do NOT resolve M3's strategic uncertainty or M4's security residual. Only the groundedness sub-problem gets rescued, and only for the shape of output the benchmark tested. The body line about 30 claims vs production's hundreds and the judge's "Known limit:" line keep the broader uncertainty alive.
+**Mood contract — mechanical rescue.** The student leaves M3/M4 uneasy. M5's rescue is watching the benchmark name the winner measurably — *"ahh, this is actually fixable."* Key: do NOT resolve M3's strategic uncertainty or M4's security residual. Only the groundedness sub-problem gets rescued, and only for the shape of output the benchmark tested. The judge's "Known limit:" line keeps the broader uncertainty alive. The body no longer carries the 30-claims-vs-production's-hundreds line; the trainer says it.
 
 **Understandable magic bar.** After the exercise the student must be able to say, unprompted: *"four detectors ran in parallel on the same claim pool, a scorer adjudicated 30 claims, detector X won because it caught Y, now I have a judge file I trust for this shape of output."* No black-box move anywhere. If any phase leaves the student unable to describe what just happened, the phase is broken.
 
 **Walk-away calibration.** M5 is "bounded benchmark run" on the ramp — NOT walk-away. The student sets up the benchmark, starts the run, watches it execute (~20 min across Phases 1 and 2 combined). They don't leave the chair; they also don't classify by hand. Watching the scoreboard fill is the visceral moment.
 
-**Benchmark = 30 claims, deliberately.** Not statistical. Enough to start seeing the pattern without creating much processing work. The scale-up ("production judges want hundreds") is M6's problem, named out loud here so the student sees the seam.
+**Benchmark = 30 claims, deliberately.** Not statistical. Enough to start seeing the pattern without creating much processing work. The scale-up ("production judges want hundreds") is M6's problem; the trainer names it out loud so the student sees the seam (the body does not).
 
 **Frameworks riffed on:**
 - **Benchmarking** — from ML community work; Antti-run pattern. Empirical method selection beats authority ("this method is best").
@@ -140,6 +140,8 @@ This was **Recipe 5**. The [Cookbook for Agent System Design](../trainings/agent
 - **Scorer hedges.** It picks "all four are useful" rather than naming a winner. Coach: *"Re-run and force a pick — the ensemble is a two-method stack, not a four-method hug."*
 - **The scoreboard looks clean and the student doesn't read it.** The scoreboard IS the explanation. If the student skips to Phase 4, the mood beat is stolen. Phase 3's "which row surprised you?" gate forces the read; if the student's one-sentence answer is generic ("the scoreboard was interesting"), push back: *"name the row, name the number, name why."*
 - **The judge file sprawls.** Student lets Claude write a 60-line judge. Coach: *"Under 20 lines. A judge that tries to do everything does nothing well."*
+- **Five marks done at random.** The student marks five claims without thinking, so the scorer-agreement row means nothing. Coach: *"Mark the five you would bet against."*
+- **Doubted line missing or deferred to.** `module-3/briefing-baseline.md` has no `## Doubted line` (student skipped the M3 freeze), or the student just accepts the judge's verdict. Escape: have them pick the line now, before the verdict shows; if they defer, ask whether the evidence lines change their mind.
 - **Self-consistency demo treated as the judge.** The demo can show drift, but it does not decide the winning groundedness judge. Coach: *"Self-consistency is a warning light, not the yardstick."*
 
 **Push-back moves (host varies — trainer by default; Teacher Claude in self-study):**
@@ -160,8 +162,8 @@ This was **Recipe 5**. The [Cookbook for Agent System Design](../trainings/agent
 
 **Mood check (before shipping):**
 - M5's mood is mechanical rescue — *"ahh, this is actually fixable."* The Close must land there. The scoreboard moment is the rescue beat — a student who scrolls past it steals their own mood.
-- Security residual (M4) and strategic uncertainty (M3) should still be present at the end of M5. The Close's "what the judge won't catch" line names the scope of the rescue.
-- Hand-off to M6 is hunger, not closure — *"30 claims here; imagine hundreds running on every build"* is the seam.
+- Security residual (M4) and strategic uncertainty (M3) should still be present at the end of M5. The judge's "Known limit:" line names the scope of the rescue; the Close now carries the doubted-line verdict, not a separate limit line.
+- Hand-off to M6 is hunger, not closure — *"30 claims here; imagine hundreds running on every build"* is the seam, said by the trainer. The body hands off through `module-5/baseline-score.md`.
 
 **Delineation with M6:**
 - M5 ships a hand-run benchmark producing one judge file against a 30-claim reference set.

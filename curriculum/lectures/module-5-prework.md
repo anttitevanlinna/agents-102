@@ -41,8 +41,8 @@ Read:
 One sentence per case: *"The organisational check that would have caught this was X."*
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@5fc7188 pedagogy@ab36a5e6 strategy@5fc7188 slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@5fc7188 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing PASS (1 finding see instances/agents-101--lecture--module-5-prework.writing.json), story PASS (verify-refuted), technical PASS, behavior PASS, pedagogy REVISE (1/0 see instances/agents-101--lecture--module-5-prework.pedagogy.json), strategy PASS (1 finding see instances/agents-101--lecture--module-5-prework.strategy.json), slides PASS (1 finding see instances/agents-101--lecture--module-5-prework.slides.json)
 
 **Time:** 40 minutes. 10 per case, 15 for the mechanisms, 5 for the two sentences.
 

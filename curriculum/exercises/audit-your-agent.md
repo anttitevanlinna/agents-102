@@ -102,8 +102,8 @@ This was **Recipe 4**: the two-lens audit, four agent-risk patterns, five mitiga
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (behavior@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS (verify-refuted, 1 finding see instances/agents-101--exercise--audit-your-agent.pedagogy.json), strategy PASS, slides PASS
 
 **TODO (Claude Code Desktop edition review 2026-04-29):**
 - Desktop skill-install step is body-only, not a prompt block, so `scripts/extract-training-prompts.js --training agents-101 --flavor desktop` under-represents the Desktop load path. Decide whether to label the Desktop install as a prompt or teach the extractor to capture install-instruction blocks.

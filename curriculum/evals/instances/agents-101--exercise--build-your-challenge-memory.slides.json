@@ -1,69 +1,70 @@
 {
   "class": "slides",
   "file": "curriculum/exercises/build-your-challenge-memory.md",
-  "body_sha": "9ca4a3ad413f5350987a10a3551a16c61026b7e66f9d950380c9331f8f133ece",
-  "verdict": "PASS",
   "training": "agents-101",
+  "verdict": "PASS",
+  "body_sha": "ee1becc2b0c390c32c8c93732badf1c3779d2d13d0206c9200e40a272009619c",
+  "shape_hash": "9c06191b7c550e87",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "# Exercise: Build your challenge *memory*",
-      "lines": "1-12"
+      "heading": "Exercise: Build your challenge memory (H1 + lede)",
+      "lines": "1-10"
     },
     {
       "index": 1,
       "heading": "Phase 1: Curate, ingest, build",
-      "lines": "13-22"
+      "lines": "11-20"
     },
     {
       "index": 2,
-      "heading": "Keep the heavy reads under control",
-      "lines": "23-28"
+      "heading": "Approve the plan before the files change",
+      "lines": "21-28"
     },
     {
       "index": 3,
       "heading": "Curate the source plan",
-      "lines": "29-50"
+      "lines": "29-36"
     },
     {
       "index": 4,
       "heading": "Ingest the sources",
-      "lines": "51-74"
+      "lines": "37-46"
     },
     {
       "index": 5,
       "heading": "Build the memory under a plan",
-      "lines": "75-104"
+      "lines": "47-54"
     },
     {
       "index": 6,
       "heading": "Review the plan, then have the memory audit itself",
-      "lines": "105-123"
+      "lines": "55-66"
     },
     {
       "index": 7,
       "heading": "Phase 2: Your first custom agent",
-      "lines": "124-156"
+      "lines": "67-80"
     },
     {
       "index": 8,
       "heading": "Phase 3: Compound",
-      "lines": "157-180"
+      "lines": "81-92"
     },
     {
       "index": 9,
       "heading": "Phase 4: Let it maintain itself",
-      "lines": "181-199"
+      "lines": "93-100"
     },
     {
       "index": 10,
       "heading": "Phase 5: Close, put it to work",
-      "lines": "200-218"
+      "lines": "101-112"
     },
     {
       "index": 11,
       "heading": "Take stock of the system you built",
-      "lines": "219-232"
+      "lines": "113-124"
     }
   ],
   "rules_evaluated": [
@@ -72,153 +73,206 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: Build your challenge *memory*”, line 1: “# Exercise: Build your challenge *memory*”. This closest body line does not express the prohibited shape.",
+      "evidence": "Closest: chunk 10 \"Phase 5: Close, put it to work\" line 111 \"the system answers ... the bare one cannot\" - resolves in-chunk via the prompt's Bare/System headings (expanded view); line 9 \"the same session\" is a session artifact (carve-out). Harm (unresolvable referent) absent.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: Build your challenge *memory*”, line 1: “# Exercise: Build your challenge *memory*”. This closest body line does not express the prohibited shape.",
+      "evidence": "Closest: line 123 link to \"Cookbook for Agent System Design\" names the document by title; line 9 \"from prework\" is a named navigational pointer; no 'the opening lecture' style callbacks (grep of body for 'opener|opening' -> none in body).",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no “the X you did/saw/caught” backward-beat reference appears in the expanded body of curriculum/exercises/build-your-challenge-memory.md.",
+      "verdict": "PASS",
+      "evidence": "Closest: line 111 \"a line built on the Phase 3 source\" and line 107 \"the agent you built in Phase 2\" both resolve to Phase 3 (line 81-91) and Phase 2 (line 67-79) in-file; line 9 'from prework' is navigational.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 4,
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no guess/predict-before-reveal instruction appears in the expanded body of curriculum/exercises/build-your-challenge-memory.md.",
+      "evidence": null,
+      "na_reason": "no guess-before-reveal or live-demo beat; no 'take a guess' cue; muted read: line 107 setup is verbed",
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: Build your challenge *memory*”, line 1: “# Exercise: Build your challenge *memory*”. This closest body line does not express the prohibited shape.",
+      "evidence": "Thinnest chunk 9 'Phase 4' (lines 93-100) carries a prompt plus line 99 'Reject proposals that miss; the agent applies the ones you approve.' - self-carrying; chunk 2 lines 23-25 states the plan-first claim.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: Build your challenge *memory*”, line 1: “# Exercise: Build your challenge *memory*”. This closest body line does not express the prohibited shape.",
+      "evidence": "Closest: chunk 6 line 55 'Review the plan, then have the memory audit itself' - body lines 57-63 do both; chunk 11 line 113 'Take stock of the system you built' matches recap lines 117-123.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: Build your challenge *memory*”, line 1: “# Exercise: Build your challenge *memory*”. This closest body line does not express the prohibited shape.",
+      "evidence": "Closest: line 105 'not \"summarize the sources.\"' and line 117 'files you keep, not a thread you close' - single contrasts, no Not X. Not Y. Z.; no triples/superlatives/number-retractions/abstraction stacks; line 25 verb run stop/steer/say 'continue' each concrete.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: Build your challenge *memory*”, line 1: “# Exercise: Build your challenge *memory*”. This closest body line does not express the prohibited shape.",
+      "evidence": "Closest: line 15 'Three beats:' and labels 'Beat 1. Curate.' (31, 39, 49): 'beat' is on the rule's dialect list, but here it is the file's own step label, defined in-line at line 15 and used as the student-facing sequence name, not as a pedagogy term (no demo-beat sense); harm (room cannot parse) absent. Rule question for maintainer: whether 'beat' as a self-defined step label is dialect; unchanged from the 4d9c4af2 PASS text. No firing/compendium/surface-as-noun hits.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: Build your challenge *memory*”, line 1: “# Exercise: Build your challenge *memory*”. This closest body line does not express the prohibited shape.",
-      "fix_hint": null,
-      "blocking": false
+      "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
+      "verdict": "REVISE",
+      "evidence": "chunk 1 \"Phase 1: Curate, ingest, build\": line 17 \"**Always comply with your company's AI policy.**\" (7-word whole lead sentence, over the 5-word handle cap) plus line 19 \"**Ease yourself in.**\" = 2 bolded elements on a 4-line narrative slide (budget <=1). Harm: emphasis dilution / bolded-lead-sentence monoculture is present in miniature. No Sec 34 or LO-template exemption applies. Other chunks: 1 handle each (Beat labels, Recipe 2); chunk 11 'What happened:'/'The point:' are the exercise closer's mandated mode labels.",
+      "na_reason": "Bold only the handle: **Always comply** with your company's AI policy; or de-bold one of the two leads.",
+      "fix_hint": [
+        1
+      ],
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: Build your challenge *memory*”, line 1: “# Exercise: Build your challenge *memory*”. This closest body line does not express the prohibited shape.",
+      "evidence": "Every body line sits under H1 lede or a ## heading (12 chunks, signals slide_count 11 + title); no phase-less prose; file is included by a standalone-paragraph link at curriculum/trainings/agents-101/building-agent-systems.md:39. Both-layout render diff not run (unverified mechanically).",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-numbering.js --file curriculum/exercises/build-your-challenge-memory.md --report; real output:\ncurriculum/exercises/build-your-challenge-memory.md: Phase 1–5 (5 headers)\n(exit status 0).",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/exercises/build-your-challenge-memory.md -> 'OK - 1 files, Phase/Step numbering consistent.' exit 0; Phase 1..5 consecutive, refs at lines 107/111 resolve.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-deixis.js --file curriculum/exercises/build-your-challenge-memory.md --report; real output:\n(no output)\n(exit status 0).",
+      "evidence": "node scripts/check-slide-deixis.js --file ... -> 'OK - 1 files, no page-geometry pointers across the slide cut.' exit 0; grep -nE 'below|above|further down|see below' on raw source: only fenced prompt text inside same chunk as its paste block (prompt 7 'Take the source below', chunk 8).",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 13,
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no in-deck link inventory is present in the expanded body of curriculum/exercises/build-your-challenge-memory.md; the mechanism is not implicated.",
+      "verdict": "PASS",
+      "evidence": "Only link: line 123 [Cookbook for Agent System Design](...) names the document in its text so the sentence works stripped; review surface, no rule to gate.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
-      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-size.js --file curriculum/exercises/build-your-challenge-memory.md; real output:\n======================================================================\nSlide-size check — agentic-engineering-101\n  files: 1   slides: 11   limits: 210 words / 6 bullets\n  oversized: 0\n======================================================================\n\n✓ every slide is within limits\n(exit status 0).",
+      "evidence": "node scripts/check-slide-size.js --file ... -> 'oversized: 0 / every slide is within limits' exit 0.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Raw lines 13-139: body headings such as \"Phase 1: Curate, ingest, build\" and \"Take stock of the system you built\" are imperatives or phase labels, the required exercise grammar; no declarative law-heading is present.",
+      "evidence": "Closest: line 21 'Approve the plan before the files change' and line 55 'Review the plan, then have the memory audit itself' are imperatives; Phase 1-5 labels and line 113 'Take stock of the system you built' imperative; no declarative headings needed, none misplaced.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "Closest: line 65 'Ask for a plan on anything that touches many files or compounds over steps; skip it when one focused prompt will do.' restates plan-first (lines 23, 49) but adds the new skip-condition, so it earns its slot; line 63 'That list is your first quality check.' names the object (memory/soft-pages.md). No koan kickers. Alternative trim offered as suggestion.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "Diff 4d9c4af2..HEAD retitled '## Keep the heavy reads under control' to '## Approve the plan before the files change' and rewrote the body in the same commit: lines 23-25 (ask for a plan first; stop reading, steer, 'continue') answer the new header; no inherited old-job bullets remain.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
     }
   ],
+  "suggestions": [
+    {
+      "rule": "check_slides.md \u00a79",
+      "line": 17,
+      "now": "**Always comply with your company's AI policy.** Its rules on what can go through an LLM hold here.",
+      "proposed": "**Always comply** with your company's AI policy. Its rules on what can go through an LLM hold here."
+    },
+    {
+      "rule": "check_slides.md \u00a716",
+      "line": 65,
+      "now": "Ask for a plan on anything that touches many files or compounds over steps; skip it when one focused prompt will do.",
+      "proposed": "Skip the plan when one focused prompt will do."
+    }
+  ],
+  "notes": "Accept-notes in maintainer block: none beyond the L127 Quality stamp (no Slide size/deixis accepts). Rule 4 is N/A (no guess beat); rule-8 'beat' use flagged as a rule question only. Task text said 'run the 7-module public version, not the 8-module'; this file is not module-versioned, so no effect on the verdict. Both-layout render not run.",
   "blocking_findings_count": 0,
-  "shape_hash": "d58aa78cb0637ccf",
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 1
 }

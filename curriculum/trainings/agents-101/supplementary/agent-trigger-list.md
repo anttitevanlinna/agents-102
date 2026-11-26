@@ -130,8 +130,8 @@ Use the agent at the moment where context, judgment, repetition, or safe action 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@725101ec pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing PASS (2 findings see instances/agents-101--supplementary--agent-trigger-list.writing.json), story PASS (1 finding see instances/agents-101--supplementary--agent-trigger-list.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (3 findings see instances/agents-101--supplementary--agent-trigger-list.slides.json)
 
 **Placement:** Post-M6 supplementary. Designed as the Monday operating bridge if Modules 7 and 8 are not held.
 

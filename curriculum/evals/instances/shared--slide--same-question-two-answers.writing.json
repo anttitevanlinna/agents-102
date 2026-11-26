@@ -2,8 +2,8 @@
   "class": "writing",
   "file": "curriculum/slides/same-question-two-answers.md",
   "training": "shared",
-  "verdict": "PASS",
-  "body_sha": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
+  "verdict": "REVISE",
+  "body_sha": "447e58dd96fcbac187af86927bec77973e211653d6267c61fb95aa4a8640e1e4",
   "shape_hash": "3cc30efdf0c43abc",
   "rules_evaluated": [
     {
@@ -11,7 +11,7 @@
       "rule_index": 1,
       "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": "view grep banned_words CLEAN (planted-proof) -> 0 hits in body L1-14",
+      "evidence": "body greps: banned words, em-dash, leverage(v): 0 hits across lines 1-11",
       "fix_hint": null,
       "blocking": false
     },
@@ -20,7 +20,7 @@
       "rule_index": 2,
       "rule_lead": "Ritual / ceremony — hard ban",
       "verdict": "PASS",
-      "evidence": "view grep ritual_ceremony CLEAN -> 0 hits in body",
+      "evidence": "grep ritual|ceremony|practice(n): 0 hits in body 1-11",
       "fix_hint": null,
       "blocking": false
     },
@@ -28,17 +28,258 @@
       "compendium": "check_writing.md",
       "rule_index": 3,
       "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
-      "verdict": "PASS",
-      "evidence": "view greps session_biography, dated_line CLEAN -> 0 in body L1-14; closest: L18/L21 dated Quality stamp and accept-note, both below the cut at L16, stating what is true now",
-      "fix_hint": null,
-      "blocking": false
+      "verdict": "REVISE",
+      "evidence": "17: \"the guess cue sits above the Finnish answer and asks the reader to guess *before you read on*\" — body lines 1-11 carry no guess cue (lines 4-10 go straight from the dinner question to \"Finnish: salmon, rye bread.\"); the keep-note's positional claim fails, so it is VOID and shields nothing",
+      "fix_hint": "Maintainer decides: restore the cue above line 8, or rewrite the note to state what the body now holds and drop the claim that a text read has a guess cue (and the Claude Basics borrow clause that rests on it)",
+      "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 4,
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "L10 'Before you read on, take a guess.' is the closest to coach register, but it is concrete and peer-flat, and the L21 accept-note (Antti, 2026-10-06) authorises the cue; scene L4-8 is concrete and warm, no jargon",
+      "evidence": "lines 4-10: plain, warm, concrete second person (you ask), one counterintuitive contrast carried by the Italian/Finnish pair; fits Godin x Sutherland trio and AE101 quintet; no atmospheric imagery, no negation callout",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 7,
+      "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
+      "verdict": "PASS",
+      "evidence": "line 4: \"you ask\" is second person; grep \"the student\": 0; no trainer mechanics in body 1-11",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 8,
+      "rule_lead": "Don't smuggle terms of art from maintainer into body.",
+      "verdict": "PASS",
+      "evidence": "only term of art is \"context\" (line 10), the slide's own subject, shown by the Italian/Finnish contrast in lines 4-8, not a maintainer-only term",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 9,
+      "rule_lead": "Over-hedge detector.",
+      "verdict": "PASS",
+      "evidence": "lines 4-10: no reassurance-shaped sentence (no \"no penalty\", \"it's OK if\", \"fine way to\")",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 12,
+      "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no punchy slogan stated broader than the mechanism; line 10 is a plain claim the two answers demonstrate",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 13,
+      "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no value-prop, vendor or positioning framing in body 1-11; grep vendor: 0",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 14,
+      "rule_lead": "Watch out for planting jargon too early.",
+      "verdict": "PASS",
+      "evidence": "line 10 \"context\" is the term this slide teaches; no other jargon-shaped phrase in lines 1-11",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 17,
+      "rule_lead": "No combative verbs about the agent in body prose.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no verbs describing human-to-agent interaction beyond \"ask\"",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 18,
+      "rule_lead": "Headers must be literally true about the mechanism.",
+      "verdict": "PASS",
+      "evidence": "line 1 \"Same question, two answers\" is literally true: one dinner question, two sessions, two answers (lines 4-8)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 19,
+      "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
+      "verdict": "PASS",
+      "evidence": "lines 4-10: no empty negation, no \"That is the X\" drumroll, no bold-label echo, no citation duplication; line 10 adds the noun \"context\" the passage lacked",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 20,
+      "rule_lead": "Don't state a count the adjacent list already holds.",
+      "verdict": "PASS",
+      "evidence": "no numeral in body prose counting an adjacent list; \"two answers\" in the line 1 header is a handle and stays",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 21,
+      "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
+      "verdict": "PASS",
+      "evidence": "no only/always/never/nothing-else claim in body 1-11; \"largest lake in Finland\" is a quoted question and Saimaa is the largest, so no false-superlative reading",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 27,
+      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
+      "verdict": "PASS",
+      "evidence": "lines 4-10 state the concrete instance once and generalise in one sentence (line 10); the compaction is shorter than the pinned body, no abstract twin or second announcement",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 28,
+      "rule_lead": "Body prose stands without the trainer — no cue-card prose.",
+      "verdict": "REVISE",
+      "evidence": "6: \"In the other, *\\\"What is the largest lake in Finland?\\\"* Saimaa. Same dinner question.\" and 8: \"Finnish: salmon, rye bread.\" carry no verb and no named subject; \"In the other\" has no \"you ask\", so on the muted read the page never says the second session got the dinner question as an answer-giving turn, only that a fragment of \"Finnish\" follows. The carve-out for a fragment list after a verbed sentence covers \"Rome.\" and \"Italian: pasta...\" (line 4 is verbed) but not the second session, whose only verbed sentence sits two paragraphs up",
+      "fix_hint": "give the second session its own verb (\"you ask\") and let the dinner answer follow the question in the same paragraph, without a net increase in length (check_writing §27 fix bar)",
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 1,
+      "rule_lead": "Aspirational destination, never corrective gap.",
+      "verdict": "PASS",
+      "evidence": "lines 4-10 name no tier or deficiency and set no identity criterion; the claim is about the sessions, not the reader",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 2,
+      "rule_lead": "Earn every technical term on first use.",
+      "verdict": "PASS",
+      "evidence": "line 10 \"context\" is earned on-slide by the contrast between lines 4 and 6-8; no other term owes earning",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 3,
+      "rule_lead": "Business-audience word ban (Agents 101 default).",
+      "verdict": "PASS",
+      "evidence": "no unearned tech word an SVP marketing reader would flinch at; \"session\" and \"context\" are the deck's working words",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 4,
+      "rule_lead": "Memory vs context — use deliberately.",
+      "verdict": "PASS",
+      "evidence": "line 10 uses \"context\" for ambient runtime state that carries the first exchange into the next answer, not for persisted memory",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 14,
+      "rule_lead": "No em-dashes. Simple sentences.",
+      "verdict": "PASS",
+      "evidence": "grep em-dash in body 1-11: 0; sentences are short",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 21,
+      "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "body names no LLM, agent or Claude, so the vocabulary split has nothing to govern",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 22,
+      "rule_lead": "No time-of-day anchors in body prose.",
+      "verdict": "PASS",
+      "evidence": "grep tomorrow|overnight|this morning|tonight|yesterday in body 1-11: 0",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 23,
+      "rule_lead": "Reflection beats stay invisible in flow.",
+      "verdict": "PASS",
+      "evidence": "no reflection-beat header or contemplative-pause prefix in body 1-11",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 26,
+      "rule_lead": "Cut NVA: true but not moving student forward.",
+      "verdict": "PASS",
+      "evidence": "each of lines 4, 6, 8, 10 changes what the reader notices next; none is obvious-to-engineer filler",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 28,
+      "rule_lead": "Forward-callout closer: student as grammatical subject.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no forward-looking aside or callout closer in body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 31,
+      "rule_lead": "Name the artifact, not the act.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no act-verb around filler prompts; \"you ask\" precedes quoted question text that carries the ask",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 33,
+      "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
+      "verdict": "PASS",
+      "evidence": "subject of every sentence is the two sessions or their exchanges; no module, arc or later-beat positioning in lines 1-11",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 14,
+      "rule_lead": "Each fact once per page; no kicker closers.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "curriculum slide, not site, sponsor or pricing copy",
       "fix_hint": null,
       "blocking": false
     },
@@ -49,35 +290,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no named practitioner technique paraphrased",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 7,
-      "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
-      "verdict": "PASS",
-      "evidence": "view grep the_student CLEAN -> 0; body is second person throughout (L10 'you', 'your guess')",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 8,
-      "rule_lead": "Don't smuggle terms of art from maintainer into body.",
-      "verdict": "PASS",
-      "evidence": "no maintainer-only term in body L1-14; closest L14 'context', which the demo L4-12 earns",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 9,
-      "rule_lead": "Over-hedge detector.",
-      "verdict": "PASS",
-      "evidence": "closest L10 'Your guess reveals what you already know...' is a purpose clause, not reassurance; no 'no penalty / it's OK if' shapes in L1-14",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
+      "carried_shape": "3cc30efdf0c43abc"
     },
     {
       "compendium": "check_writing.md",
@@ -86,35 +302,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no practitioner attribution in body",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 12,
-      "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
-      "verdict": "PASS",
-      "evidence": "closest L14 'Same words. Different answer.' is a punch true of the scene shown (L6 vs L8 differ only in the first prompt), so no overreach to carve out",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 13,
-      "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
-      "verdict": "PASS",
-      "evidence": "no vendor/marketing/aspirational defensive framing in L1-14; closest L14 is a plain mechanism claim",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 14,
-      "rule_lead": "Watch out for planting jargon too early.",
-      "verdict": "PASS",
-      "evidence": "closest L14 'context' is the slide's own lesson, named after the demo that earns it; no jargon planted in a lead-in, header or prompt body",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
+      "carried_shape": "3cc30efdf0c43abc"
     },
     {
       "compendium": "check_writing.md",
@@ -123,53 +314,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no forcing function trimmed into a fenced prompt; no fences (signals has_code_fences false)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 17,
-      "rule_lead": "No combative verbs about the agent in body prose.",
-      "verdict": "PASS",
-      "evidence": "no combative verbs about the agent in L4-12; verbs are neutral 'answers', 'suggests'",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 18,
-      "rule_lead": "Headers must be literally true about the mechanism.",
-      "verdict": "PASS",
-      "evidence": "header L1 'Same question, two answers' is literally true: same second prompt L6/L8, different answer L6 vs L12",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 19,
-      "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
-      "verdict": "PASS",
-      "evidence": "closest L14 'Same words. Different answer.' is not (a) negation, (b) a drumroll restating a claim, (c) bold echo or (d) citation duplication; it states the observed result before the mechanism sentence",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 20,
-      "rule_lead": "Don't state a count the adjacent list already holds.",
-      "verdict": "PASS",
-      "evidence": "closest L4 'Two Claude chat windows.' counts the windows narrated L6 and L8 in prose, not a visible list; it seats the scene, no list to drift against",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 21,
-      "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
-      "verdict": "PASS",
-      "evidence": "closest superlative-shaped L14 'colored everything after' is scoped to this demo's dinner answer, not a world claim; no only/always/never",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
+      "carried_shape": "3cc30efdf0c43abc"
     },
     {
       "compendium": "check_writing.md",
@@ -178,62 +326,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no 'how you'd know' clause in body",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 27,
-      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
-      "verdict": "PASS",
-      "evidence": "closest L14 'The first exchange became part of context, and the context colored everything after.' is one concrete sentence; no abstract twin, no third sentence on one idea",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 28,
-      "rule_lead": "Body prose stands without the trainer — no cue-card prose.",
-      "verdict": "PASS",
-      "evidence": "muted read of L4-14 passes: every sentence has a verb and a named subject; L10 'it' = Claude (L6/L8); grep 'Take a guess' is report-only and covered by the L21 accept-note 'Guess before reveal' (Antti, 2026-10-06); L14 'Same words. Different answer.' follows verbed scene sentences (L12) so reads as result, not a cue set",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 1,
-      "rule_lead": "Aspirational destination, never corrective gap.",
-      "verdict": "PASS",
-      "evidence": "closest L10 'Your guess reveals what you already know' credits the reader; no 'you're missing' framing, no tier or identity split",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 2,
-      "rule_lead": "Earn every technical term on first use.",
-      "verdict": "PASS",
-      "evidence": "only candidate term is 'context' L14, earned by the two-window demo L4-12 directly above; 'Claude chat windows' is audience vocabulary",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 3,
-      "rule_lead": "Business-audience word ban (Agents 101 default).",
-      "verdict": "PASS",
-      "evidence": "no unearned tech word in L1-14 (SVP test: 'context' earned by the demo)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 4,
-      "rule_lead": "Memory vs context — use deliberately.",
-      "verdict": "PASS",
-      "evidence": "L14 'context' is ambient session state, which is what the demo shows; no 'memory' word in body",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
+      "carried_shape": "3cc30efdf0c43abc"
     },
     {
       "compendium": "check_student_facing.md",
@@ -242,8 +338,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no troubleshooting or recovery branch in body",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
+      "carried_shape": "3cc30efdf0c43abc"
     },
     {
       "compendium": "check_student_facing.md",
@@ -252,8 +350,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no instruction to diff or spot-check Claude output for errors",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
+      "carried_shape": "3cc30efdf0c43abc"
     },
     {
       "compendium": "check_student_facing.md",
@@ -262,8 +362,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no research callout box",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
+      "carried_shape": "3cc30efdf0c43abc"
     },
     {
       "compendium": "check_student_facing.md",
@@ -272,17 +374,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no editor, terminal or file-edit move asked of the student",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 14,
-      "rule_lead": "No em-dashes. Simple sentences.",
-      "verdict": "PASS",
-      "evidence": "view grep em_dash CLEAN -> 0 in body; sentences short",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
+      "carried_shape": "3cc30efdf0c43abc"
     },
     {
       "compendium": "check_student_facing.md",
@@ -291,8 +386,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "header names a scene, not a doing section",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
+      "carried_shape": "3cc30efdf0c43abc"
     },
     {
       "compendium": "check_student_facing.md",
@@ -301,17 +398,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no shared-word collision with a Claude Code primitive in body",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 21,
-      "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
-      "verdict": "PASS",
-      "evidence": "body says 'Claude' (L4-12) for the chat product and 'context' (L14) for the effect; no agent/LLM misuse",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
+      "carried_shape": "3cc30efdf0c43abc"
     },
     {
       "compendium": "check_student_facing.md",
@@ -320,35 +410,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no session/task/run vocabulary in body",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 22,
-      "rule_lead": "No time-of-day anchors in body prose.",
-      "verdict": "PASS",
-      "evidence": "grep tomorrow/overnight/tonight/this morning in L1-14 -> 0; 'dinner' L6 L8 is the prompt topic, not a time anchor",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 23,
-      "rule_lead": "Reflection beats stay invisible in flow.",
-      "verdict": "PASS",
-      "evidence": "closest L10 'Before you read on, take a guess.' is a command-verb transition carrying the prediction beat, not a labelled pause or wellness prefix; L21 accept-note authorises the cue",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 26,
-      "rule_lead": "Cut NVA: true but not moving student forward.",
-      "verdict": "PASS",
-      "evidence": "closest L10 'and what you're about to learn' adds little; the guess itself changes what the reader does, so the sentence stays; trim filed as suggestion under §33",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
+      "carried_shape": "3cc30efdf0c43abc"
     },
     {
       "compendium": "check_student_facing.md",
@@ -357,35 +422,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no artifact printed in chat that body says to read; demo answers are quoted inline",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 28,
-      "rule_lead": "Forward-callout closer: student as grammatical subject.",
-      "verdict": "PASS",
-      "evidence": "L10 'What will it suggest?' is a question to the reader, not a forward callout closer; no 'watch for' imperative, no role-gating, no training-as-subject",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 31,
-      "rule_lead": "Name the artifact, not the act.",
-      "verdict": "PASS",
-      "evidence": "L6 L8 name prompts as nouns ('the first prompt is ...', 'the second prompt'); no 'typing', 'type in', 'tell it to' around message content",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 33,
-      "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
-      "verdict": "PASS",
-      "evidence": "closest L10 clause 'and what you're about to learn' narrates the slide's purpose (deletion test: L10 joins cleanly without it); a single tail clause under the L21 guess-cue accept-note, so a suggestion, not a gate",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
+      "carried_shape": "3cc30efdf0c43abc"
     },
     {
       "compendium": "check_student_facing.md",
@@ -394,8 +434,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "body never names self-study; the borrow mention is in the maintainer block L21 only",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
+      "carried_shape": "3cc30efdf0c43abc"
     },
     {
       "compendium": "check_writing.md",
@@ -406,7 +448,7 @@
       "na_reason": "not an article rough-cut",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -418,7 +460,7 @@
       "na_reason": "no user-supplied verbatim frame to capture",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -430,7 +472,7 @@
       "na_reason": "not an exercise; no What happened block",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -442,7 +484,7 @@
       "na_reason": "no backing block, no claim ids; nothing to cross-file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -454,7 +496,7 @@
       "na_reason": "rule is a sweep-process rule, not a prose property of this body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -466,7 +508,7 @@
       "na_reason": "not a trainer-facing or scarce-attention-audience doc",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -478,7 +520,7 @@
       "na_reason": "not trainer-facing text",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -490,7 +532,7 @@
       "na_reason": "no prompt shaping; inline quoted prompts are demo content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -502,7 +544,7 @@
       "na_reason": "not a module or debrief",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -514,7 +556,7 @@
       "na_reason": "shared slide, no module voice to smuggle",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -526,7 +568,7 @@
       "na_reason": "not a simulation persona surface",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -538,7 +580,7 @@
       "na_reason": "no CLAUDE.md reference",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -550,7 +592,7 @@
       "na_reason": "no inline links in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -562,7 +604,7 @@
       "na_reason": "no prompt asks the student to restate a decision",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -574,7 +616,7 @@
       "na_reason": "no artifact saved",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -586,7 +628,7 @@
       "na_reason": "no operational setting involved",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -598,7 +640,7 @@
       "na_reason": "shared slide, no training theory spine to echo",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -610,7 +652,7 @@
       "na_reason": "no setup instruction",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -622,7 +664,7 @@
       "na_reason": "not Agents 101 M7",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -634,7 +676,7 @@
       "na_reason": "not a Debrief",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -646,7 +688,7 @@
       "na_reason": "no scaffold or prompt exercise",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -658,7 +700,7 @@
       "na_reason": "shared slide with no module mood contract; no verification steps in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -670,7 +712,7 @@
       "na_reason": "not an exercise",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -682,7 +724,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -694,7 +736,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -706,7 +748,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -718,7 +760,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -730,7 +772,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -742,7 +784,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -754,7 +796,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -766,7 +808,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -778,7 +820,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -790,7 +832,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -802,7 +844,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -814,7 +856,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -826,7 +868,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -838,7 +880,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -850,7 +892,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -862,7 +904,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -874,7 +916,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -886,7 +928,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -898,7 +940,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -910,7 +952,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -922,7 +964,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -934,7 +976,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -946,7 +988,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -958,7 +1000,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -970,7 +1012,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -982,7 +1024,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -994,7 +1036,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1006,7 +1048,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1018,7 +1060,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1030,7 +1072,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1042,7 +1084,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1054,7 +1096,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1066,7 +1108,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1078,7 +1120,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1090,7 +1132,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1102,7 +1144,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1114,7 +1156,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1126,7 +1168,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1138,7 +1180,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1150,7 +1192,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1162,7 +1204,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1174,7 +1216,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1186,7 +1228,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1198,7 +1240,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1210,7 +1252,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1222,7 +1264,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1234,7 +1276,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1246,7 +1288,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1258,7 +1300,7 @@
       "na_reason": "no prompt blocks or fences (signals.has_prompt_blocks false)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1270,7 +1312,7 @@
       "na_reason": "buyer-facing site copy rule; this is a curriculum slide",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1282,7 +1324,7 @@
       "na_reason": "buyer-facing site copy rule; this is a curriculum slide",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1294,7 +1336,7 @@
       "na_reason": "buyer-facing site copy rule; this is a curriculum slide",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1306,7 +1348,7 @@
       "na_reason": "buyer-facing site copy rule; this is a curriculum slide",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1318,7 +1360,7 @@
       "na_reason": "buyer-facing site copy rule; this is a curriculum slide",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1330,7 +1372,7 @@
       "na_reason": "buyer-facing site copy rule; this is a curriculum slide",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1342,7 +1384,7 @@
       "na_reason": "buyer-facing site copy rule; this is a curriculum slide",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1354,7 +1396,7 @@
       "na_reason": "buyer-facing site copy rule; this is a curriculum slide",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1366,7 +1408,7 @@
       "na_reason": "buyer-facing site copy rule; this is a curriculum slide",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1378,7 +1420,7 @@
       "na_reason": "buyer-facing site copy rule; this is a curriculum slide",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1390,7 +1432,7 @@
       "na_reason": "buyer-facing site copy rule; this is a curriculum slide",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1402,7 +1444,7 @@
       "na_reason": "buyer-facing site copy rule; this is a curriculum slide",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1414,7 +1456,7 @@
       "na_reason": "buyer-facing site copy rule; this is a curriculum slide",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1426,7 +1468,7 @@
       "na_reason": "shared slide, no module/Key Concepts/WYL/strategy doc surface",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1438,7 +1480,7 @@
       "na_reason": "shared slide, no module/Key Concepts/WYL/strategy doc surface",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1450,7 +1492,7 @@
       "na_reason": "shared slide, no module/Key Concepts/WYL/strategy doc surface",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1462,7 +1504,7 @@
       "na_reason": "shared slide, no module/Key Concepts/WYL/strategy doc surface",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1474,7 +1516,7 @@
       "na_reason": "shared slide, no module/Key Concepts/WYL/strategy doc surface",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1486,7 +1528,7 @@
       "na_reason": "shared slide, no module/Key Concepts/WYL/strategy doc surface",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1498,7 +1540,7 @@
       "na_reason": "shared slide, no module/Key Concepts/WYL/strategy doc surface",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     },
     {
@@ -1510,19 +1552,12 @@
       "na_reason": "shared slide, no module/Key Concepts/WYL/strategy doc surface",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d9dc7ad13a913d606c536d177828ec108b6bf7c8f5a7d05ff929c85a3b14fd76",
+      "carried_from": "8877b91b9434f74c1b9d8d2e24eed9e9e348afe82455d64edcfcdee2d6344726",
       "carried_shape": "3cc30efdf0c43abc"
     }
   ],
-  "suggestions": [
-    {
-      "rule": "check_student_facing.md §33",
-      "line": 10,
-      "now": "Before you read on, take a guess. What will it suggest? Your guess reveals what you already know about how this works, and what you're about to learn.",
-      "proposed": "Before you read on, take a guess. What will it suggest?"
-    }
-  ],
-  "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0,
-  "notes": "Diff b58bcc4c..HEAD touches only the maintainer block (Quality stamp added); body unchanged. Drift rule prompts 26 reread: governs card-vs-direct application of edits to student-facing text, not body wording; no body string violates it. Accept-notes: L18 Quality stamp; L21 Guess before reveal (Antti, 2026-10-06)."
+  "suggestions": [],
+  "blocking_findings_count": 1,
+  "nonblocking_findings_count": 1,
+  "notes": "Pin 8b8f4070, diff-region: body was compacted after the pin (guess cue, \"Same words. Different answer.\" and the framing sentences cut). Maintainer note at line 17 still describes the removed guess cue, so it is void; the check_slides guess-before-reveal beat it cites should be re-read by the slides judge. Brief assembled normally; no fallback read."
 }

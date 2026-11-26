@@ -1,13 +1,14 @@
 {
   "class": "slides",
-  "body_sha": "58fdcfdd5795ec045b11b5aed2b3d4fcc5a100a9203509afeed10c44ce16f33e",
   "file": "curriculum/trainings/agents-101/evaluations.md",
-  "verdict": "PASS",
   "training": "agents-101",
+  "verdict": "PASS",
+  "body_sha": "1ab775a9ad834ef68c05cb4f690d93bec5af8d928de62bda003cf706cf9b0ac6",
+  "shape_hash": "5b7999df1fcc1fec",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "H1/lede",
+      "heading": "Evaluations",
       "lines": "1-2"
     },
     {
@@ -23,42 +24,42 @@
     {
       "index": 3,
       "heading": "What You'll Learn",
-      "lines": "10-16"
+      "lines": "10-14"
     },
     {
       "index": 4,
       "heading": "Start here",
-      "lines": "17-26"
+      "lines": "15-22"
     },
     {
       "index": 5,
       "heading": "Run the loop without you in it",
-      "lines": "27-42"
+      "lines": "23-36"
     },
     {
       "index": 6,
       "heading": "Debrief",
-      "lines": "43-63"
+      "lines": "37-42"
     },
     {
       "index": 7,
       "heading": "Push back on the summary",
-      "lines": "64-69"
+      "lines": "43-50"
     },
     {
       "index": 8,
       "heading": "Key Concepts",
-      "lines": "70-76"
+      "lines": "51-56"
     },
     {
       "index": 9,
       "heading": "Bring to Module 7",
-      "lines": "77-88"
+      "lines": "57-64"
     },
     {
       "index": 10,
       "heading": "Next",
-      "lines": "89-91"
+      "lines": "65-67"
     }
   ],
   "rules_evaluated": [
@@ -67,155 +68,198 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "chunk 4 \"Start here\": line 23: \"His question is the right opener for Module 6\" — \"His\" resolves to Ethan Mollick, named in line 21 of the same chunk.",
+      "evidence": "Harm: reader cannot resolve a referent on a projected slide; absent. Closest: chunk 5 \"Run the loop without you in it\" L25 \"The same judge keeps catching what slipped past\" and L29 \"The same pattern applies to actions\" (pattern = the judge-in-loop of L25 plus the inlined lecture directly above, check-before-action stated in the same sentence run); chunk 8 L53 \"Groundedness protects the floor\" is arc-earned spine vocabulary (M5 groundedness judge, L76 accept-note: laws earned in the lectures inlined before Key Concepts). Pronouns bind inside chunk.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "chunk 5 \"Run the loop without you in it\": line 31: \"[Lecture: Evals as steering](lectures/evals-as-steering.md)\" — the source is named by title, not located by position.",
+      "evidence": "Closest: L8 \"the judge you saved at the close of Module 5\" and L63 \"Module 7 starts fresh\" name the source by module, not by deck position; no \"the opening lecture\" style callback. grep body for positional callbacks: none.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "chunk 6 \"Debrief\": line 45: \"the eval loop's run\" — the exercise is named at line 37 as \"[Exercise: The eval loop runs itself]\" and exists in the module's current include order.",
+      "evidence": "Closest: L8 \"the judge you saved at the close of Module 5\" and L39 \"the round-by-round trail\": maintainer L88/L102-104 artefact contracts and L117 hard M5 dependency show both beats exist (judges/groundedness-judge.md, module-6/runs/); L49 \"the first always-on eval\" is forward, not backward.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 4,
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "No guess-before-reveal or predict-before-outcome instruction appears in the body.",
+      "evidence": null,
+      "na_reason": "no guess-before-reveal demo beat; muted-read check on L39 \"Five minutes.\" and L49 \"The artifact: ...\" finds duration and label lead-ins, not scene setups or terminal-pointing cues",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "chunk 5 \"Run the loop without you in it\": line 29: \"What if the work kept getting sharper\" — the chunk carries a standalone question and claim rather than only a wait-state.",
+      "evidence": "Smallest slide L65-66 chunk 10 \"Next\": two self-carrying sentences \"Your system now improves its own output. Next, it starts working for someone besides you.\"; chunk 2 Prework L8 carries link plus instruction. No wait-state-only chunk.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "chunk 8 \"Key Concepts\": line 70: \"## Key Concepts\" followed by line 74: \"**Fixed judge.** The work gets sharper because the judge stays still.\" — the heading accurately introduces the consolidation content.",
+      "evidence": "Closest: chunk 5 header \"Run the loop without you in it\" vs body L25 \"the system absorbs the catches without your edits\" plus the loop lecture/exercise includes: header true. Chunk 7 \"Push back on the summary\" L45-47 is exactly that.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "chunk 8 \"Key Concepts\": line 75: \"dispatch generator, dispatch judge, update tactic, repeat\" — the compressed sequence names concrete actions; no banned tic or self-grading superlative appears.",
+      "evidence": "Closest: L39 \"reads the round-by-round trail, sharpens the generator's tactic file in place and points your root instructions at it\" is one sentence of three concrete verbs, not a triplet tic; no Not-X-Not-Y, no anaphora triple, no superlative, no number+retraction, no abstraction stack (grep of body: none).",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "chunk 8 \"Key Concepts\": line 75: \"The fan-out shape, now running a quality discipline instead of a content discipline.\" — these are ordinary engineering terms here; no repo-internal term such as compendium, firing, or forcing function appears.",
+      "evidence": "grep body_numbered \\b(surface|firing|compendium|forcing function|beat|mood|Connections)\\b -> 0 hits (view: hits [] ). tactic file, root instructions, yardstick are student-room vocabulary.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "chunk 8 \"Key Concepts\": line 74: \"**Fixed judge.**\" — the bold span is a short handle, and the consolidation slide uses one handle per concept rather than bolding explanatory sentences.",
+      "evidence": "L59 \"**Your first five agent calls at work, written down**\" bolds a 9-word noun phrase naming the artefact on a Bring-to-Module-N slide, the only bold on the slide (budget <=1 met); not a whole sentence. What You'll Learn L12-13 bolds are template-mandated verbs (exempt per rule). Suggestion filed for the handle cap.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Commands `rg -n -C3 \"slug: 'evaluations'\" site/layouts/curriculum.js` and `node --test scripts/slides.test.js`: the registry includes `evaluations`; the composed-deck tests report `ℹ tests 24`, `ℹ pass 24`, `ℹ fail 0`.",
+      "evidence": "Module file: every `##` section sits under the module wrapper, which reaches the composed deck; includes are standalone-paragraph links (L27,31,33,35). Render of both layouts not run here (mechanical claim unverified); no renderer or tier-marker change in the diff.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "The body declares no Phase or Step headers and contains no Phase/Step ordinal references.",
+      "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/trainings/agents-101/evaluations.md -> \"OK \u2014 1 files, Phase/Step numbering consistent.\"; grep (Phase|Step) \\d in body -> 0.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Command `node scripts/check-slide-deixis.js --file curriculum/trainings/agents-101/evaluations.md --report`: exit=0 with no findings.",
+      "evidence": "grep body_numbered (below|above|further down|see below|top of) -> 0 hits; node scripts/check-slide-deixis.js --file ... --report -> no matches printed.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 13,
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Command `node --test scripts/slides.test.js`: real output reports `✔ clicking an in-deck link moves the deck to the target slide`, `✔ a deep heading link lands on the reference slide that carries the heading`, and `ℹ pass 24`, `ℹ fail 0`.",
+      "evidence": "Review surface, no gate. Link text names the document: L8/L19 \"Ethan Mollick, The Bitter Lesson versus The Garbage Can\", L59 \"Agent Trigger List\", L61 \"Cookbook for Agent System Design\" / \"What is an Agent\"; none located by geometry.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
-      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Command `node scripts/check-slide-size.js --file curriculum/trainings/agents-101/evaluations.md --report`: real output reports `limits: 210 words / 6 bullets`, `oversized: 0`, and `✓ every slide is within limits`.",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/trainings/agents-101/evaluations.md --report -> 10 slides, oversized: 0; largest \"Push back on the summary\" 82 words / 0 bullets (limit 210 / 6).",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-      "verdict": "REVISE",
-      "chunks_flagged": [
-        10
-      ],
-      "evidence": "Harm: a Next slide that fails to hand off the next module and carries extra closing prose weakens the transition; present here — chunk 10 \"Next\": line 90: \"You just built an eval that improves itself. The system can now keep pressure on its own output when you are not watching every step. The close is not \\\"trust the agent.\\\" The close is \\\"trust the loop you can inspect.\\\"\"",
-      "fix_hint": "Reduce `## Next` to two plain sentences: name Module 7's work and the artefact the student carries into it.",
-      "blocking": false
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module file: `##` headings are canonical sections or imperatives (L23 \"Run the loop without you in it\", L43 \"Push back on the summary\"); no exercise/lecture law slide here",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "Closest: L25 \"The same judge keeps catching what slipped past, and the system absorbs the catches without your edits.\" and L52 \"The loop improves the output round after round with nobody editing\" restate L4 (doctrine restatement, 16a), but maintainer L70 Red thread (2026-11-13) attests deliberate: \"align on common theme. Say it in different ways without adding more content.\" Accept-note covers; no edit.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no `##` line changed in the 4d9c4af2..HEAD diff (grep '^[-+]#' -> none); only bodies under unchanged headers were aligned",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    }
+  ],
+  "suggestions": [
+    {
+      "rule": "check_slides.md \u00a79",
+      "line": 59,
+      "now": "**Your first five agent calls at work, written down**, using [Agent Trigger List]",
+      "proposed": "Write down **your first five agent calls at work**, using [Agent Trigger List]"
     }
   ],
   "blocking_findings_count": 0,
-  "shape_hash": "ad713f75cd98040d",
-  "nonblocking_findings_count": 1
+  "nonblocking_findings_count": 0,
+  "notes": "Accept-notes found: L70 Red thread 2026-11-13; L72 Quality stamp; L76 Key Concepts minimal 2026-09-24; L78 Story blend M6 2026-09-23; L114/L115 source stamps. Prompt body (a101-m6-debrief-tactic-sharpen, fenced) exempt. Task wake mentioned 7-module public version; this file is the agents-101 M6 module, judged as given. Rendered-deck presence (rule 10) not render-verified."
 }

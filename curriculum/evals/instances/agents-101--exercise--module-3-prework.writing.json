@@ -1,16 +1,18 @@
 {
   "class": "writing",
   "file": "curriculum/exercises/module-3-prework.md",
-  "verdict": "PASS",
   "training": "agents-101",
-  "body_sha": "f54b5e084134e2c5050d15f16b6991f52a7dd1d297b4d7b62f736c1d95c716d0",
+  "verdict": "PASS",
+  "body_sha": "f829e936dc56de7942a97003dfebbce42e0ab22c7429d2231cfdf0b2ad385ee3",
+  "shape_hash": "e05f6c3d785b5dca",
   "rules_evaluated": [
     {
       "compendium": "check_writing.md",
       "rule_index": 1,
       "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": "Body scan for banned words returned 0 matches (raw body; MAINTAINER_CUT=47; FENCE_RANGES=[]).",
+      "evidence": "grep em_dash, banned_words, leverage_verb, ritual_ceremony -> 0 body hits each (view greps CLEAN, planted proof true); own grep 'landscape' on lines 1-46 -> 0",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -19,7 +21,8 @@
       "rule_index": 2,
       "rule_lead": "Ritual / ceremony — hard ban",
       "verdict": "PASS",
-      "evidence": "Body scan returned 0 matches for the rule's deterministic pattern (raw body; MAINTAINER_CUT=47; FENCE_RANGES=[]).",
+      "evidence": "ritual_ceremony grep -> 0 body hits (CLEAN); own grep '\\bpractice\\b' on lines 1-46 -> 0",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -27,9 +30,10 @@
       "compendium": "check_writing.md",
       "rule_index": 3,
       "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "73:Subagent launch phrasing (\"Launch a subagent to…\" / \"Launch these three subagents in parallel\") confirmed ... no claude-code-guide check needed. vs body 37:\"Launch a helper agent to review the three retrieval files\" / \"Launch these three helper agents in parallel\". Harm §3 keep-notes-bind guards against: the maintainer note quotes a phrase the passage no longer contains, so it shields the reworded body from the check it says is not owed, and a later judge trusts a confirmation that covers different words. Body greps session_biography and dated_line -> 0 (CLEAN).",
+      "na_reason": null,
+      "fix_hint": "Rewrite L73 in present tense to name the wording the body carries now (helper-agent launch phrasing) and say which wording Antti confirmed, or drop the claim-check shield.",
       "blocking": false
     },
     {
@@ -37,7 +41,8 @@
       "rule_index": 4,
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Agents 101 trio (Godin x Sutherland x Siilasmaa). Closest to off-register: 23:\"The aim is to calibrate how much one agent can already do, so you know what coordinating three more buys you.\" plain peer voice, no L&D or poster wrapper. Negation self-contradiction: 41:\"No agent definition file and no special command\" holds against 37 (asking in plain language) and 43. Retain-this wrapper grep (Remember|Hold onto|Keep in mind|Never forget) -> 0. No atmospheric imagery.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -46,7 +51,8 @@
       "rule_index": 5,
       "rule_lead": "Rough-cut drafts for articles.",
       "verdict": "N/A",
-      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
+      "evidence": null,
+      "na_reason": "rough-cut rule governs article drafts, not an exercise",
       "fix_hint": null,
       "blocking": false
     },
@@ -55,7 +61,8 @@
       "rule_index": 6,
       "rule_lead": "Credit original when paraphrasing named technique.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "greps -> 0 on lines 1-46: creator-name (Antti|the creator|the author), author-we (\\bwe\\b|\\bour\\b|\\bus\\b), view author_we CLEAN. Timing: 3:\"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the helper-agent primer.\" carries a split although the rule says total only; the maintainer note at L52 attests line 3 is an authored 25/10/5 split on an atomic exercise, so honoured as an accept-note (rule question in notes). Credit: practitioners named as authors before their links (15-19).",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -64,7 +71,8 @@
       "rule_index": 7,
       "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "view grep the_student -> 0 body hits (CLEAN); 'student' on lines 1-46 -> 0; body speaks to 'you' (21, 37, 43). No trainer-delivery mechanics in body.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -73,7 +81,8 @@
       "rule_index": 8,
       "rule_lead": "Don't smuggle terms of art from maintainer into body.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "own grep 'ceiling' on lines 1-46 -> 0 (maintainer-only 'Ceiling-before-addition' stays below the cut). Closest: 39:\"each helper writes a stance file\", 'stance' is also M3 vocabulary but is ordinary English and tied to the path the student sees; 'helper agent' earned in 29.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -82,7 +91,8 @@
       "rule_index": 9,
       "rule_lead": "Over-hedge detector.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 41:\"*What you don't need.* No agent definition file and no special command. Plain-language prompting is enough for Phase 2.\" reads reassurance-shaped, but the maintainer watch-for at L78 records a live failure (student memorises frontmatter schema) and 43 sends the student to docs that show that config, so the line scopes the read rather than apologising. Flag-phrase grep (no penalty, fine way to, it's OK if, not on the hook) -> 0.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -91,7 +101,8 @@
       "rule_index": 10,
       "rule_lead": "Verbatim-frame-cite in reference artefact.",
       "verdict": "N/A",
-      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
+      "evidence": null,
+      "na_reason": "no user-specified verbatim frame being captured in a reference artefact",
       "fix_hint": null,
       "blocking": false
     },
@@ -100,7 +111,8 @@
       "rule_index": 11,
       "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Practitioners named once each, as author-before-link labels (15-19), exempt per the prereads-and-links carve-out; no body prose repeats a name (21:'this person').",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -109,7 +121,8 @@
       "rule_index": 12,
       "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 43:\"*helper with instructions, own context, returns a result. You summon it by asking.*\" is a summary of the mechanism, not an overreaching slogan; no carve-out owed.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -118,17 +131,19 @@
       "rule_index": 13,
       "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it is concrete curriculum content, not vendor, consultancy, marketing, or aspirational positioning, so the §13 harm is absent.",
+      "evidence": "own grep 'vendor' and flag phrases (not theoretical|grounded in actual|not an aspirational|real practitioners|unlike consultancy) on lines 1-46 -> 0. Closest: 7:\"Both prime moves the Module 3 exercise leans on.\" is a designer-reason clause (suggestion filed under check_student_facing §33), not a defensive positioning frame.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 14,
       "rule_lead": "Watch out for planting jargon too early.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "37:\"Launch a helper agent to review the three retrieval files and write its take to `module-3/stances/planner.md`.\" Harm: a phrase the student paraphrases carries 'retrieval', which no M1-M2 student body teaches (grep of getting-going, building-agent-systems -> only a maintainer table row) and which opens Module 3 as 'Three retrievers, one curator'; it pre-spoils that teach. 'retrieval' is on the recurring-offender list.",
+      "na_reason": null,
+      "fix_hint": "Swap for a word the student holds at this point, e.g. 'review the three files in `sources/`'.",
       "blocking": false
     },
     {
@@ -136,16 +151,18 @@
       "rule_index": 15,
       "rule_lead": "Audit closer when trimming body-prose forcing function.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 45:\"**What to bring to Module 3:** the three one-line practitioner takeaways.\" closer is a noun phrase with one referent; 43 closer 'You summon it by asking' has one antecedent (helper). No dangling pronoun or spatial metaphor.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 16,
-      "rule_lead": "The `**What happened:**` block is OPTIONAL — default to omit it (Antti-directed 2026-08-12, mandation removed from `curriculum/exercises/README.md`).",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "rule_lead": "The `",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no **What happened:** block in this exercise",
       "fix_hint": null,
       "blocking": false
     },
@@ -154,7 +171,8 @@
       "rule_index": 17,
       "rule_lead": "No combative verbs about the agent in body prose.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "own grep (bark|order|command|whip|force|drag|boss|scold) -> one hit, 41:\"no special command\" a noun, not a verb about the agent; verbs used are dispatch, launch, ask, summon (peer-flat).",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -163,7 +181,8 @@
       "rule_index": 18,
       "rule_lead": "Headers must be literally true about the mechanism.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Headers read against claims: 9:\"**Reading 1. Five practitioners, automating their work.**\" lists five, true; 25:\"**Reading 2. Helper agents, in plain language.**\" true. No 'other X' or spatial metaphor.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -172,7 +191,8 @@
       "rule_index": 19,
       "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 7:\"Neither asks you to build anything.\" negates a real prior (the file is titled Exercise); 41 negation has a live pull (L78 watch-for). No deictic drumroll, bold-label echo (15-19 labels are names, not restated) or appendix duplication.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -181,7 +201,8 @@
       "rule_index": 20,
       "rule_lead": "Don't state a count the adjacent list already holds.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 21:\"Three bullets, one per practitioner.\" restates the 13:\"Pick three\" choice rather than a list tally (the list above holds five); 9 numeral is in a bold header (exempt); no sentence counts the adjacent five-item list.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -190,7 +211,8 @@
       "rule_index": 21,
       "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "own grep (only|always|never|nothing else) on lines 1-46 -> one hit, 15:\"rather than only announcing a feature\" scopes a contrast, not a world claim. No superlative slogan.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -198,8 +220,9 @@
       "compendium": "check_writing.md",
       "rule_index": 22,
       "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no backing block or claim ledger in this file (signals.has_backing_block false)",
       "fix_hint": null,
       "blocking": false
     },
@@ -207,8 +230,9 @@
       "compendium": "check_writing.md",
       "rule_index": 23,
       "rule_lead": "A rule set reconstructed at session start goes stale inside the session — re-derive it per target, not per sweep.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "sweep-process rule; single-file judge run, no multi-target sweep",
       "fix_hint": null,
       "blocking": false
     },
@@ -216,8 +240,9 @@
       "compendium": "check_writing.md",
       "rule_index": 24,
       "rule_lead": "One doc per scarce-attention audience; delta-only.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "governs trainer-facing docs; this is a student-facing exercise",
       "fix_hint": null,
       "blocking": false
     },
@@ -226,7 +251,8 @@
       "rule_index": 25,
       "rule_lead": "Trainer-facing text is self-contained.",
       "verdict": "N/A",
-      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
+      "evidence": null,
+      "na_reason": "governs trainer-facing text; none authored here",
       "fix_hint": null,
       "blocking": false
     },
@@ -235,7 +261,28 @@
       "rule_index": 26,
       "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 23:\"so you know what coordinating three more buys you\" names a purpose, not a self-witnessing 'tells you whether' instrument; 21 asks for a concrete note of what the practitioner automated.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 27,
+      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
+      "verdict": "PASS",
+      "evidence": "Advisory style rule. Closest: 21 'Keep the note somewhere you'll see on training day' and 45 'What to bring' both ask for the takeaways but do different jobs (keep vs bring); no third sentence on one idea.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 28,
+      "rule_lead": "Body prose stands without the trainer — no cue-card prose.",
+      "verdict": "PASS",
+      "evidence": "Muted read: 7:\"Two reads.\" is a short count sentence leading a verbed pair; 43 italic fragment follows the verbed 'You're after the shape:' (enumeration carve-out). Grep (Take a guess|before it runs|on the screen|^Let's go|Your turn) -> 0. 'It' in 29 and 43 each resolve to the helper.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -244,7 +291,8 @@
       "rule_index": 1,
       "rule_lead": "Aspirational destination, never corrective gap.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "own grep (beginner|senior|more experienced|at your scale|junior) on lines 1-46 -> 0; 11 frames the destination ('See what a single agent already does for working practitioners').",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -253,7 +301,8 @@
       "rule_index": 2,
       "rule_lead": "Earn every technical term on first use.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 32:\"its own **context window** (a clean slate, so its work doesn't clutter yours)\" earned in one breath; 33 'filesystem' glossed. Prework uses full 'Module 3' (own grep \\bM[0-9]\\b -> 0), as 2b requires. 'retrieval' at 37 is planted early and is filed under check_writing §14.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -261,9 +310,10 @@
       "compendium": "check_student_facing.md",
       "rule_index": 3,
       "rule_lead": "Business-audience word ban (Agents 101 default).",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "43:\"<span class=\"rt-copilot rt-code\">open the [GitHub Copilot subagent documentation](...)</span>\" . jargon-ban.md lists 'subagent' as a banned unearned term; Reading 2 earns 'helper agent' (29), not 'subagent', and the other three forks say 'helper-agent documentation'. Harm: an SVP-test flinch for a Copilot-profile student at the one place the page says 'subagent'.",
+      "na_reason": null,
+      "fix_hint": "Relabel the Copilot link 'GitHub Copilot helper-agent documentation' to match the other forks.",
       "blocking": false
     },
     {
@@ -271,7 +321,8 @@
       "rule_index": 4,
       "rule_lead": "Memory vs context — use deliberately.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 32 'context window' (ambient runtime state) and 19 'plain-text memory' (Bilsborough's phrase naming the persistent artefact); neither blurs memory and context.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -280,7 +331,8 @@
       "rule_index": 5,
       "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 41:\"*What you don't need.* No agent definition file and no special command.\" scopes the read; there is no troubleshooting or what-if-X-fails branch in the body.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -289,7 +341,8 @@
       "rule_index": 6,
       "rule_lead": "Trust Claude's defaults for structure.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "37:\"Launch a helper agent to review ... and write its take to `module-3/stances/planner.md`.\" gives task plus destination and no shape spec.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -297,8 +350,9 @@
       "compendium": "check_student_facing.md",
       "rule_index": 7,
       "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module. Compound-shape varies per module — never repeat same Debrief.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Debrief or compound beat in this exercise",
       "fix_hint": null,
       "blocking": false
     },
@@ -306,8 +360,9 @@
       "compendium": "check_student_facing.md",
       "rule_index": 8,
       "rule_lead": "Don't smuggle another module's voice.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "single reading exercise; no module voice or mood beat imported from another module",
       "fix_hint": null,
       "blocking": false
     },
@@ -316,7 +371,8 @@
       "rule_index": 9,
       "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 19:\"Look for the plain-text memory and the boundary where consequential work still needs a person.\" names object and tell; 17 'Notice what changes when the human designs the loop' names the object. Grep for attitude adverbs (carefully|closely|thoroughly|properly) -> 0; 'name' -> 0; 'must|needs to|has to' -> 0 (no fictional gates).",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -324,8 +380,9 @@
       "compendium": "check_student_facing.md",
       "rule_index": 10,
       "rule_lead": "Simulation personas never alone.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "concerns simulation personas, not body prose",
       "fix_hint": null,
       "blocking": false
     },
@@ -334,7 +391,8 @@
       "rule_index": 11,
       "rule_lead": "No \"What research says\" callout boxes",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "no callout box; own grep 'research says' -> 0",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -343,7 +401,8 @@
       "rule_index": 12,
       "rule_lead": "Student moves stay in conversation with agent.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "The one agent move (37) is asked in conversation; no editor, terminal or file-edit primitive asked of the student.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -351,8 +410,9 @@
       "compendium": "check_student_facing.md",
       "rule_index": 13,
       "rule_lead": "Specify which CLAUDE.md layer — every time.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no CLAUDE.md reference in body (grep CLAUDE\\.md|CLAUDE\\.local -> 0)",
       "fix_hint": null,
       "blocking": false
     },
@@ -361,7 +421,8 @@
       "rule_index": 14,
       "rule_lead": "No em-dashes. Simple sentences.",
       "verdict": "PASS",
-      "evidence": "Body scan returned 0 matches for the rule's deterministic pattern (raw body; MAINTAINER_CUT=47; FENCE_RANGES=[]).",
+      "evidence": "view grep em_dash -> 0 body hits (CLEAN). Closest to long: 21, two simple sentences plus a fragment.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -369,26 +430,29 @@
       "compendium": "check_student_facing.md",
       "rule_index": 17,
       "rule_lead": "Section headers use command verbs when section is about doing something.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "45:\"**What to bring to Module 3:** the three one-line practitioner takeaways.\" The rule's own counter-example is *\"Bring to M1\"* not *\"What to bring to M1\"*; the student acts (brings) so the lead-in takes the command verb. Harm: noun-phrase lead on an action lead-in reads as a label, not a move (low). The bold run-ins at 5 ('What you do:') follow the exercise skeleton used by 58 exercises and are not filed; 9 and 25 are reading-list labels.",
+      "na_reason": null,
+      "fix_hint": "Change the lead-in to '**Bring to Module 3:**'.",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 18,
       "rule_lead": "Inline links use target's title, never filename.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "27:\"Module 3 Phase 2 spawns three helper agents\", 39:\"In Phase 2, each helper writes a stance file\", 41:\"enough for Phase 2\". Phase 2 is an ordinal coordinate into another file, and no student body there carries it: three-minds-one-synthesis and three-retrievers-one-curator are both Atomic (maintainer line 'no phase markers'; grep Phase finds only maintainer lines). Harm: a student looks for Phase 2 and finds none, and any phase change repoints it silently.",
+      "na_reason": null,
+      "fix_hint": "Drop the coordinate: 27 'Module 3 spawns three helper agents', 39 'In Module 3, each helper writes', 41 'enough for Module 3'. Same length or shorter.",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 20,
       "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "student authors no memory, skill or rule here; own grep \\bhere\\b -> 0",
       "fix_hint": null,
       "blocking": false
     },
@@ -397,7 +461,8 @@
       "rule_index": 21,
       "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Autonomous work uses 'the agent' / 'lead agent' / 'helper' (16, 23, 29-39); 'Claude' appears only in the 43 product link text. Counts: 'Claude' on one line, agent/helper on eleven.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -406,7 +471,8 @@
       "rule_index": "21b",
       "rule_lead": "Session / task / run split (all trainings).",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 27:\"in one session or task\" and 33:\"the lead session or task\" use the runtime-neutral pair (session = the sitting, task = the runtime's own word for it); no noun-run for the agent sitting. 39 'running task or agent entry' names a UI entry.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -415,7 +481,8 @@
       "rule_index": 22,
       "rule_lead": "No time-of-day anchors in body prose.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "own grep (tomorrow|overnight|this morning|tonight|yesterday|last night) on lines 1-46 -> 0. Closest: 21:\"somewhere you'll see on training day\" is a place, not a time-of-day anchor.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -424,7 +491,8 @@
       "rule_index": 23,
       "rule_lead": "Reflection beats stay invisible in flow.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "own grep (sit with|let it land|take a moment|pause and|breathe) -> 0; no reflection-beat header.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -432,8 +500,9 @@
       "compendium": "check_student_facing.md",
       "rule_index": 24,
       "rule_lead": "No meta-ask when student has already decided.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt asks the student to restate a decision",
       "fix_hint": null,
       "blocking": false
     },
@@ -442,7 +511,8 @@
       "rule_index": 25,
       "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "37 destination `module-3/stances/planner.md` and 39 `module-3/stances/` are .md paths.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -451,7 +521,8 @@
       "rule_index": 26,
       "rule_lead": "Cut NVA: true but not moving student forward.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 7:\"Both prime moves the Module 3 exercise leans on.\" is orientation that changes little (suggestion filed under §33); each other sentence changes what the student reads, asks or sees (29-41).",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -460,7 +531,8 @@
       "rule_index": 27,
       "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "No chat-print beat; 'Look for' and 'Notice' (16-19) carry named objects, not bare 'read it'.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -469,7 +541,8 @@
       "rule_index": 28,
       "rule_lead": "Forward-callout closer: student as grammatical subject.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest closer: 23:\"so you know what coordinating three more buys you\" has 'you' as subject; 45 closer is a noun phrase. No training-as-subject or role-gating.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -477,8 +550,9 @@
       "compendium": "check_student_facing.md",
       "rule_index": 29,
       "rule_lead": "Operational reminders live at moment of use, not only where introduced.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no per-module operational setting (effort, model, mode) stated or needed",
       "fix_hint": null,
       "blocking": false
     },
@@ -487,7 +561,8 @@
       "rule_index": 30,
       "rule_lead": "Echo the training's theory spine before inventing a synonym.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Body takes its words from the page's own earned terms (helper agent, lead agent, instructions, context window); no invented synonym found. Closest: 23 'coordinating three more'.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -496,7 +571,8 @@
       "rule_index": 31,
       "rule_lead": "Name the artifact, not the act.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "own grep (typing |type in|say to Claude|tell it to) -> 0; 37 quoted asks carry the wording.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -505,7 +581,8 @@
       "rule_index": 32,
       "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 41:\"No agent definition file and no special command.\" names the outcome; no install recipes. 32a grep (CLAUDE_CODE|settings.json|flags) -> 0.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -514,7 +591,8 @@
       "rule_index": 33,
       "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Subject test closest: 27:\"Module 3 Phase 2 spawns three helper agents in one session or task.\" is the motive for the reading (carve-out), and 23 names what the reading buys. 7:\"Both prime moves the Module 3 exercise leans on.\" is arc-positioning that the title already carries (suggestion filed, not owed).",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -523,7 +601,8 @@
       "rule_index": 34,
       "rule_lead": "Four sharing strategies (Agents 101 M7 canonical) — use verbatim.",
       "verdict": "N/A",
-      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
+      "evidence": null,
+      "na_reason": "Agents 101 M7 sharing taxonomy; not in this file",
       "fix_hint": null,
       "blocking": false
     },
@@ -532,7 +611,8 @@
       "rule_index": 35,
       "rule_lead": "Agents 101 M2+ Debrief — canonical shape.",
       "verdict": "N/A",
-      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
+      "evidence": null,
+      "na_reason": "no Debrief in this exercise",
       "fix_hint": null,
       "blocking": false
     },
@@ -540,8 +620,9 @@
       "compendium": "check_student_facing.md",
       "rule_index": 36,
       "rule_lead": "Trust the prompt over the scaffold.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no scaffold or unzip beat",
       "fix_hint": null,
       "blocking": false
     },
@@ -549,14 +630,758 @@
       "compendium": "check_student_facing.md",
       "rule_index": 37,
       "rule_lead": "Mood is a design constraint, not a garnish.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Debrief, Close or Bridge; mood is the strategy class's lane",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 38,
+      "rule_lead": "Exercise headers pass the build-squint test.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=47; FENCE_RANGES=[]. Closest body line 3: \"**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class=\\\"rt-code\\\">subagent</span><span class=\\\"rt-cowork\\\">agent</span> primer.\"; it stays inside this rule's boundary.",
+      "evidence": "Headers alone: 'Exercise: Prework before Module 3' / 'What you do' / 'Reading 1. Five practitioners, automating their work.' / 'Pick three. Read one piece each.' / 'Reading 2. Helper agents, in plain language.' / 'What to bring to Module 3' reconstruct a read-five-practitioners-and-a-primer drill; drill carve-out. Slug rename out of scope.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 39,
+      "rule_lead": "Self-study is invisible in the training flow.",
+      "verdict": "PASS",
+      "evidence": "grep (self-study|Teacher Claude) on lines 1-46 -> 0",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 6,
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 7,
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout (`",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 11,
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 12,
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 13,
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 14,
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 15,
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 18,
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 19,
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 20,
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 21,
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 22,
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 25,
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 26,
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "orchestrator card procedure for surfacing edits; no body content to judge",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 27,
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly `",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 29,
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 30,
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 32,
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 33,
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 34,
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 35,
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 37,
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 38,
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 39,
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 40,
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 41,
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 42,
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 44,
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 45,
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 46,
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 47,
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 48,
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 49,
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or {{prompt:}} markers (signals.has_prompt_blocks false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 1,
+      "rule_lead": "CTO-repeatable test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "sales-copy surface; this is a student-facing exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 2,
+      "rule_lead": "No stylized phrase-pairs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "sales-copy surface; this is a student-facing exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 3,
+      "rule_lead": "Strip strategy-doc vocabulary.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "sales-copy surface; this is a student-facing exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 4,
+      "rule_lead": "Earn every term.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "sales-copy surface; this is a student-facing exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 5,
+      "rule_lead": "No M-number cross-references.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "sales-copy surface; this is a student-facing exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 6,
+      "rule_lead": "\"What you build\" = 20–30 words.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "sales-copy surface; this is a student-facing exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 7,
+      "rule_lead": "Describe failure modes, don't name them.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "sales-copy surface; this is a student-facing exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 8,
+      "rule_lead": "Agency on right noun.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "sales-copy surface; this is a student-facing exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 9,
+      "rule_lead": "No em dashes on site.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "sales-copy surface; this is a student-facing exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 10,
+      "rule_lead": "No \"What research says\" callout boxes.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "sales-copy surface; this is a student-facing exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 11,
+      "rule_lead": "Don't describe mood arc externally.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "sales-copy surface; this is a student-facing exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 12,
+      "rule_lead": "Ownership claims scope to customer-built artifacts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "sales-copy surface; this is a student-facing exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 13,
+      "rule_lead": "Numbers carry their denominator + axis.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "sales-copy surface; this is a student-facing exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 14,
+      "rule_lead": "Each fact once per page; no kicker closers.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "sales-copy surface; this is a student-facing exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-shape and mood rules; this prework exercise has no Big Idea, Key Concepts, What You'll Learn, Debrief or Close, and mood is the strategy class's lane",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-shape and mood rules; this prework exercise has no Big Idea, Key Concepts, What You'll Learn, Debrief or Close, and mood is the strategy class's lane",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-shape and mood rules; this prework exercise has no Big Idea, Key Concepts, What You'll Learn, Debrief or Close, and mood is the strategy class's lane",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-shape and mood rules; this prework exercise has no Big Idea, Key Concepts, What You'll Learn, Debrief or Close, and mood is the strategy class's lane",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-shape and mood rules; this prework exercise has no Big Idea, Key Concepts, What You'll Learn, Debrief or Close, and mood is the strategy class's lane",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-shape and mood rules; this prework exercise has no Big Idea, Key Concepts, What You'll Learn, Debrief or Close, and mood is the strategy class's lane",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-shape and mood rules; this prework exercise has no Big Idea, Key Concepts, What You'll Learn, Debrief or Close, and mood is the strategy class's lane",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-shape and mood rules; this prework exercise has no Big Idea, Key Concepts, What You'll Learn, Debrief or Close, and mood is the strategy class's lane",
       "fix_hint": null,
       "blocking": false
     }
   ],
+  "suggestions": [
+    {
+      "rule": "check_student_facing.md §33",
+      "line": 7,
+      "now": "Two reads. Both prime moves the Module 3 exercise leans on. Neither asks you to build anything.",
+      "proposed": "Two reads. Neither asks you to build anything."
+    },
+    {
+      "rule": "check_writing.md §3",
+      "line": 85,
+      "now": "- Pre-2026-05-14 versions of this file framed the reading as Claude Code vs. a fabricated \"OpenClaw\" tool. The hallucination propagated into `continuous-research/findings/archive/` (",
+      "proposed": "- A fabricated \"OpenClaw\" tool, framed as a rival to Claude Code, sits in `continuous-research/findings/archive/` ("
+    }
+  ],
   "blocking_findings_count": 0,
-  "notes": "Final direct writing-class judgment from the frozen queue. Expanded view was generated before review; evidence line locations were checked against the raw source.",
-  "shape_hash": "911c5414fc51c902",
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 5,
+  "notes": "Prefill parked 0 rows (shape changed), so every rule row is authored here. Rule question for the maintainer: check_writing §6 timing says total only, line 3 carries a 25/5/10 split attested by the L52 maintainer note on an atomic exercise; accepted. Other-lane observations: body line 43 links a GitHub Copilot docs URL (docs.github.com .../about-custom-agents) that has no Source verification row (L64-70 cover Claude Code and Codex only); the L73 capability note concerns Claude Code wording only. Both module files multi-agent-systems.md and building-agent-systems.md link this exercise. Brief was built normally. Maintainer-block accept-notes: only dated stamps (L49 Quality, L64-70 source-verification stamps) and the undated Atomic note L52; none shields a filed finding."
 }

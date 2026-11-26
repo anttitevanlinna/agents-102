@@ -1,18 +1,39 @@
 {
   "class": "story",
   "file": "curriculum/exercises/personal-site-with-guardrails.md",
-  "body_sha": "8edd1e135fbda072d27a789e795b7c6864d069697f7924fea726b52f245b0506",
-  "verdict": "PASS",
   "training": "agents-101",
-  "module_mood_contract": "Joyful creation — I made this. It’s me.",
+  "verdict": "PASS",
+  "body_sha": "9523caff4d1bd8268c574b6a5ee2143e6e59e285ef5d2136781bb872ab5819c4",
+  "shape_hash": "ee0c88a2fb4d0bce",
+  "module_mood_contract": "Joyful creation: 'I made this. It's me.' (content-strategy M1; identical in the 7-module free edition)",
   "trace_status": "regenerated",
+  "mood_summary": {
+    "phase_scores": [
+      8,
+      8,
+      8,
+      8,
+      8,
+      9,
+      8,
+      8,
+      9,
+      8,
+      8,
+      9
+    ],
+    "close_score": 9,
+    "any_below_8": false,
+    "stealing_the_mood": []
+  },
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "N/A",
-      "evidence": "Lines 1-167 are an exercise, not a lecture; no lecture-placement claim applies.",
+      "evidence": null,
+      "na_reason": "exercise file, not a lecture",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +42,8 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "Lines 1-167 are an exercise, not a pre-exercise lecture; this lecture-dosage rule does not apply.",
+      "evidence": null,
+      "na_reason": "exercise file, not a lecture",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,7 +52,18 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "The target is an exercise, not a reusable lecture body; no lecture sequencing claim is being evaluated.",
+      "evidence": null,
+      "na_reason": "exercise file, not a lecture",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 4,
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "verdict": "PASS",
+      "evidence": "Slide headers (12 ##): closest to a bare label is L93 '## See the mechanism repeat in every phase' and L99 '## Take the context move past this site'. Both name the concept the slide body states (L97 'The more specific the context, the more the output is yours'; L103 'The LLM didn't get better between Phase 1 and Phase 6. The context did.') and are supported by it. 'Phase N:' prefixes are parser-mandated (`*N min*` markers). No two headers share text. Harm (empty arc label heading a slide, or a crisp header that overclaims) absent.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -39,16 +72,8 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file /Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/personal-site-with-guardrails.md`; exit 0. Output: files: 1, slides: 12, limits: 210 words / 6 bullets, oversized: 0; every slide is within limits.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 4,
-      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
-      "verdict": "N/A",
-      "evidence": "The `## Phase` headers belong to an exercise sequence, not slide/lecture headers.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/personal-site-with-guardrails.md` -> 'slides: 12  limits: 210 words / 6 bullets  oversized: 0  every slide is within limits'.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -57,43 +82,108 @@
       "rule_index": 6,
       "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
       "verdict": "N/A",
-      "evidence": "The six prompts are in an exercise and are explicitly student-run; the lecture-only show-and-tell rule has an exercise carve-out.",
+      "evidence": null,
+      "na_reason": "exercise file, not a lecture",
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_strategy_tie_in.md",
+      "compendium": "check_lectures.md",
+      "rule_index": 7,
+      "rule_lead": "A new training's lectures start from the slide corpus, not from fresh prose.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "exercise file, not a lecture",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named.",
-      "verdict": "PASS",
-      "evidence": "Strategy lines 339-345 name M1's deliberate mood as joyful creation; trace phases 4, 7, 9-12 and close score 9 show the student reaching an unmistakably personal artifact without resolving a later module's mood.",
+      "rule_lead": "Walk-away test (M2+).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "M1, rule starts M2+",
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_strategy_tie_in.md",
+      "compendium": "check_pedagogy.md",
       "rule_index": 2,
-      "rule_lead": "Epistemic mood ≠ punitive mood.",
-      "verdict": "PASS",
-      "evidence": "Trace phases 1 and 8 describe generic output as useful diagnosis and thin context as the mechanism; the persona is not shamed for the baseline or self-audit.",
+      "rule_lead": "50% magic rule (M3–M8).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "arc-level rule for M3-M8",
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_strategy_tie_in.md",
+      "compendium": "check_pedagogy.md",
       "rule_index": 3,
-      "rule_lead": "Lead with discipline, not failure mode.",
+      "rule_lead": "Trust the agentic design — no human backstops.",
       "verdict": "PASS",
-      "evidence": "Lines 15, 45, 76, 135, and 143 lead with iteration, naming/tuning, inversion, and specific context; genericness is framed as the contrast to learn, not the exercise's title.",
+      "evidence": "Closest: L39 'Answer each of the five tuned beats briefly, in your own words. Don't polish.' The student supplies the input; no trainer observation step and no exhaustive if-then ruleset on the agent flow. Agent judgment is named where it matters (L37 prompt: 'Ask one beat, wait for my answer'). No irreversible action.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_strategy_tie_in.md",
+      "compendium": "check_pedagogy.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check.",
+      "rule_lead": "Quality ladder.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "scoring calibration applied through mood_score, not a per-file test",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 6,
+      "rule_lead": "One exercise = one bounded activity.",
       "verdict": "PASS",
-      "evidence": "Strategy lines 339-353 establish M1's Big Idea, joyful-creation mood, personal-site exercise, teaching moment, and M2 handoff; lines 15, 33, 135-145 enact that sequence, and trace phase 12 hands off to persistent reuse without front-running M2's compounding artifact.",
+      "evidence": "One artifact chain: `module-1/site.html` is rewritten phase to phase (L19 'Every later phase overwrites `module-1/site.html`'), internal arc do -> observe -> adjust. Phases are the exercise's own arc, not sub-numbered exercises. Closest: L83-89 Phase 7 writes a second file, but it packages the same session (4 min).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 7,
+      "rule_lead": "Modules composable across variants.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "composition rule judged at module file; this file is the shared-library leaf (included at getting-going.md:26)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 8,
+      "rule_lead": "Three-level completeness.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-level completeness (strategy to sendable asset)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 9,
+      "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
+      "verdict": "PASS",
+      "evidence": "Pattern-recognition outcome (generic vs mine) has n>=2 with contrast: Phase 1 baseline against the regenerated site, read paired by the agent (L69 prompt 5 names three generic claims then three traced lines, `module-1/context-trace.md`). Gap between reads is the skill. Closest: L19 baseline is overwritten, so the contrast lives in the trace file and scrollback.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "9b",
+      "rule_lead": "Progression-with-variations is the spine.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "cross-module move variation; M1 is the first instance of the context move",
       "fix_hint": null,
       "blocking": false
     },
@@ -102,7 +192,28 @@
       "rule_index": 10,
       "rule_lead": "Student agency — adults decide.",
       "verdict": "PASS",
-      "evidence": "Lines 112-116 explicitly leave the free iteration to the student (‘Open prompts. You drive.’); required artifact writes remain explicit, while aesthetic choices and stopping are participant-owned.",
+      "evidence": "L79 'Iterate until you say \"yes, this is me.\" You drive; no set prompts.' leaves stopping and taste to the student. Closest compulsion: L67 'Run this one.' It stays inside the rule because the debrief reads the file it writes (getting-going.md:32), a dead end if skipped.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 11,
+      "rule_lead": "Delegation — student brings, Claude screens.",
+      "verdict": "PASS",
+      "evidence": "Closest: L13-15 student opens own LinkedIn, copies, pastes. Claude has no LinkedIn access and is not asked to fetch it; the student brings the input, Claude shapes it. L45 strengths and L59 hate list are the student's own judgement.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 12,
+      "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
+      "verdict": "PASS",
+      "evidence": "Phases chain on one site.html with no cognitive break (L19, L37, L47, L61 all regenerate the same path); 45 min = 5+8+8+8+6+6+4. Counter-condition (chain mechanically, no break) holds, so it stays one exercise.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -111,7 +222,28 @@
       "rule_index": 13,
       "rule_lead": "Artifact-realism check.",
       "verdict": "PASS",
-      "evidence": "Expanded target run: `node scripts/expand-md.js curriculum/exercises/personal-site-with-guardrails.md > /tmp/personal-site-expanded.md` → status 0; all six referenced prompt registry entries exist, and the named outputs `module-1/site.html` and `module-1/personal-brand-generation.md` are created by the exercise's prompts.",
+      "evidence": "Named paths: `module-1/site.html`, `module-1/context-trace.md`, `module-1/personal-brand-generation.md`; each is written by an earlier prompt in this exercise or created at the point of naming. No connector, skill or install. Sites named at L81 (Stripe, Linear, Patagonia) are model knowledge, not fetched. architecture L48 confirms `module-1/` is created when Module 1 writes.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 14,
+      "rule_lead": "Teach principle + technique — default.",
+      "verdict": "PASS",
+      "evidence": "Closest: L53 'Adam Grant calls a version of this the energy audit; Taleb calls it via negativa.' These are names, and the technique is stated in the same paragraph ('Define what you're for by inverting what you're against'); L31 states the move ('Name the framework, tune it, have the agent run it. The LLM knows StoryBrand, so skip listing its questions.'). Student leaves with principle and technique; nothing is invoked unexplained.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 15,
+      "rule_lead": "Auto-fire sim+eval after significant rewrite.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process step; this fire is the sim+eval",
       "fix_hint": null,
       "blocking": false
     },
@@ -120,7 +252,118 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "Expanded target contains six prompt blocks; the load-bearing moves are fenced in the StoryBrand prompt (one beat, wait, then next), regeneration destinations, anti-branding transformation, look-back comparison, and rules-file write. Body lines 31-33, 57, 70, 89, and 104-129 narrate outcomes/artifacts rather than carrying the machinery.",
+      "evidence": "Forcing functions sit in fences: prompt 2 'Ask one beat, wait for my answer, then ask the next. Do not show me the remaining beats.' (L37); prompt 5 'ask me what I gave you that changed the page most, wait for my answer' (L69). Read prompt-only, each phase still lands. Closest body script: L39 'Don't polish.' is input-quality advice, not a count or prescribed feeling. L73 optional push-back lives in body per the carve-out.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 17,
+      "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no corporate infra or external tooling in the file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 18,
+      "rule_lead": "Personal-first, team promotion via human conversation.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no team or shared infra; the one rules file stays personal in module-1/",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 19,
+      "rule_lead": "Measure silent failure, not just friction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "cohort pass-rate estimation guidance, not a per-file check",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 20,
+      "rule_lead": "Don't pre-set categories before experiment runs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "experiment-design rule, no pre-set categories to evaluate",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 21,
+      "rule_lead": "Verification layers sample DIFFERENT error distributions — not belt-and-braces.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "verification-layer process rule",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "21b",
+      "rule_lead": "Cheap-before-expensive verification ordering.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "verification ordering process rule",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 22,
+      "rule_lead": "Rule in memory without forcing function = worse than no rule.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule-authoring process",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 23,
+      "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "conversation re-verify trigger",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 24,
+      "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
+      "verdict": "PASS",
+      "evidence": "Phase markers sum to 45 (5+8+8+8+6+6+4) and the Time line (L3) says 45 minutes; no sequential trainer-plus-student double count.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 25,
+      "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no host-skill in the file (grep 'Nerd' 0)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 26,
+      "rule_lead": "Reflection beats: in-chat over file-write.",
+      "verdict": "PASS",
+      "evidence": "Closest: L71 writes `module-1/context-trace.md`. Not a proof-of-reflection comfort file: the M1 retro reads it (getting-going.md:32 'the agent reads the file against the session and `module-1/context-trace.md`'). `personal-brand-generation.md` is read by the retro and by future tasks (L91).",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -129,7 +372,988 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Lines 23-33, 53-57, 63-70, 80-89, 95-106, and 112-129 direct artifact work and reading; line 3's ‘Banter expected’ is a light room tone, not a required compare/share/pause script, and no authored conversation beat is needed to complete the work.",
+      "evidence": "grep -cE 'neighbo|compare with|tell the room|share with|discuss|pair up|M[0-9]|Nerd' on body lines 1-106 -> 0 (same pattern on a planted 'talk to your neighbour' line -> 2, so the zero is real). No authored conversation, pause cue or room-share; sentences are about the work.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 29,
+      "rule_lead": "Eval = fixed yardstick; thing measured learns.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no eval loop or scorer in this exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 30,
+      "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
+      "verdict": "PASS",
+      "evidence": "Closest: L91 'read the first two or three rules ... Push back on anything that doesn't match what you did.' The student judges fit to their own experience (the one evaluator they cannot be fooled by), not Claude's correctness or a diff. L97 emotional-payoff reading stays allowed.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 31,
+      "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
+      "verdict": "PASS",
+      "evidence": "L73 'LLMs go easy on their own output. If picks come back soft, ask the agent to over-flag with no charity.' names the bias and hands a harsher opt-in; L91 sends the student to the artifact, not Claude's 4-6 line summary. Prompt 5 waits for the student's own line, so the file is not Claude's self-report alone.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 32,
+      "rule_lead": "Offered structures need forced-engagement mechanic.",
+      "verdict": "PASS",
+      "evidence": "Closest: L91 the agent offers a structured rules file. Not an offered default copied from elsewhere: prompt 6 says 'Pull from what we just did ... not from generic guidance', and L91 'Push back on anything that doesn't match what you did' forces a read against the student's own session. Plan-mode half N/A.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 33,
+      "rule_lead": "Source-type blindness on ingestion.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "single pasted LinkedIn text, not a heterogeneous folder or slide-format ingest",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 34,
+      "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no task selection; the input is the student's own LinkedIn page",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "34b",
+      "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
+      "verdict": "PASS",
+      "evidence": "Premise-test on the failure-mode table (L119-127): remove each hedge and the phase still stands; no row's premise is 'the section can be misread as authority'. Closest: row 5 'Warm-session self-audit', which the body (L73) answers with a callout, i.e. recoverable by clearer body text, already done.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 35,
+      "rule_lead": "Audience tier determines authoring substrate.",
+      "verdict": "PASS",
+      "evidence": "Closest: L35-37 beats: StoryBrand is named, tuned and run, with the persona-tuned hero. M1 for builder leaders uses a plain `.md` rules file read when pointed to (L91), no plugin install, which keeps the install affordance from stealing the joy.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs smoke-test before trust.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no hook, judge or loop built",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "PASS",
+      "evidence": "L91 'The agent reads the file when a future personal-brand task points to it' is the explicit-load tier stated correctly; no auto-load claim (architecture L88: Module 1 creates no root instructions file).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 39,
+      "rule_lead": "Removals are strategic — ask before cutting.",
+      "verdict": "PASS",
+      "evidence": "Large cuts since 5755beb6 are maintainer-directed: git log shows 'five cuts Antti picked blind in the Taste Studio' (635cb4e7), the 2026-11-01 whole-slide compaction passes, and 370a666d 'the cold rerun option goes, the debrief's cold critic covers it'. Closest unrecorded cut: the CLI `/rename` block and runtime spans, now carried by the module opener (architecture L59). No unasked strategic removal found.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 41,
+      "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no dual-runtime fork left in file (grep 'rt-' 0)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 42,
+      "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no platform feature is load-bearing",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 43,
+      "rule_lead": "Eval architecture — partition by evidence source, not criterion count.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "eval-machinery rule",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 44,
+      "rule_lead": "Plug points + UX.",
+      "verdict": "PASS",
+      "evidence": "(b) UX walk as a fast operator skipping body: P1 pastes after the colon; P2 and P3 reference 'my personal site' / the site from Phase 1; P4 ends 'My hate list:'; P5 reads the first site from scrollback; every named file is created by a prompt in this exercise. Closest: L5 Session widget names a new session but no working directory; the prework hands students a ready root (content-strategy: 'a working directory ready for every module') and architecture L59 says open the root. (a) no Plug Points section.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 45,
+      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block L112-115 carries three Monday outcomes with verbs ('forward to a colleague', 'invoke on the next personal-shaped writing task', 'point at lines ... and name what changed'). Closest: outcome 3 opens 'A felt distinction', but its verbs are observable. Suggestion filed to point it at the trace file, since the Phase 1 baseline is overwritten on disk.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 47,
+      "rule_lead": "Per-phase failure mode + escape hatch.",
+      "verdict": "PASS",
+      "evidence": "L119-127 table has a row per phase 1-7, each with forcing function, dominant failure and escape hatch. Closest: row 5 escape hatch 'or run the audit cold in a fresh task' no longer exists in the body (L73 offers over-flag only; 370a666d removed the cold rerun), but the over-flag hatch stands, so a hatch exists. Suggestion filed.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 48,
+      "rule_lead": "Heavy fan-out prompts get body recovery callout.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fan-out prompt (no parallel subagents or multi-source reads)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 49,
+      "rule_lead": "Save belongs with authoring, not loading.",
+      "verdict": "PASS",
+      "evidence": "Create-then-use pair: Phase 7 prompt writes `module-1/personal-brand-generation.md` at the close of the CREATE exercise (L89); use happens in the Debrief retro (getting-going.md:32) and later tasks, which open with verification only.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 50,
+      "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
+      "verdict": "PASS",
+      "evidence": "Prompt 5 asks Claude to audit its own earlier site in the warm session (known self-charity shape). L73 names the bias ('LLMs go easy on their own output') and offers the harsher opt-in ('over-flag with no charity'); the convenience of one paste is implicit rather than stated, which is the only beat missing.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 51,
+      "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "behavior-judge calibration rule; Phase 1 baseline prompt is the before-shot (L19, maintainer row 1 'The mess is the point')",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 52,
+      "rule_lead": "Session widget — `",
+      "verdict": "PASS",
+      "evidence": "L5 `**Session** *(new, \"Module 1 - Getting going\")*` matches the shape; exercise-top placement (a); no rename block inside it.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52b",
+      "rule_lead": "Widgets carry semantics, not just emphasis — match the widget to MEANING, never to how loud it renders.",
+      "verdict": "PASS",
+      "evidence": "Only widget is the Session widget at L5, which starts a session; no HOX or Note borrowed for loudness. L81 '**Tip: ...**' is plain bold emphasis, not a widget.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52a",
+      "rule_lead": "Module prose carrying a `",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "this file IS the extracted exercise; rule targets module prose",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52c",
+      "rule_lead": "Exercise lead-in trio — three slots, three tenses. A slot filled past its label is this corpus's most common defect.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Scope: AE101 only; Agents 101 exercises exempt",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52d",
+      "rule_lead": "Finding the point — four moves, learned writing M1's set 2026-08-12.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "authoring guidance for AE101 trio points, not a gate; A101 slot is untemplated",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 53,
+      "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test (widened 2026-08-12).",
+      "verdict": "PASS",
+      "evidence": "Closest: L71 'The three generic claims show where the context ended. The three traced lines show where your context took over.' It teaches how to READ the result and names no claim or line, so it hands over no answer; L19 declares the non-obvious claim up front ('shows how much the later context changes the output'), permitted by the (d) boundary. L97 recap sits after the last phase.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 56,
+      "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "AE101 engineer-audience rule",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 57,
+      "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no new mechanic shipped as packaging",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 58,
+      "rule_lead": "`/clear` = tool, not ceremony.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no /clear in file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 59,
+      "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "reference restructuring process",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 60,
+      "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "scan-unit process rule",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 61,
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "proposal process rule",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61a",
+      "rule_lead": "Acting on a flagged item (punchlist entry / audit finding / eval BLOCK) — verify before fixing; its prescribed fix is a hypothesis, not an instruction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "flagged-item process rule, no flagged item acted on",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61b",
+      "rule_lead": "An audit's card-shaped findings are discharged by CARDS, not by notes about them.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "audit-discharge process rule; judge is read-only",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 62,
+      "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
+      "verdict": "PASS",
+      "evidence": "L73 steering shape (notice soft picks -> ask the agent to over-flag) generalises beyond one failure; no callout names a failure the prompt already prevents.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 63,
+      "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "punchlist process rule",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 64,
+      "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
+      "verdict": "PASS",
+      "evidence": "Block (L109-129) holds only per-file facts: Quality, leap test, failure table, view summary. No delivery mechanics restated; none to point at.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 65,
+      "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "M1 has no prior-module artifact to rescue",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 66,
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "build-order process rule",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 67,
+      "rule_lead": "Story and depth are judged per big learning that develops, never per feature that recurs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "arc-scale rule judged per training in story-depth, not per file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "PASS",
+      "evidence": "grep -nE '\\[[A-Za-z ]+\\]' over the six registry prompt bodies -> 0 hits. P1, P3, P4 use the open-hook (last line ends with a colon: 'LinkedIn:', 'My 3-5 strengths are:', 'My hate list:'); P2 and P5 need no student input beyond the dialog.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": "P1 L15 'Drop your LinkedIn text into the prompt below, after the colon.' (dangling-colon sub-case: input instruction only). P3 L45 and P4 L59 same. P2: header L33 'Keep yourself the protagonist, then run the beats' carries verb+object (2c). P6 L87 'Capture the move so a fresh agent can repeat it on someone else's bio.' P5 L67 'Run this one. The debrief starts from the file it writes, and the agent waits for one answer from you.' is exactly 20 words and semantic after its first three; the fence is multi-step, where a fuller lead-in is allowed (2a). Closest to violating.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "PASS",
+      "evidence": "expand-md output shows each prompt as `**Prompt** *(Claude Code)*`, blank line, fence; no copy prefix, no closer, no blockquote wrapping.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no skill is invoked in any fence",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "PASS",
+      "evidence": "Chains on `module-1/site.html` with a deterministic path in P1 ('Save it as `module-1/site.html`'), P2, P3, P4 ('regenerate `module-1/site.html`') and `module-1/context-trace.md` in P5. Closest: back-reference is 'my personal site' rather than 'the file you just created at', but the literal path accompanies it.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 6,
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "PASS",
+      "evidence": "P2 beats never mention strengths or anti-branding; P3 'Keep the StoryBrand-tuned help section from before' looks back only; P4 looks back only. No prompt names the next one's job.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 7,
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no session reset offered in student text or fences",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no multi-sample method",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout (`",
+      "verdict": "PASS",
+      "evidence": "`grep -c '\\*\\*'` over personal-site-with-guardrails-1..6.md -> 0 each; `grep -n '\\*[a-zA-Z]'` over the same bodies -> 0 hits, no markdown shout in fences.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no runtime fork (no rt-* divs)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 11,
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no runtime fork",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 12,
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "PASS",
+      "evidence": "Integration named: P3 'voice-shaping context ... not as a new bullet list'; P4 'Use the anti-branding as VOICE ... Not as a new \"What I'm against\" section'; P2 'Reshape how the help section sounds, not as a new bullet list, but in the voice.'",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 13,
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no cite-or-flag claims",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 14,
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "PASS",
+      "evidence": "'Keep the edge; don't soften' appears in P2, P3, P4 and 'Keep the edge: distinctive over diplomatic' in P6.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 15,
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "PASS",
+      "evidence": "P2: 'Ask one beat, wait for my answer, then ask the next. Do not show me the remaining beats.' (structural form (a)). P5 asks one question and waits.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "PASS",
+      "evidence": "Closest: P3 'Then regenerate `module-1/site.html`.' and P4 'regenerate `module-1/site.html`' name the destination but not the word overwrite. Harm (agent pauses 'overwrite or new?', leaving site-v2.html) is unlikely when regenerating a named existing path, and L19 says 'Every later phase overwrites `module-1/site.html`'. Rule question: does 'regenerate <path>' discharge §16? Not filed.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "advisory; no plan-mode fence",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 18,
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "PASS",
+      "evidence": "P5 uses self-critique verbs, not defense: 'Find three specific claims ... that turned out to be generic, empty, or wrong about me' and 'say why each one was a statistical default'.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 19,
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not a send-off prompt",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 20,
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "narrowed 2026-09-03; no run shows a downstream re-run from a save-time gap",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 21,
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "PASS",
+      "evidence": "P6 'summarize in 4-6 lines what's in the file' is a post-action report; P5's 'Before you save, ask me' asks for the student's own words, not a pre-confirm of an effect.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 22,
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "edit-process rule; no prompt body edited by this judge",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "PASS",
+      "evidence": "Every save names dir+file: `module-1/site.html`, `module-1/context-trace.md`, `module-1/personal-brand-generation.md`; none naked.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "PASS",
+      "evidence": "grep -nE '(/home|/Users|cd )' over the six prompt bodies -> 0.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 25,
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no subagent in any fence",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 26,
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "card-process rule; judge is read-only",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 27,
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "PASS",
+      "evidence": "site.html is read by later regenerations; context-trace.md by the M1 retro (getting-going.md:32); personal-brand-generation.md by the retro and future tasks (L91). No (c)-only write.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly `",
+      "verdict": "PASS",
+      "evidence": "Rendered label is exactly **Prompt** in the expand-md output for all six.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 29,
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "PASS",
+      "evidence": "P1 'Build me a personal HTML one-pager site from the LinkedIn profile below.' is a normal work request; no 'Ask me which files' orchestration.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 30,
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "live-test edit process",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "PASS",
+      "evidence": "Six markers `{{prompt:personal-site-with-guardrails-1..6}}` (L17, L37, L47, L61, L69, L89), no inline fences; registry files 1-6 exist (ls curriculum/prompts) and expand-md resolved them.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 32,
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "prompts name only `module-1/` paths, no module numbers in prose",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 33,
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no git-output grep",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 34,
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "PASS",
+      "evidence": "Read in isolation: P5 'Look at the very first site you generated' executes correctly in the warm session. Closest: the first site no longer exists on disk (L19 overwrite), only in scrollback; harmless inside a 45-minute session, noted not filed.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 35,
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "closed five-beat interview then one regenerate; the iteration loop never opens",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "PASS",
+      "evidence": "Closest: P6 first paragraph carries about four moves (write file, structure, pull from session, keep edge) in ~85 words. Each is a full-stopped sentence and the report ask is split into its own paragraph; the 2026-09-10 condensed-is-fine carve-out covers it. P2 and P4 scan by move.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 37,
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "PASS",
+      "evidence": "P6 names what the rules cause next time: 'a portable agent guideline I could invoke on the next personal-brand task'; L87 'so a fresh agent can repeat it'.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 38,
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "PASS",
+      "evidence": "Closest: P5 lead-in L67 does not share verb or noun phrase with the opening 'Look at the very first site you generated'. Its job is to cue the wait forcing function, which the opening clause cannot do, so the proxy (rhyme) matches without the harm (two drafts). P2 shares 'colleague-help section' (L35); P6 shares 'bio' and 'next personal-brand task'; P1, P3, P4 are dangling-colon cases.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 39,
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no permission-mode declared and none load-bearing (grep permission-mode in exercise 0)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 40,
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "PASS",
+      "evidence": "Warm: L5 Session widget opens one new session and P2-P6 back-reference it ('my personal site', 'what we just did'). 40b tell: P5 names 'the colleague-guide frame' and 'the mirror-list', coined labels absent from earlier prompts (P2 says 'colleague-help section', P4 'hate list'). Harm (agent guesses an absent referent) is small: each has one obvious referent in scrollback and the labels match the page (L97). Not filed; suggestion below.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 41,
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no ask-and-wait tail grafted on an artifact prompt",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 42,
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not a headless-runner prompt",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no run longer than a couple of minutes",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 44,
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "fix-pass editing rule; no prompt edited here",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 45,
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "PASS",
+      "evidence": "Prompts use `module-1/...` prefixes. As written §45 says M1 Builder is INSIDE `module-1/` so a prefix creates `module-1/module-1/`; architecture L59 says 'Module 1: open the training-directory root; write only inside `module-1/`'. The Builder is at the root, so the prefix is correct and the duplicated-path harm is absent. Rule question: §45's M1 clause is stale against architecture.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 46,
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "PASS",
+      "evidence": "Closest: P6 'Structure it: what this is for, the core rule ..., what never to generate, what always to do, the framework moves ..., voice rules.' is the rule's named tell (a trailing shape spec incl. a Never line). Kept: the never/always split IS the guardrails the exercise is titled for, and the retro rewrites the file in place against it. Rule question for the maintainer, not filed.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 47,
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "PASS",
+      "evidence": "P3 'voice-shaping context ... letting them change what the page CLAIMS and how it sounds, not as a new bullet list' integrates; no 'add X and regenerate'.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 48,
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "PASS",
+      "evidence": "Closest: L91 closing is a solo read of the artifact; Phase 5 is agent-as-critic; the Debrief adds a cold critic (getting-going.md:50). Not one mechanic by default.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 49,
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "prompt 6 runs now, not a take-home",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
+      "verdict": "PASS",
+      "evidence": "Mood contract (content-strategy M1, 'Joyful creation. The \"I made this. It's me.\" moment'): the student leaves with a site and a rules file that are theirs, and L103 'The LLM didn't get better between Phase 1 and Phase 6. The context did.' hands off to the work pivot in M2. Closest to flattening: L19/L71 diagnostic beats ('generic claims'), kept as contrast, not shame. Mood-floor applied to teaching beats; Phase 1 steps 1-2 (L13-14) are setup, exempt.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "PASS",
+      "evidence": "Closest: L71 'The three generic claims show where the context ended.' Generic is attributed to the agent's thin context, not to the student; L25 and L79 keep the frame of colleague-worth and 'yes, this is me'. No having-done-wrong.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "PASS",
+      "evidence": "Title and headers lead with the discipline (L1 'Paint by agent with guardrails', L53 'Anti-branding, the mirror', L63 'Look back'); the failure mode (generic output) appears as the contrast, L59 'Vague input drifts back to the statistical-default you.'",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "PASS",
+      "evidence": "Facets: (front-run) no memory/agent/skill/eval/judge/Module N words in body (grep 0); L105 'Recipe 1' pointer is take-home, not M2 teaching. (arc) L103 'same mechanism scales to business proposals, competitor analysis and product strategy' hands to M2's personal-to-work shift; Bridge lives in getting-going.md. (Big Idea) 'Context is how you paint by LLM': L7 and L103 carry it; the carrying step (agent traces three lines, student adds own line, waits) is in prompt 5 as the strategy doc specifies. (mood not resolved early) L73 'LLMs go easy on their own output' foreshadows, does not pre-empt M3 doubt or M5 loop. Judged against the 7-module free edition (M1-M6 + solo module): M1 text and hand-off are identical in both editions.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-only section rule",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-only section rule",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-only section rule",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "strategy-doc-side rule (doc to curriculum), not this file",
       "fix_hint": null,
       "blocking": false
     },
@@ -138,7 +1362,8 @@
       "rule_index": 1,
       "rule_lead": "Group beat ≠ parallel solo work.",
       "verdict": "N/A",
-      "evidence": "The exercise has participants independently create their own sites; no output belongs to the group.",
+      "evidence": null,
+      "na_reason": "individual exercise, no group beat (signals.group_beat_markers false)",
       "fix_hint": null,
       "blocking": false
     },
@@ -147,7 +1372,8 @@
       "rule_index": 2,
       "rule_lead": "The room's output is named as an artefact.",
       "verdict": "N/A",
-      "evidence": "No group artifact is produced; each participant owns `module-1/site.html` and the rules file.",
+      "evidence": null,
+      "na_reason": "individual exercise, no group beat (signals.group_beat_markers false)",
       "fix_hint": null,
       "blocking": false
     },
@@ -156,7 +1382,8 @@
       "rule_index": 3,
       "rule_lead": "React, don't author.",
       "verdict": "N/A",
-      "evidence": "The target is individual authoring and iteration, not room-scale blank-page authoring.",
+      "evidence": null,
+      "na_reason": "individual exercise, no group beat (signals.group_beat_markers false)",
       "fix_hint": null,
       "blocking": false
     },
@@ -165,7 +1392,8 @@
       "rule_index": 4,
       "rule_lead": "Pre-built material is a hard prerequisite, stated in the module.",
       "verdict": "N/A",
-      "evidence": "No pre-built group material or room prerequisite is used.",
+      "evidence": null,
+      "na_reason": "individual exercise, no group beat (signals.group_beat_markers false)",
       "fix_hint": null,
       "blocking": false
     },
@@ -174,7 +1402,8 @@
       "rule_index": 5,
       "rule_lead": "Attribution is stated by a human, recorded verbatim.",
       "verdict": "N/A",
-      "evidence": "No group contribution or attribution record is collected.",
+      "evidence": null,
+      "na_reason": "individual exercise, no group beat (signals.group_beat_markers false)",
       "fix_hint": null,
       "blocking": false
     },
@@ -183,7 +1412,8 @@
       "rule_index": 6,
       "rule_lead": "Nothing is written over.",
       "verdict": "N/A",
-      "evidence": "The exercise overwrites each student's own site as an intentional iteration mechanic; no shared room record exists.",
+      "evidence": null,
+      "na_reason": "individual exercise, no group beat (signals.group_beat_markers false)",
       "fix_hint": null,
       "blocking": false
     },
@@ -192,7 +1422,8 @@
       "rule_index": 7,
       "rule_lead": "Filing is invisible.",
       "verdict": "N/A",
-      "evidence": "The file destinations are individual exercise artifacts, not room-scale filing.",
+      "evidence": null,
+      "na_reason": "individual exercise, no group beat (signals.group_beat_markers false)",
       "fix_hint": null,
       "blocking": false
     },
@@ -201,7 +1432,8 @@
       "rule_index": 8,
       "rule_lead": "Scope-of-sharing is declared before contribution, not after.",
       "verdict": "N/A",
-      "evidence": "No contribution is shared into personal/peer/promoted tiers.",
+      "evidence": null,
+      "na_reason": "individual exercise, no group beat (signals.group_beat_markers false)",
       "fix_hint": null,
       "blocking": false
     },
@@ -210,7 +1442,8 @@
       "rule_index": 10,
       "rule_lead": "A decision beat needs a real constraint.",
       "verdict": "N/A",
-      "evidence": "There is no group decision beat.",
+      "evidence": null,
+      "na_reason": "individual exercise, no group beat (signals.group_beat_markers false)",
       "fix_hint": null,
       "blocking": false
     },
@@ -219,7 +1452,8 @@
       "rule_index": 11,
       "rule_lead": "Group decisions are human, and named as such.",
       "verdict": "N/A",
-      "evidence": "There is no group decision or automatic promotion.",
+      "evidence": null,
+      "na_reason": "individual exercise, no group beat (signals.group_beat_markers false)",
       "fix_hint": null,
       "blocking": false
     },
@@ -228,7 +1462,8 @@
       "rule_index": 12,
       "rule_lead": "Retrospective = group round, no prompts, trainer silent.",
       "verdict": "N/A",
-      "evidence": "The target has individual observation and no group retrospective round.",
+      "evidence": null,
+      "na_reason": "individual exercise, no group beat (signals.group_beat_markers false)",
       "fix_hint": null,
       "blocking": false
     },
@@ -237,7 +1472,8 @@
       "rule_index": 13,
       "rule_lead": "Second-facilitator test.",
       "verdict": "N/A",
-      "evidence": "This is not a workshop whose room mechanics depend on a second facilitator.",
+      "evidence": null,
+      "na_reason": "individual exercise, no group beat (signals.group_beat_markers false)",
       "fix_hint": null,
       "blocking": false
     },
@@ -246,7 +1482,8 @@
       "rule_index": 14,
       "rule_lead": "Name the too-big and too-small room.",
       "verdict": "N/A",
-      "evidence": "No room-size-dependent group beat is authored.",
+      "evidence": null,
+      "na_reason": "individual exercise, no group beat (signals.group_beat_markers false)",
       "fix_hint": null,
       "blocking": false
     },
@@ -255,7 +1492,8 @@
       "rule_index": 15,
       "rule_lead": "Mixed-experience is the default room.",
       "verdict": "N/A",
-      "evidence": "The work is parallel individual work; mixed-experience pairing is not a mechanic.",
+      "evidence": null,
+      "na_reason": "individual exercise, no group beat (signals.group_beat_markers false)",
       "fix_hint": null,
       "blocking": false
     },
@@ -264,7 +1502,8 @@
       "rule_index": 16,
       "rule_lead": "Room beats overrun; name the protected beat.",
       "verdict": "N/A",
-      "evidence": "There is no room-scale beat or protected group decision.",
+      "evidence": null,
+      "na_reason": "individual exercise, no group beat (signals.group_beat_markers false)",
       "fix_hint": null,
       "blocking": false
     },
@@ -273,31 +1512,33 @@
       "rule_index": 17,
       "rule_lead": "No mechanical coverage — the trainer guide carries the load.",
       "verdict": "N/A",
-      "evidence": "The individual exercise has six participant-run prompts and is not a headless workshop beat.",
+      "evidence": null,
+      "na_reason": "individual exercise, no group beat (signals.group_beat_markers false)",
       "fix_hint": null,
       "blocking": false
     }
   ],
-  "mood_summary": {
-    "phase_scores": [
-      8,
-      8,
-      8,
-      9,
-      8,
-      8,
-      9,
-      8,
-      9,
-      9,
-      9,
-      9
-    ],
-    "close_score": 9,
-    "any_below_8": false,
-    "stealing_the_mood": []
-  },
+  "suggestions": [
+    {
+      "rule": "check_pedagogy.md §45",
+      "line": 115,
+      "now": "3. A felt distinction between *\"generic\"* and *\"genuinely mine\"*: they can point at lines in the Phase 1 baseline and Phase 6 result and name what changed.",
+      "proposed": "3. A `module-1/context-trace.md` that names three generic claims from the Phase 1 baseline and three site lines traced to the context that produced them, ending in their own words on what changed the page most."
+    },
+    {
+      "rule": "check_pedagogy.md §47",
+      "line": 125,
+      "now": "| 5 Look-back | Warm-session self-audit | Charitable picks; under-flagging | Use the body callout: over-flag with no charity, or run the audit cold in a fresh task. |",
+      "proposed": "| 5 Look-back | Agent traces the site to its context, then waits for the student's own line | Charitable picks; under-flagging | Use the body callout: ask the agent to over-flag with no charity. |"
+    },
+    {
+      "rule": "check_prompts.md §40",
+      "line": 69,
+      "now": "name the piece of context that produced it: my LinkedIn, the colleague-guide frame, my strengths, the mirror-list, or a call I made on a draft.",
+      "proposed": "name the piece of context that produced it: my LinkedIn, the StoryBrand beats, my strengths, my hate list, or a call I made on a draft."
+    }
+  ],
   "blocking_findings_count": 0,
-  "shape_hash": "f4cdf18c74c6cf0d",
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "Run against the 7-module public (free) edition per maintainer instruction: M1-M6 plus the solo module. M1 is identical in both editions; no edition-specific reference in the body (grep 'Module [0-9]|8' -> only '*8 min*' markers). Teaching moment lands (template criterion, no rule row): PASS. The strategy doc's carrying step, the agent tracing three site lines and waiting for the student's own line before saving context-trace.md, is enacted in prompt 5 (L69) and cannot be skipped; the 'best evaluator of your own profile' instinct is carried by Phase 5's student answer plus Phase 6 'yes, this is me' (L79) rather than a dedicated beat; a skimming persona still hits the forced wait. Mood lands: all 12 beats scored 8-9 in the regenerated trace, none below 8; Phase 1 steps 1-2 are setup, exempt. Forcing-function-in-prompts and body-teaches-work are rows pedagogy 16 and 27 (PASS). Cross-class and rule questions, none filed: (1) check_prompts 45 says M1 Builder sits inside module-1/ with bare filenames, contradicting training-architecture L59 (root, write inside module-1/); the exercise follows the architecture, so the rule text is stale. (2) check_prompts 46 names 'a Never line' as a shape-spec tell and prompt 6 carries one by design. (3) Strategy doc (content-strategy.md Getting Going bullet) says 'Six phases' with look-back at Phase 4 and anti-branding at Phase 5; the file has seven phases, anti-branding Phase 4, look-back Phase 5 (strategy line 71 table is correct). check_strategy_tie_in 8 says the doc must not restate phase lists, so the bullet is drift to correct. (4) Writing-class: maintainer block carries no dated accept-notes beyond the Quality line; row 5 of the failure table still names the cold rerun removed in 370a666d (suggestion filed). Prefill parked 0 rows ('shape changed (f4cdf18c74c6cf0d -> ee0c88a2fb4d0bce)'), so all 149 brief rules are judged here. Prior instance carried 30 rows; this one replaces it."
 }

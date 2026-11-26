@@ -1,17 +1,17 @@
 {
   "class": "writing",
   "file": "curriculum/exercises/hallucination-bakeoff.md",
-  "verdict": "PASS",
   "training": "agents-101",
-  "body_sha": "644a71be093e79e137c27346236602afbc405467c47517225d8caa35e4a8551f",
+  "verdict": "REVISE",
+  "body_sha": "d05d4fa84e8acda0834f217b35fa47da1c4012641a4b26f944f0356fdf6743b7",
+  "shape_hash": "d9ae39b11309b87a",
   "rules_evaluated": [
     {
       "compendium": "check_writing.md",
       "rule_index": 1,
       "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": "Body scan for banned words returned 0 matches (raw body; MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]).",
-      "fix_hint": null,
+      "evidence": "view greps banned_words body_hits 0 CLEAN, em_dash body_hits 0 CLEAN, leverage_verb 0 CLEAN (each planted_proof true)",
       "blocking": false
     },
     {
@@ -19,17 +19,16 @@
       "rule_index": 2,
       "rule_lead": "Ritual / ceremony — hard ban",
       "verdict": "PASS",
-      "evidence": "Body scan returned 0 matches for the rule's deterministic pattern (raw body; MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]).",
-      "fix_hint": null,
+      "evidence": "view grep ritual_ceremony body_hits 0 CLEAN; sed -n 1,103p file | grep -c -i practice -> 0 (Agents 101 absolute practice(n) ban)",
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 3,
       "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "L114:'The body line about 30 claims vs production's hundreds and the judge's \"Known limit:\" line keep the broader uncertainty alive.' (also L120 'named out loud here so the student sees the seam', L163 'The Close's \"what the judge won't catch\" line names the scope of the rescue', L164 'is the seam'). Body check: sed -n 1,103p file | grep -c hundreds -> 0; Phase 5 and the close hold no what-the-judge-won't-catch line. Harm (a mis-describing keep-note shields a defect and sends the next judge or editor hunting for a line that is not there) is present: the maintainer block asserts present body lines that do not exist.",
+      "fix_hint": "Rewrite the four maintainer clauses as present-tense state (the Known limit line at L84 carries the scope limit; the body holds no scale-up line), or the maintainer decides whether the scale-up line returns to body.",
       "blocking": false
     },
     {
@@ -37,8 +36,7 @@
       "rule_index": 4,
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L100:'The winner becomes a judge you can defend.' is the line nearest to poster register; it is a plain claim, no retain-this wrapper (grep Remember|Hold onto|Keep in mind|Never forget -> 0), no atmospheric imagery, no negation callout; voice is Agents 101 trio (peer-flat, concrete)",
       "blocking": false
     },
     {
@@ -46,8 +44,8 @@
       "rule_index": 5,
       "rule_lead": "Rough-cut drafts for articles.",
       "verdict": "N/A",
-      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
-      "fix_hint": null,
+      "evidence": null,
+      "na_reason": "articles only; not an article rough-cut",
       "blocking": false
     },
     {
@@ -55,8 +53,7 @@
       "rule_index": 6,
       "rule_lead": "Credit original when paraphrasing named technique.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "grep Antti|the creator|the author in body -> 0; view author_we body_hits 0 CLEAN; L3 '**Time:** 55 minutes. Phase 1 ~8, ... Phase 5 close ~9.' is present at line 3 and node scripts/calculate-time.js --check -> 'calculate-time --check: OK' (rule text says total only; the generator's own check accepts the breakdown, a rule question for the maintainer, not a body defect)",
       "blocking": false
     },
     {
@@ -64,26 +61,24 @@
       "rule_index": 7,
       "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "view grep the_student body_hits 0 CLEAN; no trainer delivery mechanics in body (nearest L90 'You decide whether the doubt was right' is second person)",
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 8,
       "rule_lead": "Don't smuggle terms of art from maintainer into body.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
+      "verdict": "REVISE",
+      "evidence": "L86:'## Phase 5: Close, name the rescue'. 'rescue' is the maintainer mood-contract label ('Mood contract - mechanical rescue', L114, L151, L162). grep -n -i rescue over agents-101/output-quality.md shows hits only at L86/L122-124, all below its maintainer cut at L75; no student-facing body in the module or this file earns the word, and Phase 5 body never uses it. Harm (a reader meets an unearned arc label in a header and asks 'rescue of what?', and the mood is advertised instead of lived) is present.",
+      "fix_hint": "Name the Phase 5 move in plain words, e.g. 'Phase 5: Close, check the judge on your doubted line'; header change is student-facing so it is a card.",
+      "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 9,
       "rule_lead": "Over-hedge detector.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "grep -c -i -E 'no penalty|fine way to|it.s OK if|not a downgrade|not a box-check|not on the hook' over lines 1-103 -> 0",
       "blocking": false
     },
     {
@@ -91,26 +86,26 @@
       "rule_index": 10,
       "rule_lead": "Verbatim-frame-cite in reference artefact.",
       "verdict": "N/A",
-      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
-      "fix_hint": null,
+      "evidence": null,
+      "na_reason": "no user-specified verbatim frame in this artefact",
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 11,
       "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no practitioner named in body",
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 12,
       "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no punchy slogan in body needing a downstream carve-out",
       "blocking": false
     },
     {
@@ -118,35 +113,33 @@
       "rule_index": 13,
       "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it is concrete curriculum content, not vendor, consultancy, marketing, or aspirational positioning, so the §13 harm is absent.",
-      "fix_hint": null,
-      "blocking": true
+      "evidence": "grep -c -i -E 'vendor|not an aspirational|not theoretical|this isn.t marketing' over lines 1-103 -> 0",
+      "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 14,
       "rule_lead": "Watch out for planting jargon too early.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L9:'the ensemble' is the term nearest to premature planting; it lands operationally in this same exercise at L80 'the two-method ensemble' and in the Phase 3 prompt, so the pre-spoiling harm is absent (cold first use is filed under check_student_facing s2); precision/recall are glossed inline at L56-L58",
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 15,
       "rule_lead": "Audit closer when trimming body-prose forcing function.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "L62:'Ask the agent to explain both using your own rows.' sits directly under three bullets (precision, recall, coverage) and a prompt; 'both' has no two-item referent on the page (it resolves only in the next fence, 'Tell me about precision and recall'). L70 'Ask the agent to contrast this with the classic way.': 'this' could be the row, the scoreboard or the benchmark. Harm (reader hunts for the referent, or reads 'both' as two of three) is present.",
+      "fix_hint": "Name the nouns: 'explain precision and recall' and 'contrast this benchmark with the classic way'.",
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 16,
-      "rule_lead": "The `**What happened:**` block is OPTIONAL — default to omit it (Antti-directed 2026-08-12, mandation removed from `curriculum/exercises/README.md`).",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "rule_lead": "The `**What happened:**` block is OPTIONAL — default is to omit it (Antti-directed 2026-08-12, mandation removed from `curriculum/exercises/README.md`).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no **What happened:** block in this exercise",
       "blocking": false
     },
     {
@@ -154,8 +147,7 @@
       "rule_index": 17,
       "rule_lead": "No combative verbs about the agent in body prose.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "grep -c -i -E 'bark|command|whip|boss|shout|scold|lecture|drag' over lines 1-103 -> 0 (the 'force the pick' wording sits inside the Phase 3 fence, agent-directed)",
       "blocking": false
     },
     {
@@ -163,8 +155,7 @@
       "rule_index": 18,
       "rule_lead": "Headers must be literally true about the mechanism.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L50:'## Phase 3: Scorer runs the benchmark' is the header nearest a literal-truth fault; it is literally true of the mechanism (the scorer scores the detector files); no spatial metaphor or 'other X' (header-actor issue filed under check_student_facing s17; 'rescue' under check_writing s8)",
       "blocking": false
     },
     {
@@ -172,8 +163,7 @@
       "rule_index": 19,
       "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L171:'a judge file you can defend because it won a benchmark, not because you read about it' (View summary, ships per check_student_facing s5) is the nearest empty negation; it negates the reader's actual prior (trust a method on authority), which the exercise exists to replace. L102 'This was **Recipe 5**.' names a concept, the legitimate deictic",
       "blocking": false
     },
     {
@@ -181,8 +171,7 @@
       "rule_index": 20,
       "rule_lead": "Don't state a count the adjacent list already holds.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L29:'Four helper agents run in parallel' sits above a fenced list of four detectors, but the numeral is the memory handle carried by the header at L25 ('Run the four detectors') and reused at L54 'the four detector files' away from the list, which the rule's across-distance carve-out keeps; no numeral in bullets L56-L58",
       "blocking": false
     },
     {
@@ -190,35 +179,34 @@
       "rule_index": 21,
       "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L68:'Another catches less, with higher precision.' is the line nearest to a false-as-stated claim; no superlative (only/always/never), scoped to the student's own scoreboard, so the truth-test shape does not apply",
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 22,
       "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no backing block and no source ids in this file",
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 23,
       "rule_lead": "A rule set reconstructed at session start goes stale inside the session — re-derive it per target, not per sweep.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule about sweeps, not body prose",
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 24,
       "rule_lead": "One doc per scarce-attention audience; delta-only.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not trainer-facing or exec-facing authoring",
       "blocking": false
     },
     {
@@ -226,8 +214,8 @@
       "rule_index": 25,
       "rule_lead": "Trainer-facing text is self-contained.",
       "verdict": "N/A",
-      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
-      "fix_hint": null,
+      "evidence": null,
+      "na_reason": "student-facing exercise, not a trainer page",
       "blocking": false
     },
     {
@@ -235,8 +223,24 @@
       "rule_index": 26,
       "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "grep -c -i -E 'tells you|you.ll know' over lines 1-103 -> 0; L90-L92 'you see its verdict on that line beside the evidence' points at the evidence lines, not a self-witnessing artefact",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 27,
+      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
+      "verdict": "PASS",
+      "evidence": "L9/L80/L100 each say the winner becomes a judge (file); nearest to a third sentence on one idea. Rule is advisory ('Not a REVISE on its own'), the three placements do different jobs (overview, action, closer)",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 28,
+      "rule_lead": "Body prose stands without the trainer — no cue-card prose.",
+      "verdict": "REVISE",
+      "evidence": "L70:'Point at a row: *this is why I'm keeping this one*.' A stage direction whose referent is the live screen and whose addressee is unstated; on the muted read the page cannot say who is spoken to or what pointing produces, and the next fence already asks the surprise question. Harm (student defaults to saying it to the room, or does nothing) is present.",
+      "fix_hint": "Give the move a verb and an object: 'Pick the row that decides which detector you keep.'",
       "blocking": false
     },
     {
@@ -244,17 +248,16 @@
       "rule_index": 1,
       "rule_lead": "Aspirational destination, never corrective gap.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L100:'The winner becomes a judge you can defend.' names the destination; nearest to a corrective frame is L90 'You decide whether the doubt was right', which assigns the student the decision, no tier or deficiency named",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 2,
       "rule_lead": "Earn every technical term on first use.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "L9:'keep the one that scores best, or the ensemble if it does.' First use of 'ensemble' is cold, 'the' presupposes a referent, and 'if it does' hangs on a parse the reader must solve; the term is defined only at L80 by the adjective 'two-method'. Harm (cold ML term for a builder-leader audience on the opening paragraph) is present; module-signposting carve-outs do not cover '**What you do:**'.",
+      "fix_hint": "Say it plainly: 'or the best pair of methods if a pair scores higher.'",
       "blocking": false
     },
     {
@@ -262,17 +265,16 @@
       "rule_index": 3,
       "rule_lead": "Business-audience word ban (Agents 101 default).",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "grep -i -E 'benchmark|ensemble|precision|recall|adjudicat|entailment' curriculum/evals/lints/jargon-ban.md -> 0 hits each (no listed ban); SVP test: 'ensemble' L9 is the only flinch word, filed under s2",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 4,
       "rule_lead": "Memory vs context — use deliberately.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "body names neither memory nor context",
       "blocking": false
     },
     {
@@ -280,8 +282,7 @@
       "rule_index": 5,
       "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L84 is the only recovery-adjacent line ('It is narrow on purpose: the \"known limit\" line names what you measured and decided not to chase'); it is forward narrative, no what-if-it-fails branch in body",
       "blocking": false
     },
     {
@@ -289,17 +290,16 @@
       "rule_index": 6,
       "rule_lead": "Trust Claude's defaults for structure.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L82 prompt marker: the Phase 4 fence specifies shape (heading, paragraph, under 20 lines) only where the judge file's narrowness is the teaching; the Phase 3 scoreboard table is an eval scoring format, the named exception",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 7,
       "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module. Compound-shape varies per module — never repeat same Debrief.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Debrief or retro interview in this exercise",
       "blocking": false
     },
     {
@@ -307,26 +307,25 @@
       "rule_index": 8,
       "rule_lead": "Don't smuggle another module's voice.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L90:'In Module 3 you marked one line of the briefing you doubted.' is the nearest cross-module reach; it is a back-reference the exercise needs, M5 voice stays bounded-benchmark",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 9,
       "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "L66:'## Read the scoreboard and name the surprise' and L86:'## Phase 5: Close, name the rescue' use 'name' in headings (the rule treats name as a smell in body and headings, exempt only for coinages like 'Name the uncertainty before you move'); L70:'*this is why I'm keeping this one*' is a speech line with no addressee. Harm (teacher's verb seats the student as the one being taught; unaddressed speech defaults to the room) is present.",
+      "fix_hint": "Swap to the specific move: 'Read the scoreboard and pick the row that surprised you'; 'Close, check the judge on your doubted line'; see check_writing s28 for L70.",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 10,
       "rule_lead": "Simulation personas never alone.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "simulation personas, not body prose",
       "blocking": false
     },
     {
@@ -334,8 +333,7 @@
       "rule_index": 11,
       "rule_lead": "No \"What research says\" callout boxes",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "grep -c 'What research says' over lines 1-103 -> 0",
       "blocking": false
     },
     {
@@ -343,17 +341,16 @@
       "rule_index": 12,
       "rule_lead": "Student moves stay in conversation with agent.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L84:'Open `judges/groundedness-judge.md`.' is the one editor-adjacent move; it is a read, the forcing function (Phase 5 prompt) stays in chat",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 13,
       "rule_lead": "Specify which CLAUDE.md layer — every time.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no CLAUDE.md named in body",
       "blocking": false
     },
     {
@@ -361,17 +358,16 @@
       "rule_index": 14,
       "rule_lead": "No em-dashes. Simple sentences.",
       "verdict": "PASS",
-      "evidence": "Body scan returned 0 matches for the rule's deterministic pattern (raw body; MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]).",
-      "fix_hint": null,
+      "evidence": "view grep em_dash body_hits 0 CLEAN; nearest long sentence L15 'A separate worker chooses a bounded evidence roster from the question alone, since the roster fixes the evidence the judgment may stand on.' reads aloud in one breath (fenced prompt bodies, outside the body region, carry em-dashes; noted in notes)",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 17,
       "rule_lead": "Section headers use command verbs when section is about doing something.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "L50:'## Phase 3: Scorer runs the benchmark' gives the agent role the main verb (the student is a header's only actor); L11:'## Phase 1: The target and the benchmark' is a noun-phrase header on a section where the student acts. Sibling headers (L19 'Extract the claim pool', L25 'Run the four detectors', L44 'Mark five claims yourself', L76 'Save the winner as a judge') are in shape. Harm (inconsistent header register, student not the actor) is present.",
+      "fix_hint": "'Phase 1: Set up the target and the benchmark', 'Phase 3: Run the scorer'.",
       "blocking": false
     },
     {
@@ -379,17 +375,16 @@
       "rule_index": 18,
       "rule_lead": "Inline links use target's title, never filename.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L102:'[Cookbook for Agent System Design](../trainings/...)' link text is the target's title; nearest ordinals L3 'Phase 1 ~8, Phase 2 ~8' are generated timing coordinates beside their own headers; Module 3/Module 6/Recipe 5 are names (relative path form belongs to module-shape.md, outside this class)",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 20,
       "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "student authors no contested-name primitive (skill, memory, plan) in this exercise",
       "blocking": false
     },
     {
@@ -397,8 +392,7 @@
       "rule_index": 21,
       "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "grep -c -i claude over lines 1-103 -> 0, 'the agent' -> 3 (L21 'The agent extracts', L62, L70); active-stance work is 'the agent' throughout",
       "blocking": false
     },
     {
@@ -406,8 +400,7 @@
       "rule_index": "21b",
       "rule_lead": "Session / task / run split (all trainings).",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "body uses 'run' only as a verb (L9 'Run all four', L25 header, L50 'runs the benchmark', L80 'you can run against'); no noun-run for the agent sitting",
       "blocking": false
     },
     {
@@ -415,8 +408,7 @@
       "rule_index": 22,
       "rule_lead": "No time-of-day anchors in body prose.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "grep -c -i -E 'tomorrow|overnight|this morning|tonight|yesterday|last night' over lines 1-103 -> 0",
       "blocking": false
     },
     {
@@ -424,8 +416,7 @@
       "rule_index": 23,
       "rule_lead": "Reflection beats stay invisible in flow.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "grep -c -i -E 'Pause before|Meta-moment|sit with|let it land|take a moment|Step back' over lines 1-103 -> 0; L74 'Answer the surprise question in one sentence.' is the nearest reflective beat, a plain command, no wrapper",
       "blocking": false
     },
     {
@@ -433,8 +424,7 @@
       "rule_index": 24,
       "rule_lead": "No meta-ask when student has already decided.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L72 prompt marker: the Phase 3 fence has the agent ask which row surprised the student; the student has not decided that (the scoreboard is new), so it is not a meta-ask of a settled choice",
       "blocking": false
     },
     {
@@ -442,8 +432,7 @@
       "rule_index": 25,
       "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "every saved artefact path in the prompts is .md (module-5/*.md, module-5/detectors/*.md, judges/groundedness-judge.md); body L84 and L94 name .md files",
       "blocking": false
     },
     {
@@ -451,8 +440,7 @@
       "rule_index": 26,
       "rule_lead": "Cut NVA: true but not moving student forward.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L15:'since the roster fixes the evidence the judgment may stand on' is the clause nearest to NVA; it changes what the student does (roster chosen from the question alone, blind to the briefing), so it moves them forward",
       "blocking": false
     },
     {
@@ -460,8 +448,7 @@
       "rule_index": 27,
       "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "grep -c -i -E 'Read it|Look at it|Study the table|Notice the row' over lines 1-103 -> 0; L84 'Open ...' follows a file write, not a chat print",
       "blocking": false
     },
     {
@@ -469,17 +456,16 @@
       "rule_index": 28,
       "rule_lead": "Forward-callout closer: student as grammatical subject.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L94:'`module-5/baseline-score.md` is the number Module 6 starts from.' is the forward callout; subject is the student's artefact and it states the motive for writing the baseline file (no training-as-subject, imperative, bare they or role-gating)",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 29,
       "rule_lead": "Operational reminders live at moment of use, not only where introduced.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no per-module operational setting (effort, model, mode tag) applies to this exercise",
       "blocking": false
     },
     {
@@ -487,8 +473,7 @@
       "rule_index": 30,
       "rule_lead": "Echo the training's theory spine before inventing a synonym.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L100:'(candidates -> benchmark -> scorer -> winner)' is the house pattern, vocabulary drawn from the exercise's own earned terms rather than invented synonyms",
       "blocking": false
     },
     {
@@ -496,17 +481,16 @@
       "rule_index": 31,
       "rule_lead": "Name the artifact, not the act.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "grep -c -i -E 'typing |type in|say to Claude|tell it to' over lines 1-103 -> 0",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 32,
       "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no setup, install or login instruction in body",
       "blocking": false
     },
     {
@@ -514,8 +498,7 @@
       "rule_index": 33,
       "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L94:'is the number Module 6 starts from' is the forward clause nearest to cartography; it states why the baseline file is written now (the step's own motive, the rule's carve-out). L102 'This was **Recipe 5**.' matches the corpus close used by 4 exercises (grep -l 'This was \\*\\*Recipe' curriculum/exercises -> 4 files)",
       "blocking": false
     },
     {
@@ -523,8 +506,8 @@
       "rule_index": 34,
       "rule_lead": "Four sharing strategies (Agents 101 M7 canonical) — use verbatim.",
       "verdict": "N/A",
-      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
-      "fix_hint": null,
+      "evidence": null,
+      "na_reason": "Agents 101 M7 sharing taxonomy, not this exercise",
       "blocking": false
     },
     {
@@ -532,8 +515,8 @@
       "rule_index": 35,
       "rule_lead": "Agents 101 M2+ Debrief — canonical shape.",
       "verdict": "N/A",
-      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
-      "fix_hint": null,
+      "evidence": null,
+      "na_reason": "no Debrief in this exercise",
       "blocking": false
     },
     {
@@ -541,8 +524,7 @@
       "rule_index": 36,
       "rule_lead": "Trust the prompt over the scaffold.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L17/L23/L60/L82 prompt markers: every artefact (roster, claim pool, scoreboard, judge) is produced by a prompt; no scaffold the student unzips",
       "blocking": false
     },
     {
@@ -550,13 +532,687 @@
       "rule_index": 37,
       "rule_lead": "Mood is a design constraint, not a garnish.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=137; FENCE_RANGES=[[9,11]]. Closest body line 3: \"**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "evidence": "L84:'the \"known limit\" line names what you measured and decided not to chase' keeps the scope of the rescue visible; no verification step in a doubt module, no later-module rescue front-loaded (the removed scale-up seam is a strategy-class question, see notes)",
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 38,
+      "rule_lead": "Exercise headers pass the build-squint test.",
+      "verdict": "PASS",
+      "evidence": "headers read alone: Hallucination benchmark / target and benchmark / claim pool / four detectors / five claims / scorer / scoreboard / save the winner as a judge / close / benchmark pattern; a cold reader reconstructs 'benchmark four detectors, keep the winner as a judge file'. Weakest header L86 'name the rescue' (opaque; filed at check_writing s8)",
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 39,
+      "rule_lead": "Self-study is invisible in the training flow.",
+      "verdict": "PASS",
+      "evidence": "grep -c -i -E 'self-study|Teacher Claude' over lines 1-103 -> 0",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "PASS",
+      "evidence": "L48 marks prompt: '- module-5 #N | grounded or not grounded | why | judge: -' is the nearest placeholder shape; it is a record format the agent fills, not a [BRACKET] slot the student edits",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": "L15-17 prompt 1: lead-in is two declarative sentences (41 words), no command verb, nearest to violating; each lead-in (L15, L29-31, L54, L90) still cues the fence semantically in the sentence directly above it, so the skim-cue harm is absent; headers L19/L25/L44 carry the command verb (s2c). Rule question for maintainer: the rule's command-verb shape is not met by L15, L54, L90",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "PASS",
+      "evidence": "expanded view: each marker expands to lead-in, '**Prompt** *(Claude Code)*', blank line, fence (e.g. L23 prompt 2); no 'copy ->' prefix, no closer",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no installed skill invoked",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "PASS",
+      "evidence": "L60 scorer prompt names deterministic paths for every input (module-5/claim-pool.md, module-5/detectors/*.md); L48 marks prompt chains on module-5/claim-pool.md and module-5/my-marks.md",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 6,
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "PASS",
+      "evidence": "L23 prompt 2: 'Do not judge whether the claims are grounded yet.' is the nearest downstream-awareness line; it withholds the next stage's job, it does not name or pre-run it",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 7,
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no session reset offered in any prompt",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no multi-sample method; four distinct methods, not N samples of one",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
+      "verdict": "PASS",
+      "evidence": "grep -c '\\*' over curriculum/prompts/hallucination-bakeoff-{1-frozen,2,3,4,5,6,7,8,9,marks}.md -> 0 in all ten",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "PASS",
+      "evidence": "L33-L42: paired <div class=\"rt-code\"> / <div class=\"rt-cowork\"> with the shared '**Prompt** *(Claude Code)*' chip in both; forks differ only subagent -> agent",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 11,
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+      "verdict": "PASS",
+      "evidence": "L35 vs L40: the Cowork fork differs only 'is a subagent' -> 'is an agent'; no install, multi-session or walk-away affordance differs in this beat, so no extra scaffolding is owed",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 12,
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no regeneration with a new context source",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 13,
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "PASS",
+      "evidence": "L60 scorer prompt: 'Quote the evidence line or file that supports the label.' forces sentence-level retrieval; L35 detector 3 checks each citation against the cited file",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 14,
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no regeneration of a stance-bearing artefact",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 15,
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "PASS",
+      "evidence": "L48 marks prompt: 'Show me five claims ... For each, I answer' deliberately shows five at once; short list, the student answers in one pass, so the batch is the design not a question-dump",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no regeneration prompt; each prompt writes a new file and L92 names the append target explicitly",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "advisory everywhere per the rule; no plan-mode fence and no run showing preamble",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 18,
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt asks the agent to critique its own work (detectors and scorer judge the Module 3 briefing)",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 19,
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not a walk-away send-off",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 20,
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "narrowed rule: fires only on a named run showing a downstream re-run; none",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 21,
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no external side-effect action",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 22,
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule on edits; this file holds markers only, no prompt body edited here",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "PASS",
+      "evidence": "L82 prompt: 'Write the judge as a markdown file to judges/groundedness-judge.md'; L60 'Save the scoreboard to module-5/scoreboard.md'; every save names directory plus filename",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "PASS",
+      "evidence": "no absolute path or cd in any fence; L17 uses module-3/briefing-baseline.md relative to session root",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 25,
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "PASS",
+      "evidence": "L35: 'Each detector is a subagent with a different method'; the why (isolation per method, parallel) is stated in the sentence above the fence at L29 'each with its own detection method and output file'; L17 subagent purpose is stated at L15 ('from the question alone')",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 26,
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule on how the orchestrator surfaces cards",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 27,
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "PASS",
+      "evidence": "L60: scoreboard.md is read by the student and by Phase 4 (L82 'Take the winning detector ... from module-5/scoreboard.md'); L92 baseline-score.md is read by Module 6 (L94); detector files are read by the scorer",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
+      "verdict": "PASS",
+      "evidence": "expanded view: all ten fences carry the exact label '**Prompt** *(Claude Code)*'",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 29,
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "PASS",
+      "evidence": "L23 prompt 2 opens 'Open module-5/briefing.md. Extract 30 varied claims'; no 'Ask me which files...' interview; orchestration in L17/L35 is the lesson (subagent isolation, parallel detectors)",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 30,
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no live-test correction in this diff",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "PASS",
+      "evidence": "grep -c '{{prompt:' file -> 10 markers; grep -c '^\\*\\*Prompt\\*\\*' file -> 0 inline blocks",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 32,
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "PASS",
+      "evidence": "L17 'Module 3 briefing' and L92 module-3/briefing-baseline.md name artefacts the session holds; no dangling curricular event",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 33,
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no git-output grep in any prompt",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 34,
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "PASS",
+      "evidence": "L92 prompt 9: names module-3/briefing-baseline.md, '## Doubted line', judges/groundedness-judge.md and module-5/adjudicated-claims.md in the fence itself; reads correctly with no body context",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 35,
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no multi-turn dialog that edits an artefact mid-dialog",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "PASS",
+      "evidence": "L60 scorer prompt is the widest fence: it already splits by move (reference adjudication, per-detector steps 1-4, scoreboard, winner, marks) into paragraphs",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 37,
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no save-the-rule prompt",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 38,
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "PASS",
+      "evidence": "L90-L92: body ends 'You decide whether the doubt was right and whether the judge caught it.' against fence opening 'Run judges/groundedness-judge.md on module-5/briefing.md'; weakest pair in the file, shares 'judge' and the briefing, still one continuous move; L23 vs 'Open module-5/briefing.md. Extract 30 varied claims' rhymes",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 39,
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt depends on a specific permission mode",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 40,
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "PASS",
+      "evidence": "L72 prompt 7 says 'the scoreboard', in scrollback after the L60 prompt prints it ('Show me the full scoreboard table in chat'); L64 prompt 6 names module-5/scoreboard.md; warm session, referents present",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 41,
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no artefact-plus-STOP tail; L72 wait is a question, not an artefact",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 42,
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not a headless-runner prompt",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "PASS",
+      "evidence": "L60 scorer prompt is the longest fence; default duration is not shown to exceed a couple of minutes and the student is at the machine (L54-L58 watch beat), the dose clause keeps no in-fence streaming tail owed",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 44,
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "PASS",
+      "evidence": "L60:'Do not return \"all four are useful\" - force the pick.' reads leading and is load-bearing (stops the beige default), kept",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 45,
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "PASS",
+      "evidence": "L35 'module-5/detectors/source-triangulation.md' is the nearest to deeper nesting; the leading segment is module-5/, no ../ and no duplicated prefix, a grouping subfolder is not the failure the rule names",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 46,
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "PASS",
+      "evidence": "L82 prompt 8 'a short heading, one paragraph describing what it checks and why, then the prompt itself' is the nearest trailing shape spec; the judge file's narrowness is the teaching, the stated exception",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 47,
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no add-X-and-regenerate prompt",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 48,
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "PASS",
+      "evidence": "L90-L92 closing is a Claude-as-cold-critic comparison of the judge's verdict with the student's own doubt, a different mechanic from a neighbour or group close; L72 closes Phase 3 with a one-sentence self-read",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 49,
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not a take-home prompt; Phase 4 prompt builds one judge file inside the session",
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 1,
+      "rule_lead": "CTO-repeatable test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "site and sales copy surface; this is a curriculum exercise body",
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 2,
+      "rule_lead": "No stylized phrase-pairs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "site and sales copy surface; this is a curriculum exercise body",
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 3,
+      "rule_lead": "Strip strategy-doc vocabulary.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "site and sales copy surface; this is a curriculum exercise body",
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 4,
+      "rule_lead": "Earn every term.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "site and sales copy surface; this is a curriculum exercise body",
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 5,
+      "rule_lead": "No M-number cross-references.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "site and sales copy surface; this is a curriculum exercise body",
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 6,
+      "rule_lead": "\"What you build\" = 20–30 words.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "site and sales copy surface; this is a curriculum exercise body",
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 7,
+      "rule_lead": "Describe failure modes, don't name them.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "site and sales copy surface; this is a curriculum exercise body",
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 8,
+      "rule_lead": "Agency on right noun.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "site and sales copy surface; this is a curriculum exercise body",
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 9,
+      "rule_lead": "No em dashes on site.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "site and sales copy surface; this is a curriculum exercise body",
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 10,
+      "rule_lead": "No \"What research says\" callout boxes.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "site and sales copy surface; this is a curriculum exercise body",
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 11,
+      "rule_lead": "Don't describe mood arc externally.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "site and sales copy surface; this is a curriculum exercise body",
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 12,
+      "rule_lead": "Ownership claims scope to customer-built artifacts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "site and sales copy surface; this is a curriculum exercise body",
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 13,
+      "rule_lead": "Numbers carry their denominator + axis.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "site and sales copy surface; this is a curriculum exercise body",
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 14,
+      "rule_lead": "Each fact once per page; no kicker closers.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "site and sales copy surface; this is a curriculum exercise body",
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
+      "verdict": "PASS",
+      "evidence": "L84:'the \"known limit\" line names what you measured and decided not to chase' and L90 'You decide whether the doubt was right' leave the student mid-rescue with the scope limit visible; the scoreboard beat (L66-L74) is a teaching beat, setup beats (L31 'In your main session:') are exempt; the removed scale-up seam is for the strategy class",
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module mood is mechanical rescue, not unease",
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Big Idea in an exercise file; H1 names the construction",
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "sequencing claims live in the strategy doc owned by the strategy class; body names no later-module teaching term",
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Key Concepts section in an exercise",
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Key Concepts section in an exercise",
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no What You will Learn section in an exercise",
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "binds strategy doc to curriculum, not a body rule",
       "blocking": false
     }
   ],
-  "blocking_findings_count": 0,
-  "notes": "Final direct writing-class judgment from the frozen queue. Expanded view was generated before review; evidence line locations were checked against the raw source.",
-  "shape_hash": "8476b64ee198f1ad",
-  "nonblocking_findings_count": 0
+  "suggestions": [
+    {
+      "rule": "check_student_facing.md §2",
+      "line": 9,
+      "now": "Run all four on your own output and keep the one that scores best, or the ensemble if it does.",
+      "proposed": "Run all four on your own output and keep the one that scores best, or the best pair of methods if a pair scores higher."
+    },
+    {
+      "rule": "check_writing.md §15",
+      "line": 62,
+      "now": "Ask the agent to explain both using your own rows.",
+      "proposed": "Ask the agent to explain precision and recall using your own rows."
+    },
+    {
+      "rule": "check_writing.md §28",
+      "line": 70,
+      "now": "Point at a row: *this is why I'm keeping this one*. Ask the agent to contrast this with the classic way.",
+      "proposed": "Pick the row that decides which detector you keep. Ask the agent to contrast this benchmark with the classic way."
+    },
+    {
+      "rule": "check_student_facing.md §9",
+      "line": 66,
+      "now": "## Read the scoreboard and name the surprise",
+      "proposed": "## Read the scoreboard and pick the row that surprised you"
+    },
+    {
+      "rule": "check_writing.md §8",
+      "line": 86,
+      "now": "## Phase 5: Close, name the rescue",
+      "proposed": "## Phase 5: Close, check the judge on your doubted line"
+    },
+    {
+      "rule": "check_student_facing.md §17",
+      "line": 50,
+      "now": "## Phase 3: Scorer runs the benchmark",
+      "proposed": "## Phase 3: Run the scorer"
+    },
+    {
+      "rule": "check_student_facing.md §17",
+      "line": 11,
+      "now": "## Phase 1: The target and the benchmark",
+      "proposed": "## Phase 1: Set up the target and the benchmark"
+    }
+  ],
+  "blocking_findings_count": 1,
+  "nonblocking_findings_count": 6,
+  "notes": "Brief built (136 rules, 0 prefilled: shape changed). Not judged here: (1) fenced prompt bodies in curriculum/prompts/hallucination-bakeoff-{3,4,5,6,7,8}.md carry em-dashes (4,4,2,1,1,3), outside the body region and fence-exempt for this class; check_student_facing s14 says all student-facing curriculum, so the maintainer may want a rule call on prompt bodies (gated edits). (2) Rule question, check_writing s6: rule text says line 3 is total only, but L3 carries a phase breakdown and calculate-time --check passes it (apt101-catch-it-making-things-up line 3 is the same shape); rule text and generator disagree. (3) Strategy/story class: the body no longer carries the old scale-up line (hundreds of claims, next module) that the maintainer Mood contract, Benchmark=30 note and Mood check still cite; filed here only as the s3 keep-note defect. (4) Maintainer TODO (Cowork edition review) still applies: the Phase 1 fence says Spawn one subagent with no rt-cowork fork. (5) L102 link uses a ../ prefix, a module-shape.md matter outside this class. Accept-notes: none authorise anything a filed row catches; the two dated lines are the Quality stamp (L106) and a Cowork TODO (L109).",
+  "resolution": {
+    "settled": "refuted",
+    "at": "2026-11-26",
+    "note": "Both refuters killed every blocking finding, so the row stamps PASS:verify-refuted and this REVISE stays as the record. writing §8 line 86: harm: The judge's facts check out, but the harm is thin. I recommend refuting.\n\nWhat I verified:\n- L86 reads `## Phase 5: Close, name the rescue`. Antti authored it on 2026-08-19 (commit 00cf8da7d), and it has not changed since.\n- 'rescue' appears at L114, L151, L162 and L163 of the exercise, all below the maintainer cut at L104. The header at L86 is the only student-facing use.\n- In output-quality.md the word appears only at L86 and L122-124, below the `<!-- maintainer -->` marker at L75.\n- The Phase 5 body (L88-94) never uses the word.\n\nWhy it still fails the harm lens:\n- (a) Who is worse off? §8 targets private jargon the reader cannot parse, such as self-compound or substrate. 'Rescue' is an ordinary English word. A student reads 'name the rescue' as 'say what the judge saved' and then meets a body that asks whether the judge caught the line they doubted. No one is blocked or misled in the room. The 'mood advertised rather than lived' claim is the maintainer's taste, not a student harm.\n- (b) The finding mostly restates the §8 grep test ('can you point to an earning moment?'). It does not describe a consequence.\n- (c) The fix has a cost. It changes a student-facing header, so it needs a card. The same file's L66 header, 'Read the scoreboard and name the surprise', carries the same 'name' verb. Fixing only L86 leaves that header in the old style, so the file would be inconsistent. The `phase-5-close-name-the-rescue` anchor is also cited in the language reports and eval body-views. The rename touches more than one line.\n- Judge history: all seven judges, including writing, passed this file at the 2026-08-25 audit, with the header unchanged. The 2026-11-14 body rewrite did not touch the header either.\n- (d) The 'name' smell in headings (check_student_facing, 2026-08-14) is a different rule from the one filed. It is a real nit that belongs in a sweep covering both L66 and L86. It is not a BLOCKING §8 finding.\n\nResidual: the header slightly presupposes a rescue. The new body says 'you decide whether the doubt was right', so the doubt may turn out wrong. That is a polish issue for a maintainer pass."
+  }
 }

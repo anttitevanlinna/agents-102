@@ -29,6 +29,10 @@ Everyone wants their 100 agents. From here, a hundred agents is a matter of desc
 Name your next gap. Describe the agent for it. An agent builds it; you test it on your own work before it reaches anyone else's.
 
 <!-- maintainer -->
+
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing PASS (3 findings see instances/agents-101--lecture--where-is-this-all-going.writing.json), story PASS, technical PASS, behavior N/A, pedagogy PASS (1 finding see instances/agents-101--lecture--where-is-this-all-going.pedagogy.json), strategy PASS, slides PASS (1 finding see instances/agents-101--lecture--where-is-this-all-going.slides.json)
+
 **Decision note 2026-11-13 (Antti yes, after the teaching scores).** One thread: your agent improves your agent, each fix stays on disk, leverage = learning rate. Cut: `## Agents reading agents must cite`, `## Three walls past the laptop`, `## Which half of this is obsolete next year?`, `## What would change our mind?`. Students took those home instead of the Big Idea: stated cold 16 → 28 (lean scorer, n=24 each); putting the obsolete-next-year slide back fell to 19 (n=12). Citation stays taught in `joint-double-diamond.md`. Cost: story judge POV 38 → 28. Evidence: agents-102 `curriculum/evals/loops/rollout/pass-2/`.
 
 **Meta:**

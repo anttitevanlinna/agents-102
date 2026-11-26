@@ -1,0 +1,202 @@
+{
+  "class": "slides",
+  "file": "curriculum/slides/steering-raises-the-ceiling.md",
+  "training": "shared",
+  "verdict": "REVISE",
+  "body_sha": "1190535e529335181a30da15d2cc8730984fadf6d4834facf05e03d3fc2712f9",
+  "shape_hash": "9f88481fbd9d444c",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "Steering raises the ceiling",
+      "lines": "1-12"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "REVISE",
+      "evidence": "chunk 0 \"Steering raises the ceiling\": line 8: \"Define that dimension as a check.\" Harm (a referent the room cannot resolve) is present: no sentence names a dimension; line 6 offers two candidates (\"names the tradeoff\", \"gives a clean next move\"), and \"the tradeoff\" (line 6) is itself never named. Prior-slide vocabulary resolves \"Groundedness\"/\"floor\" (host slide groundedness-protects-the-floor), but nothing resolves \"that dimension\".",
+      "fix_hint": "Name the thing the check measures instead of \"that dimension\" (e.g. \"Define what the second mail does as a check\")",
+      "blocking": true,
+      "chunks_flagged": [
+        0
+      ]
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "evidence": "line 10: \"Groundedness protects the floor.\" closest: it leans on the preceding slide of the host lecture but names the concept by its own title, not by position (\"the opening lecture\"); grep for positional callbacks (the above/earlier/previous slide/lecture) -> 0.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "PASS",
+      "evidence": "grep -ciE \"you (did|saw|caught|ran|just)|the .* you \" -> 0; closest line 10 \"Groundedness protects the floor\" names a concept, not a beat the student did, and the host lecture holds a slide of that title.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no guess/reveal demo beat on the slide",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "evidence": "line 10: \"Groundedness protects the floor. Steering raises the ceiling.\" is a self-carrying claim; the slide is five paragraphs, not a wait-state.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "evidence": "header \"Steering raises the ceiling\" vs line 10 \"Steering raises the ceiling.\" and line 12 \"A grounded mail can still be useless, so you need both.\" - body supports the header; no contradiction.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "evidence": "closest: lines 10 \"Groundedness protects the floor. Steering raises the ceiling.\" is a pair, not a triple; no \"Not X. Not Y. Z.\", no superlative, no number+retraction, no verb triplet; \"Perhaps\" (line 6) is a hedge, not a cadence tic.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "evidence": "line 8: \"steering eval\" - engineer-register term, defined in the same sentence; no compendium/surface-noun/firing/beat/mood vocabulary on the slide.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "evidence": "grep -cE \"\\*\\*\" -> 0 bolded elements, within the <=1 budget.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "slide file included by host lecture evals-as-steering.md line 15 via a standalone include line (inlined before any reader); no phase-less prose section at stake",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Phase/Step headers; node scripts/check-slide-numbering.js --file -> OK, exit 0",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/slides/steering-raises-the-ceiling.md -> \"OK — 1 files, no page-geometry pointers across the slide cut.\" exit 0",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no links in body; rule 13 is a review aid, never a gate",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-size.js --file ... -> slides: 1, oversized: 0, \"every slide is within limits\", exit 0",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "evidence": "header \"Steering raises the ceiling\" is a claim, correct for a lecture-borne slide that states a law (line 10).",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "line 12: \"A grounded mail can still be useless, so you need both.\" closest to a doctrine restatement/kicker of line 10, but it adds the new move \"you need both\", so it earns its slot.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "header \"Steering raises the ceiling\" promises how steering lifts the ceiling; body lines 4-8 (the two mails, the steering eval) answer it and no bullet answers an older header; no provenance note or maintainer block records a rename.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    }
+  ],
+  "suggestions": [],
+  "blocking_findings_count": 1,
+  "nonblocking_findings_count": 0,
+  "notes": "Brief built (17 rules). No maintainer or backing block in the slide file, so no accept-notes. Slide is borrowed by lectures/evals-as-steering.md line 15 after groundedness-protects-the-floor. Not a git repo here, so rule 17 rename trigger unverifiable from history.",
+  "resolution": {
+    "settled": "refuted",
+    "at": "2026-11-26",
+    "note": "Both refuters killed every blocking finding, so the row stamps PASS:verify-refuted and this REVISE stays as the record. slides §1 line 8: harm: The finding is refuted, though the sentence is slightly loose. The citation checks out: line 8 reads \"Define that dimension as a check\", and `check_slides.md` §1 does cover demonstratives that bind to nothing. But the referent resolves.\n\n(1) Line 4 sets up a contrast between a forgettable mail and one that makes the reader act. Line 6 states what the better mail does: \"names the tradeoff and gives a clean next move\". Line 8 follows immediately with \"that dimension\". A sequential reader takes it as the quality the second mail has and the first lacks. That fits §1's carve-out, \"immediate continuation of the previous slide's subject\". It is not \"never named\" and not \"vague with full history\". The two items on line 6 are joined by \"and\" and read as one dimension, so there are not two candidates.\n\n(2) The judge says \"the tradeoff\" is never named. It is a generic noun phrase inside the hedged \"Perhaps…\" example, not a referent the room must resolve. The slide is deliberately illustrative, and the slide's point survives without pinning the dimension down.\n\n(3) Harm lens (a)/(b): nobody in the room is worse off. The concept lands on this slide because \"That is a steering eval: did the output overperform on it?\" follows directly. Calling the \"harm\" an unresolved referent only restates the rule.\n\n(4) Harm lens (c)/(d): the proposed fix is \"Define what the second mail does as a check\". It introduces \"the second mail\", which is not named either (line 4 says \"one… the other\"). It trades one soft referent for another, and it reads worse. History shows the line was rewritten from \"Write that dimension down\" to \"Define that dimension as a check\" in a compaction pass, with the same \"that dimension\" kept. The verb changed and the referent did not. The wording already did its job of tying the check to the contrast.\n\n(5) Facts verified by `git blame` and `git show`. Line 8 was last touched in 6ddd58ec, and only the verb phrase changed. Line 6 is from 149d513c. The original fuller version explicitly said \"What changed? Not groundedness. Something else\" and then \"That dimension lives in your head\". The compaction kept the contrast and the dimension idea in compressed form. The host lecture's file-level slides judge recorded PASS for this slide at 4d9c4af2 (2026-08-25), and the judge's claims that \"Groundedness\" and \"floor\" resolve through the host slide are accurate but beside the point.\", \"counter_evidence\": \"The one real weak point is that \"dimension\" is an abstract noun and the \"Perhaps\" hedge means no single dimension is committed to. A stricter reader could call the demonstrative loosely bound. At most that is a nit-level wording preference, not a blocking referent failure.\""
+  }
+}

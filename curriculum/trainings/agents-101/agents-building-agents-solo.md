@@ -17,6 +17,8 @@ After this module, you will be able to:
 
 ## Start here
 
+Start a fresh session or task at `~/Documents/agents-101/`.
+
 Your system works for you because it reads your memory. Who is one person who could use what it makes, and what would they need if your memory stayed with you?
 
 [Exercise: Build an agent for someone else](exercises/build-for-the-gap.md)
@@ -53,6 +55,10 @@ Sharing agents across a team and building a strategy with everyone's agents toge
 One question to carry out of the course: what is going to be the next hard part about agents?
 
 <!-- maintainer -->
+
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing PASS (verify-refuted, 4 findings see instances/agents-101--module--agents-building-agents-solo.writing.json), story PASS (2 findings see instances/agents-101--module--agents-building-agents-solo.story.json), technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agents-101--module--agents-building-agents-solo.pedagogy.json), strategy PASS, slides PASS
+- cross_module @78d17fc9: REVISE — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,agents-building-agents-solo]; 7 pairs, 6 blocking; see instances/agents-101--module-set--agents-101-open-edition.cross_module.json
 
 **Edition:** free open edition only (`agents-101-open`: M1 to M6 plus this module), replacing M7 + M8. The licensed team edition runs `personal-to-team.md` and `agents-building-agents.md` with a neighbour, a forum and a sponsor. Antti 2026-11-25 picked this split on a decision card; plan https://claude.ai/artifact/MEhqeBGvmTXXAoTqdwCf5P.
 

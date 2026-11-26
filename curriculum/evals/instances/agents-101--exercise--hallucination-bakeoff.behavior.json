@@ -2,20 +2,21 @@
   "class": "behavior",
   "file": "curriculum/exercises/hallucination-bakeoff.md",
   "training": "agents-101",
-  "body_sha": "644a71be093e79e137c27346236602afbc405467c47517225d8caa35e4a8551f",
+  "verdict": "PASS",
+  "body_sha": "d05d4fa84e8acda0834f217b35fa47da1c4012641a4b26f944f0356fdf6743b7",
   "trace_status": "full_regen",
-  "prompts_evaluated": 8,
+  "prompts_evaluated": 10,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "Spawn one subagent to create the benchmark target.\n\nThe briefing is the test cor",
+      "prompt_lead": "Spawn one subagent to set up the benchmark target.\n\nThe target is the Module 3 b",
       "verdict": "PASS",
       "load_bearing": false,
       "risks_fired": []
     },
     {
       "prompt_index": 2,
-      "prompt_lead": "Open `module-5/briefing.md`. Extract exactly 30 varied claims from the briefing.",
+      "prompt_lead": "Open `module-5/briefing.md`. Extract 30 varied claims from the briefing, or ever",
       "verdict": "PASS",
       "load_bearing": false,
       "risks_fired": []
@@ -36,35 +37,72 @@
     },
     {
       "prompt_index": 5,
-      "prompt_lead": "You are the scorer for a four-way detector benchmark. Your inputs:\n\n- Claim pool",
+      "prompt_lead": "Show me five claims from `module-5/claim-pool.md` with their numbers: a mix of s",
       "verdict": "PASS",
-      "load_bearing": false,
+      "load_bearing": true,
       "risks_fired": []
     },
     {
       "prompt_index": 6,
+      "prompt_lead": "You are the scorer for a four-way detector benchmark. Your inputs:\n\n- Claim pool",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "carve_out": "evidence-backed Debrief carve-out",
+          "evidence": "Scorer adjudicates claims in a briefing Claude itself wrote: \"label it GROUNDED, UNGROUNDED, or PARTLY GROUNDED. Quote the evidence line or file\"; plus student marks agreement line",
+          "fix_hint": "none owed; carve-out applied"
+        }
+      ]
+    },
+    {
+      "prompt_index": 7,
       "prompt_lead": "Tell me about precision and recall.\n\nUse the scoreboard at `module-5/scoreboard.",
       "verdict": "PASS",
       "load_bearing": false,
       "risks_fired": []
     },
     {
-      "prompt_index": 7,
+      "prompt_index": 8,
       "prompt_lead": "Two things, in the chat.\n\nFirst, three lines on the classic way:\n1. What the cla",
       "verdict": "PASS",
-      "load_bearing": false,
+      "load_bearing": true,
       "risks_fired": []
     },
     {
-      "prompt_index": 8,
+      "prompt_index": 9,
       "prompt_lead": "Take the winning detector (or the ensemble) from module-5/scoreboard.md. Rewrite",
       "verdict": "PASS",
-      "load_bearing": false,
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "carve_out": "evidence-backed Debrief carve-out",
+          "evidence": "\"add a one-line Known limit: the failure mode this judge doesn't catch, based on what lost the benchmark\" - Claude grades its own judge, but anchored to benchmark evidence",
+          "fix_hint": "none owed; carve-out applied"
+        }
+      ]
+    },
+    {
+      "prompt_index": 10,
+      "prompt_lead": "Run `judges/groundedness-judge.md` on `module-5/briefing.md` with the files in `",
+      "verdict": "PASS",
+      "load_bearing": true,
       "risks_fired": []
     }
   ],
+  "suggestions": [
+    {
+      "rule": "uncatalogued: missing wait-gate (prompt 9)",
+      "line": 92,
+      "now": "I compare and answer in one line. Append a section `## Doubted line` to `module-5/baseline-score.md` with the line, the judge's verdict, and my answer word for word.",
+      "proposed": "Stop after showing me those three things and wait for my one-line answer. Then append a section `## Doubted line` to `module-5/baseline-score.md` with the line, the judge's verdict, and my answer word for word."
+    }
+  ],
   "blocking_findings_count": 0,
-  "verdict": "PASS",
-  "evidence": "Expanded current source with node scripts/expand-md.js curriculum/exercises/hallucination-bakeoff.md; scanned 8 prompt block(s) above the maintainer cut; raw source SHA-256 recorded in body_sha. Behavior conclusions re-derived from the frozen source; eval-loop prompt 2 reconciled against check_prompts §17.",
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "Prior cache (2026-08-23, 8 prompts) was stale: prompts 1 (frozen), marks and close (9) are new, so full regen. Accept-notes: L106 Quality line; L109 Cowork edition TODO (Phase 1 prompt still says subagent; gated, not filed). Two risks recorded low with evidence-backed Debrief carve-out (prompts 6, 9 of ledger: scorer, judge Known limit). Technical-lane observations, not filed: prompt 4 is labelled Claude Code inside rt-cowork; marks prompt asks for claim numbers but extraction prompt 2 never asks Claude to number claims; detector 1 says claim appears in any file on disk while detectors read a bounded roster. Maintainer block says Known limit is student-written but prompt 8 has Claude write it (pedagogy lane). Dispatch wake asked for the 7-module public version; this file is the agents-101 exercise named in the computed task and nothing in the body is module-count specific."
 }

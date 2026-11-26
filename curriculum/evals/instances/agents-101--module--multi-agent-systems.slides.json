@@ -1,13 +1,14 @@
 {
   "class": "slides",
   "file": "curriculum/trainings/agents-101/multi-agent-systems.md",
-  "body_sha": "b2870d25cc7c401fa15bcf18d4484d8b35d3e3e589de0cd330cd326f766ef7e0",
-  "verdict": "PASS",
   "training": "agents-101",
+  "verdict": "PASS",
+  "body_sha": "46c40375777c8788df5633fc0f16295ecccecf9543274853a82cb536197d6a8b",
+  "shape_hash": "03b0d2bd353b8b6c",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "# Multi-Agent Systems",
+      "heading": "Multi-Agent Systems (H1)",
       "lines": "1-2"
     },
     {
@@ -23,42 +24,57 @@
     {
       "index": 3,
       "heading": "What You'll Learn",
-      "lines": "10-17"
+      "lines": "10-15"
     },
     {
       "index": 4,
       "heading": "Start here",
-      "lines": "18-39"
+      "lines": "16-33"
     },
     {
       "index": 5,
       "heading": "Debrief",
-      "lines": "40-58"
+      "lines": "34-39"
     },
     {
       "index": 6,
-      "heading": "Push back on the summary",
-      "lines": "59-62"
+      "heading": "Nothing here checks any of it",
+      "lines": "40-45"
     },
     {
       "index": 7,
-      "heading": "Optional memory check before Module 4",
-      "lines": "63-83"
+      "heading": "Push back on the summary",
+      "lines": "46-49"
     },
     {
       "index": 8,
-      "heading": "Key Concepts",
-      "lines": "84-90"
+      "heading": "The doubt stays. Hold it.",
+      "lines": "50-53"
     },
     {
       "index": 9,
-      "heading": "Pre-reads before Module 4",
-      "lines": "91-98"
+      "heading": "Optional memory check before Module 4",
+      "lines": "54-59"
     },
     {
       "index": 10,
+      "heading": "Key Concepts",
+      "lines": "60-65"
+    },
+    {
+      "index": 11,
+      "heading": "Pre-reads before Module 4",
+      "lines": "66-73"
+    },
+    {
+      "index": 12,
+      "heading": "Bring to Module 4: what's the worst thing it could do with that access?",
+      "lines": "74-77"
+    },
+    {
+      "index": 13,
       "heading": "Next",
-      "lines": "99-102"
+      "lines": "78-80"
     }
   ],
   "rules_evaluated": [
@@ -67,155 +83,198 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Read all 11 expanded chunks in order. Closest candidates resolve: chunk 4 line 24 'between them' follows the six agents named in the same paragraph; chunk 10 line 100 'it' is the thing just built and 'that' is the access to the systems named in the immediately preceding sentence. No never-named or vague-with-full-history referent found.",
+      "evidence": "line 42 \"The audit reads how your agents handed work to each other\" resolves to \"harsh audit\" on line 42/prompt in the same chunk; line 52 \"the briefing\" names the \"synthesizer's briefing\" from Debrief line 36 (header-level term carried on the immediately preceding slides). Closest: line 49 \"the summary\" in chunk 7, which is the agent's report-back from the Debrief slide, immediate continuation. Harm (unresolvable referent on a projected slide) absent.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Named document links appear in chunk 2 line 8 and chunk 9 lines 93-95. 'Last module' at chunk 4 line 24 is module-arc framing, not a callback to another file by opening/page position; no unnamed positional callback appears.",
+      "evidence": "No cross-file positional callback. Closest: line 70 \"the multi-agent sections of [What is an Agent]\" names the document, and \"Agent Trigger List, After Module 3\" is named by title; navigational pointers carve-out applies.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "No specific 'the X you did/saw/caught' backward-beat construction appears in the body; the two prompt blocks are fenced and exempt.",
+      "verdict": "PASS",
+      "evidence": "Backward refs: line 36 \"the four prompts, the retrieval files, the synthesizer's briefing\" resolve against the module include order (retriever, curator, synthesis exercises at lines 26-28, module-arc beat in the Debrief, artefact contract names module-3/ outputs). No \"the X you did/caught\" with a missing beat.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 4,
       "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "No guess/predict-before-reveal instruction appears in the body; the prompt code blocks are fenced and exempt.",
+      "verdict": "PASS",
+      "evidence": "No guess-before-reveal demo beat in the body. Muted read, closest: line 20 \"Three agents search your wiki, your documents and practitioner articles, and three more decide what it means.\" is a verbed sentence with a noun for each actor; line 52 \"Nothing checks the briefing yet, so its correctness stays open.\" is verbed and carries its own referent. No verbless scene-setting, no guess-cue aimed at the terminal.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Every rendered chunk carries a claim, list, instruction, logistics handoff, or forward action. The shortest substantive chunks, chunk 1 'Big Idea' and chunk 10 'Next', each carry self-standing claims; the title chunk is the deck's title slide, not a wait-state.",
+      "evidence": "Closest to orphan: chunk 12 \"Bring to Module 4\" line 76 \"An agent that works across connected systems has access to those systems.\" is thin but states a self-carrying premise that the header question needs; chunk 8 line 52 is a one-sentence claim with its reason. Both carry a claim, so neither is a wait-state or context-dependent bullet.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "All headers match the content in their own chunks: 'Optional memory check before Module 4' names the optional health-check action at chunk 7, and 'Next' names the forward handoff at chunk 10. No header is contradicted by its chunk.",
+      "evidence": "Closest: chunk 6 header \"Nothing here checks any of it\" (line 40) over a body that says the audit demands evidence per seam (line 42) and \"does not check whether the briefing is true\" (line 44). The header states the second half, which is the point; maintainer note 2026-09-23 attests the header over this commentary. Chunk 7 \"Push back on the summary\" and chunk 8 \"The doubt stays. Hold it.\" match their bodies.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Manual body-only sweep, excluding fenced prompts: no 'Not X. Not Y. Z.' construction, empty anaphora/epistrophe triple, self-grading superlative, number-plus-retraction, abstraction-noun stack, or empty-leg verb triplet. Chunk 4's 'searched... pulled... chased down' is concrete retrieval work, not a cadence tic.",
+      "evidence": "Per-chunk read of the body: no \"Not X. Not Y. Z.\", no third anaphora leg within a chunk (line 40 header \"Nothing here checks\" and line 52 \"Nothing checks\" sit on different slides), no self-grading superlative, no number plus retraction, no abstraction-noun stack. Closest: line 4 \"Split the work, run the agents in parallel, and let them hand off through shared files.\" is a verb triplet but every leg is concrete (divide, concurrent, files).",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Full body read found no repo-internal 'compendium', 'firing', 'forcing function', 'beat', 'mood', or surface-as-noun usage. 'Dialect' at chunk 3 line 13 and chunk 8 line 86 describes each source's language as a teaching concept; session/task, rules file, retrieval files, and training directory are student-facing artifacts, not maintainer jargon.",
+      "evidence": "Body view region grep for beat|surface|mood|compendium|firing|forcing|above|below returned none (run against projections.body_numbered). Closest: line 42 \"two seams minimum\" and line 36 \"handoff\" are engineer vocabulary for AE101-adjacent builder-leader audience, used as ordinary terms.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
-      "verdict": "REVISE",
-      "chunks_flagged": [
-        8
-      ],
-      "evidence": "Chunk 8 'Key Concepts', lines 85-89, opens every bullet with a bolded full-sentence claim: '**Two multi-agent shapes.**', '**Splitting earns its keep when the agents genuinely can't be one.**', '**Seams are where it fails.**', '**Three stances beat one summarizer.**', and '**Frameworks are the synthesizer's spine.**' The compendium's LO exception covers What You'll Learn, not this consolidation slide; this is the rule's explicitly banned every-bullet-bolded-lead shape.",
-      "fix_hint": "Leave the concept claims in plain text or bold only short concept handles; preserve the explanatory prose.",
-      "blocking": false
+      "verdict": "PASS",
+      "evidence": "Bold inventory: line 12-14 three bolded LO verbs (module template mandated, What You'll Learn exception, N/A for count); line 56 \"**Optional move: pressure-test the memory.**\" is one bold of five words on its slide, inside the cap; Debrief \"**Prompt**\" is the widget label. No whole-sentence bold elsewhere.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/slides.test.js: real output reports 24 tests, 24 pass, 0 fail, 0 skipped, including module-level prose inclusion and deck ordering. The target-specific size checker also enumerated 10 slides, confirming all body chunks are measured as deck content.",
+      "evidence": "Body view signals slide_count 13 equals the count of `##` headings above the maintainer cut (Big Idea, Prework, What You'll Learn, Start here, Debrief, Nothing here checks any of it, Push back on the summary, The doubt stays, Optional memory check, Key Concepts, Pre-reads, Bring to Module 4, Next). All are top-level module sections. Composed-deck render was not run here; unverified beyond the chunker.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "The file has no Phase N: or N. step headers and no in-file Phase/Step ordinal references. node scripts/check-slide-numbering.js --file curriculum/trainings/agents-101/multi-agent-systems.md --report exited 0 with no output.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/trainings/agents-101/multi-agent-systems.md -> \"OK — 1 files, Phase/Step numbering consistent.\" No hand-numbered headers or Phase/Step refs.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "node scripts/check-slide-deixis.js --file curriculum/trainings/agents-101/multi-agent-systems.md --report exited 0 with no page-geometry output. Manual read found no below/above/further-down/top-of-page pointer; the chunk-local links and reading-order handoff remain valid.",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/trainings/agents-101/multi-agent-systems.md -> \"OK — 1 files, no page-geometry pointers across the slide cut.\" Body grep for above|below returned none.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 13,
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "node scripts/check-slide-deixis.js --file curriculum/trainings/agents-101/multi-agent-systems.md --links listed the five in-body document links and identified them as a review surface, not a gate. Each link names its document in text (chunk 2 line 8; chunk 9 lines 93-95); structural include-links remain outside this rule.",
+      "evidence": "Review surface, no rule. Link text names the document: line 8 \"[Helper agents primer](exercises/module-3-prework.md) before Module 3\", line 70 \"[Agent Trigger List, After Module 3](...)\". None locates a document by page geometry. Include links at lines 22-32 are structural.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-size.js --file curriculum/trainings/agents-101/multi-agent-systems.md --report: output reports 10 slides, oversized 0; largest is Start here at 160 words / 0 bullets against 210 words / 6 bullets, and the command exits 0.",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/trainings/agents-101/multi-agent-systems.md -> \"oversized: 0 ... every slide is within limits\".",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "The module's headings are architecture labels plus allowed orientation/logistics/action forms: Start here (orientation), Push back on the summary (imperative), Optional memory check before Module 4 (named optional action), and Next (closer). No law/consolidation heading is a bare label that contradicts its chunk.",
+      "evidence": "Module file with Debrief slides rather than exercise or lecture headings. Closest: line 46 \"Push back on the summary\" (imperative), line 50 \"The doubt stays. Hold it.\" (declarative at the module's closing generalisation beat, the convention the rule names), line 40 a claim. Maintainer note 2026-09-23 attests the three Debrief headers.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "Closest: line 65 Key Concepts bullet \"Handoffs are where work gets lost: open the files where one agent handed to the next.\" restates Big Idea line 4 \"Handoffs are where work gets lost, so check them.\" but it adds the action (open the files), the slide is a glance list, and maintainer notes 2026-09-24 (Key Concepts minimal) and 2026-11-13 (red thread: say it in different ways, add none) attest the deliberate repetition. No doctrine re-announce, design commentary or koan kicker.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "Diff 4d9c4af2..HEAD: no existing `##` line was renamed over an untouched body. `## Next` kept its header and its body was cut to the build ask (line 79-80), the access question moved under the new `## Bring to Module 4: what's the worst thing it could do with that access?` (line 74), whose body (line 76) answers its own header. Nothing inherited from an old header remains.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    }
+  ],
+  "suggestions": [
+    {
+      "rule": "check_slides.md §Next (closer bans, inherited by forward-pointing sections)",
+      "line": 72,
+      "now": "After the optional check and pre-reads, end this session. Module 4 starts fresh at `~/Documents/agents-101/`.",
+      "proposed": "Module 4 starts at `~/Documents/agents-101/`."
     }
   ],
   "blocking_findings_count": 0,
-  "shape_hash": "eca0fa823e407f34",
-  "nonblocking_findings_count": 1
+  "nonblocking_findings_count": 0,
+  "notes": "Rulebook built normally (17 rules, prefill parked 0: shape changed). Accept-notes honoured: red thread 2026-11-13, Quality line, Key Concepts minimal 2026-09-24, Debrief slides 2026-09-23, mood target. Cross-class: none."
 }

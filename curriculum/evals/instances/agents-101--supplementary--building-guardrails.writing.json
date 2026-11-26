@@ -1,25 +1,28 @@
 {
   "class": "writing",
   "file": "curriculum/trainings/agents-101/supplementary/building-guardrails.md",
-  "verdict": "PASS",
   "training": "agents-101",
-  "body_sha": "e9758c90e8fdfbe6a509bf32565a9976102bd0795d9769542ee8c4bb261f3984",
+  "verdict": "PASS",
+  "body_sha": "9a17ace200f3898552fcaec1c0816de7cb6d703c5796e8e9dd7217dbce46f15f",
+  "shape_hash": "98eb641e888ecd87",
   "rules_evaluated": [
     {
       "compendium": "check_writing.md",
       "rule_index": 1,
       "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": "Body scan for banned words returned 0 matches (raw body; MAINTAINER_CUT=18; FENCE_RANGES=[]).",
+      "evidence": "mechanical: banned_words, em_dash, leverage_verb greps over body projection, each CLEAN with planted proof, body_hits 0; plus grep -c landscape over lines 1-17 -> 0",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 2,
-      "rule_lead": "Ritual / ceremony — hard ban",
+      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
       "verdict": "PASS",
-      "evidence": "Body scan returned 0 matches for the rule's deterministic pattern (raw body; MAINTAINER_CUT=18; FENCE_RANGES=[]).",
+      "evidence": "mechanical: ritual_ceremony grep CLEAN, body_hits 0; grep -cE '[Pp]ractice' over lines 1-17 -> 0 (Agents 101 keeps the absolute practice(n) ban)",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -28,7 +31,8 @@
       "rule_index": 3,
       "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
+      "evidence": "mechanical: session_biography and dated_line greps CLEAN, body_hits 0. Judgement: closest is 5:**Status:** outline only. Sections fill in as each module is written. It states present state, not a transition verb about an edit. Maintainer block carries a dated provenance Quality stamp (accept-note, not journey); the maintainer TODO states forward state.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -37,7 +41,1268 @@
       "rule_index": 4,
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
+      "evidence": "closest: 3:\"Guardrails\" isn't one thing. It's the same pattern scaled up across modules. Godin/Sutherland reframe, plain, no preening pair; Remember/Hold onto grep -> 0; no atmospheric or combative phrasing.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 6,
+      "rule_lead": "Credit original when paraphrasing named technique.",
+      "verdict": "PASS",
+      "evidence": "mechanical: author_we grep CLEAN (0), grep -c Antti -> 0 in body; no named technique paraphrased, so no credit owed; no timing line (supplementary).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 7,
+      "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
+      "verdict": "PASS",
+      "evidence": "mechanical: the_student grep CLEAN (0). Page describes no student action, so always-you has nothing to break; no delivery mechanics in body.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 8,
+      "rule_lead": "Don't smuggle terms of art from maintainer into body.",
+      "verdict": "PASS",
+      "evidence": "closest: 10:The schema layer of the LLM memory / 12:fabrication-tightening rules. grep -rlE 'self-lint|schema layer' curriculum --include=*.md returns only this file, so the terms are not smuggled from a maintainer block or strategy doc; harm (maintainer vocabulary leaking into body) absent.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 9,
+      "rule_lead": "Over-hedge detector.",
+      "verdict": "PASS",
+      "evidence": "closest: 5:Sections fill in as each module is written. Status, not reassurance; none of no penalty / fine way to / it's OK if present.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 11,
+      "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
+      "verdict": "PASS",
+      "evidence": "no practitioner named anywhere in body; cap not approached.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 12,
+      "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
+      "verdict": "PASS",
+      "evidence": "closest: 3:\"Guardrails\" isn't one thing. Mild framing, the next sentence supplies the boundary (same pattern scaled up); no slogan overreaching a cadence.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 13,
+      "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
+      "verdict": "PASS",
+      "evidence": "grep -cE 'vendor' over body -> 0; no not-aspirational / not-marketing / grounded-in-actual phrases. Harm (positioning posture in a teaching beat) absent.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 14,
+      "rule_lead": "Watch out for planting jargon too early.",
+      "verdict": "PASS",
+      "evidence": "closest: 10:**Module 2, The schema layer of the LLM memory.** schema is a named recurring offender, but it labels the module that teaches it in a planned-progression map (lookahead is the list's job per student_facing 2 index carve-out); no copy-buffer or prompt surface here.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 15,
+      "rule_lead": "Audit closer when trimming body-prose forcing function.",
+      "verdict": "PASS",
+      "evidence": "closest: 12:Citations, claim restrictions, fabrication-tightening rules. then *Section to write.* No pronoun or spatial-metaphor closer with an ambiguous referent; no trimmed forcing function.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 16,
+      "rule_lead": "The `**What happened:**` block is OPTIONAL — default is to omit it (Antti-directed 2026-08-12, mandation removed from `curriculum/exercises/README.md`).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no What happened block (no exercise)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 17,
+      "rule_lead": "No combative verbs about the agent in body prose.",
+      "verdict": "PASS",
+      "evidence": "no bark/order/command/whip/boss verbs; only agent mention is 11:What the agent can access vs. what it should access.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 18,
+      "rule_lead": "Headers must be literally true about the mechanism.",
+      "verdict": "PASS",
+      "evidence": "closest: 7:## Planned progression. True of the content (a list of planned sections); no spatial metaphor, no other-X without a primary.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 19,
+      "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
+      "verdict": "PASS",
+      "evidence": "closest: 3:\"Guardrails\" isn't one thing. Negation answers a real prior (guardrails read as one file); no deictic drumroll, bold-label echo or citation duplication.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 20,
+      "rule_lead": "Don't state a count the adjacent list already holds.",
+      "verdict": "PASS",
+      "evidence": "closest: 3:Each module that adds a new twist ... adds the next section. No numeral adjacent to the four-bullet list; no counts in prose.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 21,
+      "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
+      "verdict": "PASS",
+      "evidence": "closest: 5/11 only claims about a page and an artifact scope, no only/always/never about how the world works.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 22,
+      "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no claim stamp or backing block stated in more than one body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 23,
+      "rule_lead": "A rule set reconstructed at session start goes stale inside the session — re-derive it per target, not per sweep.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "multi-file sweep process rule, not a body property",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 24,
+      "rule_lead": "One doc per scarce-attention audience; delta-only.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "authoring-time audience design rule, no trainer/exec doc here",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 26,
+      "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no how-you-would-know clause in body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 27,
+      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
+      "verdict": "PASS",
+      "evidence": "advisory rule. Closest: 3:Each module ... adds the next section and 5:Sections fill in as each module is written say the same thing twice; fix is carried by the student_facing 26 finding (cut line 5), so no separate suggestion.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 28,
+      "rule_lead": "Body prose stands without the trainer — no cue-card prose.",
+      "verdict": "PASS",
+      "evidence": "muted read of 9-12: each bullet is a bold title then a descriptive fragment (12:Citations, claim restrictions, fabrication-tightening rules.). No it/this/that/now deictic, no Take a guess / on the screen / Let's go; referents all resolve on the page, so the cue-card harm (reader cannot resolve a trainer's finger) is absent. Fragments are an outline's annotation format; Status line 5 declares it an outline.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 1,
+      "rule_lead": "Aspirational destination, never corrective gap.",
+      "verdict": "PASS",
+      "evidence": "closest: 3:\"Guardrails\" isn't one thing. Aspirational frame, no corrective gap, no ability tier named.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 2,
+      "rule_lead": "Earn every technical term on first use.",
+      "verdict": "PASS",
+      "evidence": "closest: 10:schema layer / 10:self-lints terms for a Planned progression list; index-kind structure carve-out (Antti 2026-08-23): a map of what is coming owes no earning, and the labels are lookahead by design.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 3,
+      "rule_lead": "Business-audience word ban (Agents 101 default).",
+      "verdict": "PASS",
+      "evidence": "closest: 10:how it self-lints. The list is a lookahead map (carve-out for earning, but this rule is surface-wide); the flinch is mild and covered by a suggestion, not a gate.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 4,
+      "rule_lead": "Memory vs context — use deliberately.",
+      "verdict": "PASS",
+      "evidence": "closest: 10:The schema layer of the LLM memory. memory used as the persistent artifact, not for ambient runtime state; no 'context compounds' blur.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 5,
+      "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no troubleshooting or recovery content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 6,
+      "rule_lead": "Trust Claude's defaults for structure.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 7,
+      "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module. Compound-shape varies per module — never repeat same Debrief.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no debrief",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 8,
+      "rule_lead": "Don't smuggle another module's voice.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "single stub page, no module mood to smuggle",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 9,
+      "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no instruction lines asking the student to check or read",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 11,
+      "rule_lead": "No \"What research says\" callout boxes",
+      "verdict": "PASS",
+      "evidence": "no What research says box; no citations in body.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 12,
+      "rule_lead": "Student moves stay in conversation with agent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no student moves",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 13,
+      "rule_lead": "Specify which CLAUDE.md layer — every time.",
+      "verdict": "REVISE",
+      "evidence": "9:The `CLAUDE.md` file the model reads at the start of every conversation. Layer unnamed (./CLAUDE.md team, ./CLAUDE.local.md personal, ~/.claude/CLAUDE.md user-level). Harm: unqualified CLAUDE.md smuggles the team-PR-governance assumption; present here, mildly, because the bullet is the only description of the file. Related for maintainer: getting-going.md records that Module 1 deliberately creates no CLAUDE.md, so the bullet's Module 1 claim itself needs a maintainer call.",
+      "na_reason": null,
+      "fix_hint": "Name the layer the module teaches, or drop the file name from the bullet.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 14,
+      "rule_lead": "No em-dashes. Simple sentences.",
+      "verdict": "PASS",
+      "evidence": "mechanical: em_dash grep CLEAN, body_hits 0.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 17,
+      "rule_lead": "Section headers use command verbs when section is about doing something.",
+      "verdict": "PASS",
+      "evidence": "closest: 7:## Planned progression, a declarative header on a reference/supplementary page (declarative allowed where the reader's job is understanding); no Claude in any header.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 18,
+      "rule_lead": "Inline links use target's title, never filename.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no inline links in body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 20,
+      "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no first student-authored write",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 21,
+      "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
+      "verdict": "PASS",
+      "evidence": "closest: 9:the model reads / 10:LLM memory / 11:the agent. Model and LLM sit in thinking/context grammar, agent in acting grammar; Claude-count 0 vs agent-count 1, no assistant-shaped skew.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "21b",
+      "rule_lead": "Session / task / run split (all trainings).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no session/task/run nouns",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 22,
+      "rule_lead": "No time-of-day anchors in body prose.",
+      "verdict": "PASS",
+      "evidence": "grep -cE 'tomorrow|overnight|tonight|yesterday|this morning' over lines 1-17 -> 0",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 23,
+      "rule_lead": "Reflection beats stay invisible in flow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no reflection-beat header or prefix (grep 0)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 24,
+      "rule_lead": "No meta-ask when student has already decided.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 25,
+      "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Save-it-as instruction",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 26,
+      "rule_lead": "Cut NVA: true but not moving student forward.",
+      "verdict": "REVISE",
+      "evidence": "9:*Section to write when Module 1 is polished.* (also 10, 11, 12:*Section to write.*) and 5:**Status:** outline only. Harm (true but moves the student nowhere; maintainer drafting status leaking into body) is present: the reader cannot act on author to-do tags. Fastest screen: obvious to an engineer reading an outline that sections are unwritten.",
+      "na_reason": null,
+      "fix_hint": "Delete the four italic Section-to-write tags; move or drop the Status line (maintainer block already carries the TODO).",
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 27,
+      "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no chat-print read-it lines",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 28,
+      "rule_lead": "Forward-callout closer: student as grammatical subject.",
+      "verdict": "PASS",
+      "evidence": "closest: 5:Sections fill in as each module is written. A page-state note about the outline, not a forward callout about what the student will find; any removal is carried by the student_facing 26 finding.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 29,
+      "rule_lead": "Operational reminders live at moment of use, not only where introduced.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no operational setting",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 30,
+      "rule_lead": "Echo the training's theory spine before inventing a synonym.",
+      "verdict": "PASS",
+      "evidence": "closest: 11:Skills as scoped guardrails. Uses the training's own vocabulary (guardrails, skills, memory); no invented synonym for an earned frame.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 31,
+      "rule_lead": "Name the artifact, not the act.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no message-to-agent act verbs (grep typing/tell it to -> 0)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 32,
+      "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no setup instruction",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 33,
+      "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
+      "verdict": "PASS",
+      "evidence": "closest: 3:Each module that adds a new twist on guardrails or skills adds the next section. The page's own subject is the progression of guardrails across modules, so this is a map of content (index-kind) rather than arc-positioning around student work; the author-status clauses are filed under 26.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 36,
+      "rule_lead": "Trust the prompt over the scaffold.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no scaffold or exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 37,
+      "rule_lead": "Mood is a design constraint, not a garnish.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "supplementary stub, no Debrief/Close/Bridge to carry a mood",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 38,
+      "rule_lead": "Exercise headers pass the build-squint test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not an exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 39,
+      "rule_lead": "Self-study is invisible in the training flow.",
+      "verdict": "PASS",
+      "evidence": "mechanical: grep -cE 'self-study|Teacher Claude' over lines 1-17 -> 0",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 6,
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 7,
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout (`",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 11,
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 12,
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 13,
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 14,
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 15,
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 18,
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 19,
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 20,
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 21,
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 22,
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 25,
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 26,
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 27,
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly `",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 29,
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 30,
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 32,
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 33,
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 34,
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 35,
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 37,
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 38,
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 39,
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 40,
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 41,
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 42,
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 44,
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 45,
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 46,
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 47,
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 48,
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 49,
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks, no fences, no prompt registry markers",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 1,
+      "rule_lead": "CTO-repeatable test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not buyer-facing copy (curriculum supplementary)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 2,
+      "rule_lead": "No stylized phrase-pairs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not buyer-facing copy (curriculum supplementary)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 3,
+      "rule_lead": "Strip strategy-doc vocabulary.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not buyer-facing copy (curriculum supplementary)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 4,
+      "rule_lead": "Earn every term.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not buyer-facing copy (curriculum supplementary)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 5,
+      "rule_lead": "No M-number cross-references.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not buyer-facing copy (curriculum supplementary)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 6,
+      "rule_lead": "\"What you build\" = 20–30 words.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not buyer-facing copy (curriculum supplementary)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 7,
+      "rule_lead": "Describe failure modes, don't name them.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not buyer-facing copy (curriculum supplementary)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 8,
+      "rule_lead": "Agency on right noun.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not buyer-facing copy (curriculum supplementary)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 9,
+      "rule_lead": "No em dashes on site.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not buyer-facing copy (curriculum supplementary)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 10,
+      "rule_lead": "No \"What research says\" callout boxes.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not buyer-facing copy (curriculum supplementary)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 11,
+      "rule_lead": "Don't describe mood arc externally.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not buyer-facing copy (curriculum supplementary)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 12,
+      "rule_lead": "Ownership claims scope to customer-built artifacts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not buyer-facing copy (curriculum supplementary)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 13,
+      "rule_lead": "Numbers carry their denominator + axis.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not buyer-facing copy (curriculum supplementary)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 14,
+      "rule_lead": "Each fact once per page; no kicker closers.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not buyer-facing copy (curriculum supplementary)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Key Concepts, What You'll Learn, Big Idea or mood-bearing beat; not a module body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Key Concepts, What You'll Learn, Big Idea or mood-bearing beat; not a module body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Key Concepts, What You'll Learn, Big Idea or mood-bearing beat; not a module body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Key Concepts, What You'll Learn, Big Idea or mood-bearing beat; not a module body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Key Concepts, What You'll Learn, Big Idea or mood-bearing beat; not a module body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Key Concepts, What You'll Learn, Big Idea or mood-bearing beat; not a module body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Key Concepts, What You'll Learn, Big Idea or mood-bearing beat; not a module body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Key Concepts, What You'll Learn, Big Idea or mood-bearing beat; not a module body",
       "fix_hint": null,
       "blocking": false
     },
@@ -47,44 +1312,10 @@
       "rule_lead": "Rough-cut drafts for articles.",
       "verdict": "N/A",
       "evidence": "Not applicable: this supplementary surface does not exercise this rule.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 6,
-      "rule_lead": "Credit original when paraphrasing named technique.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 7,
-      "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 8,
-      "rule_lead": "Don't smuggle terms of art from maintainer into body.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 9,
-      "rule_lead": "Over-hedge detector.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "e9758c90e8fdfbe6a509bf32565a9976102bd0795d9769542ee8c4bb261f3984",
+      "carried_shape": "98eb641e888ecd87"
     },
     {
       "compendium": "check_writing.md",
@@ -92,134 +1323,10 @@
       "rule_lead": "Verbatim-frame-cite in reference artefact.",
       "verdict": "N/A",
       "evidence": "Not applicable: this supplementary surface does not exercise this rule.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 11,
-      "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 12,
-      "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 13,
-      "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it is concrete curriculum content, not vendor, consultancy, marketing, or aspirational positioning, so the §13 harm is absent.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 14,
-      "rule_lead": "Watch out for planting jargon too early.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 15,
-      "rule_lead": "Audit closer when trimming body-prose forcing function.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 16,
-      "rule_lead": "The `**What happened:**` block is OPTIONAL — default to omit it (Antti-directed 2026-08-12, mandation removed from `curriculum/exercises/README.md`).",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 17,
-      "rule_lead": "No combative verbs about the agent in body prose.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 18,
-      "rule_lead": "Headers must be literally true about the mechanism.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 19,
-      "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 20,
-      "rule_lead": "Don't state a count the adjacent list already holds.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 21,
-      "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 22,
-      "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 23,
-      "rule_lead": "A rule set reconstructed at session start goes stale inside the session — re-derive it per target, not per sweep.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 24,
-      "rule_lead": "One doc per scarce-attention audience; delta-only.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "e9758c90e8fdfbe6a509bf32565a9976102bd0795d9769542ee8c4bb261f3984",
+      "carried_shape": "98eb641e888ecd87"
     },
     {
       "compendium": "check_writing.md",
@@ -227,98 +1334,10 @@
       "rule_lead": "Trainer-facing text is self-contained.",
       "verdict": "N/A",
       "evidence": "Not applicable: this supplementary surface does not exercise this rule.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 26,
-      "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 1,
-      "rule_lead": "Aspirational destination, never corrective gap.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 2,
-      "rule_lead": "Earn every technical term on first use.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 3,
-      "rule_lead": "Business-audience word ban (Agents 101 default).",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 4,
-      "rule_lead": "Memory vs context — use deliberately.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 5,
-      "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 6,
-      "rule_lead": "Trust Claude's defaults for structure.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 7,
-      "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module. Compound-shape varies per module — never repeat same Debrief.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 8,
-      "rule_lead": "Don't smuggle another module's voice.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 9,
-      "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "e9758c90e8fdfbe6a509bf32565a9976102bd0795d9769542ee8c4bb261f3984",
+      "carried_shape": "98eb641e888ecd87"
     },
     {
       "compendium": "check_student_facing.md",
@@ -326,197 +1345,10 @@
       "rule_lead": "Simulation personas never alone.",
       "verdict": "N/A",
       "evidence": "Not applicable: this supplementary surface does not exercise this rule.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 11,
-      "rule_lead": "No \"What research says\" callout boxes",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 12,
-      "rule_lead": "Student moves stay in conversation with agent.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 13,
-      "rule_lead": "Specify which CLAUDE.md layer — every time.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 14,
-      "rule_lead": "No em-dashes. Simple sentences.",
-      "verdict": "PASS",
-      "evidence": "Body scan returned 0 matches for the rule's deterministic pattern (raw body; MAINTAINER_CUT=18; FENCE_RANGES=[]).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 17,
-      "rule_lead": "Section headers use command verbs when section is about doing something.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 18,
-      "rule_lead": "Inline links use target's title, never filename.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 20,
-      "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 21,
-      "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "21b",
-      "rule_lead": "Session / task / run split (all trainings).",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 22,
-      "rule_lead": "No time-of-day anchors in body prose.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 23,
-      "rule_lead": "Reflection beats stay invisible in flow.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 24,
-      "rule_lead": "No meta-ask when student has already decided.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 25,
-      "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 26,
-      "rule_lead": "Cut NVA: true but not moving student forward.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 27,
-      "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 28,
-      "rule_lead": "Forward-callout closer: student as grammatical subject.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 29,
-      "rule_lead": "Operational reminders live at moment of use, not only where introduced.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 30,
-      "rule_lead": "Echo the training's theory spine before inventing a synonym.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 31,
-      "rule_lead": "Name the artifact, not the act.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 32,
-      "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 33,
-      "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "e9758c90e8fdfbe6a509bf32565a9976102bd0795d9769542ee8c4bb261f3984",
+      "carried_shape": "98eb641e888ecd87"
     },
     {
       "compendium": "check_student_facing.md",
@@ -524,8 +1356,10 @@
       "rule_lead": "Four sharing strategies (Agents 101 M7 canonical) — use verbatim.",
       "verdict": "N/A",
       "evidence": "Not applicable: this supplementary surface does not exercise this rule.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "e9758c90e8fdfbe6a509bf32565a9976102bd0795d9769542ee8c4bb261f3984",
+      "carried_shape": "98eb641e888ecd87"
     },
     {
       "compendium": "check_student_facing.md",
@@ -533,30 +1367,21 @@
       "rule_lead": "Agents 101 M2+ Debrief — canonical shape.",
       "verdict": "N/A",
       "evidence": "Not applicable: this supplementary surface does not exercise this rule.",
-      "fix_hint": null,
-      "blocking": false
-    },
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "e9758c90e8fdfbe6a509bf32565a9976102bd0795d9769542ee8c4bb261f3984",
+      "carried_shape": "98eb641e888ecd87"
+    }
+  ],
+  "suggestions": [
     {
-      "compendium": "check_student_facing.md",
-      "rule_index": 36,
-      "rule_lead": "Trust the prompt over the scaffold.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 37,
-      "rule_lead": "Mood is a design constraint, not a garnish.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=18; FENCE_RANGES=[]. Closest body line 3: \"A reference document that grows across the training. Each module that adds a new twist on guardrails or skills adds the next section. \\\"Guardrails\\\" isn't one thing. It's the same pattern scaled up across modules.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
+      "rule": "check_student_facing.md §3",
+      "line": 10,
+      "now": "how it self-lints",
+      "proposed": "how it checks itself"
     }
   ],
   "blocking_findings_count": 0,
-  "notes": "Final direct writing-class judgment from the frozen queue. Expanded view was generated before review; evidence line locations were checked against the raw source.",
-  "shape_hash": "98eb641e888ecd87",
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 2,
+  "notes": "Pin d3ff749e, rule-drift. Body unchanged since pin except a maintainer-block reorder. Cross-class: scripts/build-a101-mvp.js lists building-guardrails in UNFINISHED_SUPPLEMENTARIES, so the 7-module public edition excludes this page. getting-going.md says Module 1 creates no CLAUDE.md, contradicting the Module 1 bullet (pedagogy/technical lane). Drift rules reread at current wording: writing 3 PASS, 4 PASS, 26 N/A, 27 PASS (advisory), 28 PASS; student_facing 2 PASS (index carve-out), 17 PASS, 21 PASS, 27 N/A, 31 N/A, 32 N/A, 37 N/A; prompts 2,17,20,22,26,35,36,40,43 all N/A (no prompt blocks); strategy_tie_in 6,7,8 N/A (no Key Concepts/WYL/strategy doc). Brief had 130 rules; rows authored: 130."
 }

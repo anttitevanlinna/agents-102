@@ -1,136 +1,53 @@
 {
-  "class": "behavior",
-  "file": "curriculum/trainings/agents-101/output-quality.md",
-  "body_sha": "59e985c60a37f3278c38b99374bb637504733c1b88aa000ae3149677ad5c257c",
-  "content_sha": "2db84346d17a87063603a2c55dfd2f5e00f56201a69908d5ad16c32dc0550871",
-  "generated_at": "2026-08-25T17:08:50.300Z",
-  "verdict": "PASS",
-  "training": "agents-101",
-  "trace_status": "full_regen",
-  "prompts_evaluated": 1,
-  "prompts_findings": [
+ "class": "behavior",
+ "file": "curriculum/trainings/agents-101/output-quality.md",
+ "training": "agents-101",
+ "verdict": "PASS",
+ "body_sha": "3a883a072689ecd8a0d729d683c1871009f6b89b27845dea9d2e812b75cc6bd3",
+ "suggestions": [
+  {
+   "rule": "file-preservation-gap",
+   "line": 34,
+   "now": "quote one earlier rule the judge now covers and cut it, or say none exists",
+   "proposed": "quote one earlier rule in the Groundedness checks section that the judge now covers and cut it, or say none exists"
+  }
+ ],
+ "blocking_findings_count": 0,
+ "nonblocking_findings_count": 1,
+ "notes": "Pin 725101ec, diff-region. Body diff: retitle, trimmed Key Concepts, Debrief prose; prompt registry a101-m5-debrief-groundedness-rules changed (artifact placeholder, new \"name where judge runs / cannot check\" and \"quote one earlier rule ... cut it\" clause, which the old cached trace predates). Prompt sha changed so trace regenerated. Accept-notes (maintainer block L77, L79, L83, L108) concern red thread, quality stamp, Key Concepts minimal, story blend; none cover a behavior pattern. Debrief prose says cuts \"any earlier rule\" while prompt says \"one\": minor mismatch, not a behavior risk. Marker line is 34 in raw source. Prompt-body edits are card-gated, so suggestion only.",
+ "trace_status": "full_regen",
+ "prompts_evaluated": 1,
+ "prompts_findings": [
+  {
+   "prompt_index": 1,
+   "prompt_lead": "Start by reading the files. No plan or preamble.\n\nReview this session and update",
+   "verdict": "PASS",
+   "load_bearing": true,
+   "risks_fired": [
     {
-      "prompt_index": 1,
-      "prompt_sha": "b20a13a2518102d3a4b211e4774ea4e46dd0219820b1c35353815fad2c5b872f",
-      "prompt_lead": "Start by reading the files. No plan or preamble.\n\nReview this session and update",
-      "verdict": "PASS",
-      "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "preamble-before-action",
-          "confidence": "low",
-          "evidence": "Start by reading the files. No plan or preamble.",
-          "fix_hint": "Prime the student to skim the opening and look for the read-back of the landed Groundedness checks section."
-        }
-      ]
+     "pattern_id": "file-preservation-gap",
+     "confidence": "med",
+     "blocking": false,
+     "evidence": "\"quote one earlier rule the judge now covers and cut it, or say none exists\" sits beside \"preserve every other section verbatim\"; an earlier rule may live outside the Groundedness checks section",
+     "fix_hint": "Scope the cut: \"quote one earlier rule in the Groundedness checks section that the judge now covers and cut it\"."
+    },
+    {
+     "pattern_id": "self-report-inflation",
+     "confidence": "low",
+     "carve_out": "self-report-inflation evidence-backed Debrief carve-out",
+     "blocking": false,
+     "evidence": "\"which claim shape you are LEAST confident you caught correctly\" - prompt names scoreboard, adjudicated-claims and detector files and demands exact-text read-back",
+     "fix_hint": "none owed"
+    },
+    {
+     "pattern_id": "self-audit-charity",
+     "confidence": "low",
+     "carve_out": "self-report-inflation and self-audit-charity evidence-backed Debrief carve-out",
+     "blocking": false,
+     "evidence": "Same line; student-in-loop push-back section follows (\"Correct the agent where a rule is vague\")",
+     "fix_hint": "none owed"
     }
-  ],
-  "blocking_findings_count": 0,
-  "catalog_coverage": [
-    {
-      "pattern_id": "file-preservation-gap",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No other prompt asks Claude to update an existing file without a clear preservation boundary."
-    },
-    {
-      "pattern_id": "reading-burden",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Claude performs the evidence read or artifact check; the student is not assigned manual correctness proofreading."
-    },
-    {
-      "pattern_id": "niceness-tax",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "The prompt either has no stance-softening regeneration or explicitly asks for harsh, edge-preserving evidence."
-    },
-    {
-      "pattern_id": "question-dump",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No prompt asks Claude to interview the student through a sequence of questions."
-    },
-    {
-      "pattern_id": "overwrite-anxiety",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "The prompt either creates a fresh artifact or explicitly names the destination and in-place overwrite behavior."
-    },
-    {
-      "pattern_id": "preamble-before-action",
-      "status": "fired",
-      "confidence": "low",
-      "prompt_indices": [
-        1
-      ],
-      "why": "The multi-step prompt shape meets the catalog trigger; surrounding no-preamble language mitigates but does not erase the residual."
-    },
-    {
-      "pattern_id": "append-vs-integrate",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No unbounded add/regenerate instruction remains; integration or first-create intent is explicit where needed."
-    },
-    {
-      "pattern_id": "plan-mode-preamble-bloat",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No prompt invokes plan mode or asks for a plan artifact for approval."
-    },
-    {
-      "pattern_id": "citation-gap-asymmetry",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No prompt requests a body of sourced factual claims with an unscoped cite-or-flag rule."
-    },
-    {
-      "pattern_id": "self-report-inflation",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Reports are constrained by concrete artifacts, quoted changes, or evidence-backed debrief requirements."
-    },
-    {
-      "pattern_id": "default-acceptance",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No offered default or candidate structure invites uncritical acceptance."
-    },
-    {
-      "pattern_id": "plan-mode-approval-inflation",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No plan-mode plan is produced for student approval."
-    },
-    {
-      "pattern_id": "source-type-blindness",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No heterogeneous source-ingestion task requires source-type or extraction-depth classification."
-    },
-    {
-      "pattern_id": "citation-cargo-cult",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No citations are requested without a sentence-level support check."
-    },
-    {
-      "pattern_id": "self-audit-charity",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Evidence-backed debrief carve-outs, harsh instructions, or independent cold reads prevent an unsupported charitable self-critique."
-    }
-  ],
-  "evidence": "Full Luna re-fire from the live source via scripts/expand-md.js. Raw whole-file SHA-256 is 59e985c60a37f3278c38b99374bb637504733c1b88aa000ae3149677ad5c257c; expanded-output SHA-256 is 2db84346d17a87063603a2c55dfd2f5e00f56201a69908d5ad16c32dc0550871. Evaluated 1 student prompt block(s), each against all 15 catalog patterns and the judge carve-outs from prompt-behavior.md, simulation-behavior.md, check_prompts.md, and check_pedagogy.md. This is full_regen, not cache carry-forward. Single medium-confidence risks on load-bearing prompts remain PASS under the verdict rules; low-confidence risks are TODO; no high-confidence or two-medium load-bearing combination reaches REVISE.",
-  "nonblocking_findings_count": 0,
-  "suggestions": [
-    {
-      "from": "prompts_findings TODO",
-      "rule": "preamble-before-action",
-      "prompt_index": 1,
-      "note": "Prime the student to skim the opening and look for the read-back of the landed Groundedness checks section.",
-      "evidence": "Start by reading the files. No plan or preamble."
-    }
-  ],
-  "suggestions_count": 1
+   ]
+  }
+ ]
 }

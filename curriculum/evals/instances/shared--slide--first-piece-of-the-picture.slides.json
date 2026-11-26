@@ -3,13 +3,13 @@
   "file": "curriculum/slides/first-piece-of-the-picture.md",
   "training": "shared",
   "verdict": "PASS",
-  "body_sha": "9c9c3e30983b5aca8dc8cbc72639847c6fc76c7ba363cde8ce0c1239bb13d8de",
-  "shape_hash": "eaf0eec1ee88e667",
+  "body_sha": "21676ca88a5a62008cd1a8449da7a36c7a2f62581d84b703846296fc469e3dbc",
+  "shape_hash": "602d61c6af5ce35c",
   "chunk_map": [
     {
       "index": 0,
       "heading": "The first piece of the picture",
-      "lines": "1-4"
+      "lines": "1-6"
     }
   ],
   "rules_evaluated": [
@@ -18,9 +18,9 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "evidence": "line 3: \"In the full agent picture, this is the first piece: context.\" \"this\" resolves to \"first piece\" in the chunk header; \"None of them\" resolves to \"tools, goals, checks, boundaries, and loops\" in the prior sentence. \"the full agent picture\" is the header's \"picture\" and the training spine vocabulary (arc-earned carve-out); it never reaches a referent outside the chunk.",
+      "evidence": "L4 \"Context is the first piece of the agent. Tools, goals, checks, boundaries and loops come later and run on it.\" Closest: \"run on it\", \"it\" binds to \"context\" in the same sentence; \"the picture\" in the header is the figure on this slide (L6); no earlier slide is needed.",
       "fix_hint": null,
-      "blocking": false,
+      "blocking": true,
       "chunks_flagged": []
     },
     {
@@ -28,9 +28,9 @@
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "evidence": "line 3: \"Later you add tools, goals, checks, boundaries, and loops.\" Closest to a callback; \"Later\" points forward in reading order and names the things, not another file by position.",
+      "evidence": "No other-file pointer in body; closest L4 \"come later\" is reading-order within the deck, not a positional callback to a file.",
       "fix_hint": null,
-      "blocking": false,
+      "blocking": true,
       "chunks_flagged": []
     },
     {
@@ -39,10 +39,10 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "N/A",
       "evidence": null,
+      "na_reason": "no \"the X you did/saw\" backward reference to a beat",
       "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": [],
-      "na_reason": "no 'the X you did/saw/caught' reference in the body"
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
@@ -50,17 +50,17 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "evidence": null,
+      "na_reason": "no demo or guess beat",
       "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": [],
-      "na_reason": "no demo or guess-before-reveal beat"
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "evidence": "line 3: \"None of them work unless the agent reads the right world first.\" The chunk carries a self-contained claim (context comes first because the rest depends on it).",
+      "evidence": "L4 carries a self-contained claim (context is the first piece, the rest run on it) plus the figure L6; not a wait-state slide.",
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -70,7 +70,7 @@
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "evidence": "line 1 header \"The first piece of the picture\" vs line 3 \"this is the first piece: context\": header is literally true of the content.",
+      "evidence": "Header \"The first piece of the picture\" (L1) matches body L4 and figure alt (first piece = context, rest faint).",
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -80,7 +80,7 @@
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "evidence": "line 3: \"tools, goals, checks, boundaries, and loops\" is the closest to a tic (five-item list) but is a single enumeration inside a verbed sentence, not anaphora; no \"Not X. Not Y. Z.\", no superlative, no number+retraction, no verb triplet, no abstraction-noun stack.",
+      "evidence": "Closest L4 \"Tools, goals, checks, boundaries and loops\" is a concrete five-item list, not anaphora or a verb triplet; no \"Not X. Not Y.\", no superlative, no number retraction. Mechanical: view greps CLEAN (em_dash 0, banned_words 0).",
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -90,17 +90,17 @@
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "evidence": "line 3: \"boundaries\", \"loops\", \"checks\" are ordinary engineering vocabulary; no surface-as-noun, firing, compendium, beat, mood. grep banned_words/dialect scan CLEAN per view.",
+      "evidence": "grep banned_words/ritual_ceremony/leverage_verb → 0 hits CLEAN; L4 vocabulary is plain engineer terms (\"tools, goals, checks, boundaries, loops\").",
       "fix_hint": null,
-      "blocking": false,
+      "blocking": true,
       "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
-      "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "evidence": "no bold in body (0 bolded elements), inside the <=1 budget.",
+      "evidence": "grep of body for \"**\" → 0 bold elements (L1-L6); budget is ≤1.",
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -108,32 +108,31 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
-      "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "evidence": "curriculum/lectures/context-is-king.md:12 carries \"[The first piece of the picture](slides/first-piece-of-the-picture.md)\" alone on its line, so the slide is in the composed deck; id marker present at line 2.",
+      "evidence": "Slide file with one ## and id L2; included by id-line in curriculum/lectures/context-is-king.md L24 (grep), figure expands (expand-md output contains 1 <figure>), so the chunk reaches the composed deck.",
+      "fix_hint": null,
+      "blocking": true,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/slides/first-piece-of-the-picture.md → \"OK — 1 files, Phase/Step numbering consistent.\"; no hand-numbered header.",
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": [],
-      "na_reason": "no hand-numbered headers or Phase/Step references"
-    },
-    {
-      "compendium": "check_slides.md",
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "evidence": "line 3: \"Later you add tools...\" is reading order, which the rule says survives the cut; no below/above/see-below. grep for below|above|further down in body: 0 hits.",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/slides/first-piece-of-the-picture.md → \"OK — 1 files, no page-geometry pointers across the slide cut.\" Closest L4 \"come later\" is reading order.",
       "fix_hint": null,
-      "blocking": false,
+      "blocking": true,
       "chunks_flagged": []
     },
     {
@@ -142,17 +141,17 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "evidence": null,
+      "na_reason": "no in-body links (has_urls false); review surface, never a gate",
       "fix_hint": null,
       "blocking": false,
-      "chunks_flagged": [],
-      "na_reason": "no in-body links (signals.has_urls false; no link syntax)"
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
-      "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-size.js --file curriculum/slides/first-piece-of-the-picture.md -> \"oversized: 0\", limits 210 words / 6 bullets.",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/slides/first-piece-of-the-picture.md → \"oversized: 0 ... every slide is within limits\" (exit 0).",
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -162,7 +161,7 @@
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
-      "evidence": "line 1: \"The first piece of the picture\" is an orientation header (orientation headers named as NOT violations); not a law or consolidation slide, so no claim is owed.",
+      "evidence": "Lecture-slide header L1 \"The first piece of the picture\" is an orientation/catalogue label, which the rule lists as NOT a violation (\"not every header owes a claim\"); not a law or consolidation slide.",
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -170,9 +169,9 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 16,
-      "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
-      "evidence": "line 3: \"Later you add tools, goals, checks, boundaries, and loops.\" Closest to doctrine restatement; it previews what follows and gives \"None of them work unless...\" its antecedent, so it adds the object the claim is about. No design commentary or koan kicker.",
+      "evidence": "Closest L4 second sentence \"Tools, goals, checks, boundaries and loops come later and run on it.\" adds the forward map of what sits on context, which the figure does not name in text; not a doctrine restatement, design commentary or kicker.",
       "fix_hint": null,
       "blocking": false,
       "chunks_flagged": []
@@ -181,16 +180,15 @@
       "compendium": "check_slides.md",
       "rule_index": 17,
       "rule_lead": "A retitled slide re-earns its bullets against the new header.",
-      "verdict": "N/A",
-      "evidence": null,
+      "verdict": "PASS",
+      "evidence": "git diff b58bcc4c..HEAD: header L1 unchanged, body rewritten wholesale with it, so no stale body under a renamed header; body answers the current header.",
       "fix_hint": null,
       "blocking": false,
-      "chunks_flagged": [],
-      "na_reason": "git log shows a single commit for the file; no header rename, no inherited bullets"
+      "chunks_flagged": []
     }
   ],
   "suggestions": [],
   "blocking_findings_count": 0,
   "nonblocking_findings_count": 0,
-  "notes": "One-slide file, no maintainer block, no accept-notes. Referent 'the full agent picture' relies on spine vocabulary in the host lecture context-is-king (arc-earned carve-out). Slide is deliberately excluded from Claude Basics per the host lecture's note; that is a borrower fit question for that deck's judges."
+  "notes": "Prefill fell through (shape changed), all 17 rules judged by me. Single-slide file; brief built normally. Diff b58bcc4c..HEAD rewrote body prose, added figure and maintainer block. Accept-note found: L10 Quality line only. The user message about a 7-module vs 8-module public version does not bear on this file."
 }

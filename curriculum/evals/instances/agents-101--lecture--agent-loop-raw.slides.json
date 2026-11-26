@@ -1,14 +1,15 @@
 {
   "class": "slides",
   "file": "curriculum/lectures/agent-loop-raw.md",
-  "body_sha": "ae7a6f0fb91cab041e9c23d9b807785f7010e93e03254975f31f85c1e02704fd",
-  "verdict": "PASS",
   "training": "agents-101",
+  "verdict": "PASS",
+  "body_sha": "0d32fdf6cce39c06cde9ab8d8ccf58af206041a7de2d97aed5381fc4d5f42102",
+  "shape_hash": "8cff3366bf4c17a3",
   "chunk_map": [
     {
       "index": 0,
       "heading": "# Demo: Agent loop, raw",
-      "lines": "1-36"
+      "lines": "1-17"
     }
   ],
   "rules_evaluated": [
@@ -18,7 +19,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Demo: Agent loop, raw”, line 1: “# Demo: Agent loop, raw”. This closest body line does not express the prohibited shape.",
+      "evidence": "Chunk 0 line 15: \"Read the answers as mechanism. Each tool has a name...\" closest to violating; 'the answers' resolves to the three questions of lines 3-13, 'those tools' (line 7) to 'which tools it can use' (line 3), 'the harness' is an ordinary engineering term also used in sibling A101 lectures (grep -l harness curriculum/lectures: composing-the-workflow, ironies-of-automation, story-of-module-6, test-and-learn). Harm (unresolved referent) absent.",
       "fix_hint": null,
       "blocking": true
     },
@@ -28,27 +29,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Demo: Agent loop, raw”, line 1: “# Demo: Agent loop, raw”. This closest body line does not express the prohibited shape.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 3,
-      "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no “the X you did/saw/caught” backward-beat reference appears in the expanded body of curriculum/lectures/agent-loop-raw.md.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no guess/predict-before-reveal instruction appears in the expanded body of curriculum/lectures/agent-loop-raw.md.",
+      "evidence": "Closest: line 3 'Ask your agent three questions.' points at no other file; the opener no longer says 'Before the security loop' (removed in diff). grep for 'lecture|module|earlier|previous' in body: no positional callback.",
       "fix_hint": null,
       "blocking": true
     },
@@ -58,7 +39,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Demo: Agent loop, raw”, line 1: “# Demo: Agent loop, raw”. This closest body line does not express the prohibited shape.",
+      "evidence": "Single chunk 0 (lines 1-17); closest to thin is line 17 'A tool call is text crossing a boundary into action...' but the chunk holds three prompts plus mechanism paragraph, so it carries its own claim.",
       "fix_hint": null,
       "blocking": false
     },
@@ -68,7 +49,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Demo: Agent loop, raw”, line 1: “# Demo: Agent loop, raw”. This closest body line does not express the prohibited shape.",
+      "evidence": "Line 1 'Demo: Agent loop, raw' vs body: three raw questions about tools, selection and text-to-action; header is true. Closest: 'raw' is unexplained but the body is the demonstration of it.",
       "fix_hint": null,
       "blocking": false
     },
@@ -78,9 +59,9 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Demo: Agent loop, raw”, line 1: “# Demo: Agent loop, raw”. This closest body line does not express the prohibited shape.",
+      "evidence": "Closest: line 17 'If the tool description is vague, the context misleading or the request aimed at the wrong system' is a conditional triple with concrete content in each leg, not anaphora; no 'Not X. Not Y. Z.' (grep 'Not ' sentence-initial: 0), no self-grading superlative, no number+retraction, no abstraction-noun stack, no empty-leg verb triplet.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -88,7 +69,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Demo: Agent loop, raw”, line 1: “# Demo: Agent loop, raw”. This closest body line does not express the prohibited shape.",
+      "evidence": "Body greps CLEAN (banned_words, ritual_ceremony, leverage_verb, the_student all 0). Closest: 'harness' line 15, ordinary engineering vocabulary for the engineer/builder audience, not repo dialect like compendium/forcing function.",
       "fix_hint": null,
       "blocking": true
     },
@@ -98,7 +79,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Demo: Agent loop, raw”, line 1: “# Demo: Agent loop, raw”. This closest body line does not express the prohibited shape.",
+      "evidence": "grep -c '\\*\\*' on body lines 1-18 -> 0 bold elements; within budget.",
       "fix_hint": null,
       "blocking": false
     },
@@ -108,7 +89,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Demo: Agent loop, raw”, line 1: “# Demo: Agent loop, raw”. This closest body line does not express the prohibited shape.",
+      "evidence": "Lecture has no ## headings, so body is chunk 0 (title slide plus lede) and is included by curriculum/trainings/agents-101/security.md. Renderer inclusion not rendered by me; structure matches the single-beat demo shape. Mechanical claim unverified beyond include link (grep -rl agent-loop-raw curriculum/trainings -> security.md).",
       "fix_hint": null,
       "blocking": true
     },
@@ -118,7 +99,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-numbering.js --file curriculum/lectures/agent-loop-raw.md --report; real output:\n(no output)\n(exit status 0).",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/lectures/agent-loop-raw.md -> 'OK — 1 files, Phase/Step numbering consistent.' exit 0.",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,19 +109,9 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-deixis.js --file curriculum/lectures/agent-loop-raw.md --report; real output:\n(no output)\n(exit status 0).",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/lectures/agent-loop-raw.md -> 'OK — 1 files, no page-geometry pointers across the slide cut.' exit 0.",
       "fix_hint": null,
       "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no in-deck link inventory is present in the expanded body of curriculum/lectures/agent-loop-raw.md; the mechanism is not implicated.",
-      "fix_hint": null,
-      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -148,22 +119,77 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-size.js --file curriculum/lectures/agent-loop-raw.md; real output:\n======================================================================\nSlide-size check — agentic-engineering-101\n  files: 0   slides: 0   limits: 210 words / 6 bullets\n  oversized: 0\n======================================================================\n\n✓ every slide is within limits\n(exit status 0).",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/lectures/agent-loop-raw.md -> 'slides: 0 ... oversized: 0 ... every slide is within limits' exit 0. Body is about 110 words, no bullets.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Closest: line 17 'A tool call is text crossing a boundary into action.' could read as aphorism kicker, but it states the new claim (action inherits the problem) not restated by line 15 mechanism or the H1; no doctrine restatement or design commentary.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "H1 line 1 untouched in git diff 4d9c4af2..HEAD (diff shows only body rewrite, no header change); N/A in effect, body answers the current header.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "evidence": "N/A: no “the X you did/saw/caught” backward-beat reference appears in the expanded body of curriculum/lectures/agent-loop-raw.md.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "ae7a6f0fb91cab041e9c23d9b807785f7010e93e03254975f31f85c1e02704fd",
+      "carried_shape": "8cff3366bf4c17a3"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": "N/A: no guess/predict-before-reveal instruction appears in the expanded body of curriculum/lectures/agent-loop-raw.md.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "ae7a6f0fb91cab041e9c23d9b807785f7010e93e03254975f31f85c1e02704fd",
+      "carried_shape": "8cff3366bf4c17a3"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": "N/A: no in-deck link inventory is present in the expanded body of curriculum/lectures/agent-loop-raw.md; the mechanism is not implicated.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "ae7a6f0fb91cab041e9c23d9b807785f7010e93e03254975f31f85c1e02704fd",
+      "carried_shape": "8cff3366bf4c17a3"
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "N/A",
-      "chunks_flagged": [],
       "evidence": "N/A: this single-beat/demo or prework reading has no body `##` headings; §15 has no lecture heading-grammar decision to make.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "ae7a6f0fb91cab041e9c23d9b807785f7010e93e03254975f31f85c1e02704fd",
+      "carried_shape": "8cff3366bf4c17a3"
     }
   ],
+  "suggestions": [],
   "blocking_findings_count": 0,
-  "shape_hash": "8cff3366bf4c17a3",
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "Accept-note found: L21 Quality line only (no dated authorisations for slide rules). Brief built normally (13 rules kept, 4 parked N/A: 3,4,13,15). Diff 4d9c4af2..HEAD rewrote the whole body: opener 'Before the security loop' dropped, mechanism paragraph tightened, self-run invitation paragraph removed (maintainer Trainer line L26 still says it 'lands later in the body' - stale maintainer note, check_writing §3, outside slides lane)."
 }

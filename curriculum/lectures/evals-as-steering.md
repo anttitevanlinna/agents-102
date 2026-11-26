@@ -30,8 +30,8 @@ The eval checks the thing that matters, at the moment where the mistake would hu
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@725101ec pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing PASS, story PASS (1 finding see instances/agents-101--lecture--evals-as-steering.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Time:** 12 minutes.
 

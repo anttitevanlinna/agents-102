@@ -124,8 +124,8 @@ This was **Recipe 2**: sources, memory, rules file. For your next challenge, the
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (story@5755beb6 pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing grandfathered, story PASS, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing grandfathered, story REVISE (1/1 see instances/agents-101--exercise--build-your-challenge-memory.story.json), technical grandfathered, behavior grandfathered, pedagogy PASS (verify-refuted, 6 findings see instances/agents-101--exercise--build-your-challenge-memory.pedagogy.json), strategy PASS, slides PASS (1 finding see instances/agents-101--exercise--build-your-challenge-memory.slides.json)
 
 **Frameworks riffed on:**
 - Karpathy's LLM Wiki pattern (prework) — the named idea the exercise operationalizes

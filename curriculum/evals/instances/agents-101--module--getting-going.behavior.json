@@ -1,144 +1,52 @@
 {
   "class": "behavior",
   "file": "curriculum/trainings/agents-101/getting-going.md",
-  "body_sha": "59c4df7476a2e5eb413808ef48cb39ff21df60bde8367a308b9001dd005ba777",
-  "content_sha": "9655318b523fd5b8ca3ea0bb23a5ea774bcd1f2147dd293013519c974a97c783",
-  "generated_at": "2026-08-25T17:08:50.300Z",
-  "verdict": "PASS",
   "training": "agents-101",
+  "verdict": "PASS",
+  "body_sha": "300af59929db74050ad8d073656f9618324cb1fc46042e1d31ac54dd99f88e14",
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "Two prompts, both regenerated (prompt shas changed since 725101ec). Accept-notes: red thread 2026-11-13; Big Idea 2026-11-13; Key Concepts minimal 2026-09-24; Story blend 2026-09-23; quality stamp 2026-08-25. Line 52 callout covers niceness-tax and self-audit-charity.",
   "trace_status": "full_regen",
   "prompts_evaluated": 2,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_sha": "08c8a7006bb887170e87dde7f85bb3ea93673eef213f4f9a696701d4705b7bc0",
       "prompt_lead": "Start by reading the file. No plan or preamble.\n\nRead `module-1/personal-brand-g",
       "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "carve_out": "evidence-backed Debrief carve-out",
+          "evidence": "Names module-1/context-trace.md and the session as evidence, assumes the file is 30% wrong, forces a justification if fewer than two rules change; body line 42 names the charity risk with a pushback move.",
+          "fix_hint": "None owed; carve-out applied."
+        },
+        {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
+          "carve_out": "in-prompt directive plus body-callout mitigation",
           "evidence": "Start by reading the file. No plan or preamble.",
-          "fix_hint": "Move the no-preamble cue to the final line or tell the student to skim the opening and look for the evidence-backed retro output."
+          "fix_hint": "None owed; carve-out applied."
         }
       ]
     },
     {
       "prompt_index": 2,
-      "prompt_sha": "f8ca52b6ec5c296801b6b8f55ac262ef2cfc0adab09cda7e6f073ab3176d3314",
-      "prompt_lead": "Spawn a subagent to give an unbiased read on `module-1/site.html`. The subagent ",
+      "prompt_lead": "Launch a fresh subagent to give an unbiased read on `module-1/site.html`. The agent s",
       "verdict": "PASS",
       "load_bearing": true,
-      "risks_fired": []
+      "risks_fired": [
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "low",
+          "carve_out": "body-callout mitigation",
+          "evidence": "Asks 'most UNIQUELY them' first, which can warm the critic; line 52 gives the student agency: 'Your read outweighs the agent's.' Subagent has no build memory, and quotes are required.",
+          "fix_hint": "None owed; carve-out applied."
+        }
+      ]
     }
-  ],
-  "blocking_findings_count": 0,
-  "catalog_coverage": [
-    {
-      "pattern_id": "file-preservation-gap",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No other prompt asks Claude to update an existing file without a clear preservation boundary."
-    },
-    {
-      "pattern_id": "reading-burden",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Claude performs the evidence read or artifact check; the student is not assigned manual correctness proofreading."
-    },
-    {
-      "pattern_id": "niceness-tax",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "The prompt either has no stance-softening regeneration or explicitly asks for harsh, edge-preserving evidence."
-    },
-    {
-      "pattern_id": "question-dump",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No prompt asks Claude to interview the student through a sequence of questions."
-    },
-    {
-      "pattern_id": "overwrite-anxiety",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "The prompt either creates a fresh artifact or explicitly names the destination and in-place overwrite behavior."
-    },
-    {
-      "pattern_id": "preamble-before-action",
-      "status": "fired",
-      "confidence": "low",
-      "prompt_indices": [
-        1
-      ],
-      "why": "The multi-step prompt shape meets the catalog trigger; surrounding no-preamble language mitigates but does not erase the residual."
-    },
-    {
-      "pattern_id": "append-vs-integrate",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No unbounded add/regenerate instruction remains; integration or first-create intent is explicit where needed."
-    },
-    {
-      "pattern_id": "plan-mode-preamble-bloat",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No prompt invokes plan mode or asks for a plan artifact for approval."
-    },
-    {
-      "pattern_id": "citation-gap-asymmetry",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No prompt requests a body of sourced factual claims with an unscoped cite-or-flag rule."
-    },
-    {
-      "pattern_id": "self-report-inflation",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Reports are constrained by concrete artifacts, quoted changes, or evidence-backed debrief requirements."
-    },
-    {
-      "pattern_id": "default-acceptance",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No offered default or candidate structure invites uncritical acceptance."
-    },
-    {
-      "pattern_id": "plan-mode-approval-inflation",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No plan-mode plan is produced for student approval."
-    },
-    {
-      "pattern_id": "source-type-blindness",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No heterogeneous source-ingestion task requires source-type or extraction-depth classification."
-    },
-    {
-      "pattern_id": "citation-cargo-cult",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No citations are requested without a sentence-level support check."
-    },
-    {
-      "pattern_id": "self-audit-charity",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Evidence-backed debrief carve-outs, harsh instructions, or independent cold reads prevent an unsupported charitable self-critique."
-    }
-  ],
-  "evidence": "Full Luna re-fire from the live source via scripts/expand-md.js. Raw whole-file SHA-256 is 59c4df7476a2e5eb413808ef48cb39ff21df60bde8367a308b9001dd005ba777; expanded-output SHA-256 is 9655318b523fd5b8ca3ea0bb23a5ea774bcd1f2147dd293013519c974a97c783. Evaluated 2 student prompt block(s), each against all 15 catalog patterns and the judge carve-outs from prompt-behavior.md, simulation-behavior.md, check_prompts.md, and check_pedagogy.md. This is full_regen, not cache carry-forward. Single medium-confidence risks on load-bearing prompts remain PASS under the verdict rules; low-confidence risks are TODO; no high-confidence or two-medium load-bearing combination reaches REVISE.",
-  "nonblocking_findings_count": 0,
-  "suggestions": [
-    {
-      "from": "prompts_findings TODO",
-      "rule": "preamble-before-action",
-      "prompt_index": 1,
-      "note": "Move the no-preamble cue to the final line or tell the student to skim the opening and look for the evidence-backed retro output.",
-      "evidence": "Start by reading the file. No plan or preamble."
-    }
-  ],
-  "suggestions_count": 1
+  ]
 }

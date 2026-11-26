@@ -57,8 +57,8 @@ Read Karpathy's [LLM Wiki gist](https://gist.github.com/karpathy/442a6bf55591489
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 pedagogy@35a6d1fa strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing PASS, story PASS (2 findings see instances/agents-101--lecture--module-2-prework.story.json), technical grandfathered, behavior grandfathered, pedagogy PASS (verify-refuted, 2 findings see instances/agents-101--lecture--module-2-prework.pedagogy.json), strategy PASS, slides PASS
 
 **Time:** 37 minutes. 5 to choose the challenge, 5 to check connectors, 15 for the plan-mode primer, 2 for the readiness note, 10 for Karpathy.
 

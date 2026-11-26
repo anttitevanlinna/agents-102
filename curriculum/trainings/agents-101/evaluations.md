@@ -67,11 +67,12 @@ Your system now improves its own output. Next, it starts working for someone bes
 
 <!-- maintainer -->
 
-**Red thread (2026-11-13, Antti).** "It is not to add sentences. It is to align on common theme. Say it in different ways without adding more content." Added openers, four-ideas slides and own-agent callouts were tried and removed the same evening. Align existing lines; add none.
-
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@4d9c4af2 slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing PASS (1 finding see instances/agents-101--module--evaluations.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @12bf0d81: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+- cross_module @78d17fc9: REVISE — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,agents-building-agents-solo]; 7 pairs, 6 blocking; see instances/agents-101--module-set--agents-101-open-edition.cross_module.json
+
+**Red thread (2026-11-13, Antti).** "It is not to add sentences. It is to align on common theme. Say it in different ways without adding more content." Added openers, four-ideas slides and own-agent callouts were tried and removed the same evening. Align existing lines; add none.
 
 **Key Concepts minimal (2026-09-24, Antti-directed).** A glance list of handles, nothing born here: every law on it is earned in the lecture that follows the exercise, `evals-as-steering.md`, `when-the-score-stops-moving.md` and `new-human-role-in-the-loop.md`.
 
@@ -102,6 +103,7 @@ Your system now improves its own output. Next, it starts working for someone bes
 | Fixed groundedness judge | `judges/groundedness-judge.md` | M5 benchmark winner | M6 eval loop; M6 Debrief integrity check; M7-M8 quality infrastructure |
 | Generation tactic | `./generation-tactic.md` | M6 eval-loop setup and Debrief rewrite | M6 repeated rounds; post-training always-on eval work |
 | Module 6 eval trail | `module-6/runs/`, `module-6/eval-notes.md` | M6 eval-loop run | M6 Debrief; M7 sharing diagnosis; post-training loop tuning |
+| Person trigger | `module-6/trigger.md` | M6 Bring to Module 7 homework | Solo M7 pick-one-person; solo M7 Prework |
 | Steering eval seed | `./goal-nudger-eval.md` | M6 closing prompt when run | Post-training excellence/steering eval work |
 
 **Supersedes:** the previous M6 split across a manual groundedness loop and a separate steering exercise. The manual loop violated the "agents do the heavy lifting" rule from M2 onward by feeding judge output back to generator by hand. The new exercise automates the groundedness loop. Steering stays as a closing prompt, not a second full exercise.

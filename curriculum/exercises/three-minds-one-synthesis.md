@@ -33,8 +33,8 @@ You can't yet tell if the answer is right. Nothing checks it yet. Pick the line 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing PASS (4 findings see instances/agents-101--exercise--three-minds-one-synthesis.writing.json), story grandfathered, technical grandfathered, behavior grandfathered, pedagogy PASS (verify-refuted, 1 finding see instances/agents-101--exercise--three-minds-one-synthesis.pedagogy.json), strategy PASS, slides PASS
 
 - **Atomic — no phase markers.** One synthesis run; the Close is a move inside it, not a beat beside it. Line 3 already states the 15 + 7 split. Line 3 is authored, not generated.
 

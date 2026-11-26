@@ -32,8 +32,8 @@ Five minutes with the agent: the debrief.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@725101ec pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing PASS (4 findings see instances/agents-101--lecture--what-just-happened.writing.json), story PASS (verify-refuted), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (1 finding see instances/agents-101--lecture--what-just-happened.slides.json)
 
 **Story blend, M1 closer (2026-09-23).** Five slides per `module-design/a101-story-proposals/blend.md` § Titles, M1: `Context became something you can point at`, `Why the look-back was kind to you`, `The report is a hypothesis, not a result`, `The agent generated, you decided`, `You act on the future to know what's real`. The mental-models beat ends on the felt-experience sentence; anything after it restates the beat above. The closer carries no forward promise about the remaining modules, which is the module file's job. The McKinsey beat stays verbatim.
 

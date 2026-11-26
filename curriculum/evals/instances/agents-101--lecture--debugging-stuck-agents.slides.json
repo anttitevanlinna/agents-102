@@ -1,14 +1,25 @@
 {
   "class": "slides",
   "file": "curriculum/lectures/debugging-stuck-agents.md",
-  "body_sha": "bc872892802608977ca2192e5b3004fb3e979743532772e85e89444e2118cd91",
-  "verdict": "PASS",
   "training": "agents-101",
+  "verdict": "PASS",
+  "body_sha": "4c7be842c4d63e72f559e0655f2c92f0c4755e030d044e17526b2f436262e231",
+  "shape_hash": "303ce7613b0b7f55",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "# Debugging Stuck Agents",
-      "lines": "1-39"
+      "heading": "Debugging Stuck Agents (H1 + lede)",
+      "lines": "1-3"
+    },
+    {
+      "index": 1,
+      "heading": "Diagnose before repair",
+      "lines": "5-11"
+    },
+    {
+      "index": 2,
+      "heading": "Sources, processing, boundary",
+      "lines": "13-23"
     }
   ],
   "rules_evaluated": [
@@ -17,153 +28,191 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Debugging Stuck Agents”, line 1: “# Debugging Stuck Agents”. This closest body line does not express the prohibited shape.",
+      "evidence": "chunk 2 L23 \"Have the agent write the lesson:\" is the loosest referent; 'the lesson' resolves to the fix just made in moves 1-5 of the same slide, and 'the agent' to the stuck agent named in chunk 0 L3. Chunk 1 L7 'your stuck system' resolves to chunk 0 'Agents get stuck'. Harm (unresolvable referent on a wall) absent.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Debugging Stuck Agents”, line 1: “# Debugging Stuck Agents”. This closest body line does not express the prohibited shape.",
+      "evidence": "L1-L23 contain no pointer to another file or to the module; 'the root instructions file' (L23) is a generic noun, not a positional callback.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no “the X you did/saw/caught” backward-beat reference appears in the expanded body of curriculum/lectures/debugging-stuck-agents.md.",
+      "verdict": "PASS",
+      "evidence": "no 'the X you did/saw/caught' in body L1-L23; closest L7 'your stuck system' is a present-tense instruction, not a backward beat reference.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 4,
       "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no guess/predict-before-reveal instruction appears in the expanded body of curriculum/lectures/debugging-stuck-agents.md.",
+      "verdict": "PASS",
+      "evidence": "closest: chunk 1 L11 'Make your own variant.' Its referent is the prompt block L9 on the same slide, ahead of it; no outcome is narrated before a guess, no guess-cue exists. Verbed sentence L7 gives the muted read its scene.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Debugging Stuck Agents”, line 1: “# Debugging Stuck Agents”. This closest body line does not express the prohibited shape.",
+      "evidence": "closest: chunk 1 (L5-L11) is 24 words, but carries a self-carrying claim at L7 (diagnose whether the bug lives in sources, processing or boundary) plus the prompt block. Not a wait-state.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Debugging Stuck Agents”, line 1: “# Debugging Stuck Agents”. This closest body line does not express the prohibited shape.",
+      "evidence": "closest: chunk 2 header 'Sources, processing, boundary' (L13) sits over moves 4 and 5 (L21,L23), which are not one of the three places. Not contradicted: they are moves after the diagnosis, and the maintainer Slides note (L33, 2026-09-23) states 'moves 4 and 5 apply to all three'. Accept-note on the passage.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Debugging Stuck Agents”, line 1: “# Debugging Stuck Agents”. This closest body line does not express the prohibited shape.",
+      "evidence": "greps over body: no 'Not X. Not Y.' (L1-L23), no anaphora triple, no superlative, no number+retraction, no abstraction-noun stack. Closest L3 four-item list after verbed 'Agents get stuck:'; every item concrete (wrong source, mush, wrong file, failed handoff).",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Debugging Stuck Agents”, line 1: “# Debugging Stuck Agents”. This closest body line does not express the prohibited shape.",
+      "evidence": "banned_words/ritual/leverage/session_biography greps CLEAN (view); closest L23 'root instructions file' is plain engineer vocabulary, 'boundary' (L13) ordinary. No firing/compendium/beat/mood.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Debugging Stuck Agents”, line 1: “# Debugging Stuck Agents”. This closest body line does not express the prohibited shape.",
+      "evidence": "closest: chunk 2 L15-L23 carry five bolds (Sources:, Processing:, Boundary:, Shrink the rerun:, Have the agent write the lesson:). They are checklist item names, the handle form the rule permits, one per move on a consolidation list; none bolds a whole sentence. L23 handle is six words, at the soft ≲5 cap. Chunk 1 has no bold. Non-blocking either way.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Debugging Stuck Agents”, line 1: “# Debugging Stuck Agents”. This closest body line does not express the prohibited shape.",
+      "evidence": "lecture is included whole via the module (multi-agent-systems.md:32 '[Lecture: Debugging stuck agents](lectures/debugging-stuck-agents.md)'), so it reaches the deck under the lecture phase wrapper; body is plain ## headings, no tier markers or phase-less prose. Composed-deck render not run by me; unverified mechanically.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-numbering.js --file curriculum/lectures/debugging-stuck-agents.md --report; real output:\n(no output)\n(exit status 0).",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/lectures/debugging-stuck-agents.md → 'OK — 1 files, Phase/Step numbering consistent.' exit 0; no ## Phase/Step headers (the 1-5 list is bullets, not headers).",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-deixis.js --file curriculum/lectures/debugging-stuck-agents.md --report; real output:\n(no output)\n(exit status 0).",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/lectures/debugging-stuck-agents.md --report → exit 0, no matches; body has no above/below/see-below phrasing.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 13,
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no in-deck link inventory is present in the expanded body of curriculum/lectures/debugging-stuck-agents.md; the mechanism is not implicated.",
+      "verdict": "PASS",
+      "evidence": "no links in body (view signals has_urls false; no [..](..) in L1-L23). Review surface, never a gate.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-size.js --file curriculum/lectures/debugging-stuck-agents.md; real output:\n======================================================================\nSlide-size check — agentic-engineering-101\n  files: 0   slides: 0   limits: 210 words / 6 bullets\n  oversized: 0\n======================================================================\n\n✓ every slide is within limits\n(exit status 0).",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/lectures/debugging-stuck-agents.md --report → 'oversized: 0'; Sources, processing, boundary 104 words / 5 bullets; Diagnose before repair 24 / 0.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: this single-beat/demo or prework reading has no body `##` headings; §15 has no lecture heading-grammar decision to make.",
+      "verdict": "PASS",
+      "evidence": "closest: chunk 2 header 'Sources, processing, boundary' (L13) is a label, not a claim. Rule binds law/consolidation slides; this is a catalogue naming its three subjects, listed as a NOT-violation, and the 2026-09-23 maintainer note records the header choice. 'Diagnose before repair' (L5) is a claim.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "closest: chunk 1 L11 'Make your own variant.' adds an action (the student adapts the prompt) not otherwise on the slide, so earns its slot. No restated doctrine, no design commentary, no koan; the pre-edit 'Start with diagnosis before repair. That's the habit.' kicker is gone.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "header-promise test: 'Diagnose before repair' (L5) promises a diagnosis step; L7 + prompt deliver it. 'Sources, processing, boundary' (L13) promises the three places; moves 1-3 answer it, 4-5 are the shared follow-through noted at L33. Bullets were rewritten with the retitle in the same diff, none inherited from an old header.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
     }
   ],
+  "suggestions": [],
   "blocking_findings_count": 0,
-  "shape_hash": "8cff3366bf4c17a3",
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "Pin 4d9c4af2, diff-region. Diff: lede compressed, two ## headers added, five moves shortened, quality line moved. Accept-notes: L27 Quality, L30 section 6 carve-out (answer must be theirs), L33 Slides 2026-09-23 titles note. Brief built (17 rules, prefill parked none: shape changed). Expanded view run for the prompt block only."
 }

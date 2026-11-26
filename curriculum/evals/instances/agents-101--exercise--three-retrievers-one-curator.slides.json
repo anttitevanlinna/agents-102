@@ -1,14 +1,15 @@
 {
   "class": "slides",
   "file": "curriculum/exercises/three-retrievers-one-curator.md",
-  "body_sha": "bde49ea838f0da5155c38ce56bcd339f662c66376e8a399f7dd62131f047c042",
-  "verdict": "PASS",
   "training": "agents-101",
+  "verdict": "PASS",
+  "body_sha": "c90bb9e3f606e2d1f0a1cf7dec0754ff25395cf05d85c621c98390f3764e4390",
+  "shape_hash": "8cff3366bf4c17a3",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "# Exercise: Three retrievers, one curator",
-      "lines": "1-150"
+      "heading": "Exercise: Three retrievers, one curator",
+      "lines": "1-42"
     }
   ],
   "rules_evaluated": [
@@ -17,165 +18,191 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Chunk 0 resolves its working referents in the same expanded body: the crux and decision question are named at expanded line 13, sources/ and memory/ at lines 15–19, and Sessions 1–4 at lines 23–36 and 40–75. The opening-exercise artifact reference is covered by the exercise session-artifact carve-out.",
+      "evidence": "Closest: L5 'All read `./crux.md`' and L18 'Paste each retriever prompt' - 'All' binds to the three retrievers plus the fourth session named in the same sentence; 'each retriever prompt' resolves to the prompts that follow in the same chunk; 'the synthesizer' (L40) is named at L9 as Session 4. Session-artifact carve-out covers 'your crux session'. Harm (unresolved pointer on a wall) absent.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Chunk 0 names the next exercise, Three minds, one synthesis, at expanded line 147 and names the cookbook document at line 149; it does not cite another file by an unnamed opening/closing position. The opening-exercise phrase at line 13 refers to the session artifact, not a positional claim about another document.",
+      "evidence": "Closest: L5 './crux.md' and L9 'your crux session' name a document/session the student holds, not a position in another file; grep for opening|earlier|prework|previous in body L1-42 -> 0 hits.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 3,
-      "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no backward-reference shape of the form ‘the X you did/saw/caught’ appears in the expanded body; the exact diagnostic scan found only the named opening-exercise artifact and the named next exercise.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: the expanded body contains no guess/predict-before-reveal instruction; it describes concurrent retrieval and curation rather than a reveal sequence.",
-      "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Chunk 0 contains a complete exercise claim, setup, five expanded prompts, running instructions, completion condition, and handoff through expanded line 150; it is not a wait-state or context-only slide.",
+      "evidence": "Deck has no ## headings, so the whole exercise is one chunk (167 words incl. prompt markers); it carries a self-standing claim at L5 (three retrievers fetch into sources/, a fourth curates into memory/). Closest to orphaning: L42 'Done when ...' is a one-line close, but it sits inside the same chunk.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Chunk 0’s title, ‘Exercise: Three retrievers, one curator’, is supported by the opening claim at expanded line 7 and the complete three-retriever/fourth-curator sequence at lines 15–19 and 34–75.",
+      "evidence": "H1 'Exercise: Three retrievers, one curator' (L1) vs L5 'Three retrievers fetch raw material ... a fourth session curates it into memory/' - header is a true summary.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "The expanded chunk has no ‘Not X. Not Y. Z.’ cadence, no self-grading superlative, no empty verb triplet, and no abstraction-noun stack that carries the slide’s claim; the three-retriever fallback at expanded lines 15–17 is an operational availability constraint, not a rhetorical number retraction.",
+      "evidence": "grep body for 'Not .*\\. Not' -> 0; triplets: closest L40 'Open one retriever's file. Find one number or phrase ... Should it have survived?' is a task sequence, each sentence a distinct move, not an anaphora triple; no superlatives, no number+retraction, no abstraction-noun stack.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "The expanded body uses student-facing terms such as sessions, retrievers, synthesizer, sources, and memory. It does not use the compendium’s repo-internal slide dialect such as ‘compendium’, ‘firing’, ‘forcing function’, or ‘beat’ in the body.",
+      "evidence": "view greps (em_dash, banned_words, ritual_ceremony, session_biography) all CLEAN; closest L5 'curates' and 'retrievers/synthesizer' are ordinary multi-agent engineering vocabulary the exercise's own prompts define; no surface-as-noun, firing, compendium, beat.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Bold text in chunk 0 is used for short section handles, numbered activity handles, and canonical Prompt labels; no bolded lead sentence is used as a decorative narrative monoculture. The prompt labels are the copy-block affordance, not prose emphasis.",
+      "evidence": "Bold in body: L3 '**Time:**' only (1 element); '**Prompt**' labels are expanded widget chrome; L9/L14 are italic, not bold. Within budget of <=1.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Real inclusion check: `curriculum/trainings/agents-101/multi-agent-systems.md:30` contains `[Exercise: Three retrievers, one curator](exercises/three-retrievers-one-curator.md)`. Real renderer regression check: `node --test scripts/slides.test.js` → 27 tests, 27 pass, 0 fail; the renderer’s single-document path is covered by `buildDeckModel` in `site/layouts/slides.js`.",
+      "evidence": "grep '^## ' on body -> no hits, so no ## slide can be dropped; the file is included by multi-agent-systems.md:26 as an exercise, so it sits under .phase--exercise. Rendered both-layout diff was not run (unverified).",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-numbering.js --file curriculum/exercises/three-retrievers-one-curator.md --report`; real output was empty and the command exited 0. The target declares no Phase/Step header family and has no dangling Phase/Step reference under the body cut.",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/exercises/three-retrievers-one-curator.md -> 'OK - 1 files, Phase/Step numbering consistent.' exit 0. 'Session 1..4' (L9, L20-36) are session labels, not Phase/Step headers.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/exercises/three-retrievers-one-curator.md --report`; real output: `ok curriculum/exercises/three-retrievers-one-curator.md:61 [prompt below] — file has no ## — renders as one slide`; exit status 0. The only page-pointer match is same-slide under the no-## single-slide geometry.",
+      "evidence": "node scripts/check-slide-deixis.js --file ... -> 'OK - 1 files, no page-geometry pointers across the slide cut.' exit 0; L32 'paste this' points at the prompt block immediately following in the same chunk.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: the expanded body contains only the structural exercise include link in the source composition and one named cookbook link; no in-body cross-document link inventory is implicated by this standalone exercise slide.",
-      "fix_hint": null,
-      "blocking": false
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
-      "verdict": "REVISE",
-      "chunks_flagged": [
-        0
-      ],
-      "evidence": "Expanded chunk 0 is the entire body because the source has no `##` headings. The official current check `node scripts/check-slide-size.js --file curriculum/exercises/three-retrievers-one-curator.md --report` returned `files: 0`, `slides: 0`, `oversized: 0`, exit 0 because the checker measures only `##` sections and therefore misses this preamble-only one-slide file. The slides judge's direct sequential read still finds the atomic chunk over the 210-word glance-legibility ceiling; this remains a non-blocking TODO.",
-      "fix_hint": "Split the oversized atomic exercise into conceptual ## chunks while preserving the live-session flow.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 15,
-      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: the exercise is explicitly atomic and has no `##` phase markers; therefore there are no exercise section headings to classify under this rule.",
+      "verdict": "PASS",
+      "evidence": "node scripts/check-slide-size.js --file ... -> 'oversized: 0' (but reported files: 0 slides: 0, so it measured nothing; the file has no ## chunk). Manual: sed -n 1,42p | wc -w -> 167 words with prompt markers unexpanded, 0 bullets; under 210/6. Prompt bodies are fenced and exempt.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 16,
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "The atomic exercise's few bullets each add a distinct session move or fallback; the surrounding prose carries the mechanism without an unfenced doctrine restatement, design commentary, or self-repeating aphorism kicker.",
+      "evidence": "Closest: L5 'Each session has its own context and connectors.' - restates nothing else on the page and explains why four sessions; L40 closing question is the exercise's task, not a koan restating a header. No doctrine restatement, design commentary or aphorism kicker.",
+      "na_reason": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no ## headers exist; git diff 4d9c4af2..HEAD touches no ## line",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "evidence": "N/A: no backward-reference shape of the form ‘the X you did/saw/caught’ appears in the expanded body; the exact diagnostic scan found only the named opening-exercise artifact and the named next exercise.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "bde49ea838f0da5155c38ce56bcd339f662c66376e8a399f7dd62131f047c042",
+      "carried_shape": "8cff3366bf4c17a3"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": "N/A: the expanded body contains no guess/predict-before-reveal instruction; it describes concurrent retrieval and curation rather than a reveal sequence.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "bde49ea838f0da5155c38ce56bcd339f662c66376e8a399f7dd62131f047c042",
+      "carried_shape": "8cff3366bf4c17a3"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": "N/A: the expanded body contains only the structural exercise include link in the source composition and one named cookbook link; no in-body cross-document link inventory is implicated by this standalone exercise slide.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "bde49ea838f0da5155c38ce56bcd339f662c66376e8a399f7dd62131f047c042",
+      "carried_shape": "8cff3366bf4c17a3"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "N/A",
+      "evidence": "N/A: the exercise is explicitly atomic and has no `##` phase markers; therefore there are no exercise section headings to classify under this rule.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "bde49ea838f0da5155c38ce56bcd339f662c66376e8a399f7dd62131f047c042",
+      "carried_shape": "8cff3366bf4c17a3"
     }
   ],
+  "suggestions": [],
   "blocking_findings_count": 0,
-  "shape_hash": "8cff3366bf4c17a3",
-  "nonblocking_findings_count": 1
+  "nonblocking_findings_count": 0,
+  "notes": "Body is one chunk (no ## headings) after the diff-region compression of 4d9c4af2..HEAD; the diff removed all prior prose and phase structure. check-slide-size reports files: 0 for this file, so rule 14 is manual (167 words). Maintainer block L55 and L64 carry stale prose (Phase 1, 'trainer demos both live') referencing removed body; belongs to writing class, not slides. Rendered both-layout check not run."
 }

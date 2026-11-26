@@ -67,11 +67,11 @@ Run the same briefing prompt twice from the same sources, in two sessions. Compa
 
 A stable claim can still be unsupported. Drift is a warning, not proof of fabrication. Two sessions give you a demo; the signal firms up at five to ten.
 <!-- maintainer -->
+
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 behavior@5fc7188 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing PASS (3 findings see instances/agents-101--lecture--grounded.writing.json), story PASS (1 finding see instances/agents-101--lecture--grounded.story.json), technical REVISE (1/1 see instances/agents-101--lecture--grounded.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **Decision note 2026-11-13 (point-of-view pass).** `## Steering without reading every line` condenses Antti's article *Steering Without Reading All Text* (bosser, 2026-10-28): he stopped reading full documents; grounding (CV claim vs work contract) makes that safe. Big Idea stated cold 83 vs 82 (lean scorer, n=24 each): no cost.
-
-
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@4d9c4af2 technical@ab36a5e6 behavior@5fc7188 pedagogy@ab36a5e6 strategy@5fc7188 slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Time:** 12 minutes.
 
@@ -84,17 +84,14 @@ A stable claim can still be unsupported. Drift is a warning, not proof of fabric
 <!-- backing -->
 
 Claims
-- `single-pass-compound-decay` · detail · "Ten unverified steps in a row at 85% each would land near 20% end-to-end" ← compound-reliability-math
-- `first-pass-prior` · detail · "A first pass often lands close to that; treat it as a working prior, not a measurement." ← antti-first-pass-prior
-- `loop-collapses-the-error-rate` · detail · "Round 1: 10% fabricated → 1% after fix." ← compound-reliability-math, antti-first-pass-prior
-- `mata-detector-first-pass` · detail · "Against the Mata v. Avianca pre-read, source triangulation caught an unsourced 'small firm' descriptor and an unsupported 'ten minutes' estimate" ← mata-detector-passes, mata-court-order, mata-press-account
-- `short-chain-example` · vision · "A short customer-service loop shows the difference: look up the order, check the policy, draft the reply" ← none-owed
-- `the-word-is-grounded` · vision · "Connected to truth is grounded. Approximating truth without being tied to it is ungrounded." ← none-owed
+- `first-pass-prior` · detail · "The numbers are illustrative." ← antti-first-pass-prior
+- `loop-collapses-the-error-rate` · detail · "Round 1: 10% → 1%." ← compound-reliability-math, antti-first-pass-prior
+- `mata-detector-first-pass` · detail · "On the Mata v. Avianca pre-read, each method found a different gap" ← mata-detector-passes, mata-court-order, mata-press-account
 - `dont-pick-a-method-run-the-candidates` · vision · "Don't pick a method. Run the candidates." ← none-owed
-- `source-triangulation` · vision · "For every specific claim, does it appear in at least one file on disk?" ← none-owed
-- `entailment` · vision · "Does the briefing say more than the sources actually support?" ← none-owed
-- `citation-integrity` · vision · "A citation that doesn't hold is worse than no citation" ← none-owed
-- `counter-evidence-search` · vision · "look for sources that contradict it. One contradiction kills the claim" ← none-owed
+- `source-triangulation` · vision · "Does the claim appear in at least one source file?" ← none-owed
+- `entailment` · vision · "Do the sources support everything the claim says?" ← none-owed
+- `citation-integrity` · vision · "Does the cited source contain the claim?" ← none-owed
+- `counter-evidence-search` · vision · "Does any source contradict the claim?" ← none-owed
 
 Sources
 - compound-reliability-math `[checked:2026-08-01 result:ATTESTED due:none]` (no URL — arithmetic) — [house canonical] Both directions of the compound-reliability figure. Single-pass: 0.85^10 ≈ 0.197. Loop-based with a 90%-catch detector plus fix: 10% → 1% → 0.1% → 0.01%. **This is arithmetic, not a finding, and the stamp exists to say so** — the numbers are checkable on a calculator and owe no citation. What owes care is the *premise*, and the two halves differ: the 85% per-step figure is illustrative rather than measured; the flip side's 10%/90% pair carries the maintainer's attested working prior (antti-first-pass-prior below), labeled a prior in body. The lecture uses both to motivate a design move rather than to predict a rate. fallback: keep the arithmetic; never present 85% as measured; keep the prior labeled a prior.

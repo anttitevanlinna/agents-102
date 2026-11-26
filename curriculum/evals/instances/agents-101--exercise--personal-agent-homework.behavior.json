@@ -2,41 +2,37 @@
   "class": "behavior",
   "file": "curriculum/exercises/personal-agent-homework.md",
   "training": "agents-101",
-  "body_sha": "01ff65119be38185a8b9dc412c505827ab764072453de51052fa81ae14635b22",
-  "trace_status": "full_regen",
+  "verdict": "PASS",
+  "body_sha": "782674df98066ff0999000e220db4db2707ecb86f31f5e9191d748754a28af9e",
+  "trace_status": "partial_regen",
   "prompts_evaluated": 3,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "Look at my company's website. I'll give you a URL or paste a key page when you a",
+      "prompt_lead": "Look at my company's website, or another site I name. I'll give you a URL or paste",
       "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
-          "pattern_id": "preamble-before-action",
-          "confidence": "med",
-          "evidence": "Look at the memory I just built. Pick the three topic pages",
-          "fix_hint": "The multi-step request invites a plan before the first selection."
-        },
-        {
           "pattern_id": "reading-burden",
-          "confidence": "med",
-          "evidence": "Show me both files before saving.",
-          "fix_hint": "The student must proof two generated artifacts; the approval checkpoint is intentional."
+          "confidence": "low",
+          "carve_out": "body-callout mitigation",
+          "evidence": "Show me both files before saving. Review is the consent gate for a CLAUDE.md write, and L31 frames it as a spot-check with a correction move.",
+          "fix_hint": "none owed"
         }
       ]
     },
     {
       "prompt_index": 2,
-      "prompt_lead": "I'm setting up a daily agent that reads my challenge memory every morning and re",
+      "prompt_lead": "I'm setting up a daily agent that reads my challenge memory every morning and repo",
       "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
           "pattern_id": "question-dump",
           "confidence": "med",
-          "evidence": "Ask me, one at a time: 1. the visual pattern... 2. the page structure... 3. the content",
-          "fix_hint": "The visible list can still be batched, weakening the staged design conversation."
+          "evidence": "Ask me, one at a time: 1. Which job ... 2. What should the output look like ... 3. What must this agent never do",
+          "fix_hint": "Single med risk on a load-bearing prompt is below the REVISE bar (needs two med or one high); explicit \"one at a time\" in-prompt mitigates."
         }
       ]
     },
@@ -45,49 +41,18 @@
       "prompt_lead": "Read module-2/morning-agent/morning.md and run the job. Read the current state o",
       "verdict": "PASS",
       "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "overwrite-anxiety",
-          "confidence": "med",
-          "evidence": "Write the output to module-2/morning-agent/latest.html.",
-          "fix_hint": "Repeated runs may pause over overwrite, causing version drift."
-        }
-      ]
+      "risks_fired": []
+    }
+  ],
+  "suggestions": [
+    {
+      "rule": "question-dump",
+      "line": 37,
+      "now": "Create `module-2/morning-agent/`. Have the agent interview you on the job, output shape and hard boundary, then write its instruction file. Edit what doesn't sound like you.",
+      "proposed": "Create `module-2/morning-agent/`. Have the agent interview you on the job, output shape and hard boundary, then write its instruction file. If it lists all three questions at once, ask it to ask one and wait. Edit what doesn't sound like you."
     }
   ],
   "blocking_findings_count": 0,
-  "verdict": "PASS",
-  "evidence": "Expanded current source with node scripts/expand-md.js curriculum/exercises/personal-agent-homework.md; scanned 3 prompt block(s) above the maintainer cut; raw source SHA-256 recorded in body_sha. Behavior conclusions re-derived from the frozen source; eval-loop prompt 2 reconciled against check_prompts §17.",
   "nonblocking_findings_count": 0,
-  "suggestions": [
-    {
-      "from": "prompts_findings TODO",
-      "rule": "preamble-before-action",
-      "prompt_index": 1,
-      "note": "The multi-step request invites a plan before the first selection.",
-      "evidence": "Look at the memory I just built. Pick the three topic pages"
-    },
-    {
-      "from": "prompts_findings TODO",
-      "rule": "reading-burden",
-      "prompt_index": 1,
-      "note": "The student must proof two generated artifacts; the approval checkpoint is intentional.",
-      "evidence": "Show me both files before saving."
-    },
-    {
-      "from": "prompts_findings TODO",
-      "rule": "question-dump",
-      "prompt_index": 2,
-      "note": "The visible list can still be batched, weakening the staged design conversation.",
-      "evidence": "Ask me, one at a time: 1. the visual pattern... 2. the page structure... 3. the content"
-    },
-    {
-      "from": "prompts_findings TODO",
-      "rule": "overwrite-anxiety",
-      "prompt_index": 3,
-      "note": "Repeated runs may pause over overwrite, causing version drift.",
-      "evidence": "Write the output to module-2/morning-agent/latest.html."
-    }
-  ],
-  "suggestions_count": 4
+  "notes": "Accept-note found: L78 Quality stamp only; none cover prompts. Trace entry 3 reused (sha match), 1 and 2 regenerated (prior cache quoted text absent from the live prompts). Maintainer block line 'Module 8 strategic deliverable' under Cross-module ripple references an 8th module; the operator asked for the 7-module public version, so that line may need review by the owning class/orchestrator (not a behavior finding). Prompt 3 runs unattended: overwrite of latest.html is stated in the prompt and in morning.md, so no collision pause expected."
 }

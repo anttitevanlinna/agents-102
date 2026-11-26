@@ -1,35 +1,18 @@
 {
   "class": "writing",
   "file": "curriculum/exercises/three-retrievers-one-curator.md",
-  "verdict": "PASS",
   "training": "agents-101",
-  "body_sha": "bde49ea838f0da5155c38ce56bcd339f662c66376e8a399f7dd62131f047c042",
+  "verdict": "PASS",
+  "body_sha": "c90bb9e3f606e2d1f0a1cf7dec0754ff25395cf05d85c621c98390f3764e4390",
+  "shape_hash": "8cff3366bf4c17a3",
   "rules_evaluated": [
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 1,
-      "rule_lead": "Banned words — grep zero-tolerance.",
-      "verdict": "PASS",
-      "evidence": "Body scan for banned words returned 0 matches (marker-expanded body view; MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 2,
-      "rule_lead": "Ritual / ceremony — hard ban",
-      "verdict": "PASS",
-      "evidence": "Body scan returned 0 matches for the rule's deterministic pattern (marker-expanded body view; MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]).",
-      "fix_hint": null,
-      "blocking": false
-    },
     {
       "compendium": "check_writing.md",
       "rule_index": 3,
       "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "64:'Trainer demos both live in Phase 1.' and 69:'replacing the \"trainer demos both live\" line' (maintainer block, in scope for section 3). Line 49 of the same block says 'Atomic — no phase markers' and the body (lines 1-42) has neither a Phase 1 nor a trainer-demo line. Harm: a keep-note or TODO that points at a passage no longer in the file sends the next maintainer hunting for, or restoring, a cut line; harm is present. Body greps: dated_line 0, session_biography 0 (CLEAN).",
+      "fix_hint": "L64: state the present fact only (CLI = four terminal windows, desktop = four sessions) without 'Phase 1' or the trainer-demo claim; L69: rewrite the self-study TODO so it names no body line.",
       "blocking": false
     },
     {
@@ -37,16 +20,7 @@
       "rule_index": 4,
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 5,
-      "rule_lead": "Rough-cut drafts for articles.",
-      "verdict": "N/A",
-      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
+      "evidence": "9:'Keep your crux session as Session 4 (synthesizer). Open three more...' and 18:'stop it, steer narrower' are the nearest to off-register; both plain peer-direct, no consulting-deck or L&D coach tone. No Remember-wrapper (grep 0), no atmospheric imagery, no negation callout (grep 'not |never|n.t' hits only 'can't' at line 5).",
       "fix_hint": null,
       "blocking": false
     },
@@ -55,7 +29,7 @@
       "rule_index": 6,
       "rule_lead": "Credit original when paraphrasing named technique.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "grep 'Antti|the creator|the author' over body projection -> 0; author_we view grep CLEAN; 'Belief #' not in body; Time line at line 3 is total only.",
       "fix_hint": null,
       "blocking": false
     },
@@ -64,7 +38,7 @@
       "rule_index": 7,
       "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "grep 'the student' -> 0 (view the_student CLEAN); grep 'trainer' over body -> 0. Closest: 40 \"Open one retriever's file.\" is second person.",
       "fix_hint": null,
       "blocking": false
     },
@@ -73,7 +47,7 @@
       "rule_index": 8,
       "rule_lead": "Don't smuggle terms of art from maintainer into body.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 9 'synthesizer' (also a maintainer term) is defined by function in line 5 ('a fourth session curates it into `memory/`') and 'crux' is earned by the prior exercise name-your-crux, so neither is smuggled from the maintainer block.",
       "fix_hint": null,
       "blocking": false
     },
@@ -82,16 +56,7 @@
       "rule_index": 9,
       "rule_lead": "Over-hedge detector.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 10,
-      "rule_lead": "Verbatim-frame-cite in reference artefact.",
-      "verdict": "N/A",
-      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
+      "evidence": "Closest: 5 'Skip any retriever you can't run today.' is a plain permission, not reassurance appended to a division-of-labour sentence; none of the flag phrases (no penalty, fine way to, it's OK if, not on the hook) appear in lines 1-42.",
       "fix_hint": null,
       "blocking": false
     },
@@ -99,35 +64,37 @@
       "compendium": "check_writing.md",
       "rule_index": 11,
       "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no practitioner named in body"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 12,
       "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no slogan or punchy framing line in body"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 13,
       "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
       "verdict": "PASS",
-      "evidence": "Raw body line 58 asks for second-hand architecture summaries to be replaced with dated first-person accounts; this is a concrete source-quality instruction, not a vendor/consultant positioning contrast.",
+      "evidence": "grep 'vendor|marketing' over body projection -> 0. The one 'vendor' hit is inside prompt 3's fence ('No vendor blogs'), outside this class's body scope; noted in notes.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 14,
       "rule_lead": "Watch out for planting jargon too early.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: line 5 'retrievers' and file names 'wiki-retrieval.md' (lines 20/24/28; 'retrieval (technical sense)' is on the jargon-ban list). 'retriever' is the exercise's own role noun defined by function in the same sentence; 'retrieval' appears only inside code-span artifact names; operational lead-ins use plain wiki/docs/internet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -136,16 +103,16 @@
       "rule_index": 15,
       "rule_lead": "Audit closer when trimming body-prose forcing function.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 42 'Done when `memory/_synthesis-m3.md` names what changed.' single referent; 40 'Should it have survived?' has one antecedent ('one number or phrase'); no spatial-metaphor closer.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 16,
-      "rule_lead": "The `**What happened:**` block is OPTIONAL — default to omit it (Antti-directed 2026-08-12, mandation removed from `curriculum/exercises/README.md`).",
+      "rule_lead": "The `**What happened:**` block is OPTIONAL — default is to omit it (Antti-directed 2026-08-12, mandation removed from `curriculum/exercises/README.md`).",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "grep 'What happened' over body -> 0; the block is optional and omitted.",
       "fix_hint": null,
       "blocking": false
     },
@@ -154,7 +121,7 @@
       "rule_index": 17,
       "rule_lead": "No combative verbs about the agent in body prose.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "grep 'bark|order|command|whip|force|drag|boss|scold|lecture' over body -> 0. Closest: 18 'stop it' is peer-flat, not on the combative list.",
       "fix_hint": null,
       "blocking": false
     },
@@ -163,7 +130,7 @@
       "rule_index": 18,
       "rule_lead": "Headers must be literally true about the mechanism.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Only header is H1 line 1 'Three retrievers, one curator': literally true (three fetching sessions, one curating session); no 'other X' or spatial metaphor.",
       "fix_hint": null,
       "blocking": false
     },
@@ -172,7 +139,7 @@
       "rule_index": 19,
       "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "No empty negation: only 'can't' (line 5, conditional skip); no deictic drumroll; no bold-label echo. Closest: 40 'Should it have survived?' is a question, not an announcement.",
       "fix_hint": null,
       "blocking": false
     },
@@ -180,9 +147,9 @@
       "compendium": "check_writing.md",
       "rule_index": 20,
       "rule_lead": "Don't state a count the adjacent list already holds.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "9:'Open three more: 1 wiki, 2 docs, 3 internet.' and 14:'start three more: 1 wiki, 2 docs, 3 internet.' The numeral sits in the same sentence as the list it counts, and line 5 ('Skip any retriever you can't run today') plus the maintainer's collapse-to-two decision make the count conditional. Harm: a second copy of a fact the list carries that goes stale on edit; present here. The H1 and line-5 'Three retrievers' are memory-handle uses and are not flagged.",
+      "fix_hint": "Drop the numeral: 'Open more: 1 wiki, 2 docs, 3 internet.' (line 9) and 'start more: 1 wiki, 2 docs, 3 internet.' (line 14).",
       "blocking": false
     },
     {
@@ -190,7 +157,7 @@
       "rule_index": 21,
       "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 5 'All read `./crux.md`.' is a universal scoped to an artifact the exercise builds (each fence names it); no only/always/never claim about how the world works.",
       "fix_hint": null,
       "blocking": false
     },
@@ -198,44 +165,56 @@
       "compendium": "check_writing.md",
       "rule_index": 22,
       "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no backing block, no claim ids (has_backing_block false)"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 23,
       "rule_lead": "A rule set reconstructed at session start goes stale inside the session — re-derive it per target, not per sweep.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "sweep-process rule; single-target judge pass"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 24,
       "rule_lead": "One doc per scarce-attention audience; delta-only.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 25,
-      "rule_lead": "Trainer-facing text is self-contained.",
       "verdict": "N/A",
-      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "scarce-attention-audience document design; surface is a student exercise"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 26,
       "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 42 'Done when `memory/_synthesis-m3.md` names what changed.' is a synthesizer self-report, but the fence demands 'the exact filenames git diff would show' and line 40 sends the student to the raw retriever file as the independent check.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 27,
+      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
+      "verdict": "PASS",
+      "evidence": "Style rule. Closest: labels at 20/24/28/36 restate 'Session N, role' from lines 9/14, kept as the session-switch orientation handrail (Antti 2026-09-14 carve-out); no idea gets a third sentence.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 28,
+      "rule_lead": "Body prose stands without the trainer — no cue-card prose.",
+      "verdict": "PASS",
+      "evidence": "grep 'Take a guess|before it runs|on the screen|^Let.s go|^Go\\.|Your turn' over body -> 0. Closest: 20 'Session 1, wiki: `sources/wiki-retrieval.md`.' is verbless but a label whose referents resolve on the page (session defined at 9, destination named); no it/this/now deictic.",
       "fix_hint": null,
       "blocking": false
     },
@@ -244,7 +223,7 @@
       "rule_index": 1,
       "rule_lead": "Aspirational destination, never corrective gap.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 5 'Skip any retriever you can't run today.' frames an option, not a gap; grep 'at your scale|beginner|senior|experienced' over body -> 0.",
       "fix_hint": null,
       "blocking": false
     },
@@ -253,7 +232,7 @@
       "rule_index": 2,
       "rule_lead": "Earn every technical term on first use.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 5 'connectors' (earned in Module 2 per maintainer line 66) and 9 'synthesizer' (role defined by function in line 5).",
       "fix_hint": null,
       "blocking": false
     },
@@ -262,7 +241,7 @@
       "rule_index": 3,
       "rule_lead": "Business-audience word ban (Agents 101 default).",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "jargon-ban.md line 24 lists 'retrieval (technical sense)'; body hits are only file-name code spans (20/24/28); 'retriever', 'synthesizer', 'curator' are not on the list and are defined by function at line 5.",
       "fix_hint": null,
       "blocking": false
     },
@@ -271,7 +250,7 @@
       "rule_index": 4,
       "rule_lead": "Memory vs context — use deliberately.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "5:'a fourth session curates it into `memory/`' uses memory for the persistent artifact; 5:'Each session has its own context' uses context for runtime state that dies with the session. No blurring.",
       "fix_hint": null,
       "blocking": false
     },
@@ -280,7 +259,7 @@
       "rule_index": 5,
       "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 18 'If an agent starts reading the world, stop it, steer narrower, then say \"continue\".' is a recovery branch in body, but failure is plausible (retriever sprawl, maintainer watch-for c) and the rescue is non-obvious, so the boundary clause keeps it.",
       "fix_hint": null,
       "blocking": false
     },
@@ -289,7 +268,7 @@
       "rule_index": 6,
       "rule_lead": "Trust Claude's defaults for structure.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 32 'If a file is thin, paste this for another round.' no shape spec in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -297,17 +276,18 @@
       "compendium": "check_student_facing.md",
       "rule_index": 7,
       "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module. Compound-shape varies per module — never repeat same Debrief.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no Debrief or retro in an exercise this size"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 8,
       "rule_lead": "Don't smuggle another module's voice.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 40 find-one-seam beat; neutral setup voice elsewhere, no borrowed module voice. Mood itself is the strategy class's.",
       "fix_hint": null,
       "blocking": false
     },
@@ -316,7 +296,7 @@
       "rule_index": 9,
       "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "40:\"Open one retriever's file. Find one number or phrase that the synthesizer dropped or smoothed in `memory/`. Should it have survived?\" is the nearest shape to by-hand error-catching. It stays: object (retriever file vs memory/) and tell (dropped or smoothed number or phrase) are named, and the criterion 'should it have survived' is the student's own curation call; direct you-do-it carve-out (Antti 2026-09-06). Line 18 names actor and mechanism.",
       "fix_hint": null,
       "blocking": false
     },
@@ -324,17 +304,18 @@
       "compendium": "check_student_facing.md",
       "rule_index": 10,
       "rule_lead": "Simulation personas never alone.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no simulation personas in an exercise body"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 11,
       "rule_lead": "No \"What research says\" callout boxes",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "grep 'research says' over body -> 0.",
       "fix_hint": null,
       "blocking": false
     },
@@ -343,7 +324,7 @@
       "rule_index": 12,
       "rule_lead": "Student moves stay in conversation with agent.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 40 'Open one retriever's file.' is a file-open primitive, but it is the closing inspection, not the forcing function (four concurrent sessions in conversation, lines 18-38).",
       "fix_hint": null,
       "blocking": false
     },
@@ -351,17 +332,18 @@
       "compendium": "check_student_facing.md",
       "rule_index": 13,
       "rule_lead": "Specify which CLAUDE.md layer — every time.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "body names no CLAUDE.md layer"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 14,
       "rule_lead": "No em-dashes. Simple sentences.",
       "verdict": "PASS",
-      "evidence": "Body scan returned 0 matches for the rule's deterministic pattern (marker-expanded body view; MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]).",
+      "evidence": "grep '—' over body projection -> 0 (view em_dash CLEAN, planted proof). Sentences short; closest 18 is two plain imperatives.",
       "fix_hint": null,
       "blocking": false
     },
@@ -369,17 +351,18 @@
       "compendium": "check_student_facing.md",
       "rule_index": 17,
       "rule_lead": "Section headers use command verbs when section is about doing something.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "only the H1; no section header where the student acts"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 18,
       "rule_lead": "Inline links use target's title, never filename.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: ordinals 'Session 1-4' (9, 20, 24, 28, 36) are labels this exercise defines ('1 wiki, 2 docs, 3 internet') and uses only inside itself, not cross-file coordinates; grep '](' -> 0 so no link text to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -388,7 +371,7 @@
       "rule_index": 20,
       "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 5 'memory/' — the memory/auto-memory split belongs to the module that has the student author it; here agents write it. Deictic grep 'here|above|below' -> 0.",
       "fix_hint": null,
       "blocking": false
     },
@@ -397,7 +380,7 @@
       "rule_index": 21,
       "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "18:'If an agent starts reading the world' (acting -> agent); 14:'*Cowork*' (product surface); no 'Claude' in body, so no assistant-shaped skew.",
       "fix_hint": null,
       "blocking": false
     },
@@ -406,7 +389,7 @@
       "rule_index": "21b",
       "rule_lead": "Session / task / run split (all trainings).",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 5 'can't run today' is a verb; sessions are named as sittings ('Session 4', 'a fourth session'); no noun-run for the agent sitting.",
       "fix_hint": null,
       "blocking": false
     },
@@ -415,7 +398,7 @@
       "rule_index": 22,
       "rule_lead": "No time-of-day anchors in body prose.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "grep 'tomorrow|overnight|this morning|tonight|yesterday|last night' over body -> 0. Closest: 5 'today' (not on the list; means this sitting).",
       "fix_hint": null,
       "blocking": false
     },
@@ -424,7 +407,7 @@
       "rule_index": 23,
       "rule_lead": "Reflection beats stay invisible in flow.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "grep 'sit with|let it land|take a moment|pause and|breathe' -> 0. Closest: 40 'Should it have survived?' is a plain question with no contemplative prefix.",
       "fix_hint": null,
       "blocking": false
     },
@@ -433,7 +416,7 @@
       "rule_index": 24,
       "rule_lead": "No meta-ask when student has already decided.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 40 asks the student to find a dropped item the agent did not propose, not to restate an agent proposal; the promptless beat carries no LO/leap row in the maintainer block (watch-for d is trainer spot-check guidance).",
       "fix_hint": null,
       "blocking": false
     },
@@ -442,7 +425,7 @@
       "rule_index": 25,
       "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Artifacts are .md: sources/wiki-retrieval.md, sources/docs-retrieval.md, sources/internet-retrieval.md, memory/_synthesis-m3.md, ./crux.md.",
       "fix_hint": null,
       "blocking": false
     },
@@ -451,7 +434,7 @@
       "rule_index": 26,
       "rule_lead": "Cut NVA: true but not moving student forward.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 5 'Each session has its own context and connectors.' changes what the student expects (non-comparable outputs) and backs the skip clause; keeps its slot.",
       "fix_hint": null,
       "blocking": false
     },
@@ -460,7 +443,7 @@
       "rule_index": 27,
       "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 40 'Open one retriever's file.' does not follow a chat-print and is not a bare 'read it'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -468,26 +451,28 @@
       "compendium": "check_student_facing.md",
       "rule_index": 28,
       "rule_lead": "Forward-callout closer: student as grammatical subject.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no forward-looking aside or callout"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 29,
       "rule_lead": "Operational reminders live at moment of use, not only where introduced.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "body names no per-module setting (model, effort, mode)"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 30,
       "rule_lead": "Echo the training's theory spine before inventing a synonym.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 18 'steer narrower' echoes the training's steering frame.",
       "fix_hint": null,
       "blocking": false
     },
@@ -496,7 +481,7 @@
       "rule_index": 31,
       "rule_lead": "Name the artifact, not the act.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "18:'then say *\"continue\"*' is say + quoted utterance, the established prompt trigger (widened carve-out 2026-09-03: the quoted text carries the ask, resume). grep 'typing |type in|tell it to|say to Claude' -> 0.",
       "fix_hint": null,
       "blocking": false
     },
@@ -505,7 +490,7 @@
       "rule_index": 32,
       "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "Closest: 9 'Open three more' states the outcome; no setup recipe or flags.",
       "fix_hint": null,
       "blocking": false
     },
@@ -514,25 +499,7 @@
       "rule_index": 33,
       "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 34,
-      "rule_lead": "Four sharing strategies (Agents 101 M7 canonical) — use verbatim.",
-      "verdict": "N/A",
-      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 35,
-      "rule_lead": "Agents 101 M2+ Debrief — canonical shape.",
-      "verdict": "N/A",
-      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
+      "evidence": "Subject test: 5 subjects are 'Three retrievers' and 'a fourth session' (the work); 9 'your crux session'; grep 'Module [0-9]|M[0-9]' over body -> 0; no arc positioning or later-module predicate.",
       "fix_hint": null,
       "blocking": false
     },
@@ -540,17 +507,36 @@
       "compendium": "check_student_facing.md",
       "rule_index": 36,
       "rule_lead": "Trust the prompt over the scaffold.",
-      "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no scaffold or unzip; students produce through prompts"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 37,
       "rule_lead": "Mood is a design constraint, not a garnish.",
       "verdict": "PASS",
-      "evidence": "MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. Closest body line 3: \"**Time:** ~28 minutes.\"; it stays inside this rule's boundary.",
+      "evidence": "M3 mood = useful unease (trainer-modules.md:53). Closest: 40 'Find one number or phrase that the synthesizer dropped or smoothed' is a check step, but it opens doubt about the curator rather than resolving it; no URL-verify or fix-the-bug step.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 38,
+      "rule_lead": "Exercise headers pass the build-squint test.",
+      "verdict": "PASS",
+      "evidence": "H1 line 1 'Three retrievers, one curator' lets a cold reader reconstruct the build; no other headers.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 39,
+      "rule_lead": "Self-study is invisible in the training flow.",
+      "verdict": "PASS",
+      "evidence": "grep 'self-study|Teacher Claude' over body -> 0.",
       "fix_hint": null,
       "blocking": false
     },
@@ -559,7 +545,7 @@
       "rule_index": 1,
       "rule_lead": "No placeholders inside fences.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Expanded fences: the only bracket token is the literal flag '[NOT FOUND]' (prompts 1-3), not a fill-in slot; no [your..]/[path..]. Student input is gathered by 'Ask me...' inside the fences.",
       "fix_hint": null,
       "blocking": false
     },
@@ -567,9 +553,9 @@
       "compendium": "check_prompts.md",
       "rule_index": 2,
       "rule_lead": "Every prompt block: one-sentence action lead-in.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "20:'Session 1, wiki: `sources/wiki-retrieval.md`.' (also 24, 28, 36) — each is a label plus destination with no command verb, in front of a 10-20 line fence; 32:'If a file is thin, paste this for another round.' is mechanical ('paste this') beside a semantic tail. Harm: the lead-in is the skim-cue for a fence the student has not read, and a bare label does not say what the prompt does; present but mild (the role is recoverable from the fence's first sentence).",
+      "fix_hint": "Give each label a one-sentence command-verb lead-in that mirrors the fence opening, e.g. 'Ask Claude to act as your wiki retriever and stream findings into `sources/wiki-retrieval.md`.' (line 20, same shape for 24, 28, 36).",
       "blocking": false
     },
     {
@@ -577,7 +563,7 @@
       "rule_index": 3,
       "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Expansion of markers 22/26/30/34/38 yields '**Prompt** *(Claude Code)*' (prompt 4: '(Claude Code, reusable across all three retriever sessions)'), blank line, fence; no 'copy ->' prefix, no '(end of prompt)' closer.",
       "fix_hint": null,
       "blocking": false
     },
@@ -585,17 +571,18 @@
       "compendium": "check_prompts.md",
       "rule_index": 4,
       "rule_lead": "Installed Skills invoke by name, never path.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no installed skill invoked in any fence"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 5,
       "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Synthesizer fence names 'sources/wiki-retrieval.md, sources/docs-retrieval.md, and sources/internet-retrieval.md', the same deterministic paths the body (20/24/28) sends the retrievers to.",
       "fix_hint": null,
       "blocking": false
     },
@@ -604,7 +591,7 @@
       "rule_index": 6,
       "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Closest: retriever fences say 'The synthesizer in another session reads `sources/` continuously'. Concurrent, not chained; streaming writes are the lesson, so the downstream awareness is load-bearing.",
       "fix_hint": null,
       "blocking": false
     },
@@ -612,26 +599,28 @@
       "compendium": "check_prompts.md",
       "rule_index": 7,
       "rule_lead": "No session-resets mid-phase.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no /clear or session reset offered in any fence"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 8,
       "rule_lead": "Multi-sample methods need structural enforcement.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no multi-sample detection method"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 9,
-      "rule_lead": "Markdown shout (`",
+      "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "awk fence-extract over expand-md output piped to grep '\\*\\*|(^|[^a-z])\\*[A-Za-z]' -> 0; the same grep returned 2 on a planted string.",
       "fix_hint": null,
       "blocking": false
     },
@@ -639,18 +628,19 @@
       "compendium": "check_prompts.md",
       "rule_index": 10,
       "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no prompt body differs by runtime; rt-code/rt-cowork wrap only the session-open prose (lines 7-16)"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 11,
       "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "14:'*In *Cowork*, keep your crux task as Task 4 and start three more: 1 wiki, 2 docs, 3 internet.*' is word-for-word the Code fork (9) with session->task. The rule names 'M3 four-session open' as the cliff where the Cowork fork needs Cowork-native scaffolding; nothing here says where tasks are started or that they share the connected folder, and the maintainer records the 4-task Cowork case as not yet live-tested (line 64). Harm: Cowork readers have no terminal fallback at the exercise's highest-friction step (watch-for a); present.",
+      "fix_hint": "Add one Cowork-native line at line 14: start each task from the Cowork tab on the same connected folder so all four share it.",
       "blocking": false
     },
     {
@@ -658,7 +648,7 @@
       "rule_index": 12,
       "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Synthesizer fence: 'Cite the source file by name. Integrate, don't append.' names the integration mode.",
       "fix_hint": null,
       "blocking": false
     },
@@ -667,7 +657,7 @@
       "rule_index": 13,
       "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Retriever fences: 'Every finding cites the specific page title and URL you actually opened... write \"[NOT FOUND]\"'; synthesizer: 'quoting the conflicting claims verbatim from each source'. No quote-the-supporting-sentence check, but maintainer line 75 (d) records the decision that the fix is downstream, 'not upstream prompt machinery'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -675,26 +665,28 @@
       "compendium": "check_prompts.md",
       "rule_index": 14,
       "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no regeneration of positioning prose"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 15,
       "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no walk-through of a question sequence; each retriever asks for one confirm list or one clue set"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 16,
       "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Retriever fences: 'Never overwrite earlier findings' with the destination named per prompt; prompt 4: 'Append; don't rewrite.'",
       "fix_hint": null,
       "blocking": false
     },
@@ -703,7 +695,7 @@
       "rule_index": 17,
       "rule_lead": "Preamble before action — design around it.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Advisory everywhere since 2026-09-08; prompt 3 opens 'No preamble. Propose your author list now.' and prompt 5 'No plan or preamble.' Nothing owed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -712,7 +704,7 @@
       "rule_index": 18,
       "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Prompt 4: 'What did the first pass miss?' is self-critique register; no defend/justify/prove verbs.",
       "fix_hint": null,
       "blocking": false
     },
@@ -720,26 +712,28 @@
       "compendium": "check_prompts.md",
       "rule_index": 19,
       "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "not a walk-away send-off"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 20,
       "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "narrowed rule, never gates; no run evidence of a downstream re-run from a save-time gap"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 21,
       "rule_lead": "Tell me what you wrote, not show me what you'll write.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Synthesizer fence: 'List each memory file you actually changed by name and the exact filenames git diff would show' is a post-action report; no irreversible external action.",
       "fix_hint": null,
       "blocking": false
     },
@@ -747,17 +741,18 @@
       "compendium": "check_prompts.md",
       "rule_index": 22,
       "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "edit-process gate; judge is read-only and no prompt body is edited in this pass"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 23,
       "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Destinations are explicit subpaths: 'sources/wiki-retrieval.md', 'memory/_synthesis-m3.md'; root file given as './crux.md'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -766,7 +761,7 @@
       "rule_index": 24,
       "rule_lead": "Don't restate session CWD inside prompt body.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "grep 'cd |/Users|/home|~/' over expanded fences -> 0 (returned 1 on a planted string).",
       "fix_hint": null,
       "blocking": false
     },
@@ -774,35 +769,37 @@
       "compendium": "check_prompts.md",
       "rule_index": 25,
       "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no subagent in any fence"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 26,
       "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "card-process rule; nothing surfaced to a maintainer in this pass"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 27,
       "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Retriever writes are read by the synthesizer ('reads `sources/` continuously'); 'memory/_synthesis-m3.md' is read by the student (42) and by the next exercise per maintainer line 55-57 role note.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 28,
-      "rule_lead": "Strong-bold prompt label is exactly `",
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Registry markers on own lines (22, 26, 30, 34, 38) expand to exact '**Prompt**' labels; no custom label.",
       "fix_hint": null,
       "blocking": false
     },
@@ -811,7 +808,7 @@
       "rule_index": 29,
       "rule_lead": "Normal work request before orchestration.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Closest: docs fence 'Ask me for three clues...' is protocol, but protocol is the lesson (concurrent retrievers; line 18 'confirm its short list') and the clues are not already decided in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -819,17 +816,18 @@
       "compendium": "check_prompts.md",
       "rule_index": 30,
       "rule_lead": "Live-test corrections preserve operator workflow.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no live-test correction pass"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 31,
       "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Markers on own lines 22, 26, 30, 34, 38 with keys three-retrievers-one-curator-1..5 (file-slug-n).",
       "fix_hint": null,
       "blocking": false
     },
@@ -838,7 +836,7 @@
       "rule_index": 32,
       "rule_lead": "Module names in prompt prose are fine — they ground the session.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Synthesizer fence path 'memory/_synthesis-m3.md' carries m3 as artifact namespace; rule says do not card.",
       "fix_hint": null,
       "blocking": false
     },
@@ -846,17 +844,18 @@
       "compendium": "check_prompts.md",
       "rule_index": 33,
       "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no git-output grep asserting exact-N"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 34,
       "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Read in isolation, the synthesizer fence names the three source files, the memory/ target and ./crux.md; retriever fences carry their own empty-result handling ('If a connector returns empty, say so').",
       "fix_hint": null,
       "blocking": false
     },
@@ -864,17 +863,18 @@
       "compendium": "check_prompts.md",
       "rule_index": 35,
       "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no dialog that touches the artifact mid-dialog; the confirm list precedes any write"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 36,
       "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Each fence splits by move (intro, numbered steps, streaming line, 'No need to update memory/', 'Sources first'); prompt 4 is a short five-sentence paragraph (condensed-in-fence carve-out, Antti 2026-09-10).",
       "fix_hint": null,
       "blocking": false
     },
@@ -882,17 +882,18 @@
       "compendium": "check_prompts.md",
       "rule_index": 37,
       "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no save-the-rule prompt"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 38,
       "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Closest: 32 'paste this for another round' rhymes with prompt 4 'Push another round.'; role labels 20/24/28 share the wiki/docs/internet noun with 'You are the wiki retriever'; 36 shares 'synthesizer' with the fence's role sentence. Label shape filed under section 2, not here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -900,17 +901,18 @@
       "compendium": "check_prompts.md",
       "rule_index": 39,
       "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no prompt depends on a permission mode"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 40,
       "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Sessions 1-3 are fresh (line 9 'Open three more'). Closest: fences say 'the crux you named in the opening', which has no cold-scrollback referent, but ./crux.md carries the content, so the harm (agent hunting a missing referent) is absent; not filed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -919,7 +921,7 @@
       "rule_index": 41,
       "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Retriever fences: the wait-for-confirm is step 1, before any write; last imperative is a source-honesty line ('don't invent page titles'); synthesizer ends 'Don't fabricate...'. No STOP after a write command.",
       "fix_hint": null,
       "blocking": false
     },
@@ -927,17 +929,18 @@
       "compendium": "check_prompts.md",
       "rule_index": 42,
       "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "interactive student-run, not a headless runner"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 43,
       "rule_lead": "Long-running prompts stream progress — never go silent.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "All three retriever fences: 'Write each finding as soon as you have it; don't batch until the end'; body line 18 frames sprawl as the anomaly to interrupt.",
       "fix_hint": null,
       "blocking": false
     },
@@ -945,17 +948,18 @@
       "compendium": "check_prompts.md",
       "rule_index": 44,
       "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "editor-side rule for fix passes; none in this pass"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 45,
       "rule_lead": "Prompt paths match Builder scope.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "M3 root-scope paths: bare 'sources/', 'memory/', './crux.md'; no '../' or 'module-3/' nesting. Closest: per-module note 'memory/_synthesis-m3.md' sits in cross-module memory/ as the curation record, by design.",
       "fix_hint": null,
       "blocking": false
     },
@@ -964,7 +968,7 @@
       "rule_index": 46,
       "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Closest: 'one paragraph per finding, naming the page/space and one line on why this matters' is load-bearing for the synthesizer's diff; no trailing shape spec.",
       "fix_hint": null,
       "blocking": false
     },
@@ -972,23 +976,326 @@
       "compendium": "check_prompts.md",
       "rule_index": 47,
       "rule_lead": "\"Add X and regenerate\" is a trap.",
-      "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no 'add X and regenerate' prompt"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 48,
       "rule_lead": "Vary closings deliberately.",
       "verdict": "PASS",
-      "evidence": "Expanded marker view: MAINTAINER_CUT=151; FENCE_RANGES=[(44,58), (67,81), (90,106), (117,121), (126,142)]. No violation of this prompt-block rule is present in the applicable prompt fences.",
+      "evidence": "Closing at line 40 is a solo comparison of raw file vs curated memory, a distinct mechanic from cold-critic or pair exchange.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 49,
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "not a take-home prompt"
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 1,
+      "rule_lead": "CTO-repeatable test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "buyer-facing site rule; surface is a student exercise"
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 2,
+      "rule_lead": "No stylized phrase-pairs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "buyer-facing site rule; surface is a student exercise"
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 3,
+      "rule_lead": "Strip strategy-doc vocabulary.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "buyer-facing site rule; surface is a student exercise"
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 4,
+      "rule_lead": "Earn every term.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "buyer-facing site rule; surface is a student exercise"
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 5,
+      "rule_lead": "No M-number cross-references.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "buyer-facing site rule; grep M-number over body -> 0 anyway"
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 6,
+      "rule_lead": "\"What you build\" = 20–30 words.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "buyer-facing site rule; surface is a student exercise"
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 7,
+      "rule_lead": "Describe failure modes, don't name them.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "buyer-facing site rule; surface is a student exercise"
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 8,
+      "rule_lead": "Agency on right noun.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "buyer-facing site rule; surface is a student exercise"
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 9,
+      "rule_lead": "No em dashes on site.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "buyer-facing site rule; surface is a student exercise"
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 10,
+      "rule_lead": "No \"What research says\" callout boxes.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "buyer-facing site rule; surface is a student exercise"
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 11,
+      "rule_lead": "Don't describe mood arc externally.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "buyer-facing site rule; surface is a student exercise"
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 12,
+      "rule_lead": "Ownership claims scope to customer-built artifacts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "buyer-facing site rule; surface is a student exercise"
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 13,
+      "rule_lead": "Numbers carry their denominator + axis.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "buyer-facing site rule; surface is a student exercise"
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": 14,
+      "rule_lead": "Each fact once per page; no kicker closers.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "buyer-facing site rule; surface is a student exercise"
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
+      "verdict": "PASS",
+      "evidence": "Lines 5-38 are setup and launch beats (mood-exempt, judged on clarity and brevity); teaching beat is 40:'Find one number or phrase that the synthesizer dropped or smoothed...' leaving the student uncertain what curation cost, in line with M3's useful unease (trainer-modules.md:53).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "PASS",
+      "evidence": "40:'Should it have survived?' is epistemic (what the curator dropped), not punitive; no having-done-wrong framing.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no Big Idea or Key Concepts in an exercise; H1 names a build"
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "PASS",
+      "evidence": "grep 'Module [0-9]|M[0-9]' over body -> 0; no later-module skill named. Closest: 5 'curates' is this exercise's own move.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no Key Concepts section in an exercise"
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no Key Concepts section in an exercise"
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no What You'll Learn section in an exercise"
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "binds the strategy doc, not this file"
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 5,
+      "rule_lead": "Rough-cut drafts for articles.",
+      "verdict": "N/A",
+      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "bde49ea838f0da5155c38ce56bcd339f662c66376e8a399f7dd62131f047c042",
+      "carried_shape": "8cff3366bf4c17a3"
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 10,
+      "rule_lead": "Verbatim-frame-cite in reference artefact.",
+      "verdict": "N/A",
+      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "bde49ea838f0da5155c38ce56bcd339f662c66376e8a399f7dd62131f047c042",
+      "carried_shape": "8cff3366bf4c17a3"
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 25,
+      "rule_lead": "Trainer-facing text is self-contained.",
+      "verdict": "N/A",
+      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "bde49ea838f0da5155c38ce56bcd339f662c66376e8a399f7dd62131f047c042",
+      "carried_shape": "8cff3366bf4c17a3"
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 34,
+      "rule_lead": "Four sharing strategies (Agents 101 M7 canonical) — use verbatim.",
+      "verdict": "N/A",
+      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "bde49ea838f0da5155c38ce56bcd339f662c66376e8a399f7dd62131f047c042",
+      "carried_shape": "8cff3366bf4c17a3"
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 35,
+      "rule_lead": "Agents 101 M2+ Debrief — canonical shape.",
+      "verdict": "N/A",
+      "evidence": "Not applicable: this exercise surface does not exercise this rule.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "bde49ea838f0da5155c38ce56bcd339f662c66376e8a399f7dd62131f047c042",
+      "carried_shape": "8cff3366bf4c17a3"
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 1,
+      "rule_lead": "Banned words — grep zero-tolerance.",
+      "verdict": "PASS",
+      "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/agents-101--exercise--three-retrievers-one-curator.body.txt → 0 hits; pattern proven against planted violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "prefilled": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 2,
+      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
+      "verdict": "PASS",
+      "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/agents-101--exercise--three-retrievers-one-curator.body.txt → 0 hits; pattern proven against planted violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "prefilled": true
     }
   ],
+  "suggestions": [],
   "blocking_findings_count": 0,
-  "notes": "Final direct writing-class judgment from the frozen queue. Expanded view was generated before review; evidence line locations were checked against the raw source.",
-  "shape_hash": "8cff3366bf4c17a3",
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 4,
+  "notes": "Class brief built normally (derive-class-brief.js). Body 43 lines, no fences; prompt blocks judged in expanded view. Accept-notes: only the Antti 2026-11-13 vocabulary embargo (no meeting room, no hire) bears on prose, no finding against it. Cross-class (not ledgered): prompt 3 fence says 'No vendor blogs' (writing 13 hard sub-rule is scoped to body, fences exempt; prompt-behavior may want to look); line 14 markup '*In *Cowork*, keep...*' nests italics so Cowork renders broken emphasis (markup defect, no rule); 'Session N' labels vs Cowork 'Task N' seam at lines 14 vs 20-36. Maintainer line 64 'Phase 1' and line 69 stale referent filed under check_writing 3. Rows for check_writing 1, 2, 5, 10, 25 and check_student_facing 34, 35 come from the prefill sidecar."
 }

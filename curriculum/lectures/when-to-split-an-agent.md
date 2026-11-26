@@ -40,8 +40,8 @@ Split where the parts cannot be one agent: different access, a different dialect
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing PASS (2 findings see instances/agents-101--lecture--when-to-split-an-agent.writing.json), story PASS (2 findings see instances/agents-101--lecture--when-to-split-an-agent.story.json), technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
 
 **Decision note 2026-11-13 (Antti: M3's real aims are how multiple agents work together, divide and conquer, plus a home for goals that fit nowhere else).** Lecture retitled *How agents work together*; slides: shared-file handoffs, split and run in parallel, two ways to run a team, a framework makes it pick, handoffs are where work gets lost, split for a reason. Start-with-don't and the three split criteria are now one caveat slide (`## Split for a reason`); the slide files `start-with-dont` and `split-when-they-cant-be-one` are no longer included here. Wording calls: no "hire", no "meeting room"; agent terms. Big Idea stated cold against the new strategy line: 60 → 74 (lean scorer, n=24 each).
 

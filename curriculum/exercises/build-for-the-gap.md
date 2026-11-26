@@ -57,6 +57,9 @@ The [Cookbook for Agent System Design](../trainings/agents-101/supplementary/coo
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing PASS (5 findings see instances/agents-101--exercise--build-for-the-gap.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agents-101--exercise--build-for-the-gap.pedagogy.json), strategy PASS, slides PASS
+
 **Purpose:** the M8 build step (`extend-your-system.md`) for a learner with no neighbour. `build-for-the-gap-1` and `-2` are `extend-your-system-1` and `-2` with module-7 paths and no "hired". The gap comes from one real person, picked by `pick-one-person` (compresses the M7 interview, pick and next-step prompts).
 
 **Sim 2026-11-25:** an empty-folder handover beat beside this exercise took every take-home (M7 idea); see the module maintainer block. The module runs this exercise alone.

@@ -282,7 +282,7 @@ Eleven named items the recipes lean on: seven pieces and four closed-set lists. 
 
 **The cite-back rule.** Every claim in agent output points to the source file or URL it came from. Without it, agents smoothly hallucinate each other's memory. With it, the pushback rounds have something to push back at. Used everywhere from R2 onward.
 
-**Plan-mode review.** The agent writes the proposed action, the email body, the ticket update, the command, before taking it. You read and approve. Only then does it execute. The single most reusable safety primitive. From R2.
+**Plan-mode review.** The agent writes the proposed action, the email body, the ticket update, the command, before taking it. You read and approve. Only then does it execute. It is the safety primitive every other dish reuses. From R2.
 
 **The house-style file.** `style.md`, your company's voice, format, and visual conventions extracted into a single file the agent reads on every output. Stop re-specifying voice in every prompt. From R2.
 
@@ -342,7 +342,7 @@ Eighteen sources in five families. Names, access mode, what each is good for. Re
 
 **Meeting transcripts.** Read AI, Otter, Granola, Zoom recordings. Verbatim of what got said, who pushed back, what got committed. Read as exported text files. The fastest path to *what did the customer actually want?*
 
-**Email.** Gmail, Outlook, shared inbox. Threads, labels, attachments. Read via connector. Slower than chat, more decision-heavy than dashboards. The shared-inbox pattern (R4 worked example) is one of the most useful dishes.
+**Email.** Gmail, Outlook, shared inbox. Threads, labels, attachments. Read via connector. Slower than chat, more decision-heavy than dashboards. The shared-inbox pattern (R4 worked example) runs on this source.
 
 **Calendar.** Google Calendar, Microsoft 365. Past meetings, upcoming meetings, attendees, durations. Read via connector. Less for content, more for *who am I about to meet?*
 
@@ -421,8 +421,8 @@ Add a recipe when the move is reliable enough that a working practitioner would 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (technical@ab36a5e6 pedagogy@ab36a5e6 strategy@ab36a5e6 slides@4d9c4af2)
-- judges @4d9c4af2: writing grandfathered, story grandfathered, technical PASS, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (technical@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9)
+- judges @78d17fc9: writing grandfathered, story grandfathered, technical PASS, behavior grandfathered, pedagogy PASS, strategy PASS, slides REVISE (1/2 see instances/agents-101--supplementary--cookbook-for-agent-system-design.slides.json)
 
 **Status:** Pass 3.6 — provenance correction. Dishes 1 and 2 are explicitly labelled illustrative composites; Dish 3 is the house-built continuous-research system. Eight short recipes each carry a Why, with three full worked dishes, 11 named components, 18 data sources, and 20 indexed dishes. Recipe coverage in worked dishes: R2 (Dish 1), R3 + R6 (Dish 3), R4 (Dish 2). R5 / R7 / R8 still owe worked dishes.
 

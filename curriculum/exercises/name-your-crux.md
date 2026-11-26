@@ -20,8 +20,8 @@ Iterate past a topic restatement; save when good enough.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (behavior@725101ec pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS (2 findings see instances/agents-101--exercise--name-your-crux.pedagogy.json), strategy PASS, slides PASS
 
 - **Atomic — no phase markers.** One conversation; the second prompt appends to the same `crux.md` in the same session, so there is nothing to cut between them. Line 3 is authored, not generated.
 

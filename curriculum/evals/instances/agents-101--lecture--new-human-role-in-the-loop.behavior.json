@@ -2,8 +2,13 @@
   "class": "behavior",
   "file": "curriculum/lectures/new-human-role-in-the-loop.md",
   "training": "agents-101",
-  "body_sha": "6422137f3c934d0d6254304b6c566b0fe187746c5f3795aa8c4ea1151263ff67",
-  "trace_status": "full_regen",
+  "verdict": "PASS",
+  "body_sha": "0a7e813f35e61a55eefd3ab77dc98f2c5612bb93af6ed46c684f12aee45f2114",
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 1,
+  "notes": "Pin 725101ec, diff-region. Prompt body (registry new-human-role-in-the-loop-1) unchanged since pin; prompt_sha 23a0e033 matches cached trace, entry reused. Lecture body around it was condensed (callout-adjacent prose reduced to 'Ask the agent to build it with you'); the in-prompt structural cap ('at most three questions at a time, wait... no hidden list', two-round stop) neutralises question-dump at med, single med risk does not meet the 2-med REVISE bar. Accept-note L73 (student-run, answer must be theirs) respected. Accept-notes: L64 decision note 2026-11-13, L67 Quality, L70 figure 2026-09-24, L73 6 carve-out 2026-08-20, L76 story blend 2026-09-23, L80 placement. Cross-class: maintainer note L64 keeps 'Big Idea stated cold 79 -> 92' fine.",
+  "trace_status": "cached",
   "prompts_evaluated": 1,
   "prompts_findings": [
     {
@@ -11,126 +16,16 @@
       "prompt_lead": "Help me create a steering eval for internal mail I might let an agent draft or s",
       "verdict": "PASS",
       "load_bearing": true,
+      "blocking": false,
       "risks_fired": [
         {
           "pattern_id": "question-dump",
           "confidence": "med",
+          "blocking": false,
           "evidence": "Ask me at most three questions at a time, wait for my answers, and do not show a longer hidden list.",
-          "fix_hint": "A cap of three still permits a batch, so steering can become a menu rather than a paced exchange."
+          "fix_hint": "Cap is already structural; could say 'one question at a time' if three-at-a-time batches prove heavy."
         }
-      ],
-      "prompt_sha": "23a0e0335bb2b5c2e9ad8ed0215f6e85ae23badf3a194c0ec71dd40f3694b1f3"
+      ]
     }
-  ],
-  "blocking_findings_count": 0,
-  "verdict": "PASS",
-  "evidence": "Full Luna re-fire at 2026-08-25T17:11:39.312Z: ran node scripts/expand-md.js curriculum/lectures/new-human-role-in-the-loop.md; raw source SHA-256 6422137f3c934d0d6254304b6c566b0fe187746c5f3795aa8c4ea1151263ff67; expanded content SHA-256 07cd4ee9b0fb41ac486d5933f41aba0642ad09fb866eb5acd2efdfc897416261; recomputed 1 fenced prompt SHA-256 values from the expanded view; evaluated every prompt against all 15 catalog patterns and the documented carve-outs. No high-confidence load-bearing risk and no prompt with two or more medium-confidence load-bearing risks; top-level verdict PASS.",
-  "content_sha": "07cd4ee9b0fb41ac486d5933f41aba0642ad09fb866eb5acd2efdfc897416261",
-  "catalog_coverage": [
-    {
-      "pattern_id": "file-preservation-gap",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No prompt may update an existing file without a stated preserve-versus-replace boundary."
-    },
-    {
-      "pattern_id": "reading-burden",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "The student is not assigned manual proofreading as the correctness check."
-    },
-    {
-      "pattern_id": "niceness-tax",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No regeneration prompt asks Claude to soften an edge or stance without pinning it."
-    },
-    {
-      "pattern_id": "question-dump",
-      "status": "fired",
-      "confidence": "med",
-      "prompt_indices": [
-        1
-      ],
-      "why": "Question sequences either have a one-at-a-time wait boundary or do not interview the student. Evidence is recorded for prompt index 1 in the per-prompt findings."
-    },
-    {
-      "pattern_id": "overwrite-anxiety",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Fresh writes or explicit in-place/regeneration intent remove the modal collision pause where applicable."
-    },
-    {
-      "pattern_id": "preamble-before-action",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "The prompt is short or contains an explicit first-action/no-preamble cue unless the recorded medium invitation remains."
-    },
-    {
-      "pattern_id": "append-vs-integrate",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Add/regenerate instructions name whether context is appended or integrated where that choice exists."
-    },
-    {
-      "pattern_id": "plan-mode-preamble-bloat",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No prompt invokes plan mode or asks for an oversized plan approval."
-    },
-    {
-      "pattern_id": "citation-gap-asymmetry",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No prompt requests citation-bearing factual claims with an uneven cite-or-flag scope."
-    },
-    {
-      "pattern_id": "self-report-inflation",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Artifact-level evidence or an independent check prevents a Claude summary from being the acceptance check where applicable."
-    },
-    {
-      "pattern_id": "default-acceptance",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No offered default is the sole path to a student-owned judgment, except where the recorded example remains visibly subordinate."
-    },
-    {
-      "pattern_id": "plan-mode-approval-inflation",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No plan-mode approval artifact is requested."
-    },
-    {
-      "pattern_id": "source-type-blindness",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No heterogeneous source-ingestion prompt lacks an extraction-depth or source-type check."
-    },
-    {
-      "pattern_id": "citation-cargo-cult",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No prompt requests citations without requiring claim-level support integrity."
-    },
-    {
-      "pattern_id": "self-audit-charity",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Self-critique prompts either require concrete evidence/over-flagging or are not asking Claude to grade its own work."
-    }
-  ],
-  "generated_at": "2026-08-25T17:13:34.677Z",
-  "nonblocking_findings_count": 0,
-  "suggestions": [
-    {
-      "from": "prompts_findings TODO",
-      "rule": "question-dump",
-      "prompt_index": 1,
-      "note": "A cap of three still permits a batch, so steering can become a menu rather than a paced exchange.",
-      "evidence": "Ask me at most three questions at a time, wait for my answers, and do not show a longer hidden list."
-    }
-  ],
-  "suggestions_count": 1
+  ]
 }

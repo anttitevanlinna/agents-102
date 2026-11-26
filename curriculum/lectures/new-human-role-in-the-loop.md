@@ -61,11 +61,11 @@ The full picture: model, context, tools, goal, loop, checks, boundary, interface
 Your role in the loop is to design the conditions for giving the system more autonomy, one loop at a time.
 
 <!-- maintainer -->
+
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing PASS (2 findings see instances/agents-101--lecture--new-human-role-in-the-loop.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **Decision note 2026-11-13 (point-of-view pass).** `## I drifted too` condenses Antti's signed AE101 `story-of-module-6.md` § The numbers (five reversals, four banned-word leaks across three helpers, premature "done"); his facts, not new ones. Big Idea stated cold 79 → 92 (lean scorer, n=12 each).
-
-
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **The full agent picture, drawn (2026-09-24, Antti-directed).** `{{figure:agent-picture}}` on `## The full picture, and what it is made of`: the loop as the runtime runs it, model in the cloud, the turn in five steps, checks deliberately absent from the figure (Antti: no such gate inside the loop). Shown once, here; the refrain across the modules points at it. Source `curriculum/figures/agent-picture.md`; protos and the rejected shapes in `protos/a101-agent-picture-*.html`.
 

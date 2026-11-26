@@ -1,14 +1,15 @@
 {
   "class": "slides",
   "file": "curriculum/lectures/first-scheduled-agent.md",
-  "body_sha": "d4154f0d02a5fad9385950b7ab1d1ef8ef1a148fdb19207a26cdedd701881ce6",
-  "verdict": "PASS",
   "training": "agents-101",
+  "verdict": "PASS",
+  "body_sha": "79a70522bf6094a1c898eb0b881da834525319dd0fac0a811e41e6fe16b345fd",
+  "shape_hash": "5a182716b17207de",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "# Demo: 1st scheduled agent",
-      "lines": "1-8"
+      "heading": "Demo: 1st scheduled agent (H1 + lede, no ## headings)",
+      "lines": "1-5"
     }
   ],
   "rules_evaluated": [
@@ -17,153 +18,179 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Demo: 1st scheduled agent”, line 1: “# Demo: 1st scheduled agent”. This closest body line does not express the prohibited shape.",
+      "evidence": "L5: \"write the next result in the same place\" comes closest; 'same place' binds to the output named in L3 (\"writes an output you can inspect\"), inside chunk 0. L3 'The context' and L5 'The guardrail' both resolve to nouns introduced in the L3 opening sentence. Harm (unresolvable referent on a wall) absent.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Demo: 1st scheduled agent”, line 1: “# Demo: 1st scheduled agent”. This closest body line does not express the prohibited shape.",
+      "evidence": "grep of body for 'lecture|opening|earlier|prework' positional callbacks: none; L5 'without a fresh prompt' points at nothing. No cross-file pointer. Harm (callback by position) absent.",
       "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 3,
-      "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no “the X you did/saw/caught” backward-beat reference appears in the expanded body of curriculum/lectures/first-scheduled-agent.md.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no guess/predict-before-reveal instruction appears in the expanded body of curriculum/lectures/first-scheduled-agent.md.",
-      "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Demo: 1st scheduled agent”, line 1: “# Demo: 1st scheduled agent”. This closest body line does not express the prohibited shape.",
+      "evidence": "Single chunk 0 (L1-5, no ## headings) carries a self-contained claim: L3 \"One scheduled agent reads work context, follows one hard guardrail, and writes an output you can inspect.\" Not a wait-state.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Demo: 1st scheduled agent”, line 1: “# Demo: 1st scheduled agent”. This closest body line does not express the prohibited shape.",
+      "evidence": "L1 header \"Demo: 1st scheduled agent\" is true of the chunk: L3 defines one scheduled agent, L5 gives its schedule. Nothing in the body contradicts it.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Demo: 1st scheduled agent”, line 1: “# Demo: 1st scheduled agent”. This closest body line does not express the prohibited shape.",
+      "evidence": "Closest: L3 \"reads work context, follows one hard guardrail, and writes an output you can inspect\" is a verb triplet but each leg is concrete (reads/follows/writes an inspectable output). No 'Not X. Not Y. Z.', no anaphora, no superlative, no number+retraction, no abstraction-noun stack.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Demo: 1st scheduled agent”, line 1: “# Demo: 1st scheduled agent”. This closest body line does not express the prohibited shape.",
+      "evidence": "Closest: 'guardrail' (L3, L5) is ordinary engineering vocabulary, not repo dialect; no surface-as-noun/firing/compendium/beat/mood in body L1-5. Harm (maintainer dialect on a wall) absent.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Demo: 1st scheduled agent”, line 1: “# Demo: 1st scheduled agent”. This closest body line does not express the prohibited shape.",
+      "evidence": "grep -c '\\*\\*' over body L1-6 -> 0 bold elements; budget is <=1.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Demo: 1st scheduled agent”, line 1: “# Demo: 1st scheduled agent”. This closest body line does not express the prohibited shape.",
+      "evidence": "Module building-agent-systems.md:33 includes it; lecture has no ## so it is a cover-only doc. site/layouts/slides.js keeps doc covers ('dividers and doc covers always survive'), so the L1-5 content is in the composed deck. Not rendered here: mechanism read from slides.js comments, unverified in a live deck.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-numbering.js --file curriculum/lectures/first-scheduled-agent.md --report; real output:\n(no output)\n(exit status 0).",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/lectures/first-scheduled-agent.md -> 'OK — 1 files, Phase/Step numbering consistent.' exit 0; no hand-numbered headers (L1 '1st' is ordinal prose, not slide position).",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-deixis.js --file curriculum/lectures/first-scheduled-agent.md --report; real output:\n(no output)\n(exit status 0).",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/lectures/first-scheduled-agent.md -> 'OK — 1 files, no page-geometry pointers across the slide cut.' exit 0.",
       "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no in-deck link inventory is present in the expanded body of curriculum/lectures/first-scheduled-agent.md; the mechanism is not implicated.",
-      "fix_hint": null,
-      "blocking": false
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-size.js --file curriculum/lectures/first-scheduled-agent.md; real output:\n======================================================================\nSlide-size check — agentic-engineering-101\n  files: 0   slides: 0   limits: 210 words / 6 bullets\n  oversized: 0\n======================================================================\n\n✓ every slide is within limits\n(exit status 0).",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/lectures/first-scheduled-agent.md -> 'slides: 0 ... oversized: 0 ... every slide is within limits' exit 0; body is ~75 words, 0 bullets.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "Closest: L5 \"The schedule makes the agent run again without a fresh prompt and write the next result in the same place.\" adds the schedule move not held elsewhere; no restated doctrine, design commentary or koan (the diff removed the old 'first system boundary' recap).",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no ## header in file; header line L1 untouched by diff 4d9c4af2..HEAD",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "evidence": "N/A: no “the X you did/saw/caught” backward-beat reference appears in the expanded body of curriculum/lectures/first-scheduled-agent.md.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "d4154f0d02a5fad9385950b7ab1d1ef8ef1a148fdb19207a26cdedd701881ce6",
+      "carried_shape": "5a182716b17207de"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": "N/A: no guess/predict-before-reveal instruction appears in the expanded body of curriculum/lectures/first-scheduled-agent.md.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "d4154f0d02a5fad9385950b7ab1d1ef8ef1a148fdb19207a26cdedd701881ce6",
+      "carried_shape": "5a182716b17207de"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": "N/A: no in-deck link inventory is present in the expanded body of curriculum/lectures/first-scheduled-agent.md; the mechanism is not implicated.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "d4154f0d02a5fad9385950b7ab1d1ef8ef1a148fdb19207a26cdedd701881ce6",
+      "carried_shape": "5a182716b17207de"
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "N/A",
-      "chunks_flagged": [],
       "evidence": "N/A: this single-beat/demo or prework reading has no body `##` headings; §15 has no lecture heading-grammar decision to make.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "d4154f0d02a5fad9385950b7ab1d1ef8ef1a148fdb19207a26cdedd701881ce6",
+      "carried_shape": "5a182716b17207de"
     }
   ],
+  "suggestions": [],
   "blocking_findings_count": 0,
-  "shape_hash": "5a182716b17207de",
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "Accept-notes: only the dated Quality line (L9). Diff 4d9c4af2..HEAD compacted the body to a single cover chunk; read whole body, not only the diff. User relay mentioned 7-module vs 8-module version; this lecture is included by agents-101 building-agent-systems.md:33 only, no variant fork judged."
 }

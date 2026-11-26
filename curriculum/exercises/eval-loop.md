@@ -80,8 +80,8 @@ Ask the agent to set up the loop around a different judge:
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (behavior@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS (7 findings see instances/agents-101--exercise--eval-loop.pedagogy.json), strategy PASS, slides PASS (1 finding see instances/agents-101--exercise--eval-loop.slides.json)
 
 **Central concept: the loop improves the work by itself, round after round. The fixed judge is why the rise can be believed.**
 

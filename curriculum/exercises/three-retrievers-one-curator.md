@@ -43,8 +43,8 @@ Done when `memory/_synthesis-m3.md` names what changed.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@4d9c4af2 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing PASS (4 findings see instances/agents-101--exercise--three-retrievers-one-curator.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agents-101--exercise--three-retrievers-one-curator.pedagogy.json), strategy PASS, slides PASS
 
 - **Atomic — no phase markers.** Four sessions run concurrently on one retrieval-and-curate window; the seams here are between agents, not across time. Line 3 is authored, not generated.
 

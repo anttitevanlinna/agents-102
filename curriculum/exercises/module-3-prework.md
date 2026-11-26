@@ -46,8 +46,8 @@ For the full reference, <span class="rt-claude rt-code">open the [Claude Code he
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 behavior@725101ec pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing PASS (5 findings see instances/agents-101--exercise--module-3-prework.writing.json), story PASS, technical REVISE (1/0 see instances/agents-101--exercise--module-3-prework.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 - **Atomic — no phase markers.** Two readings and a takeaway note, read alone between sittings; line 3 already carries the 25 / 10 / 5 split and phase slides would chunk a reading list into a deck nobody projects. Line 3 is authored, not generated.
 
@@ -68,6 +68,7 @@ For the full reference, <span class="rt-claude rt-code">open the [Claude Code he
 - `[checked:2026-08-23 result:OK due:cohort]` https://partner.danielbilsborough.com/claude-code — [practitioner direct, maintained] dated account of plain-text memory, long-running work, and human review boundaries. fallback: replace if the maintained page loses its visible update date.
 - `[checked:2026-08-23 result:OK due:cohort]` https://code.claude.com/docs/en/sub-agents — [vendor docs, capability] isolated context, delegation, natural-language invocation, and return to the main conversation. fallback: use the documentation index at https://code.claude.com/docs/llms.txt and locate the current subagents page.
 - `[checked:2026-09-05 result:OK due:cohort]` https://learn.chatgpt.com/docs/agent-configuration/subagents — [vendor docs, capability] Codex helper-agent workflows, explicit natural-language delegation, parallel execution, and results returned to the lead task. fallback: open the current Codex documentation and locate the subagents page.
+- `[checked:2026-11-26 result:BLOCKED due:cohort]` https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-custom-agents — [vendor docs, capability] Copilot CLI custom agents: separate context, delegation, results returned to the main agent. Cloud sandbox could not open it; open before delivery. fallback: open the current GitHub Copilot documentation and locate the custom agents page.
 
 **Capability notes (confirmed, no check owed):**
 - Subagent launch phrasing ("Launch a subagent to…" / "Launch these three subagents in parallel") confirmed by Antti as working reliably in current Claude Code — no `claude-code-guide` check needed.

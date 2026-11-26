@@ -1,17 +1,14 @@
 {
   "class": "behavior",
   "file": "curriculum/trainings/agents-101/multi-agent-systems.md",
-  "body_sha": "b2870d25cc7c401fa15bcf18d4484d8b35d3e3e589de0cd330cd326f766ef7e0",
-  "content_sha": "d912ce83f7e8bae46c8cebca81d8b5a67d7bfcf448a479aa4e2a7fe849e7bd76",
-  "generated_at": "2026-08-25T17:08:50.300Z",
-  "verdict": "PASS",
   "training": "agents-101",
-  "trace_status": "full_regen",
+  "verdict": "PASS",
+  "body_sha": "46c40375777c8788df5633fc0f16295ecccecf9543274853a82cb536197d6a8b",
+  "trace_status": "cached",
   "prompts_evaluated": 2,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_sha": "4108be4d790d72bf640520bb014cb358ef0bd40f7526953b2526046f258abb3c",
       "prompt_lead": "Start by reading the files. No plan or preamble.\n\nReview this session and update",
       "verdict": "PASS",
       "load_bearing": true,
@@ -19,116 +16,22 @@
         {
           "pattern_id": "file-preservation-gap",
           "confidence": "med",
-          "evidence": "Then rewrite CLAUDE.md. Integrate, don't append. Sharpen the rules that govern division of work and handoff shape: what each agent is for, what it writes to, what it does NOT do.",
-          "fix_hint": "State which existing rules must survive the in-place rewrite while allowing obsolete rules to be removed on evidence."
+          "evidence": "Then rewrite CLAUDE.md. Integrate, don't append. (team-scope ./CLAUDE.md, no preserve clause); blocking: false",
+          "fix_hint": "Add: keep still-valid rules; remove only what session evidence shows wrong.",
+          "blocking": false
         }
       ]
     },
     {
       "prompt_index": 2,
-      "prompt_sha": "092f52235be3c62f6a20f8749169d4380b2c5fc8e6ea2bfcad219929f7e0a8b4",
-      "prompt_lead": "Look at `memory/` and `sources/` against this module's fresh retrievals.\n\nCheck ",
+      "prompt_lead": "Look at `memory/` and `sources/` against this module's fresh retrievals.",
       "verdict": "PASS",
       "load_bearing": false,
       "risks_fired": []
     }
   ],
+  "suggestions": [],
   "blocking_findings_count": 0,
-  "catalog_coverage": [
-    {
-      "pattern_id": "file-preservation-gap",
-      "status": "fired",
-      "confidence": "med",
-      "prompt_indices": [
-        1
-      ],
-      "why": "Prompt 1 has one medium file-preservation risk on the shared root rules rewrite; prompt 2 only inspects and proposes."
-    },
-    {
-      "pattern_id": "reading-burden",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Claude performs the evidence read or artifact check; the student is not assigned manual correctness proofreading."
-    },
-    {
-      "pattern_id": "niceness-tax",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "The prompt either has no stance-softening regeneration or explicitly asks for harsh, edge-preserving evidence."
-    },
-    {
-      "pattern_id": "question-dump",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No prompt asks Claude to interview the student through a sequence of questions."
-    },
-    {
-      "pattern_id": "overwrite-anxiety",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "The prompt either creates a fresh artifact or explicitly names the destination and in-place overwrite behavior."
-    },
-    {
-      "pattern_id": "preamble-before-action",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No additional prompt shape forces or materially invites preamble beyond the listed fired cases."
-    },
-    {
-      "pattern_id": "append-vs-integrate",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No unbounded add/regenerate instruction remains; integration or first-create intent is explicit where needed."
-    },
-    {
-      "pattern_id": "plan-mode-preamble-bloat",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No prompt invokes plan mode or asks for a plan artifact for approval."
-    },
-    {
-      "pattern_id": "citation-gap-asymmetry",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No prompt requests a body of sourced factual claims with an unscoped cite-or-flag rule."
-    },
-    {
-      "pattern_id": "self-report-inflation",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Reports are constrained by concrete artifacts, quoted changes, or evidence-backed debrief requirements."
-    },
-    {
-      "pattern_id": "default-acceptance",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No offered default or candidate structure invites uncritical acceptance."
-    },
-    {
-      "pattern_id": "plan-mode-approval-inflation",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No plan-mode plan is produced for student approval."
-    },
-    {
-      "pattern_id": "source-type-blindness",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No heterogeneous source-ingestion task requires source-type or extraction-depth classification."
-    },
-    {
-      "pattern_id": "citation-cargo-cult",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No citations are requested without a sentence-level support check."
-    },
-    {
-      "pattern_id": "self-audit-charity",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Evidence-backed debrief carve-outs, harsh instructions, or independent cold reads prevent an unsupported charitable self-critique."
-    }
-  ],
-  "evidence": "Full Luna re-fire from the live source via scripts/expand-md.js. Raw whole-file SHA-256 is b2870d25cc7c401fa15bcf18d4484d8b35d3e3e589de0cd330cd326f766ef7e0; expanded-output SHA-256 is d912ce83f7e8bae46c8cebca81d8b5a67d7bfcf448a479aa4e2a7fe849e7bd76. Evaluated 2 student prompt block(s), each against all 15 catalog patterns and the judge carve-outs from prompt-behavior.md, simulation-behavior.md, check_prompts.md, and check_pedagogy.md. This is full_regen, not cache carry-forward. Single medium-confidence risks on load-bearing prompts remain PASS under the verdict rules; low-confidence risks are TODO; no high-confidence or two-medium load-bearing combination reaches REVISE.",
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "Both prompt SHAs match the cached trace (4108be4d790d, 092f52235be3), so the trace was reused. The prompt bodies are unchanged since 725101ec per git log. The body diff dropped the Debrief commentary and the Key Concepts section but added no behavior-relevant text. Prompt 1 has one med file-preservation-gap on a load-bearing prompt, which is below the REVISE threshold of two meds or one high. Self-audit-charity and self-report-inflation are neutralised by the evidence-backed Debrief carve-out: the prompt names agents/, sources/ and module-3/, requires two seams with file, pass and what was lost, and the body says 'Push back where the summary is wrong'. Prompt 2 asks for a plan before changes and requires a drop candidate, so no risk fires. Accept-notes found in the maintainer block: Red thread 2026-11-13, Key Concepts minimal 2026-09-24, Debrief slides 2026-09-23. None touches a prompt."
 }

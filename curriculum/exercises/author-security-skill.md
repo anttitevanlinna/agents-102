@@ -92,8 +92,8 @@ The policy files are source material. The skill carries the judgment about what 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (behavior@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy REVISE (1/3 see instances/agents-101--exercise--author-security-skill.pedagogy.json), strategy PASS, slides PASS (1 finding see instances/agents-101--exercise--author-security-skill.slides.json)
 
 **Pre-ship-audit findings 2026-04-26 (resolved + standing):**
 - ~~Phase 3 mood gate fails 8/10 under three-persona sim~~ — SUPERSEDED 2026-04-29 by the personal-skill shape. Re-sim owed after the skill-only refactor; prior run approved the two-lens security-check concept but assumed an older packaging shape.

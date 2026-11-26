@@ -54,11 +54,11 @@ The agent comes back with three pointed requests. Answer one and let it update t
 [It can only use what someone wrote down](slides/only-what-someone-wrote-down.md)
 
 <!-- maintainer -->
+
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing PASS (4 findings see instances/agents-101--lecture--compounding.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
 **Decision note 2026-11-13 (point-of-view pass; Antti allowed his spar notes and bosser articles as his voice).** `## A few problems, or a capability?` = his agent-factory moment (spar 2026-10-28, project files agents-101-taste/2026-10-28-being-ahead-of-time.md). `## Stop chatting. Build a system.` = condensed from his article *Stop Chatting. Build a System* (bosser, 2026-08-10). Big Idea stated cold 50 → 63 with the module page aligned to the strategy line (lean scorer, n=12 each).
-
-
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Law moved in from Key Concepts (2026-09-24, Antti-directed).** `## Three layers, one folder` carries the three-layer bullet `building-agent-systems.md` § Key Concepts used to state.
 

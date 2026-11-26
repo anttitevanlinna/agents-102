@@ -1,34 +1,40 @@
 {
   "class": "slides",
   "file": "curriculum/lectures/evals-as-steering.md",
-  "body_sha": "6e2b890a1b621dba9e3ea9f3d41c0633037d19af62733696c10118a39756909f",
-  "verdict": "PASS",
   "training": "agents-101",
+  "verdict": "PASS",
+  "body_sha": "fde9b1a79e33f2f9824d143a03a14699f40924f07f53de6d835a276252f34d23",
+  "shape_hash": "92c8524704aa2825",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "# Evals as Steering",
-      "lines": "1-22"
+      "heading": "Evals as Steering (H1 + lede)",
+      "lines": "1-7"
     },
     {
       "index": 1,
       "heading": "Module 5 turned judgment into a judge",
-      "lines": "23-42"
+      "lines": "9-11"
     },
     {
       "index": 2,
-      "heading": "The second kind",
-      "lines": "43-68"
+      "heading": "Groundedness protects the floor (slide file, include line 13)",
+      "lines": "13"
     },
     {
       "index": 3,
-      "heading": "What you build now",
-      "lines": "69-90"
+      "heading": "Steering raises the ceiling (slide file, include line 15)",
+      "lines": "15"
     },
     {
       "index": 4,
-      "heading": "The question to hold",
-      "lines": "91-108"
+      "heading": "Three rounds, nobody editing",
+      "lines": "17-23"
+    },
+    {
+      "index": 5,
+      "heading": "The answer is never \"the eval passed\"",
+      "lines": "25-29"
     }
   ],
   "rules_evaluated": [
@@ -37,153 +43,182 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Evals as Steering”, line 1: “# Evals as Steering”. This closest body line does not express the prohibited shape.",
+      "evidence": "chunk 5 \"The answer is never...\" line 27: \"this eval\" is the one demonstrative with a generic referent; it resolves to the judge just looped in chunk 4 (line 19 \"The Module 5 judge goes into a loop\") and the eval-loop exercise that follows. Closest to violating; stays inside by immediate continuation. Chunk 3 line 15 slide \"Define that dimension as a check\" resolves to what makes the reader act, named one sentence earlier. Chunk 1 line 11 Module 5 recap is a module-arc beat after the module include order (evaluations.md line 27).",
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Evals as Steering”, line 1: “# Evals as Steering”. This closest body line does not express the prohibited shape.",
+      "evidence": "chunk 0 line 3 names the Mollick essay by title and unpacks its claim in the same sentence; chunk 4 line 19 \"The Module 5 judge\" names by module and artifact (judges/groundedness-judge.md, line 11), not by position. Closest: \"Module 5\" is an arc-earned module name, exempt.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no “the X you did/saw/caught” backward-beat reference appears in the expanded body of curriculum/lectures/evals-as-steering.md.",
+      "verdict": "PASS",
+      "evidence": "chunk 1 line 11 \"One briefing, thirty claims, four detectors, one scorer\" and judges/groundedness-judge.md resolve: hallucination-bakeoff.md line 21 \"pool of 30 claims\", line 25 \"four detectors\", line 54 scorer, line 84 judges/groundedness-judge.md; eval-loop.md line 31 ./generation-tactic.md. No dead beat.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 4,
       "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no guess/predict-before-reveal instruction appears in the expanded body of curriculum/lectures/evals-as-steering.md.",
+      "verdict": "PASS",
+      "evidence": "chunk 3 line 15 (slides/steering-raises-the-ceiling.md) \"Perhaps it names the tradeoff and gives a clean next move.\" is the closest to a demo beat; no guess/predict instruction anywhere, so no reveal precedes a guess. Muted read: chunk 1 line 11 opens with a verbless noun stack but the same sentence carries \"the scoreboard named which method caught the misses\", a verbed claim, and it recalls a run the student did rather than setting a live scene.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Evals as Steering”, line 1: “# Evals as Steering”. This closest body line does not express the prohibited shape.",
+      "evidence": "chunk 2 (slides/groundedness-protects-the-floor.md) ends \"Not enough.\" but the chunk opens with a full self-carrying claim, so it is not an orphan; closest to violating. Every other chunk holds at least two sentences.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Evals as Steering”, line 1: “# Evals as Steering”. This closest body line does not express the prohibited shape.",
+      "evidence": "chunk 5 line 25 header \"The answer is never \\\"the eval passed\\\"\" vs body line 29 \"The eval checks the thing that matters...\" which states the answer; maintainer note 2026-09-23 (line 42) attests the header against its body. chunk 4 header \"Three rounds, nobody editing\" is supported by line 21 \"the score rises with nobody editing\". chunk 1 header supported by line 11.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Evals as Steering”, line 1: “# Evals as Steering”. This closest body line does not express the prohibited shape.",
+      "evidence": "grep ^Not -> 0 in body; no Not X. Not Y. Z. (the lone \"Not enough.\" in slides/groundedness-protects-the-floor.md is a single clause). Anaphora: slide-file \"every name... every number... every claim cites evidence or admits the gap\" third leg carries new content (admits the gap). No superlatives, no number-plus-retraction. Verb run line 7 \"the model generates, the judge checks, the tactic changes, the next session starts sharper\" each leg concrete. Closest: line 11 \"measured judgment made runnable\" is an abstraction pair but names the concrete judge file one clause earlier.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Evals as Steering”, line 1: “# Evals as Steering”. This closest body line does not express the prohibited shape.",
+      "evidence": "grep \\b(beat|mood|compendium|surface|firing|forcing function|Connections)\\b -> 0 on the body view. \"tactic\" and \"main session\" are the student-facing vocabulary of eval-loop.md (line 31), not repo dialect.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Evals as Steering”, line 1: “# Evals as Steering”. This closest body line does not express the prohibited shape.",
+      "evidence": "grep \\*\\* -> 1 hit, line 27: \"**What would have to be true for this eval to be the right one?**\" is a whole bolded sentence (13 words), beyond the handle cap. Budget (<=1 per slide) holds, the bold is the question the slide asks the student to hold, and the same line passed the pinned audit at 4d9c4af2 (git show 4d9c4af2 line 95), so harm (bold monoculture across a slide) is absent here. Filed as a suggestion, not owed.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Evals as Steering”, line 1: “# Evals as Steering”. This closest body line does not express the prohibited shape.",
+      "evidence": "node scripts/expand-md.js inlines both slide-file includes (lines 13, 15) in order; lecture is included by trainings/agents-101/evaluations.md line 27 as [Lecture: ...](lectures/evals-as-steering.md), so it reaches the module deck. Renderer not re-run in both layouts; presence inferred from the include contract.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-numbering.js --file curriculum/lectures/evals-as-steering.md --report; real output:\n(no output)\n(exit status 0).",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": [],
+      "na_reason": "no Phase/Step headers in this file (check-slide-numbering exit 0)"
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-deixis.js --file curriculum/lectures/evals-as-steering.md --report; real output:\n(no output)\n(exit status 0).",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/lectures/evals-as-steering.md -> \"OK — 1 files, no page-geometry pointers across the slide cut.\" exit 0; grep above|below|further down|see below -> 0.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 13,
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no in-deck link inventory is present in the expanded body of curriculum/lectures/evals-as-steering.md; the mechanism is not implicated.",
+      "verdict": "PASS",
+      "evidence": "only links are the two structural include-links (lines 13, 15) standing alone on their lines, which the rule puts out of scope; no in-body links. Rule is a review surface, never a gate.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-size.js --file curriculum/lectures/evals-as-steering.md; real output:\n======================================================================\nSlide-size check — agentic-engineering-101\n  files: 1   slides: 4   limits: 210 words / 6 bullets\n  oversized: 0\n======================================================================\n\n✓ every slide is within limits\n(exit status 0).",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/lectures/evals-as-steering.md -> \"slides: 5 ... oversized: 0 ... every slide is within limits\" exit 0.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Raw lecture headings at lines 23-91 include \"Module 5 turned judgment into a judge\" and \"The question to hold\"; the headings are claims, transitions, or catalogue/orientation labels covered by §15's explicit carve-outs, with no label replacing a law/consolidation claim.",
+      "evidence": "lecture headings are claims or labels: line 9 \"Module 5 turned judgment into a judge\" (claim), line 25 \"The answer is never \\\"the eval passed\\\"\" (law-slide declaration, the case the rule binds). Closest: line 17 \"Three rounds, nobody editing\" is a descriptive label rather than a strict claim, inside the orientation/catalogue exemption and not a law slide.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "closest: slide-file steering-raises-the-ceiling line 32 \"Groundedness protects the floor. Steering raises the ceiling.\" restates the neighbouring headers and is a doctrine restatement/kicker (classes a, c). Belongs to slides/steering-raises-the-ceiling.md, judged at home per the preamble, so filed as a note, not a REVISE here. Host bullets (lines 5, 7, 11, 21, 23, 29) each add a move or object.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "git diff 4d9c4af2..HEAD retitled slides: \"The second kind\" -> slide file \"Steering raises the ceiling\", \"What you build now\" -> \"Three rounds, nobody editing\", \"The question to hold\" -> \"The answer is never...\". Covered each body and read against its new header: chunk 4 body is the three-round loop, chunk 5 body states the answer; old-header content (the second-kind mails, hold-the-yardstick) was cut in the same commit. No inherited bullets.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    }
+  ],
+  "suggestions": [
+    {
+      "rule": "check_slides.md §9",
+      "line": 27,
+      "now": "**What would have to be true for this eval to be the right one?**",
+      "proposed": "What would have to be true for this eval to be the **right one**?"
     }
   ],
   "blocking_findings_count": 0,
-  "shape_hash": "39543ecfec7711f5",
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "Slide-file wording belongs to slides/steering-raises-the-ceiling.md: its line \"Groundedness protects the floor. Steering raises the ceiling.\" restates its neighbouring headers (rule 16 a/c); not a REVISE here. Rule 1 on that slide: \"Define that dimension as a check\" leaves the dimension implicit (what makes the reader act); reads fine in sequence. Pinned diff 4d9c4af2..HEAD: body condensed to 5 slides with two slide-file includes, headers retitled, maintainer block gained Quality and Story blend notes. Accept-notes: Quality line (L33), Story blend M6 headers 2026-09-23 (L42). Rows via brief: 17, prefill parked 0 (shape changed), so check_slides.md complete at 17."
 }

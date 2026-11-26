@@ -1,44 +1,50 @@
 {
   "class": "slides",
   "file": "curriculum/exercises/author-security-skill.md",
-  "body_sha": "f32d7ccc8e3d1bf78508255a53f20f3f13545d28f4b015edfbee658801bcd3a9",
-  "verdict": "PASS",
   "training": "agents-101",
+  "verdict": "PASS",
+  "body_sha": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+  "shape_hash": "06ae99c98731b6ec",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "# Exercise: *Run and package* a security skill",
-      "lines": "1-20"
+      "heading": "Exercise: Run and package a security skill (H1 + widgets + lede)",
+      "lines": "1-14"
     },
     {
       "index": 1,
-      "heading": "Phase 1: Run the policies raw",
-      "lines": "21-40"
+      "heading": "Guess first",
+      "lines": "15-20"
     },
     {
       "index": 2,
-      "heading": "Phase 2: Dictate what matters",
-      "lines": "41-62"
+      "heading": "Phase 1: Run the policies raw",
+      "lines": "21-30"
     },
     {
       "index": 3,
-      "heading": "Phase 3: Author both lenses",
-      "lines": "63-99"
+      "heading": "Phase 2: Dictate what matters",
+      "lines": "31-42"
     },
     {
       "index": 4,
-      "heading": "Answer the grill, then sharpen the lenses",
-      "lines": "100-103"
+      "heading": "Phase 3: Author both lenses",
+      "lines": "43-52"
     },
     {
       "index": 5,
-      "heading": "Save the authored source as a personal skill",
-      "lines": "104-153"
+      "heading": "Answer the grill, then sharpen the lenses",
+      "lines": "53-58"
     },
     {
       "index": 6,
+      "heading": "Save the authored source as a skill",
+      "lines": "59-82"
+    },
+    {
+      "index": 7,
       "heading": "Take stock of the packaged check",
-      "lines": "154-163"
+      "lines": "83-92"
     }
   ],
   "rules_evaluated": [
@@ -47,153 +53,184 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: *Run and package* a security skill”, line 1: “# Exercise: *Run and package* a security skill”. This closest body line does not express the prohibited shape.",
+      "evidence": "L57 \"If any of the four named risk patterns is missing\" — the four are named in the prior chunk's Phase 3 prompt (L90-95 raw prompt author-security-skill-3), so the sequential deck read resolves them; L53 header \"the grill\" resolves to the prompt's \"grill me\" (expanded L99) one chunk back; L17 \"what the check finds\" resolves inside the same chunk (\"Before any check runs\"). Session-artifact carve-out covers \"the report\", \"the skill\".",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: *Run and package* a security skill”, line 1: “# Exercise: *Run and package* a security skill”. This closest body line does not express the prohibited shape.",
+      "evidence": "L11 \"your system from modules 2-3\" and L87 \"Module 4's audit exercise\" name sources by module and title, not by position in the deck; training-spine vocabulary per the arc-earned carve-out. Closest to violating: L11 module ordinals.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no “the X you did/saw/caught” backward-beat reference appears in the expanded body of curriculum/exercises/author-security-skill.md.",
+      "verdict": "PASS",
+      "evidence": "L11 \"your system from modules 2-3\" and prompt refs to module-3/stances/: `grep -rln \"module-3/stances\" curriculum/exercises` hits module-3-prework.md, so the beat exists; L29 \"your guess\" resolves to the Guess first chunk (L15-19) that precedes it.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 4,
       "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no guess/predict-before-reveal instruction appears in the expanded body of curriculum/exercises/author-security-skill.md.",
+      "verdict": "PASS",
+      "evidence": "L17 \"Before any check runs, decide whether your system is safe\" puts the guess instruction ahead of any outcome; the reveal (L29 \"The report opens with your guess. Below it are the rows your guess could not see\") comes two chunks later. Muted read: L17 is a verbed sentence, no terminal-pointing cue.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: *Run and package* a security skill”, line 1: “# Exercise: *Run and package* a security skill”. This closest body line does not express the prohibited shape.",
+      "evidence": "Closest: chunk 7 \"Take stock of the packaged check\" L85-87 is one thin sentence, but L91 \"The policy files are source material. The skill carries the judgment about what matters in this system\" gives the chunk a self-carrying claim; thinness of the L85 recap is filed under rule 6.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: *Run and package* a security skill”, line 1: “# Exercise: *Run and package* a security skill”. This closest body line does not express the prohibited shape.",
-      "fix_hint": null,
-      "blocking": false
+      "verdict": "REVISE",
+      "evidence": "chunk 7 \"Take stock of the packaged check\": L85-87: \"**What happened:**\" followed by \"Module 4's audit exercise loads the skill and runs it against the same system.\" The bolded lead promises a recap of what the student did; the sentence under it is a forward pointer to a future exercise, so the lead is untrue of its own content. Harm present: the slide projects a \"What happened\" label over text that did not happen yet. The recap that made the label true (\"The reusable check exists now, with two lenses...\") was cut in the diff 4d9c4af2..HEAD.",
+      "fix_hint": "Make the line a recap that carries the pointer: \"**What happened:** You wrote and installed the skill. Module 4's audit exercise loads it and runs it against the same system.\"",
+      "blocking": false,
+      "chunks_flagged": [
+        7
+      ]
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: *Run and package* a security skill”, line 1: “# Exercise: *Run and package* a security skill”. This closest body line does not express the prohibited shape.",
+      "evidence": "Closest: L67 \"the data your agent touches that would be a problem if it leaked, the rule your legal team cares about most, the customer your CEO would not want named in a transcript\" is a three-item list, but each leg is concrete new content, not anaphora. Sub-items: no \"Not X. Not Y. Z.\" (grep \"Not \" body → none), no self-grading superlative, no number+retraction, no empty verb triplet.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: *Run and package* a security skill”, line 1: “# Exercise: *Run and package* a security skill”. This closest body line does not express the prohibited shape.",
+      "evidence": "grep -niE \"surface|firing|compendium|forcing|beat|mood|connections\" on body_numbered → 0 dialect hits (hits were only \"Below\"/\"top of\" from the widened deixis pattern). \"lens\", \"package\", \"raw\" are ordinary engineering terms for this audience.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: *Run and package* a security skill”, line 1: “# Exercise: *Run and package* a security skill”. This closest body line does not express the prohibited shape.",
+      "evidence": "Closest: chunk 0 carries four bolds (L3 **Time:**, L5 **Session**, L11 **What you do:**, L13 **skill**) and chunk 7 two (L85 **What happened:**, L89 **The point:**). Widget chrome labels are exempt per the standing precedent (fix-tests-first maintainer note: widget chrome `**Time:**`, `**What you do:**`, `**What happened:**`, `**The point:**` untouched, 49 exercise files share the shape); **skill** is a one-word coined-term handle at its first encounter. No bolded lead sentences.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: *Run and package* a security skill”, line 1: “# Exercise: *Run and package* a security skill”. This closest body line does not express the prohibited shape.",
+      "evidence": "Included in the composed deck: curriculum/trainings/agents-101/security.md:26 carries the standalone include `[Exercise: Run and package a security skill](exercises/author-security-skill.md)`, so it renders under a .phase--exercise wrapper. Layouts not re-rendered this run; presence inferred from the include, stated as unverified mechanically.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-numbering.js --file curriculum/exercises/author-security-skill.md --report; real output:\ncurriculum/exercises/author-security-skill.md: Phase 1–3 (3 headers)\n(exit status 0).",
+      "evidence": "node scripts/check-slide-numbering.js --file curriculum/exercises/author-security-skill.md → \"OK — 1 files, Phase/Step numbering consistent.\" (exit 0). Headers Phase 1, 2, 3 consecutive; L3 \"Phase 1 ~10, Phase 2 ~8, Phase 3 ~22\" resolve.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-deixis.js --file curriculum/exercises/author-security-skill.md --report; real output:\n(no output)\n(exit status 0).",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/exercises/author-security-skill.md → \"OK — 1 files, no page-geometry pointers across the slide cut.\" (exit 0). L29 \"Below it are the rows\" points inside the report's own structure, not at slide geometry.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 13,
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no in-deck link inventory is present in the expanded body of curriculum/exercises/author-security-skill.md; the mechanism is not implicated.",
+      "evidence": null,
+      "na_reason": "no in-body markdown links (has_urls false; only structural include lives in the module file)",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-size.js --file curriculum/exercises/author-security-skill.md; real output:\n======================================================================\nSlide-size check — agentic-engineering-101\n  files: 1   slides: 6   limits: 210 words / 6 bullets\n  oversized: 0\n======================================================================\n\n✓ every slide is within limits\n(exit status 0).",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/author-security-skill.md → \"slides: 7 ... oversized: 0 — every slide is within limits\" (exit 0). Runtime forks resolved by the checker.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Raw lines 21-99: body headings such as \"Phase 1: Run the policies raw\" and \"Take stock of the packaged check\" are imperatives or phase labels, the required exercise grammar; no declarative law-heading is present.",
+      "evidence": "Exercise headings are imperative or phase labels: L15 \"Guess first\", L21/31/43 \"Phase N: ...\", L53 \"Answer the grill, then sharpen the lenses\", L59 \"Save the authored source as a skill\", L83 \"Take stock of the packaged check\". No declarative heading to test; none owes a claim.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "Closest: L91 \"The first loaded use should be the real audit.\" restates L87's pointer that the audit exercise loads the skill — near-restatement across the closing slide, but the L91 sentence adds the priority (audit before any toy run), so it earns the slot; offered as a suggestion only.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "Diff 4d9c4af2..HEAD retitled L59 \"## Save the authored source as a personal skill\" to \"...as a skill\" and rewrote the bullets under it; L61 \"Save the authored source as a personal skill. The save mechanic differs by runtime.\" still echoes the old header but states the runtime-fork job the new header owes. No inherited old-header bullets remain.",
+      "fix_hint": null,
+      "blocking": false,
+      "chunks_flagged": []
+    }
+  ],
+  "suggestions": [
+    {
+      "rule": "check_slides.md §16",
+      "line": 91,
+      "now": "The policy files are source material. The skill carries the judgment about what matters in this system, with all four risk patterns as mandatory checks. Agent mitigations sit on top of normal company controls, not in place of them. The first loaded use should be the real audit.",
+      "proposed": "The policy files are source material. The skill carries the judgment about what matters in this system, with all four risk patterns as mandatory checks. Agent mitigations sit on top of normal company controls, not in place of them."
     }
   ],
   "blocking_findings_count": 0,
-  "shape_hash": "22c106e5402c0298",
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 1,
+  "notes": "Brief built normally; prefill parked 0 rows (shape changed), all 17 rules judged by this run. Cross-class observations: L61 says \"personal skill\" while prompt author-security-skill-4 installs \"as a project skill at .claude/skills/agent-audit/\" (technical/writing class); maintainer block L99-137 carries historical SUPERSEDED/DONE log lines (check_writing §3 territory). Accept-notes found are all dated audit-history lines; none authorises a slides-class passage. The user relay line \"run the 7-module public version\" does not bear on this single-file judgment."
 }

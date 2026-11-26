@@ -1,116 +1,141 @@
 {
   "class": "behavior",
   "file": "curriculum/trainings/agents-101/evaluations.md",
-  "body_sha": "58fdcfdd5795ec045b11b5aed2b3d4fcc5a100a9203509afeed10c44ce16f33e",
-  "content_sha": "61763063189fb778786c52efe06a5a5b8793a1d7b5f51e4cd502766302ce4ae1",
-  "generated_at": "2026-08-25T17:08:50.300Z",
-  "verdict": "PASS",
   "training": "agents-101",
+  "verdict": "PASS",
+  "body_sha": "1ab775a9ad834ef68c05cb4f690d93bec5af8d928de62bda003cf706cf9b0ac6",
   "trace_status": "full_regen",
   "prompts_evaluated": 1,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_sha": "a124bd3fdf3b2963d555146b7506f3a85153a4d55e5b7b810264c5bbaa717514",
+      "prompt_sha": "4a6277ebd66103cb415934970baf61a1eb2b0fe7bc5930c809501edc04207c07",
       "prompt_lead": "Start by reading the files. No plan or preamble.\n\nReview this session and sharpe",
       "verdict": "PASS",
       "load_bearing": true,
-      "risks_fired": []
+      "risks_fired": [
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "carve_out": "evidence-backed Debrief carve-out",
+          "evidence": "\"Be harsher than feels comfortable. If a rule is vague, say so by name.\" plus named evidence surfaces (module-6/runs/, eval-notes.md) and body line \"Which rule did you claim to remove but keep under another name? Quote both lines.\""
+        },
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "carve_out": "evidence-backed Debrief carve-out",
+          "evidence": "\"tell me in 3-5 lines ... grounded in specific rounds\" with the 'bigger than noise before crediting' check on single-digit flag counts"
+        },
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "low",
+          "carve_out": "integrate-verb personal-scope carve-out",
+          "evidence": "\"overwrite ./generation-tactic.md in place. Do not create a new version. Integrate, don't append.\" on the student's own artifact; root-instructions line has \"If such a line exists, keep it as one line.\""
+        }
+      ]
     }
   ],
-  "blocking_findings_count": 0,
   "catalog_coverage": [
     {
       "pattern_id": "file-preservation-gap",
       "status": "not_fired",
       "prompt_indices": [],
-      "why": "No other prompt asks Claude to update an existing file without a clear preservation boundary."
+      "why": "Overwrite-in-place boundary named; root file edit scoped to one line."
     },
     {
       "pattern_id": "reading-burden",
       "status": "not_fired",
       "prompt_indices": [],
-      "why": "Claude performs the evidence read or artifact check; the student is not assigned manual correctness proofreading."
+      "why": "Claude does the evidence read; student pushes back on summary only."
     },
     {
       "pattern_id": "niceness-tax",
       "status": "not_fired",
       "prompt_indices": [],
-      "why": "The prompt either has no stance-softening regeneration or explicitly asks for harsh, edge-preserving evidence."
+      "why": "'Be harsher than feels comfortable' and quote-both-lines follow-up."
     },
     {
       "pattern_id": "question-dump",
       "status": "not_fired",
       "prompt_indices": [],
-      "why": "No prompt asks Claude to interview the student through a sequence of questions."
+      "why": "No interview."
     },
     {
       "pattern_id": "overwrite-anxiety",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "The prompt either creates a fresh artifact or explicitly names the destination and in-place overwrite behavior."
+      "status": "carved_out",
+      "prompt_indices": [
+        1
+      ],
+      "why": "Carve-out applied: explicit in-place overwrite on personal artifact; one-line root edit dedupes."
     },
     {
       "pattern_id": "preamble-before-action",
       "status": "not_fired",
       "prompt_indices": [],
-      "why": "No additional prompt shape forces or materially invites preamble beyond the listed fired cases."
+      "why": "Prompt opens 'No plan or preamble.'"
     },
     {
       "pattern_id": "append-vs-integrate",
       "status": "not_fired",
       "prompt_indices": [],
-      "why": "No unbounded add/regenerate instruction remains; integration or first-create intent is explicit where needed."
+      "why": "'Integrate, don't append' stated."
     },
     {
       "pattern_id": "plan-mode-preamble-bloat",
       "status": "not_fired",
       "prompt_indices": [],
-      "why": "No prompt invokes plan mode or asks for a plan artifact for approval."
+      "why": "No plan mode invited."
     },
     {
       "pattern_id": "citation-gap-asymmetry",
       "status": "not_fired",
       "prompt_indices": [],
-      "why": "No prompt requests a body of sourced factual claims with an unscoped cite-or-flag rule."
+      "why": "No sourcing asked."
     },
     {
       "pattern_id": "self-report-inflation",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Reports are constrained by concrete artifacts, quoted changes, or evidence-backed debrief requirements."
+      "status": "carved_out",
+      "prompt_indices": [
+        1
+      ],
+      "why": "Carve-out applied: evidence-grounded reporting required, noise check."
     },
     {
       "pattern_id": "default-acceptance",
       "status": "not_fired",
       "prompt_indices": [],
-      "why": "No offered default or candidate structure invites uncritical acceptance."
+      "why": "No defaults offered."
     },
     {
       "pattern_id": "plan-mode-approval-inflation",
       "status": "not_fired",
       "prompt_indices": [],
-      "why": "No plan-mode plan is produced for student approval."
+      "why": "No plan mode."
     },
     {
       "pattern_id": "source-type-blindness",
       "status": "not_fired",
       "prompt_indices": [],
-      "why": "No heterogeneous source-ingestion task requires source-type or extraction-depth classification."
+      "why": "No source ingestion."
     },
     {
       "pattern_id": "citation-cargo-cult",
       "status": "not_fired",
       "prompt_indices": [],
-      "why": "No citations are requested without a sentence-level support check."
+      "why": "No citations asked."
     },
     {
       "pattern_id": "self-audit-charity",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Evidence-backed debrief carve-outs, harsh instructions, or independent cold reads prevent an unsupported charitable self-critique."
+      "status": "carved_out",
+      "prompt_indices": [
+        1
+      ],
+      "why": "Carve-out applied: harsh instruction, named evidence surfaces, body pushback move."
     }
   ],
-  "evidence": "Full Luna re-fire from the live source via scripts/expand-md.js. Raw whole-file SHA-256 is 58fdcfdd5795ec045b11b5aed2b3d4fcc5a100a9203509afeed10c44ce16f33e; expanded-output SHA-256 is 61763063189fb778786c52efe06a5a5b8793a1d7b5f51e4cd502766302ce4ae1. Evaluated 1 student prompt block(s), each against all 15 catalog patterns and the judge carve-outs from prompt-behavior.md, simulation-behavior.md, check_prompts.md, and check_pedagogy.md. This is full_regen, not cache carry-forward. Single medium-confidence risks on load-bearing prompts remain PASS under the verdict rules; low-confidence risks are TODO; no high-confidence or two-medium load-bearing combination reaches REVISE.",
-  "nonblocking_findings_count": 0
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "evidence": "Prompt a101-m6-debrief-tactic-sharpen changed since pin 725101ec (root-instructions line, eval-notes cut rule, noise check); prompt_sha stale so regenerated. All 15 patterns checked; three low-confidence risks all carry named carve-outs; no high or med risks.",
+  "notes": "Body diff vs 725101ec is prose realignment; only prompt block matters. Accept-notes found: Red thread 2026-11-13, Quality 2026-08-25, Key Concepts minimal 2026-09-24, Story blend 2026-09-23, Mollick source due:none, MT-Bench source."
 }

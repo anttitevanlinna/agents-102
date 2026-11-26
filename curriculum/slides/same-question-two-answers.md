@@ -11,7 +11,7 @@ The first exchange became context.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-08 (writing@8b8f4070 technical@8b8f4070 slides@b58bcc4c)
-- judges @8b8f4070: writing PASS, technical PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (technical@78d17fc9)
+- judges @78d17fc9: writing REVISE (1/1 see instances/shared--slide--same-question-two-answers.writing.json), technical PASS, slides REVISE (1/0 see instances/shared--slide--same-question-two-answers.slides.json)
 
 **Guess before reveal** `same-question-two-answers` (Antti, 2026-10-06): the guess cue sits above the Finnish answer and asks the reader to guess *before you read on*, so the beat survives a text read with no live demo (`check_slides.md §4`; Claude Basics borrows it as self-study). Keep the reveal below the cue.

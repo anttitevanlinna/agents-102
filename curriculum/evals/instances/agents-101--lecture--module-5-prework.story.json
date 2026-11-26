@@ -1,18 +1,28 @@
 {
   "class": "story",
   "file": "curriculum/lectures/module-5-prework.md",
-  "body_sha": "03fb5ec7ddb780b08a391aae75aade6345ebaed99e0567b0641c57dc39fa5dd2",
-  "verdict": "PASS",
   "training": "agents-101",
-  "module_mood_contract": "N/A — no module mood contract applies",
+  "verdict": "REVISE",
+  "body_sha": "57543b20cab5591e940ff384f5634f966c4c26e12dd0859c6df5fb330808bdec",
+  "shape_hash": "291e5ea8648babfd",
+  "module_mood_contract": "unease before the rescue: student armed with two documented cases and one open question, answer not handed over (M5 is the rescue)",
   "trace_status": "regenerated",
+  "mood_summary": {
+    "phase_scores": [
+      8
+    ],
+    "close_score": 8,
+    "any_below_8": false,
+    "stealing_the_mood": []
+  },
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
-      "rule_lead": "Meta-frame lectures are closers, not openers.",
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Closest passage: line 1 “module-5-prework”; the lecture's body carries its own concept and does not front-load a later exercise.",
+      "evidence": "L9-L41: arming prework read before the lecture; it names no pattern the student already lived, it supplies two cases and a question. Closest: L7 'the LLM filled the gap with something plausible' is a one-line frame, still arming not a meta-frame story.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +31,8 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "PASS",
-      "evidence": "Closest passage: line 1 “module-5-prework”; the lecture's body carries its own concept and does not front-load a later exercise.",
+      "evidence": "L35-L37 three grounding-failure bullets, L31 slide of four lenses: arming depth. Closest to teaching: L36 'A file says one customer complained; the answer says customers are unhappy.' It is a lens with one example; no practitioner names, no framework mapping; maintainer L51 caps mechanism dosage.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -30,16 +41,18 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Closest passage: line 1 “module-5-prework”; the lecture's body carries its own concept and does not front-load a later exercise.",
+      "evidence": "grep M[0-9]|Module [0-9] over body_numbered -> 1 hit, L39 '## Bring to Module 5'. File is the M5 prework by slug and surface (its job is arming that module's open); harm (shared lecture becomes un-re-placeable) is absent because the file is not re-placed. Rule question for maintainer: whether prework surfaces are outside §3; not filed.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 4,
-      "rule_lead": "Slide/lecture headers pass the squint and truth tests.",
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Closest passage: line 1 “module-5-prework”; the lecture's body carries its own concept and does not front-load a later exercise.",
+      "evidence": "Headers: L1 'The Missing Check' (named concept), L9/L19 case names (named things), L31 slide 'Why the LLM fabricates' (cover the bullets: names the topic the four lenses answer), L33 'Why grounding fails even when the facts are in context' (body L35-37 supports it, no universals), L39 'Bring to Module 5' (live do-move, prework carve-out). Closest to bare label: L39, but it hands over an action. No em-dashes in headers; no two share a name.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -48,16 +61,28 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file /Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/module-5-prework.md`; exit 0. Output: files: 1, slides: 2, limits: 210 words / 6 bullets, oversized: 0; every slide is within limits.",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/lectures/module-5-prework.md -> 'oversized: 0' and 'every slide is within limits'; slide file has 4 bullets.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 6,
-      "rule_lead": "Lecture prompts are trainer show-and-tell by default.",
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "signals.has_prompt_blocks=false; no prompt blocks, and prework prompts are outside the rule",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 7,
+      "rule_lead": "A new training's lectures start from the slide corpus, not from fresh prose.",
       "verdict": "PASS",
-      "evidence": "Closest passage: line 1 “module-5-prework”; the lecture's body carries its own concept and does not front-load a later exercise.",
+      "evidence": "L31 '[Why the LLM fabricates](slides/why-the-llm-fabricates.md)' is a transparent slide-file include (curriculum/slides/why-the-llm-fabricates.md exists); body prose around it is case reading, not a new lecture.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -65,17 +90,19 @@
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
-      "verdict": "N/A",
-      "evidence": "No per-module strategy mood contract applies to this lecture; the target is evaluated for its own story role.",
+      "verdict": "PASS",
+      "evidence": "Leaves the student uneasy-and-armed: 'which organisational check was missing' (L5) then L41 'One sentence per case'. Teaching beats (case 1 L11-13, case 2 L21-23, mechanisms L35-37) land concrete, specific stakes ($5,000, A$439,000, new false references in the revision L23) with no scolding. No strategy per-module mood loaded for a prework; mood scored from trace, floor met at 8.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
-      "rule_lead": "Epistemic mood is not punitive.",
-      "verdict": "N/A",
-      "evidence": "No per-module strategy mood contract applies to this lecture; the target is evaluated for its own story role.",
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "PASS",
+      "evidence": "L13 'The order blames the missing verification, not the tool.' and L7 locate the failure in the workflow, not in the students' conduct; closest to punitive: L11 'Nobody checked' describes the attorneys, but as a missing step, not shame the student carries.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -83,67 +110,90 @@
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
-      "verdict": "N/A",
-      "evidence": "No per-module strategy mood contract applies to this lecture; the target is evaluated for its own story role.",
+      "verdict": "PASS",
+      "evidence": "L1 title 'The Missing Check' names the discipline gap (verification); failure words appear only as the negative case in L31/L33 headers, where the body then states the grounding discipline. Carve-out for named canonical results (Mata v. Avianca) applies to the case header L9.",
+      "na_reason": null,
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy fidelity and handoff.",
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "REVISE",
+      "evidence": "Facets: front-run: none (no skill/eval named; 'eval' absent). Module-to-module arc: L41 'Bring to Module 5' hands off cleanly. Big Idea fidelity: leads with grounding/verification. Mood-doesn't-resolve-early FAILS: the body names the answer to its own take-home. L7 'no step in the workflow opened the source', L11 'Nobody checked a legal research database', L31 slide bullet 4 'has no step where someone opens the cited source'. Maintainer L49 says the missing check stays unnamed in both case sections by design and the take-home (L41, 'The organisational check that would have caught this was X') IS the naming. Harm present: a persona can fill X by copying L11 and skip the reasoning that seeds Module 5's classification phase. The body was rewritten after the L49 note (commit ef356fd4/76528a6c, Nov 2026); no accept-note authorises the reveals.",
+      "na_reason": null,
+      "fix_hint": "Cut L7 second sentence's 'and no step in the workflow opened the source' and L11 'Nobody checked a legal research database.', keep the facts (ChatGPT said yes); or amend maintainer L49 if the reveal is now intended.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "No per-module strategy mood contract applies to this lecture; the target is evaluated for its own story role.",
+      "evidence": null,
+      "na_reason": "module-only section; lecture has no Key Concepts",
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 10,
-      "rule_lead": "Student agency, adults decide.",
-      "verdict": "PASS",
-      "evidence": "Closest passage: the target gives the reader a choice or a self-directed artifact rather than prescribing a feeling or room response.",
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-only section; no Key Concepts",
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 13,
-      "rule_lead": "Artifact-realism check.",
-      "verdict": "PASS",
-      "evidence": "node scripts/expand-md.js curriculum/lectures/module-5-prework.md > /tmp/story-expanded-module-5-prework.md; echo $? -> 0; wc -c -> 18176 bytes. Expanded target references 0 prompt block(s); named artifacts are described in the source and are not phantom outputs.",
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-only section; no What You'll Learn",
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 16,
-      "rule_lead": "Forcing functions live in prompts, not body prose.",
-      "verdict": "PASS",
-      "evidence": "node scripts/expand-md.js curriculum/lectures/module-5-prework.md > /tmp/story-expanded-module-5-prework.md; echo $? -> 0; wc -c -> 18176 bytes. Expanded target contains 0 prompt block(s); the load-bearing action is carried by the prompt or by the target's explicit work, not a scripted reaction.",
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "binds the strategy doc, not this lecture; not a story-judge lane on this file",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
-      "rule_lead": "Body teaches the work; trainer manages the room.",
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Closest passage: the target names the work and artifact; no authored “talk to your neighbour”, “discuss”, or “share with the room” cue is needed for the reader to perform the story.",
+      "evidence": "grep -Ein 'compare|discuss|neighbo|share|tell the room' over body_numbered -> 0 hits; closest L41 'One sentence per case' is a work product (artifact), not cohort management.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks; prework reading task, body ask is the design (L41)",
       "fix_hint": null,
       "blocking": false
     }
   ],
-  "mood_summary": {
-    "phase_scores": [
-      8,
-      8
-    ],
-    "close_score": 8,
-    "any_below_8": false,
-    "stealing_the_mood": []
-  },
-  "blocking_findings_count": 0,
-  "shape_hash": "2f9e804e320df515",
-  "nonblocking_findings_count": 0
+  "suggestions": [],
+  "blocking_findings_count": 1,
+  "nonblocking_findings_count": 0,
+  "notes": "Teaching moment: fragile as written because L7/L11/slide bullet 4 give the answer to the L41 take-home (see strategy_tie_in 4). Rule question: check_lectures 3 vs prework surfaces naming 'Module 5'. Maintainer accept-notes: L49 no-answer-reveals, L67 no small/ten-minutes/Castel quote, L69 detector re-run (casing, 'short' dropped), L44 Quality stamp, URL stamps L76-83. Prefill parked 0 rows (shape changed), so only judge-owned lanes (lectures all, strategy_tie_in all, pedagogy 27, prompts 16) were written; brief held 149 rules.",
+  "resolution": {
+    "settled": "refuted",
+    "at": "2026-11-26",
+    "note": "Both refuters killed every blocking finding, so the row stamps PASS:verify-refuted and this REVISE stays as the record. strategy_tie_in §4 (mood-doesn't-resolve-early facet; teaching moment lands) line 11: scope: Refuted on rule fit. I read §4 with rule.js and in check_strategy_tie_in.md. It is the \"Strategy-fidelity check\": before designing or reviewing a module, pull per-module sequencing claims from the content-strategy doc and verify the draft doesn't front-run a DOWNSTREAM module's teaching moment. It is about cross-module sequencing. It has no \"mood-doesn't-resolve-early\" facet and nothing about a piece answering its own take-home. The mood text is §1, which concerns module mood stewing into the NEXT module's moment, and it is not what the judge cited.\n\nThe facts the judge counted are accurate. L7 says \"no step in the workflow opened the source\", L11 says \"Nobody checked a legal research database\", and slide bullet 4 (slides/why-the-llm-fabricates.md) says \"has no step where someone opens the cited source\". L41 is the take-home. But none of this front-runs a later module. In content-strategy.md (Grounded Output) M5's mood is \"Rescue\" (\"Ahh, this is actually fixable\"), and its teaching moment is the four-detector benchmark and saved judge. The prework is M5's own arming reading. The strategy says both cases \"have the organisational missing-check on public record\" and that the student arrives with one sentence per case. It also says the prework seeds M5's classification and Technique 1, so the check is meant to be learnable from the cases. Nothing here steals M3/M4 unease or M6's leverage.\n\nThe \"newly rewritten, reveal not authorised\" framing is mostly wrong. Commit 12fbd424 (2026-08-03) is what removed the bold \"The missing check:\" reveals and wrote the L49 note. It deliberately left the factual sentence \"He did not check the cases in a legal research database\", and the PASS audits were stamped on that text. Nov's ef356fd4 is a commit with \"maintainer yes 2026-11-06\" that re-aimed M5 toward grounding, and it kept the same fact in L11 (\"Nobody checked a legal research database\"). The only truly new sentence is L7's generalisation. The maintainer-approved prior state therefore already tolerated naming the Mata fact. L49's actual prohibition is the bold reveals, and those are not restored.\n\nThe BLOCKING severity does not hold under the cited rule. The most that survives is a possible tension between L49's wording (\"unnamed in both case sections\") and L7 or the slide bullet. That is a maintainer-note or pedagogy matter, not a §4 BLOCK. It is a note-versus-body drift to reconcile, not a defect in a body that was correct. / harm: The finding fails on three grounds. It is built on a misreading of the rule. The fix would not remove the reveal it claims to remove. The reveal-bearing sentence existed when the maintainer note was written, and that note was written to allow it.\n\n**1. Wrong rule.** check_strategy_tie_in.md §4 is the strategy-fidelity check. It asks whether a draft front-runs a downstream module's teaching moment (a cross-module sequencing claim). The mood-resolution rule is §1. This prework belongs to M5, and its take-home seeds M5's own Phase 2. It does not front-run any later module. The finding grants §4 but files a different rule's harm under it.\n\n**2. The fix is a no-op, because other lines carry the same meaning.**\n- L5, which the judge leaves alone, says \"which **organisational check was missing**\".\n- L13, also left alone, says \"The order blames the missing verification, not the tool.\" That names the answer (\"verification\") outright. Cutting L7 and L11 leaves the check named in L5 and L13.\n- The slide `why-the-llm-fabricates.md` says \"Verification has to leave the session and touch the source.\" Bullet 4 says \"no step where someone opens the cited source\". That slide is a separate file, and the proposed fix does not touch it.\n- L41's task asks for a sentence in the student's own words. Removing L11 does not stop a student writing \"verification before submission\", because L13 already hands that over.\n\n**3. L11 restates a fact that was already there when the maintainer note was written.**\n- `git blame` shows the L49 note dates from 2026-08-03 (commit 12fbd424).\n- The pre-rewrite body, visible in the ef356fd4 diff, already read \"He did not check the cases in a legal research database.\" That is the same fact as L11.\n- That body also said \"The verification step still wasn't built in. What that step would have been is the sentence you bring to class.\"\n- The note's wording is \"Do not restore the bold 'The missing check:' reveals\". It bans the labelled bold answer-lines. It does not ban stating that no one checked a database, which is a case fact and is the Mata story itself.\n- ef356fd4 actually shortened the reveal. The old body explicitly gave \"the missing verification, not ChatGPT\" and \"gatekeeping duty\". The new body says less.\n\n**4. Fixing it costs more than the defect.** L11's \"Nobody checked a legal research database\" is the factual hinge of the Mata story: ChatGPT said yes, and no one went outside the session. Cutting it weakens the case summary. The student is still supposed to read the Justia order, where the missing check is documented.\n\n**5. Counts and facts.** I verified the three quoted spans (L7, L11, slide bullet 4). The L41 task text and L49 maintainer note are as quoted. Commits ef356fd4 and 76528a6c exist and touched the file or slide. The judge's counts hold, but they do not support the conclusion.\n\n**Harm lens.** No student in the room is worse off. The take-home is still \"name X in your own words\". Any reveal that exists comes from L5 and L13, which the fix does not touch. The only live issue is a possible stale-note wording mismatch, which is a note tidy-up and not a BLOCK."
+  }
 }

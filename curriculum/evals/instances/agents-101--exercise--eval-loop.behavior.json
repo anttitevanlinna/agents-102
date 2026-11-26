@@ -2,175 +2,113 @@
   "class": "behavior",
   "file": "curriculum/exercises/eval-loop.md",
   "training": "agents-101",
-  "body_sha": "e0ea3cf0beb0b0ba3b978d2d642fefb2b6879560df439e9dde168f0117e62a2c",
+  "verdict": "PASS",
+  "body_sha": "a729f35825422cc0d4809f8909e4a0375c85c11b4bbeec96d443409324f06c4b",
   "trace_status": "full_regen",
-  "prompts_evaluated": 6,
+  "prompts_evaluated": 7,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "Three things, in sequence:\n\n1. Write ./generation-tactic.md as the generator ins",
+      "prompt_lead": "Three things, in sequence:\n\n1. Dispatch a judge subagent, as the loop will. It r",
       "verdict": "PASS",
       "load_bearing": true,
+      "prompt_sha": "eae54bce45ed5c2f0b4e4520e41fcb6ed254c99a1a7385d9e804329a91eb04f4",
       "risks_fired": [
         {
           "pattern_id": "preamble-before-action",
           "confidence": "med",
-          "evidence": "Three things, in sequence: 1. Write... 2. Run... 3. Run the judge...",
-          "fix_hint": "The three-step orchestration can invite brief plan narration before the first calibration write; the risk is nonblocking because the first artifact remains explicit."
+          "evidence": "Three things, in sequence: 1. Dispatch... 2. If module-5/baseline-score.md exists... 3. Write ./generation-tactic.md... (no 'No preamble' line)",
+          "fix_hint": "Add 'No preamble. Start by dispatching the judge.' as P2 does."
         }
-      ],
-      "prompt_sha": "f7d1adab005e05e260577a0b6ee774aa7ced8fd1656d286bbfbbbcced5c459d5"
+      ]
     },
     {
       "prompt_index": 2,
       "prompt_lead": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/grounde",
       "verdict": "PASS",
       "load_bearing": true,
-      "risks_fired": [],
-      "prompt_sha": "7768aa6905ab005b8934e1c3e1fc03c96f984222d1d0a7946a17564baf0441e9"
+      "prompt_sha": "4ec73afafdc1a0a09c015e8a326366888eb6c0dc9656ffa111d7e94eb5e8a8e9",
+      "risks_fired": [
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "carve_out": "evidence-backed Debrief carve-out",
+          "evidence": "Significant improvement means a drop in flagged claims larger than the judge noise read in round 0; notes table of counts and SHA check",
+          "fix_hint": "Carve-out applied; nothing owed."
+        }
+      ]
     },
     {
       "prompt_index": 3,
-      "prompt_lead": "Claude: can we scale this by adding more generation tracks to try more options f",
+      "prompt_lead": "Can we scale this by adding more generation tracks to try more options faster?",
       "verdict": "PASS",
       "load_bearing": false,
-      "risks_fired": [],
-      "prompt_sha": "5b2f9a308211b74c5302e2badaa7cf0f1a71df5486f28950a3f0e6e62f009ed3"
+      "prompt_sha": "4c94131e30e1d811396e8ce858bffc2c20c848cea902f0d3a64d3e9c7436d9c3",
+      "risks_fired": []
     },
     {
       "prompt_index": 4,
-      "prompt_lead": "Claude: what is the similarity to model training here? Tell me in 5 snippets, on",
+      "prompt_lead": "What is the similarity to model training here? Tell me in 5 snippets, one at a t",
       "verdict": "PASS",
       "load_bearing": false,
-      "risks_fired": [],
-      "prompt_sha": "d80fbf3759f9da2538ff064da9711307fd45c43ce810dca8972efc38145810f5"
+      "prompt_sha": "cf6522b2709f285dbceb648b69631f0ce7527895ae84d753535b36c48cf8f29b",
+      "risks_fired": []
     },
     {
       "prompt_index": 5,
       "prompt_lead": "Show me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five ",
       "verdict": "PASS",
-      "load_bearing": false,
-      "risks_fired": [],
-      "prompt_sha": "b1247140d542d9c06b22717d6178f645840a9db0d521e827e6ed07754b94628b"
+      "load_bearing": true,
+      "prompt_sha": "ed89f8856d76f07cd45bb40d7eb5844e33f47135e66a06018e652f61363a7d9c",
+      "risks_fired": [
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "carve_out": "evidence-backed Debrief carve-out",
+          "evidence": "Names files, round-0 vs last-round counts, judge noise; 'If no rule qualifies, say so.'",
+          "fix_hint": "Carve-out applied; nothing owed."
+        }
+      ]
     },
     {
       "prompt_index": 6,
-      "prompt_lead": "Set up a fixed-judge loop for one of my outputs.\n\nRun the loop end to end:\n1. Wr",
+      "prompt_lead": "Show me three claims from the last round's briefing in module-6/runs/, numbered,",
       "verdict": "PASS",
       "load_bearing": true,
-      "risks_fired": [],
-      "prompt_sha": "25474cf9c1863deae75fcbbd1e6e3a7d877a907feb8652b44dc743541a0ecf18"
+      "prompt_sha": "25213e63d902db9261045dd0d7d92dd498b4428339496d69769785eb36d5b0c1",
+      "risks_fired": []
+    },
+    {
+      "prompt_index": 7,
+      "prompt_lead": "Set up a fixed-judge loop for one of my outputs.\n\nRun the loop end to end:\n1. In",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "prompt_sha": "88b12fa14750d56760bdbf4dbb18b2fff13ce49c912ba6a840d42a42fe0eabf3",
+      "risks_fired": [
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "med",
+          "evidence": "'the judge-integrity check' in notes.md with no instruction to compute a starting and ending SHA",
+          "fix_hint": "Ask for the judge file SHA before round 1 and after the loop, both reported."
+        }
+      ]
+    }
+  ],
+  "suggestions": [
+    {
+      "rule": "preamble-before-action",
+      "line": 0,
+      "now": "Then tell me in five lines: claims judged and flagged in the Module 3 briefing, ...",
+      "proposed": "No preamble. Start by dispatching the judge. Then tell me in five lines: ..."
+    },
+    {
+      "rule": "self-report-inflation",
+      "line": 0,
+      "now": "the judge-integrity check, why the loop stopped",
+      "proposed": "the judge-integrity check (starting and ending SHA of the judge file, computed before round 1 and after the loop), why the loop stopped"
     }
   ],
   "blocking_findings_count": 0,
-  "verdict": "PASS",
-  "catalog_coverage": [
-    {
-      "pattern_id": "file-preservation-gap",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No prompt may update an existing file without a stated preserve-versus-replace boundary."
-    },
-    {
-      "pattern_id": "reading-burden",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "The student is not assigned manual proofreading as the correctness check."
-    },
-    {
-      "pattern_id": "niceness-tax",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No regeneration prompt asks Claude to soften an edge or stance without pinning it."
-    },
-    {
-      "pattern_id": "question-dump",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Question sequences either have a one-at-a-time wait boundary or do not interview the student."
-    },
-    {
-      "pattern_id": "overwrite-anxiety",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Fresh writes or explicit in-place/regeneration intent remove the modal collision pause where applicable."
-    },
-    {
-      "pattern_id": "preamble-before-action",
-      "status": "fired",
-      "confidence": "med",
-      "prompt_indices": [
-        1
-      ],
-      "why": "The prompt is short or contains an explicit first-action/no-preamble cue unless the recorded medium invitation remains. Evidence is recorded for prompt index 1 in the per-prompt findings."
-    },
-    {
-      "pattern_id": "append-vs-integrate",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Add/regenerate instructions name whether context is appended or integrated where that choice exists."
-    },
-    {
-      "pattern_id": "plan-mode-preamble-bloat",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No prompt invokes plan mode or asks for an oversized plan approval."
-    },
-    {
-      "pattern_id": "citation-gap-asymmetry",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No prompt requests citation-bearing factual claims with an uneven cite-or-flag scope."
-    },
-    {
-      "pattern_id": "self-report-inflation",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Artifact-level evidence or an independent check prevents a Claude summary from being the acceptance check where applicable."
-    },
-    {
-      "pattern_id": "default-acceptance",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No offered default is the sole path to a student-owned judgment, except where the recorded example remains visibly subordinate."
-    },
-    {
-      "pattern_id": "plan-mode-approval-inflation",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No plan-mode approval artifact is requested."
-    },
-    {
-      "pattern_id": "source-type-blindness",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No heterogeneous source-ingestion prompt lacks an extraction-depth or source-type check."
-    },
-    {
-      "pattern_id": "citation-cargo-cult",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "No prompt requests citations without requiring claim-level support integrity."
-    },
-    {
-      "pattern_id": "self-audit-charity",
-      "status": "not_fired",
-      "prompt_indices": [],
-      "why": "Self-critique prompts either require concrete evidence/over-flagging or are not asking Claude to grade its own work."
-    }
-  ],
-  "evidence": "Full Luna re-fire at 2026-08-25T17:11:39.312Z: ran node scripts/expand-md.js curriculum/exercises/eval-loop.md; raw source SHA-256 e0ea3cf0beb0b0ba3b978d2d642fefb2b6879560df439e9dde168f0117e62a2c; expanded content SHA-256 b553d8e61826f712466227f5632eb6f23025db9e5e0e81e01a1c5fad309262db; recomputed 6 fenced prompt SHA-256 values from the expanded view; evaluated every prompt against all 15 catalog patterns and the documented carve-outs. No high-confidence load-bearing risk and no prompt with two or more medium-confidence load-bearing risks; top-level verdict PASS.",
-  "content_sha": "b553d8e61826f712466227f5632eb6f23025db9e5e0e81e01a1c5fad309262db",
-  "generated_at": "2026-08-25T17:13:34.677Z",
   "nonblocking_findings_count": 0,
-  "suggestions": [
-    {
-      "from": "prompts_findings TODO",
-      "rule": "preamble-before-action",
-      "prompt_index": 1,
-      "note": "The three-step orchestration can invite brief plan narration before the first calibration write; the risk is nonblocking because the first artifact remains explicit.",
-      "evidence": "Three things, in sequence: 1. Write... 2. Run... 3. Run the judge..."
-    }
-  ],
-  "suggestions_count": 1
+  "notes": "Single med risks on load-bearing prompts 1 and 6 do not reach the REVISE threshold (two med needed). Suggestion line numbers are prompt-registry lines, not exercise lines. Accept-notes: no dated accept-notes in the maintainer block. Prior trace fully stale (prompt shas all changed, spot-check prompt added)."
 }

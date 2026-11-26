@@ -1,0 +1,60 @@
+{
+  "class": "behavior",
+  "file": "curriculum/exercises/build-for-the-gap.md",
+  "training": "agents-101",
+  "verdict": "PASS",
+  "body_sha": "a2df6996f5c556f48d30dd375b1fea78ae4d826be68834008ae4c2e3a7d64d34",
+  "trace_status": "generated_first_time",
+  "prompts_evaluated": 3,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Read module-6/trigger.md if it exists. Then ask me two questions, one at a time,",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "low",
+          "carve_out": "body-callout mitigation",
+          "evidence": "'pick what they get: the context, a skill, the output, or a way to ask it' offers four defaults; the prompt asks for a pick 'for their job, not for what is easiest to build', and the student sees the file before saving.",
+          "fix_hint": "Add 'say why the other three fit worse' if the pick comes back unjustified."
+        }
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Read module-7/brief.md. Build the agent described in it. Choose a lowercase hyph",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "carve_out": "evidence-backed Debrief carve-out",
+          "evidence": "'Report what it produced, where it hesitated, and where a source was thin' is graded against an actual end-to-end run and the next step is an external judge, not Claude's own verdict.",
+          "fix_hint": "Reword Rules as 'carry forward the rules my existing agents follow, citing the person's files, not memory/'."
+        }
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Run my Module 5 judge, `judges/groundedness-judge.md`, on the new agent's output",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "carve_out": "evidence-backed Debrief carve-out",
+          "evidence": "The builder reruns a fixed judge ('Do not change the judge') with named evidence files only, and the before/after result is written to a file.",
+          "fix_hint": "Ask the student to read the clock from the session start, or accept it as approximate."
+        }
+      ]
+    }
+  ],
+  "suggestions": [],
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
+  "notes": "Maintainer accept-note found: L62 Sim 2026-11-25 (empty-folder handover beat; module runs this exercise alone). Scope: this is the Module 7 exercise of the 7-module public Agents 101 path; the M8 variant extend-your-system.md was not judged. Cross-class (technical/pedagogy, not filed here): build prompt 2 Rules line says 'cite the memory file for every claim' and ends 'run it once end-to-end on real input from my system', while the brief (L25) says the new agent reads nothing from the student's memory/ and the person's own files. Likely to pull memory/ into the new agent. Not a catalog pattern, so not a behavior finding; no replacement offered as a suggestion because the intended wording is the maintainer's call. Prompt 3 'minutes' figure is an estimate Claude cannot clock; low risk, in failure_modes."
+}

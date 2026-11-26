@@ -9,5 +9,5 @@ That's a guardrail. That's your turn.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-10-06 (writing@b58bcc4c technical@b58bcc4c slides@b58bcc4c)
-- judges @b58bcc4c: writing PASS (1 finding see instances/shared--slide--a-file-it-reads-every-time.writing.json), technical PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 technical@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing PASS (1 finding see instances/shared--slide--a-file-it-reads-every-time.writing.json), technical PASS, slides PASS

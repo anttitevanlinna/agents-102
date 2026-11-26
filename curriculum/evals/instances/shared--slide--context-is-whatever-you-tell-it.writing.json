@@ -3,15 +3,15 @@
  "file": "curriculum/slides/context-is-whatever-you-tell-it.md",
  "training": "shared",
  "verdict": "PASS",
- "body_sha": "428634a5a72d2642e2d6b2aaea4be79f00f38cd6086683b70facc55f6884ca66",
- "shape_hash": "006a06e380558a37",
+ "body_sha": "6a2031a297cd0dfb1b7870a4318fc6ad2fcf8b0d3d84ffac0c4b7c6e72acdd91",
+ "shape_hash": "faca2d92fd504941",
  "rules_evaluated": [
   {
    "compendium": "check_writing.md",
    "rule_index": 1,
    "rule_lead": "Banned words — grep zero-tolerance.",
    "verdict": "PASS",
-   "evidence": "grep em_dash/banned_words/ritual_ceremony/leverage_verb CLEAN (view greps, planted-proof) → 0 body hits; grep -cE landscape → 0",
+   "evidence": "view greps em_dash (—) body_hits 0 CLEAN; banned_words body_hits 0 CLEAN (planted_proof true); `landscape` grep of body_numbered also 0",
    "fix_hint": null,
    "blocking": false
   },
@@ -20,7 +20,7 @@
    "rule_index": 2,
    "rule_lead": "Ritual / ceremony — hard ban",
    "verdict": "PASS",
-   "evidence": "ritual_ceremony grep → 0; no \"practice\" noun in 10-line body",
+   "evidence": "view grep ritual_ceremony body_hits 0 CLEAN; no practice(n) in L1-L9",
    "fix_hint": null,
    "blocking": false
   },
@@ -29,7 +29,7 @@
    "rule_index": 3,
    "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
    "verdict": "PASS",
-   "evidence": "session_biography grep → 0, dated_line grep → 0; no maintainer block; closest L8 \"The suggestion shifts again.\" describes the demo, not an edit",
+   "evidence": "view greps session_biography 0, dated_line 0 in body. Closest: maintainer L12-13 stamp lines are state (Quality stamp + judge SHAs), no transition verb",
    "fix_hint": null,
    "blocking": false
   },
@@ -38,7 +38,7 @@
    "rule_index": 4,
    "rule_lead": "Register match.",
    "verdict": "PASS",
-   "evidence": "L10:\"A fact. A role. A preference. A constraint.\" Godin-warm, concrete; closest to a register fault. Atmospheric/retain-wrapper greps → 0; L8 \"Not because Claude knows medicine better than Italian cooking.\" is an explanation, not a negation callout about what we refuse",
+   "evidence": "L6 'You told the LLM who you are.' is the line nearest the register edge: peer-direct, concrete, no atmosphere, no Remember/Hold onto wrapper (grep 0), no negation callout after the compaction",
    "fix_hint": null,
    "blocking": false
   },
@@ -57,7 +57,7 @@
    "rule_index": 6,
    "rule_lead": "Credit original when paraphrasing named technique.",
    "verdict": "PASS",
-   "evidence": "author_we grep → 0; no creator name, no named technique; body is second person (L8 \"You told it who you are\")",
+   "evidence": "view grep author_we 0; `\\bAntti\\b|the creator|the author` grep over body 0. Closest: L6 'You told' is second person",
    "fix_hint": null,
    "blocking": false
   },
@@ -66,7 +66,7 @@
    "rule_index": 7,
    "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
    "verdict": "PASS",
-   "evidence": "the_student grep → 0; L8/L10 use \"you\"; no delivery mechanics in body",
+   "evidence": "view grep the_student 0. L6 'You told the LLM who you are' stays second person; no delivery mechanics in body",
    "fix_hint": null,
    "blocking": false
   },
@@ -75,7 +75,7 @@
    "rule_index": 8,
    "rule_lead": "Don't smuggle terms of art from maintainer into body.",
    "verdict": "PASS",
-   "evidence": "L10:\"Context is whatever you tell it.\" closest; \"context\" is plain and earned by the sibling slide (\"became part of context\"); no maintainer-only coinage",
+   "evidence": "L8 'Context is whatever you tell it' is the only term-of-art; it is the slide's own header and is earned by the L4-L6 demo directly above, so no maintainer-only term leaks",
    "fix_hint": null,
    "blocking": false
   },
@@ -84,7 +84,7 @@
    "rule_index": 9,
    "rule_lead": "Over-hedge detector.",
    "verdict": "PASS",
-   "evidence": "closest L8 \"Not because Claude knows medicine better than Italian cooking.\" blocks a wrong explanation, not reassurance; reassurance flags (no penalty, fine way to, it's OK if) → 0",
+   "evidence": "grep for no penalty|fine way to|it's OK if|not a downgrade over body_numbered: 0 hits. Closest: L6 'You told the LLM who you are.' is a causal statement, not reassurance",
    "fix_hint": null,
    "blocking": false
   },
@@ -94,7 +94,7 @@
    "rule_lead": "Verbatim-frame-cite in reference artefact.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no user-supplied verbatim frame / reference artefact",
+   "na_reason": "no user-specified verbatim frame to capture",
    "fix_hint": null,
    "blocking": false
   },
@@ -104,7 +104,7 @@
    "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no practitioner named",
+   "na_reason": "no practitioner named in body",
    "fix_hint": null,
    "blocking": false
   },
@@ -113,7 +113,7 @@
    "rule_index": 12,
    "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
    "verdict": "PASS",
-   "evidence": "L10 slogan \"Context is whatever you tell it.\" is followed by \"All of it colors what comes next.\" which bounds it to the demo; no overpromise on cadence",
+   "evidence": "L8 'Context is whatever you tell it: a fact, a role, a preference.' is the only slogan; the colon list bounds it in the same sentence and the demo above shows the scope, so no downstream carve-out is owed (truth test under §21 below)",
    "fix_hint": null,
    "blocking": false
   },
@@ -122,7 +122,7 @@
    "rule_index": 13,
    "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
    "verdict": "PASS",
-   "evidence": "grep vendor → 0; no positioning phrases (not a vendor, not theoretical, grounded in actual) in 10 lines",
+   "evidence": "grep vendor|not theoretical|grounded in actual|this isn't marketing over body_numbered: 0 hits; L4-L8 teach, no positioning",
    "fix_hint": null,
    "blocking": false
   },
@@ -131,7 +131,7 @@
    "rule_index": 14,
    "rule_lead": "Watch out for planting jargon too early.",
    "verdict": "PASS",
-   "evidence": "closest L4 \"cardiologist\" is a role in a demo, not jargon; no LLM-internal terms (token, embedding, retrieval) in body",
+   "evidence": "closest L6 'the LLM' and L8 'Context': both are the deck's own vocabulary, shown in the demo and not planted ahead; no schema/token/embedding/retrieval in body",
    "fix_hint": null,
    "blocking": false
   },
@@ -140,7 +140,7 @@
    "rule_index": 15,
    "rule_lead": "Audit closer when trimming body-prose forcing function.",
    "verdict": "PASS",
-   "evidence": "closest L10 \"All of it colors what comes next.\" — \"it\" resolves to the four-item list in the preceding sentence; no trim, no bypass-the-agent punchline",
+   "evidence": "L8 closer 'Context is whatever you tell it: a fact, a role, a preference.' has one pronoun, 'it', whose antecedent is 'the LLM' (L6) and the header; the list names the content, no spatial metaphor",
    "fix_hint": null,
    "blocking": false
   },
@@ -150,7 +150,7 @@
    "rule_lead": "The `**What happened:**` block is OPTIONAL — default is to omit it (Antti-directed 2026-08-12, mandation removed from `curriculum/exercises/README.md`).",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "not an exercise; no What happened block",
+   "na_reason": "no What happened block; not an exercise",
    "fix_hint": null,
    "blocking": false
   },
@@ -159,7 +159,7 @@
    "rule_index": 17,
    "rule_lead": "No combative verbs about the agent in body prose.",
    "verdict": "PASS",
-   "evidence": "combative-verb scan of 10 lines → none; verbs are shifts/told/colors",
+   "evidence": "grep bark|order|command|whip|force|drag|boss|scold over body_numbered: 0 hits; verbs are 'told', 'shifts'",
    "fix_hint": null,
    "blocking": false
   },
@@ -168,7 +168,7 @@
    "rule_index": 18,
    "rule_lead": "Headers must be literally true about the mechanism.",
    "verdict": "PASS",
-   "evidence": "L1 header \"Context is whatever you tell it\" has no spatial metaphor and no \"other X\"; reads literally true for the demo (rule question in notes on the universal \"whatever\")",
+   "evidence": "header L1 'Context is whatever you tell it' survives a literal cold read: the demo supplies one role fact and the answer changes; no 'other X' or spatial metaphor",
    "fix_hint": null,
    "blocking": false
   },
@@ -177,7 +177,7 @@
    "rule_index": 19,
    "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
    "verdict": "PASS",
-   "evidence": "closest L8 \"Not because Claude knows medicine better than Italian cooking.\" — negates a plausible reader explanation for heart-healthy output, so not empty negation; no \"That is the X.\" drumroll, no bold-label echo, no citation",
+   "evidence": "closest L6 'You told the LLM who you are.' is not an empty negation (the old 'Not because Claude knows medicine better' is gone); no 'That is the X' drumroll, no bold-label echo, no citation block",
    "fix_hint": null,
    "blocking": false
   },
@@ -186,7 +186,7 @@
    "rule_index": 20,
    "rule_lead": "Don't state a count the adjacent list already holds.",
    "verdict": "PASS",
-   "evidence": "no numeral adjacent to a list; \"One more window\" (L4) is not a count of a visible list; header carries no numeral",
+   "evidence": "L8 'a fact, a role, a preference' carries no numeral and no 'the three'; no header numeral",
    "fix_hint": null,
    "blocking": false
   },
@@ -195,7 +195,7 @@
    "rule_index": 21,
    "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
    "verdict": "PASS",
-   "evidence": "closest L8 \"every answer after took that into account\" and L10 \"All of it colors what comes next\" — \"every/all\" scoped to the demo the slide just ran, not asserted of the world. \"whatever\" in the title flagged as a rule question in notes, not a REVISE",
+   "evidence": "L8 'Context is whatever you tell it' is the nearest superlative-shaped claim. It is the deck's named handle scoped by the demo above and the colon list; a counterexample (Claude's own earlier replies also become context) exists but is not what the slide asserts, which is that what you tell it counts. Reported as a rule question in notes, not filed",
    "fix_hint": null,
    "blocking": false
   },
@@ -205,7 +205,7 @@
    "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no backing block or claim ledger on this slide",
+   "na_reason": "no backing block or claim ledger on this slide file",
    "fix_hint": null,
    "blocking": false
   },
@@ -215,7 +215,7 @@
    "rule_lead": "A rule set reconstructed at session start goes stale inside the session — re-derive it per target, not per sweep.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "rule governs multi-file sweeps; single-file judge pass",
+   "na_reason": "sweep-process rule, not a body property",
    "fix_hint": null,
    "blocking": false
   },
@@ -225,7 +225,7 @@
    "rule_lead": "One doc per scarce-attention audience; delta-only.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "not a scarce-attention-audience doc",
+   "na_reason": "authoring rule for trainer/exec docs",
    "fix_hint": null,
    "blocking": false
   },
@@ -235,7 +235,7 @@
    "rule_lead": "Trainer-facing text is self-contained.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "not trainer-facing text",
+   "na_reason": "file is not trainer-facing text",
    "fix_hint": null,
    "blocking": false
   },
@@ -243,8 +243,9 @@
    "compendium": "check_writing.md",
    "rule_index": 26,
    "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
-   "verdict": "PASS",
-   "evidence": "no \"X tells you whether Y\" / \"you will know it worked\" clause in 10 lines",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no how-you-would-know clause in body",
    "fix_hint": null,
    "blocking": false
   },
@@ -253,7 +254,7 @@
    "rule_index": 27,
    "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
    "verdict": "PASS",
-   "evidence": "closest L8 last sentence vs L10 \"Context is whatever you tell it.\" — concrete instance then one portable sentence, survivor shape; style rule, not a gate",
+   "evidence": "L6 'The suggestion shifts: heart-healthy, low-sodium, vegetable-forward. You told the LLM who you are.' is concrete result plus one generalising sentence; L8 adds the portable form. Three sentences over two ideas, not three on one. Rule is advisory ('Not a REVISE on its own')",
    "fix_hint": null,
    "blocking": false
   },
@@ -262,8 +263,8 @@
    "rule_index": 28,
    "rule_lead": "Body prose stands without the trainer — no cue-card prose.",
    "verdict": "REVISE",
-   "evidence": "L4:\"One more window.\" and L6:\"Then the same second prompt about dinner.\" are verbless cue fragments whose referents (\"one more\", \"the same second prompt\", \"again\" at L8) live on the previous slide, not this one. Harm (page reads as a set list; cold deck/handbook reader cannot resolve \"same second prompt\") is present. Carve-outs checked: L8-L9 \"Heart-healthy. Low-sodium. Vegetable-forward.\" follows verbed \"The suggestion shifts again.\" (enumeration, kept); L10 \"A fact. A role. A preference. A constraint.\" follows verbed \"Context is whatever you tell it.\" (enumeration, kept); no maintainer block attests L4/L6.",
-   "fix_hint": "give L4/L6 a verb and name the noun; fix is shorter than the original (see suggestions)",
+   "evidence": "L4:\"Then the same dinner prompt.\" and L4:\"One more window.\" are verbless cue fragments whose referents live on the sibling slide (same-question-two-answers.md L4-L6: the dinner question, the first window), not on this page. Harm (a cold deck or handbook reader, or the muted read, cannot resolve 'one more' or 'the same dinner prompt') is present. Carve-outs checked: L8 list follows verbed 'Context is whatever you tell it:' so it is enumeration, kept; 'First prompt: *...*' is label plus quote, kept; no maintainer-block attestation covers L4 (accept_notes holds only the Quality stamp).",
+   "fix_hint": "give L4's two fragments a verb and name the question; same length or shorter (see suggestions)",
    "blocking": false
   },
   {
@@ -271,7 +272,7 @@
    "rule_index": 1,
    "rule_lead": "Aspirational destination, never corrective gap.",
    "verdict": "PASS",
-   "evidence": "L1-L10 contain no corrective-gap or tier phrasing; closest L8 \"You told it who you are\" is aspirational agency; no \"at your scale/for a beginner\"",
+   "evidence": "L6 'You told the LLM who you are.' names what the reader did, not a gap; no tier phrasing (grep 'at your scale|beginner|senior|experienced' 0 in body)",
    "fix_hint": null,
    "blocking": false
   },
@@ -280,7 +281,7 @@
    "rule_index": 2,
    "rule_lead": "Earn every technical term on first use.",
    "verdict": "PASS",
-   "evidence": "closest L10 \"Context\"; one-breath primer supplied by sibling slide and by L8 itself; no cold technical term",
+   "evidence": "'LLM' at L6 is the curriculum's controlled vocabulary term (check_student_facing §21) and commonly held; the cardiologist demo earns 'context' operationally at L4-L8 before the header's term is used as a definition",
    "fix_hint": null,
    "blocking": false
   },
@@ -289,7 +290,7 @@
    "rule_index": 3,
    "rule_lead": "Business-audience word ban (Agents 101 default).",
    "verdict": "PASS",
-   "evidence": "SVP-marketing flinch test: closest L4 \"cardiologist\" (ordinary word), none flinches",
+   "evidence": "SVP test on L6 'LLM': not on curriculum/evals/lints/jargon-ban.md (grep -i llm → 0 hits); 'context', 'role', 'fact' are plain",
    "fix_hint": null,
    "blocking": false
   },
@@ -298,7 +299,7 @@
    "rule_index": 4,
    "rule_lead": "Memory vs context — use deliberately.",
    "verdict": "PASS",
-   "evidence": "grep -cE memory → 0; body speaks only of context, never conflates it with memory",
+   "evidence": "L8 'Context is whatever you tell it' uses context as ambient runtime state, the §4 sense; no 'your context compounds' or memory blur",
    "fix_hint": null,
    "blocking": false
   },
@@ -308,7 +309,7 @@
    "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no troubleshooting or recovery branch",
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -318,7 +319,7 @@
    "rule_lead": "Trust Claude's defaults for structure.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no student-copied prompt shape; quoted prompts are demo narration",
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -328,7 +329,7 @@
    "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module. Compound-shape varies per module — never repeat same Debrief.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no Debrief or compound move",
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -338,7 +339,7 @@
    "rule_lead": "Don't smuggle another module's voice.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "slide file, not a module; no module voice to smuggle",
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -346,8 +347,9 @@
    "compendium": "check_student_facing.md",
    "rule_index": 9,
    "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
-   "verdict": "PASS",
-   "evidence": "closest L4-L6 describe what the demo does; no instruction line asks the student to diff, check or spot-check",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -357,7 +359,7 @@
    "rule_lead": "Simulation personas never alone.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no simulation persona content",
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -365,8 +367,9 @@
    "compendium": "check_student_facing.md",
    "rule_index": 11,
    "rule_lead": "No \"What research says\" callout boxes",
-   "verdict": "PASS",
-   "evidence": "grep \"What research says\" → 0; no callout box",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -376,7 +379,7 @@
    "rule_lead": "Student moves stay in conversation with agent.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no student move using editor/terminal/file edit",
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -386,7 +389,7 @@
    "rule_lead": "Specify which CLAUDE.md layer — every time.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no CLAUDE.md mention",
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -395,7 +398,7 @@
    "rule_index": 14,
    "rule_lead": "No em-dashes. Simple sentences.",
    "verdict": "PASS",
-   "evidence": "grep — → 0 (view em_dash CLEAN); sentences are short, L8 longest with one comma",
+   "evidence": "view grep em_dash body_hits 0 CLEAN; sentences L4-L8 are short (colon use at L4/L6/L8 is not a dash)",
    "fix_hint": null,
    "blocking": false
   },
@@ -403,8 +406,9 @@
    "compendium": "check_student_facing.md",
    "rule_index": 17,
    "rule_lead": "Section headers use command verbs when section is about doing something.",
-   "verdict": "PASS",
-   "evidence": "L1 header is declarative on a lecture slide, which the rule allows; Claude is not the header subject",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -412,8 +416,9 @@
    "compendium": "check_student_facing.md",
    "rule_index": 18,
    "rule_lead": "Inline links use target's title, never filename.",
-   "verdict": "PASS",
-   "evidence": "no inline links; \"first prompt\"/\"second prompt\" (L4, L6) are story ordinals inside the demo, not addresses of a curriculum section",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -421,8 +426,9 @@
    "compendium": "check_student_facing.md",
    "rule_index": 20,
    "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
-   "verdict": "PASS",
-   "evidence": "grep -cE \"(here|above|below)\" → 0; no shared-word collision with a Claude Code primitive (no memory/skill/rule/plan)",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -431,7 +437,17 @@
    "rule_index": 21,
    "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
    "verdict": "PASS",
-   "evidence": "\"Claude\" appears once (L8) as the product that answers; \"agent\" 0 times; topic is the model reacting to given context, specific-word default respected",
+   "evidence": "L6 'You told the LLM who you are.' is a thinking/framing topic so LLM is the right noun; no 'agent' for acting and no file or tool action in the body",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_student_facing.md",
+   "rule_index": "21b",
+   "rule_lead": "Session / task / run split (all trainings).",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -440,7 +456,7 @@
    "rule_index": 22,
    "rule_lead": "No time-of-day anchors in body prose.",
    "verdict": "PASS",
-   "evidence": "grep -cE \"(tomorrow|overnight|this morning|tonight|yesterday|last night)\" → 0; \"dinner\" is demo content",
+   "evidence": "grep tomorrow|overnight|this morning|tonight|next morning|yesterday|last night over body: 0 hits",
    "fix_hint": null,
    "blocking": false
   },
@@ -448,8 +464,9 @@
    "compendium": "check_student_facing.md",
    "rule_index": 23,
    "rule_lead": "Reflection beats stay invisible in flow.",
-   "verdict": "PASS",
-   "evidence": "grep -cE \"(sit with|let it land|take a moment|breathe)\" → 0; no reflection header",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -459,7 +476,7 @@
    "rule_lead": "No meta-ask when student has already decided.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt asking the student to restate a decision",
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -469,7 +486,7 @@
    "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no saved student artifact",
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -478,7 +495,7 @@
    "rule_index": 26,
    "rule_lead": "Cut NVA: true but not moving student forward.",
    "verdict": "PASS",
-   "evidence": "closest L8 \"Not because Claude knows medicine better than Italian cooking.\" changes what the student understands (rules out the wrong explanation) so it moves them forward",
+   "evidence": "closest L6 'You told the LLM who you are.' carries the causal point of the demo (why the answer shifted), so it moves the reader forward; no caveat, source trivia or maintainer reasoning in body",
    "fix_hint": null,
    "blocking": false
   },
@@ -486,8 +503,9 @@
    "compendium": "check_student_facing.md",
    "rule_index": 27,
    "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
-   "verdict": "PASS",
-   "evidence": "grep -cE \"(read it|look at it|notice)\" → 0",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -495,8 +513,9 @@
    "compendium": "check_student_facing.md",
    "rule_index": 28,
    "rule_lead": "Forward-callout closer: student as grammatical subject.",
-   "verdict": "PASS",
-   "evidence": "closest L10 \"All of it colors what comes next.\" is a declarative about context with the student as the one who tells; not a forward callout about the training",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -506,7 +525,7 @@
    "rule_lead": "Operational reminders live at moment of use, not only where introduced.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no operational setting named",
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -514,8 +533,9 @@
    "compendium": "check_student_facing.md",
    "rule_index": 30,
    "rule_lead": "Echo the training's theory spine before inventing a synonym.",
-   "verdict": "PASS",
-   "evidence": "L10 \"colors\" echoes the sibling slide's \"colored\", house frame rather than an invented synonym",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -524,7 +544,7 @@
    "rule_index": 31,
    "rule_lead": "Name the artifact, not the act.",
    "verdict": "PASS",
-   "evidence": "grep -cE \"(typing |tell it to|say to Claude)\" → 0; L10 \"whatever you tell it\" names no act around filler",
+   "evidence": "L4 'First prompt:' and 'the same dinner prompt' name the prompt as an artifact; no 'typing' or 'saying' act-verbs",
    "fix_hint": null,
    "blocking": false
   },
@@ -534,7 +554,7 @@
    "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no setup instruction",
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -543,7 +563,7 @@
    "rule_index": 33,
    "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
    "verdict": "PASS",
-   "evidence": "closest L4 \"One more window.\" is about the demo, not the training or a later module; subject test: every sentence is about the prompts, answers or context",
+   "evidence": "subject test on L4 'One more window.': about the reader's session demo, not the module or the arc; no 'later' or 'this training' beats",
    "fix_hint": null,
    "blocking": false
   },
@@ -553,7 +573,7 @@
    "rule_lead": "Four sharing strategies (Agents 101 M7 canonical) — use verbatim.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "not Agents 101 M7 sharing taxonomy",
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -563,7 +583,7 @@
    "rule_lead": "Agents 101 M2+ Debrief — canonical shape.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "not an Agents 101 Debrief",
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -573,7 +593,7 @@
    "rule_lead": "Trust the prompt over the scaffold.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no scaffold or exercise",
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -583,7 +603,7 @@
    "rule_lead": "Mood is a design constraint, not a garnish.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "mood contract is judged by the strategy class on the lecture sequence, not by the writing judge on a slide file",
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -593,7 +613,7 @@
    "rule_lead": "Exercise headers pass the build-squint test.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "not an exercise",
+   "na_reason": "surface absent from a 9-line slide body (no exercise, Debrief, CLAUDE.md layer, file save, link, header-verb, or module-specific shape)",
    "fix_hint": null,
    "blocking": false
   },
@@ -602,16 +622,7 @@
    "rule_index": 39,
    "rule_lead": "Self-study is invisible in the training flow.",
    "verdict": "PASS",
-   "evidence": "grep -cE \"self-study|Teacher Claude\" → 0",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_student_facing.md",
-   "rule_index": "21b",
-   "rule_lead": "Session / task / run split (all trainings).",
-   "verdict": "PASS",
-   "evidence": "grep -cE \"[Ss]ession|run\" → 0",
+   "evidence": "grep self-study|Teacher Claude over body: 0 hits",
    "fix_hint": null,
    "blocking": false
   },
@@ -621,7 +632,7 @@
    "rule_lead": "No placeholders inside fences.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -631,7 +642,7 @@
    "rule_lead": "Every prompt block: one-sentence action lead-in.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -641,7 +652,7 @@
    "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -651,7 +662,7 @@
    "rule_lead": "Installed Skills invoke by name, never path.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -661,7 +672,7 @@
    "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -671,7 +682,7 @@
    "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -681,7 +692,7 @@
    "rule_lead": "No session-resets mid-phase.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -691,7 +702,7 @@
    "rule_lead": "Multi-sample methods need structural enforcement.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -701,7 +712,7 @@
    "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -711,7 +722,7 @@
    "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -721,7 +732,7 @@
    "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -731,7 +742,7 @@
    "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -741,7 +752,7 @@
    "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -751,7 +762,7 @@
    "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -761,7 +772,7 @@
    "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -771,7 +782,7 @@
    "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -781,7 +792,7 @@
    "rule_lead": "Preamble before action — design around it.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -791,7 +802,7 @@
    "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -801,7 +812,7 @@
    "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -811,7 +822,7 @@
    "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -821,7 +832,7 @@
    "rule_lead": "Tell me what you wrote, not show me what you'll write.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -831,7 +842,7 @@
    "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -841,7 +852,7 @@
    "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -851,7 +862,7 @@
    "rule_lead": "Don't restate session CWD inside prompt body.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -861,7 +872,7 @@
    "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -871,7 +882,7 @@
    "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -881,7 +892,7 @@
    "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -891,7 +902,7 @@
    "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -901,7 +912,7 @@
    "rule_lead": "Normal work request before orchestration.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -911,7 +922,7 @@
    "rule_lead": "Live-test corrections preserve operator workflow.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -921,7 +932,7 @@
    "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -931,7 +942,7 @@
    "rule_lead": "Module names in prompt prose are fine — they ground the session.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -941,7 +952,7 @@
    "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -951,7 +962,7 @@
    "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -961,7 +972,7 @@
    "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -971,7 +982,7 @@
    "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -981,7 +992,7 @@
    "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -991,7 +1002,7 @@
    "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -1001,7 +1012,7 @@
    "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -1011,7 +1022,7 @@
    "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -1021,7 +1032,7 @@
    "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -1031,7 +1042,7 @@
    "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -1041,7 +1052,7 @@
    "rule_lead": "Long-running prompts stream progress — never go silent.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -1051,7 +1062,7 @@
    "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -1061,7 +1072,7 @@
    "rule_lead": "Prompt paths match Builder scope.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -1071,7 +1082,7 @@
    "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -1081,7 +1092,7 @@
    "rule_lead": "\"Add X and regenerate\" is a trap.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -1091,7 +1102,7 @@
    "rule_lead": "Vary closings deliberately.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -1101,7 +1112,7 @@
    "rule_lead": "A take-home prompt asks for one bounded build.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "no prompt blocks, no fences (has_prompt_blocks false, has_code_fences false); no audit findings surfaced to maintainer in a slide body",
+   "na_reason": "no prompt blocks or prompt registry markers in body (signals.has_prompt_blocks false)",
    "fix_hint": null,
    "blocking": false
   },
@@ -1111,7 +1122,7 @@
    "rule_lead": "CTO-repeatable test.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "curriculum slide, not site, newsletter, deck or pricing copy",
+   "na_reason": "not buyer-facing site/newsletter copy",
    "fix_hint": null,
    "blocking": false
   },
@@ -1121,7 +1132,7 @@
    "rule_lead": "No stylized phrase-pairs.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "curriculum slide, not site, newsletter, deck or pricing copy",
+   "na_reason": "not buyer-facing site/newsletter copy",
    "fix_hint": null,
    "blocking": false
   },
@@ -1131,7 +1142,7 @@
    "rule_lead": "Strip strategy-doc vocabulary.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "curriculum slide, not site, newsletter, deck or pricing copy",
+   "na_reason": "not buyer-facing site/newsletter copy",
    "fix_hint": null,
    "blocking": false
   },
@@ -1141,7 +1152,7 @@
    "rule_lead": "Earn every term.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "curriculum slide, not site, newsletter, deck or pricing copy",
+   "na_reason": "not buyer-facing site/newsletter copy",
    "fix_hint": null,
    "blocking": false
   },
@@ -1151,7 +1162,7 @@
    "rule_lead": "No M-number cross-references.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "curriculum slide, not site, newsletter, deck or pricing copy",
+   "na_reason": "not buyer-facing site/newsletter copy",
    "fix_hint": null,
    "blocking": false
   },
@@ -1161,7 +1172,7 @@
    "rule_lead": "\"What you build\" = 20–30 words.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "curriculum slide, not site, newsletter, deck or pricing copy",
+   "na_reason": "not buyer-facing site/newsletter copy",
    "fix_hint": null,
    "blocking": false
   },
@@ -1171,7 +1182,7 @@
    "rule_lead": "Describe failure modes, don't name them.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "curriculum slide, not site, newsletter, deck or pricing copy",
+   "na_reason": "not buyer-facing site/newsletter copy",
    "fix_hint": null,
    "blocking": false
   },
@@ -1181,7 +1192,7 @@
    "rule_lead": "Agency on right noun.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "curriculum slide, not site, newsletter, deck or pricing copy",
+   "na_reason": "not buyer-facing site/newsletter copy",
    "fix_hint": null,
    "blocking": false
   },
@@ -1191,7 +1202,7 @@
    "rule_lead": "No em dashes on site.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "curriculum slide, not site, newsletter, deck or pricing copy",
+   "na_reason": "not buyer-facing site/newsletter copy",
    "fix_hint": null,
    "blocking": false
   },
@@ -1201,7 +1212,7 @@
    "rule_lead": "No \"What research says\" callout boxes.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "curriculum slide, not site, newsletter, deck or pricing copy",
+   "na_reason": "not buyer-facing site/newsletter copy",
    "fix_hint": null,
    "blocking": false
   },
@@ -1211,7 +1222,7 @@
    "rule_lead": "Don't describe mood arc externally.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "curriculum slide, not site, newsletter, deck or pricing copy",
+   "na_reason": "not buyer-facing site/newsletter copy",
    "fix_hint": null,
    "blocking": false
   },
@@ -1221,7 +1232,7 @@
    "rule_lead": "Ownership claims scope to customer-built artifacts.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "curriculum slide, not site, newsletter, deck or pricing copy",
+   "na_reason": "not buyer-facing site/newsletter copy",
    "fix_hint": null,
    "blocking": false
   },
@@ -1231,7 +1242,17 @@
    "rule_lead": "Numbers carry their denominator + axis.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "curriculum slide, not site, newsletter, deck or pricing copy",
+   "na_reason": "not buyer-facing site/newsletter copy",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_sales_copy.md",
+   "rule_index": 14,
+   "rule_lead": "Each fact once per page; no kicker closers.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "not buyer-facing site/newsletter copy",
    "fix_hint": null,
    "blocking": false
   },
@@ -1241,7 +1262,7 @@
    "rule_lead": "Mood contract named.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "strategy class owns mood, Big Idea and Key Concepts; slide has none of those sections",
+   "na_reason": "single shared slide with no module Big Idea, Key Concepts or What You'll Learn; mood and sequencing are judged on the borrowing sequence",
    "fix_hint": null,
    "blocking": false
   },
@@ -1251,7 +1272,7 @@
    "rule_lead": "Epistemic mood ≠ punitive mood.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "strategy class owns mood, Big Idea and Key Concepts; slide has none of those sections",
+   "na_reason": "single shared slide with no module Big Idea, Key Concepts or What You'll Learn; mood and sequencing are judged on the borrowing sequence",
    "fix_hint": null,
    "blocking": false
   },
@@ -1261,7 +1282,7 @@
    "rule_lead": "Lead with discipline, not failure mode.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "strategy class owns mood, Big Idea and Key Concepts; slide has none of those sections",
+   "na_reason": "single shared slide with no module Big Idea, Key Concepts or What You'll Learn; mood and sequencing are judged on the borrowing sequence",
    "fix_hint": null,
    "blocking": false
   },
@@ -1271,7 +1292,7 @@
    "rule_lead": "Strategy-fidelity check.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "strategy class owns mood, Big Idea and Key Concepts; slide has none of those sections",
+   "na_reason": "single shared slide with no module Big Idea, Key Concepts or What You'll Learn; mood and sequencing are judged on the borrowing sequence",
    "fix_hint": null,
    "blocking": false
   },
@@ -1281,7 +1302,7 @@
    "rule_lead": "Strategic themes recur in Key Concepts.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "strategy class owns mood, Big Idea and Key Concepts; slide has none of those sections",
+   "na_reason": "single shared slide with no module Big Idea, Key Concepts or What You'll Learn; mood and sequencing are judged on the borrowing sequence",
    "fix_hint": null,
    "blocking": false
   },
@@ -1291,7 +1312,7 @@
    "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "strategy class owns mood, Big Idea and Key Concepts; slide has none of those sections",
+   "na_reason": "single shared slide with no module Big Idea, Key Concepts or What You'll Learn; mood and sequencing are judged on the borrowing sequence",
    "fix_hint": null,
    "blocking": false
   },
@@ -1301,7 +1322,7 @@
    "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "strategy class owns mood, Big Idea and Key Concepts; slide has none of those sections",
+   "na_reason": "single shared slide with no module Big Idea, Key Concepts or What You'll Learn; mood and sequencing are judged on the borrowing sequence",
    "fix_hint": null,
    "blocking": false
   },
@@ -1311,7 +1332,7 @@
    "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
    "verdict": "N/A",
    "evidence": null,
-   "na_reason": "strategy class owns mood, Big Idea and Key Concepts; slide has none of those sections",
+   "na_reason": "single shared slide with no module Big Idea, Key Concepts or What You'll Learn; mood and sequencing are judged on the borrowing sequence",
    "fix_hint": null,
    "blocking": false
   }
@@ -1320,17 +1341,11 @@
   {
    "rule": "check_writing.md §28",
    "line": 4,
-   "now": "One more window. The first prompt: *\"I'm a cardiologist preparing dinner for my patients.\"*",
-   "proposed": "Another window opens with *\"I'm a cardiologist preparing dinner for my patients.\"*"
-  },
-  {
-   "rule": "check_writing.md §28",
-   "line": 6,
-   "now": "Then the same second prompt about dinner.",
-   "proposed": "Then the same dinner question."
+   "now": "One more window. First prompt: *\"I'm a cardiologist preparing dinner for my patients.\"* Then the same dinner prompt.",
+   "proposed": "New window: you open with *\"I'm a cardiologist preparing dinner for my patients.\"* then ask about dinner."
   }
  ],
  "blocking_findings_count": 0,
  "nonblocking_findings_count": 1,
- "notes": "Brief built; 135 rules judged by hand (no prior instance, nothing parked). One non-blocking REVISE: check_writing §28 on L4/L6 cue fragments whose referents live on the sibling slide. Rule question for the maintainer (not filed): the title \"Context is whatever you tell it\" is universal, while the sibling slide itself says the first exchange \"became part of context\", which Claude wrote, so check_writing §21 has a one-step counterexample; the demo scope and the following sentence arguably bound it. Cross-class (slides/pedagogy): L8 \"again\" and L4 \"One more window\" depend on the previous slide in the lecture; check_slides §1 referent fit belongs to the slides judge."
+ "notes": "Brief built (136 rules; prefill parked 0: shape changed, so every row was judged here). Diff b58bcc4c..HEAD is a compaction pass (L4-L8 shortened, maintainer block added); the earlier L8 'again' dependency is gone. One non-blocking REVISE: check_writing §28 on L4 cue fragments whose referents sit on same-question-two-answers.md. Rule question for the maintainer (not filed): L8 'Context is whatever you tell it' reads universal while Claude's own replies also become context (check_writing §21 one-step counterexample); the demo and the colon list arguably bound it. Cross-class (slides): L4 'One more window' and 'the same dinner prompt' depend on the previous slide; check_slides §1 referent fit belongs to the slides judge."
 }

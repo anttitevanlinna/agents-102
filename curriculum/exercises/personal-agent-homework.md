@@ -75,8 +75,8 @@ A memory an agent reads on a schedule, producing output you respond to, is the s
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
-- judges @4d9c4af2: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (behavior@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
+- judges @78d17fc9: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy REVISE (1/0 see instances/agents-101--exercise--personal-agent-homework.pedagogy.json), strategy PASS, slides PASS
 
 **Frameworks riffed on:**
 - Toyota Kata — the morning agent is a daily PDSA beat on the challenge. Running it, observing, adjusting — kata made file-based.

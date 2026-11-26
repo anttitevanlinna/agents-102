@@ -1,14 +1,15 @@
 {
   "class": "slides",
   "file": "curriculum/exercises/three-minds-one-synthesis.md",
-  "body_sha": "0953dbd369f6cc4e9ee57977849a167e16f592a6825a09d842479d87e1810855",
-  "verdict": "PASS",
   "training": "agents-101",
+  "verdict": "PASS",
+  "body_sha": "fa86cc9ef79cc8ee421c152b968591045312949f91deaf5f31f878617517956b",
+  "shape_hash": "8cff3366bf4c17a3",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "# Exercise: Three minds, one synthesis",
-      "lines": "1-94"
+      "heading": "Exercise: Three minds, one synthesis (H1 + lede, no ## headings)",
+      "lines": "1-33"
     }
   ],
   "rules_evaluated": [
@@ -17,153 +18,184 @@
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: Three minds, one synthesis”, line 1: “# Exercise: Three minds, one synthesis”. This closest body line does not express the prohibited shape.",
+      "evidence": "chunk 0 line 24: \"If the issue list is long, ask the agent to pick the fixes\" comes closest: 'issue list' is named nowhere earlier, but it binds to the conflicts/gaps list the line-11 prompt makes the session produce, so the session-artifact carve-out covers it; harm (unresolvable referent) absent. Line 7 'the retriever sessions' and `memory/_synthesis-m3.md` resolve to three-retrievers-one-curator (Session 4 synthesizer, writes _synthesis-m3.md, verified by grep), the immediately preceding exercise in multi-agent-systems.md include order. Line 28 'the briefing' is Module 3 spine vocabulary (multi-agent-systems.md Debrief 'the synthesizer's briefing').",
+      "blocking": true,
       "fix_hint": null,
-      "blocking": true
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: Three minds, one synthesis”, line 1: “# Exercise: Three minds, one synthesis”. This closest body line does not express the prohibited shape.",
+      "evidence": "grep of body for 'opening|earlier|previous|last' positional callbacks: line 7 names `./crux.md`, `memory/_synthesis-m3.md` and 'Module 5' by name, no positional pointer to another file.",
+      "blocking": true,
       "fix_hint": null,
-      "blocking": true
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no “the X you did/saw/caught” backward-beat reference appears in the expanded body of curriculum/exercises/three-minds-one-synthesis.md.",
+      "verdict": "PASS",
+      "evidence": "line 7 'the retriever sessions' and 'the session that wrote ./crux.md' resolve (three-retrievers-one-curator.md line 9 Session 4/retrievers; line 7 `_synthesis-m3.md` in prompt three-retrievers-one-curator-5). Line 30 'Module 5 checks this exact file' is a forward pointer, not a did/saw reference.",
+      "blocking": true,
       "fix_hint": null,
-      "blocking": true
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 4,
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no guess/predict-before-reveal instruction appears in the expanded body of curriculum/exercises/three-minds-one-synthesis.md.",
+      "evidence": null,
+      "blocking": true,
       "fix_hint": null,
-      "blocking": true
+      "chunks_flagged": [],
+      "na_reason": "no guess-before-reveal or trainer-voiced demo beat; line 30 setup is fully verbed"
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 5,
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: Three minds, one synthesis”, line 1: “# Exercise: Three minds, one synthesis”. This closest body line does not express the prohibited shape.",
+      "evidence": "single chunk 0 (lines 1-33) carries the task, stop/steer instruction, three prompts and a Close; closest to thin is lines 24-26 (one sentence + prompt) but it carries a self-contained move (delegate fix choice).",
+      "blocking": false,
       "fix_hint": null,
-      "blocking": false
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: Three minds, one synthesis”, line 1: “# Exercise: Three minds, one synthesis”. This closest body line does not express the prohibited shape.",
+      "evidence": "no `##` headings; chunk 0 H1 line 1 'Exercise: Three minds, one synthesis' matches content; bold lead line 28 'Close. Freeze the briefing.' matches the recap-free body beneath it (freeze + doubted line).",
+      "blocking": false,
       "fix_hint": null,
-      "blocking": false
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: Three minds, one synthesis”, line 1: “# Exercise: Three minds, one synthesis”. This closest body line does not express the prohibited shape.",
+      "evidence": "line 30 'You can't yet tell if the answer is right. Nothing checks it yet.' comes closest to a cadence tic (two short negations) but is not a 'Not X. Not Y. Z.' construction, no triple, no superlative, no number-plus-retraction, no abstraction-noun stack, no empty verb triplet.",
+      "blocking": false,
       "fix_hint": null,
-      "blocking": false
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: Three minds, one synthesis”, line 1: “# Exercise: Three minds, one synthesis”. This closest body line does not express the prohibited shape.",
+      "evidence": "grep of body for surface|firing|compendium|forcing function|beat|mood|Connections \u2192 0 hits; 'kernel' (line 11) is Rumelt's own term, earned in Module 2 Debrief per maintainer block.",
+      "blocking": true,
       "fix_hint": null,
-      "blocking": true
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: Three minds, one synthesis”, line 1: “# Exercise: Three minds, one synthesis”. This closest body line does not express the prohibited shape.",
+      "evidence": "3 bold spans in body (lines 3 '**Time:**', 5 '**What you do:**', 28 '**Close. Freeze the briefing.**'), each a label of <=5 words, none a whole lead sentence; closest is line 28 at 4 words, a section label not narrative emphasis; the lead-label scaffold is the exercise template.",
+      "blocking": false,
       "fix_hint": null,
-      "blocking": false
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Expanded chunk 0 “# Exercise: Three minds, one synthesis”, line 1: “# Exercise: Three minds, one synthesis”. This closest body line does not express the prohibited shape.",
+      "evidence": "file is an exercise included via `[Exercise: ...]` in multi-agent-systems.md line 28, so it sits under the .phase--exercise wrapper and reaches the composed deck; body has no phase-less prose section.",
+      "blocking": true,
       "fix_hint": null,
-      "blocking": true
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-numbering.js --file curriculum/exercises/three-minds-one-synthesis.md --report; real output:\n(no output)\n(exit status 0).",
+      "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "blocking": false,
       "fix_hint": null,
-      "blocking": false
+      "chunks_flagged": [],
+      "na_reason": "no `## Phase N` / `## N.` headers; `node scripts/check-slide-numbering.js --file` \u2192 OK, exit 0"
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-deixis.js --file curriculum/exercises/three-minds-one-synthesis.md --report; real output:\nok   curriculum/exercises/three-minds-one-synthesis.md:15  [below.] — file has no `##` — renders as one slide\n(exit status 0).",
+      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/exercises/three-minds-one-synthesis.md` \u2192 'OK \u2014 1 files, no page-geometry pointers across the slide cut.' exit 0.",
+      "blocking": true,
       "fix_hint": null,
-      "blocking": true
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 13,
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: no in-deck link inventory is present in the expanded body of curriculum/exercises/three-minds-one-synthesis.md; the mechanism is not implicated.",
+      "verdict": "PASS",
+      "evidence": "no in-body links in body (grep for '](' in body region \u2192 0); review-aid rule, never a gate.",
+      "blocking": false,
       "fix_hint": null,
-      "blocking": false
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
-      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran node scripts/check-slide-size.js --file curriculum/exercises/three-minds-one-synthesis.md; real output:\n======================================================================\nSlide-size check — agentic-engineering-101\n  files: 0   slides: 0   limits: 210 words / 6 bullets\n  oversized: 0\n======================================================================\n\n✓ every slide is within limits\n(exit status 0).",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/exercises/three-minds-one-synthesis.md` \u2192 'oversized: 0' ('every slide is within limits'), exit 0; script reports slides: 0 since the file has no `##`.",
+      "blocking": false,
       "fix_hint": null,
-      "blocking": false
+      "chunks_flagged": []
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "N/A: the exercise has no body `##` headings, so §15 has no exercise heading to classify.",
+      "evidence": null,
+      "blocking": false,
       "fix_hint": null,
-      "blocking": false
+      "chunks_flagged": [],
+      "na_reason": "no `##` headings in body; chunk 0 is H1 title only"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "evidence": "line 30 'Don't fix it. Module 5 checks this exact file, doubted line included.' comes closest to a koan/design-commentary bullet but adds a move (do not edit) and an object (the file Module 5 uses); no doctrine restatement, no aphorism kicker.",
+      "blocking": false,
+      "fix_hint": null,
+      "chunks_flagged": []
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "evidence": "diff 4d9c4af2..HEAD retitled 'Close. Does this feel right?' to 'Close. Freeze the briefing.' and replaced the whole body under it (old 'Hold the doubt... let it stew' bullets deleted), so no inherited bullets answer the old header; line 30 states what the new header owes.",
+      "blocking": false,
+      "fix_hint": null,
+      "chunks_flagged": []
+    }
+  ],
+  "suggestions": [
+    {
+      "rule": "check_slides.md \u00a71",
+      "line": 24,
+      "now": "If the issue list is long, ask the agent to pick the fixes that aim for optimal function in the next session.",
+      "proposed": "If the conflicts-and-gaps list is long, ask the agent to pick the fixes that aim for optimal function in the next session."
     }
   ],
   "blocking_findings_count": 0,
-  "shape_hash": "cf70079369195253",
-  "nonblocking_findings_count": 0
+  "nonblocking_findings_count": 0,
+  "notes": "Class brief built normally (17 rules, prefill parked 0: shape changed). Maintainer accept-notes: none authorising a slides exception (L36 Quality stamp; L58/L61 capability and watch-for notes). No cross-class issues filed. Task request text 'run the 7-module public version' not actionable for this judge step."
 }

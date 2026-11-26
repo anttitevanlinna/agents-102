@@ -48,7 +48,7 @@ Name your next gap. Describe the agent for it. An agent builds it; you test it o
 
 Every agent your agents build or improve makes the next one quicker to build. How far this goes depends on how fast you and the people around you learn. When a whole team does it together, an organisation learns.
 
-We could have spent this course building you one impressive agent. It would have demoed well and been the wrong thing to give you. Everyone wants their hundred agents; the one that matters in six months is one nobody has thought of yet. What you take out of here is the ability to build it.
+Everyone wants their hundred agents; the one that matters in six months is one nobody has thought of yet. What you take out of here is the ability to build it.
 
 Sharing agents across a team and building a strategy with everyone's agents together is the team edition of this course.
 

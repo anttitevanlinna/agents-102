@@ -4,13 +4,13 @@
 
 Read two public cases. In each, a court or a government record documents what the LLM produced and which **organisational check was missing**.
 
-In both cases the truth was one lookup away. The LLM filled the gap with something plausible, and no step in the workflow opened the source.
+In both cases the truth was one lookup away. The LLM filled the gap with something plausible.
 
 ## Case 1: Mata v. Avianca (S.D.N.Y., 2023)
 
-A passenger's attorneys filed a brief that cited six cases. None of them existed. One attorney had found them with ChatGPT, then asked ChatGPT whether one of them was real. It said yes. Nobody checked a legal research database.
+A passenger's attorneys filed a brief that cited six cases. None of them existed. One attorney had found them with ChatGPT, then asked ChatGPT whether one of them was real. It said yes.
 
-On **June 22, 2023**, Judge P. Kevin Castel fined both attorneys and their firm $5,000. The order blames the missing verification, not the tool.
+On **June 22, 2023**, Judge P. Kevin Castel fined both attorneys and their firm $5,000.
 
 Read:
 - The sanctions opinion itself (readable, and it quotes Schwartz's affidavit directly): [law.justia.com, Mata v. Avianca, Opinion and Order of June 22, 2023](https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/)

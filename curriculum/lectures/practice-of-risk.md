@@ -14,7 +14,7 @@ The attack surface is the instruction set. Well-formed English in a document you
 
 {{figure:agent-picture-reach}}
 
-Capability is emergent. You can't fully predict the combination, only bound it.
+Capability is emergent. You can't fully predict what its instructions, context and tools add up to, only bound it.
 
 The result: *safe enough, under these conditions, within these limits, for now.* What may the agent read? What may it change? What must come back to a human?
 

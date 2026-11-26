@@ -3,7 +3,7 @@
 
 In one session, you ask *"What is the capital of Italy?"* Rome. *"What should we have for dinner?"* Italian: pasta, osso buco, risotto.
 
-In the other, *"What is the largest lake in Finland?"* Saimaa. Same dinner question.
+In the other, *"What is the largest lake in Finland?"* Saimaa. Same dinner question. Before you read on, guess what it suggests.
 
 Finnish: salmon, rye bread.
 

@@ -316,3 +316,28 @@ a101_rewritten_path() {              # $1=transcript $2=dir prefix (e.g. module-
   [[ -n "$p" ]] || p="$(grep -Eo "${d}/[A-Za-z0-9_-]+\.md" "$t" | head -1)"
   printf '%s\n' "$p"
 }
+
+# ---- Solo module (open edition) helpers — tests/a101-solo.test.sh ----------
+a101_student_writes() {              # $1=training dir $2=relative dest $3=source file
+  # A file the student writes by hand (module-7/brief.md). Relative, inside the
+  # dir, never over an existing file: an agent-written file stays the agent's.
+  local cwd="$1" dest="$2" src="$3"
+  [[ "$dest" != /* && "$dest" != *..* ]] || { echo "[a101] student-writes: $dest must be a relative path inside the training dir" >&2; return 1; }
+  [[ -f "$src" ]] || { echo "[a101] student-writes: missing source $src" >&2; return 1; }
+  [[ ! -e "$cwd/$dest" ]] || { echo "[a101] student-writes: $dest already exists" >&2; return 1; }
+  mkdir -p "$(dirname "$cwd/$dest")" && cp "$src" "$cwd/$dest" && echo "[a101] student wrote $dest"
+}
+a101_list_agents() {                 # $1=agents dir -> sorted agent .md paths
+  find "$1" -maxdepth 1 -type f -name '*.md' 2>/dev/null | sort
+}
+a101_new_agent() {                   # $1=agents dir $2=list from before -> first agent not in it
+  comm -13 "$2" <(a101_list_agents "$1") | head -1
+}
+a101_rewritten_prior_agent() {       # $1=agents dir $2=list from before $3=epoch base -> a prior agent written since base
+  local f
+  while IFS= read -r f; do
+    [[ -f "$f" ]] || continue
+    (( $(stat -f %m "$f" 2>/dev/null || stat -c %Y "$f") >= $3 )) && { printf '%s\n' "$f"; return 0; }
+  done < "$2"
+  return 0
+}

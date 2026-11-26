@@ -20,7 +20,7 @@
 # rules files) not git commits — so assertions are file-exists + grep-evidence
 # + mtime-advanced, not new-commit/tree-hash.
 #
-# Usage: run-a101.sh --module {prework|m1|m2|m3|m4a|m4b|m5|m6|m7|m8} [--case nordveil|finnish-psychologist] [--runtime cli|codex-cli|copilot-cli] [--from-turn N] [--cwd DIR] [--material DIR]
+# Usage: run-a101.sh --module {prework|m1|m2|m3|m4a|m4b|m5|m6|m7|m8|solo} [--case nordveil|finnish-psychologist] [--runtime cli|codex-cli|copilot-cli] [--from-turn N] [--cwd DIR] [--material DIR]
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -81,8 +81,8 @@ ROOT_INSTRUCTIONS_REL="$(artifact_path root-instructions)"
 PROJECT_SKILLS_REL="$(artifact_path project-skills)"
 
 case "$module" in
-  prework|m1|m2|m3|m4a|m4b|m5|m6|m7|m8) ;;
-  *) echo "usage: $0 --module {prework|m1|m2|m3|m4a|m4b|m5|m6|m7|m8} [--case nordveil|finnish-psychologist] [--runtime cli|codex-cli|copilot-cli] [--from-turn N] [--cwd DIR] [--material DIR]" >&2; exit 2 ;;
+  prework|m1|m2|m3|m4a|m4b|m5|m6|m7|m8|solo) ;;
+  *) echo "usage: $0 --module {prework|m1|m2|m3|m4a|m4b|m5|m6|m7|m8|solo} [--case nordveil|finnish-psychologist] [--runtime cli|codex-cli|copilot-cli] [--from-turn N] [--cwd DIR] [--material DIR]" >&2; exit 2 ;;
 esac
 a101_case_supports_module "$module" || {
   echo "Agents 101 case '$A101_CASE' supports through $A101_MAX_MODULE, not $module" >&2
@@ -143,6 +143,8 @@ if a101_case_supports_module m7; then
   M7_ASSUMPTIONS="$(cat "$ANSWERS/m7-assumptions.txt")"
 fi
 M8_SHARED_ROOM="$material_dir/shared-room"
+SOLO_PERSON=''
+[[ "$module" == solo ]] && SOLO_PERSON="$(cat "$ANSWERS/solo-person.txt")"
 
 # Replace a single token (literal, multi-line safe) in $1, echo result.
 subst() {
@@ -172,6 +174,7 @@ subst() {
   body="${body//<M6_REUSABLE_LOOP>/$M6_REUSABLE_LOOP}"
   body="${body//<M7_RECIPIENT>/$M7_RECIPIENT}"
   body="${body//<M7_ASSUMPTIONS>/$M7_ASSUMPTIONS}"
+  body="${body//<SOLO_PERSON>/$SOLO_PERSON}"
   # path tokens last (expand any introduced by the answer files)
   body="${body//<MATERIAL_DIR>/$material_dir}"
   body="${body//<MEETINGS_FILE>/$MEETINGS_FILE}"
@@ -195,6 +198,13 @@ cleanup() {
   transport_close || true
 }
 trap cleanup EXIT
+
+# Solo: which agents existed before this module, so T2 can find the one it
+# builds and T4 the M2 agent it rewrites.
+if [[ "$module" == solo ]]; then
+  a101_list_agents "$sut_cwd/agents" > "$run_dir/agents-before.txt"
+  [[ -f "$sut_cwd/judges/groundedness-judge.md" ]] && shasum "$sut_cwd/judges/groundedness-judge.md" | awk '{print $1}' > "$run_dir/judge.sha"
+fi
 
 echo "[a101] case=$A101_CASE module=$module runtime=$runtime cwd=$sut_cwd run=$run_id"
 transport_open "$runtime" "$sut_cwd" "$run_dir"
@@ -632,6 +642,39 @@ assert_turn() {
       assert_file_mtime_advanced "m7 T6 debrief rewrote sharing artifact" "$sut_cwd/$chosen" "$base" ;;
     m7:7) assert_or_warn assert_scrollback_grep "m7 T7 scoped pushback" "$t" 'ownership|handoff|Mara|variance' ;;
 
+    # ----- solo (open edition: agents-building-agents-solo) -----
+    solo:1)
+      assert_file_exists "solo T1 person" "$sut_cwd/module-7/person.md" || return 1
+      assert_scrollback_grep "solo T1 person named" "$sut_cwd/module-7/person.md" 'Mara' || return 1
+      assert_or_warn assert_scrollback_grep "solo T1 read trigger" "$t" 'trigger' ;;
+    solo:2)
+      local built; built="$(a101_new_agent "$sut_cwd/agents" "$run_dir/agents-before.txt")"
+      [[ -n "$built" ]] || { echo '[assert] FAIL solo T2: no new agent file in agents/' >&2; return 1; }
+      printf '%s\n' "$built" > "$run_dir/built-agent.path"
+      echo "[assert] PASS solo T2 built agent: ${built#$sut_cwd/}"
+      assert_scrollback_grep "solo T2 inputs are Mara's files" "$built" 'module-7/mara/' || return 1
+      if grep -qE '(^|[^a-z-])memory/' "$built"; then
+        echo "[assert] WARN solo T2: built agent names memory/ (brief said nothing from my memory/)" >&2
+      fi
+      assert_or_warn assert_file_exists "solo T2 ran once" "$sut_cwd/module-7/mara/account-view.md" ;;
+    solo:3)
+      assert_file_exists "solo T3 built-agent record" "$sut_cwd/module-7/built-agent.md" || return 1
+      assert_scrollback_grep "solo T3 judge before/after" "$sut_cwd/module-7/built-agent.md" 'before|after|round' || return 1
+      assert_scrollback_grep "solo T3 minutes" "$sut_cwd/module-7/built-agent.md" 'minute|[0-9] ?min' || return 1
+      if [[ -f "$run_dir/judge.sha" ]]; then
+        local now; now=$(shasum "$sut_cwd/judges/groundedness-judge.md" | awk '{print $1}')
+        [[ "$now" == "$(cat "$run_dir/judge.sha")" ]] || { echo '[assert] FAIL solo T3: judges/groundedness-judge.md changed ("Do not change the judge")' >&2; return 1; }
+        echo "[assert] PASS solo T3: judge byte-identical"
+      fi ;;
+    solo:4)
+      local m2; m2="$(a101_rewritten_prior_agent "$sut_cwd/agents" "$run_dir/agents-before.txt" "$base")"
+      [[ -n "$m2" ]] || { echo '[assert] FAIL solo T4: no pre-existing agent in agents/ was rewritten' >&2; return 1; }
+      echo "[assert] PASS solo T4 rewrote ${m2#$sut_cwd/}"
+      assert_or_warn assert_scrollback_grep "solo T4 missing-file handling" "$m2" 'missing|not (there|found|present)|absent|does(n.t| not) exist'
+      if grep -qiE '^#+ .*(retro|session notes|changelog)' "$m2"; then
+        echo "[assert] WARN solo T4: rewritten agent carries a retro/notes section (prompt: no retro notes section)" >&2
+      fi ;;
+
     # ----- m8 -----
     m8:1)
       assert_file_exists "m8 T1 extension brief" "$sut_cwd/module-8/extension-brief.md" || return 1
@@ -675,6 +718,12 @@ for line in "${lines[@]}"; do
     [[ ! -e "$M8_SHARED_ROOM/selection-board.md" ]] || { echo '[a101] selection board already published' >&2; exit 1; }
     cp "$material_dir/held/selection-board.md" "$M8_SHARED_ROOM/selection-board.md"
     echo '[a101] published held-back selection-board.md after Ingrid proposal'
+    continue
+  fi
+  if [[ "$line" == '@student-writes '* ]]; then
+    (( seq + 1 < from_turn )) && continue      # belongs before a skipped turn
+    read -r _ sw_dest sw_src <<< "$line"
+    a101_student_writes "$sut_cwd" "$sw_dest" "$KIT/$sw_src" || exit 1
     continue
   fi
   seq=$((seq + 1))

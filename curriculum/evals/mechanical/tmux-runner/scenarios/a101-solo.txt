@@ -1,0 +1,33 @@
+# Agents 101 open-edition last module — Agents Building Agents (solo).
+# curriculum/trainings/agents-101/agents-building-agents-solo.md +
+# exercises/build-for-the-gap.md. Driven by run-a101.sh --module solo. FRESH
+# session, run AFTER m6 on the same training dir (consumes the M2 agent in
+# agents/, judges/groundedness-judge.md from M5, memory/). M7/M8 are the team
+# edition and never run before this.
+#
+# @student-writes <dest> <case file>: a file the student writes by hand, copied
+# from the case (never over an existing file). Not a turn.
+#
+# Synthetic person: Mara Viken (Sales Operations, same as the team edition's M7
+# recipient). Her sheet and the pilot rules are files the student hands over.
+
+# Module prework: the M6 take-home trigger list (no prompt writes it).
+@student-writes module-6/trigger.md answers/solo-trigger.txt
+
+# T1 — pick one real person (two questions answered up front).
+pick-one-person <CONTROL:NO_QUESTIONS> <CONTROL:SAVE_WITHOUT_REVIEW> <SOLO_PERSON>
+
+# "Describe the gap": the student writes four lines in module-7/brief.md, and
+# the files it names are ones they would hand Mara.
+@student-writes module-7/mara/pilot-accounts.md solo/pilot-accounts.md
+@student-writes module-7/mara/pricing-rules.md solo/pricing-rules.md
+@student-writes module-7/brief.md answers/solo-brief.txt
+
+# T2 — an agent builds the agent, saves it, runs it once.
+build-for-the-gap-1 <CONTROL:NO_QUESTIONS> <CONTROL:SAVE_WITHOUT_REVIEW> <CONTROL:DIRECT_EXECUTION>
+
+# T3 — the Module 5 judge checks the output; the builder rebuilds until it passes.
+build-for-the-gap-2 <CONTROL:NO_QUESTIONS> <CONTROL:DIRECT_EXECUTION>
+
+# T4 — debrief: rewrite the Module 2 agent so it works without my memory.
+a101-solo-debrief-works-without-me

@@ -316,3 +316,60 @@ a101_rewritten_path() {              # $1=transcript $2=dir prefix (e.g. module-
   [[ -n "$p" ]] || p="$(grep -Eo "${d}/[A-Za-z0-9_-]+\.md" "$t" | head -1)"
   printf '%s\n' "$p"
 }
+
+# ---- Solo module (open edition) helpers — tests/a101-solo.test.sh ----------
+a101_student_writes() {              # $1=training dir $2=relative dest $3=source file
+  # A file the student writes by hand (module-7/brief.md). Relative, inside the
+  # dir, never over an existing file: an agent-written file stays the agent's.
+  local cwd="$1" dest="$2" src="$3"
+  [[ "$dest" != /* && "$dest" != *..* ]] || { echo "[a101] student-writes: $dest must be a relative path inside the training dir" >&2; return 1; }
+  [[ -f "$src" ]] || { echo "[a101] student-writes: missing source $src" >&2; return 1; }
+  [[ ! -e "$cwd/$dest" ]] || { echo "[a101] student-writes: $dest already exists" >&2; return 1; }
+  mkdir -p "$(dirname "$cwd/$dest")" && cp "$src" "$cwd/$dest" && echo "[a101] student wrote $dest"
+}
+a101_list_agents() {                 # $1=agents dir -> sorted agent .md paths
+  find "$1" -maxdepth 1 -type f -name '*.md' 2>/dev/null | sort
+}
+a101_new_agent() {                   # $1=agents dir $2=list from before -> first agent not in it
+  comm -13 "$2" <(a101_list_agents "$1") | head -1
+}
+a101_rewritten_prior_agent() {       # $1=agents dir $2=list from before $3=epoch base -> a prior agent written since base
+  local f
+  while IFS= read -r f; do
+    [[ -f "$f" ]] || continue
+    (( $(stat -f %m "$f" 2>/dev/null || stat -c %Y "$f") >= $3 )) && { printf '%s\n' "$f"; return 0; }
+  done < "$2"
+  return 0
+}
+
+a101_student_plants_answer() {       # $1=file with ## Answer $2=plant text file
+  # The student writes test lines into the ## Answer of their own frozen copy
+  # (M5 plants; tests/a101-freeze-chain.test.sh). Once, at the end of the section.
+  local f="$1" p="$2" first
+  [[ -f "$f" && -f "$p" ]] || { echo "[a101] plant: missing $f or $p" >&2; return 1; }
+  grep -q '^## Answer' "$f" || { echo "[a101] plant: no ## Answer in $f" >&2; return 1; }
+  first="$(head -1 "$p")"
+  grep -qF "$first" "$f" && { echo "[a101] plant: already planted in $f" >&2; return 1; }
+  awk -v pf="$p" '
+    function plant(){ while ((getline l < pf) > 0) print l; print ""; done=1 }
+    /^## Answer/ { inans=1; print; next }
+    inans && /^## / && !done { plant(); inans=0 }
+    { print }
+    END { if (inans && !done) { print ""; plant() } }' "$f" > "$f.plant.$$" && mv "$f.plant.$$" "$f"
+  echo "[a101] student planted $(wc -l < "$p" | tr -d ' ') line(s) into ## Answer of ${f##*/}"
+}
+
+a101_flagged_count() {               # $1=judgment.md -> flagged count, blank if none (tests/m6-flag-count.test.sh)
+  [[ -f "$1" ]] || return 0
+  grep -oiE 'flagged:? *[0-9]+|[0-9]+ (claims? )?flagged' "$1" | head -1 | grep -oE '[0-9]+'
+}
+a101_last_judged_round() {           # $1=runs dir -> last round-N folder holding a judgment.md
+  local d last=""
+  for d in $(ls -d "$1"/round-*/ 2>/dev/null | sed 's#/$##' | sort -V); do
+    [[ -f "$d/judgment.md" ]] && last="$d"
+  done
+  printf '%s\n' "$last"
+}
+a101_agent_reads_memory() {          # $1=agent file -> 0 if a line points it at memory/ without forbidding it
+  grep -E '(^|[^a-z-])memory/' "$1" 2>/dev/null | grep -viqE "(do not|don't|never|not|no) (read|use|open|touch|cite)|nothing from"
+}

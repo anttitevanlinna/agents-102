@@ -41,6 +41,8 @@ tmux-runner/
 
 `run-a101.sh`, `arrange-agents-101.sh`, and `chain-agents-101.sh` share one case loader. `nordveil` remains the default eight-module regression case. `finnish-psychologist` is an M1–M6 stress case: a fictional Finnish solo practitioner uses Claude for books, website, newsletter, marketing, and social content, with client and clinical material explicitly out of scope. It exercises AI Act readiness without asserting that the profession alone makes those content workflows high-risk.
 
+Editions: the team edition runs prework, M1–M8. The open (self-study) edition runs prework, M1–M6 and `solo` (`agents-building-agents-solo`): `./chain-agents-101.sh --case nordveil --to solo --arrange`, or `--from solo --chain-dir <chain that ran m6>` on an existing M6 dir. A chain never mixes `solo` with `m7`/`m8`. Files the student writes by hand (the M6 trigger, the four-line brief, the files handed to the person) land through `@student-writes <dest> <case file>` scenario lines, never over an existing file.
+
 Case kits own only facts, source fixtures, canned student answers, semantic assertion patterns, and their maximum module. The canonical prompt-key scenarios remain shared. Four scenario tails that require domain-specific answers resolve case-owned tokens; the prompt registry is unchanged.
 
 ```bash

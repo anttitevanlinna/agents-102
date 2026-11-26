@@ -22,7 +22,7 @@
 # arranges, because arranging moves the dir's prior modules to a backup.
 #
 # Usage: chain-agents-101.sh [--case nordveil|finnish-psychologist]
-#          [--from prework|m1|m2|m3|m4a|m4b|m5|m6|m7|m8] [--to ...]
+#          [--from prework|m1|m2|m3|m4a|m4b|m5|m6|m7|m8|solo] [--to ...]
 #          [--runtime cli|codex-cli|copilot-cli] [--chain-dir DIR]
 #          [--no-arrange | --arrange] [--cwd DIR] [--material DIR]
 set -euo pipefail
@@ -48,6 +48,7 @@ while [[ $# -gt 0 ]]; do
     *) echo "unknown arg: $1" >&2; exit 2 ;;
   esac
 done
+[[ "$from" == solo ]] && to=solo        # solo is the open edition's last module
 a101_load_case "$HERE" "$case_name"
 case "$runtime" in
   cli|codex-cli|copilot-cli) ;;
@@ -58,7 +59,14 @@ a101_case_supports_module "$to" || {
   exit 2
 }
 
+# Two editions share prework..m6. The team edition adds m7 and m8; the open
+# (self-study) edition ends on the solo module instead.
 modules=(prework m1 m2 m3 m4a m4b m5 m6 m7 m8)
+if [[ "$from" == solo || "$to" == solo ]]; then
+  [[ "$from" == m7 || "$from" == m8 || "$to" == m7 || "$to" == m8 ]] && {
+    echo "[chain] solo is the open edition's last module; m7/m8 are the team edition — pick one edition" >&2; exit 2; }
+  modules=(prework m1 m2 m3 m4a m4b m5 m6 solo)
+fi
 in_range=0
 selected=()
 for m in "${modules[@]}"; do

@@ -3,8 +3,8 @@
 # ./crux.md, memory/, and the M5-authored judges/groundedness-judge.md — none
 # seeded). No persona answer tokens: the loop is self-contained.
 #
-# Gating turns = 4: eval-loop-1 (calibrate) → eval-loop-2 (the loop) →
-# eval-loop-5 (readout) → debrief. Skip -3 ("can we scale?" chat), -4 (analogy,
+# Gating turns: eval-loop-1 (round 0 on the frozen M3 briefing + tactic) →
+# eval-loop-2 (the loop) → eval-loop-5 (readout) → spot-check → debrief. Skip -3 ("can we scale?" chat), -4 (analogy,
 # one-at-a-time chat), -6 (generic take-home twin of -2).
 #
 # NAMING SEAM (C11 — CLOSED 2026-06-06): the loop and the debrief now converge on
@@ -14,7 +14,7 @@
 # reappears. Judge immutability is checked two ways: a runner SHA stash (m6:1 vs
 # m6:2/m6:4) and the loop's own byte-identical report.
 
-# T1 — calibrate: write generation-tactic.md, run it once, run the judge in chat.
+# T1 — round 0: the judge on the frozen M3 briefing, then generation-tactic.md.
 eval-loop-1 <CONTROL:NO_QUESTIONS> <CONTROL:DIRECT_EXECUTION> Write the files and show the per-claim judge readout directly.
 
 # T2 — the loop: >=3 rounds, fixed judge, rewrite the tactic each round.
@@ -23,7 +23,10 @@ eval-loop-2 <CONTROL:NO_QUESTIONS> <CONTROL:DIRECT_EXECUTION> Run the rounds and
 # T3 (prompt -5) — readout (chat, 5 bullets).
 eval-loop-5 <CONTROL:NO_QUESTIONS> Show the five bullets directly.
 
-# T4 — debrief: sharpen the tactic (overwrites ./generation-tactic.md).
+# T4 — spot check: three of my marks on the last round, appended to my-marks.md.
+eval-loop-spot-check <CONTROL:NO_QUESTIONS> <M6_SPOT_MARKS>
+
+# T5 — debrief: sharpen the tactic (overwrites ./generation-tactic.md).
 a101-m6-debrief-tactic-sharpen
 
 # Portability take-home: a second fixed-judge loop in an explicit sandbox.

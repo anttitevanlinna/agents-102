@@ -36,12 +36,12 @@ grep -q 'supports through m6' "$HERE/.module-cap-error"
 # Both cases must satisfy the same M1-M6 answer-token contract. The runner owns
 # the sequence; a case owns only the participant inputs and evidence.
 required_answers=(
-  m1-phase2.txt m1-strengths.txt m1-hatelist.txt m1-iterate.txt
+  m1-phase2.txt m1-strengths.txt m1-hatelist.txt m1-iterate.txt m1-changed-most.txt
   m2-challenge.txt m2-curation-where.txt m2-ingest.txt m2-agent-spec.txt
   m2-task.txt m2-final-q.txt m2-homework-style.txt m2-homework-agent.txt
   m3-crux-steer.txt m3-wiki-answer.txt m3-docs-answer.txt m3-net-answer.txt
   m4-what-matters.txt m4-grill-answers.txt m4-chosen-risk.txt
-  m5-briefing-seed.txt m6-reusable-loop.txt
+  m5-plants.txt m3-doubted-line.txt m4-guess.txt m5-marks.txt m5-doubt-answer.txt m6-spot-marks.txt m6-reusable-loop.txt
 )
 
 for case_name in nordveil finnish-psychologist; do

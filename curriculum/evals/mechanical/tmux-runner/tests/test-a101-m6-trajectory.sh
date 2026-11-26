@@ -47,9 +47,9 @@ check "unparsed"                    UNPARSED        0  x y 1
 notes="$HOME/Documents/agents-101-runner/module-6/eval-notes.md"
 runs="$HOME/Documents/agents-101-runner/module-6/runs"
 if [[ -f "$notes" && -d "$runs" ]]; then
-  r1=$(grep -i 'flag' "$runs/round-1/judgment.md" 2>/dev/null | grep -oE '[0-9]+' | head -1)
-  last_dir=$(ls -d "$runs"/round-*/ 2>/dev/null | sort -V | tail -1)
-  ln=$(grep -i 'flag' "$last_dir/judgment.md" 2>/dev/null | grep -oE '[0-9]+' | head -1)
+  r1=$(a101_flagged_count "$runs/round-1/judgment.md")
+  last_dir=$(a101_last_judged_round "$runs")
+  ln=$(a101_flagged_count "$last_dir/judgment.md")
   work=0; grep -qiE 'after round|trajector|overreach|failure class|sharpen|prompt change' "$notes" && work=1
   out="$(eval_trajectory_verdict "$r1" "$ln" "$work")"; rc=$?
   if [[ "$out" == FLOOR-UNCOUNTED* || "$out" == IMPROVED* ]]; then

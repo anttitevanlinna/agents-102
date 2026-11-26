@@ -43,6 +43,7 @@ a101_module_rank() {
     m5) echo 6 ;;
     m6) echo 7 ;;
     m7) echo 8 ;;
+    solo) echo 8 ;;                       # open edition's last module; branches from m6 like m7
     m8) echo 9 ;;
     *) return 1 ;;
   esac

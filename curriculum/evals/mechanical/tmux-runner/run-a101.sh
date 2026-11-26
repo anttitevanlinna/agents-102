@@ -658,28 +658,36 @@ assert_turn() {
 
     # ----- m7 -----
     m7:1)
-      assert_file_exists "m7 T1 JTBD" "$sut_cwd/module-7/jtbd.md" || return 1
-      assert_file_exists "m7 T1 branch" "$sut_cwd/module-7/branch.md" || return 1
-      assert_scrollback_grep "m7 T1 recipient" "$sut_cwd/module-7/jtbd.md" 'Mara Viken|Mara' || return 1
-      assert_scrollback_grep "m7 T1 incumbent" "$sut_cwd/module-7/jtbd.md" 'spreadsheet|analyst handoff' ;;
-    m7:2) assert_file_exists "m7 T2 bottleneck" "$sut_cwd/module-7/absorption-bottleneck.md" ;;
-    m7:3)
-      assert_file_exists "m7 T3 technical plan" "$sut_cwd/module-7/technical-plan.md" || return 1
-      assert_file_exists "m7 T3 people plan" "$sut_cwd/module-7/people-plan.md" ;;
+      assert_file_exists "m7 T1 handover report" "$sut_cwd/handover-out.md" || return 1
+      local h; for h in '## Received' '## Skill' '## Agent' '## What would have travelled'; do
+        grep -qF "$h" "$sut_cwd/handover-out.md" || { echo "[assert] FAIL m7 T1: handover-out.md lacks $h" >&2; return 1; }
+      done
+      cmp -s "$sut_cwd/handover-in/fleet-margin-agent.md" "$KIT/handover/fleet-margin-agent.md" \
+        || { echo '[assert] FAIL m7 T1: the neighbour agent was edited ("Do not fix either file first")' >&2; return 1; }
+      echo "[assert] PASS m7 T1: handover report with the four headings, neighbour files untouched" ;;
+    m7:2)
+      assert_file_exists "m7 T2 JTBD" "$sut_cwd/module-7/jtbd.md" || return 1
+      assert_file_exists "m7 T2 branch" "$sut_cwd/module-7/branch.md" || return 1
+      assert_scrollback_grep "m7 T2 recipient" "$sut_cwd/module-7/jtbd.md" 'Mara Viken|Mara' || return 1
+      assert_scrollback_grep "m7 T2 incumbent" "$sut_cwd/module-7/jtbd.md" 'spreadsheet|analyst handoff' ;;
+    m7:3) assert_file_exists "m7 T3 bottleneck" "$sut_cwd/module-7/absorption-bottleneck.md" ;;
     m7:4)
-      assert_file_exists "m7 T4 assumptions" "$sut_cwd/module-7/assumptions.md" || return 1
-      assert_scrollback_grep "m7 T4 selections" "$sut_cwd/module-7/assumptions.md" 'SELECTED THIS WEEK' ;;
+      assert_file_exists "m7 T4 technical plan" "$sut_cwd/module-7/technical-plan.md" || return 1
+      assert_file_exists "m7 T4 people plan" "$sut_cwd/module-7/people-plan.md" ;;
     m7:5)
-      assert_file_exists "m7 T5 failure stories" "$sut_cwd/module-7/failure-stories.md" || return 1
-      assert_file_exists "m7 T5 Monday" "$sut_cwd/module-7/monday.md" || return 1
-      assert_scrollback_grep "m7 T5 Monday names recipient" "$sut_cwd/module-7/monday.md" 'Mara' || return 1
-      assert_scrollback_grep "m7 T5 current-work question" "$sut_cwd/module-7/monday.md" 'today|current|spreadsheet|how.*prepare' ;;
+      assert_file_exists "m7 T5 assumptions" "$sut_cwd/module-7/assumptions.md" || return 1
+      assert_scrollback_grep "m7 T5 selections" "$sut_cwd/module-7/assumptions.md" 'SELECTED THIS WEEK' ;;
     m7:6)
+      assert_file_exists "m7 T6 failure stories" "$sut_cwd/module-7/failure-stories.md" || return 1
+      assert_file_exists "m7 T6 Monday" "$sut_cwd/module-7/monday.md" || return 1
+      assert_scrollback_grep "m7 T6 Monday names recipient" "$sut_cwd/module-7/monday.md" 'Mara' || return 1
+      assert_scrollback_grep "m7 T6 current-work question" "$sut_cwd/module-7/monday.md" 'today|current|spreadsheet|how.*prepare' ;;
+    m7:7)
       local chosen
       chosen="$(a101_rewritten_path "$t" module-7)"
-      [[ -n "$chosen" && -f "$sut_cwd/$chosen" ]] || { echo '[assert] FAIL m7 T6: debrief named no existing sharing-artifact path' >&2; return 1; }
-      assert_file_mtime_advanced "m7 T6 debrief rewrote sharing artifact" "$sut_cwd/$chosen" "$base" ;;
-    m7:7) assert_or_warn assert_scrollback_grep "m7 T7 scoped pushback" "$t" 'ownership|handoff|Mara|variance' ;;
+      [[ -n "$chosen" && -f "$sut_cwd/$chosen" ]] || { echo '[assert] FAIL m7 T7: debrief named no existing sharing-artifact path' >&2; return 1; }
+      assert_file_mtime_advanced "m7 T7 debrief rewrote sharing artifact" "$sut_cwd/$chosen" "$base" ;;
+    m7:8) assert_or_warn assert_scrollback_grep "m7 T8 scoped pushback" "$t" 'ownership|handoff|Mara|variance' ;;
 
     # ----- solo (open edition: agents-building-agents-solo) -----
     solo:1)
@@ -718,23 +726,26 @@ assert_turn() {
     m8:1)
       assert_file_exists "m8 T1 extension brief" "$sut_cwd/module-8/extension-brief.md" || return 1
       grep -rilE 'pilot.pricing|preparation variance' "$sut_cwd/agents" 2>/dev/null | grep -q . || { echo '[assert] FAIL m8 T1: no extension agent carries the brief job' >&2; return 1; } ;;
-    m8:2) assert_file_exists "m8 T2 challenge" "$M8_SHARED_ROOM/challenge.md" ;;
-    m8:3) assert_file_exists "m8 T3 Ingrid manifest" "$M8_SHARED_ROOM/participants/ingrid/context-manifest.md" ;;
-    m8:4) assert_file_exists "m8 T4 Ingrid stance" "$M8_SHARED_ROOM/participants/ingrid/stance.md" ;;
-    m8:5) assert_file_exists "m8 T5 Ingrid cross-check" "$M8_SHARED_ROOM/participants/ingrid/cross-check.md" ;;
-    m8:6)
-      assert_file_exists "m8 T6 Ingrid proposal" "$M8_SHARED_ROOM/participants/ingrid/proposal.md" || return 1
-      [[ ! -e "$M8_SHARED_ROOM/selection-board.md" ]] || { echo '[assert] FAIL m8 T6: selection board leaked before directive' >&2; return 1; } ;;
+    m8:2)
+      assert_file_exists "m8 T2 built-agent record" "$sut_cwd/module-8/built-agent.md" || return 1
+      assert_scrollback_grep "m8 T2 judge before/after" "$sut_cwd/module-8/built-agent.md" 'before|after|round' ;;
+    m8:3) assert_file_exists "m8 T3 challenge" "$M8_SHARED_ROOM/challenge.md" ;;
+    m8:4) assert_file_exists "m8 T4 Ingrid manifest" "$M8_SHARED_ROOM/participants/ingrid/context-manifest.md" ;;
+    m8:5) assert_file_exists "m8 T5 Ingrid stance" "$M8_SHARED_ROOM/participants/ingrid/stance.md" ;;
+    m8:6) assert_file_exists "m8 T6 Ingrid cross-check" "$M8_SHARED_ROOM/participants/ingrid/cross-check.md" ;;
     m8:7)
-      assert_file_exists "m8 T7 selection board published" "$M8_SHARED_ROOM/selection-board.md" || return 1
-      assert_file_exists "m8 T7 midpoint instructions" "$M8_SHARED_ROOM/midway-instructions.md" ;;
-    m8:8) assert_file_exists "m8 T8 Ingrid critique" "$M8_SHARED_ROOM/participants/ingrid/critique.md" ;;
-    m8:9)
-      assert_file_exists "m8 T9 strategy kernel" "$M8_SHARED_ROOM/strategy-kernel.md" || return 1
-      assert_file_exists "m8 T9 agent set" "$M8_SHARED_ROOM/agent-set.md" || return 1
-      assert_file_exists "m8 T9 plan" "$M8_SHARED_ROOM/plan.md" ;;
+      assert_file_exists "m8 T7 Ingrid proposal" "$M8_SHARED_ROOM/participants/ingrid/proposal.md" || return 1
+      [[ ! -e "$M8_SHARED_ROOM/selection-board.md" ]] || { echo '[assert] FAIL m8 T7: selection board leaked before directive' >&2; return 1; } ;;
+    m8:8)
+      assert_file_exists "m8 T8 selection board published" "$M8_SHARED_ROOM/selection-board.md" || return 1
+      assert_file_exists "m8 T8 midpoint instructions" "$M8_SHARED_ROOM/midway-instructions.md" ;;
+    m8:9) assert_file_exists "m8 T9 Ingrid critique" "$M8_SHARED_ROOM/participants/ingrid/critique.md" ;;
     m8:10)
-      assert_file_mtime_advanced "m8 T10 debrief sharpened midpoint rules" "$M8_SHARED_ROOM/midway-instructions.md" "$base" ;;
+      assert_file_exists "m8 T10 strategy kernel" "$M8_SHARED_ROOM/strategy-kernel.md" || return 1
+      assert_file_exists "m8 T10 agent set" "$M8_SHARED_ROOM/agent-set.md" || return 1
+      assert_file_exists "m8 T10 plan" "$M8_SHARED_ROOM/plan.md" ;;
+    m8:11)
+      assert_file_mtime_advanced "m8 T11 debrief sharpened midpoint rules" "$M8_SHARED_ROOM/midway-instructions.md" "$base" ;;
 
     *) echo "[a101] no assertion configured for $mod:$seq" >&2; return 1 ;;
   esac

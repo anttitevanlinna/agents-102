@@ -610,9 +610,9 @@ assert_turn() {
       # own documented limit) on an already-grounded corpus legitimately floors the
       # COUNTABLE metric while real improvement lands in the uncounted dimension.
       # Theater = a flat count WITH flags left, or zero AND no prompt evolution.
-      local last; last=$(ls -d "$runs"/round-*/ 2>/dev/null | sort -V | tail -1)
-      local r1c lnc; r1c=$(grep -i 'flag' "$runs/round-1/judgment.md" 2>/dev/null | grep -oE '[0-9]+' | head -1)
-      lnc=$(grep -i 'flag' "$last/judgment.md" 2>/dev/null | grep -oE '[0-9]+' | head -1)
+      local last; last=$(a101_last_judged_round "$runs")
+      local r1c lnc; r1c=$(a101_flagged_count "$runs/round-1/judgment.md")
+      lnc=$(a101_flagged_count "$last/judgment.md")
       local work=0
       grep -qiE 'after round|trajector|overreach|failure class|sharpen|tactic change' "$sut_cwd/module-6/eval-notes.md" 2>/dev/null && work=1
       local verdict; verdict=$(eval_trajectory_verdict "${r1c:-x}" "${lnc:-x}" "$work")
@@ -700,7 +700,7 @@ assert_turn() {
       printf '%s\n' "$built" > "$run_dir/built-agent.path"
       echo "[assert] PASS solo T2 built agent: ${built#$sut_cwd/}"
       assert_scrollback_grep "solo T2 inputs are Mara's files" "$built" 'module-7/mara/' || return 1
-      if grep -qE '(^|[^a-z-])memory/' "$built"; then
+      if a101_agent_reads_memory "$built"; then
         echo "[assert] WARN solo T2: built agent names memory/ (brief said nothing from my memory/)" >&2
       fi
       assert_or_warn assert_file_exists "solo T2 ran once" "$sut_cwd/module-7/mara/account-view.md" ;;

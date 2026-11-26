@@ -358,3 +358,18 @@ a101_student_plants_answer() {       # $1=file with ## Answer $2=plant text file
     END { if (inans && !done) { print ""; plant() } }' "$f" > "$f.plant.$$" && mv "$f.plant.$$" "$f"
   echo "[a101] student planted $(wc -l < "$p" | tr -d ' ') line(s) into ## Answer of ${f##*/}"
 }
+
+a101_flagged_count() {               # $1=judgment.md -> flagged count, blank if none (tests/m6-flag-count.test.sh)
+  [[ -f "$1" ]] || return 0
+  grep -oiE 'flagged:? *[0-9]+|[0-9]+ (claims? )?flagged' "$1" | head -1 | grep -oE '[0-9]+'
+}
+a101_last_judged_round() {           # $1=runs dir -> last round-N folder holding a judgment.md
+  local d last=""
+  for d in $(ls -d "$1"/round-*/ 2>/dev/null | sed 's#/$##' | sort -V); do
+    [[ -f "$d/judgment.md" ]] && last="$d"
+  done
+  printf '%s\n' "$last"
+}
+a101_agent_reads_memory() {          # $1=agent file -> 0 if a line points it at memory/ without forbidding it
+  grep -E '(^|[^a-z-])memory/' "$1" 2>/dev/null | grep -viqE "(do not|don't|never|not|no) (read|use|open|touch|cite)|nothing from"
+}

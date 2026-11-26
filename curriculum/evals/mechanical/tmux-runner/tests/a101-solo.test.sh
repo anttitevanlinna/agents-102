@@ -75,6 +75,12 @@ printf 'new\n' > "$A/pilot-review-prep.md"
 printf 'rewritten\n' > "$A/pricing-challenge.md"
 [[ "$(a101_rewritten_prior_agent "$A" "$SB/before" "$base")" == "$A/pricing-challenge.md" ]] && ok "rewritten M2 agent found" || bad "rewrite: '$(a101_rewritten_prior_agent "$A" "$SB/before" "$base")'"
 
+echo "[test] built agent reading memory/ vs forbidding it"
+printf 'Do not read `memory/`, `sources/` or drafts/.\nInputs: module-7/mara/pilot-accounts.md\n' > "$SB/neg.md"
+a101_agent_reads_memory "$SB/neg.md" && bad "a 'do not read memory/' line counted as reading it" || ok "forbidding memory/ is not reading it"
+printf 'Inputs: module-7/mara/pilot-accounts.md, memory/pricing.md\n' > "$SB/pos.md"
+a101_agent_reads_memory "$SB/pos.md" && ok "an input in memory/ is reading it" || bad "memory/ input missed"
+
 echo "[test] chain: open edition stops at solo, never runs m7/m8"
 T="$SB/tr"; export TRACE="$SB/trace"
 mkdir -p "$T/lib" "$T/out" "$T/fixtures/agents-101-synthetic" "$SB/bin" "$SB/home/.claude/skills" "$SB/training"

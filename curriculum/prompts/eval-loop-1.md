@@ -22,7 +22,7 @@ produces:
 ---
 Three things, in sequence:
 
-1. Dispatch a judge subagent, as the loop will. It reads judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the ## Answer section of module-3/briefing-baseline.md, your Module 3 briefing as you froze it, and nothing else. It writes module-6/runs/round-0/judgment.md, with claims judged and claims flagged on the top line.
+1. No module-3/briefing-baseline.md? Stop and tell me. Dispatch a judge subagent, as the loop will. It reads judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the ## Answer section of module-3/briefing-baseline.md, your Module 3 briefing as you froze it, and nothing else. It writes module-6/runs/round-0/judgment.md, with claims judged and claims flagged on the top line.
 
 2. If module-5/baseline-score.md exists, put its "Claims judged: N. Claims flagged: F." line beside today's count. Any difference on the same briefing is a first read of the judge's own noise; say how big it is.
 

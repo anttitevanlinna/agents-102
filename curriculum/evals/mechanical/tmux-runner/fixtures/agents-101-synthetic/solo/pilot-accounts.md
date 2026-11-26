@@ -9,7 +9,7 @@
 | 4 | SMB | 6 | 690 | 710 | steady | steady |
 | 5 | SMB | 13 | 2,450 | 1,700 | bill-shock risk | watch |
 | 6 | SMB | 11 | 1,010 | 980 | steady | steady |
-| 7 | Mid | 48 | 6,500 | 6,300 | expansion | expansion |
+| 7 | Mid | 48 | 7,900 | 6,200 | expansion | watch |
 | 8 | Mid | 41 | 5,700 | 5,900 | steady | expansion |
 
 Notes from Mara: classes are filled by whichever analyst picks up the sheet that week. Rows where A and B differ are the ones Sales leadership asks about.

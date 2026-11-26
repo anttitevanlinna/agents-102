@@ -3,22 +3,22 @@
   "file": "curriculum/exercises/eval-loop.md",
   "training": "agents-101",
   "verdict": "PASS",
-  "body_sha": "a729f35825422cc0d4809f8909e4a0375c85c11b4bbeec96d443409324f06c4b",
-  "trace_status": "full_regen",
+  "body_sha": "a4f3cc3d0d67649393efa67e5b70040225e4c8402f8e620204c2c9cc12199fe4",
+  "trace_status": "partial_regen",
   "prompts_evaluated": 7,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "Three things, in sequence:\n\n1. Dispatch a judge subagent, as the loop will. It r",
+      "prompt_lead": "Three things, in sequence:\n\n1. No module-3/briefing-baseline.md? Stop and tell m",
       "verdict": "PASS",
       "load_bearing": true,
-      "prompt_sha": "eae54bce45ed5c2f0b4e4520e41fcb6ed254c99a1a7385d9e804329a91eb04f4",
+      "prompt_sha": "d9d9d808cad7939c2b532929bd43df665039b0b75f9385ba79103b876b5aa943",
       "risks_fired": [
         {
           "pattern_id": "preamble-before-action",
           "confidence": "med",
-          "evidence": "Three things, in sequence: 1. Dispatch... 2. If module-5/baseline-score.md exists... 3. Write ./generation-tactic.md... (no 'No preamble' line)",
-          "fix_hint": "Add 'No preamble. Start by dispatching the judge.' as P2 does."
+          "evidence": "Three things, in sequence: ... (no 'No preamble' line)",
+          "fix_hint": "Add 'No preamble. Start by checking for module-3/briefing-baseline.md.'"
         }
       ]
     },
@@ -27,13 +27,13 @@
       "prompt_lead": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/grounde",
       "verdict": "PASS",
       "load_bearing": true,
-      "prompt_sha": "4ec73afafdc1a0a09c015e8a326366888eb6c0dc9656ffa111d7e94eb5e8a8e9",
+      "prompt_sha": "c7def0e6f0424e4cd811e291fc485b537e90aadbe036ee5f278f03b8068b1963",
       "risks_fired": [
         {
           "pattern_id": "self-report-inflation",
           "confidence": "low",
           "carve_out": "evidence-backed Debrief carve-out",
-          "evidence": "Significant improvement means a drop in flagged claims larger than the judge noise read in round 0; notes table of counts and SHA check",
+          "evidence": "Significant improvement means a drop in flagged claims larger than the judge noise read in round 0; notes table of counts, SHA check, judge-instructions check",
           "fix_hint": "Carve-out applied; nothing owed."
         }
       ]
@@ -99,7 +99,7 @@
       "rule": "preamble-before-action",
       "line": 0,
       "now": "Then tell me in five lines: claims judged and flagged in the Module 3 briefing, ...",
-      "proposed": "No preamble. Start by dispatching the judge. Then tell me in five lines: ..."
+      "proposed": "No preamble. Start by checking for module-3/briefing-baseline.md. Then tell me in five lines: ..."
     },
     {
       "rule": "self-report-inflation",
@@ -110,5 +110,5 @@
   ],
   "blocking_findings_count": 0,
   "nonblocking_findings_count": 0,
-  "notes": "Single med risks on load-bearing prompts 1 and 6 do not reach the REVISE threshold (two med needed). Suggestion line numbers are prompt-registry lines, not exercise lines. Accept-notes: no dated accept-notes in the maintainer block. Prior trace fully stale (prompt shas all changed, spot-check prompt added)."
+  "notes": "Single med risks on load-bearing prompts 1 and 7 do not reach REVISE (two med needed). Prompts 3-7 reused from cache by sha; 1-2 regenerated (edited). No dated accept-notes in maintainer block. Suggestion lines are prompt-registry lines."
 }

@@ -1,6 +1,7 @@
 ---
 key: build-your-challenge-memory-3
 dest: Claude Code
+permission-mode: plan
 runtime: any
 origin: exercises/build-your-challenge-memory
 requires:

@@ -28,7 +28,7 @@ Give your daily output the look of your company's website, or any site you like:
 
 {{prompt:personal-agent-homework-1}}
 
-Give the agent the URL or paste a key page. The agent writes `./style.md` and appends the rule to the root instructions file. Spot-check both. Add any hard brand rule the agent missed ("never pure black," "always serif headings") to `./style.md`.
+Give the agent the URL or paste a key page. The agent writes `./style.md` and appends the rule to the root instructions file. Tell the agent any hard brand rule it missed ("never pure black," "always serif headings"), and it adds them to the style file.
 
 ## Phase 3: Write the agent's instructions
 
@@ -50,7 +50,7 @@ Open the **Schedule** sidebar in the desktop app and click **New task → New lo
 
 {{prompt:personal-agent-homework-3}}
 
-Save, then click **Run now** once. Double-click `module-2/morning-agent/latest.html` to open it in your browser. To fix anything, edit `module-2/morning-agent/morning.md` or `./style.md`. The scheduling prompt names both files, so tomorrow's run picks up the change.
+Save, run it once and open `latest.html`. It should look like your chosen site; plain default styling means the agent did not use the style file, so ask it to try again. To fix anything, tell the agent what to change, and it updates the instructions or the style file. The scheduling prompt names both files, so tomorrow's run picks up the change.
 
 ## Phase 5: Let it run for a week
 
@@ -75,8 +75,8 @@ A memory an agent reads on a schedule, producing output you respond to, is the s
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-11-26 (behavior@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
-- judges @78d17fc9: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy REVISE (1/0 see instances/agents-101--exercise--personal-agent-homework.pedagogy.json), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-11-26 (behavior@78d17fc9 pedagogy@42b9610a strategy@78d17fc9 slides@78d17fc9)
+- judges @42b9610a: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS (verify-refuted), strategy PASS, slides PASS
 
 **Frameworks riffed on:**
 - Toyota Kata — the morning agent is a daily PDSA beat on the challenge. Running it, observing, adjusting — kata made file-based.

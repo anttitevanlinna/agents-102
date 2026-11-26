@@ -4,13 +4,13 @@
 
 Read two public cases. In each, a court or a government record documents what the LLM produced and which **organisational check was missing**.
 
-In both cases the truth was one lookup away. The LLM filled the gap with something plausible, and no step in the workflow opened the source.
+In both cases the truth was one lookup away. The LLM filled the gap with something plausible.
 
 ## Case 1: Mata v. Avianca (S.D.N.Y., 2023)
 
-A passenger's attorneys filed a brief that cited six cases. None of them existed. One attorney had found them with ChatGPT, then asked ChatGPT whether one of them was real. It said yes. Nobody checked a legal research database.
+A passenger's attorneys filed a brief that cited six cases. None of them existed. One attorney had found them with ChatGPT, then asked ChatGPT whether one of them was real. It said yes.
 
-On **June 22, 2023**, Judge P. Kevin Castel fined both attorneys and their firm $5,000. The order blames the missing verification, not the tool.
+On **June 22, 2023**, Judge P. Kevin Castel fined both attorneys and their firm $5,000.
 
 Read:
 - The sanctions opinion itself (readable, and it quotes Schwartz's affidavit directly): [law.justia.com, Mata v. Avianca, Opinion and Order of June 22, 2023](https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/)
@@ -41,8 +41,8 @@ Read:
 One sentence per case: *"The organisational check that would have caught this was X."*
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@78d17fc9 behavior@5fc7188 strategy@78d17fc9 slides@78d17fc9)
-- judges @78d17fc9: writing PASS (1 finding see instances/agents-101--lecture--module-5-prework.writing.json), story PASS (verify-refuted), technical PASS, behavior PASS, pedagogy REVISE (1/0 see instances/agents-101--lecture--module-5-prework.pedagogy.json), strategy PASS (1 finding see instances/agents-101--lecture--module-5-prework.strategy.json), slides PASS (1 finding see instances/agents-101--lecture--module-5-prework.slides.json)
+**Quality:** compendium-audited 2026-11-26 (writing@42b9610a story@42b9610a technical@78d17fc9 behavior@5fc7188 pedagogy@42b9610a strategy@42b9610a slides@42b9610a)
+- judges @42b9610a: writing PASS (1 finding see instances/agents-101--lecture--module-5-prework.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/agents-101--lecture--module-5-prework.strategy.json), slides PASS (1 finding see instances/agents-101--lecture--module-5-prework.slides.json)
 
 **Time:** 40 minutes. 10 per case, 15 for the mechanisms, 5 for the two sentences.
 

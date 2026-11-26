@@ -48,7 +48,7 @@ Name your next gap. Describe the agent for it. An agent builds it; you test it o
 
 Every agent your agents build or improve makes the next one quicker to build. How far this goes depends on how fast you and the people around you learn. When a whole team does it together, an organisation learns.
 
-We could have spent this course building you one impressive agent. It would have demoed well and been the wrong thing to give you. Everyone wants their hundred agents; the one that matters in six months is one nobody has thought of yet. What you take out of here is the ability to build it.
+Everyone wants their hundred agents; the one that matters in six months is one nobody has thought of yet. What you take out of here is the ability to build it.
 
 Sharing agents across a team and building a strategy with everyone's agents together is the team edition of this course.
 
@@ -56,9 +56,9 @@ One question to carry out of the course: what is going to be the next hard part 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-11-26 (story@cf4fd816 technical@78d17fc9 behavior@78d17fc9 pedagogy@cf4fd816 strategy@78d17fc9 slides@cf4fd816)
-- judges @cf4fd816: writing REVISE (1/4 see instances/agents-101--module--agents-building-agents-solo.writing.json), story PASS (2 findings see instances/agents-101--module--agents-building-agents-solo.story.json), technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agents-101--module--agents-building-agents-solo.pedagogy.json), strategy PASS, slides PASS
-- cross_module @cf4fd816: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,agents-building-agents-solo]; 7 pairs, 2 blocking; see instances/agents-101--module-set--agents-101-open-edition.cross_module.json
+**Quality:** compendium-audited 2026-11-26 (writing@42b9610a story@42b9610a technical@78d17fc9 behavior@78d17fc9 pedagogy@42b9610a strategy@78d17fc9 slides@42b9610a)
+- judges @42b9610a: writing PASS (4 findings see instances/agents-101--module--agents-building-agents-solo.writing.json), story PASS (2 findings see instances/agents-101--module--agents-building-agents-solo.story.json), technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/agents-101--module--agents-building-agents-solo.pedagogy.json), strategy PASS, slides PASS
+- cross_module @42b9610a: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,agents-building-agents-solo]; 7 pairs, 0 blocking; see instances/agents-101--module-set--agents-101-open-edition.cross_module.json
 
 **Edition:** free open edition only (`agents-101-open`: M1 to M6 plus this module), replacing M7 + M8. The licensed team edition runs `personal-to-team.md` and `agents-building-agents.md` with a neighbour, a forum and a sponsor. Antti 2026-11-25 picked this split on a decision card; plan https://claude.ai/artifact/MEhqeBGvmTXXAoTqdwCf5P.
 

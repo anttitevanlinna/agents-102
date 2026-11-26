@@ -1,269 +1,260 @@
 {
-  "class": "slides",
-  "file": "curriculum/exercises/hallucination-bakeoff.md",
-  "training": "agents-101",
-  "verdict": "REVISE",
-  "body_sha": "d05d4fa84e8acda0834f217b35fa47da1c4012641a4b26f944f0356fdf6743b7",
-  "shape_hash": "d9ae39b11309b87a",
-  "chunk_map": [
-    {
-      "index": 0,
-      "heading": "# Exercise: Hallucination benchmark",
-      "lines": "1-9"
-    },
-    {
-      "index": 1,
-      "heading": "Phase 1: The target and the benchmark",
-      "lines": "11-17"
-    },
-    {
-      "index": 2,
-      "heading": "Extract the claim pool",
-      "lines": "19-23"
-    },
-    {
-      "index": 3,
-      "heading": "Phase 2: Run the four detectors",
-      "lines": "25-42"
-    },
-    {
-      "index": 4,
-      "heading": "Mark five claims yourself",
-      "lines": "44-48"
-    },
-    {
-      "index": 5,
-      "heading": "Phase 3: Scorer runs the benchmark",
-      "lines": "50-64"
-    },
-    {
-      "index": 6,
-      "heading": "Read the scoreboard and name the surprise",
-      "lines": "66-74"
-    },
-    {
-      "index": 7,
-      "heading": "Phase 4: Save the winner as a judge",
-      "lines": "76-84"
-    },
-    {
-      "index": 8,
-      "heading": "Phase 5: Close, name the rescue",
-      "lines": "86-94"
-    },
-    {
-      "index": 9,
-      "heading": "Carry the benchmark pattern forward",
-      "lines": "96-102"
-    }
-  ],
-  "rules_evaluated": [
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 1,
-      "rule_lead": "Referent resolution under a sequential deck read.",
-      "verdict": "REVISE",
-      "evidence": "chunk 5 \"Phase 3: Scorer runs the benchmark\": line 62: \"Ask the agent to explain both using your own rows.\" Harm (reader cannot resolve what to ask for) is present: the chunk names three metrics in the bullets at lines 56-58 (precision, recall, coverage), so \"both\" has no two-item antecedent; only prompt 6 (fenced, not on the slide) says precision and recall.",
-      "na_reason": null,
-      "fix_hint": "Name them: \"Ask the agent to explain precision and recall using your own rows.\"",
-      "blocking": true,
-      "chunks_flagged": [
-        5
-      ]
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 2,
-      "rule_lead": "Cross-file and positional callbacks.",
-      "verdict": "PASS",
-      "evidence": "line 15: \"The target is the Module 3 briefing, copied as it stands.\" closest: names the artifact by module and noun, not by position; line 94 \"Module 6\" is likewise named. No \"the opening lecture\"-style callback.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 3,
-      "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "PASS",
-      "evidence": "line 90: \"In Module 3 you marked one line of the briefing you doubted.\" closest: resolved, curriculum/prompts/three-minds-one-synthesis-4.md and hallucination-bakeoff-9.md both carry \"Doubted line\" (grep -rln \"Doubted line\" curriculum/exercises curriculum/prompts). Line 70 \"the classic way\" is a field idiom, defined by prompt 7.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "PASS",
-      "evidence": "line 46: \"Before any agent adjudicates, you mark five claims. The scoreboard then shows how often the scorer agrees with you.\" closest: the guess comes first and no outcome is narrated above it; line 68 narrates scoreboard outcomes only after the mark beat (line 44-48) and the scoreboard (line 60). Muted read: every setup sentence has a verb.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 5,
-      "rule_lead": "No orphan slides.",
-      "verdict": "PASS",
-      "evidence": "closest: chunk 4 \"Mark five claims yourself\" line 46 carries a self-standing claim (you mark five claims, scoreboard reports agreement) plus a prompt; chunk 7 line 84 is the shortest body and still carries the narrow-judge claim.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 6,
-      "rule_lead": "Header self-carries at projection distance.",
-      "verdict": "REVISE",
-      "evidence": "chunk 8 \"Phase 5: Close, name the rescue\": line 86 header vs lines 90-94: body has the student compare the judge verdict on the doubted line and a baseline-score file; nothing on the slide names a rescue, and \"rescue\" is never defined on any slide (maintainer-block mood-contract term, lines 112-114). Harm (header promises content the chunk does not hold) is present at projection distance.",
-      "na_reason": null,
-      "fix_hint": "Header should say what the chunk does.",
-      "blocking": false,
-      "chunks_flagged": [
-        8
-      ]
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 7,
-      "rule_lead": "LLM-cadence caps.",
-      "verdict": "PASS",
-      "evidence": "closest: line 68-70 \"One detector catches more... Another catches less... A third catches what the others missed\" is a triple but each leg carries distinct concrete content (a count, a precision tradeoff, a broken citation). Sub-items: no \"Not X. Not Y. Z.\"; no self-grading superlative; \"Thirty is enough to start seeing the pattern\" (line 21) has no number-plus-retraction; no abstraction-noun stacks.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 8,
-      "rule_lead": "Internal dialect never lands on a slide.",
-      "verdict": "PASS",
-      "evidence": "grep of body_numbered for beat|mood|compendium|forcing function|firing → no hit; closest: line 86 \"name the rescue\" (ordinary English word, mood-contract sense stays in the maintainer block, lines 112-114; filed under rule 6 instead). \"surface\" does not appear.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
-      "verdict": "PASS",
-      "evidence": "closest: chunk 9 lines 98 and 102 carry \"**The point:**\" and \"**Recipe 5**\" (two bolds). \"The point:\" is the exercise-architecture label and \"Recipe 5\" is a coined handle of 2 words; neither is a bold lead sentence. Chunk 0 bolds \"**Time:**\", \"**Session**\", \"**What you do:**\" which are widget/template labels.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "PASS",
-      "evidence": "view signals slide_count 9 for 9 `##` chunks; module file curriculum/trainings/agents-101/output-quality.md:28 includes the exercise as `[Exercise: Hallucination benchmark](exercises/hallucination-bakeoff.md)` (phase wrapper reaches the deck). Both-layout render was not run (unverified).",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "PASS",
-      "evidence": "node scripts/check-slide-numbering.js --file curriculum/exercises/hallucination-bakeoff.md → \"OK — 1 files, Phase/Step numbering consistent.\" exit 0.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 12,
-      "rule_lead": "Page geometry dies at the cut; reading order survives.",
-      "verdict": "PASS",
-      "evidence": "node scripts/check-slide-deixis.js --file curriculum/exercises/hallucination-bakeoff.md → \"OK — 1 files, no page-geometry pointers across the slide cut.\" exit 0. Closest: line 31 \"In your main session:\" is a location of work, not of page.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "PASS",
-      "evidence": "one link, line 102: \"The [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) holds the moves and components.\" Names the document in link text; no geometry. Review surface, never a gate.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 14,
-      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
-      "verdict": "PASS",
-      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/hallucination-bakeoff.md → \"slides: 9 limits: 210 words / 6 bullets oversized: 0\" exit 0.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 15,
-      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-      "verdict": "PASS",
-      "evidence": "headings: lines 19 \"Extract the claim pool\", 44 \"Mark five claims yourself\", 66 \"Read the scoreboard and name the surprise\", 96 \"Carry the benchmark pattern forward\" are imperatives; Phase N headers are phase labels. Closest: line 86 \"Phase 5: Close, name the rescue\" is a phase label. No declarative heading in an exercise to misfire.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 16,
-      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
-      "verdict": "PASS",
-      "evidence": "closest: line 74 \"Answer the surprise question in one sentence.\" adds the one move the student owes after prompt 7; line 84 \"It is narrow on purpose: the \\\"known limit\\\" line names what you measured and decided not to chase.\" tells the reader what to look for, not design commentary; line 100 restates the exercise point once, as the file's own **The point:** body, not a kicker under another slide.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 17,
-      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
-      "verdict": "PASS",
-      "evidence": "diff 4d9c4af2..HEAD: the `##` lines kept (Phase 1-5) had their bodies rewritten alongside, not left behind; closest: line 86 header kept while body replaced (lines 90-94), filed under rule 6 as header truth, not as inherited old bullets (none survive: no old-header bullets remain).",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false,
-      "chunks_flagged": []
-    }
-  ],
-  "suggestions": [
-    {
-      "rule": "check_slides.md §6",
-      "line": 86,
-      "now": "## Phase 5: Close, name the rescue",
-      "proposed": "## Phase 5: Check the judge on your doubted line"
-    }
-  ],
-  "blocking_findings_count": 1,
-  "nonblocking_findings_count": 1,
-  "notes": "Accept-notes found: Quality line (L106) and Cowork TODO (L109); neither touches a slide. Cross-class: maintainer-block 'Walk-away calibration' (L118) says ~20 min across Phases 1 and 2 combined but the Time line now gives 8+8; the Cowork TODO (L110) says the Phase 1 prompt needs runtime forks and prompt hallucination-bakeoff-1-frozen still opens 'Spawn one subagent' (writing/behavior lanes). Class brief built normally; prefill parked 0 rows (shape changed), so all 17 rows are mine. User message said '7-module public version'; this file belongs to agents-101 and is judged as is.",
-  "resolution": {
-    "settled": "refuted",
-    "at": "2026-11-26",
-    "note": "Both refuters killed every blocking finding, so the row stamps PASS:verify-refuted and this REVISE stays as the record. slides §1 (referent resolution) line 62: scope: I verified the facts. The judge's reading of check_slides.md §1 doesn't make this a blocking failure.\n\nWhat checks out:\n- Line 62 is \"Ask the agent to explain both using your own rows.\"\n- The chunk titled \"Phase 3: Scorer runs the benchmark\" lists three metrics at lines 56-58: precision, recall and coverage.\n- \"both\" implies two, so there is a count mismatch.\n- The line arrived in commit 1b176d30 (2026-11-01). The slides PASS at 4d9c4af2 (2026-08-25) predates it, so the pin does not cover this line.\n\nWhy it fails as a blocking §1 finding:\n1. §1's test is \"THIS chunk plus earlier chunks of the same file\", and the Phase 3 `##` chunk runs from line 50 to line 65. The sentence at line 62 is a lead-in to the very next element in that chunk, prompt 6 at line 64. Prompt 6 is a paste block reading \"Tell me about precision and recall.\" The reader sees that pair on the same slide, one line below the pointer, so \"both\" resolves at once.\n2. Prompt 5, also on this slide, says \"Compute precision (...) and recall (...)\" and then treats coverage separately as \"Coverage = how many of the 30 claims the detector looked at\". That marks precision and recall as the pair. It marks coverage as a count, not a quality metric you would ask the agent to explain.\n3. §1 says fenced blocks are exempt from being flagged. It does not say they stop being context. A chunk's fenced prompt is on the slide, so it counts as part of the chunk the test is applied to.\n4. §1's \"Never named\" subtype is aimed at referents that appear nowhere in the file, or only on a LATER slide. Here the referent sits on the same slide, so the failure the rule targets does not apply.\n5. §1's \"Vague with full history\" subtype requires a pronoun that \"stays ambiguous even holding every prior slide\". This one is disambiguated by the slide's own paste block, so it does not stay ambiguous.\n\nResidual issue: the sentence is slightly imprecise, since \"both\" sits under a three-item list. That is a nit-level wording polish, not a BLOCK. The finding should be downgraded or dropped, not applied as blocking."
+ "class": "slides",
+ "file": "curriculum/exercises/hallucination-bakeoff.md",
+ "training": "agents-101",
+ "verdict": "PASS",
+ "body_sha": "5a0e1e06610664d17f9fd22072569392b2ea6d598c373af300664c0d080ed4ad",
+ "shape_hash": "d9ae39b11309b87a",
+ "chunk_map": [
+  {
+   "index": 0,
+   "heading": "Exercise: Hallucination benchmark (lede)",
+   "lines": "1-10"
+  },
+  {
+   "index": 1,
+   "heading": "Phase 1: The target and the benchmark",
+   "lines": "11-18"
+  },
+  {
+   "index": 2,
+   "heading": "Extract the claim pool",
+   "lines": "19-24"
+  },
+  {
+   "index": 3,
+   "heading": "Phase 2: Run the four detectors",
+   "lines": "25-43"
+  },
+  {
+   "index": 4,
+   "heading": "Mark five claims yourself",
+   "lines": "44-49"
+  },
+  {
+   "index": 5,
+   "heading": "Phase 3: Scorer runs the benchmark",
+   "lines": "50-65"
+  },
+  {
+   "index": 6,
+   "heading": "Read the scoreboard and name the surprise",
+   "lines": "66-75"
+  },
+  {
+   "index": 7,
+   "heading": "Phase 4: Save the winner as a judge",
+   "lines": "76-85"
+  },
+  {
+   "index": 8,
+   "heading": "Phase 5: Close, name the rescue",
+   "lines": "86-95"
+  },
+  {
+   "index": 9,
+   "heading": "Carry the benchmark pattern forward",
+   "lines": "96-103"
   }
+ ],
+ "rules_evaluated": [
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 1,
+   "rule_lead": "Referent resolution under a sequential deck read.",
+   "verdict": "PASS",
+   "evidence": "L62 chunk 5 \"Phase 3\": \"Ask the agent to explain both using your own rows.\" closest: three metrics listed L56-58 but the prompt in-chunk (L64 region) says \"precision and recall\", so \"both\" resolves in-chunk; L70 chunk 6 \"the classic way\" is defined by the in-chunk prompt (L3 \"the classic way to quality-check\"). L90 \"the briefing\" named L15/L9. Harm (unresolved referent on a wall) not present.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": true,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 2,
+   "rule_lead": "Cross-file and positional callbacks.",
+   "verdict": "PASS",
+   "evidence": "L90 chunk 8: \"In Module 3 you marked one line of the briefing you doubted\" names the module and the beat by content, not position; module-arc/session carve-out. L102 link names the Cookbook by title.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": true,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 3,
+   "rule_lead": "Every backward reference points at a beat that exists.",
+   "verdict": "PASS",
+   "evidence": "L90 \"In Module 3 you marked one line ... you doubted\": beat exists, curriculum/prompts/three-minds-one-synthesis-4.md L10 appends `## Doubted line` to module-3/briefing-baseline.md; exercise three-minds-one-synthesis.md L32 includes it; module multi-agent-systems.md L28 includes the exercise. L102 \"Recipe 5\" resolves: cookbook-for-agent-system-design.md L63 \"### R5, Earn a judge by benchmarking\".",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": true,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 4,
+   "rule_lead": "Live-demo beats survive a text read.",
+   "verdict": "PASS",
+   "evidence": "chunk 4 L46 \"Before any agent adjudicates, you mark five claims\" puts the student mark before the scorer runs (chunk 5); closest: L68 chunk 6 narrates outcome shapes before the surprise question, but that is a which-row-surprised-you reflection, not a guess-before-reveal. No terminal-only cue, verbed sentences throughout (muted read L29 \"Four helper agents run in parallel...\").",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": true,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 5,
+   "rule_lead": "No orphan slides.",
+   "verdict": "PASS",
+   "evidence": "Smallest chunk is chunk 4 \"Mark five claims yourself\" L44-48: carries a claim (L46 \"The scoreboard then shows how often the scorer agrees with you\") plus prompt; chunk 7 L80 carries definition of judge file. No wait-state-only slide.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 6,
+   "rule_lead": "Header self-carries at projection distance.",
+   "verdict": "PASS",
+   "evidence": "closest: chunk 8 header \"Phase 5: Close, name the rescue\" L86 vs body L90 \"You decide whether the doubt was right and whether the judge caught it\" - header is a phase label plus a mood-contract word; body delivers the close it labels. chunk 1 \"Phase 1: The target and the benchmark\" L11 - body L15 covers the target and roster; the benchmark is framed in chunk 0 L9. Within phase-label latitude (rule 15).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 7,
+   "rule_lead": "LLM-cadence caps.",
+   "verdict": "PASS",
+   "evidence": "closest: L68 \"One detector catches more... Another catches less... A third catches...\" is a varied-content trio, not anaphora. grep \"Not .*\\. Not\" none; no self-grading superlative (L100 \"a judge you can defend\" is a claim about the artefact, earned by the exercise); no number+retraction (L21 \"Thirty is enough to start seeing the pattern\" has no retraction); no abstraction stacks or empty-leg verb triplets.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 8,
+   "rule_lead": "Internal dialect never lands on a slide.",
+   "verdict": "PASS",
+   "evidence": "closest: L86 header \"name the rescue\" - ordinary English, not repo vocabulary (maintainer block uses it as \"mood contract - mechanical rescue\" but the body word is plain); body terms judge file, roster, scorer, detector are exercise vocabulary defined on the slide. grep for compendium/surface/firing/forcing function/beat/mood in body view: none.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": true,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 9,
+   "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
+   "verdict": "PASS",
+   "evidence": "closest: chunk 9 L98 \"**The point:**\" and L102 \"**Recipe 5**\" = 2 bolds on one slide; both are labels/handles under 5 words (exercise structural marker and a coined term), no bolded sentence; chunk 0 L5/L7 \"**Session**\", \"**What you do:**\" are widget labels. Prompt widget labels are template. No whole-sentence bold.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 10,
+   "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
+   "verdict": "PASS",
+   "evidence": "file is an exercise included by curriculum/trainings/agents-101/output-quality.md L28 and its sections sit under the exercise wrapper; no phase-less prose section outside it. Both layouts not rendered here (unverified by render).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": true,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 11,
+   "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
+   "verdict": "PASS",
+   "evidence": "node scripts/check-slide-numbering.js --file curriculum/exercises/hallucination-bakeoff.md -> \"OK - 1 files, Phase/Step numbering consistent.\" exit 0; headers Phase 1-5 consecutive; L3 time line refs resolve.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 12,
+   "rule_lead": "Page geometry dies at the cut; reading order survives.",
+   "verdict": "PASS",
+   "evidence": "node scripts/check-slide-deixis.js --file curriculum/exercises/hallucination-bakeoff.md -> \"OK - 1 files, no page-geometry pointers across the slide cut.\" exit 0; judgement read: L31 \"In your main session:\" is not positional.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": true,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 13,
+   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+   "verdict": "PASS",
+   "evidence": "single in-body link L102 \"[Cookbook for Agent System Design](../trainings/...)\" names the document in its text, sentence works with link stripped; no geometry location. Review surface, no gate.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 14,
+   "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
+   "verdict": "PASS",
+   "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/hallucination-bakeoff.md -> \"slides: 9 limits: 210 words / 6 bullets  oversized: 0\" exit 0. Diff added 2 sentences to chunk 3 (L29), still within cap.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 15,
+   "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+   "verdict": "PASS",
+   "evidence": "exercise headings are imperative or phase labels: L19 \"Extract the claim pool\", L44 \"Mark five claims yourself\", L66 \"Read the scoreboard and name the surprise\", L96 \"Carry the benchmark pattern forward\"; closest: L96 reads as a label-imperative, no declarative law owed here (no beat where the exercise names a law as a header).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 16,
+   "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
+   "verdict": "PASS",
+   "evidence": "closest: L100 \"The winner becomes a judge you can defend.\" after L98 \"The point:\" - adds the outcome object beyond the first sentence; L84 \"It is narrow on purpose: the \"known limit\" line names what you measured and decided not to chase\" adds the move/object of the Known limit line, not a restatement. New diff sentences L29 \"If a helper agent reads far past its roster, stop it and steer it narrower.\" each add a move (steer, ask to cover). No doctrine restatement, design commentary, or koan.",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 17,
+   "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no ## line changed in git diff 78d17fc9..HEAD and no provenance note in maintainer block",
+   "fix_hint": null,
+   "blocking": false,
+   "chunks_flagged": []
+  }
+ ],
+ "suggestions": [
+  {
+   "rule": "check_slides.md \u00a71",
+   "line": 62,
+   "now": "Ask the agent to explain both using your own rows.",
+   "proposed": "Ask the agent to explain precision and recall using your own rows."
+  }
+ ],
+ "blocking_findings_count": 0,
+ "nonblocking_findings_count": 0,
+ "notes": "Accept-notes in maintainer block: L106 Quality line; L109 TODO Cowork edition review 2026-04-29 (prompt-block, not a slides attestation). Neither attests a slides item. Cross-class (writing, not mine): maintainer L114 \"The body no longer carries...\" and L165 \"the Close now carries..., not a separate limit line\" state the diff rather than what is true now (check_writing s3). Diff 78d17fc9..HEAD changed body only at L29 (two added sentences). Expanded view run for prompt blocks. Brief built normally. Layout render of both decks not performed."
 }

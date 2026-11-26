@@ -2,47 +2,17 @@
  "class": "pedagogy",
  "file": "curriculum/exercises/author-security-skill.md",
  "training": "agents-101",
- "verdict": "REVISE",
- "body_sha": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+ "verdict": "PASS",
+ "body_sha": "295ecbc7a823d46ead0fb7124a8ca2c740712b41bafc2aee2d0f806c0455442e",
  "shape_hash": "06ae99c98731b6ec",
  "rules_evaluated": [
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 1,
-   "rule_lead": "**Walk-away test (M2+).**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "interactive authoring beat, no send-off",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 2,
-   "rule_lead": "**50% magic rule (M3–M8).**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "arc-level, not a per-exercise property",
-   "fix_hint": null,
-   "blocking": false
-  },
   {
    "compendium": "check_pedagogy.md",
    "rule_index": 3,
    "rule_lead": "**Trust the agentic design — no human backstops.**",
    "verdict": "PASS",
-   "evidence": "L55 *\"You choose. Optimise for what I can't steer.\"* hands judgment to the agent; closest to a human backstop is L57 \"Check the agent's package-complete list\", a bounded presence check, not an if-then ruleset; no irreversible action here.",
+   "evidence": "L41 \"Push back on anything that sounds like a generic GDPR brochure.\" Agent judgment is named (Phase 3 prompt \"You choose\"); no manual-observer backstop or if-then ruleset; stays inside.",
    "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 4,
-   "rule_lead": "**Quality ladder.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "arc-level ladder, owned by sim/story",
    "fix_hint": null,
    "blocking": false
   },
@@ -51,18 +21,8 @@
    "rule_index": 6,
    "rule_lead": "**One exercise = one bounded activity.**",
    "verdict": "PASS",
-   "evidence": "L11 \"Stop when the skill exists.\" One bounded activity; Phase 1/2/3 at L21/31/43 are phases, never sub-numbered exercises.",
+   "evidence": "L3 \"Phase 1 ~10, Phase 2 ~8, Phase 3 ~22\" and L11 \"Stop when the skill exists\": phases are headed Phase N, not sub-numbered exercises; one arc, one artifact (the skill).",
    "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 7,
-   "rule_lead": "**Modules composable across variants.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "no VARIANT fork in file; rt-* divs are runtime forks",
    "fix_hint": null,
    "blocking": false
   },
@@ -71,28 +31,8 @@
    "rule_index": 8,
    "rule_lead": "**Three-level completeness.**",
    "verdict": "PASS",
-   "evidence": "L91 skill is \"the first loaded use should be the real audit\" and L115 pairs with audit-your-agent: artifact chains to a consumer; strategy frame in L13.",
+   "evidence": "L91 \"The policy files are source material. The skill carries the judgment...\"; chain reads backward: skill (L11) <- dictated lines (L39) <- raw report (L25) <- policies; feeds audit-your-agent (L115 pairs-with).",
    "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 9,
-   "rule_lead": "**Pattern-recognition LOs need n≥2 instances with contrast.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "no pattern-recognition LO owned by this file; LOs live in module file",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": "9b",
-   "rule_lead": "**Progression-with-variations is the spine.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "no move or model repeated across modules inside this file",
    "fix_hint": null,
    "blocking": false
   },
@@ -101,7 +41,7 @@
    "rule_index": 10,
    "rule_lead": "**Student agency — adults decide.**",
    "verdict": "PASS",
-   "evidence": "closest L37 \"Skip studying the policy files first\": imperative pacing, but it protects the dictation forcing function and the Phase 2 prompt itself enforces it (\"Before you read or write any package files, ask me\"), not a scripted sit-time.",
+   "evidence": "L9 \"Name it `m4-security-skill` if your runtime supports session names.\" and L55 \"hand back the rest\" are offered, not compelled; no forced pacing found in body.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -111,7 +51,7 @@
    "rule_index": 11,
    "rule_lead": "**Delegation — student brings, Claude screens.**",
    "verdict": "PASS",
-   "evidence": "L37/L39 student brings the 3-5 lines (judgment); prompts only ask the agent to read files on disk (module-4/policies/, memory/, agents/), no unreachable Jira/wiki access.",
+   "evidence": "L25 policies are on disk in module-4/policies/; L39 student supplies the judgment lines (what leaks, which customer), Claude screens policy files. Closest: Phase 1 prompt reads memory/ sources/ agents/ which exist from modules 2-3; stays inside.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -121,7 +61,7 @@
    "rule_index": 12,
    "rule_lead": "**Split mega-exercise when phases = distinct skills + distinct artifacts.**",
    "verdict": "PASS",
-   "evidence": "closest L47-49 Phase 3 authoring vs Phase 1 audit are two skills, but chain mechanically: Phase 3 prompt reads outputs/policy-report-raw.md, no cognitive break, 40 min total.",
+   "evidence": "L3 phases chain mechanically (raw report -> dictation -> skill) with no natural pause; maintainer L139-142 gives the 40-minute rationale; one exercise is right.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -131,7 +71,7 @@
    "rule_index": 13,
    "rule_lead": "**Artifact-realism check.**",
    "verdict": "PASS",
-   "evidence": "crux.md `## Answer` is written by three-minds-one-synthesis-1.md (grep verified); module-4/policies/ shipped by prework.md L112; skill-creator named for Cowork, checked in maintainer L127. module-3/stances/ not individually verified.",
+   "evidence": "L69 skills dir resolved per runtime via {{artifact:project-skills}} (prompts/author-security-skill-4.md); L75 skill-creator named for Cowork, a shipped skill; module-4/policies/ shipped per L25 with Nordic-baseline fallback.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -141,18 +81,8 @@
    "rule_index": 14,
    "rule_lead": "**Teach principle + technique — default.**",
    "verdict": "PASS",
-   "evidence": "L13 gives WHY and HOW: \"packages an expertise ... loads when the work matches. You run it again instead of re-prompting from memory.\"",
+   "evidence": "L13 \"A skill packages an expertise (rules, checklists, the moves an agent runs) into something the agent loads when the work matches.\" gives the WHY and HOW before the first invocation.",
    "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 15,
-   "rule_lead": "**Auto-fire sim+eval after significant rewrite.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "process rule; this judge run is the fire",
    "fix_hint": null,
    "blocking": false
   },
@@ -161,7 +91,7 @@
    "rule_index": 16,
    "rule_lead": "**Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.**",
    "verdict": "PASS",
-   "evidence": "closest L55 body-held phrase *\"You choose...\"*: an optional refinement, the mandatory moves (MUST four patterns, grill, checklist) sit in the L51 fence; L57 body is a recovery move.",
+   "evidence": "L57 \"Ask the agent to show you where the skill covers each of the four named risk patterns\" sits in body but the load-bearing machinery (four named patterns, grill, package checklist) is fenced in prompts/author-security-skill-3.md; L55-57 is the conversational optional tail (§16 Boundary 2). Count-scripts: none found.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -171,7 +101,7 @@
    "rule_index": 17,
    "rule_lead": "**Corporate infra = nice-to-have, never forcing function.**",
    "verdict": "PASS",
-   "evidence": "L25 \"your company's distilled policies, or the Nordic-baseline reference\" gives a personal path with the same teaching moment.",
+   "evidence": "L25 \"your company's distilled policies, or the Nordic-baseline reference\": personal path with same teaching moment; no corporate infra needed.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -181,68 +111,8 @@
    "rule_index": 18,
    "rule_lead": "**Personal-first, team promotion via human conversation.**",
    "verdict": "PASS",
-   "evidence": "L69 installs a project skill; no auto-promotion to shared infra, no team-PR step taught.",
+   "evidence": "L61 \"Save the authored source as a personal skill\"; install goes to the student's own training directory, no auto-promotion to shared infra.",
    "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 19,
-   "rule_lead": "**Measure silent failure, not just friction.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "cohort-evaluation rule, not a file property",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 20,
-   "rule_lead": "**Don't pre-set categories before experiment runs.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "eval-design rule, no experiment run",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 21,
-   "rule_lead": "**Verification layers sample DIFFERENT error distributions — not belt-and-braces.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "process rule on verification layers, not a file property",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": "21b",
-   "rule_lead": "**Cheap-before-expensive verification ordering.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "process rule on verification ordering",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 22,
-   "rule_lead": "**Rule in memory without forcing function = worse than no rule.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "process rule on memory entries",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 23,
-   "rule_lead": "**Short skeptical pushback on \"done\" = re-verify trigger.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "conversation rule on pushback, not a file property",
    "fix_hint": null,
    "blocking": false
   },
@@ -251,7 +121,7 @@
    "rule_index": 24,
    "rule_lead": "**Cohort execution is trainer-paced + concurrent, not sequential.**",
    "verdict": "PASS",
-   "evidence": "L3 \"Phase 1 ~10, Phase 2 ~8, Phase 3 ~22\" sums to 40; trainer-paced concurrency model holds; the guess beat and install carry no minutes (see suggestion/notes) but are short.",
+   "evidence": "L3 \"40 minutes. Phase 1 ~10, Phase 2 ~8, Phase 3 ~22.\" Concurrent model; only Phase 3 grill is a long wait and it is budgeted at 22.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -261,7 +131,7 @@
    "rule_index": 25,
    "rule_lead": "**Host-skill optional; maintainer blocks trainer-only.**",
    "verdict": "PASS",
-   "evidence": "grep -ciE \"nerd|teacher claude\" file -> 0; maintainer coach lines name the trainer (\"Coach:\").",
+   "evidence": "grep -n -i -E \"Nerd|Teacher\" -> 0 hits in body; maintainer Watch-fors L133-137 use \"Coach:\" with no host-skill named as actor.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -271,7 +141,7 @@
    "rule_index": 26,
    "rule_lead": "**Reflection beats: in-chat over file-write.**",
    "verdict": "PASS",
-   "evidence": "closest L17 \"The guess goes in a file\": downstream reader exists, Phase 1 prompt reads module-4/guess.md and puts it atop the report; legitimate write.",
+   "evidence": "L19 guess file module-4/guess.md has a downstream reader: Phase 1 prompt \"If module-4/guess.md exists, put my guess at the top of the report\"; no proof-of-reflection files.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -281,18 +151,8 @@
    "rule_index": 27,
    "rule_lead": "**Classroom = default delivery; body teaches work, trainer manages room.**",
    "verdict": "PASS",
-   "evidence": "body grep for room|pair|discuss|colleague|together over L1-92 -> 0 hits; closest L41 \"Push back on anything...\" is about the work.",
+   "evidence": "grep -n -i -E \"discuss|pair|room|share\" body (L1-92) -> 0 hits; maintainer matches are L102/L115 only (Pairs with). No cohort-management sentences. Closest: L55 student-to-agent exchange, not a group beat.",
    "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 29,
-   "rule_lead": "**Eval = fixed yardstick; thing measured learns.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "no scorer or loop in this exercise",
    "fix_hint": null,
    "blocking": false
   },
@@ -301,7 +161,7 @@
    "rule_index": 30,
    "rule_lead": "**Reading burden for verification = banned. Claude audits Claude.**",
    "verdict": "PASS",
-   "evidence": "closest L57 \"Check the agent's package-complete list\": a bounded 4-item presence check, and L41/L57 rule-voice reads are the student's own domain judgment that Claude cannot make; not correctness-proofreading. The check's object is the defect, filed under §31.",
+   "evidence": "L57 \"keep the report narrow enough to read\" is a taste/ownership ask on the student's own policy tone, not a correctness read; correctness check is delegated to Claude via \"show you where the skill covers each\".",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -310,39 +170,19 @@
    "compendium": "check_pedagogy.md",
    "rule_index": 31,
    "rule_lead": "**Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.**",
-   "verdict": "REVISE",
-   "evidence": "L57 \"Check the agent's package-complete list. If any of the four named risk patterns is missing from the agent-security lens, ask for it.\" The list in the Phase 3 prompt (prompts/author-security-skill-3.md L37-38) holds only two file entries (SKILL.md, supporting reference files) and never mentions the four patterns, so the list the student is told to read cannot show a missing pattern; the check rests on Claude's file-existence summary, not on the artifact. Harm present: the exercise's named forcing function (maintainer L134 \"The four are the forcing function\") passes silently and the audit next exercise runs a lens missing a class.",
+   "verdict": "PASS",
+   "evidence": "L57 \"Ask the agent to show you where the skill covers each of the four named risk patterns. Ask for any that is missing.\" The prior L57 (read the agent's package-complete list) is gone; student now asks for location of each named pattern in the lens and pushes back by name, which is a copyable push-back against self-report inflation. Closest to violating: the check is still an agent account rather than the student opening SKILL.md; harm (a silently missing class) is mitigated because prompt-3 itself says the lens MUST cover the four by name. Suggestion filed.",
    "na_reason": null,
-   "fix_hint": "Point the check at the artifact: tell the student to open SKILL.md and find each of the four patterns in the agent-security lens (or have the prompt's checklist name them), then ask for any missing by name.",
-   "blocking": true
+   "fix_hint": null,
+   "blocking": false
   },
   {
    "compendium": "check_pedagogy.md",
    "rule_index": 32,
    "rule_lead": "**Offered structures need forced-engagement mechanic.**",
    "verdict": "PASS",
-   "evidence": "closest L41 \"Push back on anything that sounds like a generic GDPR brochure\" and L57 \"Make the rules sound like your company's policy\": forced customization attached to an offered package.",
+   "evidence": "L41 \"Push back on anything that sounds like a generic GDPR brochure\" and L57 \"Make the rules sound like your company's policy\" force customization of the offered package; Phase 2 prompt \"propose the reusable package shape ... wait for me to steer\".",
    "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 33,
-   "rule_lead": "**Source-type blindness on ingestion.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "ingest is distilled policy .md files, no slide-format folder path",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 34,
-   "rule_lead": "**Task selection drives outcome → name floor AND ceiling.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "no task-selection step; the system under audit is fixed from M2-3",
    "fix_hint": null,
    "blocking": false
   },
@@ -351,7 +191,7 @@
    "rule_index": "34b",
    "rule_lead": "**Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.**",
    "verdict": "PASS",
-   "evidence": "each Watch-for failure is recoverable by a body line already present: L37 (pre-reading), L41 (GDPR brochure), L77 (Save), L85-91 (toy-run, first loaded use is the audit); no hedge holds a section up.",
+   "evidence": "Maintainer Watch-fors L133-137 each carry a coach move recoverable by a body line; none hedges the section's own premise (premise-test: removing them leaves the exercise defensible).",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -361,7 +201,7 @@
    "rule_index": 35,
    "rule_lead": "**Audience tier determines authoring substrate.**",
    "verdict": "PASS",
-   "evidence": "A101 builder-leader audience: Claude Code skill authoring with install via prompt, L63-69; Cowork path L73-79.",
+   "evidence": "Agents 101 builder-leader tier: Claude Code skills (L13, L61-69); no authored plugin required.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -371,28 +211,8 @@
    "rule_index": 36,
    "rule_lead": "**Verification machinery needs smoke-test before trust.**",
    "verdict": "PASS",
-   "evidence": "closest L69 \"Run `ls .claude/skills/agent-audit/` to confirm\" is existence only; the load smoke-test is deliberately the next exercise's real audit (maintainer L136 \"first loaded use is the real audit\"), and no verdict is trusted before that run.",
+   "evidence": "Built-not-yet-tested machinery: L69 \"ls ... to confirm\" shows install; first loaded use is the real audit in audit-your-agent (maintainer L111 SUPERSEDED toy verification, deliberate 2026-04-29, L136 \"Skip the toy run\"). Closest to violating: no synthetic-input smoke test in THIS file. Harm (untested gate trusted) is absent because the next exercise opens with load verification and runs it on the real system; rule question for maintainer: does the smoke-test requirement span the exercise pair?",
    "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 37,
-   "rule_lead": "**Context-loading tiers as staged progression.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "module-level tier progression, not placed in this file",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 39,
-   "rule_lead": "**Removals are strategic — ask before cutting.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "process rule; whether the 725101ec..HEAD removals were maintainer-called is a maintainer-held premise (61a g)",
    "fix_hint": null,
    "blocking": false
   },
@@ -401,7 +221,7 @@
    "rule_index": 41,
    "rule_lead": "**Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.**",
    "verdict": "PASS",
-   "evidence": "L73-79 Cowork fork keeps the agent authoring on both runtimes (skill-creator drafts, student presses Save); fork is right when both stay agentic.",
+   "evidence": "L63-81 the two runtime divs both stay agentic (agent installs vs skill-creator drafts + student presses Save); no agent-fetch vs manual-fetch fork.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -411,18 +231,8 @@
    "rule_index": 42,
    "rule_lead": "**Load-bearing platform feature = no fallback. Gate or redesign.**",
    "verdict": "PASS",
-   "evidence": "closest L9 \"if your runtime supports session names\" is a non-load-bearing nicety, not a fallback for the central move.",
+   "evidence": "L75-79 Cowork path is a different surface for the same save, not a diluted fallback; no \"if your environment does not support X, just do Y\" sentence (grep -c \"if your\" -> 0).",
    "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 43,
-   "rule_lead": "**Eval architecture — partition by evidence source, not criterion count.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "eval-architecture rule, not a file property",
    "fix_hint": null,
    "blocking": false
   },
@@ -431,18 +241,8 @@
    "rule_index": 44,
    "rule_lead": "**Plug points + UX.**",
    "verdict": "PASS",
-   "evidence": "plug points named by kind (maintainer L123-124) and consumed downstream (\"plus the lines I just typed\" in Phase 3 prompt); prompt-to-prompt walk resolves every path (crux.md, guess.md, policy-report-raw.md, module-4/skills/agent-audit/). One UX mismatch (L49 vs prompt round cap) is non-load-bearing, filed as suggestion.",
+   "evidence": "Plug points (maintainer L122-124) name kinds: policy reference content under module-4/policies/ and participant-typed lines; Phase 2 prompt and Phase 3 prompt consume both downstream so absence dilutes the skill. UX: each prompt paste-ready; closest to \"wait, what\": Phase 3 prompt is long but one copy-paste.",
    "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 45,
-   "rule_lead": "**Per-exercise leap test — 3 observable Monday outcomes.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "leap tests are an AE101/APT101 convention; 0 of 4 sampled A101 exercises carry one, training-level call",
    "fix_hint": null,
    "blocking": false
   },
@@ -451,19 +251,19 @@
    "rule_index": 47,
    "rule_lead": "**Per-phase failure mode + escape hatch.**",
    "verdict": "REVISE",
-   "evidence": "Maintainer Watch-fors L132-137 cover Phase 2, Phase 3 patterns, Cowork Save and toy-run, but nothing for the Guess-first beat (L15-19) or Phase 1: both carry forcing moves (\"Do not audit anything yet\", \"Do not judge the guess; I compare\") and no dominant failure mode or escape hatch is named (e.g. student asks the agent whether the system is safe, or answers with a hedge so the comparison is moot). Harm: new beat has no trainer lookup.",
+   "evidence": "Maintainer Watch-fors L132-137 cover Phase 2 pre-reading, Phase 3 patterns, Cowork Save, toy-run, GDPR brochure. Nothing covers Guess-first (L15-19, forcing moves \"Do not audit anything yet\" and \"Do not comment on it\" in prompts/author-security-skill-guess.md) or Phase 1 (L21-29, \"Do not judge the guess; I compare\"). Dominant failure (student hedges or asks the agent whether the system is safe, making the comparison moot) and an escape hatch are unnamed. Harm present: the newest beat has no trainer lookup.",
    "na_reason": null,
-   "fix_hint": "Add a Guess-first Watch-for with its failure mode and coach line in the maintainer block (applied directly, not a card).",
+   "fix_hint": "Add a Guess-first/Phase 1 Watch-for with failure mode and coach line in the maintainer block (applied directly, not a card).",
    "blocking": false
   },
   {
    "compendium": "check_pedagogy.md",
    "rule_index": 48,
    "rule_lead": "**Heavy fan-out prompts get body recovery callout.**",
-   "verdict": "PASS",
-   "evidence": "signal literal-match: Phase 1 prompt \"Read everything in module-4/policies/\" plus a multi-directory audit; but the folder is distilled policy files and one report is the output, no N>2 subagents or polling; harm (silent long run, shallow stop) mitigated by the prompt's \"An 'I can't tell' is a better answer\". Rule question: if the Nordic-baseline reference is large, a callout is owed.",
+   "verdict": "REVISE",
+   "evidence": "L25-27 Phase 1 prompt (prompts/author-security-skill-1.md) \"Read everything in module-4/policies/ ... audit the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/\" is a read-everything-in-X audit across five trees (§48 signal). No body callout before it names the heavy run or recovery for over-reading or premature stop; grep -n -i -E \"interrupt|so far|keep going|there's more\" on body -> 0 hits (only maintainer L134 matched \"forcing\"). Harm present: a run that streams then quits shallow, or sprawls, leaves the student with no move.",
    "na_reason": null,
-   "fix_hint": null,
+   "fix_hint": "Add a short body callout before the Phase 1 prompt: expect a heavy read; if it sprawls say \"tell me what you've found so far\"; if it stops early say \"there's more here, keep going\".",
    "blocking": false
   },
   {
@@ -471,7 +271,7 @@
    "rule_index": 49,
    "rule_lead": "**Save belongs with authoring, not loading.**",
    "verdict": "PASS",
-   "evidence": "L59-81 save/install closes the CREATE exercise in both runtime divs (rt-code L63-71, rt-cowork L73-81); next exercise opens with verification only.",
+   "evidence": "L59-81 install/save closes the CREATE exercise on every runtime (rt-code ls confirm L69, rt-cowork Save L77); L87 use-exercise loads separately. Parallel rt-* divs present.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -481,18 +281,8 @@
    "rule_index": 50,
    "rule_lead": "**Convenience-driven prompts with known shape-bias → body acknowledgment callout.**",
    "verdict": "PASS",
-   "evidence": "closest L36-38 of the Phase 3 prompt, the self-confirmed package-complete checklist: file-existence is objective so self-charity does not bite; the coverage risk is filed under §31.",
+   "evidence": "Phase 3 prompt ends \"confirm this package-complete checklist\" (self-report convenience); L57 supplies the opt-in harsher move (ask where each of four patterns is covered, ask for any missing). Accepted-with-mitigation.",
    "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 51,
-   "rule_lead": "**Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "no prompt engineered to exhibit a risk; raw run is a baseline, not a deliberate antipattern",
    "fix_hint": null,
    "blocking": false
   },
@@ -501,7 +291,7 @@
    "rule_index": 52,
    "rule_lead": "**Session widget — `**",
    "verdict": "PASS",
-   "evidence": "L5 `**Session** *(new, \"Module 4 - Security skill\")*` at exercise top, pattern (a); rename now plain prose at L9 instead of a CLI-only fence.",
+   "evidence": "L5 **Session** *(new, \"Module 4 - Security skill\")* at exercise top: pattern (a), default, in the right shape.",
    "na_reason": null,
    "fix_hint": null,
    "blocking": false
@@ -511,38 +301,8 @@
    "rule_index": "52b",
    "rule_lead": "**Widgets carry semantics, not just emphasis — match the widget to MEANING, never to how loud it renders.**",
    "verdict": "PASS",
-   "evidence": "L5 Session widget starts a session: meaning matches; no loud-but-misfit widget.",
+   "evidence": "L5 Session widget starts a new session (matches meaning); no HOX/Note misuse for loudness.",
    "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": "52a",
-   "rule_lead": "**Module prose carrying a `**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "already extracted: file is an exercise under curriculum/exercises/",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": "52c",
-   "rule_lead": "**Exercise lead-in trio — three slots, three tenses. A slot filled past its label is this corpus's most common defect.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "Agents 101 exempt per the rule; closing sections are one training-level architecture",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": "52d",
-   "rule_lead": "**Finding the point — four moves, learned writing M1's set 2026-08-12.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "depends on the §52c trio, A101 exempt",
    "fix_hint": null,
    "blocking": false
   },
@@ -551,88 +311,8 @@
    "rule_index": 53,
    "rule_lead": "**Body prose must not supply an answer its prompt asks for — position is not the test (widened 2026-08-12).**",
    "verdict": "PASS",
-   "evidence": "closest L29 \"Below it are the rows your guess could not see\": sits below the prompt and previews the outcome, but it is the beat's non-obvious value claim declared up front (boundary on (d)); the rest names artifact/constraint.",
+   "evidence": "L29 \"The report opens with your guess. Below it are the rows your guess could not see\" describes artifact contract plus the beat's non-obvious value claim (declared up front per §53 Boundary on (d)); L41 \"The agent then reads the raw report...\" restates prompt activity, no answer supplied. Closest: L29; stays inside.",
    "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 56,
-   "rule_lead": "**Engineer-audience audit fixes default to body callout, not forcing function.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "AE101 audience rule; no audit-fix body-vs-fence choice here",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 57,
-   "rule_lead": "**Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "no multi-session mechanic added",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 58,
-   "rule_lead": "**`/clear` = tool, not ceremony.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "no /clear beat",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 59,
-   "rule_lead": "**Inbound links preserve pedagogical beat across reference restructuring.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "no reference restructuring",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 60,
-   "rule_lead": "**Scan at the unit the rule names, not convenient larger one.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "scanning-discipline rule, not a file property",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 61,
-   "rule_lead": "**Verify mechanism before proposing surgery.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "process rule on proposing surgery",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": "61a",
-   "rule_lead": "**Acting on a flagged item (punchlist entry / audit finding / eval BLOCK) — verify before fixing; its prescribed fix is a hypothesis, not an instruction.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "process rule on acting on flagged items",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": "61b",
-   "rule_lead": "**An audit's card-shaped findings are discharged by CARDS, not by notes about them.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "process rule on audit cards",
    "fix_hint": null,
    "blocking": false
   },
@@ -641,18 +321,8 @@
    "rule_index": 62,
    "rule_lead": "**Callouts next to prompts: steer, don't pre-empt.**",
    "verdict": "PASS",
-   "evidence": "closest L57 names the four patterns, but the prompt L47-49 mandates them and maintainer L134 says first drafts omit one, so the callout is live recovery, not a ghost; L41 is steering-shaped.",
+   "evidence": "L55 \"hand back the rest: You choose. Optimise for what I can't steer.\" is a generalising steer, not a named-failure pre-emption; no callout targets a failure the prompt already prevents.",
    "na_reason": null,
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 63,
-   "rule_lead": "**Persistent TODO surfaces stale by default — audit before acting.**",
-   "verdict": "N/A",
-   "evidence": null,
-   "na_reason": "process rule on punchlists",
    "fix_hint": null,
    "blocking": false
   },
@@ -661,10 +331,417 @@
    "rule_index": 64,
    "rule_lead": "**Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.**",
    "verdict": "REVISE",
-   "evidence": "L127 \"CLI and Claude Code Desktop write `~/.claude/skills/<name>/SKILL.md` directly via prompt; install happens in `audit-your-agent.md` Phase 1\" and L107 \"this exercise now ends at the authored bundle\" restate delivery/install mechanics and are false against the body, which installs `.claude/skills/agent-audit/` here (L63-69). Harm present: duplicated delivery fact rotted into a contradiction a trainer would act on.",
+   "evidence": "L127 \"CLI and Claude Code Desktop write `~/.claude/skills/<name>/SKILL.md` directly via prompt; install happens in `audit-your-agent.md` Phase 1\" and L107 \"Runtime-fork install moved to `audit-your-agent.md`; this exercise now ends at the authored bundle\" restate delivery/install mechanics and contradict the body, which installs the skill here (L59-69, L142 \"Cowork personal-skill creation is part of packaging\"). Harm present: duplicated delivery fact rotted into a contradiction a trainer would act on; no pointer to training-architecture.md.",
    "na_reason": null,
    "fix_hint": "Replace the install/path restatement in capability check 1 and the L107 note with a one-line pointer to training-architecture.md; fix at the canonical home.",
    "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": null,
+   "judge_owned": true,
+   "rule_lead": "Look-lines name the object and the tell (judge-owned, template criterion)",
+   "verdict": "PASS",
+   "evidence": "L57 \"Ask the agent to show you where the skill covers each of the four named risk patterns. Ask for any that is missing.\" names the object (the agent's account of coverage in the agent-security lens) and the tell (a named pattern with no location). Cross-check of maintainer failure rows: GDPR brochure L41 tell in body; pre-reading L133 is the student's own act; Cowork Save L77 has no in-moment tell but §49 puts the autocomplete check in the next exercise. Closest: L29/L17 comparison lines, which name the object (guess vs rows).",
+   "na_reason": null,
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 1,
+   "rule_lead": "**Walk-away test (M2+).**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "interactive authoring beat, no send-off",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 2,
+   "rule_lead": "**50% magic rule (M3–M8).**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "arc-level, not a per-exercise property",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 4,
+   "rule_lead": "**Quality ladder.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "arc-level ladder, owned by sim/story",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 7,
+   "rule_lead": "**Modules composable across variants.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no VARIANT fork in file; rt-* divs are runtime forks",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 9,
+   "rule_lead": "**Pattern-recognition LOs need n≥2 instances with contrast.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no pattern-recognition LO owned by this file; LOs live in module file",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "9b",
+   "rule_lead": "**Progression-with-variations is the spine.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no move or model repeated across modules inside this file",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 15,
+   "rule_lead": "**Auto-fire sim+eval after significant rewrite.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "process rule; this judge run is the fire",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 19,
+   "rule_lead": "**Measure silent failure, not just friction.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "cohort-evaluation rule, not a file property",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 20,
+   "rule_lead": "**Don't pre-set categories before experiment runs.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "eval-design rule, no experiment run",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 21,
+   "rule_lead": "**Verification layers sample DIFFERENT error distributions — not belt-and-braces.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "process rule on verification layers, not a file property",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "21b",
+   "rule_lead": "**Cheap-before-expensive verification ordering.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "process rule on verification ordering",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 22,
+   "rule_lead": "**Rule in memory without forcing function = worse than no rule.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "process rule on memory entries",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 23,
+   "rule_lead": "**Short skeptical pushback on \"done\" = re-verify trigger.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "conversation rule on pushback, not a file property",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 29,
+   "rule_lead": "**Eval = fixed yardstick; thing measured learns.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no scorer or loop in this exercise",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 33,
+   "rule_lead": "**Source-type blindness on ingestion.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "ingest is distilled policy .md files, no slide-format folder path",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 34,
+   "rule_lead": "**Task selection drives outcome → name floor AND ceiling.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no task-selection step; the system under audit is fixed from M2-3",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 37,
+   "rule_lead": "**Context-loading tiers as staged progression.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "module-level tier progression, not placed in this file",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 39,
+   "rule_lead": "**Removals are strategic — ask before cutting.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "process rule; whether the 725101ec..HEAD removals were maintainer-called is a maintainer-held premise (61a g)",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 43,
+   "rule_lead": "**Eval architecture — partition by evidence source, not criterion count.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "eval-architecture rule, not a file property",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 45,
+   "rule_lead": "**Per-exercise leap test — 3 observable Monday outcomes.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "leap tests are an AE101/APT101 convention; 0 of 4 sampled A101 exercises carry one, training-level call",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 51,
+   "rule_lead": "**Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no prompt engineered to exhibit a risk; raw run is a baseline, not a deliberate antipattern",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "52a",
+   "rule_lead": "**Module prose carrying a `**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "already extracted: file is an exercise under curriculum/exercises/",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "52c",
+   "rule_lead": "**Exercise lead-in trio — three slots, three tenses. A slot filled past its label is this corpus's most common defect.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "Agents 101 exempt per the rule; closing sections are one training-level architecture",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "52d",
+   "rule_lead": "**Finding the point — four moves, learned writing M1's set 2026-08-12.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "depends on the §52c trio, A101 exempt",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 56,
+   "rule_lead": "**Engineer-audience audit fixes default to body callout, not forcing function.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "AE101 audience rule; no audit-fix body-vs-fence choice here",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 57,
+   "rule_lead": "**Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no multi-session mechanic added",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 58,
+   "rule_lead": "**`/clear` = tool, not ceremony.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no /clear beat",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 59,
+   "rule_lead": "**Inbound links preserve pedagogical beat across reference restructuring.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no reference restructuring",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 60,
+   "rule_lead": "**Scan at the unit the rule names, not convenient larger one.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "scanning-discipline rule, not a file property",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 61,
+   "rule_lead": "**Verify mechanism before proposing surgery.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "process rule on proposing surgery",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "61a",
+   "rule_lead": "**Acting on a flagged item (punchlist entry / audit finding / eval BLOCK) — verify before fixing; its prescribed fix is a hypothesis, not an instruction.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "process rule on acting on flagged items",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": "61b",
+   "rule_lead": "**An audit's card-shaped findings are discharged by CARDS, not by notes about them.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "process rule on audit cards",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 63,
+   "rule_lead": "**Persistent TODO surfaces stale by default — audit before acting.**",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "process rule on punchlists",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -673,8 +750,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "cross-module rescue belongs to module-open, owned by cross_module",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -683,8 +762,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "build-process rule, not a file property",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_pedagogy.md",
@@ -693,8 +774,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "arc-level story/depth, owned by story",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_workshop.md",
@@ -703,8 +786,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "solo exercise; no beat output belongs to a group (body grep room|pair|discuss|colleague -> 0; group_beat_markers fired on maintainer trainer text)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_workshop.md",
@@ -713,8 +798,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "solo exercise; no beat output belongs to a group (body grep room|pair|discuss|colleague -> 0; group_beat_markers fired on maintainer trainer text)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_workshop.md",
@@ -723,8 +810,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "solo exercise; no beat output belongs to a group (body grep room|pair|discuss|colleague -> 0; group_beat_markers fired on maintainer trainer text)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_workshop.md",
@@ -733,8 +822,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "solo exercise; no beat output belongs to a group (body grep room|pair|discuss|colleague -> 0; group_beat_markers fired on maintainer trainer text)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_workshop.md",
@@ -743,8 +834,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "solo exercise; no beat output belongs to a group (body grep room|pair|discuss|colleague -> 0; group_beat_markers fired on maintainer trainer text)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_workshop.md",
@@ -753,8 +846,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "solo exercise; no beat output belongs to a group (body grep room|pair|discuss|colleague -> 0; group_beat_markers fired on maintainer trainer text)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_workshop.md",
@@ -763,8 +858,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "solo exercise; no beat output belongs to a group (body grep room|pair|discuss|colleague -> 0; group_beat_markers fired on maintainer trainer text)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_workshop.md",
@@ -773,8 +870,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "solo exercise; no beat output belongs to a group (body grep room|pair|discuss|colleague -> 0; group_beat_markers fired on maintainer trainer text)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_workshop.md",
@@ -783,8 +882,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "solo exercise; no beat output belongs to a group (body grep room|pair|discuss|colleague -> 0; group_beat_markers fired on maintainer trainer text)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_workshop.md",
@@ -793,8 +894,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "solo exercise; no beat output belongs to a group (body grep room|pair|discuss|colleague -> 0; group_beat_markers fired on maintainer trainer text)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_workshop.md",
@@ -803,8 +906,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "solo exercise; no beat output belongs to a group (body grep room|pair|discuss|colleague -> 0; group_beat_markers fired on maintainer trainer text)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_workshop.md",
@@ -813,8 +918,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "solo exercise; no beat output belongs to a group (body grep room|pair|discuss|colleague -> 0; group_beat_markers fired on maintainer trainer text)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_workshop.md",
@@ -823,8 +930,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "solo exercise; no beat output belongs to a group (body grep room|pair|discuss|colleague -> 0; group_beat_markers fired on maintainer trainer text)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_workshop.md",
@@ -833,8 +942,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "solo exercise; no beat output belongs to a group (body grep room|pair|discuss|colleague -> 0; group_beat_markers fired on maintainer trainer text)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_workshop.md",
@@ -843,8 +954,10 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "solo exercise; no beat output belongs to a group (body grep room|pair|discuss|colleague -> 0; group_beat_markers fired on maintainer trainer text)",
-   "fix_hint": null,
-   "blocking": false
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   },
   {
    "compendium": "check_workshop.md",
@@ -853,36 +966,21 @@
    "verdict": "N/A",
    "evidence": null,
    "na_reason": "solo exercise; no beat output belongs to a group (body grep room|pair|discuss|colleague -> 0; group_beat_markers fired on maintainer trainer text)",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": null,
-   "rule_lead": "Look-lines name the object and the tell (judge-owned, template criterion)",
-   "verdict": "REVISE",
-   "evidence": "L57 \"Check the agent's package-complete list\" names an object (a file-existence list) that cannot carry the tell it is asked to find (a missing named pattern in the agent-security lens); same defect as the §31 row. Cross-check of maintainer per-phase failure rows: pre-reading L37, GDPR brochure L41 (tell named), Save L77, toy-run L85-91 all have body lines; only the four-pattern miss lacks a catchable tell.",
-   "na_reason": null,
-   "fix_hint": "Same fix as §31: name SKILL.md lens as the object and the four patterns as the tell.",
+   "fix_hint": "",
    "blocking": false,
-   "judge_owned": true
+   "carried_from": "87ca38d0ecac66fe737ad3f6de68d9e943e17b9609dcafc1ac35245aa8c0d87e",
+   "carried_shape": "06ae99c98731b6ec"
   }
  ],
  "suggestions": [
   {
-   "rule": "check_pedagogy.md §44",
-   "line": 49,
-   "now": "Ask the agent to author both lenses and name the risk patterns the agent-security lens covers. Expect many questions over several rounds.",
-   "proposed": "Ask the agent to author both lenses and name the risk patterns the agent-security lens covers. Expect a round of up to three questions, and sometimes one more."
-  },
-  {
-   "rule": "check_pedagogy.md §64",
-   "line": 99,
-   "now": "Re-sim owed after the skill-only refactor; prior run approved the two-lens security-check concept but assumed an older packaging shape.",
-   "proposed": "Re-sim owed: the last run assumed an older packaging shape."
+   "rule": "check_pedagogy.md §31",
+   "line": 57,
+   "now": "Ask the agent to show you where the skill covers each of the four named risk patterns. Ask for any that is missing.",
+   "proposed": "Open `module-4/skills/agent-audit/SKILL.md` and look in the agent-security lens for each of the four named risk patterns. Ask the agent for any you cannot find."
   }
  ],
- "notes": "Body ~610 words (sed 1,92 | wc -w) vs maintainer L101 \"~960 words vs 400-700\" stale figure (writing §3/§63 mode-b). Maintainer L107 and L127 contradict body install (see §64 row). Guess-first beat has no minutes marker and is outside the L3 time sum (non-blocking). Cross-class: \"the grill\" heading L53 leans on the prompt for its antecedent (writing/slides). Shape prefill fell through so every row authored; prefill merge owed. No dated accept-notes bearing on pedagogy; view accept_notes are structural stamps/resolved items only.",
- "blocking_findings_count": 1,
- "nonblocking_findings_count": 3
+ "blocking_findings_count": 0,
+ "nonblocking_findings_count": 3,
+ "notes": "Body changed since prior instance (L57 now asks for pattern coverage; prior section-31 REVISE resolved). Cross-class: maintainer block carries struck-through SUPERSEDED history (L99,L107,L111), writing section 3. Prompt-3 package checklist still omits the four patterns (behavior/technical)."
 }

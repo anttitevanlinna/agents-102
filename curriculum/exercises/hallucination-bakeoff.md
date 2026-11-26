@@ -26,7 +26,7 @@ The agent extracts a varied pool of 30 claims from the briefing. Thirty is enoug
 
 *8 min*
 
-Four helper agents run in parallel on the same claim pool, each with its own detection method and output file.
+Four helper agents run in parallel on the same claim pool, each with its own detection method and output file. This is a heavy run. If a helper agent reads far past its roster, stop it and steer it narrower. If a helper checked only some of the 30 claims, ask it to cover the rest.
 
 In your main session:
 
@@ -103,8 +103,8 @@ This was **Recipe 5**. The [Cookbook for Agent System Design](../trainings/agent
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 technical@cf4fd816 behavior@cf4fd816 strategy@78d17fc9 slides@78d17fc9)
-- judges @cf4fd816: writing PASS (verify-refuted), story PASS, technical PASS (3 findings see instances/agents-101--exercise--hallucination-bakeoff.technical.json), behavior PASS, pedagogy REVISE (2/1 see instances/agents-101--exercise--hallucination-bakeoff.pedagogy.json), strategy PASS, slides PASS (verify-refuted)
+**Quality:** compendium-audited 2026-11-26 (writing@42b9610a story@78d17fc9 technical@42b9610a behavior@42b9610a pedagogy@42b9610a strategy@78d17fc9 slides@42b9610a)
+- judges @42b9610a: writing PASS (4 findings see instances/agents-101--exercise--hallucination-bakeoff.writing.json), story PASS, technical PASS (3 findings see instances/agents-101--exercise--hallucination-bakeoff.technical.json), behavior PASS, pedagogy PASS (verify-refuted, 3 findings see instances/agents-101--exercise--hallucination-bakeoff.pedagogy.json), strategy PASS, slides PASS
 
 **TODO (Cowork edition review 2026-04-29):**
 - Phase 1 prompt still says "Spawn one subagent" / "Instructions for the subagent" / "When the subagent finishes" in the Cowork edition. Later detector prompt is already runtime-forked correctly. Prompt-block change is gated: propose before/after before editing.

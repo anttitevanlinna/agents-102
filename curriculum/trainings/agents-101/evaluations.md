@@ -40,11 +40,11 @@ Five minutes. The agent reviews every round and rewrites `./generation-tactic.md
 
 ## Push back on the summary
 
-Read the agent's summary and push back: *"That rule is too vague, make it observable"* / *"you added a rule the file already had after round 2."*
+Push back on the agent's summary: *"That rule is too vague, make it observable"* / *"you added a rule the file already had after round 2."*
 
-If the summary sounds too kind, ask: *"Which rule did you claim to remove but keep under another name? Quote both lines."*
+If the summary sounds too kind, check one removal: *"You said you removed a rule. Quote the old line and show me it is gone from the file."*
 
-You now have sharper rules in `./generation-tactic.md`, and one line in your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span> that sends every later briefing through those rules and the judge.
+You now have sharper rules in `./generation-tactic.md`. One line in your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span> tells every later agent to write briefings by those rules and score them with the judge.
 
 ## Key Concepts
 - The loop improves the work round after round with nobody editing. The judge never changes, so a better score means better work.

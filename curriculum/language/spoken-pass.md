@@ -4,7 +4,7 @@ Not student-facing. Sentence-level wording pass for Modules 1-6. Runs UNDER the 
 
 **Load first, every time.** `rewrite-rules.md` (this folder) · `evals/mechanical/persona-student/taste-rules.md` · `writing-style.md` · `taste-notes.md` newest entries · T1 leads `writing` + `student_facing`. Maintainer 2026-11-27, mid-pass: "did you load the compendiums?", "have you read the taste eval / rubriks?" A pass run without them repeats defects those files already name.
 
-**Length.** Shorter or nothing (`writing-style.md` § Editing a shipped slide). Added words are allowed only to name the actor or to make a claim true. A fragment gets its verb; pay for it by cutting the restatement next to it. Measure changed text before/after per module and say the number.
+**Length.** Shorter or nothing (`writing-style.md` § Editing a shipped slide). Added words are allowed only to name the actor or to make a claim true. A fragment gets its verb; pay for it by cutting the restatement next to it. Measure changed text before/after per module and say the number. How much a moment can carry (one sentence before a prompt, nothing after it that the reply will say): `attention-design.md`, one folder up.
 
 **Test per sentence.** Would a proficient agentic business person say it out loud to a colleague? Then the literal read:
 

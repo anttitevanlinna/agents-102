@@ -1,0 +1,79 @@
+# Attention design
+
+Not student-facing. How much text a learner's moment can carry, and where it sits on the page. `writing-style.md` governs how a sentence reads; this file governs how much of the learner's attention the page spends.
+
+**Frame (Antti 2026-11-27).** *"The handbook is not the thing. the promtps and cowork usage is the thing. How much text can we really have? Consider this as UX matter."* *"the point is really about mental capacity. Ease of navigation and how much can a student really read."* *"I did not say "cut". I said consider."* This file informs design. It licenses no cut.
+
+## The model
+
+A self-study learner works in two windows: the handbook beside the agent, half a laptop screen each. Three kinds of text compete for the same module time:
+
+| stream | where | who sets its length |
+|---|---|---|
+| handbook text | the page, outside prompt boxes | the writer |
+| prompt text | the page, shown in full | the prompt |
+| the agent's replies | the agent's window | the prompt, when it states a length |
+
+The handbook is the only stream that is not about the learner's own work. Working assumption: it is the first one skipped.
+
+A module is one cycle per prompt: find the place, read the text in front of the prompt, copy, wait, read the reply, come back. Capacity differs at each point of the cycle.
+
+| moment | what the learner can take | working limit |
+|---|---|---|
+| leaving for the agent (text before a prompt) | one thought, carried across the window switch | one sentence, up to 25 words |
+| coming back (text after a prompt) | attention is in the reply | nothing, or one sentence the reply cannot give |
+| an idea slide (a `##` without a prompt) | one glance | one idea, about 60 words |
+| a stretch without a prompt | about three minutes | six slides or 600 words |
+| names to hold | a handful | a file name only when the learner acts on that file |
+| a module | the time the prompts leave | about 2,000 words |
+
+Module arithmetic: one prompt cycle takes about five minutes (estimate). 8 to 16 prompts take 40 to 80 of 90 minutes. About 10 minutes remain for handbook text, 2,000 words at 200 words a minute.
+
+**Status of the limits.** Working values, the author's judgment from the measures below. Not maintainer rulings, not research findings, not gates.
+
+## Tests
+
+- **Added value.** A body sentence earns its place when it tells the learner something neither the prompt nor the agent's reply will. Antti on four eval-loop lines: *"NO ADDED VALUE"*, *"what is the real added value for added text?"*, *"not needed. less is better often"*.
+- **In view at Copy.** An instruction the learner needs while the agent works sits before the prompt, or close enough below it to be on screen when the learner presses Copy. Text under a prompt box taller than the screen is out of sight at that moment.
+- **Place-finding.** A learner returning from the agent after minutes away finds the next step by a landmark, not by reading.
+
+## Measures
+
+Open edition, Modules 1 to 6, Cowork profile, 720 by 800 pixels. Measured 2026-11-27 on main `3a89989`.
+
+`node curriculum/evals/scripts/attention-load.js --modules getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations`
+
+| module | stated min | handbook words | min at 200 wpm | prompts | prompt words | screens | screens, long prompts folded | file names in text |
+|---|---|---|---|---|---|---|---|---|
+| 1 Getting Going | 80 | 2,102 | 11 | 8 | 818 | 16.9 | 15.8 | 6 |
+| 2 Building Agent Systems | 90 | 3,276 | 16 | 16 | 1,903 | 26.9 | 23.8 | 16 |
+| 3 Multi-Agent Systems | 90 | 1,622 | 8 | 13 | 1,768 | 18.1 | 14.1 | 13 |
+| 4 Security | 105 | 2,895 | 14 | 12 | 1,427 | 23.4 | 20.1 | 10 |
+| 5 Catching Hallucinations | 85 | 1,878 | 9 | 10 | 1,485 | 18.2 | 14.5 | 4 |
+| 6 Evaluations | 90 | 2,199 | 11 | 9 | 1,432 | 18.8 | 15.0 | 7 |
+| all six | 540 | 13,972 | 70 | 68 | 8,833 | 122 | 103 | |
+
+- Words in front of a prompt: 32 of 68 prompts have 30 or fewer, 29 have 31 to 60, 7 have more.
+- 17 prompt boxes are taller than three quarters of the screen. The tallest is 1.7 screens.
+- 9 of 68 prompts state a length for the reply (pattern count, approximate).
+- Idea slides: 174, of which 26 are over 80 words. Longest stretch without a prompt, per module: 468, 730, 342, 810, 865, 651 words.
+- Source counts for scale, same method on both trainings: Agents 101 has 12,830 body words and 9,399 prompt words in six modules; Agentic Engineering 101 has 23,702 and 5,638. Agents 101 slides are the smaller ones; its prompts are the longer ones.
+
+What the measures say: handbook text in total is near the module limit in four of six modules (2 and 4 are over). The heavier loads are the prompt text on the page and the distance a learner scrolls to find the next step.
+
+## Navigation
+
+A module is 17 to 27 screens beside the agent. Prompt boxes carry no number and show every line.
+
+Sketch, not built: label each prompt with its place in the module (*Prompt 4 of 9*) and fold a prompt longer than eight lines to its first lines, with Copy still taking all of it. Six modules go from 122 screens to 103 and no word changes. Module 6, Phase 2 goes from 2.5 screens to 1.2, and the line that says what to do while the loop runs comes into view at Copy.
+
+Page with the measures and the step shown both ways: https://claude.ai/artifact/AvNMCXwk1wg17ScN1rx6on
+
+## Open
+
+- Length of the agent's replies: not measured. Needs a recorded walk through the course.
+- What real learners read and where they lose their place: no data. Copy events per prompt and the time between them would show it.
+- Reading speed for this audience: 200 words a minute is assumed.
+- Whether idea slides belong in the waits, when the agent works and the learner has attention to spare.
+- Prompt length as a load in itself, and how much of a prompt a learner reads before copying.
+- How many new names a module can introduce.

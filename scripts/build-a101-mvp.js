@@ -137,23 +137,6 @@ function dropModuleOnePrework(html) {
   return html.slice(0, start) + html.slice(end);
 }
 
-// A learner alone goes through the handbook in order, so a module's Prework list
-// only repeats the close of the module before it, as homework owed. The open
-// edition drops the list from every module; each module opens on Start here.
-function dropModulePreworks(html, modules) {
-  for (const m of modules) {
-    const at = html.indexOf(`<section class="module" id="${m.slug}">`);
-    if (at < 0) throw new Error(`Module section missing: ${m.slug}`);
-    const next = html.indexOf('<section class="module"', at + 1);
-    const start = html.indexOf('<h2 id="prework">', at);
-    if (start < 0 || (next >= 0 && start > next)) continue;
-    const end = html.indexOf('<h2', start + 1);
-    if (end < 0) throw new Error(`Prework block has no end: ${m.slug}`);
-    html = html.slice(0, start) + html.slice(end);
-  }
-  return html;
-}
-
 // Trainer demos: in a room the trainer runs them live. Alone, the learner reads
 // the same page as a short lesson, so the open edition keeps the body and drops
 // the "Demo: " label from the title wherever it appears.
@@ -546,7 +529,7 @@ ${SETUP_CSS}
 })();
 </script>\n${shell('figure-reader.html')}<script data-a101-handbook>\n${shell('deskpad.js')}\n</script>\n</body>`);
 
-    if (edition.open) html = hideVideoPlaceholders(addModuleTimes(addLicenceLine(retitleTrainerDemos(dropModulePreworks(html, modules))), modules));
+    if (edition.open) html = hideVideoPlaceholders(addModuleTimes(addLicenceLine(retitleTrainerDemos(html)), modules));
 
     // The edition hub has one destination. Existing customer hubs are untouched.
     if (edition.hub) fs.writeFileSync(path.join(customerDir, 'index.html'), `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agents 101 — ${edition.brand}</title><meta http-equiv="refresh" content="0; url=./agents-101/#start-learning"></head><body><p><a href="./agents-101/#start-learning">Start Agents 101</a></p></body></html>\n`);
@@ -585,4 +568,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { dropModuleOnePrework, dropModulePreworks, retitleTrainerDemos, hideVideoPlaceholders, EDITIONS, editionModules, editionCheckpoints, headerModules, addLicenceLine, addModuleTimes, buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };
+module.exports = { dropModuleOnePrework, retitleTrainerDemos, hideVideoPlaceholders, EDITIONS, editionModules, editionCheckpoints, headerModules, addLicenceLine, addModuleTimes, buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };

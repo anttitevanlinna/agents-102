@@ -8,7 +8,7 @@ const path = require('node:path');
 const { execFileSync } = require('node:child_process');
 const { createHash } = require('node:crypto');
 const { JSDOM, VirtualConsole } = require('jsdom');
-const { dropModulePreworks, retitleTrainerDemos, WORKBOOK_URL, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT } = require('./build-a101-mvp.js');
+const { retitleTrainerDemos, WORKBOOK_URL, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT } = require('./build-a101-mvp.js');
 const { renderCourseNavigation, COURSE_READING_CUE, EXTRACTION_BOOTSTRAP } = require('./a101-mvp-navigation.js');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -44,15 +44,7 @@ test('offline prework is copied from the rendered edition and fails on missing o
   assert.throws(() => prependOfflinePrework('<main>No M1</main>', rendered), /received 0/);
 });
 
-test('open edition drops each module Prework list and keeps the trainer demos without the Demo label', () => {
-  const mod = (slug, body) => `<section class="module" id="${slug}"><h1>${slug}</h1>${body}</section>`;
-  const html = mod('a', '<h2 id="prework">Prework</h2><p>Owed.</p><h2 id="start-here">Start here</h2><p>Go.</p>')
-    + mod('b', '<h2 id="start-here">Start here</h2><p>No list.</p>');
-  const out = dropModulePreworks(html, [{ slug: 'a' }, { slug: 'b' }]);
-  assert.doesNotMatch(out, /Owed|id="prework"/);
-  assert.match(out, /<h1>a<\/h1><h2 id="start-here">Start here<\/h2><p>Go\.<\/p>/);
-  assert.match(out, /No list\./);
-  assert.throws(() => dropModulePreworks(html, [{ slug: 'missing' }]), /Module section missing/);
+test('open edition keeps the trainer demos without the Demo label', () => {
   const page = '<a>Demo: 1st scheduled agent</a><h1>Demo: 1st scheduled agent</h1><p>Body.</p><h1>Demo: Agent that takes action</h1>';
   assert.equal(retitleTrainerDemos(page), '<a>1st scheduled agent</a><h1>1st scheduled agent</h1><p>Body.</p><h1>Agent that takes action</h1>');
   assert.throws(() => retitleTrainerDemos('<p>No demos.</p>'), /Trainer demo missing/);

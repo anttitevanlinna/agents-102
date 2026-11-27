@@ -61,7 +61,7 @@ Where the critic calls a part generic, your context is thin there: add one sharp
 
 ## Bring to Module 2
 
-Bring one live challenge: a decision you're making, a bet you're placing, or work whose direction is still unclear. Having it in mind is enough. Module 2 opens by pinning it down with the agent.
+Bring a live challenge. Do the linked Module 2 prework first.
 
 ## Pre-reads before Module 2
 
@@ -69,7 +69,7 @@ Optional: Karpathy's LLM Wiki post; Lindenberg's memory-architecture piece.
 
 [Module 2 prework](lectures/module-2-prework.md)
 
-End this session. Module 2 starts fresh at `~/Documents/agents-101/`.
+Save the prework, end this session, then start Module 2 fresh at `~/Documents/agents-101/`.
 
 ## Next
 Your rules file already carries what you learned into the next session. Module 2 grows that into a memory for one real challenge.

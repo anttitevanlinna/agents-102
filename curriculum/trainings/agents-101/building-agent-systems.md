@@ -71,7 +71,7 @@ Your folder holds your challenge, your sources and your rules. A better model re
 
 ## Bring to Module 3
 
-**Bring your challenge memory.** In Module 3, several agents work on it. Set up the scheduled agent now and it reads the memory every morning while you go on. Module 3 does not wait for it.
+**Bring a daily agent, scheduled, with a week of observation behind it.** It reads your challenge memory. In Module 3, several agents work on that same memory.
 
 [Schedule your personal agent](exercises/personal-agent-homework.md)
 
@@ -81,10 +81,10 @@ Your folder holds your challenge, your sources and your rules. A better model re
 
 [Before Module 3](exercises/module-3-prework.md)
 
-End this session.
+Save the run, then end this session.
 
 ## Next
-When a task keeps coming back, have the agent build an agent for it. Pick by pain: a task you keep doing manually. Meeting prep and calendar triage are fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system.
+Before the next module, have the agent build a few more agents you need. Pick by pain: a task you keep doing manually. Meeting prep and calendar triage are fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system.
 
 <!-- maintainer -->
 
@@ -108,7 +108,7 @@ When a task keeps coming back, have the agent build an agent for it. Pick by pai
 **Meta (trainer):**
 - **Transitions:** connector demo 5 @start "Opening connector demo" · debrief 5 @end "Debrief" · bridge 3 @end "Bridge"
 - **Where these numbers come from:** connector demo from this block's own "(trainer, 5 min)"; debrief from the body ("Five minutes."). Every beat here has no file of its own, so nothing else prices it.
-- **Charge:** personal-agent-homework 0 — the 35-minute setup is completed between sittings. Module 3 does not depend on its output.
+- **Charge:** personal-agent-homework 0 — the 35-minute setup is completed between sittings so Module 3 opens on a week of observation.
 - **Charge:** module-3-prework 0 — same: inlined for findability, read between sittings.
 - **Primary Bloom's level:** Apply → Analyze
 - **Prework time:** 30-35 minutes. Challenge choice 5, connector check 5, plan-mode or plan-first primer 15, Karpathy 5-10.

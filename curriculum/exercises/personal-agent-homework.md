@@ -1,6 +1,6 @@
 # Exercise: Your first *scheduled* agent
 
-**Time:** 35 minutes to set up. Then one glance each morning.
+**Time:** 35 minutes to set up. One glance a day for a week.
 
 **What you do:**
 
@@ -52,11 +52,11 @@ Open the **Schedule** sidebar in the desktop app and click **New task → New lo
 
 Save, run it once and open `latest.html`. It should look like your chosen site; plain default styling means the agent did not use the style file, so ask it to try again. To fix anything, tell the agent what to change, and it updates the instructions or the style file. The scheduling prompt names both files, so tomorrow's run picks up the change.
 
-## Phase 5: Let it run while you go on
+## Phase 5: Let it run for a week
 
 *4 min*
 
-The agent keeps running beside the course. Module 3 does not wait for it. For the first three days, don't retune. Open `module-2/morning-agent/latest.html` each morning and watch for:
+For the first three days, don't retune. Open `module-2/morning-agent/latest.html` each morning and watch for:
 - Useful days: what made them work?
 - Comical or wrong days: what was missing from the memory?
 - Claims you, the domain expert, know are off: your next memory edits.

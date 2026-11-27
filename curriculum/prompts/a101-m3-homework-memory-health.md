@@ -20,6 +20,6 @@ Check overall health:
 - pages now stale
 - whether the structure still serves the challenge
 
-Name at least one drop candidate; an all-green health check means you didn't look hard enough.
+Name what you would drop. If nothing should go, say so.
 
 If restructuring is needed, propose the renames, merges, splits, or drops. Show me the plan before changing any files.

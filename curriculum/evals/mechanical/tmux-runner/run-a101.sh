@@ -413,13 +413,13 @@ assert_turn() {
       fi
       echo "[assert] PASS m3 T9: $ROOT_INSTRUCTIONS_REL rewritten, >=1 seam cited with a loss" ;;
     m3:10)
-      # Memory-health homework: "name at least one drop candidate; an all-green
-      # check means you didn't look hard enough." Green-but-broken = theater
-      # audit that touches nothing and names nothing. Require a concrete
-      # drop/merge/split target named by file reference in the transcript.
-      assert_scrollback_grep "m3 T10 drop candidate named" "$t" 'drop|merge|split|stale|supersed|consolidat|orphan' || return 1
+      # Memory-health homework: "Name what you would drop. If nothing should
+      # go, say so." Either answer passes: a drop/merge/split target, or a
+      # stated clean result. Both must point at files, so an audit that
+      # touches nothing and names nothing still fails.
+      assert_scrollback_grep "m3 T10 drop named or clean result stated" "$t" 'drop|merge|split|stale|supersed|consolidat|orphan|nothing (to|should|needs)|keep (all|every)' || return 1
       assert_scrollback_grep "m3 T10 names a file" "$t" 'memory/|sources/|\.md' || return 1
-      echo "[assert] PASS m3 T10: memory-health audit named a concrete restructure target" ;;
+      echo "[assert] PASS m3 T10: memory-health audit named files and gave a drop or a clean result" ;;
 
     # ----- m4a (author + package + install the security skill) -----
     m4a:1)

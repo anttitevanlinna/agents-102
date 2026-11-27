@@ -57,7 +57,7 @@ When the rules pull two ways, do not guess. Put up to ten prompts on one page, e
 | meta | 2 | "this prompt", "durable operating memory" |
 | youFlip | 2 | "you" that means the student |
 | coined | 2 | "seam", "wobbled", "dialect leak" |
-| quota, fragments, wording | 0 | counted for the reader, never scored |
+| quota, fragments, module, wording | 0 | counted for the reader, never scored. `module` = a sentence that names a module number |
 
 ## Limits
 

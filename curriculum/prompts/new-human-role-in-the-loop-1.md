@@ -4,11 +4,11 @@ dest: Claude Code
 runtime: any
 origin: lectures/new-human-role-in-the-loop
 ---
-Help me create a steering eval for internal mail I might let an agent draft or send.
+Help me create a goal-nudger for internal mail I might let an agent draft or send. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.
 
-The eval is not a groundedness check. Assume groundedness is handled by `judges/groundedness-judge.md`. This eval should create positive pressure to overperform on one dimension that matters for my work.
+Groundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.
 
-Ask me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if the dimension is still not judgeable, propose the narrowest observable version and mark the remaining uncertainty. Start by offering examples I can choose from or adapt:
+Ask me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if we still cannot say how to score it, propose the narrowest version we can score and say what is left open. Start by offering examples I can choose from or adapt:
 
 - executive crispness
 - commercial sharpness

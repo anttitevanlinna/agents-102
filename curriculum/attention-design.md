@@ -79,6 +79,18 @@ Sketch, not built: label each prompt with its place in the module (*Prompt 4 of 
 
 Page with the measures and the step shown both ways: https://claude.ai/artifact/AvNMCXwk1wg17ScN1rx6on
 
+## A prompt is written for the agent
+
+*"I need to find a way to tell solo students they don't need to read the prompts word-to-word. Or find some UX for that."* (Antti 2026-11-27)
+
+A prompt box that shows 50 lines in code type asks to be studied. In a room the trainer says "just copy it". For a solo learner the page says it, at the box, every time. Sketch, not built:
+
+- **The fold carries the message.** A prompt longer than eight lines shows its first lines, then: *The rest is detail for the agent. Show all 50 lines.* 51 of 68 prompts fold; 17 short ones stay open, and those are worth reading because a person could say them.
+- **Copy is the main action.** *Copy prompt* takes the whole prompt. The learner sees the full text on pasting it.
+- **Said once in the prework**, in the course's voice: *A prompt is written for the agent. Read the line above it, copy it, and read what the agent answers.*
+
+Consequence for the text: the sentence above the prompt carries the ask, since it is the part the learner reads. 34 of 68 prompts open with a sentence that says what is asked (one reader's count); the others open with background, a role, a file to read or a control line. A first sentence that states the ask is a prompt change and goes through the prompt gate.
+
 ## Open
 
 - Length of the agent's replies: not measured. Needs a recorded walk through the course.

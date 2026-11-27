@@ -24,15 +24,15 @@ The three stances in Module 3 and the four detectors in Module 5 made candidates
 
 ## The human moves one level up
 
-Today you stand between the agent and the world: the agent drafts, you inspect. With many agents and many drafts, you cannot keep that up.
+Today you stand between the agent and the world: the agent drafts, you inspect. That does not scale to many agents.
 
-The new role is to design the loop. You decide what the agent can reach, what it writes down, what stays fixed, what may change, what gets checked every time, what "better" means, and where a person still belongs.
+The new role is to design the loop: what the agent can reach, what it keeps, what stays fixed, what may change, what gets checked every time, what "better" means, and where a person still belongs.
 
-For the internal mail, your answer may be draft only, review first, send to yourself first, or send automatically once the groundedness judge passes the mail and the steering eval scores it high. Some kinds of mail never go without a person.
+For the internal mail, your answer may be draft only, review first, send to yourself first, or send automatically once the mail passes the groundedness judge and scores high on the steering eval. Some kinds of mail never go without a person.
 
 ## Make a steering eval
 
-Ask the agent to build one steering eval with you, for internal mail an agent could draft. The agent saves the eval as `./goal-nudger-eval.md`.
+Ask the agent to build one steering eval with you, for internal mail an agent could draft. The agent saves it as `./goal-nudger-eval.md`.
 
 {{prompt:new-human-role-in-the-loop-1}}
 

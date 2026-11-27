@@ -16,25 +16,25 @@ After this module, you will be able to:
 
 ## Start here
 
-Start a fresh session or task at `~/Documents/agents-101/`. Module 1's scrollback stays behind.
+Start a fresh session or task at `~/Documents/agents-101/`. The new session does not see Module 1's conversation.
 
-Your `memory/`, `sources/` and `agents/` folders are empty from prework. Module 1's files stay out of this build. The root instructions file comes in the Debrief.
+Your `memory/`, `sources/` and `agents/` folders are empty from prework, and this module does not use Module 1's files. The agent writes the root instructions file in the Debrief.
 
-What's the difference between asking an agent a question and having an agent keep a knowledge base that every later agent reads?
+**The question, to you:** what's the difference between asking an agent a question and having an agent keep a knowledge base that every later agent reads?
 
 ## Name the challenge you're carrying
 
-What challenge are you carrying that isn't solved yet? Not a task. You'll build a memory around it.
+Which challenge of yours isn't solved yet? Pick a challenge, not a task. You'll build a memory around it.
 
-If everything you've read and drafted on that challenge moved into a memory an agent could read and sharpen, what changes at work?
+Suppose everything you've read and drafted on that challenge sat in a memory an agent could read and sharpen. What would change at work?
 
-Connectors let the agent combine clues that live apart, like a wiki page and an email thread.
+Connectors let the agent combine pieces that live in different places, such as a wiki page and an email thread.
 
 [Demo: 1st scheduled agent](lectures/first-scheduled-agent.md)
 
 [Exercise: Name your next big challenge](exercises/name-your-challenge.md)
 
-Keep the same session running; the agent has your challenge in scrollback.
+Keep the same session running. The agent still has your challenge in the conversation.
 
 [Exercise: Build your challenge memory](exercises/build-your-challenge-memory.md)
 
@@ -42,7 +42,7 @@ Keep the same session running; the agent has your challenge in scrollback.
 
 ## Debrief
 
-Five minutes. A retro, **and the first root instructions file in this directory.** The agent writes the rules every agent here reads: what worked, what rubbed, what got repeated.
+Five minutes. The agent reviews the session and writes **the first root instructions file in this directory**: the rules every agent here reads from now on. The rules come from what worked, what went wrong and what you had to repeat.
 
 {{prompt:a101-m2-debrief-claude-md}}
 
@@ -50,23 +50,23 @@ Five minutes. A retro, **and the first root instructions file in this directory.
 
 Push back on anything in the agent's summary that doesn't match your sense of the work. *"Keep the draft I accepted as an example, beside the fixes."* *"You missed the bit where we had to regenerate three times because of X."*
 
-What the agent leaves out is often the signal. A summary that names three rules and skips the messy fourth, where you re-prompted twice, is the tell.
+Look for what the agent left out. A summary that names three rules and skips the messy part, where you had to ask twice, is missing the rule you need most.
 
 ## Fix the output, then fix the rule
 
-> Your agent is "right" when it works. A miss that comes back on a rerun is context the agent still lacks: sharpen the memory, tighten a rule, rewrite the prompt. You spot the next mistakes by running the system and watching where it bends.
+> Your agent is right when it works. If the same miss comes back when you ask again, the agent lacks context: sharpen the memory, tighten a rule or rewrite the prompt. You find the next mistakes by using the system and watching where it goes wrong.
 
-Watching where it bends is continuous improvement, done by hand.
+Finding a miss and fixing its cause is continuous improvement, done by hand.
 
 ## The model will change under this
 
-The model will change. Your memory will not.
+The model will be replaced. Your memory stays.
 
 Your folder holds your challenge, your sources and your rules. A better model reads your folder better.
 
 ## Key Concepts
 - A system compounds around your challenge: each new source sharpens what is already there. A chat starts from zero.
-- Persistence plus automation: a system.
+- A system is persistence plus automation.
 - Three layers in plain text: untouched raw sources, a memory the agent sharpens, a rules file.
 
 ## Bring to Module 3

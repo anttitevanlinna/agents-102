@@ -6,11 +6,11 @@
 
 **What you do:**
 
-Pin one real problem before building. The memory you build is a folder of notes and sources the agent reads before answering.
+Pick one real challenge before you build anything. The memory you build is a folder of notes and sources the agent reads before answering, and it needs one subject.
 
 **Pick your next big challenge.**
 
-An initiative you own and work on in these weeks, one that produces work (memo, plan, decision, brief, campaign, rollout).
+Choose an initiative you own and are working on in these weeks. It should produce work: a memo, a plan, a decision, a brief, a campaign, a rollout.
 
 Good: *The Q2 pricing redesign: usage-based vs. seats, pilot cohort, sales briefing.*
 
@@ -18,19 +18,19 @@ Not a fit: *last year's re-org*, *becoming a better leader*, *understanding AI*.
 
 **Write the brief.**
 
-The agent interviews you with three questions, one at a time, and writes `./challenge.md`.
+The agent asks you three questions, one at a time, and writes `./challenge.md`.
 
 {{prompt:name-your-challenge-1}}
 
-Edit the brief if it doesn't sound like what keeps you up.
+If the brief doesn't sound like what keeps you up at night, tell the agent what to change.
 
 **Preview your sources.**
 
-Ask the agent where to scout for raw material: your wiki, your documents, practitioner articles.
+Ask the agent where to look for raw material: your wiki, your documents, practitioner articles.
 
 {{prompt:name-your-challenge-2}}
 
-Scope matters most: a memory about "our company" is a landfill.
+Keep the scope narrow. A memory about "our company" collects everything and sharpens nothing.
 
 <!-- maintainer -->
 

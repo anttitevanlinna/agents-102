@@ -89,7 +89,7 @@ This exercise is one of the three Agents 101 magic beats (M3, M6, M8). M5 picks 
 
 **The walk-away matters, but it no longer needs theatre.** The facilitator should still push the student out of the chair once the loop starts. The run note is the payoff. If the loop completes quickly, that is fine; the teaching moment is the role shift, not the duration.
 
-**Mechanism legibility is non-negotiable.** Every round writes a briefing and a judgment, and `module-6/eval-notes.md` names how `./generation-tactic.md` changed. A student who asks *"but did it really learn, or did the judge just get easier?"* must be able to read the tactic changes and confirm `judges/groundedness-judge.md` is byte-identical to its starting SHA. The integrity check is the anti-mystification device.
+**Mechanism legibility is non-negotiable.** Every round writes a briefing and a judgment, and `module-6/eval-notes.md` names how `./generation-tactic.md` changed. A student who asks *"but did it really learn, or did the judge just get easier?"* must be able to read the tactic changes round by round. The prompt tells the agent never to edit `judges/groundedness-judge.md`; the student prompt carries no SHA check (maintainer 2026-11-27: not needed). The tmux runner still compares the judge's SHA before and after.
 
 **The judge is sacrosanct.** The entire exercise rests on the judge not moving. If any subagent or prompt path writes to `judges/groundedness-judge.md` during this module, the score trajectory is meaningless and the exercise has failed. Facilitator must reinforce this if a student asks "should the judge get better too?" The answer is "not in this loop; in this loop the judge is infrastructure and the generator is the project."
 
@@ -112,9 +112,9 @@ This exercise is one of the three Agents 101 magic beats (M3, M6, M8). M5 picks 
 - Number of rounds. Default 3. Compressed variants may use 2, but then the trajectory is thinner.
 
 **Capability checks owed (before first delivery):**
-- **Subagent dispatch isolation.** The loop dispatches a generator subagent and a judge subagent per round. Claude has no per-file ACL or deny-write primitive; the read-only-judge invariant is prose-only and verified post-hoc via SHA.
+- **Subagent dispatch isolation.** The loop dispatches a generator subagent and a judge subagent per round. Claude has no per-file ACL or deny-write primitive; the read-only-judge invariant is prose-only; the tmux runner verifies it via SHA.
 - **File-write reliability.** Verify Claude writes each briefing, judgment, final `./generation-tactic.md`, and `module-6/eval-notes.md`.
-- **Judge-file immutability.** Verify on a dry run that the starting and ending SHA for `judges/groundedness-judge.md` match.
+- **Judge-file immutability.** On a dry run, `git diff judges/groundedness-judge.md` or the runner's SHA comparison shows whether the judge moved.
 - **Generation tactic actually gets rewritten.** Verify each generator reads the tactic file updated after the previous round, not the starting default.
 
 **Facilitator notes:**
@@ -122,7 +122,7 @@ This exercise is one of the three Agents 101 magic beats (M3, M6, M8). M5 picks 
 *Watch-fors:*
 - **Chair-sitter.** Student refuses to walk away. Push them out: *"The point is to come back to the loop, not supervise every token."*
 - **Score worship.** Student treats a lower flagged-claim count as complete success. Push: *"What did the judge still not see?"*
-- **Judge-drift suspicion.** Student suspects the judge silently softened. This is healthy. Point to the SHA check.
+- **Judge-drift suspicion.** Student suspects the judge silently softened. This is healthy. Open the judge file with them, or diff it.
 - **Generic tactic rule.** Claude may write bland rules like "be more specific." Push for failure-class rules: numbers, timelines, quotes, competitor claims, causality, recommendations.
 
 *Decision points:*

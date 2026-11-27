@@ -22,6 +22,6 @@ For each rule you can derive from the policy files, produce one row in a report:
 
 If module-4/guess.md exists, put my guess at the top of the report, word for word. At the end, list the violating and "I can't tell" rows under my guess. Do not judge the guess; I compare.
 
-Write the raw report to outputs/policy-report-raw.md. Be specific. Be plain. An "I can't tell" is a better answer than a confident guess.
+Write the raw report to outputs/policy-report-raw.md. An "I can't tell" is a better answer than a confident guess.
 
 Do not create a skill yet. This is the raw run.

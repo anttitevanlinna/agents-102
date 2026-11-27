@@ -10,6 +10,6 @@ produces:
   - id: crux-md
     location: ./crux.md (append Question section)
 ---
-Open ./crux.md and read the crux you just saved. What's the sharpest decision this crux blocks? One sentence. Not a topic, not a summary. A real call you'd stay late to make. Something like "what's the right next move to unblock the crux, over the next 90 days?" is a decent default. "Should we kill option A?" is better if that's where you are.
+Open ./crux.md and read the crux you just saved. What is the sharpest decision this crux blocks for me? One sentence: a real call I would stay late to make, not a topic or a summary. "What's the right next move to unblock the crux over the next 90 days?" is a decent default. "Should we kill option A?" is better if my memory shows I am at that point.
 
-Append a `## Question` section to ./crux.md with the decision question. Don't overwrite the crux above. Show me before saving.
+Append a `## Question` section to ./crux.md with the decision question. Leave the crux above as it is. Show me before saving.

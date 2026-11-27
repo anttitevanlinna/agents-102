@@ -20,7 +20,7 @@ What would have to be true before you let the agent hit send?
 
 In a loop that improves, something makes several candidates, something else picks, and what wins is kept.
 
-The three stances in Module 3 and the four detectors in Module 5 made candidates. The groundedness judge and the steering eval pick. While you are away, the loop does both, and `./generation-tactic.md` holds what won.
+The three stances in Module 3 and the four detectors in Module 5 made candidates. The groundedness judge and the goal-nudger pick. While you are away, the loop does both, and `./generation-tactic.md` holds what won.
 
 ## The human moves one level up
 
@@ -28,11 +28,11 @@ Today you stand between the agent and the world: the agent drafts, you inspect. 
 
 The new role is to design the loop: what the agent can reach, what it keeps, what stays fixed, what may change, what gets checked every time, what "better" means, and where a person still belongs.
 
-For the internal mail, your answer may be draft only, review first, send to yourself first, or send automatically once the mail passes the groundedness judge and scores high on the steering eval. Some kinds of mail never go without a person.
+For the internal mail, your answer may be draft only, review first, send to yourself first, or send automatically once the mail passes the groundedness judge and scores high on the goal-nudger. Some kinds of mail never go without a person.
 
-## Make a steering eval
+## Make a goal-nudger
 
-Ask the agent to build one steering eval with you, for internal mail an agent could draft. The agent saves it as `./goal-nudger-eval.md`.
+Ask the agent to build one goal-nudger with you, for internal mail an agent could draft. A goal-nudger is an eval that scores one quality you care about and pushes the agent toward it. The agent saves it as `./goal-nudger-eval.md`.
 
 {{prompt:new-human-role-in-the-loop-1}}
 

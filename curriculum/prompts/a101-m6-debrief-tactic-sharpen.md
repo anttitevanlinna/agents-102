@@ -23,6 +23,6 @@ Then go through the rounds: which tactic change helped, which did not, what the 
 
 Rewrite ./generation-tactic.md in place. Add the rule the loop never reached, sharpen the rules that stayed vague, and remove the rule module-6/eval-notes.md names as the rule to cut, or say why it stays. Remove any rule that fired on the wrong thing too. Removed means gone from the file. Each rule names the kind of miss it prevents.
 
-Last, add one line to the root instructions file: every briefing asked for in this folder is written from ./generation-tactic.md and scored by judges/groundedness-judge.md before it reaches me. If such a line exists, keep it as one line.
+Last, add one line to {{artifact:root-instructions}}: every briefing asked for in this folder follows the rules in ./generation-tactic.md and is scored by judges/groundedness-judge.md before it reaches me. If such a line exists, keep it as one line.
 
 When you're done, tell me in 3-5 lines what you added, sharpened and removed, and the round that showed each. Name one case the next run should test.

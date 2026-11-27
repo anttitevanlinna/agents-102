@@ -5,7 +5,7 @@ Two mails both stay grounded. One is forgettable. The other makes the reader act
 
 The better mail names the tradeoff and gives a clear next move.
 
-Write that quality down as a check. That is a steering eval: it scores the output on the quality you chose.
+A steering eval is a check for that quality: it scores each output on the quality you chose.
 
 Groundedness protects the floor. Steering raises the ceiling.
 

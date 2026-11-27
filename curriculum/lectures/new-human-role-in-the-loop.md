@@ -18,9 +18,9 @@ What would have to be true before you let the agent hit send?
 
 ## Make many, pick the best, keep what won
 
-A loop that improves has three parts. Something makes several candidates. Something else picks. What wins gets written down.
+In a loop that improves, something makes several candidates, something else picks, and what wins is kept.
 
-The three stances in Module 3 and the four detectors in Module 5 made candidates. The groundedness judge and the steering eval pick. While you are away, the loop does all three, and `./generation-tactic.md` keeps what won.
+The three stances in Module 3 and the four detectors in Module 5 made candidates. The groundedness judge and the steering eval pick. While you are away, the loop does both, and `./generation-tactic.md` keeps what won.
 
 ## The human moves one level up
 
@@ -28,7 +28,7 @@ Today you stand between the agent and the world: the agent drafts, you inspect. 
 
 The new role is to design the loop. You decide what the agent can reach, what it writes down, what stays fixed, what may change, what gets checked every time, what "better" means, and where a person still belongs.
 
-For the internal mail, your answer may be draft only, review first, send to yourself first, or send automatically once the groundedness judge passes and the steering eval scores high. Some kinds of mail never go without a person.
+For the internal mail, your answer may be draft only, review first, send to yourself first, or send automatically once the groundedness judge passes the mail and the steering eval scores it high. Some kinds of mail never go without a person.
 
 ## Make a steering eval
 
@@ -48,13 +48,13 @@ Every clean week is evidence that the loop works. Every clean week also gives yo
 
 ## When did you last read one yourself?
 
-No judge runs this check. It is a date: when did you last read one of the loop's outputs start to finish, without the agent summarising it first?
+No judge runs this check. Ask yourself: when did you last read one of the loop's outputs start to finish, without the agent summarising it first?
 
 If that was a month ago, put a reading in your calendar. Read one output the way the person receiving it will.
 
 ## The full picture, and what it is made of
 
-The full picture: model, context, tools, goal, loop, checks, boundary, interface. For each part you decided what to give the agent and what to keep back.
+The full picture is model, context, tools, goal, loop, checks, boundary and interface. For each part you decided what to give the agent and what to keep back.
 
 {{figure:agent-picture}}
 

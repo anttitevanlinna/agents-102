@@ -2,7 +2,7 @@
 
 Ethan Mollick's *The Bitter Lesson versus The Garbage Can* sets two views side by side. In the first, you define the outcome, give the agent examples and feedback, and the agent finds its own path. In the second, a company runs on unwritten habits and workarounds, and those still decide what works.
 
-You can check one agent's work yourself. You cannot check all of them. An eval writes down what good means, so the system keeps applying your standard when you are not there.
+You can check one agent's work yourself. You cannot check the work of every agent you run. An eval writes down what good means, so the system keeps applying your standard when you are not there.
 
 Put an eval in a loop and the work improves: the agent writes, the judge checks, the rules for writing change, and the next draft starts from better rules.
 

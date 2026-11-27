@@ -2,7 +2,7 @@
 
 Files hold what the agents know. Connectors bring material in. Agents read and write. Judges check. Loops make the next session better.
 
-You do not disappear from this. You move one level up: you design the loop and own the yardstick.
+You do not disappear from this system. You move one level up: you design the loop and own the yardstick.
 
 ## Which check would let the agent send the mail without you?
 

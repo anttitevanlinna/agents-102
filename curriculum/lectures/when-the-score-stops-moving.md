@@ -4,7 +4,7 @@ When flagged claims drop toward zero and stay there, the judge has stopped findi
 
 ## A flat score is information about the judge or the work
 
-Check both. The judge measures one thing: whether each claim is tied to the evidence. A grounded claim can still be vague or obvious, and this judge passes it.
+Check both the judge and the work. The judge measures one thing: whether each claim is tied to the evidence. A grounded claim can still be vague or obvious, and this judge passes it.
 
 The judge cannot see sharper framing, a recommendation that commits, or a briefing someone reads to the end. When the number stops moving, your judgment takes over.
 

@@ -46,7 +46,7 @@ The agent then reads the raw report and `module-4/policies/` and proposes the pa
 
 The skill is a `SKILL.md` plus any reference files, with two lenses: company policy, and agent risk (what the agent can reach, what it might leak, what a misleading prompt or source might make it do).
 
-Ask the agent to author both lenses and name the risk patterns the agent-security lens covers. Expect many questions over several rounds.
+Ask the agent to author both lenses and name the risk patterns the agent-security lens covers. Expect two short rounds of questions.
 
 {{prompt:author-security-skill-3}}
 

@@ -95,8 +95,8 @@ function versionStarterDownload(html, archiveBytes, workbookUrl = WORKBOOK_URL) 
   return html.replace(before, `href="${url}?v=${version}"`);
 }
 const LOADER_FRAMING = [
-  ['The root instructions file comes in the Debrief.', 'You develop your working rules in the Debrief. The existing root file only loads course navigation.'],
-  ['Five minutes. A retro, <strong>and the first root instructions file in this directory.</strong>', 'Five minutes. A retro, <strong>and your own working rules for this directory.</strong>'],
+  ['The agent writes the root instructions file in the Debrief.', 'The agent writes your working rules in the Debrief. The existing root file only loads course navigation.'],
+  ['writes <strong>the first root instructions file in this directory</strong>', 'writes <strong>your own working rules for this directory</strong>'],
 ];
 
 function applyLoaderFraming(html, { required = true } = {}) {
@@ -135,6 +135,37 @@ function dropModuleOnePrework(html) {
   const end = html.indexOf('<h2', start + 1);
   if (moduleOne < 0 || start < 0 || end < 0 || html.indexOf('</section>', moduleOne) < start) throw new Error('Module 1 Prework block is missing');
   return html.slice(0, start) + html.slice(end);
+}
+
+// A learner alone goes through the handbook in order, so a module's Prework list
+// only repeats the close of the module before it, as homework owed. The open
+// edition drops the list from every module; each module opens on Start here.
+function dropModulePreworks(html, modules) {
+  for (const m of modules) {
+    const at = html.indexOf(`<section class="module" id="${m.slug}">`);
+    if (at < 0) throw new Error(`Module section missing: ${m.slug}`);
+    const next = html.indexOf('<section class="module"', at + 1);
+    const start = html.indexOf('<h2 id="prework">', at);
+    if (start < 0 || (next >= 0 && start > next)) continue;
+    const end = html.indexOf('<h2', start + 1);
+    if (end < 0) throw new Error(`Prework block has no end: ${m.slug}`);
+    html = html.slice(0, start) + html.slice(end);
+  }
+  return html;
+}
+
+// Trainer demos: in a room the trainer runs them live. Alone, the page holds
+// only a description of a demo nobody shows, so the open edition leaves them out.
+const TRAINER_DEMOS = ['lectures-first-scheduled-agent', 'lectures-agent-that-takes-action'];
+function dropTrainerDemos(html) {
+  for (const id of TRAINER_DEMOS) {
+    const start = html.indexOf(`<section class="phase phase--lecture" id="${id}">`);
+    if (start < 0) throw new Error(`Trainer demo missing: ${id}`);
+    const end = html.indexOf('</section>', start);
+    if (html.slice(start + 1, end).includes('<section')) throw new Error(`Trainer demo holds a nested section: ${id}`);
+    html = html.slice(0, start) + html.slice(end + '</section>'.length);
+  }
+  return html;
 }
 
 function prependOfflinePrework(html, prework, workbookUrl = WORKBOOK_URL) {
@@ -516,7 +547,7 @@ ${SETUP_CSS}
 })();
 </script>\n${shell('figure-reader.html')}<script data-a101-handbook>\n${shell('deskpad.js')}\n</script>\n</body>`);
 
-    if (edition.open) html = hideVideoPlaceholders(addModuleTimes(addLicenceLine(html), modules));
+    if (edition.open) html = hideVideoPlaceholders(addModuleTimes(addLicenceLine(dropTrainerDemos(dropModulePreworks(html, modules))), modules));
 
     // The edition hub has one destination. Existing customer hubs are untouched.
     if (edition.hub) fs.writeFileSync(path.join(customerDir, 'index.html'), `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agents 101 — ${edition.brand}</title><meta http-equiv="refresh" content="0; url=./agents-101/#start-learning"></head><body><p><a href="./agents-101/#start-learning">Start Agents 101</a></p></body></html>\n`);
@@ -555,4 +586,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { dropModuleOnePrework, hideVideoPlaceholders, EDITIONS, editionModules, editionCheckpoints, headerModules, addLicenceLine, addModuleTimes, buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };
+module.exports = { dropModuleOnePrework, dropModulePreworks, dropTrainerDemos, hideVideoPlaceholders, EDITIONS, editionModules, editionCheckpoints, headerModules, addLicenceLine, addModuleTimes, buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };

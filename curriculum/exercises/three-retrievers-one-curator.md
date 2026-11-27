@@ -2,7 +2,9 @@
 
 **Time:** ~28 minutes.
 
-Three retrievers fetch raw material on your challenge into `sources/`; a fourth session curates it into `memory/`. All read `./crux.md`. Each session has its own context and connectors. Skip any retriever you can't run today.
+Three retrievers fetch raw material on your challenge into `sources/`; a fourth session curates it into `memory/`. All read `./crux.md`. Each session has its own context.
+
+No wiki or document connector? Run two retrievers: docs, on files from your computer, and internet. Leave the wiki retriever out. The synthesizer works the same from two files.
 
 <div class="rt-code">
 
@@ -21,7 +23,7 @@ Session 1, wiki: `sources/wiki-retrieval.md`.
 
 {{prompt:three-retrievers-one-curator-1}}
 
-Session 2, docs: `sources/docs-retrieval.md`.
+Session 2, docs: `sources/docs-retrieval.md`. When it asks for clues, name files or a folder on your computer.
 
 {{prompt:three-retrievers-one-curator-2}}
 
@@ -37,7 +39,7 @@ Session 4, synthesizer: `memory/`.
 
 {{prompt:three-retrievers-one-curator-5}}
 
-Open one retriever's file. Find one number or phrase that the synthesizer dropped or smoothed in `memory/`. Should it have survived?
+Ask the synthesizer for one number or phrase from a retriever's file that it dropped or smoothed in `memory/`. Should it have survived?
 
 Done when `memory/_synthesis-m3.md` names what changed.
 

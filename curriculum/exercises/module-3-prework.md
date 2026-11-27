@@ -4,7 +4,7 @@
 
 **What you do:**
 
-Two reads. Both prime moves the Module 3 exercise leans on. Neither asks you to build anything.
+Two reads. Neither asks you to build anything. Reading 2, on helper agents, takes ten minutes and Module 3 uses it. Reading 1 is optional background.
 
 **Reading 1. Five practitioners, automating their work.**
 
@@ -18,7 +18,7 @@ See what a single agent already does for working practitioners who've folded cod
 4. **Thariq Shihipar.** Read [The unreasonable effectiveness of HTML](https://claude.com/blog/using-claude-code-the-unreasonable-effectiveness-of-html) (20 May 2026). Track why changing the review artifact changes how closely the human stays in the work.
 5. **Daniel Bilsborough.** Read [The Practitioner's Guide to Coding Agents](https://partner.danielbilsborough.com/claude-code) (updated 6 August 2026). Look for the plain-text memory and the boundary where consequential work still needs a person.
 
-For each pick, note in plain language: *what is this person automating that they used to do by hand, and what's the move that made it work?* Three bullets, one per practitioner. Keep the note somewhere you'll see on training day.
+For each pick, note in plain language: *what is this person automating that they used to do by hand, and what's the move that made it work?* Three bullets, one per practitioner.
 
 The aim is to calibrate how much one agent can already do, so you know what coordinating three more buys you.
 
@@ -41,8 +41,6 @@ When the job is done, the helper returns a single result to the lead agent and d
 *What you don't need.* No agent definition file and no special command. Plain-language prompting is enough for Phase 2.
 
 For the full reference, <span class="rt-claude rt-code">open the [Claude Code helper-agent documentation](https://code.claude.com/docs/en/sub-agents)</span><span class="rt-codex rt-code">open the [Codex helper-agent documentation](https://learn.chatgpt.com/docs/agent-configuration/subagents)</span><span class="rt-copilot rt-code">open the [GitHub Copilot subagent documentation](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-custom-agents)</span><span class="rt-cowork">open the in-app help and search for *agents*</span>. You're after the shape: *helper with instructions, own context, returns a result. You summon it by asking.*
-
-**What to bring to Module 3:** the three one-line practitioner takeaways.
 
 <!-- maintainer -->
 

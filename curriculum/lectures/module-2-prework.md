@@ -4,7 +4,7 @@
 
 **What you do:**
 
-Bring one live challenge. That is all Module 2 needs from you. The rest of this page is optional.
+Bring one live challenge, check what the agent can read about it, use a plan-first control, and leave yourself a three-line readiness note.
 
 Module 2 works on real history: meetings, notes, decisions, half-written documents.
 
@@ -18,9 +18,11 @@ If stuck, scan your next two weeks of calendar; the biggest unresolved item is u
 
 ## Check what the agent can read
 
-Files on your computer are enough: documents, decks, exported pages, notes. Module 2 builds the memory from what you point the agent at.
+Module 2 works best when the agent can read a source connected to your challenge. Files on your computer are enough: documents, decks, exported pages, notes. If your work lives in a wiki or document system, check now that the agent can reach it.
 
-**Connectors** are an optional extra. They link the agent to places where your work lives, such as a wiki or a shared drive. If one is already set up, the agent can use it. Module 2 does not wait for one.
+**Connectors** link the agent to places where your work lives: a wiki, a shared drive, or whatever you use. They are an optional extra. Ask the agent which connectors it can use.
+
+Without a connector, the memory can start from files and pasted excerpts in your training directory.
 
 ## Put a plan before action
 
@@ -33,18 +35,32 @@ Pick one:
 - **Ask** the agent which planning control your runtime offers, then try it on a harmless file change.
 - **Watch** Matt Pocock's [video about planning before execution](https://www.youtube.com/watch?v=WNx-s-RxVxk).
 
+---
+
+## Start the Module 2 handoff
+
+Tell the agent three lines and have it save them as `prework/module-2-start.md`:
+
+- the live challenge you are bringing;
+- the first source the agent can read about it, or your fallback;
+- the planning control you will use before the agent writes files.
+
+You carry these lines into Module 2, which builds `./challenge.md` around them. If a line is blank, name a fallback; do not fill it with a plausible answer.
+
+---
+
 ## Read the memory frame
 
 Read Karpathy's [LLM Wiki gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) for the mental model: a useful system is a living pile of text the agent can read, maintain, and improve. Your memory starts as plain text, which the agent reads and rewrites easily.
 
-**Bring to Module 2:** one live challenge. Module 2 opens by pinning it down with the agent.
+**Bring to Module 2:** `prework/module-2-start.md`.
 
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-11-26 (writing@78d17fc9 story@78d17fc9 pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)
 - judges @78d17fc9: writing PASS, story PASS (2 findings see instances/agents-101--lecture--module-2-prework.story.json), technical grandfathered, behavior grandfathered, pedagogy PASS (verify-refuted, 2 findings see instances/agents-101--lecture--module-2-prework.pedagogy.json), strategy PASS, slides PASS
 
-**Time:** 35 minutes. 5 to choose the challenge, 5 to check connectors, 15 for the plan-mode primer, 10 for Karpathy.
+**Time:** 37 minutes. 5 to choose the challenge, 5 to check connectors, 15 for the plan-mode primer, 2 for the readiness note, 10 for Karpathy.
 
 **Role in Module 2:** Lightweight prework designed to survive being skipped. The challenge-naming lives in the main session, not prework (`name-your-challenge.md`, first 15 min of Module 2): students skip prework, and Module 2 Phase 1 stalls for anyone who arrives without a pinned challenge. Connector verification and plan-mode primer stay in prework — they're *useful* before class but not load-bearing if missed (fallback: facilitator triages connector issues live, Code gets a 60-second plan-mode primer and Cowork gets the prompt-level simulation in Phase 1).
 

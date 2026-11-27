@@ -6,7 +6,7 @@
 
 **What you do:**
 
-Start a loop: each round an agent writes your briefing again from better rules. Nobody edits a briefing by hand.
+Start a loop: each round an agent writes your briefing again from better rules.
 
 **How the loop works.** Each round, one helper agent writes a fresh briefing and a second helper agent scores it with your Module 5 judge. The main session turns what the judge flagged into rules in `./generation-tactic.md`, the file the next writer follows. The judge never changes, so fewer flagged claims means a better briefing.
 
@@ -20,8 +20,6 @@ Ask the agent to score your Module 3 briefing with the Module 5 judge, then writ
 
 {{prompt:eval-loop-1}}
 
-The agent shows today's count beside the Module 5 count for the same briefing. The difference is the judge's noise: how much the score moves when nothing changed.
-
 ## Phase 2: Start the loop, then walk away
 
 *30 min*
@@ -30,7 +28,7 @@ Ask the agent to run the loop: at least three rounds, until a round no longer im
 
 {{prompt:eval-loop-2}}
 
-Round 1's score arrives with nothing from you. Then open the newest briefing in `module-6/runs/` and read it the way the person receiving it would. Add two or three remarks to `./remarks.md` in plain words: *"too hedged"*, *"this number is not ours"*, *"lead with the decision"*. Leave the loop running. The next rounds turn your remarks into rules. The judge never sees them.
+When round 1 is done, open the newest briefing in `module-6/runs/` and read it the way the person receiving it would. Add two or three remarks to `./remarks.md` in plain words: *"too hedged"*, *"this number is not ours"*, *"lead with the decision"*. Leave the loop running. The next rounds turn your remarks into rules. The judge never sees them.
 
 Then ask how the loop could try more options at once.
 

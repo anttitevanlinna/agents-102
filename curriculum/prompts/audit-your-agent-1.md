@@ -27,7 +27,7 @@ For each rule the policy lens carries, produce one row in a report: rule name, o
 
 Write the packaged-lens report to outputs/policy-report.md. If outputs/policy-report-raw.md exists, briefly note one way the packaged report is sharper, narrower, or more specific than the raw run. An "I can't tell" is a better answer than a confident guess.
 
-Read the memory and agent files properly - don't skim. Quote the specific lines or files that support each verdict.
+Quote the specific lines or files that support each verdict.
 
 After writing the report, read outputs/policy-report.md back to yourself and tell me:
 1. The top three surprises - rows where the verdict is not what a careful reader would have predicted.

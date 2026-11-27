@@ -42,7 +42,7 @@ Push back, sharpen, add what's missing.
 
 {{prompt:build-your-challenge-memory-2}}
 
-Aim for 8–10 items with real content or local-path links across lists (1) and (2). List (3), NOT REACHABLE, is usually empty; it stays a reference file unless you share its items with the agent to save into `sources/`.
+Aim for 8–10 items with real content or local-path links across lists (1) and (2). List (3), not reachable, is usually empty; it stays a reference file unless you share its items with the agent to save into `sources/`.
 
 ## Build the memory under a plan
 

@@ -33,6 +33,4 @@ For each pattern, the lens produces one or two specific risks in the target syst
 
 Before you save anything, grill me on missing details that can sharpen the lens or that would ruin the audit run. Ask no more than three questions in a round, wait for my answers, then ask one final round only if a load-bearing gap remains. Recommend the answer you infer where the files already point to one. Cover both lenses, especially the policy lens, which has no fixed list of risks to lean on.
 
-After I answer, save the files. Keep the SKILL.md tight: when to use it, the two lenses it applies, the report shape each lens produces. Show me what you saved and confirm this package-complete checklist:
-- module-4/skills/agent-audit/SKILL.md
-- any supporting reference files the SKILL.md requires
+After I answer, save the files. Keep the SKILL.md tight: when to use it, the two lenses it applies, the report shape each lens produces. Tell me what you saved: module-4/skills/agent-audit/SKILL.md and any reference files it needs.

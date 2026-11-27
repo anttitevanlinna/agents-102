@@ -23,4 +23,4 @@ The rules file governs how agents behave in this directory from now on: how memo
 
 Structure however makes sense for how we actually worked: section headers, short paragraphs, bullets where a list is clearest. Write the rules as if they'd always been the rules. Cover at minimum: the memory (when and how pages get written, what grounds them), the sources (what they are, whether they're editable), the agents (how they relate to the memory), and whatever else earned its place.
 
-When you're done, tell me in 3–5 lines: the rules you wrote, which session moments grounded each one, and what you chose NOT to include and why. Be specific on the omissions: name at least one session moment where you considered a rule and skipped it, and the reason. I shouldn't have to open the file to know what's in it.
+When you're done, tell me in 3–5 lines: the rules you wrote, which session moments grounded each one, and what you chose not to include and why. Be specific on the omissions: name at least one session moment where you considered a rule and skipped it, and the reason. I shouldn't have to open the file to know what's in it.

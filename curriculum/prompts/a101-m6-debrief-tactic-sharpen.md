@@ -17,8 +17,6 @@ produces:
   - id: root-instructions
     location: "./{{artifact:root-instructions}} (one line: later briefings go through the tactic and the judge)"
 ---
-Start by reading the files. No plan or preamble.
-
 Read ./generation-tactic.md, then module-6/runs/ and module-6/eval-notes.md. The judge file at judges/groundedness-judge.md did not change during the loop; check that no judge subagent was given rules beyond it. If the flag counts stayed in single digits, say whether the changes between rounds are bigger than the judge's noise before you credit any tactic change.
 
 Then go through the rounds: which tactic change helped, which did not, what the generator kept missing round after round, what the judge flagged that the tactic never took in, and which case the loop never tested.

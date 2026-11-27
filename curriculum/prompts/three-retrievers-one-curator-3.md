@@ -16,7 +16,7 @@ You are the internet retriever for my challenge. Your job: find practitioner-gra
 
 Then:
 1. Propose 4–6 specific authors or recent articles worth reading. Ask me to confirm or replace any before fetching.
-2. Fetch them. Read them.
+2. Fetch them.
 3. Append each finding to sources/internet-retrieval.md as soon as you have it, what each practitioner says that's specific, with the URL, and one line on how their situation maps (or doesn't) to mine. Never overwrite earlier findings.
 4. End the file with "Conflicts and gaps": where practitioners disagree, where my challenge is weirder than any of their cases, what the internet can't tell me.
 

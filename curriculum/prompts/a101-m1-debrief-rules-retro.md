@@ -13,9 +13,7 @@ produces:
     location: module-1/personal-brand-generation.md (overwrite in place)
     note: retro applied in place; module-scoped, not read by later modules
 ---
-Start by reading the file. No plan or preamble.
-
-Read `module-1/personal-brand-generation.md` and `module-1/context-trace.md`. Then re-read what we did building the site. Run a retro: which moves worked, which fell flat, where context broke through, where the output stayed generic. Compare the rules file to the actual work. Sort each rule into keep, sharpen, or drop. What's missing the rules should have caught? Find what's still surface; don't defend the file as-is.
+Read `module-1/personal-brand-generation.md` and `module-1/context-trace.md`. Then re-read what we did building the site. Run a retro: which moves worked, which fell flat, where context broke through, where the output stayed generic. Compare the rules file to the actual work. Sort each rule into keep, sharpen, or drop. What's missing the rules should have caught?
 
 Assume the rules file is at least 30% wrong or thin. Find that 30%. If fewer than two rules get dropped or substantially rewritten, say why before you proceed.
 

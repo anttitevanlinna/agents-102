@@ -83,9 +83,11 @@ h1 { font: 700 clamp(30px, 4.6vw, 48px)/1.05 var(--font-body); letter-spacing: -
 .field button[disabled] { opacity: .6; cursor: default; }
 .priv { margin: 0; }
 /* One orange line: the input's underline turns down the left edge and branches into every module row. */
-.try, .plan { border-left: 3px solid var(--orange); padding-left: 18px; }
-@media (max-width: 560px) { .try, .plan { padding-left: 12px; } .field .wide { display: none; } .field { padding-left: 12px; } }
-.try { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin: 0; padding-top: 12px; font-size: 13px; color: var(--fg-3); }
+.plan { border-left: 3px solid var(--orange); padding-left: 18px; }
+/* Examples sit inside the input box, under a hairline, as other things to type. */
+.field { flex-wrap: wrap; }
+.try { flex: 0 0 calc(100% + 22px); display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin: 2px 0 0 -16px; padding: 9px 16px 4px; border-top: 1px solid var(--line); font-size: 13px; color: var(--fg-3); cursor: default; }
+@media (max-width: 560px) { .plan { padding-left: 12px; } .field .wide { display: none; } .field { padding-left: 12px; } .try { margin-left: -12px; flex-basis: calc(100% + 18px); padding-left: 12px; } }
 .try button { font: inherit; color: var(--fg-2); background: none; border: 0; padding: 0; cursor: pointer; text-align: left; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
 .try button:hover, .try button[aria-pressed="true"] { color: var(--ink); text-decoration-color: var(--orange); }
 
@@ -183,10 +185,10 @@ footer p { margin: 0; max-width: 46em; }
         <textarea id="stuck" name="challenge" rows="1" autocomplete="off" maxlength="120" placeholder="Type it here, in a few words">we keep losing deals to a cheaper competitor</textarea>
         <button class="clear" id="clear" type="button" aria-label="Clear and type your own">×</button>
         <button id="send" type="submit">Rewrite<span class="wide"> my course</span></button>
-      </div>
-      <div class="try" id="try"><span>or try</span>
-        <button type="button" data-ex="1" aria-pressed="false">our board wants an AI plan by March</button>
-        <button type="button" data-ex="2" aria-pressed="false">month-end close takes two weeks</button>
+        <div class="try" id="try"><span>or try</span>
+          <button type="button" data-ex="1" aria-pressed="false">our board wants an AI plan by March</button>
+          <button type="button" data-ex="2" aria-pressed="false">month-end close takes two weeks</button>
+        </div>
       </div>
     </form>
 

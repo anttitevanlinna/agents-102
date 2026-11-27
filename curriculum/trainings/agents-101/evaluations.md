@@ -34,7 +34,7 @@ The judge checks every draft, and the agent turns each flag into a rule for the 
 
 ## Debrief
 
-Five minutes. The agent reviews every round, rewrites `./generation-tactic.md` once more and adds one line to your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span>: every briefing you ask for in this folder follows those rules and is scored by the judge. The judge file stays as it is.
+Five minutes. The agent reviews every round, rewrites `./generation-tactic.md` once more and adds one line to your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span>: every briefing you ask for in this folder follows the rules in that file and is scored by the judge. The judge file stays as it is.
 
 {{prompt:a101-m6-debrief-tactic-sharpen}}
 
@@ -52,7 +52,7 @@ If the summary sounds too kind, check one removal: *"You said you removed a rule
 
 ## Bring to Module 7
 
-**Tell the agent five moments at work when you would bring it in.** The [Agent Trigger List](../../trainings/agents-101/supplementary/agent-trigger-list.md) helps you spot them. Pick one the eval loop's checks could let the agent handle without you. The agent writes that trigger into `module-6/trigger.md`.
+**Tell the agent five moments at work when you would bring it in.** The [Agent Trigger List](../../trainings/agents-101/supplementary/agent-trigger-list.md) helps you spot them. Pick one where the eval loop's checks would let the agent work without you. The agent writes that trigger into `module-6/trigger.md`.
 
 The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) and [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) are optional references.
 

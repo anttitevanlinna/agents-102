@@ -1,6 +1,6 @@
 # Evals as Steering
 
-Ethan Mollick's *The Bitter Lesson versus The Garbage Can* sets two views side by side. In the first, you define the outcome, give the agent examples and feedback, and the agent finds its own path. In the second, the real work of a company lives in unwritten habits and workarounds, and an agent needs those mapped first.
+Ethan Mollick's *The Bitter Lesson versus The Garbage Can* sets two views side by side. In the first, you define the outcome, give the agent examples and feedback, and the agent finds its own path. In the second, a company gets its real work done through unwritten habits and workarounds, and an agent needs those mapped first.
 
 You can check one agent's work yourself. You cannot check the work of every agent you run. An eval is your standard for good work, in a form the system keeps applying when you are not there.
 

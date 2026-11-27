@@ -20,7 +20,7 @@ What would have to be true before you let the agent hit send?
 
 In a loop that improves, something makes several candidates, something else picks, and what wins is kept.
 
-The three stances in Module 3 and the four detectors in Module 5 made candidates. The groundedness judge and the steering eval pick. While you are away, the loop does both, and `./generation-tactic.md` keeps what won.
+The three stances in Module 3 and the four detectors in Module 5 made candidates. The groundedness judge and the steering eval pick. While you are away, the loop does both, and `./generation-tactic.md` holds what won.
 
 ## The human moves one level up
 

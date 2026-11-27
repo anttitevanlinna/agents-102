@@ -154,16 +154,15 @@ function dropModulePreworks(html, modules) {
   return html;
 }
 
-// Trainer demos: in a room the trainer runs them live. Alone, the page holds
-// only a description of a demo nobody shows, so the open edition leaves them out.
-const TRAINER_DEMOS = ['lectures-first-scheduled-agent', 'lectures-agent-that-takes-action'];
-function dropTrainerDemos(html) {
-  for (const id of TRAINER_DEMOS) {
-    const start = html.indexOf(`<section class="phase phase--lecture" id="${id}">`);
-    if (start < 0) throw new Error(`Trainer demo missing: ${id}`);
-    const end = html.indexOf('</section>', start);
-    if (html.slice(start + 1, end).includes('<section')) throw new Error(`Trainer demo holds a nested section: ${id}`);
-    html = html.slice(0, start) + html.slice(end + '</section>'.length);
+// Trainer demos: in a room the trainer runs them live. Alone, the learner reads
+// the same page as a short lesson, so the open edition keeps the body and drops
+// the "Demo: " label from the title wherever it appears.
+const TRAINER_DEMOS = ['1st scheduled agent', 'Agent that takes action'];
+function retitleTrainerDemos(html) {
+  for (const title of TRAINER_DEMOS) {
+    const count = html.split(`Demo: ${title}`).length - 1;
+    if (!count) throw new Error(`Trainer demo missing: ${title}`);
+    html = html.split(`Demo: ${title}`).join(title);
   }
   return html;
 }
@@ -547,7 +546,7 @@ ${SETUP_CSS}
 })();
 </script>\n${shell('figure-reader.html')}<script data-a101-handbook>\n${shell('deskpad.js')}\n</script>\n</body>`);
 
-    if (edition.open) html = hideVideoPlaceholders(addModuleTimes(addLicenceLine(dropTrainerDemos(dropModulePreworks(html, modules))), modules));
+    if (edition.open) html = hideVideoPlaceholders(addModuleTimes(addLicenceLine(retitleTrainerDemos(dropModulePreworks(html, modules))), modules));
 
     // The edition hub has one destination. Existing customer hubs are untouched.
     if (edition.hub) fs.writeFileSync(path.join(customerDir, 'index.html'), `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agents 101 — ${edition.brand}</title><meta http-equiv="refresh" content="0; url=./agents-101/#start-learning"></head><body><p><a href="./agents-101/#start-learning">Start Agents 101</a></p></body></html>\n`);
@@ -586,4 +585,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { dropModuleOnePrework, dropModulePreworks, dropTrainerDemos, hideVideoPlaceholders, EDITIONS, editionModules, editionCheckpoints, headerModules, addLicenceLine, addModuleTimes, buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };
+module.exports = { dropModuleOnePrework, dropModulePreworks, retitleTrainerDemos, hideVideoPlaceholders, EDITIONS, editionModules, editionCheckpoints, headerModules, addLicenceLine, addModuleTimes, buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };

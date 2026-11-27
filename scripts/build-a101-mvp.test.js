@@ -8,7 +8,7 @@ const path = require('node:path');
 const { execFileSync } = require('node:child_process');
 const { createHash } = require('node:crypto');
 const { JSDOM, VirtualConsole } = require('jsdom');
-const { dropModulePreworks, dropTrainerDemos, WORKBOOK_URL, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT } = require('./build-a101-mvp.js');
+const { dropModulePreworks, retitleTrainerDemos, WORKBOOK_URL, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT } = require('./build-a101-mvp.js');
 const { renderCourseNavigation, COURSE_READING_CUE, EXTRACTION_BOOTSTRAP } = require('./a101-mvp-navigation.js');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -44,7 +44,7 @@ test('offline prework is copied from the rendered edition and fails on missing o
   assert.throws(() => prependOfflinePrework('<main>No M1</main>', rendered), /received 0/);
 });
 
-test('open edition drops each module Prework list and the trainer demos, and nothing else', () => {
+test('open edition drops each module Prework list and keeps the trainer demos without the Demo label', () => {
   const mod = (slug, body) => `<section class="module" id="${slug}"><h1>${slug}</h1>${body}</section>`;
   const html = mod('a', '<h2 id="prework">Prework</h2><p>Owed.</p><h2 id="start-here">Start here</h2><p>Go.</p>')
     + mod('b', '<h2 id="start-here">Start here</h2><p>No list.</p>');
@@ -53,10 +53,9 @@ test('open edition drops each module Prework list and the trainer demos, and not
   assert.match(out, /<h1>a<\/h1><h2 id="start-here">Start here<\/h2><p>Go\.<\/p>/);
   assert.match(out, /No list\./);
   assert.throws(() => dropModulePreworks(html, [{ slug: 'missing' }]), /Module section missing/);
-  const demo = (id) => `<section class="phase phase--lecture" id="${id}"><h1>Demo</h1><p>Shown live.</p></section>`;
-  const page = `<p>Before.</p>${demo('lectures-first-scheduled-agent')}<p>Between.</p>${demo('lectures-agent-that-takes-action')}<p>After.</p>`;
-  assert.equal(dropTrainerDemos(page), '<p>Before.</p><p>Between.</p><p>After.</p>');
-  assert.throws(() => dropTrainerDemos('<p>No demos.</p>'), /Trainer demo missing/);
+  const page = '<a>Demo: 1st scheduled agent</a><h1>Demo: 1st scheduled agent</h1><p>Body.</p><h1>Demo: Agent that takes action</h1>';
+  assert.equal(retitleTrainerDemos(page), '<a>1st scheduled agent</a><h1>1st scheduled agent</h1><p>Body.</p><h1>Agent that takes action</h1>');
+  assert.throws(() => retitleTrainerDemos('<p>No demos.</p>'), /Trainer demo missing/);
 });
 
 test('edition loader framing patches exactly two claims and fails on upstream drift', () => {

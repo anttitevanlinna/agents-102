@@ -18,7 +18,7 @@ After this module, you will be able to:
 
 Start a fresh session or task at `~/Documents/agents-101/`. The new session does not see Module 1's conversation.
 
-Your `memory/`, `sources/` and `agents/` folders are empty from prework, and this module does not use Module 1's files. The agent writes the root instructions file in the Debrief.
+Your `memory/`, `sources/` and `agents/` folders are empty from prework, and you will not need Module 1's files. The agent writes your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span> in the Debrief.
 
 **The question, to you:** what's the difference between asking an agent a question and having an agent keep a knowledge base that every later agent reads?
 
@@ -42,7 +42,7 @@ Keep the same session running. The agent still has your challenge in the convers
 
 ## Debrief
 
-Five minutes. The agent reviews the session and writes **the first root instructions file in this directory**: the rules every agent here reads from now on. The rules come from what worked, what went wrong and what you had to repeat.
+Five minutes. The agent reviews the session and writes **the first <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span> in this directory**: the rules every agent here reads, drawn from what worked, what went wrong and what you had to repeat.
 
 {{prompt:a101-m2-debrief-claude-md}}
 
@@ -54,7 +54,7 @@ Look for what the agent left out. A summary that names three rules and skips the
 
 ## Fix the output, then fix the rule
 
-> Your agent is right when it works. If the same miss comes back when you ask again, the agent lacks context: sharpen the memory, tighten a rule or rewrite the prompt. You find the next mistakes by using the system and watching where it goes wrong.
+> Your agent is "right" when it works. If the same miss comes back when you ask again, the agent lacks context: sharpen the memory, tighten a rule or rewrite the prompt. You find the next mistakes by using the system and watching where it goes wrong.
 
 Finding a miss and fixing its cause is continuous improvement, done by hand.
 
@@ -71,7 +71,7 @@ Your folder holds your challenge, your sources and your rules. A better model re
 
 ## Bring to Module 3
 
-**Your challenge memory.** In Module 3, several agents work on it. Set up the scheduled agent now and it reads the memory every morning while you go on. Module 3 does not wait for it.
+**Bring your challenge memory.** In Module 3, several agents work on it. Set up the scheduled agent now and it reads the memory every morning while you go on. Module 3 does not wait for it.
 
 [Schedule your personal agent](exercises/personal-agent-homework.md)
 

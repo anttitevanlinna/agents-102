@@ -29,7 +29,7 @@ Working folder: `~/Documents/agents-101/`.
 
 ## Debrief
 
-Five minutes. The agent reviews the benchmark and updates your root instructions file. The new rules say where the judge runs and what to do where the judge cannot check. The agent cuts any earlier rule the judge now covers.
+Five minutes. The agent reviews the benchmark and updates your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span>. The new rules say where the judge runs and what to do where the judge cannot check. The agent cuts any earlier rule the judge now covers.
 
 {{prompt:a101-m5-debrief-groundedness-rules}}
 
@@ -43,7 +43,7 @@ The prompt also makes the agent re-read the section and confirm each rule is in 
 
 Correct the agent where a rule is vague: *"name the evidence roster"*, *"say when to stop and ask for sources."*
 
-> Start with the misses that are costly and keep coming back: numbers in external notes, customer names in account summaries, policy claims in internal advice, citations in briefings. Have the agent write into the root instructions file when the judge must run.
+> Start with the misses that are costly and keep coming back: numbers in external notes, customer names in account summaries, policy claims in internal advice, citations in briefings. Have the agent write into your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span> when the judge must run.
 
 ## Propose, double-check, apply
 

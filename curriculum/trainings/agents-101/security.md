@@ -17,7 +17,7 @@ After this module, you will be able to:
 
 Start a fresh session or task at `~/Documents/agents-101/`.
 
-Today the agent checks three things: the system you built in Module 3, the root instructions file, and the policy files under `module-4/policies/`.
+Today the agent reads the system you built in Module 3, your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span>, and the policy files under `module-4/policies/`.
 
 **The question, to you:** what would you want checked before this system works for a real stakeholder?
 
@@ -31,7 +31,7 @@ Today the agent checks three things: the system you built in Module 3, the root 
 
 ## Debrief
 
-Five minutes. The agent reviews the policy and security reports and updates the root instructions file. The agent writes a rule only where no check or mitigation covers the risk, and cuts any earlier rule your mitigation now covers.
+Five minutes. The agent reviews the policy and security reports and updates your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span>. The agent writes a rule only where no check or mitigation covers the risk, and cuts any earlier rule your mitigation now covers.
 
 {{prompt:a101-m4-debrief-security-rules}}
 

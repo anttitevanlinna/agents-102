@@ -51,7 +51,7 @@ Each round the agent turns the work into sharper rules and drops what the work d
 
 {{prompt:a101-m1-debrief-cold-critic}}
 
-Where the critic calls a part generic, your context is thin there. Add one sharp detail and regenerate the site. Where the critic's *"uniquely you"* pick matches your own view, that part works. When you and the critic disagree, your view counts more.
+Where the critic calls a part generic, your context is thin there: add one sharp detail and regenerate the site. Where the critic's *"uniquely you"* pick matches your own view, that part works. Your view outweighs the critic's.
 
 ## Key Concepts
 - Context is the brush: what you give the agent shapes the output.
@@ -61,7 +61,7 @@ Where the critic calls a part generic, your context is thin there. Add one sharp
 
 ## Bring to Module 2
 
-One live challenge: a decision you're making, a bet you're placing, or work whose direction is still unclear. Having it in mind is enough. Module 2 opens by pinning it down with the agent.
+Bring one live challenge: a decision you're making, a bet you're placing, or work whose direction is still unclear. Having it in mind is enough. Module 2 opens by pinning it down with the agent.
 
 ## Pre-reads before Module 2
 

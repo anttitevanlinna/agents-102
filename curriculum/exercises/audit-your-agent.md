@@ -10,9 +10,9 @@ Name it `m4-agent-audit` if supported.
 
 **What you do:**
 
-Run the security skill from Exercise 1 on the system you built in Modules 2-3. Apply one mitigation, then decide what to do about the residual risk: the risk that remains after the mitigation. The goal is to go through the loop once (assess, mitigate, reassess the residual), not to get a clean result.
+Run the security skill from Exercise 1 on the system you built in Modules 2-3. Apply one mitigation and decide on the residual risk, the risk that remains after it. The goal is one pass through the loop (assess, mitigate, reassess the residual), not a clean result.
 
-You need three things: the first policy report from Exercise 1, the skill, and your Module 3 system.
+You need the first policy report from Exercise 1, the skill, and your Module 3 system.
 
 ## Phase 1: Load the reusable check
 
@@ -20,7 +20,7 @@ You need three things: the first policy report from Exercise 1, the skill, and y
 
 Start the fresh session only after the Exercise 1 skill is saved, so the session can find the skill.
 
-Type `/` and look for `/agent-audit` in the autocomplete list. If it is listed, the skill is available. The prompts in the next phases tell the skill which of its two lenses to apply.
+Ask the agent to confirm it can load the `agent-audit` skill. The prompts in the next phases tell the skill which of its two lenses to apply.
 
 <div class="rt-cowork">
 
@@ -54,7 +54,7 @@ In the same session, ask the agent to apply the agent-security lens and write th
 
 {{prompt:audit-your-agent-2}}
 
-Have the agent list the risks and explain each one: what it means in this system, why it ranks where it does, and what the failure would look like. Then pick one. There is no prompt for this step. You lead.
+Have the agent list the risks and explain each one: what it means in this system, why it ranks where it does, and what the failure would look like. Then pick one. You lead, with no prompt for this step.
 
 The two lenses overlap on some risks and not on others. That is expected.
 
@@ -68,7 +68,7 @@ Tell the agent the risk in one sentence, then paste the prompt. The agent picks 
 
 {{prompt:audit-your-agent-3}}
 
-If the mitigation does not fit, tell the agent and try again. Run the check again, then read the residual section in `outputs/security-report.md`.
+If the mitigation does not fit, tell the agent and try again. Run the check again, then ask the agent to show you the residual section of `outputs/security-report.md`.
 
 Some risk remains. That is expected. Name it, accept it on record, and stop there.
 

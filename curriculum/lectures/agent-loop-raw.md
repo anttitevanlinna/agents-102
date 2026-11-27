@@ -12,7 +12,7 @@ Then ask how its text becomes an action.
 
 {{prompt:agent-loop-raw-3}}
 
-The answers describe one mechanism. Each tool has a name, a description and an input format. The context makes one description look relevant, and the model writes a structured request. The runtime turns that request into an action, and the tool does the work.
+The answers describe one mechanism. Each tool has a name, a description and an input format. The model picks the tool whose description fits the context and writes a structured request. The runtime turns that request into an action, and the tool does the work.
 
 A tool call is text that becomes an action. If the tool description is vague, the context is misleading or the request goes to the wrong system, the action is wrong in the same way.
 

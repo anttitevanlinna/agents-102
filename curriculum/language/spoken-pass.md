@@ -1,29 +1,33 @@
 # Spoken pass (Agents 101 → AE101 bar)
 
-Not student-facing. Wording pass run 2026-11-27 on Modules 1-6 after the compaction passes. Sibling of `rewrite-rules.md` (cuts); this one decompresses.
+Not student-facing. Sentence-level wording pass for Modules 1-6. Runs UNDER the taste canon, never beside it.
 
-**Why.** Lints green, text still hard. Compaction overshot: A101 median sentence 8 words vs AE101 10; "you" in 24% of sentences vs 31%. Shorthand, not length, is the defect. Do not answer it with another cut.
+**Load first, every time.** `rewrite-rules.md` (this folder) · `evals/mechanical/persona-student/taste-rules.md` · `writing-style.md` · `taste-notes.md` newest entries · T1 leads `writing` + `student_facing`. Maintainer 2026-11-27, mid-pass: "did you load the compendiums?", "have you read the taste eval / rubriks?" A pass run without them repeats defects those files already name.
 
-**Test per sentence.** Would a proficient agentic business person say it out loud to a colleague? No → rewrite as speech.
+**Length.** Shorter or nothing (`writing-style.md` § Editing a shipped slide). Added words are allowed only to name the actor or to make a claim true. A fragment gets its verb; pay for it by cutting the restatement next to it. Measure changed text before/after per module and say the number.
 
-**Four defects, in hit order**
-1. Shorthand nobody says: verbless stacks, semicolon chains, "X in, Y out" slogans → subject + verb + object; split at the semicolon.
-2. No actor: "gets absorbed", "the rise can be believed" → name who acts: the agent, the judge, the helper, you. Repeat the noun over "it".
-3. Coined word before it is earned (tactic, roster, lens, kernel, seam, goal-nudger, noise) → plain word, or one explaining clause at first use. Prompt vocabulary stays matched: body does not rename what the prompt names (Beat stays Beat).
-4. Body disagrees with prompt: body promises an output the prompt never writes, or previews the prompt clause by clause → read the prompt body first; lead-in = the ask + what the student does with the answer.
+**Test per sentence.** Would a proficient agentic business person say it out loud to a colleague? Then the literal read:
+
+1. Can the subject do the verb? Instructions don't send, workarounds don't decide, an eval doesn't write, a module doesn't use or add. Give the verb to the agent, the judge, the LLM or you.
+2. Every pronoun has its noun in the same sentence ("all of them" → "every agent you run").
+3. No pen verbs for the student ("write that quality down", "write down five moments"). The student tells the agent; the agent writes.
+4. Platform word wins: `CLAUDE.md` / `AGENTS.md` by runtime span, never a house name ("root instructions file"). No house noun for a file either ("the tactic") → "the rules in" + the file name.
+5. Every sentence has a verb; a bold noun stack opening a Bring block is not a sentence.
+6. A paragraph that restates its own heading, the Debrief above it, or what the student now holds → cut.
+7. No count beside the list it counts. No "do not skip". No UI steps, no "read the .md", no "look at".
+8. Body agrees with the prompt it leads into: read the prompt body first; lead-in = the ask + what the student does with the answer.
 
 **Keep**
-- Maintainer's first-person lines verbatim. Locked sentences.
-- Lead-in tells the student to run the prompt; never restates it (`compounding.md` maintainer note 2026-08-29).
-- Student acts through the agent: "ask the agent to show", not "open the file and edit".
-- Unease stays open, never declared. No "your gut", no "the uncomfortable feeling".
-- Longer is allowed when it buys a subject or a verb; changed text grew ~10%.
+- Maintainer's first-person lines verbatim. Locked sentences (`locked-sentences.json`).
+- Prompt vocabulary matched until the prompt changes (Beat stays Beat; steering eval / goal-nudger follows the prompt-taste ruling).
+- Trainer-to-room lines ("That is expected.").
+- Unease stays open, never declared.
 
 **Procedure per module**
 1. `node scripts/read-training.js agents-101 --modules <slug>`; read as the stranger.
 2. Skim each `prompts/<key>.md` body the page leads into.
 3. Edit student body only; update maintainer notes that name a renamed header.
-4. `node scripts/gates.js`; `node scripts/check-new-sentences.js --update`; commit with the index.
+4. `node scripts/gates.js`; `node scripts/check-new-sentences.js --update`; `node scripts/build-a101-mvp.js --edition open` + `node --test scripts/build-a101-mvp.test.js` (loader-framing anchors); commit with the index.
 5. Before/after pairs for the maintainer: project files `language-pass/pairs.py <repo> <base> <head> <files>` → review page. Never report the pass as good from scores; show pairs.
 
 **Not covered here.** Prompt bodies (gated, `prompt-ok`), step order and structure, Prework / Bring / Next blocks, supplementaries, Modules 7-8.

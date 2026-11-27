@@ -10,7 +10,7 @@ Name it `m4-security-skill` if your runtime supports session names.
 
 **What you do:** Check your system from Modules 2-3 against the policy files directly, with no skill. Then package the check as one skill with two lenses: company policy and agent risk. You are done when the skill is saved.
 
-A **skill** packages expertise (rules, checklists, steps) so the agent loads it when the work matches. You run the skill again instead of writing the prompt again from memory.
+A **skill** packages expertise (rules, checklists, steps) so the agent loads it when the work matches. You run the skill again instead of prompting again from memory.
 
 ## Guess first
 
@@ -84,7 +84,7 @@ This task interface can't write into your runtime's personal directories, so pre
 
 **What happened:**
 
-You checked the system against the policies directly, then packaged the check as a skill. The next exercise loads the skill and runs it on the same system.
+You checked the system against the policies directly, then packaged the check as a skill.
 
 **The point:**
 

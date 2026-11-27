@@ -16,15 +16,15 @@ After this module, you will be able to:
 
 Start a fresh session or task at `~/Documents/agents-101/`.
 
-**The question, to you:** if you define the outcome and let agents find their own path, do they get better at your company's work? Or is the way your organisation works too messy for that? Ethan Mollick asks this in [*The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage).
+**The question, to you:** if you define the outcome and let agents find their own path, do they get better at your company's work, or is your organisation too messy for that? Ethan Mollick asks this in [*The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage).
 
 ## Run the loop without you in it
 
-The judge checks every draft. The agent turns each thing the judge flags into a rule for the next draft. You edit nothing.
+The judge checks every draft, and the agent turns each flag into a rule for the next draft.
 
 [Lecture: Evals as steering](lectures/evals-as-steering.md)
 
-> The same pattern applies to actions. An agent action starts as text: a proposed mail, ticket update, CRM change or command. Check the proposal before it becomes the action.
+> The same check works for actions. An agent action starts as text: a proposed mail, ticket update, CRM change or command. A judge can check that text before it becomes the action.
 
 [Exercise: The eval loop runs itself](exercises/eval-loop.md)
 
@@ -34,17 +34,15 @@ The judge checks every draft. The agent turns each thing the judge flags into a 
 
 ## Debrief
 
-Five minutes. The agent reviews every round and rewrites `./generation-tactic.md` one more time. Then the agent adds one line to your root instructions file: every briefing you ask for in this folder is written from the tactic and scored by the judge. The judge file stays as it is.
+Five minutes. The agent reviews every round, rewrites `./generation-tactic.md` once more and adds one line to your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span>: every briefing you ask for in this folder follows the rules in that file and is scored by the judge. The judge file stays as it is.
 
 {{prompt:a101-m6-debrief-tactic-sharpen}}
 
 ## Push back on the summary
 
-Read the agent's summary and push back: *"That rule is too vague, make it observable"* / *"you added a rule the tactic already had after round 2."*
+Push back on the agent's summary: *"That rule is too vague, make it observable"* / *"you added a rule the file already had after round 2."*
 
-If the summary sounds too kind, ask: *"Which rule did you claim to remove but keep under another name? Quote both lines."*
-
-You now have a sharper `./generation-tactic.md`, and one line in your root instructions that sends every later briefing through the tactic and the judge.
+If the summary sounds too kind, check one removal: *"You said you removed a rule. Quote the old line and show me it is gone from the file."*
 
 ## Key Concepts
 - The loop improves the work round after round with nobody editing. The judge never changes, so a better score means better work.
@@ -54,7 +52,7 @@ You now have a sharper `./generation-tactic.md`, and one line in your root instr
 
 ## Bring to Module 7
 
-**Your first five agent calls at work, written down**, using [Agent Trigger List](../../trainings/agents-101/supplementary/agent-trigger-list.md). Pick one call the eval loop's checks could let run without you. Tell the agent, and it writes the trigger into `module-6/trigger.md`.
+**Tell the agent five moments at work when you would bring it in.** The [Agent Trigger List](../../trainings/agents-101/supplementary/agent-trigger-list.md) helps you spot them. Pick one where the eval loop's checks would let the agent work without you. The agent writes that trigger into `module-6/trigger.md`.
 
 The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) and [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) are optional references.
 

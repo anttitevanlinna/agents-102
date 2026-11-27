@@ -33,15 +33,13 @@ Today three agents search your documents and practitioner articles, and three mo
 
 ## Debrief
 
-Five minutes. The agent reviews the four prompts, the retrieval files, the synthesizer's briefing and the conversation, then rewrites the root instructions file in place and reports what changed. Push back on anything that looks wrong.
+Five minutes. The agent reviews the four prompts, the retrieval files, the synthesizer's briefing and the conversation, then rewrites your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span> in place and reports what changed. Push back on anything that looks wrong.
 
 {{prompt:a101-m3-debrief-handoff-rules}}
 
 ## The review checks handoffs, not truth
 
 The prompt asks the agent for a harsh review of the handoffs: at least two places where work was lost, each with evidence (the file, the step, what was lost). Without the demand for evidence, the review turns polite.
-
-The review covers how your agents handed work to each other. It does not check whether the briefing is true.
 
 ## Push back on the summary
 

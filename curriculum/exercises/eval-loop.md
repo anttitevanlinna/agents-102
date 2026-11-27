@@ -6,9 +6,9 @@
 
 **What you do:**
 
-Start a loop that writes your briefing again each round, each time from better rules. Nobody edits a briefing by hand.
+Start a loop: each round an agent writes your briefing again from better rules. Nobody edits a briefing by hand.
 
-**How the loop works.** Each round, one helper agent writes a fresh briefing and a second helper agent scores it with your Module 5 judge. The main session turns what the judge flagged into rules in `./generation-tactic.md`, the **tactic** the next writer follows. The judge never changes, so fewer flagged claims means a better briefing.
+**How the loop works.** Each round, one helper agent writes a fresh briefing and a second helper agent scores it with your Module 5 judge. The main session turns what the judge flagged into rules in `./generation-tactic.md`, the file the next writer follows. The judge never changes, so fewer flagged claims means a better briefing.
 
 A typical result: *11 claims flagged in your Module 3 briefing, then 7, 7 and 4 over three rounds.*
 
@@ -16,29 +16,27 @@ A typical result: *11 claims flagged in your Module 3 briefing, then 7, 7 and 4 
 
 *5 min*
 
-Ask the agent to score your Module 3 briefing with the Module 5 judge, then write the first tactic from what the judge flagged.
+Ask the agent to score your Module 3 briefing with the Module 5 judge, then write the first rules in `./generation-tactic.md` from what the judge flagged.
 
 {{prompt:eval-loop-1}}
 
-Look at what the judge flagged. Those are the misses the tactic has to prevent.
-
-The agent also sets today's count beside the Module 5 count for the same briefing. The difference is the judge's noise: how much its score moves when nothing changed.
+The agent shows today's count beside the Module 5 count for the same briefing. The difference is the judge's noise: how much the score moves when nothing changed.
 
 ## Phase 2: Start the loop, then walk away
 
 *30 min*
 
-Ask the agent to run the loop. The loop runs at least three rounds and stops when a round no longer improves on the one before.
+Ask the agent to run the loop: at least three rounds, until a round no longer improves on the one before.
 
 {{prompt:eval-loop-2}}
 
-Round 1's score arrives with nothing from you. Then open the newest briefing in `module-6/runs/` and read it the way the person receiving it would. Add two or three remarks to `./remarks.md` in plain words: *"too hedged"*, *"this number is not ours"*, *"lead with the decision"*. Leave the loop running. The next rounds turn your remarks into tactic rules. The judge never sees them.
+Round 1's score arrives with nothing from you. Then open the newest briefing in `module-6/runs/` and read it the way the person receiving it would. Add two or three remarks to `./remarks.md` in plain words: *"too hedged"*, *"this number is not ours"*, *"lead with the decision"*. Leave the loop running. The next rounds turn your remarks into rules. The judge never sees them.
 
 Then ask how the loop could try more options at once.
 
 {{prompt:eval-loop-3}}
 
-Then ask how the loop resembles model training. The agent answers in five short pieces.
+Then ask how the loop resembles model training.
 
 {{prompt:eval-loop-4}}
 
@@ -50,25 +48,25 @@ Ask the agent whether the last round beat your Module 3 briefing by more than th
 
 {{prompt:eval-loop-5}}
 
-If numbers are still flagged in round 3, the tactic has no working rule for numbers yet. If a weak claim passes as grounded, the judge has a blind spot.
+If numbers are still flagged in round 3, no rule for numbers works yet. If a weak claim passes as grounded, the judge has a blind spot.
 
 ## Trace what each round changed
 
 **What happened:**
 
-The notes list every round: how many claims the judge flagged, which tactic rule changed before the round, and which of your remarks became a rule. Compare round 0, your Module 3 briefing, with the last round. Each briefing was written from a tighter tactic than the one before. You edited none of them.
+The notes list every round: how many claims the judge flagged, which rule changed before the round, and which of your remarks became a rule. Compare round 0, your Module 3 briefing, with the last round. Each briefing followed tighter rules than the one before.
 
 ## The loop improved the briefing without you
 
 **The point:**
 
-The loop rewrites the tactic after every round, and the score improves while you do nothing. The judge never changed, so you can trust the improvement.
+The agent rewrites the rules after every round, and the score improves while you do nothing. The judge never changed, so you can trust the improvement.
 
-**Spot-check the judge.** Mark three claims from the last round yourself before you see the judge's verdicts. The agent adds them to your five marks from Module 5. Where you and the judge disagree, the judge has a blind spot the loop cannot see.
+**Spot-check the judge.** Mark three claims from the last round as grounded or not, before you see the judge's verdicts. The agent adds them to your five marks from Module 5. Where you and the judge disagree, the judge has a blind spot the loop cannot see.
 
 {{prompt:eval-loop-spot-check}}
 
-This is Plan-Do-Check-Act, run by agents: the tactic is the plan, a helper writes, the judge checks, and the main session rewrites the tactic. Your next briefing, on any topic, starts from the tighter tactic.
+This is Plan-Do-Check-Act, run by agents: the rules are the plan, a helper writes, the judge checks, and the main session rewrites the rules. Your next briefing, on any topic, starts from the tighter rules.
 
 ## Put another judge in the same loop
 

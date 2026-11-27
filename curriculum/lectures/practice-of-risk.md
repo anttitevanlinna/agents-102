@@ -1,20 +1,20 @@
 # Lecture: The discipline of risk
 
-You built something that works. Would you bet your job on it being safe? Testing, policy and certification do not give agent systems certainty.
+You built something that works. Is it safe? Testing, policy and certification do not give agent systems certainty.
 
 ## Classical security manages risk on predictable software
 
 Classical software security is a risk-based practice, and the software it protects is deterministic: same input, same output. You find the bug, fix it, and check that the fix holds. That is why perimeter, access control and patching work.
 
-## Three ways agents break the old story
+## Three things agents change
 
 The behaviour is non-deterministic. Same prompt, same files, same tools, different session, different answer. One passing test is one sample.
 
-The attack surface is the instruction set. Well-formed English in a document your agent reads can make it *decide* to do something harmful with access it has.
+Instructions are the attack surface. Ordinary English in a document your agent reads can make the agent *decide* to do something harmful with the access it has.
 
 {{figure:agent-picture-reach}}
 
-Capability is emergent. You can't fully predict what its instructions, context and tools add up to, only bound it.
+Capability is emergent. You can't fully predict what an agent's instructions, context and tools add up to. You can only set limits.
 
 The result: *safe enough, under these conditions, within these limits, for now.* What may the agent read? What may it change? What must come back to a human?
 
@@ -22,7 +22,7 @@ The result: *safe enough, under these conditions, within these limits, for now.*
 
 The work is a loop of four plain, repeatable steps.
 
-**Assess.** Run your company's rules against your agent, then package that policy check to rerun. The agent-risk lens asks what the agent can reach, leak, and be misled into by ordinary text. Read the reports with judgment.
+**Assess.** Check your agent against your company's rules, and package that check so you can run it again. The agent-risk lens asks what the agent can reach, what it can leak, and what ordinary text could mislead it into doing. Read the reports with judgment.
 
 **Mitigate.** Pick one risk and apply the smallest change that reduces it: scope (give the agent less), split (two agents, different trust levels), filter (post-process output), gate (human approves) or review (a second agent judges).
 

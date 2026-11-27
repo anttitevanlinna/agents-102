@@ -2,7 +2,7 @@
 
 **Time:** ~28 minutes.
 
-Three retrievers fetch raw material on your challenge into `sources/`; a fourth session curates it into `memory/`. All read `./crux.md`. Each session has its own context.
+Three retriever sessions fetch raw material on your challenge into `sources/`. A fourth session, the synthesizer, curates the material into `memory/`. All four read `./crux.md`. Each session has its own context.
 
 No wiki or document connector? Run two retrievers: docs, on files from your computer, and internet. Leave the wiki retriever out. The synthesizer works the same from two files.
 
@@ -17,7 +17,7 @@ No wiki or document connector? Run two retrievers: docs, on files from your comp
 
 </div>
 
-Paste each retriever prompt and confirm its short list. If an agent starts reading the world, stop it, steer narrower, then say *"continue"*.
+Paste each retriever prompt and confirm the short list the agent proposes. If an agent starts reading far too widely, stop it, narrow its task, then say *"continue"*.
 
 Session 1, wiki: `sources/wiki-retrieval.md`.
 
@@ -31,7 +31,7 @@ Session 3, internet: `sources/internet-retrieval.md`.
 
 {{prompt:three-retrievers-one-curator-3}}
 
-If a file is thin, paste this for another round.
+If a retrieval file is thin, paste this prompt for another round.
 
 {{prompt:three-retrievers-one-curator-4}}
 
@@ -41,7 +41,7 @@ Session 4, synthesizer: `memory/`.
 
 Ask the synthesizer for one number or phrase from a retriever's file that it dropped or smoothed in `memory/`. Should it have survived?
 
-Done when `memory/_synthesis-m3.md` names what changed.
+You are done when `memory/_synthesis-m3.md` names what changed.
 
 <!-- maintainer -->
 

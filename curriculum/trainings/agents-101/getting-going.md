@@ -31,9 +31,9 @@ Keep that question in mind. Read the opening, Context is King, then do the exerc
 
 ## Debrief
 
-Five minutes. The retro is a second pass on `module-1/personal-brand-generation.md`: the agent reads the file against the session and `module-1/context-trace.md` for what worked, what fell flat, what to keep, what to drop.
+Five minutes. The agent reviews `module-1/personal-brand-generation.md` against the session and `module-1/context-trace.md`: what worked, what fell flat, what to keep, what to drop.
 
-Ask the agent to retro your rules file.
+Ask the agent to review your rules file.
 
 {{prompt:a101-m1-debrief-rules-retro}}
 
@@ -47,11 +47,11 @@ Each round the agent turns the work into sharper rules and drops what the work d
 
 ## Get a cold read
 
-**Then, use a cold critic.** Ask the agent to open a second, independent reader with only the site as context.
+**Then get a cold read.** Ask the agent to start a second, independent agent that sees only the site.
 
 {{prompt:a101-m1-debrief-cold-critic}}
 
-Where the critic sees generic, your context is thin: add one sharp detail, then regenerate the site. Where its *"uniquely you"* pick matches your own read, you're on solid ground. Your read outweighs the agent's.
+Where the critic calls a part generic, your context is thin there. Add one sharp detail and regenerate the site. Where the critic's *"uniquely you"* pick matches your own view, that part works. When you and the critic disagree, your view counts more.
 
 ## Key Concepts
 - Context is the brush: what you give the agent shapes the output.

@@ -2,26 +2,26 @@
 
 **Time:** ~22 minutes.
 
-**What you do:** Spawn three helpers with different stances on your curated memory.
+**What you do:** Have three helper agents argue from different stances on your curated memory, then have one session decide.
 
-Stay in the session that wrote `./crux.md`, close the retriever sessions, and wait for `memory/_synthesis-m3.md`. If a helper reads too widely, stop it, steer narrower, then say *"continue"*.
+Stay in the session that wrote `./crux.md`, close the retriever sessions, and wait for `memory/_synthesis-m3.md`. If a helper reads too widely, stop it, narrow its task, then say *"continue"*.
 
 <div class="rt-code">
 
-Ask the agent to spawn three helpers with different stances, then apply Rumelt's kernel to synthesize their notes into `./crux.md`.
+Ask the agent to spawn three helpers with different stances, then apply Rumelt's strategy kernel (diagnosis, guiding policy, coherent actions) to turn their notes into one answer in `./crux.md`.
 
 {{prompt:three-minds-one-synthesis-1}}
 
 </div>
 <div class="rt-cowork">
 
-Ask the agent to spawn three helpers with different stances, then apply Rumelt's kernel to synthesize their notes into `./crux.md`.
+Ask the agent to spawn three helpers with different stances, then apply Rumelt's strategy kernel (diagnosis, guiding policy, coherent actions) to turn their notes into one answer in `./crux.md`.
 
 {{prompt:three-minds-one-synthesis-2}}
 
 </div>
 
-If the issue list is long, ask the agent to pick the fixes that aim for optimal function in the next session.
+If the list of issues is long, ask the agent to pick the fixes that matter most for the next session.
 
 {{prompt:three-minds-one-synthesis-3}}
 

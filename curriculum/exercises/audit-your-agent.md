@@ -10,17 +10,17 @@ Name it `m4-agent-audit` if supported.
 
 **What you do:**
 
-Run your Exercise 1 security check against the system you built in modules 2-3. Add one mitigation and one residual-risk decision (what remains after mitigation). The goal is the loop (assess, mitigate, reassess residual), not a clean bill of health.
+Run the security skill from Exercise 1 on the system you built in Modules 2-3. Apply one mitigation, then decide what to do about the residual risk: the risk that remains after the mitigation. The goal is to go through the loop once (assess, mitigate, reassess the residual), not to get a clean result.
 
-Bring the policy raw report (baseline), the check (expert), your Module 3 system (target).
+You need three things: the first policy report from Exercise 1, the skill, and your Module 3 system.
 
 ## Phase 1: Load the reusable check
 
 *3 min*
 
-Open this exercise in a fresh session at your training-directory root, after saving the Exercise 1 skill, so the session can find it.
+Start the fresh session only after the Exercise 1 skill is saved, so the session can find the skill.
 
-Type `/` and look for `/agent-audit` in the autocomplete list. That means the skill is available. The audit prompts in the phases that follow tell it which of its two lenses to apply.
+Type `/` and look for `/agent-audit` in the autocomplete list. If it is listed, the skill is available. The prompts in the next phases tell the skill which of its two lenses to apply.
 
 <div class="rt-cowork">
 
@@ -32,7 +32,7 @@ If `/agent-audit` doesn't appear, go back to Exercise 1, save the skill, then op
 
 *12 min*
 
-Ask the agent to apply the packaged policy lens to your full module-3 system and produce one report. Unlike the raw report from `module-4/policies/`, this one comes through the reusable lens you shaped.
+Ask the agent to apply the skill's policy lens to your whole Module 3 system and write one report. The first report came straight from the policy files. This one comes through the skill you shaped.
 
 <div class="rt-cowork">
 
@@ -42,7 +42,7 @@ If the audit doesn't fire, expand `/agent-audit` from the autocomplete in the pr
 
 {{prompt:audit-your-agent-1}}
 
-Expect the reusable check to find things you did not think about, and to leave things "I can't tell" you thought were settled.
+Expect the skill to find things you did not think about, and to answer "I can't tell" on things you thought were settled.
 
 Read the agent's three lists. Then open `outputs/policy-report.md` and find the rows it flagged.
 
@@ -54,25 +54,23 @@ In the same session, ask the agent to apply the agent-security lens and write th
 
 {{prompt:audit-your-agent-2}}
 
-List the risks and have the agent explain each: what it means in this system, why it ranks where it does, and what the failure would look like. Then pick one. No prompt for this; you drive.
+Have the agent list the risks and explain each one: what it means in this system, why it ranks where it does, and what the failure would look like. Then pick one. There is no prompt for this step. You lead.
 
 The two lenses overlap on some risks and not on others. That is expected.
-
-The uncomfortable feeling is the evidence.
 
 ## Phase 4: Mitigate one risk, reassess the residual
 
 *10 min*
 
-Pick one risk from the two reports: the one that bugs you on the second skim. Your gut is data here.
+Pick one risk from the two reports: the one that still bothers you on a second look.
 
 Tell the agent the risk in one sentence, then paste the prompt. The agent picks and applies the mitigation.
 
 {{prompt:audit-your-agent-3}}
 
-If the option does not fit, tell the agent and iterate. Re-run the check, then read the residual section in `outputs/security-report.md`.
+If the mitigation does not fit, tell the agent and try again. Run the check again, then read the residual section in `outputs/security-report.md`.
 
-The risk remains. That is expected. Name it, accept it on record, and stop there.
+Some risk remains. That is expected. Name it, accept it on record, and stop there.
 
 ## Escalate to a person when judgment runs out
 
@@ -86,17 +84,17 @@ The narrow question the expert can answer is sitting in the report. Walk in with
 
 **Prototype vs production.**
 
-We did this for one risk. A production agent has a check or a closed door wherever its actions cannot be undone, and only a light check where redo is cheap. You must do the work.
+You did this for one risk. A production agent needs a check or a closed door wherever an action cannot be undone, and only a light check where redoing is cheap. You must do the work.
 
 ## Take stock of the loop you ran
 
 **What happened:**
 
-The Module 3 system has two packaged-lens reports and the earlier raw policy report. You applied one mitigation and recorded one residual decision in the security report. When judgment is unclear, show a human expert.
+Your Module 3 system now has three reports: the first policy report and one from each lens of the skill. You applied one mitigation and recorded one decision on the residual risk. Where your own judgment runs out, show the evidence to a human expert.
 
 **The point:**
 
-Certainty is not on offer. The discipline is the loop: assess, mitigate, reassess the residual, decide. The reusable check is the expert in the room, and it carries to the next agent. The report carries the evidence and decisions.
+You will not get certainty. You run the loop: assess, mitigate, reassess the residual, decide. The reusable check is the expert in the room, and it carries to the next agent. The report holds the evidence and the decisions.
 
 This was **Recipe 4**: the two-lens audit, four agent-risk patterns, five mitigations (scope, split, filter, gate, review), and "I can't tell" as a verdict. For the next agent, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) names the moves and components.
 

@@ -17,9 +17,9 @@ After this module, you will be able to:
 
 Start a fresh session or task at `~/Documents/agents-101/`.
 
-The agent reads the Module 3 system, the root instructions file, and the policy files under `module-4/policies/`.
+Today the agent checks three things: the system you built in Module 3, the root instructions file, and the policy files under `module-4/policies/`.
 
-Name what you'd want to check before letting this near a real stakeholder.
+**The question, to you:** what would you want checked before this system works for a real stakeholder?
 
 [Demo: Agent loop, raw](lectures/agent-loop-raw.md)
 
@@ -31,21 +31,21 @@ Name what you'd want to check before letting this near a real stakeholder.
 
 ## Debrief
 
-Five minutes. The agent reviews the policy and security reports, writes a rule only where no check or mitigation stands, and cuts any earlier rule your mitigation now covers.
+Five minutes. The agent reviews the policy and security reports and updates the root instructions file. The agent writes a rule only where no check or mitigation covers the risk, and cuts any earlier rule your mitigation now covers.
 
 {{prompt:a101-m4-debrief-security-rules}}
 
 Push back where the summary is wrong: *"That rule wasn't ambiguous, I just didn't have the evidence"* / *"that residual is too vague, name the file or behaviour."*
 
-Point the check at the other agents you've built.
+Then run the check on the other agents you've built.
 
-## Build More Skills For Recurring How
+## Build more skills for recurring work
 
 A skill packages the *how* of a recurring judgment or workflow, so the agent repeats the method without you rebuilding it. Other examples: reviewing customer data use, preparing a weekly briefing, triaging a queue.
 
-A skill works across projects and agents. Sharpen it where the method proves thin.
+A skill works across projects and agents. Improve the skill where its method turns out thin.
 
-To share, install the skill in a teammate's runtime. Their agent loads the same method by name, without your prompt history. A skill is not a deployed service and does not settle ownership.
+To share, install the skill in a teammate's runtime. Their agent loads the same method by name, without your prompt history. A shared skill is not a deployed service, and sharing it does not settle who owns it.
 
 ## Key Concepts
 - No certainty: assess, mitigate, reassess the residual, decide.

@@ -38,7 +38,7 @@ For each round:
 
 When the loop stops:
 - Write module-6/eval-notes.md with:
-  - a table of claims flagged out of claims judged, round 0 (the Module 3 briefing) first and then each loop round
+  - a table of claims flagged out of claims judged, round 0 (the baseline briefing) first and then each loop round
   - the generation-tactic change after each round, naming any remark it came from
   - why the loop stopped
   - whether any judge subagent got instructions beyond the judge file

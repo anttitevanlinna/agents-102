@@ -57,12 +57,12 @@ const TELLS = {
   quota: t => t.match(/\bat least (?:one|two|three|\d+)\b[^.\n]*\b(?:drop|wrong|generic|rule)|\bAssume[^.\n]*\d+ ?%/gi) || [],
   // counted, not scored: short fragments are fine unless one repeats the sentence before it
   fragments: t => t.match(/(?:(?<=[.!?]\s|^)(?:[A-Z][\w'’]*)(?: [\w'’-]+){0,3}[.!?]\s+){3,}/gm) || [],
-  // counted, not scored: a sentence that names a module number (work has no modules). Paths like module-6/ are not matched.
+  // a sentence that names a module number (work has no modules). Paths like module-6/ are not matched.
   module: t => t.replace(/`[^`]*`/g, '').match(/\bModule \d+\b/gi) || [],
   // counted, not scored: the agents-101 word list; AE101 is not held to it
   wording: t => t.match(/\bhir(?:e|ed|ing)\b|\bmuscle|\bland(?:s|ed|ing)\b|\bship(?:s|ped|ping)?\b|\bleverage|\bMonday|—/g) || [],
 };
-const WEIGHT = { caps: 1, obvious: 1, preamble: 1, absolute: 1, harsh: 2, dontRun: 2, meta: 2, youFlip: 2, coined: 2, quota: 0, fragments: 0, module: 0, wording: 0 };
+const WEIGHT = { caps: 1, obvious: 1, preamble: 1, absolute: 1, harsh: 2, dontRun: 2, meta: 2, youFlip: 2, coined: 2, quota: 0, fragments: 0, module: 1, wording: 0 };
 
 function scorePrompt(key, text) {
   const t = String(text || '').replace(/\{\{[^}]*\}\}/g, 'X').trim();

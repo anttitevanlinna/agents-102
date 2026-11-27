@@ -12,7 +12,7 @@ Keep the same session running. The empty `sources/`, `memory/`, and `agents/` fo
 
 *20 min*
 
-Phase 1 has three beats. The agent helps you plan which sources to use. The agent saves each source, or a pointer to it, in `sources/`. Then the agent builds `memory/` from the sources.
+Phase 1 has three steps. The agent helps you plan which sources to use. The agent saves each source, or a pointer to it, in `sources/`. Then the agent builds `memory/` from the sources.
 
 **Always comply with your company's AI policy.** Its rules on what can go through an LLM hold here. If in doubt, check before uploading.
 
@@ -28,7 +28,7 @@ If the agent starts reading before it shows the plan, stop it, narrow the task, 
 
 ## Curate the source plan
 
-**Beat 1. Curate.** The agent checks which sources it can reach and asks where your material lives.
+**Step 1. Curate.** The agent checks which sources it can reach and asks where your material lives.
 
 {{prompt:build-your-challenge-memory-1}}
 
@@ -36,7 +36,7 @@ Push back on the plan. Sharpen it and add what's missing.
 
 ## Ingest the sources
 
-**Beat 2. Ingest.** The agent saves the content of each source in `sources/`.
+**Step 2. Ingest.** The agent saves the content of each source in `sources/`.
 
 **What the agent reads.** <span class="rt-cli">The CLI agent reads any path you name; use absolute paths outside the training folder.</span><span class="rt-desktop">The desktop agent reads files you attach; attach outside sources before sending.</span><span class="rt-cowork">The agent reads your selected working folders; add a folder or attach a file for one message.</span>
 
@@ -46,7 +46,7 @@ The agent reports three lists: saved as content, linked by local path, and not r
 
 ## Build the memory under a plan
 
-**Beat 3. Build memory.** Ask the agent to write a plan first and wait for your approval before it changes files.
+**Step 3. Build memory.** Ask the agent to write a plan first and wait for your approval before it changes files.
 
 {{prompt:build-your-challenge-memory-3}}
 

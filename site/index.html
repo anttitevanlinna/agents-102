@@ -37,7 +37,8 @@
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+@media (max-width: 560px) { html { scroll-padding-top: 76px; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body { margin: 0; background: var(--paper); color: var(--fg); font: 17px/1.6 var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: clip; }
 a { color: inherit; }
@@ -46,8 +47,14 @@ a { color: inherit; }
 @media (max-width: 520px) { .wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); } }
 
 /* Header: same brand bar as the handbook */
-.top { background: var(--paper); }
+/* Sticky, so the one primary action stays on screen while the prompt and the rows take the first view. */
+.top { position: sticky; top: 0; z-index: 10; background: var(--paper); transition: box-shadow .2s; }
+.top.stuck { box-shadow: 0 1px 0 var(--line); }
 .top .wrap { height: 76px; display: flex; align-items: center; gap: 16px; }
+.top .start { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; background: var(--ink); color: var(--btn-fg); font-weight: 600; font-size: 15px; padding: 10px 16px; border-radius: 4px; white-space: nowrap; }
+.top .start::after { content: '→'; transition: transform .15s; }
+.top .start:hover::after { transform: translateX(3px); }
+@media (max-width: 560px) { .top .wrap { height: 60px; gap: 12px; } .bosser svg { width: 36px; height: 36px; } .brand { font-size: 19px; } .top .start { padding: 9px 13px; } .top .start .wide { display: none; } }
 .bosser { display: block; line-height: 0; }
 .bosser svg { display: block; }
 .brand { font: 700 21px/1 var(--font-body); letter-spacing: -.045em; text-decoration: none; white-space: nowrap; color: var(--ink); }
@@ -163,6 +170,7 @@ footer p { margin: 0; max-width: 46em; }
   <div class="wrap">
     <a class="bosser" href="https://bosser.consulting/" aria-label="Bosser"><svg viewBox="0 0 100 100" width="44" height="44" aria-hidden="true"><rect width="100" height="100" fill="#000"/><g fill="#fff" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="700" font-size="25" text-anchor="middle"><text x="27" y="47">B</text><text x="50" y="47">O</text><text x="73" y="47">S</text><text x="27" y="74">S</text><text x="50" y="74">E</text><text x="73" y="74">R</text></g></svg></a>
     <a class="brand" href="/">Agents 101</a>
+    <a class="start" href="/agents-101/#make-my-first-game" data-umami-event="start-prework" data-umami-event-from="header"><span>Start<span class="wide"> with prework</span></span></a>
   </div>
 </header>
 
@@ -346,6 +354,11 @@ footer p { margin: 0; max-width: 46em; }
    the relay is set with textContent only. Any failure shows the standard lines.
    Umami gets a count and an outcome, never the text. */
 (function () {
+  var top = document.querySelector('.top');
+  function stuck() { top.classList.toggle('stuck', window.scrollY > 4); }
+  window.addEventListener('scroll', stuck, { passive: true });
+  stuck();
+
   'use strict';
   var form = document.getElementById('ask'), inp = document.getElementById('stuck'), send = document.getElementById('send');
   var list = document.getElementById('rows'), statusEl = document.getElementById('status'), head = document.getElementById('planhead');

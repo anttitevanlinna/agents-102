@@ -37,6 +37,16 @@ Module arithmetic: one prompt cycle takes about five minutes (estimate). 8 to 16
 - **In view at Copy.** An instruction the learner needs while the agent works sits before the prompt, or close enough below it to be on screen when the learner presses Copy. Text under a prompt box taller than the screen is out of sight at that moment.
 - **Place-finding.** A learner returning from the agent after minutes away finds the next step by a landmark, not by reading.
 
+## Earlier calls, same principle
+
+Each of these reads alone as "use fewer words". Together they say one thing: the learner's attention is the budget, and words, screens, names and the agent's replies all spend it.
+
+- *"the information / word count is quite wordy still. ae101 has been compacted, compacted. This is quite important as training slides need to be able to be glanced."* (Antti 2026-11-01, `language/rewrite-rules.md` § Glance budget)
+- *"A has too long a paragraph to easily glance"*, *"Good test: does the paragraph / sentence help student execute the learning on their own?"* (same file)
+- *"Shorter, or nothing"*, *"longer and not enough value"* (`writing-style.md` § Editing a shipped slide)
+- *"too long sentence formats. KISS"* (Antti 2026-11-18, on learning goals)
+- *"never ask students to read .md files"* (Antti 2026-11-26): the agent reads the file, the learner reads the result.
+
 ## Measures
 
 Open edition, Modules 1 to 6, Cowork profile, 720 by 800 pixels. Measured 2026-11-27 on main `3a89989`.

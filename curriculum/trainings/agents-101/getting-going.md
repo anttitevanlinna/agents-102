@@ -61,7 +61,7 @@ Where the critic calls a part generic, your context is thin there. Add one sharp
 
 ## Bring to Module 2
 
-One live challenge: a decision you're making, a bet you're placing, or work whose direction is still unclear. Having it in mind is enough. Module 2 opens by pinning it down with the agent.
+Bring one live challenge: a decision you're making, a bet you're placing, or work whose direction is still unclear. Having it in mind is enough. Module 2 opens by pinning it down with the agent.
 
 ## Pre-reads before Module 2
 

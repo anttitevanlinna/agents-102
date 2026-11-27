@@ -18,9 +18,9 @@ If stuck, scan your next two weeks of calendar; the biggest unresolved item is u
 
 ## Check what the agent can read
 
-Module 2 works best when the agent can read a source connected to your challenge. Files on your computer are enough: documents, decks, exported pages, notes. If your work lives in a wiki or document system, check now that the agent can reach it.
+Module 2 works best when the agent can read a source connected to your challenge. If your work lives in a wiki or document system, check that the agent can reach it. Your own files work too.
 
-**Connectors** link the agent to places where your work lives: a wiki, a shared drive, or whatever you use. They are an optional extra. Ask the agent which connectors it can use.
+**Connectors** link the agent to places where your work lives: a wiki, a shared drive, or whatever you use. Ask the agent which ones it can use.
 
 Without a connector, the memory can start from files and pasted excerpts in your training directory.
 
@@ -45,7 +45,7 @@ Tell the agent three lines and have it save them as `prework/module-2-start.md`:
 - the first source the agent can read about it, or your fallback;
 - the planning control you will use before the agent writes files.
 
-You carry these lines into Module 2, which builds `./challenge.md` around them. If a line is blank, name a fallback; do not fill it with a plausible answer.
+Module 2 builds `./challenge.md` from these lines. If a line is blank, name a fallback; do not fill it with a plausible answer.
 
 ---
 

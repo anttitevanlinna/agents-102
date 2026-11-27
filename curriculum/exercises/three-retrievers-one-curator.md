@@ -2,9 +2,7 @@
 
 **Time:** ~28 minutes.
 
-Three retriever sessions fetch raw material on your challenge into `sources/`. A fourth session, the synthesizer, curates the material into `memory/`. All four read `./crux.md`. Each session has its own context and connectors. Skip any retriever you can't run today.
-
-The docs and internet retrievers need nothing but your computer. The wiki retriever needs a wiki connector. The synthesizer works the same from two files.
+Three retriever sessions fetch raw material on your challenge into `sources/`. A fourth session, the synthesizer, curates the material into `memory/`. All four read `./crux.md`. Each session has its own context and connectors. Skip any retriever you can't run today. Docs and internet need only your computer.
 
 <div class="rt-code">
 

@@ -17,7 +17,7 @@ After this module, you will be able to:
 
 Start a fresh session or task at `~/Documents/agents-101/`.
 
-Today three agents search your documents and practitioner articles, and three more work out what the findings mean. Files on your computer are enough. A wiki or document connector is an optional extra.
+Today three agents search your documents and practitioner articles, and three more work out what the findings mean. Files on your computer are enough.
 
 [Demo: Agent that takes action](lectures/agent-that-takes-action.md)
 

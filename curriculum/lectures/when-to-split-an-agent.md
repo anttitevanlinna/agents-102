@@ -12,7 +12,7 @@ A file can be read later: by you, by another agent, by next week's run. A conver
 
 Split the problem where its parts differ: a different source, a different dialect, a different stance. Give each part its own agent. Bring the parts back to one place that decides.
 
-Three agents searched in parallel. Three argued from different seats. One session applied the kernel and committed.
+Three agents searched in parallel. Three argued from different stances. One session applied the strategy kernel and committed to one answer.
 
 ## Two ways to run a team
 

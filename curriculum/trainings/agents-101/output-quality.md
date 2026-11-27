@@ -29,21 +29,21 @@ Working folder: `~/Documents/agents-101/`.
 
 ## Debrief
 
-Five minutes. The agent reviews the benchmark, points future sessions at the saved judge, writes a rule only where the judge cannot check, and cuts any earlier rule the judge covers.
+Five minutes. The agent reviews the benchmark and updates your root instructions file. The new rules say where the judge runs and what to do where the judge cannot check. The agent cuts any earlier rule the judge now covers.
 
 {{prompt:a101-m5-debrief-groundedness-rules}}
 
 ## Notice what the prompt insists on
 
-The prompt names the boundary: touch only the Groundedness checks section, keep every other section verbatim. Without it, a small edit becomes a rewrite and earlier rules drift.
+The prompt tells the agent to change only the Groundedness checks section and keep every other section word for word. Without that limit, a small edit turns into a rewrite and earlier rules change.
 
-The prompt also makes the agent re-read the section and confirm each rule is there. The agent's report says what it intended, the file says what happened.
+The prompt also makes the agent re-read the section and confirm each rule is in the file. The agent's report says what the agent meant to do. The file shows what happened.
 
 ## Push back on the summary
 
 Correct the agent where a rule is vague: *"name the evidence roster"*, *"say when to stop and ask for sources."*
 
-> Start with the costly, repeatable misses: numbers in external notes, customer names in account summaries, policy claims in internal advice, citations in briefings. Put the trigger in the root instructions file.
+> Start with the misses that are costly and keep coming back: numbers in external notes, customer names in account summaries, policy claims in internal advice, citations in briefings. Have the agent write into the root instructions file when the judge must run.
 
 ## Propose, double-check, apply
 
@@ -55,7 +55,7 @@ For actions that matter, the agent proposes, the judge or a lookup in the source
 
 Read [What is an Agent, The autonomy ladder](trainings/agents-101/supplementary/what-is-an-agent.md#the-autonomy-ladder-what-may-the-agent-do) before you decide what the agent may do next.
 
-A judge you have tested clears what can be redone; where an action cannot be undone, the expert also reviews the proposal, its evidence, and the judge's known limit.
+A judge you have tested is enough for actions that can be redone. Where an action cannot be undone, an expert also reviews the proposal, the evidence and the judge's known limit.
 
 ## Key Concepts
 - Grounded means traceable to a specific file, number or quote. Where the sources end, the agent keeps writing in the same voice.

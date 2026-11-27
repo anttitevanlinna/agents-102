@@ -6,13 +6,13 @@
 
 **What you do:**
 
-You set up a benchmark: a 30-claim pool, four detection methods, and a scorer that checks each claim against the evidence. Run all four on your own output and keep the one that scores best, or the ensemble if it does. The winner becomes a judge file.
+You run a benchmark on your own briefing: 30 claims, four detection methods, and a scorer that checks each claim against the evidence. Keep the method that scores best, or the best two together. The winner becomes your judge file.
 
 ## Phase 1: The target and the benchmark
 
 *8 min*
 
-The target is the Module 3 briefing, copied as it stands. A separate worker chooses a bounded evidence roster from the question alone, since the roster fixes the evidence the judgment may stand on.
+The benchmark checks your Module 3 briefing exactly as you froze it. A helper agent first picks the evidence roster: the 5 to 20 files every check may use. The helper sees only your question, not the answer, so the answer cannot steer which evidence counts.
 
 {{prompt:hallucination-bakeoff-1-frozen}}
 
@@ -26,7 +26,7 @@ The agent extracts a varied pool of 30 claims from the briefing. Thirty is enoug
 
 *8 min*
 
-Four helper agents run in parallel on the same claim pool, each with its own detection method and output file. This is a heavy run. If a helper agent reads far past its roster, stop it and steer it narrower. If a helper checked only some of the 30 claims, ask it to cover the rest.
+Four helper agents run in parallel on the same claim pool, each with its own detection method and output file. This step takes a while. If a helper agent reads far beyond the roster, stop it and narrow its task. If a helper checked only some of the 30 claims, ask it to cover the rest.
 
 In your main session:
 
@@ -43,7 +43,7 @@ In your main session:
 
 ## Mark five claims yourself
 
-Before any agent adjudicates, you mark five claims. The scoreboard then shows how often the scorer agrees with you.
+Before the scorer runs, mark five claims yourself. The scoreboard then shows how often the scorer agrees with you.
 
 {{prompt:hallucination-bakeoff-marks}}
 
@@ -59,19 +59,19 @@ A fifth agent, the scorer, scores the four detector files against the 30 claims:
 
 {{prompt:hallucination-bakeoff-5}}
 
-Ask the agent to explain both using your own rows.
+Ask the agent to explain precision and recall using rows from your own scoreboard.
 
 {{prompt:hallucination-bakeoff-6}}
 
 ## Read the scoreboard and name the surprise
 
-One detector catches more of the ungrounded claims. Another catches less, with higher precision. A third catches what the others missed, such as a broken citation.
+Typically one detector catches more of the ungrounded claims. Another catches less, with higher precision. A third catches what the others missed, such as a broken citation.
 
-Point at a row: *this is why I'm keeping this one*. Ask the agent to contrast this with the classic way.
+Find the row that makes you say *this is why I'm keeping this one*. Then ask the agent how the benchmark compares with the classic way of checking a briefing.
 
 {{prompt:hallucination-bakeoff-7}}
 
-Answer the surprise question in one sentence.
+The agent then asks which row surprised you most. Answer in one sentence.
 
 ## Phase 4: Save the winner as a judge
 
@@ -81,9 +81,9 @@ Keep the winner, or the two-method ensemble. Save it as a judge file: a named, r
 
 {{prompt:hallucination-bakeoff-8}}
 
-Open `judges/groundedness-judge.md`. It is narrow on purpose: the "known limit" line names what you measured and decided not to chase.
+The judge in `judges/groundedness-judge.md` is narrow on purpose. Its "known limit" line names what you measured and chose not to cover.
 
-## Phase 5: Close, name the rescue
+## Phase 5: Close, check the line you doubted
 
 *9 min*
 
@@ -91,7 +91,7 @@ In Module 3 you marked one line of the briefing you doubted. The judge now reads
 
 {{prompt:hallucination-bakeoff-9}}
 
-`module-5/baseline-score.md` is the number Module 6 starts from.
+The agent saves the score in `module-5/baseline-score.md`. Module 6 starts from that number.
 
 ## Carry the benchmark pattern forward
 

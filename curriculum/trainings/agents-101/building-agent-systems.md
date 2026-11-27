@@ -71,7 +71,7 @@ Your folder holds your challenge, your sources and your rules. A better model re
 
 ## Bring to Module 3
 
-**Your challenge memory.** In Module 3, several agents work on it. Set up the scheduled agent now and it reads the memory every morning while you go on. Module 3 does not wait for it.
+**Bring your challenge memory.** In Module 3, several agents work on it. Set up the scheduled agent now and it reads the memory every morning while you go on. Module 3 does not wait for it.
 
 [Schedule your personal agent](exercises/personal-agent-homework.md)
 

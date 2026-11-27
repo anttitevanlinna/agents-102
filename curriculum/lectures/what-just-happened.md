@@ -4,7 +4,7 @@
 
 *Context* is the bit you added that turned a generic About page into a site you recognise as yours.
 
-Save these for next time: what context the agent needs, what generic looks like, what a stronger pass does differently, and which rule should survive into the next session.
+The rules file keeps what context the agent needs, what generic looks like, what a stronger pass does differently, and which rule should survive into the next session.
 
 ## Why the agent went easy on its own site
 

@@ -12,7 +12,7 @@ Keep the same session running. The empty `sources/`, `memory/`, and `agents/` fo
 
 *20 min*
 
-Phase 1 has three beats. The agent helps you plan which sources to use. The agent saves each source, or a pointer to it, in `sources/`. Then the agent builds `memory/` from the sources.
+Phase 1 runs in three beats: the agent helps you plan which sources to use, saves each source or a pointer to it in `sources/`, then builds `memory/` from them.
 
 **Always comply with your company's AI policy.** Its rules on what can go through an LLM hold here. If in doubt, check before uploading.
 
@@ -32,7 +32,7 @@ If the agent starts reading before it shows the plan, stop it, narrow the task, 
 
 {{prompt:build-your-challenge-memory-1}}
 
-Push back on the plan. Sharpen it and add what's missing.
+Push back on the plan: sharpen it, add what's missing.
 
 ## Ingest the sources
 
@@ -96,7 +96,7 @@ If the agent says a page got sharper and the page's top claim reads the same, pu
 
 {{prompt:build-your-challenge-memory-8}}
 
-Approve the fixes that are right and reject the rest. The agent applies the ones you approve.
+Reject the fixes that miss. The agent applies the ones you approve.
 
 ## Phase 5: Close, put it to work
 
@@ -104,7 +104,7 @@ Approve the fixes that are right and reject the rest. The agent applies the ones
 
 Ask your memory the hardest open question on your challenge, not *"summarize the sources."* For example: *"What's the strongest argument for option A over option B?"* *"Where does our current plan break if the market shifts?"*
 
-The agent answers twice. A helper agent in an empty folder answers the way a chat would. The agent you built in Phase 2 answers from your memory. Both answers go side by side into `module-2/close.md`. Type your question after `Question:`.
+Your question gets two answers: one from a helper agent in an empty folder, the way a chat answers, and one from the agent you built in Phase 2. Both go side by side into `module-2/close.md`. Type your question after `Question:`.
 
 {{prompt:build-your-challenge-memory-9}}
 

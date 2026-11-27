@@ -12,7 +12,7 @@ Round 1: 10% → 1%.
 Round 2: 1% → 0.1%.
 Round 3: 0.1% → 0.01%.
 
-The numbers are illustrative. Errors compound against you when nothing checks the steps. They compound for you when every round checks against the sources.
+The numbers are illustrative. Unchecked, errors compound against you. Checked against the sources every round, the fixes compound for you.
 
 ["Are you sure?" is another fluent answer](slides/are-you-sure.md)
 

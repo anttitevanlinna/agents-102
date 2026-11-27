@@ -10,7 +10,7 @@ Name it `m4-agent-audit` if supported.
 
 **What you do:**
 
-Run the security skill from Exercise 1 on the system you built in Modules 2-3. Apply one mitigation, then decide what to do about the residual risk: the risk that remains after the mitigation. The goal is to go through the loop once (assess, mitigate, reassess the residual), not to get a clean result.
+Run the security skill from Exercise 1 on the system you built in Modules 2-3. Apply one mitigation and decide on the residual risk, the risk that remains after it. The goal is one pass through the loop (assess, mitigate, reassess the residual), not a clean result.
 
 You need the first policy report from Exercise 1, the skill, and your Module 3 system.
 
@@ -54,7 +54,7 @@ In the same session, ask the agent to apply the agent-security lens and write th
 
 {{prompt:audit-your-agent-2}}
 
-Have the agent list the risks and explain each one: what it means in this system, why it ranks where it does, and what the failure would look like. Then pick one. There is no prompt for this step. You lead.
+Have the agent list the risks and explain each one: what it means in this system, why it ranks where it does, and what the failure would look like. Then pick one. You lead, with no prompt for this step.
 
 The two lenses overlap on some risks and not on others. That is expected.
 

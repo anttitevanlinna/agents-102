@@ -17,7 +17,7 @@ After this module, you will be able to:
 
 Start a fresh session or task at `~/Documents/agents-101/`.
 
-Today the agent checks the system you built in Module 3, your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span>, and the policy files under `module-4/policies/`.
+Today the agent reads the system you built in Module 3, your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span>, and the policy files under `module-4/policies/`.
 
 **The question, to you:** what would you want checked before this system works for a real stakeholder?
 

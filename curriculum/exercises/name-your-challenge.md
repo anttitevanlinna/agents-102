@@ -6,11 +6,11 @@
 
 **What you do:**
 
-Pick one real challenge before you build anything. The memory you build is a folder of notes and sources the agent reads before answering, and it needs one subject.
+Pick one real challenge before you build. The memory you build is a folder of notes and sources the agent reads before answering, and it needs one subject.
 
 **Pick your next big challenge.**
 
-Choose an initiative you own and are working on in these weeks. It should produce work: a memo, a plan, a decision, a brief, a campaign, a rollout.
+Choose an initiative you own and are working on now, one that produces work: a memo, a plan, a decision, a brief, a campaign, a rollout.
 
 Good: *The Q2 pricing redesign: usage-based vs. seats, pilot cohort, sales briefing.*
 

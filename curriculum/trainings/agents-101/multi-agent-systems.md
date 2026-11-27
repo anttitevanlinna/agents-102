@@ -41,8 +41,6 @@ Five minutes. The agent reviews the four prompts, the retrieval files, the synth
 
 The prompt asks the agent for a harsh review of the handoffs: at least two places where work was lost, each with evidence (the file, the step, what was lost). Without the demand for evidence, the review turns polite.
 
-The review covers how your agents handed work to each other. It does not check whether the briefing is true.
-
 ## Push back on the summary
 
 Push back where the summary is wrong: *"The planner and the reframer needed to be separate."* *"The wiki retriever kept normalising before writing."*

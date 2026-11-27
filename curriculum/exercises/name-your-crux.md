@@ -12,7 +12,7 @@ Ask the agent to read Module 2's `memory/` and name the **crux**, Richard Rumelt
 
 Go a few rounds. Have the agent save the crux when it is good enough.
 
-The crux is the obstacle. Now ask the agent to name the sharpest decision the crux blocks, the call you'd stay late to make, and add it to the crux file.
+The crux is the obstacle. Ask the agent to name the sharpest decision the crux blocks, the call you'd stay late to make, and add it to the crux file.
 
 {{prompt:name-your-crux-2}}
 

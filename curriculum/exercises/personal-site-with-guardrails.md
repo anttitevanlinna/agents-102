@@ -16,7 +16,7 @@ Change the context, watch the output shift, then package what you learned for th
 
 {{prompt:personal-site-with-guardrails-1}}
 
-The first site is the baseline. It shows how much the later context changes the output. Every later phase overwrites `module-1/site.html`.
+The first site shows how much the later context changes the output. Every later phase overwrites `module-1/site.html`.
 
 ## Phase 2: Apply a framework you know
 
@@ -26,7 +26,7 @@ The site isn't there to sell. A colleague who visits it should think *"this is t
 
 ## Name the framework and tune it
 
-**StoryBrand** is a framework that answers *"what kind of help is this person to others?"* Its hero is the colleague, not you. Leave out its sales parts (Stakes, Call-to-Action).
+**StoryBrand** answers *"what kind of help is this person to others?"* Its hero is the colleague, not you. Leave out its sales parts (Stakes, Call-to-Action).
 
 **Name the framework, tune it, have the agent run it.** The LLM knows StoryBrand, so you don't need to list its questions. The same works for Toyota Kata or SWOT: *"Apply X to Y, but tune for Z."*
 
@@ -64,11 +64,11 @@ List a few specific things you hate about work. Name actual things ("meetings wh
 
 *6 min*
 
-Do not skip this prompt. The Debrief starts from the file the agent writes here. The agent asks you one question and waits for your answer.
+The Debrief starts from the file the agent writes here. The agent asks you one question and waits for your answer.
 
 {{prompt:personal-site-with-guardrails-5}}
 
-The agent finds three generic claims: places where your context ran out. The agent also traces three lines to the context that produced them. Your answer, what you gave the agent that changed the page most, becomes the last line of `module-1/context-trace.md`.
+The agent finds three generic claims, where your context ran out, and traces three lines to the context that produced them. Your answer, what you gave the agent that changed the page most, becomes the last line of `module-1/context-trace.md`.
 
 LLMs go easy on their own output. If the three picks seem mild, ask the agent to flag more and be harsher.
 
@@ -76,7 +76,7 @@ LLMs go easy on their own output. If the three picks seem mild, ask the agent to
 
 *6 min*
 
-Make it yours: color, layout, tone, a quote at the top, a section most sites lack. Iterate until you say *"yes, this is me."* You lead. There are no set prompts.
+Make it yours: color, layout, tone, a quote at the top, a section most sites lack. Iterate until you say *"yes, this is me."* You lead, with no set prompts.
 
 **Tip: steal a look and feel by naming a site.** The LLM knows famous sites' design by name. Try *"Restyle `module-1/site.html` to feel like X"* with two or three sites, such as Stripe, Linear or Patagonia, and keep your favorite.
 
@@ -84,7 +84,7 @@ Make it yours: color, layout, tone, a quote at the top, a section most sites lac
 
 *4 min*
 
-Save what worked, so a fresh agent can do the same for someone else's bio.
+Have the agent save what worked, so a fresh agent can do the same for someone else's bio.
 
 {{prompt:personal-site-with-guardrails-6}}
 
@@ -94,7 +94,7 @@ Ask the agent to show you the first two or three rules in `module-1/personal-bra
 
 **What happened:**
 
-In every phase the agent read everything in the session: your LinkedIn text, your answers about colleagues, your strengths, your list of things you hate and the site it wrote last. The more specific the context, the more the output is yours.
+In every phase the agent read everything in the session: your LinkedIn text, your answers, your strengths, the things you hate and the site it wrote last. The more specific the context, the more the output is yours.
 
 ## Take the context move past this site
 

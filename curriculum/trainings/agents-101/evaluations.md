@@ -20,7 +20,7 @@ Start a fresh session or task at `~/Documents/agents-101/`.
 
 ## Run the loop without you in it
 
-The judge checks every draft. The agent turns each thing the judge flags into a rule for the next draft. You edit nothing.
+The judge checks every draft. The agent turns each thing the judge flags into a rule for the next draft.
 
 [Lecture: Evals as steering](lectures/evals-as-steering.md)
 

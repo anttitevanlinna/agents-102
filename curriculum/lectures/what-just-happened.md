@@ -2,33 +2,31 @@
 
 ## Context became something you can point at
 
-*Context* is the bit you added that turned a generic About page into a site your neighbour recognised as yours.
+*Context* is the bit you added that turned a generic About page into a site you recognise as yours.
 
-What to package: what context the agent needs, what generic looks like, what a stronger pass does differently, and which rule should survive into the next session.
+Four things are worth saving: what context the agent needs, what generic looks like, what a stronger pass does differently, and which rule should survive into the next session.
 
-## Why the look-back was kind to you
+## Why the agent went easy on its own site
 
-The agent's picks of three generic claims in its own site came back gentle.
+When the agent picked three generic claims in its own site, the picks were mild.
 
-Grading its own work is another chance to be helpful: the self-report is the same kind of output as the thing reported on.
+The LLM is tuned to be helpful and agreeable, and that holds when it grades its own work. A self-review is the same kind of output as the work it reviews.
 
 ## The report is a hypothesis, not a result
 
-Read what comes back as a claim about the work, not a verdict on it.
+Treat the agent's report as a claim about the work, not a verdict on it.
 
-Where the account matches the session as you remember it, two reads agree. Where it doesn't, yours counts.
+Where the report matches the session as you remember it, good. Where it doesn't, your memory of the session counts.
 
 ## The agent generated, you decided
 
-Your own knowledge of the subject stood between the generic draft and the page, which is why the site reads as yours. Only you could catch a wrong line about you, so start with your own profile.
+The site reads as yours because you knew the subject and corrected the drafts. Only you can catch a wrong line about you. That is why the course starts with your own profile.
 
 ## You act on the future to know what's real
 
 **You act on the future to know what's real.** Nobody knows where agents are going, not Anthropic, not your board. The people who figure it out first run the experiment.
 
 **Mental models only come from doing.**
-
-Five minutes with the agent: the debrief.
 
 <!-- maintainer -->
 

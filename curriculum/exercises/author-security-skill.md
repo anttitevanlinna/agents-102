@@ -8,13 +8,13 @@
 
 Name it `m4-security-skill` if your runtime supports session names.
 
-**What you do:** Run the policy files raw against your system from modules 2-3, then package the useful move into one skill with two lenses. Stop when the skill exists.
+**What you do:** Check your system from Modules 2-3 against the policy files directly, with no skill. Then package the check as one skill with two lenses: company policy and agent risk. You are done when the skill is saved.
 
-A **skill** packages an expertise (rules, checklists, the moves an agent runs) into something the agent loads when the work matches. You run it again instead of re-prompting from memory.
+A **skill** packages expertise (rules, checklists, steps) so the agent loads it when the work matches. You run the skill again instead of writing the prompt again from memory.
 
 ## Guess first
 
-Before any check runs, decide whether your system is safe, judged from what it has produced. The guess goes in a file, and the first report sets it beside what the check finds.
+Before any check runs, guess whether your system is safe, going by what it has produced so far. The agent saves your guess, and the first report shows the guess beside what the check finds.
 
 {{prompt:author-security-skill-guess}}
 
@@ -22,23 +22,23 @@ Before any check runs, decide whether your system is safe, judged from what it h
 
 *10 min*
 
-Policies live in `module-4/policies/` (your company's distilled policies, or the Nordic-baseline reference). Run them against the system, with no skill yet.
+The policies are in `module-4/policies/`: your company's own, or the Nordic-baseline reference. Ask the agent to check the system against them, with no skill yet.
 
 {{prompt:author-security-skill-1}}
 
-The report opens with your guess. Below it are the rows your guess could not see: violations, and "I can't tell" rows that need judgment, context, or a standing evidence check.
+The report opens with your guess. Below the guess are the findings you could not have seen from the output: violations, and "I can't tell" rows that need judgment, context or more evidence.
 
 ## Phase 2: Dictate what matters
 
 *8 min*
 
-Skip studying the policy files first. Tell the agent what matters about your company's policies and your agent system.
+You do not need to study the policy files first. Tell the agent what matters about your company's policies and your agent system.
 
 {{prompt:author-security-skill-2}}
 
 Type three to five specific lines in plain language: the data your agent touches that would be a problem if it leaked, the rule your legal team cares about most, the customer your CEO would not want named in a transcript.
 
-The agent then reads the raw report and `module-4/policies/` and proposes the package. Push back on anything that sounds like a generic GDPR brochure.
+The agent then reads the raw report and `module-4/policies/` and proposes what goes into the skill. Push back on anything that sounds like a generic GDPR brochure.
 
 ## Phase 3: Author both lenses
 
@@ -46,23 +46,23 @@ The agent then reads the raw report and `module-4/policies/` and proposes the pa
 
 The skill is a `SKILL.md` plus any reference files, with two lenses: company policy, and agent risk (what the agent can reach, what it might leak, what a misleading prompt or source might make it do).
 
-Ask the agent to author both lenses and name the risk patterns the agent-security lens covers. Expect many questions over several rounds.
+Ask the agent to write both lenses and name the risk patterns the agent-security lens covers. Expect several rounds of questions.
 
 {{prompt:author-security-skill-3}}
 
-## Answer the grill, then sharpen the lenses
+## Answer the questions, then sharpen the lenses
 
 Answer the agent's questions briefly, then hand back the rest: *"You choose. Optimise for what I can't steer."*
 
 Ask the agent to show you where the skill covers each of the four named risk patterns. Ask for any that is missing. Make the rules sound like your company's policy, and keep the report narrow enough to read.
 
-## Save the authored source as a skill
+## Save the skill
 
-Save the authored source as a personal skill. The save mechanic differs by runtime.
+Save what the agent wrote as a personal skill. How you save depends on your runtime.
 
 <div class="rt-code">
 
-Ask the agent to install the authored source.
+Ask the agent to install the skill.
 
 {{prompt:author-security-skill-4}}
 
@@ -84,11 +84,11 @@ This task interface can't write into your runtime's personal directories, so pre
 
 **What happened:**
 
-Module 4's audit exercise loads the skill and runs it against the same system.
+You checked the system against the policies directly, then packaged the check as a skill. The next exercise loads the skill and runs it on the same system.
 
 **The point:**
 
-The policy files are source material. The skill carries the judgment about what matters in this system, with all four risk patterns as mandatory checks. Agent mitigations sit on top of normal company controls, not in place of them. The first loaded use should be the real audit.
+The policy files are source material. The skill carries the judgment about what matters in this system, with all four risk patterns as mandatory checks. Agent mitigations sit on top of normal company controls, not in place of them.
 
 <!-- maintainer -->
 

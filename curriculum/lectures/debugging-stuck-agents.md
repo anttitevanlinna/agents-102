@@ -4,11 +4,11 @@ Agents get stuck: wrong source, three views averaged into mush, the wrong file w
 
 ## Diagnose before repair
 
-Prompt your stuck system to diagnose whether the bug lives in the sources, the processing, or the boundary between agents.
+Ask the stuck system to diagnose where the problem is: in the sources, in the processing, or at the boundary between agents.
 
 {{prompt:debugging-stuck-agents-1}}
 
-Make your own variant.
+Adapt the prompt to your own system.
 
 ## Sources, processing, boundary
 

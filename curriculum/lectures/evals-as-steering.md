@@ -1,14 +1,14 @@
 # Evals as Steering
 
-Ethan Mollick's *The Bitter Lesson versus The Garbage Can* asks a question. The bitter lesson may apply to companies: define the outcome, give the agent examples and feedback, and let it find its own path. Or the garbage can wins, and the path carries the organisation.
+Ethan Mollick's *The Bitter Lesson versus The Garbage Can* sets two views side by side. In the first, you define the outcome, give the agent examples and feedback, and the agent finds its own path. In the second, a company runs on unwritten habits and workarounds, and those still decide what works.
 
-You can stay inside one loop. You cannot stay inside all of them. Evals write down what good means so the system keeps applying it when you are not in the chair.
+You can check one agent's work yourself. You cannot check all of them. An eval writes down what good means, so the system keeps applying your standard when you are not there.
 
-Evals turn checks into a loop: the model generates, the judge checks, the tactic changes, the next session starts sharper.
+Put an eval in a loop and the work improves: the agent writes, the judge checks, the rules for writing change, and the next draft starts from better rules.
 
-## Module 5 turned judgment into a judge
+## Your judge is the first kind of eval
 
-One briefing, thirty claims, four detectors, one scorer: the scoreboard named which method caught the misses. The winner is saved as `judges/groundedness-judge.md`, measured judgment made runnable. That is the first kind of eval.
+The judge you saved in Module 5 is the first kind of eval. You measured it once, and it can now check any briefing.
 
 [Groundedness protects the floor](slides/groundedness-protects-the-floor.md)
 
@@ -18,15 +18,15 @@ One briefing, thirty claims, four detectors, one scorer: the scoreboard named wh
 
 The Module 5 judge goes into a loop.
 
-Round 1 produces a briefing. The judge scores it and writes per-claim feedback. The main session rewrites `./generation-tactic.md` from the feedback. Rounds 2 and 3 run with the sharper tactic, and the score rises with nobody editing.
+In round 1 a helper agent writes a briefing. The judge scores the briefing and says what is wrong with each claim it flags. The main session turns that feedback into rules in `./generation-tactic.md`, the file the next writer follows. Rounds 2 and 3 start from the better rules, and the score improves with nobody editing.
 
-Walk away. On return, the notes show each round's score and what changed. The judge stayed fixed, so the rise is the work getting better.
+You walk away. When you return, the notes show each round's score and what changed. The judge never changed, so a better score means a better briefing.
 
 ## The answer is never "the eval passed"
 
 **What would have to be true for this eval to be the right one?**
 
-The eval checks the thing that matters, at the moment where the mistake would hurt, against a standard you would defend. You decide which details the system must never miss.
+The right eval checks the thing that matters, at the point where a mistake would hurt, against a standard you would defend. You decide which details the system must never miss.
 
 <!-- maintainer -->
 

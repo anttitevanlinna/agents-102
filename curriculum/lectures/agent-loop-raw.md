@@ -1,20 +1,20 @@
 # Demo: Agent loop, raw
 
-Ask your agent three questions. First, which tools it can use right now.
+Ask your agent three questions. First, ask which tools it can use right now.
 
 {{prompt:agent-loop-raw-1}}
 
-How it chooses among those tools.
+Then ask how it chooses among those tools.
 
 {{prompt:agent-loop-raw-2}}
 
-How its text becomes an action.
+Then ask how its text becomes an action.
 
 {{prompt:agent-loop-raw-3}}
 
-Read the answers as mechanism. Each tool has a name, a description and an input format. The context makes one description look relevant, and the model writes a structured request. The harness turns that text into an action, and the tool does the work.
+The answers describe one mechanism. Each tool has a name, a description and an input format. The context makes one description look relevant, and the model writes a structured request. The runtime turns that request into an action, and the tool does the work.
 
-A tool call is text crossing a boundary into action. If the tool description is vague, the context misleading or the request aimed at the wrong system, the action inherits the problem.
+A tool call is text that becomes an action. If the tool description is vague, the context is misleading or the request goes to the wrong system, the action is wrong in the same way.
 
 <!-- maintainer -->
 

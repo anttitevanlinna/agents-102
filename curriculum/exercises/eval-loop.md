@@ -1,44 +1,44 @@
 # Exercise: The eval loop runs itself
 
-**Time:** 45 min: manual run ~5, walk-away ~30, return and read notes ~10.
+**Time:** 45 min: first score ~5, walk-away ~30, read the notes ~10.
 
 **Session** *(new, "Module 6 - Evaluations")*
 
 **What you do:**
 
-Watch your Module 3 briefing get better round after round, with nobody editing it.
+Start a loop that writes your briefing again each round, each time from better rules. Nobody edits a briefing by hand.
 
-**Eval as infrastructure:** a generator writes a briefing from its tactic, the judge scores it with per-claim feedback, and the main session rewrites the tactic. The judge stays fixed, so a rising score is the work getting better. Run at least three rounds, then continue until improvement stops.
+**How the loop works.** Each round, one helper agent writes a fresh briefing and a second helper agent scores it with your Module 5 judge. The main session turns what the judge flagged into rules in `./generation-tactic.md`, the **tactic** the next writer follows. The judge never changes, so fewer flagged claims means a better briefing.
 
-**Helper agents** are isolated workers, each with fresh context for its own job.
-
-Example run note: *round 0, the Module 3 briefing, flagged 11 claims; round 1 flagged 7, round 2 flagged 7, round 3 flagged 4.*
+A typical result: *11 claims flagged in your Module 3 briefing, then 7, 7 and 4 over three rounds.*
 
 ## Phase 1: Score your Module 3 briefing
 
 *5 min*
 
-Ask the agent to score your Module 3 briefing with the judge from Module 5, then write the first generation tactic from what the judge flagged.
+Ask the agent to score your Module 3 briefing with the Module 5 judge, then write the first tactic from what the judge flagged.
 
 {{prompt:eval-loop-1}}
 
-Note what the judge catches; the tactic must learn that.
+Look at what the judge flagged. Those are the misses the tactic has to prevent.
+
+The agent also sets today's count beside the Module 5 count for the same briefing. The difference is the judge's noise: how much its score moves when nothing changed.
 
 ## Phase 2: Start the loop, then walk away
 
 *30 min*
 
-Generation and judging run in separate helpers; the lead reads the judgment and rewrites `./generation-tactic.md` between rounds.
+Ask the agent to run the loop. The loop runs at least three rounds and stops when a round no longer improves on the one before.
 
 {{prompt:eval-loop-2}}
 
-While the loop runs, watch round 1's score land with nothing from you. Then open the latest round's briefing in `module-6/runs/` and read it as the person receiving it would. Write two or three remarks in plain words into `./remarks.md` (*"too hedged"*, *"this number is not ours"*, *"lead with the decision"*) without stopping the loop. The remaining rounds absorb them into the tactic, beside the judge's flags; the judge never sees them.
+Round 1's score arrives with nothing from you. Then open the newest briefing in `module-6/runs/` and read it the way the person receiving it would. Add two or three remarks to `./remarks.md` in plain words: *"too hedged"*, *"this number is not ours"*, *"lead with the decision"*. Leave the loop running. The next rounds turn your remarks into tactic rules. The judge never sees them.
 
-Then ask about parallel search:
+Then ask how the loop could try more options at once.
 
 {{prompt:eval-loop-3}}
 
-Then the model-training analogy, in small pieces:
+Then ask how the loop resembles model training. The agent answers in five short pieces.
 
 {{prompt:eval-loop-4}}
 
@@ -46,35 +46,35 @@ Then the model-training analogy, in small pieces:
 
 *10 min*
 
-Ask whether the last round beat your Module 3 briefing under the same judge, by more than the judge's own noise, and which rule's miss kept coming back. The Debrief cuts that rule.
+Ask the agent whether the last round beat your Module 3 briefing by more than the judge's noise, and which rule failed to stop the miss it was written for. The Debrief removes that rule.
 
 {{prompt:eval-loop-5}}
 
-Failed numbers in round 3 mean the tactic cannot handle numbers yet; weak claims marked grounded mean the judge has a blind spot.
+If numbers are still flagged in round 3, the tactic has no working rule for numbers yet. If a weak claim passes as grounded, the judge has a blind spot.
 
 ## Trace what each round changed
 
 **What happened:**
 
-Read first against last: round 0, your Module 3 briefing, then each round's score and the tactic rule that changed before it, with your remarks named where they became a rule. Round 1 ran on the tactic your agent wrote from the Module 3 briefing's misses; each later generator read a tighter one. You edited none of it.
+The notes list every round: how many claims the judge flagged, which tactic rule changed before the round, and which of your remarks became a rule. Compare round 0, your Module 3 briefing, with the last round. Each briefing was written from a tighter tactic than the one before. You edited none of them.
 
-## The loop improved it, not you
+## The loop improved the briefing without you
 
 **The point:**
 
-The tactic on disk is rewritten until the generator passes the judge, and the score rises without you. The judge is fixed and separate, which is why the rise can be believed.
+The loop rewrites the tactic after every round, and the score improves while you do nothing. The judge never changed, so you can trust the improvement.
 
-**Spot-check the judge.** Mark three claims from the last round yourself before you read its verdicts; they go beside your five marks from Module 5. Where you disagree, the judge has a blind spot the loop cannot see.
+**Spot-check the judge.** Mark three claims from the last round yourself before you see the judge's verdicts. The agent adds them to your five marks from Module 5. Where you and the judge disagree, the judge has a blind spot the loop cannot see.
 
 {{prompt:eval-loop-spot-check}}
 
-PDCA at the eval layer: Plan (generation tactic), Do (generate), Check (judge), Act (rewrite tactic). The next run, on any topic, starts from the tighter tactic on disk.
+This is Plan-Do-Check-Act, run by agents: the tactic is the plan, a helper writes, the judge checks, and the main session rewrites the tactic. Your next briefing, on any topic, starts from the tighter tactic.
 
 ## Put another judge in the same loop
 
 **Take-home: put any judge in a loop that improves the thing it scores.**
 
-Ask the agent to set up the loop around a different judge:
+Ask the agent to set up the same loop around a different judge. Name the output and the judge after the colon.
 
 {{prompt:eval-loop-6}}
 

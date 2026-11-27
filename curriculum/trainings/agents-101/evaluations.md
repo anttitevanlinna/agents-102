@@ -16,13 +16,11 @@ After this module, you will be able to:
 
 Start a fresh session or task at `~/Documents/agents-101/`.
 
-Read Ethan Mollick's [*The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage).
-
-His question: will the bitter lesson apply inside your company? Can agents improve if you define the outcome and let them find the path, or does organisational mess still matter too much?
+**The question, to you:** if you define the outcome and let agents find their own path, do they get better at your company's work? Or is the way your organisation works too messy for that? Ethan Mollick asks this in [*The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage).
 
 ## Run the loop without you in it
 
-The same judge keeps catching what slipped past, and the system absorbs the catches without your edits.
+The judge checks every draft. The agent turns each thing the judge flags into a rule for the next draft. You edit nothing.
 
 [Lecture: Evals as steering](lectures/evals-as-steering.md)
 
@@ -36,7 +34,7 @@ The same judge keeps catching what slipped past, and the system absorbs the catc
 
 ## Debrief
 
-Five minutes. The agent reads the round-by-round trail, sharpens the generator's tactic file in place and points your root instructions at it, so every briefing you ask for from now on is written from that tactic and checked by the same judge. The judge file stays untouched.
+Five minutes. The agent reviews every round and rewrites `./generation-tactic.md` one more time. Then the agent adds one line to your root instructions file: every briefing you ask for in this folder is written from the tactic and scored by the judge. The judge file stays as it is.
 
 {{prompt:a101-m6-debrief-tactic-sharpen}}
 
@@ -44,12 +42,12 @@ Five minutes. The agent reads the round-by-round trail, sharpens the generator's
 
 Read the agent's summary and push back: *"That rule is too vague, make it observable"* / *"you added a rule the tactic already had after round 2."*
 
-If it sounds too kind, ask: *"Which rule did you claim to remove but keep under another name? Quote both lines."*
+If the summary sounds too kind, ask: *"Which rule did you claim to remove but keep under another name? Quote both lines."*
 
-The artifact: the sharpened `./generation-tactic.md`, the line in your root instructions that sends every later briefing through it, and one line in the Module 6 eval-notes naming the first always-on eval you'll run next.
+You now have a sharper `./generation-tactic.md`, and one line in your root instructions that sends every later briefing through the tactic and the judge.
 
 ## Key Concepts
-- The loop improves the output round after round with nobody editing; the fixed judge is why the rise is real.
+- The loop improves the work round after round with nobody editing. The judge never changes, so a better score means better work.
 - Groundedness protects the floor; steering raises the ceiling.
 - A flat score is information about the judge or the work. Check both.
 - You design the loop and own the yardstick.

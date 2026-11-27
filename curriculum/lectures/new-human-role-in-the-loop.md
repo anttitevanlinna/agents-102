@@ -73,7 +73,7 @@ Your role in the loop is to set the conditions for giving the system more autono
 **§6 carve-out, the answer must be theirs (checked 2026-08-20).** Logged in `pre-cohort-todos.md` as a lecture prompt owing the trainer-demo sweep. It is not: the prompt interviews the student one question at a time about the mail *they* would let an agent send, and the beat closes on *"two kinds of judgment on disk"* — the student's disk. A trainer demo returns the wrong machine's answer. The body now names the student's own run beside the prompt, which is §6's tell. Leave it student-run.
 
 
-**Story blend, M6 close (2026-09-23).** The slide set is the one in `module-design/a101-story-proposals/blend.md` § Titles, M6, plus `## Make a steering eval`, which keeps the prompt. Four points bind. `## Make many, pick the best, keep what won` names a mechanism the training has already run twice, and closes on one mechanism rather than two instruments. `## The better it gets, the less you watch` and `## When did you last read one yourself?` are a counter-voice inside a leverage mood, so each hands over a move: the second one asks for a date and a single piece of work read end to end. `## The full picture, and what it is made of` is the only place the assembly is named, after the last piece lands, and the refrain line sits there rather than in the opener. The future question belongs to M8; this lecture carries none of it.
+**Story blend, M6 close (2026-09-23).** The slide set is the one in `module-design/a101-story-proposals/blend.md` § Titles, M6, plus `## Make a goal-nudger`, which keeps the prompt. Four points bind. `## Make many, pick the best, keep what won` names a mechanism the training has already run twice, and closes on one mechanism rather than two instruments. `## The better it gets, the less you watch` and `## When did you last read one yourself?` are a counter-voice inside a leverage mood, so each hands over a move: the second one asks for a date and a single piece of work read end to end. `## The full picture, and what it is made of` is the only place the assembly is named, after the last piece lands, and the refrain line sits there rather than in the opener. The future question belongs to M8; this lecture carries none of it.
 
 **Time:** 12 minutes.
 
@@ -81,6 +81,6 @@ Your role in the loop is to set the conditions for giving the system more autono
 
 **Mood target:** empowered builder, not tidy graduation. Lands Module 6's power as a human-role shift: the participant now designs loops, standards, and autonomy boundaries.
 
-**Strategic role:** Turns the grounded eval loop into an operational decision: would you let the agent send an internal mail? Introduces steering eval as a closing artifact (`./goal-nudger-eval.md`) without turning it into a second full exercise.
+**Strategic role:** Turns the grounded eval loop into an operational decision: would you let the agent send an internal mail? Introduces the goal-nudger as a closing artifact (`./goal-nudger-eval.md`) without turning it into a second full exercise.
 
 **Arc recap:** M1 human as evaluator of self; M2 system owner; M3 division architect; M4 boundary-setter; M5 judge-builder; M6 loop designer.

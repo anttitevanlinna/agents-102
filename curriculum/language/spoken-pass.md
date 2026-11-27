@@ -19,7 +19,7 @@ Not student-facing. Sentence-level wording pass for Modules 1-6. Runs UNDER the 
 
 **Keep**
 - Maintainer's first-person lines verbatim. Locked sentences (`locked-sentences.json`).
-- Prompt vocabulary matched until the prompt changes (Beat stays Beat; steering eval / goal-nudger follows the prompt-taste ruling).
+- Prompt vocabulary matched until the prompt changes (the eval that scores a chosen quality has one name, goal-nudger).
 - Trainer-to-room lines ("That is expected.").
 - Unease stays open, never declared.
 

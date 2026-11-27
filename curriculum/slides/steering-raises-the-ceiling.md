@@ -5,7 +5,7 @@ Two mails both stay grounded. One is forgettable. The other makes the reader act
 
 The better mail names the tradeoff and gives a clear next move.
 
-A steering eval is a check for that quality: it scores each output on the quality you chose.
+A goal-nudger is a check for that quality: it scores each output on the quality you chose.
 
 Groundedness protects the floor. Steering raises the ceiling.
 

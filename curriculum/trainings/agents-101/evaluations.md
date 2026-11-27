@@ -100,13 +100,13 @@ Your system now improves its own output. Next, it starts working for someone bes
 | Generation tactic | `./generation-tactic.md` | M6 eval-loop setup and Debrief rewrite | M6 repeated rounds; post-training always-on eval work |
 | Module 6 eval trail | `module-6/runs/`, `module-6/eval-notes.md` | M6 eval-loop run | M6 Debrief; M7 sharing diagnosis; post-training loop tuning |
 | Person trigger | `module-6/trigger.md` | M6 Bring to Module 7 homework | Solo M7 pick-one-person; solo M7 Prework |
-| Steering eval seed | `./goal-nudger-eval.md` | M6 closing prompt when run | Post-training excellence/steering eval work |
+| Goal-nudger seed | `./goal-nudger-eval.md` | M6 closing prompt when run | Post-training goal-nudger work |
 
 **Supersedes:** the previous M6 split across a manual groundedness loop and a separate steering exercise. The manual loop violated the "agents do the heavy lifting" rule from M2 onward by feeding judge output back to generator by hand. The new exercise automates the groundedness loop. Steering stays as a closing prompt, not a second full exercise.
 
 **Why one exercise, not two:** M6 is the core arc's closing magic beat. Splitting focus across two exercises dilutes the magic. The eval loop exercise carries both disciplines: convergence happens in the scoring, steering happens in what `./generation-tactic.md` comes to encode across rounds against a fixed judge. The student ends with infrastructure that pairs the M5 judge (fixed, groundedness-aware, reusable) with a generator tactic shaped to their own material's failure modes.
 
-**Strategic close:** Keep the grounded eval loop snappy as the main event. `new-human-role-in-the-loop.md` adds steering eval as a closing prompt: Claude asks questions, offers example dimensions to choose from, keeps asking until the dimension is judgeable, then saves `./goal-nudger-eval.md`. The distinction is floor/ceiling: grounded/fidelity evals keep work attached to evidence, brief, or policy; steering/excellence evals create positive pressure to overperform on a chosen dimension.
+**Strategic close:** Keep the grounded eval loop snappy as the main event. `new-human-role-in-the-loop.md` adds the goal-nudger as a closing prompt: Claude asks questions, offers example dimensions to choose from, keeps asking until the dimension is judgeable, then saves `./goal-nudger-eval.md`. The distinction is floor/ceiling: grounded/fidelity evals keep work attached to evidence, brief, or policy; steering/excellence evals create positive pressure to overperform on a chosen dimension.
 
 **Sources:**
 - `[checked:2026-08-23 result:OK due:none]` https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage — [practitioner direct] Mollick (pub 2025-07-28), framing of bitter-lesson scaling against the organisational "garbage can" problem used in the opener. `due:none` under the Theory-construct variant (Antti, 2026-09-01) — named constructs cited for the question they frame, not for currency, no capability claim; dated check owned by `run-the-first-experiment.md`. fallback: retain the question and remove the named attribution.

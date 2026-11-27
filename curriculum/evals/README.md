@@ -54,6 +54,7 @@ Lints (deterministic, read-only):
 - `lints/path-consistency.md` — every file path an exercise names must exist in the scaffold
 - `lints/time-budget.md` — phase times sum ≤ 1h45
 - `lints/jargon-ban.md` — banned-word lint, cumulative across arc order (now mostly subsumed by hook auto-fix)
+- `lints/prompt-taste.md` — tells of awkward prompt writing in the prompts students paste (`scripts/prompt-taste.js --training <key>`); ranks which prompts to read, ratchets per training in `npm run test:gates`
 - `lints/callout-collisions.md` *(stub)* — philosophy callouts repeated across adjacent lectures
 - `lints/capability-freshness.md` *(stub)* — Claude Code UI claims dated, not older than 3 months
 

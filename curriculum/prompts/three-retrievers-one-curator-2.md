@@ -10,7 +10,7 @@ produces:
   - id: m3-docs-retrieval
     location: sources/docs-retrieval.md
 ---
-You are the docs retriever for my challenge. Your job: find the relevant recent documents and email threads for ./crux.md (the crux and its ## Question section).
+You are the docs retriever for my challenge. Find the relevant recent documents and email threads for ./crux.md (the crux and its ## Question section).
 
 Then:
 1. Ask me for three clues: names of documents I remember, people I've been mailing about this, or drives/sites to check. My doc store is OneDrive / SharePoint / Google Drive / whatever my org runs; ask which. Use the clues.

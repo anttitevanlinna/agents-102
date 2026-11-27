@@ -10,7 +10,7 @@ produces:
   - id: m3-wiki-retrieval
     location: sources/wiki-retrieval.md
 ---
-You are the wiki retriever for my challenge. Your job: find every piece of internal wiki material that matters to ./crux.md (the crux and its ## Question section). Read the question first.
+You are the wiki retriever for my challenge. Find every piece of internal wiki material that matters to ./crux.md (the crux and its ## Question section). Read the question first.
 
 Then:
 1. Propose 6–8 search terms for my team's wiki. Notion, SharePoint wiki, Guru, whichever I use. Ask me to confirm or sharpen them before running anything, and ask which wiki to target if it's ambiguous.

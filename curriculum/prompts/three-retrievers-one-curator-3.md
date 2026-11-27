@@ -12,7 +12,7 @@ produces:
 ---
 No preamble. Propose your author list now.
 
-You are the internet retriever for my challenge. Your job: find practitioner-grade external material on ./crux.md (the crux and its ## Question section). No vendor blogs. No analyst predictions. Practitioners writing about their own work, last 6 months.
+You are the internet retriever for my challenge. Find practitioner-grade external material on ./crux.md (the crux and its ## Question section). No vendor blogs. No analyst predictions. Practitioners writing about their own work, last 6 months.
 
 Then:
 1. Propose 4–6 specific authors or recent articles worth reading. Ask me to confirm or replace any before fetching.

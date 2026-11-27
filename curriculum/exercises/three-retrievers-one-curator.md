@@ -2,32 +2,34 @@
 
 **Time:** ~28 minutes.
 
-Three retriever sessions fetch raw material on your challenge into `sources/`. A fourth session, the synthesizer, curates the material into `memory/`. All four read `./crux.md`. Each session has its own context and connectors. Skip any retriever you can't run today.
+Three retriever sessions fetch raw material on your challenge into `sources/`. A fourth session, the synthesizer, curates the material into `memory/`. All four read `./crux.md`. Each session has its own context.
+
+Two retrievers need nothing but your computer: internet, and docs on files you name. The wiki retriever is for a wiki connector you already have. Without one, leave it out. The synthesizer works the same from two files.
 
 <div class="rt-code">
 
-*Keep your crux session as Session 4 (synthesizer). Open three more: 1 wiki, 2 docs, 3 internet.*
+*Keep your crux session as Session 4 (synthesizer). Open three more: 1 internet, 2 docs, 3 wiki.*
 
 </div>
 <div class="rt-cowork">
 
-*In *Cowork*, keep your crux task as Task 4 and start three more: 1 wiki, 2 docs, 3 internet.*
+*In *Cowork*, keep your crux task as Task 4 and start three more: 1 internet, 2 docs, 3 wiki.*
 
 </div>
 
 Paste each retriever prompt and confirm the short list the agent proposes. If an agent starts reading far too widely, stop it, narrow its task, then say *"continue"*.
 
-Session 1, wiki: `sources/wiki-retrieval.md`.
+Session 1, internet: `sources/internet-retrieval.md`.
 
-{{prompt:three-retrievers-one-curator-1}}
+{{prompt:three-retrievers-one-curator-3}}
 
-Session 2, docs: `sources/docs-retrieval.md`.
+Session 2, docs: `sources/docs-retrieval.md`. When it asks for clues, name files or a folder on your computer.
 
 {{prompt:three-retrievers-one-curator-2}}
 
-Session 3, internet: `sources/internet-retrieval.md`.
+Session 3, wiki, if you have a wiki connector: `sources/wiki-retrieval.md`.
 
-{{prompt:three-retrievers-one-curator-3}}
+{{prompt:three-retrievers-one-curator-1}}
 
 If a retrieval file is thin, paste this prompt for another round.
 
@@ -37,7 +39,7 @@ Session 4, synthesizer: `memory/`.
 
 {{prompt:three-retrievers-one-curator-5}}
 
-Open one retriever's file. Find one number or phrase that the synthesizer dropped or smoothed in `memory/`. Should it have survived?
+Ask the synthesizer for one number or phrase from a retriever's file that it dropped or smoothed in `memory/`. Should it have survived?
 
 You are done when `memory/_synthesis-m3.md` names what changed.
 

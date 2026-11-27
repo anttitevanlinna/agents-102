@@ -13,6 +13,8 @@ Goal: an editing session changes a module and, in about 3 minutes, learns what s
 | `chain.js` | The cross-module question, "What happened to the briefing you made in Module 3?": walk Modules 3, 5, 6 with notes carried forward, judge three links (made, checked, improved). |
 | `damage-chain.js` | Copies of Modules 3, 5, 6 with the briefing chain cut, for the chain instrument's damage test. |
 | `course.js` | One run of the whole course: each student walks Modules 1 to 8 in order carrying take-homes (full notes for 3 and 5), cold question after each module, chain question at the end. |
+| `solo-pages.js` | The built open self-study handbook as a learner sees it: one text file per unit (first steps, Modules 1 to 6, the solo module), rendered in Chromium on the default runtime, prompt bodies included. |
+| `solo.js` | Solo learners (`solo-personas.json`: alone, own time, not developers) through those pages unit by unit. Each beat is marked done, partly, skipped or stuck with the reason; after each unit the learner gives the chance they stop the course there, when they would start the next unit, and their take-homes, then answers the cold question. `report.md` ranks the places learners stop and the steps they leave undone. |
 
 ```
 node curriculum/evals/fastloop/cycle.js --module agents-building-agents --page /tmp/m8.md --out /tmp/c1 --band 25
@@ -55,3 +57,14 @@ So the number steers only large moves (full damage, or a gain of 20 or more poin
 - `chain/`: chain question on the same old pages, 24 students per set. Intact 37, chain cut 22, paired gap -15 (se 5): the "checked" link fell 44 to 6. Under the 20-point bar.
 - `course/`: whole course on main b22b74d3 (all eight plan drafts), 12 students, 390 s. Cold per module: 46, 63, 85, 75, 77, 79, 73, 48. Chain 37 (made 42, checked 71, improved 0). The course run carries notes forward, so its cold numbers are near the baselines' scale, not identical to it.
 - `course-final/`: whole course on main dad7d5be (M1 trace line, M6 root-instructions debrief, M5 marks, M6 spot-check, M8 fixes), 12 students, 422 s. Cold per module: 54, 60, 83, 71, 75, 73, 75, 56. Chain 26 (made 29, checked 50, improved 0), inside noise of the 37 before. M1 trace step 8 of 12, the 4 skips happen before the paste (the walk shows prompt names, not bodies, so the trace-line fix in the prompt is invisible to it).
+
+## Solo walk, 2026-11-27
+
+`course.js` walks room participants and shows prompt names. `solo.js` is the person alone at their desk, reading the prompt bodies, with nobody to ask.
+
+```
+node curriculum/evals/fastloop/solo-pages.js --site site/agents-101/index.html --out /tmp/solo-pages
+node curriculum/evals/fastloop/solo.js --pages /tmp/solo-pages --out /tmp/solo-run
+```
+
+Six learners, eight units, about 25 minutes, about 175 Sonnet calls. The stop chance is a persona's own estimate and reads far too high as a completion rate; personas also carry undone steps forward and exaggerate them. Use it to rank places within one build and to compare two builds on the same personas. The reasons are the result: each one quotes the words on the page that caused the stall.

@@ -5,7 +5,7 @@ Several agents can work on one problem together. Split the work, run the agents 
 
 ## Prework
 
-[Schedule your personal agent](exercises/personal-agent-homework.md) to read your challenge memory for a week. [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) covers tools, memory and context. [Helper agents primer](exercises/module-3-prework.md) before Module 3.
+[Schedule your personal agent](exercises/personal-agent-homework.md) to read your challenge memory. [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) covers tools, memory and context. [Helper agents primer](exercises/module-3-prework.md) before Module 3.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -17,7 +17,7 @@ After this module, you will be able to:
 
 Start a fresh session or task at `~/Documents/agents-101/`.
 
-Today three agents search your wiki, your documents and practitioner articles, and three more work out what the findings mean.
+Today three agents search your documents and practitioner articles, and three more work out what the findings mean. Files on your computer are enough. A wiki or document connector is an optional extra.
 
 [Demo: Agent that takes action](lectures/agent-that-takes-action.md)
 

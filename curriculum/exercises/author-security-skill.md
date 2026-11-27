@@ -84,7 +84,7 @@ This task interface can't write into your runtime's personal directories, so pre
 
 **What happened:**
 
-You checked the system against the policies directly, then packaged the check as a skill. The next exercise loads the skill and runs it on the same system.
+You checked the system against the policies directly, then packaged the check as a skill.
 
 **The point:**
 

@@ -34,17 +34,17 @@ The judge checks every draft. The agent turns each thing the judge flags into a 
 
 ## Debrief
 
-Five minutes. The agent reviews every round and rewrites `./generation-tactic.md` one more time. Then the agent adds one line to your root instructions file: every briefing you ask for in this folder is written from the tactic and scored by the judge. The judge file stays as it is.
+Five minutes. The agent reviews every round and rewrites `./generation-tactic.md` one more time. Then the agent adds one line to your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span>: every briefing you ask for in this folder follows the rules in `./generation-tactic.md` and is scored by the judge. The judge file stays as it is.
 
 {{prompt:a101-m6-debrief-tactic-sharpen}}
 
 ## Push back on the summary
 
-Read the agent's summary and push back: *"That rule is too vague, make it observable"* / *"you added a rule the tactic already had after round 2."*
+Read the agent's summary and push back: *"That rule is too vague, make it observable"* / *"you added a rule the file already had after round 2."*
 
 If the summary sounds too kind, ask: *"Which rule did you claim to remove but keep under another name? Quote both lines."*
 
-You now have a sharper `./generation-tactic.md`, and one line in your root instructions that sends every later briefing through the tactic and the judge.
+You now have sharper rules in `./generation-tactic.md`, and one line in your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span> that sends every later briefing through those rules and the judge.
 
 ## Key Concepts
 - The loop improves the work round after round with nobody editing. The judge never changes, so a better score means better work.

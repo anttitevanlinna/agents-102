@@ -95,8 +95,8 @@ function versionStarterDownload(html, archiveBytes, workbookUrl = WORKBOOK_URL) 
   return html.replace(before, `href="${url}?v=${version}"`);
 }
 const LOADER_FRAMING = [
-  ['The agent writes the root instructions file in the Debrief.', 'The agent writes your working rules in the Debrief. The existing root file only loads course navigation.'],
-  ['writes <strong>the first root instructions file in this directory</strong>', 'writes <strong>your own working rules for this directory</strong>'],
+  ['The agent writes your <span class="rt-claude-skills"><code>CLAUDE.md</code></span><span class="rt-agent-skills"><code>AGENTS.md</code></span> in the Debrief.', 'The agent writes your working rules in the Debrief. The existing root file only loads course navigation.'],
+  ['writes <strong>the first <span class="rt-claude-skills"><code>CLAUDE.md</code></span><span class="rt-agent-skills"><code>AGENTS.md</code></span> in this directory</strong>', 'writes <strong>your own working rules for this directory</strong>'],
 ];
 
 function applyLoaderFraming(html, { required = true } = {}) {

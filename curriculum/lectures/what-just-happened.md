@@ -4,7 +4,7 @@
 
 *Context* is the bit you added that turned a generic About page into a site you recognise as yours.
 
-Four things are worth saving: what context the agent needs, what generic looks like, what a stronger pass does differently, and which rule should survive into the next session.
+Save these for next time: what context the agent needs, what generic looks like, what a stronger pass does differently, and which rule should survive into the next session.
 
 ## Why the agent went easy on its own site
 
@@ -20,7 +20,7 @@ Where the report matches the session as you remember it, good. Where it doesn't,
 
 ## The agent generated, you decided
 
-The site reads as yours because you knew the subject and corrected the drafts. Only you can catch a wrong line about you. That is why the course starts with your own profile.
+The site reads as yours because you knew the subject and corrected the drafts. Only you can catch a wrong line about you.
 
 ## You act on the future to know what's real
 

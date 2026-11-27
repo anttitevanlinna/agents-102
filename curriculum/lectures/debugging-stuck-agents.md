@@ -20,7 +20,7 @@ Adapt the prompt to your own system.
 
 4. **Shrink the rerun:** rerun only the smallest step that should now differ.
 
-5. **Have the agent write the lesson:** a rule for the root instructions file on what to read first, what not to smooth over, which output format to produce, and when to stop and ask.
+5. **Have the agent write the lesson:** a rule for your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span> on what to read first, what not to smooth over, which output format to produce, and when to stop and ask.
 
 <!-- maintainer -->
 

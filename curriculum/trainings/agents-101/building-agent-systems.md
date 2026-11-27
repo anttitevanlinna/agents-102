@@ -18,7 +18,7 @@ After this module, you will be able to:
 
 Start a fresh session or task at `~/Documents/agents-101/`. The new session does not see Module 1's conversation.
 
-Your `memory/`, `sources/` and `agents/` folders are empty from prework, and this module does not use Module 1's files. The agent writes the root instructions file in the Debrief.
+Your `memory/`, `sources/` and `agents/` folders are empty from prework, and this module does not use Module 1's files. The agent writes your <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span> in the Debrief.
 
 **The question, to you:** what's the difference between asking an agent a question and having an agent keep a knowledge base that every later agent reads?
 
@@ -42,7 +42,7 @@ Keep the same session running. The agent still has your challenge in the convers
 
 ## Debrief
 
-Five minutes. The agent reviews the session and writes **the first root instructions file in this directory**: the rules every agent here reads from now on. The rules come from what worked, what went wrong and what you had to repeat.
+Five minutes. The agent reviews the session and writes **the first <span class="rt-claude-skills">`CLAUDE.md`</span><span class="rt-agent-skills">`AGENTS.md`</span> in this directory**: the rules every agent here reads from now on. The rules come from what worked, what went wrong and what you had to repeat.
 
 {{prompt:a101-m2-debrief-claude-md}}
 

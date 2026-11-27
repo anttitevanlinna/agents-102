@@ -20,12 +20,7 @@ produces:
   - id: generation-tactic
     location: ./generation-tactic.md
 ---
-Run an eval loop using my fixed judge.
-
-Fixed judge:
-- Never edit judges/groundedness-judge.md.
-- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.
-- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.
+Run an eval loop using my fixed judge. Never edit judges/groundedness-judge.md.
 
 Starting generation tactic:
 - Read ./generation-tactic.md and module-6/runs/round-0/judgment.md from round 0. If either is missing, stop and tell me round 0 has not run.
@@ -46,7 +41,6 @@ When the loop stops:
   - a table of claims flagged out of claims judged, round 0 (the Module 3 briefing) first and then each loop round
   - the generation-tactic change after each round, naming any remark it came from
   - why the loop stopped
-  - the judge SHA check
   - whether any judge subagent got instructions beyond the judge file
   - one thing the judge still cannot see
   - one human decision still needed

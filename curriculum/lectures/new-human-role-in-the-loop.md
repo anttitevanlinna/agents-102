@@ -28,11 +28,11 @@ Today you stand between the agent and the world: the agent drafts, you inspect. 
 
 The new role is to design the loop. You decide what the agent can reach, what it writes down, what stays fixed, what may change, what gets checked every time, what "better" means, and where a person still belongs.
 
-For the internal mail, your answer may be draft only, review first, send to yourself first, or send automatically once the groundedness judge passes and the steering eval scores high. Some kinds of mail never go without a person.
+For the internal mail, your answer may be draft only, review first, send to yourself first, or send automatically once the groundedness judge passes and the goal-nudger scores high. Some kinds of mail never go without a person.
 
-## Make a steering eval
+## Make a goal-nudger
 
-Ask the agent to build one steering eval with you, for internal mail an agent could draft. The agent saves the eval as `./goal-nudger-eval.md`.
+Ask the agent to build one goal-nudger with you, for internal mail an agent could draft. A goal-nudger is an eval that scores one quality you care about and pushes the agent toward it. The agent saves it as `./goal-nudger-eval.md`.
 
 {{prompt:new-human-role-in-the-loop-1}}
 

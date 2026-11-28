@@ -17,7 +17,7 @@ Not student-facing. Where the open edition asks a self-study learner for their o
 | page-only | a body sentence asks (*Push back on the summary*), no prompt waits | yes, silently |
 | free | the learner leads with no prompt (Module 1 Phase 6) | yes, by design |
 
-Evidence the gate holds: the tmux run of 2026-11-26 (H-8 in `evals/mechanical/tmux-runner/a101-runner-findings.md`). When the runner sent no answer to the Module 1 context-trace question, the agent did not write the file and said it was waiting. The runner now has to answer every waiting prompt (`tests/scenario-answers-waits.test.sh`), so it shows that gated moments work and says nothing about page-only ones.
+Evidence the gate holds: the tmux run of 2026-11-26 (H-8 in `evals/mechanical/tmux-runner/a101-runner-findings.md`). When the runner sent no answer to the Module 1 context-trace question, the agent did not write the file and said it was waiting. The runner now has to answer every waiting prompt (`curriculum/evals/mechanical/tmux-runner/tests/scenario-answers-waits.test.sh`), so it shows that gated moments work and says nothing about page-only ones.
 
 Rule context: `check_pedagogy.md` §16 puts forcing functions in prompts and lets optional push-backs live in body text; §32 says offered structures are taken as they are unless a mechanic forces engagement. So a page-only moment is right when it is optional; it is wrong when the module's Big Idea depends on it.
 
@@ -63,5 +63,5 @@ Left as they are: Module 6 remarks (human taste is a side product of the loop, A
 
 ## Open
 
-- Whether learners do the page-only moments: no data. The page sends `copy-prompt` and `prompt-open`; nothing records what a learner types. The files that keep the learner's words verbatim (`module-1/context-trace.md` last line, `module-3/briefing-baseline.md` *Why:*, `module-4/guess.md`, `module-5/my-marks.md`, `module-5/baseline-score.md`) are where a recorded walk can check them.
+- Whether learners do the page-only moments: no data. The page sends `copy-prompt` and `prompt-open`; nothing records what a learner types. The files that keep the learner's words verbatim (module-1/context-trace.md last line, module-3/briefing-baseline.md *Why:*, module-4/guess.md, module-5/my-marks.md, module-5/baseline-score.md) are where a recorded walk can check them.
 - Whether a learner answers a gated question with real judgment or with "ok": a recorded walk with a person, not a sim.

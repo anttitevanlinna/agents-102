@@ -12,6 +12,9 @@ produces:
   - id: curation-plan
     location: scrollback
     note: agreed source plan used by the next prompt
+callouts:
+  - at: Two rules for the plan
+    say: You decide what the agent may read. The agent asks before taking more.
 ---
 I'm building a knowledge memory for one specific challenge I'm working on. Do this in three steps:
 

@@ -9,6 +9,9 @@ requires:
 produces:
   - id: m5-claim-pool
     location: module-5/claim-pool.md
+callouts:
+  - at: Do not judge whether
+    say: If the agent judged while collecting, it would pick the claims it can verify.
 ---
 Open `module-5/briefing.md`. Extract 30 varied claims from the briefing, or every claim if it holds fewer.
 

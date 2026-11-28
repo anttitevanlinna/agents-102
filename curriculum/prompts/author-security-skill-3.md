@@ -11,6 +11,11 @@ requires:
 produces:
   - id: authored-security-skill
     location: module-4/skills/agent-audit/
+callouts:
+  - at: Build one reusable skill source
+    say: A skill packs the check so any later session can run it by name.
+  - at: Before you save anything
+    say: What only you know goes into the check before it is saved.
 ---
 Author the reusable security check now. Two lenses.
 

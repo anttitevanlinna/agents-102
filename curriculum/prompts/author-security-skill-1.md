@@ -15,6 +15,9 @@ requires:
 produces:
   - id: policy-report-raw
     location: outputs/policy-report-raw.md
+callouts:
+  - at: Write the raw report
+    say: "\"I can't tell\" keeps the agent from guessing a verdict."
 ---
 Read everything in module-4/policies/. Use those policy references to audit the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root {{artifact:root-instructions}}, and the multi-agent runs in module-3/stances/.
 

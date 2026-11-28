@@ -9,6 +9,9 @@ requires:
 produces:
   - id: m3-internet-retrieval
     location: sources/internet-retrieval.md
+callouts:
+  - at: No preamble
+    say: Without this line the agent opens by explaining its plan.
 ---
 No preamble. Propose your author list now.
 

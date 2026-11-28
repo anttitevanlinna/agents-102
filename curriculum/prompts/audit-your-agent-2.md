@@ -9,6 +9,9 @@ requires:
 produces:
   - id: security-report
     location: outputs/security-report.md
+callouts:
+  - at: For access control
+    say: Access the agent does not need adds risk and no value.
 ---
 Apply the agent-security lens to every agent in agents/. Run both checks: what each agent can reach, and the named risk patterns the lens carries.
 

@@ -13,6 +13,9 @@ requires:
 produces:
   - id: m5-detector-outputs
     location: module-5/detectors/
+callouts:
+  - at: Run four detectors
+    say: Four methods on the same claims show which method fits your material.
 ---
 Run four detectors on `module-5/claim-pool.md` in parallel. Each detector is a subagent with a different method. Each reads `module-5/claim-pool.md`, `module-5/briefing.md`, `module-5/evidence-roster.md`, and the rostered evidence files named there. Each writes its findings as a list of claim-pool claims flagged, with one line of reasoning per claim.
 

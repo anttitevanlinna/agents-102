@@ -11,6 +11,11 @@ produces:
   - id: challenge-memory
     location: memory/
     note: cited topic pages plus memory/index.md
+callouts:
+  - at: Sources first
+    say: Without this rule the agent fills gaps with text that sounds right.
+  - at: Every claim ends with a citation
+    say: A citation on every claim lets anyone trace a line to its source.
 ---
 Read every real-content file in sources/. For each major topic you find, create a markdown file in memory/ with a clear title, 3–5 key claims, and an "open questions" section for things the sources disagree on or leave unclear. Then write memory/index.md that links to every topic page with a one-line description.
 

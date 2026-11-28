@@ -12,6 +12,11 @@ produces:
   - id: m1-brand-rules
     location: module-1/personal-brand-generation.md (overwrite in place)
     note: retro applied in place; module-scoped, not read by later modules
+callouts:
+  - at: Assume the rules file
+    say: With a number to find, the agent looks for faults instead of agreeing.
+  - at: Then overwrite
+    say: Rewriting in place keeps one current file. Appended notes pile up.
 ---
 Read `module-1/personal-brand-generation.md` and `module-1/context-trace.md`. Then re-read what we did building the site. Run a retro: which moves worked, which fell flat, where context broke through, where the output stayed generic. Compare the rules file to the actual work. Sort each rule into keep, sharpen, or drop. What's missing the rules should have caught?
 

@@ -13,6 +13,9 @@ produces:
   - id: root-instructions
     location: "./{{artifact:root-instructions}} (Security operating rules section)"
     note: adds/sharpens 1-5 security rules in place
+callouts:
+  - at: Add up to five short security rules
+    say: A check runs every time. A rule depends on the agent following it.
 ---
 Read ./{{artifact:root-instructions}} if it exists, then outputs/policy-report-raw.md if it exists, outputs/policy-report.md and outputs/security-report.md. From this session, pick out what a later session has to remember: the rows that matter, the "I can't tell" rows that need a standing check, where the mitigation reduced one risk and moved another, and the risk that is still open.
 

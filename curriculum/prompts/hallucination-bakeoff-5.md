@@ -17,6 +17,9 @@ produces:
     location: module-5/adjudicated-claims.md
   - id: m5-scoreboard
     location: module-5/scoreboard.md
+callouts:
+  - at: After the table, name one winner
+    say: Naming one winner gives you one method to save as your judge.
 ---
 You are the scorer for a four-way detector benchmark. Your inputs:
 

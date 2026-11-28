@@ -19,6 +19,11 @@ produces:
     location: ./generation-tactic.md
   - id: m6-round-0
     location: module-6/runs/round-0/judgment.md
+callouts:
+  - at: Score my baseline briefing
+    say: Round 0 is the number every later round is compared with.
+  - at: Write ./generation-tactic.md
+    say: A rule that names its miss can be cut when the miss is gone.
 ---
 Three things, in order.
 

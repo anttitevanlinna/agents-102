@@ -15,6 +15,9 @@ produces:
     location: module-5/evidence-roster.md
   - id: m5-briefing
     location: module-5/briefing.md
+callouts:
+  - at: The target is my baseline briefing
+    say: An unchanged target makes every later score comparable.
 ---
 Spawn one subagent to set up the benchmark target.
 

@@ -10,6 +10,9 @@ produces:
   - id: m1-site
     location: module-1/site.html
     note: anti-branding and presentation revision in place
+callouts:
+  - at: After that you have a free hand
+    say: With a free hand the agent can surprise you. The substance you built stays.
 ---
 Next comes a list of things I hate about work. For each one, work out what kind of work and what kind of people produce it, then describe me as the opposite, in the positive: what I do and what I move toward, never "I don't do X".
 

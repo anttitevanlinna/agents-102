@@ -17,6 +17,9 @@ requires:
 produces:
   - id: m3-curated-memory
     location: memory/ and memory/_synthesis-m3.md
+callouts:
+  - at: When all three retrievals are in
+    say: Agents smooth over conflicts between sources. The note has to quote them.
 ---
 No plan or preamble. Enter the loop now.
 

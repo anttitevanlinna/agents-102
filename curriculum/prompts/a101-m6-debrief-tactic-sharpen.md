@@ -16,6 +16,11 @@ produces:
     note: integrates the tactic rule the loop never reached; judge file untouched
   - id: root-instructions
     location: "./{{artifact:root-instructions}} (one line: later briefings go through the tactic and the judge)"
+callouts:
+  - at: Read ./generation-tactic.md
+    say: Small counts move by chance. The agent checks the noise before crediting a change.
+  - at: Rewrite ./generation-tactic.md in place
+    say: A tactic file that only grows stops being followed.
 ---
 Read ./generation-tactic.md, then module-6/runs/ and module-6/eval-notes.md. The judge file at judges/groundedness-judge.md did not change during the loop; check that no judge subagent was given rules beyond it. If the flag counts stayed in single digits, say whether the changes between rounds are bigger than the judge's noise before you credit any tactic change.
 

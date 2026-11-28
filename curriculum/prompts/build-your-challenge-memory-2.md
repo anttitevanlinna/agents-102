@@ -10,6 +10,9 @@ produces:
   - id: challenge-sources
     location: sources/
     note: fetched content and reference files for the agreed plan
+callouts:
+  - at: For every source
+    say: One file per source lets every later claim point to where it came from.
 ---
 For every source in the curation plan we just agreed, create one file in sources/. Use the best method per source:
 

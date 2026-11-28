@@ -9,6 +9,9 @@ requires:
 produces:
   - id: m3-docs-retrieval
     location: sources/docs-retrieval.md
+callouts:
+  - at: No need to update
+    say: Each agent writes to one place. Two agents in one file overwrite each other.
 ---
 You are the docs retriever for my challenge. Find the relevant recent documents and email threads for ./crux.md (the crux and its ## Question section).
 

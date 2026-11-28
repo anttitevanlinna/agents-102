@@ -10,6 +10,11 @@ produces:
   - id: m1-site
     location: module-1/site.html
     note: StoryBrand-tuned revision in place
+callouts:
+  - at: Rework the section
+    say: Naming a known method gives the agent the whole method in a few words.
+  - at: Ask me one beat at a time
+    say: Your answers are the context the agent lacks.
 ---
 Rework the section of my site about how I help colleagues, using Donald Miller's StoryBrand. The page stays about me: my name in the headline, my current work up front. Only this one section changes. A colleague who reads it should think: this is the person I want to work with more, on the things they're great at.
 

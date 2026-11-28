@@ -9,6 +9,11 @@ requires:
 produces:
   - id: m3-wiki-retrieval
     location: sources/wiki-retrieval.md
+callouts:
+  - at: Write each finding as soon as you have it
+    say: Another session reads the findings while the retriever is still working.
+  - at: Sources first
+    say: "[NOT FOUND] is the answer you want when there is no source."
 ---
 You are the wiki retriever for my challenge. Find every piece of internal wiki material that matters to ./crux.md (the crux and its ## Question section). Read the question first.
 

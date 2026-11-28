@@ -12,6 +12,11 @@ produces:
   - id: m3-agent-work
     location: module-3/stances/
     note: Cowork runtime variant of the stance and synthesis work
+callouts:
+  - at: Spawn three agents in parallel
+    say: Three agents with different stances disagree where one agent would settle early.
+  - at: When the three return
+    say: Unsummarised notes let you see the disagreement before it is blended away.
 ---
 Start dispatching immediately. No plan or preamble.
 

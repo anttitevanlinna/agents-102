@@ -16,6 +16,11 @@ produces:
       - prompt:a101-m4-debrief-security-rules
       - prompt:a101-m5-debrief-groundedness-rules
       - module:agents-building-agents
+callouts:
+  - at: The rules file governs
+    say: Each rule traces to a moment in your session, so none is generic advice.
+  - at: Write them as standing rules
+    say: Standing rules stay useful. The story of one session goes stale.
 ---
 Review this session and write the first version of {{artifact:root-instructions}} at the training-directory root. The evidence: ./challenge.md, every file in sources/ (scan titles + first lines), every file in memory/, and our conversation.
 

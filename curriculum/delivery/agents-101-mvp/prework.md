@@ -70,13 +70,13 @@ Your game is already saved in `agents-101`.
 <span id="3-add-the-course-files"></span>
 <span id="4-download-the-course-files"></span>
 
-The course files are a copy of this handbook and the folders your agents work in. Stay in the same session.
+The course files are a copy of this handbook and the folders your agents work in.
 
 Glance at each prompt. Check what seems pertinent in more detail. No need to study all the detail.
 
 {{prompt:a101-prework-extract-tarball}}
 
-If the download fails, [download the course files](<CONTENT_URL>) in your browser, put them in `agents-101` and tell the agent.
+If the agent can’t download the course files, [download them](<CONTENT_URL>), drag what you downloaded into `agents-101` without opening it, and tell the agent it’s there.
 
 <div class="walkthrough-media rt-profile rt-profile-cowork"><strong>Course files walkthrough</strong>
 <p>Video coming here: send the prompt and watch the course folders appear in <code>agents-101</code>.</p></div>

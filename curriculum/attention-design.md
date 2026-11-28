@@ -71,19 +71,22 @@ Open edition, Modules 1 to 6, Cowork profile, 720 by 800 pixels. Measured 2026-1
 
 What the measures say: handbook text in total is near the module limit in four of six modules (2 and 4 are over). The heavier loads are the prompt text on the page and the distance a learner scrolls to find the next step.
 
-**With long prompts in short** (self-study handbook, measured 2026-11-28 on one build; `--full-prompts` gives the first column):
+**With long prompts in short** (self-study handbook, measured 2026-11-28 on one build of main `a1ec2dbc`; `--full-prompts` gives the first column):
 
-| | every prompt open | long prompts in short |
+| | every prompt open | long prompts in short, with callouts |
 |---|---|---|
 | prompt words in view | 8,833 | 4,940 |
 | prompts shown in short | 0 | 36 of 68 |
-| prompt boxes taller than three quarters of the screen | 17 | 3 |
-| screens, six modules | 122.7 | 112.2 |
-| screens per module | 17 / 27 / 18.1 / 23.4 / 18.3 / 18.9 | 16 / 25 / 16 / 21.8 / 16.3 / 17.1 |
+| prompt boxes taller than three quarters of the screen | 17 | 4 |
+| screens, six modules | 125.1 | 117.0 |
+| screens per module | 17.2 / 27.8 / 18.7 / 23.8 / 18.5 / 19.1 | 16.6 / 26.2 / 17.2 / 22.5 / 16.8 / 17.7 |
+| handbook words outside prompts | 14,145 | 14,652, of which callouts 507 |
+
+The short prompts save 10.9 screens and the 42 callouts take 2.8. Lead-ins, idea slides, stretches without a prompt and file names measure the same in both columns.
 
 ## Navigation
 
-A module is 16 to 25 screens beside the agent in the self-study handbook, 17 to 27 with every prompt open.
+A module is 17 to 26 screens beside the agent in the self-study handbook, 17 to 28 with every prompt open.
 
 In the self-study handbook each prompt box carries its place in the module (*Prompt 4 of 9*) and a filled *Copy prompt* button, and a long prompt shows in short, as below. Module 6, Phase 2 goes from 2.5 screens to 2.0 with four callouts on the prompt; the prompt box goes from 1.5 screens to 1.0. Trainer-led editions and the Slides layout show prompts in full.
 
@@ -102,10 +105,10 @@ Page with the measures and the step shown both ways: https://claude.ai/artifact/
 Three layers. The first two are in the self-study handbook; the prework sentence is not placed.
 
 - **Squint, automatic.** A prompt longer than eight lines shows in short when that saves four lines or more: 36 of 68 prompts. The box shows the first sentence of each part (each paragraph, each top-level list item) in the prompt's code type on grey; a run of five or more short bullets shows its first two. *Copy prompt* is the main button and takes the whole prompt. One link shows all lines in the handbook; no control per part, the full text is one paste away in Cowork. No authoring. A prompt's closing label (*My hate list:*, *Question:*) is a part of its own and stays in view, so the learner sees where their own text goes.
-- **Callouts, written, only where there is a why.** *"Each prompt splits into areas. Each area might be commented in few words to call out what and why of the shape / instruction."* (Antti 2026-11-28) A callout sits between the areas as a card laid on the box: white, body type, one marker, narrower than the box, so the grey runs unbroken around it. Two ways it fails (Antti 2026-11-28). Set in the box's own type in a second colour, it reads as prompt text: *"They now feel like part of the prompt to me"*. Set as a white band across the full width, it cuts the prompt in pieces: *"I'm kind of now seeing the "prompt breaks up" which is does not really do."* Working limits, the author's judgment: a callout says why a part is there, never what it says (the line says what); three or four a prompt; about twelve words each; an area with no why gets none. Callouts are not copied. Source: `callouts:` in the prompt's frontmatter, `at` = the first words of the part, `say` = the callout. Frontmatter sits outside the prompt gate; a callout is student-facing body text and runs under the writing canon. `scripts/compile-prompts.js` fails when an `at` matches no line of the prompt body, so a callout cannot outlive its part unnoticed. Example, the Module 6 loop prompt: *The judge stays fixed, so a better score means better work.* · *The writer and the judge are separate agents. The judge sees only the briefing.* · *This is what you read when you come back.* · *The loop keeps running while you are away.* Its two areas of file paths and folders carry none.
+- **Callouts, written, only where there is a why.** *"Each prompt splits into areas. Each area might be commented in few words to call out what and why of the shape / instruction."* (Antti 2026-11-28) A callout sits between the areas as a card laid on the box: white, body type, one marker, narrower than the box, so the grey runs unbroken around it. Two ways it fails (Antti 2026-11-28). Set in the box's own type in a second colour, it reads as prompt text: *"They now feel like part of the prompt to me"*. Set as a white band across the full width, it cuts the prompt in pieces: *"I'm kind of now seeing the "prompt breaks up" which is does not really do."* Working limits, the author's judgment: a callout says why a part is there, never what it says (the line says what); one or two a prompt (the Module 6 loop prompt carries four); about twelve words each; an area with no why gets none; no callout where the sentence above the prompt, the line under the card or the agent's reply says the same. Modules 1 to 6 carry 42 callouts on 28 of the 36 prompts shown in short. Callouts are not copied. Source: `callouts:` in the prompt's frontmatter, `at` = the first words of the part, `say` = the callout. Frontmatter sits outside the prompt gate; a callout is student-facing body text and runs under the writing canon. `scripts/compile-prompts.js` fails when an `at` matches no line of the prompt body, so a callout cannot outlive its part unnoticed. Example, the Module 6 loop prompt: *The judge stays fixed, so a better score means better work.* · *The writer and the judge are separate agents. The judge sees only the briefing.* · *This is what you read when you come back.* · *The loop keeps running while you are away.* Its two areas of file paths and folders carry none.
 - **Said once in the prework:** *Glance at each prompt. Check what seems pertinent in more detail. No need to study all the detail.*
 
-**Callouts replace text.** A passage that explains a prompt from outside the prompt sits a screen away from the line it explains. Modules 1 to 6 hold three: the Module 3 Debrief (*"The prompt asks the agent for a harsh review…"*), the Module 5 slide *Notice what the prompt insists on*, and *How the loop works* in the Module 6 exercise, about 160 words together. As callouts they sit next to their lines.
+**Callouts replace text.** A passage that explains a prompt from outside the prompt sits a screen away from the line it explains. Modules 1 to 6 hold three: the Module 3 Debrief (*"The prompt asks the agent for a harsh review…"*), the Module 5 slide *Notice what the prompt insists on*, and *How the loop works* in the Module 6 exercise, about 160 words together. As callouts they sit next to their lines. The Module 3 and Module 5 debrief prompts carry no callout while their passages stand: said twice costs more than said a screen away. Removing a passage is the maintainer's call, and it applies to the self-study handbook only; trainer-led editions show prompts in full and need the passages.
 
 **Named moves stay out of Agents 101.** `trainings/agentic-engineering-101/reference/prompt-anatomy.md` names 33 prompt moves; the renderer can open one in a popup from an `anchors:` entry in a prompt's frontmatter. No Agents 101 prompt carries anchors. A name for a move is one more thing to hold; a plain callout next to the line does the job for this audience.
 

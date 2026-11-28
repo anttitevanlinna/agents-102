@@ -71,18 +71,18 @@ Open edition, Modules 1 to 6, Cowork profile, 720 by 800 pixels. Measured 2026-1
 
 What the measures say: handbook text in total is near the module limit in four of six modules (2 and 4 are over). The heavier loads are the prompt text on the page and the distance a learner scrolls to find the next step.
 
-**With long prompts in short** (self-study handbook, measured 2026-11-28 on one build of main `a1ec2dbc`; `--full-prompts` gives the first column):
+**With long prompts in short** (self-study handbook, measured 2026-11-28 on one build of main `52da2550`; `--full-prompts` gives the first column):
 
 | | every prompt open | long prompts in short, with callouts |
 |---|---|---|
-| prompt words in view | 8,833 | 4,940 |
+| prompt words in view | 8,834 | 4,942 |
 | prompts shown in short | 0 | 36 of 68 |
 | prompt boxes taller than three quarters of the screen | 17 | 4 |
-| screens, six modules | 125.1 | 117.0 |
-| screens per module | 17.2 / 27.8 / 18.7 / 23.8 / 18.5 / 19.1 | 16.6 / 26.2 / 17.2 / 22.5 / 16.8 / 17.7 |
-| handbook words outside prompts | 14,145 | 14,652, of which callouts 507 |
+| screens, six modules | 124.4 | 116.7 |
+| screens per module | 17.2 / 27.6 / 18.5 / 23.8 / 18.2 / 19.1 | 16.7 / 26.0 / 17.2 / 22.5 / 16.6 / 17.7 |
+| handbook words outside prompts | 14,007 | 14,572, of which callouts 565 |
 
-The short prompts save 10.9 screens and the 42 callouts take 2.8. Lead-ins, idea slides, stretches without a prompt and file names measure the same in both columns.
+The short prompts save 10.8 screens and the 46 callouts take 3.1. Lead-ins, idea slides, stretches without a prompt and file names measure the same in both columns.
 
 ## Navigation
 

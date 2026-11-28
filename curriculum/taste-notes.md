@@ -39,6 +39,22 @@ Append-only stream of editorial calls made on real curriculum text. **Newest at 
 
 ---
 
+## 2026-11-28 — Agents 101 open edition, problem-areas review
+
+Rule behind most calls: `check_student_facing.md` §40. These are the calls beside it.
+
+**Antti's wording beat mine.** P5, M1 step 2: mine kept "Select all and copy."; his was *"Select all for the full page and copy."* The extra words say why (headers and sidebar are wanted), and the next line no longer has to defend it. P2: *"connect your calendar if you can"* plus *"copy-paste the full week as text"*, and "No need for 'work' word": "work calendar" or "work account" adds nothing once the job is the morning plan.
+
+**Two reasonable fixes, both rejected for the same reason.** P4, M4 audit: "open `outputs/policy-report.md` and find the rows it flagged" and my first rewrite both had the student looking at a file. *"both wrong. Handle by prompting not looking at files."* The working version asks the agent: "ask it which rows of the policy report it flagged, and why." When a check needs a file, the first move is a question to the agent; opening the file is the fallback.
+
+**A sentence that read better gone.** R12: after two failed rewrites, *"this would read better without the sentence."* When two rewrites of one sentence both fail, try deleting it before writing a third.
+
+**No exemption for onboarding.** I proposed keeping First steps' click-by-click folder steps because beginners and the home-to-M1 sims needed them. *"all in all: terrible text. Needs full redo."* Media (video, the screenshot todo) carries the "where"; text names the outcome.
+
+**Counterweight kept.** P3, M6: the remarks went through the agent, but "read it the way the person receiving it would" stayed. Reading the briefing as its receiver is the human judgement of that module, not a file chore.
+
+---
+
 ## 2026-11-01 — Antti's AE101 cut sessions, read as pairs
 
 Three sessions where Antti cut AE101 himself: the 2026-08-05 line-read (about 50 one-change commits in under two hours), the 2026-08-25 Antti-called cuts, and the 2026-08-29 compaction pass (its calls and counterweights are in the 2026-08-29 entry below). 150 slide pairs, 74 of them gold: `curriculum/evals/mechanical/persona-student/runs/2026-11-01-ae101-history-cuts/`.

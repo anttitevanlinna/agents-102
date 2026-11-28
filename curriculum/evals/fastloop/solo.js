@@ -33,14 +33,14 @@ const sha = (s) => crypto.createHash('sha256').update(s).digest('hex').slice(0, 
 const STUD = path.join(OUT, 'students.jsonl');
 const done = new Map(fs.existsSync(STUD) ? fs.readFileSync(STUD, 'utf8').split('\n').filter(Boolean).map((l) => { const r = JSON.parse(l); return [r.key, r]; }) : []);
 
-const carried = (walks) => walks.map((w) => `${NAME(w.unit)}: took home: ${(w.take_homes || []).join(' | ') || '(nothing)'}. Left undone: ${(w.beats || []).filter((b) => /skipped|stuck|partly/.test(b.did)).map((b) => b.id.split('/').pop()).join(', ') || 'nothing'}. Energy after it: ${w.energy}/5.`).join('\n');
+const carried = (walks) => walks.map((w) => `${NAME(w.unit)}: took home: ${(w.take_homes || []).join(' | ') || '(nothing)'}. Energy after it: ${w.energy}/5.`).join('\n');
 
 function walkPrompt(u, who, walks) {
   const walk = beats(page[u]).map((b) => `=== BEAT ${b.id} ===\n## ${b.heading}\n${b.body}`).join('\n\n');
   return `${who}
 
 ---
-You are this person. You found Agents 101, a free self-study course, on the web and you are doing it alone: no trainer, no classmates, nobody checking on you. You work in Claude Desktop (Cowork) with a folder on your own computer, on a Pro plan with usage limits. Most people who start a free online course do not finish it. Be this person on a real day, with their real patience, material and setup, not an ideal student.
+You are this person. You found Agents 101, a free self-study course, on the web and you are doing it alone: no trainer, no classmates, nobody checking on you. You work in Claude Desktop (Cowork) with a folder on your own computer, and your plan's usage limits are not a problem: never give a usage limit as a reason. The modules are done in order: when you open a unit, every file the earlier units produce is in your folder, so never give a missing earlier file or an earlier unfinished step as a reason. Most people who start a free online course do not finish it. Be this person on a real day, with their real patience, material and setup, not an ideal student.
 ${walks.length ? `\nWhere you are so far:\n${carried(walks)}\n` : ''}
 You now open ${NAME(u)} in the handbook and go through it in order, beat by beat. A [PROMPT TO PASTE] is text you copy into Claude; the agent then does that work and you answer what it asks. Anything else the page asks of you, you have to do yourself.
 

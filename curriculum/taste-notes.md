@@ -23,27 +23,49 @@ Append-only stream of editorial calls made on real curriculum text. **Newest at 
 
 ---
 
-## 2026-11-28 — Agents 101 attention design: a length remark that was not a cut order, and the prompt box
+## 2026-11-28 — Agents 101 attention design: two calls from the prompt-box work
 
-Antti's calls while the self-study handbook's long prompts went into short form with callouts. Promoted: where a prompt's why lives → `check_prompts.md §51`; how a question reaches him → `check_prompts.md §26`; removals → `check_pedagogy.md §39`.
-
-### A remark about length is a design question
-
-His remark: *"The handbook is not the thing. the promtps and cowork usage is the thing. How much text can we really have? Consider this as UX matter."* Read as a cut order, it got: *"I did not say "cut". I said consider"*, then *"the point is really about mental capacity. Ease of navigation"*. The answer he wanted was a model of what the learner's attention is spent on, a measure, and a view of the page. The measure moved without a word of material leaving: long prompts shown in short roughly halved the prompt text on the page, and Copy still takes the whole prompt. The counterweight to every "shorter" instinct on this course: the first lever is where text sits and how much of it shows. What it says is the last.
+The length reframe (*"I did not say cut. I said consider"*) and the two callout renderings that failed are in the entry below. Promoted from this work: where a prompt's why lives → `check_prompts.md §51`.
 
 ### A sentence he rewrote
 
 For solo learners facing a long prompt, the draft said the rest of the prompt is for the agent. His version: *"glance at it. check what seems pertinent in more detail. No need to study all detail."* The draft took the prompt away from the learner. His keeps the learner as the judge of what is pertinent and lifts only the duty to study.
 
-### Two renderings that failed, one that held
-
-- Notes inside the prompt box in the box's own type: *"feel like part of the prompt to me"*.
-- Notes as full-width white bands across the box: *"the prompt breaks up"*.
-- Held: white cards in body type, narrower than the grey box, with the grey unbroken around them. His words for the result: *"handbook kind of gives squint of the prompt with key callouts. The cowork then has the full text as is. I think this introduces the big prompts right."*
-
 ### A sketch from him is an input
 
 *"Don't take my ideas as superior or right. You have much better context now."* He had sketched a few words of comment on every area of a prompt, saying what and why. What was built carries fewer: one or two callouts a prompt, none on a prompt where no why was worth a card, and each says why, never what. He approved the design (*"design OK for me"*). The callouts as written have no verdict from him yet. Weigh his sketch against the measure and say what you would build.
+
+## 2026-11-28 — Agents 101 open edition, four days of calls (backfilled at thread close)
+
+**Counterweight: length is something to consider, not a cut order.** On the attention-design work Antti said page length is a UX matter, then, when a pass read that as licence to shorten: *"I did not say cut. I said consider."* The fix he took was a different shape of the same text: the handbook shows a squint of each long prompt with callouts on it, and Cowork holds the full prompt. The text stayed; what the eye meets first changed.
+
+**Counterweight: the solo edition kept its between-sittings steps.** Now `check_pedagogy.md` §39; *"that stuff was there for a reason"*.
+
+**A failed rewrite of a slide line.** *"The same question. Two answers."* was rewritten with a verb for a slide pass. Antti: *"not better or shorter"*. A slide line changes only when the edit is clearly better and not longer.
+
+**The student's word, not ours.** *"three lines"* became *"these three things"* in the prework note and the solo brief: the learner had not written lines, they had named things. *"beats"* became *"steps"* in the challenge memory exercise: *"steps is what student would call them"*.
+
+**Callouts sit on the prompt, never inside it.** A callout set in the prompt box's own type would *"feel like part of the prompt"*; a full-width band means the *"prompt breaks up"*. What he accepted: white cards in body type, narrower than the grey box, laid on it.
+
+**Judge the line as it stands.** *"???? note old was bad too"*: a new line is not good because it beats the old one. Now `check_student_facing.md` §41.
+
+---
+
+## 2026-11-28 — Agents 101 open edition, problem-areas review
+
+Rule behind most calls: `check_student_facing.md` §40. These are the calls beside it.
+
+**Antti's wording beat mine.** P5, M1 step 2: mine kept "Select all and copy."; his was *"Select all for the full page and copy."* The extra words say why (headers and sidebar are wanted), and the next line no longer has to defend it. P2: *"connect your calendar if you can"* plus *"copy-paste the full week as text"*, and "No need for 'work' word": "work calendar" or "work account" adds nothing once the job is the morning plan.
+
+**Two reasonable fixes, both rejected for the same reason.** P4, M4 audit: "open the policy report file and find the rows it flagged" and my first rewrite both had the student looking at a file. *"both wrong. Handle by prompting not looking at files."* The working version asks the agent: "ask it which rows of the policy report it flagged, and why." When a check needs a file, the first move is a question to the agent; opening the file is the fallback.
+
+**A sentence that read better gone.** R12: after two failed rewrites, *"this would read better without the sentence."* When two rewrites of one sentence both fail, try deleting it before writing a third.
+
+**No exemption for onboarding.** I proposed keeping First steps' click-by-click folder steps because beginners and the home-to-M1 sims needed them. *"all in all: terrible text. Needs full redo."* Media (video, the screenshot todo) carries the "where"; text names the outcome.
+
+**Counterweight kept.** P3, M6: the remarks went through the agent, but "read it the way the person receiving it would" stayed. Reading the briefing as its receiver is the human judgement of that module, not a file chore.
+
+---
 
 ## 2026-11-01 — Antti's AE101 cut sessions, read as pairs
 

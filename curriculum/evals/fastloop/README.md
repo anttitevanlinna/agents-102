@@ -67,4 +67,4 @@ node curriculum/evals/fastloop/solo-pages.js --site site/agents-101/index.html -
 node curriculum/evals/fastloop/solo.js --pages /tmp/solo-pages --out /tmp/solo-run
 ```
 
-Six learners, eight units, about 25 minutes, about 175 Sonnet calls. The stop chance is a persona's own estimate and reads far too high as a completion rate; personas also carry undone steps forward and exaggerate them. Use it to rank places within one build and to compare two builds on the same personas. The reasons are the result: each one quotes the words on the page that caused the stall.
+Six learners, eight units, about 25 minutes, about 175 Sonnet calls. The stop chance is a persona's own estimate and reads far too high as a completion rate; since 2026-11-28 the walk assumes the modules are done in order with every earlier file present, and leaves plan usage limits out (Antti: the sequence is the design, ignore plan risk). Use it to rank places within one build and to compare two builds on the same personas. The reasons are the result: each one quotes the words on the page that caused the stall.

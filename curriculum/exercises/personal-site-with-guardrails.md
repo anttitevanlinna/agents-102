@@ -11,7 +11,7 @@ Change the context, watch the output shift, then package what you learned for th
 *5 min*
 
 1. **Open your own LinkedIn profile in your browser.**
-2. **Select all and copy.** Headers and sidebar included. Messy is fine.
+2. **Select all for the full page and copy.** Headers and sidebar included. Messy is fine.
 3. **Drop your LinkedIn text into the prompt below, after the colon. Send as one message.**
 
 {{prompt:personal-site-with-guardrails-1}}

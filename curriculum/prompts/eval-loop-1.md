@@ -27,9 +27,9 @@ callouts:
 ---
 Three things, in order.
 
-1. Score my baseline briefing. If module-3/briefing-baseline.md is missing, stop and tell me. Otherwise dispatch a judge subagent that reads only these: judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the ## Answer section of module-3/briefing-baseline.md. It writes module-6/runs/round-0/judgment.md, with claims judged and claims flagged on the top line.
+1. Score my baseline briefing. If module-3/briefing-baseline.md is missing, stop and tell me. Otherwise dispatch a judge subagent that reads only these: judges/groundedness-judge.md, ./crux.md without its ## Answer section, memory/, and the ## Answer section of module-3/briefing-baseline.md. It writes module-6/runs/round-0/judgment.md. Count the claims judged and the claims flagged yourself.
 
-2. If module-5/baseline-score.md exists, put its "Claims judged: N. Claims flagged: F." line beside today's count. Any difference on the same briefing is a first read of the judge's own noise; say how big it is.
+2. If module-5/baseline-score.md exists, put its counts of claims judged and flagged beside today's. Any difference on the same briefing is a first read of the judge's own noise; say how big it is.
 
 3. Write ./generation-tactic.md from that judgment. It instructs a generator to produce a fresh one-page briefing on the question in ./crux.md, working from ./crux.md without its ## Answer section and from memory/. Give it one rule for each kind of miss the judge flagged, and have each rule name the miss it prevents. Keep it short enough that a generator will follow it.
 

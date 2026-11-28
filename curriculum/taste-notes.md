@@ -23,6 +23,22 @@ Append-only stream of editorial calls made on real curriculum text. **Newest at 
 
 ---
 
+## 2026-11-28 — Agents 101 prompts: fixes proposed from the full course run
+
+Nine fixes went to Antti on one page, each answering something an agent did in the run that the prompt did not mean. He approved two. Promoted: a fix removes the fault and adds nothing → `check_prompts.md §50`; the prompt makes the choice → `check_prompts.md §1`. The sentences stay here.
+
+### Rewrites that failed
+
+- A retriever prompt gained *"then what it says, quoted or closely paraphrased"*, to keep the agent's own reading apart from the evidence. *"why???? just more for little value?"* and, on the line added under it, *"Not better"*. The clash it fixed cost the learner nothing.
+- *"Look each one up on the web first. If you cannot, say that the name is from memory."* was added after one agent named practitioners without web access. *"Adds NO value"*. On the finding itself: *"sounds like just random cowork fail. no need to fix"*.
+- *"First ask me which output to improve and which judge to use."* replaced a blank after a colon. *"There really should be no choice for student. what is this hedging?"*
+- *"The mail tells my team the answer from the last round's briefing in module-6/runs/"*: *"what is this really? I could not understand."* One clause held three things the learner has never called by those names.
+- A site prompt was reworded to rework a section on how the learner helps colleagues. *"NONO. THERE will be NO section named 'how I help'."* The rewrite polished a sentence whose fault was upstream: the section should not exist.
+
+### The two he approved
+
+Both take something out and are no longer than what they replace. The judge is no longer asked for a count line that its own file forbids: *"It writes module-6/runs/round-0/judgment.md. Count the claims judged and the claims flagged yourself."* The synthesizer loses a git command in a folder that has no git: *"List each memory file you changed by name; if fewer changed than the retrieval count, say so."*
+
 ## 2026-11-28 — Agents 101 attention design: two calls from the prompt-box work
 
 The length reframe (*"I did not say cut. I said consider"*) and the two callout renderings that failed are in the entry below. Promoted from this work: where a prompt's why lives → `check_prompts.md §51`.

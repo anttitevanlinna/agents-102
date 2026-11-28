@@ -59,16 +59,21 @@ const TELLS = {
   fragments: t => t.match(/(?:(?<=[.!?]\s|^)(?:[A-Z][\w'’]*)(?: [\w'’-]+){0,3}[.!?]\s+){3,}/gm) || [],
   // a sentence that names a module number (work has no modules). Paths like module-6/ are not matched.
   module: t => t.replace(/`[^`]*`/g, '').match(/\bModule \d+\b/gi) || [],
+  // git words where the learner has no git: a business folder is not a repository (agents-101 only, see ONLY)
+  git: t => t.replace(/`[^`]*`/g, '').match(/\bgit\b|\bdiff(?:s|ed)?\b|\brepo(?:s|sitory|sitories)?\b|\bpull requests?\b|\bworktrees?\b/gi) || [],
   // counted, not scored: the agents-101 word list; AE101 is not held to it
   wording: t => t.match(/\bhir(?:e|ed|ing)\b|\bmuscle|\bland(?:s|ed|ing)\b|\bship(?:s|ped|ping)?\b|\bleverage|\bMonday|—/g) || [],
 };
-const WEIGHT = { caps: 1, obvious: 1, preamble: 1, absolute: 1, harsh: 2, dontRun: 2, meta: 2, youFlip: 2, coined: 2, quota: 0, fragments: 0, module: 1, wording: 0 };
+const WEIGHT = { caps: 1, obvious: 1, preamble: 1, absolute: 1, harsh: 2, dontRun: 2, meta: 2, youFlip: 2, coined: 2, quota: 0, fragments: 0, module: 1, git: 2, wording: 0 };
+// Tells held only against the trainings listed. Engineers work in git, so AE101 is not held to the git tell.
+const ONLY = { git: new Set(['agents-101']) };
 
-function scorePrompt(key, text) {
+function scorePrompt(key, text, training) {
   const t = String(text || '').replace(/\{\{[^}]*\}\}/g, 'X').trim();
   const hits = {};
   let score = 0;
   for (const name of Object.keys(TELLS)) {
+    if (ONLY[name] && !ONLY[name].has(training)) continue;
     const h = TELLS[name](t);
     if (!h.length) continue;
     hits[name] = h.map(s => String(s).trim().slice(0, 90));
@@ -81,7 +86,7 @@ function scoreTraining(training) {
   const { loadRegistry } = require('./compile-prompts.js');
   const { orderedKeys } = require('./build-prompt-audit-context.js');
   const registry = loadRegistry();
-  const rows = orderedKeys(training).filter(k => registry[k]).map(k => scorePrompt(k, registry[k].text));
+  const rows = orderedKeys(training).filter(k => registry[k]).map(k => scorePrompt(k, registry[k].text, training));
   const tells = {};
   for (const name of Object.keys(TELLS)) tells[name] = rows.reduce((a, r) => a + (r.hits[name] ? r.hits[name].length : 0), 0);
   const words = rows.reduce((a, r) => a + r.words, 0);
@@ -154,5 +159,5 @@ function main() {
   for (const r of ranked.filter(r => r.score).slice(0, 12)) console.log(String(r.score).padStart(3), r.key.padEnd(44), Object.entries(r.hits).filter(([n]) => WEIGHT[n]).map(([n, h]) => `${n}:${h.length}`).join(' '));
 }
 
-module.exports = { scorePrompt, TELLS, WEIGHT };
+module.exports = { scorePrompt, TELLS, WEIGHT, ONLY };
 if (require.main === module) main();

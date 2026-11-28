@@ -32,9 +32,17 @@ For the internal mail, your answer may be draft only, review first, send to your
 
 ## Make a goal-nudger
 
-Ask the agent to build one goal-nudger with you, for internal mail an agent could draft. A goal-nudger is an eval that scores one quality you care about and pushes the agent toward it. The agent saves it as `./goal-nudger-eval.md`.
+Ask the agent to build one goal-nudger with you, for your briefing. A goal-nudger is an eval that scores one quality you care about and pushes the agent toward it. The agent saves it as `./goal-nudger-eval.md`.
 
 {{prompt:new-human-role-in-the-loop-1}}
+
+## Put another judge in the same loop
+
+**Take-home: put any judge in a loop that improves the thing it scores.**
+
+Ask the agent to run the same loop on your briefing again, with the goal-nudger as the judge.
+
+{{prompt:eval-loop-6}}
 
 ## I drifted too
 
@@ -82,5 +90,7 @@ Your role in the loop is to set the conditions for giving the system more autono
 **Mood target:** empowered builder, not tidy graduation. Lands Module 6's power as a human-role shift: the participant now designs loops, standards, and autonomy boundaries.
 
 **Strategic role:** Turns the grounded eval loop into an operational decision: would you let the agent send an internal mail? Introduces the goal-nudger as a closing artifact (`./goal-nudger-eval.md`) without turning it into a second full exercise.
+
+**One output from Module 3 on (2026-11-28, Antti: "something really fishy in the email generation as flow").** The goal-nudger scores the briefing, and `## Put another judge in the same loop` runs it in the same loop right after it is made, with the groundedness judge still checking each round. The internal mail is the trust question in `## Which check would let the agent send the mail without you?` and the ladder of answers; no step builds or writes a mail. A goal-nudger for a mail the learner never writes is consumed by nothing, and the take-home that needed a judge then needed a mail invented for it.
 
 **Arc recap:** M1 human as evaluator of self; M2 system owner; M3 division architect; M4 boundary-setter; M5 judge-builder; M6 loop designer.

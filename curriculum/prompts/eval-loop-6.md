@@ -1,25 +1,38 @@
 ---
 key: eval-loop-6
-dest: Builder Claude
+dest: Claude Code
 runtime: any
-origin: exercises/eval-loop
+origin: lectures/new-human-role-in-the-loop
 requires:
-  - id: eval-loop-inputs
-    source: student-input
+  - id: goal-nudger
+    source: prompt:new-human-role-in-the-loop-1
+  - id: generation-tactic
+    source: prompt:eval-loop-2
+  - id: m6-run-artifacts
+    source: prompt:eval-loop-2
+  - id: groundedness-judge
+    source: prompt:hallucination-bakeoff-8
+  - id: crux-md
+    source: prompt:name-your-crux-2
+  - id: m3-curated-memory
+    source: prompt:three-retrievers-one-curator-5
 produces:
-  - id: reusable-eval-loop
-    location: student-selected working folder
+  - id: goal-loop
+    location: module-6/goal-loop/
+callouts:
+  - at: In the working folder
+    say: The second loop starts from the rules the first loop won.
+  - at: The main session reads both
+    say: Groundedness keeps the floor while the goal-nudger raises the ceiling.
 ---
-Set up a fixed-judge loop for one of my outputs.
+Run the same loop on my briefing again, with my goal-nudger as the judge. Work in module-6/goal-loop/. Never edit ./goal-nudger-eval.md or judges/groundedness-judge.md.
 
 Run the loop end to end:
-1. In the working folder, write `generation-tactic.md` for a generator subagent to read.
-2. Create one numbered subfolder for each round: `round-1/`, `round-2/`, `round-3/`, then the next sequential number for any additional round. Dispatch a generator subagent to read the shared tactic and write its output inside the current round folder, keeping the same output filename across rounds.
-3. Dispatch a separate judge subagent to run the fixed judge and write the score and per-claim or per-item feedback to `judgment.md` inside the current round folder.
-4. The main session reads that judgment and rewrites the working folder's `generation-tactic.md` in place before the next round. Do not create versioned tactic copies.
+1. In the working folder, write `generation-tactic.md` for a generator subagent to read. Start it as a copy of ./generation-tactic.md.
+2. Score the newest briefing in module-6/runs/ with both judges first, as `round-0/`. Then create one numbered subfolder for each round: `round-1/`, `round-2/`, `round-3/`, then the next sequential number for any additional round. Dispatch a generator subagent to read the shared tactic and write `briefing.md` inside the current round folder.
+3. Dispatch two separate judge subagents. One runs ./goal-nudger-eval.md on the briefing and writes the score and its feedback to `judgment.md` inside the current round folder. The other runs judges/groundedness-judge.md on the briefing, with ./crux.md without its ## Answer section and memory/ as evidence, and writes `grounded.md` beside it.
+4. The main session reads both and rewrites the working folder's `generation-tactic.md` in place before the next round. Never trade a flagged claim for a higher goal-nudger score.
 
 Run at least three rounds. After round 3, keep going until improvement is no longer significant.
 
-Never edit the judge file. At the end, write `notes.md` in the working folder with the score trajectory, the generation-tactic changes, why the loop stopped, and the next boundary case to test.
-
-Use these inputs; no preamble, start by writing the first generation tactic file:
+At the end, write `notes.md` in the working folder with the goal-nudger score and the flagged claims for each round, round 0 first, the generation-tactic changes, and why the loop stopped.

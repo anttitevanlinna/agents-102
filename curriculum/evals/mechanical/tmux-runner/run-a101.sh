@@ -135,7 +135,7 @@ M3_NET_ANSWER="$(cat "$ANSWERS/m3-net-answer.txt")"
 M4_WHAT_MATTERS="$(cat "$ANSWERS/m4-what-matters.txt")"
 M4_GRILL_ANSWERS="$(cat "$ANSWERS/m4-grill-answers.txt")"
 M4_CHOSEN_RISK="$(cat "$ANSWERS/m4-chosen-risk.txt")"
-M6_REUSABLE_LOOP="$(cat "$ANSWERS/m6-reusable-loop.txt")"
+M6_GOAL_NUDGER="$(cat "$ANSWERS/m6-goal-nudger.txt")"
 M3_DOUBTED_LINE="$(cat "$ANSWERS/m3-doubted-line.txt")"
 M4_GUESS="$(cat "$ANSWERS/m4-guess.txt")"
 M5_MARKS="$(cat "$ANSWERS/m5-marks.txt")"
@@ -176,7 +176,7 @@ subst() {
   body="${body//<M4_WHAT_MATTERS>/$M4_WHAT_MATTERS}"
   body="${body//<M4_GRILL_ANSWERS>/$M4_GRILL_ANSWERS}"
   body="${body//<M4_CHOSEN_RISK>/$M4_CHOSEN_RISK}"
-  body="${body//<M6_REUSABLE_LOOP>/$M6_REUSABLE_LOOP}"
+  body="${body//<M6_GOAL_NUDGER>/$M6_GOAL_NUDGER}"
   body="${body//<M3_DOUBTED_LINE>/$M3_DOUBTED_LINE}"
   body="${body//<M4_GUESS>/$M4_GUESS}"
   body="${body//<M5_MARKS>/$M5_MARKS}"
@@ -651,10 +651,22 @@ assert_turn() {
       fi
       echo "[assert] PASS m6 T5: loop+debrief converge on generation-tactic.md (C11 closed), judge byte-identical end-to-end" ;;
     m6:6)
-      assert_dir_exists "m6 T6 reusable loop folder" "$sut_cwd/module-6/reusable-loop" || return 1
-      local reusable_rounds
-      reusable_rounds="$(find "$sut_cwd/module-6/reusable-loop" -type d -name 'round-*' 2>/dev/null | wc -l | tr -d ' ')"
-      [[ "$reusable_rounds" -ge 3 ]] || { echo "[assert] FAIL m6 T6: reusable loop has $reusable_rounds rounds (want >=3)" >&2; return 1; } ;;
+      assert_file_exists "m6 T6 goal-nudger" "$sut_cwd/goal-nudger-eval.md" || return 1
+      shasum "$sut_cwd/goal-nudger-eval.md" | awk '{print $1}' > "$run_dir/nudger.sha"
+      echo "[assert] PASS m6 T6: goal-nudger saved for the briefing" ;;
+    m6:7)
+      assert_dir_exists "m6 T7 goal loop folder" "$sut_cwd/module-6/goal-loop" || return 1
+      local goal_rounds
+      goal_rounds="$(find "$sut_cwd/module-6/goal-loop" -type d -name 'round-[1-9]*' 2>/dev/null | wc -l | tr -d ' ')"
+      [[ "$goal_rounds" -ge 3 ]] || { echo "[assert] FAIL m6 T7: goal loop has $goal_rounds rounds after round 0 (want >=3)" >&2; return 1; }
+      assert_file_exists "m6 T7 goal loop notes" "$sut_cwd/module-6/goal-loop/notes.md" || return 1
+      if [[ -f "$run_dir/nudger.sha" ]]; then
+        [[ "$(shasum "$sut_cwd/goal-nudger-eval.md" | awk '{print $1}')" == "$(cat "$run_dir/nudger.sha")" ]] || { echo "[assert] FAIL m6 T7: goal-nudger-eval.md changed during the loop" >&2; return 1; }
+      fi
+      if [[ -f "$run_dir/judge.sha" ]]; then
+        [[ "$(shasum "$sut_cwd/judges/groundedness-judge.md" | awk '{print $1}')" == "$(cat "$run_dir/judge.sha")" ]] || { echo "[assert] FAIL m6 T7: judge file changed during the goal loop" >&2; return 1; }
+      fi
+      echo "[assert] PASS m6 T7: goal loop ran >=3 rounds, both judge files unchanged" ;;
 
     # ----- m7 -----
     m7:1)

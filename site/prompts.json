@@ -27545,161 +27545,401 @@
   },
   "eval-loop-6": {
     "key": "eval-loop-6",
-    "dest": "Builder Claude",
+    "dest": "Claude Code",
     "context": "",
     "runtime": "any",
-    "origin": "exercises/eval-loop",
-    "text": "Set up a fixed-judge loop for one of my outputs.\n\nRun the loop end to end:\n1. In the working folder, write `generation-tactic.md` for a generator subagent to read.\n2. Create one numbered subfolder for each round: `round-1/`, `round-2/`, `round-3/`, then the next sequential number for any additional round. Dispatch a generator subagent to read the shared tactic and write its output inside the current round folder, keeping the same output filename across rounds.\n3. Dispatch a separate judge subagent to run the fixed judge and write the score and per-claim or per-item feedback to `judgment.md` inside the current round folder.\n4. The main session reads that judgment and rewrites the working folder's `generation-tactic.md` in place before the next round. Do not create versioned tactic copies.\n\nRun at least three rounds. After round 3, keep going until improvement is no longer significant.\n\nNever edit the judge file. At the end, write `notes.md` in the working folder with the score trajectory, the generation-tactic changes, why the loop stopped, and the next boundary case to test.\n\nUse these inputs; no preamble, start by writing the first generation tactic file:",
+    "origin": "lectures/new-human-role-in-the-loop",
+    "text": "Run the same loop on my briefing again, with my goal-nudger as the judge. Work in module-6/goal-loop/. Never edit ./goal-nudger-eval.md or judges/groundedness-judge.md.\n\nRun the loop end to end:\n1. In the working folder, write `generation-tactic.md` for a generator subagent to read. Start it as a copy of ./generation-tactic.md.\n2. Score the newest briefing in module-6/runs/ with both judges first, as `round-0/`. Then create one numbered subfolder for each round: `round-1/`, `round-2/`, `round-3/`, then the next sequential number for any additional round. Dispatch a generator subagent to read the shared tactic and write `briefing.md` inside the current round folder.\n3. Dispatch two separate judge subagents. One runs ./goal-nudger-eval.md on the briefing and writes the score and its feedback to `judgment.md` inside the current round folder. The other runs judges/groundedness-judge.md on the briefing, with ./crux.md without its ## Answer section and memory/ as evidence, and writes `grounded.md` beside it.\n4. The main session reads both and rewrites the working folder's `generation-tactic.md` in place before the next round. Never trade a flagged claim for a higher goal-nudger score.\n\nRun at least three rounds. After round 3, keep going until improvement is no longer significant.\n\nAt the end, write `notes.md` in the working folder with the goal-nudger score and the flagged claims for each round, round 0 first, the generation-tactic changes, and why the loop stopped.",
     "requires": [
       {
-        "id": "eval-loop-inputs",
-        "source": "student-input"
+        "id": "goal-nudger",
+        "source": "prompt:new-human-role-in-the-loop-1"
+      },
+      {
+        "id": "generation-tactic",
+        "source": "prompt:eval-loop-2"
+      },
+      {
+        "id": "m6-run-artifacts",
+        "source": "prompt:eval-loop-2"
+      },
+      {
+        "id": "groundedness-judge",
+        "source": "prompt:hallucination-bakeoff-8"
+      },
+      {
+        "id": "crux-md",
+        "source": "prompt:name-your-crux-2"
+      },
+      {
+        "id": "m3-curated-memory",
+        "source": "prompt:three-retrievers-one-curator-5"
       }
     ],
     "produces": [
       {
-        "id": "reusable-eval-loop",
-        "location": "student-selected working folder"
+        "id": "goal-loop",
+        "location": "module-6/goal-loop/"
+      }
+    ],
+    "callouts": [
+      {
+        "at": "In the working folder",
+        "say": "The second loop starts from the rules the first loop won."
+      },
+      {
+        "at": "The main session reads both",
+        "say": "Groundedness keeps the floor while the goal-nudger raises the ceiling."
       }
     ],
     "runtimeVariants": {
       "cowork": {
         "key": "eval-loop-6",
-        "dest": "Builder Claude",
+        "dest": "Claude Code",
         "context": "",
         "runtime": "any",
-        "origin": "exercises/eval-loop",
-        "text": "Set up a fixed-judge loop for one of my outputs.\n\nRun the loop end to end:\n1. In the working folder, write `generation-tactic.md` for a generator subagent to read.\n2. Create one numbered subfolder for each round: `round-1/`, `round-2/`, `round-3/`, then the next sequential number for any additional round. Dispatch a generator subagent to read the shared tactic and write its output inside the current round folder, keeping the same output filename across rounds.\n3. Dispatch a separate judge subagent to run the fixed judge and write the score and per-claim or per-item feedback to `judgment.md` inside the current round folder.\n4. The main session reads that judgment and rewrites the working folder's `generation-tactic.md` in place before the next round. Do not create versioned tactic copies.\n\nRun at least three rounds. After round 3, keep going until improvement is no longer significant.\n\nNever edit the judge file. At the end, write `notes.md` in the working folder with the score trajectory, the generation-tactic changes, why the loop stopped, and the next boundary case to test.\n\nUse these inputs; no preamble, start by writing the first generation tactic file:",
+        "origin": "lectures/new-human-role-in-the-loop",
+        "text": "Run the same loop on my briefing again, with my goal-nudger as the judge. Work in module-6/goal-loop/. Never edit ./goal-nudger-eval.md or judges/groundedness-judge.md.\n\nRun the loop end to end:\n1. In the working folder, write `generation-tactic.md` for a generator subagent to read. Start it as a copy of ./generation-tactic.md.\n2. Score the newest briefing in module-6/runs/ with both judges first, as `round-0/`. Then create one numbered subfolder for each round: `round-1/`, `round-2/`, `round-3/`, then the next sequential number for any additional round. Dispatch a generator subagent to read the shared tactic and write `briefing.md` inside the current round folder.\n3. Dispatch two separate judge subagents. One runs ./goal-nudger-eval.md on the briefing and writes the score and its feedback to `judgment.md` inside the current round folder. The other runs judges/groundedness-judge.md on the briefing, with ./crux.md without its ## Answer section and memory/ as evidence, and writes `grounded.md` beside it.\n4. The main session reads both and rewrites the working folder's `generation-tactic.md` in place before the next round. Never trade a flagged claim for a higher goal-nudger score.\n\nRun at least three rounds. After round 3, keep going until improvement is no longer significant.\n\nAt the end, write `notes.md` in the working folder with the goal-nudger score and the flagged claims for each round, round 0 first, the generation-tactic changes, and why the loop stopped.",
         "requires": [
           {
-            "id": "eval-loop-inputs",
-            "source": "student-input"
+            "id": "goal-nudger",
+            "source": "prompt:new-human-role-in-the-loop-1"
+          },
+          {
+            "id": "generation-tactic",
+            "source": "prompt:eval-loop-2"
+          },
+          {
+            "id": "m6-run-artifacts",
+            "source": "prompt:eval-loop-2"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
           }
         ],
         "produces": [
           {
-            "id": "reusable-eval-loop",
-            "location": "student-selected working folder"
+            "id": "goal-loop",
+            "location": "module-6/goal-loop/"
+          }
+        ],
+        "callouts": [
+          {
+            "at": "In the working folder",
+            "say": "The second loop starts from the rules the first loop won."
+          },
+          {
+            "at": "The main session reads both",
+            "say": "Groundedness keeps the floor while the goal-nudger raises the ceiling."
           }
         ]
       },
       "desktop": {
         "key": "eval-loop-6",
-        "dest": "Builder Claude",
+        "dest": "Claude Code",
         "context": "",
         "runtime": "any",
-        "origin": "exercises/eval-loop",
-        "text": "Set up a fixed-judge loop for one of my outputs.\n\nRun the loop end to end:\n1. In the working folder, write `generation-tactic.md` for a generator subagent to read.\n2. Create one numbered subfolder for each round: `round-1/`, `round-2/`, `round-3/`, then the next sequential number for any additional round. Dispatch a generator subagent to read the shared tactic and write its output inside the current round folder, keeping the same output filename across rounds.\n3. Dispatch a separate judge subagent to run the fixed judge and write the score and per-claim or per-item feedback to `judgment.md` inside the current round folder.\n4. The main session reads that judgment and rewrites the working folder's `generation-tactic.md` in place before the next round. Do not create versioned tactic copies.\n\nRun at least three rounds. After round 3, keep going until improvement is no longer significant.\n\nNever edit the judge file. At the end, write `notes.md` in the working folder with the score trajectory, the generation-tactic changes, why the loop stopped, and the next boundary case to test.\n\nUse these inputs; no preamble, start by writing the first generation tactic file:",
+        "origin": "lectures/new-human-role-in-the-loop",
+        "text": "Run the same loop on my briefing again, with my goal-nudger as the judge. Work in module-6/goal-loop/. Never edit ./goal-nudger-eval.md or judges/groundedness-judge.md.\n\nRun the loop end to end:\n1. In the working folder, write `generation-tactic.md` for a generator subagent to read. Start it as a copy of ./generation-tactic.md.\n2. Score the newest briefing in module-6/runs/ with both judges first, as `round-0/`. Then create one numbered subfolder for each round: `round-1/`, `round-2/`, `round-3/`, then the next sequential number for any additional round. Dispatch a generator subagent to read the shared tactic and write `briefing.md` inside the current round folder.\n3. Dispatch two separate judge subagents. One runs ./goal-nudger-eval.md on the briefing and writes the score and its feedback to `judgment.md` inside the current round folder. The other runs judges/groundedness-judge.md on the briefing, with ./crux.md without its ## Answer section and memory/ as evidence, and writes `grounded.md` beside it.\n4. The main session reads both and rewrites the working folder's `generation-tactic.md` in place before the next round. Never trade a flagged claim for a higher goal-nudger score.\n\nRun at least three rounds. After round 3, keep going until improvement is no longer significant.\n\nAt the end, write `notes.md` in the working folder with the goal-nudger score and the flagged claims for each round, round 0 first, the generation-tactic changes, and why the loop stopped.",
         "requires": [
           {
-            "id": "eval-loop-inputs",
-            "source": "student-input"
+            "id": "goal-nudger",
+            "source": "prompt:new-human-role-in-the-loop-1"
+          },
+          {
+            "id": "generation-tactic",
+            "source": "prompt:eval-loop-2"
+          },
+          {
+            "id": "m6-run-artifacts",
+            "source": "prompt:eval-loop-2"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
           }
         ],
         "produces": [
           {
-            "id": "reusable-eval-loop",
-            "location": "student-selected working folder"
+            "id": "goal-loop",
+            "location": "module-6/goal-loop/"
+          }
+        ],
+        "callouts": [
+          {
+            "at": "In the working folder",
+            "say": "The second loop starts from the rules the first loop won."
+          },
+          {
+            "at": "The main session reads both",
+            "say": "Groundedness keeps the floor while the goal-nudger raises the ceiling."
           }
         ]
       },
       "cli": {
         "key": "eval-loop-6",
-        "dest": "Builder Claude",
+        "dest": "Claude Code",
         "context": "",
         "runtime": "any",
-        "origin": "exercises/eval-loop",
-        "text": "Set up a fixed-judge loop for one of my outputs.\n\nRun the loop end to end:\n1. In the working folder, write `generation-tactic.md` for a generator subagent to read.\n2. Create one numbered subfolder for each round: `round-1/`, `round-2/`, `round-3/`, then the next sequential number for any additional round. Dispatch a generator subagent to read the shared tactic and write its output inside the current round folder, keeping the same output filename across rounds.\n3. Dispatch a separate judge subagent to run the fixed judge and write the score and per-claim or per-item feedback to `judgment.md` inside the current round folder.\n4. The main session reads that judgment and rewrites the working folder's `generation-tactic.md` in place before the next round. Do not create versioned tactic copies.\n\nRun at least three rounds. After round 3, keep going until improvement is no longer significant.\n\nNever edit the judge file. At the end, write `notes.md` in the working folder with the score trajectory, the generation-tactic changes, why the loop stopped, and the next boundary case to test.\n\nUse these inputs; no preamble, start by writing the first generation tactic file:",
+        "origin": "lectures/new-human-role-in-the-loop",
+        "text": "Run the same loop on my briefing again, with my goal-nudger as the judge. Work in module-6/goal-loop/. Never edit ./goal-nudger-eval.md or judges/groundedness-judge.md.\n\nRun the loop end to end:\n1. In the working folder, write `generation-tactic.md` for a generator subagent to read. Start it as a copy of ./generation-tactic.md.\n2. Score the newest briefing in module-6/runs/ with both judges first, as `round-0/`. Then create one numbered subfolder for each round: `round-1/`, `round-2/`, `round-3/`, then the next sequential number for any additional round. Dispatch a generator subagent to read the shared tactic and write `briefing.md` inside the current round folder.\n3. Dispatch two separate judge subagents. One runs ./goal-nudger-eval.md on the briefing and writes the score and its feedback to `judgment.md` inside the current round folder. The other runs judges/groundedness-judge.md on the briefing, with ./crux.md without its ## Answer section and memory/ as evidence, and writes `grounded.md` beside it.\n4. The main session reads both and rewrites the working folder's `generation-tactic.md` in place before the next round. Never trade a flagged claim for a higher goal-nudger score.\n\nRun at least three rounds. After round 3, keep going until improvement is no longer significant.\n\nAt the end, write `notes.md` in the working folder with the goal-nudger score and the flagged claims for each round, round 0 first, the generation-tactic changes, and why the loop stopped.",
         "requires": [
           {
-            "id": "eval-loop-inputs",
-            "source": "student-input"
+            "id": "goal-nudger",
+            "source": "prompt:new-human-role-in-the-loop-1"
+          },
+          {
+            "id": "generation-tactic",
+            "source": "prompt:eval-loop-2"
+          },
+          {
+            "id": "m6-run-artifacts",
+            "source": "prompt:eval-loop-2"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
           }
         ],
         "produces": [
           {
-            "id": "reusable-eval-loop",
-            "location": "student-selected working folder"
+            "id": "goal-loop",
+            "location": "module-6/goal-loop/"
+          }
+        ],
+        "callouts": [
+          {
+            "at": "In the working folder",
+            "say": "The second loop starts from the rules the first loop won."
+          },
+          {
+            "at": "The main session reads both",
+            "say": "Groundedness keeps the floor while the goal-nudger raises the ceiling."
           }
         ]
       },
       "codex-desktop": {
         "key": "eval-loop-6",
-        "dest": "Builder Claude",
+        "dest": "Claude Code",
         "context": "",
         "runtime": "any",
-        "origin": "exercises/eval-loop",
-        "text": "Set up a fixed-judge loop for one of my outputs.\n\nRun the loop end to end:\n1. In the working folder, write `generation-tactic.md` for a generator subagent to read.\n2. Create one numbered subfolder for each round: `round-1/`, `round-2/`, `round-3/`, then the next sequential number for any additional round. Dispatch a generator subagent to read the shared tactic and write its output inside the current round folder, keeping the same output filename across rounds.\n3. Dispatch a separate judge subagent to run the fixed judge and write the score and per-claim or per-item feedback to `judgment.md` inside the current round folder.\n4. The main session reads that judgment and rewrites the working folder's `generation-tactic.md` in place before the next round. Do not create versioned tactic copies.\n\nRun at least three rounds. After round 3, keep going until improvement is no longer significant.\n\nNever edit the judge file. At the end, write `notes.md` in the working folder with the score trajectory, the generation-tactic changes, why the loop stopped, and the next boundary case to test.\n\nUse these inputs; no preamble, start by writing the first generation tactic file:",
+        "origin": "lectures/new-human-role-in-the-loop",
+        "text": "Run the same loop on my briefing again, with my goal-nudger as the judge. Work in module-6/goal-loop/. Never edit ./goal-nudger-eval.md or judges/groundedness-judge.md.\n\nRun the loop end to end:\n1. In the working folder, write `generation-tactic.md` for a generator subagent to read. Start it as a copy of ./generation-tactic.md.\n2. Score the newest briefing in module-6/runs/ with both judges first, as `round-0/`. Then create one numbered subfolder for each round: `round-1/`, `round-2/`, `round-3/`, then the next sequential number for any additional round. Dispatch a generator subagent to read the shared tactic and write `briefing.md` inside the current round folder.\n3. Dispatch two separate judge subagents. One runs ./goal-nudger-eval.md on the briefing and writes the score and its feedback to `judgment.md` inside the current round folder. The other runs judges/groundedness-judge.md on the briefing, with ./crux.md without its ## Answer section and memory/ as evidence, and writes `grounded.md` beside it.\n4. The main session reads both and rewrites the working folder's `generation-tactic.md` in place before the next round. Never trade a flagged claim for a higher goal-nudger score.\n\nRun at least three rounds. After round 3, keep going until improvement is no longer significant.\n\nAt the end, write `notes.md` in the working folder with the goal-nudger score and the flagged claims for each round, round 0 first, the generation-tactic changes, and why the loop stopped.",
         "requires": [
           {
-            "id": "eval-loop-inputs",
-            "source": "student-input"
+            "id": "goal-nudger",
+            "source": "prompt:new-human-role-in-the-loop-1"
+          },
+          {
+            "id": "generation-tactic",
+            "source": "prompt:eval-loop-2"
+          },
+          {
+            "id": "m6-run-artifacts",
+            "source": "prompt:eval-loop-2"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
           }
         ],
         "produces": [
           {
-            "id": "reusable-eval-loop",
-            "location": "student-selected working folder"
+            "id": "goal-loop",
+            "location": "module-6/goal-loop/"
+          }
+        ],
+        "callouts": [
+          {
+            "at": "In the working folder",
+            "say": "The second loop starts from the rules the first loop won."
+          },
+          {
+            "at": "The main session reads both",
+            "say": "Groundedness keeps the floor while the goal-nudger raises the ceiling."
           }
         ]
       },
       "codex-cli": {
         "key": "eval-loop-6",
-        "dest": "Builder Claude",
+        "dest": "Claude Code",
         "context": "",
         "runtime": "any",
-        "origin": "exercises/eval-loop",
-        "text": "Set up a fixed-judge loop for one of my outputs.\n\nRun the loop end to end:\n1. In the working folder, write `generation-tactic.md` for a generator subagent to read.\n2. Create one numbered subfolder for each round: `round-1/`, `round-2/`, `round-3/`, then the next sequential number for any additional round. Dispatch a generator subagent to read the shared tactic and write its output inside the current round folder, keeping the same output filename across rounds.\n3. Dispatch a separate judge subagent to run the fixed judge and write the score and per-claim or per-item feedback to `judgment.md` inside the current round folder.\n4. The main session reads that judgment and rewrites the working folder's `generation-tactic.md` in place before the next round. Do not create versioned tactic copies.\n\nRun at least three rounds. After round 3, keep going until improvement is no longer significant.\n\nNever edit the judge file. At the end, write `notes.md` in the working folder with the score trajectory, the generation-tactic changes, why the loop stopped, and the next boundary case to test.\n\nUse these inputs; no preamble, start by writing the first generation tactic file:",
+        "origin": "lectures/new-human-role-in-the-loop",
+        "text": "Run the same loop on my briefing again, with my goal-nudger as the judge. Work in module-6/goal-loop/. Never edit ./goal-nudger-eval.md or judges/groundedness-judge.md.\n\nRun the loop end to end:\n1. In the working folder, write `generation-tactic.md` for a generator subagent to read. Start it as a copy of ./generation-tactic.md.\n2. Score the newest briefing in module-6/runs/ with both judges first, as `round-0/`. Then create one numbered subfolder for each round: `round-1/`, `round-2/`, `round-3/`, then the next sequential number for any additional round. Dispatch a generator subagent to read the shared tactic and write `briefing.md` inside the current round folder.\n3. Dispatch two separate judge subagents. One runs ./goal-nudger-eval.md on the briefing and writes the score and its feedback to `judgment.md` inside the current round folder. The other runs judges/groundedness-judge.md on the briefing, with ./crux.md without its ## Answer section and memory/ as evidence, and writes `grounded.md` beside it.\n4. The main session reads both and rewrites the working folder's `generation-tactic.md` in place before the next round. Never trade a flagged claim for a higher goal-nudger score.\n\nRun at least three rounds. After round 3, keep going until improvement is no longer significant.\n\nAt the end, write `notes.md` in the working folder with the goal-nudger score and the flagged claims for each round, round 0 first, the generation-tactic changes, and why the loop stopped.",
         "requires": [
           {
-            "id": "eval-loop-inputs",
-            "source": "student-input"
+            "id": "goal-nudger",
+            "source": "prompt:new-human-role-in-the-loop-1"
+          },
+          {
+            "id": "generation-tactic",
+            "source": "prompt:eval-loop-2"
+          },
+          {
+            "id": "m6-run-artifacts",
+            "source": "prompt:eval-loop-2"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
           }
         ],
         "produces": [
           {
-            "id": "reusable-eval-loop",
-            "location": "student-selected working folder"
+            "id": "goal-loop",
+            "location": "module-6/goal-loop/"
+          }
+        ],
+        "callouts": [
+          {
+            "at": "In the working folder",
+            "say": "The second loop starts from the rules the first loop won."
+          },
+          {
+            "at": "The main session reads both",
+            "say": "Groundedness keeps the floor while the goal-nudger raises the ceiling."
           }
         ]
       },
       "copilot-app": {
         "key": "eval-loop-6",
-        "dest": "Builder Claude",
+        "dest": "Claude Code",
         "context": "",
         "runtime": "any",
-        "origin": "exercises/eval-loop",
-        "text": "Set up a fixed-judge loop for one of my outputs.\n\nRun the loop end to end:\n1. In the working folder, write `generation-tactic.md` for a generator subagent to read.\n2. Create one numbered subfolder for each round: `round-1/`, `round-2/`, `round-3/`, then the next sequential number for any additional round. Dispatch a generator subagent to read the shared tactic and write its output inside the current round folder, keeping the same output filename across rounds.\n3. Dispatch a separate judge subagent to run the fixed judge and write the score and per-claim or per-item feedback to `judgment.md` inside the current round folder.\n4. The main session reads that judgment and rewrites the working folder's `generation-tactic.md` in place before the next round. Do not create versioned tactic copies.\n\nRun at least three rounds. After round 3, keep going until improvement is no longer significant.\n\nNever edit the judge file. At the end, write `notes.md` in the working folder with the score trajectory, the generation-tactic changes, why the loop stopped, and the next boundary case to test.\n\nUse these inputs; no preamble, start by writing the first generation tactic file:",
+        "origin": "lectures/new-human-role-in-the-loop",
+        "text": "Run the same loop on my briefing again, with my goal-nudger as the judge. Work in module-6/goal-loop/. Never edit ./goal-nudger-eval.md or judges/groundedness-judge.md.\n\nRun the loop end to end:\n1. In the working folder, write `generation-tactic.md` for a generator subagent to read. Start it as a copy of ./generation-tactic.md.\n2. Score the newest briefing in module-6/runs/ with both judges first, as `round-0/`. Then create one numbered subfolder for each round: `round-1/`, `round-2/`, `round-3/`, then the next sequential number for any additional round. Dispatch a generator subagent to read the shared tactic and write `briefing.md` inside the current round folder.\n3. Dispatch two separate judge subagents. One runs ./goal-nudger-eval.md on the briefing and writes the score and its feedback to `judgment.md` inside the current round folder. The other runs judges/groundedness-judge.md on the briefing, with ./crux.md without its ## Answer section and memory/ as evidence, and writes `grounded.md` beside it.\n4. The main session reads both and rewrites the working folder's `generation-tactic.md` in place before the next round. Never trade a flagged claim for a higher goal-nudger score.\n\nRun at least three rounds. After round 3, keep going until improvement is no longer significant.\n\nAt the end, write `notes.md` in the working folder with the goal-nudger score and the flagged claims for each round, round 0 first, the generation-tactic changes, and why the loop stopped.",
         "requires": [
           {
-            "id": "eval-loop-inputs",
-            "source": "student-input"
+            "id": "goal-nudger",
+            "source": "prompt:new-human-role-in-the-loop-1"
+          },
+          {
+            "id": "generation-tactic",
+            "source": "prompt:eval-loop-2"
+          },
+          {
+            "id": "m6-run-artifacts",
+            "source": "prompt:eval-loop-2"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
           }
         ],
         "produces": [
           {
-            "id": "reusable-eval-loop",
-            "location": "student-selected working folder"
+            "id": "goal-loop",
+            "location": "module-6/goal-loop/"
+          }
+        ],
+        "callouts": [
+          {
+            "at": "In the working folder",
+            "say": "The second loop starts from the rules the first loop won."
+          },
+          {
+            "at": "The main session reads both",
+            "say": "Groundedness keeps the floor while the goal-nudger raises the ceiling."
           }
         ]
       },
       "copilot-cli": {
         "key": "eval-loop-6",
-        "dest": "Builder Claude",
+        "dest": "Claude Code",
         "context": "",
         "runtime": "any",
-        "origin": "exercises/eval-loop",
-        "text": "Set up a fixed-judge loop for one of my outputs.\n\nRun the loop end to end:\n1. In the working folder, write `generation-tactic.md` for a generator subagent to read.\n2. Create one numbered subfolder for each round: `round-1/`, `round-2/`, `round-3/`, then the next sequential number for any additional round. Dispatch a generator subagent to read the shared tactic and write its output inside the current round folder, keeping the same output filename across rounds.\n3. Dispatch a separate judge subagent to run the fixed judge and write the score and per-claim or per-item feedback to `judgment.md` inside the current round folder.\n4. The main session reads that judgment and rewrites the working folder's `generation-tactic.md` in place before the next round. Do not create versioned tactic copies.\n\nRun at least three rounds. After round 3, keep going until improvement is no longer significant.\n\nNever edit the judge file. At the end, write `notes.md` in the working folder with the score trajectory, the generation-tactic changes, why the loop stopped, and the next boundary case to test.\n\nUse these inputs; no preamble, start by writing the first generation tactic file:",
+        "origin": "lectures/new-human-role-in-the-loop",
+        "text": "Run the same loop on my briefing again, with my goal-nudger as the judge. Work in module-6/goal-loop/. Never edit ./goal-nudger-eval.md or judges/groundedness-judge.md.\n\nRun the loop end to end:\n1. In the working folder, write `generation-tactic.md` for a generator subagent to read. Start it as a copy of ./generation-tactic.md.\n2. Score the newest briefing in module-6/runs/ with both judges first, as `round-0/`. Then create one numbered subfolder for each round: `round-1/`, `round-2/`, `round-3/`, then the next sequential number for any additional round. Dispatch a generator subagent to read the shared tactic and write `briefing.md` inside the current round folder.\n3. Dispatch two separate judge subagents. One runs ./goal-nudger-eval.md on the briefing and writes the score and its feedback to `judgment.md` inside the current round folder. The other runs judges/groundedness-judge.md on the briefing, with ./crux.md without its ## Answer section and memory/ as evidence, and writes `grounded.md` beside it.\n4. The main session reads both and rewrites the working folder's `generation-tactic.md` in place before the next round. Never trade a flagged claim for a higher goal-nudger score.\n\nRun at least three rounds. After round 3, keep going until improvement is no longer significant.\n\nAt the end, write `notes.md` in the working folder with the goal-nudger score and the flagged claims for each round, round 0 first, the generation-tactic changes, and why the loop stopped.",
         "requires": [
           {
-            "id": "eval-loop-inputs",
-            "source": "student-input"
+            "id": "goal-nudger",
+            "source": "prompt:new-human-role-in-the-loop-1"
+          },
+          {
+            "id": "generation-tactic",
+            "source": "prompt:eval-loop-2"
+          },
+          {
+            "id": "m6-run-artifacts",
+            "source": "prompt:eval-loop-2"
+          },
+          {
+            "id": "groundedness-judge",
+            "source": "prompt:hallucination-bakeoff-8"
+          },
+          {
+            "id": "crux-md",
+            "source": "prompt:name-your-crux-2"
+          },
+          {
+            "id": "m3-curated-memory",
+            "source": "prompt:three-retrievers-one-curator-5"
           }
         ],
         "produces": [
           {
-            "id": "reusable-eval-loop",
-            "location": "student-selected working folder"
+            "id": "goal-loop",
+            "location": "module-6/goal-loop/"
+          }
+        ],
+        "callouts": [
+          {
+            "at": "In the working folder",
+            "say": "The second loop starts from the rules the first loop won."
+          },
+          {
+            "at": "The main session reads both",
+            "say": "Groundedness keeps the floor while the goal-nudger raises the ceiling."
           }
         ]
       }
@@ -35015,7 +35255,13 @@
     "context": "",
     "runtime": "any",
     "origin": "lectures/new-human-role-in-the-loop",
-    "text": "Help me create a goal-nudger for internal mail I might let an agent draft or send. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.\n\nGroundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.\n\nAsk me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if we still cannot say how to score it, propose the narrowest version we can score and say what is left open. Start by offering examples I can choose from or adapt:\n\n- executive crispness\n- commercial sharpness\n- specificity\n- risk awareness\n- actionability\n- reader empathy\n- strategic usefulness\n- sounds like our team\n\nIf I choose a vague word, use the remaining question rounds to make it observable. For example, \"strategic usefulness\" might become: names the tradeoff, states a point of view, and gives the decision-maker a next move.\n\nOnce the dimension is clear, show me:\n\n1. The dimension name.\n2. A one-sentence definition.\n3. Three examples: a 5/5 mail excerpt, a 3/5 mail excerpt, and a 1/5 mail excerpt.\n4. The scoring rubric from 1 to 5.\n5. What the eval should ask the agent to improve when the score is 3 or lower.\n\nThen save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving.",
+    "text": "Help me create a goal-nudger for my briefing. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.\n\nGroundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.\n\nAsk me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if we still cannot say how to score it, propose the narrowest version we can score and say what is left open. Start by offering examples I can choose from or adapt:\n\n- executive crispness\n- commercial sharpness\n- specificity\n- risk awareness\n- actionability\n- reader empathy\n- strategic usefulness\n- sounds like our team\n\nIf I choose a vague word, use the remaining question rounds to make it observable. For example, \"strategic usefulness\" might become: names the tradeoff, states a point of view, and gives the decision-maker a next move.\n\nOnce the dimension is clear, show me:\n\n1. The dimension name.\n2. A one-sentence definition.\n3. Three examples: a 5/5 briefing excerpt, a 3/5 briefing excerpt, and a 1/5 briefing excerpt.\n4. The scoring rubric from 1 to 5.\n5. What the eval should ask the agent to improve when the score is 3 or lower.\n\nThen save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving.",
+    "produces": [
+      {
+        "id": "goal-nudger",
+        "location": "./goal-nudger-eval.md"
+      }
+    ],
     "callouts": [
       {
         "at": "If I choose a vague word",
@@ -35033,7 +35279,13 @@
         "context": "",
         "runtime": "any",
         "origin": "lectures/new-human-role-in-the-loop",
-        "text": "Help me create a goal-nudger for internal mail I might let an agent draft or send. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.\n\nGroundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.\n\nAsk me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if we still cannot say how to score it, propose the narrowest version we can score and say what is left open. Start by offering examples I can choose from or adapt:\n\n- executive crispness\n- commercial sharpness\n- specificity\n- risk awareness\n- actionability\n- reader empathy\n- strategic usefulness\n- sounds like our team\n\nIf I choose a vague word, use the remaining question rounds to make it observable. For example, \"strategic usefulness\" might become: names the tradeoff, states a point of view, and gives the decision-maker a next move.\n\nOnce the dimension is clear, show me:\n\n1. The dimension name.\n2. A one-sentence definition.\n3. Three examples: a 5/5 mail excerpt, a 3/5 mail excerpt, and a 1/5 mail excerpt.\n4. The scoring rubric from 1 to 5.\n5. What the eval should ask the agent to improve when the score is 3 or lower.\n\nThen save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving.",
+        "text": "Help me create a goal-nudger for my briefing. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.\n\nGroundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.\n\nAsk me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if we still cannot say how to score it, propose the narrowest version we can score and say what is left open. Start by offering examples I can choose from or adapt:\n\n- executive crispness\n- commercial sharpness\n- specificity\n- risk awareness\n- actionability\n- reader empathy\n- strategic usefulness\n- sounds like our team\n\nIf I choose a vague word, use the remaining question rounds to make it observable. For example, \"strategic usefulness\" might become: names the tradeoff, states a point of view, and gives the decision-maker a next move.\n\nOnce the dimension is clear, show me:\n\n1. The dimension name.\n2. A one-sentence definition.\n3. Three examples: a 5/5 briefing excerpt, a 3/5 briefing excerpt, and a 1/5 briefing excerpt.\n4. The scoring rubric from 1 to 5.\n5. What the eval should ask the agent to improve when the score is 3 or lower.\n\nThen save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving.",
+        "produces": [
+          {
+            "id": "goal-nudger",
+            "location": "./goal-nudger-eval.md"
+          }
+        ],
         "callouts": [
           {
             "at": "If I choose a vague word",
@@ -35051,7 +35303,13 @@
         "context": "",
         "runtime": "any",
         "origin": "lectures/new-human-role-in-the-loop",
-        "text": "Help me create a goal-nudger for internal mail I might let an agent draft or send. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.\n\nGroundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.\n\nAsk me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if we still cannot say how to score it, propose the narrowest version we can score and say what is left open. Start by offering examples I can choose from or adapt:\n\n- executive crispness\n- commercial sharpness\n- specificity\n- risk awareness\n- actionability\n- reader empathy\n- strategic usefulness\n- sounds like our team\n\nIf I choose a vague word, use the remaining question rounds to make it observable. For example, \"strategic usefulness\" might become: names the tradeoff, states a point of view, and gives the decision-maker a next move.\n\nOnce the dimension is clear, show me:\n\n1. The dimension name.\n2. A one-sentence definition.\n3. Three examples: a 5/5 mail excerpt, a 3/5 mail excerpt, and a 1/5 mail excerpt.\n4. The scoring rubric from 1 to 5.\n5. What the eval should ask the agent to improve when the score is 3 or lower.\n\nThen save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving.",
+        "text": "Help me create a goal-nudger for my briefing. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.\n\nGroundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.\n\nAsk me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if we still cannot say how to score it, propose the narrowest version we can score and say what is left open. Start by offering examples I can choose from or adapt:\n\n- executive crispness\n- commercial sharpness\n- specificity\n- risk awareness\n- actionability\n- reader empathy\n- strategic usefulness\n- sounds like our team\n\nIf I choose a vague word, use the remaining question rounds to make it observable. For example, \"strategic usefulness\" might become: names the tradeoff, states a point of view, and gives the decision-maker a next move.\n\nOnce the dimension is clear, show me:\n\n1. The dimension name.\n2. A one-sentence definition.\n3. Three examples: a 5/5 briefing excerpt, a 3/5 briefing excerpt, and a 1/5 briefing excerpt.\n4. The scoring rubric from 1 to 5.\n5. What the eval should ask the agent to improve when the score is 3 or lower.\n\nThen save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving.",
+        "produces": [
+          {
+            "id": "goal-nudger",
+            "location": "./goal-nudger-eval.md"
+          }
+        ],
         "callouts": [
           {
             "at": "If I choose a vague word",
@@ -35069,7 +35327,13 @@
         "context": "",
         "runtime": "any",
         "origin": "lectures/new-human-role-in-the-loop",
-        "text": "Help me create a goal-nudger for internal mail I might let an agent draft or send. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.\n\nGroundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.\n\nAsk me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if we still cannot say how to score it, propose the narrowest version we can score and say what is left open. Start by offering examples I can choose from or adapt:\n\n- executive crispness\n- commercial sharpness\n- specificity\n- risk awareness\n- actionability\n- reader empathy\n- strategic usefulness\n- sounds like our team\n\nIf I choose a vague word, use the remaining question rounds to make it observable. For example, \"strategic usefulness\" might become: names the tradeoff, states a point of view, and gives the decision-maker a next move.\n\nOnce the dimension is clear, show me:\n\n1. The dimension name.\n2. A one-sentence definition.\n3. Three examples: a 5/5 mail excerpt, a 3/5 mail excerpt, and a 1/5 mail excerpt.\n4. The scoring rubric from 1 to 5.\n5. What the eval should ask the agent to improve when the score is 3 or lower.\n\nThen save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving.",
+        "text": "Help me create a goal-nudger for my briefing. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.\n\nGroundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.\n\nAsk me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if we still cannot say how to score it, propose the narrowest version we can score and say what is left open. Start by offering examples I can choose from or adapt:\n\n- executive crispness\n- commercial sharpness\n- specificity\n- risk awareness\n- actionability\n- reader empathy\n- strategic usefulness\n- sounds like our team\n\nIf I choose a vague word, use the remaining question rounds to make it observable. For example, \"strategic usefulness\" might become: names the tradeoff, states a point of view, and gives the decision-maker a next move.\n\nOnce the dimension is clear, show me:\n\n1. The dimension name.\n2. A one-sentence definition.\n3. Three examples: a 5/5 briefing excerpt, a 3/5 briefing excerpt, and a 1/5 briefing excerpt.\n4. The scoring rubric from 1 to 5.\n5. What the eval should ask the agent to improve when the score is 3 or lower.\n\nThen save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving.",
+        "produces": [
+          {
+            "id": "goal-nudger",
+            "location": "./goal-nudger-eval.md"
+          }
+        ],
         "callouts": [
           {
             "at": "If I choose a vague word",
@@ -35087,7 +35351,13 @@
         "context": "",
         "runtime": "any",
         "origin": "lectures/new-human-role-in-the-loop",
-        "text": "Help me create a goal-nudger for internal mail I might let an agent draft or send. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.\n\nGroundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.\n\nAsk me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if we still cannot say how to score it, propose the narrowest version we can score and say what is left open. Start by offering examples I can choose from or adapt:\n\n- executive crispness\n- commercial sharpness\n- specificity\n- risk awareness\n- actionability\n- reader empathy\n- strategic usefulness\n- sounds like our team\n\nIf I choose a vague word, use the remaining question rounds to make it observable. For example, \"strategic usefulness\" might become: names the tradeoff, states a point of view, and gives the decision-maker a next move.\n\nOnce the dimension is clear, show me:\n\n1. The dimension name.\n2. A one-sentence definition.\n3. Three examples: a 5/5 mail excerpt, a 3/5 mail excerpt, and a 1/5 mail excerpt.\n4. The scoring rubric from 1 to 5.\n5. What the eval should ask the agent to improve when the score is 3 or lower.\n\nThen save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving.",
+        "text": "Help me create a goal-nudger for my briefing. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.\n\nGroundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.\n\nAsk me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if we still cannot say how to score it, propose the narrowest version we can score and say what is left open. Start by offering examples I can choose from or adapt:\n\n- executive crispness\n- commercial sharpness\n- specificity\n- risk awareness\n- actionability\n- reader empathy\n- strategic usefulness\n- sounds like our team\n\nIf I choose a vague word, use the remaining question rounds to make it observable. For example, \"strategic usefulness\" might become: names the tradeoff, states a point of view, and gives the decision-maker a next move.\n\nOnce the dimension is clear, show me:\n\n1. The dimension name.\n2. A one-sentence definition.\n3. Three examples: a 5/5 briefing excerpt, a 3/5 briefing excerpt, and a 1/5 briefing excerpt.\n4. The scoring rubric from 1 to 5.\n5. What the eval should ask the agent to improve when the score is 3 or lower.\n\nThen save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving.",
+        "produces": [
+          {
+            "id": "goal-nudger",
+            "location": "./goal-nudger-eval.md"
+          }
+        ],
         "callouts": [
           {
             "at": "If I choose a vague word",
@@ -35105,7 +35375,13 @@
         "context": "",
         "runtime": "any",
         "origin": "lectures/new-human-role-in-the-loop",
-        "text": "Help me create a goal-nudger for internal mail I might let an agent draft or send. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.\n\nGroundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.\n\nAsk me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if we still cannot say how to score it, propose the narrowest version we can score and say what is left open. Start by offering examples I can choose from or adapt:\n\n- executive crispness\n- commercial sharpness\n- specificity\n- risk awareness\n- actionability\n- reader empathy\n- strategic usefulness\n- sounds like our team\n\nIf I choose a vague word, use the remaining question rounds to make it observable. For example, \"strategic usefulness\" might become: names the tradeoff, states a point of view, and gives the decision-maker a next move.\n\nOnce the dimension is clear, show me:\n\n1. The dimension name.\n2. A one-sentence definition.\n3. Three examples: a 5/5 mail excerpt, a 3/5 mail excerpt, and a 1/5 mail excerpt.\n4. The scoring rubric from 1 to 5.\n5. What the eval should ask the agent to improve when the score is 3 or lower.\n\nThen save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving.",
+        "text": "Help me create a goal-nudger for my briefing. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.\n\nGroundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.\n\nAsk me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if we still cannot say how to score it, propose the narrowest version we can score and say what is left open. Start by offering examples I can choose from or adapt:\n\n- executive crispness\n- commercial sharpness\n- specificity\n- risk awareness\n- actionability\n- reader empathy\n- strategic usefulness\n- sounds like our team\n\nIf I choose a vague word, use the remaining question rounds to make it observable. For example, \"strategic usefulness\" might become: names the tradeoff, states a point of view, and gives the decision-maker a next move.\n\nOnce the dimension is clear, show me:\n\n1. The dimension name.\n2. A one-sentence definition.\n3. Three examples: a 5/5 briefing excerpt, a 3/5 briefing excerpt, and a 1/5 briefing excerpt.\n4. The scoring rubric from 1 to 5.\n5. What the eval should ask the agent to improve when the score is 3 or lower.\n\nThen save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving.",
+        "produces": [
+          {
+            "id": "goal-nudger",
+            "location": "./goal-nudger-eval.md"
+          }
+        ],
         "callouts": [
           {
             "at": "If I choose a vague word",
@@ -35123,7 +35399,13 @@
         "context": "",
         "runtime": "any",
         "origin": "lectures/new-human-role-in-the-loop",
-        "text": "Help me create a goal-nudger for internal mail I might let an agent draft or send. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.\n\nGroundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.\n\nAsk me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if we still cannot say how to score it, propose the narrowest version we can score and say what is left open. Start by offering examples I can choose from or adapt:\n\n- executive crispness\n- commercial sharpness\n- specificity\n- risk awareness\n- actionability\n- reader empathy\n- strategic usefulness\n- sounds like our team\n\nIf I choose a vague word, use the remaining question rounds to make it observable. For example, \"strategic usefulness\" might become: names the tradeoff, states a point of view, and gives the decision-maker a next move.\n\nOnce the dimension is clear, show me:\n\n1. The dimension name.\n2. A one-sentence definition.\n3. Three examples: a 5/5 mail excerpt, a 3/5 mail excerpt, and a 1/5 mail excerpt.\n4. The scoring rubric from 1 to 5.\n5. What the eval should ask the agent to improve when the score is 3 or lower.\n\nThen save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving.",
+        "text": "Help me create a goal-nudger for my briefing. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.\n\nGroundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.\n\nAsk me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if we still cannot say how to score it, propose the narrowest version we can score and say what is left open. Start by offering examples I can choose from or adapt:\n\n- executive crispness\n- commercial sharpness\n- specificity\n- risk awareness\n- actionability\n- reader empathy\n- strategic usefulness\n- sounds like our team\n\nIf I choose a vague word, use the remaining question rounds to make it observable. For example, \"strategic usefulness\" might become: names the tradeoff, states a point of view, and gives the decision-maker a next move.\n\nOnce the dimension is clear, show me:\n\n1. The dimension name.\n2. A one-sentence definition.\n3. Three examples: a 5/5 briefing excerpt, a 3/5 briefing excerpt, and a 1/5 briefing excerpt.\n4. The scoring rubric from 1 to 5.\n5. What the eval should ask the agent to improve when the score is 3 or lower.\n\nThen save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving.",
+        "produces": [
+          {
+            "id": "goal-nudger",
+            "location": "./goal-nudger-eval.md"
+          }
+        ],
         "callouts": [
           {
             "at": "If I choose a vague word",
@@ -35141,7 +35423,13 @@
         "context": "",
         "runtime": "any",
         "origin": "lectures/new-human-role-in-the-loop",
-        "text": "Help me create a goal-nudger for internal mail I might let an agent draft or send. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.\n\nGroundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.\n\nAsk me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if we still cannot say how to score it, propose the narrowest version we can score and say what is left open. Start by offering examples I can choose from or adapt:\n\n- executive crispness\n- commercial sharpness\n- specificity\n- risk awareness\n- actionability\n- reader empathy\n- strategic usefulness\n- sounds like our team\n\nIf I choose a vague word, use the remaining question rounds to make it observable. For example, \"strategic usefulness\" might become: names the tradeoff, states a point of view, and gives the decision-maker a next move.\n\nOnce the dimension is clear, show me:\n\n1. The dimension name.\n2. A one-sentence definition.\n3. Three examples: a 5/5 mail excerpt, a 3/5 mail excerpt, and a 1/5 mail excerpt.\n4. The scoring rubric from 1 to 5.\n5. What the eval should ask the agent to improve when the score is 3 or lower.\n\nThen save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving.",
+        "text": "Help me create a goal-nudger for my briefing. A goal-nudger is an eval that does not look for errors. It scores one quality I care about and pushes the agent toward it.\n\nGroundedness is already checked by `judges/groundedness-judge.md`. This eval is for something else. It should push the agent to be better than it has to be on one quality that matters for my work.\n\nAsk me at most three questions at a time and wait for my answers. For each round, recommend the answer you infer from my context so I can accept or correct it. Stop after two rounds: if we still cannot say how to score it, propose the narrowest version we can score and say what is left open. Start by offering examples I can choose from or adapt:\n\n- executive crispness\n- commercial sharpness\n- specificity\n- risk awareness\n- actionability\n- reader empathy\n- strategic usefulness\n- sounds like our team\n\nIf I choose a vague word, use the remaining question rounds to make it observable. For example, \"strategic usefulness\" might become: names the tradeoff, states a point of view, and gives the decision-maker a next move.\n\nOnce the dimension is clear, show me:\n\n1. The dimension name.\n2. A one-sentence definition.\n3. Three examples: a 5/5 briefing excerpt, a 3/5 briefing excerpt, and a 1/5 briefing excerpt.\n4. The scoring rubric from 1 to 5.\n5. What the eval should ask the agent to improve when the score is 3 or lower.\n\nThen save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving.",
+        "produces": [
+          {
+            "id": "goal-nudger",
+            "location": "./goal-nudger-eval.md"
+          }
+        ],
         "callouts": [
           {
             "at": "If I choose a vague word",

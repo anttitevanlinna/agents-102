@@ -23,7 +23,7 @@ echo "[test] scenario order"
 [[ "$(keys "$S/a101-m4a.txt")" == "author-security-skill-guess "* ]] && ok "m4a opens with the guess" || bad "m4a: $(keys "$S/a101-m4a.txt")"
 [[ "$(keys "$S/a101-m5.txt")" == "@student-plants-answer hallucination-bakeoff-1-frozen hallucination-bakeoff-2 hallucination-bakeoff-3 hallucination-bakeoff-marks hallucination-bakeoff-5 hallucination-bakeoff-8 hallucination-bakeoff-9 a101-m5-debrief-groundedness-rules" ]] \
   && ok "m5: plant, frozen copy, marks, score" || bad "m5: $(keys "$S/a101-m5.txt")"
-[[ "$(keys "$S/a101-m6.txt")" == "eval-loop-1 eval-loop-2 eval-loop-5 eval-loop-spot-check a101-m6-debrief-tactic-sharpen eval-loop-6" ]] \
+[[ "$(keys "$S/a101-m6.txt")" == "eval-loop-1 eval-loop-2 eval-loop-5 eval-loop-spot-check a101-m6-debrief-tactic-sharpen new-human-role-in-the-loop-1 eval-loop-6" ]] \
   && ok "m6: spot-check before the debrief" || bad "m6: $(keys "$S/a101-m6.txt")"
 grep -q 'M5_BRIEFING_SEED' "$S/a101-m5.txt" && bad "m5 still sends the seed tail against a word-for-word copy" || ok "no seed tail on the frozen copy"
 

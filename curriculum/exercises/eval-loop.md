@@ -68,14 +68,6 @@ The agent rewrites the rules after every round, and the score improves while you
 
 This is Plan-Do-Check-Act, run by agents: the rules are the plan, a helper writes, the judge checks, and the main session rewrites the rules. Your next briefing, on any topic, starts from the tighter rules.
 
-## Put another judge in the same loop
-
-**Take-home: put any judge in a loop that improves the thing it scores.**
-
-Ask the agent to set up the same loop around a different judge. Name the output and the judge after the colon.
-
-{{prompt:eval-loop-6}}
-
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-11-26 (behavior@42b9610a pedagogy@78d17fc9 strategy@78d17fc9 slides@78d17fc9)

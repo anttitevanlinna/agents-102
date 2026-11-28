@@ -1,11 +1,12 @@
 # Agents 101 Module 6 — Eval loop (the fixed-judge generation loop).
 # Driven by run-a101.sh --module m6. FRESH session, run AFTER m5 (consumes
 # ./crux.md, memory/, and the M5-authored judges/groundedness-judge.md — none
-# seeded). No persona answer tokens: the loop is self-contained.
+# seeded). Persona answer tokens: M6_SPOT_MARKS, M6_GOAL_NUDGER.
 #
 # Gating turns: eval-loop-1 (round 0 on the frozen M3 briefing + tactic) →
-# eval-loop-2 (the loop) → eval-loop-5 (readout) → spot-check → debrief. Skip -3 ("can we scale?" chat), -4 (analogy,
-# one-at-a-time chat), -6 (generic take-home twin of -2).
+# eval-loop-2 (the loop) → eval-loop-5 (readout) → spot-check → debrief → goal-nudger
+# → eval-loop-6 (take-home goal loop). Skip -3 ("can we scale?" chat), -4 (analogy,
+# one-at-a-time chat).
 #
 # NAMING SEAM (C11 — CLOSED 2026-06-06): the loop and the debrief now converge on
 # ./generation-tactic.md (the exercise migrated off ./generation-prompt.md to match
@@ -29,5 +30,9 @@ eval-loop-spot-check <CONTROL:NO_QUESTIONS> <M6_SPOT_MARKS>
 # T5 — debrief: sharpen the tactic (overwrites ./generation-tactic.md).
 a101-m6-debrief-tactic-sharpen
 
-# Portability take-home: a second fixed-judge loop in an explicit sandbox.
-eval-loop-6 <CONTROL:DIRECT_EXECUTION> <CONTROL:MULTI_AGENT> <M6_REUSABLE_LOOP>
+# T6 — closing lecture: the goal-nudger for the briefing, saved as ./goal-nudger-eval.md.
+new-human-role-in-the-loop-1 <CONTROL:NO_QUESTIONS> <CONTROL:SAVE_WITHOUT_REVIEW> <M6_GOAL_NUDGER>
+
+# T7 — take-home: the same loop on the briefing, goal-nudger as judge, groundedness judge still checking.
+# The page runs T6-T7 before the debrief; here they follow it, so the loop copies the sharpened tactic.
+eval-loop-6 <CONTROL:DIRECT_EXECUTION> <CONTROL:MULTI_AGENT> Run the rounds without stopping for confirmation. Bound it: cap at 4 rounds even if you would otherwise continue.

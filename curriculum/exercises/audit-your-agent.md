@@ -44,7 +44,7 @@ If the audit doesn't fire, expand `/agent-audit` from the autocomplete in the pr
 
 Expect the skill to find things you did not think about, and to answer "I can't tell" on things you thought were settled.
 
-Read the agent's three lists. Then open `outputs/policy-report.md` and find the rows it flagged.
+Read the agent's three lists. Then ask it which rows of the policy report it flagged, and why.
 
 ## Phase 3: Run the agent-risk audit
 

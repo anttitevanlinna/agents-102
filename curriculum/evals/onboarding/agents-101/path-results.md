@@ -4,6 +4,14 @@ Newest first. Rubric and method in [path-rubric.md](path-rubric.md). All reads S
 
 Since 2026-11-28 the headline is the **score**: the mean of the six stages, on the same scale as the module scores. Sections below that date report **strict reach** (each reader at their weakest stage) as "Reach"; the first table re-bases every run.
 
+## 2026-11-28: main 884c945 (live "what's stuck at work?" entry with Antti's headline)
+
+| Score | arrive | start | first result | setup | briefing | Module 1 | licence | Module 1 step | strict reach |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| **96** | 100 | 100 | 100 | 90 | 93 | 95 | 100 | 100 | 83 |
+
+Release goal met: score 96, lowest stage setup 90. All 20 readers paused at the pre-filled example and the "Rewrite my course" button before they saw this is a free course (arrive stars 4.06, the lowest of the home stages); "An example Claude wrote. Type your own to get yours." and "Start by having Claude make you a game." cleared it, and every reader said yes at arrive. Setup still names curl, the shell and the tar.gz, and the prompt shown in short.
+
 ## 2026-11-28: every run on the modules' scale
 
 No new reads. Recomputed from the stored reads with `path-read.js --resummarize`; the four live-prompt rows (branch claude/project-thread-pb7ywr, not on main) from their published stage scores, so within 1 point. Visual scores out of 24 shown on 0 to 100 too.

@@ -23,6 +23,28 @@ Append-only stream of editorial calls made on real curriculum text. **Newest at 
 
 ---
 
+## 2026-11-28 — Agents 101 attention design: a length remark that was not a cut order, and the prompt box
+
+Antti's calls while the self-study handbook's long prompts went into short form with callouts. Promoted: where a prompt's why lives → `check_prompts.md §51`; how a question reaches him → `check_prompts.md §26`; removals → `check_pedagogy.md §39`.
+
+### A remark about length is a design question
+
+His remark: *"The handbook is not the thing. the promtps and cowork usage is the thing. How much text can we really have? Consider this as UX matter."* Read as a cut order, it got: *"I did not say "cut". I said consider"*, then *"the point is really about mental capacity. Ease of navigation"*. The answer he wanted was a model of what the learner's attention is spent on, a measure, and a view of the page. The measure moved without a word of material leaving: long prompts shown in short roughly halved the prompt text on the page, and Copy still takes the whole prompt. The counterweight to every "shorter" instinct on this course: the first lever is where text sits and how much of it shows. What it says is the last.
+
+### A sentence he rewrote
+
+For solo learners facing a long prompt, the draft said the rest of the prompt is for the agent. His version: *"glance at it. check what seems pertinent in more detail. No need to study all detail."* The draft took the prompt away from the learner. His keeps the learner as the judge of what is pertinent and lifts only the duty to study.
+
+### Two renderings that failed, one that held
+
+- Notes inside the prompt box in the box's own type: *"feel like part of the prompt to me"*.
+- Notes as full-width white bands across the box: *"the prompt breaks up"*.
+- Held: white cards in body type, narrower than the grey box, with the grey unbroken around them. His words for the result: *"handbook kind of gives squint of the prompt with key callouts. The cowork then has the full text as is. I think this introduces the big prompts right."*
+
+### A sketch from him is an input
+
+*"Don't take my ideas as superior or right. You have much better context now."* He had sketched a few words of comment on every area of a prompt, saying what and why. What was built carries fewer: one or two callouts a prompt, none on a prompt where no why was worth a card, and each says why, never what. He approved the design (*"design OK for me"*). The callouts as written have no verdict from him yet. Weigh his sketch against the measure and say what you would build.
+
 ## 2026-11-01 — Antti's AE101 cut sessions, read as pairs
 
 Three sessions where Antti cut AE101 himself: the 2026-08-05 line-read (about 50 one-change commits in under two hours), the 2026-08-25 Antti-called cuts, and the 2026-08-29 compaction pass (its calls and counterweights are in the 2026-08-29 entry below). 150 slide pairs, 74 of them gold: `curriculum/evals/mechanical/persona-student/runs/2026-11-01-ae101-history-cuts/`.

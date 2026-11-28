@@ -44,7 +44,7 @@ rather than a corpus that trivially agrees with itself:
 | File | Stands in for | Used by |
 |---|---|---|
 | `linkedin-profile.md` | Student's LinkedIn page (copy-all wall of text) | M1 personal-site Phase 1 |
-| `m1-inputs.md` | Strengths + hate-list + free-iteration answers | M1 Phases 2–6 (scripted replies) |
+| `m1-inputs.md` | Hate list, belief, strengths, look-back answer, free iteration, cold-read picks | M1 Phases 2–6 and Debrief (the runner reads `answers/m1-*.txt`) |
 | `challenge-seed.md` | The challenge in the student's head | M2 opener interview (scripted answers) |
 | `meetings-week.md` | Calendar week view | Prework meetings summary (raw; render to PNG for screenshot path) |
 | `sources/wiki/pricing-strategy-2026.md` | Internal wiki page | M2 curate/ingest; M3 synthesis |

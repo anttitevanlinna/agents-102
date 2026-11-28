@@ -12,9 +12,7 @@ Feeds `trainings/agents-101/theory-plan.md` § The pieces (the `[curr:…]` tags
 | Lindenberg memory-architecture piece | trainings/agents-101/getting-going.md | M1 | (same line) | name only, "candidate" |
 | Karpathy, LLM Wiki gist | lectures/module-2-prework.md | M2 prework | "Karpathy's [LLM Wiki gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) is short." | linked |
 | Matt Pocock | lectures/module-2-prework.md | M2 prework | "Watch Matt Pocock's *\"I was an AI skeptic. Then I tried plan mode\"* on YouTube." | linked |
-| Donald Miller / StoryBrand | exercises/personal-site-with-guardrails.md | M1 | "Donald Miller's **StoryBrand** is the obvious framework for..." | named |
-| Adam Grant / energy audit | exercises/personal-site-with-guardrails.md | M1 | "Adam Grant calls a version of this the *energy audit*." | named |
-| Patagonia, "Don't Buy This Jacket" | exercises/personal-site-with-guardrails.md | M1 | "Patagonia famously did *\"Don't Buy This Jacket\"*." | named |
+| Seth Godin / "this is for people who believe" | exercises/personal-site-with-guardrails.md | M1 | "Seth Godin positions a product with one line: *\"this is for people who believe ___.\"*" | named |
 | Taleb / via negativa | exercises/personal-site-with-guardrails.md | M1 | "Taleb calls it *via negativa*." | named |
 | Willison, Harker, Ronacher, Shihipar, Bilsborough | exercises/module-3-prework.md | M3 prework | "1. Simon Willison... 2. Edward Harker... 3. Armin Ronacher..." | each dated + linked |
 | Rumelt, the crux | exercises/name-your-crux.md | M3 | "Richard Rumelt calls it the **crux**: the one thing that, if solved, releases pressure on everything else." | named |

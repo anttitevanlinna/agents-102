@@ -69,6 +69,12 @@ two_wait_one_done='✻ Waiting for 2 background agents to finish
 
 echo "[test] bg_agents_pending reads the LAST status line"
 check "Waiting line with its agent finished after it is not pending" "$(yes_no bg_agents_pending "$stale_wait_snap")" "no"
+# Linux panes lead the notice with ● (A101 M1 T12 cold read, 2026-11-28).
+linux_stale_wait='✻ Waiting for 1 background agent to finish
+  The reader picked two lines.
+● Agent "Cold read of personal site" finished · 4s'
+check "the finished notice counts with the Linux glyph" "$(yes_no bg_agents_pending "$linux_stale_wait")" "no"
+check "pane_busy clears on the Linux notice" "$(yes_no pane_busy "$linux_stale_wait")" "no"
 check "stale Waiting line = idle" "$(yes_no pane_busy "$stale_wait_snap")" "no"
 # Claude Code 2.1.332 marks the notice with ● instead of ⏺ (cloud walk 2026-11-28, M1 T9 held 28 min).
 bullet_wait_snap='✻ Waiting for 1 background agent to finish

@@ -1,32 +1,45 @@
 # Agents 101 Module 1 — Paint by agent with guardrails (+ debrief).
 # Driven by run-a101.sh --module m1. Fresh session in the (now populated)
-# training dir. Persona: Ingrid Solberg (synthetic). Inputs come from the
-# persona kit via tokens; interview turns carry AUQ-suppression + inlined
-# answers so the headless runner never waits on a dialog.
+# training dir. Persona inputs come from the selected case kit via tokens.
+#
+# Three prompts ask and wait: the belief, the look back, the cold read. Each is
+# two turns here, the prompt and then the persona's answer as a literal turn.
+# <CONTROL:PLAIN_QUESTION> keeps the question in plain chat, so the headless
+# runner never waits on a dialog and the turn ends where a learner's would.
 
-# Phase 1 — boring baseline from the LinkedIn wall-of-text.
+# T1 — boring baseline from the LinkedIn wall-of-text. Keeps first-site.html.
 personal-site-with-guardrails-1 <LINKEDIN>
 
-# Phase 2 — tuned StoryBrand. The prompt walks 5 beats one-at-a-time; in a
-# headless dry-run that hangs, so suppress it and hand over all five at once.
-personal-site-with-guardrails-2 <CONTROL:NO_QUESTIONS> <CONTROL:DIRECT_EXECUTION> Take all five of my answers below in one message and regenerate. <M1_PHASE2>
+# T2 — anti-branding mirror: the hate list turned positive.
+personal-site-with-guardrails-2 <M1_HATELIST>
 
-# Phase 3 — strengths.
-personal-site-with-guardrails-3 <M1_STRENGTHS>
+# T3 — belief, rough try. The agent offers three sharper versions and waits;
+# site.html stays as T2 left it.
+personal-site-with-guardrails-3 <M1_BELIEF> <CONTROL:PLAIN_QUESTION>
 
-# Phase 4 — anti-branding mirror.
-personal-site-with-guardrails-4 <M1_HATELIST>
+# T4 — the persona's answer. The site is rewritten around the belief.
+* <M1_BELIEF_ANSWER>
 
-# Phase 5 — observation only (name three generic claims). No regeneration.
-personal-site-with-guardrails-5 <CONTROL:NO_QUESTIONS> <M1_CHANGED_MOST>
+# T5 — strengths, with the free hand on presentation.
+personal-site-with-guardrails-4 <M1_STRENGTHS>
 
-# Phase 6 — free iteration (no registry prompt; student drives). One restyle.
+# T6 — look back. look-back.html is built, then one question; no trace file yet.
+personal-site-with-guardrails-5 <CONTROL:PLAIN_QUESTION>
+
+# T7 — the persona's answer. context-trace.md is written.
+* <M1_CHANGED_MOST>
+
+# T8 — free iteration (no registry prompt; student drives). One restyle.
 * <M1_ITERATE>
 
-# Close — package the generation rules file.
+# T9 — package the generation rules file.
 personal-site-with-guardrails-6
 
-# Debrief — second pass (retro) then cold critic.
+# T10 — Debrief retro.
 a101-m1-debrief-rules-retro
 
-a101-m1-debrief-cold-critic <CONTROL:NO_QUESTIONS> <CONTROL:MULTI_AGENT> Report the critic's two quoted lines in plain text.
+# T11 — cold read. The agent asks for the persona's own picks first.
+a101-m1-debrief-cold-critic <CONTROL:PLAIN_QUESTION> <CONTROL:MULTI_AGENT>
+
+# T12 — the persona's picks. The critic's two quoted lines come back beside them.
+* <M1_COLD_PICK>

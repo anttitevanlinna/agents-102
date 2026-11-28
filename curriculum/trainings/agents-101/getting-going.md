@@ -47,7 +47,7 @@ Each round the agent turns the work into sharper rules and drops what the work d
 
 ## Get a cold read
 
-**Then get a cold read.** Ask the agent to start a second, independent agent that sees only the site.
+**Then get a cold read.** The agent asks for your own picks first, then starts a second, independent agent that sees only the site.
 
 {{prompt:a101-m1-debrief-cold-critic}}
 
@@ -107,6 +107,8 @@ Your rules file already carries what you learned into the next session. Module 2
 |---|---|---|---|
 | Module 1 working folder | `module-1/` | M1 exercise writes visible outputs | M1 Debrief only; M2 deliberately starts its wider system at the training root |
 | Module 1 personal site | `module-1/site.html` | M1 guardrailed generation exercise | M1 cold-critic read only |
+| Module 1 first site | `module-1/first-site.html` | M1 exercise Phase 1, a copy no later phase rewrites | M1 exercise Phase 5 look back only |
+| Module 1 look-back page | `module-1/look-back.html` | M1 exercise Phase 5 | The learner, before answering the Phase 5 question |
 | Module 1 generation rules | `module-1/personal-brand-generation.md` | M1 exercise close and Debrief rewrite | M1 retro only; it stays scoped to `module-1/` and is not an M2 input |
 
 **Plug Points (trainer):**

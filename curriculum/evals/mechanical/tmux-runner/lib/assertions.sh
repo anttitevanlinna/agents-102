@@ -354,7 +354,7 @@ a101_rewritten_prior_agent() {       # $1=agents dir $2=list from before $3=epoc
   local f
   while IFS= read -r f; do
     [[ -f "$f" ]] || continue
-    (( $(stat -f %m "$f" 2>/dev/null || stat -c %Y "$f") >= $3 )) && { printf '%s\n' "$f"; return 0; }
+    (( $(stat -c %Y "$f" 2>/dev/null || stat -f %m "$f") >= $3 )) && { printf '%s\n' "$f"; return 0; }
   done < "$2"
   return 0
 }

@@ -14,6 +14,6 @@ callouts:
   - at: Write a rules file
     say: The rules come from your session. Left alone, the agent writes general advice.
 ---
-Write a rules file at `module-1/personal-brand-generation.md` that I can give an agent for the next personal-brand job: a colleague's bio, a team page, a client one-pager. Cover what it is for, the core rule (distinctive, not descriptive), what never to generate, what always to do, the moves we used (StoryBrand for the help section, the hate list turned positive for the voice, a borrowed look if we used one) and the voice rules. Take all of it from what we did in this session, the decisions and the reversals, not from general advice.
+Write a rules file at `module-1/personal-brand-generation.md` that I can give an agent for the next personal-brand job: a colleague's bio, a team page, a client one-pager. Cover what it is for, the core rule (distinctive, not descriptive), what never to generate, what always to do, the moves we used (the hate list turned positive for the voice, Godin's "for people who believe" for who the page is for, a borrowed look if we used one) and the voice rules. Take all of it from what we did in this session, the decisions and the reversals, not from general advice.
 
-When you're done, summarize in 4–6 lines what's in the file: the structure you used, the strongest 2–3 rules, and anything you weren't sure about. Then tell me to open `module-1/personal-brand-generation.md` and inspect the first two or three rules before I accept it.
+When you're done, show me the three strongest rules and tell me what you weren't sure about.

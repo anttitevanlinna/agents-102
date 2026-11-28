@@ -9,15 +9,10 @@ requires:
 produces:
   - id: m1-site
     location: module-1/site.html
-    note: StoryBrand-tuned revision in place
-callouts:
-  - at: Rework the section
-    say: Naming a known method gives the agent the whole method in a few words.
-  - at: Ask me one beat at a time
-    say: Your answers are the context the agent lacks.
+    note: hate list turned positive, rewritten in place
 ---
-Rework the section of my site about how I help colleagues, using Donald Miller's StoryBrand. The page stays about me: my name in the headline, my current work up front. Only this one section changes. A colleague who reads it should think: this is the person I want to work with more, on the things they're great at.
+Below is a list of things I hate about work. For each one, work out what kind of work and what kind of people produce it. Then describe me as the opposite, in the positive: what I do and what I move toward, never "I don't do X".
 
-Use five beats: Character (the colleague), Problem (the work they're stuck on or want more of), Guide (why I'm their natural ally), Plan (what working with me is like), Success (what has changed for them a year from now). Leave out Stakes and Call to Action. Nobody is buying anything.
+Use that to sharpen how the whole site sounds: the headline, the first line, the section headings, the stance. Don't add a section about what I'm against. Then rewrite `module-1/site.html`.
 
-Ask me one beat at a time and wait for each answer. After the fifth, regenerate `module-1/site.html`, with the section written as prose in my voice, as sharp as my answers.
+My hate list:

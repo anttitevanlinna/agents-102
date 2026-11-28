@@ -142,12 +142,12 @@ test('all identity and source canaries fail the local note privacy check', t => 
 
 function html(extra = '') {
   const prompt = body => `<div class="prompt-block"><pre><code>${body}</code></pre></div>`;
-  return `<!doctype html><html><body><div class="a101-onboarding">Start with one folder. ${extra}</div><section id="prework">Prework${prompt('Extract the starter tarball.')}${prompt('Build me a personal HTML one-pager.\nLinkedIn:')}${prompt('Help me pause Agents 101.')}${prompt('Help me resume Agents 101.')}${prompt('Build me a snake game.')}${prompt('Write a generation rules file.')}${prompt('Launch a fresh subagent.')}</section></body></html>`;
+  return `<!doctype html><html><body><div class="a101-onboarding">Start with one folder. ${extra}</div><section id="prework">Prework${prompt('Extract the starter tarball.')}${prompt('Build me a one-page personal site.\nLinkedIn:')}${prompt('Help me pause Agents 101.')}${prompt('Help me resume Agents 101.')}${prompt('Build me a snake game.')}${prompt('Write a rules file.')}${prompt('First ask me which line on my site is most me.')}</section></body></html>`;
 }
 
 test('material extracts exact copy bodies, visible reader text, anchors and external assets', () => {
   const content = material(html('<img src="https://external.example/pixel.png">'));
-  assert.equal(content.prompts.baseline, 'Build me a personal HTML one-pager.\nLinkedIn:');
+  assert.equal(content.prompts.baseline, 'Build me a one-page personal site.\nLinkedIn:');
   assert.match(content.readerText, /Start with one folder/);
   assert.ok(content.anchors.includes('prework'));
   assert.deepEqual(content.externalAssets, ['https://external.example/pixel.png']);

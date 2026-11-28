@@ -142,9 +142,9 @@ function material(html) {
     return found;
   };
   const prompts = {
-    extract: find('Extract the starter tarball'), baseline: find('Build me a personal HTML one-pager'),
+    extract: find('Extract the starter tarball'), baseline: find('Build me a one-page personal site'),
     pause: find('Help me pause Agents 101'), resume: find('Help me resume Agents 101'),
-    snake: cliSnake?.textContent.trimEnd() || find('Build me a snake game'), package: find('Write a generation rules file'), critic: find('Launch a fresh subagent')
+    snake: cliSnake?.textContent.trimEnd() || find('Build me a snake game'), package: find('Write a rules file'), critic: find('First ask me which line on my site')
   };
   const readerSections = [doc.querySelector('.a101-onboarding'), doc.querySelector('section#prework')];
   const controls = doc.querySelector('.a101-learning-controls');

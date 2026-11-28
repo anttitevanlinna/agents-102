@@ -16,7 +16,7 @@ Read module-7/brief.md. Build the agent described in it. Choose a lowercase hyph
 
 The agent file must include:
 - Role: one sentence on the job this agent does
-- Rules: carry forward the rules my existing agents follow (cite the memory file for every claim, never invent, ask when a source is thin). Add rules specific to this agent's job.
+- Rules: carry forward the rules my existing agents follow. Add rules specific to this agent's job.
 - Inputs: the exact files or folders this agent reads. Paths, not descriptions. For PDFs or slide exports, include an extraction-depth check and flag any file whose body text was not actually extracted.
 - Output: the exact file or shape this agent writes. If it's a report, name the filename. If it's a response, describe the shape.
 - Hard lines: things this agent must not do even if asked.

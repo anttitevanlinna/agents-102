@@ -236,7 +236,22 @@ function walkFiles(dir, prefix = '') {
     });
 }
 
-function repackStarter(archive, stage, mapFile, prework, edition = EDITIONS['acme-mvp']) {
+// Every prompt file the starter ships has one place on the page (#p-<key>,
+// from the key comment renderPromptBlock writes) and every keyed prompt on the
+// page ships as a file, so the agent's link back from prompts/<key>.md always
+// lands. Both sides come from the prompt registry; a mismatch fails the build.
+function checkPromptPlaces(html, promptFiles) {
+  const onPage = new Set([...html.matchAll(/<!--prompt-key ([a-z0-9-]+)-->/g)].map(m => m[1]));
+  const shipped = new Set(promptFiles.filter(f => f.endsWith('.md')).map(f => f.slice(0, -3)));
+  const noPlace = [...shipped].filter(k => !onPage.has(k)).sort();
+  const noFile = [...onPage].filter(k => !shipped.has(k)).sort();
+  if (noPlace.length || noFile.length) {
+    throw new Error(`Prompt places out of step. Shipped without a place on the page: ${noPlace.join(', ') || 'none'}. On the page without a shipped file: ${noFile.join(', ') || 'none'}.`);
+  }
+  return onPage.size;
+}
+
+function repackStarter(archive, stage, mapFile, prework, edition = EDITIONS['acme-mvp'], pageHtml = null) {
   const unpacked = path.join(stage, 'starter');
   fs.mkdirSync(unpacked);
   execFileSync('tar', ['xzf', archive, '-C', unpacked], { env: { ...process.env, LC_ALL: 'C' } });
@@ -253,7 +268,9 @@ function repackStarter(archive, stage, mapFile, prework, edition = EDITIONS['acm
   const handbook = path.join(unpacked, 'agents-101-handbook.html');
   let offline = prependOfflinePrework(applyLoaderFraming(fs.readFileSync(handbook, 'utf8'), { required: false }), prework, edition.workbookUrl);
   if (edition.open) offline = addLicenceLine(dropTeamModules(offline, unpacked));
+  else for (const key of teamOnlyPrompts(editionModules(edition))) fs.rmSync(path.join(unpacked, 'prompts', key + '.md'), { force: true });
   fs.writeFileSync(handbook, stripExternalFonts(offline));
+  if (pageHtml != null) checkPromptPlaces(pageHtml, fs.readdirSync(path.join(unpacked, 'prompts')));
 
   // A sorted, nonrecursive file list keeps tar output independent of creation
   // order; fixed mtimes and gzip without a filename preserve repeatable bytes.
@@ -317,6 +334,8 @@ function headerModules(html, modules) {
 // The team modules (7 and 8) belong to the licensed team edition. The open
 // starter leaves out their offline theory, their pattern file and the prompts
 // no open module uses.
+// Prompts of the Agents 101 modules an edition leaves out (the team modules in
+// the open edition, the solo module in ACME), minus any a kept module uses too.
 function teamOnlyPrompts(modules) {
   const keys = slug => {
     const file = path.join(ROOT, 'curriculum/trainings/agents-101', slug + '.md');
@@ -331,7 +350,8 @@ function teamOnlyPrompts(modules) {
     return out;
   };
   const keep = new Set(modules.flatMap(m => [...keys(m.slug)]));
-  return [...new Set(['personal-to-team', 'agents-building-agents'].flatMap(s => [...keys(s)]))].filter(k => !keep.has(k));
+  const others = ['personal-to-team', 'agents-building-agents', SOLO_MODULE.slug].filter(s => !modules.some(m => m.slug === s));
+  return [...new Set(others.flatMap(s => [...keys(s)]))].filter(k => !keep.has(k));
 }
 
 function dropTeamModules(html, unpacked) {
@@ -560,14 +580,14 @@ ${SETUP_CSS}
   }, true);
   reveal();
 })();
-</script>\n${shell('figure-reader.html')}<script data-a101-handbook>\n${shell('deskpad.js')}\n</script>\n${edition.open ? `<script data-a101-prompt-short>\n${shell('prompt-short.js')}\n</script>\n` : ''}</body>`);
+</script>\n${shell('figure-reader.html')}<script data-a101-handbook>\n${shell('deskpad.js')}\n</script>\n<script data-a101-prompt-places>\n${shell('prompt-places.js')}\n</script>\n${edition.open ? `<script data-a101-prompt-short>\n${shell('prompt-short.js')}\n</script>\n` : ''}</body>`);
 
     if (edition.open) html = promptsInShort(hideVideoPlaceholders(addModuleTimes(addLicenceLine(retitleTrainerDemos(dropSlidesSaidByCallouts(html))), modules)));
 
     // The edition hub has one destination. Existing customer hubs are untouched.
     if (edition.hub) fs.writeFileSync(path.join(customerDir, 'index.html'), `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agents 101 — ${edition.brand}</title><meta http-equiv="refresh" content="0; url=./agents-101/#start-learning"></head><body><p><a href="./agents-101/#start-learning">Start Agents 101</a></p></body></html>\n`);
     const archiveFile = path.join(trainingDir, 'agents-101-starter.tar.gz');
-    repackStarter(archiveFile, stage, navigationFile, inlineMedia(offlinePrework), edition);
+    repackStarter(archiveFile, stage, navigationFile, inlineMedia(offlinePrework), edition, html);
     fs.writeFileSync(workbookFile, versionStarterDownload(stripExternalFonts(html), fs.readFileSync(archiveFile), workbookUrl));
     // Remove only known trainer output for this edition if it was built before.
     for (const name of ['trainer-guide.html', 'trainer-modules.html']) fs.rmSync(path.join(trainingDir, name), { force: true });
@@ -601,4 +621,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { dropModuleOnePrework, retitleTrainerDemos, dropSlidesSaidByCallouts, hideVideoPlaceholders, EDITIONS, editionModules, editionCheckpoints, headerModules, addLicenceLine, addModuleTimes, buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };
+module.exports = { checkPromptPlaces, dropModuleOnePrework, retitleTrainerDemos, dropSlidesSaidByCallouts, hideVideoPlaceholders, EDITIONS, editionModules, editionCheckpoints, headerModules, addLicenceLine, addModuleTimes, buildEdition, stripExternalFonts, applyLoaderFraming, preworkSection, moveContentsAfterPrework, prependOfflinePrework, versionStarterDownload, SETUP_SCRIPT, WORKBOOK_URL };

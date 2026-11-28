@@ -208,6 +208,7 @@ waiting_unresolved() {
   # $1=pane snap. 0 iff a "Waiting for N background agent(s)" line is present
   # and fewer than N 'Agent "…" finished' notices follow it. The Waiting line can
   # stay the last status line after its agent finished (M5 T1, 2026-11-01).
+  # The notice leads with ⏺ on macOS and ● on Linux.
   printf '%s\n' "$1" | awk '
     /Waiting for [0-9]+ background agents? to finish/ {
       for (i = 1; i <= NF; i++) if ($i == "for") { n = $(i + 1) + 0; break }

@@ -114,7 +114,9 @@ ANSWERS="${A101_ANSWERS_DIR:-$KIT/answers}"
 LINKEDIN="$(strip_comments "$KIT/linkedin-profile.md")"
 MEETINGS_FILE="$material_dir/meetings-week.md"
 NEW_SOURCE="$material_dir/new/$(basename "$A101_M2_HELD_SOURCE")"
-M1_PHASE2="$(cat "$ANSWERS/m1-phase2.txt")"
+M1_BELIEF="$(cat "$ANSWERS/m1-belief.txt")"
+M1_BELIEF_ANSWER="$(cat "$ANSWERS/m1-belief-answer.txt")"
+M1_COLD_PICK="$(cat "$ANSWERS/m1-cold-pick.txt")"
 M1_STRENGTHS="$(cat "$ANSWERS/m1-strengths.txt")"
 M1_HATELIST="$(cat "$ANSWERS/m1-hatelist.txt")"
 M1_ITERATE="$(cat "$ANSWERS/m1-iterate.txt")"
@@ -156,7 +158,9 @@ subst() {
   local body="$1"
   # answer/content tokens first (these may themselves contain path tokens)
   body="${body//<LINKEDIN>/$LINKEDIN}"
-  body="${body//<M1_PHASE2>/$M1_PHASE2}"
+  body="${body//<M1_BELIEF_ANSWER>/$M1_BELIEF_ANSWER}"
+  body="${body//<M1_BELIEF>/$M1_BELIEF}"
+  body="${body//<M1_COLD_PICK>/$M1_COLD_PICK}"
   body="${body//<M1_STRENGTHS>/$M1_STRENGTHS}"
   body="${body//<M1_HATELIST>/$M1_HATELIST}"
   body="${body//<M1_ITERATE>/$M1_ITERATE}"
@@ -250,17 +254,36 @@ assert_turn() {
         || assert_scrollback_grep "prework T4 kept identical summary" "$t" "$A101_PREWORK_KEPT_RE" ;;
 
     # ----- m1 -----
-    m1:1) assert_file_exists "m1 T1 site" "$sut_cwd/module-1/site.html" ;;
-    m1:2) assert_file_mtime_advanced "m1 T2 site regen (StoryBrand)" "$sut_cwd/module-1/site.html" "$base" ;;
-    m1:3) assert_file_mtime_advanced "m1 T3 site regen (strengths)" "$sut_cwd/module-1/site.html" "$base" ;;
-    m1:4) assert_file_mtime_advanced "m1 T4 site regen (anti-branding)" "$sut_cwd/module-1/site.html" "$base" ;;
-    m1:5)
-      assert_file_exists "m1 T5 context trace" "$sut_cwd/module-1/context-trace.md" || return 1
-      assert_or_warn assert_scrollback_grep "m1 T5" "$t" 'generic|statistical|default|could (apply|appear)|anyone' ;;
-    m1:6) assert_file_mtime_advanced "m1 T6 free-iteration restyle" "$sut_cwd/module-1/site.html" "$base" ;;
-    m1:7) assert_file_exists "m1 T7 generation rules" "$sut_cwd/module-1/personal-brand-generation.md" ;;
-    m1:8) assert_file_mtime_advanced "m1 T8 rules-retro rewrite" "$sut_cwd/module-1/personal-brand-generation.md" "$base" ;;
-    m1:9) assert_or_warn assert_scrollback_grep "m1 T9" "$t" 'uniquely|generic|copy-pasted|most (unique|generic)' ;;
+    m1:1)
+      assert_file_exists "m1 T1 site" "$sut_cwd/module-1/site.html" || return 1
+      assert_file_exists "m1 T1 first-site copy" "$sut_cwd/module-1/first-site.html" ;;
+    m1:2) assert_file_mtime_advanced "m1 T2 site regen (anti-branding)" "$sut_cwd/module-1/site.html" "$base" ;;
+    m1:3)
+      # The belief prompt offers three sharper versions and waits: a site
+      # rewritten on this turn means the agent chose the belief itself.
+      if [[ "$(mtime_of "$sut_cwd/module-1/site.html")" -ge "$base" ]]; then
+        echo "[assert] FAIL m1 T3 belief: site.html was rewritten before the learner answered" >&2; return 1
+      fi
+      assert_or_warn assert_scrollback_grep "m1 T3 belief versions offered" "$t" 'believe' ;;
+    m1:4) assert_file_mtime_advanced "m1 T4 site regen (belief)" "$sut_cwd/module-1/site.html" "$base" ;;
+    m1:5) assert_file_mtime_advanced "m1 T5 site regen (strengths)" "$sut_cwd/module-1/site.html" "$base" ;;
+    m1:6)
+      assert_file_exists "m1 T6 look-back page" "$sut_cwd/module-1/look-back.html" || return 1
+      # The trace carries the learner's answer as its last line, so it cannot
+      # exist before the answer turn.
+      if [[ -e "$sut_cwd/module-1/context-trace.md" ]]; then
+        echo "[assert] FAIL m1 T6 look back: context-trace.md was written before the learner answered" >&2; return 1
+      fi
+      if [[ "$(mtime_of "$sut_cwd/module-1/first-site.html")" -ge "$base" ]]; then
+        echo "[assert] FAIL m1 T6 look back: first-site.html was rewritten" >&2; return 1
+      fi
+      assert_or_warn assert_scrollback_grep "m1 T6" "$t" 'generic|empty|anyone|could (apply|appear)' ;;
+    m1:7) assert_file_exists "m1 T7 context trace" "$sut_cwd/module-1/context-trace.md" ;;
+    m1:8) assert_file_mtime_advanced "m1 T8 free-iteration restyle" "$sut_cwd/module-1/site.html" "$base" ;;
+    m1:9) assert_file_exists "m1 T9 generation rules" "$sut_cwd/module-1/personal-brand-generation.md" ;;
+    m1:10) assert_file_mtime_advanced "m1 T10 rules-retro rewrite" "$sut_cwd/module-1/personal-brand-generation.md" "$base" ;;
+    m1:11) assert_or_warn assert_scrollback_grep "m1 T11 cold read asks first" "$t" 'most (you|me)|which line|generic' ;;
+    m1:12) assert_or_warn assert_scrollback_grep "m1 T12" "$t" 'uniquely|generic|most (unique|generic|you)' ;;
 
     # ----- m2 -----
     m2:1)

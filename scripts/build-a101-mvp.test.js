@@ -234,12 +234,12 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     const snakeCanonical = fs.readFileSync(path.join(ROOT, 'curriculum/prompts/a101-prework-snake-game.md'), 'utf8').replace(/^---\n[\s\S]*?\n---\n/, '').split('<!-- maintainer -->')[0].trimEnd();
     assert.equal(prework.querySelector('a[href^="claude:"]'), null);
     const firstVideo = prework.querySelector('.a101-game-start figure.walkthrough-media');
-    assert.match(firstVideo.textContent, /Where to type and send.*send the request.*game.*return to this handbook/s);
-    assert.equal(prework.querySelector('.a101-game-start .request-text span').textContent, 'Type in Claude Desktop');
+    assert.match(firstVideo.textContent, /Where the prompt goes.*send the prompt.*game.*return to this handbook/s);
+    assert.equal(prework.querySelector('.a101-game-start .request-text span').textContent, 'Prompt');
     assert.match(prework.querySelector('.a101-game-start .result-lead').textContent, /In Claude’s reply/);
     assert.equal(firstVideo.querySelector('img').src, 'data:image/jpeg;base64,' + fs.readFileSync(path.join(ROOT, 'curriculum/delivery/agents-101-mvp/claude-send.jpg')).toString('base64'));
     const keepGame = prework.querySelector('.a101-game-start a[href="#open-cowork-and-add-a-folder"]');
-    assert.equal(keepGame.textContent, 'Keep my game');
+    assert.equal(keepGame.textContent, 'keep your game');
     assert.equal(document.getElementById(keepGame.hash.slice(1)).textContent, '2 Keep my game');
     assert.ok(snakeBlock.closest('.rt-cowork'), 'the preview request is Cowork-only');
     const saveGame = [...prework.querySelectorAll('.rt-cowork .prompt-block')].find(block => block.querySelector('code').textContent.startsWith('Save the game we just made'));
@@ -249,7 +249,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     await Promise.resolve();
     assert.equal(copied.at(-1), 'Save the game we just made as `prework/snake.html` in the folder I added.');
     assert.match(snakeCanonical, /Save it as `prework\/snake\.html`/);
-    assert.match(prework.textContent, /agents-101.*folder you created in Documents/, 'CLI setup uses the same established training root');
+    assert.match(prework.querySelector('.rt-code').textContent, /folder called agents-101 in Documents and start a session in it/, 'CLI setup uses the same established training root');
     assert.doesNotMatch(prework.textContent, /~\/Documents/);
     assert.equal(prework.querySelectorAll('.a101-os-picker').length, 1);
     assert.ok(snakeBlock.compareDocumentPosition(prework.querySelector('.a101-os-picker')) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING, 'the OS choice appears when learners save the game');
@@ -273,8 +273,10 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     assert.equal(copied.at(-1), extractionBlock.querySelector('code').textContent.trimEnd());
     assert.ok(copied.at(-1).includes(EXTRACTION_BOOTSTRAP), 'extraction alone installs the course context loader');
     assert.doesNotMatch(prework.textContent, /Customize|Read CLAUDE\.md before working in this folder/);
-    const attachSteps = [...prework.querySelectorAll('.rt-cowork ol')].find(list => list.textContent.includes('Add folder'));
-    assert.ok(attachSteps && snakeBlock.compareDocumentPosition(attachSteps) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING, 'Cowork learners make the game before they attach the folder');
+    const attachSteps = prework.querySelector('.rt-cowork .folder-intro');
+    assert.match(attachSteps.textContent, /make a folder called agents-101 in Documents and add that folder to the session/, 'Cowork learners get the outcome, not a click list');
+    assert.equal(prework.querySelectorAll('.rt-cowork ol').length, 0, 'no click list in First steps');
+    assert.ok(snakeBlock.compareDocumentPosition(attachSteps) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING, 'Cowork learners make the game before they attach the folder');
     dom.window.A101Runtimes.applyRuntime('cli');
     assert.equal(dom.window.getComputedStyle(attachSteps.closest('.rt-cowork')).display, 'none', 'CLI does not see Cowork attachment controls');
     assert.equal(dom.window.getComputedStyle(snakeBlock.closest('.rt-cowork')).display, 'none', 'CLI does not get the preview request');

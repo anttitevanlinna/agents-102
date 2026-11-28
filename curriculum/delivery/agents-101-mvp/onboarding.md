@@ -5,7 +5,7 @@
 
 ## Pause learning
 
-If you’ve added the course files, copy and send the request below before you close Claude. Claude saves your place in the `agents-101` folder. If you haven’t added the course files yet, bookmark the section you’re on.
+If you haven’t added the course files yet, bookmark the section you’re on. Otherwise, ask Claude to save your place.
 
 **Prompt** Cowork
 
@@ -17,7 +17,7 @@ Use `prework/course-navigation.md` to save my place before we stop.
 
 ## Resume learning
 
-If Claude saved your place, open a new conversation in Claude Desktop and select your `agents-101` folder again. Copy and send the request below. If you bookmarked a section, open that bookmark.
+If you bookmarked a section, open that bookmark. Otherwise, start a new Cowork session in Claude Desktop and add your `agents-101` folder.
 
 **Prompt** Cowork
 

@@ -42,11 +42,7 @@ Create `module-2/morning-agent/`. Have the agent interview you on the job, outpu
 
 *6 min*
 
-Open the **Schedule** sidebar in the desktop app and click **New task → New local task**:
-
-- **Name:** `Morning memory`
-- **Frequency:** Daily at 7:00 AM, or the time you want it to fire
-- **Prompt:** the scheduling prompt below. It writes the daily output to `latest.html`.
+Schedule the prompt below to run every morning, at 7:00 or whenever suits you. It writes the daily output to `latest.html`.
 
 {{prompt:personal-agent-homework-3}}
 

@@ -94,3 +94,7 @@ Third-party words, names and marks in what a licensee receives. A flagged item i
 - **Pre-mortem is Gary Klein's.** `prompts/share-your-work-6.md`, `exercises/test-the-sharing-plan.md`: credit in the exercise.
 - **Jobs to be done.** `exercises/share-your-work.md` and its prompts use the "minimize / increase … when" statement form: credit Ulwick or drop the template form; check the mark.
 - **`exercises/module-3-prework.md`:** open the five reading-list links and check each one-line characterisation against its page; compare the example `CLAUDE.md` content with the docs' examples.
+
+## 11. Real screenshots for UI steps (Antti 2026-11-28)
+
+Body text no longer walks UI steps (check_student_facing §40). Where a learner still needs to see the screen (scheduling a task in the desktop app, connector settings, the First steps folder picker), find a way to capture real, current screenshots of the runtime and show them beside the text. Start with M2 Phase 4 "Schedule the prompt below to run every morning", where 3 of 6 solo learners got stuck on 2026-11-28.

@@ -6,13 +6,17 @@ Use this file for navigation and local progress. The workbook holds the teaching
 
 ## Returning to the workbook
 
-After completing a request that matches a row below, save its current and return links at `prework/learning-position.md`. Record what the request produced and any unfinished learner action. Preserve existing revision notes. A written file does not establish that the learner played, compared, inspected, or accepted it.
+After completing a request whose text matches a file in `prompts/` (search that folder for a distinctive line of the request), save its place at `prework/learning-position.md`: the prompt file's name and its workbook link. The link for `prompts/<name>.md` is `https://agents102.bosser.consulting/clients/acme-mvp/agents-101/#p-<name>`. Record what the request produced and any unfinished learner action. Do not mention the save in your reply. Preserve existing revision notes. A written file does not establish that the learner played, compared, inspected, or accepted it.
 
 Adding the course files is complete once the archive is unpacked, the reading cue is in place, and you have read this guide. Record that step as complete and save the calendar exercise as the next link.
 
-End the reply with the row's return link and its readable label. Keep helping with revisions when asked. Wait for the learner to choose the next activity.
+When the request also matches a row under Workbook returns below, save that row's current and return links too, and end the reply with the row's return link and its readable label. Keep helping with revisions when asked. Wait for the learner to choose the next activity.
 
 The training-folder `CLAUDE.md` starts with a course-navigation reading cue. Preserve it when the learner develops their own working rules in the Module 2 debrief. Navigation supplies no personal context or generation rules. Do not add those on the learner's behalf.
+
+## Back to the handbook
+
+When the learner asks to go back to the handbook or the workbook, in any words ("Back to the handbook", "let's get back to the workbook"), read `prework/learning-position.md` and answer in at most two lines: what they last did, in a few plain words, and the saved link. Give that one link only, with no file names and no mention of this guide. Do not start the next activity. With no saved place, follow Resuming below.
 
 ## Pausing
 

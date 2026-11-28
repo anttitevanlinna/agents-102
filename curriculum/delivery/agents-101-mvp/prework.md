@@ -84,7 +84,7 @@ Wait for Claude to say it saved the game. **Documents → agents-101 → prework
 <span id="3-add-the-course-files"></span>
 <span id="4-download-the-course-files"></span>
 
-The course files hold a copy of the handbook and the folders you fill in later modules. Copy the request below and send it in the same conversation. The agent downloads the files into `agents-101` and unpacks them. It also adds one line to `CLAUDE.md`, the file in `agents-101` that Claude reads at the start of every conversation there, so it can find your place when you come back.
+The course files hold a copy of the handbook and the folders you fill in later modules. Copy the request below and send it in the same conversation. The agent downloads the files into `agents-101` and unpacks them. It also adds one line to `CLAUDE.md`, the file in `agents-101` that Claude reads at the start of every conversation there, so it can find your place when you come back. Whenever you lose your place, tell Claude "Back to the handbook".
 
 Glance at each prompt. Check what seems pertinent in more detail. No need to study all the detail.
 

@@ -701,7 +701,16 @@
             text = injectAnchorSentinels(text, entry.anchors);
         }
         var fence = '```\n' + text + '\n```';
-        return label + '\n\n' + calloutComment(entry && entry.callouts) + fence;
+        return label + '\n\n' + keyComment(entry && entry.key) + calloutComment(entry && entry.callouts) + fence;
+    }
+
+    // The prompt's registry key rides with its block as one HTML comment, the
+    // same way callouts do, so a page script can give the block a stable
+    // address (#p-<key>) that an agent can link back to from the prompt file
+    // it was given. Nothing lands in the text a learner copies.
+    function keyComment(key) {
+        if (!key || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(String(key))) return '';
+        return '<!--prompt-key ' + key + '-->\n\n';
     }
 
     // Callouts (`callouts:` in a prompt's frontmatter: `at` = the first words

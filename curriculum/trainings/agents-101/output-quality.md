@@ -35,9 +35,9 @@ Five minutes. The agent reviews the benchmark and updates your <span class="rt-c
 
 ## Notice what the prompt insists on
 
-The prompt tells the agent to change only the Groundedness checks section and keep every other section word for word. Without that limit, a small edit turns into a rewrite and earlier rules change.
+The prompt limits the agent to four short rules under Groundedness checks, and has the agent quote any earlier rule before cutting it. Without those limits, a small edit turns into a rewrite and earlier rules change.
 
-The prompt also makes the agent re-read the section and confirm each rule is in the file. The agent's report says what the agent meant to do. The file shows what happened.
+The prompt also asks for the rules as they now stand in the file. The agent's report says what the agent meant to do. The file shows what happened.
 
 ## Push back on the summary
 

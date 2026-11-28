@@ -39,7 +39,7 @@ Five minutes. The agent reviews the four prompts, the retrieval files, the synth
 
 ## The review checks handoffs, not truth
 
-The prompt asks the agent for a harsh review of the handoffs: at least two places where work was lost, each with evidence (the file, the step, what was lost). Without the demand for evidence, the review turns polite.
+The prompt asks where work was lost between agents, and ties every rule change to its evidence: the file, and what was lost there. Without the demand for evidence, the review turns polite.
 
 ## Push back on the summary
 

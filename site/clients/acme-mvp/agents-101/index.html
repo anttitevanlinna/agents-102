@@ -7546,7 +7546,7 @@ Then tell me in three to five lines what you added, sharpened and removed, and f
 </div>
 
 <h2 id="the-review-checks-handoffs-not-truth">The review checks handoffs, not truth</h2>
-<p>The prompt asks the agent for a harsh review of the handoffs: at least two places where work was lost, each with evidence (the file, the step, what was lost). Without the demand for evidence, the review turns polite.</p>
+<p>The prompt asks where work was lost between agents, and ties every rule change to its evidence: the file, and what was lost there. Without the demand for evidence, the review turns polite.</p>
 <h2 id="push-back-on-the-summary">Push back on the summary</h2>
 <p>Push back where the summary is wrong: <em>&quot;The planner and the reframer needed to be separate.&quot;</em> <em>&quot;The wiki retriever kept normalising before writing.&quot;</em></p>
 <h2 id="the-briefing-is-still-unchecked">The briefing is still unchecked</h2>
@@ -9506,7 +9506,8 @@ Do not judge whether the claims are grounded yet. Do not ask me questions. Save 
 
 <h2 id="phase-2-run-the-four-detectors">Phase 2: Run the four detectors</h2>
 <p><em>8 min</em></p>
-<p>Four helper agents run in parallel on the same claim pool, each with its own detection method and output file. This step takes a while. If a helper agent reads far beyond the roster, stop it and narrow its task. If a helper checked only some of the 30 claims, ask it to cover the rest.</p>
+<p>Four helper agents run in parallel on the same claim pool, each with its own detection method and output file. This step takes a while.</p>
+<p>If a helper agent reads far beyond the roster, stop it and narrow its task. If a helper checked only some of the 30 claims, ask it to cover the rest.</p>
 <p>In your main session:</p>
 <div class="rt-code">
 
@@ -10440,8 +10441,8 @@ Then show me the rules as they now stand in the file, the scoreboard row or clai
 </div>
 
 <h2 id="notice-what-the-prompt-insists-on">Notice what the prompt insists on</h2>
-<p>The prompt tells the agent to change only the Groundedness checks section and keep every other section word for word. Without that limit, a small edit turns into a rewrite and earlier rules change.</p>
-<p>The prompt also makes the agent re-read the section and confirm each rule is in the file. The agent&#39;s report says what the agent meant to do. The file shows what happened.</p>
+<p>The prompt limits the agent to four short rules under Groundedness checks, and has the agent quote any earlier rule before cutting it. Without those limits, a small edit turns into a rewrite and earlier rules change.</p>
+<p>The prompt also asks for the rules as they now stand in the file. The agent&#39;s report says what the agent meant to do. The file shows what happened.</p>
 <h2 id="push-back-on-the-summary">Push back on the summary</h2>
 <p>Correct the agent where a rule is vague: <em>&quot;name the evidence roster&quot;</em>, <em>&quot;say when to stop and ask for sources.&quot;</em></p>
 <blockquote>
@@ -10891,7 +10892,8 @@ Do not stop for confirmation between rounds.
 </code></pre>
 </div>
 
-<p>When round 1 is done, open the newest briefing in <code>module-6/runs/</code> and read it the way the person receiving it would. Add two or three remarks to <code>./remarks.md</code> in plain words: <em>&quot;too hedged&quot;</em>, <em>&quot;this number is not ours&quot;</em>, <em>&quot;lead with the decision&quot;</em>. Leave the loop running. The next rounds turn your remarks into rules. The judge never sees them.</p>
+<p>When round 1 is done, open the newest briefing in <code>module-6/runs/</code> and read it the way the person receiving it would. Add two or three remarks to <code>./remarks.md</code> in plain words: <em>&quot;too hedged&quot;</em>, <em>&quot;this number is not ours&quot;</em>, <em>&quot;lead with the decision&quot;</em>.</p>
+<p>Leave the loop running. The next rounds turn your remarks into rules. The judge never sees them.</p>
 <p>Then ask how the loop could try more options at once.</p>
 <div class="rt-profile rt-profile-cowork">
 

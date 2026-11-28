@@ -212,7 +212,7 @@ waiting_unresolved() {
     /Waiting for [0-9]+ background agents? to finish/ {
       for (i = 1; i <= NF; i++) if ($i == "for") { n = $(i + 1) + 0; break }
       done = 0; seen = 1; next }
-    seen && /^⏺ Agent ".*" finished/ { done++ }
+    seen && /^(⏺|●) Agent ".*" finished/ { done++ }
     END { exit !(seen && done < n) }'
 }
 

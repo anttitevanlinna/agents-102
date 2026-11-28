@@ -146,3 +146,10 @@ Open edition only: M7 and M8 did not run. Three chains, each from a paired workt
 - **C-20 A required line becomes a flag (M6 T5→T6).** The T5 "Citations checked" line was flagged by the next judge as "a process claim no evidence file can support".
 - **C-21 The M6 T4 readout asks for a verdict the file doesn't hold.** "the judge's verdict from that round's judgment.md" has no value for unflagged claims ("The file only holds flags… this is an inference").
 - **C-22 M4b T4 skipped its read and cut nothing.** "I didn't re-read the reports in full" and "The file had no earlier security rules, so I cut none". The prompt requires both the read and the cut.
+
+## 2026-11-28 (evening) — open edition, nordveil, Sonnet 5.5, Claude Code 2.1.332, cloud container
+
+One chain prework→solo on `73aa869` for the agent-reply measure (walk files: project files `a101-walk-2026-11-28/`). All modules PASS except solo T4 ("no pre-existing agent in agents/ was rewritten"); every turn ran.
+
+- **H-17 Finished-notice glyph (fixed).** Claude Code 2.1.332 prints `● Agent "…" finished`, not `⏺`. `waiting_unresolved` counted no notices, so M1 T9 held 28 minutes on a resolved "Waiting for 1 background agent". Both glyphs count now; case in `tests/background-agent-wait.test.sh`.
+- **Cloud runs need three local measures (not committed).** (1) Folder trust is asked on every launch (`CLAUDE_CODE_IGNORE_PERSISTED_TRUST`), and the runner's first paste answers "No, exit": wrap `CLAUDE_CMD` so the dialog is accepted. (2) The learner session inherits the cloud session's environment, including its project memory (`CLAUDE_MEMORY_STORES`, `CLAUDE_COWORK_MEMORY_PATH_OVERRIDE`) and thread tools: the first attempt's M1 replies quoted the project's team notes ("Antti ruled out any section named 'how I help'"). Unset those in the wrapper. (3) The open web is blocked, so the M2 T4 a16z crawl is a stub; the walk ran with that assertion as a warning.

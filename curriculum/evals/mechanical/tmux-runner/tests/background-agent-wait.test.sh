@@ -70,6 +70,11 @@ two_wait_one_done='✻ Waiting for 2 background agents to finish
 echo "[test] bg_agents_pending reads the LAST status line"
 check "Waiting line with its agent finished after it is not pending" "$(yes_no bg_agents_pending "$stale_wait_snap")" "no"
 check "stale Waiting line = idle" "$(yes_no pane_busy "$stale_wait_snap")" "no"
+# Claude Code 2.1.332 marks the notice with ● instead of ⏺ (cloud walk 2026-11-28, M1 T9 held 28 min).
+bullet_wait_snap='✻ Waiting for 1 background agent to finish
+● The cold-read subagent has finished.
+● Agent "Cold read of personal site" finished · 3s'
+check "● finished notice resolves the Waiting line" "$(yes_no bg_agents_pending "$bullet_wait_snap")" "no"
 check "Waiting for 2 with one finished is still pending" "$(yes_no bg_agents_pending "$two_wait_one_done")" "yes"
 check "panel-only running agent is pending" "$(yes_no bg_agents_pending "$panel_only_snap")" "yes"
 check "pending while last status is Waiting" "$(yes_no bg_agents_pending "$pending_snap")" "yes"

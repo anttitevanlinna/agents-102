@@ -33,7 +33,7 @@ Keep the rules small and boring. Apply them consistently across thousands of sma
 
 The memory is a folder of markdown files. No database, special tool or paid tier is needed.
 
-The agent in `agents/` is also markdown: instructions a session reads when you point it there. Any agent runtime can read it.
+The agent in `agents/` is also markdown: instructions a session reads when you point it there. Any agent can read it.
 
 Language models are strongest at reading and writing text. Knowledge stored as text is knowledge the agent can read and update directly.
 

@@ -247,7 +247,7 @@ assert_turn() {
       # Same export as T3, so an agent may rightly keep the identical file; that
       # passes when it says so instead of rewriting.
       assert_file_mtime_advanced "prework T4 screenshot fallback" "$sut_cwd/prework/meetings.md" "$base" \
-        || assert_scrollback_grep "prework T4 kept identical summary" "$t" "still (correct|matches)|didn.t rewrite|did not rewrite|unchanged|hasn.t changed|left it as is|same (as before|as last|calendar|export)" ;;
+        || assert_scrollback_grep "prework T4 kept identical summary" "$t" "$A101_PREWORK_KEPT_RE" ;;
 
     # ----- m1 -----
     m1:1) assert_file_exists "m1 T1 site" "$sut_cwd/module-1/site.html" ;;
@@ -317,7 +317,7 @@ assert_turn() {
       # Synthesis-seam guard (H1): the counter-case must NOW be integrated into
       # memory — its sentinel present here proves the compound turn ingested a
       # genuinely new source and the contradiction actually fired.
-      if ! grep -riqE "$A101_M2_INTEGRATION_RE" "$sut_cwd/memory" 2>/dev/null; then
+      if ! a101_source_integrated "$sut_cwd/memory" "$sut_cwd/sources" "$A101_M2_INTEGRATION_RE"; then
         echo "[assert] FAIL m2 T9 compound: counter-case not integrated into memory — synthesis seam did NOT fire" >&2; return 1
       fi
       echo "[assert] PASS m2 T9 compound: counter-case integrated (synthesis seam fired)"

@@ -154,6 +154,23 @@ assert_work_since() {
   return 1
 }
 
+# Prework T4 resends the T3 export; the agent may keep the identical file and
+# say so. tests/prework-kept-summary.test.sh
+A101_PREWORK_KEPT_RE="still (correct|matches)|(didn.t|did not) rewrite|(haven.t|have not|hasn.t|has not)( [a-z-]+){0,5} rewritten|unchanged|hasn.t changed|left it as is|kept (the|it|that)|same (as before|as last|calendar|export)"
+
+# A held-back source counts as integrated when its sentinel reached memory/,
+# or a memory page cites the sources/ copy that carries it (the agent may
+# paraphrase the sentinel away). $1=memory dir, $2=sources dir, $3=ERE.
+# tests/m2-source-integrated.test.sh
+a101_source_integrated() {
+  local mem="$1" src="$2" re="$3" f
+  grep -riqE "$re" "$mem" 2>/dev/null && return 0
+  while IFS= read -r f; do
+    [[ -n "$f" ]] && grep -rqF "$(basename "$f")" "$mem" 2>/dev/null && return 0
+  done < <(grep -rilE "$re" "$src" 2>/dev/null)
+  return 1
+}
+
 assert_scrollback_grep() {
   # $1=label, $2=transcript path, $3=ERE pattern.
   # Passes if grep -E -i matches. Useful for prompts whose only artifact

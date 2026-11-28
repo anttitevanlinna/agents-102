@@ -53,15 +53,15 @@ Open edition, Modules 1 to 6, Cowork profile, 720 by 800 pixels. Measured 2026-1
 
 `node curriculum/evals/scripts/attention-load.js --modules getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations`
 
-| module | stated min | handbook words | min at 200 wpm | prompts | prompt words | screens | screens, prompts cut at eight lines | file names in text |
-|---|---|---|---|---|---|---|---|---|
-| 1 Getting Going | 80 | 2,102 | 11 | 8 | 818 | 16.9 | 15.8 | 6 |
-| 2 Building Agent Systems | 90 | 3,276 | 16 | 16 | 1,903 | 26.9 | 23.8 | 16 |
-| 3 Multi-Agent Systems | 90 | 1,622 | 8 | 13 | 1,768 | 18.1 | 14.1 | 13 |
-| 4 Security | 105 | 2,895 | 14 | 12 | 1,427 | 23.4 | 20.1 | 10 |
-| 5 Catching Hallucinations | 85 | 1,878 | 9 | 10 | 1,485 | 18.2 | 14.5 | 4 |
-| 6 Evaluations | 90 | 2,199 | 11 | 9 | 1,432 | 18.8 | 15.0 | 7 |
-| all six | 540 | 13,972 | 70 | 68 | 8,833 | 122 | 103 | |
+| module | stated min | handbook words | min at 200 wpm | prompts | prompt words | screens | file names in text |
+|---|---|---|---|---|---|---|---|
+| 1 Getting Going | 80 | 2,102 | 11 | 8 | 818 | 16.9 | 6 |
+| 2 Building Agent Systems | 90 | 3,276 | 16 | 16 | 1,903 | 26.9 | 16 |
+| 3 Multi-Agent Systems | 90 | 1,622 | 8 | 13 | 1,768 | 18.1 | 13 |
+| 4 Security | 105 | 2,895 | 14 | 12 | 1,427 | 23.4 | 10 |
+| 5 Catching Hallucinations | 85 | 1,878 | 9 | 10 | 1,485 | 18.2 | 4 |
+| 6 Evaluations | 90 | 2,199 | 11 | 9 | 1,432 | 18.8 | 7 |
+| all six | 540 | 13,972 | 70 | 68 | 8,833 | 122 | |
 
 - Words in front of a prompt: 32 of 68 prompts have 30 or fewer, 29 have 31 to 60, 7 have more.
 - 17 prompt boxes are taller than three quarters of the screen. The tallest is 1.7 screens.
@@ -71,11 +71,23 @@ Open edition, Modules 1 to 6, Cowork profile, 720 by 800 pixels. Measured 2026-1
 
 What the measures say: handbook text in total is near the module limit in four of six modules (2 and 4 are over). The heavier loads are the prompt text on the page and the distance a learner scrolls to find the next step.
 
+**With long prompts in short** (self-study handbook, measured 2026-11-28 on one build; `--full-prompts` gives the first column):
+
+| | every prompt open | long prompts in short |
+|---|---|---|
+| prompt words in view | 8,833 | 4,940 |
+| prompts shown in short | 0 | 36 of 68 |
+| prompt boxes taller than three quarters of the screen | 17 | 3 |
+| screens, six modules | 122.7 | 112.2 |
+| screens per module | 17 / 27 / 18.1 / 23.4 / 18.3 / 18.9 | 16 / 25 / 16 / 21.8 / 16.3 / 17.1 |
+
 ## Navigation
 
-A module is 17 to 27 screens beside the agent. Prompt boxes carry no number and show every line.
+A module is 16 to 25 screens beside the agent in the self-study handbook, 17 to 27 with every prompt open.
 
-Sketch, not built: label each prompt with its place in the module (*Prompt 4 of 9*) and show a prompt longer than eight lines in short, as below. Module 6, Phase 2 goes from 2.5 screens to 2.0 with four callouts on the prompt; the prompt box goes from 1.5 screens to 1.0.
+In the self-study handbook each prompt box carries its place in the module (*Prompt 4 of 9*) and a filled *Copy prompt* button, and a long prompt shows in short, as below. Module 6, Phase 2 goes from 2.5 screens to 2.0 with four callouts on the prompt; the prompt box goes from 1.5 screens to 1.0. Trainer-led editions and the Slides layout show prompts in full.
+
+Code: `curriculum/delivery/agents-101-mvp/shell/prompt-short.js` (rules, numbering, toggles), styles in `curriculum/delivery/agents-101-mvp/shell/deskpad.css`, switched on by `promptsInShort` in `scripts/build-a101-mvp.js`, tests in `scripts/prompt-short.test.js`. The full prompt stays in the page, so Copy, the tests and the simulations read all of it.
 
 Page with the measures and the step shown both ways: https://claude.ai/artifact/AvNMCXwk1wg17ScN1rx6on
 
@@ -87,10 +99,10 @@ Page with the measures and the step shown both ways: https://claude.ai/artifact/
 
 **The split** (Antti 2026-11-28): *"handbook kind of gives squint of the prompt with key callouts. The cowork then has the full text as is. I think this introduces the big prompts right."* The handbook introduces a prompt; Cowork holds it.
 
-Sketch, not built. Three layers:
+Three layers. The first two are in the self-study handbook; the prework sentence is not placed.
 
-- **Squint, automatic, every prompt longer than eight lines.** The box shows the first sentence of each part (each paragraph, each top-level list item) in the prompt's code type on grey. *Copy prompt* is the main button and takes the whole prompt. One link shows all lines in the handbook; no control per part, the full text is one paste away in Cowork. No authoring. 51 of 68 prompts qualify; 17 short ones stay open. Prompt text in view on the 51 goes from 8,393 words to 4,117; the six modules go from 122 screens to 109 before callouts.
-- **Callouts, written, only where there is a why.** *"Each prompt splits into areas. Each area might be commented in few words to call out what and why of the shape / instruction."* (Antti 2026-11-28) A callout sits between the areas as a card laid on the box: white, body type, one marker, narrower than the box, so the grey runs unbroken around it. Two ways it fails (Antti 2026-11-28). Set in the box's own type in a second colour, it reads as prompt text: *"They now feel like part of the prompt to me"*. Set as a white band across the full width, it cuts the prompt in pieces: *"I'm kind of now seeing the "prompt breaks up" which is does not really do."* Working limits, the author's judgment: a callout says why a part is there, never what it says (the line says what); three or four a prompt; about twelve words each; an area with no why gets none. Callouts are not copied. Example, the Module 6 loop prompt: *The judge stays fixed, so a better score means better work.* · *The writer and the judge are separate agents. The judge sees only the briefing.* · *This is what you read when you come back.* · *The loop keeps running while you are away.* Its two areas of file paths and folders carry none.
+- **Squint, automatic.** A prompt longer than eight lines shows in short when that saves four lines or more: 36 of 68 prompts. The box shows the first sentence of each part (each paragraph, each top-level list item) in the prompt's code type on grey; a run of five or more short bullets shows its first two. *Copy prompt* is the main button and takes the whole prompt. One link shows all lines in the handbook; no control per part, the full text is one paste away in Cowork. No authoring. A prompt's closing label (*My hate list:*, *Question:*) is a part of its own and stays in view, so the learner sees where their own text goes.
+- **Callouts, written, only where there is a why.** *"Each prompt splits into areas. Each area might be commented in few words to call out what and why of the shape / instruction."* (Antti 2026-11-28) A callout sits between the areas as a card laid on the box: white, body type, one marker, narrower than the box, so the grey runs unbroken around it. Two ways it fails (Antti 2026-11-28). Set in the box's own type in a second colour, it reads as prompt text: *"They now feel like part of the prompt to me"*. Set as a white band across the full width, it cuts the prompt in pieces: *"I'm kind of now seeing the "prompt breaks up" which is does not really do."* Working limits, the author's judgment: a callout says why a part is there, never what it says (the line says what); three or four a prompt; about twelve words each; an area with no why gets none. Callouts are not copied. Source: `callouts:` in the prompt's frontmatter, `at` = the first words of the part, `say` = the callout. Frontmatter sits outside the prompt gate; a callout is student-facing body text and runs under the writing canon. `scripts/compile-prompts.js` fails when an `at` matches no line of the prompt body, so a callout cannot outlive its part unnoticed. Example, the Module 6 loop prompt: *The judge stays fixed, so a better score means better work.* · *The writer and the judge are separate agents. The judge sees only the briefing.* · *This is what you read when you come back.* · *The loop keeps running while you are away.* Its two areas of file paths and folders carry none.
 - **Said once in the prework:** *Glance at each prompt. Check what seems pertinent in more detail. No need to study all the detail.*
 
 **Callouts replace text.** A passage that explains a prompt from outside the prompt sits a screen away from the line it explains. Modules 1 to 6 hold three: the Module 3 Debrief (*"The prompt asks the agent for a harsh review…"*), the Module 5 slide *Notice what the prompt insists on*, and *How the loop works* in the Module 6 exercise, about 160 words together. As callouts they sit next to their lines.
@@ -102,7 +114,7 @@ The sentence above the prompt carries the ask. 34 of 68 prompts open with a sent
 ## Open
 
 - Length of the agent's replies: not measured. Needs a recorded walk through the course.
-- What real learners read and where they lose their place: no data. Copy events per prompt and the time between them would show it.
+- What real learners read and where they lose their place: no data read yet. The page sends `copy-prompt` for every copy and `prompt-open` when a learner opens a prompt in full (`site/layouts/track.js`); the time between copies and the share of prompts opened would show it.
 - Reading speed for this audience: 200 words a minute is assumed.
 - Whether idea slides belong in the waits, when the agent works and the learner has attention to spare.
 - Prompt length as a load in itself, and how much of a prompt a learner reads before copying.

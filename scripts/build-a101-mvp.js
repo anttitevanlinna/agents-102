@@ -141,6 +141,15 @@ function dropModuleOnePrework(html) {
 // the same page as a short lesson, so the open edition keeps the body and drops
 // the "Demo: " label from the title wherever it appears.
 const TRAINER_DEMOS = ['1st scheduled agent', 'Agent that takes action'];
+// Self-study only: a solo learner glances at a prompt, the agent reads it.
+// The flags switch on shell/prompt-short.js (prompt numbers, the prompt in
+// short, callouts) and name the copy button. curriculum/attention-design.md.
+function promptsInShort(html) {
+  const tag = /<body class="([^"]*\bstudent-handbook\b[^"]*)"/;
+  if (!tag.test(html)) throw new Error('promptsInShort: no student-handbook <body> tag to flag');
+  return html.replace(tag, '<body data-prompt-view="short" data-prompt-copy-label="Copy prompt" class="$1"');
+}
+
 function retitleTrainerDemos(html) {
   for (const title of TRAINER_DEMOS) {
     const count = html.split(`Demo: ${title}`).length - 1;
@@ -527,9 +536,9 @@ ${SETUP_CSS}
   }, true);
   reveal();
 })();
-</script>\n${shell('figure-reader.html')}<script data-a101-handbook>\n${shell('deskpad.js')}\n</script>\n</body>`);
+</script>\n${shell('figure-reader.html')}<script data-a101-handbook>\n${shell('deskpad.js')}\n</script>\n${edition.open ? `<script data-a101-prompt-short>\n${shell('prompt-short.js')}\n</script>\n` : ''}</body>`);
 
-    if (edition.open) html = hideVideoPlaceholders(addModuleTimes(addLicenceLine(retitleTrainerDemos(html)), modules));
+    if (edition.open) html = promptsInShort(hideVideoPlaceholders(addModuleTimes(addLicenceLine(retitleTrainerDemos(html)), modules)));
 
     // The edition hub has one destination. Existing customer hubs are untouched.
     if (edition.hub) fs.writeFileSync(path.join(customerDir, 'index.html'), `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agents 101 — ${edition.brand}</title><meta http-equiv="refresh" content="0; url=./agents-101/#start-learning"></head><body><p><a href="./agents-101/#start-learning">Start Agents 101</a></p></body></html>\n`);

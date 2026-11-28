@@ -2956,6 +2956,26 @@ body.slides-active .a101-onboarding { display: none; }
   body.workbook:not(.slides-active) main .prompt-block__pre code { background: none; color: inherit; }
   body.workbook:not(.slides-active) main .prompt-block .copy-btn { background: white; border: 1px solid #878780; color: #191917; padding: 5px 12px; border-radius: 4px; font-size: 13px; text-transform: none; letter-spacing: 0; }
   body.workbook:not(.slides-active) main .prompt-block .copy-btn--copied { color: white; background: #282824; }
+  /* The prompt in short (shell/prompt-short.js, self-study only; curriculum/attention-design.md).
+     Long-read layout only: Slides keeps the full <pre> and its own preview. */
+  .prompt-short, .prompt-short__back { display: none; }
+  body[data-prompt-view="short"]:not(.slides-active) main .prompt-block--short > .prompt-short { display: block; padding-top: 2px; }
+  body[data-prompt-view="short"]:not(.slides-active) main .prompt-block--short > .prompt-block__pre { display: none; }
+  body[data-prompt-view="short"]:not(.slides-active) main .prompt-block--full > .prompt-short__back { display: block; }
+  body[data-prompt-view="short"]:not(.slides-active) main .prompt-block .copy-btn { background: #1f1e1b; border-color: #1f1e1b; color: #fff; font-weight: 600; padding: 8px 14px; }
+  body[data-prompt-view="short"]:not(.slides-active) main .prompt-block .copy-btn--copied { background: #55554f; border-color: #55554f; }
+  .prompt-short__part { padding: 8px 20px 10px; font: 400 13.6px/21px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: #1f1e1b; }
+  .prompt-short__line { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0 0 2px; }
+  .prompt-short__more { color: #6f6c62; }
+  /* A callout is the handbook speaking: a white card in body type, narrower than the box, so the grey stays whole around it. */
+  .prompt-callout { display: flex; gap: 8px; margin: 4px 10% 4px 14px; padding: 8px 12px; border-radius: 8px; background: #fff; color: #1f1e1b; font: 400 15.5px/1.45 var(--font-body); }
+  .prompt-callout__mark { color: #d9540b; font-weight: 700; }
+  .prompt-short__foot { margin: 0; padding: 4px 20px 14px; font: 500 14px/1.4 var(--font-body); color: #5c5a52; }
+  .prompt-short__toggle { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+  @media print {
+    .prompt-block--short > .prompt-short { display: none !important; }
+    .prompt-block--short > .prompt-block__pre { display: block !important; }
+  }
   body.workbook :focus-visible { outline: 2px solid #95390f; outline-offset: 3px; }
   body.workbook .copyright-badge { position: static; margin: 0; padding: 12px 24px; border: 0; border-radius: 0; background: #111; opacity: 1; text-align: center; }
   body.workbook .copyright-badge a { color: #deded8; }
@@ -3228,7 +3248,7 @@ body.workbook #prework .walkthrough-media p, .deck .slide .slide__body .walkthro
 <style data-a101-times>.a101-module-time { color: var(--fg-2); font-size: .95rem; }</style>
 <style data-a101-video>.a101-video-placeholder, body.workbook main .walkthrough-media.walkthrough-media:not(:has(video, img)), body.workbook main .walkthrough-media [data-a101-os-only]:not(:has(video, img)) { display: none !important; }</style>
 </head>
-<body class="runtime-cowork workbook student-handbook" data-training="agents-101">
+<body data-prompt-view="short" data-prompt-copy-label="Copy prompt" class="runtime-cowork workbook student-handbook" data-training="agents-101">
 <nav class="workbook-topnav field-header" aria-label="Handbook navigation">
 <div class="field-header__inner"><a class="rail-brand" href="#start-learning">Agents 101</a><span class="field-edition">Self-study edition</span>
 <span class="field-place" aria-hidden="true"></span>
@@ -3518,7 +3538,7 @@ For course navigation, add this line to the `CLAUDE.md` file in this folder if i
 </code></pre>
 </div>
 
-<p>If the agent says the download failed, <a href="https://agents102.bosser.consulting/agents-101/agents-101-starter.tar.gz?v=6e8a3ac4ee90d1ca" target="_blank" rel="noopener">download the course files</a> in your browser, drag the file into <code>agents-101</code>, and tell the agent it is there.</p>
+<p>If the agent says the download failed, <a href="https://agents102.bosser.consulting/agents-101/agents-101-starter.tar.gz?v=d0e2d8777e9207a4" target="_blank" rel="noopener">download the course files</a> in your browser, drag the file into <code>agents-101</code>, and tell the agent it is there.</p>
 <div class="walkthrough-media rt-profile rt-profile-cowork"><strong>Course files walkthrough</strong>
 </div>
 
@@ -10305,6 +10325,8 @@ Then tell me in five lines: claims judged and flagged in the baseline briefing, 
 <div class="rt-profile rt-profile-cowork">
 
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<!--prompt-callouts [{"at":"Run an eval loop","say":"The judge stays fixed, so a better score means better work."},{"at":"For each round","say":"The writer and the judge are separate agents. The judge sees only the briefing."},{"at":"When the loop stops","say":"This is what you read when you come back."},{"at":"Do not stop","say":"The loop keeps running while you are away."}]-->
+
 <pre><code>Run an eval loop using my fixed judge. Never edit judges/groundedness-judge.md.
 
 Starting generation tactic:
@@ -10337,6 +10359,8 @@ Do not stop for confirmation between rounds.
 <div class="rt-profile rt-profile-desktop">
 
 <p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
+<!--prompt-callouts [{"at":"Run an eval loop","say":"The judge stays fixed, so a better score means better work."},{"at":"For each round","say":"The writer and the judge are separate agents. The judge sees only the briefing."},{"at":"When the loop stops","say":"This is what you read when you come back."},{"at":"Do not stop","say":"The loop keeps running while you are away."}]-->
+
 <pre><code>Run an eval loop using my fixed judge. Never edit judges/groundedness-judge.md.
 
 Starting generation tactic:
@@ -10369,6 +10393,8 @@ Do not stop for confirmation between rounds.
 <div class="rt-profile rt-profile-cli">
 
 <p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
+<!--prompt-callouts [{"at":"Run an eval loop","say":"The judge stays fixed, so a better score means better work."},{"at":"For each round","say":"The writer and the judge are separate agents. The judge sees only the briefing."},{"at":"When the loop stops","say":"This is what you read when you come back."},{"at":"Do not stop","say":"The loop keeps running while you are away."}]-->
+
 <pre><code>Run an eval loop using my fixed judge. Never edit judges/groundedness-judge.md.
 
 Starting generation tactic:
@@ -10401,6 +10427,8 @@ Do not stop for confirmation between rounds.
 <div class="rt-profile rt-profile-codex-desktop">
 
 <p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
+<!--prompt-callouts [{"at":"Run an eval loop","say":"The judge stays fixed, so a better score means better work."},{"at":"For each round","say":"The writer and the judge are separate agents. The judge sees only the briefing."},{"at":"When the loop stops","say":"This is what you read when you come back."},{"at":"Do not stop","say":"The loop keeps running while you are away."}]-->
+
 <pre><code>Run an eval loop using my fixed judge. Never edit judges/groundedness-judge.md.
 
 Starting generation tactic:
@@ -10433,6 +10461,8 @@ Do not stop for confirmation between rounds.
 <div class="rt-profile rt-profile-codex-cli">
 
 <p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
+<!--prompt-callouts [{"at":"Run an eval loop","say":"The judge stays fixed, so a better score means better work."},{"at":"For each round","say":"The writer and the judge are separate agents. The judge sees only the briefing."},{"at":"When the loop stops","say":"This is what you read when you come back."},{"at":"Do not stop","say":"The loop keeps running while you are away."}]-->
+
 <pre><code>Run an eval loop using my fixed judge. Never edit judges/groundedness-judge.md.
 
 Starting generation tactic:
@@ -10465,6 +10495,8 @@ Do not stop for confirmation between rounds.
 <div class="rt-profile rt-profile-copilot-app">
 
 <p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
+<!--prompt-callouts [{"at":"Run an eval loop","say":"The judge stays fixed, so a better score means better work."},{"at":"For each round","say":"The writer and the judge are separate agents. The judge sees only the briefing."},{"at":"When the loop stops","say":"This is what you read when you come back."},{"at":"Do not stop","say":"The loop keeps running while you are away."}]-->
+
 <pre><code>Run an eval loop using my fixed judge. Never edit judges/groundedness-judge.md.
 
 Starting generation tactic:
@@ -10497,6 +10529,8 @@ Do not stop for confirmation between rounds.
 <div class="rt-profile rt-profile-copilot-cli">
 
 <p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
+<!--prompt-callouts [{"at":"Run an eval loop","say":"The judge stays fixed, so a better score means better work."},{"at":"For each round","say":"The writer and the judge are separate agents. The judge sees only the briefing."},{"at":"When the loop stops","say":"This is what you read when you come back."},{"at":"Do not stop","say":"The loop keeps running while you are away."}]-->
+
 <pre><code>Run an eval loop using my fixed judge. Never edit judges/groundedness-judge.md.
 
 Starting generation tactic:
@@ -12999,7 +13033,21 @@ SOFTWARE.
             text = injectAnchorSentinels(text, entry.anchors);
         }
         var fence = '```\n' + text + '\n```';
-        return label + '\n\n' + fence;
+        return label + '\n\n' + calloutComment(entry && entry.callouts) + fence;
+    }
+
+    // Callouts (`callouts:` in a prompt's frontmatter: `at` = the first words
+    // of a part of the prompt, `say` = why that part is there) ride between
+    // the label and the fence as one HTML comment. marked passes it through,
+    // decoratePrompts steps over it (it reads nextElementSibling), a page
+    // script that shows callouts reads it (prompt-short.js in the Agents 101
+    // self-study shell), and nothing lands in the text a learner copies.
+    function calloutComment(callouts) {
+        if (!callouts || !callouts.length) return '';
+        var list = callouts.filter(function (c) { return c && c.at && c.say; })
+            .map(function (c) { return { at: String(c.at), say: String(c.say) }; });
+        if (!list.length) return '';
+        return '<!--prompt-callouts ' + JSON.stringify(list).replace(/--/g, '\\u002d\\u002d').replace(/>/g, '\\u003e') + '-->\n\n';
     }
 
     // Replace every `{{runtime-map:<module-slug>}}` line with that module's
@@ -13138,7 +13186,10 @@ SOFTWARE.
         btn.className = host ? 'copy-btn copy-btn--in-header' : 'copy-btn';
         btn.type = 'button';
         var options = pre.closest('[data-copy-label]');
-        var label = options ? options.dataset.copyLabel : 'Copy';
+        // A page can name the button on its prompt boxes ("Copy prompt") with
+        // data-prompt-copy-label on <body>; plain code blocks keep "Copy".
+        var promptLabel = host && document.body && document.body.getAttribute('data-prompt-copy-label');
+        var label = options ? options.dataset.copyLabel : (promptLabel || 'Copy');
         var status = options && options.querySelector('[data-copy-status]');
         btn.setAttribute('aria-label', options ? label : 'Copy to clipboard');
         btn.textContent = label;
@@ -15066,6 +15117,7 @@ SOFTWARE.
  *   <slug>-start / <slug>-done   for unnumbered pages (supplementary, reference)
  *   step            {module, step}
  *   copy-prompt     {module, step, n, kind}      copy-failed {module, step}
+ *   prompt-open     {module, step, n}            a prompt shown in short, opened in full
  *   video-play / video-half / video-end    {video, module}
  *   download-starter {file, module}
  *   os-pick {os}   runtime-pick {runtime}   view-switch {to}
@@ -15268,6 +15320,20 @@ SOFTWARE.
             setTimeout(function () {
                 if (/fail/i.test(copy.textContent)) send('copy-failed', { module: w.module, step: w.step });
             }, 600);
+            return;
+        }
+
+        // "Show them" on a prompt shown in short (shell/prompt-short.js). Sent
+        // on opening only: how often a learner wants the whole prompt on the page.
+        var toggle = t.closest('.prompt-short__toggle');
+        if (toggle) {
+            var blk = toggle.closest('.prompt-block');
+            if (blk && toggle.closest('.prompt-short')) {
+                var tw = where(toggle);
+                var tscope = toggle.closest('section.phase') || toggle.closest('section[id]') || document.body;
+                var tn = Array.prototype.slice.call(tscope.querySelectorAll('.prompt-block')).indexOf(blk) + 1;
+                send('prompt-open', { module: tw.module, step: tw.step, n: tn });
+            }
             return;
         }
 
@@ -15543,6 +15609,230 @@ SOFTWARE.
     opener?.focus({preventScroll:true});
   });
 })();
+
+</script>
+<script data-a101-prompt-short>
+/* The prompt in short. Self-study handbook only: scripts/build-a101-mvp.js
+ * inlines this file into the open edition. Design and working limits:
+ * curriculum/attention-design.md, "Glancing at a prompt".
+ *
+ *   - every prompt carries its place in the module: "Prompt 4 of 9"
+ *   - a prompt longer than eight lines shows the first sentence of each part;
+ *     Copy takes the whole prompt, one link shows every line
+ *   - callouts from the prompt's frontmatter lie on the box as cards, in the
+ *     handbook's own type; they are never copied
+ *
+ * The full <pre> stays in the DOM untouched, so Copy, the tests and the
+ * simulations that read prompt text keep working. The Slides layout keeps its
+ * own preview: the short view is styled for the long-read layout only.
+ */
+(function (root, factory) {
+  var api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  if (typeof document !== 'undefined' && document.body) api.install(document);
+})(this, function () {
+  'use strict';
+
+  var CHARS = 72;      // code characters on one line of the box, handbook beside Cowork
+  var LONG = 8;        // a prompt of up to eight lines stays open
+  var SAVING = 4;      // the short view has to save at least this many lines
+  var RUN = 5;         // a run of this many short bullets folds
+  var RUN_SHOWN = 2;   // ... to its first two
+  var RUN_WORDS = 12;  // a bullet of up to twelve words counts as short
+
+  function words(s) { return (String(s).match(/\S+/g) || []).length; }
+  function lines(s) {
+    return String(s).split('\n').reduce(function (n, l) { return n + Math.max(1, Math.ceil(l.length / CHARS)); }, 0);
+  }
+  function isItem(l) { return /^(\d+\.|[-*])\s+/.test(l); }
+  function isBullet(l) { return /^[-*]\s+/.test(l); }
+
+  // The first sentence of a line and what follows it. A full stop inside an
+  // open quote or backtick, or after an abbreviation, does not end a sentence.
+  var END = /[.?!]["')\]]?(?=\s+[A-Z`"'(\[*]|\s*$)/g;
+  var ABBR = /(?:\be\.g|\bi\.e|\bvs|\betc|\bcf)\.$/;
+  function firstSentence(line) {
+    var m;
+    END.lastIndex = 0;
+    while ((m = END.exec(line))) {
+      var end = m.index + m[0].length;
+      var head = line.slice(0, end);
+      if (end >= line.length) break;
+      if (ABBR.test(head)) continue;
+      if ((head.match(/"/g) || []).length % 2 || (head.match(/`/g) || []).length % 2) continue;
+      return [head, line.slice(end).replace(/^\s+/, '')];
+    }
+    return [line, ''];
+  }
+
+  // A prompt as its parts: a paragraph or a top-level list item is one part.
+  // head = the first sentence, more = the part holds more than its head,
+  // gap = a blank line follows.
+  function promptOutline(text) {
+    var units = [], cur = null, fence = false;
+    String(text || '').replace(/\r/g, '').replace(/\s+$/, '').split('\n').forEach(function (l) {
+      if (/^\s*```/.test(l)) {
+        if (!cur) { cur = { item: false, lines: [] }; units.push(cur); }
+        cur.lines.push(l); fence = !fence; return;
+      }
+      if (fence) { cur.lines.push(l); return; }
+      if (!l.trim()) { cur = null; if (units.length) units[units.length - 1].gap = true; return; }
+      if (isItem(l) || !cur || (cur.item && !/^\s/.test(l))) {
+        cur = { item: isItem(l), bullet: isBullet(l), lines: [l] }; units.push(cur);
+      } else cur.lines.push(l);
+    });
+    return units.map(function (u) {
+      var fs = firstSentence(u.lines[0]), head = fs[0];
+      var tail = u.lines.length > 1 ? '\n' + u.lines.slice(1).join('\n') : '';
+      var rest = fs[1] + tail;
+      if (words(head) < 4 && fs[1]) {
+        var f2 = firstSentence(fs[1]);
+        head += ' ' + f2[0]; rest = f2[1] + tail;
+      }
+      if (rest && rest.indexOf('\n') < 0 && words(rest) <= 6) { head = head + ' ' + rest; rest = ''; }
+      return { head: head, more: !!rest.trim(), gap: !!u.gap, item: !!u.item, bullet: !!u.bullet, full: u.lines.join('\n') };
+    });
+  }
+
+  // The rows of the short view, and whether it earns its place.
+  // callouts: [{ at: 'first words of a part', say: 'why the part is there' }]
+  function shortView(text, callouts) {
+    var units = promptOutline(text), rows = [], shortLines = 0, i = 0;
+    var notes = (callouts || []).filter(function (c) { return c && c.at && c.say; });
+    function noteFor(u) {
+      var bare = u.full.replace(/^(\d+\.|[-*])\s+/, '');
+      for (var k = 0; k < notes.length; k++) {
+        if (u.full.indexOf(notes[k].at) === 0 || bare.indexOf(notes[k].at) === 0) return notes[k].say;
+      }
+      return '';
+    }
+    function push(u) {
+      var say = noteFor(u);
+      if (say) rows.push({ type: 'callout', say: say });
+      rows.push({ type: 'line', text: u.head, more: u.more });
+      shortLines += lines(u.head);
+      if (u.gap) { rows.push({ type: 'gap' }); shortLines += 1; }
+    }
+    while (i < units.length) {
+      var j = i;
+      while (j < units.length && units[j].bullet && !units[j].more && words(units[j].head) <= RUN_WORDS &&
+             (j === i || !units[j - 1].gap)) j++;
+      if (j - i >= RUN) {
+        for (var k = i; k < i + RUN_SHOWN; k++) rows.push({ type: 'line', text: units[k].head, more: false }), shortLines += lines(units[k].head);
+        rows.push({ type: 'fold', count: j - i - RUN_SHOWN }); shortLines += 1;
+        if (units[j - 1].gap) { rows.push({ type: 'gap' }); shortLines += 1; }
+        i = j;
+      } else { push(units[i]); i++; }
+    }
+    while (rows.length && rows[rows.length - 1].type === 'gap') { rows.pop(); shortLines -= 1; }
+    var fullLines = lines(String(text || '').replace(/\s+$/, ''));
+    return {
+      short: fullLines > LONG && fullLines - shortLines >= SAVING,
+      fullLines: fullLines, shortLines: shortLines, rows: rows,
+      shortWords: rows.reduce(function (n, r) { return n + (r.type === 'line' ? words(r.text) : 0); }, 0),
+      calloutWords: rows.reduce(function (n, r) { return n + (r.type === 'callout' ? words(r.say) : 0); }, 0)
+    };
+  }
+
+  // ── browser ─────────────────────────────────────────────────────────────
+
+  // Callouts travel from the registry as a comment between the prompt label
+  // and its fence (renderPromptBlock in site/layouts/curriculum.js); after
+  // decoratePrompts it is the node that follows the block.
+  function calloutsOf(block) {
+    for (var n = block.nextSibling; n && n.nodeType !== 1; n = n.nextSibling) {
+      if (n.nodeType === 8 && /^prompt-callouts\s/.test(n.data)) {
+        try { return JSON.parse(n.data.replace(/^prompt-callouts\s+/, '')); } catch (e) { return []; }
+      }
+    }
+    return [];
+  }
+
+  function el(doc, tag, cls, text) {
+    var e = doc.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+
+  function build(doc, block) {
+    var pre = block.querySelector('pre.prompt-block__pre');
+    if (!pre || block.querySelector('.prompt-short')) return;
+    var code = pre.querySelector('code') || pre;
+    var view = shortView(code.textContent, calloutsOf(block));
+    if (!view.short) return;
+    var box = el(doc, 'div', 'prompt-short'), part = null;
+    view.rows.forEach(function (r) {
+      if (r.type === 'callout') {
+        var c = el(doc, 'div', 'prompt-callout');
+        var mark = el(doc, 'span', 'prompt-callout__mark', '↓'); mark.setAttribute('aria-hidden', 'true');
+        c.append(mark, el(doc, 'span', '', r.say));
+        box.append(c); part = null; return;
+      }
+      if (r.type === 'gap') { part = null; return; }
+      if (!part) { part = el(doc, 'div', 'prompt-short__part'); box.append(part); }
+      if (r.type === 'fold') { part.append(el(doc, 'div', 'prompt-short__line prompt-short__more', '… ' + r.count + ' more lines')); return; }
+      var line = el(doc, 'div', 'prompt-short__line', r.text);
+      if (r.more) line.append(el(doc, 'span', 'prompt-short__more', ' …'));
+      part.append(line);
+    });
+    var foot = el(doc, 'div', 'prompt-short__foot', 'The prompt in short. Copy takes all ' + view.fullLines + ' lines. ');
+    var show = el(doc, 'button', 'prompt-short__toggle', 'Show them'); show.type = 'button';
+    foot.append(show); box.append(foot);
+    var back = el(doc, 'div', 'prompt-short__foot prompt-short__back');
+    var hide = el(doc, 'button', 'prompt-short__toggle', 'Show the prompt in short'); hide.type = 'button';
+    back.append(hide);
+    pre.before(box); pre.after(back);
+    block.classList.add('prompt-block--short');
+  }
+
+  function shown(node, stop) {
+    var view = node.ownerDocument.defaultView;
+    for (var n = node; n && n !== stop && n.nodeType === 1; n = n.parentElement) {
+      if (view.getComputedStyle(n).display === 'none') return false;
+    }
+    return true;
+  }
+
+  // "Prompt 4 of 9": the prompts of one module that the chosen runtime shows.
+  function number(doc) {
+    Array.prototype.forEach.call(doc.querySelectorAll('main section.module'), function (mod) {
+      var blocks = Array.prototype.filter.call(mod.querySelectorAll('.prompt-block'), function (b) { return shown(b, mod); });
+      blocks.forEach(function (b, i) {
+        var label = b.querySelector('.prompt-block__label');
+        if (label) label.textContent = 'Prompt ' + (i + 1) + ' of ' + blocks.length;
+      });
+    });
+  }
+
+  function install(doc) {
+    if (doc.body.getAttribute('data-prompt-view') !== 'short' || doc.body.hasAttribute('data-prompt-short-on')) return;
+    doc.body.setAttribute('data-prompt-short-on', '');
+    Array.prototype.forEach.call(doc.querySelectorAll('main section.module .prompt-block'), function (b) { build(doc, b); });
+    number(doc);
+    // One listener for every toggle, so a cloned block keeps working.
+    doc.addEventListener('click', function (ev) {
+      var t = ev.target && ev.target.closest && ev.target.closest('.prompt-short__toggle');
+      if (!t) return;
+      var block = t.closest('.prompt-block');
+      if (!block) return;
+      var toShort = !block.classList.contains('prompt-block--short');
+      block.classList.toggle('prompt-block--short', toShort);
+      block.classList.toggle('prompt-block--full', !toShort);
+    });
+    // The runtime switcher changes which prompts show; their numbers follow.
+    var view = doc.defaultView;
+    if (view && view.MutationObserver) {
+      var last = doc.body.className.replace(/\bslides-active\b/, '');
+      new view.MutationObserver(function () {
+        var now = doc.body.className.replace(/\bslides-active\b/, '');
+        if (now !== last) { last = now; number(doc); }
+      }).observe(doc.body, { attributes: true, attributeFilter: ['class'] });
+    }
+  }
+
+  return { promptOutline: promptOutline, shortView: shortView, install: install, LONG: LONG, CHARS: CHARS };
+});
 
 </script>
 </body>

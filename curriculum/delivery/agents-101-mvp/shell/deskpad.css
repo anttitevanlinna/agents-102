@@ -171,6 +171,26 @@
   body.workbook:not(.slides-active) main .prompt-block__pre code { background: none; color: inherit; }
   body.workbook:not(.slides-active) main .prompt-block .copy-btn { background: white; border: 1px solid #878780; color: #191917; padding: 5px 12px; border-radius: 4px; font-size: 13px; text-transform: none; letter-spacing: 0; }
   body.workbook:not(.slides-active) main .prompt-block .copy-btn--copied { color: white; background: #282824; }
+  /* The prompt in short (shell/prompt-short.js, self-study only; curriculum/attention-design.md).
+     Long-read layout only: Slides keeps the full <pre> and its own preview. */
+  .prompt-short, .prompt-short__back { display: none; }
+  body[data-prompt-view="short"]:not(.slides-active) main .prompt-block--short > .prompt-short { display: block; padding-top: 2px; }
+  body[data-prompt-view="short"]:not(.slides-active) main .prompt-block--short > .prompt-block__pre { display: none; }
+  body[data-prompt-view="short"]:not(.slides-active) main .prompt-block--full > .prompt-short__back { display: block; }
+  body[data-prompt-view="short"]:not(.slides-active) main .prompt-block .copy-btn { background: #1f1e1b; border-color: #1f1e1b; color: #fff; font-weight: 600; padding: 8px 14px; }
+  body[data-prompt-view="short"]:not(.slides-active) main .prompt-block .copy-btn--copied { background: #55554f; border-color: #55554f; }
+  .prompt-short__part { padding: 8px 20px 10px; font: 400 13.6px/21px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: #1f1e1b; }
+  .prompt-short__line { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0 0 2px; }
+  .prompt-short__more { color: #6f6c62; }
+  /* A callout is the handbook speaking: a white card in body type, narrower than the box, so the grey stays whole around it. */
+  .prompt-callout { display: flex; gap: 8px; margin: 4px 10% 4px 14px; padding: 8px 12px; border-radius: 8px; background: #fff; color: #1f1e1b; font: 400 15.5px/1.45 var(--font-body); }
+  .prompt-callout__mark { color: #d9540b; font-weight: 700; }
+  .prompt-short__foot { margin: 0; padding: 4px 20px 14px; font: 500 14px/1.4 var(--font-body); color: #5c5a52; }
+  .prompt-short__toggle { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+  @media print {
+    .prompt-block--short > .prompt-short { display: none !important; }
+    .prompt-block--short > .prompt-block__pre { display: block !important; }
+  }
   body.workbook :focus-visible { outline: 2px solid #95390f; outline-offset: 3px; }
   body.workbook .copyright-badge { position: static; margin: 0; padding: 12px 24px; border: 0; border-radius: 0; background: #111; opacity: 1; text-align: center; }
   body.workbook .copyright-badge a { color: #deded8; }

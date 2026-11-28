@@ -701,7 +701,21 @@
             text = injectAnchorSentinels(text, entry.anchors);
         }
         var fence = '```\n' + text + '\n```';
-        return label + '\n\n' + fence;
+        return label + '\n\n' + calloutComment(entry && entry.callouts) + fence;
+    }
+
+    // Callouts (`callouts:` in a prompt's frontmatter: `at` = the first words
+    // of a part of the prompt, `say` = why that part is there) ride between
+    // the label and the fence as one HTML comment. marked passes it through,
+    // decoratePrompts steps over it (it reads nextElementSibling), a page
+    // script that shows callouts reads it (prompt-short.js in the Agents 101
+    // self-study shell), and nothing lands in the text a learner copies.
+    function calloutComment(callouts) {
+        if (!callouts || !callouts.length) return '';
+        var list = callouts.filter(function (c) { return c && c.at && c.say; })
+            .map(function (c) { return { at: String(c.at), say: String(c.say) }; });
+        if (!list.length) return '';
+        return '<!--prompt-callouts ' + JSON.stringify(list).replace(/--/g, '\\u002d\\u002d').replace(/>/g, '\\u003e') + '-->\n\n';
     }
 
     // Replace every `{{runtime-map:<module-slug>}}` line with that module's
@@ -840,7 +854,10 @@
         btn.className = host ? 'copy-btn copy-btn--in-header' : 'copy-btn';
         btn.type = 'button';
         var options = pre.closest('[data-copy-label]');
-        var label = options ? options.dataset.copyLabel : 'Copy';
+        // A page can name the button on its prompt boxes ("Copy prompt") with
+        // data-prompt-copy-label on <body>; plain code blocks keep "Copy".
+        var promptLabel = host && document.body && document.body.getAttribute('data-prompt-copy-label');
+        var label = options ? options.dataset.copyLabel : (promptLabel || 'Copy');
         var status = options && options.querySelector('[data-copy-status]');
         btn.setAttribute('aria-label', options ? label : 'Copy to clipboard');
         btn.textContent = label;

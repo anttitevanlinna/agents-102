@@ -19,6 +19,15 @@ produces:
     location: module-6/eval-notes.md, module-6/runs/round-1/
   - id: generation-tactic
     location: ./generation-tactic.md
+callouts:
+  - at: Run an eval loop
+    say: The judge stays fixed, so a better score means better work.
+  - at: For each round
+    say: The writer and the judge are separate agents. The judge sees only the briefing.
+  - at: When the loop stops
+    say: This is what you read when you come back.
+  - at: Do not stop
+    say: The loop keeps running while you are away.
 ---
 Run an eval loop using my fixed judge. Never edit judges/groundedness-judge.md.
 

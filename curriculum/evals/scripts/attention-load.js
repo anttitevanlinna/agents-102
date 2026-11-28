@@ -5,12 +5,16 @@
 // Instrument for curriculum/attention-design.md. Reports, never gates.
 //
 //   node curriculum/evals/scripts/attention-load.js [--page site/agents-101/index.html]
-//        [--width 720] [--height 800] [--wpm 200] [--modules a,b] [--json]
+//        [--width 720] [--height 800] [--wpm 200] [--modules a,b] [--json] [--full-prompts]
 //
-// Per module: handbook words outside prompt boxes, prompts and their words,
-// screens, screens with prompts over eight lines folded, words in front of each
-// prompt, prompt boxes taller than 3/4 of the screen, prompts that state a reply
-// length (pattern count, approximate), reading slides and stretches between prompts.
+// Per module: handbook words outside prompt boxes (callouts on a prompt box
+// count here: they are the handbook speaking), prompts and their words, the
+// prompt words in view (a prompt shown in short counts its short form), screens,
+// words in front of each prompt, prompt boxes taller than 3/4 of the screen,
+// prompts that state a reply length (pattern count, approximate), reading slides
+// and stretches between prompts.
+// --full-prompts opens every prompt shown in short first: the same page as it
+// reads without the short view, for a before and after on one build.
 
 const path = require('node:path');
 const { chromium } = require('playwright');
@@ -21,7 +25,7 @@ const opt = (name, def) => { const i = argv.indexOf('--' + name); return i >= 0 
 const PAGE = path.resolve(ROOT, opt('page', 'site/agents-101/index.html'));
 const W = Number(opt('width', 720)), H = Number(opt('height', 800)), WPM = Number(opt('wpm', 200));
 const ONLY = opt('modules', '') ? opt('modules', '').split(',') : null;
-const FOLD_OVER = 215, FOLD_TO = 215; // px: a prompt box of about eight lines
+const FULL = argv.includes('--full-prompts');
 const REPLY_LEN = /\b(in|under|at most|no more than|within)\s+(one|two|three|four|five|six|seven|eight|nine|ten|twelve|\d+)\s+(short\s+)?(lines?|sentences?|bullets?|pieces|words|paragraphs?|snippets)/i;
 
 (async () => {
@@ -29,21 +33,29 @@ const REPLY_LEN = /\b(in|under|at most|no more than|within)\s+(one|two|three|fou
   const page = await browser.newPage({ viewport: { width: W, height: H } });
   await page.goto('file://' + PAGE);
   await page.waitForTimeout(600);
-  const raw = await page.evaluate(() => {
-    const vis = (e) => e.getBoundingClientRect().height > 0;
+  const raw = await page.evaluate((full) => {
+    if (full) document.querySelectorAll('.prompt-block--short').forEach((b) => b.classList.remove('prompt-block--short'));
+    const vis = (e) => e && e.getBoundingClientRect().height > 0;
     const wc = (t) => (t.match(/[A-Za-z0-9][^\s]*/g) || []).length;
     return [...document.querySelectorAll('section.module')].filter(vis).map((sec) => {
-      const els = [...sec.querySelectorAll('h1,h2,h3,p,li,pre,blockquote,td,th,figcaption')].filter(vis).filter((el) => {
-        if (el.tagName === 'PRE') return true;
+      const els = [...sec.querySelectorAll('h1,h2,h3,p,li,blockquote,td,th,figcaption,.prompt-block')].filter(vis).filter((el) => {
+        if (el.classList.contains('prompt-block')) return true;
         if (el.closest('pre') || el.closest('.prompt-block')) return false;
         return !(el.tagName === 'P' && el.closest('li,blockquote,td'));
       });
       const prompts = [], slides = []; let lead = 0, body = 0, slide = null;
       for (const el of els) {
-        if (el.tagName === 'PRE') {
-          if (!el.closest('.prompt-block')) continue;
-          prompts.push({ lead, words: wc(el.textContent), px: Math.round(el.getBoundingClientRect().height), text: el.textContent });
-          lead = 0; if (slide) slide.prompts++;
+        if (el.classList.contains('prompt-block')) {
+          const pre = el.querySelector('pre'), view = el.querySelector('.prompt-short');
+          if (!pre) continue;
+          const short = vis(view);
+          const text = (sel) => [...el.querySelectorAll(sel)].map((n) => n.textContent).join(' ');
+          const callouts = short ? wc(text('.prompt-callout')) : 0;
+          prompts.push({
+            lead, words: wc(pre.textContent), inView: short ? wc(text('.prompt-short__line')) : wc(pre.textContent), short, callouts,
+            px: Math.round((short ? view : pre).getBoundingClientRect().height), text: pre.textContent,
+          });
+          body += callouts; lead = 0; if (slide) slide.prompts++;
           continue;
         }
         const w = wc(el.textContent); body += w;
@@ -54,7 +66,7 @@ const REPLY_LEN = /\b(in|under|at most|no more than|within)\s+(one|two|three|fou
       const names = new Set([...sec.querySelectorAll('code')].filter(vis).filter((c) => !c.closest('pre')).map((c) => c.textContent.trim()));
       return { id: sec.id, px: Math.round(sec.getBoundingClientRect().height), body, prompts, slides, names: names.size };
     });
-  });
+  }, FULL);
   await browser.close();
 
   const rows = raw.filter((m) => !ONLY || ONLY.includes(m.id)).map((m) => {
@@ -62,11 +74,11 @@ const REPLY_LEN = /\b(in|under|at most|no more than|within)\s+(one|two|three|fou
     const stretches = []; let run = 0;
     for (const s of m.slides) { if (s.prompts) { if (run) stretches.push(run); run = 0; } else run += s.words; }
     if (run) stretches.push(run);
-    const saved = ps.reduce((a, p) => a + Math.max(0, p.px - FOLD_TO) * (p.px > FOLD_OVER), 0);
     return {
       module: m.id, words: m.body, minutes: Math.round(m.body / WPM), prompts: ps.length,
-      promptWords: ps.reduce((a, p) => a + p.words, 0),
-      screens: +(m.px / H).toFixed(1), screensFolded: +((m.px - saved) / H).toFixed(1),
+      promptWords: ps.reduce((a, p) => a + p.words, 0), promptWordsInView: ps.reduce((a, p) => a + p.inView, 0),
+      shortPrompts: ps.filter((p) => p.short).length, calloutWords: ps.reduce((a, p) => a + p.callouts, 0),
+      screens: +(m.px / H).toFixed(1),
       lead30: ps.filter((p) => p.lead <= 30).length, lead60: ps.filter((p) => p.lead > 30 && p.lead <= 60).length,
       leadOver60: ps.filter((p) => p.lead > 60).length, tallPrompts: ps.filter((p) => p.px > H * 0.75).length,
       replyLength: ps.filter((p) => REPLY_LEN.test(p.text)).length,

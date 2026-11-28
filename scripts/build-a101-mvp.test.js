@@ -425,6 +425,9 @@ test('open edition: Modules 1 to 6 plus the solo module at its own address, lice
       for (const slug of ['multi-agent-systems', 'output-quality', 'evaluations']) assert.match(doc.getElementById(slug).querySelector('.a101-module-time').textContent, /usage limit/);
       assert.equal(doc.querySelector('a[href*="agents-101-starter.tar.gz"]').getAttribute('href').split('?')[0], url + 'agents-101-starter.tar.gz');
       assert.ok(doc.querySelector('video source[src="media/mac-folder-picker.mp4"]'), 'video served beside the page');
+      assert.equal(doc.body.getAttribute('data-prompt-view'), 'short', 'self-study shows long prompts in short');
+      assert.equal(doc.body.getAttribute('data-prompt-copy-label'), 'Copy prompt');
+      assert.ok(doc.querySelector('script[data-a101-prompt-short]'), 'prompt-short.js rides in the self-study page');
     } finally { dom.window.close(); }
     assert.doesNotMatch(html, /clients\/(?:open|acme-mvp)\/|ACME/);
     for (const name of ['mac-folder-picker.mp4', 'mac-folder-picker.jpg']) assert.ok(fs.existsSync(path.join(out, 'media', name)));

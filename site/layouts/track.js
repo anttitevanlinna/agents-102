@@ -24,6 +24,7 @@
  *   <slug>-start / <slug>-done   for unnumbered pages (supplementary, reference)
  *   step            {module, step}
  *   copy-prompt     {module, step, n, kind}      copy-failed {module, step}
+ *   prompt-open     {module, step, n}            a prompt shown in short, opened in full
  *   video-play / video-half / video-end    {video, module}
  *   download-starter {file, module}
  *   os-pick {os}   runtime-pick {runtime}   view-switch {to}
@@ -226,6 +227,20 @@
             setTimeout(function () {
                 if (/fail/i.test(copy.textContent)) send('copy-failed', { module: w.module, step: w.step });
             }, 600);
+            return;
+        }
+
+        // "Show them" on a prompt shown in short (shell/prompt-short.js). Sent
+        // on opening only: how often a learner wants the whole prompt on the page.
+        var toggle = t.closest('.prompt-short__toggle');
+        if (toggle) {
+            var blk = toggle.closest('.prompt-block');
+            if (blk && toggle.closest('.prompt-short')) {
+                var tw = where(toggle);
+                var tscope = toggle.closest('section.phase') || toggle.closest('section[id]') || document.body;
+                var tn = Array.prototype.slice.call(tscope.querySelectorAll('.prompt-block')).indexOf(blk) + 1;
+                send('prompt-open', { module: tw.module, step: tw.step, n: tn });
+            }
             return;
         }
 

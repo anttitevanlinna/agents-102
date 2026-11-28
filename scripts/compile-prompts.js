@@ -36,6 +36,9 @@
 //   anchors:                    # optional; future prompt-anatomy highlight metadata
 //     - move: <move-name>
 //       span: <quoted clause>
+//   callouts:                   # optional; shown on the prompt box in the self-study
+//     - at: <first words of a part>   # handbook, never copied (attention-design.md)
+//       say: <why the part is there>
 //   note: <one-liner>           # optional; informal carve-out / context
 //   ---
 //   <prompt body — what the student copies>
@@ -107,8 +110,23 @@ function loadSourceRegistry(promptsDir) {
     //   - future prompt-anatomy highlight tooling (anchors)
     //   - downstream tooling that needs to find producers / consumers by id
     // Keep these optional; absence is normal for short / supplementary prompts.
-    for (const field of ['requires', 'produces', 'opportunistic-copy', 'opportunistic-copy-by', 'anchors', 'note', 'permission-mode']) {
+    for (const field of ['requires', 'produces', 'opportunistic-copy', 'opportunistic-copy-by', 'anchors', 'callouts', 'note', 'permission-mode']) {
       if (meta[field] !== undefined) entry[field] = meta[field];
+    }
+    // A callout points at a part of the prompt by its first words. When the
+    // prompt body moves on and the words are gone, the callout would vanish
+    // from the page without a sound: fail here instead.
+    if (meta.callouts !== undefined) {
+      if (!Array.isArray(meta.callouts)) throw new Error(`${file}: 'callouts' must be a list of { at, say }`);
+      const starts = text.split('\n').map(l => l.replace(/^(\d+\.|[-*])\s+/, ''));
+      for (const c of meta.callouts) {
+        if (!c || typeof c.at !== 'string' || typeof c.say !== 'string' || !c.at.trim() || !c.say.trim()) {
+          throw new Error(`${file}: each callout needs 'at' and 'say' as text`);
+        }
+        if (!starts.some(l => l.startsWith(c.at)) && !text.split('\n').some(l => l.startsWith(c.at))) {
+          throw new Error(`${file}: callout 'at: ${c.at}' matches the start of no line in the prompt body`);
+        }
+      }
     }
     registry[key] = entry;
   }

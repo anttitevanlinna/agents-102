@@ -111,6 +111,9 @@ function material(html) {
   }
   function hidden(element) {
     for (let node = element; node && node.nodeType === 1; node = node.parentElement) {
+      // The self-study page shows a long prompt in short and keeps the full <pre>
+      // out of sight; Copy still takes all of it, so this reader does too.
+      if (node.matches('.prompt-block--short > .prompt-block__pre')) continue;
       const style = dom.window.getComputedStyle(node);
       if (node.hidden || node.getAttribute('aria-hidden') === 'true' || style.display === 'none' || style.visibility === 'hidden') return true;
       if ([...node.classList].some(name => /^rt-profile-/.test(name) && name !== 'rt-profile-cowork')) return true;
@@ -120,7 +123,7 @@ function material(html) {
   }
   function visibleText(node) {
     if (node.nodeType === 3) return node.textContent;
-    if (node.nodeType !== 1 || hidden(node) || node.matches('script,style,button,svg')) return '';
+    if (node.nodeType !== 1 || hidden(node) || node.matches('script,style,button,svg,.prompt-short,.prompt-short__back')) return '';
     const tag = node.tagName;
     if (tag === 'PRE') return '\n```\n' + node.textContent.trimEnd() + '\n```\n';
     const inner = [...node.childNodes].map(visibleText).join('');

@@ -21,6 +21,8 @@ async function pages(site) {
     await p.goto('file://' + path.resolve(site)); await p.waitForTimeout(1000);
     return await p.evaluate((units) => {
       document.querySelectorAll('details').forEach((d) => { d.open = true; });
+      // A long prompt shows in short on the page; the walk reads what Copy takes, the whole prompt.
+      document.querySelectorAll('.prompt-block--short').forEach((b) => { b.classList.remove('prompt-block--short'); });
       const out = {};
       for (const id of units) {
         const m = document.getElementById(id); if (!m) continue;

@@ -213,7 +213,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     assert.ok(controls.querySelector('.prompt-block .copy-btn'), 'normal workbook runtime decorates Pause and Resume prompts');
     const promptTexts = [...document.querySelectorAll('.prompt-block pre code')].map(node => node.textContent);
     assert.ok(promptTexts.length > 20, 'full canonical exercise prompts remain available');
-    const baselineBlock = [...document.querySelectorAll('.prompt-block')].find(block => block.querySelector('code').textContent.startsWith('Build me a personal HTML one-pager site'));
+    const baselineBlock = [...document.querySelectorAll('.prompt-block')].find(block => block.querySelector('code').textContent.startsWith('Build me a one-page personal site'));
     assert.ok(baselineBlock);
     baselineBlock.querySelector('.copy-btn').click();
     await Promise.resolve();

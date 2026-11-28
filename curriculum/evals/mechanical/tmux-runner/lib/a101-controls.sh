@@ -3,20 +3,23 @@ set -euo pipefail
 
 render_controls() {
   local profile="$1" text="$2"
-  local no_questions direct_execution multi_agent save_without_review
+  local no_questions plain_question direct_execution multi_agent save_without_review
   case "$profile" in
     cli)
       no_questions='Headless dry-run: do not call AskUserQuestion and do not pause for questions.'
+      plain_question='Headless dry-run: ask your question in plain chat text and end the turn there. Do not call AskUserQuestion.'
       direct_execution='Stay out of plan mode and execute directly.'
       multi_agent='Use Claude subagents for the parallel work.'
       ;;
     codex-cli)
       no_questions='Headless dry-run: do not request interactive user input and do not pause for questions.'
+      plain_question='Headless dry-run: ask your question in plain chat text and end the turn there. Do not request interactive user input.'
       direct_execution='Execute directly without entering an interactive planning pause.'
       multi_agent='Use Codex agents for the parallel work.'
       ;;
     copilot-cli)
       no_questions='Headless dry-run: do not request interactive user input and do not pause for questions.'
+      plain_question='Headless dry-run: ask your question in plain chat text and end the turn there. Do not request interactive user input.'
       direct_execution='Execute directly without entering plan mode or an approval pause.'
       multi_agent='Use GitHub Copilot subagents for the parallel work.'
       ;;
@@ -27,6 +30,7 @@ render_controls() {
   esac
   save_without_review='Save the requested artifacts without waiting for review or approval.'
   text="${text//<CONTROL:NO_QUESTIONS>/$no_questions}"
+  text="${text//<CONTROL:PLAIN_QUESTION>/$plain_question}"
   text="${text//<CONTROL:DIRECT_EXECUTION>/$direct_execution}"
   text="${text//<CONTROL:MULTI_AGENT>/$multi_agent}"
   text="${text//<CONTROL:SAVE_WITHOUT_REVIEW>/$save_without_review}"

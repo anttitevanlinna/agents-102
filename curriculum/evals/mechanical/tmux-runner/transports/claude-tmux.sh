@@ -17,6 +17,18 @@ claude_launch_cmd() {
   printf '%s\n' "$command"
 }
 
+# A cloud session hands its own project memory and effort level to any child
+# CLI through the environment: the SUT then starts with the operator's memory
+# index in its system prompt and recalls notes about the course under test
+# (A101 M1, 2026-11-28: the SUT recalled the note describing the M1 redesign).
+# A student has neither. The launch drops those variables; auth stays put.
+CLAUDE_OPERATOR_ENV=(CLAUDE_COWORK_MEMORY_PATH_OVERRIDE CLAUDE_MEMORY_STORES CLAUDE_EFFORT)
+claude_launch_env() {
+  local sentinel_dir="$1" name out="env"
+  for name in "${CLAUDE_OPERATOR_ENV[@]}"; do out+=" -u $name"; done
+  printf '%s CLAUDE_RUNNER_SENTINEL_DIR=%s\n' "$out" "$sentinel_dir"
+}
+
 claude_open() {
   local cwd="$1" run_dir="$2"
   CLAUDE_RUN_DIR="$run_dir"
@@ -25,9 +37,9 @@ claude_open() {
   mkdir -p "$CLAUDE_SENTINEL_DIR"
   export RUNNER_TMUX_SOCKET="runner-$(basename "$run_dir")"
   local command; command="$(claude_launch_cmd "$run_dir")"
-  local launch_cmd="env CLAUDE_RUNNER_SENTINEL_DIR=$CLAUDE_SENTINEL_DIR $command"
+  local launch_cmd="$(claude_launch_env "$CLAUDE_SENTINEL_DIR") $command"
   pane_start "$CLAUDE_SESSION" "$cwd" "$launch_cmd"
-  sleep "${CLAUDE_RUNNER_WARMUP:-10}"
+  pane_accept_folder_trust "$CLAUDE_SESSION" "${CLAUDE_RUNNER_WARMUP:-10}"
 }
 
 claude_turn() {

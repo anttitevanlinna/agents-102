@@ -122,7 +122,7 @@ test('preserves the real canonical open-hook prompt without modifying it', t => 
   const [output] = createNavigationOverlay({ root, overlayDir: dir, workbookUrl: 'https://training.example/course/index.html', checkpoints: [{ key: 'personal-site-with-guardrails-4', currentAnchor: 'first', nextAnchor: 'second', nextLabel: navigation.nextLabel }] });
   assert.equal(fs.readFileSync(source, 'utf8'), src);
   assert.equal(fs.readFileSync(output, 'utf8'), src);
-  assert.ok(fs.readFileSync(output, 'utf8').trimEnd().endsWith('My hate list:'));
+  assert.ok(fs.readFileSync(output, 'utf8').trimEnd().endsWith('My strengths:'));
 });
 
 test('navigation guide appends validated return metadata and deduplicates runtime variants', () => {

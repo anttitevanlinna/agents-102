@@ -19,11 +19,16 @@ CLAUDE_CLI_FLOOR="${CLAUDE_CLI_FLOOR:-2.1.281}"
 
 # claude_cli_preflight <launch command>: refuse a claude launch whose binary is
 # missing, below the floor, or lacks the requested --permission-mode. Any other
-# command passes untouched. Leading `env` and VAR=value words are skipped.
+# command passes untouched. Leading `env`, `-u NAME` and VAR=value words are
+# skipped.
 claude_cli_preflight() {
   local -a w; read -ra w <<< "$1"
   local i=0 bin mode="" path ver
-  while [[ $i -lt ${#w[@]} ]] && [[ "${w[$i]}" == env || "${w[$i]}" =~ ^[A-Za-z_][A-Za-z0-9_]*= ]]; do i=$((i+1)); done
+  while [[ $i -lt ${#w[@]} ]]; do
+    if [[ "${w[$i]}" == -u ]]; then i=$((i+2)); continue; fi
+    [[ "${w[$i]}" == env || "${w[$i]}" =~ ^[A-Za-z_][A-Za-z0-9_]*= ]] || break
+    i=$((i+1))
+  done
   bin="${w[$i]:-}"
   [[ "$(basename "$bin")" == claude ]] || return 0
   for ((j=i+1; j<${#w[@]}; j++)); do [[ "${w[$j]}" == --permission-mode ]] && mode="${w[$((j+1))]:-}"; done
@@ -47,6 +52,30 @@ pane_start() {
   local name="$1" cwd="$2" cmd="$3"
   claude_cli_preflight "$cmd" || return 1
   _tmux new-session -d -s "$name" -x 220 -y 50 -c "$cwd" "$cmd"
+}
+
+# pane_accept_folder_trust <session> [seconds]: watch the pane for Claude Code's
+# folder-trust dialog and answer yes. The dialog preselects "No, exit", so a
+# first turn typed into it closes the CLI and the pane dies before any
+# sentinel. Some hosts show it on every launch of a folder that configures
+# hooks, and the arranged training dir always does: its Stop hook is the
+# runner's own sentinel. With no dialog on screen this is a plain warmup of
+# the same length. After a yes the CLI gets the full warmup again.
+pane_accept_folder_trust() {
+  local name="$1" wait="${2:-10}" left answered=0
+  left="$wait"
+  while (( left > 0 )); do
+    if (( ! answered )) && _tmux capture-pane -t "$name" -p 2>/dev/null | grep -q 'Yes, I trust this folder'; then
+      _tmux send-keys -t "$name" Down
+      sleep 0.5
+      _tmux send-keys -t "$name" Enter
+      answered=1
+      left="$wait"
+    fi
+    sleep 1
+    left=$((left-1))
+  done
+  return 0
 }
 
 pane_send_text() {

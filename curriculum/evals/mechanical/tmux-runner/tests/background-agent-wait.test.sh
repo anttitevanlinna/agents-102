@@ -69,6 +69,12 @@ two_wait_one_done='✻ Waiting for 2 background agents to finish
 
 echo "[test] bg_agents_pending reads the LAST status line"
 check "Waiting line with its agent finished after it is not pending" "$(yes_no bg_agents_pending "$stale_wait_snap")" "no"
+# Linux panes lead the notice with ● (A101 M1 T12 cold read, 2026-11-28).
+linux_stale_wait='✻ Waiting for 1 background agent to finish
+  The reader picked two lines.
+● Agent "Cold read of personal site" finished · 4s'
+check "the finished notice counts with the Linux glyph" "$(yes_no bg_agents_pending "$linux_stale_wait")" "no"
+check "pane_busy clears on the Linux notice" "$(yes_no pane_busy "$linux_stale_wait")" "no"
 check "stale Waiting line = idle" "$(yes_no pane_busy "$stale_wait_snap")" "no"
 check "Waiting for 2 with one finished is still pending" "$(yes_no bg_agents_pending "$two_wait_one_done")" "yes"
 check "panel-only running agent is pending" "$(yes_no bg_agents_pending "$panel_only_snap")" "yes"

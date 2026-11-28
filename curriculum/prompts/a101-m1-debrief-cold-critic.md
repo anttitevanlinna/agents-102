@@ -9,10 +9,11 @@ requires:
 produces:
   - id: m1-site-cold-read
     location: scrollback
-    note: chat-only diagnostic (subagent cold read); not persisted
+    note: chat-only diagnostic (subagent cold read beside the learner's own picks); not persisted
+callouts:
+  - at: First ask me
+    say: Your pick comes first, so the critic's cannot steer it.
 ---
-Launch a fresh subagent to give an unbiased read on `module-1/site.html`. The agent should read it cold, with no memory of building it.
+First ask me which line on my site is most me, and which is the most generic. Wait for my answer.
 
-Have the agent answer:
-1. Quote the one line that feels most uniquely this person (not the best line, the one most uniquely theirs).
-2. Quote the most generic line that could be copy-pasted from anyone's site.
+Then start a fresh subagent to read `module-1/site.html` cold. It gets the page and nothing from this session. Have it quote two lines: the one most uniquely this person (not the best line, the one nobody else could have written), and the most generic one, which could sit on anyone's site. Show its picks beside mine.

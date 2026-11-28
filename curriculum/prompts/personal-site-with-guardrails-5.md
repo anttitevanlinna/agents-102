@@ -4,12 +4,17 @@ dest: Claude Code
 runtime: any
 origin: exercises/personal-site-with-guardrails
 requires:
-  - id: m1-site
+  - id: m1-first-site
     source: prompt:personal-site-with-guardrails-1
+  - id: m1-site
+    source: prompt:personal-site-with-guardrails-4
 produces:
+  - id: m1-look-back
+    location: module-1/look-back.html
+    note: first site beside the current one with the agent's picks marked; the learner judges from it
   - id: m1-context-trace
     location: module-1/context-trace.md
 ---
-Look at the very first site you generated from just my LinkedIn profile, before I told you anything more. Find three specific claims you made in that version that turned out to be generic, empty, or wrong about me once we added real context. Name them and say why each one was generic rather than something true of me.
+Build `module-1/look-back.html`, one self-contained page: my first site, `module-1/first-site.html`, beside the site as it is now. On the first site, mark three claims that turned out generic, empty or wrong about me once I gave you more, and say why for each. On the current site, mark the three lines that are most specifically me, and name the context that produced each: my LinkedIn, my hate list, my belief, my strengths, or a call I made on a draft.
 
-Then pick three lines from the current site that are most specifically me. For each, name the piece of context that produced it: my LinkedIn, my StoryBrand answers, my strengths, my hate list, or a call I made on a draft. Write both lists to `module-1/context-trace.md`. Before you save, ask me what I gave you that changed the page most, wait for my answer, and write it in my words as the last line.
+Then ask me what I gave you that changed the page most. Wait for my answer. Write the two lists to `module-1/context-trace.md`, with my answer in my words as the last line.

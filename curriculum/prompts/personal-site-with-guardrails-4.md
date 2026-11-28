@@ -9,15 +9,13 @@ requires:
 produces:
   - id: m1-site
     location: module-1/site.html
-    note: anti-branding and presentation revision in place
+    note: strengths-shaped revision and presentation rethink in place
 callouts:
-  - at: After that you have a free hand
+  - at: You have a free hand
     say: With a free hand the agent can surprise you. The substance you built stays.
 ---
-Next comes a list of things I hate about work. For each one, work out what kind of work and what kind of people produce it, then describe me as the opposite, in the positive: what I do and what I move toward, never "I don't do X".
+Rewrite `module-1/site.html` through my strengths below. They change what the site claims about me and how it sounds. Don't add them as a list. Keep them as blunt as I wrote them.
 
-Use the result to sharpen how the whole site sounds: the headline, the first line, the section headings, the stance. Don't add a section about what I'm against. Then regenerate `module-1/site.html`.
+You have a free hand on presentation. Rethink structure, order and visual rhythm so that a colleague who opens the page wants to spend more time with me. Keep the stance from my hate list and my belief.
 
-After that you have a free hand on presentation. Rethink structure, order, sections and visual rhythm so that a colleague who opens the page wants to spend more time with me. Keep the substance we built: the section on how I help colleagues, the strengths, and the stance from this list.
-
-My hate list:
+My strengths:

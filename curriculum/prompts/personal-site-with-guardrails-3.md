@@ -9,10 +9,17 @@ requires:
 produces:
   - id: m1-site
     location: module-1/site.html
-    note: strengths-shaped revision in place
+    note: positioned by the learner's belief, rewritten in place
+callouts:
+  - at: Position my site
+    say: Naming a known method gives the agent the whole method in a few words.
+  - at: First help me say X
+    say: A rough try is enough. The agent offers sharper versions and you choose.
 ---
-Here are my strengths. Let them change what the site claims about me and how it sounds; don't add them as a list. The page stays about me, and the section on how I help colleagues stays as it is. Keep the strengths as blunt as I wrote them.
+Position my site with Seth Godin's line: this is for people who believe X.
 
-Then regenerate `module-1/site.html`.
+First help me say X. My rough try is below. Push it until it is uniquely me: offer three sharper versions, built from my hate list and my profile, and wait for my answer.
 
-My 3-5 strengths are:
+Then let the belief decide what the page leads with and what it leaves out. A colleague who believes it too should read the page and think: this is the person I want to work with more. Everyone else can walk past. Don't add a section for the belief. Rewrite `module-1/site.html`.
+
+My rough try:

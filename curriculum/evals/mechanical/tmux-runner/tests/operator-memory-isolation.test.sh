@@ -45,5 +45,14 @@ cmd="$(CLAUDE_CMD='claude --settings /own.json' claude_launch_cmd "$tmp")"
 [[ "$cmd" == "claude --settings /own.json" ]] \
   && ok "an override with its own --settings is left alone" || bad "own settings: $cmd"
 
+# A cloud operator session passes its project memory and effort level to
+# child CLIs through the environment. The launch prefix drops them.
+prefix="$(claude_launch_env "$tmp/sentinels")"
+seen="$(CLAUDE_COWORK_MEMORY_PATH_OVERRIDE=/op/memory CLAUDE_MEMORY_STORES=team CLAUDE_EFFORT=xhigh bash -c "$prefix printenv")"
+! grep -Eq '^(CLAUDE_COWORK_MEMORY_PATH_OVERRIDE|CLAUDE_MEMORY_STORES|CLAUDE_EFFORT)=' <<< "$seen" \
+  && ok "operator memory and effort stay out of the SUT environment" || bad "operator env reaches the SUT: $prefix"
+grep -q "^CLAUDE_RUNNER_SENTINEL_DIR=$tmp/sentinels$" <<< "$seen" \
+  && ok "the sentinel dir still reaches the SUT" || bad "sentinel dir lost: $prefix"
+
 echo "operator-memory-isolation: $pass passed, $fail failed"
 (( fail == 0 ))

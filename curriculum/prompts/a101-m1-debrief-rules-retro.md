@@ -18,14 +18,10 @@ callouts:
   - at: Then overwrite
     say: Rewriting in place keeps one current file. Appended notes pile up.
 ---
-Read `module-1/personal-brand-generation.md` and `module-1/context-trace.md`. Then re-read what we did building the site. Run a retro: which moves worked, which fell flat, where context broke through, where the output stayed generic. Compare the rules file to the actual work. Sort each rule into keep, sharpen, or drop. What's missing the rules should have caught?
+Run a retro on `module-1/personal-brand-generation.md`. Hold it against what we did building the site and against `module-1/context-trace.md`. Which moves worked, which fell flat, where did my context break through, where did the output stay generic? Sort each rule into keep, sharpen or drop. Name what the rules missed.
 
-Assume the rules file is at least 30% wrong or thin. Find that 30%. If fewer than two rules get dropped or substantially rewritten, say why before you proceed.
+Assume the rules file is at least 30% wrong or thin. Find that 30%.
 
-Then overwrite `module-1/personal-brand-generation.md` with the retro applied. Sharpen what's weak. Add what's missing. Drop what's wrong. Rewrite the file in place; don't append a "retro notes" section.
+Then overwrite `module-1/personal-brand-generation.md` with the retro applied. Rewrite the file in place; don't append retro notes.
 
-When you're done, list:
-- dropped: rule text + reason
-- sharpened: before -> after
-- added: rule text + why the session needed it
-- still uncertain: anything the rules should cover but you want me to weigh in on first
+When you're done, list what you dropped and why, what you sharpened (before and after), what you added and why the session needed it, and what you want me to decide.

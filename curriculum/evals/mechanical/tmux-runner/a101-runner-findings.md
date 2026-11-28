@@ -146,3 +146,42 @@ Open edition only: M7 and M8 did not run. Three chains, each from a paired workt
 - **C-20 A required line becomes a flag (M6 T5→T6).** The T5 "Citations checked" line was flagged by the next judge as "a process claim no evidence file can support".
 - **C-21 The M6 T4 readout asks for a verdict the file doesn't hold.** "the judge's verdict from that round's judgment.md" has no value for unflagged claims ("The file only holds flags… this is an inference").
 - **C-22 M4b T4 skipped its read and cut nothing.** "I didn't re-read the reports in full" and "The file had no earlier security rules, so I cut none". The prompt requires both the read and the cut.
+
+## 2026-11-28, evening — Module 1 after the makeover, nordveil, Sonnet 5.5, Claude Code 2.1.332, cloud container (Linux)
+
+Module 1 only, on the tree of the commit that adds this section (parent `a3160564`): the made-over exercise (hate list, belief, strengths; no StoryBrand), 12 turns, with the three waits answered in turns of their own (`<CONTROL:PLAIN_QUESTION>`, then a `*` turn). Chain `out/_chains/20261128-184313-8027`. Prework ran once. M1 ran twice: the first run passed T1–T11 and held at T12 (H-18) in a session that carried operator memory (H-19); the second ran clean and green in 7 minutes.
+
+| Module | Result | Run | Notes |
+|---|---|---|---|
+| prework | PASS | a101-prework-20261128-184318-9315 | T3 needed one keypress by hand (H-20). T4 FAIL line for the mtime alternative again; transcript alternative passed (cosmetic). Operator memory in the session (H-19). |
+| m1 | PASS | a101-m1-20261128-190428-24205 | Clean session, default effort. C-23, C-24, C-25. |
+| m1 (first run) | held at T12 | a101-m1-20261128-184613-13144 | T1–T11 PASS; the end of T12 was never detected (H-18). Operator memory in the session (H-19). |
+
+Three more clean chains ran outside the runner (`claude -p`, same prompts, persona and answers; the belief answer varied: own words, "The second one.", "The first one, but say owns…"). Counts below are over these four clean chains unless a line says otherwise.
+
+- T1 keeps `first-site.html`, and no later turn rewrites it: 4 of 4.
+- T3 offers three versions of the belief and leaves `site.html` alone: 4 of 4, in 10 to 13 seconds. T4 rewrites the page on the learner's answer with the belief as the headline and no section for it: 4 of 4. The page loses sections at the belief (8→5, 7→6, 7→4) and words (467→392, 462→349, 383→341) in the three scripted chains.
+- T6 builds `look-back.html` as one file with the marks showing, and writes no trace file before the answer: 4 of 4. T7 puts the answer on the last line: 4 of 4.
+- T9 shows the three strongest rules and what the agent was unsure of: 4 of 4. T10 counts what it changed in the scripted chains: 46%, 54%, 40%.
+- T11 asks for the learner's picks and starts nothing: 4 of 4. T12 shows the picks beside the cold reader's: 4 of 4.
+- The old prompts, one clean chain: the name stays the headline through StoryBrand and strengths, a "Working with me" section is added, and the page grows 325→448→512→659 words.
+
+### Harness faults
+
+- **H-17 Folder-trust dialog (fixed).** This host shows "Is this a project you created or one you trust?" on every launch of the training dir, which configures the runner's Stop hook (`CLAUDE_CODE_IGNORE_PERSISTED_TRUST` is set). "No, exit" is preselected, so turn 1 typed into it closed the CLI: "pane … died before sentinel … (after 5s)". `pane_accept_folder_trust` in `lib/tmux.sh` answers yes during the warmup; `tests/folder-trust.test.sh`.
+- **H-18 Finished notice on Linux (fixed).** A Linux pane leads the notice with `●` where macOS has `⏺`. `waiting_unresolved` counted no finished agent, so T12 held on a stale "Waiting for 1 background agent to finish". Both glyphs count; `tests/background-agent-wait.test.sh`.
+- **H-19 Operator memory reaches the SUT on a cloud host (fixed for the CLI transport).** A cloud session exports `CLAUDE_COWORK_MEMORY_PATH_OVERRIDE`, `CLAUDE_MEMORY_STORES` and `CLAUDE_EFFORT`. Every child CLI started with the operator's project memory index in its system prompt, recalled notes from it (the pane says "recalled 1 memory"; here it was the note describing this redesign), and ran at xhigh effort. `claude_launch_env` in `transports/claude-tmux.sh` drops the three; `tests/operator-memory-isolation.test.sh`. To check a past run: `grep -l relevant_memories ~/.claude/projects/<dir>/*.jsonl`. Any other harness that starts `claude` from a cloud session inherits the same variables (`fastloop/`, the onboarding path reads, the AE101 runners' own launch lines).
+- **H-20 A read outside the working directory asks first (open).** Prework T3 reads the material dir. Claude Code 2.1.332 in auto mode stops on "Allow this read outside the working directories?" and the runner waits. Answered by hand here ("Yes, but ask again next time"). Proposed: launch with `--add-dir <material dir>`.
+- **H-21 File time in `a101_rewritten_prior_agent` on Linux (fixed).** `stat -f %m` prints filesystem info before it fails on Linux, so the arithmetic broke ("File: unbound variable"). The Linux form now runs first, as elsewhere in `lib/assertions.sh`; `tests/a101-solo.test.sh` passes on Linux.
+- **Linux, same on main, not fixed:** `chain-fold`, `em-mock`, `prune-out`, `runner-skills-guard`, `skills-restore`, `codex-transport` and `copilot-transport` tests fail in this container.
+- "Headless dry-run: ask your question in plain chat text" rides on the three waiting prompts and shows in the transcript, as the other headless controls do.
+
+### Course findings (for the maintainer)
+
+- **C-17 closed.** No Module 1 prompt names a section. The hate list, the belief and the strengths each rewrite the whole page.
+- **C-21 closed.** `eval-loop-spot-check` says what the judge's side is for a claim without a flag ("grounded if not").
+- **C-15 closed on the prompt half.** The Rules line of `build-for-the-gap-1` (and `extend-your-system-1`) no longer lists rules to carry forward; the builder reads the existing agents and fits them. The minutes stay an estimate the agent labels as one.
+- **C-23 The learner's own belief can come back turned around (M1 T4).** In one scripted chain the answer "a decision is not made until someone owns what happens after it" became the headline "A decision is made when someone owns what happens after it." The agent: "It's your sentence turned into a positive." The Phase 2 rule ("in the positive… never 'I don't do X'") reached the belief. The runner's chain kept the sentence word for word, and its rules file asked whether the learner's own "not" is an exception. 1 of 2 chains with an own-words answer. Proposed: `personal-site-with-guardrails-3`, "let the belief, as I said it, decide…".
+- **C-24 The belief offer is long (M1 T3).** Three versions, each with where it comes from, what the page would lead with, what it would leave out and a risk, then a recommendation: about 300 words before the learner picks. Watch it in a live room before changing anything.
+- **C-25 The cold reader does not pick the belief headline (M1 T12).** In 4 of 4 chains the learner's "most me" is the headline and the cold reader's is a line bound to a fact ("two people and a shared spreadsheet", the move out of consulting). They agree on the most generic line in 1 of 4; the reader's usual pick is "Most of what I'm good at doesn't have a clean job title", a line from the LinkedIn text. The module page's "Your view outweighs the critic's" covers it.
+- M1 T6 in the runner: "Ran 2 shell commands · 1 failed"; the page was built anyway.

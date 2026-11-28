@@ -86,8 +86,8 @@ Third-party words, names and marks in what a licensee receives. A flagged item i
 - **`theory-plan.md` carries an unsourced passage** beside its evidence tags: source or delete.
 - **The wiki-shaped memory comes from Karpathy's "LLM Wiki" gist.** `building-agent-systems.md`, `supplementary/cookbook-for-agent-system-design.md`, `exercises/build-your-challenge-memory.md` and its prompts (shared with Agentic Product Teams 101): credit where the structure is taught, after a side-by-side read of the gist.
 - **`exercises/personal-site-with-guardrails.md` (and the `-cb` variant, shared with Claude Basics):**
-  - StoryBrand is a branded framework: reduce to "apply StoryBrand" and let the model supply the beats, as the page's own tip suggests; cut the aside about how LinkedIn uses it; check the mark.
-  - The ascription to Adam Grant: verify or remove the name.
+  - StoryBrand, a branded framework, is in the `-cb` variant only (Agents 101 carries no StoryBrand; its Phase 3 names Seth Godin's "this is for people who believe" line, in the body and in the prompt). In `-cb`: reduce to "apply StoryBrand" and let the model supply the beats, as the page's own tip suggests; cut the aside about how LinkedIn uses it; check the mark.
+  - The ascription to Adam Grant (`-cb` only): verify or remove the name.
   - "Steal a look and feel by naming the site" → take inspiration from.
   - The LinkedIn copy-the-whole-page step: limit to the participant's own sections.
 - **Rumelt's crux.** `exercises/name-your-crux.md`, `three-minds-one-synthesis.md`, `joint-double-diamond.md`: credit the books once per module; the extended version is not "Rumelt form".

@@ -39,6 +39,12 @@ echo "[test] a current CLI with the requested mode passes"
 [[ "$(check "$TMP/new" 'env CLAUDE_RUNNER_SENTINEL_DIR=/x claude --model sonnet --permission-mode auto')" == 0 ]] \
   && ok "2.1.283 + auto passes" || bad "2.1.283 + auto refused: $(cat "$TMP/err")"
 
+echo "[test] env -u words before the binary do not hide it from the preflight"
+[[ "$(check "$TMP/old" 'env -u CLAUDE_EFFORT -u CLAUDE_MEMORY_STORES CLAUDE_RUNNER_SENTINEL_DIR=/x claude --permission-mode auto')" != 0 ]] \
+  && ok "a stale CLI behind env -u is still refused" || bad "env -u hid the stale CLI"
+[[ "$(check "$TMP/new" 'env -u CLAUDE_EFFORT CLAUDE_RUNNER_SENTINEL_DIR=/x claude --model sonnet --permission-mode auto')" == 0 ]] \
+  && ok "a current CLI behind env -u passes" || bad "env -u refused a current CLI: $(cat "$TMP/err")"
+
 echo "[test] a CLI below the floor is refused with the path, version and floor"
 rc="$(check "$TMP/old" 'claude --permission-mode auto')"
 [[ "$rc" != 0 ]] && ok "1.0.67 refused" || bad "1.0.67 passed"

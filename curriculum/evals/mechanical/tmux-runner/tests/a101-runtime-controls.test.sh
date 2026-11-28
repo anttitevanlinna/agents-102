@@ -7,12 +7,15 @@ source "$RUNNER/lib/a101-controls.sh"
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
-tokens='<CONTROL:NO_QUESTIONS> <CONTROL:DIRECT_EXECUTION> <CONTROL:MULTI_AGENT> <CONTROL:SAVE_WITHOUT_REVIEW>'
+tokens='<CONTROL:NO_QUESTIONS> <CONTROL:PLAIN_QUESTION> <CONTROL:DIRECT_EXECUTION> <CONTROL:MULTI_AGENT> <CONTROL:SAVE_WITHOUT_REVIEW>'
 claude="$(render_controls cli "$tokens")"
 codex="$(render_controls codex-cli "$tokens")"
 copilot="$(render_controls copilot-cli "$tokens")"
 
 [[ "$claude" == *AskUserQuestion* ]]
+[[ "$claude" == *'plain chat text'* ]]
+[[ "$codex" == *'plain chat text'* ]]
+[[ "$copilot" == *'plain chat text'* ]]
 [[ "$claude" == *'plan mode'* ]]
 [[ "$claude" == *subagents* ]]
 [[ "$codex" == *'interactive user input'* ]]

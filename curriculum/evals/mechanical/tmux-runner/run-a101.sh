@@ -317,7 +317,7 @@ assert_turn() {
       # Synthesis-seam guard (H1): the counter-case must NOW be integrated into
       # memory — its sentinel present here proves the compound turn ingested a
       # genuinely new source and the contradiction actually fired.
-      if ! grep -riqE "$A101_M2_INTEGRATION_RE" "$sut_cwd/memory" 2>/dev/null; then
+      if ! a101_source_integrated "$sut_cwd/memory" "$sut_cwd/sources" "$A101_M2_INTEGRATION_RE"; then
         echo "[assert] FAIL m2 T9 compound: counter-case not integrated into memory — synthesis seam did NOT fire" >&2; return 1
       fi
       echo "[assert] PASS m2 T9 compound: counter-case integrated (synthesis seam fired)"

@@ -86,6 +86,8 @@ Wait for Claude to say it saved the game. **Documents → agents-101 → prework
 
 The course files hold a copy of the handbook and the folders you fill in later modules. Copy the request below and send it in the same conversation. The agent downloads the files into `agents-101` and unpacks them. It also adds one line to `CLAUDE.md`, the file in `agents-101` that Claude reads at the start of every conversation there, so it can find your place when you come back.
 
+Glance at each prompt. Check what seems pertinent in more detail. No need to study all the detail.
+
 {{prompt:a101-prework-extract-tarball}}
 
 If the agent says the download failed, [download the course files](<CONTENT_URL>) in your browser, drag the file into `agents-101`, and tell the agent it is there.

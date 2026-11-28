@@ -231,7 +231,7 @@ test('successful extraction points the learner to the calendar exercise and wait
   const checkpoints = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../../delivery/agents-101-mvp/checkpoints.json'), 'utf8'));
   const extraction = checkpoints.find(item => item.key === 'a101-prework-extract-tarball');
   assert.equal(extraction.currentAnchor, '#3-install-the-training-folder-3-min');
-  assert.equal(extraction.nextAnchor, '#4-summarize-your-week-in-meetings');
+  assert.equal(extraction.nextAnchor, '#make-your-calendar-briefing');
   assert.equal(extraction.nextLabel, 'Summarize your week in meetings');
   const cases = scenarios({ extract: 'Extract', baseline: 'Build', pause: 'Pause', resume: 'Resume' });
   const installed = cases.find(item => item.id === 'starter-present');

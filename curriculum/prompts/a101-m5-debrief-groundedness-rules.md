@@ -15,6 +15,11 @@ produces:
   - id: root-instructions
     location: "./{{artifact:root-instructions}} (Groundedness checks section)"
     note: adds/sharpens 1-4 groundedness rules in place
+callouts:
+  - at: Update
+    say: A limit of four rules and a quote before each cut keep the edit small.
+  - at: Then show me the rules
+    say: The agent's report says what the agent meant to do. The file shows what happened.
 ---
 Read `./{{artifact:root-instructions}}` if it exists, then scan `module-5/evidence-roster.md`, `module-5/claim-pool.md`, `module-5/adjudicated-claims.md`, `module-5/detectors/` (the four detector outputs), `module-5/scoreboard.md`, and `judges/groundedness-judge.md`.
 

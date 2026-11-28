@@ -158,7 +158,7 @@ test('ACME edition builds a complete learner route with edition-local downloads 
     run(first);
     const trainingDir = path.join(first, 'acme-mvp/agents-101');
     const html = fs.readFileSync(path.join(trainingDir, 'index.html'), 'utf8');
-    assert.match(html, />The review checks handoffs, not truth<\/h2>/, 'trainer-led editions keep the slide: they show no callouts');
+    for (const slide of ['The review checks handoffs, not truth', 'Notice what the prompt insists on']) assert.ok(html.includes(`>${slide}</h2>`), `trainer-led editions show no callouts and keep the slide: ${slide}`);
     const exceptions = [];
     const copied = [];
     const virtualConsole = new VirtualConsole();
@@ -445,6 +445,8 @@ test('open edition: Modules 1 to 6 plus the solo module at its own address, lice
       assert.ok(doc.querySelector('script[data-a101-prompt-short]'), 'prompt-short.js rides in the self-study page');
       assert.doesNotMatch(doc.getElementById('multi-agent-systems').textContent, /The review checks handoffs, not truth/, 'callouts on the debrief prompt say it in self-study');
       assert.match(html, /prompt-callouts \[\{"at":"Read","say":"This review checks the handoffs\./);
+      assert.doesNotMatch(doc.getElementById('output-quality').textContent, /Notice what the prompt insists on/, 'callouts on the debrief prompt say it in self-study');
+      assert.match(html, /prompt-callouts \[\{"at":"Update","say":"A limit of four rules/);
     } finally { dom.window.close(); }
     assert.doesNotMatch(html, /clients\/(?:open|acme-mvp)\/|ACME/);
     for (const name of ['mac-folder-picker.mp4', 'mac-folder-picker.jpg']) assert.ok(fs.existsSync(path.join(out, 'media', name)));

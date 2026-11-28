@@ -157,6 +157,7 @@ function promptsInShort(html) {
 // callouts, so neither side can drop out unnoticed.
 const SLIDES_SAID_BY_CALLOUTS = [
   { module: 'multi-agent-systems', slide: 'The review checks handoffs, not truth', prompt: 'a101-m3-debrief-handoff-rules' },
+  { module: 'output-quality', slide: 'Notice what the prompt insists on', prompt: 'a101-m5-debrief-groundedness-rules' },
 ];
 function dropSlidesSaidByCallouts(html, slides = SLIDES_SAID_BY_CALLOUTS, promptDir = path.join(ROOT, 'curriculum/prompts')) {
   for (const { module, slide, prompt } of slides) {

@@ -53,10 +53,22 @@ Deliberate hand-backs, not gaps: Module 3 P9 *You choose fixes*, Module 4 *"You 
 
 Every Debrief (Modules 1 to 6) ends on a page-only *Push back on the summary*. The rules file it sharpens is what every later session reads, and Module 1 tells the learner the agent goes easy on its own output.
 
+## What the shared walk shows (2026-11-28, main 73aa869)
+
+The recorded tmux walk kept in the project files (a101-walk-2026-11-28, not in this repo), one Sonnet run of prework to solo.
+
+- It cannot test the gates. Every gated judgment turn in it carried the runner's NO_QUESTIONS control, so the agent or a canned answer stood in for the learner.
+- Six of the seven Debriefs ran with no runner control. Three end on a question to the learner, and the next prompt moves past it: Module 1 ends on four (*Should the next agent keep some refusal in the voice?*), Module 2 on rule 15 (*tell me if you'd rather agents be able to propose edits directly*), solo on *Decide whether to approve that edit*. The other three (Modules 4, 5, 6) end on statements.
+- Those questions are domain calls only the learner can make, and the agent raises them unprompted about half the time. Nothing makes it consistent, and nothing waits.
+- Where nobody asks the learner, the agent judges for them: in the Module 1 cold read (controlled turn) it weighed the critic's picks itself (*I'd weigh that read lightly*).
+- 41 of the 64 judged replies need something from the learner (reply-judge needs_learner).
+
+Lesson from Antti on the Module 3 drafts (2026-11-28): the agent that did the work is the worst one to report its own loss, and a judgment moment should ask a call only the learner can make. Change 2 below follows it.
+
 ## Proposed, in order (prompt changes wait for prompt-ok)
 
-1. Module 3: move the handoff check into a short prompt after the synthesizer (new `three-retrievers-one-curator-6`).
-2. Debriefs: each Debrief prompt ends by asking the learner what the agent got wrong or missed, and waits. One representative (Module 1) decides the pattern.
+1. Module 3: move the handoff check into a short prompt after the synthesizer (new `three-retrievers-one-curator-6`). Draft 2: a fresh subagent lists what memory lost, the learner picks the loss that would hurt their challenge most, the agent restores it.
+2. Debriefs: each Debrief prompt ends by asking the learner the calls in the new rules that only they can make, one at a time, and waits before saving. One representative (Module 1) decides the pattern.
 3. Module 4: the mitigation prompt ends by asking the learner to accept the residual or close the door, written word for word.
 
 Left as they are: Module 6 remarks (human taste is a side product of the loop, Antti 2026-11-18), the solo brief (fails loudly), between-module asks (light homework register, §16 boundary 2).

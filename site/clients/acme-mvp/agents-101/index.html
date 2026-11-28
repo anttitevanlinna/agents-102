@@ -2956,6 +2956,26 @@ body.slides-active .a101-onboarding { display: none; }
   body.workbook:not(.slides-active) main .prompt-block__pre code { background: none; color: inherit; }
   body.workbook:not(.slides-active) main .prompt-block .copy-btn { background: white; border: 1px solid #878780; color: #191917; padding: 5px 12px; border-radius: 4px; font-size: 13px; text-transform: none; letter-spacing: 0; }
   body.workbook:not(.slides-active) main .prompt-block .copy-btn--copied { color: white; background: #282824; }
+  /* The prompt in short (shell/prompt-short.js, self-study only; curriculum/attention-design.md).
+     Long-read layout only: Slides keeps the full <pre> and its own preview. */
+  .prompt-short, .prompt-short__back { display: none; }
+  body[data-prompt-view="short"]:not(.slides-active) main .prompt-block--short > .prompt-short { display: block; padding-top: 2px; }
+  body[data-prompt-view="short"]:not(.slides-active) main .prompt-block--short > .prompt-block__pre { display: none; }
+  body[data-prompt-view="short"]:not(.slides-active) main .prompt-block--full > .prompt-short__back { display: block; }
+  body[data-prompt-view="short"]:not(.slides-active) main .prompt-block .copy-btn { background: #1f1e1b; border-color: #1f1e1b; color: #fff; font-weight: 600; padding: 8px 14px; }
+  body[data-prompt-view="short"]:not(.slides-active) main .prompt-block .copy-btn--copied { background: #55554f; border-color: #55554f; }
+  .prompt-short__part { padding: 8px 20px 10px; font: 400 13.6px/21px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: #1f1e1b; }
+  .prompt-short__line { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0 0 2px; }
+  .prompt-short__more { color: #6f6c62; }
+  /* A callout is the handbook speaking: a white card in body type, narrower than the box, so the grey stays whole around it. */
+  .prompt-callout { display: flex; gap: 8px; margin: 4px 10% 4px 14px; padding: 8px 12px; border-radius: 8px; background: #fff; color: #1f1e1b; font: 400 15.5px/1.45 var(--font-body); }
+  .prompt-callout__mark { color: #d9540b; font-weight: 700; }
+  .prompt-short__foot { margin: 0; padding: 4px 20px 14px; font: 500 14px/1.4 var(--font-body); color: #5c5a52; }
+  .prompt-short__toggle { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+  @media print {
+    .prompt-block--short > .prompt-short { display: none !important; }
+    .prompt-block--short > .prompt-block__pre { display: block !important; }
+  }
   body.workbook :focus-visible { outline: 2px solid #95390f; outline-offset: 3px; }
   body.workbook .copyright-badge { position: static; margin: 0; padding: 12px 24px; border: 0; border-radius: 0; background: #111; opacity: 1; text-align: center; }
   body.workbook .copyright-badge a { color: #deded8; }
@@ -3516,7 +3536,7 @@ For course navigation, add this line to the `CLAUDE.md` file in this folder if i
 </code></pre>
 </div>
 
-<p>If the agent says the download failed, <a href="https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=5981de64e3e4bb60" target="_blank" rel="noopener">download the course files</a> in your browser, drag the file into <code>agents-101</code>, and tell the agent it is there.</p>
+<p>If the agent says the download failed, <a href="https://agents102.bosser.consulting/clients/acme-mvp/agents-101/agents-101-starter.tar.gz?v=34bea73fe0036ea7" target="_blank" rel="noopener">download the course files</a> in your browser, drag the file into <code>agents-101</code>, and tell the agent it is there.</p>
 <div class="walkthrough-media rt-profile rt-profile-cowork"><strong>Course files walkthrough</strong>
 <p>Video coming here: send the request and watch the course folders appear in <code>agents-101</code>.</p></div>
 
@@ -10297,6 +10317,8 @@ Then tell me in five lines: claims judged and flagged in the baseline briefing, 
 <div class="rt-profile rt-profile-cowork">
 
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<!--prompt-callouts [{"at":"Run an eval loop","say":"The judge stays fixed, so a better score means better work."},{"at":"For each round","say":"The writer and the judge are separate agents. The judge sees only the briefing."},{"at":"When the loop stops","say":"This is what you read when you come back."},{"at":"Do not stop","say":"The loop keeps running while you are away."}]-->
+
 <pre><code>Run an eval loop using my fixed judge. Never edit judges/groundedness-judge.md.
 
 Starting generation tactic:
@@ -10329,6 +10351,8 @@ Do not stop for confirmation between rounds.
 <div class="rt-profile rt-profile-desktop">
 
 <p><strong>Prompt</strong> <em>(Claude Code Desktop)</em></p>
+<!--prompt-callouts [{"at":"Run an eval loop","say":"The judge stays fixed, so a better score means better work."},{"at":"For each round","say":"The writer and the judge are separate agents. The judge sees only the briefing."},{"at":"When the loop stops","say":"This is what you read when you come back."},{"at":"Do not stop","say":"The loop keeps running while you are away."}]-->
+
 <pre><code>Run an eval loop using my fixed judge. Never edit judges/groundedness-judge.md.
 
 Starting generation tactic:
@@ -10361,6 +10385,8 @@ Do not stop for confirmation between rounds.
 <div class="rt-profile rt-profile-cli">
 
 <p><strong>Prompt</strong> <em>(Claude Code CLI)</em></p>
+<!--prompt-callouts [{"at":"Run an eval loop","say":"The judge stays fixed, so a better score means better work."},{"at":"For each round","say":"The writer and the judge are separate agents. The judge sees only the briefing."},{"at":"When the loop stops","say":"This is what you read when you come back."},{"at":"Do not stop","say":"The loop keeps running while you are away."}]-->
+
 <pre><code>Run an eval loop using my fixed judge. Never edit judges/groundedness-judge.md.
 
 Starting generation tactic:
@@ -10393,6 +10419,8 @@ Do not stop for confirmation between rounds.
 <div class="rt-profile rt-profile-codex-desktop">
 
 <p><strong>Prompt</strong> <em>(Codex Desktop)</em></p>
+<!--prompt-callouts [{"at":"Run an eval loop","say":"The judge stays fixed, so a better score means better work."},{"at":"For each round","say":"The writer and the judge are separate agents. The judge sees only the briefing."},{"at":"When the loop stops","say":"This is what you read when you come back."},{"at":"Do not stop","say":"The loop keeps running while you are away."}]-->
+
 <pre><code>Run an eval loop using my fixed judge. Never edit judges/groundedness-judge.md.
 
 Starting generation tactic:
@@ -10425,6 +10453,8 @@ Do not stop for confirmation between rounds.
 <div class="rt-profile rt-profile-codex-cli">
 
 <p><strong>Prompt</strong> <em>(Codex CLI)</em></p>
+<!--prompt-callouts [{"at":"Run an eval loop","say":"The judge stays fixed, so a better score means better work."},{"at":"For each round","say":"The writer and the judge are separate agents. The judge sees only the briefing."},{"at":"When the loop stops","say":"This is what you read when you come back."},{"at":"Do not stop","say":"The loop keeps running while you are away."}]-->
+
 <pre><code>Run an eval loop using my fixed judge. Never edit judges/groundedness-judge.md.
 
 Starting generation tactic:
@@ -10457,6 +10487,8 @@ Do not stop for confirmation between rounds.
 <div class="rt-profile rt-profile-copilot-app">
 
 <p><strong>Prompt</strong> <em>(GitHub Copilot app)</em></p>
+<!--prompt-callouts [{"at":"Run an eval loop","say":"The judge stays fixed, so a better score means better work."},{"at":"For each round","say":"The writer and the judge are separate agents. The judge sees only the briefing."},{"at":"When the loop stops","say":"This is what you read when you come back."},{"at":"Do not stop","say":"The loop keeps running while you are away."}]-->
+
 <pre><code>Run an eval loop using my fixed judge. Never edit judges/groundedness-judge.md.
 
 Starting generation tactic:
@@ -10489,6 +10521,8 @@ Do not stop for confirmation between rounds.
 <div class="rt-profile rt-profile-copilot-cli">
 
 <p><strong>Prompt</strong> <em>(GitHub Copilot CLI)</em></p>
+<!--prompt-callouts [{"at":"Run an eval loop","say":"The judge stays fixed, so a better score means better work."},{"at":"For each round","say":"The writer and the judge are separate agents. The judge sees only the briefing."},{"at":"When the loop stops","say":"This is what you read when you come back."},{"at":"Do not stop","say":"The loop keeps running while you are away."}]-->
+
 <pre><code>Run an eval loop using my fixed judge. Never edit judges/groundedness-judge.md.
 
 Starting generation tactic:
@@ -15593,7 +15627,21 @@ SOFTWARE.
             text = injectAnchorSentinels(text, entry.anchors);
         }
         var fence = '```\n' + text + '\n```';
-        return label + '\n\n' + fence;
+        return label + '\n\n' + calloutComment(entry && entry.callouts) + fence;
+    }
+
+    // Callouts (`callouts:` in a prompt's frontmatter: `at` = the first words
+    // of a part of the prompt, `say` = why that part is there) ride between
+    // the label and the fence as one HTML comment. marked passes it through,
+    // decoratePrompts steps over it (it reads nextElementSibling), a page
+    // script that shows callouts reads it (prompt-short.js in the Agents 101
+    // self-study shell), and nothing lands in the text a learner copies.
+    function calloutComment(callouts) {
+        if (!callouts || !callouts.length) return '';
+        var list = callouts.filter(function (c) { return c && c.at && c.say; })
+            .map(function (c) { return { at: String(c.at), say: String(c.say) }; });
+        if (!list.length) return '';
+        return '<!--prompt-callouts ' + JSON.stringify(list).replace(/--/g, '\\u002d\\u002d').replace(/>/g, '\\u003e') + '-->\n\n';
     }
 
     // Replace every `{{runtime-map:<module-slug>}}` line with that module's
@@ -15732,7 +15780,10 @@ SOFTWARE.
         btn.className = host ? 'copy-btn copy-btn--in-header' : 'copy-btn';
         btn.type = 'button';
         var options = pre.closest('[data-copy-label]');
-        var label = options ? options.dataset.copyLabel : 'Copy';
+        // A page can name the button on its prompt boxes ("Copy prompt") with
+        // data-prompt-copy-label on <body>; plain code blocks keep "Copy".
+        var promptLabel = host && document.body && document.body.getAttribute('data-prompt-copy-label');
+        var label = options ? options.dataset.copyLabel : (promptLabel || 'Copy');
         var status = options && options.querySelector('[data-copy-status]');
         btn.setAttribute('aria-label', options ? label : 'Copy to clipboard');
         btn.textContent = label;
